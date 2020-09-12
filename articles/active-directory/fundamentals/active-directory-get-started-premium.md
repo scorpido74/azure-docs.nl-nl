@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799154"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565596"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Registreren voor Azure Active Directory Premium-edities
 U kunt Azure Active Directory (Azure AD) Premium-edities kopen en deze koppelen aan uw Azure-abonnement. Als u een nieuw Azure-abonnement moet maken, moet u ook uw licentieabonnement en toegang tot de Azure AD-service activeren.
@@ -28,7 +28,7 @@ U kunt Azure Active Directory (Azure AD) Premium-edities kopen en deze koppelen 
 
 Voordat u zich aanmeldt voor Active Directory Premium 1 of Premium 2, moet u eerst bepalen welke van uw bestaande abonnement of plan te gebruiken:
 
-- Via uw bestaande Azure of Office 365-abonnement
+- Via uw bestaande Azure-of Microsoft 365-abonnement
 
 - Via uw Enterprise Mobility + Security-licentieplan
 
@@ -36,8 +36,8 @@ Voordat u zich aanmeldt voor Active Directory Premium 1 of Premium 2, moet u eer
 
 Aanmelden met uw Azure-abonnement met de Azure AD-licenties die eerder werden gekocht en geactiveerd, activeert automatisch de licenties in dezelfde map. Als dat niet het geval is, moet u nog steeds uw licentieplan en uw Azure AD-toegang activeren. Zie voor meer informatie over het activeren van uw licentieplan [Uw nieuwe licentieplan activeren](#activate-your-new-license-plan). Zie voor meer informatie over het activeren van de Azure AD-toegang [De Azure AD-toegang activeren](#activate-your-azure-ad-access). 
 
-## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Aanmelden met behulp van uw bestaande Azure of Office 365-abonnement
-Als abonnee van Azure of Office 365 kunt u Azure Active Directory Premium-edities online kopen. Zie [Azure Active Directory Premium-nieuwe klanten aanschaffen](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)voor gedetailleerde stappen.
+## <a name="sign-up-using-your-existing-azure-or-microsoft-365-subscription"></a>Meld u aan met uw bestaande Azure-of Microsoft 365-abonnement
+Als Azure-of Microsoft 365-abonnee kunt u de Azure Active Directory Premium-edities online aanschaffen. Zie [Azure Active Directory Premium-nieuwe klanten aanschaffen](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)voor gedetailleerde stappen.
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Aanmelding met behulp van uw Enterprise Mobility + Security-licentieplan
 Enterprise Mobility + Security is een suite, bestaande uit Azure AD Premium, Azure Information Protection en Microsoft Intune. U kunt aan de slag met Azure AD als u al een EMS-licentie hebt met een van de volgende licentieopties:
@@ -67,7 +67,7 @@ Als u zich hebt aangemeld met behulp van een nieuw Azure AD-licentieplan, moet u
    
     ![Bevestigings-e-mail met aanmeld-en registratie koppelingen](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - **Meld u aan.** Als u een bestaande tenant hebt, klikt u op deze link, en vervolgens meldt u zich aan met uw bestaande administrator-account. U moet een globale beheerder zijn van de tenant waarin de licenties worden geactiveerd.
+    - **Aanmelden.** Als u een bestaande tenant hebt, klikt u op deze link, en vervolgens meldt u zich aan met uw bestaande administrator-account. U moet een globale beheerder zijn van de tenant waarin de licenties worden geactiveerd.
 
     - **Aanmelden.** Als u een nieuwe Azure AD-tenant wilt maken voor gebruik met uw licentieplan, klikt u op deze link om de pagina **Accountprofiel maken** te openen.
 

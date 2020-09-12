@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 080b5a224f3d4a720d8009933ddd9161f56dba0a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270104"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393935"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor voorwaardelijke toegang definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -47,7 +47,7 @@ In het volgende voor beeld wordt het technische profiel voor voorwaardelijke toe
 
 ## <a name="conditional-access-evaluation"></a>Evaluatie van voorwaardelijke toegang
 
-Voor elke aanmelding evalueert Azure AD B2C alle beleids regels en zorgt ervoor dat aan alle vereisten wordt voldaan voordat de gebruikers toegang wordt verleend. Met ' toegang blok keren ' worden alle andere configuratie-instellingen overschreven. In de **evaluatie** modus van het technische profiel voorwaardelijke toegang worden de signalen geëvalueerd die door Azure AD B2C worden verzameld tijdens het aanmelden met een lokaal account. Het resultaat van het technische profiel voorwaardelijke toegang is een set claims die voortvloeien uit de evaluatie van voorwaardelijke toegang. Het Azure AD B2C-beleid gebruikt deze claims in een volgende indelings stap om een actie uit te voeren, zoals het blok keren van de gebruiker of het gebruiken van het gebruik met multi-factor Authentication. De volgende opties kunnen worden geconfigureerd voor deze modus.
+Voor elke aanmelding evalueert Azure AD B2C alle beleids regels en zorgt ervoor dat aan alle vereisten wordt voldaan voordat de gebruikers toegang wordt verleend. Met ' toegang blok keren ' worden alle andere configuratie-instellingen overschreven. In de **evaluatie** modus van het technische profiel voorwaardelijke toegang worden de signalen geëvalueerd die door Azure AD B2C worden verzameld tijdens het aanmelden met een lokaal account. Het resultaat van het technische profiel voorwaardelijke toegang is een set claims die voortvloeien uit de evaluatie van voorwaardelijke toegang. Het Azure AD B2C-beleid gebruikt deze claims in een volgende indelings stap om een actie uit te voeren, zoals het blok keren van de gebruiker of het bevragen van de gebruiker met multi-factor Authentication. De volgende opties kunnen worden geconfigureerd voor deze modus.
 
 ### <a name="metadata"></a>Metagegevens
 

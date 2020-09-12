@@ -1,18 +1,18 @@
 ---
 title: Azure Automation runbooks toevoegen aan Site Recovery-herstel plannen
 description: Meer informatie over het uitbreiden van herstel plannen met Azure Automation voor herstel na nood geval met behulp van Azure Site Recovery.
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: ramamill
+ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021576"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424868"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 

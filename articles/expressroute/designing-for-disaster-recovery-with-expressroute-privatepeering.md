@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ontwerpen voor herstel na nood geval'
 description: Deze pagina bevat architectuur aanbevelingen voor herstel na nood gevallen tijdens het gebruik van Azure ExpressRoute.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081165"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397998"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering
 
@@ -45,7 +45,7 @@ Als u echter taak verdeling van verkeer via Geo-redundante parallelle paden hebt
 
 Laten we eens kijken naar het voorbeeld netwerk geïllustreerd in het volgende diagram. In het voor beeld wordt geo-redundante ExpressRoute-connectiviteit tot stand gebracht tussen de on-premises locatie van Contoso en het VNet van Contoso in een Azure-regio. In het diagram geeft effen groene lijn aan dat het voorkeurs pad (via ExpressRoute 1) en de gestippelde waarde staat voor een pad (via ExpressRoute 2).
 
-[![i]][1]
+[![1]][1]
 
 Wanneer u ExpressRoute-connectiviteit ontwerpt voor herstel na nood gevallen, moet u rekening houden met het volgende:
 
@@ -68,7 +68,7 @@ U kunt met behulp van een van de volgende technieken (Zie de volg orde van effec
 
 In het volgende diagram ziet u de selectie van het ExpressRoute met behulp van een meer specifieke route advertentie. In het Gedemonstreerde voor beeld wordt het IP-adres van Contoso op locatie/24 geadverteerd als twee/25 adresbereiken via het voorkeurs pad (ExpressRoute 1) en als/24 via het standaard traject (ExpressRoute 2).
 
-[![2]][2]
+[![twee]][2]
 
 Omdat/25 specifiekere, vergeleken met/24, verzendt Azure het verkeer dat is bestemd voor 10.1.11.0/24 via ExpressRoute 1 met de status normaal. Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 
@@ -76,11 +76,11 @@ Omdat/25 specifiekere, vergeleken met/24, verzendt Azure het verkeer dat is best
 
 De volgende scherm afbeelding illustreert het configureren van het gewicht van een ExpressRoute-verbinding via Azure Portal.
 
-[![3]][3]
+[![3D]][3]
 
 Het volgende diagram illustreert de selectie van het ExpressRoute met behulp van het verbindings gewicht. Het standaard verbindings gewicht is 0. In het onderstaande voor beeld is het gewicht van de verbinding voor ExpressRoute 1 geconfigureerd als 100. Wanneer een VNet een route voorvoegsel ontvangt dat is geadverteerd via meer dan één ExpressRoute-circuit, zal het VNet de voor keur geven aan de verbinding met het hoogste gewicht.
 
-[![3]][4]
+[![4]][4]
 
 Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 

@@ -1,6 +1,6 @@
 ---
-title: Een gebruiker of groep toewijzen aan een bedrijfs-app in azure AD
-description: Een bedrijfs-app selecteren waaraan u een gebruiker of groep wilt toewijzen in Azure Active Directory
+title: Gebruikers toewijzing voor een app in Azure Active Directory beheren
+description: Meer informatie over het toewijzen en verwijderen van gebruikers en groepen voor een app met behulp van Azure Active Directory voor identiteits beheer.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,27 +11,24 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 763b5a9f4c471e338dd493c85ce93a67810b5134
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642024"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426296"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Een gebruiker of groep toewijzen aan een bedrijfs-app in Azure Active Directory
+# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Gebruikers toewijzing voor een app in Azure Active Directory beheren
 
-In dit artikel wordt beschreven hoe u gebruikers of groepen toewijst aan bedrijfs toepassingen in Azure Active Directory (Azure AD), hetzij vanuit de Azure Portal of met behulp van Power shell. Wanneer u een gebruiker toewijst aan een toepassing, wordt de toepassing weer gegeven in [mijn apps](https://myapps.microsoft.com/) van de gebruiker voor eenvoudige toegang. Als de toepassing rollen beschikbaar maakt, kunt u ook een specifieke rol aan de gebruiker toewijzen.
+In dit artikel wordt beschreven hoe u gebruikers en groepen toewijst aan bedrijfs toepassingen in Azure Active Directory (Azure AD), vanuit de Azure Portal of met behulp van Power shell. Wanneer u een gebruiker toewijst aan een toepassing, wordt de toepassing weer gegeven in [mijn apps](https://myapps.microsoft.com/) van de gebruiker voor eenvoudige toegang. Als de toepassing rollen beschikbaar maakt, kunt u ook een specifieke rol aan de gebruiker toewijzen.
 
 Voor meer controle kunnen bepaalde typen bedrijfs toepassingen worden geconfigureerd voor het vereisen van een [gebruikers toewijzing](#configure-an-application-to-require-user-assignment). 
 
-Als u [een gebruiker of groep aan een bedrijfs-app wilt toewijzen](#assign-users-or-groups-to-an-app-via-the-azure-portal), moet u zich aanmelden als een globale beheerder, toepassings beheerder, Cloud toepassings beheerder of de toegewezen eigenaar van de Enter prise-app.
-
 > [!IMPORTANT]
-> Wanneer u een groep aan een toepassing toewijst, hebben alleen gebruikers in de groep toegang. De toewijzing cascadet niet aan geneste groepen.
+> Wanneer u een groep toewijst aan een toepassing, hebben alleen gebruikers in de groep toegang. De toewijzing verloopt niet trapsgewijs naar geneste groepen.
 
 > [!NOTE]
-> Voor een toewijzing op basis van een groep is Azure Active Directory Premium P1 of P2 Edition vereist. Toewijzing op basis van een groep wordt alleen ondersteund voor beveiligings groepen. Geneste groepslid maatschappen en Office 365-groepen worden momenteel niet ondersteund. Zie de [pagina met prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory)voor meer informatie over de licentie vereisten voor de functies die in dit artikel worden besproken. 
+> Voor een toewijzing op basis van een groep is de editie Azure Active Directory Premium P1 of P2 vereist. Toewijzing op basis van een groep wordt alleen ondersteund voor beveiligingsgroepen. Lidmaatschap van geneste groepen en Office 365-groepen wordt momenteel niet ondersteund. Raadpleeg de [pagina met Azure Active Directory-prijzen](https://azure.microsoft.com/pricing/details/active-directory) voor meer licentievereisten voor de functies die in dit artikel worden besproken. 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Een toepassing configureren voor het vereisen van gebruikers toewijzing
 
@@ -47,60 +44,32 @@ Wanneer de toewijzing *niet is vereist*, omdat u deze optie hebt ingesteld op **
 
 Deze instelling heeft geen invloed op de vraag of een toepassing al dan niet wordt weer gegeven in mijn apps. Toepassingen worden weer gegeven op de toegangs Vensters van mijn apps van gebruikers zodra u een gebruiker of groep aan de toepassing hebt toegewezen. Zie [toegang tot apps beheren](what-is-access-management.md)voor achtergrond informatie.
 
-
 Gebruikers toewijzing voor een toepassing vereisen:
-
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een beheerders account of als eigenaar van de toepassing.
-
 2. Selecteer **Azure Active Directory**. Selecteer in het navigatie menu links de optie **bedrijfs toepassingen**.
-
 3. Selecteer de toepassing in de lijst. Als u de toepassing niet ziet, begint u met het invoeren van de naam in het zoekvak. Of gebruik de filter besturings elementen om het toepassings type, de status of de zicht baarheid te selecteren en selecteer vervolgens **Toep assen**.
-
 4. Selecteer **Eigenschappen**in het navigatie menu links.
-
 5. Zorg ervoor dat de **gebruikers toewijzing vereist is?** wissel knop is ingesteld op **Ja**.
-
    > [!NOTE]
    > Als de **gebruikers toewijzing is vereist?** wissel knop niet beschikbaar is, kunt u Power shell gebruiken om de eigenschap appRoleAssignmentRequired in te stellen voor de Service-Principal.
-
 6. Selecteer de knop **Opslaan** boven aan het scherm.
 
-## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Gebruikers of groepen toewijzen aan een app via de Azure Portal
+## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-azure-portal"></a>Gebruikers en groepen voor een app toewijzen of de toewijzing ervan opheffen met behulp van de Azure Portal
+Zie voor meer informatie over het toewijzen of verwijderen van een gebruiker of groep met behulp van de Azure Portal de [Snelstartgids serie op toepassings beheer](add-application-portal-assign-users.md).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een globale beheerder, toepassings beheerder of account van de beheerder van de Cloud toepassing, of als de toegewezen eigenaar van de Enter prise-app.
-2. Selecteer **Azure Active Directory**. Selecteer in het navigatie menu links de optie **bedrijfs toepassingen**.
-3. Selecteer de toepassing in de lijst. Als u de toepassing niet ziet, begint u met het invoeren van de naam in het zoekvak. Of gebruik de filter besturings elementen om het toepassings type, de status of de zicht baarheid te selecteren en selecteer vervolgens **Toep assen**.
-4. Selecteer **gebruikers en groepen**in het navigatie menu links.
-   > [!NOTE]
-   > Als u gebruikers wilt toewijzen aan micro soft-toepassingen, zoals Office 365-apps, gebruiken sommige van deze apps Power shell. 
-5. Selecteer de knop **gebruiker toevoegen** .
-6. Selecteer **gebruikers en groepen**in het deel venster **toewijzing toevoegen** .
-7. Selecteer de gebruiker of groep die u aan de toepassing wilt toewijzen of begin met het typen van de naam van de gebruiker of groep in het zoekvak. U kunt meerdere gebruikers en groepen kiezen en uw selecties worden weer gegeven onder **geselecteerde items**.
-8. Wanneer u klaar bent, klikt **u op selecteren**.
+## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Gebruikers en groepen voor een app toewijzen of de toewijzing ervan opheffen met behulp van de Graph API
+U kunt de Graph API gebruiken om gebruikers en groepen voor een app toe te wijzen of te verwijderen. Zie [app-roltoewijzingen](https://docs.microsoft.com/graph/api/resources/approleassignment)voor meer informatie.
 
-   ![Een gebruiker of groep toewijzen aan de app](./media/assign-user-or-group-access-portal/assign-users.png)
-
-9. Selecteer in het deel venster **gebruikers en groepen** een of meer gebruikers of groepen in de lijst en kies vervolgens de knop **selecteren** onder aan het deel venster.
-10. Als de toepassing dit ondersteunt, kunt u een rol toewijzen aan de gebruiker of groep. Kies in het deel venster **toewijzing toevoegen** de optie **rol selecteren**. Kies vervolgens in het deel venster **rol selecteren** een rol die u wilt Toep assen op de geselecteerde gebruikers of groepen en selecteer vervolgens **OK** onder aan het deel venster. 
-
-    > [!NOTE]
-    > Als de toepassing geen rollen electie ondersteunt, wordt de standaard-Access-rol toegewezen. In dit geval beheert de toepassing het toegangs niveau voor gebruikers.
-
-2. Selecteer in het deel venster **toewijzing toevoegen** de knop **toewijzen** onder aan het deel venster.
-
-## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Gebruikers of groepen toewijzen aan een app via Power shell
-
+## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>Gebruikers en groepen toewijzen aan een app met behulp van Power shell
 1. Open een verhoogde Windows Power shell-opdracht prompt.
-
    > [!NOTE]
    > U moet de AzureAD-module installeren (gebruik de opdracht `Install-Module -Name AzureAD` ). Als u wordt gevraagd een NuGet-module of de nieuwe Azure Active Directory v2 Power shell-module te installeren, typt u j en drukt u op ENTER.
-
-1. Voer uit `Connect-AzureAD` en meld u aan met een gebruikers account voor globale beheerders.
-1. Gebruik het volgende script om een gebruiker en een rol toe te wijzen aan een toepassing:
+2. Voer uit `Connect-AzureAD` en meld u aan met een gebruikers account voor globale beheerders.
+3. Gebruik het volgende script om een gebruiker en een rol toe te wijzen aan een toepassing:
 
     ```powershell
     # Assign the values to the variables
-    $username = "<You user's UPN>"
+    $username = "<Your user's UPN>"
     $app_name = "<Your App's display name>"
     $app_role_name = "<App role display name>"
 
@@ -112,7 +81,6 @@ Gebruikers toewijzing voor een toepassing vereisen:
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-
 Voor meer informatie over het toewijzen van een gebruiker aan een toepassingsrol raadpleegt u de documentatie voor [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
 Als u een groep aan een bedrijfs-app wilt toewijzen, moet u vervangen door `Get-AzureADUser` `Get-AzureADGroup` en vervangen door `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
@@ -130,33 +98,52 @@ In dit voor beeld wordt de gebruiker Julia Simon toegewezen aan de [micro soft W
     $username = "britta.simon@contoso.com"
     $app_name = "Workplace Analytics"
     ```
-
-1. In dit voor beeld weten we niet wat de exacte naam is van de toepassingsrol die we aan Julia Simon willen toewijzen. Voer de volgende opdrachten uit om de gebruiker ($user) en de Service-Principal ($sp) op te halen met behulp van de UPN van de gebruiker en de weer gegeven namen van de Service-Principal.
+2. In dit voor beeld weten we niet wat de exacte naam is van de toepassingsrol die we aan Julia Simon willen toewijzen. Voer de volgende opdrachten uit om de gebruiker ($user) en de Service-Principal ($sp) op te halen met behulp van de UPN van de gebruiker en de weer gegeven namen van de Service-Principal.
 
     ```powershell
     # Get the user to assign, and the service principal for the app to assign to
     $user = Get-AzureADUser -ObjectId "$username"
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
-
-1. Voer de opdracht uit `$sp.AppRoles` om de beschik bare functies voor de Application Analytics-toepassing weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
-
+3. Voer de opdracht uit `$sp.AppRoles` om de beschik bare functies voor de Application Analytics-toepassing weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
    ![Toont de functies die beschikbaar zijn voor een gebruiker met behulp van de rol werk plek Analytics](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
-
-1. Wijs de rolnaam toe aan de `$app_role_name` variabele.
+4. Wijs de rolnaam toe aan de `$app_role_name` variabele.
 
     ```powershell
     # Assign the values to the variables
     $app_role_name = "Analyst (Limited access)"
     $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
     ```
-
-1. Voer de volgende opdracht uit om de gebruiker toe te wijzen aan de rol van de app:
+5. Voer de volgende opdracht uit om de gebruiker toe te wijzen aan de rol van de app:
 
     ```powershell
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
+
+## <a name="unassign-users-and-groups-from-an-app-using-powershell"></a>De toewijzing van gebruikers en groepen opheffen vanuit een app met behulp van Power shell
+
+1. Open een verhoogde Windows Power shell-opdracht prompt.
+   > [!NOTE]
+   > U moet de AzureAD-module installeren (gebruik de opdracht `Install-Module -Name AzureAD` ). Als u wordt gevraagd een NuGet-module of de nieuwe Azure Active Directory v2 Power shell-module te installeren, typt u j en drukt u op ENTER.
+2. Voer uit `Connect-AzureAD` en meld u aan met een gebruikers account voor globale beheerders.
+3. Gebruik het volgende script om een gebruiker en een rol uit een toepassing te verwijderen:
+
+    ```powershell
+    # Store the proper parameters
+    $user = get-azureaduser -ObjectId <objectId>
+    $spo = Get-AzureADServicePrincipal -ObjectId <objectId>
+
+    #Get the ID of role assignment 
+    $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId | Where {$_.PrincipalDisplayName -eq $user.DisplayName}
+
+    #if you run the following, it will show you what is assigned what
+    $assignments | Select *
+
+    #To remove the App role assignment run the following command.
+    Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
+    ```
+
 
 ## <a name="related-articles"></a>Verwante artikelen:
 

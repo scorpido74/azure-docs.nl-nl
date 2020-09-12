@@ -7,20 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82778257"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401636"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP-adressen beheren met HDInsight
 
+In dit artikel vindt u de IP-adressen die worden gebruikt door Azure HDInsight Health and Management Services. Als u netwerk beveiligings groepen (Nsg's) of door de gebruiker gedefinieerde routes (Udr's) gebruikt, moet u mogelijk enkele van deze IP-adressen toevoegen aan de acceptatie lijst voor binnenkomend netwerk verkeer.
+
+## <a name="introduction"></a>Inleiding
+ 
 > [!Important]
-> In de meeste gevallen kunt u nu de functie [service code](hdinsight-service-tags.md) gebruiken voor netwerk beveiligings groepen, in plaats van het hand matig toevoegen van IP-adressen. Nieuwe regio's worden alleen toegevoegd voor service tags en de statische IP-adressen zullen uiteindelijk worden afgeschaft.
+> In de meeste gevallen kunt u nu [service Tags](hdinsight-service-tags.md) gebruiken voor netwerk beveiligings groepen, in plaats van het hand matig toevoegen van IP-adressen. IP-adressen worden niet gepubliceerd voor nieuwe Azure-regio's en ze hebben alleen gepubliceerde service tags. De vaste IP-adressen voor beheer-IP-adressen zullen uiteindelijk worden afgeschaft.
 
 Als u netwerk beveiligings groepen (Nsg's) of door de gebruiker gedefinieerde routes (Udr's) gebruikt om inkomend verkeer naar uw HDInsight-cluster te beheren, moet u ervoor zorgen dat uw cluster kan communiceren met de essentiële Azure-status-en beheer Services.  Sommige IP-adressen voor deze services zijn regio-specifiek en sommige van deze zijn van toepassing op alle Azure-regio's. Mogelijk moet u ook verkeer van de Azure DNS-service toestaan als u geen aangepaste DNS gebruikt.
+
+Als u IP-adressen nodig hebt voor een regio die hier niet wordt vermeld, kunt u de [service Tags detectie-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) gebruiken om IP-adressen voor uw regio te vinden. Als u de API niet kunt gebruiken, downloadt u het [JSON-bestand van de service label](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) en zoekt u naar de gewenste regio.
 
 In de volgende secties worden de specifieke IP-adressen besproken die moeten worden toegestaan.
 
@@ -57,7 +63,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | Canada - midden | 52.228.37.66</br>52.228.45.222 |\*: 443 | Inkomend |
 | China | China - noord | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*: 443 | Inkomend |
 | &nbsp; | China East | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*: 443 | Inkomend |
-| &nbsp; | China-noord 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Inkomend |
+| &nbsp; | China - noord 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Inkomend |
 | &nbsp; | China-oost 2 | 139.217.227.106</br>139.217.228.187 | \*: 443 | Inkomend |
 | Europa | Europa - noord | 52.164.210.96</br>13.74.153.132 | \*: 443 | Inkomend |
 | &nbsp; | Europa -west| 52.166.243.90</br>52.174.36.244 | \*: 443 | Inkomend |
@@ -78,7 +84,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | VS - west-centraal | 52.161.23.15</br>52.161.10.167 | \*: 443 | Inkomend |
 | &nbsp; | VS - west | 13.64.254.98</br>23.101.196.19 | \*: 443 | Inkomend |
 | &nbsp; | VS - west 2 | 52.175.211.210</br>52.175.222.222 | \*: 443 | Inkomend |
-| &nbsp; | UAE - noord | 65.52.252.96</br>65.52.252.97 | \*: 443 | Inkomend |
+| &nbsp; | VAE - noord | 65.52.252.96</br>65.52.252.97 | \*: 443 | Inkomend |
 
 Voor informatie over de IP-adressen die voor Azure Government moeten worden gebruikt, raadpleegt u het document [Azure Government Intelligence en Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) .
 

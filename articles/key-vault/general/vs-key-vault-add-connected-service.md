@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 3d39ad2016da1525658944f4f13185e9df9855af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007091"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378862"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -201,6 +201,6 @@ Heeft betrekking op het project bestand .NET `packages.config` -verwijzingen en 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u deze zelf studie hebt gevolgd, worden uw Key Vault machtigingen ingesteld om te worden uitgevoerd met uw eigen Azure-abonnement, maar dit is mogelijk niet wenselijk voor een productie scenario. U kunt een beheerde identiteit maken om Key Vault toegang voor uw app te beheren. Zie [Key Vault verificatie bieden met een beheerde identiteit](/azure/key-vault/managed-identity).
+Als u deze zelf studie hebt gevolgd, worden uw Key Vault machtigingen ingesteld om te worden uitgevoerd met uw eigen Azure-abonnement, maar dit is mogelijk niet wenselijk voor een productie scenario. U kunt een beheerde identiteit maken om Key Vault toegang voor uw app te beheren. Zie [verifiëren bij Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-portal).
 
 Lees de [Key Vault ontwikkelaars handleiding](developers-guide.md)voor meer informatie over het ontwikkelen van Key Vault.

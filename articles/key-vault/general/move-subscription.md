@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 3c2fef4ebd7db076a502f63101c80c4e08683b39
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145362"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394734"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -97,11 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Nu uw kluis is gekoppeld aan de juiste tenant-ID en de oude toegangsbeleidsregels zijn verwijderd, kunt u nieuwe toegangsbeleidsregels instellen met de Azure PowerShell-cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) of de Azure CLI-opdracht [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy).
 
-Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-tenant. Zie [Key Vault-verificatie bieden met een beheerde identiteit](managed-identity.md)voor meer informatie over beheerde identiteiten.
+Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure Active Directory-Tenant. Voor meer informatie over beheerde identiteiten, [overzicht van beheerde identiteiten](/azure/active-directory/managed-identities-azure-resources/overview).
 
-Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken, omdat de oude identiteit niet meer in de juiste AAD-tenant voorkomt. Raadpleeg de volgende documenten voor informatie over het oplossen van dit probleem. 
+Als u beheerde identiteit gebruikt, moet u ook de identiteit bijwerken omdat de oude identiteit niet meer in de juiste Azure Active Directory Tenant voor komt. Raadpleeg de volgende documenten voor informatie over het oplossen van dit probleem. 
 
 * [MSI bijwerken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [Abonnement overdragen naar nieuwe map](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
-
-

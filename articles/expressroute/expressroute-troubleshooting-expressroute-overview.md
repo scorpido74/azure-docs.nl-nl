@@ -2,18 +2,18 @@
 title: 'Azure-ExpressRoute: Controleer de connectiviteit-probleemoplossings gids'
 description: Op deze pagina vindt u instructies voor het oplossen van problemen en het valideren van end-to-end-connectiviteit van een ExpressRoute-circuit.
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 10/31/2019
-ms.author: rambala
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204213"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401738"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
 Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. Met ExpressRoute wordt een on-premises netwerk uitgebreid naar de micro soft-Cloud via een particuliere verbinding die meestal wordt vereenvoudigd door een connectiviteits provider. Voor ExpressRoute-connectiviteit is traditioneel drie afzonderlijke netwerk zones vereist:
@@ -36,7 +36,7 @@ Het doel van dit document is om gebruikers te helpen te bepalen of en waar een c
 
 ## <a name="overview"></a>Overzicht
 In het volgende diagram ziet u de logische verbinding van een klanten netwerk met het micro soft-netwerk met behulp van ExpressRoute.
-[![i]][1]
+[![1]][1]
 
 In het voor gaande diagram duiden de getallen op belang rijke netwerk punten. In dit artikel wordt naar deze netwerk punten gerefereerd op basis van het bijbehorende nummer. Afhankelijk van het ExpressRoute-connectiviteits model: de co-locatie van de Cloud uitwisseling, Point-to-Point Ethernet-verbinding of any-to-any (IPVPN), kunnen de netwerk punten 3 en 4 switches zijn (laag 2 apparaten) of routers (laag 3-apparaten). In het model voor directe connectiviteit bevinden zich geen netwerk punten 3 en 4; in plaats daarvan (2) zijn rechtstreeks verbonden met Msee's via donker glas. De belangrijkste netwerk punten worden als volgt geïllustreerd:
 

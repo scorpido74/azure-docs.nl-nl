@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27d1841458e8c5e1854d6fcd0810c36d4272cc1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2116b5be4c5d40076aae10ecc2e81d73e7806e6d
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500535"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419483"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van de Azure CLI
 
@@ -70,7 +70,7 @@ Voor de `az mysql server restore` opdracht zijn de volgende para meters vereist:
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals `2018-03-13T05:59:00-08:00` . U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 
@@ -79,6 +79,12 @@ Wanneer u een server herstelt naar een eerder tijdstip, wordt er een nieuwe serv
 De locatie en prijscategorie van de herstelde server zijn hetzelfde als die van de oorspronkelijke server. 
 
 Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
+
+Nadat de herstel bewerking is voltooid, zijn er twee server parameters die opnieuw worden ingesteld op standaard waarden (en niet worden gekopieerd van de primaire server) na de herstel bewerking
+*   time_zone: deze waarde moet worden ingesteld op het standaard waarden **systeem**
+*   event_scheduler-de event_scheduler op de herstelde server is ingesteld op **uit**
+
+U moet de waarde van de primaire server kopiëren en op de herstelde server instellen door de [Server parameter](howto-server-parameters.md) opnieuw te configureren
 
 De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
@@ -110,7 +116,7 @@ Voor de `az mysql server georestore` opdracht zijn de volgende para meters verei
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | De naam van de resource groep waar de nieuwe server deel van uitmaakt.|
-|name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |source-server | mydemoserver | De naam van de bestaande server waarvoor geo redundante back-ups worden gebruikt. |
 |location | eastus | De locatie van de nieuwe server. |
 |sku-name| GP_Gen5_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen5_8 is toegewezen aan een Algemeen, Gen 5-server met 8 vCores.|

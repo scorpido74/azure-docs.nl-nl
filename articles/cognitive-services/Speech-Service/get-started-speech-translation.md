@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 0925eef7ffd420b1240e335b0bc394197c651cbe
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+keywords: spraak omzetting
+ms.openlocfilehash: da321e2f259ae6e994cddcb928cc139a28c6d9ae
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055787"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394870"
 ---
-# <a name="get-started-with-speech-translation"></a>Aan de slag met spraak omzetting
+# <a name="get-started-with-speech-translation"></a>Aan de slag met spraakomzetting
 
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
 
@@ -28,7 +29,7 @@ Een van de belangrijkste functies van de speech-service is de mogelijkheid om me
 * Direct omzetten van spraak naar spraak uitvoeren
 
 > [!TIP]
-> Als u direct naar voorbeeld code wilt overs Laan, raadpleegt u de Quick start-voor [beelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) op github.
+> Raadpleeg de [quickstart-voorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) op GitHub als u direct naar voorbeeldcode wilt gaan.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-translation-basics/speech-translation-basics-csharp.md)]

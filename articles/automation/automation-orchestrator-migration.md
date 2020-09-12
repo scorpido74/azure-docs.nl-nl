@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185995"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426330"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migreren van Orchestrator naar Azure Automation (bèta)
 
@@ -20,7 +20,7 @@ Runbooks in [System Center 2012-Orchestrator](/previous-versions/system-center/s
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>De Orchestrator Migration Toolkit downloaden
 
-De eerste stap bij de migratie is het downloaden van de [System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all). Deze toolkit bevat hulpprogram ma's om u te helpen bij het converteren van runbooks van Orchestrator naar Azure Automation.  
+De eerste stap bij de migratie is het downloaden van de [System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323). Deze toolkit bevat hulpprogram ma's om u te helpen bij het converteren van runbooks van Orchestrator naar Azure Automation.  
 
 ## <a name="import-the-standard-activities-module"></a>De module Standard activities importeren
 
@@ -83,7 +83,7 @@ ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module 
 
 Met het Runbook-conversie programma maakt u de volgende logboek bestanden op dezelfde locatie als het geconverteerde Runbook.  Als de bestanden al bestaan, worden deze overschreven met informatie van de laatste conversie.
 
-| Bestand | Inhoud |
+| File | Inhoud |
 |:--- |:--- |
 | Runbook-Converter-Progress. log |Gedetailleerde stappen van de conversie, inclusief informatie voor elke activiteit die is geconverteerd en waarschuwing voor elke activiteit die niet wordt geconverteerd. |
 | Runbook-Converter-samenvattings. log |Samen vatting van de laatste conversie, inclusief waarschuwingen en opvolgings taken die u moet uitvoeren, zoals het maken van een variabele die vereist is voor het geconverteerde runbook. |

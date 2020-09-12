@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 2e289f30ef1c1883c38884eb563a41bccc841329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79462648"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443072"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Power shell gebruiken om een data factory pijp lijn te maken voor het kopiëren van gegevens in de Cloud
 
@@ -27,7 +27,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory
 
 ## <a name="prerequisites"></a>Vereisten
 * **Een Azure Storage-account**. U gebruikt de blob-opslag als de gegevensopslag voor de **bron** en de **sink**. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) om er een te maken. 
-* Maak een **blob-container** in Blob Storage, maak een **invoermap** in de container en upload een aantal bestanden naar de map. U kunt hulpprogramma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om verbinding te maken met Azure Blob Storage, een blob-container te maken, een invoerbestand te uploaden en het uitvoerbestand te controleren.
+* Maak een **blob-container** in Blob Storage, maak een **invoermap** in de container en upload een aantal bestanden naar de map. U kunt hulpprogram ma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om verbinding te maken met Azure Blob-opslag, een BLOB-container, een invoer bestand te uploaden en het uitvoer bestand te controleren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

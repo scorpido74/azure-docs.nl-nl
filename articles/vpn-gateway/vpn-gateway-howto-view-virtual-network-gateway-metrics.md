@@ -2,24 +2,24 @@
 title: VPN Gateway metrische gegevens voor Azure weer geven
 description: Stappen om VPN Gateway metrische gegevens weer te geven
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: b3a79b8101a55eaf401c20cb118be3b0796b7aca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531619"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443174"
 ---
-# <a name="view-vpn-gateway-metrics"></a>VPN Gateway metrische gegevens weer geven
+# <a name="view-vpn-gateway-metrics"></a>Metrische gegevens van VVPN Gateway weergeven
 
 U kunt Azure VPN-gateways bewaken met behulp van Azure Monitor. In dit artikel worden metrische gegevens beschreven die beschikbaar zijn via de portal. Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze nuttig zijn voor waarschuwingen en snelle detectie van problemen.
 
 
-|**Gegevens**   | **Eenheid** | **Granulariteit** | **Beschrijving** | 
+|**Meting**   | **Eenheid** | **Granulariteit** | **Beschrijving** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bytes/s  | 5 minuten| Gemiddelde gecombineerde bandbreedte gebruik van alle site-naar-site-verbindingen op de gateway.     |
 |**P2SBandwidth**| Bytes/s  | 1 minuut  | Gemiddelde gecombineerde bandbreedte gebruik van alle punt-naar-site-verbindingen op de gateway.    |

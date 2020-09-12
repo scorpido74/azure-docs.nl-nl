@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585862"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394751"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -67,7 +67,7 @@ Voordat u aan de slag gaat met sleutels, geheimen of certificaten in uw sleutel 
 - [Een certificaat met CLI instellen en ophalen](../certificates/quick-create-cli.md)
 - [Een certificaat instellen en ophalen met Power shell](../certificates/quick-create-powershell.md)
 - [Een certificaat met de Azure Portal instellen en ophalen](../certificates/quick-create-portal.md)
-- [Sleutels bewerkingen met REST](/rest/api/keyvault/#certificate-operations)
+- [Certificaat bewerkingen met REST](/rest/api/keyvault/#certificate-operations)
 - [Een certificaat met python instellen en ophalen](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Coderen met Key Vault
@@ -125,7 +125,7 @@ De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen 
 - Het [gebruik van Key Vault voor Extensible Key Management met SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -de SQL Server-connector voor Azure Key Vault stelt SQL Server en SQL-in-a-vm in staat om gebruik te maken van de Azure Key Vault-service als een EKM-provider (Extensible Key Management) om de versleutelings sleutels voor de koppeling van toepassingen te beveiligen; Transparent Data Encryption, versleuteling van back-ups en versleuteling op kolom niveau.
 - [Certificaten implementeren op vm's van Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) : een Cloud toepassing die wordt uitgevoerd in een VM in azure, heeft een certificaat nodig. Hoe krijgt u dit certificaat vandaag nog aan deze VM?
 - Het implementeren van een [Azure web app-certificaat via Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) biedt stapsgewijze instructies voor het implementeren van certificaten die zijn opgeslagen in Key Vault als onderdeel van [app service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) aanbieding.
-- [Veel toepassingen toegang verlenen tot een sleutel kluis](group-permissions-for-apps.md) Key Vault Access Control-beleid ondersteunt Maxi maal 1024 vermeldingen. U kunt echter een Azure Active Directory beveiligings groep maken. Voeg alle bijbehorende service-principals toe aan deze beveiligings groep en ken vervolgens toegang toe aan deze beveiligings groep om Key Vault.
+- Wijs een toegangs beleid toe ([cli](assign-access-policy-cli.md)  |  [Power shell](assign-access-policy-powershell.md)  |  -[Portal](assign-access-policy-portal.md)). Key Vault ondersteunt Maxi maal 1024 toegangs beleidsregels. Als u wilt dat gebruikers binnen deze limiet blijven, maakt u Azure Active Directory beveiligings groepen, voegt u alle bijbehorende service-principals toe aan die groep en verleent u de groep vervolgens toegang tot Key Vault.
 - Zie voor meer informatie over de taak-specifieke richt lijnen voor het integreren en gebruiken van sleutel kluizen met Azure de [Azure Resource Manager sjabloon voorbeelden van Ryan Jones voor Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - Het [gebruik van Key Vault zacht verwijderen met CLI](soft-delete-cli.md) begeleidt u bij het gebruik en de levens cyclus van een sleutel kluis en verschillende sleutel kluis objecten waarvoor het zacht verwijderen is ingeschakeld.
 - Het [gebruik van Key Vault zacht verwijderen met Power shell](soft-delete-powershell.md) begeleidt u bij het gebruik en de levens cyclus van een sleutel kluis en diverse belang rijke kluis objecten waarvoor zacht verwijderen is ingeschakeld.

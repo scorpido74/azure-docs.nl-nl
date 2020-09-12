@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304187"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419177"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Beoordelings & beoordelingen analyse dashboard in partner centrum
 
@@ -33,7 +33,7 @@ Het dash board geeft een grafische weer gave van de volgende activiteit van de k
 - Beoordelingen & beoordelingen  
 - Opmerkingen controleren
 
-Gebruik de tabbladen **Marketplace-winkel** om uw aanbieding Microsoft AppSource en de metrische gegevens van Azure Marketplace afzonderlijk weer te geven. Selecteer de aanbieding in de vervolg keuzelijst aanbieding om de metrische gegevens voor de specifieke aanbieding weer te geven.
+Gebruik de tabbladen van **Marketplace Insights** om uw aanbieding Microsoft AppSource en de metrische gegevens van Azure Marketplace afzonderlijk weer te geven. Selecteer de aanbieding in de vervolg keuzelijst aanbieding om de metrische gegevens voor de specifieke aanbieding weer te geven.
 
 ### <a name="ratings--reviews-summary"></a>Overzicht van beoordelingen & beoordelingen
 

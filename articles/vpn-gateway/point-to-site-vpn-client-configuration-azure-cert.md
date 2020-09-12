@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d917bc1d52cc2a43e87affcc9c5e3c2ab533da07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984872"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420775"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Configuratie bestanden voor de VPN-client maken en installeren voor P2S-configuraties voor systeemeigen Azure-certificaatverificatie
 
@@ -72,7 +72,7 @@ Gebruik de volgende stappen om de systeem eigen Windows VPN-client te configurer
 1. Selecteer de VPN-clientconfiguratiebestanden die overeenkomen met de architectuur van de Windows-computer. Kies voor een architectuur met 64-bits processor het installatiepakket ‘VpnClientSetupAmd64’. Kies voor een architectuur met 32-bits processor het installatiepakket ‘VpnClientSetupAmdX86’. 
 2. Dubbelklik op het pakket om het te installeren. Als u een SmartScreen-melding ziet, klikt u op **Meer info** en vervolgens op **Toch uitvoeren**.
 3. Navigeer op de client computer naar **netwerk instellingen** en klik op **VPN**. De VPN-verbinding bevat de naam van het virtuele netwerk waarmee verbinding wordt gemaakt. 
-4. Controleer of u een clientcertificaat op de clientcomputer hebt geïnstalleerd voordat u verbinding probeert te maken. Een clientcertificaat is vereist voor verificatie als u het systeemeigen verificatietype met Azure-certificaat gebruikt. Zie [certificaten genereren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)voor meer informatie over het genereren van certificaten. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
+4. Controleer of u een clientcertificaat op de clientcomputer hebt geïnstalleerd voordat u verbinding probeert te maken. Een clientcertificaat is vereist voor verificatie als u het systeemeigen verificatietype met Azure-certificaat gebruikt. Raadpleeg [Certificaten genereren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert) voor meer informatie over het genereren van certificaten. Raadpleeg [Een clientcertificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md) voor meer informatie over het installeren van een clientcertificaat.
 
 ## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
 
@@ -91,7 +91,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
     >Als u dubbelklikt op het certificaat, wordt het dialoog venster **toevoegen** niet weer gegeven, maar wordt het certificaat in de juiste opslag geïnstalleerd. U kunt het certificaat controleren in de sleutel voor aanmelding bij de categorie certificaten.
     >
   
-2. Controleer of u een client certificaat hebt geïnstalleerd dat is uitgegeven door het basis certificaat dat u hebt geüpload naar Azure wanneer u P2S-instellingen hebt geconfigureerd. Dit wijkt af van de VPNServerRoot die u in de vorige stap hebt geïnstalleerd. Het client certificaat wordt gebruikt voor verificatie en is vereist. Zie [certificaten genereren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)voor meer informatie over het genereren van certificaten. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
+2. Controleer of u een client certificaat hebt geïnstalleerd dat is uitgegeven door het basis certificaat dat u hebt geüpload naar Azure wanneer u P2S-instellingen hebt geconfigureerd. Dit wijkt af van de VPNServerRoot die u in de vorige stap hebt geïnstalleerd. Het client certificaat wordt gebruikt voor verificatie en is vereist. Raadpleeg [Certificaten genereren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert) voor meer informatie over het genereren van certificaten. Raadpleeg [Een clientcertificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md) voor meer informatie over het installeren van een clientcertificaat.
 3. Open het dialoog venster **netwerk** onder **netwerk voorkeuren** en klik op **+** om een nieuw VPN-client VERBINDINGS profiel te maken voor een P2S-verbinding met het virtuele Azure-netwerk.
 
    De **Interface** waarde is ' VPN ' en de waarde van het **VPN-type** is ' IKEv2 '. Geef een naam op voor het profiel in het veld **service naam** en klik vervolgens op **maken** om het VPN-client verbindings profiel te maken.
@@ -153,7 +153,7 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
 
    ![naam kopiëren](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Plak deze naam in het **adres** veld van uw nieuwe VPN-verbinding in de sectie **Gateway** . Selecteer vervolgens het mappictogram aan het einde van het veld **certificaat** , blader naar de **algemene** map en selecteer het **VpnServerRoot** -bestand.
-7. Selecteer in het gedeelte **client** van de verbinding voor **verificatie**de optie **certificaat/persoonlijke sleutel**. Voor het **certificaat** en de **persoonlijke sleutel**kiest u het certificaat en de persoonlijke sleutel die u eerder hebt gemaakt. Selecteer bij **Opties** **een intern IP-adres aanvragen**. Klik vervolgens op **toevoegen**.
+7. Selecteer in het gedeelte **client** van de verbinding voor **verificatie**de optie **certificaat/persoonlijke sleutel**. Voor het **certificaat** en de **persoonlijke sleutel**kiest u het certificaat en de persoonlijke sleutel die u eerder hebt gemaakt. Selecteer bij **Opties** **een intern IP-adres aanvragen**. Klik vervolgens op **Toevoegen**.
 
    ![een intern IP-adres aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Zet de verbinding **aan**.

@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f4a345fe62a1d13a6be7dc71ecc0529fec2a6a4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932573"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401500"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -34,7 +34,7 @@ De Key Vault VM-extensie ondersteunt de volgende versies van Windows:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Met name:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Specifiek:  
 
 ```json
     {
@@ -80,9 +80,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | datum |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForWindows | tekenreeks |
 | typeHandlerVersion | 1,0 | int |
@@ -206,7 +206,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
 Houd rekening met de volgende beperkingen/vereisten:
 - Key Vault beperkingen:
   - Deze moet op het moment van de implementatie bestaan 
-  - Key Vault toegangs beleid is ingesteld voor de VM-VMSS-identiteit met behulp van MSI
+  - Het Key Vault toegangs beleid moet worden ingesteld voor de virtuele machine-VMSS met behulp van een beheerde identiteit. Zie [verifiëren bij Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-cli).
 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning

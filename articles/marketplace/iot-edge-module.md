@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816249"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420605"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
@@ -30,7 +30,7 @@ Met [IOT Edge modules in de Azure Marketplace](https://azuremarketplace.microsof
 
 ## <a name="what-is-an-iot-edge-module"></a>Wat is een IoT Edge module?
 
-Met Azure IoT Edge kunt u bedrijfs logica op de rand in de vorm van modules implementeren en beheren. Azure IoT Edge-modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge, en kunnen micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code bevatten. Zie [Azure IOT Edge modules begrijpen](../iot-edge/iot-edge-modules.md)voor meer informatie over IOT Edge-modules.
+Met Azure IoT Edge kunt u bedrijfs logica op de rand in de vorm van modules implementeren en beheren. Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en kunnen micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code bevatten. Zie [Azure IOT Edge modules begrijpen](../iot-edge/iot-edge-modules.md)voor meer informatie over IOT Edge-modules.
 
 **Wat is het verschil tussen een type container aanbieding en een IoT Edge module-aanbod type?**
 
@@ -40,7 +40,7 @@ Het IoT Edge-module aanbod type is een specifiek type container dat wordt uitgev
 
 **De online winkel rechts selecteren**
 
-IoT Edge modules worden alleen gepubliceerd op de Azure Marketplace. AppSource is niet van toepassing. Zie [uw publicatie optie bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen en doel groepen in online winkels.
+IoT Edge modules worden alleen gepubliceerd op de Azure Marketplace. AppSource is niet van toepassing. Zie [uw publicatie optie bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen tussen online winkels.
 
 **Facturerings opties**
 
@@ -75,6 +75,5 @@ De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan wor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de commerciële Marketplace.
 - Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
 - [Maak een IOT Edge module-aanbieding in het](./partner-center-portal/azure-iot-edge-module-creation.md) partner centrum.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077225"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400089"
 ---
 # <a name="security-control-secure-configuration"></a>Beveiligings beheer: beveiligde configuratie
 
@@ -166,7 +166,7 @@ Gebruik Azure Security Center voor het uitvoeren van basislijn scans voor OS-en 
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 7,11 | 13,1 | Klant |
+| 7.11 | 13,1 | Klant |
 
 Gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
@@ -174,7 +174,9 @@ Gebruik Managed Service Identity in combi natie met Azure Key Vault om het gehei
 
 - [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Verifiëren bij Key Vault](../../key-vault/general/authentication.md)
+
+- [Toegangs beleid voor Key Vault toewijzen](../../key-vault/general/assign-access-policy-portal.md)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 

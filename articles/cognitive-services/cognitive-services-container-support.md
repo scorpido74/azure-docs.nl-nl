@@ -8,21 +8,24 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 9/01/2020
 ms.author: aahi
-ms.openlocfilehash: 69984f9dbd94bcdca2e272a5bdebbb7fc1464dae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104402"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424635"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Ondersteuning voor containers in azure Cognitive Services
+
+> [!WARNING]
+> Op 11 juni 2020 kondigde Microsoft aan dat het geen gezichtsherkenningssoftware verkoopt aan politieafdelingen in de Verenigde Staten totdat er solide wetgeving op basis van mensenrechten in werking is getreden. Zo kunnen klanten geen gezichts herkennings functies of-functionaliteit gebruiken die deel uitmaakt van Azure-Services, zoals gezicht of Video Indexer, als een klant of het gebruik van dergelijke services door of voor een politie afdeling in het Verenigde Staten toestaat.
 
 Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars gebruikmaken van dezelfde uitgebreide Api's die beschikbaar zijn in Azure en kunnen ze de services die worden geleverd met [docker-containers](https://www.docker.com/what-container)implementeren en hosten. Container ondersteuning is momenteel beschikbaar voor een subset van Azure Cognitive Services, met inbegrip van delen van:
 
 > [!div class="checklist"]
-> * [Anomaly Detector][ad-containers]
+> * [Anomaliedetectie][ad-containers]
 > * [Computer Vision][cv-containers]
 > * [Face][fa-containers]
 > * [Form Recognizer][fr-containers]
@@ -36,7 +39,7 @@ Container opslag is een benadering van software distributie waarbij een toepassi
 
 Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure.microsoft.com). Meld u aan bij de [Azure Portal](https://portal.azure.com/) om Azure-resources te maken en te verkennen voor deze services.
 
-## <a name="features-and-benefits"></a>Functies en voor delen
+## <a name="features-and-benefits"></a>Functies en -voordelen
 
 - **Onveranderbare infra structuur**: DevOps-teams inschakelen om gebruik te maken van een consistente en betrouw bare set bekende systeem parameters, terwijl u kunt aanpassen aan de wijzigingen. Containers bieden de flexibiliteit om te draaien in een voorspelbaar ecosysteem en configuratie drift te voor komen.
 - **Controle over gegevens**: klanten toestaan om te kiezen waar deze Cognitive Services hun gegevens verwerken. Dit is essentieel voor klanten die geen gegevens naar de Cloud kunnen verzenden, maar wel toegang nodig hebben tot Cognitive Services technologie. Ondersteunings consistentie in hybride omgevingen: voor gegevens, beheer, identiteit en beveiliging.
@@ -49,7 +52,7 @@ Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure
 
 Azure Cognitive Services-containers bieden de volgende set docker-containers, die elk een subset van functionaliteit van services in azure Cognitive Services bevat:
 
-| Service | Ondersteunde prijs categorie | Container | Description |
+| Service | Ondersteunde prijs categorie | Container | Beschrijving |
 |--|--|--|--|
 | [Anomalie detectie][ad-containers] | F0, S0 | **Anomalie detectie** | Met de anomalie detectie-API kunt u afwijkingen in uw time series-gegevens controleren en detecteren met machine learning.<br>[Toegang aanvragen][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Lezen** | Hiermee wordt afgedrukte tekst geëxtraheerd uit afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belang rijk:** De Lees container werkt momenteel alleen met Engels. |
@@ -58,8 +61,9 @@ Azure Cognitive Services-containers bieden de volgende set docker-containers, di
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Laadt een getraind of gepubliceerd Language Understanding model, ook wel een LUIS-app genoemd, op in een docker-container en biedt toegang tot de query voorspellingen vanuit de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze weer uploaden naar de [Luis-Portal](https://www.luis.ai) om de nauw keurigheid van de app te verbeteren. |
 | [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** | Transcribeert continue realtime spraak naar tekst. |
 | [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom Speech-naar-tekst** | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |
-| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst naar spraak** | Converteert tekst naar natuurlijk klinkende spraak. |
+| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst-naar-spraak** | Converteert tekst naar natuurlijk klinkende spraak. |
 | [Speech Service-API][sp-containers-ctts] | F0, S0 | **Aangepaste tekst-naar-spraak** | Hiermee wordt tekst geconverteerd naar een natuurlijk geluids fragment met behulp van een aangepast model. |
+| [Speech Service-API][sp-containers-ntts] | F0, S0 | **Tekst-naar-spraak Neural** | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. |
 | [Text Analytics][ta-containers-keyphrase] | F0, S | **Sleuteltermextractie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraheert sleutel zinnen om de belangrijkste punten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'. |
 | [Text Analytics][ta-containers-language] | F0, S | **Taaldetectie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
 | [Text Analytics][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ([installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief*) voor elk document en elke zin daarin. |
@@ -127,6 +131,7 @@ Installeer en verken de functionaliteit van containers in azure Cognitive Servic
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
+[sp-containers-ntts]: speech-service/speech-container-howto.md?tabs=ntts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
 [ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language

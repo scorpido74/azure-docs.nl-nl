@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285438"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418582"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -36,7 +36,7 @@ Back-ups van differentiële moment opnamen worden minstens één keer per dag ui
 
 Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. 
 
-### <a name="backup-retention"></a>Retentie van back-ups
+### <a name="backup-retention"></a>Back-upretentie
 
 Back-ups worden bewaard op basis van de instelling voor de Bewaar periode voor back-ups op de server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. De standaard Bewaar periode is 7 dagen. U kunt de Bewaar periode instellen tijdens het maken van de server of later door de back-upconfiguratie bij te werken met [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration) of [Azure cli](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration). 
 
@@ -76,6 +76,13 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 ### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
 Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
+
+> [!NOTE]
+> Er zijn twee server parameters die opnieuw worden ingesteld op standaard waarden (en niet worden gekopieerd van de primaire server) nadat de herstel bewerking is uitgevoerd
+> * time_zone: deze waarde moet worden ingesteld op het standaard waarden **systeem**
+> * event_scheduler-de event_scheduler op de herstelde server is ingesteld op **uit**
+>
+> U moet deze server parameters instellen door de [Server parameter](howto-server-parameters.md) opnieuw te configureren
 
 Herstel naar een bepaald tijdstip is handig in meerdere scenario's. Wanneer een gebruiker bijvoorbeeld per ongeluk gegevens verwijdert, een belang rijke tabel of data base weglaat of als een toepassing per ongeluk goede gegevens overschrijft door een toepassings defect.
 

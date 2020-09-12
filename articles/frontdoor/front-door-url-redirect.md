@@ -3,20 +3,20 @@ title: Azure front-deur-URL-omleiding | Microsoft Docs
 description: Dit artikel helpt u te begrijpen hoe de front-deur van Azure URL-omleiding voor hun routes ondersteunt, indien geconfigureerd.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399035"
 ---
 # <a name="url-redirect"></a>URL-omleiding
 U kunt de voor deur van Azure gebruiken om verkeer om te leiden. U kunt verkeer omleiden op meerdere niveaus (protocol, hostnaam, pad, query teken reeks) en alle functionaliteit kan worden geconfigureerd voor afzonderlijke micro Services, aangezien de omleiding is gebaseerd op het pad. Dit vereenvoudigt de configuratie van de toepassing, optimaliseert het resource gebruik en ondersteunt nieuwe omleidings scenario's, waaronder globale en op pad gebaseerde omleiding.
@@ -43,12 +43,12 @@ U kunt het protocol instellen dat voor omleiding wordt gebruikt. Zo kunt u een v
 Als onderdeel van het configureren van een omleidings routering kunt u de hostnaam of het domein voor de omleidings aanvraag ook wijzigen. U kunt dit veld instellen om de hostnaam in de URL voor de omleiding te wijzigen of op een andere manier de hostnaam van de inkomende aanvraag te behouden. Met dit veld kunt u dus alle aanvragen omleiden die zijn verzonden `https://www.contoso.com/*` naar `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Doelpad
-Als u het pad van een URL als onderdeel van de omleiding wilt vervangen, kunt u dit veld instellen met de nieuwe waarde voor het pad. Als dat niet het geval is, kunt u ervoor kiezen om de padwaarde als onderdeel van de omleiding te behouden. Met dit veld kunt u dus alle aanvragen omleiden die worden verzonden `https://www.contoso.com/\*` naar `https://www.contoso.com/redirected-site` .
+Als u het pad van een URL als onderdeel van de omleiding wilt vervangen, kunt u dit veld instellen met de nieuwe waarde voor het pad. Als dat niet het geval is, kunt u ervoor kiezen om de padwaarde als onderdeel van de omleiding te behouden. Met dit veld kunt u dus alle aanvragen omleiden die worden verzonden `https://www.contoso.com/\*` naar  `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Query reeks parameters
 U kunt ook de query reeks parameters in de omgeleide URL vervangen. Als u een bestaande query reeks wilt vervangen door de URL van de inkomende aanvraag, stelt u dit veld in op vervangen en stelt u vervolgens de juiste waarde in. Als dat niet het geval is, kunt u de oorspronkelijke reeks query reeksen behouden door het veld in te stellen op ' behouden '. Met dit veld kunt u bijvoorbeeld alle verkeer omleiden dat wordt verzonden naar `https://www.contoso.com/foo/bar` naar `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
-## <a name="destination-fragment"></a>Doel fragment
+## <a name="destination-fragment"></a>Doelfragment
 Het doel fragment is het deel van de URL na ' # ', dat doorgaans door browsers wordt gebruikt om op een specifieke sectie op een pagina te worden gegrond. U kunt dit veld instellen om een fragment toe te voegen aan de omleidings-URL.
 
 ## <a name="next-steps"></a>Volgende stappen

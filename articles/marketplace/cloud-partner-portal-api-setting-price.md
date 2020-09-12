@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271719"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393816"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>Prijzen voor virtuele machine-aanbiedingen
 
@@ -98,7 +98,7 @@ De uitgever kan ook hun prijs werk blad uploaden naar een tijdelijke opslag loca
 
 ## <a name="new-core-sizes-added-on-722019"></a>Nieuwe kern grootten toegevoegd op 7/2/2019
 
-VM-uitgevers zijn op 2 juli 2019 op de hoogte gebracht van de toevoeging van nieuwe prijzen voor nieuwe Azure virtual machine-grootten (op basis van het aantal kern geheugens).  De nieuwe prijzen gelden voor de belangrijkste grootten 10, 44, 48, 60, 120, 208 en 416.  Voor bestaande virtuele machines zijn de nieuwe prijzen voor deze kern geheugens automatisch berekend op basis van de huidige prijzen.  Uitgevers moeten tot 1 augustus 2019 de extra prijzen bekijken en de gewenste wijzigingen aanbrengen.  Na deze datum worden de automatisch berekende prijzen voor deze nieuwe kern groottes van kracht als u de uitgever nog niet opnieuw hebt gepubliceerd.
+VM-uitgevers zijn op 2 juli 2019 op de hoogte gebracht van de toevoeging van nieuwe prijzen voor nieuwe Azure virtual machine-grootten (op basis van het aantal kern geheugens).  De nieuwe prijzen gelden voor de belangrijkste grootten 10, 44, 48, 60, 120, 208 en 416.  Voor bestaande virtuele machines zijn de nieuwe prijzen voor deze kern geheugens automatisch berekend op basis van de huidige prijzen. Uitgevers moeten tot 1 augustus 2019 de extra prijzen bekijken en de gewenste wijzigingen aanbrengen.  Na deze datum worden de automatisch berekende prijzen voor deze nieuwe kern groottes van kracht als u de uitgever nog niet opnieuw hebt gepubliceerd.
 
 ## <a name="regions"></a>Regio's
 
@@ -121,7 +121,7 @@ In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aan
 | CR         | Costa Rica           | CRC               |
 | HR         | Kroatië              | HRK               |
 | CY         | Cyprus               | EUR               |
-| CZ         | Tsjechische Republiek       | CZK               |
+| CZ         | Czechia       | CZK               |
 | DK         | Denemarken              | DKK               |
 | DO         | Dominicaanse Republiek   | USD               |
 | EC         | Ecuador              | USD               |
@@ -151,7 +151,6 @@ In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aan
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litouwen            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Noord-Macedonië      | MKD               |
 | MY         | Maleisië             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexico               | MXN               |
@@ -160,6 +159,7 @@ In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aan
 | NL         | Nederland          | EUR               |
 | NZ         | Nieuw-Zeeland          | NZD               |
 | NG         | Nigeria              | NGN               |
+| MK         | Noord-Macedonië      | MKD               |
 | NO         | Noorwegen               | NOK               |
 | OM         | Oman                 | OMR               |
 | PK         | Pakistan             | PKR               |

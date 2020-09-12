@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921263"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378794"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace
 
@@ -38,15 +38,15 @@ De landings pagina bevat doorgaans het volgende:
 De volgende secties leiden u door het proces van het bouwen van een landings pagina:
 
 1. [Maak een Azure AD-App-registratie](#create-an-azure-ad-app-registration) voor de landings pagina.
-2. [Gebruik een code voorbeeld als uitgangs punt](#use-a-code-sample-as-a-starting-point) voor uw app.
-3. [Los het Marketplace-aankoop identificatie token](#resolve-the-marketplace-purchase-identification-token) op dat is toegevoegd aan de URL door de commerciële Marketplace.
-4. [Lees de informatie van claims die zijn gecodeerd in het ID-token](#read-information-from-claims-encoded-in-the-id-token)dat is ontvangen van Azure AD na het aanmelden dat is verzonden met de aanvraag.
-5. [Gebruik de Microsoft Graph-API](#use-the-microsoft-graph-api) om indien nodig aanvullende informatie te verzamelen.
-6. [Gebruik twee Azure AD-apps om de beveiliging in productie te verbeteren](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. [Gebruik een code voorbeeld als uitgangs punt](#use-a-code-sample-as-a-starting-point) voor uw app.
+1. [Gebruik twee Azure AD-apps om de beveiliging in productie te verbeteren](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. [Los het Marketplace-aankoop identificatie token](#resolve-the-marketplace-purchase-identification-token) op dat is toegevoegd aan de URL door de commerciële Marketplace.
+1. [Lees de informatie van claims die zijn gecodeerd in het ID-token](#read-information-from-claims-encoded-in-the-id-token)dat is ontvangen van Azure AD nadat u zich hebt aangemeld en dat is verzonden met de aanvraag.
+1. [Gebruik de Microsoft Graph-API](#use-the-microsoft-graph-api) om indien nodig aanvullende informatie te verzamelen.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 
-De commerciële Marketplace is volledig geïntegreerd met Azure AD. Kopers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Na de aankoop gaat de koper van de commerciële Marketplace naar de URL van de landings pagina om het abonnement van uw SaaS-toepassing te activeren en te beheren. U moet ervoor zorgen dat de koper zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina is opgegeven op de pagina [technische configuratie](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) van de aanbieding.
+De commerciële Marketplace is volledig geïntegreerd met Azure AD. Kopers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Na de aankoop gaat de koper van de commerciële Marketplace naar de URL van de landings pagina om het abonnement van uw SaaS-toepassing te activeren en te beheren. U moet ervoor zorgen dat de koper zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina is opgegeven op de pagina [technische configuratie](plan-saas-offer.md#technical-information) van de aanbieding.
 
 De eerste stap bij het gebruik van de identiteit is ervoor te zorgen dat uw landings pagina is geregistreerd als een Azure AD-toepassing. Door de toepassing te registreren, kunt u Azure AD gebruiken voor het verifiëren van gebruikers en het aanvragen van toegang tot gebruikers resources. Het kan worden beschouwd als de definitie van de toepassing, zodat de service weet hoe tokens aan de app kunnen worden verstrekt op basis van de instellingen van de app.
 
@@ -82,7 +82,7 @@ Hierdoor kan de oplossing worden gebruikt in scenario's die het beginsel [van de
 Wanneer de koper naar de landings pagina wordt verzonden, wordt een token toegevoegd aan de URL-para meter. Dit token wijkt af van het door Azure AD uitgegeven token en het toegangs token dat wordt gebruikt voor service-naar-service-authenticatie en wordt gebruikt als invoer voor de Api's van de [SaaS-fulfillment](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) -aanroep om de details van het abonnement op te halen. Net als bij alle aanroepen van de SaaS-fulfillment-Api's wordt uw service-naar-service-aanvraag geverifieerd met een toegangs token dat is gebaseerd op de Azure AD-toepassings-ID van de app voor service-naar-service-authenticatie.
 
 > [!NOTE]
-> In de meeste gevallen is het raadzaam om deze aanroep van een tweede, single-tenant toepassing te maken. Zie [twee Azure AD-apps gebruiken om de beveiliging in productie](#use-two-azure-ad-apps-to-improve-security-in-production) verderop in dit artikel te verbeteren.
+> In de meeste gevallen is het raadzaam om deze aanroep van een tweede, single-tenant toepassing te maken. Zie [twee Azure AD-apps gebruiken om de beveiliging in de productie](#use-two-azure-ad-apps-to-improve-security-in-production) eerder in dit artikel te verbeteren.
 
 ### <a name="request-an-access-token"></a>Een toegangs token aanvragen
 
@@ -131,4 +131,4 @@ De meeste apps die zijn geregistreerd bij Azure AD, hebben gedelegeerde machtigi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een SaaS-aanbieding maken in de commerciële Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Een SaaS-aanbieding maken in de commerciële Marketplace](create-new-saas-offer.md)

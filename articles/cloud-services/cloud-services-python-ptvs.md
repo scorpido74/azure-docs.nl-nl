@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 7025d042fa021c6ee5311566d66bfd090dbd06cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 503e37d0e339cacc9c21a2b2f3ad739e1385c955
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851576"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443191"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
 
@@ -288,7 +288,7 @@ else
 #### <a name="pscmd"></a>ps.cmd
 De Visual Studio-sjablonen zouden in de map **./bin** een bestand **ps.cmd** moeten hebben gemaakt. Dit shellscript roept de bovenstaande PowerShell-wrapperscripts aan en biedt logboekregistratie op basis van de naam van de aangeroepen PowerShell-wrapper. Als dit bestand niet is gemaakt, ziet u hieronder wat het moet bevatten. 
 
-```bat
+```cmd
 @echo off
 
 cd /D %~dp0
@@ -337,7 +337,7 @@ Zie de volgende artikelen voor meer informatie over het gebruik van Azure-servic
 * [Tabelservice][Table Service]
 * [Queue-service][Queue Service]
 * [Service Bus wachtrijen][Service Bus Queues]
-* [Service Bus-onderwerpen][Service Bus Topics]
+* [Service Bus onderwerpen][Service Bus Topics]
 
 <!--Link references-->
 

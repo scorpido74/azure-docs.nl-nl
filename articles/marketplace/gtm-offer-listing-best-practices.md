@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816266"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420928"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -34,7 +34,7 @@ Categorieën en branches voor een andere online winkel zijn van toepassing op ve
 
 | Online winkel | Categorieën <br>per online winkel | Categorieën <br>per online winkel | Branches <br> voor AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **Aanbiedings type**   |  **Azure Marketplace**  | **AppSource**  |
+| **Type aanbieding**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-app | X | |
 | Container | X | |
 | Adviesservices | | | X |
@@ -48,11 +48,11 @@ Categorieën en branches voor een andere online winkel zijn van toepassing op ve
 
 ### <a name="categories"></a>Categorieën
 
-Microsoft AppSource en Azure Marketplace zijn twee verschillende online winkels die voldoen aan unieke klant vereisten. Azure Marketplace streeft ernaar IT-professionals en ontwikkel aars bij het bouwen van oplossingen op Azure.  Microsoft AppSource streeft naar zakelijke gebruikers die op zoek zijn naar zakelijke en/of hoogopgeleide SaaS-toepassingen, een Dynamics 365-invoeg toepassing, Microsoft 365-invoeg toepassingen en Power platform-apps.
+Microsoft AppSource en Azure Marketplace zijn online winkels die verschillende typen oplossingen bieden. Azure Marketplace biedt IT-oplossingen die zijn gebouwd op of voor Azure.  Microsoft AppSource bieden zakelijke oplossingen, zoals toepassingen voor de industrie-SaaS, Dynamics 365-invoeg toepassingen, Microsoft 365-invoeg toepassingen en Power platform-apps.
 
-Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van de doel groep. Uw aanbieding wordt gepubliceerd op Microsoft AppSource of Azure Marketplace, afhankelijk van het type aanbieding, de transactie mogelijkheden van de aanbieding en categorie/subcategorie. 
+Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van het oplossings type. Uw aanbieding wordt gepubliceerd op Microsoft AppSource of Azure Marketplace, afhankelijk van het type aanbieding, de transactie mogelijkheden van de aanbieding en categorie/subcategorie. 
 
-Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en uw beoogde doel groep. U kunt het volgende selecteren:
+Selecteer categorieën en subcategorieën die het beste aansluiten bij uw oplossings type. U kunt het volgende selecteren:
 
 * Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
 * Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken.

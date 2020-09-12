@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268156"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419823"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Vm's op uw Azure Stack Edge GPU-apparaat implementeren via sjablonen
 
@@ -23,7 +23,7 @@ Sjablonen zijn flexibel in verschillende omgevingen, omdat deze para meters als 
 
 In deze zelf studie gebruiken we vooraf geschreven voorbeeld sjablonen voor het maken van resources. U hoeft het sjabloon bestand niet te bewerken en u kunt alleen de `.parameters.json` bestanden wijzigen om de implementatie aan uw computer aan te passen. 
 
-## <a name="vm-deployment-workflow"></a>Werk stroom VM-implementatie
+## <a name="vm-deployment-workflow"></a>VM-implementatiewerkstroom
 
 Als u Azure Stack Edge-Vm's wilt implementeren op een groot aantal apparaten, kunt u een enkele Sysprep-VHD gebruiken voor uw volledige vloot, dezelfde sjabloon voor implementatie en hoeft u alleen kleine wijzigingen aan te brengen in de para meters voor die sjabloon voor elke implementatie locatie (deze wijzigingen kunnen hand matig worden uitgevoerd, zoals we hier of programmatisch doen.) 
 
@@ -139,7 +139,7 @@ key1 GsCm7QriXurqfqx211oKdfQ1C9Hyu5ZutP6Xl0dqlNNhxLxDesDej591M8y7ykSPN4fY9vmVpgc
 key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/ZjvoBWsQ1klqQ== ll
 ```
 
-### <a name="add-blob-uri-to-hosts-file"></a>BLOB-URI toevoegen aan het hosts-bestand
+### <a name="add-blob-uri-to-hosts-file"></a>Blob-URI toevoegen aan het hosts-bestand
 
 Zorg ervoor dat u de BLOB-URI in het hosts-bestand al hebt toegevoegd voor de client die u gebruikt om verbinding te maken met de Blob-opslag. **Voer Klad blok als Administrator uit** en voeg de volgende vermelding toe voor de BLOB-URI in de `C:\windows\system32\drivers\etc\hosts` :
 
@@ -167,7 +167,7 @@ Kopieer de schijf installatie kopieën die moeten worden gebruikt in pagina-blob
 
     ![Eindpunt certificaat van Blob-opslag importeren](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/import-blob-storage-endpoint-certificate-1.png)
 
-    - Als u door apparaat gegenereerde certificaten gebruikt, downloadt en converteert u het eindpunt certificaat voor het Blob-opslag `.cer` naar een `.pem` indeling. Voer de volgende opdracht uit: 
+    - Als u door apparaat gegenereerde certificaten gebruikt, downloadt en converteert u het eindpunt certificaat voor het Blob-opslag `.cer` naar een `.pem` indeling. Voer de volgende opdracht uit. 
     
         ```powershell
         PS C:\windows\system32> Certutil -encode 'C:\myasegpu1_Blob storage (1).cer' .\blobstoragecert.pem
@@ -245,11 +245,14 @@ Het bestand `CreateImageAndVnet.parameters.json` heeft de volgende para meters:
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -501,7 +504,7 @@ Implementeer de sjabloon voor het maken van de VM `CreateVM.json` . Met deze sja
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,7 +550,27 @@ Implementeer de sjabloon voor het maken van de VM `CreateVM.json` . Met deze sja
         
         PS C:\07-30-2020>
     ```   
- 
+U kunt de opdracht ook `New-AzureRmResourceGroupDeployment` asynchroon uitvoeren met `–AsJob` para meter. Hier volgt een voor beeld van uitvoer wanneer de cmdlet op de achtergrond wordt uitgevoerd. U kunt vervolgens de status van de taak die is gemaakt met behulp van de cmdlet, opvragen `Get-Job` .
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
 7. Controleer of de virtuele machine is ingericht. Voer de volgende opdracht uit:
 
     `Get-AzureRmVm`
@@ -555,7 +578,19 @@ Implementeer de sjabloon voor het maken van de VM `CreateVM.json` . Met deze sja
 
 ## <a name="connect-to-a-vm"></a>Verbinding maken met een VM
 
+Afhankelijk van of u een Windows-of een Linux-VM hebt gemaakt, kunnen de stappen om verbinding te maken verschillend zijn.
+
+### <a name="connect-to-windows-vm"></a>Verbinding maken met Windows VM
+
+Volg deze stappen om verbinding te maken met een virtuele Windows-machine.
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Verbinding maken met een virtuele Linux-machine
+
+Volg deze stappen om verbinding te maken met een virtuele Linux-machine.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 

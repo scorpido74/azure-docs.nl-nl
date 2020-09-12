@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: klassieke circuits verplaatsen naar Resource Manager'
 description: Op deze pagina wordt beschreven hoe u een klassiek circuit verplaatst naar het Resource Manager-implementatie model met behulp van Power shell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e1096fcb0f1175df67f47d4ca6c8caf4dc1a0e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079690"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395686"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-circuits verplaatsen van klassiek naar Resource Manager-implementatie model met behulp van Power shell
 
@@ -157,5 +157,5 @@ Voer de volgende cmdlets uit om de toegang tot het klassieke implementatie model
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Route ring voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
+* [Routering voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
 * [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit](expressroute-howto-linkvnet-arm.md)

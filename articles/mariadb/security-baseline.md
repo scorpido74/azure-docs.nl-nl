@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f7f559a0f0cfeddcba6e3f563c0a74a2472887d7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226774"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393833"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligings basislijn voor Azure Database for MariaDB
 
@@ -452,7 +452,7 @@ Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -880,11 +880,11 @@ Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governanc
 
 Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft.com/azure/key-vault/managed-identity 
+Verificatie bij Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
 
-
+Een Key Vault toegangs beleid toewijzen: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center bewaking**: Ja
 

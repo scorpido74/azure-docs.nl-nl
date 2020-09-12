@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749868"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434653"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -34,7 +34,7 @@ In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om ee
 
 | Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure-portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -93,7 +93,7 @@ Kies de versie van HDInsight voor dit cluster. Zie [ondersteunde HDInsight-versi
 Met HDInsight-clusters kunt u twee gebruikers accounts configureren tijdens het maken van het cluster:
 
 * Gebruikers naam voor cluster aanmelding: de standaard gebruikersnaam is *admin*. Hierbij wordt gebruikgemaakt van de basis configuratie op het Azure Portal. Soms wordt de naam ' cluster gebruiker ' of ' HTTP gebruiker ' genoemd.
-* SSH-gebruikers naam (Secure Shell): wordt gebruikt om via SSH verbinding te maken met het cluster. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
+* SSH-gebruikers naam (Secure Shell): wordt gebruikt om via SSH verbinding te maken met het cluster. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
 De HTTP-gebruikers naam heeft de volgende beperkingen:
 
@@ -139,7 +139,7 @@ Tijdens de configuratie geeft u voor het standaard opslag eindpunt een BLOB-cont
 
 ### <a name="metastore-settings"></a>Meta Store-instellingen
 
-U kunt een optioneel Hive-of Apache Oozie-meta Store maken. Maar niet alle cluster typen ondersteunen meta Stores en Azure SQL Data Warehouse is niet compatibel met meta Stores.
+U kunt een optioneel Hive-of Apache Oozie-meta Store maken. Maar niet alle cluster typen ondersteunen meta Stores en Azure Synapse Analytics is niet compatibel met meta Stores.
 
 Zie [externe meta gegevens archieven gebruiken in azure HDInsight](./hdinsight-use-external-metadata-stores.md)voor meer informatie.
 

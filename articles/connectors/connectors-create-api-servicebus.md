@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/03/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853295"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435147"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -167,7 +167,7 @@ Wanneer u een logische app maakt, kunt u de **gecorreleerde order levering selec
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een service bus naar de connector cache opslaan. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Message Sessions](../service-bus-messaging/message-sessions.md)(Engelstalig) voor meer informatie.
+Vanuit een service bus kan de Service Bus-Connector Maxi maal 1.500 unieke sessies tegelijk opslaan in de connector cache, per [Service Bus Messa ging-entiteit, zoals een abonnement of onderwerp](../service-bus-messaging/service-bus-queues-topics-subscriptions.md). Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Message Sessions](../service-bus-messaging/message-sessions.md)(Engelstalig) voor meer informatie.
 
 Raadpleeg de [referentie pagina](/connectors/servicebus/)voor de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de Swagger-beschrijving van de connector. Zie [Wat is Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md)? voor meer informatie over Azure Service Bus berichten.
 

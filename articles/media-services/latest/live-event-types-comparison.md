@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265249"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397301"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
@@ -86,8 +86,7 @@ Als de bijdrager is van 720p of hoger, wordt de feed door de voor instelling **D
 | 200 |340 |192 |30 |Hoog |
 
 > [!NOTE]
-> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 720 p, en maximaal zes lagen. U kunt ook opgeven dat u een voor instelling voor een Standard-coderings programma aanvraagt.
-> De specifieke waarden van de bitsnelheden en resoluties kunnen na verloop van tijd worden aangepast
+> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. U moet de gewenste tabel met video resolutie en bitrates opgeven. Aanpassing van de bitsnelheid voor audio versleuteling wordt niet ondersteund. Controleer of er slechts één laag is op 720 p, en maximaal zes lagen. Geef ook op dat u een voor instelling aanvraagt.
 
 ### <a name="output-video-streams-for-default1080p"></a>Video stromen uitvoeren voor Default1080p
 
@@ -103,8 +102,7 @@ Als de bijdrage-feed van de 1080p-resolutie is, wordt de feed door de voor inste
 | 200 |320 |180 |30 |Hoog |
 
 > [!NOTE]
-> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 1080p en Maxi maal 6 lagen. U kunt ook opgeven dat u een voor instelling voor een Premium1080p Live-coderings programma aanvraagt.
-> De specifieke waarden van de bitsnelheden en resoluties kunnen na verloop van tijd worden aangepast.
+> Als u de voor instelling voor Live encoding wilt aanpassen, opent u een ondersteunings ticket via Azure Portal. Geef de gewenste tabel met resoluties en bitrates op. Controleer of er slechts één laag is op 1080p en Maxi maal 6 lagen. Geef ook op dat u een voor instelling aanvraagt voor een Premium1080p Live-coderings programma. De specifieke waarden van de bitsnelheden en resoluties kunnen na verloop van tijd worden aangepast.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Audio stroom voor uitvoer voor Default720p en Default1080p
 

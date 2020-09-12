@@ -3,20 +3,20 @@ title: Azure Traffic Manager-Veelgestelde vragen
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: rohink
-ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: duau
+ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926532"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400174"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -497,7 +497,7 @@ Het bovenliggende profiel voert niet rechtstreeks status controles uit op het ki
 
 In de volgende tabel wordt het gedrag van Traffic Manager status controles voor een genest eind punt beschreven.
 
-| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
+| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Notities |
 | --- | --- | --- |
 | Uitgeschakeld. Het onderliggende profiel is uitgeschakeld. |Gestopt |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |

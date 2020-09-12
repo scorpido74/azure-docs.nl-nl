@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en configureren van ultra schi
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650176"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420860"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Gebruik Azure Ultra disks in azure Kubernetes service (preview)
 
@@ -21,11 +21,6 @@ Deze functie kan alleen worden ingesteld tijdens het maken van het cluster of he
 
 > [!IMPORTANT]
 > Voor Azure Ultra disks is nodepools geïmplementeerd in beschikbaarheids zones en regio's die ondersteuning bieden voor deze schijven en alleen specifieke VM-reeksen. Bekijk het [**bereik en de beperkingen van ultra disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="prerequisites"></a>Vereisten
-
-- Zorg ervoor dat de `EnableUltraSSD` functie vlag is ingeschakeld.
-- Zorg ervoor dat de nieuwste `aks-preview` [cli-extensie][az-extension-add] is geïnstalleerd.
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>De `EnableUltraSSD` Preview-functie registreren
 
@@ -78,7 +73,7 @@ Een Azure-resource groep maken:
 az group create --name myResourceGroup --location westus2
 ```
 
-Maak het AKS-cluster met beheerde Azure AD-integratie en Azure RBAC voor Kubernetes-autorisatie.
+Maak het AKS-cluster met ondersteuning voor Ultra disks.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>Een permanente volume claim maken
 
-Een permanente volume claim (PVC) wordt gebruikt voor het automatisch inrichten van opslag op basis van een opslag klasse. In dit geval kan een PVC een van de vooraf gemaakte opslag klassen gebruiken om een standaard of Premium Azure Managed disk te maken.
+Een permanente volume claim (PVC) wordt gebruikt voor het automatisch inrichten van opslag op basis van een opslag klasse. In dit geval kan een PVC de eerder gemaakte opslag klasse gebruiken om een ultra schijf te maken.
 
 Maak een bestand `azure-ultra-disk-pvc.yaml` met de naam en kopieer het in het volgende manifest. De claim vraagt een schijf met de naam `ultra-disk` die *1000 GB* groot is met *ReadWriteOnce* -toegang. De *Ultra-Disk-SC-* opslag klasse is opgegeven als de opslag klasse.
 

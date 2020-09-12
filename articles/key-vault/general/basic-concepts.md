@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378998"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Basis concepten Azure Key Vault
 
-Azure Key Vault is een hulpprogramma voor het veilig opslaan en openen van geheimen. Een geheim is alles waartoe u de toegang streng wilt beheren, zoals API-sleutels, wachtwoorden of certificaten. Een kluis is een logische groep geheimen.
+Azure Key Vault is een hulpprogramma om geheimen veilig op te slaan en te openen. Een geheim is alles waartoe u de toegang streng wilt beheren, zoals API-sleutels, wachtwoorden of certificaten. Een kluis is een logische groep geheimen.
 
 Hier volgen enkele belang rijke voor waarden:
 
@@ -33,7 +33,7 @@ Hier volgen enkele belang rijke voor waarden:
 
 - **Resourcegroep**: een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep kan alle resources voor de oplossing bevatten of enkel de resources die u als groep wilt beheren. U bepaalt hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is.
 
-- **Service-Principal**: een Azure-Service-Principal is een beveiligings identiteit die door gebruikers gemaakte apps, services en hulpprogram ma's voor automatisering worden gebruikt voor toegang tot specifieke Azure-resources. U kunt het beschouwen als een ' gebruikers identiteit ' (gebruikers naam en wacht woord of certificaat) met een specifieke rol en nauw keurig beheerde machtigingen. Anders dan een algemene gebruikers-id, hoeft een service-principal slechts enkele specifieke handelingen uit te kunnen voeren. Het verbetert de beveiliging als u alleen het minimale machtigings niveau hebt dat nodig is om de beheer taken uit te voeren.
+- **Beveiligingsprincipal: een**beveiligings-principal van Azure is een beveiligings identiteit die door gebruikers gemaakte apps, services en hulpprogram ma's voor automatisering gebruikt om toegang te krijgen tot specifieke Azure-resources. U kunt het beschouwen als een ' gebruikers identiteit ' (gebruikers naam en wacht woord of certificaat) met een specifieke rol en nauw keurig beheerde machtigingen. Een beveiligingsprincipal hoeft alleen specifieke dingen te doen, in tegens telling tot een algemene gebruikers-id. Het verbetert de beveiliging als u alleen het minimale machtigings niveau hebt dat nodig is om de beheer taken uit te voeren. Een beveiligings-principal die wordt gebruikt voor een toepassing of service, wordt aangeduid met een **Service-Principal**.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/active-directory-whatis.md): Azure AD is de Active Directory-service voor een tenant. Elke adreslijst heeft een of meer domeinen. Aan een directory kunnen vele abonnementen zijn gekoppeld, maar slechts één tenant.
 
@@ -71,7 +71,7 @@ Iedereen met een Azure-abonnement kan sleutelkluizen maken en gebruiken. Hoewel 
 
 Deze beheerder geeft ontwikkel aars vervolgens de functie voor het aanroepen van hun toepassingen. Deze beheerder geeft ook informatie over de logboek registratie van sleutel gebruik aan de beveiligings beheerder. 
 
-![Overzicht van de werking van Azure Key Vault][1]
+![Overzicht van hoe Azure Key Vault werkt][1]
 
 Ontwikkelaars kunnen de sleutels ook rechtstreeks beheren door gebruik te maken van API's. Zie [Ontwikkelaarshandleiding voor Key Vault](developers-guide.md) voor meer informatie.
 

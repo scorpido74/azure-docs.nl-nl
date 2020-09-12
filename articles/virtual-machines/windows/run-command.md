@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496930"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424800"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Power shell-scripts uitvoeren in uw Windows-VM met behulp van de opdracht uitvoeren
 
@@ -40,6 +40,7 @@ De volgende beperkingen zijn van toepassing wanneer u de opdracht uitvoeren gebr
 * U kunt een actief script niet annuleren.
 * De maximale tijd voor het uitvoeren van een script is 90 minuten. Daarna is er een time-out opgestaan.
 * Uitgaande verbinding van de virtuele machine is vereist om de resultaten van het script te retour neren.
+* Het is niet raadzaam om een script uit te voeren dat de VM-agent stopt te stoppen of bij te werken. Dit kan de uitbrei ding in een overgangs status, tot een time-out leiden.
 
 > [!NOTE]
 > Voor een juiste werking moet de opdracht Run (poort 443) zijn vereist voor open bare IP-adressen van Azure. Als de extensie geen toegang tot deze eind punten heeft, kunnen de scripts worden uitgevoerd, maar niet de resultaten retour neren. Als u verkeer op de virtuele machine blokkeert, kunt u [service Tags](../../virtual-network/security-overview.md#service-tags) gebruiken om verkeer naar open bare IP-adressen van Azure toe te staan met behulp van de- `AzureCloud` tag.

@@ -2,17 +2,17 @@
 title: Over ExpressRoute virtuele netwerk gateways-Azure | Microsoft Docs
 description: Meer informatie over virtuele netwerk gateways voor ExpressRoute. Dit artikel bevat informatie over Gateway-Sku's en-typen.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: mialdrid
-ms.openlocfilehash: e7779e0638ea61c70758394dc212910ba8f1d7f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 65e44acd1fe6ecb389f81cbd0ed88d1c161dfcdb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081131"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397862"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Over ExpressRoute van virtuele netwerk gateways
 
@@ -86,7 +86,7 @@ Zie [about FastPath](about-fastpath.md)(Engelstalig) voor meer informatie over F
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST Api's en Power shell-cmdlets
 Zie de volgende pagina's voor aanvullende technische bronnen en specifieke syntaxis vereisten voor het gebruik van REST Api's en Power shell-cmdlets voor configuraties van virtuele netwerk gateways:
 
-| **Klassiek** | **Resource Manager** |
+| **Klassieke** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |

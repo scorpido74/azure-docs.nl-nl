@@ -2,17 +2,17 @@
 title: Overgang naar OpenVPN of IKEv2 vanuit SSTP | Azure VPN Gateway
 description: In dit artikel vindt u informatie over de manieren waarop u de limiet van 128 gelijktijdige verbindingen van SSTP kunt oplossen.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064673"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426279"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Overgang naar het OpenVPN-protocol of IKEv2 van SSTP
 
@@ -96,7 +96,7 @@ Het zip-bestand bevat ook de waarden van een aantal belang rijke instellingen vo
 
 **IKEv2**
 
-|**Sterkte** | **Gegevensintegriteit** | **PRF** | **DH-groep** |
+|**Sterkte** | **Integriteit** | **PRF** | **DH-groep** |
 |---        | ---            | ---        | ---     |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
@@ -118,7 +118,7 @@ Het zip-bestand bevat ook de waarden van een aantal belang rijke instellingen vo
 
 **IPsec**
 
-|**Sterkte** | **Gegevensintegriteit** | **PFS-groep** |
+|**Sterkte** | **Integriteit** | **PFS-groep** |
 |---        | ---            | ---        |
 |GCM_AES256    | GCM_AES256 | GROUP_NONE |
 |GCM_AES256    | GCM_AES256 | GROUP_24 |

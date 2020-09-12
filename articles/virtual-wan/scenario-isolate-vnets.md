@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553390"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400038"
 ---
 # <a name="scenario-isolating-vnets"></a>Scenario: VNets isoleren
 
@@ -29,7 +29,7 @@ In dit scenario blijft de werk belasting binnen een bepaald VNet geïsoleerd en 
 | VNets     | &#8594;|           |     X    |
 | Vertakkingen   | &#8594;|    X     |     X    |
 
-In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een doel voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in cursief) voor een specifieke verkeers stroom leert.
+In elk van de cellen in de vorige tabel wordt beschreven of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een voor voegsel van een bestemming (de ' aan '-zijde van de stroom, de kolom koppen in cursief) voor een specifieke verkeers stroom heeft, waarbij een ' X ' betekent dat de connectiviteit door Virtual WAN wordt verschaft.
 
 Deze verbindings matrix bevat ons twee verschillende rijtypen, die worden omgezet in twee route tabellen. Virtuele WAN heeft al een standaard route tabel, dus er is een andere route tabel vereist. In dit voor beeld noemen we de route tabel **RT_VNET**.
 

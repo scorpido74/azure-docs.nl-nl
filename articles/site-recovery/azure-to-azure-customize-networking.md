@@ -2,18 +2,18 @@
 title: Netwerk configuraties aanpassen voor een failover-VM | Microsoft Docs
 description: Biedt een overzicht van het aanpassen van netwerk configuraties voor een failover-VM in de replicatie van virtuele Azure-machines met behulp van Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135819"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426364"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
 
@@ -55,7 +55,7 @@ Site Recovery gaat nu door met deze instellingen en zorg ervoor dat de virtuele 
 
 Wanneer u de testfailover via het herstel plan triggert, wordt het virtuele Azure-netwerk altijd gevraagd. Dit virtuele netwerk wordt gebruikt voor een testfailover voor de computers waarvoor de instellingen voor de testfailover niet vooraf zijn geconfigureerd.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="unable-to-view-or-select-a-resource"></a>Een resource kan niet worden weer gegeven of geselecteerd
 

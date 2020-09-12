@@ -6,19 +6,21 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410859"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399953"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG-service tags voor Azure HDInsight
 
 De labels van de Azure HDInsight-service voor netwerk beveiligings groepen (Nsg's) zijn groepen IP-adressen voor status-en beheer Services. Deze groepen helpen de complexiteit te minimaliseren voor het maken van de beveiligings regel. [Service Tags](../virtual-network/security-overview.md#service-tags) staan inkomend verkeer van specifieke ip's toe zonder elk van de [beheer-IP-adressen](hdinsight-management-ip-addresses.md) in uw nsg's in te voeren.
 
 De HDInsight-service beheert deze service tags. U kunt geen eigen servicetag maken of een bestaande tag wijzigen. Micro soft beheert de adres voorvoegsels die overeenkomen met het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen.
+
+Als u een bepaalde regio wilt gebruiken en de servicetag nog niet is gedocumenteerd op deze pagina, kunt u de service [Tags detectie-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) gebruiken om uw servicetag te vinden. U kunt ook het JSON-bestand van de [service label](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) downloaden en naar uw gewenste regio zoeken.
 
 ## <a name="get-started-with-service-tags"></a>Aan de slag met Service Tags
 
@@ -60,7 +62,7 @@ Als uw cluster zich bevindt in een regio die in deze tabel wordt vermeld, hoeft 
 | &nbsp; | Australië - zuidoost | HDInsight. AustraliaSoutheast |
 | &nbsp; | Australië - centraal | HDInsight. AustraliaCentral |
 | China | China-oost 2 | HDInsight. ChinaEast2 |
-| &nbsp; | China-noord 2 | HDInsight. ChinaNorth2 |
+| &nbsp; | China - noord 2 | HDInsight. ChinaNorth2 |
 | Verenigde Staten | VS - noord-centraal | HDInsight. NorthCentralUS |
 | &nbsp; | VS - west 2 | HDInsight. WestUS2 |
 | &nbsp; | VS - west-centraal | HDInsight. WestCentralUS |

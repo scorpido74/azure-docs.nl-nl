@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523448"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443140"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>big data catalogiseren in Azure Data Catalog
 
@@ -19,7 +19,7 @@ ms.locfileid: "86523448"
 
 **Microsoft Azure Data Catalog** is een volledig beheerde Cloud service die fungeert als registratie systeem en detectie systeem voor zakelijke gegevens bronnen. Het helpt mensen bij het detecteren, begrijpen en gebruiken van gegevens bronnen, en helpt organisaties bij het verkrijgen van meer waarde dan hun bestaande gegevens bronnen, waaronder big data.
 
-**Azure Data Catalog** ondersteunt de registratie van Azure-opslag-blobs en-directory's, evenals Hadoop HDFS-bestanden en-mappen. De semi-gestructureerde aard van deze gegevens bronnen biedt een grote flexibiliteit. Om de meeste waarde te verkrijgen om ze te registreren bij **Azure Data Catalog**, moeten gebruikers overwegen hoe de gegevens bronnen worden georganiseerd.
+**Azure Data Catalog** ondersteunt de registratie van Azure Storage blobs en directory's, evenals Hadoop HDFS-bestanden en-mappen. De semi-gestructureerde aard van deze gegevens bronnen biedt een grote flexibiliteit. Om de meeste waarde te verkrijgen om ze te registreren bij **Azure Data Catalog**, moeten gebruikers overwegen hoe de gegevens bronnen worden georganiseerd.
 
 ## <a name="directories-as-logical-data-sets"></a>Directory's als logische gegevens sets
 

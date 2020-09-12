@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: een circuit wijzigen: Power shell: klassiek'
 description: Dit artikel begeleidt u stapsgewijs door de stappen voor het controleren van de status, het bijwerken of verwijderen van uw ExpressRoute klassieke implementatie model circuit.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/05/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 801032e3df9dcb778fa4e591ef37eabc317e997a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073332"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396281"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Een ExpressRoute-circuit wijzigen met behulp van Power shell (klassiek)
 
@@ -22,8 +22,8 @@ ms.locfileid: "89073332"
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
+> * [Video: Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell (klassiek)](expressroute-howto-circuit-classic.md)
 >
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het controleren van de status, het bijwerken of verwijderen van uw ExpressRoute klassieke implementatie model circuit. Dit artikel is van toepassing op het klassieke implementatiemodel.
@@ -87,14 +87,14 @@ get-help get-azurededicatedcircuit -detailed
 
 ## <a name="modify-a-circuit"></a>Een circuit wijzigen
 
-U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de verbinding.
+U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de connectiviteit.
 
 U kunt de volgende taken zonder uitval tijd doen:
 
 * Een ExpressRoute Premium-invoeg toepassing voor uw ExpressRoute-circuit in-of uitschakelen.
-* Verg root de band breedte van uw ExpressRoute-circuit, op voor waarde dat er capaciteit beschikbaar is op de poort. Het downgradeen van de band breedte van een circuit wordt niet ondersteund.
-* Wijzig het licentie controle plan van gegevens met data limiet naar onbeperkte gegevens. Het is niet mogelijk om het meet plan van onbeperkte gegevens te wijzigen in gegevens met data limiet.
-* U kunt *klassieke bewerkingen toestaan*in-en uitschakelen.
+* Verg root de band breedte van uw ExpressRoute-circuit, op voor waarde dat er capaciteit beschikbaar is op de poort. Verminderen van de bandbreedte van een circuit wordt niet ondersteund.
+* Het verbruiksabonnement wijzigen van Datalimiet in Onbeperkte data. Wijzigen van het verbruiksabonnement van Onbeperkte data in Datalimiet wordt niet ondersteund.
+* U kunt *klassieke bewerkingen toestaan* in- en uitschakelen.
 
 Raadpleeg de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie over limieten en beperkingen.
 
@@ -153,9 +153,9 @@ Status                           : Enabled
 Raadpleeg de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor de ondersteunde bandbreedte opties voor uw provider. U kunt elke grootte kiezen die groter is dan de grootte van uw bestaande circuit, zolang de fysieke poort (waarop het circuit is gemaakt) toestaat.
 
 > [!IMPORTANT]
-> Mogelijk moet u het ExpressRoute-circuit opnieuw maken als er onvoldoende capaciteit is op de bestaande poort. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op die locatie.
+> Mogelijk moet u het ExpressRoute-circuit opnieuw maken als er onvoldoende capaciteit is op de bestaande poort. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op de betreffende locatie.
 >
-> U kunt de band breedte van een ExpressRoute-circuit zonder onderbreking niet verkleinen. Voor downgrade-band breedte moet u de inrichting van het ExpressRoute-circuit ongedaan maken en vervolgens een nieuw ExpressRoute-circuit opnieuw inrichten.
+> U kunt de band breedte van een ExpressRoute-circuit zonder onderbreking niet verkleinen. Voor het verminderen van de bandbreedte moet u de inrichting van het ExpressRoute-circuit ongedaan maken, en vervolgens een nieuw ExpressRoute-circuit inrichten.
 >
 >
 
@@ -190,12 +190,12 @@ At line:1 char:1
   + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.SetAzureDedicatedCircuitPropertiesCommand
 ```
 
-## <a name="deprovision-and-delete-a-circuit"></a>Inrichting ongedaan maken en een circuit verwijderen
+## <a name="deprovision-and-delete-a-circuit"></a>Een circuit uitschrijven en verwijderen
 
 ### <a name="considerations"></a>Overwegingen
 
 * U moet alle virtuele netwerken ontkoppelen van het ExpressRoute-circuit om deze bewerking te kunnen volt ooien. Controleer of er virtuele netwerken zijn die zijn gekoppeld aan het circuit als deze bewerking mislukt.
-* Als de inrichtings status van de ExpressRoute-circuit service provider is **ingericht** of **ingericht** , moet u samen met uw service provider de inrichting van het circuit aan hun zijde opheffen. We blijven resources reserveren en u factureren totdat de service provider de inrichting van het circuit ongedaan heeft gemaakt en ons op de hoogte stelt.
+* Als de serviceprovider van het circuit de inrichtingsstatus **Inrichten** of **Ingericht** heeft, moet u contact opnemen met de serviceprovider om de inrichting van het circuit aan hun zijde ongedaan te maken. We blijven resources reserveren en kosten in rekening brengen, totdat de serviceprovider de inrichting van het circuit helemaal ongedaan heeft gemaakt en ons op de hoogte heeft gesteld.
 * Als de service provider de inrichting van het circuit heeft ongedaan gemaakt (de inrichtings status van de service provider is ingesteld op **niet ingericht**), kunt u het circuit verwijderen. Hiermee wordt ook de facturering voor het circuit gestopt.
 
 #### <a name="delete-a-circuit"></a>Een circuit verwijderen

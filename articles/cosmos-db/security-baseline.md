@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99985ba8540a347977b9eaf2e733a308fa777b97
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231398"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401619"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
 
@@ -452,7 +452,7 @@ Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -890,9 +890,11 @@ Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governanc
 
 Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft.com/azure/key-vault/managed-identity
+Verificatie bij Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Een Key Vault toegangs beleid toewijzen: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center bewaking**: Ja
 

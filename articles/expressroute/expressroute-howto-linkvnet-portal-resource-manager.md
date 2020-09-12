@@ -2,26 +2,26 @@
 title: 'ExpressRoute: een VNet koppelen aan een circuit: Azure Portal'
 description: Meer informatie over het maken van een verbinding om een virtueel netwerk te koppelen aan een Azure ExpressRoute-circuit met behulp van de Azure Portal.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/17/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 56508503c199b1f822ce8f181689a236f3a0af18
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190928"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395822"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden aan een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]
 > * [Azure-portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-CLI](howto-linkvnet-cli.md)
-> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-linkvnet-classic.md)
+> * [Video: Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
 > 
 
 Dit artikel helpt u bij het maken van een verbinding om een virtueel netwerk te koppelen aan een Azure ExpressRoute-circuit met behulp van de Azure Portal. De virtuele netwerken die u met uw Azure ExpressRoute-circuit verbindt, kunnen zich in hetzelfde abonnement bevinden of ze kunnen deel uitmaken van een ander abonnement.

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306414"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419109"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretation: model uitleg in automatische machine learning (preview)
 
@@ -39,6 +39,14 @@ In dit artikel leert u het volgende:
 ## <a name="interpretability-during-training-for-the-best-model"></a>Interpretiteit tijdens de training voor het beste model
 
 Haal de uitleg op uit de `best_run` , die uitleg bevat over functies die zijn ontworpen voor de functie.
+
+> [!Warning]
+> Interpretiteit, aanbevolen model uitleg is niet beschikbaar voor het automatisch ML van prognose experimenten waarbij de volgende algoritmen worden aanbevolen als het beste model: 
+> * ForecastTCN
+> * Gemiddeld 
+> * Naive
+> * Gemiddelde seizoen 
+> * Seizoen Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Belang rijk onderdeel van de artefact opslag downloaden
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Interpretiteit tijdens deinterferentie
+## <a name="interpretability-during-inference"></a>Interpretiteit tijdens deinterferentie
 
 In deze sectie leert u hoe u een geautomatiseerd ML-model kunt operationeel maken met de uitleger die is gebruikt voor het berekenen van de uitleg in de vorige sectie.
 
@@ -163,7 +171,7 @@ with open("myenv.yml","r") as f:
 
 ```
 
-### <a name="deploy-the-service"></a>Implementeer de service
+### <a name="deploy-the-service"></a>De service implementeren
 
 Implementeer de service met het Conda-bestand en het Score bestand uit de vorige stappen.
 

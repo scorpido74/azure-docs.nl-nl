@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute privé-peering: IPsec-transport modus configureren-Windows-hosts'
 description: IPsec-transport modus inschakelen tussen Azure Windows-Vm's en on-premises Windows-hosts via ExpressRoute-persoonlijke peering met behulp van Gpo's en organisatie-eenheden.
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737254"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396485"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-transport modus configureren voor persoonlijke ExpressRoute-peering
 
@@ -158,7 +158,7 @@ Maak een filter lijst die versleuteld HTTP-verkeer opgeeft met doel poort 8080.
 1. Gebruik een **IP-filter lijst**om te kwalificeren welke typen verkeer moeten worden versleuteld. Klik op het tabblad **IP-filter lijsten beheren** op **toevoegen** om een nieuwe IP-filter lijst toe te voegen.
 
    [![24]][24]
-2. Typ in het veld **naam:** een naam voor de IP-filter lijst. Bijvoorbeeld **Azure-on-HTTP8080**. Klik vervolgens op **toevoegen**.
+2. Typ in het veld **naam:** een naam voor de IP-filter lijst. Bijvoorbeeld **Azure-on-HTTP8080**. Klik vervolgens op **Toevoegen**.
 
    [![25]][25]
 3. Selecteer op de pagina **Beschrijving en gespiegelde eigenschappen van IP-filter** de optie **gespiegeld**. De gespiegelde instelling komt overeen met pakketten die in beide richtingen worden verzonden, waardoor communicatie in twee richtingen mogelijk is. Klik op **Volgende**.
@@ -246,7 +246,7 @@ Voeg aan het IPsec-beleid de **IP-filter lijst** en **filter actie** toe die u e
 4. **Netwerk type** definieert welke netwerk verbinding aan het beveiligings beleid wordt gekoppeld. Selecteer **alle netwerk verbindingen**en klik vervolgens op **volgende**.
 
    [![44]][44]
-5. Selecteer de IP-filter lijst die u eerder hebt gemaakt, **Azure-on-HTTP8080**en klik vervolgens op **volgende**.
+5. Selecteer de IP-filter lijst die u eerder hebt gemaakt,  **Azure-on-HTTP8080**en klik vervolgens op **volgende**.
 
    [![45]][45]
 6. Selecteer de bestaande filter actie **myEncryption** die u eerder hebt gemaakt.

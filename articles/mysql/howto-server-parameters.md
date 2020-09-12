@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837225"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420690"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -24,7 +24,7 @@ Azure Database for MySQL ondersteunt de configuratie van sommige server paramete
 ![Pagina Azure Portal Server parameters](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
 ![Vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klik op **Opslaan** om uw wijzigingen op te slaan.
+4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
 ![Wijzigingen opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
 5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
 ![Alles opnieuw instellen op standaard waarden](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,11 +34,14 @@ Azure Database for MySQL ondersteunt de configuratie van sommige server paramete
 Als de server parameter die u wilt bijwerken niet wordt weer gegeven in de Azure Portal, kunt u eventueel de para meter instellen op het verbindings niveau met `init_connect` . Hiermee stelt u de server parameters in voor elke client die verbinding maakt met de server. 
 
 1. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for mysql-server te openen.
-2. Zoeken naar`init_connect`
+2. Zoeken naar `init_connect`
 3. Voeg de server parameters toe met de volgende indeling: `SET parameter_name=YOUR_DESIRED_VALUE` in waarde de kolom waarde.
 
-    U kunt bijvoorbeeld de tekenset van uw server wijzigen door `init_connect` in te stellen op`SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+    U kunt bijvoorbeeld de tekenset van uw server wijzigen door `init_connect` in te stellen op `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. Klik op **Opslaan** om uw wijzigingen op te slaan.
+
+>[!Note]
+> `init_connect` kan worden gebruikt voor het wijzigen van para meters die geen SUPER-bevoegdheid (en) op sessie niveau vereisen. Als u wilt controleren of u de para meter kunt instellen met `init_connect` , voert u de `set session parameter_name=YOUR_DESIRED_VALUE;` opdracht uit en als er fouten zijn opgetreden in de toegang is geweigerd; er is een fout van **superbevoegdheden (en)** , dan kunt u de para meter niet instellen met behulp van init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 

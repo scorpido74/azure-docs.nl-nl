@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385719"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418905"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een eenmalige wachtwoord technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -53,7 +53,7 @@ Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor ve
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| identifier | Yes | De id waarmee de gebruiker wordt geïdentificeerd die de code later moet verifiëren. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
+| progid's | Yes | De id waarmee de gebruiker wordt geïdentificeerd die de code later moet verifiëren. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de eenmalige wachtwoord protocol provider worden verzonden.
 
@@ -77,6 +77,7 @@ De volgende instellingen kunnen worden gebruikt voor het configureren van de mod
 | CodeLength | No | Lengte van de code. De standaardwaarde is `6`. |
 | CharacterSet | No | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaardwaarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
 | NumRetryAttempts | No | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaardwaarde is `5`. |
+| NumCodeGenerationAttempts | No | Het aantal pogingen voor het genereren van maximum code per id. De standaard waarde is 10 als niet is opgegeven. |
 | Bewerking | Yes | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `GenerateCode` . |
 | ReuseSameCode | No | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`. |
 
@@ -94,6 +95,7 @@ Het volgende voor beeld `TechnicalProfile` wordt gebruikt voor het genereren van
     <Item Key="CodeLength">6</Item>
     <Item Key="CharacterSet">0-9</Item>
     <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="NumCodeGenerationAttempts">15</Item>
     <Item Key="ReuseSameCode">false</Item>
   </Metadata>
   <InputClaims>
@@ -115,7 +117,7 @@ Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor ve
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| identifier | Yes | De id voor het identificeren van de gebruiker die eerder een code heeft gegenereerd. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
+| progid's | Yes | De id voor het identificeren van de gebruiker die eerder een code heeft gegenereerd. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
 | otpToVerify | Yes | De verificatie code van de gebruiker. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de eenmalige wachtwoord protocol provider worden verzonden.
@@ -143,6 +145,7 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | No | Het bericht dat wordt weer gegeven aan de gebruiker als de sessie met de code verificatie is verlopen. Het is de code verlopen of de code is nooit voor een bepaalde id gegenereerd. |
 | UserMessageIfMaxRetryAttempted | No | Het bericht dat aan de gebruiker wordt weer gegeven als het maximum aantal toegestane verificatie pogingen is overschreden. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | Het bericht dat wordt weer gegeven aan de gebruiker als het genereren van de code het Maxi maal toegestane aantal pogingen heeft overschreden. |
 | UserMessageIfInvalidCode | No | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft gegeven. |
 | UserMessageIfVerificationFailedRetryAllowed | No | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft verstrekt en de gebruiker de juiste code kan opgeven.  |
 |UserMessageIfSessionConflict|No| Het bericht dat wordt weer gegeven aan de gebruiker als de code niet kan worden geverifieerd.|

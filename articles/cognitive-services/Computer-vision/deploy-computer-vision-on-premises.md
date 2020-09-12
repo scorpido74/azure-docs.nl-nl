@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2a017371ccb3cf70812aed5606c386746024884
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877967"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443157"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en helm
 
@@ -48,9 +48,9 @@ Er wordt naar verwachting een beschik bare Kubernetes-cluster op de hostcomputer
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-referenties delen met het Kubernetes-cluster
 
-Als u het Kubernetes-cluster `docker pull` naar de geconfigureerde installatie kopieën in het `containerpreview.azurecr.io` container register wilt toestaan, moet u de docker-referenties naar het cluster overdragen. Voer de [`kubectl create`][kubectl-create] onderstaande opdracht uit om een *docker-REGI ster* te maken op basis van de referenties die zijn verschaft uit de toegangs vereisten voor container register.
+Als u het Kubernetes-cluster naar `docker pull` de geconfigureerde installatie kopieën in het `containerpreview.azurecr.io` container register wilt toestaan, moet u de docker-referenties naar het cluster overdragen. Voer de [`kubectl create`][kubectl-create] onderstaande opdracht uit om een *docker-REGI ster* te maken op basis van de referenties die zijn verschaft uit de toegangs vereisten voor container register.
 
-Voer de volgende opdracht uit vanaf de opdracht regel interface van Choice. Zorg ervoor dat u de `<username>`, `<password>`en `<email-address>` vervangt door de container register referenties.
+Voer de volgende opdracht uit vanaf de opdracht regel interface van Choice. Zorg ervoor dat u de `<username>` , `<password>` en vervangt door `<email-address>` de container register referenties.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -74,13 +74,13 @@ De volgende uitvoer wordt naar de console afgedrukt wanneer het geheim is gemaak
 secret "containerpreview" created
 ```
 
-Als u wilt controleren of het geheim is gemaakt, voert [`kubectl get`][kubectl-get] u uit `secrets` met de vlag.
+Als u wilt controleren of het geheim is gemaakt, voert u [`kubectl get`][kubectl-get] uit met de `secrets` vlag.
 
 ```console
 kubectl get secrets
 ```
 
-Bij het `kubectl get secrets` uitvoeren van worden alle geconfigureerde geheimen afgedrukt.
+Bij het uitvoeren van `kubectl get secrets` worden alle geconfigureerde geheimen afgedrukt.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
@@ -89,16 +89,25 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Helm-grafiek waarden voor implementatie configureren
 
-Maak eerst een map met de naam *Read*en plak de volgende YAML-inhoud in een nieuw bestand met de naam *Chart. yml*.
+Maak eerst een map met de naam *Read*. Plak vervolgens de volgende YAML-inhoud in een nieuw bestand met de naam `chart.yaml` :
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 name: read
 version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+dependencies:
+- name: rabbitmq
+  condition: read.image.args.rabbitmq.enabled
+  version: ^6.12.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: redis
+  condition: read.image.args.redis.enabled
+  version: ^6.0.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Als u de standaard waarden van de helm-grafiek wilt configureren, kopieert en plakt u de `values.yaml`volgende yaml in een bestand met de naam. Vervang de `# {ENDPOINT_URI}` opmerkingen `# {API_KEY}` en door uw eigen waarden.
+Als u de standaard waarden van de helm-grafiek wilt configureren, kopieert en plakt u de volgende YAML in een bestand met de naam `values.yaml` . Vervang de `# {ENDPOINT_URI}` opmerkingen en door `# {API_KEY}` uw eigen waarden. Configureer resultExpirationPeriod, redis en RabbitMQ zo nodig.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -107,7 +116,7 @@ read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry: containerpreview.azurecr.io/
+    registry:  containerpreview.azurecr.io/
     repository: microsoft/cognitive-services-read
     tag: latest
     pullSecret: containerpreview # Or an existing secret
@@ -115,25 +124,52 @@ read:
       eula: accept
       billing: # {ENDPOINT_URI}
       apikey: # {API_KEY}
+      
+      # Result expiration period setting. Specify when the system should clean up recognition results.
+      # For example, resultExpirationPeriod=1, the system will clear the recognition result 1hr after the process.
+      # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
+      resultExpirationPeriod: 1
+      
+      # Redis storage, if configured, will be used by read container to store result records.
+      # A cache is required if multiple read containers are placed behind load balancer.
+      redis:
+        enabled: false # {true/false}
+        password: password
+
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # placed behind load balancer.
+      rabbitmq:
+        enabled: false # {true/false}
+        rabbitmq:
+          username: user
+          password: password
 ```
 
 > [!IMPORTANT]
-> Als de `billing` waarden `apikey` en niet worden weer gegeven, verlopen de Services na 15 minuten. De verificatie mislukt ook omdat de services niet beschikbaar zijn.
+> - Als de `billing` `apikey` waarden en niet zijn opgenomen, verlopen de Services na 15 minuten. De verificatie mislukt ook omdat de services niet beschikbaar zijn.
+> 
+> - Als u meerdere Lees containers achter een load balancer implementeert, bijvoorbeeld onder docker opstellen of Kubernetes, moet u een externe cache hebben. Omdat de verwerkings container en de container voor GET-aanvragen mogelijk niet hetzelfde zijn, worden de resultaten door een externe cache opgeslagen en gedeeld in containers. Zie [Computer Vision docker-containers configureren](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)voor meer informatie over de cache-instellingen.
+>
 
-Maak een map *sjablonen* onder de map *lezen* . Kopieer en plak de volgende YAML in een bestand met `deployment.yaml`de naam. Het `deployment.yaml` bestand moet worden gebruikt als een helm-sjabloon.
+Maak een map *sjablonen* onder de map *lezen* . Kopieer en plak de volgende YAML in een bestand met de naam `deployment.yaml` . Het `deployment.yaml` bestand moet worden gebruikt als een helm-sjabloon.
 
 > Sjablonen genereren manifest bestanden. Dit zijn YAML bron beschrijvingen die Kubernetes kunnen begrijpen. [-Hand leiding voor helm-grafiek sjablonen][chart-template-guide]
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: read
+  labels:
+    app: read-deployment
 spec:
+  selector:
+    matchLabels:
+      app: read-app
   template:
     metadata:
       labels:
-        app: read-app
+        app: read-app       
     spec:
       containers:
       - name: {{.Values.read.image.name}}
@@ -147,14 +183,23 @@ spec:
           value: {{.Values.read.image.args.billing}}
         - name: apikey
           value: {{.Values.read.image.args.apikey}}
+        args:        
+        - ReadEngineConfig:ResultExpirationPeriod={{ .Values.read.image.args.resultExpirationPeriod }}
+        {{- if .Values.read.image.args.rabbitmq.enabled }}
+        - Queue:RabbitMQ:HostName={{ include "rabbitmq.hostname" . }}
+        - Queue:RabbitMQ:Username={{ .Values.read.image.args.rabbitmq.rabbitmq.username }}
+        - Queue:RabbitMQ:Password={{ .Values.read.image.args.rabbitmq.rabbitmq.password }}
+        {{- end }}      
+        {{- if .Values.read.image.args.redis.enabled }}
+        - Cache:Redis:Configuration={{ include "redis.connStr" . }}
+        {{- end }}
       imagePullSecrets:
-      - name: {{.Values.read.image.pullSecret}}
-
+      - name: {{.Values.read.image.pullSecret}}      
 --- 
 apiVersion: v1
 kind: Service
 metadata:
-  name: read
+  name: read-service
 spec:
   type: LoadBalancer
   ports:
@@ -163,19 +208,34 @@ spec:
     app: read-app
 ```
 
+Kopieer en plak de volgende Help-functies in de map zelfde *sjablonen* in `helpers.tpl` . `helpers.tpl` Hiermee definieert u nuttige functies voor het genereren van helm-sjablonen.
+
+```yaml
+{{- define "rabbitmq.hostname" -}}
+{{- printf "%s-rabbitmq" .Release.Name -}}
+{{- end -}}
+
+{{- define "redis.connStr" -}}
+{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
+{{- $connTail := "ssl=False,abortConnect=False" -}}
+{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- end -}}
+```
 De sjabloon specificeert een load balancer service en de implementatie van de container/installatie kopie voor lezen.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Het Kubernetes-pakket (helm-grafiek)
 
-Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die `containerpreview.azurecr.io` moet worden opgehaald uit het container register.
+Het *helm-diagram* bevat de configuratie van de docker-installatie kopie (n) die moet worden opgehaald uit het `containerpreview.azurecr.io` container register.
 
 > Een [helm-grafiek][helm-charts] is een verzameling bestanden waarin een gerelateerde set Kubernetes-resources wordt beschreven. Eén grafiek kan worden gebruikt om een eenvoudig te implementeren, zoals een memcached Pod, of iets complex, zoals een volledige web-app-stack met HTTP-servers, data bases, caches, enzovoort.
 
-De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende `containerpreview.azurecr.io` service uit het container register.
+De meegeleverde *helm-grafieken* halen de docker-installatie kopieën van de computer vision-service en de bijbehorende service uit het `containerpreview.azurecr.io` container register.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>De helm-grafiek op het Kubernetes-cluster installeren
 
-Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map `read` die zich boven de map bevindt.
+Als u de *helm-grafiek*wilt installeren, moet u de [`helm install`][helm-install-cmd] opdracht uitvoeren. Zorg ervoor dat u de installatie opdracht uitvoert vanuit de map die zich boven de `read` map bevindt.
 
 ```console
 helm install read ./read
@@ -235,7 +295,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 Meer informatie over het installeren van toepassingen met helm in azure Kubernetes service (AKS) [vindt u hier][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Cognitive Services containers][cog-svcs-containers]
+> [Cognitive Services-containers][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

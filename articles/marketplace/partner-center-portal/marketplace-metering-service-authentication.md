@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319963"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378726"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Verificatie strategieën voor Marketplace-meet service
 
@@ -44,7 +44,7 @@ Zie [Azure Active Directory toegangs tokens](../../active-directory/develop/acce
 
 #### <a name="http-method"></a>HTTP-methode
 
-**POST**
+**Verzenden**
 
 #### <a name="request-url"></a>*Aanvraag-URL*
 
@@ -54,24 +54,24 @@ Zie [Azure Active Directory toegangs tokens](../../active-directory/develop/acce
 
 |  **Parameternaam** |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   Waar         | De Tenant-ID van de geregistreerde Azure AD-toepassing.   |
+|  `tenantId`         |   True         | De Tenant-ID van de geregistreerde Azure AD-toepassing.   |
 | | | |
 
-#### <a name="request-header"></a>*Aanvraagheader*
+#### <a name="request-header"></a>*Aanvraag header*
 
 |  **Headernaam**    |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   Waar         | Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   True         | Het inhouds type dat is gekoppeld aan de aanvraag. De standaardwaarde is `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*Aanvraagbody*
 
 |  **Eigenschapsnaam**  |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   Waar         | Toekennings type. Gebruik `client_credentials`. |
-|  `Client_id`        |   Waar         | Client/App-ID die is gekoppeld aan de Azure AD-app.|
-|  `client_secret`    |   Waar         | Geheim dat is gekoppeld aan de Azure AD-app.  |
-|  `Resource`         |   Waar         | Doel resource waarvoor het token wordt aangevraagd. Gebruik `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
+|  `Grant_type`       |   True         | Toekennings type. Gebruik `client_credentials`. |
+|  `Client_id`        |   True         | Client/App-ID die is gekoppeld aan de Azure AD-app.|
+|  `client_secret`    |   True         | Geheim dat is gekoppeld aan de Azure AD-app.  |
+|  `Resource`         |   True         | Doel resource waarvoor het token wordt aangevraagd. Gebruik `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
 #### <a name="response"></a>*Response*
@@ -145,7 +145,7 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,4 +156,4 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure-toepassingsaanbieding maken](./create-new-azure-apps-offer.md)
-* [Een voor transactable SaaS-aanbieding maken](./offer-creation-checklist.md)
+* [Een SaaS-aanbieding plannen](../plan-saas-offer.md)

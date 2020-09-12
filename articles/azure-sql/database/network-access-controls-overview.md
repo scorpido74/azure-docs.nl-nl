@@ -1,7 +1,7 @@
 ---
 title: Netwerk toegangs beheer
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Overzicht van het beheren en controleren van de netwerk toegang voor Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse).
+description: Overzicht van het beheren en controleren van de netwerk toegang voor Azure SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085460"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435368"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer
 
@@ -102,7 +102,7 @@ start          end
 13.86.216.192  13.86.216.223
 ```
 
-U kunt deze nu als afzonderlijke firewall regels toevoegen en vervolgens instellen **dat Azure-Services toegang heeft** tot de server.
+U kunt deze nu als afzonderlijke firewall regels toevoegen en vervolgens instellen **dat Azure-Services toegang heeft**  tot de server.
 
 ## <a name="ip-firewall-rules"></a>IP-firewallregels
 

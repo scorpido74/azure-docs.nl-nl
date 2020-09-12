@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415801"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435555"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens laden uit Office 365 met behulp van Azure Data Factory
 
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *LoadFromOffice365Demo* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**LoadFromOffice365Demo**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
-    * **Versie**: Selecteer **v2**.
+    * **Versie**: Selecteer **V2**.
     * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. Deze gegevens archieven bevatten Azure Data Lake Store, Azure Storage, Azure SQL Database, enzovoort.
 
 3. Selecteer **Maken**.
@@ -63,7 +63,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
 2. Selecteer in het venster nieuwe gegevensset de optie **Office 365**en selecteer vervolgens **door gaan**.
  
-3. U bevindt zich nu op het tabblad Configuratie van de Kopieer activiteit. Klik op de knop **bewerken** naast de Office 365-gegevensset om door te gaan met de gegevens configuratie.
+3. U bevindt zich nu op het tabblad Configuratie van de Kopieer activiteit. Klik op de knop **bewerken** naast de gegevensset Office 365 om door te gaan met de gegevens configuratie.
 
     ![Algemene configuratie van Office 365 gegevensset](./media/load-office-365-data/transition-to-edit-dataset.png)
  
@@ -118,7 +118,7 @@ Selecteer in de bovenste werk balk de optie **Alles publiceren**. Met deze actie
 
 ## <a name="trigger-the-pipeline-manually"></a>De pijplijn handmatig activeren
 
-Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Selecteer op de pagina pijplijn uitvoering de optie **volt ooien**. 
+Selecteer op de werkbalk de optie **Trigger toevoegen** en selecteer vervolgens **Nu activeren**. Selecteer op de pagina pijplijn uitvoering de optie **volt ooien**. 
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
@@ -147,7 +147,7 @@ Ga nu naar de doel-Azure-Blob Storage en controleer of Office 365-gegevens zijn 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure SQL Data Warehouse: 
+Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure Synapse Analytics (voorheen SQL Data Warehouse): 
 
 > [!div class="nextstepaction"]
 >[Office 365-connector](connector-office-365.md)

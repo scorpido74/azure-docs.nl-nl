@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814719"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419751"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -22,16 +22,16 @@ Aanbiedingen voor Consulting-Services zijn klant gerichte afspraken. Uitgevers h
 
 ## <a name="compare-consulting-services"></a>Consulting Services vergelijken
 
-De online winkels voor commerciële Marketplace, Microsoft AppSource en Azure Marketplace zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke online winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie-investering. Zie [Microsoft AppSource en Azure Marketplace vergelijken](comparing-appsource-azure-marketplace.md)voor meer informatie over het verschil tussen de twee online winkels.
+De online winkels voor commerciële Marketplace, Microsoft AppSource en Azure Marketplace zijn afgestemd op de typen oplossingen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke online winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie-investering. Zie [Microsoft AppSource en Azure Marketplace vergelijken](comparing-appsource-azure-marketplace.md)voor meer informatie over het verschil tussen de twee online winkels.
 
 Consulting Services-aanbiedingen die zijn gebaseerd op Dynamics 365, Power apps en Power BI, komen in aanmerking voor de lijst op AppSource. Down load het PDF-bestand met de [Microsoft AppSource Consulting Services-overzichts richtlijnen](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) voor meer informatie.
 
 Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie [een Azure consulting service-aanbieding publiceren](./partner-center-portal/create-consulting-service-offer.md) en [een managed services-aanbod publiceren op Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md)voor meer informatie.
 
 > [!Note]
-> Advies Services in azure Marketplace moeten zich richten op aanbiedingen voor een technisch publiek en benadrukken technische oplossingen en services van Azure.
+> Advies Services in azure Marketplace moeten zich richten op technische oplossingen en services van Azure.
 >
-> Advies Services in AppSource moeten zich richten op aanbiedingen voor gebruikers met expertise bij het leveren van kwaliteits oplossingen voor Dynamics 365, Power BI of Power apps.
+> Consulting Services in AppSource moet zich richten op de bedrijfs oplossingen voor Dynamics 365, Power BI of Power apps.
  
 > [!TIP]
 > Als u wilt publiceren naar Azure Marketplace, selecteert u **Azure**in de vervolg keuzelijst voor het **primaire product** van partner Center.
@@ -131,7 +131,7 @@ Aanbiedingen moeten minstens een van de volgende vijf service typen zijn:
 > * On-site op locatie van een klant of de **faciliteit van een** partner.
 > * **Virtueel** : telefonische vergaderingen, webconferenties of externe implementatie.
 
-Nadat u de eerder genoemde vereiste elementen hebt geconfigureerd, wordt door het team voor inhouds beoordeling gecontroleerd of de beschrijving van uw aanbieding op informatieve en volledige wijze voor uw doel groep is. 
+Nadat u de eerder genoemde vereiste elementen hebt geconfigureerd, wordt door het team voor inhouds beoordeling gecontroleerd of de beschrijving van uw aanbieding op informatieve en volledig is. 
 
 ### <a name="the-listing-title"></a>De titel van de vermelding
 
@@ -171,9 +171,5 @@ Hier volgen enkele kortings tips:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, leert u hoe u [uw Cloud activiteiten kunt verg Roten met Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
-
-Registreren voor en werken in het partner centrum:
-
-* [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
-* Zie [een advies service-aanbieding maken](./partner-center-portal/create-consulting-service-offer.md) voor meer informatie.
+- [Breid uw Cloud activiteiten uit met Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- [Een adviesservice-aanbieding maken](./partner-center-portal/create-consulting-service-offer.md)

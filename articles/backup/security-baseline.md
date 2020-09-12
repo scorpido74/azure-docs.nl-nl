@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 224623f7851c35b12e1f2e1d028355c202128fa1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244752"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394615"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -186,7 +186,7 @@ Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden v
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze functionaliteit is beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een Log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Recovery Services kluizen.
 
@@ -202,7 +202,7 @@ Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze functionaliteit is beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvangen dat ze relevante actie kunnen ondernemen. In het gedeelte back-upwaarschuwingen worden waarschuwingen weer gegeven die zijn gegenereerd door Azure Backup service. Deze waarschuwingen worden gedefinieerd door de service en u kunt geen aangepaste waarschuwingen maken.
 
@@ -410,7 +410,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -426,7 +426,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden in een Recovery Services-kluis opgeslagen waarin het beheer van herstelpunten is ingebouwd.
+**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten.
 
 Implementeer afzonderlijke abonnementen en/of beheer groepen voor ontwikkelings-, test-en productie Recovery Services kluizen. Resources moeten worden gescheiden door VNet/subnet, op de juiste wijze worden gelabeld en beveiligd door een NSG of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten voldoende geïsoleerd zijn. Voor Virtual Machines het opslaan of verwerken van gevoelige gegevens, implementeert u beleid en procedure (s) om ze uit te scha kelen wanneer ze niet worden gebruikt.
 
@@ -818,7 +818,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 - [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
+* [Verifiëren bij Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Toegangs beleid voor Key Vault toewijzen](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 

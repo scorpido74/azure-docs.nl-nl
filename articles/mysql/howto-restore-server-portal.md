@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119222"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421081"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -59,7 +59,7 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
    ![Azure Database for MySQL-overzicht-knop herstellen](./media/howto-restore-server-portal/2-server.png)
 
-3. Vul in het formulier Restore de vereiste gegevens in:
+3. Vul het formulier Restore in met de vereiste gegevens:
 
    ![Azure Database for MySQL-herstel informatie](./media/howto-restore-server-portal/3-restore.png)
    - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
@@ -73,12 +73,18 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
 De nieuwe server die door een herstel punt is gemaakt, heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als de bestaande server op het tijdstip van de tijd. U kunt het wacht woord wijzigen op de pagina **overzicht** van de nieuwe server.
 
+Nadat de herstel bewerking is voltooid, zijn er twee server parameters die opnieuw worden ingesteld op standaard waarden (en niet worden gekopieerd van de primaire server) na de herstel bewerking
+*   time_zone: deze waarde moet worden ingesteld op het standaard waarden **systeem**
+*   event_scheduler-de event_scheduler op de herstelde server is ingesteld op **uit**
+
+U moet de waarde van de primaire server kopiëren en op de herstelde server instellen door de [Server parameter](howto-server-parameters.md) opnieuw te configureren
+
 De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="geo-restore"></a>Geo-herstel
 Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for MySQL beschikbaar is.  
 
-1. Selecteer de knop **een resource maken** (+) in de linkerbovenhoek van de portal. **Data bases**  >  **Azure database for MySQL**selecteren.
+1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal. Selecteer **Databases** > **Azure Database voor MySQL**.
 
    :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Navigeer naar Azure Database for MySQL.":::
  
@@ -86,7 +92,7 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 3. Selecteer **back-up** als **gegevens bron**. Met deze actie wordt een vervolg keuzelijst geladen die een lijst met servers bevat waarvoor geo redundante back-ups zijn ingeschakeld.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Selecteer de gegevensbron.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Selecteer een gegevens bron.":::
     
    > [!NOTE]
    > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -110,7 +116,7 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Formulier opvulling."::: 
 
-8. Selecteer **controleren + maken** om uw selecties te controleren. 
+8. Selecteer **Beoordelen en maken** om uw selecties te controleren. 
 
 9. Selecteer **Maken** om de server in te richten. Deze bewerking kan enkele minuten duren.
 

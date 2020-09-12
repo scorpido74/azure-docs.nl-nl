@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f1e95c1244d327478862c3919481394d974ea42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270173"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419262"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
 
@@ -38,7 +38,7 @@ Afzonderlijke sleutels, geheimen en machtigingen voor certificaten moeten alleen
 
 Meer informatie over de richt lijnen voor Azure Key Vault beheer vindt u in:
 
-- [Aanbevolen procedures Azure Key Vault](best-practices.md)
+- [Best practices voor Azure Key Vault](best-practices.md)
 - [Azure Key Vault-service limieten](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Ingebouwde rollen van Azure voor Key Vault gegevenslaag bewerkingen (preview-versie)
@@ -61,6 +61,10 @@ Zie [ingebouwde rollen van Azure](https://docs.microsoft.com/azure/role-based-ac
 Het nieuwe Azure RBAC-machtigings model voor sleutel kluis biedt een alternatief voor het model voor het toegangs beleid van de kluis. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Azure RBAC-machtigingen inschakelen voor Key Vault
+
+Tijdens de preview moet u de functie code van Azure RBAC (Microsoft_Azure_KeyVault_RBACEnabled = True) gebruiken om de nieuwe machtigings model opties te bekijken.
+
+https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Als Azure RBAC-machtigings model wordt ingesteld, worden alle machtigingen voor toegangs beleid ongeldig gemaakt. Dit kan leiden tot storingen wanneer gelijkwaardige Azure-rollen niet zijn toegewezen.
@@ -206,15 +210,13 @@ Zie voor meer informatie over het maken van aangepaste rollen:
 
 [Aangepaste Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-Controle bijlage beschik bare acties: **beschik bare acties**
-
 ## <a name="known-limits-and-performance"></a>Bekende limieten en prestaties
 
 -   2000 Azure-roltoewijzingen per abonnement
 
 -   Latentie van roltoewijzingen: bij huidige verwachte prestaties duurt het Maxi maal tien minuten (600 seconden) nadat roltoewijzingen zijn gewijzigd voor het Toep assen van de rol
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
 - [Overzicht van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Zelf studie voor aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

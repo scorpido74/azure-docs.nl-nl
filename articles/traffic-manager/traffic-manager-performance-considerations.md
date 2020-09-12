@@ -3,20 +3,20 @@ title: Prestatie overwegingen voor Azure Traffic Manager | Microsoft Docs
 description: Inzicht krijgen in de prestaties van Traffic Manager en hoe u de prestaties van uw website kunt testen wanneer u Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938546"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392667"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Prestatieoverwegingen voor Traffic Manager
 

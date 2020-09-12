@@ -1,6 +1,6 @@
 ---
-title: Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen-Azure AD
-description: Meer informatie over het beheren van toestemmings aanvragen wanneer de gebruikers toestemming is uitgeschakeld of beperkt en hoe u een aanvraag voor de beheerder van de hele Tenant kunt evalueren voor een toepassing.
+title: Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen in Azure Active Directory
+description: Meer informatie over het beheren van toestemming aanvragen wanneer de gebruikers toestemming is uitgeschakeld of beperkt, en hoe u een aanvraag voor de beheerder van de hele Tenant kunt evalueren in Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763190"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420452"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen
 
@@ -76,7 +75,7 @@ De volgende lijst bevat enkele aanbevelingen waarmee u rekening moet houden bij 
 
 * **Meer informatie over de aangevraagde machtigingen.**
 
-   De machtigingen die door de toepassing worden aangevraagd, worden weer gegeven in de [toestemming prompt](../develop/application-consent-experience.md). Als u de machtigings titel uitbreidt, wordt de beschrijving van de machtiging weer gegeven. De beschrijving voor toepassings machtigingen eindigt doorgaans op zonder aangemelde gebruiker. De beschrijving voor gedelegeerde machtigingen eindigt doorgaans met ' namens de aangemelde gebruiker '. Machtigingen voor de Microsoft Graph-API worden beschreven in [Microsoft Graph permissions Reference]-Raadpleeg de documentatie voor andere Api's om inzicht te krijgen in de machtigingen die ze beschikbaar maken.
+   De machtigingen die door de toepassing worden aangevraagd, worden weer gegeven in de [toestemming prompt](../develop/application-consent-experience.md). Als u de machtigings titel uitbreidt, wordt de beschrijving van de machtiging weer gegeven. De beschrijving voor toepassings machtigingen eindigt doorgaans op zonder aangemelde gebruiker. De beschrijving voor gedelegeerde machtigingen eindigt doorgaans met ' namens de aangemelde gebruiker '. Machtigingen voor de Microsoft Graph-API worden beschreven in [Microsoft Graph machtigingen referentie](https://docs.microsoft.com/graph/permissions-reference) -Raadpleeg de documentatie voor andere api's om inzicht te krijgen in de machtigingen die ze beschikbaar maken.
 
    Als u een aangevraagde machtiging niet begrijpt, *mag u geen toestemming verlenen*.
 
@@ -95,27 +94,29 @@ De volgende lijst bevat enkele aanbevelingen waarmee u rekening moet houden bij 
 ## <a name="granting-consent-as-an-administrator"></a>Toestemming verlenen als beheerder
 
 ### <a name="granting-tenant-wide-admin-consent"></a>Toestemming van de beheerder voor de hele Tenant verlenen
-
 Zie [machtigingen voor Tenant-brede beheerder toestaan voor een toepassing](grant-admin-consent.md) voor stapsgewijze instructies voor het verlenen van toestemming voor de beheerder voor de hele Tenant via de Azure Portal, met behulp van Azure AD Power shell of via de toestemming prompt zelf.
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Toestemming verlenen namens een specifieke gebruiker
-
-In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [micro soft-Graph API](https://docs.microsoft.com/graph/use-the-api) gebruiken om toestemming te verlenen aan gedelegeerde machtigingen namens één gebruiker. Zie [toegang namens een gebruiker verkrijgen](https://docs.microsoft.com/graph/auth-v2-user)voor meer informatie.
+In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) gebruiken om toestemming te geven aan gedelegeerde machtigingen namens één gebruiker. Zie [toegang namens een gebruiker verkrijgen](https://docs.microsoft.com/graph/auth-v2-user)voor meer informatie.
 
 ## <a name="limiting-user-access-to-applications"></a>Gebruikers toegang tot toepassingen beperken
-
 De toegang van gebruikers tot toepassingen kan nog steeds worden beperkt, zelfs wanneer toestemming van de beheerder voor de hele Tenant is verleend. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie over het vereisen van een gebruikers toewijzing aan een toepassing.
 
 Zie [Azure AD gebruiken voor toegang tot toepassingen voor](what-is-access-management.md)meer informatie over hoe u extra complexe scenario's kunt afhandelen.
 
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Alle toekomstige bewerkingen van de gebruikers toestemming voor elke toepassing uitschakelen
+Door de toestemming van de gebruiker voor uw hele map uit te scha kelen, voor komt u dat eind gebruikers aan elke toepassing worden doorgestuurd. Beheerders kunnen namens de gebruiker nog steeds toestemming geven. Meer informatie over de toestemming van de toepassing en waarom u dit mogelijk niet wilt doen, kunt u lezen [over de toestemming van gebruikers en beheerders](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+
+Voer de volgende stappen uit om alle toekomstige bewerkingen voor gebruikers toestemming in uw hele directory uit te scha kelen:
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+2.  Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
+3.  Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+4.  Selecteer **gebruikers en groepen** in het navigatie menu.
+5.  Selecteer **Gebruikersinstellingen**.
+6.  Schakel alle toekomstige acties voor gebruikers toestemming uit door de gebruikers in staat te stellen **apps toegang te geven tot hun gegevens** in-of uit te scha **kelen en op** de knop **Opslaan** te klikken.
+
 ## <a name="next-steps"></a>Volgende stappen
-
-[Vijf stappen voor het beveiligen van uw identiteits infrastructuur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
-
-[De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
-
-[Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
-
-[Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
-
-[Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Vijf stappen voor het beveiligen van uw identiteits infrastructuur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
+* [Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+* [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)

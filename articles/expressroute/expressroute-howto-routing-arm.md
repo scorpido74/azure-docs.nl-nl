@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: peering configureren: Power shell'
 description: Dit artikel begeleidt u stapsgewijs door de procedure voor het maken en inrichten van de persoonlijke, openbare en Microsoft-peering van een ExpressRoute-circuit. In dit artikel leest u hoe u de status controleert en peerings voor uw circuit bijwerkt of verwijdert.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.author: jaredro
-ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: e1f1a36e84567a56ddb25366f96d1b2dba1d82fb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735265"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395567"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Peering voor een ExpressRoute-circuit maken en wijzigen met behulp van Power shell
 
@@ -25,7 +25,7 @@ Dit artikel helpt u bij het maken en beheren van routerings configuratie voor ee
 > * [Open bare peering](about-public-peering.md)
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-routing-classic.md)
+> * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
 
@@ -49,7 +49,7 @@ U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-c
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Micro soft-peering
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-peering
 
 In deze sectie leert u hoe u de micro soft-peering-configuratie voor een ExpressRoute-circuit maakt, ontvangt, bijwerkt en verwijdert.
 

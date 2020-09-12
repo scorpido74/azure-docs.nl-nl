@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386160"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400140"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps
 
@@ -47,7 +47,7 @@ In dit onderwerp wordt beschreven hoe u uw eigen versleutelings sleutel instelt 
   |----------|-------|
   | **Sleutel type** | RSA |
   | **RSA-sleutel grootte** | 2048 |
-  | **Ingeschakeld** | Ja |
+  | **Ingeschakeld** | Yes |
   |||
 
   ![Uw door de klant beheerde versleutelings sleutel maken](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -225,7 +225,7 @@ Voor deze taak kunt u de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershe
 
    1. Wanneer u klaar bent met het deel venster **toegangs beleid** , selecteert u **Opslaan**.
 
-Zie [Key Vault-verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)voor meer informatie.
+Zie [verifiëren voor Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-portal)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

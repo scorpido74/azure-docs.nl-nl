@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081981"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418872"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten met behulp van Power shell
 
@@ -40,7 +40,7 @@ Azure ondersteunt momenteel beide modi van VPN-gateways: op route gebaseerde VPN
 | -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure gateway-SKU**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-versie**          | IKEv1                       | IKEv2                            | IKEv1 en IKEv2                         |
-| **Aantal. S2S-verbindingen** | **1**                       | 10                               | 30                     |
+| **Max. S2S-verbindingen** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
 Met het aangepaste IPsec/IKE-beleid kunt u nu VPN-gateways op basis van Azure op basis van route ring configureren voor het gebruik van op voor voegsels gebaseerde verkeers selecties met de optie '**PolicyBasedTrafficSelectors**', om verbinding te maken met on-premises op beleid gebaseerde VPN-apparaten. Met deze mogelijkheid kunt u verbinding maken vanaf een virtueel Azure-netwerk en een VPN-gateway naar meerdere on-premises op beleid gebaseerde VPN/Firewall-apparaten, waarbij u de limiet voor enkele verbindingen verwijdert van de huidige VPN-gateways op basis van Azure-beleid.

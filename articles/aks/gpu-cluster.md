@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757639"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443055"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 Configureer het cluster voor het gebruik van de AKS specialistische GPU-installatie kopie wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` vlag voor de GPU-agent knooppunten op uw nieuwe cluster om de AKS specialistische GPU-afbeelding te gebruiken.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ Als u een cluster wilt maken met behulp van de gewone AKS-installatie kopieën, 
 
 Configureer een nieuwe knooppunt groep om de AKS Special GPU-installatie kopie te gebruiken. Gebruik de `--aks-custom-headers` vlag Flag voor de GPU-agent knooppunten in de nieuwe knooppunt groep om de AKS Special GPU-installatie kopie te gebruiken.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ Als u een knooppunt groep wilt maken met behulp van de gewone AKS-installatie ko
 
 > [!NOTE]
 > Als uw GPU-SKU generatie 2 virtuele machines vereist, kunt u het volgende doen:
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 

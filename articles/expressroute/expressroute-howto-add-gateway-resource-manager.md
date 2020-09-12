@@ -2,25 +2,25 @@
 title: 'Azure ExpressRoute: een gateway toevoegen aan een VNet: Power shell'
 description: Dit artikel helpt u bij het toevoegen van VNet-gateway aan een al gemaakte Resource Manager VNet voor ExpressRoute.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/21/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 58d2949a18bfbf2800ae6ab4ac74b02b05b3eb07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfdab553ba7f6506f66e892da3f1e8ce01c6d8bb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736387"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396383"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Een virtuele netwerkgateway configureren voor ExpressRoute met behulp van PowerShell
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [Klassiek-Power shell](expressroute-howto-add-gateway-classic.md)
-> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Video: Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
 title: Een groep maken voor het toewijzen van rollen in Azure Active Directory | Microsoft Docs
-description: Preview van aangepaste Azure AD-rollen voor het delegeren van identiteits beheer. Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
+description: Bekijk een voorbeeld van aangepaste Azure AD-rollen voor het delegeren van identiteitsbeheer. Beheer Azure-rollen in Azure Portal, PowerShell of Graph API.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476032"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401670"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Een door een functie toewijs bare groep maken in Azure Active Directory
 
-U kunt alleen een rol toewijzen aan een groep die is gemaakt met de eigenschap isAssignableToRole ingesteld op True, of is gemaakt in de Azure AD-Portal met **Azure AD-rollen kunnen worden toegewezen aan de groep** ingeschakeld. Dit groeps kenmerk maakt de groep een die kan worden toegewezen aan een rol in Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u dit speciale soort groep maakt.
+U kunt alleen een rol toewijzen aan een groep die is gemaakt met de eigenschap isAssignableToRole ingesteld op True, of is gemaakt in de Azure AD-Portal met **Azure AD-rollen kunnen worden toegewezen aan de groep** ingeschakeld. Dit groeps kenmerk maakt de groep een die kan worden toegewezen aan een rol in Azure Active Directory (Azure AD). In dit artikel wordt beschreven hoe u dit speciale soort groep maakt. **Opmerking:** Een groep waarvoor de eigenschap isAssignableToRole is ingesteld op True, kan niet van het dynamische lidmaatschaps type zijn. Zie [een groep gebruiken om toewijzingen van Azure AD-rollen te beheren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)voor meer informatie.
 
 ## <a name="using-azure-ad-admin-center"></a>Het Azure AD-beheer centrum gebruiken
 
@@ -128,4 +128,4 @@ Voor dit type groep is `isPublic` altijd False en is `isSecurityEnabled` altijd 
 
 - [Een rol toewijzen aan een Cloud groep](roles-groups-assign-role.md)
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)
+- [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](roles-groups-faq-troubleshooting.md)

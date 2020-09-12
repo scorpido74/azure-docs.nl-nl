@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400021"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
@@ -46,7 +46,7 @@ De volgende verbindings matrix bevat een overzicht van de stromen die in dit sce
 | **Niet-NVA-VNets**| &#8594; |   Statisch |      X   |        X     |      X    |
 | **Vertakkingen**     | &#8594; |   Statisch |      X   |        X     |      X    |
 
-Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom leert. Overweeg de volgende:
+Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom leert. Een ' X ' betekent dat de connectiviteit systeem eigen wordt ondersteund door Virtual WAN, en ' static ' betekent dat de connectiviteit wordt verschaft door Virtual WAN met statische routes. Overweeg de volgende:
 
 * NVA-spokes worden niet beheerd door virtuele WAN. Als gevolg hiervan worden de mechanismen waarmee ze zullen communiceren met andere VNets of vertakkingen door de gebruiker onderhouden. Connectiviteit met het NVA VNet wordt gegeven door een VNet-peering en een standaard route naar 0.0.0.0/0 die verwijst naar de NVA als volgende hop moet verbinding met internet hebben, andere spokes en vertakkingen
 * NVA VNets kent hun eigen NVA-spokes, maar niet over NVA-spokes die zijn verbonden met andere NVA VNets. In tabel 1 is VNet 2 bijvoorbeeld van de VNet 5 en VNet 6, maar niet over andere spokes, zoals VNet 7 en VNet 8. Er is een statische route vereist om andere voor voegsels van spokes te injecteren in NVA VNets

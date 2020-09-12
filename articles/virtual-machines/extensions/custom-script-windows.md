@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010934"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426262"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
 
@@ -60,6 +60,7 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * De uitvoering van het script mag 90 minuten duren. Als het langer duurt, mislukt de inrichting van de extensie.
 * Neem opnieuw opstarten niet in het script op. Deze actie veroorzaakt problemen met andere extensies die worden geïnstalleerd. Na het opnieuw opstarten wordt de extensie niet voortgezet.
 * Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart en vervolgens toepassingen installeert en scripts uitvoert, kunt u het opnieuw opstarten plannen met een geplande Windows-taak of gebruikmaken van hulpprogram ma's zoals DSC, chef of Puppet-extensies.
+* Het is niet raadzaam om een script uit te voeren dat de VM-agent stopt te stoppen of bij te werken. Dit kan de uitbrei ding in een overgangs status, tot een time-out leiden.
 * De extensie voert een script slechts eenmaal uit. Wilt u dat een script bij iedere start wordt uitgevoerd, dan moet u de extensie gebruiken om een geplande Windows-taak te maken.
 * Als u wilt plannen wanneer een script wordt uitgevoerd, dan moet u de extensie gebruiken om een geplande Windows-taak te maken.
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer statusupdates van een actief script wilt, dan moet u uw eigen oplossing maken.
@@ -123,7 +124,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | publisher | Microsoft.Compute | tekenreeks |
 | type | CustomScriptExtension | tekenreeks |
 | typeHandlerVersion | 1,10 | int |
@@ -141,7 +142,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 * `commandToExecute`: (**vereist**, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld als uw opdracht geheimen bevat zoals wacht woorden of als uw fileUris gevoelig zijn.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
-* `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
+* `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
 * `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, `fileUris` moeten alle url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 * `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het downloaden van bestand (en)
@@ -205,7 +206,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sja
 * [Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Toepassing met twee lagen implementeren in Windows en Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 
 De `Set-AzVMCustomScriptExtension` opdracht kan worden gebruikt om de aangepaste script extensie toe te voegen aan een bestaande virtuele machine. Zie [set-AzVMCustomScriptExtension](/powershell/module/az.compute/set-azvmcustomscriptextension)voor meer informatie.
 
@@ -222,7 +223,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Meerdere scripts gebruiken
 
-In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. U kunt bijvoorbeeld `1_Add_Tools.ps1` aanroepen `2_Add_Features.ps1` door toe te voegen `.\2_Add_Features.ps1` aan het script en dit proces herhalen voor de andere scripts die u in definieert `$settings` .
+In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. U kunt bijvoorbeeld `1_Add_Tools.ps1` aanroepen `2_Add_Features.ps1` door toe te voegen  `.\2_Add_Features.ps1` aan het script en dit proces herhalen voor de andere scripts die u in definieert `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -281,7 +282,7 @@ Als u [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
-## <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Zie [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor meer informatie over het implementeren van de aangepaste script extensie voor een schaalset.
 
