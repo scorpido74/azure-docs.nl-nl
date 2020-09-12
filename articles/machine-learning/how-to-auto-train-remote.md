@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58fedfe794f86a4a453614b09fcce6e803eb887f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321554"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651532"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Bron maken
 
-Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) doel in uw werk ruimte ( `ws` ) als deze nog niet bestaat.
+Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) doel in uw werk ruimte ( `ws` ) als deze nog niet bestaat.
 
 **Geschatte tijd**: het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
 
@@ -90,7 +90,7 @@ De beperkingen voor de cluster naam zijn onder andere:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
-Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en het label, dat wordt door gegeven aan automatische milliliters in de [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . De `TabularDataset` methode `from_delimited_files` stelt de standaard waarde `infer_column_types` in op waar, waardoor het kolommen type automatisch wordt afleiden. 
+Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) en het label, dat wordt door gegeven aan automatische milliliters in de [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) . De `TabularDataset` methode `from_delimited_files` stelt de standaard waarde `infer_column_types` in op waar, waardoor het kolommen type automatisch wordt afleiden. 
 
 Als u de kolom typen hand matig wilt instellen, kunt u het argument instellen `set_column_types` om het type van elke kolom hand matig in te stellen. In het volgende code voorbeeld zijn de gegevens afkomstig uit het sklearn-pakket.
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Resultaten verkennen
 
-U kunt dezelfde Jupyter- [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) gebruiken zoals weer gegeven in [de trainings zelfstudie](tutorial-auto-train-models.md#explore-the-results) om een grafiek en een tabel met resultaten weer te geven.
+U kunt dezelfde Jupyter- [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) gebruiken zoals weer gegeven in [de trainings zelfstudie](tutorial-auto-train-models.md#explore-the-results) om een grafiek en een tabel met resultaten weer te geven.
 
 ```python
 from azureml.widgets import RunDetails

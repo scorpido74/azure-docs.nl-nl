@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 95d3570d93aa4966fcf6864838ec01735b8662db
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544580"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650291"
 ---
-# <a name="advanced-entry-script-authoring"></a>Geavanceerd invoer script ontwerpen
+# <a name="advanced-entry-script-authoring"></a>Geavanceerde scriptinvoer ontwerpen
 
 In dit artikel wordt beschreven hoe u invoer scripts voor gespecialiseerde use cases schrijft.
 
@@ -90,7 +90,7 @@ def run(data):
 ```
 
 
-## <a name="binary-ie-image-data"></a><a id="binary-data"></a>Binaire (d.w.z. afbeeldings) gegevens
+## <a name="binary-ie-image-data"></a><a id="binary-data"></a> Binaire (d.w.z. afbeeldings) gegevens
 
 Als uw model binaire gegevens accepteert, zoals een afbeelding, moet u het bestand wijzigen dat `score.py` wordt gebruikt voor uw implementatie om onbewerkte HTTP-aanvragen te accepteren. Als u onbewerkte gegevens wilt accepteren, gebruikt u de `AMLRequest` klasse in uw invoer script en voegt `@rawhttp` u de decorator toe aan de `run()` functie.
 
@@ -260,7 +260,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam met de methode [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand of de bestanden op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad van de map die de bestanden bevat.
+Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam met de methode [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand of de bestanden op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad van de map die de bestanden bevat.
 
 Wanneer u een model registreert, geeft u het een naam. De naam komt overeen met de locatie waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
 
@@ -269,7 +269,7 @@ Wanneer u een model registreert, geeft u het een naam. De naam komt overeen met 
 * [Problemen met een mislukte implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Implementeren naar Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Client toepassingen maken voor het gebruik van webservices](how-to-consume-web-service.md)
-* [Web-service bijwerken](how-to-deploy-update-web-service.md)
+* [Webservice bijwerken](how-to-deploy-update-web-service.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

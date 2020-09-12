@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 371099610da129025f6683630b1824b8466b5aff
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 77980541049740c5f706d54d289472a076103137
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833008"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461898"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MySQL
 
@@ -112,7 +112,7 @@ Voor Azure Database for MySQL heeft de functie regels voor virtuele netwerken de
 
 - De regels voor virtuele netwerken zijn alleen van toepassing op Azure Resource Manager virtuele netwerken. en niet op [klassieke implementatie model][arm-deployment-model-568f] netwerken.
 
-- Het inschakelen van service-eind punten voor virtuele netwerken voor het Azure Database for MySQL met behulp van het tag **micro soft. SQL** -service, schakelt ook de eind punten in voor alle Azure data base-services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database en Azure SQL Data Warehouse.
+- Het inschakelen van service-eind punten voor virtuele netwerken voor het Azure Database for MySQL met behulp van het tag **micro soft. SQL** -service, schakelt ook de eind punten in voor alle Azure data base-services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 - Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
 

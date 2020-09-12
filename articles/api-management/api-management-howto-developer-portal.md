@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852154"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614061"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
+# <a name="azure-api-management-developer-portal-overview"></a>Overzicht van de Azure API Management-ontwikkelaarsportal
 
 Ontwikkelaars Portal is een automatisch gegenereerde, volledig aanpas bare website met de documentatie van uw Api's. Het is waar API-consumers uw Api's kunnen detecteren, meer informatie over het gebruik ervan moeten gebruiken, toegang te vragen en uit te proberen.
 
@@ -31,9 +31,9 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>De nieuwe ontwikkelaars Portal is niet compatibel met de verouderde ontwikkelaars Portal en de geautomatiseerde migratie is niet mogelijk. U moet de inhoud hand matig opnieuw maken (pagina's, tekst, media bestanden) en het uiterlijk van de nieuwe portal aanpassen. Raadpleeg [de zelf studie over de ontwikkelaars Portal](api-management-howto-developer-portal-customize.md) voor hulp.
+> <a name="migrate-from-legacy"></a> De nieuwe ontwikkelaars Portal is niet compatibel met de verouderde ontwikkelaars Portal en de geautomatiseerde migratie is niet mogelijk. U moet de inhoud hand matig opnieuw maken (pagina's, tekst, media bestanden) en het uiterlijk van de nieuwe portal aanpassen. Raadpleeg [de zelf studie over de ontwikkelaars Portal](api-management-howto-developer-portal-customize.md) voor hulp.
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Beheerde en zelf-hostende versies
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Beheerde en zelf-hostende versies
 
 U kunt uw ontwikkelaars Portal op twee manieren bouwen:
 
@@ -67,27 +67,27 @@ De *Portal-inhoud* is specifiek voor de portal en omvat:
 
 De portal is gebaseerd op een aangepaste Fork van het [Paperbits-Framework](https://paperbits.io/). De oorspronkelijke Paperbits-functionaliteit is uitgebreid om API Management specifieke widgets te bieden (bijvoorbeeld een lijst met Api's, een lijst met producten) en een connector voor API Management-service voor het opslaan en ophalen van inhoud.
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions"></a><a name="faq"></a> Veelgestelde vragen
 
 In deze sectie beantwoorden we veelgestelde vragen over de ontwikkelaars Portal, die algemeen zijn. Raadpleeg [de sectie wiki van de GitHub-opslag plaats](https://github.com/Azure/api-management-developer-portal/wiki)voor vragen die specifiek zijn voor de zelf-hostende versie.
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Hoe kan ik migreren vanuit de preview-versie van de portal?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> Hoe kan ik migreren vanuit de preview-versie van de portal?
 
-Door de preview-versie van de ontwikkelaars portal te gebruiken, hebt u de preview-inhoud in uw API Management-service ingericht. De standaard inhoud is aanzienlijk gewijzigd in de algemeen beschik bare versie voor betere gebruikers ervaring. Het omvat ook nieuwe widgets.
+Wanneer u de preview-versie van de ontwikkelaars portal voor het eerst hebt gestart, hebt u de preview-versie van de standaard inhoud in uw API Management-service ingericht. De standaard inhoud is aanzienlijk gewijzigd in de algemeen beschik bare versie. De preview-versie van standaard inhoud bevat echter geen OAuth-knoppen in de aanmeldings pagina's, maar gebruikt verschillende widgets voor het weer geven van Api's en is afhankelijk van de beperkte mogelijkheden voor het structureren van ontwikkelaars Portal pagina's. Hoewel er verschillen zijn in de inhoud, wordt de engine van de portal (inclusief onderliggende objecten) automatisch bijgewerkt telkens wanneer u uw ontwikkelaars Portal publiceert.
 
-Als u de beheerde versie gebruikt, moet u de inhoud van de portal opnieuw instellen door te klikken op **inhoud opnieuw instellen** in de sectie **bewerkingen** menu. Als u deze bewerking bevestigt, wordt de inhoud van de portal verwijderd en wordt de nieuwe standaard inhoud ingericht. De engine van de portal is automatisch bijgewerkt in uw API Management-service.
+Als u uw portal sterk hebt aangepast op basis van de preview-versie van de inhoud, kunt u deze gewoon blijven gebruiken en nieuwe widgets hand matig op de pagina's van de portal plaatsen. Anders is het raadzaam om de inhoud van uw portal te vervangen door de nieuwe standaard inhoud.
+
+Als u de inhoud in een beheerde Portal opnieuw wilt instellen, klikt u op **inhoud opnieuw instellen** in de sectie **bewerkingen** menu. Met deze bewerking wordt de inhoud van de portal verwijderd en worden nieuwe standaard inhoud ingericht. Alle aanpassingen en wijzigingen van de ontwikkelaars portal gaan verloren. **U kunt deze actie niet ongedaan maken**.
 
 ![Portal-inhoud opnieuw instellen](media/api-management-howto-developer-portal/reset-content.png)
 
-Als u de zelf-hostende versie gebruikt, gebruikt u de `scripts/cleanup.bat` en `scripts/generate.bat` uit de GitHub-opslag plaats om bestaande inhoud te verwijderen en nieuwe inhoud in te richten. Zorg ervoor dat u de code van uw portal van tevoren bijwerkt naar de nieuwste versie van de GitHub-opslag plaats.
+Als u de zelf-hostende versie gebruikt, voert `scripts.v2/cleanup.bat` u `scripts.v2/generate.bat` scripts uit vanuit de GitHub-opslag plaats om bestaande inhoud te verwijderen en nieuwe inhoud in te richten. Zorg ervoor dat u de code van uw portal bijwerkt naar de nieuwste versie van de GitHub-opslag plaats.
 
-Als u de inhoud van de portal niet opnieuw wilt instellen, kunt u eventueel pas beschik bare widgets gebruiken in uw pagina's. Bestaande widgets zijn automatisch bijgewerkt naar de nieuwste versie.
-
-Als uw portal is ingericht na de aankondiging van de algemene Beschik baarheid, moet deze al de nieuwe standaard inhoud gebruiken. Aan uw zijde is geen actie vereist.
+Als u de portal voor het eerst hebt geopend na de aankondiging van de algemene Beschik baarheid in november 2019, moet deze de nieuwe standaard inhoud al gebruiken en hoeft er verder geen actie te worden ondernomen.
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Beschikt de portal over alle functies van de verouderde Portal?
 
-De ontwikkelaars Portal biedt geen ondersteuning meer voor *toepassingen* en *problemen*.
+De ontwikkelaars Portal biedt geen ondersteuning meer voor *toepassingen*, *problemen*en directe integratie met Facebook, micro soft, Twitter en Google als id-providers (u kunt Azure AD B2C in plaats daarvan gebruiken).
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>Is de verouderde Portal afgeschaft?
 
@@ -145,7 +145,7 @@ Nadat u de overdracht hebt ingesteld, moet u [de portal opnieuw publiceren](api-
 
 Voor de meeste configuratie wijzigingen (bijvoorbeeld VNet, aanmelden en product voorwaarden) moet [de portal opnieuw worden gepubliceerd](api-management-howto-developer-portal-customize.md#publish).
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Ik krijg een CORS-fout bij het gebruik van de interactieve console
 
 De interactieve console maakt een API aan de client zijde via de browser. Los het CORS-probleem op door [een CORS-beleid](api-management-cross-domain-policies.md#CORS) toe te voegen aan uw API (s).
 
@@ -217,7 +217,7 @@ De aanroep fout kan ook worden veroorzaakt door een TLS/SSL-certificaat, dat wor
 | Apple Safari                | Ja<sup>1</sup> |
 | Google Chrome               | Ja<sup>1</sup> |
 | Microsoft Edge              | Ja<sup>1</sup> |
-| Microsoft Internet Explorer | Nee              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Ja<sup>1</sup> |
 
  <small><sup>1</sup> wordt ondersteund in de twee nieuwste productie versies.</small>

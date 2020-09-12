@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651723"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650690"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -213,7 +213,7 @@ Tijdens deze fase implementeert u doorgaans Ontwikkel systemen, eenheids test sy
 12. Als de werk belasting van toepassing is, noteert u het Resource verbruik van de systemen in Azure. Vergelijk dit verbruik met records van uw oude platform. Pas de VM-grootte van toekomstige implementaties aan als u ziet dat er grote verschillen zijn. Houd er rekening mee dat bij het krimpen, opslag en netwerk bandbreedte van Vm's ook worden gereduceerd.
     - [Grootten voor Windows Virtual Machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Sizes for Linux virtual machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Experimenteer met de functionaliteit en processen van systeem kopieën. Het doel is om het eenvoudig te maken om een ontwikkelings systeem of een test systeem te kopiëren, zodat project teams snel nieuwe systemen kunnen verkrijgen. Overweeg het gebruik van [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) voor deze taken.
+13. Experimenteer met de functionaliteit en processen van systeem kopieën. Het doel is om het eenvoudig te maken om een ontwikkelings systeem of een test systeem te kopiëren, zodat project teams snel nieuwe systemen kunnen verkrijgen. 
 14. Optimaliseer en verwerk de op rollen gebaseerde toegang, machtigingen en processen van uw team om ervoor te zorgen dat u een schei ding van taken hebt. Op hetzelfde moment moet u ervoor zorgen dat alle teams hun taken in de Azure-infra structuur kunnen uitvoeren.
 15. Ontwikkel, test en documenteer procedures voor hoge Beschik baarheid en herstel na nood gevallen om uw mede werkers in staat te stellen deze taken uit te voeren. Identificeer tekortkomingen en pas nieuwe Azure-functionaliteit aan die u integreert in uw implementaties.
 

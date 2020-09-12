@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0a41aa062cf4804587b97ce224f80c0bc4bf2b3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320830"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650580"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Geautomatiseerde machine learning-resultaten begrijpen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,14 +59,14 @@ Nadat u een geautomatiseerd machine learning experiment hebt uitgevoerd, kunt u 
 
    [![Model experimenteren](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-U ziet ook dezelfde resultaten tijdens het uitvoeren wanneer u de Jupyter- `RunDetails` [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)gebruikt.
+U ziet ook dezelfde resultaten tijdens het uitvoeren wanneer u de Jupyter- `RunDetails` [widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)gebruikt.
 
-## <a name="classification-results"></a><a name="classification"></a>Classificatie resultaten
+## <a name="classification-results"></a><a name="classification"></a> Classificatie resultaten
 
 Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk classificatie model dat u bouwt met behulp van de geautomatiseerde machine learning mogelijkheden van Azure Machine Learning
 
 + [Metrische gegevens](#classification-metrics)
-+ [Verwar ring matrix](#confusion-matrix)
++ [Verwarringsmatrix](#confusion-matrix)
 + [Nauw keurigheid: grafiek intrekken](#precision-recall-chart)
 + [Bewerkings kenmerken van ontvanger (of ROC)](#roc)
 + [Bocht](#lift-curve)
@@ -108,7 +108,7 @@ Een concreet voor beeld maakt dit onderscheid duidelijker: in plaats van het ter
 
 <a name="confusion-matrix"></a>
 
-### <a name="confusion-matrix"></a>Verwar ring matrix
+### <a name="confusion-matrix"></a>Verwarringsmatrix
 
 #### <a name="what-is-a-confusion-matrix"></a>Wat is een Verwar ring-matrix?
 Een Verwar ring matrix wordt gebruikt om de prestaties van een classificatie model te beschrijven. Elke rij geeft de instanties van de echte of werkelijke klasse in uw gegevensset weer, en elke kolom vertegenwoordigt de exemplaren van de klasse die door het model is voor speld. 
@@ -211,7 +211,7 @@ Een goed gekalibreerd model wordt uitgelijnd met de lijn y = x, waarbij de kans 
 ##### <a name="example-2-an-over-confident-model"></a>Voor beeld 2: een over-vertrouwen model
 ![Een over-vertrouwen model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a>Regressie resultaten
+## <a name="regression-results"></a><a name="regression"></a> Regressie resultaten
 
 Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk regressie model dat u bouwt met behulp van de geautomatiseerde machine learning mogelijkheden van Azure Machine Learning
 
@@ -220,7 +220,7 @@ Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk regre
 + [Histogram van verschillen](#histo)
 
 
-### <a name="regression-metrics"></a><a name="reg-metrics"></a>Metrische gegevens over regressie
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> Metrische gegevens over regressie
 
 De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling voor een regressie-of prognose taak.
 
@@ -238,7 +238,7 @@ normalized_root_mean_squared_error|Genormaliseerd root-kwadraat fout is het root
 root_mean_squared_log_error|Het wortel gemiddelde van het logaritmische fout is de vierkantswortel van de verwachte kwadratische fout|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Geen|
 normalized_root_mean_squared_log_error|Genormaliseerde logaritmische fout in kwadraat is het belangrijkste gemiddelde logboek fout gedeeld door het bereik van de gegevens|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Delen door bereik van de gegevens|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>Voor speld versus waar grafiek
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Voor speld versus waar grafiek
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Wat is een voor speld versus waar grafiek?
 Voor speld versus waar ziet u de relatie tussen een voorspelde waarde en de bijbehorende waarde voor het correleren van een regressie probleem. Deze grafiek kan worden gebruikt om de prestaties van een model te meten als dichter bij de y = x-lijn de voorspelde waarden zijn, hoe beter de nauw keurigheid van een voorspellend model is.
 
@@ -254,7 +254,7 @@ Na elke uitvoering ziet u een voorspelde versus ware grafiek voor elk regressie 
 
 
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Grafiek met het histogram van verschillen
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Grafiek met het histogram van verschillen
 #### <a name="what-is-a-residuals-chart"></a>Wat is een verschillen diagram?
 Een rest is het verschil tussen de voor spelling en de werkelijke waarde ( `y_pred - y_true` ). Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram van de resten worden gevormd als klok curve, gecentreerd rond 0. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Wat doet automatische ML in het diagram verschillen?
@@ -268,7 +268,7 @@ Een goed model heeft meestal resten die nauw keurig rond nul zijn.
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Voor beeld 2: een regressie model met meer gelijkmatige verdeling van fouten
 ![Een regressie model met een meer gelijkmatige verdeling van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a>De interpretatie van modellen en de urgentie van het onderdeel
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> De interpretatie van modellen en de urgentie van het onderdeel
 Automated ML biedt een machine learning interpretable dash board voor uw uitvoeringen.
 Zie voor meer informatie over het inschakelen van functies voor het maken van interpretaties de [procedures](how-to-machine-learning-interpretability-automl.md) voor het inschakelen van de functie voor het maken van interpretiteit in geautomatiseerde ml experimenten.
 

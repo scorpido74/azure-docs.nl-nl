@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097072"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613987"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -36,9 +36,9 @@ Lees de rest van dit artikel voor specifieke aanbevelingen.
 ## <a name="azure-subscription"></a>Azure-abonnement
 
 Een betaald abonnement wordt aanbevolen.
-
+<!-- 
 > [!NOTE]
-> Het Azure HPC-cache team moet uw abonnement toevoegen aan de lijst met toegang voordat het kan worden gebruikt voor het maken van een cache-exemplaar. Met deze procedure kunt u ervoor zorgen dat elke klant de reactie snelheid van hoge kwaliteit vanuit hun caches ontvangt. Vul [dit formulier](https://aka.ms/onboard-hpc-cache) in om toegang aan te vragen.
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>Netwerkinfrastructuur
 

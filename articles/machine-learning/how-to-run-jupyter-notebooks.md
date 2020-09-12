@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386449"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650920"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Bekijk hoe u het volgende kunt doen:
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
 * Een Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).
 
-## <a name="create-notebooks"></a><a name="create"></a>Notitie blokken maken
+## <a name="create-notebooks"></a><a name="create"></a> Notitie blokken maken
 
 Maak in uw Azure Machine Learning-werk ruimte een nieuw Jupyter-notitie blok en ga aan de slag. Het zojuist gemaakte notitie blok wordt opgeslagen in de standaard werkruimte opslag. Dit notitie blok kan worden gedeeld met iedereen die toegang heeft tot de werk ruimte. 
 
@@ -43,12 +43,12 @@ Een nieuw notitie blok maken:
 
 1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
 1. Selecteer aan de linkerkant **notitie blokken**. 
-1. Selecteer het pictogram **nieuw bestand maken** boven de lijst **gebruikers bestanden** in de sectie **mijn bestanden** .
+1. Selecteer het pictogram  **nieuw bestand maken** boven de lijst **gebruikers bestanden** in de sectie **mijn bestanden** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Nieuw bestand maken":::
 
 1. Geef het bestand een naam. 
-1. Voor Jupyter Notebook-bestanden selecteert u **python notebook** als het bestands type.
+1. Voor Jupyter Notebook-bestanden selecteert u **notebook** als het bestands type.
 1. Selecteer een bestands directory.
 1. Selecteer **Maken**.
 
@@ -65,7 +65,7 @@ Uw werk ruimte bevat een map met voor **beelden** met notebooks die zijn ontworp
 
 Zie [zelf studie: uw eerste ml-experiment maken](tutorial-1st-experiment-sdk-setup.md#azure)voor een voor beeld.
 
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Bestanden van Git en versie van mijn bestanden gebruiken
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Bestanden van Git en versie van mijn bestanden gebruiken
 
 U kunt toegang krijgen tot alle Git-bewerkingen via een Terminal venster. Alle Git-bestanden en-mappen worden opgeslagen in het bestands systeem van de werk ruimte.
 
@@ -77,12 +77,12 @@ Voor toegang tot de terminal:
 1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
 1. Selecteer aan de linkerkant **notitie blokken**.
 1. Selecteer een notitie blok dat zich in de sectie **gebruikers bestanden** aan de linkerkant bevindt.  Als u nog geen notitie blokken hebt, maakt u eerst [een notitie blok](#create)
-1. Selecteer een **Compute** -doel of maak een nieuw en wacht tot deze actief is.
+1. Selecteer een **Compute** -doel of maak een nieuw en wacht tot het wordt uitgevoerd.
 1. Selecteer het pictogram **Open Terminal** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Terminal openen":::
 
-1. Als u het pictogram niet ziet, selecteert u de **..** . rechts van het berekenings doel en selecteert u vervolgens **Terminal openen** .
+1. Als u het pictogram niet ziet, selecteert u de **..** . rechts van het berekenings doel en selecteert u vervolgens **Terminal openen**.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminal openen vanuit...":::
 
@@ -110,6 +110,22 @@ U kunt Jupyter of Jjupyterlab ook starten via de werk balk van het notitie blok.
 
 Wanneer u code typt, gebruikt u Ctrl + spatie om IntelliSense te activeren.
 
+### <a name="clean-your-notebook-preview"></a>Uw notitie blok opschonen (preview-versie)
+
+> [!IMPORTANT]
+> De functie verzamelen is momenteel beschikbaar als open bare preview.
+> De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Tijdens het maken van een notitie blok gaat u meestal naar cellen die u hebt gebruikt voor het verkennen van gegevens of het opsporen van fouten. De functie *verzamelen* helpt u bij het produceren van een schone notebook zonder deze vreemde cellen.
+
+1. Voer alle notebook-cellen uit.
+1. Selecteer de cel met de code die u voor het nieuwe notitie blok wilt uitvoeren. Bijvoorbeeld de code die een experiment verzendt of de code die een model registreert.
+1. Selecteer het pictogram voor **verzamelen** dat wordt weer gegeven op de werk balk van de cel.
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Scherm opname: Selecteer het pictogram verzamelen":::
+1. Voer de naam in voor het nieuwe ' verzamelde ' notitie blok.  
+
+Het nieuwe notitie blok bevat alleen code cellen, waarbij alle cellen zijn vereist voor het produceren van dezelfde resultaten als de cel die u hebt geselecteerd voor het verzamelen van gegevens.
+
 ### <a name="save-and-checkpoint-a-notebook"></a>Een notitie blok opslaan en controle punten
 
 Azure Machine Learning een controlepunt bestand maakt wanneer u een *ipynb*-   bestand maakt.
@@ -125,7 +141,7 @@ Selecteer **controle punten** in het menu van het notitie blok om een benoemd co
 
 ### <a name="useful-keyboard-shortcuts"></a>Nuttige sneltoetsen
 
-|Toetsenbord  |Bewerking  |
+|Toetsenbord  |Actie  |
 |---------|---------|
 |SHIFT + ENTER     |  Een cel uitvoeren       |
 |Ctrl + spatie | IntelliSense activeren |
@@ -141,7 +157,7 @@ U *kunt* de voor **beelden** van notitie blokken niet verwijderen.  Deze notitie
 U *kunt* notitie blokken met **gebruikers bestanden** op een van de volgende manieren verwijderen:
 
 * Selecteer in de Studio de **..** . aan het einde van een map of bestand.  Zorg ervoor dat u een ondersteunde browser (micro soft Edge, Chrome of Firefox) gebruikt.
-* Selecteer op elke werk balk van een notitie blok de optie [**Terminal openen**](#terminal) om toegang te krijgen tot het Terminal venster voor het reken exemplaar.
+* Selecteer op elke werk balk van een notitie blok de optie [**Terminal openen**](#terminal)  om toegang te krijgen tot het Terminal venster voor het reken exemplaar.
 * In Jupyter of Jjupyterlab met hun hulp middelen.
 
 ## <a name="run-an-experiment"></a>Een experiment uitvoeren
@@ -157,7 +173,7 @@ Alleen u kunt de compute-instanties zien en gebruiken die u maakt.  Uw **gebruik
 
 ### <a name="view-logs-and-output"></a>Logboeken en uitvoer weer geven
 
-Gebruik [notebook widgets](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) om de voortgang van de uitvoering en logboeken weer te geven. Een widget is asynchroon en levert updates totdat de training is voltooid. Azure Machine Learning widgets worden ook ondersteund in Jupyter en JupterLab.
+Gebruik [notebook widgets](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) om de voortgang van de uitvoering en logboeken weer te geven. Een widget is asynchroon en levert updates totdat de training is voltooid. Azure Machine Learning widgets worden ook ondersteund in Jupyter en JupterLab.
 
 ## <a name="change-the-notebook-environment"></a>De notitieblok omgeving wijzigen
 
@@ -165,14 +181,14 @@ Op de werk balk van notitie blokken kunt u de omgeving wijzigen waarop uw notiti
 
 Met deze acties worden de status van het notitie blok of de waarden van variabelen in het notitie blok niet gewijzigd:
 
-|Bewerking  |Resultaat  |
+|Actie  |Resultaat  |
 |---------|---------| --------|
 |De kernel stoppen     |  Stopt elke actieve cel. Als u een cel uitvoert, wordt de kernel automatisch opnieuw gestart. |
 |Naar een andere sectie van de werk ruimte navigeren     |     Actieve cellen worden gestopt. |
 
 Met deze acties wordt de status van het notitie blok opnieuw ingesteld en worden alle variabelen in het notitie blok opnieuw ingesteld.
 
-|Bewerking  |Resultaat  |
+|Actie  |Resultaat  |
 |---------|---------| --------|
 | De kernel wijzigen | Notebook maakt gebruik van nieuwe kernel |
 | Scha kelen tussen compute    |     In de notitie blok wordt automatisch de nieuwe Compute gebruikt. |
@@ -208,7 +224,7 @@ Een van de [beschik bare Jupyter-kernels](https://github.com/jupyter/jupyter/wik
 
 Een indicator naast de vervolg keuzelijst voor **berekeningen** toont de status.  De status wordt ook weer gegeven in de vervolg keuzelijst zelf.  
 
-|Kleur |Compute-status |
+|Color |Compute-status |
 |---------|---------| 
 | Green | Compute running |
 | Red |Kan niet berekenen | 
@@ -218,7 +234,7 @@ Een indicator naast de vervolg keuzelijst voor **berekeningen** toont de status.
 
 Een indicator naast de vervolg keuzelijst **kernel** toont de status.
 
-|Kleur |Kernel-status |
+|Color |Kernel-status |
 |---------|---------|
 |  Green |Kernel verbonden, niet-actief, bezet|
 |  Grijs |Kernel niet verbonden |

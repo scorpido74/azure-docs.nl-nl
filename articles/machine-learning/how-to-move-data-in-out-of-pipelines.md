@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230310"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650389"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -33,7 +33,7 @@ In dit artikel wordt uitgelegd hoe u:
 - Nieuwe `Dataset` objecten maken die `PipelineData` u wilt behouden
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,7 +42,7 @@ U hebt het volgende nodig:
 
 - Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
-- De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
+- De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
 
 - Een Azure Machine Learning-werkruimte.
   
@@ -61,7 +61,7 @@ U hebt het volgende nodig:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objecten gebruiken voor bestaande gegevens 
 
-De voorkeurs manier om gegevens op te nemen in een pijp lijn is het gebruik van een object [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) . `Dataset` objecten vertegenwoordigen permanente gegevens die beschikbaar zijn in een werk ruimte.
+De voorkeurs manier om gegevens op te nemen in een pijp lijn is het gebruik van een object [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) . `Dataset` objecten vertegenwoordigen permanente gegevens die beschikbaar zijn in een werk ruimte.
 
 Er zijn veel manieren om objecten te maken en te registreren `Dataset` . Tabellaire gegevens sets zijn voor een scheidings teken dat beschikbaar is in een of meer bestanden. Bestand gegevens sets zijn voor binaire gegevens (zoals installatie kopieën) of voor gegevens die u gaat parseren. De eenvoudigste manier om objecten te maken `Dataset` , is het gebruik van bestaande blobs in werkruimte opslag of open bare url's:
 
@@ -152,7 +152,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Gebruiken `PipelineData` voor tussenliggende gegevens
 
-Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van een `PipelineData` object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door_ met behulp van de `arguments` `outputs` argumenten en:
+Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van een `PipelineData` object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door_ met behulp van de `arguments` `outputs` argumenten en:
 
 ```python
 
@@ -177,7 +177,8 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 ```
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld.
+
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Gebruiken `PipelineData` als uitvoer van een trainings stap
 Binnen de pijp lijn `PythonScriptStep` kunt u de beschik bare uitvoer paden ophalen met behulp van de argumenten van het programma. Als deze stap het eerst is en de uitvoer gegevens initialiseert, moet u de Directory maken op het opgegeven pad. Vervolgens kunt u de bestanden die u wilt opnemen in de opslaan `PipelineData` .
@@ -192,7 +193,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-Als u uw hebt gemaakt `PipelineData` met het `is_directory` argument ingesteld op `True` , zou het voldoende zijn om alleen de oproep uit te voeren `os.makedirs()` . vervolgens zou u de gewenste bestanden naar het pad kunnen schrijven. Zie de [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -referentie documentatie voor meer informatie.
+Als u uw hebt gemaakt `PipelineData` met het `is_directory` argument ingesteld op `True` , zou het voldoende zijn om alleen de oproep uit te voeren `os.makedirs()` . vervolgens zou u de gewenste bestanden naar het pad kunnen schrijven. Zie de [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) -referentie documentatie voor meer informatie.
 
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Lezen `PipelineData` als invoer van niet-eerste stappen
@@ -227,7 +228,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 De waarde van een `PipelineData` invoer is het pad naar de vorige uitvoer. 
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> Een verbeterde ervaring voor het door geven van tussenliggende gegevens tussen pijplijn stappen is beschikbaar in de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld.
 
 Als, zoals eerder weer gegeven, de eerste stap een enkel bestand heeft geschreven, kan dit er als volgt uitzien: 
 
@@ -249,7 +250,7 @@ step1_output_ds.register(name="processed_data", create_new_version=True)
 
 ```
 > [!TIP]
-> Een verbeterde ervaring voor het persistent maken van uw tussenliggende gegevens buiten uw pijplijn uitvoeringen is beschikbaar met de open bare preview-klasse `OutputFileDatasetConfig` . Meer informatie over `OutputFileDatasetConfig` ontwerp patronen en-methoden in [de SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> Een verbeterde ervaring voor het persistent maken van uw tussenliggende gegevens buiten uw pijplijn uitvoeringen is beschikbaar met de open bare preview-klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . `OutputFileDatasetConfig`Zie [een pijp lijn met twee stappen maken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)voor een code voorbeeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

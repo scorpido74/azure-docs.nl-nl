@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930040"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614001"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -34,7 +34,7 @@ Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schri
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Verificatie en client maken: .NET (C#) SDK
 
 Neem eerst de volgende pakketten op in uw project om de .NET SDK en verificatie hulpprogramma's te gebruiken voor deze procedure:
-* `Azure.DigitalTwins.Core` (versie `1.0.0-preview.2` )
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 
 Afhankelijk van uw hulp middelen kunt u de pakketten toevoegen met behulp van Visual Studio package manager of het `dotnet` opdracht regel programma. 

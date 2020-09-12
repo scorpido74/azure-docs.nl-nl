@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020283"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613922"
 ---
 # <a name="entities"></a>Entiteiten
 
@@ -21,7 +21,7 @@ Een *entiteit* vertegenwoordigt een beweegbaar object in ruimte en is de fundame
 
 Entiteiten hebben een trans formatie die is gedefinieerd door een positie, rotatie en schaal. Op zichzelf hebben entiteiten geen waarneem bare functionaliteit. In plaats daarvan wordt gedrag toegevoegd via onderdelen, die zijn gekoppeld aan entiteiten. Als u bijvoorbeeld een [CutPlaneComponent](../overview/features/cut-planes.md)  koppelt, wordt er een knip vlak gemaakt op de positie van de entiteit.
 
-Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de resulterende hiërarchische trans formatie. Als er bijvoorbeeld meerdere entiteiten als onderliggende items zijn gekoppeld aan een gedeelde bovenliggende entiteit, kunnen al deze entiteiten worden verplaatst, geroteerd en geschaald in gelijktijdig door de trans formatie van de bovenliggende entiteit te wijzigen.
+Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de resulterende hiërarchische trans formatie. Als er bijvoorbeeld meerdere entiteiten als onderliggende items zijn gekoppeld aan een gedeelde bovenliggende entiteit, kunnen al deze entiteiten worden verplaatst, geroteerd en geschaald in gelijktijdig door de trans formatie van de bovenliggende entiteit te wijzigen. De status van de entiteit `enabled` kan ook worden gebruikt om de zicht baarheid en reacties op Ray-casts voor een volledige subgrafiek in de hiërarchie uit te scha kelen.
 
 Een entiteit is een unieke eigenaar van het bovenliggende item, wat inhoudt dat wanneer het bovenliggende item wordt vernietigd met `Entity.Destroy()` , de onderliggende en alle verbonden [onderdelen](components.md)hiervan zijn. Het verwijderen van een model uit de scène wordt dus gerealiseerd door te bellen `Destroy` op het hoofd knooppunt van een model, dat wordt geretourneerd door `AzureSession.Actions.LoadModelAsync()` of door de SAS-variant `AzureSession.Actions.LoadModelFromSASAsync()` .
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>Ruimtelijke grenzen bevragen
 
 Grenzen van query's zijn asynchrone aanroepen die op een volledige object hiërarchie worden uitgevoerd, met behulp van één entiteit als basis. Zie het speciale hoofd stuk over [object grenzen](object-bounds.md).
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 De query wordt uitgevoerd, zelfs als het object geen meta gegevens bevat.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [Klasse van C#-entiteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [Klasse C++-entiteit](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Volgende stappen
 

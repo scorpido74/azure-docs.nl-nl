@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 6662beec47d663f92e453f52d190e41518108b0d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191488"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458209"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob Storage vergelijken
 
@@ -29,7 +29,7 @@ De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data
 | API aan server zijde |[WebHDFS-compatibele REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop File System-client |Ja |Ja |
 | Gegevens bewerkingen-verificatie |Op basis van [Azure Active Directory-identiteiten](../active-directory/develop/authentication-scenarios.md) |Op basis van gedeelde geheimen- [account toegangs sleutels](../storage/common/storage-account-keys-manage.md) en [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
-| Gegevens bewerkingen-verificatie Protocol |OAuth 2.0. Aanroepen moeten een geldig JWT (JSON Web Token) bevatten dat is uitgegeven door Azure Active Directory |Op hash gebaseerde Message Authentication Code (HMAC). Aanroepen moeten een SHA-256-Hash met base64-code ring hebben via een deel van de HTTP-aanvraag. |
+| Gegevens bewerkingen-verificatie Protocol |[OpenID connect verbinding maken](https://openid.net/connect/). Aanroepen moeten een geldige JWT (JSON Web token) bevatten die is uitgegeven door Azure Active Directory.|Op hash gebaseerde Message Authentication Code (HMAC). Aanroepen moeten een SHA-256-Hash met base64-code ring hebben via een deel van de HTTP-aanvraag. |
 | Gegevens bewerkingen-autorisatie |POSIX-Access Control lijsten (Acl's).  Acl's op basis van Azure Active Directory-identiteiten kunnen worden ingesteld op het niveau van bestanden en mappen. |Voor autorisatie op account niveau: gebruik [account toegangs sleutels](../storage/common/storage-account-keys-manage.md)<br>Voor account-, container-of BLOB-autorisatie-gebruik [Shared Access Signature sleutels](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Gegevens bewerkingen-controleren |Beschikken. Zie [hier](data-lake-store-diagnostic-logs.md) voor meer informatie. |Beschikbaar |
 | Versleutelen van gegevens in rust |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis</li></ul></ul> |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis (preview-versie)</li></ul><li>Clientversleuteling</li></ul> |
@@ -37,7 +37,7 @@ De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data
 | Sdk's van ontwikkel aars |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, go, Android, iOS |
 | Prestaties van de analysewerk belasting |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. Hoge door Voer en IOPS. |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. |
 | Grootte limieten |Geen limieten voor de grootte van het account, de bestands grootte of het aantal bestanden |Zie [schaalbaarheids doelen voor standaard opslag accounts](../storage/common/scalability-targets-standard-account.md) en [schaal baarheid en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md)voor specifieke limieten. Grotere account limieten beschikbaar door contact op te nemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/) |
-| Geo-redundantie |Lokaal redundant (meerdere kopieën van gegevens in één Azure-regio) |Lokaal redundant (LRS), zone redundante (ZRS), wereld wijd redundante (GRS), lees toegang wereld wijd redundante (RA-GRS). Zie [hier](../storage/common/storage-redundancy.md) voor meer informatie |
+| Geografische redundantie |Lokaal redundant (meerdere kopieën van gegevens in één Azure-regio) |Lokaal redundant (LRS), zone redundante (ZRS), wereld wijd redundante (GRS), lees toegang wereld wijd redundante (RA-GRS). Zie [hier](../storage/common/storage-redundancy.md) voor meer informatie |
 | Servicestatus |Algemeen beschikbaar |Algemeen beschikbaar |
 | Regionale beschikbaarheid |[Hier](https://azure.microsoft.com/regions/#services) bekijken |Beschikbaar in alle Azure-regio's |
 | Prijs |[Prijzen](https://azure.microsoft.com/pricing/details/data-lake-store/) bekijken |[Prijzen](https://azure.microsoft.com/pricing/details/storage/) bekijken |

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843212"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650684"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Dit document is onderverdeeld in twee secties:
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning werk groep. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
+* De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
 * De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
@@ -124,26 +124,35 @@ Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-instal
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.5.12
-    ARG PYTHON_VERSION=3.6
+    ARG CONDA_VERSION=4.7.12
+    ARG PYTHON_VERSION=3.7
+    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
+        apt-get install -y fuse \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
+    RUN useradd --create-home dockeruser
+    WORKDIR /home/dockeruser
+    USER dockeruser
+
     RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-        /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
+        /bin/bash ~/miniconda.sh -b -p ~/miniconda && \
         rm ~/miniconda.sh && \
-        /opt/miniconda/bin/conda clean -tipsy
+        ~/miniconda/bin/conda clean -tipsy
+    ENV PATH="/home/dockeruser/miniconda/bin/:${PATH}"
 
     RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
+        pip install azureml-defaults==${AZUREML_SDK_VERSION} inference-schema==${INFERENCE_SCHEMA_VERSION} &&\
         conda clean -aqy && \
-        rm -rf /opt/miniconda/pkgs && \
-        find / -type d -name __pycache__ -prune -exec rm -rf {} \;
+        rm -rf ~/miniconda/pkgs && \
+        find ~/miniconda/ -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
 2. Gebruik bij een shell of opdracht prompt het volgende om te verifiëren bij de Azure Container Registry. Vervang de `<registry_name>` door de naam van het container register waarin u de installatie kopie wilt opslaan:
@@ -209,7 +218,7 @@ Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Contain
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Een installatie kopie gebruiken met de Azure Machine Learning SDK
 
-Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte**of een **container register dat openbaar toegankelijk is**, stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) kenmerken in:
+Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte**of een **container register dat openbaar toegankelijk is**, stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) kenmerken in:
 
 + `docker.enabled=True`
 + `docker.base_image`: Ingesteld op het REGI ster en pad naar de installatie kopie.
@@ -243,7 +252,7 @@ myenv.python.conda_dependencies=conda_dep
 
 U moet de standaard waarden van azureml toevoegen met versie >= 1.0.45 als een PIP-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. U moet ook inferencing_stack_version eigenschap op de omgeving instellen op ' meest recent ', maar Hiermee installeert u specifieke apt-pakketten die nodig zijn voor de webservice. 
 
-Nadat u de omgeving hebt gedefinieerd, kunt u deze gebruiken met een [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -object om de Afleidings omgeving te definiëren waarin het model en de webservice worden uitgevoerd.
+Nadat u de omgeving hebt gedefinieerd, kunt u deze gebruiken met een [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) -object om de Afleidings omgeving te definiëren waarin het model en de webservice worden uitgevoerd.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -272,7 +281,7 @@ Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-envi
 > [!IMPORTANT]
 > Momenteel kan de Machine Learning CLI installatie kopieën van de Azure Container Registry gebruiken voor uw werk ruimte of openbaar toegankelijke opslag plaatsen. Het kan geen installatie kopieën van zelfstandige persoonlijke registers gebruiken.
 
-Voordat u een model implementeert met behulp van de Machine Learning CLI, moet u een [omgeving](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) maken die gebruikmaakt van de aangepaste installatie kopie. Maak vervolgens een Afleidings configuratie bestand dat verwijst naar de omgeving. U kunt de omgeving ook rechtstreeks in het configuratie bestand voor het dezicht opgeven. In het volgende JSON-document ziet u hoe u kunt verwijzen naar een installatie kopie in een openbaar container register. In dit voor beeld is de omgeving inline gedefinieerd:
+Voordat u een model implementeert met behulp van de Machine Learning CLI, moet u een [omgeving](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) maken die gebruikmaakt van de aangepaste installatie kopie. Maak vervolgens een Afleidings configuratie bestand dat verwijst naar de omgeving. U kunt de omgeving ook rechtstreeks in het configuratie bestand voor het dezicht opgeven. In het volgende JSON-document ziet u hoe u kunt verwijzen naar een installatie kopie in een openbaar container register. In dit voor beeld is de omgeving inline gedefinieerd:
 
 ```json
 {

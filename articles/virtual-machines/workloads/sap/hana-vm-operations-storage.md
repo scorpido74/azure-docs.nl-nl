@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650465"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440691"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -88,7 +88,7 @@ In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O
 **Aanbeveling: als gevolg van deze waargenomen I/O-patronen door SAP HANA, moet de cache voor de verschillende volumes die Azure Premium Storage gebruiken, worden ingesteld als:**
 
 - **/Hana/data** -geen caching of lees cache
-- **/Hana/log** : er is geen caching-uitzonde ring voor M-en Mv2-serie waar write Accelerator moet worden ingeschakeld zonder de Lees cache te lezen. 
+- **/Hana/log** -geen caching-uitzonde ring voor vm's met de M-en Mv2-serie waarbij Azure write Accelerator moet worden ingeschakeld 
 - **/Hana/Shared** -cache lezen
 - **Besturingssysteem schijf** -de standaard cache die door Azure is ingesteld tijdens het maken van de VM, niet wijzigen
 
@@ -236,6 +236,10 @@ In deze configuratie behoudt u de **/Hana/data** -en **/Hana/log** -volumes afzo
 
 De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in dit artikel is beschreven. De vermelde aanbevelingen zijn een inbreuk tussen de grootte aanbevelingen van SAP en de maximale opslag doorvoer voor de verschillende typen VM'S.
 
+> [!NOTE]
+> Azure Ultra Disk dwingt ten minste 2 IOPS per Gigabyte capaciteit van een schijf af
+
+
 | VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /Hana/data volume | I/O-door Voer van/Hana/data | /Hana/data IOPS | /Hana/log volume | I/O-door Voer van/Hana/log | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MBps | 2500 | 80 GB | 250 MB | 1800 |
@@ -249,11 +253,11 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 | M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
 | M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
 | M128s | 2.000 GiB | 2.000 MB/s |2.400 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
-| M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |7.000 | 512 GB | 250 MBps  | 2500 | 
+| M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |9600 | 512 GB | 250 MBps  | 2500 | 
 | M208s_v2 | 2.850 GiB | 1.000 MB/s | 3.500 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
-| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 7.200 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
-| M416s_v2 | 5.700 GiB | 2.000 MB/s | 7.200 GB | 1.000 MBps | 9000 | 512 GB | 400 MBps  | 4000 | 
-| M416ms_v2 | 11.400 GiB | 2.000 MB/s | 14.400 GB | 1.500 MBps | 9000 | 512 GB | 400 MBps  | 4000 |   
+| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 7.200 GB | 750 MBps | 14.400 | 512 GB | 250 MBps  | 2500 | 
+| M416s_v2 | 5.700 GiB | 2.000 MB/s | 7.200 GB | 1.000 MBps | 14.400 | 512 GB | 400 MBps  | 4000 | 
+| M416ms_v2 | 11.400 GiB | 2.000 MB/s | 14.400 GB | 1.500 MBps | 28.800 | 512 GB | 400 MBps  | 4000 |   
 
 **De vermelde waarden zijn bedoeld als uitgangs punt en moeten worden geëvalueerd op basis van de werkelijke vereisten.** Het voor deel van Azure Ultra disk is dat de waarden voor IOPS en door Voer kunnen worden aangepast zonder de nood zaak om de virtuele machine af te sluiten of de werk belasting die op het systeem wordt toegepast, te onderbreken.   
 

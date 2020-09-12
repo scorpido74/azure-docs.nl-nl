@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321493"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650727"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Gegevens splitsingen en kruis validatie in automatische machine learning configureren
 
@@ -24,7 +24,7 @@ In dit artikel vindt u informatie over de verschillende opties voor het configur
 
 Als u in Azure Machine Learning gebruikmaakt van AutoML om meerdere ML-modellen te bouwen, moet elke onderliggende uitvoering het gerelateerde model valideren door de gegevens over de kwaliteit van het model te berekenen, zoals nauw keurigheid of AUC gewogen. Deze metrische gegevens worden berekend door de voor spellingen te vergelijken die zijn gemaakt met elk model met echte labels uit eerdere waarnemingen in de validatie gegevens. 
 
-AutoML experimenten voeren automatisch model validatie uit. In de volgende secties wordt beschreven hoe u validatie-instellingen verder kunt aanpassen met behulp van de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py). 
+AutoML experimenten voeren automatisch model validatie uit. In de volgende secties wordt beschreven hoe u validatie-instellingen verder kunt aanpassen met behulp van de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true). 
 
 Zie [uw geautomatiseerde machine learning experimenten in azure machine learning Studio maken](how-to-use-automated-ml-for-ml-models.md)voor een programma met weinig code of zonder code. 
 
@@ -47,7 +47,7 @@ Voor dit artikel hebt u het volgende nodig:
 
 ## <a name="default--data-splits-and-cross-validation"></a>Standaard gegevens splitsingen en kruis validatie
 
-Gebruik het object [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) om uw instellingen voor experimenteren en trainingen te definiëren. In het volgende code fragment ziet u dat alleen de vereiste para meters zijn gedefinieerd. Dit zijn de para meters voor `n_cross_validation` of `validation_ data` worden **niet** opgenomen.
+Gebruik het object [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) om uw instellingen voor experimenteren en trainingen te definiëren. In het volgende code fragment ziet u dat alleen de vereiste para meters zijn gedefinieerd. Dit zijn de para meters voor `n_cross_validation` of `validation_ data` worden **niet** opgenomen.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Grootte van validatieset opgeven
 
-In dit geval wordt er slechts één gegevensset voor het experiment gegeven. Dat wil zeggen, de `validation_data` para meter is **niet** opgegeven en de opgegeven gegevensset wordt toegewezen aan de `training_data` para meter.  In uw `AutoMLConfig` object kunt u de `validation_size` para meter instellen om een deel van de trainings gegevens voor validatie op te slaan. Dit betekent dat de validatieset wordt gesplitst door AutoML van de oorspronkelijke `training_data` waarde. Deze waarde moet tussen 0,0 en 1,0 niet inclusief (bijvoorbeeld 0,2 betekent dat er 20% van de gegevens voor validatie gegevens wordt uitgecheckt).
+In dit geval wordt er slechts één gegevensset voor het experiment gegeven. Dat wil zeggen, de `validation_data` para meter is **niet** opgegeven en de opgegeven gegevensset wordt toegewezen aan de  `training_data` para meter.  In uw `AutoMLConfig` object kunt u de `validation_size` para meter instellen om een deel van de trainings gegevens voor validatie op te slaan. Dit betekent dat de validatieset wordt gesplitst door AutoML van de oorspronkelijke `training_data` waarde. Deze waarde moet tussen 0,0 en 1,0 niet inclusief (bijvoorbeeld 0,2 betekent dat er 20% van de gegevens voor validatie gegevens wordt uitgecheckt).
 
 Zie het volgende code voorbeeld:
 

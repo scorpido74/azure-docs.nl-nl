@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed0c83bfa61f6afdbdcca3c10dbd5fac3f823d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296318"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458175"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Gebruik query parallel Lise ring in Azure Stream Analytics
 In dit artikel leest u hoe u parallel Lise ring in Azure Stream Analytics kunt gebruiken. U leert hoe u Stream Analytics taken kunt schalen door het configureren van invoer partities en het afstemmen van de definitie van de analyse query.
@@ -41,7 +41,7 @@ Wanneer u werkt met Stream Analytics, kunt u gebruikmaken van partitionering in 
 -   Event Hubs (moet de partitie sleutel expliciet instellen)
 -   IoT Hub (moet de partitie sleutel expliciet instellen)
 -   Service Bus
-- SQL en SQL Data Warehouse met optionele partitionering: Zie voor meer informatie de [pagina uitvoer naar Azure SQL database](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
+- SQL en Azure Synapse Analytics met optionele partitionering: Zie voor meer informatie de [pagina uitvoer naar Azure SQL database](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
 Power BI biedt geen ondersteuning voor partitioneren. U kunt echter nog steeds de invoer partitioneren zoals beschreven in [deze sectie](#multi-step-query-with-different-partition-by-values) 
 
@@ -279,7 +279,7 @@ De [Event hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/e
 |    5 K   |   18 |  P4   |
 |    10 K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) biedt ondersteuning voor het parallel schrijven, het overnemen van partitionering, maar is niet standaard ingeschakeld. Het inschakelen van partitionering, samen met een volledig parallelle query, kan echter niet voldoende zijn voor hogere door voer. Het schrijven van SQL-door Voer is aanzienlijk afhankelijk van uw database configuratie en tabel schema. Het artikel over [SQL-uitvoer prestaties](./stream-analytics-sql-output-perf.md) bevat meer details over de para meters die uw schrijf doorvoer kunnen maximaliseren. Zoals vermeld in de [Azure stream Analytics uitvoer naar Azure SQL database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) artikel, wordt deze oplossing niet lineair geschaald als een volledig parallelle pijp lijn van meer dan 8 partities en moet deze mogelijk opnieuw worden gepartitioneerd vóór SQL-uitvoer [(zie)](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count). Premium-Sku's zijn vereist om te voorzien in hoge i/o-tarieven, samen met de overhead van logboek back-ups die om de paar minuten worden uitgevoerd.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)  biedt ondersteuning voor het parallel schrijven, het overnemen van partitionering, maar is niet standaard ingeschakeld. Het inschakelen van partitionering, samen met een volledig parallelle query, kan echter niet voldoende zijn voor hogere door voer. Het schrijven van SQL-door Voer is aanzienlijk afhankelijk van uw database configuratie en tabel schema. Het artikel over [SQL-uitvoer prestaties](./stream-analytics-sql-output-perf.md) bevat meer details over de para meters die uw schrijf doorvoer kunnen maximaliseren. Zoals vermeld in de [Azure stream Analytics uitvoer naar Azure SQL database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) artikel, wordt deze oplossing niet lineair geschaald als een volledig parallelle pijp lijn van meer dan 8 partities en moet deze mogelijk opnieuw worden gepartitioneerd vóór SQL-uitvoer [(zie)](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count). Premium-Sku's zijn vereist om te voorzien in hoge i/o-tarieven, samen met de overhead van logboek back-ups die om de paar minuten worden uitgevoerd.
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |Opname frequentie (gebeurtenissen per seconde) | Streaming-eenheden | Uitvoer resources  |

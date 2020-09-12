@@ -4,12 +4,12 @@ description: Hiermee wordt u gewaarschuwd voor ongebruikelijke wijzigingen in de
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420206"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565834"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
 [Application Insights](./app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
@@ -33,7 +33,7 @@ In de details van de waarschuwing ziet u het volgende:
 ## <a name="benefits-of-smart-detection"></a>Voor delen van Slimme detectie
 Normale [metrische waarschuwingen](../platform/alerts-log.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de `Successful request` eigenschap False is en het aantal afhankelijkheids aanroepen waarvoor de `Successful call` eigenschap False is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest](./api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](./api-filtering-sampling.md#filtering) of te genereren). 
 
 De prestaties van uw app hebben een typisch patroon van het gedrag. Sommige aanvragen of afhankelijkheids aanroepen zijn gevoelig voor fouten dan andere. en het totale aantal fouten kan optreden naarmate de belasting toeneemt. Slimme detectie maakt gebruik van machine learning om deze afwijkingen te vinden.
@@ -58,6 +58,7 @@ De waarschuwingen worden geactiveerd door onze eigen machine learning-algoritme,
 * Een vergelijking van het uitval percentage van de laatste 20 minuten tot het percentage in de afgelopen 40 minuten en de afgelopen zeven dagen en op zoek naar aanzienlijke afwijkingen die de X-tijden van de standaard deviatie overschrijden.
 * Het gebruik van een adaptieve limiet voor het minimale uitval percentage, dat varieert op basis van het volume van de aanvragen/afhankelijkheden van de app.
 * Er is een logica waarmee de geactiveerde waarschuwing voor waarschuwings monitor automatisch kan worden opgelost als het probleem gedurende 8-24 uur niet meer wordt gedetecteerd.
+  Opmerking: in het huidige ontwerp. Er wordt geen melding of actie verzonden wanneer een detectie waarschuwing wordt opgelost. U kunt controleren of een waarschuwing voor een slimme detectie is omgezet in de Azure Portal.
 
 ## <a name="configure-alerts"></a>Waarschuwingen configureren
 

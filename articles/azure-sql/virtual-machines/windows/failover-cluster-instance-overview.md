@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653270"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611623"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failover-cluster exemplaren met SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ In de rest van deze sectie vindt u een overzicht van de voor delen en beperkinge
 **Voor delen**: 
 - Dit is handig voor toepassingen die op zoek zijn naar Azure, terwijl hun architectuur met hoge Beschik baarheid en herstel na nood gevallen (HADR) behouden blijft. 
 - Kunnen geclusterde toepassingen naar Azure worden gemigreerd als gevolg van SCSI-ondersteuning voor permanente reserve ringen. 
-- Ondersteunt gedeelde Azure-Premium-SSD voor alle versies van SQL Server en gedeelde Azure Ultra Disk Storage voor SQL Server 2019. 
+- Biedt ondersteuning voor gedeelde Azure Premium-SSD en Azure Ultra Disk-opslag.
 - Kan één gedeelde schijf gebruiken of meerdere gedeelde schijven verwijderen om een gedeelde opslag groep te maken. 
 - Ondersteunt FileStream.
 
@@ -153,10 +153,11 @@ Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines
 
 De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL Server Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
 
-### <a name="msdtc"></a>MSDTC   
-Azure Virtual Machines ondersteunt MSDTC op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
+### <a name="msdtc"></a>MSDTC 
 
-In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder omdat:
+Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op SQL Server-vm's die gebruikmaken van gedeelde Azure-schijven. 
+
+In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder met geclusterde gedeelde volumes, omdat:
 
 - De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs als de opslag ruimte beschikbaar is. Dit probleem is opgelost in Windows Server 2019.
 - Met de basis load balancer worden geen RPC-poorten afgehandeld.

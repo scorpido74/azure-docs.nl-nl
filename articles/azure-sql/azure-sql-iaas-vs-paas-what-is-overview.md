@@ -1,6 +1,5 @@
 ---
 title: Wat is Azure SQL?
-titleSuffix: " "
 description: 'Meer informatie over de verschillende opties in de Azure SQL-familie van services: Azure SQL Database, Azure SQL Managed instance en SQL Server op Azure VM.'
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280848"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611834"
 ---
 # <a name="what-is-azure-sql"></a>Wat is Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL is een familie van beheerde, veilige en intelligente producten die geb
 Azure SQL is gebaseerd op de vertrouwde SQL Server-engine, zodat u toepassingen eenvoudig kunt migreren en de hulp middelen, talen en bronnen die u kent, blijven gebruiken. Uw vaardig heden en ervaring worden overgedragen naar de Cloud, zodat u nog meer kunt doen met wat u al hebt. 
 
 Ontdek hoe elk product in het Azure SQL-gegevens platform van micro soft past, zodat dit overeenkomt met de juiste optie voor uw zakelijke vereisten. Of u de kosten besparingen of het minimale beheer wilt priori teren, u kunt dit artikel helpen bij het bepalen van de aanpak van de bedrijfs vereisten die u het belangrijkst vindt.
+
+
+Als u geen ervaring hebt met Azure SQL, raadpleegt u de *Azure SQL* -video uit onze diep gaande [Azure SQL-video reeks](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Overzicht

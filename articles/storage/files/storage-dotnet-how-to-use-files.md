@@ -9,12 +9,12 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53f96d8988adfea6e14e3eb349276199afc444d7
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011528"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461915"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
 
@@ -504,5 +504,5 @@ Raadpleeg de volgende bronnen voor meer informatie over Azure Files:
 
 * [Azure File Storage, nu algemeen beschikbaar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Inside Azure File Storage (Een kijkje achter de schermen van Azure File Storage)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Introductie van Microsoft Azure files-service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Persisting connections to Microsoft Azure Files (Permanente verbindingen met Microsoft Azure-bestanden)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Introductie van Microsoft Azure files-service](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Persisting connections to Microsoft Azure Files (Permanente verbindingen met Microsoft Azure-bestanden)](https://docs.microsoft.com/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)

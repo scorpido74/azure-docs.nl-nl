@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194476"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490085"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Releaseopmerkingen voor Data Management Gateway
 > [!NOTE]
@@ -26,7 +26,7 @@ Een van de uitdagingen voor moderne gegevens integratie is het verplaatsen van g
 
 Raadpleeg de volgende artikelen voor gedetailleerde informatie over Data Management Gateway en hoe u deze kunt gebruiken:
 
-*  [Data Management Gateway](data-factory-data-management-gateway.md)
+*  [Gegevensbeheergateway](data-factory-data-management-gateway.md)
 *  [Gegevens verplaatsen tussen on-premises en de Cloud met behulp van Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
@@ -39,14 +39,14 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 ## <a name="earlier-versions"></a>Eerdere versies
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Opties
-- U kunt DNS-vermeldingen toevoegen aan white list service bus in plaats van alle Azure IP-adressen van uw firewall te white list (indien nodig). U kunt de betreffende DNS-vermelding vinden op Azure Portal (Data Factory-> ' Author and Deploy '-> gateways '-> ' serviceUrls ' (in JSON)
+- U kunt DNS-vermeldingen toevoegen om service bus toe te staan in plaats van alle IP-adressen van Azure uit uw firewall toe te staan (indien nodig). U kunt de betreffende DNS-vermelding vinden op Azure Portal (Data Factory-> ' Author and Deploy '-> gateways '-> ' serviceUrls ' (in JSON)
 - HDFS connector ondersteunt nu een zelfondertekend openbaar certificaat door u te laten TLS-validatie overs Laan.
 - Opgelost: probleem met de gateway offline tijdens het bijwerken (vanwege een klok scheefheid)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Opties
--   U kunt DNS-vermeldingen toevoegen aan white list Service Bus in plaats van alle IP-adressen van Azure uit uw firewall te white list (indien nodig). Hier vindt u meer informatie.
+-   U kunt DNS-vermeldingen toevoegen om Service Bus in plaats van alle IP-adressen van Azure van uw firewall toe te staan (indien nodig). Meer informatie vindt u hier.
 -   U kunt nu gegevens kopiëren van/naar een enkele blok-BLOB tot 4,75 TB. Dit is de Maxi maal ondersteunde grootte van een blok-blob. (eerdere limiet is 195 GB).
 -   Opgelost: onvoldoende geheugen bij het uitgepakt van verschillende kleine bestanden tijdens de Kopieer activiteit.
 -   Opgelost: probleem bij het kopiëren van de document database naar SQL Server met de functie idempotentie.
@@ -198,7 +198,7 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 
 *  Diagnostische hulpprogram ma's voor Configuration Manager ondersteunen
 *  Ondersteuning voor tabel kolommen voor gegevens bronnen in tabel vorm voor Azure Data Factory
-*  SQL DW voor Azure Data Factory ondersteunen
+*  Azure Synapse Analytics voor Azure Data Factory ondersteunen
 *  Ondersteuning voor reclusive in BlobSource en FileSource voor Azure Data Factory
 *  Ondersteuning voor CopyBehavior: MergeFiles, PreserveHierarchy en FlattenHierarchy in BlobSink en FileSink met een binaire kopie voor Azure Data Factory
 *  Voortgang van het rapporteren van de ondersteuning voor het kopiëren van activiteiten voor Azure Data Factory

@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022425"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458294"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Zelfstudie: de Video Indexer-API gebruiken
 
@@ -36,7 +36,6 @@ In dit artikel wordt uitgelegd hoe ontwikkelaars kunnen profiteren van de [Video
    > * U moet dezelfde provider gebruiken als voor het aanmelden bij Video Indexer.
    > * Persoonlijke Google-en micro soft-accounts (Outlook/Live) kunnen alleen worden gebruikt voor proef accounts. Accounts die gekoppeld zijn met Azure vereisen Azure Active Directory.
    > * Er kan slechts één actief account per e-mail zijn. Als een gebruiker zich probeert aan te melden bij user@gmail.com voor LinkedIn en later met user@gmail.com voor Google, wordt er een fout pagina weer gegeven met de melding dat de gebruiker al bestaat.
-
 2. Abonneer u.
 
     Selecteer het tabblad [producten](https://api-portal.videoindexer.ai/products) . Selecteer vervolgens autorisatie en abonneren.
@@ -46,7 +45,7 @@ In dit artikel wordt uitgelegd hoe ontwikkelaars kunnen profiteren van de [Video
     > [!NOTE]
     > Nieuwe gebruikers worden automatisch geabonneerd op Autorisatie.
     
-    Zodra u zich hebt geabonneerd, kunt u uw abonnement en de primaire en secundaire sleutels bekijken. De sleutels moeten beveiligd zijn. De sleutels mogen alleen door uw servercode gebruikt worden. Ze zijn niet beschikbaar voor de client zijde (. js,. html, enzovoort).
+    Nadat u zich hebt geabonneerd, kunt u uw abonnement vinden onder de autorisatie van **producten**  ->  **Authorization**. Op de pagina abonnement vindt u de primaire en secundaire sleutels. De sleutels moeten beveiligd zijn. De sleutels mogen alleen door uw servercode gebruikt worden. Ze zijn niet beschikbaar voor de client zijde (. js,. html, enzovoort).
 
     ![Abonnementen en sleutels in Video Indexer ontwikkelaars Portal](./media/video-indexer-use-apis/video-indexer-api03.png)
 

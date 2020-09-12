@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van uw resource web-app, Cloud ser
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794546"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651708"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -59,7 +59,7 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
    ![Schalen op basis van CPU][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd! U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
+Gefeliciteerd U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
 > Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
@@ -119,9 +119,13 @@ Wanneer u naar meerdere exemplaren hebt geschaald, kunt App Service status contr
 
 ### <a name="health-check-path"></a>Pad voor status controle
 
-Het pad moet binnen twee minuten reageren met een status code tussen 200 en 299 (inclusief). Als het pad niet binnen twee minuten reageert of een status code buiten het bereik retourneert, wordt het exemplaar als ' beschadigd ' beschouwd. Status controle kan worden geïntegreerd met de functies voor verificatie en autorisatie van App Service. het systeem bereikt het eind punt zelfs als deze secuity-functies zijn ingeschakeld. Als u uw eigen verificatie systeem gebruikt, moet het Health Check-pad anonieme toegang toestaan. Als de site HTTP**s** heeft ingeschakeld, zal de status controle de http**s** gebruiken en de aanvraag via dat protocol verzenden.
+Het pad moet binnen twee minuten reageren met een status code tussen 200 en 299 (inclusief). Als het pad niet binnen twee minuten reageert of een status code buiten het bereik retourneert, wordt het exemplaar als ' beschadigd ' beschouwd. Status controle kan worden geïntegreerd met de functies voor verificatie en autorisatie van App Service. het systeem bereikt het eind punt zelfs als deze secuity-functies zijn ingeschakeld. Als u uw eigen verificatie systeem gebruikt, moet het Health Check-pad anonieme toegang toestaan. Als HTTP**S** op de site is ingeschakeld, wordt het http-eind punt door de status controle bereikt en wordt de 307 HTTP-omleiding naar het HTTPS-eind punt nageleefd.
 
 Het controle traject voor de status moet de essentiële onderdelen van uw toepassing controleren. Als uw toepassing bijvoorbeeld afhankelijk is van een Data Base en een berichten systeem, moet het eind punt van de status controle verbinding maken met deze onderdelen. Als de toepassing geen verbinding kan maken met een kritiek onderdeel, moet het pad een respons code op 500-niveau retour neren om aan te geven dat de app een slechte status heeft.
+
+#### <a name="security"></a>Beveiliging 
+
+Ontwikkel teams in grote ondernemingen moeten vaak voldoen aan de beveiligings vereisten voor hun blootgestelde Api's. Als u het status controle-eind punt wilt beveiligen, moet u eerst functies zoals [IP-beperkingen](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [client certificaten](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)of een Virtual Network gebruiken om de toegang tot de toepassing te beperken. U kunt het status controle-eind punt zelf beveiligen door te vereisen dat de `User-Agent` van de inkomende aanvragen overeenkomen `ReadyForRequest/1.0` . De gebruiker Agent kan niet worden vervalst omdat de aanvraag al is beveiligd door de eerdere beveiligings functies.
 
 ### <a name="behavior"></a>Gedrag
 

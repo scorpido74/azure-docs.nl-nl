@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 11043d6686bd762b1c0a9827c7edb2230487cc72
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263206"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595441"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -57,6 +57,7 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
 
     De pagina bevat:
 
+    - Knoppen op ondersteunde aanbevelingen **afdwingen** en **weigeren** (Zie [geen onjuiste configuraties met afdwingen/weigeren](prevent-misconfigurations.md))
     - **Ernst indicator**
     - **Interval voor versheid**  (indien van toepassing) 
     - **Beschrijving** : een korte beschrijving van het probleem
@@ -68,10 +69,19 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Er zijn geen toepasselijke resources om redenen.":::
 
+## <a name="preview-recommendations"></a>Preview-aanbevelingen
 
+Aanbevelingen die als **Preview** zijn gemarkeerd, zijn niet opgenomen in de berekeningen van uw beveiligde Score.
+
+Ze moeten, waar mogelijk, nog steeds worden hersteld, zodat wanneer de preview-periode afloopt dat ze bijdragen aan uw score.
+
+Een voor beeld van een voor beeld van een preview-aanbeveling:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de vlag preview":::
  
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit document hebt u kennis gemaakt met beveiligings aanbevelingen in Security Center. Voor meer informatie over het oplossen van de aanbevelingen:
 
-* [Aanbevelingen herstellen](security-center-remediate-recommendations.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en resource groepen.
+- [Aanbevelingen herstellen](security-center-remediate-recommendations.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en resource groepen.
+- [Voorkom onjuiste configuraties met de aanbevelingen afdwingen/weigeren](prevent-misconfigurations.md).

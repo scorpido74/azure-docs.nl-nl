@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135433"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614035"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
 [Platform logboeken](platform-logs-overview.md) in azure, met inbegrip van het Azure-activiteiten logboek en de resource logboeken, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. [Metrische platform gegevens](data-platform-metrics.md) worden standaard verzameld en worden meestal opgeslagen in de data base met Azure monitor gegevens. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform metrieken en platform logboeken naar verschillende bestemmingen.
@@ -100,7 +100,7 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
      - **AllMetrics** routeert de platform metrieken van een resource in de Azure logs Store, maar in de logboek vorm. Deze metrische gegevens worden doorgaans alleen verzonden naar de data base van de time-series van Azure Monitor metrische gegevens. Deze te verzenden naar de Azure Monitor logboeken Store (die kan worden doorzocht via Log Analytics) waarmee u ze kunt integreren in query's die in andere logboeken zoeken. Deze optie is mogelijk niet beschikbaar voor alle resource typen. Als dit wordt ondersteund, wordt door [Azure monitor ondersteunde metrische gegevens](metrics-supported.md) weer gegeven welke metrische gegevens worden verzameld voor welke resource typen.
 
        > [!NOTE]
-       > Zie limitatation voor routerings metrieken voor Azure Monitor logboeken eerder in dit artikel.  
+       > Zie de beperking voor de metrische gegevens van route ring naar Azure Monitor logboeken eerder in dit artikel.  
 
 
      - In **Logboeken** worden de verschillende beschik bare categorieën weer gegeven, afhankelijk van het resource type. Controleer alle categorieën die u wilt omleiden naar een bestemming.

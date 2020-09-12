@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483826"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565750"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -30,9 +30,13 @@ De Microsoft Azure Data Box-oplossing bestaat uit vier hoofdonderdelen die met e
 - **Clients/hosts die met het apparaat zijn verbonden** – De clients in uw infrastructuur die via USB verbinding maken met de Data Box-apparaat en gegevens bevatten die moeten worden beschermd.
 - **Cloudopslag** – De locatie in de Azure-cloud waar gegevens worden opgeslagen. Dit is meestal het opslagaccount dat is gekoppeld aan de Azure Data Box-resource die u hebt gemaakt.
 
-Het volgende diagram toont de stroom van gegevens via de Azure Data Box-oplossing van on-premises naar Azure. Deze stroom is voor een import volgorde voor uw Data Box.
+In het volgende diagram ziet u de stroom van gegevens via de Azure Data Box oplossing van on-premises naar Azure en de verschillende beveiligings functies die worden toegepast als de gegevens via de oplossing worden uitgevoerd. Deze stroom is voor een import volgorde voor uw Data Box.
 
-![Data Box-beveiliging](media/data-box-security/data-box-security-2.png)
+![Beveiliging Data Box importeren](media/data-box-security/data-box-security-2.png)
+
+Het volgende diagram is voor de export volgorde voor uw Data Box.
+
+![Beveiliging Data Box exporteren](media/data-box-security/data-box-security-3.png)
 
 Wanneer de gegevens via deze oplossing stromen, worden gebeurtenissen vastgelegd en worden logboeken gegenereerd. Ga voor meer informatie naar:
 
@@ -86,7 +90,7 @@ Azure Data Box verzamelt en toont persoonlijke informatie in de volgende belangr
   - Adres
   - Plaats
   - Postcode
-  - Status
+  - Staat
   - Land/Provincie/Regio
   - Accountnummer van transporteur
   - Volgnummer van verzending
@@ -102,7 +106,7 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box: 
 
-|Richtlijn   |Description   |
+|Richtlijn   |Beschrijving   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Voor bescherming tegen water en stof         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Voor het weerstaan van nadelige vervoersomstandigheden          |

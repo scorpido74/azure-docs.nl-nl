@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419900"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440776"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Active-Active S2S VPN-verbindingen configureren met Azure VPN-gateways
 
@@ -411,7 +411,7 @@ In deze stap schakelt u de modus actief-actief in en werkt u de gateway bij. In 
 
 * Met deze stap kunt u een verouderde SKU niet wijzigen in een van de nieuwe Sku's. U kunt de grootte van een verouderde SKU alleen wijzigen in een andere ondersteunde verouderde SKU. U kunt de SKU bijvoorbeeld niet wijzigen van Standard in VpnGw1 (zelfs als VpnGw1 wordt ondersteund voor actief-actief), omdat Standard een verouderde SKU is en VpnGw1 een huidige SKU is. Zie [Gateway-sku's](vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het wijzigen van de grootte en het migreren van sku's.
 
-* Als u de grootte van een huidige SKU wilt wijzigen, bijvoorbeeld VpnGw1 naar VpnGw3, kunt u dit doen met deze stap omdat de Sku's zich in dezelfde SKU-familie bevinden. Hiervoor gebruikt u de waarde:```-GatewaySku VpnGw3```
+* Als u de grootte van een huidige SKU wilt wijzigen, bijvoorbeeld VpnGw1 naar VpnGw3, kunt u dit doen met deze stap omdat de Sku's zich in dezelfde SKU-familie bevinden. Hiervoor gebruikt u de waarde: ```-GatewaySku VpnGw3```
 
 Als u dit in uw omgeving gebruikt, hoeft u de-GatewaySku niet op te geven als u het formaat van de gateway niet hoeft te wijzigen. In deze stap moet u het gateway-object instellen in Power shell om de daad werkelijke update te activeren. Deze update kan 30 tot 45 minuten duren, zelfs als u de grootte van de gateway niet wijzigt.
 

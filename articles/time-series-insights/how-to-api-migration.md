@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163948"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650797"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migreren naar nieuwe Azure Time Series Insights API-versies Gen2
 
@@ -56,7 +56,7 @@ Om gebruikers te helpen hun [Time Series-model variabelen](./concepts-variables.
 
     [![Variabelen bijwerken](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. Klik op **opgeslagen Query's bijwerken**. Het hulp programma waarschuwt u wanneer er variabelen zijn bijgewerkt.
+1. Klik op **opgeslagen Query's bijwerken**. Het hulp programma waarschuwt u wanneer opgeslagen query's zijn bijgewerkt.
 
     [![Opgeslagen query's bijwerken](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -99,7 +99,7 @@ Voor de volgende REST-eind punten moet u de API-versie bijwerken naar `2020-07-3
 
 - Typen-Api's
   - [Put-bewerking](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
-- Query-Api's
+- Query-API's
   - [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)

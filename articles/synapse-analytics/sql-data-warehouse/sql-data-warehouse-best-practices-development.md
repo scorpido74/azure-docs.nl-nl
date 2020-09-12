@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206696"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457903"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Aanbevolen procedures voor het ontwikkelen van de Synapse SQL-groep
 
@@ -122,6 +122,6 @@ Als u in dit artikel niet vindt wat u zoekt, kunt u het document ' zoeken naar d
 
 De [pagina van micro soft Q&een vraag voor Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) is een plek waar u vragen kunt stellen aan andere gebruikers en aan de Azure Synapse-Product groep.  We controleren het forum regelmatig om er zeker van te zijn dat uw vragen worden beantwoord door een andere gebruiker of een van ons.  
 
-We hebben ook een [Stack Overflow-forum Azure SQL Data Warehouse](https://stackoverflow.com/questions/tagged/azure-sqldw) voor als u uw vragen liever in Stack Overflow stelt.
+Als u liever vragen hebt over Stack Overflow, hebben we ook een [Azure Synapse Analytics stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 
 Gebruik de pagina met [feedback over Azure Synapse](https://feedback.azure.com/forums/307516-sql-data-warehouse) om functie aanvragen te maken.  Het toevoegen van aanvragen of het stemmen op andere aanvragen helpt ons prioriteit te geven aan bepaalde functies.

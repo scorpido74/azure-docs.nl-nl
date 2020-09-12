@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343248"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612083"
 ---
 # <a name="what-is-azure-sql-database"></a>Wat is Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,9 @@ Met Azure SQL Database kunt u een Maxi maal beschik bare gegevenslaag met hoge p
 Azure SQL Database is gebaseerd op de laatste stabiele versie van de [Microsoft SQL server data base-engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). U kunt geavanceerde functies voor het verwerken van query's gebruiken, zoals [hoogwaardige in-Memory technologieën](../in-memory-oltp-overview.md) en [intelligente query verwerking](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). De nieuwste mogelijkheden van SQL Server worden eerst vrijgegeven voor SQL Database en vervolgens SQL Server zichzelf. U beschikt over de nieuwste SQL Server mogelijkheden zonder overhead voor het uitvoeren van patches of het upgraden, testen over miljoenen data bases. 
 
 Met SQL Database kunt u eenvoudig prestaties in twee verschillende aankoop modellen definiëren en schalen: een [op vCore gebaseerd inkoop model](service-tiers-vcore.md) en een [op DTU gebaseerd aankoop model](service-tiers-dtu.md). SQL Database is een volledig beheerde service met ingebouwde hoge Beschik baarheid, back-ups en andere veelvoorkomende onderhouds bewerkingen. Micro soft behandelt alle patches en updates van de code van het SQL-en-besturings systeem. U hoeft de onderliggende infra structuur niet te beheren.
+
+Als u niet bekend bent met Azure SQL Database, raadpleegt u de *Azure SQL database Overview* video van onze diep gaande [Azure SQL-video reeks](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>Implementatiemodellen
 
@@ -190,13 +193,13 @@ Dankzij [Azure Active Directory-integratie](authentication-aad-overview.md) kunt
 
 SQL Database maakt het bouwen en onderhouden van toepassingen makkelijker en productiever. Met SQL Database kunt u zich concentreren op dat waar u het beste in bent: fantastische apps bouwen. U kunt SQL Database beheren en ontwikkelen met behulp van hulpprogram ma's en vaardig heden die u al hebt.
 
-|Hulpprogramma|Description|
+|Hulpprogramma|Beschrijving|
 |:---|:---|
 |[Azure Portal](https://portal.azure.com/)|Een webtoepassing voor het beheren van alle Azure-Services.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Een platform voor meerdere platforms dat wordt uitgevoerd in Windows, MacOS en Linux.|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Een gratis, Download bare client toepassing voor het beheren van een SQL-infra structuur, van SQL Server tot SQL Database.|
 |[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Een gratis, Download bare client toepassing voor het ontwikkelen van SQL Server relationele data bases, data bases in Azure SQL Database, integratie Services-pakketten, Analysis Services gegevens modellen en Reporting Services-rapporten.|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Een gratis, Download bare, open-source code-editor voor Windows, macOS en Linux. Het ondersteunt extensies, waaronder de [MSSQL-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's Microsoft SQL Server, Azure SQL Database en Azure SQL Data Warehouse.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Een gratis, Download bare, open-source code-editor voor Windows, macOS en Linux. Het ondersteunt extensies, waaronder de [MSSQL-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's Microsoft SQL Server, Azure SQL database en Azure Azure Synapse Analytics (voorheen SQL Data Warehouse).|
 
 SQL Database biedt ondersteuning voor het bouwen van toepassingen met python, Java, Node.js, PHP, Ruby en .NET op macOS, Linux en Windows. SQL Database ondersteunt dezelfde [verbindingsbibliotheken](connect-query-content-reference-guide.md#libraries) als SQL Server.
 

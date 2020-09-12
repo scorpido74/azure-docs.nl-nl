@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047449"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457988"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -35,7 +35,7 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 
 | Service verbeteringen | Details |
 | --- | --- |
-|**Versleuteling op kolom niveau (open bare preview)**|Beveilig gevoelige informatie in uw Synapse SQL Data Warehouse door symmetrische versleuteling toe te passen op een kolom met gegevens met behulp van Transact-SQL. Versleuteling op kolom niveau heeft ingebouwde functies die u kunt gebruiken om gegevens te versleutelen met behulp van symmetrische sleutels die verder worden beveiligd met een certificaat, wacht woord, symmetrische sleutel of asymmetrische sleutel. Ga voor meer informatie naar [een kolom met gegevens versleutelen](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
+|**Versleuteling op kolom niveau (open bare preview)**|Beveilig gevoelige informatie in uw Azure Synapse Analytics door symmetrische versleuteling toe te passen op een kolom met gegevens met behulp van Transact-SQL. Versleuteling op kolom niveau heeft ingebouwde functies die u kunt gebruiken om gegevens te versleutelen met behulp van symmetrische sleutels die verder worden beveiligd met een certificaat, wacht woord, symmetrische sleutel of asymmetrische sleutel. Ga voor meer informatie naar [een kolom met gegevens versleutelen](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
 |**Ondersteuning voor compatibiliteits niveau (GA)**|Met deze release kunnen gebruikers nu het compatibiliteits niveau van een Data Base instellen om de Transact-SQL-taal en het verwerkings gedrag van query's te verkrijgen van een specifieke versie van de Synapse SQL-engine. Zie [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [ALTER data base scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor meer informatie.|
 |**Beveiliging op rijniveau**|Deze release bevat een verbetering voor update-en verwijderings bewerkingen op rijen waarop beveiliging op basis van een gebruikers beleid wordt afgedwongen. Met deze release, update-en verwijder bewerkingen met intrinsieke functies zoals is_rolemember, als de intrinsieke niet verwijst naar een kolom in de DML-doel tabel. Vóór deze verbetering is het mogelijk dat deze bewerkingen niet worden uitgevoerd omdat de onderliggende DML-bewerkingen zijn beperkt.|
 |**DBCC SHRINKDATABASE (GA)**|U kunt nu de grootte van de gegevens en logboek bestanden in de opgegeven Data Base verkleinen. Raadpleeg de [documentatie](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)voor meer informatie.|

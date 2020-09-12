@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e6b5e2e06e6cd87295b2faf2a426b75b5f6bf10
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018090"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650764"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Als u een Azure Machine Learning model implementeert als webservice, wordt een REST API-eind punt gemaakt. U kunt gegevens naar dit eind punt verzenden en de voor spelling ontvangen die door het model wordt geretourneerd. In dit document leest u hoe u clients voor de webservice maakt met behulp van C#, go, Java en python.
 
-U maakt een webservice wanneer u een model implementeert in uw lokale omgeving, Azure Container Instances, Azure Kubernetes-service of veld-Programmeer bare poort matrices (FPGA). U haalt de URI op die wordt gebruikt om toegang te krijgen tot de webservice met behulp van de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Als verificatie is ingeschakeld, kunt u ook de SDK gebruiken om de verificatie sleutels of-tokens op te halen.
+U maakt een webservice wanneer u een model implementeert in uw lokale omgeving, Azure Container Instances, Azure Kubernetes-service of veld-Programmeer bare poort matrices (FPGA). U haalt de URI op die wordt gebruikt om toegang te krijgen tot de webservice met behulp van de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Als verificatie is ingeschakeld, kunt u ook de SDK gebruiken om de verificatie sleutels of-tokens op te halen.
 
 De algemene werk stroom voor het maken van een client die gebruikmaakt van een machine learning-webservice:
 
@@ -39,7 +39,7 @@ De algemene werk stroom voor het maken van een client die gebruikmaakt van een m
 > [!NOTE]
 > Gebruik de Azure Machine Learning SDK om informatie over de webservice op te halen. Dit is een python-SDK. U kunt elke taal gebruiken om een-client voor de service te maken.
 
-De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) bevat de informatie die u nodig hebt voor het maken van een-client. De volgende `Webservice` eigenschappen zijn handig voor het maken van een client toepassing:
+De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) bevat de informatie die u nodig hebt voor het maken van een-client. De volgende `Webservice` eigenschappen zijn handig voor het maken van een client toepassing:
 
 * `auth_enabled` -Als de sleutel verificatie is ingeschakeld, `True` anders, `False` .
 * `token_auth_enabled` -Als token verificatie is ingeschakeld, `True` anders, `False` .
@@ -57,7 +57,7 @@ Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webs
     print(service.swagger_uri)
     ```
 
-* U kunt gebruiken `Webservice.list` voor het ophalen van een lijst met geïmplementeerde webservices voor modellen in uw werk ruimte. U kunt filters toevoegen om de lijst met geretourneerde gegevens te beperken. Zie de naslag documentatie voor de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) voor meer informatie over wat kan worden gefilterd.
+* U kunt gebruiken `Webservice.list` voor het ophalen van een lijst met geïmplementeerde webservices voor modellen in uw werk ruimte. U kunt filters toevoegen om de lijst met geretourneerde gegevens te beperken. Zie de naslag documentatie voor de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) voor meer informatie over wat kan worden gefilterd.
 
     ```python
     services = Webservice.list(ws)
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) .
 
 #### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
@@ -501,7 +501,7 @@ De geretourneerde resultaten zijn vergelijkbaar met het volgende JSON-document:
 
 ## <a name="web-service-schema-openapi-specification"></a>Web Service-schema (OpenAPI-specificatie)
 
-Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Bijvoorbeeld `print(service.swagger_uri)` .) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
+Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri). (Bijvoorbeeld `print(service.swagger_uri)` .) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
 
 Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificatie) dat is gegenereerd voor een implementatie:
 
@@ -643,7 +643,7 @@ Zie [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen)voor een hu
 
 
 > [!TIP]
-> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri` ) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
+> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri` ) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
 
 ## <a name="consume-the-service-from-power-bi"></a>De service gebruiken vanuit Power BI
 

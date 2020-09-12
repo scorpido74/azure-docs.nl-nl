@@ -4,14 +4,14 @@ description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092487"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612077"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
@@ -29,7 +29,7 @@ Klik op de onderstaande afbeelding om een [video demonstratie](https://azure.mic
 
 ![scherm afbeelding van de pagina project details in Azure Portal](media/hpc-cache-create-basics.png)
 
-Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache. Zorg ervoor dat het abonnement op de [toegangs](hpc-cache-prerequisites.md#azure-subscription) lijst staat.
+Selecteer in **Project Details**het abonnement en de resource groep die als host moet fungeren voor de cache.<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
 
 Stel in **service Details**de naam van de cache en de andere kenmerken in:
 
@@ -98,7 +98,7 @@ Wanneer het maken is voltooid, wordt er een melding weer gegeven met een koppeli
 > [!NOTE]
 > Als uw cache door de klant beheerde versleutelings sleutels gebruikt, kan de cache worden weer gegeven in de lijst met resources voordat de implementatie status wordt gewijzigd in voltooid. Zodra de status van de cache wacht op de sleutel, kunt u [deze machtigen](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) voor het gebruik **van** de sleutel kluis.
 
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ## <a name="create-the-cache-with-azure-cli"></a>De cache maken met Azure CLI
 

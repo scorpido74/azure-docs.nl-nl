@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020351"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645639"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -147,7 +147,8 @@ Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Afhankelijkheids visualisatie in Azure Government
 
-Azure Migrate is afhankelijk van Servicetoewijzing voor de visualisatie functionaliteit van de afhankelijkheid. Omdat Servicetoewijzing momenteel niet beschikbaar is in Azure Government, is deze functionaliteit niet beschikbaar in Azure Government.
+Afhankelijkheids analyse op basis van een agent wordt niet ondersteund in Azure Government. Gebruik afhankelijkheids analyse zonder agent.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>Afhankelijkheden worden niet weer gegeven na installatie van agent
 
@@ -160,7 +161,7 @@ Voor Windows-Vm's:
 
     ![MMA-status](./media/troubleshoot-assessment/mma-properties.png)
 
-Voor virtuele Linux-machines moet u ervoor zorgen dat de installatie opdrachten voor MMA en de afhankelijkheids agent zijn geslaagd.
+Voor virtuele Linux-machines moet u ervoor zorgen dat de installatie opdrachten voor MMA en de afhankelijkheids agent zijn geslaagd. Raadpleeg [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)voor meer richt lijnen voor probleem oplossing.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -181,7 +182,6 @@ In Azure Migrate server-evaluatie, met afhankelijkheids analyse op basis van een
 ## <a name="machines-show-install-agent"></a>Computers ' agent installeren ' weer geven
 
 Na de migratie van computers met afhankelijkheids visualisatie ingeschakeld op Azure, kunnen computers de actie ' agent installeren ' in plaats van ' afhankelijkheden weer geven ' weer geven vanwege het volgende gedrag:
-
 
 - Na de migratie naar Azure zijn on-premises machines uitgeschakeld en zijn er vergelijk bare Vm's in Azure. Deze machines halen een ander MAC-adres op.
 - Computers kunnen ook een ander IP-adres hebben, op basis van het feit of u het on-premises IP-adres hebt behouden of niet.

@@ -2,13 +2,13 @@
 title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/08/2020
+ms.openlocfilehash: ea46e263d934c327cf6dfa343a5e0b5a170f545e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231517"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513911"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/group-filter.md) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -96,12 +96,12 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Micro soft. Gallery](#microsoftgallery)
 > - [Micro soft. Genomics](#microsoftgenomics)
-> - [Micro soft. GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Micro soft. HanaOnAzure](#microsofthanaonazure)
 > - [Micro soft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Micro soft. HealthcareApis](#microsofthealthcareapis)
-> - [Micro soft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Micro soft. HybridData](#microsofthybriddata)
 > - [Micro soft. HybridNetwork](#microsofthybridnetwork)
 > - [Micro soft. Hydra](#microsofthydra)
@@ -168,7 +168,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Solutions](#microsoftsolutions)
 > - [Micro soft. SQL](#microsoftsql)
 > - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.Storage](#microsoftstorage)
+> - [Micro soft. Storage](#microsoftstorage)
 > - [Micro soft. StorageCache](#microsoftstoragecache)
 > - [Micro soft. StorageReplication](#microsoftstoragereplication)
 > - [Micro soft. StorageSync](#microsoftstoragesync)
@@ -965,6 +965,9 @@ Ga naar de naam ruimte van een resource provider:
 > | factory's | Ja | Ja |
 > | fabrieken/integrationRuntimes | Nee | Nee |
 
+> [!NOTE]
+> Als u Azure SSIS Integration Runtimes hebt in uw data factory, worden de lopende kosten gelabeld met data factory Tags.  Het uitvoeren van Azure-SSIS-integratie-runtime moet worden gestopt en opnieuw worden gestart om nieuwe data factory Tags te kunnen Toep assen op de lopende kosten.
+
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
@@ -1272,7 +1275,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | accounts | Ja | Ja |
 
-## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
@@ -1321,7 +1324,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Services/privateEndpointConnections | Ja | Ja |
 > | Services/privateLinkResources | Ja | Ja |
 
-## <a name="microsofthybridcompute"></a>Micro soft. HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
@@ -1697,9 +1700,9 @@ Ga naar de naam ruimte van een resource provider:
 > | expressRoutePorts | Ja | Ja |
 > | expressRouteServiceProviders | Nee | Nee |
 > | firewallPolicies | Ja | Ja |
-> | frontdoors | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Ja |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Nee |
-> | frontdoorWebApplicationFirewallPolicies | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Ja |
+> | frontdoors | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Yes |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | No |
+> | frontdoorWebApplicationFirewallPolicies | Ja, maar beperkt (Zie [Opmerking hieronder](#frontdoor)) | Yes |
 > | getDnsResourceReference | Nee | Nee |
 > | internalNotify | Nee | Nee |
 > | loadBalancers | Ja | Ja |
@@ -2158,7 +2161,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Ja | Ja |
-> | managedInstances/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Ja |
+> | managedInstances/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Yes |
 > | managedInstances/data bases/backupShortTermRetentionPolicies | Nee | Nee |
 > | managedInstances/data bases/schema's/tabellen/kolommen/sensitivityLabels | Nee | Nee |
 > | managedInstances/data bases/vulnerabilityAssessments | Nee | Nee |
@@ -2170,7 +2173,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Server | Ja | Ja |
 > | servers/beheerders | Nee | Nee |
 > | servers/communicationLinks | Nee | Nee |
-> | servers/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Ja |
+> | servers/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Yes |
 > | servers/encryptionProtector | Nee | Nee |
 > | servers/firewallRules | Nee | Nee |
 > | servers/sleutels | Nee | Nee |
@@ -2272,7 +2275,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | clusters | Ja | Ja |
-> | streamingjobs | Ja (zie opmerking hieronder) | Ja |
+> | streamingjobs | Ja (zie opmerking hieronder) | Yes |
 
 > [!NOTE]
 > U kunt geen tag toevoegen wanneer streamingjobs wordt uitgevoerd. Stop de resource om een tag toe te voegen.

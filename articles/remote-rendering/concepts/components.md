@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020300"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613943"
 ---
 # <a name="components"></a>Onderdelen
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 Een onderdeel wordt tijdens de aanmaak gekoppeld aan een entiteit. U kunt deze later niet naar een andere entiteit verplaatsen. Onderdelen worden expliciet verwijderd met `Component.Destroy()` of automatisch wanneer de entiteit eigenaar van het onderdeel wordt vernietigd.
 
 Er kan slechts één exemplaar van elk onderdeel type tegelijk aan een entiteit worden toegevoegd.
@@ -61,6 +60,15 @@ Er kan slechts één exemplaar van elk onderdeel type tegelijk aan een entiteit 
 ## <a name="unity-specific"></a>Eenheids specifiek
 
 De unit-integratie heeft aanvullende uitbreidings functies voor interactie met-onderdelen. Zie [Unit Game-objecten en-onderdelen](../how-tos/unity/objects-components.md).
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C#-ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C# RemoteManager. CreateComponent ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C#-entiteit. FindComponentOfType ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C++ ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [C++ RemoteManager:: CreateComponent ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C++-entiteit:: FindComponentOfType ()](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>Volgende stappen
 

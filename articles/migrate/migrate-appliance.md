@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927498"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514353"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -121,7 +121,7 @@ download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
 graph.windows.net | Meld u aan bij uw Azure-abonnement.
 login.microsoftonline.us  | Maak Azure Active Directory (AD)-apps voor het apparaat om te communiceren met Azure Migrate.
 management.usgovcloudapi.net | Maak Azure AD-apps voor het apparaat om te communiceren met de Azure Migrate-service.
-dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
+*.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
 *. vault.usgovcloudapi.net | Geheimen beheren in de Azure Key Vault.
 aka.ms/* | Toegang tot ook wel-koppelingen toestaan. Wordt gebruikt voor Azure Migrate apparaat-updates.
 download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
@@ -180,7 +180,7 @@ IPv6-adressen | VM. Guest.Net
 Lees doorvoer (MB per seconde) | net. received. Average
 Schrijf doorvoer (MB per seconde) | net. verzonden. gemiddeld
 **Details van configuratiepad** | 
-Name | verpakking. GetType (). Naam
+Naam | verpakking. GetType (). Naam
 Type onderliggend object | verpakking. ChildType
 Referentie Details | verpakking. MoRef
 Details van bovenliggend item | Container. Parent
@@ -227,7 +227,7 @@ Dit zijn de functies die het apparaat verzamelt van elke virtuele machine die is
 
 **Gegevens**  | **Power shell-cmdlet** | **Eigenschap**
 --- | --- | ---
-Name  | Get-WindowsFeature  | Name
+Naam  | Get-WindowsFeature  | Naam
 Onderdeel type | Get-WindowsFeature  | FeatureType
 Bovenliggend  | Get-WindowsFeature  | Bovenliggend
 
@@ -237,7 +237,7 @@ Dit zijn de SQL Server-meta gegevens die het apparaat verzamelt van Vm's waarop 
 
 **Gegevens**  | **Registerlocatie**  | **Sleutel**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Naam  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Editie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Editie 
 Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 Versie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Versie 
@@ -248,7 +248,7 @@ Hier ziet u de gegevens van het besturings systeem die door het apparaat worden 
 
 Gegevens  | WMI-klasse  | WMI-klasse-eigenschap
 --- | --- | ---
-Name  | Win32_operatingsystem  | Caption
+Naam  | Win32_operatingsystem  | Caption
 Versie  | Win32_operatingsystem  | Versie
 Architectuur  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van
 
 Gegevens  | Opdracht
 --- | --- 
-Name | rpm, met dpkg-query, uitlijnen
+Naam | rpm, met dpkg-query, uitlijnen
 Versie | rpm, met dpkg-query, uitlijnen
 Provider | rpm, met dpkg-query, uitlijnen
 
@@ -268,7 +268,7 @@ Hier ziet u de gegevens van het besturings systeem die door het apparaat worden 
 
 **Gegevens**  | **Opdracht** 
 --- | --- | ---
-Name <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Naam <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architectuur | uname
 
 

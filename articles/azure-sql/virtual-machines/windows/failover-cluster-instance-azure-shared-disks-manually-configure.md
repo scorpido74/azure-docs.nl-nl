@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055257"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611798"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,7 +217,6 @@ Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire kno
 
 ## <a name="limitations"></a>Beperkingen
 
-- Alleen SQL Server 2019 voor Windows Server 2019 wordt ondersteund. 
 - Alleen registreren met de resource provider van de SQL-VM in de [Lightweight-beheer modus](sql-vm-resource-provider-register.md#management-modes) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen

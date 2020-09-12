@@ -2,24 +2,24 @@
 title: 'VPN Gateway: Azure AD-Tenant voor P2S VPN-verbindingen: Azure AD-verificatie'
 description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74999b2bf1a34e3c7b8190dd04206b2b541c465f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 01fe9331d4063ae45a5d30aa3546d6338d30822d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087030"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89499957"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
 Wanneer u verbinding maakt met uw VNet, kunt u verificatie op basis van certificaten of RADIUS-verificatie gebruiken. Wanneer u echter het open VPN-protocol gebruikt, kunt u ook Azure Active Directory-verificatie gebruiken. Dit artikel helpt u bij het instellen van een Azure AD-Tenant voor P2S open VPN-verificatie.
 
 > [!NOTE]
-> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
+> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen en vereist de Azure VPN-client, die alleen beschikbaar is voor Windows 10.
 >
 
 

@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: werk stroom voor circuit configuratie'
 description: Op deze pagina wordt de werk stroom voor het configureren van ExpressRoute-circuits en peerings weer gegeven
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814073"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565920"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en -statussen
 
@@ -53,11 +53,11 @@ Volg de verbinding van de service provider. Dit proces varieert. Neem contact op
 
 #### <a name="expressroute-partner-model"></a>ExpressRoute-partner model
 
-Controleer of de ExpressRoute-partner gereed is om connectiviteit in te richten. Uw ExpressRoute-circuit wordt gefactureerd vanaf het moment dat een service sleutel wordt uitgegeven. Gebruik de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-portal-resource-manager.md) om uw circuit te maken.
+Controleer of de ExpressRoute-partner gereed is om connectiviteit in te richten. Vanaf het moment dat een servicesleutel is uitgegeven, worden er kosten voor een ExpressRoute-circuit in rekening gebracht. Gebruik de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-portal-resource-manager.md) om uw circuit te maken.
 
 #### <a name="expressroute-direct-model"></a>ExpressRoute direct model
 
-Zorg ervoor dat de fysieke koppeling en de status van de beheerder op beide koppelingen zijn ingeschakeld. Zie [ExpressRoute direct configureren](how-to-expressroute-direct-portal.md) voor hulp. Uw ExpressRoute-circuit wordt gefactureerd vanaf het moment dat een service sleutel wordt uitgegeven. Gebruik de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-portal-resource-manager.md) om uw circuit te maken.
+Zorg ervoor dat de fysieke koppeling en de status van de beheerder op beide koppelingen zijn ingeschakeld. Zie [ExpressRoute direct configureren](how-to-expressroute-direct-portal.md) voor hulp. Vanaf het moment dat een servicesleutel is uitgegeven, worden er kosten voor een ExpressRoute-circuit in rekening gebracht. Gebruik de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-portal-resource-manager.md) om uw circuit te maken.
 
 ### <a name="4-service-provider-provisions-connectivity"></a>4. connectiviteit van service provider-voorzieningen
 
@@ -86,7 +86,7 @@ Schakel privé-peering in om verbinding te maken met Vm's en Cloud Services die 
 
 #### <a name="for-microsoft-peering"></a>Voor micro soft-peering
 
-Schakel dit in om toegang te krijgen tot micro soft onlineservices, zoals Office 365. Daarnaast zijn alle Azure PaaS-services toegankelijk via micro soft-peering. U moet ervoor zorgen dat u een afzonderlijke proxy/Edge gebruikt om verbinding te maken met micro soft dan het account dat u voor Internet gebruikt. Het gebruik van dezelfde rand voor zowel ExpressRoute als het internet zorgt voor asymmetrische route ring en veroorzaakt connectiviteits storingen voor uw netwerk.
+Schakel dit in om toegang te krijgen tot micro soft onlineservices, zoals Microsoft 365. Daarnaast zijn alle Azure PaaS-services toegankelijk via micro soft-peering. U moet ervoor zorgen dat u een afzonderlijke proxy/Edge gebruikt om verbinding te maken met micro soft dan het account dat u voor Internet gebruikt. Het gebruik van dezelfde rand voor zowel ExpressRoute als het internet zorgt voor asymmetrische route ring en veroorzaakt connectiviteits storingen voor uw netwerk.
 
 * Peering-subnet voor pad 1 (/30)-moet openbaar IP-adres zijn
 * Peering-subnet voor pad 2 (/30)-moet openbaar IP-adres zijn

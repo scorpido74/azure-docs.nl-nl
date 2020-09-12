@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830254"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458277"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
 
@@ -68,7 +68,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 4. Voer een naam in voor de toepassing.
 5. Selecteer **systeem eigen**voor het toepassings type.
 6. Voer een URL voor de tijdelijke aanduiding in `http://resources` , zoals voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
 ### <a name="add-an-application"></a>Een toepassing toevoegen
 
@@ -149,10 +149,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 Hierbij
 
--   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt maken
--   `resourceGroupName`-de naam van de resource groep van uw Azure API Management-service
--   `serviceName`-de naam van de API Management-service waarvan u een back-up wilt maken die is opgegeven op het moment dat deze wordt gemaakt
--   `api-version`-vervangen door`2018-06-01-preview`
+-   `subscriptionId` -ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt maken
+-   `resourceGroupName` -de naam van de resource groep van uw Azure API Management-service
+-   `serviceName` -de naam van de API Management-service waarvan u een back-up wilt maken die is opgegeven op het moment dat deze wordt gemaakt
+-   `api-version` -vervangen door `2018-06-01-preview`
 
 Geef in de hoofd tekst van de aanvraag de doel-Azure Storage-account naam, de toegangs sleutel, de naam van de BLOB-container en de naam van de back-up op:
 
@@ -198,10 +198,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 Hierbij
 
--   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt herstellen
--   `resourceGroupName`-de naam van de resource groep die de Azure API Management-service bevat waarvan u een back-up wilt herstellen
--   `serviceName`-de naam van de API Management-service die wordt hersteld op de aanmaak tijd die wordt gemaakt
--   `api-version`-vervangen door`2018-06-01-preview`
+-   `subscriptionId` -ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt herstellen
+-   `resourceGroupName` -de naam van de resource groep die de Azure API Management-service bevat waarvan u een back-up wilt herstellen
+-   `serviceName` -de naam van de API Management-service die wordt hersteld op de aanmaak tijd die wordt gemaakt
+-   `api-version` -vervangen door `2018-06-01-preview`
 
 In de hoofd tekst van de aanvraag geeft u de locatie van het back-upbestand op. Dat wil zeggen, de Azure Storage-account naam, de toegangs sleutel, de naam van de BLOB-container en de naam van de back-up toevoegen:
 
@@ -234,7 +234,7 @@ Bekijk de volgende bronnen voor verschillende scenario's van het back-up-en hers
 
 -   [Azure API Management-accounts repliceren](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Back-up maken en terugzetten in API Management automatiseren met Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: een back](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) -up maken van de configuratie 
+-   [Azure API Management: een back](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) -up maken van de configuratie 
      en deze herstellen _De benadering die wordt gedetailleerd door Stuart komt niet overeen met de officiële richt lijnen, maar is wel interessant._
 
 [backup an api management service]: #step1

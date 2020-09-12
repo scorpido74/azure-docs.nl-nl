@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180946"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513963"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -44,14 +44,14 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 1. Sluit de volgende mappen uit van antivirus scans:
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     Vervang door `C:\` de letter van het *Systeem station*.
 
 1. De volgende drie processen die worden uitgevoerd in een VM uitsluiten van antivirus scans:
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. SQL biedt ook enkele richt lijnen voor het werken met antivirus Programma's. Raadpleeg [dit artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) voor meer informatie.

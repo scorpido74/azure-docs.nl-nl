@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011035"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462000"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -134,7 +134,7 @@ Met metrische gegevens voor opslag worden alleen metrische gegevens over capacit
 >
 >
 
-Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
+Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschikbaarheid bewaken
 U moet de beschik baarheid van de opslag Services in uw opslag account bewaken door de waarde in de kolom **Beschik baarheid** te bewaken in de metrische tabellen per uur of minuut, **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** **$MetricsCapacityBlob.** De kolom **Beschik baarheid** bevat een percentage waarde waarmee de beschik baarheid van de service of de API-bewerking wordt aangegeven die wordt vertegenwoordigd door de rij (de **RowKey** geeft aan of de rij metrische gegevens bevat voor de service als geheel of voor een specifieke API-bewerking).

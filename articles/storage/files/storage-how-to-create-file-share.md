@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930669"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645578"
 ---
 # <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
 Als u een Azure-bestands share wilt maken, moet u drie vragen beantwoorden over hoe u deze gaat gebruiken:
@@ -121,7 +121,7 @@ $storAcct = New-AzStorageAccount `
     -Kind FileStorage 
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Als u een opslag account wilt maken met behulp van de Azure CLI, gebruikt u de opdracht AZ Storage account create. Deze opdracht heeft veel opties; alleen de vereiste opties worden weer gegeven. Zie de [ `az storage account create` opdracht documentatie](/cli/azure/storage/account)voor meer informatie over de geavanceerde opties.
 
 Om het maken van het opslag account en de volgende bestands share te vereenvoudigen, worden in variabelen verschillende para meters opgeslagen. U kunt de variabele inhoud vervangen door de waarden die u wilt, maar houd er rekening mee dat de naam van het opslag account globaal uniek moet zijn.
@@ -197,7 +197,7 @@ New-AzRmStorageShare `
 > [!Note]  
 > De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over de naamgeving van bestands shares en bestanden.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Voordat we een Azure-bestands share met de Azure CLI kunnen maken, moet u een opslag account sleutel ophalen om het maken van de bestands share te autoriseren met. U kunt dit doen met de [`az storage account keys list`](/cli/azure/storage/account/keys) opdracht:
 
 ```azurecli-interactive
@@ -231,7 +231,7 @@ Deze opdracht mislukt als het opslag account zich in een virtueel netwerk bevind
 > De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over de naamgeving van bestands shares en bestanden.
 
 ### <a name="create-a-hot-or-cool-file-share"></a>Een hot of coole bestands share maken
-Een bestands share in een **opslag account voor algemeen gebruik v2 (GPv2)** kan trans acties geoptimaliseerde, Hot of coole bestands shares (of een combi natie daarvan) bevatten. Geoptimaliseerde trans actie-shares zijn beschikbaar in alle Azure-regio's, maar warme en cool-bestands shares zijn alleen beschikbaar [in een subset van regio's](storage-files-planning.md#storage-tiers). U kunt een hot of een coole bestands share maken met behulp van de module Azure PowerShell preview of de Azure CLI. 
+Een **opslag account voor algemeen gebruik v2 (GPv2)** kan trans acties geoptimaliseerde, Hot of coole bestands shares (of een combi natie daarvan) bevatten. Geoptimaliseerde trans actie-shares zijn beschikbaar in alle Azure-regio's, maar warme en cool-bestands shares zijn alleen beschikbaar [in een subset van regio's](storage-files-planning.md#storage-tiers). U kunt een hot of een coole bestands share maken met behulp van de module Azure PowerShell preview of de Azure CLI. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 De Azure Portal biedt nog geen ondersteuning voor het maken van warme en coole bestands shares of het verplaatsen van bestaande door een trans actie geoptimaliseerde bestands shares naar warme of koud. Raadpleeg de instructies voor het maken van een bestands share met Power shell of de Azure CLI.
@@ -270,7 +270,7 @@ Update-AzRmStorageShare `
 > [!Note]  
 > De mogelijkheid om lagen in te stellen en te wijzigen via Power shell, vindt u in de preview AZ. Storage Power shell-module. Deze cmdlets of hun uitvoer kunnen worden gewijzigd voordat ze worden vrijgegeven in de algemeen beschik bare AZ. Storage Power shell-module. u kunt hiervoor ook scripts maken.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 De functionaliteit voor het maken of verplaatsen van een bestands share naar een specifieke laag is beschikbaar in de meest recente update voor Azure CLI. Het bijwerken van Azure CLI is specifiek voor het besturings systeem/Linux-distributie dat u gebruikt. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor instructies over het bijwerken van Azure CLI op uw systeem.
 
 ```bash

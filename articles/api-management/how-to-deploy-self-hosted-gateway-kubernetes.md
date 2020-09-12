@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056388"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500127"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Een zelf-hostende gateway implementeren op Kubernetes
 
@@ -63,7 +63,7 @@ In dit artikel worden de stappen beschreven voor het implementeren van het zelf-
 ## <a name="production-deployment-considerations"></a>Overwegingen voor productie-implementatie
 
 ### <a name="access-token"></a>Toegangs token
-Zonder een geldig toegangs token heeft een zelf-hostende gateway geen toegang tot de configuratie gegevens van het eind punt van de bijbehorende API Management service. Het toegangs token kan Maxi maal 30 dagen geldig zijn. Het moet opnieuw worden gegenereerd en het cluster is geconfigureerd met een nieuwe token, hetzij hand matig of via automatisering voordat het verloopt. 
+Zonder een geldig toegangs token heeft een zelf-hostende gateway geen toegang tot de configuratie gegevens van het eind punt van de bijbehorende API Management service. Het toegangs token kan Maxi maal 30 dagen geldig zijn. Het moet opnieuw worden gegenereerd en het cluster is geconfigureerd met een nieuwe token, hetzij hand matig of via automatisering voordat het verloopt.
 
 Wanneer u het vernieuwen van tokens automatiseert, gebruikt u [deze beheer API-bewerking](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) om een nieuw token te genereren. Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/configuration/secret)voor meer informatie over het beheren van Kubernetes-geheimen.
 
@@ -106,6 +106,9 @@ DNS-naam omzetting speelt een cruciale rol in de mogelijkheid van een zelf-hoste
 Het YAML-bestand in de Azure Portal past het standaard [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) -beleid toe. Dit beleid zorgt ervoor dat aanvragen voor naam omzetting die niet zijn opgelost door de cluster-DNS, worden doorgestuurd naar de upstream-DNS-server die is overgenomen van het knoop punt.
 
 Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)voor meer informatie over naam omzetting in Kubernetes. Overweeg het [DNS-beleid](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) of de [DNS-configuratie](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) zo nodig aan te passen voor uw installatie.
+
+### <a name="external-traffic-policy"></a>Beleid voor externe verkeer
+Het YAML-bestand dat in het `externalTrafficPolicy` veld Azure Portal op het [service](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) object wordt vermeld `Local` . Hiermee behoudt u het IP-adres van de beller (toegankelijk in de context van de [aanvraag](api-management-policy-expressions.md#ContextVariables)) en schakelt u de taak verdeling tussen knoop punten uit, waardoor er geen netwerk hops ontstaan. Houd er rekening mee dat deze instelling een asymmetrische distributie van verkeer kan veroorzaken in implementaties met een ongelijk aantal gateway-aantallen per knoop punt.
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Aangepaste domein namen en SSL-certificaten
 

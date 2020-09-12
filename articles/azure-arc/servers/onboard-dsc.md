@@ -3,12 +3,12 @@ title: Aangesloten machine agent installeren met behulp van Windows Power shell 
 description: In dit artikel leert u hoe u met behulp van Windows Power shell DSC computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview).
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213089"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565817"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
 
@@ -82,7 +82,7 @@ Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken me
 
 Deze resource kan worden toegevoegd aan bestaande DSC-configuraties om een end-to-end-configuratie voor een machine aan te duiden. U kunt deze resource bijvoorbeeld toevoegen aan een configuratie waarin de instellingen voor beveiligde besturings systemen worden ingesteld.
 
-De [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
+De [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,22 +1,22 @@
 ---
 title: Snel schalen en beveiligen van een webtoepassing met behulp van Azure front deur en Azure Web Application firewall (WAF) | Microsoft Docs
-description: Dit artikel helpt u inzicht in het gebruik van Web Application Firewall met uw gereserveerde front-deur service
+description: Dit artikel helpt u inzicht in het gebruik van Web Application Firewall met uw Azure front-deur service
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743538"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535428"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Snel schalen en beveiligen van een webtoepassing met behulp van Azure front deur en Azure Web Application firewall (WAF)
 
@@ -119,7 +119,7 @@ In eerste instantie is de aangepaste domein naam van uw webtoepassing (die klant
 
 Specifieke stappen voor het bijwerken van uw DNS-records zijn afhankelijk van uw DNS-service provider, maar als u Azure DNS gebruikt om uw DNS-naam te hosten, kunt u de documentatie voor stappen gebruiken om [een DNS-record](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) bij te werken en naar de afd-hostnaam te verwijzen. 
 
-Een belang rijke ding hier is dat als u uw gebruikers nodig hebt om naar uw website te navigeren met behulp van de zone Apex, voor voor beeld, contoso.com, u Azure DNS en het [alias record type](https://docs.microsoft.com/azure/dns/dns-alias) moet gebruiken om uw DNS-naam te hosten. 
+Een belang rijke ding hier is dat als u uw gebruikers nodig hebt om naar uw website te navigeren met behulp van de zone Apex, bijvoorbeeld contoso.com, u Azure DNS en het [alias record type](https://docs.microsoft.com/azure/dns/dns-alias) moet gebruiken om uw DNS-naam te hosten. 
 
 Daarnaast moet u ook uw AFD-configuratie bijwerken om [dit aangepaste domein toe te voegen](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , zodat afd deze toewijzing begrijpt.
 

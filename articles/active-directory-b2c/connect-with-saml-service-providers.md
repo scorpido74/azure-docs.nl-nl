@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 09/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520206"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611616"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -354,7 +354,8 @@ Als u deze zelf studie wilt volt ooien, gebruikt u de [SAML-test toepassing][sam
 
 Selecteer **Aanmelden** en u moet een aanmeldings scherm van de gebruiker weer gegeven. Bij het aanmelden wordt een SAML-bevestiging weer gegeven aan de voorbeeld toepassing.
 
-## <a name="enable-encypted-assertions"></a>Versleuteld-verklaringen inschakelen
+## <a name="enable-encrypted-assertions-optional"></a>Versleutelde verklaringen inschakelen (optioneel)
+
 Voor het versleutelen van de SAML-bevestigingen die worden teruggestuurd naar de service provider, gebruikt Azure AD B2C het open bare-sleutel certificaat van de service providers. De open bare sleutel moet bestaan in de SAML-meta gegevens die in de bovenstaande ["samlMetadataUrl"](#samlmetadataurl) als sleutel descriptor met het gebruik van ' Encryption ' zijn beschreven.
 
 Hier volgt een voor beeld van de SAML-meta gegevenssleutel descriptor waarvoor een gebruik is ingesteld op versleuteling:
@@ -369,35 +370,50 @@ Hier volgt een voor beeld van de SAML-meta gegevenssleutel descriptor waarvoor e
 </KeyDescriptor>
 ```
 
-Als u wilt dat Azure AD B2C versleutelde beweringen verzendt, stelt u het **WantsEncryptedAssertion** -meta gegevens item in op True in het technische profiel van de Relying Party, zoals hieronder wordt weer gegeven.
+Als u wilt dat Azure AD B2C versleutelde beweringen verzendt, stelt u het **WantsEncryptedAssertion** -meta gegevens item `true` in op in het [technische profiel van Relying Party](relyingparty.md#technicalprofile). U kunt ook de algoritme configureren die wordt gebruikt om de SAML-bewering te versleutelen. Zie [Relying Party technische profiel meta gegevens](relyingparty.md#metadata)voor meer informatie. 
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="contoso.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin_saml"
-  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
- ..
- ..
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="SAML2"/>
-      <Metadata>
-          <Item Key="WantsEncryptedAssertions">true</Item>
-      </Metadata>
-     ..
-     ..
-     ..
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
 ```
+
+## <a name="enable-identity-provider-initiated-flow-optional"></a>Door ID-provider geïnitieerde stroom inschakelen (optioneel)
+
+In de door de provider geïnitieerde stroom wordt het aanmeldings proces geïnitieerd door de ID-provider (Azure AD B2C), die een ongevraagd SAML-antwoord naar de service provider (uw Relying Party toepassing) verzendt. Als u de door de provider geïnitieerde stroom wilt inschakelen, stelt u het **IdpInitiatedProfileEnabled** -meta gegevens item `true` in op het [technische profiel](relyingparty.md#technicalprofile)van de Relying Party.
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="IdpInitiatedProfileEnabled">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Als u een gebruiker wilt aanmelden of zich wilt registreren via de door de provider geïnitieerde stroom, gebruikt u de volgende URL:
+
+```
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+```
+
+Vervang de volgende waarden:
+
+* **Tenant naam** met de naam van uw Tenant
+* **beleids naam** met uw SAML-Relying Party-beleids naam
 
 ## <a name="sample-policy"></a>Voorbeeldbeleid
 

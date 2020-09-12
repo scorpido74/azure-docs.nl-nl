@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144784"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651509"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel vindt u informatie over het configureren en trainen van een regressie model voor het maken van een time-reeks met behulp van geautomatiseerde machine learning, AutoML, in de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py). 
+In dit artikel vindt u informatie over het configureren en trainen van een regressie model voor het maken van een time-reeks met behulp van geautomatiseerde machine learning, AutoML, in de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true). 
 
 Voor een lage code kunt u de [zelf studie: prognose vraag met geautomatiseerde machine learning](tutorial-automated-ml-forecast.md) voor een time-series-prognose voor beeld met behulp van geautomatiseerde machine learning in [Azure machine learning Studio](https://ml.azure.com/).
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> Wanneer u een model wilt trainen voor het voors pellen van toekomstige waarden, kunt u ervoor zorgen dat alle functies die in de training worden gebruikt, kunnen worden gebruikt bij het uitvoeren van voor spellingen voor uw beoogde horizon. Wanneer u bijvoorbeeld een vraag prognose maakt, met inbegrip van een functie voor de huidige aandelen koers, kan de nauw keurigheid van de training enorm toenemen. Als u echter van plan bent om te forecasten met een lange horizon, is het wellicht niet mogelijk om toekomstige voorraad waarden te voors pellen die overeenkomen met toekomstige periode punten en de nauw keurigheid van het model kan lijden.
+> Wanneer u een model wilt trainen voor het voors pellen van toekomstige waarden, kunt u ervoor zorgen dat alle functies die in de training worden gebruikt, kunnen worden gebruikt bij het uitvoeren van voor spellingen voor uw beoogde horizon. <br> <br>Wanneer u bijvoorbeeld een vraag prognose maakt, met inbegrip van een functie voor de huidige aandelen koers, kan de nauw keurigheid van de training enorm toenemen. Als u echter van plan bent om te forecasten met een lange horizon, is het wellicht niet mogelijk om toekomstige voorraad waarden te voors pellen die overeenkomen met toekomstige periode punten en de nauw keurigheid van het model kan lijden.
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 U kunt afzonderlijke trein-en validatie sets rechtstreeks in het `AutoMLConfig` object opgeven.   Meer informatie over de [AutoMLConfig](#configure-experiment).
 
-Voor tijdreeks prognoses wordt automatisch **ROCV (Rolling Origin)** gebruikt wanneer u de trainings-en validatie gegevens samen passeert en het aantal Kruis validatie vouwen instelt met de `n_cross_validations` para meter in uw `AutoMLConfig` . ROCV verdeelt de reeks in trainings-en validatie gegevens met behulp van een tijd punt op oorsprong. Als u de oorspronkelijke tijd verschuift, worden de vouwen voor kruis validatie gegenereerd. Deze strategie behoudt de gegevens integriteit van de tijd reeks en elimineert het risico op lekkage van gegevens
+Voor time series-prognoses wordt alleen **ROCV (Rolling Origin Kruis validatie)** standaard voor validatie gebruikt. Geef de trainings-en validatie gegevens samen en stel het aantal Kruis validatie vouwen in met de `n_cross_validations` para meter in uw `AutoMLConfig` . ROCV verdeelt de reeks in trainings-en validatie gegevens met behulp van een tijd punt op oorsprong. Als u de oorspronkelijke tijd verschuift, worden de vouwen voor kruis validatie gegenereerd. Deze strategie behoudt de gegevens integriteit van de tijd reeks en elimineert het risico op lekkage van gegevens
 
-![alternatieve tekst](./media/how-to-auto-train-forecast/ROCV.svg)
+![Kruis validatie tussen komst](./media/how-to-auto-train-forecast/ROCV.svg)
 
-Zie [gegevens splitsingen en kruis validatie configureren in AutoML](how-to-configure-cross-validation-data-splits.md)voor andere opties voor kruis validatie en gegevens splitsing.
+U kunt ook uw eigen validatie gegevens meenemen, meer informatie over het [configureren van gegevens splitsingen en kruis validatie in AutoML](how-to-configure-cross-validation-data-splits.md#provide-validation-data).
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 Meer informatie over hoe AutoML van toepassing is op Kruis validatie om te [voor komen dat modellen worden verouderd](concept-manage-ml-pitfalls.md#prevent-over-fitting).
 
 ## <a name="configure-experiment"></a>Experiment configureren
-Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde parametrisatie-stappen en configuratie opties bestaan specifiek voor gegevens van de tijd reeks. 
+Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde parametrisatie-stappen en configuratie opties bestaan specifiek voor gegevens van de tijd reeks. 
 
 ### <a name="featurization-steps"></a>Parametrisatie-stappen
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-Als u de Azure Machine Learning Studio gebruikt voor uw experiment, raadpleegt u het [artikel](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+Zie [How to Customize parametrisatie in the Studio](how-to-use-automated-ml-for-ml-models.md#customize-featurization)(Engelstalig) als u de Azure machine learning Studio gebruikt voor uw experiment.
 
 ### <a name="configuration-settings"></a>Configuratie-instellingen
 
 Net als bij een regressie probleem definieert u de standaard opleidings parameters, zoals het taak type, het aantal iteraties, de trainings gegevens en het aantal Kruis validaties. Voor prognose taken zijn er aanvullende para meters die moeten worden ingesteld die van invloed zijn op het experiment. 
 
-De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) voor patronen voor syntaxis ontwerpen.
+De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) voor patronen voor syntaxis ontwerpen.
 
 | Parameter &nbsp; naam | Beschrijving | Vereist |
 |-------|-------|-------|
@@ -245,7 +245,11 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> Wanneer u DNN inschakelt voor experimenten die zijn gemaakt met de SDK, worden de [Aanbevolen model verklaringen](how-to-machine-learning-interpretability-automl.md) uitgeschakeld.
+
 Als u DNN wilt inschakelen voor een AutoML-experiment dat is gemaakt in de Azure Machine Learning Studio, raadpleegt u de instellingen voor het [taak type in de Studio How-to](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+
 
 Automatische ML biedt gebruikers zowel systeem eigen time-series als diepe leer modellen als onderdeel van het aanbevelings systeem. 
 
@@ -254,7 +258,6 @@ Modellen| Beschrijving | Voordelen
 Prophet (preview-versie)|Prophet werkt het beste met een tijd reeks met krachtige seizoensgebonden effecten en verschillende seizoenen historische gegevens. Als u gebruik wilt maken van dit model, installeert u het lokaal met `pip install fbprophet` . | Nauw keurige & snelle, robuuste uitbijters, ontbrekende gegevens en dramatische wijzigingen in uw tijd reeks.
 Automatische ARIMA (preview-versie)|Automatisch herlopend, geïntegreerd zwevend gemiddelde (ARIMA) wordt het beste uitgevoerd wanneer de gegevens stationair zijn. Dit betekent dat de statistische eigenschappen, zoals het gemiddelde en de variantie, constant zijn in de hele set. Als u bijvoorbeeld een munten spiegelt, is de kans dat u koppen krijgt, 50%, ongeacht of u vandaag, morgen of volgend jaar spiegelt.| Ideaal voor univariate-Series, aangezien de vorige waarden worden gebruikt om de toekomstige waarden te voors pellen.
 ForecastTCN (preview-versie)| ForecastTCN is een Neural-netwerk model dat is ontworpen om de meest veeleisende prognose taken uit te voeren, waarbij niet-lineaire lokale en wereld wijde trends in uw gegevens worden vastgelegd, evenals relaties tussen tijd reeksen.|Kan gebruikmaken van complexe trends in uw gegevens en kan eenvoudig worden geschaald naar het grootste aantal gegevens sets.
-
 
 Bekijk het voor beeld van de [drank productie prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) voor een gedetailleerd code voorbeeld met DNNs.
 
@@ -266,8 +269,7 @@ Stel bijvoorbeeld dat u energie vraag wilt voors pellen. Mogelijk wilt u een fun
 
 In de tabel ziet u de resulterende functie techniek die zich voordoet wanneer de venster aggregatie wordt toegepast. Kolommen voor **minimum, maximum** en **som** worden gegenereerd op een sliding window van drie op basis van de gedefinieerde instellingen. Elke rij heeft een nieuwe berekende functie, in het geval van de tijds tempel voor 8 september 2017 4: am de waarden voor maximum, minimum en som worden berekend met behulp van de **vraag waarden** voor 8 september 2017 1: am-3: am. In dit venster van drie ploegen worden de gegevens voor de resterende rijen ingevuld.
 
-![alternatieve tekst](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![doorlopend venster voor doel](./media/how-to-auto-train-forecast/target-roll.svg)
 
 Bekijk een voor beeld van een python-code met behulp van de [samenvoeg functie van het doel venster](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
 
@@ -336,5 +338,8 @@ Zie de voor beelden van voor beeld van de [voorbeeld notitieblokken](https://git
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Volg de [zelf studie](tutorial-auto-train-models.md) voor meer informatie over het maken van experimenten met automatische machine learning.
-* Bekijk de referentie documentatie [voor de Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
+* Meer informatie over [hoe en waar een model moet worden geïmplementeerd](how-to-deploy-and-where.md).
+* Meer informatie over [Interpretiteit: model uitleg bij automatische machine learning (preview)](how-to-machine-learning-interpretability-automl.md). 
+* Meer informatie over het trainen van meerdere modellen met AutoML in de [vele modellen oplossings versneller](https://aka.ms/many-models).
+* Volg de [zelf studie](tutorial-auto-train-models.md) voor een end-to-end-voor beeld voor het maken van experimenten met automatische machine learning.
+

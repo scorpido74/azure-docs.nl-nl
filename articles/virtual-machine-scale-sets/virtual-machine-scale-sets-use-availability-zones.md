@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029311"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611920"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een schaalset voor virtuele machines maken die gebruikmaakt van Beschikbaarheidszones
 
@@ -22,13 +22,17 @@ Als u de schaal sets van virtuele machines wilt beveiligen tegen fouten op Data 
 
 ## <a name="availability-considerations"></a>Beschikbaarheidsoverwegingen
 
-Wanneer u een schaalset implementeert in een of meer zones vanaf API-versie *2017-12-01*, hebt u de mogelijkheid om te implementeren met ' maximale sprei ding ' of ' statische ' fout domein verspreiding '. Met de maximale sprei ding is de schaalset uw Vm's verdeeld over zoveel mogelijk fout domeinen binnen elke zone. Deze verspreiding kan zich in meer of minder dan vijf fout domeinen per zone bevindt. Met ' statische ' sprei ding van fout domeinen ' spreiden de schaalset uw Vm's over precies vijf fout domeinen per zone. Als de schaalset geen vijf verschillende fout domeinen per zone kan vinden om te voldoen aan de toewijzings aanvraag, mislukt de aanvraag.
+Wanneer u een schaalset voor een regionale (niet-zonegebonden) implementeert in een of meer zones vanaf API-versie *2017-12-01*, hebt u de volgende beschikbaarheids opties:
+- Maximale sprei ding (platformFaultDomainCount = 1)
+- Statische vaste sprei ding (platformFaultDomainCount = 5)
+- Sprei ding uitgelijnd met opslag schijf fout domeinen (platforFaultDomainCount = 2 of 3)
+
+Met de maximale sprei ding is de schaalset uw Vm's verdeeld over zoveel mogelijk fout domeinen binnen elke zone. Deze verspreiding kan zich in meer of minder dan vijf fout domeinen per zone bevindt. Met statische vaste sprei ding wordt de schaal van uw Vm's verdeeld over precies vijf fout domeinen per zone. Als de schaalset geen vijf verschillende fout domeinen per zone kan vinden om te voldoen aan de toewijzings aanvraag, mislukt de aanvraag.
 
 **We raden u aan om te implementeren met een maximale sprei ding voor de meeste werk belastingen**, omdat deze benadering de beste sprei ding biedt in de meeste gevallen. Als u replica's nodig hebt om te worden verdeeld over verschillende hardware-isolatie-eenheden, raden we u aan om te spreiden over Beschikbaarheidszones en maximale sprei ding binnen elke zone te gebruiken.
 
-Met maximale sprei ding ziet u slechts één fout domein in de weer gave van de VM-instantie van de schaalset en in de meta gegevens van het exemplaar, ongeacht het aantal fout domeinen dat de Vm's zijn verdeeld. De sprei ding binnen elke zone is impliciet.
-
-Als u de maximale sprei ding wilt gebruiken, stelt u *platformFaultDomainCount* in op *1*. Als u statische vijf verspreiding van fout domeinen wilt gebruiken, stelt u *platformFaultDomainCount* in op *5*. In API versie *2017-12-01* *platformFaultDomainCount* standaard ingesteld op *1* voor schaal sets met één zone en meerdere zones. Op dit moment worden alleen statische vijf verspreiding van fout domeinen ondersteund voor regionale schaal sets (niet-zonegebonden).
+> [!NOTE]
+> Met maximale sprei ding ziet u slechts één fout domein in de weer gave van de VM-instantie van de schaalset en in de meta gegevens van het exemplaar, ongeacht het aantal fout domeinen dat de Vm's zijn verdeeld. De sprei ding binnen elke zone is impliciet.
 
 ### <a name="placement-groups"></a>Plaatsingsgroepen
 
@@ -61,7 +65,7 @@ Als u Beschikbaarheidszones wilt gebruiken, moet uw schaalset worden gemaakt in 
 - [Azure-portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager sjablonen](#use-azure-resource-manager-templates)
+- [Azure Resource Manager-sjablonen](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 

@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146586"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650605"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146586"
 Met Azure Machine Learning kunt u eenvoudig uw trainings script naar [verschillende reken doelen](how-to-set-up-training-targets.md)verzenden met behulp van een [RunConfiguration-object](how-to-set-up-training-targets.md#whats-a-run-configuration) en een ScriptRunConfig- [object](how-to-set-up-training-targets.md#submit). Met dit patroon kunt u veel flexibiliteit en maximale controle bieden.
 
 
-De Estimator-klasse maakt het gemakkelijker om modellen te trainen met diep gaande lessen en meer informatie. Het biedt een abstracte abstractie op hoog niveau waarmee u eenvoudig een uitvoer configuratie kunt samen stellen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings script te verzenden met behulp van een door u gekozen trainings raamwerk (zoals scikit-informatie) op elk reken doel dat u kiest, of het nu uw lokale computer, één virtuele machine in azure of een GPU-cluster in Azure is. Voor PyTorch-, tensor flow-, Chainer-en versterking-leer taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)en [versterking van leer](how-to-use-reinforcement-learning.md) .
+De Estimator-klasse maakt het gemakkelijker om modellen te trainen met diep gaande lessen en meer informatie. Het biedt een abstracte abstractie op hoog niveau waarmee u eenvoudig een uitvoer configuratie kunt samen stellen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) maken en gebruiken om trainings script te verzenden met behulp van een door u gekozen trainings raamwerk (zoals scikit-informatie) op elk reken doel dat u kiest, of het nu uw lokale computer, één virtuele machine in azure of een GPU-cluster in Azure is. Voor PyTorch-, tensor flow-, Chainer-en versterking-leer taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true)en [versterking van leer](how-to-use-reinforcement-learning.md) .
 
 ## <a name="train-with-an-estimator"></a>Train met een estimator
 
@@ -116,7 +116,7 @@ Parameter | Beschrijving | Standaard
 `custom_docker_image`| De naam van de installatie kopie die u wilt gebruiken. Bied alleen installatie kopieën beschikbaar in open bare docker-opslag plaatsen (in dit geval docker hub). Als u een afbeelding uit een privé-docker-opslag plaats wilt gebruiken, gebruikt u `environment_definition` in plaats daarvan de constructor-para meter.| `None`
 `node_count`| Het aantal knoop punten dat voor uw trainings taak moet worden gebruikt. | `1`
 `process_count_per_node`| Het aantal processen (of werk nemers) dat op elk knoop punt moet worden uitgevoerd. In dit geval gebruikt u de `2` gpu's die op elk knoop punt beschikbaar zijn.| `1`
-`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
 
 
 Dien ten slotte de trainings taak in:
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 Zodra u het model hebt getraind, kunt u het opslaan en registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen.
 
-Als u de volgende code uitvoert, wordt het model geregistreerd in uw werk ruimte en wordt het beschikbaar gemaakt om te verwijzen op naam in externe Compute-contexten of implementatie scripts. Zie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) de naslag documentatie voor meer informatie en aanvullende para meters.
+Als u de volgende code uitvoert, wordt het model geregistreerd in uw werk ruimte en wordt het beschikbaar gemaakt om te verwijzen op naam in externe Compute-contexten of implementatie scripts. Zie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) de naslag documentatie voor meer informatie en aanvullende para meters.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)
