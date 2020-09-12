@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210585"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669620"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
@@ -34,7 +34,7 @@ In de volgende afbeelding ziet u het gebruik van IoT Edge van certificaten. Er k
 ![Diagram van typische certificaat relaties](./media/iot-edge-certs/edgeCerts-general.png)
 
 > [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen. Deze beperking geldt voor het CA-certificaat van het apparaat, alle certificaten in de vertrouwens bundel en de apparaat-ID-certificaten die worden gebruikt voor X. 509-inrichtings methoden.
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2038 verlopen. Deze beperking geldt voor het CA-certificaat van het apparaat, alle certificaten in de vertrouwens bundel en de apparaat-ID-certificaten die worden gebruikt voor X. 509-inrichtings methoden.
 
 ### <a name="certificate-authority"></a>Certificeringsinstantie
 
@@ -109,4 +109,4 @@ U kunt de hiërarchie van certificaat diepte zien die wordt weer gegeven in de s
 
 [Informatie over Azure IoT Edge-modules](iot-edge-modules.md)
 
-[Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
+[Een IoT Edge apparaat configureren om te fungeren als transparante gateway](how-to-create-transparent-gateway.md)

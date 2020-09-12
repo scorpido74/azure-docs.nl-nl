@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012378"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023751"
 ---
 # <a name="use-the-session-management-rest-api"></a>De REST API voor sessiebeheer gebruiken
 
@@ -122,7 +122,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 Er zijn enkele opdrachten om de para meters van bestaande sessies op te vragen of te wijzigen.
 
 > [!CAUTION]
-Net als bij alle REST-aanroepen wordt het verzenden van deze opdrachten te vaak vertraagd en wordt de server uiteindelijk niet meer geretourneerd. De status code in dit geval is 429 ("te veel aanvragen"). Als vuist regel moet er een vertraging van **5-10 seconden tussen de volgende aanroepen**optreden.
+> Net als bij alle REST-aanroepen wordt het verzenden van deze opdrachten te vaak vertraagd en wordt de server uiteindelijk niet meer geretourneerd. De status code in dit geval is 429 ("te veel aanvragen"). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
 
 ### <a name="update-session-parameters"></a>Sessie parameters bijwerken
 

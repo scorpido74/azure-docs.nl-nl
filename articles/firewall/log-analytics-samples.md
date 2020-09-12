@@ -1,20 +1,20 @@
 ---
-title: Voor beelden van Azure Firewall log Analytics
+title: Azure Monitor logboeken voor Azure Firewall
 description: Azure Monitor-logboeken kunnen worden gebruikt voor het analyseren van uw Azure Firewall. Een voorbeeld bestand is ingebouwd in de ontwerp functie voor weer gaven in Azure Monitor.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705967"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023870"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Voor beelden van Azure Firewall log Analytics
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Monitor logboeken voor Azure Firewall
 
 De volgende Azure Monitor logboeken kunnen worden gebruikt om uw Azure Firewall-logboeken te analyseren. Het voorbeeld bestand is gebouwd in de weer gave designer in Azure Monitor, de [weer gave designer in azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artikel bevat meer informatie over het ontwerp van de weer gave.
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 In de volgende logboek voorbeelden worden de gegevens weer gegeven die zijn opgenomen in een logboek vermelding.
 
-![logboek vermelding](media/log-analytics-samples/log1.png)
+![logboek vermelding één](media/log-analytics-samples/log1.png)
 
-![logboek vermelding](media/log-analytics-samples/log2.png)
+![logboek vermelding twee ](media/log-analytics-samples/log2.png)
 
-![logboek vermelding](media/log-analytics-samples/log3.png)
+![logboek vermelding drie](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [zelf studie: Azure firewall logboeken en metrische gegevens controleren](tutorial-diagnostics.md)voor meer informatie over Azure firewall bewaking en diagnostische gegevens.

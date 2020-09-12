@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181881"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023853"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in sneeuw met behulp van Azure Data Factory
 
@@ -51,9 +51,9 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
 
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| type             | De eigenschap type moet worden ingesteld op **sneeuw vlokken**.              | Ja      |
-| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het sneeuw-exemplaar. U kunt ervoor kiezen om het wacht woord of de hele connection string in Azure Key Vault in te stellen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.<br><br>Enkele typische instellingen:<br>- **Account naam:** De  [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) van uw sneeuw-account (met inbegrip van aanvullende segmenten die de regio en het Cloud platform identificeren), bijvoorbeeld xy12345. Oost-US-2. Azure.<br/>- **Gebruikers naam:** De aanmeldings naam van de gebruiker voor de verbinding.<br>- **Wacht woord:** Het wacht woord voor de gebruiker.<br>- **Data Base:** De standaard database die moet worden gebruikt wanneer verbinding wordt gemaakt. Dit moet een bestaande Data Base zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Warehouse:** Het virtuele magazijn dat moet worden gebruikt als de verbinding tot stand is gebracht. Dit moet een bestaand magazijn zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Rol:** De standaard functie voor toegangs beheer die in de sneeuw-sessie moet worden gebruikt. De opgegeven rol moet een bestaande rol zijn die al is toegewezen aan de opgegeven gebruiker. De standaard functie is openbaar. | Ja      |
-| connectVia       | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee       |
+| type             | De eigenschap type moet worden ingesteld op **sneeuw vlokken**.              | Yes      |
+| Verbindings | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het sneeuw-exemplaar. U kunt ervoor kiezen om het wacht woord of de hele connection string in Azure Key Vault in te stellen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.<br><br>Enkele typische instellingen:<br>- **Account naam:** De  [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) van uw sneeuw-account (met inbegrip van aanvullende segmenten die de regio en het Cloud platform identificeren), bijvoorbeeld xy12345. Oost-US-2. Azure.<br/>- **Gebruikers naam:** De aanmeldings naam van de gebruiker voor de verbinding.<br>- **Wacht woord:** Het wacht woord voor de gebruiker.<br>- **Data Base:** De standaard database die moet worden gebruikt wanneer verbinding wordt gemaakt. Dit moet een bestaande Data Base zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Warehouse:** Het virtuele magazijn dat moet worden gebruikt als de verbinding tot stand is gebracht. Dit moet een bestaand magazijn zijn waarvoor de opgegeven rol bevoegdheden heeft.<br>- **Rol:** De standaard functie voor toegangs beheer die in de sneeuw-sessie moet worden gebruikt. De opgegeven rol moet een bestaande rol zijn die al is toegewezen aan de opgegeven gebruiker. De standaard functie is openbaar. | Yes      |
+| connectVia       | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | No       |
 
 **Voorbeeld:**
 
@@ -63,7 +63,11 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -107,7 +111,7 @@ De volgende eigenschappen worden ondersteund voor de gegevensset van sneeuw vlok
 
 | Eigenschap  | Beschrijving                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | De eigenschap type van de DataSet moet worden ingesteld op **SnowflakeTable**. | Ja                         |
+| type      | De eigenschap type van de DataSet moet worden ingesteld op **SnowflakeTable**. | Yes                         |
 | schema | De naam van het schema. Opmerking: de schema naam is hoofdletter gevoelig in ADF. |Nee voor bron, ja voor Sink  |
 | table | De naam van de tabel/weer gave. Opmerking de naam van de tabel is hoofdletter gevoelig in ADF. |Nee voor bron, ja voor Sink  |
 
@@ -145,13 +149,13 @@ Als u gegevens van sneeuw vlokken wilt kopiëren, worden de volgende eigenschapp
 
 | Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SnowflakeSource**. | Ja      |
-| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw. Als de namen van het schema, de tabel en de kolommen een kleine letter bevatten, wordt de object-id in query als aanhalings teken genoteerd, bijvoorbeeld `select * from "schema"."myTable"` .<br>Het uitvoeren van een opgeslagen procedure wordt niet ondersteund. | Nee       |
-| exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | Nee       |
+| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SnowflakeSource**. | Yes      |
+| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw. Als de namen van het schema, de tabel en de kolommen een kleine letter bevatten, wordt de object-id in query als aanhalings teken genoteerd, bijvoorbeeld `select * from "schema"."myTable"` .<br>Het uitvoeren van een opgeslagen procedure wordt niet ondersteund. | No       |
+| exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | No       |
 | ***Onder `exportSettings` :*** |  |  |
-| type | Het type export opdracht, ingesteld op **SnowflakeExportCopyCommand**. | Ja |
-| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: MAX_FILE_SIZE, OVERSCHRIJVEN. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)voor meer informatie. | Nee |
-| additionalFormatOptions | Aanvullende opties voor bestands indelingen die als een woorden lijst met sleutel-waardeparen worden meegeleverd. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)voor meer informatie. | Nee |
+| type | Het type export opdracht, ingesteld op **SnowflakeExportCopyCommand**. | Yes |
+| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: MAX_FILE_SIZE, OVERSCHRIJVEN. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)voor meer informatie. | No |
+| additionalFormatOptions | Aanvullende opties voor bestands indelingen die als een woorden lijst met sleutel-waardeparen worden meegeleverd. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)voor meer informatie. | No |
 
 #### <a name="direct-copy-from-snowflake"></a>Directe kopie van sneeuw
 
@@ -276,13 +280,13 @@ Als u gegevens wilt kopiëren naar sneeuw vlokken, worden de volgende eigenschap
 
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **SnowflakeSink**. | Ja                                           |
-| preCopyScript     | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar sneeuw worden geschreven. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | Nee                                            |
-| importSettings | Geavanceerde instellingen voor het schrijven van gegevens naar sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | Nee |
+| type              | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **SnowflakeSink**. | Yes                                           |
+| preCopyScript     | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar sneeuw worden geschreven. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | No                                            |
+| importSettings | Geavanceerde instellingen voor het schrijven van gegevens naar sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | No |
 | ***Onder `importSettings` :*** |                                                              |  |
-| type | Het type van de opdracht importeren, ingesteld op **SnowflakeImportCopyCommand**. | Ja |
-| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: ON_ERROR, FORCEren, LOAD_UNCERTAIN_FILES. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)voor meer informatie. | Nee |
-| additionalFormatOptions | Aanvullende opties voor de bestands indeling die worden meegeleverd met de Kopieer opdracht, als een woorden lijst met sleutel-waardeparen. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)voor meer informatie. | Nee |
+| type | Het type van de opdracht importeren, ingesteld op **SnowflakeImportCopyCommand**. | Yes |
+| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: ON_ERROR, FORCEren, LOAD_UNCERTAIN_FILES. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)voor meer informatie. | No |
+| additionalFormatOptions | Aanvullende opties voor de bestands indeling die worden meegeleverd met de Kopieer opdracht, als een woorden lijst met sleutel-waardeparen. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)voor meer informatie. | No |
 
 #### <a name="direct-copy-to-snowflake"></a>Directe kopie naar sneeuw vlokken
 
@@ -439,9 +443,9 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Update methode | Geef op welke bewerkingen zijn toegestaan op uw sneeuw-bestemming.<br>Als u rijen wilt bijwerken, upsert of verwijderen, is een [ALTER Row Transform](data-flow-alter-row.md) vereist om rijen voor die acties te labelen. | Ja | `true` of `false` | verwijderd <br/>invoegen <br/>bij te werken <br/>upsertable |
-| Sleutel kolommen | Voor updates, upsert en verwijderen moet een sleutel kolom of-kolommen worden ingesteld om te bepalen welke rij moet worden gewijzigd. | Nee | Matrix | keys |
-| Tabel actie | Hiermee wordt bepaald of alle rijen van de doel tabel opnieuw moeten worden gemaakt of verwijderd voordat er wordt geschreven.<br>- **Geen**: er wordt geen actie uitgevoerd voor de tabel.<br>- **Opnieuw maken**: de tabel wordt verwijderd en opnieuw gemaakt. Vereist als er dynamisch een nieuwe tabel wordt gemaakt.<br>- **Afkappen**: alle rijen uit de doel tabel worden verwijderd. | Nee | `true` of `false` | opnieuw maken<br/>afkappen |
+| Update methode | Geef op welke bewerkingen zijn toegestaan op uw sneeuw-bestemming.<br>Als u rijen wilt bijwerken, upsert of verwijderen, is een [ALTER Row Transform](data-flow-alter-row.md) vereist om rijen voor die acties te labelen. | Yes | `true` of `false` | verwijderd <br/>invoegen <br/>bij te werken <br/>upsertable |
+| Sleutel kolommen | Voor updates, upsert en verwijderen moet een sleutel kolom of-kolommen worden ingesteld om te bepalen welke rij moet worden gewijzigd. | No | Matrix | keys |
+| Tabel actie | Hiermee wordt bepaald of alle rijen van de doel tabel opnieuw moeten worden gemaakt of verwijderd voordat er wordt geschreven.<br>- **Geen**: er wordt geen actie uitgevoerd voor de tabel.<br>- **Opnieuw maken**: de tabel wordt verwijderd en opnieuw gemaakt. Vereist als er dynamisch een nieuwe tabel wordt gemaakt.<br>- **Afkappen**: alle rijen uit de doel tabel worden verwijderd. | No | `true` of `false` | opnieuw maken<br/>afkappen |
 
 #### <a name="snowflake-sink-script-examples"></a>Voor beelden van sneeuw-Sink-scripts
 

@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73906787"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023802"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Berichten Routering en-Event Grid vergelijken voor IoT Hub
 
@@ -31,10 +32,10 @@ Hoewel zowel bericht routering als Event Grid waarschuwings configuratie inschak
 
 | Functie | Berichten routering IoT Hub | Integratie met Event Grid IoT Hub |
 | ------- | --------------- | ---------- |
-| **Berichten en gebeurtenissen van apparaten** | Ja, de route ring van berichten kan worden gebruikt voor telemetriegegevens, het rapporteren van de dubbele wijzigingen van het apparaat, de levens cyclus van apparaten en gebeurtenissen voor digitale dubbele wijzigingen (onderdeel van de [IoT Plug en Play open bare preview](../iot-pnp/overview-iot-plug-and-play.md)). | Ja, Event Grid kunnen worden gebruikt voor telemetriegegevens, maar kan ook rapporteren wanneer apparaten worden gemaakt, verwijderd, verbonden en losgekoppeld van IoT Hub |
+| **Berichten en gebeurtenissen van apparaten** | Ja, de route ring van berichten kan worden gebruikt voor telemetriegegevens, het rapporteren van de dubbele wijzigingen van een apparaat, de levens cyclus van apparaten (bijvoorbeeld Wanneer apparaten worden gemaakt, verwijderd, verbonden en losgekoppeld van IoT Hub) en digitale twee maal gewijzigde gebeurtenissen (onderdeel van de IOT- [Plug en Play open bare preview](../iot-pnp/overview-iot-plug-and-play.md)). | Ja, Event Grid kunnen worden gebruikt voor gegevens van telemetriegegevens en levens cyclus van apparaten. Maar Event grid kan niet worden gebruikt voor dubbele wijzigings gebeurtenissen van het apparaat en gebeurtenissen met een digitale dubbele wijziging. |
 | **Ordenen** | Ja, de volg orde van gebeurtenissen wordt gehandhaafd.  | Nee, volg orde van gebeurtenissen is niet gegarandeerd. | 
 | **Filteren** | Uitgebreide filtering voor eigenschappen van de bericht toepassing, eigenschappen van het berichten systeem, bericht tekst, dubbele Tags voor apparaten en dubbele eigenschappen van het apparaat. Filteren wordt niet toegepast op digitale dubbele wijzigings gebeurtenissen. Zie [query syntaxis voor bericht routering](iot-hub-devguide-routing-query-syntax.md)voor voor beelden. | Filteren op basis van het gebeurtenis type, het type onderwerp en de kenmerken van elke gebeurtenis. Zie voor voor beelden [inzicht in het filteren van gebeurtenissen in Event grid abonnementen](../event-grid/event-filtering.md). Bij het abonneren op telemetrie-gebeurtenissen kunt u extra filters toep assen op de gegevens die u wilt filteren op bericht eigenschappen, bericht tekst en onderliggend apparaat in uw IoT Hub voordat u naar Event Grid publiceert. Zie [gebeurtenissen filteren](../iot-hub/iot-hub-event-grid.md#filter-events). |
-| **Eind punten** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus wachtrij</li> <li>Service Bus onderwerpen</li></ul><br>Betaalde IoT Hub Sku's (S1, S2 en S3) zijn beperkt tot 10 aangepaste eind punten. u kunt Maxi maal 100 routes maken per IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Aangepaste onderwerpen</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Services van derden via webhooks</li></ul><br>500-eind punten per IoT Hub worden ondersteund. Zie [Event grid gebeurtenis-handlers](../event-grid/overview.md#event-handlers)voor de meest recente lijst met eind punten. |
+| **Eindpunten** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus wachtrij</li> <li>Service Bus-onderwerpen</li></ul><br>Betaalde IoT Hub Sku's (S1, S2 en S3) zijn beperkt tot 10 aangepaste eind punten. u kunt Maxi maal 100 routes maken per IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Aangepaste onderwerpen</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Services van derden via webhooks</li></ul><br>500-eind punten per IoT Hub worden ondersteund. Zie [Event grid gebeurtenis-handlers](../event-grid/overview.md#event-handlers)voor de meest recente lijst met eind punten. |
 | **Kosten** | Er worden geen afzonderlijke kosten in rekening gebracht voor bericht routering. Alleen binnenbrengen van telemetrie in IoT Hub wordt in rekening gebracht. Als u bijvoorbeeld een bericht naar drie verschillende eind punten hebt doorgestuurd, wordt slechts één bericht in rekening gebracht. | Er worden geen kosten in rekening gebracht van IoT Hub. Event Grid biedt de eerste 100.000 bewerkingen per maand gratis en vervolgens $0,60 per miljoen bewerkingen. |
 
 ## <a name="similarities"></a>Overeenkomsten

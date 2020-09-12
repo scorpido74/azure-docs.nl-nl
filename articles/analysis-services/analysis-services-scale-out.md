@@ -4,15 +4,15 @@ description: Azure Analysis Services servers repliceren met scale-out. Client qu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716925"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007686"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -30,7 +30,7 @@ Ongeacht het aantal query replica's in een query groep, worden de verwerkings we
 
 Wanneer u uitschaalt, kan het tot vijf minuten duren voordat nieuwe query replica's incrementeel worden toegevoegd aan de query groep. Wanneer alle nieuwe query replica's actief zijn, worden nieuwe client verbindingen verdeeld over alle resources in de query groep. Bestaande client verbindingen worden niet gewijzigd ten opzichte van de resource waarmee ze momenteel zijn verbonden. Bij het schalen in worden alle bestaande client verbindingen met een bron van de query groep die uit de query groep wordt verwijderd, beëindigd. Clients kunnen opnieuw verbinding maken met een resterende resource in de query groep.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer u de eerste keer scale-out configureert, worden model databases op uw primaire server *automatisch* gesynchroniseerd met nieuwe replica's in een nieuwe query groep. Automatische synchronisatie wordt slechts één keer uitgevoerd. Tijdens automatische synchronisatie worden de gegevens bestanden van de primaire server (versleuteld op rest in Blob Storage) gekopieerd naar een tweede locatie, ook versleuteld op rest in Blob Storage. Replica's in de query groep worden vervolgens *gehydrateerd* met gegevens uit de tweede set bestanden. 
 
@@ -41,6 +41,8 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 * Voer een synchronisatie uit *vóór de uitschaal bewerking* om redundante Hydration van de toegevoegde replica's te voor komen. Gelijktijdige synchronisatie-en scale-out bewerkingen die op hetzelfde moment worden uitgevoerd, zijn niet toegestaan.
 
 * Wanneer u zowel verwerkings- *als* uitschaal bewerkingen automatiseert, is het belang rijk om eerst gegevens op de primaire server te verwerken, vervolgens een synchronisatie uit te voeren en vervolgens de uitschaal bewerking uit te voeren. Met deze reeks wordt de minimale impact op QPU en geheugen bronnen gegarandeerd.
+
+* Tijdens scale-out bewerkingen zijn alle servers in de query groep, met inbegrip van de primaire server, tijdelijk offline.
 
 * Synchronisatie is ook toegestaan wanneer er geen replica's in de query groep zijn. Als u opschalen van nul naar een of meer replica's met nieuwe gegevens van een verwerkings bewerking op de primaire server, voert u de synchronisatie eerst uit zonder replica's in de query groep en vervolgens scale-out. Bij het synchroniseren van wordt geen redundante Hydration van de zojuist toegevoegde replica's voor komen.
 
@@ -114,7 +116,7 @@ Synchronisatie bewerkingen moeten hand matig of via de REST API worden uitgevoer
 
 In **overzicht** > model > **model synchroniseren**.
 
-![Schuif regelaar voor uitschalen](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Pictogram synchroniseren](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST-API
 

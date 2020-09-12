@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000002"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007567"
 ---
 # <a name="features"></a>Functies
 
@@ -55,7 +55,7 @@ Alle typen zoek parameters worden ondersteund.
 
 | Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-----------------------|-----------|-----------|-----------|---------|
-| Aantal                | Ja       | Ja       | Ja       |         |
+| Getal                | Ja       | Ja       | Ja       |         |
 | Datum/datum/tijd         | Ja       | Ja       | Ja       |         |
 | Tekenreeks                | Ja       | Ja       | Ja       |         |
 | Token                 | Ja       | Ja       | Ja       |         |
@@ -98,14 +98,24 @@ Alle typen zoek parameters worden ondersteund.
 | Zoek bewerkingen       | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | Nee        | Nee        | Nee        |         |
-| `_sort`                 | Nee        | Gedeeltelijk   | Gedeeltelijk        |   `_sort=_lastUpdated` wordt ondersteund       |
+| `_sort`                 | Gedeeltelijk        | Gedeeltelijk   | Gedeeltelijk        |   `_sort=_lastUpdated` wordt ondersteund       |
 | `_score`                | Nee        | Nee        | Nee        |         |
 | `_count`                | Ja       | Ja       | Ja       |         |
 | `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count` wordt ondersteund |
 | `_include`              | Nee        | Ja       | Nee        |         |
 | `_revinclude`           | Nee        | Ja       | Nee        | Opgenomen items zijn beperkt tot 100. |
 | `_contained`            | Nee        | Nee        | Nee        |         |
-| `_elements`             | Nee        | Nee        | Nee        |         |
+| `_elements`             | Ja        | Ja        | Ja        |         |
+
+## <a name="extended-operations"></a>Uitgebreide bewerkingen
+
+Alle bewerkingen die worden ondersteund om de REST-API uit te breiden.
+
+| Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
+|-----------------------|-----------|-----------|-----------|---------|
+| $export (heel systeem)                | Ja       | Ja       | Ja       |         |
+| Patiënt/$export         | Ja       | Ja       | Ja       |         |
+| Groep/$export               | Ja       | Ja       | Ja       |         |
 
 ## <a name="persistence"></a>Persistentie
 

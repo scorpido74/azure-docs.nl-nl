@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61320239"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019900"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Conceptuele uitleg van X. 509 CA-certificaten in de IoT-industrie
 
@@ -28,6 +28,8 @@ In dit artikel wordt het volgende beschreven:
 * Een productie leverings keten instellen voor X. 509 authenticatie op basis van een certificerings instantie
 
 * Hoe apparaten die zijn ondertekend met X. 509-CA verbinding maken met IoT Hub
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Overzicht
 
@@ -51,7 +53,7 @@ Het gebruik van X. 509 CA is het meest begrijpelijk voor een concreet voor beeld
 
 * Apparaten ondertekenen in een certificaat vertrouwens keten
 
-* Apparaat-verbinding
+* Apparaatverbinding
 
 ## <a name="acquire-the-x509-ca-certificate"></a>Het X. 509-CA-certificaat verkrijgen
 
@@ -63,13 +65,13 @@ Meer informatie over hoe u deze stappen kunt uitvoeren, is afhankelijk van versc
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>Een X. 509-CA-certificaat kopen
 
-Het aanschaffen van een CA-certificaat heeft als voor deel dat een bekende basis certificerings instantie een vertrouwde derde partij kan hebben om te kunnen betalen voor de rechtmatigheid van IoT-apparaten wanneer de apparaten verbinding maken. Bedrijf-X zou deze optie kiezen als ze van plan zijn om te communiceren met producten of services van derde partijen na de eerste verbinding met IoT Hub.
+Het aanschaffen van een CA-certificaat heeft als voor deel dat een bekende basis certificerings instantie een vertrouwde derde partij kan hebben om te kunnen betalen voor de rechtmatigheid van IoT-apparaten wanneer de apparaten verbinding maken. Bedrijf-X zou deze optie kiezen als ze een slimme X-widget hebben om te communiceren met producten of services van derden na de eerste verbinding met IoT Hub.
 
 Als u een X. 509 CA-certificaat wilt kopen, kiest bedrijf-X een service provider basis certificerings instanties. Een zoek opdracht op internet naar de zin ' basis-CA ' levert goede leads. De basis-CA leidt bedrijf-X over het maken van het open bare/persoonlijke sleutel paar en het genereren van een aanvraag voor certificaat ondertekening (CSR) voor hun services. Een CSR is het formele proces voor het Toep assen van een certificaat van een certificerings instantie. Het resultaat van deze aankoop is een certificaat voor gebruik als een CA-certificaat. Gezien de alomtegenwoordigheid van X. 509-certificaten is het certificaat waarschijnlijk correct ingedeeld in de IETF RFC 5280-standaard.
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>Een zelfondertekend X. 509-CA-certificaat maken
 
-Het proces voor het maken van een zelfondertekend X. 509 CA-certificaat is vergelijkbaar met het kopen, met uitzonde ring van een aanmelding van derden, zoals de basis certificerings instantie. In ons voor beeld wordt het CA-certificaat door bedrijf-X ondertekend in plaats van een basis certificerings instantie. Bedrijf-X kan deze optie kiezen om te testen totdat ze klaar zijn om een CA-certificaat aan te schaffen. Bedrijf-X kan ook gebruikmaken van een zelfondertekend X. 509 CA-certificaat in productie als Smart-X-widget niet is bedoeld om verbinding te maken met services van derden buiten de IoT Hub.
+Het proces voor het maken van een zelfondertekende X. 509 CA-certificaat is vergelijkbaar met het kopen, met uitzonde ring van een aanmelding van derden, zoals de basis certificerings instantie. In ons voor beeld wordt het CA-certificaat door bedrijf-X ondertekend in plaats van een basis certificerings instantie. Bedrijf-X kan deze optie kiezen om te testen totdat ze klaar zijn om een CA-certificaat aan te schaffen. Bedrijf-X kan ook gebruikmaken van een zelfondertekend X. 509 CA-certificaat in productie als Smart-X-widget niet is bedoeld om verbinding te maken met services van derden buiten de IoT Hub.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Het X. 509-certificaat registreren bij IoT Hub
 

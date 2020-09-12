@@ -1,6 +1,6 @@
 ---
 title: Problemen met de verificatie van de uitgever oplossen-micro soft Identity-platform | Azure
-description: Hierin wordt beschreven hoe u de verificatie van uitgevers (preview) voor micro soft Identity platform kunt oplossen door Microsoft Graph-Api's aan te roepen.
+description: Hierin wordt beschreven hoe u een verificatie van de uitgever van micro soft Identity platform kunt oplossen door Microsoft Graph-Api's aan te roepen.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282973"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007550"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Problemen met verificatie van uitgever oplossen (preview)
-Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever (preview)](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
+# <a name="troubleshoot-publisher-verification"></a>Problemen met Verificatie van uitgever oplossen
+Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
 
 1. Bekijk de [vereisten](publisher-verification-overview.md#requirements) en zorg ervoor dat aan hen is voldaan.
 
@@ -62,7 +62,7 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph-API-aanroepen maken 
 
-Als u een probleem ondervindt, maar geen inzicht kunt krijgen in de redenen die zijn gebaseerd op wat u in de gebruikers interface ziet, kan het nuttig zijn om verdere problemen op te lossen met behulp van Microsoft Graph-aanroepen om dezelfde bewerkingen uit te voeren die u in de app-registratie Portal kunt uitvoeren. Tijdens de preview-fase zijn deze Api's alleen beschikbaar op het/Beta-eind punt van Microsoft Graph.  
+Als u een probleem ondervindt, maar geen inzicht kunt krijgen in de redenen die zijn gebaseerd op wat u in de gebruikers interface ziet, kan het nuttig zijn om verdere problemen op te lossen met behulp van Microsoft Graph-aanroepen om dezelfde bewerkingen uit te voeren die u in de app-registratie Portal kunt uitvoeren.
 
 De eenvoudigste manier om deze aanvragen te maken, is met [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt ook andere opties gebruiken, zoals het gebruik van [postman](https://www.postman.com/)of [het aanroepen van een webaanvraag](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)met behulp van Power shell.  
 
@@ -84,7 +84,7 @@ POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/setVerifiedPublisher
 } 
 ```
  
-Reactie 
+Antwoord 
 ```
 204 No Content 
 ```
@@ -98,7 +98,7 @@ Aanvraag:
 POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/unsetVerifiedPublisher 
 ```
  
-Reactie 
+Antwoord 
 ```
 204 No Content 
 ```
@@ -209,7 +209,7 @@ Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen
 
 Als u alle voor gaande informatie hebt gecontroleerd en nog steeds een fout ontvangt van Microsoft Graph, moet u zoveel mogelijk van de volgende informatie verzamelen die betrekking heeft op de mislukte aanvraag en [contact opnemen met micro soft ondersteuning](developer-support-help-options.md#open-a-support-request).
 
-- Timestamp 
+- Tijdstempel 
 - CorrelationId 
 - ObjectID of UserPrincipalName van aangemelde gebruiker 
 - ObjectId van doel toepassing

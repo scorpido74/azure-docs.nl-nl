@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030483"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017231"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 
@@ -95,7 +95,7 @@ Zowel toegangs-Acl's als standaard-Acl's hebben dezelfde structuur.
 
 De machtigingen voor een container object zijn **lezen**, **schrijven**en **uitvoeren**en kunnen worden gebruikt voor bestanden en mappen, zoals wordt weer gegeven in de volgende tabel:
 
-|            |    Bestand     |   Directory |
+|            |    File     |   Directory |
 |------------|-------------|----------|
 | **Lezen (L)** | Kan de inhoud van een bestand lezen | Moet worden **gelezen** en **uitgevoerd** om de inhoud van de map weer te geven |
 | **Schrijven (S)** | Kan schrijven of toevoegen aan een bestand | **Schrijven** en **uitvoeren** is vereist om onderliggende items in een map te maken |
@@ -256,7 +256,7 @@ De umask voor het Azure Data Lake Storage Gen2 van een constante waarde die is i
 | umask. owning_group  |    0         |   `---`      | Kopieer voor de groep die eigenaar is de standaard-ACL van het bovenliggende object naar de toegangs-ACL van het onderliggende item | 
 | umask. Overig         |    7         |   `RWX`      | Verwijder voor andere alle machtigingen voor de toegangs-ACL van het onderliggende item |
 
-De waarde voor umask die wordt gebruikt door Azure Data Lake Storage Gen2 effectief betekent dat de waarde voor **Overige** nooit standaard wordt verzonden op nieuwe kinderen, ongeacht wat de standaard-ACL aangeeft. 
+De waarde voor umask die wordt gebruikt door Azure Data Lake Storage Gen2 effectief betekent dat de waarde voor **Overige** nooit standaard wordt verzonden op nieuwe kinderen, tenzij er een standaard-ACL wordt gedefinieerd in de bovenliggende map. In dat geval wordt de umask in feite genegeerd en worden de machtigingen die zijn gedefinieerd door de standaard-ACL, toegepast op het onderliggende item. 
 
 De volgende pseudocode laat zien hoe de umask wordt toegepast bij het maken van de Acl's voor een onderliggend item.
 
@@ -328,7 +328,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 OID wordt weer gegeven.
 
-Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage Explorer Access-pagina **beheren** om het OID toe te voegen en de juiste machtigingen voor de OID toe te wijzen. Zorg ervoor dat u **Opslaan**selecteert.
+Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage Explorer Access-pagina **beheren** om het OID toe te voegen en de juiste machtigingen voor de OID toe te wijzen. Zorg ervoor dat u **Opslaan** selecteert.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Ondersteunt Data Lake Storage Gen2 overname van Acl's?
 

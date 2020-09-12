@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021881"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023768"
 ---
 # <a name="models"></a>Modellen
 
@@ -28,7 +28,6 @@ Aan elke entiteit kunnen [onderdelen](components.md) zijn gekoppeld. In het mees
 Het maken van modellen voor runtime wordt bereikt door het [converteren van invoer modellen](../how-tos/conversion/model-conversion.md) van bestands indelingen, zoals FBX en GLTF. Het conversie proces extraheert alle resources, zoals bitmappatronen, materialen en netten, en converteert deze naar geoptimaliseerde runtime-indelingen. Ook wordt de structuur informatie geëxtraheerd en wordt deze geconverteerd naar de grafiek structuur van de entiteit/het onderdeel van ARR.
 
 > [!IMPORTANT]
->
 > [Model conversie](../how-tos/conversion/model-conversion.md) is de enige manier om [netten](meshes.md)te maken. Hoewel netten kunnen worden gedeeld tussen entiteiten tijdens runtime, is er geen andere manier om een net in de runtime op te halen, met uitzonde ring van het laden van een model.
 
 ## <a name="loading-models"></a>Modellen laden
@@ -118,6 +117,13 @@ Daarna kunt u de entiteits hiërarchie door lopen en de entiteiten en onderdelen
 
 > [!CAUTION]
 > Alle *async* -functies in ARR retour neren asynchrone bewerkings objecten. U moet een verwijzing naar deze objecten opslaan totdat de bewerking is voltooid. Anders kan de C#-garbage collector de bewerking vroegtijdig verwijderen en kan deze nooit worden voltooid. In de voorbeeld code hierboven is het gebruik van een *wacht* wijze gegarandeerd dat de lokale variabele ' loadOp ' een verwijzing bevat totdat het laden van het model is voltooid. Als u echter in plaats daarvan de *voltooide* gebeurtenis zou gebruiken, moet u de asynchrone bewerking opslaan in een lidvariabele.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. LoadModelAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager. LoadModelFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager:: LoadModelAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager:: LoadModelFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Volgende stappen
 
