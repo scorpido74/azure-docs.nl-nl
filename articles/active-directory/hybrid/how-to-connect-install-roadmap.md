@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358732"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662144"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installatieprocedure voor Azure AD Connect en Azure AD Connect Health
 
@@ -49,14 +49,14 @@ U vindt de download voor Azure AD Connect op [Microsoft Download Center](https:/
 |Na de installatie | [Controleer de installatie en wijs licenties toe](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Meer informatie over Azure AD Connect installeren
-U wilt u ook voorbereiden op [operationele](how-to-connect-sync-operations.md) problemen. U wilt mogelijk een stand-by-server hebben, waarop u eenvoudig failover-overschakeling kunt uitvoeren in geval van een [noodgeval](how-to-connect-sync-staging-server.md#disaster-recovery). Als u van plan bent frequente configuratiewijzigingen aan te brengen, moet u een [faseringsmodus](how-to-connect-sync-staging-server.md)-server gebruiken.
+U wilt u ook voorbereiden op [operationele](./how-to-connect-sync-staging-server.md) problemen. U wilt mogelijk een stand-by-server hebben, waarop u eenvoudig failover-overschakeling kunt uitvoeren in geval van een [noodgeval](how-to-connect-sync-staging-server.md#disaster-recovery). Als u van plan bent frequente configuratiewijzigingen aan te brengen, moet u een [faseringsmodus](how-to-connect-sync-staging-server.md)-server gebruiken.
 
 |Onderwerp |Koppeling|  
 | --- | --- |
 |Ondersteunde topologieën | [Topologieën voor Azure AD Connect](plan-connect-topologies.md)|
 |Ontwerpconcepten | [Ontwerpconcepten Azure AD Connect](plan-connect-design-concepts.md)|
 |Accounts die worden gebruikt voor installatie | [Meer informatie over referenties en machtigingen van Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Operationele planning | [Azure AD Connect-synchronisatie: operationele taken en overwegingen](how-to-connect-sync-operations.md)|
+|Operationele planning | [Azure AD Connect-synchronisatie: operationele taken en overwegingen](./how-to-connect-sync-staging-server.md)|
 |Opties aanmelden gebruiker | [Opties aanmelden gebruiker Azure AD Connect](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Synchronisatie-functies configureren
@@ -66,7 +66,7 @@ Azure AD Connect wordt geleverd met verschillende functies die u in of uit kunt 
 
 [Synchronisatie van wachtwoord-hash](how-to-connect-password-hash-synchronization.md) synchroniseert de wachtwoord-hash in Active Directory naar Azure AD. De eindgebruiker kan hetzelfde wachtwoord zowel on-premises als in de cloud gebruiken, maar deze slechts op één locatie beheren. Aangezien het wachtwoord gebruikmaakt van uw on-premises Active Directory als de instantie, kunt u ook uw eigen wachtwoordbeleid gebruiken.
 
-Met [Wachtwoord terugschrijven](../authentication/quickstart-sspr.md) kunnen uw gebruikers hun wachtwoorden wijzigen en resetten in de cloud en uw lokale wachtwoordbeleid toepassen.
+Met [Wachtwoord terugschrijven](../authentication/tutorial-enable-sspr.md) kunnen uw gebruikers hun wachtwoorden wijzigen en resetten in de cloud en uw lokale wachtwoordbeleid toepassen.
 
 Met [write-back van apparaat](how-to-connect-device-writeback.md) kan een apparaat dat is geregistreerd in azure AD, worden teruggeschreven naar on-premises Active Directory zodat het kan worden gebruikt voor voorwaardelijke toegang.
 
@@ -80,7 +80,7 @@ De functie [Onopzettelijk verwijderen voorkomen](how-to-connect-sync-feature-pre
 |Filtering configureren | [Azure AD Connect-synchronisatie: filtering configureren](how-to-connect-sync-configure-filtering.md)|
 |Synchronisatie van wachtwoord-hashes | [Synchronisatie van wachtwoord-hashes](how-to-connect-password-hash-synchronization.md)|
 |Pass-through-verificatie | [Pass-through-verificatie](how-to-connect-pta.md)
-|Wachtwoord terugschrijven | [Aan de slag met wachtwoord beheer](../authentication/quickstart-sspr.md)|
+|Wachtwoord terugschrijven | [Aan de slag met wachtwoord beheer](../authentication/tutorial-enable-sspr.md)|
 |Apparaat terugschrijven | [Apparaat terugschrijven inschakelen in Azure AD Connect.](how-to-connect-device-writeback.md)|
 |Onopzettelijke verwijderingen voorkomen | [Azure AD Connect-synchronisatie: onopzettelijke verwijderingen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |Automatische upgrade | [Azure AD Connect: automatische upgrade](how-to-connect-install-automatic-upgrade.md)|
@@ -121,10 +121,10 @@ Als uw ADFS-server niet is geconfigureerd voor het automatisch bijwerken van cer
 ### <a name="next-steps-to-configure-federation-features"></a>De volgende stappen om federatie-functies te configureren
 |Onderwerp |Koppeling|  
 | --- | --- |
-|Alle AD FS-artikelen | [Azure AD Connect en Federatie](how-to-connect-fed-whatis.md)|
+|Alle AD FS-artikelen | [Azure AD Connect en federatie](how-to-connect-fed-whatis.md)|
 |ADFS configureren met subdomeinen | [Ondersteuning voor meerdere domeinen voor federatie met Azure AD](how-to-connect-install-multiple-domains.md)|
 |AD FS-farm beheren | [AD FS-beheer en aanpassingen met Azure AD Connect](how-to-connect-fed-management.md)|
-|Handmatig bijwerken van de federatiecertificaten | [Federatiecertificaten vernieuwen voor Office 365 en Azure AD](how-to-connect-fed-o365-certs.md)|
+|Handmatig bijwerken van de federatiecertificaten | [Federatie certificaten vernieuwen voor Microsoft 365 en Azure AD](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Aan de slag met Azure AD Connect Health
@@ -174,8 +174,8 @@ In de portal voor Azure AD Connect Health kunt u waarschuwingen weergeven, de pr
 - [Hardware en vereisten](how-to-connect-install-prerequisites.md) 
 - [Snelle instellingen](how-to-connect-install-express.md)
 - [Aangepaste instellingen](how-to-connect-install-custom.md)
-- [Wachtwoord hash-synchronisatie](how-to-connect-password-hash-synchronization.md)|
+- [Synchronisatie van wachtwoord-hashes](how-to-connect-password-hash-synchronization.md)|
 - [Pass-through-verificatie](how-to-connect-pta.md)
-- [Azure AD Connect en Federatie](how-to-connect-fed-whatis.md)
+- [Azure AD Connect en federatie](how-to-connect-fed-whatis.md)
 - [Azure AD Connect Health-agents installeren](how-to-connect-health-agent-install.md) 
 - [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)

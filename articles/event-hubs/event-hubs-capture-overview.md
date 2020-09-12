@@ -3,12 +3,12 @@ title: Streaming-gebeurtenissen vastleggen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat een overzicht van de functie Capture waarmee u gebeurtenissen streaming kunt vastleggen via Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522122"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667441"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage
 Met Azure Event Hubs kunt u automatisch de streaminggegevens vastleggen in Event Hubs in een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze, met extra flexibiliteit voor het opgeven van een tijd-of grootte-interval. Het instellen van vastleggen is snel, er zijn geen administratieve kosten om deze uit te voeren en deze worden automatisch geschaald met Event Hubs [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Event Hubs Capture is de eenvoudigste manier om streaminggegevens te laden in azure, en u kunt zich concentreren op gegevens verwerking in plaats van op het vastleggen van gegevens.
@@ -132,7 +132,7 @@ Bij het vastleggen wordt geen afkomend quotum gebruikt, aangezien dit afzonderli
 
 ## <a name="integration-with-event-grid"></a>Integratie met Event Grid 
 
-U kunt een Azure Event Grid-abonnement maken met een Event Hubs naam ruimte als bron. In de volgende zelf studie ziet u hoe u een Event Grid-abonnement met een Event Hub als een bron en een Azure Functions-app als een sink maakt, waarbij [vastgelegde Event hubs gegevens worden verwerkt en gemigreerd naar een SQL data warehouse met behulp van Event grid en Azure functions](store-captured-data-data-warehouse.md).
+U kunt een Azure Event Grid-abonnement maken met een Event Hubs naam ruimte als bron. In de volgende zelf studie ziet u hoe u een Event Grid-abonnement kunt maken met een Event Hub als een bron en een Azure Functions-app als een Sink: het [verwerken en migreren van vastgelegde Event hubs gegevens naar een Azure Synapse-analyse met behulp van Event grid en Azure functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Event Hubs Capture is de eenvoudigste manier om gegevens in azure op te halen. Met Azure Data Lake, Azure Data Factory en Azure HDInsight kunt u batch verwerking en andere analyses uitvoeren met behulp van de vertrouwde Program ma's en platformen van uw keuze, op elke gewenste schaal.
@@ -147,7 +147,7 @@ Meer informatie over het inschakelen van deze functie met behulp van de Azure Po
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

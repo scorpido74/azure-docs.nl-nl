@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121167"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015803"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -42,9 +42,9 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Apps met één pagina (Java script)
 
-Veel moderne apps hebben een front-end van de app met één pagina, voornamelijk geschreven in Java script, vaak met een kader als een hoek, reageren of Vue. Het micro soft Identity platform-eind punt ondersteunt deze apps met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md).
+Veel moderne apps hebben een front-end van de app met één pagina, voornamelijk geschreven in Java script, vaak met een kader als een hoek, reageren of Vue. Het micro soft Identity platform-eind punt ondersteunt deze apps door gebruik te maken van het [OpenID Connect Connect](v2-protocols-oidc.md) -protocol voor verificatie en ofwel [OAuth 2,0 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md) of de meer recente [OAuth 2,0-autorisatie code + PKCE-stroom](v2-oauth2-auth-code-flow.md) voor autorisatie (zie hieronder).
 
-In deze stroom ontvangt de app een code van het micro soft Identity platform `authorize` -eind punt en wordt deze opnieuw gebruikt voor tokens en vernieuwt tokens met behulp van cross-site webaanvragen. Het vernieuwings token verloopt elke 24 uur en de app moet een andere code aanvragen.
+In het onderstaande diagram ziet u de OAuth 2,0-autorisatie code toekenning (met details over PKCE wegge laten), waarbij de app een code van het micro soft Identity platform- `authorize` eind punt ontvangt en deze opnieuw gebruikt voor tokens en tokens vernieuwt met behulp van cross-site webaanvragen. Het vernieuwings token verloopt elke 24 uur en de app moet een andere code aanvragen. Naast het toegangs token wordt een van `id_token` de aangemelde gebruiker voor de client toepassing doorgaans ook aangevraagd via dezelfde stroom en/of een afzonderlijke OpenID Connect-verbindings aanvraag (hier niet weer gegeven).
 
 ![Code stroom voor SPA-apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 

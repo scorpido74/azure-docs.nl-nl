@@ -7,15 +7,17 @@ ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
+manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+- device-developer
+ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337089"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018180"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
@@ -147,10 +149,10 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Primaire sleutel van de registratie groep van SAS-IoT-apparaten groeperen":::
 
-1. Gebruik het hulp programma [DPS-keygen](https://www.npmjs.com/package/dps-keygen) om de SAS-sleutels van het apparaat te genereren. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
+1. Gebruik de `az iot central device compute-device-key` opdracht voor het genereren van de SAS-sleutels van het apparaat. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
 1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerde SAS-sleutel voor het apparaat en de waarde voor het bereik van de toepassings **-id** .
@@ -195,12 +197,12 @@ IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele ins
 - **Attestation van symmetrische sleutels:** Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met het DPS-exemplaar. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van symmetrische sleutels, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en de **Shared Access Signature (SAS)** als mechanisme. Voer Base64 Encoded Primary en secundaire sleutels in en sla uw wijzigingen op. Gebruik de **id-Scope**, de **apparaat-id**en de primaire of secundaire sleutel om verbinding te maken met uw apparaat.
 
     > [!TIP]
-    > Voor testen kunt u **openssl** gebruiken om base64-gecodeerde sleutels te genereren:`openssl rand -base64 64`
+    > Voor testen kunt u **openssl** gebruiken om base64-gecodeerde sleutels te genereren: `openssl rand -base64 64`
 
 - **X. 509-certificaten:** Als u een afzonderlijke registratie met X. 509-certificaten wilt maken, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **certificaten (X. 509)** als mechanisme. Voor apparaats certificaten die worden gebruikt met een afzonderlijke inschrijvings vermelding is vereist dat de certificaat verlener en het onderwerp CN worden ingesteld op de apparaat-ID.
 
     > [!TIP]
-    > Voor het testen kunt u [Hulpprogram ma's gebruiken voor de Azure IOT Device Provisioning Device SDK voor Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) om een zelfondertekend certificaat te genereren:`node create_test_cert.js device "mytestdevice"`
+    > Voor het testen kunt u [Hulpprogram ma's gebruiken voor de Azure IOT Device Provisioning Device SDK voor Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) om een zelfondertekend certificaat te genereren: `node create_test_cert.js device "mytestdevice"`
 
 - **Attestation van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
 

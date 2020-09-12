@@ -3,12 +3,12 @@ title: Concepten-opslag
 description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in azure VMware-oplossing preview persoonlijke Clouds.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752223"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024312"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware-oplossing preview opslag concepten
 
@@ -28,7 +28,7 @@ Lokale opslag in clusterhosts wordt gebruikt in vSAN gegevens opslag voor het he
 
 ## <a name="data-at-rest-encryption"></a>Versleuteling van data-at-rest
 
-vSAN data stores gebruiken standaard versleuteling voor Data-at-rest. De versleutelings oplossing is op KMS gebaseerd en ondersteunt vCenter-bewerkingen voor sleutel beheer. Sleutels worden opgeslagen versleuteld, verpakt met een Azure Key Vault hoofd sleutel op basis van HSM. Wanneer een host om de een of andere reden uit een cluster wordt verwijderd, worden de gegevens op Ssd's onmiddellijk ongeldig gemaakt.
+vSAN data stores gebruiken standaard versleuteling voor Data-at-rest. De versleutelings oplossing is op KMS gebaseerd en ondersteunt vCenter-bewerkingen voor sleutel beheer. De sleutel versleutelings sleutels worden opgeslagen in een Azure Key Vault en wanneer een host om welke reden dan ook uit een cluster wordt verwijderd, worden de gegevens op Ssd's onmiddellijk ongeldig gemaakt.
 
 ## <a name="scaling"></a>Schalen
 

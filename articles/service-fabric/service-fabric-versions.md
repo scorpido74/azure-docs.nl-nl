@@ -3,12 +3,12 @@ title: Ondersteunde cluster versies in azure Service Fabric
 description: Meer informatie over cluster versies in azure Service Fabric, met inbegrip van een koppeling naar de nieuwste releases van de Service Fabric-team blog.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d6e9bbe3a1a99a8e4ee726cb88796dccb6f6ccbd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205907"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652054"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric versies
 
@@ -47,6 +47,7 @@ De volgende tabel bevat de versies van Service Fabric en de bijbehorende eind da
 | 7.1.417.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |Huidige versie, dus geen eind datum |
 | 7.1.428.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |Huidige versie, dus geen eind datum |
 | 7.1.456.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |Huidige versie, dus geen eind datum |
+| 7.1.458.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,1 |Huidige versie, dus geen eind datum |
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -56,11 +57,11 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor d
 | --- | --- |
 | Windows Server 2012 R2 | Alle versies |
 | Windows Server 2016 | Alle versies |
-| Windows Server 1709 | 6.0 |
+| Windows Server 1709 | 6,0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 16,04 | 6,0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 ## <a name="supported-version-names"></a>Ondersteunde versie namen
@@ -119,4 +120,5 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 | 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7,1 CU2 | 7.1.428.9590 | 7.1.428.1 |
 | 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 

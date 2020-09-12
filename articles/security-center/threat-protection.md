@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e2f72cc0ea6851caaf5d0db2f17f8e16473d420e
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272498"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667558"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -25,7 +25,7 @@ De bedreigings beveiliging van Azure Security Center biedt uitgebreide beveiligi
 
 * **Bedreigings beveiliging voor Azure Compute-resources**: Windows-computers, Linux-machines, Azure app service en Azure-containers
 
-* **Bedreigings beveiliging voor Azure-gegevens bronnen**: SQL Database en SQL Data Warehouse, Azure Storage en Azure Cosmos db
+* **Bedreigings beveiliging voor Azure-gegevens bronnen**: SQL database en Azure Synapse Analytics (voorheen SQL Data Warehouse), Azure Storage en Azure Cosmos db
 
 * **Bedreigings beveiliging voor Azure-service lagen**: Azure-netwerklaag, Azure Management layer (Azure Resource Manager) (preview) en Azure Key Vault (preview-versie)
 
@@ -117,9 +117,9 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 |Aspect|Details|
 |----|:----|
 |Release status:|Algemeen beschikbaar|
-|Koers|Standard-laag|
+|Koers|Standaardlaag|
 |Vereiste rollen en machtigingen:|**Beveiligings beheerder** kan waarschuwingen negeren.<br>**Beveiligings lezer** kan bevindingen weer geven.|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,19 +131,19 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Bedreigings beveiliging voor SQL Database en SQL Data Warehouse <a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-azure-synapse-analytics-formerly-sql-data-warehouse"></a>Bedreigings beveiliging voor SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse) <a name="data-sql"></a>
 
 Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
 
 U ziet waarschuwingen wanneer er verdachte database activiteiten, potentiële kwetsbaar heden of SQL-injectie aanvallen en afwijkende database toegang en query patronen zijn.
 
-Advanced Threat Protection voor Azure SQL Database en SQL maakt deel uit van het geïntegreerde pakket voor geavanceerde [gegevens beveiliging (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) voor geavanceerde SQL-beveiligings mogelijkheden, waaronder Azure SQL database, Azure SQL Managed instances, Azure SQL Data Warehouse data bases en SQL-servers op Azure virtual machines.
+Advanced Threat Protection voor Azure SQL Database en SQL maakt deel uit van het geïntegreerde pakket voor geavanceerde [gegevens beveiliging (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) voor geavanceerde SQL-beveiligings mogelijkheden, waaronder Azure SQL database, Azure SQL Managed instances, azure Synapse SQL Data Warehouse Analytics-data bases en SQL-servers in azure virtual machines.
 
 Zie voor meer informatie:
 
 * [Geavanceerde beveiliging tegen bedreigingen inschakelen voor Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Geavanceerde beveiliging tegen bedreigingen inschakelen voor SQL-servers in azure Virtual Machines](security-center-iaas-advanced-data.md)
-* [De lijst met beveiligings waarschuwingen voor bedreigingen voor SQL Database en SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [De lijst met beveiligings waarschuwingen voor bedreigingen voor SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
@@ -154,8 +154,8 @@ Zie voor meer informatie:
 |Aspect|Details|
 |----|:----|
 |Release status:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)<br>[Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview-versie)<br>[Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (preview-versie)|
-|Koers|Standard-laag|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|Koers|Standaardlaag|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
 |||
 
 
@@ -164,8 +164,6 @@ Zie voor meer informatie:
 Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activiteiten op uw Azure Storage-accounts. Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren.
 
 Deze beveiligingslaag biedt u de mogelijkheid om bedreigingen te verhelpen *zonder* dat u een beveiligings expert hoeft te zijn, en helpt u bij het beheren van uw systemen voor beveiligings bewaking.
-
-Uw opslag accounts zijn beveiligd 
 
 ### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Wat voor soort waarschuwingen biedt bedreigings beveiliging voor Azure Storage?
 
@@ -204,7 +202,7 @@ Zie voor meer informatie:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Bedreigings beveiliging voor Azure Cosmos DB <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Bedreigings beveiliging voor Azure Cosmos DB (preview-versie) <a name="cosmos-db"></a>
 
 De Azure Cosmos DB waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om Azure Cosmos DB accounts te openen of misbruik te maken.
 

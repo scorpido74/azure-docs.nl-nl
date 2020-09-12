@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144818"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661785"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -98,7 +98,7 @@ De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende J
 
 ### <a name="python-sdk"></a>Python-SDK
 
-Na het verzenden van een trainings uitvoering wordt een [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) -object geretourneerd. Het `properties` kenmerk van dit object bevat de geregistreerde Git-informatie. Met de volgende code wordt bijvoorbeeld de commit-hash opgehaald:
+Na het verzenden van een trainings uitvoering wordt een [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) -object geretourneerd. Het `properties` kenmerk van dit object bevat de geregistreerde Git-informatie. Met de volgende code wordt bijvoorbeeld de commit-hash opgehaald:
 
 ```python
 run.properties['azureml.git.commit']

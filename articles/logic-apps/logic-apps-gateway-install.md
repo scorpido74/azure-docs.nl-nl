@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386126"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660481"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
   * Uw Azure-account moet een werk account of school account zijn dat er als volgt uitziet `username@contoso.com` . U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com .
 
     > [!NOTE]
-    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, kan uw adres er als volgt uitzien `username@domain.onmicrosoft.com` . Uw account wordt opgeslagen in een Azure AD-Tenant. In de meeste gevallen is de UPN (User Principal Name) voor uw Azure-account hetzelfde als uw e-mail adres.
+    > Als u zich hebt geregistreerd voor een Microsoft 365 aanbieding en uw werk-e-mail adres niet hebt verstrekt, kan uw adres er als volgt uitzien `username@domain.onmicrosoft.com` . Uw account wordt opgeslagen in een Azure AD-Tenant. In de meeste gevallen is de UPN (User Principal Name) voor uw Azure-account hetzelfde als uw e-mail adres.
 
     Als u een [Visual Studio Standard-abonnement](https://visualstudio.microsoft.com/vs/pricing/) wilt gebruiken dat is gekoppeld aan een Microsoft-account, maakt u eerst [een Azure AD-Tenant](../active-directory/develop/quickstart-create-new-tenant.md) of gebruikt u de standaard directory. Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw Azure-abonnement. U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
 
@@ -142,7 +142,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](/data-integration/gateway/service-gateway-communication)
+* [Communicatie-instellingen voor de on-premises gegevensgateway aanpassen](/data-integration/gateway/service-gateway-communication)
 * [Proxyinstellingen configureren voor de on-premises gegevensgateway](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>

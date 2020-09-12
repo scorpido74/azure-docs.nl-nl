@@ -11,14 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079583"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661934"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
@@ -135,16 +135,16 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 | Activiteit | Bereik op abonnements niveau | Bereik van resource groeps niveau | Bereik op werkruimte niveau |
 | ----- | ----- | ----- | ----- |
 | Nieuwe werk ruimte maken | Niet vereist | Eigenaar of bijdrager | N.v.t. (wordt eigenaar of neemt de hogere bereik functie over nadat deze is gemaakt) |
-| De versie van de werk ruimte bijwerken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`/workspaces/write` |
-| Amlcompute-quotum niveau aanvragen of quotum voor werkruimte niveau instellen | Eigenaar of Inzender, of aangepaste rol </br>kunnen`/locations/updateQuotas/action`</br> bij abonnements bereik | Niet geautoriseerd | Niet geautoriseerd |
-| Nieuw reken cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`/workspaces/computes/write` |
-| Nieuw reken exemplaar maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`/workspaces/computes/write` |
-| Elk type uitvoering verzenden | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Een pijplijn eindpunt publiceren | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
-| Een geregistreerd model implementeren op een AKS/ACI-bron | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| De versie van de werk ruimte bijwerken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/write` |
+| Amlcompute-quotum niveau aanvragen of quotum voor werkruimte niveau instellen | Eigenaar of Inzender, of aangepaste rol </br>kunnen `/locations/updateQuotas/action`</br> bij abonnements bereik | Niet geautoriseerd | Niet geautoriseerd |
+| Nieuw reken cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
+| Nieuw reken exemplaar maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
+| Elk type uitvoering verzenden | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| Een pijplijn eindpunt publiceren | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Een geregistreerd model implementeren op een AKS/ACI-bron | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Score voor een geïmplementeerd AKS-eind punt | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol waarmee: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (wanneer u geen Azure Active Directory auth) of `"/workspaces/read"` (wanneer u token verificatie gebruikt) |
-| Toegang tot opslag met interactieve notebooks | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
-| Nieuwe aangepaste rol maken | Eigenaar, bijdrager of aangepaste rol die`Microsoft.Authorization/roleDefinitions/write` | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`/workspaces/computes/write` |
+| Toegang tot opslag met interactieve notebooks | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| Nieuwe aangepaste rol maken | Eigenaar, bijdrager of aangepaste rol die `Microsoft.Authorization/roleDefinitions/write` | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
 
 > [!TIP]
 > Als er een fout optreedt wanneer u een werk ruimte voor de eerste keer probeert te maken, moet u ervoor zorgen dat uw rol toestaat `Microsoft.MachineLearningServices/register/action` . Met deze actie kunt u de Azure Machine Learning Resource provider registreren bij uw Azure-abonnement.
@@ -429,6 +429,6 @@ U hebt machtigingen op abonnements niveau nodig om aan quota gerelateerde bewerk
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Enterprise-beveiliging](concept-enterprise-security.md)
-- [Veilig experimenten en demijnen/Score in een virtueel netwerk uitvoeren](how-to-enable-virtual-network.md)
+- [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
 - [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)
 - [Resourceproviderbewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

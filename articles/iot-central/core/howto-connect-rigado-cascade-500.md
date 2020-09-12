@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758243"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016840"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Een Rigado-trapsgewijs 500-gateway apparaat verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
+*Dit artikel is van toepassing op oplossingen bouwers.*
 
 In dit artikel wordt beschreven hoe u als opbouw functie voor oplossingen een Rigado Cascade 500-gateway apparaat kunt verbinden met uw Microsoft Azure IoT Central toepassing. 
 
@@ -51,7 +51,7 @@ Een sjabloon voor een trapsgewijs 500-apparaat toevoegen:
 
 U moet nu de **scope-id** en de **primaire sleutel** voor uw Azure IOT Central-toepassing ophalen om verbinding te kunnen maken met het trapsgewijs 500-apparaat. 
 
-1. Ga in het linkerdeel venster naar **beheer** en klik op **verbinding met apparaat**. 
+1. Ga in het linkerdeel venster naar **beheer**  en klik op **verbinding met apparaat**. 
 2. Noteer de **bereik-id** voor uw IOT Central-toepassing.
 ![App-bereik-ID](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
 3. Klik nu op **sleutels weer geven** en noteer de primaire sleutel van de **primaire sleutel** 
@@ -65,7 +65,7 @@ Zodra het apparaat is verbonden met internet, kan Rigado via een beveiligd kanaa
 
 Met deze update worden de IoT Central verbindings Details toegepast op het trapsgewijs 500-apparaat en wordt het weer gegeven in de lijst met apparaten. 
 
-![Primaire sleutel](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
+![Lijst met apparaten](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
 U bent nu klaar om uw C500-apparaat in uw IoT Central-toepassing te gebruiken!
 

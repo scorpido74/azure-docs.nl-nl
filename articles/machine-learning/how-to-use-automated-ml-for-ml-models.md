@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185397"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660427"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Selecteer **volgende** om het **formulier gegevens opslag en bestand selecteren**te openen. Op dit formulier selecteert u waar u uw gegevensset wilt uploaden. de standaard opslag container die automatisch wordt gemaakt met uw werk ruimte, of kies een opslag container die u wilt gebruiken voor het experiment. 
     
-        1. Als uw gegevens zich achter een virtueel netwerk bevinden, moet u de functie voor **het overs Laan** van de validatie inschakelen om ervoor te zorgen dat de werk ruimte toegang heeft tot uw gegevens. Meer informatie over [netwerk isolatie en privacy](how-to-enable-virtual-network.md#machine-learning-studio). 
+        1. Als uw gegevens zich achter een virtueel netwerk bevinden, moet u de functie voor **het overs Laan** van de validatie inschakelen om ervoor te zorgen dat de werk ruimte toegang heeft tot uw gegevens. Zie [Azure machine learning Studio gebruiken in een virtueel netwerk van Azure](how-to-enable-studio-virtual-network.md)voor meer informatie. 
     
     1. Selecteer **Bladeren** om het gegevens bestand voor uw gegevensset te uploaden. 
 
@@ -83,7 +83,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Kolomkoppen| Geeft aan hoe eventuele koppen van de gegevensset worden behandeld.
         Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.
     
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 
     1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
@@ -91,7 +91,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevensprofilering](#profile).
 
-        Selecteer **Next**.
+        Selecteer **Volgende**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
 1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
@@ -116,15 +116,18 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     >[!NOTE]
     > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-    Selecteer **Next**.
+    Selecteer **Volgende**.
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [ondersteunde taak typen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) voor meer informatie.
 
-    1. Voor **classificatie**kunt u ook diep gaande informatie inschakelen die wordt gebruikt voor tekst featurizations.
+    1. Voor **classificatie**kunt u ook diep gaande lessen inschakelen.
+    
+        Als grondige kennis is ingeschakeld, is validatie beperkt tot _train_validation splitsen_. Meer [informatie over validatie opties](how-to-configure-cross-validation-data-splits.md).
+
 
     1. Voor een **prognose** kunt u 
     
-        1. Grondige training inschakelen
+        1. Uitgebreide training inschakelen.
     
         1. Selecteer een *tijd kolom*: deze kolom bevat de tijd gegevens die moeten worden gebruikt.
 
@@ -135,10 +138,10 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     Aanvullende configuraties|Beschrijving
     ------|------
     Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#primary-metric).
-    Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om de uitleg van het aanbevolen model weer te geven.
-    Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak.
+    Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om uitleg voor het aanbevolen model weer te geven. <br> Deze functionaliteit is momenteel niet beschikbaar voor [bepaalde prognose algoritmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
+    Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak. <br><br> Het toestaan van algoritmen is alleen beschikbaar voor [SDK-experimenten](how-to-configure-auto-train.md#supported-models). <br> Zie de [ondersteunde modellen voor elk taak type](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true).
     Criterium voor afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)*: hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
-    Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-cross-validation-data-splits.md#prerequisites).
+    Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. <br> Meer [informatie over Kruis validatie](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognoses bieden alleen ondersteuning voor kruis validatie met k-vouwen.
     Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
 
 1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , worden de standaard parametrisatie-technieken toegepast. In de **instellingen van de weer gave-parametrisatie** kunt u deze standaard waarden wijzigen en dienovereenkomstig aanpassen. Meer informatie over het [aanpassen van featurizations](#customize-featurization). 
@@ -205,9 +208,9 @@ Inzoomen op een van de voltooide modellen om details van de trainings uitvoering
 
 ## <a name="deploy-your-model"></a>Uw model implementeren
 
-Zodra u het beste model bij de hand hebt, is het tijd om het te implementeren als een webservice om nieuwe gegevens te voors pellen.
+Zodra u het beste model hebt gevonden, is het tijd om dit te implementeren als een webservice, om nieuwe gegevens te voorspellen.
 
-Automatische ML helpt u bij het implementeren van het model zonder code te schrijven:
+Geautomatiseerde ML helpt u bij het implementeren van het model zonder code te schrijven:
 
 1. U hebt een aantal opties voor implementatie. 
 
@@ -217,7 +220,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
         1. Selecteer **implementeren** in de linkerbovenhoek van het venster. 
 
     + Optie 2: een specifieke model herhaling uit dit experiment implementeren.
-        1. Selecteer het gewenste model op het tabblad **modellen**
+        1. Selecteer het gewenste model op het tabblad **Modellen**
         1. Selecteer **implementeren** in de linkerbovenhoek van het venster.
 
 1. Vul het deel venster **model implementeren** in.
@@ -229,17 +232,17 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     Rekentype| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)*.
     Naam berekening| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
     Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
-    Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md).
+    Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. [Meer informatie over scorescripts](how-to-deploy-and-where.md).
 
     >[!Important]
-    > Bestands namen moeten minder dan 32 tekens lang zijn en moeten beginnen en eindigen met een alfanumerieke teken reeks. Kan streepjes, onderstrepings tekens, punten en alfanumerieken bevatten. Spaties zijn niet toegestaan.
+    > Bestands namen moeten minder dan 32 tekens lang zijn en moeten beginnen en eindigen met een alfanumerieke teken reeks. De rest van de naam mag streepjes, onderstrepingstekens, punten en alfanumerieke tekens bevatten. Spaties zijn niet toegestaan.
 
-    Het menu *Geavanceerd* biedt standaard implementatie functies, zoals het [verzamelen van gegevens](how-to-enable-app-insights.md) en het gebruik van bron instellingen. Als u deze standaard waarden wilt overschrijven, doet u dit in dit menu.
+    Het menu *Geavanceerd* biedt standaard implementatiefuncties, zoals [gegevensverzameling](how-to-enable-app-insights.md), en instellingen voor het gebruik van resources. Als u deze standaardwaarden wilt overschrijven, kunt u dit doen in dit menu.
 
-1. Selecteer **Implementeren**. Het volt ooien van de implementatie kan ongeveer 20 minuten duren.
-    Zodra de implementatie is gestart, wordt het tabblad **model overzicht** weer gegeven. Zie de voortgang van de implementatie in het gedeelte **Implementatie status** . 
+1. Selecteer **Implementeren**. Implementatie duurt ongeveer 20 minuten.
+    Zodra de implementatie is gestart, wordt het tabblad **Overzicht van model** weergegeven. U kunt de voortgang van de implementatie bekijken in de sectie **Implementatiestatus**. 
 
-U hebt nu een Operational web service voor het genereren van voor spellingen. U kunt de voor spellingen testen door de service te doorzoeken van de [ingebouwde Azure machine learning ondersteuning van Power bi](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+U hebt nu een operationele webservice om voorspellingen te genereren. U kunt de voorspellingen testen door de service te doorzoeken via [Ondersteuning voor ingebouwde Azure Machine Learning van Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 
 ## <a name="next-steps"></a>Volgende stappen
 

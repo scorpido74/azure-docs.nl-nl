@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157939"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017095"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
 
-
-
-In dit artikel wordt beschreven hoe u als een operator apparaten beheert in uw Azure IoT Central-toepassing. Als operator kunt u het volgende doen:
+In dit artikel wordt beschreven hoe u als operator apparaten beheert in uw Azure IoT Central-toepassing. Als operator kunt u het volgende doen:
 
 - Gebruik de pagina **apparaten** om apparaten weer te geven, toe te voegen en te verwijderen die zijn verbonden met uw Azure IOT Central-toepassing.
 - Onderhoud van een actuele inventaris van uw apparaten.

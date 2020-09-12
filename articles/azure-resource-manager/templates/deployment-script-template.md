@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291805"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667499"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -143,7 +143,7 @@ Details van eigenschaps waarde:
 - **azPowerShellVersion** / **azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
 - **arguments**: Geef de parameterwaarden op. De waarden worden gescheiden door een spatie.
 
-    Met implementatie scripts worden de argumenten gesplitst in een matrix met teken reeksen door het aanroepen van de [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) -systeem aanroep. Dit is nodig omdat de argumenten worden door gegeven als een [opdracht eigenschap](/rest/api/container-instances/containergroups/createorupdate#containerexec) naar Azure container instance en de opdracht eigenschap een matrix van teken reeks is.
+    Met implementatie scripts worden de argumenten gesplitst in een matrix met teken reeksen door het aanroepen van de [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) -systeem aanroep. Dit is nodig omdat de argumenten worden door gegeven als een [opdracht eigenschap](/rest/api/container-instances/containergroups/createorupdate#containerexec) naar Azure container instance en de opdracht eigenschap een matrix van teken reeks is.
 
     Als de argumenten escape tekens bevatten, gebruikt u [JsonEscaper](https://www.jsonescaper.com/) om de tekens te verdubbelen. Plak de oorspronkelijke escape teken reeks in het hulp programma en selecteer vervolgens **Escape**.  Het hulp programma voert een dubbele escape teken reeks uit. In de vorige voorbeeld sjabloon is het argument bijvoorbeeld **: naam \\ "John Davids \\ "**.  De escape teken reeks is **: name \\ \\ \\ "John Davids \\ \\ \\ "**.
 
@@ -181,7 +181,7 @@ Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Reso
 > [!NOTE]
 > Omdat de inline-implementatie scripts tussen dubbele aanhalings tekens staan, moeten de teken reeksen in de implementatie scripts worden geescaped met behulp van een **&#92;** of tussen enkele aanhalings tekens staan. U kunt ook overwegen om de teken reeks vervanging te gebruiken zoals deze wordt weer gegeven in het vorige JSON-voor beeld.
 
-Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output`wordt gebruikt voor fout opsporing. Zie [implementatie scripts bewaken en problemen oplossen](#monitor-and-troubleshoot-deployment-scripts)voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjablonen](#sample-templates)voor de beschrijving van de eigenschap.
+Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output` wordt gebruikt voor fout opsporing. Zie [implementatie scripts bewaken en problemen oplossen](#monitor-and-troubleshoot-deployment-scripts)voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjablonen](#sample-templates)voor de beschrijving van de eigenschap.
 
 Als u het script wilt uitvoeren, selecteert u **proberen** de Cloud shell te openen en plakt u de volgende code in het deel venster shell.
 
@@ -217,7 +217,7 @@ U bent verantwoordelijk voor het garanderen van de integriteit van de scripts wa
 
 ## <a name="use-supporting-scripts"></a>Ondersteunende scripts gebruiken
 
-U kunt complexe logica van elkaar scheiden in een of meer ondersteunende script bestanden. `supportingScriptURI`Met de eigenschap kunt u indien nodig een matrix met uri's naar de ondersteunende script bestanden opgeven:
+U kunt complexe logica van elkaar scheiden in een of meer ondersteunende script bestanden. `supportingScriptUris`Met de eigenschap kunt u indien nodig een matrix met uri's naar de ondersteunende script bestanden opgeven:
 
 ```json
 "scriptContent": "

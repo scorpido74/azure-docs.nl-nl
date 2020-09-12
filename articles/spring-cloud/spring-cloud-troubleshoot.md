@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083681"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669762"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -48,18 +48,23 @@ Wanneer u fouten opspoort in de toepassing, moet u eerst de status en detectie s
 * Als de detectie status _actief_is, gaat u naar metrische gegevens om de status van de toepassing te controleren. Inspecteer de volgende metrische gegevens:
 
 
-  - `TomcatErrorCount`(_Tomcat. Global. error_): alle uitzonde ringen voor de lente toepassing worden hier geteld. Als dit aantal groot is, gaat u naar Azure Log Analytics om uw toepassings logboeken te controleren.
+  - `TomcatErrorCount` (_Tomcat. Global. error_): alle uitzonde ringen voor de lente toepassing worden hier geteld. Als dit aantal groot is, gaat u naar Azure Log Analytics om uw toepassings logboeken te controleren.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het bedrag kan niet worden gedefinieerd, of het kan in de loop van de tijd worden gewijzigd als het is gedefinieerd. Als deze is gedefinieerd, is de hoeveelheid gebruikt en toegewezen geheugen altijd kleiner dan of gelijk aan de maximum waarde. Een geheugen toewijzing kan echter mislukken met een `OutOfMemoryError` bericht als de toewijzing probeert het gebruikte geheugen te verg Roten, zoals het gebruik van *> vastgelegd*, zelfs als het *wordt gebruikt <= Max* is ingesteld op True. Probeer in een dergelijke situatie de maximale Heap-grootte te verhogen met behulp van de `-Xmx` para meter.
+  - `AppMemoryMax` (_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het bedrag kan niet worden gedefinieerd, of het kan in de loop van de tijd worden gewijzigd als het is gedefinieerd. Als deze is gedefinieerd, is de hoeveelheid gebruikt en toegewezen geheugen altijd kleiner dan of gelijk aan de maximum waarde. Een geheugen toewijzing kan echter mislukken met een `OutOfMemoryError` bericht als de toewijzing probeert het gebruikte geheugen te verg Roten, zoals het gebruik van *> vastgelegd*, zelfs als het *wordt gebruikt <= Max* is ingesteld op True. Probeer in een dergelijke situatie de maximale Heap-grootte te verhogen met behulp van de `-Xmx` para meter.
 
-  - `AppMemoryUsed`(_JVM. Memory. used_): de hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een normale toepassing voor het laden van Java vormt deze metrische reeks een *zaagtand* patroon, waarbij het geheugen gebruik gestaag toeneemt en afneemt in kleine stappen en plotseling een hoop zou afnemen en het patroon wordt herhaald. Deze metrische serie wordt veroorzaakt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties voor komen op het zaagtand patroon.
+  - `AppMemoryUsed` (_JVM. Memory. used_): de hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een normale toepassing voor het laden van Java vormt deze metrische reeks een *zaagtand* patroon, waarbij het geheugen gebruik gestaag toeneemt en afneemt in kleine stappen en plotseling een hoop zou afnemen en het patroon wordt herhaald. Deze metrische serie wordt veroorzaakt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties voor komen op het zaagtand patroon.
     
     Deze metrische gegevens zijn belang rijk voor het identificeren van geheugen problemen, zoals:
     * Een geheugen explosie aan het begin.
     * De toewijzing van piek geheugen voor een specifiek logisch pad.
     * Geleidelijke geheugen lekkage.
-
   Zie [metrische](spring-cloud-concept-metrics.md)gegevens voor meer informatie.
+  
+* Als de toepassing niet kan worden gestart, controleert u of de toepassing geldige JVM-para meters heeft. Als het JVM-geheugen te hoog is ingesteld, wordt het volgende fout bericht weer gegeven in de logboeken:
+
+  >de vereiste hoeveelheid geheugen 2728741K is groter dan 2000M beschikbaar voor toewijzing.
+
+
 
 Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics.
 
@@ -138,7 +143,7 @@ Als de controles worden onderbroken, kunt u nog steeds de volgende opdrachten ge
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Houd er echter rekening mee dat één exemplaar van de Azure veer-Cloud service per keer slechts één bouw taak voor één bron pakket kan activeren. Zie [een toepassing implementeren](spring-cloud-quickstart-launch-app-portal.md) en [een faserings omgeving instellen in azure lente-Cloud](spring-cloud-howto-staging-environment.md)voor meer informatie.
+Houd er echter rekening mee dat één exemplaar van de Azure veer-Cloud service per keer slechts één bouw taak voor één bron pakket kan activeren. Zie [een toepassing implementeren](spring-cloud-quickstart.md) en [een faserings omgeving instellen in azure lente-Cloud](spring-cloud-howto-staging-environment.md)voor meer informatie.
 
 ### <a name="my-application-cant-be-registered"></a>Mijn toepassing kan niet worden geregistreerd
 
@@ -193,7 +198,7 @@ Met omgevings variabelen wordt het Azure lente Cloud-Framework geïnformeerd, wa
 Zoek naar het onderliggende knoop punt met de naam `systemEnvironment` .  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
 
 > [!IMPORTANT]
-> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
+> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele:  `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Ik kan geen metrische gegevens of Logboeken vinden voor mijn toepassing
 

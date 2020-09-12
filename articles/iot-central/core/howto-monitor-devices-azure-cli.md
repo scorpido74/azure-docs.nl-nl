@@ -6,15 +6,15 @@ ms.author: viviali
 ms.date: 03/27/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b9cf8b862f77af833016d6aabb0ccae7bea8e24a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 276513e41b1595180acb0a596b236428032d87a6
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497423"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015973"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Apparaatconnectiviteit bewaken met Azure CLI
 
@@ -26,7 +26,7 @@ Gebruik de Azure CLI IoT-extensie om berichten te bekijken die uw apparaten naar
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Azure CLI is geïnstalleerd en versie 2.0.7 of hoger. Controleer de versie van uw Azure CLI door uit te voeren `az --version` . Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Azure CLI is geïnstalleerd en versie 2.7.0 of hoger. Controleer de versie van uw Azure CLI door uit te voeren `az --version` . Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Een werk-of school account in azure, toegevoegd als een gebruiker in een IoT Central-toepassing.
 
 ## <a name="install-the-iot-central-extension"></a>De IoT Central-extensie installeren
@@ -43,7 +43,7 @@ Controleer de versie van de uitbrei ding door het volgende uit te voeren:
 az --version
 ```
 
-U ziet dat de Azure IOT-uitbrei ding 0.8.1 of hoger is. Als dat niet het geval is, voert u de volgende handelingen uit:
+U ziet dat de Azure IOT-uitbrei ding 0.9.9 of hoger is. Als dat niet het geval is, voert u de volgende handelingen uit:
 
 ```azurecli
 az extension update --name azure-iot
@@ -68,14 +68,14 @@ Kopieer de **toepassings-id**in **beheer/toepassings instellingen**. U gebruikt 
 Controleer de berichten die naar uw IoT Central-app worden verzonden vanaf uw apparaten. De uitvoer bevat alle kopteksten en aantekeningen.
 
 ```azurecli
-az iot central app monitor-events --app-id <app-id> --properties all
+az iot central diagnostics monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>Apparaateigenschappen weer geven
 De huidige eigenschappen voor lezen en lezen/schrijven weer geven voor een bepaald apparaat.
 
 ```azurecli
-az iot central device-twin show --app-id <app-id> --device-id <device-id>
+az iot central device twin show --app-id <app-id> --device-id <device-id>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

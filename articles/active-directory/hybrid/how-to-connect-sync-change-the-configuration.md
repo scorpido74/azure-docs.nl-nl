@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357865"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662577"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.
@@ -113,7 +113,7 @@ Als alles zoals verwacht, kunt u de Scheduler opnieuw inschakelen. Voer uit in P
 In de vorige sectie is beschreven hoe u wijzigingen aanbrengt in een kenmerk stroom. In deze sectie worden enkele aanvullende voor beelden gegeven. De stappen voor het maken van de synchronisatie regel worden afgekort, maar u kunt de volledige stappen in de vorige sectie vinden.
 
 ### <a name="use-an-attribute-other-than-the-default"></a>Een ander kenmerk dan de standaard waarde gebruiken
-In dit scenario van Fabrikam is er een forest waarin het lokale alfabet wordt gebruikt voor de gegeven naam, achternummer en weergave naam. De Latijnse teken weergave van deze kenmerken vindt u in de extensie kenmerken. Voor het maken van een algemene adres lijst in azure AD en Office 365 wil de organisatie deze kenmerken gebruiken.
+In dit scenario van Fabrikam is er een forest waarin het lokale alfabet wordt gebruikt voor de gegeven naam, achternummer en weergave naam. De Latijnse teken weergave van deze kenmerken vindt u in de extensie kenmerken. Voor het bouwen van een algemene adres lijst in azure AD en Microsoft 365, wil de organisatie deze kenmerken gebruiken.
 
 Met een standaard configuratie ziet een object uit het lokale forest er als volgt uit:  
 ![Kenmerk stroom 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -264,12 +264,12 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld *in van AD: gebruiker user type* |
-    | Description | *Geef een beschrijving op* |  |
+    | Naam | *Geef een naam op* | Bijvoorbeeld *in van AD: gebruiker user type* |
+    | Beschrijving | *Geef een beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises AD-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
-    | Koppelings type | **Toevoegen** |  |
+    | Koppelings type | **Join** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Ga naar het tabblad **filter bereik** en voeg **één bereik filter groep** toe met de volgende component:
@@ -306,12 +306,12 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
     | Kenmerk | Waarde | Details |
     | ----- | ------ | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld voor *Aad: gebruiker user type* |
-    | Description | *Geef een beschrijving op* ||
+    | Naam | *Geef een naam op* | Bijvoorbeeld voor *Aad: gebruiker user type* |
+    | Beschrijving | *Geef een beschrijving op* ||
     | Verbonden systeem | *De AAD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||
-    | Koppelings type | **Toevoegen** ||
+    | Koppelings type | **Join** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Ga naar het tabblad **filter bereik** en voeg **één bereik filter groep** met twee componenten toe:

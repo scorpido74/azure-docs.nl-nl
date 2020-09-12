@@ -5,17 +5,17 @@ description: Meer informatie over het trainen van een model en het instellen van
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e4ca191e50f4ca8aa5a11a36ec44e737cc2ef6bc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319606"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661468"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batchvoorspellingen uitvoeren met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,9 +71,12 @@ In deze sectie maakt u een gegevensset-para meter om een andere gegevensset op t
    
     Voer een naam in voor de para meter of accepteer de standaard waarde.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>Uw batch-verwerkings pijplijn publiceren
+    > [!div class="mx-imgBorder"]
+    > ![Gegevensset instellen als pijplijn parameter](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
 
-U bent nu klaar om de pijp lijn voor het afnemen van de interferentie te implementeren. Hiermee wordt de pijp lijn geïmplementeerd en beschikbaar gemaakt zodat anderen deze kunnen gebruiken.
+## <a name="publish-your-batch-inference-pipeline"></a>Uw batch-verwerkings pijplijn publiceren
+
+Nu bent u klaar om de pijp lijn voor de deinterferentie te implementeren. Hiermee wordt de pijp lijn geïmplementeerd en beschikbaar gemaakt zodat anderen deze kunnen gebruiken.
 
 1. Selecteer de knop **Publiceren**.
 
@@ -126,9 +129,7 @@ Meer informatie over het gebruik van pijplijn eindpunten en gepubliceerde pijp l
 
 U kunt het REST-eind punt van een pijplijn eindpunt vinden in het deel venster Overzicht uitvoeren. Door het eind punt aan te roepen, verbruikt u de standaard gepubliceerde pijp lijn.
 
-U kunt ook een gepubliceerde pijp lijn gebruiken op de pagina **gepubliceerde pijp lijnen** . Selecteer een gepubliceerde pijp lijn en zoek het REST-eind punt. 
-
-![Details van rest-eind punt](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+U kunt ook een gepubliceerde pijp lijn gebruiken op de pagina **gepubliceerde pijp lijnen** . Selecteer een gepubliceerde pijp lijn en u kunt het REST-eind punt hiervan vinden in het **overzichts venster gepubliceerde pijp lijn** rechts van de grafiek. 
 
 Als u een REST-aanroep wilt uitvoeren, hebt u een OAuth 2,0 Bearer-type verificatie-header nodig. Raadpleeg de volgende [sectie zelf studie](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) voor meer informatie over het instellen van verificatie voor uw werk ruimte en het maken van een para meter rest-aanroep.
 
@@ -142,7 +143,7 @@ Wanneer u een pijp lijn publiceert, kunt u ervoor kiezen om deze te maken als de
 
 U kunt ook een nieuwe standaard pijplijn instellen op het tabblad **gepubliceerde pijp lijnen** van het eind punt.
 
-![Standaard pijplijn instellen](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Standaard pijplijn instellen op de gepubliceerde pijplijn pagina](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

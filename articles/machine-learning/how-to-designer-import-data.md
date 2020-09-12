@@ -5,17 +5,17 @@ description: Meer informatie over het importeren van gegevens in Azure Machine L
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495368"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006981"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Gegevens importeren in Azure Machine Learning Designer (preview-versie)
 
@@ -38,19 +38,28 @@ U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
 
 1. Selecteer de module die de gegevens levert die u wilt registreren.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer**  >  **van gegevensset registreren**.
+1. Selecteer in het deel venster Eigenschappen de optie **uitvoer en logboek**  >  **registratie gegevensset registreren**.
 
     ![Scherm afbeelding die laat zien hoe u kunt navigeren naar de optie gegevensset registreren](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Als de gegevens van de module-uitvoer een tabel indeling hebben, moet u ervoor kiezen om de uitvoer als een **Bestands gegevensset** of een **tabellaire gegevensset**te registreren.
+
+ - **File dataset** registreert de uitvoermap van de module als een bestands gegevensset. De uitvoermap bevat een gegevens bestand en meta bestanden die door de ontwerp functie intern worden gebruikt. Selecteer deze optie als u de geregistreerde gegevensset in de ontwerp functie wilt blijven gebruiken. 
+
+ - **In tabellaire gegevensset** wordt alleen het uitvoer gegevensbestand van de module geregistreerd als een gegevensset in tabel vorm. Deze indeling kan eenvoudig worden gebruikt door andere hulpprogram ma's, bijvoorbeeld in geautomatiseerde Machine Learning of de python-SDK. Selecteer deze optie als u van plan bent de geregistreerde gegevensset buiten de ontwerp functie te gebruiken.  
+
+
+
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken
 
-U kunt de geregistreerde gegevens sets vinden in het palet module, onder **gegevens sets**van  >  **mijn gegevens**sets. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules in het palet.
+U kunt de geregistreerde gegevens sets vinden in het module palet, onder **gegevens sets**. Als u een gegevensset wilt gebruiken, sleept u deze naar het pijp lijn-canvas. Verbind vervolgens de uitvoer poort van de gegevensset met andere modules op het canvas. 
 
 ![Scherm opname van de locatie van opgeslagen gegevens sets in het palet voor ontwerpen](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> De ontwerp functie biedt momenteel alleen ondersteuning voor het verwerken van [tabellaire gegevens sets](how-to-create-register-datasets.md#dataset-types). Als u [bestands gegevens sets](how-to-create-register-datasets.md#dataset-types)wilt gebruiken, gebruikt u de Azure machine learning SDK die beschikbaar is voor python en R.
+> De ontwerp functie ondersteunt het [versie beheer](how-to-version-track-datasets.md)van de gegevensset. Geef de gegevensset-versie op in het eigenschappen paneel van de module gegevensset.
+
 
 ## <a name="import-data-using-the-import-data-module"></a>Gegevens importeren met behulp van de module gegevens importeren
 
@@ -82,7 +91,7 @@ De Designer herkent intern de volgende gegevens typen:
 
 * Tekenreeks
 * Geheel getal
-* Decimal
+* Decimaal
 * Booleaans
 * Date
 
@@ -94,7 +103,7 @@ Modules in de ontwerp functie worden beperkt door de grootte van het berekenings
 
 ## <a name="access-data-in-a-virtual-network"></a>Toegang tot gegevens in een virtueel netwerk
 
-Als uw werk ruimte zich in een virtueel netwerk bevindt, moet u aanvullende configuratie stappen uitvoeren om gegevens in de ontwerp functie te visualiseren. Voor meer informatie over het gebruik van data stores en gegevens sets in een virtueel netwerk, raadpleegt u [netwerk isolatie tijdens de training & afwijzen met persoonlijke virtuele netwerken](how-to-enable-virtual-network.md#machine-learning-studio).
+Als uw werk ruimte zich in een virtueel netwerk bevindt, moet u aanvullende configuratie stappen uitvoeren om gegevens in de ontwerp functie te visualiseren. Zie [Azure machine learning Studio gebruiken in een virtueel](how-to-enable-studio-virtual-network.md)netwerk van Azure voor meer informatie over het gebruik van data stores en gegevens sets in een virtueel netwerk.
 
 ## <a name="next-steps"></a>Volgende stappen
 

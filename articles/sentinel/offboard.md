@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77581681"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662004"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Azure-Sentinel uit uw werk ruimte verwijderen
 
@@ -48,13 +48,13 @@ Nadat de verbinding is vastgesteld, wordt het offboarding-proces gestart.
 
 -   AWS
 
--   Beveiligings waarschuwingen van micro soft-Services (Azure ATP, Microsoft Cloud App Security inclusief Cloud Discovery Shadow IT Reporting, Azure AD Identity Protection, micro soft Defender ATP, Azure Security Center)
+-   Beveiligings waarschuwingen van micro soft-Services: micro soft Defender for Identity (*voorheen Azure ATP*), Microsoft Cloud App Security inclusief Cloud Discovery Shadow it reporting, Azure AD Identity Protection, micro soft Defender voor eind punt (*voorheen micro soft Defender ATP*), Azure Defender (*voorheen Azure Security Center*)
 
 -   Bedreigingsinformatie
 
--   Veelvoorkomende beveiligings Logboeken (inclusief op CEF gebaseerde logboeken, Barracuda en syslog) (als u Azure Security Center hebt, worden deze logboeken nog steeds verzameld.)
+-   Algemene beveiligings Logboeken (met inbegrip van CEF-logboeken, Barracuda en syslog) (als u Azure Defender hebt, worden deze logboeken nog steeds verzameld.)
 
--   Windows-beveiligings gebeurtenissen (als u Azure Security Center hebt, worden deze logboeken nog steeds verzameld.)
+-   Windows-beveiligings gebeurtenissen (als u Azure Defender hebt, worden deze logboeken nog steeds verzameld.)
 
 Binnen de eerste 48 uur zijn de gegevens-en analytische regels (inclusief realtime-automatiserings configuratie) niet langer toegankelijk of kunnen ze niet meer worden opgevraagd in azure Sentinel.
 

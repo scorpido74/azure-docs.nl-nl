@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1449114ad14ebbd064f95ad2853b516893ba4b12
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908391"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661684"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interactieve fout opsporing met Visual Studio code
 
@@ -37,12 +37,12 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
   * Een reken instantie van een notebook-VM in het virtuele netwerk
   * Een client computer met een particuliere netwerk verbinding met het virtuele netwerk, hetzij via VPN of via ExpressRoute.
 
-Zie voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning [Secure Azure ml experimenten en de functies voor het](how-to-enable-virtual-network.md)afmaken van een azure-Virtual Network.
+Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overview.md)voor meer informatie over het gebruik van een Azure-Virtual Network met Azure machine learning.
 
 > [!TIP]
 > Hoewel u kunt werken met Azure Machine Learning-resources die zich niet achter een virtueel netwerk bevinden, wordt het gebruik van een virtueel netwerk aanbevolen.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
 
@@ -281,7 +281,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
 In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-code die in uw model implementatie is opgenomen. Als het script voor de vermelding bijvoorbeeld mislukt en de reden niet kan worden bepaald door aanvullende logboek registratie. U kunt met behulp van VS code en de debugpy koppelen aan de code die wordt uitgevoerd in de docker-container.
 
 > [!IMPORTANT]
-> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` `LocalWebservice.deploy_configuration` een model gebruikt en lokaal implementeert. In plaats daarvan moet u een installatie kopie maken met behulp van de methode [model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` `LocalWebservice.deploy_configuration` een model gebruikt en lokaal implementeert. In plaats daarvan moet u een installatie kopie maken met behulp van de methode [model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Voor lokale web service-implementaties is een werkende docker-installatie op uw lokale systeem vereist. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker. Houd er rekening mee dat bij het werken met reken instanties al docker is geïnstalleerd.
 

@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507495"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004269"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van e
 ## <a name="status-updates"></a>Status updates
 
 # <a name="in-progress"></a>[Actief](#tab/in-progress-ip)
+### <a name="october-2020"></a>Oktober 2020
+
+Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
+
+- Duitsland-west-centraal: 51.116.240.0, 51.116.248.0
+
+Deze SQL-gateways beginnen het accepteren van klant verkeer op 12 oktober 2020. 
+
 ### <a name="september-2020"></a>September 2020
 Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's. Deze SQL-gateways beginnen het accepteren van klant verkeer op **15 September 2020**:
 
@@ -77,17 +85,17 @@ Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
 Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 augustus 2020. 
 
 ### <a name="october-2019"></a>Oktober 2019
-- Brazil South
+- Brazilië - zuid
 - VS - west
 - Europa -west
 - VS - oost
-- Central US
+- VS - centraal
 - Azië - zuidoost
-- South Central US
+- VS - zuid-centraal
 - Europa - noord
 - VS - noord-centraal
 - Japan - west
-- Japan East
+- Japan - oost
 - VS - oost 2
 - Azië - oost
 

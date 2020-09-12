@@ -3,12 +3,12 @@ title: Een back-up van een Azure VM maken op basis van de VM-instellingen
 description: In dit artikel vindt u informatie over het maken van een back-up van een enkelvoudige Azure-VM of meerdere virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: a8d1c29c894663da76b5882ef7ba249356ba3e6d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531843"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667511"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
@@ -31,7 +31,7 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 
 ## <a name="back-up-from-azure-vm-settings"></a>Back-ups maken van Azure VM-instellingen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **alle services** en typ **virtuele machines**in het filter en selecteer vervolgens **virtuele machines**.
 3. Selecteer in de lijst met virtuele machines de virtuele machine waarvan u een back-up wilt maken.
 4. Selecteer in het menu VM de optie **back-up**.
@@ -76,7 +76,7 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Back-ups maken van Recovery Services kluis
 
-Volg de instructies in dit artikel om back-ups van virtuele Azure-machines in te scha kelen door een Azure Backup Recovery Services kluis in te stellen en back-ups in de kluis in te scha kelen.
+Volg de instructies in [dit artikel](backup-azure-arm-vms-prepare.md) om back-ups van virtuele Azure-machines in te scha kelen door een Azure backup Recovery Services kluis in te stellen en back-ups in de kluis in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

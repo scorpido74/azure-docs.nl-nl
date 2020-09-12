@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 3803b9770d3caf3f45f109b62145677a38c5bcc2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146675"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657198"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installeer & gebruik de CLI-extensie voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ Reken instanties beheren.  In alle onderstaande voor beelden is de naam van de r
     > [!TIP]
     > `az ml folder attach`Met de opdracht wordt een `.azureml` submap gemaakt die twee voor beelden van runconfig-bestanden bevat. 
     >
-    > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
+    > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
     >
     > Het volledige runconfig-schema vindt u in dit [JSON-bestand](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). Het schema wordt zelf gedocumenteerd via de `description` sleutel van elk object. Daarnaast zijn er opsommingen voor mogelijke waarden en een sjabloon fragment aan het einde.
 
@@ -366,7 +366,7 @@ De volgende opdrachten laten zien hoe u Azure Machine Learning [omgevingen](how-
 
 ### <a name="environment-configuration-schema"></a>Configuratie schema omgeving
 
-Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabloon `azureml_environment.json` bestand gegenereerd dat kan worden gewijzigd en gebruikt om aangepaste omgevings configuraties te maken met de cli. Het object op het hoogste niveau is in de python-SDK los toegewezen aan de [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) klasse. 
+Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabloon `azureml_environment.json` bestand gegenereerd dat kan worden gewijzigd en gebruikt om aangepaste omgevings configuraties te maken met de cli. Het object op het hoogste niveau is in de python-SDK los toegewezen aan de [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) klasse. 
 
 ```json
 {
@@ -410,17 +410,17 @@ Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabl
 }
 ```
 
-De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het veld wordt bijvoorbeeld `environmentVariables` toegewezen aan de `environment_variables` variabele in de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) klasse.
+De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het veld wordt bijvoorbeeld `environmentVariables` toegewezen aan de `environment_variables` variabele in de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) klasse.
 
 | JSON-veld | Type | Beschrijving |
 |---|---|---|
 | `name` | `string` | De naam van de omgeving. Start de naam niet met **micro soft** of **AzureML**. |
 | `version` | `string` | De versie van de omgeving. |
 | `environmentVariables` | `{string: string}` | Een hash-toewijzing van namen en waarden van omgevings variabelen. |
-| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | Object waarmee de python-omgeving en-interpreter worden gedefinieerd die moeten worden gebruikt voor de doel Compute-resource. |
-| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Definieert instellingen voor het aanpassen van de docker-installatie kopie die is gebaseerd op de specificaties van de omgeving. |
-| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | In het gedeelte worden Spark-instellingen geconfigureerd. Het wordt alleen gebruikt wanneer Framework is ingesteld op PySpark. |
-| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Hiermee configureert u Databricks-bibliotheek afhankelijkheden. |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)Hat definieert de python-omgeving en-interpreter die moeten worden gebruikt voor de doel Compute-resource. |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py&preserve-view=true) | Definieert instellingen voor het aanpassen van de docker-installatie kopie die is gebaseerd op de specificaties van de omgeving. |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py&preserve-view=true) | In het gedeelte worden Spark-instellingen geconfigureerd. Het wordt alleen gebruikt wanneer Framework is ingesteld op PySpark. |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py&preserve-view=true) | Hiermee configureert u Databricks-bibliotheek afhankelijkheden. |
 | `inferencingStackVersion` | `string` | Hiermee geeft u de versie van de stack voor het in de wachtrij plaatsen toevoegen aan de installatie kopie. Als u wilt voor komen dat een inleidende stack wordt toegevoegd, verlaat u dit veld `null` . Geldige waarde: ' meest recent '. |
 
 ## <a name="ml-pipeline-management"></a>ML pijplijn beheer

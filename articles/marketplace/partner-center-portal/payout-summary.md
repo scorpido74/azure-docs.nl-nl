@@ -3,25 +3,25 @@ title: Uitbetalings rapporten-micro soft Commercial Marketplace
 description: De rapporten voor betaling geven informatie weer over het geld dat u bij uw aanbieding hebt behaald, inclusief de hoeveelheid betaling en wanneer u wordt betaald.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 62de9380578ca5a97f7b72f9939d5c2dd7392c0d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502627"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004218"
 ---
 # <a name="payout-summaries"></a>Betalingsoverzichten
 
 In de samen vatting van de uitbetaling ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
-Als u producten verkoopt in de Azure Marketplace, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie [Microsoft Azure Marketplace deelname beleid](https://docs.microsoft.com/legal/marketplace/participation-policy) en de [Microsoft Azure Marketplace Uitgever overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie.
+Als u producten verkoopt in de Azure Marketplace, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie voor meer informatie over Azure Marketplace-betaling [aan de slag in de commerciële Marketplace](./get-paid.md) en de [micro soft Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie deze pagina voor meer informatie over de betalings drempelwaarde en lees de gebruiksrecht overeenkomst voor ontwikkel aars.
+> Om in aanmerking te komen voor toekenning, moet uw opbrengst de betalings drempelwaarde van $50 bereiken. Zie de [micro soft Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie.
 
 > [!NOTE]
 > Als u op zoek bent naar ondersteuning voor uitbetalingen, zoals het configureren van uitbetalings accounts, ontbrekende uitbetalingen, het plaatsen van uitbetalingen in de wacht of iets anders, neemt u contact op met [de ondersteuning.](https://developer.microsoft.com/windows/support)
@@ -31,22 +31,14 @@ Als u producten verkoopt in de Azure Marketplace, ziet u ook informatie over ges
 Een van de overzichts pagina's met uitbetaling openen:
 
 1. Selecteer het uitbetalings pictogram in de rechter bovenhoek.
-2. Selecteer transactie geschiedenis, betalingen of export gegevens.
-
-## <a name="transaction-history-page"></a>Pagina transactie geschiedenis
-
-Op deze pagina worden alle afzonderlijke inkomsten weer gegeven, met inbegrip van de datum, het type en het verdienen voor elke. U kunt een periode selecteren die u wilt weer geven, en u kunt ook filteren op inschrijvings-ID, programma, betalings-ID, verdienen type, hendel en status. Er zijn gegevens beschikbaar voor het huidige boek jaar (1 juli 30 juni) en de vorige twee boek jaren.
-
-Selecteer de pijl-omlaag aan de rechter kant van de pagina om meer informatie over het verdienen te bekijken. Hiermee worden de hendel, het omzet bedrag en het product weer gegeven. Neem contact op met de [ondersteuning](https://developer.microsoft.com/windows/support)als een van deze gegevens niet beschikbaar is, maar u er toegang tot hebt. Als het verdienen het resultaat van een aanpassing is en niet van een trans actie, worden de product velden niet weer gegeven.
-
-Als u de transactie gegevens op deze pagina wilt exporteren, gebruikt u de pagina **gegevens exporteren** .
+2. Selecteer **transactie geschiedenis**, **betalingen**of **export gegevens**.
 
 ## <a name="payments-page"></a>Pagina betalingen
 
 De totalen op deze pagina geven alle Program ma's aan waarvan u deel uitmaakt. U kunt filteren op deelnemer-id, programma, betalings-id en type inkomsten. De bedragen worden uitgedrukt in Amerikaanse dollars. De uitbetaalde waarde wordt ook weergegeven in de valuta waarin wordt uitbetaald.
 
-| Gebied                   | Beschrijving                                                                                |
-|------------------------|---------------------------------------------------------------------------------------------|
+| Gebied  | Beschrijving |
+| --- | --- |
 | Totaal betaald dit jaar   | Het gecombineerde totaal dat dit jaar, in Amerikaanse dollars, voor al uw Program ma's is betaald       |
 | Volgende geschatte betaling | De enkele volgende betaling die aan u wordt ontvangen (zelfs als er nog andere gebruikers binnenkort beschikbaar zijn), in Amerikaanse dollars |
 | Laatste betaling           | De hoeveelheid (in Amerikaanse dollars), programma naam en programma van uw meest recente betaling           |
@@ -60,25 +52,25 @@ Als u de gegevens op deze pagina wilt exporteren, selecteert u **exporteren** en
 
 Op deze pagina worden alle afzonderlijke inkomsten weer gegeven, met inbegrip van de datum, het type en het verdienen voor elke. U kunt een tijds periode selecteren die u wilt weer geven en u kunt filteren op inschrijvings-ID, programma, betalings-ID, type van verdienen, hendel en status. Er zijn gegevens beschikbaar voor het huidige boek jaar (1 juli 30 juni) en de vorige twee boek jaren.
 
-Selecteer de pijl-omlaag aan de rechter kant van de pagina om meer informatie over het verdienen te bekijken. Hiermee worden de hendel, het omzet bedrag en het product weer gegeven. Als een van deze gegevens niet beschikbaar is, maar u er toegang tot hebt, neemt u contact op met de [ondersteuning](https://developer.microsoft.com/windows/support)]. Als het verdienen het resultaat van een aanpassing is en niet van een trans actie, worden de product velden niet weer gegeven.
+Selecteer de pijl-omlaag aan de rechter kant van de pagina om meer informatie over het verdienen te bekijken. Hiermee worden de hendel, het omzet bedrag en het product weer gegeven. Neem contact op met de [ondersteuning](https://developer.microsoft.com/windows/support)als een van deze gegevens niet beschikbaar is, maar u er toegang tot hebt. Als het verdienen het resultaat van een aanpassing is en niet van een trans actie, worden de product velden niet weer gegeven.
 
 Als u de transactie gegevens op deze pagina wilt exporteren, selecteert u **exporteren** en volgt u de instructies op de pagina gegevens exporteren. Bestanden die zijn geëxporteerd uit de pagina transactie geschiedenis, tonen gegevens in transactie valuta, winst in transactie valuta en Amerikaanse dollars en de betaalde waarde in betalen naar valuta.
 
 ## <a name="payment-status"></a>Betalingsstatus
 
-| Status verdienen           | Reden                                                                                                                                      | Partner actie vereist?                                   |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Status verdienen | Reden | Partner actie vereist? |
+| --- | --- | --- |
 | Verwerkte              | Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. | No                                                         |
 | Verschijnen                 | De betalings order is gegenereerd interne beoordelingen voordat de betaling wordt verwerkt                                                               | No                                                         |
 | Factuur met openstaande BTW      | Uw BTW-factuur is onvolledig of ongeldig                                                                                                  | U moet uw BTW-factuur bijwerken voordat u kunt betalen |
 | Afgewezen tijdens beoordeling   | De betaling is afgewezen tijdens de controle                                                                                                     | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
-| Mislukt                   | De betaling is mislukt vanwege een micro soft-systeem fout                                                                                         | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
+| Mislukt                   | De betaling is mislukt vanwege een micro soft-systeem fout                                                                                         | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support)  voor meer informatie                      |
 | Actief              | De betaling wordt uitgevoerd                                                                                                                 | No                                                         |
 | Onjuiste betaling        | Het terugkoppelings bedrag wordt uitgevoerd                                                                                                       | No                                                         |
 | Verzonden                     | De betaling is verzonden naar uw bank                                                                                                     | No                                                         |
 | Verwerkt             | De betaling heeft een micro soft-systeem fout aangetroffen en wordt opnieuw verwerkt                                                                  | No                                                         |
 | Reversed                 | De betaling is teruggedraaid door uw bank en wordt opnieuw verzonden in de volgende betalings cyclus                                                     | No                                                         |
-| Geweigerde BTW-factuur     | Uw belasting factuur is afgewezen tijdens de controle. Alle openstaande betalingen worden in de wacht stand gezet totdat de beoordeling van de belasting factuur is voltooid.                 | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
+| Geweigerde BTW-factuur     | Uw belasting factuur is afgewezen tijdens de controle. Alle openstaande betalingen worden in de wacht stand gezet totdat de beoordeling van de belasting factuur is voltooid.                 | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support)  voor meer informatie                      |
 | Factuur belasting onder beoordeling | Uw belasting factuur wordt gecontroleerd. Uw betaling wordt vrijgegeven zodra de belasting factuur is goedgekeurd.                                   | No                                                         |
 | Afgewezen                 | De betaling is afgewezen door uw bank                                                                                                      | Neem contact op met uw bank voor meer informatie.                             |
 |||
@@ -97,8 +89,8 @@ Het filter kan ertoe leiden dat er **geen gegevens beschikbaar zijn** . Dit bete
 
 Met deze optie kunt u de betalingen die u in uw bank hebt ontvangen, downloaden voor een bepaald programma, de bijbehorende belasting en het samengevoegde bedrag. Dit rapport wordt gebruikt voor veel Partner Center-Program ma's, waardoor sommige kolommen mogelijk niet van toepassing zijn op uw rapport. Deze kolommen worden hieronder gemarkeerd.
 
-| Kolomnaam              | Description                                                                                                                               |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
+| Kolomnaam | Beschrijving |
+| --- | --- |
 | participantID            | De primaire identiteit van de partner die onder het programma is aangegaan                                                                             |
 | participantIDType        | Doorgaans programma-ID voor prikkel Programma's en verkoper-ID voor Store-Program ma's                                                                |
 | deel nemer          | Naam van de verdienen partner                                                                                                               |
@@ -123,8 +115,8 @@ Met deze optie kunt u de betalingen die u in uw bank hebt ontvangen, downloaden 
 
 Deze optie biedt een down load van elk verdienen regel item dat u ziet op de pagina transactie geschiedenis, het type, de datum, het bijbehorende transactie bedrag, de klant, het product en andere transactionele gegevens die van toepassing zijn op uw Program ma's.
 
-| Kolomnaam                    | Description                                                                                                                              | Toepasselijkheid voor prikkels/Store/Azure Marketplace           |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| Kolomnaam | Beschrijving | Toepasselijkheid voor prikkels/Store/Azure Marketplace |
+| --- | --- | --- |
 | earningId                      | Unieke id voor elk verdienen                                                                                                       | Alles                                                            |
 | participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            | Alles                                                            |
 | participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          | Alles                                                            |
@@ -209,8 +201,8 @@ De transactie geschiedenis van vóór juli 1 2019 wordt afzonderlijk afgehandeld
 > [!NOTE]
 > Filters zoals 3 ter, 6 min. of 12M zijn niet van toepassing op de sectie **historische instructies** .
 
-| Veldnaam              | Beschrijving                                                                                                                                                             |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Veldnaam | Beschrijving |
+| --- | --- |
 | Opbrengst bron          | De bron van uw omzet op basis van waar de trans actie plaatsvond, zoals Microsoft Store, Windows Phone Store, Windows Store 8 of Advertising                  |
 | Order-id                | Unieke order-id. Met deze ID kunt u aankoop transacties identificeren met hun respectieve niet-aankoop transacties, zoals terugstortingen of terugstortingen. Beide hebben dezelfde order-ID. In het geval van een Split-kosten waarbij meerdere betalings methoden voor één aankoop zijn gebruikt, kunt u ook de inkoop transacties koppelen. |
 | Transactie-id          | Unieke trans actie-id.                                                                                                                                          |
@@ -220,7 +212,7 @@ De transactie geschiedenis van vóór juli 1 2019 wordt afzonderlijk afgehandeld
 | Naam van bovenliggend product     | De naam van het bovenliggende product. Als er geen bovenliggend product voor de trans actie is, dan is de naam van het bovenliggende product = product naam.                                  |
 | Productnaam            | Naam van het product                                                                                                                                                    |
 | Producttype            | Type product, zoals app, invoeg toepassing of spel                                                                                                                       |
-| Aantal                | Wanneer de opbrengst bron Microsoft Store voor bedrijven, vertegenwoordigt de hoeveelheid het aantal aangeschafte licenties. Voor alle andere opbrengst bronnen is de hoeveelheid altijd 1. Zelfs wanneer één trans actie wordt gesplitst in twee regel items omdat er twee verschillende betalings methoden zijn gebruikt, wordt voor elk regel item een hoeveelheid van 1 weer gegeven. |
+| Hoeveelheid                | Wanneer de opbrengst bron Microsoft Store voor bedrijven, vertegenwoordigt de hoeveelheid het aantal aangeschafte licenties. Voor alle andere opbrengst bronnen is de hoeveelheid altijd 1. Zelfs wanneer één trans actie wordt gesplitst in twee regel items omdat er twee verschillende betalings methoden zijn gebruikt, wordt voor elk regel item een hoeveelheid van 1 weer gegeven. |
 | Transactietype        | Type trans actie, zoals aankoop, terugbetaling, omkering of terugstorting                                                                                              |
 | Betalings wijze          | Het betalings instrument van de klant dat wordt gebruikt voor de trans actie, zoals kaart, facturering van mobiele provider of PayPal                                                               |
 | Land/regio        | Het land of de regio waar de trans actie plaatsvond                                                                                                                          |

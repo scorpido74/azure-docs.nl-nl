@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082638"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019662"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux
 
@@ -22,8 +22,8 @@ ms.locfileid: "86082638"
 
 HDInsight biedt ondersteuning voor u om algemene taken uit te voeren op uw cluster, zoals het installeren van besturingssysteem patches, beveiligings updates en het opnieuw opstarten van knoop punten. Deze taken worden uitgevoerd met behulp van de volgende twee scripts die kunnen worden uitgevoerd als [script acties](hdinsight-hadoop-customize-cluster-linux.md), en geconfigureerd met para meters:
 
-- `schedule-reboots.sh`-Doe een onmiddellijke start of plan opnieuw opstarten op de cluster knooppunten.
-- `install-updates-schedule-reboots.sh`-Alle updates, alleen kernel-en beveiligings updates of alleen kernel-updates installeren.
+- `schedule-reboots.sh` -Doe een onmiddellijke start of plan opnieuw opstarten op de cluster knooppunten.
+- `install-updates-schedule-reboots.sh` -Alle updates, alleen kernel-en beveiligings updates of alleen kernel-updates installeren.
 
 > [!NOTE]  
 > Met script acties worden updates voor alle toekomstige update cycli niet automatisch toegepast. Voer de scripts telkens uit wanneer er nieuwe updates moeten worden toegepast om de updates te installeren en start de virtuele machine vervolgens opnieuw op.
@@ -32,11 +32,16 @@ HDInsight biedt ondersteuning voor u om algemene taken uit te voeren op uw clust
 
 Patch voor een representatieve niet-productie omgeving voordat u de productie implementeert. Ontwikkel een plan om uw systeem op een afdoende wijze te testen voorafgaand aan uw werkelijke patches.
 
-Vanuit de tijd tot tijd, vanuit een SSH-sessie met uw cluster, wordt een bericht weer gegeven dat er een upgrade beschikbaar is. Het bericht kan er ongeveer als volgt uitzien:
+Vanuit de tijd tot tijd, vanuit een SSH-sessie met uw cluster, ontvangt u mogelijk een bericht dat er beveiligings updates beschikbaar zijn. Het bericht kan er ongeveer als volgt uitzien:
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 Patching is optioneel en op uw keuze.
@@ -64,6 +69,9 @@ Het `install-updates-schedule-reboots` script accepteert twee numerieke para met
 
 > [!NOTE]
 > U moet een script markeren als bewaard nadat u het toepast op een bestaand cluster. Anders wordt de standaard planning voor het patchen gebruikt voor nieuwe knoop punten die zijn gemaakt via schaal bewerkingen. Als u het script toepast als onderdeel van het proces voor het maken van het cluster, wordt het automatisch gehandhaafd.
+
+> [!NOTE]
+> Met de optie voor gepland opnieuw opstarten wordt de gepatchde cluster knooppunten automatisch opnieuw opgestart gedurende een periode van 12 tot 24 uur en worden de overwegingen voor hoge Beschik baarheid, het bijwerken van het domein en het fout domein in rekening gebracht. Bij geplande opnieuw opstarten wordt het uitvoeren van werk belastingen niet beëindigd, maar kan de capaciteit van het cluster in de tussen tijd verloren gaan als er geen knoop punten beschikbaar zijn. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

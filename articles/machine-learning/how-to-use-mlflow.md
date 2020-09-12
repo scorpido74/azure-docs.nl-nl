@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: df8a75c2297dc68549b2788a2d78dd2c7f576bc2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e31fdec18ab4c6135031bf21d2387585141c2735
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146841"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018217"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Model metrieken bijhouden en ML-modellen implementeren met MLflow en Azure Machine Learning (preview)
 
@@ -44,10 +44,10 @@ In het volgende diagram ziet u hoe u met MLflow tracking de metrische gegevens v
 
  De onderstaande tabel bevat een overzicht van de verschillende clients die Azure Machine Learning kunnen gebruiken en hun respectieve functie mogelijkheden.
 
- MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+ MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 
 
-| Mogelijkheid | MLflow &nbsp; Tracking &-implementatie | Azure Machine Learning python-SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| Mogelijkheid | MLflow tracking &-implementatie | Azure Machine Learning python-SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Werk ruimte beheren |   | ✓ | ✓ | ✓ |
 | Gegevens archieven gebruiken  |   | ✓ | ✓ | |
@@ -62,7 +62,7 @@ In het volgende diagram ziet u hoe u met MLflow tracking de metrische gegevens v
 ## <a name="prerequisites"></a>Vereisten
 
 * [Installeer MLflow.](https://mlflow.org/docs/latest/quickstart.html)
-* [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) op uw lokale computer de SDK biedt de connectiviteit voor MLflow om toegang te krijgen tot uw werk ruimte.
+* [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) op uw lokale computer de SDK biedt de connectiviteit voor MLflow om toegang te krijgen tot uw werk ruimte.
 * [Maak een Azure machine learning-werkruimte](how-to-manage-workspace.md).
 
 ## <a name="track-local-runs"></a>Lokale uitvoeringen bijhouden
@@ -75,7 +75,7 @@ Installeer het `azureml-mlflow` pakket voor het gebruik van MLflow tracking met 
 pip install azureml-mlflow
 ```
 
-Importeer de `mlflow` klassen en en [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) Configureer de MLflow om uw werk ruimte te openen.
+Importeer de `mlflow` klassen en en [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py&preserve-view=true) Configureer de MLflow om uw werk ruimte te openen.
 
 In de volgende code wijst de `get_mlflow_tracking_uri()` methode een uniek tracerings-URI-adres toe aan de werk ruimte `ws` en `set_tracking_uri()` wijst de tracerings-URI van de MLflow naar dat adres.
 
@@ -107,7 +107,7 @@ MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegev
 
 Met extern uitvoeren kunt u uw modellen trainen op krachtige reken mogelijkheden, zoals virtuele machines met GPU of Machine Learning Compute clusters. Zie [Compute-doelen voor model training gebruiken](how-to-set-up-training-targets.md) voor meer informatie over verschillende reken opties.
 
-Configureer uw reken-en trainings uitvoerings omgeving met de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) klasse. Opname- `mlflow` en `azureml-mlflow` PIP-pakketten in de sectie van de omgeving [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) . Maak vervolgens  [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) met uw externe Compute als het reken doel.
+Configureer uw reken-en trainings uitvoerings omgeving met de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) klasse. Opname- `mlflow` en `azureml-mlflow` PIP-pakketten in de sectie van de omgeving [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py&preserve-view=true) . Maak vervolgens  [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) met uw externe Compute als het reken doel.
 
 ```Python
 from azureml.core.environment import Environment
@@ -273,7 +273,7 @@ Geef eerst de implementatie configuratie op. Azure container instance (ACI) is e
 
 #### <a name="deploy-to-aci"></a>Implementeren naar ACI
 
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -286,7 +286,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Registreer en implementeer vervolgens het model met behulp van de Azure Machine Learning SDK- [implementatie](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) methode. 
+Registreer en implementeer vervolgens het model met behulp van de Azure Machine Learning SDK- [implementatie](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) methode. 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
@@ -300,7 +300,7 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Implementeren naar AKS
 
-Als u wilt implementeren op AKS, moet u eerst een AKS-cluster maken. Maak een AKS-cluster met behulp van de methode [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) . Het kan 20-25 minuten duren om een nieuw cluster te maken.
+Als u wilt implementeren op AKS, moet u eerst een AKS-cluster maken. Maak een AKS-cluster met behulp van de methode [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) . Het kan 20-25 minuten duren om een nieuw cluster te maken.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -320,7 +320,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -328,8 +328,9 @@ from azureml.core.webservice import Webservice, AksWebservice
 # Set the web service configuration (using default here with app insights)
 aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, compute_target_name='aks-mlflow')
 
+```
 
-Then, deploy the image by using the Azure Machine Learning SDK [deploy()](Then, register and deploy the model by using the Azure Machine Learning SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) method. 
+Implementeer vervolgens de installatie kopie met behulp van de Azure Machine Learning SDK [Deploy ()] (Registreer en implementeer vervolgens het model met behulp van de Azure Machine Learning SDK- [implementatie](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) methode. 
 
 ```python
 # Webservice creation using single command

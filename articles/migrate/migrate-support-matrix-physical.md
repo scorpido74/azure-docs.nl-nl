@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640120"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660350"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -34,8 +34,8 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. <br/> U kunt er ook voor zorgen dat de vereiste mogelijkheden zijn ingesteld met behulp van de volgende opdrachten. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (als/usr/sbin/fdisk niet aanwezig is) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/class/DMI/id/product_uuid
-| **Besturingssysteem** | Alle besturings systemen behalve Windows Server 2003 en SUSE Linux kunnen worden geëvalueerd voor migratie. |
+| **Machtigingen**           | **Windows:** Gebruik een domeinaccount voor machines die lid zijn van een domein, en een lokaal account voor machines die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. <br/> U kunt er ook voor zorgen dat de vereiste mogelijkheden zijn ingesteld met behulp van de volgende opdrachten. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (als/usr/sbin/fdisk niet aanwezig is) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/class/DMI/id/product_uuid
+| **Besturingssysteem** | Alle Windows-en Linux-besturings systemen kunnen worden geëvalueerd voor migratie. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten

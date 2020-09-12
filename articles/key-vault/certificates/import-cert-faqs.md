@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588818"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651845"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Veelgestelde vragen over het importeren van Azure Key Vault certificaten
 
@@ -54,7 +54,7 @@ Zie [over Azure Key Vault certificaten](https://docs.microsoft.com/azure/key-vau
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Hoe kan ik ' fout type: conflict bij het maken van een certificaat ' oplossen '?
     
-Elke certificaat naam moet uniek zijn. Een certificaat met dezelfde naam als een andere kan de status zacht verwijderd hebben. Op basis [van de samen stelling van een certificaat](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) in azure Key Vault, als er in de sleutel kluis een andere sleutel of een geheim is gemaakt met dezelfde naam als die u wilt opgeven voor uw certificaat, mislukt het maken van het certificaat en moet u de sleutel of het geheim verwijderen of een andere naam voor het certificaat gebruiken. 
+Elke certificaat naam moet uniek zijn. Een certificaat met dezelfde naam kan in een tijdelijke status worden verwijderd. Daarnaast op basis van de [samen stelling van een certificaat](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)wordt, wanneer er een nieuw certificaat wordt gemaakt, een adresseerbaar geheim gemaakt met dezelfde naam, dus als de sleutel kluis een andere sleutel of een geheim bevat met dezelfde naam als het certificaat dat u probeert op te geven voor uw certificaat, mislukt het maken van de certificaten en moet u de sleutel of het geheim verwijderen of een andere naam voor het certificaat gebruiken 
 
 Zie voor meer informatie een [Verwijderde certificaat bewerking ophalen](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 

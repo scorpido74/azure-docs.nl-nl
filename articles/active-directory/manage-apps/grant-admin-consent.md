@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501011"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667607"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
@@ -32,15 +32,12 @@ Voor het verlenen van toestemming voor de beheerder van de Tenant moet u zich aa
 > [!IMPORTANT]
 > Wanneer een toepassing toestemming heeft gekregen voor Tenant beheer, kunnen alle gebruikers zich aanmelden bij de app, tenzij deze is geconfigureerd voor het vereisen van een gebruikers toewijzing. Als u wilt beperken welke gebruikers zich kunnen aanmelden bij een toepassing, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
 >
-> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor de Microsoft Graph-API.
->
-
+> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor toepassings machtigingen voor de Microsoft Graph-API.
 
 > [!WARNING]
 > Voor het verlenen van een door de Tenant verleende beheerder toestemming voor een toepassing wordt de app en de uitgever van de app toegang verleend tot de gegevens van uw organisatie. Controleer zorgvuldig de machtigingen die de toepassing aanvraagt voordat u toestemming verleent.
 >
-> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor de Microsoft Graph-API.
->
+> De rol van globale beheerder is vereist om toestemming van de beheerder te bieden voor toepassings machtigingen voor de Microsoft Graph-API.
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Beheerder toestemming geven van de Azure Portal
 
@@ -56,6 +53,9 @@ Toestemming geven voor de hele Tenant beheerder voor een app die wordt vermeld i
 4. Selecteer **machtigingen** en klik vervolgens op **toestemming beheerder verlenen**.
 5. Controleer zorgvuldig de machtigingen die nodig zijn voor de toepassing.
 6. Als u akkoord gaat met de machtigingen die de toepassing vereist, toestemming verlenen. Als dat niet het geval is, klikt u op **Annuleren** of sluit u het venster.
+
+> [!WARNING]
+> **Door beheerders** toestemming voor de hele Tenant te verlenen, worden alle machtigingen ingetrokken die eerder zijn verleend voor tenants. Machtigingen die eerder door gebruikers uit hun eigen naam zijn verleend, worden niet beïnvloed. 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>Toestemming van beheerder verlenen in App-registraties
 
@@ -82,10 +82,13 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 Hierbij
 
-* `{client-id}`is de client-ID van de toepassing (ook wel App-ID genoemd).
-* `{tenant-id}`is de Tenant-ID van uw organisatie of een geverifieerde domein naam.
+* `{client-id}` is de client-ID van de toepassing (ook wel App-ID genoemd).
+* `{tenant-id}` is de Tenant-ID van uw organisatie of een geverifieerde domein naam.
 
 Zo altijd moet u de machtigingen voor een toepassings aanvraag zorgvuldig controleren voordat u toestemming verleent.
+
+> [!WARNING]
+> Door de beheerder toestemming voor de hele Tenant te verlenen via deze URL worden alle machtigingen ingetrokken die eerder zijn verleend voor tenants. Machtigingen die eerder door gebruikers uit hun eigen naam zijn ggranted, worden niet beïnvloed. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331272"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657143"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Opties voor Azure AD Connect gebruikers aanmelding
 Met Azure Active Directory (Azure AD) Connect kunnen uw gebruikers zich aanmelden bij zowel Cloud-als on-premises resources met behulp van dezelfde wacht woorden. In dit artikel worden de belangrijkste concepten voor elk identiteits model beschreven, waarmee u de identiteit kunt kiezen die u wilt gebruiken om u aan te melden bij Azure AD.
@@ -47,9 +47,9 @@ Azure AD biedt ondersteuning voor de volgende verificatie methoden:
    * **Pass-Through-verificatie (PTA)** : deze optie is vergelijkbaar met wacht woord-hash-synchronisatie, maar biedt een eenvoudige wachtwoord validatie met behulp van on-premises software-agents voor organisaties met een sterk beveiligings-en nalevings beleid.
 * **Federatieve verificatie** : wanneer u deze verificatie methode kiest, wordt het verificatie proces door Azure AD afgeleverd aan een afzonderlijk vertrouwd verificatie systeem, zoals AD FS of een Federatie systeem van derden, om de aanmelding van de gebruiker te valideren. 
 
-Voor de meeste organisaties die willen aanmelden bij Office 365, SaaS-toepassingen en andere resources op basis van Azure AD, wordt u aangeraden de standaard optie voor het synchroniseren van wacht woord-hashes te gebruiken.
+Voor de meeste organisaties waarmee gebruikers zich alleen willen aanmelden bij Microsoft 365, SaaS-toepassingen en andere resources op basis van Azure AD, wordt de standaard optie voor het synchroniseren van wacht woord-hashes aanbevolen.
  
-Zie voor gedetailleerde informatie over het kiezen van een verificatie methode [de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing](../../security/fundamentals/choose-ad-authn.md)
+Zie voor gedetailleerde informatie over het kiezen van een verificatie methode [de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing](./choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Synchronisatie van wachtwoord-hashes
 Hashes van wacht woorden van gebruikers worden gesynchroniseerd van on-premises Active Directory naar Azure AD. Wanneer wacht woorden worden gewijzigd of on-premises opnieuw worden ingesteld, worden de nieuwe wacht woord-hashes onmiddellijk gesynchroniseerd met Azure AD, zodat uw gebruikers altijd hetzelfde wacht woord voor cloud resources en on-premises resources kunnen gebruiken. De wacht woorden worden nooit verzonden naar Azure AD of opgeslagen in azure AD als gewone tekst. U kunt wachtwoord hash synchronisatie samen met het terugschrijven van het wacht woord gebruiken om selfservice voor wachtwoord herstel in te scha kelen in azure AD.
@@ -126,7 +126,7 @@ De aanmeldings ervaring van Azure AD is afhankelijk van het feit of Azure AD kan
 Azure AD Connect geeft een lijst van de UPN-achtervoegsels die zijn gedefinieerd voor de domeinen en probeert deze te koppelen aan een aangepast domein in azure AD. Vervolgens helpt u met de juiste actie die moet worden uitgevoerd.
 Op de aanmeldings pagina van Azure AD worden de UPN-achtervoegsels vermeld die zijn gedefinieerd voor on-premises Active Directory en wordt de bijbehorende status voor elk achtervoegsel weer gegeven. De status waarden kunnen een van de volgende zijn:
 
-| Status | Beschrijving | Actie vereist |
+| Staat | Beschrijving | Actie vereist |
 |:--- |:--- |:--- |
 | Gegaan |Azure AD Connect heeft een overeenkomend gecontroleerd domein gevonden in azure AD. Alle gebruikers voor dit domein kunnen zich aanmelden met behulp van hun on-premises referenties. |Er is geen actie nodig. |
 | Niet geverifieerd |Azure AD Connect heeft een overeenkomend aangepast domein gevonden in azure AD, maar dit is niet geverifieerd. Het UPN-achtervoegsel van de gebruikers van dit domein wordt gewijzigd in het default. onmicrosoft.com-achtervoegsel na synchronisatie als het domein niet is geverifieerd. | [Controleer het aangepaste domein in azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -139,12 +139,12 @@ Op de aanmeldings pagina van Azure AD worden de UPN-achtervoegsels vermeld die z
 U kunt op de knop Vernieuwen klikken om de meest recente status van de aangepaste domeinen opnieuw op te halen uit Azure AD.
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Het kenmerk voor de user principal name in azure AD selecteren
-Het kenmerk userPrincipalName is het kenmerk dat gebruikers gebruiken wanneer ze zich aanmelden bij Azure AD en Office 365. Controleer de domeinen (ook wel bekend als UPN-achtervoegsels) die worden gebruikt in azure AD voordat de gebruikers worden gesynchroniseerd.
+Het kenmerk userPrincipalName is het kenmerk dat gebruikers gebruiken wanneer ze zich aanmelden bij Azure AD en Microsoft 365. Controleer de domeinen (ook wel bekend als UPN-achtervoegsels) die worden gebruikt in azure AD voordat de gebruikers worden gesynchroniseerd.
 
 We raden u ten zeerste aan het standaard kenmerk userPrincipalName te hand haven. Als dit kenmerk nonroutable is en niet kan worden geverifieerd, is het mogelijk om een ander kenmerk (bijvoorbeeld e-mail) te selecteren als het kenmerk dat de aanmeldings-ID bevat. Dit wordt ook wel de alternatieve ID genoemd. De waarde van het kenmerk alternatieve ID moet voldoen aan de RFC 822-norm. U kunt een alternatieve ID met zowel wachtwoord-SSO als Federatie-SSO gebruiken als de aanmeldings oplossing.
 
 > [!NOTE]
-> Het gebruik van een alternatieve ID is niet compatibel met alle Office 365-workloads. Zie [Configuring Alternate Login ID](https://technet.microsoft.com/library/dn659436.aspx) (Engelstalig) voor meer informatie.
+> Het gebruik van een alternatieve ID is niet compatibel met alle Microsoft 365 workloads. Zie [Configuring Alternate Login ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) (Engelstalig) voor meer informatie.
 >
 >
 
@@ -155,7 +155,7 @@ Voor de volgende informatie wordt ervan uitgegaan dat we het UPN-achtervoegsel c
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Snelle instellingen/wachtwoord-hash-synchronisatie
 
-| Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
+| Staat | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
 | Niet toegevoegd |In dit geval is er geen aangepast domein voor contoso.com toegevoegd aan de Azure AD-adres lijst. Gebruikers met UPN on-premises met het achtervoegsel @contoso.com kunnen hun lokale UPN niet gebruiken om zich aan te melden bij Azure. Ze moeten in plaats daarvan een nieuwe UPN gebruiken die door Azure AD wordt geleverd door het achtervoegsel voor de standaard Azure AD-adres lijst toe te voegen. Als u bijvoorbeeld gebruikers synchroniseert met de Azure AD-adres lijst azurecontoso.onmicrosoft.com, krijgt de lokale gebruiker user@contoso.com een UPN van user@azurecontoso.onmicrosoft.com . |
 | Niet geverifieerd |In dit geval hebben we een aangepast domein contoso.com dat wordt toegevoegd aan de Azure AD-adres lijst. Het is echter nog niet geverifieerd. Als u de synchronisatie van gebruikers verloopt zonder het domein te verifiëren, worden de gebruikers een nieuwe UPN toegewezen door Azure AD, net als in het scenario ' niet toegevoegd '. |
@@ -166,7 +166,7 @@ U kunt geen Federatie maken met het default. onmicrosoft.com-domein in azure AD 
 
 Als u de optie Federatie gebruiker aanmelden hebt geselecteerd **met AD FS**, moet u een aangepast domein hebben om door te gaan met het maken van een Federatie in azure AD. Voor onze discussie betekent dit dat er een aangepast domein contoso.com is toegevoegd aan de Azure AD-adres lijst.
 
-| Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
+| Staat | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
 | Niet toegevoegd |In dit geval heeft Azure AD Connect geen overeenkomend aangepast domein gevonden voor het UPN-achtervoegsel contoso.com in de Azure AD-adres lijst. U moet een aangepast domein contoso.com toevoegen als u gebruikers wilt aanmelden met behulp van AD FS met hun lokale UPN (zoals user@contoso.com ). |
 | Niet geverifieerd |In dit geval vraagt Azure AD Connect u de juiste informatie over hoe u uw domein in een later stadium kunt controleren. |

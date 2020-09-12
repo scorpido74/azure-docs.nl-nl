@@ -16,33 +16,33 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542226"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016075"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
 In dit onderwerp vindt u de kenmerken die worden gesynchroniseerd door Azure AD Connect synchronisatie.  
 De kenmerken worden gegroepeerd op basis van de verwante Azure AD-app.
 
 ## <a name="attributes-to-synchronize"></a>Te synchroniseren kenmerken
-Een veelvoorkomende vraag is *Wat is de lijst met minimale kenmerken die moeten worden gesynchroniseerd*. De standaard-en aanbevolen aanpak is om de standaard kenmerken te houden, zodat een volledige GAL (algemene adres lijst) in de cloud kan worden gemaakt en alle functies in Office 365-workloads kunnen worden opgehaald. In sommige gevallen zijn er enkele kenmerken die uw organisatie niet wil synchroniseren met de Cloud, omdat deze kenmerken gevoelige of PII-gegevens (persoonlijk herken bare informatie) bevatten, zoals in dit voor beeld:  
+Een veelvoorkomende vraag is *Wat is de lijst met minimale kenmerken die moeten worden gesynchroniseerd*. De standaard-en aanbevolen aanpak is om de standaard kenmerken te houden, zodat een volledige GAL (algemene adres lijst) in de cloud kan worden gemaakt en alle functies in Microsoft 365 werk belastingen kunnen worden opgehaald. In sommige gevallen zijn er enkele kenmerken die uw organisatie niet wil synchroniseren met de Cloud omdat deze kenmerken gevoelige persoonlijke gegevens bevatten, zoals in dit voor beeld:  
 ![ongeldige kenmerken](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificeert u de kenmerken die gevoelige of PII-gegevens bevatten en die niet kunnen worden gesynchroniseerd. Schakel deze kenmerken vervolgens tijdens de installatie uit met [Azure AD-app-en-kenmerk filters](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering).
+In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificeert u de kenmerken die persoonlijke gegevens bevatten en die niet kunnen worden gesynchroniseerd. Schakel deze kenmerken vervolgens tijdens de installatie uit met [Azure AD-app-en-kenmerk filters](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering).
 
 > [!WARNING]
 > Wanneer u de selectie van kenmerken onbeschikbaar maakt, moet u voorzichtig zijn en de selectie van deze kenmerken alleen opheffen die absoluut niet mogelijk is om te synchroniseren. Het deselecteren van andere kenmerken kan een negatieve invloed hebben op de functies.
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="microsoft-365-apps-for-enterprise"></a>Microsoft 365-apps voor ondernemingen
 | Kenmerknaam | Gebruiker | Opmerking |
 | --- |:---:| --- |
 | accountEnabled |X |Hiermee wordt bepaald of een account is ingeschakeld. |
-| genoemd |X | |
+| cn |X | |
 | displayName |X | |
 | objectSID |X |mechanische eigenschap. AD-gebruikers-id die wordt gebruikt voor het onderhouden van de synchronisatie tussen Azure AD en AD. |
 | pwdLastSet |X |mechanische eigenschap. Wordt gebruikt om te weten wanneer al uitgegeven tokens ongeldig worden gemaakt. Wordt gebruikt door authenticatie van wacht woord-hash, Pass Through-verificatie en Federatie. |
@@ -59,12 +59,12 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | altRecipient |X | | |Vereist Azure AD Connect build 1.1.552.0 of After. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| genoemd |X | |X | |
+| cn |X | |X | |
 | co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| beschrijving | | |X | |
+| description | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -152,7 +152,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | otherTelephone |X |X | | |
 | pagina |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Code |X |X | | |
+| postalCode |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
 | pwdLastSet |X | | |mechanische eigenschap. Wordt gebruikt om te weten wanneer al uitgegeven tokens ongeldig worden gemaakt. Wordt gebruikt door wachtwoord synchronisatie en Federatie. |
@@ -166,7 +166,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| titel |X |X | | |
+| title |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userCertificate |X |X | | |
@@ -180,12 +180,12 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| genoemd |X | |X | |
+| cn |X | |X | |
 | co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| beschrijving |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -233,7 +233,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | otherTelephone |X |X | | |
 | pagina |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Code |X |X | | |
+| postalCode |X |X | | |
 | postOfficeBox |X |X | |Dit kenmerk wordt momenteel niet gebruikt door share point online. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
@@ -248,7 +248,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| titel |X |X | | |
+| title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker
@@ -261,11 +261,11 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
-| genoemd |X | |X | |
+| cn |X | |X | |
 | co |X |X | | |
 | bedrijf |X |X | | |
 | department |X |X | | |
-| beschrijving |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -289,7 +289,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | objectSID |X | |X |mechanische eigenschap. AD-gebruikers-id die wordt gebruikt voor het onderhouden van de synchronisatie tussen Azure AD en AD. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
-| Code |X |X | | |
+| postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanische eigenschap. Wordt gebruikt om te weten wanneer al uitgegeven tokens ongeldig worden gemaakt. Wordt gebruikt door authenticatie van wacht woord-hash, Pass Through-verificatie en Federatie. |
@@ -299,7 +299,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| titel |X |X | | |
+| title |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 | wWWHomePage |X |X | | |
@@ -308,7 +308,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
-| genoemd |X | |X |Algemene naam of alias. Meestal het voor voegsel van de waarde [mail]. |
+| cn |X | |X |Algemene naam of alias. Meestal het voor voegsel van de waarde [mail]. |
 | displayName |X |X |X |Een teken reeks die de naam voor stelt die vaak wordt weer gegeven als de beschrijvende naam (achternaam achternaam). |
 | mail |X |X |X |volledige e-mail adres. |
 | lid | | |X | |
@@ -324,8 +324,8 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
-| genoemd |X | |X | |
-| beschrijving |X |X |X | |
+| cn |X | |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -342,11 +342,11 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
-| genoemd |X | |X | |
+| cn |X | |X | |
 | co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
-| beschrijving |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -357,7 +357,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | mobiel |X |X | | |
 | objectSID |X | |X |mechanische eigenschap. AD-gebruikers-id die wordt gebruikt voor het onderhouden van de synchronisatie tussen Azure AD en AD. |
 | physicalDeliveryOfficeName |X |X | | |
-| Code |X |X | | |
+| postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |mechanische eigenschap. Wordt gebruikt om te weten wanneer al uitgegeven tokens ongeldig worden gemaakt. Wordt gebruikt door authenticatie van wacht woord-hash, Pass Through-verificatie en Federatie. |
 | sn |X |X | | |
@@ -365,7 +365,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| titel |X |X | | |
+| title |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
@@ -375,12 +375,12 @@ Deze groep is een set kenmerken die wordt gebruikt als de minimale kenmerken die
 * Yammer (alleen gebruiker wordt gebruikt)
 * [Hybride Business-to-Business (B2B) samenwerkings scenario's voor meerdere organisatie die worden aangeboden door resources zoals share point](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Directory niet wordt gebruikt ter ondersteuning van Office 365, Dynamics of intune. Het bevat een kleine set kern kenmerken. Houd er rekening mee dat eenmalige aanmelding of inrichting van sommige toepassingen van derden een synchronisatie van kenmerken moet configureren naast de kenmerken die hier worden beschreven. Toepassings vereisten worden beschreven in de [zelf studie](../saas-apps/tutorial-list.md) over de SaaS-app voor elke toepassing.
+Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Directory niet wordt gebruikt voor de ondersteuning van Microsoft 365, Dynamics of intune. Het bevat een kleine set kern kenmerken. Houd er rekening mee dat eenmalige aanmelding of inrichting van sommige toepassingen van derden een synchronisatie van kenmerken moet configureren naast de kenmerken die hier worden beschreven. Toepassings vereisten worden beschreven in de [zelf studie](../saas-apps/tutorial-list.md) over de SaaS-app voor elke toepassing.
 
 | Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
-| genoemd |X | |X | |
+| cn |X | |X | |
 | displayName |X |X |X | |
 | employeeID |X |  |  | |
 | givenName |X |X | | |
@@ -397,7 +397,7 @@ Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Director
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
-Een computer met Windows 10 die lid is van een domein (apparaat) synchroniseert enkele kenmerken met Azure AD. Zie [apparaten koppelen aan Azure AD voor Windows 10](../active-directory-azureadjoin-devices-group-policy.md)voor meer informatie over de scenario's. Deze kenmerken worden altijd gesynchroniseerd en Windows 10 wordt niet weer gegeven als een app. u kunt de selectie opheffen. Een computer die lid is van een domein in Windows 10 wordt geïdentificeerd door het kenmerk userCertificate te hebben ingevuld.
+Een computer met Windows 10 die lid is van een domein (apparaat) synchroniseert enkele kenmerken met Azure AD. Zie [apparaten koppelen aan Azure AD voor Windows 10](../devices/hybrid-azuread-join-plan.md)voor meer informatie over de scenario's. Deze kenmerken worden altijd gesynchroniseerd en Windows 10 wordt niet weer gegeven als een app. u kunt de selectie opheffen. Een computer die lid is van een domein in Windows 10 wordt geïdentificeerd door het kenmerk userCertificate te hebben ingevuld.
 
 | Kenmerknaam | Apparaat | Opmerking |
 | --- |:---:| --- |
@@ -466,7 +466,7 @@ Device-objecten worden gemaakt in Active Directory. Deze objecten kunnen apparat
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>Opmerkingen
+## <a name="notes"></a>Notities
 * Wanneer u een alternatieve ID gebruikt, wordt het on-premises kenmerk userPrincipalName gesynchroniseerd met het Azure AD-kenmerk onPremisesUserPrincipalName. Het kenmerk alternatieve ID, bijvoorbeeld e-mail, is gesynchroniseerd met het Azure AD-kenmerk userPrincipalName.
 * In de bovenstaande lijsten is de object type- **gebruiker** ook van toepassing op het object type **inetOrgPerson**.
 

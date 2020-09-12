@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017852"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018181"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid
-
-
 
 In deze hand leiding wordt uitgelegd hoe u als ontwikkel aars van oplossingen uw IoT Central-toepassing kunt uitbreiden met aangepaste regels en meldingen. Het voor beeld toont het verzenden van een melding naar een operator wanneer een apparaat stopt met het verzenden van telemetrie. De oplossing gebruikt een [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) query om te detecteren wanneer een apparaat stopt met het verzenden van telemetrie. De Stream Analytics taak gebruikt [Azure functions](https://docs.microsoft.com/azure/azure-functions/) om e-mail meldingen te verzenden met [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
@@ -84,7 +82,7 @@ Gebruik de [Azure Portal om een stream Analytics-taak te maken](https://portal.a
 | Hostingomgeving | Cloud |
 | Streaming-eenheden | 3 |
 
-### <a name="function-app"></a>Functie-app
+### <a name="function-app"></a>Function App
 
 Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#create/Microsoft.FunctionApp) met de volgende instellingen:
 
@@ -258,7 +256,7 @@ Deze oplossing maakt gebruik van een Stream Analytics query om te detecteren wan
     | ------- | ----- |
     | Uitvoeralias | emailnotification |
     | Abonnement | Uw abonnement |
-    | Functie-app | Uw functie-app |
+    | Function App | Uw functie-app |
     | Functie  | HttpTrigger1 |
 
 1. Selecteer bij **taak topologie**de optie **query** en vervang de bestaande query door de volgende SQL:
@@ -321,10 +319,10 @@ Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotc
     | Event Hubs-naamruimte | De naam van uw Event Hubs-naam ruimte |
     | Event Hub | centralexport |
     | Metingen | Uit |
-    | Apparaten | Uitgeschakeld |
-    | Apparaatsjablonen | Uitgeschakeld |
+    | Apparaten | Aan |
+    | Apparaatsjablonen | Aan |
 
-![Configuratie continue gegevens export](media/howto-create-custom-rules/cde-configuration.png)
+![Configuratie voor continue gegevensexport](media/howto-create-custom-rules/cde-configuration.png)
 
 Wacht tot de export status **actief** is voordat u doorgaat.
 

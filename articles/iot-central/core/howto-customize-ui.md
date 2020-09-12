@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 660f6dfae23331455408ae7127274550a3a4cc3a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157981"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019832"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>De Azure IoT Central-gebruikers interface aanpassen
 
 In dit artikel wordt beschreven hoe u als beheerder de gebruikers interface van uw toepassing kunt aanpassen door aangepaste Thema's toe te passen en de Help-koppelingen te wijzigen zodat deze naar uw eigen aangepaste Help-bronnen verwijzen. 
-
-
 
 Op de volgende scherm afbeelding ziet u een pagina met het standaard thema:
 

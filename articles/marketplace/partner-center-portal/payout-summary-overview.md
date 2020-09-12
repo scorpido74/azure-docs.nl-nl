@@ -1,27 +1,27 @@
 ---
-title: Overzicht van overzicht van uitbetalingen-Azure Marketplace
+title: Overzicht van overzicht van uitbetalingen, Azure Marketplace
 description: In de samen vatting van de betaling ziet u details over het geld dat u hebt behaald met uw aanbieding. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 09/09/2020
+ms.openlocfilehash: 708fc2c0783bdefa4ac4fa4b73f10733bba0bc04
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479809"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006921"
 ---
 # <a name="payout-summary-overview"></a>Betalingsoverzicht
 
 In de [samen vatting van de uitbetaling](./payout-summary.md) ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
-Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie [deelname beleid voor Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) en [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie over Azure Marketplace-betaling.
+Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over geslaagde uitbetalingen in de samen vatting van de betaling. Zie voor meer informatie over Azure Marketplace-betaling [aan de slag in de commerciële Marketplace](./get-paid.md) en de [micro soft Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](./payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie de [Microsoft Azure Marketplace Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie over de betalings drempel.
+> Om in aanmerking te komen voor toekenning, moet uw opbrengst de betalings drempelwaarde van $50 bereiken. Zie de [micro soft Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)voor meer informatie.
 
 Als u de details van de uitbetaling wilt weer geven, meldt u zich aan bij [Partner Center](https://partner.microsoft.com/dashboard/home) en selecteert u het uitbetalings pictogram in de rechter bovenhoek van het scherm:
 
@@ -29,7 +29,7 @@ Als u de details van de uitbetaling wilt weer geven, meldt u zich aan bij [Partn
 
 ## <a name="roles-and-permissions"></a>Rollen en machtigingen
 
-Dit zijn rollen en machtigingen voor toegang tot het uitbetalings rapport:
+Dit zijn de rollen en machtigingen voor toegang tot het uitbetalings rapport:
 
 | Rapporten/pagina's | Accounteigenaar | Manager | Ontwikkelaar | Zakelijke Inzender | Bijdrage financier | Verkoper |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,13 +45,13 @@ Dit zijn rollen en machtigingen voor toegang tot het uitbetalings rapport:
 
 ## <a name="payment-schedules"></a>Betalings schema's
 
-Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-schedules) van het onderwerp **Details** van uitbetaling voor een bespreking van betalings schema's, waaronder bedrijfs perioden, inzicht in partners en wanneer de klant een credit card of factuur gebruikt.
+Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-schedules) van het artikel uitbetalings **Details** voor een bespreking van betalings schema's, waaronder bedrijfs perioden, inzicht in partners en wanneer de klant een credit card of factuur gebruikt.
 
 ## <a name="transaction-history-download-export"></a>Transactie geschiedenis downloaden exporteren
 
 Deze optie biedt een down load van elk verdienen regel item dat u op de pagina transactie geschiedenis ziet. Dit omvat het type, de datum, de bijbehorende transactie hoeveelheid, de klant, het product en andere transactionele gegevens met betrekking tot het prikkel programma.
 
-| Kolomnaam | Description |
+| Kolomnaam | Beschrijving |
 | --- | --- |
 | earningId | Unieke id voor elk verdienen |
 | participantId | De primaire identiteit van de partner die onder het programma is aangegaan |

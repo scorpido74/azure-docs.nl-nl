@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65950891"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660559"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Bepaal de identiteits vereisten voor uw hybride identiteits oplossing
 De eerste stap bij het ontwerpen van een hybride identiteits oplossing is het bepalen van de vereisten voor de zakelijke organisatie die deze oplossing gebruiken.  Hybride identiteit wordt gestart als een ondersteunende rol (alle andere cloud oplossingen worden ondersteund door verificatie) en gaat in om nieuwe en interessante mogelijkheden te bieden voor het ontgrendelen van nieuwe werk belastingen voor gebruikers.  Deze werk belastingen of services die u wilt aannemen voor uw gebruikers, bepalen de vereisten voor het ontwerp van de hybride identiteit.  Deze services en workloads moeten zowel on-premises als in de Cloud gebruikmaken van hybride identiteiten.  
@@ -72,10 +72,10 @@ Vervolgens moet u de vereisten voor identiteits integratie evalueren. Deze evalu
   * Uw bedrijf heeft een on-premises toepassing (ingebouwde interne of externe partij) die gebruikmaakt van SAML-of vergelijk bare Federatie mogelijkheden.
   * MFA via Smart Cards. RSA SecurID, etc.
   * Regels voor client toegang die de onderstaande vragen beantwoorden:
-    1. Kan ik alle externe toegang tot Office 365 blok keren op basis van het IP-adres van de client?
-    2. Kan ik alle externe toegang tot Office 365, met uitzonde ring van Exchange ActiveSync, blok keren?
-    3. Kan ik alle externe toegang tot Office 365 blok keren, met uitzonde ring van op browser gebaseerde apps (OWA, SPO)
-    4. Kan ik alle externe toegang tot Office 365 blok keren voor leden van aangewezen AD-groepen
+    1. Kan ik alle externe toegang tot Microsoft 365 blok keren op basis van het IP-adres van de client?
+    2. Kan ik alle externe toegang tot Microsoft 365 blok keren, met uitzonde ring van Exchange ActiveSync?
+    3. Kan ik alle externe toegang tot Microsoft 365 blok keren, met uitzonde ring van op browser gebaseerde apps (OWA, SPO)
+    4. Kan ik alle externe toegang tot Microsoft 365 voor leden van aangewezen AD-groepen blok keren
 * Aandachtspunten voor beveiliging/controles
 * Al bestaande investeringen in Federated Authentication
 * Welke naam zal onze organisatie gebruiken voor ons domein in de Cloud?

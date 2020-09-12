@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179400"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023836"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -242,7 +242,10 @@ Met de functie voor _vertrouwde ip's_ van Azure multi-factor Authentication word
 
 Als uw organisatie de NPS-extensie implementeert voor het leveren van MFA aan on-premises toepassingen, ziet u dat het bron-IP-adres altijd de NPS-server is die de verificatie poging doorloopt.
 
-| Azure AD-Tenant type | Opties voor vertrouwde IP-functies | |:---|:---| twee stappen | Beheerd | **Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd. | | Federatief | **Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij binnen van de organisatie, kunnen multi-factor Authentication overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
+| Type Azure AD-Tenant | Opties voor vertrouwde IP-functies |
+|:--- |:--- |
+| Beheerd |**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. Er kunnen Maxi maal 50 vertrouwde IP-adresbereiken worden geconfigureerd.|
+| Federatief |**Alle federatieve gebruikers**: alle federatieve gebruikers die zich aanmelden bij binnen van de organisatie, kunnen multi-factor Authentication overs Laan. De gebruikers Bypass de verificatie met behulp van een claim die is uitgegeven door Active Directory Federation Services (AD FS).<br/>**Specifiek bereik van IP-adressen**: beheerders geven een bereik van IP-adressen op waarmee multi-factor Authentication kan worden omzeild voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. |
 
 De functie voor het overs laan van vertrouwde IP-adressen werkt alleen binnen het bedrijfs intranet. Als u de optie **alle federatieve gebruikers** selecteert en de gebruiker zich aanmeldt van buiten het bedrijfs intranet, moet de gebruiker verifiëren met behulp van multi-factor Authentication. Het proces is hetzelfde, zelfs als de gebruiker een AD FS claim presenteert.
 

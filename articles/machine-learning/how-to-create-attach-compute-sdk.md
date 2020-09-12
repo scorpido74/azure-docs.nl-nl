@@ -1,5 +1,5 @@
 ---
-title: Reken resources maken met python SDK
+title: Training maken & computes implementeren (python)
 titleSuffix: Azure Machine Learning
 description: Gebruik de Azure Machine Learning python-SDK voor het maken van trainings-en implementatie-reken resources (reken doelen) voor machine learning
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147422"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662539"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Reken doelen maken voor model training en-implementatie met python SDK
 
@@ -31,8 +31,12 @@ In dit artikel gebruikt u de Azure Machine Learning python SDK om reken doelen t
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>Beperkingen
+
+Enkele van de scenario's die in dit document worden vermeld, zijn gemarkeerd als __Preview__. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="whats-a-compute-target"></a>Wat is een reken doel?
 
@@ -55,16 +59,33 @@ Gebruik de volgende secties om deze reken doelen te configureren:
 * [Externe virtuele machines](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>Reken doelen voor demijnen
+
+Bij het uitvoeren van een dematiging maakt Azure Machine Learning een docker-container die het model host en de bijbehorende resources die nodig zijn om het te gebruiken. Deze container wordt vervolgens gebruikt in een van de volgende implementatie scenario's:
+
+* Als een __webservice__ die wordt gebruikt voor realtime-interferentie. Implementaties van webservices gebruiken een van de volgende Compute-doelen:
+
+    * [Lokale computer](#local)
+    * [Azure Machine Learning-rekeninstantie](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Functions (preview-versie). Implementatie naar Azure Functions is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt geïmplementeerd met behulp van Azure Functions. Zie [een machine learning model implementeren op Azure functions (preview)](how-to-deploy-functions.md)voor meer informatie.
+
+* Als een __batch-interferentie__ -eind punt dat wordt gebruikt om periodiek batches gegevens te verwerken. Voor batch-interferenties wordt [Azure machine learning Compute-Cluster](#amlcompute)gebruikt.
+
+* Naar een __IOT-apparaat__ (preview-versie). Implementatie naar een IoT-apparaat is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt geïmplementeerd met behulp van Azure IoT Edge. Zie [Deploy as a IOT Edge module (preview)](/azure/iot-edge/tutorial-deploy-machine-learning)voor meer informatie.
 
 ## <a name="local-computer"></a><a id="local"></a>Lokale computer
 
-Wanneer u uw lokale computer gebruikt voor trainingen, hoeft u geen reken doel te maken.  U hoeft alleen maar [de training](how-to-set-up-training-targets.md) uit te voeren vanaf uw lokale computer.
+Wanneer u uw lokale computer gebruikt voor **trainingen**, hoeft u geen reken doel te maken.  U hoeft alleen maar [de training](how-to-set-up-training-targets.md) uit te voeren vanaf uw lokale computer.
+
+Wanneer u uw lokale computer **gebruikt voor**demijnen, moet docker zijn geïnstalleerd. Als u de implementatie wilt uitvoeren, gebruikt u [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) om de poort te definiëren die wordt gebruikt door de webservice. Gebruik vervolgens het normale implementatie proces zoals beschreven in [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md).
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning Compute-Cluster
 
 Azure Machine Learning Compute-Cluster is een beheerde infra structuur voor beheer, waarmee u eenvoudig een berekening met één of meerdere knoop punten kunt maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
-U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
+U kunt Azure Machine Learning Compute gebruiken voor het distribueren van een training of batch-deprocessor proces over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
 
 Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](how-to-manage-quotas.md).
 
@@ -87,7 +108,7 @@ Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De comput
 
     U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen in [Azure machine learning Studio](how-to-create-attach-compute-studio.md#portal-create).
 
-Nu u de reken kracht hebt gekoppeld, is de volgende stap [het verzenden van de trainings uitvoering](how-to-set-up-training-targets.md).
+Nu u de reken kracht hebt gekoppeld, is de volgende stap [het verzenden van de trainings uitvoering of het](how-to-set-up-training-targets.md) uitvoeren van een [batch-deinterferentie](how-to-use-parallel-run-step.md).
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> De kosten voor reken clusters verlagen
 
@@ -201,8 +222,15 @@ Reken instanties kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving
         instance.wait_for_completion(show_output=True)
     ```
 
-Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](how-to-set-up-training-targets.md) .
+Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering of het](how-to-set-up-training-targets.md) [implementeren van een model voor](how-to-deploy-local-container-notebook-vm.md)demijnen.
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instance
+
+Azure Container Instances (ACI) worden dynamisch gemaakt wanneer u een model implementeert. U kunt geen ACI op een andere manier maken of koppelen aan uw werk ruimte. Zie [een model implementeren op Azure container instances](how-to-deploy-azure-container-instance.md)voor meer informatie.
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Azure Kubernetes service (AKS) biedt diverse configuratie opties voor het gebruik van Azure Machine Learning. Zie de [Azure Kubernetes-service maken en koppelen](how-to-create-attach-kubernetes.md)voor meer informatie.
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Externe virtuele machines
 
@@ -437,7 +465,7 @@ except ComputeTargetException:
 Bekijk een [voor beeld](https://aka.ms/pl-adla) van een notebook op github voor een meer gedetailleerd voor beeld.
 
 > [!TIP]
-> Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een gebruiken [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) om de gegevens te kopiëren voor de training.
+> Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een gebruiken [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) om de gegevens te kopiëren voor de training.
 
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 

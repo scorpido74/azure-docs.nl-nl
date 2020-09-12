@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323040"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019560"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -26,7 +26,7 @@ ms.locfileid: "87323040"
 
 ## <a name="iot-hub-names"></a>IoT Hub namen
 
-U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de **overzichts** pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard uit als: `{your iot hub name}.azure-devices.net` .
+U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de  **overzichts** pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard uit als: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Lijst met ingebouwde IoT Hub-eind punten
 
@@ -56,6 +56,8 @@ In de volgende lijst worden de eind punten beschreven:
 
   * *Ontvang direct-methode aanvragen*. Een apparaat gebruikt dit eind punt om te Luis teren naar aanvragen van [directe methoden](iot-hub-devguide-direct-methods.md). HTTPS wordt niet ondersteund.
 
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
+
 * **Service-eind punten**. Elke IoT hub biedt een set eind punten voor de back-end van uw oplossing om met uw apparaten te communiceren. Met één uitzonde ring worden deze eind punten alleen weer gegeven met de protocollen [AMQP](https://www.amqp.org/) en AMQP over websockets. Het eind punt voor het aanroepen van de directe methode wordt weer gegeven via het HTTPS-protocol.
   
   * *Apparaat-naar-Cloud-berichten ontvangen*. Dit eind punt is compatibel met [Azure Event hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Een back-end-service kan deze gebruiken om de [apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-d2c.md) te lezen die door uw apparaten worden verzonden. U kunt naast dit ingebouwde eind punt aangepaste eind punten maken op uw IoT-hub.
@@ -72,7 +74,7 @@ In het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) worden de verschillen
 
 Alle IoT Hub-eind punten gebruiken het [TLS](https://tools.ietf.org/html/rfc5246) -protocol en er wordt nooit een eind punt weer gegeven op niet-versleutelde/niet-beveiligde kanalen.
 
-## <a name="custom-endpoints"></a>Aangepaste eind punten
+## <a name="custom-endpoints"></a>Aangepaste eindpunten
 
 U kunt bestaande Azure-Services in uw abonnement koppelen aan uw IoT-hub om te fungeren als eind punten voor bericht routering. Deze eind punten fungeren als service-eind punten en worden gebruikt als sinks voor bericht routes. Apparaten kunnen niet rechtstreeks naar de extra eind punten schrijven. Meer informatie over [bericht routering](../iot-hub/iot-hub-devguide-messages-d2c.md).
 

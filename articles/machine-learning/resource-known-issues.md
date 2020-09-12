@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230378"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651643"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -173,7 +173,9 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
 > [!WARNING]
 > Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
-* **Azure Portal**: als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale **overzicht** niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
+* **Azure Portal**: 
+  * Als u rechtstreeks naar uw werk ruimte gaat vanuit een koppeling voor delen vanuit de SDK of de Azure Portal, kunt u de standaard **overzichts** pagina met abonnements gegevens in de uitbrei ding niet weer geven. In dit scenario kunt u ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
+  * Alle assets (gegevens sets, experimenten, reken processen, enzovoort) zijn alleen beschikbaar in [Azure machine learning Studio](https://ml.azure.com). Deze zijn *niet* beschikbaar via de Azure Portal.
 
 * **Ondersteunde browsers in azure machine learning Studio-webportal**: we raden u aan om de meest recente browser te gebruiken die compatibel is met uw besturings systeem. De volgende browsers worden ondersteund:
   * Micro soft Edge (de nieuwe micro soft Edge, nieuwste versie. Geen micro soft Edge verouderd)
@@ -208,7 +210,7 @@ Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overd
 
     Als u de voorloop back slash (/) niet opneemt, moet u voor voegsel van de werkmap opgeven, bijvoorbeeld `/mnt/batch/.../tmp/dataset` op het berekenings doel om aan te geven waar u de gegevensset wilt koppelen.
 
-### <a name="data-labeling-projects"></a>Gegevens label projecten
+### <a name="data-labeling-projects"></a>Projecten voor gegevenslabels
 
 |Probleem  |Oplossing  |
 |---------|---------|
@@ -239,7 +241,7 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
     1. Op het tabblad **gegevensset monitors** selecteert u de koppeling experiment om de uitvoerings status te controleren.  Deze koppeling bevindt zich helemaal rechts in de tabel.
     1. Als de uitvoering is voltooid, controleert u de logboeken van het stuur programma om te zien hoeveel metrische gegevens er zijn gegenereerd of of er waarschuwingen zijn.  Zoek het stuur programma-Logboeken op het tabblad **uitvoer en logboeken** nadat u op een experiment hebt geklikt.
 
-* Als de SDK `backfill()` -functie de verwachte uitvoer niet genereert, kan dit worden veroorzaakt door een verificatie probleem.  Wanneer u de compute maakt om deze functie door te geven, moet u niet gebruiken `Run.get_context().experiment.workspace.compute_targets` .  Gebruik in plaats daarvan [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) zoals de volgende om de compute te maken die u doorgeeft aan die `backfill()` functie: 
+* Als de SDK `backfill()` -functie de verwachte uitvoer niet genereert, kan dit worden veroorzaakt door een verificatie probleem.  Wanneer u de compute maakt om deze functie door te geven, moet u niet gebruiken `Run.get_context().experiment.workspace.compute_targets` .  Gebruik in plaats daarvan [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) zoals de volgende om de compute te maken die u doorgeeft aan die `backfill()` functie: 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de basis raamwerk afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  
     Azure ML bewaart docker-installatie kopieën en de inhoud ervan kunnen worden weer gegeven in [AzureML-containers](https://github.com/Azure/AzureML-Containers).
-    Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+    Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
 
     > [!Note]
     > Als u denkt dat een bepaald pakket algemeen genoeg is om te worden toegevoegd aan de bewaarde afbeeldingen en omgevingen van Azure ML, kunt u een GitHub-probleem veroorzaken in [AzureML-containers](https://github.com/Azure/AzureML-Containers). 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod is uitgeschakeld**: in de meeste gevallen is het mogelijk dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor Horovod werd afgesloten als u problemen ondervindt met ' AbortedError: Horovod is afgesloten '. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs` . In het geval van gedistribueerde trainingen worden de namen van de logboeken in een achtervoegsel opgenomen, `_rank` zodat het eenvoudiger is om de logboeken te onderscheiden. Als u de exacte fout wilt vinden die ervoor heeft gezorgd dat Horovod wordt afgesloten, gaat u naar alle logboek bestanden en zoekt u `Traceback` aan het einde van de driver_log bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
 
-* **Verwijdering van de uitvoering of het experiment**: experimenten kunnen worden gearchiveerd met behulp van de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client via de knop ' Archief experiment '. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
+* **Verwijdering van de uitvoering of het experiment**: experimenten kunnen worden gearchiveerd met behulp van de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client via de knop ' Archief experiment '. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
 
     Het permanent verwijderen van afzonderlijke experimenten of uitvoeringen wordt momenteel niet ondersteund. Zie [uw machine learning service-werkruimte gegevens exporteren of verwijderen](how-to-export-delete-data.md)voor meer informatie over het verwijderen van werk ruimte-assets.
 
@@ -337,6 +339,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
+ 
+* **Forecasting R2-Score is altijd nul**: dit probleem doet zich voor als de verstrekte trainings gegevens een tijd reeks hebben die dezelfde waarde voor de laatste `n_cv_splits`  +  `forecasting_horizon` gegevens punten bevat. Als dit patroon in uw tijd reeks wordt verwacht, kunt u de primaire metriek overschakelen naar een genormaliseerde fout in de hoofdmap.
  
 * **Tensor flow**: vanaf versie 1.5.0 van de SDK installeert automatische machine learning standaard geen tensor flow-modellen. Als u tensor flow wilt installeren en wilt gebruiken met uw geautomatiseerde ML experimenten, installeert u tensor flow = = 1.12.0 via CondaDependecies. 
  

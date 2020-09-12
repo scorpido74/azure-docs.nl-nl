@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477682"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006941"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>Uw app markeren als Uitgever geverifieerd (preview)
+# <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als Uitgever geverifieerd
 
 Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de registratie van de toepassing. In dit artikel wordt beschreven hoe u het proces voor de verificatie van de [Uitgever (preview-versie)](publisher-verification-overview.md) kunt volt ooien.
 
 ## <a name="quickstart"></a>Snelstart
 Als u al bent Inge schreven in de Microsoft Partner Network (MPN) en u aan de [vereisten](publisher-verification-overview.md#requirements)hebt voldaan, kunt u meteen aan de slag gaan: 
 
-1. Ga naar de portal voor preview- [app-registratie](https://aka.ms/PublisherVerificationPreview).
+1. Navigeer naar de [Portal voor app-registratie](https://aka.ms/PublisherVerificationPreview).
 
 1. Kies een app en klik op **huis stijl**. 
 
@@ -37,7 +37,7 @@ Als u al bent Inge schreven in de Microsoft Partner Network (MPN) en u aan de [v
 Zie het [overzicht](publisher-verification-overview.md)voor meer informatie over specifieke voor delen, vereisten en veelgestelde vragen.
 
 
-## <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als uitgever gecontroleerd
+## <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als Uitgever geverifieerd
 Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirements)voldoet en voer vervolgens de volgende stappen uit om uw app (s) te markeren als Uitgever: gecontroleerd.  
 
 1. Zorg ervoor dat u bent aangemeld met een organisatie-account (Azure AD) dat is gemachtigd om wijzigingen aan te brengen in de app (s) die u wilt markeren als uitgever en op het MPN-account in partner centrum. 
@@ -46,7 +46,7 @@ Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirem
 
     - In het partner centrum moet deze gebruiker over de volgende rollen beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD). 
 
-1. Ga naar de preview-versie van de app registratie-portal:  
+1. Ga naar de app registratie-portal:  
 
 1. Klik op een app die u wilt markeren als uitgever en open de Blade huis stijl. 
 

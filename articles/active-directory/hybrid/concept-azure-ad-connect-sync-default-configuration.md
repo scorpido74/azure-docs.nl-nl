@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548863"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661862"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie
 In dit artikel worden de out-of-box-configuratie regels uitgelegd. De regels worden gedocumenteerd en hoe deze regels van invloed zijn op de configuratie. U wordt ook begeleid bij de standaard configuratie van Azure AD Connect Sync. Het doel is dat de lezer begrijpt hoe het configuratie model, met de naam declaratief inrichten, in een echt wereld voorbeeld werkt. In dit artikel wordt ervan uitgegaan dat u Azure AD Connect synchronisatie al hebt geïnstalleerd en geconfigureerd met behulp van de installatie wizard.
@@ -148,7 +148,7 @@ Omdat deze regel een out-of-Box-regel is, wordt er een waarschuwing weer gegeven
 
 Een synchronisatie regel heeft vier configuratie secties: beschrijving, bereik filter, regels voor samen voegen en trans formaties.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 De eerste sectie bevat basis informatie, zoals een naam en beschrijving.
 
 ![Tabblad Beschrijving in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -220,10 +220,10 @@ De prioriteit van synchronisatie regels wordt ingesteld in groepen door de insta
 ### <a name="putting-it-all-together"></a>Alles samenvoegen
 We weten nu voldoende over synchronisatie regels om te begrijpen hoe de configuratie werkt met de verschillende synchronisatie regels. Als u een gebruiker bekijkt en de kenmerken die aan de tekst zijn bijgedragen, worden de regels in de volgende volg orde toegepast:
 
-| Name | Opmerking |
+| Naam | Opmerking |
 |:--- |:--- |
 | Vanuit AD: gebruiker toevoegen |Regel voor het koppelen van connector ruimte-objecten met een omgekeerd. |
-| In vanuit AD: User account ingeschakeld |Kenmerken die vereist zijn voor aanmelding bij Azure AD en Office 365. We willen deze kenmerken van het ingeschakelde account. |
+| In vanuit AD: User account ingeschakeld |Kenmerken die vereist zijn voor aanmelding bij Azure AD en Microsoft 365. We willen deze kenmerken van het ingeschakelde account. |
 | In vanuit AD: gebruiker gemeen schappelijk van Exchange |Kenmerken gevonden in de globale adres lijst. We gaan ervan uit dat de kwaliteit van de gegevens het beste is in het forest waar het postvak van de gebruiker is gevonden. |
 | In van AD: gebruiker algemeen |Kenmerken gevonden in de globale adres lijst. Als er geen postvak is gevonden, kan elk ander gekoppeld object de waarde van het kenmerk bijdragen. |
 | In van AD: gebruikers uitwisseling |Bestaat alleen als Exchange is gedetecteerd. Hiermee worden alle kenmerken van infrastructuur uitwisseling stromen. |

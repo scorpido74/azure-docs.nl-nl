@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272896"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018353"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -225,6 +225,8 @@ Nu het aangepaste service bus-eind punt is ingesteld voor het gebruik van de doo
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>De connectiviteit met opslag accounts voor het uploaden van bestanden
 
 Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten bestanden uploaden naar een opslag account van de klant. Als u wilt toestaan dat het bestand kan worden geüpload, moeten zowel apparaten als IoT Hub verbinding hebben met het opslag account. Als er firewall beperkingen zijn ingesteld op het opslag account, moeten uw apparaten gebruikmaken van het mechanisme van het ondersteunde opslag account (inclusief [particuliere eind punten](../private-link/create-private-endpoint-storage-portal.md), [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)of [directe firewall configuratie](../storage/common/storage-network-security.md)) om verbinding te kunnen maken. Als er firewall beperkingen zijn ingesteld op het opslag account, moet IoT Hub worden geconfigureerd voor toegang tot de opslag bron via de uitzonde ring vertrouwde micro soft-Services. Voor dit doel moet uw IoT Hub een beheerde identiteit hebben. Nadat een beheerde identiteit is ingericht, volgt u de onderstaande stappen om RBAC-machtigingen te geven aan de resource-identiteit van uw hub om toegang te krijgen tot uw opslag account.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 1. Navigeer in het Azure Portal naar het tabblad **toegangs beheer (IAM)** van uw opslag account en klik op **toevoegen** onder de sectie **een roltoewijzing toevoegen** .
 

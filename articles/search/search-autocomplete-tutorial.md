@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011576"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660260"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
@@ -139,9 +139,11 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Functie Voorst Ellen
 
-Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
+Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet). Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)voor meer informatie over de .NET SDK.
 
-`InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)voor meer informatie over de .NET SDK.
+`InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. De eigenschappen van de [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) -klasse bepalen welke velden worden doorzocht en geretourneerd in de resultaten, het aantal overeenkomsten en of fuzzy matching wordt gebruikt. 
+
+Voor automatisch aanvullen is het niet meer dan één bewerkings afstand (één wegge laten of verkeerd geplaatst teken) beperkt. Houd er rekening mee dat bij benadering van automatisch aanvullen onverwachte resultaten kunnen worden gegenereerd, afhankelijk van de index grootte en de wijze waarop deze Shard. Zie voor meer informatie de [concepten Partition en sharding](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -250,5 +252,5 @@ De functie automatisch aanvullen neemt de invoer van de zoek term. De methode ma
 Volg deze koppelingen voor end-to-end instructies of code die zowel zoek-als-u-type-ervaringen demonstreert. Beide code voorbeelden zijn hybride implementaties van suggesties en automatisch aanvullen samen.
 
 + [Zelf studie: uw eerste app maken in C# (Les 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [Voor beeld van C#-code: Azure-Search-DotNet-samples/Create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [Voor beeld van C#-code: Azure-Search-DotNet-samples/Create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
 + [C# en Java script met REST-aan-zij code voorbeeld](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

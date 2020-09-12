@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926946"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007040"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verplaats uw Azure Cognitive Search-service naar een andere Azure-regio
 
@@ -23,7 +23,13 @@ Af en toe vragen klanten om een zoek service te verplaatsen naar een andere regi
 > [!NOTE]
 > In de Azure Portal hebben alle services een opdracht **sjabloon exporteren** . In het geval van Azure Cognitive Search, wordt met deze opdracht een basis definitie van een service (naam, locatie, laag, replica en aantal partities) gemaakt, maar wordt de inhoud van uw service niet herkend en worden er geen sleutels, rollen of Logboeken uitgevoerd. Hoewel de opdracht bestaat, is het niet raadzaam om deze te gebruiken voor het verplaatsen van een zoek service.
 
-## <a name="guidance-for-moving-a-service"></a>Richt lijnen voor het verplaatsen van een service
+## <a name="prerequisites"></a>Vereisten
+
++ Zorg ervoor dat de services en functies die uw account gebruikt, worden ondersteund in de doelregio.
+
++ U kunt preview-functies alleen gebruiken als uw abonnement is goedgekeurd voor de doelregio.
+
+## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
 
 1. Identificeer afhankelijkheden en gerelateerde services om inzicht te krijgen in de volledige impact van het verplaatsen van een service. voor het geval moet u meer dan alleen Azure Cognitive Search.
 
@@ -41,7 +47,9 @@ Af en toe vragen klanten om een zoek service te verplaatsen naar een andere regi
 
 1. Update client toepassingen en test suites voor het gebruik van de nieuwe service naam en API-sleutels en test alle toepassingen.
 
-1. Verwijder de oude service zodra de nieuwe service volledig getest en operationeel is.
+## <a name="discard-or-clean-up"></a>Verwijderen of opschonen
+
+Verwijder de oude service zodra de nieuwe service volledig getest en operationeel is. Als de service wordt verwijderd, wordt automatisch alle inhoud verwijderd die is gekoppeld aan de service.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266966"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660281"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -33,7 +33,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 **VMware** | **Details**
 --- | ---
-**vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5 of 6,7.
+**vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5, 6,7 of 7,0.<br/><br/> De detectie van VMware-Vm's door ESXi in het apparaat op te geven, wordt momenteel niet ondersteund.
 **Machtigingen** | Server Assessment heeft een vCenter Server alleen-lezen account nodig voor detectie en evaluatie.<br/><br/> Als u toepassings detectie of afhankelijkheids visualisatie wilt uitvoeren, moet de account bevoegdheden hebben om **virtual machines**-  >  **gast bewerkingen**in te scha kelen.
 
 ## <a name="vm-requirements"></a>VM-vereisten
@@ -89,7 +89,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen.
 **Machtigingen voor Windows-VM'S** |  Voor de afhankelijkheids analyse heeft het Azure Migrate-apparaat een domein beheerders account of een lokaal beheerders account nodig om toegang te krijgen tot Windows-Vm's.
 **Virtuele Linux-machines** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Linux-account** | Voor afhankelijkheids analyse, op Linux-machines, heeft het Azure Migrate apparaat een gebruikers account nodig met de bevoegdheid root.<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
+**Linux-account** | Voor afhankelijkheids analyse, op Linux-machines, heeft het Azure Migrate apparaat een gebruikers account nodig met de bevoegdheid root.<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE. Stel deze mogelijkheden in met behulp van de volgende opdrachten: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
 **Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
 **VMware-Hulpprogram Ma's** | VMware-Hulpprogram Ma's (hoger dan 10,2) moeten zijn geïnstalleerd en worden uitgevoerd op elke virtuele machine die u wilt analyseren.
 

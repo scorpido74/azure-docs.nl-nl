@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Updatebeheer
 description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660905"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024129"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -18,8 +18,8 @@ U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings syst
 
 U kunt Updatebeheer voor virtuele machines op de volgende manieren inschakelen:
 
-* Van uw [Azure Automation-account](update-mgmt-enable-automation-account.md) voor een of meer Azure-machines.
-* Hand matig voor niet-Azure-machines.
+* Van uw [Azure Automation-account](update-mgmt-enable-automation-account.md) voor een of meer Azure-en niet-Azure-machines.
+* Hand matig voor niet-Azure-machines, waaronder computers of servers die zijn geregistreerd bij [servers met Azure Arc-functionaliteit](../../azure-arc/servers/overview.md) (preview).
 * Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's.
 * Voor [meerdere virtuele Azure-machines](update-mgmt-enable-portal.md) door ze te selecteren op de pagina virtual machines in de Azure Portal.
 
@@ -40,21 +40,17 @@ Computers die worden beheerd door Updatebeheer gebruiken de volgende configurati
 * Automation Hybrid Runbook Worker
 * Microsoft Update of Windows Server Update Services (WSUS) voor Windows-computers
 
-In het volgende diagram ziet u hoe Updatebeheer beveiligings updates evalueert en toepast op alle verbonden Windows Server-en Linux-computers in een werk ruimte:
+In het volgende diagram ziet u hoe Updatebeheer beveiligings updates evalueert en toepast op alle verbonden Windows Server-en Linux-servers in een werk ruimte:
 
 ![Updatebeheer werk stroom](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
-Updatebeheer kan worden gebruikt voor het implementeren van machines in meerdere abonnementen in dezelfde Tenant.
+Updatebeheer kan worden gebruikt om systeem eigen te implementeren op computers in meerdere abonnementen in dezelfde Tenant.
 
-Nadat een pakket is vrijgegeven, duurt het 2 tot 3 uur voordat de patch wordt weer gegeven voor Linux-machines voor evaluatie. Voor Windows-computers duurt het 12 tot 15 uur voordat de patch wordt weer gegeven voor evaluatie nadat deze is uitgebracht.
-
-Nadat een computer een scan heeft voltooid voor update compatibiliteit, stuurt de agent de gegevens bulksgewijs door naar Azure Monitor Logboeken. Op een Windows-computer wordt de compatibiliteits scan standaard elke 12 uur uitgevoerd.
+Nadat een pakket is vrijgegeven, duurt het 2 tot 3 uur voordat de patch wordt weer gegeven voor Linux-machines voor evaluatie. Voor Windows-computers duurt het 12 tot 15 uur voordat de patch wordt weer gegeven voor evaluatie nadat deze is uitgebracht. Wanneer een computer een scan voor de compatibiliteit van updates voltooit, stuurt de agent de gegevens bulksgewijs door naar Azure Monitor Logboeken. Op een Windows-computer wordt de compatibiliteits scan standaard elke 12 uur uitgevoerd. Voor een Linux-computer wordt standaard elk uur de compatibiliteits scan uitgevoerd. Als de Log Analytics-agent opnieuw is opgestart, wordt een nalevings scan binnen vijf tien minuten gestart.
 
 Naast het scan schema wordt de controle op update vereisten binnen 15 minuten gestart nadat de Log Analytics agent opnieuw is opgestart, vóór de installatie van de update en na de installatie van de update.
 
-Voor een Linux-computer wordt standaard elk uur de compatibiliteits scan uitgevoerd. Als de Log Analytics-agent opnieuw is opgestart, wordt een nalevings scan binnen vijf tien minuten gestart.
-
-Updatebeheer rapporteert u hoe up-to-date de machine is gebaseerd op de bron die u hebt geconfigureerd om te synchroniseren met. Als de Windows-computer is geconfigureerd om te rapporteren aan WSUS, afhankelijk van de laatste synchronisatie van WSUS met Microsoft Update, kunnen de resultaten afwijken van wat Microsoft Update laat zien. Dit gedrag is hetzelfde voor Linux-machines die zijn geconfigureerd om te rapporteren aan een lokale opslag plaats in plaats van naar een open bare opslag plaats.
+Updatebeheer rapporteert u hoe up-to-date de machine is gebaseerd op de bron die u hebt geconfigureerd om te synchroniseren met. Als de Windows-computer is geconfigureerd om te rapporteren aan [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS), afhankelijk van de laatste synchronisatie van wsus met Microsoft Update, kunnen de resultaten afwijken van wat Microsoft Update laat zien. Dit gedrag is hetzelfde voor Linux-machines die zijn geconfigureerd om te rapporteren aan een lokale opslag plaats in plaats van naar een open bare opslag plaats.
 
 > [!NOTE]
 > Updatebeheer moet bepaalde Url's en poorten zijn ingeschakeld om de service goed te kunnen melden. Zie [netwerk configuratie](../automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over deze vereisten.
@@ -80,7 +76,7 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 > [!NOTE]
 > Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](../how-to/region-mappings.md#supported-mappings). 
 
-|Besturingssysteem  |Opmerkingen  |
+|Besturingssysteem  |Notities  |
 |---------|---------|
 |Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer ondersteunt evaluaties en patches voor dit besturings systeem. De [Hybrid Runbook worker](../automation-windows-hrw-install.md) wordt ondersteund voor Windows Server 2008 R2. |
@@ -96,11 +92,11 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 
 De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
-|Besturingssysteem  |Opmerkingen  |
+|Besturingssysteem  |Notities  |
 |---------|---------|
 |Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [micro soft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) voor patch beheer voor Windows 10-client computers. |
-|Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
-|Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../../aks/node-updates-kured.md)|
+|Windows Server 2016 Nano Server     | Niet ondersteund.       |
+|Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../../aks/node-updates-kured.md)|
 
 ### <a name="client-requirements"></a>Clientvereisten
 
@@ -168,21 +164,21 @@ De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
-| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
+| Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Yes |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
 Updatebeheer scant beheerde machines op gegevens aan de hand van de volgende regels. Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
 
-* Elke Windows-Updatebeheer voor machines voert een scan twee keer per dag uit voor elke computer. Elke 15 minuten wordt een query uitgevoerd op de Windows-API voor de laatste update tijd om te bepalen of de status is gewijzigd. Als de status is gewijzigd, wordt door Updatebeheer een compatibiliteits scan gestart.
+* Elke Windows-Updatebeheer voor machines voert een scan twee keer per dag uit voor elke computer.
 
 * Elke Linux-machine-Updatebeheer voert een scan elk uur uit.
 
 Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met behulp van Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden. Zie [verbruik en kosten beheren](../../azure-monitor/platform/manage-cost-storage.md)voor meer informatie over het analyseren van het gegevens gebruik van Azure monitor Logboeken.
 
-## <a name="network-planning"></a><a name="ports"></a>Netwerk planning
+## <a name="network-planning"></a><a name="ports"></a>Netwerkplanning
 
 De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met deze adressen vindt plaats via poort 443.
 
@@ -256,9 +252,10 @@ Een Azure [Resource Manager-sjabloon](update-mgmt-enable-template.md) is beschik
 
 Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren die moeten worden beheerd:
 
-* [Van een virtuele machine](update-mgmt-enable-vm.md)
-* [Van surfen op meerdere computers](update-mgmt-enable-portal.md)
+* [Van een virtuele Azure-machine](update-mgmt-enable-vm.md)
+* [Van surfen op meerdere virtuele Azure-machines](update-mgmt-enable-portal.md)
 * [Van een Azure Automation-account](update-mgmt-enable-automation-account.md)
+* Voor Arc-servers (preview) of niet-Azure-machines installeert u de [log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) en [schakelt u vervolgens computers in de werk ruimte in](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) op updatebeheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

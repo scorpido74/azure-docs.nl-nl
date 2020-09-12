@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167637"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661637"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,7 +155,7 @@ Als u de toegang tot uw werk ruimte wilt beperken tot een virtueel netwerk, kunt
 * `--pe-vnet-name`: Het bestaande virtuele netwerk voor het maken van het persoonlijke eind punt in.
 * `--pe-subnet-name`: De naam van het subnet waarin het persoonlijke eind punt moet worden gemaakt. De standaardwaarde is `default`.
 
-Zie [netwerk isolatie en privacy](how-to-enable-virtual-network.md)voor meer informatie over het gebruik van een persoonlijk eind punt en een virtueel netwerk met uw werk ruimte.
+Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overview.md)voor meer informatie over het gebruik van een persoonlijk eind punt en een virtueel netwerk met uw werk ruimte.
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Door de klant beheerde sleutel en een werk ruimte met hoge bedrijfs impact
 
@@ -190,7 +190,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 > [!IMPORTANT]
 > U hoeft niet alle bestaande resources op te geven. U kunt een of meer opgeven. U kunt bijvoorbeeld een bestaand opslag account opgeven en de andere resources worden gemaakt door de werk ruimte.
 
-+ **Azure Storage account**:`az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage account**: `az storage account show --name <storage-account-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw opslag account:
 
@@ -217,13 +217,13 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**:`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw sleutel kluis:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor het container register:
 

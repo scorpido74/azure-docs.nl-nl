@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82183497"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006888"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Trans port Layer Security in azure HDInsight
 
@@ -21,11 +21,9 @@ Verbindingen met het HDInsight-cluster via het open bare cluster-eind punt `http
 
 Standaard accepteren Azure HDInsight-clusters TLS 1,2-verbindingen op open bare HTTPS-eind punten en oudere versies voor achterwaartse compatibiliteit. U kunt de minimale TLS-versie die wordt ondersteund op de gateway knooppunten tijdens het maken van het cluster beheren met behulp van de Azure Portal of een resource manager-sjabloon. Selecteer voor de Portal de TLS-versie op het tabblad **beveiliging en netwerk** tijdens het maken van het cluster. Gebruik de eigenschap **minSupportedTlsVersion** voor een resource manager-sjabloon op het moment van implementatie. Zie de Quick Start- [sjabloon voor mini maal TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)voor een voorbeeld sjabloon. Deze eigenschap ondersteunt drie waarden: "1,0", "1,1" en "1,2", die overeenkomen met respectievelijk TLS 1.0 +, TLS 1.1 + en TLS 1.2 +.
 
-> [!IMPORTANT]
-> Vanaf 30 juni 2020 afdwingt Azure HDInsight TLS 1,2 of hogere versies voor alle HTTPS-verbindingen. We raden u aan om ervoor te zorgen dat alle clients klaar zijn voor het verwerken van TLS 1,2 of hoger. Zie [Azure HDINSIGHT TLS 1,2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een virtueel netwerk voor Azure HDInsight plannen](./hdinsight-plan-virtual-network-deployment.md)
+* [Een virtueel netwerk plannen voor Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md)
 * [Virtuele netwerken maken voor Azure HDInsight-clusters](hdinsight-create-virtual-network.md).
 * [Netwerk beveiligings groepen](../virtual-network/security-overview.md).

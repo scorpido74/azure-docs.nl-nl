@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037249"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651732"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure Networking Services
 
@@ -38,7 +38,7 @@ In deze sectie worden de services beschreven die verbinding bieden tussen Azure-
 |[Azure DNS](#dns)|Host DNS-domeinen die naam omzetting bieden met behulp van Microsoft Azure-infra structuur.|<p>[Uw domein hosten in Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-records voor een web-app maken](../dns/dns-web-sites-custom-domain.md)</p> <p>[Een alias record maken voor Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Een alias record maken voor openbaar IP-adres](../dns/tutorial-alias-pip.md)</p> <p>[Een alias record maken voor de zone bron record](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Configureer veilige en naadloze RDP/SSH-verbindingen met uw virtuele machines rechtstreeks in de Azure Portal via TLS. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines|<p>[Een Azure Bastion-host maken](../bastion/bastion-create-host-portal.md)</p><p>[Via SSH verbinding maken met een virtuele Linux-machine](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbinding maken met behulp van RDP met een Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[NAT-gateway van virtueel netwerk](#nat)|Maak een NAT-gateway om uitgaande connectiviteit te bieden voor een virtuele machine.|<p>[Een NAT-gateway maken](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure peering-service (preview-versie)](#azurepeeringservice)|Samen werken met service providers voor optimale en betrouw bare route ring naar de micro soft-Cloud via het open bare netwerk.|<p>[Azure peering-service registreren](../peering-service/azure-portal.md)</p>|
+|[Azure Peering Service](#azurepeeringservice)|Samen werken met service providers voor optimale en betrouw bare route ring naar de micro soft-Cloud via het open bare netwerk.|<p>[Azure peering-service registreren](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -74,7 +74,7 @@ Azure Virtual WAN is een netwerk service die zorgt voor geoptimaliseerde en geau
 Azure DNS is een hostingservice voor DNS-domeinen die naamomzetting biedt met behulp van Microsoft Azure-infrastructuur. Door uw domeinen in Azure te hosten, kunt u uw DNS-records met dezelfde referenties, API's, hulpprogramma's en facturering beheren als voor uw andere Azure-services. Zie [Wat is Azure DNS?](../dns/dns-overview.md)voor meer informatie.
 
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
-De Azure Bastion-service is een nieuwe, volledig door het platform beheerde PaaS-service die u in uw virtuele netwerk hebt ingericht. Het biedt een veilige en naadloze RDP/SSH-verbinding met uw virtuele machines rechtstreeks in de Azure Portal via TLS. Wanneer u verbinding maakt met Azure Bastion, hebben uw virtuele machines geen openbaar IP nodig. Zie [Wat is Azure Bastion?](../bastion/bastion-overview.md)voor meer informatie.
+De Azure Bastion-service is een nieuwe, volledig door het platform beheerde PaaS-service die u in uw virtuele netwerk inricht. De service biedt beveiligde en naadloze RDP-/SSH-connectiviteit in uw virtuele machine, rechtstreeks in Azure Portal via TLS. Wanneer u verbinding maakt met Azure Bastion, hebben uw virtuele machines geen openbaar IP nodig. Zie [Wat is Azure Bastion?](../bastion/bastion-overview.md)voor meer informatie.
 
 ![Azure Bastion-architectuur](./media/networking-overview/architecture.png)
 
@@ -83,7 +83,7 @@ Virtual Network NAT (Network Address Translation) vereenvoudigt uitsluitend uitg
 
 ![NAT-gateway van virtueel netwerk](./media/networking-overview/flow-map.png)
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure peering-service
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure peering-service
 Azure peering service verbetert de connectiviteit van klanten aan micro soft-Cloud Services, zoals Office 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Zie [Wat is Azure peering service?](../peering-service/about.md)voor meer informatie.
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Services voor toepassings beveiliging
@@ -120,10 +120,10 @@ Raadpleeg de [Azure firewall documentatie](../firewall/overview.md)voor meer inf
 
 ![Firewalloverzicht](./media/networking-overview/firewall-threat.png)
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
+### <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
 U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Security Overview](../virtual-network/security-overview.md)(Engelstalig) voor meer informatie.
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eind punten
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eindpunten
 Met service-eindpunten van Virtual Network (VNet) kunt u de privé-adresruimte van uw virtuele netwerk en de identiteit van uw VNet uitbreiden naar Azure-services, via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk. Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
 
 ![Service-eindpunten voor virtueel netwerk](./media/networking-overview/vnet-service-endpoints-overview.png)
@@ -148,7 +148,7 @@ In deze sectie worden de netwerk services in azure beschreven waarmee u toepassi
 |[Application Gateway](#applicationgateway)|Azure Application Gateway is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren.|<p>[Webverkeer omleiden met Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met de Azure-portal](../application-gateway/create-ssl-portal.md)</p><p>[Een toepassingsgateway maken met een omleiding op basis van een URL-pad](../application-gateway/create-url-route-portal.md) </p>|
 |
 
-### <a name="content-delivery-network"></a><a name="cdn"></a>Content Delivery Network
+### <a name="content-delivery-network"></a><a name="cdn"></a>CDN (Content Delivery Network)
 Azure Content Delivery Network (CDN) biedt ontwikkelaars een globale oplossing voor het snel leveren van inhoud met hoge bandbreedte door de inhoud op strategische, fysieke knooppunten in de hele wereld in de cache op te slaan. Zie voor meer informatie over Azure CDN [Azure Content Delivery Network](../cdn/cdn-overview.md)
 
 ![Azure CDN](./media/networking-overview/cdn-overview.png)

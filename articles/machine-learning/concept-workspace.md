@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e765422ebfce1a4328bac9a17edb8b581f87e6f7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890911"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661703"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -54,7 +54,7 @@ U kunt op de volgende manieren met uw werk ruimte werken:
 + Op het web:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure machine learning Designer (preview)](concept-designer.md) : alleen beschikbaar in [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten.
-+ In een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ In een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + In elke R-omgeving met de [Azure machine learning SDK voor R (preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
 + [Azure Machine Learning VS code-uitbrei ding](how-to-manage-resources-vscode.md#workspaces)
@@ -94,7 +94,7 @@ Wanneer u een werk ruimte maakt, bepaalt u of u deze maakt met [Basic of ENTER p
 Er zijn meerdere manieren om een werk ruimte te maken:  
 
 * Gebruik de [Azure Portal](how-to-manage-workspace.md) voor een punt-en-klik-interface om elke stap stapsgewijs te door lopen.
-* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
+* De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
 * Gebruik een [Azure Resource Manager sjabloon](how-to-create-workspace-template.md) of de [Azure machine learning cli](reference-azure-machine-learning-cli.md) wanneer u het maken van de zakelijke beveiligings normen wilt automatiseren of aanpassen.
 * Als u in Visual Studio code werkt, gebruikt u de [VS code-extensie](how-to-manage-resources-vscode.md#create-a-workspace).
 

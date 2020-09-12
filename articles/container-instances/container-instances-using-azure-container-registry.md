@@ -4,14 +4,13 @@ description: Meer informatie over het implementeren van containers in Azure Cont
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927433"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656992"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Instances implementeren vanuit Azure Container Registry
 
@@ -31,6 +30,9 @@ Azure Container Registry biedt aanvullende [verificatie opties](../container-reg
 
 > [!NOTE]
 > U kunt niet verifiëren bij Azure Container Registry om installatie kopieën tijdens de implementatie van de container groep te halen met behulp van een [beheerde identiteit](container-instances-managed-identity.md) die is geconfigureerd in dezelfde container groep.
+
+> [!NOTE]
+> U kunt op dit moment geen installatie kopieën ophalen van [Azure container Registry](../container-registry/container-registry-vnet.md) geïmplementeerd in een Azure-Virtual Network.
 
 In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal en slaat u de referenties van de Service-Principal op in de kluis. 
 

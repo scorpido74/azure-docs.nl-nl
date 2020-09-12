@@ -3,20 +3,20 @@ title: Voor deur van Azure front-caching | Microsoft Docs
 description: Dit artikel helpt u te begrijpen hoe de status van uw back-ends wordt gecontroleerd door Azure front-deur
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056955"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024278"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
 In het volgende document wordt het gedrag voor de voor deur opgegeven met routerings regels waarvoor caching is ingeschakeld. De voor deur is een modern Content Delivery Network (CDN), samen met dynamische site versnelling en taak verdeling, ondersteunt ook caching-gedrag, net als bij andere CDN.
@@ -88,13 +88,22 @@ Met de voor deur kunt u bepalen hoe bestanden in de cache worden opgeslagen voor
 - **Elke unieke URL in de cache opslaan**: in deze modus wordt elke aanvraag met een unieke URL, inclusief de query reeks, behandeld als een unieke Asset met een eigen cache. Het antwoord van de back-end voor een aanvraag voor wordt bijvoorbeeld in `www.example.ashx?q=test1` de cache geplaatst in de front-deur omgeving en wordt geretourneerd voor volgende caches met dezelfde query reeks. Een aanvraag voor `www.example.ashx?q=test2` wordt in de cache opgeslagen als een afzonderlijk activum met een eigen time-to-Live-instelling.
 
 ## <a name="cache-purge"></a>Cache opschonen
-Met de voor deur worden assets in de cache opgeslagen totdat de TTL (time-to-Live) van het activum verloopt. Nadat de TTL van het activum verloopt, haalt de front-deur omgeving een nieuwe bijgewerkte kopie van de Asset op om de client aanvraag te leveren en de cache op te slaan wanneer een client de Asset aanvraagt.
-</br>De best practice om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie van uw assets verkrijgen, is om uw assets voor elke update te maken en ze als nieuwe Url's te publiceren. Met de voor deur worden onmiddellijk de nieuwe assets opgehaald voor de volgende client aanvragen. Soms wilt u in de cache opgeslagen inhoud uit alle Edge-knoop punten verwijderen en alle nieuwe bijgewerkte assets laten afdwingen. Dit kan worden veroorzaakt door updates van uw webtoepassing, of om snel assets bij te werken die onjuiste informatie bevatten.
 
-</br>Selecteer welke assets u wilt verwijderen uit de Edge-knoop punten. Als u alle assets wilt wissen, klikt u op het selectie vakje alles opschonen. Als dat niet het geval is, typt u het pad van elk activum dat u wilt verwijderen in het tekstvak pad. De onderstaande indelingen worden ondersteund in het pad.
-1. **Eén pad leegmaken**: afzonderlijke activa opschonen door het volledige pad van de asset (zonder het protocol en domein) op te geven, met de bestands extensie, bijvoorbeeld/pictures/strasbourg.png;
-2. **Joker tekens opschonen**: sterretje ( \* ) kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met/ \* in het pad of verwijder alle submappen en bestanden in een specifieke map door de map op te geven gevolgd door/ \* , bijvoorbeeld/pictures/ \* .
-3. **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
+Met de voor deur wordt activa in de cache geplaatst totdat de TTL (time-to-Live) van het activum verloopt. Nadat de TTL van het activum is verlopen, haalt de front-deur omgeving een nieuwe bijgewerkte kopie van de Asset op om de client aanvraag te leveren en de cache op te slaan wanneer een client de Asset aanvraagt.
+
+De best practice om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie van uw assets verkrijgen, is om uw assets voor elke update te maken en ze als nieuwe Url's te publiceren. Met de voor deur worden onmiddellijk de nieuwe assets opgehaald voor de volgende client aanvragen. Soms wilt u in de cache opgeslagen inhoud uit alle Edge-knoop punten verwijderen en alle nieuwe bijgewerkte assets laten afdwingen. Dit kan worden veroorzaakt door updates van uw webtoepassing, of om snel assets bij te werken die onjuiste informatie bevatten.
+
+Selecteer de activa die u wilt verwijderen uit de Edge-knoop punten. Als u alle assets wilt wissen, selecteert u **Alles opschonen**. Als dat niet het geval is, voert u in het **pad**het pad in van elk activum dat u wilt leegmaken.
+
+Deze indelingen worden ondersteund in de lijsten met te verwijderen paden:
+
+- **Eén pad leegmaken**: afzonderlijke assets opschonen door het volledige pad van de asset (zonder het protocol en domein) op te geven, met de bestands extensie, bijvoorbeeld/pictures/strasbourg.png;
+- **Joker tekens opschonen**: sterretje ( \* ) kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met/ \* in het pad of verwijder alle submappen en bestanden in een specifieke map door de map op te geven gevolgd door/ \* , bijvoorbeeld/pictures/ \* .
+- **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
+
+> [!NOTE]
+> **Domein met Joker tekens verwijderen**: opgeven van in cache opgeslagen paden voor het verwijderen zoals beschreven in deze sectie zijn niet van toepassing op joker tekens domeinen die aan de voor deur zijn gekoppeld. Het is momenteel niet mogelijk om Joker teken domeinen direct te verwijderen. U kunt paden uit specifieke subdomeinen verwijderen door het specifieke-subdomein en het opschoon pad op te geven. Als ik bijvoorbeeld mijn front `*.contoso.com` -deur heb, kan ik assets van mijn subdomein verwijderen `foo.contoso.com` door te typen `foo.contoso.com/path/*` . Op dit moment is het opgeven van hostnamen in het pad voor het opschonen van inhoud imited naar subdomeinen van joker tekens domeinen, indien van toepassing.
+>
 
 Cache verwijderingen op de voor deur zijn hoofdletter gevoelig. Daarnaast zijn ze query teken reeks neutraal, wat betekent dat als u een URL opschoont, alle wijzigingen in de query teken reeks worden verwijderd. 
 
@@ -102,14 +111,14 @@ Cache verwijderingen op de voor deur zijn hoofdletter gevoelig. Daarnaast zijn z
 De volgende volg orde van koppen wordt gebruikt om te bepalen hoe lang een item wordt opgeslagen in de cache:</br>
 1. Cache-Control: s-maxAge =\<seconds>
 2. Cache-Control: Max-Age =\<seconds>
-3. Verstreken\<http-date>
+3. Verstreken \<http-date>
 
 Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd. Als er echter meerdere aanvragen in de vlucht zijn bij een POP voor dezelfde URL, kunnen ze de reactie delen. Als er geen cache-Control aanwezig is, is het standaard gedrag dat AFD de resource gedurende X-tijd in de cache plaatst waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
 
 ## <a name="request-headers"></a>Aanvraagheaders
 
 De volgende aanvraag headers worden niet doorgestuurd naar een back-end wanneer caching wordt gebruikt.
-- Content-length
+- Content-Length
 - Overdracht-encoding
 
 ## <a name="cache-duration"></a>Cacheduur
