@@ -1,25 +1,27 @@
 ---
-title: Azure Speaker Recognition-service
+title: 'Overzicht van Speaker Recognition: spraak service'
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Speaker Recognition biedt algoritmen die luid sprekers verifiëren en identificeren aan de hand van hun unieke spraak kenmerken. Speaker Recognition wordt gebruikt voor het beantwoorden van de vraag ' wie is praten? '.
+description: Speaker Recognition biedt algoritmen waarmee luid sprekers worden geverifieerd en geïdentificeerd aan de hand van hun unieke spraak kenmerken met behulp van Voice biometrie. Speaker Recognition wordt gebruikt voor het beantwoorden van de vraag 'Wie spreekt er?'. Dit artikel bevat een overzicht van de voor delen en mogelijkheden van de Speaker Recognition service.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: luidspreker herkenning, spraak-biometrie
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780882"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397256"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Wat is de Azure Speaker Recognition-service?
+# <a name="what-is-speaker-recognition"></a>Wat is Sprekerherkenning?
 
-De Speaker Recognition-service biedt algoritmen die luid sprekers verifiëren en identificeren aan de hand van hun unieke spraak kenmerken. Speaker Recognition wordt gebruikt voor het beantwoorden van de vraag ' wie is praten? '. U geeft audio training gegevens voor één spreker op, waarmee een inschrijvings profiel wordt gemaakt op basis van de unieke kenmerken van de stem van de spreker. U kunt vervolgens Audio-Voice-voor beelden op dit profiel controleren om te controleren of de spreker dezelfde persoon is (verificatie van de spreker), of audio spraak voorbeelden op een *groep* Inge schreven luidspreker profielen controleren om te zien of deze overeenkomen met een profiel in de groep (speaker-id). Met de Diarization van de [spreker](batch-transcription.md#speaker-separation-diarization) worden daarentegen segmenten van audio door de spreker gegroepeerd in een batch-bewerking.
+De Speaker Recognition-service biedt algoritmen waarmee luid sprekers worden geverifieerd en geïdentificeerd aan de hand van hun unieke spraak kenmerken met behulp van Voice biometrie. Speaker Recognition wordt gebruikt voor het beantwoorden van de vraag 'Wie spreekt er?'. U geeft audio training gegevens voor één spreker op, waarmee een inschrijvings profiel wordt gemaakt op basis van de unieke kenmerken van de stem van de spreker. U kunt vervolgens Audio-Voice-voor beelden op dit profiel controleren om te controleren of de spreker dezelfde persoon is (verificatie van de spreker), of audio spraak voorbeelden op een *groep* Inge schreven luidspreker profielen controleren om te zien of deze overeenkomen met een profiel in de groep (speaker-id). Met de Diarization van de [spreker](batch-transcription.md#speaker-separation-diarization) worden daarentegen segmenten van audio door de spreker gegroepeerd in een batch-bewerking.
 
 ## <a name="speaker-verification"></a>Sprekercontrole
 

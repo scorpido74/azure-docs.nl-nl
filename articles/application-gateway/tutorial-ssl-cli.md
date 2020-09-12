@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf6cfdc00d38b72f292f2b3ed41a633fb9cf989d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502729"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595815"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Een toepassings gateway met TLS-beëindiging maken met behulp van de Azure CLI
 
@@ -21,11 +21,10 @@ U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) met een 
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een zelfondertekend certificaat maken
-> * Een netwerk instellen
-> * Een toepassingsgateway maken met behulp van het certificaat
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+* Een zelfondertekend certificaat maken
+* Een netwerk instellen
+* Een toepassingsgateway maken met behulp van het certificaat
+* Een virtuele-machineschaalset maken met de standaard back-endgroep
 
 U kunt deze procedure desgewenst voltooien met behulp van [Azure PowerShell](tutorial-ssl-powershell.md).
 
@@ -53,7 +52,7 @@ Voer het wachtwoord voor het certificaat in. In dit voorbeeld wordt *Azure123456
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -63,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet *myBackendSubnet*, dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
+Maak het virtuele netwerk *myVNet* en het subnet *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet *myBackendSubnet*, dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres*myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \

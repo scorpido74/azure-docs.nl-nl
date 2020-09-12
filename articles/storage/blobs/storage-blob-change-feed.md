@@ -1,21 +1,21 @@
 ---
-title: Feed wijzigen in Azure Blob Storage (preview) | Microsoft Docs
+title: Feed wijzigen in Azure Blob Storage | Microsoft Docs
 description: Meer informatie over wijzigingen in feed-Logboeken in Azure Blob Storage en hoe u deze kunt gebruiken.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055416"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568231"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
+# <a name="change-feed-support-in-azure-blob-storage"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage
 
 Het doel van de wijzigings feed is het bieden van transactie logboeken van alle wijzigingen die plaatsvinden in de blobs en de BLOB-meta gegevens in uw opslag account. De wijzigings feed biedt **besteld**, **gegarandeerd**, **duurzaam**, **onveranderbaar**, **alleen-lezen** logboek van deze wijzigingen. Client toepassingen kunnen deze logboeken op elk gewenst moment in streaming of in de batch modus lezen. Met de wijzigings feed kunt u efficiënte en schaal bare oplossingen bouwen die wijzigings gebeurtenissen verwerken die in uw Blob Storage-account tegen lage kosten optreden.
 
@@ -56,9 +56,6 @@ Hier volgen enkele dingen die u moet onthouden wanneer u de wijzigings feed insc
 
 - Alleen GPv2-en Blob Storage-accounts kunnen wijzigings toevoer inschakelen. Premium BlockBlobStorage-accounts en hiërarchische naam ruimte ingeschakelde accounts worden momenteel niet ondersteund. GPv1-opslag accounts worden niet ondersteund, maar kunnen wel worden bijgewerkt naar GPv2 zonder downtime. Zie [upgraden naar een GPv2 Storage-account](../common/storage-account-upgrade.md) voor meer informatie.
 
-> [!IMPORTANT]
-> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **West-Centraal VS**, **vs-west 2**, **Frankrijk-centraal**, **Frankrijk-Zuid**, **Canada-centraal**en **Canada-Oost** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie. U moet uw abonnement registreren voordat u feed voor wijzigen kunt inschakelen voor uw opslag accounts.
-
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Schakel feed Change in voor uw opslag account met behulp van Azure Portal:
@@ -85,10 +82,10 @@ Feed voor wijziging inschakelen met behulp van Power shell:
 
 2. Sluit de Power shell-console en open deze opnieuw.
 
-3. Installeer de module **AZ. Storage** preview.
+3. Installeer versie 2.5.0 of hoger van de module **AZ. Storage** .
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de instructies op het scherm om te verifiëren.
@@ -289,43 +286,18 @@ Zie [Azure Event grid-gebeurtenis schema voor Blob Storage](https://docs.microso
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>Uw abonnement registreren (preview-versie)
-
-Omdat de wijzigings feed alleen in de open bare preview is, moet u uw abonnement registreren om de functie te gebruiken.
-
-### <a name="register-by-using-powershell"></a>Registreren met behulp van Power shell
-
-Voer de volgende opdrachten uit in een Power shell-console:
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Registreren met behulp van Azure CLI
-
-Voer de volgende opdrachten uit in Azure Cloud Shell:
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Voor waarden en bekende problemen (preview-versie)
+## <a name="conditions-and-known-issues"></a>Voor waarden en bekende problemen
 
-In deze sectie worden bekende problemen en voor waarden in de huidige open bare preview van de wijzigings feed beschreven. 
-- Voor de preview moet u eerst [uw abonnement registreren](#register) voordat u feed Change kunt inschakelen voor uw opslag account in de regio's West-Centraal VS, VS-West 2, Frankrijk-centraal, Frankrijk-zuid, Canada-centraal en Canada-Oost. 
-- In de wijzigings feed worden alleen bewerkingen voor maken, bijwerken, verwijderen en kopiëren gemaakt. Wijzigingen in de BLOB-eigenschap en meta gegevens worden ook vastgelegd. De eigenschap Access-laag is momenteel niet vastgelegd. 
+In deze sectie worden bekende problemen en voor waarden in de huidige release van de wijzigings feed beschreven. 
+
 - Het wijzigen van gebeurtenis records voor één wijziging kan meermaals voor komen in uw wijzigings feed.
 - U kunt de levens duur van wijzigingslog bestand bestanden nog niet beheren door op tijd gebaseerd Bewaar beleid in te stellen en u kunt de blobs niet verwijderen.
 - De `url` eigenschap van het logboek bestand is momenteel altijd leeg.
 - De `LastConsumable` eigenschap van de segments.jsin het bestand bevat niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in de `LastConsumable` eigenschap.
 - U kunt de **$blobchangefeed** -container momenteel niet zien wanneer u de LISTCONTAINERS-API aanroept en de container wordt niet weer gegeven op Azure Portal of Storage Explorer. U kunt de inhoud weer geven door de ListBlobs-API rechtstreeks aan te roepen op de $blobchangefeed-container.
-- Opslag accounts die eerder een account- [failover](../common/storage-disaster-recovery-guidance.md) hebben gestart, hebben mogelijk problemen met het logboek bestand dat niet wordt weer gegeven. Eventuele toekomstige account-failovers kunnen ook van invloed zijn op het logboek bestand tijdens de preview-fase.
+- Opslag accounts die eerder een account- [failover](../common/storage-disaster-recovery-guidance.md) hebben gestart, hebben mogelijk problemen met het logboek bestand dat niet wordt weer gegeven. Toekomstige account-failovers kunnen ook van invloed zijn op het logboek bestand.
 
 ## <a name="faq"></a>Veelgestelde vragen
 

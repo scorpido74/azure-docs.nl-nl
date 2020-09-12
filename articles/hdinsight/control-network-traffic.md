@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773403"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400191"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Netwerk verkeer in azure HDInsight beheren
 
@@ -32,7 +32,11 @@ Als u van plan bent om **netwerk beveiligings groepen** te gebruiken om netwerk 
 
 1. Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
 
-2. Bepaal welke service Tags vereist zijn voor HDInsight voor uw regio. Zie [NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight](hdinsight-service-tags.md)voor meer informatie.
+2. Bepaal welke service Tags vereist zijn voor HDInsight voor uw regio. Er zijn meerdere manieren om deze service tags te verkrijgen:
+    1. Raadpleeg de lijst met gepubliceerde service tags in de [service tags voor de netwerk beveiligings groep (NSG) voor Azure HDInsight](hdinsight-service-tags.md). 
+    2. Als uw regio niet aanwezig is in de lijst, gebruikt u de [service Tags detectie-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) om een servicetag voor uw regio te vinden.
+    3. Als u de API niet kunt gebruiken, downloadt u het [JSON-bestand van de service label](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) en zoekt u naar de gewenste regio.
+
 
 3. Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
 
@@ -51,10 +55,6 @@ Geforceerde tunneling is een door de gebruiker gedefinieerde routerings configur
 Klanten die geforceerde tunneling willen instellen, moeten gebruikmaken van [aangepaste meta Stores](./hdinsight-use-external-metadata-stores.md) en de juiste connectiviteit van het subnet van het cluster of een on-premises netwerk instellen op deze aangepaste meta Stores.
 
 Zie de [beperking uitgaand netwerk verkeer configureren voor Azure HDInsight-clusters](hdinsight-restrict-outbound-traffic.md)om een voor beeld te zien van de UDR-instelling met Azure firewall.
-
-## <a name="required-ip-addresses"></a>Vereiste IP-adressen
-
-Zie [IP-adressen van HDInsight-beheer](hdinsight-management-ip-addresses.md)als u netwerk beveiligings groepen of door de gebruiker gedefinieerde routes gebruikt om verkeer te beheren.
 
 ## <a name="required-ports"></a>Vereiste poorten
 

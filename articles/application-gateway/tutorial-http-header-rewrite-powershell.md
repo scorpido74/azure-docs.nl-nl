@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806443"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595900"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Een toepassings gateway maken en HTTP-headers opnieuw schrijven
 
@@ -20,15 +20,13 @@ U kunt Azure PowerShell gebruiken om [regels te configureren voor het herschrijv
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
->
-> * Een virtueel netwerk automatisch schalen
-> * Een gereserveerd openbaar IP-adres maken
-> * De infrastructuur van de toepassingsgateway instellen
-> * De configuratie van de regel voor het opnieuw schrijven van http-headers opgeven
-> * Automatisch schalen configureren
-> * De toepassingsgateway maken
-> * De toepassingsgateway testen
+* Een virtueel netwerk automatisch schalen
+* Een gereserveerd openbaar IP-adres maken
+* De infrastructuur van de toepassingsgateway instellen
+* De configuratie van de regel voor het opnieuw schrijven van http-headers opgeven
+* Automatisch schalen configureren
+* De toepassingsgateway maken
+* De toepassingsgateway testen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -159,7 +157,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -Resource
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik Get-AzPublicIPAddress om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
+Gebruik Get-AzPublicIPAddress om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
 
 ```azurepowershell
 Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP

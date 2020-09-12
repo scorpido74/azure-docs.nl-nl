@@ -3,12 +3,12 @@ title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051499"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651932"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -103,7 +103,7 @@ Wanneer de toewijzing wordt verwijderd, worden de vergren delingen die zijn gema
 
 Een RBAC-actie voor het weigeren van [toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefact resources tijdens de toewijzing van een blauw druk als de toewijzing de optie **alleen-lezen** of **niet verwijderen** is geselecteerd. De actie voor weigeren wordt toegevoegd door de beheerde identiteit van de blauw druk toewijzing en kan alleen worden verwijderd uit de artefact resources met dezelfde beheerde identiteit. Deze beveiligings meting dwingt het vergrendelings mechanisme af en voor komt het verwijderen van de blauw druk buiten Azure blauw drukken.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Blauw druk weigeren toewijzing voor resource groep" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Scherm afbeelding van de pagina toegangs beheer (I A M) en het tabblad Toewijzingen weigeren voor een resource groep." border="false":::
 
 De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) voor het weigeren van toewijzingen van elke modus zijn als volgt:
 

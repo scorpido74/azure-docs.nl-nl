@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524958"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595840"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met behulp van Azure PowerShell
 
@@ -22,15 +22,14 @@ U kunt Azure Powershell gebruiken om [het hosten van meerdere websites te config
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken
-> * Back-endlisteners maken
-> * Routeringsregels maken
-> * Schaalsets voor virtuele machines maken met de back-endpools
-> * Een CNAME-record in uw domein maken
+* Het netwerk instellen
+* Een toepassingsgateway maken
+* Back-endlisteners maken
+* Routeringsregels maken
+* Schaalsets voor virtuele machines maken met de back-endpools
+* Een CNAME-record in uw domein maken
 
-:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Application Gateway voor meerdere locaties":::
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -184,7 +183,7 @@ $appgw = New-AzApplicationGateway `
   -Sku $sku
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit voorbeeld maakt u twee schaalsets voor virtuele machines die ondersteuning bieden voor de twee back-end-pools die u hebt gemaakt. De schaalsets die u maakt, hebben de namen *myvmss1* en *myvmss2*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u IIS installeert. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
 

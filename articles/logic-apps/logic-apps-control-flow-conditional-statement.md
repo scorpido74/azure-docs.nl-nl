@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066367"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657384"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Voorwaardelijke instructies maken waarmee werk stroom acties in Azure Logic Apps worden beheerd
 
@@ -28,7 +28,7 @@ Stel dat u een logische app hebt die te veel e-mail berichten verzendt wanneer n
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Als u het voor beeld in dit artikel wilt volgen, [maakt u deze voorbeeld logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-of Office 365 Outlook-account.
+* Als u het voor beeld in dit artikel wilt volgen, [maakt u deze voor beeld-logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-account of een werk-of school account.
 
 ## <a name="add-condition"></a>Voorwaarde toevoegen
 
@@ -40,9 +40,9 @@ Stel dat u een logische app hebt die te veel e-mail berichten verzendt wanneer n
 
    ![Actie tussen stappen toevoegen](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Wanneer u aan het einde van uw werk stroom een voor waarde wilt toevoegen, kiest u **nieuwe stap** > **een actie toevoegen**onder aan uw logische app.
+   Wanneer u aan het einde van uw werk stroom een voor waarde wilt toevoegen, kiest u  **nieuwe stap** > **een actie toevoegen**onder aan uw logische app.
 
-1. Voer in het zoekvak ' condition ' in als uw filter. Selecteer deze actie: **voor waarde controle**
+1. Voer in het zoekvak voorwaarde in als uw filter. Selecteer deze actie: **voor waarde controle**
 
    ![Voorwaarde toevoegen](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 

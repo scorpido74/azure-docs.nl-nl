@@ -4,21 +4,21 @@ description: Meer informatie over het schalen van een exemplaar van een Azure si
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500484"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595764"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Hoe kan ik een service-exemplaar van Azure signalering schalen?
 Dit artikel laat u zien hoe u uw exemplaar van de Azure signalerings service kunt schalen. Er zijn twee scenario's voor schalen, omhoog schalen en uitschalen.
 
 * [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): krijg meer eenheden, verbindingen, berichten en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van vrij naar standaard.
-* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal signalerings eenheden. U kunt uitschalen tot Maxi maal 100 eenheden.
+* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal signalerings eenheden. U kunt uitschalen tot Maxi maal 100 eenheden. Er zijn opties voor beperkte eenheden die u kunt selecteren voor het schalen: 1, 2, 5, 10, 20, 50 en 100 eenheden voor een exemplaar van een enkele signalerings service.
 
 De schaal instellingen nemen enkele minuten in beslag. In zeldzame gevallen kan het ongeveer 30 minuten duren om toe te passen. U hoeft uw code niet te wijzigen of uw server toepassing opnieuw te implementeren.
 

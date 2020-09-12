@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cd69d1f5330e4967a31ac77359e046f461270cf
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519243"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657501"
 ---
 # <a name="connect-windows-security-events"></a>Verbinding maken met Windows-beveiligingsgebeurtenissen 
 
-Met de connector voor beveiligings gebeurtenissen kunt u alle beveiligings gebeurtenissen van uw Windows-systemen (servers en werk stations, fysieke en virtuele) streamen naar uw Azure-Sentinel-werk ruimte. Zo kunt u Windows-beveiligings gebeurtenissen in uw Dash boards weer geven, om ze te gebruiken bij het maken van aangepaste waarschuwingen en deze te vertrouwen om uw onderzoek te verbeteren, zodat u meer inzicht hebt in het netwerk van uw organisatie en uw beveiligings mogelijkheden kunt uitbreiden. U kunt selecteren welke gebeurtenissen uit de volgende sets worden gestreamd:<a name="event-sets"></a>
+Met de connector voor beveiligings gebeurtenissen kunt u alle beveiligings gebeurtenissen van uw Windows-systemen (servers en werk stations, fysieke en virtuele) streamen naar uw Azure-Sentinel-werk ruimte. Zo kunt u Windows-beveiligings gebeurtenissen in uw Dash boards weer geven, om ze te gebruiken bij het maken van aangepaste waarschuwingen en deze te vertrouwen om uw onderzoek te verbeteren, zodat u meer inzicht hebt in het netwerk van uw organisatie en uw beveiligings mogelijkheden kunt uitbreiden. U kunt selecteren welke gebeurtenissen uit de volgende sets worden gestreamd: <a name="event-sets"></a>
 
 - **Alle gebeurtenissen** : alle Windows-beveiligings-en AppLocker-gebeurtenissen.
 - **Algemeen** : een standaardset gebeurtenissen voor controle doeleinden. Deze set bevat een volledige controle spoor voor gebruikers. Het bevat bijvoorbeeld zowel aanmeldings gebeurtenissen voor gebruikers als gebruikers afmeldingen (gebeurtenis-Id's 4624, 4634). Er zijn ook controle acties zoals wijzigingen in de beveiligings groep, Kerberos-bewerkingen van de Key-domein controller en andere typen gebeurtenissen in overeenstemming met aanbevolen procedures.
@@ -43,10 +43,10 @@ Met de connector voor beveiligings gebeurtenissen kunt u alle beveiligings gebeu
     | **Algemeen** | 1, 299, 300, 324, 340, 403, 404, 410, 411, 412, 413, 431, 500, 501, 1100, 1102, 1107, 1108, 4608, 4610, 4611, 4614, 4622, 4624, 4625, 4634, 4647, 4648, 4649, 4657, 4661, 4662, 4663, 4665, 4666, 4667, 4688, 4670, 4672, 4673, 4674, 4675, 4689, 4697, 4700, 4702, 4704, 4705, 4716, 4717, 4718, 4719, 4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729 , 4733, 4732, 4735, 4737, 4738, 4739, 4740, 4742, 4744, 4745, 4746, 4750, 4751, 4752, 4754, 4755, 4756, 4757, 4760, 4761, 4762, 4764, 4767, 4768, 4771, 4774, 4778, 4779, 4781, 4793, 4797, 4798, 4799, 4800, 4801, 4802, 4803, 4825, 4826, 4870, 4886, 4887, 4888, 4893, 4898, 4902, 4904, 4905, 4907, 4931, 4932, 4933, 4946, 4948, 4956, 4985, 5024, 5033, 5059, 5136, 5137 , 5140, 5145, 5632, 6144, 6145, 6272, 6273, 6278, 6416, 6423, 6424, 8001, 8002, 8003, 8004, 8005, 8006, 8007, 8222, 26401, 30004 |
 
 > [!NOTE]
-> De verzameling van beveiligings gebeurtenissen in de context van één werk ruimte kan worden geconfigureerd vanuit Azure Security Center of Azure Sentinel, maar niet voor beide. Als u de Azure-Sentinel onboardt in een werk ruimte die al wordt uitgevoerd Azure Security Center, en is ingesteld op het verzamelen van beveiligings gebeurtenissen, hebt u twee opties:
-> - Zorg ervoor dat de verzameling beveiligings gebeurtenissen in Azure Security Center ongewijzigd blijft. U kunt deze gebeurtenissen opvragen en analyseren in azure Sentinel en in Azure Security Center. U kunt de verbindings status van de connector echter niet controleren of de configuratie wijzigen in azure Sentinel. Als dit belang rijk voor u is, kunt u de tweede optie overwegen.
+> De verzameling van beveiligings gebeurtenissen in de context van één werk ruimte kan worden geconfigureerd vanuit Azure Defender (voorheen Azure Security Center) of Azure Sentinel, maar niet voor beide. Als u de Azure-Sentinel onboardt in een werk ruimte waarop Azure Defender al wordt uitgevoerd en is ingesteld op het verzamelen van beveiligings gebeurtenissen, hebt u twee opties:
+> - Zorg ervoor dat de verzameling beveiligings gebeurtenissen in azure Defender ongewijzigd blijft. U kunt deze gebeurtenissen in azure Sentinel en in azure Defender doorzoeken en analyseren. U kunt de verbindings status van de connector echter niet controleren of de configuratie wijzigen in azure Sentinel. Als dit belang rijk voor u is, kunt u de tweede optie overwegen.
 >
-> - [Schakel de verzameling van beveiligings gebeurtenissen](../security-center/security-center-enable-data-collection.md) in azure Security Center uit en voeg alleen de beveiligings gebeurtenissen connector toe aan Azure Sentinel. Net als bij de eerste optie kunt u gebeurtenissen in zowel Azure Sentinel als Azure Security Center opvragen en analyseren, maar u kunt nu de verbindings status van de connector bewaken of de configuratie wijzigen in-en alleen in-azure-Sentinel.
+> - [Schakel de verzameling van beveiligings gebeurtenissen](../security-center/security-center-enable-data-collection.md) in azure Defender uit en voeg alleen de beveiligings gebeurtenissen connector toe aan Azure Sentinel. Net als bij de eerste optie kunt u gebeurtenissen in zowel Azure Sentinel als Azure Defender opvragen en analyseren, maar u kunt nu de verbindings status van de connector controleren of de configuratie wijzigen in-en alleen in-azure-Sentinel.
 
 ## <a name="set-up-the-windows-security-events-connector"></a>De Windows-beveiligings gebeurtenissen connector instellen
 
@@ -79,7 +79,7 @@ Uw Windows-beveiligings gebeurtenissen in azure-Sentinel verzamelen:
 
 1. Selecteer welke gebeurtenissenset ([alles, algemeen of mini maal](#event-sets)) u wilt streamen.
 
-1. Klik op **Bijwerken**.
+1. Klik op **Update**.
 
 1. Als u het relevante schema in Log Analytics voor Windows-beveiligings gebeurtenissen wilt gebruiken, typt u `SecurityEvent` in het query venster.
 
@@ -106,7 +106,7 @@ Azure Sentinel kan machine learning (ML) Toep assen op gegevens van beveiligings
 
 1. U moet RDP-aanmeldings gegevens (gebeurtenis-ID 4624) verzamelen via de Data Connector voor **beveiligings gebeurtenissen** . Zorg ervoor dat u een [gebeurtenissenset](#event-sets) hebt geselecteerd, behalve ' geen ', om naar Azure Sentinel te streamen.
 
-1. Klik in de Azure Sentinel-Portal op **Analytics**en klik vervolgens op het tabblad **regel sjablonen** . Kies de regel **voor afwijkende RDP-aanmeldings detectie (preview)** en verplaats de schuif regelaar **status** naar **ingeschakeld**.
+1. Klik in de Azure-Sentinel Portal op **Analytics**en klik vervolgens op het tabblad **regel sjablonen** . Kies de regel voor **afwijkende RDP-aanmeldings detectie (preview)** en verplaats de schuif regelaar **status** naar **ingeschakeld**.
 
     > [!NOTE]
     > Omdat voor het machine learning-algoritme 30 dagen aan gegevens nodig is om een basislijn Profiel van gebruikers gedrag te maken, moet u ervoor zorgen dat er 30 dagen aan gegevens over beveiligings gebeurtenissen worden verzameld voordat er incidenten kunnen worden gedetecteerd.

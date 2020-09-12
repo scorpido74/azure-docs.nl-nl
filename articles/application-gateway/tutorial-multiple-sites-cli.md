@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502750"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595835"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met Azure CLI
 
@@ -22,15 +22,14 @@ U kunt Azure CLI gebruiken om [het hosten van meerdere websites](multiple-site-o
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken
-> * Back-endlisteners maken
-> * Routeringsregels maken
-> * Schaalsets voor virtuele machines maken met de back-endpools
-> * Een CNAME-record in uw domein maken
+* Het netwerk instellen
+* Een toepassingsgateway maken
+* Back-endlisteners maken
+* Routeringsregels maken
+* Schaalsets voor virtuele machines maken met de back-endpools
+* Een CNAME-record in uw domein maken
 
-:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway voor meerdere locaties":::
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 U kunt deze procedure desgewenst voltooien met behulp van [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
@@ -42,7 +41,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -52,7 +51,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Maak het virtuele netwerk en de subset *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres *myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
+Maak het virtuele netwerk en de subset *myAGSubnet* met [az network vnet create](/cli/azure/network/vnet). Vervolgens kunt u het subnet dat voor de back-endservers vereist is, toevoegen met [az network vnet subnet create](/cli/azure/network/vnet/subnet). Maak het openbare IP-adres*myAGPublicIPAddress* met [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -174,7 +173,7 @@ az network application-gateway rule delete \
   --resource-group myResourceGroupAG
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines maken
+## <a name="create-virtual-machine-scale-sets"></a>Virtuele-machineschaalset maken
 
 In dit voorbeeld maakt u drie schaalsets voor virtuele machines die ondersteuning bieden voor de drie back-end-pools in de toepassingsgateway. De schaalsets die u maakt, hebben de namen *myvmss1*, *myvmss2* en *myvmss3*. Elke schaalset bevat twee exemplaren van virtuele machines waarop u IIS installeert.
 

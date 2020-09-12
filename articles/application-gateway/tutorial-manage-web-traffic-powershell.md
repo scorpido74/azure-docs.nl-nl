@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cb45f4a19cf36fe291ffe7299a46a44a245fbb8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806193"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595870"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Webverkeer met een toepassingsgateway beheren met behulp van Azure PowerShell
 
@@ -21,10 +21,9 @@ De toepassingsgateway wordt gebruikt voor het beheren en beveiligen van webverke
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Het netwerk instellen
-> * Een toepassingsgateway maken
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+* Het netwerk instellen
+* Een toepassingsgateway maken
+* Een virtuele-machineschaalset maken met de standaard back-endgroep
 
 Als u wilt, kunt u deze procedure uitvoeren met behulp van [Azure cli](tutorial-manage-web-traffic-cli.md).
 

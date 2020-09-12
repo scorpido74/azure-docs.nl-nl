@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806483"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595941"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Problemen met App Service oplossen in Application Gateway
 
@@ -23,9 +23,8 @@ Meer informatie over het vaststellen en oplossen van problemen die kunnen optred
 
 In dit artikel leert u hoe u de volgende problemen kunt oplossen:
 
-> [!div class="checklist"]
-> * De app service-URL wordt weer gegeven in de browser wanneer er een omleiding wordt gemaakt.
-> * Het domein app service ARRAffinity cookie is ingesteld op de naam van de app service-host, example.azurewebsites.net in plaats van de oorspronkelijke host.
+* De app service-URL wordt weer gegeven in de browser wanneer er een omleiding wordt gemaakt.
+* Het domein app service ARRAffinity cookie is ingesteld op de naam van de app service-host, example.azurewebsites.net in plaats van de oorspronkelijke host.
 
 Wanneer een back-end-toepassing een omleidings reactie verzendt, wilt u mogelijk de client omleiden naar een andere URL dan die opgegeven door de back-end-toepassing. U kunt dit doen wanneer een app service wordt gehost achter een toepassings gateway en moet de client een omleiding naar het relatieve pad omleiden. Een voor beeld is een omleiding van contoso.azurewebsites.net/path1 naar contoso.azurewebsites.net/path2. 
 

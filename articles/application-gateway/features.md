@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067974"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651983"
 ---
 # <a name="azure-application-gateway-features"></a>Azure-toepassing gateway functies
 
-[Azure Application Gateway](overview.md) is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren.
+[Azure-toepassing gateway](overview.md) is een webverkeer Load Balancer waarmee u verkeer naar uw webtoepassingen kunt beheren.
 
 ![Application Gateway conceptual](media/overview/figure1-720.png)
 
@@ -83,13 +83,13 @@ Zie [URL-pad op basis van route ring-overzicht](url-route-overview.md)voor meer 
 
 ## <a name="multiple-site-hosting"></a>Hosting van meerdere sites
 
-Met Application Gateway kunt u route ring configureren op basis van hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie multi-site listeners en configureert elke listener voor de respectieve poort-en protocol instelling. 
+Met Application Gateway kunt u route ring configureren op basis van hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Dit stelt u in staat om een efficiëntere topologie voor uw implementaties te configureren door maximaal 100 websites toe te voegen aan één toepassingsgateway. Elke website kan worden omgeleid naar een eigen back-endpool. Drie domeinen - contoso.com, fabrikam.com en adatum.com - wijzen bijvoorbeeld naar het IP-adres van de toepassingsgateway. U maakt dat drie listeners voor meerdere sites, en configureert elke listener voor de respectieve poort en protocolinstelling. 
 
 Aanvragen voor `http://contoso.com` worden doorgestuurd naar ContosoServerPool, `http://fabrikam.com` worden doorgestuurd naar FabrikamServerPool, enzovoort.
 
 Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`. Zie [Application Gateway multiple site hosting](multiple-site-overview.md)(Engelstalig) voor meer informatie.
 
-U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
+U kunt ook hostnamen met jokertekens definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
 
 ## <a name="redirection"></a>Omleiding
 
@@ -117,13 +117,13 @@ Application Gateway biedt systeemeigen ondersteuning voor de WebSocket- en HTTP-
 
 De WebSocket- en HTTP-/2-protocollen maken full-duplex-communicatie tussen een server en een client mogelijk via een langdurige TCP-verbinding. Dit maakt een meer interactieve communicatie mogelijk tussen de webserver en de client, die bidirectioneel kan zijn zonder dat hiervoor polling nodig is, zoals vereist in implementaties op basis van HTTP. Deze protocollen hebben een lage overhead, in tegens telling tot HTTP, en kunnen dezelfde TCP-verbinding opnieuw gebruiken voor meerdere aanvragen en antwoorden, wat resulteert in een efficiëntere bron gebruik. Deze protocollen zijn ontworpen om te werken via de traditionele HTTP-poorten: 80 en 443.
 
-Zie ondersteuning voor [Websockets](application-gateway-websocket.md) en [http/2-ondersteuning](configuration-overview.md#http2-support)voor meer informatie.
+Zie ondersteuning voor [Websockets](application-gateway-websocket.md) en [http/2-ondersteuning](configuration-listeners.md#http2-support)voor meer informatie.
 
 ## <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
 Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder problemen te verwijderen tijdens geplande service-updates. Deze instelling wordt ingeschakeld via de HTTP-instelling van de back-end en kan tijdens het maken van de regel worden toegepast op alle leden van een back-endgroep. Wanneer deze functie is ingeschakeld, wordt door Application Gateway ervoor gezorgd dat alle ongedaan maken van de registratie van exemplaren van een back-end-groep geen nieuwe aanvraag ontvangen en dat bestaande aanvragen binnen een geconfigureerde tijds limiet kunnen worden voltooid. Dit geldt voor beide back-endservers die expliciet worden verwijderd uit de back-end-pool door een wijziging van de gebruikers configuratie en back-end-exemplaren die als slecht zijn gerapporteerd zoals bepaald door de status controles. De enige uitzonde ring hierop zijn aanvragen die zijn gebonden voor het deregistreren van instanties, die expliciet zijn geregistreerd vanwege gateway beheer sessie-affiniteit, en blijven worden gefactureerd voor het ongedaan maken van de registratie van instanties.
 
-Zie [Application Gateway configuratie-overzicht](configuration-overview.md#connection-draining)voor meer informatie.
+Zie [Application Gateway configuratie-overzicht](configuration-http-settings.md#connection-draining)voor meer informatie.
 
 ## <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
@@ -139,15 +139,15 @@ Met HTTP-headers kunnen de client en server aanvullende informatie door geven me
 - De velden van de antwoord header worden verwijderd die gevoelige informatie kunnen onthullen.
 - Poort gegevens van X-doorgestuurd-voor kopteksten
 
-Application Gateway en WAF v2 SKU ondersteunt de mogelijkheid om HTTP-aanvragen en-antwoord headers toe te voegen, te verwijderen of bij te werken, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-groepen worden verplaatst. U kunt ook Url's, query reeks parameters en hostnaam herschrijven. Met het herschrijven van URL'S en op URL-pad gebaseerde route ring kunt u aanvragen routeren naar een van de back-endservers op basis van het oorspronkelijke pad of het herschrijf bare pad met behulp van de optie voor het opnieuw evalueren van het pad. 
+Application Gateway en WAF v2 SKU ondersteunen het toevoegen, verwijderen of bijwerken van headers van HTTP-aanvragen en -antwoorden, terwijl aanvraag- en antwoordpakketten zich tussen de client en back-endpools verplaatsen. U kunt ook URL's, parameters voor querytekenreeksen en de hostnaam herschrijven. Dankzij het herschrijven van URL'S en op paden gebaseerde URL-routering kunt u aanvragen routeren naar een van de back-endpools op basis van het oorspronkelijke pad of naar het herschrijfbare pad met behulp van de optie waarmee het pad opnieuw wordt geëvalueerd. 
 
-Het biedt ook de mogelijkheid om voor waarden toe te voegen om ervoor te zorgen dat de opgegeven headers of URL'S alleen worden herschreven wanneer aan bepaalde voor waarden wordt voldaan. Deze voor waarden zijn gebaseerd op de aanvraag-en antwoord informatie.
+Het biedt ook de mogelijkheid om voorwaarden toe te voegen om ervoor te zorgen dat de opgegeven headers of URL alleen worden herschreven wanneer aan bepaalde voorwaarden is voldaan. Deze voorwaarden zijn gebaseerd op de informatie in de aanvraag en het antwoord.
 
 Zie [HTTP-headers en URL herschrijven](rewrite-http-headers-url.md)voor meer informatie.
 
 ## <a name="sizing"></a>Grootte aanpassen
 
-Application Gateway Standard_v2 kan worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze SKU biedt geen verschillende grootte van het exemplaar. Zie [v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)voor automatisch schalen voor meer informatie over de prestaties en prijzen van v2.
+Application Gateway Standard_v2 kan worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze SKU biedt geen verschillende grootte van het exemplaar. Zie voor meer informatie over de prestaties en prijzen van v2 v2 en de [prijzen](understanding-pricing.md) [aanpassen](application-gateway-autoscaling-zone-redundant.md) .
 
 De Application Gateway standaard wordt aangeboden in drie grootten: **klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
 

@@ -3,12 +3,12 @@ title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047323"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651891"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
@@ -43,7 +43,9 @@ Voor beelden van deze bestands indelingen vindt u in de [Azure Policy github ops
 
 De aanbevolen werk stroom van het beleid als code ziet er als volgt uit:
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Overzicht van beleid voor code werk stroom" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram waarin het beleid wordt weer gegeven als code werk stroom vakken van maken om te testen om te implementeren." border="false":::
+   Het diagram waarin het beleid wordt weer gegeven als code werk stroom vakken. Maak een paar voor het maken van het beleid en initiatief definities. De toewijzing van de test behandelt de afdwingings modus is uitgeschakeld. Er wordt een gateway controle voor de nalevings status gevolgd door de machtigingen M S I toe te kennen en resources te herstellen.  Voor het implementeren van deksels wordt de toewijzing bijgewerkt terwijl de afdwingings modus is ingeschakeld.
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Beleids definities maken en bijwerken
 
