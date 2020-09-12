@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037556"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299679"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure lente Cloud CI/CD met GitHub-acties
 
@@ -42,7 +42,7 @@ De opdracht moet een JSON-object uitvoeren:
 }
 ```
 
-In dit voor beeld wordt het voor beeld [Piggy metrische gegevens](https://github.com/Azure-Samples/piggymetrics) gebruikt in github.  Split het voor beeld, open de pagina GitHub repository en klik op het tabblad **instellingen** . Open het menu **geheimen** en klik op **een nieuw geheim toevoegen**:
+In dit voor beeld wordt het voor beeld [Piggy metrische gegevens](https://github.com/Azure-Samples/piggymetrics) gebruikt in github.  Fork het voor beeld, open de pagina GitHub repository en klik op het tabblad **instellingen** . Open het menu **geheimen** en klik op **een nieuw geheim toevoegen**:
 
  ![Nieuw geheim toevoegen](./media/github-actions/actions1.png)
 
@@ -164,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Implementeren met maven-invoeg toepassing
-Een andere mogelijkheid is om de [maven-invoeg toepassing](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) te gebruiken voor het implementeren van het jar en het bijwerken van de app-instellingen. De opdracht `mvn azure-spring-cloud:deploy` is idempotent en maakt zo nodig automatisch apps. U hoeft niet vooraf bijbehorende apps te maken.
+Een andere mogelijkheid is om de [maven-invoeg toepassing](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) te gebruiken voor het implementeren van het jar en het bijwerken van de app-instellingen. De opdracht `mvn azure-spring-cloud:deploy` is idempotent en maakt zo nodig automatisch apps. U hoeft niet vooraf bijbehorende apps te maken.
 
 ```
 name: AzureSpringCloud

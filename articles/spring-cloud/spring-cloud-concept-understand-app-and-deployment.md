@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263971"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297532"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Meer informatie over app en implementatie in azure lente Cloud
 
-**App** en **implementatie** zijn de twee belang rijke concepten in het resource model van Azure lente Cloud. In azure lente Cloud is een *app* een abstractie van één zakelijke app of een micro service.  Een versie van code of binair wordt geïmplementeerd als de *app* wordt uitgevoerd in een *implementatie*.
+**App** en **implementatie** zijn de twee belang rijke concepten in het resource model van Azure lente Cloud. In azure lente Cloud is een *app* een abstractie van één zakelijke app of een micro service.  Een versie van code of binair wordt geïmplementeerd als de *app* wordt uitgevoerd in een *implementatie*.  Apps worden uitgevoerd in een *Azure lente-Cloud service-exemplaar*of gewoon *service-exemplaar*, zoals hieronder wordt weer gegeven.
 
  ![Apps en implementaties](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+U kunt meerdere service-exemplaren binnen één Azure-abonnement hebben, maar de Azure lente-Cloud service is het gemakkelijkst te gebruiken wanneer alle apps die een zakelijke app of micro service vormen, zich in één service-exemplaar bevinden.
 
 In de Cloud Standard-laag van Azure lente kan één app één productie-implementatie en één faserings implementatie hebben, zodat u deze eenvoudig kunt uitvoeren op een blauw/groen-implementatie.
 
@@ -28,7 +30,7 @@ De volgende functies/eigenschappen worden gedefinieerd op app-niveau.
 | Enum | Definitie |
 |:--|:----------------|
 | Openbaar</br>Eindpunt | De URL voor toegang tot de app |
-| Aangepast telefoonnummer</br>Domain | CNAME-record dat het aangepaste domein beveiligt |
+| Aangepast</br>Domain | CNAME-record dat het aangepaste domein beveiligt |
 | Service</br>Binding | Eigenschappen van bindings configuratie die zijn ingesteld in de function.jsvoor het bestand en het kenmerk *ServiceBusTrigger* |
 | Beheerd</br>Identiteit | Met beheerde identiteit door Azure Active Directory kan uw app eenvoudig toegang krijgen tot andere met Azure AD beveiligde resources, zoals Azure Key Vault |
 | Permanent</br>Storage | Instelling die ervoor zorgt dat gegevens behouden blijven na het opnieuw opstarten van de app |

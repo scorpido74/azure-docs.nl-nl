@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164917"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377859"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Externe toegang tot on-premises toepassingen via Azure AD-toepassingsproxy
 
@@ -57,6 +57,11 @@ In het volgende diagram ziet u hoe Azure AD en toepassings proxy samen werken om
 4. Als u eenmalige aanmelding hebt geconfigureerd, voert de connector extra authenticatie uit namens de gebruiker.
 5. De connector stuurt de aanvraag naar de on-premises toepassing.
 6. Het antwoord wordt via de connector en de Application proxy-service naar de gebruiker verzonden.
+
+> [!NOTE]
+> Net als de meeste Azure AD Hybrid-agents hoeft u voor de Application proxy-connector geen binnenkomende verbindingen te openen via uw firewall. Gebruikers verkeer in stap 3 eindigt bij de service Application proxy (in azure AD). De connector voor de toepassings proxy (on-premises) is verantwoordelijk voor de rest van de communicatie.
+>
+
 
 | Onderdeel | Beschrijving |
 | --------- | ----------- |

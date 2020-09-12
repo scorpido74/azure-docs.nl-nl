@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300099"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboekgegevens en werkruimten beheren in Azure Monitor
 
-Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een log Analytics-werk ruimte. Een werk ruimte is een container die gegevens-en configuratie gegevens bevat. Als u de toegang tot logboek gegevens wilt beheren, voert u verschillende beheer taken uit die betrekking hebben op uw werk ruimte.
+Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een log Analytics-werk ruimte. Een werkruimte is een container die gegevens en configuratie-informatie bevat. Als u de toegang tot logboek gegevens wilt beheren, voert u verschillende beheer taken uit die betrekking hebben op uw werk ruimte.
 
 In dit artikel wordt uitgelegd hoe u de toegang tot logboeken beheert en hoe u de werk ruimten die deze bevat, kunt beheren, met inbegrip van het verlenen van toegang tot: 
 
@@ -106,7 +106,7 @@ Aan elke werk ruimte kunnen meerdere accounts worden gekoppeld en elk account ka
 
 Voor de volgende activiteiten zijn ook Azure-machtigingen vereist:
 
-|Actie |Azure-machtigingen nodig |Opmerkingen |
+|Actie |Azure-machtigingen nodig |Notities |
 |-------|-------------------------|------|
 | Bewakings oplossingen toevoegen en verwijderen | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Deze machtigingen moeten worden toegekend op het niveau van de resourcegroep of het abonnement. |
 | De prijscategorie wijzigen | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -228,14 +228,14 @@ Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u e
 
     * Gebruikers de volgende machtigingen verlenen voor de werk ruimte: 
 
-        * `Microsoft.OperationalInsights/workspaces/read`– vereist zodat de gebruiker de werk ruimte kan opsommen en de Blade werk ruimte kan openen in de Azure Portal
-        * `Microsoft.OperationalInsights/workspaces/query/read`: vereist voor elke gebruiker die query's kan uitvoeren
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`– Als u logboeken van Azure AD-aanmelding wilt kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`– Als u Logboeken voor update beheer wilt lezen
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
+        * `Microsoft.OperationalInsights/workspaces/read` – vereist zodat de gebruiker de werk ruimte kan opsommen en de Blade werk ruimte kan openen in de Azure Portal
+        * `Microsoft.OperationalInsights/workspaces/query/read` : vereist voor elke gebruiker die query's kan uitvoeren
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` – Als u logboeken van Azure AD-aanmelding wilt kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` : Updatebeheer oplossingen voor logboeken kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` : Updatebeheer oplossingen voor logboeken kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` – Als u Logboeken voor update beheer wilt lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` -vereist om Updatebeheer oplossing te kunnen gebruiken
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` -vereist om Updatebeheer oplossing te kunnen gebruiken
 
     * Gebruikers de volgende machtigingen verlenen voor hun resources: `*/read` , toegewezen aan de rol van lezer of `Microsoft.Insights/logs/*/read` . 
 
@@ -270,7 +270,7 @@ Als u een rol wilt maken met alleen toegang tot de tabel _Security Baseline Base
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-In de bovenstaande voor beelden wordt een white list gedefinieerd van tabellen die zijn toegestaan. In dit voor beeld wordt de Black-definitie weer gegeven wanneer een gebruiker toegang heeft tot alle tabellen, maar de _SecurityAlert_ -tabel:
+In de bovenstaande voor beelden wordt een lijst met toegestane tabellen gedefinieerd. In dit voor beeld wordt de geblokkeerde lijst definitie weer gegeven wanneer een gebruiker toegang heeft tot alle tabellen, maar de _SecurityAlert_ -tabel:
 
 ```
 "Actions":  [

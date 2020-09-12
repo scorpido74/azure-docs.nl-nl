@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d05de44343d5d530a367286bec3d82ba3d66f0f6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817796"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322514"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -26,15 +26,15 @@ Managed Disks is een functie die schijf beheer voor Azure IaaS-Vm's vereenvoudig
 
 **Als ik een standaard beheerde schijf Maak op basis van een bestaande VHD van 80 GB, hoeveel krijg ik dan de kosten?**
 
-Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
 
 **Zijn er transactie kosten voor Standard Managed disks?**
 
-Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
 
 **Voor een Standard Managed disk worden er kosten in rekening gebracht voor de werkelijke grootte van de gegevens op de schijf of voor de ingerichte capaciteit van de schijf?**
 
-Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
 
 **Hoe worden de prijzen van Premium-beheerde schijven afwijkend van niet-beheerde schijven?**
 
@@ -304,7 +304,7 @@ Nee. Azure Site Recovery Azure naar Azure-beveiliging voor Vm's met Managed Disk
 
 **Kan ik Vm's migreren met onbeheerde schijven die zich bevinden op opslag accounts die al of niet eerder zijn versleuteld naar Managed disks?**
 
-Ja
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks en Storage Service Encryption
 
@@ -342,7 +342,7 @@ Ja. Alle beheerde moment opnamen en installatie kopieën worden automatisch vers
 
 **Kan ik Vm's converteren met onbeheerde schijven die zich bevinden op de opslag accounts die eerder zijn versleuteld op beheerde schijven?**
 
-Ja
+Yes
 
 **Wordt een geëxporteerde VHD van een beheerde schijf of een moment opname ook versleuteld?**
 
@@ -364,7 +364,7 @@ Een Premium-gegevens schijf die is gemaakt op basis van een VHD van 80 GB, wordt
 
 **Zijn er transactie kosten om Premium-SSD schijven te gebruiken?**
 
-Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
 
 **Wat zijn de limieten voor IOPS en door Voer die ik uit de schijf cache kan halen?**
 
@@ -398,11 +398,11 @@ Nee, standaard SSD-beheerde schijven van elke grootte kunnen niet worden gebruik
 
 **Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die Azure ondersteunt voor een besturingssysteem schijf is 2 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
+Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die door Azure wordt ondersteund voor een besturingssysteem schijf is 4 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
 
 **Wat is de grootste niet-beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die door Azure wordt ondersteund voor een onbeheerde schijf van het besturings systeem is 2 TiB. Azure biedt ondersteuning voor Maxi maal 4 TiB voor gegevens niet-beheerde schijven.
+Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die door Azure wordt ondersteund voor een onbeheerde schijf van het besturings systeem is 4 TiB. Azure biedt ondersteuning voor Maxi maal 4 TiB voor gegevens niet-beheerde schijven.
 
 **Wat is de grootste grootte van de pagina-blob die wordt ondersteund?**
 

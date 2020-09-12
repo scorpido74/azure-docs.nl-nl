@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942125"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299521"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>De virtuele machine reageert niet tijdens het Toep assen van het configuratie beleid voor het controle beleid
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij de virtuele ma
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de VM weer te geven, ziet u dat de scherm opname wordt weer gegeven dat het besturings systeem (OS) is vastgelopen tijdens het opstarten met het bericht **beleids configuratie beleid Toep assen**.
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven dat het besturings systeem (OS) niet meer reageert tijdens het opstarten met het bericht **beleids configuratie beleid Toep assen**.
 
   ![Het besturings systeem wordt opgestart met het volgende bericht: ' configuratie beleid voor controle beleid Toep assen '](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 

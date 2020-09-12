@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180674"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297824"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Kubernetes-dash board gebruiken om uw Azure Stack Edge GPU-apparaat te bewaken
 
@@ -26,7 +26,6 @@ In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
 > * Toegang tot het Kubernetes-dash board op uw apparaat
-> * `aseuser`Configuratie downloaden
 > * Modules weer geven die op uw apparaat zijn geïmplementeerd
 > * IP-adres ophalen voor toepassingen die op uw apparaat zijn geïmplementeerd
 > * Container logboeken weer geven voor modules die op uw apparaat zijn geïmplementeerd
@@ -42,26 +41,18 @@ Op uw Azure Stack edge-apparaat kunt u het Kubernetes-dash board in de modus *al
 
 Het Kubernetes-dash board is *alleen-lezen* en wordt uitgevoerd op het Kubernetes-hoofd knooppunt op poort 31000. Volg deze stappen om toegang te krijgen tot het dash board: 
 
-1. Ga in de lokale gebruikers interface van uw apparaat naar **apparaat** en ga vervolgens naar **eind punten**van het apparaat. Selecteer de URL van het Kubernetes-dash board om het dash board in een browser te openen.
+1. Ga in de lokale gebruikers interface van uw apparaat naar **apparaat** en ga vervolgens naar **eind punten**van het apparaat. 
+1. Selecteer **Download configuratie** om een te downloaden `kubeconfig` waarmee u toegang krijgt tot het dash board. Sla het `config.json` bestand op uw lokale systeem op.
+1. Selecteer de URL van het Kubernetes-dash board om het dash board in een browser te openen.
 
     ![URL van Kubernetes-dash board op de pagina apparaat in lokale gebruikers interface](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
 
-1. Selecteer op de aanmeldings pagina van het **Kubernetes-dash board** **token**. 
-1. Geef een token op. 
-    1. [Maak een verbinding via de Power shell-interface van uw apparaat](azure-stack-edge-gpu-connect-powershell-interface.md)om het token op te halen.
-    1. Voer de volgende opdracht uit:  `Get-HcsKubernetesDashboardToken`
+1. Op de aanmeldings pagina van het **Kubernetes-dash board** :
     
-    1. Kopieer de token teken reeks die bij de prompt wordt weer gegeven. Hier volgt een voorbeeld van uitvoer:
-        
-        ```powershell
-        [10.100.10.10]: PS>Get-HcsKubernetesDashboardToken
-        eyJhbGciOiJSUzI1NiIsImtpZCI6IkpFTEtBYTMyZ0Ezb01OYTVFSnVaUV85OWtLdXNETTZQR0k0UlFybGdReFUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi03czZ6ayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU3NzY3ZDAzLTJlYWUtNDlkMi1hNDEyLTNkOTU3MDFiMThiMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UgNrpVYVJBEaWxFlljuENUQQmzFXMYG2VsJUIYFdp2AO20zX0k5dRvwcCpeGlqSKb9MyYjG0c6RmT9uCOZk-vAwt7btszQLD7KPCwh_nn_NiIyO8ApgGRYZP8NuP8CBTX3tl_hpwfHtZ0ksbuKAduIL-0uPF0rG5wgLk9cTEw6fKSc2UZW6bIzhNSp_uSiP6MexOS6OftF9JFZejkIGd33dSp-k-tgFlm2Zy96sdFJC0q-XsH7jygiVnfxA9XMs5wqW26LkCh0rfO2WI3C1XFK-4TpufRZLJHo5WPlu-Tnsxa8xmtk2jQ3us-sXcBRrvhPNPrNKkbqc9hbjmWfGD0Q
-        [10.100.10.10]: PS>
-        ```
-        
-1. Selecteer **Aanmelden**.
-
-    ![Aanmelden bij Kubernetes-dash board](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png)
+    1. Selecteer **kubeconfig**. 
+        ![Selecteer de optie kubeconfig](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
+    1. Het weglatings teken selecteren.. **.** Blader naar en ga naar de `kubeconfig` versie die u eerder hebt gedownload op uw lokale systeem. Selecteer **Aanmelden**.
+        ![Bladeren naar het kubeconfig-bestand](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
 6. U kunt nu het Kubernetes-dash board weer geven voor uw Azure Stack edge-apparaat in de modus alleen-lezen.
 
@@ -110,6 +101,21 @@ Als u de container logboeken wilt weer geven, voert u de volgende stappen uit op
 
     ![Container logboeken weer geven 2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
+
+## <a name="view-cpu-memory-usage"></a>CPU, geheugen gebruik weer geven
+
+Het Kubernetes-dash board voor Azure Stack edge-apparaat heeft ook een [invoeg toepassing voor metrische gegevens](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) die het CPU-en geheugen gebruik in Kubernetes-bronnen samenvoegt.
+ 
+U kunt bijvoorbeeld de CPU en het geheugen weer geven die zijn verbruikt over implementaties in alle naam ruimten. 
+
+![Het CPU-en geheugen gebruik in alle implementaties weer geven](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-all-1.png)
+
+U kunt ook filteren op een specifieke naam ruimte. In het volgende voor beeld kunt u het CPU-en geheugen gebruik alleen bekijken voor Azure Arc-implementaties.  
+
+![CPU-en geheugen gebruik voor Azure Arc-implementaties weer geven](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
+
+De Kubernetes Metrics-server biedt automatisch schalen van pijp lijnen die vergelijkbaar zijn met die van de [horizontale pod automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

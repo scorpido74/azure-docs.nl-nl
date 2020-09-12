@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1232c47040a5577731121ee0bb17eb264240e765
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264875"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297702"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Postman configureren voor Media Services v3-REST API-aanroepen
 
@@ -37,7 +37,7 @@ Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v
     We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
 
 > [!IMPORTANT]
-> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
+> Bekijk [naamconventies](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="download-postman-files"></a>Postman-bestanden downloaden
 

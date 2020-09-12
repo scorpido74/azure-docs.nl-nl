@@ -1,6 +1,6 @@
 ---
-title: 'Power shell: een installatie kopie maken van een moment opname of VHD in een galerie met gedeelde afbeeldingen'
-description: Meer informatie over het maken van een installatie kopie van een moment opname of VHD in een galerie met gedeelde afbeeldingen met behulp van Power shell.
+title: 'Power shell: een installatie kopie maken van een moment opname of een beheerde schijf in een galerie met gedeelde afbeeldingen'
+description: Meer informatie over het maken van een installatie kopie van een moment opname of een beheerde schijf in een galerie met gedeelde afbeeldingen met behulp van Power shell.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494714"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300252"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Een installatie kopie maken van een VHD of moment opname in een galerie met gedeelde afbeeldingen met behulp van Power shell
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Een installatie kopie maken van een beheerde schijf of moment opname in een galerie met gedeelde afbeeldingen met behulp van Power shell
 
-Als u een bestaande moment opname of VHD hebt die u wilt migreren naar een gedeelde installatie kopie galerie, kunt u rechtstreeks vanuit de VHD of de moment opname een installatie kopie van een gedeelde installatie kopie maken. Nadat u de nieuwe installatie kopie hebt getest, kunt u de bron-VHD of-moment opname verwijderen. U kunt ook een installatie kopie maken op basis van een VHD of een moment opname in een galerie met gedeelde afbeeldingen met behulp van de [Azure cli](image-version-snapshot-cli.md).
+Als u een bestaande moment opname of beheerde schijf hebt die u wilt migreren naar een gedeelde installatie kopie galerie, kunt u rechtstreeks vanuit de beheerde schijf of moment opname een installatie kopie van een gedeelde installatie kopie maken. Nadat u de nieuwe installatie kopie hebt getest, kunt u de door de bron beheerde schijf of moment opname verwijderen. U kunt ook een installatie kopie maken van een beheerde schijf of moment opname in een galerie met gedeelde afbeeldingen met behulp van de [Azure cli](image-version-snapshot-cli.md).
 
 Afbeeldingen in een afbeeldings galerie hebben twee onderdelen, die we in dit voor beeld gaan maken:
 - Een **definitie van een installatie kopie** bevat informatie over de installatie kopie en vereisten voor het gebruik ervan. Dit omvat of de installatie kopie Windows of Linux, gespecialiseerde of gegeneraliseerde, release opmerkingen en minimale en maximale geheugen vereisten zijn. Het is een definitie van een type installatie kopie. 
@@ -27,14 +27,14 @@ Afbeeldingen in een afbeeldings galerie hebben twee onderdelen, die we in dit vo
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet een moment opname of VHD hebben om dit artikel te volt ooien. 
+U moet een moment opname of beheerde schijf hebben om dit artikel te volt ooien. 
 
 Als u een gegevens schijf wilt toevoegen, mag de grootte van de gegevens schijf niet groter zijn dan 1 TB.
 
 Wanneer u dit artikel doorwerkt, vervangt u de resource namen waar nodig.
 
 
-## <a name="get-the-snapshot-or-vhd"></a>De moment opname of VHD ophalen
+## <a name="get-the-snapshot-or-managed-disk"></a>De moment opname of Managed Disk ophalen
 
 U kunt een lijst met moment opnamen die beschikbaar zijn in een resource groep weer geven met behulp van [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot). 
 
@@ -50,17 +50,17 @@ $source = Get-AzSnapshot `
    -ResourceGroupName myResourceGroup
 ```
 
-U kunt ook een VHD gebruiken in plaats van een moment opname. Gebruik [Get-AzDisk](/powershell/module/az.compute/get-azdisk)om een VHD op te halen. 
+U kunt ook een beheerde schijf gebruiken in plaats van een moment opname. Gebruik [Get-AzDisk](/powershell/module/az.compute/get-azdisk)om een beheerde schijf te verkrijgen. 
 
 ```azurepowershell-interactive
 Get-AzDisk | Format-Table -Property Name,ResourceGroupName
 ```
 
-Haal vervolgens de VHD op en wijs deze toe aan de `$source` variabele.
+Haal vervolgens de beheerde schijf op en wijs deze toe aan de `$source` variabele.
 
 ```azurepowershell-interactive
 $source = Get-AzDisk `
-   -SnapshotName mySnapshot
+   -Name myDisk
    -ResourceGroupName myResourceGroup
 ```
 
@@ -88,7 +88,7 @@ $gallery = Get-AzGallery `
 
 Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Ze worden gebruikt om informatie over de installatie kopie te beheren. Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. 
 
-Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. In dit voor beeld gaan we ervan uit dat de moment opname of VHD afkomstig is van een virtuele machine die in gebruik is en niet is gegeneraliseerd. Als de VHD of moment opname is gemaakt van een gegeneraliseerd besturings systeem (na het uitvoeren van Sysprep voor Windows of [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` voor Linux), wijzigt u vervolgens de `-OsState` to `generalized` . 
+Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. In dit voor beeld gaan we ervan uit dat de moment opname of beheerde schijf afkomstig is van een virtuele machine die in gebruik is en niet is gegeneraliseerd. Als de beheerde schijf of moment opname is gemaakt van een gegeneraliseerd besturings systeem (na het uitvoeren van Sysprep voor Windows of [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` voor Linux), wijzigt u vervolgens de `-OsState` to `generalized` . 
 
 Zie [Installatiekopiedefinities](./windows/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
@@ -118,7 +118,7 @@ Maak een installatie kopie versie van de moment opname met behulp van [New-AzGal
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
-Als u wilt dat uw installatie kopie een gegevens schijf bevat naast de besturingssysteem schijf, voegt u de `-DataDiskImage` para meter toe en stelt u deze in op de id van de moment opname van de gegevens schijf of de VHD.
+Als u wilt dat uw installatie kopie naast de besturingssysteem schijf een gegevens schijf bevat, voegt u de `-DataDiskImage` para meter toe en stelt u deze in op de id van de gegevens schijf momentopname of beheerde schijf.
 
 In dit voor beeld is de versie van de installatie kopie *1.0.0* en wordt deze gerepliceerd naar zowel *West-Centraal VS* -en *Zuid-Centraal VS* -data centers. Houd er rekening mee dat u bij het kiezen van doel regio's voor replicatie ook de *bron* regio moet toevoegen als doel voor replicatie.
 

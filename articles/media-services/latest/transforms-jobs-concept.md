@@ -9,15 +9,15 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: 103509de90d8819b19c46ebba7ae2dcc6071ac33
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256066"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297974"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Trans formaties en taken in Media Services
 
@@ -116,7 +116,7 @@ Ga naar het artikel van de [Azure Media Services-community](media-services-commu
 
 ## <a name="see-also"></a>Zie ook
 
-* [Fout codes](/rest/api/media/jobs/get#joberrorcode)
+* [Foutcodes](/rest/api/media/jobs/get#joberrorcode)
 * [Filteren, ordenen, paginering van Media Services entiteiten](entities-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen

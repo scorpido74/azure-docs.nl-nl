@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045328"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322548"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Gegeneraliseerde installatie kopieën maken zonder een inrichtings agent
 
@@ -174,7 +174,7 @@ Als op uw virtuele machine python niet is geïnstalleerd of beschikbaar is, kunt
    </Health>
    ```
 
-3. Deze gegevens plaatsen op WireServer:`curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
+3. Deze gegevens plaatsen op WireServer: `curl -X POST -H 'x-ms-version: 2012-11-30' -H "x-ms-agent-name: WALinuxAgent" -H "Content-Type: text/xml;charset=utf-8" -d "$REPORT_READY_XML" http://168.63.129.16/machine?comp=health`
 
 ### <a name="automating-running-the-code-at-first-boot"></a>Automatische uitvoering van de code bij eerste keer opstarten
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Deze gesystemte service heeft drie dingen voor basis inrichting:
 
 1. Rapporten die gereed zijn voor Azure (om aan te geven dat deze correct zijn gearriveerd).
-1. Hiermee wordt de naam van de virtuele machine op basis van de door de gebruiker opgegeven VM-naam gewijzigd door deze gegevens uit IMDS te halen.
+1. Hiermee wordt de naam van de virtuele machine op basis van de door de gebruiker opgegeven VM-naam gewijzigd door deze gegevens uit [Azure instance metadata service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service)op te halen. **Opmerking** IMDS biedt ook andere [meta gegevens voor instanties](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service), zoals open bare SSH-sleutels, zodat u meer dan de hostnaam kunt instellen.
 1. Wordt uitgeschakeld, zodat deze alleen wordt uitgevoerd bij de eerste keer opstarten en niet bij de volgende keer opnieuw opstarten.
 
 Met de eenheid op het bestands systeem voert u de volgende handelingen uit om het bestand in te scha kelen:

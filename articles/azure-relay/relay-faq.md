@@ -3,12 +3,12 @@ title: Azure Relay Veelgestelde vragen | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over de Azure Relay-service.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317030"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299283"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay
 
@@ -119,8 +119,8 @@ Zie [Relay-uitzonde ringen][Relay exceptions]voor een beschrijving van veelvoork
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Wat is een Shared Access Signature en welke talen kan ik gebruiken om een hand tekening te genereren?
 Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie [Service Bus verificatie met hand tekeningen voor gedeelde toegang][Shared Access Signatures]voor meer informatie over het genereren van uw eigen hand tekeningen in Node.js, PHP, Python, Java, C en C#.
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Is het mogelijk om relay-eind punten te White listen?
-Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor toevoegen `*.servicebus.windows.net` aan firewalls die ondersteuning bieden voor DNS-White list.
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Is het mogelijk om alleen bepaalde relay-eind punten toe te staan?
+Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor toevoegen `*.servicebus.windows.net` aan firewalls die ondersteuning bieden voor een DNS-goedkeurings vermelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een naamruimte maken](relay-create-namespace-portal.md)

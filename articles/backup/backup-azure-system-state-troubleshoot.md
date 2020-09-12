@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 7eb596853bfe17ec5bf14c8830c1b95bde5b7c98
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022357"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376278"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -66,20 +66,20 @@ Als u Windows Server Back-up wilt installeren met behulp van Power shell, voert 
 
 Als u Windows Server Back-up wilt installeren met behulp van Serverbeheer, voert u de volgende stappen uit:
 
-1. Klik in **Server**beheer op **functies en onderdelen toevoegen**. De **wizard functies en onderdelen toevoegen** wordt weer gegeven.
+1. Selecteer in **Server**beheer de optie **functies en onderdelen toevoegen**. De **wizard functies en onderdelen toevoegen** wordt weer gegeven.
 
     ![Dashboard](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Selecteer **installatie type** en klik op **volgende**.
+2. Selecteer **installatie type** en selecteer **volgende**.
 
     ![Type installatie](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Selecteer een server uit de Server groep en klik op **volgende**. In de serverrol, behoud de standaard selectie en klik op **volgende**.
-4. Selecteer **Windows Server back-up** op het tabblad **functies** en klik op **volgende**.
+3. Selecteer een server uit de Server groep en selecteer **volgende**. In de serverrol, behoud de standaard selectie en selecteer **volgende**.
+4. Selecteer **Windows Server back-up** op het tabblad **functies** en selecteer **volgende**.
 
     ![Het venster onderdelen selecteren](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. Klik op het tabblad **bevestiging** op **installeren** om het installatie proces te starten.
+5. Op het tabblad **bevestiging** selecteert u **installeren** om het installatie proces te starten.
 6. Op het tabblad **resultaten** wordt weer gegeven dat de functie Windows Server back-up is geïnstalleerd op uw Windows-Server.
 
     ![Resultaten van de installatie](./media/backup-azure-system-state-troubleshoot/results.jpg)

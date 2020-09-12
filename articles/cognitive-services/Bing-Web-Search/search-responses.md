@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202249"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297787"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
 
@@ -293,12 +293,12 @@ Een wiskundige expressie kan de volgende symbolen bevatten:
 |Symbool|Beschrijving|
 |------------|-----------------|
 |+|Optellen|
-|-|Aftrekken|
+|-|Aftrekking|
 |/|Afdeling|
-|*|Vermenigvuldigen|
-|^|Vermogen|
+|*|Vermenigvuldiging|
+|^|Stroom|
 |!|Faculteit|
-|.|Decimal|
+|.|Decimaal|
 |()|Rang groepering|
 |[]|Functie|
 
@@ -435,7 +435,7 @@ Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, 
 
 Antwoorden van de Bing Webzoekopdrachten-API kunnen de volgende headers bevatten:
 
-| Header | Beschrijving |
+| Koptekst | Beschrijving |
 |-|-|
 |`X-MSEdge-ClientID`|De unieke ID die Bing aan de gebruiker heeft toegewezen|
 |`BingAPIs-Market`|De markt die is gebruikt om aan de aanvraag te voldoen|
@@ -445,7 +445,7 @@ Het is vooral belang rijk dat u de client-ID persistent maakt en de volgende aan
 
 Wanneer u echter de Bing Webzoekopdrachten-API aanroept vanuit Java script, kunnen de ingebouwde beveiligings functies (CORS) van uw browser ertoe leiden dat u geen toegang hebt tot de waarden van deze headers.
 
-Als u toegang wilt krijgen tot de headers, kunt u de Bing Webzoekopdrachten-API aanvraag indienen via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
+Als u toegang wilt krijgen tot de headers, kunt u de Bing Webzoekopdrachten-API aanvraag indienen via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers filtert en deze beschikbaar maakt voor Java script.
 
 Het is eenvoudig om een CORS-proxy te installeren zodat onze [zelf studie-app](tutorial-bing-web-search-single-page-app.md) toegang kan krijgen tot de optionele client headers. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 

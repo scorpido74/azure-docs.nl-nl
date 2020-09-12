@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180011"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378080"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -52,9 +52,9 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 
 Er zijn twee kosten verbonden aan de back-upoplossing voor Azure-bestands share:
 
-1. **Opslag kosten voor moment opname**: de opslag kosten die worden gemaakt voor moment opnamen worden gefactureerd samen met Azure files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/) genoemde prijs informatie 
+1. **Opslag kosten voor moment opname**: de opslag kosten die worden gemaakt voor moment opnamen worden gefactureerd samen met Azure files gebruik volgens de [hier](https://azure.microsoft.com/pricing/details/storage/files/) genoemde prijs informatie
 
-2. **Kosten van beveiligde instanties** : vanaf 1 september 2020 worden de kosten van een beveiligd exemplaar in rekening gebracht op basis van de [hier](https://azure.microsoft.com/en-in/pricing/details/backup/) genoemde prijs gegevens. De kosten voor het beveiligde exemplaar zijn afhankelijk van de totale grootte van beveiligde bestands shares in een opslag account.
+2. **Kosten van beveiligde instanties**: vanaf 1 september 2020 worden de kosten van een beveiligd exemplaar in rekening gebracht op basis van de [hier](https://azure.microsoft.com/pricing/details/backup/)genoemde prijs gegevens. De kosten voor het beveiligde exemplaar zijn afhankelijk van de totale grootte van beveiligde bestands shares in een opslag account.
 
 Als u gedetailleerde schattingen wilt ontvangen voor het maken van back-ups van Azure-bestands shares, kunt u de gedetailleerde [Azure backup prijzen Estimator](https://aka.ms/AzureBackupCostEstimates).  
 

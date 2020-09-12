@@ -7,20 +7,20 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a98207ef5b03f77a4f741894ec210f7551c5933
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305139"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378131"
 ---
-# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in micro soft Commercial Marketplace
+# <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in de commerciële Marketplace
 
 In dit artikel vindt u meer informatie over de Api's waarmee partners hun SaaS-aanbiedingen kunnen verkopen in Microsoft AppSource en Azure Marketplace. Er is een uitgever vereist voor het implementeren van integratie met deze Api's voor het publiceren van een transactable SaaS-aanbieding in het partner centrum.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>De levens cyclus van het SaaS-abonnement beheren
 
-Azure Marketplace beheert de volledige levens cyclus van een SaaS-abonnement na aankoop door de eind klant.  Het maakt gebruik van de landings pagina, de uitvoering van Api's, Operations Api's en de webhook als mechanisme om de daad werkelijke activering van SaaS-abonnementen en het gebruik, de updates en de annulering van het abonnement te best uren.  De factuur van de eind klant is gebaseerd op de status van de SaaS-abonnement die micro soft onderhoudt. 
+De commerciële Marketplace beheert de volledige levens cyclus van een SaaS-abonnement na aankoop door de eind klant.  Het maakt gebruik van de landings pagina, de uitvoering van Api's, Operations Api's en de webhook als mechanisme om de daad werkelijke activering van SaaS-abonnementen en het gebruik, de updates en de annulering van het abonnement te best uren.  De factuur van de eind klant is gebaseerd op de status van de SaaS-abonnement die micro soft onderhoudt. 
 
 ### <a name="states-of-a-saas-subscription"></a>Statussen van een SaaS-abonnement
 
@@ -35,7 +35,7 @@ Nadat een eind klant (of CSP) een SaaS-aanbieding heeft gekocht op Marketplace, 
 Voor het maken van accounts gebeurt het volgende:
 
 1. De klant moet op de knop **configureren** klikken die beschikbaar is voor een SaaS-aanbieding na een succes volle aankoop in Microsoft AppSource of Azure Portal. Of in het e-mail bericht dat de klant kort na de aankoop zal ontvangen.
-2. Vervolgens waarschuwt micro soft de partner over de aankoop door te openen op het tabblad nieuwe browser de URL van de landings pagina met de para meter token (Marketplace Purchase Identification token).
+2. Vervolgens waarschuwt micro soft de partner over de aankoop door te openen op het tabblad nieuwe browser de URL van de landings pagina met de para meter token (het aankoop identificatie token voor commerciële markt plaatsen).
 
 Een voor beeld van een dergelijke aanroep is `https://contoso.com/signup?token=<blob>` , terwijl de URL van de landings pagina voor deze SaaS-aanbieding in het partner centrum is geconfigureerd als `https://contoso.com/signup` . Dit token biedt de uitgever een ID die de SaaS-aankoop en de klant op unieke wijze identificeert.
 
@@ -46,12 +46,12 @@ De URL van de landings pagina moet 24 uur duren en u kunt op elk moment nieuwe o
 
 Vervolgens moet het *token* worden teruggestuurd naar micro soft via de uitgever door de [API voor SaaS-conflicten](#resolve-a-purchased-subscription)aan te roepen als de waarde van de `x-ms-marketplace-token header` para meter header.  Als gevolg van de API-aanroep omzetten, wordt het token uitgewisseld voor de details van de SaaS-aankoop, zoals de unieke ID van de aankoop, de gekochte aanbiedings-ID, het gekochte abonnement-id, enzovoort.
 
-Op de landings pagina moet de klant zijn aangemeld bij het nieuwe of bestaande SaaS-account via Azure Active Directory (AAD) eenmalige aanmelding (SSO).
+Op de landings pagina moet de klant zijn aangemeld bij het nieuwe of bestaande SaaS-account via Azure Active Directory (SSO) voor eenmalige aanmelding (Azure AD).
 
 De uitgever moet SSO-aanmelding implementeren om de gebruikers ervaring te bieden die micro soft voor deze stroom vereist.  Zorg ervoor dat u de Azure AD-toepassing met meerdere tenants gebruikt, zowel werk-als school accounts of persoonlijke micro soft-accounts wilt toestaan bij het configureren van de SSO.  Deze vereiste is alleen van toepassing op de landings pagina en voor gebruikers die worden omgeleid naar de SaaS-service wanneer ze al zijn aangemeld met micro soft-referenties. Het is niet van toepassing op alle aanmeldingen bij de SaaS-service.
 
 > [!NOTE]
->Als een SSO-aanmelding vereist dat een beheerder machtigingen voor een app toewijst, moet de beschrijving van de aanbieding in het partner centrum vermelden dat toegang op beheerders niveau is vereist. Dit is om te voldoen aan het [certificerings beleid voor Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options).
+>Als een SSO-aanmelding vereist dat een beheerder machtigingen voor een app toewijst, moet de beschrijving van de aanbieding in het partner centrum vermelden dat toegang op beheerders niveau is vereist. Dit is om te voldoen aan het [beleid voor commerciële Marketplace-certificering](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options).
 
 Zodra u bent aangemeld, moet de klant de SaaS-configuratie aan de kant van de uitgever volt ooien. De uitgever moet vervolgens de [API Activate](#activate-a-subscription) van het abonnement aanroepen om een signaal naar Marketplace te verzenden dat het inrichten van het SaaS-account is voltooid.
 Hiermee wordt de facturerings cyclus van de klant gestart. Als het activeren van de API-aanroep van het abonnement is mislukt, wordt de klant niet gefactureerd voor de aankoop.
@@ -67,16 +67,16 @@ Wanneer het SaaS-abonnement al actief is en de klant kiest voor het starten van 
 
 #### <a name="being-updated-subscribed"></a>Worden bijgewerkt (geabonneerd)
 
-Deze actie houdt in dat een update van een bestaand actief SaaS-abonnement wordt verwerkt door zowel micro soft als de uitgever. Een dergelijke update kan worden gestart door
+Deze actie houdt in dat een update van een bestaand actief SaaS-abonnement wordt verwerkt door zowel micro soft als de uitgever. Een dergelijke update kan worden gestart door:
 
-* de klant van de Marketplace
-* de CSP van de Marketplace
-* de klant van de SaaS-site van de uitgever (niet van toepassing op de CSP die aankopen heeft gedaan)
+- de klant van de commerciële Marketplace.
+- de CSP van de commerciële Marketplace.
+- de klant van de SaaS-site van de uitgever (is niet van toepassing op de CSP die aankopen heeft gedaan).
 
 Er zijn twee soorten updates beschikbaar voor een SaaS-abonnement:
 
-1. Plan een update uit wanneer de klant een ander abonnement kiest.
-1. Hoeveelheid bijwerken wanneer de klant het aantal aangeschafte seats voor het abonnement wijzigt
+- Plan een update uit wanneer de klant een ander abonnement kiest.
+- Hoeveelheid bijwerken wanneer de klant het aantal aangeschafte seats voor het abonnement wijzigt
 
 Alleen een actief abonnement kan worden bijgewerkt. Terwijl het abonnement wordt bijgewerkt, blijft de status actief aan de kant van micro soft.
 
@@ -141,7 +141,7 @@ Aan het einde van de abonnements termijn (na een maand of een jaar) wordt het Sa
 
 Alleen actieve abonnementen worden automatisch verlengd.  Abonnementen blijven actief tijdens het vernieuwings proces en als de automatische verlenging slaagt.  Na de verlenging worden de begin-en eind datum van de abonnements termijn bijgewerkt naar de datums van de nieuwe periode.
 
-Als een automatische verlenging mislukt vanwege een probleem met de betaling, wordt het abonnement onderbroken.  Er wordt een melding van de uitgever weer gegeven.
+Als een automatische vernieuwing mislukt vanwege een probleem met de betaling, wordt het abonnement onderbroken.  Er wordt een melding van de uitgever weer gegeven.
 
 #### <a name="canceled-unsubscribed"></a>Geannuleerd (*afgemeld*) 
 
@@ -178,7 +178,7 @@ Wanneer een klant wordt omgeleid naar de URL van de landings pagina van de partn
 
 Bij het aanroepen van Resolve API worden de abonnements gegevens en de status van SaaS-abonnementen in alle ondersteunde statussen geretourneerd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -194,7 +194,7 @@ Bij het aanroepen van Resolve API worden de abonnements gegevens en de status va
 |  `x-ms-requestid`    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  `x-ms-correlationid` |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  `authorization`     |  Een uniek toegangs token dat de uitgever identificeert die deze API aanroept. De indeling is `"Bearer <accessaccess_token>"` wanneer de token waarde wordt opgehaald door de uitgever, zoals wordt uitgelegd in [een Token ophalen op basis van de Azure AD-App](./pc-saas-registration.md#get-the-token-with-an-http-post). |
-|  `x-ms-marketplace-token`  | De para meter voor het kopen van id- *tokens* voor Marketplace voor het oplossen.  Het token wordt door gegeven in de URL-oproep van de landings pagina wanneer de klant wordt omgeleid naar de website van de SaaS-partner (bijvoorbeeld: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Opmerking:* De *token* waarde die wordt gecodeerd, maakt deel uit van de URL van de landings pagina en moet dus worden gedecodeerd voordat deze als para meter wordt gebruikt in deze API-aanroep.  <br> <br> Voor beeld van een gecodeerde teken reeks in de URL ziet er als volgt uit: `contoso.com/signup?token=ab%2Bcd%2Fef` , waarbij token is `ab%2Bcd%2Fef` .  Hetzelfde token is gedecodeerd:`Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | De para meter voor het kopen van id- *tokens* voor Marketplace voor het oplossen.  Het token wordt door gegeven in de URL-oproep van de landings pagina wanneer de klant wordt omgeleid naar de website van de SaaS-partner (bijvoorbeeld: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Opmerking:* De *token* waarde die wordt gecodeerd, maakt deel uit van de URL van de landings pagina en moet dus worden gedecodeerd voordat deze als para meter wordt gebruikt in deze API-aanroep.  <br> <br> Voor beeld van een gecodeerde teken reeks in de URL ziet er als volgt uit: `contoso.com/signup?token=ab%2Bcd%2Fef` , waarbij token is `ab%2Bcd%2Fef` .  Hetzelfde token is gedecodeerd: `Ab+cd/ef` |
 | | |
 
 *Antwoord codes:*
@@ -248,7 +248,7 @@ Voor beeld van antwoord tekst:
 
 ```
 
-Code: 400 ongeldige aanvraag. `x-ms-marketplace-token`ontbreekt, is onjuist of ongeldig of verlopen.
+Code: 400 ongeldige aanvraag. `x-ms-marketplace-token` ontbreekt, is onjuist of ongeldig of verlopen.
 
 Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
@@ -260,7 +260,7 @@ Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact o
 
 Zodra het SaaS-account is geconfigureerd voor een eind klant, moet de uitgever de API voor het activeren van abonnementen aan micro soft zijde aanroepen.  De klant wordt niet gefactureerd tenzij deze API-aanroep is geslaagd.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -296,9 +296,9 @@ Er is geen antwoord tekst voor deze aanroep.
 
 Code: 400 ongeldige aanvraag: de validatie is mislukt.
 
-* `planId`bestaat niet in de aanvraag lading.
-* `planId`in de aanvraag lading komt niet overeen met de waarde die is gekocht.
-* `quantity`in de aanvraag lading komt niet overeen met het aangeschafte item
+* `planId` bestaat niet in de aanvraag lading.
+* `planId` in de aanvraag lading komt niet overeen met de waarde die is gekocht.
+* `quantity` in de aanvraag lading komt niet overeen met het aangeschafte item
 * Het SaaS-abonnement is geabonneerd of onderbroken.
 
 Code: 403 verboden. Het verificatie token is ongeldig, verlopen of niet meegeleverd. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
@@ -315,7 +315,7 @@ Hiermee haalt u een lijst met alle aangeschafte SaaS-abonnementen op voor alle a
 
 Deze API retourneert gepagineerde resultaten. Pagina grootte is 100.
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Ophalen`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -426,7 +426,7 @@ Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op
 
 Haalt een opgegeven ingekochte SaaS-abonnement op voor een SaaS-aanbieding die is gepubliceerd op Marketplace door de uitgever. Gebruik deze aanroep om alle beschik bare informatie voor een specifiek SaaS-abonnement op te halen in plaats van de API aan te roepen voor het ophalen van een lijst met alle abonnementen.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Toevoegen `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -498,7 +498,7 @@ Haalt alle abonnementen op voor een SaaS-aanbieding die wordt geïdentificeerd d
 
 Deze aanroep retourneert een lijst met abonnementen die beschikbaar zijn voor die klant, naast het abonnement dat al is gekocht.  De lijst kan worden weer gegeven aan een eind klant op de Publisher-site.  Een eind klant kan het abonnement wijzigen in een van de plannen in de geretourneerde lijst.  Het is niet mogelijk om het plan te wijzigen in een item dat niet wordt weer gegeven in de lijst.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Toevoegen `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -552,7 +552,7 @@ Het bestaande abonnement dat is gekocht voor een SaaS-abonnement bijwerken naar 
 
 Deze API kan alleen worden aangeroepen voor actieve abonnementen.  Elk plan kan worden gewijzigd in elk ander bestaand plan (openbaar of privé), maar niet op zichzelf.  Voor privé abonnementen moet de Tenant van de klant worden gedefinieerd als onderdeel van de doel groep van het plan in het partner centrum.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verzenden `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -738,7 +738,7 @@ Haal een lijst op met de bewerkingen die in behandeling zijn voor het opgegeven 
 
 Op dit moment worden alleen de **bewerkingen** voor deze API-aanroep geretourneerd als reactie.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Toevoegen `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -792,11 +792,11 @@ Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op
 
 #### <a name="get-operation-status"></a>Bewerkings status ophalen
 
-Hiermee kan de uitgever de status van de opgegeven async-bewerking bijhouden: **Afmelden**, **ChangePlan**of **ChangeQuantity**.
+Hiermee kan de uitgever de status van de opgegeven async-bewerking bijhouden:  **Afmelden**, **ChangePlan**of **ChangeQuantity**.
 
 De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerking-locatie**, in afwachting van de API-aanroep in behandeling of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
-##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Toevoegen `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -857,7 +857,7 @@ Werk de status van een bewerking in behandeling bij om aan te geven dat het slag
 
 De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerkings locatie**, in behandeling zijnde Operations API-aanroep of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
-##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Verzenden `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
@@ -976,6 +976,6 @@ Zie [ondersteuning voor het programma voor commerciële Marketplace in het partn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Api's voor Marketplace [meter service](marketplace-metering-service-apis.md) voor meer opties voor SaaS-aanbiedingen in Marketplace.
+Zie de [commerciële Marketplace meter service-api's](marketplace-metering-service-apis.md) voor meer opties voor SaaS-aanbiedingen in de commerciële Marketplace.
 
-Bekijk en gebruik [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) die zijn gebouwd boven op de api's die in dit document worden beschreven.
+Bekijk en gebruik de [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) die is gebouwd op basis van de api's die in dit document worden beschreven.

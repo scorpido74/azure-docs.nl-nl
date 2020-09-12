@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 53bd7a404e4635833b03507e8b5ae93ae40b1c61
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268024"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318978"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes op uw Azure Stack edge-apparaat
 
@@ -47,7 +47,7 @@ Er zijn drie manieren om uw workloads te implementeren. Met elk van deze impleme
 
 ![Implementatie van Kubernetes-werk belasting](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Lokale implementatie**: dit is via het opdracht regel programma voor toegang, zoals `kubectl` waarmee u Kubernetes kunt implementeren `yamls` . U maakt verbinding met het Kubernetes-cluster op uw Azure Stack-rand die u maakt met behulp van het `kubeconfig` bestand. Ga voor meer informatie naar [toegang tot een Kubernetes-cluster via kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- **Lokale implementatie**: deze implementatie vindt plaats via het opdracht regel programma voor toegang, zoals `kubectl` waarmee u Kubernetes kunt implementeren `yamls` . U opent het Kubernetes-cluster op uw Azure Stack Edge via een `kubeconfig` bestand. Ga voor meer informatie naar [toegang tot een Kubernetes-cluster via kubectl](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - **IOT Edge-implementatie**: dit is via IOT Edge, waarmee verbinding wordt gemaakt met de Azure-IOT hub. U maakt verbinding met het Kubernetes-cluster op uw Azure Stack edge-apparaat via de `iotedge` naam ruimte. De IoT Edge agents die in deze naam ruimte zijn geïmplementeerd, zijn verantwoordelijk voor de connectiviteit met Azure. U past de `IoT Edge deployment.json` configuratie toe met behulp van Azure DEVOPS CI/cd. De naam ruimte en het IoT Edge beheer worden uitgevoerd via de Cloud operator.
 
@@ -59,9 +59,9 @@ Houd bij het implementeren van toepassingen rekening met de volgende informatie:
 
 - **Eén of meer typen**: u kunt kiezen uit één implementatie optie of een combi natie van verschillende implementatie opties.
 - **Cloud versus lokaal**: afhankelijk van uw toepassingen kunt u lokale implementatie kiezen via kubectl of Cloud implementatie via IOT Edge en Azure Arc. 
-    - Lokale implementatie is geschikter voor ontwikkelings scenario's. Wanneer u een lokale implementatie kiest, bent u beperkt tot het netwerk waarin uw Azure Stack edge-apparaat wordt geïmplementeerd.
+    - Wanneer u een lokale implementatie kiest, bent u beperkt tot het netwerk waarin uw Azure Stack edge-apparaat wordt geïmplementeerd.
     - Als u een Cloud agent hebt die u kunt implementeren, moet u uw Cloud operator implementeren en Cloud beheer gebruiken.
-- **IOT versus Azure Arc**: de keuze van de implementatie is ook afhankelijk van het doel van uw product scenario. Als u toepassingen of containers implementeert die een diep gaande integratie met IoT of IoT-ecosysteem hebben, moet u de IoT Edge manier kiezen voor het implementeren van toepassingen. Als u bestaande Kubernetes-implementaties hebt, is Azure Arc de voorkeurs keuze.
+- **IOT versus Azure Arc**: de keuze van de implementatie is ook afhankelijk van het doel van uw product scenario. Als u toepassingen of containers implementeert die een diep gaande integratie met IoT of IoT-ecosysteem hebben, selecteert u IoT Edge om uw toepassingen te implementeren. Als u bestaande Kubernetes-implementaties hebt, is Azure Arc de voorkeurs keuze.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -76,4 +76,4 @@ Ga als volgt te werk om een app te implementeren via IoT Edge:
 
 Zie voor informatie over het implementeren van een app via Azure Arc:
 
-- [Implementeer een toepassing met behulp van Azure Arc](azure-stack-edge-gpu-deploy-sample-module.md).
+- [Implementeer een toepassing met behulp van Azure Arc](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).

@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265589"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297345"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinding maken met Media Services v3 API-Node.js
 
@@ -30,10 +30,10 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 ## <a name="prerequisites"></a>Vereisten
 
 - [Node.js](https://nodejs.org/en/download/) installeren.
-- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- [Een Azure Media Services-account maken](./create-account-howto.md). Vergeet niet welke namen u gebruikt voor de resourcegroep en het Media Services-account.
 
 > [!IMPORTANT]
-> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
+> Bekijk [naamconventies](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-packagejson"></a>package.jsmaken op
 
@@ -57,7 +57,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 De volgende pakketten moeten worden opgegeven:
 
-|Pakket|Description|
+|Pakket|Beschrijving|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [NPM Azure-arm-Media Services installeren](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Opslag-SDK. Wordt gebruikt bij het uploaden van bestanden naar assets.|

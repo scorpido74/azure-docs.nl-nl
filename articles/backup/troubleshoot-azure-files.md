@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001736"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376975"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -51,7 +51,7 @@ Voer de registratie opnieuw uit. Neem contact op met de ondersteuning als het pr
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Kan de Recovery Services kluis niet verwijderen na het ongedaan maken van de beveiliging van een bestands share
 
-Open in de Azure Portal uw **kluis**  >  **back-upinfrastructuur**  >  **opslag accounts** en klik op **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
+Open in de Azure Portal uw **Vault**  >  opslag accounts voor**back-upinfrastructuur**van de kluis  >  **Storage accounts**. Selecteer **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
 
 >[!NOTE]
 >Een Recovery Services kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.

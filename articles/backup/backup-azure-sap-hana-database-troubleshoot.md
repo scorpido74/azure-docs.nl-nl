@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004167"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377681"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -97,7 +97,7 @@ Houd rekening met de volgende punten:
 
 - De naam van de herstelde data base wordt standaard gevuld met de naam van het back-upitem. In dit geval h21 (dit SDC).
 - Als u het doel als H11 selecteert, wordt de herstelde database naam niet automatisch gewijzigd. **Deze moet worden bewerkt in H11 (dit SDC)**. Met betrekking tot dit SDC wordt de herstelde database naam de doel exemplaar-ID met kleine letters en ' dit SDC ' toegevoegd tussen haakjes.
-- Aangezien dit SDC slechts één data base kan hebben, moet u ook op het selectie vakje klikken om de bestaande database gegevens met de herstel punt gegevens te overschrijven.
+- Aangezien dit SDC slechts één data base kan hebben, moet u ook het selectie vakje inschakelen zodat de bestaande database gegevens kunnen worden overschreven door de gegevens van het herstel punt.
 - Linux is hoofdletter gevoelig. Zorg er daarom voor dat u de zaak behoudt.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Multiple container data base (MDC) Restore
@@ -165,7 +165,7 @@ Upgrades van dit SDC naar MDC die geen SID-wijziging veroorzaken, kunnen als vol
 - Voer de upgrade uit. Na voltooiing is het HANA-systeem nu MDC met een systeem database en Tenant Db's
 - Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit
 - De extensie voor dezelfde computer opnieuw registreren in de Azure Portal (Details van de**back-**  ->  **upweergave** -> de relevante Azure-VM selecteren-> opnieuw registreren)
-- Klik op **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
+- Selecteer **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
 - De oudere dit SDC-data base blijft aanwezig in de kluis en oudere back-upgegevens worden bewaard volgens het beleid
 - Back-up configureren voor deze data bases
 
@@ -178,7 +178,7 @@ Upgrades van dit SDC naar MDC die een SID-wijziging veroorzaken, kunnen als volg
 - Voer de upgrade uit. Na voltooiing is het HANA-systeem nu MDC met een systeem database en Tenant Db's
 - Voer het [script voor de voorafgaande registratie](https://aka.ms/scriptforpermsonhana) opnieuw uit met de juiste Details (nieuwe sid en MDC). Als gevolg van een wijziging in de SID, kunnen er problemen ontstaan met het uitvoeren van het script. Neem contact op met Azure Backup ondersteuning als u problemen ondervindt.
 - De extensie voor dezelfde computer opnieuw registreren in de Azure Portal (Details van de**back-**  ->  **upweergave** -> de relevante Azure-VM selecteren-> opnieuw registreren)
-- Klik op **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
+- Selecteer **db's opnieuw detecteren** voor dezelfde VM. Deze actie moet de nieuwe Db's weer geven in stap 3 als SYSTEMDB en Tenant database, niet dit SDC
 - De oudere dit SDC-data base blijft aanwezig in de kluis en de oude back-upgegevens worden bewaard volgens het beleid
 - Back-up configureren voor deze data bases
 

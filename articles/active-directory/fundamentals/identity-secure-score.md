@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523102"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320644"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Wat is de id-beveiligingsscore in Azure Active Directory?
 
@@ -50,7 +50,7 @@ Door de verbeteringsacties te volgen, kunt u het volgende doen:
 
 De beveiligde score voor identiteiten is beschikbaar in alle edities van Azure AD. Organisaties hebben toegang tot hun identiteits beveiligde Score van de **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **beveiligde Score**van de beveiligings identiteit.
 
-## <a name="how-does-it-work"></a>Hoe werkt het?
+## <a name="how-does-it-work"></a>Hoe werkt dit?
 
 Elke 48 uur wordt uw beveiligingsconfiguratie geanalyseerd door Azure en worden uw instellingen vergeleken met de aanbevolen procedures. Op basis van het resultaat van deze evaluatie wordt een nieuwe score berekend voor uw Directory. Het is mogelijk dat uw beveiligings configuratie niet volledig is afgestemd op de best practice richt lijnen en dat de verbeterings acties slechts gedeeltelijk worden uitgevoerd. In deze scenario's krijgt u slechts een deel van de maximale score die beschikbaar is voor het besturings element.
 
@@ -104,7 +104,7 @@ Als u de Score geschiedenis wilt zien, gaat u naar het [Microsoft 365 Security C
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Hoe is id-beveiligingsscore gerelateerd aan de beveiligingsscore van Office 365?
 
-De [micro soft Secure Score](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) bevat vijf afzonderlijke besturings-en Score Categorieën:
+De [micro soft Secure Score](/office365/securitycompliance/microsoft-secure-score) bevat vijf afzonderlijke besturings-en Score Categorieën:
 
 - Identiteit
 - Gegevens
@@ -116,4 +116,4 @@ De beveiligde Score van de identiteit vertegenwoordigt het identiteits deel van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over de beveiligde Score van micro soft](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Meer informatie over de beveiligde Score van micro soft](/office365/securitycompliance/microsoft-secure-score)

@@ -4,14 +4,14 @@ description: Meer informatie over het inschakelen van Synapse-koppeling voor Azu
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815569"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322463"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -228,4 +228,4 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Apache Spark in azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md).
 
-* [SQL serverloos/op aanvraag in azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).
+* [Ondersteuning voor SQL serverloze runtime in azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).

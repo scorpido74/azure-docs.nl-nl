@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 697c686b61a86cb01327364ad73f30f88e2e151d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268071"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318961"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Op rollen gebaseerd Access Control op Kubernetes op uw Azure Stack Edge GPU-apparaat
 
@@ -32,10 +32,7 @@ Bij het instellen van het Kubernetes-cluster wordt één gebruiker gemaakt die o
 
 Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd in een naam ruimte. Deze groeperingen bieden een manier om een Kubernetes-cluster logisch te verdelen en de toegang te beperken tot het maken, weer geven of beheren van resources. Gebruikers kunnen alleen communiceren met resources binnen hun toegewezen naam ruimten.
 
-Naam ruimten zijn bedoeld voor gebruik in omgevingen met veel gebruikers verspreid over meerdere teams of projecten. Voor clusters met een paar van tien gebruikers hoeft u helemaal geen naam ruimten te maken of te bedenken. Begin met het gebruik van naam ruimten wanneer u de functies nodig hebt die ze bieden.
-
-Zie [Kubernetes-naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)voor meer informatie.
-
+Naam ruimten zijn bedoeld voor gebruik in omgevingen met veel gebruikers verspreid over meerdere teams of projecten. Zie [Kubernetes-naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)voor meer informatie.
 
 Uw Azure Stack edge-apparaat heeft de volgende naam ruimten:
 
@@ -47,20 +44,18 @@ Uw Azure Stack edge-apparaat heeft de volgende naam ruimten:
     - DBE-naam ruimte
     - standaardinstelling
     - kubernetes-dash board
-    - standaardinstelling
     - uitvoeren-node-lease
     - uitvoeren-openbaar
-    - iotedge
-    - Azure-boog
+
 
     Zorg ervoor dat u geen gereserveerde namen gebruikt voor gebruikers naam ruimten die u maakt. 
 <!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
 
-- **Gebruikers naam ruimte** : Dit zijn de naam ruimten die u kunt maken via **kubectl** om toepassingen lokaal te implementeren.
+- **Gebruikers naam ruimte** : Dit zijn de naam ruimten die u kunt maken via **kubectl** of via de Power shell-interface van het apparaat voor het lokaal implementeren van toepassingen.
  
-- **IOT Edge naam ruimte** : u maakt verbinding met deze `iotedge` naam ruimte om toepassingen te implementeren via IOT Edge.
+- **IOT Edge naam ruimte** : u maakt verbinding met deze `iotedge` naam ruimte om toepassingen te beheren die via IOT Edge zijn geïmplementeerd.
 
-- **Azure ARC-naam ruimte** : u maakt verbinding met deze `azure-arc` naam ruimte om toepassingen te implementeren via Azure Arc. 
+- **Azure ARC-naam ruimte** : u maakt verbinding met deze `azure-arc` naam ruimte voor het beheren van toepassingen die via Azure Arc zijn geïmplementeerd. Met Azure Arc kunt u ook toepassingen implementeren in andere gebruikers naam ruimten. 
 
 ## <a name="namespaces-and-users"></a>Naam ruimten en gebruikers
 
@@ -96,7 +91,7 @@ Hier volgt een diagram waarin de implementatie van RBAC op Azure Stack edge-appa
 
 In dit diagram hebben Anne, Bob en Chuck alleen toegang tot toegewezen gebruikers naam ruimten, in dit geval, `ns1` `ns2` en `ns3` respectievelijk. Binnen deze naam ruimten hebben ze beheerders toegang. De Cluster beheerder van de andere kant heeft beheerders toegang tot systeem naam ruimten en cluster bronnen.
 
-U kunt `kubectl` opdrachten gebruiken om naam ruimten te maken, gebruikers toe te wijzen, gebruikers toe te wijzen of bestanden te downloaden `kubeconfig` . Hier volgt een werk stroom op hoog niveau:
+U kunt `kubectl` opdrachten gebruiken om naam ruimten en gebruikers te maken, gebruikers toe te wijzen aan naam ruimten of bestanden te downloaden `kubeconfig` . Hier volgt een werk stroom op hoog niveau:
 
 1. Een naam ruimte en een gebruiker maken.  
 
@@ -123,7 +118,7 @@ Wanneer u met naam ruimten en gebruikers op uw Azure Stack edge-apparaten werkt,
 - U kunt gebruikers naam ruimten maken en binnen die naam ruimten extra gebruikers maken en toegang tot de naam ruimte voor deze gebruikers verlenen of intrekken.
 - U mag geen naam ruimten maken met namen die identiek zijn aan die voor een wille keurige systeem naam ruimte. De namen voor systeem naam ruimten zijn gereserveerd.  
 - U mag geen gebruikers naam ruimten maken met namen die al worden gebruikt door andere gebruikers naam ruimten. Als u bijvoorbeeld een `test-ns` andere naam ruimte hebt gemaakt, kunt u deze niet maken `test-ns` .
-- U mag geen gebruikers maken met namen die al zijn gereserveerd. `aseuser`Is bijvoorbeeld een gereserveerde cluster beheerder en kan niet worden gebruikt.
+- U mag geen gebruikers maken met namen die al zijn gereserveerd. `aseuser`Is bijvoorbeeld een gereserveerde gebruiker en kan niet worden gebruikt.
 
 
 ## <a name="next-steps"></a>Volgende stappen

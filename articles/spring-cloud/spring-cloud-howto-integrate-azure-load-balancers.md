@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037539"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299723"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud integreren met Azure-oplossingen voor taakverdeling
 
@@ -26,7 +26,7 @@ Azure biedt al andere oplossingen voor Load Balancing. Er zijn drie opties voor 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure lente-Cloud: [een Azure lente-Cloud service maken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
+* Azure lente-Cloud: [een Azure lente-Cloud service maken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Traffic Manager maken](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * Azure-app gateway: [een toepassings gateway maken](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * Azure front deur: [een voor deur maken](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)

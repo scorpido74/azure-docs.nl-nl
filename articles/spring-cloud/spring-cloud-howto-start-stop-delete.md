@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c8d5b983e376243eca83b929f87ff1e44d4b3470
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 17dd83ba7df469e12e0569e670d71b9068bb2a9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500365"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297515"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Uw Azure lente-Cloud toepassing starten, stoppen en verwijderen
 
@@ -30,7 +30,7 @@ Nadat u een toepassing hebt geïmplementeerd, kunt u deze starten, stoppen en ve
 ## <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 > [!NOTE]
-> U kunt optionele para meters gebruiken en standaard instellingen configureren met de Azure CLI. Lees [onze referentie documentatie](spring-cloud-cli-reference.md)voor meer informatie over de Azure cli.  
+> U kunt optionele para meters gebruiken en standaard instellingen configureren met de Azure CLI. Lees [onze referentie documentatie](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest)voor meer informatie over de Azure cli.  
 
 Installeer eerst de Azure veer Cloud-extensie voor de Azure CLI als volgt:
 

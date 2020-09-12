@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796757"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321188"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Een onlangs verwijderde gebruiker herstellen of verwijderen met Azure Active Directory
 Nadat u een gebruiker hebt verwijderd, blijft het account gedurende 30 dagen in een suspend-status. Tijdens deze periode van 30 dagen kan het gebruikers account worden hersteld, samen met alle eigenschappen. Nadat het venster van 30 dagen is verstreken, wordt de gebruiker automatisch en permanent verwijderd.
@@ -88,6 +88,6 @@ Nadat u uw gebruikers hebt hersteld of verwijderd, kunt u de volgende basis proc
 
 - [Profiel gegevens toevoegen of wijzigen](active-directory-users-profile-azure-portal.md)
 
-- [Gast gebruikers toevoegen vanuit een andere organisatie](../b2b/what-is-b2b.md)
+- [Gast gebruikers toevoegen vanuit een andere organisatie](../external-identities/what-is-b2b.md)
 
 Voor meer informatie over andere beschik bare taken voor gebruikers beheer, de [documentatie voor Azure AD-gebruikers beheer](../users-groups-roles/index.yml).

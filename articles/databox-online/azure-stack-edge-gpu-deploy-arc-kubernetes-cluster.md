@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268190"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322021"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack Edge GPU-apparaat inschakelen
 
@@ -59,7 +59,7 @@ Voordat u Azure Arc op Kubernetes-cluster kunt inschakelen, moet u ervoor zorgen
 
 ## <a name="register-kubernetes-resource-providers"></a>Kubernetes-resource providers registreren
 
-Voordat u het Kubernetes-cluster via Azure Arc configureert, moet u uw abonnement inschakelen en `Microsoft.Kubernetes` registreren `Microsoft.KubernetesConfiguration` . 
+Voordat u Azure Arc op het Kubernetes-cluster inschakelt, moet u uw abonnement inschakelen en registreren `Microsoft.Kubernetes` `Microsoft.KubernetesConfiguration` . 
 
 1. Als u een resource provider wilt inschakelen, gaat u in het Azure Portal naar het abonnement dat u wilt gebruiken voor de implementatie. Ga naar **resource providers**. 
 1. Zoek in het rechterdeel venster naar de providers die u wilt toevoegen. In dit voor beeld `Microsoft.Kubernetes` en `Microsoft.KubernetesConfiguration` .
@@ -88,7 +88,7 @@ U kunt resource providers ook registreren via de `az cli` . Zie voor meer inform
 
 1. Als u een Service-Principal wilt maken, gebruikt u de volgende opdracht via de `az cli` .
 
-    `az as sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
     Voor informatie over hoe u zich aanmeldt bij `az cli` , [Start u Cloud Shell in azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
@@ -132,7 +132,7 @@ U kunt resource providers ook registreren via de `az cli` . Zie voor meer inform
     Voor meer informatie over het maken van een Service-Principal en het uitvoeren van de roltoewijzing, raadpleegt u de stappen in [een Azure-service-principal voor het maken van een open-boog inschakelen](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal).
 
 
-## <a name="enable-arc-on-kubernetes-cluster"></a>Arc op Kubernetes-cluster inschakelen
+## <a name="enable-arc-on-kubernetes-cluster"></a>Arc inschakelen op Kubernetes-cluster
 
 Voer de volgende stappen uit om het Kubernetes-cluster voor Azure Arc management te configureren:
 
@@ -142,12 +142,12 @@ Voer de volgende stappen uit om het Kubernetes-cluster voor Azure Arc management
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Als u Azure-Arc wilt implementeren op Azure Stack edge-apparaat, moet u ervoor zorgen dat u een [ondersteunde regio gebruikt voor Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions). Azure Arc is momenteel beschikbaar als preview-versie. 
+    Als u Azure-Arc wilt implementeren op Azure Stack edge-apparaat, moet u ervoor zorgen dat u een [ondersteunde regio gebruikt voor Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions). Azure Arc is momenteel beschikbaar als preview-versie. U kunt ook de exacte naam van de regio met behulp van de opdracht afgeven in de cmdlet `az account list-locations` .
     
     Hier volgt een voorbeeld:
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "WestEurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
         [10.128.44.240]: PS>
     ```
     

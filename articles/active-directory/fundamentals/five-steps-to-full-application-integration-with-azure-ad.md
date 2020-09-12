@@ -9,36 +9,36 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: c75d04faf9ac59f21aad1dcd88dfe83699a11941
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057185"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319743"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Vijf stappen voor het integreren van al uw apps met Azure AD
 
-Azure Active Directory (Azure AD) is de micro soft cloud-gebaseerde service voor identiteits-en toegangs beheer. Azure AD biedt beveiligde authenticatie-en autorisatie oplossingen zodat klanten, partners en werk nemers toegang hebben tot de toepassingen die ze nodig hebben. Met Azure AD, [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), [multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks), [eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)en [automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) , kunt u eenvoudig en veilig identiteits-en toegangs beheer maken.
+Azure Active Directory (Azure AD) is de micro soft cloud-gebaseerde service voor identiteits-en toegangs beheer. Azure AD biedt beveiligde authenticatie-en autorisatie oplossingen zodat klanten, partners en werk nemers toegang hebben tot de toepassingen die ze nodig hebben. Met Azure AD, [voorwaardelijke toegang](../conditional-access/overview.md), [multi-factor Authentication](../authentication/concept-mfa-howitworks.md), [eenmalige aanmelding](../hybrid/how-to-connect-sso.md)en [automatische gebruikers inrichting](../app-provisioning/user-provisioning.md) , kunt u eenvoudig en veilig identiteits-en toegangs beheer maken.
 
-Als uw bedrijf een Microsoft 365-abonnement heeft, gebruikt u waarschijnlijk [al](https://docs.microsoft.com/office365/enterprise/about-office-365-identity) Azure AD. Azure AD kan echter worden gebruikt voor al uw toepassingen en door [uw toepassings beheer te centraliseren](https://docs.microsoft.com/azure/active-directory/manage-apps/common-scenarios) , kunt u dezelfde functies, hulpprogram ma's en beleids regels voor identiteits beheer gebruiken in uw volledige app-Port Folio. Dit biedt een uniforme oplossing waarmee de beveiliging wordt verbeterd, de kosten worden verminderd, de productiviteit wordt verhoogd en u ervoor kunt zorgen dat u ermee instemt. En u krijgt externe toegang tot on-premises apps.
+Als uw bedrijf een Microsoft 365-abonnement heeft, gebruikt u waarschijnlijk [al](/office365/enterprise/about-office-365-identity) Azure AD. Azure AD kan echter worden gebruikt voor al uw toepassingen en door [uw toepassings beheer te centraliseren](../manage-apps/common-scenarios.md) , kunt u dezelfde functies, hulpprogram ma's en beleids regels voor identiteits beheer gebruiken in uw volledige app-Port Folio. Dit biedt een uniforme oplossing waarmee de beveiliging wordt verbeterd, de kosten worden verminderd, de productiviteit wordt verhoogd en u ervoor kunt zorgen dat u ermee instemt. En u krijgt externe toegang tot on-premises apps.
 
 In deze hand leiding wordt uitgelegd hoe u al uw toepassingen integreert met Azure AD. In elke stap wordt de waarde uitgelegd en vindt u koppelingen naar bronnen waarin de technische details worden uitgelegd. We presen teren deze stappen in een volg orde die wij raden. U kunt echter naar een deel van het proces springen om aan de slag te gaan met de meeste waarde voor u.
 
-Andere bronnen in dit onderwerp, met inbegrip van diep gaande bedrijfs processen, die u kunt vinden in onze [bronnen voor het migreren van toepassingen naar Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) -pagina.
+Andere bronnen in dit onderwerp, met inbegrip van diep gaande bedrijfs processen, die u kunt vinden in onze [bronnen voor het migreren van toepassingen naar Azure Active Directory](../manage-apps/migration-resources.md) -pagina.
 
 ## <a name="1-use-azure-ad-for-new-applications"></a>1. Azure AD gebruiken voor nieuwe toepassingen
 
-Richt u eerst op nieuw verworven toepassingen. Als uw bedrijf begint met het gebruik van een nieuwe toepassing, voegt u deze direct toe [aan uw Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) . Stel een bedrijfs beleid in zodat het toevoegen van nieuwe apps aan Azure AD de standaard procedure in uw organisatie is. Dit is mini maal storend op bestaande bedrijfs processen en stelt u in staat om de waarde die u ontvangt van het integreren van apps te onderzoeken en te bewijzen zonder de manier te wijzigen waarop mensen nu zaken doen in uw omgeving.
+Richt u eerst op nieuw verworven toepassingen. Als uw bedrijf begint met het gebruik van een nieuwe toepassing, voegt u deze direct toe [aan uw Azure AD-Tenant](../manage-apps/add-application-portal.md) . Stel een bedrijfs beleid in zodat het toevoegen van nieuwe apps aan Azure AD de standaard procedure in uw organisatie is. Dit is mini maal storend op bestaande bedrijfs processen en stelt u in staat om de waarde die u ontvangt van het integreren van apps te onderzoeken en te bewijzen zonder de manier te wijzigen waarop mensen nu zaken doen in uw omgeving.
 
-Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïntegreerde toepassingen, zodat u snel aan de slag kunt gaan. U kunt [een galerie-app toevoegen aan uw Azure AD-organisatie](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) met stapsgewijze [zelf studies](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) voor de integratie met populaire apps, zoals:
+Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïntegreerde toepassingen, zodat u snel aan de slag kunt gaan. U kunt [een galerie-app toevoegen aan uw Azure AD-organisatie](../manage-apps/add-application-portal.md) met stapsgewijze [zelf studies](../saas-apps/tutorial-list.md) voor de integratie met populaire apps, zoals:
 
-- [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-tutorial)
-- [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)
-- [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-tutorial)
-- [AWS](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)
-- [Slack](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial)
+- [ServiceNow](../saas-apps/servicenow-tutorial.md)
+- [Workday](../saas-apps/workday-tutorial.md)
+- [Salesforce](../saas-apps/salesforce-tutorial.md)
+- [AWS](../saas-apps/amazon-web-service-tutorial.md)
+- [Slack](../saas-apps/slack-tutorial.md)
 
-Daarnaast kunt u [toepassingen integreren die zich niet in de galerie](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)bevindt, inclusief alle toepassingen die al in uw organisatie bestaan, of een toepassing van derden die al deel uitmaakt van de Azure AD-galerie. Als dat niet het geval is, kunt u [uw app ook toevoegen aan de galerie](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-app-gallery-listing) .
+Daarnaast kunt u [toepassingen integreren die zich niet in de galerie](../manage-apps/view-applications-portal.md)bevindt, inclusief alle toepassingen die al in uw organisatie bestaan, of een toepassing van derden die al deel uitmaakt van de Azure AD-galerie. Als dat niet het geval is, kunt u [uw app ook toevoegen aan de galerie](../azuread-dev/howto-app-gallery-listing.md) .
 
 Ten slotte kunt u ook de apps integreren die u zelf ontwikkelt. Dit wordt behandeld in stap 5 van deze hand leiding.
 
@@ -46,11 +46,11 @@ Ten slotte kunt u ook de apps integreren die u zelf ontwikkelt. Dit wordt behand
 
 Vervolgens ontdekken we de werk nemers van de toepassingen die vaak gebruikmaken van en bepalen we uw werk om ze te integreren met Azure AD.
 
-U kunt beginnen met Microsoft Cloud App Security&#39;s- [hulpprogram ma's voor Cloud detectie](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) om schaduw te detecteren en te beheren &quot; &quot; in uw netwerk (dat wil zeggen, apps die niet worden beheerd door de IT-afdeling). U kunt [micro soft Defender Advanced Threat Protection (ATP) gebruiken](https://docs.microsoft.com/cloud-app-security/wdatp-integration) om het detectie proces te vereenvoudigen en uit te breiden.
+U kunt beginnen met Microsoft Cloud App Security&#39;s- [hulpprogram ma's voor Cloud detectie](/cloud-app-security/tutorial-shadow-it) om schaduw te detecteren en te beheren &quot; &quot; in uw netwerk (dat wil zeggen, apps die niet worden beheerd door de IT-afdeling). U kunt [micro soft Defender Advanced Threat Protection (ATP) gebruiken](/cloud-app-security/wdatp-integration) om het detectie proces te vereenvoudigen en uit te breiden.
 
-Daarnaast kunt u het [rapport AD FS toepassings activiteit](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) in de Azure Portal gebruiken om alle AD FS-apps in uw organisatie te detecteren, het aantal unieke gebruikers dat zich heeft aangemeld en de compatibiliteit voor het integreren met Azure AD.
+Daarnaast kunt u het [rapport AD FS toepassings activiteit](../manage-apps/migrate-adfs-application-activity.md) in de Azure Portal gebruiken om alle AD FS-apps in uw organisatie te detecteren, het aantal unieke gebruikers dat zich heeft aangemeld en de compatibiliteit voor het integreren met Azure AD.
 
-Zodra u uw bestaande landschap hebt gevonden, moet u [een plan maken](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) en prioriteiten toekennen aan de hoogste prioriteits-apps die u wilt integreren. Enkele voor beelden van vragen die u kunt stellen om dit proces te begeleiden zijn:
+Zodra u uw bestaande landschap hebt gevonden, moet u [een plan maken](../manage-apps/migration-resources.md) en prioriteiten toekennen aan de hoogste prioriteits-apps die u wilt integreren. Enkele voor beelden van vragen die u kunt stellen om dit proces te begeleiden zijn:
 
 - Welke apps worden het meest gebruikt?
 - Wat zijn de riskiest?
@@ -65,8 +65,8 @@ Tijdens het detectie proces hebt u mogelijk toepassingen gevonden die niet worde
 
 - Bespaar geld door de nood zaak van on-premises gebruikers inrichten en verificatie te elimineren, evenals licentie kosten die zijn betaald aan andere Cloud-id-providers voor dezelfde service.
 - Verminder de administratieve overhead en schakel betere beveiliging in met minder redundantie in uw proces voor identiteits-en toegangs beheer.
-- Stel werk nemers in staat om toegang te krijgen tot alle toepassingen die ze nodig hebben via de [MyApps-Portal](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
-- Verbeter de intelligentie van Azure AD-&#39;s die betrekking hebben op [identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) , zoals voorwaardelijke toegang door de hoeveelheid gegevens die wordt opgehaald uit uw app-gebruik te verhogen en de voor delen van de nieuwe apps uit te breiden.
+- Stel werk nemers in staat om toegang te krijgen tot alle toepassingen die ze nodig hebben via de [MyApps-Portal](../manage-apps/access-panel-collections.md).
+- Verbeter de intelligentie van Azure AD-&#39;s die betrekking hebben op [identiteits beveiliging](../identity-protection/overview-identity-protection.md) , zoals voorwaardelijke toegang door de hoeveelheid gegevens die wordt opgehaald uit uw app-gebruik te verhogen en de voor delen van de nieuwe apps uit te breiden.
 
 We hebben hulp gepubliceerd voor het beheer van het bedrijfs proces van het integreren van apps met Azure AD, met inbegrip van een [poster](https://aka.ms/AppOnePager) en [presentatie](https://aka.ms/AppGuideline) die u kunt gebruiken om de eigen aren van zakelijke en toepassingen op de hoogte te stellen en geïnteresseerd te zijn. U kunt deze voor beelden met uw eigen huis stijl wijzigen en deze publiceren naar uw organisatie via uw bedrijfs portal, nieuws brief of ander medium wanneer u dit proces gaat volt ooien.
 
@@ -74,7 +74,7 @@ Een goed uitgangs punt om te beginnen is door het gebruik van Active Directory F
 
 ![Diagram bevat on-premises apps, line-of-Business-Apps, SaaS-apps en, via Azure AD, Office 365 alle verbindingen met stippel lijnen in Active Directory en AD FS.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-U kunt deze configuratie bijwerken door [ADFS te vervangen door Azure AD als centrum](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) voor uw oplossing voor identiteits beheer. Dit maakt het mogelijk om u aan te melden voor elke app die uw werk nemers willen gebruiken en maakt het gemakkelijk voor werk nemers om alle zakelijke toepassingen te vinden die ze nodig hebben via de [MyApps-Portal](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access), naast de andere voor delen hierboven.
+U kunt deze configuratie bijwerken door [ADFS te vervangen door Azure AD als centrum](../manage-apps/migrate-adfs-apps-to-azure.md) voor uw oplossing voor identiteits beheer. Dit maakt het mogelijk om u aan te melden voor elke app die uw werk nemers willen gebruiken en maakt het gemakkelijk voor werk nemers om alle zakelijke toepassingen te vinden die ze nodig hebben via de [MyApps-Portal](../user-help/my-apps-portal-end-user-access.md), naast de andere voor delen hierboven.
 
 ![Diagram toont on-premises apps via Active Directory en AD FS, line-of-Business-Apps, SaaS-apps en Office 365 alle verbindingen met stippel lijnen in Azure Active Directory.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 
@@ -86,27 +86,27 @@ U kunt ook apps migreren die gebruikmaken van een andere Cloud provider op basis
 
 ## <a name="4-integrate-on-premises-applications"></a>4. on-premises toepassingen integreren
 
-Traditioneel blijven toepassingen beveiligd door alleen toegang toe te staan tijdens de verbinding met het bedrijfs netwerk. In een steeds meer verbonden wereld willen we echter toegang verlenen tot apps voor klanten, partners en/of werk nemers, ongeacht waar ze zich in de wereld bevinden. [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) (AppProxy) is een functie van Azure AD die uw bestaande on-premises apps verbindt met Azure AD en waarvoor u geen edge-servers of andere extra infra structuur nodig hebt.
+Traditioneel blijven toepassingen beveiligd door alleen toegang toe te staan tijdens de verbinding met het bedrijfs netwerk. In een steeds meer verbonden wereld willen we echter toegang verlenen tot apps voor klanten, partners en/of werk nemers, ongeacht waar ze zich in de wereld bevinden. [Azure AD-toepassingsproxy](../manage-apps/what-is-application-proxy.md) (AppProxy) is een functie van Azure AD die uw bestaande on-premises apps verbindt met Azure AD en waarvoor u geen edge-servers of andere extra infra structuur nodig hebt.
 
 ![In een diagram wordt de toepassings proxy service in actie weer gegeven. Een gebruiker heeft toegang tot " https://sales.contoso.com " en hun aanvraag wordt omgeleid via " https://sales-contoso.msappproxy.net " in azure Active Directory naar het on-premises adres " http://sales "](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
-U kunt [zelf studie gebruiken: Voeg een lokale toepassing toe voor externe toegang via toepassings proxy in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) om toepassings proxy in te scha kelen en een on-premises toepassing toe te voegen aan uw Azure AD-Tenant.
+U kunt [zelf studie gebruiken: Voeg een lokale toepassing toe voor externe toegang via toepassings proxy in azure Active Directory](../manage-apps/application-proxy-add-on-premises-application.md) om toepassings proxy in te scha kelen en een on-premises toepassing toe te voegen aan uw Azure AD-Tenant.
 
-Daarnaast kunt u bezorgings controllers voor toepassingen integreren, zoals F5 BIG-IP APM of Zscaler private Access. Als u deze integreert met Azure AD, krijgt u het moderne verificatie-en identiteits beheer van Azure AD naast het verkeer beheer en de beveiligings functies van het partner product. Deze oplossing wordt aangeroepen om [hybride toegang te krijgen](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access). Als u vandaag nog een van de volgende services gebruikt, hebben we zelf studies die u stapsgewijs door lopen hoe ze kunnen worden geïntegreerd met Azure AD.
+Daarnaast kunt u bezorgings controllers voor toepassingen integreren, zoals F5 BIG-IP APM of Zscaler private Access. Als u deze integreert met Azure AD, krijgt u het moderne verificatie-en identiteits beheer van Azure AD naast het verkeer beheer en de beveiligings functies van het partner product. Deze oplossing wordt aangeroepen om [hybride toegang te krijgen](../manage-apps/secure-hybrid-access.md). Als u vandaag nog een van de volgende services gebruikt, hebben we zelf studies die u stapsgewijs door lopen hoe ze kunnen worden geïntegreerd met Azure AD.
 
-- [Akamai Enter prise Application Access (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
-- [Citrix Application Delivery controller (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial) (voorheen bekend als Citrix NetScaler)
-- [F5 BIG-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
-- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)
+- [Akamai Enter prise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
+- [Citrix Application Delivery controller (ADC)](../saas-apps/citrix-netscaler-tutorial.md) (voorheen bekend als Citrix NetScaler)
+- [F5 BIG-IP APM](../saas-apps/headerf5-tutorial.md)
+- [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)
 
 ## <a name="5-integrate-apps-your-developers-build"></a>5. apps integreren die uw ontwikkel aars bouwen
 
-Voor apps die in uw bedrijf zijn gebouwd, kunnen uw ontwikkel aars het [micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/) gebruiken voor het implementeren van verificatie en autorisatie. Toepassingen die zijn geïntegreerd met het platform, worden [geregistreerd met Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) en worden op dezelfde manier beheerd als andere apps in uw port Folio.
+Voor apps die in uw bedrijf zijn gebouwd, kunnen uw ontwikkel aars het [micro soft-identiteits platform](../develop/index.yml) gebruiken voor het implementeren van verificatie en autorisatie. Toepassingen die zijn geïntegreerd met het platform, worden [geregistreerd met Azure AD](../develop/quickstart-register-app.md) en worden op dezelfde manier beheerd als andere apps in uw port Folio.
 
-Ontwikkel aars kunnen het platform gebruiken voor apps die intern worden gebruikt en klant gerichte apps, en er zijn andere voor delen van het gebruik van het platform. [Micro soft-verificatie bibliotheken (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview), die deel uitmaken van het platform, stelt ontwikkel aars in staat om moderne ervaringen in te scha kelen, zoals multi-factor Authentication en het gebruik van beveiligings sleutels voor toegang tot hun apps zonder dat ze zelf een implementatie nodig hebben. Daarnaast hebben apps die zijn geïntegreerd met het micro soft-identiteits platform toegang tot [Microsoft Graph](https://docs.microsoft.com/azure/active-directory/develop/microsoft-graph-intro) -een uniform API-eind punt dat de Microsoft 365 gegevens bevat waarmee de patronen van productiviteit, identiteit en beveiliging in een organisatie worden beschreven. Ontwikkel aars kunnen deze informatie gebruiken om functies te implementeren die de productiviteit van uw gebruikers verg Roten. U kunt bijvoorbeeld door de gebruikers te identificeren die de gebruiker heeft gecommuniceerd met onlangs en halen in de gebruikers interface van de app&#39;s.
+Ontwikkel aars kunnen het platform gebruiken voor apps die intern worden gebruikt en klant gerichte apps, en er zijn andere voor delen van het gebruik van het platform. [Micro soft-verificatie bibliotheken (MSAL)](../develop/msal-overview.md), die deel uitmaken van het platform, stelt ontwikkel aars in staat om moderne ervaringen in te scha kelen, zoals multi-factor Authentication en het gebruik van beveiligings sleutels voor toegang tot hun apps zonder dat ze zelf een implementatie nodig hebben. Daarnaast hebben apps die zijn geïntegreerd met het micro soft-identiteits platform toegang tot [Microsoft Graph](../develop/microsoft-graph-intro.md) -een uniform API-eind punt dat de Microsoft 365 gegevens bevat waarmee de patronen van productiviteit, identiteit en beveiliging in een organisatie worden beschreven. Ontwikkel aars kunnen deze informatie gebruiken om functies te implementeren die de productiviteit van uw gebruikers verg Roten. U kunt bijvoorbeeld door de gebruikers te identificeren die de gebruiker heeft gecommuniceerd met onlangs en halen in de gebruikers interface van de app&#39;s.
 
-We hebben een [video serie](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) met een uitgebreide inleiding tot het platform, evenals een [groot aantal code voorbeelden](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) in ondersteunde talen en platformen.
+We hebben een [video serie](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) met een uitgebreide inleiding tot het platform, evenals een [groot aantal code voorbeelden](../develop/sample-v2-code.md) in ondersteunde talen en platformen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bronnen voor het migreren van toepassingen naar Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)
+- [Bronnen voor het migreren van toepassingen naar Azure Active Directory](../manage-apps/migration-resources.md)

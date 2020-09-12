@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607286"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322072"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
 
@@ -78,7 +78,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Côte d’Ivoire | Ja | Ja | Ja | Nee |
 | Kroatië | Ja | Ja | Ja | Nee |
 | Cyprus | Ja | Ja | Ja | Ja |
-| Tsjechische Republiek | Ja | Ja | Ja | Ja |
+| Czechia | Ja | Ja | Ja | Ja |
 | Denemarken | Ja | Ja | Ja | Ja |
 | Dominica | Ja | Ja | Nee | Ja |
 | Dominicaanse Republiek | Ja | Ja | Ja | Ja |
@@ -123,7 +123,6 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Liechtenstein | Ja | Ja | Ja | Ja |
 | Litouwen | Ja | Ja | Ja | Nee |
 | Luxemburg | Ja | Ja | Ja | Ja |
-| Macedonië (FYROM) | Nee | Ja | Ja | Nee |
 | Madagaskar | Ja | Ja | Ja | Nee |
 | Malawi | Ja | Ja | Ja | Ja |
 | Maleisië | Ja | Ja | Ja | Ja |
@@ -142,6 +141,7 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Nicaragua | Ja | Ja | Ja | Ja |
 | Niger | Ja | Ja | Ja | Nee |
 | Nigeria | Ja | Ja | Ja | Nee |
+| Noord-Macedonië | Nee | Ja | Ja | Nee |
 | Noorwegen | Ja | Ja | Ja | Ja |
 | Oman | Ja | Ja | Ja | Ja |
 | Pakistan | Ja | Ja | Ja | Nee |

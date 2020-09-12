@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 751ce0233fb232ef5d276c88a8c2429a2975b2f9
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179977"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378046"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
@@ -22,7 +22,7 @@ Azure Backup biedt een ingebouwde [Azure Policy](../governance/policy/index.yml)
 
 * Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet **eigenaar** toegang hebben tot het abonnement waaraan het beleid is toegewezen.
 
-* De werk ruimte LA zoals opgegeven door de gebruiker (waarnaar diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet toegang hebben tot de **lezer**, **Inzender** of **eigenaar** van het abonnement waarin de opgegeven La-werk ruimte zich bevindt.
+* De werk ruimte LA zoals opgegeven door de gebruiker (waarnaar diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet toegang hebben tot de **lezer**, **Inzender**of **eigenaar** van het abonnement waarin de opgegeven La-werk ruimte zich bevindt.
 
 * Het bereik van de beheer groep wordt momenteel niet ondersteund.
 

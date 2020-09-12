@@ -1,44 +1,43 @@
 ---
 title: Belasting gegevens voor micro soft Commercial Marketplace
 Description: Zie uw land/regio's van distributie in de onderstaande tabellen voor meer informatie over uw belasting overwegingen voor prijs selectie, uitbetalings implicaties en de belasting verantwoordelijkheid.
-ms.topic: conceptual
+ms.topic: article
 ms.service: marketplace
-ms.date: 05/04/2020
+ms.date: 09/02/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b0ada7047241e74095fd5b81a261c15295a08737
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 82e70c128b64f0574050c17d5e40509995488666
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319929"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378335"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Belasting gegevens voor uitgevers van commerciële markt plaatsen
 
-Zie uw land/regio's van distributie in de onderstaande tabellen voor meer informatie over uw belasting overwegingen voor prijs selectie en de BTW-verantwoordelijkheid onder de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) of de overeenkomst met de moderne Uitgever.
+Zie uw land/regio's van distributie in de volgende tabellen voor een overzicht van uw belasting overwegingen voor prijs selectie en de BTW-verantwoordelijkheid onder de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) of de overeenkomst met de moderne Uitgever.
 
-> [!NOTE]
-> De aanpassing van Commerce-uitbrei ding kan gevolgen hebben voor de uitbetaling in een beperkt aantal landen/regio's. Voor meer informatie over de aanpassing van Commerce-uitbrei ding en de markten waar deze van toepassing is, raadpleegt u de [Microsoft Azure Marketplace uitgevers overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) en de lijst met betrokken landen/regio's.
+De aanpassing van Commerce-uitbrei ding kan gevolgen hebben voor de uitbetaling in een beperkt aantal landen/regio's. Voor meer informatie over de aanpassing van Commerce-uitbrei ding en de markten waar deze van toepassing is, raadpleegt u de [Microsoft Azure Marketplace uitgevers overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) en de lijst met betrokken landen/regio's.
 
 > [!IMPORTANT]
 > De BTW-verantwoordelijkheid voor wederverkoper landen/regio's en omstandigheden (zoals [hieronder](#reseller-countriesregions)wordt beschreven) valt onder een van de [Microsoft Azure Marketplace uitgevers overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560), ongeacht de informatie in de onderstaande tabel.
 > Houd er rekening mee dat de kolom **toekennings implicaties** alleen van toepassing is op uitgevers. De BTW-tarieven die in deze kolom worden vermeld, kunnen op elk gewenst moment worden gewijzigd, en micro soft kan niet garanderen dat de tarieven in de onderstaande tabellen altijd nauw keurig zijn.
 
-| Land/regio                   | Belasting vergoeding voor prijs selectie                                                                                                             | Implicatie van uitbetaling                    | Belasting verantwoordelijkheid |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
+| Land/regio  | Belasting vergoeding voor prijs selectie  | Implicatie van uitbetaling  | Belasting verantwoordelijkheid |
+|---|---|---|---|
 | Afghanistan                      | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Albanië                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Algerije                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Amerikaans-Samoa                   | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Andorra                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
-| Anguilla                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Angola                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
+| Anguilla                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Antarctica                       | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Antigua en Barbuda              | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Argentinië                        | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.  | Prijs minus winkel kosten  | Publisher          |
 | Armenië                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs min 20% belasting, minus winkel kosten       | Microsoft          |
 | Aruba                      | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
-| Australië                        | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                             | Prijs minus 10% belasting, minus winkel kosten             | Microsoft          |
+| Australië                        | De geselecteerde prijs omvat alle toepasselijke belastingen. *        | Prijs minus winkel kosten *        | Microsoft          |
 | Oostenrijk                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs min 20% belasting, minus winkel kosten     | Microsoft          |
 | Azerbeidzjan                       | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Bahama's                      | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
@@ -83,7 +82,7 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Kroatië                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs min 25% belasting, minus winkel kosten   | Microsoft          |
 | Curaçao                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Cyprus                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs minus 19% belasting, minus winkel kosten  | Microsoft          |
-| Tsjechische Republiek                   | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs min. BTW, minus winkel kosten   | Microsoft        |
+| Czechia                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs min. BTW, minus winkel kosten   | Microsoft        |
 | Denemarken                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.       | Prijs min 25% belasting, minus winkel kosten   | Microsoft          |
 | Djibouti                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Dominica                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
@@ -148,7 +147,6 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Litouwen                        | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.              | Prijs min. BTW, minus winkel kosten | Microsoft          |
 | Luxemburg                       | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.              | Prijs min 17% belasting, minus winkel kosten | Microsoft          |
 | Macau SAR                        | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
-| Macedonië (voormalige Joegoslavische Republiek)                | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Madagaskar                       | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Malawi                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Maleisië                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
@@ -180,6 +178,7 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Nigeria                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Niue                             | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Norfolk                   | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
+| Noord-Macedonië                | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Noordelijke Marianen         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Noorwegen                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. De BTW wordt afgetrokken van de prijs vóór de betaling.              | Prijs min 25% belasting, minus winkel kosten | Microsoft          |
 | Oman                             | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
@@ -241,7 +240,7 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Turks- en Caicos-eilanden         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Tuvalu                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Amerikaanse ondergeschikte afgelegen eilanden      | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
-|  Amerikaanse Maagdeneilanden              | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
+| Amerikaanse Maagden eilanden              | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Oeganda                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Oekraïne                          | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Verenigde Arabische Emiraten             | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs min 5% belasting, minus winkel kosten                 | Microsoft          |
@@ -258,10 +257,12 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Zambia                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 | Zimbabwe                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Publisher          |
 
+\* Voor aankopen die zijn gedaan via alle aankoop scenario's van klanten, met uitzonde ring van Enterprise Agreement.
+
 Het volgende geldt alleen voor uitgevers van Azure Marketplace, ongeacht wat het tegen deel heeft:
 
-| Land/regio                   | Belasting vergoeding voor prijs selectie                                                                                                             | Belasting beheer                    |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Land/regio | Belasting vergoeding voor prijs selectie | Belasting beheer |
+| --- |--- | --- |
 | Australië (voor aankopen die zijn gedaan via alle scenario's voor klant aankopen, met uitzonde ring van Enterprise Agreement) | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Microsoft |
 | Australië (alleen voor aankopen die zijn gedaan via het Enterprise Agreement klant-aankoop scenario) | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Publisher |
 | Brazilië | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever (**Zie resellers landen/regio's**) |
@@ -287,6 +288,6 @@ Het volgende geldt alleen voor Azure Marketplace-uitgevers:
 | Brazilië (voor aankopen die zijn gedaan via alle scenario's voor klant aankoop behalve CSP) |
 | Mexico (alleen voor aankopen die zijn gedaan via het Enterprise Agreement klant-aankoop scenario) |
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="next-step"></a>Volgende stap
 
 [Stel uw betalingsaccount en belastingformulieren](set-up-your-payout-account-tax-forms.md)

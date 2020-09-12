@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265657"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298195"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer
 
@@ -53,7 +53,7 @@ De volgende tabel bevat een overzicht van systeem eigen DRM-ondersteuning op ver
 | **Windows 10** | PlayReady | Micro soft Edge/IE11 voor PlayReady|
 | **Android-apparaten (telefoon, Tablet, TV)** |Widevine |Chrome voor Widevine |
 | **iOS** | FairPlay | Safari voor FairPlay (sinds iOS 11,2) |
-| **macOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
+| **MacOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
 | **tvOS** | FairPlay | |
 
 Als u de huidige status van de implementatie voor elke DRM overweegt, wil een service doorgaans twee of drie DRMs implementeren om ervoor te zorgen dat u alle typen eind punten op de beste manier adresseert.
@@ -141,7 +141,7 @@ De volgende tabel toont de toewijzing.
 | **DRM-beveiligings werk stroom** |Dynamische beveiliging Azure Media Services |
 | **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom-licentie server <br/>* Aangepaste PlayReady-licentie server |
 | **Oorsprong** |Azure Media Services streaming-eind punt |
-| **Sleutel beheer** |Niet nodig voor referentie-implementatie |
+| **Sleutelbeheer** |Niet nodig voor referentie-implementatie |
 | **Inhoudbeheer** |Een C#-console toepassing |
 
 Met andere woorden, zowel IDP als STS worden geleverd door Azure AD. De [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Azure Media Services als Azure Media Player ondersteunen CENC via DASH, FairPlay via HLS, PlayReady over smooth streaming en AES-128-versleuteling voor DASH, HLS en Smooth.

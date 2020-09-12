@@ -1,5 +1,5 @@
 ---
-title: Een moment opname van een VHD maken in azure
+title: Een moment opname van een VHD maken met behulp van de Azure CLI
 description: Meer informatie over het maken van een kopie van een VHD in azure als back-up of voor het oplossen van problemen.
 author: roygara
 manager: twooley
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659966"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89317992"
 ---
-# <a name="create-a-snapshot"></a>Een momentopname maken 
+# <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Een moment opname maken met behulp van de portal of Azure CLI
 
 Maak een moment opname van een besturings systeem of gegevens schijf voor back-up of om problemen met VM'S op te lossen. Een moment opname is een volledige, alleen-lezen kopie van een VHD. 
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091450"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299642"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing
 Beheerde identiteiten voor Azure-resources bieden een automatisch beheerde identiteit in Azure Active Directory aan een Azure-resource, zoals uw Azure lente-Cloud toepassing. U kunt deze identiteit gebruiken voor verificatie bij alle services die Microsoft Azure AD-verificatie ondersteunen, zonder dat u aanmeldingsgegevens in uw code hoeft te hebben.
@@ -21,7 +21,7 @@ In dit artikel wordt beschreven hoe u door het systeem toegewezen beheerde ident
 
 ## <a name="prerequisites"></a>Vereisten
 Zie [overzichts sectie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)als u niet bekend bent met beheerde identiteiten voor Azure-resources.
-U hebt een geïmplementeerd Azure veer Cloud-exemplaar nodig. Volg de [Snelstartgids om te implementeren met behulp van de Azure cli](spring-cloud-quickstart-launch-app-cli.md).
+U hebt een geïmplementeerd Azure veer Cloud-exemplaar nodig. Volg de [Snelstartgids om te implementeren met behulp van de Azure cli](spring-cloud-quickstart.md).
 
 ## <a name="add-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen
 Voor het maken van een app met een door het systeem toegewezen identiteit moet u een extra eigenschap voor de toepassing instellen.
@@ -69,10 +69,10 @@ Als u een door het systeem toegewezen identiteit verwijdert, wordt deze ook uit 
 Door het systeem toegewezen beheerde identiteit verwijderen uit een app die niet meer nodig is:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een account dat is gekoppeld aan het Azure-abonnement dat het Azure veer Cloud-exemplaar bevat.
-1. Ga naar de gewenste virtuele machine en selecteer **identiteit**.
+1. Navigeer naar de gewenste VM en selecteer **Identiteit**.
 1. Selecteer onder **systeem toegewezen** / **status**de optie **uit** en klik vervolgens op **Opslaan**:
 
- ![Beheerde identiteit in de portal](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![Beheerde identiteit](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 Gebruik de volgende opdracht om door het systeem toegewezen beheerde identiteit te verwijderen uit een app die niet meer nodig is:

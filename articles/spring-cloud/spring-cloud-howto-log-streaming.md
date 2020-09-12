@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046745"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299606"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-applogboeken in realtime streamen
 Met Azure lente-Cloud kunt u logboek streaming in azure CLI inschakelen voor het verkrijgen van real-time toepassings console logboeken voor het oplossen van problemen. U kunt ook [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](./diagnostic-services.md).
@@ -20,7 +20,7 @@ Met Azure lente-Cloud kunt u logboek streaming in azure CLI inschakelen voor het
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer de [Azure cli-extensie](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) voor de lente-Cloud, mini maal versie 0.2.0.
-* Een exemplaar van **Azure lente Cloud** met een actieve toepassing, bijvoorbeeld [lente-Cloud-app](./spring-cloud-quickstart-launch-app-cli.md).
+* Een exemplaar van **Azure lente Cloud** met een actieve toepassing, bijvoorbeeld [lente-Cloud-app](./spring-cloud-quickstart.md).
 
 > [!NOTE]
 >  De ASC CLI-extensie wordt bijgewerkt van versie 0.2.0 naar 0.2.1. Deze wijziging is van invloed op de syntaxis van de opdracht voor logboek streaming: `az spring-cloud app log tail` , die wordt vervangen door: `az spring-cloud app logs` . De opdracht: `az spring-cloud app log tail` wordt afgeschaft in een toekomstige release. Als u versie 0.2.0 hebt gebruikt, kunt u een upgrade uitvoeren naar 0.2.1. Verwijder eerst de oude versie met behulp van de opdracht: `az extension remove -n spring-cloud` .  Installeer vervolgens 0.2.1 met de opdracht: `az extension add -n spring-cloud` .
@@ -87,7 +87,7 @@ az spring-cloud app logs -h
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Snelstartgids: Azure lente-Cloud-apps bewaken met Logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
+* [Quickstart: Azure Spring Cloud-apps bewaken met logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](./diagnostic-services.md)
 
  

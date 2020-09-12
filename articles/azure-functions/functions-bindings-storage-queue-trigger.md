@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761692"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376635"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure-wachtrij opslag trigger voor Azure Functions
 
@@ -388,7 +388,7 @@ De algoritme maakt gebruik van de volgende logica:
 - Wanneer een bericht wordt gevonden, wacht de runtime twee seconden en vervolgens wordt een ander bericht gecontroleerd
 - Wanneer er geen bericht wordt gevonden, wacht het ongeveer vier seconden voordat u het opnieuw probeert.
 - Na volgende mislukte pogingen om een wachtrij bericht op te halen, blijft de wacht tijd toenemen totdat de maximale wacht tijd is bereikt. de standaard waarde is één minuut.
-- De maximale wacht tijd kan worden geconfigureerd via de `maxPollingInterval` eigenschap in de [host.jsvoor het bestand](functions-host-json.md#queues).
+- De maximale wacht tijd kan worden geconfigureerd via de `maxPollingInterval` eigenschap in de [host.jsvoor het bestand](functions-host-json-v1.md#queues).
 
 Voor lokale ontwikkeling wordt het maximale polling-interval standaard ingesteld op twee seconden.
 

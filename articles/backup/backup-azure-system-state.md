@@ -3,12 +3,12 @@ title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181626"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376487"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
@@ -62,7 +62,7 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
 
     ![Bestanden en mappen configureren](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Nadat u op OK hebt geklikt, wordt er een vinkje weer gegeven naast **back-updoel**en wordt het deel venster **infra structuur voorbereiden** geopend.
+    Nadat u **OK**hebt geselecteerd, wordt er een vinkje weer gegeven naast **back-updoel**en wordt het deel venster **infra structuur voorbereiden** geopend.
 
     ![Nu de back-updoelstelling is geconfigureerd, gaat u de infrastructuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
@@ -158,7 +158,7 @@ Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te v
 
 8. Controleer de informatie op de pagina Bevestiging en selecteer vervolgens **volt ooien**.
 
-9. Nadat de wizard het back-upschema heeft gemaakt, selecteert u **sluiten**.
+9. Nadat u de wizard voor het maken van een back-upschema hebt doorlopen, selecteert u **Sluiten**.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Voor de eerste keer een back-up maken van de Windows Server-systeem status
 
@@ -170,9 +170,9 @@ Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te v
 
 3. Selecteer **systeem status** in het scherm **back-upitem selecteren** dat wordt weer gegeven en selecteer **volgende**.
 
-4. Controleer op de pagina Bevestiging de instellingen die de wizard Nu back-up maken gebruikt om een back-up te maken van de machine. Selecteer vervolgens **back-up**.
+4. Controleer op de pagina Bevestiging de instellingen die de wizard Nu back-up maken gebruikt om een back-up te maken van de machine. Selecteer vervolgens **Back-up maken**.
 
-5. Selecteer **sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
+5. Selecteer **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
     > [!NOTE]
     > De MARS-agent wordt geactiveerd `SFC /verifyonly` als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](/windows-server/administration/windows-commands/sfc).
     >

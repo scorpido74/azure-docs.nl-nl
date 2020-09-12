@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511090"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300371"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Bereid uw ontwikkel-en test omgeving voor op IoT Edge
 
@@ -82,10 +82,10 @@ Alleen de IoT Edge runtime wordt ondersteund voor productie-implementaties, maar
 
 | Hulpprogramma | Ook wel bekend als | Ondersteunde platforms | Ideaal voor |
 | ---- | ------------- | ------------------- | --------- |
-| IoT EdgeHub dev tool  | iotedgehubdev | Windows, Linux, MacOS | Een apparaat simuleren voor fout opsporing in modules. |
-| IoT Edge dev-container | micro soft-iotedgedev | Windows, Linux, MacOS | Ontwikkelen zonder afhankelijkheden te installeren. |
-| IoT Edge runtime in een container | iotedgec | Windows, Linux, MacOS, ARM | Testen op een apparaat dat de runtime mogelijk niet ondersteunt. |
-| IoT Edge-container | toolboc/Azure-IOT-Edge-Device-container | Windows, Linux, MacOS, ARM | Testen van een scenario met veel IoT Edge apparaten op schaal. |
+| IoT EdgeHub dev tool  | iotedgehubdev | Windows, Linux, macOS | Een apparaat simuleren voor fout opsporing in modules. |
+| IoT Edge dev-container | micro soft-iotedgedev | Windows, Linux, macOS | Ontwikkelen zonder afhankelijkheden te installeren. |
+| IoT Edge runtime in een container | iotedgec | Windows, Linux, macOS, ARM | Testen op een apparaat dat de runtime mogelijk niet ondersteunt. |
+| IoT Edge-container | toolboc/Azure-IOT-Edge-Device-container | Windows, Linux, macOS, ARM | Testen van een scenario met veel IoT Edge apparaten op schaal. |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub dev tool
 
@@ -103,7 +103,7 @@ Zie [Azure IOT Edge dev container](https://hub.docker.com/r/microsoft/iotedgedev
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge runtime in een container
 
-De IoT Edge runtime in een container biedt een volledige runtime waarmee uw apparaat connection string als een omgevings variabele. Met deze container kunt u IoT Edge-modules en-scenario's testen op een systeem dat de runtime mogelijk niet systeem eigen ondersteunt, zoals MacOS. Modules die u implementeert, worden buiten de runtime-container gestart. Als u wilt dat de runtime en eventuele geïmplementeerde modules in dezelfde container bestaan, kunt u het beste de IoT Edge-container van het apparaat gebruiken.
+De IoT Edge runtime in een container biedt een volledige runtime waarmee uw apparaat connection string als een omgevings variabele. Met deze container kunt u IoT Edge-modules en-scenario's testen op een systeem dat de runtime mogelijk niet systeem eigen ondersteunt, zoals macOS. Modules die u implementeert, worden buiten de runtime-container gestart. Als u wilt dat de runtime en eventuele geïmplementeerde modules in dezelfde container bestaan, kunt u het beste de IoT Edge-container van het apparaat gebruiken.
 
 Zie [Azure IOT Edge uitvoeren in een container](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)voor meer informatie.
 
@@ -119,7 +119,7 @@ Wanneer u klaar bent om oplossingen te ontwikkelen voor uitgebreide productie sc
 
 Zie de volgende pagina's voor meer informatie, richt lijnen en voor beelden:
 
-* [Continue integratie en continue implementatie naar Azure IoT Edge](how-to-ci-cd.md)
-* [Een CI/CD-pijp lijn maken voor IoT Edge met Azure DevOps Projects](how-to-devops-project.md)
+* [Continue integratie en continue implementatie naar Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
+* [Een CI/CD-pijp lijn maken voor IoT Edge met Azure DevOps starter](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins-invoeg toepassing](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub opslag plaats](https://github.com/toolboc/IoTEdge-DevOps)

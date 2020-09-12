@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797097"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321086"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Gebruikers toevoegen of verwijderen met Azure Active Directory
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om een nieuwe gebruiker toe te voegen:
 
    - **Groepen**. U kunt de gebruiker eventueel toevoegen aan een of meer bestaande groepen. U kunt de gebruiker ook op een later tijdstip toevoegen aan groepen. Zie [een basis groep maken en leden toevoegen met Azure Active Directory](active-directory-groups-create-azure-portal.md)voor meer informatie over het toevoegen van gebruikers aan groepen.
 
-   - **Directory-rol**: als u Azure AD-beheerders machtigingen voor de gebruiker nodig hebt, kunt u deze toevoegen aan een Azure AD-rol. U kunt de gebruiker toewijzen als globale beheerder of een of meer van de beperkte beheerders rollen in azure AD. Zie [rollen toewijzen aan gebruikers](active-directory-users-assign-role-azure-portal.md)voor meer informatie over het toewijzen van rollen.
+   - **Directory-rol**: Als u Azure AD-beheermachtigingen nodig hebt voor de gebruiker, kunt u ze aan een Azure AD-rol toevoegen. U kunt de gebruiker toewijzen als globale beheerder of een of meer van de beperkte beheerders rollen in azure AD. Zie [rollen toewijzen aan gebruikers](active-directory-users-assign-role-azure-portal.md)voor meer informatie over het toewijzen van rollen.
 
    - **Taak info**: u kunt hier meer informatie over de gebruiker toevoegen of dit later doen. Zie [informatie over het toevoegen of wijzigen van gebruikers profielen](active-directory-users-profile-azure-portal.md)voor meer informatie over het toevoegen van gebruikers gegevens.
 
@@ -60,7 +60,7 @@ De gebruiker wordt gemaakt en toegevoegd aan uw Azure AD-organisatie.
 
 ## <a name="add-a-new-guest-user"></a>Een nieuwe gast gebruiker toevoegen
 
-U kunt ook een nieuwe gast gebruiker uitnodigen om samen te werken met uw organisatie door **gebruikers uitnodigen** te selecteren op de pagina **nieuwe gebruiker** . Als de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen, wordt de gebruiker een uitnodiging per e-mail verzonden om te beginnen met samen werking. Zie [B2B-gebruikers uitnodigen voor Azure Active Directory](../b2b/add-users-administrator.md) voor meer informatie over het uitnodigen van B2B-samenwerkings gebruikers
+U kunt ook een nieuwe gast gebruiker uitnodigen om samen te werken met uw organisatie door **gebruikers uitnodigen** te selecteren op de pagina **nieuwe gebruiker** . Als de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen, wordt de gebruiker een uitnodiging per e-mail verzonden om te beginnen met samen werking. Zie [B2B-gebruikers uitnodigen voor Azure Active Directory](../external-identities/add-users-administrator.md) voor meer informatie over het uitnodigen van B2B-samenwerkings gebruikers
 
 ## <a name="add-a-consumer-user"></a>Een consument gebruiker toevoegen
 
@@ -105,4 +105,4 @@ Nadat u uw gebruikers hebt toegevoegd, kunt u de volgende basis processen uitvoe
 
 - [Werken met dynamische groepen en gebruikers](../users-groups-roles/groups-create-rule.md)
 
-U kunt ook andere gebruikers beheer taken uitvoeren, zoals het [toevoegen van gast gebruikers vanuit een andere map](../b2b/what-is-b2b.md) of [het herstellen van een verwijderde gebruiker](active-directory-users-restore.md). Zie [Azure Active Directory-documentatie voor gebruikers beheer](../users-groups-roles/index.yml)voor meer informatie over andere beschik bare acties.
+U kunt ook andere gebruikers beheer taken uitvoeren, zoals het [toevoegen van gast gebruikers vanuit een andere map](../external-identities/what-is-b2b.md) of [het herstellen van een verwijderde gebruiker](active-directory-users-restore.md). Zie [Azure Active Directory-documentatie voor gebruikers beheer](../users-groups-roles/index.yml)voor meer informatie over andere beschik bare acties.

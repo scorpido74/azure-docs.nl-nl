@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934970"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297991"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Gebruik de ' volledige ' lucene-Zoek syntaxis (geavanceerde query's in azure Cognitive Search)
 
@@ -40,13 +40,13 @@ Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgev
 
 Nadat u de aanvraag header hebt opgegeven, kunt u deze opnieuw gebruiken voor alle query's in dit artikel, zodat alleen de teken reeks **Search =** wordt uitgewisseld. 
 
-  ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-header.png)
+  ![Para meters ingesteld op de aanvraag header van postman](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>De aanvraag-URL instellen
 
 Request is een GET-opdracht die wordt gekoppeld aan een URL met het Azure Cognitive Search-eind punt en de zoek teken reeks.
 
-  ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![OPHALEN van header van Postman-aanvraag](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL-samen stelling heeft de volgende elementen:
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Antwoord voor deze query moet er ongeveer uitzien als in de volgende scherm afbeelding.
 
-  ![Postman-voorbeeld antwoord](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Postman-voorbeeld antwoord met scores](media/search-query-lucene-examples/postman-sample-results.png)
 
 Mogelijk hebt u de zoek Score in het antwoord gezien. Een uniforme Score van 1 treedt op als er geen positie is, omdat de zoek opdracht niet in volledige tekst is gezocht, of omdat er geen criteria zijn toegepast. Voor Null-Zoek opdrachten zonder criteria worden rijen in een wille keurige volg orde weer gegeven. Wanneer u werkelijke zoek criteria opneemt, ziet u dat zoek scores worden weer geven in betekenis volle waarden.
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman-voorbeeld antwoord](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Zoek expressie voor voorbeeld reacties van postman](media/search-query-lucene-examples/intrafieldfilter.png)
 
 U kunt een zoek bewerking in een veld definiëren met de syntaxis **FieldName: searchExpression** , waarbij de zoek expressie één woord of een woord groep of een complexere expressie tussen haakjes kan zijn, optioneel met Booleaanse Opera tors. Enkele voor beelden zijn:
 

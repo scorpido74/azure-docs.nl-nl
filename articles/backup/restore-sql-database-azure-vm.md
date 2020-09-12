@@ -3,12 +3,12 @@ title: SQL Server data bases herstellen op een virtuele Azure-machine
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826553"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377978"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-databases herstellen in Azure-VM's
 
@@ -98,7 +98,7 @@ Herstel als volgt:
 
         ![Doel paden invoeren](./media/backup-azure-sql-database/target-paths.png)
 
-1. Klik op **OK** om het herstellen te activeren. Volg de voortgang van de herstel bewerking in het gebied **meldingen** of houd deze bij in de weer gave **back-uptaken** in de kluis.
+1. Selecteer **OK** om het herstellen te activeren. Volg de voortgang van de herstel bewerking in het gebied **meldingen** of houd deze bij in de weer gave **back-uptaken** in de kluis.
 
     > [!NOTE]
     > Het herstel naar een bepaald tijdstip is alleen beschikbaar voor logboek back-ups voor data bases in de modus volledig en in bulk logboek registratie.
@@ -161,7 +161,7 @@ Ga als volgt te werk als u **volledige & differentieel** hebt geselecteerd als h
     ![Een volledig herstelpunt kiezen](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > Standaard worden de herstel punten van de afgelopen 30 dagen weer gegeven. U kunt herstel punten ouder dan 30 dagen weer geven door te klikken op **filter** en een aangepast bereik te selecteren.
+    > Standaard worden de herstel punten van de afgelopen 30 dagen weer gegeven. U kunt herstel punten ouder dan 30 dagen weer geven door **filteren** te selecteren en een aangepast bereik te selecteren.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Data bases herstellen met een groot aantal bestanden
 

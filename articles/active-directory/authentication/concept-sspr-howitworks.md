@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716313"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377196"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset (Hoe het werkt: selfservice voor wachtwoordherstel in Azure AD)
 
@@ -27,7 +27,7 @@ Self-service voor wachtwoordherstel (SSPR) voor Azure Active Directory (Azure AD
 >
 > Als uw IT-team u de mogelijkheid niet heeft gegeven uw eigen wachtwoord opnieuw in te stellen, kunt u contact opnemen met de helpdesk voor meer informatie.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Hoe werkt de portal voor het opnieuw instellen van wacht woorden?
+## <a name="how-does-the-password-reset-process-work"></a>Hoe werkt het proces voor het opnieuw instellen van wacht woorden?
 
 Een gebruiker kan het wacht woord opnieuw instellen of wijzigen met behulp van de [SSPR-Portal](https://aka.ms/sspr). Ze moeten eerst hun gewenste verificatie methoden hebben geregistreerd. Wanneer een gebruiker toegang heeft tot de SSPR-Portal, beschouwt het Azure-platform de volgende factoren:
 
@@ -58,6 +58,11 @@ Nadat de SSPR-Portal in de vereiste taal wordt weer gegeven, wordt de gebruiker 
   * Als SSPR write-back niet wordt geïmplementeerd en het wacht woord van de gebruiker on-premises wordt beheerd, wordt de gebruiker gevraagd contact op te nemen met de beheerder om hun wacht woord opnieuw in te stellen.
 
 Als alle vorige controles zijn voltooid, wordt de gebruiker begeleid door het proces om het wacht woord opnieuw in te stellen of te wijzigen.
+
+> [!NOTE]
+> SSPR kunnen e-mail meldingen verzenden naar gebruikers als onderdeel van het proces voor het opnieuw instellen van het wacht woord. Deze e-mail berichten worden verzonden via de SMTP-relay-service, die in de modus actief-actief in meerdere regio's actief is.
+>
+> De e-mail hoofdtekst worden door SMTP-relay Services ontvangen en verwerkt, maar niet opgeslagen. De hoofd tekst van de SSPR-e-mail die mogelijk door de klant verschafte informatie bevat, wordt niet opgeslagen in de logboeken van de SMTP relay-service. De logboeken bevatten alleen meta gegevens van het protocol.
 
 Voltooi de volgende zelf studie om aan de slag te gaan met SSPR:
 
@@ -101,7 +106,7 @@ De volgende verificatie methoden zijn beschikbaar voor SSPR:
 
 * Meldingen via mobiele app
 * Code van mobiele app
-* Email
+* E-mail
 * Mobiele telefoon
 * Zakelijke telefoon
 * Beveiligingsvragen

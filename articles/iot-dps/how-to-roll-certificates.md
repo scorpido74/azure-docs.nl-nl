@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974884"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299255"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hoe kan ik X. 509-apparaat certificaten
 
@@ -51,7 +51,7 @@ Wanneer een apparaat voor het eerst wordt ingericht door automatische inrichting
 
 Zodra een nieuw blad certificaat naar het apparaat is gedistribueerd, kan het geen verbinding meer maken met de IoT-hub, omdat het een nieuw certificaat gebruikt om verbinding te maken. De IoT-hub herkent het apparaat alleen met het oude certificaat. Het resultaat van de verbindings poging van het apparaat is een ' niet-geautoriseerde ' verbindings fout. Om deze fout op te lossen, moet u de inschrijvings vermelding voor het apparaat bijwerken naar account voor het nieuwe blad certificaat van het apparaat. Vervolgens kan de inrichtings service de gegevens van het IoT Hub Device-REGI ster zo nodig bijwerken wanneer het apparaat opnieuw wordt ingericht. 
 
-Een mogelijke uitzonde ring op deze verbindings fout is een scenario waarin u een [registratie groep](concepts-service.md#enrollment-group) voor uw apparaat hebt gemaakt in de inrichtings service. Als u in dit geval de basis-of tussenliggende certificaten in de certificaat keten van het apparaat niet rolt, wordt het apparaat herkend als het nieuwe certificaat deel uitmaakt van de vertrouwens keten die in de registratie groep is gedefinieerd. Als dit scenario zich voordoet als gevolg van een reactie op een inbreuk op de beveiliging, moet u ten minste de specifieke apparaten in de groep die worden beschouwd als geschonden. Zie voor meer informatie [specifieke Black-apparaten in een registratie groep](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Een mogelijke uitzonde ring op deze verbindings fout is een scenario waarin u een [registratie groep](concepts-service.md#enrollment-group) voor uw apparaat hebt gemaakt in de inrichtings service. Als u in dit geval de basis-of tussenliggende certificaten in de certificaat keten van het apparaat niet rolt, wordt het apparaat herkend als het nieuwe certificaat deel uitmaakt van de vertrouwens keten die in de registratie groep is gedefinieerd. Als dit scenario zich voordoet als een reactie op een inbreuk op de beveiliging, moet u ten minste de specifieke certificaat certificaten in de groep die worden beschouwd als geschonden, niet toestaan. Zie [specifieke apparaten in een registratie groep weigeren](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group)voor meer informatie.
 
 Het bijwerken van inschrijvings vermeldingen voor gerollte certificaten wordt uitgevoerd op de pagina **inschrijvingen beheren** . Voer de volgende stappen uit om deze pagina te openen:
 
@@ -197,9 +197,9 @@ Een andere manier is dat zowel de oude als de nieuwe certificaten geldig zijn vo
 Zodra het opnieuw inrichten is voltooid, kunnen apparaten verbinding maken met IoT Hub met behulp van hun nieuwe certificaten.
 
 
-## <a name="blacklist-certificates"></a>Lijst met zwarte certificaten
+## <a name="disallow-certificates"></a>Certificaten niet toestaan
 
-Als gevolg van een inbreuk op de beveiliging moet u mogelijk een apparaat in de lijst met apparaten op de zwarte lijst bevinden. Als u een certificaat op een apparaat wilt op de zwarte lijst, schakelt u de inschrijvings vermelding voor het doel apparaat/certificaat uit. Zie voor meer informatie apparaten op de zwarte lijst weer geven in het artikel [registratie van uitschrijving beheren](how-to-revoke-device-access-portal.md) .
+Als gevolg van een inbreuk op de beveiliging moet u mogelijk een certificaat voor een apparaat niet toestaan. Als u een certificaat voor een apparaat niet wilt toestaan, schakelt u de inschrijvings vermelding voor het doel apparaat/certificaat uit. Zie voor meer informatie apparaten niet toestaan in het artikel [registratie van uitschrijving beheren](how-to-revoke-device-access-portal.md) .
 
 Wanneer een certificaat is opgenomen als onderdeel van een uitgeschakelde inschrijvings vermelding, zullen pogingen om zich bij een IoT-hub te registreren met die certificaten, mislukken, zelfs als deze is ingeschakeld als onderdeel van een andere inschrijvings vermelding.
  
@@ -211,13 +211,3 @@ Wanneer een certificaat is opgenomen als onderdeel van een uitgeschakelde inschr
 - Zie [beveiliging](concepts-security.md) voor meer informatie over X. 509-certificaten in de Device Provisioning Service. 
 - Zie [certificaten controleren](how-to-verify-certificates.md) voor meer informatie over het gebruik van een bewijs van de 509 voor een X. CA-certificaat met Azure IOT hub Device Provisioning Service.
 - Zie [inschrijving van apparaten beheren met Azure Portal](how-to-manage-enrollments.md)voor meer informatie over het gebruik van de portal voor het maken van een registratie groep.
-
-
-
-
-
-
-
-
-
-

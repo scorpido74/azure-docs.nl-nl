@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797390"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321970"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>De privacygegevens van uw organisatie toevoegen met behulp van Azure Active Directory
 In dit artikel wordt uitgelegd hoe een Tenant beheerder via de Azure Portal aan privacy gerelateerde informatie kan toevoegen aan de Azure Active Directory van een organisatie (Azure AD).
@@ -56,5 +56,5 @@ U kunt de privacygegevens van uw organisatie toevoegen in het gedeelte **Eigensc
 4. Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Inwisseling uitnodiging Azure Active Directory B2B-samen werking](../b2b/redemption-experience.md)
+- [Inwisseling uitnodiging Azure Active Directory B2B-samen werking](../external-identities/redemption-experience.md)
 - [Profiel gegevens voor een gebruiker toevoegen of wijzigen in Azure Active Directory](active-directory-users-profile-azure-portal.md)

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223853"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300269"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
@@ -61,7 +61,7 @@ Als de Git-implementatie is geconfigureerd, wordt op de pagina een **Git/impleme
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Referenties op gebruikers niveau gebruiken met FTP-FTPS
 
-Verificatie bij een FTP-FTPS-eind punt met referenties op gebruikers niveau vereist een gebruikers naam in de volgende indeling:`<app-name>\<user-name>`
+Verificatie bij een FTP-FTPS-eind punt met referenties op gebruikers niveau vereist een gebruikers naam in de volgende indeling: `<app-name>\<user-name>`
 
 Omdat referenties op gebruikers niveau zijn gekoppeld aan de gebruiker en niet aan een specifieke resource, moet de gebruikers naam de volgende indeling hebben om de aanmeldings actie door te sturen naar het juiste app-eind punt.
 
@@ -73,6 +73,36 @@ De referenties op app-niveau ophalen:
 2. Selecteer **app-referenties**en selecteer de koppeling **kopiëren** om de gebruikers naam of het wacht woord te kopiëren.
 
 Als u de referenties op app-niveau opnieuw wilt instellen, selecteert u **referenties opnieuw instellen** in hetzelfde dialoog venster.
+
+## <a name="disable-basic-authentication"></a>Basis verificatie uitschakelen
+
+Sommige organisaties moeten voldoen aan de beveiligings vereisten en voor komen dat de toegang via FTP of Web Deploy wordt uitgeschakeld. Op deze manier hebben de leden van de organisatie alleen toegang tot de App Services via Api's die worden beheerd door Azure Active Directory (Azure AD).
+
+### <a name="ftp"></a>FTP
+
+Voer de volgende CLI-opdracht uit om FTP-toegang tot de site uit te scha kelen. Vervang de tijdelijke aanduidingen door de resource groep en de naam van de site. 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Als u wilt controleren of FTP-toegang is geblokkeerd, kunt u proberen te verifiëren met behulp van een FTP-client, zoals FileZilla. Als u de referenties voor publiceren wilt ophalen, gaat u naar de Blade overzicht van uw site en klikt u op publicatie profiel downloaden. Gebruik de FTP-hostnaam, gebruikers naam en het wacht woord van het bestand om te verifiëren. u ontvangt een 401-fout melding die aangeeft dat u niet bent gemachtigd.
+
+### <a name="webdeploy-and-scm"></a>Webdeploy en SCM
+
+Voer de volgende CLI-opdracht uit om basis verificatie toegang tot de Web Deploy-poort en de SCM-site uit te scha kelen. Vervang de tijdelijke aanduidingen door de resource groep en de naam van de site. 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Als u wilt controleren of de referenties van het publicatie profiel zijn geblokkeerd voor webimplementatie, kunt u [een web-app publiceren met Visual Studio 2019](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+
+### <a name="disable-access-to-the-api"></a>Toegang tot de API uitschakelen
+
+De API in de vorige sectie is een back-up van Azure Role-based Access Control (RBAC). Dit betekent dat u [een aangepaste rol kunt maken](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) en gebruikers met een lagere priveldged aan de rol kan toewijzen, zodat de basis verificatie op geen enkele site kan worden ingeschakeld. [Volg deze instructies](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)voor het configureren van de aangepaste rol.
+
+U kunt [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) ook gebruiken om de geslaagde verificatie aanvragen te controleren en [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) te gebruiken om deze configuratie af te dwingen voor alle sites in uw abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 

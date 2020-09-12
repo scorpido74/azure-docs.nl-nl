@@ -9,16 +9,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269706"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297430"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Terminologie en concepten Media Services
 
@@ -36,14 +36,14 @@ De basis concepten die in deze onderwerpen worden beschreven, moeten worden geco
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3-terminologie
 
-|Termijn|Beschrijving|
+|Term|Beschrijving|
 |---|---|
 |Live-gebeurtenis|Een **live-gebeurtenis** vertegenwoordigt een pijp lijn voor opname, code ring (optioneel) en het verpakken van live streams van video, audio en realtime meta gegevens.<br/><br/>Voor klanten die migreren van Media Services v2 Api's, vervangt de **live-gebeurtenis** de **kanaal** entiteit in v2. Zie voor meer informatie [migreren van v2 naar v3](migrate-from-v2-to-v3.md).|
 |Streaming-eind punt/verpakking/oorsprong|Een **streaming-eind punt** vertegenwoordigt een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren. Er wordt een van de algemene protocollen voor streaming media (HLS of DASH) gebruikt. Daarnaast biedt het **streaming-eind punt** dynamische code ring (just-in-time) voor toonaangevende Digital Rights Management systemen (DRMs).<br/><br/>In de media streaming-industrie wordt deze service meestal een **packager** of **Origin**genoemd.  Andere veelvoorkomende termen in de branche voor deze mogelijkheid zijn JITP (just-in-time-packager) of JITE (just-in-time-Encryption).
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3-concepten
 
-|Concepten|Description|Koppelingen|
+|Concepten|Beschrijving|Koppelingen|
 |---|---|---|
 |Activa en uploaden van inhoud|Als u media-inhoud in azure wilt beheren, versleutelen, coderen, analyseren en streamen, moet u een Media Services account maken en uw digitale bestanden uploaden naar **assets**.|[Uploaden naar en opslaan in de cloud](storage-account-concept.md)<br/><br/>[Het concept van assets](assets-concept.md)|
 |Inhoud versleutelen|Wanneer u uw digitale media bestanden van hoge kwaliteit uploadt naar assets, kunt u ze coderen in indelingen die kunnen worden afgespeeld op een groot aantal verschillende browsers en apparaten. <br/><br/>Als u wilt coderen met Media Services v3, moet u **trans formaties** en **taken**maken.|[Trans formaties en taken](transforms-jobs-concept.md)<br/><br/>[Code ring met Media Services](encoding-concept.md)|

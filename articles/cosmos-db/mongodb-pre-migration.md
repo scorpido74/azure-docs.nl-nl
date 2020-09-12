@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 09/01/2020
 ms.author: lbosq
-ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be38b1cfa698907f44c6deee77bb9b8ca88b77b7
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263055"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318213"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Stappen voorafgaand aan de migratie voor gegevens migraties van MongoDB naar de API van Azure Cosmos DB voor MongoDB
 
@@ -44,13 +44,12 @@ De [Azure database Migration service voor Azure Cosmos DB-API voor MongoDb](../d
 
 |**Type migratie**|**Oplossing**|**Overwegingen**|
 |---------|---------|---------|
-|Offline|[Hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote gegevens sets.|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets <br/>&bull;Geen controle punten houdt in dat een probleem tijdens de migratie het opnieuw opstarten van het hele migratie proces vereist.<br/>&bull;Geen wachtrij met onbestelbare berichten zou betekenen dat een paar foutieve bestanden het gehele migratie proces zouden kunnen stoppen <br/>&bull;Aangepaste code nodig om de Lees doorvoer voor bepaalde gegevens bronnen te verg Roten|
-|Offline|[Bestaande Mongo-Hulpprogram Ma's (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull;Eenvoudig in te stellen en te integreren <br/>&bull;Aangepaste verwerking vereist voor beperking|
-|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull;Volledig beheerde migratie service.<br/>&bull;Biedt hosting-en bewakings oplossingen voor de migratie taak. <br/>&bull;Geschikt voor grote gegevens sets en zorgt voor het repliceren van Live wijzigingen <br/>&bull;Werkt alleen met andere MongoDB-bronnen|
+|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull; Geschikt voor grote gegevens sets en zorgt voor het repliceren van Live wijzigingen <br/>&bull; Werkt alleen met andere MongoDB-bronnen|
+|Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull; Geschikt voor grote gegevens sets en zorgt voor het repliceren van Live wijzigingen <br/>&bull; Werkt alleen met andere MongoDB-bronnen|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull; Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull; Geschikt voor grote gegevens sets <br/>&bull; Geen controle punten houdt in dat een probleem tijdens de migratie het opnieuw opstarten van het hele migratie proces vereist.<br/>&bull; Geen wachtrij met onbestelbare berichten zou betekenen dat een paar foutieve bestanden het gehele migratie proces zouden kunnen stoppen <br/>&bull; Aangepaste code nodig om de Lees doorvoer voor bepaalde gegevens bronnen te verg Roten|
+|Offline|[Bestaande Mongo-Hulpprogram Ma's (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Eenvoudig in te stellen en te integreren <br/>&bull; Aangepaste verwerking vereist voor beperking|
 
-
-## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>De door Voer voor uw workloads schatten
+## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> De door Voer voor uw workloads schatten
 
 In Azure Cosmos DB wordt de door Voer vooraf ingericht en in aanvraag eenheden (RU) per seconde gemeten. In tegens telling tot Vm's of on-premises servers is RUs op elk gewenst moment eenvoudig omhoog en omlaag schalen. U kunt het aantal ingerichte RUs direct wijzigen. Zie [aanvraag eenheden in azure Cosmos DB](request-units.md)voor meer informatie.
 
@@ -71,16 +70,16 @@ Met deze opdracht wordt een JSON-document uitgevoerd dat lijkt op het volgende:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-U kunt ook [de diagnostische instellingen](cosmosdb-monitor-resource-logs.md) gebruiken om inzicht te krijgen in de frequentie en patronen van de query's die worden uitgevoerd op Azure Cosmos db. De resultaten van de diagnostische logboeken kunnen worden verzonden naar een opslag account, een EventHub-exemplaar of [Azure-log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).  
+U kunt ook [de diagnostische instellingen](cosmosdb-monitor-resource-logs.md) gebruiken om inzicht te krijgen in de frequentie en patronen van de query's die worden uitgevoerd op Azure Cosmos db. De resultaten van de diagnostische logboeken kunnen worden verzonden naar een opslag account, een EventHub-exemplaar of [Azure-log Analytics](../azure-monitor/log-query/get-started-portal.md).  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>Kies uw partitie sleutel
 Partitioneren, ook wel bekend als sharding, is een belang rijk aandachtspunt voordat u gegevens migreert. Azure Cosmos DB maakt gebruik van volledig beheerde partities om de capaciteit in een Data Base te verg Roten om te voldoen aan de vereisten voor opslag en door voer. Voor deze functie is geen hosting-of configuratie van routerings servers nodig.   
 
-Op dezelfde manier wordt met de partitionering automatisch capaciteit toegevoegd en worden de gegevens dienovereenkomstig opnieuw gebalanceerd. Zie het [artikel een partitie sleutel kiezen](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)voor meer informatie en aanbevelingen over het kiezen van de juiste partitie sleutel voor uw gegevens. 
+Op dezelfde manier wordt met de partitionering automatisch capaciteit toegevoegd en worden de gegevens dienovereenkomstig opnieuw gebalanceerd. Zie het [artikel een partitie sleutel kiezen](partitioning-overview.md#choose-partitionkey)voor meer informatie en aanbevelingen over het kiezen van de juiste partitie sleutel voor uw gegevens. 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Uw gegevens indexeren
 
-Met de API van Azure Cosmos DB voor MongoDB-Server versie 3,6 wordt het `_id` veld alleen automatisch geïndexeerd. Dit veld kan niet worden verwijderd. De unieke waarde van het veld wordt automatisch afgedwongen `_id` per Shard-sleutel. Als u extra velden wilt indexeren, past u de MongoDB-index beheer opdrachten toe. Dit standaard indexerings beleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
+Met de API van Azure Cosmos DB voor MongoDB-Server versie 3,6 wordt het `_id` veld alleen automatisch geïndexeerd. Dit veld kan niet worden verwijderd. De unieke waarde van het veld wordt automatisch afgedwongen `_id` per Shard-sleutel. Als u extra velden wilt indexeren, past u de opdrachten voor MongoDB-indexbeheer toe. Dit standaard indexeringsbeleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
 
 De indexerings mogelijkheden van Azure Cosmos DB zijn onder andere het toevoegen van samengestelde indexen, unieke indexen en TTL-indexen (time-to-Live). De index beheer-interface wordt toegewezen aan de `createIndex()` opdracht. Meer informatie vindt u [in indexering in azure Cosmos DB-API voor MongoDb](mongodb-indexing.md)-artikel.
 

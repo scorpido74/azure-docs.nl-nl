@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault beveiliging | Microsoft Docs
+title: Azure Key Vault-beveiliging
 description: Toegangs machtigingen voor Azure Key Vault, sleutels en geheimen beheren. Behandelt het verificatie-en autorisatie model voor Key Vault en hoe u uw sleutel kluis kunt beveiligen.
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870575"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377570"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-beveiliging
 
-U moet de versleutelings sleutels en geheimen zoals certificaten, verbindings reeksen en wacht woorden in de Cloud beveiligen, zodat u Azure Key Vault gebruikt. Omdat u gevoelige en bedrijfskritische gegevens opslaat, moet u stappen ondernemen om de beveiliging van uw kluizen en de gegevens die erin zijn opgeslagen te maximaliseren. In dit artikel worden enkele van de concepten besproken die u moet overwegen bij het ontwerpen van uw Azure Key Vault-beveiliging.
+U gebruikt Azure Key Vault om versleutelings sleutels en geheimen te beveiligen, zoals certificaten, verbindings reeksen en wacht woorden in de Cloud. Bij het opslaan van gevoelige en bedrijfs kritieke gegevens moet u stappen ondernemen om de beveiliging van uw kluizen en de gegevens die erin zijn opgeslagen te maximaliseren.
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
@@ -65,7 +64,7 @@ Key Vault toegangs beleid worden machtigingen afzonderlijk verleend aan sleutels
 > [!IMPORTANT]
 > Key Vault toegangs beleid biedt geen ondersteuning voor granulaire machtigingen op object niveau, zoals een specifieke sleutel, geheim of certificaat. Wanneer een gebruiker gemachtigd is om sleutels te maken en te verwijderen, kunnen ze deze bewerkingen uitvoeren op alle sleutels in die sleutel kluis.
 
-Als u toegangs beleid wilt instellen voor een sleutel kluis, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)of de [rest api's van Key Vault beheer](/rest/api/keyvault/).
+U kunt toegangs beleid voor een sleutel kluis instellen met behulp van de [Azure Portal](assign-access-policy-portal.md), de [Azure cli](assign-access-policy-cli.md), [Azure PowerShell](assign-access-policy-powershell.md)of de [rest api's van Key Vault beheer](/rest/api/keyvault/).
 
 U kunt de toegang tot het gegevens vlak beperken met behulp van de [service-eind punten voor virtuele netwerken voor Azure Key Vault](overview-vnet-service-endpoints.md)). U kunt [firewalls en regels voor virtuele netwerken](network-security.md) configureren voor een extra beveiligingslaag.
 

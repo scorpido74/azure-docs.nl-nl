@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: aa9b5a3f6f7ca935e4e6b3645c58da5516384072
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178008"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376176"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -198,7 +198,7 @@ De back-upbewerking is mislukt vanwege een inconsistente status van de back-upex
 
 * Zorg ervoor dat de gastagent geïnstalleerd en responsief is
 * Ga vanuit het Azure Portal naar de **Virtual Machine**  >  extensies van**alle instellingen**  >  **Extensions** van de virtuele machine
-* Selecteer de backup-extensie VmSnapshot of VmSnapshotLinux en klik op **Verwijderen**
+* Selecteer de back-upextensie VmSnapshot of VmSnapshotLinux en selecteer **verwijderen**.
 * Voer de back-upbewerking opnieuw uit nadat u de back-upextensie hebt verwijderd
 * De volgende back-upbewerking installeert de nieuwe extensie in de gewenste status
 
@@ -363,7 +363,7 @@ Controleer de versie van de VM-agent op Windows-Vm's:
 1. Meld u aan bij de virtuele machine van Azure en navigeer naar de map **C:\WindowsAzure\Packages**. U vindt het **WaAppAgent.exe** -bestand.
 2. Klik met de rechter muisknop op het bestand en ga naar **Eigenschappen**. Selecteer vervolgens het tabblad **Details** . Het veld **product versie** moet 2.6.1198.718 of hoger zijn.
 
-## <a name="troubleshoot-vm-snapshot-issues"></a>Problemen met VM-moment opnamen oplossen
+## <a name="troubleshoot-vm-snapshot-issues"></a>Problemen met VM-schaduwkopie oplossen
 
 VM-back-up is afhankelijk van het uitgeven van momentopname opdrachten aan onderliggende opslag. Als u geen toegang hebt tot opslag of vertragingen tijdens het uitvoeren van een taak voor een moment opname, kan de back-uptaak mislukken. De volgende voor waarden kunnen leiden tot een fout in een moment opname taak:
 

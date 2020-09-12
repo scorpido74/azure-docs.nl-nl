@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5599ce6f086ca9c3dcbf7ac406306b6198d3080a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797611"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319148"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Wat is de Azure Active Directory architectuur?
 
@@ -123,4 +123,4 @@ Het gebruik van operationele besturings elementen zoals multi-factor Authenticat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Ontwikkelaarshandleiding voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop)
+[Ontwikkelaars handleiding Azure Active Directory](../develop/index.yml)

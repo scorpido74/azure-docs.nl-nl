@@ -1,0 +1,268 @@
+---
+title: Ondersteunde uitgevers landen en regio's
+description: Lijst met landen van waaruit u een aanbieding kunt publiceren op de micro soft Commercial Marketplace.
+ms.reviewer: nanef
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.custom: references_regions
+ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 09/02/2020
+ms.openlocfilehash: 393b71e78c59d126b24da2f1fd354ccfadf6825a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322903"
+---
+# <a name="supported-publisher-countries-and-regions"></a>Ondersteunde uitgevers landen en regio's
+
+Als u een aanbieding naar micro soft Commercial Marketplace wilt publiceren, moet u uw verblijfs naam hebben in een van de volgende landen of regio's.
+
+- Afghanistan
+- Åland-eilanden
+- Albanië
+- Algerije
+- Amerikaans-Samoa
+- Andorra
+- Angola
+- Anguilla
+- Antarctica
+- Antigua en Barbuda
+- Argentinië
+- Armenië
+- Aruba
+- Australië
+- Oostenrijk
+- Azerbeidzjan
+- Bahama's
+- Bahrein
+- Bangladesh
+- Barbados
+- Belarus
+- België
+- Belize
+- Benin
+- Bermuda
+- Bhutan
+- Bolivia
+- Bonaire, Sint Eustatius en Saba
+- Bosnië en Herzegovina
+- Botswana
+- Bouveteiland
+- Brazilië
+- Brits Territorium in de Indische Oceaan
+- Britse Maagdeneilanden
+- Brunei
+- Bulgarije
+- Burkina Faso
+- Burundi
+- Cabo Verde
+- Cambodja
+- Kameroen
+- Canada
+- Kaaimaneilanden
+- Centraal-Afrikaanse Republiek
+- Tsjaad
+- Chili
+- China
+- Christmaseiland
+- Cocoseilanden
+- Colombia
+- Comoren
+- Congo
+- Congo (DRC)
+- Cookeilanden
+- Costa Rica
+- Kroatië
+- Curaçao
+- Cyprus
+- Ivoor kust
+- Czechia
+- Denemarken
+- Djibouti
+- Dominica
+- Dominicaanse Republiek
+- Ecuador
+- Egypte
+- El Salvador
+- Equatoriaal-Guinea
+- Eritrea
+- Estland
+- Ethiopië
+- Falklandeilanden
+- Faröer
+- Fiji
+- Finland
+- Frankrijk
+- Frans-Guyana
+- Frans-Polynesië
+- Franse Gebieden in de zuidelijke Indische Oceaan
+- Gabon
+- Gambia
+- Georgië
+- Duitsland
+- Ghana
+- Gibraltar
+- Griekenland
+- Groenland
+- Grenada
+- Guadeloupe
+- Guam
+- Guatemala
+- Guernsey
+- Guinee
+- Guinee-Bissau
+- Guyana
+- Haïti
+- Heard Island en McDonald eilanden
+- Honduras
+- Hongkong SAR
+- Hongarije
+- IJsland
+- India
+- Indonesië
+- Irak
+- Ierland
+- Isle of Man
+- Israël
+- Italië
+- Jamaica
+- Japan
+- Jersey
+- Jordanië
+- Kazachstan
+- Kenia
+- Kiribati
+- Korea
+- Kosovo
+- Koeweit
+- Kirgistan
+- Laos
+- Letland
+- Libanon
+- Lesotho
+- Liberia
+- Libië
+- Liechtenstein
+- Litouwen
+- Luxemburg
+- Macau SAR
+- Madagaskar
+- Malawi
+- Maleisië
+- Maldiven
+- Mali
+- Malta
+- Marshalleilanden
+- Martinique
+- Mauritanië
+- Mauritius
+- Mayotte
+- Mexico
+- Micronesia
+- Moldavië
+- Monaco
+- Mongolië
+- Montenegro
+- Montserrat
+- Marokko
+- Mozambique
+- Myanmar
+- Namibië
+- Nauru
+- Nepal
+- Nederland
+- Nieuw-Caledonië
+- Nieuw-Zeeland
+- Nicaragua
+- Niger
+- Nigeria
+- Niue
+- Norfolk
+- Noord-Macedonië
+- Noordelijke Marianen
+- Noorwegen
+- Oman
+- Pakistan
+- Palau
+- Palestijnse Autoriteit
+- Panama
+- Papoea-Nieuw-Guinea
+- Paraguay
+- Peru
+- Filipijnen
+- Pitcairneilanden
+- Polen
+- Portugal
+- Puerto Rico
+- Qatar
+- Roemenië
+- Rusland
+- Rwanda
+- Réunion
+- Saba
+- Saint--Barthélemy
+- Saint Kitts en Nevis
+- Saint Lucia
+- Saint-Martin
+- Saint-Pierre en Miquelon
+- Saint Vincent en de Grenadines
+- Samoa
+- San Marino
+- Saoedi-Arabië
+- Senegal
+- Servië
+- Seychellen
+- Sierra Leone
+- Singapore
+- Sint-Eustatius
+- Sint Maarten
+- Slowakije
+- Slovenië
+- Salomonseilanden
+- Somalië
+- Zuid-Afrika
+- Zuid-Georgië en de zuidelijke Sandwich eilanden
+- Zuid-Soedan
+- Spanje
+- Sri Lanka
+- Sint-Helena, Ascension en Tristan da Cunha
+- Suriname
+- Spitsbergen en Jan Mayen
+- Swaziland
+- Zweden
+- Zwitserland
+- Sao Tomé en principe
+- Taiwan
+- Tadzjikistan
+- Tanzania
+- Thailand
+- Timor-Leste
+- Togo
+- Tokelau
+- Tonga
+- Trinidad en Tobago
+- Tunesië
+- Turkije
+- Turkmenistan
+- Turks- en Caicos-eilanden
+- Tuvalu
+-  Kleine afgelegen eilanden van de Verenigde Staten
+- Amerikaanse Maagden eilanden
+- Oeganda
+- Oekraïne
+- Verenigde Arabische Emiraten
+- Verenigd Koninkrijk
+- Verenigde Staten
+- Uruguay
+- Oezbekistan
+- Vanuatu
+- Vaticaanstad
+- Venezuela
+- Vietnam
+- Wallis en Futuna
+- Jemen
+- Zambia
+- Zimbabwe

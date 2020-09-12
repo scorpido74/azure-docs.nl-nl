@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: fe540dbb230f033f139e82325bf8e20846f5bfe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de232ab6c52afa45b40ef7863a0cb35d7b40531f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832539"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299113"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Aanvragen verzenden naar de Bing Spellingcontrole-API
 
@@ -42,7 +42,7 @@ Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/b
 
 Bij het aanroepen van de Bing Spellingcontrole-API met behulp van JavaScript, voorkomen de ingebouwde beveiligingsfuncties van uw browser mogelijk dat u toegang krijgt tot de waarden van deze headers.
 
-Om dit probleem op te lossen, kunt u de aanvraag voor de Bing Spellingcontrole-API uitvoeren via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
+Om dit probleem op te lossen, kunt u de aanvraag voor de Bing Spellingcontrole-API uitvoeren via een CORS-proxy. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers filtert en deze beschikbaar maakt voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de [zelfstudie-app](../tutorials/spellcheck.md) toegang krijgt tot de optionele clientheaders. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 
@@ -127,4 +127,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

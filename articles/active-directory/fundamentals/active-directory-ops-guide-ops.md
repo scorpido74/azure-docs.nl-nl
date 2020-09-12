@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422952"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321953"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Naslag informatie over Azure Active Directory algemene bedienings handleiding
 
@@ -49,8 +49,8 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 
 #### <a name="owners-recommended-reading"></a>Eigen aren aanbevolen lezen
 
-- [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Beheerdersrollen toewijzen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Governance in Azure](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hybride beheer
 
@@ -69,12 +69,12 @@ Tenzij er een procedure is ingesteld, moet u een proces definiëren om deze onde
 
 #### <a name="hybrid-management-recommended-reading"></a>Aanbevolen Lees bewerkingen voor hybride beheer
 
-- [Azure AD Connect: automatische upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
-- [Meer informatie over Azure AD-toepassingsproxy-connectors | Automatische updates](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#automatic-updates)
+- [Azure AD Connect: automatische upgrade](../hybrid/how-to-connect-install-automatic-upgrade.md)
+- [Meer informatie over Azure AD-toepassingsproxy-connectors | Automatische updates](../manage-apps/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Basis lijn van Azure AD Connect Health waarschuwing
 
-Organisaties moeten [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) implementeren voor het bewaken en rapporteren van Azure AD Connect en AD FS. Azure AD Connect en AD FS zijn essentiële onderdelen die levenscyclus beheer en-verificatie kunnen verstoren en daarom leiden tot storingen. Azure AD Connect Health helpt bij het bewaken en verkrijgen van inzicht in uw on-premises identiteits infrastructuur, waardoor de betrouw baarheid van uw omgeving wordt gegarandeerd.
+Organisaties moeten [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) implementeren voor het bewaken en rapporteren van Azure AD Connect en AD FS. Azure AD Connect en AD FS zijn essentiële onderdelen die levenscyclus beheer en-verificatie kunnen verstoren en daarom leiden tot storingen. Azure AD Connect Health helpt bij het bewaken en verkrijgen van inzicht in uw on-premises identiteits infrastructuur, waardoor de betrouw baarheid van uw omgeving wordt gegarandeerd.
 
 ![Azure AD Connect Health-architectuur](./media/active-directory-ops-guide/active-directory-ops-img16.png)
 
@@ -82,7 +82,7 @@ Wanneer u de status van uw omgeving bewaken, moet u onmiddellijk waarschuwingen 
 
 #### <a name="azure-ad-connect-health-recommended-reading"></a>Azure AD Connect Health aanbevolen lezen
 
-- [De Azure AD Connect Health-agent installeren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+- [De Azure AD Connect Health-agent installeren](../hybrid/how-to-connect-health-agent-install.md)
 
 ### <a name="on-premises-agents-logs"></a>Logboeken voor on-premises agents
 
@@ -90,11 +90,11 @@ Voor sommige services voor identiteits-en toegangs beheer zijn on-premises agent
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>On-premises agents logboeken aanbevolen lezen
 
-- [Problemen met toepassingsproxy oplossen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [Oplossen van problemen met de selfservice voor wachtwoord herstel-Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Azure AD-toepassingsproxy-connectors begrijpen](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
-- [Azure AD Connect: problemen met Pass Through-verificatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
-- [Fout codes voor de Azure MFA NPS-extensie oplossen](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
+- [Problemen met toepassingsproxy oplossen](../manage-apps/application-proxy-troubleshoot.md)
+- [Oplossen van problemen met de selfservice voor wachtwoord herstel-Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Azure AD-toepassingsproxy-connectors begrijpen](../manage-apps/application-proxy-connectors.md)
+- [Azure AD Connect: problemen met Pass Through-verificatie oplossen](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
+- [Fout codes voor de Azure MFA NPS-extensie oplossen](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Beheer van on-premises agents
 
@@ -106,14 +106,14 @@ Het hand nemen van aanbevolen procedures kan de optimale werking van on-premises
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Beheer van on-premises agents aanbevolen lezen
 
-- [Azure AD-toepassingsproxy-connectors begrijpen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Azure AD-toepassingsproxy-connectors begrijpen](../manage-apps/application-proxy-connectors.md)
 - [Pass-Through-verificatie van Azure AD-Quick Start](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Beheer op schaal
 
 ### <a name="identity-secure-score"></a>Identity Secure Score
 
-De [beveiligde Score](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score) van de identiteit biedt een meet bare meting van de beveiligings postuur van uw organisatie. Het is belang rijk om voortdurend te controleren en gerapporteerde bevindingen te verhelpen en de hoogste score mogelijk te houden. De score helpt bij het volgende:
+De [beveiligde Score](./identity-secure-score.md) van de identiteit biedt een meet bare meting van de beveiligings postuur van uw organisatie. Het is belang rijk om voortdurend te controleren en gerapporteerde bevindingen te verhelpen en de hoogste score mogelijk te houden. De score helpt bij het volgende:
 
 - Objectief meten van het beveiligingspostuur van uw identiteit
 - Plannen van verbeteringen aan de identiteitsbeveiliging
@@ -125,15 +125,15 @@ Als uw organisatie momenteel geen programma heeft om wijzigingen in identiteits 
 
 ### <a name="notifications"></a>Meldingen
 
-Micro soft stuurt e-mail berichten naar beheerders om verschillende wijzigingen in de service te melden, configuratie-updates die nodig zijn en fouten waarvoor beheerders rechten nodig zijn. Het is belang rijk dat klanten de e-mail adressen van meldingen instellen, zodat er meldingen worden verzonden naar de juiste team leden die alle meldingen kunnen erkennen en hierop reageren. U wordt aangeraden meerdere ontvangers toe te voegen aan het [Office 365-berichten centrum](https://docs.microsoft.com/office365/admin/manage/message-center) en de meldingen (inclusief Azure AD Connect Health meldingen) te verzenden naar een distributie lijst of een gedeeld postvak. Als u slechts één globaal beheerders account met een e-mail adres hebt, moet u ervoor zorgen dat u ten minste twee accounts met e-mail mogelijkheden configureert.
+Micro soft stuurt e-mail berichten naar beheerders om verschillende wijzigingen in de service te melden, configuratie-updates die nodig zijn en fouten waarvoor beheerders rechten nodig zijn. Het is belang rijk dat klanten de e-mail adressen van meldingen instellen, zodat er meldingen worden verzonden naar de juiste team leden die alle meldingen kunnen erkennen en hierop reageren. U wordt aangeraden meerdere ontvangers toe te voegen aan het [Office 365-berichten centrum](/office365/admin/manage/message-center) en de meldingen (inclusief Azure AD Connect Health meldingen) te verzenden naar een distributie lijst of een gedeeld postvak. Als u slechts één globaal beheerders account met een e-mail adres hebt, moet u ervoor zorgen dat u ten minste twee accounts met e-mail mogelijkheden configureert.
 
 Er zijn twee ' from ' adressen die worden gebruikt door Azure AD: <o365mc@email2.microsoft.com> , die Office 365 Message Center-meldingen verzendt; en <azure-noreply@microsoft.com> , waarmee meldingen worden verzonden die betrekking hebben op:
 
-- [Azure AD-toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
-- [Azure AD Connect Health (Engelstalig)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD-identiteitsbeveiliging](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
-- [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
-- [Certificaat meldingen voor de Enter prise-app verlopen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
+- [Azure AD-toegangs beoordelingen](../governance/access-reviews-overview.md)
+- [Azure AD Connect Health (Engelstalig)](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
+- [Azure AD-identiteitsbeveiliging](../identity-protection/howto-identity-protection-configure-notifications.md)
+- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-email-notifications.md)
+- [Certificaat meldingen voor de Enter prise-app verlopen](../manage-apps/manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)
 - Service meldingen voor de Enter prise-app inrichten
 
 Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wordt verzonden en waar u deze kunt controleren:
@@ -148,13 +148,13 @@ Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wor
 
 #### <a name="notifications-recommended-reading"></a>Meldingen aanbevolen lezen
 
-- [Wijzig het adres, de technische contact persoon van uw organisatie en meer-Office 365](https://docs.microsoft.com/office365/admin/manage/change-address-contact-and-more)
+- [Wijzig het adres, de technische contact persoon van uw organisatie en meer-Office 365](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Operationele surface area
 
 ### <a name="ad-fs-lockdown"></a>AD FS Lockdown
 
-Organisaties, waarmee toepassingen worden geconfigureerd om rechtstreeks naar Azure AD te worden geprofiteerd van [Azure AD Smart-vergren deling](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Als u AD FS gebruikt in Windows Server 2012 R2, implementeert u AD FS [beveiliging voor vergren delen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)van het extranet. Als u AD FS op Windows Server 2016 of hoger gebruikt, moet u [extranet slimme vergren deling](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementeren. We raden u aan om extranet vergrendeling in te scha kelen om het risico van beveiligings aanvallen tegen een on-premises Active Directory te bevatten. Als u echter AD FS hebt in Windows 2016 of hoger, moet u ook smartcard vergrendeling inschakelen die helpt bij het oplossen van aanvallen op [wachtwoord](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) niveau.
+Organisaties, waarmee toepassingen worden geconfigureerd om rechtstreeks naar Azure AD te worden geprofiteerd van [Azure AD Smart-vergren deling](../authentication/concept-sspr-howitworks.md). Als u AD FS gebruikt in Windows Server 2012 R2, implementeert u AD FS [beveiliging voor vergren delen](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)van het extranet. Als u AD FS op Windows Server 2016 of hoger gebruikt, moet u [extranet slimme vergren deling](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)implementeren. We raden u aan om extranet vergrendeling in te scha kelen om het risico van beveiligings aanvallen tegen een on-premises Active Directory te bevatten. Als u echter AD FS hebt in Windows 2016 of hoger, moet u ook smartcard vergrendeling inschakelen die helpt bij het oplossen van aanvallen op [wachtwoord](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) niveau.
 
 Als AD FS alleen wordt gebruikt voor Azure AD Federation, zijn er een aantal eind punten die kunnen worden uitgeschakeld om de aanval surface area te minimaliseren. Als AD FS bijvoorbeeld alleen wordt gebruikt voor Azure AD, moet u WS-Trust-eind punten uitschakelen dan de eind punten die zijn ingeschakeld voor **usernamemixed** en **windowstransport**.
 
@@ -164,7 +164,7 @@ Organisaties moeten de toegang tot de machines met on-premises hybride onderdele
 
 Het Active Directory administratieve laag model is ontworpen om identiteits systemen te beveiligen met behulp van een set buffer zones tussen volledig beheer van de omgeving (laag 0) en de werk station-assets met een hoog risico dat aanvallers vaak misbruiken. ![Diagram van de drie lagen van het lagenmodel](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
-Het [laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) bestaat uit drie niveaus en bevat alleen administratieve accounts, niet standaard gebruikers accounts.
+Het [laag model](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) bestaat uit drie niveaus en bevat alleen administratieve accounts, niet standaard gebruikers accounts.
 
 - **Laag 0**   -Direct beheer van ondernemings identiteiten in de omgeving. Laag 0 bevat accounts, groepen en andere activa die directe of indirecte controle hebben over het beheer van Active Directory-forest, -domeinen of -domeincontrollers en alle activa daarvan. De beveiliging van alle activa op laag 0 is even gevoelig omdat ze elkaar in stand houden.
 - **Laag 1**   -Beheer van bedrijfs servers en-toepassingen. De activa op laag 1 zijn serverbesturingssystemen, cloudservices en bedrijfstoepassingen. De administratoraccounts op laag 1 hebben controle over het beheer van een groot deel van de bedrijfswaarde die op deze activa wordt gehost. Een veelgebruikt voorbeeld is de rol van de serverbeheerders. Zij onderhouden deze besturingssystemen en kunnen invloed uitoefenen op alle bedrijfsservices.

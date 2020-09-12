@@ -3,39 +3,25 @@ title: Een door de klant beheerde sleutel gebruiken voor het versleutelen van Az
 description: Gebruik uw eigen sleutels (BYOK) om AKS-besturings systeem en gegevens schijven te versleutelen.
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796881"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297753"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
-Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de [klant beheerde sleutels][customer-managed-keys] leveren voor versleuteling in rust voor het besturings systeem en de gegevens schijven voor uw AKS-clusters.
+Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren voor versleuteling in rust voor het besturings systeem en de gegevens schijven voor uw AKS-clusters. Meer informatie over door de klant beheerde sleutels in [Linux][customer-managed-keys-linux] en [Windows][customer-managed-keys-windows].
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="limitations"></a>Beperkingen
+* Ondersteuning voor gegevens schijf versleuteling is beperkt tot AKS-clusters met Kubernetes versie 1,17 en hoger.
+* Versleuteling van besturings systeem en gegevens schijf met door de klant beheerde sleutels kan alleen worden ingeschakeld bij het maken van een AKS-cluster.
 
-* In dit artikel wordt ervan uitgegaan dat u een *Nieuw AKS-cluster*maakt.
-
+## <a name="prerequisites"></a>Vereisten
 * U moet de beveiliging voor voorlopig verwijderen en leegmaken inschakelen voor *Azure Key Vault* wanneer u Key Vault gebruikt om beheerde schijven te versleutelen.
-
-* U hebt de Azure CLI-versie 2.0.79 of hoger nodig en de AKS-Preview 0.4.26-extensie
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>De meest recente AKS CLI-preview-extensie installeren
-
-Als u door de klant beheerde sleutels wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.26 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* U hebt de Azure CLI-versie 2.11.1 of hoger nodig.
 
 ## <a name="create-an-azure-key-vault-instance"></a>Een Azure Key Vault-exemplaar maken
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>Beperkingen
-
-* Versleuteling van gegevens schijven ondersteund met Kubernetes-versie 1,17 en hoger
-* Versleuteling met door de klant beheerde sleutels is momenteel alleen beschikbaar voor nieuwe AKS-clusters, maar bestaande clusters kunnen niet worden bijgewerkt
-
 ## <a name="next-steps"></a>Volgende stappen
 
 [Aanbevolen procedures voor AKS-cluster beveiliging][best-practices-security] controleren
@@ -171,6 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

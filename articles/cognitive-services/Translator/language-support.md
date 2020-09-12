@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782325"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300218"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -28,7 +28,7 @@ U kunt Translator ook gebruiken in combi natie met aangepaste vertaler voor het 
 ## <a name="text-translation"></a>Tekstomzetting
 Tekst omzetting is beschikbaar via de Vertaal bewerking naar of vanuit een van de beschik bare talen in Translator. De API biedt ook taal detectie met behulp van de detectie bewerking, vele met behulp van de trans actie, en tweetalige woorden lijsten met behulp van de voor beelden van dictionary lookup en Dictionary. De beschik bare talen voor elk van deze bewerkingen worden hieronder weer gegeven. 
 
-### <a name="translate"></a>Vertalen
+### <a name="translate"></a>Translator
 
 Translator ondersteunt de volgende talen voor tekst vertaling. 
 
@@ -155,6 +155,7 @@ Translator detecteert de volgende talen voor vertaal-en vele.
 |Swahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Koreaans |`ko`   |
+|Koerdisch (centraal)  |`ku-Arab`  |
 |Lets|   `lv`    |
 |Litouws|    `lt`    |
 |Maleisisch| `ms`        |
@@ -283,10 +284,12 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
+|Afrikaans| `af`|
 | Arabisch       | `ar`          |
 | Bengalese      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
+|Catalaans|   `ca`    |
 | Vereenvoudigd Chinees      | `zh-Hans`          |
 |Traditioneel Chinees|   `zh-Hant`   |
 | Kroatisch      | `hr`          |
@@ -295,6 +298,8 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Nederlands      | `nl`          |
 | Engels    | `en`     |
 | Ests      | `et`          |
+|Fijian|    `fj`    |
+|Filipino|  `fil`   |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
 | Duits      | `de`          |
@@ -308,12 +313,14 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Iers | `ga`  |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
+|Kannada|`kn`|
 | Swahili|    `sw`    |
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
 | Malagassische| `mg`    |
 | Maleisisch|    `ms`        |
+|Maltees|   `mt`    |
 | Maori| `mi`  |
 | Marathi| `mr`  |
 | Noors      | `nb`          |
@@ -329,7 +336,9 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Sloveens      | `sl`          |
 | Spaans      | `es`          |
 | Zweeds      | `sv`          |
+|Tahitian|  `ty`    |
 | Thai      | `th`          |
+|Tongaanse|    `to`    |
 | Turks      | `tr`          |
 | Oekraïens      | `uk`          |
 | Urdu| `ur`    |

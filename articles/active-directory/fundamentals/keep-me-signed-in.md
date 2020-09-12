@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054709"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320253"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>De ' aangemeld blijven? ' configureren vragen om Azure AD-accounts
 
@@ -57,7 +57,7 @@ Meer informatie over de aanmeldings fout vindt u in het voor beeld.
 
 U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in te stellen op** **Nee** in de geavanceerde huisstijl instellingen. Hiermee wordt de KMSI-prompt voor alle gebruikers in uw Azure AD-adres lijst uitgeschakeld.
 
-U kunt ook de permanente browser sessie besturings elementen in voorwaardelijke toegang gebruiken om te voor komen dat gebruikers de KMSI-prompt zien. Met deze optie kunt u de KMSI-prompt uitschakelen voor een geselecteerde groep gebruikers (zoals de globale beheerders) zonder dat dit van invloed is op het aanmeldings gedrag voor de resterende gebruikers in de Directory. Zie de [aanmeldings frequentie van gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)voor meer informatie. 
+U kunt ook de permanente browser sessie besturings elementen in voorwaardelijke toegang gebruiken om te voor komen dat gebruikers de KMSI-prompt zien. Met deze optie kunt u de KMSI-prompt uitschakelen voor een geselecteerde groep gebruikers (zoals de globale beheerders) zonder dat dit van invloed is op het aanmeldings gedrag voor de resterende gebruikers in de Directory. Zie de [aanmeldings frequentie van gebruikers](../conditional-access/howto-conditional-access-session-lifetime.md)voor meer informatie. 
 
 Om ervoor te zorgen dat de KMSI prompt alleen wordt weer gegeven wanneer deze de gebruiker kan profiteren, wordt de KMSI-prompt opzettelijk niet weer gegeven in de volgende scenario's:
 
@@ -72,6 +72,6 @@ Om ervoor te zorgen dat de KMSI prompt alleen wordt weer gegeven wanneer deze de
 
 Meer informatie over andere instellingen die van invloed zijn op de time-out van de aanmeldings sessie:
 
-* Microsoft 365: [time-out voor niet-actieve sessie](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Voorwaardelijke toegang van Azure AD- [aanmeldings frequentie voor gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure Portal – [time-out voor inactiviteit op Directory-niveau](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365: [time-out voor niet-actieve sessie](/sharepoint/sign-out-inactive-users)
+* Voorwaardelijke toegang van Azure AD- [aanmeldings frequentie voor gebruikers](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure Portal – [time-out voor inactiviteit op Directory-niveau](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

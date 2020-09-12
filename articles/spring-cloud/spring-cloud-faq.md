@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260523"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322038"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -36,7 +36,8 @@ Beveiliging en privacy zijn een van de belangrijkste prioriteiten voor Azure-kla
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welke regio's is Azure lente-Cloud beschikbaar?
 
-VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
+VS-Oost, VS-Oost 2, centraal VS, Zuid-Centraal VS, VS-West 2, Europa-west, Europa-noord, UK-zuid, Zuidoost-Azië en Australië-oost.
+
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Wat zijn de bekende beperkingen van Azure lente-Cloud?
 
@@ -58,7 +59,7 @@ Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aa
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ik ben een lente-Cloud ontwikkelaar, maar er is nog geen ervaring met Azure. Wat is de snelste manier om te leren hoe u een Azure lente-Cloud toepassing kunt ontwikkelen?
 
-Voor de snelste manier om aan de slag te gaan met Azure lente Cloud, volgt u de instructies in [Quick Start: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md).
+Voor de snelste manier om aan de slag te gaan met Azure lente Cloud, volgt u de instructies in [Quick Start: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart.md).
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Wat Java runtime ondersteunt Azure lente-Cloud ondersteuning?
 
@@ -151,7 +152,7 @@ Nee.  Azure lente-Cloud is een samen vatting van de ontwikkelaar van de onderlig
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Biedt Azure lente Cloud ondersteuning voor het bouwen van containers van de bron?
 
-Ja. Zie [de lente Cloud toepassing vanuit de bron code starten](spring-cloud-launch-from-source.md)voor meer informatie.
+Ja. Zie [de lente Cloud toepassing vanuit de bron code starten](spring-cloud-quickstart.md)voor meer informatie.
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Biedt Azure lente Cloud ondersteuning voor automatisch schalen in app-exemplaren?
 

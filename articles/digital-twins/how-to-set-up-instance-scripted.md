@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181371"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298280"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -41,7 +41,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
     ```azurecli-interactive
     az login
     ```
-    Als de CLI uw standaard browser kan openen, wordt dit gedaan en wordt er een Azure-aanmeldings pagina geladen. Als dat niet het geval is, opent u een browser pagina op *https://aka.ms/devicelogin* en voert u de autorisatie code in die wordt weer gegeven in uw Terminal.
+    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een Azure-aanmeldingspagina geladen. Als dat niet het geval is, opent u een browser pagina op *https://aka.ms/devicelogin* en voert u de autorisatie code in die wordt weer gegeven in uw Terminal.
  
 2. Nadat u zich hebt aangemeld, gaat u naar de pictogram balk van het Cloud Shell venster. Selecteer het pictogram bestanden uploaden/downloaden en kies uploaden.
 
@@ -58,6 +58,13 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
     * Voor de app-registratie: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. Gebruik `http://localhost`. Met het script wordt een URI voor een *open bare client/systeem eigen (mobile & Desktop)* ingesteld.
 
 Met het script maakt u een Azure Digital Apparaatdubbels-exemplaar, wijst u uw Azure-gebruiker de rol *Azure Digital apparaatdubbels-eigenaar (preview)* toe aan het exemplaar en stelt u een Azure AD-App-registratie in voor uw client-app.
+
+>[!NOTE]
+>Er is momenteel een **bekend probleem** met het instellen van een script, waarbij sommige gebruikers (met name gebruikers van persoonlijke [micro soft-accounts (msa's)](https://account.microsoft.com/account)) de roltoewijzing kunnen vinden **voor de _Azure Digital apparaatdubbels-eigenaar (preview)_ is niet gemaakt**.
+>
+>U kunt de roltoewijzing controleren met het gedeelte [*toewijzing*](#verify-user-role-assignment) van gebruikersrol controleren verderop in dit artikel, en, indien nodig, de roltoewijzing hand matig instellen met behulp van de [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) of [cli](how-to-set-up-instance-cli.md#set-up-user-access-permissions).
+>
+>Zie [*probleem oplossing: bekende problemen in azure Digital apparaatdubbels*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)voor meer informatie over dit probleem.
 
 Hier volgt een fragment van het uitvoer logboek van het script:
 
@@ -127,5 +134,9 @@ Controleer eerst of de instellingen voor de Azure Digital Apparaatdubbels-machti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk hoe u uw client toepassing verbindt met uw exemplaar door de verificatie code van de client-app te schrijven:
+Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure Digital Apparaatdubbels CLI-opdrachten: 
+* [AZ DT-referentie](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
+
+U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:
 * [*Instructies: app-verificatie code schrijven*](how-to-authenticate-client.md)

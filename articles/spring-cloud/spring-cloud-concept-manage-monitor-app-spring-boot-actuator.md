@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037590"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299504"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>App beheren en bewaken met Azure Spring Boot Actuator
 
 Nadat u het nieuwe binaire bestand hebt geïmplementeerd voor uw app, kunt u de functionaliteit controleren en informatie over uw actieve toepassing bekijken. In dit artikel wordt uitgelegd hoe u toegang krijgt tot de API vanuit een test eindpunt dat is opgenomen in azure lente Cloud en de functies voor productie gereed voor uw app beschikbaar maakt.
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u een Spring boot 2. x-toepassing hebt die met succes kan worden geïmplementeerd en opgestart in azure lente-Cloud service.  Zie [Quick Start: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
+In dit artikel wordt ervan uitgegaan dat u een Spring boot 2. x-toepassing hebt die met succes kan worden geïmplementeerd en opgestart in azure lente-Cloud service.  Zie [Quick Start: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>App verifiëren via een test eindpunt
 1. Ga naar het **toepassings dashboard** en klik op uw app om de overzichts pagina van de app in te voeren.
@@ -63,12 +63,12 @@ Als u de configuratie en configureer bare omgeving wilt observeren, moeten `env`
 U kunt nu teruggaan naar het app-overzichts deel venster en wachten tot de inrichtings status is gewijzigd in voltooid.  Er is meer dan een actief exemplaar.
 
 > [!Note] 
-> Zodra u de app beschikbaar maakt voor openbaar, worden deze Actuator-eind punten ook beschikbaar gemaakt voor openbaar. U kunt alle eind punten verbergen door de omgevings variabelen te verwijderen en in te `management.endpoints.web.exposure.include` stellen`management.endpoints.web.exposure.exclude=*`
+> Zodra u de app beschikbaar maakt voor openbaar, worden deze Actuator-eind punten ook beschikbaar gemaakt voor openbaar. U kunt alle eind punten verbergen door de omgevings variabelen te verwijderen en in te `management.endpoints.web.exposure.include` stellen `management.endpoints.web.exposure.exclude=*`
 
 ## <a name="view-the-actuator-endpoint-to-view-application-information"></a>Het Actuator-eind punt weer geven om toepassings gegevens weer te geven
 1. U kunt nu toegang krijgen tot de URL `"<test-endpoint>/actuator/"` om alle eind punten weer te geven die worden weer gegeven met een Spring boot-klep.
 1. Access `"<test-endpoint>/actuator/env"` -URL kunt u actieve profielen zien die worden gebruikt door de app en alle omgevings variabelen die zijn geladen.
-1. Als u wilt zoeken in een specifieke omgeving, kunt u toegang krijgen tot de URL `"<test-endpoint>/actuator/env/{toMatch}"` om deze weer te geven.
+1. Als u wilt zoeken in een specifieke omgeving, kunt u toegang krijgen tot de URL  `"<test-endpoint>/actuator/env/{toMatch}"` om deze weer te geven.
 
 Als u alle ingebouwde eind punten wilt weer geven, raadpleegt u [eind punten zichtbaar](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints) maken
 

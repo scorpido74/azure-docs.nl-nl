@@ -3,12 +3,12 @@ title: Gegevens herstellen vanuit een Azure Backup Server
 description: Herstel de gegevens die u hebt beveiligd met een Recovery Services kluis van een Azure Backup Server die is geregistreerd bij die kluis.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 531de9226be05bf50f887cfd0410842dadb68178
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012004"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378063"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Gegevens herstellen vanaf Azure Backup Server
 
@@ -21,7 +21,7 @@ U kunt Azure Backup Server gebruiken om de gegevens te herstellen waarvan u een 
 
 Gegevens herstellen vanaf een Azure Backup Server:
 
-1. Klik op het tabblad **herstel** van de Azure backup server-beheer console op **externe DPM toevoegen** (in de linkerbovenhoek van het scherm).
+1. Selecteer op het tabblad **herstel** van de Azure backup server-beheer console de optie **externe DPM toevoegen** (in de linkerbovenhoek van het scherm).
 
     ![Externe DPM toevoegen](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Down load nieuwe **kluis referenties** van de kluis die is gekoppeld aan de **Azure backup server** waar de gegevens worden hersteld. Kies de Azure backup server in de lijst met Azure backup servers die zijn geregistreerd bij de Recovery Services kluis, en geef de **wachtwoordzin voor versleuteling** op die is gekoppeld aan de server waarvan de gegevens worden hersteld.
@@ -42,10 +42,10 @@ Gegevens herstellen vanaf een Azure Backup Server:
     Een lijst met bestanden en mappen wordt weer gegeven in het onderste deel venster, dat kan worden gebladerd en teruggezet naar een wille keurige locatie.
 
     ![Herstel punten voor externe DPM-server](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Klik met de rechter muisknop op het betreffende item en klik op **herstellen**.
+5. Klik met de rechter muisknop op het betreffende item en selecteer **herstellen**.
 
     ![Externe DPM-herstel](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Controleer de **herstel selectie**. Controleer de gegevens en het tijdstip van de back-up die worden hersteld, evenals de bron van waaruit de back-up is gemaakt. Als de selectie onjuist is, klikt u op **Annuleren** om terug te gaan naar het tabblad herstel om het juiste herstel punt te selecteren. Als de selectie juist is, klikt u op **volgende**.
+6. Controleer de **herstel selectie**. Controleer de gegevens en het tijdstip van de back-up die worden hersteld, evenals de bron van waaruit de back-up is gemaakt. Als de selectie onjuist is, selecteert u **Annuleren** om terug te gaan naar het tabblad herstel om het juiste herstel punt te selecteren. Als de selectie juist is, selecteert u **volgende**.
 
     ![Externe DPM-herstel samenvatting](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. Selecteer **herstellen naar een andere locatie**. **Blader** naar de juiste locatie voor het herstel.
@@ -62,7 +62,7 @@ Gegevens herstellen vanaf een Azure Backup Server:
      Hiermee wordt aangegeven of een **melding** wordt verzonden wanneer het herstel is voltooid.
 
      ![Externe DPM-herstel meldingen](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. In het scherm **samen vatting** worden de opties weer gegeven die tot nu toe zijn gekozen. Nadat u op **herstellen**hebt geklikt, worden de gegevens hersteld naar de juiste on-premises locatie.
+9. In het scherm **samen vatting** worden de opties weer gegeven die tot nu toe zijn gekozen. Wanneer u **herstellen**selecteert, worden de gegevens hersteld naar de juiste on-premises locatie.
 
     ![Samen vatting van externe DPM-herstel opties](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ Gegevens herstellen vanaf een Azure Backup Server:
    >
 
     ![Bewakings herstel](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. U kunt klikken op **externe DPM wissen** op het tabblad **herstel** van de DPM-server om de weer gave van de externe DPM-server te verwijderen.
+10. U kunt **externe DPM wissen** selecteren op het tabblad **herstel** van de DPM-server om de weer gave van de externe DPM-server te verwijderen.
 
     ![Externe DPM wissen](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

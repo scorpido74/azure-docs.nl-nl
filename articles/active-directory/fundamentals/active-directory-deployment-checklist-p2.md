@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025384"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318406"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Implementatiehandleiding voor Azure Active Directory-functies
 
@@ -35,7 +35,7 @@ Meer informatie over licentie verlening vindt u op de volgende pagina's:
 * [Azure AD-licenties](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B-licentie richtlijnen](../b2b/licensing-guidance.md)
+* [Azure AD B2B-licentie richtlijnen](../external-identities/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>Fase 1: bouw een basis van beveiliging
 
@@ -47,7 +47,7 @@ In deze fase scha kelen beheerders basis beveiligings functies in om een beter b
 | [Indien mogelijk niet-globale beheerders rollen gebruiken](../users-groups-roles/directory-assign-admin-roles.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot de gebieden waartoe ze toegang moeten hebben. Niet alle beheerders moeten globale beheerders zijn. | Azure AD Free |
 | [Gebruik van Privileged Identity Management voor het bijhouden van rol van beheerdersrol inschakelen](../privileged-identity-management/pim-getting-started.md) | Schakel Privileged Identity Management in om het gebruik van de beheerdersrol te volgen. | Azure AD Premium P2 |
 | [Selfservice voor wachtwoordherstel implementeren](../authentication/howto-sspr-deployment.md) | Verminder de helpdesk oproepen voor wacht woord opnieuw instellen door personeel toe te staan hun eigen wacht woord opnieuw in te stellen met behulp van beleids regels die u als beheerder beheert. | |
-| [Een specifieke aangepaste lijst met geblokkeerde wacht woorden maken](../authentication/howto-password-ban-bad-configure.md) | Voor komen dat gebruikers wacht woorden maken die algemene woorden of zinsdelen bevatten van uw organisatie of gebied. | |
+| [Een specifieke aangepaste lijst met geblokkeerde wacht woorden maken](../authentication/tutorial-configure-custom-password-protection.md) | Voor komen dat gebruikers wacht woorden maken die algemene woorden of zinsdelen bevatten van uw organisatie of gebied. | |
 | [On-premises integratie met Azure AD-wachtwoord beveiliging inschakelen](../authentication/concept-password-ban-bad-on-premises.md) | Breid de lijst met geblokkeerde wacht woorden uit naar uw on-premises Directory om ervoor te zorgen dat wacht woorden die on-premises zijn ingesteld ook voldoen aan de algemene en Tenant-specifieke lijst met verboden wacht woorden. | Azure AD Premium P1 |
 | [De richt lijnen voor het micro soft-wacht woord inschakelen](https://www.microsoft.com/research/publication/password-guidance/) | Stop het vereisen van gebruikers om hun wacht woord te wijzigen voor een set-schema, om complexiteits vereisten uit te scha kelen en uw gebruikers zijn meer apt om hun wacht woorden te onthouden en ze iets veilig te houden. | Azure AD Free |
 | [Periodiek wacht woord opnieuw instellen uitschakelen voor gebruikers accounts op basis van de Cloud](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodiek wacht woord opnieuw instellen moedig uw gebruikers aan om hun bestaande wacht woord te verhogen. Gebruik de richt lijnen in het document met wachtwoord richtlijnen van micro soft om uw on-premises beleid te spie gelen aan alleen-Cloud gebruikers. | Azure AD Free |
@@ -65,12 +65,12 @@ We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebrui
 
 | Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| [Azure AD Connect installeren](../connect/active-directory-aadconnect-select-installation.md) | Bereid u voor op het synchroniseren van gebruikers van uw bestaande on-premises Directory naar de Cloud. | Azure AD Free |
-| [Wachtwoord-hash-synchronisatie implementeren](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchroniseer wachtwoord hashes zodat wachtwoord wijzigingen kunnen worden gerepliceerd, ongeldige wachtwoord detectie en herstel en gelekte referentie rapportage. | Azure AD Free |
-| [Wacht woord terugschrijven implementeren](../authentication/howto-sspr-writeback.md) | Toestaan dat wacht woorden worden gewijzigd in de cloud om terug te schrijven naar een on-premises Windows Server-Active Directory omgeving. | Azure AD Premium P1 |
-| [Azure AD Connect Health implementeren](../connect-health/active-directory-aadconnect-health.md) | Schakel de bewaking in van de belangrijkste status statistieken voor uw Azure AD Connect servers, AD FS servers en domein controllers. | Azure AD Premium P1 |
+| [Azure AD Connect installeren](../hybrid/how-to-connect-install-select-installation.md) | Bereid u voor op het synchroniseren van gebruikers van uw bestaande on-premises Directory naar de Cloud. | Azure AD Free |
+| [Wachtwoord-hash-synchronisatie implementeren](../hybrid/how-to-connect-password-hash-synchronization.md) | Synchroniseer wachtwoord hashes zodat wachtwoord wijzigingen kunnen worden gerepliceerd, ongeldige wachtwoord detectie en herstel en gelekte referentie rapportage. | Azure AD Free |
+| [Wacht woord terugschrijven implementeren](../authentication/tutorial-enable-sspr-writeback.md) | Toestaan dat wacht woorden worden gewijzigd in de cloud om terug te schrijven naar een on-premises Windows Server-Active Directory omgeving. | Azure AD Premium P1 |
+| [Azure AD Connect Health implementeren](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Schakel de bewaking in van de belangrijkste status statistieken voor uw Azure AD Connect servers, AD FS servers en domein controllers. | Azure AD Premium P1 |
 | [Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Bespaar tijd en moeite door licentie groepen te maken die functies in-of uitschakelen in plaats van per gebruiker in te stellen. | |
-| [Een plan maken voor toegang tot gast gebruikers](../b2b/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Azure AD B2B-licentie richtlijnen](../b2b/licensing-guidance.md) |
+| [Een plan maken voor toegang tot gast gebruikers](../external-identities/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Azure AD B2B-licentie richtlijnen](../external-identities/licensing-guidance.md) |
 | [Bepaal de strategie voor het beheer van apparaten](../devices/overview.md) | Bepaal wat uw organisatie in staat is met betrekking tot apparaten. Registreren versus samen voegen, uw eigen apparaat en bedrijf meenemen. | |
 | [Windows hello voor bedrijven in uw organisatie implementeren](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Voor bereiding voor verificatie met een wacht woord met behulp van Windows hello | |
 | [Authenticatie methoden met een wacht woord implementeren voor uw gebruikers](../authentication/concept-authentication-passwordless.md) | Geef uw gebruikers handige verificatie methoden met een wacht woord | Azure AD Premium P1 |
@@ -101,6 +101,6 @@ Fase 4 ziet beheerders de mogelijkheid om minimale bevoegdheids principes voor b
 
 [Azure AD-licentie verlening en prijs informatie](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[Configuraties voor identiteiten en apparaattoegang](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
-[Algemeen aanbevolen identiteits-en toegangs beleid voor apparaten](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
+[Algemeen aanbevolen identiteits-en toegangs beleid voor apparaten](/microsoft-365/enterprise/identity-access-policies)

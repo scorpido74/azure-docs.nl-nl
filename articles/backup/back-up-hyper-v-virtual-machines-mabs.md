@@ -3,12 +3,12 @@ title: Back-up maken van Hyper-V virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: d3648bf6c980049a2e3ccfa90a777bddc1748dc9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011936"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377995"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -78,7 +78,7 @@ Dit zijn de vereisten voor het maken van back-ups van virtuele Hyper-V-machines 
 
 2. Stel de MABS-beveiligings agent in op de Hyper-V-Server of Hyper-V-cluster knooppunten. Als u een back-up op gast niveau uitvoert, installeert u de agent op de virtuele machines waarvan u een back-up wilt maken op gast niveau.
 
-3. Klik in de MABS Administrator-console op **beveiliging**beveiligings  >  **groep maken** om de wizard **nieuwe beveiligings groep maken** te openen.
+3. Selecteer in de MABS Administrator-console **beveiliging beveiligings**  >  **groep maken** om de wizard **nieuwe beveiligings groep maken** te openen.
 
 4. Selecteer op de pagina **Groepsleden selecteren** de virtuele machines die u wilt beveiligen op de Hyper-V-hostservers waarop deze zich bevinden. We raden u aan alle VM's die hetzelfde beveiligingsbeleid krijgen, in één beveiligingsgroep te plaatsen. U kunt co-locatie inschakelen voor efficiënt gebruik van de ruimte. Met co-locatie kunt u gegevens uit verschillende beveiligingsgroepen op dezelfde schijf of tapeopslag plaatsen, zodat meerdere gegevensbronnen één replica- en herstelpuntvolume hebben.
 
@@ -110,7 +110,7 @@ Als MABS wordt uitgevoerd op Windows Server 2012 R2 of hoger, kunt u een back-up
 
 **Mogelijkheid van hosterback-ups** -u kunt een gehoste datacenter gebruiken als replicasite zonder dat een secundaire datacenter nodig is. In dit geval vereist de SLA voor de Hoster een consistente back-up van virtuele replica machines.
 
-Een replica-VM is altijd uitgeschakeld totdat een failover wordt gestart en VSS geen toepassingsconsistente back-up voor een replica-VM kan garanderen. De back-up van een virtuele replicamachine wordt dus alleen crash-consistent. Als er geen crash-consistentie kan worden gegarandeerd, mislukt de back-up. Dit kan verschillende redenen hebben:
+Een replica-VM is altijd uitgeschakeld totdat een failover wordt gestart en VSS geen toepassingsconsistente back-up voor een replica-VM kan garanderen. De back-up van een virtuele replica machine wordt dus alleen crash-consistent. Als er geen crash-consistentie kan worden gegarandeerd, mislukt de back-up. Dit kan verschillende redenen hebben:
 
 - De virtuele replicamachine heeft een kritieke status.
 
@@ -128,13 +128,13 @@ Wanneer u back-ups van virtuele machines wilt herstellen, gebruikt u de wizard H
 
 1. Typ in de MABS Administrator-console de naam van de virtuele machine of vouw de lijst met beveiligde items uit en selecteer de virtuele machine die u wilt herstellen.
 
-2. Klik in het deelvenster **Herstelpunten voor** in de kalender op een datum om de beschikbare herstelpunten te bekijken. Selecteer vervolgens in het deelvenster **Pad** het herstelpunt dat u wilt gebruiken in de wizard Herstellen.
+2. Selecteer in het deel venster **herstel punten voor** in de agenda een wille keurige datum om de beschik bare herstel punten weer te geven. Selecteer vervolgens in het deelvenster **Pad** het herstelpunt dat u wilt gebruiken in de wizard Herstellen.
 
-3. Klik in het menu **Acties** op **Herstellen** om de wizard Herstellen te openen.
+3. Klik in het menu **acties** op **herstellen** om de wizard herstellen te openen.
 
-    De VM en het herstelpunt die u hebt geselecteerd, worden weergegeven in het scherm **Selectie voor herstel controleren**. Klik op **Volgende**.
+    De VM en het herstelpunt die u hebt geselecteerd, worden weergegeven in het scherm **Selectie voor herstel controleren**. Selecteer **Volgende**.
 
-4. Selecteer op het scherm **Hersteltype selecteren** waar u de gegevens wilt herstellen en klik vervolgens op **Volgende**.
+4. Selecteer op het scherm **type herstel bewerking selecteren** waar u de gegevens wilt herstellen en selecteer vervolgens **volgende**.
 
     - **Herstellen naar oorspronkelijk exemplaar**: als u het oorspronkelijke exemplaar herstelt, wordt de oorspronkelijke VHD verwijderd. MABS herstelt de VHD en andere configuratie bestanden op de oorspronkelijke locatie met behulp van Hyper-V-VSS Writer. Aan het einde van het herstelproces zijn virtuele machines nog steeds maximaal beschikbaar.
         De brongroep moet aanwezig zijn voor het herstel. Als de groep niet beschikbaar is, herstelt u naar een alternatieve locatie en stelt u de virtuele machine maximaal beschikbaar.
@@ -143,13 +143,13 @@ Wanneer u back-ups van virtuele machines wilt herstellen, gebruikt u de wizard H
 
     - **Kopiëren naar een netwerkmap**: MABS ondersteunt herstel op item niveau (ILR), waarmee u op item niveau bestanden, mappen, volumes en virtuele harde schijven (vhd's) kunt herstellen vanaf een back-up op hostniveau van virtuele Hyper-V-machines naar een netwerk share of een volume op een MABS beveiligde server. De MABS-beveiligings agent hoeft niet in de gast te worden geïnstalleerd om herstel op item niveau uit te voeren. Als u deze optie kiest, biedt de wizard Herstellen u een extra scherm voor het identificeren van het doel en doelpad.
 
-5. Configureer in **Herstelopties opgeven** de herstelopties en klik op **Volgende**:
+5. Configureer in **herstel opties opgeven** de herstel opties en selecteer **volgende**:
 
-    - Als u een VM over lage bandbreedte herstelt, klikt u op **Wijzigen** om **Beperking van netwerkbandbreedtegebruik** in te schakelen. Nadat u de optie voor beperking hebt ingeschakeld, kunt u de hoeveelheid bandbreedte opgeven die u beschikbaar wilt maken en het tijdstip waarop die bandbreedte beschikbaar is.
-    - Selecteer **Herstel op basis van SAN met behulp van hardwaremomentopnamen inschakelen** als u uw netwerk hebt geconfigureerd.
+    - Als u een virtuele machine wilt herstellen over een lage band breedte, selecteert u **wijzigen** om **beperking van netwerk bandbreedte gebruik**in te scha kelen. Nadat u de optie voor beperking hebt ingeschakeld, kunt u de hoeveelheid bandbreedte opgeven die u beschikbaar wilt maken en het tijdstip waarop die bandbreedte beschikbaar is.
+    - Selecteer **op San gebaseerd herstel inschakelen met behulp van een moment opname van de hardware** als u uw netwerk hebt geconfigureerd.
     - Selecteer **Een e-mail verzenden wanneer het herstel is voltooid** en geef vervolgens de e-mailadressen op, als u e-mailmeldingen wilt verzenden zodra het herstelproces is voltooid.
 
-6. Controleer in het scherm Samenvatting of alle gegevens juist zijn. Als de gegevens niet juist zijn of als u een wijziging wilt aanbrengen, klikt u op **Terug**. Als u tevreden bent met de instellingen, klikt u op **herstellen** om het herstel proces te starten.
+6. Controleer in het scherm Samenvatting of alle gegevens juist zijn. Als de details niet juist zijn of als u een wijziging wilt aanbrengen, selecteert u **vorige**. Als u tevreden bent met de instellingen, selecteert u **herstellen** om het herstel proces te starten.
 
 7. Het scherm **Herstelstatus** bevat informatie over de hersteltaak.
 

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031282"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320967"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -97,9 +97,9 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 
 1. Open de Resource Manager-sjabloon.
 
-1. Voeg een nieuwe resource toe aan het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
+1. Voeg een nieuwe resource van het type [micro soft. resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) toe in het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
-1. Voer de GUID-waarde na het `pid-` voor voegsel in (bijvoorbeeld: PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Voer de GUID-waarde na het `pid-` voor voegsel in als de naam van de resource. Als de GUID bijvoorbeeld eb7927c8-dd66-43e1-b0cf-c346a422063 is, is de resource naam _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
 1. Controleer de sjabloon op eventuele fouten.
 
@@ -112,11 +112,11 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 Als u het bijhouden van resources voor uw sjabloon wilt inschakelen, moet u de volgende extra resource toevoegen onder de sectie resources. Zorg ervoor dat u de onderstaande voorbeeld code met uw eigen invoer waarden wijzigt wanneer u deze toevoegt aan het hoofd sjabloon bestand.
 De resource moet worden toegevoegd aan de **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ Gebruik het **configuratie** kenmerk voor python. U kunt het kenmerk alleen toev
 
 > [!NOTE]
 > Voeg het kenmerk voor elke client toe. Er is geen globale statische configuratie. U kunt een client-Factory labelen om ervoor te zorgen dat elke client bijhoudt. Zie voor meer informatie dit voor [beeld van client Factory op github](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="example-the-net-sdk"></a>Voor beeld: de .NET SDK
+
+Zorg ervoor dat u de gebruikers agent instelt voor .NET. De bibliotheek [micro soft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kan worden gebruikt om de gebruikers agent in te stellen met de volgende code (voor beeld in C#):
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Een implementatie labelen met behulp van de Azure PowerShell
 
@@ -256,7 +270,7 @@ Wanneer u software implementeert \<PARTNER> , kan micro soft de software-install
 
 Er zijn twee ondersteunings kanalen, afhankelijk van de problemen die u ondervindt.
 
-Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![Scherm afbeelding van de ondersteunings pagina ophalen](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -339,7 +353,7 @@ U kunt een VM-aanbieding in Marketplace maken met behulp van uw aangepaste VHD e
 
 **Kan de eigenschap *contentVersion* voor de hoofd sjabloon niet bijwerken?**
 
-Waarschijnlijk een bug in sommige gevallen wanneer de sjabloon wordt geïmplementeerd met behulp van een TemplateLink van een andere sjabloon die een oudere contentVersion om een of andere reden verwacht. De tijdelijke oplossing is het gebruik van de meta gegevens eigenschap:
+Dit is waarschijnlijk een bug, in gevallen waarin de sjabloon wordt geïmplementeerd met behulp van een TemplateLink van een andere sjabloon die de oudere contentVersion om een of andere reden verwacht. De tijdelijke oplossing is het gebruik van de meta gegevens eigenschap:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958096"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322446"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Problemen oplossen waarom gegevens van uw apparaten niet worden weer gegeven in azure IoT Central
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Als u de telemetrie die het apparaat verzendt, wilt bewaken, gebruikt u de volgende opdracht:
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Als het apparaat is verbonden met IoT Central, ziet u uitvoer die lijkt op het volgende:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Als u de eigenschaps updates wilt controleren die door het apparaat worden uitgewisseld met IoT Central, gebruikt u de volgende opdracht Preview:
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Als het apparaat geslaagde updates van eigenschappen verzendt, ziet u uitvoer die er ongeveer als volgt uitzien:
@@ -106,7 +106,7 @@ Als u nog steeds geen gegevens ziet op uw Terminal, is het waarschijnlijk dat uw
 Als uw gegevens niet worden weer gegeven op de monitor, controleert u de inrichtings status van het apparaat door de volgende opdracht uit te voeren:
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 In de volgende uitvoer ziet u een voor beeld van een apparaat dat geen verbinding kan maken:
@@ -176,13 +176,13 @@ Als u wilt detecteren in welke categorieën uw probleem zich bevindt, voert u de
 - Als u telemetrie wilt valideren, gebruikt u de opdracht Preview:
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Als u de updates van eigenschappen wilt valideren, gebruikt u de opdracht preview
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 `uamqp`De eerste keer dat u een opdracht uitvoert, wordt u mogelijk gevraagd om de bibliotheek te installeren `validate` .

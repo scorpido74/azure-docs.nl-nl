@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797284"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322531"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Hulp zoeken en een ondersteunings ticket openen voor Azure Active Directory
 Micro soft biedt wereld wijde technische, voor verkoop-, facturerings-en abonnements ondersteuning voor Azure Active Directory (Azure AD). Ondersteuning is online en telefonisch beschikbaar voor Microsoft Azure betaalde en proef abonnementen. Telefonische ondersteuning en online-ondersteuning bij factureren zijn in meer talen beschikbaar. 
@@ -29,7 +29,7 @@ Micro soft biedt wereld wijde technische, voor verkoop-, facturerings-en abonnem
 
 Bekijk de volgende bronnen voor antwoorden en informatie voordat u een ondersteuningsticket maakt. 
 
-* Raadpleeg de [technische documentatie op docs.Microsoft.com](https://docs.microsoft.com/azure/active-directory/)voor meer informatie over de manier waarop u gegevens of code voorbeelden voor IT-professionals en ontwikkel aars kunt raadplegen.
+* Raadpleeg de [technische documentatie op docs.Microsoft.com](../index.yml)voor meer informatie over de manier waarop u gegevens of code voorbeelden voor IT-professionals en ontwikkel aars kunt raadplegen.
 
 * De [technische community van micro soft](https://techcommunity.microsoft.com/) is de plaats waar onze IT-partners en klanten kunnen samen werken, delen en leren. Het [micro soft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) wordt gebruikt voor aankondigingen, blog berichten, vraag-me-iets (AMA)-interacties met experts en nog veel meer. U kunt ook [lid worden van de community om uw ideeën in te dienen](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
@@ -100,4 +100,4 @@ Raadpleeg de pagina [contact opnemen met micro soft voor ondersteuning](https://
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [Technische documentatie op docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)
+* [Technische documentatie op docs.microsoft.com](../index.yml)

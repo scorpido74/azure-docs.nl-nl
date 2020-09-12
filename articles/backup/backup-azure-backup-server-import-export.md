@@ -3,12 +3,12 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002008"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378454"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (MABS)
 
@@ -51,10 +51,10 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 * Maak een Azure Storage-account in hetzelfde abonnement als de Recovery Services kluis.
 * Zorg ervoor dat u over de [benodigde machtigingen](../active-directory/develop/howto-create-service-principal-portal.md) beschikt om de Azure Active Directory-toepassing te maken. De werk stroom offline back-up maakt een Azure Active Directory-toepassing in het abonnement dat is gekoppeld aan het Azure Storage-account. Het doel van de toepassing is om Azure Backup te voorzien van beveiligde en scoped toegang tot de Azure-import Service, die is vereist voor de werk stroom voor offline back-ups.
 * Registreer de resource provider micro soft. ImportExport bij het abonnement met het Azure Storage-account. De resource provider registreren:
-    1. Klik in het hoofd menu op **abonnementen**.
+    1. Selecteer in het hoofd menu de optie **abonnementen**.
     2. Als u bent geabonneerd op meerdere abonnementen, selecteert u het abonnement dat u gebruikt voor de offline back-up. Als u slechts één abonnement gebruikt, wordt uw abonnement weer gegeven.
-    3. Klik in het menu abonnement op **resource providers** om de lijst met providers weer te geven.
-    4. Schuif omlaag in de lijst met providers naar micro soft. ImportExport. Als de status NotRegistered is, klikt u op **registreren**.
+    3. Selecteer **resource providers** in het menu abonnement om de lijst met providers weer te geven.
+    4. Schuif omlaag in de lijst met providers naar micro soft. ImportExport. Als de status NotRegistered is, selecteert u **registreren**.
 
        ![De resource provider registreren](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor 
 
 ## <a name="initiate-offline-backup"></a>Offline back-up initiëren
 
-1. Wanneer u een nieuwe beveiligings groep met online beveiliging maakt of online beveiliging toevoegt aan een bestaande beveiligings groep, wordt het volgende scherm weer gegeven. Als u methode voor eerste online replicatie wilt selecteren, selecteert **u overdragen met mijn eigen schijf** en klikt u op **volgende**.
+1. Wanneer u een nieuwe beveiligings groep met online beveiliging maakt of online beveiliging toevoegt aan een bestaande beveiligings groep, wordt het volgende scherm weer gegeven. Als u methode voor eerste online replicatie wilt selecteren, selecteert **u overdragen met mijn eigen schijf** en selecteert u **volgende**.
 
     ![Scherm importeren](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -160,7 +160,7 @@ Met de volgende procedure worden de verzend gegevens van de Azure import-taak bi
 * Verzend gegevens retour neren voor uw schijven
 
    1. Meld u aan bij uw Azure-abonnement.
-   2. Klik in het hoofd menu op **alle services** en typ importeren in het dialoog venster alle services. Wanneer u **import/export-taken**ziet, klikt u erop.
+   2. Selecteer in het hoofd menu **alle services** en typ importeren in het dialoog venster alle services. Wanneer u **import/export-taken**ziet, selecteert u deze.
        ![Verzend gegevens invoeren](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        De lijst met het menu **import/export-taken** wordt geopend en de lijst met alle import/export-taken in het geselecteerde abonnement wordt weer gegeven.
@@ -169,11 +169,11 @@ Met de volgende procedure worden de verzend gegevens van de Azure import-taak bi
 
        ![Verzend gegevens controleren](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. Klik in het menu instellingen voor de import taak op **Verzend gegevens beheren** en voer de retour verzendings gegevens in.
+   4. Selecteer in het menu instellingen voor de import taak de optie **Verzend gegevens beheren** en voer de retour verzendings gegevens in.
 
        ![Verzend gegevens opslaan](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. Wanneer u het tracking nummer van uw vervoerder hebt, klikt u op de banner op de pagina overzicht van Azure import-taak en voert u de volgende gegevens in:
+   5. Wanneer u het tracking nummer van uw vervoerder hebt, selecteert u de banner op de pagina overzicht van Azure import-taak en voert u de volgende gegevens in:
 
       > [!IMPORTANT]
       > Zorg dat de informatie voor de vervoerder en het traceringsnummer binnen twee weken van het maken van de Azure-importtaak zijn bijgewerkt. Als u deze gegevens niet binnen twee weken controleert, kan dit ertoe leiden dat de taak wordt verwijderd en dat de stations niet worden verwerkt.

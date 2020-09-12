@@ -3,12 +3,12 @@ title: Stel een ethische hacking Lab in met Azure Lab Services | Microsoft Docs
 description: Meer informatie over het instellen van een Lab met Azure Lab Services om ethische hacking te leren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443992"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297583"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Een Lab instellen om ethische hacking-klasse te leren 
 In dit artikel wordt beschreven hoe u een klasse instelt die zich richt op forensischee-hacking. Indringings tests, een praktijk die wordt gebruikt door de ethische hacking-Community, treedt op wanneer iemand probeert toegang te krijgen tot het systeem of netwerk om beveiligings problemen te demonstreren die een kwaadwillende aanvaller kan misbruiken. 
@@ -70,11 +70,11 @@ Kali is een Linux-distributie met hulpprogram ma's voor indringings tests en bev
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Een geneste VM met Metasploitable-installatie kopie instellen  
 De Rapid7 Metasploitable-installatie kopie is een installatie kopie die als doel is geconfigureerd met beveiligings problemen. U gebruikt deze afbeelding om problemen te testen en op te sporen. De volgende instructies laten zien hoe u een vooraf gemaakte Metasploitable-installatie kopie gebruikt. Als er echter een nieuwere versie van de Metasploitable-installatie kopie nodig is, raadpleegt u [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) .
 
-1. Ga naar [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vul het formulier in om de installatie kopie te downloaden en selecteer de knop **verzenden** .
+1. Navigeer naar [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vul het formulier in om de installatie kopie te downloaden en selecteer de knop **verzenden** .
 1. Selecteer de knop **Metasploitable nu downloaden** .
 1. Wanneer het zip-bestand wordt gedownload, pakt u het zip-bestand uit en onthoud u de locatie.
 1. Converteer het uitgepakte VMDK-bestand naar een vhdx-bestand, zodat u het kunt gebruiken met Hyper-V. Hiertoe opent u Power shell met beheerders bevoegdheden, navigeert u naar de map waar het VMDK-bestand zich bevindt en volgt u deze instructies:
-    1. Down load het [conversie programma van micro soft virtual machine](https://www.microsoft.com/download/details.aspx?id=42497)en voer mvmc_setup.msi bestand uit wanneer u hierom wordt gevraagd.
+    1. Down load het [conversie programma van micro soft virtual machine](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)en voer mvmc_setup.msi bestand uit wanneer u hierom wordt gevraagd.
     1. Importeer de PowerShell-module.  De standaard locatie waarin de module is geïnstalleerd, is C:\Program Files\Microsoft virtual machine Converter \
 
         ```powershell

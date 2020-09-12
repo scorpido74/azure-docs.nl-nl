@@ -4,18 +4,18 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289512"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378029"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
 U kunt de [Azure backup-service](./backup-overview.md) gebruiken om een back-up te maken van Azure-bestands shares. Dit artikel bevat een overzicht van de ondersteunings instellingen bij het maken van back-ups van Azure-bestands shares met Azure Backup.
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>GA-regio's voor back-up van Azure-bestands shares
 
@@ -25,7 +25,7 @@ Back-ups van Azure-bestands shares zijn beschikbaar in alle regio's, **met uitzo
 
 | Details van opslag account | Ondersteuning                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Soort account            | Azure Backup biedt ondersteuning voor Azure-bestands shares die beschikbaar zijn in het algemeen gebruik van v1, algemeen gebruik v2 en opslag accounts voor bestands opslag. |
+| Soort account            | Azure Backup biedt ondersteuning voor Azure-bestands shares die beschikbaar zijn in de opslag accounts voor algemeen gebruik v1, algemeen gebruik v2 en bestands opslag |
 | Prestaties              | Azure Backup ondersteunt bestands shares in zowel standaard-als Premium Storage-accounts |
 | Replicatie              | Azure-bestands shares in opslag accounts met elk replicatie type worden ondersteund |
 | Firewall ingeschakeld         | Azure-bestands shares in opslag accounts met firewall regels waarmee Microsoft Azure Services toegang kunnen krijgen tot het opslag account, worden ondersteund|

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826817"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319794"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -49,7 +49,7 @@ Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 
 
 ## <a name="behavior-changes"></a>Gedrags wijzigingen
 ### <a name="ambari-stack-version-change"></a>Ambari stack-versie wijziging
-In deze versie wordt de Ambari-versie gewijzigd van 2. x. x. x in 4,1. U kunt de Ambari-versie van de Ambari-gebruikers interface ophalen > over.
+In deze versie verandert de Ambari-versie van 2. x. x. x in 4,1. U kunt de stack versie (HDInsight 4,1) controleren in Ambari: Ambari >-versies van gebruikers >.
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 Er zijn geen aanstaande Afbrekings wijzigingen die u moet aanbest Eden.
@@ -75,4 +75,4 @@ Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document]
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Er is een probleem opgelost in azure Portal, waar gebruikers een fout ondervonden tijdens het maken van een Azure HDInsight-cluster met behulp van een SSH-verificatie type open bare sleutel. Wanneer gebruikers op **controleren + maken**klikken, ontvangen ze de fout ' mag geen drie opeenvolgende tekens bevatten van SSH-gebruikers naam '. Dit probleem is opgelost, maar mogelijk moet u de cache van de browser vernieuwen door op CTRL + F5 te drukken om de gecorrigeerde weer gave te laden. De tijdelijke oplossing voor dit probleem was het maken van een cluster met een ARM-sjabloon. 
+Er is een probleem opgelost in Azure Portal, waarbij gebruikers een fout ondervonden tijdens het maken van een Azure HDInsight-cluster met een openbare sleutel als SSH-verificatietype. Wanneer gebruikers op **Beoordelen + Maken** klikken, verschijnt de fout 'Mag geen drie opeenvolgende tekens uit de SSH-gebruikersnaam bevatten'. Dit probleem is opgelost, maar mogelijk moet u de cache van de browser vernieuwen door op CTRL + F5 te drukken om de gecorrigeerde weergave te laden. De tijdelijke oplossing voor dit probleem was het maken van een cluster met een ARM-sjabloon. 

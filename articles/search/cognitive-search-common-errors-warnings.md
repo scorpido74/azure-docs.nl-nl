@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935548"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378352"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -349,3 +349,7 @@ Om deze waarschuwing te omzeilen, bepaalt u wat de tekst codering voor deze blob
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Waarschuwing: Cosmos DB verzameling ' X ' heeft een Lazy-indexerings beleid. Er zijn mogelijk gegevens verloren gegaan
 
 Verzamelingen met een [Lazy](/azure/cosmos-db/index-policy#indexing-mode) -indexerings beleid kunnen niet consistent worden opgevraagd, wat resulteert in uw Indexeer functie waarbij gegevens ontbreken. Als u deze waarschuwing wilt omzeilen, wijzigt u het indexerings beleid in consistent.
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Waarschuwing: het document bevat zeer lange woorden (langer is dan 64 tekens). Deze woorden kunnen resulteren in afgekapte en/of onbetrouwbare model voorspellingen.
+
+Deze waarschuwing wordt door gegeven van de Text Analytics-service.  In sommige gevallen is het veilig om deze waarschuwing te negeren, bijvoorbeeld wanneer uw document een lange URL bevat (waarschijnlijk geen sleutel woord groep of sentiment, enzovoort).  Houd er rekening mee dat als een woord langer is dan 64 tekens, het wordt afgekapt tot 64 tekens die van invloed kunnen zijn op de voor spellingen van modellen.  

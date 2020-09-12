@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824726"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377417"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -30,7 +30,7 @@ Controleer of de Azure-bestandsshare al in dezelfde Recovery Services-kluis word
 
 Ja. De beveiliging van Azure-bestands shares die zijn verbonden met synchronisatie groepen is ingeschakeld.
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Ik wilde een back-up van bestandsshares maken, en ik klikte op een opslagaccount om de bestandsshares daarin te detecteren. Ik heb ze echter niet beveiligd. Hoe kan ik deze bestands shares beveiligen met een andere kluis?
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Bij het maken van een back-up van bestands shares heb ik een opslag account geselecteerd om de bestands shares erin te detecteren. Ik heb ze echter niet beveiligd. Hoe kan ik deze bestands shares beveiligen met een andere kluis?
 
 Wanneer u een back-up wilt maken, selecteert u een opslag account om bestands shares te detecteren in het opslag account met de kluis van waaruit dit wordt gedaan. Als u de bestands shares met een andere kluis wilt beveiligen, moet u de [registratie](manage-afs-backup.md#unregister-a-storage-account) van het geselecteerde opslag account bij deze kluis opheffen.
 

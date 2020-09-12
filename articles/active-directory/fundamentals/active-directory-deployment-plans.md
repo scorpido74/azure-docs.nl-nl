@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605375"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318424"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -61,8 +61,8 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 
 | Mogelijkheid | Beschrijving|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met door de beheerder goedgekeurde verificatie methoden helpt Azure MFA u bij het beveiligen van de toegang tot uw gegevens en toepassingen terwijl de vraag naar een eenvoudig aanmeldings proces beantwoordt. |
-| [Voorwaardelijke toegang](../conditional-access/plan-conditional-access.md)| Met voorwaardelijke toegang kunt u geautomatiseerde beslissingen over toegangs beheer implementeren voor wie toegang heeft tot uw Cloud-apps, op basis van voor waarden. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met behulp van door een beheerder goedgekeurde verificatiemethoden, helpt Azure MFA met het beveiligen van de toegang tot uw gegevens en toepassingen, terwijl tegelijkertijd aan de behoefte aan een eenvoudige aanmeldingsprocedure wordt voldaan. |
+| [Voorwaardelijke toegang](../conditional-access/plan-conditional-access.md)| Met voorwaardelijke toegang kunt u geautomatiseerde beslissingen voor toegangsbeheer implementeren voor wie toegang heeft tot uw cloud-apps op basis van voorwaarden. |
 | [Self-service voor wachtwoord opnieuw instellen](../authentication/howto-sspr-deployment.md)| Met selfservice voor wachtwoord herstel kunnen uw gebruikers hun wacht woord opnieuw instellen zonder tussen komst van de beheerder, wanneer en wanneer dat nodig is. |
 | [Zonder wachtwoord](../authentication/howto-authentication-passwordless-deployment.md) | Implementeer verificatie op basis van een wacht woord met behulp van de Microsoft Authenticator app-of FIDO2-beveiligings sleutels in uw organisatie |
 
@@ -71,7 +71,7 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | Mogelijkheid | Beschrijving|
 | -| - |
 | [Eenmalige aanmelding](../manage-apps/plan-sso-deployment.md)| Met eenmalige aanmelding kunnen uw gebruikers toegang krijgen tot de apps en bronnen die ze nodig hebben om zaken te doen terwijl ze zich slechts één keer aanmelden. Nadat ze zich hebben aangemeld, kunnen ze van Microsoft Office naar Sales Force naar interne toepassingen gaan zonder dat ze een tweede keer referenties hoeven in te voeren. |
-| [Toegangsvenster](../manage-apps/access-panel-deployment-plan.md)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
+| [Toegangsvenster](../manage-apps/access-panel-deployment-plan.md)| Bied uw gebruikers een eenvoudige hub voor de detectie van en toegang tot al hun toepassingen. Stel hen in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van toegang tot resources namens anderen. |
 | [Apparaten](../devices/plan-device-deployment.md) | Dit artikel helpt u bij het evalueren van de methoden om uw apparaat te integreren met Azure AD, het implementatie plan te kiezen en de belangrijkste koppelingen naar ondersteunde hulpprogram ma's voor Apparaatbeheer. |
 
 
@@ -81,7 +81,7 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | -| -|
 | [ADFS voor wachtwoordhash-synchronisatie](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Met wacht woord-hash-synchronisatie worden hashes van gebruikers wachtwoorden gesynchroniseerd van on-premises Active Directory naar Azure AD, zodat gebruikers zonder tussen komst van de on-premises-Active Directory worden geverifieerd met Azure AD. |
 | [ADFS voor Pass Through-verificatie](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Met Azure AD Pass-Through-verificatie kunnen gebruikers zich aanmelden bij zowel lokale als Cloud toepassingen met dezelfde wacht woorden. Deze functie biedt gebruikers een betere ervaring-een minder wacht woord om te onthouden en vermindert de IT-helpdesk kosten, omdat gebruikers minder kans hebben om zich aan te melden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory. |
-| [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |De huidige werknemer wil overal, op elke plek en op elk apparaat productief kunnen zijn. Ze moeten toegang hebben tot SaaS-apps in de Cloud en zakelijke apps on-premises. Azure AD-toepassings proxy maakt deze robuuste toegang mogelijk zonder kost bare en complexe virtuele particuliere netwerken (Vpn's) of gedemilitariseerde zones (Dmz's). |
+| [Azure AD-toepassingsproxy](../manage-apps/application-proxy-deployment-plan.md) |De huidige werknemer wil overal, op elke plek en op elk apparaat productief kunnen zijn. Hij of zij moet toegang hebben tot SaaS-apps in de cloud en zakelijke apps on-premises. Azure AD-toepassingsproxy maakt deze robuuste toegang mogelijk zonder kostbare en complexe VPN's (virtuele particuliere netwerken) of DMZ's (gedemilitariseerde zones). |
 | [Naadloze eenmalige aanmelding](../hybrid/how-to-connect-sso-quick-start.md)| Met Naadloze eenmalige aanmelding van Azure Active Directory (Naadloze SSO van Azure AD) worden gebruikers aangemeld als hun bedrijfsapparaten zijn verbonden met net bedrijfsnetwerk. Met deze functie hoeven gebruikers hun wacht woord niet in te voeren om zich aan te melden bij Azure AD, en hoeven ze hun gebruikers namen meestal niet in te voeren. Deze functie biedt geautoriseerde gebruikers eenvoudig toegang tot uw Cloud toepassingen zonder dat hiervoor extra on-premises onderdelen nodig zijn. |
 
 ## <a name="deploy-user-provisioning"></a>Gebruikers inrichten implementeren

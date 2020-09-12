@@ -3,12 +3,12 @@ title: Systeem status herstellen naar een Windows-Server
 description: Stapsgewijze uitleg voor het herstellen van de Windows Server-systeem status vanuit een back-up in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178583"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377434"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
 
@@ -56,7 +56,7 @@ In de volgende stappen wordt uitgelegd hoe u de configuratie van uw Windows-Serv
 
 8. Controleer de details van herstel in het **bevestigings** venster en selecteer **herstellen**.
 
-   ![Klik op herstellen om de herstel actie te bevestigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![Selecteer herstellen om de herstel actie te bevestigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. Kopieer de *WindowsImageBackup* -map in de herstel bestemming naar een niet-kritiek volume van de-server. Normaal gesp roken is het volume van het Windows-besturings systeem het essentiële volume.
 
@@ -104,7 +104,7 @@ De terminologie die in deze stappen wordt gebruikt, omvat:
 
 11. Controleer de details van herstel in het bevestigings venster en selecteer **herstellen**.
 
-    ![Klik op de knop herstellen om het herstel proces te bevestigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![Selecteer de knop herstellen om het herstel proces te bevestigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Kopieer de *WindowsImageBackup* -map naar een niet-kritiek volume van de server (bijvoorbeeld D: \) . Normaal gesp roken is het volume van het Windows-besturings systeem het essentiële volume.
 

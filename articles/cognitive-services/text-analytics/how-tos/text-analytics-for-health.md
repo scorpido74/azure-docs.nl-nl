@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167688"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300065"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
 
@@ -47,7 +47,7 @@ Met relatie-extractie worden betekenis volle verbindingen van concepten aangegev
 > ![Status RE](../media/ta-for-health/health-relation-extraction.png)
 
 
-#### <a name="entity-linking"></a>[Entiteit koppelen](#tab/entity-linking)
+#### <a name="entity-linking"></a>[Entiteiten koppelen](#tab/entity-linking)
 
 Entiteit koppelt disambiguates afzonderlijke entiteiten door benoemde entiteiten die worden vermeld in tekst te koppelen aan concepten die zijn gevonden in een vooraf gedefinieerde data base met concepten. Bijvoorbeeld het Unified medisch taal systeem (UMLS).
 
@@ -91,7 +91,7 @@ Er zijn meerdere manieren waarop u de container kunt installeren en uitvoeren.
 Azure [Web App for containers](https://azure.microsoft.com/services/app-service/containers/) is een Azure-resource die is toegewezen aan het uitvoeren van containers in de Cloud. Het biedt out-of-the-box-mogelijkheden, zoals automatisch schalen, ondersteuning van docker-containers en docker-samen stellen, HTTPS-ondersteuning en nog veel meer.
 
 > [!NOTE]
-> Met Azure Web App krijgt u automatisch een domein in de vorm van`<appservice_name>.azurewebsites.net`
+> Met Azure Web App krijgt u automatisch een domein in de vorm van `<appservice_name>.azurewebsites.net`
 
 Voer dit Power shell-script uit met behulp van de Azure CLI om een Web App for Containers te maken, met behulp van uw abonnement en de container installatie kopie via HTTPS. Wacht totdat het script is voltooid (ongeveer 25-30 minuten) voordat u de eerste aanvraag indient.
 
@@ -161,11 +161,11 @@ Standaard wordt er geen beveiliging gegeven bij gebruik van ACI met container-AP
 
 #### <a name="set-up-nginx-as-an-ingress-gateway"></a>NGINX instellen als een ingangs gateway
 
-NGINX maakt gebruik van [configuratie bestanden](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) om functies tijdens runtime in te scha kelen. Als u TLS-beëindiging voor een andere service wilt inschakelen, moet u een SSL-certificaat opgeven om de TLS-verbinding te beëindigen en `proxy_pass` een adres voor de service op te geven. Hieronder vindt u een voor beeld.
+NGINX maakt gebruik van [configuratie bestanden](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) om functies tijdens runtime in te scha kelen. Als u TLS-beëindiging voor een andere service wilt inschakelen, moet u een SSL-certificaat opgeven om de TLS-verbinding te beëindigen en  `proxy_pass` een adres voor de service op te geven. Hieronder vindt u een voor beeld.
 
 
 > [!NOTE]
-> `ssl_certificate`verwacht een pad dat moet worden opgegeven in het lokale bestands systeem van de NGINX-container. Het opgegeven adres `proxy_pass` moet beschikbaar zijn in het NGINX-netwerk van de container.
+> `ssl_certificate` verwacht een pad dat moet worden opgegeven in het lokale bestands systeem van de NGINX-container. Het opgegeven adres `proxy_pass` moet beschikbaar zijn in het NGINX-netwerk van de container.
 
 Alle bestanden in de container NGINX `_.conf_` worden geladen die zijn gekoppeld onder `/etc/nginx/conf.d/` in het http-configuratiepad.
 
@@ -399,22 +399,19 @@ Uitvoer van relatie-extractie bevat URI-verwijzingen naar de *bron* van de relat
 
 ```json
 "relations": [
-  {
-      "relationType": "DosageOfMedication",
-      "score": 1.0,
-      "bidirectional": false,
-      "source": "#/documents/2/entities/0",
-      "target": "#/documents/2/entities/1",
-      "entities": [
-          {
-              "id": "0",
-              "role": "ATTRIBUTE"
-          },
-          {
-              "id": "1",
-              "role": "ENTITY"
-          }
-      ]
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
   },
 ...
 ]

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d8f3b4d57f00ef33bbf566c36babafd83be9a5df
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037309"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299623"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Zelf diagnose en probleem oplossing in azure lente Cloud
 Azure veer Cloud diagnostiek is een interactieve ervaring om u te helpen bij het oplossen van problemen met uw app. Er is geen configuratie vereist. Wanneer u problemen ondervindt, is er een fout opgetreden in azure lente-Cloud diagnose en vindt u informatie die u helpt bij het oplossen van problemen en het oplossen van het probleem.
@@ -21,12 +21,12 @@ Azure veer Cloud diagnostiek is een interactieve ervaring om u te helpen bij het
 Voor deze zelfstudie hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-* Een geïmplementeerd Azure Spring Cloud-service-exemplaar. Volg onze [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+* Een geïmplementeerd Azure Spring Cloud-service-exemplaar. Volg onze [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart.md) om aan de slag te gaan.
 * Er is al minstens één toepassing gemaakt in uw service-exemplaar.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Ga naar de pagina met diagnostische gegevens
 1. Meld u aan bij Azure Portal.
-2. Ga naar de **Overzichtspagina** van Azure Spring Cloud.
+2. Ga naar de pagina **Overzicht** van Azure Spring Cloud.
 3. Open het menu aan de linkerkant van de pagina om **problemen op te sporen en op te lossen** .
 
  ![Diagnose en oplossen dialoog venster](media/spring-cloud-diagnose/diagnose-solve-dialog.png)

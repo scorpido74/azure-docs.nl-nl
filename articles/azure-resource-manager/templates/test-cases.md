@@ -2,15 +2,15 @@
 title: Test cases voor test Toolkit
 description: Hierin worden de tests beschreven die worden uitgevoerd door de ARM-sjabloon test Toolkit.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255932"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378114"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standaard test cases voor ARM-sjabloon test Toolkit
 
@@ -100,6 +100,37 @@ In het volgende voor beeld wordt deze test **door gegeven** :
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>Omgevings-Url's kunnen niet hardcoded zijn
+
+Test naam: **DeploymentTemplate mag geen hardcoded URI bevatten**
+
+Voorlopig hardcoderen we geen omgevings-Url's in uw sjabloon. Gebruik in plaats daarvan de [functie omgeving](template-functions-deployment.md#environment) om deze url's dynamisch op te halen tijdens de implementatie. Voor een lijst met de geblokkeerde URL-hosts raadpleegt u de [test case](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+
+In het volgende voor beeld wordt deze test **niet** uitgevoerd omdat de URL hardcoded is.
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+De test **mislukt** ook als deze wordt gebruikt met [concat](template-functions-string.md#concat) of [URI](template-functions-string.md#uri).
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+In het volgende voor beeld wordt deze test **door gegeven** .
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>Locatie gebruikt para meter
@@ -351,18 +382,18 @@ U krijgt deze waarschuwing ook als u een minimum-of maximum waarde opgeeft, maar
 
 ## <a name="artifacts-parameter-defined-correctly"></a>De para meter artefacten correct is gedefinieerd
 
-Test naam: **artefacten-para meter**
+Test naam: **artefacten para meter**
 
 Wanneer u para meters voor en opneemt `_artifactsLocation` `_artifactsLocationSasToken` , gebruikt u de juiste standaard waarden en typen. Aan de volgende voor waarden moet worden voldaan om deze test door te geven:
 
 * Als u één para meter opgeeft, moet u de andere opgeven
 * `_artifactsLocation`moet een **teken reeks** zijn
-* `_artifactsLocation`moet een standaard waarde hebben in de hoofd sjabloon
-* `_artifactsLocation`kan geen standaard waarde hebben in een geneste sjabloon 
+* `_artifactsLocation` moet een standaard waarde hebben in de hoofd sjabloon
+* `_artifactsLocation` kan geen standaard waarde hebben in een geneste sjabloon 
 * `_artifactsLocation``"[deployment().properties.templateLink.uri]"`de standaard waarde moet van de opslag plaats-URL (of onbewerkte) zijn
 * `_artifactsLocationSasToken`moet een **secureString** zijn
-* `_artifactsLocationSasToken`kan alleen een lege teken reeks voor de standaard waarde hebben
-* `_artifactsLocationSasToken`kan geen standaard waarde hebben in een geneste sjabloon 
+* `_artifactsLocationSasToken` kan alleen een lege teken reeks voor de standaard waarde hebben
+* `_artifactsLocationSasToken` kan geen standaard waarde hebben in een geneste sjabloon 
 
 ## <a name="declared-variables-must-be-used"></a>Gedeclareerde variabelen moeten worden gebruikt
 
@@ -514,9 +545,9 @@ Deze test is van toepassing op:
 
 Voor `reference` en `list*` , **mislukt** de test wanneer u gebruikt `concat` om de resource-id te maken.
 
-## <a name="dependson-cant-be-conditional"></a>dependsOn kan niet voorwaardelijk zijn
+## <a name="dependson-best-practices"></a>Best practices voor dependsOn
 
-Test naam: **DependsOn mag niet voorwaardelijk zijn**
+Test naam: **Best practices voor DependsOn**
 
 Gebruik bij het instellen van de implementatie afhankelijkheden niet de functie [als](template-functions-logical.md#if) om een voor waarde te testen. Als een resource afhankelijk is van een resource die [voorwaardelijk wordt geïmplementeerd](conditional-resource-deployment.md), stelt u de afhankelijkheid in, net zoals bij elke resource. Wanneer een voorwaardelijke resource niet is geïmplementeerd, wordt deze automatisch door Azure Resource Manager verwijderd uit de vereiste afhankelijkheden.
 
@@ -572,7 +603,7 @@ Als uw sjabloon een virtuele machine met een installatie kopie bevat, moet u erv
 
 ## <a name="use-stable-vm-images"></a>Stabiele VM-installatie kopieën gebruiken
 
-Test naam: **virtuele machines-mag niet zijn-preview-versie**
+Test naam: **virtual machines moet niet worden weer** gegeven
 
 Virtuele machines mogen geen preview-installatie kopieën gebruiken.
 
