@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/03/2020
 ms.author: victorh
-ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87412946"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437850"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Firewall gebruiken om implementaties van Azure Kubernetes service (AKS) te beveiligen
 
@@ -47,7 +47,13 @@ Azure Firewall biedt een AKS FQDN-code om de configuratie te vereenvoudigen. Voe
    - TCP [*IPAddrOfYourAPIServer*]: 443 is vereist als u een app hebt die moet communiceren met de API-server. Deze wijziging kan worden ingesteld nadat het cluster is gemaakt.
    - TCP-poort 9000 en UDP-poort 1194 voor de tunnel-front-pod om te communiceren met het tunnel einde op de API-server.
 
-      Zie voor meer specifieke informatie de **. hcp. <location> . azmk8s.io* en adressen in de volgende tabel.
+      Zie voor meer specifieke informatie de **. hcp. <location> . azmk8s.io* en adressen in de volgende tabel:
+
+   | Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
+   |----------------------------------------------------------------------------------|----------|---------|------|
+   | **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
+   | **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
+
    - UDP-poort 123 voor NTP (Network Time Protocol) tijd synchronisatie (Linux-knoop punten).
    - UDP-poort 53 voor DNS is ook vereist als u een rechtstreekse toegang hebt tot de API-server.
 

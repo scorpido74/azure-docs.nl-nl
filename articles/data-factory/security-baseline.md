@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57786aa343fd2ea863b17f65253e5d4a4a6b88ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226825"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437935"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-beveiligings basislijn voor Azure Data Factory
 
@@ -578,7 +578,7 @@ Als privé-koppeling beschikbaar is, gebruikt u privé-eind punten om alle resou
 
 **Richt lijnen**: als de gegevens opslag in de Cloud https of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel https of TLS. Gebruikte TLS-versie is 1,2.
 
-Alle verbindingen met Azure SQL Database en Azure SQL Data Warehouse vereisen versleuteling (SSL/TLS) terwijl gegevens onderweg naar en van de Data Base worden verzonden. Wanneer u een pijp lijn ontwerpt met behulp van JSON, voegt u de eigenschap Encryption toe en stelt u deze in op True in de connection string. Voor Azure Storage kunt u HTTPS gebruiken in de connection string.
+Voor alle verbindingen met Azure SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse) is versleuteling (SSL/TLS) vereist terwijl gegevens onderweg naar en van de Data Base worden verzonden. Wanneer u een pijp lijn ontwerpt met behulp van JSON, voegt u de eigenschap Encryption toe en stelt u deze in op True in de connection string. Voor Azure Storage kunt u HTTPS gebruiken in de connection string.
 
 * [Informatie over versleuteling in transit in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -896,7 +896,7 @@ Houd er rekening mee dat dit alleen geldt als uw Integration Runtime wordt uitge
 
 * [Wat is Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Wat is Azure Web Application Firewall?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Wat is de firewall van Azure Web Application?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
@@ -1050,7 +1050,9 @@ U kunt ook referenties of geheime waarden opslaan in een Azure Key Vault en deze
 
 * [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Verifiëren bij Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Toegangs beleid voor Key Vault toewijzen](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

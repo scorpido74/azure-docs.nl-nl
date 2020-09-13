@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254511"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438514"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure Blob Storage met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -31,7 +31,7 @@ ms.locfileid: "85254511"
 In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Blob Storage. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
 ## <a name="overview"></a>Overzicht
-U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure Blob Storage of van Azure Blob Storage naar elk ondersteund Sink-gegevens archief. De volgende tabel bevat een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit. U kunt bijvoorbeeld gegevens verplaatsen **van** een SQL Server Data Base of een data base in Azure SQL database **naar** een Azure Blob-opslag. En u kunt gegevens **van** Azure Blob-opslag **naar** een Azure SQL Data Warehouse of een Azure Cosmos DB verzameling kopiëren.
+U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure Blob Storage of van Azure Blob Storage naar elk ondersteund Sink-gegevens archief. De volgende tabel bevat een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit. U kunt bijvoorbeeld gegevens verplaatsen **van** een SQL Server Data Base of een data base in Azure SQL database **naar** een Azure Blob-opslag. En u kunt gegevens kopiëren **van** Azure Blob-opslag **naar** Azure Synapse Analytics (voorheen SQL Data Warehouse) of een Azure Cosmos DB-verzameling.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -193,7 +193,7 @@ Laten we eens kijken hoe u snel gegevens kopieert naar/van een Azure Blob-opslag
     4. Selecteer een **locatie** voor de gegevensfactory.
     5. Selecteer het selectievakje **Vastmaken aan dashboard** onderaan de blade.
     6. Klik op **Create**.
-3. Nadat het maken is voltooid, ziet u de Blade **Data Factory** , zoals wordt weer gegeven in de volgende afbeelding: ![ Start pagina Data Factory](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+3. Nadat het maken is voltooid, ziet u de Blade **Data Factory** , zoals wordt weer gegeven in de volgende afbeelding:  ![ Start pagina Data Factory](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>De wizard Kopiëren
 1. Klik op de start pagina van Data Factory op de tegel **gegevens kopiëren** om **gegevens kopiëren wizard** op een afzonderlijk tabblad te starten.  
@@ -221,14 +221,14 @@ Laten we eens kijken hoe u snel gegevens kopieert naar/van een Azure Blob-opslag
 5. Op de pagina **Het invoerbestand of de invoermap kiezen**:
     1. Dubbel klik op **adfblobcontainer**.
     2. Selecteer **invoer**en klik op **kiezen**. In dit overzicht selecteert u de map invoer. U kunt ook in plaats daarvan het emp.txt bestand in de map selecteren.
-        ![Hulpprogramma voor kopiëren - Het invoerbestand of de invoermap kiezen](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        ![Hulp programma voor kopiëren: Kies het invoer bestand of de map 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. Klik op de pagina **het invoer bestand of de map kiezen** :
     1. Controleer of het **bestand of de map** is ingesteld op **adfblobconnector/input**. Als de bestanden zich in submappen bevinden, bijvoorbeeld 2017/04/01, 2017/04/02, enzovoort, voert u adfblobconnector/input/{year}/{month}/{Day} in voor het bestand of de map. Wanneer u op TAB drukt vanuit het tekstvak, ziet u drie vervolg keuzelijsten om de notatie voor jaar (jjjj), maand (MM) en dag (DD) te selecteren.
     2. Stel bestand niet **recursief kopiëren**in. Selecteer deze optie om recursief door mappen te bladeren voor bestanden die naar de bestemming moeten worden gekopieerd.
     3. Gebruik niet de optie voor **binaire kopieën** . Selecteer deze optie om een binaire kopie van het bron bestand naar de bestemming uit te voeren. Selecteer deze procedure niet zodat u meer opties kunt zien op de volgende pagina's.
     4. Controleer of het **compressie type** is ingesteld op **geen**. Selecteer een waarde voor deze optie als uw bron bestanden zijn gecomprimeerd in een van de ondersteunde indelingen.
     5. Klik op **Volgende**.
-    ![Hulpprogramma voor kopiëren - Het invoerbestand of de invoermap kiezen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    ![Hulp programma voor kopiëren: Kies het invoer bestand of de map 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. Op de pagina **Bestandsinstellingen** ziet u de scheidingstekens en het schema dat automatisch is gedetecteerd door de wizard tijdens het parseren van het bestand.
     1. Bevestig de volgende opties:  
         a. De **bestands indeling** is ingesteld op **tekst indeling**. U kunt alle ondersteunde indelingen weer geven in de vervolg keuzelijst. Bijvoorbeeld: JSON, AVRO, ORC, Parquet.

@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 08/17/2020
-ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551837"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434398"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In dit artikel wordt beschreven hoe u een Azure Active Directory-exemplaar (Azure AD) maakt en vult en vervolgens Azure AD gebruikt met [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)en [azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie [Azure Active Directory-verificatie](authentication-aad-overview.md)voor een overzicht.
+In dit artikel wordt beschreven hoe u een Azure Active Directory-exemplaar (Azure AD) maakt en vult en vervolgens Azure AD gebruikt met [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)en [azure Synapse Analytics (voorheen SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie [Azure Active Directory-verificatie](authentication-aad-overview.md)voor een overzicht.
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD-verificatie methoden
 
@@ -73,7 +73,7 @@ Bij het gebruik van Azure Active Directory met geo-replicatie moet de Azure Acti
 > [!IMPORTANT]
 > Volg deze stappen alleen als u een door Azure SQL beheerd exemplaar inricht. Deze bewerking kan alleen worden uitgevoerd door de beheerder globaal/bedrijf of een bevoegde beheerdersrol in azure AD.
 >
-> In de **open bare preview**kunt u de rol van de **Directory lezers** toewijzen aan een groep in azure AD. De groeps eigenaren kunnen de identiteit van het beheerde exemplaar vervolgens toevoegen als lid van deze groep, zodat u een Azure AD-beheerder kunt inrichten voor het SQL Managed instance. Zie voor meer informatie over deze functie [Directory lezers Role in azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md).
+> In de **open bare preview**kunt u de rol van de **Directory lezers** toewijzen aan een groep in azure AD. De groeps eigenaren kunnen de identiteit van het beheerde exemplaar vervolgens toevoegen als lid van deze groep, zodat u een Azure AD-beheerder kunt inrichten voor het SQL Managed instance. Zie [Rol Directory Readers in Azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md) voor meer informatie over deze functie.
 
 Uw SQL Managed instance heeft machtigingen nodig voor het lezen van Azure AD om taken zoals de verificatie van gebruikers via lidmaatschap van een beveiligings groep of het maken van nieuwe gebruikers te kunnen uitvoeren. Om dit te laten werken, moet u de SQL Managed instance machtigen om Azure AD te lezen. U kunt dit doen met behulp van de Azure Portal of Power shell.
 

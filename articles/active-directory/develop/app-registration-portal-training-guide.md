@@ -13,12 +13,12 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13242a41e1d10b0df031bf10fd646d9ec3cf47c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478158"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437765"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>De nieuwe app registratie-ervaring voor Azure Portal
 
@@ -77,12 +77,12 @@ In de nieuwe ervaring zijn de namen van de **toepassings geheimen** gewijzigd in
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformen/authenticatie: antwoord-Url's/omleidings-Uri's
 In de oude ervaring bevat een app platformen voor web, native en Web API voor het configureren van omleidings-Url's, afmeldings-URL en impliciete stroom.
 
-In de nieuwe ervaring zijn antwoord-Url's te vinden in de \' sectie app s-verificatie. Daarnaast worden ze omleidings-Uri's genoemd en is de indeling voor omleidings-Uri's gewijzigd. Ze moeten worden gekoppeld aan een app-type (Web of open bare client-mobiel en desktop). [Meer informatie](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+In de nieuwe ervaring zijn antwoord-Url's te vinden in de \' sectie app s-verificatie. Daarnaast worden ze omleidings-Uri's genoemd en is de indeling voor omleidings-Uri's gewijzigd. Ze moeten worden gekoppeld aan een app-type (Web of open bare client-mobiel en desktop). [Meer informatie](quickstart-register-app.md#add-a-redirect-uri)
 
 Web-Api's worden geconfigureerd in een API-pagina beschikbaar maken.
 
 > [!NOTE]
-> Probeer de nieuwe ervaring voor verificatie-instellingen uit, waar u instellingen voor uw toepassing kunt configureren op basis van het platform of apparaat dat u wilt instellen. [Meer informatie](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Probeer de nieuwe Verificatie-instellingen waarmee u instellingen voor uw toepassing kunt configureren, op basis van het platform of apparaat dat u op het oog hebt. [Meer informatie](quickstart-register-app.md#configure-platform-settings)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph machtigingen/API-machtigingen
 

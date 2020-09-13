@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857640"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438446"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformatie met Azure Databricks
 
@@ -28,7 +28,7 @@ In deze zelf studie maakt u een end-to-end-pijp lijn die de activiteiten **valid
 
 - **Kopieer gegevens** dupliceert de bron-gegevensset naar de Sink-opslag, die is gekoppeld als DBFS in de Azure Databricks notebook. Op deze manier kan de gegevensset rechtstreeks worden gebruikt door Spark.
 
-- **Notebook** activeert de Databricks-notebook waarmee de gegevensset wordt getransformeerd. De gegevensset wordt ook toegevoegd aan een verwerkte map of Azure SQL Data Warehouse.
+- **Notebook** activeert de Databricks-notebook waarmee de gegevensset wordt getransformeerd. Het voegt ook de gegevensset toe aan een verwerkte map of Azure Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 Ter vereenvoudiging maakt de sjabloon in deze zelf studie geen geplande trigger. U kunt indien nodig een invoeg toepassing toevoegen.
 
