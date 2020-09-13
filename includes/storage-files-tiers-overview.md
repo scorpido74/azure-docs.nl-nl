@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7fd91e898c12a13e35ae8b9055ebb5a57de2a051
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1a08459d0f5a0321d8fa6635b7a2c7b9c9f8ebba
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89272158"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89422703"
 ---
 Azure Files biedt vier verschillende opslaglagen: premium, geoptimaliseerd voor transacties, dynamisch en statisch. Hiermee kunt u uw shares aanpassen aan de prestaties en prijsvereisten van uw scenario:
 
@@ -30,7 +30,7 @@ Dynamische en statische bestandsshares zijn momenteel beschikbaar in de volgende
 - Australië - centraal 2
 - Australië - oost
 - Australië - zuidoost
-- Brazil South
+- Brazilië - zuid
 - Canada - oost
 - Canada - midden
 - Frankrijk - centraal
@@ -56,5 +56,7 @@ Dynamische en statische bestandsshares zijn momenteel beschikbaar in de volgende
 - Verenigd Koninkrijk West
 - VS - noord-centraal
 - VS - zuid-centraal
+- VS - west-centraal
+- VS - west 2
 
 Raadpleeg [Een dynamische of statische bestandsshare maken](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share) als u een dynamische of statische bestandsshare wilt implementeren. 

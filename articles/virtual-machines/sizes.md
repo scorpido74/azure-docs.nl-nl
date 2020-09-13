@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d9377ba22f1461762e53b1004dfe5f06c2d7b972
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065468"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420214"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Grootten voor virtuele machines in azure
 
@@ -21,14 +21,14 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 
 | Type | Grootten | Beschrijving |
 |------|-------|-------------|
-| [Algemeen doel](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2, Dv4, Dsv4, Ddv4, Ddsv4  | Evenwichtige CPU-geheugen verhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
-| [Geoptimaliseerde rekenkracht](sizes-compute.md) | F, FS, Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
-| [Geoptimaliseerd geheugen](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
+| [Algemeen gebruik](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2, Dv4, Dsv4, Ddv4, Ddsv4  | Evenwichtige CPU-geheugenverhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
+| [Geoptimaliseerde rekenkracht](sizes-compute.md) | F, FS, Fsv2 | Hoge CPU-geheugenverhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
+| [Geoptimaliseerd geheugen](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, dv2 | Hoge geheugen-CPU-verhouding. Zeer geschikt voor relationele databaseservers, middelgrote tot grote caches, en analysefuncties in het geheugen.                 |
 | [Geoptimaliseerd voor opslag](sizes-storage.md) | Lsv2 | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3 (preview), ND, NDv2 (preview), NV, NVv3, NVv4 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere GPU's. |
 | [Krachtig rekenvermogen](sizes-hpc.md) | HB, HBv2, HC, H | Onze snelste en krach tigste virtuele CPU-machines met optionele netwerk interfaces (RDMA) met hoge door voer. |
 
-- Zie de pagina met prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) of [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
+- Zie de pagina met prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) of [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
 - Zie [producten beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor beschik BAARHEID van VM-grootten in azure-regio's.
 - Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.
 - Zie [grootte conventies voor virtuele machines van Azure](./vm-naming-conventions.md)voor meer informatie over de manier waarop Azure namen van de virtuele machines is.
@@ -59,7 +59,7 @@ Meer informatie over reken prestaties voor Windows-Vm's met behulp van de [SPECI
 
 Meer informatie over de verschillende beschik bare VM-grootten:
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)

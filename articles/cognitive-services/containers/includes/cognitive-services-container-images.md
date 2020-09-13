@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: ac8e49c85147576e489b16a3a421c75d60ad4aee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff039d6d5879e036aecc63b46359d84673f84a0e
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104403"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424634"
 ---
 ### <a name="container-repositories-and-images"></a>Container opslagplaatsen en installatie kopieën
 
 De onderstaande tabellen geven een lijst van de beschik bare container installatie kopieën die door Azure Cognitive Services worden aangeboden. Zie voor een volledige lijst met alle beschik bare namen van container installatie kopieën en de beschik bare labels [Cognitive Services container-afbeeldings codes](../container-image-tags.md). 
 
-#### <a name="generally-available"></a>Algemeen verkrijgbaar 
+#### <a name="generally-available"></a>Algemeen beschikbaar 
 
 De micro soft Container Registry (MCR) syndicateert alle algemeen beschik bare containers voor Cognitive Services. De containers zijn ook rechtstreeks beschikbaar vanuit de [docker-hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
@@ -73,4 +73,5 @@ De volgende containers voor geteste preview worden gehost in het container voorb
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=tts) | Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Speech Service-API](../../speech-service/speech-container-howto.md?tab=ctts) | Aangepaste tekst-naar-spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
-| [Text Analytics voor de status](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Text Analytics voor de status | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
+| [Speech Service-API](../../speech-service/speech-container-howto.md?tab=ntts) | Tekst-naar-spraak Neural | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech` |
+| [Text Analytics voor de status](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Text Analytics voor status | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/12/2020
-ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/02/2020
+ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212049"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419960"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Gegevens stromen toewijzen in Azure Data Factory
 
@@ -41,7 +41,7 @@ De toewijzing van gegevens stroom heeft een uniek ontwerp teken dat is ontworpen
 
 ### <a name="graph"></a>Graph
 
-In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
+In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie. Meer informatie over [het beheren van de gegevens stroom grafiek](concepts-data-flow-manage-graph.md).
 
 ![Canvas](media/data-flow/canvas2.png "Canvas")
 
@@ -63,11 +63,11 @@ Het tabblad **Optimize** bevat instellingen voor het configureren van partitie s
 
 ![Optimaliseren](media/data-flow/optimize.png "Optimaliseren")
 
-#### <a name="inspect"></a>Controleert
+#### <a name="inspect"></a>Inspecteren
 
 Het tabblad **controleren** bevat een weer gave van de meta gegevens van de gegevensstroom die u transformeert. U kunt kolom aantallen zien, de kolommen gewijzigd, de kolommen die zijn toegevoegd, de gegevens typen, de kolom volgorde en kolom verwijzingen. **Inspecteer** is een alleen-lezen weer gave van uw meta gegevens. U hoeft de foutopsporingsmodus niet in te scha kelen om meta gegevens in het deel venster **controleren** weer te geven.
 
-![Controleert](media/data-flow/inspect1.png "Controleert")
+![Inspecteren](media/data-flow/inspect1.png "Inspecteren")
 
 Wanneer u de vorm van uw gegevens via trans formaties wijzigt, worden de wijzigingen in de meta gegevens in het deel venster **controleren** weer gegeven. Als er geen gedefinieerd schema is in uw bron transformatie, worden de meta gegevens niet weer gegeven in het deel venster **controleren** . Het ontbreken van meta gegevens is gebruikelijk in schema-drift-scenario's.
 
@@ -106,16 +106,16 @@ Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
 |  Australië - centraal | | |  
 | Australië - centraal 2 | | |
 | Australië - oost | ✓ |  ✓ |
-| Australia Southeast   | ✓ | ✓ |
-| Brazil South  | ✓ |  |
+| Australië - zuidoost   | ✓ | ✓ |
+| Brazilië - zuid  | ✓ |  |
 | Canada - midden | ✓ |  |
-| Central India | ✓ |   ✓ |
-| Central US    | ✓ |   ✓ |
+| India - centraal | ✓ |   ✓ |
+| VS - centraal    | ✓ |   ✓ |
 | China East |      | ✓ |
 | China-oost 2  |   |    |
 | China niet-regionaal | | |
 | China - noord |     | |
-| China-noord 2 | |  |
+| China - noord 2 | |  |
 | Azië - oost | ✓ | |
 | VS - oost   | ✓ | ✓ |
 | VS - oost 2 | ✓ | ✓ |
@@ -126,7 +126,7 @@ Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
 | Duitsland-noord (openbaar) | | |
 | Duitsland-noordoost (soeverein) | | |
 | Duitsland-west-centraal (openbaar) |  | ✓ |
-| Japan East | ✓ |  |
+| Japan - oost | ✓ |  |
 | Japan - west |  | |
 | Korea - centraal | ✓ |  |
 | Korea - zuid | | |
@@ -136,13 +136,13 @@ Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
 | Noorwegen - west | | |
 | Zuid-Afrika - noord    | ✓ | |
 | Zuid-Afrika - west |  |    |
-| South Central US  | | ✓ |
+| VS - zuid-centraal  | | ✓ |
 | India - zuid | | |
 | Azië - zuidoost    | ✓ | ✓ |
 | Zwitserland - noord |   |  |
 | Zwitserland - west | | |
 | UAE - centraal | | |
-| UAE - noord |  |    |
+| VAE - noord |  |    |
 | Verenigd Koninkrijk Zuid  | ✓ |   | ✓ |
 | Verenigd Koninkrijk West |     | ✓ |
 | US DoD Central | |  |
@@ -155,7 +155,7 @@ Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
 | Europa -west   | ✓ |   ✓ |
 | India - west | | |
 | VS - west   | ✓ |   |
-| West US 2 | ✓ |   ✓ | 
+| VS - west 2 | ✓ |   ✓ | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

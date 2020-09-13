@@ -1,51 +1,64 @@
 ---
-title: Grafieken voor gegevens stromen
-description: Werken met data factory data flow-grafieken
+title: De grafiek toewijzings gegevens stroom beheren
+description: De stroom grafiek voor het toewijzen van gegevens effectief beheren en bewerken
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605359"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420085"
 ---
-# <a name="mapping-data-flow-graphs"></a>Grafieken voor gegevens stromen toewijzen
+# <a name="managing-the-mapping-data-flow-graph"></a>De grafiek toewijzings gegevens stroom beheren
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Het ontwerp oppervlak voor het toewijzen van gegevens stromen is een constructie-Opper vlak waar u gegevens stromen van boven naar beneden maakt, van links naar rechts. Er is een werkset aan elke trans formatie gekoppeld met een plus teken (+). Richt u op uw bedrijfs logica in plaats van knoop punten te verbinden via randen in een vrije-vorm DAG-omgeving.
+Het koppelen van gegevens stromen wordt gemaakt met behulp van een ontwerp oppervlak dat de gegevens stroom grafiek kan weer gegeven. In de grafiek is de transformatie logica van links naar rechts gemaakt en worden extra gegevens stromen boven aan de pagina toegevoegd. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
 
-Hieronder vindt u ingebouwde mechanismen voor het beheren van de gegevens stroom grafiek.
+![Canvas](media/data-flow/canvas2.png "Canvas")
 
-## <a name="move-nodes"></a>Knooppunten verplaatsen
+Als uw gegevens stromen complex worden, kunt u de volgende mechanismen gebruiken om de gegevens stroom grafiek effectief te navigeren en te beheren. 
 
-![Aggregatie opties voor trans formatie](media/data-flow/agghead.png "aggregator-header")
+## <a name="moving-transformations"></a>Trans formaties verplaatsen
 
-Zonder een paradigma voor slepen en neerzetten, de manier om een transformatie knooppunt te verplaatsen, is het wijzigen van de inkomende stroom. In plaats daarvan gaat u trans formaties verplaatsen door de "binnenkomende stroom" te wijzigen.
+Bij het toewijzen van gegevens stromen wordt een reeks verbonden transformatie logica een **stroom**genoemd. Het veld voor de **inkomende stroom** bepaalt welke gegevens stroom de huidige trans formatie bedient. Elke trans formatie heeft een of twee inkomende streams, afhankelijk van de functie en duidt een uitvoer stroom aan. Het uitvoer schema van de binnenkomende stromen bepaalt op welke kolom meta gegevens kunnen worden verwezen door de huidige trans formatie.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Gegevens stromen in gegevens stroom
+![Knoop punt verplaatsen](media/data-flow/move-nodes.png "knoop punt verplaatsen")
 
-In Azure Data Factory gegevens stroom vertegenwoordigen streams de stroom van gegevens. In het deel venster trans formatie-instellingen ziet u het veld ' inkomende stroom '. Zo weet u welke binnenkomende gegevens stroom de trans formatie verfeedt. U kunt de fysieke locatie van uw transformatie knooppunt in de grafiek wijzigen door te klikken op de naam van de inkomende stroom en een andere gegevens stroom te selecteren. De huidige trans formatie en alle daaropvolgende transformaties voor die stroom worden vervolgens verplaatst naar de nieuwe locatie.
-
-Als u een trans formatie met een of meer transformaties verplaatst, wordt de nieuwe locatie in de gegevens stroom gekoppeld via een nieuwe vertakking.
-
-Als u geen daaropvolgende trans formaties hebt nadat het knoop punt dat u hebt geselecteerd, wordt alleen dat transformatie verplaatst naar de nieuwe locatie.
+In tegens telling tot het pijp lijn-canvas, worden gegevensstroom transformaties niet bewerkt met behulp van slepen en neerzetten. Als u een trans formatie wilt wijzigen in de binnenkomende stroom of verplaatsen, kiest u een andere waarde in de vervolg keuzelijst **inkomende stream** . Wanneer u dit doet, worden alle downstream-trans formaties naast de bewerkte trans formatie verplaatst. De grafiek wordt automatisch bijgewerkt om de nieuwe logische stroom weer te geven. Als u de inkomende stroom wijzigt in een trans formatie die al downstream-trans formatie heeft, wordt er een nieuwe vertakking of parallelle gegevens stroom gemaakt. Meer informatie over [nieuwe vertakkingen in het toewijzen van gegevens stroom](data-flow-new-branch.md).
 
 ## <a name="hide-graph-and-show-graph"></a>Grafiek verbergen en grafiek weer geven
 
-Er bevindt zich een knop aan de rechter kant van het onderste configuratie deel venster, waar u het onderste deel venster kunt uitbreiden naar het volledige scherm wanneer u aan transformatie configuraties werkt. Zo kunt u de knoppen Vorige en volgende gebruiken om door de configuraties van de grafiek te navigeren. Als u terug wilt gaan naar de grafiek weergave, klikt u op de knop omlaag en gaat u terug naar het scherm splitsen.
+Wanneer u uw trans formatie bewerkt, kunt u het configuratie paneel uitvouwen om het hele canvas te verg Roten, zodat de grafiek wordt verborgen. Klik op de omhoog gerichte dubbele punt haak aan de rechter kant van het canvas.
 
-## <a name="search-graph"></a>Zoeken in grafiek
+![Grafiek verbergen](media/data-flow/hide-graph.png "grafiek verbergen")
 
-U kunt de grafiek doorzoeken met de zoek knop op het ontwerp oppervlak.
+Wanneer de grafiek is verborgen, kunt u tussen trans formaties binnen een stroom scha kelen door op **volgende** of **vorige**te klikken. Klik op de omlaag gerichte dubbele punt haak om de grafiek weer te geven.
 
-![Zoeken](media/data-flow/search001.png "Zoeken in grafiek")
+![Grafiek weer geven](media/data-flow/show-graph.png "grafiek weer geven")
+
+## <a name="searching-for-transformations"></a>Trans formaties zoeken
+
+Als u snel een trans formatie in uw grafiek wilt vinden, klikt u op het **Zoek** pictogram boven de zoom instelling.
+
+![Zoeken](media/data-flow/search-1.png "Zoeken in grafiek")
+
+U kunt zoeken op transformatie naam of beschrijving om een trans formatie te vinden.
+
+![Zoeken](media/data-flow/search-2.png "Zoeken in grafiek")
+
+## <a name="hide-reference-nodes"></a>Verwijzings knooppunten verbergen
+
+Als uw gegevens stroom een koppelings-, opzoek-, exists-of Union-trans formaties bevat, toont de gegevens stroom referentie knooppunten naar alle inkomende streams. Als u de hoeveelheid benodigde verticale ruimte wilt minimaliseren, kunt u de referentie knooppunten minimaliseren. Hiertoe klikt u met de rechter muisknop op het canvas en selecteert u **referentie knooppunten verbergen**.
+
+![Verwijzings knooppunten verbergen](media/data-flow/hide-reference-nodes.png "Verwijzings knooppunten verbergen")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u het ontwerp van de gegevens stroom hebt voltooid, schakelt u de knop fout opsporing in en test u deze in de foutopsporingsmodus rechtstreeks in de [Data flow Designer](concepts-data-flow-debug-mode.md) of de [fout opsporing voor de pijp lijn](control-flow-execute-data-flow-activity.md).
+Nadat u de logica voor de gegevens stroom hebt voltooid, schakelt u de [foutopsporingsmodus](concepts-data-flow-debug-mode.md) in en test u deze in een voor beeld van de gegevens.
