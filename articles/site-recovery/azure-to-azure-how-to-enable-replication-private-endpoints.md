@@ -1,25 +1,22 @@
 ---
 title: Replicatie inschakelen voor privé-eind punten in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u replicatie configureert voor Vm's met persoonlijke eind punten van de ene Azure-regio naar een andere met behulp van Site Recovery.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096780"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658253"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Computers repliceren met persoonlijke eind punten
 
-Met Azure Site Recovery kunt u privé-eind punten van [Azure private link](../private-link/private-endpoint-overview.md) gebruiken voor het repliceren van uw computers in een geïsoleerd virtueel netwerk. Ondersteuning voor privé-eindpunt toegang tot een Recovery-kluis wordt ondersteund voor de volgende regio's:
-
-- Azure Commercial: Zuid-Centraal VS, VS-West 2, VS-Oost
-- Azure Government: US Gov-Virginia, US Gov-Arizona, US Gov-Texas, US DoD-oost, US DoD-centraal
+Met Azure Site Recovery kunt u privé-eind punten van [Azure private link](../private-link/private-endpoint-overview.md) gebruiken voor het repliceren van uw computers in een geïsoleerd virtueel netwerk. Toegang tot een persoonlijk eind punt tot een Recovery kluis wordt ondersteund in alle Azure commerciële & overheids regio's.
 
 In dit artikel vindt u instructies voor het uitvoeren van de volgende stappen:
 
@@ -140,7 +137,7 @@ Voordat u de replicatie van virtuele machines inschakelt, moet de beheerde ident
 
 - Op Resource Manager gebaseerde opslag accounts (standaard type):
   - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
-  - [Inzender voor Storage BLOB-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Inzender voor Storage Blob-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Op Resource Manager gebaseerde opslag accounts (Premium-type):
   - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
   - [Eigenaar van gegevens van opslag-BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -209,7 +206,7 @@ Maak één privé-DNS-zone zodat de Mobility-agent persoonlijke koppelingen voll
 
    1. Voeg op de pagina recordset toevoegen die wordt geopend, een vermelding voor elke Fully Qualified Domain Name en een persoonlijk IP-adres toe als _een_ type record. De lijst met volledig gekwalificeerde domein namen en IP-adressen kan worden verkregen via de pagina ' persoonlijk eind punt ' in **overzicht**. Zoals u in het onderstaande voor beeld ziet, wordt de eerste Fully Qualified Domain Name uit het persoonlijke eind punt toegevoegd aan de recordset in de privé-DNS-zone.
 
-      De volledig gekwalificeerde domein namen komen overeen met het patroon:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      De volledig gekwalificeerde domein namen komen overeen met het patroon: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Toont de pagina voor het toevoegen van een type record van een DNS voor de Fully Qualified Domain Name aan het persoonlijke eind punt in de Azure Portal.":::
 

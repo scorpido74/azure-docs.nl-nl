@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144886"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650827"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelingsomgeving voor Azure Machine Learning configureren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ De DSVM als een ontwikkel omgeving gebruiken:
 
     * De Azure Portal:
 
-        * [Een Ubuntu Data Science Virtual Machine maken](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+        * [Een Ubuntu-Data Science Virtual Machine maken](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
         * [Een Windows Data Science Virtual Machine maken](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
 
@@ -185,7 +185,7 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Het duurt enkele minuten voordat de SDK is geïnstalleerd. Zie de [installatie handleiding](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)voor meer informatie over installatie opties.
+   Het duurt enkele minuten voordat de SDK is geïnstalleerd. Zie de [installatie handleiding](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)voor meer informatie over installatie opties.
 
 1. Installeer andere pakketten voor uw machine learning experimenten.
 
@@ -361,7 +361,7 @@ Gebruik om dit bestand uit uw code te gebruiken `ws=Workspace.from_config()` . M
 
 U kunt het configuratie bestand op drie manieren maken:
 
-* **Gebruik  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: om een *config.jsin* het bestand te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt de *config.jsin* naar andere ontwikkel omgevingen downloaden of kopiëren.
+* **Gebruik  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)**: om een *config.jsin* het bestand te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt de *config.jsin* naar andere ontwikkel omgevingen downloaden of kopiëren.
 
 * **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u  **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
 
@@ -389,4 +389,4 @@ U kunt het configuratie bestand op drie manieren maken:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een model](tutorial-train-models-with-aml.md) op Azure machine learning trainen met de MNIST-gegevensset
-- Naslag informatie over de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) weer geven
+- Naslag informatie over de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) weer geven

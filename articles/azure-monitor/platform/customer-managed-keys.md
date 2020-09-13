@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor door de klant beheerde sleutel
+title: Door de klant beheerde sleutel van Azure Monitor
 description: Informatie en stappen voor het configureren van door de klant beheerde sleutel (CMK) voor het versleutelen van gegevens in uw Log Analytics-werk ruimten met behulp van een Azure Key Vault sleutel.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 07/05/2020
-ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 09/09/2020
+ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382947"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657309"
 ---
-# <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
+# <a name="azure-monitor-customer-managed-key"></a>Door de klant beheerde sleutel van Azure Monitor 
 
 Dit artikel bevat achtergrond informatie en stappen voor het configureren van door de klant beheerde sleutels (CMK) voor uw Log Analytics-werk ruimten. Eenmaal geconfigureerd, worden alle gegevens die naar uw werk ruimten worden verzonden, versleuteld met uw Azure Key Vault sleutel.
 
@@ -21,17 +21,15 @@ U wordt aangeraden [beperkingen en beperkingen](#limitationsandconstraints) hier
 
 ## <a name="customer-managed-key-cmk-overview"></a>Overzicht van door de klant beheerde sleutel (CMK)
 
-[Versleuteling bij rest](../../security/fundamentals/encryption-atrest.md)   is een veelvoorkomende privacy-en beveiligings vereiste in organisaties.U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
+[Versleuteling op rest](../../security/fundamentals/encryption-atrest.md) is een veelvoorkomende privacy-en beveiligings vereiste in organisaties. U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
 
-Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worden versleuteld met behulp van door micro soft beheerde sleutels (MMK). Azure Monitor biedt ook een optie voor versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](../../key-vault/general/overview.md) en die toegankelijk is voor opslag met door het systeem toegewezen [beheerde identiteits](../../active-directory/managed-identities-azure-resources/overview.md) verificatie. Deze sleutel (CMK) kan [software of hardware-HSM zijn beveiligd](../../key-vault/general/overview.md).
+Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worden versleuteld met behulp van door micro soft beheerde sleutels (MMK). Azure Monitor biedt ook een optie voor versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](../../key-vault/general/overview.md) en die toegankelijk is voor opslag met door het systeem toegewezen [beheerde identiteits](../../active-directory/managed-identities-azure-resources/overview.md) verificatie. Deze sleutel (CMK) kan [software of hardware-HSM zijn beveiligd](../../key-vault/general/overview.md). Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) werkt.
 
-Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)   werkt.
+De CMK-functionaliteit wordt geleverd op toegewezen Log Analytics clusters en biedt u de mogelijkheid om de toegang tot uw gegevens op elk gewenst moment in te trekken en te beveiligen met behulp van een [lockbox](#customer-lockbox-preview) -besturings element. Om te controleren of we over de vereiste capaciteit beschikken voor een toegewezen cluster in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement op te halen voordat u begint met het configureren van CMK.
 
-Met CMK kunt u de toegang tot uw gegevens beheren en deze op elk gewenst moment intrekken. Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
+Het [prijs model van log Analytics clusters](./manage-cost-storage.md#log-analytics-dedicated-clusters) maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
 
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement op te halen voordat u begint met het configureren van CMK.
-
-Het [prijs model van log Analytics clusters](./manage-cost-storage.md#log-analytics-dedicated-clusters)   maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
+De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hoe CMK werkt in Azure Monitor
 
@@ -65,7 +63,7 @@ De volgende regels zijn van toepassing:
 
 - Uw KEK verlaat uw Key Vault nooit en in het geval van een HSM-sleutel verlaat het nooit de hardware.
 
-- Azure Storage gebruikt de beheerde identiteit die is gekoppeld aan de *cluster* bron om te verifiëren en toegang te krijgen tot Azure Key Vault via Azure Active Directory.
+- Azure Storage gebruikt de beheerde identiteit die is gekoppeld aan de   *cluster* bron om te verifiëren en toegang te krijgen tot Azure Key Vault via Azure Active Directory.
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-inrichtings procedure
 
@@ -83,7 +81,7 @@ De procedure wordt niet ondersteund in Azure Portal en het inrichten wordt uitge
 Bijvoorbeeld:
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -102,12 +100,12 @@ U kunt het token verkrijgen met een van de volgende methoden:
 
 Sommige bewerkingen in deze configuratie procedure worden asynchroon uitgevoerd, omdat deze niet snel kunnen worden voltooid. Wanneer REST-aanvragen in de configuratie worden gebruikt, retourneert de reactie in eerste instantie een HTTP-status code 200 (OK) en koptekst met de eigenschap *Azure-AsyncOperation* wanneer deze wordt geaccepteerd:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
 Vervolgens kunt u de status van de asynchrone bewerking controleren door een GET-aanvraag te verzenden naar de waarde van de *Azure-AsyncOperation-* header:
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -215,7 +213,7 @@ New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Clust
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -246,7 +244,7 @@ Hoewel het inrichten van het Log Analytics cluster a is voltooid, kunt u de inri
 2. Verzend een GET-aanvraag op de *cluster* resource en kijk naar de waarde *provisioningState* . Het is *ProvisioningAccount* tijdens het *inrichten en voltooid wanneer het is voltooid* .
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -309,7 +307,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Cl
 > U kunt de *cluster* resource- *SKU*, *keyVaultProperties* of *billingType* bijwerken met behulp van patch.
 
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -391,7 +389,7 @@ Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" 
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -412,7 +410,7 @@ Opgenomen gegevens worden tijdens de koppelings bewerking opgeslagen die zijn ve
 2. Een [werk ruimte verzenden: aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de gekoppelde werk ruimte heeft een clusterResourceId onder "functies".
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -475,7 +473,7 @@ Wanneer u uw eigen opslag (BYOS) meebrengt en deze aan uw werk ruimte koppelt, w
 * U moet schrijf machtigingen hebben voor de werk ruimte en het opslag account
 * Zorg ervoor dat u uw opslag account in dezelfde regio maakt als uw Log Analytics werk ruimte zich bevindt
 * De *opgeslagen Zoek opdrachten* in opslag worden beschouwd als service artefacten en de indeling ervan kan veranderen
-* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met [Power shell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch)
+* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met  [Power shell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch)
 * De query geschiedenis wordt niet ondersteund en u kunt geen query's zien die u hebt uitgevoerd
 * U kunt één opslag account aan de werk ruimte koppelen voor het opslaan van query's, maar kan worden gebruikt in combi natie van query's met de functie voor *opgeslagen Zoek opdrachten* en *logboek waarschuwingen*
 * Vastmaken aan dash board wordt niet ondersteund
@@ -490,7 +488,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -517,7 +515,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 ```
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -534,6 +532,13 @@ Content-type: application/json
 
 Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
 
+## <a name="customer-lockbox-preview"></a>Klanten-lockbox (preview-versie)
+Met lockbox kunt u de micro soft Engineer-aanvraag voor toegang tot uw gegevens goed keuren of afwijzen tijdens een ondersteunings aanvraag.
+
+In Azure Monitor hebt u dit controle over gegevens in werk ruimten die zijn gekoppeld aan uw Log Analytics toegewezen cluster. Het besturings element lockbox is van toepassing op gegevens die zijn opgeslagen in een Log Analytics toegewezen cluster, waar het wordt geïsoleerd in de opslag accounts van het cluster onder uw abonnement op uw lockbox.  
+
+Meer informatie over [klanten-lockbox voor Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+
 ## <a name="cmk-management"></a>CMK-beheer
 
 - **Alle *cluster* resources voor een resource groep ophalen**
@@ -543,7 +548,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   ```
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
@@ -589,7 +594,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   ```
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
     
@@ -606,7 +611,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   ```
 
   ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   Content-type: application/json
 
@@ -627,7 +632,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Volg de [Update *cluster* resource](#update-cluster-resource-with-key-identifier-details) en geef de nieuwe billingType-waarde op. Houd er rekening mee dat u de volledige REST-aanvraag tekst niet hoeft op te geven en moet de *billingType*bevatten:
 
   ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   Content-type: application/json
 
@@ -649,7 +654,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   ```
 
   ```rest
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
@@ -681,7 +686,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   ```
 
   ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 

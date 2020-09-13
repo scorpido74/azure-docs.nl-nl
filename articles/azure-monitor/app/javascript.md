@@ -4,12 +4,12 @@ description: Het ophalen van de pagina weergave en aantal sessies, webclientgege
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224849"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656942"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Configuratie
 De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, behalve voor `instrumentationKey` .
 
-| Name | Standaard | Beschrijving |
+| Naam | Standaard | Beschrijving |
 |------|---------|-------------|
 | instrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
 | accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
@@ -204,8 +204,7 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 
 Deze SDK verwerkt standaard **geen** route wijzigingen op basis van status die optreden in toepassingen met één pagina. Als u het bijhouden van automatische route wijzigingen wilt inschakelen voor uw toepassing met één pagina, kunt u `enableAutoRouteTracking: true` aan uw installatie configuratie toevoegen.
 
-Op dit moment bieden we een afzonderlijke [reageer-plugin](#react-extensions), die u kunt initialiseren met deze SDK. Ook wordt het bijhouden van route wijzigingen voor u uitgevoerd, evenals [andere gereageerde telemetrie](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
-
+Op dit moment bieden we een afzonderlijke [reageer-plugin](javascript-react-plugin.md), die u kunt initialiseren met deze SDK. Ook wordt het bijhouden van route wijzigingen voor u uitgevoerd, evenals andere gereageerde telemetrie.
 > [!NOTE]
 > Gebruik `enableAutoRouteTracking: true` alleen als u de **niet** -reagerende invoeg toepassing niet gebruikt. Beide kunnen nieuwe page views verzenden wanneer de route verandert. Als beide zijn ingeschakeld, kan dubbele page views worden verzonden.
 
@@ -213,12 +212,13 @@ Op dit moment bieden we een afzonderlijke [reageer-plugin](#react-extensions), d
 
 Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd die een gebruiker aan elke pagina besteed, bijgehouden. Bij elke nieuwe pagina weergave wordt de duur die de gebruiker op de *vorige* pagina heeft besteed, verzonden als een [aangepaste metriek](../platform/metrics-custom-overview.md) met de naam `PageVisitTime` . Deze aangepaste metriek kan worden weer gegeven in de [Metrics Explorer](../platform/metrics-getting-started.md) als een ' op logboek gebaseerde metriek '.
 
-## <a name="react-extensions"></a>Extensies voor reageren
+## <a name="extensions"></a>Extensies
 
 | Extensies |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>Correlatie
 
@@ -315,7 +315,7 @@ Deze versie wordt geleverd met het minimale aantal functies en functionaliteiten
 
 ## <a name="examples"></a>Voorbeelden
 
-Voor voor beelden van uitvoer bare raadpleegt u [Application Insights java script SDK](https://github.com/topics/applicationinsights-js-demo) -voor beelden
+Zie [Application Insights java script SDK](https://github.com/Azure-Samples?q=applicationinsights-js-demo)-voor beelden voor uitvoer bare.
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Een upgrade uitvoeren van de oude versie van Application Insights
 

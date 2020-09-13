@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860951"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657579"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning soevereine Cloud pariteit
 
@@ -96,7 +96,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | aangepaste labels in Azure Machine Learning voor het implementeren van gegevens bladen              | Algemene beschikbaarheid                   | NO                 | NO          |
 | Verdeling AzureML-integratie                                               | Open bare preview       | NO                 | NO          |
 | Coninterpreter-SDK                                                      | Algemene beschikbaarheid                   | JA                | JA         |
-| **Hun** |   | | |
+| **Training** |   | | |
 | Streaming logboek streamen                                              | Algemene beschikbaarheid                   | JA                | JA         |
 | Leer versterking                                                     | Open bare preview       | NO                 | NO          |
 | Gebruikers interface voor experimenten                                                         | Algemene beschikbaarheid                   | JA                | JA         |
@@ -136,7 +136,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 * Voor Azure Machine Learning Compute-instanties is de mogelijkheid om een token te vernieuwen dat langer is dan 24 uur niet beschikbaar in Azure Government.
 * Model profilering biedt geen ondersteuning voor vier Cpu's in de regio US-Arizona.   
 * Voorbeeld notitieblokken werken mogelijk niet in Azure Government als deze toegang nodig heeft tot open bare gegevens.
-* IP-adressen: de CLI-opdracht die wordt gebruikt in de instructies [VNet en geforceerde tunneling](how-to-enable-virtual-network.md#forced-tunneling) retourneert geen IP-bereiken. Gebruik in plaats daarvan de [Azure IP-bereiken en-service tags voor Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
+* IP-adressen: de CLI-opdracht die wordt gebruikt in de instructies [VNet en geforceerde tunneling](how-to-secure-training-vnet.md#forced-tunneling) retourneert geen IP-bereiken. Gebruik in plaats daarvan de [Azure IP-bereiken en-service tags voor Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
 * Voor geplande pijp lijnen bieden we ook een activerings mechanisme op basis van een blob. Dit mechanisme wordt niet ondersteund voor CMK-werk ruimten. Voor het inschakelen van een op BLOB gebaseerde trigger voor CMK-werk ruimten, moet u aanvullende installatie uitvoeren. Zie [een uitvoering van een machine learning-pijp lijn activeren vanuit een logische app](how-to-trigger-published-pipeline.md)voor meer informatie.
 * Firewalls: als u een Azure Government regio gebruikt, voegt u de volgende extra hosts toe aan de firewall instelling:
 
@@ -209,7 +209,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | aangepaste labels in Azure Machine Learning voor het implementeren van gegevens bladen              | Algemene beschikbaarheid               | NO        | N.v.t.        |
 | Verdeling AzureML-integratie                                               | Open bare preview   | NO        | N.v.t.        |
 | Coninterpreter-SDK                                                      | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| **Hun** |    | | |
+| **Training** |    | | |
 | Streaming logboek streamen                                              | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Leer versterking                                                     | Open bare preview   | NO        | N.v.t.        |
 | Gebruikers interface voor experimenten                                                         | Algemene beschikbaarheid               | JA       | N.v.t.        |
@@ -236,7 +236,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * Een voor beeld van een notebook werkt mogelijk niet, als het toegang tot open bare gegevens vereist.
-* IP-adresbereiken: de CLI-opdracht die wordt gebruikt in de instructies voor [geforceerde tunneling](how-to-enable-virtual-network.md#forced-tunneling) , retourneert geen IP-bereiken. Gebruik in plaats daarvan de [Azure IP-bereiken en service tags voor Azure China](https://www.microsoft.com//download/details.aspx?id=57062) .
+* IP-adresbereiken: de CLI-opdracht die wordt gebruikt in de instructies voor [geforceerde tunneling](how-to-secure-training-vnet.md#forced-tunneling) , retourneert geen IP-bereiken. Gebruik in plaats daarvan de [Azure IP-bereiken en service tags voor Azure China](https://www.microsoft.com//download/details.aspx?id=57062) .
 * Azure Machine Learning Compute instances wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling momenteel is ingeschakeld, maar CI wordt wel ondersteund in de volgende implementatie voor de service-uitbrei ding voor alle AML-regio's.
 
 ## <a name="next-steps"></a>Volgende stappen

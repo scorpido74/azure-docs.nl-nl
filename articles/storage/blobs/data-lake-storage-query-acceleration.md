@@ -1,26 +1,23 @@
 ---
-title: Azure Data Lake Storage-query versnelling (preview-versie)
-description: Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyse raamwerken gegevens verwerking aanzienlijk kunnen optimaliseren door alleen de gegevens op te halen die nodig zijn voor een verwerkings bewerking.
+title: Azure Data Lake Storage-query versnelling
+description: Met de functie voor het versnellen van query's kunnen toepassingen en analyse raamwerken gegevens verwerking aanzienlijk optimaliseren door alleen de gegevens op te halen die nodig zijn voor een verwerkings bewerking.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176699"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657650"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage-query versnelling (preview-versie)
+# <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage-query versnelling
 
-Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Storage waarmee toepassingen en analyse raamwerken de gegevens verwerking aanzienlijk kunnen optimaliseren door alleen de gegevens op te halen die nodig zijn voor het uitvoeren van een bepaalde bewerking. Dit vermindert de tijd en verwerkings kracht die nodig is om essentiële inzichten in opgeslagen gegevens te krijgen.
-
-> [!NOTE]
-> De functie voor het versnellen van query's bevindt zich in de open bare preview en is beschikbaar in de regio's Canada-centraal en Frankrijk-centraal. Zie het artikel [bekende problemen](data-lake-storage-known-issues.md) voor een overzicht van de beperkingen. Zie [dit formulier](https://aka.ms/adls/qa-preview-signup)als u zich wilt inschrijven voor de preview-versie.  
+Met de functie voor het versnellen van query's kunnen toepassingen en analyse raamwerken gegevens verwerking aanzienlijk optimaliseren door alleen de gegevens op te halen die nodig zijn voor het uitvoeren van een bepaalde bewerking. Dit vermindert de tijd en verwerkings kracht die nodig is om essentiële inzichten in opgeslagen gegevens te krijgen.
 
 ## <a name="overview"></a>Overzicht
 
@@ -57,7 +54,7 @@ Als u een geaggregeerde waarde wilt berekenen **, haalt de** toepassing de gegev
 
 Hoewel Azure een toonaangevende netwerk bevat, zowel door Voer als latentie, is het onnodig van gegevens over dat netwerk nog steeds kostbaar voor de prestaties van toepassingen. Door de ongewenste gegevens tijdens de opslag aanvraag uit te filteren, elimineert de query versnelling deze kosten.
 
-Daarnaast moet voor de CPU die nodig is voor het parseren en filteren van overbodige gegevens, een groter aantal en grotere Vm's worden ingericht om het werk te kunnen doen. Door deze Compute-belasting over te dragen aan de query versnelling kunnen toepassingen aanzienlijke kosten besparingen realiseren.
+Daarnaast moet de toepassing, die nodig is voor het parseren en filteren van overbodige gegevens, een groter aantal en grotere Vm's inrichten om het werk te kunnen doen. Door deze Compute-belasting over te dragen aan de query versnelling kunnen toepassingen aanzienlijke kosten besparingen realiseren.
 
 ## <a name="applications-that-can-benefit-from-query-acceleration"></a>Toepassingen die kunnen profiteren van de versnelling van query's
 
@@ -77,8 +74,7 @@ Ondanks de wijziging van het facturerings model is het prijs model van de query 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Inschrijvings formulier voor query versnelling](https://aka.ms/adls/qa-preview-signup)    
-- [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration-how-to.md)
-- [Naslag informatie over SQL-taal voor query versnelling (preview-versie)](query-acceleration-sql-reference.md)
+- [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling](data-lake-storage-query-acceleration-how-to.md)
+- [Naslag informatie over SQL-taal voor query versnelling](query-acceleration-sql-reference.md)
 
 

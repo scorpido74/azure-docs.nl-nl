@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 168aec49dc9b14af57df98ebc4c997f8dfb27c9e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228355"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657361"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-beveiligings basislijn voor Azure Machine Learning
 
@@ -28,7 +28,7 @@ De Azure-beveiligings basislijn voor Microsoft Azure Machine Learning bevat aanb
 
 Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren.
 
-- [Het veilig uitvoeren van experimenten en interferentie in een geïsoleerd virtueel netwerk](how-to-enable-virtual-network.md)
+- [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
 
 - [Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Schakel logboeken stroom van de netwerk beveiligings groep in en verzend de logb
 
 - [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 
-- [Netwerk isolatie tijdens de training &amp; met behulp van particuliere virtuele netwerken](how-to-enable-virtual-network.md)
+- [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -94,7 +94,7 @@ Implementeer Azure Firewall op alle netwerk grenzen van de organisatie met op be
 
 **Richt lijnen**: implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen van uw organisatie om schadelijk verkeer te detecteren en/of te blok keren.
 
-Selecteer een aanbieding op de Azure Marketplace die ondersteuning biedt voor ID'S/IP-adressen met Payload-inspectie mogelijkheden.  Als Payload-inspectie geen vereiste is, kan Azure Firewall Threat Intelligence worden gebruikt. Azure Firewall op bedreigingen gebaseerd filteren wordt gebruikt om het verkeer van en naar bekende schadelijke IP-adressen en domeinen te Signa lering en/of te blok keren. De IP-adressen en domeinen zijn afkomstig van de Microsoft Bedreigingsinformatie-feed.
+Selecteer een aanbieding van Azure Marketplace die ondersteuning biedt voor ID'S/IP-adressen met Payload-inspectie mogelijkheden.  Als Payload-inspectie geen vereiste is, kan Azure Firewall Threat Intelligence worden gebruikt. Azure Firewall op bedreigingen gebaseerd filteren wordt gebruikt om het verkeer van en naar bekende schadelijke IP-adressen en domeinen te Signa lering en/of te blok keren. De IP-adressen en domeinen zijn afkomstig van de Microsoft Bedreigingsinformatie-feed.
 
 - [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -122,7 +122,7 @@ Azure Machine Learning-service documenteert een lijst met Service Tags voor de r
 
 - [Voor meer informatie over het gebruik van service Tags](../virtual-network/service-tags-overview.md)
 
-- [Voor Azure Machine Learning virtueel netwerk](how-to-enable-virtual-network.md)
+- [Overzicht van virtuele netwerk isolatie en privacy](how-to-network-security-overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -326,7 +326,7 @@ U kunt ook de Azure AD Power shell-module gebruiken om ad hoc query's uit te voe
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: speciale beheerders accounts gebruiken
 
-**Richt lijnen**: Azure machine learning worden geleverd met drie standaard rollen wanneer een nieuwe werk ruimte wordt gemaakt, maakt standaard werk procedures voor het gebruik van eigenaars accounts.
+**Hulp**: Azure machine learning wordt geleverd met drie standaard rollen wanneer er een nieuwe werk ruimte wordt gemaakt, waardoor er standaard procedures worden gemaakt rondom het gebruik van eigenaars accounts.
 
 U kunt ook een just-in-time-toegang tot beheerders accounts inschakelen met behulp van Azure AD Privileged Identity Management en Azure Resource Manager. 
 
@@ -402,7 +402,7 @@ U kunt ook een just-in-time-toegang tot beheerders accounts inschakelen met behu
  
 De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Voor Machine Learning kunnen rollen worden beheerd op het niveau van de werk ruimte, bijvoorbeeld als de eigenaar toegang heeft tot een werk ruimte, mag de eigenaar geen toegang hebben tot de resource groep die de werk ruimte bevat. Dit biedt meer nauw keurige toegangs controles voor het scheiden van rollen binnen dezelfde resource groep. 
 
-- [Toegang tot een Azure Machine Learning-werk ruimte beheren](how-to-assign-roles.md) 
+- [De toegang tot een Azure Machine Learning-werkruimte beheren](how-to-assign-roles.md) 
  
 - [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -527,7 +527,7 @@ Voor het onderliggende platform, dat wordt beheerd door micro soft, behandelt mi
 
 **Hulp**: Azure machine learning ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor machine learning bronnen goed te keuren. Met Azure AD kunt u op rollen gebaseerd toegangs beheer (RBAC) van Azure gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is.
 
-- [Toegang tot een Azure Machine Learning-werk ruimte beheren](how-to-assign-roles.md)
+- [De toegang tot een Azure Machine Learning-werkruimte beheren](how-to-assign-roles.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -979,7 +979,9 @@ Gebruik Azure Key Vault om geheimen door te geven aan externe uitvoeringen veili
 
 - [Een Key Vault maken](/azure/key-vault/quick-create-portal)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](/azure/key-vault/managed-identity)
+- [Verifiëren bij Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Toegangs beleid voor Key Vault toewijzen](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center bewaking**: Ja
 
@@ -990,7 +992,7 @@ Gebruik Azure Key Vault om geheimen door te geven aan externe uitvoeringen veili
 **Hulp**: Azure machine learning ondersteunt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken. Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder dat u referenties in uw code hoeft op te geven.
 
  
-- [Toegang tot een Azure Machine Learning-werk ruimte beheren](how-to-assign-roles.md)
+- [De toegang tot een Azure Machine Learning-werkruimte beheren](how-to-assign-roles.md)
 
 - [Beheerde identiteiten voor Azure-resources configureren](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 

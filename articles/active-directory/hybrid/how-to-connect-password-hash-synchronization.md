@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358559"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652070"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie implementeren met Azure AD Connect-synchronisatie
 In dit artikel vindt u informatie die u nodig hebt om uw gebruikers wachtwoorden te synchroniseren vanuit een on-premises Active Directory-exemplaar naar een op de cloud gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -32,7 +32,7 @@ Als u uw wacht woord wilt synchroniseren, haalt Azure AD Connect Sync uw wacht w
 
 De werkelijke gegevens stroom van het synchronisatie proces voor wachtwoord hash is vergelijkbaar met de synchronisatie van gebruikers gegevens. Wacht woorden worden echter vaker gesynchroniseerd dan het standaard venster voor adreslijst synchronisatie voor andere kenmerken. Het synchronisatie proces voor wacht woord-hash wordt elke twee minuten uitgevoerd. U kunt de frequentie van dit proces niet wijzigen. Wanneer u een wacht woord synchroniseert, wordt het bestaande Cloud wachtwoord overschreven.
 
-De eerste keer dat u de functie voor het synchroniseren van wacht woord-hashes inschakelt, voert het een initiële synchronisatie uit van de wacht woorden van alle gebruikers in het bereik. U kunt niet expliciet een subset van gebruikers wachtwoorden definiëren die u wilt synchroniseren. Als er echter meerdere connectors zijn, is het mogelijk om wachtwoord hash-synchronisatie uit te scha kelen voor sommige connectors, maar niet voor andere met de cmdlet [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
+De eerste keer dat u de functie voor het synchroniseren van wacht woord-hashes inschakelt, voert het een initiële synchronisatie uit van de wacht woorden van alle gebruikers in het bereik. U kunt niet expliciet een subset van gebruikers wachtwoorden definiëren die u wilt synchroniseren. Als er echter meerdere connectors zijn, is het mogelijk om wachtwoord hash-synchronisatie uit te scha kelen voor sommige connectors, maar niet voor andere met de cmdlet [set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) .
 
 Wanneer u een on-premises wacht woord wijzigt, wordt het bijgewerkte wacht woord gesynchroniseerd, meestal binnen een paar minuten.
 Met de functie voor synchronisatie van wacht woord-hashes worden mislukte synchronisatie pogingen automatisch opnieuw geprobeerd. Als er een fout optreedt tijdens een poging om een wacht woord te synchroniseren, wordt er een fout geregistreerd in de logboeken.
@@ -51,12 +51,12 @@ In de volgende sectie wordt uitgelegd hoe de synchronisatie van wachtwoord-hashe
 
 ![Gedetailleerde wachtwoord stroom](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-1. Op de AD Connect-server wordt elke twee minuten om de wacht woord-hashes (het kenmerk unicodePwd) van een DC aangevraagd.  Deze aanvraag is via het standaard [MS-DRSR-](https://msdn.microsoft.com/library/cc228086.aspx) replicatie protocol dat wordt gebruikt voor het synchroniseren van gegevens tussen dc's. Het service account moet repliceren Directory-wijzigingen hebben en Directory repliceren wijzigt alle AD-machtigingen (die standaard worden verleend tijdens de installatie) om de wacht woord-hashes te verkrijgen.
+1. Op de AD Connect-server wordt elke twee minuten om de wacht woord-hashes (het kenmerk unicodePwd) van een DC aangevraagd.  Deze aanvraag is via het standaard [MS-DRSR-](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) replicatie protocol dat wordt gebruikt voor het synchroniseren van gegevens tussen dc's. Het service account moet repliceren Directory-wijzigingen hebben en Directory repliceren wijzigt alle AD-machtigingen (die standaard worden verleend tijdens de installatie) om de wacht woord-hashes te verkrijgen.
 2. Voordat de domein controller wordt verzonden, wordt de MD4-wachtwoord-hash versleuteld met behulp van een sleutel die een [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) -hash van de RPC-sessie sleutel en een Salt is. Vervolgens wordt het resultaat verzonden naar de synchronisatie agent voor wacht woord-hash via RPC. De domein controller geeft het zout ook door aan de synchronisatie agent door gebruik te maken van het DC-replicatie protocol, zodat de agent de envelop kan ontsleutelen.
-3. Nadat de synchronisatie agent voor wacht woord-hash de versleutelde envelop heeft, gebruikt [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) en het zout om een sleutel te genereren voor het ontsleutelen van de ontvangen gegevens naar de oorspronkelijke MD4-indeling. De synchronisatie agent voor wacht woord-hashes heeft nooit toegang tot het wacht woord voor lees bare tekst. Het gebruik van MD5 van de wacht woord-hash-synchronisatie agent is strikt voor compatibiliteit van replicatie protocollen met de domein controller en wordt alleen gebruikt voor lokale installaties tussen de domein controller en de synchronisatie agent voor wacht woord-hash.
+3. Nadat de synchronisatie agent voor wacht woord-hash de versleutelde envelop heeft, gebruikt [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider?view=netcore-3.1) en het zout om een sleutel te genereren voor het ontsleutelen van de ontvangen gegevens naar de oorspronkelijke MD4-indeling. De synchronisatie agent voor wacht woord-hashes heeft nooit toegang tot het wacht woord voor lees bare tekst. Het gebruik van MD5 van de wacht woord-hash-synchronisatie agent is strikt voor compatibiliteit van replicatie protocollen met de domein controller en wordt alleen gebruikt voor lokale installaties tussen de domein controller en de synchronisatie agent voor wacht woord-hash.
 4. De wacht woord-hash synchronisatie agent breidt de hash van het binaire wacht woord van 16 bytes naar 64 bytes door eerst de hash naar een hexadecimale teken reeks van 32 bytes te converteren en vervolgens deze teken reeks terug te converteren naar binair met UTF-16-code ring.
 5. De synchronisatie agent voor wacht woord-hashes voegt een per gebruiker zout toe, bestaande uit een Salt van 10 bytes lengte, tot het binaire 64-byte om de oorspronkelijke hash verder te beveiligen.
-6. De synchronisatie agent voor wacht woord-hash combineert vervolgens de MD4-hash plus het per gebruiker zout en voert deze in de functie [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iteraties van de hash-algoritme voor het [HMAC-sha256-](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) versleutelen worden gebruikt. 
+6. De synchronisatie agent voor wacht woord-hash combineert vervolgens de MD4-hash plus het per gebruiker zout en voert deze in de functie [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) . 1000 iteraties van de hash-algoritme voor het [HMAC-sha256-](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) versleutelen worden gebruikt. 
 7. De wacht woord-hash synchronisatie agent neemt de resulterende 32-byte hash, voegt zowel het zouten per gebruiker als het aantal SHA256-iteraties toe (voor gebruik door Azure AD). vervolgens verzendt de teken reeks van Azure AD Connect naar Azure AD via TLS.</br> 
 8. Wanneer een gebruiker zich probeert aan te melden bij Azure AD en het wacht woord invoert, wordt het wacht woord uitgevoerd via hetzelfde MD4 + Salt + PBKDF2 + HMAC-SHA256-proces. Als de resulterende hash overeenkomt met de hash die is opgeslagen in azure AD, wordt het juiste wacht woord door de gebruiker ingevoerd en geverifieerd.
 
@@ -132,7 +132,7 @@ De functionaliteit van het tijdelijke wacht woord helpt ervoor te zorgen dat de 
 
 Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerde gebruikers, kunt u de functie *ForcePasswordChangeOnLogOn* inschakelen door de volgende opdracht uit te voeren op uw Azure AD Connect-server:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
+`Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Als u het wacht woord voor de volgende aanmelding wilt wijzigen, moet u het wacht woord op hetzelfde moment wijzigen.  Azure AD Connect wordt de vlag voor het wijzigen van het wacht woord niet automatisch opgehaald. het is een aanvulling op de gedetecteerde wachtwoord wijziging die optreedt tijdens de wachtwoord-hash-synchronisatie.
@@ -142,7 +142,7 @@ Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerd
 
 #### <a name="account-expiration"></a>Account verloop tijd
 
-Als uw organisatie gebruikmaakt van het kenmerk accountExpires als onderdeel van het beheer van gebruikers accounts, wordt dit kenmerk niet gesynchroniseerd met Azure AD. Als gevolg hiervan is een verlopen Active Directory-account in een omgeving geconfigureerd voor het synchroniseren van wachtwoord-hashes nog steeds actief in azure AD. Het is raadzaam dat als het account is verlopen, een werk stroom actie een Power shell-script moet activeren waarmee het Azure AD-account van de gebruiker wordt uitgeschakeld (gebruik de cmdlet [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Als het account is ingeschakeld, moet de Azure AD-instantie daarentegen zijn ingeschakeld.
+Als uw organisatie gebruikmaakt van het kenmerk accountExpires als onderdeel van het beheer van gebruikers accounts, wordt dit kenmerk niet gesynchroniseerd met Azure AD. Als gevolg hiervan is een verlopen Active Directory-account in een omgeving geconfigureerd voor het synchroniseren van wachtwoord-hashes nog steeds actief in azure AD. Het is raadzaam dat als het account is verlopen, een werk stroom actie een Power shell-script moet activeren waarmee het Azure AD-account van de gebruiker wordt uitgeschakeld (gebruik de cmdlet [set-AzureADUser](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) ). Als het account is ingeschakeld, moet de Azure AD-instantie daarentegen zijn ingeschakeld.
 
 ### <a name="overwrite-synchronized-passwords"></a>Gesynchroniseerde wacht woorden overschrijven
 
@@ -213,8 +213,8 @@ Als uw server is vergrendeld volgens de Federal Information Processing Standard 
 1. Ga naar%programfiles%\Azure AD Sync\Bin.
 2. Open miiserver.exe.config.
 3. Ga naar het knoop punt configuratie/runtime aan het einde van het bestand.
-4. Voeg het volgende knoop punt toe:`<enforceFIPSPolicy enabled="false"/>`
-5. Sla uw wijzigingen op.
+4. Voeg het volgende knoop punt toe: `<enforceFIPSPolicy enabled="false"/>`
+5. Sla de wijzigingen op.
 
 Ter referentie is dit fragment er als volgt uit te zien:
 

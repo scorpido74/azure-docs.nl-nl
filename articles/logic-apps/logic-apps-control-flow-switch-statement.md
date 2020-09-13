@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066222"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657449"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-instructies maken waarmee werk stroom acties worden uitgevoerd op basis van specifieke waarden in Azure Logic Apps
 
@@ -27,7 +27,7 @@ Stel dat u een logische app wilt die verschillende stappen uitvoert op basis van
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Als u het voor beeld in dit artikel wilt volgen, [maakt u deze voorbeeld logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-of Office 365 Outlook-account.
+* Als u het voor beeld in dit artikel wilt volgen, [maakt u deze voor beeld-logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-account of een werk-of school account.
 
   1. Wanneer u de actie voor het verzenden van e-mail toevoegt, zoekt en selecteert u in plaats daarvan deze actie: **een goedkeurings-e-mail verzenden**
 
@@ -63,7 +63,7 @@ Stel dat u een logische app wilt die verschillende stappen uitvoert op basis van
 
 1. Voeg deze acties toe aan de bijbehorende cases:
 
-   | Casu # | **Token** | Bewerking |
+   | Casu # | **Token** | Actie |
    |--------|--------------------|--------|
    | Voor beeld 1 | **Goedkeuren** | Voeg de actie Outlook **een E-mail verzenden** toe om alleen gegevens over het RSS-item te verzenden wanneer de fiatteur **goed keuren**heeft geselecteerd. |
    | Case 2 | **Afwijzen** | Voeg de actie Outlook **een E-mail verzenden** toe voor het melden van andere goed keurders die het RSS-item heeft afgewezen. |

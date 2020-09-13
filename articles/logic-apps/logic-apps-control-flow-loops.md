@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495604"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657467"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
 
@@ -40,12 +40,12 @@ Een ' foreach-lus ' herhaalt een of meer acties voor elk matrix item en werkt al
 
 * Als u voorspel bare resultaten wilt krijgen van bewerkingen op variabelen tijdens elke lus iteratie, voert u deze lussen sequentieel uit. Wanneer een lus die gelijktijdig wordt uitgevoerd bijvoorbeeld eindigt, wordt de waarde voor het verhogen, verlagen en toevoegen aan variabele bewerkingen voorspel bare resultaten geretourneerd. Tijdens elke iteratie in de gelijktijdig uitgevoerde lus kunnen deze bewerkingen echter onverwachte resultaten opleveren. 
 
-* Acties in een ' foreach '-lus gebruiken de[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+* Acties in een ' foreach '-lus gebruiken de [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 expressie voor het verwijzen naar en verwerken van elk item in de matrix. Als u gegevens opgeeft die zich niet in een matrix bevindt, mislukt de werk stroom van de logische app. 
 
 In deze voorbeeld logische app wordt een dagelijks overzicht verzonden voor een RSS-feed voor een website. De app gebruikt een ' foreach '-lus die een e-mail verzendt voor elk nieuw item.
 
-1. [Maak deze voorbeeld logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-of Office 365 Outlook-account.
+1. [Maak deze voorbeeld logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) met een Outlook.com-account of een werk-of school account.
 
 2. Voeg tussen de actie RSS-trigger en e-mail bericht verzenden een ' foreach-lus toe. 
 
@@ -189,7 +189,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
    ![Eigenschappen van variabele instellen](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    | -------- | ----- | ----------- |
    | **Naam** | Limiet | De naam van de variabele | 
    | **Type** | Geheel getal | Het gegevens type van uw variabele | 
