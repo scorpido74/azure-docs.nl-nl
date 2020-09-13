@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328323"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483623"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace
 
@@ -25,9 +25,9 @@ Door de instructies in dit artikel te volgen, kunt u uw SaaS-aanbieding in de co
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Wanneer u [uw SaaS-aanbieding](./partner-center-portal/create-new-saas-offer.md) in het partner centrum maakt, kiest u uit een set specifieke oproep naar actie opties die worden weer gegeven in de aanbieding. Uw keuze bepaalt hoe uw aanbieding wordt verwerkt in de commerciële Marketplace. Aanbiedingen die via micro soft worden verkocht, worden aanbiedingen genoemd. De klant wordt namens u in rekening gebracht voor alle transactable-aanbiedingen. Als u ervoor kiest om via micro soft te verkopen en u trans acties voor de Amerikaanse host hebt (de optie **Ja** ), hebt u gekozen voor het maken van een transactable-aanbieding en dit artikel is voor u bedoeld. We raden u aan deze volledig te lezen.
+Wanneer u [uw SaaS-aanbieding](./partner-center-portal/create-new-saas-offer.md) in het partner centrum maakt, kiest u uit een set specifieke aanbiedings opties die worden weer gegeven in de aanbieding. Uw keuze bepaalt hoe uw aanbieding wordt verwerkt in de commerciële Marketplace. Aanbiedingen die via micro soft worden verkocht, worden aanbiedingen genoemd. De klant wordt namens u in rekening gebracht voor alle transactable-aanbiedingen. Als u ervoor kiest om via micro soft te verkopen en u trans acties voor de Amerikaanse host hebt (de optie **Ja** ), hebt u gekozen voor het maken van een transactable-aanbieding en dit artikel is voor u bedoeld. We raden u aan deze volledig te lezen.
 
-Als u ervoor kiest om uw aanbieding alleen op te geven als de commerciële Marketplace en trans acties onafhankelijk (de optie **Nee** ), hebt u drie opties voor de manier waarop potentiële klanten toegang krijgen tot uw aanbieding: nu downloaden (gratis), gratis proef versie en contact met mij opnemen. Als u **nu downloaden (gratis)** of **gratis proef versie**selecteert, is dit artikel niet voor u. In plaats daarvan raadpleegt [u de landings pagina voor uw gratis of proef SaaS-aanbieding bouwen in de commerciële Marketplace](./azure-ad-free-or-trial-landing-page.md) voor meer informatie. Als u **contact opnemen**selecteert, zijn er geen directe Publisher-verantwoordelijkheden. Ga door met het maken van uw aanbieding in het partner centrum.
+Als u ervoor kiest om uw aanbieding alleen via de commerciële Marketplace en trans acties afzonderlijk te verwerken (de optie **Nee** ), hebt u drie opties voor de manier waarop potentiële klanten toegang krijgen tot uw aanbieding: nu downloaden (gratis), gratis proef versie en contact met mij opnemen. Als u **nu downloaden (gratis)** of **gratis proef versie**selecteert, is dit artikel niet voor u. In plaats daarvan raadpleegt [u de landings pagina voor uw gratis of proef SaaS-aanbieding bouwen in de commerciële Marketplace](./azure-ad-free-or-trial-landing-page.md) voor meer informatie. Als u **contact opnemen**selecteert, zijn er geen directe Publisher-verantwoordelijkheden. Ga door met het maken van uw aanbieding in het partner centrum.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Hoe Azure AD werkt met de commerciële Marketplace voor SaaS-aanbiedingen
 
@@ -88,5 +88,6 @@ Proces stappen 7 t/m 9 zijn optionele proces stappen voor gebruikers beheer. Ze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een SaaS-aanbieding maken in de commerciële Marketplace](./partner-center-portal/create-new-saas-offer.md)
-- [Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace](./azure-ad-transactable-saas-landing-page.md)
+- [Bouw de landings pagina voor uw voor transactable SaaS-aanbieding in de commerciële Marketplace](azure-ad-transactable-saas-landing-page.md)
+- [Bouw de landings pagina voor uw gratis of proef SaaS-aanbieding in de commerciële Marketplace](azure-ad-free-or-trial-landing-page.md)
+- [Een SaaS-aanbieding maken in de commerciële Marketplace](create-new-saas-offer.md)

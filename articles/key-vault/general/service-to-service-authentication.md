@@ -5,16 +5,16 @@ keywords: lokale referenties voor Azure Key-kluis verificatie
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/08/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180912"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483334"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
@@ -54,7 +54,7 @@ Voor .NET-toepassingen is de eenvoudigste manier om te werken met een beheerde i
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-U hoeft de verval datum van het token niet te controleren voordat u de `GetAccessTokenAsync` methode aanroept, omdat `AzureServiceTokenProvider` het token in de cache wordt opgeslagen en wordt opgehaald uit Azure AD net vóór de verval datum. 
+De thread-safe- `AzureServiceTokenProvider` klasse slaat het token in de cache op in het geheugen en haalt dit net vóór de verval datum op uit Azure AD. Dit betekent dat u nooit de verval datum van het token hoeft te controleren voordat u de methode aanroept `GetAccessTokenAsync` . 
 
 De `GetAccessTokenAsync` methode vereist een resource-id. Zie [Wat is beheerde identiteiten voor Azure-resources](../../active-directory/msi-overview.md)voor meer informatie over Microsoft Azure Services.
 

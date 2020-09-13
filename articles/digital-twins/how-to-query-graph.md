@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055631"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468705"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -174,6 +174,42 @@ U kunt elk van de bovenstaande typen query's **combi neren** met behulp van comb
 | Van de apparaten die *ruimte 123* heeft, retour neren ze de MxChip-apparaten die de rol van operator gebruiken | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Apparaatdubbels ophalen die een relatie met de naam *contains bevat* met een andere dubbele id en een *id1* | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | Alle kamers van dit room-model ophalen die zijn opgenomen in *floor11* | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>Verwijzing: expressies en voor waarden
+
+Deze sectie bevat Naslag informatie over de Opera tors en functies die beschikbaar zijn bij het schrijven van Azure Digital Apparaatdubbels-query's.
+
+### <a name="operators"></a>Operators
+
+De volgende Opera tors worden ondersteund:
+
+| Familie | Operators |
+| --- | --- |
+| Logisch |EN, OF, NIET |
+| Vergelijking |=,! =, <, >, <=, >= |
+| Contains | IN, NOVER ENKELE |
+
+### <a name="functions"></a>Functions
+
+De volgende typen functies voor controleren en casting worden ondersteund:
+
+| Functie | Beschrijving |
+| -------- | ----------- |
+| IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. Dit wordt alleen ondersteund als de waarde een primitief type is. Primitieve typen bevatten een teken reeks, een Booleaanse waarde of een getal `null` . DateTime, object typen en matrices worden niet ondersteund. |
+| IS_OF_MODEL | Retourneert een Booleaanse waarde die aangeeft of het opgegeven dubbele overeenkomt met het opgegeven model type |
+| IS_BOOL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Boolean is. |
+| IS_NUMBER | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een getal is. |
+| IS_STRING | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een teken reeks is. |
+| IS_NULL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie Null is. |
+| IS_PRIMITIVE | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een primitieve is (teken reeks, Booleaans, numeriek of `null` ). |
+| IS_OBJECT | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een JSON-object is. |
+
+De volgende teken reeks functies worden ondersteund:
+
+| Functie | Beschrijving |
+| -------- | ----------- |
+| STARTS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie begint met de tweede. |
+| ENDS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie eindigt op de tweede. |
 
 ## <a name="run-queries-with-an-api-call"></a>Query's uitvoeren met een API-aanroep
 

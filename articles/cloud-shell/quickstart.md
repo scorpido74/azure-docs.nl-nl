@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513016"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468746"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Quick start voor bash in Azure Cloud Shell
 
@@ -97,5 +97,5 @@ Wanneer u de SSH-verbinding tot stand brengt, wordt de welkomst prompt van Ubunt
 
 ## <a name="next-steps"></a>Volgende stappen
 [Meer informatie over het persistent maken van bestanden voor bash in Cloud Shell](persisting-shell-storage.md) <br>
-[Meer informatie over Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Meer informatie over Azure CLI](/cli/azure/) <br>
 [Meer informatie over Azure Files opslag](../storage/files/storage-files-introduction.md) <br>

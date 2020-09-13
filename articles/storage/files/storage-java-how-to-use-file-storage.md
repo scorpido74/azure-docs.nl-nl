@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b1edc13888a42086cdcd3c3c7756491bd5f43241
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314472"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462595"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Ontwikkelen voor Azure Files met Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -230,6 +230,6 @@ Als u meer wilt weten over andere Azure Storage-Api's, volgt u deze koppelingen.
 * [Azure Storage SDK voor Android](https://github.com/azure/azure-storage-android)
 * [Azure Storage Client SDK-referentie](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog van Azure Storage team](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog van het Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * [Gegevens overdragen met het AzCopy-opdracht regel programma](../common/storage-use-azcopy.md)
 * [Problemen met betrekking tot Azure Files oplossen - Windows](storage-troubleshoot-windows-file-connection-problems.md)

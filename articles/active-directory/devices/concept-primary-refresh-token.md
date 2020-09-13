@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025877"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468603"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwingstoken?
 
@@ -86,6 +86,10 @@ Een PRT wordt op twee verschillende manieren vernieuwd:
 * **Azure AD WAM-invoeg toepassing tijdens app-token aanvragen**: de WAM-invoeg toepassing maakt SSO op Windows 10-apparaten mogelijk door Silent token aanvragen voor toepassingen in te scha kelen. De WAM-invoeg toepassing kan de PRT tijdens deze token aanvragen op twee verschillende manieren vernieuwen:
    * Een app vraagt WAM voor een toegangs token op de achtergrond, maar er is geen vernieuwings token beschikbaar voor die app. In dit geval gebruikt WAM de PRT om een token voor de app aan te vragen en wordt er een nieuwe PRT in het antwoord teruggestuurd.
    * Een app vraagt WAM aan voor een toegangs token, maar de PRT is ongeldig of er is extra autorisatie vereist voor Azure AD (bijvoorbeeld Azure Multi-Factor Authentication). In dit scenario initieert WAM een interactieve aanmelding waarbij de gebruiker opnieuw moet worden geverifieerd of dat er aanvullende verificatie wordt gegeven en er een nieuwe PRT wordt uitgegeven voor een geslaagde authenticatie.
+
+In een AD FS-omgeving is het niet nodig om de PRT te vernieuwen. PRT-verlenging vereist alleen/ADFS/Services/Trust/2005/usernamemixed-en/ADFS/Services/Trust/13/usernamemixed-eind punten die zijn ingeschakeld op de proxy met behulp van het WS-Trust-protocol.
+
+Windows-transport eindpunten zijn alleen vereist voor wachtwoord verificatie wanneer een wacht woord wordt gewijzigd, niet voor PRT-vernieuwing.
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 

@@ -2,13 +2,13 @@
 title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002773"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468552"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
@@ -151,7 +151,7 @@ Als u een beheer groep in de Tenant wilt richten, voegt u een geneste implementa
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ Voor Tenant implementaties gelden enkele belang rijke aandachtspunten bij het ge
 * De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
 * De functie [Subscription ()](template-functions-resource.md#subscription) wordt **niet** ondersteund.
 * De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
-* Gebruik de functie [tenantResourceId ()](template-functions-resource.md#tenantresourceid) om de resource-id op te halen voor resources die worden geïmplementeerd op Tenant niveau.
+* Gebruik [resourceId ()](template-functions-resource.md#resourceid) niet om de resource-id op te halen voor resources die worden geïmplementeerd op Tenant niveau.
 
-  Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
+  Gebruik in plaats daarvan de functie [tenantResourceId ()](template-functions-resource.md#tenantresourceid) .
+
+  Als u bijvoorbeeld de bron-ID voor een ingebouwde beleids definitie wilt ophalen, gebruikt u:
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512976"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469453"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Snelstartgids voor Power shell in Azure Cloud Shell
 
@@ -29,7 +29,7 @@ Dit document bevat informatie over het gebruik van Power shell in Cloud Shell in
 
    ![Scherm afbeelding die laat zien hoe u Azure Cloud Shell start vanuit de Azure Portal.](media/quickstart-powershell/shell-icon.png)
 
-2. Selecteer de Power shell-omgeving in de vervolg keuzelijst en u zich in azure Drive bevindt`(Azure:)`
+2. Selecteer de Power shell-omgeving in de vervolg keuzelijst en u zich in azure Drive bevindt `(Azure:)`
 
    ![Scherm afbeelding die laat zien hoe u de Power shell-omgeving voor de Azure Cloud Shell selecteert.](media/quickstart-powershell/environment-ps.png)
 
@@ -61,7 +61,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`naar uw voorkeurs abonnement
+ 2. `cd` naar uw voorkeurs abonnement
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -261,7 +261,7 @@ Als u via SSH wilt verifiëren bij servers of Vm's, genereert u het persoonlijke
 
 ### <a name="using-ssh"></a>SSH gebruiken
 
-Volg de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) om een nieuwe VM-configuratie te maken met behulp van Azure PowerShell-cmdlets.
+Volg de instructies [hier](../virtual-machines/linux/quick-create-powershell.md) om een nieuwe VM-configuratie te maken met behulp van Azure PowerShell-cmdlets.
 Voordat `New-AzVM` u zich aanmeldt om de implementatie te starten, moet u de open bare SSH-sleutel toevoegen aan de VM-configuratie.
 De zojuist gemaakte virtuele machine bevat de open bare sleutel op de `~\.ssh\authorized_keys` locatie en schakelt daarom de SSH-sessie met referentie-gratis in voor de virtuele machine.
 
@@ -345,6 +345,6 @@ Typ `exit` om de sessie te beëindigen.
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/
 [customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
-[profile]: https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles
-[azmount]: https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows
+[profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
+[azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

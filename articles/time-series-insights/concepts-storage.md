@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855114"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483266"
 ---
 # <a name="data-storage"></a>Gegevensopslag
 
@@ -24,7 +24,7 @@ Wanneer u een Azure Time Series Insights Gen2-omgeving maakt, maakt u twee Azure
 * Een Azure Time Series Insights Gen2-omgeving die kan worden geconfigureerd voor warme gegevens opslag.
 * Een Azure Storage account voor koude gegevens opslag.
 
-Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series-query-api's](./time-series-insights-update-tsq.md) en de [Azure time series Insights TSI-Verkenner](./time-series-insights-update-explorer.md). Uw warme archief bevat recente gegevens binnen de [Bewaar periode](./time-series-insights-update-plan.md#the-preview-environment) die is geselecteerd bij het maken van de Azure time series Insights Gen2-omgeving.
+Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series-query-api's](./time-series-insights-update-tsq.md) en de [Azure time series Insights Explorer](./time-series-insights-update-explorer.md). Uw warme archief bevat recente gegevens binnen de [Bewaar periode](./time-series-insights-update-plan.md#the-preview-environment) die is geselecteerd bij het maken van de Azure time series Insights Gen2-omgeving.
 
 Met Azure Time Series Insights Gen2 worden uw koude Store-gegevens opgeslagen in Azure Blob-opslag in de [Parquet-bestands indeling](#parquet-file-format-and-folder-structure). Azure Time Series Insights Gen2 beheert deze koude Store-gegevens uitsluitend, maar u kunt deze rechtstreeks als standaard Parquet-bestanden lezen.
 
@@ -58,7 +58,7 @@ Om de query prestaties en de beschik baarheid van gegevens te garanderen, moet u
 
 #### <a name="accessing-cold-store-data"></a>Toegang tot koude Store-gegevens
 
-Naast de toegang tot uw gegevens vanuit de [Azure time series INSIGHTS TSI Explorer](./time-series-insights-update-explorer.md) en [Time Series query-api's](./time-series-insights-update-tsq.md)kunt u ook rechtstreeks toegang krijgen tot uw gegevens vanuit de Parquet-bestanden die zijn opgeslagen in het koel huis. U kunt bijvoorbeeld gegevens in een Jupyter-notebook lezen, transformeren en opschonen en deze vervolgens gebruiken om uw Azure Machine Learning model te trainen in dezelfde Spark-werk stroom.
+U hebt niet alleen toegang tot uw gegevens via de Api's van de [Azure time series Insights Explorer](./time-series-insights-update-explorer.md) -en [Time Series-query](./time-series-insights-update-tsq.md), maar u kunt ook uw gegevens rechtstreeks openen vanuit de Parquet-bestanden die zijn opgeslagen in het koel huis. U kunt bijvoorbeeld gegevens in een Jupyter-notebook lezen, transformeren en opschonen en deze vervolgens gebruiken om uw Azure Machine Learning model te trainen in dezelfde Spark-werk stroom.
 
 Als u gegevens rechtstreeks vanuit uw Azure Storage-account wilt openen, moet u lees toegang hebben tot het account dat wordt gebruikt om uw Azure Time Series Insights Gen2-gegevens op te slaan. U kunt vervolgens geselecteerde gegevens lezen op basis van de aanmaak tijd van het Parquet-bestand dat zich bevindt in de `PT=Time` map die hieronder wordt beschreven in de sectie [Parquet-bestands indeling](#parquet-file-format-and-folder-structure) .  Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie over het inschakelen van lees toegang tot uw opslag account.
 

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55360ef295ff80b700b059d053203458f9f384db
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76274932"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469079"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Probleem oplossing voor Azure Red Hat open Shift
 
@@ -30,7 +30,7 @@ Op dit moment `Microsoft.ContainerService/openShiftManagedClusters` wordt de res
 
 ## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Als een cluster wordt gemaakt, treedt er een fout op die geen geregistreerde resource provider heeft gevonden
 
-Als er een fout optreedt bij het maken van een cluster `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` , maakt u deel uit van het voor beeld en moet u de [gereserveerde instanties van Azure virtual machines aanschaffen](https://aka.ms/openshift/buy) om het algemeen beschik bare product te gebruiken. Een reserve Ring vermindert uw uitgaven door vooraf te betalen voor volledig beheerde Azure-Services. Raadpleeg [*Wat is Azure Reservations*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) voor meer informatie over reserve ringen en hoe u geld bespaart.
+Als er een fout optreedt bij het maken van een cluster `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview` , maakt u deel uit van het voor beeld en moet u de [gereserveerde instanties van Azure virtual machines aanschaffen](https://aka.ms/openshift/buy) om het algemeen beschik bare product te gebruiken. Een reserve Ring vermindert uw uitgaven door vooraf te betalen voor volledig beheerde Azure-Services. Raadpleeg [*Wat is Azure Reservations*](../cost-management-billing/reservations/save-compute-costs-reservations.md) voor meer informatie over reserve ringen en hoe u geld bespaart.
 
 ## <a name="next-steps"></a>Volgende stappen
 

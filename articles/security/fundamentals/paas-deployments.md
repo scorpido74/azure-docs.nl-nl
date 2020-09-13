@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461698"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462357"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -101,11 +101,11 @@ De volgende tabel geeft een overzicht van de STRIDE-bedreigingen en biedt enkele
 | Bedreiging | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
 | --- | --- | --- |
 | Adresvervalsing (spoofing) | Verificatie | HTTPS-verbindingen vereisen. |
-| Knoeien | Gegevensintegriteit | Valideer TLS/SSL-certificaten. |
-| Ging | Niet-afwijzing | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
-| Vrijgeven van informatie | Vertrouwelijkheid | Versleutel gevoelige gegevens op rest door gebruik te maken van [service certificaten](/rest/api/appservice/certificates). |
+| Manipulatie | Integriteit | Valideer TLS/SSL-certificaten. |
+| Weerlegbaarheid | Niet-weerlegbaarheid | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
+| Openbaarmaking van informatie | Vertrouwelijkheid | Versleutel gevoelige gegevens op rest door gebruik te maken van [service certificaten](/rest/api/appservice/certificates). |
 | Denial of Service | Beschikbaarheid | Bewaak de prestatie gegevens voor mogelijke denial-of-service-voor waarden. Verbindings filters implementeren. |
-| Uitbrei ding van bevoegdheden | Autorisatie | Gebruik [privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
+| Verhoging van bevoegdheden | Autorisatie | Gebruik [privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
 
 ## <a name="develop-on-azure-app-service"></a>Ontwikkelen op Azure App Service
 [Azure app service](/azure/app-service/overview) is een Paas-Aanbieding waarmee u web-en mobiele apps kunt maken voor elk platform of apparaat en overal verbinding kunt maken met gegevens, in de Cloud of on-premises. App Service bevat de web-en mobiele mogelijkheden die eerder afzonderlijk zijn geleverd als Azure-websites en Azure Mobile Services. Deze service bevat ook nieuwe mogelijkheden voor het automatiseren van bedrijfsprocessen en het hosten van cloud-API's. Als één geïntegreerde service biedt App Service een uitgebreide set mogelijkheden voor web-, mobiele en integratie scenario's.
@@ -151,10 +151,10 @@ Fuzz testen is een methode voor het vinden van programma fouten (code fouten) do
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel zijn we gericht op beveiligings voordelen van een Azure PaaS-implementatie en aanbevolen beveiligings procedures voor Cloud toepassingen. Vervolgens leert u aanbevolen procedures voor het beveiligen van uw PaaS-webtoepassingen en mobiele oplossingen met behulp van specifieke Azure-Services. We beginnen met Azure App Service, Azure SQL Database en Azure SQL Data Warehouse en Azure Storage. Wanneer artikelen over aanbevolen procedures voor andere Azure-Services beschikbaar worden, worden koppelingen in de volgende lijst weer gegeven:
+In dit artikel zijn we gericht op beveiligings voordelen van een Azure PaaS-implementatie en aanbevolen beveiligings procedures voor Cloud toepassingen. Vervolgens leert u aanbevolen procedures voor het beveiligen van uw PaaS-webtoepassingen en mobiele oplossingen met behulp van specifieke Azure-Services. We beginnen met Azure App Service, Azure SQL Database en Azure Synapse Analytics en Azure Storage. Wanneer artikelen over aanbevolen procedures voor andere Azure-Services beschikbaar worden, worden koppelingen in de volgende lijst weer gegeven:
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL Database en Azure SQL Data Warehouse](paas-applications-using-sql.md)
+- [Azure SQL Database en Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache voor Redis
 - Azure Service Bus
@@ -166,4 +166,4 @@ Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-an
 
 De volgende resources zijn beschikbaar om meer algemene informatie te geven over Azure-beveiliging en gerelateerde micro soft-Services:
 * [Blog van het Azure-beveiligings team](https://blogs.msdn.microsoft.com/azuresecurity/) : voor actuele informatie over de nieuwste Azure-beveiliging
-* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail worden verzonden naarsecure@microsoft.com
+* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail worden verzonden naar secure@microsoft.com
