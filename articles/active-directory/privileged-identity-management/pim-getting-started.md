@@ -14,18 +14,18 @@ ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815994"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567347"
 ---
 # <a name="start-using-privileged-identity-management"></a>Aan de slag met Privileged Identity Management
 
 In dit artikel wordt beschreven hoe u Privileged Identity Management (PIM) inschakelt en aan de slag gaat met het gebruik ervan.
 
-Gebruik Privileged Identity Management (PIM) om toegang te beheren, te controleren en te controleren binnen uw Azure Active Directory Azure AD-organisatie. Met PIM kunt u zo nodig en just-in-time toegang bieden tot Azure-resources, Azure AD-resources en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune.
+Gebruik Privileged Identity Management (PIM) om toegang te beheren, te controleren en te controleren binnen uw Azure Active Directory Azure AD-organisatie. Met PIM kunt u zo nodig en just-in-time toegang bieden tot Azure-resources, Azure AD-resources en andere micro soft-onlineservices, zoals Microsoft 365 of Microsoft Intune.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,7 +72,7 @@ Zodra Privileged Identity Management is ingesteld, kunt u uw weg ontdekken.
 
 Voeg een PIM-tegel toe aan uw Azure Portal dash board om het openen van Privileged Identity Management gemakkelijker te maken.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **alle services** en zoek de **Azure AD privileged Identity Management** -service.
 

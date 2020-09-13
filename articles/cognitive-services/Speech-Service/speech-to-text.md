@@ -1,25 +1,28 @@
 ---
-title: Spraak-naar-tekst-spraak-service
+title: Overzicht van spraak naar tekst-spraak service
 titleSuffix: Azure Cognitive Services
-description: Met de functie voor spraak naar tekst kunt u transcriptie in realtime omzetten in tekst. Uw toepassingen, hulpprogram ma's of apparaten kunnen deze tekst invoer gebruiken, weer geven en actie ondernemen. Deze service werkt probleemloos met de functies voor tekst naar spraak (spraak synthese) en spraak omzetting.
+description: Met spraak-naar-tekst-software kunt u transcriptie in realtime omzetten in tekst. Uw toepassingen, hulpprogram ma's of apparaten kunnen deze tekst invoer gebruiken, weer geven en actie ondernemen. Dit artikel bevat een overzicht van de voor delen en mogelijkheden van de service voor spraak naar tekst.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: cog-serv-seo-aug-2020
+keywords: spraak naar tekst, spraak naar tekst software
+ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640409"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569217"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
 
-Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime transcriptie van audio-streams in tekst. Uw toepassingen, hulpprogram ma's of apparaten kunnen deze tekst gebruiken, weer geven en actie ondernemen als invoer van de opdracht. Deze service wordt aangestuurd door dezelfde herkennings technologie die door micro soft wordt gebruikt voor Cortana en Office-producten. Het werkt probleemloos met de <a href="./speech-translation.md" target="_blank">Vertaal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -en <a href="./text-to-speech.md" target="_blank">tekst-naar- <span class="docon docon-navigate-external x-hidden-focus"></span> spraak-</a> service aanbiedingen. Zie [ondersteunde talen](language-support.md#speech-to-text)voor een volledige lijst met beschik bare spraak-naar-tekst talen.
+In dit overzicht vindt u meer informatie over de voor delen en mogelijkheden van de service voor spraak naar tekst.
+Spraak-naar-tekst, ook wel spraak herkenning genoemd, biedt realtime transcriptie van audio-streams in tekst. Uw toepassingen, hulpprogram ma's of apparaten kunnen deze tekst gebruiken, weer geven en actie ondernemen als invoer van de opdracht. Deze service wordt aangestuurd door dezelfde herkennings technologie die door micro soft wordt gebruikt voor Cortana en Office-producten. Het werkt probleemloos met de <a href="./speech-translation.md" target="_blank">Vertaal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -en <a href="./text-to-speech.md" target="_blank">tekst-naar- <span class="docon docon-navigate-external x-hidden-focus"></span> spraak-</a> service aanbiedingen. Zie [ondersteunde talen](language-support.md#speech-to-text)voor een volledige lijst met beschik bare spraak-naar-tekst talen.
 
 De spraak-naar-tekst-service is standaard ingesteld op het gebruik van het universele-taal model. Dit model is getraind met gegevens van micro soft en wordt geïmplementeerd in de Cloud. Het is optimaal voor gespreks-en dicteer scenario's. Wanneer u spraak naar tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal-en uitspraak modellen maken en trainen. Aanpassing is handig voor het adresseren van omgevings lawaai of branchespecifieke woorden lijsten.
 
@@ -31,28 +34,16 @@ Met aanvullende referentie tekst als invoer, biedt spraak-naar-tekst-service ook
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>Aan de slag met spraak naar tekst
+## <a name="get-started"></a>Aan de slag
 
-De spraak-naar-tekst-service is beschikbaar via de [Speech-SDK](speech-sdk.md). Er zijn verschillende algemene scenario's beschikbaar als Quick starts in verschillende talen en platformen:
+Bekijk de [Snelstartgids](get-started-speech-to-text.md) om aan de slag te gaan met spraak naar tekst. De service is beschikbaar via de [Speech SDK](speech-sdk.md), het [rest API](rest-speech-to-text.md#pronunciation-assessment-parameters)en de [Speech cli](spx-overview.md).
 
- - [Snelstartgids: spraak herkennen met microfoon invoer](quickstarts/speech-to-text-from-microphone.md)
- - [Quick Start: spraak herkennen vanuit een bestand](quickstarts/speech-to-text-from-file.md)
- - [Quickstart: Spraak herkennen die is opgeslagen in blobopslag](quickstarts/from-blob.md)
+## <a name="sample-code"></a>Voorbeeldcode
 
-Zie [rest api's](rest-speech-to-text.md)als u de spraak-naar-tekst rest-service wilt gebruiken.
-
- - [Snelstartgids: beoordeling van de uitspraak met referentie-invoer](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>Zelf studies en voorbeeld code
-
-Nadat u de spraak service hebt bekeken, kunt u de zelf studie uitproberen die u leert hoe u de intenties kunt herkennen vanuit spraak met behulp van de Speech SDK en LUIS.
-
-- [Zelf studie: intenties herkennen vanuit spraak met de Speech SDK en LUIS met behulp van C #](how-to-recognize-intents-from-speech-csharp.md)
-
-Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voor beelden hebben betrekking op veelvoorkomende scenario's, zoals het lezen van audio van een bestand of stream, continue en eenmalige herkenning en het werken met aangepaste modellen.
+Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voorbeelden hebben betrekking op veelvoorkomende scenario's, zoals het lezen van audio van een bestand of stream, continue en eenmalige herkenning en het werken met aangepaste modellen.
 
 - [Voor beelden van spraak naar tekst (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Voor beelden van batch transcriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Voorbeelden van batchtranscriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 - [Evaluatie voorbeelden van uitspraak (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>Aanpassing
@@ -61,11 +52,11 @@ Naast het standaard spraak service model kunt u aangepaste modellen maken. Aanpa
 
 ## <a name="batch-transcription"></a>Batchtranscriptie
 
-Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt naar audio bestanden met een SAS-URI (Shared Access Signature) verwijzen en transcriptie-resultaten asynchroon ontvangen. Zie de [procedure](batch-transcription.md) voor meer informatie over het gebruik van de batch transcriptie API.
+Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt met een SAS-URI (Shared Access Signature) naar audiobestanden verwijzen en de transcriptieresultaten asynchroon ontvangen. Zie de [procedure](batch-transcription.md) voor meer informatie over het gebruik van de batch transcriptie API.
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+- [Verkrijg gratis een spraakserviceabonnementssleutel](get-started.md)
 - [De Speech SDK ophalen](speech-sdk.md)

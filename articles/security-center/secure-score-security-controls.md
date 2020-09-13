@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272277"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567621"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Verbeterde beveiligde Score in Azure Security Center
 
@@ -45,17 +45,17 @@ De pagina beveiligde Score van Security Center omvat:
 > Eerdere versies van Security Center toegewezen punten op het niveau van aanbeveling: wanneer u een aanbeveling voor een enkele resource hebt hersteld, is uw beveiligde Score verbeterd. Vandaag de dag is uw score alleen verbeterd als u *alle* aanbevelingen voor één resource in een besturings element herstelt. Uw score wordt dus alleen verbeterd wanneer u de beveiliging van een resource hebt verbeterd.
 
 
-## <a name="accessing-your-secure-score"></a>Toegang tot uw beveiligde Score
+## <a name="access-your-secure-score"></a>Toegang tot uw beveiligde Score
 
 U kunt uw algemene beveiligde Score vinden, evenals uw score per abonnement, via de Azure Portal of via een programma met de Azure Security Center REST API.
 
-### <a name="getting-your-secure-score-from-the-portal"></a>Uw beveiligde Score ophalen uit de portal
+### <a name="get-your-secure-score-from-the-portal"></a>Uw beveiligde Score ophalen uit de portal
 
 Security Center wordt uw score prominent weer gegeven in de portal: het is het eerste wat wordt weer gegeven op de pagina overzicht. Als u op de pagina speciale beveiligde Score klikt, ziet u de score die is opgesplitst per abonnement. Klik op één abonnement om de gedetailleerde lijst met aanbevelingen met prioriteit weer te geven, en de mogelijke impact die ze herstellen op de Score van het abonnement.
 
 ![Algemene beveiligde Score zoals weer gegeven in de portal](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>Uw beveiligde Score ophalen uit de REST API
+### <a name="get-your-secure-score-from-the-rest-api"></a>Uw beveiligde Score ophalen uit de REST API
 
 U krijgt toegang tot uw score via de [API voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel in preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportage mechanisme te bouwen van uw beveiligde scores in de loop van de tijd. U kunt bijvoorbeeld de API **beveiligde scores** gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API **besturings elementen voor beveiligde scores** gebruiken om de beveiligings controles en de huidige Score van uw abonnementen weer te geven.
 
@@ -91,13 +91,22 @@ De maximum score voor dit besturings element, het Toep assen van systeem updates
 |**Beveiligingsscore**<br>Meerdere abonnementen|<br>De huidige scores voor alle resources in alle abonnementen worden toegevoegd en de berekening is dan hetzelfde als voor één abonnement<br><br>Wanneer er meerdere abonnementen worden weer gegeven, evalueert de beveiligde score alle resources binnen het ingeschakelde beleid en worden de gecombineerde impact van elk van de maximale scores van het beveiligings beheer gegroepeerd.<br>![Beveiligde score voor meerdere abonnementen waarbij alle besturings elementen zijn ingeschakeld](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>De gecombineerde score is **geen** gemiddelde. in plaats daarvan is het de geëvalueerde postuur van de status van alle resources in alle abonnementen.<br>Ook als u naar de pagina aanbevelingen gaat en de potentiële punten die beschikbaar zijn, opneemt, zult u merken dat het verschil tussen de huidige Score (24) en de Maxi maal beschik bare Score (60) is.|
 ||||
 
-## <a name="improving-your-secure-score"></a>Uw beveiligde Score verbeteren
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Welke aanbevelingen zijn opgenomen in de berekeningen van de veilige Score?
+
+Alleen ingebouwde aanbevelingen hebben invloed op de beveiligde Score.
+
+Daarnaast worden de aanbevelingen die als **Preview** zijn gemarkeerd, niet opgenomen in de berekeningen van uw beveiligde Score. Ze moeten, waar mogelijk, nog steeds worden hersteld, zodat wanneer de preview-periode afloopt dat ze bijdragen aan uw score.
+
+Een voor beeld van een voor beeld van een preview-aanbeveling:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de vlag preview":::
+
+
+## <a name="improve-your-secure-score"></a>Uw secure score verbeteren
 
 Als u uw beveiligde score wilt verbeteren, kunt u de aanbevelingen voor beveiliging herstellen in uw lijst met aanbevelingen. U kunt elke aanbeveling hand matig herstellen voor elke resource, of met behulp van de **oplossing voor snel oplossen!** optie (indien beschikbaar) om een herbemiddeling toe te passen voor een aanbeveling voor een groep resources snel. Zie [aanbevelingen herstellen](security-center-remediate-recommendations.md)voor meer informatie.
 
->[!IMPORTANT]
-> Alleen ingebouwde aanbevelingen hebben invloed op de beveiligde Score.
-
+Een andere manier om uw score te verbeteren en ervoor te zorgen dat uw gebruikers geen resources maken die een negatieve invloed hebben op uw score, is door de opties voor afdwingen en weigeren te configureren voor de relevante aanbevelingen. Meer informatie over het [voor komen van onjuiste configuraties met het afdwingen/weigeren van aanbevelingen](prevent-misconfigurations.md).
 
 ## <a name="security-controls-and-their-recommendations"></a>Beveiligings controles en hun aanbevelingen
 
@@ -144,7 +153,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Beveiligings configuraties herstellen (maximum score 4)</p></strong>Onjuist geconfigureerde IT-assets hebben een hoger risico op aanvallen. Basis acties voor beveiliging worden vaak verg eten wanneer er activa worden geïmplementeerd en er deadlines aan moeten worden voldaan. Onjuiste configuratie van beveiliging kan elk niveau in de infra structuur zijn: van de besturings systemen en netwerk apparaten tot cloud resources.<br>Azure Security Center vergelijkt voortdurend de configuratie van uw resources met vereisten in de industrie normen,-voor schriften en-benchmarks. Wanneer u de relevante ' nalevings pakketten ' (standaarden en basis lijnen) hebt geconfigureerd die van toepassing zijn op uw organisatie, zullen eventuele hiaten resulteren in beveiligings aanbevelingen die de CCEID omvatten en een uitleg van de potentiële beveiligings impact.<br>Veelgebruikte pakketten zijn <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security Bench Mark</a> en <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure basis Bench Mark-benchmark versie 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>- Pod-beveiligings beleid moet worden gedefinieerd op Kubernetes-Services<br>- Beveiligings problemen in container beveiligings configuraties moeten worden hersteld<br>- Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld<br>- Beveiligings problemen in de beveiligings configuratie van de schaal sets van virtuele machines moeten worden hersteld<br>- Bewakings agent moet worden geïnstalleerd op uw virtuele machines<br>- Bewakings agent moet op uw computers zijn geïnstalleerd<br>- Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-machines (preview)<br>- Log Analytics agent moet worden geïnstalleerd op uw op Linux gebaseerde Azure-Arc-machines (preview)<br>- Bewakings agent moet worden geïnstalleerd op virtuele-machine schaal sets<br>- Controle agent status problemen moeten worden opgelost op uw computers</td>
+    <td class="tg-lboi"; width=55%>- Beveiligings problemen in container beveiligings configuraties moeten worden hersteld<br>- Beveiligings problemen in de beveiligings configuratie op uw computers moeten worden hersteld<br>- Beveiligings problemen in de beveiligings configuratie van de schaal sets van virtuele machines moeten worden hersteld<br>- Bewakings agent moet worden geïnstalleerd op uw virtuele machines<br>- Bewakings agent moet op uw computers zijn geïnstalleerd<br>- Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-machines (preview)<br>- Log Analytics agent moet worden geïnstalleerd op uw op Linux gebaseerde Azure-Arc-machines (preview)<br>- Bewakings agent moet worden geïnstalleerd op virtuele-machine schaal sets<br>- Controle agent status problemen moeten worden opgelost op uw computers</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Onbevoegde netwerk toegang beperken (maximale score 4)</p></strong>Eind punten in een organisatie bieden een directe verbinding van uw virtuele netwerk naar ondersteunde Azure-Services. Virtuele machines in een subnet kunnen communiceren met alle resources. Als u de communicatie van en naar resources binnen een subnet wilt beperken, maakt u een netwerk beveiligings groep en koppelt u deze aan het subnet. Organisaties kunnen het aantal niet-geautoriseerde verkeer beperken en beveiligen door binnenkomende en uitgaande regels te maken.</td>

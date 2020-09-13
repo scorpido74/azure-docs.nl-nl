@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81422022"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570120"
 ---
 Het plaatsen van Vm's in één regio vermindert de fysieke afstand tussen de exemplaren. Als u ze in één beschikbaarheids zone plaatst, worden deze ook fysiek dichter bij elkaar gebracht. Naarmate de Azure-footprint groeit, kan één beschikbaarheids zone echter meerdere fysieke data centers omvatten, wat kan leiden tot een netwerk latentie die van invloed is op uw toepassing. 
 
@@ -34,7 +34,7 @@ Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om 
 
 Een proximity-plaatsings groep is een nieuw resource type in Azure. U moet er een maken voordat u deze met andere resources kunt gebruiken. Zodra de app is gemaakt, kan deze worden gebruikt met virtuele machines, beschikbaarheids sets of virtuele-machine schaal sets. U geeft een proximity-plaatsings groep op bij het maken van reken resources die de Proximity-groeps-ID opgeven. 
 
-U kunt een bestaande resource ook verplaatsen naar een plaatsings groep voor nabijheid. Wanneer u een resource naar een plaatsings groep verplaatst, moet u de activa eerst stoppen (toewijzing ongedaan maken), omdat deze mogelijk opnieuw wordt geïmplementeerd in een ander Data Center in de regio. 
+U kunt een bestaande resource ook verplaatsen naar een plaatsings groep voor nabijheid. Wanneer u een resource naar een plaatsings groep verplaatst, moet u de activa eerst stoppen (toewijzing ongedaan maken), omdat deze mogelijk opnieuw wordt geïmplementeerd in een ander Data Center in de regio om te voldoen aan de beperking van de co-locatie. 
 
 In het geval van beschikbaarheids sets en virtuele-machine schaal sets moet u de Proximity-plaatsings groep instellen op het resource niveau in plaats van de afzonderlijke virtuele machines. 
 

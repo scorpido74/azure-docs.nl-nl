@@ -4,12 +4,12 @@ description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt do
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258423"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595560"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -137,13 +137,15 @@ Deze functie wordt momenteel ondersteund voor platform metrieken (geen aangepast
 
 | Service | Open bare Azure | Overheid | China |
 |:--------|:--------|:--------|:--------|
-| Virtuele machines  | **Ja** | Nee | Nee |
+| Virtuele machines<sup>1</sup>  | **Ja** | Nee | Nee |
 | SQL server-data bases | **Ja** | **Ja** | **Ja** |
 | Elastische Pools van SQL Server | **Ja** | **Ja** | **Ja** |
 | NetApp-bestands capaciteits groepen | **Ja** | **Ja** | **Ja** |
 | Volumes met NetApp-bestanden | **Ja** | **Ja** | **Ja** |
 | Sleutelkluizen | **Ja** | **Ja** | **Ja** |
 | Data Box edge-apparaten | **Ja** | **Ja** | **Ja** |
+
+<sup>1</sup> wordt niet ondersteund voor metrische gegevens van het netwerk van de virtuele machine (netwerk in totaal, totale netwerk verkeer, inkomende stromen, uitgaande stromen, maximum aanmaak frequentie voor inkomende stromen, maximum aanmaak snelheden voor uitgaande stromen).
 
 U kunt op een van de drie manieren het bewakings bereik opgeven voor één metrische waarschuwings regel. Met virtuele machines kunt u bijvoorbeeld het bereik opgeven als:  
 

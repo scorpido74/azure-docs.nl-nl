@@ -3,12 +3,12 @@ title: Bewaking en logboek registratie-Azure
 description: Dit artikel bevat een overzicht van live video analyses op IoT Edge bewaking en logboek registratie.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934290"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567551"
 ---
 # <a name="monitoring-and-logging"></a>Bewaking en registratie
 
@@ -20,7 +20,8 @@ U leert ook hoe u de logboeken kunt beheren die door de module worden gegenereer
 
 Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens op basis van de volgende taxonomie.
 
-![Live video Analytics op IoT Edge telemetrie-schema](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie van gebeurtenissen":::
 
 * Operationeel: gebeurtenissen die worden gegenereerd als onderdeel van acties die worden uitgevoerd door een gebruiker of tijdens de uitvoering van een [Media grafiek](media-graph-concept.md).
    
@@ -71,6 +72,7 @@ Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens o
    * Voorbeelden:
       
       Gedetecteerde bewegingen (hieronder), het afleiden van resultaten.
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens o
      }
    }
    ```
+
 De gebeurtenissen die door de module worden gegenereerd, worden naar de [IOT Edge-hub](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)verzonden en van daaruit kan worden doorgestuurd naar andere bestemmingen. 
 
 ### <a name="timestamps-in-analytic-events"></a>Tijds tempels in analytische gebeurtenissen
+
 Zoals hierboven aangegeven, hebben gebeurtenissen die als onderdeel van de video analyse worden gegenereerd, een tijds tempel gekoppeld. Als u [de live video hebt opgenomen](video-recording-concept.md) als onderdeel van de grafiek topologie, helpt deze tijds tempel u bij het zoeken naar waar in de opgenomen video dat bepaalde gebeurtenis heeft plaatsgevonden. Hieronder vindt u de richt lijnen voor het toewijzen van de tijds tempel in een analytische gebeurtenis aan de tijd lijn van de video die is opgenomen in een [Azure media service-Asset](terminology.md#asset).
 
 Haal eerst de `eventTime` waarde op. Gebruik deze waarde in een [tijds bereik filter](playback-recordings-how-to.md#time-range-filters) om een geschikt deel van de opname op te halen. U kunt bijvoorbeeld video ophalen die 30 seconden eerder begint `eventTime` en eindigt 30 seconden daarna. In het bovenstaande voor beeld, waarbij `eventTime` 2020-05-12T23:33:09.381 z, een aanvraag voor een HLS-manifest voor het venster +/-30s ziet er ongeveer als volgt uit:
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 De URL hierboven retourneert een ' so-' [Master-afspeel lijst](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)met url's voor afspeel lijsten met media. De afspeel lijst van media bevat vermeldingen zoals de volgende:
 
 ```
@@ -164,7 +170,7 @@ Bij elke gebeurtenis, wanneer deze via de IoT Hub wordt waargenomen, wordt een a
 |onderwerp| applicationProperty |tekenreeks|    Azure Resource Manager pad voor het Media Services-account.|
 |Onderwerp|   applicationProperty |tekenreeks|    Subpad van de entiteit die de gebeurtenis verstuurt.|
 |eventTime| applicationProperty|    tekenreeks| Tijdstip waarop de gebeurtenis is gegenereerd.|
-|eventType| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
+|Type| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
 |body|body  |object|    Bepaalde gebeurtenis gegevens.|
 |dataVersion    |applicationProperty|   tekenreeks  |{Major}. Secundair|
 

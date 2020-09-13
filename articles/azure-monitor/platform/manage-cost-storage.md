@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933661"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595648"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -160,13 +160,16 @@ Het is ook mogelijk om verschillende Bewaar instellingen op te geven voor afzond
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
 ```
 
-Houd er rekening mee dat het gegevens type (tabel) hoofdletter gevoelig is.  Als u de huidige instellingen voor het bewaren van gegevens typen van een bepaald gegevens type (in dit voor beeld SecurityEvent) wilt ophalen, gebruikt u:
+Houd er rekening mee dat het gegevens type (tabel) hoofdletter gevoelig is.  Als u de huidige Bewaar instellingen per gegevens type van een bepaald gegevens type (in dit voor beeld SecurityEvent) wilt ophalen, gebruikt u:
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-Als u de huidige instellingen voor het bewaren van gegevens type wilt ophalen voor alle gegevens typen in uw werk ruimte, laat u gewoon het specifieke gegevens type weg, bijvoorbeeld:
+> [!NOTE]
+> Bewaren wordt alleen geretourneerd voor een gegevens type als de retentie expliciet is ingesteld.  Gegevens typen waarvoor geen retentie is ingesteld (en waardoor de Bewaar periode voor de werk ruimte wordt overgenomen), retour neren niets van deze aanroep. 
+
+Als u de huidige Bewaar instellingen per gegevens type wilt ophalen voor alle gegevens typen in uw werk ruimte waarvoor de Bewaar periode per gegevens type is ingesteld, laat u gewoon het specifieke gegevens type weg, bijvoorbeeld:
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
@@ -575,9 +578,9 @@ Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens vo
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
+   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Als u een differetn wilt 
    - **Waarschuwingslogica** is **Gebaseerd op het ** *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
-   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** tot elke *1440* minuten om één keer per dag uit te voeren.
+   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** voor elke *1440* minutesto één keer per dag uitgevoerd.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
    - **Naam** aan *factureer bare gegevens volume groter dan 50 GB in 24 uur*
    - **Ernst** op *Waarschuwing*
@@ -604,7 +607,7 @@ Wanneer het verzamelen van gegevens stopt, is de OperationStatus **Waarschuwing*
 |Reden voor verzamelen stopt| Oplossing| 
 |-----------------------|---------|
 |Het dagelijkse kapje van uw werk ruimte is bereikt|Wacht tot de verzameling automatisch opnieuw wordt opgestart of verhoog de dagelijkse gegevens volume limiet die wordt beschreven in het maximale dagelijkse gegevens volume beheren. De tijd voor het opnieuw instellen van dagelijkse limieten wordt weer gegeven op de pagina **dagelijks Cap** . |
-| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume van toepassing op werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze drempel geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](diagnostic-settings.md), [Gegevensverzamelaar-API](data-collector-api.md) of agents. Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging in uw werkruimte aanvragen door een ondersteuningsaanvraag te openen. Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met waarschuwings logica op basis van het aantal resultaten dat groter is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten. Percentage van opname volume bereikt 80% van de drempel waarde: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Drempel waarde van inslikken volume bereikt: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | De standaardlimiet voor opnamevolumes voor gegevens die worden verzonden vanuit Azure-resources met Diagnostische instellingen is ongeveer 6 GB/minuut per werkruimte. Dit is een geschatte waarde, omdat de werkelijke grootte kan variëren tussen gegevenstypen afhankelijk van de lengte van het logboek en de compressieverhouding. Deze limiet geldt niet voor gegevens die worden verzonden via agents of de Data Collector-API. Als u gegevens met een hogere snelheid naar één werkruimte verzendt, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de bewerkingstabel in uw werkruimte, terwijl de drempel nog steeds wordt overschreden. Als uw opnamevolume de limiet blijft overschrijden of als u verwacht deze binnenkort te bereiken, kunt u een verhoging voor uw werkruimte aanvragen door een e-mail te verzenden naar LAIngestionRate@microsoft.com of een ondersteuningsaanvraag te openen. De gebeurtenis waarnaar u moet zoeken die aangeeft dat er een limiet voor de gegevensopname is, kan worden gevonden met de query `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"`. |
 |De dagelijkse limiet van de verouderde gratis prijs categorie is bereikt |Wacht tot de volgende dag voor het automatisch opnieuw opstarten van de verzameling of de prijs categorie is gewijzigd.|
 |Het Azure-abonnement bevindt zich in een onderbroken staat vanwege:<br> De gratis proef versie is beëindigd<br> Azure Pass is verlopen<br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)|Overstappen op een betaald abonnement<br> Limiet verwijderen of wachten tot de limiet is ingesteld|
 

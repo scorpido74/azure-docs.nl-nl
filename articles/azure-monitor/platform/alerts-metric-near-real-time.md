@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661313"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595577"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -44,15 +44,15 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. ClassicStorage/Storage accounts/queueServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/tableServices | Ja | Nee | |
 |Micro soft. CognitiveServices/accounts | Ja | Nee | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Virtuele-machineschaalsets](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.Compute/virtualMachines | Yes | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Schaal sets voor virtuele machines](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Micro soft. ContainerInstance/containerGroups | Ja| Nee | [Containergroepen](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Micro soft. ContainerRegistry/registers | Nee | Nee | [Container registers](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Micro soft. container service/managedClusters | Ja | Nee | [Beheerde clusters](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Micro soft. DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Micro soft. DataFactory/datafactories| Ja| Nee | [Gegevens fabrieken v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
 |Micro soft. DataFactory/fabrieken |Ja | Nee | [Gegevens fabrieken v2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Micro soft. DataShare/accounts | Ja | Nee | |
+|Microsoft.DataShare/accounts | Ja | Nee | |
 |Microsoft.DBforMariaDB/servers | Nee | Nee | [DB voor MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | Nee | Nee |[DB voor MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
 |Micro soft. DBforPostgreSQL/flexibleServers | Ja | Nee | |
@@ -73,7 +73,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft.-sleutel kluis/-kluizen | Ja |Ja |[Kluizen](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Micro soft. Kusto/clusters | Ja |Nee |[Data Explorer clusters](./metrics-supported.md#microsoftkustoclusters)|
 |Micro soft. Logic/integrationServiceEnvironments | Ja | Nee |[Integratie service omgevingen](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
-|Micro soft. Logic/werk stromen | Nee | Nee |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft.Logic/workflows | Nee | Nee |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
 |Micro soft. MachineLearningServices/werk ruimten | Ja | Nee | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Micro soft. Maps/accounts | Ja | Nee | [Maps-accounts](./metrics-supported.md#microsoftmapsaccounts) |
 |Micro soft. Media/Media Services | Nee | Nee | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
@@ -83,13 +83,13 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. Network/applicationGateways | Ja | Nee | [Toepassings gateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Micro soft. Network/azurefirewalls | Ja | Nee | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Micro soft. Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
-|Micro soft. Network/expressRouteCircuits | N.v.t. | Nee |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/expressRouteCircuits | N.v.t. | No |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways| Nee | Nee | |
 |Micro soft. Network/privateEndpoints| Nee | Nee | |
 |Micro soft. Network/privateLinkServices| Nee | Nee |
 |Micro soft. Network/publicipaddresses | Nee | Nee |[Openbare IP-adressen](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Micro soft. Network/trafficManagerProfiles | Ja | Nee | [Traffic Manager-profielen](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft.Network/trafficManagerProfiles | Ja | Nee | [Traffic Manager-profielen](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.OperationalInsights/workspaces| Ja | Nee | [Log Analytics-werkruimten](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Micro soft. peering/peering | Ja | Nee | [Peerings](./metrics-supported.md#microsoftpeeringpeerings) |
 |Micro soft. peering/peeringServices | Ja | Nee | [Peering Services](./metrics-supported.md#microsoftpeeringpeeringservices) |
@@ -112,7 +112,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. web/sites | Ja | Nee | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) en [functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Micro soft. web/sites/sleuven | Ja | Nee | [App Service sleuven](./metrics-supported.md#microsoftwebsitesslots)|
 
-<sup>1</sup> alleen ondersteund voor platform metrieken (geen aangepaste metrische gegevens)
+<sup>1</sup> wordt niet ondersteund voor metrische gegevens van het netwerk van de virtuele machine (netwerk in totaal, totale netwerk uitgaand, inkomende stromen, uitgaande stromen, maximum aanmaak frequentie voor inkomende stromen, maximum aanmaak snelheden voor uitgaande stromen) en aangepaste metrische gegevens.
 
 ## <a name="payload-schema"></a>Payload-schema
 

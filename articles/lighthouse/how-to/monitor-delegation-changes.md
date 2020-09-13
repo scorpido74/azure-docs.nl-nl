@@ -1,14 +1,14 @@
 ---
 title: Overdrachts wijzigingen in uw beheer Tenant bewaken
 description: Meer informatie over het bewaken van overdrachts activiteiten van klant tenants naar uw beheer Tenant.
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589738"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567602"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Overdrachts wijzigingen in uw beheer Tenant bewaken
 
@@ -48,6 +48,9 @@ Omdat dit een breed toegangs niveau is, raden we u aan deze rol toe te wijzen aa
 - Zorg ervoor dat deze service-principal geen toegang heeft tot de resources van een gedelegeerde klant.
 - [Gebruik een certificaat om het te verifiëren](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) en [veilig op te slaan in azure Key Vault](../../key-vault/general/best-practices.md).
 - Beperk de gebruikers die toegang hebben tot namens de Service-Principal.
+
+> [!NOTE]
+> U kunt ook de ingebouwde rol voor controle van Azure in het hoofd bereik toewijzen aan afzonderlijke gebruikers of aan gebruikers groepen. Dit kan handig zijn als u wilt dat een gebruiker [overdrachts gegevens rechtstreeks in het Azure Portal kan weer geven](#view-delegation-changes-in-the-azure-portal). Als u dit doet, moet u er rekening mee houden dat dit een breed toegangs niveau is dat moet worden beperkt tot het minste aantal gebruikers dat mogelijk is.
 
 Gebruik een van de volgende methoden om de toewijzing van het hoofd bereik te maken.
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , dezelfde processen gebruiken.
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Wijzigingen in de delegatie weer geven in de Azure Portal
+
+Gebruikers aan wie de bewakings lezer Azure ingebouwde rol in het hoofd bereik is toegewezen, kunnen wijzigingen in de overdracht rechtstreeks in het Azure Portal weer geven.
+
+1. Ga naar de pagina **mijn klanten** en selecteer vervolgens **activiteiten logboek** in het navigatie menu aan de linkerkant.
+1. Zorg ervoor dat **Directory-activiteit** is geselecteerd in het filter aan de bovenkant van het scherm.
+
+Er wordt een lijst met overdrachts wijzigingen weer gegeven. U kunt **kolommen bewerken** selecteren om de **status**, **gebeurtenis categorie**, **tijd**, **tijds tempel**, **abonnement**en gebeurtenis te tonen of te verbergen, **geïnitieerd door**, **resource groep**, **resource type**en **resource** waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
