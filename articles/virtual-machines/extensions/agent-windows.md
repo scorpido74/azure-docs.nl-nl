@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 42470df5391a976e8023467758d2a3fd0890883e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041473"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612828"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
 De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
@@ -70,7 +70,7 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Vereisten
 
-- De Windows VM-agent moet ten minste Windows Server 2008 (64-bits) uitvoeren, met .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor Virtual Machine agents in azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- De Windows VM-agent moet ten minste Windows Server 2008 SP2 (64-bits) uitvoeren, met .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor Virtual Machine agents in azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - Zorg ervoor dat uw virtuele machine toegang heeft tot het IP-adres 168.63.129.16. Zie [Wat is IP-adres 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)? voor meer informatie.
 

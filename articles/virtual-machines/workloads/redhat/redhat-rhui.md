@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869215"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612515"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat update-infra structuur voor Red Hat Enterprise Linux Vm's op aanvraag in azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -89,11 +89,11 @@ Op het moment van deze schrijf bewerking is de EUS-ondersteuning voor RHEL <= 7,
 * RHEL 7,6 EUS-ondersteuning eindigt op 31 mei 2021
 * RHEL 7,7 EUS-ondersteuning eindigt op 30 augustus 2021
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Een RHEL-VM overschakelen naar EUS (versie-vergren delen naar een specifieke secundaire versie)
-Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaalde kleine release (uitvoeren als root):
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>Overschakelen van een RHEL VM 7. x naar EUS (versie-vergren delen naar een specifieke secundaire versie)
+Gebruik de volgende instructies om een RHEL 7. x-VM te vergren delen naar een bepaalde kleine release (uitvoeren als root):
 
 >[!NOTE]
-> Dit geldt alleen voor RHEL-versies waarvoor EUS beschikbaar is. Op het moment van deze schrijf bewerking omvat dit RHEL 7.2-7,7. Meer informatie vindt u op de pagina [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata) .
+> Dit geldt alleen voor RHEL 7. x-versies waarvoor EUS beschikbaar is. Op het moment van deze schrijf bewerking omvat dit RHEL 7.2-7,7. Meer informatie vindt u op de pagina [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata) .
 
 1. Niet-EUS-opslag plaatsen uitschakelen:
     ```bash
@@ -111,14 +111,52 @@ Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaald
     ```
 
     >[!NOTE]
-    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. `echo 7.5 > /etc/yum/vars/releasever`Uw RHEL-versie wordt bijvoorbeeld vergrendeld op RHEL 7,5
+    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. `echo 7.5 > /etc/yum/vars/releasever`Uw RHEL-versie wordt bijvoorbeeld vergrendeld op RHEL 7,5.
 
 1. Uw RHEL-VM bijwerken
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Overschakelen van een RHEL-VM naar een niet-EUS (een versie vergrendeling verwijderen)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>Overschakelen van een RHEL VM 8. x naar EUS (versie-vergren delen naar een specifieke secundaire versie)
+Gebruik de volgende instructies om een RHEL 8. x-VM te vergren delen met een bepaalde kleine release (uitvoeren als root):
+
+>[!NOTE]
+> Dit geldt alleen voor RHEL 8. x-versies waarvoor EUS beschikbaar is. Op het moment van deze schrijf bewerking omvat dit RHEL 8.1-8.2. Meer informatie vindt u op de pagina [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata) .
+
+1. Niet-EUS-opslag plaatsen uitschakelen:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. Het EUS opslag plaatsen-configuratie bestand ophalen:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. EUS opslag plaatsen toevoegen:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. De variabele vergren delen `releasever` (als basis uitvoeren):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > Met de bovenstaande instructie wordt de RHEL-secundaire release vergrendeld op de huidige secundaire release. Voer een specifieke kleine release in als u een upgrade wilt uitvoeren en wilt vergren delen naar een latere secundaire versie die niet het meest recent is. `echo 8.1 > /etc/yum/vars/releasever`Uw RHEL-versie wordt bijvoorbeeld vergrendeld op RHEL 8,1.
+
+    >[!NOTE]
+    > Als er machtigings problemen zijn voor toegang tot de releasever, kunt u het bestand bewerken met behulp van nano/etc/yum/Vars/releaseve en de installatie kopie versie Details toevoegen en opslaan (Ctrl + o en vervolgens op ENTER drukken en vervolgens op CTRL + x).  
+
+1. Uw RHEL-VM bijwerken
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>Overschakelen van een RHEL 7. x-VM naar een niet-EUS (een versie vergrendeling verwijderen)
 Voer het volgende uit als root:
 1. Verwijder het `releasever` bestand:
     ```bash
@@ -135,6 +173,33 @@ Voer het volgende uit als root:
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. Uw RHEL-VM bijwerken
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>Een RHEL 8. x-VM weer overschakelen naar een niet-EUS (een versie vergrendeling verwijderen)
+Voer het volgende uit als root:
+1. Verwijder het `releasever` bestand:
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. EUS opslag plaatsen uitschakelen:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. Het normale opslag plaatsen-configuratie bestand ophalen:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. EUS opslag plaatsen toevoegen:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. Uw RHEL-VM bijwerken
     ```bash
     sudo yum update

@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635785"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612626"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Gegevens kopiëren van MySQL met behulp van Azure Data Factory
+
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-onprem-mysql-connector.md)
 > * [Huidige versie](connector-mysql.md)
@@ -34,7 +35,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze MySQL-Connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de MySQL-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
@@ -66,7 +67,9 @@ Een typische connection string is `Server=<server>;Port=<port>;Database=<databas
 
 | Eigenschap | Beschrijving | Opties | Vereist |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Met deze optie geeft u op of het stuur programma TLS-versleuteling en verificatie gebruikt bij het verbinden met MySQL. Bijvoorbeeld,`SSLMode=<0/1/2/3/4>`| UITGESCHAKELD (0)/voor keur (1) **(standaard)** /vereist (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| SSLMode | Met deze optie geeft u op of het stuur programma TLS-versleuteling en verificatie gebruikt bij het verbinden met MySQL. Bijvoorbeeld,  `SSLMode=<0/1/2/3/4>` .| UITGESCHAKELD (0)/voor keur (1) **(standaard)** /vereist (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| SSLCert | Het volledige pad en de naam van een. pem-bestand met het SSL-certificaat dat wordt gebruikt om de identiteit van de client te bewijzen. <br/> Gebruik de eigenschap om een persoonlijke sleutel op te geven voor het versleutelen van dit certificaat voordat het naar de server wordt verzonden `SSLKey` .| | Ja, als u twee richtings-SSL-verificatie gebruikt. |
+| SSLKey | Het volledige pad en de naam van een bestand met de persoonlijke sleutel die wordt gebruikt voor het versleutelen van het certificaat aan de client zijde tijdens SSL-verificatie in twee richtingen.|  | Ja, als u twee richtings-SSL-verificatie gebruikt. |
 | UseSystemTrustStore | Met deze optie geeft u aan of u een CA-certificaat wilt gebruiken uit het archief van het systeem vertrouwen of van een opgegeven PEM-bestand. Bijvoorbeeld `UseSystemTrustStore=<0/1>;`| Ingeschakeld (1)/uitgeschakeld (0) **(standaard)** | No |
 
 **Voorbeeld:**

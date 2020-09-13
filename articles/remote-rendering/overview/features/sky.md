@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013636"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613746"
 ---
 # <a name="sky-reflections"></a>Luchtreflecties
 
@@ -28,8 +28,8 @@ In de onderstaande afbeeldingen ziet u de resultaten van de verlichting van vers
 
 | Ruw  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Niet-Metal  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Niet-Metal  | ![Dielectric, grofheid = 0](media/dielectric-0.png)   | ![Dielectric, ruwheid = 0,25](media/dielectric-0.25.png)  | ![Dielectric, ruwheid = 0.5](media/dielectric-0.5.png)  | ![Dielectric, ruw = 0,75](media/dielectric-0.75.png)  | ![Dielectric, ruwheid = 1](media/dielectric-1.png)  |
+| Metal      | ![Metaal, ruw = 0](media/metallic-0.png)  | ![Metaal, ruw = 0,25](media/metallic-0.25.png)    | ![Metaal, ruw = 0.5](media/metallic-0.5.png)    | ![Metaal, ruw = 0,75](media/metallic-0.75.png)    | ![Metaal, ruw = 1](media/metallic-1.png)    |
 
 Zie het hoofd stuk [materialen](../../concepts/materials.md) voor meer informatie over het belichtings model.
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -121,20 +121,25 @@ Externe rendering van Azure biedt een aantal ingebouwde omgevings kaarten die al
 
 |Id                         | Beschrijving                                              | Zien                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Diverse Stripe-lampen, heldere basis verlichting    | ![Autoshoper](media/autoshop.png)
-|builtin://BoilerRoom               | Lichte instelling voor licht binnenshuis, meerdere venster verlichting      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Afwijkende kleur verlichting in de instelling gemiddelde licht binnenshuis  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Gemiddeld helder omgevings zaal lampje                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | De instelling Dim binnen en licht-donker contrast              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Dagrijlicht-omgevings lampje, helder venster dun     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Donkergrijze lucht en grond met een groot aantal omringende lichten   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Helder zonlicht en schaduw contrast                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Scherp licht wissen met een lichte verlichting            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Zon en scha duwen die gemiddeld variëren                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Zons ondergangs lampje bijna Dusk                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Helder, lush-groen en wit licht tonen, lichter gekleurd vlak | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Daytime met helder omgevings licht                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | Hetzelfde als TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Diverse Stripe-lampen, heldere basis verlichting    | ![Skybox gebruikt voor het licht van een object](media/autoshop.png)
+|builtin://BoilerRoom               | Lichte instelling voor licht binnenshuis, meerdere venster verlichting      | ![BoilerRoom Skybox gebruikt voor het licht van een object](media/boiler-room.png)
+|builtin://ColorfulStudio           | Afwijkende kleur verlichting in de instelling gemiddelde licht binnenshuis  | ![ColorfulStudio Skybox gebruikt voor het licht van een object](media/colorful-studio.png)
+|builtin://Hangar                   | Gemiddeld helder omgevings zaal lampje                     | ![SmallHangar Skybox gebruikt voor het licht van een object](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | De instelling Dim binnen en licht-donker contrast              | ![IndustrialPipeAndValve Skybox gebruikt voor het licht van een object](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Dagrijlicht-omgevings lampje, helder venster dun     | ![Lebombo Skybox gebruikt voor het licht van een object](media/lebombo.png)
+|builtin://SataraNight              | Donkergrijze lucht en grond met een groot aantal omringende lichten   | ![SataraNight Skybox gebruikt voor het licht van een object](media/satara-night.png)
+|builtin://SunnyVondelpark          | Helder zonlicht en schaduw contrast                      | ![SunnyVondelpark Skybox gebruikt voor het licht van een object](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Scherp licht wissen met een lichte verlichting            | ![Syferfontein Skybox gebruikt voor het licht van een object](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Zon en scha duwen die gemiddeld variëren                         | ![TearsOfSteelBridge Skybox gebruikt voor het licht van een object](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Zons ondergangs lampje bijna Dusk                    | ![VeniceSunset Skybox gebruikt voor het licht van een object](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Helder, lush-groen en wit licht tonen, lichter gekleurd vlak | ![WhippleCreekRegionalPark Skybox gebruikt voor het licht van een object](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Daytime met helder omgevings licht                 | ![WinterRiver Skybox gebruikt voor het licht van een object](media/winter-river.png)
+|builtin://DefaultSky               | Hetzelfde als TearsOfSteelBridge                               | ![DefaultSky Skybox gebruikt voor het licht van een object](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. SkyReflectionSettings eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: SkyReflectionSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Volgende stappen
 

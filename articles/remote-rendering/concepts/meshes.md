@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681764"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613844"
 ---
 # <a name="meshes"></a>Meshes
 
@@ -37,6 +37,13 @@ De `MeshComponent` klasse wordt gebruikt om een exemplaar van een netresource te
 * **Materialen:** De matrix van materialen die zijn opgegeven in het netonderdeel zelf. De matrix heeft altijd dezelfde lengte als de *materiaal* matrix op de netresource. Materialen die niet worden overschreven van de mesh-standaard, worden in deze matrix ingesteld op *Null* .
 
 * **UsedMaterials:** De matrix met werkelijk gebruikte materialen voor elk subnet. Is gelijk aan de gegevens in de *materiaal* matrix, voor waarden die niet null zijn. Anders bevat deze de waarde uit de *materiaal* matrix in de mesh-instantie.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C#-mesh klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [C# MeshComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [Klasse C++-mesh](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
+* [C++ MeshComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071445"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595798"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Een toepassings gateway met TLS-beëindiging maken met behulp van Azure PowerShell
 
@@ -22,13 +22,12 @@ U kunt Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te m
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een zelfondertekend certificaat maken
-> * Een netwerk instellen
-> * Een toepassingsgateway maken met behulp van het certificaat
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+* Een zelfondertekend certificaat maken
+* Een netwerk instellen
+* Een toepassingsgateway maken met behulp van het certificaat
+* Een virtuele-machineschaalset maken met de standaard back-endgroep
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

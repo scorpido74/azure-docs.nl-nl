@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 288cebc4d4097ff40b618e2f1976039359458ecf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 98f9bf02b910749a98ae8cd6e409ee733c2e2dcc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719016"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595747"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -31,9 +31,8 @@ Herstel na nood geval van fysieke servers | Replicatie van on-premises fysieke W
 
 **Server** | **Vereisten** | **Details**
 --- | --- | ---
-vCenter Server | Versie 7,0, 6,7, 6,5, 6,0 of 5,5 | U wordt aangeraden een vCenter-Server te gebruiken in uw implementatie voor herstel na nood gevallen.
-vSphere-hosts | Versie 7,0, 6,7, 6,5, 6,0 of 5,5 | We raden aan dat vSphere-hosts en vCenter-servers zich in hetzelfde netwerk bevinden als de proces server. Standaard wordt de proces server uitgevoerd op de configuratie server. [Meer informatie](vmware-physical-azure-config-process-server-overview.md).
-
+vCenter Server | Versie 7,0 & volgende updates in deze versie, 6,7, 6,5, 6,0 of 5,5 | U wordt aangeraden een vCenter-Server te gebruiken in uw implementatie voor herstel na nood gevallen.
+vSphere-hosts | Versie 7,0 & volgende updates in deze versie, 6,7, 6,5, 6,0 of 5,5 | We raden aan dat vSphere-hosts en vCenter-servers zich in hetzelfde netwerk bevinden als de proces server. Standaard wordt de proces server uitgevoerd op de configuratie server. [Meer informatie](vmware-physical-azure-config-process-server-overview.md).
 
 ## <a name="site-recovery-configuration-server"></a>Configuratie Server Site Recovery
 
@@ -153,8 +152,8 @@ Bestandssystemen | ext3, ext4, XFS, BTRFS (voor waarden die van toepassing zijn 
 Inrichting van Logical Volume Management (LVM)| Brede inrichting-Ja <br></br> Thin Provisioning-no
 Volume manager | -LVM wordt ondersteund.<br/> -/boot op LVM wordt ondersteund door [Update pakket 31](https://support.microsoft.com/help/4478871/) (versie 9,20 van de Mobility-service). Het wordt niet ondersteund in eerdere versies van de Mobility-service.<br/> -Meerdere besturingssysteem schijven worden niet ondersteund.
 Geparavirtualiseerde-opslag apparaten | Apparaten die zijn geëxporteerd door geparavirtualiseerde stuurprogramma's worden niet ondersteund.
-Meerdere wacht rijen voor blok-i/o-apparaten | Wordt niet ondersteund.
-Fysieke servers met de HP CCISS-opslag controller | Wordt niet ondersteund.
+Meerdere wacht rijen voor blok-i/o-apparaten | Niet ondersteund.
+Fysieke servers met de HP CCISS-opslag controller | Niet ondersteund.
 Naamgevings regels voor apparaten en koppel punten | De naam van het apparaat of het koppel punt moet uniek zijn.<br/> Zorg ervoor dat er geen twee apparaten/koppel punten bestaan uit hoofdletter gevoelige namen. Het benoemen van apparaten voor dezelfde VM als *device1* en *device1* wordt niet ondersteund.
 Mappen | Als u een versie van de Mobility-service hebt die ouder is dan versie 9,20 (uitgebracht in [Update pakket 31](https://support.microsoft.com/help/4478871/)), gelden de volgende beperkingen:<br/><br/> -Deze directory's (indien ingesteld als afzonderlijke partities/bestands systemen) moeten zich op dezelfde besturingssysteem schijf op de bron server bevindt:/(root),/boot,/usr,/usr/local,/var,/etc.</br> -De/boot-map moet zich op een schijf partitie benemen en geen LVM-volume zijn.<br/><br/> Vanaf versie 9,20 worden deze beperkingen niet toegepast. 
 Opstartmap | -Opstart schijven mag zich in GPT-partitie-indeling. Dit is een beperking van Azure-architectuur. GPT-schijven worden ondersteund als gegevens schijven.<br/><br/> Meerdere opstart schijven op een virtuele machine worden niet ondersteund<br/><br/> -/boot op een LVM-volume op meer dan één schijf wordt niet ondersteund.<br/> -Een machine zonder een opstart schijf kan niet worden gerepliceerd.
@@ -167,7 +166,7 @@ BTRFS | BTRFS wordt ondersteund door [Update pakket 34](https://support.microsof
 **Actie** | **Details**
 --- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Wordt op de bron-VM vóór de failover direct in de VM-eigenschappen ondersteund. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na een failover de schijf grootte op de Azure-VM wijzigt, maakt Site Recovery een nieuwe virtuele machine met de updates.
-Schijf toevoegen op een gerepliceerde VM | Wordt niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
+Schijf toevoegen op een gerepliceerde VM | Niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
 
 > [!NOTE]
 > Wijzigingen in de schijf identiteit worden niet ondersteund. Als het partitioneren van de schijf bijvoorbeeld is gewijzigd van GPT naar MBR of andersom, wordt de schijf identiteit gewijzigd. In een dergelijk scenario wordt de replicatie onderbroken en wordt een nieuwe installatie vereist. 
@@ -193,43 +192,43 @@ Persoonlijke koppelings toegang tot Site Recovery service | Ja. [Meer informatie
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Azure ExpressRoute | Ja
-ILB | Ja
-ELB | Ja
-Azure Traffic Manager | Ja
-Multi-NIC | Ja
-Gereserveerd IP adres | Ja
-IPv4 | Ja
-Bron-IP-adres behouden | Ja
-Service-eindpunten voor een virtueel Azure-netwerk<br/> | Ja
-Versneld netwerken | Nee
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Multi-NIC | Yes
+Gereserveerd IP adres | Yes
+IPv4 | Yes
+Bron-IP-adres behouden | Yes
+Service-eindpunten voor een virtueel Azure-netwerk<br/> | Yes
+Versneld netwerken | No
 
 ## <a name="storage"></a>Storage
 **Onderdeel** | **Ondersteund**
 --- | ---
 Dynamische schijf | De besturingssysteem schijf moet een standaard schijf zijn. <br/><br/>Gegevens schijven kunnen dynamische schijven zijn
-Configuratie van docker-schijf | Nee
+Configuratie van docker-schijf | No
 Host-NFS | Ja voor VMware<br/><br/> Nee voor fysieke servers
-SAN van host (iSCSI/FC) | Ja
+SAN van host (iSCSI/FC) | Yes
 VSAN hosten | Ja voor VMware<br/><br/> N.v.t. voor fysieke servers
 Multipath (MPIO) hosten | Ja, getest met micro soft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM voor CLARiiON
 Virtuele volumes hosten (VVols) | Ja voor VMware<br/><br/> N.v.t. voor fysieke servers
-VMDK van gast/server | Ja
-Gedeelde gast/server-cluster schijf | Nee
-Door gast/server versleutelde schijf | Nee
-Gast/server-NFS | Nee
+VMDK van gast/server | Yes
+Gedeelde gast/server-cluster schijf | No
+Door gast/server versleutelde schijf | No
+Gast/server-NFS | No
 ISCSI voor gast/server | Voor migratie-Ja<br/>Voor herstel na nood gevallen-Nee, iSCSI zal failback als een gekoppelde schijf aan de VM
-Het SMB 3,0 van de gast/server | Nee
-RDM/server | Ja<br/><br/> N.v.t. voor fysieke servers
+Het SMB 3,0 van de gast/server | No
+RDM/server | Yes<br/><br/> N.v.t. voor fysieke servers
 Gast/server schijf > 1 TB | Ja, schijf moet groter zijn dan 1024 MB<br/><br/>Maxi maal 8.192 GB bij het repliceren naar Managed disks (9,26-versie en hoger)<br></br> Maxi maal 4.095 GB bij het repliceren naar opslag accounts
-Gast/server-schijf met 4 KB logische en 4.000 fysieke sector grootte | Nee
-Gast/server schijf met 4 KB logische en 512-bytes fysieke sector grootte | Nee
-Volume van gast/server met gestripte schijf >4 TB | Ja
+Gast/server-schijf met 4 KB logische en 4.000 fysieke sector grootte | No
+Gast/server schijf met 4 KB logische en 512-bytes fysieke sector grootte | No
+Volume van gast/server met gestripte schijf >4 TB | Yes
 Beheer van logische volumes (LVM)| Dik inrichten-Ja <br></br> Thin Provisioning-Nee
-Gast/Server-opslag ruimten | Nee
-Hot-of-Remove-schijf voor gast/server | Nee
-Gast/server-schijf uitsluiten | Ja
-Meerdere paden gast/server (MPIO) | Nee
+Gast/Server-opslag ruimten | No
+Hot-of-Remove-schijf voor gast/server | No
+Gast/server-schijf uitsluiten | Yes
+Meerdere paden gast/server (MPIO) | No
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder vier werden ondersteund.
 ReFS | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
 EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund voor alle [UEFI-besturings systemen van Azure Marketplace](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) met site Recovery Mobility agent versie 9,30 en hoger. <br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
@@ -238,26 +237,26 @@ EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund voor alle [UEFI
 
 |**Type replicatie**   |**Ondersteund**  |
 |---------|---------|
-|Offloaded data transfers (ODX)    |       Nee  |
-|Offline seeding        |   Nee      |
-| Azure Data Box | Nee
+|Offloaded data transfers (ODX)    |       No  |
+|Offline seeding        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Lokaal redundante opslag | Ja
-Geografisch redundante opslag | Ja
-Geografisch redundante opslag met leestoegang | Ja
-Cool Storage | Nee
-Hot Storage| Nee
-Blok-blobs | Nee
-Versleuteling-at-rest (SSE)| Ja
+Lokaal redundante opslag | Yes
+Geografisch redundante opslag | Yes
+Geografisch redundante opslag met leestoegang | Yes
+Cool Storage | No
+Hot Storage| No
+Blok-blobs | No
+Versleuteling-at-rest (SSE)| Yes
 Versleuteling-at-rest (CMK)| Ja (via Power shell AZ 3.3.0 module)
 Dubbele versleuteling bij rest | Ja (via Power shell AZ 3.3.0 module). Meer informatie over ondersteunde regio's voor [Windows](../virtual-machines/windows/disk-encryption.md) en [Linux](../virtual-machines/linux/disk-encryption.md).
-Premium Storage | Ja
-Optie voor beveiligde overdracht | Ja
-Import/export-service | Nee
+Premium Storage | Yes
+Optie voor beveiligde overdracht | Yes
+Import/export-service | No
 Firewalls voor VNets Azure Storage | Ja.<br/> Geconfigureerd op het doel opslag/cache-opslag account (wordt gebruikt voor het opslaan van replicatie gegevens).
 V2-opslag accounts voor algemeen gebruik (warme en coole lagen) | Ja (de transactie kosten zijn aanzienlijk hoger voor v2 vergeleken met v1)
 
@@ -265,10 +264,10 @@ V2-opslag accounts voor algemeen gebruik (warme en coole lagen) | Ja (de transac
 
 **Functie** | **Ondersteund**
 --- | ---
-Beschikbaarheidssets | Ja
-Beschikbaarheidszones | Nee
-HUB | Ja
-Managed Disks | Ja
+Beschikbaarheidssets | Yes
+Beschikbaarheidszones | No
+HUB | Yes
+Managed Disks | Yes
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's
 
@@ -279,13 +278,13 @@ On-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de verei
 Gastbesturingssysteem | Controleer de [ondersteunde besturings systemen](#replicated-machines) voor gerepliceerde machines. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de besturingssysteemschijf | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
-Aantal besturingssysteemschijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
+Aantal besturingssysteemschijven | 1 </br> de opstart-en systeem partitie op verschillende schijven wordt niet ondersteund | De controle is mislukt als dit niet wordt ondersteund.
 Aantal gegevensschijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 8.192 GB bij het repliceren naar Managed disk (9,26-versie)<br></br>Maxi maal 4.095 GB bij het repliceren naar het opslag account| De controle is mislukt als dit niet wordt ondersteund.
 Netwerkadapters | Meerdere adapters worden ondersteund. |
-Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt. |
+Gedeelde VHD | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+FC-schijf | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+BitLocker | Niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt. |
 VM-naam | Van 1 tot 63 tekens.<br/><br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
 
 ## <a name="resource-group-limits"></a>Limieten voor resource groep
@@ -322,15 +321,15 @@ Maximumgegevensverloop per dag dat wordt ondersteund door een processerver | 2 T
 
 **Actie** | **Ondersteund**
 --- | ---
-De kluis verplaatsen tussen resource groepen | Nee
-De kluis verplaatsen binnen en tussen abonnementen | Nee
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen | Nee
-Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | Nee
+De kluis verplaatsen tussen resource groepen | No
+De kluis verplaatsen binnen en tussen abonnementen | No
+Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen | No
+Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | No
 
 
 ## <a name="obtain-latest-components"></a>Nieuwste onderdelen ophalen
 
-**Name** | **Beschrijving** | **Details**
+**Naam** | **Beschrijving** | **Details**
 --- | --- | ---
 Configuratieserver | On-premises geïnstalleerd.<br/> Coördineert de communicatie tussen on-premises VMware-servers of fysieke machines en Azure. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de configuratie server.<br/> - [Meer informatie over](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-azure-deploy-configuration-server.md) het instellen van de configuratie server.
 Proces server | standaard geïnstalleerd op de configuratieserver.<br/> Hiermee ontvangt u replicatie gegevens, optimaliseert u deze met caching, compressie en versleuteling, en verzendt u deze naar Azure.<br/> Naarmate uw implementatie groeit, kunt u extra proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de proces server.<br/> - [Meer informatie over](vmware-azure-manage-process-server.md#upgrade-a-process-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-physical-large-deployment.md#set-up-a-process-server) het instellen van scale-out proces servers.

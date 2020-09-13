@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997707"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613795"
 ---
 # <a name="textures"></a>Patronen
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 Afhankelijk van waarvoor het bitmappatroon moet worden gebruikt, zijn er mogelijk beperkingen voor het type bitmappatroon en de inhoud. De grof toewijzing van een [PBR-materiaal](../overview/features/pbr-materials.md) moet bijvoorbeeld grijs waarden zijn.
 
 > [!CAUTION]
 > Alle *async* -functies in ARR retour neren asynchrone bewerkings objecten. U moet een verwijzing naar deze objecten opslaan totdat de bewerking is voltooid. Anders kan de C#-garbage collector de bewerking vroegtijdig verwijderen en kan deze nooit worden voltooid. In de voorbeeld code boven de lidvariabele _textureLoad wordt gebruikt om een verwijzing te bewaren totdat de *voltooide* gebeurtenis arriveert.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C#-structuur klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager. LoadTextureAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager. LoadTextureFromSASAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [Klasse C++ Texture](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager:: LoadTextureAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager:: LoadTextureFromSASAsync ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>Volgende stappen
 

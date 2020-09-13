@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135824"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612902"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewayresources
 
@@ -217,7 +217,7 @@ Als voor uw scenario inkomende eindpunten zijn vereist, hebt u twee opties:
 
 U kunt geen zonegebonden promise bereiken met NAT-gatewayresources wanneer instanties van virtuele machines worden geïmplementeerd in meerdere zones binnen hetzelfde subnet.   En zelfs als er meerdere zonegebonden NAT-gateways zijn gekoppeld aan een subnet, weet de instantie van de virtuele machine niet welke NAT-gatewayresource moet worden geselecteerd.
 
-Er bestaat geen zonegebonden promise wanneer a) de zone van een VM-instantie en de zones van een zonegebonden NAT-gateway niet zijn uitgelijnd of b) een regionale NAT-gatewayresource wordt gebruikt met zonegebonden VM-instanties.
+Er bestaat een zonegebonden Promise does't wanneer de zone van een exemplaar van een virtuele machine en de zone van een zonegebonden NAT-gateway niet zijn uitgelijnd of b) een regionale NAT-gateway resource wordt gebruikt met zonegebonden exemplaren van virtuele machines.
 
 Hoewel het scenario lijkt te werken, zijn het statusmodel en de foutmodus niet gedefinieerd vanuit het oogpunt van de beschikbaarheidszone. U kunt in plaats daarvan werken met zonegebonden stacks of volledig regionaal.
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808097"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595707"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
 
@@ -23,10 +23,8 @@ Application Gateway biedt een switch die wordt aangeroepen `Pick host name from 
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
->
-> - Een back-end-pool maken en hieraan een App Service toevoegen
-> - HTTP-instellingen en aangepaste test maken met de Schakel opties hostname kiezen ingeschakeld
+- Een back-end-pool maken en hieraan een App Service toevoegen
+- HTTP-instellingen en aangepaste test maken met de Schakel opties hostname kiezen ingeschakeld
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +41,7 @@ In dit artikel leert u het volgende:
 
 4. Klik onder **doelen**op de vervolg keuzelijst en kies **app Services** als optie.
 
-5. Een vervolg keuzelijst direct onder de vervolg keuzelijst **doel** wordt weer gegeven, die een lijst met uw app Services bevat. Kies in deze vervolg keuzelijst de App Service die u wilt toevoegen als lid van een back-end-groep en klik op toevoegen.
+5. Een vervolg keuzelijst direct onder de vervolg keuzelijst **doel**  wordt weer gegeven, die een lijst met uw app Services bevat. Kies in deze vervolg keuzelijst de App Service die u wilt toevoegen als lid van een back-end-groep en klik op toevoegen.
 
    ![App service-back-end](./media/configure-web-app-portal/backendpool.png)
    
@@ -61,9 +59,9 @@ In dit artikel leert u het volgende:
    > [!NOTE]
    > Als u HTTPS selecteert, hoeft u geen verificatie certificaat of vertrouwd basis certificaat te uploaden om de app service-back-end toe te staan omdat de app service een vertrouwde Azure-service is.
 
-4. Schakel het selectie vakje in voor het **gebruik van app service** . Houd er rekening mee dat de switches `Create a probe with pick host name from backend address` `Pick host name from backend address` automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de host-header in de aanvraag met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end.  
+4. Schakel het selectie vakje in voor het **gebruik van app service** . Houd er rekening mee dat de switches  `Create a probe with pick host name from backend address` `Pick host name from backend address` automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de host-header in de aanvraag met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end.  
 
-   `Create a probe with pick host name from backend address`maakt automatisch een status test en koppelt deze aan deze HTTP-instelling. U hoeft geen andere Health probe voor deze HTTP-instelling te maken. U kunt controleren of er een nieuwe test met de naam <HTTP Setting name> <Unique GUID> is toegevoegd aan de lijst met status controles en dat deze al de switch heeft `Pick host name from backend http settings enabled` .
+   `Create a probe with pick host name from backend address` maakt automatisch een status test en koppelt deze aan deze HTTP-instelling. U hoeft geen andere Health probe voor deze HTTP-instelling te maken. U kunt controleren of er een nieuwe test met de naam <HTTP Setting name> <Unique GUID> is toegevoegd aan de lijst met status controles en dat deze al de switch heeft `Pick host name from backend http settings enabled` .
 
    Als u al een of meer HTTP-instellingen hebt die worden gebruikt voor app service en als deze HTTP-instellingen hetzelfde protocol gebruiken als de protocollen die u maakt, wordt in plaats van de `Create a probe with pick host name from backend address` Switch een vervolg keuzelijst weer geven om een van de aangepaste tests te selecteren. Dit komt doordat er al een HTTP-instelling met app service bestaat, dus er zou ook een status test met de switch bestaan `Pick host name from backend http settings enabled` . Kies die aangepaste test in de vervolg keuzelijst.
 

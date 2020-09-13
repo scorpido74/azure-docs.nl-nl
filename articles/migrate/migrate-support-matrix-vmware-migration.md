@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051114"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612524"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -41,7 +41,7 @@ De tabel bevat een overzicht van de vereisten voor VMware-Hyper Visor.
 --- | ---
 **VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
 **ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
-**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft deze machtigingen nodig in vCenter Server:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine.Configuratie. DiskChangeTracking**: het inschakelen of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine.Configuratie. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. DiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een VM wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. ReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. DiskRandomAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. VirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> - **VirtualMachine. SnapshotManagement. \* **: het maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **Virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
+**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft deze machtigingen nodig in vCenter Server:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. File Management**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine.Config. Change tracking**: het inschakelen of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine.Config. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. DiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een VM wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. DiskRandomRead**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. DiskRandomAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. GetVmFiles**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> - **VirtualMachine. State. \* **: het maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **Virtuele machine. interactie. uitgeschakeld**: de VM mag worden uitgeschakeld tijdens de migratie naar Azure.
 
 
 
@@ -68,7 +68,7 @@ De tabel bevat een overzicht van de migratie vereisten zonder agent voor virtuel
 **Storage vMotion** | Niet ondersteund. De replicatie wordt niet uitgevoerd als een virtuele machine gebruikmaakt van Storage vMotion.
 **Team kaarten** | Niet ondersteund.
 **IPv6** | Niet ondersteund.
-**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, standaard SSD, Premium SSD) in Azure.
 **Gelijktijdige replicatie** | 300 Vm's per vCenter Server. Als u meer hebt, migreert u deze in batches van 300.
 
 
@@ -118,7 +118,7 @@ De tabel bevat een overzicht van de VMware VM-ondersteuning voor VMware-Vm's die
 **Mobility-service** | De Mobility Service-agent moet zijn geïnstalleerd op elke virtuele machine die u wilt migreren.
 **UEFI-opstart** | Ondersteund.
 **UEFI-beveiligd opstarten**         | Niet ondersteund voor migratie.
-**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, standaard SSD, Premium SSD) in Azure.
 **Schijfgrootte** | 2 TB besturingssysteem schijf; 8 TB voor gegevens schijven.
 **Schijf limieten** |  Maxi maal 63 schijven per VM.
 **Versleutelde schijven/volumes** | Vm's met versleutelde schijven/volumes worden niet ondersteund voor migratie.

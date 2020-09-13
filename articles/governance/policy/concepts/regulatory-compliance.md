@@ -3,12 +3,12 @@ title: Naleving van regelgeving in initiatief definities
 description: Hierin wordt beschreven hoe u een initiatief definitie gebruikt om beleid te groeperen op regelgevings domein, zoals Access Control, configuratie beheer en andere.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544618"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645531"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Naleving van regelgeving in Azure Policy
 
@@ -33,18 +33,18 @@ Wanneer een initiatief definitie is gemaakt met [groepen](./initiative-definitio
 
 Een nieuw tabblad, **besturings elementen** worden toegevoegd aan de pagina. Filteren is beschikbaar op **nalevings domein** en beleids definities worden gegroepeerd op het `title` veld van het **policyMetadata** -object. Elke rij vertegenwoordigt een **besturings element** met de nalevings status, het **nalevings domein** waarvan het deel uitmaakt, de verantwoordelijkheids gegevens en het aantal niet-compatibele en compatibele beleids definities die het **beheer**vormen.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Een voor beeld van het regelgevings overzicht van naleving voor de ingebouwde definitie van het NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Scherm afbeelding van het overzicht van reglementaire naleving voor de ingebouwde definitie van het NIST SP 800-53 R4 met compatibele en niet-compatibele besturings elementen.":::
 
 Als u een **besturings element** selecteert, wordt er een pagina met details over dat besturings element geopend. Het **overzicht** bevat de gegevens van `description` en `requirements` . Op het tabblad **beleid** vindt u alle afzonderlijke beleids definities in het initiatief die bijdragen aan dit **besturings element**. Het tabblad **resource compatibiliteit** biedt een gedetailleerd overzicht van elke resource die wordt geëvalueerd door een beleid voor leden van het **besturings element**dat momenteel wordt weer gegeven.
 
 > [!NOTE]
 > Een evaluatie type van door **micro soft beheerd** is voor een [statische](./definition-structure.md#type) beleids definitie `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Een voor beeld van de definities van het regelgevings nalevings beleid in het grens beveiligings beheer van het systeem en het communicatie beveiligings domein van de ingebouwde definitie van het NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Scherm afbeelding van de nalevings Details van de regelgeving voor het grens beveiligings beheer van de ingebouwde definitie van het NIST SP 800-53 R4.":::
 
 Op dezelfde **besturings** pagina kunt u de beleids definities van dit **besturings element**weer geven door te wijzigen in het tabblad **resource naleving** . Er zijn filters beschikbaar voor naam of ID, compatibiliteits status, resource type en locatie.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Een voor beeld van de reglementaire nalevings bronnen die worden beïnvloed door beleids definities in het grens beveiligings beheer van het systeem en het communicatie beveiligings domein van de ingebouwde definitie van het NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Scherm afbeelding van de bron compatibiliteit met het grens beveiligings beheer van de ingebouwde definitie van het NIST SP 800-53 R4.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Naleving van regelgeving in SDK
 

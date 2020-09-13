@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b92bfad99c854f75c945121d352a7122d8c6db89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011596"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613726"
 ---
 # <a name="cut-planes"></a>Vlakken knippen
 
@@ -56,7 +56,6 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 }
 ```
 
-
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent-eigenschappen
 
 De volgende eigenschappen worden weer gegeven op een knip vlak onderdeel:
@@ -68,6 +67,11 @@ De volgende eigenschappen worden weer gegeven op een knip vlak onderdeel:
 * `FadeColor` en `FadeLength`:
 
   Als de Alfa waarde van *FadeColor* niet gelijk is aan nul, wordt pixels dicht bij het Knip vlak overvloeien naar het RGB-onderdeel van FadeColor. De sterkte van het Alfa kanaal bepaalt of deze volledig naar de vervagings kleur of slechts gedeeltelijk vervaagt. *FadeLength* definieert de afstand die de vervaging zal plaatsvinden.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# CutPlaneComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [C++ CutPlaneComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>Volgende stappen
 

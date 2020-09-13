@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021830"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613797"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessies
 
@@ -31,7 +31,7 @@ Zodra u *verbinding hebt gemaakt* met een actieve sessie, worden bewerkingen zoa
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Meerdere sessies tegelijk beheren
 
-Het is niet mogelijk om volledig *verbinding te maken* met meerdere sessies vanaf één apparaat. U kunt echter zoveel sessies maken, observeren en afsluiten als u maar wilt van één toepassing. Zolang de app niet is bedoeld om ooit verbinding te maken met een sessie, hoeft deze niet te worden uitgevoerd op een apparaat zoals HoloLens 2. Een gebruiks voorbeeld voor een dergelijke implementatie is mogelijk als u sessies wilt beheren via een centraal mechanisme. Een voor beeld: een web-app waarmee meerdere Tablets en HoloLenses zich kunnen aanmelden. Vervolgens kan de app opties weer geven op de tablets, zoals welk CAD-model u wilt weer geven. Als een gebruiker een selectie maakt, wordt deze informatie aan alle HoloLenses gecommuniceerd om een gedeelde ervaring te creëren.
+Het is niet mogelijk om volledig *verbinding te maken* met meerdere sessies vanaf één apparaat. U kunt echter zoveel sessies maken, observeren en afsluiten als u maar wilt van één toepassing. Zolang de app niet is bedoeld om ooit verbinding te maken met een sessie, hoeft deze niet te worden uitgevoerd op een apparaat zoals HoloLens 2. Een gebruiks voorbeeld voor een dergelijke implementatie is mogelijk als u sessies wilt beheren via een centraal mechanisme. Een voor beeld: een web-app waarmee meerdere Tablets en HoloLens-apparaten zich kunnen aanmelden. Vervolgens kan de app opties weer geven op de tablets, zoals welk CAD-model u wilt weer geven. Als een gebruiker een selectie maakt, wordt deze informatie gecommuniceerd naar alle HoloLens-apparaten om een gedeelde ervaring te creëren.
 
 ## <a name="session-phases"></a>Sessie fasen
 
@@ -146,6 +146,15 @@ De levens duur van een virtuele machine is niet gekoppeld aan het `AzureFrontend
 De permanente sessie-ID kan worden opgevraagd `AzureSession.SessionUUID()` en lokaal in de cache worden opgeslagen. Met deze ID kan een toepassing een `AzureFrontend.OpenSession` binding met die sessie aanroepen.
 
 Wanneer `AzureSession.IsConnected` True is, `AzureSession.Actions` retourneert een exemplaar van `RemoteManager` , dat de functies bevat voor het [laden van modellen](models.md), het bewerken van [entiteiten](entities.md)en het [opvragen van informatie](../overview/features/spatial-queries.md) over de gerenderde scène.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# AzureSession-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C# AzureFrontend. OpenRenderingSession ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C++ AzureSession-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C++ AzureFrontend:: OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>Volgende stappen
 
