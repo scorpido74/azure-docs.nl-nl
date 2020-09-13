@@ -7,20 +7,21 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: device-developer
+ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715054"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017690"
 ---
-# <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Een Azure Sphere apparaat verbinden met uw Azure IoT Central-toepassing
+# <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Een Azure Sphere-apparaat toevoegen aan uw Azure IoT Central-toepassing
 
 *Dit artikel is bedoeld voor ontwikkelaars van apparaten.*
 
 In dit artikel wordt beschreven hoe u een Azure Sphere apparaat (DevKit) verbindt met een Azure IoT Central-toepassing.
 
-Azure Sphere is een beveiligd toepassings platform op hoog niveau met ingebouwde communicatie-en beveiligings functies voor apparaten met een Internet verbinding. Het bevat een beveiligde, verbonden, Crossover microcontroller-eenheid (MCU), een aangepast Linux-besturings systeem op hoog niveau (OS) en een cloud-gebaseerde beveiligings service die continue, Hernieuw bare beveiliging biedt. Zie [Wat is Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)voor meer informatie.
+Azure Sphere is een beveiligd, hoogwaardig toepassingsplatform met ingebouwde communicatie- en beveiligingsfuncties voor apparaten die met internet zijn verbonden. Het bevat een beveiligde, verbonden, Crossover microcontroller-eenheid (MCU), een aangepast Linux-besturings systeem op hoog niveau (OS) en een cloud-gebaseerde beveiligings service die continue, Hernieuw bare beveiliging biedt. Zie [Wat is Azure Sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere)voor meer informatie.
 
 [Azure Sphere Development Kits](https://azure.microsoft.com/services/azure-sphere/get-started/) bieden alles wat u nodig hebt om te beginnen met het maken van prototypen en het ontwikkelen van Azure Sphere toepassingen. Azure IoT Central met Azure Sphere biedt een end-to-end stack voor een IoT-oplossing. Azure Sphere biedt de ondersteuning van het apparaat en IoT Central als een ' Zero-code ' beheerd IoT-toepassings platform.
 

@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231041"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015327"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Veelgestelde vragen over Azure Active Directory rapporten
 
@@ -37,7 +37,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 **V: Ik gebruik momenteel de `https://graph.windows.net/<tenant-name>/reports/` endpoint api's om Azure AD-beveiligings rapporten (specifieke typen detecties, zoals gelekte referenties of aanmeldingen vanaf anonieme IP-adressen), via programma code te halen in onze rapportage systemen. Waar moet ik naar overschakelen?**
 
-**A:** U kunt de [API voor risico detectie van identiteits beveiliging](../identity-protection/howto-identity-protection-graph-api.md)gebruiken   voor toegang tot beveiligings detecties via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en waarmee risico detecties in één type worden gestandaardiseerd, zodat integratie gemakkelijker kan worden geïntegreerd in Siem's en andere hulpprogram ma's voor gegevens verzameling. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta). Dit is de micro soft-norm voor dergelijke Api's als O365 of Azure AD. Het werk vereist dus dat uw huidige Microsoft Graph investeringen kunnen worden uitgebreid of dat u de overgang naar dit nieuwe standaard platform kunt starten.
+**A:** U kunt de [API voor risico detectie van identiteits beveiliging](../identity-protection/howto-identity-protection-graph-api.md)gebruiken   voor toegang tot beveiligings detecties via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en waarmee risico detecties in één type worden gestandaardiseerd, zodat integratie gemakkelijker kan worden geïntegreerd in Siem's en andere hulpprogram ma's voor gegevens verzameling. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta). Dit is de micro soft-norm voor dergelijke api's als Microsoft 365 of Azure AD. Het werk vereist dus dat uw huidige Microsoft Graph investeringen kunnen worden uitgebreid of dat u de overgang naar dit nieuwe standaard platform kunt starten.
 
 ---
 
@@ -81,15 +81,15 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 ---
 
-**V: kan ik informatie over het activiteiten logboek van Office 365 krijgen via de Azure Portal?**
+**V: kan ik Microsoft 365 informatie over het activiteiten logboek verkrijgen via de Azure Portal?**
 
-**A:** Hoewel Office 365-activiteiten en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen. Als u een volledige weer gave van de activiteiten logboeken van Office 365 wilt, gaat u naar het [Microsoft 365-beheer centrum](https://admin.microsoft.com) om informatie over het activiteiten logboek van Office 365 op te halen.
+**A:** Hoewel Microsoft 365 activiteit en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen. Als u een volledige weer gave van de Microsoft 365 activiteiten logboeken wilt, gaat u naar het [Microsoft 365-beheer centrum](https://admin.microsoft.com) om informatie over het activiteiten logboek van Office 365 te krijgen.
 
 ---
 
-**V: welke Api's moet ik gebruiken om informatie te krijgen over activiteiten logboeken van Office 365?**
+**V: welke Api's moet ik gebruiken om informatie te krijgen over Microsoft 365 activiteiten logboeken?**
 
-**A:** Gebruik de [office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview) om toegang te krijgen tot de activiteiten logboeken van Office 365 via een API.
+**A:** Gebruik de [Microsoft 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview) om toegang te krijgen tot de Microsoft 365 activiteiten logboeken via een API.
 
 ---
 

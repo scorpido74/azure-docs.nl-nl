@@ -13,16 +13,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 1c1e29d43fefa6be1586aefc28249fe2f0f9e9fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001022"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018302"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X.509-beveiliging instellen in uw Azure IoT Hub
 
 In deze zelf studie worden de stappen beschreven die u nodig hebt om uw Azure IoT hub te beveiligen met de *X. 509-certificaat verificatie*. Voor het doel van de afbeelding gebruiken we het open source-hulp programma OpenSSL om certificaten lokaal op uw Windows-machine te maken. U wordt aangeraden deze zelf studie alleen voor test doeleinden te gebruiken. Voor de productie omgeving moet u de certificaten van een basis certificerings *instantie (CA)* aanschaffen.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

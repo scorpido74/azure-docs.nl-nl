@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: ae145f5a1ce462edb28171a1f5bb6f3ebb72f538
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7a80fb47122d21e078cf2724b805fa56c5a73aeb
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018209"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018120"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (.NET)
 
@@ -47,6 +47,8 @@ Aan het einde van deze zelf studie voert u twee .NET-console-apps uit:
 
 > [!NOTE]
 > IoT Hub ondersteunt veel platformen en talen, waaronder C, Java, python en Java script, via een Azure IoT-apparaat-Sdk's. Raadpleeg het [Azure IOT-ontwikkelaars centrum](https://azure.microsoft.com/develop/iot) voor stapsgewijze instructies voor het verbinden van uw apparaat met Azure IOT hub.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

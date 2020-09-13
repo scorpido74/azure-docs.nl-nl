@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: iot-hub
 author: robinsh
 ms.service: iot-hub

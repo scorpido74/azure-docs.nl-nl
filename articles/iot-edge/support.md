@@ -4,16 +4,16 @@ description: Meer informatie over de besturings systemen die de Azure IoT Edge d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/17/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccfd85c5976642d30b3f21d2d2afeb868ba49bf9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 679fa4002f687f715ab1fe9701997d46e4b6f2cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924611"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018455"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Ondersteunde systemen Azure IoT Edge
 
@@ -108,7 +108,7 @@ IoT Edge onderdelen kunnen afzonderlijk worden geïnstalleerd of bijgewerkt, en 
 
 | Release | Beveiligings-daemon | Edge hub<br>Edge-agent | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.9** | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
@@ -122,7 +122,7 @@ IoT Edge maakt gebruik van de SDK van micro soft. Azure. device. client. Zie de 
 * **IOT Edge 1.0.6**: Client SDK 1.17.1
 * **IOT Edge 1.0.5**: Client SDK 1.17.1
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Virtuele machines
 
 Azure IoT Edge kunnen worden uitgevoerd op virtuele machines. Het gebruik van een virtuele machine als een IoT Edge apparaat is gebruikelijk wanneer klanten bestaande infra structuur willen uitbreiden met Edge Intelligence. De serie van het VM-besturings systeem van de host moet overeenkomen met de familie van het gast besturingssysteem dat in de container van een module wordt gebruikt. Deze vereiste is hetzelfde als wanneer Azure IoT Edge rechtstreeks op een apparaat wordt uitgevoerd. Azure IoT Edge is neutraal van de onderliggende technologie en werkt in Vm's op basis van platforms, zoals Hyper-V en vSphere.
 

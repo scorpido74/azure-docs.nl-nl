@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526827"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017469"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar workday configureren
 Het doel van deze zelf studie is om de stappen weer te geven die u moet uitvoeren om kenmerken van Azure AD naar workday te schrijven. De werk-app voor het terugschrijven van werk dagen ondersteunt het toewijzen van waarden aan de volgende workday-kenmerken:
@@ -34,7 +34,7 @@ Nadat u de integratie van inkomende inrichtingen hebt ingesteld met behulp [van 
 
 De inrichtings oplossing voor het terugschrijven van gebruikers van deze werkdag is ideaal voor:
 
-* Organisaties die Office 365 gebruiken voor het terugschrijven van gezaghebbende kenmerken die door IT worden beheerd (zoals het e-mail adres, de gebruikers naam en het telefoon nummer), keer terug naar workday
+* Organisaties die Microsoft 365 gebruiken voor het terugschrijven van gezaghebbende kenmerken die door IT worden beheerd (zoals e-mail adres, gebruikers naam en telefoon nummer), terug naar workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>De gebruiker van het integratie systeem configureren in workday
 
@@ -157,7 +157,7 @@ Zodra de configuratie van de app voor workday-inrichting is voltooid, kunt u de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen werk dagen en Azure Active Directory](workday-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../app-provisioning/export-import-provisioning-configuration.md)

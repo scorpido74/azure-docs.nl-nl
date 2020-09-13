@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: release geschiedenis van versie | Microsoft Docs'
-description: In dit artikel vindt u een overzicht van alle releases van Azure AD Connect en Azure AD Sync
+description: In dit artikel vindt u een overzicht van alle releases van Azure AD Connect en Azure AD Sync.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052926"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018438"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -48,7 +48,7 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 >
 >Als u Azure AD Connect voor synchronisatie hebt ingeschakeld, kunt u binnenkort automatisch status meldingen ontvangen die u waarschuwen over toekomstige afschaffing wanneer u een van de oudere versies uitvoert.
 >
->Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
+>Raadpleeg [dit artikel](./how-to-upgrade-previous-version.md) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
 >
 >Voor informatie over de versie geschiedenis van gedeprecieerde versies raadpleegt u [Archief met Azure AD Connect versie release geschiedenis](reference-connect-version-history-archive.md)
 
@@ -74,7 +74,7 @@ Dit is een release van de fout oplossing. Er zijn geen functionele wijzigingen i
 ### <a name="functional-changes"></a>Functionele wijzigingen
 Deze release bevat een open bare preview van de functionaliteit voor het exporteren van de configuratie van een bestaande Azure AD Connect-server naar een. JSON-bestand dat vervolgens kan worden gebruikt bij het installeren van een nieuwe Azure AD Connect server voor het maken van een kopie van de oorspronkelijke server.
 
-In [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) vindt u een gedetailleerde beschrijving van deze nieuwe functie.
+In [dit artikel](./how-to-connect-import-export-config.md) vindt u een gedetailleerde beschrijving van deze nieuwe functie.
 
 ### <a name="fixed-issues"></a>Opgeloste problemen
 - Er is een fout opgelost waarbij er tijdens de upgrade een onjuiste waarschuwing is over de lokale DB-grootte op de gelokaliseerde builds.
@@ -244,7 +244,7 @@ Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten da
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de O365-Portal niet overeenkomt met de bijgewerkte versie, zelfs als Azure AD Connect is bijgewerkt.
+>Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de Microsoft 365 Portal niet overeenkomt met de bijgewerkte versie, zelfs als Azure AD Connect is bijgewerkt.
 >
 > Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren en vervolgens de `Set-ADSyncDirSyncConfiguration` Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
 >

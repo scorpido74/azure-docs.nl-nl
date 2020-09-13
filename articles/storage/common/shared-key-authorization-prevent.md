@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: f65bf2bbe174ff90d5a0b962768833b8668f6400
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951117"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019713"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verificatie van gedeelde sleutels voor een Azure Storage account voor komen (preview-versie)
 
@@ -125,7 +125,7 @@ De eigenschap **AllowSharedKeyAccess** is niet standaard ingesteld en retourneer
 > [!WARNING]
 > Als clients momenteel toegang hebben tot gegevens in uw opslag account met een gedeelde sleutel, raadt micro soft u aan deze clients te migreren naar Azure AD voordat u de gedeelde sleutel toegang tot het opslag account niet toestaat.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om de verificatie van de gedeelde sleutel voor een opslag account in de Azure Portal niet toe te staan:
 
@@ -135,7 +135,7 @@ Voer de volgende stappen uit om de verificatie van de gedeelde sleutel voor een 
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Scherm afbeelding die laat zien hoe toegang tot gedeelde sleutels voor accounts niet kan worden toegestaan":::
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de verificatie van gedeelde sleutels voor een opslag account met Azure CLI niet wilt toestaan, installeert u Azure CLI versie 2.9.1 of hoger. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie. Configureer vervolgens de eigenschap **allowSharedKeyAccess** voor een nieuw of bestaand opslag account.
 
@@ -213,7 +213,7 @@ Sommige hulpprogram ma's van Azure bieden de mogelijkheid om Azure AD-autorisati
 
 | Azure-hulp programma | Azure AD-autorisatie voor Azure Storage |
 |-|-|
-| Azure Portal | Ondersteund. Voor informatie over het autoriseren van uw Azure AD-account uit de Azure Portal, Zie [kiezen hoe u de toegang tot BLOB of de wachtrij gegevens in de Azure Portal wilt autoriseren](storage-access-blobs-queues-portal.md). |
+| Azure Portal | Ondersteund. Voor informatie over het autoriseren van uw Azure AD-account uit de Azure Portal, Zie [kiezen hoe u de toegang tot BLOB-gegevens in de Azure Portal wilt autoriseren](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | Ondersteund voor Blob Storage. Zie [kiezen hoe u autorisatie referenties opgeeft](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) in de AzCopy-documentatie voor meer informatie over het autoriseren van AzCopy-bewerkingen. |
 | Azure Opslagverkenner | Alleen ondersteund voor Blob Storage en alleen Azure Data Lake Storage Gen2. Azure AD-toegang tot de wachtrij opslag wordt niet ondersteund. Zorg ervoor dat u de juiste Azure AD-Tenant selecteert. Zie [aan de slag met Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure) voor meer informatie. |
 | Azure PowerShell | Ondersteund. Zie [Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](authorize-active-directory-powershell.md)voor meer informatie over het autoriseren van Power shell-opdrachten met Azure AD voor toegang tot Blob-en wachtrij gegevens. |

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533993"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017928"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors configureren
 Het doel van deze zelf studie is het weer geven van de stappen voor het terugschrijven van kenmerken van Azure AD naar SAP SuccessFactors Employee Central. 
@@ -40,7 +40,7 @@ U kunt de SAP SuccessFactors write-app configureren voor het schrijven van speci
 
 Deze SuccessFactors write-inrichtings oplossing voor gebruikers is ideaal voor:
 
-* Organisaties die Office 365 gebruiken voor het terugschrijven van gezaghebbende kenmerken die door IT worden beheerd (zoals e-mail adres, telefoon nummer, gebruikers naam), worden weer gegeven in SuccessFactors werk nemers centraal.
+* Organisaties die Microsoft 365 gebruiken om gezaghebbende kenmerken die door IT worden beheerd (zoals e-mail adres, telefoon, gebruikers naam), terug te schrijven naar SuccessFactors werk nemers centraal.
 
 ## <a name="configuring-successfactors-for-the-integration"></a>SuccessFactors configureren voor de integratie
 
@@ -254,7 +254,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
    | 4 | true | emailIsPrimary | Gebruik dit kenmerk om zakelijke e-mail in te stellen als primair in SuccessFactors. Als zakelijk e-mail adres niet primair is, stelt u deze vlag in op ONWAAR. |
    | 5 | userPrincipalName | [custom01 – custom15] | Met een **nieuwe toewijzing toevoegen**kunt u optioneel userPrincipalName of een Azure AD-kenmerk schrijven naar een aangepast kenmerk dat beschikbaar is in het SuccessFactors-gebruikers object.  |
    | 6 | on-premises-samAccountName | gebruikersnaam | Met een **nieuwe toewijzing toevoegen**kunt u optioneel een on-premises sAMAccountName toewijzen aan het kenmerk SuccessFactors username. |
-   | 7 | Eenmalige aanmelding | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
+   | 7 | SSO | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
    | 8 | telephoneNumber | businessPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 9 | 10605 | businessPhoneType | Deze constante waarde is de SuccessFactors ID-waarde gekoppeld aan de zakelijke telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
    | 10 | true | businessPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het zakelijke telefoon nummer in te stellen. Geldige waarden zijn True of false. |
@@ -313,7 +313,7 @@ Raadpleeg de [sectie write-scenario's](../app-provisioning/sap-successfactors-in
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uitgebreide informatie over Azure AD en SAP SuccessFactors-integratie](../app-provisioning/sap-successfactors-integration-reference.md)
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen SuccessFactors en Azure Active Directory](successfactors-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../app-provisioning/export-import-provisioning-configuration.md)

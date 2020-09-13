@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a62694790505dcf8355b3011387d9bdfd036b6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057181"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018489"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: release geschiedenis archief van versie
 
@@ -166,7 +166,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-- De integratie van pingen in Azure AD Connect is nu beschikbaar voor algemene Beschik baarheid. [Meer informatie over federatieve Azure AD met pingen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- De integratie van pingen in Azure AD Connect is nu beschikbaar voor algemene Beschik baarheid. [Meer informatie over federatieve Azure AD met pingen](./plan-connect-user-signin.md#federation-with-pingfederate)
 - Azure AD Connect maakt nu een back-up van de Azure AD-vertrouwens relatie in AD FS elke keer dat er een update wordt gemaakt en slaat deze in een afzonderlijk bestand op om zo nodig eenvoudig te kunnen herstellen. Meer [informatie over de nieuwe functionaliteit en het vertrouwens beheer van Azure AD in azure AD Connect](https://aka.ms/fedtrustinaadconnect).
 - Nieuwe probleemoplossings Programma's helpen bij het oplossen van het wijzigen van het primaire e-mail adres en het verbergen van accounts uit de algemene adres lijst
 - Azure AD Connect is bijgewerkt met de meest recente SQL Server 2012 native client
@@ -355,7 +355,7 @@ Er is een verbetering toegevoegd aan Azure AD Connect versie 1.1.654.0 (en later
 
 >[!NOTE]
 >Deze versie verwijdert alleen het beveiligings probleem voor nieuwe installaties van Azure AD Connect waarbij het service account wordt gemaakt door het installatie proces. Voor bestaande installaties of in gevallen waarin u het account zelf opgeeft, moet u ervoor zorgen dat dit beveiligings probleem niet bestaat.
-#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a>De toegang tot het AD DS-account vergren delen
+#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a> De toegang tot het AD DS-account vergren delen
 Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigingen in de on-premises AD te implementeren:  
 
 *   Overname uitschakelen voor het opgegeven object
@@ -402,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 Als u wilt weten of dit beveiligingslek is gebruikt om uw Azure AD Connect-configuratie in te zetten, moet u de datum van de laatste wachtwoord herstel van het service account controleren.  Als de tijds tempel in het geval van onverwacht, verder onderzoek, via het gebeurtenis logboek, voor die wachtwoord herstel gebeurtenis, moet worden uitgevoerd.
 
-Zie [micro soft security advisor 4056318](https://technet.microsoft.com/library/security/4056318) voor meer informatie.
+Zie [micro soft security advisor 4056318](/security-updates/securityadvisories/2017/4056318) voor meer informatie.
 
 ## <a name="116490"></a>1.1.649.0
 Status: oktober 27 2017
@@ -443,7 +443,7 @@ Status: oktober 19 2017
 
 * Er is een probleem opgelost waardoor Azure AD Connect upgrade mislukt met fout '*kan geen upgrade uitvoeren voor de synchronisatie service*'. Verder kan de synchronisatie service niet meer worden gestart met de gebeurtenis Fout '*de service kan niet worden gestart omdat de versie van de data base nieuwer is dan de versie van de geïnstalleerde bestanden*'. Het probleem treedt op wanneer de beheerder die de upgrade uitvoert, geen sysadmin-bevoegdheid heeft voor de SQL Server die wordt gebruikt door Azure AD Connect. Met deze oplossing vereist Azure AD Connect alleen dat de beheerder db_owner bevoegdheid heeft voor de ADSync-data base tijdens de upgrade.
 
-* Er is een fout opgetreden bij het upgraden van een Azure AD Connect dat betrokken klanten die [naadloze eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)hebben ingeschakeld. Nadat Azure AD Connect is bijgewerkt, wordt naadloze eenmalige aanmelding onjuist weer gegeven in Azure AD Connect wizard, zelfs als de functie ingeschakeld en volledig functioneel blijft. Met deze oplossing wordt de functie nu correct weer gegeven als ingeschakeld in de wizard.
+* Er is een fout opgetreden bij het upgraden van een Azure AD Connect dat betrokken klanten die [naadloze eenmalige aanmelding](./how-to-connect-sso.md)hebben ingeschakeld. Nadat Azure AD Connect is bijgewerkt, wordt naadloze eenmalige aanmelding onjuist weer gegeven in Azure AD Connect wizard, zelfs als de functie ingeschakeld en volledig functioneel blijft. Met deze oplossing wordt de functie nu correct weer gegeven als ingeschakeld in de wizard.
 
 * Er is een probleem opgelost dat ervoor zorgt dat Azure AD Connect wizard altijd de prompt '*bron anker configureren*' weergeeft op de pagina *gereed voor configuratie* , zelfs als er geen wijzigingen zijn aangebracht in het bron anker.
 
@@ -457,7 +457,7 @@ Status: oktober 19 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 > [!NOTE]
-> Opmerking: de synchronisatie service heeft een WMI-interface waarmee u uw eigen aangepaste scheduler kunt ontwikkelen. Deze interface is nu afgeschaft en wordt verwijderd uit toekomstige versies van Azure AD Connect die na 30 juni 2018 worden verzonden. Klanten die de synchronisatie planning willen aanpassen, moeten gebruikmaken [van de ingebouwde Planner](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
+> Opmerking: de synchronisatie service heeft een WMI-interface waarmee u uw eigen aangepaste scheduler kunt ontwikkelen. Deze interface is nu afgeschaft en wordt verwijderd uit toekomstige versies van Azure AD Connect die na 30 juni 2018 worden verzonden. Klanten die de synchronisatie planning willen aanpassen, moeten gebruikmaken [van de ingebouwde Planner](./how-to-connect-sync-feature-scheduler.md).
 #### <a name="fixed-issues"></a>Opgeloste problemen
 * Als Azure AD Connect wizard het AD-Connector account maakt dat vereist is voor het synchroniseren van wijzigingen van on-premises Active Directory, wordt het account dat is vereist voor het lezen van PublicFolder-objecten niet goed toegewezen. Dit probleem is van invloed op de snelle installatie en aangepaste installatie. Met deze wijziging wordt het probleem opgelost.
 
@@ -470,7 +470,7 @@ Status: oktober 19 2017
 
 ### <a name="ad-fs-management"></a>AD FS-Management
 #### <a name="fixed-issue"></a>Probleem  opgelost
-* Er is een probleem opgelost dat betrekking heeft op het gebruik van de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Dit probleem is van invloed op klanten die Federatie hebben geconfigureerd *met AD FS* als de aanmeldings methode voor gebruikers. Wanneer u de taak *bron anker configureren* in de wizard uitvoert, schakelt Azure AD Connect over naar het bron kenmerk * MS-DS-ConsistencyGuid als broncode voor immutableId. Als onderdeel van deze wijziging Azure AD Connect probeert de claim regels voor ImmutableId in AD FS bij te werken. Deze stap is echter mislukt omdat Azure AD Connect geen beheerders referenties hebt vereist voor het configureren van AD FS. Met deze oplossing wordt Azure AD Connect nu gevraagd om de beheerders referenties voor AD FS in te voeren wanneer u de taak *bron anker configureren* uitvoert.
+* Er is een probleem opgelost dat betrekking heeft op het gebruik van de functie [MS-DS-ConsistencyGuid als bron anker](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) . Dit probleem is van invloed op klanten die Federatie hebben geconfigureerd *met AD FS* als de aanmeldings methode voor gebruikers. Wanneer u de taak *bron anker configureren* in de wizard uitvoert, schakelt Azure AD Connect over naar het bron kenmerk * MS-DS-ConsistencyGuid als broncode voor immutableId. Als onderdeel van deze wijziging Azure AD Connect probeert de claim regels voor ImmutableId in AD FS bij te werken. Deze stap is echter mislukt omdat Azure AD Connect geen beheerders referenties hebt vereist voor het configureren van AD FS. Met deze oplossing wordt Azure AD Connect nu gevraagd om de beheerders referenties voor AD FS in te voeren wanneer u de taak *bron anker configureren* uitvoert.
 
 
 
@@ -485,7 +485,7 @@ Status: september 05 2017
 * Er is een bekend probleem met Azure AD Connect-upgrade dat van invloed is op klanten die [naadloze eenmalige aanmelding](how-to-connect-sso.md)hebben ingeschakeld. Nadat Azure AD Connect is bijgewerkt, wordt de functie als uitgeschakeld weer gegeven in de wizard, zelfs als de functie ingeschakeld blijft. In toekomstige versies wordt een oplossing voor dit probleem verstrekt. Klanten die zich zorgen maken over dit weergave probleem, kunnen het hand matig oplossen door de wizard naadloze eenmalige aanmelding in te scha kelen.
 
 #### <a name="fixed-issues"></a>Opgeloste problemen
-* Er is een probleem opgelost waarbij wordt voor komen dat Azure AD Connect de claim regels in on-premises AD FS bijwerkt tijdens het inschakelen van de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Het probleem treedt op als u probeert de functie in te scha kelen voor een bestaande Azure AD Connect-implementatie die AD FS geconfigureerd als de aanmeldings methode. Dit probleem doet zich voor omdat de wizard niet wordt gevraagd om ADFS-referenties voordat wordt geprobeerd de claim regels in AD FS bij te werken.
+* Er is een probleem opgelost waarbij wordt voor komen dat Azure AD Connect de claim regels in on-premises AD FS bijwerkt tijdens het inschakelen van de functie [MS-DS-ConsistencyGuid als bron anker](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) . Het probleem treedt op als u probeert de functie in te scha kelen voor een bestaande Azure AD Connect-implementatie die AD FS geconfigureerd als de aanmeldings methode. Dit probleem doet zich voor omdat de wizard niet wordt gevraagd om ADFS-referenties voordat wordt geprobeerd de claim regels in AD FS bij te werken.
 * Er is een probleem opgelost waarbij de installatie van Azure AD Connect mislukt als NTLM is uitgeschakeld voor het on-premises AD-forest. Het probleem wordt veroorzaakt doordat Azure AD Connect wizard geen volledig gekwalificeerde referenties opgeeft bij het maken van de beveiligings contexten die vereist zijn voor Kerberos-verificatie. Dit zorgt ervoor dat Kerberos-verificatie mislukt en de wizard Azure AD Connect om terug te vallen op het gebruik van NTLM.
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
@@ -631,16 +631,16 @@ Het probleem dat zich voordoet, is dat de **optie alle domeinen en organisatie-e
 
 #### <a name="fixed-issues"></a>Opgeloste problemen
 
-* Er is een probleem opgelost met het terugschrijven van wacht woorden, waarmee een Azure AD-beheerder het wacht woord van een on-premises AD-privileged gebruikers account opnieuw kan instellen. Het probleem treedt op wanneer aan Azure AD Connect de machtiging wacht woord opnieuw instellen wordt verleend via het bevoegde account. Het probleem wordt opgelost in deze versie van Azure AD Connect door niet toe te staan dat een Azure AD-beheerder het wacht woord van een wille keurige on-premises AD-privileged user account opnieuw instelt, tenzij de beheerder de eigenaar van dat account is. Raadpleeg [Security advisor 4033453](https://technet.microsoft.com/library/security/4033453)voor meer informatie.
+* Er is een probleem opgelost met het terugschrijven van wacht woorden, waarmee een Azure AD-beheerder het wacht woord van een on-premises AD-privileged gebruikers account opnieuw kan instellen. Het probleem treedt op wanneer aan Azure AD Connect de machtiging wacht woord opnieuw instellen wordt verleend via het bevoegde account. Het probleem wordt opgelost in deze versie van Azure AD Connect door niet toe te staan dat een Azure AD-beheerder het wacht woord van een wille keurige on-premises AD-privileged user account opnieuw instelt, tenzij de beheerder de eigenaar van dat account is. Raadpleeg [Security advisor 4033453](/security-updates/SecurityAdvisories/2017/4033453)voor meer informatie.
 
-* Er is een probleem opgelost dat betrekking heeft op de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) waarbij Azure AD Connect niet terugschrijven naar on-premises AD MS-DS-ConsistencyGuid-kenmerk. Het probleem treedt op wanneer er meerdere on-premises AD-forests zijn toegevoegd aan Azure AD Connect en de *optie gebruikers identiteiten bestaan in meerdere mappen* is geselecteerd. Wanneer deze configuratie wordt gebruikt, vullen de resulterende synchronisatie regels niet het kenmerk sourceAnchorBinary in de tekst in. Het kenmerk sourceAnchorBinary wordt gebruikt als het bron kenmerk voor het kenmerk MS-DS-ConsistencyGuid. Als gevolg hiervan wordt write-back naar het kenmerk MS-DSConsistencyGuid niet uitgevoerd. Om het probleem op te lossen, zijn de volgende synchronisatie regels bijgewerkt om ervoor te zorgen dat het kenmerk sourceAnchorBinary in de tekst altijd wordt ingevuld:
+* Er is een probleem opgelost dat betrekking heeft op de functie [MS-DS-ConsistencyGuid als bron-anker](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) waarbij Azure AD Connect niet terugschrijven naar on-premises AD MS-DS-ConsistencyGuid-kenmerk. Het probleem treedt op wanneer er meerdere on-premises AD-forests zijn toegevoegd aan Azure AD Connect en de *optie gebruikers identiteiten bestaan in meerdere mappen* is geselecteerd. Wanneer deze configuratie wordt gebruikt, vullen de resulterende synchronisatie regels niet het kenmerk sourceAnchorBinary in de tekst in. Het kenmerk sourceAnchorBinary wordt gebruikt als het bron kenmerk voor het kenmerk MS-DS-ConsistencyGuid. Als gevolg hiervan wordt write-back naar het kenmerk MS-DSConsistencyGuid niet uitgevoerd. Om het probleem op te lossen, zijn de volgende synchronisatie regels bijgewerkt om ervoor te zorgen dat het kenmerk sourceAnchorBinary in de tekst altijd wordt ingevuld:
   * In van AD-InetOrgPerson AccountEnabled.xml
   * In van AD-InetOrgPerson Common.xml
   * In van AccountEnabled.xml van AD-gebruiker
   * In van Common.xml van AD-gebruiker
   * In van AD-gebruiker toevoegen SOAInAAD.xml
 
-* Voorheen, zelfs als de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) niet is ingeschakeld, wordt de synchronisatie regel ' out to AD-gebruiker ImmutableId ' nog steeds toegevoegd aan Azure AD Connect. Het effect is onschadelijk en leidt er niet toe dat er een write-back van het MS-DS-ConsistencyGuid-kenmerk plaatsvindt. Om Verwar ring te voor komen, is logica toegevoegd om ervoor te zorgen dat de synchronisatie regel alleen wordt toegevoegd wanneer de functie is ingeschakeld.
+* Voorheen, zelfs als de functie [MS-DS-ConsistencyGuid als bron anker](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) niet is ingeschakeld, wordt de synchronisatie regel ' out to AD-gebruiker ImmutableId ' nog steeds toegevoegd aan Azure AD Connect. Het effect is onschadelijk en leidt er niet toe dat er een write-back van het MS-DS-ConsistencyGuid-kenmerk plaatsvindt. Om Verwar ring te voor komen, is logica toegevoegd om ervoor te zorgen dat de synchronisatie regel alleen wordt toegevoegd wanneer de functie is ingeschakeld.
 
 * Er is een probleem opgelost dat ertoe leidde dat wachtwoord-hash-synchronisatie mislukt met fout gebeurtenis 611. Dit probleem treedt op nadat een of meer domein controllers zijn verwijderd uit on-premises AD. Aan het einde van elke wachtwoord synchronisatie cyclus bevat de synchronisatie cookie die is uitgegeven door on-premises AD, aanroep-Id's van de verwijderde domein controllers met USN (Update Sequence Number) met de waarde 0. Wachtwoord synchronisatie beheer kan synchronisatie cookie met de USN-waarde 0 niet persistent maken en mislukt met fout gebeurtenis 611. Tijdens de volgende synchronisatie cyclus gebruikt de wachtwoord synchronisatie beheerder de laatste permanente synchronisatie cookie die geen USN-waarde van 0 bevat. Hierdoor worden de wijzigingen in het wacht woord opnieuw gesynchroniseerd. Met deze oplossing blijft de synchronisatie cookie goed door de beheerder voor wachtwoord synchronisatie.
 
@@ -648,12 +648,12 @@ Het probleem dat zich voordoet, is dat de **optie alle domeinen en organisatie-e
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
-* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Met name:
+* Voorheen was de functie [MS-DS-ConsistencyGuid als bron-anker](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) alleen beschikbaar voor nieuwe implementaties. Nu is het beschikbaar voor bestaande implementaties. Met name:
   * Als u de functie wilt openen, start u de wizard Azure AD Connect en kiest u de optie *bron anker bijwerken* .
   * Deze optie is alleen zichtbaar voor bestaande implementaties die gebruikmaken van objectGuid als source Anchor-kenmerk.
   * Bij het configureren van de optie valideert de wizard de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een gebruikers object in de Directory, gebruikt de wizard de MS-DS-ConsistencyGuid als het kenmerk source Anchor. Als het kenmerk is geconfigureerd voor een of meer gebruikers objecten in de Directory, sluit de wizard het kenmerk dat wordt gebruikt door andere toepassingen en is het niet geschikt als source Anchor-kenmerk en staat het bron anker niet toe om door te gaan. Als u zeker weet dat het kenmerk niet door bestaande toepassingen wordt gebruikt, moet u contact opnemen met de ondersteuning voor meer informatie over het onderdrukken van de fout.
 
-* Voor het kenmerk **userCertificate** op object-objecten zoekt Azure AD Connect nu naar certificaat waarden [die zijn vereist voor het verbinden van apparaten die aan een domein zijn gekoppeld met Azure AD voor Windows 10-ervaring](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy) en filtert de rest voordat u synchroniseert met Azure AD. Om dit gedrag in te scha kelen, is de out-of-Box-synchronisatie regel "out to AAD-SOAInAD toevoegen" bijgewerkt.
+* Voor het kenmerk **userCertificate** op object-objecten zoekt Azure AD Connect nu naar certificaat waarden [die zijn vereist voor het verbinden van apparaten die aan een domein zijn gekoppeld met Azure AD voor Windows 10-ervaring](../devices/hybrid-azuread-join-plan.md) en filtert de rest voordat u synchroniseert met Azure AD. Om dit gedrag in te scha kelen, is de out-of-Box-synchronisatie regel "out to AAD-SOAInAD toevoegen" bijgewerkt.
 
 * Azure AD Connect ondersteunt nu write-back van het kenmerk **cloudPublicDelegates** van Exchange Online naar een on-premises AD **publicDelegates** -kenmerk. Hierdoor kan het scenario met een Exchange Online-postvak SendOnBehalfTo rechten krijgen voor gebruikers met een on-premises Exchange-postvak. Ter ondersteuning van deze functie is een nieuwe out-of-Box-synchronisatie regel (out-to-AD-User Exchange Hybrid PublicDelegates write) toegevoegd. Deze synchronisatie regel wordt alleen toegevoegd aan Azure AD Connect wanneer de hybride functie van Exchange is ingeschakeld.
 
@@ -844,7 +844,7 @@ Azure AD Connect-synchronisatie
 * De Azure AD-Tenant bevat een service configuratie waarmee wordt aangegeven of de functie voor wachtwoord synchronisatie is ingeschakeld voor uw Tenant of niet. Voorheen is het eenvoudig dat de service configuratie onjuist is geconfigureerd door Azure AD Connect wanneer u een actieve en een staging-server hebt. Azure AD Connect wordt nu geprobeerd de service configuratie alleen te laten overeenkomen met uw actieve Azure AD Connect server.
 * De wizard Azure AD Connect detecteert en retourneert nu een waarschuwing als on-premises AD geen AD-prullenbak heeft ingeschakeld.
 * Voorheen werd een time-out van het exporteren naar Azure AD als de gezamenlijke grootte van de objecten in de batch een bepaalde drempel waarde overschrijdt. Nu zal de synchronisatie service opnieuw proberen om de objecten in afzonderlijke, kleinere batches opnieuw te verzenden als het probleem wordt aangetroffen.
-* De toepassing voor sleutel beheer van de synchronisatie service is verwijderd uit het menu Start van Windows. Het beheer van de versleutelings sleutel wordt nog steeds ondersteund via de opdracht regel interface met behulp van miiskmu.exe. Raadpleeg voor meer informatie over het beheren van de versleutelings sleutel [het artikel de versleutelings sleutel voor de Azure AD Connect synchronisatie afbreken](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
+* De toepassing voor sleutel beheer van de synchronisatie service is verwijderd uit het menu Start van Windows. Het beheer van de versleutelings sleutel wordt nog steeds ondersteund via de opdracht regel interface met behulp van miiskmu.exe. Raadpleeg voor meer informatie over het beheren van de versleutelings sleutel [het artikel de versleutelings sleutel voor de Azure AD Connect synchronisatie afbreken](./how-to-connect-sync-change-serviceacct-pass.md#abandoning-the-adsync-service-account-encryption-key).
 * Als u eerder het wacht woord voor Azure AD Connect synchronisatie service-account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het Azure AD Connect synchronisatie service-account opnieuw hebt geïnitialiseerd. Dit proces is nu niet meer nodig.
 
 Desktop-SSO
@@ -1072,7 +1072,7 @@ Uitgebracht: november 2015
 
 **Nieuw ondersteund scenario:**
 
-* Ondersteunt meerdere on-premises Exchange-organisaties. Zie [hybride implementaties met meerdere Active Directory-forests](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))voor meer informatie.
+* Ondersteunt meerdere on-premises Exchange-organisaties. Zie [hybride implementaties met meerdere Active Directory-forests](/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))voor meer informatie.
 
 **Opgeloste problemen:**
 
@@ -1181,7 +1181,7 @@ Uitgebracht: december 2014
 **Nieuwe functies:**
 
 * Wachtwoord synchronisatie met filteren op basis van een kenmerk wordt nu ondersteund. Zie [wachtwoord synchronisatie met filters](how-to-connect-sync-configure-filtering.md)voor meer informatie.
-* Het kenmerk MS-DS-ExternalDirectoryObjectID wordt teruggeschreven naar Active Directory. Deze functie voegt ondersteuning toe voor Office 365-toepassingen. OAuth2 wordt gebruikt voor toegang tot online en on-premises post vakken in een hybride Exchange-implementatie.
+* Het kenmerk MS-DS-ExternalDirectoryObjectID wordt teruggeschreven naar Active Directory. Deze functie voegt ondersteuning toe voor Microsoft 365 toepassingen. OAuth2 wordt gebruikt voor toegang tot online en on-premises post vakken in een hybride Exchange-implementatie.
 
 **Problemen met de upgrade:**
 

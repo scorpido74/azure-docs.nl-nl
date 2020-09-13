@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527805"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018098"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -31,13 +31,13 @@ Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoe
 
 De [Azure Active Directory User Provisioning Service](../app-provisioning/user-provisioning.md) kan worden geïntegreerd met de [HR Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) om gebruikers accounts in te richten. De werk stroom die door de gebruiker wordt ondersteund door de Azure AD User Provisioning-Service, biedt de mogelijkheid om de volgende scenario's voor human resources en Identity Lifecycle Management te automatiseren:
 
-* **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan workday, wordt er automatisch een gebruikers account gemaakt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die door Azure AD worden ondersteund](../app-provisioning/user-provisioning.md), met een back-up van IT-beheerde contact gegevens naar workday.
+* **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan workday, wordt er automatisch een gebruikers account gemaakt in Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die door Azure AD worden ondersteund](../app-provisioning/user-provisioning.md), met terugschrijven van IT-beheerde contact gegevens naar workday.
 
-* **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in workday (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in workday (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt in Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Beëindiging van werk nemers** : wanneer een werk nemer wordt beëindigd in workday, wordt het gebruikers account automatisch uitgeschakeld in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* **Beëindiging van werk nemers** : wanneer een werk nemer wordt beëindigd in workday, wordt het gebruikers account automatisch uitgeschakeld in Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-* Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
+* Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
 ### <a name="whats-new"></a>Nieuwe functies
 In deze sectie worden verbeteringen voor de recente werk dagen van integratie vastgelegd. Voor een lijst met uitgebreide updates, geplande wijzigingen en archieven gaat u naar de pagina [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md) 
@@ -60,7 +60,7 @@ De oplossing voor de gebruikers inrichting van deze werkdag is in het ideale gev
 
 * Organisaties die aan een of meer Active Directory-forests, domeinen en organisatie-eenheden moeten worden gesynchroniseerd, worden verplaatst en verlaten, alleen op basis van gewijzigde informatie die is gedetecteerd in de HCM-module van de werkdag (Zie [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
-* Organisaties die Office 365 gebruiken voor e-mail
+* Organisaties die Microsoft 365 voor e-mail gebruiken
 
 ## <a name="solution-architecture"></a>Architectuur van de oplossing
 
@@ -373,7 +373,7 @@ Zet het installatie programma van de gedownloade agent over naar de server host 
 1. Controleer de installatie van de agent en zorg ervoor dat deze wordt uitgevoerd door de module ' Services ' te openen en te zoeken naar de service met de naam ' Microsoft Azure AD Connect inrichtings agent '.
 
    >[!div class="mx-imgBorder"]
-   >![Services](./media/workday-inbound-tutorial/services.png)
+   >![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die wordt uitgevoerd in Services](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Deel 3: in de inrichtings-app de verbinding configureren voor workday en Active Directory
 In deze stap maken we verbinding met werkdag en Active Directory in de Azure Portal. 
@@ -390,9 +390,9 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>
@@ -493,24 +493,24 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | KENMERK WORKDAY | ACTIVE DIRECTORY-KENMERK |  OVEREENKOMENDE ID? | MAKEN/BIJWERKEN |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
-| **PreferredNameData**    |  genoemd    |   |   Geschreven bij alleen maken |
+| **PreferredNameData**    |  cn    |   |   Geschreven bij alleen maken |
 | **SelectUniqueValue (toevoegen (" \@ ", samen voegen (".", voor  \[ naam \] , \[ achternaam \] ), "contoso.com"), samen voegen (" \@ ", samen voegen (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), deel nemen (" \@ ", lid (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch ( \[ actief \] ,, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
-| **Voor**   | givenName       |     |    + Update maken |
-| **Naam**   |   sn   |     |  + Update maken |
+| **FirstName**   | givenName       |     |    + Update maken |
+| **LastName**   |   sn   |     |  + Update maken |
 | **PreferredNameData**  |  displayName |     |   + Update maken |
 | **Company**         | bedrijf   |     |  + Update maken |
 | **SupervisoryOrganization**  | department  |     |  + Update maken |
 | **ManagerReference**   | manager  |     |  + Update maken |
-| **BusinessTitle**   |  titel     |     |  + Update maken | 
+| **BusinessTitle**   |  title     |     |  + Update maken | 
 | **AddressLineData**    |  streetAddress  |     |   + Update maken |
 | **Gemeenschap**   |   l   |     | + Update maken |
 | **CountryReferenceTwoLetter**      |   co |     |   + Update maken |
 | **CountryReferenceTwoLetter**    |  c  |     |         + Update maken |
 | **CountryRegionReference** |  st     |     | + Update maken |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  + Update maken |
-| **Code**  |   Code  |     | + Update maken |
+| **Code**  |   postalCode  |     | + Update maken |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | + Update maken |
 | **Fax**      | facsimileTelephoneNumber     |     |    + Update maken |
 | **Mobiel**  |    mobiel       |     |       + Update maken |
@@ -1154,7 +1154,7 @@ Ten aanzien van gegevens retentie, genereert de Azure AD-inrichtings service gee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen werk dagen en Azure Active Directory](workday-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het gebruik van Microsoft Graph-Api's voor het beheren van inrichtings configuraties](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

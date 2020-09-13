@@ -3,17 +3,17 @@ title: Azure Blob-opslagverwijzing
 description: Zoek naar API-naslag informatie, leesmij-bestanden en client-bibliotheek pakketten voor Azure Blob Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 477170cf3c2bab54efc5ef74495f39fb89f62c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8e4cada8ac2570fa32d55e35cbcdb214d5b5188
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976690"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018153"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob-opslagverwijzing
 
@@ -25,10 +25,10 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure B
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Blob Storage-client bibliotheek voor .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Quickstart: Azure Blob Storage-clientbibliotheek v12 voor .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
+| 12. x | [Azure Blob Storage-client bibliotheek voor .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Snelstart: De Azure Blob Storage-clientbibliotheek v12 voor .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
 | 11. x | [Micro soft. Azure. storage. blob-naam ruimte](/dotnet/api/microsoft.azure.storage.blob) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Quickstart: Azure Blob Storage-clientbibliotheek v11 voor .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
 
-### <a name="storage-management"></a>Opslag beheer
+### <a name="storage-management"></a>Opslagbeheer
 
 De volgende tabel bevat referentie documentatie voor Azure Storage Management .NET-Api's.
 
@@ -42,7 +42,7 @@ De volgende tabel bevat referentie documentatie voor het Azure Storage van .NET-
 
 |  Versie  | Referentie documentatie | Pakket |
 | :-------: | ----------------------- | ------- |
-| 1.x | [Verplaatsing van gegevens](/dotnet/api/microsoft.azure.storage.datamovement) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
+| 1.x | [Gegevensverplaatsing](/dotnet/api/microsoft.azure.storage.datamovement) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
 
 ## <a name="java-client-libraries"></a>Java-client bibliotheken
 
@@ -50,10 +50,10 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure B
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage-blobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Quick Start: blobs beheren met Java V12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
+| 12. x | [Azure Storage-blobs](/java/api/overview/azure/storage-blob-readme) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Quickstart: Blobs beheren met Java v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
 | 8.x | [com. micro soft. Azure. storage. blob](/java/api/com.microsoft.azure.storage.blob) | [Pakket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Quick Start: blobs beheren met Java V8 SDK](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
-### <a name="storage-management"></a>Opslag beheer
+### <a name="storage-management"></a>Opslagbeheer
 
 De volgende tabel bevat referentie documentatie voor Java-Api's van Azure Storage beheer.
 
@@ -67,8 +67,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor de pyth
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Quickstart: Blobs beheren met Python v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Quickstart: Blobs beheren met Python v 2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Quickstart: Blobs beheren met Python v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Quickstart: Blobs beheren met Python v 2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
 
 ## <a name="javascript-client-libraries"></a>Java script-client bibliotheken
 
@@ -76,8 +76,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure B
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage Blob-client bibliotheek voor Java script](/javascript/api/overview/azure/storage-blob-readme) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [Quickstart: Blobs beheren met JavaScript v12 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Quickstart: Blobs beheren met JavaScript v12 SDK in een browser](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Quick Start: blobs beheren met Java script V10 toevoegen SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Quick Start: blobs beheren met Java script V10 toevoegen SDK in browser](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 12. x | [Azure Storage Blob-client bibliotheek voor Java script](/javascript/api/overview/azure/storage-blob-readme) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [Quickstart: Blobs beheren met JavaScript v12 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Quickstart: Blobs beheren met JavaScript v12 SDK in een browser](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
+| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [Package (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Quickstart: Blobs beheren met JavaScript v10 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Quickstart: Blobs beheren met JavaScript v10 SDK in browser](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
 
 ## <a name="rest-apis"></a>REST-API’s
 
@@ -89,7 +89,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure B
 
 ### <a name="other-rest-reference"></a>Andere REST-referentie
 
-- [Azure Storage import-export rest API](/rest/api/storageimportexport/) helpt u bij het beheren van import/export-taken voor het overdragen van gegevens van of naar Blob Storage.
+- [Azure Storage import-export rest API ](/rest/api/storageimportexport/) helpt u bij het beheren van import/export-taken voor het overdragen van gegevens van of naar Blob Storage.
 
 ## <a name="other-languages-and-platforms"></a>Andere talen en platformen
 
@@ -107,8 +107,9 @@ De volgende tabel bevat koppelingen naar de meest recente versie van de referent
 
 | Versie | Platform |
 | ------- | -------- |
-|  controleert  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

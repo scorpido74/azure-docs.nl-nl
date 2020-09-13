@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/10/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8fa409a8ee66cd69016b7978f0d5f0194b338c4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959150"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015446"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -100,12 +100,12 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name. naam |
-| jobTitle |titel |
+| jobTitle |title |
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
 | mobiel |phoneNumbers [type EQ "Mobile"]. waarde |
-| Code |adressen [type EQ "werk]. post code |
+| postalCode |adressen [type EQ "werk]. post code |
 | proxy-adressen |e-mail berichten [type EQ "Overig"]. Value |
 | fysieke levering-Office-locatie |adressen [type EQ "other"]. Opgemaakt |
 | streetAddress |adressen [type EQ "werk]. streetAddress |
@@ -122,7 +122,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |displayName |
 | leden |leden |
-| Id |externalId |
+| objectId |externalId |
 | proxyAddresses |e-mail berichten [type EQ "Overig"]. Value |
 
 Er zijn verschillende eind punten gedefinieerd in de SCIM RFC. U kunt aan de slag met het/User-eind punt en vervolgens van daaruit uitbreiden. Het/schemas-eind punt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regel matig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het/bulk-eind punt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eind punten die zijn gedefinieerd in de SCIM-standaard. Het/schemas-eind punt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regel matig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het/bulk-eind punt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eind punten die zijn gedefinieerd in de SCIM-standaard. 
@@ -147,7 +147,7 @@ Als u een toepassing bouwt die een SCIM 2,0-gebruikers beheer-API ondersteunt, w
 Binnen de [SCIM 2,0-protocol specificatie](http://www.simplecloud.info/#Specification)moet uw toepassing aan de volgende vereisten voldoen:
 
 * Biedt ondersteuning voor het maken van gebruikers, en optioneel ook groepen, zoals wordt bepaald door para graaf [3,3 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.3).  
-* Ondersteunt het wijzigen van gebruikers of groepen met PATCH aanvragen, zoals wordt bepaald door [de sectie 3.5.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
+* Ondersteunt het wijzigen van gebruikers of groepen met PATCH aanvragen, zoals wordt bepaald door [de sectie 3.5.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.5.2). Ondersteuning garandeert dat groepen en gebruikers op een uitvoerende manier worden ingericht. 
 * Biedt ondersteuning voor het ophalen van een bekende resource voor een eerder gemaakte gebruiker of groep, zoals wordt bepaald door [de sectie 3.4.1 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
 * Biedt ondersteuning voor het uitvoeren van query's op gebruikers of groepen, zoals wordt bepaald door sectie [3.4.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Gebruikers worden standaard opgehaald door hun en er wordt een query uitgevoerd op `id` de `username` `externalId` groepen en en er wordt een query uitgevoerd `displayName` .  
 * Biedt ondersteuning voor het uitvoeren van query's op de gebruiker door de ID en per Manager, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
@@ -746,7 +746,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-bereiken
-De Azure AD-inrichtings service werkt momenteel onder het IP-bereik voor AzureActiveDirectory en AzureActiveDirectoryDomainServices, zoals [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)wordt weer gegeven. Het werk wordt uitgevoerd om alleen de IP-bereiken onder AzureActiveDirectory te consolideren. 
+De Azure AD-inrichtings service werkt momenteel met de IP-bereiken voor AzureActiveDirectory zoals [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)wordt vermeld. U kunt de IP-bereiken onder het label AzureActiveDirectory toevoegen om verkeer van de Azure AD-inrichtings service toe te staan in uw toepassing. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
@@ -1152,7 +1152,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat in dit artikel w
     > **Test verbindings** QUERY'S het scim-eind punt voor een gebruiker die niet bestaat, met behulp van een wille keurige GUID als de overeenkomende eigenschap die is geselecteerd in de Azure AD-configuratie. Het verwachte juiste antwoord is HTTP 200 OK met een leeg SCIM ListResponse-bericht.
 
 10. Als de pogingen om verbinding te maken met de toepassing slagen, selecteert u **Opslaan** om de beheerders referenties op te slaan.
-11. In de sectie **toewijzingen** zijn er twee sets met [kenmerk toewijzingen](customize-application-attributes.md): één voor gebruikers objecten en één voor groeps objecten. Selecteer elk item om de kenmerken te controleren die zijn gesynchroniseerd van Azure Active Directory naar uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers en groepen in uw app voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+11. In de sectie **toewijzingen** zijn er twee sets met [kenmerk toewijzingen](customize-application-attributes.md): één voor gebruikers objecten en één voor groeps objecten. Selecteer elk item om de kenmerken te controleren die zijn gesynchroniseerd van Azure Active Directory naar uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers en groepen in uw app voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     > [!NOTE]
     > U kunt de synchronisatie van groeps objecten eventueel uitschakelen door de toewijzing groepen uit te scha kelen.
@@ -1162,7 +1162,7 @@ Toepassingen die ondersteuning bieden voor het SCIM-profiel dat in dit artikel w
 14. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
 15. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren.
 
-Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie [rapportage over het automatisch inrichten van gebruikers accounts](check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. hier worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie [Rapportage over automatische inrichting van gebruikersaccounts](check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
 > [!NOTE]
 > De eerste cyclus duurt langer dan de volgende synchronisaties, wat ongeveer elke 40 minuten gebeurt, zolang de service wordt uitgevoerd.
@@ -1175,7 +1175,7 @@ Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u
 Volg de onderstaande controle lijst om ervoor te zorgen dat uw toepassing voorbereid snelle en klanten een soepele implementatie-ervaring hebben. De gegevens worden verzameld van u bij het onboarden naar de galerie. 
 > [!div class="checklist"]
 > * Een [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) -gebruikers-en-groeps eindpunt ondersteunen (er is slechts één vereist, maar beide worden aanbevolen)
-> * Ten minste 25 aanvragen per seconde per Tenant ondersteunen (vereist)
+> * Ten minste 25 aanvragen per seconde per Tenant ondersteunen om ervoor te zorgen dat gebruikers en groepen zonder vertraging worden ingericht en ongedaan gemaakt (vereist)
 > * Technische hulp en ondersteunings contacten tot stand brengen om klanten te begeleiden post galerie voorbereiden (vereist)
 > * 3 niet-verlopende test referenties voor uw toepassing (vereist)
 > * Ondersteuning voor de OAuth-autorisatie code subsidie of een lang bewaard token zoals hieronder wordt beschreven (vereist)
@@ -1230,6 +1230,6 @@ We raden u aan om uw bestaande documentatie bij te werken en de integratie in uw
 * [Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
 * [Kenmerk toewijzingen voor gebruikers inrichting aanpassen](customize-application-attributes.md)
 * [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
-* [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Bereikfilters voor het inrichten van gebruikers](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Meldingen voor het inrichten van accounts](user-provisioning.md)
-* [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+* [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

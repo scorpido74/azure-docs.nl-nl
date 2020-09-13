@@ -3,12 +3,12 @@ title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050808"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019730"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
@@ -65,7 +65,7 @@ Als u Azure-Sentinel-resources voor meerdere klanten beheert, kunt u incidenten 
 
 Met [Azure monitor werkmappen in azure Sentinel](../../sentinel/overview.md#workbooks) kunt u gegevens van uw verbonden gegevens bronnen visualiseren en bewaken om inzicht te krijgen. U kunt de ingebouwde werkmap sjablonen gebruiken in azure Sentinel of aangepaste werkmappen maken voor uw scenario's.
 
-U kunt werkmappen implementeren in uw Tenant beheren en op schaal Dash boards maken om gegevens te bewaken en er query's op uit te zoeken tussen de tenants van de klant. Zie [controle op meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)voor meer informatie. Houd er rekening mee dat sommige mogelijkheden [niet in meerdere werk ruimten worden ondersteund](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
+U kunt werkmappen implementeren in uw Tenant beheren en op schaal Dash boards maken om gegevens te bewaken en er query's op uit te zoeken tussen de tenants van de klant. Zie [controle op meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)voor meer informatie. 
 
 U kunt werkmappen ook rechtstreeks implementeren in een afzonderlijke Tenant die u beheert voor scenario's die specifiek zijn voor die klant.
 
@@ -76,8 +76,6 @@ Maak en sla Log Analytics query's voor bedreigingen detectie centraal op in de T
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatisering gebruiken voor beheer van meerdere werk ruimten
 
 U kunt Automation gebruiken voor het beheren van meerdere Azure Sentinel-werk ruimten en het configureren van [jacht-query's](../../sentinel/hunting.md), playbooks en werkmappen. Zie [beheer op meerdere werk ruimten met Automation](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)voor meer informatie.
-
-Houd er rekening mee dat sommige mogelijkheden [momenteel niet worden ondersteund in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
 ## <a name="manage-security-of-office-365-environments"></a>Beveiliging van Office 365-omgevingen beheren
 
