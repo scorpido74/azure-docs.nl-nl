@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036620"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292517"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
 
@@ -234,7 +234,7 @@ In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component
 
 ### <a name="new-regions"></a>Nieuwe regio's
 
-#### <a name="uae-north"></a>UAE - noord
+#### <a name="uae-north"></a>VAE - noord
 De beheer-IP-adressen van UAE-noord zijn: `65.52.252.96` en `65.52.252.97` .
 
 
@@ -779,7 +779,7 @@ Deze release bevat component 1.2.1 en hive 2.1.0 naast de volgende patches:
 
 -   [*Hive-17621*](https://issues.apache.org/jira/browse/HIVE-17621): Hive-site-instellingen worden genegeerd tijdens het splitsen van HCatInputFormat.
 
--   [*Hive-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: een white list/Black-configuratie voor het toestaan van selectieve caching van tabellen/partities en het toestaan van Lees bewerkingen tijdens prewarm.
+-   [*Hive-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: een goedgekeurde/niet-goedgekeurde configuratie voor het toestaan van selectieve caching van tabellen/partities en het toestaan van lezen tijdens het voorwarmen.
 
 -   [*Hive-17636*](https://issues.apache.org/jira/browse/HIVE-17636): Voeg meerdere \_ agg. q-test toe voor blobstores.
 
@@ -1570,7 +1570,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 | BUG-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | Automatisch samen voegen mislukt wanneer ' in map invoegen als orcfile '                                      |
 | BUG-98814              | [HDFS-13314](https://issues.apache.org/jira/browse/HDFS-13314)   | NameNode moet eventueel worden afgesloten als FsImage beschadigd wordt gedetecteerd                              |
 
-**Upgrades**
+**Upgraden**
 
 | **Hortonworks-fout-ID** | **Apache JIRA**                                                                                                                | **Samenvatting**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1692,7 +1692,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 
 |**Apache-onderdeel**|**Apache JIRA**|**Samenvatting**|**Details**|
 |--|--|--|--|
-|**Spark 2,3** |**N.v.t.** |**Wijzigingen zoals beschreven in de opmerkingen bij de Apache Spark-release** |-Er is een ' afschaffing ' document en de hand leiding ' wijzigen van gedrag 'https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Voor SQL-deel is er nog een gedetailleerde hand leiding voor ' migratie ' (van 2,2 tot 2,3).https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**N.v.t.** |**Wijzigingen zoals beschreven in de opmerkingen bij de Apache Spark-release** |-Er is een ' afschaffing ' document en de hand leiding ' wijzigen van gedrag ' https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Voor SQL-deel is er nog een gedetailleerde hand leiding voor ' migratie ' (van 2,2 tot 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |De Spark-taak is voltooid, maar er is een fout met de volledige HDFS-schijf quota |**Scenario:** Het uitvoeren van een invoer **overschrijven** wanneer een quotum is ingesteld op de map Prullenbak van de gebruiker die de opdracht uitvoert.<br /><br />**Vorig gedrag:** De taak is voltooid, zelfs als het niet lukt om de gegevens naar de Prullenbak te verplaatsen. Het resultaat kan onjuiste gegevens bevatten die eerder in de tabel aanwezig zijn.<br /><br />**Nieuw gedrag:** Wanneer de map verplaatsen naar de Prullenbak mislukt, worden de bestanden definitief verwijderd.|
 |**Kafka 1,0**|**N.v.t.**|**Wijzigingen zoals beschreven in de opmerkingen bij de Apache Spark-release** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/zwerver** | |Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de toevoeging |**Scenario:** Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de **toevoeging**<br /><br />**Vorig gedrag:** Het negeren van query's voor Hive- **invoegingen** slaagt zoals gebruikelijk.<br /><br />**Nieuw gedrag:** Het **overschrijven** van Hive-query's van het onderdeel is onverwacht mislukt na een upgrade naar HDP-2.6. x met de volgende fout:<br /><br />Fout bij het compileren van de instructie: mislukt: de HiveAccessControlException toestemming is geweigerd: de gebruiker jdoe heeft geen schrijf bevoegdheid op/tmp/ \* (status = 42000, code = 40000)<br /><br />Net als bij HDP-2.6.0 is voor het **overschrijven** van Hive-query's vereist een ZWERVER-URI-beleid om schrijf bewerkingen toe te staan, zelfs als de gebruiker schrijf bevoegdheid heeft verleend via HDFS-beleid.<br /><br />**Tijdelijke oplossing/verwachte klant actie:**<br /><br />1. Maak een nieuw beleid onder Hive-opslag.<br />2. Selecteer URI in de vervolg keuzelijst waar u de data base ziet.<br />3. het pad bijwerken (voor beeld:/tmp/*)<br />4. Voeg de gebruikers en groep toe en sla het op.<br />5. Voer de query INSERT opnieuw uit.|

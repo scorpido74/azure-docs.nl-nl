@@ -3,12 +3,12 @@ title: Beleid voor het labelen van resources
 description: Hierin worden de Azure-beleids regels beschreven die u kunt toewijzen om label compatibiliteit te garanderen.
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6867bc01306ac3c08a9797ece0567a45e060af2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82147854"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293729"
 ---
 # <a name="assign-policies-for-tag-compliance"></a>Beleid voor naleving van labels toewijzen
 
@@ -16,9 +16,9 @@ U gebruikt [Azure Policy](../../governance/policy/overview.md) om regels en conv
 
 ## <a name="policies"></a>Beleidsregels
 
-[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/reference/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Tags gebruiken om uw Azure-resources te organiseren](tag-resources.md)voor meer informatie over het labelen van resources.
+* Zie [Tags gebruiken om uw Azure-resources te organiseren](tag-resources.md) voor meer informatie over het taggen van resources.
 * Niet alle resource typen ondersteunen Tags. Zie [tag-ondersteuning voor Azure-resources](tag-support.md)om te bepalen of u een tag kunt Toep assen op een resource type.

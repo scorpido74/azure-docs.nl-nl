@@ -3,12 +3,12 @@ title: Azure DevTest Labs voor ontwikkel aars gebruiken | Microsoft Docs
 description: Meer informatie over Azure DevTest Labs-functies die kunnen worden gebruikt om te voldoen aan de vereisten voor ontwikkel aars en gedetailleerde stappen die u kunt volgen om een lab in te stellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293019"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296240"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Azure DevTest Labs voor ontwikkel aars gebruiken
 Azure DevTest Labs kan worden gebruikt voor het implementeren van allerlei scenario's. Eén van de belangrijkste scenario's is het inzetten van DevTest Labs voor het hosten van ontwikkelmachines voor ontwikkelaars. In dit scenario biedt DevTest Labs deze voordelen:
@@ -43,7 +43,7 @@ In dit artikel vindt u informatie over diverse Azure DevTest Labs functies die k
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u Azure Marketplace-installatie kopieën kunt white list, zodat u alleen de gewenste installatie kopieën voor de ontwikkel aars beschikbaar maakt.|
+   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u installatie kopieën van Azure Marketplace kunt toestaan, zodat alleen de gewenste installatie kopieën voor de ontwikkel aars beschikbaar worden gemaakt.|
    | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt, vooraf te installeren, zodat ontwikkel aars snel een virtuele machine kunnen maken met behulp van de aangepaste installatie kopie.|
    | [Meer informatie over image Factory](./devtest-lab-faq.md#blog-post) |Bekijk een video met een beschrijving van het instellen en gebruiken van een image Factory.|
 

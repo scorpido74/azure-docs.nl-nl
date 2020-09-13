@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714777"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293639"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Ontwerp assistent-ervaring voor Windows 10
 
@@ -118,9 +118,9 @@ Veel Pc's zijn draagbaar, maar niet altijd binnen het bereik van de klant. Ze zi
 
 Daarom moeten assistenten de richt lijnen in deze sectie volgen om uw ervaring te beveiligen. Interactie boven slot vindt plaats wanneer de Windows-gebruiker niet is geverifieerd. Dit betekent dat in **het algemeen ook invoer naar de assistent moet worden behandeld als niet-geverifieerd**.
 
-- Assistenten moeten **een vaardigheids white list implementeren om te bepalen welke vaardig heden zijn bevestigd en veilig** toegankelijk zijn voor toegang tot de bovenstaande vergren deling.
+- Assistenten moeten **een lijst met toegestane vaardig heden implementeren om te bepalen welke kwalificaties veilig en veilig toegankelijk zijn voor de** bovenstaande vergren deling.
 - Luidspreker-ID-technologieën kunnen een rol spelen bij het verlichten van enkele Risico's, maar de luidspreker-ID is geen geschikte vervanging voor Windows-verificatie.
-- De vaardigheids white list moet rekening houden met drie klassen van acties of vaardig heden:
+- In de lijst met toegestane vaardig heden moet rekening worden gehouden met drie klassen van acties of vaardig heden:
 
 | **Actie klasse** | **Beschrijving** | **Voor beelden (geen volledige lijst)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Daarom moeten assistenten de richt lijnen in deze sectie volgen om uw ervaring t
 
 In het geval van Contoso is algemene informatie over open bare aandelen informatie veilig, zonder verificatie. Klantspecifieke informatie, zoals het eigendoms aantal van shares, is waarschijnlijk veilig met de spreker-ID. Koop-of verkoop voorraden mogen echter nooit worden toegestaan zonder Windows-verificatie.
 
-Om de ervaring verder te beveiligen, **worden webkoppelingen of andere startende app-naar-app altijd geblokkeerd door Windows tot de klant zich aanmeldt.** Als last van de laatste oplossing behoudt micro soft het recht om een toepassing te verwijderen uit de white list van ingeschakelde assistenten als een ernstig beveiligings probleem niet tijdig wordt opgelost.
+Om de ervaring verder te beveiligen, **worden webkoppelingen of andere startende app-naar-app altijd geblokkeerd door Windows tot de klant zich aanmeldt.** Als last van de laatste oplossing behoudt micro soft het recht om een toepassing te verwijderen uit de lijst met ingeschakelde assistenten als een ernstig beveiligings probleem niet tijdig wordt opgelost.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Ontwerp richtlijnen voor preview van spraak activering
 
