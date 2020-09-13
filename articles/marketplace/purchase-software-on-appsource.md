@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 5c5f690fd5fefbd67180ea04d5ca1d269676f7b7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180810"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032840"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
@@ -61,7 +61,7 @@ Nadat uw bestelling is ontvangen, kan het enkele seconden duren voordat deze wor
 
 Een [ondersteunings ticket](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) kan via het Microsoft 365-beheer centrum worden verzonden.
 
-[Neem contact op met de Help](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone)voor zakelijke producten.
+[Neem contact op met de Help](/office365/admin/contact-support-for-business-products?tabs=phone)voor zakelijke producten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7046062b1c2e42f47d650df6d616d6fb73c8d1ca
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286067"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033061"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problemen met het virtuele netwerk apparaat in azure
 
@@ -140,7 +140,7 @@ Leg een gelijktijdige netwerk tracering op de bron-VM, de NVA en de doel-VM vast
    sudo tcpdump-S0-i eth0-X-w vmtrace. Cap
 
 2. Gebruik **PsPing** of **nmap** van de bron-VM naar de doel-VM (bijvoorbeeld: `PsPing 10.0.0.4:80` of `Nmap -p 80 10.0.0.4` ).
-3. Open de netwerk tracering van de doel-VM met behulp van [Network Monitor](https://www.microsoft.com/download/details.aspx?id=4865) of tcpdump. Pas een weergave filter toe voor het IP-adres van de bron-VM waarop u **PsPing** of **nmap** hebt uitgevoerd, zoals `IPv4.address==10.0.0.4 (Windows netmon)` of `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
+3. Open de netwerk tracering van de doel-VM met behulp van [Network Monitor](https://cnet-downloads.com/network-monitor) of tcpdump. Pas een weergave filter toe voor het IP-adres van de bron-VM waarop u **PsPing** of **nmap** hebt uitgevoerd, zoals `IPv4.address==10.0.0.4 (Windows netmon)` of `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Traceringen analyseren
 

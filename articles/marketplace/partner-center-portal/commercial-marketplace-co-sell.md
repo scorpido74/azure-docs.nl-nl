@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: ca1a1bd1f07bf30fd7e5cd57b617a823120e85ea
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017367"
+ms.locfileid: "90033248"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
 
@@ -66,7 +66,7 @@ U hebt de mogelijkheid om liquide documenten op te geven die micro soft gebruikt
 
 | **Documenten**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Office 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul> |
+| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de relevante sjablonen die beschikbaar zijn in Partner Center: <br> <ul> <li> Microsoft Azure sjabloon met één pager </li> <li> Micro soft Dynamics 365 1-pager sjabloon </li> <li> Micro soft 365 1-pager sjabloon </li> <li> Windows 10 1-pager sjabloon </li> </ul> |
 | *Presentatie van de klant* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center.|
 | *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Gebruik de sjabloon die beschikbaar is in Partner Center. |
 | *Verifieer bare klant-WINS (optioneel)* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |

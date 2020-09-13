@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3924e609091f4d0975901024f20db74efb6aac5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606894"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032704"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Lead beheer voor de commerciële Marketplace
 
 Klanten zijn het midden van een goed bedrijf. Bij de trans formatie van de huidige product verwervingen, moeten de markt verwerkers zich richten op het rechtstreeks verbinden met klanten en het bouwen van een relatie. Daarom is het genereren van leads van hoge kwaliteit een essentieel hulp middel voor uw verkoop cyclus. Nadat u uw aanbieding in het [partner centrum](https://partner.microsoft.com/)hebt opgenomen, zijn er hulpprogram ma's ingeschakeld waarmee u direct nadat een klant rente hebt gegeven, de contact gegevens van de klant kunt ontvangen of uw product in de Marketplace implementeert. 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Wat zijn leads in de Marketplace?
+## <a name="what-are-leads-in-the-commercial-marketplace"></a>Wat zijn leads in de commerciële Marketplace?
 
-De leads zijn afkomstig van klanten die geïnteresseerd zijn of uw producten implementeren via Marketplace. Of uw product wordt vermeld op Azure Marketplace of AppSource, u kunt leads van klanten ontvangen zodra het correct is ingesteld vanuit uw CRM naar uw aanbieding (en) in het partner centrum. 
+De leads zijn afkomstig van klanten die geïnteresseerd zijn of uw producten implementeren vanuit de commerciële Marketplace. Zodra u uw CRM met uw aanbieding (en) in het partner centrum hebt verbonden, kunt u leads ontvangen van Azure Marketplace-en AppSource-klanten.
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>Verbinding maken tussen uw CRM-systeem en het partner centrum
 
-Als u leads wilt gaan verkrijgen, is lead management connector in Partner Center zo ontworpen dat deze eenvoudig kan worden aangesloten op uw CRM-gegevens in een lijst met beschik bare CRM-systemen. U kunt nu eenvoudig gebruikmaken van de leads die door Marketplace worden gegenereerd zonder een belang rijke engineering-inspanning om te integreren met een extern systeem.
+De lead management-connector in Partner Center is zo ontworpen dat deze eenvoudig met uw CRM-gegevens kan worden aangesloten op een lijst met beschik bare CRM-systemen. U kunt nu eenvoudig gebruikmaken van de leads die door Marketplace worden gegenereerd zonder een belang rijke engineering-inspanning om te integreren met een extern systeem.
 
 Hier vindt u stapsgewijze instructies voor het verbinden van elk van de mogelijke lead doelen:
 
@@ -38,17 +38,17 @@ Hier vindt u stapsgewijze instructies voor het verbinden van elk van de mogelijk
 
 **Https-eind punt** -Zie [lead beheer configureren met behulp van een HTTPS-eind punt](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md) voor instructies voor het instellen van uw https-eind punt voor het ophalen van leads.
 
-Zodra u uw lead doel correct hebt geconfigureerd en op uw aanbieding hebt geklikt op publiceren, zullen we de verbinding valideren en u een test lead sturen. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding te verkrijgen in de preview-omgeving. Het is belang rijk om ervoor te zorgen dat uw lead instellingen up-to-date blijven, zodat u geen leads kwijtraakt. Zorg er dus voor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.
+Zodra u uw lead doel correct hebt geconfigureerd en uw aanbieding hebt gepubliceerd, zullen we de verbinding valideren en u een test lead sturen. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding te verkrijgen in de preview-omgeving. Het is belang rijk om ervoor te zorgen dat uw lead instellingen up-to-date blijven, zodat u geen leads kwijtraakt. Zorg er dus voor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.
 
 ### <a name="what-are-the-next-steps"></a>Wat zijn de volgende stappen?
 
-Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken op het leveren van leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in feedback en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.
+Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in het leren van uw algemene verkoop proces en willen nauw samen werken met leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in feedback en suggesties zodat uw verkoop team succes voller kan maken met leads voor commerciële Marketplace.
 
 ## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Veelvoorkomende fouten bij de configuratie van de potentiële klant tijdens het publiceren in het partner centrum
 
 **Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
 
-> Als O365-verificatie is geselecteerd, controleert u of het gebruikers account en het wacht woord geldig zijn. Als AAD is geselecteerd, controleert u of de Tenant-ID, toepassings-ID en sleutel van de toepassing geheim overeenkomen met wat er is ingesteld voor AAD. Volg de instructies [hier](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md). Als de gebruikers naam of het wacht woord van het account geldig is, controleert u of het toegang heeft tot Dynamics 365 en of er een licentie is toegewezen (stap 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u een Office-gebruiker gebruikt). 
+> Als Microsoft 365 verificatie is geselecteerd, controleert u of het gebruikers account en het wacht woord geldig zijn. Als Azure Active Directory is geselecteerd, controleert u of de Tenant-ID, toepassings-ID en sleutel toepassing geheim overeenkomt met wat is ingesteld op Azure Active Directory. Volg de instructies [hier](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md). Als de gebruikers naam of het wacht woord van het account geldig is, controleert u of het toegang heeft tot Dynamics 365 en of er een licentie is toegewezen (stap 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u een Office-gebruiker gebruikt). 
 
 **Kan de lead niet opslaan in Dynamics CRM. De gebruiker heeft geen machtigingen voor het maken van het kenmerk leadsourcecode in de entiteit lead** 
 
@@ -56,7 +56,7 @@ Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw h
 
 **Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de Tenant is niet gevonden. Dit exemplaar kan zich voordoen als er geen actieve abonnementen voor de Tenant zijn.**  
 
-> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. U kunt de Directory-id ophalen op basis van de instructies bij stap 2 (onder [Azure Active Directory.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
+> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. U kunt de Directory-id ophalen op basis van de instructies bij stap 2 (onder [Azure Active Directory).](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
 
 **Kan de lead niet opslaan in Dynamics CRM. LastCRMError: SecLib:: RetrievePrivilegeForUser is mislukt-er zijn geen rollen aan de gebruiker toegewezen.**  
 
@@ -76,7 +76,7 @@ Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw h
 
 **Kan de lead niet opslaan in Dynamics CRM. LastCRMError: er is een time-out opgetreden voor het aanvraag kanaal tijdens het wachten op een antwoord na 00:02:00. Verhoog de time-outwaarde die is door gegeven aan de aanroep naar request of verhoog de SendTimeout-waarde voor de binding. De tijd die aan deze bewerking wordt toegewezen, heeft mogelijk een deel van een langere time-out.**  
 
-> Oplossing: Meld u aan bij Partner Center, Controleer de details van de winkel >> de doel-URL van de lead >> en controleer of het een geldig dynamisch CRM-exemplaar is.
+> Oplossing: Meld u aan bij Partner Center, Controleer de installatie van de aanbieding >> klant leads >> URL en controleer of het een geldig dynamisch CRM-exemplaar is.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -139,7 +139,7 @@ Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde d
 - *Regelen*
   - ' INS ': staat voor installatie. Dit bevindt zich op Azure Marketplace of AppSource wanneer een klant op de knop komt om uw product te verkrijgen.
   - "PLT": staat voor een door de partner geleide proef versie. Dit is op AppSource wanneer een klant de knop contact persoon bezoeken bevindt.
-  - ' DNC ': staat voor geen contact persoon. Dit is op AppSource wanneer een partner die op de pagina van uw app staat, wordt gevraagd om contact met u op te nemen. We delen de koppen die deze klant heeft door gegeven aan uw app, maar er hoeven geen contact mee te worden gemaakt.
+  - ' DNC ': staat voor geen contact persoon. Dit is op AppSource wanneer een partner die op de pagina van uw app staat, wordt gevraagd om contact met u op te nemen. We delen het hoofd dat deze klant heeft door gegeven aan uw app, maar er hoeven geen contact mee te worden gemaakt.
   - ' Maken ': dit bevindt zich alleen in Azure Portal en wanneer een klant uw aanbieding aan hun account aanschaft.
   - "StartTestDrive": Dit geldt alleen voor test stations en wanneer een klant hun test drive start.
 
@@ -190,4 +190,4 @@ Vanwege het privacybeleid kunnen we geen lead gegevens delen via onbeveiligde e-
 
 **Ik heb Azure Storage (BLOB/Table) geconfigureerd als mijn lead-Destination, wat kost het dan kosten?** 
 
-De gegevens van de lead zijn laag (<1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000-leads per maand worden ontvangen, kosten ongeveer 50 cent. 
+Gegevens voor het genereren van leads zijn laag (<1 GB voor vrijwel alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000-leads per maand worden ontvangen, kosten ongeveer 50 cent. 

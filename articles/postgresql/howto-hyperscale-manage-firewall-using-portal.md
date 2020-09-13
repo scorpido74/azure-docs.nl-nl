@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/12/2019
-ms.openlocfilehash: c84616e8a9b9ff9722f5a104175c80c37dbcbcc3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/11/2020
+ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116910"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032546"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels voor Azure Database for PostgreSQL-grootschalige beheren (Citus)
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een grootschalige (Citus)-coördinator knooppunt vanaf een opgegeven IP-adres of bereik van IP-adressen.
@@ -24,14 +24,14 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Een serverfirewallregel maken in Azure Portal
 
 > [!NOTE]
-> Deze instellingen zijn ook toegankelijk tijdens het maken van een Citus-Server groep (Azure Database for PostgreSQL-grootschalige). Klik op het tabblad **netwerken** op **openbaar eind punt**.
+> Deze instellingen zijn ook toegankelijk tijdens het maken van een Citus-Server groep (Azure Database for PostgreSQL-grootschalige). Klik op het tabblad **netwerken** op **open bare toegang**.
 > ![Azure Portal-tabblad netwerk](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. Klik op de pagina PostgreSQL-Server groep, onder de kop beveiliging, op **netwerken** om de firewall regels te openen.
 
    ![Azure Portal-klikken op netwerken](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
 
-2. Klik op **IP van client toevoegen**op de werk balk (optie hieronder) of in de koppeling (optie B). Een van de manieren om automatisch een firewall regel te maken met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
+2. Klik op **huidige client-IP-adres toevoegen** om een firewall regel te maken met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
 
    ![Azure Portal-Klik op IP van client toevoegen](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -51,11 +51,11 @@ U kunt ook op **+ toevoegen 0.0.0.0-255.255.255.255** (rechts van optie B) niet 
 Er is een eenvoudige manier om toegang tot grootschalige-data bases toe te kennen aan toepassingen die worden gehost op Azure (zoals een Azure Web Apps-toepassing, of die worden uitgevoerd in een Azure-VM). Stel de optie **Azure-Services en-resources toegang tot deze server groep toestaan** in op **Ja** in de portal in het deel venster **netwerken** en druk op **Opslaan**.
 
 > [!IMPORTANT]
-> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
+> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorgt u er dan voor dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Bestaande firewallregels op serverniveau beheren via Azure Portal
 Herhaal de stappen voor het beheren van de firewall regels.
-* Als u de huidige computer wilt toevoegen, klikt u op de knop aan + **client-IP toevoegen**. Klik op **Opslaan** om de wijzigingen op te slaan.
+* Als u de huidige computer wilt toevoegen, klikt u op de knop om het **huidige client-IP-adres toe te voegen**. Klik op **Opslaan** om de wijzigingen op te slaan.
 * As u extra IP-adressen wilt toevoegen, typt u de Regelnaam, het Eerste IP-adres en het Laatste IP-adres in. Klik op **Opslaan** om de wijzigingen op te slaan.
 * Als u een bestaande regel wilt wijzigen, klikt u op een willekeurig veld in de regel om dit aan te passen. Klik op **Opslaan** om de wijzigingen op te slaan.
 * Als u een bestaande regel wilt verwijderen, klikt u op het beletsel teken [...] en klikt u op **verwijderen** om de regel te verwijderen. Klik op **Opslaan** om de wijzigingen op te slaan.

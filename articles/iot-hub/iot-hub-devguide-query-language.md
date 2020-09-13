@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022442"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031174"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor apparaat- en moduledubbels, taken en-berichtroutering
 
@@ -234,7 +234,7 @@ In het object query worden meerdere **volgende** waarden weer gegeven, afhankeli
 ### <a name="limitations"></a>Beperkingen
 
 > [!IMPORTANT]
-> De query resultaten kunnen een paar minuten vertraging hebben ten opzichte van de laatste waarden in het apparaatdubbels van het apparaat. Als u een query wilt uitvoeren op een afzonderlijk apparaat apparaatdubbels op ID, gebruikt u de [Get dubbele rest API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Deze API retourneert altijd de nieuwste waarden en heeft een hogere beperkings limiet. U kunt de REST API rechtstreeks uitgeven of de equivalente functionaliteit gebruiken in een van de [Azure IOT hub service-sdk's](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> De query resultaten kunnen een paar minuten vertraging hebben ten opzichte van de laatste waarden in het apparaatdubbels van het apparaat. Als u een query wilt uitvoeren op een afzonderlijk apparaat apparaatdubbels op ID, gebruikt u de [Get dubbele rest API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Deze API retourneert altijd de nieuwste waarden en heeft een hogere beperkings limiet. U kunt de REST API rechtstreeks uitgeven of de equivalente functionaliteit gebruiken in een van de [Azure IOT hub service-sdk's](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 Op dit moment worden vergelijkingen alleen ondersteund tussen primitieve typen (geen objecten), bijvoorbeeld `... WHERE properties.desired.config = properties.reported.config` wordt alleen ondersteund als deze eigenschappen primitieve waarden hebben.
 
@@ -454,7 +454,7 @@ De volgende Opera tors worden ondersteund:
 | Logisch |EN, OF, NIET |
 | Vergelijking |=,! =, <, >, <=, >=,  <> |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 Bij het uitvoeren van een query op apparaatdubbels en Jobs is de enige ondersteunde functie:
 

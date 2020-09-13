@@ -106,8 +106,6 @@
   items:
     - name: Aanmelden bij de Mijn apps-portal en de portal gebruiken
       href: my-apps-portal-end-user-access.md
-    - name: Uw profiel en accountinformatie bijwerken
-      href: my-apps-portal-end-user-update-profile.md
     - name: Uw groepsinformatie bijwerken
       href: my-apps-portal-end-user-groups.md
     - name: Apps ordenen met verzamelingen

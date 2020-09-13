@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 2a0c95e45dc529d779d6b06e1e5bdb32ba80b241
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007533"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033452"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -79,7 +79,7 @@ De [log Analytics-agent](log-analytics-agent.md) verzamelt bewakings gegevens va
 Gebruik de Log Analytics agent als u het volgende moet doen:
 
 * Logboeken en prestatie gegevens verzamelen van virtuele of fysieke machines binnen of buiten Azure. 
-* Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , zoals [logboek query's](../log-query/log-query-overview.md).
+* Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md) , zoals [logboek query's](../log-query/log-query-overview.md).
 * Gebruik [Azure monitor voor VM's](../insights/vminsights-overview.md) waarmee u uw virtuele machines op schaal kunt bewaken en de processen en afhankelijkheden van andere bronnen en externe processen bewaakt.  
 * Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md).
 * Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren

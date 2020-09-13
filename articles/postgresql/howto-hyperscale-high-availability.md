@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: 0c7702c8832e22d889a5d785dad845430bfb7d17
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116876"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033269"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hoge Beschik baarheid van grootschalige (Citus) configureren
 
@@ -21,7 +21,7 @@ Azure Database for PostgreSQL-grootschalige (Citus) biedt hoge Beschik baarheid 
 > [!IMPORTANT]
 > Omdat HA het aantal servers in de groep verdubbelt, worden ook de kosten verdubbeld.
 
-Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **configureren** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** naar Ja:
+Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **Compute + Storage** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** van Nee naar Ja:
 
 ![ha-schuif regelaar](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 

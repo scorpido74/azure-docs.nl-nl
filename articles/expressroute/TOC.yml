@@ -8,6 +8,7 @@
   items:
     - name: Een ExpressRoute-circuit maken - ARM-sjabloon
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: Zelfstudies
   items:
     - name: Een circuit maken en wijzigen

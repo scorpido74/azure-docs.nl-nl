@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651415"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033299"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-bestanden in Azure Logic Apps bewaken, maken en beheren
 
@@ -114,6 +114,10 @@ Deze trigger start een werk stroom voor logische apps wanneer een bestand wordt 
 ### <a name="sftp-action-get-content"></a>SFTP-actie: inhoud ophalen
 
 Met deze actie wordt de inhoud van een bestand op een SFTP-server opgehaald. U kunt bijvoorbeeld de trigger uit het vorige voor beeld toevoegen en een voor waarde waaraan de inhoud van het bestand moet worden voldaan. Als de voor waarde waar is, kan de actie die de inhoud ophaalt worden uitgevoerd.
+
+## <a name="connector-reference"></a>Connector-verwijzing
+
+Raadpleeg de [referentie pagina](/azure/data-factory/connector-sftp)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 

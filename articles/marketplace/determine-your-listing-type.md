@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484864"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032381"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -45,7 +45,7 @@ In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Micro
 
 &#42; SaaS app Transact-aanbiedingen in Microsoft AppSource zijn momenteel alleen een credit card.
 
-&#42;&#42; Microsoft 365 aanbiedingen zijn gratis te installeren en kunnen worden te gelde via SaaS-aanbieding als licentie service. Zie [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)(Engelstalig) voor meer informatie.
+&#42;&#42; Microsoft 365 aanbiedingen zijn gratis te installeren en kunnen worden te gelde via SaaS-aanbieding als licentie service. Zie [geld verdienen your Microsoft 365-invoeg toepassing via micro soft Commercial Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)(Engelstalig) voor meer informatie.
 
 ## <a name="choose-a-listing-option"></a>Een optie voor een vermelding kiezen
 

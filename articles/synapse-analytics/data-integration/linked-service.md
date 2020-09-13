@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387235"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033180"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Een gekoppelde service beveiligen met persoonlijke koppelingen 
 
-In dit artikel wordt beschreven hoe u een gekoppelde service in Synapse kunt beveiligen met een persoonlijk eind punt.
+In dit artikel leert u hoe u een gekoppelde service in Synapse kunt beveiligen met een persoonlijk eind punt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,18 +33,18 @@ In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegev
 
 1. Open Azure Synapse Studio en ga naar het tabblad **beheren** .
 1. Onder **externe verbindingen**selecteert u **gekoppelde services**.
-1. Klik op **Nieuw**om een gekoppelde service toe te voegen.
-1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en klik op **door gaan**.
+1. Selecteer **Nieuw**om een gekoppelde service toe te voegen.
+1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
 1. Zorg ervoor dat u **Interactieve creatie** inschakelt. Het kan ongeveer 1 minuut duren voordat deze is ingeschakeld. 
-1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Klik op verbinding testen om te controleren of uw referenties correct zijn.
-1. Selecteer **verbinding testen**, de fout moet mislukken omdat het opslag account geen toegang inschakelt zonder een persoonlijk eind punt te maken en goed te keuren. In het fout bericht wordt een koppeling weer gegeven om een **persoonlijk eind punt** te maken dat u kunt volgen om naar het volgende deel te gaan. Sla het volgende gedeelte over als u deze koppeling volgt.
+1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Selecteer verbinding testen om te controleren of uw referenties correct zijn.
+1. Selecteer **verbinding testen**, de fout moet mislukken omdat het opslag account geen toegang tot de server inschakelt zonder een persoonlijk eind punt te maken en goed te keuren. In het fout bericht wordt een koppeling weer gegeven om een **persoonlijk eind punt** te maken dat u kunt volgen om naar het volgende deel te gaan. Sla het volgende gedeelte over als u deze koppeling volgt.
 1. Selecteer **Maken** nadat dit is voltooid.
 
 ## <a name="create-a-managed-private-endpoint"></a>Een beheerd privé-eindpunt maken
 
-In het geval kunt u niet klikken op de Hyper link bij het testen van de bovenstaande verbinding, gevolgd door het volgende pad. Nu moet u een beheerd privé-eindpunt maken dat u verbindt met de gekoppelde service die hierboven is gemaakt.
+Als u de Hyper link niet hebt geselecteerd bij het testen van de bovenstaande verbinding, volgt u het volgende pad. Maak een beheerd privé-eind punt dat u maakt om verbinding te maken met de gekoppelde service die hierboven is gemaakt.
 
-1. Ga naar het tabblad **beheren** .
+1. Ga naar het tabblad **Beheren**.
 1. Ga naar de sectie **beheerde virtuele netwerken** .
 1. Selecteer **+ Nieuw** onder beheerd persoonlijk eind punt.
 1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
@@ -55,7 +55,7 @@ In het geval kunt u niet klikken op de Hyper link bij het testen van de bovensta
 ## <a name="private-link-approval"></a>Goed keuring van persoonlijke koppelingen
 1. Selecteer het privé-eindpunt dat u hierboven hebt gemaakt. U kunt een Hyper link zien waarmee u het persoonlijke eind punt kunt goed keuren op het niveau van het opslag account. *U kunt ook rechtstreeks naar het Azure Portal Storage-account gaan en naar de Blade **persoonlijke eindpunt verbindingen** gaan.*
 1. Tik het persoonlijke eind punt dat u hebt gemaakt in de studio en selecteer **goed keuren**.
-1. Voeg een beschrijving toe en klik op **ja**
+1. Een beschrijving toevoegen en **Ja** selecteren
 1. Ga terug naar Synapse Studio in het gedeelte **beheerde virtuele netwerken** van het tabblad **beheren** .
 1. Het duurt ongeveer 1 minuut voordat de goed keuring voor uw persoonlijke eind punt wordt weer gegeven.
 

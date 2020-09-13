@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016326"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032517"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent verzamelt telemetrie van virtuele Windows-en Linux-machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/) en verzendt de verzamelde gegevens naar uw log Analytics-werk ruimte in azure monitor. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md). Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en implementatie methoden.
@@ -63,7 +63,7 @@ Zie [agent configureren om te rapporteren aan een Operations Manager-beheer groe
 
 ## <a name="security-limitations"></a>Beveiligings beperkingen
 
-* De Windows-agent ondersteunt de [FIPS 140-standaard](/windows/security/threat-protection/fips-140-validation), terwijl de Linux-agent deze niet ondersteunt.  
+* De Windows-en Linux-agents ondersteunen de [FIPS 140-standaard](/windows/security/threat-protection/fips-140-validation), maar [andere typen beveiliging kunnen niet worden ondersteund](agent-linux.md#supported-linux-hardening).
 
 
 ## <a name="installation-options"></a>Installatieopties
@@ -109,10 +109,10 @@ De volgende tabel geeft een lijst van de proxy-en firewall configuratie gegevens
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
-|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
+|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
 
 Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)voor informatie over de firewall die vereist is voor Azure Government. 
 

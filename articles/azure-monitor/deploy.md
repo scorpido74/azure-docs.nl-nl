@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801570"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033469"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor implementeren
 Het inschakelen van Azure Monitor voor het bewaken van al uw Azure-resources is een combi natie van het configureren van Azure Monitor onderdelen en het configureren van Azure-resources voor het genereren van bewakings gegevens voor Azure Monitor voor het verzamelen van In dit artikel worden de verschillende stappen beschreven die nodig zijn voor een volledige implementatie van Azure Monitor met behulp van een gemeen schappelijke configuratie om alle resources in uw Azure-abonnement te controleren. De basis beschrijvingen voor elke stap worden verstrekt met koppelingen naar andere documentatie voor gedetailleerde configuratie vereisten.
@@ -48,7 +48,7 @@ De volgende functies van Azure Monitor zijn ingeschakeld zonder configuratie ver
 
 
 ### <a name="create-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
-U hebt ten minste één Log Analytics-werk ruimte nodig om [Azure monitor-logboeken](platform/data-platform-logs.md)in te scha kelen. Dit is vereist voor het verzamelen van gegevens als logboeken van Azure-resources, het verzamelen van gegevens van het gast besturingssysteem van Azure virtual machines en voor de meeste Azure monitor inzichten. Andere services, zoals Azure Sentinel en Azure Security Center, maken ook gebruik van een Log Analytics-werk ruimte en kunnen delen die u gebruikt voor Azure Monitor. U kunt beginnen met één werk ruimte om deze controle te ondersteunen, maar Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md) voor hulp bij het gebruik van meerdere werk ruimten.
+U hebt ten minste één Log Analytics-werk ruimte nodig om [Azure monitor-logboeken](platform/data-platform-logs.md)in te scha kelen. Dit is vereist voor het verzamelen van gegevens als logboeken van Azure-resources, het verzamelen van gegevens van het gast besturingssysteem van Azure virtual machines en voor de meeste Azure monitor inzichten. Andere services, zoals Azure Sentinel en Azure Security Center, maken ook gebruik van een Log Analytics-werk ruimte en kunnen delen die u gebruikt voor Azure Monitor. U kunt beginnen met één werk ruimte om deze controle te ondersteunen, maar Zie  [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md) voor hulp bij het gebruik van meerdere werk ruimten.
 
 Er zijn geen kosten verbonden aan het maken van een Log Analytics-werk ruimte, maar er kunnen kosten in rekening worden gebracht zodra u de gegevens hebt geconfigureerd die u wilt verzamelen. Zie [gebruik en kosten beheren met Azure monitor logboeken](platform/manage-cost-storage.md) voor meer informatie.  
 
@@ -118,9 +118,9 @@ Zie de [Windows Azure Diagnostics-extensie (WAD) installeren en configureren](pl
 Azure Monitor bewaakt uw aangepaste toepassingen met behulp van [Application Insights](app/app-insights-overview.md), die u moet configureren voor elke toepassing die u wilt bewaken. Het configuratie proces verschilt, afhankelijk van het type toepassing dat wordt bewaakt en het type bewaking dat u wilt uitvoeren. Gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor metrieken, Azure Monitor logboeken en Azure Blob-opslag, afhankelijk van de functie. Prestatie gegevens worden opgeslagen in zowel Azure Monitor metrieken als Azure Monitor logboeken zonder dat er aanvullende configuratie is vereist.
 
 ### <a name="create-an-application-resource"></a>Een toepassings bron maken
-U moet een resource in Application Insights maken voor elke toepassing die u wilt bewaken. Logboek gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor logboeken, maar zijn gescheiden van de Log Analytics-werk ruimte, zoals wordt beschreven in [Hoe worden gegevens in azure monitor logboeken gestructureerd?](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). De preview-versie is momenteel de mogelijkheid om uw toepassings gegevens rechtstreeks in een Log Analytics-werk ruimte op te slaan met uw andere gegevens. Dit vereenvoudigt uw configuratie en zorgt ervoor dat uw toepassing kan profiteren van alle functies van een Log Analytics-werk ruimte.
+U moet een resource in Application Insights maken voor elke toepassing die u wilt bewaken. Logboek gegevens die door Application Insights worden verzameld, worden opgeslagen in Azure Monitor logboeken voor een toepassing op basis van een werk ruimte. Logboek gegevens voor klassieke toepassingen worden gescheiden van uw Log Analytics-werk ruimte opgeslagen, zoals wordt beschreven in de [structuur van gegevens](platform/data-platform-logs.md#structure-of-data).
 
- Wanneer u de toepassing maakt, moet u selecteren of u klassiek of op werk ruimte gebaseerde (preview-versie) wilt gebruiken. Zie [een Application Insights resource maken](app/create-new-resource.md) om een klassieke toepassing te maken. Zie [Application Insights resources op basis van een werk ruimte (preview)](app/create-workspace-resource.md) om een op werk ruimte gebaseerde toepassing te maken.
+ Wanneer u de toepassing maakt, moet u selecteren of u klassiek of op werk ruimte gebaseerde wilt gebruiken. Zie [een Application Insights resource maken](app/create-new-resource.md) om een klassieke toepassing te maken. Zie [Application Insights resources op basis van een werk ruimte (preview)](app/create-workspace-resource.md) om een op werk ruimte gebaseerde toepassing te maken.
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>Op code of op code gebaseerde bewaking configureren
 Als u controle wilt inschakelen voor een toepassing, moet u beslissen of u codeloos of op code gebaseerde bewaking wilt gebruiken. Het configuratie proces varieert afhankelijk van dit besluit en het type toepassing dat u wilt bewaken.

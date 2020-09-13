@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007754"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032109"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -42,7 +42,7 @@ De commerciële Marketplace is beschikbaar in 141 regio's, per abonnement.
 
 We beheren de BTW-betaling in veel landen/regio's en bieden toegang tot ons wereld wijde kanaal netwerk van wederverkopers. U kunt de micro soft-klant overeenkomst van een klant of Enterprise Agreement gebruiken om te verkopen aan organisaties zonder dat u een nieuwe aanschaf relatie hoeft te maken.
 
-Bekijk voor meer informatie de video op [Waarom u verkoop via Marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
+Zie de [micro soft Commercial Marketplace hub](https://aka.ms/commercialmarketplacehub)voor meer informatie.
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de micro soft Commercial Marketplace?
 
@@ -67,7 +67,7 @@ De manieren waarop klanten uw commerciële Marketplace-aanbieding kunnen gebruik
 
 Nadat u zich hebt aangemeld en de uitgever overeenkomst hebt geaccepteerd, hebt u toegang tot de pagina commerciële Marketplace in het partner centrum. Hier maakt en beheert u Voorst Ellen en waar u analyse rapporten bekijkt. Voor Microsoft 365-apps moet u ook het Office Store-programma activeren binnen het partner centrum.
 
-Zie voor meer informatie [Welkom bij de commerciële Marketplace](index.yml) en [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Zie voor meer informatie [Welkom bij de commerciële Marketplace](index.yml) en [geld verdienen uw Microsoft 365-invoeg toepassing via micro soft Commercial Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Hoe kan ik ondersteuning voor de commerciële Marketplace?
 
@@ -329,7 +329,7 @@ Deze resources worden aangeraden:
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Waar kan ik meer informatie vinden over het micro soft-beheer centrum?
 
-Zie [app-abonnementen van derden beheren voor uw organisatie](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide)voor meer informatie over het micro soft-beheer centrum.
+Zie [app-abonnementen van derden beheren voor uw organisatie](/microsoft-365/commerce/manage-saas-apps)voor meer informatie over het micro soft-beheer centrum.
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Waar vind ik meer informatie over de facturering van Azure?
 

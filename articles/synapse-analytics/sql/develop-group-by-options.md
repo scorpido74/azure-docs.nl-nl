@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429042"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032296"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>GROEPEREN op Opties in Synapse SQL
 Met Synapse SQL kunt u oplossingen ontwikkelen door verschillende opties voor groeperen op te implementeren. 
@@ -57,7 +57,7 @@ GROUP BY ROLLUP (
 Als u ROLLUP gebruikt, vraagt het vorige voor beeld de volgende aggregaties aan:
 
 * Land en regio
-* Land
+* Land/regio
 * Eindtotaal
 
 Als u het pakket wilt vervangen en dezelfde resultaten wilt retour neren, kunt u alle gebruiken en expliciet de vereiste aggregaties opgeven:

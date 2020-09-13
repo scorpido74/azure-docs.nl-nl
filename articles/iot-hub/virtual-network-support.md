@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018353"
+ms.locfileid: "90033520"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -252,7 +252,7 @@ Deze functionaliteit vereist connectiviteit van IoT Hub naar het opslag account.
 
 3. Ga naar het tabblad **firewalls en virtuele netwerken** in uw opslag account en schakel de optie **toegang via geselecteerde netwerken toestaan** in. Schakel onder de lijst **uitzonde ringen** het selectie vakje in voor **vertrouwde micro soft-Services toegang geven tot dit opslag account**. Klik op de knop **Opslaan**.
 
-U kunt nu de Azure IoT REST-Api's gebruiken voor het [maken van import-export taken](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. U moet de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag opgeven en `inputBlobContainerUri="https://..."` de `outputBlobContainerUri="https://..."` invoer-en uitvoer-url's van uw opslag account gebruiken.
+U kunt nu de Azure IoT REST-Api's gebruiken voor het [maken van import-export taken](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) voor informatie over het gebruik van de functie voor bulksgewijs importeren/exporteren. U moet de `storageAuthenticationType="identityBased"` in de hoofd tekst van de aanvraag opgeven en `inputBlobContainerUri="https://..."` de `outputBlobContainerUri="https://..."` invoer-en uitvoer-url's van uw opslag account gebruiken.
 
 Azure IoT Hub Sdk's ondersteunen deze functionaliteit ook in het register beheer van de service-client. Het volgende code fragment laat zien hoe u een import-of export taak initieert in met behulp van de C#-SDK.
 

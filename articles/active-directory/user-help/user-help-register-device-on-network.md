@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/04/2019
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799397"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033044"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Uw persoonlijke apparaat registreren op het netwerk van uw organisatie
 Registreer uw persoonlijke apparaat (meestal een telefoon of Tablet) op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, heeft het toegang tot de beperkte resources van uw organisatie.
@@ -31,7 +31,7 @@ Wanneer u uw apparaat registreert op het netwerk van uw organisatie, zullen de v
 
 - Windows registreert uw apparaat in het netwerk van uw organisatie.
 
-- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](./security-info-setup-signin.md).
+- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen via [twee ledige verificatie](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](./security-info-setup-signin.md).
 
 - U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
 

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543007"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031242"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 
@@ -73,7 +73,7 @@ Wacht woorden en andere geheimen die zijn opgeslagen in de bron code, vormen een
 
 ### <a name="roslyn-analyzers"></a>Roslyn Analyzers
 
-Roslyn-analyse functies is het met compileren van micro soft geïntegreerde hulp programma voor het statisch analyseren van beheerde C#-en Visual Basic-code. Zie [Roslyn-analyse](https://docs.microsoft.com/dotnet/standard/analyzers/)functies voor meer informatie.
+Roslyn-analyse functies is het met compileren van micro soft geïntegreerde hulp programma voor het statisch analyseren van beheerde C#-en Visual Basic-code. Zie [Roslyn-analyse](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)functies voor meer informatie.
 
 ### <a name="tslint"></a>TSLint
 

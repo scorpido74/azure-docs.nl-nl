@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475240"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032024"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT Plug en Play-modellen gebruiken in een IoT-oplossing
 
@@ -40,7 +40,7 @@ Een oplossing kan de model-ID van de IoT-Plug en Play apparaat verkrijgen door e
 
 ### <a name="get-device-twin-api"></a>Dubbele API voor apparaat ophalen
 
-De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) om de model-id van de IoT-Plug en Play apparaat op te halen.
+De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) om de model-id van de IoT-Plug en Play apparaat op te halen.
 
 In het volgende dubbele reactie fragment `modelId` van een apparaat bevat de model-id van een IOT-Plug en Play apparaat:
 
@@ -112,7 +112,7 @@ Een oplossing maakt gebruik van de model-ID hierboven om de bijbehorende model d
 
 Een oplossing kan de model definitie ophalen met behulp van een van de volgende opties:
 
-### <a name="model-repository"></a>Model opslagplaats
+### <a name="model-repository"></a>Modelopslagplaats
 
 Oplossingen kunnen de [model opslagplaats](concepts-model-repository.md) gebruiken om modellen op te halen. De apparaat-Builders of de oplossings bouwers moeten hun modellen vooraf uploaden naar de opslag plaats, zodat de oplossing ze kan ophalen.
 
@@ -140,6 +140,6 @@ Voer de volgende stappen uit nadat u de model-ID voor een nieuwe apparaat-verbin
 
 Nu u hebt geleerd hoe u IoT Plug en Play-modellen integreert in een IoT-oplossing, kunt u de volgende stappen volgen:
 
-- [Communiceren met een apparaat vanuit uw oplossing](quickstart-service-node.md)
+- [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
 - [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

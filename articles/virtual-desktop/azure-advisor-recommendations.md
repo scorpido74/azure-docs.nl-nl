@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084679"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033027"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor aanbevelingen oplossen
 
@@ -34,7 +34,7 @@ Een validatie omgeving inschakelen:
 
 2. Selecteer vervolgens de hostgroep die u wilt wijzigen van een productie omgeving naar een validatie omgeving.
 
-3. Selecteer in uw hostgroep het tabblad **Eigenschappen** in de kolom aan de rechter kant van het scherm. Schuif vervolgens omlaag totdat u "validatie omgeving" ziet. Selecteer **Ja**en selecteer vervolgens **Toep assen**.
+3. Selecteer **Eigenschappen** in de linkerkolom van de hostgroep. Schuif vervolgens omlaag totdat u "validatie omgeving" ziet. Selecteer **Ja**en selecteer vervolgens **Toep assen**.
 
 >[!div class="mx-imgBorder"]
 >![Een scherm opname van het eigenschappen menu. "Validatie omgeving" is rood gemarkeerd en de "ja" bellen is geselecteerd.](media/validation-yes.png)

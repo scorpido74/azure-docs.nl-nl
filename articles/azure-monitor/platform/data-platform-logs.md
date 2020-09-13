@@ -1,136 +1,59 @@
 ---
 title: Meldt zich aan Azure Monitor | Microsoft Docs
-description: Hierin worden de logboeken in Azure Monitor beschreven die worden gebruikt voor geavanceerde analyse van bewakings gegevens.
+description: Hierin worden de logboeken in Azure Monitor beschreven, die worden gebruikt voor geavanceerde analyse van bewakings gegevens.
 documentationcenter: ''
-author: bwren
-manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 09/09/2020
 ms.author: bwren
-ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e08c649b9a1d7e8b909a413ee435fce30a8d7e48
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325624"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032763"
 ---
-# <a name="logs-in-azure-monitor"></a>Logboeken in Azure Monitor
+# <a name="azure-monitor-logs-overview"></a>Overzicht van Azure Monitor logboeken
+Azure Monitor-Logboeken is een functie van Azure Monitor waarmee logboek gegevens van verschillende bronnen worden verzameld en ingedeeld en beschikbaar worden gemaakt voor analyse met behulp van een geavanceerde query taal. Gegevens uit verschillende bronnen kunnen worden geconsolideerd in één werk ruimte en samen worden geanalyseerd om dergelijke taken en trending analyses, waarschuwingen en visualisaties uit te voeren.
+
+## <a name="relationship-to-azure-monitor-metrics"></a>Relatie met Azure Monitor metrieken
+Met Azure Monitor metrieken worden numerieke gegevens opgeslagen in een Data Base van time series, waardoor deze gegevens lichter worden dan Azure Monitor-logboeken en de bijna realtime scenario's kunnen ondersteunen, waardoor ze bijzonder nuttig zijn voor waarschuwingen en snelle detectie van problemen. Metrieken kunnen alleen numerieke gegevens in een bepaalde structuur opslaan, terwijl Logboeken verschillende verschillende gegevens typen met hun eigen structuur kunnen opslaan. U kunt ook complexe analyses uitvoeren op logboek gegevens met behulp van logboek query's die niet kunnen worden gebruikt voor de analyse van metrische gegevens.
+
+Numerieke gegevens worden vaak van gegevens bronnen naar Logboeken verzonden, naast de metrieken. Hoewel er extra kosten in rekening worden gebracht voor het verzamelen en bewaren van deze gegevens in Logboeken, kunt u metrische gegevens in logboek query's toevoegen en analyseren met uw andere bewakings gegevens.
+
+## <a name="relationship-to-azure-data-explorer"></a>Relatie met Azure Data Explorer
+Azure Monitor-Logboeken is gebaseerd op Azure Data Explorer. Een Log Analytics werk ruimte is ongeveer het equivalent van een data base in azure Data Explorer, tabellen worden gestructureerd en beide gebruiken dezelfde Kusto query language (KQL). De ervaring van het gebruik van Log Analytics om met Azure Monitor query's in de Azure Portal te werken, is vergelijkbaar met de ervaring met behulp van de Web-UI van Azure Data Explorer. U kunt zelfs [gegevens uit een log Analytics-werk ruimte in een Azure Data Explorer-query toevoegen](/azure/data-explorer/query-monitor-data). 
+
+
+## <a name="structure-of-data"></a>Structuur van gegevens
+Gegevens die worden verzameld door Azure Monitor logboeken worden opgeslagen in een [log Analytics-werk ruimte](./design-logs-deployment.md) die meerdere tabellen bevat die elke gegevens van een bepaalde bron bevatten. De werk ruimte definieert de geografische locatie van de gegevens, toegangs rechten die bepalen welke gebruikers toegang hebben tot gegevens en configuratie-instellingen, zoals de prijs categorie en gegevens retentie. U kunt één werk ruimte gebruiken voor al uw bewakings gegevens of meerdere werk ruimten maken, afhankelijk van uw vereisten. Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](design-logs-deployment.md) voor overwegingen bij het maken van meerdere werk ruimten.
+
+Elke werk ruimte bevat meerdere tabellen die zijn ingedeeld in afzonderlijke kolommen met meerdere gegevens rijen. Elke tabel wordt gedefinieerd door een unieke set kolommen die worden gedeeld door de gegevens rijen die door de gegevens bron worden opgegeven. 
+
+[![Structuur van Azure Monitor logboeken](media/data-platform-logs/logs-structure.png)](media/data-platform-logs/logs-structure.png#lightbox)
+
+
+Logboek gegevens van Application Insights worden ook opgeslagen in Azure Monitor logboeken, maar worden opgeslagen, afhankelijk van hoe uw toepassing is geconfigureerd. Voor een op werk ruimte gebaseerde toepassing worden gegevens opgeslagen in een Log Analytics-werk ruimte in een standaardset met gegevens, zoals toepassings aanvragen, uitzonde ringen en pagina weergaven. Meerdere toepassingen kunnen dezelfde werk ruimte gebruiken. Voor een klassieke toepassing worden de gegevens niet opgeslagen in een Log Analytics-werk ruimte. De query taal wordt gebruikt en u kunt query's maken en uitvoeren met behulp van hetzelfde Log Analytics-hulp programma in de Azure Portal. Gegevens voor klassieke toepassingen worden onafhankelijk van elkaar opgeslagen. De algemene structuur is hetzelfde als op werk ruimte gebaseerde toepassingen, hoewel de tabel-en kolom namen verschillend zijn. Zie [resource wijzigingen op basis van een werk ruimte](../app/apm-tables.md) voor een gedetailleerde vergelijking van de twee.
+
 
 > [!NOTE]
-> Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen, metrische gegevens en Logboeken. In dit artikel worden Logboeken beschreven. Raadpleeg de [para meters in azure monitor](data-platform-metrics.md) voor een gedetailleerde beschrijving van metrische gegevens en voor het [bewaken van door Azure monitor verzamelde informatie](data-platform.md) voor een vergelijking van de twee.
-
-Logboeken in Azure Monitor zijn vooral handig voor het uitvoeren van complexe analyses op basis van gegevens uit verschillende bronnen. In dit artikel wordt beschreven hoe logboeken worden gestructureerd in Azure Monitor, wat u met de gegevens kunt doen en hoe verschillende gegevens bronnen worden geïdentificeerd waarmee gegevens in Logboeken worden opgeslagen.
-
-> [!NOTE]
-> Het is belang rijk om onderscheid te maken tussen Azure Monitor logboeken en bronnen van logboek gegevens in Azure. Gebeurtenissen op abonnements niveau in Azure worden bijvoorbeeld geschreven naar een [activiteiten logboek](platform-logs-overview.md) dat u kunt weer geven in het menu Azure monitor. De meeste resources schrijven operationele informatie naar een [bron logboek](platform-logs-overview.md) dat u kunt door sturen naar verschillende locaties. Azure Monitor-Logboeken is een platform voor gegevens registratie dat activiteiten logboeken en resource logboeken verzamelt samen met andere bewakings gegevens om een diepe analyse te bieden in uw hele set resources.
-
-## <a name="what-are-azure-monitor-logs"></a>Wat zijn Azure Monitor logboeken?
-
-Logboeken in Azure Monitor bevatten verschillende soorten gegevens die zijn ingedeeld in records met verschillende sets eigenschappen voor elk type. Logboeken kunnen numerieke waarden bevatten, zoals Azure Monitor metrische gegevens, maar bevatten normaal gesp roken tekst met gedetailleerde beschrijvingen. Ze verschillen nog verder van metrische gegevens, omdat ze in hun structuur variëren en vaak met regel matige tussen pozen niet worden verzameld. Telemetrie, zoals gebeurtenissen en traceringen, wordt opgeslagen Azure Monitor logboeken naast prestatie gegevens, zodat deze allemaal kunnen worden gecombineerd voor analyse.
-
-Een gemeen schappelijk type logboek vermelding is een gebeurtenis die sporadisch wordt verzameld. Gebeurtenissen worden gemaakt door een toepassing of service en bevatten doorgaans voldoende informatie om hun eigen volledige context te bieden. Een gebeurtenis kan bijvoorbeeld aangeven dat een bepaalde resource is gemaakt of gewijzigd, een nieuwe host wordt gestart als reactie op verhoogd verkeer, of er is een fout gedetecteerd in een toepassing.
-
- Omdat de indeling van de gegevens kan variëren, kunnen toepassingen aangepaste logboeken maken met behulp van de structuur die ze nodig hebben. Metrische gegevens kunnen zelfs worden opgeslagen in Logboeken om ze te combi neren met andere bewakings gegevens voor trending en andere gegevens analyse.
+> We bieden nog steeds volledige compatibiliteit voor uw Application Insights klassieke resource query's, werkmappen en waarschuwingen op basis van Logboeken in de Application Insights ervaring. Als u wilt zoeken/weer geven op [basis van de nieuwe, op werk ruimte gebaseerde tabel structuur/schema,](../app/apm-tables.md) moet u eerst naar uw log Analytics-werk ruimte navigeren. Tijdens de preview-periode selecteert u **Logboeken** in het deel venster Application Insights. u krijgt dan toegang tot de klassieke Application Insights query-ervaring. Zie [query bereik](../log-query/scope.md) voor meer informatie.
 
 
-## <a name="what-can-you-do-with-azure-monitor-logs"></a>Wat kunt u doen met Azure Monitor-logboeken?
-De volgende tabel geeft een lijst van de verschillende manieren waarop u Logboeken in Azure Monitor kunt gebruiken.
-
-
-|  | Beschrijving |
-|:---|:---|
-| **Analyseren** | Gebruik [log Analytics](../log-query/get-started-portal.md) in de Azure Portal om [logboek query's](../log-query/log-query-overview.md) te schrijven en logboek gegevens interactief te analyseren met behulp van de krachtige Data Explorer Analysis-engine.<br>Gebruik de [Application Insights Analytics-console](../log-query/log-query-overview.md) in de Azure Portal om logboek query's te schrijven en logboek gegevens interactief van Application Insights te analyseren. |
-| **Visualiseren** | Query resultaten weer geven als tabellen of grafieken aan een [Azure-dash board](../../azure-portal/azure-portal-dashboards.md).<br>Een [werkmap](./workbooks-overview.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. <br>De resultaten van een query exporteren naar [Power bi](powerbi.md) om verschillende visualisaties te gebruiken en te delen met gebruikers buiten Azure.<br>De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen.|
-| **Waarschuwing** | Een [waarschuwings regel](alerts-log.md) voor het logboek configureren die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de resultaten van de query overeenkomen met een bepaald resultaat.<br>Een [regel voor metrische waarschuwingen](alerts-metric-logs.md) configureren voor bepaalde logboek gegevens logboeken die zijn geëxtraheerd als metriek. |
-| **Ophalen** | Toegang tot logboek query resultaten van een opdracht regel met behulp van [Azure cli](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Access-logboek query resultaten van een opdracht regel met behulp van [Power shell-cmdlets](/powershell/module/az.operationalinsights).<br>Toegang tot logboek query resultaten van een aangepaste toepassing met behulp van [rest API](https://dev.loganalytics.io/). |
-| **Exporteren** | Maak een werk stroom om logboek gegevens op te halen en kopieer deze naar een externe locatie met behulp van [Logic apps](../../logic-apps/index.yml). |
-
-
-## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Hoe worden gegevens in Azure Monitor-logboeken gestructureerd?
-Gegevens die worden verzameld door Azure Monitor logboeken worden opgeslagen in een [log Analytics-werk ruimte](./design-logs-deployment.md). Elke werk ruimte bevat meerdere tabellen die elke gegevens van een bepaalde bron opslaan. Hoewel alle tabellen [enkele algemene eigenschappen](log-standard-properties.md)delen, heeft elk een unieke set eigenschappen, afhankelijk van het type gegevens dat wordt opgeslagen. Een nieuwe werk ruimte bevat standaard sets tabellen en er worden meer tabellen toegevoegd door verschillende bewakings oplossingen en andere services die naar de werk ruimte schrijven.
-
-Logboek gegevens van Application Insights gebruiken dezelfde Log Analytics engine als werk ruimten, maar worden afzonderlijk opgeslagen voor elke bewaakte toepassing. Elke toepassing heeft een standaardset tabellen voor het opslaan van gegevens zoals toepassings aanvragen, uitzonde ringen en pagina weergaven.
-
-In logboek query's worden gegevens uit een Log Analytics-werk ruimte of een Application Insights toepassing gebruikt. U kunt een query voor meerdere [bronnen](../log-query/cross-workspace-query.md) gebruiken om toepassings gegevens samen met andere logboek gegevens te analyseren of om query's te maken, inclusief meerdere werk ruimten of toepassingen.
-
-![Werkruimten](media/data-platform-logs/workspaces.png)
+[![Structuur van Azure Monitor logboeken voor Application Insights](media/data-platform-logs/logs-structure-ai.png)](media/data-platform-logs/logs-structure-ai.png#lightbox)
 
 ## <a name="log-queries"></a>Logboekquery's
-Gegevens in Azure Monitor logboeken worden opgehaald met een [logboek query](../log-query/log-query-overview.md) die is geschreven met de [Kusto-query taal](../log-query/get-started-queries.md), waarmee u snel verzamelde gegevens kunt ophalen, consolideren en analyseren. Gebruik [log Analytics](../log-query/log-query-overview.md) om logboek query's te schrijven en te testen in de Azure Portal. Hiermee kunt u interactief met de resultaten werken of deze vastmaken aan een dash board om ze te bekijken met andere visualisaties.
-
-![Log Analytics](media/data-platform-logs/log-analytics.png)
-
-Open [log Analytics van Application Insights](../log-query/log-query-overview.md) om Application Insights gegevens te analyseren.
-
-![Application Insights Analytics](media/data-platform-logs/app-insights-analytics.png)
-
-U kunt ook logboek gegevens ophalen met behulp van de [log Analytics-API](https://dev.loganalytics.io/documentation/overview) en de [Application Insights rest API](https://dev.applicationinsights.io/documentation/overview).
+Gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van een [logboek query](../log-query/log-query-overview.md) die een alleen-lezen aanvraag is voor het verwerken van gegevens en het retour neren van resultaten. Logboek query's worden geschreven in [Kusto query language (KQL)](/azure/data-explorer/kusto/query/). Dit is de query taal die wordt gebruikt door Azure Data Explorer. Gebruik Log Analytics, een hulp programma in de Azure Portal om logboek query's te bewerken en uit te voeren en de resultaten interactief te analyseren. U kunt vervolgens de query's gebruiken die u hebt gemaakt ter ondersteuning van andere functies in Azure Monitor, zoals waarschuwingen voor logboek query's en werkmappen.
 
 
-## <a name="sources-of-azure-monitor-logs"></a>Bronnen van Azure Monitor-logboeken
-Azure Monitor kunt logboek gegevens verzamelen van verschillende bronnen in zowel Azure als on-premises resources. De volgende tabellen geven een lijst van de verschillende gegevens bronnen die beschikbaar zijn vanuit verschillende bronnen die gegevens schrijven naar Azure Monitor Logboeken. Elk bevat een koppeling naar informatie over de vereiste configuratie.
+## <a name="sources-of-data-for-azure-monitor-logs"></a>Gegevens bronnen voor Azure Monitor-logboeken
+Azure Monitor verzamelt logboek gegevens uit verschillende bronnen, inclusief bronnen in Azure Monitor en agents die worden uitgevoerd op virtuele machines. Zie [wat wordt bewaakt door Azure monitor?](../monitor-reference.md) voor een volledige lijst met gegevens bronnen waarmee gegevens naar een log Analytics-werk ruimte worden verzonden.
 
-### <a name="azure-tenant-and-subscription"></a>Azure-Tenant en-abonnement
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| Controle logboeken Azure Active Directory | Geconfigureerd via Diagnostische instellingen voor elke directory. Zie [Azure AD-logboeken integreren met Azure monitor-logboeken](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
-| Activiteitenlogboeken | Wordt standaard afzonderlijk opgeslagen en kan worden gebruikt voor bijna realtime-waarschuwingen. Installeer de oplossing voor activiteiten logboek analyse om naar Log Analytics-werk ruimte te schrijven. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics](./activity-log.md). |
-
-### <a name="azure-resources"></a>Azure-resources
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| Diagnostische gegevens over resources | Diagnostische instellingen configureren om te schrijven naar diagnostische gegevens, met inbegrip van de waarden voor een Log Analytics-werk ruimte. Zie [Azure-resource logboeken streamen om te log Analytics](./resource-logs.md#send-to-log-analytics-workspace). |
-| Bewakingsoplossingen | Bewakings oplossingen schrijven gegevens die ze verzamelen naar hun Log Analytics-werk ruimte. Zie [Details over het verzamelen van gegevens voor beheer oplossingen in azure](../monitor-reference.md) voor een lijst met oplossingen. Zie [oplossingen controleren in azure monitor](../insights/solutions.md) voor meer informatie over het installeren en gebruiken van oplossingen. |
-| Metrische gegevens | Verstuur de platform metrieken voor Azure Monitor resources naar een Log Analytics werk ruimte om logboek gegevens langere tijd te bewaren en om complexe analyses uit te voeren met andere gegevens typen met behulp van de [Kusto-query taal](/azure/kusto/query/). Zie [Azure-resource logboeken streamen om te log Analytics](./resource-logs.md#send-to-azure-storage). |
-| Azure-tabelopslag | Gegevens verzamelen uit Azure Storage waar sommige Azure-resources bewakings gegevens schrijven. Zie [Azure Blob Storage gebruiken voor IIS en Azure-tabel opslag voor gebeurtenissen met log Analytics](diagnostics-extension-logs.md). |
-
-### <a name="virtual-machines"></a>Virtuele machines
-
-| Gegevens | Beschrijving |
-|:---|:---|
-|  Agent-gegevensbronnen | Gegevens bronnen die worden verzameld van [Windows](agent-windows.md) -en [Linux](../learn/quick-collect-linux-computer.md) -agents, bevatten gebeurtenissen, prestatie gegevens en aangepaste Logboeken. Raadpleeg [agent gegevens bronnen in azure monitor](data-sources.md) voor een lijst met gegevens bronnen en Details over de configuratie. |
-| Bewakingsoplossingen | Bewakings oplossingen schrijven gegevens die ze verzamelen van agents naar hun Log Analytics-werk ruimte. Zie [Details over het verzamelen van gegevens voor beheer oplossingen in azure](../monitor-reference.md) voor een lijst met oplossingen. Zie [oplossingen controleren in azure monitor](../insights/solutions.md) voor meer informatie over het installeren en gebruiken van oplossingen. |
-| System Center Operations Manager | Operations Manager beheer groep verbinden met Azure Monitor om gebeurtenis-en prestatie gegevens van on-premises agents in Logboeken te verzamelen. Zie [verbinding maken tussen Operations Manager en log Analytics](om-agents.md) voor meer informatie over deze configuratie. |
-
-
-### <a name="applications"></a>Toepassingen
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| Aanvragen en uitzonde ringen | Gedetailleerde gegevens over toepassings aanvragen en uitzonde ringen vindt u in de tabellen _aanvragen_, _page views_en _uitzonde ringen_ . Aanroepen naar [externe onderdelen](../app/asp-net-dependencies.md) bevinden zich in de tabel _afhankelijkheden_ . |
-| Gebruik en prestaties | De prestaties van de toepassing zijn beschikbaar in de tabellen _aanvragen_, _browserTimings_ en _Performance Counters_ . De gegevens voor [aangepaste metrieken](../app/api-custom-events-metrics.md#trackevent) bevindt zich in de tabel _customMetrics_ .|
-| Gegevens traceren | De resultaten van [gedistribueerde tracering](../app/distributed-tracing.md) worden opgeslagen in de tabel _traces_ . |
-| Beschikbaarheidstests | Samenvattings gegevens van [beschikbaarheids testen](../app/monitor-web-app-availability.md) worden opgeslagen in de tabel _availabilityResults_ . Gedetailleerde gegevens van deze tests bevinden zich in afzonderlijke opslag en zijn toegankelijk via Application Insights in de Azure Portal. |
-
-### <a name="insights"></a>Inzichten
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| Azure Monitor voor containers | Inventaris-en prestatie gegevens die worden verzameld door [Azure monitor voor containers](../insights/container-insights-overview.md). Raadpleeg [container gegevens verzamelings Details](../insights/container-insights-log-search.md#container-records) voor een lijst met tabellen. |
-| Azure Monitor voor virtuele machines | Toewijzings-en prestatie gegevens die door [Azure monitor voor VM's](../insights/vminsights-overview.md)zijn verzameld. Zie [Logboeken van Azure monitor voor VM's opvragen](../insights/vminsights-log-search.md) voor meer informatie over het uitvoeren van query's op deze gegevens. |
-
-### <a name="custom"></a>Aangepast 
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| REST-API | Gegevens schrijven naar een Log Analytics-werk ruimte vanuit een wille keurige REST-client. Zie [logboek gegevens naar Azure monitor verzenden met de HTTP-gegevens verzamelaar-API](data-collector-api.md) voor meer informatie.
-| Logische apps | Gegevens schrijven naar een Log Analytics-werk ruimte vanuit een werk stroom van een logische app met de actie **Azure log Analytics gegevens verzamelaar** . |
-
-### <a name="security"></a>Beveiliging
-
-| Gegevens | Beschrijving |
-|:---|:---|
-| Azure Security Center | [Azure Security Center](../../security-center/index.yml) worden gegevens opgeslagen die in een log Analytics-werk ruimte worden verzameld, waar ze kunnen worden geanalyseerd met andere logboek gegevens. Zie [gegevens verzameling in azure Security Center](../../security-center/security-center-enable-data-collection.md) voor meer informatie over werkruimte configuratie. |
-| Azure Sentinel | [Azure Sentinel](../../sentinel/index.yml) slaat gegevens van gegevens bronnen op in een log Analytics-werk ruimte. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md).  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [Azure monitor-gegevens platform](data-platform.md).
+- Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het ophalen en analyseren van gegevens uit een log Analytics-werk ruimte.
 - Meer informatie over [metrische gegevens in azure monitor](data-platform-metrics.md).
 - Meer informatie over de [beschik bare bewakings gegevens](data-sources.md) voor verschillende bronnen in Azure.
 

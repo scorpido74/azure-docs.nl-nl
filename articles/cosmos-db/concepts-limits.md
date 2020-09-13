@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400310"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033010"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -163,7 +163,17 @@ Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron 
 | Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
 | Maximale klok scheefheid voor token autorisatie| 15 min |
 
-Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking. 
+Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking.
+
+## <a name="metadata-request-limits"></a>Limieten voor meta gegevens aanvragen
+
+Azure Cosmos DB onderhoudt de meta gegevens van het systeem voor elk account. Met deze meta gegevens kunt u verzamelingen, data bases, andere Azure Cosmos DB bronnen en hun configuraties gratis inventariseren.
+
+| Resource | Standaardlimiet |
+| --- | --- |
+|Maximum aantal gemaakte aanvragen voor verzameling pnieuw minuut| 5|
+|Maximum aantal gemaakte data bases per minuut|   5|
+|Maximale update snelheid van ingerichte door Voer per minuut| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Limieten voor automatisch schalen ingericht door Voer
 

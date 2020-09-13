@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462000"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031480"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ Met de Storage-client bibliotheek voor .NET kunt u logboek gegevens aan de clien
 U kunt het verkeer tussen de client en de server vastleggen om gedetailleerde informatie te geven over de gegevens die door de client en de server worden uitgewisseld en de onderliggende netwerk omstandigheden. Nuttige hulpprogram ma's voor logboek registratie van netwerken zijn onder andere:
 
 * [Fiddler](https://www.telerik.com/fiddler) is een gratis proxy voor webfoutopsporing waarmee u de kopteksten en payload-gegevens van http-en HTTPS-aanvragen en-antwoord berichten kunt onderzoeken. Zie voor meer informatie [bijlage 1: Fiddler gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer](#appendix-1).
-* [Microsoft Network Monitor (netmon)](https://www.microsoft.com/download/details.aspx?id=4865) en [wireshark](https://www.wireshark.org/) zijn gratis netwerkprotocol analyse functies waarmee u gedetailleerde pakket gegevens kunt weer geven voor een breed scala aan netwerk protocollen. Zie voor meer informatie over wireshark "[bijlage 2: het gebruik van wireshark voor het vastleggen van netwerk verkeer](#appendix-2)".
+* [Microsoft Network Monitor (netmon)](https://cnet-downloads.com/network-monitor) en [wireshark](https://www.wireshark.org/) zijn gratis netwerkprotocol analyse functies waarmee u gedetailleerde pakket gegevens kunt weer geven voor een breed scala aan netwerk protocollen. Zie voor meer informatie over wireshark "[bijlage 2: het gebruik van wireshark voor het vastleggen van netwerk verkeer](#appendix-2)".
 * Micro soft Message Analyzer is een hulp programma van micro soft dat netmon vervangt en dat naast het vastleggen van netwerk pakket gegevens, u helpt de logboek gegevens weer te geven en te analyseren die zijn opgenomen in andere hulpprogram ma's. Zie '[bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen](#appendix-3)' voor meer informatie.
 * Als u een basis connectiviteits test wilt uitvoeren om te controleren of uw client computer via het netwerk verbinding kan maken met de Azure Storage-service, kunt u dit niet doen met het hulp programma standaard **ping** op de client. U kunt echter het [ **tcping** -hulp programma](https://www.elifulkerson.com/projects/tcping.php) gebruiken om de connectiviteit te controleren.
 
@@ -346,7 +346,7 @@ In de onderstaande afbeelding van het hulp programma [Azure Portal](https://port
 
 ![Afbeelding van de Azure Portal waarin een voor beeld wordt weer gegeven waarvan de AverageE2ELatency aanzienlijk hoger is dan de Averageserverlatency aan.][4]
 
-De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltooide aanvragen en, in tegens telling tot **averageserverlatency aan**, omvat de tijd die de client nodig heeft om de gegevens te verzenden en bevestiging van de opslag service te ontvangen. Daarom kan een verschil tussen **AverageE2ELatency** en **averageserverlatency aan** worden veroorzaakt doordat de client toepassing langzaam reageert of als gevolg van de omstandigheden in het netwerk.
+De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltooide aanvragen en, in tegens telling tot **averageserverlatency aan**, bevat de tijd die de client nodig heeft om de gegevens te verzenden en bevestiging van de opslag service te ontvangen. Daarom kan een verschil tussen **AverageE2ELatency** en **averageserverlatency aan** worden veroorzaakt doordat de client toepassing langzaam reageert of als gevolg van de omstandigheden in het netwerk.
 
 > [!NOTE]
 > U kunt ook **E2ELatency** en **ServerLatency** weer geven voor afzonderlijke opslag bewerkingen in de logboek gegevens van de opslag logboek registratie.
@@ -617,7 +617,7 @@ De uitzonderings Details in de client bevatten de aanvraag-ID (7e84f12d...) die 
 
 Het logboek aan de server zijde bevat ook een andere vermelding met dezelfde **client-aanvraag-id** -waarde (813ea74f...) voor een geslaagde Verwijder bewerking voor dezelfde entiteit en van dezelfde client. Deze geslaagde verwijderings bewerking duurde zeer kort vóór de mislukte verwijderings aanvraag.
 
-De meest waarschijnlijke oorzaak van dit scenario is dat de client een aanvraag voor het verwijderen van de entiteit naar de tabel service heeft verzonden die is geslaagd, maar geen bevestiging heeft ontvangen van de server (mogelijk vanwege een tijdelijk netwerk probleem). De client heeft vervolgens automatisch opnieuw geprobeerd de bewerking uit te voeren (met dezelfde **client-aanvraag-id**) en de nieuwe poging is mislukt omdat de entiteit al is verwijderd.
+De meest waarschijnlijke oorzaak van dit scenario is dat de client een aanvraag voor het verwijderen van de entiteit naar de tabel service heeft verzonden die is geslaagd, maar dat er geen bevestiging is ontvangen van de server (mogelijk vanwege een tijdelijk netwerk probleem). De client heeft vervolgens automatisch opnieuw geprobeerd de bewerking uit te voeren (met dezelfde **client-aanvraag-id**) en de nieuwe poging is mislukt omdat de entiteit al is verwijderd.
 
 Als dit probleem regel matig optreedt, moet u onderzoeken waarom de client geen bevestigingen van de tabel service kan ontvangen. Als het probleem zich weer voordoet, moet u de fout ' HTTP (404) niet gevonden ' onderscheppen en registreren in de client, maar de client toestaan om door te gaan.
 
@@ -777,7 +777,7 @@ De ingebouwde **Web Proxy** -tracering in micro soft Message Analyzer is gebasee
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Netwerk problemen vaststellen met behulp van micro soft Message Analyzer
 Naast het gebruik van de **webproxy** tracering van micro soft Message Analyzer voor het vastleggen van gegevens van het HTTP/HTTPS-verkeer tussen de client toepassing en de Storage-service, kunt u ook de ingebouwde **local link layer** trace gebruiken om informatie over het netwerk pakket vast te leggen. Zo kunt u gegevens vastleggen die vergelijkbaar zijn met die u kunt vastleggen met wireshark en problemen met het netwerk, zoals verwijderde pakketten, vaststellen.
 
-De volgende scherm afbeelding toont een voor beeld van een **lokale koppelingslaag** Trace met enkele **informatieve** berichten in de kolom **DiagnosisTypes** . Als u op een pictogram in de kolom **DiagnosisTypes** klikt, worden de details van het bericht weer gegeven. In dit voor beeld wordt de server opnieuw verzonden met het bericht #305 omdat er geen bevestiging is ontvangen van de client:
+De volgende scherm afbeelding toont een voor beeld van een **lokale koppelingslaag** Trace met enkele **informatieve** berichten in de kolom **DiagnosisTypes** . Als u op een pictogram in de kolom **DiagnosisTypes** klikt, worden de details van het bericht weer gegeven. In dit voor beeld wordt het bericht #305 opnieuw verzonden, omdat er geen bevestiging is ontvangen van de client:
 
 ![Scherm afbeelding met een voor beeld van een lokale koppelingslaag Trace met enkele informatieve berichten in de kolom DiagnosisTypes][9]
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440929"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032806"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -183,7 +183,7 @@ Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithP
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive` heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform.
+De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive` heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform. U kunt ook de optionele para meter voor het bovenliggende venster weglaten om een venster te maken, als u niet wilt bepalen waar het dialoog venster voor aanmelding op het scherm wordt weer gegeven. Dit is van toepassing op toepassingen op basis van de opdracht regel, die wordt gebruikt om aanroepen door te geven aan een andere back-end-service en geen Windows voor gebruikers interactie nodig hebt. 
 
 ```csharp
 // net45
