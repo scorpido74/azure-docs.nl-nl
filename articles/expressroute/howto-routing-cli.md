@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: peering configureren: CLI'
 description: Dit artikel helpt u bij het maken en inrichten van de persoonlijke, open bare en micro soft-peering van een ExpressRoute-circuit. In dit artikel leest u hoe u de status controleert en peerings voor uw circuit bijwerkt of verwijdert.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/24/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c20b0741f12ee2cab40d8f5b53c51ad537801bf2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727038"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393170"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Peering voor een ExpressRoute-circuit maken en wijzigen met behulp van CLI
 
@@ -26,7 +26,7 @@ Dit artikel helpt u bij het maken en beheren van routerings configuratie/peering
 > * [Open bare peering](about-public-peering.md)
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-routing-classic.md)
+> * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
@@ -39,7 +39,7 @@ Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met ser
 
 U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Voor meer informatie over routerings domeinen en peerings, Zie [ExpressRoute-routerings domeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Micro soft-peering
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-peering
 
 In deze sectie leert u hoe u de micro soft-peering-configuratie voor een ExpressRoute-circuit maakt, ontvangt, bijwerkt en verwijdert.
 
@@ -50,7 +50,7 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft-peering maken
 
-1. Installeer de nieuwste versie van Azure CLI. Gebruik de nieuwste versie van de Azure-opdracht regel interface (CLI). Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
+1. Installeer de nieuwste versie van Azure CLI. Gebruik de nieuwste versie van de Azure-opdracht regel interface (CLI). Bekijk de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
    ```azurecli
    az login

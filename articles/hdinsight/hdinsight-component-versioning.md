@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394326"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Apache-onderdelen en-versies die beschikbaar zijn voor Azure HDInsight
 
@@ -44,7 +44,7 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies, w
 | Apache mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.4.4         | verschijnsel.                      |
-| Apache Livy            | 0,5           | 0,4.                        |
+| Apache Livy            | 0.5           | 0,4.                        |
 | Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
@@ -78,7 +78,7 @@ Deze tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in 
 | HDInsight-versie | VM-besturingssysteem | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid in de Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |September 24, 2018 | | |Ja |Ja |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017      | * 31 juni 2021 |31 juni 2021 |Ja |Ja |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017      | * 30 juni 2021 |30 juni 2021 |Ja |Ja |
 
 * We verlengen de ondersteunings periode voor bepaalde cluster typen van HDInsight 3,6
 
@@ -89,7 +89,7 @@ Deze tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in 
 | HDInsight 3,6 Spark             | 2.2               | Ingetrokken op 30 juni 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Ingetrokken op 30 juni 2020          |                             |
 | HDInsight 3,6 Kafka             | 1.1               | 31 december 2020                      | 30 juni 2021               |
-| HDInsight 3,6 Kafka             | 1.0               | Ingetrokken op 30 juni 2020.         |                             |
+| HDInsight 3,6 Kafka             | 1,0               | Ingetrokken op 30 juni 2020.         |                             |
 | HDInsight 3,6 HBase             | 1.1               | 31 december 2020                      | 30 juni 2021               |
 | HDInsight 3,6 Interactive-query | 2.1               | 31 december 2020                      | 30 juni 2021               |
 | HDInsight 3,6 Storm             | 1.1               | 31 december 2020                      | 30 juni 2021               |

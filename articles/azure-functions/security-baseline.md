@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5609df554e78996e50dcc57e200bb1dc1282cfb0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230497"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394088"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
 
@@ -960,7 +960,9 @@ Een interne ASE maken:
 
 - [Beheerde identiteiten gebruiken voor App Service en Azure Functions](../app-service/overview-managed-identity.md)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
+* [Verifiëren bij Key Vault](../key-vault/general/authentication.md)
+
+* [Toegangs beleid voor Key Vault toewijzen](../key-vault/general/assign-access-policy-portal.md)
 
 - [Gebruik Key Vault verwijzingen voor App Service en Azure Functions](../app-service/app-service-key-vault-references.md)
 

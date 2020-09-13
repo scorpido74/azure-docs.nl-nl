@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: een gateway toevoegen aan een VNet: klassiek'
 description: Een VNet-gateway configureren voor een klassiek implementatie model VNet met behulp van Power shell voor een ExpressRoute-configuratie.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: bcffd60596f8c2286b91eaf13be3e09bb8bec94f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f42a7d030f45be1b96728fdcac7a13cf797ed34
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736404"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396400"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Een virtuele netwerk gateway configureren voor ExpressRoute met behulp van Power shell (klassiek)
 > [!div class="op_single_selector"]

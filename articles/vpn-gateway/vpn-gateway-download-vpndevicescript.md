@@ -4,17 +4,16 @@ description: In dit artikel wordt stapsgewijs uitgelegd hoe u configuratie scrip
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2019
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: e17d17484ea9caf735fd717b1e58b85e798df87b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983203"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394598"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Configuratie scripts voor VPN-apparaten voor S2S VPN-verbindingen downloaden
 
@@ -39,7 +38,7 @@ U kunt de stappen 1 tot en met 3 volt ooien met behulp van Azure [Portal](vpn-ga
 
 > [!IMPORTANT]
 > * De syntaxis voor elk configuratie script voor VPN-apparaten wijkt af en is sterk afhankelijk van de modellen en firmware versies. U kunt het model van uw apparaat en de versie gegevens van de beschik bare sjablonen best Eden.
-> * Sommige parameter waarden moeten uniek zijn op het apparaat en kunnen niet worden bepaald zonder toegang tot het apparaat. De door Azure gegenereerde configuratie scripts vullen deze waarden vooraf in, maar u moet ervoor zorgen dat de gegeven waarden geldig zijn op het apparaat. Voor voor beelden:
+> * Sommige parameter waarden moeten uniek zijn op het apparaat en kunnen niet worden bepaald zonder toegang tot het apparaat. De door Azure gegenereerde configuratie scripts vullen deze waarden vooraf in, maar u moet ervoor zorgen dat de gegeven waarden geldig zijn op het apparaat. Voorbeelden:
 >    * Interface nummers
 >    * Toegangs beheer lijst nummers
 >    * Beleids namen of-nummers, enzovoort.

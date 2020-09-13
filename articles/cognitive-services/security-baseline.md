@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3633afa3ed7d3dc9ba3d85bd7542ef9838881c5b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225645"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393890"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-beveiligings basislijn voor Cognitive Services
 
@@ -872,7 +872,9 @@ Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/on
 
 * [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Verifiëren bij Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Toegangs beleid voor Key Vault toewijzen](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center bewaking**: Ja
 

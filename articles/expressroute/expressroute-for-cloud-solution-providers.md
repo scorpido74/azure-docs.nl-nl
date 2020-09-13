@@ -2,33 +2,33 @@
 title: ExpressRoute voor Cloud Solution Providers - Azure | Microsoft Docs
 description: Dit artikel bevat informatie voor Cloud Solution Providers die Azure-services en ExpressRoute in hun aanbod willen opnemen.
 services: expressroute
-author: richcar
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: ricarlse
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446774"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396672"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
-Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een zeer snelle persoonlijke communicatiekoppeling naar de services in Azure. 
+Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een snelle, persoonlijke communicatie koppeling naar Services in Azure. 
 
-ExpressRoute bestaat uit twee circuits voor hoge beschikbaarheid die zijn gekoppeld aan één of meer abonnementen van één klant. Deze kunnen niet worden gedeeld door meerdere klanten. Elk circuit moet worden beëindigd in een andere router om de hoge beschikbaarheid te houden.
+ExpressRoute bestaat uit een paar circuits voor hoge Beschik baarheid die zijn gekoppeld aan één of meer abonnementen van een klant en kunnen niet worden gedeeld door meerdere klanten. Elk circuit moet worden beëindigd in een andere router om de hoge beschikbaarheid te houden.
 
 > [!NOTE]
 > Er zijn limieten voor de bandbreedte en verbinding in ExpressRoute, wat betekent dat er bij grote/complexe implementaties meerdere ExpressRoute-circuits per klant zijn vereist.
 > 
 > 
 
-Microsoft Azure biedt een toenemend aantal services dat u aan uw klanten kunt aanbieden. Met ExpressRoute profiteren u en uw klanten van deze services doordat toegang met hoge snelheid en lage latentie tot de Microsoft Azure-omgeving wordt geboden.
+Microsoft Azure biedt een toenemend aantal services dat u aan uw klanten kunt aanbieden. ExpressRoute helpt u en uw klanten profiteren van deze services door snelle toegang tot de Microsoft Azure omgeving te bieden.
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure-beheer
-Microsoft biedt CSP's met API's voor het beheren van de Azure-klantabonnementen aan de hand van programmatische integratie met uw eigen servicebeheersystemen. U vindt de ondersteunde beheermogelijkheden [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
+Micro soft biedt Csp's met Api's voor het beheren van de Azure-klanten abonnementen door middel van programmatische integratie met uw eigen service beheersystemen. U vindt de ondersteunde beheermogelijkheden [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Beheer van Microsoft Azure-resources
 Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. De CSP kan het maken en het onderhouden van resources rechtstreeks beheren, maar de klant kan ook zelf de controle behouden over het Microsoft Azure-abonnement en de Azure-resources naar behoefte maken. Als uw klant het maken van resources in hun Microsoft Azure-abonnement beheert, zullen ze een van de twee modellen gebruiken: '*connect-through*' model of '*direct-to '-* model. Deze modellen worden gedetailleerd beschreven in de volgende gedeelten.  
@@ -38,9 +38,9 @@ Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. 
 
 In het model 'Doorverbinden' maakt de CSP een rechtstreekse verbinding tussen uw datacenter en het Azure-abonnement van uw klant. De rechtstreekse verbinding wordt gemaakt met behulp van ExpressRoute en verbindt uw netwerk met Azure. De klant maakt vervolgens verbinding met uw netwerk. Dit scenario vereist dat de klant het CSP-netwerk gebruikt voor toegang tot de Azure-services. 
 
-Als de klant andere Azure-abonnementen heeft die niet door u worden beheerd, gebruiken deze het openbare internet of een eigen privéverbinding om verbinding te maken met de services die zijn ingericht met het abonnement dat niet door de CSP wordt beheerd. 
+Als uw klant andere Azure-abonnementen heeft die niet door u worden beheerd, gebruiken ze het open bare Internet of hun eigen particuliere verbinding om verbinding te maken met de services die zijn ingericht onder het niet-CSP-abonnement. 
 
-Voor CSP’s die Azure-services beheren, wordt ervan uitgegaan dat de CSP een eerder gemaakt archief voor de klantidentiteit heeft. Dit wordt gerepliceerd in Azure Active Directory voor het beheren van zijn of haar CSP-abonnement via AOBO (Administrate-On-Behalf-Of). Situaties waarvoor dit scenario geschikt is, zijn bijvoorbeeld: wanneer een partner of serviceprovider al een bestaande relatie met de klant heeft, de klant al gebruikmaakt van de services van de provider of de partner een combinatie van door de provider gehoste en door Azure gehoste oplossingen wil bieden voor meer flexibiliteit en om tegemoet te komen aan klantwensen waaraan niet alleen door de CSP kan worden voldaan. Dit model wordt weergegeven in onderstaande **afbeelding**.
+Voor CSP die Azure-Services beheert, wordt ervan uitgegaan dat de CSP een eerder vastgelegde identiteits opslag voor klanten heeft, die vervolgens moet worden gerepliceerd naar Azure Active Directory voor het beheer van hun CSP-abonnement via het beheren van namens-of (ADMINISTRATE). Belangrijkste Stuur Programma's voor dit scenario zijn onder andere waar een bepaalde partner of service provider een bestaande relatie met de klant heeft, de klant al gebruikmaakt van provider Services of omdat de partner een combi natie van door de provider gehoste en door Azure gehoste oplossingen biedt om flexibiliteit te bieden en klant uitdagingen te verhelpen die niet kunnen worden voldaan door de CSP. Dit model wordt weergegeven in onderstaande **afbeelding**.
 
 ![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
@@ -54,18 +54,18 @@ In het model 'Verbinden met' maakt de serviceprovider een rechtstreekse verbindi
 > 
 > 
 
-In dit scenario moet de klant rechtstreeks verbinding maken via een klantnetwerk voor toegang tot het door de CSP beheerde Azure-abonnement. Hiervoor moet een rechtstreekse netwerkverbinding worden gebruikt die is gemaakt door, eigendom is van en geheel of gedeeltelijk wordt beheerd door de klant. Bij deze klanten wordt ervan uitgegaan dat de provider nog geen archief voor de klantidentiteit heeft gemaakt en dat de provider de klant helpt bij het repliceren van het huidige identiteitsarchief in Azure Active Directory voor het beheren van zijn/haar abonnement via AOBO. Situaties waarvoor dit scenario geschikt is, zijn bijvoorbeeld: wanneer een partner of serviceprovider al een bestaande relatie met de klant heeft, de klant al gebruikmaakt van de services van de provider of de partner services wil bieden die alleen zijn gebaseerd op in Azure gehoste oplossingen, zonder dat hiervoor een bestaand datacenter of een bestaande infrastructuur van de provider nodig is.
+Voor dit verbindings scenario moet de klant rechtstreeks verbinding maken via een klant netwerk om toegang te krijgen tot het door de CSP beheerde Azure-abonnement, met behulp van een rechtstreekse netwerk verbinding die geheel of gedeeltelijk wordt gemaakt, eigendom en beheerd. Voor deze klanten wordt ervan uitgegaan dat er op dit moment geen klant identiteits opslag is ingesteld voor de provider en dat de provider de klant helpt bij het repliceren van hun huidige identificerende Store in Azure Active Directory voor het beheer van hun abonnement via ADMINISTRATE. Situaties waarvoor dit scenario geschikt is, zijn bijvoorbeeld: wanneer een partner of serviceprovider al een bestaande relatie met de klant heeft, de klant al gebruikmaakt van de services van de provider of de partner services wil bieden die alleen zijn gebaseerd op in Azure gehoste oplossingen, zonder dat hiervoor een bestaand datacenter of een bestaande infrastructuur van de provider nodig is.
 
 ![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
-De keuze tussen deze twee opties is gebaseerd op de behoeften van uw klant en uw huidige behoefte om Azure-services te leveren. Voor gedetailleerde informatie over deze modellen en het bijbehorende op rollen gebaseerde toegangsbeheer, de netwerken en de ontwerppatronen voor de identiteit volgt u de volgende links:
+De keuze tussen deze twee opties zijn gebaseerd op de behoeften van uw klant en uw huidige behoefte om Azure-Services te leveren. Voor gedetailleerde informatie over deze modellen en het bijbehorende op rollen gebaseerde toegangsbeheer, de netwerken en de ontwerppatronen voor de identiteit volgt u de volgende links:
 
-* **Azure op rollen gebaseerd toegangs beheer (Azure RBAC)** – RBAC is gebaseerd op Azure Active Directory.  Klik [hier](../role-based-access-control/role-assignments-portal.md) voor meer informatie over Azure RBAC. 
+* **Azure op rollen gebaseerd toegangs beheer (Azure RBAC)** – RBAC is gebaseerd op Azure Active Directory.  Zie [hier](../role-based-access-control/role-assignments-portal.md)voor meer informatie over Azure RBAC.
 * **Netwerken**: bevat informatie over de verschillende netwerkonderwerpen in Microsoft Azure.
-* **Azure Active Directory (Azure AD)**: Azure AD biedt het identiteitsbeheer voor Microsoft Azure en SaaS-toepassingen van derden. Klik [hier](https://azure.microsoft.com/documentation/services/active-directory/) voor meer informatie over Azure AD.  
+* **Azure Active Directory (Azure AD)** : Azure AD biedt het identiteits beheer voor Microsoft Azure en SaaS-toepassingen van derden. Zie [hier](https://azure.microsoft.com/documentation/services/active-directory/)voor meer informatie over Azure AD.  
 
 ## <a name="network-speeds"></a>Netwerksnelheden
-ExpressRoute ondersteunt netwerksnelheden van 50 Mb/s tot 10 Gb/s. Dit geeft klanten de mogelijkheid om de hoeveelheid bandbreedte aan te schaffen die nodig is voor hun specifieke omgeving.
+ExpressRoute ondersteunt netwerk snelheden van 50 MB/s tot 10 GB/s. Dit geeft klanten de mogelijkheid om de hoeveelheid bandbreedte aan te schaffen die nodig is voor hun specifieke omgeving.
 
 > [!NOTE]
 > De bandbreedte van het netwerk kan naar behoefte worden verhoogd zonder dat de communicatie wordt onderbroken. Als u de snelheid van het netwerk wilt verlagen, moet het circuit echter worden verbroken en opnieuw worden gemaakt met de lagere netwerksnelheid.  
@@ -78,7 +78,7 @@ ExpressRoute ondersteunt de verbinding van meerdere vNets met een enkel ExpressR
 ExpressRoute kan worden geconfigureerd voor ondersteuning van drie typen verkeer ([routeringsdomeinen](#expressroute-routing-domains)) via een enkel ExpressRoute-circuit. Dit verkeer is onderverdeeld in Microsoft-peering, openbare Azure-peering en privépeering. U kunt ervoor kiezen om één of alle soorten verkeer te verzenden via een enkel ExpressRoute-circuit of meerdere ExpressRoute-circuits, afhankelijk van de grootte van het ExpressRoute-circuit en de door uw klant vereiste isolatie. De beveiliging van uw klant mag niet toestaan dat openbaar verkeer en privéverkeer via hetzelfde circuit lopen.
 
 ### <a name="connect-through-model"></a>Het model 'Doorverbinden'
-In een 'Doorverbinden'-configuratie bent u verantwoordelijk voor de volledige fundering van de netwerken. Zo kunt u de resources in het datacenter van uw klant verbinden met de abonnementen die in Azure worden gehost. Al uw klanten die de mogelijkheden van Azure willen benutten, hebben een eigen ExpressRoute-verbinding nodig. Deze wordt door u beheerd. U gebruikt de methodes die de klant zou gebruiken om het ExpressRoute-circuit aan te schaffen. U volgt de stappen die worden beschreven in het artikel [ExpressRoute-werkstromen](expressroute-workflows.md), voor het inrichten van het circuit en de statussen van het circuit. Vervolgens configureert u de BGP-routes (Border Gateway Protocol) om het verkeer tussen het on-premises netwerk en Azure vNet te beheren.
+In een configuratie met een verbinding bent u verantwoordelijk voor alle netwerk ondersteuning om uw klanten datacenter bronnen te koppelen aan de abonnementen die worden gehost in Azure. Al uw klanten die de mogelijkheden van Azure willen benutten, hebben een eigen ExpressRoute-verbinding nodig. Deze wordt door u beheerd. U gebruikt de methodes die de klant zou gebruiken om het ExpressRoute-circuit aan te schaffen. U volgt de stappen die worden beschreven in het artikel [ExpressRoute-werkstromen](expressroute-workflows.md), voor het inrichten van het circuit en de statussen van het circuit. Vervolgens configureert u de BGP-routes (Border Gateway Protocol) om het verkeer tussen het on-premises netwerk en Azure vNet te beheren.
 
 ### <a name="connect-to-model"></a>Het model 'Verbinden met'
 In een 'Verbinden met'-configuratie heeft uw klant al een bestaande verbinding met Azure of wordt er verbinding gemaakt met de internetserviceprovider die ExpressRoute rechtstreeks vanuit het datacenter van de klant (in plaats van via uw datacenter) koppelt aan Azure. Uw klant moet de stappen zoals hiervoor beschreven voor het model 'Doorverbinden' volgen om het inrichtingsproces te starten. Wanneer het circuit tot stand is gebracht, moet uw klant de on-premises routers configureren, zodat deze toegang hebben tot uw netwerk en Azure vNets.
@@ -86,7 +86,7 @@ In een 'Verbinden met'-configuratie heeft uw klant al een bestaande verbinding m
 U kunt helpen bij het instellen van de verbinding en het configureren van de routes om de resources in uw datacenter(s) te laten communiceren met de clientresources in uw datacenter of met de resources die in Azure worden gehost.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-routeringsdomeinen
-ExpressRoute biedt drie routeringsdomeinen: openbare peering, privépeering en Microsoft-peering. Alle routeringsdomeinen zijn geconfigureerd met identieke routers in de actief/actief-configuratie voor hoge beschikbaarheid. Klik [hier](expressroute-circuit-peerings.md) voor meer informatie over de ExpressRoute-routeringsdomeinen.
+ExpressRoute biedt drie routeringsdomeinen: openbare peering, privépeering en Microsoft-peering. Elk van de routerings domeinen is geconfigureerd met identieke routers in een actief-actief configuratie voor hoge Beschik baarheid. Klik [hier](expressroute-circuit-peerings.md) voor meer informatie over de ExpressRoute-routeringsdomeinen.
 
 U kunt aangepaste routefilters definiëren, zodat alleen route(s) die u wilt toestaan of nodig hebt, zijn toegestaan. Voor meer informatie of om te zien hoe u deze wijzigingen aanbrengt, raadpleegt u het artikel: [Routering voor een ExpressRoute-circuit maken en wijzigen met behulp van PowerShell ](expressroute-howto-routing-classic.md) voor meer informatie over routeringsfilters.
 
@@ -112,15 +112,15 @@ De standaardroutetabel bevat de volgende routes:
 ![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Door de gebruiker gedefinieerde routering
-Door de gebruiker gedefinieerde routes geven u controle over het uitgaande verkeer vanuit het toegewezen subnet naar andere subnetten in het virtuele netwerk of via een van de andere vooraf gedefinieerde gateways (ExpressRoute; internet of VPN). De standaardrouteringstabel kan worden vervangen door een door de gebruiker gedefinieerde routeringstabel. Hiermee wordt de standaardrouteringstabel vervangen door aangepaste routes. Met door de gebruiker gedefinieerde routering kunnen klanten specifieke routes maken voor apparaten, zoals firewalls of inbraakdetectieapparaten. Daarnaast kunnen klanten de toegang tot specifieke subnetten blokkeren vanuit het subnet dat de door de gebruiker gedefinieerde route host. Klik [hier](../virtual-network/virtual-networks-udr-overview.md) voor een overzicht van door de gebruiker gedefinieerde routes. 
+Door de gebruiker gedefinieerde routes geven u controle over het uitgaande verkeer vanuit het toegewezen subnet naar andere subnetten in het virtuele netwerk of via een van de andere vooraf gedefinieerde gateways (ExpressRoute; internet of VPN). De standaardrouteringstabel kan worden vervangen door een door de gebruiker gedefinieerde routeringstabel. Hiermee wordt de standaardrouteringstabel vervangen door aangepaste routes. Met door de gebruiker gedefinieerde routering kunnen klanten specifieke routes maken voor apparaten, zoals firewalls of inbraakdetectieapparaten. Daarnaast kunnen klanten de toegang tot specifieke subnetten blokkeren vanuit het subnet dat de door de gebruiker gedefinieerde route host. Bekijk [hier](../virtual-network/virtual-networks-udr-overview.md)voor een overzicht van door de gebruiker gedefinieerde routes. 
 
 ## <a name="security"></a>Beveiliging
 Afhankelijk van het model dat uw klant gebruikt ('Verbinden met' of 'Doorverbinden'), kan hij of zij de beveiligingsregels in het vNet definiëren of deze regels doorgeven aan de CSP, zodat deze de vNets kan definiëren. De volgende beveiligingscriteria kunnen worden gedefinieerd:
 
 1. **Klantisolatie**: het Azure-platform biedt klantisolatie door de klant-ID en vNet-gegevens op te slaan in een beveiligde database. Deze wordt gebruikt om het verkeer van elke klant in te kapselen in een GRE-tunnel.
-2. De regels voor de **netwerkbeveiligingsgroep (NSG)** worden gebruikt om te definiëren welk verkeer van en naar de subnetten binnen vNets in Azure mag worden geleid. Standaard bevat de NSG regels voor het blokkeren van verkeer van internet naar het vNet en regels voor het toestaan van verkeer binnen een vNet. Klik [hier](https://azure.microsoft.com/blog/network-security-groups/) voor meer informatie over netwerkbeveiligingsgroepen.
+2. De regels voor de **netwerkbeveiligingsgroep (NSG)** worden gebruikt om te definiëren welk verkeer van en naar de subnetten binnen vNets in Azure mag worden geleid. De NSG bevat standaard blokkerings regels voor het blok keren van verkeer van Internet naar het vNet en toestaan van regels voor verkeer binnen een vNet. Zie [hier](https://azure.microsoft.com/blog/network-security-groups/)voor meer informatie over netwerk beveiligings groepen.
 3. **Geforceerde tunneling**: dit is een optie waarmee u verkeer vanuit Azure naar internet kunt omleiden via de ExpressRoute-verbinding met het on-premises datacenter. Klik [hier](expressroute-routing.md#advertising-default-routes) voor meer informatie over geforceerde tunneling.  
-4. **Versleuteling**: hoewel de ExpressRoute-circuits zijn toegewezen aan een specifieke klant, is het mogelijk dat de netwerkprovider wordt geschonden, waardoor een indringer het pakketverkeer kan zien. Een klant of CSP kan dit potentiële probleem oplossen door het verkeer te versleutelen dat gebruikmaakt van de verbinding. Dit kan worden gedaan door een beleid voor de IPSec-tunnelmodus te definiëren voor al het verkeer tussen de on-premises resources en de Azure-resources (raadpleeg de optionele tunnelmodus IPSec voor klant 1 in bovenstaande afbeelding 5: ExpressRoute-beveiliging). De tweede optie is het gebruik van een firewallapparaat op elk eindpunt van het ExpressRoute-circuit. Hiervoor moeten aan beide uiteinden virtuele firewallmachines of firewallapparaten van derden worden geïnstalleerd om het verkeer te versleutelen dat gebruikmaakt van het ExpressRoute-circuit.
+4. **Versleuteling**: hoewel de ExpressRoute-circuits zijn toegewezen aan een specifieke klant, is het mogelijk dat de netwerkprovider wordt geschonden, waardoor een indringer het pakketverkeer kan zien. Een klant of CSP kan dit potentiële probleem oplossen door het verkeer te versleutelen dat gebruikmaakt van de verbinding. Dit kan worden gedaan door een beleid voor de IPSec-tunnelmodus te definiëren voor al het verkeer tussen de on-premises resources en de Azure-resources (raadpleeg de optionele tunnelmodus IPSec voor klant 1 in bovenstaande afbeelding 5: ExpressRoute-beveiliging). De tweede optie is het gebruik van een firewallapparaat op elk eindpunt van het ExpressRoute-circuit. Hiervoor moeten extra Vm's/apparaten van derden worden geïnstalleerd op beide einden om het verkeer via het ExpressRoute-circuit te versleutelen.
 
 ![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

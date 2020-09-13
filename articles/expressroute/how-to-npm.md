@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: NPM voor circuits configureren'
 description: Configureer de Cloud netwerk bewaking (NPM) voor Azure ExpressRoute-circuits. Dit omvat het controleren van ExpressRoute persoonlijke peering en micro soft-peering.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738376"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393672"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Netwerkprestatiemeter configureren voor ExpressRoute
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het configureren van een Netwerkprestatiemeter-extensie 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-U kunt:
+U kunt het volgende doen:
 
 * Verlies en latentie bewaken in verschillende VNets en waarschuwingen instellen
 
@@ -107,7 +107,7 @@ U wordt aangeraden ten minste twee agents te installeren aan elke kant van de Ex
    * Als u ervoor hebt gekozen om verbinding te maken met **Operations Manager**, typt u op de pagina **configuratie van beheer groep** de naam van de **beheer groep**, de **beheer server**en de poort van de **beheer server**. Klik op **Volgende**.
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * Kies op de pagina **actie-account van agent** ofwel het **lokale systeem** account, ofwel het **domein of het lokale computer account**. Klik op **Volgende**.
+   * Kies op de pagina **actie-account van agent** ofwel het **lokale systeem** account, ofwel het  **domein of het lokale computer account**. Klik op **Volgende**.
 
      ![Account](./media/how-to-npm/10.png)
 6. Controleer uw keuzes op de pagina **gereed voor installatie** en klik op **installeren**.
