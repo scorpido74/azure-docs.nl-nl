@@ -5,21 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/25/2020
-ms.openlocfilehash: cb38dcba2f61a432decb56164b816688ad3192d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/03/2020
+ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893700"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458634"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Query's controleren in Azure Monitor Logboeken (preview-versie)
 Controle logboeken voor logboek query's bieden telemetrie over logboek query's die in Azure Monitor worden uitgevoerd. Dit omvat informatie zoals wanneer een query werd uitgevoerd, wie deze uitvoert, welk hulp programma is gebruikt, de query tekst en prestatie statistieken die de uitvoering van de query beschrijven.
-
-## <a name="current-limitations"></a>Huidige beperkingen
-De volgende beperkingen zijn van toepassing tijdens de open bare Preview:
-
-- Alleen werk ruimte gerichte query's worden geregistreerd. Query's die worden uitgevoerd in de resource-georiënteerde modus of die worden uitgevoerd op een Application Insights die niet zijn geconfigureerd als op werk ruimte gebaseerde, worden niet geregistreerd.
 
 
 ## <a name="configure-query-auditing"></a>Query controle configureren
@@ -55,10 +50,11 @@ Telkens wanneer een query wordt uitgevoerd, wordt een controle record gemaakt. A
 | QueryTimeRangeEnd     | Het einde van het geselecteerde tijds bereik voor de query. Dit kan niet worden ingevuld in bepaalde scenario's, zoals wanneer de query wordt gestart vanuit Log Analytics en het tijds bereik is opgegeven in de query in plaats van de tijd kiezer.  |
 | QueryText             | De tekst van de query die is uitgevoerd. |
 | RequestTarget         | API-URL is gebruikt om de query te verzenden.  |
-| RequestContext        | Lijst met resources waarvoor de query is aangevraagd om uit te voeren. Bevat Maxi maal drie teken reeks matrices: werk ruimten, toepassingen en resources. De doel query's van een abonnement of resource groep worden als *resources*weer gegeven. Bevat het doel dat is geïmpliceerd door RequestTarget. |
+| RequestContext        | Lijst met resources waarvoor de query is aangevraagd om uit te voeren. Bevat Maxi maal drie teken reeks matrices: werk ruimten, toepassingen en resources. De doel query's van een abonnement of resource groep worden als *resources*weer gegeven. Bevat het doel dat is geïmpliceerd door RequestTarget.<br>De resource-ID voor elke resource wordt opgenomen als deze kan worden omgezet. Het kan mogelijk niet worden opgelost als er een fout wordt geretourneerd bij het openen van de resource. In dit geval wordt de specifieke tekst van de query gebruikt.<br>Als de query een dubbel zinnige naam gebruikt, zoals de naam van een werk ruimte die in meerdere abonnementen voor komt, wordt deze dubbel zinnige naam gebruikt. |
 | RequestContextFilters | Set filters die zijn opgegeven als onderdeel van de aanroep van de query. Bevat Maxi maal drie mogelijke teken reeks matrices:<br>-ResourceTypes-type resource om het bereik van de query te beperken<br>-Werk ruimten: lijst met werk ruimten om de query te beperken tot<br>-WorkspaceRegions-lijst met werkruimte regio's om de query te beperken |
 | ResponseCode          | HTTP-antwoord code geretourneerd tijdens het verzenden van de query. |
 | ResponseDurationMs    | Tijdstip waarop het antwoord wordt geretourneerd.  |
+| ResponseRowCount     | Totaal aantal rijen dat door de query wordt geretourneerd. |
 | StatsCPUTimeMs       | De totale reken tijd die wordt gebruikt voor het berekenen en ophalen van gegevens. Alleen ingevuld als de query wordt geretourneerd met de status code 200. |
 | StatsDataProcessedKB | De hoeveelheid gegevens die is gebruikt voor het verwerken van de query. Beïnvloed door de grootte van de doel tabel, gebruikte tijds periode, toegepaste filters en het aantal kolommen waarnaar wordt verwezen. Alleen ingevuld als de query wordt geretourneerd met de status code 200. |
 | StatsDataProcessedStart | Tijd van de oudste gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door de query expliciete tijds duur en filters toegepast. Dit kan groter zijn dan de expliciete tijds Panne vanwege het partitioneren van gegevens. Alleen ingevuld als de query wordt geretourneerd met de status code 200. |
@@ -66,7 +62,11 @@ Telkens wanneer een query wordt uitgevoerd, wordt een controle record gemaakt. A
 | StatsWorkspaceCount | Het aantal werk ruimten dat door de query wordt geopend. Alleen ingevuld als de query wordt geretourneerd met de status code 200. |
 | StatsRegionCount | Aantal regio's dat door de query wordt gebruikt. Alleen ingevuld als de query wordt geretourneerd met de status code 200. |
 
+## <a name="considerations"></a>Overwegingen
 
+- Prestatie statistieken zijn niet beschikbaar voor query's die afkomstig zijn van de Azure Data Explorer-proxy. Alle andere gegevens voor deze query's worden nog steeds ingevuld.
+- De *h* -hint van teken reeksen die [teken reeks-literals](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) vergelijkt, heeft geen invloed op de controle logboeken van de query. De query's worden precies zo vastgelegd als verzonden zonder dat de teken reeks is verborgen. U moet ervoor zorgen dat alleen gebruikers die nalevings rechten hebben om deze gegevens te zien, dit kunnen doen met behulp van de verschillende RBAC-modi die beschikbaar zijn in Log Analytics-werk ruimten.
+- Voor query's die gegevens uit meerdere werk ruimten bevatten, wordt de query alleen vastgelegd in de werk ruimten waartoe de gebruiker toegang heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

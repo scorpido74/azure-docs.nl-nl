@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542956"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458617"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -83,7 +83,7 @@ Ten slotte kunt u ook de Azure Storage-client bibliotheek voor Java gebruiken om
 
 #### <a name="transparent-data-encryption"></a>Transparante gegevensversleuteling
 
-[TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt om gegevens bestanden [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md)en [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in realtime te versleutelen met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
+[TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wordt gebruikt voor het versleutelen van [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md)en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -gegevens bestanden in realtime, met behulp van een database versleutelings sleutel (dek), die wordt opgeslagen in de data base boot record voor Beschik baarheid tijdens het herstel.
 
 TDE beschermt gegevens en logboek bestanden met behulp van AES-en Triple Data Encryption Standard (3DES)-versleutelings algoritmen. Versleuteling van het database bestand wordt uitgevoerd op pagina niveau. De pagina's in een versleutelde data base worden versleuteld voordat ze naar de schijf worden geschreven en worden ontsleuteld wanneer ze in het geheugen worden gelezen. TDE is nu standaard ingeschakeld voor nieuw gemaakte Azure SQL-data bases.
 
@@ -179,7 +179,7 @@ U kunt een site-naar-site-VPN-gateway verbinding gebruiken om uw on-premises net
 
 U kunt een site-naar-site-VPN-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal, Power shell of Azure CLI.
 
-Raadpleeg voor meer informatie:
+Zie voor meer informatie:
 
 [Een site-naar-site-verbinding maken in de Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -205,5 +205,5 @@ Key Vault zijn organisaties ontheven van de nood zaak om Hardware Security modul
 - [Overzicht van Azure-netwerk beveiliging](network-overview.md)
 - [Overzicht van Azure data base-beveiliging](database-security-overview.md)
 - [Overzicht van de beveiliging van virtuele Azure-machines](virtual-machines-overview.md)
-- [Gegevens versleuteling in rust](encryption-atrest.md)
+- [Versleuteling van inactieve gegevens](encryption-atrest.md)
 - [Best practices voor gegevensbeveiliging en -versleuteling](data-encryption-best-practices.md)

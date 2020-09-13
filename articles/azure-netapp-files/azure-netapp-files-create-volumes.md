@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533152"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458911"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Een NFS-volume maken voor Azure NetApp Files
 
@@ -87,7 +87,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Als u een bestaand momentopname beleid wilt Toep assen op het volume, klikt u op de **sectie Geavanceerd weer geven** om deze uit te vouwen en selecteert u een beleid voor moment opnamen in de vervolg keuzelijst. 
+    * Als u een bestaand momentopname beleid wilt Toep assen op het volume, klikt u op de **sectie Geavanceerd weer geven** om deze uit te vouwen, geeft u op of u het pad naar de moment opname wilt verbergen en selecteert u een momentopname beleid in de vervolg keuzelijst. 
 
         Zie voor meer informatie over het maken van een momentopname beleid [beleid voor moment opnamen beheren](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
@@ -121,7 +121,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 ## <a name="next-steps"></a>Volgende stappen  
 
 * [NFSv4.1-standaarddomein configureren voor Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFSv 4.1 Kerberos-versleuteling configureren](configure-kerberos-encryption.md)
+* [NFSv4.1 Kerberos-versleuteling configureren](configure-kerberos-encryption.md)
 * [Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Exportbeleid voor een NFS-volume configureren](azure-netapp-files-configure-export-policy.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)

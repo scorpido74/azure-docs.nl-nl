@@ -8,28 +8,26 @@ ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2019
-ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233301"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458847"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-Deze functie retourneert de waarde voor datum/tijd die overeenkomt met het begin van elke datetime-Bucket, van de standaard waarde voor oorsprong van `1900-01-01 00:00:00.000` .
+Deze functie retourneert de waarde voor datum/tijd die overeenkomt met het begin van elke datetime-Bucket, van de tijds tempel die is gedefinieerd door de `origin` para meter of de standaard waarde oorsprong `1900-01-01 00:00:00.000` als de para meter Origin niet is opgegeven. 
 
 Zie [datum-en tijd gegevens typen en-functies &#40;Transact-SQL-&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/) voor een overzicht van alle gegevens typen en functies van de Transact-SQL-datum en-tijd.
 
 [Transact-SQL-syntaxis conventies](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql/)
 
-`DATE_BUCKET`maakt gebruik van een standaard datum waarde van `1900-01-01 00:00:00.000` 12:00 uur op maandag, januari 1 1900.
-
 ## <a name="syntax"></a>Syntaxis
 
 ```sql
-DATE_BUCKET (datePart, number, date)
+DATE_BUCKET (datePart, number, date, origin)
 ```
 
 ## <a name="arguments"></a>Argumenten
@@ -39,7 +37,7 @@ DATE_BUCKET (datePart, number, date)
 Het deel van de *datum* dat met de para meter ' Number ' wordt gebruikt. Bijvoorbeeld Jaar, maand, minuut, seconde, enzovoort
 
 > [!NOTE]
-> `DATE_BUCKET`accepteert geen door de gebruiker gedefinieerde variabele-equivalenten voor de argumenten *datepPart* .
+> `DATE_BUCKET` accepteert geen door de gebruiker gedefinieerde variabele-equivalenten voor de argumenten *datepPart* .
   
 |*Part*|Afkortingen|  
 |---|---|
@@ -59,7 +57,7 @@ Het gehele getal dat de breedte van de Bucket in combi natie met het argument *d
 Een expressie die kan worden omgezet in een van de volgende waarden:
 
 + **vallen**
-+ **datum/tijd**
++ **datetime**
 + **datetimeoffset**
 + **datetime2**
 + **smalldatetime**
@@ -67,15 +65,30 @@ Een expressie die kan worden omgezet in een van de volgende waarden:
 
 Voor *datum* `DATE_BUCKET` accepteert een kolom expressie, expressie of door de gebruiker gedefinieerde variabele als deze worden omgezet naar een van de hierboven genoemde gegevens typen.
 
+**Oorsprong** 
+
+Een optionele expressie die kan worden omgezet in een van de volgende waarden:
+
++ **vallen**
++ **datetime**
++ **datetimeoffset**
++ **datetime2**
++ **smalldatetime**
++ **time**
+
+Het gegevens type voor `Origin` moet overeenkomen met het gegevens type van de `Date` para meter. 
+
+`DATE_BUCKET` maakt gebruik van een standaard datum waarde van `1900-01-01 00:00:00.000` 12:00 uur op maandag, januari 1 1900 als er geen waarde is opgegeven voor de functie.
+
 ## <a name="return-type"></a>Retour type
 
-Het gegevens type van de retour waarde voor deze methode is dynamisch. Het retour type is afhankelijk van het argument dat is opgegeven voor `date` . Als er een geldig invoer gegevens type is opgegeven voor `date` , `DATE_BUCKET` wordt hetzelfde gegevens type geretourneerd. `DATE_BUCKET`Hiermee wordt een fout gegenereerd als een letterlijke teken reeks wordt opgegeven voor de `date` para meter.
+Het gegevens type van de retour waarde voor deze methode is dynamisch. Het retour type is afhankelijk van het argument dat is opgegeven voor `date` . Als er een geldig invoer gegevens type is opgegeven voor `date` , `DATE_BUCKET` wordt hetzelfde gegevens type geretourneerd. `DATE_BUCKET` Hiermee wordt een fout gegenereerd als een letterlijke teken reeks wordt opgegeven voor de `date` para meter.
 
 ## <a name="return-values"></a>Retour waarden
 
-### <a name="understanding-the-output-from-date_bucket"></a>Uitleg over de uitvoer van`DATE_BUCKET`
+### <a name="understanding-the-output-from-date_bucket"></a>Uitleg over de uitvoer van `DATE_BUCKET`
 
-`Date_Bucket`retourneert de laatste datum-of tijd waarde, die overeenkomt met de para meter date Part en Number. In de onderstaande expressies `Date_Bucket` retourneert bijvoorbeeld de uitvoer waarde van `2020-04-13 00:00:00.0000000` , wanneer de uitvoer wordt berekend op basis van de standaard tijd van de oorsprong van `1900-01-01 00:00:00.000` . De waarde `2020-04-13 00:00:00.0000000` is 6276 weken vanaf de oorspronkelijke waarde van `1900-01-01 00:00:00.000` . 
+`Date_Bucket` retourneert de laatste datum-of tijd waarde, die overeenkomt met de para meter date Part en Number. In de onderstaande expressies `Date_Bucket` retourneert bijvoorbeeld de uitvoer waarde van `2020-04-13 00:00:00.0000000` , wanneer de uitvoer wordt berekend op basis van de standaard tijd van de oorsprong van `1900-01-01 00:00:00.000` . De waarde `2020-04-13 00:00:00.0000000` is 6276 weken vanaf de oorspronkelijke waarde van `1900-01-01 00:00:00.000` . 
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
@@ -92,11 +105,19 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-De uitvoer voor de onderstaande expressie, die 6275 weken na de oorspronkelijke tijd is.
+De uitvoer voor de onderstaande expressie is een `2020-04-06 00:00:00.0000000` waarde van 6275 weken vanaf de standaardtijds oorsprong `1900-01-01 00:00:00.000` .
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
+```
+
+De uitvoer voor de onderstaande expressie is `2020-06-09 00:00:00.0000000` 75 weken vanaf de opgegeven begin tijd `2019-01-01 00:00:00` .
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(wk, 5, @date, @origin)
 ```
 
 ## <a name="datepart-argument"></a>Argument date Part
@@ -121,11 +142,15 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 
 ## <a name="date-argument"></a>datum argument  
 
-`DATE_BUCKET`de basis waarde Retour neren die overeenkomt met het gegevens type van het `date` argument. In het volgende voor beeld wordt een uitvoer waarde met het gegevens type DATETIME2 geretourneerd. 
+`DATE_BUCKET` de basis waarde Retour neren die overeenkomt met het gegevens type van het `date` argument. In het volgende voor beeld wordt een uitvoer waarde met het gegevens type DATETIME2 geretourneerd. 
 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
+
+## <a name="origin-argument"></a>Argument oorsprong  
+
+Het gegevens type van de `origin` `date` argumenten en moet hetzelfde zijn. Als er verschillende gegevens typen worden gebruikt, wordt er een fout gegenereerd.
 
 ## <a name="remarks"></a>Opmerkingen
 
@@ -134,7 +159,7 @@ Gebruik `DATE_BUCKET` in de volgende componenten:
 + GROUP BY
 + HAVING
 + ORDER BY
-+ UITGESCHAKELD\<list>
++ UITGESCHAKELD \<list>
 + WHERE
 
 ## <a name="examples"></a>Voorbeelden
@@ -239,7 +264,7 @@ Dit is de resultatenset.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Scalaire subquery's en scalaire functies opgeven als getal en datum
 
-In dit voor beeld wordt gebruikgemaakt van scalaire subquery's, `MAX(OrderDate)` , als argumenten voor *getal* en *datum*. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)`fungeert als een kunst matig argument voor de para meter Number om te laten zien hoe u een *Numeriek* argument kunt selecteren in een lijst met waarden.
+In dit voor beeld wordt gebruikgemaakt van scalaire subquery's, `MAX(OrderDate)` , als argumenten voor *getal* en *datum*. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` fungeert als een kunst matig argument voor de para meter Number om te laten zien hoe u een *Numeriek* argument kunt selecteren in een lijst met waarden.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -268,7 +293,16 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
+### <a name="c-using-a-non-default-origin-value"></a>C. Een niet-standaard waarde voor oorsprong gebruiken
 
-## <a name="see-also"></a>Zie tevens
+In dit voor beeld wordt een niet-standaard waarde voor Orgin gebruikt om de datum buckets te genereren. 
 
-[&#40;Transact-SQL-&#41;CASTen en converteren](/sql/t-sql/functions/cast-and-convert-transact-sql/)
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(hh, 2, @date, @origin)
+```
+
+## <a name="see-also"></a>Zie ook
+
+[&#40;Transact-SQL-&#41;CASTen en converteren ](/sql/t-sql/functions/cast-and-convert-transact-sql/)
