@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420308"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669182"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
 Azure Standard Load Balancer ondersteunt scenario's met beschikbaarheids zones. U kunt standaard load balancer gebruiken om de beschik baarheid in het hele scenario te verg Roten door resources uit te lijnen met en distributie over zones. Beschikbaarheids zones in combi natie met standaard load balancer zijn een expansieve, en een flexibele set functies die veel verschillende scenario's kunnen maken.  Lees dit document voor meer informatie over deze [concepten](#concepts) en [ontwerp richtlijnen](#design)voor het basis scenario.
 
-## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>Beschikbaarheidszones concepten toegepast op Load Balancer
+## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a> Beschikbaarheidszones concepten toegepast op Load Balancer
 
 Een load balancer neemt zone configuratie over van de onderdelen: 
 
@@ -67,7 +67,7 @@ Daarnaast wordt het gebruik van zonegebonden-frontends rechtstreeks voor eind pu
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
-*Afbeelding: zonegebonden redundante load balancer*
+*Afbeelding: zonegebonden load balancer*
 
 Als u deze concepten (zone-redundante en zonegebonden voor dezelfde back-end) wilt laten door lopen, bekijkt u [meerdere frontends voor Azure Load Balancer](load-balancer-multivip-overview.md).
 
@@ -101,7 +101,7 @@ Wanneer u een zone-redundante front-end gebruikt, wordt de interne status contro
 
 Andere zones die deze VM kunnen bereiken, kunnen de virtuele machine blijven gebruiken vanaf hun respectieve frontends. Tijdens fout gebeurtenissen kan elke zone verschillende distributies van nieuwe stromen hebben en de algehele status van uw service beveiligen.
 
-## <a name="design-considerations"></a><a name="design"></a>Ontwerp overwegingen
+## <a name="design-considerations"></a><a name="design"></a> Ontwerp overwegingen
 
 De Load Balancer is flexibel in de context van beschikbaarheids zones. U kunt kiezen om te uitlijnen op zones of zone-redundante voor elke regel. Grotere Beschik baarheid kan de prijs van een verhoogde complexiteit zijn. Ontwerp voor Beschik baarheid voor optimale prestaties.
 
@@ -113,7 +113,7 @@ Zone-redundantie impliceert niet Hitless DataPath of besturings vlak; het is een
 
 Verkeers stromen die gebruikmaken van een zone op het moment van de zone storing, kunnen worden beïnvloed, maar toepassingen kunnen worden hersteld. Verkeer blijft in de in orde zijnde zones binnen de regio na het opnieuw verzenden als Azure is geconvergeerd rond de zone storing.
 
-### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a>Grenzen van meerdere zones
+### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a> Grenzen van meerdere zones
 
 Het is belang rijk om te begrijpen dat elke keer dat een service zones kruist, het lot wordt gedeeld met niet één zone, maar mogelijk meerdere zones. Als gevolg hiervan heeft uw service mogelijk geen Beschik baarheid opgedaan via niet-zonegebonden-implementaties.
 
@@ -123,14 +123,14 @@ Eén belang rijk onderdeel van uw toepassing kan van invloed zijn op uw hele toe
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * Het IP-adres
+    * IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze worden geconfigureerd in zone 1 en zone 2. Wanneer zone 1 mislukt, wordt uw service niet bewaard. Vermijd zones met zonegebonden-scenario's tenzij u zeker weet dat u een potentieel gevaarlijke fout modus maakt. Dit scenario mag flexibiliteit bieden.
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * Het IP-adres
+    * IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze zijn geconfigureerd voor zone-redundantie en zone 1. Uw service blijft de zone fout van zone 2, zone 3 of beide, tenzij zone 1 is mislukt. U verliest echter een mogelijke reden om de status van uw service te controleren als u er zeker van bent dat u de beschik baarheid van de front-end kunt bereiken.  Overweeg het ontwikkelen van een uitgebreidere status-en capaciteits model.  U kunt zone-redundante en zonegebonden-concepten samen gebruiken om inzicht en beheer baarheid uit te breiden.

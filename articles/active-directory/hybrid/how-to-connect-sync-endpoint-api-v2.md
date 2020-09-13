@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357576"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662470"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connect die de prestaties verbetert van de synchronisatie service-bewerkingen naar Azure Active Directory. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt ondersteunt het volgende:
@@ -26,14 +26,14 @@ Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connec
  - prestatie verbeteringen bij het exporteren en importeren naar Azure AD
  
 > [!NOTE]
-> Het nieuwe eind punt heeft momenteel geen geconfigureerde limiet voor de groeps grootte voor O365-groepen die terug worden geschreven. Dit kan een invloed hebben op uw Active Directory en latentie van de synchronisatie cyclus.  Het is raadzaam om de groeps grootten stapsgewijs te verg Roten.  
+> Op dit moment heeft het nieuwe eind punt geen geconfigureerde limiet voor de groeps grootte voor Microsoft 365 groepen die terug worden geschreven. Dit kan een invloed hebben op uw Active Directory en latentie van de synchronisatie cyclus. Het is raadzaam om de groeps grootten stapsgewijs te verg Roten.  
 
 
 ## <a name="pre-requisites"></a>Vereisten  
 Als u het nieuwe v2-eind punt wilt gebruiken, moet u [Azure AD Connect versie 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) of hoger gebruiken en de volgende implementatie stappen volgen om het v2-eind punt voor uw Azure AD Connect-server in te scha kelen.   
 
 >[!NOTE]
->Deze open bare preview is momenteel alleen beschikbaar in de wereld wijde Azure-Cloud en is niet beschikbaar voor [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+>Deze open bare preview is momenteel alleen beschikbaar in de wereld wijde Azure-Cloud en is niet beschikbaar voor [nationale Clouds](../develop/authentication-national-cloud.md).
 
 ### <a name="public-preview-limitations"></a>Beperkingen voor openbare preview  
 Hoewel deze release uitgebreide tests heeft ondergaan, kan het zijn dat u nog steeds problemen ondervindt. Een van de doel stellingen van deze open bare preview-versie is het zoeken en oplossen van dergelijke problemen.  
@@ -44,14 +44,14 @@ Hoewel deze release uitgebreide tests heeft ondergaan, kan het zijn dat u nog st
 ## <a name="deployment-guidance"></a>Implementatie richtlijnen 
 U moet [Azure AD Connect versie 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) of hoger implementeren om het v2-eind punt te kunnen gebruiken. Gebruik de koppeling die u hebt ontvangen om te downloaden. 
 
-Het is raadzaam om de [Swing migratie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration) methode voor het implementeren van het nieuwe eind punt in uw omgeving uit te voeren. Dit zorgt voor een duidelijk onherstelbaar plan in het geval dat een belang rijke terugdraai actie nood zakelijk is. In het volgende voor beeld ziet u hoe een swing migratie in dit scenario kan worden gebruikt. Raadpleeg de meegeleverde koppeling voor meer informatie over de implementatie methode voor Swing migratie. 
+Het is raadzaam om de [Swing migratie](./how-to-upgrade-previous-version.md#swing-migration) methode voor het implementeren van het nieuwe eind punt in uw omgeving uit te voeren. Dit zorgt voor een duidelijk onherstelbaar plan in het geval dat een belang rijke terugdraai actie nood zakelijk is. In het volgende voor beeld ziet u hoe een swing migratie in dit scenario kan worden gebruikt. Raadpleeg de meegeleverde koppeling voor meer informatie over de implementatie methode voor Swing migratie. 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>Swing migratie voor het implementeren van v2-eind punt
 De volgende stappen begeleiden u bij het implementeren van het v2-eind punt met behulp van de swing-methode.
 
 1. Implementeer het v2-eind punt op de huidige staging-server. Deze server wordt in de volgende stappen aangeduid als de **v2-server** . De huidige actieve server zal de werk belasting van de productie blijven verwerken met het v1-eind punt, die de **v1-server** hieronder wordt genoemd.
 1. Controleer of de **v2-server** nog steeds import bewerkingen verwerkt zoals verwacht. In deze fase worden grote groepen niet ingericht voor Azure AD of on-premises AD, maar u kunt controleren of de upgrade niet tot andere onverwachte gevolgen voor het bestaande synchronisatie proces heeft geleid. 
-2. Nadat de validatie is voltooid, schakelt u de **v2-server** als de actieve server en de **v1-server** als de staging-server. Op dit moment worden grote groepen die zich in de scope bevinden, ingericht voor Azure AD, en worden grote O365 Unified-groepen ingericht voor AD als groeps terugschrijven is ingeschakeld.
+2. Nadat de validatie is voltooid, schakelt u de **v2-server** als de actieve server en de **v1-server** als de staging-server. Op dit moment worden grote groepen die zich in de scope bevinden, ingericht voor Azure AD, en worden grote Microsoft 365 Unified groups ingericht voor AD, als groeps terugschrijven is ingeschakeld.
 3. Controleer of de **v2-server** bezig is met het uitvoeren en verwerken van grote groepen. U kunt ervoor kiezen om in deze stap te blijven en het synchronisatie proces voor een bepaalde periode te controleren.
   >[!NOTE]
   > Als u wilt terugkeren naar de vorige configuratie, kunt u een swing migratie van de **v2-server** naar de **v1-server**uitvoeren. Omdat het v1-eind punt geen groepen ondersteunt met meer dan 50.000 leden, wordt een grote groep die is ingericht door Azure AD Connect, in azure AD of on-premises AD, vervolgens verwijderd. 
@@ -153,7 +153,7 @@ Tijdens de volgende toename van de limiet voor groepslid maatschap in de regel *
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> Als u O365 Unified-groepen hebt met meer dan 50.000-leden, worden de groepen in Azure AD Connect gelezen en als groeps terugschrijven is ingeschakeld, worden deze naar uw on-premises AD-locatie geschreven. 
+> Als u Microsoft 365 Unified Groups hebt die meer dan 50.000 leden hebben, worden de groepen in Azure AD Connect gelezen en als groeps terugschrijven is ingeschakeld, worden deze naar uw on-premises AD-locatie geschreven. 
 
 ## <a name="rollback"></a>Actie 
 Als u het v2-eind punt hebt ingeschakeld en wilt terugdraaien, voert u de volgende stappen uit: 
@@ -181,7 +181,7 @@ Als u het v2-eind punt hebt ingeschakeld en wilt terugdraaien, voert u de volgen
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> Wanneer u terugschakelt van de v2 naar v1-eind punten, worden groepen die zijn gesynchroniseerd met meer dan 50.000 leden verwijderd nadat een volledige synchronisatie is uitgevoerd, voor beide AD-groepen die zijn ingericht voor Azure AD en O365 Unified groups die zijn ingericht voor AD. 
+> Wanneer u terugschakelt van de v2 naar v1-eind punten, worden groepen die zijn gesynchroniseerd met meer dan 50.000 leden verwijderd nadat een volledige synchronisatie is uitgevoerd, voor zowel AD-groepen die zijn ingericht voor Azure AD als Microsoft 365 Unified groups die aan AD zijn ingericht. 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen  
 **V: kan een klant deze functie gebruiken in productie?**  

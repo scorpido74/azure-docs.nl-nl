@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948110"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004303"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Ondersteuning voor het verplaatsen van Azure-resources in verschillende regio's
 
@@ -83,7 +83,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Micro soft. HealthcareApis](#microsofthealthcareapis)
-> - [Micro soft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Micro soft. HybridData](#microsofthybriddata)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [micro soft. Insights](#microsoftinsights)
@@ -135,7 +135,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Sql](#microsoftsql)
 > - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Micro soft. SqlVM](#microsoftsqlvm)
-> - [Microsoft.Storage](#microsoftstorage)
+> - [Micro soft. Storage](#microsoftstorage)
 > - [Micro soft. StorageCache](#microsoftstoragecache)
 > - [Micro soft. StorageSync](#microsoftstoragesync)
 > - [Micro soft. StorageSyncDev](#microsoftstoragesyncdev)
@@ -158,29 +158,29 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- | 
-> | domainservices | Nee | 
-> | domainservices / replicasets | Nee | 
+> | domainservices | No | 
+> | domainservices / replicasets | No | 
 
 ## <a name="microsoftaadiam"></a>micro soft. aadiam
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | tenants | Nee |
+> | tenants | No |
 
 ## <a name="microsoftalertsmanagement"></a>Micro soft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | actionrules | Nee | 
+> | actionrules | No | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Server | Nee |
+> | Server | No |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -194,7 +194,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | configurationstores | Nee | 
+> | configurationstores | No | 
 
 ## <a name="microsoftappservice"></a>Micro soft. AppService
 
@@ -202,8 +202,8 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | apiapps | Ja (met behulp van sjabloon)<br/><br/> [Een App Service-app naar een andere regio verplaatsen](../../app-service/manage-move-across-regions.md) | 
-> | appidentities | Nee | 
-> | gateways | Nee | 
+> | appidentities | No | 
+> | gateways | No | 
 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
@@ -211,7 +211,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | policyassignments | Nee |
+> | policyassignments | No |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -219,8 +219,8 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | automationaccounts | Ja (met behulp van sjabloon) <br/><br/> [Geo-replicatie gebruiken](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
-> | automationaccounts/configuraties | Nee | 
-> | automationaccounts/runbooks | Nee | 
+> | automationaccounts/configuraties | No | 
+> | automationaccounts/runbooks | No | 
 
 
 
@@ -229,21 +229,21 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | b2cdirectories | Nee | 
+> | b2cdirectories | No | 
 
 ## <a name="microsoftazuredata"></a>Micro soft. Azureworden
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | sqlserverregistrations | Nee |
+> | sqlserverregistrations | No |
 
 ## <a name="microsoftazurestack"></a>Micro soft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | registraties | Nee | 
+> | registraties | No | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -257,53 +257,53 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | clusters | Nee <br/><br/> De Azure Batch AI-service is [buiten gebruik gesteld](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
-> | fileservers | Nee | 
-> | functies | Nee | 
-> | workspaces | Nee | 
+> | clusters | No <br/><br/> De Azure Batch AI-service is [buiten gebruik gesteld](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
+> | fileservers | No | 
+> | functies | No | 
+> | workspaces | No | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | mapapis | Nee | 
+> | mapapis | No | 
 
 ## <a name="microsoftbiztalkservices"></a>Micro soft. BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | biztalk | Nee | 
+> | biztalk | No | 
 
 ## <a name="microsoftblockchain"></a>Micro soft. Block Chain
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | blockchainmembers | Nee <br/><br/> Het block chain-netwerk kan geen knoop punten in verschillende regio's hebben. 
-> | Volg | Nee | 
+> | blockchainmembers | No <br/><br/> Het block chain-netwerk kan geen knoop punten in verschillende regio's hebben. 
+> | Volg | No | 
 
 ## <a name="microsoftblueprint"></a>Micro soft. blauw druk
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | blueprintassignments | Nee | 
+> | blueprintassignments | No | 
 
 ## <a name="microsoftbotservice"></a>Micro soft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | botservices | Nee | 
+> | botservices | No | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | redis | Nee | 
+> | redis | No | 
 
 
 ## <a name="microsoftcdn"></a>Micro soft. CDN
@@ -311,16 +311,16 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | cdnwebapplicationfirewallpolicies | Nee |
-> | profielen | Nee | 
-> | profielen/eind punten | Nee | 
+> | cdnwebapplicationfirewallpolicies | No |
+> | profielen | No | 
+> | profielen/eind punten | No | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | certificateorders | Nee | 
+> | certificateorders | No | 
 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
@@ -329,7 +329,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | domein naam | Er is geen werk gepland voor klassieke Services.
-> | informatie | Nee | 
+> | informatie | No | 
 
 
 
@@ -339,15 +339,15 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | networksecuritygroups | Er is geen werk gepland voor klassieke Services.
-> | reservedips | Nee | 
-> | virtualnetworks | Nee | 
+> | reservedips | No | 
+> | virtualnetworks | No | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Storage accounts | Ja |  
+> | Storage accounts | Yes |  
 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
@@ -355,7 +355,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 > | Cognitive Search | Wordt ondersteund met hand matige stappen.<br/><br/> Meer informatie over [het verplaatsen van uw Azure Cognitive Search-service naar een andere regio](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
@@ -363,48 +363,48 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Availability sets | Nee | 
-> | diskencryptionsets | Nee | 
-> | cd's | Nee | 
-> | Galerij | Nee | 
-> | galerieën/afbeeldingen | Nee | 
-> | galerieën/afbeeldingen/versies | Nee | 
-> | hostgroups | Nee | 
-> | hostgroups/hosts | Nee | 
-> | images | Nee | 
-> | proximityplacementgroups | Nee | 
-> | restorepointcollections | Nee | 
-> | sharedvmimages | Nee | 
-> | sharedvmimages/versies | Nee | 
-> | momentopnamen | Nee | 
-> | informatie | Ja | 
-> | informatie/extensies | Nee | 
-> | virtualmachinescalesets | Nee | 
+> | Availability sets | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overzetten om beschikbaarheids sets te verplaatsen. | 
+> | diskencryptionsets | No | 
+> | cd's | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overstap om Azure-vm's en gerelateerde schijven te verplaatsen. | 
+> | Galerij | No | 
+> | galerieën/afbeeldingen | No | 
+> | galerieën/afbeeldingen/versies | No | 
+> | hostgroups | No | 
+> | hostgroups/hosts | No | 
+> | images | No | 
+> | proximityplacementgroups | No | 
+> | restorepointcollections | No | 
+> | sharedvmimages | No | 
+> | sharedvmimages/versies | No | 
+> | momentopnamen | No | 
+> | informatie | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overstap om Azure-vm's te verplaatsen. | 
+> | informatie/extensies | No | 
+> | virtualmachinescalesets | No | 
 
 ## <a name="microsoftcontainer"></a>Micro soft. container
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | containergroups | Nee | 
+> | containergroups | No | 
 
 ## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | containergroups | Nee | 
+> | containergroups | No | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | registers | Nee |  
-> | registers/buildtasks | Nee |  
-> | registers/replicaties | Nee | 
-> | registers/taken | Nee |  
-> | registers/webhooks | Nee | 
+> | registers | No |  
+> | registers/buildtasks | No |  
+> | registers/replicaties | No | 
+> | registers/taken | No |  
+> | registers/webhooks | No | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
@@ -412,132 +412,132 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | containerservices | Nee.<br/><br/> De service is [buiten gebruik gesteld](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
-> | managedclusters | Nee | 
-> | openshiftmanagedclusters | Nee | 
+> | managedclusters | No | 
+> | openshiftmanagedclusters | No | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | toepassingen | Nee | 
+> | toepassingen | No | 
 
 ## <a name="microsoftcortanaanalytics"></a>Micro soft. CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftcostmanagement"></a>Micro soft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | connectoren | Nee |  
+> | connectoren | No |  
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hubs | Nee |  
+> | hubs | No |  
 
 ## <a name="microsoftcustomproviders"></a>Micro soft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | resourceproviders | Nee | 
+> | resourceproviders | No | 
 
 ## <a name="microsoftdatabox"></a>Micro soft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | functies | Nee | 
+> | functies | No | 
 
 ## <a name="microsoftdataboxedge"></a>Micro soft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | databoxedgedevices | Nee | 
+> | databoxedgedevices | No | 
 
 ## <a name="microsoftdatabricks"></a>Micro soft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces | Nee | 
+> | workspaces | No | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | catalogi | Nee | 
-> | datacatalogs | Nee | 
+> | catalogi | No | 
+> | datacatalogs | No | 
 
 ## <a name="microsoftdataconnect"></a>Micro soft. DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | connectionmanagers | Nee | 
+> | connectionmanagers | No | 
 
 ## <a name="microsoftdataexchange"></a>Micro soft. DataExchange
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Pakketten | Nee | 
-> | plant | Nee | 
+> | Pakketten | No | 
+> | plant | No | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | datafactories | Nee | 
-> | factory's | Nee |  
+> | datafactories | No | 
+> | factory's | No |  
 
 ## <a name="microsoftdatalake"></a>Micro soft. DataLake
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | datalakeaccounts | Nee | 
+> | datalakeaccounts | No | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftdatamigration"></a>Micro soft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | services | Nee | 
-> | Services/projecten | Nee | 
-> | sleuf | Nee | 
+> | services | No | 
+> | Services/projecten | No | 
+> | sleuf | No | 
 
 ## <a name="microsoftdatashare"></a>Micro soft. DataShare
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftdbformariadb"></a>Micro soft. DBforMariaDB
 
@@ -558,21 +558,21 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | servergroups | Nee | 
+> | servergroups | No | 
 > | Server | U kunt een replicatie met meerdere regio's gebruiken om een bestaande server te verplaatsen. [Meer informatie](../../postgresql/howto-move-regions-portal.md).
-> | serversv2 | Nee | 
+> | serversv2 | No | 
 
 ## <a name="microsoftdeploymentmanager"></a>Micro soft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | artifactsources | Nee | 
-> | implementaties | Nee |  
-> | servicetopologies | Nee | 
-> | servicetopologies/Services | Nee |  
-> | servicetopologies/Services/serviceunits | Nee | 
-> | stappen | Nee | 
+> | artifactsources | No | 
+> | implementaties | No |  
+> | servicetopologies | No | 
+> | servicetopologies/Services | No |  
+> | servicetopologies/Services/serviceunits | No | 
+> | stappen | No | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -582,63 +582,63 @@ Ga naar de naam ruimte van een resource provider:
 > | elasticpools | Nee. De resource is niet beschikbaar.
 > | elasticpools / iothubtenants | Nee. De resource is niet beschikbaar.
 > | iothubs | Ja. [Meer informatie](../../iot-hub/iot-hub-how-to-clone.md)
-> | provisioningservices | Nee | 
+> | provisioningservices | No | 
 
 ## <a name="microsoftdevspaces"></a>Micro soft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | fungeren | Nee | 
-> | AKS-cluster | Nee<br/><br/> Meer [informatie](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) over verplaatsen naar een andere regio.
+> | fungeren | No | 
+> | AKS-cluster | No<br/><br/> Meer [informatie](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) over verplaatsen naar een andere regio.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | labcenters | Nee | 
-> | Labs | Nee | 
-> | Labs/omgevingen | Nee |  
-> | Labs-servicerunners | Nee | 
-> | Labs-informatie | Nee |  
-> | schema's | Nee |  
+> | labcenters | No | 
+> | Labs | No | 
+> | Labs/omgevingen | No |  
+> | Labs-servicerunners | No | 
+> | Labs-informatie | No |  
+> | schema's | No |  
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | databaseaccounts | Nee | 
+> | databaseaccounts | No | 
 
 ## <a name="microsoftdomainregistration"></a>Micro soft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | domeinen | Nee | 
+> | domeinen | No | 
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Micro soft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | services | Nee |  
+> | services | No |  
 
 ## <a name="microsofteventgrid"></a>Micro soft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | domeinen | Nee |  
-> | onderwerp | Nee | 
+> | domeinen | No |  
+> | onderwerp | No | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | clusters | Nee |  
+> | clusters | No |  
 > | naam ruimten | Ja (met sjabloon)<br/><br/> [Een event hub-naam ruimte verplaatsen naar een andere regio](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Micro soft. Genomics
@@ -646,69 +646,69 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsofthanaonazure"></a>Micro soft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hanainstances | Nee | 
-> | sapmonitors | Nee |  
+> | hanainstances | No | 
+> | sapmonitors | No |  
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | clusters | Nee | 
+> | clusters | No | 
 
 ## <a name="microsofthealthcareapis"></a>Micro soft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | services | Nee |  
+> | services | No |  
 
-## <a name="microsofthybridcompute"></a>Micro soft. HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | apparaten | Nee | 
+> | apparaten | No | 
 
 ## <a name="microsofthybriddata"></a>Micro soft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | datamanagers |  Nee | 
+> | datamanagers |  No | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | functies |  Nee | 
+> | functies |  No | 
 
 ## <a name="microsoftinsights"></a>micro soft. Insights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
-> | actiongroups |  Nee | 
-> | activitylogalerts | Nee | 
-> | alertrules |  Nee | 
-> | autoscalesettings |  Nee | 
-> | materialen |  Nee |  
-> | guestdiagnosticsettings | Nee | 
-> | metricalerts | Nee | 
-> | notificationgroups | Nee | 
-> | notificationrules | Nee | 
-> | scheduledqueryrules |  Nee | 
-> | webtests |  Nee | 
-> | werkmappen |  Nee |  
+> | accounts | No | 
+> | actiongroups |  No | 
+> | activitylogalerts | No | 
+> | alertrules |  No | 
+> | autoscalesettings |  No | 
+> | materialen |  No |  
+> | guestdiagnosticsettings | No | 
+> | metricalerts | No | 
+> | notificationgroups | No | 
+> | notificationrules | No | 
+> | scheduledqueryrules |  No | 
+> | webtests |  No | 
+> | werkmappen |  No |  
 
 
 ## <a name="microsoftiotcentral"></a>Micro soft. IoTCentral
@@ -717,7 +717,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | checknameavailability |  Nee.<br/><br/> IoT Central werkt met geographs en geen regio's.
-> | Graph | Nee
+> | Graph | No
 
 ## <a name="microsoftiothub"></a>Microsoft.IotHub
 
@@ -731,16 +731,16 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | checknameavailability |  Nee |  
-> | Graph |  Nee | 
+> | checknameavailability |  No |  
+> | Graph |  No | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hsmpools | Nee | 
-> | kluizen |  Nee | 
+> | hsmpools | No | 
+> | kluizen |  No | 
 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -748,21 +748,21 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | clusters |  Nee |  
+> | clusters |  No |  
 
 ## <a name="microsoftlabservices"></a>Micro soft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | labaccounts | Nee | 
+> | labaccounts | No | 
 
 ## <a name="microsoftlocationbasedservices"></a>Micro soft. LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftlocationservices"></a>Micro soft. bestand locationservices
 
@@ -776,67 +776,67 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hostingenvironments | Nee | 
-> | integrationaccounts |  Nee |  
-> | integrationserviceenvironments | Nee | 
-> | isolatedenvironments | Nee | 
-> | stroom |  Nee |  
+> | hostingenvironments | No | 
+> | integrationaccounts |  No |  
+> | integrationserviceenvironments | No | 
+> | isolatedenvironments | No | 
+> | stroom |  No |  
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | commitmentplans |  Nee | 
-> | webservices |  Nee | 
-> | workspaces |  Nee | 
+> | commitmentplans |  No | 
+> | webservices |  No | 
+> | workspaces |  No | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | operationalizationclusters |  Nee | 
+> | operationalizationclusters |  No | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Micro soft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
-> | accounts/werk ruimten | Nee | 
-> | accounts/werk ruimten/projecten | Nee | 
-> | teamaccounts | Nee | 
-> | teamaccounts/werk ruimten | Nee | 
-> | teamaccounts/werk ruimten/projecten | Nee | 
+> | accounts | No | 
+> | accounts/werk ruimten | No | 
+> | accounts/werk ruimten/projecten | No | 
+> | teamaccounts | No | 
+> | teamaccounts/werk ruimten | No | 
+> | teamaccounts/werk ruimten/projecten | No | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Micro soft. MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Micro soft. MachineLearningOperationalization
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hostingaccounts | Nee | 
+> | hostingaccounts | No | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces | Nee | 
+> | workspaces | No | 
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | userassignedidentities | Nee | 
+> | userassignedidentities | No | 
 
 ## <a name="microsoftmaps"></a>Micro soft. Maps
 
@@ -857,87 +857,87 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Media Services |  Nee | 
-> | Media Services/liveevents |  Nee | 
-> | Media Services/streamingendpoints |  Nee | 
+> | Media Services |  No | 
+> | Media Services/liveevents |  No | 
+> | Media Services/streamingendpoints |  No | 
 
 ## <a name="microsoftmicroservices4spring"></a>Micro soft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | appclusters | Nee | 
+> | appclusters | No | 
 
 ## <a name="microsoftmigrate"></a>Micro soft. migrate
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | assessmentprojects | Nee | 
-> | migrateprojects | Nee | 
-> | projecten | Nee | 
+> | assessmentprojects | No | 
+> | migrateprojects | No | 
+> | projecten | No | 
 
 ## <a name="microsoftnetapp"></a>Micro soft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | netappaccounts | Nee | 
-> | netappaccounts / capacitypools | Nee | 
-> | netappaccounts/capacitypools/volumes | Nee | 
-> | netappaccounts/capacitypools/volumes/mounttargets | Nee | 
-> | netappaccounts/capacitypools/volumes/moment opnamen | Nee | 
+> | netappaccounts | No | 
+> | netappaccounts / capacitypools | No | 
+> | netappaccounts/capacitypools/volumes | No | 
+> | netappaccounts/capacitypools/volumes/mounttargets | No | 
+> | netappaccounts/capacitypools/volumes/moment opnamen | No | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | applicationgateways | Nee | 
-> | applicationgatewaywebapplicationfirewallpolicies | Nee | 
-> | applicationsecuritygroups |  Nee |  
-> | azurefirewalls |  Nee |  
-> | bastionhosts | Nee | 
-> | inbel |  Nee | 
-> | ddoscustompolicies |  Nee | 
-> | ddosprotectionplans | Nee | 
-> | dnszones |  Nee | 
-> | expressroutecircuits | Nee | 
-> | expressroutecrossconnections | Nee | 
-> | expressroutegateways | Nee | 
-> | expressrouteports | Nee | 
-> | frontdoors | Nee | 
-> | frontdoorwebapplicationfirewallpolicies | Nee | 
-> | loadbalancers | Ja <br/><br/> U kunt de bestaande configuratie als sjabloon exporteren en de sjabloon implementeren in de nieuwe regio. Meer informatie over het verplaatsen van een [externe](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) of [interne](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Load Balancer. |
-> | localnetworkgateways |  Nee | 
-> | natgateways |  Nee | 
-> | networkintentpolicies |  Nee | 
-> | networkinterfaces | Ja | 
-> | networkprofiles | Nee | 
-> | networksecuritygroups | Ja | 
-> | networkwatchers |  Nee |  
-> | networkwatchers / connectionmonitors |  Nee | 
-> | networkwatchers/lenzen |  Nee | 
-> | networkwatchers / pingmeshes |  Nee | 
-> | p2svpngateways | Nee | 
-> | privatednszones |  Nee |  
-> | privatednszones / virtualnetworklinks |  Nee |  
-> | privateendpoints | Nee | 
-> | privatelinkservices | Nee | 
-> | publicipaddresses | Ja<br/><br/> U kunt de bestaande configuratie van een openbaar IP-adres als sjabloon exporteren en de sjabloon in de nieuwe regio implementeren. Meer [informatie](../../virtual-network/move-across-regions-publicip-portal.md) over het verplaatsen van een openbaar IP-adres. |
-> | publicipprefixes | Nee | 
-> | routefilters | Nee | 
-> | routetables |  Nee | 
-> | serviceendpointpolicies |  Nee | 
-> | trafficmanagerprofiles |  Nee | 
-> | virtualhubs | Nee | 
-> | virtualnetworkgateways |  Nee |  
-> | virtualnetworks |  Nee | 
-> | virtualnetworktaps | Nee | 
-> | virtualwans | Nee | 
-> | vpngateways (virtueel WAN) | Nee | 
-> | vpnsites (virtueel WAN) | Nee | 
-> | webapplicationfirewallpolicies |  Nee | 
+> | applicationgateways | No | 
+> | applicationgatewaywebapplicationfirewallpolicies | No | 
+> | applicationsecuritygroups |  No |  
+> | azurefirewalls |  No |  
+> | bastionhosts | No | 
+> | inbel |  No | 
+> | ddoscustompolicies |  No | 
+> | ddosprotectionplans | No | 
+> | dnszones |  No | 
+> | expressroutecircuits | No | 
+> | expressroutecrossconnections | No | 
+> | expressroutegateways | No | 
+> | expressrouteports | No | 
+> | frontdoors | No | 
+> | frontdoorwebapplicationfirewallpolicies | No | 
+> | loadbalancers | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overstap om interne en externe load balancers te verplaatsen. |
+> | localnetworkgateways |  No | 
+> | natgateways |  No | 
+> | networkintentpolicies |  No | 
+> | networkinterfaces | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overstap om nic's te verplaatsen. | 
+> | networkprofiles | No | 
+> | networksecuritygroups | Yes <br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) -overzetten om netwerk beveiligings groepen (NGSs) te verplaatsen. | 
+> | networkwatchers |  No |  
+> | networkwatchers / connectionmonitors |  No | 
+> | networkwatchers/lenzen |  No | 
+> | networkwatchers / pingmeshes |  No | 
+> | p2svpngateways | No | 
+> | privatednszones |  No |  
+> | privatednszones / virtualnetworklinks |  No |  
+> | privateendpoints | No | 
+> | privatelinkservices | No | 
+> | publicipaddresses | Yes<br/><br/> Gebruik [Azure resource](../../resource-mover/tutorial-move-region-virtual-machines.md) delegering om open bare IP-adressen te verplaatsen. |
+> | publicipprefixes | No | 
+> | routefilters | No | 
+> | routetables |  No | 
+> | serviceendpointpolicies |  No | 
+> | trafficmanagerprofiles |  No | 
+> | virtualhubs | No | 
+> | virtualnetworkgateways |  No |  
+> | virtualnetworks |  No | 
+> | virtualnetworktaps | No | 
+> | virtualwans | No | 
+> | vpngateways (virtueel WAN) | No | 
+> | vpnsites (virtueel WAN) | No | 
+> | webapplicationfirewallpolicies |  No | 
 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
@@ -945,15 +945,15 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | naam ruimten |  Nee | 
-> | naam ruimten/notification hubs |  Nee |  
+> | naam ruimten |  No | 
+> | naam ruimten/notification hubs |  No |  
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces |  Nee | 
+> | workspaces |  No | 
 
 
 
@@ -962,50 +962,50 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | managementconfigurations |  Nee | 
-> | Weergaven |  Nee | 
+> | managementconfigurations |  No | 
+> | Weergaven |  No | 
 
 ## <a name="microsoftpeering"></a>Micro soft. peering
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Peerings | Nee | 
+> | Peerings | No | 
 
 ## <a name="microsoftportal"></a>Micro soft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | dashboards | Nee | 
+> | dashboards | No | 
 
 ## <a name="microsoftportalsdk"></a>Micro soft. PortalSdk
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | rootresources | Nee | 
+> | rootresources | No | 
 
 ## <a name="microsoftpowerbi"></a>Micro soft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspacecollections |  Nee | 
+> | workspacecollections |  No | 
 
 ## <a name="microsoftpowerbidedicated"></a>Micro soft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | beschikt |  Nee | 
+> | beschikt |  No | 
 
 ## <a name="microsoftprojectoxford"></a>Micro soft. ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | Nee | 
+> | accounts | No | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1020,44 +1020,44 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | naam ruimten |  Nee | 
+> | naam ruimten |  No | 
 
 ## <a name="microsoftresourcegraph"></a>Micro soft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | aanvragen |  Nee |  
+> | aanvragen |  No |  
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen |
 > | ------------- | ----------- |
-> | deploymentScripts |  Ja<br/><br/>[Resources van micro soft. resources naar een nieuwe regio verplaatsen](microsoft-resources-move-regions.md) |
-> | templateSpecs |  Ja<br/><br/>[Resources van micro soft. resources naar een nieuwe regio verplaatsen](microsoft-resources-move-regions.md) |  
+> | deploymentScripts |  Yes<br/><br/>[Resources van micro soft. resources naar een nieuwe regio verplaatsen](microsoft-resources-move-regions.md) |
+> | templateSpecs |  Yes<br/><br/>[Resources van micro soft. resources naar een nieuwe regio verplaatsen](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Micro soft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | toepassingen |  Nee | 
+> | toepassingen |  No | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | flows |  Nee |  
-> | jobcollections |  Nee | 
+> | flows |  No |  
+> | jobcollections |  No | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | searchservices |  Nee | 
+> | searchservices |  No | 
 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
@@ -1065,145 +1065,145 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | iotsecuritysolutions |  Nee | 
-> | playbookconfigurations | Nee | 
+> | iotsecuritysolutions |  No | 
+> | playbookconfigurations | No | 
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | gateways | Nee | 
-> | punt | Nee | 
+> | gateways | No | 
+> | punt | No | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | naam ruimten |  Nee | 
+> | naam ruimten |  No | 
 
 ## <a name="microsoftservicefabric"></a>Micro soft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | toepassingen | Nee | 
-> | clusters |  Nee | 
-> | clusters/toepassingen | Nee | 
-> | containergroups | Nee | 
-> | containergroupsets | Nee | 
-> | edgeclusters | Nee | 
-> | netwerken | Nee | 
-> | secretstores | Nee | 
-> | volumes | Nee | 
+> | toepassingen | No | 
+> | clusters |  No | 
+> | clusters/toepassingen | No | 
+> | containergroups | No | 
+> | containergroupsets | No | 
+> | edgeclusters | No | 
+> | netwerken | No | 
+> | secretstores | No | 
+> | volumes | No | 
 
 ## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | toepassingen |  Nee | 
-> | containergroups | Nee | 
-> | gateways |  Nee | 
-> | netwerken |  Nee | 
-> | geheimen |  Nee | 
-> | volumes |  Nee |  
+> | toepassingen |  No | 
+> | containergroups | No | 
+> | gateways |  No | 
+> | netwerken |  No | 
+> | geheimen |  No | 
+> | volumes |  No |  
 
 ## <a name="microsoftsignalrservice"></a>Micro soft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | signalr |  Nee |  
+> | signalr |  No |  
 
 ## <a name="microsoftsolutions"></a>Micro soft. Solutions
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | appliancedefinitions | Nee | 
-> | uitrusting | Nee | 
-> | applicationdefinitions | Nee | 
-> | toepassingen | Nee | 
-> | jitrequests | Nee | 
+> | appliancedefinitions | No | 
+> | uitrusting | No | 
+> | applicationdefinitions | No | 
+> | toepassingen | No | 
+> | jitrequests | No | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | instancepools | Nee | 
-> | managedinstances | Ja | 
-> | managedinstances/data bases | Ja | 
-> | Server | Ja | 
-> | servers/data bases | Ja | 
-> | servers/elasticpools | Ja | 
-> | virtualclusters | Ja | 
+> | instancepools | No | 
+> | managedinstances | Yes <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van beheerde exemplaren tussen regio's. | 
+> | managedinstances/data bases | Yes | 
+> | Server | Yes | 
+> | servers/data bases | Yes <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van data bases in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource-overstap voor het verplaatsen van Azure SQL-data bases.  | 
+> | servers/elasticpools | Yes <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van elastische Pools in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource Move om elastische Azure SQL-Pools te verplaatsen.  | 
+> | virtualclusters | Yes | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Micro soft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | sqlvirtualmachinegroups |  Nee |  
-> | sqlvirtualmachines |  Nee |  
+> | sqlvirtualmachinegroups |  No |  
+> | sqlvirtualmachines |  No |  
 
 ## <a name="microsoftsqlvm"></a>Micro soft. SqlVM
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | dwvm | Nee | 
+> | dwvm | No | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Storage accounts | Ja<br/><br/> [Een Azure Storage-account naar een andere regio verplaatsen](../../storage/common/storage-account-move.md) | 
+> | Storage accounts | Yes<br/><br/> [Een Azure Storage-account naar een andere regio verplaatsen](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Micro soft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | caches | Nee | 
+> | caches | No | 
 
 ## <a name="microsoftstoragesync"></a>Micro soft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | storagesyncservices |  Nee | 
+> | storagesyncservices |  No | 
 
 ## <a name="microsoftstoragesyncdev"></a>Micro soft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | storagesyncservices | Nee | 
+> | storagesyncservices | No | 
 
 ## <a name="microsoftstoragesyncint"></a>Micro soft. StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | storagesyncservices | Nee | 
+> | storagesyncservices | No | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | leider | Nee | 
+> | leider | No | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | streamingjobs |  Nee |  
+> | streamingjobs |  No |  
 
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Micro soft. StreamAnalyticsExplorer
@@ -1211,51 +1211,51 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | verschillend | Nee | 
-> | omgevingen/eventsources | Nee | 
-> | vaak | Nee | 
-> | exemplaren/omgevingen | Nee | 
-> | exemplaren/omgevingen/eventsources | Nee | 
+> | verschillend | No | 
+> | omgevingen/eventsources | No | 
+> | vaak | No | 
+> | exemplaren/omgevingen | No | 
+> | exemplaren/omgevingen/eventsources | No | 
 
 ## <a name="microsoftterraformoss"></a>Micro soft. TerraformOSS
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | providerregistrations | Nee | 
-> | resources | Nee | 
+> | providerregistrations | No | 
+> | resources | No | 
 
 ## <a name="microsofttimeseriesinsights"></a>Micro soft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | verschillend |  Nee | 
-> | omgevingen/eventsources |  Nee |  
-> | omgevingen/referencedatasets |  Nee | 
+> | verschillend |  No | 
+> | omgevingen/eventsources |  No |  
+> | omgevingen/referencedatasets |  No | 
 
 ## <a name="microsofttoken"></a>Micro soft. token
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | opslaat | Nee | 
+> | opslaat | No | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | imagetemplates | Nee | 
+> | imagetemplates | No | 
 
 ## <a name="microsoftvisualstudio"></a>micro soft. Visual Studio
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | account |  Nee | 
-> | account/extensie |  Nee | 
-> | account/project |  Nee | 
+> | account |  No | 
+> | account/extensie |  No | 
+> | account/project |  No | 
 
 
 
@@ -1264,24 +1264,24 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | dedicatedcloudnodes | Nee | 
-> | dedicatedcloudservices | Nee | 
-> | informatie | Nee | 
+> | dedicatedcloudnodes | No | 
+> | dedicatedcloudservices | No | 
+> | informatie | No | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | certificaten | Nee | 
-> | connectiongateways |  Nee |  
-> | inbel |  Nee |  
-> | customapis |  Nee | 
-> | hostingenvironments | Nee | 
-> | server farms |  Nee |  
-> | sites |  Nee | 
-> | sites/premieraddons |  Nee |  
-> | sites/sleuven |  Nee |  
+> | certificaten | No | 
+> | connectiongateways |  No |  
+> | inbel |  No |  
+> | customapis |  No | 
+> | hostingenvironments | No | 
+> | server farms |  No |  
+> | sites |  No | 
+> | sites/premieraddons |  No |  
+> | sites/sleuven |  No |  
 
 
 ## <a name="microsoftwindowsiot"></a>Micro soft. WindowsIoT
@@ -1289,16 +1289,16 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | deviceservices | Nee | 
+> | deviceservices | No | 
 
 ## <a name="microsoftwindowsvirtualdesktop"></a>Micro soft. WindowsVirtualDesktop
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | applicationgroups | Nee | 
-> | hostpools | Nee | 
-> | workspaces | Nee | 
+> | applicationgroups | No | 
+> | hostpools | No | 
+> | workspaces | No | 
 
 ## <a name="third-party-services"></a>Services van derden
 

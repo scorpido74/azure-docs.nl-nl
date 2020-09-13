@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019758"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662484"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronisatie: Directory-extensies
-U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [uitbrei dingen](https://docs.microsoft.com/graph/extensibility-overview
+U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [uitbrei dingen](/graph/extensibility-overview
 ). U kunt de beschik bare kenmerken weer geven met behulp van [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt deze functie ook gebruiken om dynamische groepen te maken in azure AD.
 
-Op dit moment gebruikt geen Office 365-werk belasting deze kenmerken.
+Op dit moment gebruikt geen Microsoft 365 werk belasting deze kenmerken.
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Aanpassen welke kenmerken moeten worden gesynchroniseerd met Azure AD
 
@@ -69,11 +69,11 @@ Deze kenmerken zijn nu beschikbaar via de Microsoft Graph-API met behulp van [Mi
 >[!NOTE]
 > In de Microsoft Graph-API moet u vragen om de kenmerken te retour neren. Selecteer de kenmerken als volgt expliciet: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
-> Zie [Microsoft Graph: query parameters gebruiken](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)voor meer informatie.
+> Zie [Microsoft Graph: query parameters gebruiken](/graph/query-parameters#select-parameter)voor meer informatie.
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>De kenmerken in dynamische groepen gebruiken
 
-Een van de handigste scenario's is het gebruik van deze kenmerken in dynamische beveiligings-of Office 365-groepen.
+Een van de handigste scenario's is het gebruik van deze kenmerken in dynamische beveiligings-of Microsoft 365 groepen.
 
 1. Maak een nieuwe groep in azure AD. Geef het een goede naam en zorg ervoor dat het **lidmaatschaps type** een **dynamische gebruiker**is.
 

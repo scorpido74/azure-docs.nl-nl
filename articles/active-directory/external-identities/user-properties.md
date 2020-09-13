@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61a298b3b1d9e129b0ef3bbfff12f34d0ba09a8
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908400"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668959"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -108,7 +108,7 @@ Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van u
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kan ik het e-mail adres van een gast gebruiker bijwerken?
 
-Als een gast gebruiker uw uitnodiging accepteert en vervolgens het e-mail adres wijzigt, wordt de nieuwe e-mail niet automatisch gesynchroniseerd met het gast gebruikers object in uw Directory. De eigenschap mail wordt gemaakt via [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). U kunt de eigenschap e-mail bijwerken via het Exchange-beheer centrum of [Exchange Online Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)en de wijziging wordt weer gegeven in het gebruikers object van de Azure AD-gast.
+Als een gast gebruiker uw uitnodiging accepteert en vervolgens het e-mail adres wijzigt, wordt de nieuwe e-mail niet automatisch gesynchroniseerd met het gast gebruikers object in uw Directory. De eigenschap mail wordt gemaakt via [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). U kunt de eigenschap e-mail bijwerken via de Microsoft Graph-API, het Exchange-beheer centrum of [Exchange Online Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps). De wijziging wordt weer gegeven in het gebruikers object van de Azure AD-gast.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 720f9dfc09d27a18460037bfbbd15ae4bfc88707
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236701"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669056"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: automatische VM-gast patches voor Windows-Vm's in azure
 
@@ -67,12 +67,12 @@ In de preview-versie worden alleen Vm's ondersteund die zijn gemaakt op basis va
 
 De volgende platform-Sku's worden momenteel ondersteund (en worden regel matig toegevoegd):
 
-| Uitgever               | OS-aanbieding      |  Sku               |
+| Publisher               | OS-aanbieding      |  Sku               |
 |-------------------------|---------------|--------------------|
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center    |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019-Data Center |
+| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center-Server-Core |
 
 ## <a name="patch-orchestration-modes"></a>Patch Orchestration-modi
@@ -106,7 +106,7 @@ Virtuele Windows-machines in azure ondersteunen nu de volgende patch indelings m
 
 Het inschakelen van de Preview-functionaliteit vereist eenmalige aanmelding voor de functie *InGuestAutoPatchVMPreview* per abonnement, zoals hieronder wordt beschreven.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 In het volgende voor beeld wordt beschreven hoe u de preview-versie van uw abonnement kunt inschakelen:
 
 ```
@@ -165,7 +165,7 @@ az provider register --namespace Microsoft.Compute
 ## <a name="enable-automatic-vm-guest-patching"></a>Automatische VM-gast patches inschakelen
 Als u automatische VM-gast patches wilt inschakelen, moet u ervoor zorgen dat de eigenschap *osProfile. windowsConfiguration. enableAutomaticUpdates* is ingesteld op *True* in de definitie van de VM-sjabloon. Deze eigenschap kan alleen worden ingesteld wanneer de virtuele machine wordt gemaakt.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 In het volgende voor beeld wordt beschreven hoe u automatische VM-gast patches inschakelt:
 
 ```
@@ -192,7 +192,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 Gebruik de cmdlet [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) om automatische VM-gast patches in te scha kelen bij het maken of bijwerken van een virtuele machine.
 
 ```azurepowershell-interactive
-Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
+Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0

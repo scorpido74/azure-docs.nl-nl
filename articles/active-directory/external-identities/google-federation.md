@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908639"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669393"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
@@ -51,39 +51,43 @@ U kunt Google gast gebruikers ook een rechtstreekse koppeling geven naar een toe
 ## <a name="step-1-configure-a-google-developer-project"></a>Stap 1: een Google-ontwikkelaars project configureren
 Maak eerst een nieuw project in de Google developers-console om een client-ID en een client geheim op te halen dat u later kunt toevoegen aan Azure AD. 
 1. Ga naar de Google-Api's op https://console.developers.google.com en meld u aan met uw Google-account. We raden u aan een Google-account voor een gedeeld team te gebruiken.
-2. Een nieuw project maken: Selecteer in het dash board **project maken**en selecteer vervolgens **maken**. Voer op de pagina nieuw project een **project naam**in en selecteer **maken**.
+2. De service voorwaarden accepteren als u hierom wordt gevraagd
+3. Een nieuw project maken: in het dash board selecteert u **project maken**, geeft u het project een naam (bijvoorbeeld ' Azure AD B2B ') en selecteert u **maken**. 
    
    ![Scherm opname met een nieuwe project pagina voor Google](media/google-federation/google-new-project.png)
 
-3. Zorg ervoor dat het nieuwe project is geselecteerd in het menu Project. Selecteer vervolgens onder **api's & Services**het **venster OAuth-toestemming**.
+4. Klik op de pagina **api's & Services** die nu aan u wordt weer gegeven, op **weer geven** onder het nieuwe project.
 
-4. Selecteer **extern**en selecteer vervolgens **maken**. 
-5. Voer op het **scherm OAuth-toestemming**een **toepassings naam**in. (Behoud de andere instellingen.)
+5. Klik op het **overzicht** van api's op de API-kaart. Selecteer het **venster OAuth-toestemming**.
+
+6. Selecteer **extern**en selecteer vervolgens **maken**. 
+
+7. Voer op het **scherm OAuth-toestemming**een **toepassings naam**in. 
 
    ![Scherm opname van de Google OAuth-toestemming scherm optie](media/google-federation/google-oauth-consent-screen.png)
 
-6. Ga naar de sectie **geautoriseerde domeinen** en voer microsoftonline.com in.
+8. Ga naar de sectie **geautoriseerde domeinen** en voer microsoftonline.com in.
 
-   ![Scherm opname van de sectie met gemachtigde domeinen](media/google-federation/google-oauth-authorized-domains.png)
+   ![Scherm opname van de sectie met gemachtigde domeinen](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. Selecteer **Opslaan**.
+9. Selecteer **Opslaan**.
 
-8. **Referenties**kiezen. Kies in het menu **referenties maken** de optie **OAuth-client-id**.
+10. **Referenties**kiezen. Kies in het menu **referenties maken** de optie **OAuth-client-id**.
 
-   ![Scherm opname van de opties voor het maken van referenties met Google Api's](media/google-federation/google-api-credentials.png)
+    ![Scherm opname van de opties voor het maken van referenties met Google Api's](media/google-federation/google-api-credentials.png)
 
-9. Onder **toepassings type**kiest u **Webtoepassing**en voert u onder **geautoriseerde omleidings-uri's**de volgende uri's in:
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waar `<directory id>` is uw directory-id)
+11. Kies onder **toepassings type**de optie **Webtoepassing** en geef de toepassing een geschikte naam, bijvoorbeeld ' Azure AD B2B ', en voer onder **geautoriseerde omleidings-uri's**de volgende uri's in:
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waar `<directory id>` is uw directory-id)
    
-     > [!NOTE]
-     > Om uw directory-ID te vinden, gaat u naar https://portal.azure.com en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **map-id**.
+    > [!NOTE]
+    > Om uw directory-ID te vinden, gaat u naar https://portal.azure.com en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **map-id**.
 
-   ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
+    ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
 
-10. Selecteer **Maken**. Kopieer de client-ID en het client geheim dat u gebruikt wanneer u de ID-provider toevoegt in de Azure AD-Portal.
+12. Selecteer **Maken**. Kopieer de client-ID en het client geheim dat u gebruikt wanneer u de ID-provider toevoegt in de Azure AD-Portal.
 
-   ![Scherm opname met de OAuth-client-ID en het client geheim](media/google-federation/google-auth-client-id-secret.png)
+    ![Scherm opname met de OAuth-client-ID en het client geheim](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>Stap 2: Google Federation configureren in azure AD 
 Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in te voeren in de Azure AD-portal of met behulp van Power shell. Zorg ervoor dat u uw Google Federation-configuratie test door uzelf uit te nodigen met behulp van een Gmail-adres en probeert de uitnodiging te verwisselen met uw geuitgenodigde Google-account. 
@@ -92,7 +96,7 @@ Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in
 1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**en klik vervolgens op de knop **Google** .
-4. Voer een naam in. Voer vervolgens de client-ID en het client geheim in die u eerder hebt verkregen. Selecteer **Opslaan**. 
+4. Voer vervolgens de client-ID en het client geheim in die u eerder hebt verkregen. Selecteer **Opslaan**. 
 
    ![Scherm afbeelding van de pagina Google-ID-provider toevoegen](media/google-federation/google-identity-provider.png)
 

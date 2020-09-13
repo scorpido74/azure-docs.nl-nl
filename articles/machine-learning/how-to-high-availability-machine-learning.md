@@ -1,5 +1,5 @@
 ---
-title: Tolerantie verhogen
+title: Tolerantie & hoge Beschik baarheid
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uw Azure Machine Learning-resources flexibeler maakt voor storingen met behulp van een configuratie met een hoge Beschik baarheid.
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 07/16/2020
-ms.openlocfilehash: 9b298e10d3eb95bcb0ef525eb973259a3ab1dbbb
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/16/2020
+ms.openlocfilehash: abb24ef1cc6a693acbaf6561a185fd5ae536a66d
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852551"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668793"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning tolerantie verg Roten
 
@@ -50,15 +50,15 @@ In de volgende tabel ziet u welke Azure-Services worden beheerd door micro soft,
 
 | Service | Beheerd door | Standaard hoge Beschik baarheid |
 | ----- | ----- | ----- |
-| **Azure Machine Learning-infra structuur** | Microsoft-peering | |
+| **Azure Machine Learning-infra structuur** | Microsoft | |
 | **Gekoppelde resources** |
 | Azure Storage | U | |
 | Key Vault | U | ✓ |
 | Container Registry | U | |
 | Application Insights | U | NA |
-| **Reken resources** |
-| Rekenproces | Microsoft-peering |  |
-| Reken cluster | Microsoft-peering |  |
+| **Rekenresources** |
+| Rekenproces | Microsoft |  |
+| Reken cluster | Microsoft |  |
 | Andere reken resources, zoals AKS, <br>Azure Databricks, Container Instances, HDInsight | U |  |
 | **Aanvullende gegevens archieven** zoals Azure Storage, SQL database,<br> Azure Database for PostgreSQL, Azure Database for MySQL, <br>Azure Databricks bestands systeem | U | |
 
@@ -76,7 +76,7 @@ Zorg ervoor dat u de instellingen voor hoge Beschik baarheid van elke resource c
 * **Container Registry**: Kies de optie Premium Registry voor geo-replicatie. Zie [geo-replicatie in azure container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
 * **Application Insights**: Application Insights biedt geen instellingen voor hoge Beschik baarheid. Zie [gegevens verzameling, retentie en opslag in Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#how-long-is-the-data-kept)om de Bewaar periode voor gegevens en Details aan te passen.
 
-## <a name="compute-resources"></a>Reken resources
+## <a name="compute-resources"></a>Rekenresources
 
 Zorg ervoor dat u de instellingen voor hoge Beschik baarheid van elke resource configureert door te verwijzen naar de volgende documentatie:
 

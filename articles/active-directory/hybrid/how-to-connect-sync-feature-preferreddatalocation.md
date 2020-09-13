@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: voorkeurs locatie van gegevens configureren voor Office 365-resources'
-description: Hierin wordt beschreven hoe u uw Office 365-gebruikers resources dicht bij de gebruiker kunt plaatsen met Azure Active Directory Connect synchronisatie.
+title: 'Azure AD Connect: de voorkeurs locatie van gegevens voor Microsoft 365 resources configureren'
+description: Hierin wordt beschreven hoe u uw Microsoft 365 gebruikers bronnen dicht bij de gebruiker kunt plaatsen met Azure Active Directory Connect synchronisatie.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,29 +16,29 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357406"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662500"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
-Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Microsoft 365 resources configureren
+Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Microsoft 365, gebruikt u dit kenmerk om de geografische locatie van de Microsoft 365 gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Synchronisatie van voorkeurs locatie van gegevens inschakelen
-Office 365-resources voor uw gebruikers bevinden zich standaard in dezelfde geografische regio als uw Azure AD-Tenant. Als uw Tenant zich bijvoorbeeld bevindt in Noord-Amerika, bevinden de Exchange-post vakken van de gebruikers zich ook in Noord-Amerika. Voor een Multi-National organisatie is dit mogelijk niet optimaal.
+Microsoft 365 resources voor uw gebruikers bevinden zich standaard in dezelfde geografische regio als uw Azure AD-Tenant. Als uw Tenant zich bijvoorbeeld bevindt in Noord-Amerika, bevinden de Exchange-post vakken van de gebruikers zich ook in Noord-Amerika. Voor een Multi-National organisatie is dit mogelijk niet optimaal.
 
-Door het kenmerk **preferredDataLocation**in te stellen, kunt u de geo van een gebruiker definiëren. U kunt de Office 365-resources van de gebruiker, zoals het postvak en OneDrive, in dezelfde geografische regio als de gebruiker hebben en nog steeds één Tenant voor uw hele organisatie hebben.
+Door het kenmerk **preferredDataLocation**in te stellen, kunt u de geo van een gebruiker definiëren. U kunt de Microsoft 365 resources van de gebruiker, zoals het postvak en OneDrive, in dezelfde geografische regio als de gebruiker hebben en nog steeds één Tenant voor uw hele organisatie hebben.
 
 > [!IMPORTANT]
-> Multi-geo is momenteel beschikbaar voor klanten met een actief Enterprise Agreement en een minimum van 500 Office 365 Services-abonnementen. Neem contact op met uw micro soft-vertegenwoordiger voor meer informatie.
+> Multi-geo is momenteel beschikbaar voor klanten met een actief Enterprise Agreement en een minimum van 250 Microsoft 365 Services-abonnementen. Neem contact op met uw micro soft-vertegenwoordiger voor meer informatie.
 >
 >
 
-Een lijst met alle geografische gebieden voor Office 365 vindt u in waar bevinden zich [uw gegevens?](https://aka.ms/datamaps).
+Een lijst met alle geografische gebieden voor Microsoft 365 vindt u in waar bevinden zich [uw gegevens?](https://aka.ms/datamaps).
 
-De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische locaties:
+De geografische gebieden in Microsoft 365 beschikbaar voor meerdere geografische locaties zijn:
 
 | Geo | waarde preferredDataLocation |
 | --- | --- |
@@ -58,7 +58,7 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 
 * Als een geo-waarde niet wordt vermeld in deze tabel (bijvoorbeeld Zuid-Amerika), kan deze niet worden gebruikt voor multi-geo.
 
-* Niet alle Office 365-workloads bieden ondersteuning voor het gebruik van het instellen van de geo van een gebruiker.
+* Niet alle Microsoft 365 werk belastingen ondersteunen het gebruik van het instellen van de geo-waarde van een gebruiker.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect ondersteuning voor synchronisatie
 
@@ -67,7 +67,7 @@ Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocat
 * Het schema van de **gebruiker** van het object type in de Azure AD-connector wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 * Het schema van de **persoon** van het object type in de tekst wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 
-**PreferredDataLocation** is standaard niet ingeschakeld voor synchronisatie. Deze functie is bedoeld voor grotere organisaties. Het Active Directory schema in Windows Server 2019 heeft een kenmerk **msDS-preferredDataLocation** die u voor dit doel moet gebruiken. Als u het Active Directory schema niet hebt bijgewerkt en dit niet kunt doen, moet u een kenmerk identificeren voor het bewaren van Office 365 geo voor uw gebruikers. Dit is voor elke organisatie anders.
+**PreferredDataLocation** is standaard niet ingeschakeld voor synchronisatie. Deze functie is bedoeld voor grotere organisaties. Het Active Directory schema in Windows Server 2019 heeft een kenmerk **msDS-preferredDataLocation** die u voor dit doel moet gebruiken. Als u het Active Directory schema niet hebt bijgewerkt en dit niet kunt doen, moet u een kenmerk identificeren om het Microsoft 365 geo voor uw gebruikers op te slaan. Dit is voor elke organisatie anders.
 
 > [!IMPORTANT]
 > Met Azure AD kan het kenmerk **preferredDataLocation** op **Cloud gebruikers objecten** rechtstreeks worden geconfigureerd met behulp van Azure AD Power shell. Als u dit kenmerk wilt configureren voor **gesynchroniseerde gebruikers objecten**, moet u Azure AD Connect gebruiken.
@@ -142,12 +142,12 @@ Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gest
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
-    | Description | *Geef een aangepaste beschrijving op* |  |
+    | Naam | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
+    | Beschrijving | *Geef een aangepaste beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises Active Directory-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
-    | Koppelings type | **Toevoegen** |  |
+    | Koppelings type | **Join** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Laat het **bereik filter** leeg, zodat alle objecten worden toegevoegd. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
@@ -171,12 +171,12 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
     | Kenmerk | Waarde | Details |
     | ----- | ------ | --- |
-    | Name | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
-    | Description | *Geef een beschrijving op* ||
+    | Naam | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
+    | Beschrijving | *Geef een beschrijving op* ||
     | Verbonden systeem | *De Azure AD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||
-    | Koppelings type | **Toevoegen** ||
+    | Koppelings type | **Join** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Ga naar het tabblad **filter bereik** en voeg één bereik filter groep met twee componenten toe:
@@ -250,7 +250,7 @@ In het algemeen is volledige synchronisatie cyclus vereist. Dit komt doordat u n
 De ingebouwde synchronisatie planner opnieuw inschakelen:
 
 1. Start een Power shell-sessie.
-2. Schakel geplande synchronisatie opnieuw in door deze cmdlet uit te voeren:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Schakel geplande synchronisatie opnieuw in door deze cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 ## <a name="step-9-verify-the-result"></a>Stap 9: het resultaat controleren
 Het is nu tijd om de configuratie te controleren en in te scha kelen voor uw gebruikers.
@@ -264,7 +264,7 @@ Ervan uitgaande dat uw Tenant is gemarkeerd om deze functie te kunnen gebruiken,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over multi-geo in Office 365:
+Meer informatie over multi-geo in Microsoft 365:
 
 * [Multi-geo-sessies op Ignite](https://aka.ms/MultiGeoIgnite)
 * [Meerdere geografische locaties in OneDrive](https://aka.ms/OneDriveMultiGeo)

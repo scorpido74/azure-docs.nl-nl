@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260034"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669050"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
 
@@ -52,7 +52,7 @@ U hebt de volgende bestanden nodig om automatische inrichting in te stellen met 
 * Een tussenliggend of basis-CA-certificaat van de certificaat vertrouwens keten. Dit certificaat wordt geüpload naar DPS als u een groeps registratie maakt.
 
 > [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2038 verlopen.
 
 ### <a name="use-test-certificates"></a>Test certificaten gebruiken
 
@@ -269,7 +269,7 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
 
 1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
 
-1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten tenzij u de `-Dps` vlag gebruikt om automatische inrichting te gebruiken.
+1. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op hand matig inrichten tenzij u de `-Dps` vlag gebruikt om automatische inrichting te gebruiken.
 
    Vervang de tijdelijke aanduidingen voor `{scope_id}` , `{identity cert chain path}` , en `{identity key path}` door de juiste waarden van uw DPS-exemplaar en de bestands paden op het apparaat. Als u de registratie-ID wilt opgeven, moet u `-RegistrationId {registration_id}` ook de tijdelijke aanduiding vervangen.
 

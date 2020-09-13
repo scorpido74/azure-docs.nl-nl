@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/20/2020
+ms.date: 09/10/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62a5f3b18d4b8329c4a15086bc23d09805b786ab
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044570"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668897"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problemen met Azure Data Factory-connectors oplossen
 
@@ -22,12 +22,11 @@ ms.locfileid: "87044570"
 
 In dit artikel worden algemene probleemoplossings methoden voor connectors in Azure Data Factory besproken.
   
-
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code--azurebloboperationfailed"></a>Fout code: AzureBlobOperationFailed
 
-- **Bericht**:`Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+- **Bericht**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
 - **Oorzaak**: probleem met het aanraken van Blob-opslag.
 
@@ -36,17 +35,17 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Fout code: AzureBlobServiceNotReturnExpectedDataLength
 
-- **Bericht**:`Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
+- **Bericht**: `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
 
 
 ### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>Fout code: AzureBlobNotSupportMultipleFilesIntoSingleBlob
 
-- **Bericht**:`Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
+- **Bericht**: `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
 
 
 ### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Fout code: AzureStorageOperationFailedConcurrentWrite
 
-- **Bericht**:`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+- **Bericht**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -127,7 +126,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--adlsgen2operationfailed"></a>Fout code: AdlsGen2OperationFailed
 
-- **Bericht**:`ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **Bericht**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
 - **Oorzaak**: ADLS Gen2 genereert de fout die aangeeft dat de bewerking is mislukt.
 
@@ -144,22 +143,22 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--adlsgen2invalidurl"></a>Fout code: AdlsGen2InvalidUrl
 
-- **Bericht**:`Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
+- **Bericht**: `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
 
 
 ### <a name="error-code--adlsgen2invalidfolderpath"></a>Fout code: AdlsGen2InvalidFolderPath
 
-- **Bericht**:`The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
+- **Bericht**: `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
 
 
 ### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>Fout code: AdlsGen2OperationFailedConcurrentWrite
 
-- **Bericht**:`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+- **Bericht**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
 ### <a name="error-code-adlsgen2timeouterror"></a>Fout code: AdlsGen2TimeoutError
 
-- **Bericht**:`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+- **Bericht**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -174,8 +173,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: de validatie van het certificaat is mislukt tijdens de TLS-handshake.
 
-- **Oplossing**: tijdelijke oplossing: gebruik gefaseerde kopie om de TLS-validatie voor ADLS gen1 over te slaan. U dient dit probleem te reproduceren en netmon-tracering te verzamelen en vervolgens uw netwerk team te laten controleren of de lokale netwerk configuratie volgt op [dit artikel](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace).
-
+- **Oplossing**: tijdelijke oplossing: gebruik gefaseerde kopie om de TLS-validatie voor ADLS gen1 over te slaan. U moet dit probleem reproduceren en netmon-tracering verzamelen en vervolgens uw netwerk team benaderen om de configuratie van het lokale netwerk te controleren.
 
     ![Problemen met ADLS Gen1 oplossen](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
 
@@ -207,11 +205,11 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 - **Oplossing**: Voer de Kopieer activiteit na enkele minuten opnieuw uit.
                   
 
-## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (voorheen SQL Data Warehouse)/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Fout code: SqlFailedToConnect
 
-- **Bericht**:`Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
+- **Bericht**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
 - **Oorzaak**: als het fout bericht ' SQLException ' bevat, genereert SQL database de fout die aangeeft dat een bepaalde bewerking is mislukt.
 
@@ -224,12 +222,13 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqloperationfailed"></a>Fout code: SqlOperationFailed
 
-- **Bericht**:`A database operation failed. Please search error to get more details.`
+- **Bericht**: `A database operation failed. Please search error to get more details.`
 
 - **Oorzaak**: als het fout bericht ' SQLException ' bevat, genereert SQL database de fout die aangeeft dat een bepaalde bewerking is mislukt.
 
-- **Aanbeveling**: als SQL-fout niet duidelijk is, probeert u de data base te wijzigen in het meest recente compatibiliteits niveau ' 150 '. Het kan de meest recente versie van SQL-fouten genereren. Raadpleeg het detail document: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat .
-        Zoek in dit referentie document naar SQL-fout code voor meer informatie over het oplossen van problemen met SQL: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
+- **Aanbeveling**: als SQL-fout niet duidelijk is, probeert u de data base te wijzigen in het meest recente compatibiliteits niveau ' 150 '. Het kan de meest recente versie van SQL-fouten genereren. Raadpleeg het [detail document](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
+
+    Zoek in dit referentie document naar SQL-fout code voor meer informatie over het oplossen van problemen met SQL: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Als u meer hulp nodig hebt, neemt u contact op met Azure SQL-ondersteuning.
 
 - **Oorzaak**: als het fout bericht ' PdwManagedToNativeInteropException ' bevat, wordt dit meestal veroorzaakt door een niet-overeenkomende waarde voor de grootte van de bron-en Sink-kolom.
 
@@ -243,7 +242,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Fout code: SqlUnauthorizedAccess
 
-- **Bericht**:`Cannot connect to '%connectorName;'. Detail Message: '%message;'`
+- **Bericht**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
 - **Oorzaak**: de referentie is onjuist of het aanmeldings account heeft geen toegang tot SQL database.
 
@@ -252,16 +251,16 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>Fout code: SqlOpenConnectionTimeout
 
-- **Bericht**:`Open connection to database timeout after '%timeoutValue;' seconds.`
+- **Bericht**: `Open connection to database timeout after '%timeoutValue;' seconds.`
 
 - **Oorzaak**: kan SQL database tijdelijke fout zijn.
 
-- **Aanbeveling**: Probeer het opnieuw om de gekoppelde Service Connection String bij te werken met een grotere time-outwaarde voor de verbinding.
+- **Aanbeveling**: opnieuw proberen om de gekoppelde Service Connection String bij te werken met een grotere time-outwaarde voor de verbinding.
 
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Fout code: SqlAutoCreateTableTypeMapFailed
 
-- **Bericht**:`Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
+- **Bericht**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
 - **Oorzaak**: het automatisch maken van de tabel kan niet voldoen aan de bron vereiste.
 
@@ -270,7 +269,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqldatatypenotsupported"></a>Fout code: SqlDataTypeNotSupported
 
-- **Bericht**:`A database operation failed. Check the SQL errors.`
+- **Bericht**: `A database operation failed. Check the SQL errors.`
 
 - **Oorzaak**: als het probleem zich voordoet op de SQL-bron en de fout is gerelateerd aan SqlDateTime overflow, ligt de gegevens waarde boven het logische type bereik (1/1/1753 12:00:00 uur 12/31/9999 11:59:59 pm).
 
@@ -283,7 +282,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Fout code: SqlInvalidDbStoredProcedure
 
-- **Bericht**:`The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
+- **Bericht**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
 - **Oorzaak**: de opgegeven opgeslagen procedure is ongeldig. Dit kan worden veroorzaakt doordat de opgeslagen procedure geen gegevens retourneert.
 
@@ -292,7 +291,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>Fout code: SqlInvalidDbQueryString
 
-- **Bericht**:`The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
+- **Bericht**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
 - **Oorzaak**: de opgegeven SQL-query is ongeldig. Dit kan worden veroorzaakt doordat de query geen gegevens retourneert
 
@@ -301,7 +300,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>Fout code: SqlInvalidColumnName
 
-- **Bericht**:`Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
+- **Bericht**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
 - **Oorzaak**: de kolom is niet gevonden. Mogelijke configuratie is onjuist.
 
@@ -310,12 +309,12 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Fout code: SqlColumnNameMismatchByCaseSensitive
 
-- **Bericht**:`Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
+- **Bericht**: `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
 
 
 ### <a name="error-code--sqlbatchwritetimeout"></a>Fout code: SqlBatchWriteTimeout
 
-- **Bericht**:`Timeouts in SQL write operation.`
+- **Bericht**: `Timeouts in SQL write operation.`
 
 - **Oorzaak**: kan SQL database tijdelijke fout zijn.
 
@@ -324,7 +323,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>Fout code: SqlBatchWriteTransactionFailed
 
-- **Bericht**:`SQL transaction commits failed`
+- **Bericht**: `SQL transaction commits failed`
 
 - **Oorzaak**: als uitzonderings Details de time-out van de trans actie voortdurend vertelt, is de netwerk latentie tussen Integration runtime en data base hoger dan de standaard drempel waarde van 30 seconden.
 
@@ -332,12 +331,12 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: als de uitzonderings Details van onregelmatigheden SqlConnection zijn, kan dit gewoon leiden tot tijdelijke netwerk storingen of SQL Databasee zijde
 
-- **Aanbeveling**: Voer de activiteit opnieuw uit en controleer SQL database metrische gegevens.
+- **Aanbeveling**: Voer de activiteit opnieuw uit en controleer de metrische gegevens van SQL database zijde.
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Fout code: SqlBulkCopyInvalidColumnLength
 
-- **Bericht**:`SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
+- **Bericht**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
 - **Oorzaak**: het bulksgewijs kopiëren van SQL is mislukt omdat er een ongeldige kolom lengte is ontvangen van de BCP-client.
 
@@ -346,52 +345,52 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Fout code: SqlConnectionIsClosed
 
-- **Bericht**:`The connection is closed by SQL Database.`
+- **Bericht**: `The connection is closed by SQL Database.`
 
 - **Oorzaak**: de SQL-verbinding wordt gesloten door SQL database wanneer de verbinding hoog gelijktijdig wordt uitgevoerd en de server is beëindigd.
 
-- **Aanbeveling**: externe server heeft de SQL-verbinding gesloten. Probeer het opnieuw. Als probleem reproduceren, neemt u contact op met Azure SQL-ondersteuning.
+- **Aanbeveling**: externe server heeft de SQL-verbinding gesloten. Voeren. Als probleem reproduceren, neemt u contact op met Azure SQL-ondersteuning.
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Fout code: SqlCreateTableFailedUnsupportedType
 
-- **Bericht**:`Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
+- **Bericht**: `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
 
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Fout bericht: de conversie is mislukt tijdens het converteren van een teken reeks naar een unieke id
 
-- **Symptomen**: bij het kopiëren van gegevens uit een gegevens bron in tabel vorm (zoals SQL Server) naar Azure SQL data warehouse met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
+- **Symptomen**: wanneer u gegevens uit tabellaire gegevens bron (zoals SQL Server) naar Azure Synapse Analytics kopieert met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Oorzaak**: Azure SQL Data Warehouse poly Base kan een lege teken reeks niet converteren naar GUID.
+- **Oorzaak**: Azure Synapse Analytics poly Base kan geen lege teken reeks naar GUID converteren.
 
 - **Oplossing**: Stel in Sink voor kopieer activiteiten onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
 
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Fout bericht: verwacht gegevens type: decimaal (x, x), foutieve waarde
 
-- **Symptomen**: wanneer u gegevens uit tabellaire gegevens bron (zoals SQL Server) naar SQL DW kopieert met behulp van gefaseerde kopie en poly Base, bereikt u de volgende fout:
+- **Symptomen**: wanneer u gegevens uit tabellaire gegevens bron (zoals SQL Server) naar Azure Synapse Analytics kopieert met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **Oorzaak**: Azure SQL Data Warehouse poly Base kan geen lege teken reeks (null-waarde) invoegen in een decimale kolom.
+- **Oorzaak**: Azure Synapse Analytics poly Base kan geen lege teken reeks (null-waarde) invoegen in een decimale kolom.
 
 - **Oplossing**: Stel in Sink voor kopieer activiteiten onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>Fout bericht: Java-uitzonderings bericht: HdfsBridge:: CreateRecordReader
 
-- **Symptomen**: u kopieert gegevens naar Azure SQL data warehouse met poly base en de volgende fout wordt weer gegeven:
+- **Symptomen**: u kopieert gegevens naar Azure Synapse Analytics met poly base en de volgende fout wordt weer gegeven:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -400,7 +399,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Oorzaak**: de mogelijke oorzaak is dat het schema (totale kolom breedte) te groot is (groter dan 1 MB). Controleer het schema van de SQL DW-doel tabel door de grootte van alle kolommen toe te voegen:
+- **Oorzaak**: de mogelijke oorzaak is dat het schema (totale kolom breedte) te groot is (groter dan 1 MB). Controleer het schema van de doel tabel van de Azure Synapse-analyse door de grootte van alle kolommen toe te voegen:
 
     - Int-> 4 bytes
     - Bigint-> 8 bytes
@@ -424,22 +423,22 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Fout bericht: er is niet voldaan aan de voor waarde die is opgegeven met een HTTP-header (n)
 
-- **Symptomen**: u gebruikt SQL-query om gegevens uit Azure SQL Data Warehouse op te halen en de volgende fout te vinden:
+- **Symptomen**: met SQL query haalt u gegevens op uit Azure Synapse Analytics en houdt u de volgende fout op:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Oorzaak**: Azure SQL Data Warehouse treffer probleem bij het uitvoeren van een query op de externe tabel in azure Storage.
+- **Oorzaak**: probleem met treffer van Azure Synapse Analytics bij het uitvoeren van een query op de externe tabel in azure Storage.
 
-- **Oplossing**: Voer dezelfde query uit in SSMS en controleer of hetzelfde resultaat wordt weer geven. Als dit het geval is, opent u een ondersteuningsticket voor Azure SQL Data Warehouse en geeft u de SQL DW-server en databasenaam op om verder te gaan met het oplossen van het probleem.
+- **Oplossing**: Voer dezelfde query uit in SSMS en controleer of hetzelfde resultaat wordt weer geven. Als dit het geval is, opent u een ondersteunings ticket voor Azure Synapse Analytics en geeft u de naam van uw Azure Synapse Analytics-server en-Data Base op om verder te kunnen oplossen
             
 
 ## <a name="delimited-text-format"></a>Tekst indeling met scheidings tekens
 
 ### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Fout code: DelimitedTextColumnNameNotAllowNull
 
-- **Bericht**:`The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
+- **Bericht**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
 - **Oorzaak**: wanneer ' firstRowAsHeader ' in de activiteit wordt ingesteld, wordt de eerste rij als kolom naam gebruikt. Deze fout geeft aan dat de eerste rij een lege waarde bevat. Bijvoorbeeld: ' koloma,, ColumnB '.
 
@@ -448,11 +447,11 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Fout code: DelimitedTextMoreColumnsThanDefined
 
-- **Bericht**:`Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+- **Bericht**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
 - **Oorzaak**: het aantal kolommen in de problematische rij is groter dan het aantal kolommen in de eerste rij. Dit kan worden veroorzaakt door een gegevens probleem of door een onjuiste instelling van het scheidings teken voor kolom/aanhalings tekens.
 
-- **Aanbeveling**: als u het aantal rijen in het fout bericht wilt ophalen, controleert u de kolom van de rij en herstelt u de gegevens.
+- **Aanbeveling**: het aantal rijen in het fout bericht ophalen, de kolom van de rij controleren en de gegevens herstellen.
 
 - **Oorzaak**: als het verwachte aantal kolommen in fout bericht ' 1 ' is, is het mogelijk dat u onjuiste compressie-of notatie-instellingen hebt opgegeven, waardoor de ADF de bestanden verkeerd heeft geparseerd.
 
@@ -465,17 +464,17 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Fout code: DelimitedTextIncorrectRowDelimiter
 
-- **Bericht**:`The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+- **Bericht**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
 
 
 ### <a name="error-code--delimitedtexttoolargecolumncount"></a>Fout code: DelimitedTextTooLargeColumnCount
 
-- **Bericht**:`Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
+- **Bericht**: `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
 
 
 ### <a name="error-code--delimitedtextinvalidsettings"></a>Fout code: DelimitedTextInvalidSettings
 
-- **Bericht**:`%settingIssues;`
+- **Bericht**: `%settingIssues;`
 
 
 
@@ -483,7 +482,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--dynamicscreateserviceclienterror"></a>Fout code: DynamicsCreateServiceClientError
 
-- **Bericht**:`This is a transient issue on dynamics server side. Try to rerun the pipeline.`
+- **Bericht**: `This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
 - **Oorzaak**: dit is een tijdelijk probleem op Dynamics Server-zijde.
 
@@ -495,37 +494,37 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--jsoninvalidarraypathdefinition"></a>Fout code: JsonInvalidArrayPathDefinition
 
-- **Bericht**:`Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+- **Bericht**: `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
 
 
 ### <a name="error-code--jsonemptyjobjectdata"></a>Fout code: JsonEmptyJObjectData
 
-- **Bericht**:`The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+- **Bericht**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
 
 
 ### <a name="error-code--jsonnullvalueinpathdefinition"></a>Fout code: JsonNullValueInPathDefinition
 
-- **Bericht**:`Null JSONPath detected in JsonPathDefinition.`
+- **Bericht**: `Null JSONPath detected in JsonPathDefinition.`
 
 
 ### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>Fout code: JsonUnsupportedHierarchicalComplexValue
 
-- **Bericht**:`The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
+- **Bericht**: `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
 
 
 ### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>Fout code: JsonConflictPartitionDiscoverySchema
 
-- **Bericht**:`Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
+- **Bericht**: `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
 
 
 ### <a name="error-code--jsoninvaliddataformat"></a>Fout code: JsonInvalidDataFormat
 
-- **Bericht**:`Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
+- **Bericht**: `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
 
 
 ### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>Fout code: JsonInvalidDataMixedArrayAndObject
 
-- **Bericht**:`Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+- **Bericht**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
 
 
 
@@ -533,11 +532,11 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetjavainvocationexception"></a>Fout code: ParquetJavaInvocationException
 
-- **Bericht**:`An error occurred when invoking java, message: %javaException;.`
+- **Bericht**: `An error occurred when invoking java, message: %javaException;.`
 
 - **Oorzaak**: wanneer het fout bericht ' Java. lang. OutOfMemory ', ' Java heap Space ' en ' doubleCapacity ' bevat, is dit meestal een geheugen beheer probleem in de oude versie van Integration runtime.
 
-- **Aanbeveling**: als u gebruikmaakt van zelf-hostende Integration runtime en de versie eerder is dan 3.20.7159.1, kunt u het beste een upgrade naar de nieuwste versie uitvoeren.
+- **Aanbeveling**: als u gebruikmaakt van zelf-hostende Integration runtime en de versie eerder is dan 3.20.7159.1, wordt u geadviseerd om een upgrade naar de meest recente versie uit te laten gaan.
 
 - **Oorzaak**: wanneer het fout bericht ' Java. lang. OutOfMemory ' bevat, heeft de Integration runtime onvoldoende bronnen om de bestanden te verwerken.
 
@@ -550,7 +549,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetinvalidfile"></a>Fout code: ParquetInvalidFile
 
-- **Bericht**:`File is not a valid parquet file.`
+- **Bericht**: `File is not a valid parquet file.`
 
 - **Oorzaak**: probleem met Parquet-bestand.
 
@@ -559,7 +558,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetnotsupportedtype"></a>Fout code: ParquetNotSupportedType
 
-- **Bericht**:`Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
+- **Bericht**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
 - **Oorzaak**: de Parquet-indeling wordt niet ondersteund in azure Data Factory.
 
@@ -568,7 +567,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Fout code: ParquetMissedDecimalPrecisionScale
 
-- **Bericht**:`Decimal Precision or Scale information is not found in schema for column: %column;.`
+- **Bericht**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
 
 - **Oorzaak**: Probeer de precisie en schaal van het getal te parseren, maar deze informatie wordt niet verstrekt.
 
@@ -577,7 +576,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Fout code: ParquetInvalidDecimalPrecisionScale
 
-- **Bericht**:`Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
+- **Bericht**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
 - **Oorzaak**: het schema is ongeldig.
 
@@ -586,7 +585,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetcolumnnotfound"></a>Fout code: ParquetColumnNotFound
 
-- **Bericht**:`Column %column; does not exist in Parquet file.`
+- **Bericht**: `Column %column; does not exist in Parquet file.`
 
 - **Oorzaak**: het bron schema komt niet overeen met het sink-schema.
 
@@ -595,7 +594,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetinvaliddataformat"></a>Fout code: ParquetInvalidDataFormat
 
-- **Bericht**:`Incorrect format of %srcValue; for converting to %dstType;.`
+- **Bericht**: `Incorrect format of %srcValue; for converting to %dstType;.`
 
 - **Oorzaak**: de gegevens kunnen niet worden geconverteerd naar het type dat is opgegeven in de toewijzingen. source
 
@@ -604,7 +603,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Fout code: ParquetDataCountNotMatchColumnCount
 
-- **Bericht**:`The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
+- **Bericht**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
 - **Oorzaak**: aantal bron kolommen en aantal Sink-kolommen komen niet overeen
 
@@ -622,7 +621,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetbridgeinvaliddata"></a>Fout code: ParquetBridgeInvalidData
 
-- **Bericht**:`%message;`
+- **Bericht**: `%message;`
 
 - **Oorzaak**: gegevens waarde over de beperking
 
@@ -631,7 +630,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>Fout code: ParquetUnsupportedInterpretation
 
-- **Bericht**:`The given interpretation '%interpretation;' of parquet format is not supported.`
+- **Bericht**: `The given interpretation '%interpretation;' of parquet format is not supported.`
 
 - **Oorzaak**: niet-ondersteund scenario
 
@@ -640,7 +639,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Fout code: ParquetUnsupportFileLevelCompressionOption
 
-- **Bericht**:`File level compression is not supported for Parquet.`
+- **Bericht**: `File level compression is not supported for Parquet.`
 
 - **Oorzaak**: niet-ondersteund scenario
 
@@ -652,16 +651,16 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--jrenotfound"></a>Fout code: JreNotFound
 
-- **Bericht**:`Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
+- **Bericht**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
 - **Oorzaak**: de zelf-hostende Integration runtime kan Java runtime niet vinden. De Java-runtime is vereist voor het lezen van een bepaalde bron.
 
-- **Aanbeveling**: Controleer uw Integration runtime-omgeving, het referentie document:https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+- **Aanbeveling**: Controleer uw Integration runtime-omgeving, het referentie document: https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
 
 
 ### <a name="error-code--wildcardpathsinknotsupported"></a>Fout code: WildcardPathSinkNotSupported
 
-- **Bericht**:`Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
+- **Bericht**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 
 - **Oorzaak**: Sink-gegevensset biedt geen ondersteuning voor joker tekens.
 
@@ -670,22 +669,22 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Fout code: MappingInvalidPropertyWithEmptyValue
 
-- **Bericht**:`One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+- **Bericht**: `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
 
 
 ### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Fout code: MappingInvalidPropertyWithNamePathAndOrdinal
 
-- **Bericht**:`Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+- **Bericht**: `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
 
 
 ### <a name="error-code--mappingduplicatedordinal"></a>Fout code: MappingDuplicatedOrdinal
 
-- **Bericht**:`Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+- **Bericht**: `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
 
 
 ### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>Fout code: MappingInvalidOrdinalForSinkColumn
 
-- **Bericht**:`Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
+- **Bericht**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
 
 
 ## <a name="next-steps"></a>Volgende stappen

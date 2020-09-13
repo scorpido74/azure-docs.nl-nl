@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606518"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669225"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Bron machine voorbereiden voor de push-installatie van de Mobility-agent
 
@@ -25,8 +25,12 @@ Ga als volgt te werk op elke Windows-computer die u wilt beveiligen:
 1. Maak een account dat op de processerver kan worden gebruikt voor toegang tot de computer. Het account moet beheerders rechten, lokaal of domein, hebben. Gebruik dit account alleen voor de push-installatie en voor agent-updates.
 2. Als u geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer als volgt uit:
     - Voeg onder HKEY_LOCAL_MACHINE register sleutel \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System een nieuwe DWORD toe: **LocalAccountTokenFilterPolicy**. Stel de waarde in op **1**.
-    -  Voer de volgende opdracht uit vanaf een opdracht prompt:  
-   ' REG ADD HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+    -  Voer de volgende opdracht uit vanaf een opdracht prompt:
+    
+       ```
+       REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+       ```
+
 3. Selecteer in Windows Firewall op de computer die u wilt beveiligen, **een app of onderdeel toestaan via de firewall**. Schakel **Bestands-en printer deling** en **Windows Management Instrumentation (WMI)** in. Voor computers die tot een domein behoren, kunt u de firewall instellingen configureren met behulp van een groepsbeleid-object (GPO).
 
    ![Firewallinstellingen](./media/vmware-azure-install-mobility-service/mobility1.png)

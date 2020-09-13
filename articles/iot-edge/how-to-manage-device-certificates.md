@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257841"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669027"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Certificaten op een IoT Edge apparaat beheren
 
@@ -49,7 +49,7 @@ U moet uw eigen certificerings instantie gebruiken om de volgende bestanden te m
 In dit artikel wordt verwezen naar de *basis-CA* , maar niet de hoogste certificerings instantie voor een organisatie. Het is de bovenste certificerings instantie voor het IoT Edge scenario, die door de IoT Edge hub-module, gebruikers modules en downstream-apparaten wordt gebruikt om een vertrouwens relatie tussen elkaar te leggen.
 
 > [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2038 verlopen.
 
 Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die demo certificaten maken bij het [beheren van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -59,9 +59,9 @@ Installeer uw certificaat keten op het IoT Edge apparaat en configureer de IoT E
 
 Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te maken](how-to-create-test-certificates.md), kopieert u de volgende bestanden naar uw IOT-edge-apparaat:
 
-* CA-certificaat van apparaat:`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-* Persoonlijke sleutel van de apparaat-CA:`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-* Basis-CA:`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+* CA-certificaat van apparaat: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
+* Persoonlijke sleutel van de apparaat-CA: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
+* Basis-CA: `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
 1. Kopieer de drie certificaat-en sleutel bestanden naar uw IoT Edge-apparaat.
 
@@ -69,8 +69,8 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
 
 1. Open het IoT Edge Security daemon config-bestand.
 
-   * Windows`C:\ProgramData\iotedge\config.yaml`
-   * Spreek`/etc/iotedge/config.yaml`
+   * Windows `C:\ProgramData\iotedge\config.yaml`
+   * Spreek `/etc/iotedge/config.yaml`
 
 1. Stel de **certificaat** eigenschappen in config. yaml in op het pad naar het bestand-URI naar het certificaat en de sleutel bestanden op het IOT edge apparaat. Verwijder het `#` teken vóór de eigenschappen van het certificaat om de vier regels op te heffen. Zorg ervoor dat de regel **certificaten:** geen voor gaande witruimte heeft en dat geneste items met twee spaties worden inge sprongen. Bijvoorbeeld:
 
@@ -96,9 +96,9 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
 
 1. Als u eerder andere certificaten voor IoT Edge op het apparaat hebt gebruikt, verwijdert u de bestanden in de volgende twee directory's voordat u IoT Edge start of opnieuw opstart:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` en`C:\ProgramData\iotedge\hsm\cert_keys`
+   * Windows: `C:\ProgramData\iotedge\hsm\certs` en `C:\ProgramData\iotedge\hsm\cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` en`/var/lib/iotedge/hsm/cert_keys`
+   * Linux: `/var/lib/iotedge/hsm/certs` en `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="customize-certificate-lifetime"></a>Levens duur van certificaten aanpassen
 
@@ -114,7 +114,9 @@ Voor deze twee automatisch gegenereerde certificaten hebt u de optie om de **aut
 >[!NOTE]
 >Er is een derde automatisch gegenereerd certificaat dat IoT Edge Security Manager maakt, het **IOT Edge hub-server certificaat**. Dit certificaat heeft altijd een levens duur van 90 dagen, maar wordt automatisch verlengd voordat het verloopt. De waarde van de **auto_generated_ca_lifetime_days** heeft geen invloed op dit certificaat.
 
-Als u het verlopen van het certificaat wilt configureren naar een andere waarde dan de standaard 90 dagen, voegt u het gedeelte dagen aan de sectie **certificaten** van het bestand config. yaml toe.
+Als u het verlopen van het certificaat wilt configureren naar een andere waarde dan de standaard 90 dagen, voegt u het gedeelte dagen aan de sectie **certificaten** van het bestand **config. yaml** toe.
+
+Na het verlopen van het opgegeven aantal dagen moet de IoT Edge Security daemon opnieuw worden gestart om het CA-certificaat van het apparaat opnieuw te genereren, wordt het niet automatisch vernieuwd.
 
 ```yaml
 certificates:
@@ -125,15 +127,13 @@ certificates:
 ```
 
 > [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2038 verlopen.
 
-Als u uw eigen CA-certificaten voor het apparaat hebt opgegeven, is deze waarde nog steeds van toepassing op het CA-certificaat van de werk belasting, op voor waarde dat de ingestelde levens duur korter is dan de levens duur van het CA-certificaat van de apparaat.
-
-Nadat u de vlag hebt opgegeven in het bestand config. yaml, voert u de volgende stappen uit:
+Nadat u de waarde in het bestand config. yaml hebt opgegeven, voert u de volgende stappen uit:
 
 1. De inhoud van de `hsm` map verwijderen.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux:`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
 1. Start de IoT Edge-service opnieuw.
 

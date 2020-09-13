@@ -16,20 +16,20 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061503"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662554"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
-Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Office 365-workloads gebruiken, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
+Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Microsoft 365 werk belastingen, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
 
-In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Hier volgen enkele voorbeelden:
+In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Enkele voorbeelden:
 
 * U wilt de [multi-Azure AD-adreslijst topologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)gebruiken. Vervolgens moet u een filter Toep assen om te bepalen welke objecten worden gesynchroniseerd met een bepaalde Azure AD-adres lijst.
-* U voert een pilot uit voor Azure of Office 365 en u wilt alleen een subset van gebruikers in azure AD. In de kleine pilot is het niet belang rijk dat u beschikt over een volledige algemene adres lijst om de functionaliteit te demonstreren.
+* U voert een pilot uit voor Azure of Microsoft 365 en u wilt alleen een subset van gebruikers in azure AD. In de kleine pilot is het niet belang rijk dat u beschikt over een volledige algemene adres lijst om de functionaliteit te demonstreren.
 * U hebt veel service accounts en andere niet-persoonlijke accounts die u niet wilt in azure AD.
 * Om redenen van naleving verwijdert u geen gebruikers accounts on-premises. U schakelt ze alleen uit. In azure AD wilt u echter alleen actieve accounts weer geven.
 
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om het domein filter in te stellen:
 Voer de volgende stappen uit om het domein filter in te stellen:
 
 1.  De wizard Azure AD Connect starten
-2.  Klik op **configureren**.
+2.  Klik op **Configureren**
 3.  Selecteer **synchronisatie opties aanpassen** en klik op **volgende**.
 4.  Voer uw Azure AD-referenties in
 5.  Klik in het scherm **verbonden directory's** op **volgende**.
@@ -217,7 +217,7 @@ Bij inkomend filteren wordt de standaard configuratie gebruikt, waarbij objecten
 Bij inkomend filteren gebruikt u de kracht van **bereik** om te bepalen welke objecten moeten worden gesynchroniseerd of niet moeten worden gesynchroniseerd. Hier maakt u aanpassingen aan de vereisten van uw eigen organisatie. De scope module heeft een **groep** en een **component** om te bepalen wanneer een synchronisatie regel binnen het bereik valt. Een groep bevat een of meer componenten. Er bevindt zich een logische ' AND ' tussen meerdere componenten en een logische ' OR ' of ' tussen meerdere groepen.
 
 Laten we een voor beeld bekijken:  
-![Bereik](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Een scherm afbeelding met een voor beeld van bereik filters toevoegen](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Dit moet worden gelezen als **(afdeling = IT) of (afdeling = verkoop en c = US)**.
 
 In de volgende voor beelden en stappen gebruikt u het gebruikers object als voor beeld, maar u kunt dit voor alle object typen gebruiken.
