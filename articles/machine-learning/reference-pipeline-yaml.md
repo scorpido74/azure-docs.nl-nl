@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 079341fe1b22db83ded4b11941d8bdf809adfb8d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0f7ee0e18187b0a5d8ad1eb83dbda9734a9ff7de
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845532"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650192"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>machine learning pijp lijnen definiëren in YAML
 
@@ -26,21 +26,21 @@ De volgende tabel bevat een overzicht van wat is en wordt momenteel niet onderst
 
 | Type stap | Ondersteund? |
 | ----- | :-----: |
-| PythonScriptStep | Ja |
-| ParallelRunStep | Ja |
-| AdlaStep | Ja |
-| AzureBatchStep | Ja |
-| DatabricksStep | Ja |
-| DataTransferStep | Ja |
-| AutoMLStep | Nee |
-| HyperDriveStep | Nee |
-| ModuleStep | Ja |
-| MPIStep | Nee |
-| EstimatorStep | Nee |
+| PythonScriptStep | Yes |
+| ParallelRunStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
+| AutoMLStep | No |
+| HyperDriveStep | No |
+| ModuleStep | Yes |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Pijplijn definitie
 
-Een pijplijn definitie maakt gebruik van de volgende sleutels, die overeenkomen met de klasse [pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py) :
+Een pijplijn definitie maakt gebruik van de volgende sleutels, die overeenkomen met de klasse [pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py&preserve-view=true) :
 
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
@@ -52,7 +52,7 @@ Een pijplijn definitie maakt gebruik van de volgende sleutels, die overeenkomen 
 
 ## <a name="parameters"></a>Parameters
 
-`parameters`In de sectie worden de volgende sleutels gebruikt, die overeenkomen met de klasse [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) :
+`parameters`In de sectie worden de volgende sleutels gebruikt, die overeenkomen met de klasse [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true) :
 
 | YAML-sleutel | Beschrijving |
 | ---- | ---- |
@@ -80,7 +80,7 @@ pipeline:
 
 ## <a name="data-reference"></a>Verwijzing naar gegevens
 
-`data_references`In het gedeelte worden de volgende sleutels gebruikt, die overeenkomen met de [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
+`data_references`In het gedeelte worden de volgende sleutels gebruikt, die overeenkomen met de [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py&preserve-view=true):
 
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
@@ -108,12 +108,12 @@ In stappen wordt een reken omgeving gedefinieerd, samen met de bestanden die in 
 
 | Type stap | Beschrijving |
 | ----- | ----- |
-| `AdlaStep` | Voert een U-SQL-script uit met Azure Data Lake Analytics. Komt overeen met de [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) -klasse. |
-| `AzureBatchStep` | Voert taken uit met Azure Batch. Komt overeen met de [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) -klasse. |
-| `DatabricsStep` | Hiermee voegt u een Databricks-notebook, python-script of JAR toe. Komt overeen met de [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) -klasse. |
-| `DataTransferStep` | Hiermee worden gegevens overgebracht tussen opslag opties. Komt overeen met de [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) -klasse. |
-| `PythonScriptStep` | Voert een python-script uit. Komt overeen met de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) -klasse. |
-| `ParallelRunStep` | Voert een python-script uit om grote hoeveel heden gegevens asynchroon en parallel te verwerken. Komt overeen met de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) -klasse. |
+| `AdlaStep` | Voert een U-SQL-script uit met Azure Data Lake Analytics. Komt overeen met de [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py&preserve-view=true) -klasse. |
+| `AzureBatchStep` | Voert taken uit met Azure Batch. Komt overeen met de [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py&preserve-view=true) -klasse. |
+| `DatabricsStep` | Hiermee voegt u een Databricks-notebook, python-script of JAR toe. Komt overeen met de [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py&preserve-view=true) -klasse. |
+| `DataTransferStep` | Hiermee worden gegevens overgebracht tussen opslag opties. Komt overeen met de [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true) -klasse. |
+| `PythonScriptStep` | Voert een python-script uit. Komt overeen met de [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py&preserve-view=true) -klasse. |
+| `ParallelRunStep` | Voert een python-script uit om grote hoeveel heden gegevens asynchroon en parallel te verwerken. Komt overeen met de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py&preserve-view=true) -klasse. |
 
 ### <a name="adla-step"></a>ADLA stap
 
@@ -122,8 +122,8 @@ In stappen wordt een reken omgeving gedefinieerd, samen met de bestanden die in 
 | `script_name` | De naam van het U-SQL-script (ten opzichte van de `source_directory` ). |
 | `compute_target` | Het Azure Data Lake Compute-doel dat moet worden gebruikt voor deze stap. |
 | `parameters` | [Para meters](#parameters) voor de pijp lijn. |
-| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)zijn. |
-| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)zijn. |
+| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)zijn. |
+| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)zijn. |
 | `source_directory` | Map die het script, assembly's, enzovoort bevat. |
 | `priority` | De prioriteits waarde die voor de huidige taak moet worden gebruikt. |
 | `params` | Woorden lijst met naam/waarde-paren. |
@@ -171,8 +171,8 @@ pipeline:
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
 | `compute_target` | Het Azure Batch Compute-doel dat moet worden gebruikt voor deze stap. |
-| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)zijn. |
-| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)zijn. |
+| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)zijn. |
+| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)zijn. |
 | `source_directory` | Map die de module binaire bestanden, uitvoer bare onderdelen, enzovoort bevat. |
 | `executable` | De naam van de opdracht/het uitvoer bare bestand dat wordt uitgevoerd als onderdeel van deze taak. |
 | `create_pool` | Een Booleaanse vlag die aangeeft of de groep moet worden gemaakt voordat de taak wordt uitgevoerd. |
@@ -225,12 +225,12 @@ pipeline:
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
 | `compute_target` | Het Azure Databricks Compute-doel dat moet worden gebruikt voor deze stap. |
-| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)zijn. |
-| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)zijn. |
+| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)zijn. |
+| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)zijn. |
 | `run_name` | De naam in Databricks voor deze uitvoering. |
 | `source_directory` | Map die het script en andere bestanden bevat. |
 | `num_workers` | Het statische aantal werk rollen voor het Databricks-uitvoerings cluster. |
-| `runconfig` | Het pad naar een `.runconfig` bestand. Dit bestand is een YAMLe weer gave van de klasse [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Zie [runconfigschema.jsop](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor meer informatie over de structuur van dit bestand. |
+| `runconfig` | Het pad naar een `.runconfig` bestand. Dit bestand is een YAMLe weer gave van de klasse [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) . Zie [runconfigschema.jsop](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor meer informatie over de structuur van dit bestand. |
 | `allow_reuse` | Hiermee wordt bepaald of de stap eerdere resultaten opnieuw moet gebruiken wanneer deze opnieuw wordt uitgevoerd met dezelfde instellingen. |
 
 Het volgende voor beeld bevat een Databricks-stap:
@@ -279,8 +279,8 @@ pipeline:
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
 | `compute_target` | Het Azure Data Factory Compute-doel dat moet worden gebruikt voor deze stap. |
-| `source_data_reference` | Invoer verbinding die fungeert als bron van bewerkingen voor gegevens overdracht. Ondersteunde waarden zijn [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
-| `destination_data_reference` | Invoer verbinding die fungeert als bestemming voor de overdracht van gegevens. Ondersteunde waarden zijn [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) en [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `source_data_reference` | Invoer verbinding die fungeert als bron van bewerkingen voor gegevens overdracht. Ondersteunde waarden zijn [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true). |
+| `destination_data_reference` | Invoer verbinding die fungeert als bestemming voor de overdracht van gegevens. Ondersteunde waarden zijn [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) en [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true). |
 | `allow_reuse` | Hiermee wordt bepaald of de stap eerdere resultaten opnieuw moet gebruiken wanneer deze opnieuw wordt uitgevoerd met dezelfde instellingen. |
 
 Het volgende voor beeld bevat een stap voor gegevens overdracht:
@@ -322,11 +322,11 @@ pipeline:
 
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
-| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)zijn. |
-| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)zijn. |
+| `inputs` | Invoer kan [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py&preserve-view=true), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py&preserve-view=true), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)zijn. |
+| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)zijn. |
 | `script_name` | De naam van het python-script (relatief aan `source_directory` ). |
 | `source_directory` | De map die het script, de Conda-omgeving bevat, enzovoort. |
-| `runconfig` | Het pad naar een `.runconfig` bestand. Dit bestand is een YAMLe weer gave van de klasse [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Zie [runconfig.jsop](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor meer informatie over de structuur van dit bestand. |
+| `runconfig` | Het pad naar een `.runconfig` bestand. Dit bestand is een YAMLe weer gave van de klasse [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) . Zie [runconfig.jsop](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor meer informatie over de structuur van dit bestand. |
 | `allow_reuse` | Hiermee wordt bepaald of de stap eerdere resultaten opnieuw moet gebruiken wanneer deze opnieuw wordt uitgevoerd met dezelfde instellingen. |
 
 Het volgende voor beeld bevat een python-script stap:
@@ -369,11 +369,11 @@ pipeline:
 
 | YAML-sleutel | Beschrijving |
 | ----- | ----- |
-| `inputs` | Invoer kan [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)zijn. |
-| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)zijn. |
+| `inputs` | Invoer kan [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py&preserve-view=true)of [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py&preserve-view=true)zijn. |
+| `outputs` | De uitvoer kan [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) of [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py&preserve-view=true)zijn. |
 | `script_name` | De naam van het python-script (relatief aan `source_directory` ). |
 | `source_directory` | De map die het script, de Conda-omgeving bevat, enzovoort. |
-| `parallel_run_config` | Het pad naar een `parallel_run_config.yml` bestand. Dit bestand is een YAMLe weer gave van de klasse [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) . |
+| `parallel_run_config` | Het pad naar een `parallel_run_config.yml` bestand. Dit bestand is een YAMLe weer gave van de klasse [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py&preserve-view=true) . |
 | `allow_reuse` | Hiermee wordt bepaald of de stap eerdere resultaten opnieuw moet gebruiken wanneer deze opnieuw wordt uitgevoerd met dezelfde instellingen. |
 
 Het volgende voor beeld bevat een parallelle uitvoerings stap:

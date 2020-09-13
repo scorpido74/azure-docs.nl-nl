@@ -3,12 +3,12 @@ title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512024"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648575"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -30,17 +30,17 @@ Wanneer een bron niet compatibel is, zijn de compatibiliteits Details voor die b
 
 Voer de volgende stappen uit om de compatibiliteits gegevens weer te geven:
 
-1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
+1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
 
 1. Selecteer op de pagina **overzicht** of **naleving** een beleids regel in een **nalevings status** die _niet compatibel_is.
 
 1. Klik op het tabblad **resource naleving** van de pagina **naleving van beleid** met de rechter muisknop of selecteer het weglatings teken van een resource in een **compatibiliteits status** die _niet compatibel_is. Selecteer vervolgens **nalevings details weer geven**.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Optie compatibiliteits details weer geven" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Scherm afbeelding van de koppeling ' nalevings details weer geven ' op het tabblad Resource naleving." border="false":::
 
 1. In het deel venster **nalevings Details** worden de gegevens van de laatste evaluatie van de resource weer gegeven aan de huidige beleids toewijzing. In dit voor beeld wordt het veld **micro soft. SQL/servers/versie** _12,0_ aangetroffen terwijl de beleids definitie _14,0_werd verwacht. Als de resource meerdere redenen niet voldoet, wordt deze in dit deel venster weer gegeven.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Deel venster nalevings Details en redenen voor niet-naleving" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Scherm afbeelding van het deel venster nalevings Details en de redenen voor niet-naleving van de huidige waarde is twaalf en de doel waarde is 14." border="false":::
 
    Voor een **auditIfNotExists** -of **deployIfNotExists** -beleids definitie bevatten de details de eigenschap **Details. type** en eventuele optionele eigenschappen. Zie Eigenschappen van [auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) en [deployIfNotExists](../concepts/effects.md#deployifnotexists-properties)voor een lijst. De **laatste geëvalueerde resource** is een gerelateerde resource uit de sectie **Details** van de definitie.
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om de compatibiliteits gegevens weer te geven:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Deel venster nalevings Details-* ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Scherm opname van het deel venster met nalevings Details voor ifNotExists, inclusief het aantal geëvalueerde resources." border="false":::
 
 > [!NOTE]
 > Voor het beveiligen van gegevens, wanneer een eigenschaps waarde een _geheim_ is, wordt de huidige waarde sterretjes weer gegeven.
@@ -80,7 +80,7 @@ In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is
 
 De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [voor waarde](../concepts/definition-structure.md#conditions) in de beleids definitie:
 
-|Reden | Voorwaarde |
+|Reden | Conditie |
 |-|-|
 |De huidige waarde moet de doel waarde als sleutel bevatten. |containsKey of **niet** notContainsKey |
 |De huidige waarde moet de doel waarde bevatten. |bevat of **niet** notContains |
@@ -114,13 +114,13 @@ Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine
 
 Volg dezelfde stappen in de bovenstaande sectie voor het weer geven van nalevings Details van het beleid.
 
-Klik in de weer gave nalevings detail venster op de koppeling **laatste geëvalueerde resource**.
+Selecteer in het deel venster compatibiliteits Details de koppeling **laatste geëvalueerde resource**.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Details van auditIfNotExists-definitie weer geven" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Scherm opname van het weer geven van de compatibiliteits Details van de auditIfNotExists-definitie." border="false":::
 
 Op de pagina **gast toewijzing** worden alle beschik bare nalevings details weer gegeven. Elke rij in de weer gave vertegenwoordigt een evaluatie die in de machine is uitgevoerd. In de kolom **reden** wordt een woord groep weer gegeven waarin wordt beschreven waarom de gast toewijzing _niet compatibel_is. Als u bijvoorbeeld wachtwoord beleid controleert, wordt in de kolom **reden** tekst weer gegeven, inclusief de huidige waarde voor elke instelling.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Nalevings details weer geven" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Scherm afbeelding van de nalevings Details van de gast toewijzing." border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +191,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/templates/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de Azure Resource Manager eigenschappen worden toegevoegd, verwijderd of gewijzigd.
 
-1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
+1. Start de Azure Policy-service in de Azure Portal door **alle services**te selecteren en vervolgens naar **beleid**te zoeken en te selecteren.
 
 1. Selecteer op de pagina **overzicht** of **naleving** een beleids regel in elke **compatibiliteits status**.
 
@@ -199,11 +199,11 @@ Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan w
 
 1. Selecteer het tabblad **wijzigings overzicht (preview)** op de pagina **resource naleving** . Er wordt een lijst weer gegeven met gedetecteerde wijzigingen, indien aanwezig.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Azure Policy tabblad wijzigings overzicht op de pagina Resource naleving" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Scherm afbeelding van het tabblad wijzigings overzicht en gedetecteerde wijzigings tijden op de pagina Resource naleving." border="false":::
 
 1. Selecteer een van de gedetecteerde wijzigingen. Het _visuele verschil_ voor de resource wordt weer gegeven op de pagina **wijzigings overzicht** .
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Azure Policy wijzigings overzicht voor visueel verschil op pagina met wijzigings geschiedenis" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Scherm afbeelding van het visuele verschil tussen de status van de voor-en after-eigenschap van de wijzigings geschiedenis op de pagina wijzigings overzicht." border="false":::
 
 De _visuele diff_ -aideds bij het identificeren van wijzigingen aan een resource. De gedetecteerde wijzigingen zijn mogelijk niet gerelateerd aan de huidige nalevings status van de resource.
 

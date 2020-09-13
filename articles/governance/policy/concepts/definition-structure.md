@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079027"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648728"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -17,12 +17,12 @@ Meer informatie over [voor waarden](#conditions).
 
 Als u conventies definieert, kunt u kosten besparen en uw resources eenvoudiger beheren. U kunt bijvoorbeeld opgeven dat alleen bepaalde typen virtuele machines zijn toegestaan. Of u kunt vereisen dat resources een bepaalde tag hebben. Beleids toewijzingen worden overgenomen door onderliggende resources. Als een beleids toewijzing wordt toegepast op een resource groep, is deze van toepassing op alle resources in die resource groep.
 
-Het definitie schema voor het beleid vindt u hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+Het schema voor de beleids definitie _policyRule_ wordt hier gevonden: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 U gebruikt JSON om een beleids definitie te maken. De beleids definitie bevat elementen voor:
 
 - weergave naam
-- beschrijving
+- description
 - mode
 - metagegevens
 - parameters
@@ -619,7 +619,7 @@ De lijst met aliassen is altijd groeien. Als u wilt weten welke aliassen momente
 
   Gebruik de [extensie Azure Policy voor Visual Studio code](../how-to/extension-for-vscode.md) om aliassen voor resource-eigenschappen weer te geven en te detecteren.
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy-extensie voor Visual Studio code" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Scherm afbeelding van de uitbrei ding van de Azure Policy voor Visual Studio code die een eigenschap aanwijst om de alias namen weer te geven." border="false":::
 
 - Azure Resource Graph
 
