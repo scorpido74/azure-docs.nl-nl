@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078041"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398319"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -258,7 +258,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid:** Gebruikers
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
@@ -693,7 +693,8 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 - [Configureer beheerde identiteit voor de implementatie van Azure Resource Manager omgevingen in DevTest Labs](use-managed-identities-environments.md)
 - [Beheerde identiteit configureren voor het implementeren van virtuele machines in DevTest Labs](enable-managed-identities-lab-vms.md)
 - [Een sleutel kluis maken](../key-vault/quick-create-portal.md)
-- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/managed-identity.md)
+- [Verifiëren bij Key Vault](../key-vault/general/authentication.md)
+- [Toegangs beleid voor Key Vault toewijzen](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center bewaking:** Klikt
 

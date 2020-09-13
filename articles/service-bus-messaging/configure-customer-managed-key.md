@@ -3,12 +3,12 @@ title: Uw eigen sleutel configureren voor het versleutelen van Azure Service Bus
 description: Dit artikel bevat informatie over het configureren van uw eigen sleutel voor het versleutelen van Azure Service Bus gegevens rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067236"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400582"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
@@ -28,7 +28,7 @@ U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het control
 In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Voor het gebruik van door de klant beheerde sleutels met Azure Service Bus is vereist dat er twee vereiste eigenschappen zijn geconfigureerd voor de sleutel kluis. Dit zijn: **voorlopig verwijderen** en **niet opschonen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
+> Voor het gebruik van door de klant beheerde sleutels met Azure Service Bus is vereist dat er twee vereiste eigenschappen zijn geconfigureerd voor de sleutel kluis. Dit zijn:  **voorlopig verwijderen** en **niet opschonen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
@@ -82,12 +82,12 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de kla
     > 
     >   * Als [geo-nood herstel](service-bus-geo-dr.md) al is ingeschakeld voor de service bus naam ruimte en u de door de klant beheerde sleutel wilt inschakelen, 
     >     * Koppeling verbreekt
-    >     * [Stel het toegangs beleid](../key-vault/general/managed-identity.md) voor de beheerde identiteit voor de primaire en secundaire naam ruimten in op de sleutel kluis.
+    >     * [Stel het toegangs beleid](../key-vault/general/assign-access-policy-portal.md) voor de beheerde identiteit voor de primaire en secundaire naam ruimten in op de sleutel kluis.
     >     * Stel versleuteling in voor de primaire naam ruimte.
     >     * De primaire en secundaire naam ruimten opnieuw koppelen.
     > 
     >   * Als u geo-DR wilt inschakelen voor een Service Bus naam ruimte waarin de door de klant beheerde sleutel al is ingesteld,
-    >     * [Stel het toegangs beleid](../key-vault/general/managed-identity.md) voor de beheerde identiteit voor de secundaire naam ruimte in op de sleutel kluis.
+    >     * [Stel het toegangs beleid](../key-vault/general/assign-access-policy-portal.md) voor de beheerde identiteit voor de secundaire naam ruimte in op de sleutel kluis.
     >     * Koppel de primaire en secundaire naam ruimte.
 
 
@@ -164,8 +164,8 @@ In deze sectie wordt beschreven hoe u een Azure Service Bus naam ruimte met een 
 
     > [!NOTE]
     > Vervang de volgende waarden: 
-    > - `<ServiceBusNamespaceName>`-Naam van de naam ruimte van uw Service Bus
-    > - `<Location>`-Locatie van uw Service Bus naam ruimte
+    > - `<ServiceBusNamespaceName>` -Naam van de naam ruimte van uw Service Bus
+    > - `<Location>` -Locatie van uw Service Bus naam ruimte
 
     ```json
     {
@@ -287,10 +287,10 @@ In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens.
 
     > [!NOTE]
     > Vervang de volgende waarden: 
-    > - `<ServiceBusNamespaceName>`-Naam van de naam ruimte van uw Service Bus
-    > - `<Location>`-Locatie van uw Service Bus naam ruimte
-    > - `<KeyVaultName>`-Naam van uw sleutel kluis
-    > - `<KeyName>`-De naam van de sleutel in de sleutel kluis  
+    > - `<ServiceBusNamespaceName>` -Naam van de naam ruimte van uw Service Bus
+    > - `<Location>` -Locatie van uw Service Bus naam ruimte
+    > - `<KeyVaultName>` -Naam van uw sleutel kluis
+    > - `<KeyName>` -De naam van de sleutel in de sleutel kluis  
 
     ```json
     {

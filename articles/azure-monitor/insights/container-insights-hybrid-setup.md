@@ -3,12 +3,12 @@ title: Hybride Kubernetes-clusters met Azure Monitor voor containers configurere
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498896"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398378"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
@@ -38,7 +38,7 @@ De volgende configuraties worden officieel ondersteund met Azure Monitor voor co
 
 Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
 
-- Een [log Analytics-werk ruimte](../platform/design-logs-deployment.md).
+- Een [Log Analytics-werkruimte](../platform/design-logs-deployment.md).
 
     Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -71,9 +71,11 @@ Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
 
 Het inschakelen van Azure Monitor voor containers voor het hybride Kubernetes-cluster bestaat uit de volgende stappen in de aangegeven volg orde uit te voeren.
 
-1. Configureer uw Log Analytics-werk ruimte met de container Insights-oplossing.
+1. Configureer uw Log Analytics-werk ruimte met de container Insights-oplossing.   
 
 2. Schakel de Azure Monitor-grafiek voor containers HELM in met Log Analytics werk ruimte.
+
+Zie [hier](../../azure-monitor/insights/solutions.md)voor meer informatie over het controleren van oplossingen in azure monitor.
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>De Azure Monitor containers-oplossing toevoegen
 
@@ -334,7 +336,7 @@ Nadat u de grafiek hebt geïmplementeerd, kunt u de gegevens voor uw hybride Kub
 
 Vanaf grafiek versie 2.7.1 wordt de grafiek ondersteund om het proxy-eind punt op te geven met de `omsagent.proxy` grafiek parameter. Hierdoor kan het communiceren via uw proxy server. De communicatie tussen de Azure Monitor voor containers agent en Azure Monitor kan een HTTP-of HTTPS-proxy server zijn en zowel anonieme als basis verificatie (gebruikers naam/wacht woord) worden ondersteund.
 
-De waarde van de proxy configuratie heeft de volgende syntaxis:`[protocol://][user:password@]proxyhost[:port]`
+De waarde van de proxy configuratie heeft de volgende syntaxis: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Als uw proxy server geen verificatie vereist, moet u nog steeds een psuedo-gebruikers naam en-wacht woord opgeven. Dit kan een gebruikers naam of wacht woord zijn.

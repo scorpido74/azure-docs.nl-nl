@@ -8,18 +8,18 @@ ms.date: 8/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 2fc2db54217756ba0f4f7d643b1bc12ad2668209
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401058"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
 [Azure Logic apps](../logic-apps/logic-apps-overview.md) is een Cloud service die u helpt bij het automatiseren van werk stromen in apps en services. Door Logic Apps te verbinden met de Azure Digital Apparaatdubbels Api's, kunt u dergelijke geautomatiseerde stromen maken rond Azure Digital Apparaatdubbels en hun gegevens.
 
-Azure Digital Apparaatdubbels heeft momenteel geen gecertificeerde (vooraf gebouwde) connector voor Logic Apps. In plaats daarvan is het huidige proces voor het gebruik van Logic Apps met Azure Digital Apparaatdubbels een [**aangepaste Logic Apps-Connector**](../logic-apps/custom-connector-overview.md)te maken met behulp van een [aangepast apparaatdubbels Swagger-bestand van Azure](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json) dat is aangepast aan het gebruik van Logic apps.
+Azure Digital Apparaatdubbels heeft momenteel geen gecertificeerde (vooraf gebouwde) connector voor Logic Apps. In plaats daarvan is het huidige proces voor het gebruik van Logic Apps met Azure Digital Apparaatdubbels een [**aangepaste Logic Apps-Connector**](../logic-apps/custom-connector-overview.md)te maken met behulp van een [aangepaste Azure Digital apparaatdubbels Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) die is aangepast aan het gebruik van Logic apps.
 
 In dit artikel gaat u de [Azure Portal](https://portal.azure.com) gebruiken om **een aangepaste connector te maken** die kan worden gebruikt om Logic apps te verbinden met een Azure Digital apparaatdubbels-exemplaar. Vervolgens maakt u **een logische app** die gebruikmaakt van deze verbinding voor een voorbeeld scenario, waarbij gebeurtenissen die door een timer worden geactiveerd, automatisch een dubbele update bijwerkt in uw Azure Digital apparaatdubbels-exemplaar. 
 
@@ -29,7 +29,7 @@ Als u geen abonnement op Azure hebt, **maakt u een [gratis account](https://azur
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com) met dit account.
 
-### <a name="set-up-azure-digital-twins-instance"></a>Een Azure Digital Apparaatdubbels-exemplaar instellen
+### <a name="set-up-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar instellen
 
 Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps in dit artikel, moet u de **Azure Digital apparaatdubbels-instantie** al hebben ingesteld. 
 
@@ -77,9 +77,9 @@ U wordt naar de implementatie pagina voor de connector geleid. Wanneer de implem
 
 Vervolgens configureert u de connector die u hebt gemaakt om Azure Digital Apparaatdubbels te bereiken.
 
-Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load *digitaltwins.jsop* via [deze koppeling](https://github.com/Azure-Samples/digital-twins-custom-swaggers/blob/main/LogicApps/preview/2020-05-31-preview/digitaltwins.json).
+Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld met **aangepaste Swagger-apparaatdubbels van Azure** via [deze koppeling](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) door te klikken op de knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_Custom_Swaggers.zip* en pak deze uit. De aangepaste Swagger voor deze zelf studie bevindt zich op *Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jsop*.
 
-Klik vervolgens op de pagina overzicht van de connector in de Azure Portal op *bewerken*.
+Ga vervolgens naar de overzichts pagina van uw connector in de [Azure Portal](https://portal.azure.com) en klik op *bewerken*.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="De pagina overzicht voor de connector die in de vorige stap is gemaakt. Markeren rond de knop bewerken":::
 
@@ -87,7 +87,7 @@ Configureer de volgende gegevens op de pagina *Logic apps aangepaste connector b
 * **Aangepaste connectors**
     - API-eind punt: REST (laat de standaard instelling)
     - Import modus: OpenAPI-bestand (standaard instelling behouden)
-    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer en klik op *openen*.
+    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jsaan*) en klik op *openen*.
 * **Algemene informatie**
     - Pictogram, achtergrond kleur van pictogram, beschrijving: Vul de gewenste waarden in.
     - Schema: HTTPS (standaard instelling behouden)

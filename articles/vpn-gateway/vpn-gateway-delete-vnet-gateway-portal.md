@@ -4,22 +4,22 @@ description: Verwijder een virtuele netwerk gateway met behulp van de Azure Port
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/23/2018
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a7eb87f57676b469203e45e48b6f863cdf894c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983152"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400650"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Een virtuele netwerk gateway verwijderen met behulp van de portal
 
 > [!div class="op_single_selector"]
 > * [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Power shell (klassiek)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [PowerShell (klassiek)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
 Dit artikel bevat de instructies voor het verwijderen van een Azure VPN-gateway die is geïmplementeerd met het Resource Manager-implementatie model. Er zijn een aantal verschillende benaderingen die u kunt nemen wanneer u een virtuele netwerk gateway wilt verwijderen voor een configuratie van een VPN-gateway.
 

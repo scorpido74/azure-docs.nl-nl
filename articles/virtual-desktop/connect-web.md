@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ca5a591d168e18181a29cf1c00a7d1fead54595
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226043"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400633"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de webclient
 
@@ -27,7 +27,7 @@ Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bu
 
 Hoewel een voor HTML5 geschikte browser zou moeten werken, ondersteunen we de volgende besturings systemen en browsers officieel.
 
-| Browser           | Ondersteund besturings systeem                     | Opmerkingen               |
+| Browser           | Ondersteund besturings systeem                     | Notities               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          | Versie 11 of hoger |
@@ -48,6 +48,25 @@ Ga in een browser naar de Azure Resource Manager-geïntegreerde versie van de Wi
 >Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.
 
 Nadat u zich hebt aangemeld, ziet u nu een lijst met resources. U kunt resources starten door ze te selecteren zoals u een normale app op het tabblad **alle resources** zou doen.
+
+## <a name="using-an-input-method-editor"></a>Een Input Method Editor gebruiken
+
+De webclient ondersteunt het gebruik van een Input Method Editor (IME) in de externe sessie in versie **1.0.21.16 of hoger**. Het taal pakket voor het toetsen bord dat u wilt gebruiken in de externe sessie moet zijn geïnstalleerd op de virtuele machine van de host. Voor meer informatie over het instellen van taal pakketten in de externe sessie raadpleegt u [taal pakketten toevoegen aan een Windows 10-installatie kopie voor meerdere sessies](language-packs.md).
+
+IME-invoer inschakelen met de webclient:
+
+1. Voordat u verbinding maakt met de externe sessie, gaat u naar het deel venster **instellingen** voor webclient.
+
+2. Schakel de instelling **invoer methode-editor inschakelen** in **op aan**.
+
+3. Selecteer in de vervolg keuzelijst het toetsen bord dat u in de externe sessie wilt gebruiken.
+
+4. Maak verbinding met de externe sessie.
+
+De webclient onderdrukt het lokale IME-venster als u zich richt op de externe sessie. Als u IME-instellingen wijzigt nadat u al verbinding hebt gemaakt met de externe sessie, heeft dit geen effect.
+
+>[!NOTE]
+>Als het taal pakket niet is geïnstalleerd op de virtuele machine van de host, wordt de externe sessie standaard ingesteld op het Engels (Verenigde Staten)-toetsen bord.
 
 ## <a name="next-steps"></a>Volgende stappen
 

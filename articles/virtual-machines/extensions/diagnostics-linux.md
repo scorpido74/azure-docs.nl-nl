@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7a0b2afa8b566ec82fc638291c43f3e0419f654c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267850"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400684"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -23,7 +23,7 @@ In dit document wordt versie 3,0 en nieuwer van de Linux Diagnostic-extensie bes
 > [!IMPORTANT]
 > Zie [dit document](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)voor meer informatie over versie 2,3 en ouder.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 De diagnostische extensie van Linux helpt gebruikers bij het controleren van de status van een virtuele Linux-machine die wordt uitgevoerd op Microsoft Azure. Het heeft de volgende mogelijkheden:
 
@@ -70,7 +70,7 @@ Ondersteunde distributies en versies:
 * **Azure Linux-agent versie 2.2.0 of hoger**. De meeste installatie kopieën van de Azure VM Linux-galerie bevatten versie 2.2.7 of hoger. Voer uit `/usr/sbin/waagent -version` om te controleren of de versie is geïnstalleerd op de VM. Als op de virtuele machine een oudere versie van de gast agent wordt uitgevoerd, volgt u [deze instructies](./update-linux-agent.md) om de app bij te werken.
 * **Azure CLI**. [Stel de Azure cli](/cli/azure/install-azure-cli) -omgeving in op uw machine.
 * De wget-opdracht als u deze nog niet hebt: Voer uit `sudo apt-get install wget` .
-* Een bestaand Azure-abonnement en een bestaand opslag account voor het opslaan van de gegevens.
+* Een bestaand Azure-abonnement en een bestaand opslag account voor algemeen gebruik voor het opslaan van de gegevens in.  Opslag accounts voor algemeen gebruik ondersteunen tabel opslag die is vereist.  Een Blob Storage-account werkt niet.
 
 ### <a name="sample-installation"></a>Voorbeeld installatie
 
@@ -173,7 +173,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Name | Waarde
+Naam | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -213,7 +213,7 @@ In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitb
 
 Element | Waarde
 ------- | -----
-name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
+naam | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
 type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.

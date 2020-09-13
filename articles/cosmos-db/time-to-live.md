@@ -5,18 +5,18 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 976cb096ca654c38d7c4c2534bc6938026be5771
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77188722"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397029"
 ---
-# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) configureren in Azure Cosmos DB 
+# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) configureren in Azure Cosmos DB
 
-Met **time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om automatisch items uit een container te verwijderen na een bepaalde tijds periode. Standaard kunt u time to Live instellen op container niveau en de waarde per item overschrijven. Nadat u de TTL hebt ingesteld op een container of op item niveau, worden deze items na de periode door Azure Cosmos DB automatisch verwijderd, sinds de tijd waarop ze voor het laatst zijn gewijzigd. De waarde voor time to Live wordt in seconden geconfigureerd. Wanneer u TTL configureert, worden de verlopen items automatisch door het systeem verwijderd op basis van de TTL-waarde, zonder dat er een Verwijder bewerking hoeft te worden uitgevoerd die expliciet door de client toepassing wordt verleend.
+Met **time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om automatisch items uit een container te verwijderen na een bepaalde tijds periode. Standaard kunt u time to Live instellen op container niveau en de waarde per item overschrijven. Nadat u de TTL hebt ingesteld op een container of op item niveau, worden deze items na de periode door Azure Cosmos DB automatisch verwijderd, sinds de tijd waarop ze voor het laatst zijn gewijzigd. De waarde voor time to Live wordt in seconden geconfigureerd. Wanneer u TTL configureert, worden de verlopen items automatisch door het systeem verwijderd op basis van de TTL-waarde, zonder dat er een Verwijder bewerking hoeft te worden uitgevoerd die expliciet door de client toepassing wordt verleend. De maximum waarde voor TTL is 2147483647.
 
 Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van aanvragen voor links op [aanvraag](request-units.md), die aanvraag eenheden zijn die niet zijn verbruikt door gebruikers aanvragen. Zelfs nadat de TTL is verlopen, wordt de verwijdering van gegevens vertraagd als de container is overbelast met aanvragen en als er onvoldoende RU beschikbaar is. Gegevens worden verwijderd wanneer voldoende RUs beschikbaar is om de Verwijder bewerking uit te voeren. Hoewel het verwijderen van gegevens is vertraagd, worden er geen gegevens geretourneerd door query's (door een API) nadat de TTL is verlopen.
 

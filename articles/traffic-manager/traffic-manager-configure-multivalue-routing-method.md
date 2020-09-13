@@ -3,20 +3,20 @@ title: Route ring met meerdere waarden configureren-Azure Traffic Manager
 description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert om verkeer naar een/AAAA-eind punten te routeren.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: rohink
-ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706814"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401041"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>De methode voor het routeren van meerdere waarden in Traffic Manager configureren
 
@@ -35,9 +35,9 @@ Maak een resource groep voor het Traffic Manager profiel.
 3. Typ in de naam van de **resource groep**een naam *myResourceGroupTM1*. Voor de locatie van de **resource groep**selecteert u **VS-Oost**en selecteert u **OK**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
-Maak een Traffic Manager profiel dat gebruikers verkeer verstuurt door het naar het eind punt te verzenden met de laagste latentie.
+Maak een Traffic Manager-profiel dat gebruikersverkeer omleidt door gebruikers naar het eindpunt met de laagste latentie te sturen.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
+1. Selecteer linksboven in het scherm de optie **Een resource maken** > **Netwerken** > **Traffic Manager-profiel** > **Maken**.
 2. Voer in **Traffic Manager profiel maken**de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer vervolgens **maken**:
     
     | Instelling                 | Waarde                                              |
@@ -62,7 +62,7 @@ Voeg twee IP-adressen als externe eind punten toe aan het profiel voor meerdere 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Extern eind punt                                   |
-    | Name           | myEndpoint1                                        |
+    | Naam           | myEndpoint1                                        |
     | FQDN-naam (Fully Qualified Domain Name) of IP           | Typ het open bare IP-adres van het eind punt dat u wilt toevoegen aan dit Traffic Manager profiel                         |
     |        |           |
 

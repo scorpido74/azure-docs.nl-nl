@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: abc8ee3b79b43676ce114094af5614b1a2d945bf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230990"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400514"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -1042,7 +1042,9 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 * [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-* [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
+* [Verifiëren bij Key Vault](../key-vault/general/authentication.md)
+
+* [Toegangs beleid voor Key Vault toewijzen](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

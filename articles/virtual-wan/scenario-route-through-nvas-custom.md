@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987193"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400004"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scenario: verkeer routeren via Nva's (preview)
 
@@ -40,7 +40,7 @@ De volgende verbindings matrix bevat een overzicht van de stromen die in dit sce
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
 | **Vertakkingen** | &#8594;|  Statisch |            X |      X    |      X       |
 
-Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen cursief) voor een specifieke verkeers stroom leert. Laten we de verschillende rijen in detail bekijken:
+Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen cursief) voor een specifieke verkeers stroom leert. Een ' X ' betekent dat de connectiviteit systeem eigen wordt ondersteund door Virtual WAN, en ' static ' betekent dat de connectiviteit wordt verschaft door Virtual WAN met statische routes. Laten we de verschillende rijen in detail bekijken:
 
 * NVA spaken:
   * Spokes bereiken rechtstreeks via virtuele WAN-hubs andere spokes.

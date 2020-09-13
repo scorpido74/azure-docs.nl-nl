@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227029"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400541"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
 
@@ -79,7 +79,7 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure Files | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure File Sync | Ja | Ja |  |  |
-| Azure Managed Disks | Ja | N.v.t. |  |  |
+| Azure Managed Disks | Yes | N.v.t. |  |  |
 | Azure container Services voor Kubernetes | Ja | Ja |  |  |
 | Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |
@@ -217,14 +217,14 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
 1. Zoek in de lijst met roltoewijzingen om te zien of er roltoewijzingen voor uw beheerde identiteiten zijn.
 
-### <a name="list-key-vaults"></a>Sleutel kluizen weer geven
+### <a name="list-key-vaults"></a>Sleutelkluizen vermelden
 
 Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standaard Azure Active Directory Tenant-ID voor het abonnement waarin deze is gemaakt. Alle vermeldingen van het toegangsbeleid zijn ook gekoppeld aan deze tenant-ID. Zie [een Azure Key Vault naar een ander abonnement verplaatsen](../key-vault/general/move-subscription.md)voor meer informatie.
 
 > [!WARNING]
 > Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich **niet** in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
 
-- Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) om het toegangs beleid weer te geven. Zie [Key Vault verificatie bieden met een toegangscontrole beleid](../key-vault/key-vault-group-permissions-for-apps.md)voor meer informatie.
+- Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) om het toegangs beleid weer te geven. Zie [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-cli.md)voor meer informatie.
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -320,8 +320,8 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 
     | Azure-service | Meer informatie | 
     | --- | --- |
-    | Virtuele machines | [Beheerde identiteiten configureren voor Azure-resources op een Azure-VM met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
-    | Virtuele-machineschaalsets | [Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
+    | Virtuele machines | [Beheerde identiteiten voor Azure-resources op een virtuele Azure-machine configureren met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
+    | Virtuele-machineschaalsets | [Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Overige services | [Services die beheerde identiteiten voor Azure-resources ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
 1. Gebruik [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) om de roltoewijzingen te maken voor door het systeem toegewezen beheerde identiteiten. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.
@@ -336,8 +336,8 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 
     | Azure-service | Meer informatie | 
     | --- | --- |
-    | Virtuele machines | [Beheerde identiteiten configureren voor Azure-resources op een Azure-VM met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
-    | Virtuele-machineschaalsets | [Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
+    | Virtuele machines | [Beheerde identiteiten voor Azure-resources op een virtuele Azure-machine configureren met behulp van Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
+    | Virtuele-machineschaalsets | [Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Overige services | [Services die beheerde identiteiten voor Azure-resources ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
 1. Gebruik [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) om de roltoewijzingen voor door de gebruiker toegewezen beheerde identiteiten te maken. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.

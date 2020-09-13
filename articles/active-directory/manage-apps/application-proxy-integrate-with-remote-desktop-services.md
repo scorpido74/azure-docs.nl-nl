@@ -1,6 +1,6 @@
 ---
 title: Extern bureaublad publiceren met Azure AD-app proxy | Microsoft Docs
-description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
+description: Bevat informatie over het configureren van een app-proxy met RDS
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019519"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396757"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Extern bureaublad publiceren met Azure AD-toepassingsproxy
 
@@ -135,7 +135,7 @@ De configuratie die in dit artikel wordt beschreven, is voor toegang tot RDS via
 
 | Verificatiemethode | Ondersteunde client configuratie |
 | --------------------- | ------------------------------ |
-| Verificatie vooraf    | Extern bureau blad-web-Windows 7/10 met Internet Explorer + RDS ActiveX-invoeg toepassing |
+| Verificatie vooraf    | Extern bureau blad-web-Windows 7/10 met Internet Explorer of [Edge-IE-modus van chroom](https://docs.microsoft.com/deployedge/edge-ie-mode) en RDS ActiveX-invoeg toepassing |
 | Verificatie vooraf    | Extern bureau blad-webclient-HTML5-compatibele webbrowser, zoals micro soft Edge, Internet Explorer 11, Google Chrome, Safari of Mozilla Firefox (v 55.0 en hoger) |
 | Voer | Elk ander besturings systeem dat ondersteuning biedt voor de Microsoft Extern bureaublad-toepassing |
 

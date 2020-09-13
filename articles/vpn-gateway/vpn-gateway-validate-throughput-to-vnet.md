@@ -1,21 +1,21 @@
 ---
 title: VPN-door voer naar een Microsoft Azure Virtual Network valideren
-description: Het doel van dit document is om een gebruiker te helpen bij het valideren van de netwerk doorvoer van hun on-premises resources naar een virtuele machine van Azure.
+description: Dit artikel helpt u bij het valideren van de netwerk doorvoer van uw on-premises resources naar een virtuele machine van Azure.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998473"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398504"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-doorvoer naar een virtueel netwerk valideren
 
@@ -127,7 +127,7 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
 
 De nieuwste versie van [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) downloaden
 
-Overweeg Latte.exe in een afzonderlijke map te plaatsen, zoals`c:\tools`
+Overweeg Latte.exe in een afzonderlijke map te plaatsen, zoals `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte.exe via de Windows Firewall toestaan
 
@@ -217,7 +217,7 @@ Installeren is snel
 
 > [!Note]
 > Zorg ervoor dat er geen tussenliggende hops (bijvoorbeeld virtueel apparaat) zijn tijdens het testen van de door Voer tussen de virtuele machine en de gateway.
-> Raadpleeg het volgende artikel om inzicht te krijgen in de belangrijkste factoren achter de mogelijke hoofd oorzaken van het probleem, als er sprake is van slechte resultaten (wat een algemene door Voer is) die afkomstig zijn van de hierboven genoemde iPERF/NTTTCP-tests.https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Raadpleeg het volgende artikel om inzicht te krijgen in de belangrijkste factoren achter de mogelijke hoofd oorzaken van het probleem, als er sprake is van slechte resultaten (wat een algemene door Voer is) die afkomstig zijn van de hierboven genoemde iPERF/NTTTCP-tests. https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Met name de analyse van pakket Capture-traceringen (wireshark/Network Monitor) die parallel van de client en de server zijn verzameld tijdens deze tests, kunnen helpen bij de evaluatie van slechte prestaties. Deze traceringen kunnen pakket verlies, hoge latentie, MTU-grootte omvatten. fragmentatie, TCP 0-venster, fragmenten met een andere volg orde, enzovoort.
 
@@ -253,7 +253,7 @@ U kunt de latentie controleren met behulp van de volgende hulpprogram ma's:
 
 * WinMTR
 * TCPTraceroute
-* `ping`en `psping` (deze hulpprogram ma's kunnen een goede schatting van de RTT bieden, maar ze kunnen niet in alle gevallen worden gebruikt.)
+* `ping` en `psping` (deze hulpprogram ma's kunnen een goede schatting van de RTT bieden, maar ze kunnen niet in alle gevallen worden gebruikt.)
 
 ![Latentie controleren](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
