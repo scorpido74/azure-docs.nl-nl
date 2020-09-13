@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/10/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800592"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033656"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
@@ -190,7 +190,7 @@ Zie [dit artikel](https://docs.microsoft.com/dotnet/framework/app-domains/gac)vo
 
 #### <a name="symptoms"></a>Symptomen
 
-De zelf-hostende Integration runtime gaat plotseling naar offline zonder sleutel, onder fout bericht wordt weer gegeven in het gebeurtenis logboek:`Authentication Key is not assigned yet`
+De zelf-hostende Integration runtime gaat plotseling naar offline zonder sleutel, onder fout bericht wordt weer gegeven in het gebeurtenis logboek: `Authentication Key is not assigned yet`
 
 ![De verificatie sleutel ontbreekt](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -351,7 +351,7 @@ De **registratie** knop is niet gevonden in de Configuration Manager gebruikers 
 
 #### <a name="cause"></a>Oorzaak
 
-Sinds de release van de *Integration Runtime 3,0*is de knop **registreren** op een bestaand Integration runtime knooppunt verwijderd om een schone en veiligere omgeving mogelijk te maken. Als er een knoop punt is geregistreerd bij een aantal Integration Runtime (of dit nu online is of niet), moet u het vorige knoop punt verwijderen en vervolgens het knoop punt installeren en registreren om het opnieuw te registreren bij een andere Integration Runtime.
+Sinds de release van de *Integration Runtime 3,0*is de knop **registreren** op een bestaand Integration runtime knooppunt verwijderd om een schone en veiligere omgeving mogelijk te maken. Als er een knooppunt is geregistreerd voor een exemplaar van Integration Runtime (of dit nu online is of niet), moet u het vorige knoop punt verwijderen en vervolgens het knooppunt installeren en registreren om het opnieuw te registreren bij een ander exemplaar van Integration Runtime.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -519,7 +519,7 @@ Dit gedrag treedt op wanneer knoop punten niet met elkaar kunnen communiceren.
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Connectiviteits probleem tussen zelf-hostende IR en Data Factory of zelf-hostende IR en gegevens bron/Sink
 
-Als u het probleem met de netwerk verbinding wilt oplossen, moet u weten hoe u [de netwerk tracering kunt verzamelen](#how-to-collect-netmon-trace), hoe u deze kunt gebruiken en hoe u [de netmon-tracering moet analyseren](#how-to-analyze-netmon-trace) voordat u de hulpprogram ma's voor netmon in real cases van zelf-hostende IR toepast.
+Als u het probleem met de netwerk verbinding wilt oplossen, moet u weten hoe u de netwerk tracering kunt verzamelen, hoe u deze kunt gebruiken en hoe u [de netmon-tracering moet analyseren](#how-to-analyze-netmon-trace) voordat u de hulpprogram Ma's voor netmon in real cases van zelf-hostende IR toepast.
 
 #### <a name="symptoms"></a>Symptomen
 
@@ -577,7 +577,7 @@ Neem de netmon-tracering en analyseer verder.
 
 ### <a name="how-to-collect-netmon-trace"></a>Netmon-tracering verzamelen
 
-1.  Down load de Hulpprogram Ma's voor netmon van [deze website](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)en installeer deze op uw server computer (ongeacht welke server het probleem heeft) en de client (zoals zelf-hostende IR).
+1.  Down load de Hulpprogram Ma's voor netmon van [deze website](https://cnet-downloads.com/network-monitor)en installeer deze op uw server computer (ongeacht welke server het probleem heeft) en de client (zoals zelf-hostende IR).
 
 2.  Maak een map, bijvoorbeeld in het volgende pad: *D:\netmon*. Zorg ervoor dat er voldoende ruimte is om het logboek op te slaan.
 
@@ -621,7 +621,10 @@ Neem de netmon-tracering en analyseer verder.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon-tracering analyseren
 
-Wanneer u probeert Telnet **8.8.8.8 888** te maken met de bovenstaande netmon-tracering, moet u de onderstaande tracering zien:
+> [!NOTE] 
+> De onderstaande instructie is van toepassing op netmon-tracering. Omdat netmon-tracering momenteel niet wordt ondersteund, kunt u wireshark gebruiken.
+
+Wanneer u probeert te Telnet **8.8.8.8 888** met netmon-tracering, moet u de onderstaande tracering zien:
 
 ![netmon-tracering 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 
@@ -676,7 +679,7 @@ Voor meer informatie over het oplossen van problemen kunt u de volgende bronnen 
 
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow-forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

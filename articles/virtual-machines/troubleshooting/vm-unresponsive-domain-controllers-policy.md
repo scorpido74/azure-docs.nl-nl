@@ -1,0 +1,59 @@
+---
+title: De VM reageert niet tijdens het Toep assen van het standaard beleid voor domein controllers
+titlesuffix: Azure Virtual Machines
+description: Dit artikel bevat stappen voor het oplossen van problemen waarbij het standaard beleid voor domein controllers het opstarten van een virtuele machine van Azure voor komt.
+services: virtual-machines-windows, azure-resource-manager
+documentationcenter: ''
+author: v-miegge
+manager: dcscontentpm
+editor: ''
+tags: azure-resource-manager
+ms.assetid: 34e6b765-3496-46a1-b7d7-6def00884394
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.topic: troubleshooting
+ms.date: 09/08/2020
+ms.author: v-miegge
+ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90039074"
+---
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>De VM reageert niet tijdens het Toep assen van het standaard beleid voor domein controllers
+
+Dit artikel bevat stappen voor het oplossen van problemen waarbij het standaard beleid voor domein controllers het opstarten van een virtuele machine (VM) van Azure voor komt.
+
+## <a name="symptom"></a>Symptoom
+
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat het besturings systeem niet meer reageert tijdens het opstarten met het **standaard beleid voor domein controllers**van het bericht.
+
+  ![In afbeelding 1 wordt het besturings systeem weer gegeven dat is vastgelopen met het bericht standaard domein controllers beleid](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
+
+## <a name="cause"></a>Oorzaak
+
+Dit probleem kan worden veroorzaakt door recente wijzigingen aan het standaard beleid voor domein controllers. Anders moet er een analyse van het geheugen dump bestand worden uitgevoerd om de hoofd oorzaak te bepalen.
+
+## <a name="solution"></a>Oplossing
+
+Als u onlangs wijzigingen hebt aangebracht in het standaard beleid voor domein controllers, kunt u deze wijzigingen ongedaan maken om het probleem op te lossen. Als u niet zeker weet wat het probleem veroorzaakt, verzamelt u een geheugen dump en verzendt u een ondersteunings ticket.
+
+### <a name="collect-the-memory-dump-file"></a>Het geheugen dump bestand verzamelen
+
+Als u dit probleem wilt oplossen, moet u eerst het geheugen dump bestand voor de crash verzamelen en vervolgens contact opnemen met de ondersteuning met het geheugen dump bestand. Voer de volgende stappen uit om het dump bestand te verzamelen:
+
+### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
+
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+
+1. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
+
+### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
+
+1. Ga op de reparatie-VM naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf `F` is, gaat u naar `F:\Windows`.
+
+1. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
+
+1. Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Volg de hand leiding voor het [genereren van een crash dump bestand met behulp van NMI-aanroepen](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 5b42d61d59a3c816c3b664297470cfbf91f17439
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 706d7e081743f2bab1f593e00dc792f218a000ea
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851763"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033622"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>Id-object-Id's zoeken voor verificatie configuratie
 
@@ -21,16 +21,16 @@ In dit artikel leert u hoe u identiteits object-Id's kunt vinden die nodig zijn 
 
 ## <a name="find-user-object-id"></a>Gebruikers object-ID zoeken
 
-Als u een gebruiker met gebruikers naam hebt `myuser@consoso.com` , kunt u de gebruikers vinden `ObjectId` met behulp van de volgende Power shell-opdracht:
+Als u een gebruiker met gebruikers naam hebt `myuser@contoso.com` , kunt u de gebruikers vinden `ObjectId` met behulp van de volgende Power shell-opdracht:
 
 ```azurepowershell-interactive
-$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@consoso.com'").ObjectId
+$(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@contoso.com'").ObjectId
 ```
 
 u kunt ook de Azure CLI gebruiken:
 
 ```azurecli-interactive
-az ad user show --id myuser@consoso.com --query objectId --out tsv
+az ad user show --id myuser@contoso.com --query objectId --out tsv
 ```
 
 ## <a name="find-service-principal-object-id"></a>De object-ID van de Service-Principal zoeken
