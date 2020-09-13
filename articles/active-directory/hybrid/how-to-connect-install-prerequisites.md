@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688127"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662162"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -33,11 +33,11 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 * U hebt een Azure AD-Tenant nodig. U krijgt er een met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). U kunt een van de volgende portals gebruiken voor het beheren van Azure AD Connect:
   * Het [Azure Portal](https://portal.azure.com).
   * De [Office-Portal](https://portal.office.com).
-* [Voeg en controleer het domein](../active-directory-domains-add-azure-portal.md) dat u wilt gebruiken in azure AD. Als u bijvoorbeeld van plan bent om contoso.com te gebruiken voor uw gebruikers, moet u ervoor zorgen dat dit domein is geverifieerd en dat u niet alleen het standaard domein contoso.onmicrosoft.com gebruikt.
-* Een Azure AD-Tenant staat standaard 50.000-objecten toe. Wanneer u uw domein verifieert, neemt de limiet toe tot 300.000 objecten. Als u nog meer objecten in azure AD nodig hebt, kunt u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000 objecten nodig hebt, hebt u een licentie nodig, zoals Office 365, Azure AD Premium of Enterprise Mobility + Security.
+* [Voeg en controleer het domein](../fundamentals/add-custom-domain.md) dat u wilt gebruiken in azure AD. Als u bijvoorbeeld van plan bent om contoso.com te gebruiken voor uw gebruikers, moet u ervoor zorgen dat dit domein is geverifieerd en dat u niet alleen het standaard domein contoso.onmicrosoft.com gebruikt.
+* Een Azure AD-Tenant staat standaard 50.000-objecten toe. Wanneer u uw domein verifieert, neemt de limiet toe tot 300.000 objecten. Als u nog meer objecten in azure AD nodig hebt, kunt u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000 objecten nodig hebt, hebt u een licentie nodig, zoals Microsoft 365, Azure AD Premium of Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Uw on-premises gegevens voorbereiden
-* Gebruik [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) om fouten te identificeren, zoals duplicaten en opmaak problemen in uw Directory voordat u synchroniseert met Azure AD en Office 365.
+* Gebruik [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) om fouten te identificeren, zoals duplicaten en opmaak problemen in uw Directory voordat u synchroniseert met Azure AD en Microsoft 365.
 * Bekijk de [optionele synchronisatie functies die u in azure AD kunt inschakelen](how-to-connect-syncservice-features.md)en bepaal welke functies u moet inschakelen.
 
 ### <a name="on-premises-active-directory"></a>On-premises Active Directory
@@ -48,11 +48,11 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 * U wordt aangeraden [de Prullenbak van Active Directory in te scha kelen](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect server
-De Azure AD Connect-server bevat essentiële identiteits gegevens. Het is belang rijk dat beheerders toegang tot deze server goed is beveiligd. Volg de richt lijnen bij het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+De Azure AD Connect-server bevat essentiële identiteits gegevens. Het is belang rijk dat beheerders toegang tot deze server goed is beveiligd. Volg de richt lijnen bij het [beveiligen van bevoegde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 
-De Azure AD Connect-server moet worden behandeld als een onderdeel van de laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) . 
+De Azure AD Connect-server moet worden behandeld als een onderdeel van de laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) . 
 
-Zie [Aanbevolen procedures voor het beveiligen van Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)voor meer informatie over het beveiligen van uw Active Directory-omgeving.
+Zie [Aanbevolen procedures voor het beveiligen van Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)voor meer informatie over het beveiligen van uw Active Directory-omgeving.
 
 #### <a name="installation-prerequisites"></a>Installatievereisten
 
@@ -62,25 +62,25 @@ Zie [Aanbevolen procedures voor het beveiligen van Active Directory](https://doc
 - De Azure AD Connect-server moet Power shell transcriptie niet hebben groepsbeleid ingeschakeld als u de Azure AD Connect wizard gebruikt voor het beheren van de configuratie van Active Directory Federation Services (AD FS). U kunt Power shell transcriptie inschakelen als u de wizard Azure AD Connect gebruikt voor het beheren van de synchronisatie configuratie. 
 - Als AD FS wordt geïmplementeerd: 
     - De servers waarop AD FS of Web Application proxy zijn geïnstalleerd, moeten Windows Server 2012 R2 of later zijn. Windows Remote Management moet zijn ingeschakeld op deze servers voor installatie op afstand. 
-    - U moet TLS/SSL-certificaten configureren. Zie [SSL/TLS-protocollen en coderings suites beheren voor AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) en [SSL-certificaten beheren in AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)voor meer informatie.
+    - U moet TLS/SSL-certificaten configureren. Zie [SSL/TLS-protocollen en coderings suites beheren voor AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) en [SSL-certificaten beheren in AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)voor meer informatie.
     - U moet naam omzetting configureren. 
 - Als voor uw globale beheerders MFA is ingeschakeld, https://secure.aadcdn.microsoftonline-p.com *moet* de URL zich in de lijst met vertrouwde sites bekomen. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze wordt niet eerder toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>De beveiliging van uw Azure AD Connect-server 
 We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risico te verminderen voor dit kritieke onderdeel van uw IT-omgeving. Aan de hand van deze aanbevelingen kunnen enkele beveiligings Risico's voor uw organisatie worden verholpen.
 
-- Behandel Azure AD Connect hetzelfde als een domein controller en andere resources van laag 0. Zie [Active Directory Administrative tier model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)(Engelstalig) voor meer informatie.
+- Behandel Azure AD Connect hetzelfde als een domein controller en andere resources van laag 0. Zie [Active Directory Administrative tier model](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)(Engelstalig) voor meer informatie.
 - Beperk beheerders toegang tot de Azure AD Connect-server tot alleen domein Administrators of andere nauw keurig beheerde beveiligings groepen.
-- Maak een [speciaal account voor alle mede werkers met privileged Access](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Beheerders moeten niet surfen op het web, hun e-mail adres controleren en dagelijkse productiviteits taken uitvoeren met accounts met veel bevoegdheden.
-- Volg de richt lijnen voor het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
-- Het gebruik van NTLM-verificatie met de AADConnect-server weigeren. Hier volgen enkele manieren om dit te doen: [NTLM beperken op de AADConnect-server](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) en [NTLM beperken op een domein](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Zorg ervoor dat elke computer een uniek wacht woord voor de lokale beheerder heeft. Zie [Local Administrator Password Solution (verval)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) voor meer informatie. kan unieke wille keurige wacht woorden configureren op elk werk station en de server slaat ze op Active Directory beveiligd door een ACL. Alleen in aanmerking komende geautoriseerde gebruikers kunnen de wacht woorden van deze lokale beheerders accounts lezen of aanvragen. U kunt het verval verkrijgen voor gebruik op werk stations en servers vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Aanvullende richt lijnen voor het gebruik van een omgeving met verval en privileged Access Workstation (Paw's) vindt u in [operationele standaarden op basis van het schone bron principe](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
-- Implementeer toegewezen [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) voor alle mede werkers met uitgebreide toegang tot de gegevens systemen van uw organisatie. 
-- Volg deze [aanvullende richt lijnen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) om de kwets baarheid van uw Active Directory omgeving te verminderen.
+- Maak een [speciaal account voor alle mede werkers met privileged Access](/windows-server/identity/securing-privileged-access/securing-privileged-access). Beheerders moeten niet surfen op het web, hun e-mail adres controleren en dagelijkse productiviteits taken uitvoeren met accounts met veel bevoegdheden.
+- Volg de richt lijnen voor het [beveiligen van bevoegde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+- Het gebruik van NTLM-verificatie met de AADConnect-server weigeren. Hier volgen enkele manieren om dit te doen: [NTLM beperken op de AADConnect-server](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) en [NTLM beperken op een domein](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- Zorg ervoor dat elke computer een uniek wacht woord voor de lokale beheerder heeft. Zie [Local Administrator Password Solution (verval)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) voor meer informatie. kan unieke wille keurige wacht woorden configureren op elk werk station en de server slaat ze op Active Directory beveiligd door een ACL. Alleen in aanmerking komende geautoriseerde gebruikers kunnen de wacht woorden van deze lokale beheerders accounts lezen of aanvragen. U kunt het verval verkrijgen voor gebruik op werk stations en servers vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Aanvullende richt lijnen voor het gebruik van een omgeving met verval en privileged Access Workstation (Paw's) vindt u in [operationele standaarden op basis van het schone bron principe](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Implementeer toegewezen [privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) voor alle mede werkers met uitgebreide toegang tot de gegevens systemen van uw organisatie. 
+- Volg deze [aanvullende richt lijnen](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) om de kwets baarheid van uw Active Directory omgeving te verminderen.
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server gebruikt door Azure AD Connect
-* Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Standaard is een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Standaard is een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors).
 * Als u een andere installatie van SQL Server gebruikt, zijn deze vereisten van toepassing:
   * Azure AD Connect ondersteunt alle versies van SQL Server van 2012 (met het nieuwste Service Pack) tot SQL Server 2019. Azure SQL Database *wordt niet ondersteund* als data base.
   * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_ CI_ in hun naam. Het gebruik van een niet-hoofdletter gevoelige sortering die wordt geïdentificeerd door \_ CS_ in hun naam *wordt niet ondersteund*.
@@ -126,13 +126,13 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
         </system.net>
     ```
 
-* Als de configuratie van de proxy in een bestaande configuratie wordt uitgevoerd, moet de **Microsoft Azure AD-synchronisatie service** één keer opnieuw worden gestart om de Azure AD Connect de proxy configuratie te lezen en de behviour bij te werken. 
+* Als de configuratie van de proxy in een bestaande configuratie wordt uitgevoerd, moet de **Microsoft Azure AD-synchronisatie service** één keer opnieuw worden gestart om de Azure AD Connect de proxy configuratie te lezen en het gedrag bij te werken. 
 * Wanneer Azure AD Connect een webverzoek verzendt naar Azure AD als onderdeel van adreslijst synchronisatie, kan het tot vijf minuten duren voordat Azure AD reageert. Het is gebruikelijk dat proxy servers een time-outconfiguratie voor verbinding inactief hebben. Zorg ervoor dat de configuratie is ingesteld op ten minste 6 minuten of langer.
 
-Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.
+Raadpleeg MSDN over het [standaard proxy-element](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)voor meer informatie.
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Anders
 Optioneel: gebruik een test gebruikers account om de synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten
@@ -148,9 +148,9 @@ Azure AD Connect is afhankelijk van micro soft power shell en .NET Framework 4.5
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>TLS 1,2 inschakelen voor Azure AD Connect
-Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie engine-server en Azure AD. U kunt .NET-toepassingen zo configureren dat TLS 1,2 standaard op de server wordt gebruikt. Zie [micro soft security advisory 2960358](https://technet.microsoft.com/security/advisory/2960358)(Engelstalig) voor meer informatie over TLS 1,2.
+Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie engine-server en Azure AD. U kunt .NET-toepassingen zo configureren dat TLS 1,2 standaard op de server wordt gebruikt. Zie [micro soft security advisory 2960358](/security-updates/SecurityAdvisories/2015/2960358)(Engelstalig) voor meer informatie over TLS 1,2.
 
-1. Zorg ervoor dat u de .NET 4.5.1-hotfix hebt geïnstalleerd voor uw besturings systeem. Zie [micro soft-beveiligings advies 2960358](https://technet.microsoft.com/security/advisory/2960358)voor meer informatie. Mogelijk hebt u al deze hotfix of een latere versie geïnstalleerd op uw server.
+1. Zorg ervoor dat u de .NET 4.5.1-hotfix hebt geïnstalleerd voor uw besturings systeem. Zie [micro soft-beveiligings advies 2960358](/security-updates/SecurityAdvisories/2015/2960358)voor meer informatie. Mogelijk hebt u al deze hotfix of een latere versie geïnstalleerd op uw server.
 
 1. Voor alle besturings systemen stelt u deze register sleutel in en start u de server opnieuw op.
     ```

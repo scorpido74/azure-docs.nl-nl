@@ -1,24 +1,21 @@
 ---
 title: Replicatie inschakelen voor on-premises machines met privé-eind punten
 description: In dit artikel wordt beschreven hoe u replicatie configureert voor on-premises machines met behulp van privé-eind punten in Site Recovery.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 13c19f07ac21f986a5523407e46c59c050ebf96d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142074"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658798"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>On-premises machines repliceren met behulp van privé-eind punten
 
-Met Azure Site Recovery kunt u privé-eind punten van [Azure private link](../private-link/private-endpoint-overview.md) gebruiken om uw on-premises machines te repliceren naar een virtueel netwerk in Azure. Ondersteuning voor privé-eindpunt toegang tot een Recovery-kluis wordt in deze regio's ondersteund:
-
-- Azure Commercial: Zuid-Centraal VS, VS-West 2, VS-Oost
-- Azure Government: US Gov-Virginia, US Gov-Arizona, US Gov-Texas, US DoD-oost, US DoD-centraal
+Met Azure Site Recovery kunt u privé-eind punten van [Azure private link](../private-link/private-endpoint-overview.md) gebruiken om uw on-premises machines te repliceren naar een virtueel netwerk in Azure. Toegang tot een persoonlijk eind punt tot een Recovery kluis wordt ondersteund in alle Azure commerciële & overheids regio's.
 
 In dit artikel wordt beschreven hoe u de volgende stappen uitvoert:
 
@@ -210,7 +207,7 @@ Maak één privé-DNS-zone om de Site Recovery provider (voor Hyper-V-computers)
 
    1. Voeg op de pagina **recordset toevoegen** een vermelding toe voor elke Fully Qualified Domain name en een persoonlijk IP-adres als **een** type record. In **overzicht**vindt u een lijst met de volledig gekwalificeerde domein namen en IP-adressen op de pagina met het **persoonlijke eind punt** . Zoals u kunt zien in de volgende scherm afbeelding, wordt de eerste Fully Qualified Domain Name van het persoonlijke eind punt toegevoegd aan de recordset in de privé-DNS-zone.
 
-      Deze volledig gekwalificeerde domein namen komen overeen met dit patroon:`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      Deze volledig gekwalificeerde domein namen komen overeen met dit patroon: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Scherm opname van de pagina recordset toevoegen.":::
 

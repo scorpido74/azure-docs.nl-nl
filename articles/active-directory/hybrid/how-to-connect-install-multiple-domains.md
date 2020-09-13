@@ -1,6 +1,6 @@
 ---
 title: Meerdere domeinen Azure AD Connect
-description: Dit document bevat informatie over het instellen en configureren van meerdere domeinen op het hoogste niveau met O365 en Azure AD.
+description: Dit document bevat informatie over het instellen en configureren van meerdere domeinen op het hoogste niveau met Microsoft 365 en Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849947"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662437"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Ondersteuning voor meerdere domeinen voor federatie met Azure AD
-De volgende documentatie bevat richt lijnen voor het gebruik van meerdere domeinen op het hoogste niveau en subdomeinen wanneer u federeren met Office 365 of Azure AD-domeinen.
+De volgende documentatie bevat richt lijnen voor het gebruik van meerdere domeinen op het hoogste niveau en subdomeinen wanneer federeren met Microsoft 365 of Azure AD-domeinen.
 
 ## <a name="multiple-top-level-domain-support"></a>Ondersteuning voor meerdere domeinen op het hoogste niveau
 Federeren meerdere domeinen op het hoogste niveau met Azure AD vereisen enige aanvullende configuratie die niet vereist is wanneer federeren met één domein op het hoogste niveau.
@@ -42,7 +42,7 @@ U kunt de IssuerUri weer geven met behulp van de Power shell-opdracht `Get-MsolD
 
 Er treedt een probleem op wanneer u meer dan één domein op het hoogste niveau toevoegt.  Stel bijvoorbeeld dat u Federatie hebt ingesteld tussen Azure AD en uw on-premises omgeving.  Voor dit document wordt het domein bmcontoso.com gebruikt.  Er is nu een tweede domein op het hoogste niveau bmfabrikam.com toegevoegd.
 
-![Domains](./media/how-to-connect-install-multiple-domains/domains.png)
+![Een scherm opname met meerdere domeinen op het hoogste niveau](./media/how-to-connect-install-multiple-domains/domains.png)
 
 Wanneer u probeert het domein bmfabrikam.com te converteren naar Federated, treedt er een fout op.  De reden hiervoor is dat Azure AD een beperking heeft die de eigenschap IssuerUri niet toestaat dezelfde waarde voor meer dan één domein te hebben.  
 
@@ -63,11 +63,11 @@ Als u de instellingen voor het bmfabrikam.com-domein bekijkt, ziet u het volgend
 
 ![Federatie fout](./media/how-to-connect-install-multiple-domains/settings.png)
 
-`-SupportMultipleDomain`wijzigt niet de andere eind punten die nog steeds zijn geconfigureerd om te verwijzen naar de Federation-service op adfs.bmcontoso.com.
+`-SupportMultipleDomain` wijzigt niet de andere eind punten die nog steeds zijn geconfigureerd om te verwijzen naar de Federation-service op adfs.bmcontoso.com.
 
 Een ander `-SupportMultipleDomain` zou dat ervoor zorgt dat het AD FS systeem de juiste waarde voor de verlener bevat in de tokens die zijn uitgegeven voor Azure AD. Deze waarde wordt ingesteld door het domein gedeelte van de UPN van de gebruiker te nemen en in te stellen als het domein in de IssuerUri, d.w.z. https://{UPN-achtervoegsel}/ADFS/Services/Trust.
 
-Tijdens de verificatie bij Azure AD of Office 365 wordt het IssuerUri-element in het token van de gebruiker gebruikt om het domein te vinden in azure AD.  Als er geen overeenkomst wordt gevonden, mislukt de verificatie.
+Tijdens de verificatie bij Azure AD of Microsoft 365, wordt het IssuerUri-element in het token van de gebruiker gebruikt om het domein te vinden in azure AD. Als er geen overeenkomst wordt gevonden, mislukt de verificatie.
 
 Als de UPN van een gebruiker bijvoorbeeld is bsimon@bmcontoso.com , wordt het IssuerUri-element in het token, AD FS-problemen, ingesteld op `http://bmcontoso.com/adfs/services/trust` . Dit element komt overeen met de Azure AD-configuratie en de verificatie slaagt.
 
@@ -106,17 +106,17 @@ Gebruik de volgende stappen om de micro soft online-vertrouwens relatie te verwi
 2. Vouw aan de linkerkant **vertrouwens relaties** en **vertrouwens relaties met relying party's** uit
 3. Verwijder aan de rechter kant de vermelding van het **Microsoft Office 365-identiteits platform** .
    ![Micro soft online verwijderen](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is geïnstalleerd: `$cred=Get-Credential` .  
+4. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](/previous-versions/azure/jj151815(v=azure.100)) is geïnstalleerd: `$cred=Get-Credential` .  
 5. Voer de gebruikers naam en het wacht woord in van een globale beheerder voor het Azure AD-domein waarmee u federeren.
-6. Voer in Power shell`Connect-MsolService -Credential $cred`
-7. Voer in Power shell in `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Deze update is voor het oorspronkelijke domein.  Als u de bovenstaande domeinen gebruikt, zou dit het volgende zijn:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+6. Voer in Power shell `Connect-MsolService -Credential $cred`
+7. Voer in Power shell in `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` .  Deze update is voor het oorspronkelijke domein.  Als u de bovenstaande domeinen gebruikt, zou dit het volgende zijn:  `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te voegen met behulp van Power shell
 
-1. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is geïnstalleerd: `$cred=Get-Credential` .  
+1. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](/previous-versions/azure/jj151815(v=azure.100)) is geïnstalleerd: `$cred=Get-Credential` .  
 2. Voer de gebruikers naam en het wacht woord in van een globale beheerder voor het Azure AD-domein waarmee u federeren hebt
-3. Voer in Power shell`Connect-MsolService -Credential $cred`
-4. Voer in Power shell`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
+3. Voer in Power shell `Connect-MsolService -Credential $cred`
+4. Voer in Power shell `New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
 
 Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te voegen met behulp van Azure AD Connect.
 
@@ -128,11 +128,11 @@ Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te vo
 5. Klik op Installeren
 
 ### <a name="verify-the-new-top-level-domain"></a>Het nieuwe domein op het hoogste niveau controleren
-Met behulp van de Power shell-opdracht `Get-MsolDomainFederationSettings -DomainName <your domain>` kunt u de bijgewerkte IssuerUri bekijken.  In de onderstaande scherm afbeelding ziet u dat de Federatie-instellingen zijn bijgewerkt op het oorspronkelijke domein`http://bmcontoso.com/adfs/services/trust`
+Met behulp van de Power shell-opdracht `Get-MsolDomainFederationSettings -DomainName <your domain>` kunt u de bijgewerkte IssuerUri bekijken.  In de onderstaande scherm afbeelding ziet u dat de Federatie-instellingen zijn bijgewerkt op het oorspronkelijke domein `http://bmcontoso.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-En de IssuerUri voor het nieuwe domein is ingesteld op`https://bmfabrikam.com/adfs/services/trust`
+En de IssuerUri voor het nieuwe domein is ingesteld op `https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 

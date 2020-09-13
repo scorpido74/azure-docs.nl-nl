@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356879"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662398"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
 Dubbel kenmerk tolerantie is een functie in Azure Active Directory die de wrijvings kracht veroorzaakt door **userPrincipalName** -en SMTP **proxyAddress attribuut** -conflicten bij het uitvoeren van een van de synchronisatie hulpprogramma's van micro soft.
@@ -44,7 +44,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 Het kenmerk tolerantie proces verwerkt alleen UPN-en SMTP- **proxyAddress attribuut** -waarden.
 
-Als het kenmerk niet is vereist, zoals een **proxyAddress attribuut**, wordt het kenmerk conflict door Azure Active Directory eenvoudigweg in quarantaine geplaatst en wordt de object-of bijwerk actie uitgevoerd.
+Als het kenmerk niet is vereist, zoals een  **proxyAddress attribuut**, wordt het kenmerk conflict door Azure Active Directory eenvoudigweg in quarantaine geplaatst en wordt de object-of bijwerk actie uitgevoerd.
 
 Bij het in quarantaine van het kenmerk wordt informatie over het conflict verzonden in hetzelfde fout rapport-e-mail adres dat wordt gebruikt in het oude gedrag. Deze informatie wordt echter slechts één keer weer gegeven in het fouten rapport, wanneer de quarantaine plaatsvindt, wordt het niet meer in toekomstige e-mail berichten geregistreerd. Omdat de export voor dit object is geslaagd, wordt er door de synchronisatieclient geen fout in het logboek geregistreerd en wordt de bewerking maken/bijwerken niet opnieuw geprobeerd bij de volgende synchronisatie cycli.
 
@@ -121,12 +121,12 @@ Als u een uitgebreide zoek opdracht wilt uitvoeren, gebruikt u de vlag **-search
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="microsoft-365-admin-center"></a>Microsoft 365-beheercentrum
+## <a name="microsoft-365-admin-center"></a>Het Microsoft 365-beheercentrum
 U kunt Directory synchronisatie fouten weer geven in het Microsoft 365-beheer centrum. In het rapport in het Microsoft 365-beheer centrum worden alleen **gebruikers** objecten weer gegeven die deze fouten bevatten. Er wordt geen informatie weer gegeven over conflicten tussen **groepen** en **contact personen**.
 
 ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Actieve gebruikers")
 
-Zie voor instructies over het weer geven van adreslijst synchronisatie fouten in het Microsoft 365-beheer centrum [Directory-synchronisatie fouten in Office 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Zie voor instructies over het weer geven van adreslijst synchronisatie fouten in het Microsoft 365-beheer centrum [Directory-synchronisatie fouten in Microsoft 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Identiteitssynchronisatie fout rapport
 Wanneer een object met een dubbel kenmerk conflict wordt verwerkt met dit nieuwe gedrag, wordt er een melding opgenomen in het standaard-e-mail bericht van identiteits synchronisatie dat wordt verzonden naar de contact persoon van de technische melding voor de Tenant. Er is echter een belang rijke wijziging in dit gedrag. In het verleden zou informatie over een dubbel kenmerk conflict worden opgenomen in elk volgende fouten rapport tot het conflict is opgelost. Met dit nieuwe gedrag wordt de fout melding voor een gegeven conflict slechts eenmaal weer gegeven-op het moment dat het conflicterende kenmerk in quarantaine is geplaatst.
@@ -174,8 +174,8 @@ De koppeling voor *stappen voor het oplossen van dit probleem* is onjuist:
 
 Deze moet verwijzen naar [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) .
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)
-* [Directory-synchronisatie fouten in Office 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Directory synchronisatie fouten in Microsoft 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010911"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662987"
 ---
 Deze entiteits categorie bevat financiële gegevens en officiële vormen van identificatie. Beschikbaar vanaf model versie `2019-10-01` . Subtypen worden hieronder weer gegeven. 
 
@@ -27,14 +27,14 @@ Deze entiteits categorie bevat financiële gegevens en officiële vormen van ide
 | IBAN (International Banking Account Number)                  | IBAN-codes voor informatie over de betalings instructie.                            |
 
 
-### <a name="government-and-countryregion-specific-identification"></a>Specifieke identificatie van overheid en land/regio
+### <a name="government-and-countryregion-specific-identification"></a>Sofi en land/regio-specifieke identificatie
 
 > [!NOTE]
 > De volgende financiële en land afhankelijke entiteiten worden niet geretourneerd met de `domain=phi` para meter:
 > * Paspoort nummers
 > * BTW-Id's
 
-De onderstaande entiteiten worden gegroepeerd en per land weer gegeven:
+De volgende entiteiten worden gegroepeerd en weer gegeven op land:
 
 Argentinië
 * Sofi-nummer (Argentinië National Identity)
@@ -116,7 +116,7 @@ Frankrijk
 * Landse nationale ID-kaart (CNI)
 * Frank rijk paspoort nummer
 * Sofi-nummer Frank rijk (INSEE)
-* Frank rijk-belasting identificatienummer (numéro SPI.)
+* Frank rijk-belasting identificatienummer (numéro SPI)
 * Omzetbelasting nummer van toegevoegde waarde voor Frank rijk
 
 Duitsland

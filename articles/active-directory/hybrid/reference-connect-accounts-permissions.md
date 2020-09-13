@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255775"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662331"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -55,7 +55,7 @@ Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, 
 > [!NOTE]
 > Het wordt ondersteund voor het beheren van de beheer accounts die worden gebruikt in Azure AD Connect vanuit een ESAE-beheer forest (ook wel bekend als ' rode forest ').
 > Speciale beheerforests bieden organisaties de mogelijkheid om administratoraccounts, -werkstations en -groepen te hosten in een omgeving die sterkere beveiligingsmechanismen heeft dan de productieomgeving.
-> Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forest](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
+> Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forest](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
 > De rol van globale beheerder is niet vereist na de eerste installatie en het account van de **Directory Synchronization accounts** wordt door de rol Dit betekent niet noodzakelijkerwijs dat u het account alleen wilt verwijderen met de rol van globale beheerder. Het is beter om de rol te wijzigen in een minder krachtige rol, omdat het volledig verwijderen van het account kan leiden tot problemen als u de wizard ooit opnieuw moet uitvoeren. Door de bevoegdheid van de rol te beperken, kunt u de bevoegdheden altijd opnieuw verhogen als u de wizard Azure AD Connect opnieuw moet gebruiken. 
@@ -147,9 +147,9 @@ Welke machtigingen u nodig hebt, is afhankelijk van de optionele functies die u 
 | Wachtwoord-hash-synchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
 | Hybride implementatie van Exchange |Schrijf machtigingen voor de kenmerken die worden beschreven in [hybride write-back van Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contact personen. |
 | Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
-| Wachtwoord terugschrijven |Schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
+| Wachtwoord terugschrijven |Schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/tutorial-enable-sspr-writeback.md) voor gebruikers. |
 | Apparaat terugschrijven |Machtigingen die worden verleend met een Power shell-script, zoals beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
-| Groep terugschrijven |Hiermee kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.|
+| Groep terugschrijven |Hiermee kunt u **Microsoft 365 groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.|
 
 ## <a name="upgrade"></a>Upgraden
 Wanneer u een upgrade uitvoert van de ene versie van Azure AD Connect naar een nieuwe versie, hebt u de volgende machtigingen nodig:
@@ -179,8 +179,8 @@ De synchronisatie service kan worden uitgevoerd onder verschillende accounts. He
 | --- | --- | --- |
 | [Virtueel service-account](#virtual-service-account) | Express en aangepast, 2017 april en hoger | Dit is de optie die wordt gebruikt voor alle snelle installaties, met uitzonde ring van installaties op een domein controller. Voor aangepast is dit de standaard optie, tenzij een andere optie wordt gebruikt. |
 | [Door groep beheerd serviceaccount](#group-managed-service-account) | Aangepast, 2017 april en hoger | Als u een externe SQL Server gebruikt, raden we u aan een beheerd service account voor een groep te gebruiken. |
-| [Gebruikers account](#user-account) | Express en aangepast, 2017 april en hoger | Een gebruikers account dat met AAD_ wordt voorafgegaan, wordt alleen tijdens de installatie gemaakt wanneer het is geïnstalleerd op Windows Server 2008 en wanneer geïnstalleerd op een domein controller. |
-| [Gebruikers account](#user-account) | Express en aangepast, 2017 maart en ouder | Een lokaal account dat wordt voorafgegaan door AAD_, wordt tijdens de installatie gemaakt. Wanneer u een aangepaste installatie gebruikt, kan er een ander account worden opgegeven. |
+| [Gebruikersaccount](#user-account) | Express en aangepast, 2017 april en hoger | Een gebruikers account dat met AAD_ wordt voorafgegaan, wordt alleen tijdens de installatie gemaakt wanneer het is geïnstalleerd op Windows Server 2008 en wanneer geïnstalleerd op een domein controller. |
+| [Gebruikersaccount](#user-account) | Express en aangepast, 2017 maart en ouder | Een lokaal account dat wordt voorafgegaan door AAD_, wordt tijdens de installatie gemaakt. Wanneer u een aangepaste installatie gebruikt, kan er een ander account worden opgegeven. |
 
 Als u verbinding maken met een build van 2017 maart of eerder gebruikt, moet u het wacht woord niet opnieuw instellen voor het service account, omdat Windows de versleutelings sleutels om veiligheids redenen heeft vernietigd. U kunt het account niet wijzigen in een ander account zonder Azure AD Connect opnieuw te installeren. Als u een upgrade uitvoert naar een build van 2017 april of hoger, wordt het wacht woord voor het service account gewijzigd, maar u kunt het gebruikte account niet wijzigen.
 
@@ -197,8 +197,8 @@ Legenda:
 - Optie niet-vet: ondersteund
 - Lokaal account: lokale gebruikers account op de server
 - Domein account-domein gebruikers account
-- sMSA- [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA: door [groep beheerd service account](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA- [zelfstandig beheerd service account](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA: door [groep beheerd service account](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Aangepast | Externe SQL</br>Aangepast |
 | --- | --- | --- | --- |
@@ -215,15 +215,15 @@ Het leveranciersspecifieke kenmerk is bedoeld om te worden gebruikt met scenario
 Voor deze functie is Windows Server 2008 R2 of later vereist. Als u Azure AD Connect installeert op Windows Server 2008, wordt de installatie in plaats daarvan terugvallen op het gebruik van een [gebruikers account](#user-account) .
 
 #### <a name="group-managed-service-account"></a>Door groep beheerd service account
-Als u een externe SQL Server gebruikt, raden we u aan een **beheerd service account**voor een groep te gebruiken. Zie overzicht van door een groep [beheerde service accounts](https://technet.microsoft.com/library/hh831782.aspx)voor meer informatie over het voorbereiden van uw Active Directory voor door een groep beheerd service account.
+Als u een externe SQL Server gebruikt, raden we u aan een **beheerd service account**voor een groep te gebruiken. Zie overzicht van door een groep [beheerde service accounts](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))voor meer informatie over het voorbereiden van uw Active Directory voor door een groep beheerd service account.
 
 Als u deze optie wilt gebruiken, selecteert u op de pagina [vereiste onderdelen installeren](how-to-connect-install-custom.md#install-required-components) de optie **een bestaand service account gebruiken**en selecteert u een **beheerd service account**.  
 ![KENMERK](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-Het wordt ook ondersteund voor het gebruik van een [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx). Deze kunnen echter alleen worden gebruikt op de lokale computer en er is geen voor deel voor het gebruik van de standaard virtuele-service account.
+Het wordt ook ondersteund voor het gebruik van een [zelfstandig beheerd service account](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10)). Deze kunnen echter alleen worden gebruikt op de lokale computer en er is geen voor deel voor het gebruik van de standaard virtuele-service account.
 
 Voor deze functie is Windows Server 2012 of hoger vereist. Als u een ouder besturings systeem moet gebruiken en externe SQL wilt gebruiken, moet u een [gebruikers account](#user-account)gebruiken.
 
-#### <a name="user-account"></a>Gebruikers account
+#### <a name="user-account"></a>Gebruikersaccount
 Er wordt een lokaal service account gemaakt door de installatie wizard (tenzij u het account opgeeft dat moet worden gebruikt in aangepaste instellingen). Het account wordt voorafgegaan **AAD_** en wordt gebruikt om de huidige synchronisatie service uit te voeren als. Als u Azure AD Connect op een domein controller installeert, wordt het account in het domein gemaakt. Het **AAD_** -service account moet zich in het domein bevinden als:
    - u gebruikt een externe server waarop SQL Server wordt uitgevoerd
    - u gebruikt een proxy waarvoor verificatie is vereist
@@ -247,12 +247,12 @@ De naam van de server waarop het account wordt gebruikt, kan worden geïdentific
 
 Het account wordt gemaakt met een lang complex wacht woord dat niet verloopt. Er wordt een speciale **Directory synchronisatie-accounts** met rollen verleend die alleen machtigingen hebben voor het uitvoeren van Directory synchronisatie taken. Deze speciale ingebouwde rol kan niet worden verleend buiten de Azure AD Connect wizard. De Azure Portal geeft dit account weer met de rol **gebruiker**.
 
-Er is een limiet van 20 synchronisatie service-accounts in azure AD. Als u de lijst met bestaande Azure AD-service accounts in uw Azure AD wilt ophalen, voert u de volgende Azure AD Power shell-cmdlet uit:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Er is een limiet van 20 synchronisatie service-accounts in azure AD. Als u de lijst met bestaande Azure AD-service accounts in uw Azure AD wilt ophalen, voert u de volgende Azure AD Power shell-cmdlet uit: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Als u ongebruikte Azure AD-service accounts wilt verwijderen, voert u de volgende Azure AD Power shell-cmdlet uit:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+Als u ongebruikte Azure AD-service accounts wilt verwijderen, voert u de volgende Azure AD Power shell-cmdlet uit: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Voordat u de bovenstaande Power shell-opdrachten kunt gebruiken, moet u de [Azure Active Directory Power shell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installeren en verbinding maken met uw exemplaar van Azure AD via [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+>Voordat u de bovenstaande Power shell-opdrachten kunt gebruiken, moet u de [Azure Active Directory Power shell for Graph-module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installeren en verbinding maken met uw exemplaar van Azure AD via [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
 
 Zie [het Azure AD Connect account beheren](how-to-connect-azureadaccount.md) voor meer informatie over het beheren of opnieuw instellen van het wacht woord voor het account van de Azure AD-connector.
 

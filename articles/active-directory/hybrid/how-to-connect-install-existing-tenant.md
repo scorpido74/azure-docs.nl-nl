@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640647"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662258"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: wanneer u een bestaande Tenant hebt
 In de meeste onderwerpen over het gebruik van Azure AD Connect wordt ervan uitgegaan dat u begint met een nieuwe Azure AD-Tenant en dat er geen gebruikers of andere objecten zijn. Maar als u bent begonnen met een Azure AD-Tenant, deze hebt gevuld met gebruikers en andere objecten en nu verbinding maken wilt gebruiken, is dit onderwerp voor u.
@@ -41,7 +41,7 @@ De overeenkomst wordt alleen geëvalueerd voor nieuwe objecten die afkomstig zij
 Als in azure AD een object wordt gevonden waarbij de kenmerk waarden hetzelfde zijn voor een object dat afkomstig is van verbinding maken en dat al aanwezig is in azure AD, wordt het object in azure AD overgenomen door verbinding te maken. Het eerder door de Cloud beheerde object wordt gemarkeerd als on-premises beheerd. Alle kenmerken in azure AD met een waarde in on-premises AD worden overschreven door de on-premises waarde. De uitzonde ring is wanneer een kenmerk op locatie een **Null** -waarde heeft. In dit geval blijft de waarde in azure AD behouden, maar u kunt deze nog steeds alleen op locatie wijzigen in iets anders.
 
 > [!WARNING]
-> Omdat alle kenmerken in azure AD worden overschreven door de on-premises waarde, moet u ervoor zorgen dat u beschikt over goede gegevens on-premises. Als u bijvoorbeeld alleen een beheerd e-mail adres in Office 365 hebt en dit niet in de on-premises AD DS hebt bijgewerkt, verliest u alle waarden in azure AD/Office 365 die niet aanwezig zijn in AD DS.
+> Omdat alle kenmerken in azure AD worden overschreven door de on-premises waarde, moet u ervoor zorgen dat u beschikt over goede gegevens on-premises. Als u bijvoorbeeld alleen een beheerd e-mail adres in Microsoft 365 hebt en dit niet in de on-premises AD DS is bijgewerkt, verliest u alle waarden in azure AD/Microsoft 365 die niet aanwezig zijn in AD DS.
 
 > [!IMPORTANT]
 > Als u wachtwoord synchronisatie gebruikt, dat altijd wordt gebruikt door snelle instellingen, wordt het wacht woord in azure AD overschreven met het wacht woord in on-premises AD. Als uw gebruikers worden gebruikt voor het beheren van verschillende wacht woorden, moet u hen informeren dat ze het on-premises wacht woord moeten gebruiken wanneer u Connect hebt geïnstalleerd.

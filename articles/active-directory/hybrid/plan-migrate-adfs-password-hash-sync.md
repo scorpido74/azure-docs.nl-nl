@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356676"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662421"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory
 
@@ -42,11 +42,11 @@ Als u Mini maal de stappen voor het migreren naar wachtwoord-hash-synchronisatie
 > [!IMPORTANT]
 > U kunt de verouderde documentatie, hulpprogram ma's en blogs lezen die gebruikers conversie vereist wanneer u domeinen van federatieve identiteit naar beheerde identiteit converteert. Het is niet meer nodig om *gebruikers te converteren* . Micro soft werkt met het bijwerken van documentatie en hulpprogram ma's om deze wijziging weer te geven.
 
-Volg de stappen in Azure AD Connect om Azure AD Connect bij te werken: Voer een [upgrade uit naar de nieuwste versie](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+Volg de stappen in Azure AD Connect om Azure AD Connect bij te werken: Voer een [upgrade uit naar de nieuwste versie](./how-to-upgrade-previous-version.md).
 
 ### <a name="password-hash-synchronization-required-permissions"></a>Synchronisatie van wacht woord-hash vereist
 
-U kunt Azure AD Connect configureren met behulp van snelle instellingen of een aangepaste installatie. Als u de optie voor aangepaste installatie hebt gebruikt, zijn de [vereiste machtigingen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-accounts-permissions) voor wachtwoord hash-synchronisatie mogelijk niet aanwezig.
+U kunt Azure AD Connect configureren met behulp van snelle instellingen of een aangepaste installatie. Als u de optie voor aangepaste installatie hebt gebruikt, zijn de [vereiste machtigingen](./reference-connect-accounts-permissions.md) voor wachtwoord hash-synchronisatie mogelijk niet aanwezig.
 
 De Azure AD Connect-service account Active Directory Domain Services (AD DS) vereist de volgende machtigingen voor het synchroniseren van wacht woord-hashes:
 
@@ -114,8 +114,8 @@ Controleer alle instellingen die mogelijk zijn aangepast voor uw Federatie-ontwe
 
 Raadpleeg deze artikelen voor meer informatie:
 
-* [AD FS prompt = ondersteuning voor aanmeld parameters](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [AD FS prompt = ondersteuning voor aanmeld parameters](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
 > Als **SupportsMfa** is ingesteld op **True**, gebruikt u een on-premises multi-factor Authentication-oplossing om een tweede factor Challenge in te voeren in de verificatie stroom van de gebruiker. Deze installatie werkt niet meer voor Azure AD-verificatie scenario's nadat dit domein is geconverteerd van federatieve naar beheerde authenticatie. Nadat u Federatie hebt uitgeschakeld, neemt u de relatie met uw on-premises Federatie op. Dit omvat ook on-premises MFA-adapters. 
@@ -124,9 +124,9 @@ Raadpleeg deze artikelen voor meer informatie:
 
 #### <a name="back-up-federation-settings"></a>Back-up van Federatie-instellingen
 
-Hoewel er geen wijzigingen worden aangebracht aan andere relying party's in uw AD FS-Farm tijdens de processen die in dit artikel worden beschreven, wordt u aangeraden een geldige back-up te maken van uw AD FS-Farm waarvan u kunt herstellen. U kunt een huidige geldige back-up maken met behulp van het gratis [hulp programma micro soft AD FS Rapid Restore](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool). U kunt het hulp programma gebruiken om een back-up te maken van AD FS en een bestaande farm te herstellen of een nieuwe farm te maken.
+Hoewel er geen wijzigingen worden aangebracht aan andere relying party's in uw AD FS-Farm tijdens de processen die in dit artikel worden beschreven, wordt u aangeraden een geldige back-up te maken van uw AD FS-Farm waarvan u kunt herstellen. U kunt een huidige geldige back-up maken met behulp van het gratis [hulp programma micro soft AD FS Rapid Restore](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool). U kunt het hulp programma gebruiken om een back-up te maken van AD FS en een bestaande farm te herstellen of een nieuwe farm te maken.
 
-Als u ervoor kiest om de AD FS Rapid Restore-hulp programma niet te gebruiken, moet u ten minste het Microsoft Office 365-identiteits platform Relying Party vertrouwen exporteren en alle gekoppelde aangepaste claim regels die u hebt toegevoegd. U kunt de Relying Party vertrouwens-en gekoppelde claim regels exporteren met behulp van het volgende Power shell-voor beeld:
+Als u ervoor kiest om de AD FS Rapid Restore-hulp programma te gebruiken, moet u Mini maal het Microsoft 365 identiteits platform Relying Party vertrouwen exporteren en alle gekoppelde aangepaste claim regels die u hebt toegevoegd. U kunt de Relying Party vertrouwens-en gekoppelde claim regels exporteren met behulp van het volgende Power shell-voor beeld:
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ In deze sectie worden de overwegingen voor implementatie en informatie over het 
 
 ### <a name="current-ad-fs-use"></a>Huidig AD FS gebruik
 
-Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u goed op hoe u momenteel AD FS voor Azure AD, Office 365 en andere toepassingen (Relying Party vertrouwens relaties) gebruikt. Bekijk in het bijzonder de scenario's die in de volgende tabel worden beschreven:
+Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u goed op hoe u momenteel AD FS voor Azure AD, Microsoft 365 en andere toepassingen (Relying Party vertrouwens relaties) gebruikt. Bekijk in het bijzonder de scenario's die in de volgende tabel worden beschreven:
 
 | Als | Kies |
 |-|-|
-| U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Office 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Office 365) en opnieuw voor alle toepassingen die nog AD FS als Relying Party vertrouwen. |
+| U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Microsoft 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Microsoft 365) en opnieuw voor alle toepassingen die nog steeds zijn gebonden aan AD FS als een Relying Party-vertrouwens relatie. |
 | Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het onload.js-bestand (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een UPN (User Principal Name), of uw organisatie de aanmeldings ervaring sterk merkt). Het onload.js bestand kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
-| U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
+| U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](../conditional-access/concept-conditional-access-conditions.md) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
 | U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure Multi-Factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige-gebruikers registratie-stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
-| U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Office 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
+| U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Microsoft 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Algemene AD FS aanpassingen
 
@@ -154,13 +154,13 @@ In deze sectie worden algemene AD FS aanpassingen beschreven.
 
 #### <a name="insidecorporatenetwork-claim"></a>Claim InsideCorporateNetwork
 
-AD FS wordt de **InsideCorporateNetwork** -claim uitgegeven als de gebruiker die de verificatie uitvoert, zich in het bedrijfs netwerk bevindt. Deze claim kan vervolgens worden door gegeven aan Azure AD. De claim wordt gebruikt om multi-factor Authentication over te slaan op basis van de netwerk locatie van de gebruiker. Zie [vertrouwde IP-adressen voor federatieve gebruikers](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)voor meer informatie over het bepalen of deze functionaliteit momenteel is ingeschakeld in AD FS.
+AD FS wordt de **InsideCorporateNetwork** -claim uitgegeven als de gebruiker die de verificatie uitvoert, zich in het bedrijfs netwerk bevindt. Deze claim kan vervolgens worden door gegeven aan Azure AD. De claim wordt gebruikt om multi-factor Authentication over te slaan op basis van de netwerk locatie van de gebruiker. Zie [vertrouwde IP-adressen voor federatieve gebruikers](../authentication/howto-mfa-adfs.md)voor meer informatie over het bepalen of deze functionaliteit momenteel is ingeschakeld in AD FS.
 
-De **InsideCorporateNetwork** -claim is niet beschikbaar nadat uw domeinen zijn geconverteerd naar wachtwoord-hash-synchronisatie. U kunt de [benoemde locaties in azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) gebruiken om deze functionaliteit te vervangen.
+De **InsideCorporateNetwork** -claim is niet beschikbaar nadat uw domeinen zijn geconverteerd naar wachtwoord-hash-synchronisatie. U kunt de [benoemde locaties in azure AD](../reports-monitoring/quickstart-configure-named-locations.md) gebruiken om deze functionaliteit te vervangen.
 
 Nadat u benoemde locaties hebt geconfigureerd, moet u alle beleids regels voor voorwaardelijke toegang bijwerken die zijn geconfigureerd voor het opnemen of uitsluiten van **alle vertrouwde locaties** of door **MFA vertrouwde IP-adressen** om de nieuwe benoemde locaties weer te geven.
 
-Zie [Active Directory locaties voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)voor meer informatie over de **locatie** voorwaarde in voorwaardelijke toegang.
+Zie [Active Directory locaties voor voorwaardelijke toegang](../conditional-access/location-condition.md)voor meer informatie over de **locatie** voorwaarde in voorwaardelijke toegang.
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hybride apparaten die deel uitmaken van Azure AD
 
@@ -170,16 +170,16 @@ Om ervoor te zorgen dat hybride samen werking blijft werken voor apparaten die l
 
 Voor Windows 8-en Windows 7-computer accounts gebruikt hybride deelname naadloze SSO om de computer te registreren in azure AD. U hoeft geen Windows 8-en Windows 7-computer accounts te synchroniseren zoals u dat voor Windows 10-apparaten kunt doen. U moet echter een bijgewerkt workplacejoin.exe-bestand (via een. msi-bestand) implementeren op Windows 8-en Windows 7-clients zodat ze zich kunnen registreren met naadloze SSO. [Down load het MSI-bestand](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Zie [Configure Hybrid Azure AD-joined devices](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)(Engelstalig) voor meer informatie.
+Zie [Configure Hybrid Azure AD-joined devices](../devices/hybrid-azuread-join-plan.md)(Engelstalig) voor meer informatie.
 
 #### <a name="branding"></a>Huisstijl
 
-Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
+Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](../fundamentals/customize-branding.md).
 
 Hoewel soort gelijke aanpassingen beschikbaar zijn, moeten sommige visuele wijzigingen op aanmeldings pagina's na de conversie worden verwacht. Mogelijk wilt u informatie geven over verwachte wijzigingen in uw communicatie met gebruikers.
 
 > [!NOTE]
-> De huis stijl van de organisatie is alleen beschikbaar als u de Premium-of basis licentie voor Azure Active Directory aanschaft of als u een Office 365-licentie hebt.
+> De huis stijl van de organisatie is alleen beschikbaar als u de Premium-of basis licentie voor Azure Active Directory aanschaft of als u een Microsoft 365 licentie hebt.
 
 ## <a name="plan-deployment-and-support"></a>Implementatie en ondersteuning plannen
 
@@ -194,7 +194,7 @@ Dit geldt alleen voor gebruikers die toegang hebben tot de services via een webb
 Moderne verificatie-clients (Office 2016-en Office 2013-, iOS-en Android-apps) gebruiken een geldig vernieuwings token om nieuwe toegangs tokens te verkrijgen voor verdere toegang tot resources, in plaats van terug te gaan naar AD FS. Deze clients zijn ongevoelig voor wachtwoord prompts die het resultaat zijn van het domein conversie proces. De clients blijven werken zonder dat er aanvullende configuratie is.
 
 > [!IMPORTANT]
-> Sluit uw AD FS omgeving niet af of verwijder de vertrouwde Office 365-Relying Party totdat u hebt gecontroleerd of alle gebruikers kunnen verifiëren met behulp van Cloud verificatie.
+> Sluit uw AD FS omgeving niet af of verwijder de Microsoft 365 Relying Party-vertrouwens relatie totdat u hebt gecontroleerd of alle gebruikers kunnen verifiëren met behulp van Cloud verificatie.
 
 ### <a name="plan-for-rollback"></a>Ongedaan maken plannen
 
@@ -211,7 +211,7 @@ Als u wilt terugdraaien, raadpleegt u de federatieve ontwerp-en implementatie do
 
 Een belang rijk onderdeel van de implementatie en ondersteuning van de planning zorgt ervoor dat uw gebruikers proactief op de hoogte worden gebracht van aanstaande wijzigingen. Gebruikers moeten vooraf weten wat ze kunnen ervaren en wat er nodig is. 
 
-Nadat de synchronisatie van wacht woord-hash en naadloze SSO zijn geïmplementeerd, is de gebruikers aanmelding voor toegang tot Office 365 en andere bronnen die worden geverifieerd via Azure AD-wijzigingen. Gebruikers die zich buiten het netwerk bevinden, zien alleen de aanmeldings pagina van Azure AD. Deze gebruikers worden niet omgeleid naar de op formulieren gebaseerde pagina die wordt gepresenteerd door externe Web Application proxy-servers.
+Nadat de synchronisatie van wacht woord-hash en naadloze SSO zijn geïmplementeerd, kan de gebruiker zich aanmelden om toegang te krijgen tot Microsoft 365 en andere bronnen die worden geverifieerd via Azure AD-wijzigingen. Gebruikers die zich buiten het netwerk bevinden, zien alleen de aanmeldings pagina van Azure AD. Deze gebruikers worden niet omgeleid naar de op formulieren gebaseerde pagina die wordt gepresenteerd door externe Web Application proxy-servers.
 
 Neem de volgende elementen op in uw communicatie strategie:
 
@@ -262,7 +262,7 @@ Als u wilt controleren of de synchronisatie van wacht woord-hash correct werkt, 
 6. Selecteer in het hoofd menu de optie **problemen met wachtwoord-hash-synchronisatie oplossen**.
 7. Selecteer in het submenu de optie **wacht woord-hash synchronisatie werkt helemaal niet**.
 
-Zie problemen met wachtwoord- [hash-synchronisatie met Azure AD Connect synchronisatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization)voor problemen oplossen.
+Zie problemen met wachtwoord- [hash-synchronisatie met Azure AD Connect synchronisatie oplossen](./tshoot-connect-password-hash-synchronization.md)voor problemen oplossen.
 
 ### <a name="step-2-prepare-for-seamless-sso"></a>Stap 2: bereid u voor op naadloze SSO
 
@@ -270,7 +270,7 @@ Als u wilt dat uw apparaten naadloze SSO gebruiken, moet u een Azure AD-URL toev
 
 Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http: \/ \/ Contoso/** wijst toe aan de intranet zone en **http: \/ \/ intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
 
-Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) te voeren.
+Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](./how-to-connect-sso-quick-start.md) te voeren.
 
 > [!IMPORTANT]
 > Als u deze wijziging aanbrengt, wordt de manier waarop uw gebruikers zich aanmelden bij Azure AD, niet gewijzigd. Het is echter belang rijk dat u deze configuratie toepast op al uw apparaten voordat u verdergaat. Gebruikers die zich aanmelden op apparaten die deze configuratie nog niet hebben ontvangen, moeten een gebruikers naam en wacht woord invoeren om zich aan te melden bij Azure AD.
@@ -431,14 +431,14 @@ De synchronisatie van wacht woord-hashes testen:
 3. De gebruiker wordt omgeleid en is aangemeld bij het toegangs venster:
 
    > [!NOTE]
-   > Naadloze SSO werkt op Office 365-services die ondersteuning bieden voor domein hints (bijvoorbeeld myapps.microsoft.com/contoso.com). De Office 365-Portal (portal.office.com) biedt momenteel geen ondersteuning voor domein hints. Gebruikers moeten een UPN opgeven. Nadat een UPN is ingevoerd, haalt naadloze SSO het Kerberos-ticket namens de gebruiker. De gebruiker is aangemeld zonder een wacht woord in te voeren.
+   > Naadloze SSO werkt op Microsoft 365 services die ondersteuning bieden voor domein hints (bijvoorbeeld myapps.microsoft.com/contoso.com). De Microsoft 365-Portal (portal.office.com) biedt momenteel geen ondersteuning voor domein hints. Gebruikers moeten een UPN opgeven. Nadat een UPN is ingevoerd, haalt naadloze SSO het Kerberos-ticket namens de gebruiker. De gebruiker is aangemeld zonder een wacht woord in te voeren.
 
    > [!TIP]
-   > Overweeg [Azure AD Hybrid join's te implementeren op Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) voor een verbeterde SSO-ervaring.
+   > Overweeg [Azure AD Hybrid join's te implementeren op Windows 10](../devices/overview.md) voor een verbeterde SSO-ervaring.
 
 ### <a name="remove-the-relying-party-trust"></a>De vertrouwens relatie van Relying Party verwijderen
 
-Nadat u hebt gecontroleerd of alle gebruikers en clients zijn geverifieerd via Azure AD, is het veilig om de Office 365 Relying Party-vertrouwens relatie te verwijderen.
+Nadat u hebt gecontroleerd of alle gebruikers en clients zijn geverifieerd via Azure AD, is het veilig om de Microsoft 365 Relying Party-vertrouwens relatie te verwijderen.
 
 Als u AD FS niet gebruikt voor andere doel einden (dat wil zeggen, voor andere Relying Party-vertrouwens relaties), is het veilig om AD FS op dit punt uit te voeren.
 
@@ -458,15 +458,15 @@ In het verleden worden updates van het kenmerk **userPrincipalName** , dat gebru
 * De gebruiker bevindt zich in een beheerd (niet-gefedereerde) identiteits domein.
 * Er is geen licentie toegewezen aan de gebruiker.
 
-Zie [Sync userPrincipalName updates](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features)(Engelstalig) voor meer informatie over het controleren of inschakelen van deze functie.
+Zie [Sync userPrincipalName updates](./how-to-connect-syncservice-features.md)(Engelstalig) voor meer informatie over het controleren of inschakelen van deze functie.
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
 Uw ondersteunings team moet weten hoe u problemen met verificatie kunt oplossen die zich voordoen tijdens of na de wijziging van Federatie naar beheerd. Gebruik de volgende documentatie voor probleem oplossing om uw ondersteunings team te helpen vertrouwd te raken met de veelvoorkomende stappen voor probleem oplossing en de juiste acties waarmee u het probleem kunt isoleren en oplossen.
 
-[Problemen met Azure Active Directory wachtwoord-hash-synchronisatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization)
+[Problemen met Azure Active Directory wachtwoord-hash-synchronisatie oplossen](./tshoot-connect-password-hash-synchronization.md)
 
-[Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sso)
+[Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen](./tshoot-connect-sso.md)
 
 ## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>Rolt over de naadloze SSO Kerberos-ontsleutelings sleutel
 
@@ -474,10 +474,10 @@ Het is belang rijk om regel matig over te brengen van de Kerberos-ontsleutelings
 
 Start de overschakeling van de versleutelings sleutel voor naadloze SSO Kerberos op de on-premises server waarop Azure AD Connect wordt uitgevoerd.
 
-Zie [Hoe kan ik roll over de Kerberos-ontsleutelings sleutel van het computer account van de AZUREADSSOACC?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq)voor meer informatie.
+Zie [Hoe kan ik roll over de Kerberos-ontsleutelings sleutel van het computer account van de AZUREADSSOACC?](./how-to-connect-sso-faq.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Azure AD Connect ontwerp concepten](plan-connect-design-concepts.md).
-* Kies de [juiste verificatie](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+* Kies de [juiste verificatie](./choose-ad-authn.md).
 * Meer informatie over [ondersteunde topologieën](plan-connect-design-concepts.md).

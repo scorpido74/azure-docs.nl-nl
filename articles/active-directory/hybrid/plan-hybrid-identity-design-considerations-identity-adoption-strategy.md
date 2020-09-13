@@ -1,6 +1,6 @@
 ---
 title: Ontwerp-strategie voor hybride identiteiten Azure | Microsoft Docs
-description: Met voorwaardelijk toegangs beheer controleert Azure Active Directory de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan. Zodra aan deze voor waarden wordt voldaan, wordt de gebruiker geverifieerd en krijgt deze toegang tot de toepassing.
+description: Met voorwaardelijk toegangs beheer controleert Azure AD de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555379"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659530"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor het implementeren van een hybride identiteit definiëren
 In deze taak definieert u de strategie voor het implementeren van de hybride identiteit voor uw hybride identiteits oplossing om te voldoen aan de bedrijfs vereisten die worden beschreven in:
@@ -32,7 +32,7 @@ In deze taak definieert u de strategie voor het implementeren van de hybride ide
 * [Vereisten voor multi-factor Authentication bepalen](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Strategie voor bedrijfs behoeften definiëren
-De eerste taak is een oplossing voor het bepalen van de bedrijfs behoeften van de organisatie.  Dit kan zeer breed zijn en bereik kneep kan zich voordoen als u niet voorzichtig bent.  Zorg er in het begin voor dat u het eenvoudig kunt plannen voor een ontwerp dat in de toekomst kan worden aangepast en eenvoudiger kan worden gewijzigd.  Of het nu gaat om een eenvoudig ontwerp of een extreem complex, Azure Active Directory is het micro soft Identity-platform dat ondersteuning biedt voor Office 365, micro soft Online Services en Cloud bewuste toepassingen.
+De eerste taak is een oplossing voor het bepalen van de bedrijfs behoeften van de organisatie.  Dit kan zeer breed zijn en bereik kneep kan zich voordoen als u niet voorzichtig bent.  Zorg er in het begin voor dat u het eenvoudig kunt plannen voor een ontwerp dat in de toekomst kan worden aangepast en eenvoudiger kan worden gewijzigd.  Of het nu gaat om een eenvoudig ontwerp of een extreem complex, Azure Active Directory is het micro soft Identity-platform dat ondersteuning biedt voor Microsoft 365, micro soft Online Services en Cloud bewuste toepassingen.
 
 ## <a name="define-an-integration-strategy"></a>Een integratie strategie definiëren
 Micro soft heeft drie belangrijkste integratie scenario's die Cloud-identiteiten, gesynchroniseerde identiteiten en federatieve identiteiten zijn.  U moet een van deze integratie strategieën plannen.  De strategie die u kiest, kan variëren en de beslissingen bij het kiezen van een van de mogelijkheden zijn, welk type gebruikers ervaring u wilt bieden, hebt u een bestaande infra structuur en wat is de meeste kosten effectief.  
@@ -77,7 +77,7 @@ De strategie die u gebruikt, bepaalt de aanmeldings ervaring van de gebruiker.  
 | --- | --- | --- |
 | Webbrowsers |Verificatie op basis van formulieren |Verificatie op basis van formulieren |
 | Outlook, Skype voor bedrijven (Lync), OneDrive voor bedrijven, Office-abonnement |Vragen om referenties |Vragen om referenties |
-| Exchange ActiveSync |Vragen om referenties |eenmalige aanmelding voor Lync, aanmeldings gegevens voor Exchange |
+| Exchange ActiveSync: |Vragen om referenties |eenmalige aanmelding voor Lync, aanmeldings gegevens voor Exchange |
 | Mobiele apps |Vragen om referenties |Vragen om referenties |
 
 Als u hebt vastgesteld van taak 1 dat u een IdP van derden hebt of als u een Federatie met Azure AD wilt gebruiken, moet u rekening houden met de volgende ondersteunde mogelijkheden:
@@ -171,7 +171,7 @@ Het volgende wordt niet ondersteund en moet niet worden gekozen als implementati
 * Azure AD-directory's zijn op ontwerp geïsoleerd. Het wordt niet ondersteund om de configuratie van Azure AD Connect Sync te wijzigen voor het lezen van gegevens uit een andere Azure AD-Directory in een poging om een gemeen schappelijke en Unified GAL te maken tussen de directory's. Het wordt ook niet ondersteund voor het exporteren van gebruikers als contact personen naar een andere on-premises AD-server met behulp van Azure AD Connect-synchronisatie.
 
 > [!NOTE]
-> Als uw organisatie toestaat dat computers in uw netwerk verbinding maken met internet, worden in dit artikel de eind punten (FQDN-namen, IPv4-en IPv6-adresbereiken) vermeld die u moet opnemen in uw lijst met uitgaande en Internet Explorer-vertrouwde websites van client computers om ervoor te zorgen dat uw computers Office 365 kunnen gebruiken. Lees voor meer informatie [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)adresbereiken.
+> Als uw organisatie toestaat dat computers in uw netwerk verbinding maken met internet, worden in dit artikel de eind punten (FQDN-namen, IPv4-en IPv6-adresbereiken) vermeld die u moet opnemen in uw lijst met uitgaande en Internet Explorer-vertrouwde sites van client computers om ervoor te zorgen dat uw computers Microsoft 365 kunnen gebruiken. Lees voor meer informatie [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)adresbereiken.
 > 
 > 
 
@@ -213,6 +213,6 @@ Multi-factor Authentication is standaard beschikbaar voor globale beheerders die
 ## <a name="next-steps"></a>Volgende stappen
 [Vereisten voor gegevens beveiliging bepalen](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

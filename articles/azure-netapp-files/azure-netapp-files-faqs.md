@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590367"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662459"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -49,6 +49,10 @@ Ja, u kunt, als u de vereiste DNS-vermeldingen maakt. Azure NetApp Files levert 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Kan ik mijn eigen IP-adres voor een Azure NetApp Files volume instellen of selecteren?  
 
 Nee. De IP-toewijzing aan Azure NetApp Files volumes is dynamisch. Toewijzing van statisch IP-adres wordt niet ondersteund. 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Ondersteunt Azure NetApp Files het VNet van dual stack (IPv4 en IPv6)?
+
+Nee, Azure NetApp Files biedt momenteel geen ondersteuning voor dual stack-VNet (IPv4 en IPv6).  
  
 ## <a name="security-faqs"></a>Veelgestelde vragen over beveiliging
 
@@ -66,10 +70,9 @@ Alle Azure NetApp Files volumes worden versleuteld met behulp van de FIPS 140-2-
 
 Sleutel beheer voor Azure NetApp Files wordt verwerkt door de service. Voor elk volume wordt een unieke XTS-AES-256-gegevens versleutelings sleutel gegenereerd. Een versleutelings sleutel hiërarchie wordt gebruikt om alle volume sleutels te versleutelen en te beveiligen. Deze versleutelings sleutels worden nooit weer gegeven of gerapporteerd in een niet-versleutelde indeling. Versleutelings sleutels worden direct verwijderd wanneer een volume wordt verwijderd.
 
-Ondersteuning voor door gebruikers beheerde sleutels (neem uw eigen sleutels mee) met behulp van de speciale HSM van Azure is beschikbaar op basis van een gecontroleerde toepassing in de regio's VS-Oost, VS-West2 en VS Zuid-Centraal.  U kunt toegang vragen op **anffeedback@microsoft.com** . Als capaciteit beschikbaar is, worden aanvragen goedgekeurd.
+Ondersteuning voor door de klant beheerde sleutels (Bring Your Own Key) met behulp van de speciale HSM van Azure is beschikbaar in de Verenigde Staten vs-Oost, Zuid-Centraal VS, VS-West 2 en US Gov-Virginia regio's. U kunt toegang vragen op [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) . Zodra de capaciteit beschikbaar komt, worden aanvragen goedgekeurd.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Kan ik de NFS-export beleids regels configureren om de toegang tot het Azure NetApp Files service-koppelings doel te beheren?
-
 
 Ja, u kunt Maxi maal vijf regels in één NFS-export beleid configureren.
 

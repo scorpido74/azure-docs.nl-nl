@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850166"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662356"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
@@ -37,7 +37,7 @@ Wanneer u de synchronisatieservices installeert, kunt de optie voor optionele co
 
 ![Vereiste onderdelen](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Optionele configuratie | Description |
+| Optionele configuratie | Beschrijving |
 | --- | --- |
 | Een bestaande SQL Server gebruiken |Hiermee kunt u de naam van de SQL Server en de exemplaarnaam opgeven. Kies deze optie als u al een databaseserver heeft die u wilt gebruiken. Voer de exemplaarnaam, gevolgd door een komma en poortnummer, in bij **Exemplaarnaam** als bladeren niet is ingeschakeld voor uw SQL Server.  Geef vervolgens de naam op van de Azure AD Connect-Data Base.  Uw SQL-bevoegdheden bepalen of er een nieuwe Data Base wordt gemaakt of dat de SQL-beheerder de data base vooraf moet maken.  Als u SQL-SA-machtigingen hebt, ziet u [hoe u kunt installeren met behulp van een bestaande data base](how-to-connect-install-existing-database.md).  Zie [Install Azure AD Connect with SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)(Engelstalig) als u bent gedelegeerde machtigingen (dbo). |
 | Een bestaand serviceaccount gebruiken |Azure AD Connect maakt standaard gebruik van een virtueel serviceaccount voor de synchronisatieservices. Als u een externe SQL-server gebruikt of een proxyserver waarvoor verificatie is vereist, hebt u een **beheerd serviceaccount** of een serviceaccount in het domein nodig en moet u het wachtwoord kennen. Voer in dat geval het te gebruiken account in. Zorg dat de gebruiker die de installatie uitvoert een SA in SQL is, zodat een aanmelding voor het serviceaccount kan worden aangemaakt.  Zie [Azure AD Connect accounts en machtigingen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>In de laatste versie kan de inrichting van de database out-of-band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met eigendomsrechten voor de database.  Raadpleeg [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen) voor meer informatie.|
@@ -48,12 +48,12 @@ Nadat de vereiste onderdelen zijn geïnstalleerd, wordt u gevraagd een eenmalige
 
 ![Aanmelding door een gebruiker](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Optie voor eenmalige aanmelding | Description |
+| Optie voor eenmalige aanmelding | Beschrijving |
 | --- | --- |
-| Wachtwoordhashsynchronisatie |Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken. De wachtwoorden van gebruikers worden gesynchroniseerd naar Azure AD als een wachtwoord-hash en verificatie vindt plaats in de cloud. Zie [Wachtwoordhashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie. |
-|Pass-through-verificatie|Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken.  Het wachtwoord van de gebruiker wordt doorgegeven aan de on-premises Active Directory-domeincontroller voor validatie.
-| Federatie met AD FS |Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken.  De gebruikers worden omgeleid naar hun on-premises AD FS-exemplaar om zich aan te melden en de verificatie vindt plaats on-premises. |
-| Federatie met PingFederate|Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken.  De gebruikers worden omgeleid naar hun on-premises exemplaar van PingFederate om zich aan te melden en de verificatie vindt on-premises plaats. |
+| Wachtwoordhashsynchronisatie |Gebruikers kunnen zich aanmelden bij micro soft-Cloud Services, zoals Microsoft 365, met hetzelfde wacht woord dat ze gebruiken in hun on-premises netwerk. De wachtwoorden van gebruikers worden gesynchroniseerd naar Azure AD als een wachtwoord-hash en verificatie vindt plaats in de cloud. Zie [Wachtwoordhashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie. |
+|Pass-through-verificatie|Gebruikers kunnen zich aanmelden bij micro soft-Cloud Services, zoals Microsoft 365, met hetzelfde wacht woord dat ze gebruiken in hun on-premises netwerk.  Het wachtwoord van de gebruiker wordt doorgegeven aan de on-premises Active Directory-domeincontroller voor validatie.
+| Federatie met AD FS |Gebruikers kunnen zich aanmelden bij micro soft-Cloud Services, zoals Microsoft 365, met hetzelfde wacht woord dat ze gebruiken in hun on-premises netwerk.  De gebruikers worden omgeleid naar hun on-premises AD FS-exemplaar om zich aan te melden en de verificatie vindt plaats on-premises. |
+| Federatie met PingFederate|Gebruikers kunnen zich aanmelden bij micro soft-Cloud Services, zoals Microsoft 365, met hetzelfde wacht woord dat ze gebruiken in hun on-premises netwerk.  De gebruikers worden omgeleid naar hun on-premises exemplaar van PingFederate om zich aan te melden en de verificatie vindt on-premises plaats. |
 | Niet configureren |Er is geen functie voor gebruikersaanmelding geïnstalleerd en geconfigureerd. Kies deze optie als u al een federatieserver van derden of een andere bestaande oplossing heeft. |
 |Eenmalige aanmelding inschakelen|Deze optie is beschikbaar bij zowel wachtwoord-hashsynchronisatie als pass-through-verificatie en biedt een eenmalige aanmelding voor desktopgebruikers binnen het bedrijfsnetwerk. Zie [Eenmalige aanmelding](how-to-connect-sso.md) voor meer informatie. </br>Deze optie is niet beschikbaar voor AD FS-klanten omdat AD FS hetzelfde niveau van eenmalige aanmelding biedt.</br>
 
@@ -79,7 +79,7 @@ Azure AD Connect heeft de forestnaam en de referenties van een account met de ju
 
 Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt een pop-upvenster met de volgende opties weergegeven:
 
-| Optie | Description |
+| Optie | Beschrijving |
 | --- | --- |
 | Nieuw account maken | Selecteer deze optie als u wilt dat de Azure AD Connect-wizard het AD DS-account maakt dat Azure AD Connect nodig heeft om verbinding te maken met de AD-forest tijdens directorysynchronisatie. Voer wanneer deze optie is geselecteerd de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. Het opgegeven enterprisebeheerdersaccount wordt door de Azure AD Connect-wizard gebruikt om het vereiste AD DS-account te maken. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. |
 | Bestaand account gebruiken | Selecteer deze optie als u wilt toestaan dat een bestaand AD DS-account wordt gebruikt door Azure AD Connect om verbinding te maken met de AD-forest tijdens directorysynchronisatie. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\syncuser of fabrikam.com\syncuser. Dit account mag een normaal gebruikersaccount zijn, omdat alleen de standaard leesmachtigingen nodig zijn. Afhankelijk van uw scenario heeft u echter mogelijk meer machtigingen nodig. Zie [Azure AD Connect Accounts and permissions](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account) voor meer informatie. |
@@ -95,15 +95,15 @@ Vanaf build 1.4.18.0 wordt niet meer ondersteund voor het gebruik van een ondern
 Op deze pagina kunt u bekijken welke UPN-domeinen zich in de on-premises AD DS bevinden en in Azure AD zijn geverifieerd. Daarnaast kunt u op deze pagina het kenmerk configureren dat voor de userPrincipalName moet worden gebruikt.
 
 ![Niet-geverifieerde domeinen](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
-Bekijk elk domein waarbij **Niet toegevoegd** en **Niet geverifieerd** staat. Zorg ervoor dat de domeinen die u gebruikt in Azure AD zijn geverifieerd. Klik op het symbool Vernieuwen wanneer u uw domeinen hebt geverifieerd. Zie voor meer informatie [add and verify the domain](../active-directory-domains-add-azure-portal.md)
+Bekijk elk domein waarbij **Niet toegevoegd** en **Niet geverifieerd** staat. Zorg ervoor dat de domeinen die u gebruikt in Azure AD zijn geverifieerd. Klik op het symbool Vernieuwen wanneer u uw domeinen hebt geverifieerd. Zie voor meer informatie [add and verify the domain](../fundamentals/add-custom-domain.md)
 
-**UserPrincipalName** - Met het kenmerk userPrincipalName melden gebruikers zich aan bij Azure AD en Office 365. De gebruikte domeinen, ook wel het UPN-achtervoegsel genoemd, moeten worden geverifieerd in Azure AD voordat de gebruikers worden gesynchroniseerd. Het wordt door Microsoft aangeraden om het standaardkenmerk userPrincipalName te behouden. Als dit kenmerk niet-routeerbaar is en niet kan worden geverifieerd, dan kunt u een ander kenmerk selecteren. U kunt bijvoorbeeld e-mail selecteren als het kenmerk met het aanmeldings-id. Het gebruik van een ander kenmerk dan userPrincipalName wordt **alternatieve id** genoemd. De waarde van het alternatieve-id-kenmerk moet aan de standaard RFC822 voldoen. Een alternatieve ID kan worden gebruikt met wachtwoord-hashsynchronisatie, pass-through-verificatie en federatie. Het kenmerk mag in Active Directory niet met meerdere waarden worden gedefinieerd, zelfs als het slechts één waarde heeft. Zie het onderwerp [Veelgestelde vragen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname) voor meer informatie over de alternatieve id.
+**UserPrincipalName** -het kenmerk userPrincipalName wordt gebruikt wanneer de gebruiker zich aanmeldt bij Azure AD en Microsoft 365. De gebruikte domeinen, ook wel het UPN-achtervoegsel genoemd, moeten worden geverifieerd in Azure AD voordat de gebruikers worden gesynchroniseerd. Het wordt door Microsoft aangeraden om het standaardkenmerk userPrincipalName te behouden. Als dit kenmerk niet-routeerbaar is en niet kan worden geverifieerd, dan kunt u een ander kenmerk selecteren. U kunt bijvoorbeeld e-mail selecteren als het kenmerk met het aanmeldings-id. Het gebruik van een ander kenmerk dan userPrincipalName wordt **alternatieve id** genoemd. De waarde van het alternatieve-id-kenmerk moet aan de standaard RFC822 voldoen. Een alternatieve ID kan worden gebruikt met wachtwoord-hashsynchronisatie, pass-through-verificatie en federatie. Het kenmerk mag in Active Directory niet met meerdere waarden worden gedefinieerd, zelfs als het slechts één waarde heeft. Zie het onderwerp [Veelgestelde vragen](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname) voor meer informatie over de alternatieve id.
 
 >[!NOTE]
 > Als u Pass-through-verificatie inschakelt, moet u ten minste één geverifieerd domein hebben om de wizard te voltooien.
 
 > [!WARNING]
-> Het gebruik van een alternatieve id is niet met alle Office 365-werkbelastingen compatibel. Zie [Alternatieve aanmeldings-id configureren](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+> Het gebruik van een alternatieve ID is niet compatibel met alle Microsoft 365 workloads. Zie [Alternatieve aanmeldings-id configureren](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 >
 >
 
@@ -174,14 +174,14 @@ In dit scherm kunt u de optionele functies voor uw specifieke scenario's selecte
 
 
 
-| Optionele functies | Description |
+| Optionele functies | Beschrijving |
 | --- | --- |
-| Hybride implementatie voor Exchange |Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set [kenmerken](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) vanuit Azure AD naar uw on-premises directory. |
+| Hybride implementatie voor Exchange |Met de functie voor hybride implementatie van Exchange kunnen Exchange-post vakken zowel on-premises als in Microsoft 365 naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set [kenmerken](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) vanuit Azure AD naar uw on-premises directory. |
 | Openbare e-mailmappen van Exchange | Met de functie Openbare e-mailmappen van Exchange kunt u de voor e-mail ingeschakelde openbare mapobjecten van Active Directory synchroniseren naar Azure AD. |
 | Azure AD-app- en -kenmerkfilters |Door de Azure AD-app- en -kenmerkfilters in te schakelen kan de set gesynchroniseerde kenmerken worden aangepast. Door deze optie worden twee extra configuratiepagina’s aan de wizard toegevoegd. Zie voor meer informatie [Azure AD app and attribute filtering](#azure-ad-app-and-attribute-filtering). |
 | Synchronisatie van wachtwoord-hashes |Als u federatie als de oplossing voor aanmelden hebt geselecteerd, dan kunt u deze optie inschakelen. Synchronisatie van wachtwoord-hashes kan vervolgens als een back-upoptie worden gebruikt. Zie [Wachtwoord-hashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie. </br></br>Als u Pass-through-verificatie hebt geselecteerd, kan deze optie ook worden ingeschakeld als ondersteuning voor verouderde clients en als back-upoptie. Zie [Wachtwoord-hashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie.|
-| Wachtwoord terugschrijven |Door wachtwoord terugschrijven in te schakelen worden wachtwoordwijzigingen in Azure AD teruggeschreven naar uw on-premises directory. Zie voor meer informatie [Getting started with password management](../authentication/quickstart-sspr.md). |
-| Groep terugschrijven |Als u de functie **Office 365-groepen** gebruikt, dan kunnen deze groepen in uw on-premises Active Directory worden weergegeven. Deze optie is alleen beschikbaar als Exchange in uw on-premises Active Directory aanwezig is. Zie [Azure AD Connect groep terugschrijven](how-to-connect-group-writeback.md) voor meer informatie|
+| Wachtwoord terugschrijven |Door wachtwoord terugschrijven in te schakelen worden wachtwoordwijzigingen in Azure AD teruggeschreven naar uw on-premises directory. Zie voor meer informatie [Getting started with password management](../authentication/tutorial-enable-sspr.md). |
+| Groep terugschrijven |Als u de functie **groepen Microsoft 365** gebruikt, kunt u deze groepen weer gegeven in uw on-premises Active Directory. Deze optie is alleen beschikbaar als Exchange in uw on-premises Active Directory aanwezig is. Zie [Azure AD Connect groep terugschrijven](how-to-connect-group-writeback.md) voor meer informatie|
 | Apparaat terugschrijven |Hiermee kunt u objecten in azure AD terugschrijven naar uw on-premises Active Directory voor scenario's voor voorwaardelijke toegang. Zie voor meer informatie [Enabling device writeback in Azure AD Connect](how-to-connect-device-writeback.md). |
 | Synchronisatie van directory-extensiekenmerken |Door synchronisatie van directory-extensiekenmerken in te schakelen worden de opgegeven kenmerken gesynchroniseerd naar Azure AD. Zie voor meer informatie [Directory extensions](how-to-connect-sync-feature-directory-extensions.md). |
 
@@ -303,7 +303,7 @@ Deze configuratie wordt gebruikt voor het instellen van de federatieverbinding t
 ![Azure AD-domein](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Controleer het Azure AD-domein dat voor federatie is geselecteerd
-Wanneer u het te federeren domein selecteert, geeft Azure AD Connect u de informatie die u nodig heeft om een niet-geverifieerd domein te verifiëren. Zie [Add and verify the domain](../active-directory-domains-add-azure-portal.md) om uit te vinden hoe deze informatie gebruikt moet worden.
+Wanneer u het te federeren domein selecteert, geeft Azure AD Connect u de informatie die u nodig heeft om een niet-geverifieerd domein te verifiëren. Zie [Add and verify the domain](../fundamentals/add-custom-domain.md) om uit te vinden hoe deze informatie gebruikt moet worden.
 
 ![Azure AD-domein](./media/how-to-connect-install-custom/verifyfeddomain.png)
 
@@ -314,7 +314,7 @@ Wanneer u het te federeren domein selecteert, geeft Azure AD Connect u de inform
 
 ## <a name="configuring-federation-with-pingfederate"></a>Federatie configureren met PingFederate
 PingFederate is heel eenvoudig met een paar muisklikken met Azure AD Connect te configureren. Er moet echter wel aan de volgende voorwaarden worden voldaan.
-- PingFederate 8.4 of hoger.  Zie het Engelstalige artikel [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) voor meer informatie.
+- PingFederate 8.4 of hoger.  Zie [PingFederate-integratie met Azure Active Directory en Microsoft 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) voor meer informatie
 - Een TLS/SSL-certificaat voor de naam van de Federation-service die u wilt gebruiken (bijvoorbeeld sts.contoso.com)
 
 ### <a name="verify-the-domain"></a>Het domein verifiëren

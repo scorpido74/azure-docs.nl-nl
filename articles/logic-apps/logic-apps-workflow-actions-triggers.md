@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423266"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662300"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -145,11 +145,11 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 | <*query-para meters*> | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep. Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanroep. | 
 | <*Max-uitvoeringen*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*Max-uitvoeringen-wachtrij*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de eigenschap kunt wijzigen `runtimeConfiguration.concurrency.runs` , worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*splitOn-expressie*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
+| <*splitOn-expressie*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger: `@triggerbody()?['value']` |
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 ||||
 
-*Uitvoer*
+*Uitvoerwaarden*
  
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -160,7 +160,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 
 *Voorbeeld*
 
-Deze trigger definitie controleert voor elke dag in het postvak in het e-mail adres voor een Office 365 Outlook-account:
+Deze trigger definitie controleert voor elke dag in het postvak in het e-mail adres voor een werk-of school account:
 
 ```json
 "When_a_new_email_arrives": {
@@ -235,7 +235,7 @@ Deze trigger verzendt een abonnements aanvraag naar een eind punt met behulp van
 | <*query-para meters*> | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep <p>Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanroep. |
 | <*Max-uitvoeringen*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). |
 | <*Max-uitvoeringen-wachtrij*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u op basis van de eigenschap kunt wijzigen `runtimeConfiguration.concurrency.runs` , worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*splitOn-expressie*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger:`@triggerbody()?['value']` |
+| <*splitOn-expressie*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger: `@triggerbody()?['value']` |
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
@@ -302,7 +302,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 
 *Vereist*
 
-| Eigenschap | Waarde | Type | Description |
+| Eigenschap | Waarde | Type | Beschrijving |
 |----------|-------|------|-------------|
 | `method` | <*methode-type*> | Tekenreeks | De methode die moet worden gebruikt voor het verzenden van de uitgaande aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' |
 | `uri` | <*HTTP-of-HTTPS-eind punt-URL*> | Tekenreeks | De URL van het HTTP-of HTTPS-eind punt waarnaar u de uitgaande aanvraag wilt verzenden. Maximale teken reeks grootte: 2 KB <p>Voor een Azure-service of-resource bevat deze URI-syntaxis de resource-ID en het pad naar de resource die u wilt openen. |
@@ -312,7 +312,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 
 *Optioneel*
 
-| Eigenschap | Waarde | Type | Description |
+| Eigenschap | Waarde | Type | Beschrijving |
 |----------|-------|------|-------------|
 | `headers` | <*header-inhoud*> | JSON-object | Alle kopteksten die u moet toevoegen met de aanvraag <p>Als u bijvoorbeeld de taal en het type wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*query-para meters*> | JSON-object | Alle query parameters die u moet gebruiken in de aanvraag <p>Het `"queries": { "api-version": "2018-01-01" }` object wordt bijvoorbeeld toegevoegd `?api-version=2018-01-01` aan de aanvraag. |
@@ -324,9 +324,9 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 | `operationOptions` | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 |||||
 
-*Uitvoer*
+*Uitvoerwaarden*
 
-| Element | Type | Description |
+| Element | Type | Beschrijving |
 |---------|------|-------------|
 | `headers` | JSON-object | De kopteksten van het antwoord |
 | `body` | JSON-object | De hoofd tekst van de reactie |
@@ -339,9 +339,9 @@ Voor een goede samen werking met uw logische app moet het eind punt voldoen aan 
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| Statuscode | Ja | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
-| Header opnieuw proberen na | Nee | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
-| Locatie header | Nee | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
+| Statuscode | Yes | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
+| Header opnieuw proberen na | No | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
+| Locatie header | No | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
 |||| 
 
 *Voorbeeld gedrag voor verschillende aanvragen*
@@ -418,7 +418,7 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de- `"subsc
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
-*Uitvoer* 
+*Uitvoerwaarden* 
 
 | Element | Type | Beschrijving |
 |---------|------|-------------| 
@@ -819,9 +819,9 @@ Hier volgen enkele veelgebruikte actie typen:
 
 | Actietype | Beschrijving | 
 |-------------|-------------| 
-| [**Compose**](#compose-action) | Hiermee maakt u één uitvoer van invoer, die verschillende typen kan hebben. | 
+| [**Opstellen**](#compose-action) | Hiermee maakt u één uitvoer van invoer, die verschillende typen kan hebben. | 
 | [**Java script-code uitvoeren**](#run-javascript-code) | Java script-code fragmenten uitvoeren die binnen specifieke criteria passen. Zie [code fragmenten toevoegen en uitvoeren met inline code](../logic-apps/logic-apps-add-run-inline-code.md)voor code vereisten en meer informatie. |
-| [**Functieassembly**](#function-action) | Hiermee wordt een Azure-functie aangeroepen. | 
+| [**Functie**](#function-action) | Hiermee wordt een Azure-functie aangeroepen. | 
 | [**HTTP**](#http-action) | Hiermee wordt een HTTP-eind punt aangeroepen. | 
 | [**Koppelen**](#join-action) | Hiermee maakt u een teken reeks van alle items in een matrix en scheidt u deze items met een opgegeven scheidings teken. | 
 | [**JSON parseren**](#parse-json-action) | Maakt gebruikers vriendelijke tokens van eigenschappen in JSON-inhoud. U kunt vervolgens naar die eigenschappen verwijzen door de tokens in uw logische app op te nemen. | 
@@ -830,7 +830,7 @@ Hier volgen enkele veelgebruikte actie typen:
 | [**Selecteer**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
 | [**Tabel**](#table-action) | Hiermee maakt u een CSV-of HTML-tabel op basis van een matrix. | 
 | [**Terminate**](#terminate-action) | Stopt een actief actieve werk stroom. | 
-| [**Wait**](#wait-action) | Hiermee wordt uw werk stroom onderbroken voor een opgegeven duur of tot de opgegeven datum en tijd. | 
+| [**Bewerking**](#wait-action) | Hiermee wordt uw werk stroom onderbroken voor een opgegeven duur of tot de opgegeven datum en tijd. | 
 | [**Werkstroom**](#workflow-action) | Nest een werk stroom in een andere werk stroom. | 
 ||| 
 
@@ -1010,7 +1010,7 @@ Met deze actie maakt u één uitvoer van meerdere invoer, met inbegrip van expre
 
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
-| <*invoer-naar-opstellen*> | Alle | De invoer voor het maken van één uitvoer | 
+| <*invoer-naar-opstellen*> | Elk | De invoer voor het maken van één uitvoer | 
 |||| 
 
 *Voorbeeld 1*
@@ -1101,7 +1101,7 @@ Met deze actie wordt code uitgevoerd waarmee de naam van de logische app wordt o
 
 *Voorbeeld 2*
 
-Met deze actie wordt code uitgevoerd in een logische app die wordt geactiveerd wanneer een nieuwe e-mail binnenkomt in een Office 365 Outlook-account. De logische app maakt ook gebruik van een e-mail actie voor het verzenden van goed keuring die de inhoud van de ontvangen e-mail samen met een aanvraag voor goed keuring doorstuurt.
+Met deze actie wordt code uitgevoerd in een logische app die wordt geactiveerd wanneer een nieuwe e-mail binnenkomt in een werk-of school account. De logische app maakt ook gebruik van een e-mail actie voor het verzenden van goed keuring die de inhoud van de ontvangen e-mail samen met een aanvraag voor goed keuring doorstuurt.
 
 De code extraheert de e-mail adressen uit de eigenschap van de trigger `Body` en retourneert de adressen samen met de `SelectedOption` eigenschaps waarde van de goedkeurings actie. De actie bevat expliciet de actie goedkeurings-e-mail verzenden als een afhankelijkheid in het `explicitDependencies`  >  `actions` kenmerk.
 
@@ -1288,7 +1288,7 @@ Stel dat u een eerder gemaakte variabele ' myIntegerArray ' hebt die deze matrix
 
 `[1,2,3,4]` 
 
-Deze actie definitie haalt de waarden van de variabele op met behulp van de `variables()` functie in een expressie en maakt deze teken reeks met deze waarden, gescheiden door een komma:`"1,2,3,4"`
+Deze actie definitie haalt de waarden van de variabele op met behulp van de `variables()` functie in een expressie en maakt deze teken reeks met deze waarden, gescheiden door een komma: `"1,2,3,4"`
 
 ```json
 "Join": {
@@ -1330,7 +1330,7 @@ Met deze actie worden gebruikers vriendelijke velden of *tokens* gemaakt op basi
 
 Deze actie definitie maakt deze tokens die u in uw werk stroom kunt gebruiken, maar alleen in acties die worden uitgevoerd na de actie **JSON parseren** :
 
-`FirstName`, `LastName` en`Email`
+`FirstName`, `LastName` en `Email`
 
 ```json
 "Parse_JSON": {
@@ -1649,7 +1649,7 @@ Als u kolom koppen en-waarden wilt opgeven of aanpassen, gebruikt u de `columns`
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
 | <*kolom naam*> | Tekenreeks | De naam van de header voor een kolom | 
-| <*kolom-waarde*> | Alle | De waarde in die kolom | 
+| <*kolom-waarde*> | Elk | De waarde in die kolom | 
 |||| 
 
 *Voorbeeld 1*
@@ -1909,7 +1909,7 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 | <*hoofd tekst: inhoud*> | JSON-object | Bericht inhoud die met de aanroep moet worden verzonden | 
 ||||
 
-*Uitvoer*
+*Uitvoerwaarden*
 
 De uitvoer van deze actie verschilt op basis van de reactie actie van de geneste logische app. Als de geneste logische app geen reactie actie bevat, zijn de uitvoer leeg.
 

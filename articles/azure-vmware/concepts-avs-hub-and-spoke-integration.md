@@ -2,13 +2,13 @@
 title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in een hub-en spoke-architectuur'
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/09/2020
+ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684490"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659203"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
@@ -24,9 +24,9 @@ In het hub-en-spoke-scenario wordt uitgegaan van een hybride cloud omgeving met 
 
 De *hub* is een Azure-Virtual Network die fungeert als een centraal punt van connectiviteit met uw on-premises en Azure VMware-oplossing privécloud. De *spokes* zijn virtuele netwerken die zijn gekoppeld aan de hub om intervirtuele netwerk communicatie in te scha kelen.
 
-Verkeer tussen het on-premises Data Center, de privécloud van Azure VMware-oplossing en de hub gaat via ExpressRoute-verbindingen. Spoke Virtual Networks bevatten doorgaans IaaS werk belastingen, maar kunnen PaaS-services zoals [app service Environment](../app-service/environment/intro.md)hebben, die directe integratie met Virtual Network hebben, of andere PaaS-services waarvoor [Azure private link](../private-link/index.yml) is ingeschakeld. 
+Verkeer tussen het on-premises Data Center, de privécloud van Azure VMware-oplossing en de hub loopt via Azure ExpressRoute-verbindingen. Spoke Virtual Networks bevatten doorgaans IaaS werk belastingen, maar kunnen PaaS-services zoals [app service Environment](../app-service/environment/intro.md)hebben, die directe integratie met Virtual Network hebben, of andere PaaS-services waarvoor [Azure private link](../private-link/index.yml) is ingeschakeld.
 
-In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en Azure VMware-oplossing via ExpressRoute.
+In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en Azure VMware-oplossing via ExpressRoute Global Reach.
 
 :::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
 
@@ -36,10 +36,14 @@ De architectuur heeft de volgende hoofd onderdelen:
 
 -   **Privécloud van Azure VMware-oplossing:** Azure VMware-oplossing SDDC gevormd door een of meer vSphere-clusters, elk met Maxi maal 16 knoop punten.
 
--   **ExpressRoute-gateway:** Hiermee schakelt u de communicatie tussen de privécloud-oplossing van Azure VMware, het on-premises netwerk, gedeelde services op het virtuele hub-netwerk en workloads die worden uitgevoerd op spoke virtuele netwerken.
+-   **ExpressRoute-gateway:** Hiermee schakelt u de communicatie tussen de privécloud-oplossing van Azure VMware, gedeelde services op het virtuele hub-netwerk en workloads die worden uitgevoerd op spoke virtuele netwerken.
 
-    > [!NOTE]
-    > **Overwegingen voor S2S-VPN:** Voor implementaties van Azure VMware-oplossingen worden Azure S2S niet ondersteund vanwege netwerk vereisten voor HCX. Voor een haalbaarheids test of een niet-productie-implementatie die geen HCX vereist, kan deze echter worden gebruikt.
+-   **ExpressRoute Global Reach:** Hiermee schakelt u de connectiviteit tussen on-premises en Azure VMware-oplossing privécloud.
+
+
+  > [!NOTE]
+  > **Overwegingen voor S2S-VPN:** Voor implementaties van Azure VMware-oplossingen productie wordt Azure S2S VPN niet ondersteund vanwege netwerk vereisten voor VMware-HCX. Het kan echter worden gebruikt voor een haalbaarheids implementatie.
+
 
 -   **Virtueel netwerk hub:** Fungeert als het centrale punt van connectiviteit naar uw on-premises netwerk en Azure VMware-oplossing privécloud.
 
@@ -49,7 +53,7 @@ De architectuur heeft de volgende hoofd onderdelen:
 
     -   **PaaS Spaak:** Een PaaS Spaak fungeert als host voor Azure PaaS Services met privé-adres Sering dankzij het [persoonlijke eind punt](../private-link/private-endpoint-overview.md) en de [persoonlijke koppeling](../private-link/private-link-overview.md).
 
--   **Azure firewall:** Fungeert als het centrale stuk om het verkeer tussen de spokes, de on-premises en de Azure VMware-oplossing te segmenteren.
+-   **Azure firewall:** Fungeert als het centrale stuk om het verkeer tussen de spokes en de Azure VMware-oplossing te segmenteren.
 
 -   **Application Gateway:** Beschrijft en beveiligt web-apps die worden uitgevoerd op Azure IaaS/PaaS of virtuele machines met Azure VMware-oplossingen. Het is geïntegreerd met andere services, zoals API Management.
 
@@ -57,7 +61,7 @@ De architectuur heeft de volgende hoofd onderdelen:
 
 Met ExpressRoute-verbindingen kunnen verkeer tussen on-premises, Azure VMware-oplossingen en de Azure-netwerk infrastructuur worden geplaatst. De Azure VMware-oplossing maakt gebruik van [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) voor het implementeren van deze verbinding.
 
-On-premises connectiviteit kan ook gebruikmaken van ExpressRoute Global Reach, maar dit is niet verplicht.
+Omdat een ExpressRoute-gateway geen transitieve route ring biedt tussen de verbonden circuits, moet on-premises connectiviteit ook ExpressRoute Global Reach gebruiken om te communiceren tussen de on-premises vSphere-omgeving en de Azure VMware-oplossing. 
 
 * **Verkeers stroom van on-premises naar Azure VMware-oplossing**
 
@@ -69,11 +73,11 @@ On-premises connectiviteit kan ook gebruikmaken van ExpressRoute Global Reach, m
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware-oplossing voor het hub-verkeer van virtuele netwerken" border="false":::
 
 
-Meer informatie over Azure VMware Solution Network-en interconnectiviteit-concepten vindt u in de [product documentatie van de Azure VMware-oplossing](./concepts-networking.md).
+Meer informatie over de netwerk-en connectiviteits concepten van Azure VMware Solution vindt u in de [product documentatie van de Azure VMware-oplossing](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Segmentatie van verkeer
 
-[Azure firewall](../firewall/index.yml) is het centrale gedeelte van de hub-en spoke-topologie, geïmplementeerd op het virtuele hub-netwerk. Gebruik Azure Firewall of een ander door Azure ondersteund virtueel netwerk apparaat voor het instellen van verkeers regels en Segmenteer de communicatie tussen de verschillende spokes, on-premises en Azure VMware Solution-werk belastingen.
+[Azure firewall](../firewall/index.yml) is het centrale gedeelte van de hub-en spoke-topologie, geïmplementeerd op het virtuele hub-netwerk. Gebruik Azure Firewall of een ander door Azure ondersteund virtueel netwerk apparaat om verkeers regels vast te leggen en de communicatie tussen de verschillende spokes en de workloads van Azure VMware-oplossingen te segmenteren.
 
 Maak route tabellen om het verkeer naar Azure Firewall te sturen.  Voor de spoke-virtuele netwerken maakt u een route waarmee de standaard route wordt ingesteld op de interne interface van Azure Firewall, op deze manier wanneer een werk belasting in de Virtual Network de adres ruimte van de Azure VMware-oplossing moet bereiken, kan de firewall deze evalueren en de bijbehorende verkeers regel Toep assen om deze toe te staan of te weigeren.  
 
@@ -83,16 +87,20 @@ Maak route tabellen om het verkeer naar Azure Firewall te sturen.  Voor de spoke
 > [!IMPORTANT]
 > Een route met het adres voorvoegsel 0.0.0.0/0 voor de **GatewaySubnet** -instelling wordt niet ondersteund.
 
-Routes instellen voor specifieke netwerken op de bijbehorende route tabel. Bijvoorbeeld: routes voor het bereiken van Azure VMware-oplossings beheer en workloads IP-voor voegsels van on-premises en andersom, routeren alle verkeer van on-premises naar Azure VMware-oplossing privécloud via Azure Firewall.
+Routes instellen voor specifieke netwerken op de bijbehorende route tabel. Bijvoorbeeld: routes voor het bereiken van Azure VMware-oplossings beheer en werkbelastingen IP-voor voegsels van de spoke-workloads en vice versa.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Routes instellen voor specifieke netwerken op de bijbehorende route tabel":::
 
-Een tweede niveau van Traffic segmentatie met behulp van de netwerk beveiligings groepen binnen de spokes en de hub om een meer gedetailleerd verkeers beleid te maken. 
+Een tweede niveau van Traffic segmentatie met behulp van de netwerk beveiligings groepen binnen de spokes en de hub om een meer gedetailleerd verkeers beleid te maken.
 
+> [!NOTE]
+> **Verkeer van on-premises naar Azure VMware-oplossing:** Verkeer tussen on-premises workloads, ofwel vSphere of anderen, wordt ingeschakeld door Global Reach, maar het verkeer gaat niet via Azure Firewall op de hub. In dit scenario moet u segmentatie mechanismen voor verkeer on-premises of in de Azure VMware-oplossing implementeren.
 
 ### <a name="application-gateway"></a>Application Gateway
 
 Azure-toepassing gateway v1 en v2 zijn getest met web apps die worden uitgevoerd op virtuele machines uit de Azure VMware-oplossing als back-end-groep. Application Gateway is momenteel de enige methode die wordt ondersteund om web-apps die worden uitgevoerd op virtuele machines van Azure VMware-oplossingen, beschikbaar te maken op internet. Ook kunnen de apps veilig worden blootgesteld aan interne gebruikers.
+
+Bekijk het specifieke artikel over de Azure VMware-oplossing op [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) voor de details en vereisten.
 
 :::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Tweede niveau van verkeers segmentatie met behulp van de netwerk beveiligings groepen" border="false":::
 
@@ -137,8 +145,6 @@ On-premises en Azure VMware-oplossingen kunnen worden geconfigureerd met voorwaa
 Voor identiteits doeleinden is de beste benadering om ten minste één AD-domein controller op de hub te implementeren, met behulp van het subnet van de gedeelde service, in het ideale niveau twee in een zone-gedistribueerde mode of een VM-beschikbaarheidsset. Zie [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) voor het uitbreiden van uw on-PREMISes AD-domein naar Azure.
 
 Implementeer daarnaast een andere domein controller op de Azure VMware-oplossing zijde om als identiteits-en DNS-bron binnen de vSphere omgeving te fungeren.
-
-Voor vCenter en SSO stelt u een identiteits bron in het Azure Portal in, op identiteits-identiteits ** \> \> bronnen beheren**.
 
 Als aanbevolen best practice kunt u het [AD-domein integreren met Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad).
 

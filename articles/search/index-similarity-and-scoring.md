@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924483"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662261"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Gelijkenis en score in azure Cognitive Search
 
@@ -40,7 +40,7 @@ Een score profiel maakt deel uit van de definitie van de index, die bestaat uit 
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>Score statistieken en plak sessies
 
-Voor schaal baarheid distribueert Azure Cognitive Search elke index horizon taal via een sharding-proces, wat betekent dat delen van een index fysiek gescheiden zijn.
+Voor schaal baarheid distribueert Azure Cognitive Search elke index horizon taal via een sharding-proces, wat betekent dat [delen van een index fysiek gescheiden zijn](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 De Score van een document wordt standaard berekend op basis van de statistische eigenschappen van de gegevens *in een Shard*. Deze aanpak is over het algemeen geen probleem voor een grote hoeveelheid gegevens verzameling en levert betere prestaties dan het berekenen van de score op basis van informatie over alle Shards. Dit zou ertoe kunnen leiden dat met behulp van deze prestatie optimalisatie twee zeer vergelijk bare documenten (of zelfs identieke documenten) worden opgedeeld als ze in verschillende Shards eindigen op verschillende relevantie scores.
 

@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356862"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662382"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen
 De Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) is een hoofd onderdeel van Azure AD Connect. Het zorgt voor alle bewerkingen die betrekking hebben op het synchroniseren van identiteits gegevens tussen uw on-premises omgeving en Azure AD. Azure AD Connect Sync is de opvolger van DirSync, Azure AD Sync en Forefront Identity Manager met de Azure Active Directory connector geconfigureerd.
@@ -52,19 +52,19 @@ De synchronisatie service bestaat uit twee onderdelen: het on-premises **Azure A
 | [Hash-synchronisatie voor wacht woord implementeren](how-to-connect-password-hash-synchronization.md) |Hierin wordt beschreven hoe wachtwoord synchronisatie werkt, hoe u kunt implementeren en hoe u deze kunt gebruiken en oplossen. |
 | [Apparaat terugschrijven](how-to-connect-device-writeback.md) |Hierin wordt beschreven hoe write-back van apparaten werkt in Azure AD Connect. |
 | [Uitbreidingen van de directory](how-to-connect-sync-feature-directory-extensions.md) |Hierin wordt beschreven hoe u het Azure AD-schema uitbreidt met uw eigen aangepaste kenmerken. |
-| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Hierin wordt beschreven hoe u de Office 365-resources van de gebruiker in dezelfde regio als de gebruiker plaatst. |
+| [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Hierin wordt beschreven hoe u de Microsoft 365 resources van de gebruiker in dezelfde regio als de gebruiker plaatst. |
 | **Synchronisatie service** | |
 | [Functies van de Azure AD Connect-synchronisatieservice](how-to-connect-syncservice-features.md) |Hierin wordt de synchronisatie service naast beschreven en wordt uitgelegd hoe u de synchronisatie-instellingen in azure AD wijzigt. |
 | [Tolerantie voor dubbel kenmerk](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Hierin wordt beschreven hoe u **userPrincipalName** en **proxyAddresses** voor dubbele kenmerk waarden kunt inschakelen en gebruiken. |
 | **Bewerkingen en gebruikers interface** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Hierin wordt de Synchronization Service Manager-gebruikers interface beschreven, inclusief [bewerkingen](how-to-connect-sync-service-manager-ui-operations.md), [connectors](how-to-connect-sync-service-manager-ui-connectors.md), de functie voor het [omkeren van Query's](how-to-connect-sync-service-manager-ui-mvdesigner.md)en tabbladen met [omgekeerde Zoek opdrachten](how-to-connect-sync-service-manager-ui-mvsearch.md) . |
-| [Operationele taken en overwegingen](how-to-connect-sync-operations.md) |Beschrijft operationele problemen, zoals herstel na nood gevallen. |
+| [Operationele taken en overwegingen](./how-to-connect-sync-staging-server.md) |Beschrijft operationele problemen, zoals herstel na nood gevallen. |
 | **Procedures...** | |
 | [Het Azure AD-account opnieuw instellen](how-to-connect-azureadaccount.md) |Het opnieuw instellen van de referenties van het service account dat wordt gebruikt om verbinding te maken vanuit Azure AD Connect synchroniseren met Azure AD. |
 | **Meer informatie en verwijzingen** | |
 | [Poorten](reference-connect-ports.md) |Een lijst met poorten die u moet openen tussen de synchronisatie-engine en uw on-premises directory's en Azure AD. |
 | [Kenmerken gesynchroniseerd naar Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Een lijst met alle kenmerken die worden gesynchroniseerd tussen on-premises AD en Azure AD. |
-| [Naslag informatie over functies](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
+| [Functieverwijzing](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

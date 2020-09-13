@@ -1,5 +1,5 @@
 ---
-title: Reken resources maken in Studio
+title: Training maken & reken processen implementeren (Studio)
 titleSuffix: Azure Machine Learning
 description: Studio gebruiken voor het maken van trainings-en implementatie-reken resources (reken doelen) voor machine learning
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 37253ccfb249eb8b510af5e314c3167ddd979a87
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147409"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661960"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Reken doelen voor model training en implementatie in Azure Machine Learning Studio maken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -119,6 +119,9 @@ Tijdens het maken van het cluster of bij het bewerken van de details van het rek
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>Clusters afleiding
+
+> [!IMPORTANT]
+> Het gebruik van de Azure Kubernetes-service met Azure Machine Learning heeft meerdere configuratie opties. Voor sommige scenario's, zoals netwerken, zijn aanvullende instellingen en configuratie vereist. Zie [een Azure Kubernetes-service cluster maken en koppelen](how-to-create-attach-kubernetes.md)voor meer informatie over het gebruik van AKS met Azure ml.
 
 Maak of koppel een Azure Kubernetes service-cluster (AKS) voor grootschalige deinterferentie. Gebruik de [bovenstaande stappen](#portal-create) om het AKS-cluster te maken.  Vul het formulier vervolgens als volgt in:
 
