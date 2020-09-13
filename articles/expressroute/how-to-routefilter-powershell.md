@@ -2,18 +2,18 @@
 title: 'ExpressRoute: route filters-micro soft-peering: Azure PowerShell'
 description: In dit artikel wordt beschreven hoe u route filters configureert voor micro soft-peering met behulp van Power shell
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ca4362f10ea6ed2fa7cc39370fc9b4c764ff3b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729299"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566191"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Route filters voor micro soft-peering configureren: Power shell
 > [!div class="op_single_selector"]
@@ -24,11 +24,11 @@ ms.locfileid: "84729299"
 
 Met routefilters kunt u een subset van ondersteunde services gebruiken via Microsoft-peering. Met de stappen in dit artikel kunt u route filters configureren en beheren voor ExpressRoute-circuits.
 
-Office 365-services zoals Exchange Online, share point online, Skype voor bedrijven en open bare Azure-Services, zoals opslag en SQL data base, zijn toegankelijk via micro soft-peering. Open bare Azure-Services kunnen per regio worden geselecteerd en kunnen niet per open bare service worden gedefinieerd.
+Microsoft 365 services zoals Exchange Online, share point online, Skype voor bedrijven en open bare Azure-Services, zoals opslag en SQL DB, zijn toegankelijk via micro soft-peering. Open bare Azure-Services kunnen per regio worden geselecteerd en kunnen niet per open bare service worden gedefinieerd.
 
 Wanneer micro soft-peering is geconfigureerd voor een ExpressRoute-circuit en er een route filter is gekoppeld, worden alle voor voegsels die voor deze services zijn geselecteerd, geadverteerd via de BGP-sessies die zijn ingesteld. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie [BGP-community's](expressroute-routing.md#bgp)voor een lijst met de waarden van de BGP-Community en de services waaraan ze zijn toegewezen.
 
-Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt:
+Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt het volgende doen:
 
 - Ongewenste voor voegsels uitfilteren door route filters op BGP-community's toe te passen. Dit is een standaard netwerk praktijk en wordt meestal gebruikt in veel netwerken.
 
@@ -40,7 +40,7 @@ Wanneer micro soft-peering is geconfigureerd op uw ExpressRoute-circuit, maken d
 
 Via een routefilter kunt u services identificeren die u wilt gebruiken via Microsoft-peering op uw ExpressRoute-circuit. Het is in feite een lijst met toegestane waarden voor de BGP-community. Zodra er een routefilter is gedefinieerd en aan een ExpressRoute-circuit is gekoppeld, worden alle voorvoegsels die overeenkomen met de BGP-communitywaarden naar uw netwerk geadverteerd.
 
-Als u route filters met Office 365-Services wilt koppelen, moet u gemachtigd zijn om Office 365-services te gebruiken via ExpressRoute. Als u niet gemachtigd bent om Office 365-services te gebruiken via ExpressRoute, mislukt de bewerking voor het koppelen van route filters. Zie voor meer informatie over het autorisatie proces [Azure ExpressRoute voor Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Als u route filters wilt koppelen met Microsoft 365-Services, moet u autorisatie hebben om Microsoft 365-services te gebruiken via ExpressRoute. Als u niet gemachtigd bent om Microsoft 365-services te gebruiken via ExpressRoute, mislukt de bewerking voor het koppelen van route filters. Zie [Azure ExpressRoute voor Microsoft 365 voor](/microsoft-365/enterprise/azure-expressroute)meer informatie over het autorisatie proces.
 
 > [!IMPORTANT]
 > Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017, heeft alle service voorvoegsels die worden geadverteerd via micro soft-peering, zelfs als er geen route filters zijn gedefinieerd. Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voor voegsels die worden geadverteerd totdat een route filter aan het circuit is gekoppeld.
@@ -66,7 +66,7 @@ Om verbinding te kunnen maken met Services via micro soft-peering, moet u de vol
 
 Voordat u begint met de configuratie, moet u voldoen aan de volgende criteria:
 
- - Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
+ - Bekijk de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
  - U moet een actief ExpressRoute-circuit hebben. Volg de instructies voor het [maken van een ExpressRoute-circuit](expressroute-howto-circuit-arm.md) en laat het circuit inschakelen door de connectiviteitsprovider voordat u verder gaat. Het ExpressRoute-circuit moet de status ingericht en ingeschakeld hebben.
 

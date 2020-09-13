@@ -2,17 +2,17 @@
 title: 'Azure-ExpressRoute: een circuit wijzigen: Power shell'
 description: Een ExpressRoute-circuit maken, inrichten, controleren, bijwerken, verwijderen en de inrichting ervan opheffen.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/08/2020
-ms.author: cherylmc
-ms.openlocfilehash: aba29c46a781c8e687c79a197d37758699a9acf5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.author: duau
+ms.openlocfilehash: e9bf9dbe0f4146101513ab9786b298ac6b43b6a3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984462"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566294"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Een ExpressRoute-circuit maken en wijzigen met behulp van PowerShell
 > [!div class="op_single_selector"]
@@ -20,11 +20,11 @@ ms.locfileid: "85984462"
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
+> * [Video: Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell (klassiek)](expressroute-howto-circuit-classic.md)
 >
 
-Dit artikel helpt u bij het maken van een ExpressRoute-circuit met Power shell-cmdlets en het Azure Resource Manager-implementatie model. U kunt ook de status controleren, bijwerken, verwijderen of de inrichting van een circuit ongedaan maken.
+Dit artikel helpt u bij het maken van een ExpressRoute-circuit met Power shell-cmdlets en het Azure Resource Manager-implementatie model. U kunt ook de status van een circuit controleren, een circuit bijwerken of verwijderen, of de inrichting ervan ongedaan maken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Controleer of uw connectiviteits provider daar wordt vermeld. Noteer de volgende informatie, die u later nodig hebt bij het maken van een circuit:
 
-* Name
+* Naam
 * PeeringLocations
 * BandwidthsOffered
 
@@ -73,11 +73,11 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 Zorg ervoor dat u de juiste SKU-laag en SKU-familie opgeeft:
 
-* SKU-laag bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven.
+* SKU-laag bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven. U kunt de SKU van *Standard/Premium* niet wijzigen in *lokaal*.
 * De SKU-familie bepaalt het facturerings type. U kunt *Metereddata* opgeven voor een data-abonnement met data limiet en *Unlimiteddata* voor een onbeperkt data-abonnement. U kunt het facturerings type wijzigen van *Metereddata* in *Unlimiteddata*, maar u kunt het type niet wijzigen van *Unlimiteddata* in *Metereddata*. Een *lokaal* circuit is altijd *Unlimiteddata*.
 
 > [!IMPORTANT]
-> Uw ExpressRoute-circuit wordt gefactureerd vanaf het moment dat een service sleutel wordt uitgegeven. Zorg ervoor dat u deze bewerking uitvoert wanneer de connectiviteits provider gereed is om het circuit in te richten.
+> Vanaf het moment dat een servicesleutel is uitgegeven, worden er kosten voor een ExpressRoute-circuit in rekening gebracht. Zorg ervoor dat u deze bewerking uitvoert wanneer de connectiviteitsprovider gereed is om het circuit in te richten.
 >
 >
 
@@ -167,14 +167,14 @@ CircuitProvisioningState         : Enabled
 
 
 
-Het circuit verandert in de volgende status wanneer de connectiviteits provider het proces voor u inschakelt:
+Wanneer de connectiviteitsprovider bezig is met het inschakelen van uw circuit, verandert de status van het circuit in:
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioning
 Status                           : Enabled
 ```
 
-Als u een ExpressRoute-circuit wilt gebruiken, moet dit een van de volgende statussen hebben:
+Als u een ExpressRoute-circuit wilt gebruiken, moet dit circuit de volgende status hebben:
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioned
@@ -219,12 +219,12 @@ Peerings                         : []
 Zie het artikel [ExpressRoute circuit routerings configuratie](expressroute-howto-routing-arm.md) voor het maken en wijzigen van circuit peerings voor stapsgewijze instructies.
 
 > [!IMPORTANT]
-> Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met service providers die Layer 2-connectiviteits services aanbieden. Als u een service provider gebruikt die Managed Layer 3-services biedt (meestal een IP VPN, zoals MPLS), wordt door uw connectiviteits provider route ring voor u geconfigureerd en beheerd.
+> Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services met laag-2-connectiviteit aanbieden. Als u gebruikmaakt van een serviceprovider die beheerde laag-3-services aanbiedt (meestal een IP-adres voor VPN, zoals MPLS), wordt de routering voor u geconfigureerd en beheerd via de connectiviteitsprovider.
 >
 >
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. een virtueel netwerk koppelen aan een ExpressRoute-circuit
-Vervolgens koppelt u een virtueel netwerk aan uw ExpressRoute-circuit. Gebruik het artikel [koppel virtuele netwerken aan ExpressRoute-circuits](expressroute-howto-linkvnet-arm.md) wanneer u werkt met het Resource Manager-implementatie model.
+Koppel vervolgens een virtueel netwerk aan een ExpressRoute-circuit. Gebruik het artikel [Virtuele netwerken koppelen aan ExpressRoute-circuits](expressroute-howto-linkvnet-arm.md) wanneer u werkt met het Resource Manager-implementatiemodel.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>De status van een ExpressRoute-circuit ophalen
 U kunt deze informatie op elk gewenst moment ophalen met behulp van de cmdlet **Get-AzExpressRouteCircuit** . Als u de aanroep zonder para meters aanroept, worden alle circuits weer gegeven.
@@ -302,14 +302,14 @@ get-help Get-AzExpressRouteCircuit -detailed
 ```
 
 ## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>Een ExpressRoute-circuit wijzigen
-U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de verbinding.
+U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de connectiviteit.
 
 U kunt de volgende taken zonder uitval tijd doen:
 
-* Een ExpressRoute Premium-invoeg toepassing voor uw ExpressRoute-circuit in-of uitschakelen.
-* Verg root de band breedte van uw ExpressRoute-circuit, op voor waarde dat er capaciteit beschikbaar is op de poort. Het downgradeen van de band breedte van een circuit wordt niet ondersteund.
-* Wijzig het licentie controle plan van gegevens met data limiet naar onbeperkte gegevens. Het is niet mogelijk om het meet plan van onbeperkte gegevens te wijzigen in gegevens met data limiet.
-* U kunt *klassieke bewerkingen toestaan*in-en uitschakelen.
+* Een ExpressRoute Premium-invoeg toepassing voor uw ExpressRoute-circuit in-of uitschakelen. Het wijzigen van de SKU van *Standard/Premium* naar *Local* wordt niet ondersteund.
+* Verg root de band breedte van uw ExpressRoute-circuit, op voor waarde dat er capaciteit beschikbaar is op de poort. Verminderen van de bandbreedte van een circuit wordt niet ondersteund.
+* Het verbruiksabonnement wijzigen van Datalimiet in Onbeperkte data. Wijzigen van het verbruiksabonnement van Onbeperkte data in Datalimiet wordt niet ondersteund.
+* U kunt *klassieke bewerkingen toestaan* in- en uitschakelen.
 
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor meer informatie over limieten en beperkingen.
 
@@ -354,9 +354,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 Raadpleeg de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor de ondersteunde bandbreedte opties voor uw provider. U kunt elke grootte kiezen die groter is dan de grootte van uw bestaande circuit.
 
 > [!IMPORTANT]
-> Mogelijk moet u het ExpressRoute-circuit opnieuw maken als er onvoldoende capaciteit is op de bestaande poort. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op die locatie.
+> Mogelijk moet u het ExpressRoute-circuit opnieuw maken als er onvoldoende capaciteit is op de bestaande poort. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op de betreffende locatie.
 >
-> U kunt de band breedte van een ExpressRoute-circuit zonder onderbreking niet verkleinen. Voor downgrade-band breedte moet u de inrichting van het ExpressRoute-circuit ongedaan maken en vervolgens een nieuw ExpressRoute-circuit opnieuw inrichten.
+> U kunt de band breedte van een ExpressRoute-circuit zonder onderbreking niet verkleinen. Voor het verminderen van de bandbreedte moet u de inrichting van het ExpressRoute-circuit ongedaan maken, en vervolgens een nieuw ExpressRoute-circuit inrichten.
 >
 
 Nadat u hebt bepaald welke grootte u nodig hebt, gebruikt u de volgende opdracht om het formaat van het circuit te wijzigen:
@@ -391,8 +391,8 @@ Bekijk de instructies in [ExpressRoute-circuits verplaatsen van het klassieke na
 Let op de volgende informatie:
 
 * U moet alle virtuele netwerken loskoppelen van het ExpressRoute-circuit. Als deze bewerking mislukt, controleert u of er virtuele netwerken zijn gekoppeld aan het circuit.
-* Als de inrichtings status van de ExpressRoute-circuit service provider is **ingericht** of **ingericht** , moet u samen met uw service provider de inrichting van het circuit aan hun zijde opheffen. We blijven resources reserveren en u factureren totdat de service provider de inrichting van het circuit ongedaan heeft gemaakt en ons op de hoogte stelt.
-* Als de service provider het circuit heeft ontsteld (de inrichtings status van de service provider is ingesteld op **niet ingericht**), kunt u het circuit verwijderen. Hiermee wordt ook de facturering voor het circuit gestopt.
+* Als de serviceprovider van het circuit de inrichtingsstatus **Inrichten** of **Ingericht** heeft, moet u contact opnemen met de serviceprovider om de inrichting van het circuit aan hun zijde ongedaan te maken. We blijven resources reserveren en kosten in rekening brengen, totdat de serviceprovider de inrichting van het circuit helemaal ongedaan heeft gemaakt en ons op de hoogte heeft gesteld.
+* Als de serviceprovider dit heeft gedaan (de inrichtingsstatus bij de serviceprovider is ingesteld op **Niet ingericht**), kunt u het circuit verwijderen. Hiermee wordt ook de facturering voor het circuit gestopt.
 
 U kunt het ExpressRoute-circuit verwijderen door de volgende opdracht uit te voeren:
 
@@ -404,5 +404,5 @@ Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Nam
 
 Nadat u het circuit hebt gemaakt, moet u de volgende stappen uitvoeren:
 
-* [Route ring voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
+* [Routering voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
 * [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit](expressroute-howto-linkvnet-arm.md)

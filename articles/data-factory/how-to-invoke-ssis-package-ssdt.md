@@ -11,13 +11,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 08/10/2020
-ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 09/06/2020
+ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041847"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504941"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-pakketten uitvoeren in azure vanuit SSDT
 
@@ -45,7 +45,7 @@ Nadat het Azure-project is gemaakt, wordt u gevraagd verbinding te maken met SSI
 
 Als u meteen verbinding wilt maken met uw Azure-SSIS IR, raadpleegt u [verbinding maken met Azure-SSIS IR](#connectssisir) voor meer informatie. U kunt ook later verbinding maken door met de rechter muisknop op het knoop punt van het project te klikken in het Solution Explorer venster van SSDT om een menu te openen. Selecteer vervolgens het submenu **verbinding maken met SSIS in azure Data Factory** item in **SSIS in azure Data Factory** .
 
-### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a>Azure-bestaande SSIS-projecten inschakelen
+### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a> Azure-bestaande SSIS-projecten inschakelen
 
 Voor bestaande SSIS-projecten kunt u Azure inschakelen door de volgende stappen uit te voeren:
 
@@ -57,13 +57,13 @@ Voor bestaande SSIS-projecten kunt u Azure inschakelen door de volgende stappen 
 
    ![Visual Studio-configuratie selecteren](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Voor Azure: door uw bestaande SSIS-projecten in te scha kelen, moet u de versie van de doel server instellen op de nieuwste, die door Azure-SSIS IR wordt ondersteund. Momenteel heeft Azure-SSIS IR een standaard compatibiliteits niveau van 140, dat gelijk is aan **SQL Server 2017**. Zorg ervoor dat uw pakketten geen extra onderdelen bevatten die niet worden ondersteund op SQL Server 2017. Zorg er ook voor dat alle compatibele aanvullende onderdelen ook zijn geïnstalleerd op uw Azure-SSIS IR via aangepaste installatie. Zie [uw Azure-SSIS IR aanpassen](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)voor meer informatie. Selecteer de knop **volgende** om door te gaan.
+3. Voor Azure: door uw bestaande SSIS-projecten in te scha kelen, moet u de versie van de doel server instellen op de nieuwste, die door Azure-SSIS IR wordt ondersteund. Azure-SSIS IR is momenteel gebaseerd op **SQL Server 2017**. Zorg ervoor dat uw pakketten geen extra onderdelen bevatten die niet worden ondersteund op SQL Server 2017. Zorg er ook voor dat alle compatibele aanvullende onderdelen ook zijn geïnstalleerd op uw Azure-SSIS IR via aangepaste installatie. Zie [uw Azure-SSIS IR aanpassen](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)voor meer informatie. Selecteer de knop **volgende** om door te gaan.
 
    ![Doel server versie wijzigen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
 4. Zie [verbinding maken met Azure-SSIS IR](#connectssisir) om de verbinding van uw project met Azure-SSIS IR te volt ooien.
 
-## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a>Verbinding maken met Azure-projecten op SSIS in Azure Data Factory
+## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a><a name="connectssisir"></a> Verbinding maken met Azure-projecten op SSIS in Azure Data Factory
 
 Door uw Azure-projecten te koppelen aan SSIS in ADF, kunt u uw pakketten uploaden naar Azure Files en deze uitvoeren op Azure-SSIS IR. U kunt dit doen door de volgende stappen uit te voeren:
 
@@ -117,7 +117,7 @@ Wanneer u zeker weet dat er een aantal potentiële problemen met de Cloud compat
 
 ## <a name="execute-ssis-packages-in-azure"></a>SSIS-pakketten uitvoeren in azure
 
-### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a>Instellingen voor Azure ingeschakeld configureren
+### <a name="configuring-azure-enabled-settings"></a><a name="azureenabledsettings"></a> Instellingen voor Azure ingeschakeld configureren
 
 Voordat u uw pakketten in azure uitvoert, kunt u de instellingen voor Azure ingeschakeld configureren. U kunt bijvoorbeeld Windows-verificatie inschakelen op uw Azure-SSIS IR om toegang te krijgen tot on-premises/Cloud gegevens archieven door de volgende stappen uit te voeren:
 
@@ -151,7 +151,7 @@ Nadat u uw Azure-projecten hebt verbonden met SSIS in ADF, de compatibiliteit va
 
 Als uw pakketten taken voor het uitvoeren van pakketten bevatten die verwijzen naar onderliggende pakketten die zijn opgeslagen op lokale bestands systemen, voert u de volgende aanvullende stappen uit:
 
-1. Upload de onderliggende pakketten naar Azure Files onder hetzelfde Azure Storage account dat is verbonden met uw projecten en ontvang het nieuwe UNC-pad (Universal Naming Convention), bijvoorbeeld`\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
+1. Upload de onderliggende pakketten naar Azure Files onder hetzelfde Azure Storage account dat is verbonden met uw projecten en ontvang het nieuwe UNC-pad (Universal Naming Convention), bijvoorbeeld `\\YourStorageAccountName.file.core.windows.net\ssdtexecution\YourChildPackage1.dtsx`
 
 2. Vervang het bestandspad van deze onderliggende pakketten in het bestands verbindings beheer van pakket taken uitvoeren met het nieuwe UNC-pad
    - Als uw lokale machine met SSDT geen toegang heeft tot het nieuwe UNC-pad, kunt u deze invoeren in het deel venster Eigenschappen van bestands verbindings beheer
@@ -168,7 +168,7 @@ Het uitvoeren van SSIS-pakketten in Azure biedt geen ondersteuning voor **Encryp
 
 Als uw pakketten al zijn geconfigureerd voor het gebruik van **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** -beveiligings niveaus, blijven deze ongewijzigd. Er worden steeds wille keurig versleutelings wachtwoorden gegenereerd wanneer we uw pakketten uploaden naar Azure Files voor uitvoeringen op uw Azure-SSIS IR.
 
-### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a>Pakket uitvoerings omgevingen omschakelen
+### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a> Pakket uitvoerings omgevingen omschakelen
 
 Als u uw project/pakketten para meters in het implementatie model van het project, kunt u meerdere VS-configuraties maken om te scha kelen tussen pakket uitvoerings omgevingen. Op deze manier kunt u tijdens runtime specifieke waarden toewijzen aan uw project/pakket-para meters. We raden u aan ten minste twee verschillende versus configuraties te gebruiken voor het uitvoeren van pakketten in de lokale omgevingen en in de cloud omgeving, zodat u uw projecten kunt inschakelen op basis van de Cloud configuratie. Hier volgt een stapsgewijze voor beeld van het omschakelen van de pakket uitvoerings omgevingen tussen uw lokale computer en Azure:
 

@@ -2,13 +2,13 @@
 title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086809"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535555"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -19,7 +19,9 @@ Voor kleine tot middel grote oplossingen is één sjabloon eenvoudiger te begrij
 Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](./deployment-tutorial-linked-template.md)voor een zelf studie.
 
 > [!NOTE]
-> Voor gekoppelde of geneste sjablonen kunt u alleen [incrementele](deployment-modes.md) implementatie modus gebruiken.
+> Voor gekoppelde of geneste sjablonen kunt u de implementatie modus alleen op [Incrementeel](deployment-modes.md)instellen. De hoofd sjabloon kan echter in de volledige modus worden geïmplementeerd. Als u de hoofd sjabloon in de modus volledig implementeert en de gekoppelde of geneste sjabloon is gericht op dezelfde resource groep, worden de resources die zijn geïmplementeerd in de gekoppelde of geneste sjabloon, opgenomen in de evaluatie van de implementatie van de volledige modus. De gecombineerde verzameling resources die zijn geïmplementeerd in de hoofd sjabloon en gekoppelde of geneste sjablonen worden vergeleken met de bestaande resources in de resource groep. Alle resources die niet in deze gecombineerde verzameling zijn opgenomen, worden verwijderd.
+>
+> Als de gekoppelde of geneste sjabloon is gericht op een andere resource groep, gebruikt die implementatie een incrementele modus.
 >
 
 ## <a name="nested-template"></a>Geneste sjabloon
@@ -160,7 +162,7 @@ In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens he
 
 De waarde van `exampleVar` wijzigingen, afhankelijk van de waarde van de `scope` eigenschap in `expressionEvaluationOptions` . In de volgende tabel ziet u de resultaten voor beide bereiken.
 
-| `expressionEvaluationOptions`ligt | Uitvoer |
+| `expressionEvaluationOptions` ligt | Uitvoer |
 | ----- | ------ |
 | wend | van geneste sjabloon |
 | Outer (of standaard) | van bovenliggende sjabloon |
@@ -312,14 +314,9 @@ Bij het verwijzen naar een gekoppelde sjabloon, mag de waarde van `uri` niet een
 
 > [!NOTE]
 >
-> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden omgezet in iets waarbij gebruik wordt gemaakt van **http** of **https**, bijvoorbeeld met behulp van de `_artifactsLocation` para meter als volgt:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden omgezet in iets waarbij gebruik wordt gemaakt van **http** of **https**, bijvoorbeeld met behulp van de `_artifactsLocation` para meter als volgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
-Resource Manager moet toegang hebben tot de sjabloon. U kunt ook de gekoppelde sjabloon in een opslag account plaatsen en de URI voor dat item gebruiken.
-
-Met [sjabloon specificaties](./template-specs.md) (momenteel in private preview) kunt u arm-Sjablonen delen met andere gebruikers in uw organisatie. Sjabloon specificaties kunnen ook worden gebruikt om een hoofd sjabloon en de gekoppelde sjablonen te inpakken. Zie voor meer informatie:
-
-- [Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken](./template-specs-create-linked.md).
-- [Zelf studie: een sjabloon specificatie als gekoppelde sjabloon implementeren](./template-specs-deploy-linked-template.md).
+De sjabloon moet toegankelijk zijn voor Resource Manager. U kunt ook de gekoppelde sjabloon in een opslagaccount plaatsen en de URI voor dat item gebruiken.
 
 ### <a name="parameters-for-linked-template"></a>Para meters voor gekoppelde sjabloon
 
@@ -369,6 +366,15 @@ Gebruik de eigenschap **para meters** om parameter waarden inline door te geven.
 ```
 
 U kunt niet zowel inline-para meters als een koppeling naar een parameter bestand gebruiken. De implementatie mislukt met een fout als beide `parametersLink` en `parameters` zijn opgegeven.
+
+## <a name="template-specs"></a>Sjabloonspecificaties
+
+In plaats van uw gekoppelde sjablonen te onderhouden op een toegankelijk eind punt, kunt u een [sjabloon specificatie](template-specs.md) maken waarmee de hoofd sjabloon en de gekoppelde sjablonen worden verpakt in één entiteit die u kunt implementeren. De sjabloon specificatie is een resource in uw Azure-abonnement. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer (RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
+
+Zie voor meer informatie:
+
+- [Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken](./template-specs-create-linked.md).
+- [Zelf studie: een sjabloon specificatie als gekoppelde sjabloon implementeren](./template-specs-deploy-linked-template.md).
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -723,6 +729,9 @@ Hoewel de gekoppelde sjabloon extern beschikbaar moet zijn, hoeft deze niet alge
 Het parameter bestand kan ook worden beperkt tot toegang via een SAS-token.
 
 Op dit moment kunt u geen koppeling maken met een sjabloon in een opslag account dat zich achter een [Azure Storage firewall](../../storage/common/storage-network-security.md)bevindt.
+
+> [!IMPORTANT]
+> In plaats van uw gekoppelde sjabloon met een SAS-token te beveiligen, kunt u overwegen om een [sjabloon specificatie](template-specs.md)te maken. De sjabloon spec slaat de hoofd sjabloon en de gekoppelde sjablonen veilig op als een resource in uw Azure-abonnement. U kunt RBAC gebruiken om toegang te verlenen aan gebruikers die de sjabloon moeten implementeren.
 
 In het volgende voor beeld ziet u hoe u een SAS-token kunt door geven wanneer u een koppeling maakt naar een sjabloon:
 

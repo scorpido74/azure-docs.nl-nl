@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478005"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535769"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
 
@@ -45,7 +45,7 @@ Zorg ervoor dat de Url's voldoen aan de volgende richt lijnen voordat u koppelin
 | Geldige schema's | HTTP en HTTPS<br/>U kunt het beste HTTPS |
 | Max. lengte    | 2048 tekens                       |
 
-Voor beelden: `https://myapp.com/terms-of-service` en`https://myapp.com/privacy-statement`
+Voor beelden: `https://myapp.com/terms-of-service` en `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Koppelingen toevoegen aan de service voorwaarden en de privacyverklaring
 
@@ -58,17 +58,22 @@ Wanneer de service voorwaarden en de privacyverklaring gereed zijn, kunt u aan d
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure Portal gebruiken
 Volg deze stappen in de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/), selecteer de juiste AzureAD-Tenant (niet B2C).
 2. Ga naar de sectie **app-registraties** en selecteer uw app.
 3. Open het deel venster **huis stijl** .
 4. Vul de URL-velden **voor de service voorwaarden** en de **privacyverklaring** in.
-5. Sla uw wijzigingen op.
+5. Sla de wijzigingen op.
 
     ![App-eigenschappen bevatten de Url's van de service voorwaarden en de privacyverklaring](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>De JSON van het app-object gebruiken
 
 Als u de JSON van het app-object liever rechtstreeks wilt wijzigen, kunt u de manifest editor in het Azure Portal of de portal voor toepassings registratie gebruiken om koppelingen op te geven naar de service voorwaarden van uw app en de privacyverklaring.
+
+1. Navigeer naar de sectie **app-registraties** en selecteer uw app.
+2. Open het deel venster **manifest** .
+3. CTRL + F, zoek naar ' informationalUrls '. Vul de informatie in.
+4. Sla de wijzigingen op.
 
 ```json
     "informationalUrls": { 
@@ -96,5 +101,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Zorg ervoor dat u geen vooraf bestaande waarden overschrijft die u hebt toegewezen aan een van deze velden: `supportUrl` , `marketingUrl` en`logoUrl`
+> * Zorg ervoor dat u geen vooraf bestaande waarden overschrijft die u hebt toegewezen aan een van deze velden: `supportUrl` , `marketingUrl` en `logoUrl`
 > * De Microsoft Graph-API werkt alleen wanneer u zich aanmeldt met een Azure AD-account. Persoonlijke micro soft-accounts worden niet ondersteund.

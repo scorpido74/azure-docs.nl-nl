@@ -1,18 +1,18 @@
 ---
 title: 'Azure-ExpressRoute: connectiviteits modellen'
-description: In dit artikel worden de verschillende modi van connectiviteit tussen het netwerk van de klant Microsoft Azure en de Office 365-Services beschreven. Klanten kunnen gebruikmaken van MPLS-providers, cloudexchanges en Ethernet-providers.
+description: Controleer de verbinding tussen het netwerk van de klant, Microsoft Azure en Microsoft 365 Services. Klanten kunnen MPLS-providers, Cloud uitwisselingen en Ethernet gebruiken.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f2a15b63e11d8ad93672a93fee4f327c47dd6277
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710453"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566463"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute-connectiviteitsmodellen
 U kunt op drie verschillende manieren een verbinding maken tussen uw on-premises netwerk en Microsoft Cloud: [CloudExchange-co-locatie](#CloudExchange), [point-to-point Ethernet-verbinding](#Ethernet) en [any-to-any (IPVPN) verbinding](#IPVPN). Connectiviteitsproviders kunnen een of meer connectiviteitsmodellen bieden. Overleg met uw connectiviteitsprovider om na te gaan welk model voor u het meest geschikt is.
@@ -26,7 +26,7 @@ Als u zich bevindt op dezelfde locatie als een exchange-cloud, kunt u virtuele o
 ## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Point-to-Point Ethernet-verbindingen
 U kunt uw on-premises datacenters/kantoren met de Microsoft Cloud verbinden via point-to-point Ethernet-koppelingen. Point-to-point Ethernet-providers kunnen Laag-2-verbindingen of beheerde Laag-3-verbindingen bieden tussen uw locatie en de Microsoft Cloud.
 
-## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Any-to-any (IPVPN) netwerken
+## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Any-to-any (IPVPN)-netwerken
 U kunt uw WAN integreren met de Microsoft Cloud. IPVPN-providers (doorgaans MPLS VPN) bieden any-to-any connectiviteit tussen uw filialen en datacenters. De Microsoft Cloud kan ook worden verbonden met uw WAN, zodat het er net zo uitziet als een filiaal. WAN-providers bieden doorgaans beheerde Laag-3-connectiviteit. ExpressRoute-functies en -mogelijkheden zijn identiek in alle bovenstaande connectiviteitsmodellen. 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -2,18 +2,18 @@
 title: 'Een ExpressRoute-circuit maken en wijzigen: Azure CLI'
 description: In dit artikel wordt beschreven hoe u een ExpressRoute-circuit maakt, provisioneert, controleert, bijwerkt, verwijdert en uitschakelt met behulp van CLI.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2d8ad6b90f533161835ab12a43865b177c24c14e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503579"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566140"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Een ExpressRoute-circuit maken en wijzigen met behulp van CLI
 
@@ -25,14 +25,14 @@ In dit artikel wordt beschreven hoe u een Azure ExpressRoute-circuit maakt met b
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
+> * [Video: Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell (klassiek)](expressroute-howto-circuit-classic.md)
 >
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 * Installeer eerst de meest recente versie van de CLI-opdrachten (2.0 of hoger). Zie [Azure CLI installeren](/cli/azure/install-azure-cli) en [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli) voor meer informatie over de CLI-opdrachten.
-* Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
+* Bekijk de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Een ExpressRoute-circuit maken en inrichten
 
@@ -119,7 +119,7 @@ Het antwoord is vergelijkbaar met het volgende voorbeeld:
 
 Controleer het antwoord om te zien of uw connectiviteits provider wordt vermeld. Noteer de volgende informatie die u nodig hebt om een circuit te maken:
 
-* Name
+* Naam
 * PeeringLocations
 * BandwidthsOffered
 
@@ -128,7 +128,7 @@ U bent nu klaar om een ExpressRoute-circuit te maken.
 ### <a name="3-create-an-expressroute-circuit"></a>3. een ExpressRoute-circuit maken
 
 > [!IMPORTANT]
-> Uw ExpressRoute-circuit wordt gefactureerd vanaf het moment dat een service sleutel wordt uitgegeven. Voer deze bewerking uit wanneer de connectiviteits provider gereed is om het circuit in te richten.
+> Vanaf het moment dat een servicesleutel is uitgegeven, worden er kosten voor een ExpressRoute-circuit in rekening gebracht. Voer deze bewerking uit wanneer de connectiviteits provider gereed is om het circuit in te richten.
 >
 >
 
@@ -142,11 +142,11 @@ In het volgende voor beeld ziet u hoe u een ExpressRoute-circuit van 200 Mbps ma
 
 Zorg ervoor dat u de juiste SKU-laag en SKU-familie opgeeft:
 
-* SKU-laag bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven.
+* SKU-laag bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven. U kunt de SKU van *Standard/Premium* niet wijzigen in *lokaal*.
 * De SKU-familie bepaalt het facturerings type. U kunt *Metereddata* opgeven voor een data-abonnement met data limiet en *Unlimiteddata* voor een onbeperkt data-abonnement. U kunt het facturerings type wijzigen van *Metereddata* in *Unlimiteddata*, maar u kunt het type niet wijzigen van *Unlimiteddata* in *Metereddata*. Een *lokaal* circuit is alleen *Unlimiteddata* .
 
 
-Uw ExpressRoute-circuit wordt gefactureerd vanaf het moment dat een service sleutel wordt uitgegeven. Het volgende voor beeld is een aanvraag voor een nieuwe service sleutel:
+Vanaf het moment dat een servicesleutel is uitgegeven, worden er kosten voor een ExpressRoute-circuit in rekening gebracht. Het volgende voor beeld is een aanvraag voor een nieuwe service sleutel:
 
 ```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
@@ -210,14 +210,14 @@ Wanneer u een nieuw ExpressRoute-circuit maakt, heeft het circuit de volgende st
 "circuitProvisioningState": "Enabled"
 ```
 
-Het circuit verandert in de volgende status wanneer de connectiviteits provider het proces voor u inschakelt:
+Wanneer de connectiviteitsprovider bezig is met het inschakelen van uw circuit, verandert de status van het circuit in:
 
 ```output
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
-Als u een ExpressRoute-circuit wilt gebruiken, moet dit een van de volgende statussen hebben:
+Als u een ExpressRoute-circuit wilt gebruiken, moet dit circuit de volgende status hebben:
 
 ```output
 "serviceProviderProvisioningState": "Provisioned"
@@ -268,22 +268,22 @@ Het antwoord is vergelijkbaar met het volgende voorbeeld:
 Zie het artikel [ExpressRoute circuit routerings configuratie](howto-routing-cli.md) voor het maken en wijzigen van circuit peerings voor stapsgewijze instructies.
 
 > [!IMPORTANT]
-> Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met service providers die Layer 2-connectiviteits services aanbieden. Als u een service provider gebruikt die Managed Layer 3-services biedt (meestal een IP VPN, zoals MPLS), wordt door uw connectiviteits provider route ring voor u geconfigureerd en beheerd.
+> Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services met laag-2-connectiviteit aanbieden. Als u gebruikmaakt van een serviceprovider die beheerde laag-3-services aanbiedt (meestal een IP-adres voor VPN, zoals MPLS), wordt de routering voor u geconfigureerd en beheerd via de connectiviteitsprovider.
 >
 >
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. een virtueel netwerk koppelen aan een ExpressRoute-circuit
 
-Vervolgens koppelt u een virtueel netwerk aan uw ExpressRoute-circuit. Gebruik het artikel [koppel virtuele netwerken aan ExpressRoute-circuits](howto-linkvnet-cli.md) .
+Koppel vervolgens een virtueel netwerk aan een ExpressRoute-circuit. Gebruik het artikel [koppel virtuele netwerken aan ExpressRoute-circuits](howto-linkvnet-cli.md) .
 
 ## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>Een ExpressRoute-circuit wijzigen
 
-U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de verbinding. U kunt de volgende wijzigingen aanbrengen zonder downtime:
+U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat dit van invloed is op de connectiviteit. U kunt de volgende wijzigingen aanbrengen zonder downtime:
 
-* U kunt een ExpressRoute Premium-invoeg toepassing voor uw ExpressRoute-circuit in-of uitschakelen.
+* U kunt een ExpressRoute Premium-invoeg toepassing voor uw ExpressRoute-circuit in-of uitschakelen. Het wijzigen van de SKU van *Standard/Premium* naar *Local* wordt niet ondersteund.
 * U kunt de band breedte van uw ExpressRoute-circuit verg Roten, omdat er capaciteit beschikbaar is op de poort. Het downgradeen van de band breedte van een circuit wordt echter niet ondersteund.
 * U kunt het meet plan wijzigen van gegevens met data limiet in onbeperkte gegevens. Het wijzigen van het meet plan van een onbeperkt aantal gegevens in gegevens met data limiet wordt echter niet ondersteund.
-* U kunt *klassieke bewerkingen toestaan*in-en uitschakelen.
+* U kunt *klassieke bewerkingen toestaan* in- en uitschakelen.
 
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor meer informatie over limieten en beperkingen.
 
@@ -321,7 +321,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 Raadpleeg de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor de ondersteunde bandbreedte opties voor uw provider. U kunt elke grootte kiezen die groter is dan de grootte van uw bestaande circuit.
 
 > [!IMPORTANT]
-> Als er onvoldoende capaciteit is op de bestaande poort, moet u het ExpressRoute-circuit wellicht opnieuw maken. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op die locatie.
+> Als er onvoldoende capaciteit is op de bestaande poort, moet u het ExpressRoute-circuit wellicht opnieuw maken. U kunt het circuit niet upgraden als er geen extra capaciteit beschikbaar is op de betreffende locatie.
 >
 > U kunt de band breedte van een ExpressRoute-circuit zonder onderbreking niet verkleinen. Voor downgrade-band breedte moet u de inrichting van het ExpressRoute-circuit ongedaan maken en vervolgens een nieuw ExpressRoute-circuit opnieuw inrichten.
 >
@@ -351,7 +351,7 @@ Bekijk de instructies in [ExpressRoute-circuits verplaatsen van het klassieke na
 Als u het inrichten en verwijderen van een ExpressRoute-circuit wilt opheffen, moet u de volgende criteria kennen:
 
 * U moet alle virtuele netwerken loskoppelen van het ExpressRoute-circuit. Als deze bewerking mislukt, controleert u of er virtuele netwerken zijn gekoppeld aan het circuit.
-* Als de inrichtings status van de ExpressRoute-circuit service provider is **ingericht** of **ingericht**, moet u samen met uw service provider de inrichting van het circuit aan hun zijde opheffen. We blijven resources reserveren en u factureren totdat de service provider de inrichting van het circuit ongedaan heeft gemaakt en ons op de hoogte stelt.
+* Als de inrichtings status van de ExpressRoute-circuit service provider is **ingericht** of **ingericht**, moet u samen met uw service provider de inrichting van het circuit aan hun zijde opheffen. We blijven resources reserveren en kosten in rekening brengen, totdat de serviceprovider de inrichting van het circuit helemaal ongedaan heeft gemaakt en ons op de hoogte heeft gesteld.
 * U kunt het circuit verwijderen als de inrichting van het circuit is ongedaan gemaakt door de service provider. Wanneer de inrichting van een circuit ongedaan wordt gemaakt, wordt de inrichtings status van de service provider ingesteld op **niet ingericht**. Hiermee wordt ook de facturering voor het circuit gestopt.
 
 U kunt het ExpressRoute-circuit verwijderen door de volgende opdracht uit te voeren:
@@ -364,5 +364,5 @@ az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 
 Nadat u het circuit hebt gemaakt, moet u ervoor zorgen dat u de volgende taken uitvoert:
 
-* [Route ring voor uw ExpressRoute-circuit maken en wijzigen](howto-routing-cli.md)
+* [Routering voor uw ExpressRoute-circuit maken en wijzigen](howto-routing-cli.md)
 * [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit](howto-linkvnet-cli.md)

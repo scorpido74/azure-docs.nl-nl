@@ -2,13 +2,13 @@
 title: Resources implementeren met Azure CLI en sjabloon
 description: Gebruik Azure Resource Manager en Azure CLI om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: da865d3b425da6b5969e540a424b513d9a58bd9a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040802"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566157"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Resources implementeren met ARM-sjablonen en Azure CLI
 
@@ -26,13 +26,13 @@ U kunt uw implementatie richten op een resource groep, een abonnement, een behee
 
 Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
 
-* Gebruik [AZ Deployment Group Create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create)om te implementeren in een **resource groep**:
+* Gebruik [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)om te implementeren in een **resource groep**:
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* Gebruik [AZ Deployment sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)om te implementeren in een **abonnement**:
+* Gebruik [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)om te implementeren in een **abonnement**:
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -40,7 +40,7 @@ Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrac
 
   Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
 
-* Gebruik [AZ Deployment mg Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)om te implementeren in een **beheer groep**:
+* Gebruik [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create)om te implementeren in een **beheer groep**:
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -48,7 +48,7 @@ Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrac
 
   Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
 
-* Gebruik [AZ Deployment Tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)om te implementeren naar een **Tenant**:
+* Gebruik [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)om te implementeren naar een **Tenant**:
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -128,6 +128,35 @@ az deployment group create \
 
 In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).
 
+## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
+
+In plaats van een lokale of externe sjabloon te implementeren, kunt u een [sjabloon specificatie](template-specs.md)maken. De sjabloon specificatie is een resource in uw Azure-abonnement die een ARM-sjabloon bevat. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer (RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
+
+In de volgende voor beelden ziet u hoe u een sjabloon specificatie maakt en implementeert. Deze opdrachten zijn alleen beschikbaar als u zich hebt [geregistreerd voor de preview-versie](https://aka.ms/templateSpecOnboarding).
+
+Eerst maakt u de sjabloon specificatie door de ARM-sjabloon op te geven.
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json"
+```
+
+Vervolgens krijgt u de ID voor sjabloon specificatie en implementeert u deze.
+
+```azurecli
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+Zie [Azure Resource Manager-sjabloon specificaties (preview-versie)](template-specs.md)voor meer informatie.
+
 ## <a name="preview-changes"></a>Preview-wijzigingen
 
 Voordat u uw sjabloon implementeert, kunt u een voor beeld bekijken van de wijzigingen die door de sjabloon in uw omgeving worden aangebracht. Gebruik de [bewerking What-if](template-deploy-what-if.md) om te controleren of de sjabloon de wijzigingen aanbrengt die u verwacht. Wat-als ook de sjabloon voor fouten valideert.
@@ -179,6 +208,28 @@ De arrayContent.jsin de indeling is:
     "value2"
 ]
 ```
+
+Gebruik JSON als u een object wilt door geven, bijvoorbeeld om labels in te stellen. Uw sjabloon kan bijvoorbeeld een para meter bevatten zoals deze:
+
+```json
+    "resourceTags": {
+      "type": "object",
+      "defaultValue": {
+        "Cost Center": "IT Department"
+      }
+    }
+```
+
+In dit geval kunt u een JSON-teken reeks door geven om de para meter in te stellen, zoals wordt weer gegeven in het volgende bash-script:
+
+```bash
+tags='{"Owner":"Contoso","Cost Center":"2345-324"}'
+az deployment group create --name addstorage  --resource-group myResourceGroup \
+--template-file $templateFile \
+--parameters resourceName=abcdef4556 resourceTags="$tags"
+```
+
+Gebruik dubbele aanhalings tekens rond de JSON die u wilt door geven aan het object.
 
 ### <a name="parameter-files"></a>Parameter bestanden
 

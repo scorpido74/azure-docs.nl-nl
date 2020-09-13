@@ -1,0 +1,48 @@
+---
+title: Overzicht van het beleid voor gegevens retentie-Azure SQL Edge (preview)
+description: Meer informatie over het Bewaar beleid voor gegevens in Azure SQL Edge (preview)
+keywords: SQL-rand, gegevens retentie
+services: sql-edge
+ms.service: sql-edge
+ms.topic: conceptual
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: sstein
+ms.date: 09/04/2020
+ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89550628"
+---
+# <a name="data-retention-policy-overview"></a>Overzicht van het beleid voor gegevens retentie
+
+Het verzamelen en opslaan van gegevens van de verbonden IoT-apparaten is belang rijk om operationeel en zakelijk inzicht te krijgen en te stimuleren. Gezien het volume van de gegevens die afkomstig zijn van deze apparaten, is het belang rijk voor organisaties om de hoeveelheid gegevens die ze willen behouden en de granulariteit te plannen. Het is echter wenselijk om alle gegevens te bewaren, maar dit is niet altijd praktisch. Daarnaast is het volume van de gegevens dat kan worden bewaard beperkt door de hoeveelheid opslag ruimte die beschikbaar is op de IoT-of edge-apparaten. 
+
+Azure SQL Edge (preview) CTP 2.3 voegt een nieuwe mogelijkheid toe waarmee database beheerders het Bewaar beleid voor gegevens kunnen definiëren voor een SQL EDGE-Data Base en de onderliggende tabellen. Zodra het beleid voor gegevens retentie is gedefinieerd, wordt een achtergrond systeem taak uitgevoerd om verouderde (oude) gegevens uit de gebruikers tabellen op te schonen. 
+
+> [!Note]
+> Gegevens die zijn verwijderd uit de tabel, kunnen niet worden hersteld. De enige manier om de verwijderde gegevens te herstellen is door de data base te herstellen vanuit een oudere back-up.
+
+Quickstarts:
+
+- [Het Bewaar beleid voor gegevens in-en uitschakelen](data-retention-enable-disable.md)
+- [Historische gegevens beheren met Bewaar beleid](data-retention-cleanup.md)
+
+## <a name="how-data-retention-works"></a>Hoe gegevens retentie werkt
+
+Als u gegevens retentie wilt configureren, kunt u DDL-instructies gebruiken. Voor meer informatie schakelt u het [Bewaar beleid voor gegevens in en uit](data-retention-enable-disable.md). Voor het automatisch verwijderen van de verouderde records moet het bewaren van gegevens eerst worden ingeschakeld voor zowel de Data Base als de tabellen die u wilt leegmaken binnen die data base. 
+
+Nadat het bewaren van gegevens is geconfigureerd voor een tabel, wordt een achtergrond taak uitgevoerd om de verouderde records in een tabel te identificeren en de records te verwijderen. Als er om de een of andere reden het automatisch opschonen van de taken niet wordt uitgevoerd of niet kan worden bewaard, kan de verwijdering niet worden bijgewerkt. vervolgens kan een hand matige opschoon bewerking worden uitgevoerd voor deze tabellen. Raadpleeg [automatische en hand matige opschoning](data-retention-cleanup.md)voor meer informatie over automatische en hand matige opschoning.
+
+## <a name="limitations-and-restrictions"></a>Beperkingen en beperkingen
+
+- Bewaren van gegevens, indien ingeschakeld, wordt automatisch uitgeschakeld wanneer de data base wordt hersteld vanuit een volledige back-up of opnieuw wordt gekoppeld. 
+- Bewaren van gegevens kan niet worden ingeschakeld voor een tijdelijke geschiedenis tabel
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Machine learning en kunst matige intelligentie met ONNX in SQL Edge](onnx-overview.md).
+- [Bouw een end-to-end IOT-oplossing met SQL Edge met behulp van IOT Edge](tutorial-deploy-azure-resources.md).
+- [Gegevens stromen in Azure SQL Edge](stream-data.md)

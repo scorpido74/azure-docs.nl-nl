@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559436"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514234"
 ---
 # <a name="upstream-settings"></a>Upstream-instellingen
 
-Upstream is een functie waarmee de Azure signalerings service berichten en verbindings gebeurtenissen kan verzenden naar een set eind punten in de serverloze modus. U kunt upstream gebruiken om een hub-methode aan te roepen van clients in de serverloze modus, en laat eind punten een melding ontvangen wanneer client verbindingen zijn verbonden of verbroken.
+Upstream is een preview-functie waarmee de Azure signalerings service berichten en verbindings gebeurtenissen kan verzenden naar een set eind punten in de serverloze modus. U kunt upstream gebruiken om een hub-methode aan te roepen van clients in de serverloze modus, en laat eind punten een melding ontvangen wanneer client verbindingen zijn verbonden of verbroken.
 
 > [!NOTE]
 > Alleen serverloze modus kan upstream-instellingen configureren.
@@ -34,7 +34,7 @@ Wanneer de opgegeven gebeurtenis plaatsvindt, worden de regels van een item éé
 
 U kunt de URL voor het ondersteunen van verschillende patronen para meters. Er zijn drie vooraf gedefinieerde para meters:
 
-|Vooraf gedefinieerde para meter|Description|
+|Vooraf gedefinieerde para meter|Beschrijving|
 |---------|---------|
 |hub| Een hub is een concept van de Azure signalerings service. Een hub is een isolatie-eenheid. Het bereik van gebruikers en bericht levering is beperkt tot een hub.|
 |rubriek| Een categorie kan een van de volgende waarden hebben: <ul><li>**verbindingen**: levens duur van de verbinding. Het wordt geactiveerd wanneer een client verbinding is verbonden of verbroken. Het bevat verbonden en niet-verbonden gebeurtenissen.</li><li>**berichten**: wordt geactiveerd wanneer clients een hub-methode aanroepen. Het bevat alle andere gebeurtenissen, behalve die in de categorie **verbindingen** .</li></ul>|
@@ -60,6 +60,10 @@ U kunt *regels voor kanbanregels*, *categorie regels*en *gebeurtenis regels* afz
 - Gebruik een komma (,) om lid te worden van meerdere gebeurtenissen. Bijvoorbeeld, `connected, disconnected` komt overeen met de gebeurtenissen Connected en disconnected.
 - De volledige gebeurtenis naam moet overeenkomen met de gebeurtenis. Bijvoorbeeld, `connected` komt overeen met de gebeurtenis Connected.
 
+> [!NOTE]
+> Als u gebruikmaakt van Azure Functions en [signaal schakelaar](../azure-functions/functions-bindings-signalr-service-trigger.md), wordt door de signaal trigger een enkel eind punt beschikbaar gesteld in de volgende indeling: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
+> U kunt de URL-sjabloon alleen configureren voor deze URL.
+
 ### <a name="authentication-settings"></a>Verificatie-instellingen
 
 U kunt verificatie voor elk item van een upstream-instelling afzonderlijk configureren. Wanneer u authenticatie configureert, wordt een token ingesteld in de `Authentication` koptekst van het upstream-bericht. De Azure signalerings service ondersteunt momenteel de volgende verificatie typen:
@@ -78,7 +82,7 @@ Wanneer u selecteert `ManagedIdentity` , moet u een beheerde identiteit in de Az
 3. Voeg Url's toe onder het URL-patroon van de **upstream**. Vervolgens wordt de standaard waarde weer gegeven in de instellingen van de **hub** .
 4. Als u instellingen wilt instellen voor **regels**voor de hub, **gebeurtenis regels**, **categorie regels**en **upstream-verificatie**, selecteert u de waarde hub- **regels**. Er wordt een pagina weer gegeven waarin u de instellingen kunt bewerken:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Upstream-instellingen":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Details van de upstream-instelling":::
 
 5. Als u een **upstream-verificatie**wilt instellen, moet u ervoor zorgen dat u eerst een beheerde identiteit hebt ingeschakeld. Selecteer vervolgens **beheerde identiteit gebruiken**. Afhankelijk van uw behoeften kunt u opties selecteren onder **verificatie resource-id**. Zie [beheerde identiteiten voor de Azure signalerings service](howto-use-managed-identity.md) voor meer informatie.
 
@@ -139,17 +143,17 @@ Content-type: Application/JSON
 
 #### <a name="disconnected"></a>Ontkoppeld
 
-Inhouds type:`application/json`
+Inhouds type: `application/json`
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |Fout |tekenreeks |Het fout bericht van een gesloten verbinding. Leeg wanneer de verbindingen worden gesloten zonder dat er een fout optreedt.|
 
 #### <a name="invocation-message"></a>Aanroep bericht
 
-Content-type: `application/json` of`application/x-msgpack`
+Content-type: `application/json` of `application/x-msgpack`
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |InvocationId |tekenreeks | Een optionele teken reeks die een aanroep bericht vertegenwoordigt. Details zoeken in [aanroepen](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Doel |tekenreeks | Hetzelfde als de gebeurtenis en dezelfde als het doel in een [aanroep bericht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |

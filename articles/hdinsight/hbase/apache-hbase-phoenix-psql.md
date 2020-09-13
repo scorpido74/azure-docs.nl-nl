@@ -1,19 +1,19 @@
 ---
 title: Bulksgewijs laden in Apache Phoenix met behulp van psql-Azure HDInsight
 description: Gebruik het psql-hulp programma voor het laden van gegevens voor bulksgewijs laden in Apache Phoenix tabellen in azure HDInsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: c46b15c6744ba9d3f83260ffaac24c4ee1cdd776
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 513d48114d73b2c91ebecf06f9492a6ebf0ba1cf
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079476"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504703"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Bulksgewijs gegevens laden in Apache Phoenix met psql
 
@@ -33,7 +33,7 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Gebruiken `psql` om tabellen bulksgewijs te laden
 
-1. Maak een bestand `createCustomersTable.sql` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand op en sluit het.
+1. Maak een bestand `createCustomersTable.sql` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand vervolgens op en sluit het.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +44,13 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
         Country varchar);
     ```
 
-1. Maak een bestand `listCustomers.sql` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand op en sluit het.
+1. Maak een bestand `listCustomers.sql` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand vervolgens op en sluit het.
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. Maak een bestand `customers.csv` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand op en sluit het.
+1. Maak een bestand `customers.csv` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand vervolgens op en sluit het.
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +58,7 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
     3,Anton,550150.0,42,Norway
     ```
 
-1. Maak een bestand `customers2.csv` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand op en sluit het.
+1. Maak een bestand `customers2.csv` met de naam en kopieer de onderstaande code naar het bestand. Sla het bestand vervolgens op en sluit het.
 
     ```txt
     4,Nicolle,180000.0,22,US
@@ -72,7 +72,7 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
     scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

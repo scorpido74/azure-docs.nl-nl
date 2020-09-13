@@ -2,13 +2,13 @@
 title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079504"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566123"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources
 
@@ -99,12 +99,12 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Falcon](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Micro soft. Genomics](#microsoftgenomics)
-> - [Micro soft. GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Micro soft. HanaOnAzure](#microsofthanaonazure)
 > - [Micro soft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Micro soft. HealthcareApis](#microsofthealthcareapis)
-> - [Micro soft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Micro soft. HybridData](#microsofthybriddata)
 > - [Micro soft. HybridNetwork](#microsofthybridnetwork)
 > - [Micro soft. Hydra](#microsofthydra)
@@ -175,7 +175,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
 > - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.Storage](#microsoftstorage)
+> - [Micro soft. Storage](#microsoftstorage)
 > - [Micro soft. StorageCache](#microsoftstoragecache)
 > - [Micro soft. StorageSync](#microsoftstoragesync)
 > - [Micro soft. StorageSyncDev](#microsoftstoragesyncdev)
@@ -188,7 +188,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Synapse](#microsoftsynapse)
 > - [Micro soft. TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Micro soft. token](#microsofttoken)
-> - [Micro soft. VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [micro soft. Visual Studio](#microsoftvisualstudio)
 > - [Micro soft. VMware](#microsoftvmware)
 > - [Micro soft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
@@ -728,7 +728,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | mogelijkheden | Nee | Nee |
 > | checkdomainnameavailability | Nee | Nee |
-> | domein naam | Yes | No |
+> | domein naam | Ja | Nee |
 > | domein naam/mogelijkheden | Nee | Nee |
 > | domein naam/internalloadbalancers | Nee | Nee |
 > | domein naam/servicecertificates | Nee | Nee |
@@ -744,7 +744,7 @@ Ga naar de naam ruimte van een resource provider:
 > | quotas | Nee | Nee |
 > | resourcetypes | Nee | Nee |
 > | validatesubscriptionmoveavailability | Nee | Nee |
-> | informatie | Ja | No |
+> | informatie | Ja | Ja |
 > | informatie/diagnosticsettings | Nee | Nee |
 > | informatie/metricdefinitions | Nee | Nee |
 > | informatie/meet waarden | Nee | Nee |
@@ -796,7 +796,7 @@ Ga naar de naam ruimte van een resource provider:
 > | osplatformimages | Nee | Nee |
 > | publicimages | Nee | Nee |
 > | quotas | Nee | Nee |
-> | Storage accounts | Yes | No |
+> | Storage accounts | Ja | Nee |
 > | Storage accounts/blobservices | Nee | Nee |
 > | Storage accounts/fileservices | Nee | Nee |
 > | Storage accounts/metricdefinitions | Nee | Nee |
@@ -1078,7 +1078,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | bewerkingen | Nee | Nee |
-> | aanvragen | Nee | Nee |
+> | requests | Nee | Nee |
 
 ## <a name="microsoftcustomproviders"></a>Micro soft. CustomProviders
 
@@ -1125,7 +1125,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/getnetworkpolicies | Nee | Nee |
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | werkruimten | Nee | Nee |
+> | workspaces | Nee | Nee |
 > | werk ruimten/dbworkspaces | Nee | Nee |
 > | werk ruimten/virtualnetworkpeerings | Nee | Nee |
 
@@ -1393,7 +1393,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostpools / sessionhosts / usersessions | Nee | Nee |
 > | hostpools / usersessions | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -1437,10 +1437,10 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nee | Nee |
-> | Labs | Yes | No |
+> | Labs | Ja | Nee |
 > | Labs/omgevingen | Ja | Ja |
 > | Labs-servicerunners | Ja | Ja |
-> | Labs-informatie | Yes | No |
+> | Labs-informatie | Ja | Nee |
 > | locaties | Nee | Nee |
 > | locaties/bewerkingen | Nee | Nee |
 > | bewerkingen | Nee | Nee |
@@ -1533,24 +1533,24 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties | Nee | Nee |
 > | locaties/deletevirtualnetworkorsubnets | Nee | Nee |
 > | naam ruimten | Ja | Ja |
-> | naam ruimten/authorizationrules | Nee | No |
-> | naam ruimten/disasterrecoveryconfigs | Nee | No |
-> | naam ruimten/disasterrecoveryconfigs/checknameavailability | Nee | No |
-> | naam ruimten/Event hubs | Nee | No |
-> | naam ruimten/Event hubs/authorizationrules | Nee | No |
-> | naam ruimten/Event hubs/consumergroups | Nee | No |
-> | naam ruimten/networkrulesets | Nee | No |
-> | bewerkingen | Nee | No |
-> | sku | Nee | No |
+> | naam ruimten/authorizationrules | Nee | Nee |
+> | naam ruimten/disasterrecoveryconfigs | Nee | Nee |
+> | naam ruimten/disasterrecoveryconfigs/checknameavailability | Nee | Nee |
+> | naam ruimten/Event hubs | Nee | Nee |
+> | naam ruimten/Event hubs/authorizationrules | Nee | Nee |
+> | naam ruimten/Event hubs/consumergroups | Nee | Nee |
+> | naam ruimten/networkrulesets | Nee | Nee |
+> | bewerkingen | Nee | Nee |
+> | sku | Nee | Nee |
 
 ## <a name="microsoftexperimentation"></a>Micro soft. experimenten
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | Nee | No |
-> | locaties | Nee | No |
-> | locaties/bewerkingen | Nee | No |
+> | experimentworkspaces | Nee | Nee |
+> | locaties | Nee | Nee |
+> | locaties/bewerkingen | Nee | Nee |
 
 ## <a name="microsoftfalcon"></a>Micro soft. Falcon
 
@@ -1564,31 +1564,31 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | featureproviders | Nee | No |
-> | features | Nee | No |
-> | bewerkingen | Nee | No |
-> | providers | Nee | No |
-> | subscriptionfeatureregistrations | Nee | No |
+> | featureproviders | Nee | Nee |
+> | features | Nee | Nee |
+> | bewerkingen | Nee | Nee |
+> | providers | Nee | Nee |
+> | subscriptionfeatureregistrations | Nee | Nee |
 
 ## <a name="microsoftgenomics"></a>Micro soft. Genomics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nee | No |
+> | accounts | Nee | Nee |
 
-## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | automanagedaccounts | Nee | No |
-> | automanagedvmconfigurationprofiles | Nee | No |
-> | guestconfigurationassignments | Nee | No |
-> | bewerkingen | Nee | No |
-> | software | Nee | No |
-> | softwareupdateprofile | Nee | No |
-> | softwareupdates | Nee | No |
+> | automanagedaccounts | Nee | Nee |
+> | automanagedvmconfigurationprofiles | Nee | Nee |
+> | guestconfigurationassignments | Nee | Nee |
+> | bewerkingen | Nee | Nee |
+> | software | Nee | Nee |
+> | softwareupdateprofile | Nee | Nee |
+> | softwareupdates | Nee | Nee |
 
 ## <a name="microsofthanaonazure"></a>Micro soft. HanaOnAzure
 
@@ -1646,7 +1646,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Services/privateendpointconnections | Nee | Nee |
 > | Services/privatelinkresources | Nee | Nee |
 
-## <a name="microsofthybridcompute"></a>Micro soft. HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1866,8 +1866,8 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nee | Nee |
 > | integrationaccounts | Ja | Ja |
-> | integrationserviceenvironments | Yes | No |
-> | integrationserviceenvironments/beheerdeapi's | Yes | No |
+> | integrationserviceenvironments | Ja | Nee |
+> | integrationserviceenvironments/beheerdeapi's | Ja | Nee |
 > | isolatedenvironments | Nee | Nee |
 > | locaties | Nee | Nee |
 > | locaties/werk stromen | Nee | Nee |
@@ -1884,8 +1884,8 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/bewerkingen | Nee | Nee |
 > | locaties/operationsstatus | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | webservices | Yes | No |
-> | werkruimten | Ja | Ja |
+> | webservices | Ja | Nee |
+> | workspaces | Ja | Ja |
 
 ## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
 
@@ -1926,7 +1926,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/toegestane VM | Nee | Nee |
 > | locaties/workspaceoperationsstatus | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | werkruimten | Nee | Nee |
+> | workspaces | Nee | Nee |
 > | werk ruimten/reken bewerkingen | Nee | Nee |
 > | werk ruimten/eventgridfilters | Nee | Nee |
 
@@ -2197,10 +2197,10 @@ Ga naar de naam ruimte van een resource provider:
 > | networkinterfaces | Ja | Ja |
 > | networkprofiles | Nee | Nee |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Yes | No |
-> | networkwatchers / connectionmonitors | Yes | No |
-> | networkwatchers / flowlogs | Yes | No |
-> | networkwatchers / pingmeshes | Yes | No |
+> | networkwatchers | Ja | Nee |
+> | networkwatchers / connectionmonitors | Ja | Nee |
+> | networkwatchers / flowlogs | Ja | Nee |
+> | networkwatchers / pingmeshes | Ja | Nee |
 > | bewerkingen | Nee | Nee |
 > | p2svpngateways | Nee | Nee |
 > | privatednsoperationresults | Nee | Nee |
@@ -2287,7 +2287,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
 > | storageinsightconfigs | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/gegevens bronnen | Nee | Nee |
 > | werk ruimten/linkedservices | Nee | Nee |
 > | werk ruimten/linkedstorageaccounts | Nee | Nee |
@@ -2402,7 +2402,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties | Nee | Nee |
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | werkruimten | Nee | Nee |
+> | workspaces | Nee | Nee |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -2523,7 +2523,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | toepassingen | Ja | No |
+> | toepassingen | Ja | Nee |
 > | checkmoderneligibility | Nee | Nee |
 > | checknameavailability | Nee | Nee |
 > | operationresults | Nee | Nee |
@@ -2789,7 +2789,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/jobagentoperationresults | Nee | Nee |
 > | locaties/longtermretentionbackupazureasyncoperation | Nee | Nee |
 > | locaties/longtermretentionbackupoperationresults | Nee | Nee |
-> | locaties/longtermretentionbackups | Nee | Nee |
+> | locaties/longtermretentionbackups | Ja | Ja |
 > | locaties/longtermretentionmanagedinstancebackupazureasyncoperation | Nee | Nee |
 > | locaties/longtermretentionmanagedinstancebackupoperationresults | Nee | Nee |
 > | locaties/longtermretentionmanagedinstancebackups | Nee | Nee |
@@ -2872,7 +2872,7 @@ Ga naar de naam ruimte van een resource provider:
 > | servers/data bases/auditingsettings | Nee | Nee |
 > | servers/data bases/auditrecords | Nee | Nee |
 > | servers/data bases/automatictuning | Nee | Nee |
-> | servers/data bases/backuplongtermretentionpolicies | Nee | Nee |
+> | servers/data bases/backuplongtermretentionpolicies | Ja | Ja |
 > | servers/data bases/backupshorttermretentionpolicies | Nee | Nee |
 > | servers/data bases/connectionpolicies | Nee | Nee |
 > | servers/data bases/datamaskingpolicies | Nee | Nee |
@@ -3070,7 +3070,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/bigdatapools | Ja | Ja |
 > | werk ruimten/operationresults | Nee | Nee |
 > | werk ruimten/operationstatuses | Nee | Nee |
@@ -3097,7 +3097,7 @@ Ga naar de naam ruimte van een resource provider:
 > | winkels/Services | Nee | Nee |
 > | archieven/Services/tokens | Nee | Nee |
 
-## <a name="microsoftvirtualmachineimages"></a>Micro soft. VirtualMachineImages
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -3186,7 +3186,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | availablestacks | Nee | Nee |
 > | billingmeters | Nee | Nee |
-> | certificaten | No | Yes |
+> | certificaten | Nee | Ja |
 > | checknameavailability | Nee | Nee |
 > | connectiongateways | Ja | Ja |
 > | inbel | Ja | Ja |
