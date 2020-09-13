@@ -3,27 +3,23 @@ title: Persoonlijke koppeling instellen
 description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523839"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488742"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling
 
 
-Beperk de toegang tot een REGI ster door particuliere IP-adressen voor het virtuele netwerk toe te wijzen aan de register eindpunten en met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) Netwerk verkeer tussen de clients in het virtuele netwerk en de persoonlijke eind punten van het REGI ster passeren het virtuele netwerk en een privé-koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. Met persoonlijke koppeling kunt u ook persoonlijke toegang via het REGI ster inschakelen vanuit on-premises via [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) private peering of een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Beperk de toegang tot een REGI ster door particuliere IP-adressen voor het virtuele netwerk toe te wijzen aan de register eindpunten en met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) Netwerk verkeer tussen de clients in het virtuele netwerk en de persoonlijke eind punten van het REGI ster passeren het virtuele netwerk en een privé-koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. Met persoonlijke koppeling kunt u ook persoonlijke toegang tot het REGI ster vanuit on-premises via [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) private peering of een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 U kunt [DNS-instellingen configureren](../private-link/private-endpoint-overview.md#dns-configuration) voor de privé-eind punten van het REGI ster, zodat de instellingen kunnen worden omgezet in het toegewezen privé IP-adres van het REGI ster. Met DNS-configuratie kunnen clients en services in het netwerk het REGI ster blijven gebruiken op het Fully Qualified Domain Name van het REGI ster, zoals *myregistry.azurecr.io*. 
 
-Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
+Deze functie is beschikbaar in de service tier van het **Premium** -container register. Momenteel kunnen Maxi maal tien privé-eind punten worden ingesteld voor een REGI ster. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
 
-
-## <a name="things-to-know"></a>Dingen die u moet weten
-
-* Het scannen van afbeeldingen met behulp van Azure Security Center is momenteel niet beschikbaar in een REGI ster dat is geconfigureerd met een persoonlijk eind punt.
-* Momenteel kunnen Maxi maal tien privé-eind punten worden ingesteld voor een REGI ster.
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

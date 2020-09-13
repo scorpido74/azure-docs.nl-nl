@@ -1,19 +1,19 @@
 ---
 title: Grondige kennis-geavanceerde analyses-Azure HDInsight
 description: Meer informatie over hoe geavanceerde analyse algoritmen gebruikt voor het verwerken van big data in azure HDInsight.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079357"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504346"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Diep gaande kennis-geavanceerde analyse
 
@@ -42,7 +42,7 @@ Samen met het selecteren van de beste algoritme (s), moet u overwegen of u gegev
 * Niet onder Super visie: algoritme vereist geen trainings gegevens
 * Versterking-algoritme maakt gebruik van software-agents om het ideale gedrag binnen een specifieke context te bepalen (vaak gebruikt in Robotics)
 
-| Categorie Algorithm| Gebruiken | Type training | Algoritmen |
+| Categorie Algorithm| Gebruik | Type training | Algoritmen |
 | --- | --- | --- | -- |
 | Classificatie | Mensen of dingen classificeren in groepen | Onder supervisie | Beslissings structuren, logistiek regressie, Neural netwerken |
 | Clustering | Een reeks voor beelden delen in homogene groepen | Zonder super visie | k-means clustering |
@@ -67,7 +67,7 @@ Er zijn drie schaal bare machine learning bibliotheken die algoritmen model lere
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib bevat de oorspronkelijke API die boven op Spark-rdd's is gebouwd.
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML is een nieuwer pakket met een op Spark-DataFrames gebouwde API met een hoger niveau voor het bouwen van ml-pijp lijnen.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) : de micro soft machine learning-bibliotheek voor Apache Spark (MMLSpark) is ontworpen om gegevens wetenschappers productiever te maken op Spark, om het aantal experimenten te verhogen en te profiteren van geavanceerde machine learning technieken, waaronder diep gaande informatie over zeer grote gegevens sets. De MMLSpark-bibliotheek vereenvoudigt veelvoorkomende model taken voor het bouwen van modellen in PySpark.
+* [**MMLSpark**](https://github.com/Azure/mmlspark)  : de micro soft machine learning-bibliotheek voor Apache Spark (MMLSpark) is ontworpen om gegevens wetenschappers productiever te maken op Spark, om het aantal experimenten te verhogen en te profiteren van geavanceerde machine learning technieken, waaronder diep gaande informatie over zeer grote gegevens sets. De MMLSpark-bibliotheek vereenvoudigt veelvoorkomende model taken voor het bouwen van modellen in PySpark.
 
 ### <a name="r-and-ml-services"></a>R-en ML-Services
 

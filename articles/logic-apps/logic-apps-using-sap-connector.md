@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833892"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488844"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -124,7 +124,7 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
 
 ### <a name="sap-client-library-prerequisites"></a>Vereisten voor SAP-client bibliotheek
 
-* Zorg ervoor dat u de meest recente versie [van SAP connector (NCo 3,0) installeert voor Microsoft .net 3.0.22.0 gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://softwaredownloads.sap.com/file/0020000001000932019). Eerdere versies kunnen leiden tot compatibiliteits problemen. Zie versies van SAP- [client bibliotheek](#sap-library-versions)voor meer informatie.
+* Zorg ervoor dat u de meest recente versie [van SAP connector (NCo 3,0) installeert voor Microsoft .net 3.0.22.0 gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://support.sap.com/en/product/connectors/msnet.html). Eerdere versies kunnen leiden tot compatibiliteits problemen. Zie versies van SAP- [client bibliotheek](#sap-library-versions)voor meer informatie.
 
 * Standaard plaatst het SAP-installatie programma de assembly bestanden in de standaardmap voor installatie. U moet de volgende assembly bestanden naar een andere locatie kopiëren, op basis van uw scenario:
 
@@ -396,7 +396,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
    U kunt ook hand matig een actie opgeven:
 
-   ![SAP-actie hand matig invoeren](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![Voer hand matig een SAP-actie in die u wilt gebruiken](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Hier volgt een voor beeld waarin wordt getoond hoe de actie wordt weer gegeven wanneer u de trigger zo instelt dat er meer dan één bericht wordt ontvangen.
 
@@ -808,12 +808,12 @@ Als u een gewoon SAP IDoc XML-schema wilt genereren, gebruikt u de **SAP-aanmeld
 
 In dit voor beeld worden het hoofd knooppunt en de naam ruimten gedeclareerd. De URI in de voorbeeld code, `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` en declareert de volgende configuratie:
 
-* `/IDoc`is de hoofd notitie voor alle IDocs
-* `/3`is de record type versie voor algemene segment definities
-* `/ORDERS05`is het type IDoc
-* `//`is een leeg segment, omdat er geen IDoc-extensie is
-* `/700`is de SAP-versie
-* `/Send`is de actie voor het verzenden van de informatie naar SAP
+* `/IDoc` is de hoofd notitie voor alle IDocs
+* `/3` is de record type versie voor algemene segment definities
+* `/ORDERS05` is het type IDoc
+* `//` is een leeg segment, omdat er geen IDoc-extensie is
+* `/700` is de SAP-versie
+* `/Send` is de actie voor het verzenden van de informatie naar SAP
 
 ```xml
 

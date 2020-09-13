@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119392"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484338"
 ---
 # <a name="publishing-guide-for-container-offers"></a>Publicatie handleiding voor container aanbiedingen
 
 Met container aanbiedingen kunt u uw container installatie kopie naar Azure Marketplace publiceren. Gebruik deze hand leiding om inzicht te krijgen in de vereisten voor deze aanbieding. 
 
-Container aanbiedingen zijn transactie aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. De aanroep van een actie die een gebruiker ziet is ' nu ophalen '.
+Container aanbiedingen zijn transactie aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. De optie voor het weer geven van een gebruiker is ' nu ophalen '.
 
 Gebruik het type *container* aanbod wanneer uw oplossing een docker-container installatie kopie is die is ingesteld als een Kubernetes Azure container service-exemplaar. 
 

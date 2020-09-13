@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855194"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488555"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Time Series-model in Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ In dit artikel worden de tijdreeks modellen, de mogelijkheden en het maken en bi
 > [!TIP]
 >
 > * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
-> * Meer informatie [over het werken met een time series-model](/azure/time-series-insights/how-to-edit-your-model) met behulp van de Azure time series Insights TSI Explorer.
+> * Meer informatie [over het werken met een time series-model](/azure/time-series-insights/how-to-edit-your-model) met behulp van de Azure time series Insights Explorer.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -75,7 +75,7 @@ Deze onderdelen worden gecombineerd om een time series-model op te geven en om u
 
 [![Overzichts grafiek voor tijdreeks model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Een tijdreeks model kan worden gemaakt en beheerd via de [Azure time series INSIGHTS TSI-Verkenner](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
+Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Explorer](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Exemplaren van de time series-model
 
@@ -87,7 +87,7 @@ Instanties bevatten beschrijvende informatie die betrekking heeft op *instantie-
 
 *Exemplaar velden* zijn een verzameling beschrijvende gegevens die waarden voor hiërarchie niveaus kunnen bevatten, evenals de fabrikant, operator, enzovoort.
 
-Nadat een gebeurtenis bron is geconfigureerd voor de Azure Time Series Insights Gen2-omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen worden gemaakt of bijgewerkt via de Azure Time Series Insights TSI-Verkenner door gebruik te maken van Time Series-model query's.
+Nadat een gebeurtenis bron is geconfigureerd voor de Azure Time Series Insights Gen2-omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen via de Azure Time Series Insights Explorer worden gemaakt of bijgewerkt door gebruik te maken van Time Series-model query's.
 
 De [demo](https://insights.timeseries.azure.com/preview/samples) van de contoso-Farm bevat enkele voor beelden van Live instances.
 
@@ -102,7 +102,7 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | timeSeriesId | De unieke ID van de tijd reeks waaraan het exemplaar is gekoppeld. In de meeste gevallen worden instanties uniek geïdentificeerd door een eigenschap zoals deviceId of assetId. In sommige gevallen kan een specifiek samengestelde ID worden gebruikt die Maxi maal drie eigenschappen combineert. |
 | typeId | De hoofdletter gevoelige unieke teken reeks-ID van het tijds reeks model waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
 | naam | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
-| beschrijving | Een tekst beschrijving van het exemplaar. |
+| description | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
 
@@ -216,7 +216,7 @@ Op basis van de instantie velden die worden gebruikt in de vorige definitie en e
 | ID4 | ' buil ding ' = ' 1000 ', ' Floor ' = ' 10 '  |
 | ID5 | Geen: ' buil ding ', ' Floor ' of ' room ' is ingesteld. |
 
-Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights TSI-Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben.
+Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben gedefinieerd.
 
 De andere zijn ingedeeld onder niet- *bovenliggende instanties* , omdat ze niet voldoen aan de opgegeven gegevens hiërarchie.
 
@@ -241,7 +241,7 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 | ---| ---|
 | id | De hoofdletter gevoelige unieke teken reeks-ID voor het type. |
 | naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
-| beschrijving | Een beschrijving van de teken reeks voor het type. |
+| description | Een beschrijving van de teken reeks voor het type. |
 | variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 
 Typen voldoen aan het volgende JSON-voor beeld:

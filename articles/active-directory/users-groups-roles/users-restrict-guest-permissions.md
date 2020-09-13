@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798428"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489643"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Machtigingen voor gast toegang (preview) beperken in Azure Active Directory
 
@@ -40,10 +40,7 @@ U moet de rol globale beheerder hebben om de instellingen voor externe samen wer
 
 Er zijn wijzigingen aangebracht in de bestaande Azure Portal-besturings elementen voor gast gebruikers machtigingen.
 
-> [!IMPORTANT]
-> Voor een korte periode zijn de nieuwe portal-besturings elementen voor gast gebruikers machtigingen alleen zichtbaar via de URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Power shell en Microsoft Graph kunnen nog steeds worden gebruikt om de besturings elementen in te stellen en wijzigingen worden door de portal gehonoreerd.
-
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aka.ms/AADRestrictedGuestAccess) met globale beheerders machtigingen.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met globale beheerders machtigingen.
 1. Selecteer op de pagina **Azure Active Directory** overzicht voor uw organisatie de optie **gebruikers instellingen**.
 1. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 1. Selecteer op de pagina **externe samenwerkings instellingen** de optie **gast gebruikers toegang is beperkt tot de eigenschappen en lidmaatschappen van hun eigen Directory-objecten** .

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/04/2020
+ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932947"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488300"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -85,6 +85,7 @@ Als u met teken reeksen wilt werken, kunt u deze teken reeks functies en ook bep
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Genereer een Globally Unique Identifier (GUID) als een teken reeks. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Retourneert de begin positie van een subtekenreeks. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Retourneert de begin positie voor het laatste exemplaar van een subtekenreeks. |
+| [lange](../logic-apps/workflow-definition-language-functions-reference.md#length) | Retourneert het aantal items in een teken reeks of matrix. |
 | [vervangen](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Vervang een subtekenreeks door de opgegeven teken reeks en retour neer de bijgewerkte teken reeks. |
 | [delen](../logic-apps/workflow-definition-language-functions-reference.md#split) | Retourneert een matrix die subtekenreeksen bevat, gescheiden door komma's, van een grotere teken reeks op basis van een opgegeven scheidings teken in de oorspronkelijke teken reeks. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Controleren of een teken reeks begint met een specifieke subtekenreeks. |
@@ -127,7 +128,7 @@ Als u met voor waarden wilt werken, vergelijkt u waarden en expressie resultaten
 | Logische vergelijkings functie | Taak |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Controleer of alle expressies waar zijn. |
-| [is gelijk aan](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Controleer of beide waarden gelijk zijn. |
+| [gelijk is aan](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Controleer of beide waarden gelijk zijn. |
 | [groter](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Controleer of de eerste waarde groter is dan de tweede waarde. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Controleer of de eerste waarde groter is dan of gelijk is aan de tweede waarde. |
 | [If](../logic-apps/workflow-definition-language-functions-reference.md#if) | Controleer of een expressie True of False is. Retour neer een opgegeven waarde op basis van het resultaat. |
@@ -165,7 +166,7 @@ Als u het type of de indeling van een waarde wilt wijzigen, kunt u deze conversi
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Retourneert een drijvende-komma waarde voor een invoer waarde. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Retourneert de versie met gehele getallen voor een teken reeks. |
 | [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | De waarde of het object van het type JavaScript Object Notation (JSON) retour neren voor een teken reeks of XML. |
-| [tekenreeksexpressie](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
+| [tekenreeks](../logic-apps/workflow-definition-language-functions-reference.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | De versie van de URI-code ring retour neren voor een invoer waarde door onveilige URL-tekens te vervangen door Escape tekens. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Retourneert de binaire versie voor een teken reeks met URI-code ring. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Retourneert de versie van de teken reeks voor een teken reeks met URI-code ring. |
@@ -213,7 +214,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [toe](../logic-apps/workflow-definition-language-functions-reference.md#add) | Het resultaat van het toevoegen van twee getallen retour neren. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Retourneert het resultaat van het delen van twee getallen. |
 | [aantal](../logic-apps/workflow-definition-language-functions-reference.md#max) | Retourneert de hoogste waarde van een reeks getallen of een matrix. |
-| [Haal](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
+| [min.](../logic-apps/workflow-definition-language-functions-reference.md#min) | Retourneert de laagste waarde van een reeks getallen of een matrix. |
 | [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Retourneert de rest van het delen van twee getallen. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Retourneert het product van het vermenigvuldigen van twee getallen. |
 | [ASELECT](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Retourneert een wille keurig geheel getal uit een opgegeven bereik. |
@@ -523,7 +524,7 @@ add(<summand_1>, <summand_2>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <<*summand_2* *summand_1*>> | Ja | Geheel getal, vlotter of gemengd | De toe te voegen getallen |
+| <<*summand_2* *summand_1*>> | Yes | Geheel getal, vlotter of gemengd | De toe te voegen getallen |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -681,7 +682,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Het JSON-object waaraan u een eigenschap wilt toevoegen |
 | <*eigenschap*> | Ja | Tekenreeks | De naam van de toe te voegen eigenschap |
-| <*Value*> | Ja | Alle | De waarde voor de eigenschap |
+| <*Value*> | Yes | Elk | De waarde voor de eigenschap |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -700,7 +701,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*object*> | Ja | Object | Het JSON-object waaraan u een eigenschap wilt toevoegen |
 | <*Parent-eigenschap*> | Ja | Tekenreeks | De naam van de bovenliggende eigenschap waaraan u de onderliggende eigenschap wilt toevoegen |
 | <*Child-eigenschap*> | Ja | Tekenreeks | De naam van de onderliggende eigenschap die moet worden toegevoegd |
-| <*Value*> | Ja | Alle | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
+| <*Value*> | Yes | Elk | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1128,7 +1129,7 @@ bool(<value>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Alle | De waarde die moet worden geconverteerd naar Booleaans. |
+| <*Value*> | Yes | Elk | De waarde die moet worden geconverteerd naar Booleaans. |
 |||||
 
 Als u `bool()` met een-object werkt, moet de waarde van het object een teken reeks of een geheel getal zijn dat kan worden geconverteerd naar een Boolean.
@@ -1163,12 +1164,12 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Ja | Any, kan typen combi neren | Een of meer items die moeten worden gecontroleerd op null |
+| <*object_1*>, <*object_2*>,... | Yes | Any, kan typen combi neren | Een of meer items die moeten worden gecontroleerd op null |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*eerste niet-null-item*> | Alle | Het eerste item of de waarde die niet null is. Als alle para meters null zijn, retourneert deze functie null. |
+| <*eerste niet-null-item*> | Elk | Het eerste item of de waarde die niet null is. Als alle para meters null zijn, retourneert deze functie null. |
 ||||
 
 *Voorbeeld*
@@ -1219,7 +1220,7 @@ En retourneert dit resultaat: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>bevat
+### <a name="contains"></a>contains
 
 Controleer of een verzameling een specifiek item heeft.
 Retourneert waar wanneer het item is gevonden, of retourneert onwaar als het niet is gevonden.
@@ -1238,8 +1239,8 @@ Deze functie werkt met name voor deze typen verzamelingen:
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks, matrix of woorden lijst | De verzameling die moet worden gecontroleerd |
-| <*Value*> | Ja | Respectievelijk een teken reeks, matrix of woorden lijst | Het item dat u wilt zoeken |
+| <*innings*> | Yes | Teken reeks, matrix of woorden lijst | De verzameling die moet worden gecontroleerd |
+| <*Value*> | Yes | Respectievelijk een teken reeks, matrix of woorden lijst | Het item dat u wilt zoeken |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1403,7 +1404,7 @@ createArray('<object1>', '<object2>', ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*>,... | Ja | Any, maar niet gemengd | Ten minste twee items om de matrix te maken |
+| <*object1*>, <*object2*>,... | Yes | Any, maar niet gemengd | Ten minste twee items om de matrix te maken |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1694,8 +1695,8 @@ div(<dividend>, <divisor>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*dividend*> | Ja | Geheel getal of zwevend | Het getal dat moet worden gedeeld door de *deler* |
-| <*reken*> | Ja | Geheel getal of zwevend | Het getal dat het *deelt*deel, maar mag niet 0 zijn |
+| <*dividend*> | Yes | Geheel getal of zwevend | Het getal dat moet worden gedeeld door de *deler* |
+| <*reken*> | Yes | Geheel getal of zwevend | Het getal dat het *deelt*deel, maar mag niet 0 zijn |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1768,7 +1769,7 @@ empty([<collection>])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks, matrix of object | De verzameling die moet worden gecontroleerd |
+| <*innings*> | Yes | Teken reeks, matrix of object | De verzameling die moet worden gecontroleerd |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1846,7 +1847,7 @@ equals('<object1>', '<object2>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | Ja | Sommige | De waarden, expressies of objecten die u wilt vergelijken |
+| <*object1*>, <*object2*> | Yes | Sommige | De waarden, expressies of objecten die u wilt vergelijken |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -1881,12 +1882,12 @@ first([<collection>])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks of matrix | De verzameling waar het eerste item moet worden gevonden |
+| <*innings*> | Yes | Teken reeks of matrix | De verzameling waar het eerste item moet worden gevonden |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*eerste verzameling-item*> | Alle | Het eerste item in de verzameling |
+| <*eerste verzameling-item*> | Elk | Het eerste item in de verzameling |
 ||||
 
 *Voorbeeld*
@@ -2040,7 +2041,7 @@ formatNumber(<number>, <format>, <locale>?)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Telwoord*> | Ja | Geheel getal of dubbele waarde | De waarde die u wilt opmaken. |
+| <*Telwoord*> | Yes | Geheel getal of dubbele waarde | De waarde die u wilt opmaken. |
 | <*Formatteer*> | Ja | Tekenreeks | Een samengestelde indelings teken reeks waarmee de indeling wordt opgegeven die u wilt gebruiken. Zie voor de ondersteunde teken reeksen voor numerieke notatie [standaard numerieke teken reeksen](/dotnet/standard/base-types/standard-numeric-format-strings), die worden ondersteund door `number.ToString(<format>, <locale>)` . |
 | <*instelling*> | Nee | Tekenreeks | De land instelling die moet worden gebruikt als ondersteund door `number.ToString(<format>, <locale>)` . Als dat niet is opgegeven, is de standaard waarde `en-us` . |
 |||||
@@ -2184,8 +2185,8 @@ greater('<value>', '<compareTo>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Geheel getal, float of teken reeks | De eerste waarde die moet worden gecontroleerd of deze hoger is dan de tweede waarde |
-| <*compareTo*> | Ja | Respectievelijk geheel getal, float of teken reeks | De vergelijkings waarde |
+| <*Value*> | Yes | Geheel getal, float of teken reeks | De eerste waarde die moet worden gecontroleerd of deze hoger is dan de tweede waarde |
+| <*compareTo*> | Yes | Respectievelijk geheel getal, float of teken reeks | De vergelijkings waarde |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2221,8 +2222,8 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Geheel getal, float of teken reeks | De eerste waarde om te controleren of deze groter dan of gelijk is aan de tweede waarde |
-| <*compareTo*> | Ja | Respectievelijk geheel getal, float of teken reeks | De vergelijkings waarde |
+| <*Value*> | Yes | Geheel getal, float of teken reeks | De eerste waarde om te controleren of deze groter dan of gelijk is aan de tweede waarde |
+| <*compareTo*> | Yes | Respectievelijk geheel getal, float of teken reeks | De vergelijkings waarde |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2293,13 +2294,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
 | <*expressie*> | Ja | Booleaans | De expressie die moet worden gecontroleerd |
-| <*valueIfTrue*> | Ja | Alle | De waarde die moet worden geretourneerd wanneer de expressie waar is |
-| <*valueIfFalse*> | Ja | Alle | De waarde die moet worden geretourneerd wanneer de expressie onwaar is |
+| <*valueIfTrue*> | Yes | Elk | De waarde die moet worden geretourneerd wanneer de expressie waar is |
+| <*valueIfFalse*> | Yes | Elk | De waarde die moet worden geretourneerd wanneer de expressie onwaar is |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*opgegeven-retourneert-waarde*> | Alle | De opgegeven waarde die wordt geretourneerd op basis van het feit of de expressie waar of onwaar is |
+| <*opgegeven-retourneert-waarde*> | Elk | De opgegeven waarde die wordt geretourneerd op basis van het feit of de expressie waar of onwaar is |
 ||||
 
 *Voorbeeld*
@@ -2386,7 +2387,7 @@ item()
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*huidig-matrix-item*> | Alle | Het huidige item in de matrix voor de huidige herhaling van de actie |
+| <*huidig-matrix-item*> | Elk | Het huidige item in de matrix voor de huidige herhaling van de actie |
 ||||
 
 *Voorbeeld*
@@ -2415,7 +2416,7 @@ items('<loopName>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*item*> | Alle | Het item uit de huidige cyclus in de opgegeven for-each-lus |
+| <*item*> | Elk | Het item uit de huidige cyclus in de opgegeven for-each-lus |
 ||||
 
 *Voorbeeld*
@@ -2539,7 +2540,7 @@ json('<value>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Teken reeks of XML | De teken reeks of XML die moet worden geconverteerd |
+| <*Value*> | Yes | Teken reeks of XML | De teken reeks of XML die moet worden geconverteerd |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2611,7 +2612,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*verzameling1*>, <*Collection2*>,... | Ja | Matrix of object, maar niet beide | De verzamelingen van waaruit u *alleen* de algemene items wilt |
+| <*verzameling1*>, <*Collection2*>,... | Yes | Matrix of object, maar niet beide | De verzamelingen van waaruit u *alleen* de algemene items wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2673,7 +2674,7 @@ last([<collection>])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks of matrix | De verzameling waar het laatste item moet worden gevonden |
+| <*innings*> | Yes | Teken reeks of matrix | De verzameling waar het laatste item moet worden gevonden |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2755,7 +2756,7 @@ length([<collection>])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks of matrix | De verzameling met de items die moeten worden geteld |
+| <*innings*> | Yes | Teken reeks of matrix | De verzameling met de items die moeten worden geteld |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2788,8 +2789,8 @@ less('<value>', '<compareTo>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Geheel getal, float of teken reeks | De eerste waarde die moet worden gecontroleerd of minder dan de tweede waarde |
-| <*compareTo*> | Ja | Respectievelijk geheel getal, float of teken reeks | Het vergelijkings item |
+| <*Value*> | Yes | Geheel getal, float of teken reeks | De eerste waarde die moet worden gecontroleerd of minder dan de tweede waarde |
+| <*compareTo*> | Yes | Respectievelijk geheel getal, float of teken reeks | Het vergelijkings item |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2825,8 +2826,8 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Geheel getal, float of teken reeks | De eerste waarde om te controleren of deze kleiner dan of gelijk is aan de tweede waarde |
-| <*compareTo*> | Ja | Respectievelijk geheel getal, float of teken reeks | Het vergelijkings item |
+| <*Value*> | Yes | Geheel getal, float of teken reeks | De eerste waarde om te controleren of deze kleiner dan of gelijk is aan de tweede waarde |
+| <*compareTo*> | Yes | Respectievelijk geheel getal, float of teken reeks | Het vergelijkings item |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2883,8 +2884,8 @@ max([<number1>, <number2>, ...])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*getal1*>, <*getal2*>,... | Ja | Geheel getal, float of beide | De verzameling getallen waarvan u de hoogste waarde wilt |
-| [<*getal1*>, <*getal2*>,...] | Ja | Matrix: geheel getal, float of beide | De matrix van getallen waarvan u de hoogste waarde wilt |
+| <*getal1*>, <*getal2*>,... | Yes | Geheel getal, float of beide | De verzameling getallen waarvan u de hoogste waarde wilt |
+| [<*getal1*>, <*getal2*>,...] | Yes | Matrix: geheel getal, float of beide | De matrix van getallen waarvan u de hoogste waarde wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2916,8 +2917,8 @@ min([<number1>, <number2>, ...])
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*getal1*>, <*getal2*>,... | Ja | Geheel getal, float of beide | De verzameling getallen waarvan u de laagste waarde wilt |
-| [<*getal1*>, <*getal2*>,...] | Ja | Matrix: geheel getal, float of beide | De matrix met getallen waarvan u de laagste waarde wilt |
+| <*getal1*>, <*getal2*>,... | Yes | Geheel getal, float of beide | De verzameling getallen waarvan u de laagste waarde wilt |
+| [<*getal1*>, <*getal2*>,...] | Yes | Matrix: geheel getal, float of beide | De matrix met getallen waarvan u de laagste waarde wilt |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2949,8 +2950,8 @@ mod(<dividend>, <divisor>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*dividend*> | Ja | Geheel getal of zwevend | Het getal dat moet worden gedeeld door de *deler* |
-| <*reken*> | Ja | Geheel getal of zwevend | Het getal dat het *deelt*deel, maar mag niet 0 zijn. |
+| <*dividend*> | Yes | Geheel getal of zwevend | Het getal dat moet worden gedeeld door de *deler* |
+| <*reken*> | Yes | Geheel getal of zwevend | Het getal dat het *deelt*deel, maar mag niet 0 zijn. |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -2980,8 +2981,8 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Ja | Geheel getal of zwevend | Het getal waarmee u wilt vermenigvuldigen met *multiplicand2* |
-| <*multiplicand2*> | Ja | Geheel getal of zwevend | Het getal dat meerdere *multiplicand1* |
+| <*multiplicand1*> | Yes | Geheel getal of zwevend | Het getal waarmee u wilt vermenigvuldigen met *multiplicand2* |
+| <*multiplicand2*> | Yes | Geheel getal of zwevend | Het getal dat meerdere *multiplicand1* |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -3202,7 +3203,7 @@ parameters('<parameterName>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*para meter-waarde*> | Alle | De waarde voor de opgegeven para meter |
+| <*para meter-waarde*> | Elk | De waarde voor de opgegeven para meter |
 ||||
 
 *Voorbeeld*
@@ -3549,7 +3550,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Het JSON-object waarvan u de eigenschap wilt instellen |
 | <*eigenschap*> | Ja | Tekenreeks | De naam van de bestaande of nieuwe eigenschap die moet worden ingesteld |
-| <*Value*> | Ja | Alle | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
+| <*Value*> | Yes | Elk | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
 |||||
 
 Als u de onderliggende eigenschap in een onderliggend object wilt instellen, gebruikt u `setProperty()` in plaats daarvan een genest aanroep. Anders retourneert de functie alleen het onderliggende object als uitvoer.
@@ -3563,7 +3564,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*object*> | Ja | Object | Het JSON-object waarvan u de eigenschap wilt instellen |
 | <*Parent-eigenschap*> | Ja | Tekenreeks | De naam van de bovenliggende eigenschap met de onderliggende eigenschap die u wilt instellen |
 | <*Child-eigenschap*> | Ja | Tekenreeks | De naam van de onderliggende eigenschap die moet worden ingesteld |
-| <*Value*> | Ja | Alle | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
+| <*Value*> | Yes | Elk | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -3847,7 +3848,7 @@ string(<value>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*Value*> | Ja | Alle | De waarde die moet worden geconverteerd. Als deze waarde Null is of is geëvalueerd als null, wordt de waarde geconverteerd naar een lege teken reeks ( `""` ) waarde. <p><p>Als u bijvoorbeeld een teken reeks variabele toewijst aan een niet-bestaande eigenschap die u kunt openen met de `?` operator, wordt de null-waarde omgezet in een lege teken reeks. Het vergelijken van een null-waarde is echter niet hetzelfde als het vergelijken van een lege teken reeks. |
+| <*Value*> | Yes | Elk | De waarde die moet worden geconverteerd. Als deze waarde Null is of is geëvalueerd als null, wordt de waarde geconverteerd naar een lege teken reeks ( `""` ) waarde. <p><p>Als u bijvoorbeeld een teken reeks variabele toewijst aan een niet-bestaande eigenschap die u kunt openen met de `?` operator, wordt de null-waarde omgezet in een lege teken reeks. Het vergelijken van een null-waarde is echter niet hetzelfde als het vergelijken van een lege teken reeks. |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -3891,8 +3892,8 @@ sub(<minuend>, <subtrahend>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*aftrek getal*> | Ja | Geheel getal of zwevend | Het getal waaruit de *aftrekker* moet worden afgetrokken |
-| <*aftrekker*> | Ja | Geheel getal of zwevend | Het getal dat moet worden afgetrokken van de *aftrek getal* |
+| <*aftrek getal*> | Yes | Geheel getal of zwevend | Het getal waaruit de *aftrekker* moet worden afgetrokken |
+| <*aftrekker*> | Yes | Geheel getal of zwevend | Het getal dat moet worden afgetrokken van de *aftrek getal* |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -3914,8 +3915,7 @@ En retourneert dit resultaat: `10`
 
 ### <a name="substring"></a>subtekenreeks
 
-Retourneert tekens uit een teken reeks, beginnend bij de opgegeven positie of index.
-Index waarden beginnen met het cijfer 0.
+Retourneert tekens uit een teken reeks, beginnend bij de opgegeven positie of index. Index waarden beginnen met het cijfer 0.
 
 ```
 substring('<text>', <startIndex>, <length>)
@@ -3927,6 +3927,10 @@ substring('<text>', <startIndex>, <length>)
 | <*Start index*> | Ja | Geheel getal | Een positief getal gelijk aan of groter dan 0 dat u wilt gebruiken als de begin positie of index waarde |
 | <*lange*> | Ja | Geheel getal | Een positief aantal tekens dat u wilt in de subtekenreeks |
 |||||
+
+> [!NOTE]
+> Zorg ervoor dat de som van de waarden van de para meter *Start index* en *lengte* kleiner is dan de lengte van de teken reeks die u opgeeft voor de *tekst* parameter.
+> Anders wordt er een fout bericht weer gegeven, in tegens telling tot vergelijk bare functies in andere talen waarbij het resultaat de subtekenreeks is van de *Start index* tot het einde van de teken reeks.
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
@@ -4000,7 +4004,7 @@ take([<collection>], <count>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*innings*> | Ja | Teken reeks of matrix | De verzameling waarvan u de items wilt |
+| <*innings*> | Yes | Teken reeks of matrix | De verzameling waarvan u de items wilt |
 | <*aantal*> | Ja | Geheel getal | Een positief geheel getal voor het aantal items dat u wilt van de voor grond |
 |||||
 
@@ -4284,7 +4288,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*verzameling1*>, <*Collection2*>,...  | Ja | Matrix of object, maar niet beide | De verzamelingen van waaruit u wilt dat *alle* items |
+| <*verzameling1*>, <*Collection2*>,...  | Yes | Matrix of object, maar niet beide | De verzamelingen van waaruit u wilt dat *alle* items |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
@@ -4641,7 +4645,7 @@ variables('<variableName>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*variabele-waarde*> | Alle | De waarde voor de opgegeven variabele |
+| <*variabele-waarde*> | Elk | De waarde voor de opgegeven variabele |
 ||||
 
 *Voorbeeld*
@@ -4748,14 +4752,14 @@ xpath('<xml>', '<xpath>')
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*indeling*> | Ja | Alle | De XML-teken reeks die moet worden gezocht naar knoop punten of waarden die overeenkomen met een XPath-expressie waarde |
-| <*XPath*> | Ja | Alle | De XPath-expressie die wordt gebruikt voor het zoeken van overeenkomende XML-knoop punten of-waarden |
+| <*indeling*> | Yes | Elk | De XML-teken reeks die moet worden gezocht naar knoop punten of waarden die overeenkomen met een XPath-expressie waarde |
+| <*XPath*> | Yes | Elk | De XPath-expressie die wordt gebruikt voor het zoeken van overeenkomende XML-knoop punten of-waarden |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
 | <*XML-knoop punt*> | XML | Een XML-knoop punt wanneer slechts één knoop punt overeenkomt met de opgegeven XPath-expressie |
-| <*Value*> | Alle | De waarde van een XML-knoop punt wanneer er slechts één waarde overeenkomt met de opgegeven XPath-expressie |
+| <*Value*> | Elk | De waarde van een XML-knoop punt wanneer er slechts één waarde overeenkomt met de opgegeven XPath-expressie |
 | [<*XML-knooppunt1*>, <*xml-Knooppunt2*>,...] </br>-of- </br>[<*waarde1*>, <*Value2*>,...] | Matrix | Een matrix met XML-knoop punten of-waarden die overeenkomen met de opgegeven XPath-expressie |
 ||||
 

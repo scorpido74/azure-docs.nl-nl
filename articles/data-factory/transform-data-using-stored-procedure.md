@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248969"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484728"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van de SQL Server opgeslagen procedure activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -37,9 +37,9 @@ U kunt de opgeslagen procedure activiteit gebruiken voor het aanroepen van een o
 - SQL Server-Data Base.  Als u SQL Server gebruikt, installeert u zelf-hostende Integration runtime op dezelfde computer waarop de data base wordt gehost of op een afzonderlijke computer die toegang heeft tot de data base. Zelf-Hostende Integration runtime is een onderdeel dat gegevens bronnen on-premises/op Azure VM met Cloud Services op een veilige en beheerde manier verbindt. Zie [zelf-hostend Integration runtime](create-self-hosted-integration-runtime.md) -artikel voor meer informatie.
 
 > [!IMPORTANT]
-> Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie over de eigenschap de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Het aanroepen van een opgeslagen procedure bij het kopiëren van gegevens naar een Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met behulp van een Kopieer activiteit wordt niet ondersteund. Maar u kunt de opgeslagen procedure activiteit gebruiken om een opgeslagen procedure in een SQL Data Warehouse aan te roepen. 
+> Bij het kopiëren van gegevens naar Azure SQL Database of SQL Server, kunt u de **SqlSink** in Kopieer activiteit configureren om een opgeslagen procedure aan te roepen met behulp van de eigenschap **sqlWriterStoredProcedureName** . Zie voor meer informatie over de eigenschap de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Het aanroepen van een opgeslagen procedure bij het kopiëren van gegevens naar een Azure Synapse-analyse met behulp van een Kopieer activiteit wordt niet ondersteund. Maar u kunt de opgeslagen procedure-activiteit gebruiken om een opgeslagen procedure in azure Synapse Analytics aan te roepen. 
 >
-> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse), kunt u **SqlSource** in de Kopieer activiteit configureren om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie de volgende connector artikelen [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md) voor meer informatie.          
+> Bij het kopiëren van gegevens uit Azure SQL Database of SQL Server of Azure Synapse Analytics kunt u **SqlSource** configureren in de Kopieer activiteit om een opgeslagen procedure aan te roepen voor het lezen van gegevens uit de bron database met behulp van de eigenschap **sqlReaderStoredProcedureName** . Zie voor meer informatie de volgende connector artikelen: [Azure SQL database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -73,7 +73,7 @@ In de volgende tabel worden deze JSON-eigenschappen beschreven:
 | naam                      | Naam van de activiteit                     | Yes      |
 | description               | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
 | type                      | Voor de opgeslagen procedure activiteit is het type activiteit **SqlServerStoredProcedure** | Yes      |
-| linkedServiceName         | Verwijzing naar de **Azure SQL database** of **Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)** of **SQL Server** geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
+| linkedServiceName         | Verwijzing naar de **Azure SQL database** of **Azure Synapse Analytics** of **SQL Server** geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
 | storedProcedureName       | Geef de naam op van de opgeslagen procedure die moet worden aangeroepen. | Yes      |
 | storedProcedureParameters | Geef de waarden op voor opgeslagen procedure parameters. Gebruiken `"param1": { "value": "param1Value","type":"param1Type" }` voor het door geven van parameter waarden en het type ervan dat door de gegevens bron wordt ondersteund. Als u null wilt door geven voor een para meter, gebruikt u `"param1": { "value": null }` (alle kleine letters). | No       |
 
@@ -82,7 +82,7 @@ Het gegevens type dat u opgeeft voor de para meter is het Azure Data Factory typ
 
 | Gegevensbron          | Toewijzing van gegevens type |
 | ---------------------|-------------------|
-| Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |

@@ -1,21 +1,21 @@
 ---
 title: ETL uitpakken, transformeren en laden op schaal-Azure HDInsight
 description: Ontdek hoe extra heren, transformeren en laden worden gebruikt in HDInsight met Apache Hadoop.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084117"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504312"
 ---
-# <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
+# <a name="extract-transform-and-load-etl-at-scale"></a>Uitpakken, transformeren en laden (ETL) op de juiste schaal
 
 Extra heren, transformeren en laden (ETL) is het proces waarmee gegevens uit verschillende bronnen worden verkregen. De gegevens worden verzameld op een standaard locatie, opgeschoond en verwerkt. Uiteindelijk worden de gegevens in een gegevens archief geladen waarin kan worden gezocht. Met verouderde ETL worden gegevens geïmporteerd en op de juiste plaats gereinigd en opgeslagen in een relationele gegevens engine. Met Azure HDInsight ondersteunen een breed scala aan Apache Hadoop omgevings onderdelen ETL op schaal.
 
@@ -48,7 +48,7 @@ Gebruik Azure Data Factory voor het volgende:
 
 1. Data gegevensgestuurde werk stromen maken en plannen. Deze pijp lijnen nemen gegevens op uit verschillende gegevens archieven.
 1. De gegevens verwerken en transformeren met behulp van reken services zoals HDInsight of Hadoop. U kunt ook Spark, Azure Data Lake Analytics, Azure Batch of Azure Machine Learning gebruiken voor deze stap.
-1. Publiceer uitvoer gegevens naar gegevens archieven, zoals Azure SQL Data Warehouse, om BI-toepassingen te gebruiken.
+1. Publiceer uitvoer gegevens naar gegevens archieven, zoals Azure Synapse Analytics, voor BI-toepassingen die moeten worden gebruikt.
 
 Raadpleeg de [documentatie](../../data-factory/introduction.md)voor meer informatie over Azure Data Factory.
 
@@ -84,11 +84,11 @@ Voor het uploaden van gegevens sets in het terabyte-bereik kan de netwerk latent
 
 - **Gegevens uploaden van harde schijven:** U kunt de [Azure import/export-service](../../storage/common/storage-import-export-service.md) gebruiken om harde schijven met uw gegevens naar een Azure-Data Center te verzenden. Uw gegevens worden eerst geüpload naar Azure Blob-opslag. U kunt vervolgens Azure Data Factory of het hulp programma AdlCopy gebruiken om gegevens uit Azure Blob-opslag te kopiëren naar Data Lake Storage.
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse is een geschikte keuze om voor bereide resultaten op te slaan. U kunt Azure HDInsight gebruiken om deze services uit te voeren voor SQL Data Warehouse.
+Azure Synapse Analytics is een geschikte keuze voor het opslaan van voor bereide resultaten. U kunt Azure HDInsight gebruiken om deze services uit te voeren voor zure Synapse Analytics.
 
-Azure SQL Data Warehouse is een relationeel database archief dat is geoptimaliseerd voor analytische werk belastingen. Het wordt geschaald op basis van gepartitioneerde tabellen. Tabellen kunnen worden gepartitioneerd op meerdere knoop punten. De knoop punten worden geselecteerd op het moment van maken. Ze kunnen worden geschaald na het feit, maar dat is een actief proces waarvoor gegevens verplaatsing nodig is. Zie [Compute beheren in SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)voor meer informatie.
+Azure Synapse Analytics is een relationeel database archief dat is geoptimaliseerd voor analytische werk belastingen. Het wordt geschaald op basis van gepartitioneerde tabellen. Tabellen kunnen worden gepartitioneerd op meerdere knoop punten. De knoop punten worden geselecteerd op het moment van maken. Ze kunnen worden geschaald na het feit, maar dat is een actief proces waarvoor gegevens verplaatsing nodig is. Zie [Compute in azure Synapse Analytics beheren](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)voor meer informatie.
 
 ### <a name="apache-hbase"></a>Apache HBase
 
@@ -107,7 +107,7 @@ HBase Adaptive is afhankelijk van het aantal knoop punten in het HDInsight-clust
 Azure biedt drie relationele data bases voor PaaS:
 
 * [Azure SQL database](../../azure-sql/database/sql-database-paas-overview.md) is een implementatie van Microsoft SQL Server. Zie [prestaties afstemmen in Azure SQL database](../../azure-sql/database/performance-guidance.md)voor meer informatie over prestaties.
-* [Azure database for MySQL](../../mysql/overview.md) is een implementatie van Oracle MySQL.
+* [Azure database for MySQL](../../mysql/overview.md)  is een implementatie van Oracle MySQL.
 * [Azure database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) is een implementatie van postgresql.
 
 Voeg meer CPU en geheugen toe om deze producten te schalen.  U kunt er ook voor kiezen om Premium-schijven met de producten te gebruiken voor betere I/O-prestaties.

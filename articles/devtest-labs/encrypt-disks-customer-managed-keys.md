@@ -2,19 +2,18 @@
 title: BESTURINGSSYSTEEM schijven versleutelen met door de klant beheerde sleutels in Azure DevTest Labs
 description: Meer informatie over het versleutelen van besturings systeem schijven (OS) met door de klant beheerde sleutels in Azure DevTest Labs.
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/01/2020
+ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815918"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489813"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Besturings systemen (OS)-schijven versleutelen met door de klant beheerde sleutels in Azure DevTest Labs
 Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met SSE worden uw gegevens die zijn opgeslagen op Managed disks in azure (OS-en gegevens schijven), op rest standaard automatisch versleuteld wanneer deze in de cloud worden bewaard. Meer informatie over [schijf versleuteling](../virtual-machines/windows/disk-encryption.md) in Azure. 
 
 In DevTest Labs worden alle besturingssysteem schijven en gegevens schijven die zijn gemaakt als onderdeel van een lab, versleuteld met door het platform beheerde sleutels. Als eigenaar van een lab kunt u echter kiezen voor het versleutelen van de besturingssysteem schijven van de virtuele machine met behulp van uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de **klant beheerde sleutel** opgeven die moet worden gebruikt voor het versleutelen van gegevens in Lab-besturingssysteem schijven. Zie door de [klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)voor meer informatie over de versleuteling aan de server zijde (SSE) met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen. Zie ook [beperkingen voor het gebruik van door de klant beheerde sleutels](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
-
 
 > [!NOTE]
 > - Momenteel wordt schijf versleuteling met een door de klant beheerde sleutel alleen ondersteund voor besturingssysteem schijven in DevTest Labs. 
@@ -29,8 +28,11 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 
     - De schijf versleutelings moet zich **in dezelfde regio en hetzelfde abonnement bevinden als uw Lab**. 
     - Zorg ervoor dat u (eigenaar van het lab) ten minste toegang hebt tot de schijf versleuteling die wordt gebruikt om Lab **-** besturingssysteem schijven te versleutelen. 
-2. Voor Labs die is gemaakt vóór 8/1/2020, moet de Lab-eigenaar ervoor zorgen dat de identiteit van het test systeem wordt ingeschakeld. Om dit te doen, kan de eigenaar van het lab naar hun Lab gaan, op **configuratie en beleid**klikken, klikken op de Blade **identiteit (preview-versie)** , de systeem **status** van de toegewezen identiteit wijzigen in **aan en op** **Opslaan**klikken. Voor nieuwe Labs die zijn gemaakt nadat de door het systeem toegewezen identiteit van 8/1/2020 Lab standaard is ingeschakeld. 
-3. Voor het lab om versleuteling voor alle schijven van het lab-besturings systeem af te handelen, moet de eigenaar van het lab expliciet de door het **systeem toegewezen identiteits** lezer-rol van het lab verlenen op de schijf versleutelings en de rol Inzender voor virtuele machines op het onderliggende Azure-abonnement. De eigenaar van het Lab kan dit doen door de volgende stappen uit te voeren:
+1. Voor Labs die is gemaakt vóór 8/1/2020, moet de Lab-eigenaar ervoor zorgen dat de identiteit van het test systeem wordt ingeschakeld. Om dit te doen, kan de eigenaar van het lab naar hun Lab gaan, op **configuratie en beleid**klikken, klikken op de Blade **identiteit (preview-versie)** , de systeem **status** van de toegewezen identiteit wijzigen in **aan en op** **Opslaan**klikken. Voor nieuwe Labs die zijn gemaakt nadat de door het systeem toegewezen identiteit van 8/1/2020 Lab standaard is ingeschakeld. 
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/managed-keys.png" alt-text="Beheerde sleutels":::
+1. Voor het lab om versleuteling voor alle schijven van het lab-besturings systeem af te handelen, moet de eigenaar van het lab expliciet de door het **systeem toegewezen identiteits** lezer-rol van het lab verlenen op de schijf versleutelings en de rol Inzender voor virtuele machines op het onderliggende Azure-abonnement. De eigenaar van het Lab kan dit doen door de volgende stappen uit te voeren:
 
    
     1. Zorg ervoor dat u lid bent van de [rol beheerder van gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) op het niveau van het Azure-abonnement, zodat u de gebruikers toegang tot Azure-resources kunt beheren. 
@@ -71,8 +73,24 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 1. In het bericht venster met de volgende tekst: *deze instelling is van toepassing op nieuw gemaakte machines in het lab. De oude besturingssysteem schijf blijft versleuteld met de oude schijf versleutelings*. Selecteer **OK**. 
 
     Eenmaal geconfigureerd, worden Lab-besturingssysteem schijven versleuteld met de door de klant beheerde sleutel die is opgegeven met behulp van de schijf Encryption set. 
+   
+## <a name="how-to-validate-if-disks-are-being-encrypted"></a>Controleren of schijven worden versleuteld
 
+1. Ga naar een virtuele machine die is gemaakt met een lab en waarvoor schijf versleuteling is ingeschakeld met een door de klant beheerde sleutel op het lab.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="VM met ingeschakelde schijf versleuteling":::
+1. Klik op de resource groep van de virtuele machine en klik op de besturingssysteem schijf.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM-resource groep":::
+1. Ga naar versleuteling en controleer of versleuteling is ingesteld op door de klant beheerde sleutel met de schijf versleuteling die u hebt geselecteerd.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Versleuteling valideren":::
+  
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie de volgende artikelen: 
 
 - [Azure Disk Encryption](../virtual-machines/windows/disk-encryption.md). 

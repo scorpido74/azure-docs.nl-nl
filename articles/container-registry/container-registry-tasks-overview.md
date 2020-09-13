@@ -2,13 +2,13 @@
 title: Overzicht van ACR-taken
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087275"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488640"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -64,7 +64,7 @@ ACR-taken bieden ondersteuning voor de volgende triggers wanneer u een Git-opsla
 Als u een trigger voor het bijwerken van de bron code wilt configureren, moet u de taak een persoonlijk toegangs token (PAT) geven om de webhook in te stellen in de open bare of persoonlijke GitHub of Azure DevOps opslag plaats.
 
 > [!NOTE]
-> Op dit moment bieden ACR-taken geen ondersteuning voor commit-of pull-aanvraag triggers in GitHub Enter prise opslag plaatsen.
+> Op dit moment biedt ACR-taken geen ondersteuning voor de aanvraagtriggers commit of pull in GitHub Enterprise-opslagplaatsen.
 
 Meer informatie over het activeren van builds op basis van de bron code in de tweede zelf studie ACR-taken, het [automatiseren van container installatie kopieën met Azure container Registry taken](container-registry-tutorial-build-task.md).
 
@@ -100,7 +100,7 @@ Meer informatie over taken in meerdere stappen in de stappen voor het [bouwen, t
 
 ## <a name="context-locations"></a>Context locaties
 
-De volgende tabel bevat enkele voor beelden van ondersteunde context locaties voor ACR-taken:
+De volgende tabel bevat voor beelden van ondersteunde context locaties voor ACR-taken:
 
 | Context locatie | Beschrijving | Voorbeeld |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 | GitHub door voeren | Specifieke door Voer in een open bare of persoonlijke GitHub-opslag plaats. Voor beeld toont een combi natie van een commit hash (SHA) en een specificatie van een submap. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Submap voor Azure DevOps | Bestanden in een submap van een open bare of persoonlijke Azure-opslag plaats. Voor beeld wordt een combi natie van een specificatie van branch en submap weer gegeven. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Externe tarball | Bestanden in een gecomprimeerd archief op een externe webserver. | `http://remoteserver/myapp.tar.gz` |
+| Artefact in container register | [OCI-artefact](container-registry-oci-artifacts.md) bestanden in een container register opslagplaats. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Wanneer u een privé Git-opslag plaats als context voor een taak gebruikt, moet u een persoonlijk toegangs token (PAT) opgeven.

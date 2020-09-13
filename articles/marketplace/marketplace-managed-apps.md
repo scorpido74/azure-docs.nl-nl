@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119817"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484236"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Publicatie handleiding voor door Azure beheerde toepassingen
 
-Een Azure *Managed Application* -aanbieding is een manier om een Azure-toepassing te publiceren in azure Marketplace. Beheerde toepassingen zijn Transact-aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. Het aanroepen van een actie die een gebruiker ziet, is *nu downloaden*.
+Een Azure *Managed Application* -aanbieding is een manier om een Azure-toepassing te publiceren in azure Marketplace. Beheerde toepassingen zijn Transact-aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. De optie voor de vermelding die een gebruiker ziet, is *nu downloaden*.
 
 In dit artikel worden de vereisten voor het type beheerde toepassings aanbieding beschreven.
 

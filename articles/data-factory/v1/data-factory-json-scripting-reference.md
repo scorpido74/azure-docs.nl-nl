@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318889"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490119"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -50,7 +50,7 @@ In de volgende tabel worden de eigenschappen in de JSON-definitie van de pijp li
 | naam | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Yes |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit of pijp lijn wordt gebruikt | No |
 | activities | Bevat een lijst met activiteiten. | Yes |
-| start |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00` , die 6 am EST is.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |No<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| starten |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00` , die 6 am EST is.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |No<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
 | beëindigen |Eind datum-tijd voor de pijp lijn. Indien opgegeven moet de ISO-indeling hebben. Bijvoorbeeld: 2014-10-14T17:32:41 <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00` , die 6 am EST is.<br/><br/>Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u 9999-09-09 op als waarde voor de eigenschap end. |No <br/><br/>Als u een waarde voor de eigenschap Start opgeeft, moet u een waarde voor de eigenschap End opgeven.<br/><br/>Zie opmerkingen voor de eigenschap **Start** . |
 | isPaused |Als deze eigenschap is ingesteld op True, wordt de pijp lijn niet uitgevoerd. Standaard waarde = false. U kunt deze eigenschap gebruiken om in of uit te scha kelen. |No |
 | pipelineMode |De methode voor het plannen van uitvoeringen voor de pijp lijn. Toegestane waarden zijn: gepland (standaard), eenmalige.<br/><br/>' Gepland ' geeft aan dat de pijp lijn wordt uitgevoerd op een opgegeven tijds interval op basis van de actieve periode (begin-en eind tijd). ' Eenmalige ' geeft aan dat de pijp lijn slechts één keer wordt uitgevoerd. Eenmalige-pijp lijnen kunnen op dit moment niet worden gewijzigd of bijgewerkt. Zie [eenmalige-pijp lijn](data-factory-create-pipelines.md#onetime-pipeline) voor meer informatie over de instelling van eenmalige. |No |
@@ -83,7 +83,7 @@ De structuur op hoog niveau voor een activiteit binnen een pijplijn definitie (e
 
 De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activiteit:
 
-| Label | Description | Vereist |
+| Label | Beschrijving | Vereist |
 | --- | --- | --- |
 | naam |De naam van de activiteit. Geef een naam op die staat voor de actie die door de activiteit wordt geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Yes |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt. |No |
@@ -298,7 +298,7 @@ Elke kolom in de sectie **structure** bevat de volgende eigenschappen:
 | --- | --- | --- |
 | naam |De naam van de kolom. |Yes |
 | type |Het gegevens type van de kolom.  |No |
-| culturele |Op .NET gebaseerde cultuur die moet worden gebruikt wanneer type is opgegeven en .NET-type is `Datetime` of `Datetimeoffset` . De standaardwaarde is `en-us`. |No |
+| culturele |Op .NET gebaseerde cultuur die moet worden gebruikt wanneer type is opgegeven en .NET-type is `Datetime` of `Datetimeoffset` . De standaardinstelling is `en-us`. |No |
 | indeling |Indelings teken reeks die moet worden gebruikt wanneer type is opgegeven en .NET-type `Datetime` of is `Datetimeoffset` . |No |
 
 In het volgende voor beeld heeft de gegevensset drie kolommen `slicetimestamp` , en `projectname` `pageviews` en deze zijn van het type: teken reeks, teken reeks en decimaal.
@@ -334,7 +334,7 @@ In de volgende sectie Beschik baarheid wordt aangegeven dat de uitvoer gegevenss
 
 De **beleids** sectie in de definitie van de gegevensset definieert de criteria of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen.
 
-| Policy Name | Description | Toegepast op | Vereist | Standaard |
+| Policy Name | Beschrijving | Toegepast op | Vereist | Standaard |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |No |NA |
 | minimumRows |Valideert dat de gegevens in **Azure SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |No |NA |
@@ -377,7 +377,7 @@ Klik op de koppeling voor de winkel waarin u bent geïnteresseerd om de JSON-sch
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
-| &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
+| &nbsp; |[Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table storage](#azure-table-storage) |
 | **Databases** |[Amazon Redshift](#amazon-redshift) |
@@ -837,7 +837,7 @@ Als u gegevens uit een Azure Cosmos DB kopieert, stelt u het **bron type** van d
 
 | **Eigenschap** | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| query |Geef de query op om gegevens te lezen. |De query teken reeks die wordt ondersteund door Azure Cosmos DB. <br/><br/>Voorbeeld: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd:`select <columns defined in structure> from mycollection` |
+| query |Geef de query op om gegevens te lezen. |De query teken reeks die wordt ondersteund door Azure Cosmos DB. <br/><br/>Voorbeeld: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Speciaal teken om aan te geven dat het document is genest |Wille keurig teken. <br/><br/>Azure Cosmos DB is een NoSQL-Archief voor JSON-documenten, waarbij geneste structuren zijn toegestaan. Azure Data Factory stelt de gebruiker in staat om de hiërarchie aan te duiden via nestingSeparator, dat wil zeggen. in de bovenstaande voor beelden. Met het scheidings teken genereert de Kopieer activiteit het object ' name ' met drie onderliggende elementen eerst, middelste en laatste, volgens ' naam. First ', ' naam. midden ' en ' naam. last ' in de tabel definitie. |No |
 
 #### <a name="example"></a>Voorbeeld
@@ -1100,14 +1100,14 @@ Als u gegevens naar Azure SQL Database kopieert, stelt u het **sink-type** van d
 
 Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md#copy-activity-properties) voor meer informatie.
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 ### <a name="linked-service"></a>Gekoppelde service
-Als u een Azure SQL Data Warehouse gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDW**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
+Als u een gekoppelde Azure Synapse Analytics-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDW**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de Connections Tring-eigenschap. |Yes |
+| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure Synapse Analytics-exemplaar voor de Connections Tring-eigenschap. |Yes |
 
 
 
@@ -1125,14 +1125,14 @@ Als u een Azure SQL Data Warehouse gekoppelde service wilt definiëren, stelt u 
 }
 ```
 
-Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Synapse Analytics-connector](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) voor meer informatie.
 
 ### <a name="dataset"></a>Gegevensset
-Als u een Azure SQL Data Warehouse gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSqlDWTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
+Als u een Azure Synapse Analytics-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSqlDWTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel of weer gave in de Azure SQL Data Warehouse data base waarnaar de gekoppelde service verwijst. |Yes |
+| tableName |De naam van de tabel of weer gave in de Azure Synapse Analytics-Data Base waarnaar de gekoppelde service verwijst. |Yes |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -1161,10 +1161,10 @@ Als u een Azure SQL Data Warehouse gegevensset wilt definiëren, stelt u het **t
 }
 ```
 
-Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Synapse Analytics-connector](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties) voor meer informatie.
 
-### <a name="sql-dw-source-in-copy-activity"></a>SQL DW-bron in Kopieer activiteit
-Als u gegevens uit Azure SQL Data Warehouse kopieert, stelt u het **bron type** van de Kopieer activiteit in op **SqlDWSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
+### <a name="azure-synapse-analytics-source-in-copy-activity"></a>Azure Synapse Analytics-bron in Kopieer activiteit
+Als u gegevens uit Azure Synapse Analytics kopieert, stelt u het **bron type** van de Kopieer activiteit in op **SqlDWSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
@@ -1216,15 +1216,15 @@ Als u gegevens uit Azure SQL Data Warehouse kopieert, stelt u het **bron type** 
 }
 ```
 
-Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Synapse Analytics-connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) voor meer informatie.
 
-### <a name="sql-dw-sink-in-copy-activity"></a>SQL DW-sink in Kopieer activiteit
-Als u gegevens naar Azure SQL Data Warehouse kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **SqlDWSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
+### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>Azure Synapse Analytics-sink in Kopieer activiteit
+Als u gegevens naar Azure Synapse Analytics kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **SqlDWSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geef een query op voor de Kopieer activiteit die moet worden uitgevoerd, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |No |
-| allowPolyBase |Hiermee wordt aangegeven of poly base (indien van toepassing) moet worden gebruikt in plaats van BULKINSERT-mechanisme. <br/><br/> **Het gebruik van poly Base is de aanbevolen manier om gegevens te laden in SQL Data Warehouse.** |True <br/>False (standaard) |No |
+| allowPolyBase |Hiermee wordt aangegeven of poly base (indien van toepassing) moet worden gebruikt in plaats van BULKINSERT-mechanisme. <br/><br/> **Het gebruik van poly Base is de aanbevolen manier om gegevens in Synapse Analytics te laden.** |True <br/>False (standaard) |No |
 | polyBaseSettings |Een groep eigenschappen die kan worden opgegeven wanneer de eigenschap **allowPolybase** is ingesteld op **True**. |&nbsp; |No |
 | rejectValue |Hiermee geeft u het aantal of percentage rijen op dat kan worden afgewezen voordat de query mislukt. <br/><br/>Meer informatie over de opties voor het afwijzen van poly bases vindt u in de sectie **argumenten** van het onderwerp [externe tabel maken (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (standaard), 1, 2,... |No |
 | rejectType |Hiermee wordt aangegeven of de optie rejectValue is opgegeven als een letterlijke waarde of een percentage. |Waarde (standaard), percentage |No |
@@ -1277,7 +1277,7 @@ Als u gegevens naar Azure SQL Data Warehouse kopieert, stelt u het **sink-type**
 }
 ```
 
-Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) -artikel voor meer informatie.
+Zie het artikel over [Azure Synapse Analytics-connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) voor meer informatie.
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -2005,7 +2005,7 @@ Als u gegevens uit een Oracle-data base kopieert, stelt u het **bron type** van 
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable` <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd:`select * from MyTable` |Nee (als **TableName** van **gegevensset** is opgegeven) |
+| oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable` <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: `select * from MyTable` |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -3371,7 +3371,7 @@ Als u een bestands systeem-gegevensset wilt definiëren, stelt u het **type** va
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Hiermee geeft u het pad naar de map. Gebruik het escape teken ' \ ' voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Yes |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt`(Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt` (Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren. <br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1: "file filter": "*. log"<br/>Voor beeld 2: "file filter": 2016-1-?. txt<br/><br/>File filter is van toepassing op een invoer-file share-gegevensset. |No |
 | partitionedBy |U kunt partitionedBy gebruiken om een dynamische folderPath/fileName op te geven voor gegevens van een tijd reeks. Een voor beeld is folderPath para meters voor elk uur aan gegevens. |No |
 | indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |No |
@@ -3637,8 +3637,8 @@ Als u een FTP-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Yes
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
-| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |No |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |No |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |No |
 | indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |No |
 | compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**; en ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
@@ -3779,7 +3779,7 @@ Als u een HDFS-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u een submap op \\ \\ en voor d:\samplefolder, geeft u d: \\ \\ SampleFolder op.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Yes |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Voor beeld: folderPath para meters voor elk uur aan gegevens. |No |
 | indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |No |
 | compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
@@ -3979,8 +3979,8 @@ Als u een SFTP-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Yes |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
-| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |No |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |No |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |No |
 | indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |No |
 | compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
@@ -4160,7 +4160,7 @@ Als u een HTTP-gegevensset wilt definiëren, stelt u het **type** van de gegeven
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory functies en systeem variabelen](data-factory-functions-variables.md)gebruiken, bijvoorbeeld: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"` . | No |
-| requestMethod | Http-methode. Toegestane waarden zijn **Get** of **post**. | Nee. De standaardwaarde is `GET`. |
+| requestMethod | Http-methode. Toegestane waarden zijn **Get** of **post**. | Nee. De standaardinstelling is `GET`. |
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | No |
 | requestBody | Hoofd tekst voor HTTP-aanvraag. | No |
 | indeling | Als u **de gegevens van het HTTP-eind punt net als-** als wilt ophalen zonder deze te parseren, slaat u deze indelings instellingen over. <br><br> Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende indelings typen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . |No |
@@ -4349,7 +4349,7 @@ Als u een OData-gegevensset wilt definiëren, stelt u het **type** van de gegeve
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| path |Pad naar de OData-resource |No |
+| leertraject |Pad naar de OData-resource |No |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -4744,8 +4744,8 @@ Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Yes |
-| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| TabIndex |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Yes |
+| leertraject |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
+| index |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Yes |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -4826,7 +4826,7 @@ De volgende tabel geeft een lijst van de reken omgevingen die worden ondersteund
 | [Azure Batch](#azure-batch) |[Aangepaste .NET-activiteit](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine learning activiteit voor het uitvoeren van batches](#machine-learning-batch-execution-activity) [machine learning resource activiteit bijwerken](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL database](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse) [SQL Server](#sql-server-stored-procedure) |[Opgeslagen procedure](#stored-procedure-activity) |
+| [Azure SQL database](#azure-sql-database), [Azure Synapse Analytics](#azure-synapse-analytics), [SQL Server](#sql-server-stored-procedure) |[Opgeslagen procedure](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Azure HDInsight-cluster op aanvraag
 De Azure Data Factory-service kan automatisch een HDInsight-cluster op basis van Windows/Linux maken voor het verwerken van gegevens. Het cluster wordt gemaakt in dezelfde regio als het opslag account (linkedServiceName-eigenschap in de JSON) die aan het cluster is gekoppeld. U kunt de volgende transformatie activiteiten uitvoeren op deze gekoppelde service: [aangepaste .net-activiteit](#net-custom-activity), [Hive](#hdinsight-hive-activity)-activiteit, [Pig-activiteit](#hdinsight-pig-activity), [MapReduce activiteit](#hdinsight-mapreduce-activity), Hadoop streaming-activiteit, [Spark-activiteit](#hdinsight-spark-activity).
@@ -5057,7 +5057,7 @@ Zie [SQL Server connector](data-factory-sqlserver-connector.md#linked-service-pr
 
 ## <a name="data-transformation-activities"></a>ACTIVITEITEN VOOR GEGEVENS TRANSFORMATIE
 
-Activiteit | Description
+Activiteit | Beschrijving
 -------- | -----------
 [HDInsight Hive-activiteit](#hdinsight-hive-activity) | De HDInsight Hive-activiteit in een Data Factory pijp lijn voert Hive-query's uit op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux.
 [HDInsight Pig-activiteit](#hdinsight-pig-activity) | Met de HDInsight Pig-activiteit in een Data Factory pijp lijn worden Pig-query's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux.
@@ -5066,7 +5066,7 @@ Activiteit | Description
 [HDInsight Spark-activiteit](#hdinsight-spark-activity) | Met de HDInsight Spark-activiteit in een Data Factory pijp lijn worden Spark-Program ma's uitgevoerd op uw eigen HDInsight-cluster.
 [Machine Learning-batchuitvoeringsactiviteit](#machine-learning-batch-execution-activity) | Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning-webservice voor predictive analytics. U kunt met behulp van de batch Execution-activiteit in een Azure Data Factory-pijp lijn een Machine Learning-webservice aanroepen om voor spellingen te doen op de gegevens in batch.
 [Machine Learning-activiteit resources bijwerken](#machine-learning-update-resource-activity) | De voorspellende modellen in de Machine Learning Score experimenten moeten na verloop van tijd opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde Machine Learning model. U kunt de activiteit resource bijwerken gebruiken om de webservice bij te werken met het nieuwe getrainde model.
-[Opgeslagen procedureactiviteit](#stored-procedure-activity) | U kunt de opgeslagen procedure-activiteit in een Data Factory pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure SQL Data Warehouse, SQL Server data base in uw onderneming of een Azure-VM.
+[Opgeslagen procedureactiviteit](#stored-procedure-activity) | U kunt de opgeslagen procedure-activiteit in een Data Factory pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure Synapse Analytics, SQL Server data base in uw onderneming of een Azure-VM.
 [Data Lake Analytics U-SQL-activiteit](#data-lake-analytics-u-sql-activity) | Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd.
 [Aangepaste .NET-activiteit](#net-custom-activity) | Als u gegevens moet transformeren op een manier die niet wordt ondersteund door Data Factory, kunt u een aangepaste activiteit maken met uw eigen gegevens verwerkings logica en de activiteit in de pijp lijn gebruiken. U kunt de aangepaste .NET-activiteit zodanig configureren dat deze wordt uitgevoerd met behulp van een Azure Batch-service of een Azure HDInsight-cluster.
 
@@ -5541,18 +5541,18 @@ U kunt de volgende eigenschappen opgeven in de JSON-definitie van een opgeslagen
 
 - SQL Server
 - Azure SQL Database
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics
 
 De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op SqlServerStoredProcedure:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database of Azure SQL Data Warehouse die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Yes |
+| storedProcedureName |Geef de naam op van de opgeslagen procedure in Azure SQL Database of Azure Synapse Analytics die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Yes |
 | storedProcedureParameters |Geef waarden op voor opgeslagen procedure parameters. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: "param1": Null (alle kleine letters). Raadpleeg het volgende voor beeld voor meer informatie over het gebruik van deze eigenschap. |No |
 
 Als u een invoer-gegevensset opgeeft, moet deze beschikbaar zijn (in de status gereed) voor het uitvoeren van de opgeslagen procedure activiteit. De invoer gegevensset kan niet worden gebruikt in de opgeslagen procedure als een para meter. Het wordt alleen gebruikt voor het controleren van de afhankelijkheid voordat de opgeslagen procedure activiteit wordt gestart. U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit.
 
-Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure SQL Data Warehouse of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door andere activiteiten (koppelings[activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) in de pijp lijn door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
+Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure Synapse Analytics of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door andere activiteiten (koppelings[activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) in de pijp lijn door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
 
 ### <a name="json-example"></a>JSON-voor beeld
 

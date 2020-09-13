@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory gebruikers synchroniseren met HDInsight-cluster
 description: Synchroniseer geverifieerde gebruikers van Azure Active Directory naar een HDInsight-cluster.
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004426"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504652"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-gebruikers synchroniseren met een HDInsight-cluster
 
@@ -123,7 +123,7 @@ De volgende methode maakt gebruik van POST met de Ambari-REST API. Zie [HDInsigh
 1. Dit geeft aan dat de status is **voltooid**, er een nieuwe gebruiker is gemaakt en er een lidmaatschap aan de gebruiker is toegewezen. In dit voor beeld wordt de gebruiker toegewezen aan de gesynchroniseerde LDAP-groep ' HiveUsers ', omdat de gebruiker is toegevoegd aan dezelfde groep in azure AD.
 
     > [!NOTE]  
-    > De vorige methode synchroniseert alleen de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het domein instellingen tijdens het maken van het cluster. Zie [een HDInsight-cluster maken](domain-joined/apache-domain-joined-configure.md)voor meer informatie.
+    > De vorige methode synchroniseert alleen de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het domein instellingen tijdens het maken van het cluster. Zie  [een HDInsight-cluster maken](domain-joined/apache-domain-joined-configure.md)voor meer informatie.
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>De zojuist toegevoegde Azure AD-gebruiker verifiëren
 
@@ -137,7 +137,7 @@ Open de [Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md) om te cont
 
     ![Het menu gebruikers en groepen van HDInsight](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
-3. De nieuwe gebruiker moet worden weer gegeven in de tabel gebruikers. Het type wordt ingesteld op `LDAP` in plaats van `Local` .
+3. De nieuwe gebruiker moet worden weer gegeven in de tabel gebruikers. Het type wordt ingesteld op `LDAP` in plaats van  `Local` .
 
     ![Overzicht van de pagina HDInsight Aad-gebruikers](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 

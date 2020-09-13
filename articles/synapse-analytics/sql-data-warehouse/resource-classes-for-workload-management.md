@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c3793daa820d0cb5b5b6900402704756f206425
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213581"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488385"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Werkbelasting beheer met resource klassen in azure Synapse Analytics
 
@@ -67,7 +67,7 @@ De dynamische resource klassen worden geïmplementeerd met de volgende vooraf ge
 
 De geheugen toewijzing voor elke resource klasse is als volgt.
 
-| Service niveau  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Serviceniveau  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
 | DW200c         | 12,5%             | 12,5%                  | 21                    | 70%                    |
@@ -133,7 +133,7 @@ De volgende instructies zijn vrijgesteld van resource klassen en worden altijd u
 - DBCC
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
@@ -192,7 +192,7 @@ We raden u aan een gebruiker te maken die is toegewezen voor het uitvoeren van e
 
 ### <a name="resource-classes-for-load-users"></a>Resource klassen voor het laden van gebruikers
 
-`CREATE TABLE`maakt standaard gebruik van geclusterde column Store-indexen. Het comprimeren van gegevens naar een column store-index is een geheugenintensieve bewerking en de geheugen druk kan de index kwaliteit verminderen. Geheugen druk kan ertoe leiden dat een hogere resource klasse nodig is voor het laden van gegevens. Om ervoor te zorgen dat er voldoende geheugen beschikbaar is, kunt u een gebruiker maken die is aangewezen voor het uitvoeren van belastingen en die gebruiker toewijzen aan een hogere resource klasse.
+`CREATE TABLE` maakt standaard gebruik van geclusterde column Store-indexen. Het comprimeren van gegevens naar een column store-index is een geheugenintensieve bewerking en de geheugen druk kan de index kwaliteit verminderen. Geheugen druk kan ertoe leiden dat een hogere resource klasse nodig is voor het laden van gegevens. Om ervoor te zorgen dat er voldoende geheugen beschikbaar is, kunt u een gebruiker maken die is aangewezen voor het uitvoeren van belastingen en die gebruiker toewijzen aan een hogere resource klasse.
 
 Het geheugen dat nodig is om de belasting efficiënt te verwerken, is afhankelijk van de aard van de geladen tabel en de grootte van de gegevens. Zie [maximale Rijg roep-kwaliteit](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over geheugen vereisten.
 
@@ -243,9 +243,9 @@ Dit is het doel van deze opgeslagen procedure:
 Syntaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Geef een NULL-para meter op om de huidige DWU te extra heren uit de DW DB of geef een ondersteund DWU op in de vorm ' DW100c '
-2. @SCHEMA_NAME:Geef een schema naam van de tabel op
-3. @TABLE_NAME:Geef een tabel naam op voor de interesse
+1. @DWU: Geef een NULL-para meter op om de huidige DWU te extra heren uit de DW DB of geef een ondersteund DWU op in de vorm ' DW100c '
+2. @SCHEMA_NAME: Geef een schema naam van de tabel op
+3. @TABLE_NAME: Geef een tabel naam op voor de interesse
 
 Voor beelden van deze opgeslagen procedure:
 

@@ -3,12 +3,12 @@ title: Toegang tot openbare register configureren
 description: Configureer IP-regels voor toegang tot een Azure container Registry vanuit geselecteerde open bare IP-adressen of adresbereiken.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660922"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488759"
 ---
 # <a name="configure-public-ip-network-rules"></a>Open bare IP-netwerk regels configureren
 
@@ -17,6 +17,8 @@ Een Azure-container register accepteert standaard verbindingen via Internet van 
 IP-netwerk regels worden geconfigureerd op het open bare register eindpunt. IP-netwerk regels zijn niet van toepassing op privé-eind punten die zijn geconfigureerd met een [persoonlijke koppeling](container-registry-private-link.md)
 
 Het configureren van IP-toegangs regels is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="access-from-selected-public-network---cli"></a>Toegang vanuit geselecteerd openbaar netwerk-CLI
 

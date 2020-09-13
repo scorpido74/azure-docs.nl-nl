@@ -3,12 +3,12 @@ title: Toegang beperken met behulp van een service-eind punt
 description: Beperk de toegang tot een Azure container Registry met behulp van een service-eind punt in een virtueel Azure-netwerk. Toegang tot het service-eind punt is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371427"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488661"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Toegang tot een container register beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 
@@ -28,6 +28,8 @@ Het configureren van een Registry-service-eind punt is beschikbaar in de service
 * Alleen een [Azure Kubernetes service](../aks/intro-kubernetes.md) -cluster of [virtuele](../virtual-machines/linux/overview.md) Azure-machine kan worden gebruikt als een host voor toegang tot een container register met behulp van een service-eind punt. *Andere Azure-Services, waaronder Azure Container Instances, worden niet ondersteund.*
 * Elk REGI ster ondersteunt Maxi maal 100 netwerk toegangs regels.
 * Service-eind punten voor Azure Container Registry worden niet ondersteund in de Azure-Cloud voor de Amerikaanse overheid of Azure China.
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

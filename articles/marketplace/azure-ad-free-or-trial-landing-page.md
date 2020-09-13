@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921381"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488606"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Bouw de landings pagina voor uw gratis of proef SaaS-aanbieding in de commerciële Marketplace
 
@@ -21,13 +21,13 @@ Dit artikel begeleidt u bij het bouwen van een landings pagina voor een gratis o
 
 ## <a name="overview"></a>Overzicht
 
-U kunt de landings pagina beschouwen als de ' lobby ' voor uw SaaS-aanbieding (Software as a Service). Nadat de klant heeft gekozen om uw app op te halen, stuurt de commerciële Marketplace deze door naar de landings pagina om het abonnement te activeren en te configureren voor uw SaaS-toepassing. Wanneer u een SaaS-aanbieding (Software as a Service) maakt in het partner centrum, kunt u kiezen of u wilt [verkopen via micro soft](partner-center-portal/create-new-saas-offer.md). Als u uw aanbieding alleen in de micro soft Commercial Marketplace wilt aanbieden en niet via micro soft wilt verkopen, kunt u opgeven hoe potentiële klanten kunnen communiceren met de aanbieding. Wanneer u de optie **nu downloaden (gratis)** of lijst met **gratis proef versie** inschakelt, moet u een URL voor de landings pagina opgeven waarnaar de gebruiker toegang kan krijgen tot het gratis abonnement of de proef versie.
+U kunt de landings pagina beschouwen als de ' lobby ' voor uw SaaS-aanbieding (Software as a Service). Nadat de klant heeft gekozen om uw app op te halen, stuurt de commerciële Marketplace deze door naar de landings pagina om het abonnement te activeren en te configureren voor uw SaaS-toepassing. Wanneer u een SaaS-aanbieding (Software as a Service) maakt in het partner centrum, kunt u kiezen of u wilt [verkopen via micro soft](plan-saas-offer.md#listing-options). Als u uw aanbieding alleen in de micro soft Commercial Marketplace wilt aanbieden en niet via micro soft wilt verkopen, kunt u opgeven hoe potentiële klanten kunnen communiceren met de aanbieding. Wanneer u de optie **nu downloaden (gratis)** of lijst met **gratis proef versie** inschakelt, moet u een URL voor de landings pagina opgeven waarnaar de gebruiker toegang kan krijgen tot het gratis abonnement of de proef versie.
 
 Het doel van de landings pagina is eenvoudigweg om de gebruiker te ontvangen, zodat deze de gratis proef versie of een gratis abonnement kan activeren. Met Azure Active Directory (Azure AD) en Microsoft Graph kunt u eenmalige aanmelding (SSO) voor de gebruiker inschakelen en belang rijke gegevens over de gebruiker ontvangen waarmee u hun gratis proef versie of gratis abonnement, inclusief de naam, het e-mail adres en de organisatie.
 
 Omdat de informatie die nodig is om het abonnement te activeren beperkt is en wordt geleverd door Azure AD en Microsoft Graph, hoeft u geen informatie te vragen die meer nodig is dan basis toestemming. Als u gebruikers gegevens nodig hebt waarvoor extra toestemming voor uw toepassing is vereist, moet u deze informatie aanvragen nadat de activering van het abonnement is voltooid. Dit maakt het mogelijk dat de gebruiker zichzelf kan activeren en het risico van het onbreken vermindert.
 
-De landings pagina bevat doorgaans de volgende informatie en aanroepen naar actie:
+De landings pagina bevat doorgaans de volgende informatie en vermeldings opties:
 
 - Geef de naam en de details van de gratis proef versie of het gratis abonnement. Geef bijvoorbeeld de gebruiks limieten of de duur van een proef versie op.
 - Geef de account gegevens van de gebruiker weer, inclusief de voor-en achternaam, de organisatie en het e-mail adres.
@@ -38,12 +38,12 @@ In de volgende secties in dit artikel vindt u instructies voor het maken van een
 
 1. [Maak een Azure AD-App-registratie](#create-an-azure-ad-app-registration) voor de landings pagina.
 2. [Gebruik een code voorbeeld als uitgangs punt](#use-a-code-sample-as-a-starting-point) voor uw app.
-3. [Lees de informatie van claims die zijn gecodeerd in het ID-token](#read-information-from-claims-encoded-in-the-id-token)dat is ontvangen van Azure AD na het aanmelden dat is verzonden met de aanvraag.
+3. [Lees de informatie van claims die zijn gecodeerd in het ID-token](#read-information-from-claims-encoded-in-the-id-token)dat is ontvangen van Azure AD nadat u zich hebt aangemeld en dat is verzonden met de aanvraag.
 4. [Gebruik de Microsoft Graph-API](#use-the-microsoft-graph-api) om indien nodig aanvullende informatie te verzamelen.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 
-De commerciële Marketplace is volledig geïntegreerd met Azure AD. Gebruikers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Nadat u een gratis of gratis proef abonnement hebt gekocht via uw aanbieding met alleen een lijst, gaat de gebruiker van de commerciële Marketplace naar de URL van de landings pagina om het abonnement te activeren en te beheren in uw SaaS-toepassing. U moet ervoor zorgen dat de gebruiker zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina wordt opgegeven op de [pagina technische configuratie](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)van de aanbieding).
+De commerciële Marketplace is volledig geïntegreerd met Azure AD. Gebruikers ontvangen op de Marketplace die is geverifieerd met een [Azure ad-account of Microsoft-account (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Nadat u een gratis of gratis proef abonnement hebt gekocht via uw aanbieding met alleen een lijst, gaat de gebruiker van de commerciële Marketplace naar de URL van de landings pagina om het abonnement te activeren en te beheren in uw SaaS-toepassing. U moet ervoor zorgen dat de gebruiker zich bij uw toepassing aanmeldt met Azure AD SSO. (De URL van de landings pagina is opgegeven op de pagina [technische configuratie](plan-saas-offer.md#technical-information) van de aanbieding.
 
 De eerste stap bij het gebruik van de identiteit is ervoor te zorgen dat uw landings pagina is geregistreerd als een Azure AD-toepassing. Door de toepassing te registreren, kunt u Azure AD gebruiken voor het verifiëren van gebruikers en het aanvragen van toegang tot gebruikers resources. Het kan worden beschouwd als de definitie van de toepassing, zodat de service weet hoe tokens aan de app kunnen worden verstrekt op basis van de instellingen van de app.
 
@@ -103,4 +103,4 @@ De meeste apps die zijn geregistreerd bij Azure AD, hebben gedelegeerde machtigi
 > Accounts van de MSA-Tenant (met Tenant-ID `9188040d-6c67-4c5b-b112-36a304b66dad` ) retour neren niet meer informatie dan al is verzameld met het ID-token. U kunt deze aanroep overs laan voor de Graph API voor deze accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een SaaS-aanbieding maken in de commerciële Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Een SaaS-aanbieding maken in de commerciële Marketplace](create-new-saas-offer.md)

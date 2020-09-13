@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500143"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488861"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschi
 |**Beschikbaarheid**|Alles|1 replica, geen uitschalen van Lees bewerkingen, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees scale-out, gedeeltelijke lokale cache | 3 replica's, 1 Lees scale-out, zone-redundante HA, volledige lokale opslag |
 |**Back-ups**|Alles|RA-GRS, 7-35 dagen retentie (standaard 7 dagen)| RA-GRS, 7 dagen retentie, constant tijds duur herstel (PITR) | RA-GRS, 7-35 dagen retentie (standaard 7 dagen) |
 
-\*Elastische Pools worden niet ondersteund in de grootschalige-servicelaag
+\* Elastische Pools worden niet ondersteund in de grootschalige-servicelaag
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Wie moet de grootschalige-servicelaag gebruiken?
 
@@ -114,11 +114,11 @@ Ja, [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 
 
 Grootschalige ondersteunt alle SQL Server workloads, maar is voornamelijk geoptimaliseerd voor OLTP. U kunt ook Hybrid (HTAP) en analytische werk belastingen (Data Mart) opnemen.
 
-### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-azure-sql-database-hyperscale"></a>Hoe kan ik kiezen tussen Azure SQL Data Warehouse en Azure SQL Database grootschalige
+### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>Hoe kan ik kiezen tussen Azure Synapse Analytics en Azure SQL Database grootschalige
 
 Als u op dit moment interactieve Analytics-query's uitvoert met SQL Server als Data Warehouse, is grootschalige een fantastische optie omdat u een kleine en middel grote data warehouse kunt hosten (zoals een aantal TB tot 100 TB) tegen lagere kosten, en u kunt uw SQL Server Data Warehouse-workloads migreren naar grootschalige met minimale T-SQL-code wijzigingen.
 
-Als u gegevens analyse uitvoert op een grote schaal met complexe query's en langere opname snelheden van meer dan 100 MB/s, of met behulp van PDW (parallel data warehouse), Teradata of andere data warehouses met een enorme parallelle verwerking (MPP), is SQL Data Warehouse mogelijk de beste keuze.
+Als u gegevens analyse uitvoert op een grote schaal met complexe query's en langere opname snelheden van meer dan 100 MB/s, of met behulp van PDW (parallel data warehouse), Teradata of andere data warehouses met een enorme parallelle verwerking (MPP), kan Azure Synapse Analytics (voorheen SQL Data Warehouse) de beste keuze zijn.
   
 ## <a name="hyperscale-compute-questions"></a>Vragen over grootschalige compute
 
@@ -158,7 +158,7 @@ Het transactie logboek met grootschalige is nagenoeg oneindig. U hoeft zich geen
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>`tempdb`Schaalt mijn data base groeit
 
-Uw `tempdb` Data Base bevindt zich op lokale SSD-opslag en wordt proportioneel aangepast aan de reken grootte die u hebt ingericht. Uw `tempdb` is geoptimaliseerd om maximale prestatie voordelen te bieden. `tempdb`grootte kan niet worden geconfigureerd en wordt voor u beheerd.
+Uw `tempdb` Data Base bevindt zich op lokale SSD-opslag en wordt proportioneel aangepast aan de reken grootte die u hebt ingericht. Uw `tempdb` is geoptimaliseerd om maximale prestatie voordelen te bieden. `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Neemt de grootte van de data base automatisch toe of moet ik de grootte van de gegevens bestanden beheren
 
@@ -229,7 +229,7 @@ De downtime voor migratie naar grootschalige is hetzelfde als de uitval tijd wan
 
 Grootschalige is geschikt voor het gebruik van 100 MB/s met nieuwe/gewijzigde gegevens, maar de tijd die nodig is om gegevens te verplaatsen naar data bases in Azure SQL Database wordt ook beïnvloed door de beschik bare netwerk doorvoer, Lees snelheid van de bron en de service niveau doelstelling van de doel database.
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>Kan ik gegevens lezen uit Blob Storage en snel laden (zoals poly base in SQL Data Warehouse)
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Kan ik gegevens lezen uit Blob Storage en snel laden (zoals poly base in azure Synapse Analytics)
 
 U kunt een client toepassing gegevens laten lezen van Azure Storage en laden van gegevens in een grootschalige-data base (net als bij andere data bases in Azure SQL Database). Poly Base wordt momenteel niet ondersteund in Azure SQL Database. Als alternatief voor snelle belasting kunt u [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)gebruiken, of een Spark-taak gebruiken in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) met de Spark- [Connector voor SQL](spark-connector.md). De Spark-connector naar SQL ondersteunt bulksgewijze invoeging.
 
@@ -269,7 +269,7 @@ Ja.
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>Wat is het beoogde herstel punt (RPO)/Recovery Time doelstelling (RTO) voor het herstellen van de data base in grootschalige
 
-De RPO is 0 min. Het doel van de RTO is minder dan 10 minuten, ongeacht de grootte van de data base.
+De RPO is 0 min. De meeste herstel bewerkingen zijn binnen 60 minuten voltooid, ongeacht de grootte van de data base. De herstel tijd kan langer duren voor grotere data bases en als de Data Base voor en tot het herstel punt in de tijd aanzienlijke schrijf activiteiten heeft ondervonden.
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Is de database back-up van invloed op de reken prestaties op mijn primaire of secundaire replica's
 
@@ -345,9 +345,9 @@ Als u omhoog of omlaag schaalt, worden de bestaande verbindingen verwijderd wann
 
 Eind gebruiker. Niet automatisch.  
 
-### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>Is de grootte van mijn `tempdb` Data Base ook groter naarmate de berekening wordt geschaald
+### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>Worden de grootte van mijn `tempdb` Data Base en RBPEX-cache ook groter naarmate de reken kracht omhoog wordt geschaald
 
-Ja. De `tempdb` Data Base wordt automatisch geschaald als de berekening groeit.  
+Ja. De `tempdb` cache grootte van de data base en de [RBPEX](service-tier-hyperscale.md#distributed-functions-architecture) op reken knooppunten worden automatisch geschaald naarmate het aantal kern geheugens wordt verhoogd.
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Kan ik meerdere primaire reken replica's inrichten, zoals een systeem met meerdere masters, waarbij meerdere primaire Compute Heads een hoger niveau van gelijktijdigheid kunnen hebben
 
@@ -361,7 +361,7 @@ Er wordt standaard één secundaire replica voor grootschalige-data bases gemaak
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Hoe kan ik verbinding maken met deze secundaire reken replica's
 
-U kunt verbinding maken met deze extra Compute-replica's met het kenmerk alleen-lezen door het `ApplicationIntent` argument op uw Connection String in te stellen op `ReadOnly` . Alle verbindingen die zijn gemarkeerd met `ReadOnly` , worden automatisch doorgestuurd naar een van de extra alleen-lezen Compute-replica's.  
+U kunt verbinding maken met deze extra Compute-replica's met het kenmerk alleen-lezen door het `ApplicationIntent` argument op uw Connection String in te stellen op `ReadOnly` . Alle verbindingen die zijn gemarkeerd met `ReadOnly` , worden automatisch doorgestuurd naar een van de extra alleen-lezen Compute-replica's. Zie [alleen-lezen Replica's gebruiken om werk belastingen met alleen-lezen query's te offloaden](read-scale-out.md)voor meer informatie.
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>Hoe kan ik valideren of de verbinding met de secundaire Compute-replica is geslaagd met behulp van SSMS of andere client hulpprogramma's?
 
@@ -390,7 +390,7 @@ Nee. Grootschalige-data bases hebben gedeelde opslag, wat betekent dat alle reke
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Hoeveel vertraging er tussen de primaire en secundaire Compute-replica's plaatsvindt
 
-Gegevens latentie vanaf het moment dat een trans actie wordt doorgevoerd op de primaire en de tijd die op een secundair item wordt weer gegeven, is afhankelijk van de huidige frequentie van de logboek generatie. De gemiddelde gegevens latentie is in geringe milliseconden.
+Gegevens latentie vanaf het moment dat een trans actie wordt doorgevoerd op de primaire en de tijd die het kan worden gelezen op een secundair, is afhankelijk van de huidige frequentie voor het genereren van het logboek, de transactie grootte, de belasting van de replica en andere factoren. Typische gegevens latentie voor kleine trans acties is in tien tallen milliseconden, maar er is geen bovengrens voor de gegevens latentie. Gegevens op een bepaalde secundaire replica zijn altijd transactioneel consistent. Op een bepaald moment kan gegevens latentie echter verschillen voor verschillende secundaire replica's. Werk belastingen die direct moeten worden doorgevoerd, moeten worden uitgevoerd op de primaire replica.
 
 ## <a name="next-steps"></a>Volgende stappen
 

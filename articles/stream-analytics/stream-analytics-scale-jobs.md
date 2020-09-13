@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835594"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488504"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Een Azure Stream Analytics taak schalen om de door voer te verhogen
 In dit artikel wordt beschreven hoe u een Stream Analytics query kunt afstemmen om de door Voer voor streaming Analytics-taken te verhogen. U kunt de volgende hand leiding gebruiken om uw taak te schalen om een hogere belasting te verwerken en te profiteren van meer systeem bronnen (zoals meer band breedte, meer CPU-bronnen, meer geheugen).
@@ -23,7 +23,7 @@ Als vereiste moet u mogelijk de volgende artikelen lezen:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Voor beeld 1: uw query is inherent volledig kan worden opgestart over de verschillende invoer partities
 Als uw query volledig kan worden opgestart over alle invoer partities beschikt, kunt u de volgende stappen volgen:
 1.  Ontwerp uw query zodanig dat deze ongebruik maakt van een **partitie per** sleutel woord. Zie de sectie verlegen parallelle taken [op deze pagina voor](stream-analytics-parallelization.md)meer informatie.
-2.  Afhankelijk van de uitvoer typen die in uw query worden gebruikt, is het mogelijk dat een bepaalde uitvoer niet kan worden opgestart is of dat de verdere configuratie nog te maken heeft. Bijvoorbeeld, de Power bi-uitvoer is niet kan worden opgestart. Uitvoer wordt altijd samengevoegd voordat deze naar de uitvoer sink wordt verzonden. Blobs, Tables, ADLS, Service Bus en Azure function worden automatisch geparallelleerd. SQL-en SQL DW-uitvoer hebben een optie voor parallel Lise ring. Voor de Event hub moet de configuratie van PartitionKey zijn ingesteld op overeenkomen met het veld **Partition by** (meestal PartitionId). Voor Event hub moet u ook extra aandacht best Eden aan het aantal partities voor alle invoer en alle uitvoer om te voor komen dat er kruisen tussen partities worden uitgevoerd. 
+2.  Afhankelijk van de uitvoer typen die in uw query worden gebruikt, is het mogelijk dat een bepaalde uitvoer niet kan worden opgestart is of dat de verdere configuratie nog te maken heeft. Bijvoorbeeld, de Power bi-uitvoer is niet kan worden opgestart. Uitvoer wordt altijd samengevoegd voordat deze naar de uitvoer sink wordt verzonden. Blobs, Tables, ADLS, Service Bus en Azure function worden automatisch geparallelleerd. SQL en Azure Synapse Analytics-uitvoer hebben een optie voor parallel Lise ring. Voor de Event hub moet de configuratie van PartitionKey zijn ingesteld op overeenkomen met het veld **Partition by** (meestal PartitionId). Voor Event hub moet u ook extra aandacht best Eden aan het aantal partities voor alle invoer en alle uitvoer om te voor komen dat er kruisen tussen partities worden uitgevoerd. 
 3.  Voer uw query uit met **6 su** (dit is de volledige capaciteit van een knoop punt met één computer) om de maximale Haal bare door voer te meten. Als u **Group by**gebruikt, meet u hoeveel groepen (kardinaliteit) de taak kan verwerken. Algemene symptomen van de systeem resource limieten voor taak beheer zijn het volgende.
     - De metrische gegevens over het gebruik van% zijn meer dan 80%. Dit geeft aan dat het geheugen gebruik hoog is. De factoren die bijdragen aan de toename van deze metriek worden [hier](stream-analytics-streaming-unit-consumption.md)beschreven. 
     -   Uitvoer tempel ligt achter met betrekking tot de klok tijd van de wand. Afhankelijk van uw query logica, kan het uitvoer tijds tempel een logische offset hebben van de klok tijd van de wand. Ze moeten echter op ongeveer dezelfde snelheid worden uitgevoerd. Als het tijds tempel van de uitvoer verder en verder ligt, is het een indicatie dat het systeem overwerkt. Dit kan een resultaat zijn van de stroomafwaartse beperking van het uitvoer filter of een hoog CPU-gebruik. We bieden op dit moment geen CPU-gebruik, dus het kan lastig zijn om de twee te onderscheiden.

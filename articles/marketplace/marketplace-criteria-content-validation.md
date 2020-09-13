@@ -1,22 +1,22 @@
 ---
 title: Vereisten voor Azure Marketplace-aanbieding en-service
-description: In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven van nieuwe aanbiedingen en services op Azure Marketplace.
+description: In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven van nieuwe aanbiedingen, services en andere IT-oplossingen op Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 07/14/2020
-ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/04/2020
+ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812866"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484269"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
-In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven van nieuwe aanbiedingen en services op Azure Marketplace. Alle aanbiedingen moeten voldoen aan de vereisten die worden vermeld in de sectie [vereisten voor alle aanbiedingen](#listing-requirements-for-all-offers) . Gebruik de koppelingen aan de rechter kant om naar vereisten en controle lijsten voor specifieke vermeldings typen te gaan.
+In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven van nieuwe aanbiedingen en services op Azure Marketplace. Alle aanbiedingen moeten voldoen aan de onderstaande [lijst vereisten](#listing-requirements-for-all-offers) . Gebruik de koppelingen aan de rechter kant om te navigeren naar aanvullende vereisten en controle lijsten voor specifieke lijst typen.
 
 ## <a name="listing-requirements-for-all-offers"></a>Aanbiedings vereisten voor alle aanbiedingen
 
@@ -29,7 +29,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 5 | Categorieën en industrieën | <ul><li>Categorieën en subcategorieën moeten overeenkomen met de mogelijkheden van de aanbieding </li><li>Selecteer geen categorieën/subcategorieën die niet geschikt zijn voor uw aanbiedings mogelijkheden. </li></ul> | <ul><li>Selecteer Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).</li><li>Selecteer Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kan uw aanbieding nog steeds worden gedetecteerd voor de geselecteerde categorie.</li></ul> |
 | 6 | Installatiekopieën | <ul><li>Installatie kopie vereisten worden vermeld in Partner Center.</li><li>De tekst die in de scherm opname is opgenomen, is leesbaar en de afbeelding is duidelijk. | De oplossings aanbieding kan in één oogopslag worden begrepen. |
 | 7 | Video's | <ul><li>Er is geen video vereist, maar indien opgegeven, moet deze zonder fouten worden afgespeeld.</li><li>Indien dit niet het geval is, kan deze niet verwijzen naar leveranciers van de concurrent, *tenzij* er een migratie oplossing wordt gedemonstreerd. |<ul><li>In het ideale geval is de lengte 3 min. of meer.</li><li>De aanbieding van de oplossing is eenvoudig te begrijpen via video-inhoud.</li><li>Biedt een demo van oplossings mogelijkheden. |
-| 8 | Status weer geven (aanroepen naar actie) | <ul><li>Moet worden aangeduid als een van de volgende typen: <ul><li>*Contact opnemen*</li><li>*Proef versie* / Nu proef versie *ophalen* / *Proef versie starten* / *Station testen*</li><li>*Nu kopen* / *Nu downloaden*</li></ul></ul> | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om te bepalen of het concept (haalbaarheids test), de evaluatie of de informatie moet worden genoteerd.</li></ol> | 
+| 8 | Status weer geven (aanbiedings opties) | <ul><li>Moet worden aangeduid als een van de volgende typen: <ul><li>*Contact opnemen*</li><li>*Proef versie* / Nu proef versie *ophalen* / *Proef versie starten* / *Station testen*</li><li>*Nu kopen* / *Nu downloaden*</li></ul></ul> | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om te bepalen of het concept (haalbaarheids test), de evaluatie of de informatie moet worden genoteerd.</li></ol> | 
 | 9 | Prijzen van oplossingen | Moet het tabblad met prijs stellingen voor de oplossing of details hebben en de prijzen moeten zich in de lokale valuta van de aanbieding van de partner oplossing bezoeken. | Er moeten meerdere facturerings opties beschikbaar zijn met prijs categorieën om klant opties te bieden. |
 | 10 | Meer informatie | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
 | 11 | Ondersteuning en Help voor oplossingen | Een koppeling maken naar ten minste één van de volgende: <ul><li>Telefoon nummers</li><li>E-mail ondersteuning</li><li>Chat-agents</li><li>Communautaire forums |<ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. |
@@ -40,7 +40,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 
 | Nee. | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-|  | Status weer geven (aanroepen naar actie) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanroepen naar actie (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
+|  | Status weer geven (optie Aanbieding) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanbiedings opties (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS-toepassings vereisten
@@ -78,7 +78,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 2 | Beschrijving van aanbieding  |<ul><li>Zorg voor een correct gebruik van [product namen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Aanbiedingen die zijn gemarkeerd als *prijs: schatting* moeten een opmerking aan de bovenkant of de onderkant hebben om de variabiliteit te verklaren (reis naar client, aantal servers die worden gemigreerd, enzovoort).</li><li>Elk aanbiedings type heeft de volgende beschrijvings vereisten: <ul><li>Er zijn ten minste vier of vijf opsommings tekens nodig, met informatie over de onderwerpen die moeten worden behandeld.</li><li>Alle workshops hebben een agenda nodig.</li><li>Alle agenda's moeten per dag of per week worden opgesplitst, afhankelijk van de duur van de workshop.</li><li>Voor evaluatie, haalbaarheids test, niet-trainings workshops en implementatie aanbiedingen is een product vereist.</li><li>Trainings workshops hebben geen producten nodig, maar ze hebben een gedetailleerdere agenda nodig met onderwerpen die worden behandeld.</li></ul></ul> | <ul><li>Elk aanbod heeft een agenda en een klant.</li><li>De aanbieding bevat een alinea met context over het bedrijf dat de service in de bovenste sectie levert.</li><li>De aanbieding bevat een alinea over de waarde van de service zelf als een bovenste sectie. |
 | 3 | Indeling voor prijs verlaging  | Alle aanbiedingen moeten gebruikmaken van de indeling voor prijs verlaging zodat de aanbieding correct wordt weer gegeven wanneer deze naar HTML wordt geconverteerd.  |  |
 | 4 | Categorieën en industrieën | Categorieën zijn niet relevant. |  | 
-| 5 | Status weer geven (aanroepen naar actie) | Automatisch vermeld als *contact persoon*. |  | 
+| 5 | Status weer geven (optie Aanbieding) | Automatisch vermeld als *contact persoon*. |  | 
 | 6 | Ondersteuning en Help voor oplossingen  | Ondersteuning en Help zijn niet vereist.  | | 
 | 7 | Het privacybeleid en de gebruiks voorwaarden zijn beschikbaar  |  Er zijn geen beleids regels of voor waarden vereist.  | | 
 | 8 | Service typen | Zorg ervoor dat het Service type overeenkomt met de titel. | |

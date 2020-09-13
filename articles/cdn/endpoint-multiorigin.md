@@ -1,21 +1,21 @@
 ---
-title: Meerdere begin punten Azure CDN
+title: Azure CDN-eind punt met meerdere oorsprong (preview-versie)
 description: Aan de slag met Azure CDN eind punt meerdere oorsprongen.
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870447"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504670"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Meerdere begin punten Azure CDN
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN-eind punt met meerdere oorsprong (preview-versie)
 
 Ondersteuning voor meerdere oorsprong elimineert downtime en brengt wereld wijde redundantie tot stand. 
 
@@ -25,6 +25,10 @@ Stel een of meer oorspronkelijke groepen in en kies een standaard oorspronkelijk
 
 > [!NOTE]
 > Deze functie is momenteel alleen beschikbaar via Azure CDN van micro soft. 
+
+> [!IMPORTANT]
+> Azure CDN endpoint is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="create-the-origin-group"></a>De oorspronkelijke groep maken
 

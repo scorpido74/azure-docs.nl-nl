@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 01e2a2db3757e8d13749faf53b47300c8188915e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051216"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484473"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen Azure SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 >
@@ -42,7 +42,7 @@ Voor kopieer activiteiten ondersteunt deze Azure Synapse Analytics-connector dez
 
 - Gegevens kopiëren met behulp van SQL-verificatie en Azure Active Directory (Azure AD) verificatie van het toepassings token met een service-principal of beheerde identiteiten voor Azure-resources.
 - Haal als bron gegevens op met behulp van een SQL-query of opgeslagen procedure. U kunt er ook voor kiezen om een parallelle kopie te kopiëren vanuit een Azure Synapse Analytics-bron, de [parallelle kopie van de Synapse Analytics](#parallel-copy-from-synapse-analytics) -sectie te bekijken voor meer informatie.
-- Laad gegevens met behulp van [poly base](#use-polybase-to-load-data-into-azure-sql-data-warehouse) of Copy- [instructie](#use-copy-statement) (preview) of bulksgewijze insert als sink. We raden u aan om een poly base-of COPY-instructie (preview) te geven voor betere Kopieer prestaties. De connector biedt ook ondersteuning voor het automatisch maken van een doel tabel als deze niet bestaat op basis van het bron schema.
+- Laad gegevens met behulp van [poly base](#use-polybase-to-load-data-into-azure-synapse-analytics) of Copy- [instructie](#use-copy-statement) (preview) of bulksgewijze insert als sink. We raden u aan om een poly base-of COPY-instructie (preview) te geven voor betere Kopieer prestaties. De connector biedt ook ondersteuning voor het automatisch maken van een doel tabel als deze niet bestaat op basis van het bron schema.
 
 > [!IMPORTANT]
 > Als u gegevens kopieert met behulp van Azure Data Factory Integration Runtime, configureert u een [firewall regel op server niveau](../azure-sql/database/firewall-configure.md) zodat Azure-Services toegang hebben tot de [logische SQL-Server](../azure-sql/database/logical-servers.md).
@@ -51,7 +51,7 @@ Voor kopieer activiteiten ondersteunt deze Azure Synapse Analytics-connector dez
 ## <a name="get-started"></a>Aan de slag
 
 > [!TIP]
-> Gebruik poly Base om gegevens te laden in azure Synapse Analytics om de beste prestaties te krijgen. De sectie [poly Base gebruiken voor het laden van gegevens in azure Synapse Analytics](#use-polybase-to-load-data-into-azure-sql-data-warehouse) bevat details. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Gebruik poly Base om gegevens te laden in azure Synapse Analytics om de beste prestaties te krijgen. De sectie [poly Base gebruiken voor het laden van gegevens in azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) bevat details. Zie voor een overzicht met een use-case [1 TB in azure Synapse Analytics onder 15 minuten laden met Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -284,7 +284,7 @@ Als u gegevens wilt kopiëren uit Azure Synapse Analytics, stelt u de eigenschap
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Azure SQL DW input dataset name>",
+                "referenceName": "<Azure Synapse Analytics input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -316,7 +316,7 @@ Als u gegevens wilt kopiëren uit Azure Synapse Analytics, stelt u de eigenschap
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Azure SQL DW input dataset name>",
+                "referenceName": "<Azure Synapse Analytics input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -364,32 +364,32 @@ GO
 
 ### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a> Azure Synapse Analytics als Sink
 
-Azure Data Factory ondersteunt drie manieren om gegevens te laden in SQL Data Warehouse.
+Azure Data Factory ondersteunt drie manieren om gegevens in azure Synapse Analytics te laden.
 
-![Kopieer opties voor SQL DW-sinks](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
+![Kopieer opties voor de Azure Synapse Analytics-Sink](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
 
-- [Poly Base gebruiken](#use-polybase-to-load-data-into-azure-sql-data-warehouse)
+- [Poly Base gebruiken](#use-polybase-to-load-data-into-azure-synapse-analytics)
 - [De instructie COPY gebruiken (preview)](#use-copy-statement)
 - Bulksgewijs invoegen gebruiken
 
 De snelste en meest schaal bare manier om gegevens te laden, is via [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) of de [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview).
 
-Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in de Kopieer activiteit in op **SqlDWSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
+Als u gegevens wilt kopiëren naar Azure Synapse Analytics, stelt u het sink-type in de Kopieer activiteit in op **SqlDWSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
 
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlDWSink**. | Yes                                           |
-| allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt voor het laden van gegevens in SQL Data Warehouse. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br/>Toep assen bij het gebruik van poly base.     |
+| allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt voor het laden van gegevens in azure Synapse Analytics. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie [poly Base gebruiken om gegevens te laden in de sectie Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br/>Toep assen bij het gebruik van poly base.     |
 | polyBaseSettings  | Een groep eigenschappen die kan worden opgegeven wanneer de `allowPolybase` eigenschap is ingesteld op **True**. | Nee.<br/>Toep assen bij het gebruik van poly base. |
-| allowCopyCommand | Hiermee wordt aangegeven of een [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) moet worden gebruikt om gegevens te laden in SQL Data Warehouse. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie de [instructie Copy gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-copy-statement) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br>Toep assen bij het gebruik van COPY. |
+| allowCopyCommand | Hiermee wordt aangegeven of [kopiëren-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) moet worden gebruikt om gegevens in azure Synapse Analytics te laden. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie de [instructie Copy gebruiken om gegevens te laden in de sectie Azure Synapse Analytics](#use-copy-statement) voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br>Toep assen bij het gebruik van COPY. |
 | copyCommandSettings | Een groep eigenschappen die kan worden opgegeven wanneer `allowCopyCommand` eigenschap is ingesteld op True. | Nee.<br/>Toep assen bij het gebruik van COPY. |
 | writeBatchSize    | Het aantal rijen dat in de SQL-tabel **per batch**moet worden ingevoegd.<br/><br/>De toegestane waarde is een **geheel getal** (aantal rijen). Standaard bepaalt Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee.<br/>Toep assen bij het gebruik van bulksgewijs invoegen.     |
 | writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt.<br/><br/>De toegestane waarde is **time span**. Voor beeld: "00:30:00" (30 minuten). | Nee.<br/>Toep assen bij het gebruik van bulksgewijs invoegen.        |
-| preCopyScript     | Geef een SQL-query op die moet worden uitgevoerd voordat er gegevens naar Azure SQL Data Warehouse worden geschreven in elke uitvoering. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | No                                            |
+| preCopyScript     | Geef een SQL-query voor de Kopieer activiteit op die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar Azure Synapse Analytics worden geschreven. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | No                                            |
 | tableOption | Hiermee wordt aangegeven of [de Sink-tabel automatisch](copy-activity-overview.md#auto-create-sink-tables) moet worden gemaakt als deze niet bestaat op basis van het bron schema. Toegestane waarden zijn: `none` (standaard), `autoCreate` . |No |
-| disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals SQL Data Warehouse Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op dat u deze functie wilt uitschakelen. | Nee (standaard instelling `false` ) |
+| disableMetricsCollection | Data Factory verzamelt metrische gegevens zoals Azure Synapse Analytics Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op dat u deze functie wilt uitschakelen. | Nee (standaard instelling `false` ) |
 
-#### <a name="sql-data-warehouse-sink-example"></a>Voor beeld van SQL Data Warehouse Sink
+#### <a name="azure-synapse-analytics-sink-example"></a>Voor beeld van Azure Synapse Analytics-Sink
 
 ```json
 "sink": {
@@ -453,12 +453,12 @@ Aanbevolen procedures voor het laden van gegevens met de optie partitie:
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Poly Base gebruiken voor het laden van gegevens in Azure SQL Data Warehouse
+## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>Poly Base gebruiken voor het laden van gegevens in azure Synapse Analytics
 
 Het gebruik van [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) is een efficiënte manier om een grote hoeveelheid gegevens in azure Synapse Analytics te laden met een hoge door voer. U ziet een grote toename in de door voer door poly Base te gebruiken in plaats van het standaard BULKINSERT-mechanisme. Zie voor een overzicht met een use-case [1 TB laden in azure Synapse Analytics](v1/data-factory-load-sql-data-warehouse.md).
 
-- Als uw bron gegevens zich in **Azure Blob, Azure data Lake Storage gen1 of Azure data Lake Storage Gen2**bevindt en de **indeling poly base-compatibel is**, kunt u de Kopieer activiteit gebruiken om direct poly Base te activeren, zodat Azure SQL Data Warehouse de gegevens van de bron kan ophalen. Zie voor meer informatie **[direct kopiëren met poly base](#direct-copy-by-using-polybase)**.
-- Als uw brongegevens archief en-indeling niet oorspronkelijk worden ondersteund door poly Base, gebruikt u in plaats daarvan de functie **[voor gefaseerde kopie door gebruik te maken van poly base](#staged-copy-by-using-polybase)** . De functie voor gefaseerd kopiëren biedt u ook een betere door voer. De gegevens worden automatisch geconverteerd naar een indeling die compatibel is met poly Base, de gegevens worden opgeslagen in Azure Blob Storage en vervolgens worden poly base aangeroepen om gegevens te laden in SQL Data Warehouse.
+- Als uw bron gegevens zich in **Azure Blob, Azure data Lake Storage gen1 of Azure data Lake Storage Gen2**bevindt en de **indeling poly base-compatibel is**, kunt u de Kopieer activiteit gebruiken om direct poly Base te activeren, zodat Azure Synapse Analytics de gegevens van de bron kan ophalen. Zie voor meer informatie **[direct kopiëren met poly base](#direct-copy-by-using-polybase)**.
+- Als uw brongegevens archief en-indeling niet oorspronkelijk worden ondersteund door poly Base, gebruikt u in plaats daarvan de functie **[voor gefaseerde kopie door gebruik te maken van poly base](#staged-copy-by-using-polybase)** . De functie voor gefaseerd kopiëren biedt u ook een betere door voer. De gegevens worden automatisch geconverteerd naar een indeling die compatibel is met poly Base, de gegevens worden opgeslagen in Azure Blob Storage en vervolgens poly base aangeroepen om gegevens in azure Synapse Analytics te laden.
 
 > [!TIP]
 > Meer informatie over [Best practices voor het gebruik van poly base](#best-practices-for-using-polybase).
@@ -474,10 +474,10 @@ De volgende poly base-instellingen worden ondersteund onder `polyBaseSettings` i
 
 ### <a name="direct-copy-by-using-polybase"></a>Direct kopiëren door poly Base te gebruiken
 
-SQL Data Warehouse poly Base ondersteunt direct Azure Blob, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, gebruikt u poly Base om rechtstreeks vanuit de brongegevens opslag naar Azure Synapse Analytics te kopiëren. Als dat niet het geval is, gebruikt u de [gefaseerde kopie met poly base](#staged-copy-by-using-polybase).
+Azure Synapse Analytics poly Base ondersteunt direct Azure Blob, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, gebruikt u poly Base om rechtstreeks vanuit de brongegevens opslag naar Azure Synapse Analytics te kopiëren. Als dat niet het geval is, gebruikt u de [gefaseerde kopie met poly base](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Als u gegevens efficiënt wilt kopiëren naar SQL Data Warehouse, kunt u meer te weten komen uit [Azure Data Factory het nog eenvoudiger en handig maken om inzichten van gegevens te ontdekken wanneer u data Lake Store met SQL Data Warehouse gebruikt](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Als u gegevens efficiënt wilt kopiëren naar Azure Synapse Analytics, kunt u met Azure Data Factory meer informatie [vinden over het eenvoudiger en handig maken van inzichten op basis van gegevens met behulp van data Lake Store met Azure Synapse Analytics](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data Factory gecontroleerd en wordt automatisch teruggeleid naar het BULKINSERT-mechanisme voor het verplaatsen van gegevens.
 
@@ -545,7 +545,7 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 
 ### <a name="staged-copy-by-using-polybase"></a>Gefaseerde kopie door gebruik te maken van poly base
 
-Als uw bron gegevens niet systeem eigen compatibel zijn met poly Base, kunt u gegevens kopiëren met behulp van een tussentijds Azure Blob Storage-exemplaar (het kan geen Azure-Premium Storage zijn). In dit geval worden de gegevens in Azure Data Factory automatisch geconverteerd om te voldoen aan de vereisten voor gegevens formaat van poly base. Vervolgens wordt poly base aangeroepen om gegevens te laden in SQL Data Warehouse. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een staging-exemplaar voor Azure Blob Storage.
+Als uw bron gegevens niet systeem eigen compatibel zijn met poly Base, kunt u gegevens kopiëren met behulp van een tussentijds Azure Blob Storage-exemplaar (het kan geen Azure-Premium Storage zijn). In dit geval worden de gegevens in Azure Data Factory automatisch geconverteerd om te voldoen aan de vereisten voor gegevens formaat van poly base. Vervolgens wordt poly base aangeroepen om gegevens te laden in azure Synapse Analytics. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een staging-exemplaar voor Azure Blob Storage.
 
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure Storage-account met de tussenliggende Blob-opslag. Geef vervolgens de `enableStaging` `stagingSettings` Eigenschappen en op voor de Kopieer activiteit, zoals in de volgende code wordt weer gegeven.
 
@@ -595,25 +595,25 @@ De volgende secties bevatten aanbevolen procedures, naast de methoden die worden
 
 #### <a name="required-database-permission"></a>Vereiste database machtiging
 
-Als u poly Base wilt gebruiken, moet de gebruiker die gegevens laadt in SQL Data Warehouse de [machtiging ' besturings element '](https://msdn.microsoft.com/library/ms191291.aspx) hebben voor de doel database. Een manier om dat te doen, is om de gebruiker toe te voegen als lid van de rol **db_owner** . Meer informatie over hoe u dit doet in het [overzicht van SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
+Als u poly Base wilt gebruiken, moet de gebruiker die gegevens laadt in azure Synapse Analytics beschikken over de [machtiging ' beheren '](https://msdn.microsoft.com/library/ms191291.aspx) voor de doel database. Een manier om dat te doen, is om de gebruiker toe te voegen als lid van de rol **db_owner** . Meer informatie over hoe u dit doet in het [overzicht van Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
 #### <a name="row-size-and-data-type-limits"></a>Limieten voor Rijgrootte en gegevens typen
 
-Poly base-belastingen zijn beperkt tot rijen die kleiner zijn dan 1 MB. Het kan niet worden gebruikt om te laden naar VARCHR (MAX), NVARCHAR (MAX) of VARBINARY (MAX). Zie [SQL Data Warehouse service-capaciteits limieten](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)voor meer informatie.
+Poly base-belastingen zijn beperkt tot rijen die kleiner zijn dan 1 MB. Het kan niet worden gebruikt om te laden naar VARCHR (MAX), NVARCHAR (MAX) of VARBINARY (MAX). Zie [capaciteits limieten voor Azure Synapse Analytics-Service](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)voor meer informatie.
 
 Als de bron gegevens rijen hebben die groter zijn dan 1 MB, wilt u de bron tabellen wellicht verticaal splitsen in meerdere kleinen. Zorg ervoor dat de maximale grootte van elke rij de limiet niet overschrijdt. De kleinere tabellen kunnen vervolgens worden geladen door poly Base te gebruiken en samen te voegen in azure Synapse Analytics.
 
 Voor gegevens met een brede kolom kunt u ook gebruikmaken van niet-poly Base om de gegevens te laden met behulp van ADF, door de instelling ' poly base toestaan ' uit te scha kelen.
 
-#### <a name="sql-data-warehouse-resource-class"></a>Resource klasse SQL Data Warehouse
+#### <a name="azure-synapse-analytics-resource-class"></a>Azure Synapse Analytics-resource klasse
 
-Wijs een grotere resource klasse toe aan de gebruiker die gegevens laadt in SQL Data Warehouse via Poly Base om de best mogelijke door voer te krijgen.
+Wijs een grotere resource klasse toe aan de gebruiker die gegevens laadt in azure Synapse Analytics via Poly Base om de best mogelijke door voer te verzorgen.
 
 #### <a name="polybase-troubleshooting"></a>Poly base-probleem oplossing
 
 **Laden naar decimale kolom**
 
-Als de bron gegevens in tekst indeling of andere niet-poly base-compatibele archieven (met gefaseerde kopie en poly base) staan en een lege waarde bevat die in SQL Data Warehouse decimale kolom moet worden geladen, kunt u de volgende fout raken:
+Als uw bron gegevens in tekst indeling of andere niet-poly base-compatibele archieven (met gefaseerde kopie en poly base) staan en een lege waarde bevat die in de decimale kolom van Azure Synapse Analytics moet worden geladen, kunt u de volgende fout raken:
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
@@ -649,9 +649,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 
 De NULL-waarde is een speciale vorm van de standaard waarde. Als de kolom null-waarden bevat, kunnen de invoer gegevens in de BLOB voor die kolom leeg zijn. Maar dit kan niet ontbreken in de invoer gegevensset. Poly base voegt NULL toe voor ontbrekende waarden in azure Synapse Analytics.
 
-## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a> De instructie COPY gebruiken om gegevens in Azure SQL Data Warehouse te laden (preview)
+## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics-preview"></a><a name="use-copy-statement"></a> De instructie COPY gebruiken om gegevens te laden in azure Synapse Analytics (preview)
 
-SQL Data Warehouse [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) biedt ondersteuning voor het laden van gegevens uit **Azure Blob en Azure data Lake Storage Gen2**. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, kunt u de instructie COPY gebruiken in ADF om gegevens te laden in Azure SQL Data Warehouse. Azure Data Factory controleert de instellingen en mislukt de uitvoering van de Kopieer activiteit als niet aan de criteria wordt voldaan.
+De Azure Synapse Analytics [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) biedt ondersteuning voor het laden van gegevens uit **Azure Blob en Azure data Lake Storage Gen2**. Als uw bron gegevens voldoen aan de criteria die in deze sectie zijn beschreven, kunt u de instructie COPY gebruiken in ADF om gegevens te laden in azure Synapse Analytics. Azure Data Factory controleert de instellingen en mislukt de uitvoering van de Kopieer activiteit als niet aan de criteria wordt voldaan.
 
 >[!NOTE]
 >Er wordt momenteel alleen Data Factory ondersteund voor het kopiëren van een COPY-instructie met compatibele bronnen die hieronder worden beschreven.
@@ -690,8 +690,8 @@ De volgende instellingen voor de Kopieer instructie worden ondersteund onder `al
 
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| Standaard waarde | Hiermee geeft u de standaard waarden voor elke doel kolom in SQL DW op.  De standaard waarden in de eigenschap overschrijven de standaard beperking die is ingesteld in het Data Warehouse en de identiteits kolom kan geen standaard waarde hebben. | No |
-| additionalOptions | Aanvullende opties die worden door gegeven aan de SQL DW COPY-instructie, worden rechtstreeks in de with-component in een [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)opgenomen. Quote de waarde waar nodig om uit te lijnen met de vereisten voor het kopiëren van de instructie. | No |
+| Standaard waarde | Hiermee geeft u de standaard waarden voor elke doel kolom in azure Synapse Analytics op.  De standaard waarden in de eigenschap overschrijven de standaard beperking die is ingesteld in het Data Warehouse en de identiteits kolom kan geen standaard waarde hebben. | No |
+| additionalOptions | Aanvullende opties die worden door gegeven aan een Azure Synapse Analytics-instructie COPY direct in de component with voor [kopiëren](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Quote de waarde waar nodig om uit te lijnen met de vereisten voor het kopiëren van de instructie. | No |
 
 ```json
 "activities":[
@@ -800,7 +800,7 @@ Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activ
 Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de volgende toewijzingen gebruikt vanuit gegevens typen van Azure Synapse Analytics om tussenliggende gegevens typen te Azure Data Factory. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteiten het bron schema en het gegevens type aan de Sink toewijzen.
 
 >[!TIP]
->Raadpleeg de [tabel gegevens typen in het Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) -artikel over ondersteunde gegevens typen van SQL DW en de tijdelijke oplossingen voor niet-ondersteunde.
+>Raadpleeg de [tabel gegevens typen in het Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) -artikel over door Azure Synapse Analytics ondersteunde gegevens typen en de tijdelijke oplossingen voor niet-ondersteunde.
 
 | Azure Synapse Analytics-gegevens type    | Data Factory tussentijds gegevens type |
 | :------------------------------------ | :----------------------------- |
@@ -808,9 +808,9 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | binair                                | Byte []                         |
 | bit                                   | Booleaans                        |
 | char                                  | Teken reeks, char []                 |
-| date                                  | DateTime                       |
-| Datum/tijd                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| datum                                  | Datum/Tijd                       |
+| Datum/tijd                              | Datum/Tijd                       |
+| datetime2                             | Datum/Tijd                       |
 | Date time offset                        | Date time offset                 |
 | Decimaal                               | Decimaal                        |
 | FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
@@ -823,7 +823,7 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | nvarchar                              | Teken reeks, char []                 |
 | werkelijk                                  | Enkel                         |
 | rowversion                            | Byte []                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Datum/Tijd                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Decimaal                        |
 | tijd                                  | TimeSpan                       |

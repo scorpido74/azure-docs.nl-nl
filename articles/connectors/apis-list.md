@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871561"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488827"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -308,7 +308,7 @@ Voor Logic apps die u in een dedicated [Integration service Environment (ISE)](#
         [![Azure Service Bus ISE-connector ][azure-service-bus-icon]<br> **Azure service <br> bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL Data Warehouse ISE-connector ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
+        [![Azure ][azure-sql-data-warehouse-icon]<br> **SQL data <br> Warehouse** voor Azure Synapse Analytics ISE-connector][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure- ][azure-table-storage-icon]<br> **tabel <br> opslag** voor Azure Table Storage ISE-connector][azure-table-storage-doc]
@@ -572,7 +572,7 @@ Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzond
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "Query's uitvoeren op Azure Monitor-Logboeken in Log Analytics-werk ruimten en Application Insights onderdelen"
 [azure-queues-doc]: /connectors/azurequeues/ "Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Berichten van Service Bus-wacht rijen en-onderwerpen verzenden en berichten van Service Bus wachtrijen en abonnementen ontvangen"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Verbinding maken met Azure SQL Data Warehouse zodat u uw gegevens kunt bekijken"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Verbinding maken met Azure Synapse Analytics zodat u uw gegevens kunt bekijken"
 [azure-table-storage-doc]: /connectors/azuretables/ "Maak verbinding met uw Azure Storage-account zodat u tabellen en meer kunt maken, bijwerken en opvragen."
 [biztalk-server-doc]: /connectors/biztalk/ "Maak verbinding met uw BizTalk Server zodat u op BizTalk gebaseerde toepassingen naast elkaar kunt uitvoeren met Azure Logic Apps"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Verbinding maken met een on-premises bestandssysteem"
