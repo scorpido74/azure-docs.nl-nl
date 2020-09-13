@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09664de9ab2040ad04127ee1556c21244ac6bc2d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 62628e4b85af96fd9c9ba4174d22d3f1f7c6540a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269672"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006020"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -130,7 +130,7 @@ Gebruikers met deze rol kunnen apparaten in azure AD inschakelen, uitschakelen e
 
 ### <a name="compliance-administrator"></a>[Beheerder voor naleving](#compliance-administrator-permissions)
 
-Gebruikers met deze rol hebben machtigingen voor het beheren van aan naleving gerelateerde functies in het Microsoft 365 compliance Center, Microsoft 365 beheer centrum, Azure en Office 365 Security & compliance Center. Eigen beheer kunnen ook alle functies in het Exchange-beheer centrum en teams beheren & Skype voor bedrijven-beheer centrums en ondersteunings tickets maken voor Azure en Microsoft 365. Meer informatie vindt u op de [Office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Gebruikers met deze rol hebben machtigingen voor het beheren van aan naleving gerelateerde functies in het Microsoft 365 compliance Center, Microsoft 365 beheer centrum, Azure en Office 365 Security & compliance Center. Eigen beheer kunnen ook alle functies in het Exchange-beheer centrum en teams beheren & Skype voor bedrijven-beheer centrums en ondersteunings tickets maken voor Azure en Microsoft 365. Meer informatie vindt u op de [Office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d). [Deze documentatie](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) bevat informatie over de verschillen tussen de beheerder van de naleving en de compatibiliteit van de gegevens. 
 
 In | Wel
 ----- | ----------
@@ -142,7 +142,7 @@ In | Wel
 
 ### <a name="compliance-data-administrator"></a>[Beheerder voor nalevingsgegevens](#compliance-data-administrator-permissions)
 
-Gebruikers met deze rol hebben machtigingen voor het bijhouden van gegevens in het Microsoft 365 compliance Center, Microsoft 365 beheer centrum en Azure. Gebruikers kunnen ook nalevings gegevens volgen in het Exchange-beheer centrum, nalevings beheer en teams & het beheer centrum van Skype voor bedrijven en ondersteunings tickets maken voor Azure en Microsoft 365.
+Gebruikers met deze rol hebben machtigingen voor het bijhouden van gegevens in het Microsoft 365 compliance Center, Microsoft 365 beheer centrum en Azure. Gebruikers kunnen ook nalevings gegevens volgen in het Exchange-beheer centrum, nalevings beheer en teams & het beheer centrum van Skype voor bedrijven en ondersteunings tickets maken voor Azure en Microsoft 365. [Deze documentatie](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) bevat informatie over de verschillen tussen de beheerder van de naleving en de compatibiliteit van de gegevens.
 
 In | Wel
 ----- | ----------
@@ -483,6 +483,10 @@ Gebruikers met deze rol kunnen communicatie problemen in micro soft-teams oploss
 
 Gebruikers met deze rol kunnen communicatie problemen in micro soft-teams oplossen & Skype voor bedrijven met behulp van de hulp middelen voor het oplossen van problemen met gebruikers aanroepen in het micro soft teams & Skype voor bedrijven-beheer centrum. Gebruikers met deze rol kunnen alleen gebruikers details weer geven in de aanroep voor de specifieke gebruiker die ze hebben gezocht. Deze rol heeft geen toegang voor het weer geven, maken of beheren van ondersteunings tickets.
 
+### <a name="teams-devices-administrator"></a>[Team apparaten-beheerder](#teams-devices-administrator-permissions)
+
+Gebruikers met deze rol kunnen [teams met gecertificeerde apparaten](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) beheren vanuit het teams beheer centrum. Met deze rol kunnen alle apparaten in één oogopslag worden weer gegeven, met de mogelijkheid om apparaten te zoeken en te filteren. De gebruiker kan de details van elk apparaat controleren, inclusief het aangemelde account, het merk en het model van het apparaat. De gebruiker kan de instellingen op het apparaat wijzigen en de software versies bijwerken. Deze rol verleent geen machtigingen om de activiteit teams te controleren en de kwaliteit van het apparaat aan te roepen. 
+
 ### <a name="teams-service-administrator"></a>[Teams service-beheerder](#teams-service-administrator-permissions)
 
 Gebruikers met deze rol kunnen alle aspecten van de werk belasting van micro soft teams beheren via micro soft teams & het beheer centrum van Skype voor bedrijven en de respectieve Power shell-modules. Dit omvat onder andere alle beheer hulpprogramma's die betrekking hebben op telefonie, berichten, vergaderingen en de teams zelf. Met deze rol verleent u ook de mogelijkheid om alle Microsoft 365 groepen te maken en beheren, ondersteunings tickets te beheren en de service status te controleren.
@@ -560,7 +564,7 @@ Kan alle aspecten van app-registraties en bedrijfs-apps maken en beheren.
 | micro soft. Directory/servicePrincipals/policies/update | Werk de eigenschap servicePrincipals. policies bij in Azure Active Directory. |
 | micro soft. map/signInReports/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 
@@ -584,7 +588,7 @@ Voor het weer geven, instellen en opnieuw instellen van verificatie methode-info
 | micro soft. Directory/gebruikers/invalidateAllRefreshTokens | De tokens voor het vernieuwen van alle gebruikers in Azure Active Directory ongeldig te maken. |
 | micro soft. Directory/Users/strongAuthentication/update | Geavanceerde verificatie-eigenschappen zoals MFA-referentie gegevens bijwerken. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -616,7 +620,7 @@ Kan alle aspecten van de Azure Information Protection-Service beheren.
 | --- | --- |
 | micro soft. Azure. informationProtection/allTasks | Beheer alle aspecten van Azure Information Protection. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 
@@ -649,7 +653,7 @@ Kan algemene taken met betrekking tot facturering uitvoeren, zoals het bijwerken
 | --- | --- |
 | micro soft. map/organisatie/basis/bijwerken | Basis eigenschappen van de organisatie in Azure Active Directory bijwerken. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van de facturering. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
@@ -694,7 +698,7 @@ Kan alle aspecten van app-registraties en bedrijfs-apps maken en beheren, behalv
 | micro soft. Directory/servicePrincipals/policies/update | Werk de eigenschap servicePrincipals. policies bij in Azure Active Directory. |
 | micro soft. map/signInReports/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op signInReports in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 
@@ -762,7 +766,7 @@ Kan alle aspecten beheren van Azure AD en micro soft-services die gebruikmaken v
 | micro soft. Azure. advancedThreatProtection/Alvan de aflezingen/lezen | Lees alle resources in micro soft. Azure. advancedThreatProtection. |
 | micro soft. Azure. informationProtection/allTasks | Beheer alle aspecten van Azure Information Protection. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. commerce. facturering/toerekeningen/allTasks | Beheer alle aspecten van de facturering. |
 | micro soft. intune/toestemmingen/allTasks | Beheer alle aspecten van intune. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
@@ -795,7 +799,7 @@ Kan nalevings configuratie en-rapporten in azure AD en Office 365 lezen en beher
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -815,7 +819,7 @@ Hiermee wordt inhoud voor naleving gemaakt en beheerd.
 | micro soft. Directory. cloudAppSecurity/allTasks | Microsoft Cloud App Security lezen en configureren. |
 | micro soft. Azure. informationProtection/allTasks | Beheer alle aspecten van Azure Information Protection. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -848,7 +852,7 @@ Kan alle aspecten van het product Dynamics 365 beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. powerApps. dynamics365/allTasks | Beheer alle aspecten van Dynamics 365. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
@@ -880,7 +884,7 @@ Kan de bureau blad Analytics en de aanpassing van Office-&-beleids Services behe
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. desktopAnalytics/cons/allTasks | Beheer alle aspecten van Desktop Analytics. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
@@ -1031,7 +1035,7 @@ Kan alle aspecten van het Exchange-product beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/groepen/Unified/appRoleAssignments/update | Werk de eigenschap groups. Unified in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/Basic/update | Basis eigenschappen van Microsoft 365 groepen bijwerken. |
 | micro soft. Directory/groepen/Unified/Create | Microsoft 365 groepen maken. |
@@ -1156,7 +1160,7 @@ Kan alle aspecten van groepen en groeps instellingen, zoals naamgeving en verloo
 | micro soft. Directory/groepen/herstellen | Groepen herstellen in Azure Active Directory. |
 | micro soft. Directory/groepen/instellingen/bijwerken | Werk de eigenschap groups. settings bij in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1187,7 +1191,7 @@ Kan wacht woorden voor niet-beheerders en helpdesk beheerders opnieuw instellen.
 | micro soft. Directory/gebruikers/invalidateAllRefreshTokens | De tokens voor het vernieuwen van alle gebruikers in Azure Active Directory ongeldig te maken. |
 | micro soft. map/gebruikers/wacht woord/bijwerken | Wacht woorden bijwerken voor alle gebruikers in Azure Active Directory. Raadpleeg de online documentatie voor meer informatie. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1199,7 +1203,7 @@ Cloud inrichting en verificatie services inschakelen, implementeren, configurere
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/toepassingen/publiek/update  | Werk de eigenschap Applications. Audience bij in Azure Active Directory. |
 | micro soft. Directory/toepassingen/verificatie/bijwerken | Werk de eigenschap Applications. Authentication bij in Azure Active Directory.  |
 | micro soft. Directory/toepassingen/basis/bijwerken | Basis eigenschappen van toepassingen in Azure Active Directory bijwerken. |
@@ -1242,7 +1246,7 @@ Heeft sdministrative-toegang in de M365 Insights-app.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Insights/allTasks | Beheer alle aspecten van inzichten. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1290,7 +1294,7 @@ Kan alle aspecten van het intune-product beheren.
 | micro soft. Directory/Users/appRoleAssignments/update | Werk de eigenschap users. appRoleAssignments bij in Azure Active Directory. |
 | micro soft. map/gebruikers/basis/bijwerken | Basis eigenschappen van gebruikers in Azure Active Directory bijwerken. |
 | micro soft. map/gebruikers/Manager/Update | Werk de eigenschap users. Manager bij in Azure Active Directory. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. intune/toestemmingen/allTasks | Beheer alle aspecten van intune. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
@@ -1334,7 +1338,7 @@ Kan alle aspecten van het product van Skype voor bedrijven beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. skypeForBusiness/cons/allTasks | Beheer alle aspecten van Skype voor bedrijven online. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1410,7 +1414,7 @@ Kan de Office-apps Cloud Services, waaronder beleid en instellingen beheer, behe
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1445,7 +1449,7 @@ Niet gebruiken-niet bedoeld voor algemeen gebruik.
 | micro soft. map/gebruikers/herstellen | Verwijderde gebruikers herstellen in Azure Active Directory. |
 | micro soft. map/gebruikers/userPrincipalName/update | Werk de eigenschap users. userPrincipalName bij in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1480,7 +1484,7 @@ Niet gebruiken-niet bedoeld voor algemeen gebruik.
 | micro soft. map/gebruikers/herstellen | Verwijderde gebruikers herstellen in Azure Active Directory. |
 | micro soft. map/gebruikers/userPrincipalName/update | Werk de eigenschap users. userPrincipalName bij in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1505,7 +1509,7 @@ Kan alle aspecten van het Power BI product beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. powerApps. powerBI/allTasks | Beheer alle aspecten van Power BI. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
@@ -1523,7 +1527,7 @@ Kan alle aspecten van micro soft Dynamics 365, PowerApps en Microsoft Flow maken
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. dynamics365/-beleeningen/allTasks | Beheer alle aspecten van Dynamics 365. |
 | micro soft. flow/allTasks | Beheer alle aspecten van Microsoft Flow. |
 | micro soft. powerApps/allTasks | Beheer alle aspecten van PowerApps. |
@@ -1568,7 +1572,7 @@ Voor het weer geven, instellen en opnieuw instellen van verificatie methode-info
 | micro soft. Directory/gebruikers/invalidateAllRefreshTokens | De tokens voor het vernieuwen van alle gebruikers in Azure Active Directory ongeldig te maken. |
 | micro soft. Directory/Users/strongAuthentication/update | Geavanceerde verificatie-eigenschappen zoals MFA-referentie gegevens bijwerken. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1654,7 +1658,7 @@ Kan beveiligings gegevens en-rapporten lezen en configuratie beheren in azure AD
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/toepassingen/beleid/update | Werk de eigenschap Applications. policies bij in Azure Active Directory. |
 | micro soft. map/audit logs bevat/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op audit logs bevat in Azure Active Directory. |
 | micro soft. Directory/apparaten/bitLockerRecoveryKeys/lezen | Lees de eigenschap devices. bitLockerRecoveryKeys in Azure Active Directory. |
@@ -1686,6 +1690,7 @@ Maakt en beheert beveiligings gebeurtenissen.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. advancedThreatProtection/Alvan de aflezingen/lezen | Lees en configureer Azure AD Advanced Threat Protection. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security lezen en configureren. |
 | micro soft. map/identityProtection/allProperties/lezen | Alle resources in micro soft. Aad. identityProtection lezen. |
 | micro soft. map/privilegedIdentityManagement/allProperties/lezen | Alle resources in micro soft. Aad. privilegedIdentityManagement lezen. |
@@ -1728,7 +1733,7 @@ Kan informatie over de service status lezen en ondersteunings tickets beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1745,7 +1750,7 @@ Kan alle aspecten van de share point-service beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/groepen/Unified/appRoleAssignments/update | Werk de eigenschap groups. Unified in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/Basic/update | Basis eigenschappen van Microsoft 365 groepen bijwerken. |
 | micro soft. Directory/groepen/Unified/Create | Microsoft 365 groepen maken. |
@@ -1771,11 +1776,14 @@ Kan functies voor bellen en vergaderingen binnen de micro soft teams-service beh
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 | micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
+| micro soft. teams/vergaderingen/allProperties/allTasks | Vergaderingen beheren, met inbegrip van beleids regels voor vergaderingen, configuraties en Conferentie bruggen. |
+| micro soft. teams/stem/allProperties/allTasks | Spraak beheren, met inbegrip van het aanroepen van beleid en de inventaris en toewijzing van het telefoon nummer. |
+| micro soft. teams/callQuality/allProperties/lezen | Lees alle gegevens in dash board voor oproep kwaliteit (CQD). |
 
 ### <a name="teams-communications-support-engineer-permissions"></a>Privileges van de team communicatie technicus
 
@@ -1791,6 +1799,7 @@ Kan communicatie problemen binnen teams oplossen met behulp van geavanceerde hul
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. teams/callQuality/allProperties/lezen | Lees alle gegevens in dash board voor oproep kwaliteit (CQD). |
 
 ### <a name="teams-communications-support-specialist-permissions"></a>Team communicatie support specialist-machtigingen
 
@@ -1806,6 +1815,21 @@ Kan communicatie problemen in teams oplossen met behulp van basis hulpprogramma'
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. teams/callQuality/basis/lezen | Lees de basis gegevens in dash board voor oproep kwaliteit (CQD). |
+
+### <a name="teams-devices-administrator-permissions"></a>Teams apparaten beheerders machtigingen
+
+Kan beheer taken uitvoeren op apparaten die zijn gecertificeerd voor teams.
+
+> [!NOTE]
+> Deze rol heeft aanvullende machtigingen buiten Azure Active Directory. Zie beschrijving van rol hierboven voor meer informatie.
+>
+>
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+| micro soft. teams/apparaten/basis/lezen | Beheer alle aspecten van teams: gecertificeerde apparaten, waaronder configuratie beleid. |
 
 ### <a name="teams-service-administrator-permissions"></a>Team service-beheerders machtigingen
 
@@ -1819,7 +1843,7 @@ Kan de micro soft teams-service beheren.
 | **Acties** | **Beschrijving** |
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. Directory/groepen/hiddenMembers/lezen | Lees de eigenschap groups. hiddenMembers in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/appRoleAssignments/update | Werk de eigenschap groups. Unified in Azure Active Directory. |
 | micro soft. Directory/groepen/Unified/Basic/update | Basis eigenschappen van Microsoft 365 groepen bijwerken. |
@@ -1832,6 +1856,7 @@ Kan de micro soft teams-service beheren.
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
 | micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
+| micro soft. teams//allProperties/allTasks | Alle resources in teams beheren. |
 
 ### <a name="user-administrator-permissions"></a>Gebruikers beheerders machtigingen
 Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders.
@@ -1865,7 +1890,7 @@ Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieu
 | micro soft. map/gebruikers/herstellen | Verwijderde gebruikers herstellen in Azure Active Directory. |
 | micro soft. map/gebruikers/userPrincipalName/update | Werk de eigenschap users. userPrincipalName bij in Azure Active Directory. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
-| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. Azure. supportTickets/allTasks | Azure-ondersteunings tickets voor services op Directory niveau maken en beheren. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
@@ -1877,7 +1902,7 @@ Rollen sjabloon-Id's worden voornamelijk gebruikt door de Microsoft Graph-API of
 Grafiek weergave naam | Weergave naam Azure Portal | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------
 Toepassingsbeheerder | Toepassings beheerder | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
-Toepassingsontwikkelaar | Toepassingsontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
+Toepassings ontwikkelaar | Toepassingsontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Verificatie beheerder | Verificatie beheerder | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps-beheerder | Azure DevOps-beheerder | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection beheerder | Azure Information Protection beheerder | 7495fdc4-34c4-4d15-a289-98788ce399fd
@@ -1940,6 +1965,7 @@ Share point-service beheerder | SharePoint-beheerder | f28a1f50-f6e7-4571-818b-6
 Teams communicatie beheerder | Teams communicatie beheerder | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Mede werker communicatie technicus voor teams | Mede werker communicatie technicus voor teams | f70938a0-fc10-4177-9e90-2178f8765737
 Specialist communicatie ondersteuning teams | Specialist communicatie ondersteuning teams | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
+Team apparaten-beheerder | Team apparaten-beheerder | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams service-beheerder | Teams service-beheerder | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Beheerder van gebruikers account | Gebruikersbeheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
@@ -1963,7 +1989,7 @@ Niet elke rol die wordt geretourneerd door Power shell of MS Graph API is zichtb
 
 API-naam | Azure Portal naam | Notities
 -------- | ------------------- | -------------
-Company Administratoristrain opr | Globale beheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
+Company Administratoristrain opr | Hoofdbeheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
 CRM Service-beheerder | Dynamics 365-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
 Apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 Apparaatbeheer | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)

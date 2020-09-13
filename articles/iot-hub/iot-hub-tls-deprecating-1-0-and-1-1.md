@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849515"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006077"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>Afschaffing van TLS 1,0 en 1,1 in IoT Hub
 
@@ -38,10 +38,10 @@ IoT Hub wordt TLS 1.0/1.1 blijven ondersteunen tot verdere kennisgeving. We rade
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1,2-code ringen
+## <a name="tls-12-cipher-suites"></a>TLS 1,2-coderings suites
 
-Zie [IOT hub TLS 1,2 Aanbevolen code](iot-hub-tls-support.md#recommended-ciphers)ringen.
+Zie [IOT hub TLS 1,2-coderings suites](iot-hub-tls-support.md#cipher-suites).
  
-## <a name="customer-feedback"></a>Feedback van klanten
+## <a name="customer-feedback"></a>Klantenfeedback
 
 Hoewel de TLS 1,2-afdwinging een in de hele branche geschikte coderings keuze is en wordt ingeschakeld zoals gepland, zullen we graag horen van klanten over hun specifieke implementaties en problemen met het vaststellen van TLS 1,2. U kunt uw opmerkingen voor dit doel verzenden naar [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com) .

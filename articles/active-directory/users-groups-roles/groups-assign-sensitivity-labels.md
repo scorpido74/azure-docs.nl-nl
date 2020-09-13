@@ -1,6 +1,6 @@
 ---
 title: Gevoeligheids labels toewijzen aan groepen-Azure AD | Microsoft Docs
-description: Lidmaatschaps regels maken voor het automatisch invullen van groepen en een verwijzing naar een regel.
+description: Lidmaatschapsregel maken om automatisch groepen in te vullen en een regelverwijzing.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f056b34df0a70374e8bae909f210bfabf107ed4a
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795328"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005935"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Gevoeligheids labels toewijzen aan Microsoft 365 groepen in Azure Active Directory
 
@@ -68,7 +68,7 @@ Als u gepubliceerde labels op groepen wilt Toep assen, moet u eerst de functie i
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Dat is alles. U hebt de functie ingeschakeld en u kunt gepubliceerde labels Toep assen op groepen.
+U moet ook uw gevoeligheids labels synchroniseren met Azure AD. Zie voor instructies [het inschakelen van gevoeligheids labels voor containers en het synchroniseren van labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Een label toewijzen aan een nieuwe groep in Azure Portal
 
@@ -113,7 +113,8 @@ Nadat u deze functie hebt ingeschakeld, worden de ' klassieke ' classificaties v
 De optie gevoeligheids label wordt alleen weer gegeven voor groepen wanneer aan de volgende voor waarden wordt voldaan:
 
 1. Labels worden gepubliceerd in het Microsoft 365 compliance Center voor deze Azure AD-organisatie.
-1. De functie is ingeschakeld, EnableMIPLabels is ingesteld op True in Power shell.
+1. De functie is ingeschakeld, EnableMIPLabels is ingesteld op True in vanuit de Azure AD Power shell-module.
+1. Classificatielabels worden gesynchroniseerd met Azure AD met de cmdlet Execute-AzureAdLabelSync in de Power shell-module Security & compliance.
 1. De groep is een Microsoft 365 groep.
 1. De organisatie heeft een actieve Azure Active Directory Premium P1-licentie.
 1. De huidige aangemelde gebruiker heeft voldoende bevoegdheden om labels toe te wijzen. De gebruiker moet een globale beheerder, groeps beheerder of de groeps eigenaar zijn.

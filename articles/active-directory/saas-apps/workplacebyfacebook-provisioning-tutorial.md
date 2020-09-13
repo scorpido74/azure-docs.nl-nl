@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526377"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006071"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
-In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel de werk plek van Facebook als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Indien geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en ongedaan gemaakt met behulp [van](https://work.workplace.com/) de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel de werk plek van Facebook als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Indien geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en ongedaan gemaakt met behulp [van](https://work.workplace.com/) de Azure AD-inrichtings service. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel d
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld de toepassings beheerder, de beheerder van de Cloud toepassing, de eigenaar van de toepassing of de globale beheerder)
@@ -71,7 +71,7 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
 * Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -79,11 +79,11 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
     ![De koppeling Workplace by Facebook in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
     ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
@@ -95,7 +95,7 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
 6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
@@ -107,8 +107,8 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Boolean-waarde|
-   |titel|Boolean-waarde|
+   |actief|Booleaans|
+   |title|Booleaans|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
@@ -125,22 +125,30 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |phoneNumbers [type EQ "fax"]. waarde|Tekenreeks|
    |externalId|Tekenreeks|
    |preferredLanguage|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
+   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Tekenreeks|
+   |urn: scim: schemas: extensie: Enter prise: 1.0. Department|Tekenreeks|
+   |urn: scim: schemas: extensie: Enter prise: 1.0. divisie|Tekenreeks|
+   |urn: scim: schemas: extension: Enter prise: 1.0. Organization|Tekenreeks|
+   |urn: scim: schemas: extension: Enter prise: 1.0. costCenter|Tekenreeks|
+   |urn: scim: schemas: extension: Enter prise: 1.0. employeeNumber|Tekenreeks|
+   |urn: scim: schemas: extensie: Facebook: auth_method: 1.0: auth_method|Tekenreeks|
+   |urn: scim: schemas: extensie: Facebook: Frontline: 1.0. is_frontline|Booleaans|
+   |urn: scim: schemas: extensie: Facebook: starttermdates: 1.0. start date|Geheel getal|
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+
+10. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Als u de Azure AD-inrichtings service voor werk plek wilt inschakelen op Facebook, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
 12. Definieer de gebruikers en/of groepen die u wilt inrichten op werk plek via Facebook door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
 Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
@@ -154,11 +162,15 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 *  Als een gebruiker niet met succes is gemaakt en er een controle logboek gebeurtenis is met de code ' 1789003 ', betekent dit dat de gebruiker afkomstig is van een niet-geverifieerd domein.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="change-log"></a>Wijzigingenlogboek
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* 09/10/2020-ondersteuning toegevoegd voor ondernemings kenmerken ' divisie ', ' organisatie ', ' costCenter ' en ' employeeNumber '. Er is ondersteuning toegevoegd voor aangepaste kenmerken "start date", "auth_method" en "Frontline"
+
+## <a name="additional-resources"></a>Aanvullende resources
+
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../manage-apps/check-status-user-account-provisioning.md)

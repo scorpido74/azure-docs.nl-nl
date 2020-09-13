@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d086f8f3a2f4939012691d5bd03cc92a50ac4613
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078313"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006394"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -107,7 +107,7 @@ In dit scenario $1,14 factureert micro soft per uur voor het gebruik van uw gepu
 |Micro soft bewaart 100% van de kosten voor Azure-gebruik | $0,14 per uur |
 ||
 
-**Bring Your Own License (BYOL)**
+**Neem uw eigen licentie mee (BYOL)**
 
 BYOL heeft de volgende kosten structuur:
 
@@ -146,7 +146,7 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 
 ### <a name="reduced-service-fee"></a>Beperkte service kosten
 
-Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de [overeenkomst voor micro soft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de voor waarden worden voldaan ten minste vijf werk dagen voordat de maandelijkse kosten voor Marketplace-service voor de maand worden ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable-IaaS aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
+Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de [overeenkomst voor micro soft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de voor waarden worden voldaan ten minste vijf werk dagen voordat de maandelijkse kosten voor Marketplace-service voor de maand worden ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable-IaaS aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace. Betaalde SaaS-aanbiedingen die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point) en die op AppSource zijn gepubliceerd, ontvangen deze korting ook.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Facturering, betaling, facturering en verzamelingen van klanten
 
@@ -185,6 +185,7 @@ In deze sectie worden de vereisten voor trans acties voor verschillende typen aa
 
 - Er zijn een Microsoft-account en financiële informatie vereist voor de optie voor het publiceren van de Transact, ongeacht het prijs model van de aanbieding.
 - Verplichte financiële informatie omvat het uitbetalings account en het BTW-profiel.
+- De uitgever moet actief zijn in een [ondersteund land of regio](sell-from-countries.md).
 
 Zie [uw commerciële Marketplace-account beheren in partner centrum](partner-center-portal/manage-account.md)voor meer informatie over het instellen van deze accounts.
 

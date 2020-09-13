@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/01/2020
 ms.author: jlian
-ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080621"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006037"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-ondersteuning in IoT Hub
 
@@ -22,7 +22,7 @@ TLS 1,0 en 1,1 worden beschouwd als verouderd en zijn gepland voor afschaffing. 
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>TLS 1,2 afdwinging beschikbaar in geselecteerde regio's
 
-Configureer uw IoT-hubs voor extra beveiliging zodat *alleen* client verbindingen met TLS-versie 1,2 worden toegestaan en het gebruik van [Aanbevolen code](#recommended-ciphers)ringen wordt afgedwongen. Deze functie wordt alleen ondersteund in deze regio's:
+Configureer uw IoT-hubs voor extra beveiliging zodat *alleen* client verbindingen met TLS-versie 1,2 worden toegestaan en het gebruik van [coderings suites](#cipher-suites)wordt afgedwongen. Deze functie wordt alleen ondersteund in deze regio's:
 
 * VS - oost
 * VS - zuid-centraal
@@ -55,23 +55,23 @@ Hiertoe dient u een nieuw IoT Hub in te richten in een van de ondersteunde regio
 }
 ```
 
-Met de gemaakte IoT Hub resource die gebruikmaakt van deze configuratie, worden de apparaat-en service clients die verbinding proberen te maken met behulp van TLS-versies 1,0 en 1,1 geweigerd. Op dezelfde manier wordt de TLS-Handshake geweigerd als het bericht client HELLO geen van de [Aanbevolen code](#recommended-ciphers)ringen vermeldt.
+Met de gemaakte IoT Hub resource die gebruikmaakt van deze configuratie, worden de apparaat-en service clients die verbinding proberen te maken met behulp van TLS-versies 1,0 en 1,1 geweigerd. Op dezelfde manier wordt de TLS-Handshake geweigerd als `ClientHello` in het bericht geen van de [Aanbevolen code](#cipher-suites)ringen wordt vermeld.
 
 > [!NOTE]
-> De `minTlsVersion` eigenschap is alleen-lezen en kan niet worden gewijzigd nadat de IOT hub resource is gemaakt. Daarom is het essentieel dat u op de juiste wijze test en controleert of *al* uw IOT-apparaten en-Services compatibel zijn met TLS 1,2 en de [Aanbevolen coderingen](#recommended-ciphers) vooraf.
+> De `minTlsVersion` eigenschap is alleen-lezen en kan niet worden gewijzigd nadat de IOT hub resource is gemaakt. Daarom is het essentieel dat u op de juiste wijze test en controleert of *al* uw IOT-apparaten en-Services compatibel zijn met TLS 1,2 en de [Aanbevolen coderingen](#cipher-suites) vooraf.
 > 
 > Bij failovers blijft de `minTlsVersion` eigenschap van uw IOT hub geldig in de geo-paard Region-post-failover.
 
-## <a name="recommended-ciphers"></a>Aanbevolen code ringen
+## <a name="cipher-suites"></a>Coderings suites
 
-IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook het gebruik van de volgende aanbevolen code ringen:
+IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook het gebruik van de volgende aanbevolen coderings suites af:
 
 * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-Voor IoT-hubs die niet zijn geconfigureerd voor TLS 1,2-afdwinging, werkt TLS 1,2 nog steeds met de volgende code ringen:
+Voor IoT-hubs die niet zijn geconfigureerd voor TLS 1,2-afdwinging, werkt TLS 1,2 nog steeds met de volgende coderings suites:
 
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
@@ -85,6 +85,8 @@ Voor IoT-hubs die niet zijn geconfigureerd voor TLS 1,2-afdwinging, werkt TLS 1,
 * `TLS_RSA_WITH_AES_256_CBC_SHA`
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+Een-client kan een lijst met hogere coderings Suites suggereren voor gebruik tijdens `ClientHello` . Sommige hiervan worden mogelijk echter niet ondersteund door IoT Hub (bijvoorbeeld `ECDHE-ECDSA-AES256-GCM-SHA384` ). In dit geval probeert IoT Hub de voor keur van de client te volgen, maar onderhandelt uiteindelijk de coderings Suite met `ServerHello` .
 
 ## <a name="use-tls-12-in-your-iot-hub-sdks"></a>TLS 1,2 gebruiken in uw IoT Hub Sdk's
 
@@ -102,3 +104,7 @@ Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegest
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie
 
 IoT Edge-apparaten kunnen worden geconfigureerd voor het gebruik van TLS 1,2 bij de communicatie met IoT Hub. Gebruik voor dit doel de pagina met de [IOT Edge documentatie](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
+
+## <a name="device-authentication"></a>Apparaatverificatie
+
+Na een geslaagde TLS-Handshake kan IoT Hub een apparaat verifiëren met behulp van een symmetrische sleutel of een X. 509-certificaat. Voor verificatie op basis van een certificaat kan dit elk X. 509-certificaat zijn, inclusief ECC. IoT Hub valideert het certificaat met de vinger afdruk of certificerings instantie (CA) die u opgeeft. IoT Hub biedt geen ondersteuning voor X. 509 gebaseerde wederzijdse verificatie (mTLS). Zie [ondersteunde X. 509-certificaten](iot-hub-devguide-security.md#supported-x509-certificates)voor meer informatie.
