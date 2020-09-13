@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor-logboeken
-      href: log-analytics-samples.md
 - name: Concepten
   items:
     - name: Azure Firewall-functies
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: Diagnostische logboeken bewaken
       href: firewall-diagnostics.md
+    - name: Azure Monitor-logboeken
+      href: log-analytics-samples.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

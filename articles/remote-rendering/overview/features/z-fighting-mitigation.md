@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013177"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024363"
 ---
 # <a name="z-fighting-mitigation"></a>Beperking van Z-bestrijding
 
@@ -21,9 +21,9 @@ Wanneer twee Opper vlakken elkaar overlappen, is het niet duidelijk dat deze bov
 
 |Hiervan                        | Resultaat                               |
 |---------------------------------|:-------------------------------------|
-|Normaal z-vechten               |![Z-vechten](./media/zfighting-0.png)|
-|Z-bestrij ding van beperking ingeschakeld    |![Z-vechten](./media/zfighting-1.png)|
-|Markeren van dambord ingeschakeld|![Z-vechten](./media/zfighting-2.png)|
+|Normaal z-vechten               |![Geen deterministische prioriteit tussen rood en groen quads](./media/zfighting-0.png)|
+|Z-bestrij ding van beperking ingeschakeld    |![Rode Quad heeft prioriteit](./media/zfighting-1.png)|
+|Markeren van dambord ingeschakeld|![Scha kelen tussen rood en groen vier wisselen voor keur in dambord patroon](./media/zfighting-2.png)|
 
 Met de volgende code kunt u de z-bestrij ding beperken:
 
@@ -53,7 +53,6 @@ void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
 }
 ```
 
-
 > [!NOTE]
 > Z-bestrij ding van problemen is een algemene instelling die van invloed is op alle gerenderde netten.
 
@@ -76,6 +75,11 @@ De beschik bare oplossing voor z-bestrij ding is een beste poging. Er is geen ga
 
 * Het inschakelen van z-bestrij ding van de beperking is niet alleen mogelijk als er geen prestatie overhead optreedt.
 * Het inschakelen van de z-bedekking zorgt er ook voor dat er een niet-triviale prestatie overhead ontstaat, maar kan variëren, afhankelijk van de scène.
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# RemoteManager. ZFightingMitigationSettings eigenschap](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager:: ZFightingMitigationSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Volgende stappen
 

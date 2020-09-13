@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/19/2020
-ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/09/2020
+ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918584"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024380"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -105,7 +105,7 @@ Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of 
 
 Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen (Compute-doelen) worden gebruikt om modellen te trainen en te implementeren. U kunt deze reken doelen maken in een virtueel netwerk. U kunt bijvoorbeeld Azure Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens implementeren in AKS.  
 
-Zie voor meer informatie [veilig experimenten en demijnen uitvoeren in een geïsoleerd virtueel netwerk](how-to-enable-virtual-network.md).
+Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overview.md)(Engelstalig) voor meer informatie.
 
 U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met persoonlijke koppeling kunt u de communicatie met uw werk ruimte beperken vanuit een Azure-Virtual Network. Zie een [persoonlijke koppeling configureren](how-to-configure-private-link.md)voor meer informatie.
 
@@ -119,7 +119,7 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 > [!IMPORTANT]
-> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
+> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
 
 De `hbi_workspace` markering bepaalt de hoeveelheid [gegevens die micro soft verzamelt voor diagnostische doel einden](#microsoft-collected-data) en maakt [extra versleuteling mogelijk in door micro soft beheerde omgevingen](../security/fundamentals/encryption-atrest.md). Daarnaast kunnen de volgende acties worden uitgevoerd:
 
@@ -157,13 +157,14 @@ Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw a
     * `cmk_keyvault`: Deze para meter is de resource-ID van de sleutel kluis in uw abonnement. Deze sleutel kluis moet zich in dezelfde regio en hetzelfde abonnement bevinden als de-werk ruimte die u wilt gebruiken voor de Azure Machine Learning. 
     
         > [!NOTE]
-        > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement. De beheerde resource groep krijgt de naam in de indeling `<AML Workspace Resource Group Name><GUID>` .
+Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement, samen met alle benodigde resources. De beheerde resource groep krijgt de naam in de indeling `<AML Workspace Resource Group Name><GUID>` . Als uw Azure Machine Learning-werk ruimte een persoonlijk eind punt gebruikt, wordt er ook een virtueel netwerk voor het Cosmos DB exemplaar gemaakt. Dit VNet wordt gebruikt voor het beveiligen van de communicatie tussen Cosmos DB en Azure Machine Learning.
 
 > [!IMPORTANT]
-> * Als u dit exemplaar van Cosmos DB wilt verwijderen, moet u de Azure Machine Learning-werk ruimte verwijderen waarin deze wordt gebruikt. 
-> * De standaard [__aanvraag eenheden__](../cosmos-db/request-units.md) voor dit Cosmos DB account is ingesteld op __8000__. Het wijzigen van deze waarde wordt niet ondersteund. 
+> * Verwijder niet de resource groep die dit Cosmos DB exemplaar bevat of een van de resources die automatisch in deze groep zijn gemaakt. Als u de resource groep, Cosmos DB-exemplaar, etc. wilt verwijderen, moet u de Azure Machine Learning-werk ruimte die deze gebruikt, verwijderen. De resource groep, Cosmos DB instantie en andere automatisch gemaakte resources worden verwijderd wanneer de bijbehorende werk ruimte wordt verwijderd.
+> * De standaard [__aanvraag eenheden__](../cosmos-db/request-units.md) voor dit Cosmos DB account is ingesteld op __8000__. Het wijzigen van deze waarde wordt niet ondersteund.
+> * U kunt uw eigen VNet niet opgeven voor gebruik met de Cosmos DB instantie die is gemaakt. U kunt het virtuele netwerk ook niet wijzigen. U kunt bijvoorbeeld het IP-adres bereik dat wordt gebruikt, niet wijzigen.
 
 Als u de sleutel wilt __draaien of intrekken__ , kunt u dit op elk gewenst moment doen. Bij het draaien van een sleutel begint Cosmos DB met het gebruik van de nieuwe sleutel (meest recente versie) om gegevens in rust te versleutelen. Wanneer u een sleutel intrekt (uitschakelt), wordt Cosmos DB het uitvoeren van mislukte aanvragen uitgevoerd. Het duurt doorgaans een uur voordat de draaiing of intrekken effectief is.
 
@@ -197,7 +198,7 @@ Als u de sleutel wilt gebruiken bij het implementeren van een model naar Azure c
 
 Zie de volgende artikelen voor meer informatie over het maken en gebruiken van een implementatie configuratie:
 
-* Naslag informatie over [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* Naslag informatie over [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Waar en hoe u implementeert](how-to-deploy-and-where.md)
 * [Een model implementeren op Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
@@ -246,7 +247,7 @@ Aan elke werk ruimte is een door het systeem toegewezen beheerde identiteit geko
 
 Micro soft kan gegevens over niet-gebruikers identificeren, zoals resource namen (bijvoorbeeld de naam van de gegevensset of de naam van het machine learning experiment) of taak omgevings variabelen voor diagnostische doel einden. Al deze gegevens worden opgeslagen met behulp van door micro soft beheerde sleutels in de opslag die wordt gehost in micro soft-abonnementen en [de standaard standaarden voor privacybeleid en gegevens verwerking van micro soft](https://privacy.microsoft.com/privacystatement)worden gevolgd.
 
-Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. Zorg er ook voor dat u een naam [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)geeft, Vermijd het gebruik van gevoelige gegevens zoals gebruikers namen of geheime project namen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
+Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. Zorg er ook voor dat u een naam [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)geeft, Vermijd het gebruik van gevoelige gegevens zoals gebruikers namen of geheime project namen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
 
 U kunt zich afmelden van diagnostische gegevens die worden verzameld door de `hbi_workspace` para meter in te stellen op `TRUE` tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
 
@@ -367,6 +368,6 @@ Dit zijn de details:
 * [Azure Machine Learning webservices beveiligen met TLS](how-to-secure-web-service.md)
 * [Een Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Azure Machine Learning gebruiken met Azure Firewall](how-to-access-azureml-behind-firewall.md)
-* [Azure Machine Learning gebruiken met Azure Virtual Network](how-to-enable-virtual-network.md)
+* [Azure Machine Learning gebruiken met Azure Virtual Network](how-to-network-security-overview.md)
 * [Aanbevolen procedures voor het bouwen van aanbevelings systemen](https://github.com/Microsoft/Recommenders)
 * [Een real-time aanbevelings-API bouwen op Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: Pariteit van de onafhankelijke cloud
       href: reference-machine-learning-cloud-parity.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Releaseopmerkingen

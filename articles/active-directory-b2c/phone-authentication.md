@@ -1,5 +1,5 @@
 ---
-title: Aanmelden bij de telefoon en aanmelden met aangepast beleid (preview-versie)
+title: Aanmelden met de telefoon en aanmelden met aangepast beleid
 titleSuffix: Azure AD B2C
 description: Eenmalige wacht woorden (OTP) in tekst berichten verzenden naar de telefoons van uw toepassings gebruikers met aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
@@ -8,27 +8,85 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/25/2020
+ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385345"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029137"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Stel de telefoon registratie in en meld u aan met aangepast beleid in Azure AD B2C (preview-versie)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Stel aanmelding via de telefoon in en meld u aan met aangepast beleid in Azure AD B2C
 
 Met aanmelden en aanmelden in Azure Active Directory B2C (Azure AD B2C) kunnen uw gebruikers zich registreren en aanmelden bij uw toepassingen met behulp van een eenmalig wacht woord (OTP) dat in een tekst bericht naar de telefoon wordt verzonden. Eenmalige wacht woorden kunnen u helpen het risico te verkleinen dat uw gebruikers hun wacht woord verg eten of het probleem hebben aangetast.
 
 Volg de stappen in dit artikel om het aangepaste beleid te gebruiken zodat uw klanten zich kunnen registreren en aanmelden bij uw toepassingen met behulp van een eenmalig wacht woord dat naar hun telefoon wordt verzonden.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="pricing"></a>Prijzen
 
 Eenmalige wacht woorden worden naar uw gebruikers verzonden met behulp van SMS-berichten en er worden kosten in rekening gebracht voor elk bericht dat wordt verzonden. Zie de sectie **afzonderlijke kosten** van [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor prijs informatie.
+
+## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>Gebruikers ervaring voor het registreren van de telefoon en het aanmelden
+
+Met de telefoon registratie en aanmelding kan de gebruiker zich aanmelden voor de app met behulp van een telefoon nummer als de primaire id. De ervaring van de eind gebruiker tijdens het aanmelden en aanmelden wordt hieronder beschreven.
+
+> [!NOTE]
+> We raden u ten zeerste aan om informatie over toestemming op te nemen in uw registratie-en aanmeldings ervaring, vergelijkbaar met de onderstaande voorbeeld tekst. Deze voorbeeld tekst is alleen ter informatie bedoeld. Raadpleeg de korte hand leiding voor code controle op de [website van CTIA](https://www.ctia.org/programs) en neem contact op met uw eigen juridische of compliance-experts voor hulp bij de uiteindelijke configuratie van tekst en onderdelen om te voldoen aan uw eigen vereisten voor naleving:
+>
+> *Als u uw telefoon nummer opgeeft, stemt u in met het ontvangen van een eenmalige wachtwoord code die door SMS wordt verzonden om u aan te melden bij * &lt; het invoegen: de &gt; naam van uw toepassing*. Standaard bericht-en gegevens tarieven kunnen van toepassing zijn.*
+>
+> *&lt;invoegen: een koppeling naar de privacyverklaring&gt;*<br/>*&lt;invoegen: een koppeling naar uw service voorwaarden&gt;*
+
+Als u uw eigen toestemming wilt geven, past u het volgende voor beeld aan en neemt u het op in de LocalizedResources voor de ContentDefinition die wordt gebruikt door de zelfbevestigende pagina met het besturings element voor weer gave (het Phone-Email-Base.xml bestand in het aanmeldings & aanmeld pakket voor de telefoon):
+
+```xml
+<LocalizedResources Id="phoneSignUp.en">        
+    <LocalizedStrings>
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_url">{insert your terms and conditions URL}</LocalizedString>          
+    <LocalizedString ElementType="UxElement" StringId="initial_intro">Please verify your country code and phone number</LocalizedString>        
+    </LocalizedStrings>      
+</LocalizedResources>
+   ```
+
+### <a name="phone-sign-up-experience"></a>Aanmeldings ervaring voor de telefoon
+
+Als de gebruiker nog geen account voor uw toepassing heeft, kan deze er een maken door de koppeling **nu registreren** te kiezen. Er wordt een aanmeldings pagina weer gegeven, waar de gebruiker hun **land**selecteert, het telefoon nummer invoert en **code verzenden**selecteert.
+
+![Aanmelding van de gebruiker wordt gestart](media/phone-authentication/phone-signup-start.png)
+
+Er wordt een eenmalige verificatie code verzonden naar het telefoon nummer van de gebruiker. De gebruiker voert de **verificatie code** op de registratie pagina in en selecteert vervolgens **code controleren**. (Als de gebruiker de code niet kan ophalen, kunnen ze **nieuwe code verzenden**selecteren.)
+
+![De gebruiker verifieert code tijdens de telefoon registratie](media/phone-authentication/phone-signup-verify-code.png)
+
+ De gebruiker voert andere gevraagde gegevens op de registratie pagina in, bijvoorbeeld de **weergave naam**, de voor **naam**en de **naam (land** en telefoon nummer blijven ingevuld). Als de gebruiker een ander telefoon nummer wil gebruiken, kunnen ze het **wijzigings nummer** kiezen om de aanmelding opnieuw te starten. Wanneer u klaar bent, selecteert de gebruiker **door gaan**.
+
+![Gebruiker bevat aanvullende informatie](media/phone-authentication/phone-signup-additional-info.png)
+
+Vervolgens wordt de gebruiker gevraagd een herstel bericht op te geven. De gebruiker voert het e-mail adres in en selecteert vervolgens **verificatie code verzenden**. Er wordt een code verzonden naar het postvak in van het e-mail adres van de gebruiker, die ze kunnen ophalen en invoeren in het vak **verificatie code** . Vervolgens selecteert de gebruiker **code verifiëren**. 
+
+Zodra de code is geverifieerd, selecteert de gebruiker **maken** om hun account te maken. Of als de gebruiker een ander e-mail adres wil gebruiken, kunnen ze de optie **E-mail wijzigen**kiezen.
+
+![Gebruiker maakt account](media/phone-authentication/email-verification.png)
+
+### <a name="phone-sign-in-experience"></a>Aanmeldings ervaring voor de telefoon
+
+Als de gebruiker een bestaand account met een telefoon nummer als id heeft, voert de gebruiker het telefoon nummer in en wordt **door gaan**geselecteerd. Ze bevestigen het land en telefoon nummer door **door gaan**te selecteren en er wordt een eenmalige verificatie code naar de telefoon verzonden. De gebruiker voert de verificatie code in en selecteert aanmelden **blijven** .
+
+![Gebruikers ervaring voor aanmelding via de telefoon](media/phone-authentication/phone-signin-screens.png)
+
+## <a name="deleting-a-user-account"></a>Een gebruikers account verwijderen
+
+In bepaalde gevallen moet u een gebruiker en de bijbehorende gegevens uit uw Azure AD B2C Directory verwijderen. Raadpleeg [deze instructies](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete)voor meer informatie over het verwijderen van een gebruikers account via de Azure Portal. 
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
+
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -94,12 +152,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt de aanmeldings-en aanmeldings opties voor het aangepaste beleid voor de telefoon (en andere Starter Packs) op GitHub:
-
-[Azure-samples/Active-Directory-B2C-Custom-Policy-starterpack/scenarios/telefoon nummer: wacht woordloos][starter-pack-phone]
-
-De Starter Pack-beleids bestanden gebruiken multi-factor Authentication-technische profielen en claim transformaties voor het telefoon nummer:
-
+U kunt het aangepaste beleid voor het registreren van de telefoon en het aanmelden van het Starter Pack (en andere Starter Packs) vinden op GitHub: [Azure-samples/Active-Directory-B2C-Custom-Policy-starterpack/scenarios/telefoon nummer-wacht woord][starter-pack-phone] voor de Starter Pack-beleids bestanden gebruiken multi-factor Authentication-technische profielen en claim transformaties voor telefoon nummers:
 * [Een Azure Multi-Factor Authentication Technical-profiel definiëren](multi-factor-auth-technical-profile.md)
 * [Claim transformaties voor telefoon nummers definiëren](phone-number-claims-transformations.md)
 

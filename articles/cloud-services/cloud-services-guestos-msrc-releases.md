@@ -12,19 +12,74 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510161"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024295"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
-## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
+## <a name="september-2020-guest-os"></a>September 2020-gast besturingssysteem
 >[!NOTE]
->Het gast besturingssysteem van augustus wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het gast besturingssysteem van augustus. Deze lijst is onderhevig aan wijzigingen.
+>Het besturings systeem september gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem september gast. Deze lijst is onderhevig aan wijzigingen.
+
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | 8 sep 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-Update | 3,89, 4,82, 5,47, 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4577015]  |  Meest recente cumulatieve update (LCU) | 5,47 | 8 sep 2020 |
+|  Rel 20-09 |  [4570333]  |  Meest recente cumulatieve update (LCU) | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4570673]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4577051]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4566426]  |  Onderhouds stack-update | 3,89 | 8 sep 2020 |
+|  Rel 20-09 |  [4577038]  |  Maandelijks samen vouwen | 3,89 | 8 sep 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
+|  Rel 20-09 |  [4566425]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4577066]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4578013]  |  Beveiligings update | 2,102 | 8 sep 2020 |
+|  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | 5,47 | 8 sep 2020 |
+|  Rel 20-09 |  [4576479]  |  NET Framework 4,8 Security en Quality Rollup | 5,47 | 8 sep 2020 |
+|  Rel 20-09 |  [4494175]  |  Micro | 5,47 | 8 sep 2020 |
+|  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4576483]  |  .NET Framework 4,8-beveiliging en-kwaliteit samen vouwen | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4494174]  |  Micro | 6,23 | 8 sep 2020 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4576479]: https://support.microsoft.com/kb/4576479
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4576483]: https://support.microsoft.com/kb/4576483
+[4494174]: https://support.microsoft.com/kb/4494174
+
+## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
 
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1250,13 +1305,13 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="september-2017-guest-os"></a>September 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-09 | [4038782] |Windows 10-updates |5.11 |12 september 2017 |
+| Rel 17-09 | [4038782] |Windows 10-updates |5,11 |12 september 2017 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |Alleen Windows-beveiliging |2,66, 3,53, 4,46 |12 september 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Update van september .NET |2,66, 3,53, 4,46 |12 september 2017 |
 | Rel 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12 september 2017 |
-| CVE-2017-8704 | [4038782] |Denial of Service |5.11 |12 september 2017 |
+| CVE-2017-8704 | [4038782] |Denial of Service |5,11 |12 september 2017 |
 | N.v.t. | [4034664] |Niet-beveiligings Rollup in augustus  |2,66 |8 augustus 2017 |
-| N.v.t. | [4034665] |Niet-beveiligings Rollup in augustus |5.11 |8 augustus 2017 |
+| N.v.t. | [4034665] |Niet-beveiligings Rollup in augustus |5,11 |8 augustus 2017 |
 | N.v.t. | [4034681] |Niet-beveiligings Rollup in augustus |4,46 |8 augustus 2017 |
 
 ## <a name="august-2017-guest-os"></a>Augustus 2017-gast besturingssysteem

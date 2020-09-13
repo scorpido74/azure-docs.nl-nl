@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009454"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024397"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
-In veel gevallen is het nood zakelijk om de vormgeving van onderdelen van een [model](../../concepts/models.md)dynamisch te wijzigen, bijvoorbeeld subgrafieken te verbergen of onderdelen te scha kelen naar transparante rendering. Het wijzigen van de materialen van elk betrokken deel is niet praktisch omdat het nodig is om het hele scène diagram te herhalen en het klonen van materialen en de toewijzing op elk knoop punt te beheren.
+In veel gevallen is het nodig om de vormgeving van onderdelen van een [model](../../concepts/models.md)dynamisch te wijzigen, bijvoorbeeld om subgrafieken te verbergen of onderdelen te scha kelen naar transparante weer gave. Het wijzigen van de materialen van elk betrokken deel is niet praktisch omdat het nodig is om het hele scène diagram te herhalen en het klonen van materialen en de toewijzing op elk knoop punt te beheren.
 
 Als u deze use-case wilt uitvoeren met de minst mogelijke overhead, gebruikt u de `HierarchicalStateOverrideComponent` . Dit onderdeel implementeert hiërarchische status updates op wille keurige vertakkingen van het scène diagram. Dit betekent dat een status kan worden gedefinieerd op een wille keurig niveau in het scène diagram en de hiërarchie trickles omlaag, totdat deze wordt overschreven door een nieuwe status of wordt toegepast op een leaf-object.
 
@@ -31,20 +31,23 @@ De vaste set statussen die kunnen worden overschreven is:
 * **`Hidden`**: Respectievelijke mazen in het scène diagram worden verborgen of weer gegeven.
 * **`Tint color`**: Een gerenderd object kan worden voorzien van een kleur tint met de afzonderlijke tint kleur en het tinten-gewicht. De onderstaande afbeelding toont kleuren tinten van de velg van een wiel.
   
-  ![Kleur tint](./media/color-tint.png)
+  ![Tint kleur die wordt gebruikt om een object groen in te scha kelen](./media/color-tint.png)
 
 * **`See-through`**: De geometrie wordt semi-transparant gerenderd, bijvoorbeeld om de binnenste delen van een object zichtbaar te maken. In de volgende afbeelding ziet u dat de volledige auto wordt weer gegeven in de doorlees modus, met uitzonde ring van de rode rem Caliper:
 
-  ![Zie](./media/see-through.png)
+  ![De Lees modus die wordt gebruikt om geselecteerde objecten transparant te maken](./media/see-through.png)
 
   > [!IMPORTANT]
   > Het effect doorkijk werkt alleen wanneer de *TileBasedComposition* - [rendering modus](../../concepts/rendering-modes.md) wordt gebruikt.
 
 * **`Selected`**: De geometrie wordt weer gegeven met een [selectie overzicht](outlines.md).
 
-  ![Selectie overzicht](./media/selection-outline.png)
+  ![Contour optie die wordt gebruikt om een geselecteerd onderdeel te markeren](./media/selection-outline.png)
 
 * **`DisableCollision`**: De geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). De **`Hidden`** vlag heeft geen invloed op de status vlag voor conflicten, zodat deze twee vlaggen vaak samen worden ingesteld.
+
+> [!TIP]
+> Als alternatief voor het uitschakelen van de zicht baarheid en ruimtelijke query's voor een volledige subgrafiek, `enabled` kan de status van een spel object worden in-of uitgeschakeld. Als een hiërarchie is uitgeschakeld, heeft deze voor keur boven alle `HierarchicalStateOverrideComponent` .
 
 ## <a name="hierarchical-overrides"></a>Hiërarchische onderdrukkingen
 
@@ -95,6 +98,11 @@ De `tint color` onderdrukking is iets speciaal omdat er sprake is van een aan/ui
 Een exemplaar van `HierarchicalStateOverrideComponent` zichzelf voegt geen veel runtime overhead toe. Het is echter altijd een goed idee om het aantal actieve onderdelen laag te laten blijven. Bij het implementeren van een selectie systeem dat het verzamelde object markeert, is het raadzaam om het onderdeel te verwijderen wanneer de markering wordt verwijderd. Als u de onderdelen bijhoudt van neutrale functies, kunt u snel aan de slag.
 
 Transparante rendering brengt meer werk belasting op de server Gpu's dan de standaard weergave. Als grote delen van de scène grafiek worden overgeschakeld om te worden *doorzocht*, terwijl veel lagen van de geometrie zichtbaar zijn, kan dit leiden tot een prestatie knelpunt. Hetzelfde geldt voor objecten met selectie- [uitlijningen](../../overview/features/outlines.md#performance).
+
+## <a name="api-documentation"></a>API-documentatie
+
+* [C# HierarchicalStateOverrideComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C++ HierarchicalStateOverrideComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Volgende stappen
 
