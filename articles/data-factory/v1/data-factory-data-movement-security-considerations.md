@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021497"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441932"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-beveiligings overwegingen voor gegevens verplaatsing
 
@@ -42,7 +42,7 @@ Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/tru
 
 In dit artikel worden beveiligings overwegingen in de volgende twee scenario's voor het verplaatsen van gegevens besproken: 
 
-- **Cloud scenario**: in dit scenario zijn uw bron en doel openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. [Hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats)vindt u een volledige lijst met ondersteunde gegevens bronnen.
+- **Cloud scenario**: in dit scenario zijn uw bron en doel openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure Synapse Analytics (voorheen SQL Data Warehouse), Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. [Hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats)vindt u een volledige lijst met ondersteunde gegevens bronnen.
 - **Hybride scenario**: in dit scenario bevindt uw bron of doel zich achter een firewall of in een on-premises bedrijfs netwerk, of het gegevens archief bevindt zich in een particulier netwerk/virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Database servers die worden gehost op virtuele machines vallen ook onder dit scenario.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -55,13 +55,13 @@ Azure Data Factory beschermt uw referenties voor uw gegevens Archief door ze te 
 Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel HTTPS of TLS.
 
 > [!NOTE]
-> Alle verbindingen met **Azure SQL database** en **Azure SQL Data Warehouse** vereisen altijd VERSLEUTELING (SSL/TLS) wanneer gegevens onderweg naar en van de Data Base worden verzonden. Bij het ontwerpen van een pijp lijn met behulp van een JSON-editor, voegt u de **versleutelings** eigenschap toe en stelt u deze in op **true** in de **Connection String**. Wanneer u de [wizard kopiëren](data-factory-azure-copy-wizard.md)gebruikt, wordt deze eigenschap standaard ingesteld door de wizard. Voor **Azure Storage**kunt u **https** gebruiken in de Connection String.
+> Alle verbindingen met **Azure SQL database** en **Azure Synapse Analytics** vereisen altijd VERSLEUTELING (SSL/TLS) wanneer gegevens onderweg naar en van de Data Base worden verzonden. Bij het ontwerpen van een pijp lijn met behulp van een JSON-editor, voegt u de **versleutelings** eigenschap toe en stelt u deze in op **true** in de **Connection String**. Wanneer u de [wizard kopiëren](data-factory-azure-copy-wizard.md)gebruikt, wordt deze eigenschap standaard ingesteld door de wizard. Voor **Azure Storage**kunt u **https** gebruiken in de Connection String.
 
 ### <a name="data-encryption-at-rest"></a>Versleuteling van inactieve gegevens
 Sommige gegevens archieven ondersteunen de versleuteling van gegevens in rust. U wordt aangeraden om het mechanisme voor gegevens versleuteling in te scha kelen voor deze gegevens archieven. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparent Data Encryption (TDE) in Azure SQL Data Warehouse helpt bij het beschermen van de dreiging van schadelijke activiteiten door het uitvoeren van real-time versleuteling en ontsleuteling van uw gegevens in rust. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Transparent Data Encryption (TDE) in azure Synapse Analytics helpt bij het beschermen tegen de dreiging van schadelijke activiteiten door realtime-versleuteling en ontsleuteling van uw gegevens in rust uit te voeren. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL Database biedt ook ondersteuning voor transparent Data Encryption (TDE), dat helpt bij het beveiligen van de dreiging van schadelijke activiteiten door realtime-versleuteling en ontsleuteling van de gegevens uit te voeren zonder dat de toepassing hoeft te worden gewijzigd. Dit gedrag is transparant voor de client. Zie [transparent Data Encryption met Azure SQL database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)voor meer informatie. 
@@ -117,7 +117,7 @@ Data Management Gateway gebruikt momenteel één **certificaat**. Dit certificaa
 | > = 2.4. xxxx. x | On-premises | Beveiligd via DPAPI | 
   
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 Alle gegevens overdrachten zijn via Secure Channel **https** en **TLS via TCP** om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
  
 U kunt ook [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Express route](../../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
@@ -149,20 +149,20 @@ In een onderneming wordt een **bedrijfs firewall** uitgevoerd op de centrale rou
 
 De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **bedrijfs firewall**.
 
-| Domeinnamen | Uitgaande poorten | Description |
+| Domeinnamen | Uitgaande poorten | Beschrijving |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vereist door de gateway om verbinding te maken met Services voor gegevens verplaatsing in Data Factory |
 | `*.core.windows.net` | 443 | Wordt gebruikt door de gateway om verbinding te maken met Azure Storage account wanneer u de functie voor [gefaseerd kopiëren](data-factory-copy-activity-performance.md#staged-copy) gebruikt. | 
 | `*.frontend.clouddatahub.net` | 443 | Vereist door de gateway om verbinding te maken met de Azure Data Factory-service. | 
-| `*.database.windows.net` | 1433   | (Optioneel) vereist wanneer uw bestemming Azure SQL Database/Azure SQL Data Warehouse is. Gebruik de functie voor gefaseerd kopiëren om gegevens te kopiëren naar Azure SQL Database/Azure SQL Data Warehouse zonder de poort 1433 te openen. | 
+| `*.database.windows.net` | 1433   | (Optioneel) vereist wanneer uw bestemming Azure SQL Database/Azure Synapse Analytics is. Gebruik de functie voor gefaseerd kopiëren om gegevens te kopiëren naar Azure SQL Database/Azure Synapse Analytics zonder de poort 1433 te openen. | 
 | `*.azuredatalakestore.net` | 443 | (Optioneel) vereist wanneer uw bestemming Azure Data Lake archief is | 
 
 > [!NOTE] 
-> Mogelijk moet u poorten/white list-domeinen op het niveau van de bedrijfs firewall beheren zoals vereist door de respectieve gegevens bronnen. In deze tabel wordt alleen Azure SQL Database, Azure SQL Data Warehouse Azure Data Lake Store als voor beeld gebruikt.   
+> Mogelijk moet u poorten/white list-domeinen op het niveau van de bedrijfs firewall beheren zoals vereist door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics, Azure Data Lake Store als voor beeld gebruikt.   
 
 De volgende tabel bevat de **Binnenkomende poort** vereisten voor de **Windows Firewall**.
 
-| Poorten voor inkomend verkeer | Description | 
+| Poorten voor inkomend verkeer | Beschrijving | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vereist door de Credential Manager-toepassing om veilig referenties in te stellen voor on-premises gegevens archieven op de gateway. | 
 
@@ -174,7 +174,7 @@ Sommige gegevens archieven in de Cloud vereisen ook white list IP-adres van de c
 Voor de volgende gegevens archieven in de Cloud is white list van het IP-adres van de gateway computer vereist. Voor sommige van deze gegevens archieven is standaard mogelijk geen white list van het IP-adres vereist. 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -185,7 +185,7 @@ Voor de volgende gegevens archieven in de Cloud is white list van het IP-adres v
 **Antwoord:** Deze functie wordt nog niet ondersteund. We zijn hier druk mee bezig.
 
 **Vraag:** Wat zijn de poort vereisten voor het werken met de gateway?
-**Antwoord:** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure SQL Data Warehouse als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en white list IP-adressen](#firewall-configurations-and-whitelisting-ip-address-of gateway) voor meer informatie. 
+**Antwoord:** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure Synapse Analytics als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en white list IP-adressen](#firewall-configurations-and-whitelisting-ip-address-of gateway) voor meer informatie. 
 
 **Vraag:** Wat zijn de certificaat vereisten voor de gateway?
 **Antwoord:** Voor de huidige gateway is een certificaat vereist dat door de Credential Manager-toepassing wordt gebruikt voor het veilig instellen van referenties voor het gegevens archief. Dit certificaat is een zelfondertekend certificaat dat is gemaakt en geconfigureerd door de gateway-installatie. U kunt in plaats daarvan uw eigen TLS/SSL-certificaat gebruiken. Zie voor meer informatie klikt u op de sectie voor [het toepassings beheer van referenties](#click-once-credentials-manager-app) . 

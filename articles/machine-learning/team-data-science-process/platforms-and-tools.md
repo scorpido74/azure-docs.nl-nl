@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028120"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439994"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
 
@@ -63,11 +63,11 @@ Wanneer u in HDInsight een Spark-cluster maakt, maakt u rekenresources in Azure,
 Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd over het gebruik van Azure HDInsight Spark-clusters om oplossingen voor data technologie te bouwen, één met python en de andere scala. Zie [overzicht: Apache Spark in HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md)voor meer informatie over Azure hdinsight **Spark-clusters**. Zie [overzicht van data Science met behulp van Spark in azure HDInsight](spark-overview.md)voor meer informatie over het bouwen van een Data Science-oplossing met behulp van **Python** in een Azure HDInsight Spark cluster. Voor meer informatie over het bouwen van een Data Science-oplossing met behulp van **scala** op een Azure HDInsight Spark-cluster, Zie [Data Wetenschappen met scala en Spark op Azure](scala-walkthrough.md). 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Met Azure SQL Data Warehouse kunt u reken bronnen eenvoudig en in enkele seconden schalen, zonder dat u hoeft te overstellen of overs betaling hoeft te doen. Het biedt ook de unieke optie om het gebruik van reken resources te onderbreken, waardoor u de vrijheid hebt om uw Cloud kosten beter te beheren. De mogelijkheid om schaal bare reken resources te implementeren, maakt het mogelijk om al uw gegevens naar Azure SQL Data Warehouse te brengen. De opslag kosten zijn mini maal en u kunt Compute alleen uitvoeren op de onderdelen van gegevens sets die u wilt analyseren. 
+Met Azure Synapse Analytics kunt u eenvoudig en in enkele seconden reken bronnen schalen, zonder dat dit meer hoeft te zijn dan het inrichten of over-betalen. Het biedt ook de unieke optie om het gebruik van reken resources te onderbreken, waardoor u de vrijheid hebt om uw Cloud kosten beter te beheren. De mogelijkheid om schaal bare reken resources te implementeren, maakt het mogelijk om al uw gegevens in azure Synapse Analytics te brengen. De opslag kosten zijn mini maal en u kunt Compute alleen uitvoeren op de onderdelen van gegevens sets die u wilt analyseren. 
 
-Zie de [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) -website voor meer informatie over Azure SQL Data Warehouse. Voor meer informatie over het bouwen van end-to-end geavanceerde analyse oplossingen met SQL Data Warehouse raadpleegt u [het team data Science process in actie: using SQL Data Warehouse](sqldw-walkthrough.md).
+Zie de website van [Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) voor meer informatie over Azure Synapse Analytics. Zie voor meer informatie over het bouwen van end-to-end geavanceerde analyse oplossingen met Azure Synapse Analytics [het proces voor team data Science in actie: Azure Synapse Analytics gebruiken](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640477"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441915"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Eenmalige aanmelding op basis van SAML configureren
 
@@ -51,7 +51,6 @@ U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarde
 | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure AD gebruikt de URL om de toepassing te starten vanuit Office 365 of Azure AD mijn apps. Als deze leeg is, wordt door Azure AD een door IdP geïnitieerde aanmelding uitgevoerd wanneer een gebruiker de toepassing start vanuit Office 365, Azure AD mijn apps of de Azure AD SSO-URL.|
 | **Relaystatus** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. De waarde is doorgaans een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
 | **Afmeldings-URL** | Optioneel | Optioneel | Wordt gebruikt om de antwoorden op SAML-afmeldingen terug te sturen naar de toepassing.
-
 
 ## <a name="user-attributes-and-claims"></a>Gebruikers kenmerken en claims 
 
@@ -112,7 +111,7 @@ Nadat u uw toepassing hebt geconfigureerd voor het gebruik van Azure AD als id-p
 
 Selecteer **testen** en kies vervolgens om te testen met de gebruiker die momenteel is aangemeld of als iemand anders. 
 
-Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd!
+Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd
 
 Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306142"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440115"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning resources beheren met de extensie VS (preview)
 
@@ -48,6 +48,7 @@ Zie [werk ruimten](concept-workspace.md)voor meer informatie.
 
 Alternatieve methoden voor het maken van een werk ruimte zijn onder andere:
 
+- Open de **weer gave opdracht palet > opdracht palet** en voer in de tekst prompt **Azure ml: werk ruimte maken**in.
 - Klik op het `+` pictogram boven aan de weer gave Azure machine learning.
 - Maak een nieuwe werk ruimte wanneer u wordt gevraagd om een werk ruimte te selecteren tijdens het inrichten van andere resources.
 
@@ -243,11 +244,44 @@ Zodra een uitvoering is voltooid, kunt u de logboeken en assets, zoals het model
 
 In de uitbrei ding kunt u meta gegevens controleren, zoals de uitvoerings configuratie die wordt gebruikt voor de uitvoering en Details van de uitvoering.
 
+## <a name="compute-instances"></a>Rekenprocessen
+
+Zie [Compute instances](concept-compute-instance.md)voor meer informatie.
+
+### <a name="create-compute-instance"></a>Reken instantie maken
+
+1. Vouw het knoop punt abonnement uit met uw werk ruimte.
+1. Vouw het knoop punt van de werk ruimte uit waarvoor u het Compute-exemplaar wilt maken.
+1. Klik met de rechter muisknop op het knoop punt **reken instanties** en selecteer **Create Compute instance**.
+1. In de prompt:
+    1. Geef een naam op voor het reken exemplaar.
+    1. Selecteer een VM-grootte in de lijst.
+    1. Kies of u SSH-toegang wilt inschakelen.
+        1. Als u SSH-toegang inschakelt, moet u ook de open bare SSH-sleutel of het bestand met de sleutel opgeven. Zie de hand leiding voor het [maken en gebruiken van SSH-sleutels op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
+
+### <a name="stop-or-restart-compute-instance"></a>Reken instantie stoppen of opnieuw starten
+
+1. Vouw het knoop punt abonnement uit met uw werk ruimte.
+1. Vouw het knoop punt **reken instantie** in uw werk ruimte uit.
+1. Klik met de rechter muisknop op het reken exemplaar dat u wilt stoppen of opnieuw wilt starten en selecteer **Compute instance stoppen** of **Compute instance respectievelijk opnieuw opstarten** .
+
+### <a name="view-compute-instance-configuration"></a>Configuratie van reken instanties weer geven
+
+1. Vouw het knoop punt abonnement uit met uw werk ruimte.
+1. Vouw het knoop punt **reken instantie** in uw werk ruimte uit.
+1. Klik met de rechter muisknop op het reken exemplaar dat u wilt controleren en selecteer **Eigenschappen van reken instanties weer geven**.
+
+### <a name="delete-compute-instance"></a>Reken instantie verwijderen
+
+1. Vouw het knoop punt abonnement uit met uw werk ruimte.
+1. Vouw het knoop punt **reken instantie** in uw werk ruimte uit.
+1. Klik met de rechter muisknop op het reken exemplaar dat u wilt verwijderen en selecteer **reken instantie verwijderen**.
+
 ## <a name="compute-clusters"></a>Reken clusters
 
 De uitbrei ding ondersteunt de volgende reken typen:
 
-- Azure Machine Learning Compute-Cluster
+- Azure Machine Learning-rekenclusters
 - Azure Kubernetes Service
 
 Zie [Compute-doelen](concept-compute-target.md#train)voor meer informatie.

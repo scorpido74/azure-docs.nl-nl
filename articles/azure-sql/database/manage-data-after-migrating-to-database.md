@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249275"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439772"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,9 +104,11 @@ Er zijn twee verificatie methoden beschikbaar in SQL Database:
 - [Azure Active Directory-verificatie](authentication-aad-overview.md)
 - [SQL-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (Azure AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. Azure AD biedt ondersteuning voor [azure multi-factor Authentication](authentication-mfa-ssms-overview.md) en met een [paar klikken](../../active-directory/hybrid/how-to-connect-install-express.md) Azure AD kan worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde server. Op deze manier kunnen SQL Database en SQL Data Warehouse Multi-Factor Authentication-en gast gebruikers accounts binnen een Azure AD-domein aanbieden. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
+De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (Azure AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. 
 
-|**Als u...**|**SQL Database/SQL Data Warehouse**|
+Azure AD biedt ondersteuning voor [azure multi-factor Authentication](authentication-mfa-ssms-overview.md) en met een [paar klikken](../../active-directory/hybrid/how-to-connect-install-express.md) Azure AD kan worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde server. Hierdoor kunnen SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse) gebruikers accounts voor Multi-Factor Authentication en gast aanbieden binnen een Azure AD-domein. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
+
+|**Als u...**|**SQL Database/Azure Synapse Analytics**|
 |---|---|
 |Geen gebruik van Azure Active Directory (Azure AD) in azure|[SQL-verificatie](security-overview.md) gebruiken|
 |On-premises AD gebruiken op SQL Server|Vervoer [AD met Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)en gebruik Azure AD-verificatie. Met deze kunt u eenmalige aanmelding gebruiken.|
@@ -114,7 +116,7 @@ De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directo
 |Gast accounts van micro soft-accounts (live.com, outlook.com) of andere domeinen (gmail.com) hebben|Gebruik [Azure AD Universal-verificatie](authentication-mfa-ssms-overview.md) in SQL database/Data Warehouse, dat gebruikmaakt van [Azure AD B2B-samen werking](../../active-directory/b2b/what-is-b2b.md).|
 |Worden aangemeld bij Windows met uw Azure AD-referenties van een federatief domein|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
 |Worden aangemeld bij Windows met behulp van referenties van een domein dat niet federatief is met Azure|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
-|De services van de middelste laag moeten verbinding maken met SQL Database of SQL Data Warehouse|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
+|Services van de middelste laag die verbinding moeten maken met SQL Database of Azure Synapse Analytics|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>Hoe kan ik de connectiviteits toegang tot mijn data base beperken of beheren
@@ -122,7 +124,7 @@ De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directo
 Er zijn meerdere technieken ter beschikking die u kunt gebruiken om de optimale connectiviteits organisatie voor uw toepassing te bereiken.
 
 - Firewallregels
-- VNet-service-eind punten
+- VNeT-service-eindpunten
 - Gereserveerde IP-adressen
 
 #### <a name="firewall"></a>Firewall
@@ -137,7 +139,7 @@ Uw data base is standaard geconfigureerd voor toegang tot de server met Azure-Se
 
 Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
-![VNet-service-eindpunten](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![VNet-service-eind punten](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
@@ -269,7 +271,7 @@ Het Azure Portal toont het gebruik van een Data Base door de data base te select
 
 Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met deze waarschuwingen kunt u reageren op resource voorwaarden met een e-mail bericht, schrijven naar een HTTPS/HTTP-eind punt of een actie uitvoeren. Zie [Create Alerts](alerts-insights-configure-portal.md)(Engelstalig) voor meer informatie.
 
-#### <a name="dynamic-management-views"></a>Dynamische beheer weergaven
+#### <a name="dynamic-management-views"></a>Dynamische beheerweergaven
 
 U kunt een query uitvoeren op de weer gave [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management om de geschiedenis van de gegevens over het verbruik van de resource te retour neren van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
 
@@ -301,7 +303,7 @@ SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servic
 
 |**Servicelaag**|**Algemene use-case Scenario's**|
 |---|---|
-|**Standaard**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
+|**Basic**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
 |**Standard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
 |**Premium**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
 |||

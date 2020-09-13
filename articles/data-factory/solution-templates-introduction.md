@@ -11,12 +11,12 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628943"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441949"
 ---
 # <a name="templates"></a>Sjablonen
 
@@ -56,7 +56,7 @@ Data Factory gebruikt Azure Resource Manager sjablonen voor het opslaan van data
 
     -   [Delta kopie van data base](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopiëren van \<source\> naar\<destination\>
+    -   Kopiëren van \<source\> naar \<destination\>
 
         -   [Van Amazon S3 naar Azure Data Lake Store gen 2](solution-template-migration-s3-azure.md)
 
@@ -68,9 +68,9 @@ Data Factory gebruikt Azure Resource Manager sjablonen voor het opslaan van data
 
         -   Van SQL Server on-premises naar Azure SQL Database
 
-        -   Van SQL Server on-premises naar Azure SQL Data Warehouse
+        -   Van SQL Server on-premises naar Azure Synapse Analytics (voorheen SQL Data Warehouse)
 
-        -   Van Oracle on premises tot Azure SQL Data Warehouse
+        -   Van Oracle on premises naar Azure Synapse Analytics (voorheen SQL Data Warehouse)
 
 -   SSIS-sjablonen
 
