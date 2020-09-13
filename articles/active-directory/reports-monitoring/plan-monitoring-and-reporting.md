@@ -1,6 +1,6 @@
 ---
 title: Rapporten plannen & bewakings implementatie-Azure AD
-description: Hierin wordt beschreven hoe u implmentation van rapportage en bewaking plant en uitvoert.
+description: Hierin wordt beschreven hoe u de implementatie van rapportage en bewaking plant en uitvoert.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229749"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030987"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -133,7 +133,7 @@ Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD in
 
 Met routerings logboeken naar een Azure-Event Hub kunt u integratie met SIEM-hulpprogram ma's van derden. Zo kunt u gegevens van Azure Active Directory-activiteitenlogboeken combineren met andere gegevens die worden beheerd door uw SIEM en meer inzicht krijgen in uw omgeving. 
 
-Ontdek hoe u [logboeken streamt naar een Event Hub](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Ontdek hoe u [logboeken streamt naar een Event Hub](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plan bewerkingen en beveiliging voor Azure AD-rapportage en-bewaking
 
@@ -175,7 +175,7 @@ Afhankelijk van de beslissingen die u eerder hebt gemaakt met behulp van de bove
 
 [Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Schema van audit logboeken interpreteren in Azure Monitor](./reference-azure-monitor-audit-log-schema.md)
+* [Interpret audit logs schema in Azure Monitor](./reference-azure-monitor-audit-log-schema.md) (Auditlogboekenschema interpreteren in Azure Monitor)
 
 * [Het schema voor logboek registratie interpreteert in Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 0fc9139e9456a62bf3586fb358046e7c868b834a
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005221"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030824"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Overzicht van Azure Monitor-agent (preview)
 De Azure Monitor-agent (AMA) verzamelt bewakings gegevens van het gast besturingssysteem van virtuele machines en levert deze aan Azure Monitor. In deze artikelen vindt u een overzicht van de Azure Monitor-agent, inclusief hoe u deze kunt installeren en hoe u gegevens verzameling kunt configureren.
@@ -99,6 +99,8 @@ De volgende besturings systemen worden momenteel ondersteund door de Azure Monit
 ## <a name="security"></a>Beveiliging
 Voor de Azure Monitor-agent zijn geen sleutels vereist, maar hiervoor is een door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)vereist. U moet een door het systeem toegewezen beheerde identiteit hebben ingeschakeld op elke virtuele machine voordat u de agent implementeert.
 
+## <a name="networking"></a>Netwerken
+De Azure Monitor-agent ondersteunt Azure-service tags (zowel AzureMonitor-als AzureResourceManager-Tags zijn vereist), maar zijn nog niet geschikt voor Azure Monitor persoonlijke koppelings bereiken of directe proxy's.
 
 ## <a name="install-the-azure-monitor-agent"></a>De Azure Monitor-agent installeren
 De Azure Monitor-agent wordt geïmplementeerd als een [Azure VM-extensie](../../virtual-machines/extensions/overview.md) met de details in de volgende tabel. 

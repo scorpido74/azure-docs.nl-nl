@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816521"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029699"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -27,7 +27,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in het partn
 Wanneer u uw aanbiedingen op Azure Marketplace publiceert, kunt u het volgende doen:
 
 - Promoot uw bedrijf met behulp van het merk van micro soft.
-- Bereik meer dan 100.000.000 Office 365-en Dynamics 365-gebruikers en meer dan 200.000 organisaties.
+- Bereik meer dan 100.000.000 Microsoft 365 en Dynamics 365 gebruikers en meer dan 200.000 organisaties.
 - Krijg leads van hoge kwaliteit van deze markt plaatsen.
 - Zorg dat uw services worden bevorderd door het veld Sales en televerkoop teams van micro soft.
 
@@ -162,7 +162,7 @@ U moet de voor waarden van de aanbieding voor uw klanten opgeven. U hebt hiervoo
 
        a. Voer uw eigen wijzigings voorwaarden in het vak **aangepaste wijzigings voorwaarden** in. U kunt een onbeperkt aantal tekens opgeven. Alleen klanten van de Tenant-Id's die u opgeeft voor deze aangepaste voor waarden worden ze weer gegeven in de inkoop stroom van de aanbieding in de Azure Portal.
 
-       b. Lang **Tenant-id's**opgeven. Elke aangepaste wijziging kan worden gericht op Maxi maal 20 Tenant-Id's. Als u een aangepaste wijziging toevoegt, moet u ten minste één Tenant-ID opgeven, waarmee uw klant in azure wordt geïdentificeerd. Uw klant kan dit in azure vinden door **Azure Active Directory**  >  **Eigenschappen**te selecteren. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van de organisatie van uw klant vinden met behulp van hun domein naam webadres op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com/).
+       b. Lang **Tenant-id's**opgeven. Elke aangepaste wijziging kan worden gericht op Maxi maal 20 Tenant-Id's. Als u een aangepaste wijziging toevoegt, moet u ten minste één Tenant-ID opgeven, waarmee uw klant in azure wordt geïdentificeerd. Uw klant kan dit in azure vinden door **Azure Active Directory**  >  **Eigenschappen**te selecteren. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van de organisatie van uw klant vinden met behulp van hun domein naam webadres op [Wat is mijn Microsoft Azure en Microsoft 365 Tenant-id?](https://www.whatismytenantid.com/).
 
        c. Beschrijving Geef een **Beschrijving** op voor de Tenant-id, een die u helpt bij het identificeren van de klant met wie u de wijziging wilt aanrichten.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120369"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030749"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Lead beheer configureren voor Dynamics 365-klant betrokkenheid
 
@@ -27,7 +27,7 @@ De volgende gebruikers machtigingen zijn nodig om de stappen in dit artikel uit 
 
 * Beheerders rechten voor uw Dynamics 365-exemplaar voor klant afspraken om een oplossing te kunnen installeren.
 * Tenant beheerders rechten voor het maken van een nieuw service account voor de lead service die wordt gebruikt voor het verzenden van leads van commerciële Marketplace-aanbiedingen.
-* Toegang tot de Office 365-beheer Portal.
+* Toegang tot de beheer Portal.
 * Toegang tot de Azure Portal.
 
 ## <a name="install-the-solution"></a>De oplossing installeren
@@ -68,7 +68,7 @@ We raden u aan deze optie te gebruiken omdat u nooit uw gebruikers naam of wacht
 
 Azure Active Directory voor Dynamics 365-klant betrokkenheid configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
 1. Selecteer **Eigenschappen**en kopieer de waarde van de **Directory-id** op de pagina **Directory-eigenschappen** . Sla deze waarde op omdat u deze moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 
@@ -157,7 +157,7 @@ De laatste stap bestaat uit het inschakelen van de gebruiker die u hebt gemaakt 
 
     ![Deel venster beveiligings rollen](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-1. Selecteer in de beveiligingsrol het tabblad **kern records** . Zoek naar het item **gebruikers interface-instellingen van gebruiker** . Schakel de machtigingen maken, lezen en schrijven in voor de gebruiker (1/4 Yellow cirkel) voor die entiteit door te klikken op elk van de bijbehorende cirkels.
+1. Selecteer in de beveiligingsrol het tabblad **kern records** . Zoek naar het item **UI-instellingen voor gebruikers entiteit** . Schakel de machtigingen maken, lezen en schrijven in voor de gebruiker (1/4 Yellow cirkel) voor die entiteit door te klikken op elk van de bijbehorende cirkels.
 
     ![Microsoft Marketplace tabblad hoofd records van lead Writer](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 05/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799040"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029542"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
@@ -107,7 +107,7 @@ Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail on
 
 ## <a name="how-to-change-your-password"></a>Uw wachtwoord wijzigen
 
-Als u uw wacht woord alleen wilt wijzigen, kunt u dit doen via de Office 365-Portal, het Azure-toegangs venster of de aanmeldings pagina van Windows 10.
+Als u uw wacht woord alleen wilt wijzigen, kunt u dit doen via de Office 365-Portal, de portal mijn apps of de aanmeldings pagina van Windows 10.
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>Uw wacht woord wijzigen met behulp van de Office 365-Portal
 
@@ -121,11 +121,11 @@ Gebruik deze methode als u normaal gesp roken toegang hebt tot uw apps via de Of
 
 4. Typ uw oude wacht woord, maak en bevestig uw nieuwe wacht woord en selecteer vervolgens **verzenden**.
 
-### <a name="to-change-your-password-from-the-azure-access-panel"></a>Uw wacht woord wijzigen vanuit het Azure-toegangs venster
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>Uw wacht woord wijzigen vanuit de portal mijn apps
 
-Gebruik deze methode als u normaal gesp roken toegang hebt tot uw apps via het Azure-toegangs venster (MyApps):
+Gebruik deze methode als u normaal gesp roken toegang hebt tot uw apps via de portal mijn apps:
 
-1. Meld u aan bij het [Azure-toegangs venster](https://myapps.microsoft.com/)met uw bestaande wacht woord.
+1. Meld u aan bij de [Portal mijn apps](https://myapps.microsoft.com/)met behulp van uw bestaande wacht woord.
 
 2. Selecteer uw profiel aan de rechter kant en selecteer vervolgens **profiel**.
 

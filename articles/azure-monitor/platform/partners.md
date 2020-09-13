@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142401"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030377"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -77,6 +77,8 @@ CloudMonix biedt bewaking, automatisering en Self-Retoucheer Services voor Micro
 Datadog is de toonaangevende bewakings service voor Cloud toepassingen. Er worden gegevens verzameld van servers, data bases, hulpprogram ma's en services om een uniforme weer gave van uw hele stack te presen teren. Deze mogelijkheden worden geboden op een SaaS-gebaseerd gegevens analyse platform. Met deze service kunnen ontwikkel aars en OPS-teams samen werken om uitval tijd te voor komen, prestatie problemen op te lossen en ervoor te zorgen dat de ontwikkelings-en implementatie cycli op tijd worden voltooid. Door Datadog en Azure te integreren, kunt u metrische gegevens van uw infra structuur verzamelen en weer geven. Correleer metrische gegevens van de virtuele machine met metrische gegevens op toepassings niveau. Segmenteer en dobbel uw metrische gegevens met een combi natie van eigenschappen en aangepaste labels.
 
 [Ga naar de documentatie.][datadog-doc]
+
+In eerste oktober 2020 is een nieuwe Azure Marketplace-integratie van Datadog gepland voor release. Er wordt een koppeling toegevoegd tijdens de release. 
 
 ## <a name="dynatrace"></a>Dynatrace
 

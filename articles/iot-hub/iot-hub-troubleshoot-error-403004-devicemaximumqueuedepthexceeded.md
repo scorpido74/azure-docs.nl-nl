@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758764"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029984"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
@@ -38,4 +38,4 @@ Het ondersteunde patroon voor Cloud-naar-apparaat-berichten met HTTPS is op een 
 
 U kunt de logica van een apparaat ook verbeteren om snel een bericht in de wachtrij te plaatsen, te weigeren of te annuleren, de tijd te verkorten of te overwegen om minder berichten te verzenden. Zie [C2D message time to Live](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live) (TTL van C2D-bericht) voor meer informatie.
 
-U kunt eventueel de API voor het leegmaken van de [wachtrij](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) gebruiken om regel matig wachtende berichten op te schonen voordat de limiet is bereikt.
+U kunt eventueel de API voor het leegmaken van de [wachtrij](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) gebruiken om regel matig wachtende berichten op te schonen voordat de limiet is bereikt.

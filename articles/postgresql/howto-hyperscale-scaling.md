@@ -7,14 +7,14 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 85a1f0dcc2e778a09cf0d19b2a85d6faf371f032
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 10d253b3e470ea009944d4ccd756d4bbbe3766e7
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134514"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029814"
 ---
-# <a name="server-group-size"></a>Grootte van de Server groep
+# <a name="server-group-size"></a>Grootte van servergroep
 
 De implementatie optie grootschalige (Citus) maakt gebruik van data base-servers voor samen werking om query's uit te voeren en meer gegevens op te slaan. De Server groep ' size ' verwijst naar het aantal servers en de hardwarebronnen van elk.
 
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL-grootschalige (Citus) biedt self-service schaling 
 
 ### <a name="add-worker-nodes"></a>Worker-knoop punten toevoegen
 
-Als u knoop punten wilt toevoegen, gaat u naar het tabblad **configureren** in de Server groep grootschalige (Citus).  Door de schuif regelaar voor het **aantal worker-knoop punten** te slepen, wijzigt u de waarde.
+Als u knoop punten wilt toevoegen, gaat u naar het tabblad **Compute + Storage** in de Server groep grootschalige (Citus).  Door de schuif regelaar voor het **aantal worker-knoop punten** te slepen, wijzigt u de waarde.
 
 ![Resource schuif regelaars](./media/howto-hyperscale-scaling/01-sliders-workers.png)
 
@@ -66,7 +66,7 @@ Met de `rebalance_table_shards` functie worden alle tabellen in de groep co- [lo
 
 Naast het toevoegen van nieuwe knoop punten, kunt u de mogelijkheden van bestaande knoop punten verg Roten. Het aanpassen van de reken capaciteit omhoog en omlaag kan nuttig zijn bij het uitvoeren van prestatie experimenten en op korte of lange termijn wijzigingen in verkeers vereisten.
 
-Als u de vCores voor alle worker-knoop punten wilt wijzigen, past u de schuif regelaar **vCores** aan onder **configuratie (per worker-knoop punt)**. De vCores van het coördinator knooppunt kan onafhankelijk worden aangepast. Pas de schuif regelaar **vCores** aan onder **configuratie (coördinator knooppunt)**.
+Als u de vCores voor alle worker-knoop punten wilt wijzigen, past u de schuif regelaar **vCores** aan onder **configuratie (per worker-knoop punt)**. De vCores van het coördinator knooppunt kan onafhankelijk worden aangepast. Pas de schuif regelaar **vCores** aan onder  **configuratie (coördinator knooppunt)**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

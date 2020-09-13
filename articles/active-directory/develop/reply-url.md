@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205932"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030307"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omleidings-URI (antwoord-URL) beperkingen en beperkingen
 
@@ -65,6 +65,8 @@ Uit het oogpunt van ontwikkeling betekent dit een aantal dingen:
 * Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat is gekoppeld aan die omleidings-URI (bijvoorbeeld of het een `web` -, `native` -,-of `spa` -type omleiding is).
 * Als u meerdere omleidings-Uri's op localhost wilt registreren om verschillende stromen tijdens de ontwikkeling te testen, moet u deze onderscheiden met de *padcomponent* van de URI. `http://127.0.0.1/MyWebApp`Komt bijvoorbeeld niet overeen `http://127.0.0.1/MyNativeApp` .
 * Per RFC-richt lijn moet u niet gebruiken `localhost` in de omleidings-URI. Gebruik in plaats daarvan het werkelijke loop back IP-adres, `127.0.0.1` . Hiermee wordt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces.
+
+    Als u het `http` schema met het loop back-adres (127.0.0.1) in plaats van localhost wilt gebruiken, moet u het [toepassings manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)bewerken. 
 
     Het IPv6-loop back-adres ( `[::1]` ) wordt momenteel niet ondersteund.
 

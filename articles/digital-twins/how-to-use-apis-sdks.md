@@ -7,28 +7,32 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e97db598556d10538746242fa67449631394cd55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936772"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030647"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
-Azure Digital Apparaatdubbels wordt geleverd met beide **Control-api's** en **datacenter api's** voor het beheren van uw exemplaar en de bijbehorende elementen. Dit artikel geeft een overzicht van de beschik bare Api's en de methoden om ermee te werken. U kunt de REST-Api's rechtstreeks met hun bijbehorende Swaggers of via een SDK gebruiken.
+Azure Digital Apparaatdubbels wordt geleverd met beide **Control-api's** en **datacenter api's** voor het beheren van uw exemplaar en de bijbehorende elementen. 
+* De Api's van het besturings element zijn [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) -api's en bedekken bron beheer bewerkingen, zoals het maken en verwijderen van uw exemplaar. 
+* De data vlak-Api's zijn Azure Digital Apparaatdubbels Api's en worden gebruikt voor gegevens beheer bewerkingen, zoals het beheren van modellen, apparaatdubbels en de grafiek.
+
+Dit artikel geeft een overzicht van de beschik bare Api's en de methoden om ermee te werken. U kunt de REST-Api's rechtstreeks met hun bijbehorende Swaggers of via een SDK gebruiken.
 
 ## <a name="overview-control-plane-apis"></a>Overzicht: Controling-Api's
 
-De besturings vlak-Api's worden gebruikt voor het beheren van uw Azure Digital Apparaatdubbels-exemplaar als geheel, zodat deze bewerkingen kunnen uitvoeren zoals het maken of verwijderen van het hele exemplaar. U kunt deze ook gebruiken om eind punten te maken en te verwijderen.
+De besturings vlak-Api's zijn [arm](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) -api's die worden gebruikt voor het beheren van uw Azure Digital apparaatdubbels-exemplaar als geheel, zodat deze bewerkingen kunnen uitvoeren zoals het maken of verwijderen van uw hele exemplaar. U kunt deze ook gebruiken om eind punten te maken en te verwijderen.
 
 De meest recente versie van de Control vlak-API voor open bare preview is _**2020-03-01-preview**_.
 
 De Control-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen door te verwijzen naar de meest recente [Swagger-map](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Deze opslag plaats bevat ook een map met voor beelden waarin het gebruik wordt weer gegeven.
 * U kunt momenteel toegang krijgen tot Sdk's voor besturings-Api's in...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([verwijzing [automatisch gegenereerd]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([verwijzing [automatisch gegenereerd]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([bron](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([verwijzing [automatisch gegenereerd]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([verwijzing [automatisch gegenereerd]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true))
   - [Java script](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([bron](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([bron](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [Go-source](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
@@ -37,7 +41,7 @@ U kunt ook beheer vlak-Api's uitoefenen door interactie met Azure Digital Appara
 
 ## <a name="overview-data-plane-apis"></a>Overzicht: gegevens vlak-Api's
 
-De gegevensfeed-Api's worden gebruikt voor het beheren van de elementen in uw Azure Digital Apparaatdubbels-exemplaar. Ze omvatten bewerkingen zoals het maken van routes, het uploaden van modellen, het maken van relaties en het beheren van apparaatdubbels. Ze kunnen breed worden onderverdeeld in de volgende categorieën:
+De data vlak-Api's zijn de Azure Digital Apparaatdubbels-Api's die worden gebruikt voor het beheren van de elementen in uw Azure Digital Apparaatdubbels-exemplaar. Ze omvatten bewerkingen zoals het maken van routes, het uploaden van modellen, het maken van relaties en het beheren van apparaatdubbels. Ze kunnen breed worden onderverdeeld in de volgende categorieën:
 * **DigitalTwinsModels** : de categorie DigitalTwinsModels bevat api's voor het beheren van de [modellen](concepts-models.md) in een Azure Digital apparaatdubbels-exemplaar. Beheer activiteiten zijn onder andere het uploaden, valideren, ophalen en verwijderen van modellen die zijn gemaakt in DTDL.
 * **DigitalTwins** : de categorie DigitalTwins bevat de api's waarmee ontwikkel aars [digitale apparaatdubbels](concepts-twins-graph.md) en hun relaties kunnen maken, wijzigen en verwijderen in een Azure Digital apparaatdubbels-exemplaar.
 * **Query** : de query categorie stelt ontwikkel aars in staat om [sets van digitale apparaatdubbels te vinden in de dubbele grafiek over de](how-to-query-graph.md) relaties.
@@ -49,11 +53,13 @@ De data-vlak-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen, door...
    - verwijzen naar de meest recente [Swagger-map](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Deze opslag plaats bevat ook een map met voor beelden waarin het gebruik wordt weer gegeven. 
    - de [API-referentie documentatie](https://docs.microsoft.com/rest/api/azure-digitaltwins/)weer geven.
-* U kunt de .NET-SDK (C#) gebruiken. Dit is momenteel de enige gepubliceerde SDK voor interactie met deze Api's. De .NET SDK gebruiken...
-   - u kunt het pakket weer geven op NuGet: [Azure. DigitalTwins. core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
+* U kunt de **.NET-SDK (C#)** gebruiken. De .NET SDK gebruiken...
+   - u kunt het pakket bekijken en toevoegen vanuit NuGet: [Azure. DigitalTwins. core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - u vindt de SDK-bron, met inbegrip van een map met voor beelden, in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - u kunt de [SDK-referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)raadplegen.
+   - u kunt de [SDK-referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)raadplegen.
    - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [.net (C#) SDK (Data-vlieg tuig)](#net-c-sdk-data-plane) van dit artikel.
+* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)
 * U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [cli](how-to-use-cli.md).
@@ -266,15 +272,15 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 De volgende lijst bevat aanvullende details en algemene richt lijnen voor het gebruik van de Api's en Sdk's.
 
-* Als u de SDK wilt gebruiken, maakt u een instantie van de `DigitalTwinsClient` klasse. De constructor vereist referenties die kunnen worden verkregen met diverse verificatie methoden in het `Azure.Identity` pakket. `Azure.Identity`Zie de documentatie van de [naam ruimte](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)voor meer informatie. 
-* Het is `InteractiveBrowserCredential` handig om aan de slag te gaan, maar er zijn verschillende andere opties, waaronder referenties voor [beheerde identiteit](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet), die u waarschijnlijk gebruikt voor het verifiëren van [Azure functions die zijn ingesteld met MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) op Azure Digital apparaatdubbels. `InteractiveBrowserCredential`Zie de documentatie van de [klasse](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)voor meer informatie.
+* Als u de SDK wilt gebruiken, maakt u een instantie van de `DigitalTwinsClient` klasse. De constructor vereist referenties die kunnen worden verkregen met diverse verificatie methoden in het `Azure.Identity` pakket. `Azure.Identity`Zie de documentatie van de [naam ruimte](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)voor meer informatie. 
+* Het is `InteractiveBrowserCredential` handig om aan de slag te gaan, maar er zijn verschillende andere opties, waaronder referenties voor [beheerde identiteit](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true), die u waarschijnlijk gebruikt voor het verifiëren van [Azure functions die zijn ingesteld met MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) op Azure Digital apparaatdubbels. `InteractiveBrowserCredential`Zie de documentatie van de [klasse](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)voor meer informatie.
 * Alle service-API-aanroepen worden weer gegeven als lidfuncties op de `DigitalTwinsClient` klasse.
 * Alle service functies bestaan in synchrone en asynchrone versies.
-* Alle service functies genereren een uitzonde ring voor elke retour status van 400 of hoger. Zorg ervoor dat u aanroepen in een sectie inpakt `try` en ten minste hebt ondervangen `RequestFailedExceptions` . Zie [hier](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet)voor meer informatie over dit type uitzonde ring.
-* De meeste service methoden retour neren `Response<T>` of ( `Task<Response<T>>` voor de asynchrone aanroepen), waarbij `T` de klasse van het retour object voor de service aanroep is. De [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet) klasse bevat de retour waarde van de service en geeft retour waarden in het `Value` veld weer.  
-* Service methoden met geretourneerde resultaten `Pageable<T>` of `AsyncPageable<T>` als resultaat. Zie hier voor meer informatie over de `Pageable<T>` - [here](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview)klasse `AsyncPageable<T>` . Zie [hier](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview)voor meer informatie.
+* Alle service functies genereren een uitzonde ring voor elke retour status van 400 of hoger. Zorg ervoor dat u aanroepen in een sectie inpakt `try` en ten minste hebt ondervangen `RequestFailedExceptions` . Zie [hier](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet&preserve-view=true)voor meer informatie over dit type uitzonde ring.
+* De meeste service methoden retour neren `Response<T>` of ( `Task<Response<T>>` voor de asynchrone aanroepen), waarbij `T` de klasse van het retour object voor de service aanroep is. De [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet&preserve-view=true) klasse bevat de retour waarde van de service en geeft retour waarden in het `Value` veld weer.  
+* Service methoden met geretourneerde resultaten `Pageable<T>` of `AsyncPageable<T>` als resultaat. Zie hier voor meer informatie over de `Pageable<T>` - [here](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview&preserve-view=true)klasse `AsyncPageable<T>` . Zie [hier](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview&preserve-view=true)voor meer informatie.
 * U kunt met behulp van een lus de resultaten van de pagina door lopen `await foreach` . Zie [hier](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)voor meer informatie over dit proces.
-* De onderliggende SDK is `Azure.Core` . Raadpleeg de [documentatie van Azure namespace](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview) voor naslag informatie over de SDK-infra structuur en typen.
+* De onderliggende SDK is `Azure.Core` . Raadpleeg de [documentatie van Azure namespace](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview&preserve-view=true) voor naslag informatie over de SDK-infra structuur en typen.
 
 Service methoden retour neren waar mogelijk sterk getypeerde objecten. Omdat Azure Digital Apparaatdubbels echter is gebaseerd op modellen die zijn geconfigureerd door de gebruiker tijdens runtime (via DTDL-modellen die zijn geüpload naar de service), nemen veel service-Api's dubbele gegevens in JSON-indeling en retour neer.
 

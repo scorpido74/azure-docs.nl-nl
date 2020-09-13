@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074713"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030698"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Functies van klant gegevens aanvragen voor Azure IoT Hub-apparaten
 
@@ -36,13 +36,13 @@ Als u de functie voor integratie van Azure Monitor van de Azure IoT Hub-service 
 
 Tenant beheerders kunnen de Blade IoT-apparaten van de extensie Azure IoT Hub in de Azure Portal gebruiken om een apparaat te verwijderen, waarmee de gegevens die aan dat apparaat zijn gekoppeld, worden verwijderd.
 
-Het is ook mogelijk om delete-bewerkingen uit te voeren voor apparaten met behulp van REST Api's. Zie voor meer informatie [service-apparaat verwijderen](/rest/api/iothub/service/registrymanager/deletedevice).
+Het is ook mogelijk om delete-bewerkingen uit te voeren voor apparaten met behulp van REST Api's. Zie voor meer informatie [service-apparaat verwijderen](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice).
 
 ## <a name="exporting-customer-data"></a>Klant gegevens exporteren
 
 Tenant beheerders kunnen kopiëren en plakken in het deel venster IoT-apparaten van de Azure IoT Hub-extensie in de Azure Portal voor het exporteren van gegevens die zijn gekoppeld aan een apparaat.
 
-Het is ook mogelijk om export bewerkingen uit te voeren voor apparaten met behulp van REST-Api's. Zie [service-apparaat ophalen](/rest/api/iothub/service/registrymanager/getdevice)voor meer informatie.
+Het is ook mogelijk om export bewerkingen uit te voeren voor apparaten met behulp van REST-Api's. Zie [service-apparaat ophalen](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice)voor meer informatie.
 
 > [!NOTE]
 > Wanneer u de Enter prise-services van micro soft gebruikt, genereert micro soft bepaalde informatie, ook wel door het systeem gegenereerde logboeken. Sommige door Azure IoT Hub door het systeem gegenereerde logboeken zijn niet toegankelijk of kunnen niet worden geëxporteerd door Tenant beheerders. Deze logboeken vormen feitelijke acties die zijn uitgevoerd in de service en diagnostische gegevens met betrekking tot afzonderlijke apparaten.

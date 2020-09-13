@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326185"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029458"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -59,7 +59,7 @@ Als u alle functies van Azure Monitor voor het bewaken van een virtuele machine 
 | [Azure Monitor voor VM's inschakelen](#enable-azure-monitor-for-vms) | -Log Analytics-agent geïnstalleerd.<br>-De agent voor afhankelijkheden is geïnstalleerd.<br>-Gast prestatie gegevens die worden verzameld voor Logboeken.<br>-Proces en afhankelijkheids details die zijn verzameld voor Logboeken. | -Prestatie diagrammen en werkmappen voor prestatie gegevens van de gast.<br>-Query's vastleggen voor prestatie gegevens van de gast.<br>-Waarschuwingen in logboek registreren voor prestatie gegevens van de gast.<br>-Afhankelijkheids toewijzing. |
 | [De diagnostische uitbrei ding en de telegrafie agent installeren](#enable-diagnostics-extension-and-telegraf-agent) | -De prestatie gegevens voor de gast die worden verzameld voor de meet waarden. | -Metrics Explorer voor gast.<br>-Metrische waarschuwingen voor gast.  |
 | [Log Analytics werkruimte configureren](#configure-log-analytics-workspace) | -Gebeurtenissen die worden verzameld van de gast. | -Query's vastleggen voor gast gebeurtenissen.<br>-Waarschuwingen vastleggen voor gast gebeurtenissen. |
-| [Diagnostische instelling voor virtuele machine maken](#collect-platform-metrics-and-activity-log) | -Metrische platform gegevens die worden verzameld voor Logboeken.<br>-Het activiteiten logboek dat is verzameld voor Logboeken. | -LOQ query's voor metrische gegevens van de host.<br>-Waarschuwingen vastleggen voor metrische gegevens van de host.<br>-Query's vastleggen voor het activiteiten logboek.
+| [Diagnostische instelling voor virtuele machine maken](#collect-platform-metrics-and-activity-log) | -Metrische platform gegevens die worden verzameld voor Logboeken.<br>-Het activiteiten logboek dat is verzameld voor Logboeken. | -Query's vastleggen voor metrische gegevens van de host.<br>-Waarschuwingen vastleggen voor metrische gegevens van de host.<br>-Query's vastleggen voor het activiteiten logboek.
 
 Elk van deze configuratie stappen wordt beschreven in de volgende secties.
 
@@ -70,9 +70,9 @@ Elk van deze configuratie stappen wordt beschreven in de volgende secties.
 - Vooraf gedefinieerde diagrammen voor trend prestaties en werkmappen waarmee u de metrische prestatie gegevens van het gast besturingssysteem van de virtuele machine kunt analyseren.
 - Afhankelijkheids toewijzing met processen die worden uitgevoerd op elke virtuele machine en de onderling verbonden onderdelen met andere computers en externe bronnen.
 
-![Azure Monitor voor virtuele machines](media/monitor-vm-azure/vminsights-01.png)
+![Weer gave Azure Monitor voor VM's prestaties](media/monitor-vm-azure/vminsights-01.png)
 
-![Azure Monitor voor virtuele machines](media/monitor-vm-azure/vminsights-02.png)
+![Weer gave Azure Monitor voor VM's kaarten](media/monitor-vm-azure/vminsights-02.png)
 
 
 Schakel Azure Monitor voor VM's in via de optie **inzichten** in het menu virtuele machine van de Azure Portal. Zie [Azure monitor voor VM's overzicht inschakelen](vminsights-enable-overview.md) voor meer informatie en andere configuratie methoden.
@@ -80,7 +80,7 @@ Schakel Azure Monitor voor VM's in via de optie **inzichten** in het menu virtue
 ![Azure Monitor voor VM's inschakelen](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Log Analytics werkruimte configureren
-De Log Analytics agent die door Azure Monitor voor VM's wordt gebruikt, verzendt gegevens naar een [log Analytics-werk ruimte](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). U kunt het verzamelen van aanvullende prestatie gegevens, gebeurtenissen en andere bewakings gegevens van de agent inschakelen door de Log Analytics-werk ruimte te configureren. Het hoeft slechts eenmaal te worden geconfigureerd, omdat elke agent die verbinding maakt met de werk ruimte automatisch de configuratie downloadt en meteen begint met het verzamelen van de gedefinieerde gegevens. 
+De Log Analytics agent die door Azure Monitor voor VM's wordt gebruikt, verzendt gegevens naar een [log Analytics-werk ruimte](../platform/data-platform-logs.md). U kunt het verzamelen van aanvullende prestatie gegevens, gebeurtenissen en andere bewakings gegevens van de agent inschakelen door de Log Analytics-werk ruimte te configureren. Het hoeft slechts eenmaal te worden geconfigureerd, omdat elke agent die verbinding maakt met de werk ruimte automatisch de configuratie downloadt en meteen begint met het verzamelen van de gedefinieerde gegevens. 
 
 U kunt de configuratie voor de werk ruimte rechtstreeks vanuit Azure Monitor voor VM's openen door **werkruimte configuratie** te selecteren in de **aan de slag**. Klik op de naam van de werk ruimte om het menu te openen.
 
@@ -96,7 +96,7 @@ Selecteer **Geavanceerde instellingen** in het menu van de werk ruimte en vervol
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>De uitbrei ding voor diagnostische gegevens en de telegrafie agent inschakelen
-Azure Monitor voor VM's is gebaseerd op de Log Analytics-agent die gegevens verzamelt in een Log Analytics-werk ruimte. Dit ondersteunt [meerdere functies van Azure monitor](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , zoals [logboek query's](../log-query/log-query-overview.md), [logboek waarschuwingen](../platform/alerts-log.md)en [werkmappen](../platform/workbooks-overview.md). De [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) verzamelt prestatie gegevens van het gast besturingssysteem van virtuele Windows-machines tot Azure Storage en stuurt optioneel prestatie gegevens naar [Azure monitor metrieken](../platform/data-platform-metrics.md). Voor virtuele Linux-machines is de [telegrafa-agent](../platform/collect-custom-metrics-linux-telegraf.md) vereist voor het verzenden van gegevens naar Azure Metrics.  Hiermee kunnen andere functies van Azure Monitor zoals [metrische gegevens Verkenner](../platform/metrics-getting-started.md) en [metrische waarschuwingen worden gegenereerd](../platform/alerts-metric.md). U kunt de diagnostische extensie ook zo configureren dat gebeurtenissen en prestatie gegevens buiten Azure Monitor worden verzonden met behulp van Azure Event Hubs.
+Azure Monitor voor VM's is gebaseerd op de Log Analytics-agent die gegevens naar een Log Analytics-werk ruimte verzendt. Dit ondersteunt meerdere functies van Azure Monitor, zoals [logboek query's](../log-query/log-query-overview.md), [logboek waarschuwingen](../platform/alerts-log.md)en [werkmappen](../platform/workbooks-overview.md). De [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) verzamelt prestatie gegevens van het gast besturingssysteem van virtuele Windows-machines tot Azure Storage en stuurt optioneel prestatie gegevens naar [Azure monitor metrieken](../platform/data-platform-metrics.md). Voor virtuele Linux-machines is de [telegrafa-agent](../platform/collect-custom-metrics-linux-telegraf.md) vereist voor het verzenden van gegevens naar Azure Metrics.  Hiermee kunnen andere functies van Azure Monitor zoals [metrische gegevens Verkenner](../platform/metrics-getting-started.md) en [metrische waarschuwingen worden gegenereerd](../platform/alerts-metric.md). U kunt de diagnostische extensie ook zo configureren dat gebeurtenissen en prestatie gegevens buiten Azure Monitor worden verzonden met behulp van Azure Event Hubs.
 
 Installeer de diagnostische uitbrei ding voor één virtuele Windows-machine in de Azure Portal van de optie **Diagnostische gegevens** in het VM-menu. Selecteer de optie om **Azure monitor** in te scha kelen op het tabblad **sinks** . Zie [installatie en configuratie](../platform/diagnostics-extension-overview.md#installation-and-configuration)om de uitbrei ding van een sjabloon of opdracht regel voor meerdere virtuele machines in te scha kelen. In tegens telling tot de Log Analytics-agent, wordt de te verzamelen gegevens gedefinieerd in de configuratie voor de uitbrei ding op elke virtuele machine.
 
@@ -154,7 +154,7 @@ Er zijn drie naam ruimten die door virtuele machines worden gebruikt voor metris
 | Gast (klassiek) | Beperkte set gast besturingssysteem en prestatie gegevens van toepassingen. Beschikbaar in Metrics Explorer, maar niet op andere Azure Monitor functies, zoals metrische waarschuwingen.  | [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd. Gegevens worden uit Azure Storage gelezen.  |
 | Gast voor virtuele machine | Prestatie gegevens van gast besturingssystemen en-toepassingen die beschikbaar zijn voor alle Azure Monitor-functies met behulp van gegevens. | Voor Windows is de [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd met Azure monitor Sink ingeschakeld. Voor Linux is de [telegrafa-agent geïnstalleerd](../platform/collect-custom-metrics-linux-telegraf.md). |
 
-![Metrische gegevens](media/monitor-vm-azure/metrics.png)
+![Metrics Explorer in de Azure Portal](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>Logboek gegevens analyseren
 Met virtuele machines van Azure worden de volgende gegevens verzameld voor Azure Monitor Logboeken. 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![Logboek waarschuwing](media/monitor-vm-azure/log-alert-01.png)
+![Logboek waarschuwing voor gemiste heartbeat](media/monitor-vm-azure/log-alert-01.png)
 
 Als u een waarschuwing wilt maken als er een uitzonderlijk aantal mislukte aanmeldingen is opgetreden op virtuele Windows-machines in het abonnement, gebruikt u de volgende query waarmee een record voor elke mislukte aanmeldings gebeurtenis in het afgelopen uur wordt geretourneerd. Gebruik een drempel waarde die is ingesteld op het aantal mislukte aanmeldingen dat u wilt toestaan. 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![Logboek waarschuwing](media/monitor-vm-azure/log-alert-02.png)
+![Logboek waarschuwing voor mislukte aanmeldingen](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) biedt gedetailleerde bewaking van workloads op virtuele machines. Raadpleeg de [Cloud monitoring-hand leiding](/azure/cloud-adoption-framework/manage/monitor/) voor een vergelijking van bewakings platforms en verschillende strategieën voor implementatie.
+System Center Operations Manager biedt gedetailleerde bewaking van workloads op virtuele machines. Raadpleeg de [Cloud monitoring-hand leiding](/azure/cloud-adoption-framework/manage/monitor/) voor een vergelijking van bewakings platforms en verschillende strategieën voor implementatie.
 
-Als u een bestaande SCOM-omgeving hebt die u wilt blijven gebruiken, kunt u deze integreren met Azure Monitor om aanvullende functionaliteit te bieden. De Log Analytics agent die door Azure Monitor wordt gebruikt, is hetzelfde als die voor SCOM, zodat u kunt controleren of virtuele machines gegevens verzenden naar beide. U moet de agent nog steeds toevoegen aan Azure Monitor voor VM's en de werk ruimte zodanig configureren dat er aanvullende gegevens worden verzameld, zoals hierboven is beschreven, maar de virtuele machines kunnen de bestaande Management Packs in een SCOM-omgeving zonder aanpassing blijven uitvoeren.
+Als u een bestaande Operations Manager omgeving hebt die u wilt blijven gebruiken, kunt u deze integreren met Azure Monitor om extra functionaliteit te bieden. De Log Analytics-agent die door Azure Monitor wordt gebruikt, is hetzelfde als die voor Operations Manager, zodat u hebt gecontroleerd of de virtuele machines gegevens naar beide verzenden. U moet de agent nog steeds toevoegen aan Azure Monitor voor VM's en de werk ruimte zodanig configureren dat er aanvullende gegevens worden verzameld, zoals hierboven is beschreven, maar de virtuele machines kunnen de bestaande Management Packs in een Operations Manager omgeving blijven uitvoeren zonder aanpassing.
 
-De functies van Azure Monitor die een bestaande SCOM-functionaliteit uitbreiden, zijn onder meer de volgende:
+De functies van Azure Monitor die een bestaande Operations Manager functies uitbreiden, zijn onder andere:
 
 - Gebruik Log Analytics om uw logboek-en prestatie gegevens interactief te analyseren.
-- Gebruik logboek waarschuwingen voor het definiëren van waarschuwings voorwaarden op meerdere virtuele machines en het gebruik van lange termijn trends die niet mogelijk zijn met behulp van waarschuwingen in SCOM.   
+- Gebruik logboek waarschuwingen voor het definiëren van waarschuwings voorwaarden op meerdere virtuele machines en het gebruik van lange termijn trends die niet mogelijk zijn met behulp van waarschuwingen in Operations Manager.   
 
-Zie [Connect Operations Manager to Azure monitor](../platform/om-agents.md) voor meer informatie over het koppelen van uw bestaande SCOM-beheer groep aan uw log Analytics-werk ruimte.
+Zie [Connect Operations Manager to Azure monitor](../platform/om-agents.md) voor meer informatie over het koppelen van uw bestaande Operations Manager-beheer groep aan uw log Analytics-werk ruimte.
 
 
 ## <a name="next-steps"></a>Volgende stappen

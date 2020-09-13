@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: a08c6abe52801e1fbafd517adcb8fd9a8b8b4aee
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462289"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030069"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opties voor het migreren van uw on-premises of Cloud gegevens naar Azure Cosmos DB
 
@@ -47,7 +47,7 @@ De volgende factoren bepalen de keuze van het migratie programma:
 |Offline|[Azure Cosmos DB Spark-connector](spark-connector.md)|Azure Cosmos DB SQL-API. <br/><br/>U kunt andere bronnen gebruiken met aanvullende connectors van het Spark-ecosysteem.| Azure Cosmos DB SQL-API. <br/><br/>U kunt andere doelen gebruiken met aanvullende connectors van het Spark-ecosysteem.| &bull; Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder. <br/>&bull; Geschikt voor grote gegevens sets. <br/>&bull; Vereist een aangepaste Spark-installatie. <br/>&bull; Spark is gevoelig voor inconsistenties in het schema en dit kan een probleem zijn tijdens de migratie. |
 |Offline|[Aangepast hulp programma met Cosmos DB bibliotheek voor bulksgewijs uitvoerder](migrate-cosmosdb-data.md)| De bron is afhankelijk van uw aangepaste code | SQL-API voor Azure Cosmos DB| &bull; Voorziet in controle punten voor onbestelbare berichten waardoor migratie tolerantie wordt verhoogd. <br/>&bull; Geschikt voor zeer grote gegevens sets (10 TB +).  <br/>&bull; Aangepaste Setup van dit hulp programma moet worden uitgevoerd als een App Service. |
 |Online|[Cosmos DB functions + ChangeFeed-API](change-feed-functions.md)| SQL-API voor Azure Cosmos DB | SQL-API voor Azure Cosmos DB| &bull; Eenvoudig in te stellen. <br/>&bull; Werkt alleen als de bron een Azure Cosmos DB container is. <br/>&bull; Niet geschikt voor grote gegevens sets. <br/>&bull; Er worden geen verwijderingen van de bron container vastgelegd. |
-|Online|[Aangepaste migratie service met ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)| SQL-API voor Azure Cosmos DB | SQL-API voor Azure Cosmos DB| &bull; Biedt voortgangs tracering. <br/>&bull; Werkt alleen als de bron een Azure Cosmos DB container is. <br/>&bull; Kan ook worden gebruikt voor grotere gegevens sets.<br/>&bull; Vereist dat de gebruiker een App Service instelt voor het hosten van de wijzigings processor. <br/>&bull; Er worden geen verwijderingen van de bron container vastgelegd.|
+|Online|[Aangepaste migratie service met ChangeFeed](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| SQL-API voor Azure Cosmos DB | SQL-API voor Azure Cosmos DB| &bull; Biedt voortgangs tracering. <br/>&bull; Werkt alleen als de bron een Azure Cosmos DB container is. <br/>&bull; Kan ook worden gebruikt voor grotere gegevens sets.<br/>&bull; Vereist dat de gebruiker een App Service instelt voor het hosten van de wijzigings processor. <br/>&bull; Er worden geen verwijderingen van de bron container vastgelegd.|
 |Online|[Realtimeplatform](cosmosdb-sql-api-migrate-data-striim.md)| &bull;Oracle <br/>&bull;Apache Cassandra<br/><br/> Zie de [realtimeplatform-website](https://www.striim.com/sources-and-targets/) voor andere ondersteunde bronnen. |&bull;SQL-API voor Azure Cosmos DB <br/>&bull; Azure Cosmos DB Cassandra-API<br/><br/> Zie de [realtimeplatform-website](https://www.striim.com/sources-and-targets/) voor andere ondersteunde doelen. | &bull; Werkt met een groot aantal verschillende bronnen, zoals Oracle, DB2, SQL Server.<br/>&bull; Maak eenvoudig ETL-pijp lijnen en biedt een dash board voor bewaking. <br/>&bull; Biedt ondersteuning voor grotere gegevens sets. <br/>&bull; Aangezien dit een hulp programma van derden is, moet het worden aangeschaft via Marketplace en worden geïnstalleerd in de omgeving van de gebruiker.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo-API

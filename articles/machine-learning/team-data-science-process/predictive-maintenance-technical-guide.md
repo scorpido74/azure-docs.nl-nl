@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290714"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030898"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische hand leiding voor het oplossings sjabloon voor predictief onderhoud in lucht vaart
 
@@ -170,7 +170,7 @@ De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQ
    * Zodra de **Azure SQL database** in het diagram van de oplossings sjabloon groen wordt, klikt u erop en klikt u vervolgens op **openen**.
    * Er wordt een nieuw browser tabblad/-venster weer gegeven met de Azure Portal-pagina. Klik op **resource groepen** in het linkerdeel venster.
    * Selecteer het abonnement dat u gebruikt voor het implementeren van de oplossing en selecteer vervolgens **' YourSolutionName \_ ResourceGroup '**.
-   * Klik in het nieuwe deel venster pop-out op het pictogram ![ SQL-pictogrammen ](./media/predictive-maintenance-technical-guide/icon-sql.png) om toegang te krijgen tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '**) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net**.
+   * Klik in het nieuwe deel venster pop-out op het pictogram  ![ SQL-pictogrammen ](./media/predictive-maintenance-technical-guide/icon-sql.png) om toegang te krijgen tot uw data base. De naam van uw Data Base bevindt zich naast dit pictogram (bijvoorbeeld **' pmaintenancedb '**) en de naam van de **database server** wordt vermeld onder de eigenschap Server naam en moet er ongeveer uitzien als **YourSolutionName.database.Windows.net**.
    * De **gebruikers** naam en het **wacht woord** voor de Data Base zijn hetzelfde als de gebruikers naam en het wacht woord die eerder zijn vastgelegd tijdens de implementatie van de oplossing.
 2. Werk de gegevens bron van het rapport bestand met koude paden bij met Power BI Desktop.
    
@@ -182,7 +182,7 @@ De volgende stappen begeleiden u bij het koppelen van het pbix-bestand aan de SQ
    * In het volgende pop-out venster ziet u twee opties in het linkerdeel venster (**Windows** en **Data Base**). Klik op **Data Base**, vul uw **gebruikers naam** en **wacht** woord in (de gebruikers naam en het wacht woord die u hebt ingevoerd toen u de oplossing voor het eerst implementeerde en een Azure SQL database hebt gemaakt). Controleer de optie database niveau in ***Selecteer welk niveau u deze instellingen wilt Toep assen op***. Klik vervolgens op **verbinding maken**.
    * Klik op de tweede tabel **PMResult** en klik vervolgens op ![ Navigatie pictogram ](./media/predictive-maintenance-technical-guide/icon-navigation.png) naast **' Bron '** onder **' toegepaste stappen '** in het rechterdeel venster ' **query instellingen** ' en werk de namen van de server en de data base bij, zoals in de bovenstaande stappen. Klik vervolgens op OK.
    * Nadat u de vorige pagina hebt weer gegeven, sluit u het venster. Er wordt een bericht weer gegeven: Klik op **Toep assen**. Klik ten slotte op de knop **Opslaan** om de wijzigingen op te slaan. Uw Power BI-bestand heeft nu verbinding gemaakt met de server. Als uw visualisaties leeg zijn, moet u de selecties op de visualisaties wissen om alle gegevens te visualiseren door te klikken op het pictogram gum in de rechter bovenhoek van de legenda's. Gebruik de knop Vernieuwen om nieuwe gegevens in de visualisaties weer te geven. In eerste instantie worden alleen de seedgegevens in uw visualisaties weer gegeven, omdat de data factory is gepland om elke 3 uur te vernieuwen. Na 3 uur ziet u nieuwe voor spellingen die worden weer gegeven in uw visualisaties Wanneer u de gegevens vernieuwt.
-3. Beschrijving Publiceer het dash board koud pad om [online te Power bi](https://www.powerbi.com/). Voor deze stap hebt u een Power BI account (of een Office 365-account) nodig.
+3. Beschrijving Publiceer het dash board koud pad om [online te Power bi](https://www.powerbi.com/). Voor deze stap hebt u een Power BI-account (of een werk-of school account) nodig.
    
    * Klik op **publiceren** en een paar seconden later verschijnt een venster met de weer gave ' publiceren naar Power bi slagen! '. met een groen vinkje. Klik op de koppeling onder "open PredictiveMaintenanceAerospace. pbix in Power BI". Zie [publiceren vanuit Power bi Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)voor gedetailleerde instructies.
    * Als u een nieuw dash board wilt maken, klikt u op het **+** teken naast het gedeelte **Dash boards** in het linkerdeel venster. Voer de naam ' demo voor voor speld onderhoud ' in voor dit nieuwe dash board.
@@ -208,7 +208,7 @@ De volgende stappen begeleiden u bij het visualiseren van gegevens uitvoer van S
 1. Power BI uitvoer toevoegen in Azure Stream Analytics (ASA).
    
    * U moet de instructies in [Azure Stream Analytics & Power BI: een dash board van Analytics voor realtime zicht baarheid van streaminggegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) om de uitvoer van uw Azure stream Analytics-taak in te stellen als uw Power bi dash board.
-   * De ASA-query heeft drie uitvoer, **aircraftmonitor**, **aircraftalert**en **flightsbyhour**. U kunt de query weer geven door te klikken op het tabblad query. overeenkomt met elk van deze tabellen, moet u een uitvoer toevoegen aan ASA. Wanneer u de eerste uitvoer (**aircraftmonitor**) toevoegt, moet u ervoor zorgen dat de **uitvoer alias**, de naam van de **gegevensset** en de **tabel naam** hetzelfde zijn (**aircraftmonitor**). Herhaal de stappen voor het toevoegen van uitvoer voor **aircraftalert**en **flightsbyhour**. Zodra u alle drie de uitvoer tabellen hebt toegevoegd en de ASA-taak hebt gestart, wordt een bevestigings bericht weer gegeven ("starten Stream Analytics-taak maintenancesa02asapbi geslaagd").
+   * De ASA-query heeft drie uitvoer, **aircraftmonitor**, **aircraftalert**en **flightsbyhour**. U kunt de query weer geven door te klikken op het tabblad query. Die overeenkomt met elk van deze tabellen, moet u een uitvoer toevoegen aan ASA. Wanneer u de eerste uitvoer (**aircraftmonitor**) toevoegt, moet u ervoor zorgen dat de **uitvoer alias**, de naam van de **gegevensset** en de **tabel naam** hetzelfde zijn (**aircraftmonitor**). Herhaal de stappen voor het toevoegen van uitvoer voor **aircraftalert**en **flightsbyhour**. Zodra u alle drie de uitvoer tabellen hebt toegevoegd en de ASA-taak hebt gestart, wordt een bevestigings bericht weer gegeven ("starten Stream Analytics-taak maintenancesa02asapbi geslaagd").
 2. Meld u online aan bij [Power bi](https://www.powerbi.com)
    
    * In de sectie gegevens sets van het linkerdeel venster in mijn werk ruimte moeten de ***gegevensset*** namen **aircraftmonitor**, **aircraftalert**en **flightsbyhour** worden weer gegeven. Dit zijn de streaminggegevens die u hebt gepusht van Azure Stream Analytics in de vorige stap. De **flightsbyhour** van de gegevensset wordt mogelijk niet tegelijk met de andere twee gegevens sets weer gegeven vanwege de aard van de SQL-query achter deze. Het moet echter na een uur worden weer gegeven.

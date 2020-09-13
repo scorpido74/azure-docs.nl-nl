@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 09/11/2020
+ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475597"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030596"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -41,13 +41,15 @@ Wanneer u klaar bent met de fout opsporing, schakelt u de schakel optie voor fou
 
 ## <a name="debug-settings"></a>Instellingen voor fout opsporing
 
-Instellingen voor fout opsporing kunnen worden bewerkt door te klikken op instellingen voor fout opsporing op de werk balk gegevensstroom canvas. U kunt de rijlimiet of de bestands bron selecteren die u voor elk van uw bron transformaties wilt gebruiken. De limieten voor rijen in deze instelling gelden alleen voor de huidige foutopsporingssessie. U kunt ook de gekoppelde staging-service selecteren die moet worden gebruikt voor een SQL DW-bron. 
+Wanneer u de foutopsporingsmodus inschakelt, kunt u de weer gave van gegevens in een gegevens stroom bewerken. Instellingen voor fout opsporing kunnen worden bewerkt door te klikken op instellingen voor fout opsporing op de werk balk gegevensstroom canvas. U kunt de rijlimiet of de bestands bron selecteren die u voor elk van uw bron transformaties wilt gebruiken. De limieten voor rijen in deze instelling gelden alleen voor de huidige foutopsporingssessie. U kunt ook de gekoppelde staging-service selecteren die moet worden gebruikt voor een Azure Synapse Analytics-bron. 
 
 ![Instellingen voor fout opsporing](media/data-flow/debug-settings.png "Instellingen voor fout opsporing")
 
 Als u para meters hebt in uw gegevens stroom of een van de data sets waarnaar wordt verwezen, kunt u opgeven welke waarden moeten worden gebruikt tijdens de fout opsporing door het tabblad **para meters** te selecteren.
 
 ![Para meters voor fout opsporing](media/data-flow/debug-settings2.png "Para meters voor fout opsporing")
+
+De standaard-IR die wordt gebruikt voor de foutopsporingsmodus in ADF-gegevens stromen is een klein 4-core single worker-knoop punt met een 4-core knoop punt met één stuur programma. Dit werkt prima met kleinere voor beelden van gegevens bij het testen van de logica van uw gegevens stroom. Als u de limieten voor rijen in de instellingen voor fout opsporing uitvouwt tijdens de preview van gegevens of als u een groter aantal voorbeeld rijen in uw bron hebt ingesteld tijdens de fout opsporing voor de pijp lijn, kunt u overwegen om een grotere reken omgeving in te stellen in een nieuwe Azure Integration Runtime. Vervolgens kunt u de foutopsporingssessie opnieuw starten met behulp van de grotere Compute-omgeving.
 
 ## <a name="data-preview"></a>Voorbeeld van gegevens
 
@@ -59,6 +61,8 @@ Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het o
 > Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.
 
 Wanneer de foutopsporingsmodus in de gegevens stroom wordt uitgevoerd, worden uw gegevens niet naar de Sink-trans formatie geschreven. Een foutopsporingssessie is bedoeld om te fungeren als een test harnas voor uw trans formaties. Sinks zijn niet vereist tijdens fout opsporing en worden genegeerd in uw gegevens stroom. Als u het schrijven van de gegevens in uw Sink wilt testen, voert u de gegevens stroom uit vanuit een Azure Data Factory pijp lijn en gebruikt u de uitvoering van de fout opsporing vanuit een pijp lijn.
+
+Preview van gegevens is een moment opname van uw getransformeerde gegevens met behulp van Rijlimiet en gegevens bemonstering van gegevens frames in Spark-geheugen. Daarom kunnen de Sink-Stuur Programma's niet worden gebruikt of getest in dit scenario.
 
 ### <a name="testing-join-conditions"></a>Voor waarden voor samen voegen testen
 

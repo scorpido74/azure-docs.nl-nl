@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 516b3bac5da2e078217d5c12f1efdf527b7c83a1
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323057"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029066"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Directe methoden van IoT Hub begrijpen en aanroepen
 
@@ -38,7 +38,7 @@ Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide
 Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI ( `{iot hub}/twins/{device id}/methods/` ). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp ( `$iothub/methods/POST/{method name}/` ) of via AMQP-koppelingen (de eigenschappen van de `IoThub-methodname` en `IoThub-status` toepassing).
 
 > [!NOTE]
-> Wanneer u een rechtstreekse methode aanroept op een apparaat, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Wanneer u een rechtstreekse methode aanroept op een apparaat, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Directe methoden zijn synchroon en slagen of mislukken na de time-outperiode (standaard: 30 seconden, instelbaar tussen 5 en 300 seconden). Directe methoden zijn handig in interactieve scenario's waarin u wilt dat een apparaat reageert als en alleen als het apparaat online is en opdrachten ontvangt. U kunt bijvoorbeeld een lampje van een telefoon inschakelen. In deze scenario's wilt u direct slagen of mislukken, zodat de Cloud service zo snel mogelijk kan reageren op het resultaat. Het apparaat kan een deel van de bericht tekst retour neren als resultaat van de methode, maar dit is niet vereist voor de methode. Er is geen garantie voor de volg orde of enige semantiek van gelijktijdigheids op methode aanroepen.
@@ -55,7 +55,7 @@ Roep nu een directe methode aan vanuit een back-end-app.
 
 Directe methode aanroepen op een apparaat zijn HTTPS-aanroepen die bestaan uit de volgende items:
 
-* De *aanvraag-URI* die specifiek is voor het apparaat, samen met de [API-versie](/rest/api/iothub/service/devicemethod/invokedevicemethod):
+* De *aanvraag-URI* die specifiek is voor het apparaat, samen met de [API-versie](https://docs.aws.amazon.com/cli/latest/reference/iot1click-devices/invoke-device-method.html):
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -117,7 +117,7 @@ Voer de gewijzigde opdracht uit om de opgegeven directe methode aan te roepen. G
 ```bash
 https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
@@ -168,7 +168,7 @@ De hoofd tekst die het apparaat ontvangt, heeft de volgende indeling:
 
 Methode aanvragen zijn QoS 0.
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 Het apparaat verzendt reacties naar `$iothub/methods/res/{status}/?$rid={request id}` , waarbij:
 
@@ -194,7 +194,7 @@ Het AMQP-bericht arriveert op de ontvangst koppeling die de methode aanvraag ver
 
 * De bericht tekst van het AMQP met de methode payload als JSON.
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 Het apparaat maakt een verzend koppeling om de methode reactie op adres te retour neren `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 

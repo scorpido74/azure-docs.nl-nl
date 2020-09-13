@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326168"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030341"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -20,10 +20,7 @@ Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk z
 > Dit artikel is van toepassing op alle services in azure die gebruikmaken van Azure Monitor. Reken bronnen, met inbegrip van Vm's en App Service, genereren dezelfde bewakings gegevens die hier worden beschreven, maar ook een gast besturingssysteem dat ook logboeken en metrieken kan genereren. Zie de documentatie over het controleren van deze services voor meer informatie over het verzamelen en analyseren van deze gegevens.
 
 ## <a name="what-is-azure-monitor"></a>Wat is Azure Monitor?
-Azure Monitor is een volledige stack monitoring-service in azure met een volledige set functies voor het bewaken van uw Azure-resources naast bronnen in andere Clouds en on-premises. Het [Azure monitor-gegevens platform](../platform/data-platform.md) verzamelt gegevens in [Logboeken](../platform/data-platform-logs.md) en [metrieken](../platform/data-platform-metrics.md) waar ze kunnen worden geanalyseerd met behulp van een volledige set controle hulpprogramma's, zoals beschreven in de volgende secties.
-
-- [Wat kunt u doen met Azure Monitor metrische gegevens?](../platform/data-platform-metrics.md#what-can-you-do-with-azure-monitor-metrics)
-- [Wat kunt u doen met Azure Monitor-logboeken?](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)
+Azure Monitor is een volledige stack monitoring-service in azure met een volledige set functies voor het bewaken van uw Azure-resources naast bronnen in andere Clouds en on-premises. Het [Azure monitor-gegevens platform](../platform/data-platform.md) verzamelt gegevens in [Logboeken](../platform/data-platform-logs.md) en [meet waarden](../platform/data-platform-metrics.md) waar ze kunnen worden geanalyseerd met behulp van een volledige set controle hulpprogramma's. Bekijk de volledige lijst met toepassingen en services die kunnen worden bewaakt door Azure Monitor op [wat door Azure monitor wordt bewaakt?](../monitor-reference.md).
 
 Zodra u een Azure-resource maakt, wordt Azure Monitor ingeschakeld en worden er metrische gegevens en activiteiten logboeken verzameld die u [in de Azure Portal kunt bekijken en analyseren](#monitoring-in-the-azure-portal). Met een configuratie kunt u extra bewakings gegevens verzamelen en aanvullende functies inschakelen. Zie de onderstaande [bewakings gegevens](#monitoring-data) voor meer informatie over de configuratie vereisten.
 
@@ -100,7 +97,7 @@ Sommige services bieden nog meer hulp middelen dan de standaard functies van Azu
 
 Als een service een Azure Monitor inzicht heeft, kunt u deze openen vanuit **bewaking** in elk resource menu. Toegang tot alle inzichten en oplossingen vanuit het **Azure monitor** menu.
 
-![Inzichten](media/monitor-azure-resource/insights.png)
+![Inzichten in de Azure Portal](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metrische gegevens
 Analyseer de metrische gegevens in de Azure Portal met behulp van [Metrics Explorer](../platform/metrics-getting-started.md) , die beschikbaar is via de menu opdracht **metrische gegevens** voor de meeste services. Met dit hulp programma kunt u met afzonderlijke metrische gegevens werken of meerdere combi neren om correlaties en trends te identificeren. 
@@ -108,7 +105,7 @@ Analyseer de metrische gegevens in de Azure Portal met behulp van [Metrics Explo
 - Zie [aan de slag met Azure Metrics Explorer](../platform/metrics-getting-started.md) voor de basis principes van het gebruik van metrische gegevens Verkenner.
 - Zie [geavanceerde functies van Azure Metrics Explorer](../platform/metrics-charts.md) voor geavanceerde functies van de Verkenner voor metrische gegevens, zoals het gebruik van meerdere metrische gegevens en het Toep assen van filters en splitsen.
 
-![Metrische gegevens](media/monitor-azure-resource/metrics.png)
+![Metrics Explorer in de Azure Portal](media/monitor-azure-resource/metrics.png)
 
 
 ### <a name="activity-log"></a>Activiteitenlogboek 
@@ -129,7 +126,7 @@ Met [log Analytics](../log-query/get-started-portal.md) kunt u werken met [logbo
 - Zie [Verzamel modus](../platform/resource-logs.md#send-to-log-analytics-workspace) voor een uitleg van hoe bron logboek gegevens worden gestructureerd in azure monitor Logboeken.
 - Raadpleeg de documentatie voor elke Azure-service voor meer informatie over de tabel in Azure Monitor logs.
 
-![Logboeken](media/monitor-azure-resource/logs.png)
+![Log Analytics in de Azure Portal](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>Bewaking vanaf opdracht regel
 U hebt toegang tot bewakings gegevens die vanuit uw resource zijn verzameld vanaf een opdracht regel of worden opgenomen in een script met behulp van [Azure PowerShell](/powershell/azure/) of de [Azure-opdracht regel interface](/cli/azure/). 
