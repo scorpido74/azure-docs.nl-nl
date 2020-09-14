@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717435"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052678"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hoe werkt de write-back van self-service voor wacht woord opnieuw instellen in Azure Active Directory?
 
@@ -37,7 +37,7 @@ Het terugschrijven van wacht woorden biedt de volgende functies:
 
 * **Afdwinging van het wachtwoord beleid van een on-premises Active Directory Domain Services (AD DS)**: wanneer een gebruiker het wacht woord opnieuw instelt, wordt gecontroleerd of het voldoet aan uw on-premises AD DS-beleid voordat het wordt doorgevoerd in die map. Deze controle omvat het controleren van de geschiedenis, complexiteit, leeftijd, wachtwoord filters en eventuele andere wachtwoord beperkingen die u in AD DS definieert.
 * **Feedback over nul vertraging**: wacht woord terugschrijven is een synchrone bewerking. Gebruikers worden onmiddellijk op de hoogte gesteld als hun wacht woord niet voldoet aan het beleid of niet om een of andere reden kan worden gewijzigd.
-* **Ondersteunt wachtwoord wijzigingen in het toegangs venster en Office 365**: wanneer federatieve of wacht woord-hash gesynchroniseerde gebruikers hun verlopen of niet-verlopen wacht woorden kunnen wijzigen, worden deze wacht woorden teruggeschreven naar AD DS.
+* **Ondersteunt wachtwoord wijzigingen in het toegangs venster en Microsoft 365**: wanneer federatieve of wacht woord-hash gesynchroniseerde gebruikers hun verlopen of niet-verlopen wacht woorden kunnen wijzigen, worden deze wacht woorden teruggeschreven naar AD DS.
 * **Biedt ondersteuning voor het terugschrijven van wacht woorden wanneer een beheerder deze opnieuw instelt op de Azure Portal**: wanneer een beheerder het wacht woord van een gebruiker opnieuw instelt in de [Azure Portal](https://portal.azure.com), wordt het wacht woord teruggeschreven naar on-premises als de gebruiker een federatieve of wacht woord-hash synchroniseert. Deze functionaliteit wordt momenteel niet ondersteund in de Office-beheer Portal.
 * Geen **binnenkomende firewall regels vereist**: wacht woord terugschrijven gebruikt een Azure service bus relay als een onderliggend communicatie kanaal. Alle communicatie is uitgaand via poort 443.
 

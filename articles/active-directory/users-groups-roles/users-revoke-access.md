@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147130"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055182"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Gebruikers toegang intrekken in Azure Active Directory
 
@@ -38,7 +38,7 @@ Toegangs tokens en vernieuwings tokens worden vaak gebruikt met dikke client toe
 
 Azure AD evalueert vervolgens het autorisatie beleid opnieuw. Als de gebruiker nog gemachtigd is, geeft Azure AD een nieuw toegangs token en vernieuwings token uit.
 
-Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [voortdurende toegang](../conditional-access/concept-continuous-access-evaluation.md) te geven aan Office 365-toepassingen, waardoor de validatie van toegangs tokens in bijna realtime niet mogelijk is.  
+Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [doorlopende toegang](../conditional-access/concept-continuous-access-evaluation.md) te geven tot Microsoft 365 toepassingen, waardoor de validatie van toegangs tokens in bijna realtime wordt gegarandeerd.  
 
 ## <a name="session-tokens-cookies"></a>Sessie tokens (cookies)
 

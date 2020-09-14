@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4cfeda0d06c1e6956c7bbc953f1082a3510e8712
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005017"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052712"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en account beperkingen in Azure Active Directory
 
@@ -108,7 +108,7 @@ Een *globale beheerder* of *gebruikers beheerder* kan de [Microsoft Azure ad-mod
 
 U kunt ook Power shell-cmdlets gebruiken om de configuratie nooit-expires te verwijderen of om te zien welke gebruikers wachtwoorden zijn ingesteld op nooit verlopen.
 
-Deze richt lijnen zijn van toepassing op andere providers, zoals intune en Office 365, die ook afhankelijk zijn van Azure AD voor identiteits-en Directory Services. Verlopen van wacht woorden is het enige deel van het beleid dat kan worden gewijzigd.
+Deze richt lijnen zijn van toepassing op andere providers, zoals intune en Microsoft 365, die ook afhankelijk zijn van Azure AD voor identiteits-en adreslijst Services. Verlopen van wacht woorden is het enige deel van het beleid dat kan worden gewijzigd.
 
 > [!NOTE]
 > Alleen wacht woorden voor gebruikers accounts die niet zijn gesynchroniseerd via Azure AD Connect, kunnen zodanig worden geconfigureerd dat ze niet verlopen. Zie [ad verbinden met Azure AD](../hybrid/whatis-hybrid-identity.md)voor meer informatie over Directory synchronisatie.

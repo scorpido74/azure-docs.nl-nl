@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e294aa2580dd9f0cceb539a2696e7ebbf08c4afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051012"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052746"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Functies en licenties voor Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication kan worden gebruikt en in licentie worden gege
 
 De volgende tabel bevat een lijst met de functies die beschikbaar zijn in de verschillende versies van Azure Multi-Factor Authentication. Plan uw behoeften voor het beveiligen van gebruikers verificatie en bepaal vervolgens welke benadering aan deze vereisten voldoet. Hoewel Azure AD Free bijvoorbeeld beveiligings standaards biedt die Azure Multi-Factor Authentication bieden, kan alleen de mobiele verificator-app worden gebruikt voor de verificatie prompt, niet via een telefoon gesprek of SMS. Deze methode kan een beperking zijn als u niet zeker weet dat de mobiele verificatie-app is geïnstalleerd op het persoonlijke apparaat van de gebruiker.
 
-| Functie | Azure AD Free-standaard instellingen voor beveiliging | Azure AD Free-globale beheerders van Azure AD | Office 365-apps | Azure AD Premium P1 of P2 |
+| Functie | Azure AD Free-standaard instellingen voor beveiliging | Azure AD Free-globale beheerders van Azure AD | Microsoft 365-apps | Azure AD Premium P1 of P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Azure AD-Tenant beheerders accounts beveiligen met MFA | ● | ● (Alleen*Azure AD Global Administrator* -accounts) | ● | ● |
 | Mobiele app als een tweede factor | ● | ● | ● | ● |
@@ -58,7 +58,7 @@ De volgende tabel bevat een lijst met de functies die beschikbaar zijn in de ver
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication kopen en inschakelen
 
-Als u Azure Multi-Factor Authentication wilt gebruiken, moet u zich registreren voor of een in aanmerking komend Azure AD-laag kopen. Azure AD is verkrijgbaar in vier edities: gratis, Office 365-apps, Premium P1 en Premium P2.
+Als u Azure Multi-Factor Authentication wilt gebruiken, moet u zich registreren voor of een in aanmerking komend Azure AD-laag kopen. Azure AD is verkrijgbaar in vier edities: gratis, Microsoft 365 apps, Premium P1 en Premium P2.
 
 De gratis versie is opgenomen in een Azure-abonnement. Zie de [sectie hieronder](#azure-ad-free-tier) voor informatie over het gebruik van standaard instellingen voor beveiliging of het beveiligen van accounts met de rol *globale beheerder van Azure AD* .
 

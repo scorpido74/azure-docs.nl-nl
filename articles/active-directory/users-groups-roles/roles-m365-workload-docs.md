@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798275"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053545"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Beheerders rollen voor Microsoft 365 Services
 
@@ -29,10 +29,10 @@ Alle producten in Microsoft 365 kunnen worden beheerd met beheerders rollen in a
 
 Microsoft 365-service | Inhoud van rol | API-inhoud
 ---------------------- | ------------------ | -----------------
-Beheerders rollen in Office 365 en Microsoft 365 Business-abonnementen | [Office 365-beheerdersrollen](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Niet beschikbaar
+Beheerders rollen in Office 365 en Microsoft 365 Business-abonnementen | [Microsoft 365 beheerders rollen](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Niet beschikbaar
 Azure Active Directory (Azure AD) en Azure AD Identity Protection| [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Op rollen gebaseerd toegangs beheer op basis van Exchange](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [Power shell voor Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Roltoewijzingen ophalen](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD-beheerders rollen](directory-assign-admin-roles.md)<br>Ook [over de share point-beheerdersrol in Office 365](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD-beheerders rollen](directory-assign-admin-roles.md)<br>Ook [over de share point-beheerdersrol in Microsoft 365](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Teams/Skype voor bedrijven | [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Security & compliance Center (Office 365 Advanced Threat Protection, Exchange Online Protection, Information Protection) | [Office 365-beheerdersrollen](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange Power shell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Roltoewijzingen ophalen](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 Beveiligde Score | [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](/graph/api/directoryrole-list?view=graph-rest-1.0)

@@ -14,16 +14,16 @@ ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743844"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055432"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Toegang tot Azure AD-rollen in Privileged Identity Management controleren
 
-Privileged Identity Management (PIM) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang beheren tot bronnen in Azure Active Directory (AD) en andere micro soft onlineservices, zoals Office 365 of Microsoft Intune. Volg de stappen in dit artikel om uw toegewezen rollen zelf te controleren.
+Privileged Identity Management (PIM) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in Azure Active Directory (AD) en andere micro soft-onlineservices zoals Microsoft 365 of Microsoft Intune beheren. Volg de stappen in dit artikel om uw toegewezen rollen zelf te controleren.
 
 Als u bent toegewezen aan een administratieve rol, vraagt de beheerder van de bevoegde rol van uw organisatie u mogelijk regel matig te bevestigen dat u deze rol nog nodig hebt voor uw taak. U kunt ook een e-mail bericht met een koppeling ontvangen, maar direct naar de [Azure Portal](https://portal.azure.com) en beginnen.
 

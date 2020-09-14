@@ -3,12 +3,12 @@ title: Back-ups maken van Windows-machines met behulp van de MARS-agent
 description: Gebruik de Microsoft Azure Recovery Services (MARS)-agent om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182085"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052219"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Back-ups maken van Windows Server-bestanden en-mappen naar Azure
 
@@ -89,7 +89,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
     ![Het back-uptype bevestigen](./media/backup-azure-manage-mars/confirm-backup-type.png)
 
-1. Nadat de wizard het back-upschema heeft gemaakt, selecteert u **sluiten**.
+1. Nadat u de wizard voor het maken van een back-upschema hebt doorlopen, selecteert u **Sluiten**.
 
     ![De voortgang van het back-upschema weer geven](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
 
@@ -125,7 +125,7 @@ Netwerk beperking inschakelen:
 1. Op het tabblad **beperking** selecteert u **beperking van Internet bandbreedte gebruik inschakelen voor back-upbewerkingen**.
 
     ![Netwerk beperking instellen voor back-upbewerkingen](./media/backup-configure-vault/throttling-dialog.png)
-1. Geef de toegestane band breedte op tijdens werk uren en niet-werk uren. Bandbreedte waarden beginnen bij 512 kbps en gaan tot 1.023 MBps. Selecteer vervolgens **OK**.
+1. Geef de toegestane band breedte op tijdens werk uren en niet-werk uren. Bandbreedte waarden beginnen bij 512 kbps en gaan tot 1.023 Mbps. Selecteer vervolgens **OK**.
 
 ## <a name="run-an-on-demand-backup"></a>Een on-demand back-up uitvoeren
 
@@ -138,7 +138,7 @@ Netwerk beperking inschakelen:
    ![De kalender gebruiken om een Bewaar datum aan te passen](./media/backup-configure-vault/mars-ondemand.png)
 
 1. Controleer de instellingen op de pagina **bevestiging** en selecteer back- **up**.
-1. Selecteer **sluiten** om de wizard te sluiten. Als u de wizard sluit voordat de back-up is voltooid, blijft de wizard op de achtergrond actief.
+1. Selecteer **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat de back-up is voltooid, blijft de wizard op de achtergrond actief.
 
 Nadat de eerste back-up is voltooid, wordt de status **taak voltooid** weer gegeven in de back-upconsole.
 

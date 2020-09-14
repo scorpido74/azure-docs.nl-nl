@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542358"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053932"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn-account verbindingen gegevens delen en toestemming
 
@@ -73,7 +73,7 @@ Wanneer u uw micro soft-en LinkedIn-accounts verbindt, stelt u micro soft in sta
 * Profiel gegevens: bevat informatie zoals uw voor naam, achternaam, profiel foto, e-mail adres, Manager en personen die u beheert.
 * Agenda gegevens: bevat vergaderingen in uw agenda's, hun tijden, locaties en contact gegevens van deel nemers. Informatie over de vergadering, zoals agenda, inhoud of titel van de vergadering, is niet opgenomen in de agenda gegevens.
 * Belangen gegevens: bevat de interesses die zijn gekoppeld aan uw account, op basis van uw gebruik van micro soft-Services, zoals Cortana en Bing voor bedrijven.
-* Abonnementen gegevens: bevat abonnementen die door uw organisatie worden geleverd aan micro soft-apps en-services, zoals Office 365.
+* Abonnementen gegevens: bevat abonnementen die door uw organisatie worden geleverd aan micro soft-apps en-services, zoals Microsoft 365.
 * Gegevens van contact personen: bevat contact lijsten in Outlook, Skype en andere Microsoft-account services, met inbegrip van de contact gegevens voor personen met wie u regel matig communiceert of waarmee u samenwerkt. Contact personen worden regel matig geïmporteerd, opgeslagen en gebruikt door LinkedIn, bijvoorbeeld om verbindingen voor te stellen, contact personen te organiseren en updates over contact personen weer te geven.
 
 Gegevens die worden geopend vanuit micro soft, worden niet permanent opgeslagen met LinkedIn, met uitzonde ring van contact personen. Micro soft-contact personen worden op LinkedIn opgeslagen totdat gebruikers ze verwijderen. Meer informatie over het [verwijderen van geïmporteerde contact personen van LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).

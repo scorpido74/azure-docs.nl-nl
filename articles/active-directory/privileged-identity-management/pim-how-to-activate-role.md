@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421396"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055449"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Mijn Microsoft Azure AD-rollen activeren in PIM
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune, kunnen beheren.  
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD en andere micro soft-onlineservices zoals Microsoft 365 of Microsoft Intune beheren.  
 
-Als u in aanmerking komt voor een administratieve rol, moet u de roltoewijzing activeren wanneer u geprivilegieerde acties moet uitvoeren. Als u bijvoorbeeld af en toe Office 365-functies beheert, is het mogelijk dat beheerders van de bevoegde rol van uw organisatie u geen permanente globale beheerder maken, omdat die rol ook van invloed is op andere services. In plaats daarvan komt u in aanmerking voor Azure AD-rollen zoals Exchange Online-beheerder. U kunt aanvragen om die rol te activeren als u de juiste bevoegdheden nodig hebt, en u hebt beheerders controle voor een vooraf bepaalde periode.
+Als u in aanmerking komt voor een administratieve rol, moet u de roltoewijzing activeren wanneer u geprivilegieerde acties moet uitvoeren. Als u bijvoorbeeld af en toe Microsoft 365 functies beheert, is het mogelijk dat beheerders van de bevoegde rol van uw organisatie u niet een permanente globale beheerder maken, omdat die rol ook van invloed is op andere services. In plaats daarvan komt u in aanmerking voor Azure AD-rollen zoals Exchange Online-beheerder. U kunt aanvragen om die rol te activeren als u de juiste bevoegdheden nodig hebt, en u hebt beheerders controle voor een vooraf bepaalde periode.
 
 Dit artikel is voor beheerders die hun Azure AD-rol moeten activeren in Privileged Identity Management.
 
@@ -44,7 +44,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 
 Wanneer u een Azure AD-rol wilt aannemen, kunt u activering aanvragen door **mijn rollen** te openen in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
@@ -118,11 +118,11 @@ Wanneer u een rol in Privileged Identity Management activeert, wordt de activeri
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
-## <a name="activate-a-role"></a>Een rol activeren
+## <a name="activate-a-role-previous-version"></a>Een rol activeren (vorige versie)
 
 Wanneer u een Azure AD-rol nodig hebt, kunt u activering aanvragen met behulp van de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
@@ -168,7 +168,7 @@ Wanneer u een Azure AD-rol nodig hebt, kunt u activering aanvragen met behulp va
 
     Als voor de [functie goed keuring vereist is](./azure-ad-pim-approval-workflow.md) , wordt in de rechter bovenhoek van uw browser gemeld dat de aanvraag goed keuring in behandeling is.
 
-## <a name="view-the-status-of-your-requests"></a>De status van uw aanvragen weer geven
+## <a name="view-the-status-of-your-requests-previous-version"></a>De status van uw aanvragen weer geven (vorige versie)
 
 U kunt de status van de in behandeling zijnde aanvragen weer geven om te activeren.
 
@@ -180,7 +180,7 @@ U kunt de status van de in behandeling zijnde aanvragen weer geven om te activer
 
     ![Azure AD-rollen: mijn aanvragen lijst](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>Een rol deactiveren
+## <a name="deactivate-a-role-previous-version"></a>Een rol deactiveren (vorige versie)
 
 Zodra een rol is geactiveerd, wordt deze automatisch gedeactiveerd wanneer de tijds limiet (in aanmerking komende duur) is bereikt.
 
@@ -196,7 +196,7 @@ Als u de beheerders taken vroegtijdig voltooit, kunt u een rol ook hand matig de
 
 1. Zoek de rol die u wilt gebruiken en klik vervolgens op **deactiveren**.
 
-## <a name="cancel-a-pending-request"></a>Een aanvraag in behandeling annuleren
+## <a name="cancel-a-pending-request-previous-version"></a>Een aanvraag in behandeling annuleren (vorige versie)
 
 Als u geen activering van een rol vereist waarvoor goed keuring is vereist, kunt u een aanvraag in behandeling op elk gewenst moment annuleren.
 
@@ -212,7 +212,7 @@ Als u geen activering van een rol vereist waarvoor goed keuring is vereist, kunt
 
    ![De lijst met mijn aanvragen met de knop Annuleren gemarkeerd](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>Problemen oplossen
+## <a name="troubleshoot-previous-version"></a>Problemen oplossen (vorige versie)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Machtigingen worden niet toegekend na het activeren van een rol
 

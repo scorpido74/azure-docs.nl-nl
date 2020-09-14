@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377196"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052771"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset (Hoe het werkt: selfservice voor wachtwoordherstel in Azure AD)
 
@@ -39,7 +39,7 @@ Een gebruiker kan het wacht woord opnieuw instellen of wijzigen met behulp van d
 
 Wanneer een gebruiker de koppeling **geen toegang tot uw account kan krijgen** vanuit een toepassing of pagina of rechtstreeks naar gaat [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) , is de taal die wordt gebruikt in de SSPR-Portal gebaseerd op de volgende opties:
 
-* De land instelling van de browser wordt standaard gebruikt om de SSPR in de juiste taal weer te geven. De ervaring voor het opnieuw instellen van wacht woorden is gelokaliseerd in dezelfde talen die door [Office 365 worden ondersteund](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
+* De land instelling van de browser wordt standaard gebruikt om de SSPR in de juiste taal weer te geven. De ervaring voor het opnieuw instellen van wacht woorden is gelokaliseerd in dezelfde talen die [Microsoft 365 ondersteunt](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
 * Als u een koppeling wilt maken naar de SSPR in een specifieke gelokaliseerde taal, voegt `?mkt=` u toe aan het einde van de URL voor het opnieuw instellen van het wacht woord en de vereiste land instelling.
     * Als u bijvoorbeeld de Spaanse *es-Amerikaanse* land instelling wilt opgeven, gebruikt u `?mkt=es-us`  -  [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 
@@ -77,7 +77,7 @@ Voordat gebruikers hun wacht woord opnieuw kunnen instellen of wijzigen met behu
 
 U kunt de optie inschakelen om een gebruiker verplicht te maken de SSPR-registratie te volt ooien als deze zich aanmeldt bij alle toepassingen die gebruikmaken van Azure AD. Deze werk stroom omvat de volgende toepassingen:
 
-* Office 365
+* Microsoft 365
 * Azure Portal
 * Toegangsvenster
 * Federatieve toepassingen
@@ -226,7 +226,7 @@ SSPR voert het equivalent van een door de beheerder geïnitieerd wacht woord opn
 
 Wacht woord opnieuw instellen en wijzigen worden volledig ondersteund voor alle Business-to-Business (B2B)-configuraties. Het opnieuw instellen van B2B-gebruikers wachtwoorden wordt in de volgende drie gevallen ondersteund:
 
-* **Gebruikers van een partner organisatie met een bestaande Azure AD-Tenant**: als de organisatie waarmee u een partner hebt, een bestaande Azure AD-Tenant heeft, respecteren we dat het beleid voor het opnieuw instellen van het wacht woord is ingeschakeld voor die Tenant. Om het wacht woord opnieuw in te stellen, moet de partner organisatie alleen ervoor zorgen dat Azure AD SSPR is ingeschakeld. Er worden geen extra kosten in rekening gebracht voor Office 365-klanten.
+* **Gebruikers van een partner organisatie met een bestaande Azure AD-Tenant**: als de organisatie waarmee u een partner hebt, een bestaande Azure AD-Tenant heeft, respecteren we dat het beleid voor het opnieuw instellen van het wacht woord is ingeschakeld voor die Tenant. Om het wacht woord opnieuw in te stellen, moet de partner organisatie alleen ervoor zorgen dat Azure AD SSPR is ingeschakeld. Er worden geen extra kosten in rekening gebracht voor Microsoft 365 klanten.
 * **Gebruikers die zich aanmelden via** Self-Service-aanmelding: als de organisatie die u hebt gebruikt de [self-service-registratie](../users-groups-roles/directory-self-service-signup.md) functie in een Tenant krijgt, kunnen we het wacht woord opnieuw instellen met het e-mail bericht dat ze hebben geregistreerd.
 * **B2B-gebruikers**: alle nieuwe B2B-gebruikers die zijn gemaakt met de nieuwe [mogelijkheden van Azure AD B2B](../external-identities/what-is-b2b.md) , kunnen hun wacht woord ook opnieuw instellen met het e-mail adres dat is geregistreerd tijdens het INVITE-proces.
 

@@ -1,6 +1,6 @@
 ---
 title: Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory | Microsoft Docs
-description: Bekijk een voorbeeld van aangepaste Azure AD-rollen voor het delegeren van identiteitsbeheer. Beheer Azure-rollen in Azure Portal, PowerShell of Graph API.
+description: Bekijk een voorbeeld van aangepaste Azure AD-rollen voor het delegeren van identiteitsbeheer. Toewijzingen van Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798309"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053766"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -28,7 +28,7 @@ Bekijk dit voor beeld: contoso heeft personen in de buitenste grafieken voor het
 
 ## <a name="how-this-feature-works"></a>Hoe deze functie werkt
 
-Maak een nieuwe Office 365-of beveiligings groep waarbij de eigenschap ' isAssignableToRole ' is ingesteld op ' True '. U kunt deze eigenschap ook inschakelen bij het maken van een groep in de Azure Portal door **Azure AD-rollen in te scha kelen, kunnen worden toegewezen aan de groep**. In beide gevallen kunt u de groep vervolgens op dezelfde manier toewijzen aan een of meer Azure AD-rollen als u rollen aan gebruikers toewijst. Maxi maal 200 functie-toewijs bare groepen kunnen worden gemaakt in één Azure AD-organisatie (Tenant).
+Maak een nieuwe Microsoft 365 of beveiligings groep waarvan de eigenschap ' isAssignableToRole ' is ingesteld op ' True '. U kunt deze eigenschap ook inschakelen bij het maken van een groep in de Azure Portal door **Azure AD-rollen in te scha kelen, kunnen worden toegewezen aan de groep**. In beide gevallen kunt u de groep vervolgens op dezelfde manier toewijzen aan een of meer Azure AD-rollen als u rollen aan gebruikers toewijst. Maxi maal 200 functie-toewijs bare groepen kunnen worden gemaakt in één Azure AD-organisatie (Tenant).
 
 Als u niet wilt dat leden van de groep permanente toegang tot de rol hebben, kunt u Azure AD Privileged Identity Management gebruiken. Wijs een groep toe als een in aanmerking komend lid van een Azure AD-rol. Elk lid van de groep komt dan in aanmerking om hun toewijzing te activeren voor de rol waaraan de groep is toegewezen. Ze kunnen vervolgens hun roltoewijzing activeren voor een vaste tijds duur.
 

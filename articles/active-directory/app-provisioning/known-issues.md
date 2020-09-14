@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271002"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052377"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekende problemen: toepassings inrichting
 Bekende problemen waarvan u rekening moet houden wanneer u werkt met het inrichten van apps. U kunt feedback geven over de Application Provisioning-Service op UserVoice, de [Azure AD-toepassing inrichten UserVoice](https://aka.ms/appprovisioningfeaturerequest). We kijken naar UserVoice zodat we de service kunnen verbeteren. 
@@ -66,7 +66,13 @@ Expressies voor kenmerk toewijzing mogen Maxi maal 10.000 tekens bevatten.
 - Het inrichten van geneste groepen wordt niet ondersteund. 
 - Het inrichten van B2C-tenants wordt niet ondersteund vanwege de grootte van de tenants. 
 
-**Het inrichtings interval is vast** De [tijd](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) tussen de inrichtings cycli kan momenteel niet worden geconfigureerd. 
+**Automatische inrichting is niet beschikbaar op mijn op OIDC gebaseerde toepassing**
+
+Als u een app-registratie maakt, wordt de bijbehorende service-principal in Enter prise-apps niet ingeschakeld voor automatische gebruikers inrichting. U moet een aanvraag indienen om de app toe te voegen aan de galerie als deze is bedoeld voor gebruik door meerdere organisaties, of u kunt een tweede niet-galerie-app maken voor het inrichten. 
+
+**Het inrichtings interval is vast**
+
+De [tijd](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) tussen de inrichtings cycli kan momenteel niet worden geconfigureerd. 
 
 **Wijzigingen die niet worden verplaatst van de doel-app naar Azure AD**
 

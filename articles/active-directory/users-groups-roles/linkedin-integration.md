@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797986"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053970"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-account verbindingen integreren in Azure Active Directory
 
@@ -29,7 +29,7 @@ U kunt gebruikers in uw organisatie in staat stellen om toegang te krijgen tot h
 >
 > Uitzonderingen
 >
-> * De instelling is niet beschikbaar voor klanten die gebruikmaken van Microsoft Cloud voor Amerikaanse overheid, Microsoft Cloud Duitsland of Azure en Office 365 geëxploiteerd door 21Vianet in China.
+> * De instelling is niet beschikbaar voor klanten die gebruikmaken van Microsoft Cloud voor Amerikaanse overheid, Microsoft Cloud Duitsland of Azure en Microsoft 365 die worden beheerd door 21Vianet in China.
 > * De instelling is standaard uitgeschakeld voor Azure AD-organisaties die zijn ingericht in Duitsland. Houd er rekening mee dat de instelling niet beschikbaar is voor klanten die Microsoft Cloud Duitsland gebruiken.
 > * De instelling is standaard uitgeschakeld voor organisaties die in Frank rijk zijn ingericht.
 >
@@ -94,12 +94,12 @@ Als u de groep uit stap 2 wilt gebruiken als de geselecteerde groep in de instel
 1. Maak een Groepsbeleid-object met de volgende instelling: **gebruikers configuratie**  >  **Beheersjablonen**  >  **Microsoft Office 2016**  >  **diverse**  >  **LinkedIn-functies weer geven in Office-toepassingen**.
 1. Selecteer **ingeschakeld** of **uitgeschakeld**.
   
-   Status | Effect
+   Staat | Effect
    ------ | ------
    **Ingeschakeld** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is ingeschakeld. Gebruikers in uw organisatie kunnen LinkedIn-functies gebruiken in hun Office 2016-toepassingen.
    **Uitgeschakeld** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is uitgeschakeld en eind gebruikers kunnen deze instelling niet wijzigen. Gebruikers in uw organisatie kunnen LinkedIn-functies niet gebruiken in hun Office 2016-toepassingen.
 
-Dit groeps beleid is alleen van invloed op Office 2016-apps voor een lokale computer. Als gebruikers LinkedIn uitschakelen in hun Office 2016-apps, kunnen ze nog steeds LinkedIn-functies zien in Office 365.
+Dit groeps beleid is alleen van invloed op Office 2016-apps voor een lokale computer. Als gebruikers LinkedIn uitschakelen in hun Office 2016-apps, kunnen ze nog steeds LinkedIn-functies zien in Microsoft 365.
 
 ## <a name="next-steps"></a>Volgende stappen
 

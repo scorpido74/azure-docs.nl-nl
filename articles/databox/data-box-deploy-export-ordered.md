@@ -2,18 +2,18 @@
 title: Zelf studie voor het exporteren van gegevens uit Azure Data Box | Microsoft Docs
 description: Meer informatie over de implementatie vereisten en het exporteren van gegevens uit een Azure Data Box
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783617"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053022"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -115,9 +115,20 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 
    Voor een voor beeld van de XML-invoer raadpleegt u [XML-voor beeld-invoer](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. Controleer in **gegevens selectie**uw instellingen en selecteer **volgende: contact gegevens>**.
+9. Controleer de instellingen in **gegevens selectie**en selecteer **volgende: beveiligings>**.
 
    ![Contactgegevens](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. In **beveiliging**, als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u **dubbele versleuteling inschakelen voor de order**. 
+
+   De op software gebaseerde versleuteling wordt uitgevoerd naast de AES-256-bits versleuteling van de gegevens op de Data Box.
+
+   > [!NOTE]
+   > Als u deze optie inschakelt, kunnen order verwerking en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw bestelling hebt gemaakt.
+
+   ![Beveiligings scherm voor het importeren van data box, dubbele versleuteling](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   Selecteer **Volgende: Contactgegevens** om verder te gaan.
 
 10. Selecteer in de **contact gegevens** **+ Verzend adres toevoegen** om uw verzend gegevens in te voeren.
 

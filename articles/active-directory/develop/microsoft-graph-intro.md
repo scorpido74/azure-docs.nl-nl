@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119671"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052559"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 De Microsoft Graph-API is een REST Web-API waarmee u toegang hebt tot Microsoft Cloud-service bronnen. Nadat u uw app hebt geregistreerd en verificatie tokens voor een gebruiker of service hebt opgehaald, kunt u aanvragen indienen bij de Microsoft Graph-API. Zie [overzicht van Microsoft Graph](/graph/overview)voor meer informatie.
 
 Microsoft Graph maakt REST-Api's en client bibliotheken beschikbaar voor toegang tot gegevens op de volgende Microsoft 365-Services:
-- Office 365-Services: Delve, Excel, micro soft-boekingen, micro soft teams, OneDrive, OneNote, Outlook/Exchange, planner en share point
+- Microsoft 365 Services: Delve, Excel, micro soft-boekingen, micro soft teams, OneDrive, OneNote, Outlook/Exchange, planner en share point
 - Enter prise Mobility and Security Services: Advanced Threat Analytics, Advanced Threat Protection, Azure Active Directory, Identity Manager en intune
 - Windows 10-Services: activiteiten, apparaten, meldingen
 - Dynamics 365 Business Central

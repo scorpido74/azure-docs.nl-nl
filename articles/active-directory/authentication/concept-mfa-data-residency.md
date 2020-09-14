@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051157"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052276"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Gegevens locatie en klant gegevens voor Azure Multi-Factor Authentication
 
-Klant gegevens worden door Azure AD opgeslagen op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Office 365 en Azure. Voor informatie over waar uw klant gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum.
+Klant gegevens worden door Azure AD opgeslagen op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Microsoft 365 en Azure. Voor informatie over waar uw klant gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum.
 
 Azure Multi-Factor Authentication op de Cloud en Azure Multi-Factor Authentication-server proces en een zekere hoeveelheid persoonlijke gegevens en bedrijfs gegevens opslaan. In dit artikel wordt beschreven wat en waar gegevens worden opgeslagen.
 
@@ -46,7 +46,7 @@ Deze informatie wordt 90 dagen bewaard.
 
 Azure Multi-Factor Authentication registreert geen persoonlijke gegevens zoals de gebruikers naam, het telefoon nummer of het IP-adres, maar er is een *UserObjectId* die multi-factor Authentication pogingen voor gebruikers identificeert. Logboek gegevens worden 30 dagen opgeslagen.
 
-### <a name="azure-multi-factor-authentication"></a>Meervoudige verificatie van Azure
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 Voor open bare Azure-Clouds, met uitzonde ring van Azure B2C-verificatie, NPS-extensie en Windows Server 2016-of 2019 AD FS-adapter, worden de volgende persoons gegevens opgeslagen:
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495077"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052933"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-connectiviteit in Azure Database for MySQL
 
@@ -19,6 +19,9 @@ Azure Database for MySQL ondersteunt het verbinden van uw database server met cl
 
 > [!NOTE]
 > Het bijwerken `require_secure_transport` van de waarde van de server parameter heeft geen invloed op het gedrag van de MySQL-service. Gebruik de functies voor het afdwingen van SSL en TLS die in dit artikel worden beschreven om verbindingen met uw data base te beveiligen.
+
+> [!IMPORTANT] 
+> Het SSL-basis certificaat is ingesteld op verlopen vanaf oktober 26, 2020 (10/26/2020). Werk uw toepassing bij om het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)te gebruiken. Zie [geplande certificaat updates](concepts-certificate-rotation.md) voor meer informatie.
 
 ## <a name="ssl-default-settings"></a>Standaard instellingen voor SSL
 

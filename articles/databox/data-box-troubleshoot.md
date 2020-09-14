@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200130"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053450"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -33,7 +33,7 @@ De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 | Gegevens-of bestands type | De gegevens indeling of het bestands type wordt niet ondersteund. |Down load de fout lijsten. <br> Voor pagina-blobs of Managed disks zorgt u ervoor dat de gegevens 512-bytes zijn uitgelijnd en naar de vooraf gemaakte mappen worden gekopieerd. [Meer informatie](#data-or-file-type-errors). |
 | Niet-kritieke BLOB-of bestands fouten  | De BLOB-of bestands namen voldoen niet aan de Azure-naamgevings regels of het bestands type wordt niet ondersteund. | Deze blobs of bestanden worden mogelijk niet gekopieerd of de namen kunnen worden gewijzigd. [Meer informatie over het oplossen van deze fouten](#non-critical-blob-or-file-errors). |
 
-\*De eerste vier fout categorieën zijn kritieke fouten en moeten worden opgelost voordat u kunt door gaan met het voorbereiden van de verzen ding.
+\* De eerste vier fout categorieën zijn kritieke fouten en moeten worden opgelost voordat u kunt door gaan met het voorbereiden van de verzen ding.
 
 
 ## <a name="container-or-share-name-errors"></a>Fouten in containers of share namen
@@ -53,8 +53,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -72,8 +72,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -90,8 +90,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
     
@@ -112,13 +112,17 @@ Dit zijn fouten met betrekking tot gegevens die de omvang van gegevens overschri
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**Fout beschrijving:** Azure-bestands share beperkt een share tot 5 TB aan gegevens. Deze limiet is overschreden voor sommige shares.
+**Fout beschrijving:** Azure-bestands share beperkt een share tot 5 TiB aan gegevens en grote bestands shares zijn niet ingeschakeld voor het opslag account. Deze limiet is overschreden voor sommige shares.
 
 **Voorgestelde oplossing:** Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
 
-Bepaal de mappen met dit probleem uit de fout logboeken en zorg ervoor dat de bestanden in die map minder dan 5 TB zijn.
-
-
+- Bepaal de mappen met dit probleem uit de fout logboeken en zorg ervoor dat de bestanden in die map onder 5 TiB staan.
+- De limiet van 5 TiB is niet van toepassing op een opslag account waarmee grote bestands shares zijn toegestaan. U moet echter grote bestands shares hebben geconfigureerd wanneer u uw bestelling plaatst. 
+  - Neem contact op met [Microsoft ondersteuning](data-box-disk-contact-microsoft-support.md) en vraag een nieuw verzend label aan.
+  - [Schakel grote bestands shares in voor het opslag account.](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [Vouw de bestands shares in het opslag account uit](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares) en stel het quotum in op 100 Tib.
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>Fouten bij de object-of bestands grootte limiet
 
 Dit zijn fouten met betrekking tot gegevens die de maximale grootte van een object overschrijden of het bestand dat in Azure is toegestaan. 

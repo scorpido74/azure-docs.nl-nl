@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179348"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052661"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Herauthenticatie vragen en de levens duur van sessies voor Azure Multi-Factor Authentication optimaliseren
 
@@ -36,7 +36,7 @@ Om uw gebruikers het juiste evenwicht te geven tussen beveiliging en gebruiks ge
     * Schakel eenmalige aanmelding (SSO) in voor toepassingen die gebruikmaken van [beheerde apparaten](../devices/overview.md) of [naadloze SSO](../hybrid/how-to-connect-sso.md).
     * Als herauthenticatie is vereist, gebruikt u een [aanmeldings frequentie beleid voor](../conditional-access/howto-conditional-access-session-lifetime.md)voorwaardelijke toegang.
     * Voor gebruikers die zich aanmelden vanaf niet-beheerde apparaten of scenario's voor mobiele apparaten, kunt u voorwaardelijke toegang gebruiken om permanente browser sessies en beleids regels voor aanmeldings frequentie in te scha kelen.
-* Als u Office 365 apps-licenties of de gratis Azure AD-laag hebt:
+* Als u Microsoft 365 apps-licenties of de gratis Azure AD-laag hebt:
     * Schakel eenmalige aanmelding (SSO) in voor toepassingen die gebruikmaken van [beheerde apparaten](../devices/overview.md) of [naadloze SSO](../hybrid/how-to-connect-sso.md).
     * Houd de optie *aangemeld blijven* ingeschakeld en richt uw gebruikers in om deze te accepteren.
 * Zorg ervoor dat uw gebruikers de app Microsoft Authenticator gebruiken voor scenario's voor mobiele apparaten. Deze app wordt gebruikt als een Broker voor andere federatieve Azure AD-apps en vermindert verificatie prompts op het apparaat.
@@ -123,13 +123,13 @@ Als u beleid voor voorwaardelijke toegang wilt configureren voor aanmeldings fre
 
 Als u de levens duur van tokens wilt bekijken, [gebruikt u Azure AD Power shell voor het uitvoeren van een query op Azure AD-beleid](../develop/active-directory-configurable-token-lifetimes.md#prerequisites) Schakel alle beleids regels uit die u hebt geïnstalleerd.
 
-Als er meer dan één instelling is ingeschakeld in uw Tenant, wordt u aangeraden uw instellingen bij te werken op basis van de licenties die voor u beschikbaar zijn. Als u bijvoorbeeld Azure AD Premium-licenties hebt, moet u alleen het beleid voor voorwaardelijke toegang van de *aanmeldings frequentie* en *permanente browser sessie*gebruiken. Als u Office 365-apps of gratis Azure AD-licenties hebt, moet u de configuratie *ingelogd blijven gebruiken?*
+Als er meer dan één instelling is ingeschakeld in uw Tenant, wordt u aangeraden uw instellingen bij te werken op basis van de licenties die voor u beschikbaar zijn. Als u bijvoorbeeld Azure AD Premium-licenties hebt, moet u alleen het beleid voor voorwaardelijke toegang van de *aanmeldings frequentie* en *permanente browser sessie*gebruiken. Als u Microsoft 365 apps of gratis Azure AD-licenties hebt, moet u de configuratie *ingelogd blijven gebruiken?*
 
 Als u Configureer bare token levensduur hebt ingeschakeld, wordt deze functie binnenkort verwijderd. Plan een migratie naar een beleid voor voorwaardelijke toegang.
 
 De volgende tabel bevat een overzicht van de aanbevelingen op basis van licenties:
 
-|              | Azure AD Free-en Office 365-apps | Azure AD Premium |
+|              | Azure AD Free-en Microsoft 365-apps | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **Eenmalige aanmelding**                      | Deelname aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md)of [naadloze SSO](../hybrid/how-to-connect-sso.md) voor onbeheerde apparaten. | Azure AD-koppeling<br />Hybride Azure AD-koppeling |
 | **Instellingen voor opnieuw verifiëren** | Blijven aangemeld                  | Beleid voor voorwaardelijke toegang gebruiken voor aanmeldings frequentie en permanente browser sessie |

@@ -2,16 +2,19 @@
 title: Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services | Microsoft Docs
 description: Informatie over het configureren van een Lab-account voor het gebruik van een galerie met gedeelde afbeeldingen zodat een gebruiker een installatie kopie kan delen met andere en een andere gebruiker kan de installatie kopie gebruiken om een sjabloon-VM in het lab te maken.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445148"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052831"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
 In dit artikel wordt uitgelegd hoe docenten/Lab-beheerders een sjabloon installatie kopie van een virtuele machine kunnen opslaan in een [Galerie met gedeelde installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) , zodat deze door anderen kunnen worden gebruikt om Labs te maken. 
+
+> [!IMPORTANT]
+> Bij het gebruik van een galerie met gedeelde afbeeldingen ondersteunt Azure Lab Services alleen installatie kopieën met minder dan 128 GB schijf ruimte op het besturings systeem. Installatie kopieën met meer dan 128 GB schijf ruimte of meerdere schijven worden niet weer gegeven in de lijst met installatie kopieën van virtuele machines tijdens het maken van het lab.
 
 ## <a name="scenarios"></a>Scenario's
 Hier volgen enkele scenario's die door deze functie worden ondersteund: 

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager-volume groepen | Microsoft Docs
 description: Hierin wordt beschreven hoe u de StorSimple Snapshot Manager MMC-module gebruikt om volume groepen te maken en te beheren.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506256"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054769"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager gebruiken om volume groepen te maken en te beheren
 ## <a name="overview"></a>Overzicht
@@ -72,7 +72,7 @@ Gebruik de volgende procedure om een volume groep te maken.
     Het dialoog venster **een volume groep maken** wordt weer gegeven.
    
     ![Een dialoog venster voor een volume groep maken](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
-3. Voer de volgende informatie in:
+3. Voer de volgende gegevens in:
    
    1. Typ in het vak **naam** een unieke naam voor de nieuwe volume groep.
    2. Selecteer in het vak **toepassingen** de optie toepassingen die zijn gekoppeld aan de volumes die u aan de volume groep wilt toevoegen.

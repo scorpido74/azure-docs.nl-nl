@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716330"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052376"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Veelgestelde vragen over self-service voor wachtwoord herstel
 
@@ -104,7 +104,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   > * Controleer of de verificatie gegevens in de Directory correct zijn ingedeeld, bijvoorbeeld + 1 4255551234 of *gebruiker \@ contoso.com*. 
 * **V: welke talen worden ondersteund door het wacht woord opnieuw instellen?**
 
-  > **A:** De gebruikers interface voor het opnieuw instellen van wacht woorden, SMS-berichten en telefoon gesprekken worden gelokaliseerd in dezelfde talen die worden ondersteund in Office 365.
+  > **A:** De gebruikers interface voor het opnieuw instellen van wacht woorden, SMS-berichten en telefoon gesprekken worden gelokaliseerd in dezelfde talen die worden ondersteund in Microsoft 365.
   >
   >
 * **V: welke onderdelen van de ervaring voor het opnieuw instellen van wacht woorden worden in huis gezet wanneer ik de huismerk items van de organisatie Stel in het tabblad configureren van mijn directory heb ingesteld?**

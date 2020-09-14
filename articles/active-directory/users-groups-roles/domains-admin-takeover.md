@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015881"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054701"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Als beheerder in Azure Active Directory een niet-beheerde directory overnemen
 
@@ -34,7 +34,7 @@ Tijdens het proces van overname door een beheerder kunt u eigendom bewijzen, zoa
 
 ## <a name="internal-admin-takeover"></a>Interne overname door beheerder
 
-Sommige producten die share point en OneDrive bevatten, zoals Office 365, bieden geen ondersteuning voor externe overname. Als dat het geval is, of als u een beheerder bent en u wilt een niet-beheerde of ' Shadow ' Azure AD-organisatie maken op basis van gebruikers die gebruikmaken van self-service registratie, kunt u dit doen met een interne beheerders overname.
+Sommige producten die share point en OneDrive bevatten, zoals Microsoft 365, bieden geen ondersteuning voor externe overname. Als dat het geval is, of als u een beheerder bent en u wilt een niet-beheerde of ' Shadow ' Azure AD-organisatie maken op basis van gebruikers die gebruikmaken van self-service registratie, kunt u dit doen met een interne beheerders overname.
 
 1. Maak een gebruikers context in de onbeheerde organisatie door u aan te melden voor Power BI. Voor het gemak van deze stappen wordt ervan uitgegaan dat het pad.
 
@@ -52,7 +52,7 @@ Sommige producten die share point en OneDrive bevatten, zoals Office 365, bieden
 
 Wanneer de DNS TXT-records worden geverifieerd bij uw domein naam registratie, kunt u de Azure AD-organisatie beheren.
 
-Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder van de vierde koffie organisatie in Office 365. U kunt de domein naam met uw andere Azure-Services integreren door deze uit Office 365 te verwijderen en toe te voegen aan een andere beheerde organisatie in Azure.
+Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder van de vierde koffie organisatie in Microsoft 365. U kunt de domein naam met uw andere Azure-Services integreren door deze uit Microsoft 365 te verwijderen en toe te voegen aan een andere beheerde organisatie in Azure.
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>De domein naam toevoegen aan een beheerde organisatie in azure AD
 
@@ -61,9 +61,9 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
 3. Zorg ervoor dat het nieuwe gebruikers account globale beheerders rechten heeft voor de Azure AD-organisatie.
 4. Open het tabblad **domeinen** in het Microsoft 365-beheer centrum, selecteer de domein naam en selecteer **verwijderen**. 
   
-   ![de domein naam verwijderen uit Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![De domein naam verwijderen uit Microsoft 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Als u gebruikers of groepen in Office 365 hebt die verwijzen naar de verwijderde domein naam, moet u de naam ervan wijzigen in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld naar *gebruikers \@ fourthcoffeexyz.onmicrosoft.com*.
+5. Als er gebruikers of groepen in Microsoft 365 die verwijzen naar de verwijderde domein naam, moeten ze worden hernoemd in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld naar *gebruikers \@ fourthcoffeexyz.onmicrosoft.com*.
   
 6. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat de globale beheerder is voor de Azure AD-organisatie.
   
@@ -72,11 +72,11 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
    ![het domein is geverifieerd als toegevoegd aan Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-organisatie, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals de *gebruiker \@ fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker \@ fourthcoffee. xyz*.
+> Gebruikers van Power BI-of Azure Rights Management-service waaraan licenties zijn toegewezen in de Microsoft 365 organisatie, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals de *gebruiker \@ fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker \@ fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Externe overname door beheerder
 
-Als u een organisatie al beheert met Azure-Services of Office 365, kunt u geen aangepaste domein naam toevoegen als deze al is geverifieerd in een andere Azure AD-organisatie. Vanuit uw beheerde organisatie in azure AD kunt u echter een niet-beheerde organisatie nemen als een externe beheerder. De algemene procedure volgt het artikel [een aangepast domein toevoegen aan Azure AD](../fundamentals/add-custom-domain.md).
+Als u al een organisatie beheert met Azure-Services of Microsoft 365, kunt u geen aangepaste domein naam toevoegen als deze al is geverifieerd in een andere Azure AD-organisatie. Vanuit uw beheerde organisatie in azure AD kunt u echter een niet-beheerde organisatie nemen als een externe beheerder. De algemene procedure volgt het artikel [een aangepast domein toevoegen aan Azure AD](../fundamentals/add-custom-domain.md).
 
 Wanneer u het eigendom van de domein naam controleert, verwijdert Azure AD de domein naam van de onbeheerde organisatie en verplaatst deze naar uw bestaande organisatie. Externe beheerder-overname van een onbeheerde map vereist hetzelfde DNS-TXT-validatie proces als de interne beheerder voor overname. Het verschil is dat het volgende ook wordt verplaatst met de domein naam:
 
@@ -120,7 +120,7 @@ cmdlet | Gebruik
 `new-msoldomain –name <domainname>` | De domein naam wordt als niet geverifieerd toegevoegd aan de organisatie (er is nog geen DNS-verificatie uitgevoerd).
 `get-msoldomain` | De domein naam is nu opgenomen in de lijst met domein namen die zijn gekoppeld aan uw beheerde organisatie, maar wordt weer gegeven als niet- **geverifieerd**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Bevat informatie die u kunt opnemen in een nieuwe DNS TXT-record voor het domein (MS = xxxxx). Verificatie vindt mogelijk niet onmiddellijk plaats omdat het even duurt voordat de TXT-record is door gegeven. wacht daarom een paar minuten voordat u de optie **-ForceTakeover** overweegt. 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Als uw domein naam nog niet is geverifieerd, kunt u door gaan met de optie **-ForceTakeover** . Er wordt gecontroleerd of de TXT-record is gemaakt en het overname proces is afgebroken.<li>De optie **-ForceTakeover** moet alleen worden toegevoegd aan de cmdlet wanneer een externe beheerder een overname afdwingt, bijvoorbeeld wanneer de onbeheerde organisatie Office 365-Services heeft die de overname blokkeert.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Als uw domein naam nog niet is geverifieerd, kunt u door gaan met de optie **-ForceTakeover** . Er wordt gecontroleerd of de TXT-record is gemaakt en het overname proces is afgebroken.<li>De optie **-ForceTakeover** moet alleen worden toegevoegd aan de cmdlet bij het afdwingen van een externe beheerders overname, zoals wanneer de onbeheerde organisatie Microsoft 365 Services heeft die de overname blokkeert.
 `get-msoldomain` | In de lijst domein wordt nu de domein naam weer gegeven als **geverifieerd**.
 
 > [!NOTE]
@@ -170,7 +170,7 @@ Bij een geslaagde poging keert u terug naar de prompt zonder fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
+* [Een aangepaste domeinnaam toevoegen in Azure AD](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell installeren en configureren](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure-cmdlet-naslaginformatie](/powershell/azure/get-started-azureps)

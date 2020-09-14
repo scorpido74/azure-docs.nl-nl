@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318677"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052134"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Wat is Azure Media Services Video Indexer?
 
@@ -81,7 +81,7 @@ In de volgende lijst ziet u de inzichten die u uit uw Video's kunt ophalen met V
 * **Twee kanaal verwerking**: automatisch detecteert afzonderlijke transcripten en samen voegingen op één tijd lijn.
 * **Ruis reductie**: Hiermee wist u de audio of ruis opnamen van telefonie (op basis van Skype-filters).
 * **Transcript aanpassing** (cri's): traint aangepaste spraak naar tekst modellen om branchespecifieke transcripten te maken. Zie [een taal model aanpassen van de video indexer website](customize-language-model-with-website.md) en [een taal model aanpassen met de video indexer-api's](customize-language-model-with-api.md)voor meer informatie.
-* **Opsomming van de luid sprekers**: kaarten en begrijpen welke sprekers Spaak zijn die woorden en wanneer.
+* **Opsomming van de luid sprekers**: kaarten en begrijpen welke sprekers Spaak zijn die woorden en wanneer. Zestien luid sprekers kunnen worden gedetecteerd in één audio bestand.
 * **Sprekers statistieken**: biedt statistieken voor de spraak verhoudingen van de luid sprekers.
 * **Tekstueel inhoudsbeheer**: detecteert expliciete tekst in het audiotranscript.
 * **Audio-effecten**: identificeert audio-effecten zoals hand claps, spraak en stilte.

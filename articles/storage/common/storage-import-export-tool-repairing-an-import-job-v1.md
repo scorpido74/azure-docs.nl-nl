@@ -1,19 +1,19 @@
 ---
 title: Een import taak voor Azure import/export herstellen-v1 | Microsoft Docs
 description: Meer informatie over het herstellen van een import taak die is gemaakt en uitgevoerd met de Azure import/export-service.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b3ba9844bf8412e169322fd4953cbc259a94e174
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525772"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052423"
 ---
 # <a name="repairing-an-import-job"></a>Een importtaak herstellen
 De Microsoft Azure Import/Export-service kan een aantal van uw bestanden of delen van een bestand niet kopiëren naar de Windows Azure Blob-service. Enkele mogelijke oorzaken:  

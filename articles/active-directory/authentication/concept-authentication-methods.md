@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116764"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052355"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -35,16 +35,16 @@ De volgende tabel geeft een overzicht van de methoden die beschikbaar zijn voor 
 
 | Methode | Primaire authenticatie | Secundaire verificatie |
 | --- | --- | --- |
-| [Wachtwoord](#password) | Ja | |
+| [Wachtwoord](#password) | Yes | |
 | [Microsoft Authenticator-app](#microsoft-authenticator-app) | Ja (preview-versie) | MFA en SSPR |
-| [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Ja | Alleen MFA |
-| [OATH-software tokens](#oath-software-tokens) | Nee | MFA |
-| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens-preview) | Nee | MFA |
+| [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Yes | Alleen MFA |
+| [OATH-software tokens](#oath-software-tokens) | No | MFA |
+| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens-preview) | No | MFA |
 | [Sms](#phone-options) | Ja (preview-versie) | MFA en SSPR |
-| [Spraakoproep](#phone-options) | Nee | MFA en SSPR |
-| [Beveiligingsvragen](#security-questions) | Nee | Alleen SSPR |
-| [E-mailadres](#email-address) | Nee | Alleen SSPR |
-| [App-wachtwoorden](#app-passwords) | Nee | Alleen in bepaalde gevallen MFA |
+| [Spraakoproep](#phone-options) | No | MFA en SSPR |
+| [Beveiligingsvragen](#security-questions) | No | Alleen SSPR |
+| [E-mailadres](#email-address) | No | Alleen SSPR |
+| [App-wachtwoorden](#app-passwords) | No | Alleen in bepaalde gevallen MFA |
 
 Deze verificatie methoden kunnen worden geconfigureerd in de Azure Portal en het gebruik van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)wordt steeds vaker gebruikt.
 
@@ -97,7 +97,7 @@ Als u FIDO2-beveiligings sleutels wilt gebruiken bij een aanmeldings prompt in p
 
 Gebruikers kunnen zich registreren en vervolgens een FIDO2-beveiligings sleutel bij de aanmeldings interface selecteren als hun belangrijkste verificatie methode. Deze FIDO2-beveiligings sleutels zijn doorgaans USB-apparaten, maar kunnen ook Bluetooth of NFC gebruiken. Met een hardwareapparaat dat de verificatie afhandelt, wordt de beveiliging van een account verhoogd omdat er geen wacht woord is dat kan worden weer gegeven of geraden.
 
-FIDO2-beveiligings sleutels in azure AD zijn momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+FIDO2-beveiligings sleutels in azure AD zijn momenteel beschikbaar als preview-versie. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="oath-tokens"></a>OATH-tokens
 
@@ -212,7 +212,7 @@ Beveiligings vragen kunnen minder veilig zijn dan andere methoden omdat sommige 
 
 ### <a name="predefined-questions"></a>Vooraf gedefinieerde vragen
 
-De volgende vooraf gedefinieerde beveiligings vragen zijn beschikbaar voor gebruik als een verificatie methode met SSPR. Al deze beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Office 365-talen op basis van de browser land instelling van de gebruiker:
+De volgende vooraf gedefinieerde beveiligings vragen zijn beschikbaar voor gebruik als een verificatie methode met SSPR. Al deze beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Microsoft 365 talen op basis van de browser land instelling van de gebruiker:
 
 * In welke stad hebt u uw eerste partner ontmoet?
 * In welke stad hebben uw ouders elkaar ontmoet?

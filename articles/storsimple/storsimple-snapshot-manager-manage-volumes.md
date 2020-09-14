@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager en volumes | Microsoft Docs
 description: Hierin wordt beschreven hoe u de StorSimple Snapshot Manager MMC-module gebruikt voor het weer geven en beheren van volumes en het configureren van back-ups.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: twooley
-ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508917"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054904"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager gebruiken om volumes weer te geven en te beheren
 ## <a name="overview"></a>Overzicht
@@ -198,7 +198,7 @@ Gebruik de volgende procedure om een dynamisch gespiegeld volume te configureren
 2. In het deel venster **bereik** klikt u met de rechter muisknop op het knoop punt **volumes** en selecteert u **volumes opnieuw scannen**. Wanneer de scan is voltooid, wordt een lijst met volumes weer gegeven in het **resultaten** venster. Het dynamische gespiegelde volume wordt vermeld als één volume. 
 3. Klik in het **resultaten** venster met de rechter muisknop op het dynamische gespiegelde volume en klik vervolgens op **volume groep maken**. 
 4. Typ in het dialoog venster **volume groep maken** een naam voor de volume groep, wijs het dynamische gespiegelde volume toe aan deze groep en klik vervolgens op **OK**. 
-5. Vouw in het deel venster **bereik** het knoop punt **volume groepen** uit. De nieuwe volume groep moet worden weer gegeven onder het knoop punt **volume groepen** . 
+5. Vouw in het deel venster **bereik** het knoop punt **volume groepen** uit. De nieuwe volume groep moet worden weer gegeven onder het knoop punt  **volume groepen** . 
 6. Klik met de rechter muisknop op de naam van de volume groep. 
    
    * Als u een interactieve back-uptaak (op aanvraag) wilt starten, klikt u op **back-up maken**. 

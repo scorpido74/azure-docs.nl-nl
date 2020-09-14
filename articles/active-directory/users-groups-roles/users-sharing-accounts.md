@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489626"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055160"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489626"
 Soms moeten organisaties één gebruikers naam en wacht woord voor meerdere personen gebruiken. dit gebeurt meestal in twee gevallen:
 
 * Bij het openen van toepassingen waarvoor een unieke aanmelding en een uniek wacht woord is vereist voor elke gebruiker, ongeacht of deze on-premises apps of Cloud Services van de consument zijn (bijvoorbeeld zakelijke sociale media-accounts).
-* Bij het maken van omgevingen met meerdere gebruikers. Mogelijk hebt u één lokaal account met verhoogde bevoegdheden en wordt dit gebruikt om de kern installatie, het beheer en de herstel activiteiten uit te voeren. Bijvoorbeeld het lokale account ' globale beheerder ' voor Office 365 of het hoofd account in Sales Force.
+* Bij het maken van omgevingen met meerdere gebruikers. Mogelijk hebt u één lokaal account met verhoogde bevoegdheden en wordt dit gebruikt om de kern installatie, het beheer en de herstel activiteiten uit te voeren. Bijvoorbeeld het lokale account ' globale beheerder ' voor Microsoft 365 of het hoofd account in Sales Force.
 
 Deze accounts worden gewoonlijk gedeeld door de referenties (gebruikers naam en wacht woord) te distribueren naar de juiste personen of op een gedeelde locatie op te slaan waar meerdere vertrouwde agents toegang toe hebben.
 

@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420002"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055483"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -123,7 +123,7 @@ Als er meerdere goed keurders worden ingesteld, wordt de goed keuring voltooid z
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
-## <a name="open-role-settings"></a>Rolinstellingen openen
+## <a name="open-role-settings-previous-version"></a>Rolinstellingen openen (vorige versie)
 
 Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
@@ -153,7 +153,7 @@ Gebruik de optie **meldingen** om op te geven of beheerders e-mail meldingen zul
 
 Wanneer deze optie is ingesteld op **inschakelen**, worden meldingen verzonden naar:
 
-- Beheerder van geprivilegieerde rol
+- Beheerder voor bevoorrechte rollen
 - Beveiligingsbeheerder
 - Globale beheerder
 
@@ -168,7 +168,7 @@ Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerde
 Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
 
 - Gebruikers met micro soft-accounts voor hun e-mail adressen (doorgaans @outlook.com , maar niet altijd) kunnen niet worden geregistreerd voor Azure multi-factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
-- U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Office 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
+- U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Microsoft 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
   
   - Azure Information Protection beheerder
   - Factureringsbeheerder
@@ -182,7 +182,7 @@ Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebru
   - Globale beheerder
   - Intune-beheerder
   - Power BI beheerder
-  - Beheerder van geprivilegieerde rol
+  - Beheerder voor bevoorrechte rollen
   - Beveiligingsbeheerder
   - SharePoint-beheerder
   - Skype voor Bedrijven-beheerder
