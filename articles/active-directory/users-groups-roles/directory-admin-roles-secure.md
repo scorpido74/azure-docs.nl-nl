@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179569"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055806"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -114,7 +114,7 @@ Evalueer de accounts die zijn toegewezen of die in aanmerking komen voor de rol 
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-factor Authentication inschakelen en alle andere niet-gefedereerde niet-federatieve beheerders accounts van één gebruiker registreren
 
-Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange-beheerder en share point-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat alle gebruikers zijn geregistreerd op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Meer informatie vindt u in stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange-beheerder en share point-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat alle gebruikers zijn geregistreerd op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Meer informatie vindt u onder stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fase 2: veelgebruikte aanvallen beperken
 
@@ -130,7 +130,7 @@ De toename van ' uw eigen apparaat meenemen ' en het werken met een thuis beleid
 
 * Identificeer de gebruikers met beheerders rollen en de services die ze kunnen beheren.
 * Gebruik Azure AD PIM om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Azure AD.
-* Naast de functies die zijn gedefinieerd in azure AD, wordt Office 365 geleverd met een set beheerders rollen die u kunt toewijzen aan gebruikers in uw organisatie. Elke beheerdersrol wordt toegewezen aan algemene bedrijfs functies en geeft personen in uw organisatie machtigingen om specifieke taken uit te voeren in het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Gebruik het Microsoft 365-beheer centrum om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Office 365, met inbegrip van rollen die niet worden beheerd in azure AD. Zie [over office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) en [beveiligings procedures voor Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)voor meer informatie.
+* Naast de functies die in azure AD zijn gedefinieerd, wordt Microsoft 365 geleverd met een set beheerders rollen die u aan gebruikers in uw organisatie kunt toewijzen. Elke beheerdersrol wordt toegewezen aan algemene bedrijfs functies en geeft personen in uw organisatie machtigingen om specifieke taken uit te voeren in het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Gebruik het Microsoft 365-beheer centrum om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Microsoft 365, zoals via rollen die niet worden beheerd in azure AD. Zie [over Microsoft 365 beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) en [beveiligings procedures voor Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)voor meer informatie.
 * Maak de inventarisatie in services die uw organisatie afhankelijk maakt, zoals Azure, intune of Dynamics 365.
 * Zorg ervoor dat uw accounts worden gebruikt voor beheer doeleinden:
 
@@ -175,17 +175,17 @@ Als u Windows hello voor bedrijven gebruikt, kan aan de MFA-vereiste worden vold
 
 Azure AD Identity Protection is een op algoritme gebaseerd hulp programma voor bewaking en rapportage dat mogelijke beveiligings problemen detecteert die van invloed zijn op de identiteiten van uw organisatie. U kunt automatische reacties op gedetecteerde verdachte activiteiten configureren en de juiste actie ondernemen om ze op te lossen. Zie [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) voor meer informatie.
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Uw Office 365 Secure score verkrijgen (als u Office 365 gebruikt)
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Uw Microsoft 365 beveiligde score verkrijgen (als u Microsoft 365 gebruikt)
 
-Met een beveiligde Score worden uw instellingen en activiteiten gecontroleerd op de Office 365-services die u gebruikt en vergelijkt deze met een basis lijn die door micro soft is ingesteld. U krijgt een score op basis van de manier waarop u de beveiligings procedures afstemt. Iedereen met beheerders machtigingen voor een Office 365 Business Premium-of ENTER prise-abonnement kan toegang krijgen tot de beveiligde Score op [https://securescore.office.com](https://securescore.office.com/) .
+Met een beveiligde Score worden uw instellingen en activiteiten gecontroleerd op de Microsoft 365 services die u gebruikt en vergelijkt deze met een basis lijn die door micro soft is ingesteld. U krijgt een score op basis van de manier waarop u de beveiligings procedures afstemt. Iedereen met de beheerders machtigingen voor een Microsoft 365 Business Standard-of ENTER prise-abonnement kan toegang krijgen tot de beveiligde Score op [https://securescore.office.com](https://securescore.office.com/) .
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Raadpleeg de richt lijnen voor beveiliging en naleving van Office 365 (als u Office 365 gebruikt)
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Lees de Microsoft 365 beveiligings-en nalevings richtlijnen (als u Microsoft 365 gebruikt)
 
-Het [plan voor beveiliging en naleving](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) geeft een overzicht van de benadering van een Office 365-klant om Office 365 te configureren en andere EMS-mogelijkheden in te scha kelen. Lees vervolgens stap 3-6 van de beveiliging van de [toegang tot gegevens en services in office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) en de hand leiding voor het [bewaken van de beveiliging en naleving in Office 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
+Het [plan voor beveiliging en naleving](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) geeft een overzicht van de benadering van een Office 365-klant om Office 365 te configureren en andere EMS-mogelijkheden in te scha kelen. Lees vervolgens stap 3-6 van de beveiliging van de [toegang tot gegevens en services in Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) en de hand leiding voor het [bewaken van de beveiliging en naleving in Microsoft 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Bewaking van Office 365-activiteiten configureren (als u Office 365 gebruikt)
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>Bewaking van Microsoft 365 activiteiten configureren (als u Microsoft 365 gebruikt)
 
-Bewaak uw organisatie voor gebruikers die Office 365 gebruiken om mede werkers te identificeren die een beheerders account hebben, maar geen toegang tot Office 365 nodig hebben, omdat ze zich niet aanmelden bij deze portals. Zie [activiteiten rapporten in het Microsoft 365-beheer centrum](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)voor meer informatie.
+Bewaak uw organisatie voor gebruikers die Microsoft 365 gebruiken om mede werkers te identificeren die een beheerders account hebben, maar die mogelijk geen Microsoft 365 toegang nodig hebben omdat ze zich niet aanmelden bij deze portals. Zie [activiteiten rapporten in het Microsoft 365-beheer centrum](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)voor meer informatie.
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>Eigen aren van incidenten/nood-antwoord plannen vastleggen
 
@@ -229,7 +229,7 @@ Fase 3 bouwt voort op de oplossingen van fase 2 en moet in ongeveer 1-3 maanden 
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Een toegangs beoordeling van gebruikers in beheerders rollen volt ooien
 
-Meer zakelijke gebruikers krijgen uitgebreide toegang via Cloud Services, wat kan leiden tot onbeheerde toegang. Gebruikers kunnen nu globale beheerders voor Office 365, Azure-abonnements beheerders of beheerders toegang hebben tot Vm's of via SaaS-apps.
+Meer zakelijke gebruikers krijgen uitgebreide toegang via Cloud Services, wat kan leiden tot onbeheerde toegang. Gebruikers kunnen tegenwoordig globale beheerders worden voor Microsoft 365, Azure-abonnements beheerders of beheerders toegang hebben tot Vm's of via SaaS-apps.
 
 Uw organisatie moet alle werk nemers de normale zakelijke trans acties laten afhandelen als niet-gemachtigde gebruikers en vervolgens beheerders rechten alleen verlenen als dat nodig is. Volledige toegangs Beoordelingen voor het identificeren en bevestigen van de gebruikers die in aanmerking komen voor het activeren van Administrator bevoegdheden.
 
@@ -281,13 +281,13 @@ Als u Azure AD Privileged Identity Management al gebruikt, past u de tijds perio
 
 We raden u aan elke mogelijke gebruiker te identificeren die kan leiden tot een onherstelbare organisatie als hun referenties zijn aangetast. Voor deze gebruikers wordt gebruikgemaakt van sterke verificatie vereisten en het gebruik van voorwaardelijke toegang van Azure AD om ervoor te zorgen dat ze zich niet kunnen aanmelden bij hun e-mail adres met behulp van gebruikers naam en wacht woord. U kunt [verouderde verificatie blok keren met behulp van voorwaardelijke toegang](../conditional-access/block-legacy-authentication.md)en u kunt [basis verificatie blok keren](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) via Exchange Online.
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Beoordeling van functies volt ooien evaluatie voor Office 365-rollen (als u Office 365 gebruikt)
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>Beoordeling van functies volt ooien evaluatie voor Microsoft 365 rollen (indien gebruikt Microsoft 365)
 
 Bepaal of alle beheerders gebruikers de juiste rollen hebben (verwijderen en opnieuw toewijzen volgens deze evaluatie).
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Bekijk de aanpak voor het beheer van beveiligings incidenten die worden gebruikt in Office 365 en vergelijk met uw eigen organisatie
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>Bekijk de aanpak voor het beheer van beveiligings incidenten in Microsoft 365 en vergelijkt u met uw eigen organisatie
 
-U kunt dit rapport downloaden vanuit het [beheer van beveiligings incidenten in Microsoft Office 365](https://www.microsoft.com/download/details.aspx?id=54302).
+U kunt dit rapport downloaden vanuit het [beveiligings incident beheer in Microsoft 365](https://www.microsoft.com/download/details.aspx?id=54302).
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Blijf on-premises geprivilegieerde beheerders accounts beveiligen
 
@@ -348,7 +348,7 @@ U kunt het beste [Microsoft Cloud app Security](/cloud-app-security/what-is-clou
 * Lekkage van gegevens voor komen
 * Risico's en automatische bedreigings preventie en beleids afdwinging minimaliseren
 
-De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Office 365-waarschuwingen en-activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie [Siem-integratie](/cloud-app-security/siem)voor meer informatie.
+De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Microsoft 365 waarschuwingen en activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie [Siem-integratie](/cloud-app-security/siem)voor meer informatie.
 
 ## <a name="stage-4-continue-building-defenses"></a>Fase 4: door gaan met het bouwen van verdediging
 
@@ -359,7 +359,7 @@ Fase 4 van het schema moet worden geïmplementeerd op zes maanden en verder. Vol
 Het beveiligen van bevoegde toegang is belang rijk voor het instellen van beveiligings garanties voor uw bedrijfs middelen. Het moet echter deel uitmaken van een volledig beveiligings programma dat permanente beveiligings garanties biedt. Dit programma moet elementen bevatten zoals:
 
 * Beleid
-* Bewerkingen
+* Operations
 * Gegevens beveiliging
 * Servers
 * Toepassingen
@@ -387,8 +387,8 @@ Bepaal of de huidige ingebouwde Azure AD-beheerders rollen nog steeds up-to-date
 
 Zie [Configure hybrid Azure Active Directory joind devices](../devices/hybrid-azuread-join-plan.md)(Engelstalig) voor meer informatie.
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>Leden van [ingebouwde Office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) controleren
-Sla deze stap over als u geen gebruik maakt van Office 365.
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>Leden van [ingebouwde Microsoft 365 beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) controleren
+Sla deze stap over als u geen gebruik maakt van Microsoft 365.
 ‎
 #### <a name="validate-incident-response-plan"></a>Reactie plan voor incidenten valideren
 

@@ -3,7 +3,7 @@ title: Uw StorSimple-apparaat bijwerken | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u de StorSimple-update functie kunt gebruiken om updates en hotfixes voor reguliere en onderhouds modus te installeren.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: twooley
-ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dec354767875d91c6062cdfbb0009e857dbe2636
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170083"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056548"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Uw StorSimple 8000 Series-apparaat bijwerken
 > [!NOTE]
@@ -84,22 +84,22 @@ Als u updates voor onderhouds modus wilt Toep assen, ontvangt u een waarschuwing
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console"></a>Stap 1: verbinding maken met de seriële console<a name="step1"></a>
+### <a name="step-1-connect-to-the-serial-console"></a>Stap 1: verbinding maken met de seriële console <a name="step1"></a>
 Gebruik eerst een toepassing zoals PuTTy om toegang te krijgen tot de seriële console. In de volgende procedure wordt uitgelegd hoe u PuTTy gebruikt om verbinding te maken met de seriële console.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode"></a>Stap 2: de onderhouds modus invoeren<a name="step2"></a>
+### <a name="step-2-enter-maintenance-mode"></a>Stap 2: de onderhouds modus invoeren <a name="step2"></a>
 Nadat u verbinding hebt gemaakt met de-console, controleert u of er updates zijn om te installeren en voert u de onderhouds modus in om ze te installeren.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates"></a>Stap 3: updates installeren<a name="step3"></a>
+### <a name="step-3-install-your-updates"></a>Stap 3: updates installeren <a name="step3"></a>
 Installeer vervolgens uw updates.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode"></a>Stap 4: onderhouds modus afsluiten<a name="step4"></a>
+### <a name="step-4-exit-maintenance-mode"></a>Stap 4: onderhouds modus afsluiten <a name="step4"></a>
 Ten slotte wordt de onderhouds modus afgesloten.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

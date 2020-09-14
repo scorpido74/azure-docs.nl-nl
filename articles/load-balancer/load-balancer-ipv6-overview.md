@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981848"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058747"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Overzicht van IPv6 voor Azure Load Balancer
 
@@ -79,7 +79,7 @@ Beperkingen
 * Het IPv6-eind punt op de virtuele machine wordt niet rechtstreeks aan Internet blootgesteld. Het bevindt zich achter een load balancer. Alleen de poorten die zijn opgegeven in de load balancer regels, zijn toegankelijk via IPv6.
 * Het wijzigen van de IdleTimeout-para meter voor IPv6 wordt **momenteel niet ondersteund**. De standaard waarde is vier minuten.
 * Het wijzigen van de loadDistributionMethod-para meter voor IPv6 wordt **momenteel niet ondersteund**.
-* Gereserveerde IPv6 Ip's (waarbij IPAllocationMethod = static) worden **momenteel niet ondersteund**.
+* IPv6 voor Basic Load Balancer is vergrendeld op een **dynamische** SKU.  IPv6 voor een Standard Load Balancer is vergrendeld op een **statische** SKU.
 * NAT64 (omzetting van IPv6 naar IPv4) wordt niet ondersteund.
 * Het koppelen van een secundaire NIC die verwijst naar een IPv6-subnet naar een back-end-groep wordt **momenteel niet ondersteund**.
 

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager gebruikers interface | Microsoft Docs
 description: Hierin wordt de StorSimple-Snapshot Manager gebruikers interface beschreven en wordt uitgelegd hoe u deze kunt gebruiken voor het beheren van back-uptaken en de back-upcatalogus.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513744"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055908"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>StorSimple Snapshot Manager gebruikers interface gebruiken voor het beheren van back-uptaken en een back-upcatalogus
 
@@ -67,10 +67,10 @@ Klik op **bestand** in de menu balk om het menu **bestand** weer te geven. Het v
 #### <a name="menu-description"></a>Menu beschrijving
 In de volgende tabel worden de items beschreven die worden weer gegeven in het menu **bestand** .
 
-| Menu-item | Description |
+| Menu-item | Beschrijving |
 |:--- |:--- |
 | Nieuw |Klik op **Nieuw** om een nieuwe console te maken op basis van de StorSimple-Snapshot Manager. |
-| Geopend |Klik op **openen** om een bestaande console te openen. |
+| Openen |Klik op **openen** om een bestaande console te openen. |
 | Opslaan |Klik op **Opslaan** om de huidige console op te slaan. |
 | Opslaan als |Klik op **Opslaan als** om een nieuw, gewijzigd exemplaar van de huidige console te maken. Gebruik de optie **Opslaan als** om een weer gave aan te passen en deze op te slaan zodat u deze later kunt ophalen. U kunt bijvoorbeeld StorSimple Snapshot Manager-modules maken die naar specifieke servers verwijzen. |
 | Module toevoegen/verwijderen |Klik op **module toevoegen/verwijderen** om modules toe te voegen of te verwijderen en knoop punten in het deel venster **bereik** te organiseren. Ga voor meer informatie naar modules [en uitbrei dingen toevoegen, verwijderen en indelen in MMC 3,0](https://technet.microsoft.com/library/cc722035.aspx). |
@@ -107,14 +107,14 @@ De volgende tabel bevat een alfabetische lijst met StorSimple-Snapshot Manager a
 > 
 > 
 
-| Bewerking | Navigatie | Description |
+| Actie | Navigatie | Beschrijving |
 |:--- |:--- |:--- |
 | Verifiëren |Klik op het knoop punt **apparaten** en klik met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **verifiëren** om het wacht woord in te voeren dat u voor het apparaat hebt geconfigureerd. |
 | Klonen |Vouw **back-upcatalogus**uit, vouw **Cloud momentopnamen**uit, klik op een gedateerde back-up en selecteer vervolgens een volume in het **resultaten** venster. |Klik op **klonen** om een kopie van een Cloud momentopname te maken en op te slaan op een locatie die u opgeeft. |
 | Een apparaat configureren |Klik met de rechter muisknop op het knoop punt **apparaten** . |Klik op **een apparaat configureren** om één apparaat of meerdere apparaten te configureren om verbinding te maken met de Windows-host. |
 | Back-upbeleid maken |Doe een van de volgende dingen:<ul><li>Klik met de rechter muisknop op **back-upbeleid**.</li><li>Klik of vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Klik of vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-upbeleid maken** om een geplande back-up voor een volume groep te configureren. |
 | Een volume groep maken |Doe een van de volgende dingen:<ul><li>Klik op het knoop punt **volumes** en klik vervolgens met de rechter muisknop op een volume in het **resultaten** venster.</li><li>Klik met de rechter muisknop op het knoop punt **volume groepen** .</li></ul> |Klik op **volume groep maken** om volumes aan een volume groep toe te wijzen. |
-| Verwijderen |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in veel **actie** menu's en in deel Vensters met **acties** ). |Klik op **verwijderen** om het knoop punt of resultaat dat u hebt geselecteerd, te verwijderen. Wanneer het bevestigings venster wordt weer gegeven, bevestigt of annuleert u het verwijderen. |
+| Verwijderen |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in veel **actie** menu's en in deel Vensters met  **acties** ). |Klik op **verwijderen** om het knoop punt of resultaat dat u hebt geselecteerd, te verwijderen. Wanneer het bevestigings venster wordt weer gegeven, bevestigt of annuleert u het verwijderen. |
 | Details |Klik op het knoop punt **apparaten** en klik vervolgens met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **Details** om de configuratie gegevens voor een apparaat weer te geven. |
 | Bewerken |Klik op **back-upbeleid**en klik vervolgens met de rechter muisknop op een beleid in het **resultaten** venster. |Klik op **bewerken** om het back-upschema voor een volume groep te wijzigen. |
 | Lijst exporteren |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in alle **actie** menu's en **acties** deel Vensters). |Klik op **lijst exporteren** om een lijst op te slaan in een bestand met door komma's gescheiden waarden (CSV). U kunt dit bestand vervolgens importeren in een spreadsheet toepassing voor analyse. |
@@ -139,7 +139,7 @@ U kunt het menu **weer geven** openen via de menu balk of in het deel venster **
 #### <a name="menu-description"></a>Menu beschrijving
 In de volgende tabel worden de items beschreven die worden weer gegeven in het menu **beeld** .
 
-| Menu-item | Description |
+| Menu-item | Beschrijving |
 |:--- |:--- |
 | Kolommen toevoegen/verwijderen |Klik op **kolommen toevoegen/verwijderen** om kolommen toe te voegen aan of te verwijderen uit het **resultaten** venster. |
 | Aanpassen |Klik op **aanpassen** om items weer te geven of te verbergen in het StorSimple Snapshot Manager console venster. |
@@ -155,7 +155,7 @@ U kunt het menu **Favorieten** openen via de menu balk.
 #### <a name="menu-description"></a>Menu beschrijving
 In de volgende tabel worden de items beschreven die in het menu **Favorieten** worden weer gegeven.
 
-| Menu-item | Description |
+| Menu-item | Beschrijving |
 |:--- |:--- |
 | Toevoegen aan Favorieten |Klik op **toevoegen aan favorieten** om de huidige weer gave toe te voegen aan de lijst met favorieten. |
 | Favorieten ordenen |Klik op **Favorieten ordenen** om de inhoud van de map Favorieten in te delen. |
@@ -173,7 +173,7 @@ De genummerde lijst onder in het menu toont de Vensters die momenteel zijn geope
 #### <a name="menu-description"></a>Menu beschrijving
 In de volgende tabel worden de items beschreven die worden weer gegeven in het menu venster.
 
-| Menu-item | Description |
+| Menu-item | Beschrijving |
 |:--- |:--- |
 | Nieuw venster |Klik op **nieuw venster** om een nieuw console venster te openen (naast het bestaande venster). |
 | Vensters |Klik op **trapsgewijs** om de geopende console vensters in een trapsgewijze stijl weer te geven. |
@@ -190,7 +190,7 @@ U kunt het menu **Help** openen in de menu balk. U kunt ook toegang krijgen tot 
 #### <a name="menu-description"></a>Menu beschrijving
 In de volgende tabel worden de items beschreven die in het menu Help worden weer gegeven.
 
-| Menu-item | Description |
+| Menu-item | Beschrijving |
 |:--- |:--- |
 | Help bij StorSimple Snapshot Manager |Klik op **Help op StorSimple Snapshot Manager** om StorSimple Snapshot Manager Help in een afzonderlijk venster te openen. |
 | Help-onderwerpen |Klik op **Help-onderwerpen** om de online Help van MMC te openen in een afzonderlijk venster. |
@@ -204,7 +204,7 @@ De werk balk bevindt zich onder de menu balk en bevat navigatie-en taak pictogra
 ### <a name="icon-descriptions"></a>Pictogram beschrijvingen
 In de volgende tabel worden de pictogrammen beschreven die worden weer gegeven op de werk balk. 
 
-| Pictogram | Description |
+| Pictogram | Beschrijving |
 |:--- |:--- |
 | ![Pijl-links](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Klik op het pictogram met de pijl naar links om terug te keren naar de vorige pagina. |
 | ![Pijl-rechts](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Klik op de pijl-rechts om naar de volgende pagina te gaan (als de pijl grijs is, is de actie niet beschikbaar). |
@@ -337,7 +337,7 @@ StorSimple Snapshot Manager maakt gebruik van de toegankelijkheids functies van 
 ### <a name="keyboard-navigation-keys"></a>Toetsen bord navigatie toetsen
 In de volgende tabel worden de sleutels beschreven die u kunt gebruiken om te navigeren in de StorSimple-Snapshot Manager gebruikers interface. 
 
-| Navigatie sleutel | Bewerking |
+| Navigatie sleutel | Actie |
 |:--- |:--- |
 | Pijl-omlaag |Gebruik de pijl-omlaag om verticaal naar het volgende item in een menu of deel venster te gaan. |
 | Enter |Druk op ENTER om een actie te volt ooien en ga vervolgens verder met de volgende stap. U kunt bijvoorbeeld op ENTER drukken om **volgende**te selecteren, op **OK**te klikken of te **maken**, en vervolgens naar de volgende stap in een wizard te gaan. |

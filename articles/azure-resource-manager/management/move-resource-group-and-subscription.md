@@ -2,14 +2,14 @@
 title: Resources verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498868"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056642"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -19,8 +19,6 @@ Zowel de bron groep als de doel groep worden tijdens de verplaatsings bewerking 
 
 Als u een resource verplaatst, wordt deze alleen verplaatst naar een nieuwe resourcegroep of nieuw abonnement. Hierdoor wordt de locatie van de resource niet gewijzigd.
 
-Als u Azure Stack hub gebruikt, kunt u geen resources verplaatsen tussen groepen.
-
 ## <a name="checklist-before-moving-resources"></a>Controlelijst voordat u de resource verplaatst
 
 Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden uitgevoerd. U kunt fouten voorkomen door te controleren of aan de volgende voorwaarden is voldaan.
@@ -29,6 +27,7 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 
 1. Sommige services hebben specifieke beperkingen of vereisten bij het verplaatsen van resources. Als u een van de volgende services wilt verplaatsen, controleert u of de richt lijnen voorafgaand aan het verplaatsen.
 
+   * Als u Azure Stack hub gebruikt, kunt u geen resources verplaatsen tussen groepen.
    * [Hulp App Services verplaatsen](./move-limitations/app-service-move-limitations.md)
    * [Richt lijnen voor het verplaatsen van Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klassiek implementatie model richt lijnen](./move-limitations/classic-model-move-limitations.md) voor het verplaatsen van klassieke compute, klassieke opslag, klassieke virtuele netwerken en Cloud Services
@@ -96,7 +95,7 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 
 1. **Voor een verplaatsing tussen abonnementen moeten de resource en de afhankelijke resources zich in dezelfde resource groep bevinden en moeten ze samen worden verplaatst.** Een virtuele machine met Managed disks vereist bijvoorbeeld dat de virtuele machine en de beheerde schijven samen worden verplaatst, samen met andere afhankelijke bronnen.
 
-   Als u een resource naar een nieuw abonnement verplaatst, controleert u of de resource afhankelijke resources heeft en of ze zich in dezelfde resource groep bevinden. Als de resources zich niet in dezelfde resource groep bevinden, controleert u of de resources kunnen worden geconsolideerd in dezelfde resource groep. Als dit het geval is, kunt u al deze resources in dezelfde resource groep plaatsen met behulp van een Verplaats bewerking tussen resource groepen.
+   Als u een resource naar een nieuw abonnement verplaatst, controleert u of de resource afhankelijke resources heeft en of ze zich in dezelfde resource groep bevinden. Als de resources zich niet in dezelfde resource groep bevinden, controleert u of de resources kunnen worden gecombineerd in dezelfde resource groep. Als dit het geval is, kunt u al deze resources in dezelfde resource groep plaatsen met behulp van een Verplaats bewerking tussen resource groepen.
 
    Zie [scenario voor verplaatsen tussen abonnementen](#scenario-for-move-across-subscriptions)voor meer informatie.
 
@@ -167,23 +166,37 @@ Terwijl de bewerking nog steeds wordt uitgevoerd, blijft de 202-status code ontv
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 
-Als u resources wilt verplaatsen, selecteert u de resource groep met deze resources en selecteert u vervolgens de knop **verplaatsen** .
+Als u resources wilt verplaatsen, selecteert u de resource groep die de resources bevat.
 
-![Resources verplaatsen](./media/move-resource-group-and-subscription/select-move.png)
+Wanneer u de resource groep bekijkt, is de optie verplaatsen uitgeschakeld.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
+
+Als u de optie verplaatsen wilt inschakelen, selecteert u de resources die u wilt verplaatsen. Als u alle resources wilt selecteren, schakelt u het selectie vakje boven aan de lijst in. U kunt ook afzonderlijke resources selecteren.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="resources selecteren":::
+
+Selecteer de knop **verplaatsen** .
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="opties verplaatsen":::
+
+Deze knop biedt u drie opties:
+
+* Verplaatsen naar een nieuwe resource groep.
+* Ga naar een nieuw abonnement.
+* Verplaatsen naar een nieuwe regio. Zie [resources verplaatsen tussen regio's (van resource groep)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)om regio's te wijzigen.
 
 Selecteer of u de resources verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 
-Selecteer de resources die u wilt verplaatsen en de doel resource groep. Bevestig dat u scripts voor deze resources moet bijwerken en selecteer **OK**. Als u in de vorige stap het pictogram abonnement bewerken hebt geselecteerd, moet u ook het doel abonnement selecteren.
+Selecteer de doel resource groep. Bevestig dat u scripts voor deze resources moet bijwerken en selecteer **OK**. Als u hebt geselecteerd om naar een nieuw abonnement te gaan, moet u ook het doel abonnement selecteren.
 
-![doel selecteren](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="doel selecteren":::
 
-In **meldingen**ziet u dat de verplaatsings bewerking wordt uitgevoerd.
+Nadat u hebt gecontroleerd of de resources kunnen worden verplaatst, ziet u een melding dat de verplaatsings bewerking wordt uitgevoerd.
 
-![status van verplaatsen weer geven](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="melding":::
 
 Wanneer deze is voltooid, ontvangt u een melding van het resultaat.
-
-![resultaat van verplaatsen weer geven](./media/move-resource-group-and-subscription/show-result.png)
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
 
@@ -203,7 +216,7 @@ Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-Als u bestaande resources wilt verplaatsen naar een andere resource groep of een ander abonnement, gebruikt u de opdracht [AZ resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Geef de resource-Id's op van de resources die moeten worden verplaatst. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. Geef in de `--ids` para meter een door spaties gescheiden lijst op met de resource-id's die u wilt verplaatsen.
+Als u bestaande resources wilt verplaatsen naar een andere resource groep of een ander abonnement, gebruikt u de opdracht [AZ resource Move](/cli/azure/resource#az-resource-move) . Geef de resource-Id's op van de resources die moeten worden verplaatst. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. Geef in de `--ids` para meter een door spaties gescheiden lijst op met de resource-id's die u wilt verplaatsen.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -238,15 +251,15 @@ Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-
 
 **Vraag: de bewerking voor het verplaatsen van resources, die meestal een paar minuten duurt, is bijna een uur actief. Is er iets mis?**
 
-Het verplaatsen van een resource is een complexe bewerking met verschillende fasen. Dit kan meer inhouden dan alleen de resource provider van de resource die u wilt verplaatsen. Vanwege de afhankelijkheden tussen resource providers, Azure Resource Manager 4 uur toegestaan om de bewerking te volt ooien. Deze tijds periode biedt resource providers de mogelijkheid om te herstellen van tijdelijke problemen. Als uw verplaatsings aanvraag binnen de periode van vier uur duurt, blijft de bewerking het volt ooien en kan het nog wel slagen. De bron-en doel resource groepen zijn tijdens deze periode vergrendeld om consistentie problemen te voor komen.
+Het verplaatsen van een resource is een complexe bewerking met verschillende fasen. Dit kan meer inhouden dan alleen de resource provider van de resource die u wilt verplaatsen. Vanwege de afhankelijkheden tussen resource providers, Azure Resource Manager 4 uur toegestaan om de bewerking te volt ooien. Deze tijds periode biedt resource providers de mogelijkheid om te herstellen van tijdelijke problemen. Als uw verplaatsings aanvraag binnen de periode van vier uur valt, wordt geprobeerd de bewerking te volt ooien. Dit kan nog steeds slagen. De bron-en doel resource groepen zijn tijdens deze periode vergrendeld om consistentie problemen te voor komen.
 
 **Vraag: Waarom is mijn resource groep gedurende vier uur vergrendeld tijdens het verplaatsen van de resource?**
 
-Het venster van vier uur is de maximale toegestane tijd voor het verplaatsen van resources. Om te voor komen dat de resources worden verplaatst, worden de bron-en doel resource groepen vergrendeld voor de duur van het verplaatsen van de resource.
+Een verplaatsings aanvraag mag Maxi maal vier uur zijn voltooid. Om te voor komen dat de resources worden verplaatst, worden de bron-en doel resource groepen vergrendeld voor de duur van het verplaatsen van de resource.
 
-Er zijn twee fasen in een verplaatsings aanvraag. In de eerste fase wordt de resource verplaatst. In de tweede fase worden meldingen verzonden naar andere resource providers die afhankelijk zijn van de resource die wordt verplaatst. Een resource groep kan worden vergrendeld voor het hele venster van vier uur wanneer een resource provider niet in een fase werkt. Tijdens de toegestane tijd probeert Resource Manager de mislukte stap opnieuw.
+Er zijn twee fasen in een verplaatsings aanvraag. In de eerste fase wordt de resource verplaatst. In de tweede fase worden meldingen verzonden naar andere resource providers die afhankelijk zijn van de resource die wordt verplaatst. Een resource groep kan voor de hele vier uur worden vergrendeld wanneer een resource provider niet in een fase werkt. Tijdens de toegestane tijd probeert Resource Manager de mislukte stap opnieuw.
 
-Als een resource niet binnen het venster van vier uur kan worden verplaatst, worden beide resource groepen ontgrendeld met Resource Manager. Resources die zijn verplaatst, bevinden zich in de doel resource groep. Resources die niet kunnen worden verplaatst, blijven de bron resource groep.
+Als een resource niet binnen vier uur kan worden verplaatst, ontgrendelt Resource Manager beide resource groepen. Resources die zijn verplaatst, bevinden zich in de doel resource groep. Resources die niet kunnen worden verplaatst, blijven de bron resource groep.
 
 **Vraag: wat zijn de gevolgen van de bron-en doel resource groepen die worden vergrendeld tijdens het verplaatsen van de resource?**
 

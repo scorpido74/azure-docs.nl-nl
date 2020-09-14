@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762314"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055789"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -30,7 +30,7 @@ In de volgende secties worden de belangrijkste concepten in virtuele hub-route r
 
 Een route tabel van de virtuele hub kan een of meer routes bevatten. Een route bevat de naam, een label, een doel type, een lijst met doel voorvoegsels en de volgende hop-informatie voor een pakket dat moet worden doorgestuurd. Een **verbinding** heeft meestal een routerings configuratie die aan een route tabel is gekoppeld of door gegeven
 
-### <a name="connection"></a><a name="connection"></a>Combi
+### <a name="connection"></a><a name="connection"></a>Verbinding
 
 Verbindingen zijn Resource Manager-resources die een routerings configuratie hebben. De vier typen verbindingen zijn:
 
@@ -87,6 +87,7 @@ Houd rekening met het volgende bij het configureren van virtuele WAN-route ring:
 * Wanneer u Azure Firewall in meerdere regio's gebruikt, moeten alle spoke-virtuele netwerken aan dezelfde route tabel zijn gekoppeld. Als er bijvoorbeeld een subset van de VNets door de Azure Firewall, terwijl andere VNets overs Laan, is het niet mogelijk om de Azure Firewall in dezelfde virtuele hub over te slaan.
 * Eén volgende hop-IP kan per VNet-verbinding worden geconfigureerd.
 * Virtuele hub biedt geen ondersteuning voor een statische route voor 0.0.0.0/0 en de volgende hop Virtual Network verbinding (of een IP-adres van een apparaat in de VNet-verbinding)
+* Alle informatie met betrekking tot de route 0.0.0.0/0 wordt beperkt tot de route tabel van een lokale hub. Deze route wordt niet door gegeven tussen hubs.
 
 ## <a name="next-steps"></a>Volgende stappen
 

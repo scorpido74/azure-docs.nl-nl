@@ -1,18 +1,18 @@
 ---
 title: Release opmerkingen bij StorSimple 8000 Series Update 5,1
 description: Hierin worden de nieuwe functies, problemen en tijdelijke oplossingen voor de StorSimple 8000 Series Update 5,1 beschreven.
-author: twooley
+author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.author: twooley
-ms.openlocfilehash: b706d702ad496d0526d02c4158123cc883505ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: a6a359888e782751892f2a034a8d92a014fd3a81
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782342"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055840"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>Release opmerkingen bij StorSimple 8000 Series Update 5,1
 

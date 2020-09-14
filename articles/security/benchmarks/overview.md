@@ -1,55 +1,65 @@
 ---
-title: Overzicht van de Azure Security-Bench Mark
-description: Overzicht van Security Bench Mark
+title: Overzicht van de Azure Security Bench Mark v2
+description: Overzicht van Azure Security Bench Mark v2
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 453e88ed59df0d6e88b8db32ea1836a4371ab3a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529264"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058679"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Overzicht van de Azure Security-Bench Mark
 
-De Azure Security-benchmark bevat aanbevelingen die u helpen om de beveiliging van uw toepassingen en gegevens in Azure te verbeteren.
+De Azure Security Bench Mark (ASB) biedt prescriptieve aanbevolen procedures en aanbevelingen voor het verbeteren van de beveiliging van werk belastingen, gegevens en services in Azure.
 
-Deze bench Mark richt zich op de Cloud gerichte controle gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS)-besturings elementen versie 7,1.
+Deze bench Mark maakt deel uit van een aantal holistische beveiligings richtlijnen die ook het volgende bevatten:
 
-De volgende besturings elementen worden gebruikt in de beveiligings benchmark van Azure: 
+- **Cloud-acceptatie raamwerk** : richt lijnen voor beveiliging, inclusief [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rollen en verantwoordelijkheden](/azure/cloud-adoption-framework/organize/cloud-security), [Aanbevolen Azure Top 10-beveiligings procedures](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)en [referentie-implementatie](/azure/cloud-adoption-framework/ready/enterprise-scale/).
+- **Azure goed ontworpen Framework** : richt lijnen voor [het beveiligen van uw workloads](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) op Azure.
+- **Aanbevolen procedures voor micro soft-beveiliging** : [aanbevelingen](/security/compass/microsoft-security-compass-introduction) met voor beelden op Azure.
+ De Azure Security-Bench Mark is gericht op Cloud gerichte controle gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS) Controls versie 7,1 en National Institute of Standards and Technology (NIST) SP800-53.
+De volgende besturings elementen zijn opgenomen in de Azure Security-Bench Mark:
 
-- [Netwerk beveiliging](security-control-network-security.md)
-- [Logboekregistratie en controle](security-control-logging-monitoring.md)
-- [Identiteits-en toegangs beheer](security-control-identity-access-control.md)
-- [Gegevens bescherming](security-control-data-protection.md)
-- [Beveiligings beheer](security-control-vulnerability-management.md)
-- [Inventarisatie en het beheer van middelen](security-control-inventory-asset-management.md)
-- [Veilige configuratie](security-control-secure-configuration.md)
-- [Bescherming tegen malware](security-control-malware-defense.md)
-- [Gegevens herstellen](security-control-data-recovery.md)
-- [Reactie op incident](security-control-incident-response.md)
-- [Penetratietests en Red Team-oefeningen](security-control-penetration-tests-red-team-exercises.md)
+| Beheer domeinen ASB | Beschrijving 
+|--|--|
+| [Netwerk beveiliging (NS)](security-controls-v2-network-security.md) | Netwerk beveiliging heeft betrekking op besturings elementen voor het beveiligen en beveiligen van Azure-netwerken, waaronder het beveiligen van virtuele netwerken, het tot stand brengen van particuliere verbindingen, het voor komen en beperken van externe aanvallen en het beveiligen van DNS. |
+| [Identiteits beheer (IM)](security-controls-v2-identity-management.md) | Identiteits beheer heeft betrekking op besturings elementen voor het instellen van een beveiligde identiteits-en toegangs beheer met behulp van Azure Active Directory, waaronder het gebruik van eenmalige aanmelding, sterke verificaties, beheerde identiteiten (en service principes) voor toepassingen, voorwaardelijke toegang en het controleren van afwijkingen van accounts. |
+| [Privileged Access (PA)](security-controls-v2-privileged-access.md) | Uitgebreide toegang heeft betrekking op besturings elementen voor het beveiligen van bevoegde toegang tot uw Azure-Tenant en-resources, waaronder een reeks besturings elementen voor het beveiligen van uw beheer model, beheerders accounts en geprivilegieerde toegang tegen opzettelijke en onbedoelde Risico's. |
+| [Gegevens bescherming (DP)](security-controls-v2-data-protection.md) | Gegevens bescherming is van toepassing op de controle van gegevens beveiliging op rest, onderweg en via geautoriseerde toegangs mechanismen, waaronder het detecteren, classificeren, beveiligen en bewaken van gevoelige gegevens assets met behulp van toegangs beheer, versleuteling en logboek registratie in Azure. |
+| [Asset Management (AM)](security-controls-v2-asset-management.md) | Asset Management bestrijkt de controles om inzicht te krijgen in de beveiliging en het beheer van Azure-resources, waaronder aanbevelingen over machtigingen voor beveiligings personeel, de beveiliging van de inventaris en het beheren van goed keuringen voor services en resources (inventaris, tracering en juistheid). |
+| [Logboek registratie en detectie van bedreigingen (LT)](security-controls-v2-logging-threat-detection.md) | Logboek registratie en detectie van bedreigingen omvatten besturings elementen voor het detecteren van bedreigingen op Azure en het inschakelen, verzamelen en opslaan van audit logboeken voor Azure-Services, waaronder het inschakelen van detectie-, onderzoek-en herstel processen met besturings elementen voor het genereren van waarschuwingen van hoge kwaliteit met systeem eigen bedreigingen detectie in Azure-Services. Het omvat ook het verzamelen van logboeken met Azure Monitor, het centraliseren van beveiligings analyse met Azure Sentinel, tijd synchronisatie en logboek registratie. |
+| [Reactie op incidenten (IR)](security-controls-v2-incident-response.md) | Reactie op incidenten betreft controles in de levens cyclus van incidenten: voor bereiding, detectie en analyse, insluiting en activiteiten na incidenten, inclusief het gebruik van Azure-Services, zoals Azure Security Center en Sentinel, om het respons proces van het incident te automatiseren. |
+| [Postuur en beveiligings beheer (HW)](security-controls-v2-posture-vulnerability-management.md) | Postuur en beveiligings beheer richt zich op besturings elementen voor het beoordelen en verbeteren van de postuur van Azure, waaronder het scannen van beveiligings problemen, het testen van indringing en herstel, alsmede het bijhouden van de beveiligings configuratie, rapportage en correctie in azure-resources. |
+| [Endpoint Security (ES)](security-controls-v2-endpoint-security.md) | Endpoint Security heeft betrekking op besturings elementen in eindpunt detectie en-antwoord, met inbegrip van het gebruik van eindpunt detectie en-antwoorden (EDR) en anti-malware-service voor eind punten in azure-omgevingen. |
+| [Back-up en herstel (BR)](security-controls-v2-backup-recovery.md) | Back-up en herstel bestrijkt de controles om ervoor te zorgen dat de gegevens en configuratie back-ups in de verschillende service lagen worden uitgevoerd, gevalideerd en beveiligd. |
+| [Governance en strategie (GS)](security-controls-v2-governance-strategy.md) | Governance en strategie biedt richt lijnen voor het garanderen van een samenhangende beveiligings strategie en een gedocumenteerde governance aanpak om beveiligings verzekeringen te hand haven, inclusief het instellen van rollen en verantwoordelijkheden voor de verschillende Cloud beveiligings functies, uniforme technische strategie en ondersteunings beleid en-standaarden. |
 
-U kunt ook het [Azure Security Bench Mark v1 Excel-werk blad](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)downloaden.
+U kunt de Azure Security-Bench Mark ook downloaden in een [Spreadsheet indeling](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
 
-## <a name="azure-security-benchmark-recommendations"></a>Aanbevelingen voor Azure Security Bench Mark 
+## <a name="azure-security-benchmark-recommendations"></a>Aanbevelingen voor Azure Security Bench Mark
 
-Elke aanbeveling bevat de volgende informatie: 
+Elke aanbeveling bevat de volgende informatie:
 
-- **Azure-id**: de Azure Security Bench Mark-id die overeenkomt met de aanbeveling. 
-- **CIS-id ('s)**: de CIS-aanbeveling (en) die overeenkomt met deze aanbeveling.  
-- **Verantwoordelijkheid**: of de klant of de service provider (of beide) verantwoordelijk is voor de implementatie van deze aanbeveling. Beveiligings verantwoordelijkheden worden gedeeld in de open bare Cloud. Sommige beveiligings mechanismen zijn alleen beschikbaar voor de Cloud serviceprovider en daarom is de provider verantwoordelijk voor het adresseren van deze. Dit zijn algemene waarnemingen: voor sommige afzonderlijke services is de verantwoordelijkheid afwijkend van wat er in de Azure Security-benchmark waarde wordt vermeld. Deze verschillen worden beschreven in de aanbevelingen van de basis lijn voor de afzonderlijke service. 
+- **Azure-id**: de Azure Security Bench Mark-id die overeenkomt met de aanbeveling.
+- **CIS controleert v 7.1-id ('s)**: het CIS besturings element (en) die overeenkomen met deze aanbeveling.
+- **NIST SP800-53 R4-id ('s)**: de (gematige) SP800-(gemiddeld) besturings element (en) die overeenkomt met deze aanbeveling.
 - **Details**: de motivering van de aanbeveling en koppelingen naar richt lijnen voor het implementeren ervan. Als de aanbeveling wordt ondersteund door Azure Security Center, wordt die informatie ook weer gegeven.
+- **Verantwoordelijkheid**: of de klant, de service provider of beide verantwoordelijk zijn voor de implementatie van deze aanbeveling. Beveiligings verantwoordelijkheden worden gedeeld in de open bare Cloud. Sommige beveiligings mechanismen zijn alleen beschikbaar voor de Cloud serviceprovider en daarom is de provider verantwoordelijk voor het adresseren van deze. Dit zijn algemene waarnemingen: voor sommige afzonderlijke services is de verantwoordelijkheid afwijkend van wat wordt vermeld in de Azure Security-benchmark waarde. Deze verschillen worden beschreven in de aanbevelingen van de basis lijn voor de afzonderlijke service.
+- **Beveiligings belanghebbenden**van de klant: de beveiligings functies bij de organisatie van de klant die kunnen worden beheerbaar, verantwoordelijk of geraadpleegd voor de respectieve controle. Het kan afwijken van de organisatie naar de organisatie, afhankelijk van de organisatie structuur van uw bedrijf en de rollen en verantwoordelijkheden die u hebt ingesteld voor de beveiliging van Azure.
 
-We stellen uw gedetailleerde feedback en actieve deelname aan de benchmark inspanningen van Azure Security toe. Als u de directe invoer van het Azure Security Bench Mark-team wilt opgeven, vult u het formulier in [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) .
+> [!NOTE]
+> De controle toewijzingen tussen de ASB en de branche benchmarks (zoals NIST en CIS) geven alleen aan dat een specifieke functie van Azure kan worden gebruikt voor het volledig of gedeeltelijk oplossen van een controle vereiste die is gedefinieerd in het NIST of CIS. Houd er rekening mee dat deze implementatie niet noodzakelijkerwijs moet worden vertaald naar de volledige naleving van het overeenkomstige besturings element in CIS of NIST.
 
-## <a name="next-steps"></a>Volgende stappen
+We stellen uw gedetailleerde feedback en actieve deelname aan de benchmark inspanningen van Azure Security toe. Als u de directe invoer van het Azure Security Bench Mark-team wilt opgeven, vult u het formulier in op https://aka.ms/AzSecBenchmark
+
 
 - Zie het eerste beveiligings beheer: [netwerk beveiliging](security-control-network-security.md)
 - Lees de [Inleiding voor Azure Security Bench Mark](introduction.md)
-- Het [Excel-werk blad van Azure Security Bench Mark v1](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) downloaden
+- Down load het [Excel-werk blad Azure Security Bench Mark v2](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)

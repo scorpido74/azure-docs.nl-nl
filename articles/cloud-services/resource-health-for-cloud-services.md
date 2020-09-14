@@ -3,17 +3,16 @@ title: Resource Health voor Cloud Services (klassiek)
 description: Dit artikel spreekt over Resource Health Check-ondersteuning (RHC) voor Microsoft Azure Cloud Services (klassiek)
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664542"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056048"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Resource Health Check-ondersteuning (RHC) voor Azure Cloud Services (klassiek)
 Dit artikel spreekt over Resource Health Check-ondersteuning (RHC) voor [Microsoft Azure Cloud Services (klassiek)](https://azure.microsoft.com/services/cloud-services)
@@ -22,6 +21,7 @@ Dit artikel spreekt over Resource Health Check-ondersteuning (RHC) voor [Microso
 
 Azure-status rapporten over problemen die van invloed zijn op een groot aantal Azure-klanten. Resource Health geeft u een aangepast dash board van de status van uw resources. Resource Health toont de tijden dat uw resources niet beschikbaar zijn vanwege Azure-Service problemen. Met deze gegevens kunt u eenvoudig zien of een SLA is geschonden.
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="Afbeelding toont de Blade resource status controle in de Azure Portal.":::
 
 ## <a name="how-health-is-checked-and-reported"></a>Hoe wordt de status gecontroleerd en gerapporteerd?
 De resource status wordt gerapporteerd op het niveau van een implementatie of rol. De status controle wordt uitgevoerd op het niveau van de rolinstantie, het samen voegen en rapporteren op rollen niveau. Bijvoorbeeld Als alle rolinstanties beschikbaar zijn, is de functie status beschikbaar. Op dezelfde manier worden de integriteits status van alle rollen geaggregeerd en gerapporteerd op implementatie niveau. Bijvoorbeeld Als alle rollen beschikbaar zijn, wordt de status van de implementatie beschikbaar. 

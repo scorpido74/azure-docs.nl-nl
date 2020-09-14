@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039065"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058697"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure-beveiligings basislijn voor open bare Azure-IP
 
-In deze beveiligings basislijn wordt richt lijn toegepast van de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md) naar het open bare IP-adres van Azure. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op open bare Azure-IP. **Besturings elementen** die niet van toepassing zijn op open bare IP van Azure, zijn uitgesloten.
+In deze beveiligings basislijn wordt richt lijn toegepast van de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md) naar het open bare IP-adres van Azure. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op open bare Azure-IP. **Besturings elementen** die niet van toepassing zijn op open bare IP van Azure, zijn uitgesloten.  Opmerking open bare Ip's van Azure slaan geen klant gegevens op.
 
 Als u wilt zien hoe de open bare IP van Azure volledig is toegewezen aan de Security-benchmark test van Azure, raadpleegt u het [volledige Azure Public IP Security Baseline-toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
@@ -46,7 +46,7 @@ Azure PowerShell of Azure CLI kan worden gebruikt om op basis van hun labels act
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om configuraties te controleren en wijzigingen in uw open bare IP-sessies te detecteren. Met uitzonde ring van het besturings vlak (bijvoorbeeld Azure Portal), genereert het open bare IP-adres zelf geen logboeken die betrekking hebben op het netwerk verkeer. 
+**Hulp**: Azure-activiteiten logboek gebruiken om configuraties te controleren en wijzigingen in uw open bare IP-sessies te detecteren. Met uitzonde ring van het besturings vlak (bijvoorbeeld Azure Portal), genereert het open bare IP-adres zelf geen logboeken die betrekking hebben op het netwerk verkeer.
 
 Open bare IP bevat hulpprogram ma's voor het bewaken, vaststellen en weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk.
 

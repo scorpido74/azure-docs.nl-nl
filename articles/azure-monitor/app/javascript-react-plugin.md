@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 677810c21f9ea6151e2ffe7a4e2b9cdc8473a09f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227207"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056197"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Invoeg toepassing reageren voor Application Insights java script-SDK
 
@@ -42,7 +42,7 @@ const browserHistory = createBrowserHistory({ basename: '' });
 var reactPlugin = new ReactPlugin();
 var appInsights = new ApplicationInsights({
     config: {
-        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [reactPlugin],
         extensionConfig: {
           [reactPlugin.identifier]: { history: browserHistory }
@@ -64,7 +64,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ## <a name="configuration"></a>Configuratie
 
-| Name    | Standaard | Beschrijving                                                                                                    |
+| Naam    | Standaard | Beschrijving                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geschiedenis | null    | Router geschiedenis reageren. Zie de [documentatie over het reagerende router pakket](https://reactrouter.com/web/api/history)voor meer informatie. Voor meer informatie over het openen van het geschiedenis object buiten de onderdelen raadpleegt u de [Veelgestelde vragen over de reagerende router](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -85,7 +85,7 @@ U kunt ook aangepaste query's uitvoeren om Application Insights gegevens te verd
 > [!NOTE]
 > Het kan Maxi maal tien minuten duren voordat nieuwe aangepaste metrische gegevens worden weer gegeven in de Azure-Portal.
 
-## <a name="sample-app"></a>Voorbeeld-app
+## <a name="sample-app"></a>Voorbeeldapp
 
 Bekijk de [Application Insights reageren](https://github.com/Azure-Samples/application-insights-react-demo)op de demo.
 

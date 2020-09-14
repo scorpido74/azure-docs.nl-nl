@@ -8,34 +8,48 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 883042c94576014c3bdeabd38516d9531c8fd3dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82606854"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058611"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Inleiding tot Azure Security Bench Mark
 
-Mogelijk hebt u enkele jaren of zelfs tien tallen ervaring met on-premises computing. U weet hoe u deze implementaties kunt beveiligen. maar de Cloud wijkt af. Hoe weet u of de implementaties van uw Cloud veilig zijn? Wat zijn de verschillen tussen beveiligings procedures voor on-premises systemen en Cloud implementaties?
+Nieuwe services en functies worden dagelijks uitgebracht in azure, ontwikkel aars publiceren snel nieuwe Cloud toepassingen die zijn gebouwd op deze services, en aanvallers willen altijd nieuwe manieren om onjuist geconfigureerde resources te misbruiken. De Cloud gaat snel, ontwikkel aars verplaatsen snel en aanvallers zijn altijd onderweg. Hoe weet u zeker dat u uw Cloud implementaties veilig wilt stellen? Hoe verschillen de beveiligings procedures voor Cloud systemen van on-premises systemen? Hoe kunt u controleren op consistentie in veel onafhankelijke ontwikkel teams?
 
-Er is een grote verzameling technische documenten, aanbevolen procedures, referentie architecturen, Webbegeleiding, open-source hulpprogram ma's, commerciële oplossingen, Intelligence-feeds en meer, die kunnen worden gebruikt om de cloud te beveiligen. Welke optie moet u gebruiken? Wat kunt u doen om een acceptabel beveiligings niveau te verkrijgen in de Cloud? 
+Micro soft heeft geconstateerd dat met behulp van *beveiligings benchmarks* u snel Cloud implementaties kunt beveiligen. Bench Mark-aanbevelingen van uw Cloud serviceprovider bieden u een start punt voor het selecteren van specifieke beveiligings configuratie-instellingen in uw omgeving, zodat u snel Risico's kunt verminderen voor uw organisatie.
 
-Een van de beste manieren om uw Cloud implementaties te beveiligen, is gericht op aanbevelingen voor Cloud Security-benchmarks. Bench Mark-aanbevelingen voor het beveiligen van een service kunt u beginnen met een basis kennis van Cyber beveiliging-risico en hoe u deze kunt beheren. U kunt deze informatie vervolgens gebruiken door Bench Mark Security-aanbevelingen van uw Cloud serviceprovider aan te passen, zodat u specifieke beveiligings configuratie-instellingen in uw omgeving kunt selecteren. 
+De Azure Security Bench Mark bevat een verzameling essentiële aanbevelingen voor beveiliging die u kunt gebruiken om de services te beveiligen die u in azure gebruikt:
 
-De Azure Security Bench Mark bevat een verzameling essentiële aanbevelingen voor beveiliging die u kunt gebruiken om de meeste services die u in azure gebruikt, te beveiligen. U kunt deze aanbevelingen als ' Algemeen ' of ' organisatie ' beschouwen als ze van toepassing zijn op de meeste Azure-Services. De aanbevelingen voor Azure Security Bench Mark worden vervolgens aangepast voor elke Azure-service en deze aangepaste richt lijnen zijn opgenomen in artikelen over service aanbevelingen. 
+- Beveiligings controles: deze aanbevelingen zijn in het algemeen van toepassing op uw Azure-Tenant en Azure-Services. Elke aanbeveling identificeert een lijst met belanghebbenden die doorgaans betrokken zijn bij het plannen, goed keuren of implementeren van de Bench Mark. 
+- Service basislijnen: Hiermee worden de besturings elementen toegepast op afzonderlijke Azure-Services om aanbevelingen te geven over de beveiligings configuratie van die service.
 
-De documentatie voor Azure Security Bench Mark bevat beveiligings controles en service aanbevelingen.
+## <a name="implement-the-azure-security-benchmark"></a>De Azure Security-Bench Mark implementeren
+- **Plan** de implementatie van uw Azure Security-benchmark procedure door de [documentatie](overview.md) te bekijken voor de Enter prise-besturings elementen en servicespecifieke basislijnen om uw beheer raamwerk te plannen en te bepalen hoe IT wordt toegewezen aan richt lijnen zoals CIS (Controls v 7.1) en het NIST (SP800-53)-Framework.
+- **Bewaak** uw naleving met de Azure Security Bench Mark-status (en andere controle sets) met behulp van het [dash board voor nalevings vereisten](../../security-center/security-center-compliance-dashboard.md)van Azure Security Center.
+- **Stel Guardrails** in voor het automatiseren van beveiligde configuraties en het afdwingen van naleving met Azure Security Bench Mark (en andere vereisten in uw organisatie) met Azure blauw drukken en Azure Policy.
+ 
+Houd er rekening mee dat de Azure Security Bench Mark v2 is afgestemd op de [Best practices van micro soft-beveiliging](/security/compass/microsoft-security-compass-introduction) (voorheen Azure Security kompas), zodat de Azure Security Bench Mark een geconsolideerde weer gave biedt van de aanbevelingen voor Azure-beveiliging van micro soft.
 
-- **Beveiligings controles**: de aanbevelingen voor Azure Security-benchmarks worden gecategoriseerd door beveiligings controles. Beveiligings controles vertegenwoordigen neutraal beveiligings vereisten op hoog niveau, zoals netwerk beveiliging en gegevens bescherming. Elk beveiligings beheer bevat een reeks beveiligings aanbevelingen en instructies voor het implementeren van deze aanbevelingen. 
-- **Aanbevelingen voor services**: wanneer deze beschikbaar zijn, bevatten de benchmark aanbevelingen voor Azure-Services Azure Security Bench Mark-aanbevelingen die specifiek zijn afgestemd op die service. 
+## <a name="common-use-cases"></a>Veelvoorkomende use cases
 
-De termen "besturings element", "bench Mark" en "baseline" worden vaak gebruikt in de documentatie over Azure Security Bench Mark. het is belang rijk om te begrijpen hoe Azure deze voor waarden gebruikt. 
+Azure Security Bench Mark wordt vaak gebruikt om deze veelvoorkomende uitdagingen te verhelpen voor klanten of service partners die:
+- Nieuw in Azure en zoeken naar aanbevolen procedures voor beveiliging om te zorgen voor een veilige implementatie.
+- Verbetering van de beveiligings postuur van bestaande Azure-implementaties om de belangrijkste Risico's en oplossingen te bepalen.
+- Het goed keuren van Azure-Services voor gebruik door technologie en bedrijfs gebruik om te voldoen aan specifieke beveiligings richtlijnen.
+- Voldoen aan wettelijke voor schriften voor klanten die afkomstig zijn van een overheid of een in hoge mate gereglementeerde branches, zoals financiën en gezondheids zorg (of service leveranciers die systemen voor deze klanten moeten bouwen). Deze klanten moeten ervoor zorgen dat hun configuratie van Azure voldoet aan de beveiligings mogelijkheden die zijn opgegeven in een branche raamwerk zoals CIS, NIST of PCI. Azure Security Bench Mark biedt een efficiënte benadering van de besturings elementen die reeds vooraf zijn toegewezen aan deze branche benchmarks.
 
-| Termijn | Beschrijving | Voorbeeld |
+## <a name="terminology"></a>Terminologie
+
+De termen "besturings element", "bench Mark" en "baseline" worden vaak gebruikt in de documentatie over Azure Security Bench Mark. het is belang rijk om te begrijpen hoe Azure deze voor waarden gebruikt.
+
+
+| Term | Beschrijving | Voorbeeld |
 |--|--|--|
-| Controle | Een **besturings element** is een hoog niveau van een functie of activiteit die moet worden geadresseerd en niet specifiek is voor een technologie of implementatie. | Gegevens beveiliging is een van de beveiligings besturings elementen. Dit besturings element bevat specifieke acties die moeten worden geadresseerd om ervoor te zorgen dat gegevens beveiligd zijn. |
-| Benchmark | Een **Bench Mark** bevat beveiligings aanbevelingen voor een specifieke technologie, zoals Azure. De aanbevelingen worden gecategoriseerd door het besturings element waarvan ze deel uitmaken. | De Security Bench Mark van Azure bestaat uit de beveiligings aanbevelingen die specifiek zijn voor het Azure-platform  |
-| Basislijn | Een **basis lijn** is de beveiligings vereisten voor een organisatie. De beveiligings vereisten zijn gebaseerd op benchmark aanbevelingen. Elke organisatie bepaalt welke Bench Mark-aanbevelingen in hun basis lijn moeten worden meegenomen. | Het bedrijf contoso maakt de beveiligings basislijn door te kiezen voor specifieke aanbevelingen in de Azure Security-Bench Mark. |
+| Beheer | Een besturings element is een hoog niveau van een functie of activiteit die moet worden geadresseerd en niet specifiek is voor een technologie of implementatie. | Gegevens beveiliging is een van de beveiligings besturings elementen. Dit besturings element bevat specifieke acties die moeten worden geadresseerd om ervoor te zorgen dat gegevens beveiligd zijn. |
+| Benchmark | Een bench Mark bevat beveiligings aanbevelingen voor een specifieke technologie, zoals Azure. De aanbevelingen worden gecategoriseerd door het besturings element waarvan ze deel uitmaken. | De Security Bench Mark van Azure bestaat uit de beveiligings aanbevelingen die specifiek zijn voor het Azure-platform |
+| Basislijn | Een basis lijn is de implementatie van de Bench Mark voor de afzonderlijke Azure-service. Elke organisatie beslist de benchmark aanbeveling en de bijbehorende configuraties zijn vereist in het Azure-implementatie bereik. | De contoso-onderneming kijkt naar Azure SQL-beveiligings functies door de configuratie te volgen die wordt aanbevolen in Azure SQL-beveiligings basislijn.
 
-We stellen uw feedback op de Security Bench Mark van Azure. We raden u aan opmerkingen te geven in het onderstaande feedback gebied. Als u uw invoer liever persoonlijk wilt delen met het Azure Security Bench Mark-team, vult u het formulier in ophttps://aka.ms/AzSecBenchmark 
+We stellen uw feedback op de Security Bench Mark van Azure. We raden u aan opmerkingen te geven in het onderstaande feedback gebied. Als u uw invoer liever persoonlijk wilt delen met het Azure Security Bench Mark-team, vult u het formulier in op https://aka.ms/AzSecBenchmark

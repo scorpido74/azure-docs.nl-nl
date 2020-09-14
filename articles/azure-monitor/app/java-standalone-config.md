@@ -4,12 +4,12 @@ description: Toepassings prestatie bewaking voor Java-toepassingen die worden ui
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374283"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056095"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -38,8 +38,8 @@ Application Insights Java 3,0 Preview verwacht dat het configuratie bestand word
 
 U kunt uw eigen pad naar een configuratie bestand opgeven met
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`omgevings variabele of
-* `applicationinsights.configurationFile`Java-systeem eigenschap
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE` omgevings variabele of
+* `applicationinsights.configurationFile` Java-systeem eigenschap
 
 Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de map waar `applicationinsights-agent-3.0.0-PREVIEW.5.jar` zich bevindt.
 
@@ -113,18 +113,18 @@ Als u deze drempel waarde wilt wijzigen:
 
 Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `ApplicationInsights.json` en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
 
-| `threshold`  | Log4j  | Logback | JUL     |
-|--------------|--------|---------|---------|
-| UIT          | UIT    | UIT     | UIT     |
-| FATALE        | FATALE  | FOUT   | ZEER  |
-| FOUT/ERNSTIG | FOUT  | FOUT   | ZEER  |
-| WAARSCHUWEN/WAARSCHUWING | WETEN   | WETEN    | WAARSCHUWING |
-| VALUTA         | VALUTA   | VALUTA    | VALUTA    |
-| CONFIGURATIES       | FOUTOPSPORING  | FOUTOPSPORING   | CONFIGURATIES  |
-| FOUTEN OPSPOREN/VERFIJNEN   | FOUTOPSPORING  | FOUTOPSPORING   | BLIJVEN    |
-| KLEINERE        | FOUTOPSPORING  | FOUTOPSPORING   | KLEINERE   |
-| TRACERING/KLEINSTE | TRACERINGS  | TRACERINGS   | MEEST  |
-| ALL          | ALL    | ALL     | ALL     |
+| drempel waarde   | Log4j  | Logback | JUL     |
+|-------------------|--------|---------|---------|
+| UIT               | UIT    | UIT     | UIT     |
+| FATALE             | FATALE  | ERROR   | ZEER  |
+| FOUT (of ernstig) | ERROR  | ERROR   | ZEER  |
+| Waarschuwing (of waarschuwing) | WETEN   | WETEN    | WAARSCHUWING |
+| VALUTA              | VALUTA   | VALUTA    | VALUTA    |
+| CONFIGURATIES            | FOUTOPSPORING  | FOUTOPSPORING   | CONFIGURATIES  |
+| Fout opsporing (of fijn)   | FOUTOPSPORING  | FOUTOPSPORING   | BLIJVEN    |
+| KLEINERE             | FOUTOPSPORING  | FOUTOPSPORING   | KLEINERE   |
+| TRACERen (of het kleinste) | TRACERINGS  | TRACERINGS   | MEEST  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>Metrische gegevens van JMX
 
@@ -134,7 +134,7 @@ Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Application Insights Java 3,0 Preview verzendt standaard elke 15 minuten een hea
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Hier volgt een voor beeld van het instellen van de steek proef op **10% van alle
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Standaard meldt de app aan op de console met niveau `warn` , die overeenkomt met
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Als u zich wilt aanmelden bij een bestand in plaats van zich aan te melden bij d
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

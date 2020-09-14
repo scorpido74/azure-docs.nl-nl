@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652873"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058730"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Ondersteuning voor het verplaatsen van virtuele Azure-machines tussen Azure-regio's
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-amd64 tot 3.16.0-10-amd64, 4.9.0 -0. bpo. 4-amd64 tot 4.9.0
 
 **Release** | **Kernelversie** 
 --- |  --- 
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Alle [Stock-SuSE 12 SP1-, SP2-, SP3-en SP4-kernels](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.34-Azure  
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) |  Alle [Stock-SuSE 12 SP1-, SP2-, SP3-en SP4-kernels](https://www.suse.com/support/kb/doc/?id=000019587) worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.34-Azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>Ondersteund SUSE Linux Enterprise Server 15-kernel-versies
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 en 15 SP1 |  Alle Stock-SUSE 15-en 15-kernels wo
 
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
-Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/sizes-general).
+Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/sizes-general.md).
 Beschikbaarheidssets | Momenteel niet ondersteund | Als u een virtuele machine van Azure toevoegt met een beschikbaarheidsset met de standaard opties, mislukt het voorbereidings proces. U kunt ervoor kiezen om de virtuele machine naar een beschikbaarheids zone te verplaatsen of te verplaatsen als een virtuele machine met één exemplaar. U kunt deze instellingen wijzigen op de pagina doel eigenschappen bewerken.
 Beschikbaarheidszones | Ondersteund | Ondersteund, afhankelijk van de ondersteuning van het doel gebied.
 Installatie kopieën van Azure Gallery (gepubliceerd door micro soft) | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
@@ -113,15 +113,15 @@ Extensies | Niet ondersteund | Extensies worden niet naar de virtuele machine in
 
 ## <a name="supported-vm-storage-settings"></a>Ondersteunde VM-opslag instellingen
 
-Deze tabel bevat een overzicht van de ondersteuning voor de Azure VM-besturingssysteem schijf, de gegevens schijf en de tijdelijke schijf. Het is belang rijk om te kijken naar de limieten en doelen van de VM-schijf voor [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) -en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) -vm's om prestatie problemen te voor komen.
+Deze tabel bevat een overzicht van de ondersteuning voor de Azure VM-besturingssysteem schijf, de gegevens schijf en de tijdelijke schijf. Het is belang rijk om te kijken naar de limieten en doelen van de VM-schijf voor [Linux](../virtual-machines/linux/disk-scalability-targets.md) -en [Windows](../virtual-machines/windows/disk-scalability-targets.md) -vm's om prestatie problemen te voor komen.
 
 **Onderdeel** | **Ondersteuning** | **Details**
 --- | --- | ---
-Maximale grootte van de besturingssysteem schijf | 2048 GB | Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) over VM-schijven.
-Tijdelijke schijf | Niet ondersteund | De tijdelijke schijf wordt altijd uitgesloten van het voorbereidings proces.<br/><br/> Sla geen permanente gegevens op de tijdelijke schijf op. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk).
+Maximale grootte van de besturingssysteem schijf | 2048 GB | Meer [informatie](../virtual-machines/windows/managed-disks-overview.md) over VM-schijven.
+Tijdelijke schijf | Niet ondersteund | De tijdelijke schijf wordt altijd uitgesloten van het voorbereidings proces.<br/><br/> Sla geen permanente gegevens op de tijdelijke schijf op. [Meer informatie](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Maximale grootte van gegevens schijf | 8192 GB voor beheerde schijven
 Minimale grootte van gegevens schijf |  2 GB voor beheerde schijven |
-Maximum aantal gegevens schijven | Maxi maal 64, in overeenstemming met de ondersteuning voor een specifieke Azure VM-grootte | Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd) over VM-grootten.
+Maximum aantal gegevens schijven | Maxi maal 64, in overeenstemming met de ondersteuning voor een specifieke Azure VM-grootte | Meer [informatie](../virtual-machines/windows/sizes.md) over VM-grootten.
 Wijzigings frequentie van gegevens schijven | Maxi maal 10 MBps per schijf voor Premium-opslag. Maxi maal 2 MBps per schijf voor standaard opslag. | Als de gemiddelde waarde voor het wijzigen van de gegevens op de schijf continu hoger is dan het maximum, wordt de voor bereiding niet opvangen.<br/><br/>  Als het maximum echter sporadisch wordt overschreden, kan de voor bereiding worden opgevangen, maar ziet u mogelijk enigszins vertraagde herstel punten.
 Gegevens schijf (standaard opslag account) | Niet ondersteund. | Wijzig het opslag type in beheerde schijf en probeer vervolgens de virtuele machine te verplaatsen.
 Gegevens schijf (Premium Storage-account) | Niet ondersteund | Wijzig het opslag type in beheerde schijf en probeer vervolgens de virtuele machine te verplaatsen.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794558"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056214"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
 
@@ -328,13 +328,13 @@ Wanneer een groep wordt gemaakt, kan de eind gebruiker met bepaalde eind punten 
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Terugschrijven naar on-premises groep (preview-versie)
 
-Vandaag worden nog veel groepen beheerd in on-premises Active Directory. Voor het beantwoorden van aanvragen om Cloud groepen te synchroniseren met on-premises, is de functie voor het terugschrijven van Office 365-groepen voor Azure AD nu beschikbaar als preview-versie.
+Vandaag worden nog veel groepen beheerd in on-premises Active Directory. Voor het beantwoorden van aanvragen om Cloud groepen te synchroniseren met on-premises, Microsoft 365 Groups-functie voor het terugschrijven van Azure AD is nu beschikbaar als preview-versie.
 
-Office 365-groepen worden gemaakt en beheerd in de Cloud. Met de back-upfunctie kunt u Office 365-groepen als distributie groepen schrijven naar een Active Directory-forest waarop Exchange is geïnstalleerd. Gebruikers met on-premises Exchange-post vakken kunnen vervolgens e-mails van deze groepen verzenden en ontvangen. De functie voor het terugschrijven van groepen biedt geen ondersteuning voor Azure AD-beveiligings groepen of-distributie groepen.
+Microsoft 365 groepen worden gemaakt en beheerd in de Cloud. Met de back-upfunctie kunt u Microsoft 365 groepen als distributie groepen wegschrijven naar een Active Directory-forest waarop Exchange is geïnstalleerd. Gebruikers met on-premises Exchange-post vakken kunnen vervolgens e-mails van deze groepen verzenden en ontvangen. De functie voor het terugschrijven van groepen biedt geen ondersteuning voor Azure AD-beveiligings groepen of-distributie groepen.
 
 Raadpleeg de documentatie voor de [Azure AD Connect Sync-Service](../hybrid/how-to-connect-syncservice-features.md)voor meer informatie.
 
-Het terugschrijven van Office 365-groep is een open bare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor een aantal juridische informatie over voor beelden.
+Het terugschrijven van Microsoft 365 groep is een open bare preview-functie van Azure Active Directory (Azure AD) en is beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor een aantal juridische informatie over voor beelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

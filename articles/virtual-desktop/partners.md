@@ -3,15 +3,15 @@ title: Windows Virtual Desktop-partner integraties-Azure
 description: Meer informatie over de partners van een virtueel bureau blad van Windows en de documentatie over hoe u ermee kunt integreren.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612364"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056390"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -46,7 +46,8 @@ Als een Windows-goedgekeurd virtuele bureau blad-provider kan VMware klanten hel
 
 10ZiG's wereld-Market leiderschap in dun en nul-client eindpunt apparaten en beheer software voor virtuele Bureau bladen wordt geïllustreerd door de wijze waarop ze voor hun klanten werken. De thin client-hardware wordt geleverd met goed opgebouwde voor delen van functies en opties om ervoor te zorgen dat klanten de juiste client apparaten ontvangen op basis van hun behoeften. 10ZiG past de apparaten aan aan de klant omgevingen met Windows-en Linux-clients die de best mogelijke prestaties bieden in virtuele Bureau bladen, zowel binnen als buiten de Cloud.
 
-- [Ga naar de website van de partner](https://www.10zig.com/about/microsoft-wvd).
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR).
+- [Ga naar de website van de partner](https://www.10zig.com/about/microsoft-windows-virtual-desktop).
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ In combi natie met Windows Virtual Desktop biedt ControlUp extra mogelijkheden v
 
 De thin clients van Dell Technologies zijn geoptimaliseerd voor toegang tot Microsoft Azure en virtuele bureau blad-services van Windows. Wyse thin-clients kunnen voldoen aan de behoeften van werk nemers met samenwerkings kennis tot grafische intensieve kracht gebruikers, maar bieden een hoogwaardige computer ervaring om optimaal te profiteren van het groeiende aantal apps en inhoud. Het is ideaal voor omgevingen met beperkte ruimte, maar Wyse thin-clients worden aangepast aan de manier waarop mensen werken met veelzijdige vorm factoren en een breed scala aan mogelijkheden voor het koppelen van opties.
 
-Wyse thin-clients zijn ontworpen met beveiliging in het licht van beperkte kwets baarheid, ondersteuning voor nalevings normen voor beveiliging en geavanceerde multi-factor Authentication-oplossingen. Implementeer uiterst beveiligde thin clients met door Dell exclusieve Wyse ThinOS of Bewaak beveiligde toegang tot Cloud toepassingen en virtuele werk ruimten van geharde Wyse ThinLinux met een commercieel bewezen ontwerp en Windows 10 IoT Enter prise met door Dell toegevoegde beveiligings functies. Met veilige, op HTTPS gebaseerde communicatie en Active Directory-verificatie voor op rollen gebaseerd beheer, houdt Wyse Management Suite Wyse-eind punten altijd up-to-date en met de mobiele app voor WMS Pro kan IT kritieke waarschuwingen weer geven en realtime opdrachten met één tik op elk gewenst moment verzenden.
+Wyse thin-clients zijn ontworpen met beveiliging in gedachte met beperkte kwets baarheid, ondersteuning voor nalevings normen voor beveiliging en geavanceerde multi-factor Authentication-oplossingen. Implementeer uiterst beveiligde thin clients met Windows 10 IoT Enter prise en door Dell toegevoegde beveiligings functies. Op veilige, op HTTPS gebaseerde communicatie en Active Directory-verificatie voor op rollen gebaseerd beheer, houdt Wyse Management Suite Wyse-eind punten altijd up-to-date en met de mobiele app voor WMS Pro kan IT kritieke waarschuwingen weer geven en realtime opdrachten met één tik op elk gewenst moment verzenden.
 
 - [Ga naar de website van de partner](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
 
@@ -190,6 +191,15 @@ De Lakeside-oplossing voor digitale beleving, SysTrack, kan u helpen een fantast
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
 - [Ga naar de website van de partner](https://www.lakesidesoftware.com/assessments/wvd).
 
+## <a name="lenovo"></a>Lenovo
+
+![Lenovo-logo](./media/partners/lenovo.png)
+
+Lenovo thin clients bieden uw netwerk de flexibiliteit van een client computer die vanaf uw server wordt uitgevoerd, maar met native PC-functionaliteit en-kracht. Lenovo thin clients bieden Windows Virtual Desktop-implementaties razendsnelle prestaties en intuïtieve beheer baarheid, waardoor het netwerk van uw bedrijf naar het volgende niveau van betrouw baarheid kan worden uitgebreid. Elke thin client is uitgerust met een Lenovo terminal manager-licentie zonder extra kosten voor de naadloze en rendabele hardware-beheer-en implementatie opties. Ze zijn ook klein en veelzijdig, waardoor ze eenvoudig kunnen worden toegevoegd aan bestaande Lenovo-implementaties.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB).
+- [Ga naar de website van de partner](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients).
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware-logo](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Aanmelden VSI is een Windows-service provider voor virtueel bureau blad en micro
 
 - [Ga naar de website van de partner](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni-logo](./media/partners/nasuni.png)
+
+Nasuni Corp., de toonaangevende provider van Cloud bestands Services en een topazure Global ISV-partner, biedt het Nasuni software-as-a-service-platform als de moderne oplossing voor bestands opslag voor moderne virtuele Bureau bladen. Nasuni, in combi natie met Azure Blob Storage, consolideert de primaire bestands opslag (NAS), back-ups van bestanden, herstel na nood gevallen en bestands synchronisatie over meerdere regio's in één geïntegreerde oplossing. Met Nasuni kunnen ondernemingen virtuele Windows-Bureau bladen implementeren voor meer use cases en in meer Azure-regio's, het beheer vereenvoudigen en zorgen voor bedrijfs continuïteit. 
+
+Windows Virtual Desktop is een moderne VDI-oplossing voor de Cloud en vereist moderne Cloud bestands opslag. Normaal gesp roken is VDI File Storage gebaseerd op Network-Attached Storage (NAS) en de on-premises hardware van de bestands server en de bijbehorende vereiste technologie voor het maken van back-ups van bestanden, herstel en herstel na nood gevallen. Deze traditionele benaderingen zijn duur, complex om te onderhouden en te beheren, en kunnen niet eenvoudig worden geschaald. Ze introduceren ook latentie als het wordt gebruikt in combi natie met een moderne VDI-oplossing in de Cloud, zoals Windows virtueel bureau blad, vanwege de fysieke afstand en de langzamere WAN-verbindingen tussen de Bureau bladen op basis van Azure en de opslag op basis van lokale bestanden. Nasuni, een platform voor bestands Services dat speciaal voor Azure is gebouwd, biedt onbeperkte opslag capaciteit voor bestanden en bestands toegang met hoge prestaties. Nasuni kunnen zich in dezelfde Azure-regio's bevinden met het virtuele bureau blad van Windows om voordelige, hoogwaardige bestands toegang te bieden tot één globale naam ruimte. Nasuni biedt Windows-bestands opslag voor virtueel bureau blad met een fractie van de kosten van traditionele NAS-en Windows-bestands servers en bevat ingebouwde back-ups en herstel na nood gevallen om de kosten te verlagen en IT-resources vrij te maken.
+
+- [Ga naar de website van de partner](https://www.nasuni.com/partner/microsoft/#wvd).
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio-logo](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio breidt de waarde van het virtuele bureau blad van Windows uit door eenvou
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Ga naar de website van de partner](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="nexthink"></a>Nexthink
+
+![Nexthink-logo](./media/partners/nexthink.png)
+
+Nexthink is een Windows-provider voor virtueel bureau blad waarmee organisaties de digitale ervaring en productiviteit van hun werk nemers kunnen meten, beheren en verbeteren. Met een constante Lees bewerking op de Pulse van digitale werk nemers, kan de technologie voortdurend de mogelijkheid bieden om mensen te benaderen, te stimuleren en te verlichten, ongeacht waar ze zich bevinden. 
+
+Door oplossingen te bieden met zicht bare werkplek bronnen, biedt Nexthink u context en inzicht in uw gebruikers database. Het krachtige beheer platform van Nexthink helpt IT-teams ervoor te zorgen dat migraties naar Windows virtueel bureau blad worden gepland en tijdig op de juiste manier in werking worden gesteld.
+
+- [Ga naar de website van de partner](https://www.nexthink.com/initiative/desktop-virtualization/).
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT).
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van
 
 ![Rimo3-logo](./media/partners/rimo3.png)
 
-Rimo3 verbetert de Windows Virtual Desktop-ervaring door de implementatie te versnellen en voortdurend veranderingen beheer te verbeteren. Rimo3 voorziet IT-teams van de kennis die ze nodig hebben om uw toepassings portefeuille te ondersteunen voor de gereedheid voor Azure-migratie van toepassings werkbelastingen. Gebruikers kunnen toepassingen onboarden en ze testen in hun virtuele Windows-werk ruimte voor virtueel bureau blad snel en painlessly. Gebruikers kunnen ook proactief inzicht krijgen in de gevolgen van wijzigingen wanneer hun organisatie nieuwe toepassingen en updates samenvoegt. Ten slotte kunnen IT-beheerders gebruikmaken van Rimo3's intelligent rook testen en functionaliteits tests automatiseren zonder gebruikers sessies te onderbreken.
+Rimo3 verbetert de Windows Virtual Desktop-ervaring met het gebruiks vriendelijke, schaal bare en Cloud platform voor de modernisering van toepassingen.
 
-Rimo3 biedt een eenvoudig te gebruiken, schaalbaar, geautomatiseerd platform voor automatisch testen van toepassingen. Dit platform bevat mogelijkheden voor alle drie basis principes voor het testen van toepassingen: compatibiliteit, functionaliteit en prestaties. Hiermee kunnen organisaties, leiders en teams de bedrijfs continuïteit verbeteren, wijzigingen sneller en gebruikers ervaring optimaliseren.
+Voor IT-teams helpt Rimo3 bij het ontdekken, moderniseren en beheren van werk belastingen van toepassingen voor de overstap naar Windows virtueel bureau blad. Gebruikers kunnen hun toepassings portefeuille automatisch scannen om kandidaten te ontdekken die geschikt zijn voor onboarding in het virtuele bureau blad van Windows of moderniseren naar MSIX.  
+
+Gebruikers kunnen vooraf testen van hun toepassingen automatiseren, apps converteren naar MSIX en na de conversie testen tijdens het Toep assen van automatisch herstel als de apps niet goed worden geconverteerd. Het resultaat is een modern MSIX-pakket met implementatie gereed. Met elke Windows-functie release en-update van het virtuele bureau blad kunnen gebruikers volledig apps automatisch testen voordat ze worden geïmplementeerd, zodat ze volledig betrouw bare en doorlopend beheer bieden.
+
+Voor Managed service providers helpt Rimo3 de mogelijkheid van de beheerde services uit te breiden om de marges te verbeteren en om hen te helpen de project-gebaseerde omzet te verg Roten naar op een abonnement gebaseerde terugkerende omzet en waarde toe te voegen aan klanten die zich willen moderniseren en verplaatsen naar het virtuele bureau blad van Windows en regel matige updates in hun werk ruimten te beheren.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
-- [Ga naar de website van de partner](https://rimo3.com/outcomes/).
+- [Ga naar de website van de partner](https://rimo3.com/windows-virtual-desktop/).
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ het innovatie-en ontwikkelings Lab van sepago bouwt slimme oplossingen met behul
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
 - [Ga naar de website van de partner](https://www.sepago.de/en/).
+
+## <a name="ssh2"></a>SSH2
+
+![SSH2-logo](./media/partners/ssh2.png)
+
+SSH2 is een Windows-service provider met toegevoegde waarde waarmee uw IT-teams software kunnen versnellen, zodat de levering van de toepassing kan worden versneld vanaf het huidige platform naar het virtuele bureau blad van Windows op Azure. Met SSH2 kunt u het vastleggen van toepassingen versnellen om het migratie proces te stroom lijnen. SSH2's appCURE legt het uitvoeren van toepassingen op het eind punt vast, maakt het bijwerken en herstellen mogelijk om een uitgebreide stap wijziging te maken in de snelheid waarmee de eind gebruikers omgevingen kunnen worden uitgevoerd. 
+
+appCURE legt toepassings details vast van het uitvoeren van toepassingen om ervoor te zorgen dat alle punten die van invloed kunnen zijn op de toepassingen van uw eind gebruiker worden begrepen. appCURE updates en levert deze vervolgens op uw nieuwe virtuele Windows-bureau blad. Door alle toepassings integratie punten in uw huidige omgeving vast te leggen, biedt appCURE de snelheid om IT-resources te optimaliseren en te plannen voor uw migraties beter en sneller dan ooit voordat organisaties hun productie sneller kunnen uitvoeren.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
+- [Ga naar de partner pagina](https://www.ssh2.xyz/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ een grote limiet, het uberAgent-bedrijf, geeft inzicht in de implementaties van 
 
 uberAgent is een bewakings-en analyse product dat is ontworpen voor eind gebruikers die niet alleen gegevens verzamelen; het biedt klanten de informatie die van belang is. uberAgent heeft zijn eigen metrische gegevens, met belang rijke aspecten van de gebruikers ervaring, de prestaties van toepassingen en Endpoint Security, waarmee u alles wat u nodig hebt om te weten te komen over uw virtuele bureau blad-Vm's in Windows zonder dat dit van invloed is op de gebruikers densiteit van uw systemen. uberAgent vereenvoudigt het oplossen van problemen, helpt bij het verg Roten/verkleinen en biedt uitgebreide informatie die essentieel is voor informatie beveiliging.
 
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39).
 - [Ga naar de website van de partner](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
 
 ## <a name="workspace-365"></a>Werk ruimte 365

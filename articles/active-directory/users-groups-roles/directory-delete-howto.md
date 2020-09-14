@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795419"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056299"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Een Tenant verwijderen in Azure Active Directory
 
@@ -27,12 +27,12 @@ Wanneer een Azure AD-organisatie (Tenant) wordt verwijderd, worden ook alle reso
 
 ## <a name="prepare-the-organization"></a>De organisatie voorbereiden
 
-U kunt een organisatie in azure AD pas verwijderen als er verschillende controles worden door gegeven. Deze controles verminderen het risico dat het verwijderen van een Azure AD-organisatie een negatieve invloed heeft op de gebruikers toegang, zoals de mogelijkheid om zich aan te melden bij Office 365 of om toegang te krijgen tot resources in Azure. Als de organisatie die is gekoppeld aan een abonnement, bijvoorbeeld per ongeluk is verwijderd, hebben gebruikers geen toegang tot de Azure-resources voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
+U kunt een organisatie in azure AD pas verwijderen als er verschillende controles worden door gegeven. Deze controles verminderen het risico dat het verwijderen van een Azure AD-organisatie een negatieve invloed heeft op de gebruikers toegang, zoals de mogelijkheid om zich aan te melden bij Microsoft 365 of om toegang te krijgen tot resources in Azure. Als de organisatie die is gekoppeld aan een abonnement, bijvoorbeeld per ongeluk is verwijderd, hebben gebruikers geen toegang tot de Azure-resources voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
 
 * Er kunnen zich geen gebruikers in de Azure AD-organisatie (Tenant) bevinden, met uitzonde ring van één globale beheerder die de organisatie moet verwijderen. Andere gebruikers moeten worden verwijderd voordat de organisatie kan worden verwijderd. Als gebruikers van on-premises worden gesynchroniseerd, moet de synchronisatie eerst worden uitgeschakeld en moeten de gebruikers worden verwijderd uit de Cloud organisatie met behulp van de Azure Portal-of Azure PowerShell-cmdlets.
 * Er kunnen geen toepassingen in de organisatie zijn. Alle toepassingen moeten worden verwijderd voordat de organisatie kan worden verwijderd.
 * Er kunnen geen multi-factor Authentication-providers zijn gekoppeld aan de organisatie.
-* Er kunnen geen abonnementen zijn voor micro soft Online Services, zoals Microsoft Azure, Office 365 of Azure AD Premium die zijn gekoppeld aan de organisatie. Als er bijvoorbeeld een standaard Azure AD-organisatie is gemaakt in azure, kunt u deze organisatie niet verwijderen als uw Azure-abonnement voor verificatie nog steeds afhankelijk is van deze organisatie. Op dezelfde manier kunt u een organisatie niet verwijderen als een andere gebruiker er een abonnement aan heeft gekoppeld.
+* Er kunnen geen abonnementen zijn voor micro soft Online Services, zoals Microsoft Azure, Microsoft 365 of Azure AD Premium die zijn gekoppeld aan de organisatie. Als er bijvoorbeeld een standaard Azure AD-organisatie is gemaakt in azure, kunt u deze organisatie niet verwijderen als uw Azure-abonnement voor verificatie nog steeds afhankelijk is van deze organisatie. Op dezelfde manier kunt u een organisatie niet verwijderen als een andere gebruiker er een abonnement aan heeft gekoppeld.
 
 ## <a name="delete-the-organization"></a>De organisatie verwijderen
 
@@ -52,16 +52,16 @@ U kunt een organisatie in azure AD pas verwijderen als er verschillende controle
 
 ## <a name="if-you-cant-delete-the-organization"></a>Als u de organisatie niet kunt verwijderen
 
-Wanneer u uw Azure AD-organisatie hebt geconfigureerd, hebt u mogelijk ook op licenties gebaseerde abonnementen geactiveerd voor uw organisatie, zoals Azure AD Premium P2, Office 365 Business Premium of Enterprise Mobility + Security E5. Om onbedoeld gegevens verlies te voor komen, kunt u een organisatie pas verwijderen als de abonnementen volledig zijn verwijderd. De abonnementen moeten een niet- **ingerichte** status hebben om het verwijderen van de organisatie toe te staan. Een **verlopen** of **geannuleerde** abonnement wordt verplaatst naar de **Uitgeschakelde** status en de laatste fase is de status provisioned. **Deprovisioned**
+Wanneer u uw Azure AD-organisatie hebt geconfigureerd, hebt u mogelijk ook op licenties gebaseerde abonnementen geactiveerd voor uw organisatie, zoals Azure AD Premium P2, Microsoft 365 Business Standard of Enterprise Mobility + Security E5. Om onbedoeld gegevens verlies te voor komen, kunt u een organisatie pas verwijderen als de abonnementen volledig zijn verwijderd. De abonnementen moeten een niet- **ingerichte** status hebben om het verwijderen van de organisatie toe te staan. Een **verlopen** of **geannuleerde** abonnement wordt verplaatst naar de **Uitgeschakelde** status en de laatste fase is de status provisioned. **Deprovisioned**
 
-Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen. 
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef Microsoft 365 abonnement verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licenties). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Microsoft 365 for Business-abonnement wordt beëindigd?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)voor meer informatie over Microsoft 365 het bewaren van gegevens en de levens cyclus van een abonnement. 
 
 Abonnements status | Gegevens | Toegang tot gegevens
 ----- | ----- | -----
-Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen 
-Verlopen (30 dagen) | Gegevens die toegankelijk zijn voor alle| Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
-Uitgeschakeld (30 dagen) | Gegevens die alleen toegankelijk zijn voor beheerders | Gebruikers hebben geen toegang tot Office 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum, maar kunnen geen licenties toewijzen of gebruikers bijwerken
-Inrichting ongedaan gemaakt (30 dagen na uitgeschakeld) | Gegevens verwijderd (automatisch verwijderd als er geen andere services worden gebruikt) | Gebruikers hebben geen toegang tot Office 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
+Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot Microsoft 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen 
+Verlopen (30 dagen) | Gegevens die toegankelijk zijn voor alle| Gebruikers hebben normale toegang tot Microsoft 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
+Uitgeschakeld (30 dagen) | Gegevens die alleen toegankelijk zijn voor beheerders | Gebruikers hebben geen toegang tot Microsoft 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum, maar kunnen geen licenties toewijzen of gebruikers bijwerken
+Inrichting ongedaan gemaakt (30 dagen na uitgeschakeld) | Gegevens verwijderd (automatisch verwijderd als er geen andere services worden gebruikt) | Gebruikers hebben geen toegang tot Microsoft 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
 
 ## <a name="delete-a-subscription"></a>Een abonnement verwijderen
 
@@ -97,7 +97,7 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proef abonnement dat verwijderen blokkeert
 
-Er zijn [self-service-aanmeldingen](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie in uw Azure AD-organisatie wordt gemaakt. Met deze self-service producten worden verwijderde mappen geblokkeerd totdat de producten volledig zijn verwijderd uit de organisatie, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
+Er zijn [self-service-aanmeldingen](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich registreren via Microsoft 365, waarmee ook een gast gebruiker voor verificatie in uw Azure AD-organisatie wordt gemaakt. Met deze self-service producten worden verwijderde mappen geblokkeerd totdat de producten volledig zijn verwijderd uit de organisatie, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
 
 Er zijn twee soorten self-service registratie producten die worden toegewezen: 
 
@@ -108,7 +108,7 @@ Wanneer u het verwijderen van het self-service-aanmeldings product start, worden
 
 Zie [beschik bare selfservice Program ma's](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over momenteel beschik bare self-service voor het aanmelden van services.
 
-Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef Microsoft 365 abonnement verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licenties). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Microsoft 365 for Business-abonnement wordt beëindigd?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over Microsoft 365 het bewaren van gegevens en de levens cyclus van een abonnement.
 
 Product status | Gegevens | Toegang tot gegevens
 ------------- | ---- | --------------

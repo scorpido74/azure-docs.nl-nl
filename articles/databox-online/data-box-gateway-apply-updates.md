@@ -2,17 +2,17 @@
 title: Update installeren op het apparaat Azure Data Box Gateway serie | Microsoft Docs
 description: Hierin wordt beschreven hoe u updates toepast met de Azure Portal en de lokale web-UI voor het Azure Data Box Gateway Series-apparaat
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783872"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055960"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Uw Azure Data Box Gateway bijwerken
 
@@ -22,7 +22,7 @@ In dit artikel worden de stappen beschreven die nodig zijn voor het installeren 
 >
 > - Update **1911** komt overeen met de **1.6.1049.786** -software versie op het apparaat. Ga naar [release opmerkingen](data-box-gateway-1911-release-notes.md)voor meer informatie over deze update.
 >
-> - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Gezien de Data Box Gateway een apparaat met één knoop punt is, wordt elke I/O-bewerking onderbroken en wordt het apparaat een downtime van Maxi maal 30 minuten voor de software-update van het apparaat.
+> - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Omdat Data Box Gateway een apparaat met één knooppunt is, wordt elke actieve I/O-bewerking onderbroken en heeft het apparaat een downtime van maximaal 30 minuten voor de software-update van het apparaat.
 
 Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 

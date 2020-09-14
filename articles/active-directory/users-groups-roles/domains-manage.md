@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795343"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056248"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
 
@@ -55,7 +55,7 @@ Als u al een contoso.com-domein aan een Azure AD-Tenant hebt toegevoegd, kunt u 
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Wat u moet doen als u de DNS-registratie functie voor uw aangepaste domein naam wijzigt
 
-Als u de DNS-registratie service wijzigt, zijn er geen aanvullende configuratie taken in azure AD. U kunt de domein naam zonder onderbreking blijven gebruiken met Azure AD. Als u uw aangepaste domein naam gebruikt met Office 365, intune of andere services die afhankelijk zijn van aangepaste domein namen in azure AD, raadpleegt u de documentatie voor deze services.
+Als u de DNS-registratie service wijzigt, zijn er geen aanvullende configuratie taken in azure AD. U kunt de domein naam zonder onderbreking blijven gebruiken met Azure AD. Als u uw aangepaste domein naam gebruikt met Microsoft 365, intune of andere services die afhankelijk zijn van aangepaste domein namen in azure AD, raadpleegt u de documentatie voor deze services.
 
 ## <a name="delete-a-custom-domain-name"></a>Een aangepaste domein naam verwijderen
 
@@ -75,7 +75,7 @@ U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure
 
 Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit geldt ook voor Exchange mail-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
-* U hebt een domein aangeschaft via Office 365 Domain Subscription Services
+* U hebt een domein aangeschaft via Microsoft 365-abonnements services van het domein
 * U bent een partner die u beheert namens een andere klant organisatie
 
 De volgende acties worden uitgevoerd als onderdeel van de **ForceDelete** -bewerking:

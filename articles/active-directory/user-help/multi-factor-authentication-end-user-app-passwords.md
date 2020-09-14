@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266233"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056078"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>App-wacht woorden beheren voor verificatie in twee stappen
 
@@ -44,7 +44,7 @@ U kunt app-wacht woorden maken en verwijderen op basis van de manier waarop u tw
 
 - **Uw organisatie gebruikt twee ledige verificatie en de extra beveiligings verificatie pagina.** Als u uw werk-of school account (zoals alain@contoso.com ) gebruikt met twee ledige verificatie in uw organisatie, kunt u uw app-wacht woorden beheren via de [pagina aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/Proofup.aspx). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met de extra beveiligings verificatie pagina](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in dit artikel.
 
-- **Uw organisatie gebruikt twee ledige verificatie en de Office 365-Portal.** Als u uw werk-of school account gebruikt (zoals, alain@contoso.com ), twee ledige verificatie en Office 365-apps in uw organisatie, kunt u uw app-wacht woorden beheren via de pagina van de [Office 365-Portal](https://www.office.com). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) in dit artikel.
+- **Uw organisatie gebruikt twee ledige verificatie en de Office 365-Portal.** Als u uw werk-of school account (zoals alain@contoso.com ), twee ledige verificatie en Microsoft 365 apps in uw organisatie gebruikt, kunt u uw app-wacht woorden beheren via de [pagina Office 365-Portal](https://www.office.com). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) in dit artikel.
 
 - **U gebruikt twee ledige verificatie met een persoonlijke Microsoft-account.** Als u een persoonlijke Microsoft-account gebruikt (zoals, alain@outlook.com ) met verificatie op basis van twee factoren, kunt u uw app-wacht woorden beheren op de [pagina met beveiligings beginselen](https://account.microsoft.com/security/). Voor gedetailleerde instructies raadpleegt [u app-wacht woorden gebruiken met apps die geen ondersteuning bieden voor verificatie in twee stappen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
@@ -82,11 +82,11 @@ U kunt app-wacht woorden maken en verwijderen op de pagina **aanvullende beveili
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>App-wacht woorden maken en verwijderen met behulp van de Office 365-Portal
 
-Als u verificatie in twee stappen gebruikt met uw werk-of school account en uw Office 365-apps, kunt u uw app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal.
+Als u verificatie in twee stappen gebruikt met uw werk-of school account en uw Microsoft 365-apps, kunt u uw app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal.
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>App-wacht woorden maken met behulp van de Office 365-Portal
 
-1. Meld u aan bij Office 365 en ga naar de [pagina Mijn account](https://portal.office.com), selecteer **beveiliging & privacy**en vouw vervolgens **extra beveiligings verificatie**uit.
+1. Meld u aan bij uw werk-of school account, ga naar de [pagina Mijn account](https://portal.office.com), selecteer **beveiliging & privacy**en vouw vervolgens **extra beveiligings verificatie**uit.
 
     ![Office-Portal met uitgebreid extra beveiligings verificatie gebied](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

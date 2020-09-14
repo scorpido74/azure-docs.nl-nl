@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782478"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056282"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen die u niet kunt beheren in Privileged Identity Management
 
@@ -35,9 +35,9 @@ U kunt de volgende klassieke abonnements beheerders rollen niet beheren in Privi
 
 Zie voor meer informatie over de beheerders rollen van klassieke abonnementen [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerders rollen?
+## <a name="what-about-microsoft-365-admin-roles"></a>Hoe zit het met Microsoft 365 beheerders rollen?
 
-We ondersteunen alle Office365-functies in de Azure AD-functies en-Portal-ervaring, zoals Exchange-beheerder en share point-beheerder, maar ondersteunen geen specifieke rollen binnen Exchange RBAC of share point RBAC. Zie voor meer informatie over deze Office 365-Services [office 365-beheerders rollen](/office365/admin/add-users/about-admin-roles).
+We ondersteunen alle Microsoft 365 rollen in de Azure AD-functies en de portal-ervaring voor beheerders, zoals Exchange Administrator en share point Administrator, maar bieden geen ondersteuning voor specifieke rollen binnen Exchange RBAC of share point RBAC. Zie [Microsoft 365 admin roles](/office365/admin/add-users/about-admin-roles)(Engelstalig) voor meer informatie over deze Microsoft 365 Services.
 
 > [!NOTE]
 > Gebruikers die in aanmerking komen voor de share point-beheerdersrol, de rol van het apparaat en alle rollen die toegang proberen te krijgen tot het micro soft Security and Compliance Center kunnen vertragingen van een paar uur ondervinden na het activeren van hun rol. We werken samen met die teams om de problemen op te lossen.

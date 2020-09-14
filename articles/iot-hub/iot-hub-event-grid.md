@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327647"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056163"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -188,7 +188,7 @@ Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt 
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beperkingen voor gebeurtenissen bij verbinden van apparaat en verbreken van verbinding van apparaat
 
-Als u gebeurtenissen wilt ontvangen voor de verbindings status van een apparaat, moet een apparaat een "C2D"-telemetrie verzenden of een ' bewerking voor het ontvangen van een bericht ' met IOT hub. Houd er echter rekening mee dat als een apparaat gebruikmaakt van het AMQP-protocol om verbinding te maken met IOT hub, u wordt aangeraden de bewerking ' C2D receive Message ' uit te voeren, anders worden de meldingen van de verbindings status mogelijk met enkele minuten uitgesteld. Als uw apparaat gebruikmaakt van het MQTT-protocol, blijft de C2D IoT Hub-koppeling geopend. Voor AMQP kunt u de koppeling C2D openen door de [API receive async](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)aan te roepen, voor de IOT hub C#-SDK of de [apparaatclient voor AMQP](iot-hub-amqp-support.md#device-client).
+Als u gebeurtenissen wilt ontvangen voor de verbindings status van een apparaat, moet een apparaat een "C2D"-telemetrie verzenden of een ' bewerking voor het ontvangen van een bericht ' met IOT hub. Houd er echter rekening mee dat als een apparaat gebruikmaakt van het AMQP-protocol om verbinding te maken met IOT hub, u wordt aangeraden de bewerking ' C2D receive Message ' uit te voeren, anders worden de meldingen van de verbindings status mogelijk met enkele minuten uitgesteld. Als uw apparaat gebruikmaakt van het MQTT-protocol, blijft de C2D IoT Hub-koppeling geopend. Voor AMQP kunt u de koppeling C2D openen door de interface voor het ontvangen van async voor IoT Hub C# SDK of de [apparaatclient voor AMQP](iot-hub-amqp-support.md#device-client)aan te roepen.
 
 De koppeling D2C is open als u telemetrie verzendt. 
 
@@ -214,4 +214,4 @@ Toepassingen die IoT Hub-gebeurtenissen verwerken, moeten de volgende aanbevolen
 
 * [De verschillen tussen de route ring IoT Hub gebeurtenissen en berichten vergelijken](iot-hub-event-grid-routing-comparison.md)
 
-* [Meer informatie over het gebruik van IoT-telemetrie-gebeurtenissen voor het implementeren van IoT ruimtelijke analyse met behulp van Azure Maps](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Meer informatie over het gebruik van IoT-telemetrie-gebeurtenissen voor het implementeren van IoT ruimtelijke analyse met behulp van Azure Maps](../azure-maps/tutorial-iot-hub-maps.md)
