@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115863"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085600"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
@@ -90,8 +90,8 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
 | Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
 | Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |180 dagen<sup>1</sup> |
+| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |180 dagen<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
 * <sup>2</sup> Om ervoor te zorgen dat de webclient van micro soft teams werkt, wordt aanbevolen om AccessTokenLifetime meer dan 15 minuten te houden voor micro soft-teams.
@@ -400,7 +400,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -413,7 +413,7 @@ Get-AzureADPolicy
 
 | Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Beschrijving |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> Beschrijving |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -441,10 +441,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Beschrijving |Matrix van stringified JSON die alle regels van het beleid bevat. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Beschrijving |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Beschrijving |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> Beschrijving |Matrix van stringified JSON die alle regels van het beleid bevat. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> Beschrijving |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> Beschrijving |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 

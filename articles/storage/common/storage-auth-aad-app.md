@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018804"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069812"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
-Een belang rijk voor deel van het gebruik van Azure Active Directory (Azure AD) met Azure Blob Storage of de wachtrij opslag is dat uw referenties niet meer in uw code hoeven te worden opgeslagen. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform (voorheen Azure AD). Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD het toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om aanvragen voor Azure Blob Storage of de wachtrij opslag te autoriseren.
+Een belang rijk voor deel van het gebruik van Azure Active Directory (Azure AD) met Azure Blob Storage of de wachtrij opslag is dat uw referenties niet meer in uw code hoeven te worden opgeslagen. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD het toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om aanvragen voor Azure Blob Storage of de wachtrij opslag te autoriseren.
 
 In dit artikel wordt beschreven hoe u uw systeem eigen toepassing of webtoepassing configureert voor verificatie met micro soft Identity platform 2,0. Het code voorbeeld bevat .NET, maar andere talen gebruiken een vergelijk bare methode. Zie [overzicht van micro soft Identity platform (v 2.0)](../../active-directory/develop/v2-overview.md)voor meer informatie over micro soft identity platform 2,0.
 
@@ -27,7 +27,7 @@ Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van 
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Een rol toewijzen aan een Azure AD-beveiligings-principal
 
-Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde Azure-rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de Azure-rol wordt toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
+Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de RBAC-rol is toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-Tenant
 
@@ -127,39 +127,78 @@ Een voltooide voor beeld-webtoepassing waarmee een token wordt opgehaald en word
 
 Installeer de Azure Storage-client bibliotheek vanuit Visual Studio. Selecteer in het menu **Tools** de optie **NuGet Package Manager** en vervolgens **Package Manager Console**. Typ de volgende opdrachten in het console venster om de benodigde pakketten te installeren vanuit de Azure Storage-client bibliotheek voor .NET:
 
+# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+
+```console
+Install-Package Azure.Storage.Blobs
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+```
+
+Voeg vervolgens de volgende using-instructies toe aan het HomeController.cs-bestand:
+
+```csharp
+using Microsoft.Identity.Web; //MSAL library for getting the access token
+using Azure.Storage.Blobs;
+```
+
+# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
 Voeg vervolgens de volgende using-instructies toe aan het HomeController.cs-bestand:
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
+
+---
 
 #### <a name="create-a-block-blob"></a>Een blok-Blob maken
 
 Voeg het volgende code fragment toe om een blok-BLOB te maken:
 
+# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+
+```csharp
+private static async Task<string> CreateBlob(TokenAcquisitionTokenCredential tokenCredential)
+{
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    BlobClient blobClient = new BlobClient(blobUri, tokenCredential);
+
+    string blobContents = "Blob created by Azure AD authenticated user.";
+    byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+    using (MemoryStream stream = new MemoryStream(byteArray))
+    {
+        await blobClient.UploadAsync(stream);
+    }
+    return "Blob successfully created";
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
 {
-    // Create a blob on behalf of the user
+    // Create a blob on behalf of the user.
     TokenCredential tokenCredential = new TokenCredential(accessToken);
     StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
-    // Replace the URL below with your storage account URL
-    CloudBlockBlob blob =
-        new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-            storageCredentials);
+    // Replace the URL below with the URL to your blob.
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
 }
 ```
+
+---
 
 > [!NOTE]
 > Als u BLOB-en wachtrij bewerkingen wilt autoriseren met een OAuth 2,0-token, moet u HTTPS gebruiken.
@@ -175,69 +214,25 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>Een OAuth-Token ophalen uit Azure AD
+#### <a name="get-an-access-token-from-azure-ad"></a>Een toegangstoken ophalen uit Azure AD
 
 Voeg vervolgens een methode toe die een token aanvraagt uit Azure AD namens de gebruiker. Met deze methode wordt het bereik gedefinieerd waarvoor machtigingen moeten worden toegekend. Zie [machtigingen en toestemming in het micro soft Identity platform-eind punt](../../active-directory/develop/v2-permissions-and-consent.md)voor meer informatie over machtigingen en bereiken.
 
 Gebruik de resource-ID om het bereik te maken waarvoor het token moet worden verkregen. In het voor beeld wordt het bereik gemaakt met behulp van de resource-ID in combi natie met het ingebouwde `user_impersonation` bereik. Dit geeft aan dat het token wordt aangevraagd namens de gebruiker.
 
-Houd er rekening mee dat u de gebruiker mogelijk moet presen teren met een interface die de gebruiker in staat stelt om toestemming te geven om de tokens in hun naam aan te vragen. Wanneer toestemming nodig is, wordt de **MsalUiRequiredException** door het voor beeld onderschept en wordt een andere methode aangeroepen om de aanvraag voor toestemming te vergemakkelijken:
+Houd er rekening mee dat u de gebruiker mogelijk moet presen teren met een interface die de gebruiker in staat stelt om toestemming te geven om de tokens in hun naam aan te vragen:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new string[] { "https://storage.azure.com/user_impersonation" })]
 public async Task<IActionResult> Blob()
 {
-    var scopes = new string[] { "https://storage.azure.com/user_impersonation" };
-    try
-    {
-        var accessToken =
-            await _tokenAcquisition.GetAccessTokenOnBehalfOfUser(HttpContext, scopes);
-        ViewData["Message"] = await CreateBlob(accessToken);
-        return View();
-    }
-    catch (MsalUiRequiredException ex)
-    {
-        AuthenticationProperties properties =
-            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
-        return Challenge(properties);
-    }
+    string message = await CreateBlob(new TokenAcquisitionTokenCredential(_tokenAcquisition));
+    ViewData["Message"] = message;
+    return View();
 }
 ```
 
-Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment nodig heeft in de `scope` para meter. Zie de sectie met de titel **incrementele en dynamische toestemming** in [Waarom update to micro soft Identity platform (v 2.0)? (Engelstalig)](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
-
-De volgende methode bouwt de verificatie-eigenschappen voor het aanvragen van een incrementele toestemming:
-
-```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
-                                                                                    MsalUiRequiredException ex)
-{
-    AuthenticationProperties properties = new AuthenticationProperties();
-
-    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
-    string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
-                                                 scopes.Union(additionalBuildInScopes).ToList());
-
-    // Attempt to set the login_hint so that the logged-in user is not presented
-    // with an account selection dialog.
-    string loginHint = HttpContext.User.GetLoginHint();
-    if (!string.IsNullOrWhiteSpace(loginHint))
-    {
-        properties.SetParameter<string>(OpenIdConnectParameterNames.LoginHint, loginHint);
-
-        string domainHint = HttpContext.User.GetDomainHint();
-        properties.SetParameter<string>(OpenIdConnectParameterNames.DomainHint, domainHint);
-    }
-
-    // Specify any additional claims that are required (for instance, MFA).
-    if (!string.IsNullOrEmpty(ex.Claims))
-    {
-        properties.Items.Add("claims", ex.Claims);
-    }
-
-    return properties;
-}
-```
+Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment nodig heeft in de `scope` para meter. Zie [incrementele en dynamische toestemming](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
 
 ## <a name="view-and-run-the-completed-sample"></a>Het voltooide voor beeld weer geven en uitvoeren
 
@@ -271,12 +266,10 @@ Werk vervolgens de *appsettings.jsvoor* het bestand met uw eigen waarden als vol
 
 ### <a name="update-the-storage-account-and-container-name"></a>Het opslag account en de container naam bijwerken
 
-Werk in het *HomeController.cs* -bestand de URI bij die naar de blok-BLOB verwijst om de naam van uw opslag account en container te gebruiken:
+Werk in het *HomeController.cs* -bestand de URI bij die verwijst naar de blok-blob om de naam van uw opslag account en container te gebruiken, waarbij u de waarden tussen punt haken vervangt door uw eigen waarden:
 
-```csharp
-CloudBlockBlob blob = new CloudBlockBlob(
-                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-                      storageCredentials);
+```html
+https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
 ### <a name="enable-implicit-grant-flow"></a>Impliciete toekennings stroom inschakelen

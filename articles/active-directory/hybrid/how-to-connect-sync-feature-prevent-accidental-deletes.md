@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357355"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084606"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-synchronisatie: onopzettelijke verwijderingen voorkomen
 In dit onderwerp wordt de functie onopzettelijke verwijderingen voor komen (onbedoeld verwijderen voor komen) in Azure AD Connect beschreven.
@@ -65,7 +65,7 @@ Als alle verwijderingen gewenst zijn, gaat u als volgt te werk:
 
 1. Voer de Power shell-cmdlet uit om de huidige drempel waarde voor verwijderen op te halen `Get-ADSyncExportDeletionThreshold` . Geef een globaal beheerders account en wacht woord voor Azure AD op. De standaardwaarde is 500.
 2. Als u deze beveiliging tijdelijk wilt uitschakelen en deze wilt verwijderen, voert u de Power shell-cmdlet uit: `Disable-ADSyncExportDeletionThreshold` . Geef een globaal beheerders account en wacht woord voor Azure AD op.
-   ![Referenties](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
+   ![Scherm afbeelding toont een dialoog venster voor het invoeren van de gebruikers naam en het wacht woord van de globale beheerder van Azure AD.](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Selecteer, terwijl de Azure Active Directory-Connector nog steeds is geselecteerd, de actie **uitvoeren** en selecteer **exporteren**.
 4. Voer de Power shell-cmdlet uit om de beveiliging opnieuw in te scha kelen: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500` . Vervang 500 door de waarde die u hebt opgevallen bij het ophalen van de huidige verwijderings drempel. Geef een globaal beheerders account en wacht woord voor Azure AD op.
 

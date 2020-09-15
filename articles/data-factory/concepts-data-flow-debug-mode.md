@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030596"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085090"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -32,6 +32,11 @@ Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren 
 Wanneer de foutopsporingsmodus is ingeschakeld, bouwt u interactief uw gegevens stroom met een actief Spark-cluster. De sessie wordt gesloten zodra u debug uitschakelt in Azure Data Factory. U moet rekening houden met de kosten per uur die zijn gemaakt door Azure Databricks gedurende de periode dat de foutopsporingssessie is ingeschakeld.
 
 In de meeste gevallen is het een goed idee om uw gegevens stromen te bouwen in de foutopsporingsmodus, zodat u uw bedrijfs logica kunt valideren en uw gegevens transformaties weer geven voordat u uw werk in Azure Data Factory publiceert. Gebruik de knop ' fout opsporing ' in het deel venster pijplijn om uw gegevens stroom in een pijp lijn te testen.
+
+![Fout opsporingsgegevens voor gegevens stromen weer geven](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+> [!NOTE]
+> Elke debug-sessie die een gebruiker start vanuit de gebruikers interface van de ADF-browser, is een nieuwe sessie met een eigen Spark-cluster. U kunt de weer gave controle voor debug-sessies hierboven gebruiken voor het weer geven en beheren van debug-sessies per Factory.
 
 ## <a name="cluster-status"></a>De clusterstatus
 

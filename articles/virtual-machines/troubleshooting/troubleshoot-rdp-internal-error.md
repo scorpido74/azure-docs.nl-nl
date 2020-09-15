@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235159"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069761"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Er treedt een interne fout op wanneer u via Extern bureaublad probeert te verbinden met een Azure-VM
 
@@ -26,7 +26,7 @@ In dit artikel wordt een fout beschreven die kan optreden wanneer u probeert ver
 
 ## <a name="symptoms"></a>Symptomen
 
-U kunt geen verbinding maken met een virtuele Azure-machine met behulp van Remote Desktop Protocol (RDP). De verbinding wordt verbroken op de sectie extern configureren of het volgende fout bericht wordt weer gegeven:
+U kunt geen verbinding maken met een virtuele Azure-machine met behulp van Remote Desktop Protocol (RDP). De verbinding wordt verbroken in het gedeelte **externe configuratie configureren** of het volgende fout bericht wordt weer gegeven:
 
 - Interne RDP-fout
 - Er is een interne fout opgetreden
@@ -37,20 +37,24 @@ U kunt geen verbinding maken met een virtuele Azure-machine met behulp van Remot
 
 Dit probleem kan de volgende oorzaken hebben:
 
+- De virtuele machine is mogelijk aangevallen.
 - Kan geen toegang krijgen tot de lokale RSA-versleutelings sleutels.
 - Het TLS-protocol is uitgeschakeld.
 - Het certificaat is beschadigd of verlopen.
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+Voer de stappen in de volgende secties uit om dit probleem op te lossen. Voordat u begint, moet u een moment opname maken van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-U kunt dit probleem oplossen door de seriële console te gebruiken of [de virtuele machine offline te herstellen](#repair-the-vm-offline) door de besturingssysteem schijf van de virtuele machine aan een herstel-VM te koppelen.
+### <a name="check-rdp-security"></a>RDP-beveiliging controleren
 
+Controleer eerst of de netwerk beveiligings groep voor RDP-poort 3389 niet beveiligd is (open). Als de service niet is beveiligd en wordt weer gegeven \* als het bron-IP-adres voor inkomend, beperkt u de RDP-poort tot het IP-adres van de specifc-gebruiker en test u vervolgens de RDP-toegang. Als dit mislukt, voltooit u de stappen in de volgende sectie.
 
 ### <a name="use-serial-control"></a>Serieel besturings element gebruiken
 
-Maak verbinding met de [seriële console en open een Power shell-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+Gebruik de seriële console of [herstel de virtuele machine offline](#repair-the-vm-offline) door de besturingssysteem schijf van de virtuele machine aan een herstel-VM te koppelen.
+
+Als u wilt beginnen, maakt u verbinding met de [seriële console en opent u een Power shell-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Als de seriële console niet is ingeschakeld op uw virtuele machine, gaat u naar de sectie [de virtuele machine offline herstellen](#repair-the-vm-offline) .
 
 #### <a name="step-1-check-the-rdp-port"></a>Stap: 1 Controleer de RDP-poort

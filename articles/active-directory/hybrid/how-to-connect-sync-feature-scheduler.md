@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053045"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084733"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect sync: Scheduler (Azure AD Connect-synchronisatie: planning)
 In dit onderwerp wordt de ingebouwde scheduler in Azure AD Connect Sync (synchronisatie-engine) beschreven.
@@ -79,7 +79,7 @@ In eerdere builds van Azure AD Connect werd **isStagingModeEnabled** weer gegeve
 De scheduler-configuratie wordt opgeslagen in azure AD. Als u een staging-server hebt, is de wijziging op de primaire server ook van invloed op de staging-server (behalve IsStagingModeEnabled).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Syntaxis`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+Syntaxis `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d-dagen, HH-uur, mm-minuten, ss-seconden
 
 Voorbeeld: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
@@ -160,12 +160,15 @@ Voor beeld: als u wijzigingen hebt aangebracht in de synchronisatie regels voor 
 ## <a name="stop-the-scheduler"></a>De planner stoppen
 Als de scheduler momenteel een synchronisatie cyclus uitvoert, moet u deze mogelijk stoppen. Als u bijvoorbeeld de installatie wizard start, wordt deze fout weer geven:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Scherm opname laat zien dat configuratie fout bericht kan niet worden gewijzigd.](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Wanneer een synchronisatie cyclus wordt uitgevoerd, kunt u geen configuratie wijzigingen aanbrengen. U kunt wachten tot de scheduler het proces heeft voltooid, maar ook stoppen, zodat u uw wijzigingen direct kunt door voeren. Het stoppen van de huidige cyclus is niet schadelijk en in behandeling zijnde wijzigingen worden verwerkt met de volgende uitvoering.
 
 1. Begin met de scheduler om de huidige cyclus te stoppen met de Power shell-cmdlet `Stop-ADSyncSyncCycle` .
-2. Als u een build vóór 1.1.281 gebruikt en vervolgens stopt met het stoppen van de scheduler, wordt de huidige connector van de huidige taak niet gestopt. Voer de volgende acties uit om te voor komen dat de connector wordt gestopt: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Als u een build vóór 1.1.281 gebruikt en vervolgens stopt met het stoppen van de scheduler, wordt de huidige connector van de huidige taak niet gestopt. Voer de volgende acties uit om ervoor te zorgen dat de connector stopt:
+
+   ![Scherm afbeelding toont Synchronization Service Manager met geselecteerde connectors en een actieve connector gemarkeerd met de actie stoppen geselecteerd.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Start de **synchronisatie service** vanuit het menu Start. Ga naar **connectors**, Markeer de connector met de status **actief**en selecteer **stoppen** in de acties.
 
 De scheduler is nog actief en start opnieuw op de volgende mogelijkheid.

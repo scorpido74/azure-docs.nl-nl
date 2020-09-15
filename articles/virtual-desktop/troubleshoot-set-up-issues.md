@@ -3,15 +3,15 @@ title: Het maken van een hostgroep in Windows Virtual Desktop-omgeving-Azure
 description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een virtuele Windows-desktop omgeving.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121371"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084410"
 ---
 # <a name="host-pool-creation"></a>Hostgroepen maken
 
@@ -46,6 +46,12 @@ Als uw bewerking de quotum limiet overschrijdt, kunt u een van de volgende dinge
 - Maak een nieuwe hostgroep met dezelfde para meters, maar met minder Vm's en VM-kernen.
 
 - Open de koppeling die u ziet in het veld statusMessage in een browser om een aanvraag in te dienen voor het verhogen van het quotum voor uw Azure-abonnement voor de opgegeven VM-SKU.
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Fout: kan geen gebruikers toewijzingen in app-groepen zien.
+
+Oorzaak: deze fout treedt meestal op nadat u het abonnement van 1 Azure Active Directory-Tenant (AD) naar een andere hebt verplaatst. Als uw oude toewijzingen nog steeds zijn gekoppeld aan de oude Azure AD-Tenant, worden deze niet meer in de Azure Portal bijgehouden.
+
+Oplossen: u moet gebruikers opnieuw toewijzen aan app-groepen.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager sjabloon fouten
 
@@ -88,7 +94,7 @@ Ga als volgt te werk om dit probleem op te lossen:
 3. Het menu DNS-servers moet aan de rechter kant van het scherm worden weer gegeven. Selecteer **aangepast**in dat menu.
 4. Zorg ervoor dat de DNS-servers die worden vermeld onder aangepast overeenkomen met uw domein controller of Active Directory domein. Als uw DNS-server niet wordt weer geven, kunt u deze toevoegen door de waarde ervan in te voeren in het veld **DNS-server toevoegen** .
 
-### <a name="error-your-deployment-failedunauthorized"></a>Fout: de implementatie is mislukt. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Fout: Uw implementatie is mislukt...\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -109,7 +115,7 @@ Ga als volgt te werk om dit probleem op te lossen:
 
 **Oplossen:** Bevestig dat Windows Virtual Desktop Environment in orde is door u aan te melden met Power shell. Voltooi de VM-registratie hand matig in [een hostgroep maken met Power shell](create-host-pools-powershell.md).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fout: de opgegeven gebruikers naam voor de beheerder is niet toegestaan
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fout: De opgegeven gebruikersnaam voor een beheerder is niet toegestaan
 
 > [!div class="mx-imgBorder"]
 > ![Scherm opname van de implementatie is mislukt, omdat een opgegeven beheerder niet is toegestaan.](media/failure-username.png)
@@ -127,7 +133,7 @@ Voor beeld van onbewerkte fout:
 
 **Oplossen:** Werk de gebruikers naam bij of gebruik andere gebruikers.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Fout: de virtuele machine heeft een fout gerapporteerd bij het verwerken van de extensie
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Fout: De VM heeft een fout gerapporteerd bij het verwerken van extensie
 
 > [!div class="mx-imgBorder"]
 > ![Scherm opname van de bron bewerking die is voltooid met een Terminal-inrichtings status in uw implementatie is mislukt.](media/failure-processing.png)

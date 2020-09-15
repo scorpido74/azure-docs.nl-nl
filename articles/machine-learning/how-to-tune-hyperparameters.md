@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651793"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084657"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayesiaanse-steek proeven bieden geen ondersteuning voor het beleid voor vroegtijdige beëindiging (Zie [een beleid voor vroegtijdige beëindiging opgeven](#specify-early-termination-policy)). Bij gebruik van Bayesiaanse parameter sampling, set `early_termination_policy = None` of out de `early_termination_policy` para meter.
+> Bayesiaanse-steek proeven bieden geen ondersteuning voor het beleid voor vroegtijdige beëindiging (Zie [een beleid voor vroegtijdige beëindiging opgeven](#early-termination)). Bij gebruik van Bayesiaanse parameter sampling, set `early_termination_policy = None` of out de `early_termination_policy` para meter.
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>Primaire metriek opgeven
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Primaire metriek opgeven
 
 Geef de [primaire meet waarde](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) op voor het afstemming-afstemmings experiment dat u wilt optimaliseren. Elke trainings uitvoering wordt geëvalueerd voor de primaire metriek. Slecht uitgevoerde uitvoeringen (waarbij de primaire metriek niet voldoet aan de criteria die zijn ingesteld door het beleid voor vroegtijdige beëindiging) wordt beëindigd. Naast de primaire metrische naam moet u ook het doel van de optimalisatie opgeven, of u de primaire metriek wilt maximaliseren of minimaliseren.
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimaliseer de uitvoeringen om de nauw keurigheid te maximaliseren.  Zorg ervoor dat u deze waarde in uw trainings script aanmeldt.
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>Metrische logboek gegevens voor afstemming-afstemming
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Primaire metriek opgeven
 
 Het trainings script voor uw model moet de relevante metrische gegevens registreren tijdens de model training. Wanneer u de afstemming-afstemming configureert, geeft u de primaire meet waarde op die moet worden gebruikt voor het evalueren van de prestaties van de uitvoering. (Zie [een primaire metriek opgeven om te optimaliseren](#specify-primary-metric-to-optimize).)  In uw trainings script moet u deze metriek vastleggen zodat deze beschikbaar is voor het afstemmings proces van afstemming.
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Het trainings script berekent de `val_accuracy` en registreert dit als ' nauwkeurigheid ', die wordt gebruikt als primaire metriek. Telkens wanneer de metriek wordt geregistreerd, wordt deze ontvangen door de afstemming tuning service. Het is de ontwikkelaar van het model om te bepalen hoe vaak deze metrische gegevens moeten worden gerapporteerd.
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Beleid voor vroegtijdige beëindiging opgeven
 

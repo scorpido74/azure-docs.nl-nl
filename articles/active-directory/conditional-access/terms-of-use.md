@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948909"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085906"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Gebruiks voorwaarden van Azure Active Directory
 
@@ -59,7 +59,7 @@ Als u Azure AD-gebruiks voorwaarden wilt gebruiken en configureren, hebt u het v
 - Abonnement op Azure AD Premium P1, P2, EMS E3 of EMS E5.
    - Als u niet over een van deze abonnementen beschikt, kunt u [Azure AD Premium downloaden](../fundamentals/active-directory-get-started-premium.md) of [Azure AD Premium uitproberen](https://azure.microsoft.com/trial/get-started-active-directory/).
 - Een van de volgende beheerdersaccounts voor de directory die u wilt configureren:
-   - Globale beheerder
+   - Hoofdbeheerder
    - Beveiligingsbeheer
    - Beheerder van voorwaardelijke toegang
 
@@ -129,7 +129,7 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
     Met het aangepaste beleid voor voorwaardelijke toegang worden nauw keurige gebruiks voorwaarden ingeschakeld, tot een bepaalde Cloud toepassing of groep gebruikers. Voor meer informatie raadpleegt [u Quick Start: vereisen dat de gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps](require-tou.md).
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
    Als u een aangepaste sjabloon voor voorwaardelijke toegang hebt geselecteerd, wordt er een nieuw scherm weer gegeven waarin u het aangepaste beleid voor voorwaardelijke toegang kunt maken.
 
@@ -264,7 +264,7 @@ Voor de gebruiks voorwaarden per apparaat gelden de volgende beperkingen:
 
 - Een apparaat kan alleen worden gekoppeld aan één Tenant.
 - Een gebruiker moet machtigingen hebben om lid te worden van hun apparaat.
-- De intune-inschrijvings-app wordt niet ondersteund.
+- De intune-inschrijvings-app wordt niet ondersteund. Zorg ervoor dat deze is uitgesloten van het beleid voor voorwaardelijke toegang dat gebruiks voorwaarden vereist.
 - Gebruikers van Azure AD B2B worden niet ondersteund.
 
 Als het apparaat van de gebruiker niet is toegevoegd, wordt er een bericht weer gegeven dat ze nodig zijn om lid te worden van hun apparaat. Hun ervaring is afhankelijk van het platform en de software.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: bf9cda37e0cc8186938a316c87bcc69a7a7370b8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759594"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085277"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Levens cyclus en beleid van Azure Storage Explorer-ondersteuning
 
@@ -41,6 +41,8 @@ In deze tabel worden de release datum en het einde van de ondersteunings datum v
 
 | Storage Explorer versie  | Releasedatum       | Einde van de ondersteunings datum |
 |:-------------------------:|:------------------:|:-------------------:|
+| v 1.15.1                   | 2 september 2020  | 2 september 2021   |
+| v 1.15.0                   | 27 augustus 2020    | 27 augustus 2021     |
 | v 1.14.2                   | 16 juli 2020      | 16 juli 2021       |
 | v 1.14.1                   | 14 juli 2020      | 14 juli 2021       |
 | v 1.14.0                   | 24 juni 2020      | 14 juli 2021       |

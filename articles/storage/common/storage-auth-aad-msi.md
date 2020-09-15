@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2087e5f8ec397123df504e9d30d351a0ba79b4a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2927cbe9a586d8e7a35cea1b523122f9c1c3fed7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018753"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085634"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Toegang tot Blob-en wachtrij gegevens toestaan met beheerde identiteiten voor Azure-resources
 
@@ -88,7 +88,7 @@ De `az ad sp create-for-rbac` opdracht retourneert een lijst met Service-Princip
 ```
 
 > [!IMPORTANT]
-> Het kan enkele minuten duren voordat Azure-roltoewijzingen zijn door gegeven.
+> Het kan enkele minuten duren voordat Azure-roltoewijzingen worden doorgegeven.
 
 #### <a name="set-environment-variables"></a>Omgevingsvariabelen instellen
 
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [Toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md).
 - [Gebruik Azure AD met opslag toepassingen](storage-auth-aad-app.md).
-- [Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens](authorize-active-directory-powershell.md).
+- [Power shell-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-gegevens](../blobs/authorize-active-directory-powershell.md)

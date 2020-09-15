@@ -3,16 +3,16 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017563"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069829"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
-In dit artikel wordt uitgelegd hoe u een back-up maakt van virtuele VMware-machines die worden uitgevoerd op VMware ESXi hosts/vCenter Server naar Azure met Azure Backup Server.
+In dit artikel wordt uitgelegd hoe u een back-up maakt van virtuele VMware-machines die worden uitgevoerd op VMware ESXi hosts/vCenter Server naar Azure met behulp van Azure Backup Server (MABS).
 
 In dit artikel wordt uitgelegd hoe u:
 
@@ -21,6 +21,31 @@ In dit artikel wordt uitgelegd hoe u:
 - Voeg de account referenties toe aan Azure Backup.
 - Voeg de vCenter-of ESXi-server toe aan Azure Backup Server.
 - Stel een beveiligings groep in die de VMware-Vm's bevat waarvan u een back-up wilt maken, geef back-upinstellingen op en plan de back-up.
+
+## <a name="supported-vmware-features"></a>Ondersteunde VMware-functies
+
+MABS biedt de volgende functies voor het maken van een back-up van virtuele VMware-machines:
+
+- Back-up zonder agent: voor MABS hoeft er geen agent te worden geïnstalleerd op de vCenter-of ESXi-server om een back-up van de virtuele machine te maken. Geef in plaats daarvan alleen het IP-adres of de Fully Qualified Domain Name (FQDN) op en aanmeldings referenties die worden gebruikt voor het verifiëren van de VMware-Server met MABS.
+- In de Cloud geïntegreerde back-up: MABS beschermt workloads op schijf en in de Cloud. De werk stroom back-up en herstel van MABS helpt u bij het beheren van lange termijn retentie en externe back-ups.
+- Vm's detecteren en beveiligen die worden beheerd door vCenter: MABS detecteert en beveiligt Vm's die zijn geïmplementeerd op een VMware-Server (vCenter of ESXi-server). Als uw implementatie grootte groeit, gebruikt u vCenter voor het beheren van uw VMware-omgeving. MABS detecteert ook Vm's die worden beheerd door vCenter, zodat u grote implementaties kunt beveiligen.
+- Automatische beveiliging op mapniveau: met vCenter kunt u uw virtuele machines in VM-mappen ordenen. MABS detecteert deze mappen en biedt u de mogelijkheid om Vm's op mapniveau te beschermen en alle submappen te bevatten. Bij het beveiligen van mappen beschermt MABS niet alleen de virtuele machines in die map, maar beveiligt Vm's ook later. MABS detecteert dagelijks nieuwe Vm's en beveiligt deze automatisch. Wanneer u uw Vm's in recursieve mappen organiseert, detecteert en beveiligt MABS automatisch de nieuwe Vm's die in de recursieve mappen zijn geïmplementeerd.
+- MABS beveiligt Vm's die zijn opgeslagen op een lokale schijf, NFS (Network File System) of cluster opslag.
+- MABS beveiligt Vm's die zijn gemigreerd voor taak verdeling: als er Vm's worden gemigreerd voor taak verdeling, detecteert MABS automatisch de beveiliging van virtuele machines en gaat deze door.
+- MABS kan bestanden/mappen van een Windows-VM herstellen zonder de volledige VM te herstellen, waardoor de benodigde bestanden sneller kunnen worden hersteld.
+
+## <a name="prerequisites-and-limitations"></a>Vereisten en beperkingen
+
+Voordat u een back-up van een virtuele VMware-machine maakt, controleert u de volgende lijst met beperkingen en vereisten.
+
+- Als u MABS hebt gebruikt om een vCenter-Server (die op Windows wordt uitgevoerd) te beveiligen als een Windows-Server met behulp van de FQDN van de server, kunt u die vCenter-Server niet beveiligen als een VMware-Server met behulp van de FQDN-naam van de server.
+  - U kunt het statische IP-adres van vCenter Server als tijdelijke oplossing gebruiken.
+  - Als u de FQDN wilt gebruiken, moet u de beveiliging stoppen als een Windows-Server, de beveiligings agent verwijderen en vervolgens toevoegen als een VMware-Server met behulp van FQDN.
+- Als u vCenter gebruikt voor het beheren van ESXi-servers in uw omgeving, voegt u vCenter (en niet ESXi) toe aan de MABS-beveiligings groep.
+- U kunt geen back-up maken van moment opnamen van de gebruiker voor de eerste MABS-back-up. Zodra MABS de eerste back-up heeft voltooid, kunt u back-ups maken van gebruikers momentopnamen.
+- MABS kan geen virtuele VMware-machines beveiligen met doorgangs schijven en fysieke RAW-apparaattoewijzing (pRDM).
+- MABS kan VMware vApps niet detecteren of beveiligen.
+- MABS kan geen virtuele VMware-machines beveiligen met bestaande moment opnamen.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -392,7 +417,7 @@ U kunt het aantal taken wijzigen met behulp van de register sleutel zoals hieron
 
 Ga als volgt te werk om een back-up te maken van vSphere 6,7:
 
-- TLS 1,2 inschakelen op de DPM-server
+- TLS 1,2 inschakelen op de MABS-server
 
 >[!NOTE]
 >Voor VMWare 6,7 werd TLS ingeschakeld als communicatie protocol.

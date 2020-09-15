@@ -12,21 +12,21 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: b3c3bed20b5fd60b9323dada617fb1302efc41d2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006941"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085702"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als Uitgever geverifieerd
 
-Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de registratie van de toepassing. In dit artikel wordt beschreven hoe u het proces voor de verificatie van de [Uitgever (preview-versie)](publisher-verification-overview.md) kunt volt ooien.
+Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de registratie van de toepassing. In dit artikel wordt beschreven hoe u het verificatie proces van de [Uitgever](publisher-verification-overview.md) kunt volt ooien.
 
 ## <a name="quickstart"></a>Snelstart
 Als u al bent Inge schreven in de Microsoft Partner Network (MPN) en u aan de [vereisten](publisher-verification-overview.md#requirements)hebt voldaan, kunt u meteen aan de slag gaan: 
 
-1. Navigeer naar de [Portal voor app-registratie](https://aka.ms/PublisherVerificationPreview).
+1. Meld u aan bij de [Portal voor app-registratie](https://aka.ms/PublisherVerificationPreview) met [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md)
 
 1. Kies een app en klik op **huis stijl**. 
 
@@ -40,9 +40,9 @@ Zie het [overzicht](publisher-verification-overview.md)voor meer informatie over
 ## <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als Uitgever geverifieerd
 Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirements)voldoet en voer vervolgens de volgende stappen uit om uw app (s) te markeren als Uitgever: gecontroleerd.  
 
-1. Zorg ervoor dat u bent aangemeld met een organisatie-account (Azure AD) dat is gemachtigd om wijzigingen aan te brengen in de app (s) die u wilt markeren als uitgever en op het MPN-account in partner centrum. 
+1. Zorg ervoor dat u bent aangemeld met [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) voor een organisatie-of Azure ad-account dat is gemachtigd om wijzigingen aan te brengen in de app (s) die u wilt markeren als uitgever en op het MPN-account in partner centrum.
 
-    - In azure AD moet deze gebruiker de eigenaar van de app zijn of een van de volgende rollen hebben: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
+    - In azure AD moet deze gebruiker lid zijn van een van de volgende rollen: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
 
     - In het partner centrum moet deze gebruiker over de volgende rollen beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD). 
 
@@ -50,11 +50,9 @@ Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirem
 
 1. Klik op een app die u wilt markeren als uitgever en open de Blade huis stijl. 
 
-1. Zorg ervoor dat het Uitgever domein van de app op de juiste wijze is ingesteld. Dit domein moet: 
+1. Zorg ervoor dat het [Uitgever domein](howto-configure-publisher-domain.md) van de app is ingesteld. 
 
-    - Worden toegevoegd aan de Azure AD-Tenant als een door DNS geverifieerd aangepast domein,  
-
-    - Komt overeen met het domein van het e-mail adres dat wordt gebruikt tijdens het verificatie proces voor uw MPN-account. 
+1. Zorg ervoor dat het domein van de uitgever of een aangepast DNS- [domein](../fundamentals/add-custom-domain.md) op de Tenant overeenkomt met het domein van het e-mail adres dat wordt gebruikt tijdens het verificatie proces voor uw MPN-account.
 
 1. Klik op **MPN-id toevoegen om de uitgever** aan de onderkant van de pagina te controleren. 
 
@@ -72,7 +70,7 @@ Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirem
 
 1. Gebruikers die wordt gevraagd om toestemming te geven voor uw app, zien het badge bericht snel nadat u het proces hebt door lopen, hoewel het enige tijd kan duren voordat dit wordt gerepliceerd in het hele systeem. 
 
-1. Test deze functionaliteit door u aan te melden bij uw toepassing en ervoor te zorgen dat de gecontroleerde badge wordt weer gegeven op het scherm voor toestemming. Als u bent aangemeld als een gebruiker die al toestemming heeft gegeven voor de app, kunt u de vraag = para meter voor *toestemming* query's gebruiken om een toestemming prompt af te dwingen. 
+1. Test deze functionaliteit door u aan te melden bij uw toepassing en ervoor te zorgen dat de gecontroleerde badge wordt weer gegeven op het scherm voor toestemming. Als u bent aangemeld als een gebruiker die al toestemming heeft gegeven voor de app, kunt u de vraag = para meter voor *toestemming* query's gebruiken om een toestemming prompt af te dwingen. Deze para meter moet worden gebruikt voor het testen van alleen en nooit vastgelegd in de aanvragen van uw app.
 
 1. Herhaal dit proces zo nodig voor eventuele extra apps waarvoor de badge moet worden weer gegeven. U kunt Microsoft Graph gebruiken om dit sneller te doen, en Power shell-cmdlets zijn binnenkort beschikbaar. Zie [micro soft API Graph-aanroepen](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) voor meer informatie. 
 

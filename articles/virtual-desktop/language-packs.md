@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719139"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084206"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Taal pakketten toevoegen aan een Windows 10-installatie kopie met meerdere sessies
 
@@ -30,7 +30,7 @@ U hebt de volgende zaken nodig om uw installatie kopieën met meerdere sessies v
 
 - Een Azure-virtuele machine (VM) met Windows 10 Enter prise meerdere sessies, versie 1903 of hoger
 
-- De taal ISO en functie op aanvraag (DOM) schijf 1 van de versie van het besturings systeem die wordt gebruikt door de installatie kopie. U kunt ze hier downloaden:
+- De taal ISO, functie on demand (DOM) schijf 1 en Postvak in-apps ISO van de versie van het besturings systeem die wordt gebruikt door de installatie kopie. U kunt ze hier downloaden:
      
      - Taal ISO:
         - [Windows 10, versie 1903 of 1909 taal pakket ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ U hebt de volgende zaken nodig om uw installatie kopieën met meerdere sessies v
      - Dom-schijf 1 ISO:
         - [Windows 10, versie 1903 of 1909 dom schijf 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10, versie 2004 dom schijf 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - ISO-apps voor Postvak in:
+        - [Windows 10, versie 1903 of 1909 postvak in-apps ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10, versie 2004 postvak in-apps ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Een Azure Files share of bestands share op een virtuele machine met Windows-Bestands server
 
@@ -47,15 +51,16 @@ U hebt de volgende zaken nodig om uw installatie kopieën met meerdere sessies v
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Een inhouds opslagplaats maken voor taal pakketten en onderdelen op aanvraag
 
-De inhouds opslagplaats voor taal pakketten en FODs maken:
+Voor het maken van de inhouds opslagplaats voor taal pakketten en FODs en een opslag plaats voor de app-pakketten voor het postvak in:
 
-1. Down load op een virtuele Azure-machine de installatie kopieën van Windows 10 multi-language ISO en FODs voor Windows 10 Enter prise multi-session, versie 1903, 1909 en 2004 van de koppelingen in [vereisten](#prerequisites).
+1. Down load op een virtuele machine van Azure de Windows 10-apps voor meerdere talen ISO, FODs en Postvak in voor Windows 10 Enter prise multi-session, versie 1903/1909 en 2004 installatie kopieën van de koppelingen in [vereisten](#prerequisites).
 
 2. Open en koppel de ISO-bestanden op de VM.
 
 3. Ga naar het taal pakket ISO en kopieer de inhoud van de **LocalExperiencePacks** -en x64-bestanden van het Pack ** \\ lang** en plak de inhoud vervolgens in de bestands share.
 
 4. Ga naar het **bestand in de Dom ISO**, kopieer alle inhoud en plak het in de bestands share.
+5. Ga naar de map **amd64fre** in de ISO-apps van het postvak in en kopieer de inhoud in de opslag plaats voor de apps in het postvak in die u hebt voor bereid.
 
      >[!NOTE]
      > Als u met beperkte opslag werkt, kopieert u alleen de bestanden voor de talen die uw gebruikers nodig hebben. U kunt de bestanden uit elkaar laten zien door de taal codes in hun bestands namen te bekijken. Het Franse bestand heeft bijvoorbeeld de code ' fr-FR ' in de naam. Zie [beschik bare taal pakketten voor Windows](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)voor een volledige lijst met taal codes voor alle beschik bare talen.
@@ -66,7 +71,7 @@ De inhouds opslagplaats voor taal pakketten en FODs maken:
      > [!div class="mx-imgBorder"]
      > ![Een voor beeld van de Japanse taal pakketten met de taal code ' Jpan ' in hun bestands namen.](media/language-pack-example.png)
 
-5. Stel de machtigingen in op de taal van de opslag plaats voor inhoud, zodat u over lees toegang hebt vanaf de VM die u gebruikt om de aangepaste installatie kopie te maken.
+6. Stel de machtigingen in op de taal van de opslag plaats voor inhoud, zodat u over lees toegang hebt vanaf de VM die u gebruikt om de aangepaste installatie kopie te maken.
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Een aangepaste Windows 10 Enter prise-installatie kopie voor meerdere sessies hand matig maken
 
@@ -75,7 +80,7 @@ Hand matig een aangepaste Windows 10 Enter prise-installatie kopie maken:
 1. Implementeer een Azure VM en ga naar de Azure-galerie en selecteer de huidige versie van Windows 10 Enter prise multi-session die u gebruikt.
 2. Nadat u de virtuele machine hebt geïmplementeerd, maakt u deze met behulp van RDP als een lokale beheerder.
 3. Zorg ervoor dat uw VM over alle meest recente Windows-updates beschikt. Down load de updates en start de VM indien nodig opnieuw op.
-4. Maak verbinding met de opslag plaats van het taal pakket en de Dom-bestands share en koppel deze aan een stationsletter (bijvoorbeeld station E).
+4. Maak verbinding met het taal pakket, de dom en de bestands share opslagplaats voor het postvak in en koppel deze aan een stationsletter (bijvoorbeeld station E).
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Automatisch een aangepaste installatie kopie van Windows 10 Enter prise maken
 
@@ -161,6 +166,56 @@ Het script kan enige tijd duren, afhankelijk van het aantal talen dat u moet ins
 
 Nadat het script is uitgevoerd, controleert u of de taal pakketten correct zijn geïnstalleerd door naar **Start**  >  **Settings**  >  **time & language**  >  **Language**te gaan. Als de taal bestanden zich daar bevinden, bent u klaar.
 
+Nadat u extra talen aan de Windows-installatie kopie hebt toegevoegd, moeten de apps in het postvak in ook worden bijgewerkt ter ondersteuning van de toegevoegde talen. U kunt dit doen door de vooraf geïnstalleerde apps te vernieuwen met de inhoud van de ISO van het postvak in-apps. Als u deze vernieuwing wilt uitvoeren in een omgeving zonder verbinding (geen Internet toegang vanaf de VM mogelijk), kunt u het volgende Power shell-voorbeeld script gebruiken om het proces te automatiseren.
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>De in de ISO opgenomen postvak in-apps zijn niet de nieuwste versies van de vooraf geïnstalleerde Windows-apps. Als u de nieuwste versie van alle apps wilt downloaden, moet u de apps bijwerken met behulp van de Windows Store-app en een hand matige zoek actie uitvoeren op updates nadat u de extra talen hebt geïnstalleerd.
+
 Wanneer u klaar bent, moet u de verbinding met de share verbreken.
 
 ## <a name="finish-customizing-your-image"></a>Het aanpassen van uw installatie kopie volt ooien
@@ -177,15 +232,15 @@ Sysprep uitvoeren:
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. Sluit de virtuele machine af en leg deze vast in een beheerde installatie kopie door de instructies in [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md)te volgen.
+2. Stop de virtuele machine en leg deze vast in een beheerde installatie kopie door de instructies in [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md)te volgen.
 
 3. U kunt nu de aangepaste installatie kopie gebruiken voor het implementeren van een Windows-hostgroep voor virtueel bureau blad. Zie [zelf studie: een hostgroep maken met de Azure Portal](create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van een hostgroep.
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Talen inschakelen in de Windows-instellingen-app
 
-Ten slotte moet u de taal toevoegen aan de taal lijst van elke gebruiker zodat deze de voorkeurs taal kan selecteren in het menu instellingen.
+Ten slotte moet u nadat u de hostgroep hebt geïmplementeerd, de taal toevoegen aan de taal lijst van elke gebruiker zodat deze de gewenste taal kan selecteren in het menu instellingen.
 
-Om ervoor te zorgen dat uw gebruikers de talen kunnen selecteren die u hebt geïnstalleerd, meldt u zich aan als de gebruiker en voert u de volgende Power shell-cmdlet uit om de geïnstalleerde taal pakketten toe te voegen aan het menu talen. U kunt dit script ook instellen als een geautomatiseerde taak die wordt geactiveerd wanneer de gebruiker zich aanmeldt bij de sessie.
+Om ervoor te zorgen dat uw gebruikers de talen kunnen selecteren die u hebt geïnstalleerd, meldt u zich aan als de gebruiker en voert u de volgende Power shell-cmdlet uit om de geïnstalleerde taal pakketten toe te voegen aan het menu talen. U kunt dit script ook instellen als een geautomatiseerde taak of een aanmeldings script dat wordt geactiveerd wanneer de gebruiker zich aanmeldt bij de sessie.
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

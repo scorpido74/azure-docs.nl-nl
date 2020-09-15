@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060914"
+ms.locfileid: "90069574"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
@@ -69,6 +69,9 @@ Toestemming van de beheerder voor de hele Tenant verlenen van **app-registraties
 4. Selecteer **API-machtigingen** en klik vervolgens op **toestemming beheerder verlenen**.
 5. Controleer zorgvuldig de machtigingen die nodig zijn voor de toepassing.
 6. Als u akkoord gaat met de machtigingen die de toepassing vereist, toestemming verlenen. Als dat niet het geval is, klikt u op **Annuleren** of sluit u het venster.
+
+> [!WARNING]
+> **App-registraties** door beheerders toestemming voor de hele Tenant te verlenen, worden alle machtigingen ingetrokken die eerder zijn verleend voor de Tenant. Machtigingen die eerder door gebruikers uit hun eigen naam zijn verleend, worden niet beïnvloed. 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>De URL maken voor het verlenen van toestemming voor de beheerder voor de hele Tenant
 

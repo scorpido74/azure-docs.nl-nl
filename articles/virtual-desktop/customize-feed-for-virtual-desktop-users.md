@@ -3,15 +3,15 @@ title: Feed aanpassen voor Windows-gebruikers met virtueel bureau blad-Azure
 description: Het aanpassen van de feed voor Windows-virtuele bureau blad-gebruikers met Power shell-cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009117"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084291"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>De feed aanpassen voor Windows-virtuele bureau blad-gebruikers
 
@@ -107,7 +107,7 @@ U kunt de weergave naam voor een gepubliceerd extern bureau blad wijzigen door e
 
 3. Onder Services selecteert u **virtueel bureau blad voor Windows**.
 
-4. Selecteer op de pagina virtueel bureau blad van Windows de optie **toepassings groepen** aan de linkerkant van het scherm en selecteer vervolgens de naam van de app-groep die u wilt bewerken.
+4. Selecteer op de pagina virtueel bureau blad van Windows de optie **toepassings groepen** aan de linkerkant van het scherm en selecteer vervolgens de naam van de app-groep die u wilt bewerken. (Als u bijvoorbeeld de weergave naam van de groep bureau blad-Apps wilt bewerken, selecteert u de app-groep met de naam **bureau blad**.)
 
 5. Selecteer **toepassingen** in het menu aan de linkerkant van het scherm.
 

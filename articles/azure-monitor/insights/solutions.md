@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459518"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085991"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
@@ -26,7 +26,7 @@ Op de pagina **overzicht** van oplossingen in azure monitor wordt een tegel weer
 
 Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om de werk ruimte of het tijds bereik te wijzigen dat wordt gebruikt voor de tegels. Klik op de tegel voor een oplossing om de bijbehorende weer gave te openen met meer gedetailleerde analyse van de verzamelde gegevens.
 
-[![Overzicht](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![Scherm afbeelding toont het Azure Portal menu met de geselecteerde oplossingen en oplossingen die worden weer gegeven in het deel venster oplossingen.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 Bewakings oplossingen kunnen meerdere typen Azure-resources bevatten en u kunt alle resources die zijn opgenomen in een oplossing, net als elke andere resource bekijken. Alle logboek query's die in de oplossing zijn opgenomen, worden bijvoorbeeld vermeld onder **oplossingen query's** in [query Explorer](../log-query/get-started-portal.md#load-queries) . u kunt deze query's gebruiken bij het uitvoeren van ad hoc analyses met [logboek query's](../log-query/log-query-overview.md).
 
@@ -160,7 +160,7 @@ Voor alle bewakings oplossingen is een [log Analytics-werk ruimte](../platform/m
 * Bij elke installatie van een oplossing kan slechts één Log Analytics-werk ruimte en één Automation-account worden gebruikt. U kunt de oplossing afzonderlijk in meerdere werk ruimten installeren.
 * Als voor een oplossing een Automation-account is vereist, moet de Log Analytics-werk ruimte en het Automation-account aan elkaar zijn gekoppeld. Een Log Analytics-werk ruimte kan alleen worden gekoppeld aan een Automation-account en een Automation-account kan alleen worden gekoppeld aan een Log Analytics-werk ruimte.
 
-Wanneer u een oplossing installeert via de Azure Marketplace, wordt u gevraagd naar een werk ruimte en een Automation-account. De koppeling tussen deze wordt gemaakt als ze nog niet zijn gekoppeld.
+Wanneer u een oplossing installeert via Azure Marketplace, wordt u gevraagd naar een werk ruimte en een Automation-account. De koppeling tussen deze wordt gemaakt als ze nog niet zijn gekoppeld.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>De koppeling tussen een Log Analytics-werk ruimte en een Automation-account controleren
 

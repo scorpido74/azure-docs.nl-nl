@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662554"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084835"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
 Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Microsoft 365 werk belastingen, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
@@ -217,7 +217,7 @@ Bij inkomend filteren wordt de standaard configuratie gebruikt, waarbij objecten
 Bij inkomend filteren gebruikt u de kracht van **bereik** om te bepalen welke objecten moeten worden gesynchroniseerd of niet moeten worden gesynchroniseerd. Hier maakt u aanpassingen aan de vereisten van uw eigen organisatie. De scope module heeft een **groep** en een **component** om te bepalen wanneer een synchronisatie regel binnen het bereik valt. Een groep bevat een of meer componenten. Er bevindt zich een logische ' AND ' tussen meerdere componenten en een logische ' OR ' of ' tussen meerdere groepen.
 
 Laten we een voor beeld bekijken:  
-![Een scherm afbeelding met een voor beeld van bereik filters toevoegen](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Een scherm opname met een voor beeld van het toevoegen van bereik filters.](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Dit moet worden gelezen als **(afdeling = IT) of (afdeling = verkoop en c = US)**.
 
 In de volgende voor beelden en stappen gebruikt u het gebruikers object als voor beeld, maar u kunt dit voor alle object typen gebruiken.
@@ -275,7 +275,7 @@ In dit voor beeld wijzigt u de filtering zodat alleen gebruikers met hun e-mail 
 1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
 2. Start de **Editor voor synchronisatie regels** vanuit het menu **Start** .
 3. Klik onder **regel type**op **uitgaand**.
-4. Afhankelijk van de versie van de verbinding die u gebruikt, zoekt u de regel **met de naam uit naar Aad: gebruiker toevoegen** aan of **uit voor Aad-gebruiker lid**worden van SOAInAD en klikt u op **bewerken**.
+4. Afhankelijk van de versie van de verbinding die u gebruikt, vindt u de regel met de naam **naar Azure AD: de gebruiker wordt toegevoegd** aan of verwijderd **uit Azure AD-gebruiker toevoegen SOAInAD**en klikt u op **bewerken**.
 5. Beantwoord in het pop-upvenster **Ja** om een kopie van de regel te maken.
 6. Op de pagina **Beschrijving** wijzigt u de **prioriteit** in een ongebruikte waarde, zoals 50.
 7. Klik op het **filter bereik** op de navigatie balk aan de linkerkant en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **mail**. Selecteer in **operator** **ENDSWITH**. Typ ** \@ contoso.com**in het **veld waarde**en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **userPrincipalName**. Selecteer in **operator** **ENDSWITH**. Typ ** \@ contoso.com**in het **veld waarde**.
@@ -300,7 +300,7 @@ Na de synchronisatie worden alle wijzigingen klaargezet om te worden geëxportee
 
 1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Voer `csexport "Name of Connector" %temp%\export.xml /f:x` uit.  
-   De naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
+   De naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com-azure AD ' voor Azure AD.
 3. Voer `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` uit.
 4. U hebt nu een bestand in% Temp% met de naam export.csv dat in micro soft Excel kan worden onderzocht. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
 5. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (importeren, synchroniseren en verifiëren) totdat de wijzigingen die worden geëxporteerd, zijn wat u verwacht.

@@ -4,12 +4,12 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat v
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: 1b4e875a81c92f74cd7d2db96cf1c313157297eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923543"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085965"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
@@ -32,23 +32,23 @@ Om het apparaat in te stellen, moet u het volgende doen:
 - Voer het PowerShell-script uit om de webtoepassing voor het apparaat te starten.
 - Configureer het apparaat voor de eerste keer en registreer het met het Azure Migrate project met behulp van de Azure Migrate-project sleutel.
 
-### <a name="generate-the-azure-migrate-project-key"></a>De Azure Migrate project sleutel genereren
+### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate-projectsleutel genereren
 
 1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** selecteert u **Detecteren**.
-2. In **Discover-machines**  >  **zijn uw machines gevirtualiseerd?**, selecteert u **fysiek of ander (AWS, GCP, xen, enzovoort)**.
-3. Geef in **1: Azure migrate project sleutel genereren**een naam op voor het Azure migrate apparaat dat u wilt instellen voor de detectie van fysieke of virtuele servers. De naam moet alfanumeriek zijn met 14 tekens of minder.
-1. Klik op **sleutel genereren** om te beginnen met het maken van de vereiste Azure-resources. Sluit de pagina computers detecteren niet af tijdens het maken van resources.
-1. Nadat het maken van de Azure-resources is voltooid, wordt er een **Azure migrate project sleutel** gegenereerd.
-1. Kopieer de sleutel, omdat u deze nodig hebt om de registratie van het apparaat tijdens de configuratie te volt ooien.
+2. In **Computers detecteren** > **Zijn de computers gevirtualiseerd?** selecteert u **Fysiek of anders (AWS, GCP, Xen enzovoorts)** .
+3. In **1: Azure Migrate-projectsleutel genereren** geeft u een naam op voor het Azure Migrate-apparaat dat u voor de detectie van fysieke of virtuele servers wilt instellen. De naam moet alfanumeriek zijn en 14 tekens of minder bevatten.
+1. Klik op **Sleutel genereren** om de vereiste Azure-resources te gaan maken. Sluit de pagina Computers detecteren niet tijdens het maken van resources.
+1. Nadat de Azure-resources zijn gemaakt, wordt er een **Azure Migrate-projectsleutel** gegenereerd.
+1. Kopieer de sleutel, omdat u deze nodig hebt om de registratie van het apparaat tijdens de configuratie te voltooien.
 
 ### <a name="download-the-installer-script"></a>Download het installatiescript
 
-In **2: down load Azure migrate apparaat**en klik op **downloaden**.
+In **2: Download Azure Migrate-apparaat**, klik op **Downloaden**.
 
-   ![Selecties voor discover-computers](./media/tutorial-assess-physical/servers-discover.png)
+   ![Selecties voor Computers detecteren](./media/tutorial-assess-physical/servers-discover.png)
 
 
-   ![Selecties voor sleutel genereren](./media/tutorial-assess-physical/generate-key-physical.png)
+   ![Selecties voor Sleutel genereren](./media/tutorial-assess-physical/generate-key-physical.png)
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
@@ -59,7 +59,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voorbeeld van gebruik voor openbare cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - Voorbeeld van gebruik voor overheidscloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Controleer de nieuwste versie van het apparaat en de [instellingen](./tutorial-assess-physical.md#verify-security)van de hash-waarden.
+3.  Controleer de nieuwste versie van het apparaat en de instellingen van de hash-waarden.
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatiescript uitvoeren
@@ -104,51 +104,51 @@ Het apparaat voor de eerste keer instellen.
 1. Open een browser op een computer die verbinding kan maken met het apparaat en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
 
    U kunt de app ook openen vanaf het bureaublad door te klikken op de snelkoppeling naar de app.
-2. Ga akkoord met de **licentie voorwaarden**en lees de informatie van derden.
+2. Accepteer de **licentievoorwaarden** en lees de informatie van derden.
 1. Ga als volgt te werk in de web-app > **Vereisten instellen**:
     - **Connectiviteit**: De app controleert of de server toegang heeft tot internet. Als de server gebruikmaakt van een proxy:
-        - Klik op **proxy instellen** en geef het proxy adres op (in de vorm http://ProxyIPAddress of http://ProxyFQDN) en luister poort.
+        - Klik op **Proxy instellen** en geef het proxyadres (in het formulier http://ProxyIPAddress of http://ProxyFQDN) ) en de controlepoort op.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
-        - Als u proxy Details hebt toegevoegd of de proxy en/of de verificatie hebt uitgeschakeld, klikt u op **Opslaan** om de connectiviteits controle opnieuw te activeren.
+        - Als u proxydetails hebt toegevoegd of de proxy en/of de verificatie hebt uitgeschakeld, klikt u op **Opslaan** om de connectiviteitscontrole opnieuw te activeren.
     - **Tijdsynchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet zijn gesynchroniseerd met internettijd zodat serverdetectie goed werkt.
-    - **Updates installeren**: Azure migrate server beoordeling controleert of de meest recente updates zijn geïnstalleerd op het apparaat. Nadat de controle is voltooid, kunt u op **apparaatdiensten weer geven** klikken om de status en versies van de onderdelen die op het apparaat worden uitgevoerd te bekijken.
+    - **Updates installeren**: Azure Migrate-serverevaluatie controleert of de meest recente updates op het apparaat zijn geïnstalleerd. Na de controle kunt u op **Apparaatservices weergeven** om de status en versies te bekijken van de onderdelen die op het apparaat worden uitgevoerd.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Plak de **Azure migrate project sleutel** die u hebt gekopieerd uit de portal. Als u de sleutel niet hebt, gaat u naar **Server Assessment> Discover> bestaande apparaten beheren**, selecteert u de naam van het apparaat dat u hebt ingevoerd op het moment van sleutel genereren en kopieert u de bijbehorende sleutel.
-1. Klik op **Aanmelden**. Er wordt een Azure-aanmeldings prompt geopend in een nieuw browser tabblad. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+1. Plak de **Azure Migrate-projectsleutel** die u in de portal hebt gekopieerd. Als u de sleutel niet hebt, gaat u naar **Serverevaluatie > Detecteren > Bestaande apparaten beheren**, selecteert u de naam van het apparaat die u hebt ingevoerd op het moment dat de sleutel werd gegenereerd en kopieert u de bijbehorende sleutel.
+1. Klik op **Aanmelden**. Er wordt een Azure-aanmeldingsprompt geopend in een nieuw browsertabblad. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
 1. Meld u op het nieuwe tabblad aan met de gebruikersnaam en het wachtwoord van Azure.
    
    Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app. 
-4. Als het Azure-gebruikers account dat wordt gebruikt voor logboek registratie over de juiste [machtigingen](tutorial-prepare-physical.md) beschikt voor de Azure-resources die zijn gemaakt tijdens het genereren van sleutels, wordt de registratie van het apparaat gestart.
-1. Nadat het apparaat is geregistreerd, kunt u de registratie details zien door te klikken op **Details weer geven**.
+4. Als het Azure-gebruikersaccount dat wordt gebruikt voor logboekregistratie de juiste [machtigingen ](tutorial-prepare-physical.md) heeft voor de Azure-resources die tijdens het genereren van de sleutel zijn gemaakt, wordt de registratie van het apparaat gestart.
+1. Nadat het apparaat is geregistreerd, kunt u de registratiedetails zien door op **Details weergeven** te klikken.
 
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 
 Maak nu verbinding vanaf het apparaat met de fysieke servers die moeten worden gedetecteerd en start de detectie.
 
-1. In **stap 1: referenties opgeven voor de detectie van fysieke of virtuele Windows-servers**, klikt u **op referenties toevoegen** om een beschrijvende naam op te geven voor referenties, **gebruikers naam** en **wacht woord** voor een Windows-of Linux-server toevoegen. Klik op **Opslaan**.
-1. Als u meerdere referenties tegelijk wilt toevoegen, klikt u op **meer toevoegen** om de referenties op te slaan en toe te voegen. Er worden meerdere referenties ondersteund voor detectie van fysieke servers.
-1. In **stap 2: Geef fysieke of virtuele server details**op, klik op **detectie bron toevoegen** om het **IP-adres/de FQDN** van de server en de beschrijvende naam op te geven voor de referenties om verbinding te maken met de server.
-1. U kunt **één item tegelijk toevoegen** of **meerdere items** in één keer toevoegen. Er is ook een optie voor het opgeven van Server Details via het **importeren van CSV**.
+1. In **Stap 1: Geef referenties op voor de detectie van fysieke of virtuele Windows- en Linux-servers**, klik op **Referenties toevoegen** om een beschrijvende naam voor referenties op te geven, voeg een **gebruikersnaam** en **wachtwoord** toe voor een Windows- of Linux-server. Klik op **Opslaan**.
+1. Als u meerdere referenties tegelijk wilt toevoegen, klikt u op **Meer toevoegen** om meer referenties op te slaan en toe te voegen. Er worden meerdere referenties ondersteund voor detectie van fysieke servers.
+1. In **Stap 2: Geef de gegevens voor de fysieke of virtuele server op**, klik op **Detectiebron toevoegen** om het **IP-adres of de FQDN** van de server op te geven en tevens de beschrijvende naam voor de referenties waarmee verbinding wordt gemaakt met de server.
+1. U kunt **één item per keer toevoegen** of **meerdere items in één keer toevoegen**. Er is ook een optie om de gegevens van een server op te geven via **CSV importeren**.
 
-    ![Selecties voor het toevoegen van de detectie bron](./media/tutorial-assess-physical/add-discovery-source-physical.png)
+    ![Selecties voor het toevoegen van de detectiebron](./media/tutorial-assess-physical/add-discovery-source-physical.png)
 
-    - Als u **één item toevoegen**kiest, kunt u het type besturings systeem kiezen, beschrijvende naam voor referenties opgeven, server **-IP-adres/FQDN** toevoegen en op **Opslaan**klikken.
-    - Als u **meerdere items toevoegen**hebt gekozen, kunt u meerdere records tegelijk toevoegen door het **IP-adres/de FQDN** van de server op te geven met de beschrijvende naam voor de referenties in het tekstvak. **Controleer** de toegevoegde records en klik op **Opslaan**.
-    - Als u **CSV importeren** _(standaard geselecteerd)_ kiest, kunt u een CSV-sjabloon bestand downloaden, het bestand met het **IP-adres/de FQDN** van de server en de beschrijvende naam voor referenties. Vervolgens importeert u het bestand in het apparaat, **controleert** u de records in het bestand en klikt u op **Opslaan**.
+    - Als u kiest voor **Eén item toevoegen**, kunt u het type besturingssysteem kiezen, een beschrijvende naam opgeven voor referenties en het **IP-adres of de FQDN** van de server toevoegen. Klik vervolgens op **Opslaan**.
+    - Als u kiest voor **Meerdere items toevoegen**, kunt u meerdere records tegelijk toevoegen door het **IP-adres of de FQDN** van de server met de beschrijvende naam voor referenties in het tekstvak op te geven. **Controleer** de toegevoegde records en klik op **Opslaan**.
+    - Als u **CSV importeren** _(standaard geselecteerd)_ kiest, kunt u een CSV-sjabloonbestand downloaden, het bestand vullen met het **IP-adres of de FQDN** van de server en een beschrijvende naam voor referenties. Vervolgens importeert u het bestand in het apparaat, **controleert u** de records in het bestand en klikt u op **Opslaan**.
 
-1. Wanneer u op Opslaan klikt, probeert het apparaat de verbinding te valideren met de toegevoegde servers en wordt de **validatie status** weer gegeven in de tabel voor elke server.
-    - Als de validatie mislukt voor een server, raadpleegt u de fout door te klikken op **validatie is mislukt** in de kolom Status van de tabel. Los het probleem op en valideer het opnieuw.
-    - Als u een server wilt verwijderen, klikt u op **verwijderen**.
-1. U kunt de verbinding met servers op elk gewenst moment opnieuw **valideren** voordat de detectie wordt gestart.
-1. Klik op **detectie starten**om de detectie van de gevalideerde servers te laten slagen. Nadat de detectie is gestart, kunt u de detectie status controleren op elke server in de tabel.
+1. Wanneer u op Opslaan klikt, wordt de verbinding met de toegevoegde servers gevalideerd en wordt de **validatiestatus** in de tabel voor elke server weergegeven.
+    - Als de validatie voor een server mislukt, bekijkt u de fout door in de kolom Status van de tabel op **Validatie mislukt** te klikken. Los het probleem op en valideer opnieuw.
+    - Als u een server wilt verwijderen, klikt u op **Verwijderen**.
+1. Voordat u de detectie start, kunt u de connectiviteit van servers altijd **opnieuw valideren**.
+1. Klik op **Detectie starten** om met detectie van de gevalideerde servers te beginnen. Nadat de detectie is gestart, kunt u de detectiestatus controleren voor elke server in de tabel.
 
 
-De detectie wordt gestart. Het duurt ongeveer 2 minuten per server voor de meta gegevens van de gedetecteerde server die in de Azure Portal worden weer gegeven.
+De detectie wordt gestart. Het duurt ongeveer 2 minuten per server voordat de metagegevens van de gedetecteerde server worden weergegeven in de Azure-portal.
 
 ## <a name="verify-servers-in-the-portal"></a>Verifieer servers in de portal
 

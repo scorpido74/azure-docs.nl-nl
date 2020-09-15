@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531256"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069795"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault (preview-versie)
 Azure Monitor voor Key Vault (preview) biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -76,16 +76,6 @@ Er zijn voorwaardelijke kleurcoderings-of Heatmaps voor kolommen in de werkmap d
 In de werkmap worden successen (2xx-status codes) weer gegeven, authenticatie fouten (401/403-status codes), beperking (429-status codes) en andere fouten (4xx-status codes).
 
 Als u beter wilt begrijpen wat elk van de status codes vertegenwoordigen, raden we u aan de documentatie over [Azure Key Vault status-en respons codes](../../key-vault/general/authentication-requests-and-responses.md)te lezen.
-
-## <a name="operations--latency-workbook"></a>Werkmap voor bewerkingen & latentie
-
-Selecteer **bewerkingen & latentie** boven aan de pagina en het tabblad **bewerkingen & latentie** wordt geopend. Op dit tabblad kunt u de sleutel kluizen voor bewaking onboarden. Zie de sectie [uw sleutel kluizen configureren voor bewaking](#configuring-your-key-vaults-for-monitoring) voor meer gedetailleerde stappen.
-
-U kunt zien hoeveel sleutel kluizen er zijn ingeschakeld voor de logboek registratie. Als ten minste één kluis juist is geconfigureerd, kunt u tabellen weer geven waarin de bewerkingen en status codes voor elk van uw sleutel kluizen worden weer gegeven. U kunt klikken op de sectie Details voor een rij om aanvullende informatie over de afzonderlijke bewerking op te halen.
-
-![Scherm afbeelding van bewerkingen en latentie grafieken](./media/key-vaults-insights-overview/logs.png)
-
-Als u geen gegevens voor deze sectie ziet, gaat u naar de bovenste sectie over het inschakelen van Logboeken voor Azure Key Vault of raadpleegt u de sectie probleem oplossing hieronder.
 
 ## <a name="view-from-a-key-vault-resource"></a>Weer geven vanuit een Key Vault resource
 
@@ -191,16 +181,6 @@ We gebruiken de ' automatische ' tijd korrels, dus afhankelijk van het geselecte
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Wat is het tijds bereik wanneer een deel van de werkmap is vastgemaakt
 
 Het tijds bereik is afhankelijk van de instellingen van het dash board.
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Waarom zie ik geen gegevens voor mijn Key Vault in de secties bewerkingen & latentie
-
-Als u gegevens op basis van uw logboeken wilt weer geven, moet u Logboeken inschakelen voor elk van de sleutel kluizen die u wilt bewaken. Dit kan worden gedaan onder de diagnostische instellingen voor elke sleutel kluis. U moet uw gegevens verzenden naar een aangewezen Log Analytics-werk ruimte.
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Ik heb logboeken al ingeschakeld voor mijn Key Vault, waarom kan ik mijn gegevens nog steeds niet zien onder bewerkingen & latentie
-
-Op dit moment werken Diagnostische logboeken niet met terugwerkende kracht, zodat de gegevens alleen worden weer gegeven wanneer er acties zijn uitgevoerd voor uw sleutel kluizen. Daarom kan het enige tijd duren, variërend van uren tot een dag, afhankelijk van de manier waarop uw sleutel kluis actief is.
-
-Daarnaast kunt u, als u een groot aantal sleutel kluizen en abonnementen hebt geselecteerd, uw gegevens mogelijk niet weer geven vanwege de beperkingen van de query. Als u uw gegevens wilt bekijken, moet u mogelijk het aantal geselecteerde abonnementen of sleutel kluizen verminderen. 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Wat moet ik doen als ik andere gegevens wil zien of mijn eigen visualisaties wil maken? Hoe kan ik wijzigingen aanbrengen in de Key Vault Insights
 

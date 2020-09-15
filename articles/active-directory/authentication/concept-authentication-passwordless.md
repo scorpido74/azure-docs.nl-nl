@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226672"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084325"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Verificatie opties met een wacht woord voor Azure Active Directory
 
@@ -45,7 +45,7 @@ De volgende stappen laten zien hoe het aanmeldings proces werkt met Azure AD:
 ![Diagram met een overzicht van de stappen die nodig zijn voor het aanmelden van gebruikers met Windows hello voor bedrijven](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. Een gebruiker meldt zich aan bij Windows met biometrische of PIN-beweging. Met de penbeweging wordt de persoonlijke sleutel van Windows hello voor bedrijven ontgrendeld en verzonden naar de provider voor Cloud authenticatie van beveiligings ondersteuning, aangeduid als de *Cloud-AP-provider*.
-1. De Cloud-AP-provider vraagt een nonce aan bij Azure AD.
+1. De Cloud-AP-provider vraagt een nonce aan (een wille keurig wille keurig getal dat slechts eenmaal kan worden gebruikt) vanuit Azure AD.
 1. Azure AD retourneert een nonce die 5 minuten geldig is.
 1. De Cloud-AP-provider ondertekent de nonce met de persoonlijke sleutel van de gebruiker en retourneert de ondertekende nonce naar Azure AD.
 1. Azure AD valideert de ondertekende nonce met de veilig geregistreerde open bare sleutel van de gebruiker op basis van de nonce-hand tekening. Na het valideren van de hand tekening valideert Azure AD vervolgens de geretourneerde ondertekende nonce. Wanneer de nonce is gevalideerd, maakt Azure AD een primair vernieuwings token (PRT) met een sessie sleutel die is versleuteld met de transport sleutel van het apparaat en retourneert deze naar de Cloud-AP-provider.

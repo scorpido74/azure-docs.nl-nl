@@ -1,34 +1,34 @@
 ---
 title: De Stuur Programma's van de container Storage-interface (CSI) inschakelen op de Azure Kubernetes-service (AKS)
-description: Meer informatie over het inschakelen van de container Storage interface (CSI)-Stuur Programma's voor Azure disk en Azure Files in een Azure Kubernetes service-cluster (AKS).
+description: Meer informatie over het inschakelen van de container Storage interface (CSI)-Stuur Programma's voor Azure-schijven en Azure Files in een AKS-cluster (Azure Kubernetes service).
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: bd5706d20496e1ff00843f761443d183cf7fcae3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 54764b16ba63d5656f61152cfe40ef50475192a5
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085656"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>De Stuur Programma's van de container Storage-interface (CSI) inschakelen voor Azure-schijven en Azure Files op Azure Kubernetes service (AKS) (preview)
 
-De container Storage-interface (CSI) is een standaard voor het beschikbaar maken van wille keurige blok-en opslag systemen in containers op Kubernetes. Door het gebruik van CSI, Azure Kubernetes service (AKS) kunnen invoeg toepassingen die nieuwe of verbeterde bestaande opslag systemen in Kubernetes maken, implementeren en herhalen, zonder dat u de kern Kubernetes code hoeft aan te passen en de release cycli moet wachten.
+De container Storage-interface (CSI) is een standaard voor het beschikbaar maken van wille keurige blok-en opslag systemen in containers op Kubernetes. Door het gebruik van CSI, Azure Kubernetes service (AKS) kan invoeg toepassingen schrijven, implementeren en laten lopen om nieuwe of bestaande opslag systemen in Kubernetes beschikbaar te maken, zonder dat u de kern Kubernetes hoeft aan te raken en de release cycli moet wachten.
 
-Met de ondersteuning van de CSI-opslag Stuur Programma's op AKS kunt u systeem eigen gebruik maken van:
-- [*Azure-schijven*](azure-disk-csi.md) : kan worden gebruikt om een Kubernetes *DataDisk* -resource te maken. Schijven kunnen gebruikmaken van Azure Premium Storage, ondersteund door Ssd's met hoge prestaties of Azure Standard-opslag, ondersteund door gewone Hdd's of standaard Ssd's. Voor de meeste werk belastingen voor productie en ontwikkeling gebruikt u Premium Storage. Azure-schijven zijn gekoppeld als *ReadWriteOnce*, dus zijn alleen beschikbaar voor één pod. Gebruik Azure Files voor opslag volumes die gelijktijdig toegankelijk zijn voor meerdere peulen.
-- [*Azure files*](azure-files-csi.md) kan worden gebruikt om een SMB 3,0-share die wordt ondersteund door een Azure Storage-account, te koppelen aan het gehele volume. Met bestanden kunt u gegevens delen op meerdere knoop punten en een Peul. Bestanden kunnen Azure Standard-opslag gebruiken die wordt ondersteund door gewone Hdd's of Azure Premium Storage, ondersteund door Ssd's met hoge prestaties.
+Met de ondersteuning van de CSI-opslag Stuur Programma's op AKS kunt u native gebruiken:
+- [*Azure-schijven*](azure-disk-csi.md), die kunnen worden gebruikt voor het maken van een Kubernetes *DataDisk* -resource. Schijven kunnen gebruikmaken van Azure Premium Storage, ondersteund door Ssd's met hoge prestaties of Azure Standard-opslag, ondersteund door gewone Hdd's of standaard Ssd's. Gebruik Premium Storage voor de meeste werk belastingen voor productie en ontwikkeling. Azure-schijven zijn gekoppeld als *ReadWriteOnce*, dus zijn alleen beschikbaar voor één pod. Gebruik Azure Files voor opslag volumes die gelijktijdig toegankelijk zijn voor meerdere peulen.
+- [*Azure files*](azure-files-csi.md), dat kan worden gebruikt voor het koppelen van een SMB 3,0-share die wordt ondersteund door een Azure Storage-account tot een Peul. Met Azure Files kunt u gegevens delen op meerdere knoop punten en een Peul. Azure Files kunt Azure Standard-opslag gebruiken die wordt ondersteund door gewone Hdd's of Azure Premium Storage die worden ondersteund door Ssd's met hoge prestaties.
 
 > [!IMPORTANT]
-> Met ingang van Kubernetes versie 1,21 worden alleen de CSI-Stuur Programma's en standaard de Kubernetes gebruikt. Dit zijn de toekomst van opslag ondersteuning in Kubernetes.
+> Met ingang van Kubernetes versie 1,21 worden alleen de CSI-Stuur Programma's en standaard de Kubernetes gebruikt. Deze Stuur Programma's zijn de toekomst van opslag ondersteuning in Kubernetes.
 >
-> *"In-structuur Stuur Programma's"* verwijzen naar de huidige opslag Stuur Programma's die deel uitmaken van de kern kubernetes-code vs. de nieuwe CSI-Stuur Programma's die zijn ingebouwd als invoeg toepassingen.
+> *In-structuur Stuur Programma's* verwijzen naar de huidige opslag Stuur Programma's die deel uitmaken van de kern Kubernetes-code versus de nieuwe CSI-Stuur Programma's, die invoeg toepassingen zijn.
 
 ## <a name="limitations"></a>Beperkingen
 
 - Deze functie kan alleen worden ingesteld tijdens het maken van het cluster.
-- De minimale kubernetes-secundaire versie die ondersteuning biedt voor CSI-Stuur Programma's is v 1.17.
+- De minimale Kubernetes-secundaire versie die ondersteuning biedt voor CSI-Stuur Programma's is v 1.17.
 - Tijdens de preview-periode is de standaard opslag klasse nog steeds [dezelfde in-structuur opslag klasse](concepts-storage.md#storage-classes). Nadat deze functie algemeen beschikbaar is, wordt de standaard-opslag klasse de opslag `managed-csi` klasse en de opslag klassen in de boom structuur verwijderd.
 - Tijdens de eerste preview-fase wordt alleen Azure CLI ondersteund.
 
@@ -36,9 +36,9 @@ Met de ondersteuning van de CSI-opslag Stuur Programma's op AKS kunt u systeem e
 
 ### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>De `EnableAzureDiskFileCSIDriver` Preview-functie registreren
 
-Als u een AKS-cluster wilt maken dat gebruikmaakt van CSI-Stuur Programma's voor Azure-schijven en Azure Files, moet u de `EnableAzureDiskFileCSIDriver` functie vlag inschakelen voor uw abonnement.
+Als u een AKS-cluster wilt maken dat CSI-Stuur Programma's voor Azure-schijven en Azure Files kan gebruiken, moet u de `EnableAzureDiskFileCSIDriver` functie vlag voor uw abonnement inschakelen.
 
-Registreer de `EnableAzureDiskFileCSIDriver` functie vlag met de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
+Registreer de `EnableAzureDiskFileCSIDriver` functie vlag met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
-Als u een AKS-cluster of een knooppunt groep wilt maken die de CSI-opslag Stuur Programma's kan gebruiken, hebt u de meest recente *AKS-preview cli-* extensie nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] of installeer beschik bare updates met behulp van de opdracht [AZ extension update][az-extension-update] :
+Als u een AKS-cluster of een knooppunt groep wilt maken die de CSI-opslag Stuur Programma's kan gebruiken, hebt u de meest recente *AKS-preview* Azure cli-extensie nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] . Of installeer alle beschik bare updates met behulp van de opdracht [AZ extension update][az-extension-update] .
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>Een nieuw cluster maken dat CSI-opslag Stuur Programma's kan gebruiken
 
-Maak een nieuw cluster dat gebruikmaakt van CSI-opslag Stuur Programma's voor Azure-schijven en Azure Files met behulp van de volgende CLI-opdrachten. Gebruik de `--aks-custom-headers` markering om de functie in te stellen `EnableAzureDiskFileCSIDriver` .
+Maak een nieuw cluster dat CSI-opslag Stuur Programma's voor Azure-schijven en Azure Files kan gebruiken met behulp van de volgende CLI-opdrachten. Gebruik de `--aks-custom-headers` markering om de functie in te stellen `EnableAzureDiskFileCSIDriver` .
 
 Een Azure-resource groep maken:
 
@@ -82,14 +82,14 @@ Een Azure-resource groep maken:
 az group create --name myResourceGroup --location canadacentral
 ```
 
-Maak het AKS-cluster met ondersteuning voor CSI-opslag Stuur Programma's.
+Maak het AKS-cluster met ondersteuning voor CSI-opslag Stuur Programma's:
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure -k 1.17.9 --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-Als u clusters in structuur opslag Stuur Programma's wilt maken in plaats van CSI-opslag Stuur Programma's, kunt u dit doen door de aangepaste `--aks-custom-headers` para meter weg te laten.
+Als u clusters wilt maken in structuur opslag Stuur Programma's in plaats van CSI-opslag Stuur Programma's, kunt u dit doen door de aangepaste para meter weg te laten `--aks-custom-headers` .
 
 
 Controleren hoeveel Azure disk-based volumes u aan dit knoop punt kunt koppelen door uit te voeren:
@@ -106,9 +106,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik het CSI-station voor Azure-schijven. Zie [Azure Disk gebruiken met CSI-Stuur Programma's](azure-disk-csi.md).
-- Gebruik het CSI-station voor Azure files. Zie [Azure files gebruiken met CSI-Stuur Programma's](azure-files-csi.md).
-- Zie [Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service (AKS)][operator-best-practices-storage] voor meer informatie over aanbevolen procedures voor opslag.
+- Als u het CSI-station voor Azure-schijven wilt gebruiken, raadpleegt u [Azure schijven gebruiken met CSI-Stuur Programma's](azure-disk-csi.md).
+- Als u het CSI-station voor Azure Files wilt gebruiken, raadpleegt [u Azure files gebruiken met CSI-Stuur Programma's](azure-files-csi.md).
+- Zie [Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service][operator-best-practices-storage]voor meer informatie over aanbevolen procedures voor opslag.
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -132,8 +132,8 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true

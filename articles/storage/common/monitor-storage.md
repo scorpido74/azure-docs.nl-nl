@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500416"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085787"
 ---
 # <a name="monitoring-azure-storage"></a>Bewakings Azure Storage
 
@@ -76,7 +76,11 @@ Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Zie voor een 
 
 ## <a name="configuration"></a>Configuratie
 
-De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar u moet een diagnostische instelling maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md)voor het proces voor het maken van een diagnostische instelling met behulp van de Azure Portal, de Azure CLI of Power shell.
+De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar u moet een diagnostische instelling maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. 
+
+Als u een diagnostische instelling wilt maken met behulp van de Azure Portal, de Azure CLI of Power shell, raadpleegt u [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md). 
+
+Zie [Diagnostische instelling voor Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)voor een Azure Resource Manager sjabloon waarmee een diagnostische instelling wordt gemaakt.
 
 Wanneer u een diagnostische instelling maakt, kiest u het type opslag waarvoor u logboeken wilt inschakelen, zoals een blob, wachtrij, tabel of bestand. Data Lake Storage Gen2 wordt niet weer gegeven als een opslag type. Dat komt omdat Data Lake Storage Gen2 een reeks mogelijkheden die beschikbaar is voor Blob Storage. 
 
@@ -124,7 +128,7 @@ Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/a
 
 #### <a name="list-the-metric-definition"></a>De metrische definitie weer geven
 
-U kunt de metrische definitie van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, weer geven. Gebruik de cmdlet [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) .
+U kunt de metrische definitie van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, weer geven. Gebruik de cmdlet [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) .
 
 In dit voor beeld vervangt u de `<resource-ID>` tijdelijke aanduiding door de resource-id van het hele opslag account of de resource-id van een afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service. U kunt deze resource-Id's vinden op de pagina **Eigenschappen** van uw opslag account in de Azure Portal.
 
@@ -135,7 +139,7 @@ In dit voor beeld vervangt u de `<resource-ID>` tijdelijke aanduiding door de re
 
 #### <a name="reading-metric-values"></a>Meet waarden lezen
 
-U kunt metrische waarden op account niveau van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, lezen. Gebruik de cmdlet [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) .
+U kunt metrische waarden op account niveau van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, lezen. Gebruik de cmdlet [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) .
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ U kunt metrische waarden op account niveau van uw opslag account of de afzonderl
 
 #### <a name="list-the-account-level-metric-definition"></a>De metrische definitie op account niveau weer geven
 
-U kunt de metrische definitie van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, weer geven. Gebruik de opdracht [AZ monitor Metrics List-Definitions](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) .
+U kunt de metrische definitie van uw opslag account of de afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service, weer geven. Gebruik de opdracht [AZ monitor Metrics List-Definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
  
 In dit voor beeld vervangt u de `<resource-ID>` tijdelijke aanduiding door de resource-id van het hele opslag account of de resource-id van een afzonderlijke opslag service, zoals de blob, het bestand, de tabel of de wachtrij service. U kunt deze resource-Id's vinden op de pagina **Eigenschappen** van uw opslag account in de Azure Portal.
 
@@ -156,7 +160,7 @@ In dit voor beeld vervangt u de `<resource-ID>` tijdelijke aanduiding door de re
 
 #### <a name="read-account-level-metric-values"></a>Metrische waarden op account niveau lezen
 
-U kunt de metrische waarden van uw opslag account of de afzonderlijke opslag service lezen, zoals de blob, het bestand, de tabel of de wachtrij service. Gebruik de opdracht [AZ monitor Metrics List](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) .
+U kunt de metrische waarden van uw opslag account of de afzonderlijke opslag service lezen, zoals de blob, het bestand, de tabel of de wachtrij service. Gebruik de opdracht [AZ monitor Metrics List](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) .
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

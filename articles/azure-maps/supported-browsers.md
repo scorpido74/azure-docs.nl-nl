@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002936"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085022"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
 
-De Azure Maps Web-SDK biedt een hulp functie met de naam [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Deze functie detecteert of een webbrowser de minimale set WebGL-functies heeft die vereist is voor het laden en weer geven van het kaart besturings element. Hier volgt een voor beeld van het gebruik van de functie:
+De Azure Maps Web-SDK biedt een hulp functie met de naam [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-). Deze functie detecteert of een webbrowser de minimale set WebGL-functies heeft die vereist is voor het laden en weer geven van het kaart besturings element. Hier volgt een voor beeld van het gebruik van de functie:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -40,7 +40,7 @@ De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
 
 Zie ook [verouderde browsers bedoelen](#Target-Legacy-Browsers) verderop in dit artikel.
 
-## <a name="mobile"></a>Mobiel
+## <a name="mobile"></a>Mobiele telefoon
 
 De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
 

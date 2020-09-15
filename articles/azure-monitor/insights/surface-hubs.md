@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662498"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085345"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Surface hubs bewaken met Azure Monitor om hun status bij te houden
 
@@ -60,7 +60,7 @@ Als u intune niet gebruikt om uw omgeving te beheren, kunt u apparaten hand mati
 3. Klik op **Dit apparaat**en klik onder **bewaking**op **log Analytics instellingen configureren**.
 4. Selecteer **bewaking inschakelen**.
 5. Typ in het dialoog venster Log Analytics instellingen de Log Analytics **werk ruimte-id** en typ de **werkruimte sleutel**.  
-   ![Instellingen](./media/surface-hubs/settings.png)
+   ![Scherm afbeelding toont de instellingen van het Microsoft Operations Manager-pakket met behulp van het selectie vakje controle inschakelen en tekst vakken voor werk ruimte-ID en werkruimte sleutel.](./media/surface-hubs/settings.png)
 6. Klik op **OK** om de configuratie te volt ooien.
 
 Er wordt een bevestiging weer gegeven met de melding of de configuratie is toegepast op het apparaat. Als dat het geval is, wordt er een bericht weer gegeven met de mede deling dat de agent is verbonden met Azure Monitor. Het apparaat begint vervolgens met het verzenden van gegevens naar Azure Monitor waar u deze kunt bekijken en er actie op moet ondernemen.
