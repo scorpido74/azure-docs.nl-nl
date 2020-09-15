@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005788"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089748"
 ---
 # <a name="publisher-verification"></a>Uitgever verificatie
 
@@ -33,7 +33,7 @@ Verificatie van de uitgever biedt de volgende voor delen:
 
 - **Verbeterde huis stijl**: een ' geverifieerde ' badge wordt weer gegeven op de Azure AD- [opdracht prompt voor toestemming](application-consent-experience.md), de pagina voor zakelijke apps en extra UX-Opper vlakken die worden gebruikt door eind gebruikers en beheerders. 
 
-- **Vloeiendere ondernemings acceptatie**: beheerders kunnen het nieuwe beleid voor gebruikers toestemming configureren en de verificatie status van de uitgever is een van de primaire beleids criteria. 
+- **Vloeiendere ondernemings acceptatie**: beheerders kunnen het beleid voor de [gebruikers toestemming](../manage-apps/configure-user-consent.md)configureren met de verificatie status van de uitgever als een van de primaire beleids criteria. 
 
 - **Verbeterde risico beoordeling**: de micro soft-detecties voor toestemmings aanvragen voor ' Risk ante ' bevatten uitgevers verificatie als signaal. 
 
@@ -52,6 +52,8 @@ Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-
 
     -  In het partner centrum moet deze gebruiker over de volgende [rollen](/partner-center/permissions-overview)beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD).
     
+-  De gebruiker die de verificatie uitvoert, moet zich aanmelden met [multi-factor Authentication](../authentication/howto-mfa-getstarted.md).
+
 -  De uitgever gaat akkoord met de [gebruiks voorwaarden van het micro soft-identiteits platform voor ontwikkel aars](/legal/microsoft-identity-platform/terms-of-use).
 
 Ontwikkel aars die al aan deze vereisten hebben voldaan, kunnen binnen een paar minuten worden geverifieerd. Als niet aan de vereisten wordt voldaan, is het instellen van de installatie gratis. 

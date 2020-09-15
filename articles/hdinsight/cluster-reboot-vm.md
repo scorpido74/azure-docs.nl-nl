@@ -1,6 +1,6 @@
 ---
-title: Vm's voor Azure HDInsight-cluster opnieuw opstarten
-description: Meer informatie over het opnieuw opstarten van niet-reagerende Vm's voor het HDInsight-cluster.
+title: Vm's voor Azure HDInsight-clusters opnieuw opstarten
+description: Meer informatie over het opnieuw opstarten van niet-reagerende Vm's voor Azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,59 +8,59 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: c0f0bd9eb423b3de6a602647dff93fd9fce6e13e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077011"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089969"
 ---
-# <a name="reboot-vms-for-hdinsight-cluster"></a>Vm's voor HDInsight-cluster opnieuw opstarten
+# <a name="reboot-vms-for-hdinsight-clusters"></a>Vm's voor HDInsight-clusters opnieuw opstarten
 
-HDInsight-clusters bevatten groepen Vm's als cluster knooppunten. Voor langlopende clusters kunnen deze knoop punten om verschillende redenen niet meer reageren. In dit artikel wordt beschreven hoe u niet-reagerende Vm's in een HDInsight-cluster opnieuw opstarten.
+Azure HDInsight-clusters bevatten groepen van virtuele machines (Vm's) als cluster knooppunten. Voor langlopende clusters kunnen deze knoop punten om verschillende redenen onreageerd worden. In dit artikel wordt beschreven hoe u niet-reagerende Vm's in een HDInsight-cluster opnieuw opstarten.
 
 ## <a name="when-to-reboot"></a>Wanneer opnieuw opstarten
 
-> [!WARNING]  
-> Als de Vm's in het cluster opnieuw worden opgestart, wordt de downtime van het knoop punt ingeschakeld en worden de services op het knoop punt opnieuw gestart. 
+> [!WARNING]
+> Wanneer u Vm's opnieuw opstart in een cluster, is het knoop punt niet beschikbaar voor gebruik en moeten de services op het knoop punt opnieuw worden gestart.
 
-Terwijl het knoop punt opnieuw wordt opgestart, kan het cluster beschadigd raken, kunnen de taken vertragen of mislukken. Als u het actieve hoofd knooppunt opnieuw wilt opstarten, worden alle actieve taken afgebroken en kunt u geen taken naar het cluster verzenden totdat de services weer actief zijn. Overweeg om Vm's alleen opnieuw op te starten als dat nodig is. Hier vindt u enkele richt lijnen voor het opnieuw opstarten van Vm's.
+Wanneer een knoop punt opnieuw wordt opgestart, wordt het cluster mogelijk beschadigd en kunnen taken vertragen of mislukken. Als u het actieve hoofd knooppunt opnieuw wilt opstarten, worden alle actieve taken gestopt. U kunt geen taken naar het cluster verzenden totdat de services weer actief zijn. Daarom moet u Vm's alleen opnieuw opstarten als dat nodig is. Overweeg het opnieuw opstarten van Vm's wanneer:
 
-- U kunt geen SSH-service uitvoeren in het knoop punt, maar dit reageert op pings.
+- U kunt SSH niet gebruiken om in het knoop punt op te halen, maar reageert wel op pings.
 - Het worker-knoop punt is niet actief zonder heartbeat in de Ambari-gebruikers interface.
 - De tijdelijke schijf is vol op het knoop punt.
-- De proces tabel op de virtuele machine bevat veel vermeldingen waar het proces is voltooid, maar het wordt weer gegeven met de status afgesloten.
+- De proces tabel op de VM bevat veel vermeldingen waar het proces is voltooid, maar het wordt weer gegeven met de status afgesloten.
 
-> [!WARNING]  
-> Wees voorzichtig bij het opnieuw opstarten van Vm's voor **HBase** en **Kafka** clustes, omdat dit kan leiden tot verlies van gegevens.
+> [!WARNING]
+> Wees voorzichtig bij het opnieuw opstarten van Vm's voor **HBase** -en **Kafka** -clusters, omdat het opnieuw opstarten mogelijk dat er gegevens verloren gaan.
 
 ## <a name="use-powershell-to-reboot-vms"></a>Power shell gebruiken voor het opnieuw opstarten van Vm's
 
-Er zijn twee stappen vereist om de bewerking voor het opnieuw opstarten van het knoop punt te gebruiken: een lijst met knoop punten en knoop punten opnieuw starten
+Er zijn twee stappen vereist voor het opnieuw opstarten van het knoop punt: een lijst met knoop punten en opnieuw starten van knoop punten.
 
-1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen via [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost). 
+1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen op [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost).
 
-  ```
-  Get-AzHDInsightHost -ClusterName myclustername
-  ```
+      ```
+      Get-AzHDInsightHost -ClusterName myclustername
+      ```
 
-2. Start hosts opnieuw op. Nadat u de namen van de knoop punten die u opnieuw wilt opstarten hebt opgehaald, start u de knoop punten opnieuw op met [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost).
+1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost).
 
-  ```
-  Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
-  ```
+      ```
+      Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
+      ```
 
-## <a name="use-rest-api-to-reboot-vms"></a>Gebruik REST API om Vm's opnieuw op te starten
+## <a name="use-a-rest-api-to-reboot-vms"></a>Een REST API gebruiken om Vm's opnieuw op te starten
 
-U kunt de functie **try it** in het API-document gebruiken om aanvragen te verzenden naar HDInsight. Er zijn twee stappen vereist om de bewerking voor het opnieuw opstarten van het knoop punt te gebruiken: een lijst met knoop punten en knoop punten opnieuw starten
+U kunt de functie **try it** in het API-document gebruiken om aanvragen te verzenden naar HDInsight. Er zijn twee stappen vereist voor het opnieuw opstarten van het knoop punt: een lijst met knoop punten en opnieuw starten van knoop punten.
 
-1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen uit de REST API of in Ambari. Meer informatie vindt u op de [lijst met HDInsight-Hosts rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
+1. Knoop punten weer geven. U kunt de lijst met cluster knooppunten ophalen uit de REST API of in Ambari. Zie voor meer informatie de [lijst met HDInsight-hosts rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-2. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, gebruikt u knoop punten opnieuw starten REST API om de knoop punten opnieuw op te starten. De naam van het knoop punt volgt het patroon van **' NodeType (wn/HN/ZK/GW) ' + ' x ' + ' eerste 6 tekens van cluster naam '**. Meer informatie vindt u op het [opnieuw opstarten van HDInsight-Hosts rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Start hosts opnieuw op. Nadat u de namen van de knoop punten hebt opgehaald die u opnieuw wilt opstarten, start u de knoop punten opnieuw met behulp van de REST API om de knoop punten opnieuw op te starten. De naam van het knoop punt volgt het patroon van *NodeType (wn/HN/ZK/GW)*  +  *x*de  +  *eerste zes tekens van de cluster naam*. Zie voor meer informatie [HDInsight-hosts opnieuw opstarten rest API bewerking](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview

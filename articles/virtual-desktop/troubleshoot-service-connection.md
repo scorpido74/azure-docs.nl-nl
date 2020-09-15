@@ -1,17 +1,17 @@
 ---
 title: Problemen met de service verbinding oplossen Windows virtueel bureau blad-Azure
-description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
+description: Problemen oplossen tijdens het instellen van service verbindingen in een Windows Virtual Desktop-Tenant omgeving.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009372"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089901"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop service-verbindingen
 
@@ -39,6 +39,12 @@ Een gebruiker kan Extern bureaublad-clients starten en kan worden geverifieerd, 
 3. Als de WebClient wordt gebruikt, controleert u of er geen problemen met de referenties in de cache zijn.
 
 4. Als de gebruiker deel uitmaakt van een Azure Active Directory (AD)-gebruikers groep, moet u ervoor zorgen dat de gebruikers groep een beveiligings groep is in plaats van een distributie groep. Virtuele Windows-Bureau bladen bieden geen ondersteuning voor Azure AD-distributie groepen.
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>Gebruiker verliest bestaande feed en er wordt geen externe bron weer gegeven (geen feed)
+
+Deze fout treedt meestal op nadat een gebruiker zijn of haar abonnement van een Azure AD-Tenant naar een andere heeft verplaatst. Als gevolg hiervan verliest de service het bijhouden van hun gebruikers toewijzingen, omdat deze nog steeds zijn gekoppeld aan de oude Azure AD-Tenant.
+
+Om dit probleem op te lossen, moet u de gebruikers opnieuw toewijzen aan hun app-groepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

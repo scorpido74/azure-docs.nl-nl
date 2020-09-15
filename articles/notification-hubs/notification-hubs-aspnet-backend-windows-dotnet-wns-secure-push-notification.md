@@ -1,30 +1,28 @@
 ---
 title: Azure Notification Hubs Secure push voor Windows
 description: Meer informatie over het verzenden van beveiligde push meldingen in Azure. Codevoorbeelden geschreven in C# met .NET API.
-documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
+editor: thsomasu
 services: notification-hubs
-ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017988"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089940"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Veilige push meldingen van Azure Notification Hubs
+# <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Beveiligde push meldingen verzenden vanuit Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -48,10 +46,10 @@ Op hoog niveau is de stroom als volgt:
 
 Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in lokale opslag nadat de gebruiker zich heeft aangemeld. Dit garandeert een volledig naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de app bij het ontvangen van de melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
 
-In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig verzendt. De zelf studie bouwt voort op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) , daarom moet u eerst de stappen in deze zelf studie volt ooien.
+Deze zelf studie laat zien hoe u een push melding veilig verzendt. De zelf studie bouwt voort op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) , daarom moet u eerst de stappen in deze zelf studie volt ooien.
 
 > [!NOTE]
-> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [meldingen verzenden naar universeel Windows-platform-apps](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 > Houd er ook rekening mee dat Windows Phone 8,1 Windows-referenties (niet Windows Phone) vereist en dat de achtergrond taken niet werken op Windows Phone 8,0 of Silverlight 8,1. Voor Windows Store-toepassingen kunt u alleen meldingen ontvangen via een achtergrond taak als het vergrendelings scherm van de app is ingeschakeld (Klik op het selectie vakje in de Appmanifest).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
@@ -63,6 +61,7 @@ In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig v
     ```csharp
     RegisterBackgroundTask();
     ```
+
 2. Voeg in App.xaml.cs nog steeds de volgende code toe direct na de- `OnLaunched()` methode:
 
     ```csharp
@@ -80,12 +79,14 @@ In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig v
         }
     }
     ```
+
 3. Voeg de volgende `using` instructies toe boven aan het app.xaml.CS-bestand:
 
     ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
+
 4. Klik in het menu **Bestand** in Visual Studio op **Alles opslaan**.
 
 ## <a name="create-the-push-background-component"></a>Het push-achtergrond onderdeel maken
@@ -143,6 +144,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
             }
         }
     ```
+
 5. Klik in Solution Explorer met de rechter muisknop op het PushBackgroundComponent-project **(Windows Phone 8,1)** en klik vervolgens op **NuGet-pakketten beheren**.
 6. Klik aan de linkerkant op **Online**.
 7. Typ **Http Client** in **het zoekvak**.
@@ -160,6 +162,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
+
 11. Klik in Solution Explorer, in het **NotifyUserWindowsPhone (Windows Phone 8,1)** -project, met de rechter muisknop op **verwijzingen**en klik vervolgens op **verwijzing toevoegen...**. Schakel in het dialoog venster referentie beheer het selectie vakje naast **PushBackgroundComponent**in en klik vervolgens op **OK**.
 12. In Solution Explorer dubbelklikt u op **package. appxmanifest** in het **NotifyUserWindowsPhone-project (Windows Phone 8,1)** . Stel onder **meldingen**de **pop-up kan** in op **Ja**.
 

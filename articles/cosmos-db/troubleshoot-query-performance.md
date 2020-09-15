@@ -1,23 +1,23 @@
 ---
-title: Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
+title: Query-problemen bij het gebruik van Azure Cosmos DB oplossen
 description: Meer informatie over het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB SQL-query's.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117910"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089986"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Query-problemen bij het gebruik van Azure Cosmos DB oplossen
 
-In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangs punt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [Diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om query's te identificeren die langzaam zijn of die aanzienlijke hoeveel heden door Voer in beslag nemen.
+In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplossen van problemen met query's in Azure Cosmos DB. Hoewel u geen rekening moet houden met de stappen die in dit artikel worden beschreven, wordt een volledige bescherming tegen mogelijke query problemen opgenomen, maar hier zijn de meest voorkomende tips voor het verbeteren van de prestaties. Gebruik dit artikel als uitgangspunt voor het oplossen van problemen met trage of dure query's in de Azure Cosmos DB core-API (SQL). U kunt ook [diagnostische logboeken](cosmosdb-monitor-resource-logs.md) gebruiken om te bepalen welke query's langzaam zijn of welke query's aanzienlijke hoeveelheden doorvoer gebruiken.
 
 U kunt query optimalisaties in het Azure Cosmos DB breed categoriseren:
 
@@ -26,22 +26,21 @@ U kunt query optimalisaties in het Azure Cosmos DB breed categoriseren:
 
 Als u de RU-kosten van een query reduceert, verkleint u de latentie ook bijna zeker.
 
-In dit artikel vindt u voor beelden die u opnieuw kunt maken met behulp van de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset.
+In dit artikel vindt u voor beelden die u opnieuw kunt maken met behulp van de [voedings gegevensset](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
 ## <a name="common-sdk-issues"></a>Veelvoorkomende SDK-problemen
 
 Voordat u deze hand leiding leest, moet u rekening houden met veelvoorkomende SDK-problemen die niet zijn gerelateerd aan de query-engine.
 
-- Volg deze [Tips voor prestaties](performance-tips.md)voor de beste prestaties.
-    > [!NOTE]
-    > Voor betere prestaties raden we u aan Windows 64-bits host te verwerken. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen.
+- Volg deze [Tips voor SDK-prestaties](performance-tips.md).
+    - [Probleemoplossings gids voor .NET SDK](troubleshoot-dot-net-sdk.md)
+    - [Gids voor probleem oplossing voor Java SDK](troubleshoot-java-sdk-v4-sql.md)
 - Met de SDK kunt `MaxItemCount` u een voor uw query's instellen, maar u kunt geen minimum aantal items opgeven.
     - Code moet elk pagina formaat afhandelen van 0 tot en met `MaxItemCount` .
-    - Het aantal items op een pagina is altijd minder of gelijk aan het opgegeven `MaxItemCount` . Is echter `MaxItemCount` een strikt maximum en er kunnen minder resultaten zijn dan deze hoeveelheid.
 - Soms bevatten query's lege pagina's, zelfs wanneer er resultaten zijn op een toekomstige pagina. Dit kan de volgende oorzaken hebben:
     - De SDK kan meerdere netwerk aanroepen uitvoeren.
     - Het kan lang duren voordat de query de documenten heeft opgehaald.
-- Alle query's hebben een vervolg token waarmee de query kan worden voortgezet. Zorg ervoor dat u de query volledig leegmaakt. Bekijk de voor beelden van de SDK en gebruik een `while` lus `FeedIterator.HasMoreResults` aan om de hele query af te breken.
+- Alle query's hebben een vervolg token waarmee de query kan worden voortgezet. Zorg ervoor dat u de query volledig leegmaakt. Meer informatie over het [verwerken van meerdere pagina's met resultaten](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>Metrische query gegevens ophalen
 

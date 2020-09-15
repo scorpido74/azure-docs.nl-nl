@@ -5,53 +5,55 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 018275b6db4c2d2d1059f35077f74a6f45ec3ba9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422048"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089867"
 ---
-# <a name="use-the-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Gebruik de Azure Filesing container Storage interface (CSI)-Stuur Programma's in azure Kubernetes service (AKS) (preview)
-Het Azure Files CSI-stuur programma is een stuur programma voor [CSI-specificatie](https://github.com/container-storage-interface/spec/blob/master/spec.md) dat door aks wordt gebruikt voor het beheren van de levens cyclus van Azure files-shares. 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Files-Stuur Programma's van de container Storage interface (CSI) gebruiken in azure Kubernetes service (AKS) (preview)
 
-De container Storage-interface (CSI) is een standaard voor het beschikbaar maken van wille keurige blok-en opslag systemen in containers op Kubernetes. Door CSI te maken en te gebruiken, kan Azure Kubernetes service (AKS) nu invoeg toepassingen schrijven, implementeren en laten lopen, waardoor er nieuwe of verbeterde bestaande opslag systemen in Kubernetes worden weer gegeven zonder dat u de kern Kubernetes hoeft aan te hoeven en te wachten op de release cycli.
+Het stuur programma voor de Azure Files-container opslag interface (CSI) is een stuur programma voor [CSI-specificatie](https://github.com/container-storage-interface/spec/blob/master/spec.md)dat door Azure Kubernetes service (AKS) wordt gebruikt voor het beheren van de levens cyclus van Azure files-shares.
+
+De CSI is een standaard voor het beschikbaar maken van wille keurige blok-en opslag systemen in containers op Kubernetes. Door CSI te maken en te gebruiken, kan AKS nu invoeg toepassingen schrijven, implementeren en herhalen om nieuwe of bestaande opslag systemen in Kubernetes beschikbaar te stellen zonder dat u de kern Kubernetes code hoeft aan te raken en te wachten op de release cycli.
 
 Als u een AKS-cluster wilt maken met de ondersteuning van CSI-Stuur Programma's, raadpleegt u de [Stuur Programma's voor de Azure-schijven inschakelen en Azure files op AKS](csi-storage-drivers.md).
 
 >[!NOTE]
-> *"In-structuur Stuur Programma's"* verwijzen naar de huidige opslag Stuur Programma's die deel uitmaken van de kern kubernetes-code vs. de nieuwe CSI-Stuur Programma's die zijn ingebouwd als invoeg toepassingen.
+> *In-structuur Stuur Programma's* verwijzen naar de huidige opslag Stuur Programma's die deel uitmaken van de kern Kubernetes-code versus de nieuwe CSI-Stuur Programma's, die invoeg toepassingen zijn.
 
-## <a name="use-a-persistent-volume-pv-with-azure-files"></a>Een permanent volume (HW) gebruiken met Azure Files
+## <a name="use-a-persistent-volume-with-azure-files"></a>Een permanent volume gebruiken met Azure Files
 
-Een [permanent volume](concepts-storage.md#persistent-volumes) vertegenwoordigt een opslag ruimte die is ingericht voor gebruik met Kubernetes peul. Een permanent volume kan worden gebruikt door een of meer peulen en kan dynamisch of statisch worden ingericht. Als meerdere peulen gelijktijdig gelijktijdige toegang tot hetzelfde opslag volume nodig hebben, kunt u Azure Files gebruiken om verbinding te maken met het [SMB-protocol (Server Message Block)][smb-overview]. In dit artikel wordt beschreven hoe u een Azure Files share dynamisch kunt maken voor gebruik door meerdere peulingen in een Azure Kubernetes service-cluster (AKS). Zie voor statische inrichting [hand matig een volume maken en gebruiken met Azure Files share](azure-files-volume.md).
+Een [permanent volume (HW)](concepts-storage.md#persistent-volumes) vertegenwoordigt een opslag ruimte die is ingericht voor gebruik met Kubernetes peul. Een HW kan worden gebruikt door een of meer peulen en kan dynamisch of statisch worden ingericht. Als meerdere peulen gelijktijdig gelijktijdige toegang tot hetzelfde opslag volume nodig hebben, kunt u Azure Files gebruiken om verbinding te maken met behulp van het [SMB-protocol (Server Message Block)][smb-overview]. In dit artikel wordt beschreven hoe u een Azure Files share dynamisch kunt maken voor gebruik door meerdere peulen in een AKS-cluster. Zie voor statische inrichting [hand matig een volume maken en gebruiken met een Azure Files share](azure-files-volume.md).
 
 Zie [opslag opties voor toepassingen in AKS][concepts-storage]voor meer informatie over Kubernetes-volumes.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-using-the-built-in-storage-classes"></a>Azure Files PVs dynamisch maken met behulp van de ingebouwde opslag klassen
-Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share wordt gemaakt. Er wordt automatisch een opslag account gemaakt in de [knooppunt resource groep][node-resource-group] voor gebruik met de opslag klasse om de Azure-bestands shares op te slaan. Kies een van de volgende [Azure Storage-redundantie][storage-skus] voor *skuName*:
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Azure Files PVs dynamisch maken met behulp van de ingebouwde opslag klassen
 
-* *Standard_LRS* -standaard lokaal redundante opslag
-* Geografisch redundante opslag met *Standard_GRS* standaard
-* Redundante opslag met *Standard_ZRS* -standaard zone
-* *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang
-* Lokaal redundante opslag *Premium_LRS* -Premium
+Een opslag klasse wordt gebruikt om te bepalen hoe een Azure Files share wordt gemaakt. Er wordt in de resource groep van het [knoop punt][node-resource-group] automatisch een opslag account gemaakt voor gebruik met de opslag klasse om de Azure files-shares op te slaan. Kies een van de volgende [Azure Storage redundantie sku's][storage-skus] voor *skuName*:
+
+* **Standard_LRS**: lokaal redundante opslag
+* **Standard_GRS**: standaard geografisch redundante opslag
+* **Standard_ZRS**: standaard zone-redundante opslag
+* **Standard_RAGRS**: standaard geografisch redundante opslag met lees toegang
+* **Premium_LRS**: Premium lokaal redundante opslag
 
 > [!NOTE]
-> Azure Files Premium-opslag biedt een minimale Premium-bestands share van 100 GB.
+> Azure Files ondersteunt Azure Premium Storage. De minimale Premium-bestands share is 100 GB.
 
-Wanneer u Storage CSI-Stuur Programma's gebruikt op AKS, zijn er twee extra ingebouwde `StorageClasses` die gebruikmaken van de **Azure files CSI-opslag Stuur Programma's**. De extra CSI-opslag klassen worden samen met het cluster gemaakt naast de standaard opslag klassen in de structuur.
+Wanneer u Storage CSI-Stuur Programma's gebruikt op AKS, zijn er twee extra ingebouwde `StorageClasses` die gebruikmaken van de Azure files CSI-opslag Stuur Programma's. De extra CSI-opslag klassen worden samen met het cluster gemaakt naast de standaard opslag klassen in de structuur.
 
-- `azurefile-csi` -Maakt gebruik van Azure Standard-opslag om een Azure-bestands share te maken. 
-- `azurefile-csi-premium` -Maakt gebruik van Azure Premium Storage voor het maken van een Azure-bestands share. 
+- `azurefile-csi`: Maakt gebruik van Azure Standard-opslag om een Azure Files share te maken.
+- `azurefile-csi-premium`: Maakt gebruik van Azure Premium Storage voor het maken van een Azure Files share.
 
-Het beleid voor het opnieuw claimen van beide opslag klassen zorgt ervoor dat de onderliggende Azure-bestands share wordt verwijderd wanneer het respectieve permanente volume wordt verwijderd. De opslag klassen configureren ook de bestands shares die kunnen worden uitgebreid, u hoeft alleen de permanente volume claim te bewerken met de nieuwe grootte.
+Het beleid voor het opnieuw claimen van beide opslag klassen zorgt ervoor dat de onderliggende Azure Files share wordt verwijderd wanneer de respectieve hw wordt verwijderd. De opslag klassen configureren ook de bestands shares die kunnen worden uitgebreid, u hoeft alleen de permanente volume claim (PVC) te bewerken met de nieuwe grootte.
 
-Als u gebruik wilt maken van deze opslag klassen, maakt u een [permanente volume claim (PVC)](concepts-storage.md#persistent-volume-claims) en de bijbehorende pod die ernaar verwijzen en hiervan gebruikmaken. Een permanente volume claim (PVC) wordt gebruikt voor het automatisch inrichten van opslag op basis van een opslag klasse. Een PVC kan een van de vooraf gemaakte opslag klassen of een door de gebruiker gedefinieerde opslag klasse gebruiken om een Azure Files share te maken voor de gewenste SKU en grootte. Wanneer u een pod-definitie maakt, wordt de permanente volume claim opgegeven om de gewenste opslag aan te vragen.
+Als u deze opslag klassen wilt gebruiken, maakt u een [PVC](concepts-storage.md#persistent-volume-claims) en de bijbehorende pod die verwijzingen naar en gebruikt. Er wordt een PVC gebruikt voor het automatisch inrichten van opslag op basis van een opslag klasse. Een PVC kan een van de vooraf gemaakte opslag klassen of een door de gebruiker gedefinieerde opslag klasse gebruiken om een Azure Files share te maken voor de gewenste SKU en grootte. Wanneer u een pod-definitie maakt, wordt het PVC opgegeven om de gewenste opslag aan te vragen.
 
-Maak een [voor beeld van een permanente volume claim en pod die de huidige datum `outfile` afdrukt in een](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) met de opdracht [kubectl apply][kubectl-apply] :
+Maak een [voor beeld van een PVC en pod die de huidige datum `outfile` afdrukt in een](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) met de opdracht [kubectl apply][kubectl-apply] :
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -61,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-Nadat de pod de status actief heeft, kunt u valideren of de bestands share correct is gekoppeld door de onderstaande opdracht uit te voeren en de uitvoer te controleren `outfile` : 
+Nadat de pod de status actief heeft, kunt u controleren of de bestands share correct is gekoppeld door de volgende opdracht uit te voeren en de uitvoer te controleren `outfile` :
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -76,7 +78,7 @@ De standaard-opslag klassen zijn de meest voorkomende scenario's, maar niet alle
 
 De standaard waarde voor *file mode* en *dirMode* is *0777* voor gekoppelde bestands shares van Kubernetes. U kunt de verschillende koppelings opties voor het opslag klassen object opgeven.
 
-Maak een bestand `azure-file-sc.yaml` met de naam en plak het volgende manifest: 
+Maak een bestand `azure-file-sc.yaml` met de naam en plak het volgende manifest:
 
 ```yaml
 kind: StorageClass
@@ -107,7 +109,7 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Het stuur programma voor Azure files CSI ondersteunt het maken [van moment opnamen van permanente volumes](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) en de onderliggende bestands shares. 
+Het Azure Files CSI-stuur programma ondersteunt het maken [van moment opnamen van permanente volumes](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) en de onderliggende bestands shares.
 
 Maak een [volume snap shot-klasse](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) met de opdracht [kubectl apply][kubectl-apply] :
 
@@ -117,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-Maak een [moment opname](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) van een volume van de PVC [die dynamisch aan het begin van deze zelf studie is gemaakt](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes) `pvc-azurefile` .
+Maak een [moment opname](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) van een volume van de PVC [die dynamisch aan het begin van deze zelf studie is gemaakt](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) `pvc-azurefile` .
 
 
 ```bash
@@ -156,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume-pv"></a>Het formaat van een permanent volume wijzigen (HW)
+## <a name="resize-a-persistent-volume"></a>Het formaat van een permanent volume wijzigen
 
-U kunt een groter volume aanvragen voor een PVC. Bewerk het PVC-object en geef een grotere grootte op. Met deze wijziging wordt de uitbrei ding geactiveerd van het onderliggende volume dat een back-up van de PersistentVolume maakt. 
+U kunt een groter volume aanvragen voor een PVC. Bewerk het PVC-object en geef een grotere grootte op. Met deze wijziging wordt de uitbrei ding van het onderliggende volume dat de HW maakt, geactiveerd.
 
-> [!NOTE] 
-> Er wordt nooit een nieuwe PersistentVolume gemaakt om te voldoen aan de claim. In plaats daarvan wordt het formaat van een bestaand volume gewijzigd.
+> [!NOTE]
+> Er wordt nooit een nieuwe HW gemaakt om te voldoen aan de claim. In plaats daarvan wordt het formaat van een bestaand volume gewijzigd.
 
-In AKS biedt de ingebouwde `azurefile-csi` opslag klasse al ondersteuning voor uitbrei ding, dus maakt gebruik van het [PVC dat eerder is gemaakt met deze opslag klasse](#dynamically-create-azure-files-pvs-using-the-built-in-storage-classes). Het PVC heeft een 100Gi-bestands share aangevraagd, we kunnen controleren dat door het volgende uit te voeren:
+In AKS biedt de ingebouwde `azurefile-csi` opslag klasse al ondersteuning voor uitbrei ding, dus gebruik het [PVC dat eerder is gemaakt met deze opslag klasse](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). Het PVC heeft een 100Gi-bestands share aangevraagd. We kunnen controleren dat door de volgende handelingen uit te voeren:
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -194,9 +196,9 @@ Filesystem                                                                      
 
 ## <a name="windows-containers"></a>Windows-containers
 
-Het stuur programma voor Azure files CSI ondersteunt ook Windows-knoop punten en-containers. Als u Windows-containers wilt gebruiken, volgt u de [zelf studie over Windows-containers](windows-container-cli.md) om een Windows-knooppunt groep toe te voegen.
+Het Azure Files CSI-stuur programma biedt ook ondersteuning voor Windows-knoop punten en-containers. Als u Windows-containers wilt gebruiken, volgt u de [zelf studie over Windows-containers](windows-container-cli.md) om een Windows-knooppunt groep toe te voegen.
 
-Zodra u een Windows-knooppunt groep hebt, kunt u gebruikmaken van de ingebouwde opslag klassen, `azurefile-csi` of aangepaste maken. U kunt een voor beeld [van een op Windows gebaseerde stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) implementeren waarmee tijds tempels worden opgeslagen in een bestand `data.txt` door de onderstaande implementatie uit te voeren met de opdracht [kubectl apply][kubectl-apply] :
+Nadat u een Windows-knooppunt groep hebt, gebruikt u de ingebouwde opslag klassen `azurefile-csi` en maakt u er aangepaste. U kunt een voor beeld [van een op Windows gebaseerde stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) implementeren waarmee tijds tempels worden opgeslagen in een bestand `data.txt` door de volgende opdracht te implementeren met de opdracht [kubectl apply][kubectl-apply] :
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -218,8 +220,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [use Azure disks with CSI drivers](azure-disk-csi.md)(Engelstalig) voor meer informatie over het gebruik van het stuur programma CSI voor Azure-schijven.
-- Zie [Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service (AKS)][operator-best-practices-storage] voor meer informatie over aanbevolen procedures voor opslag.
+- Zie [use Azure disks with CSI drivers](azure-disk-csi.md)voor meer informatie over het gebruik van CSI-Stuur Programma's voor Azure-schijven.
+- Zie [Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service][operator-best-practices-storage]voor meer informatie over aanbevolen procedures voor opslag.
 
 
 <!-- LINKS - external -->
