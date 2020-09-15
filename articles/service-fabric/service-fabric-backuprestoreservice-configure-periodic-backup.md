@@ -1,16 +1,16 @@
 ---
 title: Inzicht in periodieke back-upconfiguratie
-description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
+description: Gebruik Service Fabric periodieke functie voor back-up en herstel om periodieke back-ups te configureren van uw betrouw bare stateful Services of Reliable Actors.
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530910"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
 
@@ -119,7 +119,7 @@ Een back-upbeleid bestaat uit de volgende configuraties:
 >
 
 * **Bewaar beleid**: Hiermee geeft u het beleid voor het bewaren van back-ups in de geconfigureerde opslag. Alleen Basic-Bewaar beleid wordt ondersteund.
-    1. **Basis beleid voor bewaren**: met dit Bewaar beleid kunt u optimaal gebruikmaken van de opslag capaciteit door back-upbestanden te verwijderen die niet meer nodig zijn. `RetentionDuration`kan worden opgegeven voor het instellen van de tijds Panne waarvoor back-ups moeten worden bewaard in de opslag. `MinimumNumberOfBackups`is een optionele para meter die kan worden opgegeven om ervoor te zorgen dat het opgegeven aantal back-ups altijd worden bewaard, ongeacht het `RetentionDuration` . Hieronder ziet u een voor beeld van de configuratie voor het bewaren van back-ups gedurende _10_ dagen en het aantal back-ups dat niet meer dan _20_mag worden gebruikt.
+    1. **Basis beleid voor bewaren**: met dit Bewaar beleid kunt u optimaal gebruikmaken van de opslag capaciteit door back-upbestanden te verwijderen die niet meer nodig zijn. `RetentionDuration` kan worden opgegeven voor het instellen van de tijds Panne waarvoor back-ups moeten worden bewaard in de opslag. `MinimumNumberOfBackups` is een optionele para meter die kan worden opgegeven om ervoor te zorgen dat het opgegeven aantal back-ups altijd worden bewaard, ongeacht het `RetentionDuration` . Hieronder ziet u een voor beeld van de configuratie voor het bewaren van back-ups gedurende _10_ dagen en het aantal back-ups dat niet meer dan _20_mag worden gebruikt.
 
         ```json
         {

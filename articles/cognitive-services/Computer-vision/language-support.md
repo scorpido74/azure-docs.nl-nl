@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1e4dfb399432278ee09d1c016faae8fd3b584647
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318043"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530196"
 ---
 # <a name="language-support-for-computer-vision"></a>Taal ondersteuning voor Computer Vision
 
@@ -40,7 +40,7 @@ De OCR-Api's van Computer Vision ondersteunen verschillende talen. U hoeft geen 
 |Grieks | `el` |✔ | | |
 |Hongaars | `hu` |✔ | | |
 |Italiaans | `it` |✔ |✔ |✔ |
-|Japans | `ja` |✔ | | |
+|Japans | `ja` |✔ | |✔ |
 |Koreaans | `ko` |✔ | | |
 |Noors | `nb` |✔ | | |
 |Pools | `pl` |✔ | | |

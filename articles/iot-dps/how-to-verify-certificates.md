@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973438"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530859"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Een bewijs van het bezit van de X. 509 CA-certificaten met uw Device Provisioning Service
 
@@ -23,7 +23,7 @@ Bewijs-of-eigendom omvat de volgende stappen:
 2. Maak een X. 509-verificatie certificaat met de verificatie code als onderwerp en onderteken het certificaat met de persoonlijke sleutel die is gekoppeld aan uw X. 509 CA-certificaat.
 3. Upload het ondertekende verificatie certificaat naar de service. De service valideert het verificatie certificaat met behulp van het open bare deel van het CA-certificaat dat moet worden geverifieerd, waardoor u in het bezit bent van de persoonlijke sleutel van het CA-certificaat.
 
-Geverifieerde certificaten spelen een belang rijke rol bij het gebruik van inschrijvings groepen. Het verifiëren van het eigendom van het certificaat biedt een extra beveiligingslaag door ervoor te zorgen dat de uploader van het certificaat in bezit is van de persoonlijke sleutel van het certificaat. Verificatie verhindert een kwaad aardige actor waarmee uw verkeer wordt gesniffd en dat certificaat wordt gebruikt om een registratie groep te maken in hun eigen inrichtings service, waardoor uw apparaten effectief worden overgenomen. Door eigenaar te worden van de hoofdmap of een tussenliggend certificaat in een certificaat keten bewijst u dat u gemachtigd bent om blad certificaten te genereren voor de apparaten die worden geregistreerd als onderdeel van die registratie groep. Daarom moet het basis-of tussenliggende certificaat dat is geconfigureerd in een registratie groep een geverifieerd certificaat zijn of moet worden getotaliseerd op een geverifieerd certificaat in de certificaat keten die een apparaat presenteert wanneer het wordt geverifieerd bij de service. Zie [x. 509-certificaten](concepts-security.md#x509-certificates) en [de toegang tot de inrichtings service beheren met x. 509-certificaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)voor meer informatie over registratie groepen.
+Geverifieerde certificaten spelen een belang rijke rol bij het gebruik van inschrijvings groepen. Het verifiëren van het eigendom van het certificaat biedt een extra beveiligingslaag door ervoor te zorgen dat de uploader van het certificaat in bezit is van de persoonlijke sleutel van het certificaat. Verificatie verhindert een kwaad aardige actor waarmee uw verkeer wordt gesniffd en dat certificaat wordt gebruikt om een registratie groep te maken in hun eigen inrichtings service, waardoor uw apparaten effectief worden overgenomen. Door eigenaar te worden van de hoofdmap of een tussenliggend certificaat in een certificaat keten bewijst u dat u gemachtigd bent om blad certificaten te genereren voor de apparaten die worden geregistreerd als onderdeel van die registratie groep. Daarom moet het basis-of tussenliggende certificaat dat is geconfigureerd in een registratie groep een geverifieerd certificaat zijn of moet worden getotaliseerd op een geverifieerd certificaat in de certificaat keten die een apparaat presenteert wanneer het wordt geverifieerd bij de service. Zie [x. 509-certificaten](concepts-x509-attestation.md) en [de toegang tot de inrichtings service beheren met x. 509-certificaten](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)voor meer informatie over x. 509 Certificate Attestation.
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Het open bare deel van een X. 509-certificaat registreren en een verificatie code ophalen
 
@@ -63,7 +63,7 @@ De Power shell-en bash-scripts die zijn opgenomen in de documentatie en Sdk's, z
 
 ## <a name="upload-the-signed-verification-certificate"></a>Het ondertekende verificatie certificaat uploaden
 
-1. Upload de resulterende hand tekening als een verificatie certificaat naar uw inrichtings service in de portal. Gebruik in **certificaat Details** op het Azure Portal het pictogram _bestand Verkenner_ naast het veld **verificatie certificaat. pem-of. cer-bestand** om het ondertekende verificatie certificaat van uw systeem te uploaden.
+1. Upload de resulterende hand tekening als een verificatie certificaat naar uw inrichtings service in de portal. Gebruik in **certificaat Details** op het Azure Portal het pictogram  _bestand Verkenner_ naast het veld **verificatie certificaat. pem-of. cer-bestand** om het ondertekende verificatie certificaat van uw systeem te uploaden.
 
 2. Zodra het certificaat is geüpload, klikt u op **verifiëren**. De **status** van uw certificaat wordt **_gecontroleerd_** in de lijst **certificaat Verkenner** . Klik op **vernieuwen** als deze niet automatisch wordt bijgewerkt.
 

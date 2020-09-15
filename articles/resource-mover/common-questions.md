@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068044"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530400"
 ---
 # <a name="common-questions"></a>Veelgestelde vragen
 
@@ -50,7 +50,7 @@ Met resource-overzetten kunt u momenteel de volgende resources verplaatsen tusse
 
 U kunt het abonnement wijzigen nadat u resources naar de doel regio hebt verplaatst. Meer [informatie](../azure-resource-manager/management/move-resource-group-and-subscription.md) over het verplaatsen van resources naar een ander abonnement. 
 
-### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Waar worden de meta gegevens over een regio opgeslagen?
+### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Waar worden de meta gegevens voor het verplaatsen van meerdere opgeslagen regio's?
 
 Het wordt opgeslagen in een [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) -data base en in [Azure Blob-opslag](../storage/common/storage-service-encryption.md), in een micro soft-abonnement. Momenteel worden meta gegevens opgeslagen in VS-Oost 2 en Europa-noord. Deze dekking wordt uitgebreid naar andere regio's. Hierdoor hoeft u geen resources over alle open bare regio's te verplaatsen.
 

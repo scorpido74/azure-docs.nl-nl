@@ -3,12 +3,12 @@ title: Azure Migrate-replicatieapparaat
 description: Meer informatie over het Azure Migrate replicatie apparaat voor VMWare-migratie op basis van agents.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122095"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532117"
 ---
 # <a name="replication-appliance"></a>Replicatie apparaat
 
@@ -42,13 +42,13 @@ Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon di
 --- | ---
  | **VMware-VM-apparaat**
 PowerCLI | [PowerCLI-versie 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als het replicatie apparaat wordt uitgevoerd op een virtuele VMWare-machine.
-NIC-type | VMXNET3 (als het apparaat een VMware-VM is)
+Type NIC | VMXNET3 (als het apparaat een VMware-VM is)
  | **Hardware-instellingen**
 CPU-kernen | 8
 RAM | 16 GB
 Aantal schijven | Drie: de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar volume.
 Vrije schijf ruimte (cache) | 600 GB
-Vrije schijf ruimte (Bewaar schijf) | 600 GB
+Vrije schijfruimte (bewaarschijf) | 600 GB
 **Software-instellingen** |
 Besturingssysteem | Windows Server 2016 of Windows Server 2012 R2
 Licentie | Het apparaat wordt geleverd met een evaluatie licentie voor Windows Server 2016, die voor 180 dagen geldig is.<br/><br/> Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
@@ -58,12 +58,12 @@ TLS | TLS 1,2 moet zijn ingeschakeld.
 MySQL | MySQL moet op het apparaat worden geïnstalleerd.<br/> MySQL moet worden geïnstalleerd. U kunt hand matig installeren of Site Recovery kunt dit installeren tijdens de implementatie van het apparaat.
 Andere apps | Voer geen andere apps uit op het replicatie apparaat.
 Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
-Groeps beleid | Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen. <br> -Toegang tot register bewerkings Programma's verhinderen. <br> -Logica vertrouwen voor bestands bijlagen. <br> -Schakel uitvoering van script in. <br> [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
-IIS | -Geen vooraf bestaande standaard website <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443 <br>- [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br> - [Fastcgi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -instelling inschakelen
+Groepsbeleidsregels | Deze groepsbeleidsregels niet inschakelen: <br> - Toegang tot de opdrachtprompt voorkomen. <br> - Toegang tot registerbewerkingsprogramma's voorkomen. <br> - Op logica vertrouwen voor bestandsbijlagen. <br> - Uitvoering van script inschakelen. <br> [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | - Geen vooraf bestaande standaardwebsite <br> - Geen vooraf bestaande website/toepassing die luistert op poort 443 <br>- [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br> - Instelling [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) inschakelen
 **Netwerkinstellingen** |
 Type IP-adres | Statisch
 Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport)
-NIC-type | VMXNET3
+Type NIC | VMXNET3
 
 ## <a name="mysql-installation"></a>Installatie van MySQL 
 
@@ -81,15 +81,15 @@ Het replicatie apparaat moet toegang hebben tot deze Url's in de open bare Azure
 
 **URL** | **Details**
 --- | ---
-\*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.backup.windowsazure.com | Wordt gebruikt voor overdracht en coördinatie van gerepliceerde gegevens
+\*.store.core.windows.net | Wordt gebruikt voor overdracht en coördinatie van gerepliceerde gegevens
 \*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
-\*.hypervrecoverymanager.windowsazure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
-https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+\*.hypervrecoverymanager.windowsazure.com | Wordt gebruikt voor bewerkingen en coördinatie in het kader van replicatiebeheer
+https:\//management.azure.com | Wordt gebruikt voor bewerkingen en coördinatie in het kader van replicatiebeheer
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.live.com <br/> https: \/ /www.Microsoft.com  | Het toestel instellen heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
-https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Het toestel instellen heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Voor het voltooien van het downloaden van MySQL. In enkele regio's wordt het downloadproces mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
 
 ## <a name="azure-government-url-access"></a>Azure Government URL-toegang
@@ -98,15 +98,15 @@ Het replicatie apparaat moet toegang hebben tot deze Url's in Azure Government.
 
 **URL** | **Details**
 --- | ---
-\*. backup.windowsazure.us | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*. backup.windowsazure.us | Wordt gebruikt voor overdracht en coördinatie van gerepliceerde gegevens
+\*.store.core.windows.net | Wordt gebruikt voor overdracht en coördinatie van gerepliceerde gegevens
 \*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
-\*. hypervrecoverymanager.windowsazure.us | Gebruikt voor replicatie beheer bewerkingen en coördinatie
-https:\//management.usgovcloudapi.net | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+\*. hypervrecoverymanager.windowsazure.us | Wordt gebruikt voor bewerkingen en coördinatie in het kader van replicatiebeheer
+https:\//management.usgovcloudapi.net | Wordt gebruikt voor bewerkingen en coördinatie in het kader van replicatiebeheer
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.live.com <br/> https: \/ /www.Microsoft.com  | Het toestel instellen met eicellen moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
-https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Het toestel instellen met eicellen moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Voor het voltooien van het downloaden van MySQL. In enkele regio's wordt het downloadproces mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
 ## <a name="port-access"></a>Poort toegang
 
@@ -114,7 +114,7 @@ https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-
 --- | ---
 VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
 Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
-Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.<br/> Standaard wordt de proces server uitgevoerd op het replicatie apparaat.
+Proces server | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.<br/> Standaard wordt de proces server uitgevoerd op het replicatie apparaat.
 
 
 ## <a name="replication-process"></a>Replicatieproces
@@ -129,7 +129,7 @@ Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en v
     - De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
 5. De replicatie gegevens melden het eerste land in een cache-opslag account in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen op een door Azure beheerde schijf.
 
-![Architectuur](./media/migrate-replication-appliance/architecture.png)
+![Diagram toont de architectuur van het replicatie proces.](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Toestel-upgrades
 

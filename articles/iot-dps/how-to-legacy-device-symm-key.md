@@ -1,25 +1,27 @@
 ---
-title: Verouderde apparaten inrichten met behulp van symmetrische sleutels-Azure IoT Hub Device Provisioning Service
-description: Symmetrische sleutels gebruiken om verouderde apparaten in te richten met het DPS-exemplaar (Device Provisioning Service)
+title: Apparaten inrichten met symmetrische sleutels-Azure IoT Hub Device Provisioning Service
+description: Symmetrische sleutels gebruiken om apparaten in te richten met het DPS-exemplaar (Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434719"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529393"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Verouderde apparaten inrichten met behulp van symmetrische sleutels
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Apparaten inrichten met behulp van symmetrische sleutel registratie groepen
 
-Een veelvoorkomend probleem met veel verouderde apparaten is dat ze vaak een identiteit hebben die bestaat uit één stukje informatie. Deze identiteits gegevens zijn doorgaans een MAC-adres of een serie nummer. Oudere apparaten hebben mogelijk geen certificaat, TPM of een andere beveiligings functie die kan worden gebruikt om het apparaat veilig te identificeren. De Device Provisioning Service voor IoT hub bevat symmetrische sleutel Attestation. Symmetrische-sleutel Attestation kan worden gebruikt om een apparaat op basis van gegevens, zoals het MAC-adres of een serie nummer, te identificeren.
+In dit artikel wordt beschreven hoe u veilig meerdere symmetrische-sleutel apparaten kunt inrichten voor één IoT Hub met behulp van een registratie groep.
 
-Als u een [HSM (Hardware Security module)](concepts-security.md#hardware-security-module) en een certificaat eenvoudig kunt installeren, is dat mogelijk een betere benadering voor het identificeren en inrichten van uw apparaten. Omdat u met deze benadering kunt u het bijwerken van de code die is geïmplementeerd op al uw apparaten, niet meer, en er geen geheime sleutel is inge sloten in de installatie kopie van het apparaat.
+Sommige apparaten beschikken mogelijk niet over een certificaat, TPM of een andere beveiligings functie die kan worden gebruikt om het apparaat veilig te identificeren. De Device Provisioning Service omvat [symmetrische sleutel Attestation](concepts-symmetric-key-attestation.md). Symmetrische-sleutel Attestation kan worden gebruikt om een apparaat op basis van unieke gegevens, zoals het MAC-adres of een serie nummer, te identificeren.
+
+Als u een [HSM (Hardware Security module)](concepts-service.md#hardware-security-module) en een certificaat eenvoudig kunt installeren, is dat mogelijk een betere benadering voor het identificeren en inrichten van uw apparaten. Omdat u met deze benadering kunt u het bijwerken van de code die is geïmplementeerd op al uw apparaten, niet meer, en er geen geheime sleutel is inge sloten in de installatie kopie van het apparaat.
 
 In dit artikel wordt ervan uitgegaan dat geen HSM of een certificaat een levensvat bare optie is. Er wordt echter wel van uitgegaan dat u een bepaalde methode hebt voor het bijwerken van de Device Provisioning Service om deze apparaten in te richten. 
 
@@ -47,7 +49,7 @@ De apparaatcode die in dit artikel wordt beschreven, volgt hetzelfde patroon als
 
 De volgende vereisten gelden voor een ontwikkelomgeving in Windows. Voor Linux of macOS raadpleegt u het desbetreffende gedeelte in [Uw ontwikkelomgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [Desktopontwikkeling met C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [Desktopontwikkeling met C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
 
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
@@ -73,7 +75,7 @@ De SDK bevat de voorbeeld code voor het gesimuleerde apparaat. Dit gesimuleerde 
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map `azure-iot-sdk-c`:
+4. Maak een submap `cmake` in de hoofdmap van de Git-opslag plaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map `azure-iot-sdk-c`:
 
     ```cmd/sh
     mkdir cmake
@@ -147,7 +149,8 @@ Maak een unieke registratie-ID voor uw apparaat. Geldige tekens zijn kleine lett
 
 Als u de apparaatcode wilt genereren, gebruikt u de groeps hoofd sleutel om een [HMAC-sha256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-id voor het apparaat te berekenen en converteert u het resultaat naar Base64-indeling.
 
-Neem uw groeps hoofd sleutel niet op in de code van uw apparaat.
+> [!WARNING]
+> De apparaatcode mag alleen de afgeleide apparaatwachtwoord voor het afzonderlijke apparaat bevatten. Neem uw groeps hoofd sleutel niet op in de code van uw apparaat. Een gemanipuleerde hoofd sleutel is de mogelijkheid om de beveiliging van alle apparaten die ermee worden geverifieerd, in gevaar te brengen.
 
 
 #### <a name="linux-workstations"></a>Linux-werk stations

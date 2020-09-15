@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400021"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530791"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
@@ -112,6 +112,8 @@ Als u route ring via NVA wilt instellen, kunt u overwegen de volgende stappen ui
    * Van VNet 7 en VNet 8 tot VNet 4 NVA IP 
    
    U hoeft niet rechtstreeks verbinding te maken met VNets 5, 6, 7 en 8 naar de virtuele hubs. Zorg ervoor dat Nsg's in VNets 5, 6, 7, 8 verkeer toestaan voor Branch (VPN/er/P2S) of VNets die is verbonden met hun externe VNets. VNets 5, 6 moet er bijvoorbeeld voor zorgen dat Nsg's verkeer toestaat voor on-premises adres voorvoegsels en VNets 7, 8 die zijn verbonden met de externe hub 2.
+
+Virtual WAN biedt geen ondersteuning voor een scenario waarbij VNets 5, 6 verbinding maakt met de virtuele hub en communiceert via VNet 2 NVA IP; Daarom moet u verbinding maken tussen VNets 5, 6 en VNet2, en ook VNet 7, 8 tot VNet 4.
 
 2. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNets 2, 5, 6 naar hub 1.
 

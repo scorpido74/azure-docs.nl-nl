@@ -1,18 +1,18 @@
 ---
 title: Configuratie van Azure Firewall Threat Intelligence
-description: Filteren op basis van bedreigingsinformatie kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende schadelijke IP-adressen en domeinen te signaleren en te weigeren.
+description: Meer informatie over het configureren van op Threat Intelligence gebaseerde filtering voor uw Azure Firewall-beleid om verkeer van en naar bekende schadelijke IP-adressen en domeinen te Signa leren en weigeren.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568539"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530638"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Configuratie van Azure Firewall Threat Intelligence
 

@@ -3,12 +3,13 @@ title: Netwerkopties van Azure Functions
 description: Een overzicht van alle beschik bare netwerk opties in Azure Functions.
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385939"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530082"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -71,7 +72,7 @@ Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen 
 
 Zie [vereisten voor opslag accounts](./functions-create-function-app-portal.md#storage-account-requirements)voor meer informatie.
 
-## <a name="use-key-vault-references"></a>Key Vault verwijzingen gebruiken
+## <a name="use-key-vault-references"></a>Key Vault-referenties gebruiken
 
 U kunt Azure Key Vault verwijzingen gebruiken om geheimen van Azure Key Vault in uw Azure Functions toepassing te gebruiken zonder dat u code wijzigingen hoeft aan te brengen. Azure Key Vault is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
 
@@ -86,7 +87,7 @@ Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op t
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
 
-Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De **ondersteunings** instelling voor het activeren van virtuele netwerken vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie**-  >  **functie**.
+Wanneer u een Premium-abonnement uitvoert, kunt u niet-HTTP-trigger functies verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De instelling **runtime schaal bewaking** vindt u in de [Azure Portal](https://portal.azure.com) onder runtime-instellingen voor de **configuratie**-  >  **functie**.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -132,7 +133,7 @@ Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service
 
 Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door de toepassings instelling toe `WEBSITE_VNET_ROUTE_ALL=1` te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
 
-## <a name="automation"></a>Automatisering
+## <a name="automation"></a>Automation
 Met de volgende Api's kunt u via programma code regionale virtuele netwerk integraties beheren:
 
 + **Azure cli**: gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  

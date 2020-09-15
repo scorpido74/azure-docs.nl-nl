@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669050"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530740"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
 
-Met [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)kunt u IOT edge apparaten automatisch inrichten met X. 509-certificaten. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
+Met [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)kunt u IOT edge apparaten automatisch inrichten met X. 509-certificaten. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u het overzicht van [inrichtingen](../iot-dps/about-iot-dps.md#provisioning-process) voordat u doorgaat.
 
 In dit artikel wordt beschreven hoe u een Device Provisioning Service-inschrijving maakt met behulp van X. 509-certificaten op een IoT Edge apparaat met de volgende stappen:
 

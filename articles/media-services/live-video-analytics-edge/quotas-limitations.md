@@ -1,14 +1,14 @@
 ---
-title: Live video-analyses op IoT Edge quota's-Azure
+title: Live video-analyses op IoT Edge quota's en beperkingen-Azure
 description: In dit artikel wordt de analyse van live video op IoT Edge quota's en beperkingen beschreven.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750221"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529227"
 ---
 # <a name="quotas-and-limitations"></a>Quota en beperkingen
 
@@ -38,9 +38,9 @@ Met de preview-versie zijn er beperkingen op verschillende knoop punten die kunn
    * Moet direct worden downstream van de RTSP-bron-of bewegings detectie processor.
    * Kan niet worden gebruikt als downstream van een HTTP-of gRPC-extensie processor.
    * Kan niet upstream van een bewegings detectie processor zijn.
-* HTTP-extensie processor
+* HTTP-extensieprocessor
    * Er kan Maxi maal één processor per grafiek topologie zijn.
-* gRPC-extensie processor
+* gRPC-extensieprocessor
    * Er kan Maxi maal één processor per grafiek topologie zijn.
 * Bewegings detectie processor
    * Moet direct worden downstream van de RTSP-bron.
@@ -65,6 +65,10 @@ Op het moment van de preview-versie biedt de live video Analytics op IoT Edge ge
 * De mogelijkheid om het media service account te migreren van het ene naar het andere abonnement zonder onderbreking.
 * De mogelijkheid om meer dan één opslag account met het media service account te gebruiken.
 * De mogelijkheid om de gegevens van de Service-Principal in de gewenste eigenschappen van de module dynamisch te wijzigen zonder opnieuw op te starten.
+
+U kunt alleen IP-camera's gebruiken die het RTSP-protocol ondersteunen. U vindt IP-camera's die RTSP ondersteunen op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products) producten. Zoek naar apparaten die voldoen aan de profielen G, S of T.
+
+Verder moet u deze camera's configureren voor het gebruik van H. 264 video en AAC-audio. Andere codecs worden momenteel niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

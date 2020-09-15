@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956369"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530825"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Meerdere frontends voor Azure Load Balancer
 
@@ -69,7 +69,7 @@ We definiëren twee regels:
 
 De volledige toewijzing in Azure Load Balancer is nu als volgt:
 
-| Regel | Frontend-IP-adres | protocol | poort | Doel | poort |
+| Regel | IP-adres voor front-end | protocol | poort | Doel | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |IP-adres van DIP |80 |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |IP-adres van DIP |81 |
@@ -80,11 +80,11 @@ Status controles worden altijd omgeleid naar het DIP van een virtuele machine. U
 
 ## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Regel type #2: gebruik van een back-end-poort met zwevend IP
 
-Azure Load Balancer biedt de flexibiliteit voor het opnieuw gebruiken van de frontend-poort op meerdere frontends, ongeacht het gebruikte regel type. Daarnaast hebben sommige toepassings scenario's de voor keur of vereist dat dezelfde poort wordt gebruikt door meerdere exemplaren van de toepassing op één virtuele machine in de back-endadresgroep. Veelvoorkomende voor beelden van het opnieuw gebruiken van een poort zijn clustering voor hoge Beschik baarheid, virtuele netwerk apparaten en meerdere TLS-eind punten beschikbaar maken zonder versleuteling.
+Azure Load Balancer biedt de flexibiliteit voor het opnieuw gebruiken van de frontend-poort op meerdere frontends, ongeacht het gebruikte regel type. Daarnaast hebben sommige toepassings scenario's de voor keur of vereist dat dezelfde poort wordt gebruikt door meerdere exemplaren van de toepassing op één virtuele machine in de back-endadresgroep. Veelvoorkomende voorbeelden waarin een poort opnieuw wordt gebruikt, zijn clustering voor hoge beschikbaarheid, virtuele netwerkapparaten en meerdere TLS-eindpunten beschikbaar maken zonder herversleuteling.
 
-Als u de back-end-poort voor meerdere regels opnieuw wilt gebruiken, moet u zwevend IP-adres inschakelen in de regel definitie.
+Als u de back-endpoort voor meerdere regels opnieuw wilt gebruiken, moet u Zwevend IP inschakelen in de regeldefinitie.
 
-' Zwevend IP ' is de terminologie van Azure voor een deel van wat direct server Return (DSR) wordt genoemd. DSR bestaat uit twee delen: een stroom topologie en een schema voor het toewijzen van IP-adressen. Op platform niveau werkt Azure Load Balancer altijd in een DSR-stroom topologie, ongeacht of zwevende IP is ingeschakeld of niet. Dit betekent dat het uitgaande deel van een stroom altijd correct wordt herschreven naar de oorspronkelijke stroom.
+' Zwevend IP ' is de terminologie van Azure voor een deel van wat direct server Return (DSR) wordt genoemd. DSR bestaat uit twee delen: een stroom topologie en een schema voor het toewijzen van IP-adressen. Op platformniveau werkt Azure Load Balancer altijd in een DSR-stroomtopologie, ongeacht of Zwevend IP is ingeschakeld of niet. Dit betekent dat het uitgaande deel van een stroom altijd correct wordt herschreven, zodat deze direct naar de oorsprong terugstroomt.
 
 Met het standaard regel type biedt Azure een traditioneel schema voor IP-adres toewijzing voor taak verdeling voor gebruiks gemak. Als zwevende IP wordt ingeschakeld, wordt het schema voor IP-adres toewijzing gewijzigd zodat er meer flexibiliteit is, zoals hieronder wordt uitgelegd.
 
@@ -148,7 +148,7 @@ We definiëren twee regels:
 
 De volgende tabel bevat de volledige toewijzing in de load balancer:
 
-| Regel | Frontend-IP-adres | protocol | poort | Doel | poort |
+| Regel | IP-adres voor front-end | protocol | poort | Doel | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |hetzelfde als frontend (65.52.0.1) |hetzelfde als frontend (80) |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |hetzelfde als frontend (65.52.0.2) |hetzelfde als frontend (80) |
@@ -163,6 +163,7 @@ Het type zwevende IP-regel is de basis van verschillende load balancer configura
 
 * Meerdere frontend-configuraties worden alleen ondersteund met IaaS-Vm's.
 * Met de zwevende IP-regel moet uw toepassing gebruikmaken van de primaire IP-configuratie voor uitgaande SNAT-stromen. Als uw toepassing wordt gebonden aan het frontend-IP-adres dat is geconfigureerd op de loop back-interface in het gast besturingssysteem, is de uitgaande SNAT van Azure niet beschikbaar voor het herschrijven van de uitgaande stroom en mislukt de stroom.  Bekijk [uitgaande scenario's](load-balancer-outbound-connections.md).
+* Zwevend IP wordt momenteel niet ondersteund voor secundaire IP-configuraties voor scenario's met interne taakverdeling.
 * Open bare IP-adressen zijn van invloed op de facturering. Zie [IP-adres prijzen](https://azure.microsoft.com/pricing/details/ip-addresses/) voor meer informatie.
 * De abonnements limieten zijn van toepassing. Zie [service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) voor meer informatie.
 

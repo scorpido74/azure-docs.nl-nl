@@ -3,12 +3,12 @@ title: Azure App Service resources verplaatsen
 description: Gebruik Azure Resource Manager om App Service resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042054"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531369"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Richt lijnen voor App Service resources verplaatsen
 
@@ -42,7 +42,7 @@ Selecteer de optie voor de aanbevolen stappen voor het verplaatsen van de web-ap
 
 U ziet de aanbevolen acties die u moet uitvoeren voordat u de resources verplaatst. De informatie bevat de oorspronkelijke resource groep voor de web-app.
 
-![Aanbevelingen](./media/app-service-move-limitations/recommendations.png)
+![Scherm opname bevat de aanbevolen stappen voor het verplaatsen van micro soft dot-webresources.](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Ondersteuning verplaatsen
 

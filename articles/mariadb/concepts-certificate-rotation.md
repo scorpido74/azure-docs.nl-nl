@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: ba5a1a0eb61ca086c3cd1ea66acddc18e950871d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3c91da6a9bfc7bfa23255dbc1c0c76d2f59818f1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057200"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530553"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
@@ -87,7 +87,7 @@ Er zijn geen acties vereist als u SSL/TLS niet gebruikt.
 Nee, u hoeft de database server niet opnieuw op te starten om het nieuwe certificaat te gebruiken. Dit is een wijziging aan de client zijde en de binnenkomende client verbindingen moeten het nieuwe certificaat gebruiken om ervoor te zorgen dat ze verbinding kunnen maken met de database server.
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. Wat gebeurt er als ik het basis certificaat niet bijwerk vóór 26 oktober 2020 (10/26/2020)?
-Als u het basis certificaat niet vóór 30 november 2020 bijwerkt, zullen uw toepassingen die verbinding maken via SSL/TLS en verificatie voor het basis certificaat niet kunnen communiceren met de MariaDB-database server en de toepassing verbindings problemen ondervindt met uw MariaDB-database server.
+Als u het basis certificaat niet bijwerkt vóór 26 oktober 2020, zullen uw toepassingen die verbinding maken via SSL/TLS en verificatie voor het basis certificaat niet kunnen communiceren met de MariaDB-database server en de toepassing verbindings problemen ondervindt met uw MariaDB-database server.
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. Ik moet een downtime voor onderhoud voor deze wijziging plannen?<BR>
 Nee. Aangezien de wijziging hier alleen aan de client zijde wordt weer gegeven om verbinding te maken met de database server, is er hier geen onderbrekings tijd nodig voor deze wijziging.
@@ -95,7 +95,7 @@ Nee. Aangezien de wijziging hier alleen aan de client zijde wordt weer gegeven o
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. Wat moet ik doen als ik vóór 26 oktober 2020 (10/26/2020) geen geplande downtime voor deze wijziging krijg?
 Omdat de clients die zijn gebruikt voor het maken van een verbinding met de server, de certificaat gegevens moeten bijwerken zoals beschreven in de sectie oplossing [hier](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), hoeven we in dit geval geen downtime voor de server te gebruiken.
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30th-will-i-be-impacted"></a>6. als ik na 30 november een nieuwe server maak, geldt dit?
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. als ik een nieuwe server Maak na 26 oktober 2020, geldt dit?
 Voor servers die zijn gemaakt na 26 oktober 2020 (10/26/2020), kunt u het zojuist uitgegeven certificaat voor uw toepassingen gebruiken om verbinding te maken via SSL.
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?

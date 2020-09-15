@@ -1,18 +1,18 @@
 ---
 title: Schijf ruimte in azure HDInsight beheren
-description: Probleemoplossings stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters.
+description: Stappen voor probleem oplossing en mogelijke oplossingen voor het beheren van schijf ruimte problemen bij interactie met Azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0628033ecf6f2e51cf18f61c6e5b36042557dc7b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77473010"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530158"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Schijf ruimte in azure HDInsight beheren
 
@@ -20,7 +20,7 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ## <a name="hive-log-configurations"></a>Hive-logboek configuraties
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Navigeer naar **Hive**  >  **configurations**  >  **Geavanceerde**  >  **Geavanceerde component-log4j**. Controleer de volgende instellingen:
 
@@ -36,13 +36,13 @@ Bekijk de volgende configuraties:
 
 * Apache Ambari
 
-    1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+    1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
     1. Navigeer naar **Hive**  >  **configurations**  >  **Advanced**  >  **Resource Manager**. Zorg ervoor dat **logboek aggregatie inschakelen** is ingeschakeld. Als deze functie is uitgeschakeld, worden de logboeken lokaal door naam knooppunten bewaard en worden ze niet geaggregeerd in externe opslag wanneer de toepassing wordt voltooid of beëindigd.
 
 * Zorg ervoor dat de clustergrootte geschikt is voor de werkbelasting. De werk belasting is mogelijk onlangs gewijzigd of het cluster is verg root of verkleind. [Schaal](../hdinsight-scaling-best-practices.md) het cluster omhoog zodat dit overeenkomt met een hogere werk belasting.
 
-* `/mnt/resource`kan worden gevuld met zwevende bestanden (zoals in het geval van opnieuw opstarten van de Resource Manager). Indien nodig, hand matig opschonen `/mnt/resource/hadoop/yarn/log` en `/mnt/resource/hadoop/yarn/local` .
+* `/mnt/resource` kan worden gevuld met zwevende bestanden (zoals in het geval van opnieuw opstarten van de Resource Manager). Indien nodig, hand matig opschonen `/mnt/resource/hadoop/yarn/log` en `/mnt/resource/hadoop/yarn/local` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

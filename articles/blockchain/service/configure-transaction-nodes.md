@@ -4,12 +4,12 @@ description: Service transactie knooppunten van Azure Block Chain configureren
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212561"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530383"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Block Chain Service-transactie knooppunten configureren
 
@@ -17,8 +17,8 @@ Trans actie knooppunten worden gebruikt voor het verzenden van Block Chain-trans
 
 Details van het standaard transactie knooppunt weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Navigeer naar het lid van Azure Block Chain Service. Selecteer **transactie knooppunten**.
 
     ![Standaardtransactieknooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
 
@@ -37,7 +37,7 @@ Een transactie knooppunt toevoegen:
 
     | Instelling | Beschrijving |
     |---------|-------------|
-    | Naam | Naam van het transactie knooppunt. De naam wordt gebruikt voor het maken van het DNS-adres voor het eind punt van het transactie knooppunt. Bijvoorbeeld `newnode-myblockchainmember.blockchain.azure.com`. De naam van het knoop punt kan niet worden gewijzigd nadat deze is gemaakt. |
+    | Name | Naam van het transactie knooppunt. De naam wordt gebruikt voor het maken van het DNS-adres voor het eind punt van het transactie knooppunt. Bijvoorbeeld `newnode-myblockchainmember.blockchain.azure.com`. De naam van het knoop punt kan niet worden gewijzigd nadat deze is gemaakt. |
     | Wachtwoord | Stel een sterk wacht woord in. Gebruik het wacht woord voor toegang tot het knoop punt van het transactie knooppunt met basis verificatie.
 
 1. Selecteer **Maken**.
@@ -52,7 +52,7 @@ De eindpunt Details van een transactie knooppunt weer geven:
 
 1. Ga in het Azure Portal naar een van uw trans actie knooppunten van de Azure Block Chain-service en selecteer **overzicht**.
 
-    ![Eindpunten](./media/configure-transaction-nodes/endpoints.png)
+    ![Scherm opname toont het overzicht van transactie knooppunten voor een Block Chain-lid.](./media/configure-transaction-nodes/endpoints.png)
 
 De eind punten van het transactie knooppunt zijn veilig en vereisen authenticatie. U kunt verbinding maken met een trans actie-eind punt met behulp van Azure AD-verificatie, HTTPS-basis verificatie en een toegangs sleutel via HTTPS of WebSocket over TLS gebruiken.
 

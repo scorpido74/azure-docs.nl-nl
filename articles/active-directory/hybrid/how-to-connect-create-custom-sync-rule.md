@@ -1,6 +1,6 @@
 ---
 title: Een synchronisatie regel aanpassen in Azure AD Connect | Microsoft Docs '
-description: Dit onderwerp bevat stappen voor het oplossen van problemen met het installeren van Azure AD Connect.
+description: Meer informatie over het gebruik van de editor voor synchronisatie regels voor het bewerken of maken van een nieuwe synchronisatie regel.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f33cbb8caaf81b862198d694b0562d461de8a74
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e2bb86988454141dc692b4a9967997c4ff7574a2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279275"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530485"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Een synchronisatieregel aanpassen
 

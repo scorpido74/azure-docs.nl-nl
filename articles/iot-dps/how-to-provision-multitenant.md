@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434743"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531420"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
 
-Het toewijzings beleid dat is gedefinieerd door de inrichtings service ondersteunt diverse toewijzings scenario's. Twee veelvoorkomende scenario's zijn:
+In dit artikel wordt beschreven hoe u met behulp van een [toewijzings beleid](concepts-service.md#allocation-policy)veilig meerdere symmetrische-sleutel apparaten kunt inrichten voor een groep van IOT-hubs. Toewijzings beleid dat door de inrichtings service is gedefinieerd, ondersteunt diverse toewijzings scenario's. Twee veelvoorkomende scenario's zijn:
 
 * **Geolocatie/geolatentie**: wanneer een apparaat tussen locaties wordt verplaatst, wordt de netwerk latentie verbeterd doordat het apparaat wordt ingericht voor de IOT-hub die het dichtst bij elke locatie is. In dit scenario worden een groep IoT-hubs, die over verschillende regio's vallen, geselecteerd voor inschrijvingen. Het **laagste** toewijzings beleid voor de latentie is geselecteerd voor deze inschrijvingen. Dit beleid zorgt ervoor dat de Device Provisioning Service de latentie van het apparaat evalueert en de kast IoT-hub uit de groep van IoT-hubs bepaalt. 
 
@@ -83,7 +83,7 @@ In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe regionale IoT-hubs
 
 In deze sectie maakt u een nieuwe registratie groep voor de Tenant apparaten.  
 
-Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-security.md#x509-certificates) met een vertrouwens keten gebruiken.
+Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-x509-attestation.md) met een vertrouwens keten gebruiken.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw Device Provisioning service-exemplaar.
 

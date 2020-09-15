@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294387"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531386"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>De inrichting van apparaten die eerder automatisch zijn ingericht, ongedaan maken 
 
@@ -43,7 +43,7 @@ De inrichting van een apparaat met een afzonderlijke inschrijving ongedaan maken
 
 
 ## <a name="enrollment-groups"></a>Registratie groepen
-Met X. 509-Attestation kunnen apparaten ook worden ingericht via een registratie groep. Inschrijvings groepen worden geconfigureerd met een handtekening certificaat, hetzij een tussenliggend of basis-CA-certificaat, en de toegang tot de inrichtings service voor apparaten met dat certificaat in de certificaat keten beheren. Zie [x. 509-certificaten](concepts-security.md#x509-certificates)voor meer informatie over registratie groepen en X. 509-certificaten bij de inrichtings service. 
+Met X. 509-Attestation kunnen apparaten ook worden ingericht via een registratie groep. Inschrijvings groepen worden geconfigureerd met een handtekening certificaat, hetzij een tussenliggend of basis-CA-certificaat, en de toegang tot de inrichtings service voor apparaten met dat certificaat in de certificaat keten beheren. Zie [x. 509 Certificate Attestation](concepts-x509-attestation.md)(Engelstalig) voor meer informatie over registratie groepen en x. 509-certificaten bij de inrichtings service. 
 
 Als u een lijst met apparaten wilt zien die zijn ingericht via een registratie groep, kunt u de details van de registratie groep weer geven. Dit is een eenvoudige manier om te begrijpen welke IoT-hub elk apparaat heeft ingericht. De lijst met apparaten weer geven: 
 

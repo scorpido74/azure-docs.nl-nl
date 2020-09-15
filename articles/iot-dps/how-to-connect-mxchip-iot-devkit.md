@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub Device Provisioning Service automatische inrichting gebruiken om de MXChip IoT DevKit te registreren bij IoT Hub | Microsoft Docs
 description: Het gebruik van automatische inrichting van Azure IoT Hub Device Provisioning Service (DPS) voor het registreren van de MXChip IoT DevKit met IoT Hub.
-author: liydu
-ms.author: liydu
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: jeffya
-ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotgra
+ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975649"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528650"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Gebruik Azure IoT Hub Device Provisioning Service automatische inrichting om de MXChip IoT DevKit te registreren bij IoT Hub
 
-In dit artikel wordt beschreven hoe u [automatische inrichting](concepts-auto-provisioning.md)van Azure IOT hub Device Provisioning Service kunt gebruiken om de MXChip IOT DevKit te registreren bij Azure IOT hub. In deze zelfstudie leert u het volgende:
+In dit artikel wordt beschreven hoe u de Azure IoT Hub Device Provisioning Service kunt gebruiken om de MXChip IoT DevKit in te [richten](about-iot-dps.md#provisioning-process) op een Azure IOT hub. In deze zelfstudie leert u het volgende:
 
 * Configureer het globale eind punt van de Device Provisioning Service op een apparaat.
 * Een uniek apparaat Secret (UDS) gebruiken om een X. 509-certificaat te genereren.
@@ -45,7 +45,7 @@ Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Een uniek apparaat geheim opslaan in de beveiligings opslag van het apparaat
 
-Automatische inrichting kan worden geconfigureerd op een apparaat op basis van het [Attestation-mechanisme](concepts-security.md#attestation-mechanism)van het apparaat. De MXChip IoT DevKit maakt gebruik van de engine voor het samen stellen van de [apparaat-id](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) van de [Trusted Computing Group](https://trustedcomputinggroup.org). Een **uniek apparaat Secret** (UDS) dat is opgeslagen in een STSAFE-beveiligings chip ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) op de DevKit wordt gebruikt voor het genereren van het unieke [X. 509-certificaat](concepts-security.md#x509-certificates)van het apparaat. Het certificaat wordt later gebruikt voor het inschrijvings proces in de Device Provisioning Service en tijdens de registratie tijdens runtime.
+Automatische inrichting kan worden geconfigureerd op een apparaat op basis van het [Attestation-mechanisme](concepts-service.md#attestation-mechanism)van het apparaat. De MXChip IoT DevKit maakt gebruik van de engine voor het samen stellen van de [apparaat-id](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) van de [Trusted Computing Group](https://trustedcomputinggroup.org). Een **uniek apparaat Secret** (UDS) dat is opgeslagen in een STSAFE-beveiligings chip ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) op de DevKit wordt gebruikt voor het genereren van het unieke [X. 509-certificaat](concepts-x509-attestation.md)van het apparaat. Het certificaat wordt later gebruikt voor het inschrijvings proces in de Device Provisioning Service en tijdens de registratie tijdens runtime.
 
 Een typische UDS is een teken reeks van 64, zoals in het volgende voor beeld wordt weer gegeven:
 

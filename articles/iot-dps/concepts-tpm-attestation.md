@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975275"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531590"
 ---
 # <a name="tpm-attestation"></a>TPM-attestation
 
 IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten op een veilige manier inrichten.
 
-In dit artikel wordt het identiteits attest proces voor het gebruik van een [TPM](./concepts-device.md)beschreven. TPM staat voor Trusted Platform Module en is een type hardware Security module (HSM). In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Het is niet raadzaam om software Tpm's in productie te gebruiken. Zie [een korte inleiding tot TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)voor meer informatie over de typen tpm's.
+In dit artikel wordt het identiteits attest proces voor het gebruik van een Trusted Platform Module (TPM) beschreven. Een TPM is een type hardware Security module (HSM). In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Het is niet raadzaam om software Tpm's in productie te gebruiken. Zie [een korte inleiding tot TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)voor meer informatie over de typen tpm's.
 
 Dit artikel is alleen van toepassing op apparaten met behulp van TPM 2,0 met HMAC-sleutel ondersteuning en de bijbehorende goedkeurings sleutels. Het is niet voor apparaten met X. 509-certificaten voor verificatie. TPM is een branchespecifieke, ISO-standaard van de Trusted Computing Group en u kunt meer lezen over TPM bij de [volledige tpm 2,0 spec](https://trustedcomputinggroup.org/tpm-library-specification/) of de [ISO/IEC 11889 spec](https://www.iso.org/standard/66510.html). In dit artikel wordt ervan uitgegaan dat u bekend bent met open bare en persoonlijke sleutel paren en hoe deze worden gebruikt voor versleuteling.
 
@@ -67,5 +67,5 @@ Het apparaat kan vervolgens een SAS-token ondertekenen met behulp van de ontsleu
 
 Het apparaat maakt nu verbinding met IoT Hub en u beveiligt in de kennis dat de sleutels van uw apparaten veilig zijn opgeslagen. Nu u weet hoe de Device Provisioning-Service een apparaat-id veilig verifieert met behulp van TPM, raadpleegt u de volgende artikelen voor meer informatie:
 
-* [Meer informatie over alle concepten in automatische inrichting](./concepts-auto-provisioning.md)
+* [Meer informatie over de concepten van het inrichten](about-iot-dps.md#provisioning-process)
 * [Ga aan de slag met het automatisch inrichten](./quick-setup-auto-provision.md) met de sdk's om de stroom uit te voeren.

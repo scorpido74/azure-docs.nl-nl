@@ -3,12 +3,12 @@ title: Testlab-beleids regels beheren in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het definiëren van Lab-beleid, zoals VM-grootten, maximum aantal Vm's per gebruiker en het afsluiten van de automatisering.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290427"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530349"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Alle beleids regels voor een lab in Azure DevTest Labs beheren
 
@@ -105,7 +105,7 @@ Met het beleid voor automatisch starten kunt u opgeven wanneer de Vm's in het hu
 
 1. Selecteer in het deel venster **configuratie en beleid** van Lab de optie **automatisch starten**.
    
-    ![Automatisch starten](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![Scherm opname toont de automatische start opties voor een virtuele machine.](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. Selecteer aan om dit beleid **in te scha** kelen en **uit** te scha kelen.
 

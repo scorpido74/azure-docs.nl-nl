@@ -3,12 +3,12 @@ title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800208"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532100"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
@@ -54,7 +54,7 @@ Ontdek wanneer mensen uw app gebruiken, op welke pagina's ze het meest geïntere
 
 Met de rapporten gebruikers en sessies worden uw gegevens op pagina's of aangepaste gebeurtenissen gefilterd en gesegmenteerd op basis van eigenschappen zoals locatie, omgeving en pagina. U kunt ook uw eigen filters toevoegen.
 
-![Gebruikers](./media/usage-overview/users.png)  
+![Scherm opname toont de overzichts pagina van gebruikers voor een fictief bedrijf.](./media/usage-overview/users.png)  
 
 Inzichten aan de rechter kant van interessante patronen in de set met gegevens.  
 
@@ -71,7 +71,7 @@ Retentie helpt u te begrijpen hoe vaak uw gebruikers terugkeren naar het gebruik
 - Formulier hypo Thesen op basis van echte gebruikers gegevens 
 - Bepalen of er een probleem is met het bewaren van uw product 
 
-![Bewaartermijn](./media/usage-overview/retention.png) 
+![Scherm opname toont de overzichts pagina voor retentie, waarin informatie wordt weer gegeven over hoe vaak gebruikers retour neren om hun app te gebruiken.](./media/usage-overview/retention.png) 
 
 Met de besturings elementen voor retentie bovenaan kunt u specifieke gebeurtenissen en tijds bereik definiëren voor het berekenen van de Bewaar periode. De grafiek in het midden geeft een visuele weer gave van het algemene Bewaar percentage op basis van het opgegeven tijds bereik. In de grafiek aan de onderkant staat een afzonderlijke Bewaar periode in een bepaalde tijd. Met dit detail niveau kunt u begrijpen wat uw gebruikers doen en wat van invloed kan zijn op het retour neren van gebruikers met een gedetailleerdere granulariteit.  
 
@@ -110,7 +110,7 @@ Meer informatie over [aangepaste gebeurtenissen](./api-custom-events-metrics.md#
 ### <a name="slice-and-dice-events"></a>Segment-en dobbel stenen gebeurtenissen
 
 In de hulpprogram ma's gebruikers, sessies en gebeurtenissen kunt u aangepaste gebeurtenissen op basis van gebruiker, gebeurtenis naam en eigenschappen delen en aan een dobbel stenen uitdelen.
-![Gebruikers](./media/usage-overview/users.png)  
+![Scherm opname toont de overzichts pagina van gebruikers voor een fictief bedrijf.](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>De telemetrie ontwerpen met de app
 

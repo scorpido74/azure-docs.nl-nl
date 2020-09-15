@@ -3,12 +3,12 @@ title: Quota fouten
 description: Hierin wordt beschreven hoe u resource quotum fouten oplost bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007789"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530417"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Resolve errors for resource quotas (Fouten voor resourcequota oplossen)
 
@@ -95,7 +95,7 @@ Als u een quota verhoging wilt aanvragen, gaat u naar de portal en doet u een on
 
 1. Selecteer **Abonnementen**.
 
-   ![Abonnementen](./media/error-resource-quota/subscriptions.png)
+   ![Scherm opname toont het menu van Azure Portal met geselecteerde abonnementen.](./media/error-resource-quota/subscriptions.png)
 
 2. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
 

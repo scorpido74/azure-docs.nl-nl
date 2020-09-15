@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020334"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531556"
 ---
 # <a name="symmetric-key-attestation"></a>Attestation met behulp van een symmetrische sleutel
 
 In dit artikel wordt het identiteits attest proces beschreven bij het gebruik van symmetrische sleutels met de Device Provisioning Service. 
 
-Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met een Device Provisioning service-exemplaar. Deze Attestation-methode vertegenwoordigt een ' Hello World '-ervaring voor ontwikkel aars die nieuw zijn voor het inrichten van apparaten of waarvoor geen strikte beveiligings vereisten gelden. Attestation van apparaten met een [TPM](concepts-tpm-attestation.md) of een [X. 509-certificaat](concepts-security.md#x509-certificates) is veiliger en moet worden gebruikt voor strengere beveiligings vereisten.
+Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met een Device Provisioning service-exemplaar. Deze Attestation-methode vertegenwoordigt een ' Hello World '-ervaring voor ontwikkel aars die nieuw zijn voor het inrichten van apparaten of waarvoor geen strikte beveiligings vereisten gelden. Attestation van apparaten met een [TPM](concepts-tpm-attestation.md) of een [X. 509-certificaat](concepts-x509-attestation.md) is veiliger en moet worden gebruikt voor strengere beveiligings vereisten.
 
 Symmetrische sleutel registraties bieden ook een uitstekende manier voor oudere apparaten, met beperkte beveiligings functionaliteit, om een Boots trap naar de Cloud uit te voeren via Azure IoT. Zie voor meer informatie over symmetrische sleutel attest met verouderde apparaten [symmetrische sleutels gebruiken met verouderde apparaten](how-to-legacy-device-symm-key.md).
 
@@ -109,12 +109,12 @@ Bekijk het volgende diagram met een tabel met apparaatgegevens die in een fabrie
 
 De identiteit van elk apparaat wordt vertegenwoordigd door de registratie-ID en de afgeleide apparaatcode die in de fabriek is geïnstalleerd. De apparaatgegevens worden nooit naar een andere locatie gekopieerd en de groeps sleutel wordt nooit op een apparaat opgeslagen.
 
-Als de apparaatinstellingen niet in de fabriek zijn geïnstalleerd, moet er een HSM van de [Hardware Security-module](concepts-security.md#hardware-security-module) worden gebruikt om de apparaat-id veilig op te slaan.
+Als de apparaatinstellingen niet in de fabriek zijn geïnstalleerd, moet er een HSM van de [Hardware Security-module](concepts-service.md#hardware-security-module) worden gebruikt om de apparaat-id veilig op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een goed idee hebt van de symmetrische sleutel attest, raadpleegt u de volgende artikelen voor meer informatie:
 
 * [Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels](quick-create-simulated-device-symm-key.md)
-* [Meer informatie over de concepten in automatische inrichting](./concepts-auto-provisioning.md)
+* [Meer informatie over de concepten van het inrichten](about-iot-dps.md#provisioning-process)
 * [Aan de slag met automatische inrichting](./quick-setup-auto-provision.md) 

@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299255"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531403"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hoe kan ik X. 509-apparaat certificaten
 
@@ -20,14 +20,14 @@ Tijdens de levens cyclus van uw IoT-oplossing moet u certificaten totaliseren. T
 
 Rolling certificaten is een beveiligings best practice om uw systeem te helpen beveiligen in geval van een schending. Als onderdeel van een [overtredings methodologie](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)heeft micro soft de nood zaak voor het opnieuw activeren van beveiligings processen samen met preventieve maat regelen te nemen. Als onderdeel van deze beveiligings processen moet u de certificaten van het apparaat meenemen. De frequentie waarmee u uw certificaten inrollen, is afhankelijk van de beveiligings behoeften van uw oplossing. Klanten met oplossingen waarbij zeer gevoelige gegevens worden betrokken, kunnen dagelijks certificaten samen vouwen, terwijl anderen hun certificaten elk paar jaar draaien.
 
-Certificaten van het Rolling apparaat moeten het certificaat bijwerken dat is opgeslagen op het apparaat en de IoT-hub. Daarna kan het apparaat opnieuw worden ingericht met de IoT-hub met behulp van normale [automatische inrichting](concepts-auto-provisioning.md) met de Device Provisioning Service.
+Certificaten van het Rolling apparaat moeten het certificaat bijwerken dat is opgeslagen op het apparaat en de IoT-hub. Daarna kan het apparaat opnieuw worden ingericht met de IoT-hub met behulp van de normale [inrichting](about-iot-dps.md#provisioning-process) van de Device Provisioning Service (DPS).
 
 
 ## <a name="obtain-new-certificates"></a>Nieuwe certificaten verkrijgen
 
 Er zijn veel manieren om nieuwe certificaten te verkrijgen voor uw IoT-apparaten. Dit zijn onder andere het verkrijgen van certificaten van de fabriek, het genereren van uw eigen certificaten en het maken van een certificaat door derden te beheren. 
 
-Certificaten zijn door elkaar ondertekend om een vertrouwens keten te vormen van een basis-CA-certificaat naar een [blad certificaat](concepts-security.md#end-entity-leaf-certificate). Een handtekening certificaat is het certificaat dat wordt gebruikt om het blad certificaat aan het einde van de vertrouwens keten te ondertekenen. Een handtekening certificaat kan een basis-CA-certificaat of een tussenliggend certificaat in een vertrouwens keten zijn. Zie [X. 509-certificaten](concepts-security.md#x509-certificates)voor meer informatie.
+Certificaten zijn door elkaar ondertekend om een vertrouwens keten te vormen van een basis-CA-certificaat naar een [blad certificaat](concepts-x509-attestation.md#end-entity-leaf-certificate). Een handtekening certificaat is het certificaat dat wordt gebruikt om het blad certificaat aan het einde van de vertrouwens keten te ondertekenen. Een handtekening certificaat kan een basis-CA-certificaat of een tussenliggend certificaat in een vertrouwens keten zijn. Zie [X. 509-certificaten](concepts-x509-attestation.md#x509-certificates)voor meer informatie.
  
 Er zijn twee verschillende manieren om een handtekening certificaat te verkrijgen. De eerste manier, die wordt aanbevolen voor productie systemen, is een handtekening certificaat aanschaffen bij een basis certificerings instantie (CA). Op deze manier wordt de beveiliging gekoppeld aan een vertrouwde bron. 
 
@@ -36,7 +36,7 @@ De tweede manier is het maken van uw eigen X. 509-certificaten met een hulp prog
 
 ## <a name="roll-the-certificate-on-the-device"></a>Het certificaat op het apparaat samen vouwen
 
-Certificaten op een apparaat moeten altijd worden opgeslagen op een veilige plaats zoals een [Hardware Security module (hsm)](concepts-device.md#hardware-security-module). De manier waarop u apparaat certificaten inrollen, is afhankelijk van hoe ze zijn gemaakt en geïnstalleerd op de apparaten in de eerste plaats. 
+Certificaten op een apparaat moeten altijd worden opgeslagen op een veilige plaats zoals een [Hardware Security module (hsm)](concepts-service.md#hardware-security-module). De manier waarop u apparaat certificaten inrollen, is afhankelijk van hoe ze zijn gemaakt en geïnstalleerd op de apparaten in de eerste plaats. 
 
 Als u uw certificaten van een derde partij hebt ontvangen, moet u kijken hoe ze hun certificaten draaien. Het proces kan worden opgenomen in uw indeling, of het kan een afzonderlijke service zijn die ze bieden. 
 
@@ -75,7 +75,7 @@ Als u certificaten doorgeeft als reactie op een schending van de beveiliging, mo
 
     Deze stappen moeten worden uitgevoerd voor het primaire en secundaire certificaat als beide worden aangetast.
 
-    ![Afzonderlijke inschrijvingen beheren](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Afzonderlijke registraties beheren met een schending van beveiliging](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. Zodra het aangetaste certificaat van de inrichtings service is verwijderd, kan het certificaat nog steeds worden gebruikt voor het maken van verbindingen met de IoT-hub zolang er al een apparaatregistratie bestaat. U kunt deze twee manieren verhelpen: 
 
@@ -96,7 +96,7 @@ Later wanneer het secundaire certificaat bijna is verlopen en moet worden gedist
 
 2. Klik op **secundair certificaat** en klik vervolgens op het mappictogram om het nieuwe certificaat te selecteren dat u voor de inschrijvings vermelding wilt uploaden. Klik op **Opslaan**.
 
-    ![Afzonderlijke inschrijvingen beheren met het secundaire certificaat](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Afzonderlijke inschrijvingen beheren met het secundaire certificaat verloop](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. Later wanneer het primaire certificaat is verlopen, keert u terug en verwijdert u dat primaire certificaat door op de knop **Huidig certificaat verwijderen** te klikken.
 
@@ -118,7 +118,7 @@ Als u een groeps registratie wilt bijwerken als reactie op een schending van de 
 
 5. Klik op **CA-certificaat**en selecteer uw nieuwe basis-CA-certificaat. Klik vervolgens op **Opslaan**. 
 
-    ![Het nieuwe basis-CA-certificaat selecteren](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Het nieuwe basis-CA-certificaat voor een aangetast certificaat selecteren](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. Zodra het aangetaste certificaat van de inrichtings service is verwijderd, kan het certificaat nog steeds worden gebruikt voor het maken van verbindingen met de IoT-hub zolang er al apparaatregistratie aanwezig zijn. U kunt deze twee manieren verhelpen: 
 
@@ -136,9 +136,9 @@ Als u een groeps registratie wilt bijwerken als reactie op een schending van de 
 
 2. Klik op **tussenliggend certificaat**en **Verwijder het huidige certificaat**. Klik op het mappictogram om naar het nieuwe tussenliggende certificaat te navigeren dat voor de registratie groep moet worden geüpload. Klik op **Opslaan** wanneer u klaar bent. Deze stappen moeten worden uitgevoerd voor het primaire en het secundaire certificaat als beide worden aangetast.
 
-    Dit nieuwe tussenliggende certificaat moet worden ondertekend door een geverifieerd basis-CA-certificaat dat al is toegevoegd aan de inrichtings service. Zie [X. 509-certificaten](concepts-security.md#x509-certificates)voor meer informatie.
+    Dit nieuwe tussenliggende certificaat moet worden ondertekend door een geverifieerd basis-CA-certificaat dat al is toegevoegd aan de inrichtings service. Zie [X. 509-certificaten](concepts-x509-attestation.md#x509-certificates)voor meer informatie.
 
-    ![Afzonderlijke inschrijvingen beheren](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Afzonderlijke inschrijvingen beheren voor een aangetast tussenliggend](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. Zodra het aangetaste certificaat van de inrichtings service is verwijderd, kan het certificaat nog steeds worden gebruikt voor het maken van verbindingen met de IoT-hub zolang er al apparaatregistratie aanwezig zijn. U kunt deze twee manieren verhelpen: 
@@ -164,7 +164,7 @@ Later wanneer het secundaire certificaat bijna is verlopen en moet worden gedist
 
 3. Klik op **CA-certificaat**en selecteer uw nieuwe basis-CA-certificaat onder de configuratie van het **secundaire certificaat** . Klik vervolgens op **Opslaan**. 
 
-    ![Het nieuwe basis-CA-certificaat selecteren](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Het nieuwe basis-CA-certificaat voor verloop selecteren](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. Later wanneer het primaire certificaat is verlopen, klikt u op het tabblad **certificaten** voor uw Device Provisioning service-exemplaar. Klik op het verlopen certificaat in de lijst en klik vervolgens op de knop **verwijderen** . Bevestig het verwijderen door de naam van het certificaat in te voeren en op **OK**te klikken.
 
@@ -179,9 +179,9 @@ Later wanneer het secundaire certificaat bijna is verlopen en moet worden gedist
 
 2. Klik op **secundair certificaat** en klik vervolgens op het mappictogram om het nieuwe certificaat te selecteren dat u voor de inschrijvings vermelding wilt uploaden. Klik op **Opslaan**.
 
-    Dit nieuwe tussenliggende certificaat moet worden ondertekend door een geverifieerd basis-CA-certificaat dat al is toegevoegd aan de inrichtings service. Zie [X. 509-certificaten](concepts-security.md#x509-certificates)voor meer informatie.
+    Dit nieuwe tussenliggende certificaat moet worden ondertekend door een geverifieerd basis-CA-certificaat dat al is toegevoegd aan de inrichtings service. Zie [X. 509-certificaten](concepts-x509-attestation.md#x509-certificates)voor meer informatie.
 
-   ![Afzonderlijke inschrijvingen beheren met het secundaire certificaat](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Registratie groepen beheren met het secundaire certificaat verloopt](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. Later wanneer het primaire certificaat is verlopen, keert u terug en verwijdert u dat primaire certificaat door op de knop **Huidig certificaat verwijderen** te klikken.
 
@@ -208,6 +208,6 @@ Wanneer een certificaat is opgenomen als onderdeel van een uitgeschakelde inschr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [beveiliging](concepts-security.md) voor meer informatie over X. 509-certificaten in de Device Provisioning Service. 
+- Zie [x. 509 Certificate Attestation](concepts-x509-attestation.md) (Engelstalig) voor meer informatie over x. 509-certificaten in de Device Provisioning Service. 
 - Zie [certificaten controleren](how-to-verify-certificates.md) voor meer informatie over het gebruik van een bewijs van de 509 voor een X. CA-certificaat met Azure IOT hub Device Provisioning Service.
 - Zie [inschrijving van apparaten beheren met Azure Portal](how-to-manage-enrollments.md)voor meer informatie over het gebruik van de portal voor het maken van een registratie groep.

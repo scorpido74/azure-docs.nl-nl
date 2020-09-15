@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606534"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531917"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Statistische trans formatie in toewijzing van gegevens stroom
 
@@ -29,17 +29,18 @@ Selecteer een bestaande kolom of maak een nieuwe berekende kolom die u wilt gebr
 
 Een component Group by is optioneel in een geaggregeerde trans formatie.
 
-## <a name="aggregate-column"></a>Statistische kolom 
+## <a name="aggregate-columns"></a>Statistische kolommen
 
-Ga naar het tabblad **aggregaties** om aggregatie-expressies samen te stellen. U kunt een bestaande kolom overschrijven met een aggregatie of een nieuw veld maken met een nieuwe naam. De expressie aggregatie wordt ingevoerd in het rechter vak naast de kolom naam kiezer. Als u de expressie wilt bewerken, klikt u op het tekstvak om de opbouw functie voor expressies te openen. Als u extra aggregaties wilt toevoegen, houdt u de muis aanwijzer over een bestaande expressie en klikt u op het pictogram plus om een nieuwe aggregatie kolom of [kolom patroon](concepts-data-flow-column-pattern.md)te maken.
+Ga naar het tabblad **aggregaties** om aggregatie-expressies samen te stellen. U kunt een bestaande kolom overschrijven met een aggregatie of een nieuw veld maken met een nieuwe naam. De expressie aggregatie wordt ingevoerd in het rechter vak naast de kolom naam kiezer. Als u de expressie wilt bewerken, klikt u op het tekstvak en opent u de opbouw functie voor expressies. Als u meer geaggregeerde kolommen **wilt toevoegen, klikt u boven de** kolom lijst of het plus pictogram naast een bestaande statistische kolom. Kies **kolom toevoegen** of een **kolom patroon toevoegen**. Elke aggregatie-expressie moet ten minste één statistische functie bevatten.
 
-Elke aggregatie-expressie moet ten minste één statistische functie bevatten.
-
-![Statistische instellingen voor trans formatie aggregatie](media/data-flow/agg2.png "Statistische instellingen voor trans formatie aggregatie")
-
+![Statistische instellingen](media/data-flow/aggregate-columns.png "Statistische instellingen")
 
 > [!NOTE]
 > In de foutopsporingsmodus kan de opbouw functie voor expressies geen gegevens previews maken met statistische functies. Voor het weer geven van voor beelden van gegevens voor samengevoegde trans formaties, sluit u de opbouw functie voor expressies en bekijkt u de gegevens via het tabblad gegevens voorbeeld.
+
+### <a name="column-patterns"></a>Kolompatronen
+
+Gebruik [kolom patronen](concepts-data-flow-column-pattern.md) om dezelfde aggregatie toe te passen op een set kolommen. Dit is handig als u veel kolommen van het invoer schema wilt behouden, omdat deze standaard worden verwijderd. Gebruik een heuristische, bijvoorbeeld `first()` om invoer kolommen door de aggregatie te behouden.
 
 ## <a name="reconnect-rows-and-columns"></a>Rijen en kolommen opnieuw verbinden
 

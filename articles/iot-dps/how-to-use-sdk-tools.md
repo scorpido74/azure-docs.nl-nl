@@ -1,21 +1,21 @@
 ---
 title: Hulpprogram ma's voor Azure IoT Hub Device Provisioning Service Sdk's gebruiken
 description: In dit document worden de hulpprogram ma's van Azure IoT Hub Device Provisioning Service (DPS) Sdk's voor ontwikkeling beschreven
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691625"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530842"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>De hulpprogram ma's in de Sdk's gebruiken om de ontwikkeling van het inrichten te vereenvoudigen
-De IoT Hub Device Provisioning Service vereenvoudigt het inrichtings proces met Zero-Touch, just-in-time- [inrichting](concepts-auto-provisioning.md) op een veilige en schaal bare manier.  Er is een beveiligings attest in de vorm van X. 509-certificaat of Trusted Platform Module (TPM) vereist.  Micro soft is ook in samen werking met [andere partners voor beveiligingshardware](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in de beveiliging van IOT-implementatie te verbeteren. Meer informatie over de vereiste voor hardware-beveiliging kan voor ontwikkel aars behoorlijk lastig zijn. Er wordt een set met Sdk's voor Azure IoT Provisioning Service gegeven, zodat ontwikkel aars een laag kunnen gebruiken voor het schrijven van clients die met de inrichtings service communiceren. De Sdk's bieden ook voor beelden voor veelvoorkomende scenario's en een set hulpprogram ma's om beveiligings attesten in ontwikkeling te vereenvoudigen.
+De IoT Hub Device Provisioning Service vereenvoudigt het inrichtings proces met Zero-Touch [inrichten](about-iot-dps.md#provisioning-process) , op een veilige en schaal bare manier.  Er is een beveiligings attest in de vorm van X. 509-certificaat of Trusted Platform Module (TPM) vereist.  Micro soft is ook in samen werking met [andere partners voor beveiligingshardware](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) om het vertrouwen in de beveiliging van IOT-implementatie te verbeteren. Meer informatie over de vereiste voor hardware-beveiliging kan voor ontwikkel aars behoorlijk lastig zijn. Er wordt een set met Sdk's voor Azure IoT Provisioning Service gegeven, zodat ontwikkel aars een laag kunnen gebruiken voor het schrijven van clients die met de inrichtings service communiceren. De Sdk's bieden ook voor beelden voor veelvoorkomende scenario's en een set hulpprogram ma's om beveiligings attesten in ontwikkeling te vereenvoudigen.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Trusted Platform Module (TPM) Simulator
 [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) kan verwijzen naar een standaard voor het veilig opslaan van sleutels om het platform te verifiëren, of kan verwijzen naar de I/O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. Tpm's kan bestaan als afzonderlijke hardware, geïntegreerde hardware, op firmware gebaseerd of op software gebaseerd.  TPM bevindt zich in productie op het apparaat, hetzij als discrete hardware, geïntegreerde hardware of op basis van de firmware. In de test fase wordt een op software gebaseerde TPM-Simulator aan ontwikkel aars verschaft.  Deze simulator is nu alleen beschikbaar voor het ontwikkelen op het Windows-platform.
@@ -52,7 +52,7 @@ Het X. 509-certificaat genereren met behulp van deze generator:
 2. Wijzig de hoofdmap in azure-IOT-SDK-java.
 3. Voer uit ```mvn install -DskipTests=true``` om alle vereiste pakketten te downloaden en de SDK te compileren
 4. Navigeer naar de hoofdmap voor X. 509-certificaat generator in ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
-5. Bouwen met```mvn clean install```
+5. Bouwen met ```mvn clean install```
 6. Voer het hulpprogramma uit met behulp van de volgende opdrachten:
    ```
    cd target

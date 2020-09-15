@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606121"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531139"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Kolom patronen gebruiken bij het toewijzen van gegevens stroom
 
@@ -27,17 +27,17 @@ Kolom patronen zijn momenteel beschikbaar in de afgeleide kolom, aggregatie, sel
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Kolom patronen in afgeleide kolom en aggregatie
 
-Als u een kolom patroon wilt toevoegen in een afgeleide kolom of het tabblad aggregaties van een statistische trans formatie, klikt u op het plus pictogram rechts van een bestaande kolom. Selecteer **kolom patroon toevoegen**. 
+Als u een kolom patroon wilt toevoegen in een afgeleide kolom, aggregatie of venster transformatie, klikt u **op boven de** kolom lijst of het plus-pictogram naast een bestaande afgeleide kolom. Kies **kolom patroon toevoegen**.
 
-![kolom patronen](media/data-flow/columnpattern.png "Kolompatronen")
+![kolom patronen](media/data-flow/add-column-pattern.png "Kolompatronen")
 
 Gebruik de [expressie Builder](concepts-data-flow-expression-builder.md) om de match-voor waarde in te voeren. Maak een Boole-expressie die overeenkomt met kolommen op basis van de `name` , `type` , en `stream` `position` van de kolom. Het patroon is van invloed op een kolom, die is geplaatste of gedefinieerd, waarbij de voor waarde waar retourneert.
 
 De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waarden van de betrokken kolommen op. `$$`Wordt gebruikt om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak linker expressie definieert u de naam en de rechter expressie Box definieert de waarde.
 
-![kolom patronen](media/data-flow/columnpattern2.png "Kolompatronen")
+![kolom patronen](media/data-flow/edit-column-pattern.png "Kolompatronen")
 
-Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één geaggregeerde kolom per overeenkomst. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die wordt samengevoegd met _total. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
+Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één afgeleide kolom per overeenkomst. `$$`Als het veld kolom naam wordt vermeld, wordt elke overeenkomende kolom met dezelfde naam bijgewerkt. De waarde van elke kolom is de bestaande waarde afgerond op twee decimale punten.
 
 Als u wilt controleren of uw overeenkomende voor waarde juist is, kunt u het uitvoer schema van gedefinieerde kolommen valideren in het tabblad **controleren** of een moment opname van de gegevens op het tabblad **voor het voor beeld van gegevens** ophalen. 
 
@@ -73,15 +73,15 @@ Als uw gedefinieerde projectie een hiërarchie heeft, kunt u toewijzing op basis
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a`bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
+Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a` bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Patroon waarden die overeenkomen met de expressie.
 
-* `$$`wordt omgezet naar de naam of waarde van elk match tijdens runtime
-* `name`vertegenwoordigt de naam van elke binnenkomende kolom
-* `type`vertegenwoordigt het gegevens type van elke binnenkomende kolom
-* `stream`vertegenwoordigt de naam die is gekoppeld aan elke stroom of trans formatie in uw stroom
-* `position`is het Volg nummer van de kolommen in uw gegevens stroom
+* `$$` wordt omgezet naar de naam of waarde van elk match tijdens runtime
+* `name` vertegenwoordigt de naam van elke binnenkomende kolom
+* `type` vertegenwoordigt het gegevens type van elke binnenkomende kolom
+* `stream` vertegenwoordigt de naam die is gekoppeld aan elke stroom of trans formatie in uw stroom
+* `position` is het Volg nummer van de kolommen in uw gegevens stroom
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de data flow- [expressie](data-flow-expression-functions.md) van de toewijzings gegevens voor gegevens transformaties

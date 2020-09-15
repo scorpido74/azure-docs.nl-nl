@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530689"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Zelfstudie: Een query uitvoeren op een Cognitive Search-index via Power Apps
 
@@ -31,7 +31,7 @@ Als u geen abonnement op Azure hebt, opent u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Power Apps-account](http://make.powerapps.com)
+* [Power Apps-account](https://make.powerapps.com)
 
 * [De index Hotels-sample](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Als u geen abonnement op Azure hebt, opent u een [gratis account](https://azure.
 
 Een connector in Power Apps is een gegevensbronverbinding. In deze stap maakt u een aangepaste connector om verbinding te maken met een zoekindex in de cloud.
 
-1. Meld u aan bij [Power Apps](http://make.powerapps.com).
+1. Meld u aan bij [Power Apps](https://make.powerapps.com).
 
 1. Vouw aan de linkerkant **Gegevens** > **Aangepaste connectors** uit.
  

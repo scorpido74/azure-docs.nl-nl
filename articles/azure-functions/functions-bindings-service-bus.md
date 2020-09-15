@@ -6,23 +6,27 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5e15dfec049197fa056cbd55fd839b3eb93be77c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111198"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530366"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindingen voor Azure Functions
 
 Azure Functions integreert met [Azure service bus](https://azure.microsoft.com/services/service-bus) via [Triggers en bindingen](./functions-triggers-bindings.md). Door te integreren met Service Bus kunt u functies bouwen die reageren op berichten over de wachtrij of het onderwerp.
 
-| Bewerking | Type |
+| Actie | Type |
 |---------|---------|
 | Een functie uitvoeren wanneer een Service Bus wachtrij of onderwerps bericht wordt gemaakt | [Trigger](./functions-bindings-service-bus-trigger.md) |
 | Azure Service Bus berichten verzenden |[Uitvoer binding](./functions-bindings-service-bus-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
+
+> [!NOTE]
+> De binding van de Service Bus biedt momenteel geen ondersteuning voor verificatie met behulp van een beheerde identiteit. Gebruik in plaats daarvan een [Service Bus hand tekening voor gedeelde toegang](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature).
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 

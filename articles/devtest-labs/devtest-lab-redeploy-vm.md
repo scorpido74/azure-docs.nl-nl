@@ -3,12 +3,12 @@ title: Een virtuele machine opnieuw implementeren in een lab in Azure DevTest La
 description: Meer informatie over hoe u een virtuele machine opnieuw implementeert (van het ene naar het andere Azure-knoop punt naar het andere) in Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480232"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530315"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een virtuele machine opnieuw implementeren in een lab in Azure DevTest Labs
 Als u geen verbinding kunt maken met een virtuele machine (VM) in een lab via een verbinding met een extern bureau blad, implementeert u de VM opnieuw en probeert u opnieuw verbinding te maken. Wanneer u een virtuele machine opnieuw implementeert, verplaatst DevTest Labs de VM van het knoop punt waarop deze wordt uitgevoerd naar een nieuw knoop punt in de Azure-infra structuur. Vervolgens wordt de virtuele machine gestart en blijven alle configuratie opties en bijbehorende resources behouden. Met deze functie bespaart u de tijd die wordt besteed aan het oplossen van problemen met verbinding met extern bureau blad of toepassing op Windows-Vm's in het lab. 
@@ -16,14 +16,14 @@ Als u geen verbinding kunt maken met een virtuele machine (VM) in een lab via ee
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Stappen voor het opnieuw implementeren van een virtuele machine in een Lab 
 Voer de volgende stappen uit om een virtuele machine in een lab in Azure DevTest Labs opnieuw te implementeren: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het lab dat de VM bevat die u opnieuw wilt implementeren.  
 4. Selecteer in het linkerdeel venster **mijn virtual machines**. 
 5. Selecteer een virtuele machine in de lijst met Vm's.
 6. Selecteer op de pagina virtuele machine voor uw VM opnieuw **implementeren** onder **bewerkingen** in het menu links.
 
-    ![Opnieuw implementeren](media/devtest-lab-redeploy-vm/redeploy.png)
+    ![Scherm opname toont de pagina virtuele machine waarvoor opnieuw implementeren is geselecteerd.](media/devtest-lab-redeploy-vm/redeploy.png)
 7. Lees de informatie op de pagina en selecteer vervolgens de knop opnieuw **implementeren** . 9. Controleer de status van de bewerking voor opnieuw implementeren in het venster **meldingen** .
 
     ![Status opnieuw implementeren](media/devtest-lab-redeploy-vm/redeploy-status.png)

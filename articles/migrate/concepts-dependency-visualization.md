@@ -2,13 +2,13 @@
 title: Afhankelijkheids analyse in Azure Migrate server-evaluatie
 description: Hierin wordt beschreven hoe u afhankelijkheids analyse gebruikt voor evaluatie met behulp van Azure Migrate server-evaluatie.
 ms.topic: conceptual
-ms.date: 06/14/2020
-ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/15/2020
+ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118797"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530247"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheids analyse
 
@@ -28,10 +28,10 @@ Afhankelijkheids analyse identificeert afhankelijkheden tussen gedetecteerde on-
 
 Er zijn twee opties voor het implementeren van afhankelijkheids analyse
 
-**Optie** | **Details** | **Open bare Cloud** | **Azure Government**
+**Optie** | **Details** | **Openbare cloud** | **Azure Government**
 ----  |---- | ---- 
 **Zonder agent** | Controleert gegevens van virtuele VMware-machines met behulp van vSphere-Api's.<br/><br/> U hoeft geen agents te installeren op Vm's.<br/><br/> Deze optie is momenteel beschikbaar als preview-versie voor virtuele VMware-machines. | Ondersteund. | Ondersteund.
-**Analyse op basis van een agent** | Maakt gebruik van de [servicetoewijzing oplossing](../azure-monitor/insights/service-map.md) in azure monitor om de visualisatie en analyse van afhankelijkheden in te scha kelen.<br/><br/> U moet agents installeren op elke on-premises computer die u wilt analyseren. | Ondersteund | Wordt niet ondersteund.
+**Analyse op basis van een agent** | Maakt gebruik van de [servicetoewijzing oplossing](../azure-monitor/insights/service-map.md) in azure monitor om de visualisatie en analyse van afhankelijkheden in te scha kelen.<br/><br/> U moet agents installeren op elke on-premises computer die u wilt analyseren. | Ondersteund | Niet ondersteund.
 
 
 ## <a name="agentless-analysis"></a>Analyse zonder agent
@@ -74,8 +74,8 @@ De verschillen tussen visualisatie zonder agents en visualisaties op basis van a
 **Vereiste** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
 **Ondersteuning** | Alleen in Preview voor virtuele VMware-machines. [Bekijk](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) ondersteunde besturings systemen. | In algemene Beschik baarheid (GA).
-**Tussen** | Er zijn geen agents nodig op computers die u wilt analyseren. | De agents die zijn vereist op elke on-premises computer die u wilt analyseren.
-**Log Analytics** | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor afhankelijkheids analyse. 
+**Agent** | Er zijn geen agents nodig op computers die u wilt analyseren. | De agents die zijn vereist op elke on-premises computer die u wilt analyseren.
+**Log Analytics** | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor afhankelijkheids analyse.<br/><br/> U koppelt een Log Analytics-werk ruimte aan een Azure Migrate-project. De werk ruimte moet zich bevinden in de regio's VS-Oost, Zuidoost-Azië of Europa-west. De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
 **Proces** | Hiermee worden de TCP-verbindings gegevens vastgelegd. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 **Gegevens** | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 **Visualisatie** | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/>  De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.

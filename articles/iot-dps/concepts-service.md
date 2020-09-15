@@ -1,23 +1,23 @@
 ---
-title: Service concepten in azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Hierin worden de concepten van service-inrichting beschreven die specifiek zijn voor apparaten met de Device Provisioning Service (DPS) en IoT Hub
-author: nberdy
-ms.author: nberdy
+title: Terminologie die wordt gebruikt met Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Hierin worden veelvoorkomende terminologie beschreven die wordt gebruikt bij de Device Provisioning Service (DPS) en IoT Hub
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79285212"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531607"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service concepten
+# <a name="iot-hub-device-provisioning-service-dps-terminology"></a>Terminologie van IoT Hub Device Provisioning Service (DPS)
 
-IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten op een veilige en schaal bare manier [automatisch inrichten](concepts-auto-provisioning.md) .
+IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten op een veilige en schaal bare manier [inrichten](about-iot-dps.md#provisioning-process) .
 
 Het inrichten van apparaten is een proces dat uit twee delen bestaat. In het eerste deel wordt de eerste verbinding tot stand gebracht tussen het apparaat en de IoT-oplossing door het apparaat te *registreren* . Het tweede deel past de juiste *configuratie* op het apparaat toe op basis van de specifieke vereisten van de oplossing. Wanneer beide stappen zijn uitgevoerd, is het apparaat volledig *ingericht*. De Device Provisioning Service automatiseert beide stappen en biedt zo een naadloze ervaring voor de inrichting van het apparaat.
 
@@ -35,6 +35,7 @@ Het apparaat voor het inrichten van apparaten is het enige eind punt dat alle ap
 
 De Device Provisioning Service kan alleen apparaten inrichten voor IoT-hubs die eraan zijn gekoppeld. Als u een IoT-hub koppelt aan een exemplaar van de Device Provisioning Service, worden de machtigingen lezen/schrijven van de service voor het Device-REGI ster van de IoT-hub geboden. met de koppeling kan een Device Provisioning-Service een apparaat-ID registreren en de eerste configuratie in het apparaat configureren. Gekoppelde IoT-hubs kunnen zich in elke Azure-regio bevinden. U kunt hubs in andere abonnementen koppelen aan uw inrichtings service.
 
+
 ## <a name="allocation-policy"></a>Toewijzings beleid
 
 De instelling op service niveau die bepaalt hoe Device Provisioning Service apparaten toewijst aan een IoT-hub. Er worden drie soorten toewijzingsbeleid ondersteund:
@@ -45,10 +46,12 @@ De instelling op service niveau die bepaalt hoe Device Provisioning Service appa
 
 * **Statische configuratie via de registratie lijst**: specificatie van de gewenste IOT-hub in de registratie lijst heeft voor rang op het toewijzings beleid op service niveau.
 
+* **Aangepast (Azure function gebruiken): met**een aangepast toewijzings beleid hebt u meer controle over hoe apparaten worden toegewezen aan een IOT-hub. Dit wordt bereikt door gebruik te maken van aangepaste code in een Azure-functie om apparaten toe te wijzen aan een IoT-hub. De Device Provisioning Service roept de code van uw Azure-functie aan om alle relevante informatie over het apparaat en de inschrijving van uw code op te geven. De functie code wordt uitgevoerd en retourneert de IoT hub-gegevens die worden gebruikt om het apparaat in te richten.
+
 ## <a name="enrollment"></a>Inschrijving
 
 Een inschrijving is de record met apparaten of groepen apparaten die door automatische inrichting kunnen worden geregistreerd. De registratie record bevat informatie over het apparaat of de groep apparaten, waaronder:
-- het [Attestation-mechanisme](concepts-security.md#attestation-mechanism) dat wordt gebruikt door het apparaat
+- het [Attestation-mechanisme](#attestation-mechanism) dat wordt gebruikt door het apparaat
 - de optionele eerste gewenste configuratie
 - gewenste IoT-hub
 - de gewenste apparaat-ID
@@ -69,9 +72,56 @@ Een afzonderlijke inschrijving is een vermelding voor één apparaat dat kan wor
 > [!TIP]
 > We raden u aan om afzonderlijke inschrijvingen te gebruiken voor apparaten die unieke initiële configuraties vereisen, of voor apparaten die alleen kunnen worden geverifieerd met SAS-tokens via TPM-Attestation.
 
+
+## <a name="attestation-mechanism"></a>Attestation-mechanisme
+
+Een Attestation-mechanisme is de methode die wordt gebruikt om de identiteit van een apparaat te bevestigen. Het Attestation-mechanisme wordt geconfigureerd voor een inschrijvings vermelding en vertelt de inrichtings service welke methode moet worden gebruikt bij het controleren van de identiteit van een apparaat tijdens de registratie.
+
+> [!NOTE]
+> IoT Hub gebruikt verificatie schema voor een vergelijkbaar concept in die service.
+
+De Device Provisioning Service ondersteunt de volgende vormen van Attestation:
+* **X. 509-certificaten** op basis van de standaard x. 509 certificaat verificatie stroom. Zie [X. 509 Attestation](concepts-x509-attestation.md)(Engelstalig) voor meer informatie.
+* **Trusted Platform Module (TPM)** op basis van een nonce-Challenge, met behulp van de TPM-standaard voor sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden. Hiervoor is geen fysieke TPM vereist op het apparaat, maar de service verwacht een verklaring te maken met behulp van de goedkeurings sleutel per [TPM-specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/). Zie [TPM-Attestation](concepts-tpm-attestation.md)(Engelstalig) voor meer informatie.
+* **Symmetrische sleutel** op basis van [beveiligings tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens)voor Shared Access Signature (SAS), die een gehashte hand tekening en een Inge sloten verloop bevatten. Zie [symmetrische sleutel Attestation](concepts-symmetric-key-attestation.md)(Engelstalig) voor meer informatie.
+
+
+## <a name="hardware-security-module"></a>Hardware Security module
+
+De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware gebaseerde opslag van geheimen van apparaten en is de veiligste vorm van geheime opslag. Zowel X. 509-certificaten als SAS-tokens kunnen worden opgeslagen in de HSM. Hsm's kan worden gebruikt met beide Attestation-mechanismen die door de inrichtings service worden ondersteund.
+
+> [!TIP]
+> We raden u ten zeerste aan een HSM te gebruiken met apparaten om veilig geheimen op uw apparaten op te slaan.
+
+Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
+
+
+
+## <a name="id-scope"></a>ID-bereik
+
+Het ID-bereik wordt toegewezen aan een Device Provisioning Service wanneer deze door de gebruiker wordt gemaakt en wordt gebruikt om de specifieke inrichtings service te identificeren die door het apparaat wordt geregistreerd. Het ID-bereik wordt gegenereerd door de service en is onveranderbaar, waardoor uniekheid wordt gegarandeerd.
+
+> [!NOTE]
+> Uniekheid is belang rijk voor langlopende implementatie bewerkingen en fusie-en verwervings scenario's.
+
+
 ## <a name="registration"></a>Registratie
 
 Een registratie is de record van een apparaat dat is geregistreerd/ingericht naar een IoT Hub via de Device Provisioning Service. Registratie records worden automatisch gemaakt. ze kunnen worden verwijderd, maar kunnen niet worden bijgewerkt.
+
+
+## <a name="registration-id"></a>Registratie-ID
+
+De registratie-ID wordt gebruikt voor het identificeren van een apparaatregistratie met de Device Provisioning Service. De apparaat-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, niet hoofdletter gevoelig en kan speciale tekens bevatten, waaronder dubbele punt, punt, onderstrepings teken en afbreek streepje.
+
+* In het geval van TPM wordt de registratie-ID door de TPM zelf verschaft.
+* In het geval van X. 509 Attestation wordt de registratie-ID gegeven als de onderwerpnaam van het certificaat.
+
+## <a name="device-id"></a>Apparaat-ID
+
+De apparaat-ID is de ID zoals deze wordt weer gegeven in IoT Hub. De gewenste apparaat-ID kan in de inschrijvings vermelding worden ingesteld, maar deze hoeft niet te worden ingesteld. Het instellen van de gewenste apparaat-ID wordt alleen ondersteund in afzonderlijke inschrijvingen. Als er geen gewenste apparaat-ID is opgegeven in de registratie lijst, wordt de registratie-ID gebruikt als de apparaat-ID bij het registreren van het apparaat. Meer informatie over [apparaat-id's in IOT hub](../iot-hub/iot-hub-devguide-identity-registry.md).
+
+
 
 ## <a name="operations"></a>Bewerkingen
 
