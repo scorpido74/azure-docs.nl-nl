@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight-clusters met schijf versleuteling gaan verloren Key Vault toegang
-description: Probleemoplossings stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters.
+description: Stappen voor probleem oplossing en mogelijke oplossingen voor Key Vault toegangs problemen tijdens interactie met Azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461528"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532559"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijf versleuteling, verlies Key Vault toegang
 
@@ -32,7 +32,7 @@ Navigeer naar Apache Ambari UI voor meer informatie over de waarschuwing van **s
 
 ### <a name="kvaad-outage"></a>KV/AAD-onderbreking
 
-Bekijk [Azure Key Vault Beschik baarheid en redundantie](../../key-vault/general/disaster-recovery-guidance.md) en de pagina status van Azure voor meer informatiehttps://status.azure.com/
+Bekijk [Azure Key Vault Beschik baarheid en redundantie](../../key-vault/general/disaster-recovery-guidance.md) en de pagina status van Azure voor meer informatie https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>Onbedoeld verwijderen van KV
 

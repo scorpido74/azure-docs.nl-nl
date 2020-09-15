@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394751"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532287"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -24,7 +24,7 @@ Met Key Vault kunt u veilig toegang krijgen tot gevoelige informatie in uw toepa
 - Uw toepassing kan gebruikmaken van sleutels voor ondertekening en versleuteling, maar het sleutel beheer is ook extern vanuit uw toepassing, zodat uw oplossing geschikt is voor een geografisch gedistribueerde app.
 - Key Vault certificaten beheren. Zie [certificaten](../certificates/about-certificates.md) voor meer informatie.
 
-Zie [Wat is Key Vault](overview.md)) voor meer algemene informatie over Azure Key Vault.
+Zie [Wat is Key Vault](overview.md)voor meer algemene informatie over Azure Key Vault.
 
 ## <a name="public-previews"></a>Open bare voor beelden
 
@@ -140,7 +140,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault overzichten en concepten
 
-- [Gedrag bij zacht verwijderen Key Vault](soft-delete-overview.md)) beschrijft een functie waarmee verwijderde objecten kunnen worden hersteld, of het verwijderen per ongeluk of opzettelijk is geslaagd.
+- [Key Vault gedrag bij zacht verwijderen](soft-delete-overview.md) beschrijft een functie waarmee verwijderde objecten kunnen worden hersteld, of het verwijderen per ongeluk of opzettelijk is geslaagd.
 - [Key Vault-client beperking](overview-throttling.md) gaat u naar de basis concepten van beperking en biedt een benadering voor uw app.
 - [Key Vault Security-wereld](overview-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
 

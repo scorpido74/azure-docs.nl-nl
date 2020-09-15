@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090105"
+ms.locfileid: "90532185"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters automatisch schalen
 
@@ -68,7 +68,7 @@ Voor schalen, automatisch schalen, wordt een aanvraag voor het verwijderen van e
 > [!Important]
 > De functie voor automatisch schalen van Azure HDInsight is op 7 november 2019 algemeen beschikbaar gekomen voor Spark- en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u vóór 7 november 2019 een Spark-cluster hebt gemaakt en u de functie voor automatisch schalen wilt gebruiken in uw cluster, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen in te schakelen in het nieuwe cluster.
 >
-> Automatisch schalen voor LLAP-clusters (Interactive Query) en HBase-clusters is nog steeds in preview. Automatisch schalen is alleen beschikbaar voor clusters van Spark, Hadoop, Interactive Query en HBase.
+> Automatisch schalen voor interactieve Query's (LLAP) is uitgebracht voor algemene Beschik baarheid op 27 augustus 2020. HBase-clusters zijn nog steeds beschikbaar als preview-versie. Automatisch schalen is alleen beschikbaar voor clusters van Spark, Hadoop, Interactive Query en HBase.
 
 In de volgende tabel worden de cluster typen en versies beschreven die compatibel zijn met de functie voor automatisch schalen.
 

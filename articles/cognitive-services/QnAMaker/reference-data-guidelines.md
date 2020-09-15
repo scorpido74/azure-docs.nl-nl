@@ -1,14 +1,14 @@
 ---
 title: Gegevens importeren en exporteren-QnA Maker
-description: Begrijpen hoe de typen Url's worden gebruikt voor het importeren en maken van QnA-paren.
+description: Gebruik deze import-en export verwijzing om de beste resultaten te krijgen voor uw back-up, opslag en vervanging van uw Knowledge Base.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804240"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532151"
 ---
 # <a name="import-and-export-data-reference"></a>Gegevens verwijzing importeren en exporteren
 

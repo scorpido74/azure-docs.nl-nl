@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061203"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532389"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -369,7 +369,7 @@ Deze fout wordt waarschijnlijk veroorzaakt door een syntaxisfout in de opdracht 
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Ondersteuning voor Azure Files on-premises AD DS-verificatie voor AES 256 Kerberos-versleuteling
 
-We hebben ondersteuning voor AES 256 Kerberos-versleuteling geïntroduceerd voor Azure Files on-premises AD DS authenticatie met [AzFilesHybrid module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Als u AD DS verificatie hebt ingeschakeld met een module versie lager dan v 0.2.2, moet u de meest recente AzFilesHybrid-module (v 0.2.2 +) downloaden en de onderstaande Power shell uitvoeren. Als u AD DS verificatie nog niet hebt ingeschakeld in uw opslag account, kunt u deze [instructies](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) volgen voor de activering. U hoeft de onderstaande Power shell niet opnieuw uit te voeren als u de functie activering hebt uitgevoerd met AzFilesHybrid module v 0.2.2 of hoger. 
+We hebben ondersteuning voor AES 256 Kerberos-versleuteling geïntroduceerd voor Azure Files on-premises AD DS authenticatie met [AzFilesHybrid module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases). Als u AD DS verificatie hebt ingeschakeld met een module versie lager dan v 0.2.2, moet u de meest recente AzFilesHybrid-module (v 0.2.2 +) downloaden en de onderstaande Power shell uitvoeren. Als u AD DS verificatie nog niet hebt ingeschakeld in uw opslag account, kunt u deze [instructies](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) volgen voor de activering. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

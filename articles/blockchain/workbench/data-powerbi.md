@@ -4,12 +4,12 @@ description: Leer hoe u gegevens uit een SQL-database van Azure Blockchain Workb
 ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214227"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532372"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Gegevens van Azure Blockchain Workbench weergeven met Microsoft Power BI
 
@@ -24,7 +24,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI verbinding maken met gegevens in azure Block Chain workbench
 
 1.  Open Power BI Desktop.
-2.  Selecteer **Gegevens ophalen**.
+2.  Selecteer **gegevens ophalen**.
 
     ![Gegevens ophalen](./media/data-powerbi/get-data.png)
 3.  Selecteer **SQL Server** in de lijst met gegevensbronnen.
@@ -41,7 +41,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
 6.  Als er verbinding is met de database, ziet u in het dialoogvenster **Navigator** de tabellen en weergaven die beschikbaar zijn in de database. De weergaven zijn ontworpen voor rapportagedoeleinden en herkent u aan het voorvoegsel **vw**.
 
-    ![Navigator](./media/data-powerbi/navigator.png)
+    ![Scherm opname van Power BI bureau blad met het dialoog venster navigator waarin vwContractAction is geselecteerd.](./media/data-powerbi/navigator.png)
 
 7.  Selecteer de weergaven die u wilt opnemen in het rapport. Voor demonstratie doeleinden bevatten we **vwContractAction**, dat details bevat over de acties die op een contract hebben plaatsgevonden.
 

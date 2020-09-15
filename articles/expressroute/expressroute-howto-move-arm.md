@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395686"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532542"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-circuits verplaatsen van klassiek naar Resource Manager-implementatie model met behulp van Power shell
 
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 In de klassieke modus is een ExpressRoute-circuit niet in staat om te worden gekoppeld aan een regio. In Resource Manager moet elke resource echter worden toegewezen aan een Azure-regio. De regio die is opgegeven in de cmdlet Move-AzExpressRouteCircuit kan technisch een wille keurige regio zijn. Voor organisatie doeleinden wilt u mogelijk een regio kiezen die de locatie van uw peering nauw keurig weergeeft.
 
 > [!NOTE]
-> Nadat de verplaatsing is voltooid, wordt de nieuwe naam die wordt vermeld in de vorige cmdlet gebruikt voor het adresseren van de resource. De naam van het circuit wordt in feite gewijzigd.
-> 
+> * Nadat u uw klassieke ExpressRoute-circuit naar het Resource Manager-implementatie model hebt verplaatst, heeft het standaard toegang tot de klassieke en Resource Manager-implementatie modellen.
+> * De nieuwe naam die wordt vermeld in de vorige cmdlet wordt gebruikt om de resource te adresseren. De naam van het circuit wordt in feite gewijzigd.
 
 ## <a name="modify-circuit-access"></a>De toegang tot het circuit wijzigen
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>ExpressRoute-circuit toegang inschakelen voor beide implementatie modellen
 
-Nadat u uw klassieke ExpressRoute-circuit naar het Resource Manager-implementatie model hebt verplaatst, kunt u toegang tot beide implementatie modellen inschakelen. Voer de volgende cmdlets uit om toegang tot beide implementatie modellen mogelijk te maken:
+U kunt toegang tot het klassieke implementatie model inschakelen voor ExpressRoute-circuits die zijn gemaakt in het Resource Manager-implementatie model. Voer de volgende cmdlets uit om toegang tot beide implementatie modellen mogelijk te maken:
 
 1. De details van het circuit ophalen.
 

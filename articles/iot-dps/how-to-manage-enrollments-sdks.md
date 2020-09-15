@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520653"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532321"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Registratie van apparaten beheren met de Sdk's van Azure Device Provisioning Service
 Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Device Provisioning-Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service programmatisch beheert met de Azure IoT Provisioning Service Sdk's.  De Sdk's zijn beschikbaar op GitHub in dezelfde opslag plaats als Azure IoT-Sdk's.
 
 ## <a name="prerequisites"></a>Vereisten
 * Verkrijg de connection string van uw Device Provisioning service-exemplaar.
-* De beveiligings artefacten van het apparaat verkrijgen voor het [Attestation-mechanisme](concepts-security.md#attestation-mechanism) dat wordt gebruikt:
+* De beveiligings artefacten van het apparaat verkrijgen voor het [Attestation-mechanisme](concepts-service.md#attestation-mechanism) dat wordt gebruikt:
     * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Afzonderlijke inschrijving: registratie-ID en TPM-goedkeurings sleutel van een fysiek apparaat of van TPM-Simulator.
         * De registratie groep is niet van toepassing op TPM-Attestation.
