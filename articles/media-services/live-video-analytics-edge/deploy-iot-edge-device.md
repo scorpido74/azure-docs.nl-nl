@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439619"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526320"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -107,7 +107,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     * **Module naam IOT Edge**: lvaEdge
     * **Afbeeldings-URI**: mcr.Microsoft.com/Media/Live-video-Analytics:1.0    
     
-    ![Toevoegen](./media/deploy-iot-edge-device/add.png)
+    ![Scherm afbeelding toont het tabblad module-instellingen.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > Selecteer **toevoegen** totdat u waarden hebt opgegeven op de tabbladen **module-instellingen**, **container maken**en **module dubbele instellingen** , zoals beschreven in deze procedure.
@@ -217,7 +217,7 @@ Nadat u de implementatie hebt gemaakt, keert u terug naar de pagina IoT Edge van
 Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
 Status code: 200 – OK betekent dat [de runtime van IOT Edge](../../iot-edge/iot-edge-runtime.md) in orde is en goed werkt.
 
-![Status](./media/deploy-iot-edge-device/status.png)
+![Scherm afbeelding toont een status waarde voor een IoT Edge runtime.](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Een directe methode aanroepen
 
@@ -225,7 +225,7 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
 
 1. Als u op de door u gemaakte Edge-module klikt, gaat u naar de pagina met de configuratie.  
 
-    ![Modules](./media/deploy-iot-edge-device/modules.png)
+    ![Scherm afbeelding toont de configuratie pagina van een Edge-module.](./media/deploy-iot-edge-device/modules.png)
 1. Klik op de menu optie directe methode.
 
     > [!NOTE] 

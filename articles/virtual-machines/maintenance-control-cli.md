@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675856"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528173"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Updates beheren met onderhouds beheer en de Azure CLI
 
@@ -37,7 +37,7 @@ Kopieer de configuratie-ID uit de uitvoer, zodat u deze later kunt gebruiken.
 
 Met `--maintenanceScope host` kunt u ervoor zorgen dat de onderhouds configuratie wordt gebruikt om updates voor de host te beheren.
 
-Als u probeert een configuratie met dezelfde naam te maken, maar op een andere locatie, krijgt u een fout melding. Configuratie namen moeten uniek zijn voor uw abonnement.
+Als u probeert een configuratie met dezelfde naam te maken, maar op een andere locatie, krijgt u een fout melding. Configuratie namen moeten uniek zijn voor uw resource groep.
 
 U kunt een query uitvoeren voor beschik bare onderhouds configuraties met `az maintenance configuration list` .
 

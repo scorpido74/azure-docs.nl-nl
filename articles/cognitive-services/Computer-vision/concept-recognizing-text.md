@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 24be20d7eac48024b73e88f8ac8500928f0fb840
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594224"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526405"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -24,7 +24,7 @@ De Computer Vision-API van Azure bevat functies voor optische teken herkenning (
 
 ## <a name="read-api"></a>API lezen 
 
-De Computer Vision [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) is de nieuwste OCR-technologie van Azure ([informatie over wat er nieuw](./whats-new.md#read-api-v31-public-preview-adds-simplified-chinese-support)is) waarmee gedrukte tekst (in verschillende talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst uit tekst-zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst in dezelfde afbeelding of hetzelfde document.
+De Computer Vision [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) is de nieuwste OCR-technologie van Azure ([informatie over wat er nieuw](./whats-new.md)is) waarmee gedrukte tekst (in verschillende talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst uit tekst-zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst in dezelfde afbeelding of hetzelfde document.
 
 ![Hoe OCR afbeeldingen en documenten converteert naar gestructureerde uitvoer met geëxtraheerde tekst](./Images/how-ocr-works.svg)
 
@@ -35,6 +35,9 @@ De **Lees** aanroep neemt afbeeldingen en documenten op als invoer. Ze hebben de
 * Voor PDF-en TIFF-bestanden worden Maxi maal 2000 pagina's (alleen de eerste twee pagina's voor de gratis laag) verwerkt.
 * De bestands grootte moet kleiner zijn dan 50 MB (4 MB voor de gratis laag) en afmetingen ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels. 
 * De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
+
+### <a name="read-31-preview-allows-selecting-pages"></a>Met de preview-versie van 3,1 lezen kunt u pagina ('s) selecteren
+Met de [Preview-API lezen 3,1](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)voor grote documenten met meerdere pagina's kunt u specifieke pagina nummers of paginabereiken opgeven als invoer parameter om alleen tekst uit die pagina's te halen. Dit is een nieuwe invoer parameter naast de optionele taal parameter.
 
 > [!NOTE]
 > **Taalinvoer** 
@@ -125,14 +128,24 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie:
   }
 }
 ```
+### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>Lees 3,1 Preview tekst lijn stijl toevoegen (alleen Latijnse talen)
+De [lezen 3,1 Preview-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) voert een **vormgevings** object uit waarin wordt aangegeven of elke tekst regel moet worden afgedrukt of geschreven, samen met een betrouwbaarheids Score. Deze functie wordt alleen ondersteund voor Latijnse talen.
+
+```json
+  "appearance": {
+              "style": "handwriting",
+              "styleConfidence": 0.836
+            }
+```
 Ga aan de slag met de [Computer Vision OCR SDK Quick](./quickstarts-sdk/client-library.md) starts en de [Lees rest API SNELSTARTGIDS](./QuickStarts/CSharp-hand-text.md) om de OCR-mogelijkheden in uw toepassingen te integreren.
 
 ## <a name="supported-languages-for-print-text"></a>Ondersteunde talen voor afdruk tekst
-De [lees 3,0-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. 
-
-De [open bare preview van de lees 3,1 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u de sectie [OCR API](#ocr-api) . 
+De [lees 3,0-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen.
 
 Zie de [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) voor de volledige lijst met talen die door OCR worden ondersteund.
+
+### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>In de preview-versie van 3,1 wordt vereenvoudigd Chinees en Japans toegevoegd
+De [open bare preview-versie van de lees 3,1-API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) voegt ondersteuning toe voor vereenvoudigd Chinees en Japans. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u de sectie [OCR API](#ocr-api) . 
 
 ## <a name="supported-languages-for-handwritten-text"></a>Ondersteunde talen voor handgeschreven tekst
 De Lees bewerking biedt momenteel alleen ondersteuning voor het extra heren van handgeschreven tekst in het Engels.
@@ -191,4 +204,4 @@ Net als bij alle cognitieve services moeten ontwikkel aars die de Lees/OCR-Servi
 - Ga aan de slag met de [Computer Vision lees 3,0 SDK Quick](./quickstarts-sdk/client-library.md) starts in C#, Java, java script of python.
 - Gebruik de [Lees-3,0-rest API Snelstartgids](./QuickStarts/CSharp-hand-text.md) in C#, Java, java script of python voor meer informatie over het gebruik van de rest-api's.
 - Meer informatie over de [lees 3,0-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Meer informatie over de [open bare preview-versie van 3,1 lees rest API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees.
+- Meer informatie over de [open bare preview-versie van 3,1 rest API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) met toegevoegde ondersteuning voor vereenvoudigd Chinees en Japans.

@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386109"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527153"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -99,7 +99,7 @@ Verificatietype | De methode voor verificatie bij de virtuele machine. | Wachtwo
 Wachtwoord | Het wacht woord voor het beheerders account voor elk van de virtuele machines die zijn geïmplementeerd. Alle Vm's hebben in eerste instantie hetzelfde wacht woord. U kunt het wacht woord na het inrichten wijzigen. | 12-72 tekens 
 Abonnement | Het abonnement waarop het consortium netwerk moet worden geïmplementeerd |
 Resourcegroep| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
-Locatie | De Azure-regio voor de resource groep. | West US 2
+Locatie | De Azure-regio voor de resource groep. | VS - west 2
 
 Selecteer **OK**.
 
@@ -112,7 +112,7 @@ Geef onder *implementatie regio's*het aantal regio's en locaties voor elk op. U 
 Parameter | Beschrijving | Voorbeeldwaarde
 ----------|-------------|--------------
 Aantal regio's|Aantal regio's voor de implementatie van het consortium netwerk| 2
-Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | West US 2
+Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | VS - west 2
 Tweede regio | Tweede regio voor het implementeren van het consortium netwerk. Extra regio's zijn zichtbaar wanneer het aantal regio's twee of meer is. | VS - oost 2
 
 Selecteer **OK**.
@@ -325,7 +325,7 @@ Uit veiligheids overwegingen wordt de SSH-poort toegang standaard geweigerd door
 
 1. Selecteer de regel voor het **toestaan van SSH** .
 
-    ![SSH-toestaan](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![Scherm opname toont een overzichts venster met de geselecteerde SSH-toestemming.](./media/ethereum-poa-deployment/ssh-allow.png)
 
 1. **Actie** wijzigen in **toestaan**
 

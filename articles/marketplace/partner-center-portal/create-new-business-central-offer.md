@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646860"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527085"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -71,9 +71,7 @@ Contact gegevens van klanten verzamelen door verbinding te maken met uw CRM-syst
 
 ### <a name="test-drive"></a>Station testen
 
-Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te bieden om te kopen voordat u aan de slag gaat, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. Begin met [Wat is test drive](../what-is-test-drive.md)voor meer informatie.
-
-Als u een test drive voor een bepaalde periode wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit.
+Op dit punt bieden Dynamics 365 Business Central-aanbiedingen geen ondersteuning voor test drive. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u het selectie vakje **een test drive inschakelen** uit.
 
 ### <a name="customer-leads"></a>Leads van klanten
 
@@ -134,7 +132,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 9. Beschrijving
 10. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 

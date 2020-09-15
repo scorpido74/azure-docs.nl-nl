@@ -1,241 +1,100 @@
 ---
-title: Opslag accounts die eigendom zijn van de klant voor logboek opname
-description: Gebruik uw eigen opslag account voor opname van logboek gegevens in een Log Analytics-werk ruimte in Azure Monitor.
+title: Door de klant beheerde opslag accounts gebruiken in Azure Monitor Log Analytics
+description: Uw eigen opslag account gebruiken voor Log Analytics scenario's
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 05/20/2020
-ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+author: noakup
+ms.author: noakuper
+ms.date: 09/03/2020
+ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962669"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526422"
 ---
-# <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Door de klant beheerde opslag accounts gebruiken in Azure Monitor Log Analytics
 
-Azure Monitor gebruikt opslag accounts in het opname proces van sommige gegevens typen, zoals [aangepaste logboeken](data-sources-custom-logs.md) en bepaalde [Azure-logboeken](./diagnostics-extension-logs.md). Tijdens het opname proces worden logboeken eerst verzonden naar een opslag account en later opgenomen in Log Analytics of Application Insights. Als u de controle over uw gegevens tijdens opname wilt, kunt u uw eigen opslag accounts gebruiken in plaats van de door de service beheerde opslag. Met uw eigen opslag account hebt u controle over de toegang, inhoud, versleuteling en behoud van de logboeken tijdens opname. We verwijzen naar dit als uw eigen opslag of BYOS. 
+Log Analytics is afhankelijk van Azure Storage in verschillende scenario's. Dit gebruik wordt doorgaans automatisch beheerd. In sommige gevallen moet u echter uw eigen opslag account opgeven en beheren, ook wel een door de klant beheerd opslag account genoemd. Dit document bevat informatie over het gebruik van door de klant beheerde opslag voor de opname van WAD/LAD-logboeken, specifieke scenario's voor persoonlijke koppelingen en CMK-versleuteling. 
 
-Een scenario dat BYOS vereist, is netwerk isolatie via persoonlijke koppelingen. Wanneer u een VNet gebruikt, is netwerk isolatie vaak een vereiste en is toegang tot het open bare Internet beperkt. In dergelijke gevallen is het openen van Azure Monitor-service opslag voor logboek opname volledig geblokkeerd of als een onjuiste procedure beschouwd. In plaats daarvan moeten de logboeken worden opgenomen via een opslag account van de klant in het VNet of eenvoudig toegankelijk zijn.
+> [!NOTE]
+> U wordt aangeraden geen afhankelijkheid te nemen van de inhoud Log Analytics uploads naar door de klant beheerde opslag, op voorwaarde dat de opmaak en inhoud kan veranderen.
 
-Een ander scenario is het versleutelen van logboeken met door de klant beheerde sleutels (CMK). Klanten kunnen geregistreerde gegevens versleutelen met behulp van CMK in de clusters waarin de logboeken worden opgeslagen. Dezelfde sleutel kan ook worden gebruikt voor het versleutelen van logboeken tijdens het opname proces.
+## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics extensie logboeken opnemen (WAD/LAD)
+De Azure Diagnostics extensie agents (ook wel WAD-en LAD voor Windows-en Linux-agents genoemd) verzamelen verschillende besturings systeem logboeken en slaan ze op in een door de klant beheerd opslag account. U kunt deze logboeken vervolgens opnemen in Log Analytics om ze te bekijken en te analyseren.
+Azure Diagnostics extensie logboeken van uw opslag account verzamelen sluit het opslag account aan uw Log Analytics-werk ruimte als een opslag gegevens bron met behulp van [de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) of door de [opslag Insights-API](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)aan te roepen.
 
-## <a name="data-types-supported"></a>Ondersteunde gegevens typen
+Ondersteunde gegevens typen:
+* Syslog
+* Windows-gebeurtenissen
+* Service Fabric
+* ETW-gebeurtenissen
+* IIS-logboeken
 
-De volgende gegevens typen van een opslag account worden opgenomen. Zie [gegevens verzamelen van Azure Diagnostics-extensie voor Azure monitor-logboeken](./diagnostics-extension-logs.md) voor meer informatie over de opname van deze typen.
+## <a name="using-private-links"></a>Persoonlijke koppelingen gebruiken
+In sommige gevallen zijn door klanten beheerde opslag accounts vereist, wanneer persoonlijke koppelingen worden gebruikt om verbinding te maken met Azure Monitor-resources. Een dergelijk geval is de opname van aangepaste Logboeken of IIS-logboeken. Deze gegevens typen worden eerst als blobs geüpload naar een tussenliggend Azure Storage account en worden alleen opgenomen in een werk ruimte. Zo kunnen sommige Azure Monitor oplossingen gebruikmaken van opslag accounts voor het opslaan van grote bestanden, zoals Watson-dump bestanden, die worden gebruikt door de Azure Security Center-oplossing. 
 
-| Type | Tabel gegevens |
-|:-----|:------------------|
-| IIS-logboeken | Blob: wad-IIS-logboek bestanden|
-|Windows-gebeurtenislogboeken | Tabel: WADWindowsEventLogsTable |
-| Syslog | Tabel: LinuxsyslogVer2v0 |
-| Windows ETW-logboeken | Tabel: WADETWEventTable|
-| Service Fabric | Tabel: WADServiceFabricSystemEventTable <br/> WADServiceFabricReliableActorEventTable<br/> WADServiceFabricReliableServicEventTable |
-| Aangepaste logboeken | N.v.t. |
-| Dump bestanden van Azure Security Center Watson | N.v.t.|  
+##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Scenario's voor persoonlijke koppelingen waarvoor een door de klant beheerde opslag is vereist
+* Opname van aangepaste logboeken en IIS-logboeken
+* Een ASC-oplossing toestaan om Watson-dump bestanden te verzamelen
 
-## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount 
-Het opslag account moet voldoen aan de volgende vereisten:
+### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Een door de klant beheerd opslag account gebruiken via een persoonlijke koppeling
+##### <a name="workspace-requirements"></a>Werkruimte vereisten
+Wanneer u verbinding maakt met Azure Monitor via een persoonlijke koppeling, kunnen Log Analytics-agents alleen logboeken verzenden naar werk ruimten die via een persoonlijke koppeling aan uw netwerk zijn gekoppeld. Voor deze regel moet u een Azure Monitor-object voor een persoonlijk koppelings bereik (AMPLS) goed configureren, het verbinden met uw werk ruimten en de AMPLS vervolgens met uw netwerk verbinden via een privé-koppeling. Zie voor meer informatie over de AMPLS-configuratie procedure [Azure private link gebruiken om een beveiligde verbinding te maken tussen netwerken en Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security). 
+##### <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
+Het opslag account kan alleen verbinding maken met uw persoonlijke koppeling als:
+* Bevinden zich op uw VNet of een peered netwerk en is verbonden met uw VNet via een persoonlijke koppeling. Hiermee kunnen agents op uw VNet logboeken naar het opslag account verzenden.
+* Bevinden zich in dezelfde regio als de werk ruimte waaraan deze is gekoppeld.
+* Azure Monitor toegang tot het opslag account toestaan. Als u ervoor hebt gekozen om alleen netwerken te selecteren voor toegang tot uw opslag account, moet u ook de volgende uitzonde ring toestaan: ' vertrouwde micro soft-Services toegang geven tot dit opslag account '. Hiermee kan Log Analytics de logboeken lezen die zijn opgenomen in dit opslag account.
+* Als uw werk ruimte ook verkeer afhandelt vanuit andere netwerken, moet u het opslag account configureren om binnenkomend verkeer van de relevante netwerken/internet toe te staan.
 
-- Toegankelijk voor bronnen op uw VNet die logboeken naar de opslag schrijven.
-- Moet zich in dezelfde regio bevinden als de werk ruimte waaraan deze is gekoppeld.
-- Azure Monitor toegang toestaan: als u ervoor hebt gekozen om de toegang tot het opslag account te beperken tot het selecteren van netwerken, moet u deze uitzonde ring toestaan: *vertrouwde micro soft-Services toegang geven tot dit opslag account*.
+##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Uw opslag account koppelen aan een Log Analytics-werk ruimte
+U kunt uw opslag account aan de werk ruimte koppelen via de [Azure cli](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) of [rest API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts). Toepasselijke data source type-waarden:
+* CustomLogs: voor het gebruik van de opslag voor aangepaste logboeken en IIS-logboeken tijdens opname.
+* AzureWatson: gebruik de opslag voor Watson-dump bestanden die zijn geüpload door de ASC (Azure Security Center)-oplossing. Zie voor meer informatie over het beheren van de Bewaar periode van een gekoppeld opslag account en het controleren van de activiteit van uw opslag account [beheer van gekoppelde opslag accounts](#managing-linked-storage-accounts). 
 
-## <a name="process-to-configure-customer-owned-storage"></a>Proces voor het configureren van opslag in eigendom van de klant
-Het basis proces van het gebruik van uw eigen opslag account voor opname is als volgt:
+## <a name="encrypting-data-with-cmk"></a>Gegevens versleutelen met CMK
+Azure Storage versleutelt alle gegevens in rust in een opslag account. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels (MMK). In plaats daarvan kunt u met Azure Storage echter een door de klant beheerde sleutel (CMK) van de Azure-sleutel kluis gebruiken om uw opslag gegevens te versleutelen. U kunt uw eigen sleutels importeren in Azure Key Vault, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren.
+##### <a name="cmk-scenarios-that-require-a-customer-managed-storage-account"></a>CMK-scenario's waarvoor een door de klant beheerd opslag account is vereist
+* Logboek-waarschuwings query's versleutelen met CMK
+* Opgeslagen query's versleutelen met CMK
 
-1. Maak een opslag account of selecteer een bestaand account.
-2. Koppel het opslag account aan een Log Analytics-werk ruimte.
-3. Beheer de opslag door de belasting en retentie te controleren om er zeker van te zijn dat deze werkt zoals verwacht.
+### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>CMK Toep assen op door de klant beheerde opslag accounts
+##### <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
+Het opslag account en de sleutel kluis moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie over Azure Storage versleuteling en sleutel beheer.
 
-De enige beschik bare methode voor het maken en verwijderen van koppelingen vindt u via de REST API. Meer informatie over de specifieke API-aanvraag die is vereist voor elk proces, vindt u in de volgende secties.
+##### <a name="apply-cmk-to-your-storage-accounts"></a>CMK Toep assen op uw opslag accounts
+Als u uw Azure Storage-account wilt configureren voor het gebruik van door de klant beheerde sleutels met Azure Key Vault, gebruikt u de [Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json), [Power shell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json) of de [cli](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json). 
 
-## <a name="command-line-and-rest-api"></a>Opdracht regel en REST API
+## <a name="managing-linked-storage-accounts"></a>Gekoppelde opslag accounts beheren
 
-### <a name="command-line"></a>Opdrachtregel
-Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
+Als u opslag accounts wilt koppelen of ontkoppelen naar uw werk ruimte, gebruikt u de [Azure cli](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) of de [rest API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts).
 
-### <a name="request-and-cli-values"></a>Aanvraag-en CLI-waarden
+##### <a name="create-or-modify-a-link"></a>Een koppeling maken of wijzigen
+Wanneer u een opslag account koppelt aan een werk ruimte, wordt Log Analytics gebruikt in plaats van het opslag account dat eigendom is van de service. U kunt 
+* Meerdere opslag accounts registreren om de belasting van Logboeken ertussen te verdelen
+* Hetzelfde opslag account voor meerdere werk ruimten opnieuw gebruiken
 
-#### <a name="datasourcetype"></a>Data Source Type 
+##### <a name="unlink-a-storage-account"></a>Een opslag account ontkoppelen
+Als u een opslag account niet meer wilt gebruiken, ontkoppelt u de opslag van de werk ruimte. Bij het ontkoppelen van alle opslag accounts van een werk ruimte betekent Log Analytics dat er wordt geprobeerd te vertrouwen op door service beheerde opslag accounts. Als uw netwerk beperkte toegang tot het internet heeft, zijn deze opslag mogelijk niet beschikbaar en zullen scenario's die afhankelijk zijn van opslag, mislukken.
 
-- AzureWatson: gebruik deze waarde voor Azure Security Center Azure Watson-dump bestanden.
-- CustomLogs: gebruik deze waarde voor de volgende gegevens typen:
-  - Aangepaste logboeken
-  - IIS-logboeken
-  - Gebeurtenissen (Windows)
-  - Syslog (Linux)
-  - ETW-logboeken
-  - Service Fabric gebeurtenissen
-  - Beoordelings gegevens  
+##### <a name="replace-a-storage-account"></a>Een opslag account vervangen
+Als u een opslag account wilt vervangen dat wordt gebruikt voor opname,
+1.  **Maak een koppeling naar een nieuw opslag account.** De logboek registratie agenten ontvangen de bijgewerkte configuratie en beginnen ook met het verzenden van gegevens naar de nieuwe opslag. Het proces kan enkele minuten duren.
+2.  **Koppel vervolgens het oude opslag account ongedaan zodat agents het wegschrijven naar het verwijderde account worden gestopt.** Het opname proces bewaart gegevens van dit account totdat het is opgenomen. Verwijder het opslag account pas wanneer u ziet dat alle logboeken zijn opgenomen.
 
-#### <a name="storage_account_resource_id"></a>storage_account_resource_id
-Deze waarde maakt gebruik van de volgende structuur:
+### <a name="maintaining-storage-accounts"></a>Opslag accounts onderhouden
+##### <a name="manage-log-retention"></a>Bewaren van logboeken beheren
+Wanneer u uw eigen opslag account gebruikt, is de Bewaar periode. Met andere woorden, Log Analytics verwijdert geen logboeken die zijn opgeslagen in uw privé-opslag. In plaats daarvan moet u een beleid instellen om de belasting op basis van uw voor keuren af te handelen.
 
-```
-subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
-```
-
-
-## <a name="get-linked-storage-accounts"></a>Gekoppelde opslag accounts ophalen
-
-### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Gekoppelde opslag accounts ophalen voor alle typen gegevens bronnen
-
-#### <a name="api-request"></a>API-aanvraag
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Antwoord
-
-```json
-{
-    [
-        {
-            "properties":
-            {
-                "dataSourceType": "CustomLogs",
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_1>",
-                    "<storage_account_resource_id_2>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-            "name": "CustomLogs",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        },
-        {
-            "properties":
-            {
-                "dataSourceType": " AzureWatson "
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_3>",
-                    "<storage_account_resource_id_4>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/AzureWatson",
-            "name": "AzureWatson",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        }
-    ]
-}
-```
-
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Gekoppelde opslag accounts ophalen voor een specifiek gegevens bron type
-
-#### <a name="api-request"></a>API-aanvraag
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Antwoord 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-## <a name="create-or-modify-a-link"></a>Een koppeling maken of wijzigen
-
-Zodra u een opslag account aan een werk ruimte koppelt, wordt Log Analytics gebruikt in plaats van het opslag account dat eigendom is van de service. U kunt op hetzelfde moment een lijst met opslag accounts registreren en u kunt hetzelfde opslag account gebruiken voor meerdere werk ruimten.
-
-Als uw werk ruimte zowel VNet-resources als bronnen buiten een VNet verwerkt, moet u ervoor zorgen dat er geen verkeer wordt afgewezen dat afkomstig is van het internet. Uw opslag moet dezelfde instellingen hebben als uw werk ruimte en beschikbaar worden gesteld aan bronnen buiten uw VNet. 
-
-### <a name="api-request"></a>API-aanvraag
-
-```
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-### <a name="payload"></a>Nettolading
-
-```json
-{
-    "properties":
-    {
-        "storageAccountIds  " : 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    }
-}
-```
-
-### <a name="response"></a>Antwoord
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs"
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-"id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-"name": "CustomLogs",
-"type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-
-## <a name="unlink-a-storage-account"></a>Een opslag account ontkoppelen
-Als u besluit om een opslag account niet meer te gebruiken voor opname of als u de werk ruimte die u gebruikt, wilt vervangen, moet u de koppeling van de opslag in de werk ruimte ontkoppelen.
-
-Het ontkoppelen van alle opslag accounts van een werk ruimte betekent dat opname probeert te vertrouwen op door service beheerde opslag accounts. Als uw agents worden uitgevoerd op een VNet met beperkte toegang tot internet, wordt de opname naar verwachting mislukt. De werk ruimte moet een gekoppeld opslag account hebben dat bereikbaar is vanuit uw bewaakte resources.
-
-Voordat u een opslag account verwijdert, moet u ervoor zorgen dat alle gegevens erin zijn opgenomen in de werk ruimte. Zorg er als voorzorgsmaatregel voor dat uw opslag account beschikbaar is nadat u een alternatieve opslag hebt gekoppeld. Verwijder het bestand alleen als alle inhoud is opgenomen, en u kunt zien dat er nieuwe gegevens zijn geschreven naar het zojuist verbonden opslag account.
-
-
-### <a name="api-request"></a>API-aanvraag
-```
-DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-## <a name="replace-a-storage-account"></a>Een opslag account vervangen
-
-Als u een opslag account wilt vervangen dat wordt gebruikt voor opname, maakt u eerst een koppeling voor een nieuw opslag account. De logboek registratie agenten ontvangen de bijgewerkte configuratie en beginnen ook met het verzenden van gegevens naar de nieuwe opslag.
-
-Verwijder de volgende keer de koppeling van het oude opslag account zodat agents niet naar het verwijderde account worden geschreven. Het opname proces bewaart gegevens van dit account totdat het is opgenomen. Verwijder het opslag account pas wanneer u ziet dat alle logboeken zijn opgenomen.
-
-De agent configuratie wordt na een paar minuten vernieuwd en er wordt overgeschakeld naar de nieuwe opslag.
-
-## <a name="manage-storage-account"></a>Opslag account beheren
-
-### <a name="load"></a>Laden
-
-Opslag accounts kunnen een bepaalde belasting van lees-en schrijf aanvragen afhandelen voordat de aanvragen worden gestart. Beperking is van invloed op de tijd die nodig is om logboeken op te nemen. Dit kan leiden tot verlies van gegevens. Als uw opslag is overbelast, registreert u extra opslag accounts en verspreidt u de belasting ertussen. 
+##### <a name="consider-load"></a>Overweeg load
+Opslag accounts kunnen een bepaalde belasting van lees-en schrijf aanvragen afhandelen voordat ze aanvragen voor het beperken (Zie [schaal baarheid en prestatie doelen voor Blob Storage](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account) voor meer informatie). Beperking is van invloed op de tijd die nodig is voor opname van Logboeken. Als uw opslag account is overbelast, registreert u een extra opslag account om de belasting ertussen te spreiden. Als u de capaciteit en prestaties van uw opslag account wilt controleren, bekijkt u de [inzichten in de Azure Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview).
 
 ### <a name="related-charges"></a>Gerelateerde kosten
-
-Opslag accounts worden in rekening gebracht op basis van het volume van de opgeslagen gegevens, de typen opslag en het type redundantie. Zie prijzen voor [blok-blobs](https://azure.microsoft.com/pricing/details/storage/blobs/) en [Table Storage prijzen](https://azure.microsoft.com/pricing/details/storage/tables/)voor meer informatie.
-
-Als het geregistreerde opslag account van uw werk ruimte zich in een andere regio bevindt, worden er kosten in rekening gebracht op basis van deze [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/).
-
+Opslag accounts worden in rekening gebracht op basis van het volume van de opgeslagen gegevens, het type opslag en het type redundantie. Zie prijzen voor [blok-blobs](https://azure.microsoft.com/pricing/details/storage/blobs) en [Table Storage prijzen](https://azure.microsoft.com/pricing/details/storage/tables)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het instellen van een persoonlijke koppeling [Azure-persoonlijke koppeling gebruiken om een beveiligde verbinding te maken tussen netwerken en Azure monitor](private-link-security.md)
-
+- Meer informatie over [het gebruik van een persoonlijke Azure-koppeling voor het veilig verbinden van netwerken met Azure monitor](private-link-security.md)
+- Meer informatie over Azure Monitor door de [klant beheerde sleutels](customer-managed-keys.md)

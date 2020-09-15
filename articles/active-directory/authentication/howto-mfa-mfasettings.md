@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068809"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526881"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -31,7 +31,7 @@ De volgende Azure Multi-Factor Authentication-instellingen zijn beschikbaar in d
 | [Gebruikers blok keren/deblokkeren](#block-and-unblock-users) | Voor komen dat bepaalde gebruikers Azure Multi-Factor Authentication aanvragen kunnen ontvangen. Verificatiepogingen voor geblokkeerde gebruikers worden automatisch geweigerd. Gebruikers blijven gedurende 90 dagen geblokkeerd vanaf het moment dat ze worden geblokkeerd of hand matig worden gedeblokkeerd. |
 | [Fraudewaarschuwing](#fraud-alert) | Instellingen configureren waarmee gebruikers frauduleuze verificatie aanvragen kunnen rapporteren. |
 | [Meldingen](#notifications) | Meldingen van gebeurtenissen van MFA-server inschakelen. |
-| [OATH-tokens](concept-authentication-methods.md#oath-tokens) | Wordt gebruikt in in de cloud gebaseerde Azure MFA-omgevingen om OATH-tokens voor gebruikers te beheren. |
+| [OATH-tokens](concept-authentication-oath-tokens.md) | Wordt gebruikt in in de cloud gebaseerde Azure MFA-omgevingen om OATH-tokens voor gebruikers te beheren. |
 | [Instellingen voor telefoon gesprek](#phone-call-settings) | Instellingen configureren met betrekking tot telefoon gesprekken en begroetingen voor Cloud-en on-premises omgevingen. |
 | Providers | Hiermee worden alle bestaande verificatie providers weer gegeven die u mogelijk aan uw account hebt gekoppeld. Nieuwe verificatie providers mogen niet worden gemaakt vanaf 1 september 2018 |
 

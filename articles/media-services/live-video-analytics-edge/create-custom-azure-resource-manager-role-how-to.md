@@ -3,12 +3,12 @@ title: Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Prin
 description: Dit artikel bevat richt lijnen voor het maken van aangepaste Azure Resource Manager-rollen en het toewijzen van de service-principal voor live video Analytics op IoT Edge met behulp van Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043168"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526575"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Principal
 
@@ -43,7 +43,7 @@ Als u geen media service-account hebt, gebruikt u de volgende stappen om er een 
 1. Blader naar de [Cloud shell](https://shell.azure.com/).
 1. Selecteer ' bash ' als uw omgeving in de vervolg keuzelijst aan de linkerkant van het shell-venster.
 
-    ![Bash](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![Scherm opnamen toont bash geselecteerd in het shell venster.](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. Stel uw Azure-abonnement in als het standaard account met behulp van de volgende opdracht sjabloon:
     
     ```
@@ -163,7 +163,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 ```
 
 > [!NOTE]
-> `<appId>`kan worden opgehaald uit de uitvoer van de stap [Service-Principal maken](#create-service-principal) .
+> `<appId>` kan worden opgehaald uit de uitvoer van de stap [Service-Principal maken](#create-service-principal) .
 
 Met de bovenstaande opdracht wordt de objectId van de Service-Principal afgedrukt. 
 

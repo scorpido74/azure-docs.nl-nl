@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716993"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526966"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor on-premises resources met Azure Active Directory (preview-versie)
 
@@ -46,7 +46,7 @@ Organisaties moeten de stappen voor het [inschakelen van een wacht woord met wac
 
 Organisaties moeten ook voldoen aan de volgende software vereisten.
 
-- Op apparaten moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
+- Op apparaten moet Windows 10 versie 2004 of nieuwer worden uitgevoerd.
 - U moet beschikken over versie 1.4.32.0 of hoger van [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect).
   - Zie voor meer informatie over de beschik bare opties voor hybride verificatie van Azure AD [de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing](../hybrid/choose-ad-authn.md) en [Selecteer welk installatie type u wilt gebruiken voor Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Op uw Windows Server-domein controllers moeten de volgende patches zijn geïnstalleerd:

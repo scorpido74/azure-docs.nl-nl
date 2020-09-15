@@ -2,13 +2,13 @@
 title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 837344d10e21d20488760f6d5aa4749c039f9b07
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/15/2020
+ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816946"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527340"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -22,14 +22,23 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 **Bijwerken** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
+[Pakket 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [Pakket 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [Pakket 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [Pakket 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | Hyper-v-machines-2.0.9183.0 <br> VMware-machines-2.0.9177.0
 [Pakket 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
-[Pakket 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
+
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
+## <a name="update-september-2020"></a>Update (september 2020)
+
+[Update pakket 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) bevat de volgende updates:
+
+**Bijwerken** | **Details**
+--- | ---
+**Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
 
 ## <a name="updates-august-2020"></a>Updates (augustus 2020)
 
@@ -40,7 +49,7 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 **Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
-**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in het pakket, inclusief nieuwe Linux-ondersteuning voor de Mobility-service.
 
 ## <a name="updates-july-2020"></a>Updates (juli 2020)
 

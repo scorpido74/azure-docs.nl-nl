@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80529527"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527204"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Beveiligings procedures voor fabrikanten van Azure IoT-apparaten
 Naarmate er meer fabrikanten IoT-apparaten vrijgeven, is het handig om hulp te identificeren rond gang bare prak tijken. Dit artikel bevat een overzicht van de aanbevolen beveiligings procedures waarmee u rekening moet houden wanneer u apparaten produceert voor gebruik met Azure IoT Device Provisioning Service (DPS).  
@@ -182,7 +182,7 @@ Een apparaat kan gedurende 6-12 maanden in een magazijn zitten voordat het wordt
 #### <a name="step-5-device-is-installed-into-the-location"></a>Stap 5: het apparaat wordt op de locatie geïnstalleerd
 Wanneer het apparaat op de uiteindelijke locatie arriveert, wordt het geautomatiseerd ingericht met DPS.
 
-Zie voor meer informatie concepten voor het maken van [Provisioning](concepts-auto-provisioning.md) en [TPM-Attestation](concepts-tpm-attestation.md). 
+Zie [inrichten](about-iot-dps.md#provisioning-process) en [TPM-Attestation](concepts-tpm-attestation.md)(Engelstalig) voor meer informatie. 
 
 ## <a name="resources"></a>Resources
 

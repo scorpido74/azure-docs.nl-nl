@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514540"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526558"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -76,7 +76,7 @@ Gegevens die worden verzameld door het Azure Migrate apparaat, worden opgeslagen
 Hier vindt u meer informatie over de manier waarop gegevens worden opgeslagen:
 
 - De verzamelde gegevens worden veilig opgeslagen in CosmosDB in een micro soft-abonnement. De gegevens worden verwijderd wanneer u het Azure Migrate project verwijdert. Opslag wordt verwerkt door Azure Migrate. U kunt niet specifiek een opslag account voor verzamelde gegevens kiezen.
-- Als u [afhankelijkheids visualisatie](concepts-dependency-visualization.md)gebruikt, worden de verzamelde gegevens opgeslagen in de Verenigde Staten in een Azure log Analytics-werk ruimte die in uw Azure-abonnement is gemaakt. De gegevens worden verwijderd wanneer u de Log Analytics-werk ruimte in uw abonnement verwijdert.
+- Als u [afhankelijkheids visualisatie](concepts-dependency-visualization.md)gebruikt, worden de verzamelde gegevens opgeslagen in een Azure log Analytics-werk ruimte die in uw Azure-abonnement is gemaakt. De gegevens worden verwijderd wanneer u de Log Analytics-werk ruimte in uw abonnement verwijdert. 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Hoeveel gegevens worden er geüpload tijdens een doorlopende Profiler?
 

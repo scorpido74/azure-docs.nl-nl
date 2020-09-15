@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068367"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527374"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -35,7 +35,7 @@ Als u Azure ExpressRoute of een VPN-verbinding van uw on-premises netwerk naar A
 
 ![klant-omgeving](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligings groepen (Nsg's). Firewalls gebruiken een URL of IP-gebaseerde white list om de netwerk verbinding te beheren. Nsg's bieden regels die gebruikmaken van IP-adresbereiken voor het beheren van de netwerk verbinding.
+Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligings groepen (Nsg's). Service tags moeten worden gebruikt om de netwerk verbinding te beheren. Nsg's moet verschillende service Tags toestaan om de uitgaande verbinding te beheren.
 
 >[!IMPORTANT]
 > Het gebruik van een geverifieerde proxy voor het beheren van de netwerk verbinding wordt niet ondersteund door Site Recovery en de replicatie kan niet worden ingeschakeld.
@@ -45,6 +45,8 @@ Normaal gesp roken worden netwerken beveiligd met firewalls en netwerk beveiligi
 
 Als u een firewall proxy op basis van een URL gebruikt voor het beheren van uitgaande connectiviteit, kunt u deze Site Recovery Url's toestaan:
 
+>[!NOTE]
+> White List op basis van IP-adressen mogen niet worden uitgevoerd om de uitgaande verbinding te beheren.
 
 **URL** | **Details**
 --- | ---
@@ -63,10 +65,10 @@ Als u een NSG gebruikt om de uitgaande connectiviteit te beheren, moeten deze se
     - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.
     - Sta deze adressen toe zodat gegevens kunnen worden geschreven naar het cache-opslag account van de VM.
 - Een op NSG [(Aad)-service codes](../virtual-network/security-overview.md#service-tags) gebaseerde regel voor Azure Active Directory het maken van toegang tot alle IP-adressen die overeenkomen met Aad toestaan
-- Maak een EventsHub op basis van een NSG-regel voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
-- Maak een AzureSiteRecovery op basis van een NSG-regel voor het toestaan van toegang tot Site Recovery service in een wille keurige regio.
-- Maak een AzureKeyVault op basis van een NSG-regel. Dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE via de portal.
-- Maak een GuestAndHybridManagement op basis van een NSG-regel. Dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal.
+- Maak een NSG-regel op basis van EventsHub-service voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
+- Maak een NSG-regel op basis van AzureSiteRecovery-service voor het toestaan van toegang tot Site Recovery-service in een wille keurige regio.
+- Maak een NSG-regel op basis van AzureKeyVault-service. Dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE via de portal.
+- Maak een NSG-regel op basis van GuestAndHybridManagement-service. Dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal.
 - We raden u aan de vereiste NSG-regels te maken op een test-NSG en te controleren of er geen problemen zijn voordat u de regels op een productie NSG maakt.
 
 ## <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116594"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526949"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
@@ -32,15 +32,15 @@ Dit document is gericht op het inschakelen van op wacht woord gebaseerde verific
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Voor beeld van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md) inschakelen
 - Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
-- Webauthn vereist Windows 10 versie 1809 of hoger * *
+- Webauthn vereist Windows 10 versie 1903 of hoger * *
 
 Als u beveiligings sleutels wilt gebruiken om u aan te melden bij Web-apps en-services, moet u een browser hebben die het webauthn-protocol ondersteunt. Dit zijn onder andere micro soft Edge, Chrome, Firefox en Safari.
 
 ## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden voor de preview-versie
 
-In azure AD gekoppelde apparaten waarvoor u een pilot uitvoert, moeten Windows 10 versie 1809 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
+In azure AD gekoppelde apparaten waarvoor u een pilot uitvoert, moeten Windows 10 versie 1909 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
 
-Voor hybride Azure AD gekoppelde apparaten moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
+Aan hybride Azure AD gekoppelde apparaten moet Windows 10 versie 2004 of nieuwer worden uitgevoerd.
 
 ## <a name="enable-passwordless-authentication-method"></a>Verificatie methode met wacht woord inschakelen
 
@@ -73,7 +73,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met een wacht woord zonder referenties
 
-In het voor beeld onder een gebruiker heeft de FIDO2-beveiligings sleutel al ingericht. De gebruiker kan ervoor kiezen om zich aan te melden op het web met de beveiligings sleutel FIDO2 in een ondersteunde browser in Windows 10 versie 1809 of hoger.
+In het voor beeld onder een gebruiker heeft de FIDO2-beveiligings sleutel al ingericht. De gebruiker kan ervoor kiezen om zich aan te melden op het web met de beveiligings sleutel FIDO2 in een ondersteunde browser in Windows 10 versie 1903 of hoger.
 
 ![Aanmelden voor beveiligings sleutel micro soft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 

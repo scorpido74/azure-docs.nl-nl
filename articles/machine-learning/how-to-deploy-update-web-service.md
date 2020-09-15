@@ -1,20 +1,23 @@
 ---
-title: Een geïmplementeerde webservice bijwerken
-author: gvashishtha
+title: Webservices bijwerken
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het vernieuwen van een webservice die al is geïmplementeerd in Azure Machine Learning
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 354d9b84c614447b6a957a6dba65984f4c97cac3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+author: gvashishtha
+ms.date: 07/31/2020
+ms.openlocfilehash: 52d7c42701e20c16272843a50c6c45847545d747
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645961"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525164"
 ---
 # <a name="update-a-deployed-web-service"></a>Een geïmplementeerde webservice bijwerken
 
-In dit artikel wordt beschreven hoe u een webservice implementeert die is geïmplementeerd met Azure Machine Learning.
+In dit artikel leert u hoe u een webservice bijwerkt die is geïmplementeerd met Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Vereisten
 

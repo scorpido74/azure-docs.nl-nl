@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224914"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526898"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Azure Multi-Factor Authentication met verouderde toepassingen inschakelen en gebruiken met behulp van app-wacht woorden
 
-Sommige toepassingen, zoals Office 2010 of eerder en Apple mail vóór iOS 11, bieden geen ondersteuning voor multi-factor Authentication. De apps zijn niet geconfigureerd om een tweede vorm van verificatie of prompt te accepteren. Als u deze toepassingen op een veilige manier wilt gebruiken met Azure Multi-Factor Authentication ingeschakeld voor gebruikers accounts, kunt u app-wacht woorden gebruiken. Met deze app-wacht woorden is het traditionele wacht woord vervangen zodat een app multi-factor Authentication omzeilt en goed werkt.
+Sommige oudere, niet-browser-apps, zoals Office 2010 of eerder en Apple mail vóór iOS 11, begrijpen onderbrekingen of onderbrekingen in het verificatie proces niet. Als een gebruiker is ingeschakeld voor Azure Multi-Factor Authentication en probeert een van deze oudere, niet-browser-apps te gebruiken, kunnen ze niet goed worden geverifieerd. Als u deze toepassingen op een veilige manier wilt gebruiken met Azure Multi-Factor Authentication ingeschakeld voor gebruikers accounts, kunt u app-wacht woorden gebruiken. Met deze app-wacht woorden is het traditionele wacht woord vervangen zodat een app multi-factor Authentication omzeilt en goed werkt.
 
 Moderne verificatie wordt ondersteund voor de Microsoft Office 2013-clients en hoger. Office 2013-clients, waaronder Outlook, ondersteunen moderne verificatie protocollen en kunnen worden ingeschakeld om te werken met verificatie in twee stappen. Nadat de client is ingeschakeld, zijn app-wacht woorden niet vereist voor de client.
 
@@ -83,7 +83,7 @@ In dit scenario gebruikt u de volgende referenties:
 
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld voordat gebruikers deze kunnen gebruiken. Voer de volgende stappen uit om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
 3. Selecteer **multi-factor Authentication** in de navigatie balk aan de bovenkant van het venster *gebruikers* .
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.

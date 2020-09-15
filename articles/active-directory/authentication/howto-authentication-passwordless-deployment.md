@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717146"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527000"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
 
@@ -160,7 +160,7 @@ U moet **compatibele FIDO2-beveiligings sleutels**inschakelen. Micro soft introd
 -    Windows 10 versie 1809 biedt ondersteuning voor FIDO2-aanmelding en vereist mogelijk software van de fabrikant van de FIDO2-sleutel die moet worden geïmplementeerd. U wordt aangeraden versie 1903 of hoger te gebruiken. 
 
 **Voor hybride Azure Active Directory apparaten die lid zijn van een domein**: 
--    Windows 10 Insider build 18945 of hoger
+-    Windows 10 versie 2004 of hoger
 -    Volledige patches van domein servers met Windows Server 2016 of 2019.
 -    Nieuwste versie van Azure AD Connect
 
@@ -294,7 +294,7 @@ Volg de stappen die zijn afgestemd op de gekozen methode.
 
 | Azure AD-rol | Beschrijving |
 | --- | --- |
-| Globale beheerder|De rol met minimale bevoegdheden om gecombineerde registratie-ervaring te kunnen implementeren. |
+| Hoofdbeheerder|De rol met minimale bevoegdheden om gecombineerde registratie-ervaring te kunnen implementeren. |
 | Verificatie beheerder | De functie voor de minste bevoegdheden waarmee verificatie methoden kunnen worden geïmplementeerd en beheerd. |
 | Gebruiker | De minst privileged Role voor het configureren van de verificator-app op het apparaat of voor het inschrijven van een beveiligings sleutel apparaat voor web-of Windows 10-aanmelding. |
 

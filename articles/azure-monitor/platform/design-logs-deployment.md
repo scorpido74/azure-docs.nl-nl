@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551319"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527306"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
-Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een log Analytics-werk ruimte, een Azure-resource en een container waarin gegevens worden verzameld, geaggregeerd en fungeert als een administratieve grens. Hoewel u een of meer werk ruimten in uw Azure-abonnement kunt implementeren, zijn er verschillende overwegingen die u moet begrijpen om ervoor te zorgen dat uw eerste implementatie voldoet aan onze richt lijnen om u een kosteneffectieve, beheersbare en schaal bare implementatie te bieden die aan uw organisatie behoeften voldoet.
+Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een log Analytics-werk ruimte, een Azure-resource en een container waarin gegevens worden verzameld, geaggregeerd en fungeert als een administratieve grens. Hoewel u een of meer werk ruimten in uw Azure-abonnement kunt implementeren, zijn er verschillende overwegingen die u moet begrijpen om ervoor te zorgen dat uw eerste implementatie voldoet aan onze richt lijnen om u te voorzien van een kosteneffectieve, beheersbare en schaal bare implementatie die voldoet aan de behoeften van uw organisatie.
 
 Gegevens in een werk ruimte zijn ingedeeld in tabellen, die elk verschillende soorten gegevens opslaan en een eigen unieke set eigenschappen hebben op basis van de resource waarmee de gegevens worden gegenereerd. De meeste gegevens bronnen schrijven naar hun eigen tabellen in een Log Analytics-werk ruimte.
 
@@ -127,11 +127,11 @@ Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-co
 
 ## <a name="ingestion-volume-rate-limit"></a>Frequentie limiet opname volume
 
-Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor de volume frequentie is om Azure Monitor klanten te isoleren van onverwachte opname pieken in een multitenancy. Een standaard waarde voor opname volume snelheid van 500 MB (gecomprimeerd) wordt gedefinieerd in werk ruimten. dit wordt omgezet in ongeveer **6 GB/min** ongecomprimeerd. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. De limiet voor volume frequentie is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents.
+Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor het opnamevolume moet de klanten van Azure Monitor isoleren tegen plotselinge opnamepieken in een multitenancy-omgeving. Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume gedefenieerd in werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze volumebeperking geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](diagnostic-settings.md), [Gegevensverzamelaar-API](data-collector-api.md) of agents.
 
-Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze te verg Roten door een ondersteunings aanvraag te openen. 
+Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging aanvragen door een ondersteuningsaanvraag te openen. 
 
-Als u op de hoogte wilt worden gesteld van de limiet voor de snelheid van het opname volume in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met een waarschuwing Logic Base op basis van het aantal resultaten dat beslag is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
+Als u een melding wilt ontvangen over de snelheids limiet voor opname volumes in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met een waarschuwing Logic Base op het aantal resultaten dat groter is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
 
 Het opnamevolume heeft 80 % van de drempel bereikt:
 ```Kusto
@@ -152,9 +152,9 @@ Operation
 
 ![Voor beeld van resource-context ontwerp](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 
-Dit scenario heeft betrekking op één werkruimte ontwerp in uw IT-organisatie abonnement dat niet wordt beperkt door de gegevens soevereiniteit of de naleving van de regelgeving, of moet worden toegewezen aan de regio's waar uw resources in worden geïmplementeerd. Hiermee kunnen uw organisaties beveiliging en IT-beheerders teams gebruikmaken van de verbeterde integratie met Azure Access Management en veiligere toegangs beheer.
+Dit scenario heeft betrekking op één werkruimte ontwerp in het abonnement van uw IT-organisatie dat niet wordt beperkt door de gegevens soevereiniteit of de naleving van de regelgeving, of moet worden toegewezen aan de regio's waar uw resources in worden geïmplementeerd. Zo kunnen de beveiligings-en IT-beheerders teams van uw organisatie gebruikmaken van de verbeterde integratie met Azure Access Management en meer beveiligd toegangs beheer.
 
-Alle resources, bewakings oplossingen en inzichten zoals Application Insights en Azure Monitor voor VM's, ondersteunende infra structuur en toepassingen die worden onderhouden door de verschillende teams, zijn geconfigureerd om hun verzamelde logboek gegevens door te sturen naar de gecentraliseerde gedeelde werk ruimte van IT-organisaties. Gebruikers van elk team krijgen toegang tot logboeken voor bronnen waartoe ze toegang hebben gekregen.
+Alle resources, bewakings oplossingen en inzichten zoals Application Insights en Azure Monitor voor VM's, ondersteunende infra structuur en toepassingen die worden onderhouden door de verschillende teams, zijn geconfigureerd om hun verzamelde logboek gegevens door te sturen naar de gecentraliseerde gedeelde werk ruimte van de IT-organisatie. Gebruikers van elk team krijgen toegang tot logboeken voor bronnen waartoe ze toegang hebben gekregen.
 
 Wanneer u uw werkruimte architectuur hebt geïmplementeerd, kunt u dit afdwingen op Azure-resources met [Azure Policy](../../governance/policy/overview.md). Het biedt een manier om beleid te definiëren en te controleren op naleving van uw Azure-resources, zodat ze al hun resource logboeken naar een bepaalde werk ruimte verzenden. Met virtuele machines of virtuele-machine schaal sets van Azure kunt u bijvoorbeeld bestaande beleids regels gebruiken om de naleving van de werk ruimte te evalueren en resultaten te rapporteren, of om te herstellen als deze niet compatibel is.  
 

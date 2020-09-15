@@ -3,12 +3,12 @@ title: Abonnementen Azure Event Grid via de portal
 description: In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt voor de ondersteunde bronnen, zoals Azure Blob Storage, door gebruik te maken van de Azure Portal.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119987"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526456"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonneren op gebeurtenissen via de portal
 
@@ -18,13 +18,13 @@ In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt via de porta
 
 Als u een Event Grid-abonnement wilt maken voor een van de ondersteunde [gebeurtenis bronnen](overview.md#event-sources), gebruikt u de volgende stappen. In dit artikel wordt beschreven hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
    ![Alle services selecteren](./media/subscribe-through-portal/select-all-services.png)
 
 1. Zoek naar **Event grid-abonnementen** en selecteer deze in de beschik bare opties.
 
-   ![Zoeken](./media/subscribe-through-portal/search.png)
+   ![Scherm opname toont de zoek opdracht in de Azure Portal met Event Grid abonnementen die zijn geselecteerd.](./media/subscribe-through-portal/search.png)
 
 1. Selecteer **+ Gebeurtenisabonnement**.
 

@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d5f239540a74c431e381c581f00514a1f7acd5e3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030377"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526473"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -140,7 +140,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality of Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Meer informatie
+Lees meer
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.
@@ -149,7 +149,7 @@ Meer informatie
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft-logo](./media/partners/moogsoft.png)
 
 Moogsoft AIOps versnelt de flexibele zakelijke trans formatie.
 

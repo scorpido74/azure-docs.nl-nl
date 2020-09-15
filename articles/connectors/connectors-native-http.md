@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226423"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526740"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps
 
@@ -44,7 +44,7 @@ Voor informatie over versleuteling, beveiliging en autorisatie voor uitgaande op
 
 Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een eind punt en retourneert een antwoord.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak `http` als uw filter in. Selecteer in de lijst **Triggers** de **http-** trigger.
 
@@ -73,7 +73,7 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een eind punt gemaakt en wordt een antwoord geretourneerd.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-trigger als eerste stap gebruikt.
 
@@ -167,6 +167,14 @@ Hier volgt hetzelfde voor beeld waarin de JSON-definitie van de HTTP-actie in de
    "type": "Http"
 }
 ```
+
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Inhoud met Application/x-www-form-urlencoded type
+
+Om formulier-urlencoded gegevens in de hoofd tekst van een HTTP-aanvraag te bieden, moet u opgeven dat de gegevens het `application/x-www-form-urlencoded` inhouds type hebben. Voeg de header toe aan de HTTP-trigger of actie `content-type` . Stel de waarde voor de header in op `application/x-www-form-urlencoded` .
+
+Stel bijvoorbeeld dat u een logische app hebt die een HTTP POST-aanvraag verzendt naar een website die het type ondersteunt `application/x-www-form-urlencoded` . Deze actie kan er als volgt uitzien:
+
+![Scherm afbeelding met een HTTP-aanvraag waarbij de header content-type is ingesteld op Application/x-www-form-urlencoded](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -263,4 +271,3 @@ Zie de volgende secties voor meer informatie over trigger-en actie parameters:
 
 * [Beveiligde toegang en gegevens toegang voor uitgaande oproepen naar andere services en systemen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [Connectors voor Logic Apps](../connectors/apis-list.md)
-

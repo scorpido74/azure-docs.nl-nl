@@ -4,12 +4,12 @@ description: Een Node.js consoletoepassing schrijven voor websockets voor hybrid
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386296"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527408"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Aan de slag met WebSockets voor hybride verbindingen in Azure Relay in Node.js
 
@@ -52,7 +52,7 @@ Maak een Node.js-consoletoepassing om berichten naar de Relay te verzenden.
 2. Voer de clienttoepassing uit: via een Node.js-opdrachtprompt van het type `node sender.js`, en voer tekst in.
 3. Zorg ervoor dat de servertoepassingsconsole de tekst uitvoert die in de clienttoepassing is ingevoerd.
 
-    ![actieve-toepassingen](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![Console vensters testen zowel de server-als client toepassingen.](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Gefeliciteerd, u hebt een end-to-endtoepassing met hybride verbindingen gemaakt met behulp van Node.js!
 

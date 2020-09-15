@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435147"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526524"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -79,7 +79,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
    Sommige triggers, zoals het **tijdstip waarop een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** , kunnen een of meer berichten retour neren. Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal berichten** van de trigger.
 
     > [!NOTE]
-    > Met de trigger automatisch aanvullen wordt een bericht automatisch voltooid, maar de voltooiing wordt alleen uitgevoerd bij de volgende trigger. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Als u bijvoorbeeld de trigger voor automatisch aanvullen instelt om elke minuut op berichten te controleren, maar de duur van de vergren deling is ingesteld op 30 seconden aan Service Bus zijde, is het resultaat een ' lock expired-fout die optreedt bij het volt ooien van het bericht. U moet de vergrendelings duur instellen op een waarde die langer is dan het polling-interval.
+    > Met de trigger automatisch aanvullen wordt een bericht automatisch voltooid, maar de voltooiing wordt alleen uitgevoerd bij de volgende trigger. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Vermijd het wijzigen van de gelijktijdigheid van de trigger voor automatisch aanvullen, omdat deze wijziging kan leiden tot dubbele berichten als de logische app een vertraagde status krijgt. Het wijzigen van het gelijktijdigheids beheer heeft de volgende voor waarden: beperkte triggers worden overgeslagen met de `WorkflowRunInProgress` code, de voltooiings bewerking vindt niet plaats en de volgende trigger wordt uitgevoerd na het polling-interval. U moet de vergrendelings duur van de service bus instellen op een waarde die langer is dan het polling-interval. Ondanks deze instelling kan het bericht echter nog steeds niet worden voltooid als uw logische app in een vertragings status bij het volgende polling-interval blijft.
 
 1. Als uw trigger voor de eerste keer verbinding maakt met uw Service Bus-naam ruimte, voert u de volgende stappen uit wanneer de ontwerp functie voor logische apps u om verbindings informatie vraagt.
 

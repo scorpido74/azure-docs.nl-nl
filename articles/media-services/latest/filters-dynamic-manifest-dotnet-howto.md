@@ -1,6 +1,6 @@
 ---
 title: Filters maken met Azure Media Services v3 .NET SDK
-description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stroom te streamen. Media Services maakt dynamische manifesten om deze selectief streaming te verzorgen.
+description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stroom te streamen. Media Services v3 .NET SDK maakt dynamische manifesten om deze selectief streaming te verzorgen.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2a392ab5301a51edff1df88596f2fe68d85ea63
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9f54a505d63660fb7c97b3226df4c232e48125e1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266711"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527357"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK
 

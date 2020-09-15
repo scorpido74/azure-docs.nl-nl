@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500621"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526337"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyper Space-een subsysteem voor indexering voor Apache Spark
 
@@ -392,7 +392,8 @@ Een Spark-data frame die verwijst naar de gegevens die moeten worden geïndexeer
 Een index configuratie object: IndexConfig, waarmee de index naam, geïndexeerde en opgenomen kolommen van de index worden opgegeven.
 U begint met het maken van drie Hyper Space-indexen op basis van de voorbeeld gegevens: twee indexen op de afdelings-gegevensset met de naam ' deptIndex1 ' en ' deptIndex2 ', en één index voor de werknemers gegevensverzameling met de naam ' empIndex '. Voor elke index hebt u een bijbehorende IndexConfig nodig om de naam samen met kolommen lijsten voor de geïndexeerde en opgenomen kolommen vast te leggen. Als u de onderstaande cel uitvoert, worden deze indexConfigs en de bijbehorende uitvoer weer gegeven.
 
-Opmerking: een index kolom is een kolom die wordt weer gegeven in de filters of de voor waarden voor samen voegen. Een opgenomen kolom is een kolom die wordt weer gegeven in uw SELECT/project.
+> [!Note]
+> Een index kolom is een kolom die wordt weer gegeven in de filters of de voor waarden voor samen voegen. Een opgenomen kolom is een kolom die wordt weer gegeven in uw SELECT/project.
 
 Bijvoorbeeld in de volgende query:
 
@@ -508,8 +509,9 @@ De onderstaande code laat zien hoe u alle beschik bare indexen in een Hyper Spac
 
 Onder cel gebruikt de actie ' weer geven ' van data frame om de rijen volledig af te drukken en de details van de indexen in een tabel vorm weer te geven. Voor elke index kunt u alle informatie-Hyper-in de meta gegevens opslaan. U ziet dan onmiddellijk het volgende:
 
-"config. indexnaam", "config. indexedColumns", "config. includedColumns" en "status. status" zijn de velden waarnaar een gebruiker normaal gesp roken verwijst.
-dfSignature wordt automatisch gegenereerd door Hyper Space en is uniek voor elke index. Hyper Space gebruikt deze hand tekening intern voor het onderhouden van de index en om deze te gebruiken op het moment van de query.
+* "config. indexnaam", "config. indexedColumns", "config. includedColumns" en "status. status" zijn de velden waarnaar een gebruiker normaal gesp roken verwijst.
+* dfSignature wordt automatisch gegenereerd door Hyper Space en is uniek voor elke index. Hyper Space gebruikt deze hand tekening intern voor het onderhouden van de index en om deze te gebruiken op het moment van de query.
+
 In de onderstaande uitvoer moeten alle drie de indexen ' actief ' hebben als status en hun naam, geïndexeerde kolommen en opgenomen kolommen moeten overeenkomen met wat we hebben gedefinieerd in de bovenstaande index configuraties.
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;Alleen bovenste vijf rijen &nbsp; weer gegeven&nbsp;
+&nbsp;&nbsp;Hiermee worden alleen de bovenste vijf rijen &nbsp; weer gegeven&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ Als de oorspronkelijke gegevens waarop een index is gemaakt, worden gewijzigd, w
 
 In de twee cellen hieronder ziet u een voor beeld van dit scenario:
 
-Eerste cel voegt twee meer afdelingen toe aan de gegevens van de oorspronkelijke kosten plaatsen. Er wordt een lijst met afdelingen gelezen en afgedrukt om te controleren of nieuwe afdelingen correct worden toegevoegd. In de uitvoer ziet u zes afdelingen in totaal: vier oude en twee nieuwe. Het aanroepen van "refreshIndex"-updates "deptIndex1", dus de index legt nieuwe afdelingen vast.
-In de tweede cel wordt het bereik selectie query voor beeld uitgevoerd. De resultaten moeten nu vier afdelingen bevatten: twee de volgende afdelingen, gezien vóór wanneer we de bovenstaande query hebben uitgevoerd, en twee de nieuwe afdeling die we zojuist hebben toegevoegd.
+* Eerste cel voegt twee meer afdelingen toe aan de gegevens van de oorspronkelijke kosten plaatsen. Er wordt een lijst met afdelingen gelezen en afgedrukt om te controleren of nieuwe afdelingen correct worden toegevoegd. In de uitvoer ziet u zes afdelingen in totaal: vier oude en twee nieuwe. Het aanroepen van "refreshIndex"-updates "deptIndex1", dus de index legt nieuwe afdelingen vast.
+* In de tweede cel wordt het bereik selectie query voor beeld uitgevoerd. De resultaten moeten nu vier afdelingen bevatten: twee de volgende afdelingen, gezien vóór wanneer we de bovenstaande query hebben uitgevoerd, en twee de nieuwe afdeling die we zojuist hebben toegevoegd.
 
 ### <a name="specific-index-refresh"></a>Specifieke index vernieuwen
 

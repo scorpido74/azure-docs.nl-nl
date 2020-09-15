@@ -3,12 +3,12 @@ title: Waarschuwingen voor activiteiten logboeken maken voor Labs in Azure DevTe
 description: In dit artikel worden de stappen beschreven voor het maken van waarschuwingen voor het activiteiten logboek voor Lab in Azure DevTest Labs.
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6c859e70ab8a101c533e16f9cb118e26727baa52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5886ea26ddbeb07efc23d61d3197860620eebf3
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097239"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526354"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Waarschuwingen voor activiteiten logboeken maken voor Labs in Azure DevTest Labs
 In dit artikel wordt uitgelegd hoe u waarschuwingen voor activiteiten logboeken voor Labs maakt in Azure DevTest Labs (bijvoorbeeld: wanneer een virtuele machine wordt gemaakt of wanneer een virtuele machine wordt verwijderd).
@@ -16,7 +16,7 @@ In dit artikel wordt uitgelegd hoe u waarschuwingen voor activiteiten logboeken 
 ## <a name="create-alerts"></a>Waarschuwingen maken
 In dit voor beeld maakt u een waarschuwing voor alle beheer bewerkingen op een Lab met een actie waarmee een e-mail wordt verzonden naar abonnements eigenaren. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Typ **monitor**in de zoek balk van de Azure Portal en selecteer vervolgens **monitor** in de lijst met resultaten. 
 
     :::image type="content" source="./media/activity-logs/search-monitor.png" alt-text="Zoeken naar monitor":::        
@@ -64,7 +64,7 @@ In dit voor beeld maakt u een waarschuwing voor alle beheer bewerkingen op een L
 ## <a name="view-alerts"></a>Waarschuwingen weergeven 
 1. In dit voor beeld worden waarschuwingen weer geven over de **waarschuwingen** voor alle beheer bewerkingen. Waarschuwingen kunnen ergens worden weer gegeven. 
 
-    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="Waarschuwingen":::
+    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="Scherm opname bevat waarschuwingen in het dash board.":::
 1. Als u in een kolom getal selecteert (bijvoorbeeld: **Totaal aantal waarschuwingen**), ziet u de waarschuwingen die zijn gegenereerd. 
 
     :::image type="content" source="./media/activity-logs/all-alerts.png" alt-text="Alle waarschuwingen":::
@@ -77,6 +77,6 @@ In dit voor beeld maakt u een waarschuwing voor alle beheer bewerkingen op een L
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie voor meer informatie over het maken van actie groepen met behulp van verschillende actie typen [actie groepen maken en beheren in de Azure Portal](../azure-monitor/platform/action-groups.md).
-- Zie [Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)voor meer informatie over activiteiten Logboeken.
+- Zie  [Azure-activiteiten logboek](../azure-monitor/platform/activity-log.md)voor meer informatie over activiteiten Logboeken.
 - Zie [waarschuwingen in het activiteiten logboek](../azure-monitor/platform/activity-log-alerts.md)voor meer informatie over het instellen van waarschuwingen voor activiteiten Logboeken.
 

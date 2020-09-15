@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717962"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526983"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
 
 Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wacht woorden met Windows 10-apparaten. Aan het einde van dit artikel kunt u zich aanmelden bij uw Azure AD-en hybride Azure AD Windows 10-apparaten met uw Azure AD-account met behulp van een FIDO2-beveiligings sleutel.
 
 > [!NOTE]
-> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie  [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -32,8 +32,8 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 | [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md) | X | X |
 | Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| Webauthn vereist Windows 10 versie 1809 of hoger | X | X |
-| Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1903 of hoger vereist | X |   |
+| Webauthn vereist Windows 10 versie 1903 of hoger | X | X |
+| Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1909 of hoger vereist | X |   |
 | Voor [hybride apparaten die zijn toegevoegd aan Azure AD](../devices/concept-azure-ad-join-hybrid.md) is Windows 10 versie 2004 of hoger vereist |   | X |
 | Volledige patches voor Windows Server 2016/2019-domein controllers. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) versie 1.4.32.0 of hoger |   | X |
@@ -56,7 +56,7 @@ De volgende scenario's worden niet ondersteund:
 
 ## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden voor de preview-versie
 
-Aan Azure AD gekoppelde apparaten die u tijdens de preview-versie van de functie test, moeten Windows 10-versies 1809 of hoger uitvoeren. De beste ervaring is met Windows 10 versie 1903 of hoger.
+Aan Azure AD gekoppelde apparaten die u tijdens de preview-versie van de functie test, moeten Windows 10-versies 1909 of hoger uitvoeren.
 
 Aan hybride Azure AD gekoppelde apparaten moet Windows 10 versie 2004 of nieuwer worden uitgevoerd.
 
@@ -125,7 +125,7 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Als u het inrichtings pakket wilt Toep assen dat u hebt gemaakt, raadpleegt u [een inrichtings pakket Toep assen](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Op apparaten met Windows 10 versie 1809 moet ook de modus gedeelde PC (*EnableSharedPCMode*) worden ingeschakeld. Zie [een gedeelde of gast computer instellen met Windows 10](/windows/configuration/set-up-shared-or-guest-pc)voor meer informatie over het inschakelen van deze functionaliteit.
+> Op apparaten met Windows 10 versie 1903 moet ook de modus gedeelde PC (*EnableSharedPCMode*) worden ingeschakeld. Zie [een gedeelde of gast computer instellen met Windows 10](/windows/configuration/set-up-shared-or-guest-pc)voor meer informatie over het inschakelen van deze functionaliteit.
 
 ### <a name="enable-with-group-policy"></a>Inschakelen met groepsbeleid
 

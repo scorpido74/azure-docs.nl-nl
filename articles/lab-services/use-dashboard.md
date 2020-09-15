@@ -3,17 +3,17 @@ title: Dash board gebruiken voor een leslokaal Lab in Azure Lab Services | Micro
 description: Meer informatie over het gebruik van Dash boards voor een leslokaal Lab in Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4e59917aa385a344d79a62441e208df970f42285
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 607a3e7faaae65adb67afc0ab0ffd5698adf4655
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444315"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528258"
 ---
 # <a name="dashboard-for-classroom-labs"></a>Dash board voor klassikale Labs
 In dit artikel wordt de dashboard weergave van een leslokaal Lab in Azure Lab Services beschreven. 
 
-![Dashboard](./media/use-dashboard/dashboard.png)
+![Scherm capature toont de dashboard weergave van een leslokaal Lab in Azure Lab Services.](./media/use-dashboard/dashboard.png)
 
 ## <a name="costs-and-billing-tile"></a>Tegel kosten en facturering
 Deze tegel biedt de volgende details van de kosten raming:

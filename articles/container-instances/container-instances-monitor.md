@@ -3,12 +3,12 @@ title: Container instanties bewaken
 description: Het gebruik van reken resources zoals CPU en geheugen door uw containers in Azure Container Instances bewaken.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116364"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526694"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Containerresources in Azure Container Instances bewaken
 
@@ -44,7 +44,7 @@ Gebruik in een container groep die meerdere containers bevat een [dimensie][moni
 1. Selecteer op de pagina **overzicht** een van de metrische grafieken, zoals **CPU**. 
 1. Selecteer de knop **splitsing Toep assen** en selecteer **container naam**.
 
-![dimensie][dimension]
+![Scherm opname toont de metrische gegevens voor een container exemplaar waarvoor splitsen en geselecteerde container naam Toep assen zijn geselecteerd.][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Metrische gegevens ophalen - Azure CLI
 

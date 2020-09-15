@@ -4,12 +4,12 @@ description: Een C#-console toepassing schrijven voor Azure Relay Hybride verbin
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934256"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527425"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Aan de slag met websockets voor hybride verbindingen in Azure Relay in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,7 +52,7 @@ Maak in Visual Studio een C#-consoletoepassing om berichten naar de Relay te stu
 2. Voer de clienttoepassing uit en voer wat tekst in.
 3. Zorg ervoor dat de servertoepassingsconsole de tekst weergeeft die in de clienttoepassing is ingevoerd.
 
-    ![actieve-toepassingen](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![Console vensters testen zowel de server-als client toepassingen.](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 Gefeliciteerd, u hebt een complete Hybride verbindingen-toepassing gemaakt.
 

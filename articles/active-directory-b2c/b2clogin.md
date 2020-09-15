@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005341"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524977"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Omleidings-Url's instellen op b2clogin.com voor Azure Active Directory B2C
 
-Wanneer u een id-provider voor registratie instelt en u zich aanmeldt in uw Azure Active Directory B2C-toepassing (Azure AD B2C), moet u een omleidings-URL opgeven. U moet niet langer verwijzen naar *login.microsoftonline.com* in uw toepassingen en api's. Gebruik in plaats daarvan *b2clogin.com* voor alle nieuwe toepassingen en migreer bestaande toepassingen van *login.microsoftonline.com* naar *b2clogin.com*.
+Wanneer u een id-provider voor registratie instelt en u zich aanmeldt in uw Azure Active Directory B2C-toepassing (Azure AD B2C), moet u een omleidings-URL opgeven. U moet niet langer verwijzen naar *login.microsoftonline.com* in uw toepassingen en api's voor het verifiëren van gebruikers met Azure AD B2C. Gebruik in plaats daarvan *b2clogin.com* voor alle nieuwe toepassingen en migreer bestaande toepassingen van *login.microsoftonline.com* naar *b2clogin.com*.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Afschaffing van login.microsoftonline.com
 
@@ -31,6 +31,23 @@ Op 04 december 2019 zijn de geplande login.microsoftonline.com-ondersteuning in 
 De afschaffing van login.microsoftonline.com gaat in van kracht voor alle Azure AD B2C tenants op 04 december 2020, waardoor bestaande tenants één (1) jaar kunnen worden gemigreerd naar b2clogin.com. Nieuwe tenants die zijn gemaakt na 04 december 2019, accepteren geen aanvragen van login.microsoftonline.com. Alle functionaliteit blijft hetzelfde op het b2clogin.com-eind punt.
 
 De afschaffing van login.microsoftonline.com heeft geen invloed op Azure Active Directory tenants. Deze wijziging is alleen van invloed op Azure Active Directory B2C tenants.
+
+## <a name="what-endpoints-does-this-apply-to"></a>Op welke eind punten is dit van toepassing
+De overgang naar b2clogin.com is alleen van toepassing op verificatie-eind punten die gebruikmaken van Azure AD B2C beleid (gebruikers stromen of aangepaste beleids regels) om gebruikers te verifiëren. Deze eind punten hebben een `<policy-name>` para meter waarmee het beleid wordt opgegeven Azure AD B2C moet worden gebruikt. Meer [informatie over Azure AD B2C-beleid](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
+
+Deze eind punten kunnen er als volgt uitzien:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/authorize</code>
+
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/token</code>
+
+Het `<policy-name>` kan ook worden door gegeven als een query parameter:
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/authorize?<b>p=\<policy-name\></b></code>
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/token?<b>p=\<policy-name\></b></code>
+
+> [!IMPORTANT]
+> Eind punten die gebruikmaken van de para meter ' beleid ' moeten worden bijgewerkt, evenals de [omleidings-url's](#change-identity-provider-redirect-urls)voor de ID-provider.
+
+Sommige Azure AD B2C klanten gebruiken de gedeelde mogelijkheden van Azure AD-ondernemings-tenants, zoals OAuth 2,0-client referenties toewijzen stroom. Deze functies zijn toegankelijk via de login.microsoftonline.com-eind punten van Azure AD, *die geen beleids parameter bevatten*. __Deze eind punten worden niet beïnvloed__.
 
 ## <a name="benefits-of-b2clogincom"></a>Voor delen van b2clogin.com
 
@@ -45,8 +62,15 @@ Wanneer u *b2clogin.com* als omleidings-URL gebruikt:
 Er zijn verschillende wijzigingen die u mogelijk moet maken om uw toepassingen te migreren naar *b2clogin.com*:
 
 * Wijzig de omleidings-URL in de toepassingen van uw identiteits provider om naar *b2clogin.com*te verwijzen.
-* Werk uw Azure AD B2C-toepassingen bij om *b2clogin.com* in hun gebruikers stroom en Token-eindpunt verwijzingen te gebruiken.
+* Werk uw Azure AD B2C-toepassingen bij om *b2clogin.com* in hun gebruikers stroom en Token-eindpunt verwijzingen te gebruiken. Dit kan ook het bijwerken van uw gebruik van een verificatie bibliotheek zoals micro soft Authentication Library (MSAL) zijn.
 * Werk alle **toegestane oorsprongen** bij die u hebt gedefinieerd in de CORS-instellingen voor het aanpassen van de [gebruikers interface](custom-policy-ui-customization.md).
+
+Een oud eind punt kan er als volgt uitzien:
+- <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
+Een bijbehorend bijgewerkt eind punt ziet er als volgt uit:
+- <code><b>https://\<tenant-name\>.b2clogin.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
 
 ## <a name="change-identity-provider-redirect-urls"></a>Omleidings-Url's voor de ID-provider wijzigen
 
@@ -66,7 +90,7 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Voor beide indelingen:
 
-* Vervang door `{your-tenant-name}` de naam van uw Azure AD B2C-Tenant.
+* Vervang `{your-tenant-name}` door de naam van uw Azure AD B2C-tenant.
 * Verwijderen `/te` als deze bestaat in de URL.
 
 ## <a name="update-your-applications-and-apis"></a>Uw toepassingen en Api's bijwerken

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669225"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524994"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Bron machine voorbereiden voor de push-installatie van de Mobility-agent
 
@@ -63,7 +63,7 @@ Ga als volgt te werk op elke Linux-computer die u wilt beveiligen:
 11. Klik op het tabblad **accounts beheren** op **account toevoegen**.
 12. Voeg het account toe dat u hebt gemaakt.
 13. Voer de referenties in die u gebruikt wanneer u replicatie voor een computer inschakelt.
-1. Extra stap voor het bijwerken of beveiligen van SUSE Linux Enterprise Server 11 SP3-machines. [Zorg ervoor dat de meest recente versie beschikbaar is op de configuratie server](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+1. Extra stap voor het bijwerken of beveiligen van SUSE Linux Enterprise Server 11 SP3-of RHEL 5-of CentOS 5-of Debian 7-machines. [Zorg ervoor dat de meest recente versie beschikbaar is op de configuratie server](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Anti-virus op gerepliceerde computers
 

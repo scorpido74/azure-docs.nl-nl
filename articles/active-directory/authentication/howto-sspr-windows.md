@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a6013ed47196e2300f56f0066c634da2a64fdee8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717349"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526864"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Schakel Azure Active Directory selfservice voor wachtwoord herstel in op het Windows-aanmeldings scherm
 
@@ -40,7 +40,7 @@ De volgende beperkingen zijn van toepassing op het gebruik van SSPR in het Windo
 - Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan. Dit betekent dat apparaten op het interne netwerk van de organisatie of op een VPN met netwerk toegang tot een on-premises domein controller moeten zijn.
 - Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - De volgende instellingen zijn bekend om te voor komen dat wacht woorden op Windows 10-apparaten kunnen worden gebruikt en opnieuw worden ingesteld:
-    - Als Ctrl + Alt + del is vereist voor het beleid in versies van Windows 10 vóór v1809, werkt **wacht woord opnieuw instellen** niet.
+    - Als Ctrl + Alt + del is vereist voor het beleid in versies van Windows 10 vóór v1909, werkt **wacht woord opnieuw instellen** niet.
     - Als er meldingen op het vergrendelings scherm zijn uitgeschakeld, werkt **wacht woord opnieuw instellen** niet.
     - *HideFastUserSwitching* is ingesteld op ingeschakeld of 1
     - *DontDisplayLastUserName* is ingesteld op ingeschakeld of 1
