@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100742"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567806"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Veelgestelde vragen over Azure Dev Tools for Teaching
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Veelgestelde vragen over de Education Hub
 
 In dit artikel vindt u veelgestelde vragen en de bijbehorende antwoorden over Azure for Students, Azure for Students Starter en Azure Dev Tools for Teaching.
 
@@ -152,6 +152,11 @@ Azure-cursustegoed kunt u alleen toepassen voor het gebruik vanaf het moment dat
 Als u een specifiek abonnement op de blade Abonnementen in de Azure-portal bekijkt, ziet u **Naam van aanbieding** als een van de eigenschappen. De naam van de aanbieding is **Azure Sponsorship** als deze is gekoppeld aan uw cursustegoed. Als **Azure Sponsorship** niet wordt weergegeven, neemt u contact op met de ondersteuning om het te laten omzetten.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Wie komt in aanmerking om Microsoft Azure Dev Tools for Teaching te kopen?
+
+Alleen academische instellingen die een VL-overeenkomst (Volume Licensing) bij Microsoft hebben gekocht, kunnen zich inschrijven voor Azure Dev Tools for Teaching.  Als u momenteel een klant van Dev Tools for Teaching zonder een VL-overeenkomst bent, kunt u uw abonnement verlengen. Voor meer informatie over VL-overeenkomsten voor academische instellingen gaat u naar https://aka.ms/ees 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Welke producten maken deel uit van het Microsoft Azure Dev Tools for Teaching-abonnement?
 

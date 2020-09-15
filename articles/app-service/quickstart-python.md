@@ -2,20 +2,21 @@
 title: 'Quickstart: Een Python-app maken'
 description: Ga aan de slag met Azure App Service door uw eerste Python-app te implementeren in een Linux-container in App Service.
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 3bfe927b2c9dc16de8712f6c1793e850df92c201
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078449"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568911"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Quickstart: Een Python-app maken in Azure App Service op Linux
 
 In deze quickstart implementeert u een Python-web-app op [App Service op Linux](overview.md#app-service-on-linux), een uiterst schaalbare webhostingservice van Azure. U gebruikt de lokale [Azure CLI (opdrachtregelinterface)](/cli/azure/install-azure-cli) op een Mac-, Linux- of Windows-computer. De web-app die u configureert, maakt gebruik van een gratis App Service-laag, zodat u geen kosten opdoet in de loop van dit artikel.
 
-Als u liever apps wilt implementeren via een IDE, raadpleegt u [Python-apps implementeren in App Service vanuit Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01).
+> [!NOTE]
+> Als u liever apps wilt implementeren via een IDE, raadpleegt u **[Python-apps implementeren in App Service vanuit Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** .
 
 ## <a name="set-up-your-initial-environment"></a>Uw eerste omgeving instellen
 
@@ -67,15 +68,10 @@ Zodra u bent aangemeld, kunt u Azure-opdrachten uitvoeren met de Azure CLI om te
 
 ## <a name="clone-the-sample"></a>Het voorbeeld klonen
 
-Kloon de voorbeeldopslagplaats met de volgende opdracht. ([Installeer git](https://git-scm.com/downloads) als u nog geen git hebt.)
+Kloon de voorbeeldopslagplaats met de volgende opdracht en navigeer dan naar de map. ([Installeer git](https://git-scm.com/downloads) als u nog geen git hebt.)
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-```
-
-Ga vervolgens naar die map:
-
-```terminal
 cd python-docs-hello-world
 ```
 
@@ -157,7 +153,7 @@ az webapp up --sku F1 -n <app-name>
 - Als de `az`-opdracht niet wordt herkend, controleert u of de Azure CLI is geïnstalleerd volgens de beschrijving in [Uw initiële omgeving instellen](#set-up-your-initial-environment).
 - Vervang `<app_name>` door een naam die in de volledige Azure-omgeving uniek is (*geldige tekens zijn `a-z`, `0-9` en `-`* ). Het is handig om een combinatie van uw bedrijfsnaam en een app-id te gebruiken.
 - Met het argument `--sku F1` maakt u de web-app in de prijscategorie Gratis. Laat dit argument weg om een snellere Premium-laag te gebruiken, waarmee u kosten per uur in rekening worden gebracht.
-- U kunt optioneel het argument toevoegen `-l <location-name>` waarbij `<location_name>` een Azure-regio is, zoals **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations)-opdracht uit te voeren.
+- U kunt optioneel het argument toevoegen `-l <location-name>` waarbij `<location_name>` een Azure-regio is, zoals **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations)-opdracht uit te voeren.
 - Als u de fout "Kan de runtimestack van uw app niet automatisch detecteren" wordt weergegeven, moet u controleren of u de opdracht uitvoert in de map *python-docs-hello-world* die het bestand *requirements.txt* bevat. (Zie [Problemen met automatische detectie oplossen met az webapp up](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub) voor meer informatie.)
 
 Het volledig uitvoeren van de opdracht kan even duren. Terwijl de opdracht wordt uitgevoerd, krijgt u berichten over het maken van de resourcegroep, het App Service-plan en de hosting-app, het configureren van de logboekfunctie en het vervolgens uitvoeren van de ZIP-implementatie. Vervolgens krijgt u het volgende bericht: 'U kunt de app starten op http://&lt;app-name&gt;.azurewebsites.net'. Dit is de URL van de app op Azure.

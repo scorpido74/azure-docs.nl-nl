@@ -5,18 +5,18 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752820"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434769"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Quickstart: Uw eerste statische web-app bouwen in de Azure Portal
 
-Met Azure Static Web Apps wordt een website gepubliceerd in een productieomgeving door apps te bouwen vanuit een GitHub-opslagplaats. In deze quickstart implementeert u een webtoepassing in Azure Static Web Apps met behulp van portal.
+Met Azure Static Web Apps wordt een website gepubliceerd in een productieomgeving door apps te bouwen vanuit een GitHub-opslagplaats. In deze quickstart implementeert u een webtoepassing in Azure Static Web Apps met behulp van de Azure-portal.
 
 Als u nog geen Azure-abonnement hebt, [maakt u een gratis proefaccount](https://azure.microsoft.com/free).
 
@@ -56,38 +56,39 @@ Nadat u zich hebt aangemeld bij GitHub, voert u de gegevens van de opslagplaats 
 1. Kies de gewenste _organisatie_
 1. Selecteer **mijn-eerste-statische-web-app** in de vervolgkeuzelijst _Opslagplaats_
 1. Selecteer **hoofd** in de vervolgkeuzelijst _Vertakking_
-1. Selecteer de knop **Volgende: Build >** om de configuratie van de build te bewerken
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Knop Volgende Build":::
 
 > [!NOTE]
 > Als u geen opslagplaatsen ziet, moet u mogelijk Azure Static Web Apps autoriseren in GitHub. Ga naar de GitHub-opslagplaats en ga naar **Instellingen > Toepassingen > Geautoriseerde OAuth-apps**, selecteer **Azure Static Web Apps**en selecteer **Verlenen**. Voor organisatie-opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
 
-1. Voeg op het tabblad _Compileren_ configuratiegegevens toe die specifiek zijn voor het front-end-framework van uw keuze.
+1. Voeg in de sectie _Build-details_ configuratiegegevens toe die specifiek zijn voor het front-end-framework van uw keuze.
 
     # <a name="no-framework"></a>[Geen framework](#tab/vanilla-javascript)
 
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Wis de standaardwaarde in het vak _Locatie van app-artefact_
+    1. Selecteer **Aangepast** in het vervolgkeuzemenu _Build-voorinstellingen_
+    1. Wis de standaardwaarde in het vak _API-locatie_
+    1. Wis de standaardwaarde in het vak _API-locatie_
+    1. Laat het vak _Locatie van app-artefact_ leeg
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Typ **dist/angular-basic** in het vak _Locatie van app-artefact_
+    1. Selecteer **Hoek** in het vervolgkeuzemenu _Build-voorinstellingen_
+    1. Laat de standaardwaarde in het vak _API-locatie_ staan
+    1. Wis de standaardwaarde in het vak _API-locatie_
+    1. Typ **dist/angular-basic** in het vak _Locatie van app-artefact_
 
     # <a name="react"></a>[React](#tab/react)
 
-    - Wis de standaardwaarde in het vak _App-locatie_
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Typ **build** in het vak _Locatie van app-artefact_
+    1. Selecteer **Reageren** in het vervolgkeuzemenu _Build-voorinstellingen_
+    1. Laat de standaardwaarde in het vak _API-locatie_ staan
+    1. Wis de standaardwaarde in het vak _API-locatie_
+    1. Typ **build** in het vak _Locatie van app-artefact_
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - Wis de standaardwaarde in het vak _App-locatie_
-    - Wis de standaardwaarde in het vak _API-locatie_
-    - Typ **dist** in het vak _Locatie van app-artefact_
+    1. Selecteer **Vue.js** in het vervolgkeuzemenu _Build-voorinstellingen_
+    1. Laat de standaardwaarde in het vak _API-locatie_ staan
+    1. Wis de standaardwaarde in het vak _API-locatie_
+    1. Laat de standaardwaarde in het vak _Locatie van app-artefact_ staan
 
     ---
 

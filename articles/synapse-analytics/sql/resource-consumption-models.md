@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489568"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461762"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-resourceverbruik
 
@@ -52,7 +52,7 @@ De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kost
 De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kosten en het prestatieniveau van uw datawarehouse worden bepaald. De serviceniveaus voor SQL-pool Gen2 worden gemeten in Data Warehouse Units (DWU), bijvoorbeeld DW2000c.
 
 > [!NOTE]
-> In Azure SQL Data Warehouse Gen2 zijn onlangs extra schaalmogelijkheden toegevoegd ter ondersteuning van rekenlagen van 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
+> In Azure Synapse Analytics Gen2 zijn onlangs extra schaalmogelijkheden toegevoegd ter ondersteuning van rekenlagen van 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
 In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw SQL-pool.
 
@@ -140,7 +140,7 @@ Als u de DWU's wilt wijzigen, gebruikt u de PowerShell-cmdlet [Set-AzSqlDatabase
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Zie [PowerShell-cmdlets voor SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie
+Zie [PowerShell-cmdlets voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
 #### <a name="t-sql"></a>T-SQL
 
@@ -172,7 +172,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Zie [REST API's voor SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer voorbeelden van REST API's.
+Zie [REST-API’s voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer voorbeelden van REST-API’s.
 
 ### <a name="check-status-of-dwu-changes"></a>Status van DWU-wijzigingen controleren
 

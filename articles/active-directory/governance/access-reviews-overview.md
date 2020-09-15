@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783668"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594336"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -45,7 +45,7 @@ Met Azure AD kunt u samenwerken met gebruikers binnen uw organisatie en met exte
 ## <a name="when-should-you-use-access-reviews"></a>Wanneer moet u toegangsbeoordelingen gebruiken?
 
 - **Te veel gebruikers met een bevoorrechte rol:** Het is een goed idee om te controleren hoeveel gebruikers beheerderstoegang hebben, hoeveel er Globale beheerders zijn, en of er uitgenodigde gasten of partners zijn die niet zijn verwijderd na de toewijzing van een beheerstaak. U kunt de roltoewijzingsgebruikers opnieuw certificeren in [Azure AD-rollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json), zoals Globale beheerders, of [Azure-resourcerollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) zoals Gebruikerstoegangsbeheerder in de ervaring [Azure Active Directory Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md).
-- **Wanneer automatisering niet mogelijk is:** U kunt regels maken voor een dynamisch lidmaatschap van beveiligingsgroepen of Office 365-groepen, maar wat als de personeelsgegevens zich niet in Azure AD bevinden of als gebruikers nadat ze de groep hebben verlaten nog steeds toegang nodig hebben om hun vervanging te trainen? U kunt vervolgens een beoordeling maken voor die groep om ervoor te zorgen dat gebruikers die nog toegang nodig hebben, die ook behouden.
+- **Wanneer automatisering niet mogelijk is:** U kunt regels maken voor een dynamisch lidmaatschap van beveiligingsgroepen of Microsoft 365-groepen, maar wat als de personeelsgegevens zich niet in Azure AD bevinden of als gebruikers nadat ze de groep hebben verlaten nog steeds toegang nodig hebben om hun vervanging te trainen? U kunt vervolgens een beoordeling maken voor die groep om ervoor te zorgen dat gebruikers die nog toegang nodig hebben, die ook behouden.
 - **Wanneer een groep gebruikt wordt voor een nieuw doeleinde:** Als u een groep heeft die wordt gesynchroniseerd met Azure AD of als u van plan bent de toepassing SalesForce in te schakelen voor iedereen in de groep van het verkoopteam, dan is het zinvol om de groepseigenaar te vragen het groepslidmaatschap te controleren voordat de groep wordt gebruikt voor inhoud in een andere risicogroep.
 - **Bedrijfskritieke gegevenstoegang:** voor bepaalde resources kan het nodig zijn om gebruikers buiten IT te vragen om zich regelmatig af te melden en een motivering te geven voor waarom ze toegang nodig hebben voor controledoeleinden.
 - **Om een uitzonderingslijst voor het beleid te onderhouden:** In een ideale wereld volgen alle gebruikers het toegangsbeleid om de toegang tot de resources van uw organisatie te beveiligen. Soms zijn er echter zakelijke cases die uitzonderingen vereisen. Als IT-beheerder kunt u deze taak beheren, het toezicht op beleidsuitzonderingen voorkomen en auditeurs bewijs aanleveren dat deze uitzonderingen regelmatig gecontroleerd worden.
@@ -94,8 +94,10 @@ Hier volgen enkele voorbeelden van licentiescenario's om te helpen bepalen hoeve
 | Een beheerder maakt een toegangsbeoordeling van groep A met 75 gebruikers en 1 groepseigenaar en wijst de groepseigenaar toe als de beoordelaar. | 1 licentie voor de groepseigenaar als beoordelaar | 1 |
 | Een beheerder maakt een toegangsbeoordeling van groep B met 500 gebruikers en 3 groepseigenaar en wijst de 3 groepseigenaars toe als de beoordelaars. | 3 licenties voor alle groepseigenaars als beoordelaars | 3 |
 | Een beheerder maakt een toegangsbeoordeling van groep B met 500 gebruikers. Maakt hier een zelfbeoordeling van. | 500 licenties voor alle gebruikers als zelfbeoordelaars | 500 |
-| Een beheerder maakt een toegangsbeoordeling van Groep C met 50 leden en 25 gastgebruikers. Maakt hier een zelfbeoordeling van. | 50 licenties voor alle gebruikers als zelfbeoordelaars.<br/>(gastgebruikers worden gedekt in de vereiste verhouding van 1:5) | 50 |
-| Een beheerder maakt een toegangsbeoordeling van Groep D met 6 leden en 108 gastgebruikers. Maakt hier een zelfbeoordeling van. | 6 licenties voor alle gebruikers als zelfbeoordelaars + 16 aanvullende licenties voor alle 108 gastgebruikers in de vereiste verhouding van 1:5. 6 licenties, voor 6\*5=30 gastgebruikers. Voor de resterende (108-6\*5) = 78 gastgebruikers, 78/5=16 aanvullende licenties zijn vereist. In totaal zijn dus 6+16=22 licenties vereist. | 22 |
+| Een beheerder maakt een toegangsbeoordeling van Groep C met 50 leden en 25 gastgebruikers. Maakt hier een zelfbeoordeling van. | 50 licenties voor alle gebruikers als zelfbeoordelaars.* | 50 |
+| Een beheerder maakt een toegangsbeoordeling van Groep D met 6 leden en 108 gastgebruikers. Maakt hier een zelfbeoordeling van. | 6 licenties voor alle gebruikers als zelfbeoordelaars. Gastgebruikers worden gefactureerd op basis van maandelijks actieve gebruiker (MAU). Er zijn geen extra licenties nodig. *  | - |
+
+\* De prijzen voor externe Azure AD-identiteiten (gastgebruiker) zijn gebaseerd op maandelijks actieve gebruikers (MAU), d.w.z. het aantal unieke gebruikers met verificatie-activiteit in een kalendermaand. Dit model vervangt het factureringsmodel met een verhouding van 1:5, waarbij vijf gastgebruikers voor elke Azure AD Premium-licentie in uw tenant waren toegestaan. Wanneer uw tenant aan een abonnement is gekoppeld en u functies van Externe identiteiten gebruikt om met gastgebruikers samen te werken, wordt u automatisch gefactureerd met behulp van het MAU-gebaseerde factureringsmodel. Zie ‘Factureringsmodel voor externe Azure AD-identiteiten’ voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

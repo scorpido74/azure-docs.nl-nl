@@ -3,12 +3,12 @@ title: 'Quickstart: Een knowledge base maken, trainen en publiceren - QnA Maker'
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het maken van een QnA Maker-knowledge base op basis van een eenvoudige webpagina met veelgestelde vragen om vragen te beantwoorden in QnA Maker.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540751"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535846"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
 

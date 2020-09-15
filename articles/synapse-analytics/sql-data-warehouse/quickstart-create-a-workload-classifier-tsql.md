@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212952"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442936"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: Een workloadclassificatie maken met T-SQL
 
@@ -31,7 +31,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze quickstart wordt ervan uitgegaan dat u al een SQL-datawarehouse en CONTROL DATABASE-rechten hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze quickstart wordt ervan uitgegaan dat u al een Synapse SQL-pool in Azure Synapse Analytics hebt ingericht, en dat u CONTROL DATABASE-rechten hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
