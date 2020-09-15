@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760869"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068384"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -108,13 +108,13 @@ De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik ind
    SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
-- `ORDER BY`aanvragen
+- `ORDER BY` aanvragen
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`aanvragen
+- `JOIN` aanvragen
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -135,7 +135,7 @@ Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op geor
 - Georuimtelijk binnen query's:
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
 - Georuimtelijke Intersect-query's:
@@ -150,7 +150,7 @@ Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geosp
 
 **Samengestelde** indexen verhogen de efficiëntie wanneer u bewerkingen uitvoert op meerdere velden. De samengestelde index soort wordt gebruikt voor:
 
-- `ORDER BY`query's op meerdere eigenschappen:
+- `ORDER BY` query's op meerdere eigenschappen:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
@@ -168,7 +168,7 @@ Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geosp
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Zolang één filter predicaat een van de index typen gebruikt, evalueert de query-engine dat eerst voordat de rest wordt gescand. Als u bijvoorbeeld een SQL-query hebt zoals`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Zolang één filter predicaat een van de index typen gebruikt, evalueert de query-engine dat eerst voordat de rest wordt gescand. Als u bijvoorbeeld een SQL-query hebt zoals `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Met de bovenstaande query wordt eerst gefilterd op vermeldingen waarbij voor naam "Andrew" met behulp van de index. Vervolgens worden alle voor naam = "Andrew" vermeldingen door gegeven aan een volgende pijp lijn om het CONTAINs-filter predicaat te evalueren.
 

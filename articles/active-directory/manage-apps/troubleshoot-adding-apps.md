@@ -1,6 +1,6 @@
 ---
-title: Veelvoorkomende problemen oplossen bij het toevoegen van een toepassing aan Azure Active Directory
-description: Los het probleem op met veelvoorkomende problemen bij het toevoegen van een app aan Azure Active Directory.
+title: Veelvoorkomende problemen oplossen bij het toevoegen of verwijderen van een toepassing aan Azure Active Directory
+description: Los het probleem op met veelvoorkomende problemen bij het toevoegen of verwijderen van een app aan Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410416"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068027"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Veelvoorkomende problemen oplossen bij het toevoegen van een toepassing aan Azure Active Directory
-Dit artikel helpt u bij het begrijpen van de veelvoorkomende problemen bij het toevoegen van een app aan Azure Active Directory.
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Veelvoorkomende problemen oplossen bij het toevoegen of verwijderen van een toepassing aan Azure Active Directory
+Dit artikel helpt u bij het begrijpen van de veelvoorkomende problemen bij het toevoegen of verwijderen van een app aan Azure Active Directory.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Ik heb op de knop toevoegen geklikt en het duurt lang voordat mijn toepassing wordt weer gegeven
 In sommige gevallen kan het 1-2 minuten (en soms langer) duren voordat een toepassing wordt weer gegeven nadat deze is toegevoegd aan uw Directory. Dit is niet de normale verwachte prestaties, maar u kunt ook zien dat de toepassing wordt toegevoegd door te klikken op het pictogram **meldingen** (de Bell) in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com/) en te zoeken naar een **lopende** of **voltooide** melding die de **toepassing toevoegt.**
@@ -34,6 +34,16 @@ Als er een fout optreedt wanneer u op de knop **toevoegen** klikt, wordt er een 
 Als u hulp nodig hebt bij het leren van toepassingen, is de [lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) -artikel een goede plaats om te starten.
 
 Daarnaast kunt u met de [document bibliotheek van Azure AD-toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) meer te weten komen over eenmalige aanmelding met Azure AD en hoe deze werkt.
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Ik wil een toepassing verwijderen, maar de knop verwijderen is uitgeschakeld
+
+De knop verwijderen wordt uitgeschakeld in de volgende scenario's:
+
+- Als u geen van de volgende rollen hebt: globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de Service-Principal, voor toepassingen onder een bedrijfs toepassing.
+
+- Voor micro soft-toepassingen kunt u ze niet verwijderen uit de gebruikers interface, ongeacht uw rol.
+
+- Voor servicePrincipals die overeenkomen met een beheerde identiteit. Service-principals voor beheerde identiteiten kunnen niet worden verwijderd op de Blade Enter prise-apps. U moet naar de Azure-resource gaan om deze te beheren. Meer informatie over [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>De details van een portal melding weer geven
 U kunt de details van een portal melding bekijken door de volgende stappen uit te voeren:

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 81fdb404b99dc5456e9e544b6ff45dff73a7940d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 9f7f2974646e047d4523643ad2acd94b27add83b
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042833"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061135"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
 
@@ -39,7 +39,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij moet worden behandeld/gemaakt als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard).<br>Als de eerste rij als koptekst onwaar is, notitie UI-gegevens voorbeeld en de uitvoer van opzoek activiteiten automatisch genereren van kolom namen als Prop_ {n} (vanaf 0), is voor kopieer activiteit [expliciet toewijzing](copy-activity-schema-and-type-mapping.md#explicit-mapping) van bron aan Sink vereist en worden kolommen op rang telwoord gesorteerd (vanaf 1), en worden er kolommen met de naam weer gegeven als Column_ {n} (vanaf 1).  | Nee       |
 | nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | Nee       |
 | encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' VS-ASCII ', ' UTF-7 ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737 "," IBM775 "," IBM850 "," IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 ', ' IBM863 ', ' IBM864 ', ' IBM865 ', ' IBM869 ', ' IBM870 ', ' IBM01140 ', ' IBM01141 ', ' IBM01142 ', ' IBM01143 ', ' IBM01144 ', IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Opmerking toewijzing gegevens stroom ondersteunt geen UTF-7-code ring. | Nee       |
-| compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. De standaard waarde is niet gecomprimeerd. <br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '. <br>**Opmerking** wanneer u de Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden standaard bestanden uitgepakt naar de map:. `<path specified in dataset>/<folder named as source zip file>/` Gebruik de `preserveZipFileNameAsFolder` bron van de [Kopieer activiteit](#delimited-text-as-source) om te bepalen of de zip-bestands naam moet worden behouden als mapstructuur. | Nee       |
+| compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **TarGzip**, **Snappy**of **LZ4**. De standaard waarde is niet gecomprimeerd. <br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '. <br>**Opmerking** wanneer u de Kopieer activiteit gebruikt om **ZipDeflate** / **TarGzip** -bestand (en) te decomprimeren en te schrijven naar op bestanden gebaseerde Sink-gegevens opslag, worden standaard bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source compressed file>/` , gebruikt u de `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` bron van de [Kopieer activiteit](#delimited-text-as-source) om te bepalen of de zip-bestands naam moet worden behouden als mapstructuur. | Nee       |
 | compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van een gegevensset met scheidings tekens op Azure Blob Storage:
@@ -81,7 +81,7 @@ De volgende eigenschappen worden ondersteund in de sectie *** \* bron \* *** van
 | Eigenschap       | Beschrijving                                                  | Vereist |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSource**. | Ja      |
-| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . | Nee       |
+| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . |  Nee       |
 | storeSettings  | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings` . | Nee       |
 
 Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** onder `formatSettings` :
@@ -91,7 +91,8 @@ Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** ond
 | type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSettings**. | Ja      |
 | skipLineCount | Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. <br>Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. | Nee       |
 | compressionProperties | Een groep eigenschappen voor het decomprimeren van gegevens voor een bepaalde compressie-codec. | Nee       |
-| preserveZipFileNameAsFolder<br>(*onder `compressionProperties` *) | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur.<br>-Als deze eigenschap is ingesteld op **True (standaard)**, wordt in Data Factory ongecomprimeerde bestanden naar `<path specified in dataset>/<folder named as source zip file>/` .<br>-Als deze eigenschap is ingesteld op **Onwaar**, wordt door Data Factory ongecomprimeerde bestanden rechtstreeks naar te schrijven `<path specified in dataset>` . Zorg ervoor dat u geen dubbele bestands namen in verschillende zip-bron bestanden hebt om te voor komen dat u racet of onverwacht gedrag.  | Nee |
+| preserveZipFileNameAsFolder<br>(*onder `compressionProperties` -> `type` als `ZipDeflateReadSettings` *) |  Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur.<br>-Als deze eigenschap is ingesteld op **True (standaard)**, wordt in Data Factory ongecomprimeerde bestanden naar `<path specified in dataset>/<folder named as source zip file>/` .<br>-Als deze eigenschap is ingesteld op **Onwaar**, wordt door Data Factory ongecomprimeerde bestanden rechtstreeks naar te schrijven `<path specified in dataset>` . Zorg ervoor dat u geen dubbele bestands namen in verschillende zip-bron bestanden hebt om te voor komen dat u racet of onverwacht gedrag.  | Nee |
+| preserveCompressionFileNameAsFolder<br>(*onder `compressionProperties` -> `type` als `TarGZipReadSettings` *)  | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **TarGzip** -compressie. Hiermee wordt aangegeven of de gecomprimeerde bestands naam van de bron moet worden behouden als mapstructuur tijdens het kopiëren.<br>-Als deze eigenschap is ingesteld op **True (standaard)**, schrijft Data Factory gedecomprimeerde bestanden naar `<path specified in dataset>/<folder named as source compressed file>/` . <br>-Als deze eigenschap is ingesteld op **Onwaar**, schrijft Data Factory de gedecomprimeerde bestanden rechtstreeks naar `<path specified in dataset>` . Zorg ervoor dat u geen dubbele bestands namen in verschillende bron bestanden hebt om te voor komen dat u racet of onverwacht gedrag. | Nee |
 
 ```json
 "activities": [
@@ -128,7 +129,7 @@ De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** 
 | Eigenschap       | Beschrijving                                                  | Vereist |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Ja      |
-| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |          |
+| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |    Nee      |
 | storeSettings  | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` .  | Nee       |
 
 Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens** onder `formatSettings` :
@@ -137,6 +138,8 @@ Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens**
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSettings**. | Ja                                                   |
 | File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld, `.csv` `.txt` . Deze moet worden opgegeven wanneer de `fileName` niet is opgegeven in de DelimitedText-gegevensset. Als de bestands naam in de uitvoer gegevensset is geconfigureerd, wordt deze gebruikt als de naam van het sink-bestand en de instelling voor de bestands extensie wordt genegeerd.  | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |
+| maxRowsPerFile | Wanneer u gegevens naar een map schrijft, kunt u ervoor kiezen om naar meerdere bestanden te schrijven en het maximum aantal rijen per bestand op te geven.  | Nee |
+| fileNamePrefix | Geef het voor voegsel van de bestands naam op wanneer u gegevens naar meerdere bestanden schrijft, wat resulteert in dit patroon: `<fileNamePrefix>_00000.<fileExtension>` . Als u niets opgeeft, wordt het voor voegsel van de bestands naam automatisch gegenereerd. Deze eigenschap is niet van toepassing wanneer een bron archief of een [gegevens archief met partitie opties](copy-activity-performance-features.md)is gebaseerd op het bestand.  | Nee |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
@@ -151,9 +154,9 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Joker tekens | Alle bestanden die overeenkomen met het pad naar Joker tekens worden verwerkt. Onderdrukt de map en het bestandspad die in de gegevensset zijn ingesteld. | nee | Teken reeks [] | wildcardPaths |
 | Basispad voor partitie | Voor bestands gegevens die zijn gepartitioneerd, kunt u een basispad opgeven om gepartitioneerde mappen als kolommen te kunnen lezen | nee | Tekenreeks | partitionRootPath |
 | Lijst met bestanden | Hiermee wordt aangegeven of uw bron verwijst naar een tekst bestand met de bestanden die moeten worden verwerkt | nee | `true` of `false` | File List |
-| Meerregelige rijen | Bevat het bron bestand rijen die meerdere regels omspannen. Meerregelige waarden moeten tussen aanhalings tekens staan. | Nee `true` of`false` | multiLineRow |
+| Meerregelige rijen | Bevat het bron bestand rijen die meerdere regels omspannen. Meerregelige waarden moeten tussen aanhalings tekens staan. | Nee `true` of `false` | multiLineRow |
 | Kolom voor het opslaan van de bestands naam | Een nieuwe kolom maken met de naam en het pad van het bron bestand | nee | Tekenreeks | rowUrlColumn |
-| Na voltooiing | De bestanden na de verwerking verwijderen of verplaatsen. Bestandspad wordt gestart vanuit de hoofdmap van de container | nee | Verwijderen: `true` of`false` <br> Ga`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Na voltooiing | De bestanden na de verwerking verwijderen of verplaatsen. Bestandspad wordt gestart vanuit de hoofdmap van de container | nee | Verwijderen: `true` of `false` <br> Ga `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>Bron voorbeeld
@@ -179,7 +182,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | De map wissen | Als de doelmap vóór het schrijven is gewist | nee | `true` of `false` | afkappen |
-| Optie Bestands naam | De naamgevings indeling van de gegevens die zijn geschreven. Standaard één bestand per partitie in de indeling`part-#####-tid-<guid>` | nee | Patroon: teken reeks <br> Per partitie: teken reeks [] <br> Als gegevens in kolom: teken reeks <br> Uitvoer naar één bestand:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Optie Bestands naam | De naamgevings indeling van de gegevens die zijn geschreven. Standaard één bestand per partitie in de indeling `part-#####-tid-<guid>` | nee | Patroon: teken reeks <br> Per partitie: teken reeks [] <br> Als gegevens in kolom: teken reeks <br> Uitvoer naar één bestand: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 | Alle offertes | Alle waarden tussen aanhalings tekens plaatsen | nee | `true` of `false` | quoteAll |
 
 ### <a name="sink-example"></a>Sink-voor beeld
@@ -200,7 +203,7 @@ CSVSource sink(allowSchemaDrift: true,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

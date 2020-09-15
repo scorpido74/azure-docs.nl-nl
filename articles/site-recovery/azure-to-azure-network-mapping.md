@@ -1,20 +1,20 @@
 ---
 title: Virtuele netwerken tussen twee regio's in Azure Site Recovery toewijzen
 description: Meer informatie over het toewijzen van virtuele netwerken tussen twee Azure-regio's voor herstel na nood gevallen voor Azure VM met Azure Site Recovery.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: mayg
-ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130443"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069489"
 ---
-# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Netwerk toewijzing en IP-adres Sering instellen voor VNets
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Netwerktoewijzing en IP-adressering instellen voor VNets
 
 In dit artikel wordt beschreven hoe u twee exemplaren van Azure Virtual Networks (VNets) kunt toewijzen die zich in verschillende Azure-regio's bevinden en hoe u IP-adres Sering tussen netwerken instelt. Netwerk toewijzing biedt een standaard gedrag voor de selectie van het doel netwerk op basis van het bron netwerk op het moment dat de replicatie wordt ingeschakeld.
 
@@ -82,7 +82,7 @@ Andere adres ruimte | Het volgende beschik bare IP-adres in het doel-subnet word
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Toewijzing van IP-adressen tijdens testfailover
 
-**Doelnet netwerk** | **Details**
+**Doelnetwerk** | **Details**
 --- | ---
 Het doelnet netwerk is het failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres. <br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik. Bijvoorbeeld: als het IP-adres van de bron 10.0.0.19 is en het failover-netwerk het bereik 10.0.0.0/24 gebruikt, is het volgende IP-adres dat is toegewezen aan de doel-VM 10.0.0.254.
 Het doelnet netwerk is geen failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres.<br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik.<br/><br/> Bijvoorbeeld: als het statische IP-adres van de bron 10.0.0.19 is en failover zich op een netwerk bevindt dat niet het failovercluster is, met het bereik 10.0.0.0/24, dan wordt het statische IP-adres van het doel 10.0.0.0.19 als dit beschikbaar is, en is het ook 10.0.0.254.

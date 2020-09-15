@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190673"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068759"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -234,7 +234,7 @@ Houd rekening met de volgende beperkingen voor de namen van regels voor metrisch
 - De namen van de waarschuwings regels voor metrische gegevens kunnen niet worden gewijzigd (hernoemd) nadat deze is gemaakt
 - De naam van de metrische waarschuwings regel moet uniek zijn binnen een resource groep
 - De naam van de regel voor metrische waarschuwingen mag niet de volgende tekens bevatten: * # & +:  < > ? @ % { } \ / 
-- De namen van regels voor metrische waarschuwingen kunnen niet eindigen op het volgende teken:.
+- De namen van regels voor metrische waarschuwingen mogen niet eindigen op een spatie of een punt
 
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Beperkingen bij het gebruik van dimensies in een metrische waarschuwings regel met meerdere voor waarden

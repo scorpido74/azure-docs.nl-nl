@@ -2,11 +2,37 @@
   href: index.yml
 - name: Inleiding
   href: introduction.md
-- name: Beveiligingsmaatregelen
+- name: Beveiligingsmaatregelen (v2)
   expanded: true
   items:
     - name: Overzicht van Azure-beveiligingsmaatregelen
       href: overview.md
+    - name: Netwerkbeveiliging
+      href: security-controls-v2-network-security.md
+    - name: Identiteitsbeheer
+      href: security-controls-v2-identity-management.md
+    - name: Bevoegde toegang
+      href: security-controls-v2-privileged-access.md
+    - name: Gegevensbescherming
+      href: security-controls-v2-data-protection.md
+    - name: Asset-management
+      href: security-controls-v2-asset-management.md
+    - name: Logboekregistratie en bedreidingsdetectie
+      href: security-controls-v2-logging-threat-detection.md
+    - name: Reageren op incidenten
+      href: security-controls-v2-incident-response.md
+    - name: Postuur en beheer van beveiligingsproblemen
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: Eindpuntbeveiliging
+      href: security-controls-v2-endpoint-security.md
+    - name: Back-ups maken en herstellen
+      href: security-controls-v2-backup-recovery.md
+    - name: Governance en strategie
+      href: security-controls-v2-governance-strategy.md
+- name: Beveiligingsmaatregelen (v1)
+  items:
+    - name: Overzicht van Azure-beveiligingsmaatregelen (v1)
+      href: overview-v1.md
     - name: Netwerkbeveiliging
       href: security-control-network-security.md
     - name: Logboekregistratie en bewaking

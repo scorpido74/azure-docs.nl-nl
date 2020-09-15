@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023836"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068809"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -156,7 +156,7 @@ Als u de MFA-beller-ID niet hebt geconfigureerd in de Verenigde Staten, zijn Voi
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> Wanneer Azure Multi-Factor Authentication-aanroepen via het open bare telefoonnet werk worden geplaatst, worden ze soms doorgestuurd via een transporteur die geen beller-ID ondersteunt. Als gevolg hiervan is de beller-ID niet gegarandeerd, zelfs als Azure Multi-Factor Authentication deze altijd verzendt.
+> Wanneer Azure Multi-Factor Authentication-aanroepen worden geplaatst via het open bare telefoonnet werk, worden de aanroepen soms gerouteerd via een transporteur die geen beller-ID ondersteunt. Daarom is de beller-ID niet gegarandeerd, zelfs als Azure Multi-Factor Authentication deze altijd verzendt. Dit geldt zowel voor telefoon gesprekken als voor tekst berichten van Azure Multi-Factor Authentication. Als u wilt valideren dat een tekst bericht afkomstig is van Azure Multi-Factor Authentication, raadpleegt u [welke SMS-code worden gebruikt voor het verzenden van berichten?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 Voer de volgende stappen uit om uw eigen beller-ID-nummer te configureren:
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670623"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061870"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Virtuele Azure-machines verplaatsen naar een beschikbaarheids zone in een andere regio
 
@@ -71,8 +71,7 @@ Selecteer de resources die u wilt verplaatsen.
     ![Knop om aan de slag te gaan](./media/move-region-availability-zone/get-started.png)
 
 3. Selecteer in bron voor **resources verplaatsen**  >  **+ bestemming**het bron abonnement en de regio.
-4. Selecteer in **doel**de regio waarnaar u de vm's wilt verplaatsen. 
-5. Selecteer in de **meta gegevens regio**waar u meta gegevens wilt opslaan over resources die u wilt verplaatsen. Een resource groep wordt speciaal voor dit doel gemaakt. Klik op **Volgende**.
+4. Selecteer in **doel**de regio waarnaar u de vm's wilt verplaatsen. Klik op **Volgende**.
 
      ![Pagina om het bron-en doel abonnement/de regio in te vullen](./media/move-region-availability-zone/source-target.png)
 

@@ -17,6 +17,8 @@
       href: get-started-create-service-instance.md
     - name: Een instantie maken - PowerShell
       href: powershell-create-service-instance.md
+    - name: Een instantie maken - Visual Studio Code
+      href: vscode-create-service-instance.md
 - name: Zelfstudies
   items:
     - name: '1: Uw eerste API importeren'

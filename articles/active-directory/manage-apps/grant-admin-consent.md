@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aafaeb1143049b14f0a2fe2d867a951355d1ba61
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667607"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060914"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
@@ -88,7 +88,7 @@ Hierbij
 Zo altijd moet u de machtigingen voor een toepassings aanvraag zorgvuldig controleren voordat u toestemming verleent.
 
 > [!WARNING]
-> Door de beheerder toestemming voor de hele Tenant te verlenen via deze URL worden alle machtigingen ingetrokken die eerder zijn verleend voor tenants. Machtigingen die eerder door gebruikers uit hun eigen naam zijn ggranted, worden niet beïnvloed. 
+> Door de beheerder toestemming voor de hele Tenant te verlenen via deze URL worden alle machtigingen ingetrokken die eerder zijn verleend voor tenants. Machtigingen die eerder door gebruikers uit hun eigen naam zijn verleend, worden niet beïnvloed. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

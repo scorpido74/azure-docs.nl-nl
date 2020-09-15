@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 7d230ce068678bbc074b54ab361f3d70d9b102f8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670394"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061836"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Resources verplaatsen tussen regio's (van resource groep)
 
@@ -65,7 +65,6 @@ Selecteer de resources die u wilt verplaatsen. U kunt resources verplaatsen naar
     ![Selectie voor het verplaatsen van resources naar een andere regio](./media/move-region-within-resource-group/select-move-region.png)
     
 4. Selecteer in **bron + bestemming**de doel regio waarnaar u de resources wilt verplaatsen. Selecteer vervolgens **Volgende**.
-5. Selecteer in de **meta gegevens regio**waar u meta gegevens wilt opslaan over resources die u wilt verplaatsen.  Een resource groep wordt speciaal voor dit doel gemaakt. Selecteer vervolgens **Volgende**.
 
 
     ![Bron-en doel pagina voor het selecteren van de doel regio](./media/move-region-within-resource-group/source-target.png)

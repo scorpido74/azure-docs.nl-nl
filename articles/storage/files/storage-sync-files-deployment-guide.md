@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441473"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069625"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -157,7 +157,7 @@ Als u een opslag synchronisatie service wilt implementeren, gaat u naar de [Azur
 
 Voer de volgende gegevens in in het deelvenster dat verschijnt:
 
-- **Naam**: een unieke naam (per abonnement) voor de opslag synchronisatie service.
+- **Naam**: een unieke naam (per regio) voor de opslag synchronisatie service.
 - **Abonnement**: het abonnement waarin u de opslag synchronisatie service wilt maken. Afhankelijk van de configuratie strategie van uw organisatie hebt u mogelijk toegang tot een of meer abonnementen. Een Azure-abonnement is de meest eenvoudige container voor facturering voor elke Cloud service (zoals Azure Files).
 - **Resource groep**: een resource groep is een logische groep Azure-resources, zoals een opslag account of een opslag synchronisatie service. U kunt een nieuwe resource groep maken of een bestaande resource groep gebruiken voor Azure File Sync. (We raden u aan om resource groepen als containers te gebruiken om resources logisch te isoleren voor uw organisatie, zoals het groeperen van resources of resources voor een specifiek project.)
 - **Locatie**: de regio waarin u Azure File Sync wilt implementeren. In deze lijst worden alleen ondersteunde regio's beschikbaar.

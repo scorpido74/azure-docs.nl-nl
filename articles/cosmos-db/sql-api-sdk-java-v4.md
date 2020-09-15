@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536397"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060693"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -68,27 +68,14 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 
 ## <a name="release-history"></a>Release geschiedenis
 
-### <a name="440-beta2-unreleased"></a>4.4.0-bèta versie 2 (niet-vrijgegeven)
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Vaste RequestTimeoutException bij het inschakelen van tcnative.
+### <a name="450-beta1-unreleased"></a>4.5.0-bèta versie 1 (niet-vrijgegeven)
 
-### <a name="440-beta1-2020-08-27"></a>4.4.0-Beta. 1 (2020-08-27)
-#### <a name="new-features"></a>Nieuwe functies
-* Er is een nieuwe API toegevoegd om veel documenten efficiënt te laden (via een lijst met PK/id-paren of alle documenten voor een set PK-waarden).
-* Nieuwe API is toegevoegd `deleteItem` .
-* Standaard waarden voor query's ingeschakeld.
+### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12)
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Vaste-NPE in `GatewayAddressCache` .
-* Er wordt een probleem met de query metriek voor nul-item reactie opgelost.
-* Verbeterde prestaties (gereduceerd CPU-gebruik) voor het parseren van adressen en hoofd sleutel verificatie.
-
-### <a name="432-beta2-2020-08-17"></a>4.3.2-Beta. 2 (2020-08-17)
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Geen wijzigingen ten opzichte van de vorige versie, het vrijgeven van compatibiliteits problemen met lente gegevens modules.
-
-### <a name="432-beta1-2020-08-14"></a>4.3.2-bèta. 1 (2020-08-14)
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Probleem opgelost in RntbdServiceEndpoint om te voor komen dat een ongebruikte TCP-verbinding vroegtijdig wordt gesloten.
+* Vaste RequestTimeoutException bij het inschakelen van `netty-tcnative-boringssl` afhankelijkheid.
+* Probleem met het lek van het opgeloste geheugen voor `Delete` bewerkingen in de `GATEWAY` modus.
+* Er is een lekkage opgelost `CosmosClient` tijdens het instantiëren wanneer de eind punt-URI ongeldig is.
+* Verbeterde `CPU History` Diagnostische gegevens.
 
 ### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten

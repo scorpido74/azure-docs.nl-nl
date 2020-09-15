@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587307"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069591"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ In dit artikel vindt u meer informatie over de [resource limieten in SQL Managed
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>Bestands-IO-kenmerken in laag Algemeen
 
-In het Algemeen servicelaag worden elk database bestand toegewezen IOPS en door Voer die afhankelijk zijn van de bestands grootte. Grotere gegevens bestanden krijgen meer IOPS en door voer. I/o-kenmerken van de database bestanden worden weer gegeven in de volgende tabel:
+In het Algemeen servicelaag worden elk database bestand toegewezen IOPS en door Voer die afhankelijk zijn van de bestands grootte. Grotere bestanden krijgen meer IOPS en door voer. I/o-kenmerken van database bestanden worden weer gegeven in de volgende tabel:
 
-| Bestandsgrootte | >= 0 en <= 128 GiB | >128 en <= 256 GiB | >256 en <= 512 GiB | >0,5 en <= 1 TiB    | >1 en <= 2 TiB    | >2 en <= 4 TiB | >4 en <= 8 TiB |
+| Bestandsgrootte | >= 0 en <= 128 GiB | >128 en <= 512 GiB | >0,5 en <= 1 TiB    | >1 en <= 2 TiB    | >2 en <= 4 TiB | >4 en <= 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS per bestand       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12.500   |
-| Door Voer per bestand | 100-MiB/s | 125-MiB/s | 150-MiB/s | 200-MiB/s | 250 MiB/s | 250 MiB/s | 480-MiB/s | 
+| IOPS per bestand       | 500   | 2300              | 5000              | 7500              | 7500              | 12.500   |
+| Door Voer per bestand | 100-MiB/s | 150-MiB/s | 200-MiB/s | 250 MiB/s | 250 MiB/s | 480-MiB/s | 
 
 Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet dat IOPS/door Voer de limiet bereikt, kunt u de prestaties verbeteren door [de bestands grootte te verg Roten](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 

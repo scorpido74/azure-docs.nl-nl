@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084678"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061713"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters in HDInsight
-
-> [!div class="op_single_selector"]
-> * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Script actie gebruiken](apache-spark-python-package-installation.md)
 
 Meer informatie over het configureren van een [Jupyter notebook](https://jupyter.org/) in Apache Spark cluster op HDInsight voor het gebruik van externe, door de Community bijgedragen Apache **maven** -pakketten die niet out-of-the-box in het cluster zijn opgenomen.
 
@@ -33,7 +29,7 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
 
 * Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight](./apache-spark-load-data-run-query.md) voor meer informatie.
 
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data Lake Storage Gen2, wordt de URI `wasbs://` of `abfss://` , respectievelijk, weer geven, [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag voor uw clusters. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data Lake Storage Gen2, wordt de URI `wasbs://` of `abfss://` , respectievelijk, weer geven, [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Externe pakketten gebruiken met Jupyter-notebooks
 
@@ -97,7 +93,7 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
     df.select("Time").count()
     ```
 
-## <a name="see-also"></a><a name="seealso"></a>Zie tevens
+## <a name="see-also"></a><a name="seealso"></a>Zie ook
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

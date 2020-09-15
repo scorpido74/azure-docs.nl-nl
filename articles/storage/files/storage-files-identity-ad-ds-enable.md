@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535073"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061475"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
 
@@ -28,7 +28,7 @@ Met de cmdlets in de AzFilesHybrid Power shell-module worden de nodige wijziging
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid-module downloaden
 
-- [De AzFilesHybrid-module downloaden en uitpakken](https://github.com/Azure-Samples/azure-files-samples/releases) (Ga naar module: v 0.2.0 +)
+- [De AzFilesHybrid-module downloaden en uitpakken (Ga naar module: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) Houd er rekening mee dat AES 256 Kerberos-versleuteling wordt ondersteund op v 0.2.2 of hoger. Als u de functie hebt ingeschakeld met een AzFilesHybrid-versie lager dan v 0.2.2 en u wilt bijwerken om AES 256 Kerberos-versleuteling te ondersteunen, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems). 
 - Installeer en voer de module uit in een domein dat is gekoppeld aan een on-premises AD DS met AD DS referenties die machtigingen hebben voor het maken van een account voor service aanmelding of een computer account in de doel-AD.
 -  Voer het script uit met behulp van een on-premises AD DS referentie die is gesynchroniseerd met uw Azure AD. De referenties van de on-premises AD DS moeten de eigenaar van het opslag account of de Azure-rol van de Inzender hebben.
 

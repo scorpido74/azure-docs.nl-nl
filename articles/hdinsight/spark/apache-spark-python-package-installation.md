@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873752"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060744"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
-
-> [!div class="op_single_selector"]
-> * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Script actie gebruiken](apache-spark-python-package-installation.md)
 
 HDInsight heeft twee ingebouwde python-installaties in het Spark-cluster, Anaconda python 2,7 en python 3,5. Klanten moeten mogelijk de python-omgeving aanpassen. Zoals het installeren van externe Python-pakketten of een andere python-versie. Hier zien we de best practice van het veilig beheren van python-omgevingen voor Apache Spark clusters op HDInsight.
 
@@ -60,9 +56,9 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
 1. Maak een virtuele python-omgeving met behulp van Conda. Een virtuele omgeving biedt een geïsoleerde ruimte voor uw projecten zonder dat anderen dat doen. Bij het maken van de virtuele python-omgeving kunt u een python-versie opgeven die u wilt gebruiken. U moet nog steeds een virtuele omgeving maken, zelfs als u python 2,7 en 3,5 wilt gebruiken. Dit is vereist om ervoor te zorgen dat de standaard omgeving van het cluster niet wordt verzorgd. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om een virtuele python-omgeving te maken.
 
-    -   `--prefix`Hiermee geeft u een pad op waar de virtuele Conda-omgeving zich bevindt. Er zijn verschillende configuraties die verder moeten worden gewijzigd op basis van het pad dat hier wordt opgegeven. In dit voor beeld gebruiken we de py35new, omdat het cluster al een bestaande virtuele omgeving met de naam py35 bevat.
-    -   `python=`Hiermee geeft u de python-versie op voor de virtuele omgeving. In dit voor beeld gebruiken we versie 3,5, dezelfde versie als het cluster dat in één is ingebouwd. U kunt ook andere python-versies gebruiken om de virtuele omgeving te maken.
-    -   `anaconda`Hiermee geeft u de package_spec als Anaconda voor het installeren van Anaconda-pakketten in de virtuele omgeving.
+    -   `--prefix` Hiermee geeft u een pad op waar de virtuele Conda-omgeving zich bevindt. Er zijn verschillende configuraties die verder moeten worden gewijzigd op basis van het pad dat hier wordt opgegeven. In dit voor beeld gebruiken we de py35new, omdat het cluster al een bestaande virtuele omgeving met de naam py35 bevat.
+    -   `python=` Hiermee geeft u de python-versie op voor de virtuele omgeving. In dit voor beeld gebruiken we versie 3,5, dezelfde versie als het cluster dat in één is ingebouwd. U kunt ook andere python-versies gebruiken om de virtuele omgeving te maken.
+    -   `anaconda` Hiermee geeft u de package_spec als Anaconda voor het installeren van Anaconda-pakketten in de virtuele omgeving.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
@@ -76,8 +72,8 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     - Conda-kanaal gebruiken:
 
-        -   `seaborn`is de naam van het pakket dat u wilt installeren.
-        -   `-n py35new`Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
+        -   `seaborn` is de naam van het pakket dat u wilt installeren.
+        -   `-n py35new` Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
@@ -92,8 +88,8 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     - Conda-kanaal gebruiken:
 
-        -   `numpy=1.16.1`is de naam en versie van het pakket dat u wilt installeren.
-        -   `-n py35new`Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
+        -   `numpy=1.16.1` is de naam en versie van het pakket dat u wilt installeren.
+        -   `-n py35new` Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
@@ -132,7 +128,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     4. Sla de wijzigingen op en start de betrokken services opnieuw. Voor deze wijzigingen moet de Spark2-service opnieuw worden gestart. De Ambari-gebruikers interface vraagt een vereiste herinnering opnieuw op te starten. Klik op opnieuw opstarten om alle betrokken services opnieuw te starten.
 
-        ![Spark-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Services opnieuw starten](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. Als u de nieuwe virtuele omgeving die u hebt gemaakt, wilt gebruiken op Jupyter. Wijzig Jupyter-configuraties en start Jupyter opnieuw. Voer script acties uit op alle hoofd knooppunten met de instructie hieronder om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad naar het voor voegsel dat u hebt opgegeven voor uw virtuele omgeving wijzigt. Nadat u deze script actie hebt uitgevoerd, start u de Jupyter-service opnieuw via de Ambari-gebruikers interface om deze wijziging beschikbaar te maken.
 

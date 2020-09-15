@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228032"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068730"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v3 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -36,20 +36,20 @@ ms.locfileid: "89228032"
 > * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
-Met de lente gegevens Azure Cosmos DB v3 voor core (SQL) kunnen ontwikkel aars Azure Cosmos DB gebruiken in veer toepassingen. Lente gegevens Azure Cosmos DB maakt de lente gegevens interface beschikbaar voor het bewerken van data bases en verzamelingen, het werken met documenten en het uitgeven van query's. Zowel synchronisatie-als async-Api's (reactieve) worden ondersteund in hetzelfde maven-artefact. 
+Met de lente gegevens Azure Cosmos DB versie 3 voor core (SQL) kunnen ontwikkel aars Azure Cosmos DB gebruiken in lente-toepassingen. Lente gegevens Azure Cosmos DB maakt de lente gegevens interface beschikbaar voor het bewerken van data bases en verzamelingen, het werken met documenten en het uitgeven van query's. Zowel synchronisatie-als async-Api's (reactieve) worden ondersteund in hetzelfde maven-artefact. 
 
-Lente gegevens Azure Cosmos DB een afhankelijkheid van het lente data Framework. Azure Cosmos DB SDK-team releases Maven artefacten voor lente gegevens v 2.2 en v 2.3.
+Lente gegevens Azure Cosmos DB een afhankelijkheid hebben van het lente data Framework. In het Azure Cosmos DB SDK-team worden maven-artefacten vrijgegeven voor lente gegevens versies 2,2 en 2,3.
 
-Het [lente-Framework](https://spring.io/projects/spring-framework) is een programmeer-en configuratie model dat het ontwikkelen van Java-toepassingen stroomlijnt. Als u de website van de organisatie wilt citeren, stroomlijnt lente de ' sanitaire ' van toepassingen die gebruikmaken van afhankelijkheids injectie. Veel ontwikkel aars zoals lente, want het maken en testen van toepassingen wordt gecompliceerder. [Spring boot](https://spring.io/projects/spring-boot) breidt dit idee uit van het afhandelen van de sanitair met een ogen ding van webtoepassingen en de ontwikkeling van micro Services. [Lente gegevens](https://spring.io/projects/spring-data) zijn een programmeer model en een framework voor toegang tot gegevens opslag, zoals Azure Cosmos DB vanuit de context van een lente-of Spring boot-toepassing. 
+Het [lente-Framework](https://spring.io/projects/spring-framework) is een programmeer-en configuratie model dat het ontwikkelen van Java-toepassingen stroomlijnt. Lente stroomlijnt de ' sanitaire ' van toepassingen met behulp van afhankelijkheids injectie. Veel ontwikkel aars, zoals lente, maken het bouwen en testen van toepassingen eenvoudiger. [Spring boot](https://spring.io/projects/spring-boot) breidt deze verwerking van de sanitaire toepassing uit met een ogen ding voor de ontwikkeling van een web-app en micro Services. [Lente gegevens](https://spring.io/projects/spring-data) zijn een programmeer model en een framework voor toegang tot gegevens opslag zoals Azure Cosmos DB vanuit de context van een lente-of Spring boot-toepassing. 
 
 U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https://azure.microsoft.com/services/spring-cloud/) toepassingen.
 
 > [!IMPORTANT]  
-> Deze release opmerkingen zijn voor v3 gegevens Azure Cosmos DB. [Hier](sql-api-sdk-java-spring-v2.md)vindt u de release opmerkingen voor v2. 
+> Deze release opmerkingen zijn voor versie 3 van Lente gegevens Azure Cosmos DB. U vindt [hier release opmerkingen voor versie 2](sql-api-sdk-java-spring-v2.md). 
 >
-> Lente gegevens Azure Cosmos DB bieden alleen ondersteuning voor SQL API.
+> Lente gegevens Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
-> De volgende hand leidingen ondersteunen lente gegevens op andere Azure Cosmos DB-Api's:
+> Zie deze artikelen voor informatie over Lente gegevens op andere Azure Cosmos DB-Api's:
 > * [Lente gegevens voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [Lente gegevens MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [Lente gegevens Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
@@ -61,35 +61,35 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
-### <a name="navigate-the-tabs-above-for-basic-spring-data-azure-cosmos-db-samples"></a>Ga naar de bovenstaande tabbladen voor voor beelden van Basic lente-gegevens Azure Cosmos DB.
+#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Deze tabbladen bevatten elementaire lente gegevens Azure Cosmos DB voor beelden.
 
 # <a name="pomxml"></a>[pom.xml](#tab/pom)
 
 ### <a name="configure-dependencies"></a>Afhankelijkheden configureren
 
-Er zijn twee lente gegevens Azure Cosmos DB v3-maven artefacten beschikbaar.
+Er zijn twee lente gegevens beschikbaar Azure Cosmos DB maven-artefacten van versie 3.
 
-Artefacten die afhankelijk zijn van Lente data Framework v 2.2:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Artefacten die afhankelijk zijn van Lente data Framework versie 2,2:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
-Artefacten die afhankelijk zijn van Lente data Framework v 2.3:
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-spring-data-2-3-cosmos</artifactId>
-    <version>latest</version>
-</dependency>
-```
+- Artefacten die afhankelijk zijn van Lente data Framework versie 2,3:
+  ```xml
+  <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <version>latest</version>
+  </dependency>
+  ```
 
 # <a name="connect"></a>[Verbinding maken](#tab/connect)
 
-### <a name="connect"></a>Verbinden
+### <a name="connect"></a>Verbinding maken
 
 Geef Azure Cosmos DB account en container Details op. Lente gegevens Azure Cosmos DB maakt de client automatisch en maakt verbinding met de container.
 
@@ -114,37 +114,35 @@ cosmos.queryMetricsEnabled=true
 
 # <a name="query"></a>[Query](#tab/queries)
 
-### <a name="query"></a>Query’s uitvoeren
-
 [Query](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
 
 ---
 
-## <a name="helpful-content"></a>Nuttige inhoud
+## <a name="resources"></a>Resources
 
-| Inhoud | Lente data Framework v 2.2 | Lente data Framework v 2.3 |
+| Resource | Lente data Framework 2,2 | Lente data Framework 2,3 |
 |---|---|
 | **SDK downloaden** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**Bijdragen aan SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
+|**Bijdragen aan de SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
 |**Zelfstudie**| [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
 
 ## <a name="release-history"></a>Release geschiedenis
 
 ### <a name="300-beta2-unreleased"></a>3.0.0-bèta versie 2 (niet-vrijgegeven)
 
-### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17)
+### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (17 augustus 2020)
 #### <a name="new-features"></a>Nieuwe functies
-* De groeps-ID is bijgewerkt naar `com.azure` .
-* De artefact-ID is bijgewerkt naar `azure-spring-data-2-3-cosmos` .
-* De Azure-Cosmos SDK-afhankelijkheid is bijgewerkt naar `4.3.2-beta.2` .
-* Ondersteuning voor het controleren van entiteiten-automatisch beheer van velden van het soort createdBy, createdDate, lastModifiedBy en lastModifiedDate aantekening.
-* `@GeneratedValue` ondersteuning voor aantekeningen voor het automatisch genereren van id's voor ID-velden van het `String` type.
-* Ondersteuning voor configuratie van meerdere data bases voor één Cosmos-account met meerdere data bases en meerdere Cosmos-accounts met meerdere data bases.
-* Ondersteuning voor `@Version` aantekening voor een wille keurige teken reeks veld.
-* Bijgewerkte synchronisatie-Api's retour neren typen naar `Iterable` typen in plaats van `List` .
-* Wordt weer gegeven `CosmosClientBuilder` van de Cosmos SDK als lente bonen tot `@Configuration` klasse.
-* Bijgewerkt `CosmosConfig` met query-metrische gegevens en de diagnostische gegevens van de reactie op de processor.
-* Ondersteuning voor het retour neren van `Optional` gegevens typen voor query's met één resultaat.
+* Groeps-ID bijwerken naar `com.azure` .
+* Hiermee wordt de artefact-ID bijgewerkt naar `azure-spring-data-2-3-cosmos` .
+* Hiermee wordt de Azure-Cosmos SDK-afhankelijkheid bijgewerkt naar `4.3.2-beta.2` .
+* Voegt ondersteuning toe voor controle-entiteiten: automatisch beheer van `createdBy` `createdDate` velden,, `lastModifiedBy` en `lastModifiedDate` aantekening.
+* Voegt `@GeneratedValue` annotatie-ondersteuning toe voor het automatisch genereren van id's voor ID-velden van het `String` type.
+* Hiermee voegt u ondersteuning voor meerdere data bases toe voor een enkele Azure Cosmos DB-account met meerdere data bases en meerdere Azure Cosmos DB accounts met meerdere data bases.
+* Hiermee voegt u ondersteuning voor `@Version` aantekening toe aan een wille keurige teken reeks veld.
+* Hiermee worden synchronisatie-API-retour typen bijgewerkt naar `Iterable` typen in plaats van `List` .
+* Maakt `CosmosClientBuilder` van de Azure Cosmos DB SDK als lente bonen voor de `@Configuration` klasse.
+* Updates `CosmosConfig` voor het bevatten van query gegevens en de diagnostische gegevens van de reactie van de processor.
+* Voegt ondersteuning toe voor het retour neren van het `Optional` gegevens type voor query's met één resultaat.
 #### <a name="renames"></a>Naam
 * `CosmosDbFactory` tot `CosmosFactory` .
 * `CosmosDBConfig` tot `CosmosConfig` .
@@ -154,22 +152,22 @@ cosmos.queryMetricsEnabled=true
 * `DocumentQuery` tot `CosmosQuery` .
 * Application. Properties-markering `populateQueryMetrics` naar `queryMetricsEnabled` .
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Planning van de logboek registratie van diagnostische gegevens naar `Parallel` threads om te voor komen dat Netty-I/O-threads worden geblokkeerd.
-* Vast optimistische vergren deling bij Verwijder bewerking.
-* Probleem opgelost met escape-query's voor `IN` component.
-* Probleem opgelost door het `long` gegevens type voor op toe te staan `@Id` .
-* Probleem opgelost door `boolean` , `long` ,, `int` `double` als gegevens typen voor `@PartitionKey` aantekening toe te staan.
-* Vaste `IgnoreCase`  &  `AllIgnoreCase` sleutel woorden voor het negeren van case query's.
-* De standaard waarde van 4000 voor aanvraag eenheden is verwijderd bij het automatisch maken van containers.
+* Planning van de taak diagnose logboek registratie in `Parallel` threads om te voor komen dat I/O-threads van Netty worden geblokkeerd.
+* Herstelt optimistische vergren deling bij verwijderings bewerking.
+* Hiermee worden problemen opgelost met een Escape-query voor- `IN` component.
+* Hiermee wordt het probleem opgelost door het `long` gegevens type voor op toe te staan `@Id` .
+* Hiermee wordt het probleem opgelost door `boolean` , `long` , `int` en `double` als gegevens typen voor de `@PartitionKey` aantekening toe te staan.
+* Oplossingen `IgnoreCase` en `AllIgnoreCase` tref woorden voor het negeren van case query's.
+* Hiermee verwijdert u de standaard waarde voor de aanvraag eenheid 4.000 wanneer er containers automatisch worden gemaakt.
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
+Meer informatie over [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-framework)van het project voor meer informatie over het lente-Framework.
+Meer informatie over het [lente-Framework](https://spring.io/projects/spring-framework).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-boot)van het project voor meer informatie over de lente boot.
+Meer informatie over [Spring boot](https://spring.io/projects/spring-boot).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-data)van het project voor meer informatie over Lente gegevens.
+Meer informatie over [lente gegevens](https://spring.io/projects/spring-data).

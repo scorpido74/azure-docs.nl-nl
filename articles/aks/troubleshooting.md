@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 4a28ebd047e4d5e610ea0c895063eb87ce051d45
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460317"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068826"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -450,3 +450,15 @@ Bij Kubernetes-versies **ouder dan 1.15.0**, wordt er mogelijk een fout bericht 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
+
+### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Waarom worden upgrades naar Kubernetes 1,16 mislukt wanneer u knooppunt labels gebruikt met een kubernetes.io-voor voegsel
+
+Vanaf Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) kan [alleen een gedefinieerde subset van labels met het voor voegsel kubernetes.io](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) worden toegepast door de kubelet op knoop punten. AKS kan geen actieve labels namens u zonder toestemming worden verwijderd, omdat dit kan leiden tot uitval tijd voor werk belastingen.
+
+Als gevolg hiervan kunt u het volgende doen:
+
+1. Upgrade uw cluster besturings vlak naar 1,16 of hoger
+2. Een nieuwe nodepoool toevoegen aan 1,16 of hoger zonder de niet-ondersteunde kubernetes.io-labels
+3. De oudere nodepool verwijderen
+
+AKS onderzoekt de mogelijkheid om actieve labels op een nodepool te mutate om deze oplossing te verbeteren.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 50881071380bbe5d245ed458d162e62bfabd108a
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322463"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061492"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -48,16 +48,15 @@ Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-
 
 1. Uw account is nu ingeschakeld voor het gebruik van de Synapse-koppeling. Zie voor meer informatie over het maken van containers voor analytische opslag om automatisch te beginnen met het repliceren van uw operationele gegevens uit het transactionele archief naar de analytische opslag.
 
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
-
-De [Azure Resource Manager-sjabloon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) maakt een Azure Cosmos-account met Synapse-koppeling voor SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
+> [!NOTE]
+> Als u de Synapse-koppeling inschakelt, wordt de analytische opslag niet automatisch ingeschakeld. Wanneer u Synapse-koppeling op het Cosmos DB-account hebt ingeschakeld, moet u analytische opslag op containers inschakelen wanneer u deze maakt, om uw bewerkings gegevens te repliceren naar de analytische opslag. 
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Een Azure Cosmos-container maken met een analytische opslag
 
 U kunt de analytische opslag inschakelen op een Azure Cosmos-container tijdens het maken van de container. U kunt de Azure Portal gebruiken of de `analyticalTTL` eigenschap configureren tijdens het maken van de container met behulp van de Azure Cosmos DB sdk's.
 
 > [!NOTE]
-> Op dit moment kunt u het analytische archief inschakelen voor **nieuwe** containers (zowel in nieuwe als bestaande accounts).
+> Op dit moment kunt u het analytische archief inschakelen voor **nieuwe** containers (zowel in nieuwe als bestaande accounts). U kunt gegevens uit uw bestaande-containers migreren naar nieuwe containers met [Azure Cosmos DB-migratie hulpprogramma's.](cosmosdb-migrationchoices.md)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -211,6 +210,10 @@ Volg de instructies in [verbinding maken met Azure Synapse link](../synapse-anal
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Query's uitvoeren met Synapse Spark
 
 Volg de instructies in het artikel [query Azure Cosmos DB Analytical Store](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) voor informatie over het uitvoeren van Query's met Synapse Spark. In dit artikel vindt u enkele voor beelden van de manier waarop u kunt communiceren met de analytische opslag vanuit Synapse-gebaren. Deze gebaren worden weer gegeven wanneer u met de rechter muisknop op een container klikt. Met penbewegingen kunt u snel code genereren en deze aanpassen aan uw behoeften. Ze zijn ook ideaal voor het detecteren van gegevens met één klik.
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
+
+De [Azure Resource Manager-sjabloon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) maakt een Azure Cosmos-account met Synapse-koppeling voor SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Aan de slag met Azure Synpase-koppeling-voor beelden
 

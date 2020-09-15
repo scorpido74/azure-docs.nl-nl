@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514353"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060727"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -101,7 +101,7 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 **URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Navigeer naar de Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Meld u aan bij uw Azure-abonnement.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com <br/> *. office.com | Meld u aan bij uw Azure-abonnement.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Azure Active Directory (AD)-apps voor het apparaat om te communiceren met Azure Migrate.
 management.azure.com | Maak Azure AD-apps voor het apparaat om te communiceren met de Azure Migrate-service.
 *.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.

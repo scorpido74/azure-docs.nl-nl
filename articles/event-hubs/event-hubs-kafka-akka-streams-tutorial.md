@@ -3,15 +3,16 @@ title: Akka-streams gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Doc
 description: Dit artikel bevat informatie over het verbinden van Akka-streams met een Azure Event Hub.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320204"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061696"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Akka Streams gebruiken met Event Hubs voor Apache Kafka
-In deze zelf studie wordt uitgelegd hoe u Akka-streams verbindt met een Event Hub zonder uw protocol-clients of uw eigen clusters te wijzigen. Azure Event Hubs voor de Kafka ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html)
+
+In deze zelf studie leert u hoe u Akka-streams verbindt via de Event Hubs ondersteuning voor Apache Kafka zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. 
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -21,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 > * Akka streams Consumer uitvoeren
 
 > [!NOTE]
-> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
+> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +33,7 @@ Als u deze zelf studie wilt volt ooien, moet u beschikken over de volgende verei
 * [Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
     * Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.
     * Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
-* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief
+* Een binair archief van Maven [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)
     * Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 * [Git](https://www.git-scm.com/downloads)
     * Op Ubuntu kunt u `sudo apt-get install git` uitvoeren om Git te installeren.

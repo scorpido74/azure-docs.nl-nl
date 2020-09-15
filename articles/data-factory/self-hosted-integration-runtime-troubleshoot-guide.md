@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033656"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069472"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
@@ -46,25 +46,25 @@ Azure Data Factory ondersteunt het weer geven en uploaden van fouten logboeken v
 > Logboek weer geven en upload aanvragen worden uitgevoerd op alle online zelf-hostende IR-exemplaren. Zorg ervoor dat alle zelf-hostende IR-instanties online zijn in het geval van eventuele ontbrekende Logboeken. 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>Zelf-hostende IR-algemene fout of-fout
+## <a name="self-hosted-ir-general-failure-or-error"></a>Algemeen probleem of algemene fout met zelf-hostende IR
 
 ### <a name="tlsssl-certificate-issue"></a>Probleem met TLS/SSL-certificaat
 
 #### <a name="symptoms"></a>Symptomen
 
-Bij het inschakelen van TLS/SSL-certificaat (Geavanceerd) van een **zelf-hostend IR-Configuration Manager**  ->  **externe toegang vanaf intranet**, na het selecteren van een TLS/SSL-certificaat, wordt de volgende fout weer gegeven:
+Wanneer u TLS/SSL-certificaat probeert in te schakelen (geavanceerd) vanuit **de Configuration Manager van de zelf-hostende IR** -> **Externe toegang via een intranet**, wordt de volgende fout weergegeven nadat u TLS/SSL-certificaat hebt geselecteerd:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-In het bovenstaande geval gebruikt de gebruiker certificaat met ' microsoft.com ' als laatste item.
+In bovenstaand geval gebruikt de gebruiker certificaat met 'microsoft.com' als laatste item.
 
 #### <a name="cause"></a>Oorzaak
 
-Dit is een bekend probleem in WCF: alleen de laatste DNSName in SAN worden gecontroleerd door WCF TLS/SSL-validatie. 
+Dit is een bekend probleem in WCF: Met WCF TLS/SSL-validatie wordt alleen de laatste DNSName in SAN gecontroleerd. 
 
 #### <a name="resolution"></a>Oplossing
 
-Een Joker teken certificaat wordt ondersteund in Azure Data Factory v2 zelf-hostende IR. Dit probleem treedt normaal op omdat het SSL-certificaat niet juist is. De laatste DNSName in SAN moet geldig zijn. Volg de onderstaande stappen om dit te controleren. 
+Een certificaat met jokertekens wordt ondersteund in zelf-hostende IR van Azure Data Factory v2. Dit probleem treedt normaal op omdat het SSL-certificaat niet correct is. De laatste DNSName in SAN moet geldig zijn. Volg de onderstaande stappen om dit te controleren. 
 1.  Open de beheer console, dubbel Controleer of het *onderwerp* en de *alternatieve naam* van het onderwerp in de certificaat gegevens. In het bovenstaande geval is het laatste item in *alternatieve naam voor onderwerp*, dat ' DNS-naam = Microsoft.com.com ' is, niet legitiem.
 2.  Neem contact op met het certificaat van het probleem met het bedrijf om de onjuiste DNS-naam te verwijderen.
 
@@ -72,42 +72,42 @@ Een Joker teken certificaat wordt ondersteund in Azure Data Factory v2 zelf-host
 
 #### <a name="symptoms"></a>Symptomen
 
-Wanneer u probeert de limiet van gelijktijdige taken van de Azure Data Factory-gebruikers interface te verhogen, wordt het vastlopen als *bijwerken* voor altijd.
-De maximum waarde van gelijktijdige taken is ingesteld op 24 en u wilt het aantal verhogen zodat taken sneller kunnen worden uitgevoerd. De minimum waarde die u kunt invoeren is 3 en de maximum waarde die u kunt invoeren is 32. U hebt de waarde van 24 tot en met 32 verhoogd en op de knop *bijwerken* geklikt, in de gebruikers interface die de update heeft *ontvangen zoals hieronder* wordt weer gegeven. Na het vernieuwen is de waarde van de klant nog steeds 24 gezien en is deze nooit bijgewerkt naar 32.
+Wanneer u probeert de limiet voor gelijktijdige taken probeert te verhogen vanuit de interface van Azure Data Factory, blijft deze hangen in de fase *bijwerken*.
+Het maximum aantal gelijktijdige taken was ingesteld op 24 en u wilt het aantal verhogen zodat taken sneller kunnen worden uitgevoerd. De minimumwaarde die u kunt invoeren is 3 en de maximumwaarde is 32. U hebt de waarde van 24 tot en met 32 verhoogd en op de knop *bijwerken* geklikt, in de gebruikers interface die de update heeft *ontvangen zoals hieronder* wordt weer gegeven. Na het vernieuwen bleef de klant de waarde 24 zien; deze werd nooit bijgewerkt naar 32.
 
 ![Status bijwerken](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>Oorzaak
 
-Er is een beperking voor de instelling als de waarde afhankelijk is van de logicCore en het geheugen van de computer, u kunt deze gewoon aanpassen naar een kleinere waarde, bijvoorbeeld 24 en het resultaat bekijken.
+Er is een beperking voor de instelling omdat de waarde afhankelijk is van de logicCore en het geheugen van de computer. U kunt deze gewoon wijzigen in een lagere waarde, bijvoorbeeld 24, en het resultaat bekijken.
 
 > [!TIP] 
 > - Raadpleeg [dit artikel](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)voor meer informatie over wat het Logic core-aantal is en hoe u het Logic core-aantal van de computer kunt vinden.
 > - Zie [dit artikel](https://www.rapidtables.com/calc/math/Log_Calculator.html)voor meer informatie over het berekenen van Math. log.
 
 
-### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Zelf-hostend SSL-certificaat probleem van IR-HA
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Probleem met SSL-certificaat voor zelf-hostende IR Hoge beschikbaarheid
 
 #### <a name="symptoms"></a>Symptomen
 
-Het zelf-hostende IR-werk knooppunt heeft de volgende fout gerapporteerd:
+Het werkknooppunt van zelf-hostende IR heeft de volgende fout gerapporteerd:
 
 `Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
 
 #### <a name="cause"></a>Oorzaak
 
-Wanneer er cases worden verwerkt die zijn gerelateerd aan SSL/TLS-Handshake, kunnen er problemen optreden met betrekking tot verificatie van de certificaat keten. 
+Bij de afhandeling van problemen met de SSL/TLS-handshake kunnen er problemen optreden met betrekking tot verificatie van de certificaatketen. 
 
 #### <a name="resolution"></a>Oplossing
 
 - Hier volgt een snelle en intuïtieve manier om problemen met de X. 509-certificaat keten op te lossen.
  
-    1. Exporteer het certificaat dat moet worden geverifieerd. Ga naar computer certificaat beheren en zoek het certificaat dat u wilt controleren en klik met de rechter muisknop op **alle taken**  ->  **exporteren**.
+    1. Exporteer het certificaat dat moet worden geverifieerd. Ga naar Computercertificaat beheren en zoek het certificaat dat u wilt controleren. Klik met de rechtermuisknop op **Alle taken** -> **Exporteren**.
     
         ![Taken exporteren](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. Kopieer het geëxporteerde certificaat naar de client computer. 
-    3. Voer de opdracht onder in CMD uit aan de client zijde. Zorg ervoor dat u hieronder *\<certificate path>* en *\<output txt file path>* tijdelijke aanduidingen met gerelateerde paden hebt vervangen.
+    3. Voer aan de clientzijde onderstaande opdracht uit in CMD. Zorg ervoor dat u hieronder *\<certificate path>* en *\<output txt file path>* tijdelijke aanduidingen met gerelateerde paden hebt vervangen.
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
@@ -118,7 +118,7 @@ Wanneer er cases worden verwerkt die zijn gerelateerd aan SSL/TLS-Handshake, kun
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. Controleer of er een fout is opgetreden in het uitvoer-txt-bestand. U vindt de samen vatting van de fout aan het einde van het txt-bestand.
+    4. Controleer of het uitvoer-txt-bestand fouten bevat. U vindt het overzicht van de fouten aan het einde van het txt-bestand.
 
         Bijvoorbeeld: 
 
@@ -133,18 +133,18 @@ Wanneer er cases worden verwerkt die zijn gerelateerd aan SSL/TLS-Handshake, kun
     1. U kunt deze informatie opvragen door de details van een certificaat te controleren.
     
         ![Details van certificaat](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
-    1. Voer de onderstaande opdracht uit. Zorg ervoor dat u *\<certificate path>* de tijdelijke aanduiding vervangen door het bijbehorende pad van het certificaat.
+    1. Voer onderstaande opdracht uit. Zorg ervoor dat u *\<certificate path>* de tijdelijke aanduiding vervangen door het bijbehorende pad van het certificaat.
     
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Vervolgens wordt het **hulp programma voor het ophalen van url's** geopend. U kunt certificaten van AIA, CDP en OCSP controleren door te klikken op de knop **ophalen** .
+    1. Vervolgens wordt het hulpprogramma **voor het ophalen van de URL** geopend. U kunt certificaten van AIA, CDP en OCSP controleren door te klikken op de knop **Ophalen**.
 
         ![Ophaal knop](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        De certificaat keten kan worden opgebouwd als het certificaat van AIA ' geverifieerd ' is en het certificaat van CDP of OCSP ' geverifieerd ' is.
+        De certificaatketen kan worden opgebouwd als het certificaat van AIA 'Geverifieerd' is en het certificaat van CDP of OCSP 'Geverifieerd' is.
 
-        Als er een fout optreedt bij het ophalen van AIA, CDP, werk met netwerk team om de client computer gereed te maken voor verbinding met de doel-URL. Het is voldoende als het HTTP-pad of het LDAP-pad kan worden geverifieerd.
+        Als er een fout optreedt bij het ophalen van AIA, CDP, neem dan contact op met het netwerkteam om de clientcomputer gereed te maken voor verbinding met de doel-URL. Het is voldoende als het HTTP-pad of het LDAP-pad kan worden geverifieerd.
 
 ### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Zelf-hostende IR kan bestand of assembly niet laden
 
@@ -165,7 +165,7 @@ Als u proces monitor neemt, ziet u het volgende resultaat:
 > [!TIP] 
 > U kunt het filter instellen, zoals in de onderstaande scherm afbeelding wordt weer gegeven.
 > Hiermee wordt aangegeven dat het dll **System. ValueTuple** zich niet bevindt in de map die is gerelateerd aan de GAC of in *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway*, of in de map *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* .
-> In principe wordt het dll-bestand van de map *GAC* eerst geladen en vervolgens van *gedeeld* en ten slotte vanuit de map *Gateway* . Daarom kunt u het dll-bestand op een wille keurig pad plaatsen dat nuttig kan zijn.
+> In principe wordt eerst geprobeerd om het dll-bestand te laden uit de map *GAC* en vervolgens uit *Shared* en ten slotte uit de map *Gateway*. Daarom kunt u het dll-bestand in een willekeurig pad plaatsen, wat het handigst is.
 
 ![Filters instellen](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ Als u proces monitor neemt, ziet u het volgende resultaat:
 
 U kunt vinden dat de **System.ValueTuple.dll** zich bevindt in de map *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* . Kopieer het **System.ValueTuple.dll** naar de map *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* om het probleem op te lossen.
 
-U kunt dezelfde methode gebruiken om een ander bestand of assembly ontbrekende problemen op te lossen.
+U kunt dezelfde methode gebruiken om problemen met andere ontbrekende bestanden of assembly's op te lossen.
 
 #### <a name="more-information"></a>Meer informatie
 
@@ -186,77 +186,77 @@ In de onderstaande fout ziet u duidelijk het assemblage *systeem. ValueTuple* is
 Zie [dit artikel](https://docs.microsoft.com/dotnet/framework/app-domains/gac)voor meer informatie over GAC.
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Controleren of de zelf-hostende IR-sleutel ontbreekt
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Controleren op ontbrekende sleutels voor zelf-hostende IR
 
 #### <a name="symptoms"></a>Symptomen
 
-De zelf-hostende Integration runtime gaat plotseling naar offline zonder sleutel, onder fout bericht wordt weer gegeven in het gebeurtenis logboek: `Authentication Key is not assigned yet`
+De zelf-hostende integratieruntime gaat plotseling offline zonder sleutel, en onderstaand foutbericht wordt weergegeven in het gebeurtenislogboek: `Authentication Key is not assigned yet`
 
 ![De verificatie sleutel ontbreekt](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>Oorzaak
 
-- Het zelf-hostende IR-knoop punt of de logische zelf-hostende IR in de portal wordt verwijderd.
-- Een schone verwijdering is voltooid.
+- Het knooppunt van de zelf-hostende IR of de logische zelf-hostende IR in de portal is verwijderd.
+- Er is een schone verwijdering uitgevoerd.
 
 #### <a name="resolution"></a>Oplossing
 
-Als geen van de bovenstaande oorzaken van toepassing is, kunt u naar de map gaan: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*en controleren of het bestand met de naam **configuraties** is verwijderd. Als de app wordt verwijderd, volgt u de instructies [hier](https://www.netwrix.com/how_to_detect_who_deleted_file.html) om te controleren wie het bestand verwijdert.
+Als geen van de bovenstaande oorzaken van toepassing is, kunt u naar de map gaan: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*en controleren of het bestand met de naam **configuraties** is verwijderd. Als deze is verwijderd, volgt u [deze instructies](https://www.netwrix.com/how_to_detect_who_deleted_file.html) om te controleren wie het bestand heeft verwijderd.
 
 ![Controleer het configuratie bestand](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
 
-### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Kan zelf-hostende IR niet gebruiken om twee on-premises gegevens archieven te bridgen
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Kan zelf-hostende IR niet gebruiken om twee on-premises gegevensarchieven te verbinden
 
 #### <a name="symptoms"></a>Symptomen
 
-Na het maken van een zelf-hostende IRs voor zowel bron-als doel gegevens archieven, wilt u de twee IRs samen met elkaar verbinden om een kopie te volt ooien. Als de gegevens archieven zijn geconfigureerd in verschillende VNETs of als ze het gateway mechanisme niet begrijpen, raakt u fouten als: *het stuur programma van de bron is niet gevonden in de doel-IR*. *de bron is niet toegankelijk voor de doel-IR*.
+Na het maken van zelf-hostende IR's voor zowel bron- als doelgegevensarchieven, wilt u de twee IR's verbinden om een kopie te verkrijgen. Als de gegevens archieven zijn geconfigureerd in verschillende VNETs of als ze het gateway mechanisme niet begrijpen, raakt u fouten als: *het stuur programma van de bron is niet gevonden in de doel-IR*. *de bron is niet toegankelijk voor de doel-IR*.
  
 #### <a name="cause"></a>Oorzaak
 
-De zelf-hostende IR is ontworpen als een centraal knoop punt van een Kopieer activiteit, niet een client agent die voor elk gegevens archief moet worden geïnstalleerd.
+De zelf-hostende IR is ontworpen als een centraal knooppunt van een kopieeractiviteit, niet als een clientagent die voor elk gegevensarchief moet worden geïnstalleerd.
  
-In het bovenstaande geval moet de gekoppelde service voor elk gegevens archief met dezelfde IR worden gemaakt en moet de IR toegang hebben tot beide gegevens archieven via het netwerk. Ongeacht de IR wordt geïnstalleerd met het brongegevens archief, het doel gegevens archief of op een derde computer, als twee gekoppelde services worden gemaakt met een andere IRs, maar in dezelfde Kopieer activiteit worden gebruikt, wordt de doel-IR gebruikt en moeten de Stuur Programma's voor beide gegevens archieven worden geïnstalleerd op de doel-IR-computer.
+In bovenstaand geval moet de gekoppelde service voor elk gegevensarchief met dezelfde IR worden gemaakt en moet de IR via het netwerk toegang hebben tot beide gegevensarchieven. Ongeacht of de IR is geïnstalleerd met brongegevensarchief, doelgegevensarchief of op een derde computer, als twee gekoppelde services worden gemaakt met verschillende IR's, maar worden gebruikt in dezelfde kopieeractiviteit, wordt de doel-IR gebruikt en moeten de stuurprogramma's voor beide gegevensarchieven op de doel-IR-computer worden geïnstalleerd.
 
 #### <a name="resolution"></a>Oplossing
 
-Installeer Stuur Programma's voor zowel de bron als de bestemming op de doel-IR, en zorg ervoor dat deze toegang heeft tot de brongegevens opslag.
+Installeer stuurprogramma's voor zowel de bron als de bestemming op de doel-IR en zorg ervoor dat deze toegang heeft tot het brongegevensarchief.
  
-Als het verkeer niet via het netwerk kan worden door gegeven tussen twee gegevens archieven (bijvoorbeeld als ze zijn geconfigureerd in twee VNETs), kunt u de kopie niet in één activiteit volt ooien, zelfs niet als er IR is geïnstalleerd. In dat geval kunt u twee Kopieer activiteiten maken met twee IRs, elk in een ventilator: 1 IR om te kopiëren van gegevens archief 1 naar Azure Blob Storage, een andere om te kopiëren van Azure Blob Storage naar gegevens archief 2. Dit kan de vereiste voor het gebruik van de IR simuleren om een brug te maken die twee niet-verbonden gegevens archieven verbindt.
+Als het verkeer het netwerk tussen twee gegevensarchieven niet kan passeren (bijvoorbeeld omdat ze zijn geconfigureerd in twee VNET's), kunt u de kopie niet in één activiteit voltooien, zelfs niet als IR is geïnstalleerd. In dat geval kunt u twee kopieeractiviteiten maken met twee IRs, elk in een VENT: 1 IR om te kopiëren uit gegevensarchief 1 naar Azure Blob Storage, een andere om te kopiëren van Azure Blob Storage naar gegevensarchief 2. Dit kan de vereiste simuleren om de IR te gebruiken voor het maken van een brug tussen twee niet-verbonden gegevensarchieven.
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Bij het synchroniseren van referenties is de referenties van HA verloren gegaan
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Probleem met de synchronisatie van referenties heeft tot gevolg dat referenties uit Hoge beschikbaarheid verloren gaan
 
 #### <a name="symptoms"></a>Symptomen
 
-De gegevens bron referentie "XXXXXXXXXX" wordt verwijderd uit het huidige Integration Runtime knoop punt met Payload "wanneer u de koppelings service op Azure Portal verwijdert of als de taak de verkeerde Payload heeft, maakt u opnieuw een nieuwe koppeling service met uw referenties.
+De referentie van de gegevensbron 'XXXXXXXXXX' is verwijderd van het huidige knooppunt voor Integration Runtime met nettolading "Wanneer u de koppelingsservice op de Azure-portal verwijdert, of wanneer de taak de verkeerde nettolading heeft, moet u opnieuw een nieuwe koppelingsservice maken met uw referentie".
 
 #### <a name="cause"></a>Oorzaak
 
-Uw zelf-hostende IR is gebouwd in de modus HA met twee knoop punten, maar deze hebben niet de synchronisatie status referenties, wat betekent dat de referenties die zijn opgeslagen in het knoop punt voor dispatcher niet worden gesynchroniseerd met andere werk knooppunten. Als er een failover optreedt van het knoop punt van de verzender naar het worker-knoop punt, maar de referenties zich alleen in het vorige dispatcher-knoop punt bevonden, mislukt de taak wanneer er wordt geprobeerd om toegang te krijgen tot referenties.
+Uw zelf-hostende IR is in de modus Hoge beschikbaarheid gebouwd met twee knooppunten, maar deze hebben niet de status voor synchronisatie van referenties. Dat betekent dat de referenties die zijn opgeslagen in het dispatcherknooppunt niet worden gesynchroniseerd met andere werkknooppunten. Als er een failover optreedt van het dispatcherknooppunt naar het werkknooppunt, maar de referenties zich alleen in het vorige dispatcherknooppunt bevinden, mislukt de taak wanneer er wordt geprobeerd om toegang te krijgen tot referenties.
 
 #### <a name="resolution"></a>Oplossing
 
-De enige manier om dit probleem te voor komen, is om ervoor te zorgen dat twee knoop punten de synchronisatie status van referenties hebben. Anders moet u de referenties voor de nieuwe dispatcher opnieuw invoeren.
+De enige manier om dit probleem te voorkomen, is door ervoor te zorgen dat de twee knooppunten de status voor synchronisatie van referenties hebben. Anders moet u de referenties voor de nieuwe dispatcher opnieuw invoeren.
 
 
 ### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Kan het certificaat niet kiezen vanwege een ontbrekende persoonlijke sleutel
 
 #### <a name="symptoms"></a>Symptomen
 
-1.  Een PFX-bestand importeren in het certificaat archief.
-2.  Wanneer u het certificaat selecteert via de IR-Configuration Manager gebruikers interface, hebt u de volgende fout melding:
+1.  Importeer een PFX-bestand in het certificaatarchief.
+2.  Wanneer u het certificaat selecteert via de Configuration Manager van de IR, wordt de volgende foutmelding gegenereerd:
 
     ![Persoonlijke sleutel ontbreekt](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>Oorzaak
 
-- Het gebruikers account heeft een beperkte bevoegdheid en heeft geen toegang tot de persoonlijke sleutel.
-- Het certificaat is gegenereerd als hand tekening, maar niet als sleutel uitwisseling.
+- Het gebruikersaccount heeft een beperkte bevoegdheid en heeft geen toegang tot de persoonlijke sleutel.
+- Het certificaat is gegenereerd als handtekening, maar niet als sleuteluitwisseling.
 
 #### <a name="resolution"></a>Oplossing
 
-1.  Gebruik een privileged account dat toegang heeft tot de persoonlijke sleutel om de gebruikers interface te kunnen gebruiken.
+1.  Gebruik een account met uitgebreide bevoegdheden dat toegang heeft tot de persoonlijke sleutel om de gebruikersinterface te kunnen gebruiken.
 2.  Voer de onderstaande opdracht uit om het certificaat te importeren:
     
     ```
@@ -574,50 +574,6 @@ Neem de netmon-tracering en analyseer verder.
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
     Daarom moet u het netwerk team om te controleren wat de vierde hop is van zelf-hostende IR. Als dit de firewall is als Linux-systeem, controleert u de logboeken op de reden dat het apparaat het pakket opnieuw instelt na de TCP 3-handshake. Als u echter niet zeker weet waar u moet onderzoeken, probeert u de netmon-tracering van de zelf-hostende IR en firewall samen te halen tijdens de problematische tijd om te achterhalen op welk apparaat dit pakket kan worden teruggezet en wordt de verbinding verbroken. In dit geval moet u ook uw netwerk team laten door lopen.
-
-### <a name="how-to-collect-netmon-trace"></a>Netmon-tracering verzamelen
-
-1.  Down load de Hulpprogram Ma's voor netmon van [deze website](https://cnet-downloads.com/network-monitor)en installeer deze op uw server computer (ongeacht welke server het probleem heeft) en de client (zoals zelf-hostende IR).
-
-2.  Maak een map, bijvoorbeeld in het volgende pad: *D:\netmon*. Zorg ervoor dat er voldoende ruimte is om het logboek op te slaan.
-
-3.  Leg de IP-en poort gegevens vast. 
-    1. Start een opdracht prompt.
-    2. Selecteer als administrator uitvoeren en voer de volgende opdracht uit:
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Leg de netmon-tracering (netwerk pakket) vast.
-    1. Start een opdracht prompt.
-    2. Selecteer als administrator uitvoeren en voer de volgende opdracht uit:
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. U kunt drie verschillende opdrachten gebruiken om de netwerk pagina vast te leggen:
-        - Optie A: RoundRobin-bestands opdracht (Hiermee wordt slechts één bestand vastgelegd en worden oude logboeken overschreven).
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - Optie B: geketende bestands opdracht (Hiermee wordt een nieuw bestand gemaakt als 200 MB is bereikt).
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - Optie C: opdracht gepland bestand.
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Druk op **CTRL + C** om te stoppen met het vastleggen van de netmon-tracering.
- 
-> [!NOTE]
-> Als u de netmon-tracering op de client computer alleen kunt verzamelen, moet u het IP-adres van de server ophalen om de tracering te analyseren.
 
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon-tracering analyseren
 

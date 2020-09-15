@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718200"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061152"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij in het opgegeven werk blad of bereik moet worden behandeld als een header regel met de namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard). | Nee       |
 | nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | Nee       |
 | compressie | Groep eigenschappen voor het configureren van bestands compressie. Configureer deze sectie als u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | Nee |
-| type<br/>(*onder `compression` *) | De compressie-codec die wordt gebruikt voor het lezen/schrijven van JSON-bestanden. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. te gebruiken bij het opslaan van het bestand. De standaard waarde is niet gecomprimeerd.<br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '.<br>**Opmerking** wanneer u Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source zip file>/` . | Nee.  |
+| type<br/>(*onder `compression` *) | De compressie-codec die wordt gebruikt voor het lezen/schrijven van JSON-bestanden. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **TarGzip**, **Snappy**of **LZ4**. De standaard waarde is niet gecomprimeerd.<br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '.<br>**Opmerking** wanneer u Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source zip file>/` . | Nee.  |
 | niveau<br/>(*onder `compression` *) | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van een Excel-gegevensset op Azure Blob Storage:
@@ -104,7 +104,7 @@ In het toewijzen van gegevens stromen kunt u Excel-indeling lezen in de volgende
 
 ### <a name="source-properties"></a>Bron eigenschappen
 
-De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een Excel-bron. U kunt deze eigenschappen bewerken op het tabblad **bron opties** . Wanneer u inline gegevensset gebruikt, ziet u aanvullende Bestands instellingen die hetzelfde zijn als de eigenschappen die worden beschreven in de sectie [Eigenschappen van gegevensset](#dataset-properties) .
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een Excel-bron. U kunt deze eigenschappen bewerken op het tabblad **bron opties** . Bij gebruik van een inline-gegevensset worden extra Bestands instellingen weer geven, die hetzelfde zijn als de eigenschappen die worden beschreven in de sectie [Eigenschappen van gegevensset](#dataset-properties) .
 
 | Naam                      | Beschrijving                                                  | Vereist | Toegestane waarden                                            | Eigenschap gegevens stroom script         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
@@ -148,6 +148,6 @@ source(allowSchemaDrift: true,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

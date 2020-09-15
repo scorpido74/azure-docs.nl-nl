@@ -3,12 +3,12 @@ title: Problemen met Azure Event Hubs voor Apache Kafka oplossen
 description: In dit artikel wordt beschreven hoe u problemen kunt oplossen met Azure Event Hubs voor Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090566"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061424"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Gids voor het oplossen van problemen met Apache Kafka voor Event Hubs
 In dit artikel vindt u tips voor het oplossen van problemen die kunnen optreden bij het gebruik van Event Hubs voor Apache Kafka. 
@@ -55,7 +55,7 @@ Controleer de volgende items als u problemen ziet wanneer u Kafka gebruikt op Ev
 - **Sasl-verificatie** : als u uw Framework wilt laten samen werken met het SASL-verificatie protocol dat vereist is voor Event hubs, kan dat lastiger zijn dan aan het oog. Controleer of u problemen met de configuratie kunt oplossen met behulp van de resources van uw Framework op SASL-verificatie. 
 
 ## <a name="limits"></a>Limieten
-Apache Kafka versus Event Hubs Kafka. Event Hubs Kafka heeft in het algemeen dezelfde standaard instellingen, eigenschappen, fout codes en algemene werking Apache Kafka. De instanties die deze twee expliciet verschillen (of waarbij Event Hubs een limiet oplegt die niet Kafka) worden hieronder weer gegeven:
+Apache Kafka versus Event Hubs Kafka. Voor de meeste delen heeft de Kafka-interface van Azure Event Hubs dezelfde standaard instellingen, eigenschappen, fout codes en algemene werking Apache Kafka. De instanties die deze twee expliciet verschillen (of waarbij Event Hubs een limiet oplegt die niet Kafka) worden hieronder weer gegeven:
 
 - De maximale lengte van de `group.id` eigenschap is 256 tekens
 - De maximale grootte van `offset.metadata.max.bytes` is 1024 bytes

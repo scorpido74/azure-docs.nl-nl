@@ -1,9 +1,9 @@
 ---
-title: Wat is Oracle WebLogic Server op Azure?
+title: Oracle WebLogic Server op Azure-oplossingen
 description: Meer informatie over het uitvoeren van Oracle WebLogic Server op Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: edburns
+author: rezar
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,47 +12,57 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2020
-ms.author: edburns
-ms.openlocfilehash: fe247e75040f658beb94a66176f802993268a7d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.author: rezar
+ms.openlocfilehash: e408f9e245fb78b475a194bc0db6f1edfdf85b41
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851852"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069715"
 ---
-# <a name="what-is-oracle-weblogic-server-on-azure"></a>Wat is Oracle WebLogic Server op Azure?
+# <a name="solutions-for-running-oracle-weblogic-server-on-azure"></a>Oplossingen voor het uitvoeren van Oracle WebLogic Server op Azure
 
-Op deze pagina worden oplossingen beschreven voor het uitvoeren van een WebLogic-Server (WLS) op Azure Virtual Machines.  Deze oplossingen zijn gezamenlijk ontwikkeld door Oracle en micro soft.
+Op deze pagina worden de oplossingen beschreven voor het uitvoeren van een WebLogic-WLS-server op Azure virtual machines. Deze oplossingen zijn gezamenlijk ontwikkeld door Oracle en micro soft.
 
-Oracle WebLogic Server is de eerste Cloud systeem eigen, zakelijke Java-platform toepassings server voor het ontwikkelen en implementeren van gedistribueerde zakelijke toepassingen met meerdere lagen. Azure WebLogic Server biedt u de mogelijkheid om Cloud computing te gebruiken.  U krijgt meer keuze en flexibiliteit voor WebLogic-migratie, waaronder lift en verschuiving van uw Java et-toepassingen naar Azure Cloud.   WLS op Azure levert grote gevolgen met een kleine moeite. De aanbiedingen bieden u de mogelijkheid om uw LOB-toepassingen (line-of-Business) snel te starten.  Elke aanbieding biedt automatisch virtuele netwerk-, opslag-en Linux-resources.  Als er geen poging is gedaan, wordt de WebLogic-Server geïnstalleerd.  WLS op Azure stelt beveiliging in met een netwerk beveiligings groep, taak verdeling met Azure-app gateway, verificatie met Azure Active Directory en maakt automatisch verbinding met uw bestaande data base.
+WLS is een toonaangevende Java-toepassings server waarop enkele van de meest essentiële zakelijke Java-toepassingen op de hele wereld worden uitgevoerd. WLS vormt de middleware Foundation voor de Oracle-software suite. Oracle en micro soft zijn van belang om WLS-klanten keuze en flexibiliteit te bieden voor het uitvoeren van werk belastingen op Azure als een toonaangevend Cloud platform.
 
-:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="U kunt Azure Portal gebruiken om WebLogic Server te implementeren op Azure":::
+De Azure WLS-oplossingen zijn bedoeld om het zo eenvoudig mogelijk te maken om uw Java-toepassingen naar Azure virtual machines te tillen en te verplaatsen door de meeste standaard bewerkingen te automatiseren. Met de oplossingen worden automatisch virtuele netwerk-, opslag-, Java-en Linux-Resources ingericht. Met minimale inspanning wordt WebLogic-Server geïnstalleerd. De oplossingen kunnen beveiliging instellen met een netwerk beveiligings groep, taak verdeling met Azure-app gateway en verificatie met Azure Active Directory. U kunt ook automatisch verbinding maken met uw bestaande data base, inclusief Azure PostgreSQL, Azure SQL en Oracle DB op de Oracle-Cloud of Azure. De weg kaart voor de oplossingen omvat de mogelijkheid om gedistribueerde logboek registratie en gedistribueerde caching via Oracle samen te stellen. Micro soft en Oracle zijn partner om Vergelijk bare functionaliteit in te scha kelen voor WebLogic en de Azure Kubernetes-service (AKS).
 
-Er zijn vier aanbiedingen beschikbaar om te voldoen aan verschillende scenario's: Eén knoop punt zonder een beheer server, één knoop punt met een beheer server, cluster en dynamisch cluster.  Probeer de aanbiedingen, ze zijn gratis beschikbaar.
+:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="U kunt de Azure Portal gebruiken om WebLogic Server te implementeren op Azure":::
 
-_Deze aanbiedingen zijn uw eigen licentie_. Er wordt ervan uitgegaan dat u de juiste licenties voor Oracle al hebt en een juiste licentie hebt voor het uitvoeren van aanbiedingen in Microsoft Azure.
+Er zijn vier aanbiedingen beschikbaar om te voldoen aan verschillende scenario's: Eén knoop punt zonder een beheer server, één knoop punt met een beheer server, cluster en dynamisch cluster. De aanbiedingen zijn gratis beschikbaar. Deze aanbiedingen worden hieronder beschreven en gekoppeld.
 
-_Als u nauw keurig wilt werken met uw migratie scenario's met het technische team dat deze aanbiedingen ontwikkelt, selecteert u de knop [contact opnemen](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) _ in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview). Programma managers, Architects en technici komen binnenkort terug en beginnen samen te werken.
+_Deze aanbiedingen zijn uw eigen licentie_. Er wordt ervan uitgegaan dat u de juiste licenties voor Oracle al hebt en een juiste licentie hebt voor het uitvoeren van aanbiedingen in Azure.
+
+De aanbiedingen bieden ondersteuning voor verschillende besturings systemen, Java-en WLS-versies via basis installatie kopieën (zoals WebLogic Server 14 en JDK 11 op Oracle Linux 7,6). Deze basis installatie kopieën zijn ook op hun eigen beschikbaar in Azure. De basis installatie kopieën zijn geschikt voor klanten die complexe, aangepaste Azure-implementaties nodig hebben. De huidige set basis installatie kopieën is [hier](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)beschikbaar.
+
+_Als u geïnteresseerd bent in het samen werken met uw migratie scenario's met het technische team dat deze aanbiedingen ontwikkelt, selecteert u de knop [contact opnemen](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) _ op de [pagina overzicht van Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview). Programma managers, Architects en technici zullen binnenkort een back-up maken en de samen werking sluiten. De kans om samen te werken aan een migratie scenario is gratis, terwijl de aanbiedingen onder actieve ontwikkeling vallen.
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic-Server met één knoop punt
 
-Deze aanbieding biedt een enkele virtuele machine en installeert WLS hierop. Er wordt geen domein gemaakt of de beheer server wordt gestart. Eén knoop punt is handig voor scenario's met een zeer aangepaste domein configuratie.
+Deze aanbieding biedt een enkele virtuele machine en installeert WLS hierop. Er wordt geen domein gemaakt of de beheer server wordt gestart. De aanbieding met één knoop punt is handig voor scenario's met een zeer aangepaste domein configuratie.
 
 ## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic Server met de-beheer server
 
-Deze aanbieding biedt een enkele virtuele machine en installeert WLS hierop. Er wordt een domein gemaakt en de beheer server wordt gestart, waarmee u het domein kunt beheren.
+Deze aanbieding biedt een enkele virtuele machine en installeert WLS hierop. Er wordt een domein gemaakt en de beheer server wordt gestart. U kunt het domein beheren en meteen aan de slag met toepassings implementaties.
 
 ## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server-cluster
 
-Met deze aanbieding maakt u een Maxi maal beschikbaar cluster van virtuele WLS-machines. De-beheer server en alle beheerde servers worden standaard gestart, zodat u het domein kunt beheren.
+Met deze aanbieding maakt u een Maxi maal beschikbaar cluster van virtuele WLS-machines. De-beheer server en alle beheerde servers worden standaard gestart. U kunt het cluster beheren en meteen aan de slag met Maxi maal beschik bare toepassingen.
 
 ## <a name="oracle-weblogic-server-dynamic-cluster"></a>Dynamische Oracle WebLogic Server-cluster
 
-Met deze aanbieding maakt u een Maxi maal beschik bare en schaalbaar dynamisch cluster van virtuele WLS-machines. De-beheer server en alle beheerde servers worden standaard gestart, zodat u het domein kunt beheren.
+Met deze aanbieding maakt u een Maxi maal beschik bare en schaalbaar dynamisch cluster van virtuele WLS-machines. De-beheer server en alle beheerde servers worden standaard gestart.
+
+Met de oplossingen wordt een breed scala aan productie-Kante implementatie architecturen met relatief gemak ingeschakeld. U kunt op de meest productieve manier voldoen aan de meeste migratie aanvragen door de ontwikkeling van zakelijke toepassingen te richten.
+
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Er zijn complexe WebLogic-Server implementaties ingeschakeld in azure":::
+
+Behalve wat automatisch door de oplossingen wordt ingericht, hebben klanten volledige flexibiliteit om hun implementaties verder aan te passen. De configuratie van de implementatie van toepassingen wordt waarschijnlijk uitgebreid met de implementaties van andere Azure-resources. Klanten wordt aangeraden feedback te geven over het verbeteren van de oplossingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken de aanbiedingen in azure Marketplace.
+Verken de aanbiedingen op Azure.
 
 > [!div class="nextstepaction"]
 > [Oracle WebLogic-Server met één knoop punt](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls)

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652972"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068044"
 ---
 # <a name="common-questions"></a>Veelgestelde vragen
 
@@ -24,7 +24,13 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over [Azure resource-Ov
 
 Resource-overdrijfing is momenteel beschikbaar als open bare preview. Werk belastingen voor productie worden ondersteund.
 
-## <a name="region-move"></a>Regio verplaatsen
+
+
+## <a name="moving-across-regions"></a>Verplaatsen tussen regio's
+
+### <a name="can-i-move-resources-across-any-regions"></a>Kan ik resources over alle regio's verplaatsen?
+
+Op dit moment kunt u resources verplaatsen van elke open bare bron regio naar een open bare doel regio, afhankelijk van de [beschik bare resource typen in die regio](https://azure.microsoft.com/global-infrastructure/services/). Het verplaatsen van resources in Azure Government regio's wordt momenteel niet ondersteund.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Welke resources kan ik verplaatsen tussen regio's met resource-overdrijf?
 
@@ -34,13 +40,19 @@ Met resource-overzetten kunt u momenteel de volgende resources verplaatsen tusse
 - NIC’s
 - Beschikbaarheidssets 
 - Virtuele netwerken van Azure 
-- Open bare IP-adressen netwerk beveiligings groepen (Nsg's)
+- Openbare IP-adressen
+- Netwerkbeveiligingsgroepen (NSG's)
 - Interne en open bare load balancers 
 - Azure SQL-data bases en elastische Pools
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan ik resources verplaatsen tussen abonnementen wanneer ik deze Verplaats tussen regio's?
+
+U kunt het abonnement wijzigen nadat u resources naar de doel regio hebt verplaatst. Meer [informatie](../azure-resource-manager/management/move-resource-group-and-subscription.md) over het verplaatsen van resources naar een ander abonnement. 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>Waar worden de meta gegevens over een regio opgeslagen?
 
-Het wordt opgeslagen in een [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) -data base en in [Azure Blob-opslag](../storage/common/storage-service-encryption.md), in een micro soft-abonnement.
+Het wordt opgeslagen in een [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) -data base en in [Azure Blob-opslag](../storage/common/storage-service-encryption.md), in een micro soft-abonnement. Momenteel worden meta gegevens opgeslagen in VS-Oost 2 en Europa-noord. Deze dekking wordt uitgebreid naar andere regio's. Hierdoor hoeft u geen resources over alle open bare regio's te verplaatsen.
 
 ### <a name="is-the-collected-metadata-encrypted"></a>Zijn de verzamelde meta gegevens versleuteld?
 

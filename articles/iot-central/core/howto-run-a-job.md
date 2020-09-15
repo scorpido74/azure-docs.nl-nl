@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 09/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 82a370bcda2d762abb36e6e43ab755c45348e4c5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019952"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060812"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Een taak maken en uitvoeren in uw Azure IoT Central-toepassing
 
@@ -38,7 +38,7 @@ In het volgende voor beeld ziet u hoe u een taak maakt en uitvoert om de lichte 
 
     Selecteer **opslaan en sluiten** om de taak toe te voegen aan de lijst met opgeslagen taken op de pagina **taken** . U kunt later terugkeren naar een taak in de lijst met opgeslagen taken.
 
-    Selecteer **volgende** om over te scha kelen naar de pagina **controleren** . Op de pagina * * controle * * * * worden de taak configuratie details weer gegeven. Selecteer **uitvoeren** om de taak te verzenden.
+    Selecteer **volgende** om over te scha kelen naar de pagina **controleren** . Op de pagina **controleren** worden de taak configuratie details weer gegeven. Selecteer **uitvoeren** om de taak te verzenden.
 
     :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="Scherm opname van wizard voor taak pagina controleren":::
 

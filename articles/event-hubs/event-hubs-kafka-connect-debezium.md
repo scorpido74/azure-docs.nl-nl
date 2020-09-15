@@ -1,16 +1,16 @@
 ---
 title: Apache Kafka verbinding met Azure Event Hubs (preview) integreren met Debezium voor Change Data Capture
-description: In dit artikel vindt u informatie over het gebruik van Apache Spark met Azure Event Hubs voor Kafka.
+description: Dit artikel bevat informatie over het gebruik van Debezium met Azure Event Hubs voor Kafka.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136889"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061679"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Apache Kafka Connect-ondersteuning op Azure Event Hubs (preview) integreren met Debezium voor Change Data Capture
 
@@ -51,7 +51,7 @@ In deze sectie komen de volgende onderwerpen aan bod:
 ### <a name="download-and-setup-debezium-connector"></a>Debezium-connector downloaden en instellen
 Volg de laatste instructies in de [Debezium-documentatie](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-deploying-a-connector) om de connector te downloaden en in te stellen.
 
-- Down load het invoeg toepassings archief van de connector. Als u bijvoorbeeld `1.2.0` de versie van de connector wilt downloaden, gebruikt u deze koppeling:https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
+- Down load het invoeg toepassings archief van de connector. Als u bijvoorbeeld `1.2.0` de versie van de connector wilt downloaden, gebruikt u deze koppeling: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.2.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz
 - Pak de JAR-bestanden uit en kopieer deze naar de [Kafka Connect-invoeg toepassing. pad](https://kafka.apache.org/documentation/#connectconfigs).
 
 
@@ -133,7 +133,7 @@ Maak een configuratie bestand ( `pg-source-connector.json` ) voor de postgresql-
 ```
 
 > [!TIP]
-> `database.server.name`het kenmerk is een logische naam die een naam ruimte identificeert en biedt voor de specifieke PostgreSQL-database server of het cluster dat wordt bewaakt. Raadpleeg de [Debezium-documentatie](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) voor gedetailleerde informatie.
+> `database.server.name` het kenmerk is een logische naam die een naam ruimte identificeert en biedt voor de specifieke PostgreSQL-database server of het cluster dat wordt bewaakt. Raadpleeg de [Debezium-documentatie](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-property-database-server-name) voor gedetailleerde informatie.
 
 Als u een exemplaar van de connector wilt maken, gebruikt u het Kafka Connect REST API-eind punt:
 

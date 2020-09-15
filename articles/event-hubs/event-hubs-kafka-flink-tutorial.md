@@ -3,17 +3,16 @@ title: Apache flink gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Doc
 description: Dit artikel bevat informatie over het verbinden van Apache flink met een Azure-Event Hub
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2e6eeb74c5a334d1692357edec0fd363349c7c0
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320135"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061645"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Flink gebruiken met Azure Event Hubs voor Apache Kafka
-In deze zelf studie leert u hoe u Apache flink verbindt met een Event Hub zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html).
+In deze zelf studie leert u hoe u Apache flink verbindt met een Event Hub zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Zie [Event hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)voor meer informatie over de ondersteuning van Event hubs voor het Apache Kafka Consumer-protocol.
 
-Een van de belangrijkste voor delen van het gebruik van Apache Kafka is het ecosysteem van frameworks waarmee het kan worden verbonden. Event Hubs combineert de flexibiliteit van Kafka met de schaal baarheid, consistentie en ondersteuning van het Azure-ecosysteem.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -23,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 > * Flink-consument uitvoeren
 
 > [!NOTE]
-> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)
+> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,10 +30,10 @@ Als u deze zelf studie wilt volt ooien, moet u beschikken over de volgende verei
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door. 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks)
     * Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.
     * Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
-* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief
+* Een binair archief van Maven [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)
     * Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 * [Git](https://www.git-scm.com/downloads)
     * Op Ubuntu kunt u `sudo apt-get install git` uitvoeren om Git te installeren.

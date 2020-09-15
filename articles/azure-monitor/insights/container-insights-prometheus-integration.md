@@ -3,14 +3,14 @@ title: Azure Monitor configureren voor containers Prometheus-integratie | Micros
 description: In dit artikel wordt beschreven hoe u de Azure Monitor voor containers agent kunt configureren voor het opwaarderen van metrische gegevens uit Prometheus met uw Kubernetes-cluster.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800457"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069421"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Het opvallen van Prometheus-metrische gegevens met Azure Monitor voor containers configureren
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Scraping van metrische gegevens voor Prometheus configureren met Azure Monitor voor containers
 
 [Prometheus](https://prometheus.io/) is een populaire open source-bewakings oplossing en maakt deel uit van de [eigen Cloud Compute Foundation](https://www.cncf.io/). Azure Monitor voor containers biedt een naadloze voorbereidings ervaring voor het verzamelen van metrische gegevens over Prometheus. Als u Prometheus wilt gebruiken, moet u normaal gesp roken een Prometheus-server met een archief instellen en beheren. Door te integreren met Azure Monitor is een Prometheus-server niet vereist. U hoeft het Prometheus-eind punt voor metrische gegevens alleen zichtbaar te maken via uw Exporters of peulen (toepassing), en de door de container geplaatste agent voor Azure Monitor voor containers kan de metrische gegevens voor u oplopen. 
 
@@ -49,8 +49,8 @@ Wanneer een URL is opgegeven, wordt het eind punt alleen door Azure Monitor voor
 | Cluster-breed | | | | Geef een van de volgende drie methoden op om eind punten voor metrische gegevens af te vallen. |
 | | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
 | | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean-waarde | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean-waarde | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods`moet worden ingesteld op `true` . |
+| | `monitor_kubernetes_pods` | Booleaans | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Booleaans | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet worden ingesteld op `true` . |
 | | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, in op `https` . | 
 | | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet is `/metrics` , definieert u dit met deze aantekening. |
 | | `prometheus.io/port` | Tekenreeks | 9102 | Geef een poort op waarvan u wilt uitvallen. Als poort niet is ingesteld, wordt de standaard waarde van 9102. |
@@ -142,7 +142,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor de volgen
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
@@ -259,7 +259,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor uw Azure 
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```

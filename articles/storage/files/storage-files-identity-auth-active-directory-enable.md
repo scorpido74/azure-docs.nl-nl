@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272328"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061815"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Overzicht-on-premises Active Directory Domain Services authenticatie via SMB voor Azure-bestands shares
 
@@ -24,7 +24,7 @@ Als u geen ervaring hebt met Azure-bestands shares, raden we u aan onze [plannin
 
 - AD DS-identiteiten die worden gebruikt voor Azure Files on-premises AD DS verificatie moeten worden gesynchroniseerd met Azure AD. Synchronisatie van wacht woord-hash is optioneel. 
 - Biedt ondersteuning voor Azure-bestands shares die worden beheerd door Azure File Sync.
-- Ondersteunt Kerberos-verificatie met AD met RC4-HMAC-versleuteling. AES Kerberos-versleuteling wordt nog niet ondersteund.
+- Ondersteunt Kerberos-verificatie met AD met RC4-HMAC en AES 256-versleuteling. AES 128 Kerberos-versleuteling wordt nog niet ondersteund.
 - Biedt ondersteuning voor eenmalige aanmelding.
 - Alleen ondersteund op clients met een nieuwere versie van het besturings systeem dan Windows 7 of Windows Server 2008 R2.
 - Alleen ondersteund voor het AD-forest waarin het opslag account is geregistreerd. U kunt standaard alleen toegang krijgen tot Azure-bestands shares met de AD DS referenties van één forest. Als u toegang nodig hebt tot uw Azure-bestands share vanuit een ander forest, moet u ervoor zorgen dat u de juiste forestvertrouwensrelatie hebt geconfigureerd. Raadpleeg de [Veelgestelde vragen](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) voor meer informatie.

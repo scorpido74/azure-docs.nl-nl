@@ -1,20 +1,20 @@
 ---
 title: Netwerk adapters beheren voor on-premises nood herstel met Azure Site Recovery
 description: Hierin wordt beschreven hoe u netwerk interfaces beheert voor on-premises herstel na nood gevallen naar Azure met Azure Site Recovery
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129884"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068112"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>VM-netwerk interfaces beheren voor on-premises herstel na nood gevallen naar Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>VM-netwerkinterfaces beheren voor herstel na noodgevallen van on-premises naar Azure
 
 Aan een virtuele machine (VM) in azure moet minstens één netwerk interface zijn gekoppeld. Er kunnen zoveel netwerk interfaces aan zijn gekoppeld als de VM-grootte ondersteunt.
 

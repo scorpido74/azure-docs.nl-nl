@@ -3,18 +3,18 @@ title: Apache Kafka ontwikkelaars handleiding voor Event Hubs
 description: Dit artikel bevat koppelingen naar artikelen waarin wordt beschreven hoe u uw Kafka-toepassingen integreert met Azure Event Hubs.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314244"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061730"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs
 Dit artikel bevat koppelingen naar artikelen waarin wordt beschreven hoe u uw Apache Kafka-toepassingen integreert met Azure Event Hubs. 
 
 ## <a name="overview"></a>Overzicht
-Event Hubs biedt een Kafka-eind punt dat door uw bestaande op Kafka gebaseerde toepassingen kan worden gebruikt als alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs ondersteunt Apache Kafka Protocol 1,0 en hoger en werkt met uw bestaande Kafka-toepassingen, waaronder MirrorMaker. Zie [Event hubs voor Apache Kafka voor](event-hubs-for-kafka-ecosystem-overview.md) meer informatie.
+Event Hubs biedt een Kafka-eind punt dat door uw bestaande op Kafka gebaseerde toepassingen kan worden gebruikt als alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs werkt met veel van uw bestaande Kafka-toepassingen. Zie [Event hubs voor Apache Kafka voor](event-hubs-for-kafka-ecosystem-overview.md) meer informatie.
 
 ## <a name="quickstarts"></a>Snelstartgidsen
 U vindt Quick starts in GitHub en in deze inhoudsset waarmee u snel op Event Hubs kunt komen voor Kafka.
@@ -22,7 +22,7 @@ U vindt Quick starts in GitHub en in deze inhoudsset waarmee u snel op Event Hub
 ### <a name="quickstarts-in-github"></a>Quick starts in GitHub
 Raadpleeg de volgende Quick starts in de **Azure-Event-hubs-for-Kafka** -opslag plaats: 
 
-| Client taal/-Framework | Description | 
+| Client taal/-Framework | Beschrijving | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voorbeeld producent en een consument die is geschreven in C# met behulp van .NET Core 2,0.</p><p>Dit voor beeld is gebaseerd op [confluente Apache Kafka .net-client](https://github.com/confluentinc/confluent-kafka-dotnet), gewijzigd voor gebruik met Event hubs voor Kafka.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en er verbinding mee kunt maken met behulp van een voorbeeld producent en een consument die is geschreven in Java. |
@@ -34,7 +34,7 @@ Raadpleeg de volgende Quick starts in de **Azure-Event-hubs-for-Kafka** -opslag 
 | [Kafkacat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | kafkacat is een niet-JVM opdracht regel verbruiker en producent op basis van librdkafka, populair vanwege de snelheid en de geringe footprint. Deze Snelstartgids bevat een voor beeld van een configuratie en enkele eenvoudige voor beelden van kafkacat-opdrachten. | 
  
 ### <a name="quickstarts-in-docs"></a>Quick starts in DOCS
-Bekijk de Quick Start: [gegevensstreaming met Event hubs met behulp van het Kafka-protocol](event-hubs-quickstart-kafka-enabled-event-hubs.md) in deze inhoudsset, dat stapsgewijze instructies bevat voor het streamen van gegevens in Event hubs. U leert hoe u uw producenten en consumenten kunt gebruiken om te praten met Event Hubs met alleen een configuratie wijziging in uw toepassingen. 
+Bekijk de Quick Start: [gegevensstreaming met Event hubs met behulp van het Kafka-protocol](event-hubs-quickstart-kafka-enabled-event-hubs.md) in deze inhoudsset, dat stapsgewijze instructies bevat voor het streamen van gegevens in Event hubs. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs, kunnen praten met slechts een configuratiewijziging in uw toepassingen. 
 
 
 ## <a name="tutorials"></a>Zelfstudies 
@@ -63,7 +63,7 @@ Zie ook de zelf studie: [proces Apache Kafka voor Event hubs gebeurtenissen met 
 ## <a name="how-to-guides"></a>Instructiegidsen
 Raadpleeg de volgende hand leidingen in onze documentatie:
 
-| Artikel | Description | 
+| Artikel | Beschrijving | 
 | ------- | ----------- | 
 | [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md) | Laat zien hoe u een Kafka-Broker kunt spie gelen in een Event Hub met behulp van Kafka MirrorMaker. |
 | [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md) | Helpt u bij het aansluiten van uw Spark-toepassing op Event Hubs voor realtime-streaming. |

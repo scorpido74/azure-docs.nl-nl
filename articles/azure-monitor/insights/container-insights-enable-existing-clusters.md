@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen van bewaking van een Azure Kub
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 033e6e5e78d59cf4c1048ff63a6d19fee66c7841
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320337"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068424"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -28,7 +28,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
 
-Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld hoeft u geen bestaande werk ruimte te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region> *.
+Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld bent u niet verplicht een bestaande werk ruimte vooraf te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region> *.
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 47d9a8ff884e29dc5692c97d5e7867a856d01063
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590646"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069121"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v2 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -36,186 +36,177 @@ ms.locfileid: "88590646"
 > * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
-Met de lente gegevens Azure Cosmos DB v2 voor core (SQL) kunnen ontwikkel aars Azure Cosmos DB gebruiken in veer toepassingen. Lente gegevens Azure Cosmos DB maakt de lente gegevens interface beschikbaar voor het bewerken van data bases en verzamelingen, het werken met documenten en het uitgeven van query's. Zowel synchronisatie-als async-Api's (reactieve) worden ondersteund in hetzelfde maven-artefact. 
+ Lente gegevens Azure Cosmos DB versie 2 voor core (SQL) kunnen ontwikkel aars Azure Cosmos DB gebruiken in lente-toepassingen. Lente gegevens Azure Cosmos DB maakt de lente gegevens interface beschikbaar voor het bewerken van data bases en verzamelingen, het werken met documenten en het uitgeven van query's. Zowel synchronisatie-als async-Api's (reactieve) worden ondersteund in hetzelfde maven-artefact. 
 
-Het [lente-Framework](https://spring.io/projects/spring-framework) is een programmeer-en configuratie model dat het ontwikkelen van Java-toepassingen stroomlijnt. Als u de website van de organisatie wilt citeren, stroomlijnt lente de ' sanitaire ' van toepassingen die gebruikmaken van afhankelijkheids injectie. Veel ontwikkel aars zoals lente, want het maken en testen van toepassingen wordt gecompliceerder. [Spring boot](https://spring.io/projects/spring-boot) breidt dit idee uit van het afhandelen van de sanitair met een ogen ding van webtoepassingen en de ontwikkeling van micro Services. [Lente gegevens](https://spring.io/projects/spring-data) is een programmeer model voor het verkrijgen van toegang tot gegevens opslag zoals Azure Cosmos DB vanuit de context van een lente-of Spring boot-toepassing. 
+Het [lente-Framework](https://spring.io/projects/spring-framework) is een programmeer-en configuratie model dat het ontwikkelen van Java-toepassingen stroomlijnt. Lente stroomlijnt de ' sanitaire ' van toepassingen met behulp van afhankelijkheids injectie. Veel ontwikkel aars, zoals lente, maken het bouwen en testen van toepassingen eenvoudiger. [Spring boot](https://spring.io/projects/spring-boot) breidt deze verwerking van de sanitaire toepassing uit met een ogen ding voor de ontwikkeling van een web-app en micro Services. [Lente gegevens](https://spring.io/projects/spring-data) is een programmeer model voor het verkrijgen van toegang tot gegevens opslag zoals Azure Cosmos DB vanuit de context van een lente-of Spring boot-toepassing. 
 
 U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https://azure.microsoft.com/services/spring-cloud/) toepassingen.
 
 > [!IMPORTANT]  
-> Deze release opmerkingen zijn voor v2 met lente gegevens Azure Cosmos DB. [Hier](sql-api-sdk-java-spring-v3.md)vindt u informatie over de release van v3. 
+> Deze release opmerkingen zijn voor versie 2 van Lente gegevens Azure Cosmos DB. U vindt [hier release opmerkingen voor versie 3](sql-api-sdk-java-spring-v3.md). 
 >
-> Lente gegevens Azure Cosmos DB bieden alleen ondersteuning voor SQL API.
+> Lente gegevens Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
-> De volgende hand leidingen ondersteunen lente gegevens op andere Azure Cosmos DB-Api's:
+> Raadpleeg de volgende artikelen voor informatie over Lente gegevens op andere Azure Cosmos DB-Api's:
 > * [Lente gegevens voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [Lente gegevens MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [Lente gegevens Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Wilt u snel aan de slag?
-> 1. Installeer de [Mini maal ondersteunde Java-runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable) , zodat u de SDK kunt gebruiken.
-> 2. Maak een lente-data Azure Cosmos DB-app met behulp [van](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)de starter.
-> 3. Werk via de [hand leiding voor de lente gegevens Azure Cosmos DB ontwikkel aars](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) die de basis Azure Cosmos DB aanvragen doorloopt.
+> 1. Installeer de [Mini maal ondersteunde Java-runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable), zodat u de SDK kunt gebruiken.
+> 2. Maak een lente data Azure Cosmos DB-app met behulp van de [starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Eenvoudiger kan niet!
+> 3. Werk met de [lente gegevens Azure Cosmos DB ontwikkelaars handleiding](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), die de basis Azure Cosmos DB aanvragen doorloopt.
 >
-> U kunt snelle opstart starter-apps snel met [lente initialiseren](https://start.spring.io/).
+> U kunt snel opvallen van Lente-boot starter-apps met een [lente initialisatie functie](https://start.spring.io/).
 >
 
-## <a name="helpful-content"></a>Nuttige inhoud
+## <a name="resources"></a>Resources
 
-| Inhoud | Koppeling |
+| Resource | Koppeling |
 |---|---|
 | **SDK downloaden** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**API-documentatie** | [Referentie documentatie voor lente gegevens Azure Cosmos DB]() |
-|**Bijdragen aan SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/microsoft/spring-data-cosmosdb) | 
+|**Bijdragen aan de SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/microsoft/spring-data-cosmosdb) | 
 |**Spring boot starter**| [Azure Cosmos DB lente boot starter-client bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
 |**Voor beeld van een app voor een nieuwe TODO met Azure Cosmos DB**| [End-to-end Java-ervaring in App Service Linux (deel 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
-|**Hand leiding voor ontwikkel aars** | [Hand leiding voor lente gegevens Azure Cosmos DB ontwikkel aars](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Hand leiding voor het gebruik van starter** | [Spring Boot Starter gebruiken met de Azure Cosmos DB SQL-API](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub opslag plaats voor Azure Spring boot starter Cosmos DB](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
-|**Voor beeld met App Services** | [Spring en Azure Cosmos DB met App Service op Linux gebruiken](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Voor beeld van TODO-app](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
+|**Hand leiding voor ontwikkel aars** | [Ontwikkelaarshandleiding voor Spring Data Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
+|**Starter gebruiken** | [Spring boot starter gebruiken met de Azure Cosmos DB SQL-API](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [GitHub opslag plaats voor Azure Cosmos DB Spring boot starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Voor beeld met Azure App Service** | [Spring en Azure Cosmos DB met App Service op Linux gebruiken](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Voor beeld van TODO-app](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>Release geschiedenis
 
-### <a name="230-2020-05-21"></a>2.3.0 (2020-05-21)
+### <a name="230-may-21-2020"></a>2.3.0 (21 mei 2020)
 #### <a name="new-features"></a>Nieuwe functies
-* Spring boot-versie bijwerken naar 2.3.0 
+* Hiermee wordt de installatie van veer boot naar 2.3.0 bijgewerkt.
+
+
+### <a name="225-may-19-2020"></a>2.2.5 (19 mei 2020)
+#### <a name="new-features"></a>Nieuwe functies
+* Hiermee wordt Azure Cosmos DB versie bijgewerkt naar 3.7.3.
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Bevat patches voor geheugen lekkage en Netty-versie-upgrades van Azure Cosmos DB SDK 3.7.3.
+
+### <a name="224-april-6-2020"></a>2.2.4 (6 april 2020)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Hiermee wordt de `allowTelemetry` vlag opgelost waarmee rekening moet worden gehouden `CosmosDbConfig` .
+* Hiermee wordt de `TTL` eigenschap voor de container opgelost.
+
+### <a name="223-february-25-2020"></a>2.2.3 (25 februari 2020)
+#### <a name="new-features"></a>Nieuwe functies
+* Nieuwe `findAll` by-partitie sleutel-API toevoegen.
+* Hiermee wordt Azure Cosmos DB versie bijgewerkt naar 3.7.0.
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Oplossingen `collectionName`  ->  `containerName` .
+* Oplossingen `entityClass` en `domainClass`  ->  `domainType` .
+* Corrigeert ' entiteit verzameling retour neren die is opgeslagen door de opslag plaats in plaats van een invoer entiteit '.
+
+### <a name="2110-february-25-2020"></a>2.1.10 (25 februari 2020)
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Backports-oplossing voor het retour neren van entiteits verzameling die is opgeslagen door de opslag plaats in plaats van de invoer entiteit.
+
+### <a name="222-january-15-2020"></a>2.2.2 (15 januari 2020)
+#### <a name="new-features"></a>Nieuwe functies
+* Hiermee wordt Azure Cosmos DB versie bijgewerkt naar 3.6.0.
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
 
-### <a name="225-2020-05-19"></a>2.2.5 (2020-05-19)
+### <a name="221-december-31-2019"></a>2.2.1 (31 december 2019)
 #### <a name="new-features"></a>Nieuwe functies
-* Azure Cosmos DB versie bijgewerkt naar v 3.7.3
+* Hiermee wordt Azure Cosmos DB SDK-versie bijgewerkt naar 3.5.0.
+* Hiermee wordt een aantekening veld toegevoegd om het automatisch maken van verzamelingen in of uit te scha kelen.
+* Verbetert de verwerking van uitzonde ringen. Wordt weer `CosmosClientException` gegeven `CosmosDBAccessException` .
+* Beschrijft `requestCharge` en `activityId` via `ResponseDiagnostics` .
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Bevat patches voor geheugen lekkage en Netty-versie-upgrades van Cosmos SDK v 3.7.3 
+* SDK 3.5.0 update Fixes ' uitzonde ring wanneer Cosmos DB HTTP-reactie header groter is dan 8192 bytes, ' "ConsistencyPolicy. defaultConsistencyLevel () mislukt bij gebonden veroudering en consistent voor voegsel. '
+* Hiermee wordt `findById` het gedrag van de methode opgelost. Voorheen retourneerde deze methode leeg als de entiteit niet is gevonden in plaats van een uitzonde ring te genereren.
+* Hiermee wordt een bug opgelost waarbij sorteren niet is toegepast op de volgende pagina toen `CosmosPageRequest` werd gebruikt.
 
-### <a name="224-2020-04-06"></a>2.2.4 (2020-04-06)
+### <a name="219-december-26-2019"></a>2.1.9 (26 december 2019)
 #### <a name="new-features"></a>Nieuwe functies
+* Hiermee wordt een aantekening veld toegevoegd om het automatisch maken van verzamelingen in of uit te scha kelen.
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* De vlag Fixed allowTelemetry om rekening te houden met CosmosDbConfig
-* Vaste TTL-eigenschap in container
+*  Hiermee wordt `findById` het gedrag van de methode opgelost. Voorheen retourneerde deze methode leeg als de entiteit niet is gevonden in plaats van een uitzonde ring te genereren.
 
-### <a name="223-2020-02-25"></a>2.2.3 (2020-02-25)
+### <a name="220-october-21-2019"></a>2.2.0 (21 oktober 2019)
 #### <a name="new-features"></a>Nieuwe functies
-* Nieuwe findAll toegevoegd door de partitie sleutel-API
-* De Azure-Cosmos-versie is bijgewerkt naar 3.7.0
+* Cosmos-ondersteuning voor reactieve opslag plaatsen volt ooien.
+* Azure Cosmos DB-teken reeks voor diagnostische gegevens en query metrische ondersteuning.
+* Azure Cosmos DB SDK-versie-update 3.3.1.
+* Upgrade van Lente Framework-versie naar 5.2.0. RELEASE.
+* Upgrade naar 2.2.0. RELEASE van Lente data Commons-versie.
+* Toevoegen `findByIdAndPartitionKey` en `deleteByIdAndPartitionKey` api's.
+* Hiermee verwijdert u de afhankelijkheid van Azure-documentdb.
+* Rebrandt DocumentDB aan Azure Cosmos DB.
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Vaste verzamelingsset-> containerName
-* Vaste entityClass & Domain class-> Domain type
-* Fixed "retour entiteit verzameling die is opgeslagen door de opslag plaats in plaats van invoer entiteit"
+* Oplossingen voor het sorteren van een uitzonde ring wanneer pageSize minder is dan het totale aantal items in de opslag plaats.
 
-### <a name="2110-2020-02-25"></a>2.1.10 (2020-02-25)
+### <a name="218-october-18-2019"></a>2.1.8 (18 oktober 2019)
 #### <a name="new-features"></a>Nieuwe functies
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Backported-oplossing voor het retour neren van entiteits verzameling die is opgeslagen door de opslag plaats in plaats van invoer entiteit
+* Reafschaffing DocumentDB-Api's.
+* Toevoegen `findByIdAndPartitionKey` en `deleteByIdAndPartitionKey` api's.
+* Hiermee wordt optimistische vergren deling toegevoegd op basis van `_etag` .
+* Hiermee wordt de SpEL-expressie voor de naam van de document verzameling ingeschakeld.
+* Hiermee worden `ObjectMapper` verbeteringen toegevoegd.
 
-### <a name="222-2020-01-15"></a>2.2.2 (2020-01-15)
+### <a name="217-october-18-2019"></a>2.1.7 (18 oktober 2019)
 #### <a name="new-features"></a>Nieuwe functies
-* De Azure-Cosmos-versie is bijgewerkt naar v 3.6.0
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Voegt Azure Cosmos DB SDK versie 3 afhankelijkheid toe.
+* Hiermee wordt een reactieve Cosmos-opslag plaats toegevoegd.
+* Update-implementatie van `DocumentDbTemplate` om Azure Cosmos DB SDK-versie 3 te gebruiken.
+* Voegt andere configuratie wijzigingen toe voor de ondersteuning van Reactive Cosmos-opslag plaatsen.
 
-### <a name="221-2019-12-31"></a>2.2.1 (2019-12-31)
-#### <a name="new-features"></a>Nieuwe functies
-* Cosmos DB SDK-versie bijgewerkt naar 3.5.0
-* Aantekening veld toegevoegd om het automatisch maken van de verzameling in of uit te scha kelen
-* Betere afhandeling van uitzonde ringen, weer gegeven CosmosClientException via CosmosDBAccessException
-* Blootgestelde requestCharge en activityId via ResponseDiagnostics
+### <a name="212-march-19-2019"></a>2.1.2 (19 maart 2019)
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* SDK 3.5.0 update Fixes ' uitzonde ring wanneer Cosmos DB HTTP-reactie header groter is dan 8192 bytes ', ' ConsistencyPolicy. defaultConsistencyLevel () mislukt bij gebonden veroudering en consistent voor voegsel '
-* Gedrag van opgeloste findById-Api's, retour neren is leeg op niet gevonden, in plaats van uitzonde ring
-* Er is een fout opgelost waarbij sorteren niet werd toegepast op de volgende pagina bij gebruik van CosmosPageRequest
-
-### <a name="219-2019-12-26"></a>2.1.9 (2019-12-26)
-#### <a name="new-features"></a>Nieuwe functies
-* Aantekening veld toegevoegd om het automatisch maken van de verzameling in of uit te scha kelen
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Gedrag van opgeloste findById-Api's, retour neren is leeg op niet gevonden, in plaats van uitzonde ring
-
-### <a name="220-2019-10-21"></a>2.2.0 (2019-10-21)
-#### <a name="new-features"></a>Nieuwe functies
-* De ondersteuning voor reactieve Cosmos-opslag plaatsen volt ooien
-* Ondersteuning voor Cosmos DB teken reeks voor diagnostische gegevens en metrische gegevens voor query
-* Cosmos DB SDK-versie-update naar 3.3.1
-* Upgrade van Lente Framework-versie naar 5.2.0. RELEASE
-* Upgrade naar 2.2.0. RELEASE van Lente data Commons-versie
-* FindByIdAndPartitionKey, deleteByIdAndPartitionKey-Api's toegevoegd
-* De afhankelijkheid is verwijderd uit Azure-doumentdb
-* DocumentDb is opnieuw op Cosmos
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Fixed ' Sortes worden uitgecheckt wanneer pageSize minder is dan het totale aantal items in de opslag plaats '
-
-### <a name="218-2019-10-18"></a>2.1.8 (2019-10-18)
-#### <a name="new-features"></a>Nieuwe functies
-* Document DB-Api's afafschaffen
-* FindByIdAndPartitionKey, deleteByIdAndPartitionKey-Api's zijn toegevoegd.
-* Optimistische vergren deling is toegevoegd op basis van _etag
-* SPeL-expressie ingeschakeld voor naam van document verzameling
-* Verbeteringen in ObjectMapper.
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-
-### <a name="217-2019-10-18"></a>2.1.7 (2019-10-18)
-#### <a name="new-features"></a>Nieuwe functies
-* Cosmos SDK v3-afhankelijkheid toegevoegd
-* Reactieve Cosmos-opslag plaats toegevoegd
-* De implementatie van DocumentDbTemplate is bijgewerkt om Cosmos SDK v3 te gebruiken.
-* Andere configuratie wijzigingen voor de ondersteuning van Reactive Cosmos-opslag plaatsen.
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-
-### <a name="212-2019-03-19"></a>2.1.2 (2019-03-19)
-#### <a name="new-features"></a>Nieuwe functies
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* ApplicationInsights-afhankelijkheid verwijderen voor
-    * Mogelijk risico van verontreiniging van afhankelijkheden
-    * Java 11 incompatibiliteit
+* `applicationInsights`Afhankelijkheid verwijderen voor:
+    * Mogelijk risico van verontreiniging van afhankelijkheden.
+    * Java 11 incompatibiliteit.
     * Voorkom mogelijke prestatie-impact op CPU en/of geheugen.
 
-### <a name="207-2019-03-20"></a>2.0.7 (2019-03-20)
-#### <a name="new-features"></a>Nieuwe functies
+### <a name="207-march-20-2019"></a>2.0.7 (20 maart 2019)
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Backport verwijdert applicationInsights-afhankelijkheid voor
-    * Mogelijk risico van verontreiniging van afhankelijkheden
-    * Java 11 incompatibiliteit
+* Backport verwijdert `applicationInsights` afhankelijkheid voor:
+    * Mogelijk risico van verontreiniging van afhankelijkheden.
+    * Java 11 incompatibiliteit.
     * Voorkom mogelijke prestatie-impact op CPU en/of geheugen.
 
-### <a name="211-2019-03-07"></a>2.1.1 (2019-03-07)
+### <a name="211-march-7-2019"></a>2.1.1 (7 maart 2019)
 #### <a name="new-features"></a>Nieuwe functies
-* Hoofd versie bijwerken naar 2.1.1
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Hiermee wordt de hoofd versie bijgewerkt naar 2.1.1.
 
-### <a name="206-2019-03-07"></a>2.0.6 (2019-03-07)
+### <a name="206-march-7-2019"></a>2.0.6 (7 maart 2019)
 #### <a name="new-features"></a>Nieuwe functies
-* Alle uitzonde ringen van telemetrie negeren
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Alle uitzonde ringen van telemetrie negeren.
 
-### <a name="210-2018-12-17"></a>2.1.0 (2018-12-17)
+### <a name="210-december-17-2018"></a>2.1.0 (17 december 2018)
 #### <a name="new-features"></a>Nieuwe functies
-* De versie bijwerken naar 2.1.0 voor het oplossen van problemen
-#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Hiermee wordt versie bijgewerkt naar 2.1.0 om het probleem op te lossen.
 
-### <a name="205-2018-09-13"></a>2.0.5 (2018-09-13)
+### <a name="205-september-13-2018"></a>2.0.5 (13 september 2018)
 #### <a name="new-features"></a>Nieuwe functies
-* Sleutel woord toevoegen bestaat, startsWith
-* Leesmij bijwerken
+* Tref woorden toevoegen `exists` en `startsWith` .
+* Leesmij voor updates.
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Fix ' kan Self href rechtstreeks voor entiteit '
-* Fix ' findAll mislukt als de verzameling niet wordt gemaakt '
+* Fixes ' kan Self href niet rechtstreeks voor entiteit aanroepen. '
+* Fixes "findAll mislukt als de verzameling niet wordt gemaakt."
 
-### <a name="204-pre-release-2018-08-23"></a>2.0.4 (voorlopige versie) (2018-08-23)
+### <a name="204-prerelease-august-23-2018"></a>2.0.4 (Prerelease) (23 augustus 2018)
 #### <a name="new-features"></a>Nieuwe functies
-* Naam van pakket wijzigen van documentdb in cosmosdb,
-* Nieuwe functie toevoegen tref woord voor query methode, 16 tref woorden uit SQL API ondersteund.
-* Voeg een nieuwe functie van de query toe met paginering en sorteren.
-* Vereenvoudig de configuratie van de lente-data-cosmosdb.
-* DeleteCollection-en deleteAll-API toevoegen.
+* De naam van het pakket wordt gewijzigd van documentdb in cosmosdb.
+* Hiermee voegt u een nieuwe functie van het sleutel woord query methode toe. 16 tref woorden uit de SQL-API worden nu ondersteund.
+* Hiermee wordt een nieuwe functie van de query toegevoegd met paginering en sorteren.
+* Vereenvoudigt de configuratie van de lente-data-cosmosdb.
+* Toevoegen `deleteCollection` en `deleteAll` api's.
 
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Probleem oplossing en uitbrei ding van fouten.
+* Problemen oplossen en afbreken.
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
+Meer informatie over [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-framework)van het project voor meer informatie over het lente-Framework.
+Meer informatie over het [lente-Framework](https://spring.io/projects/spring-framework).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-boot)van het project voor meer informatie over de lente boot.
+Meer informatie over [Spring boot](https://spring.io/projects/spring-boot).
 
-Ga naar de [Start pagina](https://spring.io/projects/spring-data)van het project voor meer informatie over Lente gegevens.
+Meer informatie over [lente gegevens](https://spring.io/projects/spring-data).

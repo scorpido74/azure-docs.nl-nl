@@ -1,22 +1,22 @@
 ---
 title: Migreren naar Azure Event Hubs voor Apache Kafka
-description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
+description: In dit artikel wordt uitgelegd hoe u clients migreert van Apache Kafka naar Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cf585cdc0a43c595ec013ba78a2e3ae191c40b8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090651"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061441"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migreren naar Azure Event Hubs voor Apache Kafka-ecosystemen
-Azure Event Hubs geeft een Apache Kafka eind punt weer, waarmee u verbinding kunt maken met Event Hubs met behulp van het Kafka-protocol. Door minimale wijzigingen aan te brengen in uw bestaande Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voor delen van het Azure-ecosysteem. Event Hubs voor Kafka-ondersteuning [Apache Kafka versie 1,0](https://kafka.apache.org/10/documentation.html) en hoger.
+Azure Event Hubs geeft een Apache Kafka eind punt weer, waarmee u verbinding kunt maken met Event Hubs met behulp van het Kafka-protocol. Door minimale wijzigingen aan te brengen in uw bestaande Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voor delen van het Azure-ecosysteem. Event Hubs werkt met veel van uw bestaande Kafka-toepassingen, waaronder MirrorMaker. Zie [Event hubs voor Apache Kafka voor](event-hubs-for-kafka-ecosystem-overview.md) meer informatie.
 
 ## <a name="pre-migration"></a>Premigratie 
 
 ### <a name="create-an-azure-account"></a>Een Azure-account maken
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
 ### <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 Volg de stapsgewijze instructies in het artikel Create a [Event hub](event-hubs-create.md) om een event hubs naam ruimte en een event hub te maken. 

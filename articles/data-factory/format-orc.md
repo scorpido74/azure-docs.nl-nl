@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f71b739242cf4f6a3549927a2a7e61400b2f987e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417722"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061067"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>De indeling ORC in Azure Data Factory
 
@@ -82,7 +82,16 @@ De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **OrcSink**. | Ja      |
+| formatSettings | Een groep eigenschappen. Raadpleeg de tabel **Orc write Settings** hieronder. |    Nee      |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+
+Ondersteunde **Orc-schrijf instellingen** onder `formatSettings` :
+
+| Eigenschap      | Beschrijving                                                  | Vereist                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| type          | Het type formatSettings moet zijn ingesteld op **OrcWriteSettings**. | Ja                                                   |
+| maxRowsPerFile | Wanneer u gegevens naar een map schrijft, kunt u ervoor kiezen om naar meerdere bestanden te schrijven en het maximum aantal rijen per bestand op te geven.  | Nee |
+| fileNamePrefix | Geef het voor voegsel van de bestands naam op wanneer u gegevens naar meerdere bestanden schrijft, wat resulteert in dit patroon: `<fileNamePrefix>_00000.<fileExtension>` . Als u niets opgeeft, wordt het voor voegsel van de bestands naam automatisch gegenereerd. Deze eigenschap is niet van toepassing wanneer een bron archief of een [gegevens archief met partitie opties](copy-activity-performance-features.md)is gebaseerd op het bestand.  | Nee |
 
 ## <a name="using-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime gebruiken
 
@@ -104,6 +113,6 @@ Voor beeld: Stel variabele `_JAVA_OPTIONS` met waarde in `-Xms256m -Xmx16g` . Me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
