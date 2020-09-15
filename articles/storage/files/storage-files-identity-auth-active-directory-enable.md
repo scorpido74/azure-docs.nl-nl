@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061815"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563400"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Overzicht-on-premises Active Directory Domain Services authenticatie via SMB voor Azure-bestands shares
 
-[Azure files](storage-files-introduction.md)   ondersteunt op identiteit gebaseerde verificatie via Server Message Block (SMB) via twee typen Domain Services: on-premises Active Directory Domain Services (AD DS) en Azure Active Directory Domain Services (Azure AD DS). We raden u ten zeerste aan de [sectie How it Works](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) te bekijken om de juiste domein service voor authentcation te selecteren. De installatie verschilt afhankelijk van de domein service die u kiest. Deze reeks artikelen is gericht op het inschakelen en configureren van on-premises AD DS voor verificatie met Azure-bestands shares.
+[Azure files](storage-files-introduction.md)   ondersteunt op identiteit gebaseerde verificatie via Server Message Block (SMB) via twee typen Domain Services: on-premises Active Directory Domain Services (AD DS) en Azure Active Directory Domain Services (Azure AD DS). We raden u ten zeerste aan de [sectie How it Works](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) te bekijken om de juiste domein service voor verificatie te selecteren. De installatie verschilt afhankelijk van de domein service die u kiest. Deze reeks artikelen is gericht op het inschakelen en configureren van on-premises AD DS voor verificatie met Azure-bestands shares.
 
 Als u geen ervaring hebt met Azure-bestands shares, raden we u aan onze [plannings handleiding](storage-files-planning.md) te lezen voordat u de volgende serie artikelen leest.
 
@@ -28,7 +28,8 @@ Als u geen ervaring hebt met Azure-bestands shares, raden we u aan onze [plannin
 - Biedt ondersteuning voor eenmalige aanmelding.
 - Alleen ondersteund op clients met een nieuwere versie van het besturings systeem dan Windows 7 of Windows Server 2008 R2.
 - Alleen ondersteund voor het AD-forest waarin het opslag account is geregistreerd. U kunt standaard alleen toegang krijgen tot Azure-bestands shares met de AD DS referenties van één forest. Als u toegang nodig hebt tot uw Azure-bestands share vanuit een ander forest, moet u ervoor zorgen dat u de juiste forestvertrouwensrelatie hebt geconfigureerd. Raadpleeg de [Veelgestelde vragen](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) voor meer informatie.
-- Biedt geen ondersteuning voor verificatie tegen computer accounts die zijn gemaakt in AD DS. 
+- Biedt geen ondersteuning voor verificatie tegen computer accounts die zijn gemaakt in AD DS.
+- Biedt geen ondersteuning voor verificatie op basis van NFS-bestands shares (Network File System).
 
 Wanneer u AD DS voor Azure-bestands shares via SMB inschakelt, kunnen uw AD DS-gekoppelde computers Azure-bestands shares koppelen met behulp van uw bestaande AD DS referenties. Deze mogelijkheid kan worden ingeschakeld met een AD DS-omgeving die wordt gehost op on-premises computers of die wordt gehost in Azure.
 

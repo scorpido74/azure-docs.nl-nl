@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673117"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563774"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Uw Azure Data Box Heavy veilig installeren en uitvoeren
 
@@ -156,7 +156,7 @@ Dit apparaat voldoet aan deel 15 van de FCC-regels en de bedrijfstak van de bran
 - Dit apparaat veroorzaakt mogelijk geen schadelijke interferentie.
 - Dit apparaat moet alle interferenties ontvangen die een ongewenste werking van het apparaat kunnen veroorzaken.
 
-![Canada](./media/data-box-heavy-safety/canada.png)
+![Scherm afbeelding toont een melding die vereist is voor Canada.](./media/data-box-heavy-safety/canada.png)
 
 KAN ICES-3 (A)/NMB-3 (A) micro soft Corporation, One micro soft Way, Redmond, WA 98052, Verenigde Staten.
 Verenigde Staten: (800) 426-9400 Canada: (800) 933-4750

@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613888"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561870"
 ---
 # <a name="graphics-binding"></a>Afbeeldings binding
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>Simulatie
 
 `GraphicsApiType.SimD3D11` is de simulatie binding en als deze is geselecteerd, wordt de `GraphicsBindingSimD3d11` grafische binding gemaakt. Deze interface wordt gebruikt voor het simuleren van de hoofd verplaatsing, bijvoorbeeld in een bureaublad toepassing en het renderen van een monoscopic-installatie kopie.
+
+Als u de simulatie binding wilt implementeren, is het belang rijk dat u begrijpt wat het verschil is tussen de lokale camera en het externe frame, zoals wordt beschreven op de pagina [camera](../overview/features/camera.md) .
+
+Er zijn twee camera's nodig:
+
+* **Lokale camera**: deze camera vertegenwoordigt de huidige camera positie die wordt aangedreven door de toepassings logica.
+* **Proxy camera**: deze camera komt overeen met het huidige *externe frame* dat is verzonden door de server. Wanneer er een vertraging optreedt tussen de client die een frame aanvraagt en de aankomst, is het *externe frame* altijd een bit achter de verplaatsing van de lokale camera.
+
+De basis benadering is dat zowel de externe installatie kopie als de lokale inhoud worden weer gegeven in een niet-scherm doel met de proxy camera. De proxy installatie kopie wordt vervolgens opnieuw geprojecteerd naar de lokale camera ruimte, die verder wordt uitgelegd in een [vertraagde herprojectie](../overview/features/late-stage-reprojection.md)van het stadium.
+
 De instelling is een beetje meer betrokken en werkt als volgt:
 
 #### <a name="create-proxy-render-target"></a>Proxy weergave doel maken
 
-Externe en lokale inhoud moeten worden gerenderd naar een weergave doel met een achtergrond kleur/diepte met de proxy camera gegevens die door de functie worden geleverd `GraphicsBindingSimD3d11.Update` . De proxy moet overeenkomen met de resolutie van de back-buffer. Wanneer een sessie gereed is, `GraphicsBindingSimD3d11.InitSimulation` moet worden aangeroepen voordat er verbinding mee kan worden gemaakt:
+Externe en lokale inhoud moeten worden gerenderd naar een weergave doel met een achtergrond kleur/diepte met de proxy camera gegevens die door de functie worden geleverd `GraphicsBindingSimD3d11.Update` .
+
+De proxy moet overeenkomen met de resolutie van de back-upbuffer en moet een geheel getal zijn *DXGI_FORMAT_R8G8B8A8_UNORM* -of *DXGI_FORMAT_B8G8R8A8_UNORM* -indeling. Wanneer een sessie gereed is, `GraphicsBindingSimD3d11.InitSimulation` moet worden aangeroepen voordat er verbinding mee kan worden gemaakt:
 
 ```cs
 AzureSession currentSession = ...;
@@ -244,4 +256,6 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Camera](../overview/features/camera.md)
+* [Vertraagde fase van het project](../overview/features/late-stage-reprojection.md)
 * [Zelfstudie: Extern gegenereerde modellen bekijken](../tutorials/unity/view-remote-models/view-remote-models.md)

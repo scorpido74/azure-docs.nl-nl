@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253848"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561575"
 ---
 # <a name="application-gateway-redirect-overview"></a>Overzicht van Application Gateway omleiden
 
@@ -37,7 +37,7 @@ Ondersteuning voor Application Gateway-omleiding biedt de volgende mogelijkheden
    Met dit type omleiding is HTTP-naar-HTTPS-omleiding alleen mogelijk voor een specifiek site gebied, bijvoorbeeld een winkel wagentje die wordt aangeduid met/cart/*.
 - **Omleiden naar externe site**
 
-![mappen](./media/redirect-overview/redirect.png)
+![Diagram toont gebruikers en een app-gateway en verbindingen tussen de twee, met inbegrip van een niet-vergrendelde H T t P-rode pijl, een niet-toegestane 301 direct rode pijl en een vergrendelde H T T P S met een groene pijl.](./media/redirect-overview/redirect.png)
 
 Met deze wijziging moeten klanten een nieuw omleidings configuratie object maken, waarmee de doel-listener of externe site wordt opgegeven waarnaar de omleiding gewenst is. Het configuratie-element biedt ook ondersteuning voor opties om het URI-pad en de query reeks toe te voegen aan de omgeleide URL. U kunt ook het type omleiding kiezen. Zodra deze omleidings configuratie is gemaakt, wordt deze doorgestuurd naar de bron-listener via een nieuwe regel. Wanneer u een basis regel gebruikt, wordt de omleidings configuratie gekoppeld aan een bronhost en is dit een globale omleiding. Wanneer een op een pad gebaseerde regel wordt gebruikt, wordt de omleidings configuratie gedefinieerd op het URL-pad met de toewijzing. Dit geldt alleen voor het specifieke pad van een site.
 

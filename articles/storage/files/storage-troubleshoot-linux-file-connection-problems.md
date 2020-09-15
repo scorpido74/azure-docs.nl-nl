@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904918"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564267"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files in Linux oplossen
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Problemen met Azure Files oplossen in Linux (SMB)
 
 In dit artikel vindt u algemene problemen die betrekking hebben op Azure Files wanneer u verbinding maakt vanaf Linux-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. 
 
 Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
+
+> [!IMPORTANT]
+> De inhoud van dit artikel is alleen van toepassing op SMB-shares.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Kan geen verbinding maken met een Azure-bestands share of deze koppelen
 
@@ -80,7 +83,7 @@ Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfi
 
 In Linux wordt een fout bericht van de volgende strekking weer gegeven:
 
-**\<filename>[machtiging geweigerd] Schijf quotum overschreden**
+**\<filename> [machtiging geweigerd] Schijf quotum overschreden**
 
 ### <a name="cause"></a>Oorzaak
 
@@ -107,7 +110,7 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
     - Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
     - Als u CP of DD met parallel gebruikt, kan de Kopieer snelheid worden verbeterd. het aantal threads is afhankelijk van de use-case en de werk belasting. De volgende voor beelden gebruiken zes: 
     - CP-voor beeld (CP gebruikt de standaard blok grootte van het bestands systeem als segment grootte): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
-    - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open source-hulpprogram ma's van derden, zoals:
         - [GNU parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) : Hiermee worden bestanden gesorteerd en verpakt in partities.
@@ -115,7 +118,7 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
         - [Meerdere](https://github.com/pkolano/mutil) multi-threaded CP en md5sum op basis van GNU coreutils.
 - Door de bestands grootte vooraf in te stellen, in plaats van elke schrijf bewerking uit te voeren, helpt u de Kopieer snelheid te verbeteren in scenario's waarin de bestands grootte bekend is. Als uitbrei ding van schrijf bewerkingen moet worden vermeden, kunt u een doel bestands grootte instellen met behulp van de `truncate - size <size><file>` opdracht. Daarna `dd if=<source> of=<target> bs=1M conv=notrunc` wordt een bron bestand gekopieerd zonder dat de grootte van het doel bestand herhaaldelijk moet worden bijgewerkt. U kunt bijvoorbeeld de grootte van het doel bestand instellen voor elk bestand dat u wilt kopiëren (ervan uitgaande dat er een share is gekoppeld onder/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - en vervolgens bestanden kopiëren zonder parallelle schrijf bewerkingen uit te breiden:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - en vervolgens bestanden kopiëren zonder parallelle schrijf bewerkingen uit te breiden: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Mount-fout (115): bewerking wordt nu uitgevoerd" wanneer u Azure Files koppelt met behulp van SMB 3,0
@@ -183,7 +186,7 @@ In sommige gevallen kan de **serverino** -koppelings optie ervoor zorgen dat de 
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-U kunt ook controleren of de juiste opties worden gebruikt door de opdracht **sudo mount | grep CIFS** uit te voeren en de uitvoer te controleren. Hier volgt een voor beeld van uitvoer:
+U kunt ook controleren of de juiste opties worden gebruikt door de opdracht  **sudo mount | grep CIFS** uit te voeren en de uitvoer te controleren. Hier volgt een voor beeld van uitvoer:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)

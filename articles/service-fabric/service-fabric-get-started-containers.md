@@ -4,12 +4,12 @@ description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844436"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564301"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Uw eerste Service Fabric-containertoepassing maken in Windows
 
@@ -290,7 +290,7 @@ Vanaf de laatste vernieuwing van v 6.4 hebt u de optie om op te geven dat de sta
 
 De **status controle** -instructie die verwijst naar de daad werkelijke controle die wordt uitgevoerd voor de controle van de container status, moet aanwezig zijn in de Dockerfile die wordt gebruikt tijdens het genereren van de container installatie kopie.
 
-![HealthCheckHealthy][3]
+![Scherm afbeelding toont details van het geïmplementeerde service pakket NodeServicePackage.][3]
 
 ![HealthCheckUnhealthyApp][4]
 
@@ -331,7 +331,7 @@ De toepassing is gereed bij een ```Ready```-status: ![Gereed][2]
 
 Open een browser en ga naar `http://containercluster.westus2.cloudapp.azure.com:8081`. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
-## <a name="clean-up"></a>Opschonen
+## <a name="clean-up"></a>Opruimen
 
 Zolang het cluster actief is, worden er kosten in rekening gebracht. Overweeg daarom [het cluster te verwijderen](./service-fabric-tutorial-delete-cluster.md).
 

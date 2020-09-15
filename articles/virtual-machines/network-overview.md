@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: cc98a0703cf408194c4c3740938399b57a36d468
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fe1cdf738162fe5c4492ff0585f057256153a838
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835609"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561411"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuele netwerken en virtuele machines in azure 
 
@@ -147,7 +147,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een interne
 | Azure Portal | U kunt [de belasting van het interne verkeer verdelen met een Load Balancer in het Azure Portal](../load-balancer/tutorial-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) | Als u een privé-IP-adres in het subnet van het netwerk wilt opgeven, gebruikt u [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) met de para meter **-PrivateIpAddress** . Gebruik [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) om de configuratie van de back-end-adres groep te maken. Gebruik [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) om binnenkomende NAT-regels te maken die zijn gekoppeld aan de front-end-IP-configuratie die u hebt gemaakt. Gebruik [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) om de tests te maken die u nodig hebt. Gebruik [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) om de configuratie van de Load Balancer te maken. Gebruik [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) om de Load Balancer te maken.|
 | [Azure-CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Gebruik de opdracht [az network lb create](/cli/azure/network/lb) voor het maken van de eerste load balancer-configuratie. Gebruik [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) met de parameter **--private-ip-address** voor het definiëren van het privé IP-adres. Gebruik [az network lb address-pool create](/cli/azure/network/lb/address-pool) om de configuratie van de back-end-adrespool toe te voegen. Gebruik [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) om NAT-regels toe te voegen. Gebruik [az network lb rule create](/cli/azure/network/lb/rule) om de load balancer-regels toe te voegen. Gebruik [az network lb probe create](/cli/azure/network/lb/probe) om de tests toe te voegen.|
-| [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md) | Gebruik [2 virtuele machines in een load balancer en NAT-regels configureren op de LB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) als richtlijn voor het implementeren van een load balancer met behulp van een sjabloon. |
+| [Sjabloon](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Gebruik [2 virtuele machines in een load balancer en NAT-regels configureren op de LB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) als richtlijn voor het implementeren van een load balancer met behulp van een sjabloon. |
 
 ### <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 

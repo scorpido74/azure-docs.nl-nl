@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918397"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564012"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
@@ -153,13 +153,25 @@ Het korte antwoord is dat geen van de ingebouwde kanalen een transactie type gar
 
 Hoewel de naam van het pakket en de naam ruimte ' WindowsServer ' bevat, wordt dit kanaal ondersteund op andere systemen dan Windows, met de volgende uitzonde ring. Op systemen met uitzonde ring van Windows maakt het kanaal standaard geen lokale opslagmap. U moet een lokale opslagmap maken en het kanaal configureren om het te gebruiken. Nadat de lokale opslag is geconfigureerd, werkt het kanaal op dezelfde manier op alle systemen.
 
+> [!NOTE]
+> Met de release 2.15.0-beta3 en meer lokale opslag wordt nu automatisch gemaakt voor Linux, Mac en Windows. Voor niet-Windows-systemen wordt door de SDK automatisch een lokale opslagmap gemaakt op basis van de volgende logica:
+> - `${TMPDIR}` -Als `${TMPDIR}` de omgevings variabele is ingesteld, wordt deze locatie gebruikt.
+> - `/var/tmp` -Als de vorige locatie niet bestaat, probeert u het opnieuw `/var/tmp` .
+> - `/tmp` -Als de vorige locaties niet bestaan, kunt u proberen `tmp` . 
+> - Als geen van deze locaties bestaat, wordt er geen lokale opslag gemaakt en is hand matige configuratie nog steeds vereist. [Voor details over de volledige implementatie](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Maakt de SDK tijdelijke lokale opslag? Worden de gegevens versleuteld op opslag?
 
 De SDK slaat telemetrie-items in lokale opslag op tijdens netwerk problemen of tijdens het beperken. Deze gegevens zijn niet lokaal versleuteld.
 
 Voor Windows-systemen maakt de SDK automatisch een tijdelijke lokale map in de map% TEMP% of% LOCALAPPDATA% en beperkt de toegang tot beheerders en alleen de huidige gebruiker.
 
-Voor systemen met uitzonde ring van Windows wordt er geen lokale opslag automatisch gemaakt door de SDK, waardoor er standaard geen gegevens lokaal worden opgeslagen. U kunt zelf een opslag directory maken en het kanaal configureren om het te gebruiken. In dit geval bent u verantwoordelijk voor het beveiligen van de map.
+Voor systemen met uitzonde ring van Windows wordt er geen lokale opslag automatisch gemaakt door de SDK, waardoor er standaard geen gegevens lokaal worden opgeslagen.
+
+> [!NOTE]
+> Met de release 2.15.0-beta3 en meer lokale opslag wordt nu automatisch gemaakt voor Linux, Mac en Windows. 
+
+ U kunt zelf een opslag directory maken en het kanaal configureren om het te gebruiken. In dit geval bent u verantwoordelijk voor het beveiligen van de map.
 Lees meer over [gegevens bescherming en privacy](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK

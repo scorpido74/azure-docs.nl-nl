@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563575"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563145"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Wat zijn de opties voor de Azure Firewall Manager-architectuur?
 
@@ -44,8 +44,9 @@ De volgende tabel vergelijkt deze twee architectuur opties en kan u helpen besli
 |**Ondersteuning voor meerdere beveiligings providers**|Ondersteund met hand matig geconfigureerde geforceerde tunneling naar firewalls van derden|Automatische ondersteuning voor twee beveiligings providers: Azure Firewall voor het filteren van privé verkeer en van derden voor het filteren van Internet|
 |**Web Application Firewall in Application Gateway** |Ondersteund in Virtual Network|Momenteel ondersteund in spoke-netwerk|
 |**Virtueel netwerk apparaat**|Ondersteund in Virtual Network|Momenteel ondersteund in spoke-netwerk|
+|**Azure DDoS Protection Standard-ondersteuning**|Ja|Nee|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Overzicht van de [implementatie van Azure firewall Manager](deployment-overview.md) controleren
+- [Overzicht van de implementatie van Azure Firewall Manager](deployment-overview.md) controleren
 - Meer informatie over [beveiligde virtuele hubs](secured-virtual-hub.md).

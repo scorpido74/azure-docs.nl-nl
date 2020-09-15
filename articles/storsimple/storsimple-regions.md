@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76275114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564148"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Beschik bare regio's voor uw StorSimple
 
@@ -39,7 +39,7 @@ U definieert een regio of locatie wanneer u de StorSimple-Apparaatbeheer service
 
 Hier volgt een lijst met regio's waar StorSimple-Apparaatbeheer service beschikbaar is voor de open bare Azure-Cloud en kan worden geïmplementeerd.
 
-![storsimple-apparaat-Manager-service-regio's](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![Scherm afbeelding toont de Apparaatbeheer van de StorSimple met de locatie lijst gemarkeerd.](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Voor Azure Government Cloud is de StorSimple Apparaatbeheer-service beschikbaar in US Gov-Iowa en US Gov-Virginia data centers.
 

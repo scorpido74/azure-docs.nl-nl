@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561598"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Structuur van Azure-dashboards
 In dit document wordt de structuur van een Azure-dash board beschreven, met behulp van het volgende dash board:
@@ -329,16 +329,16 @@ De eigenschap __Position__ bevat de grootte-en locatie-informatie voor het onder
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![raster-eenheden](./media/azure-portal-dashboards-structure/grid-units.png)
+![Scherm afbeelding toont een close-up van het raster, waarbij één vier Kante raster eenheid is gemarkeerd.](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>Het meta gegevens object
 Elk onderdeel heeft een eigenschap meta data, een object heeft slechts één vereiste eigenschap met de naam __type__. Deze teken reeks vertelt de portal op welke tegel moet worden weer gegeven. Het dash board voor beeld maakt gebruik van de volgende typen tegels:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`: Wordt gebruikt om metrische gegevens over bewaking weer te geven
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`: Wordt gebruikt om weer te geven met tekst of afbeeldingen met basis opmaak voor lijsten, koppelingen, enzovoort.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`: Wordt gebruikt voor het weer geven van Video's van YouTube, Channel 9 en elk ander type video dat in een HTML-video code werkt.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`: Wordt gebruikt om de naam en status van een virtuele Azure-machine weer te geven.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` : Wordt gebruikt om metrische gegevens over bewaking weer te geven
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` : Wordt gebruikt om weer te geven met tekst of afbeeldingen met basis opmaak voor lijsten, koppelingen, enzovoort.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` : Wordt gebruikt voor het weer geven van Video's van YouTube, Channel 9 en elk ander type video dat in een HTML-video code werkt.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` : Wordt gebruikt om de naam en status van een virtuele Azure-machine weer te geven.
 
 Elk type onderdeel heeft een eigen configuratie. De mogelijke configuratie-eigenschappen worden __input__, __Settings__en __Asset__genoemd. 
 

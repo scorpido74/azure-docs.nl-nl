@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 196b1dda17de1c9430ab048ac90d1d10b6a595b4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104687"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562448"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Een Azure Database for MariaDB-server beheren met behulp van de Azure Portal
 Dit artikel laat u zien hoe u uw Azure Database for MariaDB-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
 
 ## <a name="sign-in"></a>Aanmelden
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Een server maken
 Ga naar de [Quick](quickstart-create-mariadb-server-database-using-azure-portal.md) start voor informatie over het maken en aan de slag met een Azure database for MariaDB-server.
@@ -34,7 +34,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 2. Selecteer **Algemeen** of **geoptimaliseerd geheugen**, afhankelijk van wat u wilt schalen. 
 
-    ![wijziging-prijs categorie](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![Scherm afbeelding toont de Azure Portal waarvoor de prijs categorie is geselecteerd en de waarde voor geoptimaliseerd geheugen is geselecteerd.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > Wanneer u de lagen wijzigt, wordt de server opnieuw opgestart.
@@ -77,9 +77,9 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 
    ![overview](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
-2. Voer een nieuw wacht woord in en bevestig het wacht woord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
+2. Voer een nieuw wachtwoord in en bevestig het wachtwoord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
 
-   ![opnieuw instellen-wacht woord](./media/howto-create-manage-server-portal/reset-password.png)
+   ![Scherm afbeelding toont het dialoog venster wacht woord opnieuw instellen met wacht woord en wacht woord bevestigen.](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Selecteer **OK** om het nieuwe wacht woord op te slaan.
 
@@ -94,7 +94,7 @@ U kunt uw server verwijderen als u deze niet meer nodig hebt.
 
 2. Typ de naam van de server in het invoervak om te bevestigen dat dit de server is die u wilt verwijderen.
 
-    ![bevestigen-verwijderen](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![Scherm afbeelding toont een dialoog venster waarin wordt gecontroleerd of u een Data Base wilt verwijderen. Dit is onomkeerbaar.](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > Het verwijderen van een server is onomkeerbaar.

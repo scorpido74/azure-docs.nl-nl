@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea43f48abef5e2b258251d46eca1061a2263519
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613844"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563961"
 ---
 # <a name="meshes"></a>Meshes
 
 ## <a name="mesh-resource"></a>Netresource
 
-Mazen zijn een onveranderbare [gedeelde bron](../concepts/lifetime.md)die alleen via [model conversie](../how-tos/conversion/model-conversion.md)kan worden gemaakt. Mazen bevatten een of meer *subnetten*. Elk subnet verwijst naar een [materiaal](materials.md) waarmee het standaard moet worden gerenderd. Als u een net in 3D-ruimte wilt plaatsen, voegt u een [MeshComponent](#meshcomponent) toe aan een [entiteit](entities.md).
+Mazen zijn een onveranderbare [gedeelde bron](../concepts/lifetime.md)die alleen via [model conversie](../how-tos/conversion/model-conversion.md)kan worden gemaakt. Mazen bevatten een of meer *subnetten* , samen met een fysieke representatie van [raycast-query's](../overview/features/spatial-queries.md). Elk subnet verwijst naar een [materiaal](materials.md) waarmee het standaard moet worden gerenderd. Als u een net in 3D-ruimte wilt plaatsen, voegt u een [MeshComponent](#meshcomponent) toe aan een [entiteit](entities.md).
 
 ### <a name="mesh-resource-properties"></a>Eigenschappen van mesh-bron
 
@@ -38,12 +38,46 @@ De `MeshComponent` klasse wordt gebruikt om een exemplaar van een netresource te
 
 * **UsedMaterials:** De matrix met werkelijk gebruikte materialen voor elk subnet. Is gelijk aan de gegevens in de *materiaal* matrix, voor waarden die niet null zijn. Anders bevat deze de waarde uit de *materiaal* matrix in de mesh-instantie.
 
+### <a name="sharing-of-meshes"></a>Delen van mazen
+
+Een `Mesh` resource kan worden gedeeld door meerdere exemplaren van mesh-onderdelen. Bovendien kan de `Mesh` resource die is toegewezen aan een netonderdeel op elk gewenst moment worden gewijzigd. De volgende code laat zien hoe u een net kloont:
+
+```cs
+Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
+{
+    MeshComponent meshComp = sourceEntity.FindComponentOfType<MeshComponent>();
+    if (meshComp != null)
+    {
+        Entity newEntity = manager.CreateEntity();
+        MeshComponent newMeshComp = manager.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
+        newMeshComp.Mesh = meshComp.Mesh; // share the mesh
+        return newEntity;
+    }
+    return null;
+}
+```
+
+```cpp
+ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHandle<Entity> sourceEntity)
+{
+    if (ApiHandle<MeshComponent> meshComp = sourceEntity->FindComponentOfType<MeshComponent>())
+    {
+        ApiHandle<Entity> newEntity = *manager->CreateEntity();
+        ApiHandle<MeshComponent> newMeshComp = manager->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
+        newMeshComp->SetMesh(meshComp->GetMesh()); // share the mesh
+        return newEntity;
+    }
+    return nullptr;
+}
+```
+
 ## <a name="api-documentation"></a>API-documentatie
 
 * [C#-mesh klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
 * [C# MeshComponent-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
 * [Klasse C++-mesh](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
 * [C++ MeshComponent-klasse](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

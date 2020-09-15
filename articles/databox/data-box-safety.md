@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68985949"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564420"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Uw Azure Data Box veilig installeren en uitvoeren
 ![Pictogram waarschuwings pictogram ](./media/data-box-safety/warning_icon.png)
@@ -24,7 +24,7 @@ Lees alle veiligheids informatie in dit artikel voordat u Azure Data Box gebruik
 ## <a name="safety-icon-conventions"></a>Conventies voor veiligheids pictogrammen
 Hier vindt u de pictogrammen die u zult vinden wanneer u de veiligheids maatregelen controleert die moeten worden waargenomen bij het instellen en uitvoeren van uw Data Box.
 
-| Pictogram | Description |
+| Pictogram | Beschrijving |
 |:--- |:--- |
 | ![Gevaar voor risico pictogram ](./media/data-box-safety/warning_icon.png) **!** |Duidt op een gevaarlijke situatie die, indien dat niet wordt vermeden, leidt tot dood of ernstige schade. Dit signaal Word is beperkt tot de meest extreme situaties. |
 | ![Waarschuwing voor waarschuwings pictogram ](./media/data-box-safety/warning_icon.png) **.** |Duidt op een gevaarlijke situatie die, indien dat niet wordt vermeden, kan leiden tot overlijden of ernstige schade. |
@@ -120,7 +120,7 @@ Dit apparaat is getest en er is vastgesteld dat het voldoet aan de limieten voor
 
 Dit apparaat voldoet aan deel 15 van de FCC-regels en de bedrijfstak van de branche Canada-belaste RSS-norm (en). De bewerking is onderhevig aan de volgende twee voor waarden: (1) dit apparaat veroorzaakt mogelijk geen schadelijk interferentie, en (2) dit apparaat moet alle interferenties ontvangen, inclusief interferentie die een ongewenste werking van het apparaat kan veroorzaken.
 
-![Canada](./media/data-box-safety/canada.png)
+![Scherm afbeelding toont een melding die vereist is voor Canada.](./media/data-box-safety/canada.png)
 
 KAN ICES-3 (A)/NMB-3 (A)
 
@@ -154,7 +154,7 @@ Faxnummer: + 353 1 706 4110
 
 **Japan**
 
-![Japan](./media/data-box-safety/japan.png)
+![Scherm afbeelding toont een melding die vereist is voor Japan.](./media/data-box-safety/japan.png)
 
 <!--**South Korea**
 

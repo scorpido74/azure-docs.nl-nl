@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1aa0eb0988474a21fbf77ea08ce14a5fa9fb21bc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421906"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564114"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Power shell voor Azure AD-rollen in Privileged Identity Management
 
@@ -30,7 +30,7 @@ Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure
 > [!Note]
 > Onze officiële Power shell wordt alleen ondersteund als u werkt met de nieuwe versie van Azure AD Privileged Identity Management. Ga naar Privileged Identity Management en controleer of u de volgende banner hebt op de Blade snel starten.
 > [![Controleer de versie van privileged Identity Management die u hebt](media/pim-how-to-add-role-to-user/pim-new-version.png "Selecteer Azure AD-> Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Als u deze banner niet hebt, moet u een ogen blik geduld. deze bijgewerkte ervaring wordt momenteel in de komende weken geïmplementeerd.
-> De Privileged Identity Management Power shell-cmdlets worden ondersteund via de Azure AD-preview-module. Als u een andere module gebruikt en er een fout bericht wordt weer gegeven in de module, moet u deze nieuwe module gaan gebruiken. Als er productie systemen zijn gebouwd op basis van een andere module, neemt u contact op metpim_preview@microsoft.com
+> De Privileged Identity Management Power shell-cmdlets worden ondersteund via de Azure AD-preview-module. Als u een andere module gebruikt en er een fout bericht wordt weer gegeven in de module, moet u deze nieuwe module gaan gebruiken. Als er productie systemen zijn gebouwd op basis van een andere module, neemt u contact op met [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) .
 
 ## <a name="installation-and-setup"></a>Installatie en setup
 
@@ -54,7 +54,7 @@ Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure
     ![De organisatie-ID in de eigenschappen voor de Azure AD-organisatie zoeken](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de organisatie-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
+> De volgende secties bieden eenvoudige voor beelden waarmee u aan de slag kunt. Meer gedetailleerde documentatie over de volgende cmdlets vindt u op [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . U moet echter "kunt" in de para meter providerID vervangen door "aadRoles". U moet ook de Tenant-ID voor uw Azure AD-organisatie gebruiken als de para meter resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Roldefinities ophalen
 
@@ -135,7 +135,7 @@ Deze cmdlet is bijna identiek aan de cmdlet voor het maken van een roltoewijzing
 Gebruik de volgende cmdlet om alle rolinstellingen in uw Azure AD-organisatie op te halen.
 
 ```powershell
-Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'"
 ```
 
 Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten worden momenteel door PIM gebruikt. De UserMemberSettings zijn activerings instellingen, AdminEligibleSettings zijn toewijzings instellingen voor in aanmerking komende toewijzingen en de AdminmemberSettings zijn toewijzings instellingen voor actieve toewijzingen.
@@ -145,8 +145,10 @@ Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten wor
 Als u de functie-instelling wilt bijwerken, moet u het bestaande instellings object voor een bepaalde rol ophalen en wijzigingen aanbrengen:
 
 ```powershell
-$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-$setting.UserMemberSetting.justificationRule = '{"required":false}'
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq 'tenant id' and RoleDefinitionId eq 'role id'"
+$settinga = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+$settinga.RuleIdentifier = "JustificationRule"
+$settinga.Setting = '{"required":false}'
 ```
 
 U kunt de instelling vervolgens vooraf Toep assen op een van de objecten voor een bepaalde rol, zoals hieronder wordt weer gegeven. De ID is hier de instellings-ID van de rol die kan worden opgehaald uit het resultaat van de cmdlet lijst rolinstellingen.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441915"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562601"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Eenmalige aanmelding op basis van SAML configureren
 
@@ -27,7 +27,7 @@ In de [Quick](view-applications-portal.md) start-serie op toepassings beheer heb
 
 Het gebruik van Azure AD als uw ID-provider (IdP) en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie voor op SAML gebaseerde SSO vereist is, is dit artikel voor u.
 
-In de [Quick Start serie](view-applications-portal.md)is er een artikel over het configureren van eenmalige aanmelding. Hierin leert u hoe u toegang kunt krijgen tot de configuratie pagina van SAML voor een app. De configuratie pagina van SAML bevat vijf secties. Deze secties worden gedetailleerd beschreven in dit artikel.
+In de [Quick Start serie](add-application-portal-setup-sso.md)is er een artikel over het configureren van eenmalige aanmelding. Hierin leert u hoe u toegang kunt krijgen tot de configuratie pagina van SAML voor een app. De configuratie pagina van SAML bevat vijf secties. Deze secties worden gedetailleerd beschreven in dit artikel.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet aanwezig is in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
@@ -42,7 +42,7 @@ In de [Quick Start serie](view-applications-portal.md)is er een artikel over het
 U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarden hand matig invoeren of een meta gegevensbestand uploaden om de waarde van de velden te extra heren.
 
 > [!TIP]
-> Veel apps zijn al vooraf geconfigureerd voor gebruik met Azure AD. Deze apps worden weer gegeven in de galerie met apps die u kunt bezoeken wanneer u een app toevoegt aan uw Azure AD-Tenant. In de Quick Start- [serie](view-applications-portal.md) wordt u begeleid bij het proces. Voor de apps in de galerie vindt u gedetailleerde stapsgewijze instructies voor het instellen van een stap. Als u de stappen wilt openen, klikt u op de koppeling op de configuratie pagina van SAML voor de app, zoals beschreven in de Quick Start-serie of kunt u een lijst met alle zelf studies over app-configuratie bekijken in [zelf studies voor SaaS-app-configuratie](../saas-apps/tutorial-list.md).
+> Veel apps zijn al vooraf geconfigureerd voor gebruik met Azure AD. Deze apps worden weer gegeven in de galerie met apps die u kunt bezoeken wanneer u een app toevoegt aan uw Azure AD-Tenant. In de Quick Start- [serie](add-application-portal-setup-sso.md) wordt u begeleid bij het proces. Voor de apps in de galerie vindt u gedetailleerde stapsgewijze instructies voor het instellen van een stap. Als u de stappen wilt openen, klikt u op de koppeling op de configuratie pagina van SAML voor de app, zoals beschreven in de Quick Start-serie of kunt u een lijst met alle zelf studies over app-configuratie bekijken in [zelf studies voor SaaS-app-configuratie](../saas-apps/tutorial-list.md).
 
 | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
 |:--|:--|:--|:--|
@@ -57,7 +57,7 @@ U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarde
 Wanneer een gebruiker zich verifieert bij de toepassing, geeft Azure AD aan de toepassing een SAML-token door met informatie (of claims) over de gebruiker die deze uniek identificeert. Standaard bevat deze informatie de gebruikers naam, het e-mail adres, de voor naam en de achternaam van de gebruiker. Mogelijk moet u deze claims aanpassen als de toepassing bijvoorbeeld specifieke claim waarden of een andere **naam** indeling dan username vereist. 
 
 > [!IMPORTANT]
-> Veel apps zijn al vooraf geconfigureerd en in de app-galerie. u hoeft zich geen zorgen te maken over het instellen van gebruikers-en groeps claims. De [Quick](view-applications-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
+> Veel apps zijn al vooraf geconfigureerd en in de app-galerie. u hoeft zich geen zorgen te maken over het instellen van gebruikers-en groeps claims. De [Quick](add-application-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
 
 
 De unieke id-waarde van de **gebruikers-id** is een vereiste claim en is belang rijk. De standaard waarde is *User. userPrincipalName*. De gebruikers-id is uniek voor elke gebruiker in de toepassing. Als het e-mailadres bijvoorbeeld zowel de gebruikersnaam als de unieke id is, wordt de waarde ingesteld op *user.mail*.
@@ -79,7 +79,7 @@ U kunt nieuwe claims toevoegen, voor meer informatie Raadpleeg [het toevoegen va
 Azure AD maakt gebruik van een certificaat voor het ondertekenen van de SAML-tokens die worden verzonden naar de toepassing. U hebt dit certificaat nodig om de vertrouwens relatie tussen Azure AD en de toepassing in te stellen. Zie de SAML-documentatie van de toepassing voor meer informatie over de indeling van het certificaat. Zie voor meer informatie [certificaten beheren voor federatieve eenmalige aanmelding](manage-certificates-for-federated-single-sign-on.md) en [Geavanceerde opties voor certificaat ondertekening in het SAML-token](certificate-signing-options.md).
 
 > [!IMPORTANT]
-> Veel apps zijn al vooraf geconfigureerd en in de app-galerie en u hoeft geen certificaten aan te gaan. De [Quick](view-applications-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
+> Veel apps zijn al vooraf geconfigureerd en in de app-galerie en u hoeft geen certificaten aan te gaan. De [Quick](add-application-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
 
 Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtstreeks downloaden vanuit de hoofd **set eenmalige aanmelding met de SAML-** pagina. U kunt ook het actieve certificaat ophalen door het XML-bestand met meta gegevens van de toepassing te downloaden of door gebruik te maken van de URL voor de federatieve meta gegevens van de app. Als u uw certificaten (actief of inactief) wilt weer geven, maken of downloaden, voert u de volgende stappen uit.
 

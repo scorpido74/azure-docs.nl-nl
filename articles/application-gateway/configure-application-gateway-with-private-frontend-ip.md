@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808115"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562482"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassings gateway met een ILB-eind punt (interne load balancer) configureren
 
@@ -31,7 +31,7 @@ Meld u aan bij Azure Portal op <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaand gebruiken. In dit voor beeld maakt u een nieuw virtueel netwerk. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt. Instanties van toepassingsgateways worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
+Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaand gebruiken. In dit voorbeeld maakt u een nieuw virtueel netwerk. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt. Instanties van toepassingsgateways worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
 
 1. Vouw het menu Portal uit en selecteer **een resource maken**.
 2. Selecteer **Netwerken** en vervolgens **Application Gateway** in de lijst Aanbevolen.
@@ -74,7 +74,7 @@ Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maa
 25. Accepteer de resterende standaard waarden en selecteer **toevoegen**.
 26. Selecteer op de pagina **een routerings regel toevoegen** de optie **toevoegen**.
 27. Selecteer **volgende: Tags**.
-28. Selecteer **Volgende: Controleren en maken**.
+28. Selecteer **Volgende: Beoordelen en maken**.
 29. Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken** om de netwerk resources en de toepassings gateway te maken. Het kan enkele minuten duren om de toepassingsgateway te maken. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
 
 ## <a name="add-backend-pool"></a>Back-endgroep toevoegen
@@ -90,7 +90,7 @@ Hiervoor gaat u als volgt te werk:
 ### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
 1. Selecteer **Een resource maken**.
-2. Selecteer **Compute** en selecteer vervolgens **Virtual Machine**.
+2. Selecteer **Compute** en vervolgens **Virtuele machine**.
 4. Voer deze waarden in voor de virtuele machine:
    - Selecteer *myResourceGroupAG* voor **resource groep**.
    - *myVM* : voor de naam van de **virtuele machine**.
@@ -103,14 +103,14 @@ Hiervoor gaat u als volgt te werk:
 8. Accepteer de resterende standaard waarden en selecteer **volgende: beheer**.
 9. Selecteer **Uit** om diagnostische gegevens over opstarten uit te schakelen.
 10. Accepteer de resterende standaard waarden en selecteer **volgende: Geavanceerd**.
-11. Selecteer **volgende: Tags**.
+11. Selecteer **Volgende: Labels**.
 12. Selecteer **volgende: controleren + maken**.
 13. Controleer de instellingen op de overzichtspagina en selecteer **Maken**. Het maken van de virtuele machine kan enkele minuten duren. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
 
 ### <a name="install-iis"></a>IIS installeren
 
 1. Open de Cloud Shell en zorg ervoor dat deze is ingesteld op **Power shell**.
-    ![privé-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![Scherm afbeelding toont een open Azure Cloud Shell console venster waarin Power shell wordt gebruikt.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren:
 
    ```azurepowershell
@@ -142,15 +142,15 @@ Hiervoor gaat u als volgt te werk:
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 2. Selecteer **back-endservers**. Selecteer **appGatewayBackendPool**.
-3. Onder **doel type** **virtuele machine** selecteren en onder **doel**selecteert u de vNIC die is gekoppeld aan myVM.
+3. Onder **doel type** **virtuele machine**  selecteren en onder **doel**selecteert u de vNIC die is gekoppeld aan myVM.
 4. Herhaal deze stap om MyVM2 toe te voegen.
-   ![privé-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![Scherm afbeelding toont het deel venster Back-endadresgroep bewerken met doel typen en doelen gemarkeerd.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Selecteer **opslaan.**
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
 1. Controleer het frontend-IP-adres dat is toegewezen door te klikken op de pagina **frontend IP-configuraties** in de portal.
-    ![privé-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![Scherm afbeelding toont het deel venster IP-configuratie van frontend waarvoor het persoonlijke type is gemarkeerd.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Kopieer het privé-IP-adres en plak het in de adres balk van de browser in een virtuele machine in hetzelfde VNet of op locatie die verbinding heeft met dit VNet en probeer toegang te krijgen tot de Application Gateway.
 
 ## <a name="next-steps"></a>Volgende stappen

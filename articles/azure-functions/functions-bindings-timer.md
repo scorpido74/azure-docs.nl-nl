@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 88160d82cb7cc0a012d63445f101a1f2a3740da0
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569273"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563084"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -250,6 +250,7 @@ Wanneer een timer functie wordt geactiveerd, wordt er een timer object door gege
 
 De `IsPastDue` eigenschap is op het `true` moment dat de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
 
+
 ## <a name="ncrontab-expressions"></a>NCRONTAB-expressies 
 
 Azure Functions maakt gebruik van de [NCronTab](https://github.com/atifaziz/NCrontab) -bibliotheek om NCronTab-expressies te interpreteren. Een NCRONTAB-expressie is vergelijkbaar met een CRON-expressie, behalve dat het een extra zesde veld bevat die aan het begin moet worden gebruikt voor tijd nauwkeurigheid in seconden:
@@ -282,6 +283,8 @@ Hier volgen enkele voor beelden van NCRONTAB-expressies die u kunt gebruiken voo
 |`"0 30 9 * * 1-5"`|om 9:30 uur om de dag|
 |`"0 30 9 * Jan Mon"`|om 9:30 uur elke maandag in januari|
 
+> [!NOTE]
+> De NCRONTAB-expressie vereist **zes veld** notatie. Vijf veld cron expressies worden niet ondersteund in Azure.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB tijd zones
 

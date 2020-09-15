@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447244"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561820"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
     De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files biedt de methoden voor het opslaan van Directory gegevens wanneer deze beschikbaar zijn voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
 
--   **Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)**
+-   **Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)**
 
     Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met RBAC kunt u de toegang tot resources beheren door gebruikers de minste machtigingen te verlenen die nodig zijn om hun taken uit te voeren. Zie [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC) in azure?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
 
@@ -78,6 +78,7 @@ De volgende tabel bevat een overzicht van de ondersteunde Azure file shares-veri
 - Azure AD DS en on-premises AD DS verificatie bieden geen ondersteuning voor verificatie voor computer accounts. U kunt in plaats daarvan een service aanmeldings account gebruiken.
 - Geen van de Azure AD DS-verificatie en on-premises AD DS-verificatie wordt ondersteund voor apparaten die zijn toegevoegd aan Azure AD of Azure AD-geregistreerde apparaten.
 - Azure-bestands shares bieden alleen ondersteuning voor verificatie op basis van identiteiten met een van de volgende domein Services, [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) of [on-premises Active Directory Domain Services (AD DS)](#ad-ds).
+- Geen van beide verificatie methoden op basis van een identiteit worden ondersteund met Network File System (NFS), een preview-versie.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Voor delen van verificatie op basis van identiteit
 Verificatie op basis van identiteit voor Azure Files biedt verschillende voor delen ten opzichte van het gebruik van gedeelde sleutel verificatie:
@@ -91,7 +92,7 @@ Verificatie op basis van identiteit voor Azure Files biedt verschillende voor de
 -   **Back-ups maken van Windows-Acl's (ook wel NTFS genoemd) samen met uw gegevens**  
     U kunt Azure-bestands shares gebruiken om een back-up te maken van uw bestaande on-premises bestands shares. Azure Files behoudt uw Acl's samen met uw gegevens wanneer u een back-up maakt van een bestands share naar Azure-bestands shares via SMB.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Azure-bestands shares maken gebruik van het Kerberos-protocol voor verificatie met on-premises AD DS of Azure AD DS. Wanneer een identiteit die is gekoppeld aan een gebruiker of toepassing die wordt uitgevoerd op een client, probeert toegang te krijgen tot gegevens in azure-bestands shares, wordt de aanvraag verzonden naar de domein service, een AD DS of Azure AD DS, om de identiteit te verifiëren. Als de verificatie is geslaagd, wordt een Kerberos-token geretourneerd. De client verzendt een aanvraag met het Kerberos-token en Azure-bestands shares die token gebruiken om de aanvraag te autoriseren. Azure-bestands shares ontvangen alleen het Kerberos-token, geen toegang tot referenties.
 

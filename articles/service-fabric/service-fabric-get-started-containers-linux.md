@@ -4,12 +4,12 @@ description: Maak uw eerste Linux-containertoepassing in Azure Service Fabric. B
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b9e22ada3da572d5025f56fca824089bb6e20465
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847530"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563706"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -215,7 +215,7 @@ Vanaf de laatste vernieuwing van v 6.4 hebt u de optie om op te geven dat de sta
 
 De **status controle** -instructie die verwijst naar de daad werkelijke controle die wordt uitgevoerd voor de controle van de container status, moet aanwezig zijn in de Dockerfile die wordt gebruikt tijdens het genereren van de container installatie kopie.
 
-![HealthCheckHealthy][1]
+![Scherm afbeelding toont details van het geïmplementeerde service pakket NodeServicePackage.][1]
 
 ![HealthCheckUnhealthyApp][2]
 
@@ -266,7 +266,7 @@ Maak verbinding met de actieve container. Open een webbrowser die verwijst naar 
 ![Hallo wereld!][hello-world]
 
 
-## <a name="clean-up"></a>Opschonen
+## <a name="clean-up"></a>Opruimen
 Gebruik het uninstall-script dat is opgegeven in de sjabloon om het toepassingsexemplaar te verwijderen uit het lokale ontwikkelomgevingscluster en de registratie van het toepassingstype op te heffen.
 
 ```bash
@@ -373,7 +373,7 @@ Dit zijn de volledige manifesten voor de service en toepassing die in dit artike
 Voer de volgende stappen uit als u nog een containerservice wilt toevoegen aan een toepassing die al is gemaakt met yeoman:
 
 1. Stel de directory in op de hoofdmap van de bestaande toepassing. Bijvoorbeeld `cd ~/YeomanSamples/MyApplication` als `MyApplication` de toepassing is die is gemaakt door Yeoman.
-2. `yo azuresfcontainer:AddService` uitvoeren
+2. Voer `yo azuresfcontainer:AddService` uit.
 
 <a id="manually"></a>
 

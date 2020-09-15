@@ -4,25 +4,32 @@ description: Meer informatie over het plannen van een Azure Files-implementatie.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705908"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563432"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
 
-- **Directe koppeling van een Azure-bestands share**: omdat Azure files SMB-toegang biedt, kunt u Azure-bestands shares on-premises of in de Cloud koppelen met behulp van de standaard-SMB-client die beschikbaar is in Windows, MacOS en Linux. Omdat Azure-bestands shares serverloos zijn, is voor het implementeren van productie scenario's geen bestands server of een NAS-apparaat nodig. Dit betekent dat u geen software patches hoeft toe te passen of fysieke schijven hoeft uit te wisselen. 
+- **Directe koppeling van een Azure-bestands share**: omdat Azure files Server Message Block (SMB) of NFS-toegang (Network File System) hebt, kunt u Azure-bestands shares on-premises of in de Cloud koppelen met behulp van de standaard SMB-of NFS-clients die beschikbaar zijn in uw besturings systeem. Omdat Azure-bestands shares serverloos zijn, is voor het implementeren van productie scenario's geen bestands server of een NAS-apparaat nodig. Dit betekent dat u geen software patches hoeft toe te passen of fysieke schijven hoeft uit te wisselen. 
 
-- **Azure-bestands share op locatie opslaan in de cache met Azure file sync**: Azure File Sync kunt u de bestands shares van uw organisatie in azure files centraliseren en tegelijkertijd de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server behouden. Azure File Sync transformeert een on-premises Windows-Server (of Cloud) naar een snelle cache van uw Azure-bestands share. 
+- **Azure-bestands share op locatie opslaan in de cache met Azure file sync**: Azure File Sync kunt u de bestands shares van uw organisatie in azure files centraliseren en tegelijkertijd de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server behouden. Azure File Sync transformeert een on-premises Windows-Server (of Cloud) naar een snelle cache van uw Azure SMB-bestands share. 
 
 Dit artikel heeft voornamelijk betrekking op implementatie overwegingen voor het implementeren van een Azure-bestands share om rechtstreeks te worden gekoppeld door een on-premises of cloud-client. Zie [planning voor een implementatie van een Azure file sync](storage-sync-files-planning.md)om een Azure file sync implementatie te plannen.
+
+## <a name="available-protocols"></a>Beschik bare protocollen
+
+Azure Files biedt twee protocollen die kunnen worden gebruikt bij het koppelen van uw bestands shares, SMB en Network File System (NFS). Zie [Azure file share-protocollen](storage-files-compare-protocols.md)voor meer informatie over deze protocollen.
+
+> [!IMPORTANT]
+> De meeste inhoud van dit artikel is alleen van toepassing op SMB-shares. Alle items die van toepassing zijn op NFS-shares, worden in het bijzonder vermeld.
 
 ## <a name="management-concepts"></a>Beheer concepten
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -54,7 +61,7 @@ Als u de toegang tot uw Azure-bestands share wilt blok keren, hebt u twee belang
 
 - Toegang tot Azure-bestands shares via een ExpressRoute of een VPN-verbinding. Wanneer u toegang hebt tot uw Azure-bestands share via een netwerk tunnel, kunt u uw Azure-bestands share koppelen zoals een on-premises bestands share omdat het SMB-verkeer uw organisatie grens niet overschrijdt.   
 
-Hoewel het vanuit een technisch perspectief aanzienlijk eenvoudiger is om uw Azure-bestands shares te koppelen via het open bare eind punt, zullen de meeste klanten ervoor kiezen hun Azure-bestands shares te koppelen via een ExpressRoute of een VPN-verbinding. Hiervoor moet u het volgende configureren voor uw omgeving:  
+Hoewel het vanuit een technisch perspectief aanzienlijk eenvoudiger is om uw Azure-bestands shares te koppelen via het open bare eind punt, zullen de meeste klanten ervoor kiezen hun Azure-bestands shares te koppelen via een ExpressRoute of een VPN-verbinding. Het koppelen met deze opties is mogelijk met zowel SMB-als NFS-shares. Hiervoor moet u het volgende configureren voor uw omgeving:  
 
 - **Netwerk tunneling met behulp van ExpressRoute, site-naar-site-of punt-naar-site-VPN**: tunneling naar een virtueel netwerk maakt toegang tot Azure-bestands shares van on-premises mogelijk, zelfs als poort 445 wordt geblokkeerd.
 - **Persoonlijke eind punten**: persoonlijke eind punten geven uw opslag account een toegewezen IP-adres binnen de adres ruimte van het virtuele netwerk. Hierdoor kan netwerk tunneling worden ingeschakeld zonder dat u on-premises netwerken hoeft te openen tot alle IP-adresbereiken die eigendom zijn van de Azure Storage-clusters. 
@@ -65,7 +72,11 @@ Zie [Azure files netwerk overwegingen](storage-files-networking-overview.md)voor
 ## <a name="encryption"></a>Versleuteling
 Azure Files ondersteunt twee verschillende soorten versleuteling: versleuteling in transit, dat betrekking heeft op de versleuteling die wordt gebruikt bij het koppelen/openen van de Azure-bestands share, en versleuteling op rest, die betrekking heeft op hoe de gegevens worden versleuteld wanneer deze op schijf worden opgeslagen. 
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+
+> [!IMPORTANT]
+> Deze sectie bevat informatie over versleuteling in de doorvoer gegevens voor SMB-shares. Zie [beveiliging](storage-files-compare-protocols.md#security)voor meer informatie over versleuteling in transit met NFS-shares.
+
 Standaard is versleuteling in transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
 
 U kunt versleuteling in transit uitschakelen voor een Azure-opslagaccount. Wanneer versleuteling is uitgeschakeld, staat Azure Files ook toe dat SMB 2,1, SMB 3,0 zonder versleuteling en niet-versleutelde API-aanroepen van FileREST via HTTP. De belangrijkste reden om versleuteling in transit uit te schakelen, is het ondersteunen van een verouderde toepassing die moet worden uitgevoerd op een ouder besturingssysteem, zoals Windows Server 2008 R2 of een oudere Linux-distributie. In Azure Files worden SMB 2.1-verbindingen alleen toegestaan binnen dezelfde Azure-regio als de Azure-bestandsshare. SMB 2.1-clients buiten de Azure-regio van de Azure-bestandsshare, zoals on-premises clients of clients in een andere Azure-regio, hebben geen toegang tot de bestandsshare.

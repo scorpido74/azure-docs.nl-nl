@@ -3,12 +3,12 @@ title: De Azure Service Fabric-versie van een cluster upgraden
 description: Voer een upgrade uit voor de Service Fabric code en/of configuratie waarmee een Service Fabric cluster wordt uitgevoerd, met inbegrip van het instellen van de cluster update modus, het bijwerken van certificaten, het toevoegen van toepassings poorten, het uitvoeren van besturingssysteem patches, enzovoort. Wat kunt u verwachten wanneer de upgrades worden uitgevoerd?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261049"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564284"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade uitvoeren voor de Service Fabric-versie van een cluster
 
@@ -28,7 +28,7 @@ U doet dit door de cluster configuratie ' upgrade mode ingesteld ' in te stellen
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>De upgrade modus instellen in de Azure Portal
 U kunt het cluster instellen op automatisch of hand matig wanneer u het cluster maakt.
 
-![Create_Manualmode][Create_Manualmode]
+![Scherm afbeelding toont het deel venster Service Fabric cluster maken met optie 2 cluster configuratie geselecteerd en het deel venster cluster configuratie geopend.][Create_Manualmode]
 
 U kunt het cluster instellen op automatisch of hand matig bij een live cluster, met behulp van de ervaring beheren. 
 
@@ -39,12 +39,12 @@ Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade t
 
 Zodra u de problemen hebt opgelost die het terugdraaien hebben veroorzaakt, moet u de upgrade opnieuw starten door dezelfde stappen te volgen als voorheen.
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![Scherm afbeelding toont het venster Service Fabric clusters met het deel venster infrastructuur upgrades geopend en de upgrade opties gemarkeerd, inclusief automatisch en hand matig.][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>De upgrade modus instellen met behulp van een resource manager-sjabloon
 Voeg de configuratie ' upgrade mode ingesteld ' toe aan de resource definitie voor micro soft. ServiceFabric/clusters en stel de ' clusterCodeVersion ' in op een van de ondersteunde infrastructuur versies, zoals hieronder wordt weer gegeven en implementeer de sjabloon. De geldige waarden voor ' upgrade mode ingesteld ' zijn ' hand matig ' of ' automatisch '
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![In de scherm afbeelding wordt een sjabloon weer gegeven. Dit is een Inge sprongen tekst zonder opmaak om de structuur weer te geven en de clusterCodeVersion en upgrade mode ingesteld zijn gemarkeerd.][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Een upgrade uitvoeren naar een nieuwe versie op een cluster dat is ingesteld op hand matige modus via een resource manager-sjabloon.
 Wanneer het cluster zich in de hand matige modus bevindt, wijzigt u de "clusterCodeVersion" in een ondersteunde versie en implementeert u deze in een nieuwe versie. De implementatie van de sjabloon, het starten van de Fabric-upgrade wordt automatisch gestart. Het cluster status beleid (een combi natie van de status van het knoop punt en de status van alle toepassingen die in het cluster worden uitgevoerd) wordt tijdens de upgrade gerespecteerd.

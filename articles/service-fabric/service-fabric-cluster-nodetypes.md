@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261101"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561887"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 
@@ -32,7 +32,7 @@ Wanneer u een schaalset uitbreidt, wordt er een nieuw exemplaar gemaakt. De nieu
 
 Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: ** &lt; naam &gt; van het lb-knooppunt type**. Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Resources][Resources]
+![Scherm afbeelding toont een resource groep waarvoor twee load balancers zijn gemarkeerd.][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Extensie van de virtuele machine Service Fabric
 

@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594353"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563995"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Data Factory (preview-versie)
 
@@ -88,7 +90,7 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory beheerde Virtual Network is beschikbaar in de volgende Azure-regio's:
 - VS - oost
 - VS - oost 2
 - VS - west-centraal
@@ -104,6 +106,10 @@ De onderstaande gegevens bronnen worden ondersteund om verbinding te maken via e
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Uitgaande communicatie via het open bare eind punt van de Virtual Network voor ADF beheerd
 - Alleen poort 443 wordt geopend voor uitgaande communicatie.
 - Azure Storage en Azure Data Lake Gen2 worden niet ondersteund om te worden verbonden via een openbaar eind punt van Virtual Network met ADF-beheer.
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Het maken van een gekoppelde service van Azure Key Vault 
+- Wanneer u een gekoppelde service voor Azure Key Vault maakt, is er geen Azure Integration Runtime verwijzing. U kunt geen persoonlijk eind punt maken tijdens het maken van de gekoppelde service van Azure Key Vault. Maar wanneer u een gekoppelde service maakt voor gegevens archieven die verwijst naar Azure Key Vault gekoppelde service en deze gekoppelde service verwijst naar Azure Integration Runtime met beheerde Virtual Network ingeschakeld, kunt u tijdens het maken een persoonlijk eind punt voor de gekoppelde Azure Key Vault-service maken. 
+- **Test verbindings** bewerking voor de gekoppelde Service van Azure Key Vault valideert alleen de URL-indeling, maar voert geen netwerk bewerking uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

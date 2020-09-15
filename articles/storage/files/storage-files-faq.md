@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654324"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563689"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
-[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) en het [NFS-protocol (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (preview). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functies en-functionaliteit, met inbegrip van het gebruik van Azure File Sync met Azure Files. Als u het antwoord op uw vraag niet ziet, kunt u contact met ons opnemen via de volgende kanalen (in de volg orde waarin ze worden doorzocht):
 
@@ -31,7 +31,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="file-access-options"></a>
   **Wat zijn verschillende manieren om toegang te krijgen tot bestanden in Azure Files?**  
-    U kunt de bestands share op uw lokale machine koppelen met behulp van het SMB 3,0-protocol of u kunt hulpprogram ma's zoals [Storage Explorer](https://storageexplorer.com/) gebruiken om toegang te krijgen tot bestanden in uw bestands share. Vanuit uw toepassing kunt u opslag-client Bibliotheken, REST Api's, Power shell of Azure CLI gebruiken om toegang te krijgen tot uw bestanden in de Azure-bestands share.
+    SMB-bestands shares kunnen worden gekoppeld op uw lokale computer met behulp van het SMB 3,0-protocol of u kunt hulpprogram ma's als [Storage Explorer](https://storageexplorer.com/) gebruiken om toegang te krijgen tot bestanden in uw bestands share. NFS-bestands shares kunnen op uw lokale computer worden gekoppeld door het script dat door de Azure Portal wordt verstrekt, te kopiëren/plakken. Vanuit uw toepassing kunt u opslag-client Bibliotheken, REST Api's, Power shell of Azure CLI gebruiken om toegang te krijgen tot uw bestanden in de Azure-bestands share.
 
 * <a id="what-is-afs"></a>
   **Wat is Azure File Sync?**  
@@ -43,12 +43,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     
     Azure Blob-opslag is handig voor grootschalige, Cloud toepassingen die ongestructureerde gegevens moeten opslaan. Azure Blob-opslag is een eenvoudigere opslag abstractie dan een echt bestands systeem, om de prestaties en schaal baarheid te maximaliseren. U hebt alleen toegang tot Azure Blob-opslag via op REST gebaseerde client bibliotheken (of rechtstreeks via het REST-Protocol).
 
-    Azure Files is speciaal een bestands systeem. Azure Files heeft alle samen vattingen van bestanden waarvan u weet dat ze van jaren werken met on-premises besturings systemen. Net als Azure Blob-opslag biedt Azure Files een REST-interface en REST-gebaseerde client bibliotheken. In tegens telling tot Azure Blob-opslag biedt Azure Files SMB-toegang tot Azure-bestands shares. Door SMB te gebruiken, kunt u een Azure-bestands share rechtstreeks koppelen aan Windows, Linux of macOS, on-premises of in virtuele machines in de Cloud, zonder dat u code hoeft te schrijven of speciale Stuur Programma's aan het bestands systeem hoeft toe te voegen. U kunt Azure-bestands shares ook opslaan in de cache van on-premises bestands servers met behulp van Azure File Sync voor snelle toegang, waarbij u sluit waar de gegevens worden gebruikt. 
+    Azure Files is speciaal een bestands systeem. Azure Files heeft alle samen vattingen van bestanden waarvan u weet dat ze van jaren werken met on-premises besturings systemen. Net als Azure Blob-opslag biedt Azure Files een REST-interface en REST-gebaseerde client bibliotheken. In tegens telling tot Azure Blob-opslag biedt Azure Files SMB-of NFS-toegang tot Azure-bestands shares. Bestands shares kunnen rechtstreeks op Windows, Linux of macOS worden gekoppeld, zowel on-premises als in virtuele machines in de Cloud, zonder code te schrijven of speciale Stuur Programma's aan het bestands systeem te koppelen. U kunt Azure SMB-bestands shares ook opslaan in de cache van on-premises bestands servers met behulp van Azure File Sync voor snelle toegang, waarbij u sluit waar de gegevens worden gebruikt. 
    
     Zie [Introduction to the core Azure Storage services](../common/storage-introduction.md)(Engelstalig) voor een uitgebreide beschrijving van de verschillen tussen Azure files en Azure Blob-opslag. Zie [Inleiding tot Blob Storage](../blobs/storage-blobs-introduction.md)voor meer informatie over Azure Blob-opslag.
 
 * <a id="files-versus-disks"></a>**Waarom zou ik een Azure-bestands share gebruiken in plaats van Azure-schijven?**  
-    Een schijf in azure disks is gewoon een schijf. Als u de waarde van Azure-schijven wilt ophalen, moet u een schijf koppelen aan een virtuele machine die wordt uitgevoerd in Azure. Azure-schijven kunnen worden gebruikt voor alle items waarvoor u een schijf gebruikt voor op een on-premises server. U kunt deze gebruiken als een besturingssysteem schijf, als wissel ruimte voor een besturings systeem of als toegewezen opslag voor een toepassing. Een interessant gebruik van Azure-schijven is het maken van een bestands server in de Cloud voor gebruik op dezelfde locatie waar u een Azure-bestands share zou kunnen gebruiken. Het implementeren van een bestands server in azure Virtual Machines is een krachtige manier om bestands opslag in azure op te halen wanneer u implementatie opties nodig hebt die momenteel niet worden ondersteund door Azure Files (zoals NFS-protocol ondersteuning of Premium Storage). 
+    Een schijf in azure disks is gewoon een schijf. Als u de waarde van Azure-schijven wilt ophalen, moet u een schijf koppelen aan een virtuele machine die wordt uitgevoerd in Azure. Azure-schijven kunnen worden gebruikt voor alle items waarvoor u een schijf gebruikt voor op een on-premises server. U kunt deze gebruiken als een besturingssysteem schijf, als wissel ruimte voor een besturings systeem of als toegewezen opslag voor een toepassing. Een interessant gebruik van Azure-schijven is het maken van een bestands server in de Cloud voor gebruik op dezelfde locatie waar u een Azure-bestands share zou kunnen gebruiken. Het implementeren van een bestands server in azure Virtual Machines is een krachtige manier om bestands opslag in azure op te halen wanneer u implementatie opties nodig hebt die momenteel niet worden ondersteund door Azure Files. 
 
     Het uitvoeren van een bestands server met Azure-schijven als back-end-opslag is doorgaans veel duurder dan het gebruik van een Azure-bestands share, om een aantal redenen. Naast het betalen van schijf opslag moet u ook betalen voor de kosten van het uitvoeren van een of meer virtuele Azure-machines. Ten tweede moet u ook de virtuele machines beheren die worden gebruikt voor het uitvoeren van de bestands server. Stel dat u verantwoordelijk bent voor upgrades van het besturings systeem. Ten slotte, als u uiteindelijk gegevens moet opslaan in de cache op locatie, is het aan te raden om de replicatie technologieën, zoals Distributed File System replicatie (DFSR), in te stellen en te beheren.
 
@@ -58,17 +58,18 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="get-started"></a>
   **Hoe kan ik aan de slag met Azure Files?**  
-   Het is eenvoudig om aan de slag te gaan met Azure Files. Maak eerst [een bestands share](storage-how-to-create-file-share.md)en koppel deze vervolgens aan het besturings systeem van uw voor keur: 
+   Het is eenvoudig om aan de slag te gaan met Azure Files. Eerst maakt u [een SMB-bestands share](storage-how-to-create-file-share.md) of een [NFS-share](storage-files-how-to-create-nfs-shares.md)en koppelt u deze in uw voorkeurs besturings systeem: 
 
-  * [Koppelen in Windows](storage-how-to-use-files-windows.md)
-  * [Koppelen in Linux](storage-how-to-use-files-linux.md)
-  * [Koppelen in macOS](storage-how-to-use-files-mac.md)
+  * [Een SMB-share koppelen in Windows](storage-how-to-use-files-windows.md)
+  * [Een SMB-share koppelen in Linux](storage-how-to-use-files-linux.md)
+  * [Een SMB-share koppelen in macOS](storage-how-to-use-files-mac.md)
+  * [Een NFS-bestands share koppelen](storage-files-how-to-mount-nfs-shares.md)
 
     Zie [planning voor een Azure files-implementatie](storage-files-planning.md)voor een uitgebreidere hand leiding voor het implementeren van een Azure-bestands share voor het vervangen van productie bestands shares in uw organisatie.
 
 * <a id="redundancy-options"></a>
   **Welke opties voor opslag redundantie worden ondersteund door Azure Files?**  
-    Momenteel ondersteunt Azure Files lokaal redundante opslag (LRS), zone redundante opslag (ZRS), geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS). We gaan in de toekomst gebruikmaken van geografisch redundante opslag met lees toegang (RA-GRS), maar we hebben op dit moment geen tijd lijnen om te delen.
+    Momenteel ondersteunt Azure Files lokaal redundante opslag (LRS), zone redundante opslag (ZRS), geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS). Azure Files Premium-laag biedt momenteel alleen ondersteuning voor LRS en ZRS.
 
 * <a id="tier-options"></a>
   **Welke opslag lagen worden ondersteund in Azure Files?**  
@@ -282,6 +283,23 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 **Zijn er REST-Api's ter ondersteuning van Get/set/Copy-Windows-Acl's voor mappen/bestanden?**
 
     Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API. We bieden ook ondersteuning voor persistentie van Windows-Acl's in REST-hulpprogram ma's: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
+## <a name="network-file-system"></a>Netwerk bestandssysteem
+
+* <a id="when-to-use-nfs"></a>
+**Wanneer moet ik Azure Files NFS gebruiken?**
+
+    Zie [NFS-shares (preview-versie)](storage-files-compare-protocols.md#nfs-shares-preview).
+
+* <a id="backup-nfs-data"></a>
+**Hoe kan ik back-upgegevens opgeslagen in NFS-shares?**
+
+    Het maken van een back-up van uw gegevens op NFS-shares kan worden gedeponeerd met vertrouwde hulp middelen zoals rsync of producten van een van onze back-uppartners van derden. Meerdere back-uppartners, waaronder [CommVault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438)en [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) , maken deel uit van onze eerste preview en hebben hun oplossingen uitgebreid om te kunnen werken met zowel SMB 3,0 als NFS 4,1 voor Azure files.
+
+* <a id="migrate-nfs-data"></a>
+**Kan ik bestaande gegevens migreren naar een NFS-share?**
+
+    Binnen een regio kunt u standaard hulpprogramma's als scp, rsync of SSHFS gebruiken om gegevens te verplaatsen. Omdat Azure Files NFS vanuit meerdere reken instanties tegelijk kan worden geopend, kunt u het kopiëren versnellen met parallelle uploads. Als u gegevens van buiten een regio wilt halen, gebruikt u een VPN-of Expressroute om uw bestands systeem te koppelen vanuit uw on-premises Data Center.
 
 ## <a name="on-premises-access"></a>Lokale toegang
 

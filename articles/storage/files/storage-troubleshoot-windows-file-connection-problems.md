@@ -1,22 +1,25 @@
 ---
-title: Problemen met Azure Files oplossen in Windows | Microsoft Docs
-description: Problemen met Azure Files oplossen in Windows. Zie algemene problemen met betrekking tot Azure Files wanneer u verbinding maakt vanaf Windows-clients en mogelijke oplossingen vindt.
+title: Problemen met Azure Files in Windows oplossen
+description: Problemen met Azure Files oplossen in Windows. Zie algemene problemen met betrekking tot Azure Files wanneer u verbinding maakt vanaf Windows-clients en mogelijke oplossingen vindt. Alleen voor SMB-shares
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532389"
+ms.locfileid: "90564250"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Problemen met Azure Files oplossen in Windows (SMB)
 
 In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties. U kunt deze informatie ook vinden in de [probleem oplosser voor Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) die stappen biedt om u te helpen bij het verbinden/koppelen van Azure files shares.
+
+> [!IMPORTANT]
+> De inhoud van dit artikel is alleen van toepassing op SMB-shares.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fout 5 bij het koppelen van een Azure-bestands share
@@ -54,7 +57,7 @@ Controleer of de machtigingen juist zijn geconfigureerd:
 
 - **Active Directory (AD)** Zie [machtigingen op share niveau toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
 
-    Machtigings toewijzingen op share niveau worden ondersteund voor groepen en gebruikers die zijn gesynchroniseerd van de Active Directory (AD) naar Azure Active Directory (AAD) met behulp van Azure AD Connect.  Controleer of de groepen en gebruikers toegewezen machtigingen op share niveau worden niet ondersteund in de Cloud groepen.
+    Machtigings toewijzingen op share niveau worden ondersteund voor groepen en gebruikers die zijn gesynchroniseerd van de Active Directory (AD) naar Azure Active Directory (Azure AD) met behulp van Azure AD Connect.  Controleer of de groepen en gebruikers toegewezen machtigingen op share niveau worden niet ondersteund in de Cloud groepen.
 - Zie **Azure Active Directory Domain Services (Azure AD DS)** [toegangs machtigingen toewijzen aan een identiteit](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>

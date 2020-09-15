@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070935"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564182"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Een Azure Premium-bestands share maken
 
@@ -93,7 +93,7 @@ Als u een FileStorage-opslag account wilt maken vanuit Power shell, gebruikt u d
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
@@ -149,7 +149,7 @@ Nu u een FileStorage-account hebt gemaakt, kunt u een Premium-bestands share mak
 1. Voer een naam en een gewenste quotum in voor de bestands share en selecteer vervolgens **maken**.
 
 > [!NOTE]
-> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie.
 
    ![Een Premium-bestandsshare maken](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
@@ -158,25 +158,27 @@ Nu u een FileStorage-account hebt gemaakt, kunt u een Premium-bestands share mak
 Als u een Premium-bestands share met de module Azure PowerShell wilt maken, gebruikt u de cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) .
 
 > [!NOTE]
-> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie.
 
 ```powershell
 New-AzStorageShare `
    -Name myshare `
+   -EnabledProtocol SMB `
    -Context $storageAcct.Context
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een Premium-bestands share wilt maken met de Azure CLI, gebruikt u de opdracht [AZ Storage share Create](/cli/azure/storage/share) .
 
 > [!NOTE]
-> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie.
 
 ```azurecli-interactive
 az storage share create \
     --account-name $STORAGEACCT \
     --account-key $STORAGEKEY \
+    --enabled-protocol SMB \
     --name "myshare" 
 ```
 ---
@@ -197,7 +199,7 @@ Gebruik de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/rem
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de resources die in dit artikel zijn gemaakt, wilt opschonen, verwijdert u de resource groep. Als u de resource groep verwijdert, worden ook het bijbehorende opslag account en alle andere resources die aan de resource groep zijn gekoppeld, verwijderd.
 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510377"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563502"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van Linux naar een hybride Cloud implementatie met Azure File Sync
 
-Azure File Sync werkt op Windows Server-exemplaren met Direct Attached Storage (DAS). Het biedt geen ondersteuning voor synchronisatie van en naar Linux of een externe SMB-share (Server Message Block).
+Azure File Sync werkt op Windows Server-exemplaren met Direct Attached Storage (DAS). Het biedt geen ondersteuning voor synchronisatie van en naar Linux-clients of een externe SMB-share (Server Message Block) of NFS-shares (Network File System).
 
 Als gevolg hiervan is het transformeren van uw bestands Services naar een hybride implementatie een migratie naar Windows Server nodig. Dit artikel begeleidt u bij het plannen en uitvoeren van een dergelijke migratie.
 
@@ -201,7 +201,7 @@ U bent klaar met het migreren van een share of een groep shares naar een gemeen 
 U kunt proberen enkele van deze kopieën parallel uit te voeren. Het is raadzaam om het bereik van een Azure-bestands share tegelijk te verwerken.
 
 > [!WARNING]
-> Nadat u alle gegevens van uw Linux Samba-server naar het Windows Server-exemplaar hebt verplaatst en uw migratie is voltooid, gaat u terug naar *alle* synchronisatie groepen in de Azure Portal. Pas het percentage beschik bare ruimte voor het volume van de Cloud-laag aan wat beter geschikt is voor het gebruik van de cache, zoals 20 procent. 
+> Nadat u alle gegevens van uw Linux Samba-server naar het Windows Server-exemplaar hebt verplaatst en uw migratie is voltooid, gaat u terug naar *alle*  synchronisatie groepen in de Azure Portal. Pas het percentage beschik bare ruimte voor het volume van de Cloud-laag aan wat beter geschikt is voor het gebruik van de cache, zoals 20 procent. 
 
 Het beleid voor beschik bare ruimte in het volume voor de Cloud-laag wordt toegepast op een volume niveau waarbij mogelijk meerdere server eindpunten worden gesynchroniseerd. Als u vergeet de beschik bare ruimte op zelfs één server eindpunt aan te passen, blijft de synchronisatie de meest beperkende regel Toep assen en wordt geprobeerd om 99 procent vrije schijf ruimte te houden. De lokale cache wordt mogelijk niet uitgevoerd zoals u verwacht. De prestaties kunnen acceptabel zijn als uw doel is om de naam ruimte te hebben voor een volume dat alleen zelden gebruikte archiverings gegevens bevat, en u de rest van de opslag ruimte voor een ander scenario wilt reserveren.
 

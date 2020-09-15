@@ -7,14 +7,17 @@ ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cffac114cacd05e04e149af96d1678b536db7fec
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782367"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564233"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
+# <a name="troubleshoot-azure-files-performance-issues-smb"></a>Problemen met Azure Files prestatie problemen oplossen (SMB)
+
+> [!IMPORTANT]
+> De inhoud van dit artikel is alleen van toepassing op SMB-shares.
 
 In dit artikel worden enkele veelvoorkomende problemen met betrekking tot Azure-bestands shares vermeld. Het biedt mogelijke oorzaken en tijdelijke oplossingen wanneer deze problemen optreden.
 
@@ -26,7 +29,7 @@ Aanvragen worden beperkt wanneer de limiet voor IOPS, binnenkomend of uitgaand v
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -200,6 +203,36 @@ Hoger dan de verwachte latentie die toegang heeft tot Azure Files voor intensiev
 11. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 12. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
 13. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
+
+Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
+
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Hoe kan ik waarschuwingen maken als een Premium-bestands share wordt getrendd naar een beperkt aantal
+
+1. Ga naar uw **opslag account** in de **Azure Portal**.
+2. Klik in de sectie bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+3. Klik op **Resource bewerken**, selecteer het **Bestands bron type** voor het opslag account en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+4. Klik op **voor waarde selecteren** om een voor waarde toe te voegen.
+5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer **de waarde** voor uitgaand verkeer.
+
+  > [!NOTE]
+  > U moet drie afzonderlijke waarschuwingen maken om te worden gewaarschuwd wanneer de ingang, de uitgang of de trans acties de drempel waarde die u instelt, overschrijdt. Dit komt doordat een waarschuwing alleen wordt geactiveerd wanneer aan alle voor waarden wordt voldaan. Dus als u alle voor waarden in één waarschuwing opneemt, wordt u alleen gewaarschuwd als binnenkomend, uitgaand verkeer en de drempel waarden van de limieten zijn overschreden.
+
+6. Schuif omlaag. Klik op de vervolg keuzelijst **dimensie naam** en selecteer **Bestands share**.
+7. Klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands share (s) waarop u een waarschuwing wilt ontvangen.
+8. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie van evaluatie) en klik op **gereed**.
+
+  > [!NOTE]
+  > De metrische gegevens voor uitgaand verkeer, ingangs-en trans acties zijn per minuut, maar u hebt een uitgangs-, binnenkomend en IOPS per seconde ingericht. (Neem contact op met de granulariteit van aggregatie-> per minuut = meer ruis, dus kies een verschil 1) Als uw ingerichte uitvoerder bijvoorbeeld 90 MiB/seconde is en u wilt dat uw drempel waarde 80% van de ingerichte uitvoerder is, moet u de volgende waarschuwings parameters selecteren: 75497472 voor **drempel waarde**, groter dan of gelijk aan voor **operator**, en gemiddeld voor **aggregatie type**. Afhankelijk van hoe ruis uw waarschuwing moet zijn, kunt u kiezen welke waarden u wilt selecteren voor de granulariteit van aggregatie en de frequentie van de evaluatie. Als ik bijvoorbeeld wilt dat mijn waarschuwing de gemiddelde binnenvallen gedurende een uur bekijkt en ik wil dat mijn waarschuwings regel elk uur wordt uitgevoerd, zou ik 1 uur voor **aggregatie granulatie** en 1 uur voor de **frequentie van de evaluatie**selecteren.
+
+9. Klik op **actie groep selecteren** om een **actie groep** (e-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+10. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+11. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
+
+  > [!NOTE]
+  > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte inkomend verkeer, voert u dezelfde stappen uit, behalve in stap 5, selecteert u in plaats daarvan de waarde voor **ingangs** datum.
+
+  > [!NOTE]
+  > Als u een melding wilt ontvangen als uw Premium-bestands share is bijna beperkt vanwege ingerichte IOPS, moet u enkele wijzigingen aanbrengen. Selecteer in stap 5 in plaats daarvan de metrische gegevens voor **trans acties** . Voor stap 10 is de enige optie voor **aggregatie type** totaal. De drempel waarde is daarom afhankelijk van de geselecteerde aggregatie granulatie. Als u bijvoorbeeld wilt dat uw drempel waarde 80% van de ingerichte basis lijn IOPS is en u 1 uur hebt geselecteerd voor de **granulariteit van aggregatie**, zou uw **drempelwaarde** uw basislijn IOPS (in bytes) x 0,8 x 3600 moet zijn. Naast deze wijzigingen volgt u dezelfde stappen die hierboven worden beschreven. 
 
 Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
 

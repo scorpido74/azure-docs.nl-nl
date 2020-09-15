@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268805"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563893"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -105,24 +105,24 @@ iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De vol
 | Overweging | Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling |
 | - | - | - | - |
 | **Client besturingssystemen**| | |  |
-| Windows 10-apparaten| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Windows down level-apparaten (Windows 8,1 of Windows 7)| | | ![Kijk](./media/plan-device-deployment/check.png) |
+| Windows 10-apparaten| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Windows down level-apparaten (Windows 8,1 of Windows 7)| | | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
 |**Opties voor aanmelden**| | |  |
-| Lokale referenties voor eind gebruikers| ![Kijk](./media/plan-device-deployment/check.png)| |  |
-| Wachtwoord| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Pincode voor apparaat| ![Kijk](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![Kijk](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello voor Bedrijven| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| FIDO 2,0-beveiligings sleutels| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator-app (met wacht woord)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
+| Lokale referenties voor eind gebruikers| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| |  |
+| Wachtwoord| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Pincode voor apparaat| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello voor Bedrijven| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| FIDO 2,0-beveiligings sleutels| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator-app (met wacht woord)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
 |**Belangrijkste mogelijkheden**| | |  |
-| Eenmalige aanmelding bij cloud resources| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Eenmalige aanmelding voor on-premises resources| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Voorwaardelijke toegang <br> (Vereisen dat apparaten als compatibel worden gemarkeerd) <br> (Moet worden beheerd door MDM)| ![Kijk](./media/plan-device-deployment/check.png) | ![Kijk](./media/plan-device-deployment/check.png)|![Kijk](./media/plan-device-deployment/check.png) |
-Voorwaardelijke toegang <br>(Hybride Azure AD-apparaten vereisen)| | | ![Kijk](./media/plan-device-deployment/check.png)
-| Self-service voor wachtwoord herstel vanuit het Windows-aanmeldings scherm| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| PINCODE voor Windows hello opnieuw instellen| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Enter prise State roaming op alle apparaten| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
+| Eenmalige aanmelding bij cloud resources| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Eenmalige aanmelding voor on-premises resources| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Voorwaardelijke toegang <br> (Vereisen dat apparaten als compatibel worden gemarkeerd) <br> (Moet worden beheerd door MDM)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+Voorwaardelijke toegang <br>(Hybride Azure AD-apparaten vereisen)| | | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)
+| Self-service voor wachtwoord herstel vanuit het Windows-aanmeldings scherm| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| PINCODE voor Windows hello opnieuw instellen| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
+| Enter prise State roaming op alle apparaten| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD-registratie 
@@ -239,9 +239,9 @@ Ondersteunde en niet-ondersteunde platforms voor geïntegreerde apparaten bekijk
 
 | Hulpprogramma’s voor apparaatbeheer| Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling|
 | - | - | - | - |
-| [Beheer van mobiele apparaten (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
-| [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
-| [Groeps beleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Alleen Windows)| | | ![Kijk](./media/plan-device-deployment/check.png)|  |
+| [Beheer van mobiele apparaten (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|  |
+| [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|  |
+| [Groeps beleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Alleen Windows)| | | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|  |
 
 
 

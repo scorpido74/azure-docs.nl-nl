@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658843"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564029"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Conversie samenvatting en toegang van Designer naar werkmappen weer geven
 [View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Deze worden gefaseerd en vervangen door werkmappen, die extra functionaliteit bieden. In dit artikel vindt u informatie over het maken van overzichts samenvatting en machtigingen die vereist zijn voor toegang tot werkmappen.
@@ -21,7 +21,7 @@ Gebruikers van Designer weer geven kunnen bekend zijn met een overzichts tegel d
 
 U kunt profiteren van de geavanceerde functies voor aanpassing van Azure-Dash boards, waarmee automatisch vernieuwen, verplaatsen, verg Roten/verkleinen en aanvullende filters voor uw vastgemaakte items en visualisaties kunnen worden gefilterd. 
 
-![Dashboard](media/view-designer-conversion-access/dashboard.png)
+![Scherm afbeelding toont een aangepast Azure-dash board met de titel samen vatting van de werk ruimte.](media/view-designer-conversion-access/dashboard.png)
 
 Maak een nieuw Azure-dash board of selecteer een bestaand dash board om te beginnen met het vastmaken van werkmappen-items.
 

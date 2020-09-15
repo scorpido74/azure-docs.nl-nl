@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049924"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561530"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -448,7 +448,7 @@ Gebruik een of meer van de volgende opties voor het geval u de zojuist geïmplem
 
 Gebruik de volgende opties voor het beheren van uw CA-beleid:
 
-![Toegangs beheer](media/plan-conditional-access/manage-access.png)
+![Scherm afbeelding toont de beheer opties voor C A-beleids regels, zoals benoemde locaties, aangepaste besturings elementen, Gebruiksvoorwaarden, V P N-connectiviteit en de geselecteerde klassieke beleids regels.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Benoemde locaties

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662539"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561632"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Reken doelen maken voor model training en-implementatie met python SDK
 
@@ -36,7 +36,11 @@ In dit artikel gebruikt u de Azure Machine Learning python SDK om reken doelen t
 
 ## <a name="limitations"></a>Beperkingen
 
-Enkele van de scenario's die in dit document worden vermeld, zijn gemarkeerd als __Preview__. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+* **Maak niet meerdere gelijktijdige bijlagen met dezelfde reken kracht** vanuit uw werk ruimte. U kunt bijvoorbeeld één Azure Kubernetes service-cluster koppelen aan een werk ruimte met behulp van twee verschillende namen. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
+
+    Als u een reken doel opnieuw wilt koppelen, bijvoorbeeld om TLS of een andere configuratie-instelling voor het cluster te wijzigen, moet u eerst de bestaande bijlage verwijderen.
+
+* Enkele van de scenario's die in dit document worden vermeld, zijn gemarkeerd als __Preview__. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="whats-a-compute-target"></a>Wat is een reken doel?
 
@@ -269,6 +273,9 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
 
    U kunt de DSVM ook aan uw werk ruimte koppelen [met behulp van Azure machine learning Studio](how-to-create-attach-compute-studio.md#attached-compute).
 
+    > [!WARNING]
+    > Maak niet meerdere gelijktijdige bijlagen met dezelfde DSVM in uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
+
 1. **Configureren**: een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
    ```
 
    U kunt het HDInsight-cluster ook koppelen aan uw werk ruimte [met behulp van Azure machine learning Studio](how-to-create-attach-compute-studio.md#attached-compute).
+
+    > [!WARNING]
+    > Maak niet meerdere gelijktijdige bijlagen met dezelfde HDInsight vanuit uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
 1. **Configureren**: een uitvoerings configuratie voor het HDI Compute-doel maken. 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> Maak niet meerdere gelijktijdige bijlagen op hetzelfde Azure Batch vanuit uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 Bekijk een [voor beeld](https://aka.ms/pl-databricks) van een notebook op github voor een meer gedetailleerd voor beeld.
 
+> [!WARNING]
+> Maak niet meerdere gelijktijdige bijlagen op hetzelfde Azure Databricks vanuit uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics is een big data Analytics-platform in de Azure-Cloud. Het kan worden gebruikt als een reken doel met een Azure Machine Learning-pijp lijn.
@@ -463,6 +479,9 @@ except ComputeTargetException:
 ```
 
 Bekijk een [voor beeld](https://aka.ms/pl-adla) van een notebook op github voor een meer gedetailleerd voor beeld.
+
+> [!WARNING]
+> Maak niet meerdere gelijktijdige bijlagen met dezelfde ADLA in uw werk ruimte. Elke nieuwe bijlage verbreekt de vorige bestaande bijlage (n).
 
 > [!TIP]
 > Azure Machine Learning pijp lijnen kunnen alleen worden gebruikt voor gegevens die zijn opgeslagen in de standaard gegevens opslag van het Data Lake Analytics-account. Als de gegevens waarmee u wilt werken, zich in een niet-standaard archief bevindt, kunt u een gebruiken [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) om de gegevens te kopiëren voor de training.

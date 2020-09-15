@@ -4,14 +4,14 @@ description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929326"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562788"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Verzameling, retentie en opslag van gegevens in Application Insights
 
 Wanneer u [Azure-toepassing Insights][start] -SDK in uw app installeert, verzendt deze telemetrie over uw app naar de Cloud. Natuurlijk willen bevoegde ontwikkel aars precies weten welke gegevens worden verzonden, wat er gebeurt met de gegevens en hoe ze de controle kunnen blijven houden. Met name kunnen gevoelige gegevens worden verzonden, waar ze worden opgeslagen en hoe veilig het is? 
 
@@ -83,7 +83,7 @@ Samengevoegde gegevens (dat wil zeggen, aantallen, gemiddelden en andere statist
 
 [Debug-moment opnamen](./snapshot-debugger.md) worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
 
-## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
+## <a name="who-can-access-the-data"></a>Wie hebben er toegang tot de gegevens?
 De gegevens zijn zichtbaar voor u en, als u een organisatie account hebt, uw team leden. 
 
 Deze kan door u en uw team leden worden geëxporteerd en kunnen worden gekopieerd naar andere locaties en worden door gegeven aan andere personen.
@@ -128,7 +128,7 @@ Als een klant deze map moet configureren met specifieke beveiligings vereisten, 
 
 `C:\Users\username\AppData\Local\Temp` wordt gebruikt voor het persistent maken van gegevens. Deze locatie kan niet vanuit de map config worden geconfigureerd en de machtigingen voor toegang tot deze map zijn beperkt tot de specifieke gebruiker met de vereiste referenties. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)voor meer informatie.)
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
 Maakt standaard `ServerTelemetryChannel` gebruik van de map lokale app-gegevens van de huidige gebruiker `%localAppData%\Microsoft\ApplicationInsights` of de map Temp `%TMP%` . (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .)
 
@@ -153,7 +153,16 @@ Via code:
 
 ### <a name="netcore"></a>NetCore
 
-Maakt standaard `ServerTelemetryChannel` gebruik van de map lokale app-gegevens van de huidige gebruiker `%localAppData%\Microsoft\ApplicationInsights` of de map Temp `%TMP%` . (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .) In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij er een opslagmap is opgegeven.
+Maakt standaard `ServerTelemetryChannel` gebruik van de map lokale app-gegevens van de huidige gebruiker `%localAppData%\Microsoft\ApplicationInsights` of de map Temp `%TMP%` . (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .) 
+
+In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij er een opslagmap is opgegeven.
+
+> [!NOTE]
+> Met de release 2.15.0-beta3 en meer lokale opslag wordt nu automatisch gemaakt voor Linux, Mac en Windows. Voor niet-Windows-systemen wordt door de SDK automatisch een lokale opslagmap gemaakt op basis van de volgende logica:
+> - `${TMPDIR}` -Als `${TMPDIR}` de omgevings variabele is ingesteld, wordt deze locatie gebruikt.
+> - `/var/tmp` -Als de vorige locatie niet bestaat, probeert u het opnieuw `/var/tmp` .
+> - `/tmp` -Als de vorige locaties niet bestaan, kunt u proberen `tmp` . 
+> - Als geen van deze locaties bestaat, wordt er geen lokale opslag gemaakt en is hand matige configuratie nog steeds vereist. [Voor details over de volledige implementatie](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860).
 
 Het volgende code fragment laat zien hoe u kunt instellen `ServerTelemetryChannel.StorageFolder` in de `ConfigureServices()` methode van uw `Startup.cs` klasse:
 

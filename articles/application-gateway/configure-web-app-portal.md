@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595707"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563750"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
 
@@ -67,9 +67,9 @@ In dit artikel leert u het volgende:
 
 5. Klik op **OK** om de http-instelling te maken.
 
-   ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![Scherm afbeelding toont het instellingen deel venster H T/m P toevoegen met gebruik voor app service en OK geselecteerd.](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![Scherm afbeelding toont een status test met de naam van de back-endserver voor het kiezen van een host http-instellingen.](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ In dit artikel leert u het volgende:
 
 5. Klik op **OK** om deze regel op te slaan.
 
-   ![Regel](./media/configure-web-app-portal/rule.png)
+   ![Scherm afbeelding toont het deel venster basis regel toevoegen met listener, back-end-pool en H T T P-instelling gemarkeerd.](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Aanvullende configuratie in het geval van omleiding naar het relatieve pad van de app service
 

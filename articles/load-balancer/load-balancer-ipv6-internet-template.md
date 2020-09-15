@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803740"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562516"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
 
@@ -38,7 +38,7 @@ Azure Load Balancer is een Layer-4 (TCP, UDP) load balancer. De load balancer bi
 
 In het volgende diagram ziet u de taakverdelings oplossing die wordt geïmplementeerd met behulp van de voorbeeld sjabloon die in dit artikel wordt beschreven.
 
-![Load balancer-scenario](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![In het diagram ziet u een voorbeeld scenario dat in dit artikel wordt gebruikt, met inbegrip van een werk station-client die is verbonden met een Azure Load Balancer via internet, waarmee verbinding wordt gemaakt met twee virtuele machines.](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 In dit scenario maakt u de volgende Azure-resources:
 
@@ -55,43 +55,43 @@ In dit artikel wordt verwezen naar een sjabloon die is gepubliceerd in de [Azure
 1. Open de Azure Portal en meld u aan met een account met machtigingen voor het maken van Vm's en netwerk bronnen binnen een Azure-abonnement. Tenzij u bestaande resources gebruikt, moet het account ook toestemming voor het maken van een resource groep en een opslag account hebben.
 2. Klik in het menu op "+ nieuw" en typ "sjabloon" in het zoekvak. Selecteer Sjabloonimlementatie in de zoek resultaten.
 
-    ![LB-IPv6-Portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![Scherm afbeelding toont de Azure Portal met nieuw en Sjabloonimlementatie geselecteerd.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Klik op de Blade alles op Sjabloonimlementatie.
 
-    ![LB-IPv6-Portal-stap 3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![Scherm afbeelding toont Sjabloonimlementatie op Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Klik op maken.
 
-    ![LB-IPv6-Portal-Step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![Scherm afbeelding toont de beschrijving van Sjabloonimlementatie in de Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Klik op sjabloon bewerken. De bestaande inhoud verwijderen en kopiëren/plakken in de volledige inhoud van het sjabloon bestand (met de begin-en eind {}) en klik vervolgens op opslaan.
 
     > [!NOTE]
     > Als u micro soft Internet Explorer gebruikt, ontvangt u een dialoog venster waarin wordt gevraagd of u toegang tot het Windows-klem bord wilt toestaan. Klik op toegang toestaan.
 
-    ![LB-IPv6-Portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![Scherm afbeelding toont de geactiveerde stap van een aangepaste implementatie. Dit is een bewerkings sjabloon.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Klik op para meters bewerken. Geef op de Blade para meters de waarden op volgens de instructies in de sectie sjabloon parameters en klik vervolgens op Opslaan om de Blade para meters te sluiten. Selecteer in de Blade aangepaste implementatie uw abonnement, een bestaande resource groep of maak een. Als u een resource groep maakt, selecteert u een locatie voor de resource groep. Klik vervolgens op **juridische voor waarden**en vervolgens op **aanschaffen** voor de juridische voor waarden. De implementatie van de resources wordt gestart door Azure. Het duurt enkele minuten om alle resources te implementeren.
 
-    ![LB-IPv6-Portal-Step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![In de scherm afbeelding ziet u de stappen in de aangepaste implementatie, beginnend met het invoeren van de parameter waarden van de sjabloon.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Zie de sectie [sjabloon parameters en variabelen](#template-parameters-and-variables) verderop in dit artikel voor meer informatie over deze para meters.
 
 7. Als u de resources wilt zien die zijn gemaakt met de sjabloon, klikt u op Bladeren, schuift u omlaag in de lijst totdat u ' resource groepen ' ziet, klikt u op het item.
 
-    ![LB-IPv6-Portal-Step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![Scherm afbeelding toont de Azure Portal met bladeren en resource groepen geselecteerd.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Klik op de Blade resource groepen op de naam van de resource groep die u in stap 6 hebt opgegeven. Er wordt een lijst weer geven met alle resources die zijn geïmplementeerd. Als alles goed is geworden, moet het ' geslaagd ' onder de laatste implementatie zeggen. Als dat niet het geval is, moet u ervoor zorgen dat het account dat u gebruikt, gemachtigd is om de benodigde resources te maken.
 
-    ![LB-IPv6-Portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![Scherm afbeelding toont de status van de laatste implementatie voor een resource groep, in dit voor beeld geslaagd.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Als u door de resource groepen bladert onmiddellijk nadat u stap 6 hebt voltooid, wordt in de laatste implementatie de status ' implementeren ' weer gegeven terwijl de resources worden geïmplementeerd.
 
 9. Klik in de lijst met resources op ' myIPv6PublicIP '. U ziet dat deze een IPv6-adres onder IP-adres heeft en dat de DNS-naam de waarde is die u in stap 6 hebt opgegeven voor de para meter dnsNameforIPv6LbIP. Deze bron is het open bare IPv6-adres en de hostnaam die toegankelijk is voor Internet-clients.
 
-    ![LB-IPv6-Portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![Scherm afbeelding toont het open bare IPv6-adres.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren
 
@@ -111,7 +111,7 @@ Een Azure Resource Manager sjabloon bevat meerdere variabelen en para meters die
 
 De voorbeeld sjabloon die in dit artikel wordt gebruikt, bevat de volgende variabelen en para meters:
 
-| Para meter/variabele | Notities |
+| Para meter/variabele | Opmerkingen |
 | --- | --- |
 | adminUsername |Geef de naam op van het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
 | adminPassword |Geef het wacht woord op voor het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |

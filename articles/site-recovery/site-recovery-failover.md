@@ -4,12 +4,12 @@ description: Failover van Vm's/fysieke servers naar Azure met Azure Site Recover
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309965"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563978"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Een failover uitvoeren van on-premises naar Azure
 
@@ -46,7 +46,7 @@ Voer de failover van het herstel plan als volgt uit:
 1. Selecteer in de site Recovery kluis **herstel plannen**  >  *recoveryplan_name*.
 2. Klik op **failover**.
 
-    ![Failover](./media/site-recovery-failover/Failover.png)
+    ![Scherm afbeelding toont het deel venster ADRP met een failover geselecteerd in het menu meer.](./media/site-recovery-failover/Failover.png)
 
 3. **Failover**  >  Laat in de**richting**van de failover-failover de standaard waarde weg als u naar Azure repliceert.
 4. Selecteer in **failover**een **herstel punt** waarvoor u een failover wilt uitvoeren.
@@ -97,7 +97,7 @@ In sommige gevallen vereist VM-failover een tussenliggende stap die doorgaans on
 
 * Virtuele VMware-machines met een Mobility Service-versie die ouder is dan 9,8.
 * Fysieke servers en virtuele Hyper-V-machines die worden beveiligd als fysieke servers.
-* Virtuele VMware Linux-machines.
+* VMware Linux-VMs.
 * VMware-Vm's waarop deze Stuur Programma's niet aanwezig zijn als opstart Stuur Programma's:
     * storvsc
     * vmbus

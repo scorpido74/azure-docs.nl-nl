@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689211"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563859"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect synchronisatie: uitleg van de architectuur
 In dit onderwerp wordt de basis architectuur voor Azure AD Connect synchronisatie beschreven. In veel aspecten lijkt het op de voorafgaande taken MIIS 2003, ILM 2007 en FIM 2010. Azure AD Connect synchronisatie is de ontwikkeling van deze technologieën. Als u bekend bent met een van deze eerdere technologieën, is de inhoud van dit onderwerp ook bekend voor u. Als u geen ervaring hebt met synchronisatie, is dit onderwerp voor u. Het is echter geen vereiste om de details van dit onderwerp te weten als u wijzigingen wilt aanbrengen in Azure AD Connect synchronisatie (synchronisatie-engine genoemd in dit onderwerp).
@@ -36,7 +36,7 @@ De synchronisatie-engine encapsulateert interactie met een verbonden gegevens br
 
 Connectors maken API-aanroepen naar Exchange-identiteits gegevens (zowel lezen als schrijven) met een verbonden gegevens bron. Het is ook mogelijk om een aangepaste connector toe te voegen met behulp van het Extensible Connectivity Framework. In de volgende afbeelding ziet u hoe een connector een verbonden gegevens bron verbindt met de synchronisatie-engine.
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![Diagram toont een verbonden gegevens bron en een synchronisatie-engine die is gekoppeld aan een lijn genaamd connector.](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 Gegevens kunnen in een van beide richtingen stromen, maar deze kunnen niet tegelijkertijd in beide richtingen stromen. Met andere woorden, een connector kan zodanig worden geconfigureerd dat gegevens die afkomstig zijn van de verbonden gegevens bron, kunnen worden gestroomd naar de gekoppelde gegevens bron, maar slechts één van deze bewerkingen kan worden uitgevoerd op elk gewenst moment voor één object en kenmerk. De richting kan verschillen voor verschillende objecten en voor verschillende kenmerken.
 
@@ -62,7 +62,7 @@ Het **omgekeerde** is een opslag gebied dat de geaggregeerde identiteits gegeven
 
 In de volgende afbeelding ziet u de naam ruimte van de connector en de naam ruimte van de tekst in de synchronisatie-engine.
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![In het diagram ziet u een verbonden gegevens bron en een synchronisatie-engine, die is gescheiden in connector ruimte en in omgekeerde naam ruimten die zijn gekoppeld aan een lijn met de naam connector.](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>Id-objecten van synchronisatie-engine
 De objecten in de synchronisatie-engine zijn representaties van objecten in de verbonden gegevens bron of de geïntegreerde weer gave die de synchronisatie-engine heeft van deze objecten. Elk sync engine-object moet een Globally Unique Identifier (GUID) hebben. GUID'S bieden gegevens integriteit en snelle relaties tussen objecten.
@@ -97,13 +97,13 @@ Een staging-object kan een import object of een export object zijn. De synchroni
 
 In de volgende afbeelding ziet u een import object dat een object in de verbonden gegevens bron vertegenwoordigt.
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![Diagram toont een import object dat van de verbonden gegevens bron wordt binnengebracht in de naam ruimte van de connector in de sync-engine.](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 De synchronisatie-engine maakt een export object door gebruik te maken van object gegevens in de tekst. Export objecten worden tijdens de volgende communicatie sessie geëxporteerd naar de verbonden gegevens bron. Vanuit het perspectief van de synchronisatie-engine bestaan er nog geen export objecten in de verbonden gegevens bron. Daarom is het anker kenmerk voor een export object niet beschikbaar. Nadat het object van de synchronisatie-engine is ontvangen, maakt de verbonden gegevens bron een unieke waarde voor het anker kenmerk van het object.
 
 In de volgende afbeelding ziet u hoe een export object wordt gemaakt met behulp van identiteits gegevens in de tekst.
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![Diagram toont een export object dat is overgezet van de tekst naar de naam ruimte van de connector en vervolgens naar de verbonden gegevens bron.](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 De synchronisatie-engine bevestigt het exporteren van het object door het opnieuw te importeren uit de verbonden gegevens bron. Objecten exporteren worden geïmporteerd objecten wanneer de synchronisatie-engine deze ontvangt tijdens de volgende import bewerking van die verbonden gegevens bron.
 
@@ -132,7 +132,7 @@ Wanneer een staging-object tijdens de synchronisatie een samengevoegd object wor
 
 U kunt één connector ruimte-object aan slechts één omgekeerd object koppelen. Elk omgekeerd object kan echter worden gekoppeld aan meerdere connector ruimte-objecten in dezelfde of in verschillende connector ruimten, zoals wordt weer gegeven in de volgende afbeelding.
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![Diagram toont twee verbonden gegevens objecten die zijn gekoppeld aan Connect oren met een synchronisatie-engine, die gekoppelde objecten en een niet-samengevoegd object bevat.](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 De gekoppelde relatie tussen het tijdelijke object en een omgekeerd object is permanent en kan alleen worden verwijderd door de regels die u opgeeft.
 
@@ -157,7 +157,7 @@ Tijdens het export proces worden door de synchronisatie-engine wijzigingen doorg
 
 In de volgende afbeelding ziet u hoe elk van de processen plaatsvindt als identiteits gegevens van een verbonden gegevens bron naar een andere.
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![Diagram toont de stroom van identiteits gegevens van verbonden gegevens naar connector ruimte (importeren) naar de synchonization (voor de verbindings ruimte) naar verbonden gegevens (exporteren).](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>Import proces
 Tijdens het import proces evalueert de synchronisatie-engine updates op identiteits gegevens. De synchronisatie-engine vergelijkt de identiteits gegevens die zijn ontvangen van de verbonden gegevens bron met de identiteits gegevens over een staging-object en bepaalt of het staging-object updates vereist. Als het nodig is om het staging-object bij te werken met nieuwe gegevens, wordt het staging-object gemarkeerd als import in behandeling.
@@ -252,7 +252,7 @@ Zo kan een proces in de verbonden gegevens bron de kenmerken van het object weer
 
 De synchronisatie-engine slaat gegevens over de export en import status van elk staging-object op. Als de waarden van de kenmerken die zijn opgegeven in de lijst met kenmerk opnames sinds de laatste export zijn gewijzigd, kan de opslag van de import-en export status de synchronisatie-engine inschakelen om op de juiste wijze te reageren. De synchronisatie-engine gebruikt het import proces om kenmerk waarden te bevestigen die zijn geëxporteerd naar de verbonden gegevens bron. Een vergelijking tussen de geïmporteerde en geëxporteerde informatie, zoals wordt weer gegeven in de volgende afbeelding, maakt het mogelijk om te synchroniseren of het exporteren is geslaagd of dat het moet worden herhaald.
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![Diagram toont de synchronisatie van een object tussen connector ruimte en verbonden gegevens via de connector.](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 Als de synchronisatie-engine bijvoorbeeld kenmerk C, met de waarde 5, naar een verbonden gegevens bron exporteert, wordt C = 5 opgeslagen in het export status geheugen. Elke extra export van dit object resulteert in een poging om C = 5 opnieuw te exporteren naar de gekoppelde gegevens bron omdat de synchronisatie-engine ervan uitgaat dat deze waarde niet permanent is toegepast op het object (dat wil zeggen, tenzij een andere waarde recent is geïmporteerd vanuit de gekoppelde gegevens bron). Het export geheugen wordt gewist wanneer C = 5 wordt ontvangen tijdens een import bewerking op het object.
 

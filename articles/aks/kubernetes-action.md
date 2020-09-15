@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255214"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564097"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub acties voor het implementeren van de Kubernetes-service
 
@@ -24,7 +24,7 @@ Voor een werk stroom gericht AKS heeft het bestand drie secties:
 |Sectie  |Taken  |
 |---------|---------|
 |**Verificatie** | Aanmelden bij een persoonlijk container register (ACR) |
-|**Build** | De container installatie kopie bouwen & pushen  |
+|**Ontwikkelen** | De container installatie kopie bouwen & pushen  |
 |**Implementeren** | 1. Stel het doel-AKS-cluster in |
 | |2. Maak een algemeen/docker-register geheim in het Kubernetes-cluster  |
 ||3. implementeren naar het Kubernetes-cluster|
@@ -56,7 +56,7 @@ Volg de stappen voor het configureren van de geheimen:
 
 1. Blader in [github](https://github.com/)naar uw opslag plaats, selecteer **instellingen > geheimen > een nieuw geheim toe te voegen**.
 
-    ![geheimen](media/kubernetes-action/secrets.png)
+    ![Scherm afbeelding toont de koppeling een nieuwe geheime verbinding toevoegen voor een opslag plaats.](media/kubernetes-action/secrets.png)
 
 2. Plak de inhoud van de bovenstaande `az cli` opdracht als de waarde van de geheime variabele. Bijvoorbeeld `AZURE_CREDENTIALS`.
 
@@ -67,7 +67,7 @@ Volg de stappen voor het configureren van de geheimen:
 
 4. De geheimen worden weer gegeven, zoals hieronder is gedefinieerd.
 
-    ![kubernetes-geheimen](media/kubernetes-action/kubernetes-secrets.png)
+    ![Scherm opname toont de bestaande geheimen voor een opslag plaats.](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Een container installatie kopie bouwen en implementeren in azure Kubernetes service-cluster
 

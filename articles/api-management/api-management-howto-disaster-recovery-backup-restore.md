@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458277"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564080"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
 
@@ -55,7 +55,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 ### <a name="create-an-azure-active-directory-application"></a>Een Azure Active Directory-toepassing maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga met het abonnement dat uw API Management service-exemplaar bevat naar het tabblad **app-registraties** in **Azure Active Directory** (Azure Active Directory > beheer/app-registraties).
 
     > [!NOTE]
@@ -185,6 +185,7 @@ Het maken van een back-up is een langlopende bewerking die langer dan een minuut
 -   Configuratie van [beheerde identiteit](api-management-howto-use-managed-service-identity.md) .
 -   [Azure monitor diagnose](api-management-howto-use-azure-monitor.md) Configuratie.
 -   [Protocollen en coderings](api-management-howto-manage-protocols-ciphers.md) instellingen.
+-   Inhoud van de [ontwikkelaars Portal](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) .
 
 De frequentie waarmee u Service back-ups uitvoert, is van invloed op uw Recovery Point Objective. Om het te minimaliseren, wordt u aangeraden regel matige back-ups te implementeren en back-ups op aanvraag uit te voeren nadat u wijzigingen hebt aangebracht in uw API Management-service.
 

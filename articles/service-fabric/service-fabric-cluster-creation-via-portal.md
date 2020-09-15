@@ -3,17 +3,17 @@ title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van de Azure Portal en Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259322"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563723"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -68,7 +68,7 @@ Het maken van een productie cluster om te voldoen aan de behoeften van uw toepas
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Zoeken naar de Service Fabric cluster resource
 
-Meld u aan bij [Azure Portal][azure-portal].
+Meld u aan bij de [Azure-portal][azure-portal].
 Klik op **een resource maken** om een nieuwe resource sjabloon toe te voegen. Zoek de Service Fabric cluster sjabloon op de **Marketplace** onder **Alles**.
 Selecteer **service Fabric cluster** in de lijst.
 
@@ -128,42 +128,42 @@ Volg de schermen om een bestaande sleutel kluis toe te voegen of te hergebruiken
 
 Het Temptation van de navigatie van het scherm totdat het voor gaande proces is voltooid.
 
-![CreateKeyVault]
+![Scherm afbeelding toont de beveiligings pagina met de basis die is geselecteerd met het deel venster sleutel kluis en het deel venster sleutel kluis maken.][CreateKeyVault]
 
 Nu de sleutel kluis is gemaakt, bewerkt u het toegangs beleid voor uw sleutel kluis. 
 
-![CreateKeyVault2]
+![Scherm afbeelding toont het deel venster Service Fabric cluster maken met optie 3-beveiliging geselecteerd en een uitleg dat de sleutel kluis niet is ingeschakeld.][CreateKeyVault2]
 
 Klik op **toegangs beleid bewerken**, **Geef geavanceerd toegangs beleid weer** en schakel toegang tot Azure virtual machines in voor implementatie. Het is raadzaam om de sjabloon implementatie ook in te scha kelen. Wanneer u uw selecties hebt gemaakt, moet u niet verg eten klikken op de knop **Opslaan** om het deel venster **toegangs beleid** te sluiten.
 
-![CreateKeyVault3]
+![Scherm afbeelding toont het deel venster Service Fabric cluster maken met het deel venster beveiliging, waarna het deel venster toegangs beleid openen wordt geopend.][CreateKeyVault3]
 
 Voer de naam van het certificaat in en klik op **OK**.
 
-![CreateKeyVault4]
+![Scherm afbeelding toont het deel venster Service Fabric cluster maken met de beveiliging die eerder is geselecteerd, maar zonder de uitleg dat de sleutel kluis niet is ingeschakeld.][CreateKeyVault4]
 
 #### <a name="custom-option"></a>Aangepaste optie
 Sla deze sectie over als u de stappen in de optie **basis** al hebt uitgevoerd.
 
-![SecurityCustomOption]
+![Scherm afbeelding toont het dialoog venster beveiligings instellingen voor cluster beveiliging configureren.][SecurityCustomOption]
 
 U hebt de gegevens van de bron sleutel kluis, de certificaat-URL en de vinger afdruk van het certificaat nodig om de beveiligings pagina te volt ooien. Als u dit niet hebt gedaan, opent u een ander browser venster en voert u de volgende stappen uit in de Azure Portal
 
 1. Navigeer naar uw sleutel kluis service.
 2. Selecteer het tabblad ' Eigenschappen ' en kopieer de ' RESOURCE-ID ' naar ' bron sleutel kluis ' in het andere browser venster 
 
-    ![CertInfo0]
+    ![Scherm afbeelding toont de venster Eigenschappen voor de sleutel kluis.][CertInfo0]
 
 3. Selecteer nu het tabblad Certificaten.
 4. Klik op vinger afdruk van certificaat, waarmee u naar de pagina versies gaat.
 5. Klik op de GUID'S die u onder de huidige versie ziet.
 
-    ![CertInfo1]
+    ![Scherm afbeelding toont het certificaat venster voor de sleutel kluis][CertInfo1]
 
 6. U ziet nu het volgende in het scherm. Kopieer de hexadecimale SHA-1-vinger afdruk naar ' certificaat vingerafdruk ' in het andere browser venster
 7. Kopieer de ' geheime id ' naar de ' certificaat-URL ' in het andere browser venster.
 
-    ![CertInfo2]
+    ![Scherm afbeelding toont het dialoog venster certificaat versie met een optie om de certificaat-id te kopiëren.][CertInfo2]
 
 Schakel het selectie vakje **Geavanceerde instellingen configureren** in om client certificaten voor de **admin-client** en de **alleen-lezen client**in te voeren. Voer in deze velden de vinger afdruk van het client certificaat voor de beheerder en de vinger afdruk van uw alleen-lezen gebruikers certificaat in, indien van toepassing. Wanneer beheerders proberen verbinding te maken met het cluster, krijgen ze alleen toegang als ze een certificaat hebben met een vinger afdruk die overeenkomt met de opgegeven vingerafdruk waarden.  
 
@@ -173,7 +173,7 @@ U bent nu klaar om het cluster te implementeren. Voordat u dat doet, moet u het 
 
 Klik op **maken**om het maken van het cluster te volt ooien. U kunt de sjabloon eventueel downloaden.
 
-![Samenvatting]
+![Scherm afbeelding toont de pagina overzicht van Service Fabric cluster maken met een koppeling om een certificaat weer te geven en te downloaden.][Summary]
 
 U kunt de voortgang van het maken in de meldingen bekijken. (Klik op het pictogram ' Bell ' bij de status balk rechtsboven in het scherm.) Als u tijdens het maken van het cluster op **aan start Board** vastmaken hebt geklikt, ziet u de **implementatie van service Fabric cluster** is vastgemaakt aan het **Start** Board. Dit proces kan enige tijd duren. 
 
@@ -230,7 +230,7 @@ Op dit moment hebt u een beveiligd cluster met behulp van certificaten voor behe
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Samenvatting]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

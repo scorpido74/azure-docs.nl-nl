@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6afbdb6bcb067bdcb570c366f4604ea77ec4f490
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526813"
+ms.locfileid: "90561343"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
 
@@ -125,7 +125,7 @@ Als u een toepassing bouwt voor Frontline-werk scenario's, raadpleegt u de [modu
 
 ## <a name="how-the-sso-plug-in-works"></a>Hoe de SSO-invoeg toepassing werkt
 
-De micro soft Enter prise SSO-invoeg toepassing is afhankelijk van het [Apple-Framework voor eenmalige aanmelding voor ondernemingen](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Id-providers die de onboarding van het Framework mogelijk maken, kunnen netwerk verkeer voor hun domeinen onderscheppen en verbeteren of wijzigen hoe deze aanvragen worden afgehandeld. De SSO-invoeg toepassing kan bijvoorbeeld een extra gebruikers interface weer geven voor het veilig verzamelen van referenties voor eind gebruikers, het vereisen van MFA of het op de achtergrond bieden van tokens voor de toepassing.
+De micro soft Enter prise SSO-invoeg toepassing is afhankelijk van het [Apple-Framework voor eenmalige aanmelding voor ondernemingen](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Id-providers die de onboarding van het Framework mogelijk maken, kunnen netwerk verkeer voor hun domeinen onderscheppen en verbeteren of wijzigen hoe deze aanvragen worden afgehandeld. De SSO-invoeg toepassing kan bijvoorbeeld een extra gebruikers interface weer geven om referenties voor de eind gebruiker veilig te verzamelen, MFA vereist of op de achtergrond tokens voor de toepassing bieden.
 
 Systeem eigen toepassingen kunnen ook aangepaste bewerkingen implementeren en rechtstreeks communiceren met de SSO-invoeg toepassing.
 Meer informatie over het Framework voor eenmalige aanmelding vindt u in deze [2019 WWDC-video van Apple](https://developer.apple.com/videos/play/tech-talks/301/)
@@ -148,11 +148,11 @@ Er zijn geen code wijzigingen nodig in deze apps zolang aan de volgende voor waa
 - De toepassing gebruikt standaard protocollen om te communiceren met Azure AD (bijvoorbeeld OAuth2, SAML, WS-Federation)
 - De gebruikers naam en het wacht woord van de Lees bare tekst worden niet in de systeem eigen gebruikers interface
 
-In dit geval wordt SSO verschaft op het moment dat de toepassing een netwerk aanvraag maakt en een webbrowser opent om de gebruiker in te ondertekenen. Wanneer een gebruiker wordt omgeleid naar een aanmeldings-URL voor Azure AD, valideert de SSO-invoeg toepassing de URL en controleert deze of er een SSO-referentie beschikbaar is voor die URL. Als dat het geval is, geeft de SSO-invoeg toepassing de SSO-referentie door aan Azure AD, waarmee de toepassing wordt geautoriseerd om de netwerk aanvraag te volt ooien zonder de eind gebruiker te vragen om referenties in te voeren. Als het apparaat wordt herkend door Azure AD, wordt door de SSO-invoeg toepassing ook het certificaat van het apparaat door gegeven om te voldoen aan de op apparaten gebaseerde controle van voorwaardelijke toegang. 
+In dit geval wordt SSO gegeven wanneer de toepassing een netwerk aanvraag maakt en een webbrowser opent om de gebruiker in te ondertekenen. Wanneer een gebruiker wordt omgeleid naar een aanmeldings-URL voor Azure AD, valideert de SSO-invoeg toepassing de URL en controleert deze of er een SSO-referentie beschikbaar is voor die URL. Als dat het geval is, geeft de SSO-invoeg toepassing de SSO-referentie door aan Azure AD, waarmee de toepassing wordt geautoriseerd om de netwerk aanvraag te volt ooien zonder de gebruiker te vragen hun referenties in te voeren. Als het apparaat wordt herkend door Azure AD, wordt door de SSO-invoeg toepassing ook het certificaat van het apparaat door gegeven om te voldoen aan de op apparaten gebaseerde controle van voorwaardelijke toegang. 
 
-Om SSO voor niet-MSAL apps te ondersteunen, implementeert de SSO-invoeg toepassing een soortgelijk protocol voor de Windows-browserinvoegtoepassing die wordt beschreven in [Wat is een primair vernieuwings token?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt). 
+Ter ondersteuning van SSO voor niet-MSAL apps, implementeert de SSO-invoeg toepassing een protocol dat lijkt op de Windows-browser-invoeg toepassing die wordt beschreven in [Wat is een primair vernieuwings token?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt). 
 
-Vergeleken met MSAL-apps, voert de SSO-invoeg toepassing op transparante wijze uit voor niet-MSAL-apps door te integreren met de bestaande browser aanmeldings ervaring die apps bieden. De eind gebruiker ziet hun bekende ervaring met een voor deel dat er geen extra aanmelding in elk van de toepassingen hoeft te worden uitgevoerd. In plaats van de systeem eigen account kiezer weer te geven, worden SSO-sessies bijvoorbeeld toegevoegd aan de ervaring op webgebaseerde account kiezer. 
+Vergeleken met MSAL-apps, voert de SSO-invoeg toepassing op transparante wijze uit voor niet-MSAL-apps door te integreren met de bestaande browser aanmeldings ervaring die apps bieden. De eind gebruiker ziet hun vertrouwde ervaring, met het voor deel dat er geen aanvullende aanmeldingen hoeven te worden uitgevoerd in elk van de toepassingen. In plaats van de systeem eigen account kiezer weer te geven, voegt de SSO-invoeg toepassing SSO-sessies toe aan de ervaring op webgebaseerde account kiezer. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

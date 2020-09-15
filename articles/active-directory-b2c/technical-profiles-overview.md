@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203211"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562873"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -32,6 +32,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - [Azure Active Directory](active-directory-technical-profile.md) : biedt ondersteuning voor het Azure Active Directory B2C gebruikers beheer.
 - [Azure multi-factor Authentication](multi-factor-auth-technical-profile.md) : biedt ondersteuning voor het controleren van een telefoon nummer met behulp van Azure multi-factor Authentication (MFA). 
 - [Claims transformeren](claims-transformation-technical-profile.md) : claim trans formaties voor uitvoer aanroepen om claims waarden te manipuleren, claims te valideren of standaard waarden in te stellen voor een set uitvoer claims.
+- [Id-token Hint](id-token-hint.md) : valideert `id_token_hint` JWT-token handtekening, de naam van de verlener en de token doelgroep en extraheert de claim van het inkomende token.
 - [JWT-token Uitgever](jwt-issuer-technical-profile.md) : er wordt een JWT-token verzonden dat terugkeert naar de Relying Party-toepassing.
 - [OAuth1](oauth1-technical-profile.md) -Federatie met de ID-provider van een OAuth 1,0-protocol.
 - [OAuth2](oauth2-technical-profile.md) -Federatie met de ID-provider van een OAuth 2,0-protocol.
@@ -103,7 +104,7 @@ Het **Aad-UserReadUsingAlternativeSecurityId-error-** technisch profiel bevat bi
 </TechnicalProfile>
 ```
 
-Zowel **Aad-UserReadUsingAlternativeSecurityId-** mis en **Aad-UserReadUsingAlternativeSecurityId** geven niet het vereiste **protocol** element op omdat het is opgegeven in het **Aad-algemene** technische profiel.
+Zowel **Aad-UserReadUsingAlternativeSecurityId-** mis en  **Aad-UserReadUsingAlternativeSecurityId** geven niet het vereiste **protocol** element op omdat het is opgegeven in het **Aad-algemene** technische profiel.
 
 ```xml
 <TechnicalProfile Id="AAD-Common">
