@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356947"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090122"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: staging-server en herstel na nood gevallen
 Met een server in de faserings modus kunt u wijzigingen aanbrengen in de configuratie en de wijzigingen bekijken voordat u de server actief maakt. U kunt ook volledige import en volledige synchronisatie uitvoeren om te controleren of alle wijzigingen worden verwacht voordat u deze wijzigingen aanbrengt in uw productie omgeving.
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om deze methode toe te passen:
 
 #### <a name="prepare"></a>Voorbereiden
 1. Installeer Azure AD Connect, selecteer de **faserings modus**en maak de selectie van **synchronisatie starten** op de laatste pagina in de installatie wizard. In deze modus kunt u de synchronisatie-engine hand matig uitvoeren.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![Scherm afbeelding toont de pagina gereed om te configureren in het dialoog venster Azure AD Connect.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Meld u af/Meld u aan en selecteer **synchronisatie service**in het menu Start.
 
 #### <a name="configuration"></a>Configuratie
@@ -72,8 +72,8 @@ Als u aangepaste wijzigingen hebt aangebracht aan de primaire server en de confi
 U hebt nu gefaseerd wijzigingen naar Azure AD en on-premises AD exporteren (als u Exchange Hybrid Deployment gebruikt). Met de volgende stappen kunt u controleren wat er moet worden gewijzigd voordat u de export naar de directory's start.
 
 #### <a name="verify"></a>Verifiëren
-1. Start een opdracht prompt en ga naar`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Uitvoeren: `csexport "Name of Connector" %temp%\export.xml /f:x` de naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
+1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Uitvoeren: `csexport "Name of Connector" %temp%\export.xml /f:x` de naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com-azure AD ' voor Azure AD.
 3. Uitvoeren: er `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` bevindt zich een bestand in% Temp% met de naam export.csv dat in micro soft Excel kan worden onderzocht. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
 4. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (Importeer en synchroniseer en controleer) totdat de wijzigingen die worden geëxporteerd, worden verwacht.
 

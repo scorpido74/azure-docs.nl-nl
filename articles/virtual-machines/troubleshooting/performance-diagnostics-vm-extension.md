@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028546"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090649"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Windows voor diagnostische gegevens over Azure-prestaties
 
@@ -29,7 +29,15 @@ Met de Azure-extensie voor diagnostische gegevens van virtuele machines kunt u p
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze uitbrei ding kan worden geïnstalleerd op Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 en Windows Server 2016. Het kan ook worden geïnstalleerd in Windows 8,1 en Windows 10.
+Deze uitbrei ding kan worden geïnstalleerd op
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>Extensieschema
 De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostiek. Deze uitbrei ding vereist de naam en sleutel voor een opslag account om de diagnostische uitvoer en het rapport op te slaan. Deze waarden zijn gevoelig. De sleutel van het opslag account moet worden opgeslagen in een configuratie met een beveiligde instelling. De beveiligde instellings gegevens voor de Azure VM-extensie zijn versleuteld en worden alleen ontsleuteld op de virtuele doel machine. Houd er rekening mee dat **storageAccountName** en **storageAccountKey** hoofdletter gevoelig zijn. Andere vereiste para meters worden weer gegeven in de volgende sectie.
@@ -71,7 +79,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 |apiVersion|2015-06-15|De versie van de API.
 |publisher|Micro soft. Azure. performance. Diagnostics|De naam ruimte van de uitgever voor de extensie.
 |type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
-|typeHandlerVersion|1.0|De versie van de extensie-handler.
+|typeHandlerVersion|1,0|De versie van de extensie-handler.
 |performanceScenario|hoofd|Het prestatie scenario waarvoor gegevens moeten worden vastgelegd. Geldige waarden zijn: **Basic**, **vmslow**, **Azure files**en **Custom**.
 |traceDurationInSeconds|300|De duur van de traceringen, als een van de tracerings opties is geselecteerd.
 |perfCounterTrace|p|Optie voor het inschakelen van tracering van prestatie meter items. Geldige waarden zijn **p** of empty. Als u deze tracering niet wilt vastleggen, laat u de waarde leeg.
@@ -208,7 +216,7 @@ Extensies voor virtuele Azure-machines kunnen worden geïmplementeerd met Azure 
 }
 ```
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de VM-extensie Azure-prestatie diagnostiek op een bestaande virtuele machine.
 
 PowerShell

@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022120"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090343"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -119,7 +119,7 @@ Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud
 
     Met deze methode wordt de back-end van uw app aangeroepen om de meldings inhoud op te halen met de referenties die zijn opgeslagen in de gedeelde voor keuren.
 
-4. Nu moeten we de inkomende melding verwerken en de bovenstaande methode gebruiken om de inhoud op te halen om weer te geven. Eerst moeten we ervoor zorgen dat uw iOS-app op de achtergrond wordt uitgevoerd wanneer er een push melding wordt ontvangen. In **Xcode**selecteert u uw app-project in het linkerdeel venster en klikt u vervolgens op het hoofd doel van de app in het gedeelte **doelen** van het middelste deel venster.
+4. De inkomende melding wordt nu verwerkt en de bovenstaande methode wordt gebruikt om de inhoud op te halen die moet worden weer gegeven. Zorg er eerst voor dat uw iOS-app op de achtergrond wordt uitgevoerd wanneer er een push melding wordt ontvangen. In **Xcode**selecteert u uw app-project in het linkerdeel venster en klikt u vervolgens op het hoofd doel van de app in het gedeelte **doelen** van het middelste deel venster.
 5. Klik vervolgens op het tabblad **mogelijkheden** boven aan het middelste deel venster en schakel het selectie vakje **externe meldingen** in.
 
     ![Scherm opname van XCode, waarbij het app-project is geselecteerd en het tabblad mogelijkheden geopend. De externe meldingen selectie vakje is ingeschakeld.][IOS1]

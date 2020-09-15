@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078626"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090249"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureau blad naar een virtuele machine, omdat de netwerk interface is uitgeschakeld
 
@@ -28,6 +28,11 @@ In dit artikel wordt uitgelegd hoe u een probleem kunt oplossen waarbij u geen E
 
 U kunt geen RDP-verbinding of een ander type verbinding maken met andere poorten naar een virtuele machine in azure, omdat de netwerk interface in de virtuele machine is uitgeschakeld.
 
+![Scherm opname van een virtuele machine waarin de verbinding van de netwerk interface is verbroken.](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![Scherm opname van een virtuele machine waarin de netwerk interface is uitgeschakeld.](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
+
 ## <a name="solution"></a>Oplossing
 
 Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
@@ -36,8 +41,7 @@ Als u de interface voor de virtuele machine wilt inschakelen, gebruikt u serieel
 
 ### <a name="use-serial-control"></a>Serieel besturings element gebruiken
 
-1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](#reset-network-interface).
+1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](#reset-network-interface).
 2. Controleer de status van de netwerk interface:
 
     ```console

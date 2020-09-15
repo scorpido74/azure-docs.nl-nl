@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322904"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090173"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Oplossing VMWare-bewaking (afgeschaft) in Azure Monitor
 
@@ -66,7 +66,7 @@ Maak een virtuele machine van het Linux-besturings systeem om alle syslog-gegeve
 
 1. Voer in de Azure Portal een logboek query uit voor `VMware_CL` . Wanneer Azure Monitor de syslog-gegevens verzamelt, behoudt deze de indeling syslog. In de portal worden bepaalde specifieke velden vastgelegd, zoals *hostname* en *Procesnaam*.  
 
-    ![type](./media/vmware/type.png)  
+    ![Scherm afbeelding toont een logboek query voor type = VMware_CL met een tijds tempel als resultaat.](./media/vmware/type.png)  
 
     Als de zoek resultaten van de logboeken in de weer gave overeenkomen met de bovenstaande afbeelding, kunt u het dash board van de VMWare-bewaking oplossing gebruiken.  
 
@@ -75,7 +75,7 @@ De VMWare-bewaking oplossing verzamelt diverse metrische gegevens over prestatie
 
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld.
 
-| platform | Log Analytics-agent voor Linux | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
+| platform | Log Analytics-agent voor Linux | System Center Operations Manager-agent | Azure Storage | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |om de 3 minuten |
 
@@ -105,7 +105,7 @@ In de volgende tabel ziet u voor beelden van gegevens velden die door de VMWare-
 ## <a name="vmware-monitoring-solution-overview"></a>Overzicht van VMWare-bewaking oplossingen
 De VMware-tegel wordt weer gegeven in uw Log Analytics-werk ruimte. Het bevat een weer gave op hoog niveau van eventuele fouten. Wanneer u op de tegel klikt, gaat u naar een dashboard weergave.
 
-![tegelzetter](./media/vmware/tile.png)
+![Scherm afbeelding toont de VMware-tegel waarin negen fouten worden weer gegeven.](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigeren in de dashboard weergave
 In de weer gave **VMware** -dash board worden Blades ingedeeld op:
@@ -147,13 +147,13 @@ Als u aanvullende gegevens voor het maken van VM-ESXi wilt weer geven, klikt u o
 #### <a name="common-log-queries"></a>Veelvoorkomende logboek query's
 De oplossing bevat andere nuttige query's die u kunnen helpen bij het beheren van uw ESXi-hosts, zoals hoge opslag ruimte, opslag latentie en probleem met het pad.
 
-![aanvragen](./media/vmware/queries.png)
+![Scherm opname toont aanbevolen Zoek opdrachten, wat nuttig is voor opgeslagen query's.](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Query's opslaan
 Het opslaan van logboek query's is een standaard functie in Azure Monitor en kan u helpen bij het bewaren van query's die u nuttig hebt gevonden. Nadat u een query hebt gemaakt die u nuttig vindt, slaat u deze op door op de **Favorieten**te klikken. Met een opgeslagen query kunt u deze later eenvoudig opnieuw gebruiken vanaf de pagina [mijn dash board](../learn/tutorial-logs-dashboards.md) waar u uw eigen aangepaste Dash boards kunt maken.
 
-![DockerDashboardView](./media/vmware/dockerdashboardview.png)
+![Scherm afbeelding toont een deel van een aangepast dash board met de naam zoeken in Logboeken met pictogrammen voor ongedaan maken, exporteren, waarschuwing, opslaan, favorieten en geschiedenis.](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Waarschuwingen maken op basis van query's
 Nadat u uw query's hebt gemaakt, wilt u mogelijk de query's gebruiken om u te waarschuwen wanneer er specifieke gebeurtenissen optreden. Zie [waarschuwingen in log Analytics](../platform/alerts-overview.md) voor informatie over het maken van waarschuwingen. Zie voor voor beelden van waarschuwings query's en andere query voorbeelden de [bewaking VMware met log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) blog post.

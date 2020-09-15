@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209484"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090224"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Op hoog niveau ziet het database migratie proces er als volgt uit:
 
 Bepaal eerst of SQL Managed instance compatibel is met de database vereisten van uw toepassing. SQL Managed instance is ontworpen om eenvoudig lift-en Shift-migratie te bieden voor de meeste bestaande toepassingen die gebruikmaken van SQL Server. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
 
-Gebruik [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Hier volgen enkele voorbeelden:
+Gebruik [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
 
 - Als u rechtstreeks toegang tot het besturings systeem of het bestands systeem nodig hebt, bijvoorbeeld voor het installeren van derden of aangepaste agents op dezelfde virtuele machine met SQL Server.
 - Als u strikte afhankelijkheid hebt voor functies die nog niet worden ondersteund, zoals FileStream/bestands tabel, poly base en trans acties met meerdere exemplaren.
@@ -126,7 +126,7 @@ Het herstellen van systeem eigen back-ups (. bak-bestanden) die is gemaakt [Azur
 
 In het volgende diagram ziet u een overzicht van het proces:
 
-![migratie-stroom](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![Diagram toont SQL Server met een pijl met de naam BACKUP/upload naar URL stromen naar Azure Storage en een tweede pijl met het label herstellen van URL die van Azure Storage naar een beheerd exemplaar van SQL wordt genoemd.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 De volgende tabel bevat meer informatie over de methoden die u kunt gebruiken, afhankelijk van de bron SQL Server versie die u gebruikt:
 

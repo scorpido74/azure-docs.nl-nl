@@ -3,16 +3,16 @@ title: Azure Key Vault als Event Grid bron
 description: Hierin worden de eigenschappen en schema's beschreven die voor Azure Key Vault gebeurtenissen worden gegeven met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109430"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090394"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid bron
 
-In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in [Azure Key Vault](../key-vault/index.yml)die momenteel als preview-versie beschikbaar zijn. Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
+In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in [Azure Key Vault](../key-vault/index.yml). Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
 
 ## <a name="event-grid-event-schema"></a>Event Grid-gebeurtenisschema
 
@@ -20,7 +20,7 @@ In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in [Az
 
 Een Azure Key Vault-account genereert de volgende gebeurtenis typen:
 
-| Volledige naam van de gebeurtenis | Weergave naam van gebeurtenis | Description |
+| Volledige naam van de gebeurtenis | Weergave naam van gebeurtenis | Beschrijving |
 | ---------- | ----------- |---|
 | Micro soft. CertificateNewVersionCreated | De nieuwe versie van het certificaat is gemaakt | Wordt geactiveerd wanneer een nieuw certificaat of nieuwe certificaat versie wordt gemaakt. |
 | Micro soft. CertificateNearExpiry | Certificaat bijna verlopen | Wordt geactiveerd wanneer de huidige versie van het certificaat bijna verloopt. (De gebeurtenis wordt geactiveerd 30 dagen voor de verval datum.) |
@@ -31,6 +31,7 @@ Een Azure Key Vault-account genereert de volgende gebeurtenis typen:
 | Micro soft. SecretNewVersionCreated | Nieuwe geheime versie gemaakt | Wordt geactiveerd wanneer een nieuw geheim of nieuwe geheime versie wordt gemaakt. |
 | Micro soft. SecretNearExpiry | Geheim bijna verlopen | Wordt geactiveerd wanneer de huidige versie van een geheim verloopt. (De gebeurtenis wordt geactiveerd 30 dagen voor de verval datum.) |
 | Micro soft. SecretExpired | Geheim verlopen | Wordt geactiveerd wanneer een geheim is verlopen. |
+| Micro soft. VaultAccessPolicyChanged | Beleid voor kluis toegang is gewijzigd | Wordt geactiveerd wanneer een toegangs beleid op Key Vault gewijzigd. Het bevat een scenario wanneer Key Vault machtigings model is gewijzigd in/van Azure RBAC  |
 
 ### <a name="event-examples"></a>Gebeurtenis voorbeelden
 
@@ -63,7 +64,7 @@ In het volgende voor beeld wordt schema voor **micro soft. SecretNewVersionCreat
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | ---------- | ----------- |---|
 | id | tekenreeks | De ID van het object dat deze gebeurtenis heeft geactiveerd |
 | vaultName | tekenreeks | De naam van de sleutel kluis van het object dat deze gebeurtenis heeft geactiveerd |
@@ -84,10 +85,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 * Zie [Wat is Event grid?](overview.md)voor een inleiding tot Azure Event grid.
 * Zie [Event grid-abonnements schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
-* Zie [Key Vault bewaken met Azure Event grid (preview)](../key-vault/general/event-grid-overview.md)voor meer informatie over de integratie van Key Vault met Event grid.
-* Zie voor een zelf studie over Key Vault integratie met Event Grid de [sleutel kluis meldingen ontvangen en erop reageren met Azure Event grid (preview)](../key-vault/general/event-grid-tutorial.md).
+* Zie [Key Vault bewaken met Azure Event grid](../key-vault/general/event-grid-overview.md)voor meer informatie over de integratie van Key Vault met Event grid.
+* Zie voor een zelf studie over Key Vault integratie met Event Grid de [sleutel kluis meldingen ontvangen en erop reageren met Azure Event grid](../key-vault/general/event-grid-tutorial.md).
 * Zie voor aanvullende richt lijnen voor Key Vault en Azure Automation:
     - [Wat is Azure Key Vault?](../key-vault/general/overview.md)
-    - [Key Vault bewaken met Azure Event Grid (preview-versie)](../key-vault/general/event-grid-overview.md)
-    - [Belang rijke kluis meldingen ontvangen en hierop reageren met Azure Event Grid (preview-versie)](../key-vault/general/event-grid-tutorial.md)
+    - [Key Vault bewaken met Azure Event Grid](../key-vault/general/event-grid-overview.md)
+    - [Meldingen van de sleutelkluis ontvangen en hierop reageren met Azure Event Grid](../key-vault/general/event-grid-tutorial.md)
     - [Overzicht van Azure Automation](../automation/index.yml)

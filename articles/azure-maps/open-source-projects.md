@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815688"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090513"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-open-source projecten
 
@@ -29,20 +29,26 @@ Hieronder vindt u enkele van de populairste Azure Maps open source-projecten en 
 | [Bot Framework-positie van belang rijke vaardigheid](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Het belangrijkste vaardigheids punt biedt POI-gerelateerde mogelijkheden voor een virtuele assistent met behulp van Azure Maps met Azure Bot Service en bot Framework. |
 | [Locatie van BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Een open-source locatie kiezer-besturings element voor het micro soft bot Framework dat wordt aangedreven door de REST-services van Bing Maps. |
 
+<a name="open-web-sdk-modules"></a>
+
 **Web SDK-modules openen**
 
 Hier volgt een lijst van open-source projecten die de mogelijkheden van de Azure Maps Web-SDK uitbreiden.
 
 | Projectnaam | Beschrijving |
 |-|-|
-| [Module Azure Maps animatie](https://github.com/Azure-Samples/azure-maps-animations)| Een uitgebreide bibliotheek met animaties voor gebruik met de Azure Maps Web-SDK. |
+| [Module Azure Maps animatie](https://github.com/Azure-Samples/azure-maps-animations) | Een uitgebreide bibliotheek met animaties voor gebruik met de Azure Maps Web-SDK. |
+| [Beheer module voor geolocatie Azure Maps](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Een Azure Maps Web SDK-module die een besturings element biedt dat de geolocatie-API van de browser gebruikt om de gebruiker op de kaart te vinden. |
+| [Azure Maps module fullscreen Control](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Een Azure Maps Web SDK-module die een besturings element biedt om de kaart weer te geven in de modus volledig scherm. |
+| [Module voor selectie besturings elementen Azure Maps](https://github.com/Azure-Samples/azure-maps-selection-control) | Een Azure Maps Web SDK-module die besturings elementen biedt voor het selecteren van gegevens in een gegevens bron met behulp van teken hulpprogramma's of door het aanvragen van een polygoon voor een route bereik. |
+| [Module synchronisatie toewijzing Azure Maps](https://github.com/Azure-Samples/azure-maps-sync-maps) | Een Azure Maps Web-SDK-module die de camera's van twee of meer kaarten synchroniseert. |
 | [GEBRUIKERSINTERFACE module Azure Maps Services](https://github.com/Azure-Samples/azure-maps-services-ui) | Een reeks web-UI-besturings elementen die de Azure Maps REST-services verpakken. |
 
 **Voorbeelden**
 
 | Projectnaam | Beschrijving |
 |-|-|
-| [Voor beelden van Azure Maps code](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps in op web gebaseerde apps. |
+| [Voor beelden van Azure Maps code](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps in op het web gebaseerde apps. |
 | [Voor beelden van gov-Cloud code Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps via Azure Government Cloud. |
 | [Azure Maps & Azure Active Directory-voor beelden](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Een verzameling voor beelden die laten zien hoe u Azure Active Directory kunt gebruiken met Azure Maps. | 
 | [Azure Maps Jupyter Notebook-voor beelden](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Een verzameling van python-voor beelden met behulp van de Azure Maps REST-services. |

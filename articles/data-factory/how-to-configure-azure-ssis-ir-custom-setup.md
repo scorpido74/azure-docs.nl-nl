@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440572"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090598"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -40,7 +40,7 @@ U kunt gratis (zonder licentie) en betaalde (gelicentieerde) onderdelen installe
 
 De volgende beperkingen gelden alleen voor standaard aangepaste Setup:
 
-- Als u *gacutil.exe* in uw script wilt gebruiken voor het installeren van assembly's in de Global assembly cache (GAC), moet u *gacutil.exe* opgeven als onderdeel van de aangepaste installatie. U kunt ook gebruikmaken van de kopie die is opgenomen in de *open bare preview* -container, die later wordt beschreven in de sectie ' instructies '.
+- Als u *gacutil.exe* in uw script wilt gebruiken voor het installeren van assembly's in de Global assembly cache (GAC), moet u *gacutil.exe* opgeven als onderdeel van de aangepaste installatie. U kunt ook de kopie gebruiken die wordt vermeld in de voor *beeld* -map van onze *open bare preview* -container. Hieronder vindt u de sectie met **standaard instellingen voor aangepaste installatie** .
 
 - Als u wilt verwijzen naar een submap in uw script, ondersteunt *msiexec.exe* de notatie niet `.\` voor verwijzing naar de hoofdmap. Gebruik een opdracht, zoals `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` in plaats van `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 

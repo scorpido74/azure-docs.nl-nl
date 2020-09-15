@@ -3,12 +3,12 @@ title: Azure Arc enabled Kubernetes-cluster configureren met Azure Monitor voor 
 description: In dit artikel wordt beschreven hoe u bewaking configureert met Azure Monitor voor containers op Azure Arc ingeschakelde Kubernetes-clusters.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092878"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090615"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Bewaking van Azure Arc enabled Kubernetes-cluster inschakelen
 
@@ -124,7 +124,7 @@ Als u de bewaking van uw cluster wilt inschakelen met het Power shell-of bash-sc
 4. Als u bestaande Azure Monitor Log Analytics werk ruimte wilt gebruiken, configureert u de variabele `$logAnalyticsWorkspaceResourceId` met de bijbehorende waarde voor de resource-id van de werk ruimte. Als dat niet het geval is, stelt u de variabele in op `""` en het script maakt een standaardwerk ruimte in de standaard resource groep van het cluster abonnement als deze nog niet in de regio bestaat. De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<SubscriptionID> - \<Region> *.
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Als uw met Arc ingeschakeld Kubernetes-cluster communiceert via een proxy server, configureert u de variabele `$proxyEndpoint` met de URL van de proxy server. Als het cluster niet via een proxy server communiceert, kunt u de waarde instellen op `""` .  Zie [Configure proxy endpoint](#configure-proxy-endpoint) verderop in dit artikel voor meer informatie.
@@ -199,7 +199,7 @@ Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u 
 
 Met de container agent voor Azure Monitor voor containers kunt u een proxy-eind punt configureren zodat het kan communiceren via uw proxy server. De communicatie tussen de container agent en Azure Monitor kan een HTTP-of HTTPS-proxy server zijn, en zowel anonieme als basis verificatie (gebruikers naam en wacht woord) worden ondersteund.
 
-De waarde van de proxy configuratie heeft de volgende syntaxis:`[protocol://][user:password@]proxyhost[:port]`
+De waarde van de proxy configuratie heeft de volgende syntaxis: `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 >Als uw proxy server geen verificatie vereist, moet u nog steeds een psuedo-gebruikers naam en-wacht woord opgeven. Dit kan een gebruikers naam of wacht woord zijn.

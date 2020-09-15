@@ -3,17 +3,17 @@ title: 'Veelgestelde vragen: SRE en DevOps | Microsoft Docs'
 titleSuffix: Azure
 description: 'Veelgestelde vragen: informatie over de relatie tussen SRE en DevOps'
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: e917c609b484b1a58377fea2f6cdd75dde30ca6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196411"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090326"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Veelgestelde vragen: wat is de relatie tussen SRE en DevOps?
 
@@ -24,8 +24,8 @@ Er is een aantal algemene vragen over de relatie tussen de site betrouwbaarheids
 SRE en DevOps zijn zowel moderne operationele procedures die zijn gemaakt en ontwikkeld als reactie op uitdagingen die zijn opgenomen:
 
 - een groeiende complexiteit van onze productie omgevingen en ontwikkelings processen
-- toename van de bedrijfs afhankelijkheid van de continue werking van die omgevingen
-- het onvermogen om de werk nemer lineair te schalen met de grootte van deze omgevingen
+- een groeiende afhankelijkheid van ondernemingen van een continue werking van die omgevingen
+- het onvermogen om het personeel lineair te schalen met de grootte van deze omgevingen
 - de nood zaak om sneller te verplaatsen terwijl de operationele stabiliteit behouden blijft
 
 Beide bewerkings procedures zijn belang rijk voor onderwerpen die cruciaal zijn voor het oplossen van deze uitdagingen, zoals bewaking/beheerbaarheid, automatisering, documentatie en hulpprogram ma's voor het ontwikkelen van samenwerkings software.

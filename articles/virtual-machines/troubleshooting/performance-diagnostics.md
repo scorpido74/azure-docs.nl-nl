@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70080602"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090632"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostische gegevens over prestaties voor virtuele Azure-machines
 
@@ -33,11 +33,28 @@ U kunt prestatie diagnostiek rechtstreeks vanuit de Azure Portal uitvoeren, waar
 
 ### <a name="windows"></a>Windows
 
-Windows 10, Windows 8, Windows 8 Enter prise, Windows 8 Pro, Windows 8,1, Windows Server 2016, Windows Server 2012, Windows Server 2012 Data Center, Windows Server 2012 R2, Windows Server 2012 R2 Data Center, Windows Server 2012 R2 Standard, Windows Server 2012 Standard, Windows Server 2008 R2, Windows Server 2008 R2 Data Center, Windows Server 2008 R2 Enter prise, Windows Server 2008 R2 Foundation, Windows Server 2008 , Windows Server 2008 R2 Standard.
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-data base-Ee 13,8 Marketplace-installatie kopie), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
+- De volgende distributies worden momenteel ondersteund:
+
+    | Distributie               | Versie                                         |
+    |----------------------------|-------------------------------------------------|
+    | Oracle Linux server        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
+    |                            |                                                   |
 
 >[!Note]
 >[ `*` ] Raadpleeg [bekende problemen](how-to-use-perfinsights-linux.md#known-issues)
@@ -174,7 +191,7 @@ Er zijn meerdere manieren om het diagnostische rapport te delen met micro soft.
 Wanneer u een ondersteunings ticket met micro soft opent, is het belang rijk om het rapport over prestatie diagnostiek te delen. Als u ervoor hebt gekozen deze informatie met micro soft te delen terwijl u de diagnostische gegevens uitvoert (door het selectie vakje**Ik ga akkoord met de diagnostische informatie te delen met micro**Soft), is micro soft in staat om met een SAS-koppeling naar het uitvoer zip-bestand tot 30 dagen na de uitvoerings datum toegang te krijgen tot het rapport. Alleen het meest recente rapport is beschikbaar voor de ondersteunings technicus.
 
 **Optie 2:** Een Shared Access Signature genereren voor het gecomprimeerde bestand van het diagnostische rapport  
-U kunt een koppeling naar het gecomprimeerde bestand in rapporten delen met behulp van hand tekeningen voor gedeelde toegang. Voer de volgende stappen uit om dit te doen:
+U kunt een koppeling naar het gecomprimeerde bestand in rapporten delen met behulp van hand tekeningen voor gedeelde toegang. Volg hiervoor de volgende stappen:
 
 1. Blader in het Azure Portal naar het opslag account waarin de diagnostische gegevens zijn opgeslagen.
 1. Selecteer **blobs** onder het gedeelte **BLOB service** .
