@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684606"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398423"
 ---
 # <a name="reservation-recommendations"></a>Aanbevelingen voor reserveringen
 
@@ -25,6 +25,7 @@ In de volgende stappen wordt gedefinieerd hoe de aanbevelingen worden berekend:
 2. Op basis van de gebruiksgegevens simuleert de engine uw kosten met en zonder reserveringen.
 3. De kosten worden gesimuleerd voor verschillende hoeveelheden. De hoeveelheid waarvoor de besparingen het grootst zijn, wordt aanbevolen.
 4. Als uw resources regelmatig worden afgesloten, vindt de simulatie geen besparingen en worden er geen aankoopaanbevelingen gedaan.
+5. Bij het berekenen van aanbevelingen voor reserveringen wordt rekening gehouden met eventuele speciale kortingen die u hebt op uw gebruikstarieven op aanvraag.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Aanbevelingen in de Azure-portal
 
@@ -52,11 +53,11 @@ Probeer reserveringen zo dicht mogelijk bij de aanbeveling te kopen voor optimal
 
 Aanbevelingen voor reserveringsaankopen zijn beschikbaar in Azure Advisor. Houd rekening met de volgende belangrijke punten:
 
-- Advisor heeft alleen aanbevelingen voor bereiken van één abonnement.
-- Aanbevelingen worden berekend door de gebruikstrend van de afgelopen 30 dagen in acht te nemen.
+- Advisor heeft alleen aanbevelingen voor bereiken van één abonnement. Als u aanbevelingen voor het volledige factureringsbereik (factureringsrekening of factureringsprofiel) wilt zien, gaat u naar Azure Portal > Reserveringen > Toevoegen en selecteert u het type waarvoor u de aanbevelingen wilt zien.
+- De aanbevelingen die beschikbaar zijn in Advisor wordt de trend voor gebruik in de afgelopen 30 dagen meegenomen.
 - De aanbevelingshoeveelheid en besparingen zijn voor een 3-jarige reservering, indien beschikbaar. Als er geen 3-jarige reservering wordt verkocht voor de service, wordt de aanbeveling berekend op basis van de prijs voor een 1-jarige reservering.
-- Aanbevelingen voor reserveringen houden rekening met eventuele speciale kortingen die u hebt op uw gebruikstarieven op aanvraag.
-- Als u een reservering met gedeeld bereik aanschaft, kan het tot 30 dagen duren voordat aankoopaanbelingen voor reserveringen van Advisor zijn verdwenen.
+- Bij het berekenen van aanbevelingen voor reserveringen wordt rekening gehouden met eventuele speciale kortingen die u hebt op uw gebruikstarieven op aanvraag.
+- Als u een reservering met gedeeld bereik aanschaft, kan het tot 5 dagen duren voordat aankoopaanbevelingen voor reserveringen van Advisor zijn verdwenen.
 
 ## <a name="other-expected-api-behavior"></a>Ander verwacht API-gedrag
 

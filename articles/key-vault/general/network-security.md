@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504514"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536052"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault-firewalls en virtuele netwerken configureren
 
-In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure Key Vault-firewalls en virtuele netwerken om de toegang tot uw sleutelkluis te beperken. Met de [service-eindpunten van het virtuele netwerk voor Key Vault](overview-vnet-service-endpoints.md)) kunt u de toegang tot een opgegeven virtueel netwerk en een aantal IPv4-adresbereiken (internetprotocol versie 4) beperken.
+In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure Key Vault-firewalls en virtuele netwerken om de toegang tot uw sleutelkluis te beperken. Met de [service-eindpunten van het virtuele netwerk voor Key Vault](overview-vnet-service-endpoints.md) kunt u de toegang tot een opgegeven virtueel netwerk en een aantal IPv4-adresbereiken (internetprotocol versie 4) beperken.
 
 > [!IMPORTANT]
 > Als de firewallregels van kracht zijn, kunnen gebruikers alleen Key Vault-[gegevenslaagbewerkingen](secure-your-key-vault.md#data-plane-access-control) uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.
@@ -129,5 +129,5 @@ U kunt als volgt Key Vault-firewalls en virtuele netwerken configureren met behu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Service-eindpunten voor virtuele netwerken voor Key Vault](overview-vnet-service-endpoints.md))
-* [Uw sleutelkluis beveiligen](secure-your-key-vault.md))
+* [Service-eindpunten voor virtuele netwerken voor Key Vault](overview-vnet-service-endpoints.md)
+* [Uw Key Vault beveiligen](secure-your-key-vault.md)

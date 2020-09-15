@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262852"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421370"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Zelfstudie: Azure Stack Edge installeren met GPU
 
@@ -39,7 +39,7 @@ Zorg voordat u begint voor het volgende:
 
 * U hebt alle stappen in [Tutorial: Prepare to deploy Azure Stack Edge with GPU](azure-stack-edge-gpu-deploy-prep.md) (Implementatie van Azure Stack Edge met GPU voorbereiden) uitgevoerd.
     * U hebt een Azure Stack Edge-resource gemaakt voor het implementeren van het apparaat.
-    * U hebt de activeringscode gegenereerd om het apparaat te activeren met de Azure Stack Edge-resource.
+    * U hebt de activeringscode gegenereerd om heet apparaat te activeren met de Azure Stack Edge-resource.
 
  
 ### <a name="for-the-azure-stack-edge-physical-device"></a>Voor het fysieke Azure Stack Edge-apparaat
@@ -139,7 +139,7 @@ Zoek de onderdelen voor het installeren van de railkit-assembly:
 
 1. Zoek de vergrendelingen aan de zijkanten van de binnenkant van de rails.
 2. Ontgrendel elke hendel door deze naar de vrijgavepositie te verplaatsen.
-3. Pak de zijkanten van het systeem stevig vast en trek het naar voren, totdat de railpinnen vooraan in de J-sleuven staan. Til het systeem omhoog en weg van het rek en plaats het op een vlakke oppervlakte.
+3. Grijp de zijkanten van het systeem stevig vast en trek het naar voren, totdat de railpinnen vooraan in de J-sleuven staan. Til het systeem omhoog en weg van het rek en plaats het op een vlakke oppervlakte.
 
     ![Systeem uit het rek verwijderen](./media/azure-stack-edge-deploy-install/removing-system-rack.png)
 
@@ -221,6 +221,10 @@ Voer de volgende stappen uit om uw apparaat te bekabelen voor stroom en verbindi
 4. Sluit de netsnoeren aan op de PDU's van het rek. Zorg ervoor dat de twee PSU's op verschillende stopcontacten zijn aangesloten.
 5. Druk op de aan/uit-knop om het apparaat in te schakelen.
 6. Verbind PORT 1 van de 1-GbE netwerkinterface met de computer die wordt gebruikt voor het configureren van het fysieke apparaat. PORT 1 fungeert als de beheerinterface.
+    
+    > [!NOTE]
+    > Als u de computer rechtstreeks op uw apparaat wilt aansluiten (zonder een switch), gebruikt u een crossover-kabel of een USB-ethernetadapter.
+
 7. Verbind één of meer interfaces, bijvoorbeeld PORT 2, PORT 3, PORT 4, PORT 5 of PORT 6 aan het netwerk van het datacenter of internet.
 
     - Gebruik de 1-GbE RJ-45-netwerkkabel als u PORT 2 verbindt.
@@ -235,7 +239,7 @@ In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen m
 > * Het apparaat in het rek monteren
 > * Het apparaat bekabelen
 
-Ga naar de volgende zelfstudie voor informatie over het verbinden, instellen en activeren van uw apparaat.
+Ga naar de volgende zelfstudie voor informatie over het verbinden van uw apparaat.
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)

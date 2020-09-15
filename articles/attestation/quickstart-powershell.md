@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236979"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421285"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Quickstart: Azure Attestation instellen met behulp van Microsoft Azure PowerShell
 
@@ -159,26 +159,27 @@ TagsTable:
 
 Attestation-providers kunnen worden verwijderd met de cmdlet Remove-AzAttestation.  
 
-``azurepowershell Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>Beleidsbeheer
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
+Voor het beheren van beleid, heeft een Azure AD-gebruiker de volgende machtigingen nodig voor 'Acties':
 - Microsoft.Attestation/attestationProviders/attestation/read
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+Deze machtigingen kunnen worden toegewezen aan een AD-gebruiker via een rol zoals 'Eigenaar' (machtigingen voor jokertekens), 'Inzender' (machtigingen voor jokertekens) of 'Attestation-inzender' (alleen specifieke machtigingen voor Azure Attestation).  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
+Voor het lezen van beleid, heeft een Azure AD-gebruiker de volgende machtigingen nodig voor 'Acties':
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+Deze machtiging kan worden toegewezen aan een AD-gebruiker via een rol zoals 'Lezer' (machtigingen voor jokertekens) of 'Attestation-lezer' (alleen specifieke machtigingen voor Azure Attestation).
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+Onderstaande PowerShell-cmdlets bieden het beheer van beleid voor een Attestation-provider geboden (één TEE per keer).
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+Get-AzAttestationPolicy retourneert het huidige beleid voor de opgegeven TEE. De cmdlet geeft beleid weer in de tekst- en JWT-indeling van het beleid.
 
 ```powershell
 $teeType = "<tee Type>"

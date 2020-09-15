@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068620"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494335"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -22,9 +22,8 @@ De enige vereiste is een Azure Speech-abonnement. Raadpleeg de [Handleiding](../
 
 Volg deze stappen om de Speech CLI te installeren voor Windows:
 
-1. Installeer [.NET Framework 4.7](https://dotnet.microsoft.com/download/dotnet-framework/net471) of [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Download het Speech CLI-[zip-bestand](https://aka.ms/speech/spx-zips.zip) en pak het uit.
-3. Ga naar de hoofdmap `spx-zips` van de download en pak de gewenste submap uit (`spx-net471` voor .NET Framework 4.7 of `spx-netcore-win-x64` voor .NET Core 3.0 op een x64-CPU) uit.
+1. Download het Speech CLI-[zip-bestand](https://aka.ms/speech/spx-zips.zip) en pak het uit.
+2. Ga naar de hoofdmap `spx-zips` van de download en pak de gewenste submap uit (`spx-net471` voor .NET Framework 4.7 of `spx-netcore-win-x64` voor .NET Core 3.0 op een x64-CPU) uit.
 
 Wijzig in de opdrachtprompt de map naar deze locatie en typ `spx` om de Help voor de Speech CLI weer te geven.
 
@@ -53,11 +52,13 @@ Typ `spx` om Help weer te geven voor de Speech CLI.
 
 #### <a name="docker-install"></a>[Docker-installatie](#tab/dockerinstall)
 
+> [!NOTE]
+> <a href="https://www.docker.com/get-started" target="_blank">De desktopversie van Docker voor uw platform<span class="docon docon-navigate-external x-hidden-focus"></span></a> moet zijn geïnstalleerd.
+
 Volg deze stappen om de Speech CLI te installeren in een Docker-container:
 
-1. Installeer [de desktopversie van Docker voor uw platform](https://www.docker.com/get-started) en voer deze uit.
 1. Typ in een nieuwe opdrachtprompt of terminal de volgende opdracht: `docker pull msftspeech/spx`
-1. Typ deze opdracht. Raadpleeg de Help-informatie voor Speech CLI: `docker run -it --rm msftspeech/spx help`
+2. Typ deze opdracht. Raadpleeg de Help-informatie voor Speech CLI: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>Een map koppelen in de container
 

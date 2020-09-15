@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854932"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536224"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML-model trainen
 
@@ -56,11 +56,14 @@ Maak **niet** een *nieuwe* notebook in de Jupyter-interface! *tutorials/create-f
 Importeer de `Workspace`-klasse en laad uw abonnementsgegevens vanuit het bestand `config.json` met behulp van de functie `from_config().`. Hiermee wordt standaard gezocht naar het JSON-bestand in de huidige map, maar u kunt ook een padparameter opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`. Als u deze notebook uitvoert op een cloudnotebookserver in uw werkruimte, bevindt het bestand zich automatisch in de hoofdmap.
 
 Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatietoken in. Als u meer dan één tenant hebt gekoppeld aan uw gebruiker, moet u bovendien de volgende regels toevoegen:
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+Zie [Verificatie in Azure Machine Learning](https://aka.ms/aml-notebook-auth) voor meer informatie over verificatie
+
 
 ```python
 from azureml.core import Workspace

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 025ff5159d2caa3dd77de551ccaec18fb7954c1b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f8485925d3a2885af5180eda0ddf71bdf30921f8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293363"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482506"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Security-benchmark
 
@@ -21,4 +21,16 @@ Raadpleeg [Naleving van Azure Policy-regelgeving - Azure Security-benchmark](../
 |Domain |Id van besturingselement |Titel van besturingselement |Beleid<br /><sub>(Azure-portal)</sub> |Beleidsversie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |Netwerkbeveiliging |1.1 |Resources beschermen met behulp van netwerkbeveiligingsgroepen of Azure Firewall op uw virtueel netwerk |[Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
+
+Raadpleeg [Naleving van Azure Policy-regelgeving - HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md) om te zien hoe de beschikbare ingebouwde modules voor Azure Policy voor alle Azure-services zijn toegewezen aan deze nalevingsstandaard.
+Zie [HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) voor meer informatie over deze nalevingsstandaard.
+
+|Domain |Id van besturingselement |Titel van besturingselement |Beleid<br /><sub>(Azure-portal)</sub> |Beleidsversie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Scheiding in netwerken |0805.01m1Organizational.12 - 01.m |De beveiligingsgateways van de organisatie (zoals firewalls) dwingen beveiligingsbeleid af en zijn geconfigureerd voor het filteren van verkeer tussen domeinen, het blokkeren van onbevoegde toegang en worden gebruikt voor het onderhouden van de scheiding tussen interne bekabelde, interne draadloze en externe netwerksegmenten (bijvoorbeeld het internet), waaronder DMZ's. Bovendien wordt beleid voor toegangsbeheer afgedwongen voor elk domein. |[Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
+|Scheiding in netwerken |0806.01m2Organizational.12356 - 01.m |Het netwerk van de organisatie is logisch en fysiek gesegmenteerd met een gedefinieerde beveiligingsperimeter en een gestaffelde set besturingselementen, met inbegrip van subnetwerken voor openbaar toegankelijke systeemonderdelen die logisch zijn gescheiden van het interne netwerk, op basis van de vereisten van de organisatie. Verkeer wordt beheerd op basis van de vereiste functionaliteit en classificatie van de gegevens/systemen op basis van een risicoanalyse en hun respectieve beveiligingsvereisten. |[Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
+|Scheiding in netwerken |0894.01m2Organizational.7 - 01.m |Netwerken worden gescheiden van netwerken op productieniveau bij het migreren van fysieke servers, toepassingen of gegevens naar gevirtualiseerde servers. |[Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
+|Netwerkbesturingselementen |0864.09m2Organizational.12 - 09.m |Beperkingen ten aanzien van het gebruik en richtlijnen voor de implementatie zijn formeel gedefinieerd voor VoIP, met inbegrip van de autorisatie en bewaking van de service. |[Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
 

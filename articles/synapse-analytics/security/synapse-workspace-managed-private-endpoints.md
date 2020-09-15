@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070109"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459536"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Beheerde privé-eindpunten in Synapse (preview)
 
@@ -23,7 +23,7 @@ In dit artikel wordt uitleg gegeven over beheerde privé-eindpunten in Azure Syn
 
 Beheerde privé-eindpunten zijn privé-eindpunten die zijn gemaakt in het Microsoft Azure Virtual Network van de beheerde werkruimte om een privé-koppeling met Azure-resources tot stand te brengen. Deze privé-eindpunten worden namens u door Azure Synapse beheerd.
 
-Azure Synapse ondersteunt privé-koppelingen. Met Private Link kunt u Azure-services (zoals Azure Storage, Azure Cosmos DB en Azure SQL Data Warehouse) en in Azure gehoste klanten-/partnerservices veilig benaderen vanuit uw Azure Virtual Network.
+Azure Synapse ondersteunt privé-koppelingen. Met Private Link kunt u Azure-services (zoals Azure Storage en Azure Cosmos DB) en in Azure gehoste klanten-/partnerservices veilig benaderen vanuit uw Azure Virtual Network.
 
 Wanneer u een privé-koppeling gebruikt, loopt het verkeer tussen uw Virtual Network en werkruimte volledig over het backbone-netwerk van Microsoft. Private Link beschermt tegen exfiltratie van gegevens. U kunt een privé-koppeling naar een resource tot stand brengen door een privé-eindpunt te maken.
 

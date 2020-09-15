@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3ee78560818d3651d5822c551ba2e0ccee3376e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 13ab7fc5b4461559fc54b5643d22ca309c752a37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204626"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564970"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan:
+In dit artikel wordt ervan uitgegaan dat:
 
-* U hebt een Azure-account en een spraak service-abonnement. Als u geen account en abonnement hebt, kunt u [de spraak service gratis uitproberen](../../../get-started.md).
+* U een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
 
-## <a name="install-and-import-the-speech-sdk"></a>De Speech SDK installeren en importeren
+## <a name="install-and-import-the-speech-sdk"></a>De Speech-SDK installeren en importeren
 
 Voordat u iets kunt doen, moet u de Speech SDK installeren.
 
@@ -25,33 +25,33 @@ Voordat u iets kunt doen, moet u de Speech SDK installeren.
 pip install azure-cognitiveservices-speech
 ```
 
-Als u zich in macOS bevindt en er problemen met de installatie optreden, moet u deze opdracht mogelijk eerst uitvoeren.
+Als u macOS heeft en er problemen met de installatie optreden, moet u deze opdracht mogelijk eerst uitvoeren.
 
 ```Python
 python3 -m pip install --upgrade pip
 ```
 
-Nadat de spraak-SDK is geïnstalleerd, importeert u deze in uw python-project met deze instructie.
+Nadat de Speech-SDK is geïnstalleerd, importeert u deze in uw Python-project met dit overzicht.
 
 ```Python
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python), moet u een maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!NOTE]
-> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
 
-Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kunt initialiseren:
+Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) kunt initialiseren:
 
-* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
-* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
-* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
-* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
+* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+* Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
+* Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
+* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) wordt gemaakt met behulp van een sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
@@ -60,43 +60,44 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 
 ## <a name="initialize-a-recognizer"></a>Een herkenner initialiseren
 
-Nadat u een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)hebt gemaakt, is de volgende stap het initialiseren van [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)een. Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)initialiseert, moet u het door geven aan uw `speech_config`. Dit biedt de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
-
-Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) volgende:
+Nadat u een [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) hebt gemaakt, is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python). Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) initialiseert, geeft u uw `speech_config` door. Dit zorgt voor de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 ```
 
-Als u het audio-invoer apparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) maken en de `audio_config` para meter opgeven bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python).
+## <a name="recognize-from-microphone-or-file"></a>Herkennen van de microfoon of het bestand
 
-> [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) maken en deze doorgeven als een parameter bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python).
+
+Als u spraak wilt herkennen met de microfoon van uw apparaat, maakt u gewoon een `SpeechRecognizer` aan zonder een `AudioConfig` door te geven
 
 ```Python
-audio_config = AudioConfig(device_name="<device id>");
-speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 ```
 
-Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audio_config`opgeven. Wanneer u echter een [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python)maakt, gebruikt u in plaats van `device_name`de- `filename` para meter.
+> [!TIP]
+> Als u een apparaat wilt verwijzen per id, maakt u een `AudioConfig` aan met behulp van `AudioConfig(device_name="<device id>")`
+> [Meer informatie over het verkrijgen van de apparaat-id voor het geluidsinvoerapparaat](../../../how-to-select-audio-input-devices.md).
+
+Als u spraak wilt herkennen vanuit een audiobestand in plaats van met een microfoon, maakt u een [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) aan en gebruikt u de parameter `filename`.
 
 ```Python
-audio_filename = "whatstheweatherlike.wav"
-audio_input = speechsdk.AudioConfig(filename=audio_filename)
+audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 ```
 
 ## <a name="recognize-speech"></a>Spraak herkennen
 
-De [klasse Recognizer](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python) voor de Speech SDK voor python bevat enkele methoden die u voor spraak herkenning kunt gebruiken.
+De [Recognizer-klasse](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python) voor de Speech SDK voor Python maakt een aantal methoden beschikbaar die u voor spraakherkenning kunt gebruiken.
 
-* Eenmalige herkenning (synchronisatie): voert herkenning uit in een Blokkeer modus (synchrone). Retourneert nadat één utterance is herkend. Het einde van één utterance wordt bepaald door te Luis teren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt. De taak retourneert de herkennings tekst als resultaat.
-* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één utterance herkend. Het einde van één utterance wordt bepaald door te Luis teren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt.
-* Doorlopende herkenning (Sync): initieert synchrone doorlopende herkenning. De client moet verbinding maken `EventSignal` met om herkennings resultaten te ontvangen. Als u de herkenning wilt stoppen, roept u [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--)aan.
-* Continue herkenning (asynchroon): initieert asynchrone herkennings bewerking. De gebruiker moet verbinding maken met EventSignal om herkennings resultaten te ontvangen. Als u asynchrone doorlopende herkenning wilt stoppen, roept u [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)aan.
+* Eenmalige herkenning (synchroon): voert herkenning uit in een blokkerende (synchrone) modus. Retourneert nadat één uiting is herkend. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt. De taak retourneert de herkenningstekst als resultaat.
+* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één uiting herkend. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt.
+* Continue herkenning (synchroon): initieert synchroon een continue herkenning. De client moet verbinding maken met `EventSignal` om herkenningsresultaten te ontvangen. Als u herkenning wilt stoppen, roept u [stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) aan.
+* Continue herkenning (asynchroon): initieert asynchroon een continue herkenningsbewerking. De gebruiker moet verbinding maken met EventSignal om herkenningsresultaten te ontvangen. Als u asynchrone continue herkenning wilt stoppen, roept u [stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--) aan.
 
 > [!NOTE]
-> Meer informatie over het [kiezen van een modus voor spraak herkenning](../../../how-to-choose-recognition-mode.md).
+> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../how-to-choose-recognition-mode.md).
 
 ### <a name="single-shot-recognition"></a>Eenmalige herkenning
 
@@ -112,11 +113,11 @@ Hier volgt een voor beeld van asynchrone eenmalige herkenning met [`recognize_on
 result = speech_recognizer.recognize_once_async()
 ```
 
-Ongeacht of u de synchrone of asynchrone methode hebt gebruikt, moet u een code schrijven om het resultaat te herhalen. In dit voor beeld wordt [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python)het volgende geëvalueerd:
+Ongeacht of u de synchrone of asynchrone methode hebt gebruikt, moet u wat code schrijven om het resultaat te herhalen. In dit voorbeeld wordt de [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python) geëvalueerd:
 
-* Het herkennings resultaat afdrukken:`speechsdk.ResultReason.RecognizedSpeech`
-* Als er geen overeenkomst wordt gevonden, stelt u de gebruiker hiervan op de hoogte:`speechsdk.ResultReason.NoMatch `
-* Als er een fout is opgetreden, drukt u het fout bericht af:`speechsdk.ResultReason.Canceled`
+* Het herkenningsresultaat afdrukken: `speechsdk.ResultReason.RecognizedSpeech`
+* Als er geen herkenningsovereenkomst wordt gevonden, wordt de gebruiker hiervan op de hoogte gesteld: `speechsdk.ResultReason.NoMatch `
+* Als er een fout is opgetreden wordt het foutbericht afgedrukt: `speechsdk.ResultReason.Canceled`
 
 ```Python
 if result.reason == speechsdk.ResultReason.RecognizedSpeech:
@@ -130,28 +131,28 @@ elif result.reason == speechsdk.ResultReason.Canceled:
         print("Error details: {}".format(cancellation_details.error_details))
 ```
 
-### <a name="continuous-recognition"></a>Doorlopende herkenning
+### <a name="continuous-recognition"></a>Continue herkenning
 
-Doorlopende herkenning is een beetje meer betrokken dan eenmalige herkenning. Hiervoor moet u verbinding maken met de `EventSignal` om de herkennings resultaten op te halen en in om de herkenning te stoppen, dient u [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) of [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)aan te roepen. Hier volgt een voor beeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoer bestand.
+Continue herkenning is wat ingewikkelder dan eenmalige herkenning. Hiervoor moet u verbinding maken met de `EventSignal` om de herkenningsresultaten op te halen. Als u de herkenning wilt stoppen, moet u [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) of [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--) aanroepen. Hier volgt een voorbeeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoerbestand.
 
-Laten we beginnen met het definiëren van de invoer en het [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)initialiseren van een:
+Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python):
 
 ```Python
 audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 ```
 
-Vervolgens maken we een variabele voor het beheren van de status van spraak herkenning. We stellen dit in op `False`, omdat we bij het begin van de herkenning veilig kunnen aannemen dat het niet is voltooid.
+Vervolgens maken we een variabele voor het beheren van de status van spraakherkenning. Om te beginnen, stellen we dit in op `False`, omdat we bij het begin van de herkenning zonder twijfel kunnen aannemen dat deze niet is voltooid.
 
 ```Python
 done = False
 ```
 
-Nu gaan we een call back maken om doorlopende herkenning te stoppen wanneer `evt` er een wordt ontvangen. Er zijn enkele dingen die u moet onthouden.
+Nu gaan we een callback aanmaken om continue herkenning te stoppen wanneer een `evt` wordt ontvangen. Er zijn enkele dingen die u moet onthouden.
 
-* Wanneer er `evt` een wordt ontvangen, `evt` wordt het bericht afgedrukt.
-* Nadat de `evt` is ontvangen, wordt [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) aangeroepen om de herkenning te stoppen.
-* De herkennings status is gewijzigd `True`in.
+* Wanneer een `evt` wordt ontvangen, wordt het `evt`-bericht afgedrukt.
+* Nadat een `evt` is ontvangen, wordt [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) aangeroepen om de herkenning te stoppen.
+* De herkenningsstatus is gewijzigd in `True`.
 
 ```Python
 def stop_cb(evt):
@@ -161,13 +162,13 @@ def stop_cb(evt):
     done = True
 ```
 
-Dit code voorbeeld laat zien hoe u aanroepen verbindt met gebeurtenissen die vanuit [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#start-continuous-recognition--)de zijn verzonden.
+Dit codevoorbeeld toont hoe u callbacks verbindt met gebeurtenissen die vanuit het [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#start-continuous-recognition--)worden verzonden.
 
-* [`recognizing`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognizing): Signaal voor gebeurtenissen met tussenliggende herkennings resultaten.
-* [`recognized`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognized): Signaal voor gebeurtenissen met definitieve herkennings resultaten (wat een geslaagde herkennings poging aangeeft).
-* [`session_started`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-started): Signaal voor gebeurtenissen die het begin van een herkennings sessie (bewerking) aangeven.
-* [`session_stopped`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped): Signaal voor gebeurtenissen die het einde van een herkennings sessie (bewerking) aangeven.
-* [`canceled`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#canceled): Signaal voor gebeurtenissen met Geannuleerde herkennings resultaten (waarmee een herkennings poging wordt aangegeven die is geannuleerd als gevolg van een aanvraag of een rechtstreekse annulering of een Trans Port-of protocol fout).
+* [`recognizing`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognizing): Signaal voor gebeurtenissen met tussenliggende herkenningsresultaten.
+* [`recognized`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognized): Signaal voor gebeurtenissen met definitieve herkenningsresultaten (wat een geslaagde herkenningspoging aangeeft).
+* [`session_started`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-started): Signaal voor gebeurtenissen die het begin van een herkenningssessie (bewerking) aangeven.
+* [`session_stopped`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped): Signaal voor gebeurtenissen die het einde van een herkenningssessie (bewerking) aangeven.
+* [`canceled`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#canceled): Signaal voor gebeurtenissen met een geannuleerde herkenningsresultaten (waarmee een herkenningspoging wordt aangegeven die is geannuleerd als gevolg van een rechtstreekse annuleringsaanvraag of van een transport- of protocolfout).
 
 ```Python
 speech_recognizer.recognizing.connect(lambda evt: print('RECOGNIZING: {}'.format(evt)))
@@ -180,7 +181,7 @@ speech_recognizer.session_stopped.connect(stop_cb)
 speech_recognizer.canceled.connect(stop_cb)
 ```
 
-Als alles is ingesteld, kunnen we [start_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped)aanroepen.
+Als alles is ingesteld, kunnen we [start_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped) aanroepen.
 
 ```Python
 speech_recognizer.start_continuous_recognition()
@@ -188,51 +189,51 @@ while not done:
     time.sleep(.5)
 ```
 
-### <a name="dictation-mode"></a>Dicteer modus
+### <a name="dictation-mode"></a>Dicteermodus
 
-Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herkenning inschakelen met behulp van de bijbehorende functie ' dicteren inschakelen '. Deze modus zorgt ervoor dat het spraak configuratie-exemplaar Word-beschrijvingen interpreteert, zoals Lees tekens. Bijvoorbeeld: het utterance ' hebt u Live in het stads vraag teken ' zou worden geïnterpreteerd als de tekst ' wilt u in de stad wonen? '.
+Bij het gebruik van continue herkenning kunt u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. In deze modus interpreteert de spraakconfiguratie-instantie woordbeschrijvingen van zinselementen zoals interpunctie. Bijvoorbeeld: de uiting 'Woon je hier in de stad vraagteken' wordt geïnterpreteerd als de tekst 'Woon je hier in de stad?'.
 
-Als u de dicteer modus wilt inschakelen, [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) gebruikt u de [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)-methode op uw.
+Als u de dicteermodus wilt inschakelen, gebruikt u de [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)-methode op uw [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python).
 
 ```Python 
 SpeechConfig.enable_dictation()
 ```
 
-## <a name="change-source-language"></a>Bron taal wijzigen
+## <a name="change-source-language"></a>Brontaal wijzigen
 
-Een veelvoorkomende taak voor spraak herkenning is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal in het Duits wijzigt. Zoek uw SpeechConfig in uw code en voeg deze regel daar direct onder toe.
+Een veelvoorkomende taak voor spraakherkenning is het opgeven van de invoer- (of bron)taal. Laten we eens kijken hoe u de invoertaal wijzigt in Duits. Zoek uw SpeechConfig in uw code en voeg deze regel daar direct onder toe.
 
 ```Python
 speech_config.speech_recognition_language="de-DE"
 ```
 
-[`speech_recognition_language`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-recognition-language)is een para meter die een teken reeks als argument gebruikt. U kunt een wille keurige waarde opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
+[`speech_recognition_language`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-recognition-language) is een parameter die een tekenreeks als argument gebruikt. U kunt elke waarde in de lijst met ondersteunde [landinstellingen/talen](../../../language-support.md) opgeven.
 
-## <a name="improve-recognition-accuracy"></a>Nauw keurigheid van herkenning verbeteren
+## <a name="improve-recognition-accuracy"></a>Nauwkeurigheid van de herkenning verbeteren
 
-Er zijn een aantal manieren om de nauw keurigheid van de herkenning te verbeteren met de spraak-SDK. Laten we eens kijken naar woordgroepen lijsten. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als er een exacte overeenkomst voor de volledige woord groep wordt opgenomen in de audio. Als een exacte overeenkomst met de zin niet wordt gevonden, wordt de herkenning niet ondersteund.
+Er zijn een aantal manieren om de nauwkeurigheid van de herkenning te verbeteren met de Speech SDK. Neem bijvoorbeeld frasenlijsten. Frasenlijsten worden gebruikt om bekende frasen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie. Er kunnen losse woorden of hele frasen worden toegevoegd aan een frasenlijst. Tijdens de herkenning wordt een vermelding in een frasenlijst gebruikt als er een exacte overeenkomst voor de volledige frase is opgenomen in de audio. Als er geen exacte overeenkomst met de frase wordt gevonden, wordt de herkenning niet ondersteund.
 
 > [!IMPORTANT]
-> De functie woordgroepen lijst is alleen beschikbaar in het Engels.
+> De frasenlijstfunctie is alleen beschikbaar in het Engels.
 
-Als u een woordgroepen lijst wilt gebruiken, [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) maakt u eerst een-object en voegt u [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-)vervolgens specifieke woorden en zinsdelen toe met.
+Als u een frasenlijst wilt gebruiken, maakt u eerst een [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python)-object, en voegt u vervolgens specifieke woorden en frasen toe met [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-).
 
-Wijzigingen die [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) van kracht worden bij de volgende herkenning of na het opnieuw verbinden met de spraak service.
+Wijzigingen in [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraakservice.
 
 ```Python
 phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
 phrase_list_grammar.addPhrase("Supercalifragilisticexpialidocious")
 ```
 
-Als u uw woordgroepen lijst wilt wissen: 
+Als u uw frasenlijst wilt wissen: 
 
 ```Python
 phrase_list_grammar.clear()
 ```
 
-### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties om de nauw keurigheid van de herkenning te verbeteren
+### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties voor het verbeteren van de nauwkeurigheid van de herkenning
 
-Woordgroepen lijsten zijn slechts één optie om de nauw keurigheid van de herkenning te verbeteren. U kunt ook het volgende doen: 
+Frasenlijsten zijn maar één optie om de nauwkeurigheid van de herkenning te verbeteren. U kunt ook het volgende doen: 
 
 * [Nauwkeurigheid verbeteren met Custom Speech](../../../how-to-custom-speech.md)
 * [Nauwkeurigheid verbeteren met tenantmodellen](../../../tutorial-tenant-model.md)

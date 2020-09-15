@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716109"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569370"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR in Key Vault maken en samenvoegen
 
@@ -102,6 +102,9 @@ Voorbeeld
 
 - **Fouttype 'De openbare sleutel van het certificaat van de eindentiteit in de opgegeven X.509-certificaatinhoud komt niet overeen met het openbare gedeelte van de opgegeven persoonlijke sleutel. Controleer of het certificaat geldig is.** 'Deze fout kan optreden als u de CSR niet samenvoegt met dezelfde CSR-aanvraag die is geïnitieerd. Telkens als een CSR wordt gemaakt, wordt er een persoonlijke sleutel gemaakt die moet worden vergeleken bij het samenvoegen van de ondertekende aanvraag.
     
+- Wanneer CSR wordt samengevoegd, wordt dan de gehele keten samengevoegd?
+    Ja, de hele keten wordt samengevoegd, op voorwaarde dat de gebruiker het samen te voegen p7b-bestand heeft teruggezet.
+
 - Als het certificaat is uitgegeven in de status 'uitgeschakeld' in de Azure-portal, gaat u door met het weergeven van de **Certificaatbewerking** om het foutbericht voor dat certificaat te bekijken.
 
 Raadpleeg de [Certificaatbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.

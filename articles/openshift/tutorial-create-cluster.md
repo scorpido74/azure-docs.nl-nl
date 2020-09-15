@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300167"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503785"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -22,9 +22,9 @@ In deze zelfstudie, deel een van drie, bereidt u uw omgeving voor op het maken v
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Azure Red Hat OpenShift vereist minimaal 40 kernen om een OpenShift-cluster te maken en uit te voeren. Het standaardquotum voor Azure-resources voor een nieuw Azure-abonnement voldoet niet aan deze vereiste. Als u een verhoging van de resourcelimiet wilt aanvragen, raadpleegt u [Standaardquotum: limieten verhogen per VM-reeks](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+Azure Red Hat OpenShift vereist minimaal 40 kernen om een OpenShift-cluster te maken en uit te voeren. Het standaardquotum voor Azure-resources voor een nieuw Azure-abonnement voldoet niet aan deze vereiste. Als u een verhoging van de resourcelimiet wilt aanvragen, raadpleegt u [Standaardquotum: limieten verhogen per VM-reeks](../azure-portal/supportability/per-vm-quota-requests.md).
 
 ### <a name="verify-your-permissions"></a>Uw machtigingen controleren
 
@@ -35,13 +35,31 @@ Als u een Azure Red Hat OpenShift-cluster wilt maken, controleert u of u de volg
 |**Beheerder van gebruikerstoegang**|X|X| |
 |**Inzender**|X|X|X|
 
-### <a name="register-the-resource-provider"></a>De resourceprovider registreren
+### <a name="register-the-resource-providers"></a>De resourceproviders registreren
 
-Vervolgens moet u de resourceprovider `Microsoft.RedHatOpenShift` registreren in uw abonnement.
+1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-id op:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Registreer de resourceprovider `Microsoft.RedHatOpenShift`:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+    
+1. Registreer de resourceprovider `Microsoft.Compute`:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+    
+1. Registreer de resourceprovider `Microsoft.Storage`:
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Een pull-geheim voor Red Hat ophalen (optioneel)
 
@@ -88,7 +106,7 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
 
 1. **Maak een resourcegroep.**
 
-    Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create).
+    Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create).
     
 > [!NOTE]
 > Azure Red Hat OpenShift is niet in alle regio’s beschikbaar waarin een Azure-resource kan worden gemaakt. Zie [Beschikbare regio's](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) voor informatie over waar Azure Red Hat OpenShift wordt ondersteund.
@@ -167,7 +185,7 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Beleid voor privé-eindpunten van subnet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
+5. **[Beleid voor privé-eindpunten van subnet uitschakelen](../private-link/disable-private-link-service-network-policy.md) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
 
     ```azurecli-interactive
     az network vnet subnet update \

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b2b35e21cf9c8650b9dcf95cbd199c56cc23783
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8f9ed14a0bcef346281c38146cbb2d9551633c15
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687194"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421515"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>De voorbeeld bestanden bekijken en bewerken
 
@@ -31,7 +31,50 @@ Als onderdeel van de vereisten hebt u de voorbeeldcode naar een map gedownload. 
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * Bewerk de naam onder GraphTopologyDelete:
     * `"name"` : `"InferencingWithGrpcExtension"`
-    
+
+> [!NOTE]
+> <p>
+> <details>
+> <summary>Uitvouwen en bekijken hoe het MediaGraphGrpcExtension-knooppunt in de topologie wordt geïmplementeerd</summary>
+> <pre><code>
+> {
+>   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+>   "name": "grpcExtension",
+>   "endpoint": {
+>       "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+>       "url": "${grpcExtensionAddress}",
+>       "credentials": {
+>           "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+>           "username": "${grpcExtensionUserName}",
+>           "password": "${grpcExtensionPassword}"
+>       }
+>   },
+>   "dataTransfer": {
+>       "mode": "sharedMemory",
+>       "SharedMemorySizeMiB": "5"
+>   },
+>   "image": {
+>       "scale": {
+>           "mode": "${imageScaleMode}",
+>           "width": "${frameWidth}",
+>           "height": "${frameHeight}"
+>       },
+>       "format": {
+>           "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
+>           "encoding": "${imageEncoding}",
+>           "quality": "${imageQuality}"
+>       }
+>   },
+>   "inputs": [
+>       {
+>           "nodeName": "motionDetection"
+>       }
+>   ]
+> }          
+> </code></pre>
+> </details>    
+> </p>
+
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-implementatiemanifest genereren en implementeren
 
 1. Klik met de rechtermuisknop op het bestand *src/edge/* *deployment.grpcyolov3icpu.template.json* en selecteer **IoT Edge-implementatiemanifest genereren**.
@@ -123,7 +166,7 @@ Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **
     }
     ```
     
-    * Een aanroep van `GraphInstanceActivate` waarmee het grafiekexemplaar en de videostroom worden gestart.
+    * Een aanroep van `GraphInstanceActivate` waarmee de instantie van de grafiek en de videostroom worden gestart.
     * Een tweede aanroep van `GraphInstanceList` waarmee wordt weergegeven dat het grafiekexemplaar wordt uitgevoerd.
 1. De uitvoer in het **TERMINAL**-venster wordt onderbroken met de prompt ‘Druk op Enter om door te gaan’. Selecteer Enter nog niet. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
 1. Schakel naar het **UITVOER**-venster in Visual Studio Code. Er zijn berichten te zien die door de module Live Video Analytics in IoT Edge worden verzonden naar de IoT-hub. In de volgende sectie van deze quickstart worden deze berichten besproken.

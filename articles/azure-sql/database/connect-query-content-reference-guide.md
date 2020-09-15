@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 12d91e43576647b2ffbc1e78d2e059871dbe8a3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6aa0aa22fce5ba0f763f98fec37f607d0ce8a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033170"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441764"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Verbinding maken met Azure SQL Database en Azure SQL Managed Instance en query's uitvoeren voor artikelen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Stuurprogramma's die niet van Microsoft zijn, maken mogelijk niet standaard gebr
 
 U kunt verschillende bibliotheken en frameworks gebruiken om verbinding te maken met Azure SQL Database of Azure SQL Managed Instance. Bekijk onze [Aan de slag-zelfstudies](https://aka.ms/sqldev) om snel aan de slag te gaan met programmeertalen zoals C#, Java, Node.js, PHP en Python. Bouw vervolgens een app met behulp van SQL Server op Linux of Windows of Docker op macOS.
 
-De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die clienttoepassingen kunnen gebruiken vanuit een groot aantal talen om verbinding te maken met en gebruik te maken van SQL Server on-premises of in de cloud. U kunt deze gebruiken in Linux, Windows of Docker en om verbinding te maken met Azure SQL Database, Azure SQL Managed Instance en Azure SQL Data Warehouse.
+De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die clienttoepassingen kunnen gebruiken vanuit een groot aantal talen om verbinding te maken met en gebruik te maken van SQL Server on-premises of in de cloud. U kunt deze gebruiken in Linux, Windows of Docker en om verbinding te maken met Azure SQL Database, Azure SQL Managed Instance en Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 | Taal | Platform | Aanvullende bronnen | Downloaden | Aan de slag |
 | :-- | :-- | :-- | :-- | :-- |

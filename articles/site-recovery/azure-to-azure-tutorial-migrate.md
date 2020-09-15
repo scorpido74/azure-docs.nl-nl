@@ -2,18 +2,18 @@
 title: Azure IaaS-VM's verplaatsen naar een andere regio met behulp van Azure Site Recovery
 description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076096"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425922"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -88,7 +88,7 @@ De volgende stappen laten zien hoe u de virtuele machine voorbereidt voor het ve
 1. Bij **Naam** geeft u de beschrijvende naam **ContosoVMVault** op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak de resourcegroep met de naam **ContosoRG**.
 1. Geef een Azure-regio op. Bekijk de geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om te controleren welke regio's worden ondersteund.
-1. Klik in **Recovery Services-kluizen** op **Overzicht** > **ContosoVMVault** >  **+Repliceren**.
+1. Selecteer in **Recovery Services-kluizen** de opties **Overzicht** > **ContosoVMVault** > **Gerepliceerde items** >  **+Repliceren**.
 1. Bij **Bron** selecteert u **Azure**.
 1. Bij **Bronlocatie** selecteert u de Azure-bronregio waar uw VM’s momenteel worden uitgevoerd.
 1. Selecteer het Resource Manager-implementatiemodel. Selecteer vervolgens het **Bronabonnement** en de **Bronresourcegroep**.

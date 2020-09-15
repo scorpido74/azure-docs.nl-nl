@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697399"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612060"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Zelfstudie: Gegevens van telefoongesprekken met Stream Analytics analyseren en de resultaten visualiseren in een Power BI-dashboard
 
@@ -185,7 +185,7 @@ De laatste stap is bedoeld voor het definiëren van een uitvoerlocatie voor de t
 
    ![Azure Stream Analytics-uitvoer configureren](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**.
+4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**. Zie [Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI](powerbi-output-managed-identity.md) als u Beheerde identiteit wilt gebruiken.
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Een query voor het analyseren van invoergegevens definiëren
 

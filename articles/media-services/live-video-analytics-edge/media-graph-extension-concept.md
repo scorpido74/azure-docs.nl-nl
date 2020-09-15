@@ -3,12 +3,12 @@ title: Wat is een mediagrafiekextensie - Azure
 description: Met Live Video Analytics op IoT Edge kunt u de mogelijkheden voor mediagrafiekverwerking uitbreiden via een grafiekextensieknooppunt.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716075"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569323"
 ---
 # <a name="media-graph-extension"></a>Media Graph-extensie
 
@@ -49,13 +49,14 @@ Gebruik een knooppunt voor de gRPC-extensieprocessor dus wanneer u:
 Met mediagrafiekextensies kunt u deductiemodellen van uw keuze uitvoeren op elke beschikbare deductieruntime, zoals ONNX, TensorFlow, PyTorch of andere in uw eigen docker-container. De aangepaste deductie-extensie moet samen met de Live Video Analytics Edge-module worden geïmplementeerd voor optimale prestaties en wordt vervolgens aangeroepen via de HTTP-extensieprocessor of de gRPC-extensieprocessor die in uw grafiektopologie is opgenomen. Daarnaast kan de frequentie van de aanroepen bij uw aangepaste extensie worden beperkt door optioneel een [bewegingsdetectorprocessor](media-graph-concept.md#motion-detection-processor) en een [framesnelheidsfilterprocessor](media-graph-concept.md#frame-rate-filter-processor) upstream toe te voegen aan de media-extensieprocessor.
 
 In het onderstaande diagram wordt de gegevensstroom op hoog niveau weergegeven:
- 
-![Gegevensstroom](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="Deductieservice kunstmatige intelligentie":::
 
 ## <a name="samples"></a>Voorbeelden
 
-Bekijk enkele van onze [Jupyter Notebook](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)-voorbeelden voor Live Video Analytics. Deze notebooks bieden u stapsgewijze instructies voor het volgende:
+Bekijk enkele van onze [Jupyter Notebook](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)-voorbeelden voor Live Video Analytics. Deze notebooks bieden u stapsgewijze instructies voor **de mediagrafiekextensies** over:
 
 * Een Docker-containerinstallatiekopie maken van een extensieservice
 * De extensieservice als een container implementeren samen met de Live Video Analytics-container
-* Een Live Video Analytics-mediagrafiek met een extensieclient gebruiken en naar het extensie-gRPC-eindpunt laten wijzen
+* Een Live Video Analytics-mediagrafiek met een extensieclient gebruiken en naar het extensie-eindpunt (HTTP/gRPC) laten wijzen

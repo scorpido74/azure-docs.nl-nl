@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684776"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400123"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
 
@@ -73,7 +73,7 @@ U kunt het toegangsbeheer voor een reservering als volgt delegeren:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Eén reservering in twee reserveringen splitsen
 
- Nadat u meer dan één resource-instantie in een reservering hebt aangeschaft, kunt u ervoor kiezen instanties in die reservering aan verschillende abonnementen toe te wijzen. Standaard hebben alle instanties één bereik, ofwel Eén abonnement of Gedeeld. Stel bijvoorbeeld dat u tien reserveringsinstanties hebt aangeschaft en abonnement A als bereik hebt opgegeven. Nu wilt u het bereik voor zeven reserveringen omwisselen naar abonnement A en de resterende drie naar abonnement B. Door het splitsen van een reservering kunt u instanties distribueren voor nauwkeurig bereikbeheer. U kunt de toewijzing aan abonnementen vereenvoudigen door het bereik Gedeeld te kiezen. Maar voor kostenbeheer of budgetteringsdoeleinden is het ook mogelijk om hoeveelheden aan specifieke abonnementen toe te wijzen.
+ Nadat u meer dan één resource-instantie in een reservering hebt aangeschaft, kunt u ervoor kiezen instanties in die reservering aan verschillende abonnementen toe te wijzen. Standaard hebben alle instanties één bereik: Eén abonnement, Resourcegroep of Gedeeld. Stel, u hebt een reservering voor 10 VM-instanties aangeschaft en abonnement A als bereik opgegeven. Nu wilt u dat wijzigen in 7 instanties voor abonnement A en 3 instanties voor abonnement B. U kunt dit doen door een reservering te splitsen. Nadat u een reservering hebt gesplitst, wordt de oorspronkelijke reserverings-id geannuleerd en worden er twee nieuwe reserveringen gemaakt. Splitsen heeft geen invloed op de reserveringsorder: een splitsing is geen nieuwe commerciële transactie en de nieuwe reserveringen hebben dezelfde einddatum als de gesplitste reservering.
 
  U kunt een reservering in twee reserveringen splitsen via PowerShell, CLI of de API.
 

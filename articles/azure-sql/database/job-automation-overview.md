@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984639"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436779"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ De volgende technologieën voor het plannen van taken zijn beschikbaar:
 - **SQL Agent-taken** zijn een klassiek en bewezen SQL Server-onderdeel voor taakplanning dat beschikbaar is in het beheerde Azure SQL-exemplaar. SQL Agent-taken zijn niet beschikbaar in Azure SQL Database.
 - **Elastic Database-taken (preview)** zijn een taakplanningsservice die aangepaste taken uitvoert op een of meer databases in Azure SQL Database.
 
-Hier volgen enkele noemenswaardige verschillen tussen SQL Agent (on-premises beschikbaar en als onderdeel van SQL Managed Instance) en de taakagent van Elastic Database (beschikbaar voor individuele databases in Azure SQL Database en databases in SQL Data Warehouse).
+Hier volgen enkele noemenswaardige verschillen tussen SQL Agent (on-premises beschikbaar en als onderdeel van SQL Managed Instance) en de taakagent van Elastic Database (beschikbaar voor individuele databases in Azure SQL Database en databases in Azure Synapse Analytics).
 
 | |Elastische taken |SQL Agent |
 |---------|---------|---------|

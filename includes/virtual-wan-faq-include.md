@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304119"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570173"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
@@ -83,7 +83,7 @@ Er zijn twee opties om DNS-servers voor de P2S-clients toe te voegen. De eerste 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Voor VPN voor gebruikers (punt-naar-site): hoeveel clients worden ondersteund?
 
-Elke P2S-gateway van een VPN voor gebruikers bevat twee exemplaren en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaaleenheid verandert. Schaaleenheid 1-3 ondersteunt 500 verbindingen, schaaleenheid 4-6 ondersteunt 1000 verbindingen, schaaleenheid 7-12 ondersteunt 5000 verbindingen en schaaleenheid 13-20 ondersteunt maximaal 10.000 verbindingen. 
+Elke P2S-gateway van een VPN voor gebruikers bevat twee exemplaren en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaaleenheid verandert. Schaaleenheid 1-3 ondersteunt 500 verbindingen, schaaleenheid 4-6 ondersteunt 1000 verbindingen, schaaleenheid 7-12 ondersteunt 5000 verbindingen en schaaleenheid 13-18 ondersteunt maximaal 10.000 verbindingen. 
 
 Stel dat de gebruiker één schaaleenheid kiest. Elke schaaleenheid impliceert een geïmplementeerde actief-actief-gateway en elk exemplaar (in dit geval twee) zou maximaal 500 verbindingen ondersteunen. Omdat u 500 verbindingen x 2 per gateway kunt verkrijgen, betekent dit niet dat u voor deze schaaleenheid voor 1000 gaat plannen in plaats van de 500. Het kan zijn dat er exemplaren moeten worden onderhouden, zodat de connectiviteit voor de extra 500 kan worden onderbroken als u het aantal aanbevolen verbindingen overschrijdt. Houd ook rekening met uitvaltijd voor het geval dat u de schaaleenheid omhoog of omlaag wilt schalen of de punt-naar-site-configuratie op de VPN-gateway wilt wijzigen.
 

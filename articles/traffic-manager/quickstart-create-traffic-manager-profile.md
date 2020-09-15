@@ -1,8 +1,8 @@
 ---
-title: 'Quick Start: een profiel maken voor de HA van toepassingen-Azure Portal-Azure Traffic Manager'
+title: 'Quickstart: een profiel maken voor de hoge beschikbaarheid van toepassingen - Azure Portal - Azure Traffic Manager'
 description: In dit snelstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt voor het bouwen van webtoepassingen met hoge beschikbaarheid.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: rohink
-ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.author: duau
+ms.openlocfilehash: 7a347d5cd72fcf955dae0aa8319632fdb43d3bf7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934770"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400259"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Snelstartgids: een Traffic Manager profiel maken met behulp van de Azure Portal
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Quickstart: Een Traffic Manager-profiel maken met behulp van de Azure-portal
 
 In deze quickstart wordt beschreven hoe u een Traffic Manager-profiel maakt die hoge beschikbaarheid van uw webtoepassing biedt.
 
@@ -35,32 +35,32 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 Voor deze quickstart moeten twee exemplaren van een webtoepassing worden geïmplementeerd in twee verschillende Azure-regio's (*VS - oost* en *Europa - west*). Elk exemplaar dient als primair en failover-eindpunt voor Traffic Manager.
 
-1. Selecteer in de linkerbovenhoek van het scherm een**Web** > -**app**voor **het maken van een resource** > .
+1. Selecteer **Een resource maken** > **Web** > **Web-app** linksboven in het scherm.
 
-1. In **een web-app maken**typt of selecteert u de volgende waarden op het tabblad **basis beginselen** :
+1. In **Een web-app maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
 
-   - **Abonnements** > **resource groep**: Selecteer **nieuwe maken** en typ vervolgens **myResourceGroupTM1**.
-   - **Instance Details** > **Naam**van instantie Details: Typ *myWebAppEastUS*.
-   - **Details** > van instantie**publiceren**: Selecteer **code**.
-   - **Instance Details**Runtime stack van instantie: Selecteer **ASP.net v 4.7** **Runtime stack** > 
-   - **Exemplaar Details** > **besturings systeem**: Selecteer **Windows**.
-   - **Exemplaar Details** > **regio**: Selecteer **VS-Oost**.
-   - **App service**plan**Windows-abonnement (VS-Oost)**: Selecteer **nieuwe maken** en typ vervolgens **myAppServicePlanEastUS**  > 
-   - **App Service Plan** > **SKU en grootte**app service plan: Selecteer **standaard S1**.
+   - **Abonnement** > **Resourcegroep**: Selecteer **Nieuwe maken** en typ **myResourceGroupTM1**.
+   - **Instantiedetails** > **Naam**: Type *myWebAppEastUS*.
+   - **Instantiedetails** > **Publiceren**: Selecteer **Code**.
+   - **Instantiedetails** > **Runtimestack**: Selecteer **ASP.NET V4.7**
+   - **Instantiedetails** > **Besturingssysteem**: Selecteer **Windows**.
+   - **Instantiedetails** > **Regio**:  Selecteer **VS - oost**.
+   - **App Service-plan** > **Windows-plan (East US)** : Selecteer **Nieuwe maken** en typ **myAppServicePlanEastUS**
+   - **App Service-plan** > **SKU en grootte**: Selecteer **Standard S1**.
    
-3. Selecteer het tabblad **bewaking** of selecteer **volgende: bewaken**.  Stel onder **bewaking**in **Application Insights** > Application Insights op **Nee**in te**scha kelen** .
+3. Selecteer het tabblad **Bewaking** of selecteer **Volgende:Bewaking**.  Stel onder **Bewaking** **Application Insights** > **Application Insights inschakelen** in op **Nee**.
 
-4. Selecteer **controleren en maken**
+4. Selecteer **Controleren en maken**
 
-5. Controleer de instellingen en klik vervolgens op **maken**.  Als de web-app wordt geïmplementeerd, wordt er een standaardwebsite gemaakt.
+5. Controleer de instellingen en klik op **Maken**.  Als de web-app wordt geïmplementeerd, wordt er een standaardwebsite gemaakt.
 
-6. Volg de stappen om een tweede web-app met de naam *myWebAppWestEurope*te maken, met de naam van de **resource groep** *myResourceGroupTM2*, een **regio** *Europa-West*, een **app service plan** naam **myAppServicePlanWestEurope**en alle andere instellingen hetzelfde als *myWebAppEastUS*.
+6. Volg de stappen om een tweede web-app te maken met de naam *myWebAppWestEurope*, een **resourcegroep** met de naam *myResourceGroupTM2*, met **regio** *Europa - west*, een **App Service-plan** met de naam **myAppServicePlanWestEurope** en met alle overige instellingen gelijk aan die voor *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
 Maak een Traffic Manager-profiel waarmee gebruikersverkeer wordt doorgestuurd op basis van eindpuntprioriteit.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource** > **maken netwerk** > **Traffic Manager profiel**.
+1. Selecteer links boven in het scherm de optie **Een resource maken** > **Netwerken** > **Traffic Manager-profiel**.
 2. Voer in **Traffic Manager-profiel maken** de volgende instellingen in (of selecteer ze):
 
     | Instelling | Waarde |
@@ -86,8 +86,8 @@ Voeg de website in *VS - oost* toe als primair eindpunt om alle gebruikersverkee
     | ------- | ------|
     | Type | Selecteer **Azure-eindpunt**. |
     | Naam | Voer *myPrimaryEndpoint* in. |
-    | Doelbrontype | Selecteer **app service**. |
-    | Doelbron | Selecteer **een app service** > -**VS-Oost**kiezen. |
+    | Doelbrontype | Selecteer **App Service**. |
+    | Doelbron | Selecteer **Choose an app service** > **VS - oost**. |
     | Prioriteit | Selecteer **1**. Alle verkeer gaat naar dit eindpunt indien het in orde is. |
 
     ![Schermopname van de plaats waar u een eindpunt aan uw Traffic Manager-profiel toevoegt.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
@@ -99,8 +99,8 @@ Voeg de website in *VS - oost* toe als primair eindpunt om alle gebruikersverkee
     | ------- | ------|
     | Type | Selecteer **Azure-eindpunt**. |
     | Naam | Voer*myFailoverEndpoint* in. |
-    | Doelbrontype | Selecteer **app service**. |
-    | Doelbron | Selecteer **een app service** > -**Europa-West**kiezen. |
+    | Doelbrontype | Selecteer **App Service**. |
+    | Doelbron | Selecteer **Choose an app service** > **Europa - west**. |
     | Prioriteit | Selecteer **2**. Alle verkeer gaat naar dit failover-eindpunt als het primaire eindpunt niet in orde is. |
 
 7. Selecteer **OK**.

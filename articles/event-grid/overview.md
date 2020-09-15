@@ -3,12 +3,12 @@ title: Wat is Azure Event Grid?
 description: Gebeurtenisgegevens vanaf een bron naar handlers verzenden met Azure Event Grid. Op gebeurtenissen gebaseerde toepassingen ontwikkelen en integreren met Azure-services.
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116128"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436864"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -118,6 +118,6 @@ Azure Event Grid maakt gebruik van een prijsmodel voor betalen per gebeurtenis, 
 * [Logic Apps als een gebeurtenis-handler gebruiken](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Een zelfstudie over het bouwen van een app met Logic Apps om te reageren op gebeurtenissen die door Event Grid zijn gepusht.
 * [Big data streamen naar een datawarehouse](event-grid-event-hubs-integration.md)  
-  Een zelfstudie die gebruikmaakt van Azure Functions om gegevens uit Event Hubs te streamen naar SQL Data Warehouse.
+  Een zelfstudie die gebruikmaakt van Azure Functions om gegevens uit Event Hubs te streamen naar Azure Synapse Analytics.
 * [Naslaginformatie over de REST-API voor Event Grid](/rest/api/eventgrid)  
   Bevat naslaginformatie voor het beheren van gebeurtenisabonnementen, routering en filters.

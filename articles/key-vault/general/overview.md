@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190547"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421642"
 ---
 # <a name="about-azure-key-vault"></a>Over Azure Key Vault
 
@@ -25,7 +25,7 @@ Met Azure Key Vault kunt u de volgende problemen oplossen:
 - **Geheimenbeheer** - Met Azure Key Vault kunt u veilig de toegang tot tokens, wachtwoorden, certificaten, API-sleutels en andere geheimen opslaan en strikt beheren
 - **Sleutelbeheer** - U kunt Azure Key Vault ook gebruiken als een oplossing voor sleutelbeheer. Met Azure Key Vault kunt u eenvoudig de versleutelingssleutels maken en beheren waarmee uw gegevens worden versleuteld. 
 - **Certificaatbeheer** - Azure Key Vault is ook een service waarmee u eenvoudig openbare en persoonlijke TLS/SSL-certificaten (Transport Layer Security/Secure Sockets Layer) kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden bronnen. 
-- **Sla geheimen op met hardwarebeveiligingsmodules (HSM's)** - De geheimen en sleutels kunnen worden beveiligd door software of met HSM's met FIPS 140-2 niveau 2-validatie
+- **Sla geheimen op die worden ondersteund door Hardware Security Modules**: de geheimen, sleutels en certificaten in de Store zijn versleuteld met de softwaresleutel (standaardlaag) of de sleutel voor FIPS 140-2 level 2-gevalideerde HSM (premiumlaag) 
 
 ## <a name="why-use-azure-key-vault"></a>Waarom zou ik Azure Key Vault gebruiken?
 

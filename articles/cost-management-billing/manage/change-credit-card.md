@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684929"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569353"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
 
@@ -190,7 +190,7 @@ Als u [betaalt via een factuur](pay-by-invoice.md), maakt u het verschuldigde be
 
 ### <a name="how-do-i-change-the-tax-id"></a>Hoe kan ik het btw-nummer wijzigen?
 
-Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het [Azure-accountcentrum](https://account.azure.com/Profile) en selecteert u vervolgens **Btw-registratie**. Dit btw-nummer wordt gebruikt voor de berekening van btw-vrijstelling en wordt vermeld op uw factuur.
+Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in de [Azure-portal](https://portal.azure.com) en selecteert u vervolgens **Btw-registratie**. Dit btw-nummer wordt gebruikt voor de berekening van btw-vrijstelling en wordt vermeld op uw factuur.
 
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
 

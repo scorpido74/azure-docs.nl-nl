@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826769"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594370"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Quickstart: Azure IoT Connector for FHIR (preview) implementeren met Azure Portal
 
@@ -169,7 +169,10 @@ Implementeer de[toepassingssjabloon voor continue patiëntbewaking](https://docs
 > Wanneer uw echte apparaten klaar zijn, kunt u dezelfde IoT Central-toepassing gebruiken voor de [onboarding van uw apparaten](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) en om de apparaatsimulatoren te vervangen. Uw apparaatgegevens worden ook automatisch naar FHIR gestroomd. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Uw IoT-gegevens verbinden met Azure IoT Connector for FHIR (preview)
-Nadat u uw IoT Central-toepassing hebt geïmplementeerd, wordt telemetrische gegevens gegenereerd met de twee kant-en-klare gesimuleerde apparaten. Voor deze zelfstudie wordt de telemetrie van de *Smart Vitals Patch*-simulator via Azure IoT Connector for FHIR opgenomen. Als u uw IoT-gegevens wilt exporteren naar Azure IoT Connector for FHIR, kunt u het beste [een continue gegevensexport instellen in IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export). Op de pagina voor continue gegevensexport:
+> [!WARNING]
+> Het sjabloon voor apparaattoewijzing die in deze handleiding wordt gegeven, is ontworpen voor het werken met gegevensexport (verouderd) in IoT Central.
+
+Nadat u uw IoT Central-toepassing hebt geïmplementeerd, wordt telemetrische gegevens gegenereerd met de twee kant-en-klare gesimuleerde apparaten. Voor deze zelfstudie wordt de telemetrie van de *Smart Vitals Patch*-simulator via Azure IoT Connector for FHIR opgenomen. Als u uw IoT-gegevens wilt exporteren naar Azure IoT Connector for FHIR, kunt u het beste [een continue gegevensexport instellen in IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy). Op de pagina voor continue gegevensexport:
 - Kies *Azure Event Hubs* als de exportbestemming.
 - Selecteer de waarde *Een verbindingsreeks gebruiken* voor het veld **Event Hubs-naamruimte**.
 - Geef de verbindingsreeks van Azure IoT Connector for FHIR op die u in een vorige stap hebt verkregen voor het veld **Verbindingsreeks**.

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585913"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485452"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -36,7 +36,7 @@ Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis.
 > Dit artikel biedt Azure PowerShell-instructies voor het bijwerken van diagnostische logboeken. U kunt diagnostische logboeken ook bijwerken door Azure Monitor te gebruiken in de sectie **Diagnostische logboeken** van de Azure-portal. 
 >
 
-Zie [Wat is Azure Key Vault?](overview.md) voor algemene informatie over Key Vault. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/) voor informatie over waar Key Vault beschikbaar is.
+Zie [Wat is Azure Key Vault?](overview.md) voor algemene informatie over Key Vault. Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/) voor informatie over waar Key Vault beschikbaar is. Zie [Azure Monitor voor Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) voor informatie over het gebruik ervan.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: Event Hubs-gegevens naar datawarehouse verzenden - Event Grid'
-description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event Grid en Event Hubs gegevens kunt migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
+description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event Grid en Event Hubs gegevens kunt migreren naar Azure Synapse Analytics. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007448"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435028"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
-Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar een SQL Data Warehouse.
+Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar Azure Synapse Analytics (voorheen SQL Data Warehouse).
 
 ![Overzicht van toepassing](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ In dit diagram ziet u de werkstroom van de oplossing die u in deze zelfstudie ma
 2. Wanneer het opnemen van gegevens voltooid is, wordt er een gebeurtenis gegenereerd en verzonden naar een Azure-gebeurtenisraster. 
 3. Het gebeurtenisraster stuurt deze gebeurtenisgegevens door naar een Azure-functie-app.
 4. De functie-app maakt gebruik van de blob-URL in de gebeurtenisgegevens om de blob op te halen uit de opslag. 
-5. De functie-app migreert de blob-gegevens naar een Azure SQL datawarehouse. 
+5. De functie-app migreert de blob-gegevens naar Azure Synapse Analytics. 
 
 In dit artikel voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * De infrastructuur implementeren met behulp van een Azure Resource Manager-sjabloon: een gebeurtenishub, een opslagaccount, een functie-app en een SQL-datawarehouse.
+> * De infrastructuur implementeren met behulp van een Azure Resource Manager-sjabloon: een gebeurtenishub, een opslagaccount, een functie-app en Azure Synapse Analytics.
 > * Een tabel maken in het datawarehouse.
 > * Code toevoegen aan de functie-app.
 > * Abonneren op de gebeurtenis. 
@@ -52,7 +52,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 * App Service-plan voor het hosten van de functie-app
 * Functie-app voor het verwerken van de gebeurtenis
 * SQL Server voor het hosten van het datawarehouse
-* SQL Data Warehouse voor het opslaan van de gemigreerde gegevens
+* Azure Synapse Analytics voor het opslaan van de gemigreerde gegevens
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure Cloud Shell openen in Azure Portal
 
@@ -97,7 +97,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
           "tags": null
         }
         ```
-2. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, SQL-datawarehouse) door de volgende CLI-opdracht uit te voeren: 
+2. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, Azure Synapse Analytics) door de volgende CLI-opdracht uit te voeren: 
     1. Kopieer en plak de opdracht in het Cloud Shell-venster. U kunt de opdracht ook kopiëren en plakken in een editor naar keuze, waarden instellen en de opdracht vervolgens kopiëren naar Cloud Shell. 
 
         ```azurecli
@@ -112,7 +112,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
         3. Naam voor de gebeurtenishub. U kunt de waarde laten zoals deze is (hubdatamigration).
         4. Naam voor de SQL-server.
         5. Naam en wachtwoord van de SQL-gebruiker. 
-        6. Naam voor het SQL-datawarehouse
+        6. Naam voor Azure Synapse Analytics
         7. Naam van het opslagaccount. 
         8. Naam voor de functie-app. 
     3.  Druk op **Enter** in het Cloud Shell-venster om de opdracht uit te voeren. Dit proces kan enige tijd duren omdat u een groot aantal bronnen maakt. Controleer in het resultatenvenster van de opdracht of er geen fouten zijn opgetreden. 
@@ -131,7 +131,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
         ```
     2. Geef een naam op voor de **resourcegroep**.
     3. Druk op Enter. 
-3. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, SQL-datawarehouse) door de volgende opdracht uit te voeren:
+3. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, Azure Synapse Analytics) door de volgende opdracht uit te voeren:
     1. Kopieer en plak de opdracht in het Cloud Shell-venster. U kunt de opdracht ook kopiëren en plakken in een editor naar keuze, waarden instellen en de opdracht vervolgens kopiëren naar Cloud Shell. 
 
         ```powershell
@@ -143,7 +143,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
         3. Naam voor de gebeurtenishub. U kunt de waarde laten zoals deze is (hubdatamigration).
         4. Naam voor de SQL-server.
         5. Naam en wachtwoord van de SQL-gebruiker. 
-        6. Naam voor het SQL-datawarehouse
+        6. Naam voor Azure Synapse Analytics
         7. Naam van het opslagaccount. 
         8. Naam voor de functie-app. 
     3.  Druk op **Enter** in het Cloud Shell-venster om de opdracht uit te voeren. Dit proces kan enige tijd duren omdat u een groot aantal bronnen maakt. Controleer in het resultatenvenster van de opdracht of er geen fouten zijn opgetreden. 
@@ -162,13 +162,13 @@ Sluit Cloud Shell met de knop **Cloud Shell** in de portal of met de knop **X** 
 
     ![Resources in de resourcegroep](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Een tabel maken in SQL Data Warehouse
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Een tabel maken in Azure Synapse Analytics
 Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren. Gebruik hiervoor Visual Studio of de query-editor in de portal. De volgende stappen laten zien hoe u de query-editor gebruikt: 
 
 1. Selecteer uw **Synapse SQL-pool (datawarehouse)** in de lijst met resources in de resourcegroep. 
-2. Selecteer in het menu links op de pagina SQL-datawarehouse **Query-editor (preview)** . 
+2. Selecteer in het linkermenu op de Azure Synapse Analytics-pagina **Query-editor (preview)** . 
 
-    ![De pagina SQL-datawarehouse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Azure Synapse Analytics-pagina](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. Voer de naam van **gebruiker** en het **wachtwoord** voor de SQL-server in, en selecteer **OK**. U moet uw client-IP-adres mogelijk aan de firewall toevoegen om u aan te kunnen melden bij de SQL-server. 
 
     ![SQL-serververificatie](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Nadat de functie is gepubliceerd, kunt u zich abonneren op de gebeurtenis.
         ![Event Grid-abonnement maken](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>De app uitvoeren om gegevens te genereren
-U bent nu klaar met het instellen van uw gebeurtenishub, SQL-datawarehouse, Azure-functie-app en gebeurtenisabonnement. Voordat u een toepassing gaat uitvoeren die gegevens voor Event Hub genereert, moet u nog enkele waarden configureren.
+U bent nu klaar met het instellen van uw gebeurtenishub, Azure Synapse Analytics, Azure-functie-app en gebeurtenisabonnement. Voordat u een toepassing gaat uitvoeren die gegevens voor Event Hub genereert, moet u nog enkele waarden configureren.
 
 1. Navigeer in Azure Portal naar uw resourcegroep zoals u eerder hebt gedaan. 
 2. Selecteer de Event Hubs-naamruimte.

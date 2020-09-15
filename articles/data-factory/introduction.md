@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191111"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536309"
 ---
 # <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
 
@@ -28,11 +28,11 @@ Denk bijvoorbeeld aan een gamingbedrijf dat petabytes aan gamelogboeken verzamel
 
 Voor het analyseren van deze logboeken moet het bedrijf gebruikmaken van de referentiegegevens, zoals klantgegevens, game-informatie en marketingcampagnegegevens, die zich in een on-premises gegevensarchief bevinden. Het bedrijf wil deze gegevens uit het on-premises gegevensarchief gebruiken door ze te combineren met extra logboekgegevens in een gegevensarchief in de cloud. 
 
-Om inzichten te extraheren, wil het bedrijf de verzamelde gegevens verwerken met behulp van een Spark-cluster in de cloud (HDInsight) en de getransformeerde gegevens publiceren in een datawarehouse in de cloud, zoals Azure SQL Data Warehouse, om er gemakkelijk een rapport over te maken. Het bedrijf wil deze werkstroom automatiseren en volgens een dagelijks schema controleren en beheren. Ook wil het bedrijf de werkstroom uitvoeren wanneer bestanden in een blob store-container terechtkomen.
+Om inzichten te extraheren, wil het bedrijf de verzamelde gegevens verwerken met behulp van een Spark-cluster in de cloud (HDInsight) en de getransformeerde gegevens publiceren in een datawarehouse in de cloud, zoals Azure Synapse Analytics (voorheen SQL Data Warehouse), om er gemakkelijk een rapport over te maken. Het bedrijf wil deze werkstroom automatiseren en volgens een dagelijks schema controleren en beheren. Ook wil het bedrijf de werkstroom uitvoeren wanneer bestanden in een blob store-container terechtkomen.
 
 Azure Data Factory is het platform dat dergelijke gegevensscenario's oplost. Het is een *cloud-gebaseerde ETL en gegevensintegratieservice waarmee u gegevensgestuurde werkstromen kunt maken en zo gegevensverplaatsing en -transformatie kunt indelen op schaal*. Met behulp van Azure Data Factory kunt u gegevensgestuurde werkstromen (pijplijnen genoemd) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen. U kunt complexe ETL-processen bouwen waarmee gegevens visueel worden getransformeerd met gegevens stromen of met behulp van berekeningsservices zoals Azure HDInsight Hadoop, Azure Databricks en Azure SQL Database. 
 
-Bovendien kunt u uw getransformeerde gegevens publiceren naar gegevensopslaglocaties zoals Azure SQL Data Warehouse, waar BI-toepassingen (business intelligence-oplossingen) er gebruik van kunnen maken. Via de Azure Data Factory kunt onbewerkte gegevens uiteindelijk worden ingedeeld in zinvolle gegevensarchieven en gegevensmeren zodat u betere zakelijke beslissingen kunt nemen.
+Bovendien kunt u uw getransformeerde gegevens publiceren naar gegevensopslaglocaties zoals Azure Synapse Analytics, waar BI-toepassingen (business intelligence-oplossingen) er gebruik van kunnen maken. Via de Azure Data Factory kunt onbewerkte gegevens uiteindelijk worden ingedeeld in zinvolle gegevensarchieven en gegevensmeren zodat u betere zakelijke beslissingen kunt nemen.
 
 ![Weergave van het hoogste niveau van Data Factory](media/data-flow/overview.png)
 
@@ -62,7 +62,15 @@ Data Factory biedt volledige ondersteuning voor CI/CD van uw gegevenspijplijnen 
 Nadat u uw pijplijn voor gegevensintegratie hebt gemaakt en geïmplementeerd, en op die manier toegevoegde waarde biedt met getransformeerde gegevens, controleert u hoe vaak de geplande activiteiten en pijplijnen slagen en mislukken. Azure Data Factory heeft ingebouwde ondersteuning voor pijplijnbewaking via Azure Monitor, API, PowerShell, Azure Monitor-logboeken en statusvensters in de Azure-portal.
 
 ## <a name="top-level-concepts"></a>Concepten van het hoogste niveau
-Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (ofwel 'data factory's') hebben. Azure Data Factory bestaat uit vier hoofdonderdelen. Deze onderdelen werken samen om een platform te bieden waarop u gegevensgestuurde werkstromen kunt maken met stappen voor de verplaatsing en transformatie van gegevens.
+Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (ofwel 'data factory's') hebben. Azure Data Factory bestaat uit de onderstaande hoofdonderdelen.
+- Pipelines
+- Activiteiten
+- Gegevenssets
+- Gekoppelde services
+- Gegevensstromen
+- Integration Runtimes
+
+Deze onderdelen werken samen om een platform te bieden waarop u gegevensgestuurde werkstromen kunt maken met stappen voor de verplaatsing en transformatie van gegevens.
 
 ### <a name="pipeline"></a>Pijplijn
 Een data factory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. De activiteiten in een pijplijn voeren samen een taak uit. Zo kan een pijplijn bijvoorbeeld een groep activiteiten bevatten die gegevens van een Azure-blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. 

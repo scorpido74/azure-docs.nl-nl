@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262971"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461864"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Zelfstudie: netwerk configureren voor Azure Stack Edge met GPU
 
@@ -104,7 +104,11 @@ Voer de volgende stappen uit om het rekenproces in te schakelen en het rekennetw
     
 3. Wijs **IP-adressen aan Kubernetes-knooppunten** toe. Deze vaste IP-adressen zijn voor de reken-VM. 
 
-    Voor een apparaat met *n* knooppunten wordt met behulp van de begin- en eind-IP-adressen een aansluitend bereik van minimaal *n + 1* IPv4-adressen (of meer) voor de reken-VM verstrekt. Aangezien Azure Stack Edge een apparaat met één knooppunt is, worden er minimaal twee aansluitende IPv4-adressen opgegeven. 
+    Voor een apparaat met *n* knooppunten wordt met behulp van de begin- en eind-IP-adressen een aansluitend bereik van minimaal *n + 1* IPv4-adressen (of meer) voor de reken-VM verstrekt. Aangezien Azure Stack Edge een apparaat met één knooppunt is, worden er minimaal twee aansluitende IPv4-adressen opgegeven.
+
+    > [!IMPORTANT]
+    > Kubernetes on Azure Stack Edge maakt gebruik van subnet 172.27.0.0/16 voor pods en subnet 172.28.0.0/16 voor services. Controleer of deze nog niet worden gebruikt in uw netwerk. Als deze subnetten al worden gebruikt in uw netwerk, kunt u deze subnetten wijzigen door de `Set-HcsKubeClusterNetworkInfo`-cmdlet uit te voeren vanuit de PowerShell-interface van het apparaat. Zie [Subnetten voor Kubernetes-pods en -services wijzigen](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets) voor meer informatie.
+
 
 4. Wijs **externe IP-adressen voor Kubernetes-services** toe. Dit zijn ook de IP-adressen voor de taakverdeling. Deze aansluitende IP-adressen zijn voor services die u buiten het Kubernetes-cluster zichtbaar wilt maken. U geeft het statische IP-bereik op, afhankelijk van het aantal weergegeven services. 
     
@@ -137,7 +141,7 @@ Dit is een optionele configuratie.
 
     3. Als u verificatie gebruikt, voert u een gebruikersnaam en wachtwoord in.
 
-    4. Selecteer **Toepassen** om de geconfigureerde webproxyinstellingen te valideren en toe te passen.
+    4. Selecteer **Toepassen** om de geconfigureerde webproxy-instellingen te valideren en toe te passen.
     
    ![Pagina 'Webproxy-instellingen' voor lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 

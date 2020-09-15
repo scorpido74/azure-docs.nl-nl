@@ -1,7 +1,7 @@
 ---
-title: Wat is de Translator? - Translator
+title: Wat is Translator? - Translator
 titlesuffix: Azure Cognitive Services
-description: Integreer de Translator in uw toepassingen, websites, hulpprogramma's en andere oplossingen om gebruikerservaringen in meerdere talen te bieden.
+description: Integreer Translator in uw toepassingen, websites, hulpprogramma's en andere oplossingen om gebruikerservaringen in meerdere talen te bieden.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589448"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425956"
 ---
-# <a name="what-is-the-translator"></a>Wat is de Translator?
+# <a name="what-is-translator"></a>Wat is Translator?
 
-De Translator is eenvoudig in uw toepassingen, websites, hulpprogramma's en oplossingen te integreren. U kunt hiermee meertalige gebruikerservaringen in [meer dan 70 talen](languages.md) toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst naar tekst.
-
-De Translator is onderdeel van de Azure [Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-verzameling voor Machine Learning en AI-algoritmen in de cloud en is direct te gebruiken in uw ontwikkelprojecten.
+Azure Cognitive Services Translator is een cloudservice voor automatische vertaling en maakt deel uit van de [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-familie van cognitieve API's voor het bouwen van intelligente apps. Translator is eenvoudig in uw toepassingen, websites, hulpprogramma's en oplossingen te integreren. U kunt hiermee meertalige gebruikerservaringen in [meer dan 70 talen](languages.md) toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst naar tekst.
 
 ## <a name="about-microsoft-translator"></a>Over Microsoft Translator
 
-De Translator is een cloudservice voor machinevertaling. De basis van deze service is de Translator, die een aantal Microsoft-producten en -services aanstuurt en die door duizenden bedrijven over de hele wereld wordt gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
+Azure Cognitive Services Translator is een cloudservice voor machinevertaling. Translator stuurt een aantal Microsoft-producten en -services aan en wordt door duizenden bedrijven over de hele wereld gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
 
-Spraakomzetting, mogelijk gemaakt door de Translator, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). In spraakomzetting worden functionaliteit van de Translator Speech-API en de Custom Speech Service gecombineerd tot een geïntegreerde en volledig aan te passen service.Speech Service vervangt de Translator Speech-API, die buiten bedrijf wordt genomen op 15 oktober 2019.
+Spraakomzetting, mogelijk gemaakt door Translator, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). In spraakomzetting worden functionaliteit van de Translator Speech-API en de Custom Speech Service gecombineerd tot een geïntegreerde en volledig aan te passen service. 
 
 ## <a name="language-support"></a>Taalondersteuning
 
@@ -46,7 +44,7 @@ Meer informatie over [de werking van NMT](https://www.microsoft.com/en-us/transl
 
 ## <a name="language-customization"></a>Taal aanpassen
 
-Custom Translator is een uitbreiding op de Microsoft Translator-kernservice en kan samen met de Translator worden gebruikt om het neurale vertaalsysteem aan te passen en de vertalingen te verbeteren voor uw specifieke terminologie en stijl.
+Custom Translator is een uitbreiding op de Translator-service en kan samen met Translator worden gebruikt om het neurale vertaalsysteem aan te passen en de vertalingen te verbeteren voor uw specifieke terminologie en stijl.
 
 Met Custom Translator kunt u vertaalsystemen maken waarin de terminologie wordt verwerkt die wordt gebruikt in uw bedrijf of sector. U kunt uw aangepaste vertaalsysteem vervolgens eenvoudig integreren in uw bestaande toepassingen, werkstromen en websites voor meerdere typen apparaten via de gewone Translator, met behulp van de categorieparameter.
 

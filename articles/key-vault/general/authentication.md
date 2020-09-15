@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378968"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481372"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Verifiëren bij Azure Key Vault
 
 Met Azure Key Vault kunt u geheimen opslaan en de distributie ervan beheren in een gecentraliseerde, beveiligde cloudopslagplaats. Hierdoor hoeft u geen referenties meer op te slaan in toepassingen. Toepassingen moeten alleen tijdens de uitvoering worden geverifieerd bij Key Vault om toegang tot deze geheimen te krijgen.
 
-## <a name="app-identity-and-service-principals"></a>App-id’s en service-principals
+## <a name="app-identity-and-security-principals"></a>App-id's en beveiligingsprincipals
 
 Verificatie met Key Vault werkt in combinatie met [Azure AD (Active Directory)](/azure/active-directory/fundamentals/active-directory-whatis), dat verantwoordelijk is voor het verifiëren van de identiteit van elke opgegeven **beveiligingsprincipal**.
 
@@ -40,7 +40,7 @@ Er zijn twee manieren om voor toepassingen een service-principal te verkrijgen:
 
 * Als u geen beheerde identiteit kunt gebruiken, kunt u in plaats hiervan de toepassing **registreren** bij uw Azure AD-tenant, zoals beschreven in [Quickstart: Een toepassing registreren bij het Azure-identiteitsplatform](/azure/active-directory/develop/quickstart-register-app). Bij de registratie wordt ook een tweede toepassingsobject gemaakt waarmee de app wordt geïdentificeerd bij alle tenants.
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>Een service-principal machtigen voor toegang tot Key Vault
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Een beveiligingsprincipal machtigen voor toegang tot Key Vault
 
 Key Vault werkt met twee afzonderlijke machtigingsniveaus:
 
@@ -49,7 +49,7 @@ Key Vault werkt met twee afzonderlijke machtigingsniveaus:
     Raadpleeg de volgende artikelen als u toegangsbeleid wilt toewijzen:
 
     - [Azure Portal](assign-access-policy-portal.md)
-    - [Azure-CLI](assign-access-policy-cli.md)
+    - [Azure CLI](assign-access-policy-cli.md)
     - [Azure PowerShell](assign-access-policy-portal.md)
 
 - **Rolmachtigingen** bepalen of een gebruiker, groep of service-principal is gemachtigd om een Key Vault-resource te maken, verwijderen of anderszins te beheren (soms ook wel bewerkingen op het beheervlak genoemd). Dergelijke rollen worden meestal alleen verleend aan beheerders.
@@ -57,7 +57,7 @@ Key Vault werkt met twee afzonderlijke machtigingsniveaus:
     Raadpleeg de volgende artikelen als u rollen wilt toewijzen en beheren:
 
     - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-    - [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
+    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
     - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
     Key Vault biedt momenteel alleen ondersteuning voor de rol [Inzender](/azure/role-based-access-control/built-in-roles#key-vault-contributor), waarmee beheerbewerkingen in Key Vault-resources zijn toegestaan. Een aantal andere rollen is momenteel beschikbaar als preview-versie. U kunt ook aangepaste rollen maken, zoals beschreven in [Aangepaste Azure-rollen](/azure/role-based-access-control/custom-roles).

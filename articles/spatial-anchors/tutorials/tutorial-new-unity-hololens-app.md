@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 06/22/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee8b8c2931d006dbb3d472b545030d3aff79c56a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297984"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535872"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Zelfstudie: Stapsgewijze instructies voor het maken van een nieuwe HoloLens Unity-app met behulp van Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ We gaan eerst ons project en de Unity-scène instellen:
 2. Selecteer **Nieuw**.
 4. Zorg ervoor dat **3D** is geselecteerd.
 5. Geef uw project een naam en voer bij **Location** de opslaglocatie in.
-6. Klik op **Create project**.
+6. Selecteer **Project maken**.
 7. Sla de lege standaardscène op in een nieuw bestand met behulp van: **File** > **Save As**.
 8. Geef de nieuwe scène de naam **Main** en druk op de knop **Save**.
 
@@ -46,16 +46,15 @@ We gaan eerst kwaliteitsinstellingen voor onze toepassing instellen.
 1. Selecteer **Edit** > **Project Settings** > **Quality**
 2. Klik in de kolom onder het logo van **Windows Store** op de pijl op de **Default**rij en selecteer **Very Low**. U weet dat de instelling correct wordt toegepast wanneer het vak in de kolom **Windows Store** en de rij **Very Low** groen is.
 
-We moeten Unity laten weten dat de app die we willen exporteren, een detailweergave moet maken in plaats van een 2D-weergave. We maken een detailweergave door ondersteuning voor Virtual Reality in te schakelen voor Unity die op de Windows 10 SDK is gericht.
-
+We moeten onze Unity-app configureren zodat deze een detailweergave in plaats van een 2D-weergave gebruikt. We kunnen een detailweergave maken door ondersteuning voor Virtual Reality in te schakelen voor Unity die op de Windows 10 SDK is gericht.
 1. Ga naar **Edit** > **Project Settings** > **Player**.
-2. Selecteer in het deelvenster **Inspector** voor **Player Settings** het pictogram **Windows Store**.
+2. Selecteer in het deelvenster **Inspector** voor **Player Settings** het **Windows**-pictogram.
 3. Vouw de groep **XR-instellingen** uit.
 4. Schakel in de sectie **Rendering** het selectievakje **Virtual Reality Supported** in om een nieuwe lijst met **Virtual Reality SDK's** toe te voegen.
 5. Controleer of **Windows Mixed Reality** wordt weergegeven in de lijst. Als dat niet het geval is, selecteert u de knop **+** onder aan de lijst en kiest u **Windows Mixed Reality**.
 
 > [!NOTE]
-> Als u het pictogram van de Windows Store niet ziet, controleert u of u de back-end van de Windows Store .NET Scripting Backend hebt geselecteerd voordat u de installatie hebt uitgevoerd. Als dat niet het geval is, moet u Unity mogelijk opnieuw installeren met de juiste Windows-installatie.
+> Als u het Windows-pictogram niet ziet, controleert u of u de back-end van de Windows .NET Scripting Backend hebt geselecteerd voordat u de installatie hebt uitgevoerd. Als dat niet het geval is, moet u Unity mogelijk opnieuw installeren met de juiste Windows-installatie.
 
 **Configuratie van back-end voor scripts controleren**
 1. Ga naar **Edit** > **Project Settings** > **Player** (mogelijk hebt u **Player** uit de vorige stap nog open).
@@ -109,7 +108,7 @@ Voordat we verdergaan, moeten we de bol-prefab instellen die we hebben gemaakt o
 
 U moet de **bol** nu als de prefab in uw script hebben ingesteld. Bouw vanuit **Unity** en open de resulterende **Visual Studio**-oplossing opnieuw, zoals u dat ook hebt gedaan in [Het uitproberen](#trying-it-out).
 
-Open `AzureSpatialAnchorsScript.cs` opnieuw in **Visual Studio**. Voeg de volgende code toe aan de methode `Start()`. Deze code koppelt `GestureRecognizer`, die detecteert wanneer er in de lucht wordt getikt en `HandleTap` aanroept.
+Open `AzureSpatialAnchorsScript.cs` opnieuw in **Visual Studio**. Voeg de volgende code toe aan de methode `Start()`. Met deze code wordt `GestureRecognizer` gekoppeld, waardoor `HandleTap` wordt aangeroepen wanneer er in de lucht wordt getikt.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 
@@ -125,9 +124,9 @@ Voer uw app vanuit **Visual Studio** uit om deze opnieuw te valideren. Tik op he
 
 ## <a name="set-up-the-dispatcher-pattern"></a>Het dispatcherpatroon instellen
 
-Wanneer u met Unity werkt, moeten alle Unity-API's, bijvoorbeeld API's die u gebruikt voor het uitvoeren van UI-updates, plaatsvinden op de hoofdthread. In de code die wij schrijven, krijgen we echter callbacks op andere threads. We willen de gebruikersinterface bijwerken in deze callbacks, dus hebben we een manier nodig om van een zijthread naar de hoofdthread te gaan. Om code vanuit een zijthread uit te voeren op de hoofdthread gebruiken we het dispatcherpatroon.
+Wanneer u met Unity werkt, moeten alle Unity-API's (bijvoorbeeld API's die u gebruikt voor het uitvoeren van UI-updates) plaatsvinden op de hoofdthread. In de code die wij schrijven, krijgen we echter callbacks op andere threads. We willen de gebruikersinterface bijwerken in deze callbacks, dus hebben we een manier nodig om van een zijthread naar de hoofdthread te gaan. Om code vanuit een zijthread uit te voeren op de hoofdthread gebruiken we het dispatcherpatroon.
 
-We gaan een lidvariabele toevoegen, namelijk dispatchQueue. Dit is een wachtrij met acties. We gaan acties naar de wachtrij pushen en de acties in de hoofdthread vervolgens uit de wachtrij verwijderen en uitvoeren.
+We gaan een lidvariabele toevoegen, namelijk `dispatchQueue`. Dit is een wachtrij met acties. We gaan acties naar de wachtrij pushen en de acties in de hoofdthread vervolgens uit de wachtrij verwijderen en uitvoeren.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-56&highlight=6-9)]
 
@@ -135,27 +134,39 @@ Vervolgens voegen we een manier toe om een actie aan de wachtrij toe te voegen. 
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=112-122)]
 
-We gebruiken nu de Update()-lus om te controleren of er een actie in de wachtrij is geplaatst. Als dit het geval is, wordt de actie uit de wachtrij verwijderd en uitgevoerd.
+We kunnen nu de Update()-lus gebruiken om te controleren of er een actie in de wachtrij is geplaatst. Als dit het geval is, wordt de actie uit de wachtrij verwijderd en uitgevoerd.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=100-110&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>De Azure Spatial Anchors SDK ophalen
 
-## <a name="via-unity-package"></a>[Via Unity-pakket](#tab/UnityPackage)
+## <a name="via-unity-package-manager-upm-package"></a>[Via het UPM-pakket (Unity Package Manager)](#tab/UPMPackage)
 
-We downloaden nu de Azure Spatial Anchors SDK. Ga naar de pagina met [GitHub-releases van Azure Spatial Anchors](https://github.com/Azure/azure-spatial-anchors-samples/releases). Download onder Assets **AzureSpatialAnchors.unitypackage**. Ga in Unity naar **Assets**en klik op **Import Package** > **Custom Package...** . Navigeer naar het pakket en selecteer **Open**.
+Deze methode is compatibel met Unity versie 2019.1+.
 
-Schakel in het nieuwe venster **Import Unity Package** dat wordt weergegeven de optie **Plugins** uit en klik vervolgens op **Import** in de rechterbenedenhoek.
+### <a name="add-the-registry-to-your-unity-project"></a>Het register toevoegen aan uw Unity-project
 
-We moeten nu Nuget-pakketten herstellen om Azure Spatial Anchors SDK op te halen. Bouw vanuit **Unity** en open en bouw de resulterende **Visual Studio**-oplossing opnieuw, zoals wordt beschreven in [Het uitproberen](#trying-it-out).
+1. Ga in een verkenner naar de map `Packages` van uw Unity-project. Open in een teksteditor manifestbestand `manifest.json` van het project.
+2. Voeg boven aan het bestand, op hetzelfde niveau als de sectie `dependencies`, de volgende vermelding toe om het register van Azure Spatial Anchors in uw project op te nemen. De vermelding `scopedRegistries` geeft voor Unity aan waar de Azure Spatial Anchors-SDK-pakketten zijn te vinden.
 
-## <a name="via-nugetforunity"></a>[Via NuGetForUnity](#tab/NuGetForUnity)
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
 
-We moeten eerst NuGetForUnity installeren. Ga naar de pagina met [GitHub-releases van NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity/releases). Download onder Assets het meest recente **NuGetForUnity.unitypackage**. Ga in Unity naar **Assets**en klik op **Import Package** > **Custom Package...** . Navigeer naar het pakket en selecteer **Open**. Unity installeert nu NugetForUnity. Als u geen nieuw **NuGet**-vervolgkeuzelijst in Unity ziet, moet u mogelijk met de rechtermuisknop klikken onder **Projects** > **Assets**. Selecteer vervolgens **Reimport All**.
+### <a name="add-the-sdk-package-to-your-unity-project"></a>Het SDK-pakket toevoegen aan uw Unity-project
 
-Nadat u NuGetForUnity hebt geïnstalleerd, selecteert u **NuGet** > **Manage NuGet Packages**. Zoek vervolgens naar Microsoft.Azure.SpatialAnchors.Unity en selecteer **Install**.
+1. Voeg een vermelding met de naam van het Azure Spatial Anchors Windows-SDK-pakket(`com.microsoft.azure.spatial-anchors-sdk.windows`) en de versie van het pakket toe aan de sectie `dependencies` in uw projectmanifest. Hieronder vindt u een voorbeeld.
 
-We moeten nu bouwen om de daadwerkelijke Azure Spatial Anchors SDK te verkrijgen, omdat het NuGet-pakket dat we zojuist hebben gedownload, alleen helperscripts bevat. Bouw vanuit **Unity** en open en bouw de resulterende **Visual Studio**-oplossing opnieuw, zoals wordt beschreven in [Het uitproberen](#trying-it-out).
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
+
+2. Sla het bestand `manifest.json` op en sluit het vervolgens. Wanneer u terugkeert naar Unity, zou Unity de wijziging in het projectmanifest automatisch moeten detecteren en de opgegeven pakketten ophalen. U kunt de map `Packages` in uw projectweergave uitvouwen om te controleren of de juiste pakketten zijn geïmporteerd.
+
+## <a name="via-unity-asset-package"></a>[Via het Unity-assetpakket](#tab/UnityAssetPackage)
+
+> [!WARNING]
+> De verdeling van Unity-assetpakket voor de Azure Spatial Anchors-SDK wordt afgeschaft na SDK-versie 2.5.0.
+
+Laten nu de Azure Spatial Anchors-SDK gaan downloaden. Ga naar de pagina met [GitHub-releases van Azure Spatial Anchors](https://github.com/Azure/azure-spatial-anchors-samples/releases). Download **AzureSpatialAnchors.unitypackage** onder **Assets**. Ga in Unity naar **Assets** selecteer **Import Package** > **Custom Package...** . Navigeer naar het pakket en selecteer **Open**.
+
+Schakel in het nieuwe venster **Import Unity Package** dat wordt weergegeven de optie **Plugins** uit en selecteer vervolgens **Import** in de rechterbenedenhoek.
 
 ---
 
@@ -185,7 +196,7 @@ Voeg tot slot de volgende code toe aan uw `CreateAndSaveSphere()`-methode. Hierm
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-344,396&highlight=14-25)]
 
-Voordat u verder gaat, moet u een Azure Spatial Anchors-account maken om het account-id, de sleutel en het domein te krijgen, als u deze nog niet hebt. Zie de volgende sectie om deze te verkrijgen.
+Voordat u verder gaat, moet u een Azure Spatial Anchors-account maken om de account-id, -sleutel en het accountdomein te verkrijgen. Als u deze waarden nog niet hebt, volgt u de volgende sectie om ze te verkrijgen.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -193,11 +204,11 @@ Voordat u verder gaat, moet u een Azure Spatial Anchors-account maken om het acc
 
 Wanneer u een account-id, sleutel en domein hebt voor uw Azure Spatial Anchors-account, plakt u de `Account Id` in `SpatialAnchorsAccountId`, de `Account Key` in `SpatialAnchorsAccountKey` en de `Account Domain` in `SpatialAnchorsAccountDomain`.
 
-Ten slotte gaan we alles aan elkaar koppelen. Voeg de volgende code toe aan de methode `SpawnNewAnchoredObject()`. Hiermee wordt de `CreateAnchorAsync()`-methode aangeroepen zodra uw bol is gemaakt. Zodra de methode is geretourneerd, voert de onderstaande code een laatste update uit op uw bol, waardoor de kleur wordt gewijzigd in blauw.
+Ten slotte gaan we alles aan elkaar koppelen. Voeg de volgende code toe aan de methode `SpawnNewAnchoredObject()`. Hiermee wordt de `CreateAnchorAsync()`-methode aangeroepen zodra uw bol is gemaakt. Zodra de methode is geretourneerd, wordt met de onderstaande code nog eenmaal uw bol bijgewerkt, waardoor de kleur wordt gewijzigd in blauw.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt eventueel ook het uitvoervenster in **Visual Studio** gebruiken om de logboekberichten te controleren die uw app verzendt. U kunt de aanbevolen voortgang van het maken bekijken, evenals de anker-id die de cloud retourneert zodra de upload is voltooid.
+Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt eventueel ook het uitvoervenster in **Visual Studio** gebruiken om de logboekberichten te controleren die uw app verzendt. U kunt `RecommendedForCreateProgress` bekijken en zodra het uploaden is voltooid, kunt u de anker-id zien die door de cloud is geretourneerd.
 
 > [!NOTE]
 > Als u de melding 'DllNotFoundException: Kan DLL 'AzureSpatialAnchors' niet laden: De opgegeven module is niet gevonden." ontvangt, moet u uw oplossing opnieuw **Opschonen** en **Bouwen**.
@@ -225,6 +236,6 @@ We voegen nu code toe waarmee een groene bol wordt gemaakt en geplaatst wanneer 
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
-Dat is alles. Voer uw app een laatste keer uit vanuit **Visual Studio** om het hele scenario van begin tot eind uit te proberen. Verplaats uw apparaat en plaats uw witte bol. Beweeg vervolgens uw hoofd om omgevingsgegevens vast te leggen totdat de bol geel wordt. Uw lokale anker wordt geüpload en uw bol wordt blauw. Tik ten slotte nog één keer op uw scherm, zodat uw lokale anker wordt verwijderd en zoek vervolgens naar het equivalent in de cloud. Blijf doorgaan met het verplaatsen van uw apparaat totdat het ruimtelijke anker in de cloud is gevonden. Er wordt een groene bol op de juiste locatie weergegeven en u kunt het hele scenario weer herhalen.
+Dat is alles. Voer uw app een laatste keer uit vanuit **Visual Studio** om het hele scenario van begin tot eind uit te proberen. Verplaats uw apparaat en plaats uw witte bol. Beweeg vervolgens uw hoofd om omgevingsgegevens vast te leggen totdat de bol geel wordt. Uw lokale anker wordt geüpload en uw bol wordt blauw. Tik ten slotte nog één keer op uw scherm, om uw lokale anker te verwijderen en start een query om het equivalent ervan in de cloud op te halen. Blijf doorgaan met het verplaatsen van uw apparaat totdat het ruimtelijke anker in de cloud is gevonden. Er wordt een groene bol op de juiste locatie weergegeven en u kunt het hele scenario herhalen.
 
 [!INCLUDE [AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md)]

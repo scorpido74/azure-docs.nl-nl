@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783294"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460811"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -68,7 +68,7 @@ In het verleden werd bevoegde toegang door andere leveranciers als een aparte mo
 
 ![Levenscyclus voor bevoegde toegang](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) biedt aanvullende beheeropties die zijn afgestemd op het beveiligen van de toegangsrechten voor resources, in Azure AD, Azure en andere online services van Microsoft.  De JIT-toegang (Just-In-Time) en waarschuwingsfuncties die naast meervoudige verificatie en voorwaardelijke toegang voor het wijzigen van rollen worden geboden door Azure AD PIM, bieden een uitgebreide verzameling beheeropties waarmee u de resources van uw bedrijf (AD Directory-, Office 365- en Azure-resourcerollen) kunt beveiligen. Net als bij andere vormen van toegang kunnen organisaties gebruikmaken van toegangsbeoordelingen om het opnieuw certificeren van herhaaldelijke toegang te configureren voor alle gebruikers in beheerdersrollen.
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) biedt aanvullende beheeropties die zijn afgestemd op het beveiligen van de toegangsrechten voor resources, in Azure AD, Azure en andere online services van Microsoft.  De JIT-toegang (Just-In-Time) en waarschuwingsfuncties die naast meervoudige verificatie en voorwaardelijke toegang voor het wijzigen van rollen worden geboden door Azure AD PIM, bieden een uitgebreide verzameling beheeropties waarmee u de resources van uw bedrijf (AD Directory-, Microsoft 365- en Azure-resourcerollen) kunt beveiligen. Net als bij andere vormen van toegang kunnen organisaties gebruikmaken van toegangsbeoordelingen om het opnieuw certificeren van herhaaldelijke toegang te configureren voor alle gebruikers in beheerdersrollen.
 
 ## <a name="getting-started"></a>Aan de slag
 

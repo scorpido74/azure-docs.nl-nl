@@ -3,12 +3,12 @@ title: Zelfstudie voor continue video-opname in de cloud en afspelen vanuit de c
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics kunt gebruiken op Azure IoT Edge om continu video in de cloud op te nemen en een deel van die video te streamen met behulp van Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043477"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566790"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Continue video-opname in de cloud en afspelen vanuit de cloud
 
@@ -61,7 +61,8 @@ Zoals uitgelegd in het artikel [mediagrafiek-concept](media-graph-concept.md), k
  
  Als u CVR wilt uitvoeren, moet u de video van een RTSP-compatibele camera vastleggen en deze continu opnemen in een [Azure Media Services-asset](terminology.md#asset). In het diagram ziet u een grafische weergave van die mediagrafiek.
 
-![Mediagrafiek](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Mediagrafiek":::
 
 In deze zelfstudie gebruikt u één Edge-module die is gebouwd met de [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) om een RTSP-camera te simuleren. In de mediagrafiek gebruikt u een [RTSP-bron](media-graph-concept.md#rtsp-source)-knooppunt om de live-feed op te halen en verzendt u deze video naar het knooppunt [Asset Sink](media-graph-concept.md#asset-sink), waarmee de video wordt opgenomen in een asset.
 
@@ -352,7 +353,7 @@ U kunt de Media Services-assset die door de mediagrafiek is gemaakt, controleren
 1. Zoek uw Media Services-account op tussen de resources die u in uw abonnement hebt en open het deelvenster Account.
 1. Selecteer **Assets** in de lijst **Media Services**.
 
-    ![Assets](./media/continuous-video-recording-tutorial/assets.png)
+    ![Media Services-assets](./media/continuous-video-recording-tutorial/assets.png)
 1. U vindt een asset in de lijst met de naam sampleAsset-CVRToAMSAsset-sample-Graph-1. Dit is het naamgevingspatroon dat u hebt gekozen in het graaf-topologiebestand.
 1. Selecteer de asset.
 1. Klik op de pagina met assetdetails op **Nieuwe maken** onder het tekstvak **Streaming-URL**.

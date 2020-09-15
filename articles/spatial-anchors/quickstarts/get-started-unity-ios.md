@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 08/14/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1fbd7138c393809b279d780004ff476cea4735fe
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4d5ec2411b7b1a65da9a1f4262822cb85a3b386e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810323"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536251"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Quickstart: Een Unity iOS-app maken met Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>, de nieuwste versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> geïnstalleerd.
+- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>, de nieuwste versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> geïnstalleerd.
 - Git geïnstalleerd via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git` en `brew install git-lfs` uit.
 - Een door een ontwikkelaar geactiveerd en <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">met ARKit compatibel</a> iOS-apparaat.
 
@@ -65,16 +65,6 @@ Als u klaar bent, stopt u de app door in Xcode op **Stop** te klikken.
 ### <a name="rendering-issues"></a>Problemen met de weergave
 
 Als u bij het uitvoeren van de app de camera niet als achtergrond ziet (u ziet bijvoorbeeld lege, blauwe of andere structuren) dan moet u waarschijnlijk assets opnieuw in Unity importeren. De app stoppen. Kies in het bovenste menu in Unity **Assets -> Alles opnieuw importeren**. Voer de vervolgens opnieuw app uit.
-
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods-problemen op macOS Catalina (10.15)
-
-Als u onlangs een update hebt uitgevoerd naar macOS Catalina (10.15) en CocoaPods al eerder hebt geïnstalleerd, kan het zijn dat CocoaPods een defecte status heeft en uw pods en `.xcworkspace`-projectbestanden niet goed kan configureren. U kunt dit probleem oplossen door CocoaPods opnieuw te installeren met behulp van de volgende opdrachten:
-
-```shell
-brew update
-brew install cocoapods --build-from-source
-brew link --overwrite cocoapods
-```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

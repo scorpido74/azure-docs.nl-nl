@@ -1,6 +1,6 @@
 ---
 title: Gegevens bulksgewijs kopiëren met de Azure-portal
-description: Informatie over het gebruik van Azure Data Factory en Activiteit kopiëren om gegevens bulksgewijs van een brongegevensopslag naar een doelgegevensopslag te kopiëren.
+description: Gebruik Azure Data Factory en Activiteit kopiëren om gegevens bulksgewijs van een brongegevensopslag naar een doelgegevensopslag te kopiëren.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081635"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442851"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory in de Azure-portal
 
@@ -45,7 +45,7 @@ In dit scenario gebruikt u een aantal tabellen in Azure SQL Database die u gaat 
 ![Werkstroom](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * De eerste pijplijn zoekt de lijst op met tabellen die moeten worden gekopieerd naar de sinkgegevensopslag.  U kunt ook een metagegevenstabel bijhouden waarin alle tabellen worden vermeld die moeten worden gekopieerd naar de sinkgegevensopslag. De pijplijn activeert vervolgens een andere pijplijn, die elke tabel in de database langsloopt en de bewerking uitvoert waarmee de gegevens worden gekopieerd.
-* De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in Azure Synapse Analytics (voorheen SQL DW) met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) (Engelstalig artikel) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
+* De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in Azure Synapse Analytics (voorheen SQL DW) met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) (Engelstalig artikel) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -62,7 +62,7 @@ Maak een database in SQL Database met Adventure Works LT-testgegevens door het a
 
 **Bereid de sink voor Azure Synapse Analytics (voorheen SQL DW) voor**:
 
-1. Als u geen Azure Synapse Analytics (voorheen SQL DW) hebt, raadpleegt u het artikel [Een Azure SQL Data Warehouse maken](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) voor de stappen om er een te maken.
+1. Als u geen Azure Synapse Analytics-werkruimte (voorheen SQL DW) hebt, raadpleegt u het artikel [Aan de slag met Azure Synapse Analytics](..\synapse-analytics\get-started.md) voor de stappen om er een te maken.
 
 1. Maak corresponderende tabelschema's in Azure Synapse Analytics (voorheen SQL DW). U gebruikt Azure Data Factory om gegevens in een latere stap te migreren/kopiëren.
 

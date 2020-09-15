@@ -2,14 +2,14 @@
 title: Live video analyseren met OpenVINO™ Model Server – AI Extension van Intel
 description: In deze zelfstudie gebruikt u een AI-modelserver van Intel om de live videofeed van een (gesimuleerde) IP-camera te analyseren.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950252"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567573"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Zelfstudie: Live video analyseren met OpenVINO™ Model Server – AI Extension van Intel 
 
@@ -30,6 +30,7 @@ In deze zelfstudie wordt gebruikgemaakt van een Azure-VM als een IoT Edge-appara
 > Tijdens de installatie van de Azure IoT Tools wordt u mogelijk gevraagd om Docker te installeren. U kunt de vraag negeren.
 
 ## <a name="review-the-sample-video"></a>De voorbeeldvideo bekijken
+
 Bij het instellen van de Azure-resources wordt een korte video van een parkeerplaats gekopieerd naar de virtuele Linux-machine in Azure die u als IoT Edge-apparaat gebruikt. In deze quickstart wordt het videobestand gebruikt voor het simuleren van een livestream.
 
 Open een toepassing als [VLC Media Player](https://www.videolan.org/vlc/). Selecteer CTRL + N en plak vervolgens een link naar [de video](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) om het afspelen te starten. U ziet de beelden van de voertuigen op een parkeerplaats. Het merendeel staat geparkeerd en één voertuig beweegt.
@@ -38,7 +39,8 @@ In deze quickstart gebruikt u Live Video Analytics op IoT Edge en de OpenVINO™
 
 ## <a name="overview"></a>Overzicht
 
-![Overzicht](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Overzicht":::
 
 Dit diagram laat zien hoe de signalen in deze quickstart stromen. Een [Edge-module](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuleert een IP-camera die als host fungeert voor een RTSP-server (Real-Time Streaming Protocol). Een [RTSP-bron](media-graph-concept.md#rtsp-source)-knooppunt haalt de videofeed van deze server, en verstuurt videoframes naar het [framefilterprocessor](media-graph-concept.md#frame-rate-filter-processor)-knooppunt. Deze processor beperkt de framesnelheid van de videostream die het knooppunt [HTTP-extensieprocessor](media-graph-concept.md#http-extension-processor) bereikt. 
 
@@ -46,7 +48,7 @@ Het knooppunt HTTP-extensie speelt de rol van een proxy. Het converteert videofr
 
 In deze zelfstudie leert u het volgende:
 
-1. De mediagrafiek maken en implementeren, waardoor deze wordt gewijzigd 
+1. De mediagrafiek maken en implementeren, waardoor deze wordt gewijzigd.
 1. De resultaten interpreteren.
 1. Resources opschonen.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Een data factory in Azure maken met behulp van Python'
-description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
+description: Gebruik een data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873293"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439109"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Quickstart: Een data factory en pijplijn maken met behulp van Python
 
@@ -32,7 +32,7 @@ In deze quickstart maakt u een data factory met Python. Met de pijplijn in deze 
 
 Azure Data Factory is een cloudservice voor gegevensintegratie waarmee u werkstromen op basis van gegevens kunt maken voor het organiseren en automatiseren van gegevensverplaatsing en -transformatie. U kunt met Azure Data Factory werkstromen op basis van gegevens, pijplijnen genaamd, maken en plannen.
 
-Pijplijnen kunnen gegevens uit verschillende gegevensopslagplaatsen opnemen. Pijplijnen verwerken of transformeren gegevens met behulp van computingservices als Azure HDInsight Hadoop, Apache Spark, Azure Data Lake Analytics en Azure Machine Learning. Pijplijnen publiceren uitvoergegevens naar gegevensopslagplaatsen zoals Azure SQL Data Warehouse voor BI-apps (business intelligence).
+Pijplijnen kunnen gegevens uit verschillende gegevensopslagplaatsen opnemen. Pijplijnen verwerken of transformeren gegevens met behulp van computingservices als Azure HDInsight Hadoop, Apache Spark, Azure Data Lake Analytics en Azure Machine Learning. Pijplijnen publiceren uitvoergegevens naar gegevensopslagplaatsen zoals Azure Synapse Analytics (voorheen SQL Data Warehouse) voor BI-apps (business intelligence).
 
 ## <a name="prerequisites"></a>Vereisten
 

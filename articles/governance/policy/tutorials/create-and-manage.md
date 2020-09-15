@@ -3,12 +3,12 @@ title: 'Zelfstudie: Beleidsregels voor het afdwingen van naleving bouwen'
 description: In deze zelfstudie gebruikt u beleidsregels voor het afdwingen van standaarden, het beheren van kosten, het onderhouden van de beveiliging en het afdwingen van ontwerpprincipes op ondernemingsniveau.
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781124"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650091"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren
 
@@ -32,15 +32,15 @@ De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het t
 
 1. Ga naar Azure Portal om beleid toe te wijzen. Zoek en selecteer **Beleid**.
 
-   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="Beleid zoeken in de zoekbalk" border="false":::
+   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="Schermopname van het zoeken naar Beleid in de zoekbalk." border="false":::
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Toewijzingen selecteren op de pagina Overzicht van beleid" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Schermopname van het selecteren van het knooppunt Toewijzingen op de pagina Overzicht van het beleid." border="false":::
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Een beleidsdefinitie toewijzen op de pagina Toewijzingen" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Schermopname van het selecteren van de knop Beleid toewijzen op de pagina Toewijzingen." border="false":::
 
 1. Selecteer op het tabblad **Basisbeginselen** op de pagina **Beleid toewijzen** het **Bereik** door te klikken op het beletselteken en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen.
    Selecteer vervolgens **Selecteren** onderaan de pagina **Bereik**.
@@ -54,7 +54,7 @@ De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het t
 1. Selecteer **Een tag overnemen van de resourcegroep indien deze ontbreekt**. Als u deze optie niet meteen kunt vinden, kunt u **een tag overnemen** in het zoekvak typen en op Enter drukken of buiten het zoekvak klikken.
    Selecteer **Selecteren** onderaan de pagina **Beschikbare definities** zodra u de beleidsdefinitie hebt gevonden en geselecteerd.
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Zoekfilter gebruiken om een beleid te zoeken":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Schermopname van het zoekfilter tijdens het selecteren van een beleidsdefinitie.":::
 
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. Laat voor dit voorbeeld _Een tag overnemen van de resourcegroep indien deze ontbreekt_ ongewijzigd. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
 
@@ -82,7 +82,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="De definitiepagina onder Ontwerpgroep" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Schermopname van de pagina Definities onder de groep Ontwerpen." border="false":::
 
 1. Selecteer **+ Beleidsdefinitie** bovenaan de pagina. Met deze knop opent u de pagina **Beleidsdefinitie**.
 
@@ -342,11 +342,11 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Definitie selecteren op de pagina Definities" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Schermopname van de pagina Definities onder de groep Ontwerpen." border="false":::
 
 1. Selecteer **+ Initiatiefdefinitie** bovenaan de pagina. U gaat dan naar de pagina **Initiatiefdefinitie**.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Parameters van de initiatiefdefinitie controleren" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Schermopname van de pagina Initiatiefdefinitie en eigenschappen die moeten worden ingesteld." border="false":::
 
 1. Gebruik **Definitielocatie** om een beheergroep of abonnement voor het opslaan van de definitie te selecteren. Als de vorige pagina is gericht op een enkele beheergroep of enkel abonnement, wordt **Definitielocatie** automatisch ingevuld. Als deze is geselecteerd, worden **Beschikbare definities** ingevuld.
 
@@ -366,11 +366,11 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
    Na het selecteren van de beleidsdefinitie uit de lijst, wordt deze toegevoegd onder **Categorie**.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Parameters van de initiatiefdefinitie controleren" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Schermopname van de parameters en waardedefinities op de pagina Initiatiefdefinitie." border="false":::
 
 1. Als een beleidsdefinitie die aan het initiatief wordt toegevoegd, parameters heeft, worden deze weergegeven onder de beleidsnaam in het gebied **Categorie**. U kunt de _waarde_ instellen op Waarde instellen (in code vastgelegd voor alle toewijzingen van dit initiatief) of Initiatiefparameter gebruiken (wordt ingesteld bij elke toewijzing van een initiatief). Als Waarde instellen is geselecteerd, kunt u met het vervolgkeuzemenu rechts van _Waarde(n)_ de waarde(n) invoeren of selecteren. Als Initiatiefparameter gebruiken is geselecteerd, wordt een nieuwe sectie **Initiatiefparameters** weergegeven waarin u de parameter kunt definiëren die wordt ingesteld tijdens de initiatieftoewijzing. Via de toegestane waarden voor deze initiatiefparameter kunt u verder beperken wat er mag worden ingesteld tijdens de initiatieftoewijzing.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Parameters voor de initiatiefdefinitie wijzigen van toegestane waarden" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Schermopname van de opties voor toegestane waarden voor een effectparameter op de pagina Initiatiefdefinitie." border="false":::
 
    > [!NOTE]
    > Voor sommige `strongType`-parameters kan de lijst met waarden niet automatisch worden bepaald. In deze gevallen wordt een beletselteken rechts van de parameterrij weergegeven. Als u deze optie selecteert, wordt de pagina Parameterbereik (&lt;parameternaam&gt;) geopend. Op deze pagina selecteert u het abonnement dat u wilt gebruiken om de waardeopties op te geven. Dit parameterbereik wordt alleen gebruikt tijdens het maken van de initiatiefdefinitie en heeft geen invloed op de evaluatie van het beleid of het bereik van het initiatief na het toewijzen.
@@ -426,11 +426,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Zoek de initiatiefdefinitie **Veilig worden** die u eerder hebt gemaakt en selecteer deze. Selecteer **Toewijzen** bovenaan de pagina om de pagina **Beveiligen: Initiatief toewijzen** te openen.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Een definitie toewijzen op de pagina Initiatiefdefinitie" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Schermopname van de knop Toewijzen op de pagina Initiatiefdefinitie." border="false":::
 
    U kunt ook met de rechtermuisknop op de geselecteerde rij klikken of het beletselteken aan het einde van de rij selecteren voor een contextmenu. Selecteer daarna **Toewijzen**.
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Alternatieve opties voor een initiatief" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Schermopname van het contextmenu voor een initiatief om de toewijsfunctionaliteit te selecteren." border="false":::
 
 1. Vul de pagina **Beveiligen: Initiatief toewijzen** in door de volgende voorbeeldinformatie in te voeren. U kunt uw eigen gegevens gebruiken.
 
@@ -457,11 +457,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. Zoek het initiatief **Veilig verkrijgen**. De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
    Selecteer het initiatief voor volledige informatie over de voortgang van de toewijzing.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Pagina Initiatiefnaleving - Evaluaties niet gestart" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Schermopname van de nalevingspagina van het initiatief, waarin de toewijzingsevaluaties worden weergegeven met de status Niet gestart." border="false":::
 
 1. Wanneer de initiatieftoewijzing is voltooid, wordt de pagina voor naleving bijgewerkt met de _Nalevingsstatus_**Compatibel**.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Pagina Initiatiefnaleving - Resources compatibel" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Schermopname van de nalevingspagina van het initiatief, waarin de toewijzingsevaluaties als voltooid worden weergegeven met de status Compatibel." border="false":::
 
 1. Als u een beleid op de pagina voor initiatiefnaleving selecteert, wordt de pagina met nalevingsdetails voor dat beleid geopend. Op deze pagina staan de nalevingsdetails op resourceniveau.
 
@@ -471,11 +471,11 @@ Na het toewijzen van een beleidsinitiatief om een specifieke locatie te vereisen
 
 Implementaties die worden voorkomen door een toegewezen beleid of initiatief, kunnen worden weergegeven op de resourcegroep waarop de implementatie is gericht: Selecteer **Implementaties** aan de linkerkant van de pagina en selecteer de **implementatienaam** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Om het beleid of het initiatief en de toewijzing te bepalen die de resource heeft geweigerd, selecteert u **Mislukt. Klik hier voor meer informatie ->** op de overzichtspagina van de implementatie. Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Implementatie geweigerd door beleidstoewijzing" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Schermopname van een mislukte implementatie die is geweigerd door een beleidstoewijzing." border="false":::
 
 Op de Azure Policy-pagina: Selecteer **Naleving** aan de linkerkant van de pagina en selecteer het beleidsinitiatief **Veilig ophalen**. Op deze pagina ziet u een toename van het aantal **weigeringen** voor geblokkeerde resources. Op het tabblad **Gebeurtenissen** vindt u informatie over wie heeft geprobeerd de resource te maken of te implementeren die door de beleidsdefinitie is geweigerd.
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Overzicht van de naleving van een toegewezen beleid" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Schermopname van het tabblad Gebeurtenissen en details van de beleidsgebeurtenis op de nalevingspagina van het initiatief." border="false":::
 
 In dit voorbeeld deed een van de senior virtualisatie-experts van Contoso vereist werk. We moeten aan Trent een ruimte toekennen voor een uitzondering. Maak een nieuwe resourcegroep, **LocationsExcluded**, en ken hieraan vervolgens een uitzondering op deze beleidstoewijzing toe.
 
@@ -487,7 +487,7 @@ In dit voorbeeld deed een van de senior virtualisatie-experts van Contoso vereis
 
 1. Stel de **Uitsluiting** in door het beletselteken te selecteren en de resourcegroep te selecteren die u wilt uitsluiten (in dit voorbeeld _LocationsExcluded_). Selecteer **Toevoegen aan geselecteerde bereik** en selecteer **Opslaan**.
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Een uitgesloten resourcegroep toevoegen aan de beleidstoewijzing" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Schermopname van de optie Uitsluitingen op de pagina Initiatieftoewijzing waarmee een uitgesloten resourcegroep kan worden toegevoegd aan de beleidstoewijzing." border="false":::
 
    > [!NOTE]
    > Afhankelijk van de beleidsdefinitie en de invloed ervan, kan de uitsluiting ook worden toegekend aan specifieke resources binnen een resourcegroep binnen het bereik van de toewijzing. Als een **Weigeren**-effect is gebruikt in deze zelfstudie, zou het niet verstandig zijn om de uitsluiting in te stellen op een specifieke resource die al bestaat.

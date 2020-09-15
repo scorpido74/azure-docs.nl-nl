@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: Beleidsdefinities groeperen met initiatieven'
-description: Dit Azure Policy-patroon laat zien hoe u beleidsdefinities kunt groeperen in een initiatief
+description: Dit Azure Policy-patroon laat zien hoe u beleidsdefinities kunt groeperen in een initiatief.
 ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 065e7632d76feccdd6d2d5a411ba7cdf50aeaf68
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: fc79775b79c9846ee435917731428627fc65549e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565692"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649959"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy-patroon: beleidsdefinities groeperen
 

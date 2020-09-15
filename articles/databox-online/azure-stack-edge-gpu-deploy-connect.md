@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262716"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421353"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Zelfstudie: Verbinding maken met Azure Stack Edge met GPU
 
@@ -41,11 +41,11 @@ Zorg dat aan deze voorwaarden wordt voldaan voordat u uw Azure Stack Edge-appara
 
 1. Configureer de Ethernet-adapter op de computer die u wilt verbinden met het Azure Stack Edge-apparaat met het statische IP-adres 192.168.100.5 en het subnet 255.255.255.0.
 
-2. Verbind de computer met poort 1 op het apparaat. Gebruik de volgende afbeelding om poort 1 op uw apparaat te vinden.
+2. Verbind de computer met poort 1 op het apparaat. Als u de computer rechtstreeks op het apparaat wilt aansluiten (zonder een switch), gebruikt u een crossover-kabel of een USB-ethernetadapter. Gebruik de volgende afbeelding om poort 1 op uw apparaat te vinden.
 
     ![Achterpaneel van een bekabeld apparaat](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    Het achterpaneel van het apparaat kan er iets anders uitzien, afhankelijk van welk model u hebt ontvangen.
+    Het achterpaneel van het apparaat kan er iets anders uitzien, afhankelijk van welk model u hebt ontvangen. Zie [Uw apparaat bekabelen](azure-stack-edge-gpu-deploy-install.md#cable-the-device) voor meer informatie.
 
 
 3. Open een browservenster en krijg toegang tot de lokale gebruikersinterface van het apparaat op `https://192.168.100.10`.  

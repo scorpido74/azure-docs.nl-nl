@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf56786656d830d2fea4c9e916f350fc392f5cf0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 583b7e685abfeb831787ca8d4066a29bdd9bb9f3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380247"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489324"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Security-benchmark
 
@@ -33,4 +33,21 @@ Zie [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/bench
 |Domain |Id van besturingselement |Titel van besturingselement |Beleid<br /><sub>(Azure-portal)</sub> |Beleidsversie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |Databaseservices |4.11 |Controleren of ‘SSL-verbinding afdwingen’ is ingesteld op "INGESCHAKELD" voor MySQL-databaseserver |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
+
+Raadpleeg [Naleving van Azure Policy-regelgeving - HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md) om te zien hoe de beschikbare ingebouwde modules voor Azure Policy voor alle Azure-services zijn toegewezen aan deze nalevingsstandaard.
+Zie [HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) voor meer informatie over deze nalevingsstandaard.
+
+|Domain |Id van besturingselement |Titel van besturingselement |Beleid<br /><sub>(Azure-portal)</sub> |Beleidsversie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Beheer van de netwerkverbinding |0809.01n2Organizational.1234 - 01.n |Netwerkverkeer wordt beheerd in overeenstemming met het toegangsbeleid van de organisatie via firewall en andere netwerkbeperkingen voor elk netwerktoegangspunt, of de beheerde interface van de externe telecommunicatieservice. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Beheer van de netwerkverbinding |0810.01n2Organizational.5 - 01.n |Informatie die wordt verzonden via open openbare netwerken, wordt beveiligd en ten minste versleuteld. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Beheer van de netwerkverbinding |0811.01n2Organizational.6 - 01.n |Uitzonderingen op het beleid voor de verkeersstroom worden gedocumenteerd met een ondersteunende missie/bedrijfsbehoefte, de duur van de uitzondering en worden ten minste jaarlijks beoordeeld; uitzonderingen op het beleid voor de verkeersstroom worden verwijderd indien niet langer ondersteund door een expliciete missie/bedrijfsbehoefte. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Beheer van de netwerkverbinding |0812.01n2Organizational.8 - 01.n |Externe apparaten die een niet-externe verbinding tot stand brengen, mogen niet communiceren met externe resources. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Beheer van de netwerkverbinding |0814.01n1Organizational.12 - 01.n |De mogelijkheid van gebruikers om verbinding te maken met het interne netwerk, wordt beperkt met behulp van een beleid waarbij weigeren de regel en toestaan de uitzondering is op beheerde interfaces volgens het toegangsbeheerbeleid en de vereisten van klinische en zakelijke toepassingen. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Identificatie van risico's met betrekking tot externe partijen |1418.05i1Organizational.8 - 05.i |De identificatie van risico's met betrekking tot de toegang van externe partijen houdt rekening met een minimale hoeveelheid specifieke problemen. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Back-up |1617.09l1Organizational.23 - 09.l |Een formele definitie van het vereiste back-upniveau voor elk systeem wordt gedefinieerd en gedocumenteerd, met inbegrip van de manier waarop elk systeem wordt hersteld, het bereik van de gegevens waarvan een installatiekopie moet worden gemaakt, de frequentie van het maken van de installatiekopie en de duur van de retentie op basis van relevante contractuele, juridische, wettelijke en zakelijke vereisten. |[Geografisch redundante back-up moet zijn ingeschakeld voor Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|Back-up |1622.09l2Organizational.23 - 09.l |De integriteit en beveiliging van de back-upkopieën worden bewaard om beschikbaarheid in de toekomst te garanderen, en eventuele toegankelijkheidsproblemen met de back-ups worden geïdentificeerd en verholpen in geval van een ramp. |[Geografisch redundante back-up moet zijn ingeschakeld voor Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|Onlinetransacties |0948.09y2Organizational.3 - 09.y |Wanneer een vertrouwde instantie wordt gebruikt (bijvoorbeeld om digitale handtekeningen en/of digitale certificaten te verlenen en te onderhouden), wordt de beveiliging geïntegreerd en ingesloten in het volledige end-to-end-proces voor het beheren van certificaten en handtekeningen. |[SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
 

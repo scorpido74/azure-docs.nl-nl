@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377809"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418956"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een Form Recognizer-model trainen met behulp van het voorbeeldhulpprogramma voor labelen
 
@@ -225,7 +225,9 @@ De volgende waardetypen en variaties worden momenteel ondersteund:
 > [!NOTE]
 > Zie de volgende regels voor de datumnotatie:
 > 
-> De volgende tekens kunnen worden gebruikt als datumscheidingstekens (dmj): `, - / . \`. Witruimte kan niet als scheidingsteken worden gebruikt. Bijvoorbeeld:
+> U moet een indeling (`dmy`, `mdy`, `ymd`) opgeven voor de datumnotatie.
+>
+> De volgende tekens kunnen worden gebruikt als datumscheidingstekens: `, - / . \`. Witruimte kan niet als scheidingsteken worden gebruikt. Bijvoorbeeld:
 > * 01.01.2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ De volgende waardetypen en variaties worden momenteel ondersteund:
 > * 1-1-2020
 > * 1-01-20
 >
-> Als een dmj-datumtekenreeks acht cijfers bevat, is het scheidingsteken optioneel:
+> Als een datumtekenreeks acht cijfers bevat, is het scheidingsteken optioneel:
 > * 01012020
 > * 01 01 2020
 >
-> De maand kan ook worden geschreven met de volledige of afgekorte naam. Als de naam wordt gebruikt, zijn de scheidingstekens optioneel:
+> De maand kan ook worden geschreven met de volledige of afgekorte naam. Als de naam wordt gebruikt, zijn de scheidingstekens optioneel. Deze indeling kan echter minder nauwkeurig worden herkend dan andere.
 > * 01/jan/2020
 > * 01jan2020
 > * 01 jan 2020
@@ -265,7 +267,7 @@ Nadat de training is voltooid, bekijkt u de waarde **Gemiddelde nauwkeurigheid**
 
 Deze functie is momenteel beschikbaar in de preview van v2.1. 
 
-# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1) 
+# <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1) 
 
 Met Model samenstellen kunt u maximaal 100 modellen met één model-id samenstellen. Wanneer u Analyseren aanroept met deze samengestelde model-id, zal Form Recognizer het formulier dat u hebt ingediend eerst classificeren door het aan het best overeenkomende model te koppelen, en vervolgens resultaten voor dat model retourneren. Dit is handig wanneer binnenkomende formulieren mogelijk tot één van meerdere sjablonen behoren.
 

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205115"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441302"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integratie van broncodebeheer voor SQL-pool
 
@@ -29,31 +29,39 @@ In deze zelfstudie leert u hoe u uw SQL Server Data Tools (SSDT)-databaseproject
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Instellen van en verbinding maken met Azure DevOps
 
-1. Maak in uw Azure DevOps-organisatie een project voor het hosten van uw SSDT-databaseproject via een Azure-opslagplaats
+1. Maak in uw Azure DevOps-organisatie een project voor het hosten van uw SSDT-databaseproject via een Azure-opslagplaats.
 
    ![Project maken](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Project maken")
 
-2. Open Visual Studio en selecteer Verbindingen beheren om verbinding te maken met uw Azure DevOps-organisatie en project uit stap 1
+2. Open Visual Studio en selecteer **Verbindingen beheren** om verbinding te maken met uw Azure DevOps-organisatie en project uit stap één.
 
    ![Verbindingen beheren](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verbindingen beheren")
 
-   ![Verbinding maken](./media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinding maken")
+3. Maak verbinding met uw project door **Verbindingen beheren** te selecteren en daarna **Verbinding maken met een project**.
+ ![Verbinding maken1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Verbinding maken")
 
-3. Uw Azure-opslagplaats klonen vanuit uw project naar uw lokale machine
+
+4. Zoek het project dat u hebt gemaakt in stap één en selecteer **Verbinding maken**.
+![Verbinding maken2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Verbinding maken")
+
+
+3. Uw Azure DevOps-opslagplaats klonen vanuit uw project naar uw lokale machine.
 
    ![Opslagplaats klonen](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Opslagplaats klonen")
 
+Voor meer informatie over het verbinden van projecten met Visual Studio, gaat u naar [Verbinding maken met projecten in Team Explorer](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019). Raadpleeg voor hulp bij het klonen van een opslagplaats met behulp van Visual Studio het artikel [Een afsluitende Git-opslagplaats klonen](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio). 
+
 ## <a name="create-and-connect-your-project"></a>Uw project maken en ermee verbinding maken
 
-1. Maak in Visual Studio een nieuw SQL Server-databaseproject met zowel een map als een lokale Git-opslag plaats in uw **lokaal gekloonde opslagplaats**
+1. Maak in Visual Studio een nieuw SQL Server-databaseproject met zowel een map als een lokale Git-opslag plaats in uw **lokaal gekloonde opslagplaats**.
 
    ![Nieuw project maken](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Nieuw project maken")  
 
-2. Klik met de rechtermuisknop op uw lege sqlproject en importeer uw datawarehouse in het databaseproject
+2. Klik met de rechtermuisknop op uw lege sqlproject en importeer uw datawarehouse in het databaseproject.
 
    ![Project importeren](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Project importeren")  
 
-3. Voer in Team Explorer in Visual Studio alle wijzigingen in uw lokale Git-opslagplaats door
+3. Voer in Team Explorer in Visual Studio wijzigingen in uw lokale Git-opslagplaats door.
 
    ![Doorvoeren](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Doorvoeren")  
 
@@ -65,19 +73,19 @@ In deze zelfstudie leert u hoe u uw SQL Server Data Tools (SSDT)-databaseproject
 
 ## <a name="validation"></a>Validatie
 
-1. Controleer of de wijzigingen zijn gepusht naar uw Azure -opslagplaats door een tabelkolom in uw databaseproject bij te werken vanuit Visual Studio SQL Server Data Tools (SSDT)
+1. Controleer of de wijzigingen zijn gepusht naar uw Azure -opslagplaats door een tabelkolom in uw databaseproject bij te werken vanuit Visual Studio SQL Server Data Tools (SSDT).
 
    ![Bijwerken kolom valideren](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Bijwerken kolom valideren")
 
-2. Voer de wijziging door en push die van uw lokale opslagplaats naar uw Azure-opslagplaats
+2. Voer de wijziging door en push die van uw lokale opslagplaats naar uw Azure-opslagplaats.
 
    ![Wijzigingen pushen](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Wijzigingen pushen")
 
-3. Controleer of de wijziging naar uw Azure-opslagplaats is gepusht
+3. Controleer of de wijziging naar uw Azure-opslagplaats is gepusht.
 
    ![Verifiëren](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Wijzigingen controleren")
 
-4. (**Optioneel**) Gebruik schemavergelijking en werk de wijzigingen in uw doel-datawarehouse bij met SSDT om ervoor te zorgen dat de objectdefinities in uw Azure-opslagplaats en lokale opslagplaats overeenkomen met uw datawarehouse
+4. (**Optioneel**) Gebruik schemavergelijking en werk de wijzigingen in uw doel-datawarehouse bij met SSDT om ervoor te zorgen dat de objectdefinities in uw Azure-opslagplaats en lokale opslagplaats overeenkomen met uw datawarehouse.
 
 ## <a name="next-steps"></a>Volgende stappen
 

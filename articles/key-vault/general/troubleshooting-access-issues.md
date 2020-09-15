@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400429"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595985"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Problemen met het toegangsbeleid voor Azure Key Vault oplossen
 
@@ -25,6 +25,14 @@ Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Hoe kan ik de beschikbaarheid van de kluis, servicelatentieperioden of andere metrische gegevens voor de sleutelkluis bewaken?
 
 Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen toe dat naar uw sleutelkluis wordt verzonden. Dergelijke vraag kan de latentie van uw aanvragen verhogen en er in uitzonderlijke gevallen voor zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U kunt de metrische gegevens van de prestaties van de sleutelkluis controleren en waarschuwingen ontvangen voor specifieke drempelwaarden. [Lees meer](https://docs.microsoft.com/azure/key-vault/general/alert) voor een stapsgewijze handleiding voor het configureren van bewaking.
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Ik kan het toegangsbeleid niet wijzigen, hoe kan dit worden ingeschakeld?
+De gebruiker moet voldoende AAD-machtigingen hebben om het toegangsbeleid te wijzigen. In dit geval moet de gebruiker een hogere Inzender-rol hebben.
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Ik zie de fout 'Onbekend beleid'. Wat betekent dat?
+Er zijn twee mogelijkheden waardoor u toegangsbeleid in de sectie Onbekend ziet:
+* Er is mogelijk een eerdere gebruiker geweest die toegang had en om een of andere reden niet meer bestaat.
+* Als het toegangsbeleid is toegevoegd via PowerShell en het toegangsbeleid is toegevoegd voor de object-id van de toepassing in plaats van voor de service-principal
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hoe kan ik toegangsbeheer per sleutelkluisobject toewijzen? 
 

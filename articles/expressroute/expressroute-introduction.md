@@ -2,20 +2,20 @@
 title: 'Overzicht van Azure ExpressRoute: Verbinding maken via een privéverbinding'
 description: In het technische overzicht van ExpressRoute wordt uitgelegd hoe een ExpressRoute-verbinding kan worden gebruikt om uw on-premises netwerk via een persoonlijke verbinding uit te breiden naar Azure.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
-ms.author: mialdrid
-ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.author: duau
+ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852933"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566871"
 ---
 # <a name="what-is-azure-expressroute"></a>Wat is Azure ExpressRoute?
-Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Office 365.
+Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Microsoft 365.
 
 Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding. ExpressRoute-verbindingen gaan niet via het openbare internet. Daardoor zijn ExpressRoute-verbindingen betrouwbaarder en sneller, en hebben ze consistente wachttijden en betere beveiliging dan gewone verbindingen via internet. Zie [ExpressRoute connectivity models](expressroute-connectivity-models.md) (ExpressRoute-connectiviteitsmodellen) voor meer informatie over verbinding maken tussen uw netwerk en Microsoft met behulp van ExpressRoute.
 
@@ -44,7 +44,7 @@ Elk ExpressRoute-circuit bestaat uit twee verbindingen naar twee Microsoft Enter
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Connectiviteit met Microsoft Cloud-services
 ExpressRoute-verbindingen maken toegang mogelijk tot de volgende services:
 * Microsoft Azure-services
-* Microsoft Office 365-services
+* Microsoft 365-services
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

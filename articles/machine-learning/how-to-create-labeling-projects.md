@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326435"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612173"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
@@ -78,7 +78,7 @@ Een gegevensset maken op basis van gegevens die u al hebt opgeslagen in Azure Bl
 
 1. Selecteer **Een gegevensset maken** > **Uit gegevensopslag**.
 1. Wijs een **Naam** toe aan de gegevensset.
-1. Kies **Bestand** als **Type gegevensset**.  
+1. Kies **Bestand** als **Type gegevensset**.  Alleen gegevenssets van het type Bestand worden ondersteund.
 1. Selecteer de gegevensopslag.
 1. Als uw gegevens zich in een submap bevinden binnen uw Blob-opslag, kiest u **Bladeren** om het pad te selecteren.
     * Voeg /* * toe aan het pad om alle bestanden in de submappen van het geselecteerde pad op te nemen.

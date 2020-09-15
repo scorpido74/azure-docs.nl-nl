@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399766"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648813"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Zelfstudie: Een aangepast domein aan uw Front Door toevoegen
 In deze zelfstudie ziet u hoe u een aangepast domein aan uw Front Door kunt toevoegen. Als u Azure Front Door gebruikt voor het leveren van toepassingen, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de aanvraag van uw eindgebruiker. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen.
@@ -37,11 +37,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken. Raadpleeg [Snelstartgids: Een Front Door maken](quickstart-create-front-door.md) voor meer informatie.
+* Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken. Raadpleeg [Snelstartgids: Een Front Door maken](quickstart-create-front-door.md) voor meer informatie.
 
-Als u nog geen aangepast domein hebt, moet u er eerst een aanschaffen bij een domeinprovider. Zie bijvoorbeeld [Een aangepaste domeinnaam kopen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Als u nog geen aangepast domein hebt, moet u er eerst een aanschaffen bij een domeinprovider. Zie bijvoorbeeld [Een aangepaste domeinnaam kopen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
-Als u van Azure gebruikmaakt voor het hosten van uw [DNS-domeinen](https://docs.microsoft.com/azure/dns/dns-overview), moet u het domeinnaam-systeem van de domeinprovider (DNS) naar een Azure DNS overdragen. Zie [Delegate a domain to Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) (Een domein aan Azure DNS overdragen) voor meer informatie. Als u van een domeinprovider gebruikmaakt voor het afhandelen van uw DNS-domein, gaat u verder met [Een DNS CNAME-record maken](#create-a-cname-dns-record).
+* Als u van Azure gebruikmaakt voor het hosten van uw [DNS-domeinen](https://docs.microsoft.com/azure/dns/dns-overview), moet u het domeinnaam-systeem van de domeinprovider (DNS) naar een Azure DNS overdragen. Zie [Delegate a domain to Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) (Een domein aan Azure DNS overdragen) voor meer informatie. Als u van een domeinprovider gebruikmaakt voor het afhandelen van uw DNS-domein, gaat u verder met [Een DNS CNAME-record maken](#create-a-cname-dns-record).
 
 
 ## <a name="create-a-cname-dns-record"></a>Een CNAME DNS-record maken
@@ -202,7 +202,11 @@ In de voorgaande stappen hebt u een aangepast domein toegevoegd aan een Front Do
 
 In deze zelfstudie heeft u het volgende geleerd:
 
-> [!div class="checklist"]
-> - Een CNAME DNS-record maken.
-> - Het aangepaste domein koppelen aan uw Front Door.
-> - Het aangepaste domein verifiëren.
+* Een CNAME DNS-record maken.
+* Het aangepaste domein koppelen aan uw Front Door.
+* Het aangepaste domein verifiëren.
+
+Ga door met de volgende zelfstudie als u wilt leren hoe u HTTPS kunt inschakelen voor uw aangepaste domein.
+
+> [!div class="nextstepaction"]
+> [HTTPS inschakelen voor een aangepast domein](front-door-custom-domain.md)

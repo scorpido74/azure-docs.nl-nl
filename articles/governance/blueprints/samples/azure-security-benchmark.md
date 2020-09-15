@@ -3,12 +3,12 @@ title: Overzicht van blauwdrukvoorbeeld van Azure Security-benchmark
 description: Overzicht van het blauwdrukvoorbeeld van de Azure Security-benchmark. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties bekijken.
 ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739514"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651904"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Blauwdrukvoorbeeld van Azure Security-benchmark
 
@@ -37,7 +37,7 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Op de pagina **Aan de slag** aan de linkerkant selecteert u de knop **Maken** onder _Een blauwdruk maken_.
 
-1. Zoek het blauwdrukvoorbeeld **Azure Security-benchmark** onder _Andere voorbeelden_ en klik op de naam om dit voorbeeld te selecteren.
+1. Zoek het blauwdrukvoorbeeld **Azure Security-benchmark** onder _Andere voorbeelden_ en selecteer de naam om dit voorbeeld te selecteren.
 
 1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 

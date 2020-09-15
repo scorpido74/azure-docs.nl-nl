@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: c43cac4d599753ecc3486ef7b86aa54b5697b0f6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252658"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435640"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Gegevensintegratie met behulp van Azure Data Factory en Azure Data Share
 
@@ -51,49 +51,49 @@ Met gekoppelde services van Azure Data Factory wordt de verbindingsinformatie na
 1. Open de [Azure-portal](https://portal.azure.com) in Microsoft Edge of Google Chrome.
 1. Zoek op 'Data Factories' in de zoekbalk bovenaan de pagina
 
-    ![Portal](media/lab-data-flow-data-share/portal1.png)
+    ![Portal 1](media/lab-data-flow-data-share/portal1.png)
 1. Klik op uw data factory-resource om de resourceblade te openen.
 
-    ![Portal](media/lab-data-flow-data-share/portal2.png)
+    ![Portal 2](media/lab-data-flow-data-share/portal2.png)
 1. Klik op **Ontwerpen en controleren** om de ADF UX te openen. De ADF UX kan ook worden geopend op adf.azure.com.
 
-    ![Portal](media/lab-data-flow-data-share/portal3.png)
+    ![Portal 3](media/lab-data-flow-data-share/portal3.png)
 1. U wordt omgeleid naar de startpagina van de ADF UX. Deze pagina bevat quickstarts, instructievideo's en koppelingen naar zelfstudies voor meer informatie over data factory-concepten. Klik op het potloodpictogram in de linkerbalk om te beginnen met ontwerpen.
 
-    ![Portal](media/lab-data-flow-data-share/configure1.png)
+    ![Portal configureren](media/lab-data-flow-data-share/configure1.png)
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Een gekoppelde Azure SQL Database-service maken
 
 1. Op de ontwerppagina kunt u data factory-resources maken, zoals pijplijnen, gegevenssets, gegevensstromen, triggers en gekoppelde services. Als u een gekoppelde service wilt maken, klikt u op de knop **Verbindingen** in de rechterbenedenhoek.
 
-    ![Portal](media/lab-data-flow-data-share/configure2.png)
+    ![Portal configureren 2](media/lab-data-flow-data-share/configure2.png)
 1. Klik op het tabblad verbindingen op **Nieuw** om een nieuwe gekoppelde service toe te voegen.
 
-    ![Portal](media/lab-data-flow-data-share/configure3.png)
+    ![Portal configureren 3](media/lab-data-flow-data-share/configure3.png)
 1. De eerste gekoppelde service die u configureert, is een Azure SQL-database. U kunt de zoekbalk gebruiken om de lijst met gegevensarchieven te filteren. Klik op de tegel **Azure SQL Database** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/configure4.png)
+    ![Portal configureren 4](media/lab-data-flow-data-share/configure4.png)
 1. Voer in het deelvenster SQL DB-configuratie 'SQLDB' in als de naam van de gekoppelde service. Voer uw aanmeldingsgegevens in om data factory verbinding te laten maken met uw database. Als u SQL-verificatie gebruikt, voert u de servernaam, de database, uw gebruikersnaam en wachtwoord in. U kunt controleren of de verbindingsgegevens juist zijn door te klikken op **Verbinding testen**. Klik op **Maken** als u klaar bent.
 
-    ![Portal](media/lab-data-flow-data-share/configure5.png)
+    ![Portal configureren 5](media/lab-data-flow-data-share/configure5.png)
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Een gekoppelde Azure Synapse Analytics-service maken
 
 1. Herhaal hetzelfde proces om een gekoppelde Azure Synapse Analytics-service toe te voegen. Klik op het tabblad verbindingen op **Nieuw**. Selecteer de tegel **Azure Synapse Analytics (voorheen SQL DW)** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/configure6.png)
+    ![Portal configureren 6](media/lab-data-flow-data-share/configure6.png)
 1. Voer in het deelvenster Configuratie van gekoppelde service 'SQLDW' in als de naam van de gekoppelde service. Voer uw aanmeldingsgegevens in om data factory verbinding te laten maken met uw database. Als u SQL-verificatie gebruikt, voert u de servernaam, de database, uw gebruikersnaam en wachtwoord in. U kunt controleren of de verbindingsgegevens juist zijn door te klikken op **Verbinding testen**. Klik op **Maken** als u klaar bent.
 
-    ![Portal](media/lab-data-flow-data-share/configure7.png)
+    ![Portal configureren 7](media/lab-data-flow-data-share/configure7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Een gekoppelde Azure Data Lake Storage Gen2-service maken
 
 1. De laatste gekoppelde service die nodig is voor dit lab is een Azure Data Lake Storage Gen2.  Klik op het tabblad verbindingen op **Nieuw**. Selecteer de tegel **Azure Data Lake Storage Gen2** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/configure8.png)
+    ![Portal configureren 8](media/lab-data-flow-data-share/configure8.png)
 1. Voer in het deelvenster Configuratie van gekoppelde service 'ADLSGen2' in als de naam van de gekoppelde service. Als u accountsleutelverificatie gebruikt, selecteert u uw ADLS Gen2-opslagaccount in de vervolgkeuzelijst **Naam van het opslagaccount**. U kunt controleren of de verbindingsgegevens juist zijn door te klikken op **Verbinding testen**. Klik op **Maken** als u klaar bent.
 
-    ![Portal](media/lab-data-flow-data-share/configure9.png)
+    ![Portal configureren 9](media/lab-data-flow-data-share/configure9.png)
 
 ### <a name="turn-on-data-flow-debug-mode"></a>Foutopsporingsmodus voor gegevensstromen inschakelen
 
@@ -101,11 +101,11 @@ In het gedeelte *Gegevens transformeren met behulp van toewijzingsgegevensstroom
 
 Als u foutopsporing wilt inschakelen, klikt u op de schuifregelaar **Foutopsporing gegevensstroom** in de bovenste balk van de factory. Klik op OK als het bevestigingsvenster wordt weergegeven. Het duurt ongeveer 5-7 minuten om het cluster op te starten. Ga door met *Gegevens opnemen vanuit Azure SQL DB in ADLS Gen2 met behulp van de kopieeractiviteit* tijdens de initialisatie.
 
-![Portal](media/lab-data-flow-data-share/configure10.png)
+![Portal configureren 10](media/lab-data-flow-data-share/configure10.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Gegevens opnemen met behulp van de kopieeractiviteit
 
-In dit gedeelte maakt u een pijplijn met een kopieeractiviteit die een tabel van een Azure SQL-database opneemt in een ADLS Gen2-opslag account. U leert hoe u een pijplijn toevoegt, een gegevensset configureert en fouten in een pijplijn opspoort via de ADF UX. Het configuratiepatroon dat wordt gebruikt in deze zelfstudie, kan worden toegepast op het kopiëren van een relationeel gegevensarchief naar een gegevensarchief op basis van bestanden.
+In deze sectie maakt u een pijplijn met een kopieeractiviteit die een tabel van een Azure SQL-database opneemt in een ADLS Gen2-opslagaccount. U leert hoe u een pijplijn toevoegt, een gegevensset configureert en fouten in een pijplijn opspoort via de ADF UX. Het configuratiepatroon dat wordt gebruikt in deze zelfstudie, kan worden toegepast op het kopiëren van een relationeel gegevensarchief naar een gegevensarchief op basis van bestanden.
 
 In Azure Data Factory is een pijplijn een logische groep activiteiten die samen een taak uitvoeren. Een activiteit definieert een bewerking die op uw gegevens moet worden uitgevoerd. Een gegevensset wijst naar de gegevens die u wilt gebruiken in een gekoppelde service.
 
@@ -113,57 +113,57 @@ In Azure Data Factory is een pijplijn een logische groep activiteiten die samen 
 
 1. Klik in het deelvenster Factory-resources op het pluspictogram om het menu Nieuwe resource te openen. Selecteer **Pijplijn**.
 
-    ![Portal](media/lab-data-flow-data-share/copy1.png)
+    ![Portal kopiëren 1](media/lab-data-flow-data-share/copy1.png)
 1. Geef op het tabblad **Algemeen** van het pijplijncanvas een beschrijvende naam op voor de pijplijn, zoals 'IngestAndTransformTaxiData'.
 
-    ![Portal](media/lab-data-flow-data-share/copy2.png)
+    ![Portal kopiëren 2](media/lab-data-flow-data-share/copy2.png)
 1. Open in het deelvenster Activiteiten van het pijplijncanvas de accordion **Verplaatsen en transformeren** en sleep de activiteit **Gegevens kopiëren** naar het canvas. Geef de kopieeractiviteit een beschrijvende naam zoals 'IngestIntoADLS'.
 
-    ![Portal](media/lab-data-flow-data-share/copy3.png)
+    ![Portal kopiëren 3](media/lab-data-flow-data-share/copy3.png)
 
 ### <a name="configure-azure-sql-db-source-dataset"></a>Azure SQL DB-brongegevensset configureren
 
 1. Klik op het tabblad **Bron** van de kopieeractiviteit. Klik op **Nieuw** om een nieuwe gegevensset te maken. De bron is de tabel 'dbo.TripData' die zich bevindt in de eerder geconfigureerde gekoppelde service 'SQLDB'.
 
-    ![Portal](media/lab-data-flow-data-share/copy4.png)
+    ![Portal kopiëren 4](media/lab-data-flow-data-share/copy4.png)
 1. Zoek naar **Azure SQL Database** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/copy5.png)
+    ![Portal kopiëren 5](media/lab-data-flow-data-share/copy5.png)
 1. Roep de gegevensset 'TripData' aan. Selecteer 'SQLDB' als uw gekoppelde service. Selecteer tabelnaam 'dbo.TripData' uit de vervolgkeuzelijst voor de tabelnaam. Importeer het schema **Uit verbinding/archief**. Als u klaar bent, klikt u op OK.
 
-    ![Portal](media/lab-data-flow-data-share/copy6.png)
+    ![Portal kopiëren 6](media/lab-data-flow-data-share/copy6.png)
 
 U hebt uw eerste brongegevensset gemaakt. Zorg ervoor dat in de broninstellingen de standaardwaarde **Tabel** is geselecteerd in het veld Query gebruiken.
 
-### <a name="configure-adls-gen-2-sink-dataset"></a>ADLS Gen 2-sinkgegevensset configureren
+### <a name="configure-adls-gen2-sink-dataset"></a>ADLS Gen 2-sinkgegevensset configureren
 
 1. Klik op het tabblad **Sink** van de kopieeractiviteit. Klik op **Nieuw** om een nieuwe gegevensset te maken.
 
-    ![Portal](media/lab-data-flow-data-share/copy7.png)
+    ![Portal kopiëren 7](media/lab-data-flow-data-share/copy7.png)
 1. Zoek naar **Azure Data Lake Storage Gen2** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/copy8.png)
+    ![Portal kopiëren 8](media/lab-data-flow-data-share/copy8.png)
 1. Selecteer in het deelvenster Opmaak selecteren de optie **DelimitedText** terwijl u naar een CSV-bestand schrijft. Klik op Doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/copy9.png)
+    ![Portal kopiëren 9](media/lab-data-flow-data-share/copy9.png)
 1. Noem uw sinkgegevensset 'TripDataCSV'. Selecteer 'ADLSGen2' als uw gekoppelde service. Voer in waar u uw CSV-bestand wilt schrijven. U kunt bijvoorbeeld uw gegevens schrijven naar het bestand `trip-data.csv` in container `staging-container`. Stel **Eerste rij als header** in op waar als u wilt dat uw uitvoergegevens headers bevatten. Omdat er nog geen bestand in de bestemming bestaat, stelt u **Importschema** in op **Geen**. Als u klaar bent, klikt u op OK.
 
-    ![Portal](media/lab-data-flow-data-share/copy10.png)
+    ![Portal kopiëren 10](media/lab-data-flow-data-share/copy10.png)
 
 ### <a name="test-the-copy-activity-with-a-pipeline-debug-run"></a>De kopieeractiviteit testen met het uitvoeren van een pijplijnfoutopsporing
 
 1. Als u wilt controleren of uw kopieeractiviteit correct werkt, klikt u op **Fouten opsporen** bovenaan het pijplijncanvas om een uitvoering van de foutopsporing uit te voeren. Met een foutopsporingsuitvoering kunt u de pijplijn end-to-end testen of tot een onderbrekingspunt voordat u deze naar de data factory-service publiceert.
 
-    ![Portal](media/lab-data-flow-data-share/copy11.png)
+    ![Portal kopiëren 11](media/lab-data-flow-data-share/copy11.png)
 1. Als u de foutopsporingsuitvoering wilt controleren, gaat u naar het tabblad **Uitvoer** van het pijplijncanvas. Het controlescherm wordt automatisch elke 20 seconden vernieuwd of wanneer u handmatig op de knop Vernieuwen klikt. De kopieeractiviteit heeft een speciale controleweergave die u kunt openen door op het brilpictogram te klikken in de kolom **Acties**.
 
-    ![Portal](media/lab-data-flow-data-share/copy12.png)
+    ![Portal kopiëren 12](media/lab-data-flow-data-share/copy12.png)
 1. De controleweergave voor kopiëren bevat de uitvoeringsdetails en prestatiekenmerken van de activiteit. U kunt informatie bekijken zoals gelezen/geschreven gegevens, gelezen/geschreven rijen, gelezen/geschreven bestanden en doorvoer. Als u alles op de juiste wijze hebt geconfigureerd, ziet u dat er 49.999 rijen zijn geschreven naar één bestand in uw ADLS-sink.
 
-    ![Portal](media/lab-data-flow-data-share/copy13.png)
+    ![Portal kopiëren 13](media/lab-data-flow-data-share/copy13.png)
 1. Voordat u doorgaat naar het volgende gedeelte, wordt u geadviseerd om uw wijzigingen te publiceren naar de data factory-service door te klikken op **Alles publiceren** in de bovenste balk van de factory. Hoewel dit niet wordt besproken in dit lab, ondersteunt Azure Data Factory volledige git-integratie. Git-integratie biedt versiebeheer, iteratief opslaan in een opslagplaats en samenwerking op een data factory. Zie voor meer informatie [broncodebeheer in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control#troubleshooting-git-integration).
 
-    ![Portal](media/lab-data-flow-data-share/publish1.png)
+    ![Portal publiceren 1](media/lab-data-flow-data-share/publish1.png)
 
 ## <a name="transform-data-using-mapping-data-flow"></a>Gegevens transformeren met toewijzingsgegevensstroom
 
@@ -175,28 +175,28 @@ De gegevensstroom die in deze stap wordt gemaakt, wordt gekoppeld aan de gegeven
 
 1. Open in het deelvenster Activiteiten van het pijplijncanvas de accordion **Verplaatsen en transformeren** en sleep de activiteit **Gegevensstroom** naar het canvas.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow1.png)
+    ![Gegevensstroom portal 1](media/lab-data-flow-data-share/dataflow1.png)
 1. Selecteer in het zijdeelvenster dat wordt geopend **Nieuwe gegevensstroom maken** en kies **Toewijzingsgegevensstroom**. Klik op **OK**.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow2.png)
+    ![Gegevensstroom portal 2](media/lab-data-flow-data-share/dataflow2.png)
 1. U wordt omgeleid naar het gegevensstroomcanvas waar u uw transformatielogica gaat bouwen. Geef op het tabblad Algemeen uw gegevensstroom de naam 'JoinAndAggregateData'.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow3.png)
+    ![Gegevensstroom portal 3](media/lab-data-flow-data-share/dataflow3.png)
 
 ### <a name="configure-your-trip-data-csv-source"></a>De CSV-bron van uw reisgegevens configureren
 
 1. Het eerste wat u moet doen is uw twee brontransformaties configureren. De eerste bron wijst naar de DelimitedText-gegevensset 'TripDataCSV'. Als u een brontransformatie wilt toevoegen, klikt u op het vak **Bron toevoegen** op het canvas.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow4.png)
+    ![Gegevensstroom portal 4](media/lab-data-flow-data-share/dataflow4.png)
 1. Geef de bron de naam 'TripDataCSV' en selecteer de gegevensset 'TripDataCSV' in de vervolgkeuzelijst Bron. U hebt in eerste instantie geen schema geïmporteerd bij het maken van deze gegevensset omdat er geen gegevens waren. Omdat `trip-data.csv` nu bestaat, klikt u op **Bewerken** om naar het tabblad Instellingen van gegevensset te gaan.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow5.png)
+    ![Gegevensstroom portal 5](media/lab-data-flow-data-share/dataflow5.png)
 1. Ga naar het tabblad **Schema** en klik op **Schema importeren**. Selecteer **Uit verbinding/archief** om rechtstreeks vanuit het bestandsarchief te importeren. Er moeten 14 kolommen van het type tekenreeks worden weergegeven.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow6.png)
+    ![Gegevensstroom portal 6](media/lab-data-flow-data-share/dataflow6.png)
 1. Ga terug naar de gegevensstroom 'JoinAndAggregateData'. Als uw cluster voor foutopsporing is gestart (aangegeven door een groene cirkel naast de schuifregelaar voor foutopsporing), kunt u een momentopname van de gegevens ophalen op het tabblad **Gegevenspreview**. Klik op **Vernieuwen** om een voorbeeld van de gegevens op te halen.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow7.png)
+    ![Gegevensstroom portal 7](media/lab-data-flow-data-share/dataflow7.png)
 
 > [!Note]
 > De gegevenspreview schrijft geen gegevens.
@@ -205,84 +205,84 @@ De gegevensstroom die in deze stap wordt gemaakt, wordt gekoppeld aan de gegeven
 
 1. De tweede bron die u gaat toevoegen, verwijst naar de SQL DB-tabel 'dbo.TripFares'. Onder de bron 'TripDataCSV' bevindt zich nog een vak **Bron toevoegen**. Klik hierop om een nieuwe brontransformatie toe te voegen.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow8.png)
+    ![Gegevensstroom portal 8](media/lab-data-flow-data-share/dataflow8.png)
 1. Geef deze bron de naam 'TripFaresSQL'. Klik op **Nieuw** naast het veld Brongegevensset om een nieuwe SQL DB-gegevensset te maken.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow9.png)
+    ![Gegevensstroom portal 9](media/lab-data-flow-data-share/dataflow9.png)
 1. Selecteer de tegel **Azure SQL Database** en klik op doorgaan. *Opmerking: Het kan zijn dat veel van de connectors in data factory niet worden ondersteund in de toewijzingsgegevensstroom. Als u gegevens uit een van deze bronnen wilt transformeren, neemt u deze op in een ondersteunde bron met behulp van de kopieeractiviteit*.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow10.png)
+    ![Gegevensstroom portal 10](media/lab-data-flow-data-share/dataflow10.png)
 1. Roep de gegevensset 'TripFares' aan. Selecteer 'SQLDB' als uw gekoppelde service. Selecteer tabelnaam 'dbo.TripFares' uit de vervolgkeuzelijst voor de tabelnaam. Importeer het schema **Uit verbinding/archief**. Als u klaar bent, klikt u op OK.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow11.png)
+    ![Gegevensstroom portal 11](media/lab-data-flow-data-share/dataflow11.png)
 1. Als u uw gegevens wilt controleren, haalt u een gegevenspreview op in het tabblad **Gegevenspreview**.
 
-    ![Portal](media/lab-data-flow-data-share/dataflow12.png)
+    ![Gegevensstroom portal 12](media/lab-data-flow-data-share/dataflow12.png)
 
 ### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>Inner join TripDataCSV en TripFaresSQL
 
 1. Als u een nieuwe transformatie wilt toevoegen, klikt u op het pluspictogram in de rechterbenedenhoek van 'TripDataCSV'. Onder **Meerdere invoeren/uitvoeren** selecteert u **Samenvoegen**.
 
-    ![Portal](media/lab-data-flow-data-share/join1.png)
+    ![Deelnemen aan portal 1](media/lab-data-flow-data-share/join1.png)
 1. Geef uw join-transformatie de naam 'InnerJoinWithTripFares'. Selecteer 'TripFaresSQL' in de vervolgkeuzelijst voor de stroom aan de rechterkant. Selecteer **Inner** als join-type. Raadpleegt [Join-typen](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types) voor meer informatie over de verschillende join-typen in toewijzingsgegevensstroom.
 
     Selecteer de kolommen die u wilt vergelijken vanuit elke stroom via de vervolgkeuzelijst **Join-voorwaarden**. Als u een extra join-voorwaarde wilt toevoegen, klikt u op het pluspictogram naast een bestaande voorwaarde. Standaard worden alle join-voorwaarden gecombineerd met een AND-operator, wat betekent dat aan alle voorwaarden moet worden voldaan voor een overeenkomst. In dit lab willen we overeenkomsten met kolommen `medallion`, `hack_license`, `vendor_id` en `pickup_datetime`
 
-    ![Portal](media/lab-data-flow-data-share/join2.png)
+    ![Deelnemen aan portal 2](media/lab-data-flow-data-share/join2.png)
 1. Controleer of u 25 kolommen hebt samengevoegd met een gegevenspreview.
 
-    ![Portal](media/lab-data-flow-data-share/join3.png)
+    ![Deelnemen aan portal 3](media/lab-data-flow-data-share/join3.png)
 
 ### <a name="aggregate-by-payment_type"></a>Aggregatie per payment_type
 
 1. Nadat u de join-transformatie hebt voltooid, voegt u een geaggregeerde transformatie toe door te klikken op het pluspictogram naast 'InnerJoinWithTripFares'. Kies **Aggregeren** onder **Schemawijzigingsfunctie**.
 
-    ![Portal](media/lab-data-flow-data-share/agg1.png)
+    ![Portal aggregeren 1](media/lab-data-flow-data-share/agg1.png)
 1. Geef uw geaggregeerde transformatie de naam 'AggregateByPaymentType'. Selecteer `payment_type` als de kolom Groeperen op.
 
-    ![Portal](media/lab-data-flow-data-share/agg2.png)
+    ![Portal aggregeren 2](media/lab-data-flow-data-share/agg2.png)
 1. Ga naar het tabblad **Aggregaties**. Hier geeft u twee aggregaties op:
     * De gemiddelde tarief gegroepeerd op betalingstype
     * De totale reisafstand gegroepeerd op betalingstype
 
     Eerst maakt u de expressie voor gemiddeld tarief. Voer 'average_fare' in het tekstvak **Een kolom toevoegen of selecteren** in.
 
-    ![Portal](media/lab-data-flow-data-share/agg3.png)
+    ![Portal aggregeren 3](media/lab-data-flow-data-share/agg3.png)
 1. Als u een expressie voor aggregatie wilt invoeren, klikt u op het blauwe vak **Expressie invoeren**. Hiermee opent u de opbouwfunctie voor de gegevensstroomexpressie, een hulpprogramma dat wordt gebruikt om gegevensstroomexpressies visueel te maken met behulp van invoerschema's, ingebouwde functies en bewerkingen, en door de gebruiker gedefinieerde parameters. Zie de [Documentatie voor opbouwfunctie van expressies](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder) voor meer informatie over de mogelijkheden van de opbouwfunctie voor expressies.
 
     Als u het gemiddelde tarief wilt ophalen, gebruikt u de `avg()` aggregatiefunctie om de kolom `total_amount` te aggregeren met een geheel getal met `toInteger()`. In de taal van de gegevensstroomexpressie wordt dit gedefinieerd als `avg(toInteger(total_amount))`. Klik op **Opslaan en voltooien** wanneer u klaar bent.
 
-    ![Portal](media/lab-data-flow-data-share/agg4.png)
+    ![Portal aggregeren 4](media/lab-data-flow-data-share/agg4.png)
 1. Klik op het plus pictogram naast `average_fare` om een extra aggregatie-expressie toe te voegen. Selecteer **Kolom toevoegen**.
 
-    ![Portal](media/lab-data-flow-data-share/agg5.png)
+    ![Portal aggregeren 5](media/lab-data-flow-data-share/agg5.png)
 1. Voer 'total_trip_distance' in het tekstvak **Een kolom toevoegen of selecteren** in. Open zoals in de laatste stap de opbouwfunctie voor expressies om de expressie in te voeren.
 
     Als u de totale reisafstand wilt ophalen, gebruikt u de `sum()` aggregatiefunctie om de kolom `trip_distance` te aggregeren met een geheel getal met `toInteger()`. In de taal van de gegevensstroomexpressie wordt dit gedefinieerd als `sum(toInteger(trip_distance))`. Klik op **Opslaan en voltooien** wanneer u klaar bent.
 
-    ![Portal](media/lab-data-flow-data-share/agg6.png)
+    ![Portal aggregeren 6](media/lab-data-flow-data-share/agg6.png)
 1. Test uw transformatielogica op het tabblad **Gegevenspreview**. Zoals u kunt zien, zijn er aanzienlijk minder rijen en kolommen dan eerder. Alleen de drie kolommen voor groeperen op en aggregatie die in deze transformatie zijn gedefinieerd, gaan verder. Aangezien het voorbeeld slechts vijf groepen betalingstypen bevat, worden er slechts vijf rijen gegenereerd.
 
-    ![Portal](media/lab-data-flow-data-share/agg7.png)
+    ![Portal aggregeren 7](media/lab-data-flow-data-share/agg7.png)
 
 ### <a name="configure-you-azure-synapse-analytics-sink"></a>Uw Azure Synapse Analytics-sink configureren
 
 1. Nu we onze transformatielogica hebben voltooid, kunnen we onze gegevens in een Azure Synapse Analytics-tabel opvangen. Voeg een sink-transformatie toe in het gedeelte **Bestemming**.
 
-    ![Portal](media/lab-data-flow-data-share/sink1.png)
+    ![Portalsink 1](media/lab-data-flow-data-share/sink1.png)
 1. Geef uw sink de naam 'SQLDWSink'. Klik op **Nieuw** naast het veld Sink-gegevensset om een nieuwe Azure Synapse Analytics-gegevensset te maken.
 
-    ![Portal](media/lab-data-flow-data-share/sink2.png)
+    ![Portalsink 2](media/lab-data-flow-data-share/sink2.png)
 
 1. Selecteer de tegel **Azure Synapse Analytics (voorheen SQL DW)** en klik op doorgaan.
 
-    ![Portal](media/lab-data-flow-data-share/sink3.png)
+    ![Portalsink 3](media/lab-data-flow-data-share/sink3.png)
 1. Roep de gegevensset 'AggregatedTaxiData' aan. Selecteer 'SQLDW' als uw gekoppelde service. Selecteer **Nieuwe tabel maken** en geef de nieuwe tabel de naam dbo.AggregateTaxiData. Als u klaar bent, klikt u op OK
 
-    ![Portal](media/lab-data-flow-data-share/sink4.png)
+    ![Portalsink 4](media/lab-data-flow-data-share/sink4.png)
 1. Ga naar het tabblad **Instellingen** van de sink. Omdat we een nieuwe tabel maken, moeten we **Tabel opnieuw maken** selecteren onder tabelactie. Schakel het selectievakje **Fasering inschakelen** uit om te schakelen tussen rij per rij of in batch invoeren.
 
-    ![Portal](media/lab-data-flow-data-share/sink5.png)
+    ![Portalsink 5](media/lab-data-flow-data-share/sink5.png)
 
 U hebt uw gegevensstroom gemaakt. Nu is het tijd om deze uit te voeren in een pijplijnactiviteit.
 
@@ -290,25 +290,25 @@ U hebt uw gegevensstroom gemaakt. Nu is het tijd om deze uit te voeren in een pi
 
 1. Ga terug naar het tabblad voor de pijplijn **IngestAndTransformData**. U ziet een groen vakje op de kopieeractiviteit 'IngestIntoADLS'. Sleep het naar de gegevensstroomactiviteit 'JoinAndAggregateData'. Hiermee maakt u een 'bij gelukt', waardoor de gegevensstroomactiviteit alleen wordt uitgevoerd als de kopie is geslaagd.
 
-    ![Portal](media/lab-data-flow-data-share/pipeline1.png)
+    ![Portalpijplijn 1](media/lab-data-flow-data-share/pipeline1.png)
 1. Klik op **Foutopsporing** om foutopsporing uit te voeren, net zoals we voor de kopieeractiviteit hebben gedaan. Voor de uitvoering van foutopsporing gebruikt de gegevensstroomactiviteit het actieve foutopsporingscluster in plaats van een nieuw cluster te ontwikkelen. Het uitvoeren van deze pijplijn duurt iets langer dan een minuut.
 
-    ![Portal](media/lab-data-flow-data-share/pipeline2.png)
+    ![Portalpijplijn 2](media/lab-data-flow-data-share/pipeline2.png)
 1. Net als bij de kopieeractiviteit heeft de gegevensstroom een speciale controleweergave die na voltooiing van de activiteit via het brilpictogram kan worden geopend.
 
-    ![Portal](media/lab-data-flow-data-share/pipeline3.png)
+    ![Portalpijplijn 3](media/lab-data-flow-data-share/pipeline3.png)
 1. In de controleweergave kunt u een vereenvoudigde gegevensstroomgrafiek bekijken, samen met de uitvoeringstijden en rijen bij elke uitvoeringsfase. Als alles goed is uitgevoerd, hebt u 49.999 rijen samengevoegd tot vijf rijen in deze activiteit.
 
-    ![Portal](media/lab-data-flow-data-share/pipeline4.png)
+    ![Portalpijplijn 4](media/lab-data-flow-data-share/pipeline4.png)
 1. U kunt op een transformatie klikken om aanvullende informatie te bekijken over de uitvoering, zoals het partitioneren van gegevens en nieuwe/bijgewerkte/verwijderde kolommen.
 
-    ![Portal](media/lab-data-flow-data-share/pipeline5.png)
+    ![Portalpijplijn 5](media/lab-data-flow-data-share/pipeline5.png)
 
 U hebt nu het gedeelte data factory van dit lab voltooid. Publiceer uw resources als u deze wilt uitvoeren met triggers. U hebt een pijplijn uitgevoerd die gegevens van Azure SQL Database heeft opgenomen naar Azure Data Lake Storage met behulp van de kopieeractiviteit en vervolgens hebt u deze gegevens samengevoegd in een Azure Synapse Analytics. U kunt controleren of de gegevens zijn geschreven door de SQL Server zelf te bekijken.
 
 ## <a name="share-data-using-azure-data-share"></a>Gegevens delen met Azure Data Share
 
-In dit gedeelte leert u hoe u een nieuwe gegevensshare instelt met behulp van de Azure-portal. Hiervoor moet u een nieuwe gegevensshare maken die gegevenssets bevat van Azure Data Lake Store Gen2 en Azure SQL Data Warehouse. Vervolgens configureert u een schema voor momentopnamen, zodat de gegevensgebruikers een optie hebben om de gegevens die met hen worden gedeeld automatisch te vernieuwen. Vervolgens nodigt u ontvangers uit voor uw gegevensshare. 
+In dit gedeelte leert u hoe u een nieuwe gegevensshare instelt met behulp van de Azure-portal. Hiervoor moet u een nieuwe gegevensshare maken die gegevenssets bevat van Azure Data Lake Store Gen2 en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Vervolgens configureert u een schema voor momentopnamen, zodat de gegevensgebruikers een optie hebben om de gegevens die met hen worden gedeeld automatisch te vernieuwen. Vervolgens nodigt u ontvangers uit voor uw gegevensshare. 
 
 Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *gegevensgebruiker*. Als gegevensgebruiker loopt u door de stroom van het accepteren van een gegevensshare-uitnodiging, het configureren van de locatie waar de gegevens moeten worden ontvangen en het toewijzen van gegevenssets aan verschillende opslaglocaties. Vervolgens wordt een momentopname geactiveerd, waarmee de met u gedeelde gegevens worden gekopieerd naar de opgegeven bestemming. 
 
@@ -318,7 +318,7 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
 
 1. Zoek op **Gegevensshares** in de zoekbalk bovenaan de pagina
 
-    ![Portal](media/lab-data-flow-data-share/portal-ads.png)
+    ![Portaladvertenties](media/lab-data-flow-data-share/portal-ads.png)
 
 1. Selecteer het gegevensshare-account met 'Provider' in de naam. Bijvoorbeeld **DataProvider0102**. 
 
@@ -330,7 +330,7 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
 
 1. Geef een gewenste naam op onder **Sharenaam**. Dit is de sharenaam die wordt weergegeven aan uw gegevensgebruiker. Zorg er dus voor dat u een beschrijvende naam opgeeft, zoals TaxiData.
 
-1. Onder **Beschrijving** voert u een zin in waarmee de inhoud van de gegevensshare wordt beschreven. De gegevensshare bevat gegevens van wereldwijde taxiritjes die zijn opgeslagen in een aantal archieven, waaronder Azure SQL Data Warehouse en Azure Data Lake Store. 
+1. Onder **Beschrijving** voert u een zin in waarmee de inhoud van de gegevensshare wordt beschreven. De gegevensshare bevat gegevens van wereldwijde taxiritjes die zijn opgeslagen in een aantal archieven, waaronder Azure Synapse Analytics en Azure Data Lake Store. 
 
 1. Geef onder **Gebruiksvoorwaarden** een set voorwaarden op waaraan uw gegevensgebruiker moet voldoen. Enkele voorbeelden zijn 'Deze gegevens niet distribueren buiten uw organisatie' of 'Raadpleeg de juridische overeenkomst'. 
 
@@ -340,14 +340,14 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
 
 1. Selecteer **Gegevenssets toevoegen** 
 
-    ![Gegevensset toevoegen](media/lab-data-flow-data-share/add-dataset.png)
+    ![Gegevensset 1 toevoegen](media/lab-data-flow-data-share/add-dataset.png)
 
-1. Selecteer **Azure SQL Data Warehouse** om een tabel te selecteren uit de Azure SQL Data Warehouse waarin uw ADF-transformaties terecht zijn gekomen.
+1. Selecteer **Azure Synapse Analytics** om een tabel te selecteren uit Azure Synapse Analytics waarin uw ADF-transformaties terecht zijn gekomen.
 
-    ![Gegevensset toevoegen](media/lab-data-flow-data-share/add-dataset-sql.png)
+    ![Gegevensset sql toevoegen](media/lab-data-flow-data-share/add-dataset-sql.png)
 
 > [!NOTE]
-> Azure SQL Data Warehouse staat nu bekend als Azure Synapse Analytics
+> SQL Data Warehouse staat nu bekend als Azure Synapse Analytics
 
 1. U krijgt een script dat u moet uitvoeren voordat u kunt doorgaan. Met het geboden script wordt een gebruiker gemaakt in de SQL-database zodat de Azure Data Share MSI kan verifiëren namens de gebruiker. 
 
@@ -362,7 +362,7 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
     
 1. Ga terug naar de Azure Data Share waar u gegevenssets aan uw gegevensshare hebt toegevoegd. 
 
-1. Selecteer **EDW** voor de SQL Data Warehouse en selecteer **AggregatedTaxiData** voor de tabel. 
+1. Selecteer **EDW** en selecteer vervolgens **AggregatedTaxiData** voor de tabel. 
 
 1. Selecteer **Gegevensset toevoegen**
 
@@ -370,7 +370,7 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
 
 1. Selecteer **Gegevensset toevoegen** en selecteer **Azure Data Lake Store Gen2**
 
-    ![Gegevensset toevoegen](media/lab-data-flow-data-share/add-dataset-adls.png)
+    ![Gegevensset adls toevoegen](media/lab-data-flow-data-share/add-dataset-adls.png)
 
 1. Selecteer **Volgende**
 
@@ -380,7 +380,7 @@ Zodra u een gegevensshare hebt gemaakt, schakelt u over van rol en wordt u de *g
 
 1. Selecteer **Gegevenssets toevoegen**
 
-1. Controleer de gegevenssets die zijn toegevoegd. U moet een SQL-tabel en een map ADLSGen2 toevoegen aan uw gegevensshare. 
+1. Controleer de gegevenssets die zijn toegevoegd. U moet een SQL-tabel en een ADLS Gen2-map aan uw gegevensshare hebben toegevoegd. 
 
 1. Selecteer **Doorgaan**
 
@@ -456,7 +456,7 @@ U wordt mogelijk gevraagd om een abonnement te selecteren. Zorg ervoor dat u het
 
     ![niet-toegewezen gegevenssets](media/lab-data-flow-data-share/unmapped.png)
 
-1. Selecteer de tabel SQL Data Warehouse en selecteer vervolgens **+ Toewijzen aan doel**.
+1. Selecteer de Azure Synapse Analytics-tabel en selecteer vervolgens **+Toewijzen aan doel**.
 
 1. Selecteer aan de rechterkant van het scherm de vervolgkeuzelijst **Doelgegevenstype**. 
 
@@ -482,7 +482,7 @@ U wordt mogelijk gevraagd om een abonnement te selecteren. Zorg ervoor dat u het
 
 1. Ga in het nieuwe tabblad dat u hebt geopend naar **SQL-databases**.
 
-1. Selecteer de SQL-database (er mag er zich slechts één in uw abonnement bevinden). Zorg ervoor dat u de SQL Data Warehouse niet selecteert. 
+1. Selecteer de SQL-database (er mag er zich slechts één in uw abonnement bevinden). Pas op dat u de datawarehouse niet selecteert. 
 
 1. Selecteer **Query-editor (preview)**
 

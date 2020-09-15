@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399801"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648877"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -219,7 +219,27 @@ Als er een fout optreedt voordat de aanvraag is verzonden, wordt het volgende fo
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
+1. *Wie is de certificaatprovider en welk type certificaat is gebruikt?*
+
+    Er wordt een gereserveerd/specifiek certificaat, geleverd via Digicert, gebruikt voor uw aangepaste domein. 
+
+2. *Gebruikt u IP of SNI TLS/SSL?*
+
+    Azure Front Door maakt gebruik van SNI TLS/SSL.
+
+3. *Wat moet ik doen als ik geen verificatie-e-mail voor het domein heb ontvangen van DigiCert?*
+
+    Als u beschikt over een CNAME-vermelding voor uw aangepaste domein die rechtstreeks verwijst naar de hostnaam van uw eindpunt (en u niet de subdomeinnaam afdverify gebruikt), ontvangt u een dergelijke verificatie-e-mail niet. Validatie wordt dan automatisch uitgevoerd. In andere gevallen waarbij u geen CNAME-vermelding hebt en binnen 24 uur geen e-mail hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
+
+4. *Is het gebruik van een SAN-certificaat minder veilig dan wanneer ik een toegewezen certificaat gebruik?*
+    
+    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle verleende TLS/SSL-certificaten maken gebruik van SHA-256 voor verbeterde serverbeveiliging.
+
+5. *Heb ik een CAA-record nodig bij mijn DNS-provider?*
+
+    Nee, een CAA-record is momenteel niet vereist. Als u er echter wel een hebt, moet deze DigiCert bevatten als een geldige CA.
 
 ## <a name="clean-up-resources---disable-https"></a>Resources opschonen - HTTPS uitschakelen
 
@@ -247,30 +267,15 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 | 2 Inrichting van het certificaat ongedaan maken | Certificaat verwijderen |
 | 3 Voltooien | Certificaat is verwijderd |
 
-## <a name="frequently-asked-questions"></a>Veelgestelde vragen
-
-1. *Wie is de certificaatprovider en welk type certificaat is gebruikt?*
-
-    Er wordt een gereserveerd/specifiek certificaat, geleverd via Digicert, gebruikt voor uw aangepaste domein. 
-
-2. *Gebruikt u IP of SNI TLS/SSL?*
-
-    Azure Front Door maakt gebruik van SNI TLS/SSL.
-
-3. *Wat moet ik doen als ik geen verificatie-e-mail voor het domein heb ontvangen van DigiCert?*
-
-    Als u beschikt over een CNAME-vermelding voor uw aangepaste domein die rechtstreeks verwijst naar de hostnaam van uw eindpunt (en u niet de subdomeinnaam afdverify gebruikt), ontvangt u een dergelijke verificatie-e-mail niet. Validatie wordt dan automatisch uitgevoerd. In andere gevallen waarbij u geen CNAME-vermelding hebt en binnen 24 uur geen e-mail hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
-
-4. *Is het gebruik van een SAN-certificaat minder veilig dan wanneer ik een toegewezen certificaat gebruik?*
-    
-    Voor een SAN-certificaat gelden dezelfde standaarden voor versleuteling en beveiliging als voor een toegewezen certificaat. Alle verleende TLS/SSL-certificaten maken gebruik van SHA-256 voor verbeterde serverbeveiliging.
-
-5. *Heb ik een CAA-record nodig bij mijn DNS-provider?*
-
-    Nee, een CAA-record is momenteel niet vereist. Als u er echter wel een hebt, moet deze DigiCert bevatten als een geldige CA.
-
-
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
-- Lees [hoe Front Door werkt](front-door-routing-architecture.md).
+In deze zelfstudie heeft u het volgende geleerd:
+
+* Een certificaat uploaden naar Key Vault.
+* Een domein valideren.
+* HTTPS inschakelen voor uw aangepaste domein.
+
+Ga door met de volgende zelfstudie om te leren hoe u een geofilteringsbeleid kunt instellen voor uw Front Door.
+
+> [!div class="nextstepaction"]
+> [Een geofilteringsbeleid instellen](front-door-geo-filtering.md)

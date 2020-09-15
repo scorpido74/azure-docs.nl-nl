@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 8f3e4762b0c0286a47b407595cf73b66bef8d750
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682838"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487348"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -133,10 +133,11 @@ Ja. Een gekoppelde partner-id kan worden gewijzigd, toegevoegd of verwijderd.
 
 De koppeling tussen de partner-id en het account wordt uitgevoerd voor elke klanttenant. Koppel de partner-id in elke klanttenant.
 
+Als u echter resources van een klant beheert via Azure Lighthouse, dient u de koppeling te maken in de tenant van de serviceprovider, met behulp van een account dat toegang heeft tot de resources van de klant. Zie voor meer informatie [Uw partner-id koppelen om het tegoed van de partner in te schakelen op gedelegeerde resources](../../lighthouse/how-to/partner-earned-credit.md).
+
 **Kunnen andere partners of klanten de koppeling met de partner-id bewerken of verwijderen?**
 
 De koppeling is op gebruikersaccountniveau gekoppeld. Alleen u kunt de koppeling met de partner-id bewerken of verwijderen. De klant en andere partners kunnen de koppeling met de partner-id niet wijzigen.
-
 
 **Welke MPN ID moet ik gebruikers als mijn bedrijf meerdere id's heeft?**
 
@@ -158,10 +159,11 @@ Wanneer u de klant niet in de rapporten ziet, kan dit de volgende redenen hebben
 
 Ja, u kunt uw partner-id voor Azure Stack koppelen.
 
-**Hoe koppel ik mijn partner-id, als mijn bedrijf [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) gebruikt voor toegang tot klantresources?**
+**Hoe koppel ik mijn partner-id, als mijn bedrijf [Azure Lighthouse](../../lighthouse/overview.md) gebruikt voor toegang tot klantresources?**
 
-Als u klanten onboardt voor gedelegeerd resourcebeheer van Azure door [een aanbieding voor beheerde services te publiceren in Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wordt uw MPN-id automatisch gekoppeld. Als u [klanten onboardt door Azure Resource Manager-sjablonen te implementeren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), moet u uw MPN-id (Microsoft Partner Network) koppelen met minstens één gebruikersaccount dat toegang heeft tot al uw abonnementen waarvoor onboarding is uitgevoerd. Let op: u moet dit doen in de tenant van de serviceprovider. Ter vereenvoudiging raden we u aan om in uw tenant een service-principal-account te maken, dat is gekoppeld aan uw MPN-id, en aan elke klant waarvoor u onboarding uitvoert, Lezerstoegang tot dit account te verlenen. In dit voorbeeld wordt de rol van de RBAC-lezer gebruikt en is dit een van de rollen die niet in aanmerking komen voor het verdiende tegoed van de partner. Zie [Rollen en machtigingen voor verdiend tegoed van partners](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2) voor meer informatie over rollen.
+Als u klanten onboardt voor gedelegeerd resourcebeheer van Azure door [een aanbieding voor beheerde services te publiceren in Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md), wordt uw MPN-id automatisch gekoppeld.
 
+Als u [klanten onboardt door Azure Resource Manager-sjablonen te implementeren](../../lighthouse/how-to/onboard-customer.md), moet u uw MPN-id koppelen met minstens één gebruikersaccount dat toegang heeft tot al uw abonnementen waarvoor onboarding is uitgevoerd. Let op: u moet dit doen in de tenant van de serviceprovider in plaats van in elke klanttenant. Ter vereenvoudiging raden we u aan om een service-principal-account in uw tenant te maken, deze te koppelen aan uw MPN-id en deze vervolgens toegang tot elke klant te geven die u onboardt met een [ingebouwde Azure-rol die in aanmerking komt voor het tegoed van een partner](/partner-center/azure-roles-perms-pec). Zie voor meer informatie [Uw partner-id koppelen om het tegoed van de partner in te schakelen op gedelegeerde resources](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Hoe kan ik PAL (Partner Admin Link) aan mijn klant uitleggen?**
 
@@ -173,4 +175,4 @@ De PAL-koppeling met bestaande referenties bieden Microsoft geen nieuwe klantgeg
 
 **Heeft dit invloed op de beveiliging van een de Azure-omgeving van een klant?**
 
-Door de koppeling met PAL wordt alleen het MPN-id van de partner toegevoegd aan de referenties die al zijn ingericht; eventuele machtigingen (Azure-rol) worden niet gewijzigd en er worden geen aanvullende Azure-servicegegevens aan de partner of aan Microsoft gegeven. 
+Door de koppeling met PAL wordt alleen het MPN-id van de partner toegevoegd aan de referenties die al zijn ingericht; eventuele machtigingen (Azure-rol) worden niet gewijzigd en er worden geen aanvullende Azure-servicegegevens aan de partner of aan Microsoft gegeven.

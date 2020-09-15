@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5ab742e7ce2d198a321e15118522e6866bd1d104
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fced9206bfd7d33ab4d9e911f92f12ec4b2aa99c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405858"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564968"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,27 +77,30 @@ const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourS
 
 ## <a name="initialize-a-recognizer"></a>Een herkenner initialiseren
 
-Nadat u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) hebt gemaakt, is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest). Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) initialiseert, moet u er uw `speechConfig` aan doorgeven. Dit zorgt voor de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
-
-Als u spraak wilt herkennen met de standaardmicrofoon van uw apparaat, ziet u hier hoe de [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) eruit moet zien:
+Nadat u een [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) hebt gemaakt, is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest). Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) initialiseert, geeft u uw `speechConfig` door. Dit zorgt voor de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) maken en de parameter `audioConfig` opgeven bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest).
+## <a name="recognize-from-microphone-or-file"></a>Herkennen van de microfoon of het bestand
 
-> [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) maken en deze doorgeven als een parameter bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest).
 
-Verwijs als volgt naar het `AudioConfig`-object:
+Als u spraak wilt herkennen met behulp van de microfoon van het apparaat, maakt u een `AudioConfig` met behulp van `fromDefaultMicrophoneInput()` en geeft u de audioconfiguratie door om uw `SpeechRecognizer`-object aan te maken.
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-Als u een audiobestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig` opgeven. Dit kan echter alleen worden gedaan wanneer het doel **node.js** is en wanneer u een [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) maakt, in plaats van `fromDefaultMicrophoneInput` aan te roepen, roept u `fromWavFileOutput` aan en geeft u de parameter `filename` door.
+> [!TIP]
+> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+
+Als u spraak wilt herkennen vanuit een audiobestand in plaats van met een microfoon, moet u nog steeds een `AudioConfig` opgeven. Wanneer u echter de [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) maakt in plaats van `fromDefaultMicrophoneInput()` aan te roepen, roept u `fromWavFileInput()` aan en geeft u de parameter `filename` door.
+
+> [!IMPORTANT]
+> Het herkennen van spraak vanuit een bestand wordt *alleen* ondersteund in de **Node.js** SDK
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");

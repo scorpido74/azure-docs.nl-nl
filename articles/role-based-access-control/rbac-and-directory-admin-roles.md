@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761141"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536171"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-rollen
 
@@ -44,7 +44,7 @@ Accountbeheerder, Servicebeheerder en Medebeheerder zijn de drie klassieke abonn
 
 | Klassiek abonnement beheerder | Limiet | Machtigingen | Opmerkingen |
 | --- | --- | --- | --- |
-| Accountbeheerder | 1 per Azure-account | <ul><li>[Azure-accountcentrum](https://account.azure.com/Subscriptions) openen</li><li>Alle abonnementen in een account beheren</li><li>Nieuwe abonnementen maken</li><li>Abonnementen annuleren</li><li>De facturering voor een abonnement wijzigen</li><li>De servicebeheerder wijzigen</li></ul> | Conceptueel gezien de factureringseigenaar van het abonnement.<br>De accountbeheerder heeft geen toegang tot de Azure-portal. |
+| Accountbeheerder | 1 per Azure-account | <ul><li>Facturering beheren in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Alle abonnementen in een account beheren</li><li>Nieuwe abonnementen maken</li><li>Abonnementen annuleren</li><li>De facturering voor een abonnement wijzigen</li><li>De servicebeheerder wijzigen</li></ul> | Conceptueel gezien de factureringseigenaar van het abonnement.<br>De accountbeheerder heeft geen toegang tot de Azure-portal. |
 | Servicebeheerder | 1 per Azure-abonnement | <ul><li>Services beheren in [Azure Portal](https://portal.azure.com)</li><li>Het abonnement opzeggen</li><li>Gebruikers de rol van medebeheerder geven</li></ul> | Voor een nieuw abonnement is het standaard zo dat de accountbeheerder ook de servicebeheerder is.<br>De servicebeheerder heeft dezelfde toegang als een gebruiker met de rol van eigenaar op abonnementsniveau.<br>De servicebeheerder heeft volledige toegang tot de Azure-portal. |
 | Medebeheerder | 200 per abonnement | <ul><li>Deze rol heeft dezelfde toegangsrechten als de rol Servicebeheerder, maar kan de koppeling van abonnementen aan Azure-adreslijsten niet wijzigen</li><li>Gebruikers toewijzen aan de rol Medebeheerder, maar kan de servicebeheerder niet wijzigen</li></ul> | De medebeheerder heeft dezelfde toegang als een gebruiker met de rol van eigenaar op abonnementsniveau. |
 
@@ -66,7 +66,7 @@ Azure-abonnementen helpen u de toegang tot Azure-resources in goede banen te lei
 
 Elk abonnement is gekoppeld aan een Azure AD-directory. Als u wilt zoeken naar de map waaraan het abonnement is gekoppeld, opent u **Abonnementen** in de Azure-portal en selecteert u vervolgens een abonnement om de map weer te geven.
 
-Accounts en abonnementen worden beheerd in het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
+Accounts en abonnementen worden beheerd in het [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
 ## <a name="azure-roles"></a>Azure-rollen
 

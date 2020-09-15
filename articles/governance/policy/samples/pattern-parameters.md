@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: Parameters in een beleidsdefinitie'
-description: Dit Azure Policy-patroon biedt een voorbeeld van het gebruik van parameters in een beleidsdefinitie.
+description: Dit Azure Policy-patroon geeft een voorbeeld van het gebruiken van tekenreeks- en matrixparameters in een beleidsdefinitie en van het parameteriseren van het effect.
 ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 6d938cdf2f31d30932d3631e99254b7d833f2941
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545570"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649954"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy-patroon: parameters
 

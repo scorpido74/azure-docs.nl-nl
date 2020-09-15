@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269638"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489932"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Quickstart: Gegevens delen met Azure Data Share in Azure Portal
 
@@ -67,7 +67,7 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
    ![Gegevenssets toevoegen aan de share](./media/datasets.png "Gegevenssets")
 
-1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
+1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure Synapse Analytics, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
    ![AddDatasets](./media/add-datasets.png "Gegevenssets toevoegen")    
 

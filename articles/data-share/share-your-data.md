@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259061"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489898"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelfstudie: Gegevens delen met Azure Data Share  
 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 
 ### <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL:
 
-* Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met tabellen en weergaven die u wilt delen.
+* Azure SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse) met tabellen en weergaven die u wilt delen.
 * Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
 * Machtiging voor de gegevensshare om toegang te krijgen tot de datawarehouse. U kunt dit doen via de volgende stappen: 
     1. Stel uzelf in als de Azure Active Directory-beheerder voor de SQL-server.
@@ -113,7 +113,7 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
     ![Gegevenssets toevoegen aan de share](./media/datasets.png "Gegevenssets")
 
-1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
+1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure Synapse Analytics, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
     ![AddDatasets](./media/add-datasets.png "Gegevenssets toevoegen")    
 

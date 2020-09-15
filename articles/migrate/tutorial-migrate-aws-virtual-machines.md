@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048530"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651831"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -43,12 +43,17 @@ U stelt als volgt een evaluatie in:
 1. Volg de [zelfstudie](./tutorial-prepare-physical.md) om Azure in te stellen en uw AWS-VM's voor te bereiden voor een evaluatie. Opmerking:
 
     - Azure Migrate gebruikt wachtwoordverificatie wanneer u AWS-instanties detecteert. AWS-instanties ondersteunen niet standaard wachtwoordverificatie. Voordat u een instantie kunt detecteren, moet u wachtwoordverificatie inschakelen.
-        - Voor Windows-machines staat u WinRM-poort 5986 (HTTPS) en 5985 (HTTP) toe. Zo kunt u externe WMI aanroepen. Voor de instelling 
+        - Sta voor Windows-machines WinRM-poort 5985 (HTTP) toe. Zo kunt u externe WMI aanroepen.
         - Voor Linux-machines:
             1. Aanmelden bij elke Linux-machine.
             2. Open het bestand sshd_config: vi /etc/ssh/sshd_config
             3. Ga in het bestand naar de regel **PasswordAuthentication** en wijzig de waarde in **yes**.
             4. Sla het bestand op en sluit het. Start de ssh-service opnieuw.
+    - Als u een rootgebruiker gebruikt voor het detecteren van uw Linux-VM's, moet u ervoor zorgen dat rootaanmelding is toegestaan op de VM's.
+        1. Aanmelden bij elke Linux-machine
+        2. Open het bestand sshd_config: vi /etc/ssh/sshd_config
+        3. Ga in het bestand naar de regel **PermitRootLogin** en wijzig de waarde in **yes**.
+        4. Sla het bestand op en sluit het. Start de ssh-service opnieuw.
 
 2. Volg vervolgens deze [zelfstudie](./tutorial-assess-physical.md) om een Azure Migrate-project en -apparaat in te stellen om uw AWS-VM's te ontdekken en te evalueren.
 
@@ -261,27 +266,32 @@ Er moet een Mobility-serviceagent zijn geïnstalleerd op de bron-AWS-VM's die mo
 
 8. Selecteer in **Doelinstellingen** het abonnement en de doelregio waarnaar u migreert en geef de resourcegroep op waarin de Azure-VM's na de migratie moeten worden geplaatst.
 9. Selecteer in **Virtual Network** het Azure VNet/subnet waaraan de Azure-VM's na migratie worden toegevoegd.
-10. In **Azure Hybrid Benefit**:
+10. Selecteer in **Beschikbaarheidsopties**:
+    -  Beschikbaarheidszone, om de gemigreerde computer vast te maken aan een specifieke beschikbaarheidszone in de regio. Gebruik deze optie om servers te distribueren die een toepassingslaag met meerdere knooppunten in de beschikbaarheidszones vormen. Als u deze optie selecteert, moet u op het tabblad Compute de beschikbaarheidszone opgeven die moet worden gebruikt voor elk van de geselecteerde computers. Deze optie is alleen beschikbaar als de doelregio die voor de migratie is geselecteerd, ondersteuning biedt voor beschikbaarheidszones
+    -  Beschikbaarheidsset, om de gemigreerde machine in een beschikbaarheidsset te plaatsen. De doelresourcegroep die is geselecteerd, moet een of meer beschikbaarheidssets bevatten om deze optie te kunnen gebruiken.
+    - Er is geen optie voor infrastructuurredundantie vereist als u geen van deze beschikbaarheidsconfiguraties nodig hebt voor de gemigreerde computers.
+11. In **Azure Hybrid Benefit**:
     - Selecteer **Nee** als u Azure Hybrid Benefit niet wilt toepassen. Klik op **Volgende**.
     - Selecteer **Ja** als u Windows Server-computers hebt die worden gedekt met actieve softwareverzekering of Windows Server-abonnementen en u het voordeel wilt toepassen op de machines die u migreert. Klik op **Volgende**.
 
     ![Doelinstellingen](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-11. Controleer in **Compute** de naam, de grootte, het schijftype van het besturingssysteem en de beschikbaarheidsset van de VM. VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+12. Controleer bij **Compute** naam, grootte, type besturingssysteemschijf en beschikbaarheidsconfiguratie van de VM (indien geselecteerd in de vorige stap). VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
-    - **VM-grootte**: Standaard kiest Azure Migrate Server Migration een grootte op basis van de dichtstbijzijnde overeenkomst in het Azure-abonnement. U kunt ook handmatig een grootte kiezen in **Azure VM-grootte**.
-    - **Besturingssysteemschijf**: Geef de besturingssysteemschijf (opstarten) voor de VM op. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat. 
-    - **Beschikbaarheidsset**: Als de VM na de migratie in een Azure-beschikbaarheidsset moet worden geplaatst, geeft u deze set op. De set moet zich bevinden in de doelresourcegroep die u voor de migratie opgeeft.
+    - **VM-grootte**: Als u evaluatie-aanbevelingen gebruikt, bevat het vervolgkeuzemenu voor de VM-grootte de aanbevolen grootte. Anders kiest Azure Migrate een grootte op basis van de dichtstbijzijnde overeenkomst in het Azure-abonnement. U kunt ook handmatig een grootte kiezen in **Azure VM-grootte**.
+    - **Besturingssysteemschijf**: Geef de besturingssysteemschijf (opstarten) voor de VM op. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat.
+    - **Beschikbaarheidszone**: Geef de beschikbaarheidszone op die moet worden gebruikt.
+    - **Beschikbaarheidsset**: Geef de beschikbaarheidsset op die moet worden gebruikt.
 
-    ![Rekeninstellingen](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+![Rekeninstellingen](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-12. Geef in **Schijven** op of de VM-schijven moeten worden gerepliceerd in Azure en selecteer het schijftype (standaard SSD/HDD of premium beheerde schijven) in Azure. Klik op **Volgende**.
+13. Geef in **Schijven** op of de VM-schijven moeten worden gerepliceerd in Azure en selecteer het schijftype (standaard SSD/HDD of premium beheerde schijven) in Azure. Klik op **Volgende**.
     - U kunt schijven uitsluiten van replicatie.
     - Als u schijven uitsluit, zijn deze na migratie niet beschikbaar in de Azure-VM. 
 
     ![Schijfinstellingen](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-13. Controleer in **Replicatie controleren en beginnen** de instellingen en klik op **Repliceren** om de eerste replicatie van de servers te beginnen.
+14. Controleer in **Replicatie controleren en beginnen** de instellingen en klik op **Repliceren** om de eerste replicatie van de servers te beginnen.
 
 > [!NOTE]
 > U kunt de replicatie-instellingen op elk gewenst moment bijwerken voordat de replicatie begint, **Beheren** > **Machines repliceren**. De instellingen kunnen niet meer worden gewijzigd nadat de replicatie is begonnen.

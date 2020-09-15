@@ -1,6 +1,6 @@
 ---
 title: Gegevens bulksgewijs kopiëren met PowerShell
-description: Informatie over het gebruik van Azure Data Factory en Activiteit kopiëren om gegevens bulksgewijs van een brongegevensopslag naar een doelgegevensopslag te kopiëren.
+description: Gebruik Azure Data Factory met Activiteit kopiëren om gegevens bulksgewijs van een brongegevensopslag naar een doelgegevensopslag te kopiëren.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251506"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490255"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory met PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure SQL Database naar Azure SQL Data Warehouse**. U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld het kopiëren van tabellen van SQL Server/Oracle naar Azure SQL Database/Data Warehouse/Azure Blob, verschillende paden kopiëren van Blob naar Azure SQL Database-tabellen.
+Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure SQL Database naar Azure Synapse Analytics (voorheen SQL Data Warehouse)** . U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld het kopiëren van tabellen van SQL Server/Oracle naar Azure SQL Database/Data Warehouse/Azure Blob, verschillende paden kopiëren van Blob naar Azure SQL Database-tabellen.
 
 Op hoog niveau bevat deze zelfstudie de volgende stappen:
 
 > [!div class="checklist"]
 > * Een data factory maken.
-> * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
-> * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
+> * Gekoppelde services maken voor Azure SQL Database, Azure Synapse Analytics en Azure Storage.
+> * Gegevenssets maken voor Azure SQL Database en Azure Synapse Analytics.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
@@ -37,12 +37,12 @@ Op hoog niveau bevat deze zelfstudie de volgende stappen:
 In deze zelfstudie wordt Azure PowerShell gebruikt. Zie [Quickstarts](quickstart-create-data-factory-dot-net.md) (Snelstartgidsen) voor meer informatie over het gebruik van andere hulpprogramma's/SDK's voor het maken van een gegevensfactory. 
 
 ## <a name="end-to-end-workflow"></a>End-to-end werkstroom
-In dit scenario hebben we een aantal tabellen in Azure SQL Database die we willen kopiëren naar SQL Data Warehouse. Dit is de logische volgorde van de stappen in de werkstroom die in pijplijnen plaatsvindt:
+In dit scenario hebben we een aantal tabellen in Azure SQL Database die we willen kopiëren naar Azure Synapse Analytics. Dit is de logische volgorde van de stappen in de werkstroom die in pijplijnen plaatsvindt:
 
 ![Werkstroom](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * De eerste pijplijn zoekt de lijst op met tabellen die moeten worden gekopieerd naar de sinkgegevensopslag.  U kunt ook een metagegevenstabel bijhouden waarin alle tabellen worden vermeld die moeten worden gekopieerd naar de sinkgegevensopslag. De pijplijn activeert vervolgens een andere pijplijn, die elke tabel in de database langsloopt en de bewerking uitvoert waarmee de gegevens worden gekopieerd.
-* De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in SQL Data Warehouse met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) (Engelstalig artikel) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
+* De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in Azure Synapse Analytics met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -53,23 +53,23 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 * **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren).
 * **Een Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
 * **Azure SQL-database**. Deze database bevat de brongegevens. 
-* **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
+* **Azure Synapse Analytics**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>SQL Database en SQL Data Warehouse voorbereiden
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>SQL Database en Azure Synapse Analytics voorbereiden
 
 **De Azure SQL Database-bron voorbereiden**:
 
-Maak een database met Adventure Works LT-testgegevens in SQL Database door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een database in Azure SQL Database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een SQL0datawarehouse gekopieerd.
+Maak een database met Adventure Works LT-testgegevens in SQL Database door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een database in Azure SQL Database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar Azure Synapse Analytics gekopieerd.
 
-**De Azure SQL Data Warehouse-sink voorbereiden**:
+**Bereid de sink Azure Synapse Analytics voor**:
 
-1. Als u geen Azure SQL Data Warehouse hebt, raadpleegt u het artikel [Create a SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) (Een Azure SQL-database maken) voor de stappen om er een te maken.
+1. Als u geen Azure Synapse Analytics-werkruimte hebt, raadpleegt u het artikel [Aan de slag met Azure Synapse Analytics](..\synapse-analytics\get-started.md) voor de stappen om er een te maken.
 
-2. Maak bijbehorende tabelschema's in SQL Data Warehouse. U gebruikt Azure Data Factory om gegevens in een latere stap te migreren/kopiëren.
+2. Maak corresponderende tabelschema's in Azure Synapse Analytics. U gebruikt Azure Data Factory om gegevens in een latere stap te migreren/kopiëren.
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-services voor toegang tot SQL-server
 
-Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data Warehouse. Zorg ervoor dat de instelling **Toegang tot Azure-services toestaan** voor uw server op **AAN** staat. Met deze instelling kan de Data Factory-service gegevens lezen uit uw Azure SQL Database en schrijven naar uw Azure SQL Data Warehouse. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
+Voor zowel SQL Database als Azure Synapse Analytics moet u Azure-services toegang verlenen tot SQL Server. Zorg ervoor dat de instelling **Toegang tot Azure-services toestaan** voor uw server op **AAN** staat. Met deze instelling kan de Data Factory-service gegevens lezen uit uw Azure SQL Database en schrijven naar Azure Synapse Analytics. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
 
 1. Klik op **Alle services** aan de linkerkant en klik op **SQL-servers**.
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
@@ -153,7 +153,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>De gekoppelde Azure SQL Data Warehouse-sinkservice maken
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>De gekoppelde service voor de sink Azure Synapse Analytics-service maken
 
 1. Maak een JSON-bestand met de naam **AzureSqlDWLinkedService.json** in de map **C:\ADFv2TutorialBulkCopy**. Geef dit bestand de volgende inhoud:
 
@@ -263,7 +263,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Een gegevensset maken voor de sink in SQL Data Warehouse
+### <a name="create-a-dataset-for-sink-synapse-analytics"></a>Een gegevensset maken voor de sink Synapse Analytics
 
 1. Maak een JSON-bestand met de naam **AzureSqlDWDataset.json** in de map **C:\ADFv2TutorialBulkCopy**. Geef dit bestand de volgende inhoud: 'tableName' is ingesteld als een parameter. De kopieeractiviteit die naar deze gegevensset verwijst, geeft de werkelijke waarde later door aan de gegevensset.
 
@@ -313,7 +313,7 @@ In deze zelfstudie maakt u twee pijplijnen:
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>De pijplijn 'IterateAndCopySQLTables' maken
 
-In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke tabel in de lijst worden gegevens uit de tabel in Azure SQL Database naar Azure SQL Data Warehouse gekopieerd met behulp van gefaseerd kopiëren en PolyBase.
+In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke tabel in de lijst worden gegevens uit de tabel in Azure SQL Database naar Azure Synapse Analytics gekopieerd met behulp van gefaseerd kopiëren en PolyBase.
 
 1. Maak een JSON-bestand met de naam **IterateAndCopySQLTables.json** in de map **C:\ADFv2TutorialBulkCopy**. Geef dit bestand de volgende inhoud:
 
@@ -334,7 +334,7 @@ In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke 
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from Azure SQL Database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to Azure Synapse Analytics",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -573,15 +573,15 @@ Deze pijplijn voert twee stappen uit:
     $result2
     ```
 
-3. Maak verbinding met de Azure SQL Data Warehouse-sinkopslag en bevestig dat de gegevens juist zijn gekopieerd vanuit Azure SQL Database.
+3. Maak verbinding met de sink Azure Synapse Analytics en bevestig dat de gegevens juist zijn gekopieerd vanuit Azure SQL Database.
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
 > * Een data factory maken.
-> * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
-> * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
+> * Gekoppelde services maken voor Azure SQL Database, Azure Synapse Analytics en Azure Storage.
+> * Gegevenssets maken voor Azure SQL Database en Azure Synapse Analytics.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
 > * De uitvoering van de pijplijn en van de activiteit controleren.

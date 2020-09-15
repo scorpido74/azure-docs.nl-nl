@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4973c12b8594026351b47ab31ba65e51a97fa3ab
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f2724a0ea0aa5f609be5847652973cfa03658c24
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687193"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421514"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>De voorbeeld bestanden bekijken en bewerken
 
@@ -30,6 +30,49 @@ Als onderdeel van de vereisten hebt u de voorbeeldcode naar een map gedownload. 
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * Bewerk de naam onder GraphTopologyDelete:
     * `"name"` : `"InferencingWithGrpcExtension"`
+
+> [!NOTE]
+> <p>
+> <details>
+> <summary>Uitvouwen en bekijken hoe het MediaGraphGrpcExtension-knooppunt in de topologie wordt geïmplementeerd</summary>
+> <pre><code>
+> {
+>   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+>   "name": "grpcExtension",
+>   "endpoint": {
+>       "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+>       "url": "${grpcExtensionAddress}",
+>       "credentials": {
+>           "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+>           "username": "${grpcExtensionUserName}",
+>           "password": "${grpcExtensionPassword}"
+>       }
+>   },
+>   "dataTransfer": {
+>       "mode": "sharedMemory",
+>       "SharedMemorySizeMiB": "5"
+>   },
+>   "image": {
+>       "scale": {
+>           "mode": "${imageScaleMode}",
+>           "width": "${frameWidth}",
+>           "height": "${frameHeight}"
+>       },
+>       "format": {
+>           "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
+>           "encoding": "${imageEncoding}",
+>           "quality": "${imageQuality}"
+>       }
+>   },
+>   "inputs": [
+>       {
+>           "nodeName": "motionDetection"
+>       }
+>   ]
+> }          
+> </code></pre>
+> </details>    
+> </p>
     
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-implementatiemanifest genereren en implementeren
 

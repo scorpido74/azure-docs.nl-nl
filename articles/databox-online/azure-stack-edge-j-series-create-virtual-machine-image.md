@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268907"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500280"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Aangepaste VM-installatiekopiën maken voor uw Azure Stack Edge-apparaat
 
@@ -52,7 +52,22 @@ Voer de volgende stappen uit om een installatiekopie voor een Linux-VM te maken.
 
 1. Maak een virtuele Linux-machine. Voor meer informatie gaat u naar [Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI](../virtual-machines/linux/tutorial-manage-vm.md).
 
-2. [Download een bestaande besturingssysteemschijf.](../virtual-machines/linux/download-vhd.md)
+1. Maak de inrichting van de virtuele machine ongedaan. Gebruik de Azure VM-agent om computerspecifieke bestanden en gegevens te verwijderen. Gebruik de `waagent`-opdracht met de parameter `-deprovision+user` op uw virtuele Linux-machine. Zie [Informatie en gebruik Azure Linux-agent](../virtual-machines/extensions/agent-linux.md) voor meer informatie.
+
+    1. Maak verbinding met uw virtuele Linux-machine met een SSH-client.
+    2. Voer in het SSH-venster de volgende opdracht in:
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatiekopie. Met deze opdracht wordt niet gegarandeerd dat de installatiekopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de parameter `+user` wordt ook het laatste ingerichte gebruikersaccount verwijderd. Gebruik alleen `-deprovision` om de referenties van het gebruikersaccount in de virtuele machine te blijven gebruiken.
+     
+    3. Voer **y** in om door te gaan. U kunt de parameter `-force` toevoegen om deze bevestigings stap te voorkomen.
+    4. Nadat de opdracht is voltooid, voert u **afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.
+
+
+1. [Download een bestaande besturingssysteemschijf.](../virtual-machines/linux/download-vhd.md)
 
 Gebruik deze VHD om nu een virtuele machine te maken en te implementeren op uw Azure Stack Edge-apparaat. U kunt de volgende twee Azure Marketplace-installatiekopieën gebruiken om aangepaste Linux-installatiekopieën te maken:
 

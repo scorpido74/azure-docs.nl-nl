@@ -2,16 +2,16 @@
 title: 'Zelfstudie: sjabloon exporteren uit de Azure-portal'
 description: Meer informatie over het gebruik van een geëxporteerde sjabloon om de ontwikkeling van uw sjabloon te voltooien.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497151"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650069"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelfstudie: Uit de Azure-portal geëxporteerde sjabloon gebruiken
 
@@ -62,7 +62,7 @@ Deze sjabloon werkt goed voor het implementeren van opslagaccounts, maar mogelij
 
    Met de functie voor het exporteren van sjablonen wordt de huidige status van een resource opgehaald en een sjabloon gegenereerd om deze te implementeren. Het exporteren van een sjabloon kan een handige manier zijn om snel de JSON te verkrijgen die u nodig hebt om een resource te implementeren.
 
-1. Kopieer de definitie **Microsoft.Web/serverfarms** en de parameterdefinitie naar uw sjabloon.
+1. Bekijk de definitie van **Microsoft.Web/serverfarms** en de parameterdefinitie in de geëxporteerde sjabloon. U hoeft deze secties niet te kopiëren. U kunt gewoon deze geëxporteerde sjabloon gebruiken als voorbeeld van de manier waarop u deze resource aan uw sjabloon wilt toevoegen.
 
     ![Geëxporteerde Resource Manager-sjabloon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ Deze sjabloon werkt goed voor het implementeren van opslagaccounts, maar mogelij
 
 De geëxporteerde sjabloon biedt u het merendeel van de benodigde JSON, maar u moet deze aanpassen voor uw sjabloon. Let vooral op verschillen in parameters en variabelen tussen uw sjabloon en de geëxporteerde sjabloon. Voor het exportproces is uiteraard niet bekend welke parameters en variabelen u al hebt gedefinieerd in uw sjabloon.
 
-In het volgende voorbeeld worden de toevoegingen aan uw sjabloon uitgelicht. Het bevat de geëxporteerde code plus enkele wijzigingen. Eerst wordt de naam van de parameter gewijzigd zodat deze overeenkomt met uw naamconventie. Ten tweede wordt uw locatieparameter gebruikt voor de locatie van het App Service-plan. Ten derde wordt **name** (naam) uit het object **properties**  (eigenschappen) verwijderd, omdat deze waarde overbodig is wegens de eigenschap **name** op resourceniveau.
+In het volgende voorbeeld worden de toevoegingen aan uw sjabloon uitgelicht. Het bevat de geëxporteerde code plus enkele wijzigingen. Eerst wordt de naam van de parameter gewijzigd zodat deze overeenkomt met uw naamconventie. Ten tweede wordt uw locatieparameter gebruikt voor de locatie van het App Service-plan. Ten derde worden enkele van de eigenschappen waar de standaardwaarde goed is, verwijderd.
 
 Kopieer het hele bestand en vervang uw sjabloon door de inhoud ervan.
 

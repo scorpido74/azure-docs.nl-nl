@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268890"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489915"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelfstudie: Gegevens accepteren en ontvangen met Azure Data Share  
 
@@ -41,7 +41,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor gege
 ### <a name="receive-data-into-a-sql-based-target"></a>Gegevens ontvangen in een op SQL gebaseerd doel:
 
 * Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
-* Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure SQL Data Warehouse. U kunt dit doen via de volgende stappen: 
+* Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
     1. Stel uzelf in als de Azure Active Directory-beheerder voor de SQL-server.
     1. Maak verbinding met Azure SQL Database/Data Warehouse met behulp van Azure Active Directory.
     1. Gebruik Queryeditor (preview) om het volgende script uit te voeren om de beheerde Data Share-identiteit toe te voegen als db_datareader, db_datawriter, db_ddladmin. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 

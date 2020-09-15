@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 53773d7c616edec067e1ed1778b7ce6b500ee936
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401075"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462612"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Zelfstudie: De geografische verkeersrouteringsmethode configureren met Traffic Manager
 
@@ -39,8 +39,7 @@ Met de geografische verkeersrouteringsmethode kunt u verkeer omleiden naar speci
 
 1. Zoek naar de naam van het Traffic Manager-profiel dat u in de zoekbalk van de portal hebt gemaakt en klik op het resultaat wanneer dit wordt weergegeven.
 2. Navigeer naar **Instellingen** -> **Eindpunten** in Traffic Manager.
-3. Klik op **Toevoegen** om **Eindpunt toevoegen** weer te geven.
-3. Klik op **Toevoegen** en voer in het veld **Eindpunt toevoegen** dat wordt weergegeven het volgende in:
+3. Klik op **Toevoegen** en voer in het deelvenster **Eindpunt toevoegen** dat wordt weergegeven, het volgende in:
 4. Selecteer **Type**, afhankelijk van het type eindpunt dat u toevoegt. Voor geografische routeringsprofielen die worden gebruikt in productie, raden we u ten zeerste aan gebruik te maken van geneste eindpunttypen die een onderliggend profiel met meer dan één eindpunt bevatten. Zie [Veelgestelde vragen over geografische verkeersrouteringsmethoden](traffic-manager-FAQs.md) voor meer informatie.
 5. Geef een **Naam** op waarmee u dit eindpunt kunt herkennen.
 6. Bepaalde velden op deze pagina zijn afhankelijk van het type eindpunt dat u toevoegt:

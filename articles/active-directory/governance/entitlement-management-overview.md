@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/25/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871204"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594319"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -153,7 +153,7 @@ Azure AD Premium P2-licenties zijn **niet** vereist voor de volgende taken:
 - Er zijn geen licenties vereist voor gebruikers die administratieve taken gedelegeerd krijgen, zoals een catalogusmaker, cataloguseigenaar en een beheerder van een toegangspakket.
 - Er zijn geen licenties vereist voor gasten die toegangspakketten **kunnen** aanvragen, maar dat **niet** doen.
 
-Voor elke betaalde Azure AD Premium P2-licentie die u voor uw leden (werknemers) aanschaft, kunt u Azure AD B2B gebruiken om maximaal vijf gastgebruikers uit te nodigen. Deze gastgebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [Licentierichtlijnen voor Azure AD B2B-samenwerking van Azure Active Directory](../external-identities/licensing-guidance.md) voor meer informatie.
+De prijzen voor externe Azure AD-identiteiten (gastgebruiker) zijn gebaseerd op maandelijks actieve gebruikers (MAU), d.w.z. het aantal unieke gebruikers met verificatie-activiteit in een kalendermaand. Dit model vervangt het factureringsmodel met een verhouding van 1:5, waarbij vijf gastgebruikers voor elke Azure AD Premium-licentie in uw tenant waren toegestaan. Wanneer uw tenant aan een abonnement is gekoppeld en u functies van Externe identiteiten gebruikt om met gastgebruikers samen te werken, wordt u automatisch gefactureerd met behulp van het MAU-gebaseerde factureringsmodel. Zie Factureringsmodel voor externe [Azure AD-identiteiten](../external-identities/external-identities-pricing.md) voor meer informatie.
 
 Zie [Licenties toewijzen en verwijderen met behulp van het Azure Active Directory-portal](../fundamentals/license-users-groups.md) voor meer informatie over licenties.
 
@@ -163,7 +163,7 @@ Hier volgen enkele voorbeelden van licentiescenario's om te helpen bepalen hoeve
 
 | Scenario | Berekening | Aantal licenties |
 | --- | --- | --- |
-| Een Globale beheerder bij Woodgrove Bank maakt initiële catalogi en delegeert administratieve taken aan zes andere gebruikers. Een van de beleidsregels geeft aan dat **Alle werknemers** (2.000 werknemers) een specifieke set toegangspakketten kunnen aanvragen. 150 werknemers vragen de toegangspakketten aan. | 2\.000 werknemers die de toegangspakketten **kunnen** aanvragen | 2000 |
+| Een Globale beheerder bij Woodgrove Bank maakt initiële catalogi en delegeert administratieve taken aan zes andere gebruikers. Een van de beleidsregels geeft aan dat **Alle werknemers** (2.000 werknemers) een specifieke set toegangspakketten kunnen aanvragen. 150 werknemers vragen de toegangspakketten aan. | 2\.000 werknemers die de toegangspakketten **kunnen** aanvragen | 2.000 |
 | Een Globale beheerder bij Woodgrove Bank maakt initiële catalogi en delegeert administratieve taken aan zes andere gebruikers. Een van de beleidsregels geeft aan dat **Alle werknemers** (2.000 werknemers) een specifieke set toegangspakketten kunnen aanvragen. Een ander beleid geeft aan dat sommige gebruikers van **partner Contoso** (gasten) dezelfde toegangspakketten kunnen aanvragen als ze goedkeuring krijgen. Contoso heeft 30.000 gebruikers. 150 werknemers vragen de toegangspakketten en 10.500 gebruikers van Contoso vragen toegang. | 2\.000 werknemers + 500 gastgebruikers van Contoso die de verhouding 1:5 overschrijden (10.500 - (2.000 * 5)) | 2500 |
 
 ## <a name="next-steps"></a>Volgende stappen

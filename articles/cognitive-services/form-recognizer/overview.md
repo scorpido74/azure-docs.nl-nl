@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723555"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394394"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -48,6 +48,7 @@ De Form Recognizer gebruikt de [indelings-API](#layout-api) voor meer informatie
 ## <a name="prebuilt-models"></a>Vooraf gemaakte modellen
 
 Form Recognizer bevat ook vooraf gemaakte modellen voor unieke formuliertypen.
+
 ### <a name="prebuilt-receipt-model"></a>Vooraf samengesteld model voor aankoopbewijzen
 Het vooraf samengesteld model voor aankoopbewijzen wordt in Australië, Canada, het Verenigd Koninkrijk, India en de Verenigde Staten gebruikt voor het lezen van Engelse aankoopbewijzen&mdash;het type dat wordt gebruikt door restaurants, tankstations, winkels, enzovoort. Dit model haalt belangrijke informatie op, zoals de tijd en datum van de transactie, informatie over de verkoper, btw, regelitems, totalen, enzovoort. Daarnaast wordt het vooraf samengestelde ontvangstbewijsmodel getraind om alle tekst op een ontvangstbewijs te herkennen en te retourneren. 
 
@@ -74,9 +75,11 @@ Volg een quickstart om aan de slag te gaan met het extraheren van gegevens uit u
     * [Trainen zonder labels - cURL](quickstarts/curl-train-extract.md)
     * [Trainen zonder labels - Python](quickstarts/python-train-extract.md)
     * [Trainen met labels - Python](quickstarts/python-labeled-data.md)
-  * Gegevens extraheren uit Amerikaanse aankoopbewijzen
+  * Gegevens extraheren uit aankoopbewijzen
     * [Ontvangstgegevens extraheren - cURL](quickstarts/curl-receipts.md)
     * [Ontvangstgegevens extraheren - Python](quickstarts/python-receipts.md)
+  * Gegevens extraheren uit visitekaartjes
+    * [Gegevens extraheren uit visitekaartjes - Python](quickstarts/python-business-cards.md)
   * Tekst- en tabelstructuur extraheren uit formulieren
     * [Indelingsgegevens extraheren - Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ U gebruikt de volgende API's om modellen te trainen en gestructureerde gegevens 
 | **Aangepast model trainen**| Train een nieuw model om uw formulieren te analyseren met behulp van vijf formulieren van hetzelfde type. Stel de parameter _useLabelFile_ in op `true` om met handmatig gelabelde gegevens te trainen. |
 | **Formulier analyseren** |Analyseer met uw aangepaste model één document dat is doorgegeven als een stroom voor het extraheren van tekst, sleutel-waardeparen en tabellen uit het formulier.  |
 | **Ontvangstbewijs analyseren** |Analyseer één ontvangstbewijsdocument voor het extraheren van belangrijke informatie en andere ontvangstbewijstekst.|
+| **Visitekaartjes analyseren** |Analyseer een visitekaartje om belangrijke informatie en tekst te extraheren.|
 | **Indeling analyseren** |Analyseer de indeling van een formulier om tekst- en tabelstructuur te extraheren.|
 
 Lees het [naslagmateriaal bij de REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Nieuwe functies](./whats-new.md) voor meer informatie over recente wijzigingen.

@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 53bf01b66d6638dbcdd96a543b5a40ba53150845
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5d756c8b0ae9cebcf924dc31b995946ce08a1638
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298416"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487586"
 ---
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Voor Cognitive Services-accounts moet gegevensversleuteling zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Met dit beleid worden alle Cognitive Services-accounts gecontroleerd waarvoor geen gegevensversleuteling wordt gebruikt. Voor alle Cognitive Services-accounts met opslag moet gegevensversleuteling zijn ingeschakeld met door de klant of door Microsoft beheerde sleutels. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |
-|[Voor Cognitive Services-accounts moet gegevensversleuteling met door de klant beheerde sleutels zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Met dit beleid worden alle Cognitive Services-accounts gecontroleerd waarvoor geen versleuteling met door de klant beheerde sleutels wordt gebruikt. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |
+|[Voor Cognitive Services-accounts moet gegevensversleuteling met door de klant beheerde sleutels zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Door de klant beheerde sleutels bieden verbeterde gegevensbescherming, omdat u uw versleutelingssleutels kunt beheren voor gegevens die zijn opgeslagen in Cognitive Services. Dit is vaak nodig om aan de nalevingsvereisten te voldoen. |Controleren, Weigeren, Uitgeschakeld |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |
 |[Voor Cognitive Services-accounts moet de netwerktoegang zijn beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F037eea7a-bd0a-46c5-9a66-03aea78705d3) |Netwerktoegang tot Cognitive Services-accounts moet zijn beperkt. Configureer netwerkregels zodat alleen toepassingen van toegestane netwerken toegang hebben tot het Cognitive Services-account. Om verbindingen van specifieke internet- of on-premises clients toe te staan, kan toegang worden verleend aan verkeer van specifieke virtuele Azure-netwerken of aan openbare IP-adresbereiken voor internet. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_NetworkAcls_Audit.json) |
 |[Voor Cognitive Services-accounts moet opslag van de klant worden gebruikt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F46aa9b05-0e60-4eae-a88b-1e9d374fa515) |Met dit beleid worden alle Cognitive Services-accounts gecontroleerd waarvoor geen opslag van de klant wordt gebruikt. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_UserOwnedStorage_Audit.json) |
 |[Voor Cognitive Services-accounts moet opslag van de klant worden gebruikt of gegevensversleuteling zijn ingeschakeld.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11566b39-f7f7-4b82-ab06-68d8700eb0a4) |Met dit beleid worden alle Cognitive Services-accounts gecontroleerd waarvoor geen opslag van de klant en geen gegevensversleuteling wordt gebruikt. Voor alle Cognitive Services-accounts met opslag gebruikt u opslag van de klant of schakelt u gegevensversleuteling in. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_BYOX_Audit.json) |

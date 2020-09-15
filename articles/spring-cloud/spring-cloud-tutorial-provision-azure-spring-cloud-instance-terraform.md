@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079189"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426347"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Zelfstudie: Een Azure Spring Cloud-exemplaar inrichten met Terraform
 
@@ -94,7 +94,7 @@ In deze sectie gebruikt u verschillende Terraform-opdrachten om de configuratie 
     terraform apply plan.out
     ```
 
-1. Als u de resultaten in de Azure-portal wilt controleren, bladert u naar de nieuwe resourcegroep. Het nieuwe **Azure Cosmos DB-exemplaar** wordt weergegeven in de nieuwe resourcegroep.
+1. Als u de resultaten in de Azure-portal wilt controleren, bladert u naar de nieuwe resourcegroep. Het nieuwe **Azure Spring Cloud-exemplaar** wordt weergegeven in de nieuwe resourcegroep.
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>Configuratie bijwerken voor de configuratie van logboeken en metrische gegevens
 

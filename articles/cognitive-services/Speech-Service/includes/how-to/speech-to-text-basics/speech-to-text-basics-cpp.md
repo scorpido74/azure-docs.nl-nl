@@ -4,40 +4,40 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 3d67361ecd4e06fdf006e836011d2cab59e340b6
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: ff171dfce0bcbb04ec017a8d5e3310cf3162e8e2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587861"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564966"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
 Voordat u iets kunt doen, moet u de Speech SDK installeren. Gebruik de volgende instructies, afhankelijk van uw platform:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Spreek<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Windows<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Linux <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Windows <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!NOTE]
-> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
 
-Er zijn een paar manieren waarop u een kunt initialiseren [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) :
+Er zijn een paar manieren waarop u een [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) kunt initialiseren:
 
-* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
-* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
-* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
-* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
+* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+* Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
+* Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
+* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) wordt gemaakt met behulp van een sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -45,33 +45,29 @@ auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourService
 
 ## <a name="initialize-a-recognizer"></a>Een herkenner initialiseren
 
-Nadat u een hebt gemaakt [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) , is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) . Wanneer u een initialiseert [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) , moet u het door geven aan uw `speech_config` . Dit biedt de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
-
-Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) volgende:
+Nadat u een [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) hebt gemaakt, is de volgende stap het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer). Wanneer u een [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) initialiseert, moet u er uw `speech_config` aan doorgeven. Dit zorgt voor de referenties die de spraakservice nodig heeft om uw aanvraag te valideren.
 
 ```cpp
 auto recognizer = SpeechRecognizer::FromConfig(config);
 ```
 
-Als u het audio-invoer apparaat wilt opgeven, moet u een maken [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) en de `audioConfig` para meter opgeven bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) .
+## <a name="recognize-from-microphone-or-file"></a>Herkennen van de microfoon of het bestand
 
-> [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) maken en deze doorgeven als een parameter bij het initialiseren van uw [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer).
 
-Voeg eerst de volgende `using namespace` instructie toe na uw `#include` definities.
+Als u spraak wilt herkennen met behulp van de microfoon van het apparaat, maakt u een `AudioConfig` met behulp van `FromDefaultMicrophoneInput()` en geeft u de audioconfiguratie door om uw `SpeechRecognizer`-object aan te maken.
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
-```
 
-Daarna kunt u als volgt naar het object verwijzen `AudioConfig` :
-
-```cpp
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
 ```
 
-Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een opgeven `audioConfig` . Wanneer u echter een maakt [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) in plaats van het aanroepen van `FromDefaultMicrophoneInput` , roept u `FromWavFileOutput` de para meter op en geeft u deze door `filename` .
+> [!TIP]
+> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
+
+Als u spraak wilt herkennen vanuit een audiobestand in plaats van met een microfoon, moet u nog steeds een `AudioConfig` aanmaken. Wanneer u echter de [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) maakt in plaats van `FromDefaultMicrophoneInput()` aan te roepen, roept u `FromWavFileInput()` aan en geeft u de parameter `filename` door.
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
@@ -80,27 +76,27 @@ auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 
 ## <a name="recognize-speech"></a>Spraak herkennen
 
-De [klasse Recognizer](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) voor de Speech SDK voor C++ bevat enkele methoden die u voor spraak herkenning kunt gebruiken.
+De [Recognizer-klasse](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) voor de Speech SDK voor C++ maakt een aantal methoden beschikbaar die u voor spraakherkenning kunt gebruiken.
 
-* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één utterance herkend. Het einde van één utterance wordt bepaald door te Luis teren naar stilte aan het einde of tot een maximum van 15 seconden audio wordt verwerkt.
-* Continue herkenning (asynchroon): initieert asynchrone herkennings bewerking. De gebruiker moet verbinding maken met de afhandelings gebeurtenis om herkennings resultaten te ontvangen. Om asynchrone doorlopende herkenning te stoppen, roept u aan [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync) .
+* Eenmalige herkenning (asynchroon): voert herkenning uit in een niet-blokkerende (asynchrone) modus. Hiermee wordt één uiting herkend. Het einde van één uiting wordt bepaald door te luisteren naar stilte aan het einde of tot een maximum van 15 seconden audio is verwerkt.
+* Continue herkenning (asynchroon): initieert asynchroon een continue herkenningsbewerking. De gebruiker moet verbinding maken met gebeurtenis verwerken om herkenningsresultaten te ontvangen. Als u asynchrone continue herkenning wilt stoppen, roept u [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync) aan.
 
 > [!NOTE]
-> Meer informatie over het [kiezen van een modus voor spraak herkenning](../../../how-to-choose-recognition-mode.md).
+> Meer informatie over het [kiezen van een spraakherkenningsmodus](../../../how-to-choose-recognition-mode.md).
 
 ### <a name="single-shot-recognition"></a>Eenmalige herkenning
 
-Hier volgt een voor beeld van asynchrone eenmalige herkenning met [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) :
+Hier volgt een voor beeld van asynchrone eenmalige herkenning met [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync):
 
 ```cpp
 auto result = recognizer->RecognizeOnceAsync().get();
 ```
 
-U moet een code schrijven om het resultaat te kunnen afhandelen. In dit voor beeld wordt het [`result->Reason`](https://docs.microsoft.com/cpp/cognitive-services/speech/recognitionresult#reason) volgende geëvalueerd:
+U moet code schrijven om het resultaat af te handelen. In dit voorbeeld wordt de [`result->Reason`](https://docs.microsoft.com/cpp/cognitive-services/speech/recognitionresult#reason) geëvalueerd:
 
-* Het herkennings resultaat afdrukken:`ResultReason::RecognizedSpeech`
-* Als er geen overeenkomst wordt gevonden, stelt u de gebruiker hiervan op de hoogte:`ResultReason::NoMatch`
-* Als er een fout is opgetreden, drukt u het fout bericht af:`ResultReason::Canceled`
+* Het herkenningsresultaat afdrukken: `ResultReason::RecognizedSpeech`
+* Als er geen herkenningsovereenkomst wordt gevonden, wordt de gebruiker hiervan op de hoogte gesteld: `ResultReason::NoMatch`
+* Als er een fout is opgetreden wordt het foutbericht afgedrukt: `ResultReason::Canceled`
 
 ```cpp
 switch (result->Reason)
@@ -128,29 +124,29 @@ switch (result->Reason)
 }
 ```
 
-### <a name="continuous-recognition"></a>Doorlopende herkenning
+### <a name="continuous-recognition"></a>Continue herkenning
 
-Doorlopende herkenning is een beetje meer betrokken dan eenmalige herkenning. U moet zich abonneren op de `Recognizing` -, `Recognized` -en- `Canceled` gebeurtenissen om de herkennings resultaten op te halen. Als u de herkenning wilt stoppen, moet u [StopContinuousRecognitionAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)aanroepen. Hier volgt een voor beeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoer bestand.
+Continue herkenning is wat ingewikkelder dan eenmalige herkenning. U moet zich abonneren op de gebeurtenissen `Recognizing`, `Recognized`en `Canceled` om de herkenningsresultaten op te halen. Als u de herkenning wilt stoppen, moet u [StopContinuousRecognitionAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync) aanroepen. Hier volgt een voorbeeld van hoe doorlopende herkenning wordt uitgevoerd op een audio-invoerbestand.
 
-Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) :
+Laten we beginnen met het definiëren van de invoer en het initialiseren van een [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer):
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 ```
 
-Vervolgens maken we een variabele voor het beheren van de status van spraak herkenning. We declareren een `promise<void>` , omdat we bij het begin van de herkenning veilig kunnen aannemen dat deze niet is voltooid.
+Vervolgens maken we een variabele voor het beheren van de status van spraakherkenning. Om te beginnen, declareren we een `promise<void>`, omdat we bij het begin van de herkenning zonder twijfel kunnen aannemen dat deze niet is voltooid.
 
 ```cpp
 promise<void> recognitionEnd;
 ```
 
-We nemen een abonnement op de gebeurtenissen die worden verzonden vanuit de [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) .
+We nemen een abonnement op de gebeurtenissen die vanuit de [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) worden verzonden.
 
-* [`Recognizing`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizing): Signaal voor gebeurtenissen met tussenliggende herkennings resultaten.
-* [`Recognized`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognized): Signaal voor gebeurtenissen met definitieve herkennings resultaten (wat een geslaagde herkennings poging aangeeft).
-* [`SessionStopped`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#sessionstopped): Signaal voor gebeurtenissen die het einde van een herkennings sessie (bewerking) aangeven.
-* [`Canceled`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#canceled): Signaal voor gebeurtenissen met Geannuleerde herkennings resultaten (waarmee een herkennings poging wordt aangegeven die is geannuleerd als gevolg van een aanvraag of een rechtstreekse annulering of een Trans Port-of protocol fout).
+* [`Recognizing`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizing): Signaal voor gebeurtenissen met tussenliggende herkenningsresultaten.
+* [`Recognized`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognized): Signaal voor gebeurtenissen met definitieve herkenningsresultaten (wat een geslaagde herkenningspoging aangeeft).
+* [`SessionStopped`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#sessionstopped): Signaal voor gebeurtenissen die het einde van een herkenningssessie (bewerking) aangeven.
+* [`Canceled`](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#canceled): Signaal voor gebeurtenissen met een geannuleerde herkenningsresultaten (waarmee een herkenningspoging wordt aangegeven die is geannuleerd als gevolg van een rechtstreekse annuleringsaanvraag of van een transport- of protocolfout).
 
 ```cpp
 recognizer->Recognizing.Connect([](const SpeechRecognitionEventArgs& e)
@@ -191,7 +187,7 @@ recognizer->SessionStopped.Connect([&recognitionEnd](const SessionEventArgs& e)
     });
 ```
 
-Als alles is ingesteld, kunnen we bellen [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#startcontinuousrecognitionasync) .
+Nu alles is ingesteld, kunnen we [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#startcontinuousrecognitionasync) aanroepen.
 
 ```cpp
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
@@ -204,51 +200,51 @@ recognitionEnd.get_future().get();
 recognizer->StopContinuousRecognitionAsync().get();
 ```
 
-### <a name="dictation-mode"></a>Dicteer modus
+### <a name="dictation-mode"></a>Dicteermodus
 
-Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herkenning inschakelen met behulp van de bijbehorende functie ' dicteren inschakelen '. Deze modus zorgt ervoor dat het spraak configuratie-exemplaar Word-beschrijvingen interpreteert, zoals Lees tekens. Bijvoorbeeld: het utterance ' hebt u Live in het stads vraag teken ' zou worden geïnterpreteerd als de tekst ' wilt u in de stad wonen? '.
+Bij het gebruik van continue herkenning kunt u dicteerverwerking inschakelen met behulp van de bijbehorende functie 'dicteren inschakelen'. In deze modus interpreteert de spraakconfiguratie-instantie woordbeschrijvingen van zinselementen zoals interpunctie. Bijvoorbeeld: de uiting 'Woon je hier in de stad vraagteken' wordt geïnterpreteerd als de tekst 'Woon je hier in de stad?'.
 
-Als u de dicteer modus wilt inschakelen, gebruikt u de- [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation) methode op uw [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) .
+Als u de dicteermodus wilt inschakelen, gebruikt u de [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)-methode op uw [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
 
 ```cpp
 config->EnableDictation();
 ```
 
-## <a name="change-source-language"></a>Bron taal wijzigen
+## <a name="change-source-language"></a>Brontaal wijzigen
 
-Een veelvoorkomende taak voor spraak herkenning is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal in het Duits wijzigt. Zoek in uw code uw [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) en voeg deze regel vervolgens direct onder de lijn toe.
+Een veelvoorkomende taak voor spraakherkenning is het opgeven van de invoer- (of bron)taal. Laten we eens kijken hoe u de invoertaal wijzigt in Duits. Zoek uw [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) in uw code en voeg deze regel daar direct onder toe.
 
 ```cpp
 config->SetSpeechRecognitionLanguage("de-DE");
 ```
 
-[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage)is een para meter die een teken reeks als argument gebruikt. U kunt een wille keurige waarde opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
+[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage) is een parameter die een tekenreeks als argument gebruikt. U kunt elke waarde in de lijst met ondersteunde [landinstellingen/talen](../../../language-support.md) opgeven.
 
-## <a name="improve-recognition-accuracy"></a>Nauw keurigheid van herkenning verbeteren
+## <a name="improve-recognition-accuracy"></a>Nauwkeurigheid van de herkenning verbeteren
 
-Er zijn een aantal manieren om de nauw keurigheid van de herkenning te verbeteren met de spraak-SDK. Laten we eens kijken naar woordgroepen lijsten. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie. Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als er een exacte overeenkomst voor de volledige woord groep wordt opgenomen in de audio. Als een exacte overeenkomst met de zin niet wordt gevonden, wordt de herkenning niet ondersteund.
+Er zijn een aantal manieren om de nauwkeurigheid van de herkenning te verbeteren met de Speech SDK. Neem bijvoorbeeld frasenlijsten. Frasenlijsten worden gebruikt om bekende frasen in audiogegevens te identificeren, zoals de naam van een persoon of een specifieke locatie. Er kunnen losse woorden of hele frasen worden toegevoegd aan een frasenlijst. Tijdens de herkenning wordt een vermelding in een frasenlijst gebruikt als er een exacte overeenkomst voor de volledige frase is opgenomen in de audio. Als er geen exacte overeenkomst met de frase wordt gevonden, wordt de herkenning niet ondersteund.
 
 > [!IMPORTANT]
-> De functie woordgroepen lijst is alleen beschikbaar in het Engels.
+> De frasenlijstfunctie is alleen beschikbaar in het Engels.
 
-Als u een woordgroepen lijst wilt gebruiken, maakt u eerst een [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) -object en voegt u vervolgens specifieke woorden en zinsdelen toe met [`AddPhrase`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar#addphrase) .
+Als u een frasenlijst wilt gebruiken, maakt u eerst een [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar)-object, en voegt u vervolgens specifieke woorden en frasen toe met [`AddPhrase`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar#addphrase).
 
-Wijzigingen die [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) van kracht worden bij de volgende herkenning of na het opnieuw verbinden met de spraak service.
+Wijzigingen in [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraakservice.
 
 ```cpp
 auto phraseListGrammar = PhraseListGrammar::FromRecognizer(recognizer);
 phraseListGrammar->AddPhrase("Supercalifragilisticexpialidocious");
 ```
 
-Als u uw woordgroepen lijst wilt wissen: 
+Als u uw frasenlijst wilt wissen: 
 
 ```cpp
 phraseListGrammar->Clear();
 ```
 
-### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties om de nauw keurigheid van de herkenning te verbeteren
+### <a name="other-options-to-improve-recognition-accuracy"></a>Andere opties voor het verbeteren van de nauwkeurigheid van de herkenning
 
-Woordgroepen lijsten zijn slechts één optie om de nauw keurigheid van de herkenning te verbeteren. U kunt ook het volgende doen: 
+Frasenlijsten zijn maar één optie om de nauwkeurigheid van de herkenning te verbeteren. U kunt ook het volgende doen: 
 
 * [Nauwkeurigheid verbeteren met Custom Speech](../../../how-to-custom-speech.md)
 * [Nauwkeurigheid verbeteren met tenantmodellen](../../../tutorial-tenant-model.md)

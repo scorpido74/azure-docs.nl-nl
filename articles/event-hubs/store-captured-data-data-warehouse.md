@@ -1,26 +1,26 @@
 ---
-title: 'Zelfstudie: gebeurtenisgegevens migreren naar SQL Data Warehouse - Azure Event Hubs'
-description: 'Zelfstudie: In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een Event Grid.'
+title: 'Zelfstudie: Gebeurtenisgegevens naar Azure Synapse Analytics migreren - Azure Event Hubs'
+description: 'Zelfstudie: In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in Azure Synapse Analytics met behulp van een Azure-functie die door een gebeurtenissenraster wordt geactiveerd.'
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997826"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436609"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelfstudie: Vastgelegde Event Hub-gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>Zelfstudie: Vastgelegde Event Hub-gegevens migreren naar Azure Synapse Analytics met behulp van Event Grid en Azure Functions
 
-Event Hubs [Capture](./event-hubs-capture-overview.md) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en verzenden naar andere opslagdoelen van uw keuze, zoals SQL Data Warehouse of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een [Event Grid](../event-grid/overview.md).
+Event Hubs [Capture](./event-hubs-capture-overview.md) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en naar andere opslagdoelen van uw keuze verzenden, zoals Azure Synapse Analytics of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in Azure Synapse Analytics met behulp van een Azure-functie die wordt geactiveerd door een [gebeurtenissenraster](../event-grid/overview.md).
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
 - U maakt eerst een Event Hub, waarbij de functie **Capture** is ingeschakeld, en stelt een Azure Blob Storage in als doel. Gegevens die worden gegenereerd door WindTurbineGenerator, worden gestreamd naar de Event Hub en automatisch vastgelegd in Azure Storage als Avro-bestanden.
 - Vervolgens maakt u een Azure Event Grid-abonnement met de Event Hubs-naamruimte als bron en het Azure Functions-eindpunt als doel.
-- Wanneer een nieuw Avro-bestand wordt verzonden naar de Azure Storage Blob met de functie Event Hubs Capture, stelt Event Grid Azure Functions op de hoogte met de blob-URI. Vervolgens worden de gegevens gemigreerd van de blob naar een SQL Data Warehouse.
+- Wanneer een nieuw Avro-bestand wordt verzonden naar de Azure Storage Blob met de functie Event Hubs Capture, stelt Event Grid Azure Functions op de hoogte met de blob-URI. Vervolgens worden de gegevens gemigreerd van de blob naar Azure Synapse Analytics.
 
 In deze zelfstudie voert u de volgende acties uit:
 
@@ -30,7 +30,7 @@ In deze zelfstudie voert u de volgende acties uit:
 > - Code publiceren naar een Azure Functions-app
 > - Event Grid-abonnement maken vanuit de Azure Functions-app
 > - Voorbeeldgegevens streamen naar Event Hub.
-> - Vastgelegde gegevens verifiëren in SQL Data Warehouse
+> - Vastgelegde gegevens verifiëren in Azure Synapse Analytics
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ In deze zelfstudie voert u de volgende acties uit:
 - Download het [Git-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo). De voorbeeldoplossing bevat de volgende onderdelen:
 
   - *WindTurbineDataGenerator*: een eenvoudige uitgever waarmee voorbeeldgegevens van windturbines worden verzonden naar een Event Hub waarvoor Capture is ingeschakeld
-  - *FunctionDWDumper*: een Azure-functie die een Event Grid-melding ontvangt wanneer een Avro-bestand wordt vastgelegd in de Azure Storage Blob. Het URI-pad van de blob wordt ontvangen en de inhoud wordt gelezen, waarna deze gegevens worden doorgestuurd naar een SQL Data Warehouse.
+  - *FunctionDWDumper*: een Azure-functie die een Event Grid-melding ontvangt wanneer een Avro-bestand wordt vastgelegd in de Azure Storage Blob. Het URI-pad van de blob wordt ontvangen en de inhoud wordt gelezen, waarna deze gegevens naar Azure Synapse Analytics worden gepusht.
 
   In dit voorbeeld wordt het meest recente Azure.Messaging.Eventhubs-pakket gebruikt. U vindt het oude voorbeeld dat gebruikmaakt van het Microsoft.Azure.EventHubs-pakket [hier](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
@@ -53,7 +53,7 @@ Gebruik Azure PowerShell of de Azure CLI om de infrastructuur te implementeren d
 - Azure App Service-plan voor het hosten van de Functions-app
 - Functions-app voor het verwerken van vastgelegde gebeurtenisbestanden
 - Logische SQL-server voor het hosten van het datawarehouse
-- SQL Data Warehouse voor het opslaan van de gemigreerde gegevens
+- Azure Synapse Analytics voor het opslaan van de gemigreerde gegevens
 
 In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor het implementeren van de infrastructuur die is vereist voor de zelfstudie. Werk de namen van de volgende objecten bij voordat u de opdrachten uitvoert: 
 
@@ -91,9 +91,9 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Een tabel maken in SQL Data Warehouse
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Een tabel maken in Azure Synapse Analytics
 
-Maak een tabel in uw SQL Data Warehouse door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren met [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) of de Query-editor in de portal. 
+Maak een tabel in Azure Synapse Analytics door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren met [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) of de Query-editor in de portal. 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -148,7 +148,7 @@ Nadat de functie is gepubliceerd, kunt u zich abonneren op de vastleggebeurtenis
    ![Abonnement maken](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>Voorbeeldgegevens genereren  
-U bent nu klaar met het instellen van uw Event Hub, SQL Data Warehouse, Azure Functions-app en Event Grid-abonnement. U kunt WindTurbineDataGenerator.exe uitvoeren om gegevensstromen te genereren naar de Event Hub nadat u de verbindingsreeks en de naam van uw Event Hub hebt bijgewerkt in de broncode. 
+U bent nu klaar met het instellen van uw Event Hub, Azure Synapse Analytics, de Azure Functions-app en het Event Grid-abonnement. U kunt WindTurbineDataGenerator.exe uitvoeren om gegevensstromen te genereren naar de Event Hub nadat u de verbindingsreeks en de naam van uw Event Hub hebt bijgewerkt in de broncode. 
 
 1. Selecteer in de portal de naamruimte van uw gebeurtenishub. Selecteer **Verbindingsreeksen**.
 
@@ -174,9 +174,9 @@ U bent nu klaar met het instellen van uw Event Hub, SQL Data Warehouse, Azure Fu
 6. Maak de oplossing en voer de toepassing WindTurbineGenerator.exe uit. 
 
 ## <a name="verify-captured-data-in-data-warehouse"></a>Vastgelegde gegevens verifiëren in het datawarehouse
-Voer na een paar minuten een query uit op de tabel in uw SQL Data Warehouse. U ziet dat de gegevens die zijn gegenereerd door WindTurbineDataGenerator, zijn gestreamd naar uw Event Hub, zijn vastgelegd in een Azure Storage-container en vervolgens door Azure Functions zijn gemigreerd naar de SQL Data Warehouse-tabel.  
+Voer na een paar minuten een query uit op de tabel in Azure Synapse Analytics. U ziet dat de gegevens die zijn gegenereerd door WindTurbineDataGenerator, naar uw Event Hub zijn gestreamd, in een Azure Storage-container zijn vastgelegd en vervolgens door Azure Functions naar de Azure Synapse Analytics-tabel zijn gemigreerd.  
 
 ## <a name="next-steps"></a>Volgende stappen 
 U kunt krachtige hulpmiddelen voor gegevensvisualisatie gebruiken met uw datawarehouse om bruikbare inzichten te verkrijgen.
 
-In dit artikel leest u hoe u [Power BI met SQL Data Warehouse](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) gebruikt
+In dit artikel leest u hoe u [Power BI met Azure Synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) gebruikt

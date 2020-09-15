@@ -3,12 +3,12 @@ title: Zelfstudie voor video-opname op basis van gebeurtenissen in de cloud en a
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics in Azure IoT Edge kunt gebruiken om een video-opname op basis van gebeurtenissen te maken in de cloud, en deze af te spelen vanuit de cloud.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011767"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568558"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Video-opname op basis van gebeurtenissen in de cloud en afspelen vanuit de cloud
 
@@ -62,7 +62,8 @@ Video-opname op basis van gebeurtenissen verwijst naar het proces van het opneme
 
 U kunt de opname alleen activeren wanneer een deductieservice detecteert dat er een bepaalde gebeurtenis is opgetreden. In deze zelfstudie gebruikt u een video van voertuigen die op een snelweg rijden, en neemt u videoclips op wanneer een truck wordt gedetecteerd.
 
-![Mediagrafiek](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Mediagrafiek":::
 
 In het diagram ziet u een afbeelding van een [mediagrafiek](media-graph-concept.md) en aanvullende modules die helpen het gewenste scenario bereiken. Er worden vier IoT Edge-modules gebruikt:
 
@@ -80,7 +81,8 @@ Zoals in het diagram wordt getoond, gebruikt u een [RTSP-bronknooppunt](media-gr
 
 Controleer voordat u begint of u de derde stap in [Vereisten](#prerequisites) hebt voltooid. Zodra het script voor de installatie van de resource is voltooid, klikt u op de accolades om de mapstructuur zichtbaar te maken. Er zijn enkele bestanden gemaakt in de map ~/clouddrive/lva-sample.
 
-![App-instellingen](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="App-instellingen":::
 
 In deze zelfstudie zijn de volgende bestanden van belang:
 
@@ -152,7 +154,8 @@ Het distributiemanifest definieert welke modules op een Edge-apparaat worden ge�
 
 Volg met behulp van Visual Studio Code [deze instructies](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) om u aan te melden bij Docker. Selecteer vervolgens **IoT Edge-oplossingen bouwen en pushen**. Gebruik voor deze stap src/edge/deployment.objectCounter.template.json.
 
-![IoT Edge-oplossingen bouwen en pushen](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge-oplossingen bouwen en pushen":::
 
 Met deze actie maakt u de objectCounter-module voor het tellen van objecten en pusht u de kopie naar uw Azure Container Registry.
 
@@ -160,7 +163,8 @@ Met deze actie maakt u de objectCounter-module voor het tellen van objecten en p
 
 Met deze stap maakt u het IoT Edge-distributiemanifest op src/edge/config/deployment.objectCounter.amd64.json. Klik met de rechtermuisknop op het bestand en selecteer **Implementatie maken voor één apparaat**.
 
-![Implementatie voor één apparaat maken](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Implementatie voor één apparaat maken":::
 
 Als dit uw eerste zelfstudie met Live Video Analytics in IoT Edge is, wordt u in Visual Studio Code gevraagd om de IoTHub-verbindingsreeks in te voeren. U kunt deze kopiëren uit het bestand appsettings.json.
 
@@ -169,7 +173,8 @@ Vervolgens wordt u in Visual Studio Code gevraagd om een IoT Hub-apparaat te sel
 Nu is de implementatie van Edge-modules op uw IoT Edge-apparaat gestart.
 Vernieuw Azure IoT Hub, over ongeveer 30 seconden, in de sectie linksonder in Visual Studio Code. U ziet dat er vier modules zijn geïmplementeerd, genaamd lvaEdge, rtspsim, yolov3 en objectCounter.
 
-![Vier modules geïmplementeerd](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Vier modules geïmplementeerd":::
 
 ## <a name="prepare-for-monitoring-events"></a>Bewakingsgebeurtenissen voorbereiden
 
@@ -179,9 +184,10 @@ Volg deze stappen om de gebeurtenissen van de objectCounter-module en van de Liv
 1. Vouw het knooppunt **Apparaten** uit.
 1. Klik met de rechtermuisknop op Iva-sample-device en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**.
 
-   ![Bewaking van ingebouwd gebeurteniseindpunt starten](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>Het programma uitvoeren
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Bewaking van ingebouwd gebeurteniseindpunt starten":::
+    
+    ## <a name="run-the-program"></a>Het programma uitvoeren
 
 1. Ga in Visual Studio Code naar src/cloud-to-device-console-app/operations.json.
 
@@ -390,13 +396,14 @@ U kunt de Media Services-asset die met de grafiek is gemaakt, controleren door u
 1. Zoek uw Media Services-account op tussen de resources in uw abonnement. Open het deelvenster Account.
 1. Selecteer **Assets** in de **Media Services**-lijst.
 
-    ![Assets](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Continue video-opname":::
 1. U vindt een asset in de lijst met de naam sampleAssetFromEVR-LVAEdge-{DateTime}. Dit is de naam die is opgegeven in de eigenschap outputLocation van de gebeurtenis RecordingStarted. De assetNamePattern in de topologie bepaalt hoe deze naam wordt gegenereerd.
 1. Selecteer de asset.
 1. Klik op de pagina met assetdetails op **Nieuwe maken** onder het tekstvak **Streaming-URL**.
 
-    ![Nieuwe asset](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Nieuwe asset":::
 1. Accepteer in de wizard die wordt geopend, de standaardopties en klik op **Toevoegen**. Zie [video afspelen](video-playback-concept.md) voor meer informatie.
 
     > [!TIP]

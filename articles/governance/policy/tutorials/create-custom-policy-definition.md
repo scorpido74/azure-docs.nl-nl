@@ -3,12 +3,12 @@ title: 'Zelfstudie: Een aangepaste beleidsdefinitie maken'
 description: In deze zelfstudie maakt u een aangepaste beleidsdefinitie voor Azure Policy om aangepaste bedrijfsregels af te dwingen voor uw Azure-resources.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044614"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649831"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
 
@@ -73,7 +73,7 @@ Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon]
 De eenvoudigste manier om eigenschappen te vinden is een bestaande resource van hetzelfde type te bekijken. Resources die al zijn geconfigureerd met de instelling die u wilt afdwingen, bevatten ook de waarde waarmee moet worden vergeleken.
 Bekijk de pagina **Sjabloon exporteren** (onder **Instellingen**) in de Azure-portal voor die specifieke resource.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Pagina Sjabloon exporteren voor bestaande resource" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Schermopname van de pagina Sjabloon exporteren van een bestaande resource in de Azure-portal." border="false":::
 
 Wanneer u dit doet voor een opslagaccount, ziet u een sjabloon die lijkt op het volgende voorbeeld:
 

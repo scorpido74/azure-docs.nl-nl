@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322125"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566259"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Zelfstudie: Een ExpressRoute-circuit maken en wijzigen
 
@@ -75,7 +75,10 @@ U kunt een ExpressRoute-circuit maken door de optie voor het maken van een nieuw
     > [!IMPORTANT]
     > Peeringlocatie geeft de [fysieke locatie](expressroute-locations.md) aan vanwaaruit u koppelt met Microsoft. Dit is **niet** gekoppeld aan de eigenschap Location, die verwijst naar de geografische locatie waar de Azure-netwerkresourceprovider zich bevindt. Hoewel deze twee niet zijn gerelateerd, wordt wel aanbevolen een netwerkresourceprovider te kiezen die zich geografisch dicht bij de peeringlocatie van het circuit bevindt.
 
-    * **SKU** bepaalt of een Lokale-, Standaard- of Premium-ExpressRoute invoegtoepassing is ingeschakeld. U kunt **Lokaal** opgeven om de lokale SKU-invoegtoepassing te krijgen, **Standaard** om de standaard SKU-invoegtoepassing te krijgen of **Premium** voor de Premium-invoegtoepassing.
+    * **SKU** bepaalt of een Lokale-, Standaard- of Premium-ExpressRoute invoegtoepassing is ingeschakeld. U kunt **Local** opgeven om de lokale SKU-invoegtoepassing te krijgen, **Standard** om de standaard SKU-invoegtoepassing te krijgen of **Premium** voor de Premium-invoegtoepassing. U kunt de SKU wijzigen om de Premium-invoegtoepassing in te schakelen.
+    > [!IMPORTANT]
+    > U kunt de SKU niet wijzigen van **Standard/Premium** in **Local**.
+    
     * **Factureringsmodel** bepaalt het factureringstype. U kunt **Naar gebruik** opgeven voor een data-abonnement naar gebruik, en **Onbeperkt** voor een onbeperkt data-abonnement. Houd er rekening mee dat u het factureringstype allen kunt wijzigen van **Naar gebruik** in **Onbeperkt**.
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ U kunt bepaalde eigenschappen van een ExpressRoute-circuit wijzigen zonder dat d
 U kunt de volgende taken uitvoeren zonder dat dit resulteert in downtime:
 
 * Een ExpressRoute Premium-invoegtoepassing in- of uitschakelen voor uw ExpressRoute-circuit.
+
+> [!IMPORTANT]
+  > Wijzigen van de SKU van **Standard/Premium** naar **Local** wordt niet ondersteund.
+
 * De bandbreedte van uw ExpressRoute-circuit verhogen, mits er capaciteit beschikbaar is op de poort.
 
   > [!IMPORTANT]

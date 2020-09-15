@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in de Blob Storage-Speech-Service'
+title: 'Quickstart: Spraak herkennen die is opgeslagen in blobopslag - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 9ced792ab076c312c827d4a74c08cfa7971b7e17
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400930"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569409"
 ---
-In deze Quick start gaat u een REST API gebruiken om spraak te herkennen van bestanden in een batch-proces. Een batch-proces voert de spraak transcriptie uit zonder gebruikers interacties. Het biedt u een eenvoudig programmeer model, zonder de nood zaak om gelijktijdigheid, aangepaste spraak modellen of andere gegevens te beheren. Dit omvat geavanceerde beheer opties, terwijl er efficiënt gebruik wordt gemaakt van Azure speech-service bronnen.
+In deze instructies gebruikt u de REST API voor batchtranscriptie om spraak te herkennen uit bestanden in een batchverwerking. Bij een batchverwerking wordt de spraaktranscriptie uitgevoerd zonder gebruikersinteracties. Het biedt u een eenvoudig programmeermodel, zonder de noodzaak om gelijktijdigheid, aangepaste spraakmodellen of andere gegevens te beheren. Dit omvat geavanceerde beheeropties, terwijl er efficiënt gebruik wordt gemaakt van Azure-resources voor spraakservices.
 
-Zie [batch transcriptie](../../../batch-transcription.md)voor meer informatie over de beschik bare opties en configuratie details.
+Zie [batchtranscriptie](../../../batch-transcription.md) voor meer informatie over de beschikbare opties en configuratiegegevens.
 
-In de volgende snelstartgids vindt u een voor beeld van het gebruik.
+In de volgende quickstart vindt u een voorbeeld van het gebruik.

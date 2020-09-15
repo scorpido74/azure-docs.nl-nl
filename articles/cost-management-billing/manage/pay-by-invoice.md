@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684861"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567908"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Per factuur betalen voor uw Azure-abonnement
 
@@ -67,7 +67,7 @@ Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/dir
      Specifieke regio en serie van abonnement:<br>
 
     - De **Bedrijfsnaam** en het **Bedrijfsadres** moeten overeenkomen met de informatie die u hebt opgegeven voor het Azure-account. Als u de informatie wilt weergeven of bijwerken, raadpleegt u [Profielgegevens van uw Azure-account wijzigen](change-azure-account-profile.md).
-    - Voeg de gegevens over de contactpersoon voor facturering toe aan Azure Portal voordat de kredietlimiet kan worden goedgekeurd. De contactgegevens moeten zijn gerelateerd aan de afdelingen Crediteuren of Financiën van het bedrijf. Als u de gegevens van de contactpersoon voor facturering wilt bijwerken, gaat u naar het [Azure-accountcentrum](https://account.azure.com/Profile).
+    - Voeg de gegevens over de contactpersoon voor facturering toe aan Azure Portal voordat de kredietlimiet kan worden goedgekeurd. De contactgegevens moeten zijn gerelateerd aan de afdelingen Crediteuren of Financiën van het bedrijf. Als u de gegevens van de contactpersoon voor facturering wilt bijwerken, gaat u naar [Azure Portal](https://portal.azure.com).
 
 6. Controleer uw contactgegevens en de voorkeurscontactmethode, en selecteer vervolgens **Maken**.
 

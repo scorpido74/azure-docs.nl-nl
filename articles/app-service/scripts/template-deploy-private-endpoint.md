@@ -1,6 +1,6 @@
 ---
-title: Met deze Azure Resource Manager-sjabloon kunt u een privé-eindpunt voor uw web-app implementeren.
-description: Meer informatie over het gebruik van ARM-sjabloon voor het implementeren van een privé-eindpunt voor uw web-app
+title: Een Azure Resource Manager-sjabloon gebruiken om een privé-eindpunt voor uw web-app te implementeren
+description: Meer informatie over het gebruik van een ARM-sjabloon voor het implementeren van een privé-eindpunt voor uw web-app.
 author: ericgre
 ms.assetid: 49e460d0-7759-4ceb-b5a4-f1357e4fde56
 ms.topic: sample
@@ -8,16 +8,16 @@ ms.date: 07/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ff2d59ed569037f34e24a69ffafa0df237a3de34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524796"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652021"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-resource-manager-template"></a>Een App Service-app maken en een privé-eindpunt implementeren met behulp van Azure Resource Manager-sjabloon
+# <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Een App Service-app maken en een privé-eindpunt implementeren met behulp van een Azure Resource Manager-sjabloon
 
-In deze quickstart gebruikt u een Azure Resource Manager-sjabloon om een web-app te maken en deze open te stellen met een privé-eindpunt.
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM) om een web-app te maken en deze open te stellen met een privé-eindpunt.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +37,10 @@ Met deze sjabloon maakt u een privé-eindpunt voor een Azure-web-app.
 
 Dit is hoe u de Azure Resource Manager-sjabloon implementeert in Azure:
 
-1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u het VNet, de web-app, het privé-eindpunt en de privé-DNS-zone.
-
-   [Implementeren naar Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)
-
+1. Selecteer de volgende koppeling om u aan te melden bij Azure en de sjabloon te openen:  [Implementeren in Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json). Met de sjabloon maakt u het virtuele netwerk, de web-app, het privé-eindpunt en de privé-DNS-zone.
 2. Selecteer of maak een resourcegroep.
-3. Typ de naam van uw web-app, App Service-abonnement en privé-eindpunt in.
-5. Lees de algemene voorwaarden. Als u akkoord gaat, selecteert u Ik ga akkoord met de bovenstaande voorwaarden > Kopen. De implementatie kan enkele minuten duren om te voltooien.
+3. Voer de naam van uw web-app, App Service-plan en privé-eindpunt in.
+5. Lees de verklaring met betrekking tot de algemene voorwaarden. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** > **Kopen** als u akkoord gaat. De implementatie kan enkele minuten duren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -57,4 +54,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer voorbeelden voor Resource Manager-sjablonen voor Azure App Service Web Apps vindt u in de [voorbeelden van ARM-sjabloon](../samples-resource-manager-templates.md).
+- Meer Azure Resource Manager-sjablonen voor Azure App Service-web-apps vindt u in de [voorbeelden van ARM-sjablonen](../samples-resource-manager-templates.md).

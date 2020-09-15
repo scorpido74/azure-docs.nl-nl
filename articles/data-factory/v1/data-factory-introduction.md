@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321087"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436253"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Inleiding tot Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -35,7 +35,7 @@ We nemen een gamingbedrijf als voorbeeld. Het verzamelt logboeken die wordt gepr
 
 Voor het analyseren van deze logboeken moet het bedrijf gebruikmaken van de referentiegegevens, zoals klantgegevens, game-informatie en marketingcampagnegegevens, die zich in een on-premises gegevensarchief bevinden. Daarom wil het bedrijf logboekgegevens opnemen uit het gegevensarchief in de cloud en gegevens uit het on-premises gegevensarchief raadplegen. 
 
-Vervolgens wil het de gegevens verwerken met behulp van Hadoop in de cloud (Azure HDInsight). De resulterende gegevens moeten worden gepubliceerd in een datawarehouse in de cloud, zoals Azure SQL Data Warehouse, of een on-premises gegevensarchief, zoals SQL Server. Het bedrijf wil dat deze werkstroom één keer per week wordt uitgevoerd. 
+Vervolgens wil het de gegevens verwerken met behulp van Hadoop in de cloud (Azure HDInsight). De resulterende gegevens moeten worden gepubliceerd in een datawarehouse in de cloud, zoals Azure Synapse Analytics (voorheen SQL Data Warehouse) of een on-premises gegevensarchief, zoals SQL Server. Het bedrijf wil dat deze werkstroom één keer per week wordt uitgevoerd. 
 
 Het heeft een platform nodig waar het een werkstroom kan maken dat gegevens kan verwerken van zowel een on-premises gegevensarchief als een gegevensarchief in de cloud. Het bedrijf moet tevens in staat zijn gegevens te transformeren of verwerken met behulp van bestaande computerservices, zoals Hadoop. Het moet de resultaten publiceren naar een on-premises gegevensarchief of een gegevensarchief in de cloud. Deze gegevens moeten door BI-toepassingen kunnen worden gebruikt. 
 
@@ -47,7 +47,7 @@ Azure Data Factory is het ideale platform voor dit soort scenario's. Het is een 
 
 - De gegevens verwerken en transformeren met behulp van rekenservices als Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning.
 
--  Uitvoergegevens publiceren naar gegevensopslaglocaties als Azure SQL Data Warehouse, waar BI-toepassingen (business intelligence) er gebruik van kunnen maken.  
+-  Uitvoergegevens publiceren naar gegevensopslaglocaties als Azure Synapse Analytics, waar BI-toepassingen (business intelligence) er gebruik van kunnen maken.  
 
 Het is eerder een EL-platform (Extract-and-Load) en een TL-platform (Transform-and-Load) dan een traditioneel ETL-platform (Extract-Transform-and-Load). De transformaties verwerken gegevens met behulp van rekenservices in plaats van afgeleide kolommen toe te voegen, het aantal rijen te tellen, gegevens te sorteren, enzovoort. 
 

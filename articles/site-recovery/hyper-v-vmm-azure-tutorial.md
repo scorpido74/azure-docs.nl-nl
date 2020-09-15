@@ -4,12 +4,12 @@ description: Leer hoe u herstel na noodgevallen kunt instellen voor on-premises 
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130236"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442817"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Herstel na noodgevallen voor on-premises Hyper-V-VM's in VMM-clouds naar Azure instellen
 
@@ -83,7 +83,11 @@ Installeer de agent op elke Hyper-V-host met VM’s die u wilt repliceren.
 Configureer deze instellingen in de installatiewizard voor de Microsoft Azure Recovery Services-agent:
 
 1. **Controle op vereisten**. Selecteer **Next**. Ontbrekende vereiste onderdelen worden automatisch geïnstalleerd.
-1. **Installatie-instellingen**. Accepteer de installatielocatie en de cachelocatie. Het cachestation moet ten minste 5 GB aan opslagruimte bevatten. We raden een station met 600 GB of meer vrije ruimte aan. Selecteer vervolgens **Install**.
+1. **Installatie-instellingen**. Accepteer de installatielocatie. Selecteer vervolgens **Install**.
+
+    >[!NOTE]
+    >Voor Azure Site Recovery is de **locatie van de cache** niet vereist.
+
 1. **Installatie**. Wanneer de installatie is voltooid, selecteert u **Sluiten** om de wizard te voltooien.
 
    ![Agent installeren](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
@@ -126,7 +130,7 @@ Site Recovery controleert of er een of meer compatibele Azure-opslagaccounts en 
 1. Selecteer het opslagaccount **contosovmsacct1910171607** en het Azure-netwerk **ContosoASRnet**.
 1. **Virtuele machines** > **Selecteren**. Selecteer de VM die u wilt repliceren. Selecteer vervolgens **OK**.
 
-   U kunt de voortgang van de actie **Beveiliging inschakelen** volgen via **Taken** > **Site Recovery-taken**. Wanneer de taak **De beveiliging voltooien** is voltooid, is de initiële replicatie voltooid en is de VM klaar voor failover.
+   U kunt de voortgang van de actie **Beveiliging inschakelen** volgen via **Taken** > **Site Recovery-taken**. Wanneer de taak **De beveiliging voltooien** is voltooid, is de initiële replicatie voltooid en is de virtuele machine klaar voor failover.
 
 ## <a name="next-steps"></a>Volgende stappen
 
