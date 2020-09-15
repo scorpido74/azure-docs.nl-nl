@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705058"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086705"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -517,10 +517,11 @@ in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
 diffDiskSettings | Tijdelijke schijf instellingen
 diskSizeGB | Grootte van de schijf in GB
+encryptionSettings | Versleutelings instellingen voor de schijf
 image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
-LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
 naam    | Schijf naam
+osType  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
@@ -532,11 +533,10 @@ in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
 diffDiskSettings | Tijdelijke schijf instellingen
 diskSizeGB | Grootte van de schijf in GB
-encryptionSettings | Versleutelings instellingen voor de schijf
 image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
+LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
 naam    | Schijf naam
-osType  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 

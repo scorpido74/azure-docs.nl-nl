@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 429baa4d5dc85476192758e4500f4c1f14610e6d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77198289"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089306"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interactie typen en sneltoetsen in de module teken hulpprogramma's
 
@@ -21,9 +21,9 @@ In dit artikel vindt u een overzicht van de verschillende manieren om shapes te 
 
 De tekening beheerder ondersteunt drie verschillende manieren van interactie met de kaart, om vormen te tekenen.
 
-* `click`-Coördinaten worden toegevoegd wanneer er met de muis of het aanraken wordt geklikt.
-* `freehand `-Coördinaten worden toegevoegd wanneer de muis of het aanraak scherm op de kaart wordt gesleept.
-* `hybrid`-Coördinaten worden toegevoegd wanneer de muis of het aanraken wordt geklikt of gesleept.
+* `click` -Coördinaten worden toegevoegd wanneer er met de muis of het aanraken wordt geklikt.
+* `freehand ` -Coördinaten worden toegevoegd wanneer de muis of het aanraak scherm op de kaart wordt gesleept.
+* `hybrid` -Coördinaten worden toegevoegd wanneer de muis of het aanraken wordt geklikt of gesleept.
 
 ## <a name="how-to-draw-shapes"></a>Vormen tekenen
 
@@ -135,7 +135,7 @@ Wanneer de teken beheer `draw-circle` modus actief is, kunnen de volgende acties
 
 De teken hulpprogramma's ondersteunen sneltoetsen. Deze sneltoetsen werken als de kaart zich in de focus bevindt.
 
-| Sleutel      | Bewerking                            |
+| Sleutel      | Actie                            |
 |----------|-----------------------------------|
 | `C` | Hiermee wordt de actieve tekening voltooid en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
 | `Escape` | Hiermee wordt de actieve tekening geannuleerd en wordt de teken modus ingesteld op inactief. De focus wordt verplaatst naar het map-element op het hoogste niveau.  |
@@ -146,7 +146,7 @@ De teken hulpprogramma's ondersteunen sneltoetsen. Deze sneltoetsen werken als d
 Meer informatie over de klassen in de module teken hulpprogramma's:
 
 > [!div class="nextstepaction"]
-> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Werk balk tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

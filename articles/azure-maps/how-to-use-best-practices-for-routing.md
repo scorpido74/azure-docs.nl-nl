@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400774"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086399"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
 
@@ -275,7 +275,7 @@ De onderstaande afbeelding is een voor beeld van het weer geven van alternatieve
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>De Routing-service gebruiken in een web-app
 
-De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of Node.js toepassingen kunt gebruiken, met Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
+De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/javascript/api/azure-maps-rest/). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of Node.js toepassingen kunt gebruiken, met Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

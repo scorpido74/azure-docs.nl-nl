@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007550"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088320"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problemen met Verificatie van uitgever oplossen
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
@@ -39,10 +39,10 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     1. Als er al een MPN-account bestaat, wordt dit herkend en wordt u aan het account toegevoegd 
     1. Navigeer naar de [pagina Partner profiel](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) waar de contact persoon voor de MPN-id en het primaire account wordt weer gegeven
 
-- **Ik weet niet wie mijn globale beheerder van Azure AD (ook wel bedrijfs beheerder of Tenant beheerder is), hoe vind ik ze? Wat is de beheerder van de app of een andere beheerdersrol?**
+- **Ik weet niet wie de globale beheerder van Azure AD (ook wel bedrijfs beheerder of Tenant beheerder is), hoe vind ik ze? Wat is de toepassings beheerder of de beheerder van de Cloud toepassing?**
     1. Meld u aan bij de [Azure AD-Portal](https://aad.portal.azure.com) met behulp van een gebruikers account in de primaire Tenant van uw organisatie
     1. Navigeer naar [Role Management](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)
-    1. Klik op globale beheerder of de gewenste beheerdersrol
+    1. Klik op de gewenste beheerdersrol
     1. De lijst met gebruikers die zijn toegewezen aan die rol wordt weer gegeven
 
 - **Ik weet niet wie de beheerder (s) voor mijn MPN-account** Ga naar de [MPN-gebruikers beheer pagina](https://partner.microsoft.com/pcv/users) en filter de gebruikers lijst om te zien welke gebruikers zich in verschillende beheerders rollen bevinden.
@@ -51,22 +51,25 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     1. Ga naar uw [partner profiel](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) en controleer het volgende: 
         - De MPN-ID is juist. 
         - Er zijn geen fouten of acties die in behandeling zijn, en de verificatie status onder juridisch zakelijk profiel en partner informatie hebben beide de tekst "geautoriseerd" of "geslaagd".
-    1. Ga naar de [pagina MPN Tenant beheer](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) en bevestig dat de Tenant waarin de app is geregistreerd en dat u zich aanmeldt met een gebruikers account, zich in de lijst met gekoppelde tenants bevindt.
-    1. Ga naar de [pagina gebruikers beheer van MPN](https://partner.microsoft.com/pcv/users) en bevestig dat de gebruiker waarbij u zich aanmeldt, een globale beheerder, MPN beheerder of account beheerder is.
+    1. Ga naar de [pagina MPN Tenant beheer](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) en bevestig dat de Tenant waarin de app is geregistreerd en dat u zich aanmeldt met een gebruikers account, zich in de lijst met gekoppelde tenants bevindt. Als u een extra Tenant moet toevoegen, volgt u de instructies [hier](https://docs.microsoft.com/partner-center/multi-tenant-account). Houd er rekening mee dat alle globale beheerders van alle tenants die u toevoegt, globale beheerders rechten krijgen voor uw partner centrum-account.
+    1. Ga naar de [pagina gebruikers beheer van MPN](https://partner.microsoft.com/pcv/users) en bevestig dat de gebruiker waarbij u zich aanmeldt, een globale beheerder, MPN beheerder of account beheerder is. Als u een gebruiker aan een rol in het partner centrum wilt toevoegen, volgt u de instructies [hier](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions).
 
 - **Wanneer ik me aanmeld in de Azure AD-Portal, zie ik geen geregistreerde apps. Waarom?** 
-    Uw app-registraties zijn mogelijk gemaakt met een ander gebruikers account of een andere Tenant. Zorg ervoor dat u bent aangemeld met het juiste account in de Tenant waar de app-registraties zijn gemaakt.
+    Uw app-registraties zijn mogelijk gemaakt met een ander gebruikers account in deze Tenant, een persoonlijk/Consumer account of een andere Tenant. Zorg ervoor dat u bent aangemeld met het juiste account in de Tenant waar de app-registraties zijn gemaakt.
 
-- **Hoe kan ik weet wie de eigenaar van een app-registratie in azure AD is?** 
-    Als u zich aanmeldt bij een Tenant waar de app is geregistreerd, gaat u naar de Blade app-registraties, klikt u op een app en klikt u vervolgens op eigen aars.
+- **Er verschijnt een fout met betrekking tot multi-factor Authentication. Wat moet ik doen?** 
+    Zorg ervoor dat [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) is ingeschakeld en is vereist voor de gebruiker waarbij u zich aanmeldt en voor dit scenario. MFA kan bijvoorbeeld zijn:
+    - Altijd vereist voor de gebruiker waarbij u zich aanmeldt
+    - [Vereist voor Azure-beheer](../conditional-access/howto-conditional-access-policy-azure-management.md).
+    - [Vereist voor het type beheerder](../conditional-access/howto-conditional-access-policy-admin-mfa.md) waarbij u zich aanmeldt.
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph-API-aanroepen maken 
 
 Als u een probleem ondervindt, maar geen inzicht kunt krijgen in de redenen die zijn gebaseerd op wat u in de gebruikers interface ziet, kan het nuttig zijn om verdere problemen op te lossen met behulp van Microsoft Graph-aanroepen om dezelfde bewerkingen uit te voeren die u in de app-registratie Portal kunt uitvoeren.
 
-De eenvoudigste manier om deze aanvragen te maken, is met [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt ook andere opties gebruiken, zoals het gebruik van [postman](https://www.postman.com/)of [het aanroepen van een webaanvraag](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)met behulp van Power shell.  
+De eenvoudigste manier om deze aanvragen te maken, is met [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt ook andere opties gebruiken, zoals het gebruik van [postman](https://www.postman.com/)of [het aanroepen van een webaanvraag](/powershell/module/microsoft.powershell.utility/invoke-webrequest)met behulp van Power shell.  
 
-U kunt Microsoft Graph gebruiken om de geverifieerde Uitgever van uw app in te stellen en op te heffen en het resultaat na het uitvoeren van een van deze bewerkingen te controleren. Het resultaat kan worden weer gegeven op het [toepassings](/graph/api/resources/application?view=graph-rest-beta) object dat overeenkomt met de registratie van uw app en alle [service-principals](/graph/api/resources/serviceprincipal?view=graph-rest-beta) die zijn geïnstantieerd vanuit die app. Zie voor meer informatie over de relatie tussen deze objecten: [toepassings-en Service-Principal-objecten in azure Active Directory](app-objects-and-service-principals.md).  
+U kunt Microsoft Graph gebruiken om de geverifieerde Uitgever van uw app in te stellen en op te heffen en het resultaat na het uitvoeren van een van deze bewerkingen te controleren. Het resultaat kan worden weer gegeven op het [toepassings](/graph/api/resources/application) object dat overeenkomt met de registratie van uw app en alle [service-principals](/graph/api/resources/serviceprincipal) die zijn geïnstantieerd vanuit die app. Zie voor meer informatie over de relatie tussen deze objecten: [toepassings-en Service-Principal-objecten in azure Active Directory](app-objects-and-service-principals.md).  
 
 Hier volgen enkele voor beelden van nuttige aanvragen:  
 
@@ -105,7 +108,7 @@ Antwoord
 ### <a name="get-verified-publisher-info-from-application"></a>Geverifieerde Uitgever gegevens van de toepassing ophalen 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>Geverifieerde Uitgever gegevens ophalen van de Service-Principal 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Deze functie wordt niet ondersteund in een door e-mail geverifieerde Tenant.
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-Voor de doel toepassing ( <AppId> ) moet een uitgevers domein zijn ingesteld. Stel een uitgever domein in en probeer het opnieuw. 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-Het Uitgever domein () van de doel toepassing <publisherDomain> is geen geverifieerd domein in deze Tenant. Verifieer een Tenant domein met behulp van DNS-verificatie en probeer het opnieuw. 
+Voor de doel toepassing ( \<AppId\> ) moet een uitgevers domein zijn ingesteld. Stel een uitgever domein in en probeer het opnieuw.
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

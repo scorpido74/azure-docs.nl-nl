@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004660"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086552"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
 
@@ -58,7 +58,7 @@ In het volgende voor beeld wordt een symbool laag weer gegeven met behulp van de
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Symbool laag met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Symbool laag met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Zie de laag met het pictogram voor het Pendikte door Azure Maps () in de <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>sjabloon met ingebouwde pictogrammen</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ In het volgende voor beeld wordt een roze lijn op de kaart weer gegeven en wordt
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Lijn laag met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Lijn laag met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>laag met de ingebouwde pictogram sjabloon met</a> behulp van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>().
 </iframe>
 
@@ -85,7 +85,7 @@ In het volgende voor beeld wordt een polygoon laag weer gegeven met behulp `dot`
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Veelhoek vullen met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Veelhoek vullen met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Bekijk de pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>-opvul veelhoek met de ingebouwde pictogram sjabloon</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -100,7 +100,7 @@ In het volgende voor beeld wordt de `marker-arrow` sjabloon gebruikt met een rod
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-markering met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-markering met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de pen met ingebouwde pictogram sjabloon</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -138,7 +138,7 @@ In het volgende voor beeld ziet u hoe u een SVG-sjabloon maakt en hoe u deze toe
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Aangepaste pictogram sjabloon toevoegen aan de Atlas-naam ruimte" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Aangepaste pictogram sjabloon toevoegen aan de Atlas-naam ruimte" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>aangepaste pictogram sjabloon pen toevoegen aan de Atlas-naam ruimte</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -505,7 +505,7 @@ Met het volgende hulp programma kunt u de verschillende ingebouwde afbeeldings s
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Opties voor pictogram sjablonen" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Opties voor pictogram sjablonen" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>sjabloon opties</a> voor het pictogram van de Pen op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -517,7 +517,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 > [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [Atlas-naam ruimte](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
+> [Atlas-naam ruimte](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
 )
 
 Raadpleeg de volgende artikelen voor meer code voorbeelden waarbij afbeeldings sjablonen kunnen worden gebruikt:

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 5a85efc5de0d99904da568c97672adf40ce8a414
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646563"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088915"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
 Azure Monitor voor netwerk biedt een uitgebreid overzicht van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen zonder enige configuratie. De geavanceerde zoek functie helpt bij het identificeren van bron afhankelijkheden die scenario's zoals het identificeren van resources die als host fungeren voor uw website door te zoeken naar de naam van de gehoste website.
@@ -30,7 +30,7 @@ De weer gave resource status en waarschuwingen kan worden aangepast met filters 
 
 Het zoekvak kan worden gebruikt om te zoeken naar resources en gekoppelde resources. Een openbaar IP-adres is bijvoorbeeld gekoppeld aan een Application Gateway. Als u zoekt naar de open bare Ip's DNS-naam, worden zowel het open bare IP-adres als de bijbehorende Application Gateway geïdentificeerd.
 
-![Search](media/network-insights-overview/search.png)
+![Scherm opname toont de resultaten van een zoek opdracht naar een DNS-naam.](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health en metrische gegevens

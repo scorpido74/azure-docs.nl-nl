@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752008"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088490"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijftypen zijn beschikbaar in Azure?
 
@@ -71,12 +71,12 @@ Als u ultra disks wilt gaan gebruiken, raadpleegt u ons artikel over het onderwe
 
 Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
-Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows of Linux, waaronder de grootte van Premium Storage-compatibel. Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel. Vanuit een van deze artikelen moet u elk artikel van de afzonderlijke VM-grootte controleren om te bepalen of het een Premium-opslag compatibel is.
+Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows of Linux, waaronder de grootte van Premium Storage-compatibel. In dit artikel moet u elk artikel van de afzonderlijke VM-grootte controleren om te bepalen of het een Premium-opslag compatibel is.
 
 ### <a name="disk-size"></a>Schijfgrootte
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Wanneer u een Premium-opslag schijf inricht, in tegens telling tot standaard opslag, bent u verzekerd van de capaciteit, IOPS en door Voer van de schijf. Als u bijvoorbeeld een P50-schijf maakt, wordt de opslag capaciteit van 4.095 GB door Azure ingericht, 7.500 IOPS en een door Voer van 250 MB/s voor die schijf. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium-SSD schijven zijn zodanig ontworpen dat er in de voor gaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en-door voer worden beschreven.
+Wanneer u een Premium Storage-schijf inricht, bent u, in tegenstelling tot standaard opslag, verzekerd van de capaciteit, IOPS en doorvoer van die schijf. Als u bijvoorbeeld een P50-schijf maakt, richt Azure een schijf in met een opslagcapaciteit van 4.095 GB, 7.500 IOPS en een doorvoer van 250 MB/s. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium SSD-schijven zijn zodanig ontworpen dat er in de voorgaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en -doorvoer wordt beschreven.
 
 ## <a name="bursting"></a>Toepassingen
 

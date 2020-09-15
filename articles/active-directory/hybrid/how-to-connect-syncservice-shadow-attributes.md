@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356658"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088967"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schaduw kenmerken van Azure AD Connect Sync-Service
 De meeste kenmerken worden in azure AD op dezelfde manier weer gegeven als in uw on-premises Active Directory. Maar sommige kenmerken hebben een speciale verwerking en de kenmerk waarde in azure AD kan afwijken van wat Azure AD Connect synchroniseert.
@@ -32,7 +32,7 @@ Sommige kenmerken hebben twee weer gaven in azure AD. Zowel de on-premises waard
 U kunt de schaduw kenmerken niet zien met behulp van de Azure Portal of met Power shell. Maar het begrip van het concept helpt u bij het oplossen van bepaalde scenario's waarbij het kenmerk verschillende waarden op locatie en in de Cloud heeft.
 
 Bekijk dit voor beeld van Fabrikam voor meer informatie over het gedrag.  
-![Domains](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Scherm afbeelding toont het Active Directory UPN-achtervoegsel voor verschillende voor beelden met een bijbehorende Azure AD-domein waarde die niet is toegevoegd, niet is geverifieerd en geverifieerd.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Ze hebben meerdere UPN-achtervoegsels in hun on-premises Active Directory, maar ze hebben er slechts één geverifieerd.
 
 ### <a name="userprincipalname"></a>userPrincipalName
@@ -74,6 +74,6 @@ ProxyCalc kan enige tijd duren om een wijziging van een gebruiker te verwerken e
 ### <a name="quarantined-attribute-values"></a>Waarden voor in quarantaine geplaatste kenmerken
 Schaduw kenmerken worden ook gebruikt wanneer er dubbele kenmerk waarden zijn. Zie [dubbel kenmerk tolerantie](how-to-connect-syncservice-duplicate-attribute-resiliency.md)voor meer informatie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).

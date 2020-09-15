@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186109"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087857"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbooks en modules gebruiken in PowerShell Gallery
 
@@ -39,7 +39,7 @@ De onderstaande lijst bevat enkele runbooks die veelvoorkomende scenario's onder
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) : Hiermee wordt de nieuwste versie van alle modules in een Automation-account uit PowerShell Gallery geïmporteerd.
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) : configureert Azure Diagnostics en Log Analytics om Azure Automation logboeken te ontvangen met taak status en taak stromen.
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) : kopieert een extern bestand van een virtuele Windows Azure-machine.
-   * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) : kopieert een lokaal bestand naar een virtuele machine van Azure.
+   * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) : kopieert een lokaal bestand naar een virtuele machine van Azure.
 
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Een Power shell-runbook importeren vanuit de runbook Gallery met de Azure Portal
 

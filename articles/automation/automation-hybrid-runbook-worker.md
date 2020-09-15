@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Hybrid Runbook Worker
 description: Dit artikel bevat een overzicht van de Hybrid Runbook Worker, die u kunt gebruiken om runbooks uit te voeren op computers in uw lokale Data Center of Cloud provider.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448086"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087882"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Overzicht van Hybrid Runbook Worker
 
@@ -42,7 +42,7 @@ Het proces voor het installeren van een Hybrid Runbook Worker is afhankelijk van
 
 De aanbevolen installatie methode is om een Azure Automation runbook te gebruiken om het proces van het configureren van een Windows-computer volledig te automatiseren. Als dat niet het geval is, kunt u een stapsgewijze procedure volgen om de rol hand matig te installeren en te configureren. Voor Linux-machines voert u een python-script uit om de agent op de computer te installeren.
 
-## <a name="network-planning"></a><a name="network-planning"></a>Netwerk planning
+## <a name="network-planning"></a><a name="network-planning"></a>Netwerkplanning
 
 Het Hybrid Runbook Worker om verbinding te maken met Azure Automation, moet toegang hebben tot het poort nummer en de Url's die in deze sectie worden beschreven. De werk nemer moet ook toegang hebben tot de [poorten en url's die vereist zijn voor de log Analytics-agent](../azure-monitor/platform/agent-windows.md) om verbinding te maken met de Azure monitor log Analytics-werk ruimte.
 
@@ -51,9 +51,9 @@ Het Hybrid Runbook Worker om verbinding te maken met Azure Automation, moet toeg
 De volgende poort en Url's zijn vereist voor de Hybrid Runbook Worker:
 
 * Poort: alleen TCP 443 vereist voor uitgaande internet toegang
-* Globale URL:`*.azure-automation.net`
-* Globale URL van US Gov-Virginia:`*.azure-automation.us`
-* Agent service:`https://<workspaceId>.agentsvc.azure-automation.net`
+* Globale URL: `*.azure-automation.net`
+* Globale URL van US Gov-Virginia: `*.azure-automation.us`
+* Agent service: `https://<workspaceId>.agentsvc.azure-automation.net`
 
 Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio, kunt u Hybrid Runbook Worker communicatie beperken tot dat regionale Data Center. Controleer de [DNS-records die door Azure Automation worden gebruikt](how-to/automation-region-dns-records.md) voor de vereiste DNS-records.
 
@@ -63,11 +63,11 @@ Als u een proxy server gebruikt voor communicatie tussen Azure Automation en com
 
 ### <a name="firewall-use"></a>Gebruik van Firewall
 
-Als u een firewall gebruikt om de toegang tot internet te beperken, moet u de firewall configureren om toegang toe te staan. Als u de Log Analytics-gateway als een proxy gebruikt, moet u ervoor zorgen dat deze is geconfigureerd voor Hybrid Runbook Workers. Zie [de log Analytics-gateway configureren voor Hybrid Automation-werk](../azure-monitor/platform/gateway.md)rollen.
+Als u een firewall gebruikt om de toegang tot internet te beperken, moet u de firewall configureren om toegang toe te staan. Als u de Log Analytics-gateway als een proxy gebruikt, moet u ervoor zorgen dat deze is geconfigureerd voor Hybrid Runbook Workers. Zie [Configure the log Analytics Gateway for Automation Hybrid Runbook Workers](../azure-monitor/platform/gateway.md)(Engelstalig).
 
 ### <a name="service-tags"></a>Servicetags
 
-Azure Automation ondersteunt de service tags voor het virtuele Azure-netwerk, te beginnen met de service label [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Service tags kunnen worden gebruikt in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door het opgeven van de servicetag naam **GuestAndHybridManagement** in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de Automation-Service toestaan of weigeren. Deze servicetag biedt geen ondersteuning voor het toestaan van nauw keurigere controle door IP-adresbereiken te beperken tot een bepaalde regio.
+Azure Automation ondersteunt de service tags voor het virtuele Azure-netwerk, te beginnen met de service label [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Service tags kunnen worden gebruikt in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door het opgeven van de servicetag naam **GuestAndHybridManagement**  in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de Automation-Service toestaan of weigeren. Deze servicetag biedt geen ondersteuning voor het toestaan van nauw keurigere controle door IP-adresbereiken te beperken tot een bepaalde regio.
 
 Het servicetag voor de Azure Automation-Service biedt alleen IP-adressen die worden gebruikt voor de volgende scenario's:
 
@@ -115,6 +115,20 @@ Als de Hybrid Runbook Worker-hostcomputer opnieuw wordt opgestart, wordt elke ac
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Runbook-machtigingen voor een Hybrid Runbook Worker
 
 Omdat ze toegang hebben tot niet-Azure-resources, kunnen runbooks die worden uitgevoerd op een Hybrid Runbook Worker niet gebruikmaken van het verificatie mechanisme dat doorgaans wordt gebruikt door runbooks die verifiëren naar Azure-resources. Een runbook biedt een eigen verificatie voor lokale bronnen of configureert verificatie met behulp [van beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). U kunt ook een uitvoeren als-account opgeven om een gebruikers context te bieden voor alle runbooks.
+
+## <a name="view-hybrid-runbook-workers"></a>Hybrid Runbook Workers weer geven
+
+Nadat de functie Updatebeheer is ingeschakeld op Windows-servers of virtuele machines, kunt u de lijst met systeemhybrid Runbook Workers-groep in de Azure Portal inventariseren. U kunt Maxi maal 2.000 werk nemers in de portal weer geven door in het linkerdeel venster van het geselecteerde Automation-account de **groep hybride werk nemers** van het tabblad systeem te selecteren in de **groep Hybrid worker** -werk rollen.
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Pagina hybride werk groepen voor Automation-account systeem" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+Als u meer dan 2.000 Hybrid Workers hebt, kunt u het volgende Power shell-script uitvoeren om een lijst met al deze werk nemers te verkrijgen:
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259350"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089663"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
 
@@ -48,16 +48,16 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 
 | Type apparaat-id | Id-infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
 | --- | --- | --- | --- | --- |
-| Hybride Azure AD-deelname | Federatief<sup>3</sup> | Windows huidige en Windows down level | Permanent | Yes |
+| Hybride Azure AD-deelname | Federatief<sup>3</sup> | Windows huidige en Windows down level | Permanent | Ja |
 |   |   | Windows actueel | Niet-persistent | Ja<sup>5</sup> |
 |   |   | Downlevel Windows | Niet-persistent | Ja<sup>6</sup> |
-|   | Beheerd<sup>4</sup> | Windows huidige en Windows down level | Permanent | Yes |
-|   |   | Windows actueel | Niet-persistent | No |
+|   | Beheerd<sup>4</sup> | Windows huidige en Windows down level | Permanent | Ja |
+|   |   | Windows actueel | Niet-persistent | Nee |
 |   |   | Downlevel Windows | Niet-persistent | Ja<sup>6</sup> |
-| Azure AD-deelname | Federatief | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
-|   | Beheerd | Windows actueel | Permanent | No |
-|   |   |   | Niet-persistent | No |
+| Azure AD-deelname | Federatief | Windows actueel | Permanent | Nee |
+|   |   |   | Niet-persistent | Nee |
+|   | Beheerd | Windows actueel | Permanent | Nee |
+|   |   |   | Niet-persistent | Nee |
 | Geregistreerd bij Azure AD | Federatief/beheerd | Windows-huidige/Windows-down level | Persistent/niet-persistent | Niet van toepassing |
 
 <sup>1</sup> **Windows-huidige** apparaten vertegenwoordigen Windows 10, Windows Server 2016 en Windows Server 2019.

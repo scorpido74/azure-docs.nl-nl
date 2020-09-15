@@ -3,18 +3,18 @@ title: Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NE
 description: Gebruik functies als logboek registratie aan client zijde en andere hulpprogram ma's van derden voor het identificeren, diagnosticeren en Azure Cosmos DB oplossen van problemen met het gebruik van .NET SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 06/16/2020
+ms.date: 09/12/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021898"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086984"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -28,6 +28,7 @@ Dit artikel heeft betrekking op veelvoorkomende problemen, tijdelijke oplossinge
 De .NET-SDK biedt logische weer gave aan de client zijde om toegang te krijgen tot de Azure Cosmos DB SQL-API. In dit artikel worden tools en benaderingen beschreven om u te helpen bij eventuele problemen.
 
 ## <a name="checklist-for-troubleshooting-issues"></a>Controle lijst voor het oplossen van problemen
+
 Bekijk de volgende controle lijst voordat u uw toepassing naar productie gaat verplaatsen. Met de controle lijst voor komt u dat er verschillende veelvoorkomende problemen worden weer geven. U kunt ook snel vaststellen wanneer er een probleem optreedt:
 
 *    De nieuwste [SDK](sql-api-sdk-dotnet-standard.md)gebruiken. Preview-Sdk's mogen niet worden gebruikt voor productie. Dit voor komt dat bekende problemen die al zijn opgelost, worden gerepareerd.
@@ -99,10 +100,15 @@ Deze latentie kan meerdere oorzaken hebben:
     * [Versneld netwerken inschakelen op een bestaande virtuele machine](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Overweeg het gebruik van een [hogere virtuele machine](../virtual-machines/windows/sizes.md).
 
-### <a name="slow-query-performance"></a>Trage query prestaties
-Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepalen waar de query de meeste tijd in bebesteding neemt. Vanuit de metrische gegevens van de query kunt u zien hoeveel er wordt uitgegeven aan de back-end van de client.
+### <a name="common-query-issues"></a>Veelvoorkomende query problemen
+
+Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepalen waar de query de meeste tijd in bebesteding neemt. Vanuit de metrische gegevens van de query kunt u zien hoeveel er wordt uitgegeven aan de back-end van de client. Meer informatie over het [oplossen van query prestaties](troubleshoot-query-performance.md).
+
 * Als de back-end-query snel wordt geretourneerd en een grote tijd op de client wordt gespendeerd, controleert u de belasting van de computer. Het is waarschijnlijk dat er onvoldoende bronnen zijn en de SDK wacht totdat de resources beschikbaar zijn voor het verwerken van het antwoord.
-* Als de back-end-query langzaam is, [optimaliseert u de query](optimize-cost-queries.md) en bekijkt u het huidige [indexerings beleid](index-overview.md) 
+* Als de back-end-query langzaam is, [optimaliseert u de query](troubleshoot-query-performance.md) en bekijkt u het huidige [indexerings beleid](index-overview.md)
+
+    > [!NOTE]
+    > Voor betere prestaties raden we u aan Windows 64-bits host te verwerken. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

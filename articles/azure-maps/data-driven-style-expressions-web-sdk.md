@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009134"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089442"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -72,7 +72,12 @@ Alle voor beelden in dit document gebruiken de volgende functie om verschillende
         "subTitle": "Building 40", 
         "temperature": 72,
         "title": "Cafeteria", 
-        "zoneColor": "red"
+        "zoneColor": "red",
+        "abcArray": ['a', 'b', 'c'],
+        "array2d": [['a', 'b'], ['x', 'y']],
+        "_style": {
+            "fillColor": 'red'
+        }
     }
 }
 ```
@@ -137,6 +142,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Op dezelfde manier wordt het overzicht van veelhoeken in lijn lagen weer gegeven. Als u dit gedrag wilt uitschakelen in een line-laag, voegt u een filter toe dat alleen toestaat `LineString` en `MultiLineString` functies bevat.  
 
+Hier volgen enkele aanvullende voor beelden van het gebruik van gegevens expressies:
+
+```javascript
+//Get item [2] from an array "properties.abcArray[1]" = "c"
+['at', 2, ['get', 'abcArray']]
+
+//Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
+['at', 1, ['at', 0, ['get', 'array2d']]]
+
+//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+['in', 'a', ['get', 'abcArray']]
+
+//Get the length of an array "properties.abcArray.length" = 3
+['length', ['get', 'abcArray']]
+
+//Get the value of a subproperty "properties._style.fillColor" = "red"
+['get', 'fillColor', ['get', '_style']]
+
+//Check that "fillColor" exists as a subproperty of "_style".
+['has', 'fillColor', ['get', '_style']]
+```
+
 ## <a name="math-expressions"></a>Wiskundige expressies
 
 Wiskundige expressies bieden wiskundige Opera tors voor het uitvoeren van gegevensgestuurde berekeningen in het Framework van de expressie.
@@ -181,14 +208,14 @@ Een statistische expressie heeft drie waarden: een operator waarde, en begin waa
 ```
 
 - operator: een expressie functie die vervolgens wordt toegepast op alle waarden die worden berekend op basis van de `mapExpression` voor elk punt in het cluster. Ondersteunde Opera tors: 
-    - Voor getallen: `+` , `*` , `max` ,`min`
-    - Voor Booleaanse waarden: `all` ,`any`
+    - Voor getallen: `+` , `*` , `max` , `min`
+    - Voor Booleaanse waarden: `all` , `any`
 - initialValue: een initiële waarde waarin de eerste berekende waarde wordt geaggregeerd.
 - mapExpression: een expressie die wordt toegepast op elk punt in de gegevensset.
 
 **Voorbeelden**
 
-Als alle functies in een gegevensset een eigenschap hebben `revenue` die een getal is. Vervolgens kan de totale omzet van alle punten in een cluster, die zijn gemaakt op basis van de gegevensset, worden berekend. Deze berekening wordt uitgevoerd met behulp van de volgende statistische expressie:`['+', 0, ['get', 'revenue']]`
+Als alle functies in een gegevensset een eigenschap hebben `revenue` die een getal is. Vervolgens kan de totale omzet van alle punten in een cluster, die zijn gemaakt op basis van de gegevensset, worden berekend. Deze berekening wordt uitgevoerd met behulp van de volgende statistische expressie: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Booleaanse expressies
 
@@ -410,7 +437,7 @@ Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschil
 | `['typeof', value]` | tekenreeks | Retourneert een teken reeks die het type van de opgegeven waarde beschrijft. |
 
 > [!TIP]
-> Als er een fout bericht `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` wordt weer gegeven dat lijkt op de browser console, betekent dit dat er ergens in de code een expressie staat die een matrix heeft die geen teken reeks voor de eerste waarde heeft. Als u wilt dat de expressie een matrix retourneert, laat u de matrix teruglopen met de `literal` expressie. In het volgende voor beeld wordt de pictogram `offset` optie van een Symbol-laag ingesteld. deze moet een matrix zijn met twee cijfers, door gebruik te maken van een `match` expressie om te kiezen tussen twee verschuivings waarden op basis van de waarde van de `entityType` eigenschap van de functie Point.
+> Als er een fout bericht `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` wordt weer gegeven dat lijkt op de browser console, betekent dit dat er ergens in de code een expressie staat die een matrix heeft die geen teken reeks voor de eerste waarde heeft. Als u wilt dat de expressie een matrix retourneert, laat u de matrix teruglopen met de `literal` expressie. In het volgende voor beeld wordt de pictogram `offset` optie van een Symbol-laag ingesteld. deze moet een matrix zijn met twee cijfers, door gebruik te maken van een `match` expressie om te kiezen tussen twee verschuivings waarden op basis van de waarde van de  `entityType` eigenschap van de functie Point.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -490,7 +517,7 @@ De bovenstaande expressie geeft een pincode op de kaart weer met de tekst ' 64 �
 
 <center>
 
-![Voor beeld van een expressie voor ](media/how-to-expressions/string-operator-expression.png) een teken reeks operator</center>
+![Voor beeld van een expressie voor ](media/how-to-expressions/string-operator-expression.png) een teken reeks operator </center>
 
 ## <a name="interpolate-and-step-expressions"></a>Interpoleer-en Step-expressies
 
@@ -502,9 +529,9 @@ Een `interpolate` expressie kan worden gebruikt om een continue, soepele set waa
 
 Er zijn drie typen interpolatie methoden die kunnen worden gebruikt in een `interpolate` expressie:
  
-* `['linear']`-Interpoleeert lineair tussen het paar stops.
-* `['exponential', base]`-Interpoleert exponentieel tussen de stops. De `base` waarde bepaalt de snelheid waarmee de uitvoer toeneemt. Hoe hoger de waarde, hoe groter de uitvoer meer naar het hoge einde van het bereik. Een `base` waarde dicht bij 1 resulteert in een uitvoer die meer lineair toeneemt.
-* `['cubic-bezier', x1, y1, x2, y2]`-Interpoles met behulp van een [kubieke Bézier-curve](https://developer.mozilla.org/docs/Web/CSS/timing-function) die is gedefinieerd door de gegeven besturings punten.
+* `['linear']` -Interpoleeert lineair tussen het paar stops.
+* `['exponential', base]` -Interpoleert exponentieel tussen de stops. De `base` waarde bepaalt de snelheid waarmee de uitvoer toeneemt. Hoe hoger de waarde, hoe groter de uitvoer meer naar het hoge einde van het bereik. Een `base` waarde dicht bij 1 resulteert in een uitvoer die meer lineair toeneemt.
+* `['cubic-bezier', x1, y1, x2, y2]` -Interpoles met behulp van een [kubieke Bézier-curve](https://developer.mozilla.org/docs/Web/CSS/timing-function) die is gedefinieerd door de gegeven besturings punten.
 
 Hier volgt een voor beeld van hoe de verschillende typen interpolatie eruitzien. 
 
@@ -553,7 +580,7 @@ In de volgende afbeelding ziet u hoe de kleuren voor de bovenstaande expressie w
  
 <center>
 
-![Voor beeld ](media/how-to-expressions/interpolate-expression-example.png) van interpolatie-expressie</center>
+![Voor beeld ](media/how-to-expressions/interpolate-expression-example.png) van interpolatie-expressie </center>
 
 ### <a name="step-expression"></a>Expressie voor stap
 
@@ -609,7 +636,7 @@ Speciale expressies die alleen van toepassing zijn op specifieke lagen.
 
 ### <a name="heat-map-density-expression"></a>Dichtheids expressie voor heatmap
 
-Met een dichtheids expressie voor heatmap wordt de waarde van de heatmap voor de kaart voor elke pixel in een heatmap van een hitte opgehaald en gedefinieerd als `['heatmap-density']` . Deze waarde is een getal tussen `0` en `1` . Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie om de kleur overgang te definiëren die wordt gebruikt voor het inkleuren van de heatmap. Deze expressie kan alleen worden gebruikt in de [kleur optie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) van de laag van de heatmap.
+Met een dichtheids expressie voor heatmap wordt de waarde van de heatmap voor de kaart voor elke pixel in een heatmap van een hitte opgehaald en gedefinieerd als `['heatmap-density']` . Deze waarde is een getal tussen `0` en `1` . Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie om de kleur overgang te definiëren die wordt gebruikt voor het inkleuren van de heatmap. Deze expressie kan alleen worden gebruikt in de [kleur optie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) van de laag van de heatmap.
 
 > [!TIP]
 > De kleur bij index 0, in een interpolatie-expressie of de standaard kleur van een stap kleur, definieert de kleur van het gebied waar er geen gegevens zijn. De kleur bij index 0 kan worden gebruikt om een achtergrond kleur te definiëren. Veel gewenst om deze waarde in te stellen op transparant of semi-transparant zwart.
@@ -653,7 +680,7 @@ Zie de documentatie [een hitte kaart toevoegen](map-add-heat-map-layer.md) voor 
 
 ### <a name="line-progress-expression"></a>Expressie voor voortgangs lijn
 
-Met een expressie voor de voortgangs lijn wordt de voortgang van een verloop lijn in een line-laag opgehaald en gedefinieerd als `['line-progress']` . Deze waarde is een getal tussen 0 en 1. Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie. Deze expressie kan alleen worden gebruikt met de [optie strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) van de laag. 
+Met een expressie voor de voortgangs lijn wordt de voortgang van een verloop lijn in een line-laag opgehaald en gedefinieerd als `['line-progress']` . Deze waarde is een getal tussen 0 en 1. Deze wordt gebruikt in combi natie met een `interpolation` or- `step` expressie. Deze expressie kan alleen worden gebruikt met de [optie strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) van de laag. 
 
 > [!NOTE]
 > Voor de `strokeGradient` optie van de laag moet de `lineMetrics` optie van de gegevens bron worden ingesteld op `true` .
@@ -684,9 +711,9 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 De expressie voor de tekst veld notatie kan worden gebruikt met de `textField` optie van de eigenschap Symbol Layers `textOptions` om gemengde tekst opmaak te bieden. Met deze expressie kan een set invoer teken reeksen en opmaak opties worden opgegeven. De volgende opties kunnen worden opgegeven voor elke invoer reeks in deze expressie.
 
- * `'font-scale'`-Hiermee geeft u de schaal factor voor de teken grootte op. Als deze waarde wordt opgegeven, wordt de `size` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
- * `'text-font'`-Hiermee geeft u een of meer lettertype families op die moeten worden gebruikt voor deze teken reeks. Als deze waarde wordt opgegeven, wordt de `font` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
- * `'text-color'`-Hiermee geeft u een kleur op die moet worden toegepast op een tekst tijdens het renderen. 
+ * `'font-scale'` -Hiermee geeft u de schaal factor voor de teken grootte op. Als deze waarde wordt opgegeven, wordt de `size` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
+ * `'text-font'` -Hiermee geeft u een of meer lettertype families op die moeten worden gebruikt voor deze teken reeks. Als deze waarde wordt opgegeven, wordt de `font` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
+ * `'text-color'` -Hiermee geeft u een kleur op die moet worden toegepast op een tekst tijdens het renderen. 
 
 De volgende pseudocode definieert de structuur van de tekst veld indelings expressie. 
 
@@ -749,10 +776,10 @@ Met deze laag wordt de punt functie weer gegeven zoals in de onderstaande afbeel
 
 De `number-format` expressie kan alleen worden gebruikt met de `textField` optie van een Symbol-laag. Met deze expressie wordt het gegeven getal geconverteerd naar een ingedeelde teken reeks. Met deze expressie wordt de functie [Number. toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) van Java script ingepakt en wordt de volgende set opties ondersteund.
 
- * `locale`-Geef deze optie op voor het converteren van getallen naar teken reeksen op een manier die wordt uitgelijnd met de opgegeven taal. Geef een [BCP 47-taal label](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) door in deze optie.
- * `currency`-Om het getal te converteren naar een teken reeks die een valuta vertegenwoordigt. Mogelijke waarden zijn de [ISO 4217-valuta codes](https://en.wikipedia.org/wiki/ISO_4217), zoals "USD" voor de Amerikaanse dollar, "EUR" voor de euro of "CNY" voor de Chinese RMB.
- * `'min-fraction-digits'`-Geeft het minimale aantal decimalen aan dat moet worden meegenomen in de teken reeks versie van het getal.
- * `'max-fraction-digits'`-Hiermee geeft u het maximum aantal decimalen op dat moet worden meegenomen in de teken reeks versie van het getal.
+ * `locale` -Geef deze optie op voor het converteren van getallen naar teken reeksen op een manier die wordt uitgelijnd met de opgegeven taal. Geef een [BCP 47-taal label](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) door in deze optie.
+ * `currency` -Om het getal te converteren naar een teken reeks die een valuta vertegenwoordigt. Mogelijke waarden zijn de [ISO 4217-valuta codes](https://en.wikipedia.org/wiki/ISO_4217), zoals "USD" voor de Amerikaanse dollar, "EUR" voor de euro of "CNY" voor de Chinese RMB.
+ * `'min-fraction-digits'` -Geeft het minimale aantal decimalen aan dat moet worden meegenomen in de teken reeks versie van het getal.
+ * `'max-fraction-digits'` -Hiermee geeft u het maximum aantal decimalen op dat moet worden meegenomen in de teken reeks versie van het getal.
 
 De volgende pseudocode definieert de structuur van de tekst veld indelings expressie. 
 
@@ -791,7 +818,7 @@ Met deze laag wordt de punt functie weer gegeven zoals in de onderstaande afbeel
 
 <center>
 
-![Voor beeld van een expressie voor ](media/how-to-expressions/number-format-expression.png) getalnotatie</center>
+![Voor beeld van een expressie voor ](media/how-to-expressions/number-format-expression.png) getalnotatie </center>
 
 ### <a name="image-expression"></a>Expressie voor afbeelding
 
@@ -829,7 +856,7 @@ Met deze laag wordt het tekst veld weer gegeven in de laag symbool, zoals wordt 
 
 <center>
 
-![Voor beeld ](media/how-to-expressions/image-expression.png) van een afbeeldings expressie</center>
+![Voor beeld ](media/how-to-expressions/image-expression.png) van een afbeeldings expressie </center>
 
 ## <a name="zoom-expression"></a>Expressie voor in-/uitzoomen
 
@@ -916,16 +943,16 @@ Raadpleeg de volgende artikelen voor meer code voorbeelden voor het implementere
 Meer informatie over de laag opties die expressies ondersteunen:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)

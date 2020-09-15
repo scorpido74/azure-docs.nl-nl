@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949950"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087181"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory-prijzen leren begrijpen met voorbeelden
 
@@ -130,9 +130,13 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Fout opsporing voor het toewijzen van gegevens stromen gebruiken voor een normale werkdag
 
-Als data Engineer bent u verantwoordelijk voor het ontwerpen, bouwen en testen van gegevens stromen die dagelijks worden uitgevoerd. U meldt zich in de ochtend aan bij de ADF-gebruikers interface en schakelt de foutopsporingsmodus in voor gegevens stromen. De standaard-TTL voor debug-sessies is 60 minuten. U werkt gedurende 8 uur op de hele dag, waardoor de foutopsporingssessie nooit verloopt. Daarom zijn uw kosten voor de dag:
+Als data Engineer is Sam verantwoordelijk voor het ontwerpen, bouwen en testen van gegevens stromen elke dag. Sam meldt zich in de ochtend aan op de ADF-gebruikers interface en schakelt de foutopsporingsmodus in voor gegevens stromen. De standaard-TTL voor debug-sessies is 60 minuten. Sam werkt gedurende 8 uur in de hele dag, waardoor de foutopsporingssessie nooit verloopt. Daarom zijn de kosten van Sam voor de dag:
 
 **8 (uur) x 8 (door Compute geoptimaliseerde kernen) x $0,193 = $12,35**
+
+Op hetzelfde moment kan Chris, een andere data Engineer, ook zich aanmelden bij de gebruikers interface van de ADF-browser voor gegevens profilering en ETL-ontwerp werk. Chris werkt niet altijd op de ADF-dag zoals Sam. Chris hoeft het fout opsporingsprogramma voor gegevens stromen gedurende één uur gedurende dezelfde periode en dezelfde dag als Sam hierboven te gebruiken. Dit zijn de kosten van Chris voor het gebruik van fout opsporing:
+
+**1 (uur) x 8 (algemene kernen) x $0,274 = $2,19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Gegevens in BLOB Store transformeren met toewijzings gegevens stromen
 

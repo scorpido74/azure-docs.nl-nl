@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561023"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087300"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>De Text Analytics aanroepen REST API
 
@@ -59,10 +59,10 @@ De service accepteert een aanvraag met een grootte van Maxi maal 1 MB. Als u Pos
 
    Resource-eind punten zijn als volgt (uw regio kan variëren):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. Stel de drie aanvraag headers in:
 
@@ -80,10 +80,10 @@ De service accepteert een aanvraag met een grootte van Maxi maal 1 MB. Als u Pos
 
 5. Plak een aantal JSON-documenten in een indeling die geldig is voor de beoogde analyse. Zie de volgende onderwerpen voor meer informatie over een bepaalde analyse:
 
-  + [Taal detectie](text-analytics-how-to-language-detection.md)  
-  + [Extractie van sleutel woorden](text-analytics-how-to-keyword-extraction.md)  
-  + [Sentiment analyse](text-analytics-how-to-sentiment-analysis.md)  
-  + [Entiteit herkenning](text-analytics-how-to-entity-linking.md)  
+  + [Taaldetectie](text-analytics-how-to-language-detection.md)  
+  + [Sleuteltermextractie](text-analytics-how-to-keyword-extraction.md)  
+  + [Sentimentanalyse](text-analytics-how-to-sentiment-analysis.md)  
+  + [Herkenning van entiteiten](text-analytics-how-to-entity-linking.md)  
 
 
 6. Klik op **verzenden** om de aanvraag in te dienen. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor informatie over het aantal aanvragen dat u per minuut en seconde kunt verzenden.

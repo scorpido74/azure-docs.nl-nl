@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279581"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087006"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Factoren die invloed hebben op de prestaties van Azure AD Connect
 
@@ -41,7 +41,7 @@ Het doel van dit document is het beschrijven van de factoren die van invloed zij
 
 In het volgende diagram ziet u een architectuur op hoog niveau van het inrichten van de engine die verbinding maakt met één forest, hoewel er meerdere forests worden ondersteund. Deze architectuur laat zien hoe de verschillende onderdelen met elkaar communiceren.
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![Diagram toont hoe de verbonden Directory's en Azure AD Connect inrichtings engine communiceren, met inbegrip van connector ruimte en omgekeerde onderdelen in een SQL Database. ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 De inrichtings Engine maakt verbinding met elk Active Directory forest en Azure AD. Het proces voor het lezen van informatie uit elke map wordt importeren genoemd. Exporteren verwijst naar het bijwerken van de directory's van de inrichtings engine. Met synchronisatie worden de regels geëvalueerd van de manier waarop de objecten in de inrichtings engine worden geplaatst. Voor een diep gaande kennis kunt u verwijzen naar [Azure AD Connect Sync: inzicht in de architectuur](./concept-azure-ad-connect-sync-architecture.md).
 

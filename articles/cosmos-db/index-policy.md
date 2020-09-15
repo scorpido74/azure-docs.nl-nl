@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607517"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089510"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
-In Azure Cosmos DB heeft elke container een indexerings beleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Het standaard indexerings beleid voor nieuw gemaakte containers indexeert elke eigenschap van elk item en dwingt bereik indexen af voor wille keurige teken reeks of getal. Zo kunt u hoge query prestaties krijgen zonder dat u op de hoogte hoeft te zijn van indexering en index beheer vooraf.
+In Azure Cosmos DB heeft elke container een indexeringsbeleid dat bepaalt hoe de items van de container moeten worden geïndexeerd. Het standaard indexeringsbeleid voor nieuw gemaakte containers indexeert elke eigenschap van elk item en dwingt bereikindexen af voor elke tekenreeks of elk getal. Dit levert u hoge queryprestaties op zonder dat u van tevoren aan indexering en indexbeheer hoeft te denken.
 
 In sommige gevallen wilt u mogelijk dit automatische gedrag overschrijven, zodat het beter aansluit bij uw vereisten. U kunt het indexerings beleid van een container aanpassen door de *indexerings modus*in te stellen en *eigenschaps paden*op te nemen of uit te sluiten.
 
@@ -30,7 +30,7 @@ Azure Cosmos DB ondersteunt twee indexerings modi:
 - **Geen**: indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) totdat de bewerking is voltooid.
 
 > [!NOTE]
-> Azure Cosmos DB ondersteunt ook een vertraagde indexerings modus. Lazy-indexering voert updates op een veel lagere prioriteits niveau uit als de engine geen andere werkzaamheden uitvoert. Dit kan leiden tot **inconsistente of onvolledige** query resultaten. Als u van plan bent om een query uit te zoeken op een Cosmos-container, moet u geen luie indexering selecteren. In juni 2020 hebben we een wijziging aangebracht waarbij nieuwe containers niet langer kunnen worden ingesteld op de vertraagde indexerings modus. Als uw Azure Cosmos DB-account al ten minste één container met een luie index bevat, wordt dit account automatisch uitgesloten van de wijziging. U kunt ook een uitzonde ring aanvragen door contact op te nemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (behalve als u een Azure Cosmos-account gebruikt in de [serverloze](serverless.md) modus die geen ondersteuning biedt voor Lazy indexering).
+> Azure Cosmos DB ondersteunt ook een vertraagde indexerings modus. Luie indexering voert updates op de index met een veel lager prioriteitsniveau uit als de engine geen andere taken uitvoert. Dit kan leiden tot **inconsistente of onvolledige** queryresultaten. Als u van plan bent om een query uit te voeren op een Cosmos-container, moet u geen luie indexering selecteren. In juni 2020 hebben we een wijziging aangebracht waarbij nieuwe containers niet langer kunnen worden ingesteld op de vertraagde indexerings modus. Als uw Azure Cosmos DB-account al ten minste één container met een luie index bevat, wordt dit account automatisch uitgesloten van de wijziging. U kunt ook een uitzonde ring aanvragen door contact op te nemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (behalve als u een Azure Cosmos-account gebruikt in de [serverloze](serverless.md) modus die geen ondersteuning biedt voor Lazy indexering).
 
 Indexerings beleid is standaard ingesteld op `automatic` . Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op `true` . Als u deze eigenschap instelt op, `true` kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
 
@@ -81,7 +81,7 @@ Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitg
 
 Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
-- `kind` Dit kan ofwel `range` of zijn `hash` . De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
+- `kind` Dit kan ofwel `range` of zijn `hash` . Ondersteuning van hash-indexen is beperkt tot gelijkheids filters. De functionaliteit van bereik index biedt alle functionaliteit van hash-indexen, evenals efficiënte sorteer volgorde, bereik filters, systeem functies. Het gebruik van een bereik index wordt altijd aangeraden.
 
 - `precision` is een getal dat is gedefinieerd op index niveau voor opgenomen paden. Een waarde die de `-1` maximale nauw keurigheid aangeeft. We raden u aan deze waarde altijd in te stellen op `-1` .
 

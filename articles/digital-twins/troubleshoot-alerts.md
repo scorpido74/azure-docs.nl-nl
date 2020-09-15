@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854863"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087202"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problemen met Azure Digital Apparaatdubbels oplossen: waarschuwingen
 
@@ -31,16 +31,16 @@ Hier vindt u informatie over het inschakelen van waarschuwingen voor uw Azure Di
 3. Op de volgende pagina *waarschuwings regel maken* kunt u de prompts voor het definiëren van voor waarden, te activeren acties en waarschuwings Details volgen.     
     * De **Scope** gegevens moeten automatisch worden gevuld met de details van uw exemplaar
     * U definieert **voor waarde** en **actie groeps** gegevens voor het aanpassen van waarschuwings triggers en antwoorden
-    * Voer in de sectie **Details van waarschuwings regel** de _naam van de waarschuwings regel_in _(optioneel)_. U kunt het selectie vakje _waarschuwings regel inschakelen bij maken_ selecteren als u wilt dat de waarschuwing actief wordt zodra deze wordt gemaakt.
-    * Op basis van bepaalde voor waarden en acties die u toevoegt, moet u _waarschuwings regel opslaan in resource groep_ en _Ernst_ van de respectieve vervolg keuzelijsten selecteren.
+    * Voer in de sectie **Details van waarschuwings regel** een naam en een optionele beschrijving in voor de regel. U kunt het selectie vakje _waarschuwings regel inschakelen bij maken_ selecteren als u wilt dat de waarschuwing actief wordt zodra deze wordt gemaakt.
+        - Hier kunt u ook een _resource groep_ en een _Ernst_ niveau selecteren.
 
 4. Selecteer de knop _waarschuwings regel maken_ om uw waarschuwings regel te maken.
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor het bereik, de voor waarde en de actie groep" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
-
-:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Scherm afbeelding van het gedeelte waarschuwings regel Details van het maken van een waarschuwings regel" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor de details van het bereik, de voor waarde, de actie groep en de waarschuwings regel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 Zie [*overzicht van waarschuwingen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md)voor een rond overzicht van het invullen van deze velden. Hieronder ziet u enkele voor beelden van hoe de stappen eruitzien voor Azure Digital Apparaatdubbels.
+
+### <a name="select-conditions"></a>Voor waarden selecteren
 
 Hier volgt een fragment van het proces *voor voor waarden selecteren* waarin wordt uitgelegd welke typen waarschuwings signalen er beschikbaar zijn voor Azure Digital apparaatdubbels. Op deze pagina kunt u het type signaal filteren en het gewenste signaal in een lijst selecteren.
 
@@ -49,11 +49,12 @@ Hier volgt een fragment van het proces *voor voor waarden selecteren* waarin wor
 Nadat u een signaal hebt geselecteerd, wordt u gevraagd om de logica van de waarschuwing te configureren. U kunt filteren op een dimensie, een drempel waarde voor uw waarschuwing instellen en de frequentie van controles voor de voor waarde instellen. Hier volgt een voor beeld van het instellen van een waarschuwing voor wanneer de gemiddelde waarde voor het aantal mislukte routerings fouten boven 5% komt.
 
 :::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Scherm afbeelding met de tweede pagina signaal logica configureren. Op de pagina wordt de geschiedenis van metrische gegevens weer gegeven, heeft een gebied om te filteren op een dimensie zoals Event Grid bewerkingen, en een sectie voor het definiëren van de logica van een waarschuwing zoals ' gemiddelde is groter dan 5 '":::
- 
-Nadat u de waarschuwingen hebt ingesteld, worden deze weer gegeven op de pagina *waarschuwingen* voor uw exemplaar.
+
+### <a name="verify-success"></a>Controleren geslaagd
+
+Nadat u een waarschuwing hebt ingesteld, worden deze weer gegeven op de pagina *waarschuwingen* voor uw exemplaar.
  
 :::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Scherm afbeelding van de pagina met waarschuwingen en de knop om toe te voegen. Er is één waarschuwing geconfigureerd" lightbox="media/troubleshoot-alerts/alerts-post.png":::
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

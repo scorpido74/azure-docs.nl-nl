@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036790"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089561"
 ---
 # <a name="change-the-style-of-the-map"></a>Stijl van de kaart wijzigen
 
@@ -82,7 +82,7 @@ De basiskaart stijl kan worden bijgewerkt met behulp van de `setStyle` functie e
 map.setStyle({ style: 'satellite' });
 ```
 
-In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl bijgewerkt van `grayscale_dark` naar `satellite` met behulp van de functie [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) .
+In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl bijgewerkt van `grayscale_dark` naar `satellite` met behulp van de functie [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
 
 <br/>
 
@@ -97,14 +97,14 @@ De stijl kiezer heeft twee verschillende indelings opties: `icon` en `list` . Da
 
 In de onderstaande afbeelding ziet u het besturings element stijl kiezer dat wordt weer gegeven in de `icon` indeling.
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Indeling van lijst met stijl kiezer":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Pictogram indeling stijl kiezer":::
 
 In de onderstaande afbeelding ziet u het besturings element stijl kiezer dat wordt weer gegeven in de `list` indeling.
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Indeling van lijst met stijl kiezer":::
 
 > [!IMPORTANT]
->Standaard wordt in het besturings element stijl kiezer een lijst weer gegeven met alle stijlen die beschikbaar zijn in de prijs categorie S0 van Azure Maps. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de `mapStyle` optie van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de `mapStyles` optie van de stijl kiezer in op `"all"` .
+> Standaard wordt in het besturings element stijl kiezer een lijst weer gegeven met alle stijlen die beschikbaar zijn in de prijs categorie S0 van Azure Maps. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de `mapStyle` optie van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de `mapStyles` optie van de stijl kiezer in op `"all"` .
 
 De volgende code laat zien hoe u de standaard `mapStyles` basisstijl lijst overschrijft. In dit voor beeld stellen we de `mapStyles` optie in om aan te geven welke basis stijlen moeten worden weer gegeven door het besturings element stijl kiezer.
 
@@ -118,7 +118,7 @@ De volgende code laat zien hoe u de standaard `mapStyles` basisstijl lijst overs
 Voor meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541733"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088303"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
@@ -33,7 +33,7 @@ Azure AD Connect maakt gebruik van moderne verificatie (met behulp van de ADAL-b
 In dit artikel laten we zien hoe fabrikam verbinding maakt met Azure AD via de proxy. De proxy server heeft de naam fabrikamproxy en maakt gebruik van poort 8080.
 
 Eerst moeten we controleren of [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd en **Microsoft Azure AD de synchronisatie service** eenmaal opnieuw is opgestart nadat het machine.config bestand is bijgewerkt.
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![Scherm afbeelding toont een deel van het configuratie bestand van de machine dot.](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > In sommige niet-micro soft-blogs wordt gedocumenteerd dat er in plaats daarvan wijzigingen in miiserver.exe.config moeten worden aangebracht. Dit bestand wordt echter bij elke upgrade overschreven, dus zelfs als het tijdens de eerste installatie werkt, stopt het systeem bij de eerste upgrade. Daarom is het raadzaam om machine.config in plaats daarvan bij te werken.
@@ -60,7 +60,7 @@ De volgende problemen zijn de meest voorkomende fouten die optreden in de instal
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>De installatie wizard is niet juist geconfigureerd
 Deze fout wordt weer gegeven wanneer de wizard zelf de proxy niet kan bereiken.
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![Scherm opname toont een fout: kan de referenties niet valideren.](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Als u deze fout ziet, controleert u of de [machine.config](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
 * Als dat het goed is, volgt u de stappen in [Controleer de connectiviteit](#verify-proxy-connectivity) van de proxy om te zien of het probleem zich buiten de wizard bevindt.
@@ -83,7 +83,7 @@ Als de installatie wizard is geslaagd om verbinding te maken met Azure AD, maar 
 ### <a name="verify-proxy-connectivity"></a>Proxy connectiviteit controleren
 Als u wilt controleren of de Azure AD Connect server daad werkelijk verbinding heeft met de proxy en Internet, gebruikt u een Power shell om te zien of de proxy webaanvragen toestaat of niet. Voer uit in een Power shell-prompt `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Technisch de eerste aanroep is `https://login.microsoftonline.com` en deze URI werkt ook, maar de andere URI is sneller om te reageren.)
 
-Power shell gebruikt de configuratie in machine.config om contact op te nemen met de proxy. De instellingen in WinHTTP/Netsh mogen niet van invloed zijn op deze cmdlets.
+PowerShell maakt gebruik van de configuratie in machine.config om contact op te nemen met de proxy. De instellingen in winhttp/netsh zouden niet van invloed mogen zijn op deze cmdlets.
 
 Als de proxy correct is geconfigureerd, krijgt u de status geslaagd: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
@@ -225,14 +225,14 @@ Wordt weer gegeven als onverwachte fout in de installatie wizard. Kan zich voord
 Met releases die beginnen met Build Number 1.1.105.0 (uitgebracht op 2016 februari), is de aanmeld hulp buiten gebruik gesteld. Deze sectie en de configuratie moeten niet meer nodig zijn, maar blijven als referentie.
 
 Voor de tijdelijke assistent voor eenmalige aanmelding moet WinHTTP worden geconfigureerd. Deze configuratie kan worden uitgevoerd met [**netsh**](how-to-connect-install-prerequisites.md#connectivity).
-![Helper](./media/tshoot-connect-connectivity/netsh.png)
+![Scherm afbeelding toont een opdracht prompt venster met het hulp programma Netsh voor het instellen van een proxy.](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>De aanmeld hulp is niet juist geconfigureerd
 Deze fout wordt weer gegeven wanneer de aanmeld hulp de proxy niet kan bereiken of de proxy de aanvraag niet toestaat.
-![geen netsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![Scherm opname toont een fout: kan de referenties niet valideren, Controleer de netwerk verbinding en de firewall-of proxy-instellingen.](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * Als u deze fout ziet, bekijkt u de proxy configuratie in [netsh](how-to-connect-install-prerequisites.md#connectivity) en controleert u of deze juist is.
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![Scherm afbeelding toont een opdracht prompt venster met het hulp programma Netsh om de proxy configuratie weer te geven.](./media/tshoot-connect-connectivity/netshshow.png)
 * Als dat het goed is, volgt u de stappen in [Controleer de connectiviteit](#verify-proxy-connectivity) van de proxy om te zien of het probleem zich buiten de wizard bevindt.
 
 ## <a name="next-steps"></a>Volgende stappen

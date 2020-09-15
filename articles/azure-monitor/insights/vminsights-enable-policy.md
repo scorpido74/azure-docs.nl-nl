@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799799"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088286"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen met Azure Policy
 In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's kunt inschakelen voor virtuele machines van Azure of een hybride virtuele machine die is verbonden met Azure Arc (preview) met behulp van Azure Policy. Met Azure Policy kunt u beleids definities toewijzen waarmee de vereiste agents voor Azure Monitor voor VM's in uw Azure-omgeving worden geïnstalleerd en de bewaking voor Vm's automatisch worden ingeschakeld als elke virtuele machine wordt gemaakt. Azure Monitor voor VM's biedt een functie waarmee niet-compatibele Vm's in uw omgeving kunnen worden gedetecteerd en hersteld. Gebruik deze functie in plaats van rechtstreeks te werken met Azure Policy.
@@ -46,7 +46,7 @@ Dit is dezelfde pagina om een initiatief in Azure Policy toe te wijzen, behalve 
 Selecteer op de pagina **para meters** een **log Analytics werkruimte** die door alle virtuele machines in de toewijzing moet worden gebruikt. Als u verschillende werk ruimten voor verschillende virtuele machines wilt opgeven, moet u meerdere toewijzingen maken, elk met een eigen bereik. 
 
    > [!NOTE]
-   > Als de werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u *log Analytics Inzender* machtigingen verlenen aan de principal-id van de beleids toewijzing. Als u dit niet doet, ziet u mogelijk een implementatie fout zoals`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > Als de werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u *log Analytics Inzender* machtigingen verlenen aan de principal-id van de beleids toewijzing. Als u dit niet doet, ziet u mogelijk een implementatie fout zoals `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
 [![Werkruimte](media/vminsights-enable-at-scale-policy/assignment-workspace.png)](media/vminsights-enable-at-scale-policy/assignment-workspace.png#lightbox)
 
@@ -69,7 +69,7 @@ De volgende tabel bevat een beschrijving van de informatie in deze weer gave.
 | **Toewijzings status** | **Geslaagd** : voor alle vm's in het bereik zijn de log Analytics-en Dependency agents geïmplementeerd.<br>**Waarschuwing** : het abonnement bevindt zich niet in een beheer groep.<br>**Niet gestart** : er is een nieuwe toewijzing toegevoegd.<br>**Vergren deling** : u beschikt niet over voldoende bevoegdheden voor de beheer groep.<br>**Leeg** : er zijn geen vm's of er is geen beleid toegewezen. |
 | **Compatibele Vm's** | Het aantal Vm's dat compatibel is. Dit is het aantal Vm's waarop zowel Log Analytics agent als de afhankelijkheids agent zijn geïnstalleerd. Dit is leeg als er geen toewijzingen zijn, geen Vm's in het bereik of niet de juiste machtigingen hebben. |
 | **Naleving** | Het algemene compatibiliteits nummer is de som van afzonderlijke resources die compatibel zijn gedeeld door de som van alle afzonderlijke resources. |
-| **Nalevings status** | **Compatibel** : voor alle vm's in de virtuele machines van het bereik zijn de log Analytics-en afhankelijkheids agenten geïmplementeerd, of eventuele nieuwe vm's in het bereik waarop de toewijzing van toepassing is, zijn nog niet geëvalueerd.<br>**Niet-compatibel** : er zijn vm's die zijn geëvalueerd, maar niet zijn ingeschakeld en mogelijk moeten worden hersteld.<br>**Niet gestart** : er is een nieuwe toewijzing toegevoegd.<br>**Vergren deling** : u beschikt niet over voldoende bevoegdheden voor de beheer groep.<br>**Leeg** : er is geen beleid toegewezen.  |
+| **Nalevingsstatus** | **Compatibel** : voor alle vm's in de virtuele machines van het bereik zijn de log Analytics-en afhankelijkheids agenten geïmplementeerd, of eventuele nieuwe vm's in het bereik waarop de toewijzing van toepassing is, zijn nog niet geëvalueerd.<br>**Niet-compatibel** : er zijn vm's die zijn geëvalueerd, maar niet zijn ingeschakeld en mogelijk moeten worden hersteld.<br>**Niet gestart** : er is een nieuwe toewijzing toegevoegd.<br>**Vergren deling** : u beschikt niet over voldoende bevoegdheden voor de beheer groep.<br>**Leeg** : er is geen beleid toegewezen.  |
 
 
 Wanneer u het initiatief toewijst, kan het bereik dat u hebt geselecteerd in de toewijzing het bereik of een subset hiervan zijn. U hebt bijvoorbeeld een toewijzing voor een abonnement (beleids bereik) gemaakt en geen beheer groep (dekkings bereik). In dit geval geeft de waarde van **toewijzings dekking** de vm's aan in het initiatief bereik gedeeld door de vm's in het dekkings bereik. In andere gevallen hebt u mogelijk enkele Vm's, resource groepen of een abonnement uitgesloten van het beleids bereik. Als de waarde leeg is, geeft dit aan dat het beleid of initiatief niet bestaat of dat u geen toestemming hebt. Informatie wordt weer gegeven onder de **toewijzings status**.
@@ -102,7 +102,7 @@ Als u een herstel taak wilt maken om nalevings problemen te verhelpen, klikt u o
 
 Klik op **herstellen** om de herstel taak te maken en vervolgens te **herstellen** om deze te starten. Waarschijnlijk moet u meerdere herstel taken maken, één voor elke beleids definitie. U kunt geen herstel taak maken voor een initiatief.
 
-[![Herstel](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![Scherm opname toont het deel venster voor het herstellen van beleid voor monitor | Virtual Machines.](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 Zodra de herstel taken zijn voltooid, moeten de virtuele machines voldoen aan de agents die zijn geïnstalleerd en ingeschakeld voor Azure Monitor voor VM's. 

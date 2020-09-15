@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a9e563f32f2b8f38af7ab86be82cd18ef1c2309c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986844"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088390"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -79,7 +79,7 @@ Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een database
 
 ![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
 
-## <a name="threat-protection"></a>Threat Protection
+## <a name="threat-protection"></a>Bescherming tegen bedreigingen
 
 SQL Database en SQL Managed instance beveiligde klant gegevens door de mogelijkheden voor controle en detectie van bedreigingen op te geven.
 
@@ -89,7 +89,7 @@ SQL Database en SQL Managed instance audit traceert database activiteiten en hel
 
 ### <a name="advanced-threat-protection"></a>Advanced Threat Protection
 
-Geavanceerde beveiliging tegen bedreigingen is een analyse van uw logboeken om ongebruikelijk gedrag en mogelijk schadelijke pogingen om toegang te krijgen tot data bases te detecteren Er worden waarschuwingen gemaakt voor verdachte activiteiten, zoals SQL-injectie, mogelijke gegevens infiltratie en beveiligings aanvallen, of voor afwijkingen in toegangs patronen om escalaties van bevoegdheden te ondervangen en gekraakte referenties te gebruiken. Er worden waarschuwingen weer gegeven uit de [Azure Security Center](https://azure.microsoft.com/services/security-center/), waar de details van de verdachte activiteiten worden verstrekt en aanbevelingen voor verder onderzoek worden gegeven, samen met acties voor het beperken van de dreiging. Geavanceerde beveiliging tegen bedreigingen kan per server worden ingeschakeld voor extra kosten. Zie [aan de slag met SQL database Advanced Threat Protection](threat-detection-configure.md)voor meer informatie.
+Geavanceerde beveiliging tegen bedreigingen is een analyse van uw logboeken om ongebruikelijk gedrag en mogelijk schadelijke pogingen om toegang te krijgen tot data bases te detecteren Er worden waarschuwingen gemaakt voor verdachte activiteiten, zoals SQL-injectie, mogelijke gegevens infiltratie en beveiligings aanvallen, of voor afwijkingen in toegangs patronen om escalaties van bevoegdheden te ondervangen en gekraakte referenties te gebruiken. Er worden waarschuwingen weer gegeven uit de  [Azure Security Center](https://azure.microsoft.com/services/security-center/), waar de details van de verdachte activiteiten worden verstrekt en aanbevelingen voor verder onderzoek worden gegeven, samen met acties voor het beperken van de dreiging. Geavanceerde beveiliging tegen bedreigingen kan per server worden ingeschakeld voor extra kosten. Zie [aan de slag met SQL database Advanced Threat Protection](threat-detection-configure.md)voor meer informatie.
 
 ![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
 
@@ -103,7 +103,7 @@ SQL Database en SQL Managed instance worden te allen tijde Encryption (SSL/TLS) 
 
 Als best practice kunt u het beste een versleutelde verbinding opgeven in de connection string die door de toepassing wordt gebruikt en het server certificaat _**niet**_ vertrouwen. Dit dwingt uw toepassing af om het server certificaat te verifiëren en zorgt er daarom voor dat uw toepassing kwetsbaar is voor man in het middelste type aanvallen.
 
-Als u bijvoorbeeld het ADO.NET-stuur programma gebruikt, wordt dit bereikt via **versleutelen = True** en **TrustServerCertificate = False**. Als u uw connection string van de Azure Portal opvraagt, worden de juiste instellingen weer geven.
+Als u bijvoorbeeld het ADO.NET-stuur programma gebruikt, wordt dit bereikt via  **versleutelen = True** en **TrustServerCertificate = False**. Als u uw connection string van de Azure Portal opvraagt, worden de juiste instellingen weer geven.
 
 > [!IMPORTANT]
 > Houd er rekening mee dat sommige niet-micro soft-Stuur Programma's standaard geen gebruikmaken van TLS of gebruikmaken van een oudere versie van TLS (<1,2) om te kunnen werken. In dit geval kunt u met de server nog steeds verbinding maken met uw data base. We raden u echter aan de beveiligings Risico's te evalueren waarmee dergelijke Stuur Programma's en toepassingen verbinding kunnen maken met SQL Database, met name als u gevoelige gegevens opslaat.
@@ -150,7 +150,7 @@ Zie [aan de slag met gegevens detectie en-classificatie](data-discovery-and-clas
 
 ### <a name="compliance"></a>Naleving
 
-Naast de bovenstaande functies en functionaliteit die uw toepassing kunnen helpen voldoen aan verschillende beveiligings vereisten, is Azure SQL Database ook betrokken bij regel matige controles en is gecertificeerd voor een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+Naast de bovenstaande functies en functionaliteit die uw toepassing kunnen helpen voldoen aan verschillende beveiligings vereisten, is Azure SQL Database ook betrokken bij regel matige controles en is gecertificeerd voor een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://www.microsoft.com/trust-center/compliance/compliance-overview) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

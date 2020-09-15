@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036438"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087266"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 
@@ -26,7 +26,7 @@ Speel met de onderstaande kaart en Bekijk de bijbehorende muis gebeurtenissen di
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interactie met de kaart – muis gebeurtenissen' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interactie met de kaart – muis gebeurtenissen</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interactie met de kaart – muis gebeurtenissen' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interactie met de kaart – muis gebeurtenissen</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Communiceren met kaart lagen
@@ -35,7 +35,7 @@ Met de volgende code wordt de gebrande gebeurtenis gemarkeerd tijdens de interac
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interactie met de gebeurtenissen van de kaart-laag' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interactie met de gebeurtenissen van de kaart-laag</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interactie met de gebeurtenissen van de kaart-laag' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interactie met de gebeurtenissen van de kaart-laag</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interactie met HTML-markering
@@ -44,7 +44,7 @@ Met de volgende code worden java script-toewijzings gebeurtenissen toegevoegd aa
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interactie met de kaart-HTML-markerings gebeurtenissen' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interactie met de markerings gebeurtenissen van de kaart-HTML</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Interactie met de kaart-HTML-markerings gebeurtenissen' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interactie met de markerings gebeurtenissen van de kaart-HTML</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van de kaart klasse.
@@ -98,11 +98,11 @@ De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van d
 | `sourceremoved`     | Wordt geactiveerd wanneer een `DataSource` of `VectorTileSource` wordt verwijderd uit de kaart.|
 | `styledata`         | Deze gebeurtenis wordt gestart wanneer de stijl van de kaart wordt geladen of gewijzigd.|
 | `styleimagemissing` | Deze gebeurtenis wordt gestart wanneer een laag een afbeelding van de afbeelding sprite probeert te laden die niet bestaat |
-| `tokenacquired`     | Wordt geactiveerd wanneer een AAD-toegangs token wordt verkregen.|
-| `touchcancel`       | Wordt geactiveerd wanneer een touchcancel-gebeurtenis plaatsvindt binnen de kaart.|
-| `touchend`          | Wordt geactiveerd wanneer een touchend-gebeurtenis plaatsvindt binnen de kaart.|
-| `touchmove`         | Wordt geactiveerd wanneer een touchmove-gebeurtenis plaatsvindt binnen de kaart.|
-| `touchstart`        | Wordt geactiveerd wanneer een touchstart-gebeurtenis plaatsvindt binnen de kaart.|
+| `tokenacquired`     | Wordt geactiveerd wanneer een Azure Active Directory toegangs token wordt verkregen.|
+| `touchcancel`       | Wordt geactiveerd wanneer een `touchcancel` gebeurtenis binnen de kaart optreedt.|
+| `touchend`          | Wordt geactiveerd wanneer een `touchend` gebeurtenis binnen de kaart optreedt.|
+| `touchmove`         | Wordt geactiveerd wanneer een `touchmove` gebeurtenis binnen de kaart optreedt.|
+| `touchstart`        | Wordt geactiveerd wanneer een `touchstart` gebeurtenis binnen de kaart optreedt.|
 | `wheel`             | Deze gebeurtenis wordt gestart wanneer een muis wiel wordt weer gegeven in de kaart.|
 | `zoom`              | Wordt herhaaldelijk geactiveerd tijdens een bewegende overgang van het ene zoom niveau naar het andere, als gevolg van de interactie of methoden van de gebruiker.|
 | `zoomend`           | Wordt geactiveerd vlak nadat de kaart een overgang van het ene zoom niveau naar het andere heeft uitgevoerd, als gevolg van de interactie of methoden van de gebruiker.|

@@ -4,12 +4,12 @@ description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1eaf9b735e65811b242fa7198b3545c9c68a4d46
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425990"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086756"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en-beheer hiërarchie te organiseren
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>Afhandelings ruimten
 
-Als de namen van tags of waarden spaties bevatten, moet u een paar extra stappen uitvoeren. In het volgende voor beeld worden alle labels van een resource groep op de bijbehorende resources toegepast wanneer de Tags spaties kunnen bevatten.
+Als de namen van tags of waarden spaties bevatten, moet u een paar extra stappen uitvoeren. 
+
+De `--tags` para meters in de Azure cli kunnen een teken reeks accepteren die bestaat uit een matrix met teken reeksen. In het volgende voor beeld worden de tags in een resource groep overschreven waarbij de Tags spaties en afbreek streepjes bevatten: 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+U kunt dezelfde syntaxis gebruiken wanneer u een resource groep of resources maakt of bijwerkt met behulp van de `--tags` para meter.
+
+Als u de tags wilt bijwerken met behulp van de `--set` para meter, moet u de sleutel en waarde door geven als een teken reeks. In het volgende voor beeld wordt één tag toegevoegd aan een resource groep:
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+In dit geval wordt de tag-waarde gemarkeerd met enkele aanhalings tekens, omdat de waarde een koppel teken heeft.
+
+Mogelijk moet u ook labels Toep assen op een groot aantal resources. In het volgende voor beeld worden alle labels van een resource groep op de bijbehorende resources toegepast wanneer de Tags spaties kunnen bevatten:
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
