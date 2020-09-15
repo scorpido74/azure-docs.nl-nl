@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587851"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469113"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Verbinding maken met een Azure Red Hat OpenShift 4-cluster
 
@@ -25,7 +25,7 @@ In deze zelfstudie, deel twee van drie, maakt u verbinding met een Azure Red Hat
 
 In de vorige zelfstudies is een Azure Red Hat OpenShift-cluster gemaakt. Als u deze stappen niet hebt uitgevoerd en u deze zelfstudie toch wilt volgen, begint u met [Zelfstudie 1: Een Azure Red Hat OpenShift 4-cluster maken](tutorial-create-cluster.md).
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.6.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-In de volgende voorbeeld ziet u dat het wachtwoord in `kubeadminPassword` is.
+In de volgende voorbeeld ziet u wat het wachtwoord in `kubeadminPassword` is.
 
 ```json
 {
@@ -46,7 +46,7 @@ In de volgende voorbeeld ziet u dat het wachtwoord in `kubeadminPassword` is.
 }
 ```
 
-U kunt de URL van de clusterconsole vinden door de volgende opdracht uit te voeren, die eruit ziet als `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+U kunt de URL van de clusterconsole vinden door de volgende opdracht uit te voeren, die eruit ziet als `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`.
 
 ```azurecli-interactive
  az aro show \

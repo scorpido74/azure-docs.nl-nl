@@ -3,20 +3,20 @@ title: Voor deur van Azure voor het herschrijven van URL'S | Microsoft Docs
 description: Dit artikel helpt u inzicht te krijgen in de manier waarop de URL voor uw routes wordt herschreven door Azure front-deur, indien geconfigureerd.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471469"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398934"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-herschrijvingen (aangepast doorstuurpad)
 Azure front-deur ondersteunt het herschrijven van URL'S door een optioneel **aangepast doorstuur traject** te configureren dat moet worden gebruikt bij het maken van de aanvraag om door te sturen naar de back-end. Als er geen aangepast doorstuurpad wordt opgegeven, kopieert Front Door het pad van de binnenkomende URL naar de URL die in de doorgestuurde aanvraag wordt gebruikt. De hostkoptekst in de doorgestuurde aanvraag is de hostkoptekst zoals deze is geconfigureerd voor de geselecteerde back-end. Lees de [back-end-host-header](front-door-backend-pool.md#hostheader) om te ontdekken wat deze doet en hoe u deze kunt configureren.

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255525"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500229"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>VM's implementeren op uw GPU-apparaat voor Azure Stack Edge met behulp van Azure CLI en Python
 
@@ -60,13 +60,13 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
 
     2. Schakel Compute in op de netwerkinterface. Azure Stack Edge maakt en beheert een virtuele switch die overeenkomt met die netwerkinterface.
 
-    Als u besluit een andere netwerkinterface te gebruiken voor berekeningen, moet u het volgende doen:
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Verwijder alle VM's die u hebt geïmplementeerd met behulp van Azure Resource Manager.
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - Verwijder alle virtuele netwerkinterfaces en het virtuele netwerk dat is gekoppeld aan deze netwerkinterface.
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - U kunt nu een andere netwerkinterface inschakelen voor berekeningen.
+    - You can now enable another network interface for compute.-->
 
 3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack Edge-apparaat en in het vertrouwensarchief van uw client. Volg de procedure die wordt beschreven in [Stap 2: Certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
@@ -342,7 +342,8 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   Noteer de waarden voor `id` en `tenantId`, omdat deze overeenkomen met respectievelijk de Azure Resource Manager-abonnements-id en de Azure Resource Manager-tenant-id, en in een latere stap worden gebruikt.
+       
    De volgende omgevingsvariabelen moeten worden ingesteld voor correcte werking als *service-principal*:
 
    ```
@@ -352,7 +353,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Uw Azure Resource Manager-tenant-ID, Azure Resource Manager-client-ID en Azure Resource Manager-abonnements-ID zijn allemaal in code vastgelegd en hebben dezelfde waarden voor alle Azure Stack Edge-apparaten. Het Azure Resource Manager-clientgeheim is het Azure Resource Manager-wachtwoord dat u hebt ingesteld.
+   De Azure Resource Manager-client-id is vastgelegd in code. De Azure Resource Manager-tenant-id en Azure Resource Manager-abonnements-id zijn beide aanwezig in de uitvoer van opdracht `az login` die u eerder hebt uitgevoerd. Het Azure Resource Manager-clientgeheim is het Azure Resource Manager-wachtwoord dat u hebt ingesteld.
 
    Zie [Azure Resource Manager-wachtwoord](azure-stack-edge-j-series-set-azure-resource-manager-password.md) voor meer informatie.
 
@@ -379,7 +380,7 @@ Er wordt een Python-script beschikbaar gemaakt waarmee u een virtuele machine ku
 
 2. Wanneer het script wordt uitgevoerd, duurt het uploaden van de VHD 20-30 minuten. Als u de voortgang van de uploadbewerking wilt weergeven, kunt u Azure Storage Explorer of AzCopy gebruiken.
 
-    Hier volgt een voorbeeld van de uitvoer van een geslaagde uitvoering van het script. Met het script worden alle resources in een resourcegroep gemaakt, worden deze bronnen gebruikt om een virtuele machine te maken en wordt de resourcegroep verwijderd, inclusief alle resources die zijn gemaakt.
+    Hier volgt een voorbeeld van de uitvoer van een geslaagde uitvoering van het script. Met het script worden alle resources in een resourcegroep gemaakt, worden deze resources gebruikt om een VM te maken en wordt de resourcegroep verwijderd, inclusief alle resources die zijn gemaakt.
 
     
     ```powershell

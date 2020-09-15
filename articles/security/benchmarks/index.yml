@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Documentatie voor Azure Security-benchmarks
+title: Documentatie voor Azure Security Benchmark
 summary: Meer informatie over hoe u onze best practices en begeleiding kunt gebruiken om uw cloudoplossingen in Azure te beveiligen.
 metadata:
-  title: Azure Security-benchmarks
+  title: Azure Security-benchmark
   description: De Azure Security-benchmark bevat aanbevelingen die u helpen om de beveiliging van uw toepassingen en gegevens in Azure te verbeteren.
   services: security
   ms.service: security
@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213557"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058662"
 landingContent:
 - title: Over de Azure Security-benchmark
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Basisbeginselen van Azure Security
       url: ../fundamentals/index.yml
-- title: Azure Security-benchmarkinstellingen
+- title: Azure Security Benchmark V2-controles
   linkLists:
   - linkListType: overview
     links:
     - text: Netwerkbeveiliging
-      url: security-control-network-security.md
-    - text: Logboekregistratie en bewaking
-      url: security-control-logging-monitoring.md
-    - text: Identiteits- en toegangsbeheer
-      url: security-control-identity-access-control.md
-    - text: Gegevensbeveiliging
-      url: security-control-data-protection.md
-    - text: Beheer van beveiligingsproblemen
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-network-security.md
+    - text: Identiteitsbeheer
+      url: security-controls-v2-identity-management.md
+    - text: Bevoegde toegang
+      url: security-controls-v2-privileged-access.md
+    - text: Gegevensbescherming
+      url: security-controls-v2-data-protection.md
+    - text: Asset-management
+      url: security-controls-v2-asset-management.md
     - text: Meer informatie
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: Beveiligingsbasislijnen berekenen
   linkLists:
   - linkListType: overview

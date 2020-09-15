@@ -1,67 +1,67 @@
 ---
-title: 'Snelstartgids: een model testen met audio bestanden-speech Studio'
+title: Een model testen met behulp van audiobestanden - Speech Studio
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u Speech Studio om herkenning van spraak in een audio bestand te testen.
+description: In deze instructies gebruikt u Speech Studio om spraakherkenning in een audiobestand te testen.
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391533"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565800"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Snelstartgids: een model testen met behulp van een audio bestand in speech Studio
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Een model testen met behulp van een audiobestand in Speech Studio
 
-In deze Quick Start gebruikt u Speech Studio om spraak van een audio bestand naar tekst te converteren. Met Speech Studio kunt u spraakherkennings modellen testen, vergelijken, verbeteren en implementeren met behulp van gerelateerde tekst, audio met zelfvoorziene transcripten en uitspraak richtlijnen die u opgeeft.
+In deze instructies gebruikt u Speech Studio om spraak uit een audiobestand om te zetten in tekst. Met Speech Studio kunt u spraakherkenningsmodellen testen, vergelijken, verbeteren en implementeren, met behulp van gerelateerde tekst, audio met door mensen gelabelde transcripten, en uitspraakrichtlijnen die u opgeeft.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de spraak Portal gebruikt, [volgt u deze instructies om een Azure-account te maken en u te abonneren op de spraak service](../how-to-custom-speech.md#set-up-your-azure-account). Dit uniforme abonnement geeft u toegang tot spraak naar tekst, tekst naar spraak, spraak omzetting en de Custom Speech Portal.
+Voordat u de Speech-portal gebruikt, [volgt u deze instructies om een Azure-account te maken en u te abonneren op de Speech-service](../how-to-custom-speech.md#set-up-your-azure-account). Dit uniforme abonnement biedt u toegang tot spraak-naar-tekst, tekst-naar-spraak, spraakomzetting en de Custom Speech-portal.
 
-## <a name="download-an-audio-file"></a>Een audio bestand downloaden
+## <a name="download-an-audio-file"></a>Een audiobestand downloaden
 
-Volg deze stappen om een audio bestand met spraak te downloaden en in een zip-bestand te pakken.
+Volg deze stappen om een audiobestand met spraak te downloaden en dit te verpakken als ZIP-bestand.
 
-1. Down load het voor **[beeld-WAV-bestand van deze koppeling](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** door met de rechter muisknop op de koppeling te klikken en **Koppeling opslaan als**te selecteren. Klik op **Opslaan** om het `whatstheweatherlike.wav` bestand te downloaden.
-2. Een bestand Verkenner of een Terminal venster met een zip-hulp programma maken een zip-bestand met `whatstheweatherlike.zip` de naam dat het bestand bevat dat `whatstheweatherlike.wav` u hebt gedownload. In Windows opent u Windows Verkenner, navigeert u naar de map, klikt u met de rechter muisknop op verzenden, klikt `Downloads` `whatstheweatherliike.wav` **u**op **gecomprimeerde (gezipte) map**en drukt u op ENTER om de standaard bestandsnaam te accepteren.
+1. Download het **[wav-voorbeeldbestand](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** via deze koppeling door met de rechtermuisknop op de koppeling te klikken en **Koppeling opslaan als** te kiezen. Klik op **Opslaan** om het `whatstheweatherlike.wav`-bestand te downloaden.
+2. Maak met behulp van een bestandenverkenner of terminalvenster met een ZIP-programma, een ZIP-bestand met de naam `whatstheweatherlike.zip` dat het `whatstheweatherlike.wav`-bestand bevat dat u hebt gedownload. In Windows opent u Windows Verkenner, gaat u naar de map `Downloads` en klikt u met de rechtermuisknop op `whatstheweatherliike.wav`. Klik op **Verzenden naar**, klik op **Gecomprimeerde (gezipte) map** en druk op Enter om de standaardbestandsnaam te accepteren.
 
-## <a name="create-a-project-in-the-custom-speech-portal"></a>Een project maken in de Custom Speech Portal
+## <a name="create-a-project-in-the-custom-speech-portal"></a>Een project maken in de Custom Speech-portal
 
-Volg deze stappen om een project te maken dat uw zip-bestand bevat.
+Volg deze stappen om een project te maken dat uw zip met één audiobestand bevat.
 
-1. Open [Speech Studio](https://speech.microsoft.com/)en klik op **New Project**. Typ een naam voor dit project en klik op **maken**. Uw project wordt weer gegeven in de lijst Custom Speech.
-2. Klik op de naam van uw project. Klik op **gegevens uploaden**op het tabblad gegevens.
-3. Het speech-gegevens type wordt standaard ingesteld op **Audio**, dus klik op **volgende**.
-4. Geef uw nieuwe gegevensset een naam `MyZipOfAudio` en klik op **volgende**.
-5. Klik op **Bladeren bestanden...**, navigeer naar het `whatstheweatherlike.zip` bestand en klik op **openen**.
-6. Klik op de knop **Uploaden**. De browser uploadt uw zip-bestand naar speech Studio en de inhoud wordt verwerkt door Speech Studio.
+1. Open [Speech Studio](https://speech.microsoft.com/) en klik op **Nieuw project**. Typ een naam voor dit project en klik op **Maken**. Uw project wordt weergegeven in de Custom Speech-lijst.
+2. Klik op de naam van uw project. Klik op het tabblad Gegevens op **Gegevens uploaden**.
+3. Het type spraakgegevens is standaard **Alleen audio**, klik daarom op **Volgende**.
+4. Geef de nieuwe spraakgegevensset de naam `MyZipOfAudio`, en klik op **Volgende**.
+5. Klik op **Door bestanden bladeren...** , ga naar het `whatstheweatherlike.zip`-bestand en klik op **Openen**.
+6. Klik op de knop **Uploaden**. Het ZIP-bestand wordt met de browser geüpload naar Speech Studio, en de inhoud wordt in Speech Studio verwerkt.
 
 ## <a name="test-a-model"></a>Een model testen
 
-Nadat de inhoud van uw zip-bestand door Speech Studio is verwerkt, kunt u de bron audio afspelen tijdens het controleren van de transcriptie om fouten of omissies op te sporen. Volg deze stappen om de transcriptie kwaliteit in de browser te controleren.
+Nadat de inhoud van het ZIP-bestand is verwerkt in Speech Studio, kunt u de bronaudio afspelen tijdens het controleren van de transcriptie om fouten of weglatingen op te sporen. Volg deze stappen om de kwaliteit van de transcriptie te controleren in de browser.
 
-1. Klik op het tabblad **testen** en klik op **test toevoegen**.
-2. In deze test wordt de kwaliteit van alleen audio gegevens geïnspecteerd, dus klik op **volgende** om dit test type te accepteren.
-3. Geef deze test een naam `MyModelTest` en klik op **volgende**.
-4. Klik op het keuze rondje links van en `MyZipOfAudio` Klik op **volgende**.
-5. De vervolg keuzelijst **model 1** wordt standaard ingesteld op het meest recente herkennings model, dus klik op **maken**. Nadat de inhoud van uw audio gegevensset is verwerkt, wordt de test status gewijzigd in **geslaagd**.
-6. Klik op **MyModelTest**. De resultaten van spraak herkenning worden weer gegeven. Klik op het rechter drie hoekje binnen de cirkel om de audio te belui Steren en vergelijk wat u hoort aan de tekst van de cirkel.
+1. Klik op het tabblad **Testen** en klik op **Test toevoegen**.
+2. In deze test wordt de kwaliteit van gegevens met het kenmerk Alleen-audio geïnspecteerd. Klik daarom op **Volgende** om dit testtype te accepteren.
+3. Geef deze test de naam `MyModelTest`, en klik op **Volgende**.
+4. Klik op het keuzerondje links van `MyZipOfAudio`, en klik op **Volgende**.
+5. De vervolgkeuzelijst **Model 1** is standaard ingesteld op het meest recente herkenningsmodel. Klik daarom op **Maken**. Nadat de inhoud van uw audiogegevensset is verwerkt, wordt de status van de test gewijzigd in **Geslaagd**.
+6. Klik op **MyModelTest**. De resultaten van de spraakherkenning worden weergegeven. Klik op de naar rechts wijzende driehoek binnen de cirkel om de audio te beluisteren, en vergelijk wat u hoort, met de tekst bij de cirkel.
 
 ## <a name="download-detailed-results"></a>Gedetailleerde resultaten downloaden
 
-U kunt bestanden die transcripties beschrijven in veel meer details downloaden. De bestanden bevatten lexicale vorm van spraak in uw audio bestanden en JSON-bestanden met gegevens over de betrouw baarheid van de offset, duur en transcriptie van elk woord. Volg deze stappen om deze bestanden weer te geven.
+U kunt bestanden die transcripties beschrijven, met veel meer details downloaden. De bestanden bevatten lexicale spraakvorm in uw audiobestanden, en JSON-bestanden die details over offset, duur en transcriptiebetrouwbaarheid bevatten voor elk woord. Volg deze stappen om deze bestanden te zien.
 
 1. Klik op **Downloaden**.
-2. Selecteer in het dialoog venster downloaden de optie **Audio**en klik op **downloaden**.
-3. Pak het gedownloade zip-bestand uit en controleer de uitgepakte bestanden.
+2. Schakel in het dialoogvenster Downloaden het selectievakje **Audio** uit, en klik op **Downloaden**.
+3. Pak het gedownloade ZIP-bestand uit, en controleer de uitgepakte bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het verbeteren van de nauw keurigheid van spraak herkenning door [een aangepast model te trainen](../how-to-custom-speech-test-and-train.md).
+Meer informatie over het verbeteren van de nauwkeurigheid van spraakherkenning door [een aangepast model te trainen](../how-to-custom-speech-test-and-train.md).

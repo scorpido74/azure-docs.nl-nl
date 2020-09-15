@@ -11,6 +11,8 @@
 - name: Snelstartgidsen
   expanded: true
   items:
+    - name: Een instantie maken - CLI
+      href: get-started-create-service-instance-cli.md
     - name: Een instantie maken - Portal
       href: get-started-create-service-instance.md
     - name: Een instantie maken - PowerShell

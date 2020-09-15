@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Routeringsvoorkeur
           href: routing-preference-overview.md
+        - name: Beveiligingsbasislijn voor openbaar IP-adres
+          href: public-ip-security-baseline.md
     - name: Beveiliging
       items:
         - name: Netwerkbeveiligingsgroepen

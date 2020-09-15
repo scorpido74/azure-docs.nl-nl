@@ -12,12 +12,13 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 863017797aa6872d7ac7a824e1d38f2dde4c6d1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+- contperfq1
+ms.openlocfilehash: 975f32872cd5fcdf00fb9e394920a7a50ba898ce
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589931"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482794"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Quickstart: Implementeer een Azure Kubernetes Service-cluster met behulp van de Azure CLI.
 
@@ -68,7 +69,7 @@ In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Dit zal enkele minuten in beslag nemen.
 
 > [!NOTE]
-> Azure Monitor voor containers wordt ingeschakeld met behulp van de parameter *--enable-addons monitoring*, waarvoor *Microsoft.OperationsManagement* en *Microsoft.OperationalInsights* moeten zijn geregistreerd in uw abonnement. De registratiestatus controleren:
+> [Azure Monitor voor containers][azure-monitor-containers] wordt ingeschakeld met behulp van de parameter *--enable-addons monitoring*, waarvoor *Microsoft.OperationsManagement* en *Microsoft.OperationalInsights* moeten zijn geregistreerd in uw abonnement. De registratiestatus controleren:
 > 
 > ```azurecli
 > az provider show -n Microsoft.OperationsManagement -o table
@@ -106,7 +107,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 > [!NOTE]
-> De bovenstaande opdracht maakt gebruik van de standaardlocatie voor het Kubernetes-configuratiebestand, namelijk `~/.kube/config`. U kunt een andere locatie voor uw Kubernetes-configuratiebestand opgeven door *--file* te gebruiken.
+> De bovenstaande opdracht maakt gebruik van de standaardlocatie voor het [Kubernetes-configuratiebestand][kubeconfig-file], namelijk `~/.kube/config`. U kunt een andere locatie voor uw Kubernetes-configuratiebestand opgeven door *--file* te gebruiken.
 
 Als u de verbinding met uw cluster wilt controleren, gebruikt u de opdracht [kubectl get][kubectl-get] om een lijst met clusterknooppunten te retourneren.
 
@@ -123,7 +124,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster gedefinieerd, zoals welke containerinstallatiekopieën moeten worden uitgevoerd. In deze snelstart worden met behulp van een manifest alle objecten gemaakt die nodig zijn om de Azure Vote-toepassing uit te voeren. Dit manifest bevat twee [Kubernetes-implementaties][kubernetes-deployment], een voor de Azure Vote Python-voorbeeldtoepassingen en een voor een instantie van Redis. Er worden bovendien twee [Kubernetes-services][kubernetes-service] gemaakt: een interne service voor de Redis-instantie en een externe service voor toegang tot de Azure Vote-toepassing vanaf internet.
+In een [Kubernetes-manifestbestand][kubernetes-deployment] wordt een gewenste status voor het cluster gedefinieerd, zoals welke containerinstallatiekopieën moeten worden uitgevoerd. In deze quickstart worden met behulp van een manifest alle objecten gemaakt die nodig zijn om de [Azure Vote-toepassing][azure-vote-app] uit te voeren. Dit manifest bevat twee [Kubernetes-implementaties][kubernetes-deployment], een voor de Azure Vote Python-voorbeeldtoepassingen en een voor een instantie van Redis. Er worden bovendien twee [Kubernetes-services][kubernetes-service] gemaakt: een interne service voor de Redis-instantie en een externe service voor toegang tot de Azure Vote-toepassing vanaf internet.
 
 Maak een bestand met de naam `azure-vote.yaml` en kopieer de volgende YAML-definitie naar het bestand. Als u Azure Cloud Shell gebruikt, kan dit bestand worden gemaakt met behulp van `code`, `vi` of `nano`, zoals bij een virtueel of fysiek systeem:
 
@@ -254,7 +255,7 @@ Open een webbrowser naar het externe IP-adres van uw service om de Azure Vote-ap
 
 ![Stem-app is geïmplementeerd in Azure Kubernetes Service](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Toen het AKS-cluster werd gemaakt, is [Azure Monitor voor containers](../azure-monitor/insights/container-insights-overview.md) ingeschakeld om metrische gegevens over de status van de clusterknooppunten en -pods vast te leggen. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar.
+Toen het AKS-cluster werd gemaakt, is [Azure Monitor voor containers][azure-monitor-containers] ingeschakeld om metrische gegevens over de status van de clusterknooppunten en -pods vast te leggen. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 
@@ -287,7 +288,7 @@ Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: ../dev-spaces/index.yml
+[kubeconfig-file]: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
@@ -300,6 +301,7 @@ Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
+[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

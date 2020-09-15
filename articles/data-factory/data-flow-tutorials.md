@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 08/11/2020
-ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/02/2020
+ms.openlocfilehash: 332eb274b7ae632a3496b9ff43439bb48cfed5e4
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322616"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419279"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
@@ -82,6 +82,8 @@ Aangezien het product steeds wordt bijgewerkt, hebben sommige functies in de hui
 [Dynamische joins en dynamische opzoekacties](https://youtu.be/CMOPPie9bXM)
 
 [Platmaken-transformatie](https://youtu.be/VY2tFQJoAXE)
+
+[Hiërarchische gegevens transformeren](https://youtu.be/oAEh21NFgWQ)
 
 ## <a name="source-and-sink"></a>Bron en sink
 

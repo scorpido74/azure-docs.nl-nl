@@ -24,13 +24,13 @@ De volgende Ca's zijn toegestaan wanneer u uw eigen certificaat maakt:
 - Ameroot
 - APCA-DM3P
 - Auto Pilot-basis-CA
-- Baltimore Cyber Trust Root
+- Baltimore CyberTrust Root
 - Klasse 3 open bare primaire certificerings instantie
 - COMODO RSA-certificerings instantie
 - COMODO RSA-domein validatie beveiligde server-CA
-- D-vertrouwde basis klasse 3 CA 2 2009
+- D-TRUST Root Class 3 CA 2 2009
 - DigiCert Cloud Services CA-1
-- DigiCert globale basis-CA
+- DigiCert Global Root CA
 - DigiCert High Assurance CA-3
 - DigiCert High Assurance EV-basis-CA
 - CA voor DigiCert SHA2 uitgebreide validatie server

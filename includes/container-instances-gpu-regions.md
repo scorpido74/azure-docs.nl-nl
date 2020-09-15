@@ -13,7 +13,7 @@ ms.locfileid: "75445823"
 ---
 ### <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-| Regio's | Besturingssysteem | Beschik bare GPU Sku's |
+| Regio's | OS | Beschik bare GPU Sku's |
 | -------- | ---- | :-----------: |
 | VS-Oost, Europa-west, VS-West 2 | Linux | K80, P100, V100 |
 | Azië - zuidoost | Linux | P100, V100|

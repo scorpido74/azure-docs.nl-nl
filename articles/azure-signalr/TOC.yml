@@ -25,6 +25,8 @@
   items:
     - name: 'Een serverloze, realtime app met verificatie bouwen'
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Een Blazor Server-chat-app bouwen
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden

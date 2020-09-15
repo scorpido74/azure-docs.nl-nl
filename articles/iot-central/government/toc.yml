@@ -24,7 +24,7 @@
   items:
     - name: Uw app verbinden met Dynamics 365 Field Services
       href: how-to-configure-connected-field-services.md
-    - name: Apparaten verbinden
+    - name: Apparaten verbinden en ontwikkelen
       items:
         - name: Een Rigado Cascade 500 voorbereiden en verbinden
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json

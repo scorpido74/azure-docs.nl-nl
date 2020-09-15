@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: Logboekgegevens
           items:
-            - name: Logboekgegevensstructuur
-              href: log-query/logs-structure.md
             - name: Querybereik
               href: log-query/scope.md
-            - name: Standaardeigenschappen
-              href: platform/log-standard-properties.md
+            - name: Standaardkolommen
+              href: platform/log-standard-columns.md
             - name: Computergroepen
               href: platform/computer-groups.md
         - name: Querytaal

@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 5503a4734ca687ba89d7d40270ae9157deb0ca91
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475116"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489983"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Wat is Azure Data Lake Analytics?
 
@@ -49,7 +49,7 @@ Data Lake Analytics is een rendabele oplossing voor het uitvoeren van big data-w
 
 ## <a name="works-with-all-your-azure-data"></a>Werkt met alle Azure-gegevens
   
-Data Lake Analytics werkt met Azure Data Lake Storage en biedt daarmee de hoogste prestaties, doorvoer en parallellisering. Het werkt ook met Azure Storage-blobs, Azure SQL Database en Azure Synapse Analytics (vroeger Azure SQL Data Warehouse).
+Data Lake Analytics werkt met Azure Data Lake Storage en biedt daarmee de hoogste prestaties, doorvoer en parallellisering. Het werkt ook met Azure Storage-blobs, Azure SQL Database en Azure Synapse Analytics (vroeger SQL Data Warehouse).
 
 
 ## <a name="next-steps"></a>Volgende stappen

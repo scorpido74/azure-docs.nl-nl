@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378182"
+ms.locfileid: "89399409"
 ---
 # <a name="what-is-azure-front-door"></a>Wat is Azure Front Door?
 Met Azure Front Door kunt u de internationale routering van uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en snelle wereldwijde failover voor hoge beschikbaarheid. Met Front Door kunt u uw internationale (multiregionale) klant- en bedrijfstoepassingen transformeren in robuuste, hoogwaardige, gepersonaliseerde moderne toepassingen, API's en inhoud die een wereldwijd bereik hebben met Azure.
@@ -84,7 +84,7 @@ Zie [Prijzen van Front Door](https://azure.microsoft.com/pricing/details/frontdo
 
 ## <a name="whats-new"></a>Wat is nieuw?
 
-Abonneer u op de RSS-feed en bekijk de nieuwste updates voor Azure Load Balancer-functies op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door).
+Abonneer u op de RSS-feed en bekijk de nieuwste updates voor Azure Front Door-onderdelen op de pagina [Azure-updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door).
 
 ## <a name="next-steps"></a>Volgende stappen
 

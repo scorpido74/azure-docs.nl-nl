@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: VM is niet responsief wanneer een beleid voor audittoepassing wordt toegepast
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: VM is niet responsief wanneer een beleid voor domeincontrollers wordt toegepast
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: VM is niet responsief wanneer een groepsbeleid wordt toegepast
           href: unresponsive-vm-apply-group-policy.md
         - name: VM is niet responsief wanneer een beveiligingsbeleid wordt toegepast

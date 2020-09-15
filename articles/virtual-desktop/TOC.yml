@@ -20,6 +20,8 @@
       href: set-up-service-alerts.md
 - name: Uitleg
   items:
+    - name: Handmatig migreren
+      href: manual-migration.md
     - name: Verbinding maken met Windows Virtual Desktop-resources
       items:
         - name: Verbinding maken met de Windows Desktop-client

@@ -13,7 +13,7 @@ ms.locfileid: "87387082"
 ---
 ### <a name="maximum-resources-per-sku"></a>Maximum aantal resources per SKU
 
-| Besturingssysteem | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| OS | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

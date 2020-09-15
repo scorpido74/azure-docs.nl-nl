@@ -7,8 +7,10 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een Front Door maken
+    - name: Een Front Door maken - Portal
       href: quickstart-create-front-door.md
+    - name: Een Front Door maken - ARM-sjabloon
+      href: quickstart-create-front-door-template.md
 - name: Zelfstudies
   items:
     - name: Een aangepast domein aan uw Front Door toevoegen

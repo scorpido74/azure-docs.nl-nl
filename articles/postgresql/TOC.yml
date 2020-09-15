@@ -4,6 +4,10 @@
   items:
     - name: Wat is Azure DB voor PostgreSQL?
       href: overview.md
+    - name: Service-updates
+      items:
+        - name: SSL-basiscertificaat verloopt
+          href: concepts-certificate-rotation.md
 - name: Snelstartgidsen
   expanded: true
   items:
