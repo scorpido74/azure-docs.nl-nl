@@ -18,9 +18,9 @@
   items:
     - name: Overzicht van verplaatsen
       href: about-move-process.md
-    - name: Ondersteuningsmatrix voor verplaatsing van Azure VM-regio
+    - name: Ondersteuning - Virtuele Azure-machines tussen regio's verplaatsen
       href: support-matrix-move-region-azure-vm.md
-    - name: Ondersteuningsmatrix voor verplaatsing van Azure SQL-regio
+    - name: Ondersteuning - Azure SQL tussen regio's verplaatsen
       href: support-matrix-move-region-sql.md
 - name: Handleidingen
   items:
@@ -34,11 +34,11 @@
           href: move-region-within-resource-group.md
     - name: Regioverplaatsingen beheren
       items:
-        - name: Doelinstellingen voor een regioverplaatsing bewerken
+        - name: Bestemmingsinstellingen wijzigen
           href: modify-target-settings.md
-        - name: Resources verwijderen uit een verplaatste regioverzameling
+        - name: Resources verwijderen uit een verplaatste verzameling
           href: remove-move-resources.md
-        - name: Resources beheren die zijn gemaakt in het regioverplaatsingsproces
+        - name: Resources beheren die tijdens de verplaatsing zijn gemaakt
           href: manage-resources-created-move-process.md
 - name: Resources
   items:

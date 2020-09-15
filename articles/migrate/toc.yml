@@ -18,12 +18,32 @@
           href: common-questions-server-migration.md
 - name: Zelfstudies
   items:
-    - name: VMware-VM's evalueren en migreren
+    - name: Ontdekken
       items:
-        - name: VMware voorbereiden op evaluatie en migratie
-          href: tutorial-prepare-vmware.md
-        - name: VMware-VM's evalueren voor migratie
-          href: tutorial-assess-vmware.md
+        - name: VMware-VM's detecteren
+          href: tutorial-discover-vmware.md
+        - name: Hyper-V-VM's detecteren
+          href: tutorial-discover-hyper-v.md
+        - name: Fysieke servers detecteren
+          href: tutorial-discover-physical.md
+        - name: AWS-instanties detecteren
+          href: tutorial-discover-aws.md
+        - name: Geïmporteerde servers detecteren
+          href: tutorial-discover-import.md
+    - name: Evalueren
+      items:
+        - name: VMware-VM's evalueren voor migratie naar Azure-VM's
+          href: tutorial-assess-vmware-azure-vm.md
+        - name: VMware-VM's evalueren voor migratie naar AVS
+          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Hyper-V-VM's evalueren voor migratie naar Azure
+          href: tutorial-assess-hyper-v.md
+        - name: Fysieke servers beoordelen voor migratie naar Azure
+          href: tutorial-assess-physical.md
+        - name: AWS-instanties beoordelen voor migratie naar Azure
+          href: tutorial-assess-aws.md
+    - name: Migreren
+      items:
         - name: Virtuele VMware-machines migreren
           items:
             - name: Over migratieopties voor VMware-VM's
@@ -32,30 +52,12 @@
               href: tutorial-migrate-vmware.md
             - name: VMware-VM's migreren met migratie op basis van een agent
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V-VM's evalueren en migreren
-      items:
-        - name: Hyper-V voorbereiden op evaluatie en migratie
-          href: tutorial-prepare-hyper-v.md
-        - name: Hyper-V-VM's evalueren voor migratie
-          href: tutorial-assess-hyper-v.md
         - name: Hyper-V-VM's migreren
           href: tutorial-migrate-hyper-v.md
-    - name: Fysieke servers evalueren en migreren
-      items:
-        - name: Fysieke servers voorbereiden voor evaluatie en migratie
-          href: tutorial-prepare-physical.md
-        - name: Fysieke servers evalueren
-          href: tutorial-assess-physical.md
         - name: Fysieke servers migreren
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: AWS-VM's beoordelen en migreren
-      items:
-        - name: 'Amazon Web Services-VM''s (AWS) ontdekken, beoordelen en migreren naar Azure'
+        - name: AWS-instanties migreren
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: Geïmporteerde servers evalueren voor migratie
-      items:
-        - name: Geïmporteerde servers evalueren voor migratie
-          href: tutorial-assess-import.md
 - name: Concepten
   items:
     - name: Migratieplan bouwen met Azure Migrate

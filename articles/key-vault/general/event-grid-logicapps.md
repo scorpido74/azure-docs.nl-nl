@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588871"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087980"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps gebruiken om een e-mail te ontvangen over statuswijzigingen van sleutelkluisgeheimen
 
 In deze handleiding leert u hoe u kunt reageren op Azure Key Vault-gebeurtenissen die via [Azure Event Grid](../../event-grid/index.yml) worden ontvangen met [Azure Logic Apps](../../logic-apps/index.yml). Aan het einde van het artikel beschikt u over een logische Azure-app die een e-mailmelding verstuurt wanneer er een geheim wordt gemaakt in Azure Key Vault.
 
-Zie [Key Vault bewaken met Azure Event Grid (preview-versie)](event-grid-overview.md) voor een overzicht van Azure Key Vault/Azure Event Grid-integratie.
+Zie [Key Vault bewaken met Azure Event Grid](event-grid-overview.md) voor een overzicht van Azure Key Vault/Azure Event Grid-integratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +56,7 @@ Volg de volgende stappen als u een Azure Event Grid-abonnement wilt maken:
 1. Zoek naar **e-mail**. Zoek en selecteer de bijbehorende connector op basis van uw e-mailprovider. In deze zelfstudie wordt **Office 365 Outlook** gebruikt. De stappen voor andere e-mailproviders zijn vergelijkbaar.
 1. Selecteer de actie **Een e-mail verzenden (V2)** .
 
-   ![Logic App Designer - e-mail toevoegen](../media/eventgrid-logicappdesigner3.png)
+   ![Logic App Designer - e-mail verzenden](../media/eventgrid-logicappdesigner3.png)
 
 1. Stel de e-mailsjabloon samen:
     - **Aan:** Voer het e-mailadres in waarop u de e-mailmeldingen wilt ontvangen. Voor deze zelfstudie gebruikt u een e-mailaccount dat u kunt gebruiken voor het testen.
@@ -64,18 +64,18 @@ Volg de volgende stappen als u een Azure Event Grid-abonnement wilt maken:
 
     Uw e-mailsjabloon ziet er nu misschien uit als in dit voorbeeld.
 
-    ![Logic App Designer - e-mail toevoegen](../media/eventgrid-logicappdesigner4.png)
+    ![Logic App Designer - e-mailtekst](../media/eventgrid-logicappdesigner4.png)
 
 8. Klik op **Opslaan als**.
 9. Voer een **Naam** in voor een nieuwe logische app en klik op **Maken**.
     
-    ![Logic App Designer - e-mail toevoegen](../media/eventgrid-logicappdesigner5.png)
+    ![Logic App Designer - maken](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Testen en verifiëren
 
 1.  Ga naar de sleutelkluis op Azure Portal en selecteer **Gebeurtenissen > Gebeurtenisabonnementen**.  Controleren of een nieuw abonnement is gemaakt
     
-    ![Logic App Designer - e-mail toevoegen](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![Logic App Designer - testen en verifiëren](../media/eventgrid-logicapps-kvnewsubs.png)
 
 1.  Ga naar de sleutelkluis, selecteer **Geheimen** en selecteer **+ Genereren/importeren**. Maak een nieuw geheim voor testdoeleinden. Geef de sleutel een naam en behoud voor de resterende parameters de standaardinstellingen.
 
@@ -87,8 +87,8 @@ Wanneer het geheim wordt gemaakt, wordt er een e-mailbericht ontvangen op de gec
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Overzicht: [Key Vault bewaken met Azure Event Grid (preview-versie)](event-grid-overview.md)
+- Overzicht: [Key Vault bewaken met Azure Event Grid](event-grid-overview.md)
 - Procedure: [Key Vault-meldingen routeren naar Azure Automation](event-grid-tutorial.md).
-- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault (preview-versie)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - Meer informatie over [Azure Event Grid](../../event-grid/index.yml).
 - Meer informatie over de [Logic Apps-functie van Azure App Service](../../logic-apps/index.yml).

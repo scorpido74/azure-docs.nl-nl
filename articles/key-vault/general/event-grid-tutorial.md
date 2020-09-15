@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 034bdce96d88deb31a071682a3c02200a64699dd
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588744"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087569"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Meldingen van de sleutelkluis ontvangen en hierop reageren met Azure Event Grid (preview)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Meldingen van de sleutelkluis ontvangen en hierop reageren met Azure Event Grid
 
-Dankzij Azure Key Vault-integratie met Azure Event Grid (momenteel in preview) zijn melding van gebruikers mogelijk wanneer de status van een geheim dat is opgeslagen in een sleutelkluis, is gewijzigd. Zie [Key Vault bewaken met Event Grid](event-grid-overview.md) voor een overzicht van deze functie.
+Dankzij Azure Key Vault-integratie met Azure Event Grid zijn melding van gebruikers mogelijk wanneer de status van een geheim dat is opgeslagen in een sleutelkluis, is gewijzigd. Zie [Key Vault bewaken met Event Grid](event-grid-overview.md) voor een overzicht van deze functie.
 
 In deze handleiding wordt beschreven hoe u Key Vault-meldingen kunt ontvangen via Event Grid kunt ontvangen en hoe u kunt reageren op statuswijzigingen via Azure Automation.
 
@@ -32,7 +32,7 @@ In deze handleiding wordt beschreven hoe u Key Vault-meldingen kunt ontvangen vi
 
 Event Grid is een gebeurtenisservice voor de cloud. Als u de stappen in deze handleiding volgt, kunt u zich abonneren op gebeurtenissen voor Key Vault en de gebeurtenissen naar Automation routeren. Wanneer een van de geheimen in de sleutelkluis bijna is verlopen, wordt Event Grid van de statuswijziging op de hoogte gesteld en wordt er een HTTP POST-aanvraag naar het eindpunt gestuurd. Vervolgens activeert een webhook een Automation-uitvoering van een PowerShell-script.
 
-![HTTP POST-stroomdiagram](../media/image1.png)
+![HTTP POST-stroomdiagram](../media/event-grid-tutorial-1.png)
 
 ## <a name="create-an-automation-account"></a>Een Automation-account maken
 
@@ -46,7 +46,7 @@ Maak een Automation-account in [Azure Portal](https://portal.azure.com):
 
 1.  Selecteer **Toevoegen**.
 
-    ![Deelvenster Automation-accounts](../media/image2.png)
+    ![Deelvenster Automation-accounts](../media/event-grid-tutorial-2.png)
 
 1.  Voer de vereiste gegevens in het deelvenster **Automation-account toevoegen** in en selecteer **Maken**.
 
@@ -54,7 +54,7 @@ Maak een Automation-account in [Azure Portal](https://portal.azure.com):
 
 Als uw Automation-account klaar is, maakt u een runbook.
 
-![Een runbook-gebruikersinterface maken](../media/image3.png)
+![Een runbook-gebruikersinterface maken](../media/event-grid-tutorial-3.png)
 
 1.  Selecteer het Automation-account dat u zojuist hebt gemaakt.
 
@@ -92,7 +92,7 @@ write-Error "No input data found."
 }
 ```
 
-![Runbook-gebruikersinterface publiceren](../media/image4.png)
+![Runbook-gebruikersinterface publiceren](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>Een webhook maken
 
@@ -102,7 +102,7 @@ Maak een webhook om uw zojuist gemaakte runbook te activeren.
 
 1.  Selecteer **Webhook toevoegen**.
 
-    ![Knop Webhook toevoegen](../media/image5.png)
+    ![Knop Webhook toevoegen](../media/event-grid-tutorial-5.png)
 
 1.  Selecteer **Nieuwe webhook maken**.
 
@@ -115,15 +115,15 @@ Maak een webhook om uw zojuist gemaakte runbook te activeren.
 
 1. Selecteer **OK** en selecteer vervolgens **Maken**.
 
-    ![Nieuwe webhookgebruikersinterface maken](../media/image6.png)
+    ![Nieuwe webhookgebruikersinterface maken](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Een Event Grid-abonnement maken
 
 Maak een Event Grid-abonnement via [Azure Portal](https://portal.azure.com).
 
-1.  Ga naar de sleutelkluis en selecteer het tabblad **Gebeurtenissen**. Als u het niet kunt zien, controleert u of u de [preview-versie van de portal](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true) gebruikt.
+1.  Ga naar de sleutelkluis en selecteer het tabblad **Gebeurtenissen**.
 
-    ![Tabblad Gebeurtenissen in Azure Portal](../media/image7.png)
+    ![Tabblad Gebeurtenissen in Azure Portal](../media/event-grid-tutorial-7.png)
 
 1.  Selecteer de knop **Gebeurtenisabonnement**.
 
@@ -143,15 +143,15 @@ Maak een Event Grid-abonnement via [Azure Portal](https://portal.azure.com).
 
 1.  Selecteer **Maken**.
 
-    ![Gebeurtenisabonnement maken](../media/image8.png)
+    ![Gebeurtenisabonnement maken](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>Testen en verifiëren
 
 Controleer of uw Event Grid-abonnement op de juiste wijze is geconfigureerd. Voor deze test wordt aangenomen dat u zich hebt geabonneerd op de melding Geheime nieuwe versie gemaakt in [Een Event Grid-abonnement maken](#create-an-event-grid-subscription) en dat u de vereiste machtigingen hebt om een nieuwe versie van een geheim in een sleutelkluis te maken.
 
-![Testconfiguratie van Event Grid-abonnement](../media/image9.png)
+![Testconfiguratie van Event Grid-abonnement](../media/event-grid-tutorial-9.png)
 
-![Deelvenster Een geheim maken](../media/image10.png)
+![Deelvenster Een geheim maken](../media/event-grid-tutorial-10.png)
 
 1.  Ga naar de sleutel kluis in Azure Portal.
 
@@ -161,7 +161,7 @@ Controleer of uw Event Grid-abonnement op de juiste wijze is geconfigureerd. Voo
 
 1.  Controleer onder **Metrische gegevens** of een gebeurtenis is vastgelegd. Er worden twee gebeurtenissen verwacht: SecretNewVersion en SecretNearExpiry. Met deze gebeurtenissen wordt gevalideerd dat Event Grid de statuswijziging van het geheim in de sleutelkluis heeft vastgelegd.
 
-    ![Deelvenster Metrische gegevens: controleren op vastgelegde gebeurtenissen](../media/image11.png)
+    ![Deelvenster Metrische gegevens: controleren op vastgelegde gebeurtenissen](../media/event-grid-tutorial-11.png)
 
 1.  Ga naar uw Automation-account.
 
@@ -169,13 +169,13 @@ Controleer of uw Event Grid-abonnement op de juiste wijze is geconfigureerd. Voo
 
 1.  Selecteer het tabblad **Webhooks** en bevestig dat het 'laatst geactiveerde' tijdstempel minder dan zestig seconden verwijderd is van het tijdstip waarop u het nieuwe geheim hebt gemaakt. Dit resultaat bevestigt dat Event Grid een POST-aanvraag naar de webhook heeft gestuurd met de gebeurtenisdetails van de statuswijziging in uw sleutelkluis en dat de webhook is geactiveerd.
 
-    ![Tabblad Webhooks, tijdstempel Laatst geactiveerd](../media/image12.png)
+    ![Tabblad Webhooks, tijdstempel Laatst geactiveerd](../media/event-grid-tutorial-12.png)
 
 1. Ga terug naar het runbook en selecteer het tabblad **Overzicht**.
 
 1. Bekijk de lijst **Recente taken**. U ziet dat er een taak is gemaakt en dat de status is voltooid. Hiermee wordt bevestigd dat de webhook het runbook heeft geactiveerd om het script uit te voeren.
 
-    ![Lijst Recente taken voor webhook](../media/image13.png)
+    ![Lijst Recente taken voor webhook](../media/event-grid-tutorial-13.png)
 
 1. Selecteer de recente taak en bekijk de POST-aanvraag die van Event Grid naar de webhook is gestuurd. Bekijk de JSON en zorg ervoor dat de parameters voor de sleutelkluis en het gebeurtenistype juist zijn. Als de parameter event type in het JSON-object overeenkomt met de gebeurtenis die is opgetreden in de sleutelkluis (in dit voorbeeld is Microsoft.KeyVault.SecretNearExpiry), is de test geslaagd.
 
@@ -194,9 +194,9 @@ Als u een systeem op basis van navragen hebt gebruikt om te zoeken naar statuswi
 Meer informatie:
 
 
-- Overzicht: [Key Vault bewaken met Azure Event Grid (preview-versie)](event-grid-overview.md)
+- Overzicht: [Key Vault bewaken met Azure Event Grid](event-grid-overview.md)
 - Procedure: [E-mail ontvangen wanneer een sleutelkluisgeheim verandert](event-grid-logicapps.md)
-- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault (preview-versie)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault: overzicht](overview.md))
 - [Overzicht van Azure Event Grid](../../event-grid/overview.md)
 - [Overzicht van Azure Automation](../../automation/index.yml)

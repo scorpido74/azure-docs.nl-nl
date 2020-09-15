@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
@@ -479,7 +479,7 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-cli.md
-                    - name: Vanaf een VHD of momentopname
+                    - name: Vanaf een beheerde schijf of momentopname
                       href: ../image-version-snapshot-cli.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-powershell.md
-                    - name: Vanaf een VHD of momentopname
+                    - name: Vanaf een beheerde schijf of momentopname
                       href: ../image-version-snapshot-powershell.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: Azure CLI gebruiken
               href: image-builder.md
-            - name: VM maken met VNET - CLI
+            - name: Een VNET gebruiken - CLI
               href: image-builder-vnet.md
-            - name: Machtigingen configureren - CLI
-              href: image-builder-permissions-cli.md
-            - name: Machtigingen configureren - PowerShell
-              href: image-builder-permissions-powershell.md
             - name: Netwerkopties
               href: image-builder-networking.md
+            - name: Machtigingen configureren
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps-taak
               href: image-builder-devops-task.md
             - name: ARM-sjabloonreferentie

@@ -6,15 +6,15 @@ author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: overview
+ms.topic: reference
 ms.date: 07/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588361"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069353"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Nieuwe functies voor Azure Key Vault
 
@@ -36,6 +36,7 @@ Microsoft werkt Azure-services bij om TLS-certificaten te gebruiken van een ande
 - Deze transitie is op 7 juli 2020 begonnen in Azure AD-services (Active Directory).
 - Alle nieuw gemaakte Azure TLS/SSL-eindpunten bevatten bijgewerkte certificaten die zijn gekoppeld aan de nieuwe basis-CA's. 
 - Bestaande Azure-eindpunten worden vanaf 13 augustus 2020 gefaseerd overgezet. Dit wordt op 26 oktober 2020 voltooid.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) en [DPS](/azure/iot-dps/) blijven in de Baltimore CyberTrust Root CA, maar de tussenliggende CA's veranderen. [Klik hier voor meer informatie](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 
 > [!IMPORTANT]
 > Klanten moeten hun toepassing(en) mogelijk bijwerken na deze wijziging om verbindingsfouten te voorkomen wanneer ze proberen verbinding te maken met Azure-services. 

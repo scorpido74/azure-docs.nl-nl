@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: Beheren
           items:
+            - name: Afhankelijkheden beheren
+              items:
+                - name: Spark-toepassingsafhankelijkheden beheren
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: Jar-afhankelijkheden veilig beheren
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Python-omgeving veilig beheren
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: Clusterresources beheren
               href: ./spark/apache-spark-resource-manager.md
             - name: Apache Spark-toepassingen beheren met behulp van een uitgebreide History Server
               href: ./spark/apache-azure-spark-history-server.md
             - name: In cache opslaan met IO Cache inschakelen
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Jar-afhankelijkheden beheren
-              href: ./spark/manage-jar-dependency.md
             - name: Notitieblokken gebruiken met Apache Spark
               items:
                 - name: Een lokaal Jupyter-notitieblok gebruiken
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Externe pakketten gebruiken met Jupyter met behulp van magic-pakket voor cellen
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin-notitieblokken gebruiken
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: Gebruiken met andere Azure-services

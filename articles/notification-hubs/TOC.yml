@@ -6,7 +6,7 @@
       href: notification-hubs-push-notification-overview.md
     - name: Integratie met App Service Mobile Apps
       href: notification-hubs-app-service.md
-- name: Snelstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Notification Hub maken - Azure-portal
@@ -113,7 +113,7 @@
       href: notification-hubs-send-push-notifications-scheduled.md
     - name: Notification Hubs implementeren en beheren met Azure PowerShell
       href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Veilig pushmeldingen verzenden naar gebruikers
+    - name: Beveiligde meldingen sturen naar gebruikers
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: Registraties in bulk exporteren en importeren
       href: export-modify-registrations-bulk.md

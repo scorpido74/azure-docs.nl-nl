@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Portal
       href: quick-create-portal.md
@@ -446,7 +446,7 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-powershell.md
-                    - name: Vanaf een VHD of momentopname
+                    - name: Vanaf een beheerde schijf of momentopname
                       href: ../image-version-snapshot-powershell.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-powershell.md
@@ -468,7 +468,7 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-cli.md
-                    - name: Vanaf een VHD of momentopname
+                    - name: Vanaf een beheerde schijf of momentopname
                       href: ../image-version-snapshot-cli.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-cli.md
@@ -507,21 +507,33 @@
           items:
             - name: Overzicht
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Azure CLI gebruiken
-              href: image-builder.md
-            - name: VM maken met VNET
+            - name: Image Builder gebruiken
+              items:
+                - name: CLI
+                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: image-builder-powershell.md
+            - name: Een VNET gebruiken
               href: image-builder-vnet.md
-            - name: Azure PowerShell gebruiken
-              href: image-builder-powershell.md
+            - name: Netwerkopties
+              href: ../linux/image-builder-networking.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Machtigingen configureren
+              items:
+                - name: CLI
+                  href: ../linux/image-builder-permissions-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DevOps-taak
+              href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ARM-sjabloonreferentie
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Compileren voor installatiekopiegalerieën
               href: image-builder-gallery.md
             - name: Een bestaande installatiekopie bijwerken
               href: image-builder-gallery-update-image-version.md
             - name: Scripts opslaan
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM-sjabloonreferentie
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Problemen oplossen
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Installatiekopieën zoeken en gebruiken
