@@ -11,7 +11,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "77474271"
 ---
-Query's naar de container worden gefactureerd op de prijs categorie van de Azure-resource die wordt gebruikt `ApiKey`voor de.
+Query's naar de container worden gefactureerd op de prijs categorie van de Azure-resource die wordt gebruikt voor de `ApiKey` .
 
 Azure Cognitive Services-containers mogen niet worden uitgevoerd zonder dat ze zijn verbonden met het eind punt voor meting/facturering. U moet de containers in staat stellen om de facturerings gegevens te allen tijde te communiceren met het eind punt. Cognitive Services containers verzenden geen klant gegevens, zoals de afbeelding of de tekst die wordt geanalyseerd, naar micro soft.
 
@@ -25,6 +25,6 @@ Met <a href="https://docs.docker.com/engine/reference/commandline/run/" target="
 
 | Optie | Beschrijving |
 |--------|-------------|
-| `ApiKey` | De API-sleutel van de Cognitive Services resource die wordt gebruikt voor het bijhouden van facturerings gegevens.<br/>De waarde van deze optie moet worden ingesteld op een API-sleutel voor de ingerichte resource die is opgegeven in `Billing`. |
+| `ApiKey` | De API-sleutel van de Cognitive Services resource die wordt gebruikt voor het bijhouden van facturerings gegevens.<br/>De waarde van deze optie moet worden ingesteld op een API-sleutel voor de ingerichte resource die is opgegeven in `Billing` . |
 | `Billing` | Het eind punt van de Cognitive Services resource die wordt gebruikt voor het bijhouden van facturerings gegevens.<br/>De waarde van deze optie moet worden ingesteld op de eindpunt-URI van een ingerichte Azure-resource.|
 | `Eula` | Geeft aan dat u de licentie voor de container hebt geaccepteerd.<br/>De waarde van deze optie moet worden ingesteld op **accepteren**. |
