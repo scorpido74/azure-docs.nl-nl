@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449512"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707999"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Resources die zijn gemaakt met het vorige laag model worden automatisch onderste
 
 Als u bijvoorbeeld eerder de laag hebt geselecteerd die tussen 400 en 4000 RU/s is geschaald, wordt de data base of container nu weer gegeven als een maximum van RU/s 4000 RU/s, waardoor de schaal tussen 400 en 4000 RU/s. Hier kunt u het maximum aantal RU/s wijzigen in een aangepaste waarde om uw werk belasting aan te passen. 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>Hoe snel kunt u de schaal omhoog en omlaag schalen op basis van pieken in verkeer?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>Hoe snel wordt de schaal automatisch aangepast op basis van pieken in verkeer?
 Met automatisch schalen wordt de door Voer (RU/s) `T` omhoog of omlaag geschaald binnen het `0.1 * Tmax` bereik en op `Tmax` basis van binnenkomend verkeer. Omdat de schaal automatisch en onmiddellijk kan worden gebruikt, kunt u op elk moment tot aan het inrichten zonder `Tmax` vertraging. 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>Hoe kan ik bepalen van welke RU/s het systeem momenteel is geschaald?
@@ -135,7 +135,7 @@ Als de totale hoeveelheid opgehaalde RU/s het maximum aantal RU/s van de data ba
 > [!NOTE]
 > De Azure Cosmos DB-hulpprogram ma's voor client-Sdk's en gegevens import (Azure Data Factory, bulk-uitvoerder bibliotheek) maken automatisch opnieuw een nieuwe poging op 429s, zodat af en toe 429s goed zijn. Een aanhoudende groot aantal 429s kan erop duiden dat u de maximale hoeveelheid RU/s moet verhogen of uw partitie strategie voor een [Hot partitie](#autoscale-rate-limiting)kunt controleren.
 
-### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Is het nog steeds mogelijk om 429s (beperking/snelheids beperking) te zien wanneer automatisch schalen is ingeschakeld? 
+### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> Is het nog steeds mogelijk om 429s (beperking/snelheids beperking) te zien wanneer automatisch schalen is ingeschakeld? 
 Ja. In de volgende twee scenario's kunnen er 429-fouten optreden. Als de totale hoeveelheid gebruikte RU/s het maximum aantal RU/s van de data base of container overschrijdt, worden de aanvragen voor de service dienovereenkomstig beperkt. 
 
 Ten tweede, als er sprake is van een dynamische partitie, dat wil zeggen een logische partitie sleutel waarde met een onevenredig groter aantal aanvragen vergeleken met andere partitie sleutel waarden, is het mogelijk dat de onderliggende fysieke partitie het bovenliggende item/s-budget overschrijdt. Als best practice om dynamische partities te voorkomen, [kiest u een goede partitiesleutel](partitioning-overview.md#choose-partitionkey) die resulteert in een gelijkmatige verdeling van zowel opslag als doorvoer. 

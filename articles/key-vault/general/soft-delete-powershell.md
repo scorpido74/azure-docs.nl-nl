@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073230"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528360"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
@@ -47,7 +47,7 @@ Key Vault-bewerkingen worden als volgt afzonderlijk beheerd via machtigingen op 
 |Herstellen|Herstelt een verwijderde sleutelkluis.|Microsoft.KeyVault/vaults/write|
 |Opschonen|Verwijdert permanent een verwijderde sleutelkluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-Zie [Uw Key Vault beveiligen](secure-your-key-vault.md) voor meer informatie over machtigingen en toegangsbeheer.
+Raadpleeg [Uw Key Vault beveiligen](secure-your-key-vault.md) voor meer informatie over machtigingen en toegangsbeheer.
 
 ## <a name="enabling-soft-delete"></a>Voorlopig verwijderen inschakelen
 
@@ -282,5 +282,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Meer informatie
 
-- Zie [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-overview.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
-- Zie [Wat is Azure Key Vault?](overview.md) voor een algemeen overzicht van het gebruik van Azure Key Vault.
+- Raadpleeg [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-overview.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
+- Raadpleeg [Wat is Azure Key Vault?](overview.md) voor een algemeen overzicht van het gebruik van Azure Key Vault.

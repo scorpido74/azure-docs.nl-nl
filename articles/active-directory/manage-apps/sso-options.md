@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469810"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604203"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Opties voor eenmalige aanmelding in Azure AD
 
@@ -24,7 +24,7 @@ Eenmalige aanmelding biedt veel voordelen ten opzichte van traditionele aanmeldi
 
 - **Bij eenmalige aanmelding** melden gebruikers zich eenmaal aan met één account om toegang te krijgen tot apparaten die lid zijn van een domein, bedrijfsresources, SaaS-toepassingen (Software as a Service) en web-toepassingen. Nadat de gebruiker zich heeft aangemeld, kan deze toepassingen starten vanuit de Office 365-portal of MyApps. Beheerders kunnen het beheer van gebruikersaccounts centraal regelen en automatisch gebruikerstoegang tot toepassingen toevoegen of verwijderen op basis van groepslidmaatschap.
 
-- **Zonder eenmalige aanmelding** moeten gebruikers toepassingsspecifieke wachtwoorden onthouden en zich bij elke toepassing aanmelden. IT-medewerkers moeten gebruikersaccounts maken en bijwerken voor elke toepassing, zoals Office 365, Box en Salesforce. Gebruikers moeten hun wachtwoorden onthouden en zijn meer tijd kwijt omdat ze zich bij elke toepassing moeten aanmelden.
+- **Zonder eenmalige aanmelding** moeten gebruikers toepassingsspecifieke wachtwoorden onthouden en zich bij elke toepassing aanmelden. IT-medewerkers moeten gebruikersaccounts maken en bijwerken voor elke toepassing, zoals Microsoft 365, Box en Salesforce. Gebruikers moeten hun wachtwoorden onthouden en zijn meer tijd kwijt omdat ze zich bij elke toepassing moeten aanmelden.
 
 Zie [Wat is eenmalige aanmelding?](what-is-single-sign-on.md) voor meer informatie over eenmalige aanmelding.
 
@@ -137,7 +137,7 @@ Met gekoppelde aanmelding kan Azure AD eenmalige aanmelding bieden voor een toep
 
 ### <a name="linked-sign-on-for-application-migration"></a>Gekoppelde aanmelding voor de migratie van toepassingen
 
-Een gekoppelde aanmelding kan een consistente gebruikerstoepassing bieden tijdens het migreren van toepassingen gedurende een bepaalde periode. Als u toepassingen migreert naar Azure Active Directory, kunt u een gekoppelde aanmelding gebruiken om snel koppelingen te publiceren naar alle toepassingen die u wilt migreren.  Gebruikers kunnen alle koppelingen vinden in de [MyApps-portal](../user-help/active-directory-saas-access-panel-introduction.md) of het [programma voor het starten van toepassingen van Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Gebruikers weten niet dat ze toegang hebben tot een gekoppelde toepassing of een gemigreerde toepassing.  
+Een gekoppelde aanmelding kan een consistente gebruikerstoepassing bieden tijdens het migreren van toepassingen gedurende een bepaalde periode. Als u toepassingen migreert naar Azure Active Directory, kunt u een gekoppelde aanmelding gebruiken om snel koppelingen te publiceren naar alle toepassingen die u wilt migreren.  Gebruikers kunnen alle koppelingen vinden in de [MyApps-portal](../user-help/active-directory-saas-access-panel-introduction.md) of het [programma voor het starten van Microsoft 365-toepassingen](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Gebruikers weten niet dat ze toegang hebben tot een gekoppelde toepassing of een gemigreerde toepassing.  
 
 Wanneer een gebruiker eenmaal is geverifieerd met een gekoppelde toepassing, moet er een accountrecord worden gemaakt voordat de eindgebruiker toegang via eenmalige aanmelding wordt geboden. Het inrichten van deze accountrecord kan automatisch plaatsvinden of kan handmatig door een beheerder worden uitgevoerd.
 

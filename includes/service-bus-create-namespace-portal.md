@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75927798"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606950"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Een naamruimte in Azure Portal maken
 Als u Service Bus-berichtenentiteiten wilt gebruiken in Azure, moet u eerst een naamruimte maken met een naam die uniek is binnen Azure. Een naamruimte biedt een scoping container voor het verwerken van Service Bus-resources in uw toepassing.
@@ -25,10 +25,10 @@ Ga als volgt te werk om een naamruimte te maken:
 
     ![Een resource maken -> Integratie -> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. Voer in het dialoogvenster **Naamruimte maken** de volgende stappen uit: 
-    1. Voer een **naam in voor de naamruimte**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is. Zie [Create namespace rest API](/rest/api/servicebus/create-namespace)voor een lijst met regels voor het benoemen van naam ruimten.
+    1. Voer een **naam in voor de naamruimte**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is. Raadpleeg [Create Namespace](/rest/api/servicebus/create-namespace) (Naamruimte maken) voor een lijst met regels voor het benoemen van naamruimtes.
     2. Selecteer de prijscategorie (Basic, Standard of Premium) voor de naamruimte. Kies Standard of Premium indien u gebruik wilt maken van [onderwerpen en abonnementen](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions). Onderwerpen/abonnementen worden niet ondersteund in de prijscategorie Basic.
     3. Als u de **Premium** prijscategorie hebt geselecteerd, gaat u als volgt te werk: 
-        1. Geef het aantal **Messaging-eenheden** op. De Premium-prijscategorie biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload geïsoleerd wordt uitgevoerd. Deze resourcecontainer wordt een Messaging-eenheid genoemd. Een Premium-naam ruimte heeft ten minste één Messa ging-eenheid. U kunt voor elke Service Bus Premium-naamruimte 1, 2 of 4 Messaging-eenheden selecteren. Zie [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md) voor meer informatie.
+        1. Geef het aantal **Messaging-eenheden** op. De Premium-prijscategorie biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload geïsoleerd wordt uitgevoerd. Deze resourcecontainer wordt een Messaging-eenheid genoemd. Een Premium-naamruimte heeft ten minste één Messaging-eenheid. U kunt voor elke Service Bus Premium-naamruimte 1, 2 of 4 Messaging-eenheden selecteren. Zie [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md) voor meer informatie.
         2. Geef aan of u de naamruimte **zone-redundant** wilt maken. Door zone-redundantie wordt de beschikbaarheid verbeterd door replica's te verspreiden over verschillende beschikbaarheidszones binnen één regio, zonder aanvullende kosten. Zie [Beschikbaarheidszones in Azure](../articles/availability-zones/az-overview.md) voor meer informatie.
     4. Kies voor **Abonnement** een Azure-abonnement waarin u de naamruimte maakt.
     5. Kies voor **Resourcegroep** een bestaande resourcegroep waarin de naamruimte moet worden opgenomen of maak een nieuwe resourcegroep.      
@@ -53,10 +53,10 @@ Bij het maken van een nieuwe naamruimte wordt automatisch een eerste SAS-regel (
 2. Klik in het venster van de naamruimte op **Beleid voor gedeelde toegang**.
 3. Klik in het scherm **Beleid voor gedeelde toegang** op **RootManageSharedAccessKey**.
    
-    ![verbinding-gegevens](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![Schermopname toont het venster met het beleid voor gedeelde toegang waarbij een beleidsregel gemarkeerd is.](./media/service-bus-create-namespace-portal/connection-info.png)
 4. Klik in het venster **Beleid: RootManageSharedAccessKey** op de knop Kopiëren naast **Primaire verbindingsreeks** om de verbindingsreeks naar het klembord te kopiëren voor later gebruik. Plak deze waarde in Kladblok of een andere tijdelijke locatie.
    
-    ![verbinding-reeks](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![Schermopname toont het S A S-beleid RootManageSharedAccessKey, dat sleutels en verbindingsreeksen omvat.](./media/service-bus-create-namespace-portal/connection-string.png)
 5. Herhaal de vorige stap: het kopiëren en plakken van de waarde voor de **Primaire sleutel** voor een tijdelijke locatie zodat u deze later kunt gebruiken.
 
 <!--Image references-->

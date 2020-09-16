@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 89de144ab3d0ac4d8b68749e8c836ea1cf328dae
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f35a43e9cbffb2613f7a98e02b03840c774e5999
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601055"
+ms.locfileid: "90708152"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
@@ -29,10 +29,9 @@ Het nieuwe certificaat wordt vanaf 26 oktober 2020 (10/26/2020) gebruikt. Als u 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hoe kan ik weet of mijn Data Base wordt beïnvloed?
 
 Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken. U kunt bepalen of uw verbindingen het basis certificaat verifiëren door uw connection string te controleren.
--   Als uw connection string bevat `sslmode=verify-ca` of
--   Als uw connection string bevat `sslmode=disable` , hoeft u geen certificaten bij te werken.
--   Als uw connection string bevat `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
--   Als uw connection string geen specifieke sslmode heeft, hoeft u geen certificaten bij te werken.
+-   Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-full` , moet u het certificaat bijwerken.
+-   Als uw Connection String bevat `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
+-   Als uw connection string geen sslmode opgeeft, hoeft u geen certificaten bij te werken.
 
 Als u een-client gebruikt die het connection string verwijderd, raadpleegt u de documentatie van de client om te begrijpen of de certificaten worden geverifieerd.
 Bekijk de beschrijvingen van de [SSL-modus](concepts-ssl-connection-security.md#default-settings)om Azure database for MariaDB sslmode te begrijpen.

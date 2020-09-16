@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762263"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708067"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Efficiënte routes voor virtuele hubs weergeven
 
@@ -50,6 +50,8 @@ Gebruik de schuif balk aan de onderkant van de tabel om het "AS-pad" weer te gev
 * Het veld **standaard route door geven** wordt weer gegeven in de Azure Virtual WAN-Portal wanneer u een virtuele netwerk verbinding, een VPN-verbinding of een ExpressRoute-verbinding bewerkt. Dit veld geeft de **enableInternetSecurity** -vlag aan, die altijd standaard is ingesteld op ' false ' voor ExpressRoute-en VPN-verbindingen, maar ' True ' voor virtuele netwerk verbindingen.
 
 * Bij het weer geven van efficiënte routes op een VM-NIC wordt de volgende hop als ' Virtual Network gateway ' weer gegeven, die de virtuele hub-router impliceert wanneer de VM zich in een spoke bevindt die is verbonden met een virtuele WAN-hub.
+
+* Het weer geven van de actieve routes voor een virtuele-hub-route tabel wordt alleen ingevuld als er ten minste één type verbinding (VPN/er/VNET) is verbonden met de virtuele hub.
 
 ## <a name="next-steps"></a>Volgende stappen
 

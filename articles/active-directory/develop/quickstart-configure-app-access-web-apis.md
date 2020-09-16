@@ -1,202 +1,148 @@
 ---
 title: 'Quickstart: Een app configureren om een web-API te openen | Azure'
 titleSuffix: Microsoft identity platform
-description: In deze quickstart configureert u een app die is geregistreerd bij het Microsoft Identity Platform, zodat deze omleidings-URI's, referenties of toegangsmachtigingen voor web-API's bevat.
+description: In deze quickstart configureert u een app-registratie die een web-API aangeeft in het Microsoft Identity Platform om toegang tot resources middels bereiken (machtigingen) in te schakelen voor clienttoepassingen.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140799"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442261"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Quickstart: Een clienttoepassing configureren voor toegang tot een web-API
 
-In deze quickstart voegt u omleidings-URI’s, referenties of toegangsmachtigingen voor web-API’s toe voor uw toepassing. Een webclienttoepassing of vertrouwelijke clienttoepassing moet beveiligde referenties tot stand brengen om deel te nemen aan een werkstroom voor autorisatieverlening die verificatie vereist. De standaardmethode voor verificatie die wordt ondersteund door Azure Portal is de client-ID + geheime sleutel. De app verkrijgt tijdens dit proces een toegangstoken.
+In deze quickstart geeft u een clienttoepassing op die is geregistreerd bij het Microsoft Identity Platform met toegangsrechten op basis van bereiken en machtigingen voor uw eigen web-API. U geeft de clienttoepassing ook toegang tot Microsoft Graph.
 
-Voordat een client toegang krijgt tot een web-API die beschikbaar is gemaakt via een resourcetoepassing (zoals de Microsoft Graph API), zorgt het toestemmingsframework ervoor dat de client de vereiste toestemming krijgt voor de aangevraagde machtigingen. Standaard kunnen alle toepassingen machtigingen aanvragen bij de Microsoft Graph API.
+Door de bereiken van een web-API op te geven in de registratie van uw clienttoepassing, kan de clienttoepassing via het Microsoft Identity Platform een toegangstoken verkrijgen die deze bereiken bevat. Binnen de code kan de web-API vervolgens toegang tot de eigen resources verlenen op basis van machtigingen en op basis van de bereiken in het toegangstoken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Voltooiing van [quickstart: Een toepassing configureren om een web-API beschikbaar te maken](quickstart-configure-app-expose-web-apis.md).
+* Een Azure-account met een actief abonnement - [gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Voltooiing van [quickstart: Een toepassing registreren](quickstart-register-app.md)
+* Voltooiing van [quickstart: Een toepassing configureren om een web-API beschikbaar te maken](quickstart-configure-app-expose-web-apis.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Aanmelden bij de Azure-portal en de app selecteren
+## <a name="add-permissions-to-access-your-web-api"></a>Machtigingen toevoegen voor toegang tot uw web-API
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek. Stel de portalsessie in op de gewenste Azure AD-tenant.
-1. Zoek en selecteer de optie **Azure Active Directory**. Selecteer **App-registraties** onder **Beheren**.
-1. Zoek en selecteer de toepassing die u wilt configureren. Nadat u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
+In het eerste scenario verleent u een clienttoepassing toegang tot uw eigen web-API, die u allebei als onderdeel van de vereisten moet hebben geregistreerd. Als u nog geen clienttoepassing en web-API hebt geregistreerd, voltooit u de stappen in de twee artikelen over [Vereisten](#prerequisites).
 
-Gebruik de volgende procedures om uw toepassing te configureren voor toegang tot web-API's.
+Dit diagram laat de relatie tussen de twee app-registraties zijn. In deze sectie voegt u machtigingen toe aan de registratie van de clienttoepassing.
 
-## <a name="add-redirect-uris-to-your-application"></a>Omleidings-URI's toevoegen aan uw toepassing
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/diagram-01-app-permission-to-api-scopes.svg" alt-text="Lijndiagram van een web-API met weergegeven bereiken aan de rechterkant en een clienttoepassing aan de linkerkant met de bereiken die zijn geselecteerd als machtigingen" border="false":::
 
-U kunt aangepaste omleidings-URI's en voorgestelde omleidings-URI's toevoegen aan de toepassing. Een aangepaste omleidings-URI toevoegen voor webclienttoepassingen en openbare clienttoepassingen:
+Wanneer u zowel de clienttoepassing als de Web-API hebt geregistreerd en u de API hebt weergegeven door bereiken te maken, kunt u de machtigingen van de client voor de API configureren door de volgende stappen uit te voeren:
 
-1. Selecteer op de pagina **Overzicht** van de app de optie **Verificatie**.
-1. Ga naar **Omleidings-URI's**. Mogelijk moet u **Terugkeren naar de oude ervaring** selecteren.
-1. Selecteer het type toepassing dat u bouwt: **Web** of **Openbare client/systeemeigen (mobiel en desktop)** .
-1. Voer de omleidings-URI voor uw toepassing in.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren die de registratie van uw clienttoepassing bevat.
+1. Selecteer **Azure Active Directory** > **App-registraties** en selecteer uw clienttoepassing (dus *niet* uw web-API).
+1. Selecteer **API-machtigingen** > **Een machtiging toevoegen** > **Mijn API's**.
+1. Selecteer de web-API die u hebt geregistreerd als onderdeel van de vereisten.
 
-   * Geef voor webtoepassingen de basis-URL van uw toepassing op. `http://localhost:31544` kan bijvoorbeeld de URL zijn van een webtoepassing die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden.
-   * Geef voor openbare toepassingen de URI op die door Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, bijvoorbeeld `https://MyFirstApp`.
-1. Selecteer **Opslaan**.
+    **Gedelegeerde machtigingen** is standaard geselecteerd. Gedelegeerde machtigingen zijn geschikt voor clienttoepassingen die toegang hebben tot een web-API als de aangemelde gebruiker en waarvan de toegang moet worden beperkt tot de machtigingen die u in de volgende stap selecteert. Laat **Gedelegeerde machtigingen** geselecteerd voor dit voorbeeld.
 
-Volg deze stappen om een keuze te maken uit de voorgestelde omleidings-URI's voor openbare clients:
+    **App-machtigingen** zijn bedoeld voor service- of daemonachtige toepassingen die zelf toegang tot een web-API nodig hebben, zonder tussenkomst van een gebruiker voor aanmelding of toestemming. Tenzij u toepassingsrollen voor uw web-API hebt gedefinieerd, is deze optie uitgeschakeld.
+1. Vouw onder **Machtigingen selecteren** de resource uit waarvan u de bereiken hebt gedefinieerd voor uw web-API en selecteer de machtigingen die de clienttoepassing moet hebben namens de aangemelde gebruiker.
 
-1. Selecteer op de pagina **Overzicht** van de app de optie **Verificatie**.
-1. Ga naar **Voorgestelde omleidings-URI's voor openbare clients (mobiel, desktop)** . Mogelijk moet u **Terugkeren naar de oude ervaring** selecteren.
-1. Selecteer een of meer omleidings-URI's voor de toepassing. U kunt ook een aangepaste omleidings-URI opgeven. Raadpleeg de documentatie van de bibliotheek als u niet zeker weet wat u moet gebruiken.
-1. Selecteer **Opslaan**.
+    Als u gebruik hebt gemaakt van de naam van het voorbeeldbereik zoals opgegeven in de vorige quickstart, ziet u **Employees.Read.All** en **Employees.Write.All**.
+    Selecteer **Employees.Read.All** of een andere machtiging die u hebt gemaakt bij het voltooien van de vereisten.
+1. Selecteer **Machtigingen toevoegen** om het proces te voltooien.
 
-Op omleidings-URI's zijn bepaalde beperkingen van toepassing. Raadpleeg [Beperkingen voor omleidings-URI's en antwoord-URL's](./reply-url.md) voor meer informatie.
+Nadat u machtigingen voor uw API hebt toegevoegd, ziet u de geselecteerde machtigingen onder **Geconfigureerde machtigingen**. In de volgende afbeelding ziet u dat het voorbeeld *Employees.Read.All* als gedelegeerde machtiging is toegevoegd aan de registratie van de clienttoepassing.
 
-> [!NOTE]
-> Probeer de nieuwe **Verificatie**-instellingen waarmee u instellingen voor uw toepassing kunt configureren, op basis van het platform of apparaat dat u op het oog hebt.
->
-> Selecteer **De nieuwe ervaring proberen** op de pagina **Verificatie** om deze weergave te zien.
->
-> ![Klik op De nieuwe ervaring proberen om de weergave Platformconfiguratie te zien](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
->
-> Hiermee wordt u naar de [nieuwe pagina **Platformconfiguraties** geleid](#configure-platform-settings-for-your-application).
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Deelvenster Geconfigureerde machtigingen in de Azure-portal met de zojuist toegevoegde machtiging":::
 
-### <a name="configure-advanced-settings-for-your-application"></a>Geavanceerde instellingen configureren voor uw toepassing
+Mogelijk ziet u ook de machtiging *User.Read* voor de Microsoft Graph-API. Deze machtiging wordt automatisch toegevoegd wanneer u een app registreert in de Azure-portal.
 
-Afhankelijk van de toepassing die u wilt registreren, zijn er enkele aanvullende instellingen die u mogelijk moet configureren, zoals:
+## <a name="add-permissions-to-access-microsoft-graph"></a>Machtigingen toevoegen voor toegang tot Microsoft Graph
 
-* **Afmeldings-URL**.
-* Voor apps met één pagina kunt u **Impliciete toekenning** inschakelen, en de tokens selecteren die u wilt laten uitgeven via het autorisatie-eindpunt.
-* Voor desktop-apps die tokens verkrijgen met behulp van geïntegreerde Windows-verificatie, apparaatcodestroom, of gebruikersnaam/wachtwoord, stelt u in de sectie **Standaardclienttype** de instelling **Toepassing behandelen als openbare client** in op **Ja**.
-* Voor oudere apps die gebruikmaken van de Live SDK om te integreren met de Microsoft-accountservice, configureert u **Live SDK-ondersteuning**. Voor nieuwe apps is deze instelling niet nodig.
-* **Standaardclienttype**.
-* **Ondersteunde accounttypen**.
+Naast toegang tot uw eigen web-API namens de aangemelde gebruiker, moet uw toepassing mogelijk ook de gegevens van de gebruiker (of andere gegevens) kunnen openen of wijzigen die zijn opgeslagen in Microsoft Graph. Het is ook mogelijk dat u een service- of daemon-app hebt die zelf toegang nodig heeft tot Microsoft Graph om bewerkingen uit te voeren zonder tussenkomst van de gebruiker.
 
-### <a name="modify-supported-account-types"></a>Ondersteunde accounttypen wijzigen
+### <a name="delegated-permission-to-microsoft-graph"></a>Gedelegeerde machtiging voor Microsoft Graph
 
-In **Ondersteunde accounttypen** wordt opgegeven wie de toepassing kan gebruiken of toegang heeft tot de API.
+Configureer gedelegeerde machtigingen voor Microsoft Graph om ervoor te zorgen dat uw clienttoepassing bewerkingen namens de aangemelde gebruiker kan uitvoeren, bijvoorbeeld door hun e-mail te lezen of hun profiel te wijzigen. Standaard worden gebruikers van uw clienttoepassing gevraagd wanneer ze zich aanmelden om toestemming te geven voor de gedelegeerde machtigingen die u hiervoor hebt geconfigureerd.
 
-Als u de ondersteunde accounttypen hebt geconfigureerd tijdens het registreren van de toepassing, kunt u deze instelling alleen wijzigen met behulp van de editor van het manifest van de toepassing, indien:
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren die de registratie van uw clienttoepassing bevat.
+1. Selecteer **Azure Active Directory** > **App-registraties** en selecteer uw clienttoepassing.
+1. Selecteer **API-machtigingen** > **Een machtiging toevoegen** > **Microsoft Graph**
+1. Selecteer **Gedelegeerde machtigingen**. In Microsoft Graph worden veel machtigingen weergegeven, met de meestgebruikte bovenaan de lijst.
+1. Selecteer onder **Machtigingen** de volgende machtigingen:
 
-* u accounttypen van **AzureADMyOrg** of **AzureADMultipleOrgs** wijzigt in **AzureADandPersonalMicrosoftAccount**, of andersom, of indien
-* u accounttypen van **AzureADMyOrg** wijzigt in **AzureADMultipleOrgs**, of andersom.
+    | Machtiging       | Beschrijving                                         |
+    |------------------|-----------------------------------------------------|
+    | `email`          | E-mailadres van gebruikers weergeven                           |
+    | `offline_access` | Toegang onderhouden tot gegevens waartoe u toegang hebt verleend |
+    | `openid`         | Gebruikers aanmelden                                       |
+    | `profile`        | Basisprofiel van gebruikers weergeven                           |
+1. Selecteer **Machtigingen toevoegen** om het proces te voltooien.
 
-Als u de ondersteunde accounttypen voor een bestaande app-registratie wilt wijzigen, moet u de `signInAudience`-sleutel bijwerken. Zie [Het toepassingsmanifest configureren](reference-app-manifest.md#configure-the-app-manifest) voor meer informatie.
+Wanneer u machtigingen configureert, worden gebruikers van uw app bij het aanmelden gevraagd om toestemming te geven dat uw app namens hen toegang kan krijgen tot de resource-API.
 
-## <a name="configure-platform-settings-for-your-application"></a>Platforminstellingen configureren voor uw toepassing
+Als beheerder kunt u ook toestemming verlenen namens *alle* gebruikers, zodat deze niet meer worden gevraagd. Toestemming van de beheerder wordt verderop besproken in de sectie [Meer over API-machtigingen en beheerderstoestemming](#more-on-api-permissions-and-admin-consent) van dit artikel.
 
-![Instellingen configureren voor uw app op basis van het platform of apparaat](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations.png)
+### <a name="application-permission-to-microsoft-graph"></a>App-machtiging voor Microsoft Graph
 
-Als u toepassingsinstellingen wilt configureren op basis van het platform of apparaat, doet u het volgende:
+Configureer app-machtigingen voor een app die als zichzelf moet worden geverifieerd zonder tussenkomst van de gebruiker of toestemming. App-machtigingen worden meestal gebruikt door achtergrondservices of daemon-apps die toegang hebben tot een API op een 'headless' manier en door web-API's die toegang hebben tot een andere (downstream) API.
 
-1. Selecteer op de pagina **Platformconfiguraties** de optie **Een platform toevoegen**, en kies uit de beschikbare opties.
+In de volgende stappen verleent u machtigingen voor de *Files.Read.All*-machtiging van Microsoft Graph als voorbeeld.
 
-   ![Geeft de pagina Platforms configureren weer](./media/quickstart-update-azure-ad-app-preview/authentication-platform-configurations-configure-platforms.png)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren die de registratie van uw clienttoepassing bevat.
+1. Selecteer **Azure Active Directory** > **App-registraties** en selecteer uw clienttoepassing.
+1. Selecteer **API-machtigingen** > **Een machtiging toevoegen** > **Microsoft Graph** > **App-machtigingen**.
+1. Alle machtigingen die door Microsoft Graph beschikbaar worden gesteld, worden weergegeven onder **Machtigingen selecteren**.
+1. Selecteer de machtiging of machtigingen die u uw app wilt verlenen. U kunt bijvoorbeeld een daemon-app hebben waarmee bestanden in uw organisatie worden gescand en die u waarschuwt voor een specifiek bestandstype of specifieke bestandsnaam.
 
-1. Voer de instellingengegevens in op basis van het platform dat u hebt geselecteerd.
+    Onder **Machtigingen selecteren** vouwt u **Bestanden** uit en selecteert u de machtiging *Files.Read.All*.
+1. Selecteer **Machtigingen toevoegen**.
 
-   | Platform                | Configuratie-instellingen            |
-   |-------------------------|-----------------------------------|
-   | **Web**              | Voer de **Omleidings-URI** voor de toepassing in. |
-   | **iOS / macOS**              | Voer de **Bundel-id** van de app in. Deze kunt u vinden in XCode in Info.plist, of in de instellingen voor de build. Door het toevoegen van de bundel-id wordt automatisch een omleidings-URI voor de toepassing gemaakt. |
-   | **Android**          | Geef de **Pakketnaam** van de app op. Deze kunt u vinden in het AndroidManifest.xml-bestand.<br/>Genereer de **Hash voor ondertekening** en voer deze in. Door het toevoegen van de hash voor ondertekening wordt automatisch een omleidings-URI voor de toepassing gemaakt.  |
-   | **Mobiele toepassingen en desktoptoepassingen**  | Optioneel. Selecteer een van de aanbevolen **Voorgestelde omleidings-URI's** als u apps bouwt voor de desktop en apparaten.<br/>Optioneel. Voer een **Aangepaste omleidings-URI** in. Deze wordt gebruikt als de locatie waarheen gebruikers in Azure AD worden omgeleid als reactie op verificatieaanvragen. Gebruik bijvoorbeeld `http://localhost` voor .NET Core-toepassingen waarbij u interactie wilt. |
+Voor sommige machtigingen, zoals *Files.Read.All* van Microsoft Graph, is toestemming van de beheerder nodig. U verleent beheerders toestemming door de knop **Toestemming beheerder verlenen** te selecteren, die later wordt beschreven in de sectie [Knop Toestemming beheerder](#admin-consent-button).
 
-   > [!NOTE]
-   > Bij AD FS (Active Directory Federation Services) en Azure AD B2C moet u ook een poortnummer opgeven.  Bijvoorbeeld: `http://localhost:1234`.
+### <a name="configure-client-credentials"></a>Aanmeldingsgegevens voor de client configureren
 
-   > [!IMPORTANT]
-   > Voor mobiele toepassingen die niet de nieuwste versie van MSAL (Microsoft Authentication Library) gebruiken of die niet gebruikmaken van een broker, moet u de omleidings-URI’s voor deze toepassingen configureren in **Desktop en apparaten**.
+Apps die gebruikmaken van app-machtigingen verifiëren zichzelf met hun eigen aanmeldingsgegevens, zonder tussenkomst van de gebruiker. Voordat uw toepassing (of API) toegang kan krijgen tot Microsoft Graph, uw eigen web-API of een andere API met behulp van app-machtigingen, moet u de aanmeldingsgegevens van de clienttoepassing configureren.
 
-Afhankelijk van het platform dat u hebt gekozen, zijn er mogelijk aanvullende instellingen die u kunt configureren. Voor **web-apps** kunt u het volgende doen:
+Zie de sectie [Aanmeldingsgegevens toevoegen](quickstart-register-app.md#add-credentials) in de [quickstart voor meer informatie over het configureren van de aanmeldingsgegevens van een app: Een toepassing registreren bij het Microsoft-identiteitsplatform](quickstart-register-app.md).
 
-* Meer omleidings-URI's toevoegen
-* **Impliciete toekenning** configureren om de tokens te selecteren die u wilt laten uitgeven via het autorisatie-eindpunt:
+## <a name="more-on-api-permissions-and-admin-consent"></a>Meer over API-machtigingen en beheerderstoestemming
 
-  * Voor apps met één pagina selecteert u zowel **Toegangstokens** als **id-tokens**
-  * Voor web-apps selecteert u **id-tokens**
-
-## <a name="add-credentials-to-your-web-application"></a>Referenties toevoegen aan uw webtoepassing
-
-Als u een referentie wilt toevoegen aan uw webtoepassing, voegt u een certificaat toe of maakt u een clientgeheim. Ga als volgt te werk om een certificaat toe te voegen:
-
-1. Selecteer op de pagina **Overzicht** van de app de sectie **Certificaten en geheimen**.
-1. Selecteer **Certificaat uploaden**.
-1. Selecteer het bestand dat u wilt uploaden. Dit moet een van de volgende bestandstypen zijn: .cer, .pem, .crt.
-1. Selecteer **Toevoegen**.
-
-Een clientgeheim toevoegen:
-
-1. Selecteer op de pagina **Overzicht** van de app de sectie **Certificaten en geheimen**.
-1. Selecteer **Nieuw clientgeheim**.
-1. Voeg een beschrijving voor uw clientgeheim toe.
-1. Selecteer een duur.
-1. Selecteer **Toevoegen**.
-
-> [!NOTE]
-> Nadat u de configuratiewijzigingen hebt opgeslagen, bevat de meest rechtse kolom de waarde van het clientgeheim. **Vergeet niet de waarde te kopiëren** voor gebruik in de code van uw clienttoepassing. Deze is namelijk niet meer toegankelijk wanneer u deze pagina verlaat.
-
-## <a name="add-permissions-to-access-web-apis"></a>Machtigingen toevoegen voor toegang tot web-API's
-
-De [Graph API-machtiging: Aanmelden en gebruikersprofiel lezen](/graph/permissions-reference#user-permissions) is standaard geselecteerd. U kunt kiezen uit twee [typen machtigingen](developer-glossary.md#permissions) voor elke web-API:
-
-* **Toepassingsmachtigingen**. De clienttoepassing heeft rechtstreeks als zichzelf (zonder gebruikerscontext) toegang nodig tot de web-API. Voor dit type machtiging is toestemming van de beheerder vereist. Deze machtiging is niet beschikbaar voor clienttoepassingen voor de desktop of voor mobiele clienttoepassingen.
-* **Gedelegeerde machtigingen**. de clienttoepassing heeft toegang tot de web-API als de aangemelde gebruiker nodig, maar met toegang die wordt beperkt door de geselecteerde machtiging. Dit type machtiging kan worden verleend door een gebruiker tenzij de machtiging toestemming van de beheerder vereist.
-
-  > [!NOTE]
-  > Wanneer een gedelegeerde machtiging aan een toepassing wordt toegevoegd, wordt niet automatisch toestemming verleend aan de gebruikers binnen de tenant. Gebruikers moeten nog steeds handmatig toestemming geven voor de toegevoegde gedelegeerde machtigingen tijdens runtime, tenzij de beheerder toestemming namens alle gebruikers verleent.
-
-Machtigingen toevoegen voor toegang tot resource-API's vanaf de client:
-
-1. Selecteer op de pagina **Overzicht** van de app de optie **API-machtigingen**.
-1. Selecteer onder **Geconfigureerde machtigingen** de optie **Een machtiging toevoegen**.
-1. Standaard kunt u in de weergave een keuze maken uit **Microsoft-API's**. Selecteer de sectie met API's waarin u geïnteresseerd bent:
-
-    * **Microsoft-API's**. Hier kunt u machtigingen selecteren voor Microsoft-API's, zoals Microsoft Graph.
-    * **API's die in mijn organisatie worden gebruikt**. Hier kunt u machtigingen selecteren voor de API's die beschikbaar zijn gemaakt door uw organisatie, of API's waarmee uw organisatie is geïntegreerd.
-    * **Mijn API's**. Hier kunt u machtigingen selecteren voor API's die u beschikbaar hebt gemaakt.
-
-1. Wanneer u de API's hebt geselecteerd, ziet u de pagina **API-machtigingen aanvragen**. Als de API zowel gedelegeerde als toepassingsmachtigingen bevat, selecteert u het type machtiging dat uw toepassing nodig heeft.
-1. Selecteer **Machtigingen toevoegen** als u klaar bent.
-
-U wordt nu teruggeleid naar de pagina **API-machtigingen**. De machtigingen zijn opgeslagen en toegevoegd aan de tabel.
-
-## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Uitleg over API-machtigingen en de gebruikersinterface voor beheerderstoestemming
+Het deelvenster **API-machtigingen** van een app-registratie bevat een tabel [Geconfigureerde machtigingen](#configured-permissions) en bevat mogelijk bovendien een tabel [Andere machtigingen verleend](#other-permissions-granted). In de volgende secties worden beide tabellen en de knop [Beheerderstoestemming](#admin-consent-button) beschreven.
 
 ### <a name="configured-permissions"></a>Geconfigureerde machtigingen
 
-In deze sectie ziet u de machtigingen die expliciet zijn geconfigureerd voor het toepassingsobject. Deze machtigingen maken deel uit van de lijst met vereiste resourcetoegang. U kunt machtigingen toevoegen aan of verwijderen uit deze tabel. Als beheerder kunt u ook beheerderstoestemming verlenen of intrekken voor een set API-machtigingen of voor afzonderlijke machtigingen.
+In de tabel **Geconfigureerde machtigingen** in het deelvenster **API-machtigingen** ziet u de lijst met machtigingen die uw app nodig heeft voor de standaardwerking, te weten de lijst *voor toegang tot vereiste resources*. Gebruikers of hun beheerders, moeten toestemming geven voor deze machtigingen voordat uw app kan worden gebruikt. Andere, optionele machtigingen kunnen later tijdens runtime worden aangevraagd (met behulp van dynamische toestemming).
+
+Dit is de minimale lijst met machtigingen waarmee gebruikers moeten instemmen voor gebruik van uw app. Er kunnen er meer zijn, maar deze machtigingen zijn altijd vereist. Ter beveiliging en om gebruikers en beheerders een prettiger gevoel te geven bij gebruik van uw app, moet u nooit vragen om iets wat u niet nodig hebt.
+
+De machtigingen die in deze tabel worden weergegeven, kunt u toevoegen of verwijderen door gebruik te maken van de stappen die hierboven worden beschreven of via [Andere verleende machtigingen](#other-permissions-granted) (beschreven in de volgende sectie). Als beheerder kunt u toestemming geven voor de volledige set van machtigingen van een API die in de tabel worden weergegeven en kunt u de toestemming voor afzonderlijke machtigingen intrekken.
 
 ### <a name="other-permissions-granted"></a>Overige verleende machtigingen
 
-Als uw toepassing is geregistreerd in een tenant, ziet u mogelijk een extra sectie met de titel **Overige machtigingen die zijn verleend voor de tenant**. In deze sectie ziet u machtigingen die zijn verleend voor de tenant die niet expliciet zijn geconfigureerd voor het toepassingsobject. Deze machtigingen zijn dynamisch aangevraagd en verleend. Deze sectie wordt alleen weergegeven als minstens een van de machtigingen van toepassing is.
+Mogelijk ziet u ook een tabel met de naam **Andere machtigingen die zijn verleend voor {uw tenant}** in het deelvenster **API-machtigingen**. In de tabel **Andere machtigingen die zijn verleend voor {uw tenant}** ziet u machtigingen die zijn verleend voor de tenant die niet expliciet zijn geconfigureerd voor het toepassingsobject. Deze machtigingen zijn dynamisch aangevraagd en verleend. Deze sectie wordt alleen weergegeven als minstens één van de machtigingen van toepassing is.
 
-U kunt een set API-machtigingen of afzonderlijke machtigingen die u ziet in deze sectie, toevoegen aan de sectie **Geconfigureerde machtigingen**. Als beheerder kunt u beheerderstoestemming ook intrekken voor afzonderlijke API's of machtigingen in deze sectie.
+U kunt de volledige set API-machtigingen of afzonderlijke machtigingen die u in deze tabel ziet, toevoegen aan de tabel **Geconfigureerde machtigingen**. Als beheerder kunt u beheerderstoestemming intrekken voor API's of afzonderlijke machtigingen in deze sectie.
 
 ### <a name="admin-consent-button"></a>Knop Beheerderstoestemming
 
-Als uw toepassing is geregistreerd in een tenant, ziet u een knop **Beheerderstoestemming verlenen voor tenant**. Deze is uitgeschakeld als u geen beheerder bent, of als er geen machtigingen zijn geconfigureerd voor de toepassing.
-Met deze knop kan een beheerder beheerderstoestemming verlenen voor de machtigingen die zijn geconfigureerd voor de toepassing. Als u op de knop Beheerderstoestemming klikt, wordt een nieuw venster geopend met een instemmingsprompt waarin alle geconfigureerde machtigingen te zien zijn.
+Met de knop **Toestemming beheerder verlenen voor {uw tenant}** kan een beheerder beheerderstoestemming verlenen voor de machtigingen die zijn geconfigureerd voor de toepassing. Wanneer u de knop selecteert, wordt er een dialoogvenster weergegeven waarin u wordt gevraagd om de actie voor de toestemming te bevestigen.
 
-> [!NOTE]
-> Er is een vertraging tussen de configuratie van machtigingen voor de toepassing en wanneer deze worden weergegeven in de instemmingsprompt. Als u niet alle geconfigureerde machtigingen ziet in de instemmingsprompt, sluit u het venster en opent u het opnieuw.
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Knop Toestemming beheerder verlenen gemarkeerd in het deelvenster Geconfigureerde machtigingen van de Azure-portal":::
 
-Als u machtigingen hebt die zijn verleend maar niet zijn geconfigureerd, wordt u via de knop Beheerderstoestemming gevraagd om deze machtigingen af te handelen. U kunt ze toevoegen aan Geconfigureerde machtigingen, of u kunt ze verwijderen.
+Nadat toestemming is verleend, worden de machtigingen waarvoor beheerderstoestemming nodig was, weergegeven als machtigingen waarvoor toestemming is verleend:
 
-De instemmingsprompt biedt de optie om te **Accepteren** of te **Annuleren**. Selecteer **Accepteren** om beheerderstoestemming te verlenen. Als u **Annuleren** selecteert, wordt er geen beheerderstoestemming verleend. U ziet dan een foutbericht waarin staat dat toestemming is geweigerd.
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Tabel Machtigingen configureren in de Azure-portal met beheerderstoestemming verleend voor de machtiging Files.Read.All":::
 
-> [!NOTE]
-> Er is een vertraging tussen het verlenen van beheerderstoestemming door **Accepteren** te selecteren in de instemmingsprompt, en het weergeven van de status van beheerderstoestemming in de portal.
+De knop **Toestemming beheerder verlenen** is *uitgeschakeld* als u geen beheerder bent, of als er geen machtigingen zijn geconfigureerd voor de toepassing. Als u machtigingen hebt die zijn verleend maar nog niet zijn geconfigureerd, wordt u via de knop Beheerderstoestemming gevraagd om deze machtigingen af te handelen. U kunt deze toevoegen aan Geconfigureerde machtigingen, of u kunt ze verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

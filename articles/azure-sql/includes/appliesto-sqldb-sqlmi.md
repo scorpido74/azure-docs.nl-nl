@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a67e4237a49a32c177d4c23b7655a42c4039bb96
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 201fab00dcf1f3fede0b0acb0fa2dc5e45d0d1e0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504530"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533153"
 ---
-<Token>**VAN TOEPASSING OP:** ![ja](../media/applies-to/yes.png)Azure SQL Database ![ja](../media/applies-to/yes.png)Met Azure SQL beheerd exemplaar </Token> 
+<Token>**VAN TOEPASSING OP:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Managed Instance </Token> 
 

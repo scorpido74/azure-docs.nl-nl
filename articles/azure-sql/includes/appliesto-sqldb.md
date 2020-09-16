@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: f952bfb7cdda4629a4dc50723efb5e6e2bf22eb2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c3dbc32475eb6ee53ae716369f81290fc6fbcf93
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504323"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533224"
 ---
-<Token>**VAN TOEPASSING OP:** ![ja](../media/applies-to/yes.png)Azure SQL Database </Token> 
+<Token>**VAN TOEPASSING OP:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database </Token> 

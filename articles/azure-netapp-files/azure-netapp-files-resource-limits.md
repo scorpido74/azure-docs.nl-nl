@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536476"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708101"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -44,7 +44,8 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |  Maximale grootte van één volume     |    100 TiB    |    No    |
 |  Maximale grootte van één bestand     |    16 TiB    |    No    |    
 |  Maximale grootte van Directory-meta gegevens in één map      |    320 MB    |    No    |    
-|  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Yes    |    
+|  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Yes    |   
+|  Aantal replicatie gegevens beveiliging met meerdere regio's (doel volumes)     |    5    |    Ja    |     
 
 Zie [Veelgestelde vragen over capaciteits beheer](azure-netapp-files-faqs.md#capacity-management-faqs)voor meer informatie.
 
@@ -83,9 +84,10 @@ Vanuit Azure Portal navigatie vlak:
         |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor verhoging van quotum       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Account |  *Abonnements-id*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
-        |  Pool    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
-        |  Volume  |  *Abonnements-ID, account-URI, groeps-URI*   |  *Nieuw maximum **volume** nummer aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |
-        |  Maxfiles  |  *Abonnements-ID, account-URI, groeps-URI, volume-URI*   |  *Aangevraagd aantal voor nieuwe maximum **maxfiles***     |  *Welk scenario of use-case vraagt de aanvraag?*  |    
+        |  Pool    |  *Abonnements-ID, NetApp-account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
+        |  Volume  |  *Abonnements-ID, NetApp-account-URI, URI van capaciteits groep*   |  *Nieuw maximum **volume** nummer aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |
+        |  Maxfiles  |  *Abonnements-ID, NetApp-account-URI, URI van capaciteits groep, volume-URI*   |  *Aangevraagd aantal voor nieuwe maximum **maxfiles***     |  *Welk scenario of use-case vraagt de aanvraag?*  |    
+        |  Multi-regio replicatie gegevens bescherming volumes  |  *Abonnements-ID, URI van doel-NetApp account, URI van doel capaciteitgroep, bron NetApp account URI, URI van bron capaciteit, bron volume-URI*   |  *Er is een nieuw maximum aantal **gegevens beschermings volumes voor replicatie van meerdere regio's (doel volumes)** aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |    
 
     2. Geef de juiste ondersteunings methode op en geef uw contract informatie op.
 

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d4cc17570057f5f37cf38685847afbe38ea6831
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760584"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606613"
 ---
 | Resource | Standaardbestandsshares | Premiumbestandsshares |
 |----------|---------------|------------------------------------------|
@@ -26,5 +26,6 @@ ms.locfileid: "88760584"
 | Maximum aantal momentopnamen van shares | 200 momentopnamen van shares | 200 momentopnamen van shares |
 | Maximum lengte van de naam van het object (mappen en bestanden) | 2048 tekens | 2048 tekens |
 | Maximum pathname-onderdeel (in het pad \A\B\C\D is elke letter een onderdeel) | 255 tekens | 255 tekens |
+| Limiet voor vaste koppelingen (alleen NFS) | N.v.t. | 178 |
 
 \* Standaardbestandsshares zijn 5 TiB. Zie [Grote bestandsshares inschakelen en maken](../articles/storage/files/storage-files-how-to-create-large-file-share.md) voor meer informatie over hoe u de standaardbestandsshares kunt uitbreiden tot 100 TiB.

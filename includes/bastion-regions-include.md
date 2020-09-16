@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 08/14/2020
+ms.date: 09/11/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 48c18e08943e170fdd53f04b49b517424b511c62
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 74b5014b6590fc501291355ee4d142c52ceff129
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246572"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90045083"
 ---
 >[!NOTE]
 >We werken hard om aanvullende regio's toe te voegen. Wanneer een regio wordt toegevoegd, voegen we deze toe aan deze lijst.
@@ -66,4 +66,5 @@ ms.locfileid: "88246572"
 * VS (overheid) - Virginia
 
 **Azure China**
+* China - oost 2
 * China - noord 2

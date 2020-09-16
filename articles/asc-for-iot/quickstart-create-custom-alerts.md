@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: aangepaste waarschuwingen maken'
-description: Meer informatie over het maken en toewijzen van waarschuwingen voor aangepaste apparaten voor de Azure Security Center voor IoT-beveiligings service.
+title: 'Quickstart: Aangepaste waarschuwingen maken'
+description: Aangepaste apparaatwaarschuwingen voor de Azure Security Center for IoT-beveiligingsservice begrijpen, maken en toewijzen.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310834"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505434"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Snelstartgids: aangepaste waarschuwingen maken
+# <a name="quickstart-create-custom-alerts"></a>Quickstart: Aangepaste waarschuwingen maken
 
-Met aangepaste beveiligings groepen en waarschuwingen kunt u optimaal profiteren van de end-to-end beveiligings informatie en categorische op het apparaat om te zorgen voor een betere beveiliging van uw IoT-oplossing.
+Met aangepaste beveiligingsgroepen en waarschuwingen kunt u optimaal profiteren van de end-to-end beveiligingsinformatie en categorische apparaatkennis om te zorgen voor een betere beveiliging van uw IoT-oplossing.
 
-## <a name="why-use-custom-alerts"></a>Waarom aangepaste waarschuwingen gebruiken?
+## <a name="why-use-custom-alerts"></a>Waarom moet u aangepaste waarschuwingen maken?
 
-U kent het beste uw IoT-apparaten.
+U kent uw IoT-apparaten het beste.
 
-Voor klanten die hun verwachte gedrag van het apparaat begrijpen, kunt u met Azure Security Center voor IoT deze kennis vertalen in een gedrags beleid voor apparaten en een waarschuwing over eventuele afwijkingen van verwacht, normaal gedrag.
+Voor klanten die het verwachte gedrag van hun apparaten volledig kennen, kan Azure Security Center for IoT deze kennis vertalen in een gedragsbeleid voor apparaten en waarschuwingen genereren wanneer van dit verwachte, normale gedrag wordt afgeweken.
 
 ## <a name="security-groups"></a>Beveiligingsgroepen
 
-Met beveiligings groepen kunt u logische groepen apparaten definiëren en hun beveiligings status op een gecentraliseerde manier beheren.
+Met beveiligingsgroepen kunt u logische groepen van apparaten definiëren en hun beveiligingsstatus op een gecentraliseerde wijze beheren.
 
-Deze groepen kunnen apparaten vertegenwoordigen met specifieke hardware, apparaten die zijn geïmplementeerd op een bepaalde locatie of een andere groep die geschikt is voor uw specifieke behoeften.
+Deze groepen staan voor apparaten met specifieke hardware, apparaten die zijn geïmplementeerd op een bepaalde locatie of een andere groep die past bij uw specifieke behoeften.
 
-Beveiligings groepen worden gedefinieerd door een eigenschap voor een dubbele label voor een apparaat met de naam **beveiligings groep**. Elke IoT-oplossing op IoT Hub heeft standaard één beveiligings groep met de naam **standaard**. Wijzig de waarde van de eigenschap **beveiligings groep** om de beveiligings groep van een apparaat te wijzigen.
+Beveiligingsgroepen worden gedefinieerd door een eigenschap voor apparaatdubbeltags met de naam **SecurityGroup**. Elke IoT-oplossing in IoT Hub bevat standaard één beveiligingsgroep met de naam **Standaard**. Wijzig de waarde van de eigenschap **SecurityGroup** om de beveiligingsgroep van een apparaat te wijzigen.
 
 Bijvoorbeeld:
 
@@ -63,25 +63,25 @@ Bijvoorbeeld:
   },
 ```
 
-Gebruik beveiligings groepen om uw apparaten in logische categorieën te groeperen. Nadat u de groepen hebt gemaakt, wijst u deze toe aan de aangepaste waarschuwingen van uw keuze voor de meest efficiënte end-to-end IoT-beveiligings oplossing.
+Gebruik beveiligingsgroepen om uw apparaten in logische categorieën te groeperen. Nadat u de groepen hebt gemaakt, wijst u deze toe aan de aangepaste waarschuwingen van uw keuze voor de meest efficiënte end-to-end IoT-beveiligingsoplossing.
 
 ## <a name="customize-an-alert"></a>Een waarschuwing aanpassen
 
-1. Open uw IoT Hub.
-1. Klik op **aangepaste waarschuwingen** in het gedeelte **beveiliging** .
-1. Kies een beveiligings groep waarop u de aanpassing wilt Toep assen.
-1. Klik op **een aangepaste waarschuwing toevoegen**.
-1. Selecteer een aangepaste waarschuwing in de vervolg keuzelijst.
-1. Bewerk de vereiste eigenschappen, klik op **OK**.
-1. Zorg ervoor dat u op **Opslaan**klikt. Zonder de nieuwe waarschuwing op te slaan, wordt de waarschuwing verwijderd wanneer u de volgende keer IoT Hub sluit.
+1. Open uw Azure IoT-hub en selecteer **Instellingen** in het menu **Beveiliging**. 
+1. Klik op **Aangepaste waarschuwingen**.
+1. Kies een beveiligingsgroep waarop u de aanpassing wilt toepassen.
+1. Klik op **Een aangepaste waarschuwing toevoegen**.
+1. Selecteer een aangepaste waarschuwing in de vervolgkeuzelijst.
+1. Bewerk de gewenste eigenschappen, klik op **OK**.
+1. Zorg ervoor dat u op **Opslaan** klikt. Wanneer u de nieuwe waarschuwing niet opslaat, wordt de waarschuwing verwijderd wanneer u de volgende keer IoT Hub sluit.
 
 ## <a name="alerts-available-for-customization"></a>Waarschuwingen die beschikbaar zijn voor aanpassing
 
-Azure Security Center voor IoT biedt een groot aantal waarschuwingen dat kan worden aangepast op basis van uw specifieke behoeften. Bekijk de [aanpas bare waarschuwings tabel](concept-customizable-security-alerts.md) voor de ernst van de waarschuwing, de gegevens bron, de beschrijving en de voorgestelde herstel stappen als en wanneer elke waarschuwing wordt ontvangen.
+Azure Security Center for IoT biedt een groot aantal waarschuwingen dat kan worden aangepast op basis van uw specifieke behoeften. Bekijk de [tabel met aanpasbare waarschuwingen](concept-customizable-security-alerts.md) voor de ernst van de waarschuwing, de gegevensbron, de beschrijving en onze voorgestelde herstelstappen als en wanneer elke waarschuwing wordt ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over het implementeren van een beveiligings agent...
+Ga naar het volgende artikel om te lezen hoe u een beveiligingsagent implementeert...
 
 > [!div class="nextstepaction"]
-> [Een beveiligings agent implementeren](how-to-deploy-agent.md)
+> [Een beveiligingsagent implementeren](how-to-deploy-agent.md)

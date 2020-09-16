@@ -62,7 +62,7 @@ Vermijd bij databasenamen het volgende:
 * Voorloop- en volgspaties
 * Volguitroepteken '!'
 * Vierkante haak sluiten ‘]’
-* Namen van databases die beginnen met F:\
+* Namen van databases die beginnen met F:\\
 
 We hebben wel aliasing voor niet-ondersteunde tekens in Azure-tabellen, maar we raden aan deze te vermijden. [Meer informatie](/rest/api/storageservices/understanding-the-table-service-data-model).
 

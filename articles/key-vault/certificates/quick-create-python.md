@@ -3,203 +3,65 @@ title: 'Quickstart: Azure Key Vault Python-clientbibliotheek - certificaten behe
 description: Meer informatie over het maken, ophalen en verwijderen van certificaten van een Azure-sleutelkluis met behulp van de clientbibliotheek voor Python
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 3/30/2020
+ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: d0d1ed2b082abe5930f358a2551a967dd158aa41
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b9ff7397ad29ac681e21c32608ade9c6ce557c37
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376584"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488623"
 ---
 # <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek met certificaten voor Python
 
-Aan de slag met de Azure Key Vault-clientbibliotheek voor Python. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
+Aan de slag met de Azure Key Vault-clientbibliotheek voor Python. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen. Door Key Vault te gebruiken om certificaten op te slaan, voorkomt u dat certificaten in uw code worden opgeslagen en is uw app dus beter beveiligd.
 
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-clientbibliotheek voor Python voor het volgende:
+[API-referentiedocumentatie](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault-certificates)
 
-- De beveiliging en controle over sleutels en wachtwoorden verbeteren.
-- In een paar minuten versleutelingssleutels maken en importeren.
-- Latentie verminderen met schalen in de cloud en globale redundantie.
-- Taken voor TLS/SSL-certificaten vereenvoudigen en automatiseren.
-- FIPS 140-2 level 2-gevalideerde HSM's gebruiken.
+## <a name="set-up-your-local-environment"></a>Uw lokale omgeving instellen
 
-[API-referentiedocumentatie](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
+[!INCLUDE [Set up your local environment](../../../includes/key-vault-python-qs-setup.md)]
 
-## <a name="prerequisites"></a>Vereisten
+7. Installeer de Key Vault-certificaatbibliotheek:
 
-- Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
-- Python 2.7, 3.5.3 of hoger
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/)
+    ```terminal
+    pip install azure-keyvault-certificates
+    ```
 
-In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) uitvoert in een Linux-terminalvenster.
+## <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
 
-## <a name="setting-up"></a>Instellen
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-### <a name="install-the-package"></a>Het pakket installeren
+## <a name="give-the-service-principal-access-to-your-key-vault"></a>De service-principal toegang verlenen tot uw sleutelkluis
 
-Installeer vanuit het consolevenster de Azure Key Vault-certificatenbibliotheek voor Python.
+Voer de volgende [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)-opdracht uit om uw service-principal te autoriseren voor de bewerkingen Ophalen, Vermelden en Maken op certificaten.
 
-```console
-pip install azure-keyvault-certificates
-```
-
-Voor deze quickstart moet u ook het azure.identity-pakket installeren:
-
-```console
-pip install azure.identity
-```
-
-### <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
-
-In deze quickstart wordt gebruikgemaakt van een vooraf gemaakte Azure-sleutelkluis. U kunt een sleutelkluis maken met behulp van de stappen in de [quickstart voor Azure CLI](quick-create-cli.md), de [quickstart voor Azure PowerShell](quick-create-powershell.md) of de [quickstart voor de Azure-portal](quick-create-portal.md). U kunt ook de volgende Azure CLI-opdrachten uitvoeren.
-
-> [!Important]
-> Elke sleutelkluis moet een unieke naam hebben. Vervang <your-unique-keyvault-name> door de naam van uw sleutelkluis in de volgende voorbeelden.
+# <a name="cmd"></a>[cmd](#tab/cmd)
 
 ```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+az keyvault set-policy --name %KEY_VAULT_NAME% --spn %AZURE_CLIENT_ID% --resource-group KeyVault-PythonQS-rg --certificate-permissions delete get list create
 ```
 
-### <a name="create-a-service-principal"></a>Een service-principal maken
-
-De eenvoudigste manier om een cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Verificatie bij Azure Key Vault](../general/authentication.md) voor meer informatie.
-
-In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie http://&lt;mijn-unieke-service-principal-naam&gt;.
-
-Maak een service-principal met behulp van de Azure CLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
+az keyvault set-policy --name $KEY_VAULT_NAME --spn $AZURE_CLIENT_ID --resource-group KeyVault-PythonQS-rg --certificate-permissions delete get list create 
 ```
 
-Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 
+---
 
-```console
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
-```
+Deze opdracht is afhankelijk van de omgevingsvariabelen `KEY_VAULT_NAME` en `AZURE_CLIENT_ID` die in vorige stappen zijn gemaakt.
 
-Noteer de clientId en het clientSecret. Deze worden in de onderstaande stap [Omgevingsvariabele instellen](#set-environmental-variables) gebruikt.
+Zie [Een toegangsbeleid toewijzen - CLI](../general/assign-access-policy-cli.md) voor meer informatie.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>De service-principal toegang verlenen tot uw sleutelkluis
+## <a name="create-the-sample-code"></a>De voorbeeldcode maken
 
-Maak een toegangsbeleid voor de sleutelkluis dat machtigingen verleent aan uw service-principal door de clientId door te geven aan de opdracht [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy). Geef de service-principal-machtigingen voor ophalen, weergeven en maken voor certificaten op.
+Met de Azure Key Vault-clientbibliotheek voor Python kunt u certificaten en gerelateerde assets, zoals geheimen en cryptografische sleutels, beheren. Het volgende codevoorbeeld laat zien hoe u een client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --certificate-permissions delete get list create 
-```
-
-#### <a name="set-environmental-variables"></a>Omgevingsvariabelen instellen
-
-De methode DefaultAzureCredential in de toepassing is afhankelijk van drie omgevingsvariabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` en `AZURE_TENANT_ID`. Stel deze variabelen in op de clientId-, clientSecret- en tenantId-waarden die u hebt genoteerd in de stap [Een service-principal maken](#create-a-service-principal) met de indeling `export VARNAME=VALUE`. (Met deze methode worden alleen de variabelen ingesteld voor uw huidige shell en processen gemaakt vanuit de shell. Als u deze variabelen permanent wilt toevoegen aan uw omgeving, moet u het bestand `/etc/environment ` bewerken.) 
-
-U moet de naam van de sleutelkluis ook opslaan als een omgevingsvariabele met de naam `KEY_VAULT_NAME`.
-
-```console
-export AZURE_CLIENT_ID=<your-clientID>
-
-export AZURE_CLIENT_SECRET=<your-clientSecret>
-
-export AZURE_TENANT_ID=<your-tenantId>
-
-export KEY_VAULT_NAME=<your-key-vault-name>
-````
-
-## <a name="object-model"></a>Objectmodel
-
-Met de Azure Key Vault-clientbibliotheek voor Python kunt u sleutels en gerelateerde assets, zoals certificaten en geheimen, beheren. In de onderstaande codevoorbeelden ziet u hoe u een client maakt en een sleutel maakt, ophaalt en verwijdert.
-
-## <a name="code-examples"></a>Codevoorbeelden
-
-### <a name="add-directives"></a>Instructies toevoegen
-
-Voeg de volgende instructies toe aan het begin van de code:
-
-```python
-import os
-from azure.keyvault.certificates import CertificateClient, CertificatePolicy,CertificateContentType, WellKnownIssuerNames 
-from azure.identity import DefaultAzureCredential
-```
-
-### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
-
-Het verifiëren van uw sleutelkluis en het maken van een sleutelkluis-client is afhankelijk van de omgevingsvariabelen in de stap [Omgevingsvariabelen instellen](#set-environmental-variables) hierboven. De naam van de sleutelkluis wordt uitgebreid naar de sleutelkluis-URI, met de indeling "https://your-key-vault-name.vault.azure.net".
-
-```python
-credential = DefaultAzureCredential()
-
-client = CertificateClient(vault_url=KVUri, credential=credential)
-```
-
-### <a name="save-a-certificate"></a>Een certificaat opslaan
-
-Nu uw toepassing is geverifieerd, kunt u een zelfondertekend certificaat toevoegen aan uw sleutelkluis 
-
-```python
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-)
-certificate = certificate_operation_poller.result()
-```
-
-U kunt controleren of het certificaat is ingesteld met de opdracht [az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show):
-
-```azurecli
-az keyvault certificate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-### <a name="retrieve-a-certificate"></a>Een certificaat ophalen
-
-U kunt nu het eerder gemaakte certificaat ophalen
-
-```python
-retrieved_certificate = client.get_certificate(certificateName)
- ```
-
-Uw certificaat is nu opgeslagen als `retrieved_certificate`.
-
-### <a name="delete-a-certificate"></a>Een certificaat verwijderen
-
-Verwijder tot slot het certificaat uit uw sleutelkluis
-
-```python
-client.delete_certificate(certificateName)
-```
-
-U kunt controleren of het certificaat is ingesteld met de opdracht [az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show):
-
-```azurecli
-az keyvault certifcate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-## <a name="clean-up-resources"></a>Resources opschonen
-
-Wanneer u de sleutelkluis en de bijbehorende resourcegroep niet meer nodig hebt, kunt u Azure CLI of Azure PowerShell gebruiken om ze te verwijderen.
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
-
-## <a name="sample-code"></a>Voorbeeldcode
+Maak een bestand met de naam *kv_certificates.py* dat deze code bevat.
 
 ```python
 import os
@@ -212,33 +74,107 @@ KVUri = "https://" + keyVaultName + ".vault.azure.net"
 credential = DefaultAzureCredential()
 client = CertificateClient(vault_url=KVUri, credential=credential)
 
-certificateName = "myCertificate"
+certificateName = input("Input a name for your certificate > ")
 
-print("Creating a certificate in " + keyVaultName + " called '" + certificateName  + "` ...")
+print(f"Creating a certificate in {keyVaultName} called '{certificateName}' ...")
 
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-
-certificate = certificate_operation_poller.result()
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
 
 print(" done.")
 
-print("Retrieving your certificate from " + keyVaultName + ".")
+print(f"Retrieving your certificate from {keyVaultName}.")
 
 retrieved_certificate = client.get_certificate(certificateName)
 
-print("Certificate with name '{0}' was found'.".format(retrieved_certificate.name))
-print("Deleting your certificate from " + keyVaultName + " ...")
+print(f"Certificate with name '{retrieved_certificate.name}' was found'.")
+print(f"Deleting your certificate from {keyVaultName} ...")
 
-client.delete_certificate(certificateName)
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
 
 print(" done.")
 ```
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="run-the-code"></a>De code uitvoeren
 
-In deze quickstart hebt u een sleutelkluis gemaakt, een certificaat opgeslagen en dat certificaat opgehaald. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
+Zorg ervoor dat de code in de vorige sectie in een bestand met de naam *kv_certificates.py* staat. Voer de code vervolgens uit met de volgende opdracht:
+
+```terminal
+python kv_certificates.py
+```
+
+- Als er machtigingsfouten optreden, controleer dan of u de [`az keyvault set-policy`-opdracht](#give-the-service-principal-access-to-your-key-vault) hebt uitgevoerd.
+- Als u de code opnieuw uitvoert met dezelfde sleutelnaam, treedt mogelijk deze fout op: '(Conflict) Certificaat <name> heeft momenteel de status Verwijderd maar herstelbaar.' Gebruik een andere sleutelnaam.
+
+## <a name="code-details"></a>Codedetails
+
+### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
+
+In de voorgaande code gebruikt het object [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python) de omgevingsvariabelen die u voor uw service-principal hebt gemaakt. U geeft deze referentie op telkens wanneer u een clientobject van een Azure-bibliotheek maakt, zoals [`CertificateClient`](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python), samen met de URI van de resource waarmee u wilt werken via die client:
+
+```python
+credential = DefaultAzureCredential()
+client = CertificateClient(vault_url=KVUri, credential=credential)
+```
+
+### <a name="save-a-certificate"></a>Een certificaat opslaan
+
+Zodra u het clientobject voor de sleutelkluis hebt verkregen, kunt u een certificaat maken met behulp van de [begin_create_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#begin-create-certificate-certificate-name--policy----kwargs-)-methode: 
+
+```python
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
+```
+
+Hier vereist het certificaat een beleid dat is verkregen met behulp van de [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?view=azure-python#get-default--)-methode.
+
+Wanneer een `begin_create_certificate`-methode wordt aangeroepen, wordt er een asynchrone aanroep bij de Azure REST-API voor de sleutelkluis gegenereerd. De asynchrone aanroep retourneert een poller-object. Roep de `result`-methode van de poller aan als u op het resultaat van de bewerking wilt wachten.
+
+Bij het verwerken van de aanvraag verifieert Azure de identiteit van de aanroepende functie (de service-principal) met behulp van het referentieobject dat u aan de client hebt verstrekt.
+
+Het controleert ook of de aanroepende functie is geautoriseerd om de aangevraagde actie uit te voeren. U verleende deze autorisatie eerder aan de service-principal met behulp van de [`az keyvault set-policy`-opdracht](#give-the-service-principal-access-to-your-key-vault).
+
+### <a name="retrieve-a-certificate"></a>Een certificaat ophalen
+
+Gebruik de [get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#get-certificate-certificate-name----kwargs-)-methode voor het lezen van een certificaat uit Key Vault:
+
+```python
+retrieved_certificate = client.get_certificate(certificateName)
+ ```
+
+U kunt ook controleren of het certificaat is ingesteld met de Azure CLI-opdracht [az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show).
+
+### <a name="delete-a-certificate"></a>Een certificaat verwijderen
+
+Gebruik de [begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?view=azure-python#begin-delete-certificate-certificate-name----kwargs-)-methode om een certificaat te verwijderen:
+
+```python
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
+```
+
+De methode `begin_delete_certificate` is asynchroon en retourneert een pollerobject. Wanneer de methode `result` van de poller wordt aangeroepen, wordt er gewacht totdat deze voltooid is.
+
+U kunt controleren of het certificaat is verwijderd met de Azure CLI-opdracht [az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show).
+
+Zodra een certificaat is verwijderd, heeft dit nog een tijdje de status Verwijderd maar herstelbaar. Gebruik een andere certificaatnaam als u de code nogmaals uitvoert.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u ook met [geheimen](../secrets/quick-create-python.md) en [sleutels](../keys/quick-create-python.md) wilt experimenteren, kunt u de Key Vault hergebruiken die in dit artikel is gemaakt.
+
+Anders, wanneer u klaar bent met de resources die in dit artikel zijn gemaakt, gebruikt u de volgende opdracht om de resourcegroep en alle resources daarin te verwijderen:
+
+```azurecli
+az group delete --resource-group KeyVault-PythonQS-rg
+```
+
+## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure Key Vault](../general/overview.md)
 - [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
 - [Best practices voor Azure Key Vault](../general/best-practices.md)
+- [Verifiëren met Key Vault](../general/authentication.md)

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 06fccd410f3edf5dbd63fa9959aad2d65a626a0d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e74b48ca526d977da33dcdccae84491213856079
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503779"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533328"
 ---
-<Token>**VAN TOEPASSING OP:** ![ja](../media/applies-to/yes.png)SQL Server op een Azure-VM </Token> 
+<Token>**VAN TOEPASSING OP:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server op virtuele Azure-machine </Token> 
 

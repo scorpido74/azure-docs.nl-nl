@@ -1,6 +1,6 @@
 ---
 title: Problemen bij het aanmelden bij een micro soft-toepassing | Microsoft Docs
-description: Algemene problemen oplossen die zich voordoen bij het aanmelden bij micro soft-toepassingen van de eerste partij met behulp van Azure AD (zoals Office 365)
+description: Algemene problemen oplossen die zich voordoen bij het aanmelden bij micro soft-toepassingen voor de eerste partij met behulp van Azure AD (zoals Microsoft 365).
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759280"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707948"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemen bij het aanmelden bij een micro soft-toepassing
 
-Micro soft-toepassingen (zoals Office 365 Exchange, share point, Yammer, enz.) zijn toegewezen en worden beheerd op een andere manier dan SaaS-toepassingen van derden of andere toepassingen die u met Azure AD integreert voor eenmalige aanmelding.
+Micro soft-toepassingen (zoals Exchange, share point, Yammer, enz.) zijn toegewezen en worden beheerd op een andere manier dan SaaS-toepassingen van derden of andere toepassingen die u met Azure AD integreert voor eenmalige aanmelding.
 
 Er zijn drie belang rijke manieren waarop een gebruiker toegang kan krijgen tot een door micro soft gepubliceerde toepassing.
 
--   Voor toepassingen in Office 365 of andere betaalde suites, krijgen gebruikers toegang via **licentie toewijzing** rechtstreeks aan hun gebruikers account, of via een groep via onze toewijzing van licentie toewijzingen op basis van groepen.
+-   Voor toepassingen in de Microsoft 365 of andere betaalde suites, krijgen gebruikers toegang via **licentie toewijzing** rechtstreeks aan hun gebruikers account, of via een groep via onze toewijzing van licentie toewijzingen op basis van groepen.
 
 -   Voor toepassingen die door micro soft of een derde partij gratis worden gepubliceerd voor iedereen die ze wil gebruiken, kunnen gebruikers toegang krijgen via toestemming van de **gebruiker**. Dit betekent dat ze zich bij de toepassing aanmelden met hun Azure AD-werk-of school account en toegang hebben tot een beperkt aantal gegevens op hun account.
 
@@ -61,7 +61,7 @@ Hieronder volgen enkele veelvoorkomende problemen die mensen uitvoeren wanneer h
 
   * Zorg ervoor dat het **account van de gebruiker bestaat** in azure Active Directory. [Controleren of een gebruikers account bestaat in Azure Active Directory](#problems-with-the-users-account)
 
-  * Zorg ervoor dat het gebruikers account is **ingeschakeld** voor aanmeldingen. [Controleer de account status van een gebruiker](#problems-with-the-users-account)
+  * Zorg ervoor dat het gebruikers account is **ingeschakeld** voor aanmeldingen. [De account status van een gebruiker controleren](#problems-with-the-users-account)
 
   * Zorg ervoor dat het wacht woord van de gebruiker **niet is verlopen of is verg eten.** [Het wacht woord van een gebruiker opnieuw instellen](#reset-a-users-password) of [selfservice voor wachtwoord herstel inschakelen](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -438,7 +438,7 @@ Eén beleid voor voorwaardelijke toegang controleren of valideren:
 7. Controleer of er geen specifieke voor waarden, toewijzingen of andere instellingen zijn die gebruikers toegang kunnen blok keren.
 
    >[!NOTE]
-   >U kunt dit beleid tijdelijk uitschakelen om ervoor te zorgen dat de aanmeldingen niet worden beïnvloed. Als u dit wilt doen, stelt u de schakel optie voor het **inschakelen van beleid** in op **Nee** en klikt u op de knop **Opslaan** .
+   >U kunt dit beleid tijdelijk uitschakelen om te controleren of het geen invloed heeft op aanmeldingen. Als u dit wilt doen, stelt u de schakel optie voor het **inschakelen van beleid** in op **Nee** en klikt u op de knop **Opslaan** .
    >
    >
 
@@ -470,7 +470,7 @@ Controleren of valideren van het momenteel geconfigureerde beleid voor voorwaard
 9.  Controleer of er geen specifieke voor waarden, toewijzingen of andere instellingen zijn die gebruikers toegang kunnen blok keren.
 
      >[!NOTE]
-     >U kunt dit beleid tijdelijk uitschakelen om ervoor te zorgen dat de aanmeldingen niet worden beïnvloed. Als u dit wilt doen, stelt u de schakel optie voor het **inschakelen van beleid** in op **Nee** en klikt u op de knop **Opslaan** .
+     >U kunt dit beleid tijdelijk uitschakelen om te controleren of het geen invloed heeft op aanmeldingen. Als u dit wilt doen, stelt u de schakel optie voor het **inschakelen van beleid** in op **Nee** en klikt u op de knop **Opslaan** .
      >
      >
 

@@ -1,77 +1,133 @@
 ---
-title: 'Quickstart: Apps registreren bij het Microsoft Identity Platform | Azure'
+title: 'Quickstart: Een app registreren in het Microsoft Identity Platform | Azure'
 description: In deze quickstart leert u hoe u een toepassing kunt registreren met het Microsoft Identity Platform.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/12/2020
-ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115353"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436700"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform
 
-In deze quickstart registreert u een toepassing met behulp van de ervaring **App-registraties** in de Azure Portal. 
+In deze quickstart registreert u een app in de Azure-portal, zodat het Microsoft Identity Platform verificatie- en autorisatieservices kan bieden aan uw toepassing en de gebruikers ervan.
 
-Uw app wordt geïntegreerd met het Microsoft Identity Platform door deze te registreren bij een Azure Active Directory-tenant. Enterprise-ontwikkelaars en SaaS-providers (software-as-a-service) kunnen commerciële cloudservices of Line-Of-Business-toepassingen ontwikkelen die kunnen worden geïntegreerd met Microsoft Identity Platform. Integratie biedt beveiligde aanmelding en autorisatie voor dergelijke services.
+Elke toepassing waarvoor via het Microsoft Identity Platform IAM (Identity and Access Management) moet worden uitgevoerd, moet zijn geregistreerd. Of het nu gaat om een clienttoepassing, zoals een web-app of mobiele app, of om een web-API die een client-app ondersteunt, als u de toepassing registreert brengt u een vertrouwensrelatie tot stand tussen de toepassing en de id-provider, het Microsoft Identity Platform.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* Een [Microsoft Azure Active Directory-tenant](quickstart-create-new-tenant.md).
+* Een Azure-account met een actief abonnement - [gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Voltooiing van [quickstart: Een tenant instellen](quickstart-create-new-tenant.md)
 
-## <a name="register-a-new-application-using-the-azure-portal"></a>Een nieuwe toepassing registreren via de Azure Portal
+## <a name="register-an-application"></a>Een toepassing registreren
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek. Stel de portalsessie in op de gewenste Azure AD-tenant.
-1. Zoek en selecteer de optie **Azure Active Directory**. Selecteer **App-registraties** onder **Beheren**.
-1. Selecteer **Nieuwe registratie**.
-1. Voer in **Een toepassing registreren** een zinvolle toepassingsnaam in om weer te geven voor gebruikers.
-1. Geef als volgt op wie de toepassing kan gebruiken:
+Het registreren van uw toepassing brengt een vertrouwensrelatie tot stand tussen uw app en het Microsoft Identity Platform. De vertrouwensrelatie heeft één richting: uw app vertrouwt het Microsoft Identity Platform, en niet andersom.
+
+Volg deze stappen om de app-registratie te maken:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Als u toegang hebt tot meerdere tenants, gebruikt u het filter **Directory + abonnement** :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: in het bovenste menu om de tenant te selecteren waarin u een toepassing wilt registreren.
+1. Zoek en selecteer de optie **Azure Active Directory**.
+1. Selecteer onder **Beheren** de optie **App-registraties** en vervolgens **Nieuwe registratie**.
+1. Voer een **Naam** in voor de toepassing. Gebruikers van uw app kunnen de naam zien. U kunt deze later wijzigen.
+1. Geef op wie de toepassing kan gebruiken, ook wel aangeduid als de *doelgroep voor aanmelden*.
 
     | Ondersteunde accounttypen | Beschrijving |
     |-------------------------|-------------|
-    | **Alleen accounts in deze organisatiemap** | Selecteer deze optie als u een LOB-toepassing (Line-Of-Business) bouwt. Deze optie is niet beschikbaar als u de toepassing niet in een map registreert.<br><br>Deze optie wordt alleen toegewezen aan Azure AD met één tenant.<br><br>Deze optie is standaard tenzij u de app registreert buiten een map. In gevallen waarbij de app is geregistreerd buiten een map, is de standaardinstelling Azure AD met meerdere tenants en persoonlijke Microsoft-accounts. |
-    | **Accounts in elke organisatiemap** | Selecteer deze optie als u alle zakelijke klanten en onderwijsinstellingen wilt bereiken.<br><br>Deze optie wordt alleen toegewezen aan Azure AD met meerdere tenants.<br><br>Als u de app hebt geregistreerd als een Microsoft Azure AD met één tenant, kunt u deze bijwerken naar Microsoft Azure AD met meerdere tenants en later weer teruggaan naar één tenant op de pagina **Verificatie**. |
-    | **Accounts in elke organisatiemap en persoonlijke Microsoft-accounts** | Selecteer deze optie om de breedste groep klanten te bereiken.<br><br>Deze optie wordt toegewezen aan Azure AD met meerdere tenants en persoonlijke Microsoft-accounts.<br><br>Als u de app hebt geregistreerd als Azure AD met meerdere tenants en persoonlijke Microsoft-accounts, kunt u deze instelling niet wijzigen in de gebruikersinterface. In plaats hiervan moet u de editor voor het toepassingsmanifest gebruiken om de ondersteunde accounttypen te wijzigen. |
+    | **Alleen accounts in deze organisatiemap** | Selecteer deze optie als u een toepassing bouwt die alleen is bedoeld voor gebruikers (of gasten) in *uw* tenant.<br><br>Dit wordt vaak een *LOB*-toepassing (Line-of-Business) genoemd. Dit is een toepassing met **één tenant** in het Microsoft Identity Platform. |
+    | **Accounts in elke organisatiemap** | Selecteer deze optie als u wilt dat gebruikers in *een willekeurige* Azure AD-tenant uw toepassing kunnen gebruiken. Deze optie is geschikt als u bijvoorbeeld een SaaS-toepassing (Software-as-a-Service) bouwt die u aan meerdere organisaties wilt leveren.<br><br>Dit wordt een toepassing met **meerdere tenants** genoemd in het Microsoft Identity Platform. |
+    | **Accounts in elke organisatiemap en persoonlijke Microsoft-accounts** | Selecteer deze optie om de breedste groep klanten te bereiken.<br><br>Als u deze optie selecteert registreert u een toepassing met **meerdere tenants** die ook ondersteuning kan bieden voor gebruikers met een persoonlijk **Microsoft-account** (MSA). |
+    | **Persoonlijk Microsoft-account** | Selecteer deze optie als u een toepassing bouwt die alleen is bedoeld voor gebruikers met een persoonlijk Microsoft-account. Persoonlijke Microsoft-accounts inclusief Skype-, Xbox-, Live- en Hotmail-accounts. |
 
-1. Selecteer onder **Omleidings-URI (optioneel)** het type app dat u wilt maken: **Web** of **Openbare client (mobiel en desktop)** . Voer vervolgens de omleidings-URI of antwoord-URL voor uw toepassing in.
+1. Voer niets in bij **Omleidings-URI (optioneel)** . U configureert deze in de volgende sectie.
+1. Selecteer **Registreren** om de initiële app-registratie te voltooien.
 
-    * Geef voor webtoepassingen de basis-URL van de app op. `https://localhost:31544` kan bijvoorbeeld de URL zijn van een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden.
-    * Geef voor openbare clienttoepassingen de URI op die in Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor de toepassing, zoals `myapp://auth`.
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren.":::
 
-    Voor voorbeelden voor webtoepassingen of systeemeigen toepassingen raadpleegt u de quickstarts in [Microsoft Identity Platform](./index.yml).
+Wanneer de registratie is voltooid, wordt in de Azure-portal het deelvenster **Overzicht** van de app-registratie weergegeven. Dit venster bevat de bijbehorende **Toepassings-(client-)id**. Deze waarde wordt ook wel gewoon *client-id* genoemd en is een unieke aanduiding van uw toepassing in het Microsoft Identity Platform.
 
-1. Selecteer **Registreren** wanneer u klaar bent.
+De code van uw toepassing (meestal een verificatiebibliotheek die wordt gebruikt in uw toepassing) gebruikt ook de client-id als één aspect bij het valideren van de beveiligingstokens die worden ontvangen van het Identity Platform.
 
-    ![Geeft het scherm weer voor het registreren van een nieuwe toepassing in het Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration.png)
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Overzicht van de app-registratie.":::
 
-Microsoft Azure AD wijst een unieke toepassing of client-ID toe aan uw app. De portal opent de **Overzicht**pagina van uw toepassing. Als u mogelijkheden wilt toevoegen aan de toepassing, kunt u andere configuratieopties selecteren, waaronder huisstijl, certificaten en geheimen, API-machtigingen, en meer.
+## <a name="add-a-redirect-uri"></a>Een omleidings-URI toevoegen
 
-![Voorbeeld van de overzichtspagina van een zojuist geregistreerde app](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)
+Een omleidings-URI is de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.
+
+In een productiewebtoepassing is de omleidings-URI bijvoorbeeld vaak een openbaar eindpunt waar de app wordt uitgevoerd, zoals `https://contoso.com/auth-response`. Tijdens de ontwikkeling is het gebruikelijk om ook het eindpunt toe te voegen waar u de app lokaal uitvoert, zoals `https://127.0.0.1/auth-response`.
+
+U kunt omleidings-URI's voor uw geregistreerde toepassingen toevoegen en wijzigen door de bijbehorende [platforminstellingen](#configure-platform-settings) te configureren.
+
+### <a name="configure-platform-settings"></a>Platforminstellingen configureren
+
+Instellingen voor elk toepassingstype, waaronder omleidings-URI's, worden geconfigureerd in **Platformconfiguraties** in de Azure-portal. Voor sommige platformen, zoals **Webtoepassingen** en **Toepassingen met één pagina**, moet u handmatig een omleidings-URI opgeven. Voor andere platformen, zoals mobiele toepassingen en desktoptoepassingen, kunt u kiezen uit omleidings-URI's die voor u zijn gegenereerd tijdens het configureren van de andere bijbehorende instellingen.
+
+Als u toepassingsinstellingen wilt configureren op basis van het platform of apparaat, doet u het volgende:
+
+1. Selecteer de toepassing in **App-registraties** in de Azure-portal.
+1. Selecteer **Verificatie** onder **Beheren**.
+1. Selecteer **Een platform toevoegen**onder **Platformconfiguraties**.
+1. Selecteer in **Platforms configureren** de tegel voor uw toepassingstype (platform) om de bijbehorende instellingen te configureren.
+
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Schermopname van het deelvenster Platformconfiguratie in de Azure-portal" border="false":::
+
+    | Platform | Configuratie-instellingen |
+    | -------- | ---------------------- |
+    | **Web** | Voer een **Omleidings-URI** voor de app in, de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.<br/><br/>Selecteer dit platform voor standaardwebtoepassingen die worden uitgevoerd op een server. |
+    | **Toepassing met één pagina** | Voer een **Omleidings-URI** voor de app in, de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.<br/><br/>Selecteer dit platform als u een web-app aan de clientzijde bouwt in JavaScript of met een framework zoals Angular, Vue.js, React.js of Blazor WebAssembly. |
+    | **iOS / macOS** | Voer de **Bundel-id** van de app in. Deze vindt u in XCode in *Info.plist*, of in de instellingen voor de build.<br/><br/>Er wordt een omleidings-URI gegenereerd wanneer u een bundel-id opgeeft. |
+    | **Android** | Voer de **Pakketnaam** van de app in. Deze vindt u in het bestand *AndroidManifest.xml*. Genereer vervolgens de **Hash voor ondertekening** en voer deze in.<br/><br/>Er wordt een omleidings-URI gegenereerd wanneer u deze instellingen opgeeft. |
+    | **Mobiele toepassingen en desktoptoepassingen** | Selecteer een van de **Voorgestelde omleidings-URI's** of geef een **Aangepaste omleidings-URI** op.<br/>Voor desktoptoepassingen kunt u het beste het volgende doen:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Selecteer dit platform voor mobiele toepassingen die niet gebruikmaken van de nieuwste MSAL-versie (Microsoft Authentication Library) of die geen broker gebruiken. Selecteer dit platform ook voor desktoptoepassingen. |
+1. Selecteer **Configureren** om de platformconfiguratie te voltooien.
+
+### <a name="redirect-uri-restrictions"></a>URI-beperkingen omleiden
+
+Er gelden bepaalde beperkingen voor de indeling van de omleidings-URI's die u toevoegt aan een app-registratie. Raadpleeg [Beperkingen en limieten voor omleidings-URI's (antwoord-URL's)](reply-url.md) voor meer informatie over deze beperkingen.
+
+## <a name="add-credentials"></a>Referenties toevoegen
+
+Referenties worden gebruikt voor vertrouwelijke clienttoepassingen die toegang hebben tot een web-API. Voorbeelden van vertrouwelijke clients zijn web-apps, andere web-API's, of service- en daemontoepassingen. Met referenties kan uw toepassing zichzelf verifiëren, waardoor er geen interactie van een gebruiker tijdens runtime nodig is.
+
+U kunt zowel certificaten als clientgeheimen (een tekenreeks) toevoegen als referenties voor de registratie van uw vertrouwelijke client-app.
+
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Schermopname van de Azure-portal, met het deelvenster Certificaten en geheimen in een app-registratie":::
+
+### <a name="add-a-certificate"></a>Een certificaat toevoegen
+
+Certificaten worden ook wel een *openbare sleutel* genoemd en zijn het aanbevolen referentietype, omdat ze een hoger controleniveau bieden dan een clientgeheim.
+
+1. Selecteer de toepassing in **App-registraties** in de Azure-portal.
+1. Selecteer **Certificaten en geheimen** > **Certificaat uploaden**.
+1. Selecteer het bestand dat u wilt uploaden. Dit moet een van de volgende bestandstypen zijn: .cer, .pem, .crt.
+1. Selecteer **Toevoegen**.
+
+### <a name="add-a-client-secret"></a>Een clientgeheim toevoegen
+
+Het clientgeheim, ook wel *toepassingswachtwoord* genoemd, is een tekenreekswaarde die de app kan gebruiken (in plaats van een certificaat) om zichzelf te identificeren. Dit type is het eenvoudigste van de twee referentietypen om te gebruiken, en wordt vaak gebruikt in de ontwikkelfase, maar wordt beschouwd als minder veilig dan een certificaat. Voor toepassingen die worden uitgevoerd in de productieomgeving, kunt u beter certificaten gebruiken.
+
+1. Selecteer de toepassing in **App-registraties** in de Azure-portal.
+1. Selecteer **Certificaten en geheimen** >  **Nieuw clientgeheim**.
+1. Voeg een beschrijving voor uw clientgeheim toe.
+1. Selecteer een duur.
+1. Selecteer **Toevoegen**.
+1. **Noteer de waarde van het geheim** voor gebruik in de code van de clienttoepassing. Als u deze pagina verlaat wordt de waarde *nooit meer weergegeven*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor toegang tot web-API's raadpleegt u [Quickstart: Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
+Clienttoepassingen hebben meestal toegang nodig tot resources in een web-API. Naast het beveiligen van de clienttoepassing met het Microsoft Identity Platform kunt u het platform gebruiken om toegang op basis van machtigingen met een bepaald bereik voor uw web-API te autoriseren.
 
-* Voor meer informatie over de machtigingen raadpleegt u [Machtigingen en toestemming in het eindpunt van het Microsoft Identity Platform](v2-permissions-and-consent.md).
+Ga verder met de volgende quickstart in de reeks om nog een app-registratie te maken voor uw web-API en de bijbehorende bereiken beschikbaar te maken.
 
-* Voor toegang tot web-API's raadpleegt u [Quickstart: Een toepassing configureren om web-API's beschikbaar te maken](quickstart-configure-app-expose-web-apis.md).
-
-* Zie [Quickstart voor informatie over het beheren van ondersteunde accounts: De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md).
-
-* Als u een app wilt bouwen en functionaliteit wilt toevoegen, raadpleegt u de quickstarts in [Microsoft Identity Platform](./index.yml).
-
-* Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
-
-* Zie [Huisstijlrichtlijnen voor apps](howto-add-branding-in-azure-ad-apps.md) voor meer informatie over de huisstijlrichtlijnen die u moet gebruiken bij het ontwikkelen van apps.
+> [!div class="nextstepaction"]
+> [Een toepassing configureren om een web-API beschikbaar te maken](quickstart-configure-app-expose-web-apis.md)
