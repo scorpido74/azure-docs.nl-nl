@@ -7,19 +7,19 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058730"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602282"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Ondersteuning voor het verplaatsen van virtuele Azure-machines tussen Azure-regio's
 
 In dit artikel vindt u een overzicht van de ondersteuning en vereisten bij het verplaatsen van virtuele machines en gerelateerde netwerk bronnen in azure-regio's met behulp van resources.
 
 > [!IMPORTANT]
-> Azure resource-overdrijfing is momenteel beschikbaar als preview-versie.
+> Azure Resource Mover is momenteel in preview.
 
 
 ## <a name="windows-vm-support"></a>Ondersteuning voor Windows-VM'S
@@ -114,6 +114,10 @@ Extensies | Niet ondersteund | Extensies worden niet naar de virtuele machine in
 ## <a name="supported-vm-storage-settings"></a>Ondersteunde VM-opslag instellingen
 
 Deze tabel bevat een overzicht van de ondersteuning voor de Azure VM-besturingssysteem schijf, de gegevens schijf en de tijdelijke schijf. Het is belang rijk om te kijken naar de limieten en doelen van de VM-schijf voor [Linux](../virtual-machines/linux/disk-scalability-targets.md) -en [Windows](../virtual-machines/windows/disk-scalability-targets.md) -vm's om prestatie problemen te voor komen.
+
+> [!NOTE]
+> De grootte van de doel-VM moet gelijk zijn aan of groter zijn dan de bron-VM. De para meters die worden gebruikt voor validatie zijn: aantal gegevens schijven, Nic's aantal, beschik bare Cpu's, geheugen in GB. Als dit niet het geval is, wordt er een fout bericht weer gegeven.
+
 
 **Onderdeel** | **Ondersteuning** | **Details**
 --- | --- | ---

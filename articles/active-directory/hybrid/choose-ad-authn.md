@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279343"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602367"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
@@ -86,7 +86,7 @@ Details over beslissings vragen:
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authenticatie: wacht woord-hash-synchronisatie
 
-* **Moeite**. Voor de synchronisatie van wacht woord-hashes is de minimale inspanning vereist voor de implementatie, het onderhoud en de infra structuur.  Dit inspannings niveau is doorgaans van toepassing op organisaties die alleen hun gebruikers moeten aanmelden bij Office 365, SaaS-apps en andere resources op basis van Azure AD. Wanneer deze functie is ingeschakeld, wordt de synchronisatie van wacht woord-hashes onderdeel van het Azure AD Connect synchronisatie proces en wordt elke twee minuten uitgevoerd.
+* **Moeite**. Voor de synchronisatie van wacht woord-hashes is de minimale inspanning vereist voor de implementatie, het onderhoud en de infra structuur.  Dit inspannings niveau is doorgaans van toepassing op organisaties die hun gebruikers alleen nodig hebben om zich aan te melden bij Microsoft 365, SaaS-apps en andere resources op basis van Azure AD. Wanneer deze functie is ingeschakeld, wordt de synchronisatie van wacht woord-hashes onderdeel van het Azure AD Connect synchronisatie proces en wordt elke twee minuten uitgevoerd.
 
 * **Gebruikers ervaring**. Als u de aanmeld procedure van gebruikers wilt verbeteren, implementeert u naadloze SSO met synchronisatie van wacht woord-hashes. Naadloze SSO elimineert overbodige vragen wanneer gebruikers zijn aangemeld.
 
@@ -203,7 +203,7 @@ Het gebruik of inschakelen van hash-synchronisatie van wacht woord voor de verif
 
 2. **Overleving van on-premises storingen**.  De gevolgen van een on-premises storing als gevolg van een cyber aanval of nood geval kunnen aanzienlijk zijn, variërend van reputatie-brand beschadiging aan een Paralyzed-organisatie die niet kan omgaan met de aanval. Onlangs waren veel organisaties slacht offer van malware-aanvallen, met inbegrip van gerichte Ransomware, waardoor hun on-premises servers niet meer beschikbaar zijn. Wanneer micro soft klanten helpt bij het oplossen van dergelijke aanvallen, ziet hij twee categorieën organisaties:
 
-   * Organisaties die eerder ook de validatie van wacht woord-hashes op federatieve of Pass Through-verificatie hebben ingeschakeld, hebben hun primaire authenticatie methode gewijzigd om vervolgens wachtwoord-hash-synchronisatie te gebruiken. Ze zijn binnen een paar uur weer online. Door toegang tot e-mail via Office 365 te gebruiken, hebben ze gewerkt om problemen op te lossen en toegang te krijgen tot andere cloud-gebaseerde workloads.
+   * Organisaties die eerder ook de validatie van wacht woord-hashes op federatieve of Pass Through-verificatie hebben ingeschakeld, hebben hun primaire authenticatie methode gewijzigd om vervolgens wachtwoord-hash-synchronisatie te gebruiken. Ze zijn binnen een paar uur weer online. Door toegang tot e-mail via Microsoft 365 te gebruiken, hebben ze gewerkt om problemen op te lossen en om toegang te krijgen tot andere cloud-gebaseerde workloads.
 
    * Organisaties waarvoor niet eerder wachtwoord hash-synchronisatie is ingeschakeld, moesten een niet-vertrouwde externe e-mail systeem voor consumenten gebruiken voor communicatie om problemen op te lossen. In dergelijke gevallen hebben ze weken nodig om hun on-premises identiteits infrastructuur te herstellen voordat gebruikers zich weer kunnen aanmelden bij apps in de Cloud.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049261"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601585"
 ---
 # <a name="conditional-access-block-access"></a>Voorwaardelijke toegang: toegang blok keren
 
@@ -40,7 +40,7 @@ Beleids regels voor voorwaardelijke toegang zijn krachtige hulp middelen. u word
 
 De volgende stappen helpen u bij het maken van beleid voor voorwaardelijke toegang om de toegang tot alle apps, met uitzonde ring van [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , te blok keren als gebruikers zich niet in een vertrouwd netwerk bevinden. Deze beleids regels worden in de [modus alleen rapport](howto-conditional-access-insights-reporting.md) gezet om te beginnen, zodat beheerders kunnen bepalen welke invloed ze hebben op bestaande gebruikers. Wanneer beheerders weten dat de beleids regels **van**toepassing zijn, kunnen ze overschakelen naar.
 
-Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Office 365-toepassingen als dat niet op een vertrouwde locatie is.
+Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Microsoft 365-toepassingen als dat niet op een vertrouwde locatie is.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
@@ -64,7 +64,7 @@ Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Offi
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
 1. Selecteer **maken** om uw beleid in te stellen.
 
-Hieronder wordt een tweede beleid gemaakt om multi-factor Authentication of een compatibel apparaat te vereisen voor gebruikers van Office 365.
+Hieronder wordt een tweede beleid gemaakt om multi-factor Authentication of een compatibel apparaat te vereisen voor gebruikers van Microsoft 365.
 
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.

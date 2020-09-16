@@ -1,6 +1,6 @@
 ---
 title: Een bedrijfs toepassing verbergen voor gebruikers ervaring in azure AD
-description: Een bedrijfs-toepassing verbergen voor gebruikers ervaring in Azure Active Directory toegangs Vensters of Office 365-starters.
+description: Het verbergen van een bedrijfs toepassing op basis van de gebruikers ervaring in Azure Active Directory toegangs Vensters of Microsoft 365 starters.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,26 +12,26 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367696"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601136"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Zakelijke toepassingen verbergen voor eind gebruikers in Azure Active Directory
 
-Instructies voor het verbergen van toepassingen van het deel venster MyApps of Office 365 Launcher van eind gebruikers. Wanneer een toepassing wordt verborgen, hebben gebruikers nog steeds machtigingen voor de toepassing. 
+Instructies voor het verbergen van toepassingen van het deel venster MyApps of Microsoft 365 Launcher van eind gebruikers. Wanneer een toepassing wordt verborgen, hebben gebruikers nog steeds machtigingen voor de toepassing. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-De bevoegdheden van de toepassings beheerder zijn vereist voor het verbergen van een toepassing uit het deel venster MyApps en Office 365 Launcher.
+De bevoegdheden van de toepassings beheerder zijn vereist om een toepassing te verbergen in het deel venster MyApps en Microsoft 365 Launcher.
 
-Globale beheerders bevoegdheden zijn vereist om alle Office 365-toepassingen te verbergen.
+Globale beheerders bevoegdheden zijn vereist om alle Microsoft 365-toepassingen te verbergen.
 
 
 ## <a name="hide-an-application-from-the-end-user"></a>Een toepassing verbergen voor de eind gebruiker
-Voer de volgende stappen uit om een toepassing te verbergen in het MyApps-deel venster en het start programma voor Office 365 Application.
+Voer de volgende stappen uit om een toepassing te verbergen in het deel venster MyApps en Microsoft 365 start programma voor toepassingen.
 
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
@@ -59,13 +59,13 @@ $tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-toepassingen verbergen in het deel venster MyApps
+## <a name="hide-microsoft-365-applications-from-the-myapps-panel"></a>Microsoft 365 toepassingen verbergen in het deel venster MyApps
 
-Gebruik de volgende stappen om alle Office 365-toepassingen te verbergen in het deel venster MyApps. De toepassingen zijn nog steeds zichtbaar in de Office 365-Portal.
+Gebruik de volgende stappen om alle Microsoft 365 toepassingen te verbergen in het deel venster MyApps. De toepassingen zijn nog steeds zichtbaar in de Office 365-Portal.
 
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
-3.  Selecteer **gebruikers**.
+3.  Selecteer **Gebruikers**.
 4.  Selecteer **Gebruikersinstellingen**.
 5.  Onder **bedrijfs toepassingen**klikt **u op beheren hoe eind gebruikers hun toepassingen starten en weer geven.**
 6.  Voor **gebruikers kunnen alleen office 365-apps in de office 365-Portal zien**, klikt u op **Ja**.

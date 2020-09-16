@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948399"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602061"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -55,13 +55,13 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 share point online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Office Sway
 - Outlook-groepen
-- Power BI-service
+- Power BI Service
 - Project Online
 - Skype voor Bedrijven Online
 - Virtueel particulier netwerk (VPN)
@@ -69,7 +69,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 
 ### <a name="office-365-preview"></a>Office 365 (preview-versie)
 
-Office 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Office 365 Cloud Services zijn diep geïntegreerd om soepele en samen werkende ervaringen te garanderen. Deze integratie kan leiden tot Verwar ring bij het maken van beleid als sommige apps, zoals micro soft-teams, afhankelijk zijn van andere onderdelen, zoals share point of Exchange.
+Microsoft 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Microsoft 365 Cloud Services zijn nauw geïntegreerd om te zorgen voor soepele en samenwerkings ervaring. Deze integratie kan leiden tot Verwar ring bij het maken van beleid als sommige apps, zoals micro soft-teams, afhankelijk zijn van andere onderdelen, zoals share point of Exchange.
 
 De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps te richten om problemen met [service afhankelijkheden](service-dependencies.md)te voor komen. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
 
@@ -82,10 +82,10 @@ Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 share point online
-   - Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 Search Service
+   - Yammer
    - Office Delve
    - Office Online
    - Office.com

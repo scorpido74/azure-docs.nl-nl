@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318285"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602666"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 - De sleutel moet de *ingeschakelde* status hebben.
 
 - Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen (. pfx,. byok of. back-up).
+
+> [!NOTE]
+> Azure SQL ondersteunt nu het gebruik van een RSA-sleutel die is opgeslagen in een beheerde HSM als TDE-Protector. Deze functie is beschikbaar als **open bare preview**. Azure Key Vault Managed HSM is een volledig beheerde, Maxi maal beschik bare, door standaarden compatibele Cloud service met één Tenant waarmee u cryptografische sleutels voor uw Cloud toepassingen kunt beveiligen met behulp van FIPS 140-2 level 3 gevalideerd Hsm's. Meer informatie over [beheerde hsm's](https://aka.ms/mhsm).
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Aanbevelingen voor het configureren van door de klant beheerde TDE
 

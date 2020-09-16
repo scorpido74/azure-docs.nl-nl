@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185914"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601651"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migratie van klassiek beleid voor voorwaardelijke toegang
 
@@ -73,9 +73,9 @@ De volgende aspecten zijn belang rijk in de context van een beleids consolidatie
    - Combi neer meerdere voor waarden als dat nodig is voor uw scenario. 
    - Selecteer verschillende toekennings vereisten als toegangs beheer en combi neer deze met een logische *of* (een van de geselecteerde besturings elementen vereisen) of met een logische *en* (alle geselecteerde besturings elementen vereisen).
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-Als u klassiek beleid voor **Office 365 Exchange Online** wilt migreren dat **Exchange Active Sync** als client-apps voor waarde bevat, kunt u deze mogelijk niet samen voegen tot één nieuw beleid. 
+Als u het klassieke beleid voor **Exchange Online** wilt migreren met **Exchange Active Sync** als client-apps, kunt u deze mogelijk niet samen voegen tot één nieuw beleid. 
 
 Dit is bijvoorbeeld het geval als u alle typen client-Apps wilt ondersteunen. In een nieuw beleid met **Exchange Active Sync** als voor waarde voor client-apps, kunt u geen andere client-apps selecteren.
 
@@ -89,7 +89,7 @@ Als u een nieuw beleid hebt met **Exchange Active Sync** als voor waarde voor cl
 
 ![Voor waarden voor voorwaardelijke toegang](./media/policy-migration/16.png)
  
-Op apps gebaseerd klassiek beleid voor Office 365 Exchange Online met **Exchange Active Sync** als voor waarde client-apps **ondersteunde** en niet- **ondersteunde** platformen toestaan. Hoewel u geen individuele platformen kunt configureren in een gerelateerd nieuw beleid, kunt u de ondersteuning beperken tot alleen [ondersteunde apparaat platforms](concept-conditional-access-conditions.md#device-platforms) . 
+Op apps gebaseerd klassiek beleid voor Exchange Online met **Exchange Active Sync** als voor waarde client-apps **ondersteunde** en niet- **ondersteunde** platformen toestaan. Hoewel u geen individuele platformen kunt configureren in een gerelateerd nieuw beleid, kunt u de ondersteuning beperken tot alleen [ondersteunde apparaat platforms](concept-conditional-access-conditions.md#device-platforms) . 
 
 ![Voorwaardelijke toegang Exchange ActiveSync selecteren](./media/policy-migration/65.png)
 

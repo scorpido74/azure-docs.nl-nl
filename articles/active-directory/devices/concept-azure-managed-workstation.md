@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672662"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601381"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -64,7 +64,7 @@ Alle gebruikers en Opera tors profiteren van het gebruik van een beveiligd werk 
 * Zeer gevoelig werk station, zoals een snelle betalings Terminal
 * Handels geheimen voor werk stations verwerken
 
-Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Voor meer informatie raadpleegt u de [implementatie handleiding](../fundamentals/active-directory-deployment-checklist-p2.md)voor de Azure Active Directory-functie, [Office 365-wegwijzer](https://aka.ms/o365secroadmap)en de beveiliging van de [uitgebreide toegang](https://aka.ms/sparoadmap).
+Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Zie voor meer informatie de [Azure Active Directory functie-implementatie handleiding](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plan](https://aka.ms/o365secroadmap)en het [beveiligen van een privileged Access-schema](https://aka.ms/sparoadmap)).
 
 ## <a name="why-use-dedicated-workstations"></a>Waarom speciale werk stations gebruiken?
 
@@ -73,7 +73,7 @@ Hoewel het mogelijk is om beveiliging toe te voegen aan een bestaand apparaat, i
 Een groeiend aantal aanvals vectoren via e-mail en surfen maakt het steeds lastig om ervoor te zorgen dat een apparaat kan worden vertrouwd. In deze hand leiding wordt ervan uitgegaan dat een toegewezen werk station is geïsoleerd van de standaard productiviteit, het surfen en e-mail. Het verwijderen van productiviteit, surfen op internet en e-mail van een apparaat kan een negatieve invloed hebben op de productiviteit. Deze beveiliging is echter meestal acceptabel voor scenario's waarbij de taak taken niet expliciet vereist zijn en het risico van een beveiligings incident is hoog.
 
 > [!NOTE]
-> Websurfen hier verwijst naar algemene toegang tot wille keurige websites die een activiteit met een hoog risico kunnen zijn. Deze Browse wijkt af van het gebruik van een webbrowser om toegang te krijgen tot een klein aantal bekende administratieve websites voor services zoals Azure, Office 365, andere cloud providers en SaaS-toepassingen.
+> Websurfen hier verwijst naar algemene toegang tot wille keurige websites die een activiteit met een hoog risico kunnen zijn. Deze Browse wijkt af van het gebruik van een webbrowser om toegang te krijgen tot een klein aantal bekende administratieve websites voor services zoals Azure, Microsoft 365, andere cloud providers en SaaS-toepassingen.
 
 Containment-strategieën verg Roten de beveiliging door het aantal en type besturings elementen te verhogen waarmee een aanvaller geen toegang kan krijgen tot gevoelige assets. Het model dat in dit artikel wordt beschreven, maakt gebruik van een gelaagd bevoegdheids ontwerp en beperkt beheerders bevoegdheden voor specifieke apparaten.
 

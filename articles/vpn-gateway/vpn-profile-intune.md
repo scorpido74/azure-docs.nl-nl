@@ -5,14 +5,14 @@ description: Meer informatie over het maken van een aangepast intune-profiel voo
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024346"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602190"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Een intune-profiel maken voor het implementeren van VPN-client profielen
 
@@ -54,17 +54,7 @@ Zie het artikel over [VPNV2 CSP](https://docs.microsoft.com/windows/client-manag
     </VPNProfile>
    ```
 1. Wijzig de vermelding tussen ```<ServerUrlList>``` en ```</ServerUrlList>``` met de vermelding van het gedownloade profiel (azurevpnconfig.xml). Wijzig de FQDN van ' TrustedNetworkDetection ' zodat deze overeenkomt met uw omgeving.
-1. Open het door Azure gedownloade Profiel (azurevpnconfig.xml) en kopieer de inhoud naar het klem bord door de tekst te markeren en op <ctrl> + C te drukken. Kopieer alles tussen de volgende AzVpnProfile-regels, maar Kopieer de AzVpnProfile-regels zelf niet:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. Open het door Azure gedownloade Profiel (azurevpnconfig.xml) en kopieer de volledige inhoud naar het klem bord door de tekst te markeren en op CTRL + C te drukken. 
 1. Plak de gekopieerde tekst uit de vorige Step Into het bestand dat u in stap 2 hebt gemaakt tussen de ```<CustomConfiguration>  </CustomConfiguration>``` Tags. Sla het bestand op met een XML-extensie.
 1. Noteer de waarde in de ```<name>  </name>``` Tags. Dit is de naam van het profiel. U hebt deze naam nodig bij het maken van het profiel in intune. Sluit het bestand en onthoud de locatie waar het wordt opgeslagen.
 
@@ -87,7 +77,7 @@ In deze sectie maakt u een Microsoft Intune profiel met aangepaste instellingen.
    Selecteer het mappictogram en kies het bestand dat u in stap 6 in de [XML-](#xml) stappen hebt opgeslagen. Selecteer **Toevoegen**.
 
    :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Configuratie-instellingen" lightbox="./media/create-profile-intune/configuration-settings.png":::
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer onder **toewijzingen**de groep waarnaar u de configuratie wilt pushen. Selecteer vervolgens **Volgende**.
 1. Regels voor toepasselijkheid zijn optioneel. Definieer eventuele regels, indien nodig, en selecteer **volgende**.
 1. Selecteer op de pagina **controleren en maken** de optie **maken**.

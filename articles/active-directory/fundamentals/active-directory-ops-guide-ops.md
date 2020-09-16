@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321953"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601301"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Naslag informatie over Azure Active Directory algemene bedienings handleiding
 
@@ -125,9 +125,9 @@ Als uw organisatie momenteel geen programma heeft om wijzigingen in identiteits 
 
 ### <a name="notifications"></a>Meldingen
 
-Micro soft stuurt e-mail berichten naar beheerders om verschillende wijzigingen in de service te melden, configuratie-updates die nodig zijn en fouten waarvoor beheerders rechten nodig zijn. Het is belang rijk dat klanten de e-mail adressen van meldingen instellen, zodat er meldingen worden verzonden naar de juiste team leden die alle meldingen kunnen erkennen en hierop reageren. U wordt aangeraden meerdere ontvangers toe te voegen aan het [Office 365-berichten centrum](/office365/admin/manage/message-center) en de meldingen (inclusief Azure AD Connect Health meldingen) te verzenden naar een distributie lijst of een gedeeld postvak. Als u slechts één globaal beheerders account met een e-mail adres hebt, moet u ervoor zorgen dat u ten minste twee accounts met e-mail mogelijkheden configureert.
+Micro soft stuurt e-mail berichten naar beheerders om verschillende wijzigingen in de service te melden, configuratie-updates die nodig zijn en fouten waarvoor beheerders rechten nodig zijn. Het is belang rijk dat klanten de e-mail adressen van meldingen instellen, zodat er meldingen worden verzonden naar de juiste team leden die alle meldingen kunnen erkennen en hierop reageren. We raden u aan meerdere ontvangers toe te voegen aan het [berichten centrum](/office365/admin/manage/message-center) en de meldingen (inclusief Azure AD Connect Health meldingen) te verzenden naar een distributie lijst of een gedeeld postvak. Als u slechts één globaal beheerders account met een e-mail adres hebt, moet u ervoor zorgen dat u ten minste twee accounts met e-mail mogelijkheden configureert.
 
-Er zijn twee ' from ' adressen die worden gebruikt door Azure AD: <o365mc@email2.microsoft.com> , die Office 365 Message Center-meldingen verzendt; en <azure-noreply@microsoft.com> , waarmee meldingen worden verzonden die betrekking hebben op:
+Er zijn twee ' from '-adressen die worden gebruikt door Azure AD: <o365mc@email2.microsoft.com> , die meldingen in het berichten centrum verzendt; en <azure-noreply@microsoft.com> , waarmee meldingen worden verzonden die betrekking hebben op:
 
 - [Azure AD-toegangs beoordelingen](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health (Engelstalig)](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Raadpleeg de volgende tabel voor meer informatie over het type meldingen dat wor
 | Meldings bron | Wat wordt verzonden | Waar u moet controleren |
 |:-|:-|:-|
 | Technische contact persoon | Synchronisatie fouten | Azure Portal-Blade-eigenschappen |
-| Berichtencentrum van Office 365 | Meldingen over incidenten en degradatie van identiteits Services en O365 back-upservices | Office-Portal |
+| Berichten centrum | Meldingen over incidenten en degradatie van identiteits Services en Microsoft 365 back-end-services | Office-Portal |
 | Overzicht van identiteits beveiliging wekelijks | Samen vatting van identiteits beveiliging | Azure AD Identity Protection Blade |
 | Azure AD Connect Health (Engelstalig) | Waarschuwings meldingen | Azure Portal-Azure AD Connect Health Blade |
 | Meldingen voor zakelijke toepassingen | Meldingen wanneer certificaten bijna verlopen en inrichtings fouten bevatten | Azure Portal-Blade bedrijfs toepassing (elke app heeft een eigen instelling voor het e-mail adres) |
 
 #### <a name="notifications-recommended-reading"></a>Meldingen aanbevolen lezen
 
-- [Wijzig het adres, de technische contact persoon van uw organisatie en meer-Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [Het adres, de technische contact persoon en meer van uw organisatie wijzigen](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Operationele surface area
 

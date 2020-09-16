@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2a322c26df0f4fc388ded394f5a65de51f01ca45
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5a71476db6f57841a0057de5b8c95f07ef5d90ad
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664558"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603081"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Een Azure Machine Learning-trainings omgeving beveiligen met virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,6 +180,9 @@ U kunt dit op twee manieren doen:
     Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__. In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
 
     ![Voor beeld van een UDR voor een adres voorvoegsel](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+    > [!IMPORTANT]
+    > De IP-adressen kunnen na verloop van tijd veranderen.
 
     Naast de Udr's die u definieert, moet uitgaand verkeer naar Azure Storage worden toegestaan via uw on-premises netwerk apparaat. De Url's voor dit verkeer zijn met name in de volgende formulieren: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` en `<account>.blob.core.windows.net` . 
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068640"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601466"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -40,7 +40,7 @@ In azure AD vertegenwoordigt een **beleids** object een set regels die worden af
 
 Een claim toewijzings beleid is een type **beleids** object dat de claims wijzigt die worden verzonden in tokens die zijn uitgegeven voor specifieke toepassingen.
 
-## <a name="claim-sets"></a>Claim sets
+## <a name="claim-sets"></a>Claimsets
 
 Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in tokens.
 
@@ -301,7 +301,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | CompanyName| Organisatienaam |
 | Gebruiker | streetaddress | Adres |
 | Gebruiker | postalcode | Postcode |
-| Gebruiker | preferredlanguange | Voorkeurstaal |
+| Gebruiker | preferredlanguage | Voorkeurstaal |
 | Gebruiker | onpremisesuserprincipalname | On-premises UPN |*
 | Gebruiker | mailNickname | E-mail bijnaam |
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |

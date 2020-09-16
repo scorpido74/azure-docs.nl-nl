@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527038"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602031"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -36,21 +36,18 @@ Wanneer u functies zoals Azure Multi-Factor Authentication in uw organisatie imp
 
 De volgende tabel bevat een overzicht van de beveiligings overwegingen voor de beschik bare verificatie methoden. Beschik baarheid is een indicatie dat de gebruiker de verificatie methode kan gebruiken, en niet van de beschik baarheid van de service in azure AD:
 
-| Verificatiemethode       | Beveiliging | Bruikbaarheid | Phisable? | Kanaal bestekbaar? | Beschikbaarheid |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2-beveiligings sleutel          | Hoog     | Hoog      | Nee        | Nee                | Hoog         |
-| Microsoft Authenticator-app | Hoog     | Hoog      | Yes       | Nee <sup>1</sup>   | Hoog         |
-| Windows Hello voor Bedrijven  | Hoog     | Hoog      | Nee        | Nee                | Hoog         |
-| OATH-tokens voor hardware        | Gemiddeld   | Gemiddeld    | Ja       | Nee                | Hoog         |
-| Software OATH-tokens        | Gemiddeld   | Gemiddeld    | Yes       | Geen <sup>2</sup>   | Hoog         |
-| Sms                         | Middelgroot   | Hoog      | Ja       | Ja               | Middelgroot       |
-| Spraak                       | Gemiddeld   | Gemiddeld    | Ja       | Ja               | Middelgroot       |
-| Wachtwoord                    | Laag      | Hoog      | Ja       | Ja               | Hoog         |
+| Verificatiemethode          | Beveiliging | Bruikbaarheid | Beschikbaarheid |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello voor Bedrijven     | Hoog     | Hoog      | Hoog         |
+| Microsoft Authenticator-app    | Hoog     | Hoog      | Hoog         |
+| FIDO2-beveiligings sleutel (preview-versie)   | Hoog     | Hoog      | Hoog         |
+| OATH-hardware-tokens (preview-versie) | Gemiddeld   | Gemiddeld    | Hoog         |
+| OATH-software tokens           | Gemiddeld   | Gemiddeld    | Hoog         |
+| Sms                            | Middelgroot   | Hoog      | Gemiddeld       |
+| Spraak                          | Gemiddeld   | Gemiddeld    | Gemiddeld       |
+| Wachtwoord                       | Laag      | Hoog      | Hoog         |
 
-<sup>1</sup> in de modus voor wacht woord, wanneer de app is geregistreerd op een specifiek apparaat<br />
-<sup>2</sup> aangenomen dat de app een pincode van het apparaat vereist om te ontgrendelen
-
-Zie [Channel-Jack en real-time phishing](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)voor meer informatie over beveiligings problemen en aanvals vectoren.
+Zie voor meer informatie over beveiliging [verificatie beveiligings problemen en aanvals vectoren](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
 
 > [!TIP]
 > Voor flexibiliteit en bruikbaarheid raden we u aan de Microsoft Authenticator-app te gebruiken. Deze verificatie methode biedt de beste gebruikers ervaring en meerdere modi, zoals wacht woorden, MFA-push meldingen en OATH-codes.
@@ -63,9 +60,9 @@ De volgende tabel geeft een overzicht van de wijze waarop een verificatie method
 
 | Methode                         | Primaire authenticatie | Secundaire verificatie  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2-beveiligings sleutels (preview-versie)  | Yes                    | MFA                       |
-| Microsoft Authenticator-app    | Ja (preview-versie)          | MFA en SSPR              |
 | Windows Hello voor Bedrijven     | Yes                    | MFA                       |
+| Microsoft Authenticator-app    | Ja (preview-versie)          | MFA en SSPR              |
+| FIDO2-beveiligings sleutel (preview-versie)   | Yes                    | MFA                       |
 | OATH-hardware-tokens (preview-versie) | No                     | MFA                       |
 | OATH-software tokens           | No                     | MFA                       |
 | Sms                            | Ja (preview-versie)          | MFA en SSPR              |
@@ -76,11 +73,11 @@ Al deze verificatie methoden kunnen worden geconfigureerd in de Azure Portal en 
 
 Raadpleeg de volgende afzonderlijke conceptuele artikelen voor meer informatie over de werking van elke verificatie methode:
 
-* [FIDO2-beveiligings sleutels (preview-versie)](concept-authentication-passwordless.md#fido2-security-keys)
-* [Microsoft Authenticator-app](concept-authentication-authenticator-app.md)
 * [Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [OATH-software tokens](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Microsoft Authenticator-app](concept-authentication-authenticator-app.md)
+* [FIDO2-beveiligings sleutel (preview-versie)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH-hardware-tokens (preview-versie)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [OATH-software tokens](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [-aanmelding (preview-versie)](howto-authentication-sms-signin.md) en [verificatie](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Verificatie van spraak oproep](concept-authentication-phone-options.md)
 * Wachtwoord

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042476"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601823"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -149,27 +149,27 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Client-apps | Doel service | Platform |
 | --- | --- | --- |
 | Dynamics CRM-app | Dynamics CRM | Windows 10, Windows 8,1, iOS en Android |
-| E-mail/agenda/personen-app, Outlook 2016, Outlook 2013 (met moderne verificatie)| Office 365 Exchange Online | Windows 10 |
+| E-mail/agenda/personen-app, Outlook 2016, Outlook 2013 (met moderne verificatie)| Exchange Online | Windows 10 |
 | MFA en locatie beleid voor apps. Beleids regels op basis van apparaten worden niet ondersteund.| Alle apps app service | Android en iOS |
 | Micro soft teams-Services: Hiermee beheert u alle services die micro soft-teams en alle client-apps ondersteunen-Windows Desktop, iOS, Android, WP en web client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android en macOS |
-| Office 2016-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | Office 365 share point online | Windows 8,1, Windows 7 |
-| Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | Office 365 share point online | Windows 10 |
-| Office 2016 (alleen Word, Excel, Power Point, OneNote). | Office 365 share point online | macOS |
-| Office 2019| Office 365 share point online | Windows 10, macOS |
-| Mobiele Office-apps | Office 365 share point online | Android, iOS |
-| Office Yammer-app | Office 365 Yammer | Windows 10, iOS, Android |
-| Outlook 2019 | Office 365 share point online | Windows 10, macOS |
-| Outlook 2016 (Office voor macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
-| Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
+| Office 2016-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | SharePoint | Windows 8,1, Windows 7 |
+| Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), [OneDrive Sync-Client](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (alleen Word, Excel, Power Point, OneNote). | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10, macOS |
+| Mobiele Office-apps | SharePoint | Android, iOS |
+| Office Yammer-app | Yammer | Windows 10, iOS, Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (Office voor macOS) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Exchange Online | Windows 8,1, Windows 7 |
+| Mobiele Outlook-app | Exchange Online | Android, iOS |
 | Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor Bedrijven | Office 365 Exchange Online| Android, iOS |
+| Skype voor Bedrijven | Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients
 
 - Organisaties kunnen alleen Exchange ActiveSync-clients selecteren wanneer ze beleid toewijzen aan gebruikers of groepen. Als u **alle gebruikers**selecteert, worden alle **gast-en externe gebruikers**of **Directory-rollen** door alle gebruikers geblokkeerd.
-- Bij het maken van een beleid dat is toegewezen aan Exchange ActiveSync-clients, moet **Office 365 Exchange Online** de enige Cloud toepassing zijn die aan het beleid is toegewezen. 
+- Bij het maken van een beleid dat is toegewezen aan Exchange ActiveSync-clients, moet **Exchange Online** de enige Cloud toepassing zijn die aan het beleid is toegewezen. 
 - Organisaties kunnen het bereik van dit beleid beperken tot specifieke platformen met behulp van de voor waarde **apparaat platforms** .
 
 Als voor het toegangs beheer dat aan het beleid **is toegewezen, goedgekeurde client-app is vereist**, wordt de gebruiker omgeleid om de Outlook Mobile client te installeren en te gebruiken. Als **multi-factor Authentication** is vereist, worden betrokken gebruikers geblokkeerd omdat basis verificatie geen ondersteuning biedt voor multi-factor Authentication.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321715"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601361"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -95,7 +95,7 @@ Wacht woorden zijn niet veilig genoeg om te voor komen dat ongeldige actors toeg
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Tolerantie van on-premises storings authenticatie
 
-Naast de voor delen van eenvoud en het inschakelen van lekkende referentie detectie, hebben Azure AD Password Hash Sync (PHS) en Azure MFA gebruikers toegang tot SaaS-toepassingen en Office 365 ondanks lokale storingen als gevolg van Cyber aanvallen zoals [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). Het is ook mogelijk om PHS in te scha kelen in combi natie met Federatie. Als u PHS inschakelt, kan de verificatie worden teruggevallen wanneer er geen Federatie services beschikbaar zijn.
+Naast de voor delen van eenvoud en het inschakelen van lekkende referentie detectie, hebben Azure AD Password Hash Sync (PHS) en Azure MFA gebruikers toegang tot SaaS-toepassingen en Microsoft 365 ondanks de on-premises storingen als gevolg van Cyber aanvallen zoals [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/). Het is ook mogelijk om PHS in te scha kelen in combi natie met Federatie. Als u PHS inschakelt, kan de verificatie worden teruggevallen wanneer er geen Federatie services beschikbaar zijn.
 
 Als uw on-premises organisatie geen strategie voor een storings tolerantie ondervindt of is die niet is geïntegreerd met Azure AD, moet u Azure AD PHS implementeren en een nood herstel plan definiëren dat PHS bevat. Als Azure AD PHS wordt ingeschakeld, kunnen gebruikers zich bij Azure AD verifiëren als uw on-premises Active Directory niet beschikbaar is.
 
@@ -249,7 +249,7 @@ Voorwaardelijke toegang is een essentieel hulp programma voor het verbeteren van
 - Beschikken over een kleine set kern beleidsregels die van toepassing kunnen zijn op meerdere toepassingen
 - Lege uitzonderings groepen definiëren en toevoegen aan het beleid om een uitzonderings strategie te hebben
 - Planning voor [afbreek glazen](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) accounts zonder MFA-besturings elementen
-- Zorg voor een consistente ervaring in Office 365-client toepassingen, bijvoorbeeld teams, OneDrive voor bedrijven, Outlook, enzovoort. door dezelfde set besturings elementen te implementeren voor services zoals Exchange Online en share point online
+- Zorg voor een consistente ervaring op het Microsoft 365-client toepassingen, bijvoorbeeld teams, OneDrive, Outlook, enzovoort.) door dezelfde set besturings elementen te implementeren voor services zoals Exchange Online en share point online
 - Toewijzing aan beleid moet worden geïmplementeerd via groepen, niet voor personen
 - Voer regel matig beoordelingen uit van de uitzonderings groepen die worden gebruikt in beleid om het aantal tijd gebruikers te beperken dat de beveiligings postuur. Als u Azure AD P2 hebt, kunt u toegangs beoordelingen gebruiken om het proces te automatiseren
 
@@ -302,7 +302,7 @@ Hieronder vindt u een lijst met apps met machtigingen die u mogelijk wilt scruti
 
 | Resource | Machtiging |
 | :- | :- |
-| Office 365 Exchange Online | Uitgebreide. AccessAsUser. all |
+| Exchange Online | Uitgebreide. AccessAsUser. all |
 | | EWS. AccessAsUser. all |
 | | Mail. Read |
 | Microsoft Graph API | Mail. Read |
@@ -339,7 +339,7 @@ Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrend
 
 #### <a name="group-settings"></a>Groepsinstellingen
 
-**Self-service groeps beheer/gebruikers kunnen beveiligings groepen/O365-groepen maken.** Als er geen self-service-initiatief is voor groepen in de Cloud, kunnen klanten ervoor kiezen deze uit te scha kelen totdat ze klaar zijn om deze mogelijkheid te gebruiken.
+**Self-service groeps beheer/gebruikers kunnen beveiligings groepen/Microsoft 365 groepen maken.** Als er geen self-service-initiatief is voor groepen in de Cloud, kunnen klanten ervoor kiezen deze uit te scha kelen totdat ze klaar zijn om deze mogelijkheid te gebruiken.
 
 #### <a name="groups-recommended-reading"></a>Aanbevolen groepen lezen
 

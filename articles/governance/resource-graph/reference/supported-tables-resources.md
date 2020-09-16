@@ -1,15 +1,15 @@
 ---
 title: Ondersteunde Azure Resource Manager resource typen
 description: Geef een lijst op met de Azure Resource Manager resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 09/04/2020
+ms.date: 09/15/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: b81ffcdde074978a9a72c5ab651ec2c5556870bd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488317"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600599"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -63,6 +63,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. aadiam/azureadmetrics
 - micro soft. aadiam/privatelinkforazuread
 - micro soft. aadiam/tenants
+- micro soft. agfoodplatform/farmbeats
 - micro soft. aisupercomputer/accounts
 - micro soft. aisupercomputer/accounts/jobgroups
 - micro soft. aisupercomputer/accounts/jobgroups/Jobs
@@ -80,6 +81,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Automation/automationaccounts
 - micro soft. Automation/automationaccounts/-configuraties
 - micro soft. Automation/automationaccounts/runbooks
+- micro soft. autonomousdevelopmentplatform/accounts
 - micro soft. autonomoussystems/werk ruimten
 - micro soft. AVS/privateclouds
 - micro soft. azconfig/configurationstores
@@ -94,6 +96,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. azureworden/sqlserverinstances
 - micro soft. azureworden/sqlserverregistrations
 - micro soft. azurestack/edgesubscriptions
+- micro soft. azurestack/linkedsubscriptions
 - micro soft. azurestack/registraties
 - micro soft. azurestackhci/clusters
 - micro soft. baremetal/consoleconnections
@@ -168,6 +171,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. container service/containerservices
 - micro soft. container service/managedclusters
 - micro soft. container service/openshiftmanagedclusters
+- micro soft. contoso/clusters
 - micro soft. contoso/werk nemers
 - micro soft. costmanagement/connectors
 - micro soft. customproviders/resourceproviders
@@ -250,6 +254,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. hybridnetwork/apparaten
 - micro soft. hybridnetwork/virtualnetworkfunctions
 - micro soft. importexport/Jobs
+- micro soft. industrydatalifecycle/basemodels
 - micro soft. industrydatalifecycle/custodiancollaboratives
 - micro soft. industrydatalifecycle/derivedmodels
 - micro soft. industrydatalifecycle/membercollaboratives
@@ -265,6 +270,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Insights/notificationgroups
 - micro soft. Insights/notificationrules
 - micro soft. Insights/privatelinkscopes
+- micro soft. Insights/querypacks
 - micro soft. Insights/scheduledqueryrules
 - micro soft. Insights/webtests
 - micro soft. Insights/werkmappen
@@ -414,6 +420,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. resources/templatespecs/versies
 - micro soft. SaaS/toepassingen
 - micro soft. scheduler/jobcollections
+- micro soft. scvmm/vmmservers
 - micro soft. Search/searchservices
 - micro soft. Security/automaters
 - micro soft. Security/iotsecuritysolutions
@@ -523,6 +530,8 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - wandisco. Fusion/fusiongroups/managedonpremzones
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
+- wandisco. Fusion/Migrator
+- wandisco. Fusion/Migrator/doelen
 
 ## <a name="securityresources"></a>securityresources
 
@@ -539,5 +548,5 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [querytaal](../concepts/query-language.md).
-- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
+- Meer informatie over het [verkennen van resources](../concepts/explore-resources.md).
 - Bekijk voorbeelden uit [Starter-query's](../samples/starter.md).

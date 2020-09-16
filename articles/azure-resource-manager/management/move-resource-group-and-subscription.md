@@ -2,14 +2,14 @@
 title: Resources verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056642"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603149"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -172,7 +172,7 @@ Wanneer u de resource groep bekijkt, is de optie verplaatsen uitgeschakeld.
 
 :::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
 
-Als u de optie verplaatsen wilt inschakelen, selecteert u de resources die u wilt verplaatsen. Als u alle resources wilt selecteren, schakelt u het selectie vakje boven aan de lijst in. U kunt ook afzonderlijke resources selecteren.
+Als u de optie verplaatsen wilt inschakelen, selecteert u de resources die u wilt verplaatsen. Als u alle resources wilt selecteren, schakelt u het selectie vakje boven aan de lijst in. U kunt ook afzonderlijke resources selecteren. Na het selecteren van resources is de optie verplaatsen ingeschakeld.
 
 :::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="resources selecteren":::
 

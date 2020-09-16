@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567347"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600718"
 ---
 # <a name="start-using-privileged-identity-management"></a>Aan de slag met Privileged Identity Management
 
@@ -35,6 +35,14 @@ Als u Privileged Identity Management wilt gebruiken, hebt u een van de volgende 
 - Enterprise Mobility + Security (EMS) E5
 
 Zie [licentie vereisten voor het gebruik van privileged Identity Management](subscription-requirements.md)voor meer informatie.
+
+> [!Note]
+> Wanneer een gebruiker die actief is in een geprivilegieerde rol in een Azure AD-organisatie met een Premium P2-licentie, naar **rollen en beheerders** in azure AD gaat, en een rol selecteert (of zelfs nog bezoekers privileged Identity Management):
+>
+> - PIM wordt automatisch ingeschakeld voor de organisatie
+> - Hun ervaring is nu dat ze een ' regel matige ' roltoewijzing of een in aanmerking komende roltoewijzing kunnen toewijzen
+>
+> Wanneer PIM is ingeschakeld, heeft dit geen invloed op uw organisatie, waardoor u zich geen zorgen hoeft te maken. Het biedt extra toewijzings opties zoals actief versus in aanmerking komend met de begin-en eind tijd. Met PIM kunt u ook het bereik definiëren voor roltoewijzingen die gebruikmaken van administratieve eenheden en aangepaste rollen. Als u een globale beheerder of beheerder van een bevoorrechte rol bent, kunt u beginnen met het ophalen van enkele extra e-mail berichten zoals het wekelijks samen vatting van PIM. U ziet mogelijk ook MS-PIM-Service-Principal in het controle logboek dat betrekking heeft op de roltoewijzing. Dit is een verwachte wijziging die geen gevolgen zou hebben voor uw werk stroom.
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>PIM voorbereiden voor Azure AD-rollen
 
@@ -72,7 +80,7 @@ Zodra Privileged Identity Management is ingesteld, kunt u uw weg ontdekken.
 
 Voeg een PIM-tegel toe aan uw Azure Portal dash board om het openen van Privileged Identity Management gemakkelijker te maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **alle services** en zoek de **Azure AD privileged Identity Management** -service.
 

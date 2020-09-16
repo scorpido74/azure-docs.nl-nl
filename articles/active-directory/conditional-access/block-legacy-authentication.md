@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049533"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602000"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -125,4 +125,4 @@ U kunt alle beschik bare granting-besturings elementen voor de andere voor waard
 - [Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-insights-reporting.md)
 - Als u nog niet bekend bent met het configureren van beleid voor voorwaardelijke toegang, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](../authentication/tutorial-enable-azure-mfa.md) voor een voor beeld.
 - Zie voor meer informatie over ondersteuning voor moderne authenticatie [hoe moderne verificatie werkt voor office 2013-en office 2016-client-apps](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
-- [Een multifunctioneel apparaat of toepassing instellen om e-mail te verzenden met Office 365 en Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Een multifunctioneel apparaat of toepassing instellen om e-mail te verzenden met Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

@@ -6,16 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326916"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602462"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
 
-In deze Quick Start gebruikt u Application Insights om automatisch een aanvraag te instrumenteren, afhankelijkheden bij te houden en prestatie meter items te verzamelen, prestatie problemen en uitzonde ringen te diagnosticeren en code te schrijven om te volgen wat gebruikers met uw app doen.
+
+> [!IMPORTANT]
+> De aanbevolen benadering voor het bewaken van Java-toepassingen is het gebruik van de automatische instrumentatie zonder de code te wijzigen. Volg de richt lijnen voor [Application Insights Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+
+In deze Snelstartgids gebruikt u Application Insights SDK om de aanvraag te instrumenteren, afhankelijkheden bij te houden en prestatie meter items te verzamelen, prestatie problemen en uitzonde ringen te diagnosticeren en code te schrijven om te volgen wat gebruikers met uw app doen.
 
 Application Insights is een uitbreidbare analyseservice voor webontwikkelaars die u helpt de prestaties en het gebruik van uw live-toepassing te begrijpen. Application Insights biedt ondersteuning voor Java-apps die in Linux, Unix of Windows worden uitgevoerd.
 
@@ -77,9 +81,9 @@ Download de [nieuwste versie](https://github.com/Microsoft/ApplicationInsights-J
 
 ### <a name="questions"></a>Vragen
 * *Wat is de relatie tussen de `-web-auto` - `-web` en- `-core` onderdelen?*
-  * `applicationinsights-web-auto`geeft u metrische gegevens die het aantal HTTP servlet-aanvragen en-reactie tijden bijhouden door de Application Insights servlet-filter tijdens runtime automatisch te registreren.
-  * `applicationinsights-web`voorziet u ook van metrische gegevens voor het bijhouden van het aantal servlet en de reactie tijden van HTTP-aanvragen, maar vereist hand matige registratie van het Application Insights servlet-filter in uw toepassing.
-  * `applicationinsights-core`geeft u alleen de bare API, bijvoorbeeld als uw toepassing niet op servlet is gebaseerd.
+  * `applicationinsights-web-auto` geeft u metrische gegevens die het aantal HTTP servlet-aanvragen en-reactie tijden bijhouden door de Application Insights servlet-filter tijdens runtime automatisch te registreren.
+  * `applicationinsights-web` voorziet u ook van metrische gegevens voor het bijhouden van het aantal servlet en de reactie tijden van HTTP-aanvragen, maar vereist hand matige registratie van het Application Insights servlet-filter in uw toepassing.
+  * `applicationinsights-core` geeft u alleen de bare API, bijvoorbeeld als uw toepassing niet op servlet is gebaseerd.
   
 * *Hoe moet ik de SDK bijwerken naar de nieuwste versie?*
   * Als u Gradle of maven gebruikt...
@@ -193,22 +197,10 @@ Publiceer nu uw app op de server, geef de app vrij voor gebruik en bekijk de tel
 
     (Dit onderdeel schakelt prestatiemeteritems in.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (veer boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, Vm's configuratie
 
-Voor Spring boot-apps die worden uitgevoerd in Windows is aanvullende configuratie vereist om te worden uitgevoerd op Azure-app Services. Wijzig **web.config** en voeg de volgende configuratie toe:
+De beste en eenvoudigste benadering voor het bewaken van uw toepassingen die worden uitgevoerd op een van de Azure-resource providers is het gebruik van Application Insights automatische instrumentatie via [Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>Uitzonderingen en mislukte aanvragen
 Niet-verwerkte uitzonde ringen en mislukte aanvragen worden automatisch door het webfilter van Application Insights verzameld.
@@ -259,7 +251,7 @@ U kunt opgeven dat er aanvullende prestatiemeteritems moeten worden verzameld.
 * `displayName` - De naam die wordt weergegeven in de Application Insights-portal.
 * `objectName` - De JMX-objectnaam.
 * `attribute` - Het kenmerk van de JMX-objectnaam dat moet worden opgehaald
-* `type`(optioneel)-het type kenmerk van het JMX-object:
+* `type` (optioneel)-het type kenmerk van het JMX-object:
   * Standaard: een eenvoudig type, zoals int of long.
   * `composite`: de gegevens van de prestatiemeteritems hebben de indeling 'Attribute.Data'
   * `tabular`: de gegevens van de prestatiemeteritems hebben de vorm van een rij in een tabel
@@ -309,7 +301,7 @@ Application Insights kan uw website regelmatig testen om te controleren of deze 
 * [Unix-prestatiemeteritems bewaken](java-collectd.md)
 * Voeg [bewaking toe aan uw webpagina's](javascript.md) om de laadtijden, AJAX-aanroepen en browseruitzonderingen te bewaken.
 * Typ [aangepaste telemetrie](./api-custom-events-metrics.md) om het gebruik in de browser of op de server bij te houden.
-* Gebruik [analyses](../log-query/log-query-overview.md) voor krachtige query's via telemetrie van uw app
+* Gebruik  [analyses](../log-query/log-query-overview.md) voor krachtige query's via telemetrie van uw app
 * Voor meer informatie gaat u naar [Azure voor Java-ontwikkelaars](/java/azure).
 
 <!--Link references-->

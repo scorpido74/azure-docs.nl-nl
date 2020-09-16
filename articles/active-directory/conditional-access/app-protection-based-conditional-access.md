@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641021"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601942"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
 Gebruikers gebruiken regel matig hun mobiele apparaten voor zowel privé-als werk taken. Het is ook belang rijk om te voor komen dat uw mede werkers productief kunnen zijn, maar dat er geen gegevens verloren gaan. Met voorwaardelijke toegang kunnen organisaties de toegang beperken tot goedgekeurde (moderne authenticatie mogelijkheden) client-apps met intune-beleid voor app-beveiliging.
 
-In dit artikel worden drie scenario's beschreven voor het configureren van beleid voor voorwaardelijke toegang voor resources zoals Office 365, Exchange Online en share point online.
+Dit artikel bevat drie scenario's voor het configureren van beleid voor voorwaardelijke toegang voor resources zoals Microsoft 365, Exchange Online en share point.
 
-- [Scenario 1: Office 365-apps vereist goedgekeurde apps met app-beveiligings beleid](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
+- [Scenario 1: voor Microsoft 365-apps zijn goedgekeurde apps met app-beveiligings beleid vereist](#scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies)
 - [Scenario 2: voor browser-apps zijn goedgekeurde apps met app-beveiligings beleid vereist](#scenario-2-browser-apps-require-approved-apps-with-app-protection-policies)
-- [Scenario 3: voor Exchange Online en share point online is een goedgekeurde client-app en beveiligings beleid voor apps vereist](#scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
+- [Scenario 3: Exchange Online en share point vereisen een goedgekeurde client-app en beveiligings beleid voor apps](#scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy)
 
 In de voorwaardelijke toegang zijn deze client-apps bekend om te worden beveiligd met een beveiligings beleid voor apps. Meer informatie over het beveiligings beleid voor apps vindt u in het artikel [overzicht van app-beveiligings beleid](/intune/apps/app-protection-policy)
 
@@ -36,13 +36,13 @@ In de voorwaardelijke toegang zijn deze client-apps bekend om te worden beveilig
 > [!NOTE]
 > Een van de geselecteerde besturings elementen vereisen onder besturings elementen voor Grant is een OR-component. Dit wordt in het beleid gebruikt om gebruikers in staat te stellen apps te gebruiken die ondersteuning bieden voor het **beveiligings beleid voor apps vereisen** of het **verplicht stellen van goedgekeurde client-app** -granting-besturings elementen. **Vereisen dat het beveiligings beleid voor apps** wordt afgedwongen als een app in beide beleids regels wordt ondersteund. Zie [app-beveiligings beleid vereisten](concept-conditional-access-grant.md#require-app-protection-policy)voor meer informatie over de apps die ondersteuning bieden voor de machtiging beheer **beleid voor app-beveiliging vereisen** .
 
-## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: Office 365-apps vereist goedgekeurde apps met app-beveiligings beleid
+## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: voor Microsoft 365-apps zijn goedgekeurde apps met app-beveiligings beleid vereist
 
-In dit scenario heeft Contoso besloten dat voor alle mobiele toegang tot Office 365-bronnen goedgekeurde client-apps, zoals Outlook Mobile en OneDrive, worden gebruikt, beveiligd door een beveiligings beleid voor apps voordat ze toegang krijgen. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+In dit scenario heeft Contoso besloten dat voor alle mobiele toegang tot Microsoft 365 resources goedgekeurde client-apps, zoals Outlook Mobile en OneDrive, worden gebruikt, beveiligd door een beveiligings beleid voor apps voordat ze toegang krijgen. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgekeurde client-app op mobiele apparaten te vereisen.
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Office 365**
+**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Microsoft 365**
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
@@ -89,11 +89,11 @@ Raadpleeg het artikel het [maken en toewijzen van app-beveiligings beleid](/intu
 
 ## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 2: voor browser-apps zijn goedgekeurde apps met app-beveiligings beleid vereist
 
-In dit scenario heeft Contoso besloten dat alle mobiele toegang voor Internet naar Office 365-resources een goedgekeurde client-app moeten gebruiken, zoals de rand voor iOS en Android, die wordt beveiligd door een beveiligings beleid voor apps voordat toegang wordt verleend. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+In dit scenario heeft Contoso besloten dat alle mobiele toegang op Internet tot Microsoft 365 resources een goedgekeurde client-app moeten gebruiken, zoals de rand voor iOS en Android, die wordt beveiligd door een beveiligings beleid voor apps voordat toegang wordt verleend. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgekeurde client-app op mobiele apparaten te vereisen.
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Office 365**
+**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Microsoft 365**
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
@@ -120,13 +120,13 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 
 Raadpleeg het artikel het [maken en toewijzen van app-beveiligings beleid](/intune/apps/app-protection-policies)voor stappen voor het maken van app-beveiligings beleid voor Android en IOS. 
 
-## <a name="scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>Scenario 3: voor Exchange Online en share point online is een goedgekeurde client-app en beveiligings beleid voor apps vereist
+## <a name="scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy"></a>Scenario 3: Exchange Online en share point vereisen een goedgekeurde client-app en beveiligings beleid voor apps
 
 In dit scenario heeft Contoso besloten dat gebruikers alleen toegang hebben tot e-mail en share point-gegevens op mobiele apparaten, zolang ze een goedgekeurde client-app gebruiken, zoals Outlook Mobile die wordt beveiligd door een app-beveiligings beleid voordat ze toegang krijgen. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een goedgekeurde client-app op mobiele apparaten en Exchange ActiveSync-clients te vereisen.
 
-**Stap 1: beleid voor Android-en iOS-gebaseerde moderne authenticatie clients waarvoor het gebruik van een goedgekeurde client-app en app-beveiligings beleid is vereist bij de toegang tot Exchange Online en share point online.**
+**Stap 1: beleid voor Android-en iOS-gebaseerde moderne authenticatie clients waarvoor het gebruik van een goedgekeurde client-app en app-beveiligings beleid is vereist bij de toegang tot Exchange Online en share point.**
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.

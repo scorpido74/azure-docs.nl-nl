@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641361"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600942"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
 
@@ -35,7 +35,7 @@ Als u een on-premises map hebt die gebruikers accounts bevat, hebt u waarschijnl
 
 Gebruikers kunnen ook rechtstreeks worden geverifieerd met uw on-premises Active Directory. Active Directory Federation Services (AD FS) is een standaard op basis van on-premises identiteits service. Met AD FS kunt u de functionaliteit voor eenmalige aanmelding (SSO) gebruiken tussen vertrouwde zakelijke partners zonder dat gebruikers zich afzonderlijk moeten aanmelden bij elke toepassing. Dit wordt aangeduid als Federatie.
 
-Veel organisaties hebben SaaS-apps (Software as a Service) of een aangepaste LOB-app (line-of-Business) die rechtstreeks naar AD FS worden gefederatied, naast Office 365-en Azure AD-apps. 
+Veel organisaties hebben SaaS-apps (Software as a Service) of een aangepaste LOB-app (line-of-Business) die rechtstreeks naar AD FS worden gefederatied, naast Microsoft 365 en op Azure AD gebaseerde apps. 
 
 ![Toepassingen die rechtstreeks on-premises zijn verbonden](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
@@ -406,7 +406,7 @@ In deze tabel hebben we een aantal nuttige vergunningen en uitzonde ringen weer 
 | Met specifieke claims in de aanvraag| Deze instelling kan niet worden gemigreerd| Deze instelling kan niet worden gemigreerd |
 
 
-Een voor beeld van het configureren van de exclude-optie voor vertrouwde locaties in azure portal:
+Een voor beeld van het configureren van de exclude-optie voor vertrouwde locaties in de Azure Portal:
 
 ![Scherm opname van toewijzings beleid voor toegangs beheer](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
 
@@ -422,7 +422,7 @@ Zie [vereisten voor het gebruik van groeps kenmerken gesynchroniseerd vanuit Act
 
 ### <a name="setup-user-self-provisioning"></a>Zelf inrichting van gebruiker instellen 
 
-Sommige SaaS-toepassingen bieden ondersteuning voor de mogelijkheid om gebruikers zelf in te richten wanneer ze zich voor het eerst aanmelden bij de toepassing. In Azure Active Directory (Azure AD) verwijst de inrichting van de term-app naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Gebruikers die zijn gemigreerd, hebben al een account in de SaaS-toepassing. Nieuwe gebruikers die zijn toegevoegd na de migratie, moeten worden ingericht. Test het [inrichten van SaaS-apps](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) zodra de toepassing is gemigreerd.
+Sommige SaaS-toepassingen bieden ondersteuning voor de mogelijkheid om gebruikers zelf in te richten wanneer ze zich voor het eerst aanmelden bij de toepassing. In Azure Active Directory (Azure AD) verwijst de term app-inrichting naar het automatisch maken van gebruikersidentiteiten en -rollen in de cloud-toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Gebruikers die zijn gemigreerd, hebben al een account in de SaaS-toepassing. Nieuwe gebruikers die zijn toegevoegd na de migratie, moeten worden ingericht. Test het [inrichten van SaaS-apps](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) zodra de toepassing is gemigreerd.
 
 ### <a name="sync-external-users-in-azure-ad"></a>Externe gebruikers synchroniseren in azure AD
 

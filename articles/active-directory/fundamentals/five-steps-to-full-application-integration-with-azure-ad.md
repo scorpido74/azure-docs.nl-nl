@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319743"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601245"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Vijf stappen voor het integreren van al uw apps met Azure AD
 
@@ -70,7 +70,7 @@ Tijdens het detectie proces hebt u mogelijk toepassingen gevonden die niet worde
 
 We hebben hulp gepubliceerd voor het beheer van het bedrijfs proces van het integreren van apps met Azure AD, met inbegrip van een [poster](https://aka.ms/AppOnePager) en [presentatie](https://aka.ms/AppGuideline) die u kunt gebruiken om de eigen aren van zakelijke en toepassingen op de hoogte te stellen en geïnteresseerd te zijn. U kunt deze voor beelden met uw eigen huis stijl wijzigen en deze publiceren naar uw organisatie via uw bedrijfs portal, nieuws brief of ander medium wanneer u dit proces gaat volt ooien.
 
-Een goed uitgangs punt om te beginnen is door het gebruik van Active Directory Federation Services (ADFS) te evalueren. Veel organisaties gebruiken ADFS voor verificatie met SaaS-apps, aangepaste line-of-Business-Apps en Office 365-en Azure AD-apps:
+Een goed uitgangs punt om te beginnen is door het gebruik van Active Directory Federation Services (ADFS) te evalueren. Veel organisaties gebruiken ADFS voor verificatie met SaaS-apps, aangepaste line-of-Business-Apps en Microsoft 365-en Azure AD-apps:
 
 ![Diagram bevat on-premises apps, line-of-Business-Apps, SaaS-apps en, via Azure AD, Office 365 alle verbindingen met stippel lijnen in Active Directory en AD FS.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

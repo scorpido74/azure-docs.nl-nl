@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087300"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601092"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>De Text Analytics aanroepen REST API
 
@@ -46,6 +46,30 @@ U kunt op dit moment dezelfde documenten verzenden voor alle Text Analytics bewe
 |`language` | [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -code van 2 tekens voor een [ondersteunde taal](../text-analytics-supported-languages.md) | Varieert | Vereist voor sentiment analyse, extractie van sleutel zinnen en entiteits koppeling; optioneel voor taal detectie. Er is geen fout als u deze uitsluit, maar de analyse verzwakt. De taal code moet overeenkomen met de `text` die u opgeeft. |
 
 Zie [Text Analytics overzicht > gegevens limieten](../overview.md#data-limits)voor meer informatie over limieten. 
+
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Sample text to be sent to the text analytics api."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    },
+    {
+      "language": "en",
+      "id": "3",
+      "text": "Pike place market is my favorite Seattle attraction."
+    }
+  ]
+}
+```
+
 
 ## <a name="set-up-a-request-in-postman"></a>Een aanvraag instellen in postman
 

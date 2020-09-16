@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586559"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601075"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-time-snapshot
 
@@ -23,31 +23,29 @@ Azure-app configuratie houdt een record bij van wijzigingen die zijn aangebracht
 
 U kunt Azure Portal of CLI gebruiken om vorige sleutel waarden op te halen. Gebruik in azure CLI `az appconfig revision list` om de juiste para meters toe te voegen om de vereiste waarden op te halen.  Geef het Azure-app configuratie-exemplaar op door de naam van de winkel op te geven ( `--name <app-config-store-name>` ) of door een Connection String () te gebruiken `--connection-string <your-connection-string>` . De uitvoer beperken door een bepaald punt in de tijd () op te geven `--datetime` en door het maximum aantal items op te geven dat moet worden geretourneerd ( `--top` ).
 
-Als Azure CLI niet lokaal is geïnstalleerd, kunt u eventueel Azure Cloud Shell gebruiken.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Als Azure CLI niet lokaal is geïnstalleerd, kunt u eventueel [Azure Cloud shell](/azure/cloud-shell/overview)gebruiken.
 
 Alle vastgelegde wijzigingen in uw sleutel waarden ophalen.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Alle vastgelegde wijzigingen voor de sleutel `environment` en de labels `test` en worden opgehaald `prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Alle vastgelegde wijzigingen in de hiërarchische sleutel ruimte ophalen `environment:prod` .
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Alle vastgelegde wijzigingen voor de sleutel `color` op een specifiek tijdstip ophalen.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642381"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603336"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -28,7 +28,7 @@ Eenmalige aanmelding (SSO) betekent dat alle toepassingen en resources die een g
 
 Eenmalige aanmelding (SSO) voegt beveiligings-en gebruiks gemak toe wanneer gebruikers zich aanmelden bij toepassingen in Azure Active Directory (Azure AD). 
 
-Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service), zoals Office 365, box en Sales Force, voor productiviteit van eind gebruikers. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elk.
+Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service), zoals Microsoft 365, box en Sales Force, voor productiviteit van eind gebruikers. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elk.
 
 Azure Marketplace heeft meer dan 3000 toepassingen met vooraf geïntegreerde SSO-verbindingen, waardoor deze eenvoudig kunnen worden geïntegreerd in uw Tenant.
 
@@ -118,7 +118,7 @@ Enkele van de belangrijkste onderwerpen om te plannen voor het instellen van toe
 
 Azure AD biedt [rapporten die technische en zakelijke inzichten bevatten](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). 
 
-Er zijn zowel beveiligings-als activiteiten rapporten beschikbaar. Beveiligings rapporten tonen gebruikers die zijn gemarkeerd voor risico, en Risk ante aanmeldingen. met activiteiten rapporten kunt u inzicht krijgen in het gedrag van gebruikers in uw organisatie door de aanmeldings activiteiten te beschrijven en een controle spoor van alle aanmeldingen te bieden. U kunt rapporten gebruiken om Risico's te beheren, de productiviteit te verhogen en de naleving te controleren.
+Er zijn zowel beveiligings-als activiteiten rapporten beschikbaar. Beveiligings rapporten tonen gebruikers die zijn gemarkeerd voor risico, en Risk ante aanmeldingen. Met activiteiten rapporten kunt u inzicht krijgen in het gedrag van gebruikers in uw organisatie door de aanmeldings activiteit te beschrijven en een controle spoor van alle aanmeldingen te bieden. U kunt rapporten gebruiken om Risico's te beheren, de productiviteit te verhogen en de naleving te controleren.
 
 | Rapporttype | Toegangs beoordeling | Beveiligingsrapporten | Aanmeld rapport |
 |-------------|---------------|------------------|----------------|
@@ -285,7 +285,7 @@ De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt
 
 - [Problemen bij het aanmelden vanuit een aangepaste portal](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Problemen met aanmelden vanuit mijn apps](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Problemen met aanmelden vanaf Mijn apps](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Fout bij de aanmeldingspagina van toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

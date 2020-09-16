@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/06/2020
+ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505092"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602928"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -111,6 +111,8 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
     - **Toegang goed keuren** : de toegang van de gebruiker goed keuren
     - **Aanbevelingen doen** : de aanbeveling van het systeem voor het weigeren of goed keuren van de permanente toegang van de gebruiker
 
+    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings-preview-new.png)
+
 4. Evaluatie Gebruik de actie om toe te passen op geweigerde gebruikers om op te geven wat er gebeurt met gast gebruikers als ze worden geweigerd.
     - Met de **optie 1** wordt geweigerde toegang van de gebruiker tot de groep of toepassing die wordt gecontroleerd, verwijderd, maar kunnen ze zich nog wel aanmelden bij de Tenant. 
     - **Optie 2** blokkeert de geweigerde gebruikers om zich aan te melden bij de Tenant, ongeacht of ze toegang hebben tot andere resources. Als er een fout is opgetreden of als een beheerder de toegang tot het account opnieuw inschakelt, kan dit binnen 30 dagen na het uitschakelen van de gebruiker. Als er geen actie is uitgevoerd op de uitgeschakelde gebruikers, worden deze verwijderd uit de Tenant.
@@ -123,8 +125,6 @@ Voor meer informatie over best practices voor het verwijderen van gast gebruiker
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 1. Als u aanvullende instellingen wilt opgeven, vouwt u de sectie **Geavanceerde instellingen** uit.
-
-    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. Stel **aanbevelingen weer geven** in om de controleurs **weer te geven** op basis van de toegangs gegevens van de gebruiker.
 

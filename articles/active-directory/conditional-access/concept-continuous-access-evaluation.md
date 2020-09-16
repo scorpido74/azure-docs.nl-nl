@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437238"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601755"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
@@ -48,26 +48,26 @@ De evaluatie van voortdurende toegang wordt geïmplementeerd door services, zoal
 - De beheerder trekt expliciet alle vernieuwings tokens voor een gebruiker in
 - Er is een verhoogd gebruikers risico gedetecteerd door Azure AD Identity Protection
 
-Dit proces maakt het scenario mogelijk dat gebruikers de toegang tot de share point online-bestanden, de e-mail, de agenda of de taken van de Office-app en teams van O365 client-apps binnen minuten na een van deze kritieke gebeurtenissen kwijt raken. 
+Dit proces maakt het scenario mogelijk dat gebruikers geen toegang meer hebben tot de share point online-bestanden, e-mail, agenda of taken van de organisatie, en teams van Microsoft 365 client-apps binnen minuten na een van deze kritieke gebeurtenissen. 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Evaluatie van voorwaardelijk toegangs beleid (preview-versie)
 
 Exchange en share point kunnen sleutels voor voorwaardelijk toegangs beleid synchroniseren zodat ze binnen de service zelf kunnen worden geëvalueerd.
 
-Dit proces maakt het scenario mogelijk dat gebruikers de toegang tot bedrijfs bestanden, e-mail, agenda of taken van O365 client-apps of share point online, direct na wijzigingen in de netwerk locatie, kwijt raken.
+Met dit proces wordt het scenario ingeschakeld waarbij gebruikers de toegang tot bedrijfs bestanden, e-mail, agenda of taken van Microsoft 365 client-apps of share point online direct na wijzigingen in de netwerk locatie kwijt raken.
 
 > [!NOTE]
 > Niet alle combi Naties van app-en resource providers worden ondersteund. Zie de tabel hieronder. Office heeft betrekking op Word, Excel en Power Point
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Ondersteund | Ondersteund | Niet ondersteund | Niet ondersteund | Ondersteund |
-| Exchange Online | Ondersteund | Ondersteund | Ondersteund | Ondersteund | Ondersteund |
+| **SharePoint Online** | Ondersteund | Ondersteund | Niet ondersteund | Niet ondersteund | Ondersteund |
+| **Exchange Online** | Ondersteund | Ondersteund | Ondersteund | Ondersteund | Ondersteund |
 
 | | Office Web apps | Office Win32-apps | Office voor iOS | Office voor Android | Office voor Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Ondersteund | Ondersteund | Niet ondersteund | Ondersteund | Ondersteund |
-| Exchange Online | Ondersteund | Ondersteund | Niet ondersteund | Ondersteund | Ondersteund |
+| **SharePoint Online** | Ondersteund | Ondersteund | Niet ondersteund | Ondersteund | Ondersteund |
+| **Exchange Online** | Ondersteund | Ondersteund | Niet ondersteund | Ondersteund | Ondersteund |
 
 ### <a name="client-side-claim-challenge"></a>Claim vraag aan client zijde
 

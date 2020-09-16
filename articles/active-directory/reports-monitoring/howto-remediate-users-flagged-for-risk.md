@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231160"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600497"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Gebruikers herstellen voor wie wordt aangegeven dat ze risico lopen in de Azure Active Directory-portal
 
@@ -42,9 +42,9 @@ Vanuit de gebruikers die zijn gemarkeerd voor risico rapport, kunt u de volgende
 
 Zie gebruikers voor wie wordt aangegeven dat [ze risico lopen op beveiligings rapport](../identity-protection/overview-identity-protection.md)voor meer informatie.
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-abonnement voor Office 365-klanten
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD-abonnement voor Microsoft 365 klanten
 
-U kunt ook uw Office 365-referenties gebruiken om toegang te krijgen tot het **Azure-beheer centrum**. Nadat u de toegang tot Azure AD hebt geactiveerd, wordt u doorgestuurd naar de Azure AD-portal. Bij een basisabonnement worden minder details in rapporten verstrekt. Aanvullende gegevens en analyses zijn verkrijgbaar voor abonnees van Azure Premium.
+U kunt ook uw Microsoft 365 referenties gebruiken om toegang te krijgen tot het **Azure-beheer centrum**. Nadat u de toegang tot Azure AD hebt geactiveerd, wordt u doorgestuurd naar de Azure AD-portal. Bij een basisabonnement worden minder details in rapporten verstrekt. Aanvullende gegevens en analyses zijn verkrijgbaar voor abonnees van Azure Premium.
 
 Om toegang te krijgen tot de gebruikers die zijn **gemarkeerd voor risico** rapporten in het Microsoft 365-beheer centrum:
 
@@ -79,7 +79,7 @@ Onderneem de volgende acties om de betreffende accounts te herstellen en uw omge
 
     h. Maak een audit logboek voor de beheerder om dit te controleren.
 
-4. Onderzoek uw Office 365-tenant en andere IT-infrastructuur, waaronder een controle van alle tenantinstellingen, gebruikersaccounts en de configuratie-instellingen per gebruiker op mogelijke wijzigingen. Controleer op de aanwezigheid van indicatoren voor persistentiemethoden, evenals indicatoren dat een indringer gebruik kan hebben gemaakt van een eerste aangrijpingspunt om VPN-referenties te verkrijgen, of toegang tot andere organisatieaccounts. 
+4. Onderzoek uw Microsoft 365-Tenant en een andere IT-infra structuur, inclusief een overzicht van alle Tenant instellingen, gebruikers accounts en de configuratie-instellingen per gebruiker voor mogelijke wijzigingen. Controleer op de aanwezigheid van indicatoren voor persistentiemethoden, evenals indicatoren dat een indringer gebruik kan hebben gemaakt van een eerste aangrijpingspunt om VPN-referenties te verkrijgen, of toegang tot andere organisatieaccounts. 
 
 5.  Als onderdeel van uw onderzoek moet u overwegen of u overheids instanties wilt informeren, waaronder het afdwingen van de regelgeving.
 

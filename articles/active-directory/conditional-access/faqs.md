@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253236"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601634"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
@@ -59,7 +59,7 @@ Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-d
 
 Nadat u een beleid voor voorwaardelijke toegang hebt ingeschakeld op de Tenant in micro soft teams, werken bepaalde tabbladen mogelijk niet meer in de desktop-client zoals verwacht. De betrokken tabbladen werken echter wanneer u de micro soft teams-webclient gebruikt. De tabbladen kunnen Power BI, formulieren, VSTS, PowerApps en share point-lijsten bevatten.
 
-Als u de betreffende tabbladen wilt zien, moet u de web-client voor teams in Edge, Internet Explorer of Chrome gebruiken waarop de Windows 10-account extensie is geïnstalleerd. Sommige tabbladen zijn afhankelijk van webverificatie, wat niet werkt in de micro soft teams-bureaubladclient als voorwaardelijke toegang is ingeschakeld. Micro soft werkt samen met partners om deze scenario's in te scha kelen. Tot nu toe hebben we scenrarios ingeschakeld waarbij planner, OneNote en stream zijn betrokken.
+Als u de betreffende tabbladen wilt zien, moet u de web-client voor teams in Edge, Internet Explorer of Chrome gebruiken waarop de Windows 10-account extensie is geïnstalleerd. Sommige tabbladen zijn afhankelijk van webverificatie, wat niet werkt in de micro soft teams-bureaubladclient als voorwaardelijke toegang is ingeschakeld. Micro soft werkt samen met partners om deze scenario's in te scha kelen. Tot nu toe hebben we scenario's ingeschakeld waarbij planner, OneNote en stream zijn betrokken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

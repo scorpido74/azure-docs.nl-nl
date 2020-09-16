@@ -8,67 +8,47 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 07/23/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ae66447e128b07ce942b8c2fcc66347a31cfe83f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f497bf5374dd6f621a6b48bae245e5efb1505a19
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848856"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603064"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door de logboeken te doorzoeken en Azure-toepassing inzichten in te scha kelen via 
-* [Azure Machine Learning python-SDK](#python)
-* [Azure machine learning Studio](#studio) ophttps://ml.azure.com
-
-Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt kunt u het volgende controleren:
-
+In dit artikel leert u hoe u gegevens kunt verzamelen van modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI). Gebruik [Azure-toepassing Insights](../azure-monitor/app/app-insights-overview.md) voor het verzamelen van de volgende gegevens uit een eind punt:
+* Uitvoergegevens
+* Antwoorden
 * Aanvraag tarieven, reactie tijden en fout tarieven
 * Afhankelijkheids tarieven, reactie tijden en fout percentages
 * Uitzonderingen
 
-[Meer informatie over Azure-toepassing Insights](../azure-monitor/app/app-insights-overview.md). 
-
-
+De [Enable-app-Insights-in-production-service. ipynb-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook demonstreert de concepten in dit artikel.
+ 
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+ 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
+* Een Azure-abonnement: Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
-* Een Azure Machine Learning-werk ruimte, een lokale map die uw scripts bevat en de Azure Machine Learning SDK voor python is geïnstalleerd. Zie [een ontwikkel omgeving configureren](how-to-configure-environment.md) voor meer informatie over het verkrijgen van deze vereisten.
+* Een Azure Machine Learning-werk ruimte, een lokale map die uw scripts bevat en de Azure Machine Learning SDK voor python is geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie.
 
-* Een getraind machine learning model dat moet worden geïmplementeerd in azure Kubernetes service (AKS) of Azure container instance (ACI). Als u er nog geen hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md)
-
-## <a name="query-logs-for-deployed-models"></a>Query logboeken voor geïmplementeerde modellen
-
-Als u logboeken van een eerder geïmplementeerde webservice wilt ophalen, laadt u de service en gebruikt u de `get_logs()` functie. De logboeken bevatten mogelijk gedetailleerde informatie over eventuele fouten die zijn opgetreden tijdens de implementatie.
-
-```python
-from azureml.core.webservice import Webservice
-
-# load existing web service
-service = Webservice(name="service-name", workspace=ws)
-logs = service.get_logs()
-```
-
-## <a name="web-service-metadata-and-response-data"></a>Meta gegevens en antwoord van de webservice
-
-> [!IMPORTANT]
-> Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet wordt bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd.
-
-Als u gegevens wilt vastleggen voor een aanvraag voor de webservice, voegt `print` u instructies toe aan uw score.py-bestand. Elke `print` instructie resulteert in één vermelding in de traceer tabel in Application Insights, onder het bericht `STDOUT` . De inhoud van de `print` instructie wordt opgenomen onder `customDimensions` en vervolgens `Contents` in de tracerings tabel. Als u een JSON-teken reeks afdrukt, produceert deze een hiërarchische gegevens structuur in de tracerings uitvoer onder `Contents` .
-
-U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
-
+* Een getraind machine learning model. Zie voor meer informatie de zelf studie over het [classificeren van het trainen van installatie kopieën](tutorial-train-models-with-aml.md) .
 
 <a name="python"></a>
 
-## <a name="use-python-sdk-to-configure"></a>Python-SDK gebruiken om te configureren 
+## <a name="configure-logging-with-the-python-sdk"></a>Logboek registratie configureren met de python-SDK
+
+In deze sectie leert u hoe u logboek registratie van toepassingen kunt inschakelen met behulp van de python-SDK. 
 
 ### <a name="update-a-deployed-service"></a>Een geïmplementeerde service bijwerken
+
+Gebruik de volgende stappen om een bestaande webservice bij te werken:
 
 1. Identificeer de service in uw werk ruimte. De waarde voor `ws` is de naam van uw werk ruimte
 
@@ -84,12 +64,17 @@ U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze ge
 
 ### <a name="log-custom-traces-in-your-service"></a>Aangepaste traceringen vastleggen in uw service
 
+> [!IMPORTANT]
+> Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd. Als de gegevens die u wilt vastleggen groter zijn dan 64 KB, moet u deze opslaan in Blob Storage met behulp van de gegevens in [gegevens verzamelen voor modellen in de productie omgeving](how-to-enable-data-collection.md).
+>
+> Voor complexere situaties, zoals het bijhouden van modellen binnen een AKS-implementatie, raden we u aan een bibliotheek van derden te gebruiken zoals [Opentelling](https://opencensus.io).
+
 Als u aangepaste traceringen wilt registreren, volgt u het standaard implementatie proces voor AKS of ACI in het document [implementeren en where](how-to-deploy-and-where.md) . Gebruik vervolgens de volgende stappen:
 
-1. Als u gegevens wilt verzenden naar Application Insights tijdens de defactorion, werkt u het Score bestand bij door afdruk instructies toe te voegen. Om complexere informatie, zoals de gegevens van de aanvraag en het antwoord, te registreren in de vorm van een JSON-structuur. In het volgende voor beeld score.py-bestand wordt de tijd geregistreerd die het model heeft geïnitialiseerd, de invoer en uitvoer tijdens de afleiding en de tijd waarop fouten optreden:
+1. Werk het Score bestand bij door afdruk instructies toe te voegen voor het verzenden van gegevens naar Application Insights tijdens de interferentie. Gebruik een JSON-structuur voor complexere informatie, zoals de gegevens van de aanvraag en het antwoord. 
 
-    > [!IMPORTANT]
-    > Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd. Als de gegevens die u wilt vastleggen groter zijn dan 64 KB, moet u deze opslaan in Blob Storage met behulp van de gegevens in [gegevens verzamelen voor modellen in de productie omgeving](how-to-enable-data-collection.md).
+    In het volgende voor beeld wordt een `score.py` logboek bestand gemaakt wanneer het model is geïnitialiseerd, ingevoerd en uitgevoerd tijdens de afleiding en wanneer er fouten optreden.
+
     
     ```python
     import pickle
@@ -133,15 +118,14 @@ Als u aangepaste traceringen wilt registreren, volgt u het standaard implementat
             return error
     ```
 
-2. De service configuratie bijwerken
+2. Werk de service configuratie bij en zorg ervoor dat Application Insights is ingeschakeld.
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Bouw een installatie kopie en implementeer deze op [AKS of ACI](how-to-deploy-and-where.md).
+3. Bouw een installatie kopie en implementeer deze op AKS of ACI. Zie [How to deploy](how-to-deploy-and-where.md)(Engelstalig) (Engelstalig) voor meer informatie.
 
-Zie [logboek registratie inschakelen in azure machine learning](how-to-enable-logging.md) en [gegevens verzamelen van modellen in de productie omgeving](how-to-enable-data-collection.md)voor meer informatie over logboek registratie en het verzamelen van gegevens.
 
 ### <a name="disable-tracking-in-python"></a>Tracering in python uitschakelen
 
@@ -154,34 +138,47 @@ Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
 
 <a name="studio"></a>
 
-## <a name="use-azure-machine-learning-studio-to-configure"></a>Azure Machine Learning Studio gebruiken om te configureren
+## <a name="configure-logging-with-azure-machine-learning-studio"></a>Logboek registratie configureren met Azure Machine Learning Studio
 
-U kunt ook Azure-toepassing Insights inschakelen vanuit Azure Machine Learning Studio wanneer u klaar bent om uw model te implementeren met behulp van de volgende stappen.
+U kunt ook Azure-toepassing Insights inschakelen vanuit Azure Machine Learning Studio. Wanneer u klaar bent om uw model als een webservice te implementeren, gebruikt u de volgende stappen om Application Insights in te scha kelen:
 
-1. Meld u aan bij uw werk ruimte ophttps://ml.azure.com/
-1. Ga naar **modellen** en selecteer welk model u wilt implementeren
-1. Selecteer **+ implementeren**
-1. Het formulier **model implementeren** invullen
-1. Het menu **Geavanceerd** uitvouwen
+1. Meld u aan bij de studio op https://ml.azure.com .
+1. Ga naar **modellen** en selecteer het model dat u wilt implementeren.
+1. Selecteer  **+ implementeren**.
+1. Vul het formulier **model implementeren** in.
+1. Vouw het menu **Geavanceerd** uit.
 
     ![Formulier implementeren](./media/how-to-enable-app-insights/deploy-form.png)
-1. Selecteer **Application Insights diagnose en gegevens verzameling inschakelen**
+1. Selecteer **Application Insights diagnose en gegevens verzameling inschakelen**.
 
     ![App Insights inschakelen](./media/how-to-enable-app-insights/enable-app-insights.png)
 
 ## <a name="view-metrics-and-logs"></a>Metrische gegevens en logboeken weer geven
 
-De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.
-Om het weer te geven:
+### <a name="query-logs-for-deployed-models"></a>Query logboeken voor geïmplementeerde modellen
+
+U kunt de `get_logs()` functie gebruiken om logboeken op te halen van een eerder geïmplementeerde webservice. De logboeken bevatten mogelijk gedetailleerde informatie over eventuele fouten die zijn opgetreden tijdens de implementatie.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
+### <a name="view-logs-in-the-studio"></a>Logboeken weer geven in de Studio
+
+Azure-toepassing Insights slaat uw service logboeken op in dezelfde resource groep als de Azure Machine Learning-werk ruimte. Gebruik de volgende stappen om uw gegevens weer te geven met behulp van Studio:
 
 1. Ga naar uw Azure Machine Learning-werk ruimte in de [Studio](https://ml.azure.com/).
 1. Selecteer **eind punten**.
 1. Selecteer de geïmplementeerde service.
-1. Schuif omlaag om de **Application Insights URL** te vinden en selecteer de koppeling.
+1. Selecteer de **URL** -koppeling Application Insights.
 
     [![Application Insights URL zoeken](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. In Application Insights selecteert u op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant __Logboeken__.
+1. In Application Insights klikt u op het tabblad **overzicht** of in het gedeelte __bewaking__ op __Logboeken__.
 
     [![Tabblad Overzicht van bewaking](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -197,25 +194,29 @@ Om het weer te geven:
 
 Zie [Wat is Application Insights?](../azure-monitor/app/app-insights-overview.md)voor meer informatie over het gebruik van Azure-toepassing Insights.
 
-## <a name="export-data-for-further-processing-and-longer-retention"></a>Gegevens exporteren voor verdere verwerking en langere retentie
+## <a name="web-service-metadata-and-response-data"></a>Meta gegevens en antwoord van de webservice
+
+> [!IMPORTANT]
+> Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet wordt bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd.
+
+Als u gegevens van de webservice-aanvraag wilt registreren, voegt `print` u instructies toe aan uw score.py-bestand. Elke `print` instructie resulteert in één vermelding in de traceer tabel Application Insights onder het bericht `STDOUT` . Application Insights slaat de `print` uitvoer van de instructie in  `customDimensions` en in de `Contents` tracerings tabel. Het afdrukken van JSON-teken reeksen produceert een hiërarchische gegevens structuur in de tracerings uitvoer onder `Contents` .
+
+## <a name="export-data-for-retention-and-processing"></a>Gegevens exporteren voor retentie en verwerking
 
 >[!Important]
-> Azure-toepassing Insights ondersteunt alleen export naar Blob Storage. Aanvullende limieten van deze export mogelijkheid worden vermeld in [telemetrie exporteren vanuit app Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure-toepassing Insights ondersteunt alleen export naar Blob Storage. Zie [telemetrie exporteren vanuit app Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)voor meer informatie over de limieten van deze implementatie.
 
-U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) berichten verzenden naar een ondersteund opslag account, waarbij een langere retentie kan worden ingesteld. De gegevens worden opgeslagen in JSON-indeling en kunnen gemakkelijk worden geparseerd om model gegevens op te halen. 
-
-Azure Data Factory, Azure ML-pijp lijnen of andere hulpprogram ma's voor gegevens verwerking kunnen worden gebruikt om de gegevens naar behoefte te transformeren. Wanneer u de gegevens hebt getransformeerd, kunt u deze registreren bij de Azure Machine Learning-werk ruimte als een gegevensset. Zie [gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.
+Gebruik Application Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) om gegevens te exporteren naar een Blob Storage-account waar u Bewaar instellingen kunt definiëren. Application Insights exporteert de gegevens in JSON-indeling. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Continue export":::
 
-
-## <a name="example-notebook"></a>Voorbeeld van notebook
-
-De [Enable-app-Insights-in-production-service. ipynb-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook demonstreert de concepten in dit artikel. 
- 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [een model implementeren in een Azure Kubernetes-service cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) of [een model implementeren in azure container instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance) om uw modellen te implementeren voor webservice-eind punten, en Azure-toepassing Insights in te scha kelen voor het gebruik van gegevens verzameling en eindpunt bewaking
-* Zie [MLOps: modellen beheren, implementeren en bewaken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in productie. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren
+In dit artikel hebt u geleerd hoe u logboek registratie inschakelt en Logboeken kunt weer geven voor webservice-eind punten. Voer deze artikelen uit voor de volgende stappen:
+
+
+* [Een model implementeren in een AKS-cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+
+* [Een model implementeren in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+
+* [MLOps: modellen met Azure machine learning beheren, implementeren en bewaken](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) voor meer informatie over het benutten van gegevens die zijn verzameld van modellen in de productie omgeving. Dergelijke gegevens kunnen helpen uw machine learning proces voortdurend te verbeteren.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993848"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601806"
 ---
 # <a name="conditional-access-session"></a>Voorwaardelijke toegang: sessie
 
@@ -57,7 +57,7 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 - Word, Excel, Power Point online
 - OneNote online
 - Office.com
-- O365-beheer Portal
+- Beheer Portal Microsoft 365
 - Exchange Online
 - Share point en OneDrive
 - Web-client voor teams

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228763"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603591"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -39,7 +39,7 @@ In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
+### <a name="who-can-access-the-data"></a>Wie hebben er toegang tot de gegevens?
 
 * Gebruikers in de beveiligings beheerder, beveiligings lezer, globale lezer en rapport lezers rollen
 * Globale beheerders
@@ -147,13 +147,13 @@ De **locatie** -de locatie van de verbinding vanaf:
 |Geverifieerde SMTP| |Wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.|
 |Autodis cover| |Wordt gebruikt door Outlook-en EAS-clients om post vakken in Exchange Online te vinden en er verbinding mee te maken.|
 |Exchange ActiveSync:| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
-|Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
-|Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
+|Browser|![Vinkje](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
+|Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiveSync om verbinding te maken met Exchange Online|
 |Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
 |Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
 |IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
 |MAPI via HTTP| |Gebruikt door Outlook 2010 en hoger.|
-|Mobiele apps en desktop-clients|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
+|Mobiele apps en desktop-clients|![Blauw vinkje](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
 |Offline adresboek| |Een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.|
 |Outlook Anywhere (RPC via HTTP)| |Gebruikt door Outlook 2016 en eerder.|
 |Outlook-service| |Wordt gebruikt door de mail-en agenda-app voor Windows 10.|
@@ -194,7 +194,7 @@ De **locatie** -de locatie van de verbinding vanaf:
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
+![Downloaden](./media/concept-sign-ins/71.png "Download")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -263,17 +263,17 @@ De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldin
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
+![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapporten")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 
 Met de optie **Aanmeldingen** krijgt u een volledig overzicht van alle aanmeldingsgebeurtenissen voor uw toepassingen.
 
-## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 activiteiten logboeken
 
-U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Denk na over het punt dat, Office 365-activiteit en Azure AD-activiteiten Logboeken een aanzienlijk aantal Directory bronnen delen. Alleen het Microsoft 365-beheer centrum biedt een volledig overzicht van de activiteiten logboeken van Office 365. 
+U kunt Microsoft 365 activiteiten logboeken bekijken vanuit het [Microsoft 365 beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Denk na over het punt dat, Microsoft 365 activiteiten en activiteiten logboeken van Azure AD een aanzienlijk aantal Directory bronnen delen. Alleen het Microsoft 365-beheer centrum biedt een volledig overzicht van de Microsoft 365 activiteiten Logboeken. 
 
-U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
+U kunt de Microsoft 365-activiteiten logboeken ook programmatisch openen met behulp van de [Office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 

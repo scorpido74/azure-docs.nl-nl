@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253389"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601959"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Procedure: goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang
 
 Gebruikers gebruiken regel matig hun mobiele apparaten voor zowel privé-als werk taken. Het is ook belang rijk om te voor komen dat uw mede werkers productief kunnen zijn, maar dat er geen gegevens verloren gaan. Met voorwaardelijke toegang kunnen organisaties de toegang beperken tot goedgekeurde (moderne authenticatie mogelijkheden) client-apps.
 
-Dit artikel bevat twee scenario's voor het configureren van beleid voor voorwaardelijke toegang voor resources zoals Office 365, Exchange Online en share point online.
+Dit artikel bevat twee scenario's voor het configureren van beleid voor voorwaardelijke toegang voor resources zoals Microsoft 365, Exchange Online en share point online.
 
-- [Scenario 1: voor Office 365-apps is een goedgekeurde client-app vereist](#scenario-1-office-365-apps-require-an-approved-client-app)
+- [Scenario 1: voor Microsoft 365-apps is een goedgekeurde client-app vereist](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [Scenario 2: voor Exchange Online en share point online is een goedgekeurde client-app vereist](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 In voorwaardelijke toegang is deze functionaliteit bekend als het vereisen van een goedgekeurde client-app. Zie voor een lijst met goedgekeurde client-apps [goedgekeurde client-app-vereiste](concept-conditional-access-grant.md#require-approved-client-app).
@@ -32,9 +32,9 @@ In voorwaardelijke toegang is deze functionaliteit bekend als het vereisen van e
 > [!NOTE]
 > Als u goedgekeurde client-Apps wilt vereisen voor iOS-en Android-apparaten, moeten deze apparaten eerst worden geregistreerd in azure AD.
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>Scenario 1: voor Office 365-apps is een goedgekeurde client-app vereist
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>Scenario 1: voor Microsoft 365-apps is een goedgekeurde client-app vereist
 
-In dit scenario heeft Contoso besloten dat gebruikers die mobiele apparaten gebruiken, toegang hebben tot alle Office 365-Services zolang ze goedgekeurde client-apps gebruiken, zoals Outlook Mobile, OneDrive en micro soft teams. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+In dit scenario heeft Contoso besloten dat gebruikers die mobiele apparaten gebruiken, toegang hebben tot alle Microsoft 365 Services zolang ze goedgekeurde client-apps gebruiken, zoals Outlook Mobile, OneDrive en micro soft teams. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een goedgekeurde client-app op mobiele apparaten te vereisen.
 
@@ -46,7 +46,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -65,7 +65,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:
@@ -93,7 +93,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 Exchange Online** en **Office 365 share point online**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -112,7 +112,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:

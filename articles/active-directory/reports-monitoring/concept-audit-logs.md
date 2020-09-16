@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603506"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -39,7 +39,7 @@ De rapportage architectuur bestaat uit de volgende onderdelen:
 
 In dit artikel vindt u een overzicht van het controle rapport.
  
-## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
+## <a name="who-can-access-the-data"></a>Wie hebben er toegang tot de gegevens?
 
 * Gebruikers in de **beveiligings beheerder**, **beveiligings lezer**, **rapport lezer** , **globale lezer** of **globale beheerders** rollen
 
@@ -89,7 +89,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alle
+- Alles
 - AAD-beheer UX
 - Toegangsbeoordelingen
 - Account inrichten
@@ -111,7 +111,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -138,7 +138,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 
@@ -208,11 +208,11 @@ Als u controle gegevens wilt bekijken die betrekking hebben op uw toepassingen, 
 
 ![Auditlogboeken](./media/concept-audit-logs/enterpriseapplications.png "Auditlogboeken")
 
-## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 activiteiten logboeken
 
-U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Hoewel Office 365-activiteiten en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen, is alleen het Microsoft 365-beheer centrum een volledig overzicht van de activiteiten logboeken van Office 365. 
+U kunt Microsoft 365 activiteiten logboeken bekijken vanuit het [Microsoft 365 beheer centrum](/office365/admin/admin-overview/about-the-admin-center). Hoewel Microsoft 365 activiteit en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen, biedt alleen het Microsoft 365 beheer centrum een volledig overzicht van de Microsoft 365 activiteiten Logboeken. 
 
-U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
+U kunt de Microsoft 365-activiteiten logboeken ook programmatisch openen met behulp van de [Office 365-beheer-api's](/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 

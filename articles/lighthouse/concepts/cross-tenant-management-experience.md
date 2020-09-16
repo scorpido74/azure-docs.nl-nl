@@ -3,12 +3,12 @@ title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564063"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602384"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -48,13 +48,13 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 [Azure-boog](../../azure-arc/index.yml):
 
-- Hybride servers op schaal beheren- [Azure-Arc voor servers (preview)](../../azure-arc/servers/overview.md):
-  - [Windows Server-of Linux-computers buiten Azure verbinden](../../azure-arc/servers/onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
+- Hybride servers op schaal beheren- [servers met Azure-Arc (preview)](../../azure-arc/servers/overview.md):
+  - [Windows Server-of Linux-computers buiten Azure beheren die zijn verbonden](../../azure-arc/servers/onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
   - Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
   - Zorg ervoor dat dezelfde set beleids regels wordt toegepast op hybride omgevingen van klanten
   - Azure Security Center gebruiken om de naleving van hybride omgevingen van klanten te bewaken
 - Hybride Kubernetes-clusters op schaal beheren- [Kubernetes van Azure Arc ingeschakeld (preview)](../../azure-arc/kubernetes/overview.md):
-  - [Een Kubernetes-cluster verbinden met Azure Arc](../../azure-arc/kubernetes/connect-cluster.md) met gedelegeerde abonnementen en/of resource groepen in azure
+  - [Kubernetes-clusters beheren die zijn verbonden](../../azure-arc/kubernetes/connect-cluster.md) met gedelegeerde abonnementen en/of resource groepen in azure
   - [GitOps gebruiken](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) voor verbonden clusters
   - Beleid afdwingen in verbonden clusters
 

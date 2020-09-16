@@ -1,6 +1,6 @@
 ---
 title: Wat is een toegevoegd Azure AD-apparaat?
-description: Meer informatie over hoe het beheer van apparaat-id's u kan helpen bij het beheren van apparaten die toegang hebben tot resources in uw omgeving.
+description: Meer informatie over apparaten die zijn toegevoegd aan Azure AD en hoe u met apparaat-identiteits beheer apparaten kunt beheren die toegang hebben tot bronnen in uw omgeving.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923727"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601449"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
@@ -24,14 +24,14 @@ Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of all
 
 | Azure AD-Join | Beschrijving |
 | --- | --- |
-| **Beschrijving** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
+| **Definitie** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
 | **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |
 |   | Van toepassing op alle gebruikers in een organisatie |
 | **Apparaateigendom** | Organisatie |
 | **Besturings systemen** | Alle Windows 10-apparaten behalve Windows 10 Home |
 |   | [Virtuele Windows Server 2019-machines die worden uitgevoerd in Azure](howto-vm-sign-in-azure-ad-windows.md) (serverkern wordt niet ondersteund) |
 | **Inrichten** | Self-service: Windows OOBE of instellingen |
-|   | Bulkinschrijving |
+|   | Bulkregistratie |
 |   | Windows Autopilot |
 | **Aanmeldings opties voor apparaten** | Organisatie accounts met: |
 |   | Wachtwoord |
@@ -58,7 +58,7 @@ Hoewel Azure AD-koppeling voornamelijk is bedoeld voor organisaties die geen on-
 
 - U wilt overstappen op cloudgebaseerde infrastructuur met behulp van Azure AD en MDM zoals Intune.
 - U geen on-premises domeinkoppeling kunt gebruiken, bijvoorbeeld als u mobiele apparaten zoals tablets en telefoons onder controle moet krijgen.
-- Uw gebruikers voornamelijk toegang nodig hebben tot Office 365 of andere SaaS-apps die zijn geïntegreerd met Azure AD.
+- Uw gebruikers moeten voornamelijk toegang hebben tot Microsoft 365 of andere SaaS-apps die zijn geïntegreerd met Azure AD.
 - U een groep gebruikers in Azure AD wilt beheren in plaats van in Active Directory. Dit scenario kan bijvoorbeeld van toepassing zijn op seizoen arbeiders, aannemers of studenten.
 - U koppelingsmogelijkheden wilt bieden aan medewerkers in externe filialen met beperkte on-premises infrastructuur.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203160"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602163"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,7 +29,7 @@ Als u de door het beleid ondersteunde gebruikers trajecten wilt definiëren, wor
 
 Het element **UserJourneys** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | UserJourney | 1: n | Een gebruikers traject waarmee alle benodigde constructies voor een volledige gebruikers stroom worden gedefinieerd. |
 
@@ -41,7 +41,7 @@ Het element **UserJourney** bevat het volgende kenmerk:
 
 Het **UserJourney** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Een indelings reeks die moet worden gevolgd voor een geslaagde trans actie. Elke gebruikers traject bestaat uit een geordende lijst met Orchestration-stappen die in volg orde worden uitgevoerd. Als er een stap mislukt, mislukt de trans actie. |
 
@@ -55,7 +55,7 @@ Als u de geordende lijst met Orchestration-stappen wilt opgeven, wordt een **Orc
 
 Het element **OrchestrationSteps** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1: n | Een geordende Orchestration-stap. |
 
@@ -63,25 +63,25 @@ Het **OrchestrationStep** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Order` | Yes | De volg orde van de Orchestration-stappen. |
-| `Type` | Yes | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**GetClaims** : Hiermee geeft u op dat met de indelings stap claim gegevens moeten worden verwerkt die via de configuratie van de Relying Party naar Azure AD B2C worden verzonden `InputClaims` .</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
-| ContentDefinitionReferenceId | No | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden: als het type indelings stap een van de volgende is `ClaimsProviderSelection` `CombinedSignInAndSignUp` , moet Azure AD B2C de selectie van de identiteits provider weer geven zonder een technisch profiel. |
+| `Order` | Ja | De volg orde van de Orchestration-stappen. |
+| `Type` | Yes | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**GetClaims** : Hiermee geeft u op dat met de indelings stap claim gegevens moeten worden verwerkt die via de configuratie van de Relying Party naar Azure AD B2C worden verzonden `InputClaims` .</li><li>**InvokeSubJourney** : geeft aan dat de Orchestration Step claims met een subtraject (in open bare preview) uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
+| ContentDefinitionReferenceId | No | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden: als het type indelings stap een van de volgende is `ClaimsProviderSelection`  `CombinedSignInAndSignUp` , moet Azure AD B2C de selectie van de identiteits provider weer geven zonder een technisch profiel. |
 | CpimIssuerTechnicalProfileReferenceId | No | Het type van de Orchestration-stap is `SendClaims` . Met deze eigenschap wordt de technische profiel-id gedefinieerd van de claim provider die het token voor de Relying Party verleent.  Als dat niet het geval is, wordt er geen Relying Party token gemaakt. |
-
 
 Het **OrchestrationStep** -element kan de volgende elementen bevatten:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Voor waarden | 0: n | Een lijst met voor waarden waaraan moet worden voldaan om de Orchestration-stap uit te voeren. |
 | ClaimsProviderSelections | 0: n | Een lijst van claim provider selecties voor de Orchestration-stap. |
 | ClaimsExchanges | 0: n | Een lijst met claim uitwisselingen voor de Orchestration-stap. |
+| JourneyList | 0:1 | Een lijst met subtraject kandidaten voor de Orchestration-stap. |
 
 ### <a name="preconditions"></a>Voor waarden
 
 Het element **voor waarden** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Precondition | 1: n | Afhankelijk van het technische profiel dat wordt gebruikt, wordt de client omgeleid volgens de selectie van de claim provider of wordt een server aanroep naar Exchange-claims. |
 
@@ -92,12 +92,12 @@ Het element **voor waarde** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Het type controle of query dat moet worden uitgevoerd voor deze voor waarde. De waarde kan **ClaimsExist**zijn, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker of **ClaimEquals**, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
+| `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor deze voor waarde. De waarde kan **ClaimsExist**zijn, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker of **ClaimEquals**, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
 | `ExecuteActionsIf` | Yes | Gebruik een test waar of ONWAAR om te bepalen of de acties in de voor waarde moeten worden uitgevoerd. |
 
 De elementen in de **voor waarde** bevatten de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | Er wordt een ClaimTypeReferenceId waarvoor een query moet worden uitgevoerd. Een ander value-element bevat de waarde die moet worden gecontroleerd.</li></ul>|
 | Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde `Action` is ingesteld op `SkipThisOrchestrationStep` , moet de gekoppelde `OrchestrationStep` niet worden uitgevoerd. |
@@ -164,7 +164,7 @@ Een indelings stap van type `ClaimsProviderSelection` of `CombinedSignInAndSignU
 
 Het element **ClaimsProviderSelections** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1: n | Geeft de lijst met claim providers die kunnen worden geselecteerd.|
 
@@ -222,7 +222,7 @@ In de volgende indelings stap kan de gebruiker kiezen om u aan te melden met Fac
 
 Het element **ClaimsExchanges** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1: n | Afhankelijk van het gebruikte technische profiel wordt de client omgeleid op basis van de ClaimsProviderSelection die is geselecteerd, of wordt een server aanroep naar Exchange-claims. |
 
@@ -232,3 +232,19 @@ Het **ClaimsExchange** -element bevat de volgende kenmerken:
 | --------- | -------- | ----------- |
 | Id | Yes | Een id van de Exchange-stap voor claims. De id wordt gebruikt om te verwijzen naar de claim uitwisseling van een selectie stap van een claim provider in het beleid. |
 | TechnicalProfileReferenceId | Yes | De id van het technische profiel dat moet worden uitgevoerd. |
+
+## <a name="journeylist"></a>JourneyList
+
+Het element **JourneyList** bevat het volgende element:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| Komt | 1:1 | Een verwijzing naar een subtraject die moet worden aangeroepen. |
+
+### <a name="candidate"></a>Komt
+
+Het element **kandidaat** bevat de volgende kenmerken:
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| SubJourneyReferenceId | Yes | De id van de subtraject die moet worden uitgevoerd. |

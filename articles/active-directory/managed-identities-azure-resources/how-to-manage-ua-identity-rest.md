@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04eb0eb3741a388b375cf7d8c6455bfd4a17b39
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266337"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601160"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met REST API-aanroepen
 
@@ -38,8 +38,6 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
 - Als u het [Windows-subsysteem voor Linux](/windows/wsl/about) of een [Linux-distributie besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)gebruikt, installeert u [de lokale Azure cli-console](/cli/azure/install-azure-cli).
 - Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure met `az login` een account dat is gekoppeld aan het Azure-abonnement waarvoor u door de gebruiker toegewezen beheerde identiteits gegevens wilt implementeren of ophalen.
 - Haal een Bearer-toegangs token `az account get-access-token` op met om de volgende door de gebruiker toegewezen beheerde identiteits bewerkingen uit te voeren.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 

@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279326"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600793"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
@@ -46,7 +46,7 @@ Met Azure AD kunnen beheerders [toepassingen toevoegen](../manage-apps/add-appli
 Zodra toepassingen zijn toegevoegd aan de Azure AD-galerie, kunnen gebruikers apps zien die aan hen zijn toegewezen en vervolgens naar behoefte andere apps aanvragen. Azure AD biedt [verschillende methoden](../manage-apps/end-user-experiences.md) voor gebruikers om toegang te krijgen tot hun apps:
 
 * Toegangs venster/mijn apps
-* Startprogramma voor de Office 365-app
+* Startprogramma voor apps van Microsoft 365
 * Directe aanmelding bij federatieve apps
 * Directe aanmeldings koppelingen
 
@@ -115,7 +115,7 @@ Organisaties met een on-premises Active Directory moeten hun Directory uitbreide
 
 De eenvoudigste en aanbevolen methode voor het inschakelen van Cloud verificatie voor on-premises Directory-objecten in azure AD is het inschakelen van de [synchronisatie van wacht woord-hash](./how-to-connect-password-hash-synchronization.md) (PHS). Sommige organisaties kunnen overwegen om [Pass-Through-verificatie](./how-to-connect-pta-quick-start.md) (PTA) in te scha kelen.
 
-Of u kiest voor PHS of PTA, vergeet niet om [naadloze eenmalige aanmelding](./how-to-connect-sso.md) in te scha kelen zodat gebruikers toegang krijgen tot Cloud-apps zonder dat ze hun gebruikers naam en wacht woord in de app blijven gebruiken wanneer ze Windows 7-en 8-apparaten in uw bedrijfs netwerk gebruikt. Zonder eenmalige aanmelding moeten gebruikers toepassingsspecifieke wacht woorden onthouden en zich aanmelden bij elke toepassing. De IT-afdeling moet ook gebruikers accounts maken en bijwerken voor elke toepassing, zoals Office 365, box en Sales Force. Gebruikers moeten hun wacht woord onthouden, plus de tijd om zich aan te melden bij elke toepassing. Het bieden van een gestandaardiseerd mechanisme voor eenmalige aanmelding bij de hele onderneming is essentieel voor de beste gebruikers ervaring, vermindering van het risico, de mogelijkheid om te rapporteren en te voor komen.
+Of u kiest voor PHS of PTA, vergeet niet om [naadloze eenmalige aanmelding](./how-to-connect-sso.md) in te scha kelen zodat gebruikers toegang krijgen tot Cloud-apps zonder dat ze hun gebruikers naam en wacht woord in de app blijven gebruiken wanneer ze Windows 7-en 8-apparaten in uw bedrijfs netwerk gebruikt. Zonder eenmalige aanmelding moeten gebruikers toepassingsspecifieke wacht woorden onthouden en zich aanmelden bij elke toepassing. De IT-afdeling moet ook gebruikers accounts maken en bijwerken voor elke toepassing, zoals Microsoft 365, box en Sales Force. Gebruikers moeten hun wacht woord onthouden, plus de tijd om zich aan te melden bij elke toepassing. Het bieden van een gestandaardiseerd mechanisme voor eenmalige aanmelding bij de hele onderneming is essentieel voor de beste gebruikers ervaring, vermindering van het risico, de mogelijkheid om te rapporteren en te voor komen.
 
 Voor organisaties die al AD FS of een andere on-premises verificatie provider gebruiken, gaat u naar Azure AD, omdat uw ID-provider de complexiteit kan verminderen en de beschik baarheid kan verbeteren. Tenzij u specifieke use cases voor het gebruik van Federatie hebt, raden wij u aan de migratie uit te voeren van Federated Authentication naar PHS, naadloze SSO of PTA en naadloze SSO om te profiteren van de voor delen van een gereduceerde on-premises ruimte en de flexibiliteit die de Cloud biedt met verbeterde gebruikers ervaring. Zie voor meer informatie [migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory](./plan-migrate-adfs-password-hash-sync.md).
 
@@ -156,7 +156,7 @@ Het toewijzen van gebruikers aan toepassingen is het meest geschikt voor het geb
 * Kenmerk-gebaseerd op het gebruik van een dynamisch groepslid maatschap
 * Delegeren naar app-eigen aren
 
-Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Office 365-groepen. Deze groepen kunnen worden beheerd door een groeps eigenaar die lidmaatschaps aanvragen kan goed keuren of weigeren en het beheer van groepslid maatschap kan overdragen. Met deze functie wordt het [beheer van self-service groep](../users-groups-roles/groups-self-service-management.md)genoemd, zodat groeps eigenaren die geen beheerdersrol hebben toegewezen, groepen kunnen maken en beheren zonder dat ze moeten vertrouwen op beheerders om hun aanvragen te kunnen verwerken.
+Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Microsoft 365 groepen. Deze groepen kunnen worden beheerd door een groeps eigenaar die lidmaatschaps aanvragen kan goed keuren of weigeren en het beheer van groepslid maatschap kan overdragen. Met deze functie wordt het [beheer van self-service groep](../users-groups-roles/groups-self-service-management.md)genoemd, zodat groeps eigenaren die geen beheerdersrol hebben toegewezen, groepen kunnen maken en beheren zonder dat ze moeten vertrouwen op beheerders om hun aanvragen te kunnen verwerken.
 
 ## <a name="step-4---operationalize-your-insights"></a>Stap 4-operationeel maken uw inzichten
 

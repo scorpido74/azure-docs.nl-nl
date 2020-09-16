@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18397ef76a4503bf79c4aaf286035d222bd84ba0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 7b4a0a411f51eed3a262ee59eb8e93b983755af3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460436"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601551"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
 
@@ -52,4 +52,4 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 
-[Een multifunctioneel apparaat of toepassing instellen om e-mail te verzenden met Office 365 en Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+[Een multifunctioneel apparaat of toepassing instellen om e-mail te verzenden met Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

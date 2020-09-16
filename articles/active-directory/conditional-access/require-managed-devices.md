@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948824"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601517"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -98,7 +98,7 @@ Voor een apparaat dat is gemarkeerd als compatibel, kunt u aannemen dat:
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Scenario: apparaatregistratie vereisen voor iOS-en Android-apparaten
 
-In dit scenario heeft Contoso besloten dat alle mobiele toegang tot Office 365-resources een geregistreerd apparaat moeten gebruiken. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+In dit scenario heeft Contoso besloten dat alle mobiele toegang tot Microsoft 365 resources een geregistreerd apparaat moeten gebruiken. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende stappen uitvoeren om het gebruik van een Inge schreven mobiel apparaat te vereisen.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321664"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601300"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Naslag Gids voor identiteits-en toegangs beheer van Azure Active Directory
 
@@ -35,8 +35,8 @@ Voor het beheren van Azure Active Directory is een continue uitvoering vereist v
 | :- | :- |
 | Het proces voor het maken van Azure-abonnementen definiëren | Is afhankelijk van de organisatie |
 | Beslissen wie Enterprise Mobility + Security-licenties krijgt | IAM Operations-team |
-| Bepaal wie Office 365-licenties krijgt | Team van productiviteit |
-| Bepaal wie andere licenties krijgt, bijvoorbeeld Dynamics, VSO | Eigenaar van de toepassing |
+| Beslissen wie Microsoft 365-licenties krijgt | Team van productiviteit |
+| Bepaal wie andere licenties krijgt, bijvoorbeeld Dynamics, Visual Studio Codespaces | Eigenaar van de toepassing |
 | Licenties toewijzen | IAM Operations-team |
 | Fouten met betrekking tot licentie toewijzingen oplossen en herstellen | IAM Operations-team |
 | Identiteiten inrichten voor toepassingen in azure AD | IAM Operations-team |
@@ -140,7 +140,7 @@ De [Azure AD Connect-configuratie Documenter](https://github.com/Microsoft/AADCo
 
 Azure Active Directory stroomlijnt het beheer van licenties via [op groepen gebaseerde licentie verlening](./active-directory-licensing-whatis-azure-portal.md) voor micro soft-Cloud Services. Op deze manier biedt IAM de groeps infrastructuur en gedelegeerd beheer van deze groepen aan de juiste teams in de organisaties. Er zijn meerdere manieren om het lidmaatschap van groepen in azure AD in te stellen, waaronder:
 
-- De **synchronisatie van on-premises** groepen kan afkomstig zijn uit on-premises directory's. Dit kan handig zijn voor organisaties die groeps beheer processen hebben ingesteld die kunnen worden uitgebreid om licenties toe te wijzen in Office 365.
+- De **synchronisatie van on-premises** groepen kan afkomstig zijn uit on-premises directory's. Dit kan handig zijn voor organisaties die groeps beheer processen hebben ingesteld die kunnen worden uitgebreid om licenties toe te wijzen in Microsoft 365.
 
 - Op **kenmerken gebaseerde/dynamische** groepen kunnen worden gemaakt in de Cloud op basis van een expressie op basis van gebruikers kenmerken, bijvoorbeeld afdeling is gelijk aan ' verkoop '. Azure AD houdt de leden van de groep bij, zodat deze consistent zijn met de gedefinieerde expressie. Het gebruik van dit soort groep voor licentie toewijzing maakt het mogelijk een licentie toewijzing op basis van kenmerken te maken die geschikt is voor organisaties met een hoge kwaliteit van gegevens in hun Directory.
 
@@ -188,7 +188,7 @@ De [Standaard Delta synchronisatie](../hybrid/how-to-connect-sync-feature-schedu
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect probleem oplossing aanbevolen lezen
 
-- [Directory kenmerken voorbereiden voor synchronisatie met Office 365 met behulp van het IdFix-hulp programma-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Adreslijst kenmerken voorbereiden voor synchronisatie met Microsoft 365 met het hulp programma IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: problemen tijdens de synchronisatie oplossen](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Samenvatting

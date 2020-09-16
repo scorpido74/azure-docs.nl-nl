@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445931"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603047"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB
 
@@ -217,7 +217,7 @@ df
 ```
 Meer fragmenten en end-to-end-voor beelden vindt u in [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
-## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>Werken met de connector
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a> Werken met de connector
 
 U kunt de connector bouwen vanuit een bron in GitHub of de uber-potten downloaden van Maven op de onderstaande koppelingen.
 
@@ -247,7 +247,7 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ### <a name="using-jupyter-notebooks"></a>Jupyter-notebooks gebruiken
 
-Als u Jupyter-notebooks binnen HDInsight gebruikt, kunt u Spark-Magic- `%%configure` cel gebruiken om de Maven-coördinaten van de connector op te geven.
+Als u Jupyter Notebook in HDInsight gebruikt, kunt u Spark-Magic- `%%configure` cel gebruiken om de Maven-coördinaten van de connector op te geven.
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -273,7 +273,7 @@ mvn clean package
 
 De [Cosmos DB Spark github-opslag plaats](https://github.com/Azure/azure-cosmosdb-spark) heeft de volgende voorbeeld notitieblokken en-scripts die u kunt proberen.
 
-* **On-time vlucht prestaties met Spark en Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Verbind Spark met Cosmos DB met behulp van de HDInsight Jupyter-Notebook Service om Spark SQL, GraphFrames te demonstreren en vlucht vertragingen te voors pellen met behulp van ml-pijp lijnen.
+* **On-time vlucht prestaties met Spark en Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): sluit Spark aan Cosmos DB met behulp van HDInsight Jupyter Notebook Service om Spark SQL, GraphFrames te demonstreren en vertragingen in de vlucht te voors pellen met behulp van ml-pijp lijnen.
 * **Twitter-bron met Apache Spark en Azure Cosmos DB wijzigings feed**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Apache Spark gebruiken om Cosmos DB grafieken te doorzoeken**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Azure Databricks verbinding maken met Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** met behulp van `azure-cosmosdb-spark` .  Hier vindt u ook een Azure Databricks versie van de [laptop voor on-time vlucht prestaties](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).
@@ -309,7 +309,7 @@ We hebben meer informatie in de `azure-cosmosdb-spark` [wiki](https://github.com
 * [Demonstraties van feeds wijzigen](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Demo's van Structured stream](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Controleren
+### <a name="monitoring"></a>Bewaking
 
 * [Spark-taken bewaken met Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
