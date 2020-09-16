@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: Voorbeeld van multi-DRM-ontwerp
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: Analyseren
-      href: media-services-analytics-overview.md
-      items:
-        - name: Media analyseren met behulp van de Azure-portal
-          href: media-services-portal-analyze.md
-        - name: Verwerken met Indexer 2
-          href: media-services-process-content-with-indexer2.md
         - name: Verwerken met Indexer
           href: media-services-index-content.md
           items:
             - name: Taken vooraf instellen
               href: indexer-task-preset.md
-        - name: Verwerken met Face Detector
-          href: media-services-face-and-emotion-detection.md
-        - name: Verwerken met Motion Detector
-          href: media-services-motion-detection.md
         - name: Verwerken met Face Redactor
           href: media-services-face-redaction.md
           items:
             - name: Walkthrough door Face Redactor
               href: media-services-redactor-walkthrough.md
-        - name: Verwerken met videominiaturen
-          href: media-services-video-summarization.md
-        - name: Verwerken met OCR
-          href: media-services-video-optical-character-recognition.md
-        - name: Verwerken met Content Moderator
-          href: media-services-content-moderation.md
     - name: Telemetrie configureren
       href: media-services-telemetry-overview.md
       items:

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797117"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606899"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. de Azure AD-Tenant maken
 
@@ -47,7 +47,7 @@ Registreer de VPN-client in de Azure AD-Tenant.
 
 4. Geef vervolgens toestemming voor de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatie locatie in de adres balk van uw browser:
 
-    Public
+    Openbaar
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -77,7 +77,7 @@ Registreer de VPN-client in de Azure AD-Tenant.
 
 6. Selecteer **accepteren** wanneer u hierom wordt gevraagd.
 
-    ![Accepteren](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![Scherm afbeelding toont een venster met de bericht machtigingen die zijn aangevraagd voor de organisatie en informatie over de aanvraag.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. Onder uw Azure AD, in **bedrijfs toepassingen**, wordt **Azure VPN** weer gegeven.
 
@@ -99,7 +99,7 @@ In deze stap registreert u aanvullende toepassingen voor verschillende gebruiker
 
 4. Klik op **+ een bereik toevoegen**.
 
-5. De standaard **-URI voor de toepassings-id**behouden. Klik op **opslaan en door gaan**.
+5. De standaard **-URI voor de toepassings-id**behouden. Klik op **Opslaan en doorgaan**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 

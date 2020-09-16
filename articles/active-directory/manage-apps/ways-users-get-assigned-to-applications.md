@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397097"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604152"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Begrijpen hoe gebruikers worden toegewezen aan apps in Azure Active Directory
 Dit artikel helpt u te begrijpen hoe gebruikers aan een toepassing in uw Tenant worden toegewezen.
@@ -28,14 +28,14 @@ Een gebruiker kan alleen toegang krijgen tot een toepassing als deze eerst op ee
     * Een groep die is gesynchroniseerd vanuit on-premises
     * Een statische beveiligings groep die in de Cloud is gemaakt
     * Een [dynamische beveiligings groep](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) die in de Cloud is gemaakt
-    * Een Office 365-groep die in de Cloud is gemaakt
+    * Een Microsoft 365 groep die in de Cloud is gemaakt
     * De groep [alle gebruikers](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
 *  Een beheerder maakt [toegang van selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app** -functie toevoegen **zonder zakelijke goed keuring**
-*  Een beheerder maakt [toegang van self-service toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met behulp van [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app** -functie toevoegen, maar alleen de**voorafgaande goed keuring van een geselecteerde set van zakelijke goed keurders**
+*  Een beheerder maakt [toegang van selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met behulp van [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app** -functie toevoegen, maar alleen **met voorafgaande goed keuring vanuit een geselecteerde set van zakelijke goed keurders**
 *  Een beheerder kan [self-service groeps beheer](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) toestaan een gebruiker toe te voegen aan een groep waaraan een toepassing **zonder zakelijke goed keuring** is toegewezen.
 *  Een beheerder kan [self-service groeps beheer](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) toestaan om een gebruiker toe te voegen aan een groep waaraan een toepassing is toegewezen, maar alleen **met voorafgaande goed keuring vanuit een geselecteerde set van goed keurders van het bedrijf**
-*  Een beheerder wijst rechtstreeks een licentie toe aan een gebruiker voor een toepassing in de eerste partij, zoals [Microsoft Office 365](https://products.office.com/)
-*  Een beheerder wijst een licentie toe aan een groep waarvan de gebruiker lid is van een toepassing voor de eerste partij, zoals [Microsoft Office 365](https://products.office.com/)
+*  Een beheerder wijst rechtstreeks een licentie toe aan een gebruiker voor een toepassing in de eerste partij, zoals [Microsoft 365](https://products.office.com/)
+*  Een beheerder wijst een licentie toe aan een groep waarvan de gebruiker lid is van een toepassing voor de eerste partij, zoals [Microsoft 365](https://products.office.com/)
 *  Een [beheerder wordt gestemd op een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) die door alle gebruikers moet worden gebruikt en vervolgens meldt een gebruiker zich aan bij de toepassing
 * Een gebruiker wordt door gegeven aan [een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) zelf door zich aan te melden bij de toepassing
 

@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1570f4a8c4fb23b885c1de68c2c8d2440c4f6aae
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018438"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604067"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -32,7 +32,7 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt op basis van de meest recente status.
@@ -208,13 +208,13 @@ Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten da
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 - Nieuw hulp programma voor probleem oplossing helpt bij het oplossen van problemen ' gebruiker niet synchroniseren ', ' groep niet synchroniseren ' of ' geen synchronisatie van groeps leden '.
-- Ondersteuning voor nationale Clouds toevoegen in Azure AD Connect probleemoplossings script 
+- Voeg ondersteuning toe voor nationale Clouds in Azure AD Connect probleemoplossings script.
 - Klanten moeten worden geïnformeerd dat de afgeschafte WMI-eind punten voor MIIS_Service nu zijn verwijderd. Alle WMI-bewerkingen moeten nu worden uitgevoerd via PS-cmdlets.
-- Beveiligings verbetering door beperkte delegering op AZUREADSSOACC-object opnieuw in te stellen
+- Beveiligings verbetering door beperkte delegering op AZUREADSSOACC-object opnieuw in te stellen.
 - Bij het toevoegen/bewerken van een synchronisatie regel worden de kenmerken automatisch toegevoegd aan de connector als er kenmerken worden gebruikt in de regel die zich in het connector-schema bevinden, maar niet zijn toegevoegd aan de connector. Hetzelfde geldt voor het object type waarop de regel van toepassing is. Als er iets wordt toegevoegd aan de connector, wordt de connector gemarkeerd voor volledige import bij de volgende synchronisatie cyclus.
 - Het gebruik van een ondernemings-of domein beheerder als Connector account wordt niet meer ondersteund in nieuwe Azure AD Connect-implementaties. De huidige Azure AD Connect implementaties die gebruikmaken van een onderneming of een domein beheerder als Connector account, worden niet beïnvloed door deze versie.
 - In synchronisatie beheer wordt een volledige synchronisatie uitgevoerd bij het maken/bewerken/verwijderen van een regel. Er wordt een pop-upvenster weer gegeven bij elke regel wijziging waarmee de gebruiker wordt gewaarschuwd als volledige import of volledige synchronisatie wordt uitgevoerd.
-- De stappen voor het oplossen van problemen met wachtwoord fouten aan de pagina connectors > eigenschappen > connectiviteit zijn toegevoegd
+- De stappen voor het oplossen van problemen met wacht woorden voor de pagina connectors > eigenschappen > connectiviteit zijn toegevoegd.
 - Er is een waarschuwing voor afschaffing toegevoegd voor de synchronisatie Service Manager op de eigenschappen pagina van de connector. Met deze waarschuwing wordt de gebruiker ervan op de hoogte gebracht dat wijzigingen moeten worden aangebracht via de Azure AD Connect wizard.
 - Er is een nieuwe fout toegevoegd voor problemen met het wachtwoord beleid van een gebruiker.
 - Voorkom een onjuiste configuratie van groeps filtering op domein-en OE-filters. Met groeps filtering wordt een fout weer gegeven wanneer het domein of de organisatie-eenheid van de opgegeven groep al is gefilterd en de gebruiker verder niet kan overschakelen totdat het probleem is opgelost.
@@ -233,7 +233,7 @@ Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten da
 - Help popups worden nu weer gegeven op de toetsenbord focus.
 - Als een conflicterende app vanuit 6 uur wordt uitgevoerd, beëindigt u deze voor automatische upgrade en gaat u verder met de upgrade.
 - Beperk het aantal kenmerken dat een klant kan selecteren tot 100 per object bij het selecteren van Directory-extensies. Hierdoor wordt voor komen dat de fout optreedt tijdens het exporteren, omdat Azure Maxi maal 100 extensie kenmerken per object heeft.
-- Er is een fout opgelost waardoor het AD-connectiviteits script robuuster is
+- Er is een fout opgelost waardoor het AD-connectiviteits script robuuster is.
 - Een bug opgelost om Azure AD Connect te installeren op een computer met behulp van een bestaande named pipes WCF-service robuuster.
 - Verbeterde diagnostische gegevens en probleem oplossing rond groeps beleid waarmee de ADSync-service niet kan worden gestart wanneer deze voor het eerst wordt geïnstalleerd.
 - Er is een fout opgelost waarbij de weergave naam voor een Windows-computer onjuist is geschreven.
@@ -246,9 +246,9 @@ Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten da
 >[!IMPORTANT]
 >Er is een bekend probleem met het upgraden van Azure AD Connect van een eerdere versie naar 1.3.21.0, waarbij de Microsoft 365 Portal niet overeenkomt met de bijgewerkte versie, zelfs als Azure AD Connect is bijgewerkt.
 >
-> Als u dit probleem wilt oplossen, moet u de **AdSync** -module importeren en vervolgens de `Set-ADSyncDirSyncConfiguration` Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
+> Als u dit wilt oplossen, moet u de **AdSync** -module importeren en vervolgens de `Set-ADSyncDirSyncConfiguration` Power shell-cmdlet op de Azure AD Connect-server uitvoeren.  U kunt de volgende stappen uitvoeren:
 >
->1. Open Power shell in de modus beheerder.
+>1. Open Power shell in de beheerders modus.
 >2. Voer `Import-Module "ADSync"` uit.
 >3. Voer `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` uit.
  

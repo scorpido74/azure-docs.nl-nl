@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527102"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604917"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MySQL
 
@@ -27,13 +27,20 @@ Het nieuwe certificaat wordt vanaf 26 oktober 2020 (10/26/2020) gebruikt. Als u 
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hoe kan ik weet of mijn Data Base wordt beïnvloed?
 
-Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken om verbinding te maken met Azure Database for MySQL. Als u momenteel geen gebruikmaakt van SSL/TLS, is er geen invloed op de beschik baarheid van uw toepassing. U kunt controleren of uw client toepassing de SSL-modus probeert te gebruiken met de vooraf gedefinieerde vertrouwde certificerings instantie ( [CA).](concepts-ssl-connection-security.md#ssl-default-settings)
+Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken. U kunt bepalen of uw verbindingen het basis certificaat verifiëren door uw connection string te controleren.
+-   Als uw connection string bevat `sslmode=verify-ca` of
+-   Als uw connection string bevat `sslmode=disable` , hoeft u geen certificaten bij te werken.
+-   Als uw connection string bevat `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
+-   Als uw connection string geen specifieke sslmode heeft, hoeft u geen certificaten bij te werken.
+
+Als u een-client gebruikt die het connection string verwijderd, raadpleegt u de documentatie van de client om te begrijpen of de certificaten worden geverifieerd.
+Bekijk de beschrijvingen van de [SSL-modus](concepts-ssl-connection-security.md#ssl-default-settings)om Azure database for MySQL sslmode te begrijpen.
 
 Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een certificaat wilt bijwerken dat is ingetrokken, raadpleegt u de sectie [**' wat heb ik nodig om de verbinding te behouden '**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) .
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Wat heb ik nodig om de connectiviteit in stand te houden
 
-Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of om een certificaat bij te werken dat is ingetrokken:
+Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken of als u een certificaat wilt bijwerken dat is ingetrokken. Het is een goed idee om een nieuw *. pem* -bestand te maken, waarin het huidige certificaat en de nieuwe en tijdens de validatie van het SSL-certificaat worden gecombineerd, zodra de toegestane waarden worden gebruikt. Raadpleeg de volgende stappen:
 
 *   Down load BaltimoreCyberTrustRoot & DigiCertGlobalRootG2-basis certificerings instantie via onderstaande koppelingen:
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -72,11 +79,10 @@ Volg de onderstaande stappen om te voor komen dat de beschik baarheid van uw toe
 *   Vervang het oorspronkelijke PEM-bestand van de basis-CA door het gecombineerde basis-CA-bestand en start de toepassing/client opnieuw.
 *   Nadat het nieuwe certificaat op de server is geïmplementeerd, kunt u in de toekomst het PEM-bestand van de CA wijzigen in DigiCertGlobalRootG2. CRT. pem.
 
-## <a name="what-can-be-the-impact"></a>Wat kan de impact hebben?
+## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Wat kan de invloed zijn van het bijwerken van het certificaat?
 Als u het Azure Database for MySQL verleende certificaat gebruikt zoals hier wordt beschreven, kan de beschik baarheid van uw toepassing worden onderbroken omdat de data base niet bereikbaar is. Afhankelijk van uw toepassing kunnen er diverse fout berichten worden weer gegeven, inclusief, maar niet beperkt tot:
 *   Ongeldig certificaat/ingetrokken certificaat
 *   Time-out opgetreden voor verbinding
-*   Fout, indien van toepassing
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -89,23 +95,36 @@ Nee, u hoeft de database server niet opnieuw op te starten om het nieuwe certifi
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. Wat gebeurt er als ik het basis certificaat niet bijwerk vóór 26 oktober 2020 (10/26/2020)?
 Als u het basis certificaat niet bijwerkt vóór 26 oktober 2020, zullen uw toepassingen die verbinding maken via SSL/TLS en verificatie voor het basis certificaat niet kunnen communiceren met de MySQL-database server en de toepassing verbindings problemen ondervindt met de MySQL-database server.
 
-### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. Ik moet een downtime voor onderhoud voor deze wijziging plannen?<BR>
-Nee. Aangezien de wijziging hier alleen aan de client zijde wordt weer gegeven om verbinding te maken met de database server, is er hier geen onderbrekings tijd nodig voor deze wijziging.
+### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. Wat is de impact van het gebruik van App Service met Azure Database for MySQL?
+Voor Azure app Services, het maken van verbinding met Azure Database for MySQL, kunnen we twee mogelijke scenario's hebben. Dit is afhankelijk van hoe u SSL met uw toepassing gebruikt.
+*   Dit nieuwe certificaat is toegevoegd aan App Service op platform niveau. Als u de SSL-certificaten gebruikt die zijn opgenomen in App Service platform in uw toepassing, is er geen actie vereist.
+*   Als u expliciet het pad naar het SSL-certificaat bestand in uw code opneemt, moet u het nieuwe certificaat downloaden en de code bijwerken om het nieuwe certificaat te gebruiken.
 
-### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. Wat moet ik doen als ik vóór 26 oktober 2020 (10/26/2020) geen geplande downtime voor deze wijziging krijg?
+### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. Wat is de impact van het gebruik van Azure Kubernetes Services (AKS) met Azure Database for MySQL?
+Als u probeert verbinding te maken met de Azure Database for MySQL met behulp van Azure Kubernetes Services (AKS), is dit vergelijkbaar met de toegang vanuit een specifieke host-omgeving van klanten. Raadpleeg de stappen [hier](../aks/ingress-own-tls.md).
+
+### <a name="6-what-is-the-impact-if-using-azure-data-factory-to-connect-to-azure-database-for-mysql"></a>6. Wat is de impact van Azure Data Factory om verbinding te maken met Azure Database for MySQL?
+Voor connector met Azure Integration Runtime gebruikt de connector certificaten in het Windows-certificaat archief in de op Azure gehoste omgeving. Deze certificaten zijn al compatibel met de zojuist toegepaste certificaten en daarom is er geen actie vereist.
+
+Voor connectors die gebruikmaken van zelf-hostende Integration Runtime waarbij u het pad naar het SSL-certificaat bestand in uw connection string expliciet opneemt, moet u het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) downloaden en de Connection String bijwerken om het te gebruiken.
+
+### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. moet ik de downtime van een database server onderhoud voor deze wijziging plannen?
+Nee. Omdat de wijziging hier alleen aan de client zijde wordt weer gegeven om verbinding te maken met de database server, is er geen uitval tijd nodig voor de database server voor deze wijziging.
+
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. Wat moet ik doen als ik vóór 26 oktober 2020 (10/26/2020) geen geplande downtime voor deze wijziging krijg?
 Omdat de clients die zijn gebruikt voor het maken van een verbinding met de server, de certificaat gegevens moeten bijwerken zoals beschreven in de sectie oplossing [hier](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), hoeven we in dit geval geen downtime voor de server te gebruiken.
 
-###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. als ik een nieuwe server Maak na 26 oktober 2020, geldt dit?
+### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. als ik een nieuwe server Maak na 26 oktober 2020, geldt dit?
 Voor servers die zijn gemaakt na 26 oktober 2020 (10/26/2020), kunt u het zojuist uitgegeven certificaat voor uw toepassingen gebruiken om verbinding te maken via SSL.
 
-### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
+### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
 Deze certificaten die worden gebruikt door Azure Database for MySQL worden door vertrouwde certificerings instanties (CA) verschaft. Daarom is de ondersteuning van deze certificaten op Azure Database for MySQL gekoppeld aan de ondersteuning van deze certificaten per CA. In dit geval kunnen er echter onvoorziene fouten voor komen in deze vooraf gedefinieerde certificaten, die op het eerst moeten worden opgelost.
 
-### <a name="8-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>8. als ik lees replica's gebruik, moet ik deze update alleen uitvoeren op de hoofd server of op alle Lees replica's?
-Omdat deze update een wijziging aan de client zijde is, moeten we ook de wijzigingen voor deze clients Toep assen als de client gebruikt voor het lezen van gegevens van de replica server. 
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen op de hoofd server of de Lees replica's uitvoeren?
+Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen voor deze clients ook Toep assen als de client de gegevens van de replica server heeft gelezen.
 
-### <a name="9-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>9. hebben we een query aan server zijde om te controleren of SSL wordt gebruikt?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. hebben we een query aan de server zijde om te controleren of SSL wordt gebruikt?
 Raadpleeg [SSL-verificatie](howto-configure-ssl.md#step-4-verify-the-ssl-connection)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.
 
-### <a name="10-what-if-i-have-further-questions"></a>10. Wat moet ik doen als ik meer vragen heb?
+### <a name="13-what-if-i-have-further-questions"></a>13. Wat moet ik doen als ik meer vragen heb?
 Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseforMySQL@service.microsoft.com) opnemen

@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: Overzichtskaart algoritmen
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: Algoritmen selecteren
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: Geautomatiseerde machine learning
       items:
         - name: Geautomatiseerd ML-overzicht

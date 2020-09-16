@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629037"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604742"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-gegevens controleren
 
@@ -24,9 +24,7 @@ ms.locfileid: "84629037"
 
 Custom Speech biedt hulp middelen waarmee u de herkennings kwaliteit van een model visueel kunt controleren door audio gegevens te vergelijken met het bijbehorende herkennings resultaat. Vanuit de [Custom speech Portal](https://speech.microsoft.com/customspeech)kunt u geüploade audio afspelen en bepalen of het gegeven herkennings resultaat juist is. Met dit hulp programma kunt u de kwaliteit van het spraak-naar-tekst model van micro soft-basis lijn controleren, een getraind aangepast model controleren of transcriptie vergelijken met twee modellen.
 
-In dit document leert u hoe u de kwaliteit van een model visueel kunt controleren met behulp van de trainings gegevens die u eerder hebt geüpload.
-
-Op deze pagina leert u hoe u de kwaliteit van het spraak-naar-tekst model van micro soft en/of een aangepast model dat u hebt getraind, visueel kunt controleren. U gebruikt de gegevens die u hebt geüpload naar het tabblad **gegevens** om te testen.
+In dit document leert u hoe u de kwaliteit van het spraak-naar-tekst model van micro soft en/of aangepaste modellen die u hebt getraind, visueel kunt controleren. U leert ook hoe u de online transcriptie-editor gebruikt om gelabelde audio gegevens sets te maken en te verfijnen.
 
 ## <a name="create-a-test"></a>Een test maken
 
@@ -50,6 +48,50 @@ Wanneer de test status is _geslaagd_, klikt u op de naam van het test item om de
 Als u de gelijktijdige vergelijking wilt controleren, kunt u verschillende fout typen met inbegrip van invoegen, verwijderen en vervangen. Als u naar de audio luistert en de herkennings resultaten in elke kolom vergelijkt (met transcriptie en de resultaten van twee spraak-naar-tekst modellen), kunt u bepalen welk model aan uw behoeften voldoet en waar verbeteringen nodig zijn.
 
 Het is handig om te controleren welk spraakherkennings model het meest geschikt is voor een toepassing. Volg de instructies in [evalueren nauw keurigheid](how-to-custom-speech-evaluate-data.md)voor een objectieve maat regel voor nauw keurigheid, voor het vereisen van getranscribeerde audio.
+
+## <a name="online-transcription-editor"></a>Online transcriptie-editor
+
+Met de online transcriptie-editor kunt u eenvoudig werken met audio-transcripties in Custom Speech. De belangrijkste use cases van de editor zijn als volgt: 
+
+* U hebt alleen audio gegevens, maar u wilt nauw keuriger audio + met menselijke labels gelabelde gegevens sets maken voor gebruik in een model training.
+* U hebt al audio en gegevens sets met menselijke labels, maar er zijn fouten of defecten in de transcriptie. Met de editor kunt u de transcripties snel aanpassen om de beste nauw keurigheid van de training te krijgen.
+
+De enige vereiste voor het gebruik van de transcriptie-editor is het uploaden van audio gegevens (alleen audio of audio + transcriptie).
+
+### <a name="import-datasets-to-editor"></a>Gegevens sets importeren in editor
+
+Als u gegevens wilt importeren in de editor, gaat u eerst naar **Custom Speech > [uw project] > editor**.
+
+![Tabblad Editor](media/custom-speech/custom-speech-editor-detail.png)
+
+Gebruik vervolgens de volgende stappen om gegevens te importeren.
+
+1. Klik op **gegevens importeren**
+1. Een nieuwe gegevensset maken en hieraan een beschrijving geven
+1. Selecteer gegevens sets. Meerdere selecties worden ondersteund en u kunt alleen audio gegevens selecteren, maar ook audio en mensen met een label.
+1. Voor alleen audio gegevens kunt u optioneel de standaard modellen gebruiken om automatisch machine transcriptie te genereren na het importeren in de editor
+1. Klik op **importeren**
+
+Nadat de gegevens zijn geïmporteerd, kunt u in de gegevens sets klikken en de bewerking starten.
+
+> [!TIP]
+> U kunt gegevens sets ook rechtstreeks importeren in de editor door gegevens sets te selecteren en te klikken op **exporteren naar editor**
+
+### <a name="edit-transcription-by-listening-to-audio"></a>Transcriptie bewerken door naar audio te Luis teren
+
+Nadat het uploaden van gegevens is geslaagd, klikt u op elke item naam om de details van de gegevens weer te geven. Op de detail pagina vindt u een overzicht van alle bestanden in uw gegevensset en kunt u klikken op de gewenste utterance. Voor elke utterance kunt u de audio afspelen en de transcripten bekijken, en de transcripties bewerken als u fouten bij het invoegen, verwijderen of vervangen hebt gevonden. Raadpleeg de [evaluatie van gegevens](how-to-custom-speech-evaluate-data.md) voor meer informatie over fout typen.
+
+![Pagina editor](media/custom-speech/custom-speech-editor.png)
+
+Als het audio bestand lang is, wordt het automatisch in kleinere delen gesegmenteerd. U kunt ze één voor één bewerken met behulp van **vorige** en **volgende** om tussen pagina's te scha kelen. Nadat u wijzigingen hebt aangebracht, klikt u op de knop **Opslaan** .
+
+### <a name="export-datasets-from-the-editor"></a>Gegevens sets exporteren uit de editor
+
+Als u gegevens sets wilt exporteren naar het tabblad **gegevens** , gaat u naar de pagina gegevens details en klikt u op de knop **exporteren** om alle bestanden als een nieuwe gegevensset te exporteren. U kunt de bestanden ook filteren op de laatst bewerkte tijd, de duur van de audio, enzovoort, om de gewenste bestanden gedeeltelijk te selecteren. 
+
+![Gegevens exporteren](media/custom-speech/custom-speech-editor-export.png)
+
+De bestanden die naar gegevens worden geëxporteerd, worden gebruikt als een merk nieuwe gegevensset en zijn niet van invloed op de bestaande gegevens/training/test-entiteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

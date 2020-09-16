@@ -2,17 +2,19 @@
 title: Meerdere exemplaren van een eigenschap definiëren
 description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het maken van een eigenschap in een resource.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678457"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605240"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschaps herhaling in ARM-sjablonen
 
-In dit artikel wordt beschreven hoe u meer dan één exemplaar van een eigenschap in uw Azure Resource Manager-sjabloon (ARM) kunt maken. Door het element **copy** toe te voegen aan de sectie eigenschappen van een resource in uw sjabloon, kunt u het aantal items voor een eigenschap tijdens de implementatie dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
+In dit artikel wordt beschreven hoe u meer dan één exemplaar van een eigenschap in uw Azure Resource Manager sjabloon maakt (ARM-sjabloon). Door het element **copy** toe te voegen aan de sectie eigenschappen van een resource in uw sjabloon, kunt u het aantal items voor een eigenschap tijdens de implementatie dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
+
+U kunt alleen kopiëren gebruiken met resources op het hoogste niveau, zelfs wanneer u een kopie op een eigenschap toepast. Zie [iteratie voor een onderliggende resource](copy-resources.md#iteration-for-a-child-resource)voor meer informatie over het wijzigen van een onderliggende resource in een resource op het hoogste niveau.
 
 U kunt ook kopiëren met [resources](copy-resources.md), [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
 
@@ -252,7 +254,7 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 
 In het volgende voor beeld ziet u een veelvoorkomend scenario voor het maken van meer dan één waarde voor een eigenschap.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[VM-implementatie met een variabele aantal gegevens schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Hiermee worden verschillende gegevens schijven met een virtuele machine geïmplementeerd. |
 

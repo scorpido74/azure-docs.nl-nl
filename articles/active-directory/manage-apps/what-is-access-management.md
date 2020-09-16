@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639916"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604101"
 ---
 # <a name="managing-access-to-apps"></a>Toegang tot apps beheren
 
@@ -54,11 +54,11 @@ Voor sommige toepassingen is de optie voor het vereisen van gebruikers toewijzin
 Azure AD biedt [verschillende aanpas bare manieren om toepassingen te implementeren](end-user-experiences.md) voor eind gebruikers in uw organisatie:
 
 * Mijn apps in azure AD
-* Office 365-start programma voor toepassingen
+* Start programma voor toepassing Microsoft 365
 * Directe aanmelding bij federatieve apps (Service-PR)
 * Dieptekoppelingen naar federatieve apps, op basis van wachtwoorden, of bestaande apps
 
-U kunt bepalen of gebruikers die zijn toegewezen aan een zakelijke app deze kunnen zien in mijn apps en Office 365-start programma voor toepassingen.
+U kunt bepalen of gebruikers die zijn toegewezen aan een zakelijke app deze kunnen zien in mijn apps en Microsoft 365 start programma voor toepassingen.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Voor beeld: complexe toepassings toewijzing met Azure AD
 Overweeg een toepassing zoals Sales Force. In veel organisaties wordt Sales Force voornamelijk gebruikt door de marketing-en verkoop teams. Vaak hebben leden van het marketing team zeer uitgebreide toegang tot Sales Force, terwijl leden van het verkoop team beperkte toegang hebben. In veel gevallen heeft een brede populatie aan informatie medewerkers de toegang tot de toepassing beperkt. Uitzonde ringen op deze regels zijn belang rijk voor het bemoeilijken. Het is vaak de prerogative van de marketing-of verkoop leiders om een gebruiker toegang te verlenen of hun rollen onafhankelijk van deze algemene regels te wijzigen.
@@ -78,17 +78,17 @@ Beheerders kunnen [voorwaardelijke toegang tot Azure AD](../conditional-access/c
 
 ## <a name="access-to-microsoft-applications"></a>Toegang tot micro soft-toepassingen
 
-Micro soft-toepassingen (zoals Office 365 Exchange, share point, Yammer, enz.) zijn toegewezen en worden beheerd op een andere manier dan SaaS-toepassingen van derden of andere toepassingen die u met Azure AD integreert voor eenmalige aanmelding.
+Micro soft-toepassingen (zoals Exchange, share point, Yammer, enz.) zijn toegewezen en worden beheerd op een andere manier dan SaaS-toepassingen van derden of andere toepassingen die u met Azure AD integreert voor eenmalige aanmelding.
 
 Er zijn drie belang rijke manieren waarop een gebruiker toegang kan krijgen tot een door micro soft gepubliceerde toepassing.
 
-- Voor toepassingen in Office 365 of andere betaalde suites, krijgen gebruikers toegang via **licentie toewijzing** rechtstreeks aan hun gebruikers account, of via een groep via onze toewijzing van licentie toewijzingen op basis van groepen.
+- Voor toepassingen in de Microsoft 365 of andere betaalde suites, krijgen gebruikers toegang via **licentie toewijzing** rechtstreeks aan hun gebruikers account, of via een groep via onze toewijzing van licentie toewijzingen op basis van groepen.
 - Voor toepassingen die door micro soft of een derde partij vrij worden gepubliceerd voor iedereen, kunnen gebruikers toegang krijgen via [toestemming](configure-user-consent.md)van de gebruiker. Dit betekent dat ze zich bij de toepassing aanmelden met hun Azure AD-werk-of school account en toegang hebben tot een beperkt aantal gegevens op hun account.
 - Voor toepassingen die door micro soft of een derde partij vrij worden gepubliceerd voor iedereen, kunnen gebruikers ook toegang krijgen via [toestemming](manage-consent-requests.md)van de beheerder. Dit betekent dat een beheerder heeft vastgesteld dat de toepassing door iedereen in de organisatie kan worden gebruikt, zodat deze zich bij de toepassing aanmeldt met een account van de globale beheerder en toegang verleent aan iedereen in de organisatie.
 
-Sommige toepassingen combi neren deze methoden. Bepaalde micro soft-toepassingen maken bijvoorbeeld deel uit van een Office 365-abonnement, maar vereisen nog wel toestemming.
+Sommige toepassingen combi neren deze methoden. Bepaalde micro soft-toepassingen maken bijvoorbeeld deel uit van een Microsoft 365-abonnement, maar vereisen nog wel toestemming.
 
-Gebruikers hebben toegang tot Office 365-toepassingen via hun Office 365-portals. U kunt ook Office 365-toepassingen weer geven of verbergen in de mijn apps met de [zicht baarheid van office 365](hide-application-from-user-portal.md) in de **gebruikers instellingen**van uw Directory. 
+Gebruikers hebben toegang tot Microsoft 365 toepassingen via hun Office 365-portals. U kunt ook Microsoft 365-toepassingen weer geven of verbergen in mijn apps met de [Office 365-zicht baarheid](hide-application-from-user-portal.md) in de **gebruikers instellingen**van uw Directory. 
 
 Net als bij zakelijke apps kunt u [gebruikers toewijzen](assign-user-or-group-access-portal.md) aan bepaalde micro soft-toepassingen via de Azure portal of, als de portal optie niet beschikbaar is, met behulp van Power shell.
 

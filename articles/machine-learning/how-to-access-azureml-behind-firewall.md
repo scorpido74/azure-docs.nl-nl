@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660004"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604407"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -33,6 +33,10 @@ Maak op uw firewall een _toepassings regel_ die verkeer naar en van de adressen 
 >
 > Zie [Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)voor meer informatie over het configureren van Azure firewall.
 
+## <a name="routes"></a>Routes
+
+Gebruik de richt lijnen in de sectie [geforceerde tunneling](how-to-secure-training-vnet.md#forced-tunneling) voor het beveiligen van de trainings omgeving bij het configureren van de uitgaande route voor het subnet dat Azure machine learning resources bevat.
+
 ## <a name="microsoft-hosts"></a>Micro soft-hosts
 
 Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte. Er zijn verschillende hostnamen die worden gebruikt door de Azure Machine Learning-werk ruimte.
@@ -41,6 +45,8 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 
 | **Hostnaam** | **Doel** |
 | ---- | ---- |
+| **login.microsoftonline.com** | Verificatie |
+| **management.azure.com** | Wordt gebruikt om de werkruimte gegevens op te halen |
 | **\*. batchai.core.windows.net** | Trainings clusters |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | Gebruikt door de Azure Machine Learning Studio |
@@ -59,13 +65,16 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **\*. notebooks.azure.net** | Vereist door de notitie blokken in Azure Machine Learning Studio. |
 | **graph.windows.net** | Vereist voor notebooks |
 
+> [!TIP]
+> Als u van plan bent federatieve identiteiten te gebruiken, volgt u de [Aanbevolen procedures voor het beveiligen van Active Directory Federation Services](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) -artikelen.
+
 ## <a name="python-hosts"></a>Python-hosts
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 
 
 | **Hostnaam** | **Doel** |
 | ---- | ---- |
-| **anaconda.com** | Wordt gebruikt om standaard pakketten te installeren. |
+| **anaconda.com**</br>**\*. anaconda.com** | Wordt gebruikt om standaard pakketten te installeren. |
 | **\*. anaconda.org** | Wordt gebruikt om opslag plaats-gegevens op te halen. |
 | **pypi.org** | Wordt gebruikt voor het weer geven van afhankelijkheden uit de standaard index, indien aanwezig, en de index wordt niet overschreven door gebruikers instellingen. Als de index wordt overschreven, moet u ook ** \* . pythonhosted.org**toestaan. |
 

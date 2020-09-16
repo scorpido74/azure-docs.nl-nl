@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371724"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606504"
 ---
 Aan de volgende vereisten moet worden voldaan om een apparaat tunnel te kunnen instellen:
 
@@ -123,18 +123,18 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![Scherm afbeelding toont een opdracht prompt venster met een opdracht om de 64-bits versie van Power shell te starten.](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. Ga in Power shell naar de map waarin **devicecert.ps1** en **VPNProfile.xml** zich bevinden en voer de volgende opdracht uit:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![Scherm afbeelding toont een Power shell-venster met MachineCertTest met behulp van het script devicesert.](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. Voer **Rasphone**uit.
 
-   ![Rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![Scherm afbeelding toont het dialoog venster uitvoeren met Rasphone geselecteerd.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. Zoek de vermelding **MachineCertTest** en klik op **verbinden**.
 
-   ![Verbinding maken](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![Scherm afbeelding toont het dialoog venster netwerk verbindingen met MachineCertTest geselecteerd en een knop verbinding maken.](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. Als de verbinding is geslaagd, start u de computer opnieuw op. De tunnel wordt automatisch verbonden.

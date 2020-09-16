@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611798"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604441"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ Zie voor meer informatie een overzicht van [FCI met SQL Server op Azure vm's](fa
 Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig:
 
 - Een Azure-abonnement. Ga [gratis](https://azure.microsoft.com/free/)aan de slag. 
-- [Twee of meer door West-Centraal VS voor bereide virtuele Windows Azure-machines](failover-cluster-instance-prepare-vm.md) in dezelfde [beschikbaarheidsset](../../../virtual-machines/linux/tutorial-availability-sets.md) en een [proximity-plaatsings groep](../../../virtual-machines/windows/co-location.md#proximity-placement-groups), met de Beschikbaarheidsset die is gemaakt met fout domein en update domein ingesteld op **1**. 
+- [Twee of meer virtuele Windows Azure-machines](failover-cluster-instance-prepare-vm.md). [Beschikbaarheids sets](../../../virtual-machines/windows/tutorial-availability-sets.md) en [proximity placement groups](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) worden beide ondersteund. Als u een PPG gebruikt, moeten alle knoop punten zich in dezelfde groep bevinden.
 - Een account met machtigingen voor het maken van objecten op zowel virtuele Azure-machines als in Active Directory.
 - De meest recente versie van [Power shell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
 
 
 ## <a name="add-azure-shared-disk"></a>Gedeelde Azure-schijf toevoegen
-Implementeer een beheerde Premium-SSD schijf met de functie gedeelde schijf ingeschakeld. Stel `maxShares` in op **2** om de schijf te delen in beide FCI-knoop punten. 
+Implementeer een beheerde Premium-SSD schijf met de functie gedeelde schijf ingeschakeld. Stel `maxShares` in dat er moet worden **uitgelijnd met het aantal cluster knooppunten** om de schijf te delen op alle FCI-knoop punten. 
 
 Als u een gedeelde Azure-schijf wilt toevoegen, gaat u als volgt te werk: 
 
@@ -153,10 +153,10 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
 1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer onder **selectie testen**alle tests *behalve* **opslag**
 
 ## <a name="test-cluster-failover"></a>Cluster-Failover testen
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Connectiviteit configureren 
 
-Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) maken of, als u SQL Server 2019 en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan een voor beeld van de functie voor [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) bekijken. 
+Als u verkeer op de juiste manier wilt door sturen naar het huidige primaire knoop punt, configureert u de connectiviteits optie die geschikt is voor uw omgeving. U kunt een [Azure-Load Balancer](hadr-vnn-azure-load-balancer-configure.md) maken of, als u SQL Server 2019 Cu2 + en Windows Server 2016 (of hoger) gebruikt, kunt u in plaats daarvan een voor beeld van de functie voor [gedistribueerde netwerk naam](hadr-distributed-network-name-dnn-configure.md) bekijken. 
 
 ## <a name="limitations"></a>Beperkingen
 

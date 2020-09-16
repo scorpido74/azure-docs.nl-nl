@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/31/2020
 ms.author: baanders
-ms.openlocfilehash: 984739a728f6ac5e28eeb561e0d7b6ec0485ca13
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7e43ab6d419d6a08973864838c66aef0941d74f5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496862"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606244"
 ---
 Voer eerst deze opdracht uit om een lijst weer te geven met alle extensies die u al hebt geïnstalleerd.
 
-```azurecli-interactive
+```azurecli
 az extension list
 ```
 
@@ -23,18 +23,18 @@ De uitvoer is een matrix van alle extensies die u momenteel hebt. Zoek naar het 
 Gebruik de uitvoer om te bepalen welke van de volgende opdrachten moet worden uitgevoerd voor de extensie-instelling (u kunt er meer dan één uitvoeren).
 * Als de lijst `azure-iot` bevat: U hebt de extensie al. Voer deze opdracht uit om te controleren of u over de meest recente update beschikt en er geen updates meer beschikbaar zijn:
 
-   ```azurecli-interactive
+   ```azurecli
    az extension update --name azure-iot
    ```
 
 * Als de lijst `azure-iot` **niet** bevat: U moet de extensie installeren. Gebruik deze opdracht:
 
-    ```azurecli-interactive
+    ```azurecli
     az extension add --name azure-iot
     ```
 
 * Als de lijst `azure-iot-cli-ext` bevat: Dit is de verouderde versie van de extensie. Er moet slechts één versie van de extensie tegelijkertijd zijn geïnstalleerd. U moet de oude extensie dus verwijderen. Gebruik deze opdracht:
 
-   ```azurecli-interactive
+   ```azurecli
    az extension remove --name azure-cli-iot-ext
    ```

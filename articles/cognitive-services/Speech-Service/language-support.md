@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053572"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604390"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -38,21 +38,25 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Landinstelling  | Taal                          | Aanpassingen                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arabisch (VAE)                      | Nee                                                |
+| `ar-AE` | Arabisch (VAE)                      | No                                                |
 | `ar-BH` | Arabisch (Bahrein), modern, standaard | Taalmodel                                    |
 | `ar-EG` | Arabisch (Egypte)                    | Taalmodel                                    |
-| `ar-IL` | Arabisch (Israël)                   | Nee                                                |
-| `ar-JO` | Arabisch (Jordanië)                   | Nee                                                |
-| `ar-KW` | Arabisch (Koeweit)                   | Nee                                                |
-| `ar-LB` | Arabisch (Libanon)                  | Nee                                                |
-| `ar-PS` | Arabisch (Palestijnse)                | Nee                                                |
-| `ar-QA` | Arabisch (Qatar)                    | Nee                                                |
-| `ar-SA` | Arabisch (Saoedi-Arabië)             | Nee                                                |
+| `ar-IL` | Arabisch (Israël)                   | No                                                |
+| `ar-IQ` | Arabisch (Irak)                     | No                                                |
+| `ar-JO` | Arabisch (Jordanië)                   | No                                                |
+| `ar-KW` | Arabisch (Koeweit)                   | No                                                |
+| `ar-LB` | Arabisch (Libanon)                  | No                                                |
+| `ar-OM` | Arabisch (Oman)                     | No                                                |
+| `ar-PS` | Arabisch (Palestijnse)                | No                                                |
+| `ar-QA` | Arabisch (Qatar)                    | No                                                |
+| `ar-SA` | Arabisch (Saoedi-Arabië)             | No                                                |
 | `ar-SY` | Arabisch (Syrië)                    | Taalmodel                                    |
-| `ca-ES` | Catalaans                           | Taalmodel                                    |
+| `bg-BG` | Bulgaars (Bulgarije)              | Taalmodel                                    |
+| `ca-ES` | Catalaans (Spanje)                   | Taalmodel                                    |
 | `cs-CZ` | Tsjechisch (Tsjechische Republiek)            | Taal model                                    | 
 | `da-DK` | Deens (Denemarken)                  | Taalmodel                                    |
 | `de-DE` | Duits (Duitsland)                  | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `el-GR` | Grieks (Griekenland)                    | Taalmodel                                    |
 | `en-AU` | Engels (Australië)               | Akoestisch model<br>Taalmodel                  |
 | `en-CA` | Engels (Canada)                  | Akoestisch model<br>Taalmodel                  |
 | `en-GB` | Engels (Verenigd Koninkrijk)          | Akoestisch model<br>Taalmodel<br>Uitspraak van |
@@ -84,27 +88,36 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-SV` | Spaans (El Salvador)             | Taal model                                    | 
 | `es-US` | Spaans (Verenigde Staten)                     | Taal model                                    | 
 | `es-UY` | Spaans (Uruguay)                 | Taal model                                    | 
-| `es-VE` | Spaans (Venezuela)               | Taal model                                    | 
+| `es-VE` | Spaans (Venezuela)               | Taal model                                    |
+| `et-EE` | Estisch (Estland)                 | Taal model                                    | 
 | `fi-FI` | Fins (Finland)                 | Taalmodel                                    |
 | `fr-CA` | Frans (Canada)                   | Akoestisch model<br>Taalmodel                  |
 | `fr-FR` | Frans (Frankrijk)                   | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `ga-IE` | Ierse (Ierland)                    | Taalmodel                                    |
 | `gu-IN` | Gujarati (Indiase)                 | Taalmodel                                    |
 | `hi-IN` | Hindi (India)                     | Akoestisch model<br>Taalmodel                  |
+| `hr-HR` | Kroatisch (Kroatië)                | Taalmodel                                    |
 | `hu-HU` | Hongaars (Hongarije)               | Taal model                                    | 
 | `it-IT` | Italiaans (Italië)                   | Akoestisch model<br>Taalmodel<br>Uitspraak van |
 | `ja-JP` | Japans (Japan)                  | Taalmodel                                    |
 | `ko-KR` | Koreaans (Korea)                    | Taalmodel                                    |
+| `lt-LT` | Litouws (Litouwen)            | Taalmodel                                    |
+| `lv-LV` | Lets (Letland)                  | Taalmodel                                    |
 | `mr-IN` | Marathi (India)                   | Taalmodel                                    |
+| `mt-MT` | Maltees (Malta)                    | Taalmodel                                    |
 | `nb-NO` | Noors (Bokmål) (Noor wegen)       | Taalmodel                                    |
 | `nl-NL` | Nederlands (Nederland)               | Taalmodel                                    |
 | `pl-PL` | Pools (Polen)                   | Taalmodel                                    |
 | `pt-BR` | Portugees (Brazilië)               | Akoestisch model<br>Taalmodel<br>Uitspraak van |
 | `pt-PT` | Portugees (Portugal)             | Taalmodel                                    |
+| `ro-RO` | Roemeens (Roemenië)                | Taalmodel                                    |
 | `ru-RU` | Russisch (Rusland)                  | Akoestisch model<br>Taalmodel                  |
+| `sk-SK` | Slowaaks (Slowakije)                 | Taalmodel                                    |
+| `sl-SI` | Sloveens (Slovenië)              | Taalmodel                                    |
 | `sv-SE` | Zweeds (Zweden)                  | Taalmodel                                    |
 | `ta-IN` | Tamil (India)                     | Taalmodel                                    |
 | `te-IN` | Telugu (India)                    | Taalmodel                                    |
-| `th-TH` | Thai (Thailand)                   | Nee                                                |
+| `th-TH` | Thai (Thailand)                   | No                                                |
 | `tr-TR` | Turks (Turkije)                  | Taalmodel                                    |
 | `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Akoestisch model<br>Taalmodel                  |
 | `zh-HK` | Chinees (Kantonees, traditioneel)  | Taalmodel                                    |
@@ -358,7 +371,7 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 
 Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speaker Recognition-Api's. Zie het [overzicht](speaker-recognition-overview.md) voor meer informatie over speaker Recognition.
 
-| Landinstelling | Taal | Tekst afhankelijke verificatie | Tekst onafhankelijke verificatie | Tekst onafhankelijke identificatie |
+| Landinstelling | Taal | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekst onafhankelijke identificatie |
 |----|----|----|----|----|
 | nl-NL | Engels (VS) | ja | ja | ja |
 |zh-CN    |Chinees (Mandarijn, vereenvoudigd)|    N.v.t.|    ja|    ja|

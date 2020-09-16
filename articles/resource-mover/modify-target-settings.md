@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: c58fdd38c4221c03778b2c769620bf7911aaded8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670390"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604475"
 ---
 # <a name="modify-target-settings"></a>Doel instellingen wijzigen
 
@@ -42,10 +42,10 @@ De configuratie-instellingen die u kunt wijzigen, worden in de tabel samenvatten
 **Netwerk bronnen** | Opties voor virtuele netwerken (VNets)/Network-beveiligings groepen/netwerk interfaces:<br/><br/> -Maak een nieuwe resource met dezelfde naam in de doel regio.<br/><br/> -Maak een nieuwe resource met een andere naam in de doel regio.<br/><br/> -Gebruik een bestaande netwerk bron in de doel regio.<br/><br/> Als u een nieuwe doel bron maakt, met uitzonde ring van de instellingen die u wijzigt, worden dezelfde instellingen toegewezen als voor de bron resource.
 **Naam openbaar IP-adres** | Geef de naam op.
 **SKU openbaar IP-adres** | Geef de [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)op.
-**Zone openbaar IP-adres** | Geef de [zone](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) op voor standaard open bare IP-adressen.<br/><br/> Als u wilt dat de zone onnodig is, voert u in als **regionaal**.
+**Zone openbaar IP-adres** | Geef de [zone](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) op voor standaard open bare IP-adressen.<br/><br/> Als u het zone redundant wilt maken, voert u in als **zone redundant**.
 **Naam van load balancer** | Geef de naam op.
 **Load Balancer-SKU** | Basic of Standard. We raden u aan om standaard te gebruiken.
-**Load Balancer-zone** | Geef een zone op voor de load balancer. <br/><br/> Als u wilt dat de zone onnodig is, voert u in als **regionaal**.
+**Load Balancer-zone** | Geef een zone op voor de load balancer. <br/><br/> Als u het zone redundant wilt maken, voert u in als **zone redundant**.
 **Bronafhankelijkheden** | Opties voor elke afhankelijkheid:<br/><br/>-De resource maakt gebruik van bron afhankelijke resources die worden verplaatst naar de doel regio.<br/><br/> -De resource gebruikt verschillende afhankelijke resources die zich in de doel regio bevinden. In dit geval kunt u kiezen uit vergelijk bare resources in de doel regio.
 
 ### <a name="edit-vm-target-settings"></a>VM-doel instellingen bewerken

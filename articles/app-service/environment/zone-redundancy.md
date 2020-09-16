@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961564"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605070"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Ondersteuning van beschikbaarheids zone voor App Service omgevingen
 
@@ -29,12 +29,16 @@ Tenzij de stappen die in dit artikel worden beschreven, worden gevolgd, worden I
 
 Zonegebonden ILB as kunnen worden gemaakt in een van de volgende regio's:
 
-- Central US
+- Australië - oost
+- Brazilië - zuid
+- Canada - midden
+- VS - centraal
 - VS - oost
 - VS - oost 2
 - VS-Oost 2 (EUAP)
 - Frankrijk - centraal 
-- Japan - oost
+- Duitsland - west-centraal
+- Japan East
 - Europa - noord
 - Europa -west
 - Azië - zuidoost

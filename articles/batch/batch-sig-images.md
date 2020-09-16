@@ -2,14 +2,14 @@
 title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 description: Aangepaste installatie kopie groepen zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852409"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605189"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 
@@ -43,7 +43,9 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 - **Een afbeelding van de galerie met gedeelde afbeeldingen**. Als u een gedeelde installatie kopie wilt maken, moet u een beheerde installatie kopie bron hebben of maken. De installatie kopie moet worden gemaakt op basis van moment opnamen van de besturingssysteem schijf van de VM en optioneel op de gekoppelde gegevens schijven.
 
 > [!NOTE]
-> De gedeelde installatie kopie moet zich in hetzelfde abonnement als het batch-account bevallen. De installatie kopie kan zich in verschillende regio's bevinden, zolang deze replica's bevat in dezelfde regio als uw batch-account.
+> Als de gedeelde installatie kopie zich niet in hetzelfde abonnement als het batch-account bevindt, moet u [de resource provider Microsoft.BatCH registreren](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) voor dat abonnement. De twee abonnementen moeten zich in dezelfde Azure AD-Tenant bezitten.
+>
+> De installatie kopie kan zich in een andere regio bevinden, zolang deze replica's bevat in dezelfde regio als uw batch-account.
 
 Als u een Azure AD-toepassing gebruikt om een aangepaste installatie kopie groep te maken met een installatie kopie van een gedeelde installatie kopie, moet aan die toepassing een [ingebouwde rol van Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) zijn toegewezen waarmee deze toegang krijgt tot de gedeelde installatie kopie. U kunt deze toegang verlenen in de Azure Portal door te navigeren naar de gedeelde installatie kopie, **toegangs beheer (IAM)** te selecteren en een roltoewijzing voor de toepassing toe te voegen.
 
@@ -87,7 +89,7 @@ Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met ged
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure CLI
 
-Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de `az batch pool create` opdracht. Geef de ID van de gedeelde installatie kopie op in het `--image` veld. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door`--node-agent-sku-id`
+Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de `az batch pool create` opdracht. Geef de ID van de gedeelde installatie kopie op in het `--image` veld. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door `--node-agent-sku-id`
 
 > [!NOTE]
 > U moet zich verifiëren met Azure AD. Als u gedeelde-sleutel verificatie gebruikt, krijgt u een verificatie fout.  

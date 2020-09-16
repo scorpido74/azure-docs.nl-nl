@@ -13,6 +13,8 @@
       href: invite-users.md
 - name: Zelfstudies
   items:
+    - name: Verbinding maken met Azure
+      href: connect-to-azure.md
     - name: Video Indexer-API gebruiken
       href: video-indexer-use-apis.md
     - name: Logic Apps-connector

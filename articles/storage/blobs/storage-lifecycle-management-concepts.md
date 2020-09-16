@@ -3,18 +3,18 @@ title: De levens cyclus van Azure Storage beheren
 description: Meer informatie over het maken van levenscyclus beleids regels voor het overstappen van verouderde gegevens van dynamische naar coole en archief lagen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 09/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell, references_regions
+ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074420"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603995"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -33,7 +33,7 @@ Houd rekening met een scenario waarbij gegevens veelvuldig toegankelijk zijn tij
 
 ## <a name="availability-and-pricing"></a>Beschik baarheid en prijzen
 
-De functie levenscyclus beheer is beschikbaar in alle Azure-regio's voor Algemeen v2-accounts (GPv2), Blob Storage-accounts en Premium Block Blob Storage-accounts. In de Azure Portal kunt u een bestaand Algemeen-account (GPv1) upgraden naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.  
+De functie levenscyclus beheer is beschikbaar in alle Azure-regio's voor Algemeen v2-accounts (GPv2), Blob Storage-accounts en Premium Block Blob Storage-accounts. In de Azure Portal kunt u een bestaand Algemeen-account (GPv1) upgraden naar een GPv2-account. Zie [overzicht van Azure Storage-account](../common/storage-account-overview.md)voor meer informatie over opslag accounts.
 
 De functie levenscyclus beheer is gratis. Klanten betalen de normale bewerkings kosten voor de API-aanroepen van de [BLOB-laag](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . De verwijderings bewerking is gratis. Zie [prijzen voor blok-BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over prijzen.
 
@@ -51,7 +51,7 @@ Een beleid kan volledig worden gelezen of geschreven. Gedeeltelijke updates word
 > [!NOTE]
 > Als u firewall regels inschakelt voor uw opslag account, kunnen aanvragen voor levenscyclus beheer worden geblokkeerd. U kunt deze aanvragen deblokkeren door uitzonde ringen op te geven voor vertrouwde micro soft-Services. Zie de sectie uitzonde ringen in [firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)voor meer informatie.
 
-In dit artikel wordt uitgelegd hoe u beleid beheert met behulp van de portal-en Power shell-methoden.  
+In dit artikel wordt uitgelegd hoe u beleid beheert met behulp van de portal-en Power shell-methoden.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -62,56 +62,70 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek en selecteer uw opslag account in de Azure Portal. 
+1. Zoek en selecteer uw opslag account in de Azure Portal. 
 
-3. Selecteer **levenscyclus beheer** onder **BLOB-service**om uw regels te bekijken of te wijzigen.
+1. Selecteer onder **BLOB service** **levenscyclus beheer** om uw regels te bekijken of te wijzigen.
 
-4. Selecteer het tabblad **lijst weergave** .
+1. Selecteer het tabblad **lijst weergave** .
 
-5. Selecteer **regel toevoegen** en vul vervolgens de formulier velden voor **actie sets** in. In het volgende voor beeld worden blobs verplaatst naar koude opslag als deze 30 dagen niet zijn gewijzigd.
+1. Selecteer **een regel toevoegen** en geef uw regel een naam op het **detail** formulier. U kunt ook het **regel bereik**, het **type BLOB**en de **subtype** waarden van BLOB instellen. In het volgende voor beeld wordt het bereik ingesteld op het filteren van blobs. Dit zorgt ervoor dat het tabblad **filter sets** wordt toegevoegd.
 
-   ![Pagina levenscyclus beheer actie instellen in Azure Portal](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Levenscyclus beheer een pagina met regel Details toevoegen in Azure Portal":::
 
-6. Selecteer **filter sets** om een optioneel filter toe te voegen. Selecteer vervolgens **Bladeren** om een container en de map op te geven die u wilt filteren.
+1. Selecteer **basis-blobs** om de voor waarden voor de regel in te stellen. In het volgende voor beeld worden blobs verplaatst naar koude opslag als deze 30 dagen niet zijn gewijzigd.
 
-   ![Pagina met levenscyclus beheer filters instellen in Azure Portal](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Pagina levenscyclus beheer basis-blobs in Azure Portal":::
 
-8. Selecteer **controleren en toevoegen** om de beleids instellingen te controleren.
+   De **laatst geopende** optie is beschikbaar in de preview-versie in de volgende regio's:
 
-9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
+    - Frankrijk - centraal
+    - Canada - oost
+    - Canada - midden
+
+   > [!IMPORTANT]
+   > De tijd voor het bijhouden van de laatste keer dat u toegang hebt, is alleen voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
+   
+   Zie [gegevens verplaatsen op basis van datum van laatste toegang (preview)](#move-data-based-on-last-accessed-date-preview)voor meer informatie over de optie **Laatst geopend** .
+
+1. Als u **blobs beperken met filters** hebt geselecteerd op de pagina **Details** , selecteert u **filter sets** om een optioneel filter toe te voegen. In het volgende voor beeld wordt gefilterd op blobs in de *mylifecyclecontainer* -container die beginnen met ' Log '.
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Pagina met levenscyclus beheer filters instellen in Azure Portal":::
+
+1. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek en selecteer uw opslag account in de Azure Portal.
+1. Zoek en selecteer uw opslag account in de Azure Portal.
 
-3. Selecteer onder **BLOB**-service **levenscyclus beheer** om uw beleid weer te geven of te wijzigen.
+1. Selecteer onder **BLOB service** **levenscyclus beheer** om het beleid weer te geven of te wijzigen.
 
-4. De volgende JSON is een voor beeld van een beleid dat op het tabblad **code weergave** kan worden geplakt.
+1. De volgende JSON is een voor beeld van een beleid dat op het tabblad **code weergave** kan worden geplakt.
 
    ```json
    {
      "rules": [
        {
-         "name": "ruleFoo",
          "enabled": true,
+         "name": "move-to-cool",
          "type": "Lifecycle",
          "definition": {
-           "filters": {
-             "blobTypes": [ "blockBlob" ],
-             "prefixMatch": [ "container1/foo" ]
-           },
            "actions": {
              "baseBlob": {
-               "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-               "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-               "delete": { "daysAfterModificationGreaterThan": 2555 }
-             },
-             "snapshot": {
-               "delete": { "daysAfterCreationGreaterThan": 90 }
+               "tierToCool": {
+                 "daysAfterModificationGreaterThan": 30
+               }
              }
+           },
+           "filters": {
+             "blobTypes": [
+               "blockBlob"
+             ],
+             "prefixMatch": [
+               "mylifecyclecontainer/log"
+             ]
            }
          }
        }
@@ -119,9 +133,9 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
    }
    ```
 
-5. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**.
 
-6. Zie de secties [beleid](#policy) en [regels](#rules) voor meer informatie over dit JSON-voor beeld.
+1. Zie de secties [beleid](#policy) en [regels](#rules) voor meer informatie over dit JSON-voor beeld.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -221,15 +235,15 @@ Een levenscyclus beheer beleid is een verzameling regels in een JSON-document:
 
 Een beleid is een verzameling regels:
 
-| Parameternaam | Parameter type | Notities |
+| Parameternaam | Parameter type | Opmerkingen |
 |----------------|----------------|-------|
 | `rules`        | Een matrix van regel objecten | Er is ten minste één regel vereist in een beleid. U kunt Maxi maal 100 regels definiëren in een beleid.|
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Notities | Vereist |
+| Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
-| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | Waar |
+| `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig. Het moet uniek zijn binnen een beleid. | Waar |
 | `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | Niet waar | 
 | `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | Waar |
 | `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | Waar |
@@ -240,10 +254,10 @@ Elke regel definitie bevat een set filters en een Actieset. Met de [Filterset](#
 
 ### <a name="sample-rule"></a>Voorbeeld regel
 
-Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren op objecten die zich in `container1` en beginnen met `foo` .  
+Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren op objecten die zich in `container1` en beginnen met `foo` .
 
 >[!NOTE]
->- Levenscyclus beheer ondersteunt alleen het type blok-blob.<br>
+>- Levenscyclus beheer ondersteunt blok-Blob en typen toevoeg-blobs.<br>
 >- Levenscyclus beheer heeft geen invloed op systeem containers zoals $logs en $web.
 
 - Laag-BLOB naar cool laag 30 dagen na laatste wijziging
@@ -285,11 +299,11 @@ Filters beperken regel acties voor een subset van blobs binnen het opslag accoun
 
 Filters omvatten:
 
-| Bestandsnaam | Filtertype | Notities | Is vereist |
+| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` . | Ja |
-| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
-| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
+| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` en `appendBlob` . Alleen verwijderen wordt ondersteund voor `appendBlob` , set-laag wordt niet ondersteund. | Yes |
+| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | No |
+| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | No |
 
 > [!NOTE]
 > BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Canada-centraal**, **Canada-Oost**, **Frankrijk-centraal**en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
@@ -300,21 +314,23 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
 
-| Bewerking        | Basis-BLOB                                   | Momentopname      |
-|---------------|---------------------------------------------|---------------|
-| tierToCool    | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
-| tierToArchive | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
-| delete        | Ondersteund                                   | Ondersteund     |
+| Bewerking                      | Basis-BLOB                                   | Momentopname      |
+|-----------------------------|---------------------------------------------|---------------|
+| tierToCool                  | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
+| enableAutoTierToHotFromCool | Ondersteuning voor blobs op dit moment in de cool-laag        | Niet ondersteund |
+| tierToArchive               | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
+| delete                      | Ondersteund voor `blockBlob` en `appendBlob`  | Ondersteund     |
 
 >[!NOTE]
 >Als u meer dan één actie op dezelfde BLOB definieert, past levenscyclus beheer de minst dure actie toe op de blob. Actie `delete` is bijvoorbeeld goed koper dan actie `tierToArchive` . Actie `tierToArchive` is goed koper dan actie `tierToCool` .
 
 De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs gebruiken het tijdstip waarop het laatst is gewijzigd voor het bijhouden van leeftijd en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
 
-| Voor waarde voor actie uitvoeren             | Waarde voor waarde                          | Beschrijving                             |
-|----------------------------------|------------------------------------------|-----------------------------------------|
-| daysAfterModificationGreaterThan | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor basis-BLOB-acties     |
-| daysAfterCreationGreaterThan     | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor BLOB-momentopname acties |
+| Voor waarde voor actie uitvoeren               | Waarde voor waarde                          | Beschrijving                                                                      |
+|------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
+| daysAfterModificationGreaterThan   | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor basis-BLOB-acties                                              |
+| daysAfterCreationGreaterThan       | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor BLOB-momentopname acties                                          |
+| daysAfterLastAccessTimeGreaterThan | Geheel getal dat de leeftijd in dagen aangeeft | evaluatie De voor waarde voor basis-BLOB-acties wanneer tijd van laatste toegang is ingeschakeld |
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -347,6 +363,69 @@ In dit voor beeld ziet u hoe blok-blobs worden voorafgegaan door `container1/foo
   ]
 }
 ```
+
+### <a name="move-data-based-on-last-accessed-date-preview"></a>Gegevens verplaatsen op basis van datum van laatste toegang (preview)
+
+U kunt het bijhouden van tijd van laatste toegang inschakelen om een record bij te houden wanneer de BLOB voor het laatst is gelezen of geschreven. U kunt tijd van laatste toegang gebruiken als filter voor het beheren van lagen en het bewaren van BLOB-gegevens.
+
+De **laatst geopende** optie is beschikbaar in de preview-versie in de volgende regio's:
+
+ - Frankrijk - centraal
+ - Canada - oost
+ - Canada - midden
+
+> [!IMPORTANT]
+> De tijd voor het bijhouden van de laatste keer dat u toegang hebt, is alleen voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
+
+#### <a name="how-last-access-time-tracking-works"></a>De werking van tijd bijhouden van de laatste toegang
+
+Wanneer de tijd voor het bijhouden van de laatste toegang is ingeschakeld, wordt de BLOB-eigenschap met de naam `LastAccessTime` bijgewerkt wanneer een BLOB wordt gelezen of geschreven. Een [Get BLOB](/rest/api/storageservices/get-blob) -bewerking wordt beschouwd als een toegangs bewerking. Het [ophalen van BLOB-eigenschappen](/rest/api/storageservices/get-blob-properties), het ophalen van BLOB- [meta gegevens](/rest/api/storageservices/get-blob-metadata)en het [ophalen van BLOB-labels](/rest/api/storageservices/get-blob-tags) zijn geen toegangs bewerkingen. de tijd van de laatste toegang kan daarom niet worden bijgewerkt.
+
+Om de impact op latentie van lees toegang te minimaliseren, wordt alleen de eerste Lees bewerking van de laatste 24 uur de tijd van de laatste toegang bijgewerkt. Volgende Lees bewerkingen in dezelfde periode van 24 uur worden de tijd van laatste toegang niet bijgewerkt. Als een BLOB wordt gewijzigd tussen lees bewerkingen, is de tijd van laatste toegang de recentere waarde van de twee waarden.
+
+In het volgende voor beeld worden blobs verplaatst naar koude opslag als ze gedurende 30 dagen niet zijn geopend. De `enableAutoTierToHotFromCool` eigenschap is een Booleaanse waarde die aangeeft of een blob automatisch moet worden gelaagd van koud naar warm als deze opnieuw wordt geopend nadat deze is getierd naar cool.
+
+```json
+{
+  "enabled": true,
+  "name": "last-accessed-thirty-days-ago",
+  "type": "Lifecycle",
+  "definition": {
+    "actions": {
+      "baseBlob": {
+        "enableAutoTierToHotFromCool": true,
+        "tierToCool": {
+          "daysAfterLastAccessTimeGreaterThan": 30
+        }
+      }
+    },
+    "filters": {
+      "blobTypes": [
+        "blockBlob"
+      ],
+      "prefixMatch": [
+        "mylifecyclecontainer/log"
+      ]
+    }
+  }
+}
+```
+
+#### <a name="storage-account-support"></a>Ondersteuning voor opslag accounts
+
+Het bijhouden van tijd van laatste toegang is beschikbaar voor de volgende typen opslag accounts:
+
+ - V2-opslag accounts voor algemeen gebruik
+ - Blob Storage-accounts blok keren
+ - Blob Storage-accounts
+
+Als uw opslag account een algemeen v1-account is, gebruikt u de Azure Portal om te upgraden naar een v2-account voor algemeen gebruik.
+
+Opslag accounts met een hiërarchische naam ruimte die is ingeschakeld voor gebruik met Azure Data Lake Storage Gen2 worden nog niet ondersteund.
+
+#### <a name="pricing-and-billing"></a>Prijzen en facturering
+
+Elke tijd voor het bijwerken van laatste toegang wordt als een [andere bewerking](https://azure.microsoft.com/pricing/details/storage/blobs/)beschouwd.
 
 ### <a name="archive-data-after-ingest"></a>Gegevens archiveren na opname
 
@@ -470,13 +549,16 @@ Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens du
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-**Ik heb een nieuw beleid gemaakt, waarom worden de acties niet onmiddellijk uitgevoerd?**  
-Het platform voert het levenscyclus beleid eenmaal per dag uit. Nadat u een beleid hebt geconfigureerd, kan het tot 24 uur duren voordat bepaalde acties voor de eerste keer worden uitgevoerd.  
+**Ik heb een nieuw beleid gemaakt, waarom worden de acties niet onmiddellijk uitgevoerd?**
 
-**Hoe lang duurt het om de acties uit te voeren als ik een bestaand beleid bijwerk?**  
-Het bijgewerkte beleid duurt Maxi maal 24 uur. Zodra het beleid van kracht is, kan het tot 24 uur duren voordat de acties zijn uitgevoerd. Daarom kan het tot 48 uur duren voordat de beleids acties zijn voltooid.   
+Het platform voert het levenscyclus beleid eenmaal per dag uit. Nadat u een beleid hebt geconfigureerd, kan het tot 24 uur duren voordat bepaalde acties voor de eerste keer worden uitgevoerd.
 
-**Ik heb een gearchiveerde BLOB hand matig opnieuw gehydrateerd, hoe voorkom ik dat deze tijdelijk weer naar de laag van het archief wordt verplaatst?**  
+**Hoe lang duurt het om de acties uit te voeren als ik een bestaand beleid bijwerk?**
+
+Het bijgewerkte beleid duurt Maxi maal 24 uur. Zodra het beleid van kracht is, kan het tot 24 uur duren voordat de acties zijn uitgevoerd. Daarom kan het tot 48 uur duren voordat de beleids acties zijn voltooid.
+
+**Ik heb een gearchiveerde BLOB hand matig opnieuw gehydrateerd, hoe voorkom ik dat deze tijdelijk weer naar de laag van het archief wordt verplaatst?**
+
 Wanneer een BLOB wordt verplaatst van de ene toegangs laag naar een andere, verandert de tijd van de laatste wijziging niet. Als u een gearchiveerde BLOB hand matig opnieuw hebt gehydrateerd naar een warme laag, zou deze terug worden verplaatst naar de archief laag door de levenscyclus beheer-engine. Schakel de regel die van invloed is op deze BLOB tijdelijk uit om te voor komen dat deze opnieuw wordt gearchiveerd. Schakel de regel opnieuw in wanneer de BLOB veilig kan worden verplaatst naar de laag van het archief. U kunt ook de BLOB naar een andere locatie kopiëren als deze permanent of koud laag moet blijven.
 
 ## <a name="next-steps"></a>Volgende stappen

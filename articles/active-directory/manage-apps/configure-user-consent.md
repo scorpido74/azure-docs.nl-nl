@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763462"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605155"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
 
@@ -32,7 +32,7 @@ Kies het toestemmings beleid dat wordt toegepast op alle gebruikers om te bepale
 
 * **Gebruikers toestemming uitschakelen** : gebruikers kunnen geen machtigingen toekennen aan toepassingen. Gebruikers kunnen zich blijven aanmelden bij apps die voorheen hebben gecommuniceerd naar of die zijn gemachtigd door beheerders in hun naam, maar ze mogen niet toestemming geven voor nieuwe machtigingen of aan nieuwe apps. Alleen gebruikers die een directory-rol met de machtiging voor het verlenen van toestemming hebben verleend, kunnen toestemming geven voor nieuwe machtigingen of nieuwe apps.
 
-* **Gebruikers kunnen toestemming geven voor apps van geverifieerde uitgevers, maar alleen voor door u geselecteerde machtigingen (preview)** : alle gebruikers kunnen alleen toestemming verlenen voor apps die zijn gepubliceerd door een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) en apps die zijn geregistreerd in uw Tenant. Gebruikers kunnen alleen toestemming geven voor de machtigingen die u hebt geclassificeerd als ' lage impact '.
+* **Gebruikers kunnen toestemming geven voor apps van geverifieerde uitgevers, maar alleen voor door u geselecteerde machtigingen (preview)** : alle gebruikers kunnen alleen toestemming verlenen voor apps die zijn gepubliceerd door een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) en apps die zijn geregistreerd in uw Tenant. Gebruikers kunnen alleen toestemming geven voor de machtigingen die u hebt geclassificeerd als ' lage impact ', ook wel ' laag risico ' genoemd. Wat wordt als laag risico beschouwd voor één organisatie, zoals een app die een gebruikers-e-mail adres bekijkt, kan worden beschouwd als een hoog risico voor een andere organisatie. Daarom worden de machtigingen voor ' laag risico ' ingesteld door de beheerder voor de Tenant.
 
   Zorg ervoor dat u de [machtigingen classificeert](#configure-permission-classifications-preview) om te selecteren welke machtigingen gebruikers toestemming mogen geven.
 
@@ -56,7 +56,7 @@ Instellingen voor gebruikers toestemming configureren via de Azure Portal:
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>Instellingen voor gebruikers toestemming configureren met behulp van Power shell
 
-U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview), gebruiken om te kiezen welk toestemmings beleid de gebruikers instemming voor toepassingen bepaalt.
+U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), gebruiken om te kiezen welk toestemmings beleid de gebruikers instemming voor toepassingen bepaalt.
 
 * **Toestemming van de gebruiker uitschakelen** : als u de toestemming van de gebruiker wilt uitschakelen, stelt u het beleid voor toestemming in waarmee de toestemming van de gebruiker wordt geledigd
 
@@ -109,7 +109,7 @@ In dit voor beeld hebben we de minimale set vereiste machtiging voor eenmalige a
 
 ### <a name="classify-permissions-using-powershell"></a>Machtigingen classificeren met Power shell
 
-U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om machtigingen te classificeren. Machtigings classificaties worden geconfigureerd op het **ServicePrincipal** -object van de API die de machtigingen publiceert.
+U kunt de nieuwste Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true), gebruiken om machtigingen te classificeren. Machtigings classificaties worden geconfigureerd op het **ServicePrincipal** -object van de API die de machtigingen publiceert.
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>De huidige machtigings classificaties voor een API lezen:
 
@@ -196,9 +196,9 @@ In dit voor beeld mogen alle groeps eigenaren toestemming geven voor apps die to
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Toestemming van groeps eigenaar configureren met behulp van Power shell
 
-U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om de mogelijkheid van de groeps eigenaren in of uit te scha kelen, zodat toepassingen toegang krijgen tot de gegevens van uw organisatie voor de groepen waarvan ze eigenaar zijn.
+U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true), gebruiken om de mogelijkheid van de groeps eigenaren in of uit te scha kelen, zodat toepassingen toegang krijgen tot de gegevens van uw organisatie voor de groepen waarvan ze eigenaar zijn.
 
-1. Zorg ervoor dat u de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) -module gebruikt. Deze stap is belang rijk als u de [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) -module en de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) -module hebt geïnstalleerd.
+1. Zorg ervoor dat u de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) -module gebruikt. Deze stap is belang rijk als u de [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) -module en de [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) -module hebt geïnstalleerd.
 
     ```powershell
     Remove-Module AzureAD
@@ -228,10 +228,10 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
 1. Meer informatie over de instellings waarden. Er zijn twee instellingen waarden die bepalen welke gebruikers een app kunnen gebruiken om toegang te krijgen tot de gegevens van de groep:
 
-    | Instelling       | Type         | Description  |
+    | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Boolean-waarde | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
+    | _EnableGroupSpecificConsent_   | Booleaans | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
 
 1. Update-instellingen waarden voor de gewenste configuratie:
 
@@ -253,7 +253,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
     $limitedToValue.Value = "{group-object-id}"
     ```
 
-1. Sla uw wijzigingen op.
+1. Sla uw instellingen op.
 
     ```powershell
     if ($settings.Id) {
@@ -280,15 +280,15 @@ In dit geval wordt er ook een controle gebeurtenis vastgelegd met de categorie '
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Op risico gebaseerde Step-up van de stap uitschakelen of opnieuw inschakelen met behulp van Power shell
 
-U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview), gebruiken om de stap-tot-toestemming van de beheerder uit te scha kelen in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
+U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true), gebruiken om de stap-tot-toestemming van de beheerder uit te scha kelen in gevallen waarin micro soft risico detecteert of het opnieuw inschakelt als dit eerder was uitgeschakeld.
 
 U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configureren van de toestemming van de [groeps eigenaar met behulp van Power shell](#configure-group-owner-consent-using-powershell), maar door een andere waarde voor de instellingen te vervangen. Er zijn drie verschillen in stappen: 
 
 1. Meer informatie over de instellings waarden voor de stap op basis van risico gerichte toestemming:
 
-    | Instelling       | Type         | Description  |
+    | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Boolean-waarde |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
+    | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
 1. Vervang de volgende waarde in stap 3:
 

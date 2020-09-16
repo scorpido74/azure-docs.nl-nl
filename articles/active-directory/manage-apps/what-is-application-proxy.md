@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640511"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604135"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Een toegangsproxy van Azure AD gebruiken om on-premises apps te publiceren voor externe gebruikers
 
@@ -29,7 +29,7 @@ De mogelijkheid om veilig toegang te krijgen tot interne apps buiten uw netwerk,
 
 Veel organisaties geloven dat ze de controle hebben over en beschermd zijn als er resources zijn die zich binnen de grenzen van hun bedrijfsnetwerken bevinden. Maar in de huidige digitale werkplek is deze grens vergroot met beheerde mobiele apparaten en resources en services in de cloud. U moet nu de complexiteit beheren die gepaard gaat met het beschermen van de identiteit en gegevens van uw gebruikers die zijn opgeslagen op hun apparaten en apps.
 
-Misschien maakt u al gebruik van Azure AD om gebruikers in de cloud te beheren die toegang nodig hebben tot Office 365 en andere SaaS-toepassingen, evenals web-apps die on-premises worden gehost. Als u Azure AD al hebt, kunt u deze gebruiken als één besturingsvlak om naadloze en veilige toegang tot uw on-premises toepassingen mogelijk te maken. Of misschien overweegt u nog steeds een overstap naar de cloud. Als dat het geval is, kunt u beginnen met de overstap naar de cloud door de toegangsproxy te implementeren en de eerste stap te nemen in het bouwen van een sterke identiteitsbasis.
+Misschien maakt u al gebruik van Azure AD voor het beheren van gebruikers in de cloud die toegang moeten hebben tot Microsoft 365 en andere SaaS-toepassingen, evenals Web-apps die on-premises worden gehost. Als u Azure AD al hebt, kunt u deze gebruiken als één besturingsvlak om naadloze en veilige toegang tot uw on-premises toepassingen mogelijk te maken. Of misschien overweegt u nog steeds een overstap naar de cloud. Als dat het geval is, kunt u beginnen met de overstap naar de cloud door de toegangsproxy te implementeren en de eerste stap te nemen in het bouwen van een sterke identiteitsbasis.
 
 De lijst hieronder illustreert een aantal van de dingen die u kunt inschakelen door app-proxy te implementeren in een hybride scenario:
 
@@ -53,7 +53,7 @@ Voorheen was het doel van uw besturingsvlak de bescherming van interne bronnen t
 * Gebruikers verifiëren bij webservers in het perimeternetwerk
 * VPN-toegang onderhouden voor externe gebruikers met de distributie en configuratie van VPN-clientsoftware. Houd ook rekening met servers die lid zijn van een domein in de DMZ, die kwetsbaar kunnen zijn voor aanvallen van buitenaf.
 
-In de huidige wereld waar de cloud voorop staat is Azure AD het meest geschikt om te bepalen wie en wat in uw netwerk wordt weergegeven. Azure AD-toegangsproxy integreert met moderne verificatie en cloudtechnologieën, zoals SaaS-toepassingen en id-providers. Met deze integratie kunnen gebruikers overal toegang krijgen tot apps. Deze app is niet alleen geschikt voor de digitale werkplek van de huidige omgeving, maar is veiliger dan VPN- en omgekeerde proxy-oplossingen en eenvoudiger te implementeren. Externe gebruikers hebben toegang tot uw on-premises toepassingen op dezelfde manier als ze toegang hebben tot O365 en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassingen niet te wijzigen of bij te werken om te kunnen werken met toegangsproxy. Bovendien hoeft u voor app-proxy geen inkomende verbindingen te openen via uw firewall. Met app-proxy kunt u deze eenvoudigweg instellen en hoeft u er niet meer aan te denken.
+In de huidige wereld waar de cloud voorop staat is Azure AD het meest geschikt om te bepalen wie en wat in uw netwerk wordt weergegeven. Azure AD-toegangsproxy integreert met moderne verificatie en cloudtechnologieën, zoals SaaS-toepassingen en id-providers. Met deze integratie kunnen gebruikers overal toegang krijgen tot apps. Deze app is niet alleen geschikt voor de digitale werkplek van de huidige omgeving, maar is veiliger dan VPN- en omgekeerde proxy-oplossingen en eenvoudiger te implementeren. Externe gebruikers hebben dezelfde manier om toegang te krijgen tot uw on-premises toepassingen als voor micro soft en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassingen niet te wijzigen of bij te werken om te kunnen werken met toegangsproxy. Bovendien hoeft u voor app-proxy geen inkomende verbindingen te openen via uw firewall. Met app-proxy kunt u deze eenvoudigweg instellen en hoeft u er niet meer aan te denken.
 
 ## <a name="the-future-of-remote-access"></a>De toekomst van externe toegang
 
@@ -72,7 +72,7 @@ Met een toegangsproxy houdt Azure AD de gebruikers bij die toegang moeten hebben
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>Een overzicht van de werking van app-proxy
 
-Een toepassingsproxy is een Azure AD-service die u configureert in het Azure-portal. U kunt hiermee een extern openbaar HTTP/HTTPS-URL-eindpunt publiceren in de Azure-cloud, die verbinding maakt met een interne toepassingsserver-URL in uw organisatie. Deze on-premises web-apps kunnen worden geïntegreerd met Azure AD ter ondersteuning van eenmalige aanmelding. Eindgebruikers hebben dan toegang tot on-premises web-apps op dezelfde manier als ze toegang hebben tot Office 365 en andere SaaS-apps.
+Een toepassingsproxy is een Azure AD-service die u configureert in het Azure-portal. U kunt hiermee een extern openbaar HTTP/HTTPS-URL-eindpunt publiceren in de Azure-cloud, die verbinding maakt met een interne toepassingsserver-URL in uw organisatie. Deze on-premises web-apps kunnen worden geïntegreerd met Azure AD ter ondersteuning van eenmalige aanmelding. Eind gebruikers hebben dan toegang tot on-premises web-apps op dezelfde manier als ze toegang hebben tot Microsoft 365 en andere SaaS-apps.
 
 Onderdelen van deze functie omvatten de toepassingsproxy-service, die wordt uitgevoerd in de cloud, de connector van de toepassingsproxy, een lichtgewicht agent die wordt uitgevoerd op een on-premises server en Azure AD, de id-provider. Alle drie de onderdelen werken samen om de gebruiker te voorzien van een eenmalige aanmelding om toegang te krijgen tot on-premises webtoepassingen.
 
@@ -195,8 +195,8 @@ Of u nu Azure AD gebruikt voor het beheren van gebruikers in een hybride scenari
 Organisaties moeten vandaag nog profiteren van app-proxy om te profiteren van de volgende voordelen:
 
 * On-premises apps extern publiceren zonder de kosten voor het onderhouden van traditionele VPN- of andere on-premises oplossingen voor webpublicaties en DMZ-benadering
-* Eenmalige aanmelding voor alle toepassingen, zowel voor Office 365 of andere SaaS-apps en met inbegrip van on-premises toepassingen
-* Schaalbeveiliging in de cloud waarbij Azure AD gebruikmaakt van Office 365-telemetrie om onbevoegde toegang te voorkomen
+* Eenmalige aanmelding voor alle toepassingen, Microsoft 365 of andere SaaS-apps, met inbegrip van on-premises toepassingen
+* Cloud schaal beveiliging waarbij Azure AD gebruikmaakt van Microsoft 365 telemetrie om onbevoegde toegang te voor komen
 * Integratie van Intune om ervoor te zorgen dat bedrijfsverkeer wordt geverifieerd
 * Centralisatie van gebruikersaccountbeheer
 * Automatische updates om ervoor te zorgen dat u over de nieuwste beveiligingspatches beschikt

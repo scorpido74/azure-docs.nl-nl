@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231211"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605121"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory
 
 Azure Active Directory (Azure AD) biedt verschillende aanpas bare manieren om toepassingen te implementeren voor eind gebruikers in uw organisatie:
 
 * Mijn apps in azure AD
-* Office 365-start programma voor toepassingen
+* Start programma voor toepassing Microsoft 365
 * Directe aanmelding bij federatieve apps
 * Dieptekoppelingen naar federatieve apps, op basis van wachtwoorden, of bestaande apps
 
@@ -35,13 +35,13 @@ Mijn apps op https://myapps.microsoft.com is een webgebaseerde Portal waarmee ee
 
 Standaard worden alle toepassingen op één pagina weer gegeven. U kunt echter verzamelingen gebruiken om gerelateerde toepassingen te groeperen en deze op een afzonderlijk tabblad te presen teren, zodat u ze eenvoudiger kunt vinden. U kunt bijvoorbeeld verzamelingen gebruiken om logische groeperingen van toepassingen te maken voor specifieke taak rollen, taken, projecten, enzovoort. Zie [verzamelingen maken in de portal mijn apps](access-panel-collections.md)voor meer informatie. 
 
-Mijn apps staat los van de Azure Portal en vereist niet dat gebruikers een Azure-abonnement of een Office 365-abonnement hebben.
+Mijn apps staat los van de Azure Portal en vereist niet dat gebruikers een Azure-abonnement of Microsoft 365-abonnement hebben.
 
 Zie [Inleiding tot mijn apps](../user-help/active-directory-saas-access-panel-introduction.md)voor meer informatie over Azure AD-apps.
 
-## <a name="office-365-application-launcher"></a>Office 365-start programma voor toepassingen
+## <a name="microsoft-365-application-launcher"></a>Start programma voor toepassing Microsoft 365
 
-Voor organisaties die Office 365 hebben geïmplementeerd, worden toepassingen die zijn toegewezen aan gebruikers via Azure AD ook weer gegeven in de Office 365-Portal op [https://portal.office.com/myapps](https://portal.office.com/myapps) . Dit maakt het eenvoudig en handig voor gebruikers in een organisatie om hun apps te starten zonder dat ze een tweede Portal hoeven te gebruiken en is de aanbevolen oplossing voor het starten van apps voor organisaties die Office 365 gebruiken.
+Voor organisaties die Microsoft 365 hebben geïmplementeerd, worden toepassingen die zijn toegewezen aan gebruikers via Azure AD ook weer gegeven in de Office 365-Portal op [https://portal.office.com/myapps](https://portal.office.com/myapps) . Dit maakt het eenvoudig en handig voor gebruikers in een organisatie om hun apps te starten zonder dat ze een tweede Portal hoeven te gebruiken. Dit is de aanbevolen oplossing voor het starten van apps voor organisaties die Microsoft 365 gebruiken.
 
 Zie [uw app weer geven in het start programma voor apps van office 365](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)voor meer informatie over het start programma voor Office 365-toepassingen.
 
@@ -53,7 +53,7 @@ De meeste federatieve toepassingen die ondersteuning bieden voor SAML 2,0, WS-Fe
 
 Azure AD biedt ook ondersteuning voor directe eenmalige aanmelding voor afzonderlijke toepassingen die ondersteuning bieden voor eenmalige aanmelding op basis van wacht woorden, een gekoppelde eenmalige aanmelding en een vorm van federatieve eenmalige aanmelding.
 
-Deze koppelingen zijn speciaal ontworpen Url's die een gebruiker verzenden via het aanmeldings proces van Azure AD voor een specifieke toepassing, zonder dat de gebruiker ze hoeft te starten vanuit Azure AD mijn apps of Office 365. Deze **gebruikers toegang url's** zijn te vinden onder de eigenschappen van beschik bare zakelijke toepassingen. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de toepassing en selecteer vervolgens **Eigenschappen**.
+Deze koppelingen zijn specifiek ontworpen Url's die een gebruiker verzenden via het aanmeldings proces van Azure AD voor een specifieke toepassing, zonder dat de gebruiker ze hoeft te starten vanuit mijn apps of Microsoft 365 van Azure AD. Deze **gebruikers toegang url's** zijn te vinden onder de eigenschappen van beschik bare zakelijke toepassingen. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de toepassing en selecteer vervolgens **Eigenschappen**.
 
 ![Voor beeld van de URL voor gebruikers toegang in Twitter-eigenschappen](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -67,7 +67,7 @@ Net als voor de organisatie-specifieke Url's voor mijn apps kunt u deze URL verd
 
 Wanneer een geautoriseerde gebruiker op een van deze toepassingsspecifieke koppelingen klikt, zien ze eerst hun organisatorische aanmeldings pagina (ervan uitgaande dat ze nog niet zijn aangemeld), en nadat de aanmelding is omgeleid naar de app zonder eerst op mijn apps te stoppen. Als aan de gebruiker vereisten voor toegang tot de toepassing ontbreken, zoals de browser extensie voor eenmalige aanmelding op basis van een wacht woord, wordt de gebruiker door de koppeling gevraagd de ontbrekende extensie te installeren. De URL van de koppeling blijft ook constant als de configuratie voor eenmalige aanmelding voor de toepassing wordt gewijzigd.
 
-Deze koppelingen gebruiken dezelfde toegangs beheer mechanismen als mijn apps en Office 365, en alleen gebruikers of groepen die zijn toegewezen aan de toepassing in de Azure Portal, kunnen worden geverifieerd. Een gebruiker die niet is gemachtigd, ziet echter een bericht waarin wordt uitgelegd dat ze geen toegang hebben gekregen en een koppeling krijgen om mijn apps te laden om beschik bare toepassingen weer te geven waarvoor ze toegang hebben.
+Deze koppelingen gebruiken dezelfde toegangscontrole mechanismen als mijn apps en Microsoft 365, en alleen de gebruikers of groepen die zijn toegewezen aan de toepassing in de Azure Portal, kunnen worden geverifieerd. Een gebruiker die niet is gemachtigd, ziet echter een bericht waarin wordt uitgelegd dat ze geen toegang hebben gekregen en een koppeling krijgen om mijn apps te laden om beschik bare toepassingen weer te geven waarvoor ze toegang hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 
