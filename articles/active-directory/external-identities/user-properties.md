@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61a298b3b1d9e129b0ef3bbfff12f34d0ba09a8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89668959"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705466"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -104,7 +104,7 @@ Het is mogelijk om de standaard beperkingen uit te scha kelen, zodat een gast ge
 ![Scherm afbeelding met de optie externe gebruikers in de gebruikers instellingen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)voor meer informatie.
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Microsoft 365 groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)voor meer informatie.
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kan ik het e-mail adres van een gast gebruiker bijwerken?
 

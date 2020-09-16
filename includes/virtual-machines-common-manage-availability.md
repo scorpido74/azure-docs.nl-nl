@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760570"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89324816"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die ertoe kunnen leiden dat een virtuele machine in Azure wordt beïnvloed: niet-gepland hardwareonderhoud, onverwachte downtime, en gepland onderhoud.
@@ -33,7 +33,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 * [Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie]
 * [Beheerde schijven voor virtuele machines in een beschikbaarheidsset gebruiken]
 * [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's](../articles/virtual-machines/linux/scheduled-events.md)
-* [Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets]
+* [Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [Een load balancer combineren met beschikbaarheidszones of -sets]
 * [Beschikbaarheidszones gebruiken om te beschermen tegen fouten op datacenterniveau]
 
@@ -82,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> Onder bepaalde omstandigheden kunnen twee VM's in dezelfde Beschikbaarheidsset hetzelfde foutdomein delen. U kunt dit bevestigen door naar uw beschikbaarheidsset te gaan en de kolom **Foutdomein** te controleren.
-> Dit kan het gevolg zijn van de volgende reeks tijdens het implementeren van de virtuele machines:
-> - De eerste VM implementeren
-> - De eerste VM stoppen/de toewijzing ervan ongedaan maken
-> - De tweede VM implementeren Onder deze omstandigheden kan de besturingssysteemschijf van de tweede virtuele machine worden gemaakt in hetzelfde foutdomein als de eerste VM, waardoor de tweede VM ook in hetzelfde foutdomein terecht komt. 
-> Om dit probleem te voorkomen, wordt u aangeraden de VM's tussen implementaties niet te stoppen/de toewijzing ervan ongedaan te maken.
+> Onder bepaalde omstandigheden kunnen twee VM's in dezelfde beschikbaarheidsset een foutdomein delen. U kunt dit bevestigen door naar uw beschikbaarheidsset te gaan en de kolom **Foutdomein** te controleren. Een gedeeld foutdomein kan worden veroorzaakt door de volgende volgorde tijdens de implementatie van de VM's:
+> 1. Implementeer de eerste VM.
+> 1. Stop de eerste VM of hef de toewijzing ervan op.
+> 1. Implementeer de tweede VM.
+>
+> In deze omstandigheden kan de besturingssysteemschijf van de tweede VM worden gemaakt in hetzelfde foutdomein als de eerste VM, zodat de twee VM's zich in hetzelfde foutdomein bevinden. Wij raden aan VM's niet te stoppen of de toewijzing ervan op te heffen tussen implementaties, om dit probleem te voorkomen.
 
 Als u VM's met niet-beheerde schijven wilt gebruiken, volgt u onderstaande aanbevolen procedures voor opslagaccounts waarbij virtuele harde schijven (VHD's) of VM's zijn opgeslagen als [pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 

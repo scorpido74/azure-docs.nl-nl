@@ -5,56 +5,56 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317798"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012843"
 ---
-De volgende tabellen bevatten quota's en limieten die specifiek zijn voor [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over Event hubs prijzen.
+De volgende tabellen bevatten quota en limieten die specifiek zijn voor [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Prijzen voor Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) voor prijsinformatie over Event Hubs.
 
-De volgende limieten zijn gebruikelijk voor de lagen basis en standaard. 
+De volgende limieten gelden voor de basis- en standaardlaag. 
 
 | Limiet | Bereik | Notities | Waarde |
 | --- | --- | --- | --- |
-| Aantal Event Hubs-naam ruimten per abonnement |Abonnement |- |100 |
-| Aantal Event hubs per naam ruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuwe Event Hub worden geweigerd. |10 |
-| Aantal partities per Event Hub |Entiteit |- |32 |
-| Maximale grootte van een Event Hub naam |Entiteit |- | 256 tekens |
-| Maximum grootte van de naam van een Consumer groep |Entiteit |- | 256 tekens |
-| Aantal niet-epoche receivers per consumenten groep |Entiteit |- |5 |
-| Maximale doorvoer eenheden |Naamruimte |Door de limiet voor de doorvoer eenheid te overschrijden, worden uw gegevens beperkt en wordt er een [Server uitzondering](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)gegenereerd. Als u een groter aantal doorvoer eenheden wilt aanvragen voor een Standard-laag, moet u een [ondersteunings aanvraag](/azure/azure-portal/supportability/how-to-create-azure-support-request)indienen. [Extra doorvoer eenheden](../articles/event-hubs/event-hubs-auto-inflate.md) zijn beschikbaar in blokken van 20 op basis van een vastgelegde aankoop. |20 |
-| Aantal autorisatie regels per naam ruimte |Naamruimte|Volgende aanvragen voor het maken van een autorisatie regel worden geweigerd.|12 |
-| Aantal aanroepen naar de methode GetRuntimeInformation | Entiteit | - | 50 per seconde | 
-| Aantal virtuele netwerken (VNet) en IP-configuratie regels | Entiteit | - | 128 | 
+| Aantal Event Hubs-naamruimten per abonnement |Abonnement |- |100 |
+| Aantal event hubs per naamruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuwe event hub worden geweigerd. |10 |
+| Aantal partities per event hub |Entiteit |- |32 |
+| Maximumlengte van een event hub-naam |Entiteit |- | 256 tekens |
+| Maximumlengte van de naam van een consumentengroep |Entiteit |- | 256 tekens |
+| Aantal niet-epoche ontvangers per consumentengroep |Entiteit |- |5 |
+| Maximum aantal doorvoereenheden |Naamruimte |Wanneer de limiet voor het aantal doorvoereenheden wordt overschreden, worden uw gegevens beperkt en wordt een [server bezet-uitzondering](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) gegenereerd. U kunt een groter aantal doorvoereenheden voor een Standard-laag aanvragen door een [ondersteuningsaanvraag](/azure/azure-portal/supportability/how-to-create-azure-support-request) in te dienen. [Extra doorvoereenheden](../articles/event-hubs/event-hubs-auto-inflate.md) zijn beschikbaar in blokken van 20 op basis van een vaste aankoop. |20 |
+| Aantal autorisatieregels per naamruimte |Naamruimte|Volgende aanvragen voor het maken van een autorisatieregel worden geweigerd.|12 |
+| Aantal aanroepen van de methode GetRuntimeInformation | Entiteit | - | 50 per seconde | 
+| Aantal virtuele netwerken (VNet) en IP-configuratieregels | Entiteit | - | 128 | 
 
-### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs Basic-en Standard-quota en-limieten
+### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs Basic en Standard: quota en limieten
 | Limiet | Bereik | Notities | Basic | Standard |
 | --- | --- | --- | -- | --- |
-| Maximale grootte van Event Hubs gebeurtenis|Entiteit | &nbsp; | 256 kB | 1 MB |
-| Aantal consumenten groepen per Event Hub |Entiteit | &nbsp; |1 |20 |
-| Aantal AMQP-verbindingen per naam ruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |100 |5\.000|
-| Maximale Bewaar periode van gebeurtenis gegevens |Entiteit | &nbsp; |1 dag |1-7 dagen |
-|Naam ruimte Apache Kafka ingeschakeld|Naamruimte |Event Hubs-naam ruimte streamt toepassingen met het Kafka-Protocol |Nee | Ja |
-|Capture |Entiteit | Bij inschakeling worden micro batches op dezelfde stroom |Nee |Ja |
+| Maximumgrootte van Event Hubs-gebeurtenis|Entiteit | &nbsp; | 256 kB | 1 MB |
+| Aantal consumentengroepen per event hub |Entiteit | &nbsp; |1 |20 |
+| Aantal AMQP-verbindingen per naamruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzondering ontvangen door de aanroepende code. |100 |5.000|
+| Maximale bewaartermijn van gebeurtenisgegevens |Entiteit | &nbsp; |1 dag |1-7 dagen |
+|Naamruimte met Apache Kafka ingeschakeld|Naamruimte |Event Hubs-naamruimte streamt toepassingen met behulp van het Kafka-protocol. Zie [Azure Event Hubs gebruiken vanuit Apache Kafka-toepassingen](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md) voor meer informatie. |Nee | Ja |
+|Vastleggen |Entiteit | Indien ingeschakeld, microbatches in dezelfde stroom. Zie [Capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](../articles/event-hubs/event-hubs-capture-overview.md) (gebeurtenissen opnemen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage) voor meer informatie. |Nee |Ja |
 
 
-### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated quota's en limieten
-De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De toegewezen laag biedt alle functies van het Standard-abonnement, maar met de schaal capaciteit van bedrijven en limieten voor klanten met veeleisende workloads. 
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated: quota en limieten
+De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De Dedicated-laag biedt alle functies van het Standard-abonnement, maar met schaalcapaciteit voor grote bedrijven en limieten voor klanten met veeleisende werkbelastingen. 
 
 | Functie | Limieten |
 | --- | ---|
-| Bandbreedte |  20 CUs |
+| Bandbreedte |  20 CU's |
 | Naamruimten | 50 per CU |
-| Event Hubs |  1000 per naam ruimte |
-| Ingangs gebeurtenissen | Inbegrepen |
-| Bericht grootte | 1 MB |
+| Event Hubs |  1000 per naamruimte |
+| Ingangsgebeurtenissen | Inbegrepen |
+| Berichtgrootte | 1 MB |
 | Partities | 2000 per CU |
-| Consumergroepen | Geen limiet per CU, 1000 per Event Hub |
-| Brokered Connections | 100 K inbegrepen |
-| Bewaar periode van het bericht | 90 dagen, 10 TB inbegrepen per CU |
-| Capture | Inbegrepen |
+| Consumentengroepen | Geen limiet per CU, 1000 per event hub |
+| Brokered verbindingen | 100 K inbegrepen |
+| Bewaarperiode van berichten | 90 dagen, 10 TB inbegrepen per CU |
+| Vastleggen | Inbegrepen |

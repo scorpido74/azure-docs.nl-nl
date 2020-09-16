@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320644"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705483"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Wat is de id-beveiligingsscore in Azure Active Directory?
 
@@ -50,7 +50,7 @@ Door de verbeteringsacties te volgen, kunt u het volgende doen:
 
 De beveiligde score voor identiteiten is beschikbaar in alle edities van Azure AD. Organisaties hebben toegang tot hun identiteits beveiligde Score van de **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **beveiligde Score**van de beveiligings identiteit.
 
-## <a name="how-does-it-work"></a>Hoe werkt dit?
+## <a name="how-does-it-work"></a>Hoe werkt het?
 
 Elke 48 uur wordt uw beveiligingsconfiguratie geanalyseerd door Azure en worden uw instellingen vergeleken met de aanbevolen procedures. Op basis van het resultaat van deze evaluatie wordt een nieuwe score berekend voor uw Directory. Het is mogelijk dat uw beveiligings configuratie niet volledig is afgestemd op de best practice richt lijnen en dat de verbeterings acties slechts gedeeltelijk worden uitgevoerd. In deze scenario's krijgt u slechts een deel van de maximale score die beschikbaar is voor het besturings element.
 
@@ -102,7 +102,7 @@ U krijgt punten voor het configureren van aanbevolen beveiligingsfuncties of het
 
 Als u de Score geschiedenis wilt zien, gaat u naar het [Microsoft 365 Security Center](https://security.microsoft.com/) en bekijkt u uw algemene micro soft-beveiligde Score. U kunt de wijzigingen van uw algemene beveiligde Score controleren door te klikken op de weer gave geschiedenis. Kies een specifieke datum om te zien welke mechanismen waren ingeschakeld voor die dag en wat dat voor punten heeft opgeleverd.
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Hoe is id-beveiligingsscore gerelateerd aan de beveiligingsscore van Office 365?
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>Wat is de relatie tussen identiteits beveiliging en de Microsoft 365 beveiligde Score?
 
 De [micro soft Secure Score](/office365/securitycompliance/microsoft-secure-score) bevat vijf afzonderlijke besturings-en Score Categorieën:
 

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c265f404b2e2e2796baf0febb93997ef099f0844
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564878"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705228"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Een NFS-share maken
 
@@ -163,3 +163,5 @@ az storage share-rm create \
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een NFS-share hebt gemaakt om deze te gebruiken, moet u deze koppelen aan uw Linux-client. Zie [een NFS-share koppelen](storage-files-how-to-mount-nfs-shares.md)voor meer informatie.
+
+Zie [problemen met Azure NFS-bestands shares oplossen](storage-troubleshooting-files-nfs.md)als u problemen ondervindt.

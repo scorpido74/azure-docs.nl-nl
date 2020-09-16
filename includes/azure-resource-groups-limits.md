@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 949118214851c3eceffd8c1d638a4093bdf7f366
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88748772"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304117"
 ---
 | Resource | Limiet |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "88748772"
 | Lengte van tagsleutel |512 |
 | Lengte van tagwaarde |256 |
 
-<sup>1</sup>Vanaf juni 2020 worden implementaties automatisch verwijderd uit de geschiedenis als u dicht bij de limiet komt. Als u een item uit de implementatiegeschiedenis verwijdert, heeft dit geen gevolgen voor de geïmplementeerde resources. Raadpleeg [Automatic deletions from deployment history](../articles/azure-resource-manager/templates/deployment-history-deletions.md) (Automatische verwijderingen uit de implementatiegeschiedenis) voor meer informatie.
+<sup>1</sup>Implementaties worden automatisch uit de geschiedenis verwijderd wanneer u de limiet nadert. Als u een item uit de implementatiegeschiedenis verwijdert, heeft dit geen gevolgen voor de geïmplementeerde resources. Raadpleeg [Automatic deletions from deployment history](../articles/azure-resource-manager/templates/deployment-history-deletions.md) (Automatische verwijderingen uit de implementatiegeschiedenis) voor meer informatie.
 
 #### <a name="template-limits"></a>Limieten voor sjablonen
 

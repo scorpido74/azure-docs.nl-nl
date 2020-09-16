@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554645"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705398"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Overzicht van Azure Multi-Factor Authentication voor uw organisatie
 
@@ -34,10 +34,10 @@ Klanten die gebruikmaken van de gratis voor delen van Azure AD, kunnen gebruikma
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 of E5
 
-Voor klanten met Office 365 zijn er twee opties:
+Voor klanten met Microsoft 365 zijn er twee opties:
 
 * Azure Multi-Factor Authentication is ingeschakeld of uitgeschakeld voor alle gebruikers, voor alle aanmeld gebeurtenissen. Het is niet mogelijk om multi-factor Authentication in te scha kelen voor een subset van gebruikers of alleen onder bepaalde scenario's. Beheer gaat via de Office 365-Portal. 
-* Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie beveiligde Office 365-resources met multi-factor Authentication.
+* Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie Secure Microsoft 365 resources with multi-factor Authentication (Engelstalig).
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
