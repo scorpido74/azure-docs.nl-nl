@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604390"
+ms.locfileid: "90706928"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -38,18 +38,18 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Landinstelling  | Taal                          | Aanpassingen                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arabisch (VAE)                      | No                                                |
+| `ar-AE` | Arabisch (Verenigde Arabische Emiraten)     | Taalmodel                                    |
 | `ar-BH` | Arabisch (Bahrein), modern, standaard | Taalmodel                                    |
 | `ar-EG` | Arabisch (Egypte)                    | Taalmodel                                    |
 | `ar-IL` | Arabisch (Israël)                   | No                                                |
-| `ar-IQ` | Arabisch (Irak)                     | No                                                |
-| `ar-JO` | Arabisch (Jordanië)                   | No                                                |
-| `ar-KW` | Arabisch (Koeweit)                   | No                                                |
-| `ar-LB` | Arabisch (Libanon)                  | No                                                |
-| `ar-OM` | Arabisch (Oman)                     | No                                                |
-| `ar-PS` | Arabisch (Palestijnse)                | No                                                |
-| `ar-QA` | Arabisch (Qatar)                    | No                                                |
-| `ar-SA` | Arabisch (Saoedi-Arabië)             | No                                                |
+| `ar-IQ` | Arabisch (Irak)                     | Taalmodel                                    |
+| `ar-JO` | Arabisch (Jordanië)                   | Taalmodel                                    |
+| `ar-KW` | Arabisch (Koeweit)                   | Taalmodel                                    |
+| `ar-LB` | Arabisch (Libanon)                  | Taalmodel                                    |
+| `ar-OM` | Arabisch (Oman)                     | Taalmodel                                    |
+| `ar-PS` | Arabisch (status van Palestijnse)       | No                                                |
+| `ar-QA` | Arabisch (Qatar)                    | Taalmodel                                    |
+| `ar-SA` | Arabisch (Saoedi-Arabië)             | Taalmodel                                    |
 | `ar-SY` | Arabisch (Syrië)                    | Taalmodel                                    |
 | `bg-BG` | Bulgaars (Bulgarije)              | Taalmodel                                    |
 | `ca-ES` | Catalaans (Spanje)                   | Taalmodel                                    |
@@ -117,7 +117,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | Zweeds (Zweden)                  | Taalmodel                                    |
 | `ta-IN` | Tamil (India)                     | Taalmodel                                    |
 | `te-IN` | Telugu (India)                    | Taalmodel                                    |
-| `th-TH` | Thai (Thailand)                   | No                                                |
+| `th-TH` | Thai (Thailand)                   | Taalmodel                                    |
 | `tr-TR` | Turks (Turkije)                  | Taalmodel                                    |
 | `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Akoestisch model<br>Taalmodel                  |
 | `zh-HK` | Chinees (Kantonees, traditioneel)  | Taalmodel                                    |

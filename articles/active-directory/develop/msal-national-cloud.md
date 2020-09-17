@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119434"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705857"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>MSAL gebruiken in een nationale cloud omgeving
 
@@ -42,7 +42,7 @@ Voordat u begint, moet u ervoor zorgen dat u voldoet aan deze vereisten.
 
 [Azure Government](../../azure-government/index.yml) toepassingen kunnen gebruikers verifiëren met Azure AD Government-identiteiten en open bare Azure AD-identiteiten. Omdat u een van deze identiteiten kunt gebruiken, moet u bepalen welk instantie-eind punt u moet kiezen voor uw scenario:
 
-- Azure AD Public: dit wordt vaak gebruikt als uw organisatie al een open bare Azure AD-Tenant heeft ter ondersteuning van Office 365 (openbaar of GCC) of een andere toepassing.
+- Azure AD Public: dit wordt vaak gebruikt als uw organisatie al een open bare Azure AD-Tenant heeft ter ondersteuning van Microsoft 365 (openbaar of GCC) of een andere toepassing.
 - Azure AD government: veel gebruikt als uw organisatie al een Azure AD Government-Tenant heeft ter ondersteuning van Office 365 (GCC High of DoD) of als u een nieuwe Tenant maakt in azure AD Government.
 
 Nadat u hebt besloten, hebt u een speciale overweging waar u uw app-registratie uitvoert. Als u voor uw Azure Government-toepassing open bare Azure AD-identiteiten kiest, moet u de toepassing registreren in uw open bare Azure AD-Tenant.
@@ -122,7 +122,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 In die code:
 
-- `Enter_the_Application_Id_here`is de waarde van de **toepassings-id** voor de toepassing die u hebt geregistreerd.
+- `Enter_the_Application_Id_here` is de waarde van de **toepassings-id** voor de toepassing die u hebt geregistreerd.
 - `Enter_the_Tenant_Info_Here` is ingesteld op een van de volgende opties:
     - Als uw toepassing **accounts in deze organisatie Directory**ondersteunt, vervangt u deze waarde door de Tenant-id of Tenant naam (bijvoorbeeld contoso.Microsoft.com).
     - Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door `organizations` .
@@ -132,7 +132,7 @@ In die code:
     > [!NOTE]
     > Persoonlijke micro soft-accounts worden niet ondersteund in nationale Clouds.
 
-- `graphEndpoint`is het Microsoft Graph-eind punt voor de micro soft-Cloud voor de Amerikaanse overheid.
+- `graphEndpoint` is het Microsoft Graph-eind punt voor de micro soft-Cloud voor de Amerikaanse overheid.
 
    Zie [Microsoft Graph-eind punten in nationale Clouds](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)om Microsoft Graph-eind punten te vinden voor alle nationale Clouds.
 

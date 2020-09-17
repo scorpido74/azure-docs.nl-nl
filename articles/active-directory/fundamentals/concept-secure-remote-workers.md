@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320032"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705364"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Snel op beveiligde identiteiten reageren met Azure AD
 
@@ -42,13 +42,12 @@ In deze hand leiding wordt ervan uitgegaan dat uw Cloud of hybride identiteiten 
 
 Er zijn veel aspecten van een veilige identiteits infrastructuur, maar deze controle lijst is gericht op een veilige en veilige identiteits infrastructuur waarmee gebruikers op afstand kunnen werken. Het beveiligen van uw identiteit maakt gewoon deel uit van uw beveiligings verhaal, waarbij u ook gegevens, toepassingen en apparaten kunt beveiligen.
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Richt lijnen voor klanten van Azure AD Free of Office 365.
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Richt lijnen voor Azure AD Free-, Office 365-of Microsoft 365-klanten.
 
-Er zijn een aantal aanbevelingen die Azure AD Free of Office 365 app-klanten moeten ondernemen om hun gebruikers identiteiten te beschermen, de volgende tabel is bedoeld om de belangrijkste acties voor de volgende licentie abonnementen te markeren:
+Er zijn een aantal aanbevelingen die Azure AD Free, Office 365-of Microsoft 365 app-klanten moeten ondernemen om hun gebruikers identiteiten te beschermen, de volgende tabel is bedoeld om de belangrijkste acties voor de volgende licentie abonnementen te markeren:
 
-- Office 365 (O365 E1, E3, E5, F1, a1, a3, A5)
-- Office 365 Business (Essentials, Business, Business, Premium)
-- Microsoft 365 (M365 Business, a1)
+- Office 365 (Office 365 E1, E3, E5, F1, a1, a3, A5)
+- Microsoft 365 (Business Basic, apps voor bedrijven, Business Standard, Business Premium, a1)
 - Azure AD Free (opgenomen in azure, Dynamics 365, intune en energie platform)
 
 | Aanbevolen actie | Detail |

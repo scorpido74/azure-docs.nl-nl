@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184938"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705534"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -69,7 +69,7 @@ Om verlopen apparaten op een efficiënte manier op te schonen in uw omgeving, mo
 
 Als u een apparaat wilt bijwerken in Azure AD, hebt u een account nodig waaraan een van de volgende rollen is toegewezen:
 
-- Globale beheerder
+- Hoofdbeheerder
 - Beheerder van Cloud apparaat
 - Intune-servicebeheerder
 
@@ -91,7 +91,7 @@ Als een apparaat onder beheer staat van Intune of een andere MDM-oplossing, stel
 
 Verwijder geen apparaten die door het systeem worden beheerd. Dit zijn doorgaans apparaten zoals auto pilot. Nadat deze apparaten zijn verwijderd, kunnen ze niet opnieuw worden ingericht. Door het systeem beheerde apparaten worden standaard uitgesloten door de nieuwe cmdlet `Get-AzureADDevice`.  
 
-### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
+### <a name="hybrid-azure-ad-joined-devices"></a>Apparaten die zijn toegevoegd aan hybride Azure AD
 
 Apparaten die zijn gekoppeld aan hybride Azure AD moeten het beleid volgen voor het beheer van on-premises verlopen apparaten. 
 
@@ -175,9 +175,9 @@ Zie [Overzicht van apparaatbeheer](overview.md) voor meer informatie over de ver
 
 Verificatie waarbij een apparaat wordt gebruikt om te verifiëren bij Azure AD wordt geweigerd. Enkele typische voorbeelden:
 
-- **Hybride Azure AD-aangesloten apparaat** : gebruikers kunnen het apparaat mogelijk gebruiken om zich aan te melden bij hun on-premises domein. Ze hebben echter geen toegang tot Azure AD-resources, zoals Office 365.
+- **Hybride Azure AD-aangesloten apparaat** : gebruikers kunnen het apparaat mogelijk gebruiken om zich aan te melden bij hun on-premises domein. Ze hebben echter geen toegang tot Azure AD-resources, zoals Microsoft 365.
 - **Apparaat dat is gekoppeld aan Azure AD**: gebruikers kunnen het apparaat niet gebruiken om zich aan te melden. 
-- **Mobiele apparaten**: gebruikers hebben geen toegang tot Azure AD-resources, zoals Office 365. 
+- **Mobiele apparaten** : gebruiker heeft geen toegang tot Azure AD-resources zoals Microsoft 365. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400718"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707880"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Apps weer geven met uw Azure AD-Tenant voor identiteits beheer
 In de Quick Start- [serie op toepassings beheer](view-applications-portal.md) worden de basis principes uitgelegd. Hierin leert u hoe u alle apps kunt weer geven met behulp van uw Azure AD-Tenant voor identiteits beheer. In dit artikel Dives een beetje dieper op de typen apps die u vindt.
@@ -27,7 +27,7 @@ Bij het filteren op **alle toepassingen**wordt in de **lijst** **alle toepassing
    - **Azure AD-App-registraties** : apps die zijn toegevoegd aan uw Tenant met behulp van de **app-registraties** optie in de Azure AD-Portal. Doorgaans ontwikkelde apps met behulp van de Open-ID Connect-en OAuth-standaarden.
    - **Toepassings proxy toepassingen** : een toepassing die in uw on-premises omgeving wordt uitgevoerd en die u wilt voorzien van een beveiligde eenmalige aanmelding op een externe locatie
 - Wanneer u zich aanmeldt voor of zich aanmeldt bij een toepassing van derden die is geïntegreerd met Azure Active Directory. Een voor beeld is [Smart Sheet](https://app.smartsheet.com/b/home) of [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
-- Micro soft-apps, zoals Microsoft 365 of Office 365.
+- Micro soft-apps, zoals Microsoft 365.
 - Wanneer u een nieuwe toepassings registratie toevoegt door een aangepaste toepassing te maken met behulp van het [toepassings register](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 - Wanneer u een nieuwe toepassings registratie toevoegt door een aangepaste toepassing te maken met behulp van de [Portal voor toepassings registratie van de v 2.0-toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 - Wanneer u een toepassing toevoegt, ontwikkelt u met behulp van de [ASP.NET-verificatie methoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) van Visual Studio

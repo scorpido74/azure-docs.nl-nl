@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115693"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706163"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integreren met micro soft Identity platform
 
@@ -31,7 +31,7 @@ Uw toepassing kan op verschillende manieren worden geïntegreerd met het micro s
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Ondersteuning van micro soft Identity platform als een manier om u aan te melden bij uw toepassing
 
-**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Door micro soft Identity platform te gebruiken om u aan te melden bij uw toepassing, hebben uw gebruikers niet meer dan een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Micro soft Identity platform-bevoegdheden melden zich aan voor enkele van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij het micro soft Identity-platform. Meer informatie over het [toevoegen van ondersteuning voor micro soft Identity-platform Sign in](./authentication-vs-authorization.md).
+**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Door micro soft Identity platform te gebruiken om u aan te melden bij uw toepassing, hebben uw gebruikers niet meer dan een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Micro soft Identity platform-bevoegdheden melden zich aan voor enkele van de populairste Cloud toepassingen van de wereld, waaronder Microsoft 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij het micro soft Identity-platform. Meer informatie over het [toevoegen van ondersteuning voor micro soft Identity-platform Sign in](./authentication-vs-authorization.md).
 
 **Vereenvoudig de registratie voor uw toepassing.**  Wanneer u zich aanmeldt voor uw toepassing, kan micro soft Identity platform essentiële informatie over een gebruiker verzenden, zodat u uw aanmeldings formulier vooraf kunt invullen of het volledig wilt elimineren. Gebruikers kunnen zich aanmelden voor uw toepassing met behulp van hun Azure AD-account via een vertrouwde instemming-ervaring die vergelijkbaar is met die van sociale media en mobiele toepassingen. Elke gebruiker kan zich registreren en aanmelden bij een toepassing die is geïntegreerd met het micro soft-identiteits platform zonder dat hiervoor een rol is vereist. Meer informatie over [het aanmelden van uw toepassing voor aanmelding bij een Azure ad-account](../../app-service/configure-authentication-provider-aad.md).
 
@@ -47,13 +47,13 @@ Uw toepassing kan op verschillende manieren worden geïntegreerd met het micro s
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Toegang krijgen tot het profiel van de gebruiker, de agenda, het e-mail adres, de contact personen, bestanden en meer
 
-**Micro soft Identity platform is de autorisatie server voor Office 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [het verkrijgen van toegang tot de Office 365-api's](/previous-versions/office/office-365-api/).
+**Micro soft Identity platform is de autorisatie server voor Microsoft 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [het openen van de Microsoft 365-api's](/previous-versions/office/office-365-api/).
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Promoot uw toepassing in Azure en Office 365 marketplaces
+### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Promoot uw toepassing in Azure en Microsoft 365 marketplaces
 
 **Promoot uw toepassing tot miljoenen organisaties die al gebruikmaken van Azure AD.**  Gebruikers die deze markt plaatsen zoeken en bezoeken, maken al gebruik van een of meer Cloud Services, waardoor ze gekwalificeerde Cloud service-klanten zijn. Meer informatie over het promoten van uw toepassing in [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Wanneer gebruikers zich aanmelden voor uw toepassing, wordt deze weer gegeven in het Azure AD-toegangs venster en het start programma voor Office 365-apps.**  Gebruikers kunnen snel en eenvoudig terugkeren naar uw toepassing, waardoor de gebruikers betrokkenheid wordt verbeterd. Meer informatie over het [Azure AD-toegangs venster](../user-help/my-apps-portal-end-user-access.md).
+**Wanneer gebruikers zich aanmelden voor uw toepassing, wordt deze weer gegeven in hun Azure AD-toegangs venster en Microsoft 365 app-start programma.**  Gebruikers kunnen snel en eenvoudig terugkeren naar uw toepassing, waardoor de gebruikers betrokkenheid wordt verbeterd. Meer informatie over het [Azure AD-toegangs venster](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Beveiligde apparaat-naar-service-en service-to-service-communicatie
 
@@ -85,7 +85,7 @@ Integratie met micro soft Identity platform wordt geleverd met voor delen waarbi
 
 ### <a name="worldwide-presence-and-high-availability"></a>Wereld wijde aanwezigheid en hoge Beschik baarheid
 
-**Azure AD is geïmplementeerd in data centers over de hele wereld en wordt beheerd en gecontroleerd rond de klok.**  Azure AD is het identiteits beheersysteem voor Microsoft Azure en Office 365 en wordt geïmplementeerd in 28 data centers over de hele wereld. Directory gegevens worden gegarandeerd gerepliceerd naar ten minste drie data centers. Globale load balancers zorgen ervoor dat gebruikers toegang krijgen tot het dichtstbijzijnde exemplaar van Azure AD dat hun gegevens bevat, en aanvragen automatisch opnieuw routeren naar andere Data Centers als er een probleem wordt gedetecteerd.
+**Azure AD is geïmplementeerd in data centers over de hele wereld en wordt beheerd en gecontroleerd rond de klok.**  Azure AD is het identiteits beheersysteem voor Microsoft Azure en Microsoft 365 en wordt geïmplementeerd in 28 data centers over de hele wereld. Directory gegevens worden gegarandeerd gerepliceerd naar ten minste drie data centers. Globale load balancers zorgen ervoor dat gebruikers toegang krijgen tot het dichtstbijzijnde exemplaar van Azure AD dat hun gegevens bevat, en aanvragen automatisch opnieuw routeren naar andere Data Centers als er een probleem wordt gedetecteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

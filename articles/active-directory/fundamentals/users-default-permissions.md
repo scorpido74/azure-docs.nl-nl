@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568809"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707625"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Wat zijn de standaard machtigingen voor gebruikers in Azure Active Directory?
 In Azure Active Directory (Azure AD) wordt aan alle gebruikers een reeks standaardmachtigingen verleend. De toegang van een gebruiker bestaat uit het type gebruiker, hun [roltoewijzingen](active-directory-users-assign-role-azure-portal.md)en hun eigendom van afzonderlijke objecten. Dit artikel beschrijft deze standaardmachtigingen en bevat een vergelijking van de standaardinstellingen voor lid- en gastgebruikers. De standaard gebruikers machtigingen kunnen alleen worden gewijzigd in gebruikers instellingen in azure AD.
@@ -36,9 +36,9 @@ Gebruikers en contactpersonen | <ul><li>Alle openbare eigenschappen lezen van ge
 Groepen | <ul><li>Beveiligingsgroepen maken<li>Microsoft 365 groepen maken<li>Alle eigenschappen van groepen lezen<li>Niet-verborgen groepslidmaatschappen lezen<li>Verborgen Microsoft 365 groepslid maatschappen voor gekoppelde groep lezen<li>Eigenschappen, eigendom en lidmaatschap van groepen beheren waarvan de gebruiker eigenaar is<li>Gasten toevoegen aan groepen in eigendom<li>Instellingen voor dynamisch lidmaatschap beheren<li>Groepen in eigendom verwijderen<li>In eigendom zijn van Microsoft 365 groepen herstellen</li></ul> | <ul><li>Eigenschappen lezen van alle niet-verborgen groepen, inclusief lidmaatschap en eigendom (zelfs niet-gekoppelde groepen)<li>Verborgen Microsoft 365 groepslid maatschappen voor samengevoegde groepen lezen<li>Zoeken naar groepen op weergave naam of ObjectId (indien toegestaan)</li></ul> | Geen machtigingen
 Toepassingen | <ul><li>Nieuwe toepassing registreren (maken)<li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen<li>Eigenschappen, toewijzingen en referenties van toepassingen beheren voor toepassingen in eigendom<li>Toepassingswachtwoord voor gebruiker maken of verwijderen<li>Toepassingen in eigendom verwijderen<li>Toepassingen in eigendom herstellen</li></ul> | <ul><li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen</li></ul> | <ul><li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen
 Apparaten</li></ul> | <ul><li>Alle eigenschappen van apparaten lezen<li>Alle eigenschappen van apparaten in eigendom lezen</li></ul> | Geen machtigingen | Geen machtigingen
-Directory | <ul><li>Alle bedrijfsgegevens lezen<li>Alle domeinen lezen<li>Alle partnercontracten lezen</li></ul> | <ul><li>Weergavenaam en geverifieerde domeinen lezen</li></ul> | <ul><li>Weergavenaam en geverifieerde domeinen lezen</li></ul>
+Directory | <ul><li>Alle bedrijfsgegevens lezen<li>Alle domeinen lezen<li>Alle partnercontracten lezen</li></ul> | <ul><li>Weergave naam van bedrijf lezen<li>Alle domeinen lezen</li></ul> | <ul><li>Weergave naam van bedrijf lezen<li>Alle domeinen lezen</li></ul>
 Rollen en bereiken | <ul><li>Alle beheerdersrollen en lidmaatschappen lezen<li>Alle eigenschappen en het lidmaatschap van beheereenheden lezen</li></ul> | Geen machtigingen | Geen machtigingen
-Subscriptions | <ul><li>Alle abonnementen lezen<li>Serviceplanlid inschakelen</li></ul> | Geen machtigingen | Geen machtigingen
+Abonnementen | <ul><li>Alle abonnementen lezen<li>Serviceplanlid inschakelen</li></ul> | Geen machtigingen | Geen machtigingen
 Beleidsregels | <ul><li>Alle eigenschappen van beleid lezen<li>Alle eigenschappen van beleid in eigendom lezen</li></ul> | Geen machtigingen | Geen machtigingen
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>De standaardmachtigingen voor lidgebruikers beperken

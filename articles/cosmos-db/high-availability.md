@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605319"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706820"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Accounts met meerdere regio's met een regio voor één schrijf bewerking (Lees regio lezen)
 
 - Tijdens een onderbreking van de Lees regio worden Azure Cosmos-accounts die gebruikmaken van een consistentie niveau of sterke consistentie met drie of meer Lees regio's, Maxi maal beschikbaar voor lees-en schrijf bewerkingen.
-- Azure Cosmos-accounts die gebruikmaken van sterke consistentie met twee of minder Lees regio's (waaronder de Lees & schrijf regio), verliezen de schrijf beschikbaarheid tijdens een onderbreking van de Lees regio, maar bewaren de beschik baarheid van de resterende regio's.
+- Azure Cosmos-accounts die gebruikmaken van sterke consistentie met twee of minder Lees regio's (inclusief de Lees & schrijf regio), verliezen de Lees Beschik baarheid tijdens de onderbreking van een lees bare regio.
 - De verbinding met het betrokken gebied wordt automatisch verbroken en wordt offline gemarkeerd. De [Azure Cosmos DB sdk's](sql-api-sdk-dotnet.md) omleiden Lees aanroepen naar de volgende beschik bare regio in de lijst voorkeurs regio.
 - Als geen van de regio's in de lijst met voorkeursregio's beschikbaar is, vallen aanroepen automatisch terug naar de huidige schrijfregio.
 - Er zijn geen wijzigingen vereist in de toepassings code voor het verwerken van de onderbreking van de Lees regio. Wanneer de betrokken Lees regio weer online is, wordt deze automatisch gesynchroniseerd met de huidige schrijf regio en is deze weer beschikbaar om Lees aanvragen te kunnen behandelen.
@@ -144,5 +144,5 @@ Daarna kunt u de volgende artikelen lezen:
 - [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
 - [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
 - [Wereldwijde distributie - achter de schermen](global-dist-under-the-hood.md)
-- [Consistentie niveaus in Azure Cosmos DB](consistency-levels.md)
+- [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
 - [Uw Cosmos-account configureren met meerdere schrijf regio's](how-to-multi-master.md)

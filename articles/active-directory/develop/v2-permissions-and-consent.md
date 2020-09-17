@@ -1,6 +1,6 @@
 ---
 title: Scopes, machtigingen en toestemming van micro soft Identity platform
-description: Een beschrijving van autorisatie in het micro soft Identity platform-eind punt, met inbegrip van scopes, machtigingen en toestemming.
+description: Meer informatie over autorisatie in het micro soft Identity platform-eind punt, met inbegrip van scopes, machtigingen en toestemming.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,27 +12,27 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263224"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705687"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform
 
-Toepassingen die zijn geïntegreerd met het micro soft Identity-platform, volgen een autorisatie model waarmee gebruikers en beheerders controle kunnen krijgen over de manier waarop gegevens worden geopend. De implementatie van het autorisatie model is bijgewerkt op het micro soft Identity platform-eind punt en verandert de manier waarop een app moet communiceren met het micro soft Identity-platform. In dit artikel worden de basis concepten van dit autorisatie model beschreven, met inbegrip van scopes, machtigingen en toestemming.
+Toepassingen die zijn geïntegreerd met het Microsoft Identity Platform volgen een autorisatiemodel dat gebruikers en beheerders controle geeft over de toegang tot gegevens. De implementatie van het autorisatie model is bijgewerkt op het micro soft Identity platform-eind punt en verandert de manier waarop een app moet communiceren met het micro soft Identity-platform. In dit artikel worden de basis concepten van dit autorisatie model beschreven, met inbegrip van scopes, machtigingen en toestemming.
 
 ## <a name="scopes-and-permissions"></a>Bereiken en machtigingen
 
 Het micro soft Identity-platform implementeert het [OAuth 2,0](active-directory-v2-protocols.md) -autorisatie protocol. OAuth 2,0 is een methode waarmee een app van derden namens een gebruiker toegang heeft tot webhosten. Elke webhostige resource die wordt geïntegreerd met het micro soft Identity-platform heeft een resource-id of een URI voor de *toepassings-id*. Enkele van de webhoste bronnen van micro soft zijn bijvoorbeeld:
 
-* Microsoft Graph:`https://graph.microsoft.com`
-* Office 365 mail-API:`https://outlook.office.com`
-* Azure Key Vault:`https://vault.azure.net`
+* Microsoft Graph: `https://graph.microsoft.com`
+* Microsoft 365-mail-API: `https://outlook.office.com`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> We raden u ten zeerste aan om Microsoft Graph te gebruiken in plaats van Office 365 mail API, enzovoort.
+> We raden u ten zeerste aan om Microsoft Graph te gebruiken in plaats van Microsoft 365 e-mail-API, enzovoort.
 
 Dit geldt ook voor alle resources van derden die zijn geïntegreerd met het micro soft Identity platform. Elk van deze resources kan ook een set machtigingen definiëren die kunnen worden gebruikt om de functionaliteit van die bron te verdelen in kleinere segmenten. [Microsoft Graph](https://graph.microsoft.com) heeft bijvoorbeeld machtigingen gedefinieerd om de volgende taken uit te voeren, onder andere:
 
@@ -44,9 +44,9 @@ Als u deze typen machtigingen definieert, heeft de resource een nauw keurige con
 
 In OAuth 2,0 worden deze typen machtigingen *scopes*genoemd. Ze worden ook vaak *machtigingen*genoemd. Een machtiging wordt weer gegeven in het micro soft Identity-platform als een teken reeks waarde. Als u doorgaat met het Microsoft Graph-voor beeld, is de teken reeks waarde voor elke machtiging:
 
-* De agenda van een gebruiker lezen met behulp van`Calendars.Read`
-* Schrijven naar de agenda van een gebruiker met behulp van`Calendars.ReadWrite`
-* E-mail verzenden als gebruiker met behulp van`Mail.Send`
+* De agenda van een gebruiker lezen met behulp van `Calendars.Read`
+* Schrijven naar de agenda van een gebruiker met behulp van `Calendars.ReadWrite`
+* E-mail verzenden als gebruiker met behulp van `Mail.Send`
 
 Een app vraagt meestal deze machtigingen door de scopes op te geven in aanvragen voor het micro soft Identity platform Authorization-eind punt. Bepaalde machtigingen met een hoge bevoegdheid kunnen echter alleen worden verleend via toestemming van de beheerder en aangevraagd/verleend met behulp van het [eind punt voor toestemming](v2-permissions-and-consent.md#admin-restricted-permissions)van de beheerder. Lees verder voor meer informatie.
 
@@ -134,9 +134,9 @@ Daarnaast moeten toepassingen het afstemmings eindpunt van de beheerder gebruike
 
 Sommige machtigingen met hoge bevoegdheden in het micro soft-ecosysteem kunnen worden ingesteld op *beheerder*. Voor beelden van dit soort machtigingen zijn onder andere:
 
-* Volledige profielen van alle gebruikers lezen met behulp van`User.Read.All`
-* Gegevens schrijven naar de directory van een organisatie met behulp van`Directory.ReadWrite.All`
-* Alle groepen in de directory van een organisatie lezen met behulp van`Groups.Read.All`
+* Volledige profielen van alle gebruikers lezen met behulp van `User.Read.All`
+* Gegevens schrijven naar de directory van een organisatie met behulp van `Directory.ReadWrite.All`
+* Alle groepen in de directory van een organisatie lezen met behulp van `Groups.Read.All`
 
 Hoewel een consumenten gebruiker een toepassing toegang kan verlenen tot dit soort gegevens, zijn de gebruikers van de organisatie beperkt tot het verlenen van toegang tot dezelfde set gevoelige Bedrijfs gegevens. Als uw toepassing toegang vraagt tot een van deze machtigingen van een organisatie gebruiker, ontvangt de gebruiker een fout bericht waarin staat dat ze niet zijn geautoriseerd om toestemming te geven voor de machtigingen van uw app.
 
@@ -193,7 +193,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter        | Voorwaarde        | Description                                                                                |
+| Parameter        | Conditie        | Beschrijving                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden weer gegeven in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met organisaties zoals in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
@@ -283,7 +283,7 @@ In dit voor beeld bestaat er geen toestemming voor de gebruiker tussen de client
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Voor beeld 3: de gebruiker heeft toestemming gegeven en er wordt extra scopes aangevraagd door de client
 
-In dit voor beeld heeft de gebruiker al toestemming gegeven `mail.read` voor de client. De client is geregistreerd voor de `contacts.read` Scope tijdens de registratie. Wanneer de client een aanvraag doet voor een token met behulp van `scope=https://graph.microsoft.com/.default` en toestemming vraagt `prompt=consent` , ziet de gebruiker een venster voor toestemming voor alle (en alleen) de machtigingen die zijn geregistreerd door de toepassing. `contacts.read`is aanwezig in het venster voor toestemming, maar `mail.read` niet. Het geretourneerde token is voor Microsoft Graph en bevat `mail.read` en `contacts.read` .
+In dit voor beeld heeft de gebruiker al toestemming gegeven `mail.read` voor de client. De client is geregistreerd voor de `contacts.read` Scope tijdens de registratie. Wanneer de client een aanvraag doet voor een token met behulp van `scope=https://graph.microsoft.com/.default` en toestemming vraagt `prompt=consent` , ziet de gebruiker een venster voor toestemming voor alle (en alleen) de machtigingen die zijn geregistreerd door de toepassing. `contacts.read` is aanwezig in het venster voor toestemming, maar `mail.read` niet. Het geretourneerde token is voor Microsoft Graph en bevat `mail.read` en `contacts.read` .
 
 ### <a name="using-the-default-scope-with-the-client"></a>Het/.default-bereik gebruiken met de-client
 

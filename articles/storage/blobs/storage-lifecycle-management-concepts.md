@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603995"
+ms.locfileid: "90707761"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -87,7 +87,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
    > [!IMPORTANT]
    > De tijd voor het bijhouden van de laatste keer dat u toegang hebt, is alleen voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
    
-   Zie [gegevens verplaatsen op basis van datum van laatste toegang (preview)](#move-data-based-on-last-accessed-date-preview)voor meer informatie over de optie **Laatst geopend** .
+   Als u de optie **laatst benaderd** wilt gebruiken, selecteert u **toegangs tracering ingeschakeld** op de pagina **levenscyclus beheer** in het Azure Portal. Zie [gegevens verplaatsen op basis van datum van laatste toegang (preview)](#move-data-based-on-last-accessed-date-preview)voor meer informatie over de optie **Laatst geopend** .
 
 1. Als u **blobs beperken met filters** hebt geselecteerd op de pagina **Details** , selecteert u **filter sets** om een optioneel filter toe te voegen. In het volgende voor beeld wordt gefilterd op blobs in de *mylifecyclecontainer* -container die beginnen met ' Log '.
 
@@ -376,6 +376,8 @@ De **laatst geopende** optie is beschikbaar in de preview-versie in de volgende 
 
 > [!IMPORTANT]
 > De tijd voor het bijhouden van de laatste keer dat u toegang hebt, is alleen voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
+
+Als u de optie **laatst benaderd** wilt gebruiken, selecteert u **toegangs tracering ingeschakeld** op de pagina **levenscyclus beheer** in het Azure Portal.
 
 #### <a name="how-last-access-time-tracking-works"></a>De werking van tijd bijhouden van de laatste toegang
 

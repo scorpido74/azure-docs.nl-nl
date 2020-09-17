@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178821"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705993"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
 
@@ -154,7 +154,7 @@ Zoals gedefinieerd door het [OAuth2-autorisatie raamwerk][OAuth2-Role-Def], kan 
 
 Zoals gedefinieerd door het [OAuth2-verificatie raamwerk][OAuth2-Role-Def], een server die beveiligde resources host, die beveiligde bron aanvragen kan accepteren en erop kan reageren door [client toepassingen](#client-application) die een [toegangs token](#access-token)aanbieden. Ook wel bekend als een beveiligde resource server of een resource toepassing.
 
-Een resource server stelt Api's beschikbaar en dwingt de toegang tot de beveiligde resources af via [scopes](#scopes) en [rollen](#roles), met behulp van het OAuth 2,0-autorisatie raamwerk. Voor beelden hiervan zijn de [Microsoft Graph-API][Microsoft-Graph] die toegang biedt tot gegevens van Azure AD-tenants, en de Office 365-api's die toegang bieden tot informatie zoals e-mail en agenda.
+Een resource server stelt Api's beschikbaar en dwingt de toegang tot de beveiligde resources af via [scopes](#scopes) en [rollen](#roles), met behulp van het OAuth 2,0-autorisatie raamwerk. Voor beelden hiervan zijn de [Microsoft Graph-API][Microsoft-Graph] die toegang biedt tot gegevens van Azure AD-tenants en de Microsoft 365-api's die toegang bieden tot informatie zoals e-mail en agenda.
 
 Net als bij een client toepassing wordt de identiteits configuratie van de bron toepassing tot stand gebracht via [registratie](#application-registration) in een Azure AD-Tenant, waardoor zowel het toepassings-als Service-Principal-object wordt geleverd. Sommige door micro soft geleverde Api's, zoals de Microsoft Graph-API, hebben vooraf geregistreerde service-principals die tijdens het inrichten beschikbaar zijn gemaakt in alle tenants.
 
@@ -172,7 +172,7 @@ Net als [rollen](#roles)bieden bereiken een manier waarop een [bron server](#res
 
 Bereiken zijn door resources gedefinieerde teken reeksen (bijvoorbeeld ' mail. read ', ' Directory. ReadWrite. all '), beheerd in de [Azure Portal][AZURE-portal] via het [toepassings manifest](#application-manifest)van de resource en opgeslagen in de [eigenschap oauth2Permissions][Graph-Sp-Resource]van de resource. De Azure Portal wordt ook gebruikt om de [gedelegeerde machtigingen](#permissions) van de client toepassing te configureren voor toegang tot een bereik.
 
-Een best practice naam Conventie is het gebruik van een ' resource. Operation. CONSTRAINT '-indeling. Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de bereiken die worden weer gegeven door Microsoft Graph-API. Zie [Naslag informatie voor office 365 API-machtigingen][O365-Perm-Ref]voor bereiken die worden weer gegeven door Office 365-Services.
+Een best practice naam Conventie is het gebruik van een ' resource. Operation. CONSTRAINT '-indeling. Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de bereiken die worden weer gegeven door Microsoft Graph-API. Zie [Microsoft 365 API permissions Reference][O365-Perm-Ref](Engelstalig) voor bereiken die worden weer gegeven door Microsoft 365 Services.
 
 ## <a name="security-token"></a>beveiligings token
 
@@ -202,7 +202,7 @@ Een exemplaar van een Azure AD-Directory wordt een Azure AD-Tenant genoemd. Het 
 * verificatie van gebruikers accounts en geregistreerde toepassingen
 * REST-eind punten die vereist zijn voor de ondersteuning van verschillende protocollen, waaronder OAuth2 en SAML, met inbegrip van het [autorisatie-eind](#authorization-endpoint)punt, [token eindpunt](#token-endpoint) en het ' algemene ' eind punt dat wordt gebruikt door [multi tenant-toepassingen](#multi-tenant-application).
 
-Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Office 365-abonnementen, waardoor identiteits & de toegangs beheer functies voor het abonnement. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory-Tenant][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant, en voor instructies over het koppelen of toevoegen van een abonnement aan een Azure AD-Tenant.
+Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Microsoft 365-abonnementen, met identiteits-& toegangs beheer functies voor het abonnement. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory-Tenant][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant, en voor instructies over het koppelen of toevoegen van een abonnement aan een Azure AD-Tenant.
 
 ## <a name="token-endpoint"></a>token eindpunt
 

@@ -2,18 +2,18 @@
 title: Problemen met Azure-toepassing Insights oplossen Snapshot Debugger
 description: Dit artikel bevat probleemoplossings stappen en informatie om ontwikkel aars te helpen bij het inschakelen of gebruiken van Application Insights Snapshot Debugger.
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671406"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707829"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Problemen oplossen met het inschakelen van Application Insights Snapshot Debugger of het weer geven van moment opnamen
-Als u Application Insights Snapshot Debugger voor uw toepassing hebt ingeschakeld, maar geen moment opnamen voor uitzonde ringen ziet, kunt u deze instructies gebruiken om problemen op te lossen. Er kunnen verschillende redenen zijn waarom moment opnamen niet worden gegenereerd. U kunt de status controle van de moment opname uitvoeren om enkele van de mogelijke veelvoorkomende oorzaken te identificeren.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Problemen oplossen met het inschakelen van Application Insights Snapshot Debugger of het weer geven van moment opnamen
+Als u Application Insights Snapshot Debugger voor uw toepassing hebt ingeschakeld, maar geen moment opnamen voor uitzonde ringen ziet, kunt u deze instructies gebruiken om problemen op te lossen. Er kunnen veel verschillende redenen zijn waarom momentopnamen niet worden gegenereerd. U kunt de status controle van de moment opname uitvoeren om enkele van de mogelijke veelvoorkomende oorzaken te identificeren.
 
 ## <a name="use-the-snapshot-health-check"></a>De status controle van de moment opname gebruiken
 Enkele veelvoorkomende problemen leiden ertoe dat de moment opname van de geopende fout opsporing niet wordt weer gegeven. Met een verouderde Snapshot Collector, bijvoorbeeld; de dagelijkse upload limiet bereikt; of de moment opname neemt gewoon veel tijd in beslag om te uploaden. Gebruik de status controle van de moment opname om veelvoorkomende problemen op te lossen.
@@ -32,13 +32,37 @@ Als het probleem hiermee niet is opgelost, raadpleegt u de volgende hand matige 
 
 Zorg ervoor dat u de juiste instrumentatie sleutel gebruikt in de gepubliceerde toepassing. Normaal gesp roken wordt de instrumentatie sleutel gelezen uit het ApplicationInsights.config-bestand. Controleer of de waarde gelijk is aan de instrumentatie sleutel voor de Application Insights bron die u in de portal ziet.
 
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL-client instellingen controleren (ASP.NET)
+
+Als u een ASP.NET-toepassing hebt gehost in Azure App Service of in IIS op een virtuele machine, kan uw toepassing geen verbinding maken met de Snapshot Debugger-service vanwege een ontbrekend SSL-beveiligings protocol.
+[Het snapshot debugger-eind punt vereist TLS-versie 1,2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). De set SSL-beveiligings protocollen is een van de quirks die is ingeschakeld door de httpRuntime targetFramework-waarde in de sectie System. Web van web.config. Als de httpRuntime targetFramework is ingesteld op 4.5.2 of lager, is TLS 1,2 niet standaard opgenomen.
+
+> [!NOTE]
+> De waarde van de httpRuntime targetFramework is onafhankelijk van het doel raamwerk dat wordt gebruikt bij het bouwen van uw toepassing.
+
+Als u de instelling wilt controleren, opent u het web.config-bestand en gaat u naar de sectie System. Web. Zorg ervoor dat de `targetFramework` voor `httpRuntime` is ingesteld op 4,6 of hoger.
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> Wanneer u de waarde van de httpRuntime targetFramework wijzigt, wordt de runtime-quirks die is toegepast op uw toepassing, gewijzigd en kunnen andere, subtiele gedrags wijzigingen worden veroorzaakt. Zorg ervoor dat u uw toepassing grondig test nadat u deze wijziging hebt aangebracht. Zie voor een volledige lijst met compatibiliteits wijzigingen. https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> Als de targetFramework 4,7 of hoger is, worden de beschik bare protocollen door Windows bepaald. In Azure App Service is TLS 1,2 beschikbaar. Als u echter uw eigen virtuele machine gebruikt, moet u mogelijk TLS 1,2 inschakelen in het besturings systeem.
+
 ## <a name="preview-versions-of-net-core"></a>Preview-versies van .NET core
 Als de toepassing gebruikmaakt van een preview-versie van .NET core en Snapshot Debugger is ingeschakeld via het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt Snapshot debugger mogelijk niet gestart. Volg de instructies in [enable snapshot debugger voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket met de toepassing toe te voegen, naast het inschakelen ***van*** het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade uitvoeren naar de nieuwste versie van het NuGet-pakket
 
-Als Snapshot Debugger is ingeschakeld via het [deel venster Application Insights in de portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), moet uw toepassing al het meest recente NuGet-pakket uitvoeren. Als Snapshot Debugger is ingeschakeld door het pakket [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet op te nemen, gebruikt u Visual Studio NuGet Package Manager om te controleren of u de nieuwste versie van micro soft. ApplicationInsights. SnapshotCollector gebruikt. Release opmerkingen vindt u ophttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Als Snapshot Debugger is ingeschakeld via het [deel venster Application Insights in de portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), moet uw toepassing al het meest recente NuGet-pakket uitvoeren. Als Snapshot Debugger is ingeschakeld door het pakket [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet op te nemen, gebruikt u Visual Studio NuGet Package Manager om te controleren of u de nieuwste versie van micro soft. ApplicationInsights. SnapshotCollector gebruikt. Release opmerkingen vindt u op https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>Raadpleeg de uploader-logboeken
 
@@ -140,7 +164,7 @@ Volg deze stappen om de functie van de Cloud service te configureren met een toe
    }
    ```
 
-3. Werk het ApplicationInsights.config-bestand van uw rol bij om de locatie van de tijdelijke map te overschrijven die wordt gebruikt door`SnapshotCollector`
+3. Werk het ApplicationInsights.config-bestand van uw rol bij om de locatie van de tijdelijke map te overschrijven die wordt gebruikt door `SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">

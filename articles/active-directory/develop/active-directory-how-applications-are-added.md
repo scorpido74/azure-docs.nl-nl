@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115761"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706180"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
@@ -70,9 +70,9 @@ Net als toepassings objecten kunnen service-principals ook worden gemaakt via me
 
 * Wanneer gebruikers zich aanmelden bij een toepassing van derden die is geïntegreerd met Azure AD
   * Tijdens het aanmelden wordt gebruikers gevraagd om machtigingen aan te geven voor de toepassing om toegang te krijgen tot hun profiel en andere machtigingen. De eerste persoon die toestemming verleent, veroorzaakt een service-principal die de toepassing vertegenwoordigt die moet worden toegevoegd aan de Directory.
-* Wanneer gebruikers zich aanmelden bij micro soft onlineservices zoals [Office 365](https://products.office.com/)
-  * Wanneer u zich abonneert op Office 365 of een proef versie start, worden een of meer service-principals gemaakt in de map die de verschillende services vertegenwoordigt die worden gebruikt voor het leveren van alle functies die zijn gekoppeld aan Office 365.
-  * Voor sommige Office 365-Services, zoals share point, worden voortdurend service-principals gemaakt om beveiligde communicatie tussen onderdelen, waaronder werk stromen, mogelijk te maken.
+* Wanneer gebruikers zich aanmelden bij micro soft onlineservices zoals [Microsoft 365](https://products.office.com/)
+  * Wanneer u zich abonneert op Microsoft 365 of een proef versie begint, worden een of meer service-principals gemaakt in de map die de verschillende services vertegenwoordigt die worden gebruikt voor het leveren van alle functies die zijn gekoppeld aan Microsoft 365.
+  * Sommige Microsoft 365 Services, zoals share point, maken voortdurend service-principals voor veilige communicatie tussen onderdelen, waaronder werk stromen.
 * Wanneer een beheerder een toepassing toevoegt uit de app-galerie (Hiermee wordt ook een onderliggend app-object gemaakt)
 * Een toepassing voor het gebruik van [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) toevoegen
 * Een toepassing verbinden voor eenmalige aanmelding met SAML of een eenmalige aanmelding met een wacht woord (SSO)
@@ -104,7 +104,7 @@ Toepassingen die u zelf toevoegt (wordt weer gegeven als **app (uw)** in het dia
   * Claim transformatie regels
   * Kenmerk toewijzingen (gebruikers inrichten)
 * Zie de referentie documentatie voor de Microsoft Graph-API voor meer informatie over de Service-Principal en toepassings objecten:
-  * [Toepassing](/graph/api/resources/application?view=graph-rest-1.0)
+  * [App](/graph/api/resources/application?view=graph-rest-1.0)
   * [Service-Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Waarom kunnen toepassingen worden geïntegreerd met Azure AD?
@@ -116,7 +116,7 @@ Toepassingen worden toegevoegd aan Azure AD om gebruik te maken van een of meer 
 * Eenmalige aanmelding met Federatie of wacht woord
 * Gebruikers inrichten en synchronisatie
 * Op rollen gebaseerd toegangs beheer: gebruik de Directory om toepassings rollen te definiëren voor het uitvoeren van op rollen gebaseerde autorisatie controles in een toepassing
-* OAuth-autorisatie Services: gebruikt door Office 365 en andere micro soft-toepassingen om toegang tot Api's/resources te autoriseren
+* OAuth-autorisatie Services: wordt gebruikt door Microsoft 365 en andere micro soft-toepassingen om toegang te verlenen tot Api's/bronnen
 * Toepassingen publiceren en proxy-een toepassing publiceren vanuit een particulier netwerk naar Internet
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Wie is gemachtigd om toepassingen toe te voegen aan mijn Azure AD-exemplaar?

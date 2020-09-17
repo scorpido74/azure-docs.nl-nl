@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563910"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707965"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 
@@ -27,7 +27,7 @@ Voor meer informatie over het gebruik van Azure AD als een id-provider voor een 
 Deze toepassingen worden geconfigureerd namens de gebruiker in de Azure AD-Portal. De toepassing moet op de juiste wijze zijn geconfigureerd en toegewezen aan de gebruiker of een groep waarvan de gebruiker lid is om de toepassing in mijn apps weer te geven. 
 
 Het type apps dat een gebruiker kan zien, kan worden weer gegeven in de volgende categorieën:
--   Microsoft 365-en Office 365-toepassingen
+-   Microsoft 365 toepassingen
 -   Toepassingen van micro soft en derden die zijn geconfigureerd met SSO op basis van Federatie
 -   SSO-toepassingen op basis van wacht woorden
 -   Toepassingen met bestaande SSO-oplossingen
@@ -163,7 +163,7 @@ Voer de volgende stappen uit om een licentie aan een gebruiker toe te wijzen:
 11. Selecteer de knop **toewijzen** om deze licenties aan deze gebruiker toe te wijzen.
 
 ## <a name="troubleshooting-deep-links"></a>Problemen met diepe koppelingen oplossen
-Diep gaande koppelingen of Url's voor gebruikers toegang zijn koppelingen die uw gebruikers kunnen gebruiken om rechtstreeks vanuit hun browser-URL-balken toegang te krijgen tot hun wacht woord-SSO-toepassingen. Als u naar deze koppeling navigeert, worden gebruikers automatisch aangemeld bij de toepassing zonder dat ze eerst naar mijn apps hoeven te gaan. De koppeling is dezelfde die gebruikers gebruiken om toegang te krijgen tot deze toepassingen vanuit het start programma voor Office 365-toepassingen.
+Diep gaande koppelingen of Url's voor gebruikers toegang zijn koppelingen die uw gebruikers kunnen gebruiken om rechtstreeks vanuit hun browser-URL-balken toegang te krijgen tot hun wacht woord-SSO-toepassingen. Als u naar deze koppeling navigeert, worden gebruikers automatisch aangemeld bij de toepassing zonder dat ze eerst naar mijn apps hoeven te gaan. De koppeling is hetzelfde als die gebruikers gebruiken om toegang te krijgen tot deze toepassingen vanuit het start programma voor toepassingen van Microsoft 365.
 
 ### <a name="checking-the-deep-link"></a>De diepe koppeling controleren
 

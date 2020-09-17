@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049860"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706680"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partners
 
@@ -37,6 +37,7 @@ Het ISV-partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen 
 | ![logo](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) is een id-verificatie service waarmee realtime-verificatie via een geautomatiseerde id wordt ingeschakeld, waarbij klant gegevens worden beschermd. |
 | ![logo](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) is een profilerings-en identiteits validatie provider die gebruikers identificatie verifieert en uitgebreide risico analyse biedt op basis van het apparaat van de gebruiker. |
 | ![logo](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) is een verificatie oplossing met een document-id en gelaats biometrie waarmee bedrijven voldoen aan de vereisten van *uw klant* en identiteit in real-time.  |
+| ![logo](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) Cloud-native-platform maakt gebruik van intelligente analyses en biedt integratie van meerdere toepassingen om IT-modernisatie te stroom lijnen en betere beveiliging, governance en naleving te bevorderen. Zakelijke modernisering verandert de manier waarop bedrijven toegangs aanvragen controleren, toegangs beoordelingen, rapport analyse en stroom lijnen van certificerings campagnes.  |
 | ![logo](./media/partner-gallery/trusona-logo.png) | Met [Trusona](./partner-trusona.md) -integratie kunt u zich veilig aanmelden en wacht woordloze verificatie, multi-factor Authentication en digitale licentie controle inschakelen.|
 | ![logo](./media/partner-gallery/twilio-logo.png) | [Twilio verify app](./partner-twilio.md) biedt meerdere oplossingen om multi-factor Authentication (MFA) in te scha kelen via een SMS One-Time Password (OTP), op tijd gebaseerd wacht woord (mobiele totp) en push meldingen, en om te voldoen aan de voor waarden van de SCA voor betalings Services-instructie 2 (PSD2).|
 | ![logo](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) is een identiteits verificatie-en controle provider op basis van het door de gebruiker getypte patroon, en biedt id-verificatie oplossingen waarbij multi-factor Authentication wordt afgedwongen en waarmee wordt voldaan aan de algemene vereisten voor de betalings Services-instructie 2 (PSD2). |

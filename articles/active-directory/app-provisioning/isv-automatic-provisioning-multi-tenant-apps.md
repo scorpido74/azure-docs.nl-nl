@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235635"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706450"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
@@ -64,7 +64,7 @@ Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informa
 |---|---|---|---|
 | Gebruikers-en groeps beheer in azure AD| √| √| Alleen gebruiker |
 | Gebruikers en groepen beheren die zijn gesynchroniseerd vanuit on-premises Active Directory| √*| √*| Alleen gebruiker * |
-| Toegang tot gegevens buiten gebruikers en groepen tijdens het inrichten van toegang tot O365-gegevens (teams, share point, E-mail, agenda, documenten, enz.)| X +| √| X |
+| Toegang tot gegevens buiten gebruikers en groepen tijdens het inrichten van toegang tot Microsoft 365 gegevens (teams, share point, E-mail, agenda, documenten, enz.)| X +| √| X |
 | Gebruikers maken, lezen en bijwerken op basis van bedrijfs regels| √| √| √ |
 | Gebruikers verwijderen op basis van bedrijfs regels| √| √| X |
 | Automatische gebruikers inrichting beheren voor alle toepassingen vanuit de Azure Portal| √| X| √ |
@@ -91,7 +91,7 @@ Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SC
 
 Wanneer u Microsoft Graph gebruikt voor het inrichten, hebt u toegang tot alle uitgebreide gebruikers gegevens die beschikbaar zijn in Graph. Naast de details van gebruikers en groepen kunt u ook aanvullende informatie ophalen, zoals de rollen van de gebruiker, de Manager en de directe rapporten, het eigendom en de geregistreerde apparaten, en honderden andere gegevens die beschikbaar zijn in de [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0). 
 
-Meer dan 15.000.000 organisaties, en 90% van Fortune 500-bedrijven gebruiken Azure AD bij het abonneren op micro soft-Cloud Services zoals Office 365, Microsoft Azure, Enter prise Mobility Suite of Microsoft 365. U kunt Microsoft Graph gebruiken om uw app te integreren met beheer werk stromen, zoals het onboarden van werk nemers (en beëindiging), profiel onderhoud en meer. 
+Meer dan 15.000.000 organisaties en 90% van Fortune 500-bedrijven gebruiken Azure AD bij het abonneren op micro soft-Cloud Services, zoals Microsoft 365, Microsoft Azure of ENTER prise Mobility Suite. U kunt Microsoft Graph gebruiken om uw app te integreren met beheer werk stromen, zoals het onboarden van werk nemers (en beëindiging), profiel onderhoud en meer. 
 
 Meer informatie over het gebruik van Microsoft Graph voor het inrichten van:
 

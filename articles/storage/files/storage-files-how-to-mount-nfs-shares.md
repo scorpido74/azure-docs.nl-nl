@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 23465c76fa62ed65583b97b0c9406dc791a4327f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564862"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707438"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>Een NFS-bestands share koppelen
 
@@ -61,4 +61,5 @@ U hebt nu de NFS-share gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure Files in ons artikel, [het plannen van een Azure files-implementatie](storage-files-planning.md).
+- Meer informatie over Azure Files in ons artikel, [het plannen van een Azure files-implementatie](storage-files-planning.md).
+- Zie [problemen met Azure NFS-bestands shares oplossen](storage-troubleshooting-files-nfs.md)als u problemen ondervindt.

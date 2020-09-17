@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226638"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706197"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
 
@@ -36,7 +36,7 @@ In dit artikel gaat u het volgende doen:
 Microsoft beheert twee soorten gebruikersaccounts:
 
 - **Persoonlijke accounts** (voorheen bekend als Windows Live ID). Deze accounts vertegenwoordigen de relatie tussen *afzonderlijke* gebruikers en Microsoft, en worden gebruikt om toegang te verkrijgen tot consumentenapparaten en services van Microsoft. Deze accounts zijn bedoeld voor persoonlijk gebruik.
-- **Werk- of schoolaccounts.** Deze accounts worden beheerd door Microsoft namens organisaties die Azure Active Directory gebruiken. Deze accounts worden gebruikt voor aanmelding bij Office 365 en andere zakelijke services van Microsoft.
+- **Werk- of schoolaccounts.** Deze accounts worden beheerd door Microsoft namens organisaties die Azure Active Directory gebruiken. Deze accounts worden gebruikt om u aan te melden bij Microsoft 365 en andere zakelijke services van micro soft.
 
 Werk- of schoolaccounts van Microsoft worden meestal toegewezen aan eindgebruikers (werknemers, leerlingen/studenten, overheidspersoneel) door hun organisaties (bedrijf, school, overheidsinstelling). Deze accounts worden rechtstreeks in de Cloud gemastereerd (in het Azure AD-platform) of gesynchroniseerd met Azure AD vanuit een on-premises Directory, zoals Windows Server Active Directory. Microsoft is de *bewaarder* van de werk- of schoolaccounts, maar de accounts zijn eigendom van en worden beheerd door de organisatie.
 
@@ -49,7 +49,7 @@ Microsoft stelt eindgebruikers niet bloot aan de merknaam Azure of Active Direct
 
 ## <a name="user-account-pictogram"></a>Pictogram van het gebruikersaccount
 
-In een eerdere versie van deze richtlijnen raadden we aan een pictogram van een ‘blauwe badge’ te gebruiken. Naar aanleiding van feedback van gebruikers en ontwikkelaars raden we nu echter aan het Microsoft-logo te gebruiken. Het Microsoft-logo helpt gebruikers te begrijpen dat ze het account dat ze met Office 365 of andere zakelijke Microsoft-services gebruiken, ook kunnen gebruiken om zich aan te melden bij uw app.
+In een eerdere versie van deze richtlijnen raadden we aan een pictogram van een ‘blauwe badge’ te gebruiken. Naar aanleiding van feedback van gebruikers en ontwikkelaars raden we nu echter aan het Microsoft-logo te gebruiken. Het micro soft-logo helpt gebruikers te begrijpen dat ze het account dat ze gebruiken met Microsoft 365 of andere micro soft Business Services, opnieuw kunnen gebruiken om zich aan te melden bij uw app.
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Registreren en aanmelden met Azure AD
 
@@ -63,13 +63,13 @@ Uw app heeft misschien aparte paden voor registratie en aanmelding, en de volgen
 
 Uw koppeling ‘Download de app’ moet de gebruiker naar de Azure AD-pagina voor toegangsverlening (autorisatie) leiden, zodat de beheerder van een organisatie kan autoriseren dat uw app toegang heeft tot de gegevens van die organisatie, die worden gehost door Microsoft. In het artikel [Toepassingen integreren met Azure Active Directory](./quickstart-register-app.md) staat meer informatie over hoe u toegang kunt aanvragen.
 
-Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Office 365 App Launcher-ervaring voor gebruikers (toegankelijk via wafel en van [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
+Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Microsoft 365 app-start programma van de gebruiker (toegankelijk via de wafel en vanaf [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
 
 ![Knop met het logo van micro soft en de tekst toevoegen aan mijn organisatie](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 We raden u echter aan verklarende tekst te schrijven in plaats van op knoppen te vertrouwen. Bijvoorbeeld:
 
-> *Als u Office 365 of een andere bedrijfs service van micro soft al gebruikt, kunt u <your_app_name> toegang tot de gegevens van uw organisatie verlenen. Hiermee kunnen uw gebruikers toegang krijgen tot <your_app_name> met hun bestaande werk accounts.*
+> *Als u Microsoft 365 of andere zakelijke services van micro soft al gebruikt, kunt u <your_app_name> toegang verlenen tot de gegevens van uw organisatie. Hiermee kunnen uw gebruikers toegang krijgen tot <your_app_name> met hun bestaande werk accounts.*
 
 Als u het officiële Microsoft-logo wilt downloaden voor gebruik in uw app, klikt u met de rechtermuisknop op het logo dat u wilt gebruiken en slaat u het op naar uw computer.
 
@@ -102,7 +102,7 @@ Als u de officiële afbeelding wilt downloaden voor gebruik in uw app, klikt u m
 
 **WEL DOEN** ‘Werk- of schoolaccount’ gebruiken in combinatie met de knop ‘Aanmelden met Microsoft’ om eindgebruikers te helpen zien of ze het kunnen gebruiken. **NIET DOEN** Andere termen zoals ‘ondernemingsaccount’, ‘bedrijfsaccount’ of ‘zakelijk account’ gebruiken.
 
-**NIET DOEN** ‘Office 365 ID’ of ‘Azure ID’ gebruiken. Office 365 is ook de naam van een consumentenaanbod van Microsoft, dat geen gebruik maakt van Azure AD voor verificatie.
+Gebruik **geen** ' Microsoft 365 id ' of ' Azure id '. Microsoft 365 is ook de naam van een consument die door micro soft wordt aangeboden en die geen gebruik maakt van Azure AD voor verificatie.
 
 **NIET DOEN** Het Microsoft-logo wijzigen.
 

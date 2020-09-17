@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564267"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707642"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Problemen met Azure Files oplossen in Linux (SMB)
 
@@ -21,7 +21,7 @@ In dit artikel vindt u algemene problemen die betrekking hebben op Azure Files w
 Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
 
 > [!IMPORTANT]
-> De inhoud van dit artikel is alleen van toepassing op SMB-shares.
+> De inhoud van dit artikel is alleen van toepassing op SMB-shares. Zie [problemen met Azure NFS-bestands shares oplossen](storage-troubleshooting-files-nfs.md)voor meer informatie over NFS-shares.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Kan geen verbinding maken met een Azure-bestands share of deze koppelen
 

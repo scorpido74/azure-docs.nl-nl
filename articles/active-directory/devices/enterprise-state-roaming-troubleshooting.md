@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267238"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705721"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problemen met Enterprise State Roaming instellingen in Azure Active Directory oplossen
 
@@ -78,9 +78,9 @@ Enterprise State Roaming vereist dat het apparaat wordt geregistreerd bij Azure 
 
 Onder bepaalde omstandigheden kan Enterprise State Roaming gegevens niet synchroniseren als Azure Multi-Factor Authentication is geconfigureerd. Zie het document [KB3193683](https://support.microsoft.com/kb/3193683)voor ondersteuning voor meer informatie over deze symptomen. 
 
-**Mogelijk probleem**: als uw apparaat zo is geconfigureerd dat multi-factor Authentication op de Azure Active Directory Portal vereist is, kunt u de instellingen niet synchroniseren tijdens het aanmelden bij een Windows 10-apparaat met een wacht woord. Dit type Multi-Factor Authentication configuratie is bedoeld om een Azure Administrator-account te beveiligen. Gebruikers met beheerders rechten kunnen nog steeds synchroniseren door zich aan te melden bij hun Windows 10-apparaten met hun Microsoft Passport for Work pincode of door Multi-Factor Authentication in te vullen bij het openen van andere Azure-Services zoals Office 365.
+**Mogelijk probleem**: als uw apparaat zo is geconfigureerd dat multi-factor Authentication op de Azure Active Directory Portal vereist is, kunt u de instellingen niet synchroniseren tijdens het aanmelden bij een Windows 10-apparaat met een wacht woord. Dit type Multi-Factor Authentication configuratie is bedoeld om een Azure Administrator-account te beveiligen. Gebruikers met beheerders rechten kunnen nog steeds synchroniseren door zich aan te melden bij hun Windows 10-apparaten met hun Microsoft Passport for Work pincode of door Multi-Factor Authentication in te vullen bij het openen van andere Azure-Services, zoals Microsoft 365.
 
-**Mogelijk probleem**: de synchronisatie kan mislukken als de beheerder de Active Directory Federation Services multi-factor Authentication beleid voor voorwaardelijke toegang configureert en het toegangs token op het apparaat is verlopen. Zorg ervoor dat u zich aanmeldt en u zich afmeldt met behulp van de Microsoft Passport for Work pincode of volt ooien Multi-Factor Authentication bij het openen van andere Azure-Services zoals Office 365.
+**Mogelijk probleem**: de synchronisatie kan mislukken als de beheerder de Active Directory Federation Services multi-factor Authentication beleid voor voorwaardelijke toegang configureert en het toegangs token op het apparaat is verlopen. Zorg ervoor dat u zich aanmeldt en u zich afmeldt met behulp van de Microsoft Passport for Work pincode of volt ooien Multi-Factor Authentication tijdens het openen van andere Azure-Services zoals Microsoft 365.
 
 ### <a name="event-viewer"></a>Logboeken
 

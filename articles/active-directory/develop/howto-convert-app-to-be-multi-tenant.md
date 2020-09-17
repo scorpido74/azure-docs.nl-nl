@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141361"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705891"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: Een Azure Active Directory-gebruiker aanmelden met behulp van het patroon voor multitenant-toepassingen
 
@@ -53,7 +53,7 @@ Apps die zijn gemaakt via de Azure Portal, hebben standaard een wereld wijd unie
 
 Bij één Tenant-toepassing worden aanmeldings aanvragen verzonden naar het aanmeldings eindpunt van de Tenant. Voor contoso.onmicrosoft.com is het eind punt bijvoorbeeld: `https://login.microsoftonline.com/contoso.onmicrosoft.com` . Aanvragen die worden verzonden naar het eind punt van een Tenant kunnen gebruikers (of gasten) in die Tenant aanmelden bij toepassingen in die Tenant.
 
-Met een multi tenant-toepassing kent de toepassing niet de voor zijde van de Tenant van de gebruiker. Daarom kunt u geen aanvragen verzenden naar het eind punt van een Tenant. In plaats daarvan worden aanvragen verzonden naar een eind punt dat multiplext voor alle Azure AD-tenants:`https://login.microsoftonline.com/common`
+Met een multi tenant-toepassing kent de toepassing niet de voor zijde van de Tenant van de gebruiker. Daarom kunt u geen aanvragen verzenden naar het eind punt van een Tenant. In plaats daarvan worden aanvragen verzonden naar een eind punt dat multiplext voor alle Azure AD-tenants: `https://login.microsoftonline.com/common`
 
 Wanneer micro soft Identity platform een aanvraag ontvangt op het/veelvoorkomende-eind punt, wordt de gebruiker in en als gevolg hiervan gedetecteerd welke Tenant de gebruiker is. Het/veelvoorkomende-eind punt werkt met alle verificatie protocollen die worden ondersteund door Azure AD: OpenID Connect Connect, OAuth 2,0, SAML 2,0 en WS-Federation.
 
@@ -153,7 +153,7 @@ Dit wordt geïllustreerd in een native client voor het aanroepen van een web-API
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Meerdere lagen in meerdere tenants
 
-Een vergelijkbaar geval treedt op als de verschillende lagen van een toepassing in verschillende tenants worden geregistreerd. Denk bijvoorbeeld aan het bouwen van een systeem eigen client toepassing die de Office 365 Exchange Online API aanroept. Voor het ontwikkelen van de systeem eigen toepassing en later voor het uitvoeren van de systeem eigen toepassing in de Tenant van een klant, moet de service-principal van Exchange Online zijn. In dit geval moet de ontwikkelaar en klant Exchange Online kopen voor de service-principal die in hun tenants moet worden gemaakt.
+Een vergelijkbaar geval treedt op als de verschillende lagen van een toepassing in verschillende tenants worden geregistreerd. Denk bijvoorbeeld aan het bouwen van een systeem eigen client toepassing die de Exchange Online API aanroept. Voor het ontwikkelen van de systeem eigen toepassing en later voor het uitvoeren van de systeem eigen toepassing in de Tenant van een klant, moet de service-principal van Exchange Online zijn. In dit geval moet de ontwikkelaar en klant Exchange Online kopen voor de service-principal die in hun tenants moet worden gemaakt.
 
 Als het een API is die door een andere organisatie dan micro soft is gebouwd, moet de ontwikkelaar van de API een manier bieden om hun klanten de toepassing te laten toestemming geven aan de tenants van hun klanten. Het aanbevolen ontwerp is voor de ontwikkelaar van derden om de API te bouwen, zodat deze ook kan worden gebruikt als een webclient voor het implementeren van de registratie. Om dit te doen:
 
@@ -181,7 +181,7 @@ Toepassingen met meerdere tenants kunnen ook toegangs tokens krijgen om Api's aa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Office 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Office 365-services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
+In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Microsoft 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Microsoft 365 services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 

@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115064"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705742"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
 
@@ -33,7 +33,7 @@ U kunt de kenmerken van een app configureren via de Azure Portal of programmatis
 
 Het toepassings manifest configureren:
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Zoek en selecteer de **Azure Active Directory** service.
+1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer de **Azure Active Directory** service.
 1. Selecteer **App-registraties**.
 1. Selecteer de app die u wilt configureren.
 1. Selecteer op de pagina **Overzicht** van de app de sectie **Manifest**. Een manifest editor op het web wordt geopend, zodat u het manifest in de portal kunt bewerken. Desgewenst kunt u **downloaden** selecteren om het manifest lokaal te bewerken en vervolgens **uploaden** gebruiken om het opnieuw toe te passen op uw toepassing.
@@ -82,7 +82,7 @@ Voorbeeld:
 | :--- | :--- |
 | addIns | Verzameling |
 
-Hiermee wordt aangepast gedrag gedefinieerd dat een verbruikte service kan gebruiken om een app in specifieke contexten aan te roepen. Bijvoorbeeld: toepassingen die bestands stromen kunnen weer geven, kunnen de `addIns` eigenschap voor de ' FileHandler-functionaliteit instellen. Met deze para meter kunnen services zoals Office 365 de toepassing aanroepen in de context van een document waarmee de gebruiker werkt.
+Hiermee wordt aangepast gedrag gedefinieerd dat een verbruikte service kan gebruiken om een app in specifieke contexten aan te roepen. Bijvoorbeeld: toepassingen die bestands stromen kunnen weer geven, kunnen de `addIns` eigenschap voor de ' FileHandler-functionaliteit instellen. Met deze para meter kunnen services zoals Microsoft 365 de toepassing aanroepen in de context van een document waarmee de gebruiker werkt.
 
 Voorbeeld:
 
@@ -193,8 +193,8 @@ Niet-ondersteunde.
 Hiermee wordt de `groups` claim geconfigureerd die is uitgegeven in een gebruiker of OAuth 2,0-toegangs token dat de app verwacht. Als u dit kenmerk wilt instellen, gebruikt u een van de volgende geldige teken reeks waarden:
 
 - `"None"`
-- `"SecurityGroup"`(voor beveiligings groepen en Azure AD-rollen)
-- `"All"`(Hiermee worden alle beveiligings groepen, distributie groepen en Azure AD-adreslijst rollen opgehaald waarvan de aangemelde gebruiker lid is.
+- `"SecurityGroup"` (voor beveiligings groepen en Azure AD-rollen)
+- `"All"` (Hiermee worden alle beveiligings groepen, distributie groepen en Azure AD-adreslijst rollen opgehaald waarvan de aangemelde gebruiker lid is.
 
 Voorbeeld:
 
@@ -217,7 +217,7 @@ De URL van de start pagina van de toepassing.
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-|Id | Tekenreeks |
+|objectId | Tekenreeks |
 
 De unieke id voor de app in de Directory.
 
@@ -433,8 +433,8 @@ Voorbeeld:
 | :--- | :--- |
 | parentalControlSettings | Tekenreeks |
 
-- `countriesBlockedForMinors`Hiermee geeft u de landen/regio's op waarin de app is geblokkeerd voor minder jarigen.
-- `legalAgeGroupRule`Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow` , `RequireConsentForPrivacyServices` , `RequireConsentForMinors` , `RequireConsentForKids` of `BlockMinors` .
+- `countriesBlockedForMinors` Hiermee geeft u de landen/regio's op waarin de app is geblokkeerd voor minder jarigen.
+- `legalAgeGroupRule` Hiermee geeft u de regel voor de juridische leeftijds groep op die van toepassing is op gebruikers van de app. Kan worden ingesteld op `Allow` , `RequireConsentForPrivacyServices` , `RequireConsentForMinors` , `RequireConsentForKids` of `BlockMinors` .
 
 Voorbeeld:
 
@@ -555,8 +555,8 @@ Voorbeeld:
 
 Met dynamische toestemming `requiredResourceAccess` verstuurt de beheerder toestemming en wordt de gebruikers toestemming verleend voor gebruikers die een statische toestemming gebruiken. Deze para meter is echter niet van toepassing op de gebruikers toestemming voor algemeen gebruik.
 
-- `resourceAppId`is de unieke id voor de resource waartoe de app toegang vereist. Deze waarde moet gelijk zijn aan de appId die is gedeclareerd voor de doel resource-app.
-- `resourceAccess`is een matrix met de OAuth 2.0-machtigings bereiken en app-rollen die voor de app van de opgegeven resource zijn vereist. Bevat de `id` en- `type` waarden van de opgegeven resources.
+- `resourceAppId` is de unieke id voor de resource waartoe de app toegang vereist. Deze waarde moet gelijk zijn aan de appId die is gedeclareerd voor de doel resource-app.
+- `resourceAccess` is een matrix met de OAuth 2.0-machtigings bereiken en app-rollen die voor de app van de opgegeven resource zijn vereist. Bevat de `id` en- `type` waarden van de opgegeven resources.
 
 Voorbeeld:
 
@@ -609,10 +609,10 @@ Voorbeeld:
 | signInAudience | Tekenreeks |
 
 Hiermee geeft u op welke micro soft-accounts voor de huidige toepassing worden ondersteund. Ondersteunde waarden zijn:
-- `AzureADMyOrg`-Gebruikers met een werk-of school account van de Azure AD-Tenant van mijn organisatie (bijvoorbeeld één Tenant)
-- `AzureADMultipleOrgs`-Gebruikers met een micro soft-werk-of school account in de Azure AD-Tenant van elke organisatie (bijvoorbeeld multi tenant)
-- `AzureADandPersonalMicrosoftAccount`-Gebruikers met een persoonlijk Microsoft-account, of een werk-of school account in de Azure AD-Tenant van een organisatie
-- `PersonalMicrosoftAccount`-Persoonlijke accounts die worden gebruikt om u aan te melden bij services zoals Xbox en Skype.
+- `AzureADMyOrg` -Gebruikers met een werk-of school account van de Azure AD-Tenant van mijn organisatie (bijvoorbeeld één Tenant)
+- `AzureADMultipleOrgs` -Gebruikers met een micro soft-werk-of school account in de Azure AD-Tenant van elke organisatie (bijvoorbeeld multi tenant)
+- `AzureADandPersonalMicrosoftAccount` -Gebruikers met een persoonlijk Microsoft-account, of een werk-of school account in de Azure AD-Tenant van een organisatie
+- `PersonalMicrosoftAccount` -Persoonlijke accounts die worden gebruikt om u aan te melden bij services zoals Xbox en Skype.
 
 Voorbeeld:
 

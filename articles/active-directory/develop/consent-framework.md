@@ -13,22 +13,22 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141547"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706129"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
-Met het toestemming raamwerk van Azure Active Directory (Azure AD) kunt u eenvoudig multi tenant-webtoepassingen en native client toepassingen ontwikkelen. Met deze toepassingen kunt u zich aanmelden via gebruikers accounts van een Azure AD-Tenant die afwijkt van het item waarin de toepassing is geregistreerd. Daarnaast moeten ze ook toegang hebben tot Web-Api's, zoals de Microsoft Graph-API (voor toegang tot Azure AD, intune en services in Office 365) en andere Api's van micro soft-Services, naast uw eigen web-Api's.
+Met het toestemming raamwerk van Azure Active Directory (Azure AD) kunt u eenvoudig multi tenant-webtoepassingen en native client toepassingen ontwikkelen. Met deze toepassingen kunt u zich aanmelden via gebruikers accounts van een Azure AD-Tenant die afwijkt van het item waarin de toepassing is geregistreerd. Daarnaast moeten ze ook toegang hebben tot Web-Api's, zoals de Microsoft Graph-API (om toegang te krijgen tot Azure AD, intune en services in Microsoft 365) en andere Api's van micro soft-Services, naast uw eigen web-Api's.
 
-Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming geeft voor een toepassing die wordt gevraagd om te worden geregistreerd in hun Directory, die mogelijk toegang tot Directory gegevens kan hebben. Als een webclient toepassing bijvoorbeeld agenda gegevens van Office 365 moet lezen, moet die gebruiker eerst toestemming geven voor de client toepassing. Nadat toestemming is gegeven, kan de client toepassing de Microsoft Graph-API namens de gebruiker aanroepen en de agenda gegevens naar behoefte gebruiken. De [Microsoft Graph-API](https://developer.microsoft.com/graph) biedt toegang tot gegevens in Office 365 (zoals agenda's en berichten van Exchange, sites en lijsten vanuit share point, documenten uit OneDrive, notitie blokken van OneNote, taken uit planner en werkmappen vanuit Excel), evenals gebruikers en groepen uit Azure AD en andere gegevens objecten uit meer micro soft-Cloud Services.
+Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming geeft voor een toepassing die wordt gevraagd om te worden geregistreerd in hun Directory, die mogelijk toegang tot Directory gegevens kan hebben. Als een webclient toepassing bijvoorbeeld agenda gegevens van Microsoft 365 moet lezen, moet die gebruiker eerst toestemming geven voor de client toepassing. Nadat toestemming is gegeven, kan de client toepassing de Microsoft Graph-API namens de gebruiker aanroepen en de agenda gegevens naar behoefte gebruiken. De [Microsoft Graph-API](https://developer.microsoft.com/graph) biedt toegang tot gegevens in Microsoft 365 (zoals agenda's en berichten van Exchange, sites en lijsten vanuit share point, documenten uit OneDrive, notitie blokken van OneNote, taken uit planner en werkmappen vanuit Excel), evenals gebruikers en groepen uit Azure AD en andere gegevens objecten uit meer micro soft-Cloud Services.
 
 Het toestemming raamwerk is gebaseerd op OAuth 2,0 en de verschillende stromen, zoals autorisatie code toekenning en client referenties verlenen, met behulp van open bare of vertrouwelijke clients. Met behulp van OAuth 2,0 kunt u met Azure AD veel verschillende soorten client toepassingen bouwen, zoals op een telefoon, Tablet, server of webtoepassing, en toegang krijgen tot de vereiste bronnen.
 
-Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](./authentication-vs-authorization.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](/graph/)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
+Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](./authentication-vs-authorization.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](/graph/)voor informatie over het verkrijgen van geautoriseerde toegang tot Microsoft 365 via Microsoft Graph.
 
 ## <a name="consent-experience---an-example"></a>Bestemmings ervaring-een voor beeld
 

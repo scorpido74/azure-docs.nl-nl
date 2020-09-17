@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4fb616860cb1e85c6249329f3679de0d29b72e61
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018829"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707914"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Object replicatie configureren voor blok-blobs
 
@@ -150,9 +150,11 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Als u een replicatie beleid wilt maken met Azure CLI, installeert u eerst Azure CLI versie 2.11.1 of hoger. Zie [aan de slag met Azure cli](/cli/azure/get-started-with-azure-cli)voor meer informatie.
 
-Schakel vervolgens BLOB-versie beheer in op de bron-en doel opslag accounts en schakel feed wijzigen in voor het bron account. Vergeet niet om waarden tussen punt haken te vervangen door uw eigen waarden:
+Schakel vervolgens BLOB-versie beheer in op de bron-en doel opslag accounts en schakel feed voor wijziging in het bron account in door de opdracht [AZ Storage account BLOB-Service-Properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) aan te roepen. Vergeet niet om waarden tussen punt haken te vervangen door uw eigen waarden:
 
 ```azurecli
+az login
+
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
@@ -174,24 +176,24 @@ Maak de bron-en doel containers in hun respectieve opslag accounts.
 ```azurecli
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container3 \
+    --name source-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <source-storage-account> \
-    --name source-container4 \
+    --name source-container-2 \
     --auth-mode login
 
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container3 \
+    --name dest-container-1 \
     --auth-mode login
 az storage container create \
     --account-name <dest-storage-account> \
-    --name source-container4 \
+    --name dest-container-1 \
     --auth-mode login
 ```
 
-Maak een nieuw replicatie beleid en de bijbehorende regels voor het doel account.
+Maak een nieuw replicatie beleid en een bijbehorende regel voor het doel account door het aanroepen [AZ Storage account of-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create).
 
 ```azurecli
 az storage account or-policy create \
@@ -199,21 +201,26 @@ az storage account or-policy create \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
-    --source-container source-container3 \
-    --destination-container dest-container3 \
-    --min-creation-time '2020-05-10T00:00:00Z' \
+    --source-container source-container-1 \
+    --destination-container dest-container-1 \
+    --min-creation-time '2020-09-10T00:00:00Z' \
     --prefix-match a
 
+```
+
+Azure Storage stelt de beleids-ID voor het nieuwe beleid in wanneer dit wordt gemaakt. Als u aanvullende regels aan het beleid wilt toevoegen, roept u het [AZ Storage-account of de regel Policy toe](/cli/azure/storage/account/or-policy/rule#az_storage_account_or_policy_rule_add) en geeft u de beleids-id op.
+
+```azurecli
 az storage account or-policy rule add \
     --account-name <dest-storage-account> \
-    --destination-container dest-container4 \
-    --policy-id <policy-id> \
     --resource-group <resource-group> \
-    --source-container source-container4 \
+    --source-container source-container-2 \
+    --destination-container dest-container-2 \
+    --policy-id <policy-id> \
     --prefix-match b
 ```
 
-Maak het beleid voor het bron account met behulp van de beleids-ID.
+Maak vervolgens het beleid op het bron account met behulp van de beleids-ID.
 
 ```azurecli
 az storage account or-policy show \
@@ -229,16 +236,16 @@ az storage account or-policy show \
 
 ### <a name="configure-object-replication-when-you-have-access-only-to-the-destination-account"></a>Object replicatie configureren als u alleen toegang hebt tot het doel account
 
-Als u geen machtigingen hebt voor het bron-opslag account, kunt u object replicatie configureren op het doel account en een JSON-bestand met de beleids definitie aan een andere gebruiker geven om hetzelfde beleid te maken voor het bron account. Bijvoorbeeld, als het bron account zich in een andere Azure AD-Tenant van het doel account bevindt, gebruikt u deze methode om object replicatie te configureren. 
+Als u geen machtigingen hebt voor het bron-opslag account, kunt u object replicatie configureren op het doel account en een JSON-bestand met de beleids definitie aan een andere gebruiker geven om hetzelfde beleid te maken voor het bron account. Bijvoorbeeld, als het bron account zich in een andere Azure AD-Tenant van het doel account bevindt, kunt u deze methode gebruiken om object replicatie te configureren.
 
 Houd er rekening mee dat u de rol Azure Resource Manager **Inzender** moet zijn toegewezen aan het niveau van het doel-opslag account of hoger om het beleid te kunnen maken. Zie voor meer informatie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) in de documentatie op basis van op rollen gebaseerde Access Control (RBAC) van Azure.
 
-De volgende tabel bevat een overzicht van de waarden die moeten worden gebruikt voor de beleids-ID in het JSON-bestand in elk scenario.
+De volgende tabel bevat een overzicht van de waarden die moeten worden gebruikt voor de beleids-ID en regel-Id's in het JSON-bestand in elk scenario.
 
-| Wanneer u het JSON-bestand voor dit account maakt... | Stel de beleids-ID in op deze waarde... |
+| Wanneer u het JSON-bestand voor dit account maakt... | Stel de beleids-ID en regel-Id's in op deze waarde... |
 |-|-|
-| Doel account | De *standaard*waarde voor de teken reeks. Azure Storage wordt de beleids-ID voor u gemaakt. |
-| Bron account | De beleids-ID die wordt geretourneerd bij het downloaden van een JSON-bestand met de regels die zijn gedefinieerd voor het doel account. |
+| Doel account | De *standaard*waarde voor de teken reeks. Azure Storage maakt de beleids-ID en de regel-Id's voor u. |
+| Bron account | De waarden van de beleids-ID en regel-Id's die worden geretourneerd wanneer u het beleid dat is gedefinieerd op het doel account downloadt als een JSON-bestand. |
 
 In het volgende voor beeld wordt een replicatie beleid gedefinieerd voor het doel account met één regel die overeenkomt met het voor voegsel *b* en wordt de minimale aanmaak tijd ingesteld voor blobs die moeten worden gerepliceerd. Vergeet niet om waarden tussen punt haken te vervangen door uw eigen waarden:
 
@@ -307,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Als u het JSON-bestand wilt gebruiken voor het definiëren van het replicatie beleid voor het bron account met Power shell, haalt u het lokale bestand op en converteert u deze van JSON naar een-object. Roep vervolgens de opdracht [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) aan om het beleid op het bron account te configureren, zoals wordt weer gegeven in het volgende voor beeld. Vergeet niet om waarden tussen punt haken en het bestandspad te vervangen door uw eigen waarden:
+Als u het JSON-bestand wilt gebruiken voor het configureren van het replicatie beleid voor het bron account met Power shell, haalt u het lokale bestand op en converteert u deze van JSON naar een-object. Roep vervolgens de opdracht [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) aan om het beleid op het bron account te configureren, zoals wordt weer gegeven in het volgende voor beeld. Vergeet niet om waarden tussen punt haken en het bestandspad te vervangen door uw eigen waarden:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -321,7 +328,24 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-N.v.t.
+Als u de replicatie beleids definitie voor het doel account wilt schrijven naar een JSON-bestand vanuit Azure CLI, roept u de opdracht [AZ Storage account of-Policy show](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) aan en voert u uit naar een bestand.
+
+In het volgende voor beeld wordt de beleids definitie geschreven naar een JSON-bestand met de naam *policy.jsop*. Vergeet niet om waarden tussen punt haken en het bestandspad te vervangen door uw eigen waarden:
+
+```azurecli
+az storage account or-policy show \
+    --account-name <dest-account-name> \
+    --policy-id  <policy-id> > policy.json
+```
+
+Als u het JSON-bestand wilt gebruiken voor het configureren van het replicatie beleid voor het bron account met Azure CLI, roept u de opdracht [AZ Storage account of-Policy Create](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_create) aan en verwijst u naar de *policy.jsin* het bestand. Vergeet niet om waarden tussen punt haken en het bestandspad te vervangen door uw eigen waarden:
+
+```azurecli
+az storage account or-policy create \
+    -resource-group <resource-group> \
+    --source-account <source-account-name> \
+    --policy @policy.json
+```
 
 ---
 
@@ -360,12 +384,12 @@ Als u een replicatie beleid wilt verwijderen, verwijdert u het beleid van zowel 
 
 ```azurecli
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <source-storage-account> \
     --resource-group <resource-group>
 
 az storage account or-policy delete \
-    --policy-id $policyid \
+    --policy-id <policy-id> \
     --account-name <dest-storage-account> \
     --resource-group <resource-group>
 ```

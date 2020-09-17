@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235688"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706351"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -50,9 +50,9 @@ De integratie van Cloud-apps met Azure AD-gebruikers inrichten is in het ideale 
 - U moet directe gebruikers inrichting van de HR-app in de Cloud Toep Active Directory of Azure AD.
 - Vereisen dat gebruikers worden ingericht met behulp van gegevens die zijn verkregen uit de Cloud-app HR.
 - Vereisen dat gebruikers lid worden van een of meer Active Directory forests, domeinen en organisatie-eenheden op basis van gewijzigde informatie die is gedetecteerd in de Cloud HR-app.
-- Gebruik Office 365 voor e-mail.
+- Gebruik Microsoft 365 voor e-mail.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur. Het verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
@@ -61,14 +61,14 @@ Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur. H
 In dit artikel worden de volgende termen gebruikt:
 
 - **Bron systeem**: de opslag plaats van gebruikers die Azure AD-voorzieningen van hebben. Een voor beeld is een Cloud-HR-app, zoals workday of SuccessFactors.
-- **Doel systeem**: de opslag plaats van gebruikers die door de Azure AD worden ingericht. Voor beelden zijn Active Directory, Azure AD, Office 365 of andere SaaS-apps.
+- **Doel systeem**: de opslag plaats van gebruikers die door de Azure AD worden ingericht. Voor beelden zijn Active Directory, Azure AD, Microsoft 365 of andere SaaS-apps.
 - Invoeg toepassingen **-verwerkers**: een term die wordt gebruikt voor nieuwe aanstellingen, overdrachten en beëindiging door gebruik te maken van een Cloud-HR-app als systeem van records. Het proces wordt voltooid wanneer de vereiste kenmerken door de service zijn ingericht naar het doel systeem.
 
 ### <a name="key-benefits"></a>Belangrijkste voordelen
 
 Deze mogelijkheid van HR-IT-inrichting biedt de volgende belang rijke voor delen voor uw bedrijf:
 
-- **Verhoog de productiviteit:** U kunt nu de toewijzing van gebruikers accounts en Office 365-licenties automatiseren en toegang verlenen tot sleutel groepen. Als u toewijzingen automatiseert, krijgen nieuwe mede werkers direct toegang tot hun taak hulpprogramma's en wordt de productiviteit verhoogd.
+- **Verhoog de productiviteit:** U kunt nu de toewijzing van gebruikers accounts en Microsoft 365 licenties automatiseren en toegang verlenen tot sleutel groepen. Als u toewijzingen automatiseert, krijgen nieuwe mede werkers direct toegang tot hun taak hulpprogramma's en wordt de productiviteit verhoogd.
 - **Risico beheren:** U kunt de beveiliging verhogen door wijzigingen te automatiseren op basis van de status van werk nemers of groepslid maatschappen met gegevens die in de Cloud-app voor HR worden geplaatst. Als u wijzigingen automatiseert, zorgt u ervoor dat gebruikers identiteiten en toegang tot de sleutel-apps automatisch worden bijgewerkt wanneer gebruikers overstappen of de organisatie verlaten.
 - **Naleving en beheer van adressen:** Azure AD biedt ondersteuning voor systeem eigen audit logboeken voor gebruikers voorzienings aanvragen die worden uitgevoerd door apps van zowel de bron-als doel systemen. Met controle kunt u bijhouden wie vanuit één scherm toegang tot de apps heeft.
 - **Kosten beheren:** Automatische inrichting vermindert de kosten door inefficiëntie en menselijke fout te voor komen die zijn gekoppeld aan hand matige inrichting. Het vermindert de behoefte aan aangepaste, ontwikkelde oplossingen voor gebruikers inrichting die in de loop van de tijd zijn gebouwd met behulp van verouderde en verouderde platforms.
@@ -94,7 +94,7 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 |:-|:-|
 | Video's | [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) |
 | | [Het inrichten van gebruikers in Active Azure Directory implementeren](https://youtu.be/pKzyts6kfrw) |
-| Zelfstudies | [Lijst met zelf studies voor het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md) |
+| Zelfstudies | [Lijst met zelfstudies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md) |
 | | [Zelf studie: workday configureren voor het automatisch inrichten van gebruikers](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 | Veelgestelde vragen | [Automatische gebruikers inrichting](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Inrichten van workday naar Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
