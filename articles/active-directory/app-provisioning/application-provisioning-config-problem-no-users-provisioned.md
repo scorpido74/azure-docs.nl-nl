@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234785"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706490"
 ---
 # <a name="no-users-are-being-provisioned"></a>Er worden geen gebruikers ingericht 
 >[!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "88234785"
 >
 Nadat automatische inrichting is geconfigureerd voor een toepassing (waaronder controleren of de referenties van de app die zijn opgegeven voor Azure AD om verbinding te maken met de app geldig zijn), worden gebruikers en/of groepen ingericht voor de app. Inrichting wordt bepaald door de volgende zaken:
 
--   Welke gebruikers en groepen zijn **toegewezen** aan de toepassing. Houd er rekening mee dat het inrichten van geneste groepen of Office 365-groepen niet wordt ondersteund. Zie [een gebruiker of groep toewijzen aan een bedrijfs-app in azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)voor meer informatie over de toewijzing.
+-   Welke gebruikers en groepen zijn **toegewezen** aan de toepassing. Houd er rekening mee dat het inrichten van geneste groepen of Microsoft 365 groepen niet wordt ondersteund. Zie [een gebruiker of groep toewijzen aan een bedrijfs-app in azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)voor meer informatie over de toewijzing.
 -   Of **kenmerk toewijzingen** zijn ingeschakeld, en geconfigureerd om geldige kenmerken van Azure ad te synchroniseren met de app. Zie voor meer informatie over kenmerk toewijzingen [aanpassen van kenmerk toewijzingen van gebruikers inrichting voor SaaS-toepassingen in azure Active Directory](customize-application-attributes.md).
 -   Hiermee wordt aangegeven of er een **bereik filter** aanwezig is waarmee gebruikers worden gefilterd op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
   

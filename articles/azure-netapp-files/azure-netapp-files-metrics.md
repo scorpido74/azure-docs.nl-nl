@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 09/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 7e6ab90010d4379c1640f73a8deeba874e601daf
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513805"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707778"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metrische gegevens voor Azure NetApp Files
 
@@ -27,20 +27,18 @@ Azure NetApp Files voorziet in metrische gegevens over de toegewezen opslag, het
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Metrische gegevens over gebruik voor capaciteits Pools
 
-<!-- 
-- *Pool Provisioned Size*  
-    The logical space (GiB) the capacity pool is provisioned with.  
-    This size is the size you selected during capacity pool creation. 
---> 
+- *Grootte toegewezen geheugen*   
+    De ingerichte grootte van de pool.
+
 - *Groep toegewezen aan volume grootte*  
     Het totale volume quotum (GiB) in een opgegeven capaciteits groep (dat wil zeggen, het totaal van de ingerichte grootte van het volume in de capaciteits groep).  
     Deze grootte is het formaat dat u hebt geselecteerd tijdens het maken van het volume.  
+
 - *Verbruikte grootte van pool*  
     Het totale aantal logische ruimte (GiB) dat wordt gebruikt voor alle volumes in een capaciteits pool.  
-<!-- 
-- *Pool Consumed Snapshot Size*  
-    The total of logical space (GiB) used by snapshots across all volumes in a capacity pool. 
--->
+
+- *Totale grootte van de moment opname van de groep*    
+    De som van de grootte van de moment opname van alle volumes in de pool.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Metrische gegevens over het gebruik voor volumes
 
@@ -57,14 +55,37 @@ Azure NetApp Files voorziet in metrische gegevens over de toegewezen opslag, het
 
 ## <a name="performance-metrics-for-volumes"></a>Prestatie gegevens voor volumes
 
-- *AverageReadLatency*   
+- *Gemiddelde lees latentie*   
     De gemiddelde tijd voor lees bewerkingen van het volume in milliseconden.
-- *AverageWriteLatency*   
+- *Gemiddelde schrijf latentie*   
     De gemiddelde tijd voor het schrijven van het volume in milliseconden.
-- *ReadIops*   
+- *IOPS lezen*   
     Het aantal lees bewerkingen naar het volume per seconde.
-- *WriteIops*   
+- *IOPS schrijven*   
     Het aantal schrijf bewerkingen naar het volume per seconde.
+
+## <a name="volume-replication-metrics"></a><a name="replication"></a>Metrische gegevens van de volume replicatie
+
+- *Is de status van de volume replicatie in orde*   
+    De voor waarde van de replicatie relatie. 
+
+- *Wordt de overdracht van de volume replicatie*    
+    Hiermee wordt aangegeven of de status van de volume replicatie ' Transfer ' is. 
+ 
+- *Vertragings tijd voor volume replicatie*   
+    De hoeveelheid tijd in seconden waarmee de gegevens op de mirror lags achter de bron. 
+
+- *Duur van de laatste overdracht van volume replicatie*   
+    De hoeveelheid tijd in seconden die het duurt voordat de laatste overdracht is voltooid. 
+
+- *Grootte van laatste overdracht volume replicatie*    
+    Het totale aantal bytes dat is overgedragen als onderdeel van de laatste overdracht. 
+
+- *Voortgang van volume replicatie*    
+    De totale hoeveelheid gegevens die wordt overgedragen voor de huidige overdrachts bewerking. 
+
+- *Totale overdracht van volume replicatie*   
+    De cumulatieve bytes die zijn overgedragen voor de relatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
