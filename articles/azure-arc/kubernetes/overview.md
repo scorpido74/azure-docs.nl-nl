@@ -9,12 +9,12 @@ ms.author: mlearned
 description: In dit artikel vindt u een overzicht van Kubernetes met Azure Arc.
 keywords: Kubernetes, Arc, Azure, containers
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723721"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604798"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Wat is Kubernetes met Azure Arc Preview?
 
@@ -51,12 +51,15 @@ Kubernetes met Azure Arc biedt ondersteuning voor deze scenario’s:
 
 * Beleid toepassen met behulp van Azure Policy voor Kubernetes. 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>Ondersteunde regio’s 
 
 Kubernetes met Azure Arc wordt momenteel ondersteund in deze regio’s: 
 
 * VS - oost 
 * Europa -west
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

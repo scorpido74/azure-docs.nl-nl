@@ -31,6 +31,8 @@
       href: set-preferences.md
     - name: 'Favorieten toevoegen, verwijderen en sorteren'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Resourcegegevens bekijken en filteren
+      href: manage-filter-resource-views.md
     - name: Azure-dashboards maken
       items:
         - name: Azure-dashboards maken en delen

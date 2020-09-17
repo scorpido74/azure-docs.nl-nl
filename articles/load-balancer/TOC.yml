@@ -20,19 +20,11 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: Een interne load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: Een interne load balancer maken - ARM-sjabloon
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Zelfstudies
   items:
-    - name: Interne load balancer
-      items:
-        - name: Een interne load balancer maken - Portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Een interne load balancer maken - Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Een interne load balancer maken - Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Een interne load balancer maken - ARM-sjabloon
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: Taken over VM's in meerdere beschikbaarheidszones verdelen
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Taken over VM's binnen een specifieke beschikbaarheidszone verdelen

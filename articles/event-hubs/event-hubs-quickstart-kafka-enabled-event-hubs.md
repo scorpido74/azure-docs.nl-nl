@@ -3,15 +3,15 @@ title: 'Quickstart: Streamen van gegevens met Azure Event Hubs met het Kafka-Pro
 description: "Quickstart: Dit artikel bevat informatie over het streamen naar Azure Event Hubs met behulp van het Kafka-protocol en API's."
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a63aeec7b282ba9b707a1521c51fd944ca24411
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314419"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061543"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Streamen naar Event Hubs met behulp van API's en het Kafka-protocol
-Deze snelstart laat zien hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs, kunnen praten met slechts een configuratiewijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
+Deze snelstart laat zien hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs, kunnen praten met slechts een configuratiewijziging in uw toepassingen. 
 
 > [!NOTE]
 > Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)

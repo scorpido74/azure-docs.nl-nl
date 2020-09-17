@@ -1,14 +1,14 @@
 ---
 title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852341"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531692"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -18,7 +18,9 @@ Met Microsoft CAF (Cloud Adoption Framework) voor de Azure Foundation-blauwdruk 
 
 Met het CAF Foundation-blauwdrukvoorbeeld worden aanbevolen infrastructuurresources geïmplementeerd in Azure. Deze kunnen in organisaties worden gebruikt om de basisbesturingselementen werkend te krijgen die nodig zijn om de cloudomgeving te beheren. Met dit voorbeeld worden resources, beleid en sjablonen geïmplementeerd en afgedwongen die een organisatie helpen om zorgeloos aan de slag te gaan met Azure.
 
-:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF Foundation, afbeelding geeft aan wat wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor het maken van een basis om aan de slag te gaan met Azure" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="C A F Foundation, afbeelding geeft aan wat wordt geïnstalleerd als onderdeel van C A F-richtlijnen voor het maken van een basis om aan de slag te gaan met Azure." border="false":::
+   Beschrijft een Azure-architectuur die wordt bereikt door de blauwdruk C A F Foundation te implementeren.  Deze is van toepassing op een abonnement met resourcegroepen dat bestaat uit een opslagaccount voor het opslaan van logboeken. De logboekanalyse wordt geconfigureerd om in het opslagaccount te worden opgeslagen. Toont ook configuratie van Azure Key Vault en standaardinstallatie van Azure Security Center. Al deze kerninfrastructuren zijn toegankelijk via Azure Active Directory en worden afgedwongen via Azure Policy.     
+:::image-end:::
 
 Deze implementatie omvat verschillende Azure-services die worden gebruikt om een veilige, volledig bewaakte basis op bedrijfsniveau te bieden. De omgeving bestaat uit de volgende elementen:
 

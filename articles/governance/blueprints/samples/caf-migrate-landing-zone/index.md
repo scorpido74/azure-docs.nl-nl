@@ -1,14 +1,14 @@
 ---
 title: Overzicht van het CAF-blauwdrukvoorbeeld voor de migratielandingszone
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor blauwdrukvoorbeeld van Azure Migration-landingszone.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852307"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531675"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
@@ -20,7 +20,9 @@ Het [CAF Foundation](../caf-foundation/index.md)-blauwdrukvoorbeeld is een uitbr
 
 Het CAF-blauwdrukvoorbeeld voor de migratielandingszone implementeert fundamentele infrastructuurresources in Azure, die door organisaties kunnen worden gebruikt om hun abonnement voor te bereiden op de migratie van virtuele machines. Het biedt ook ondersteuning bij het instellen van governance-controles die noodzakelijk zijn voor het beheren van de cloudresources. Met dit voorbeeld worden resources, beleid en sjablonen geïmplementeerd en afgedwongen die een organisatie helpen om zorgeloos aan de slag te gaan met Azure.
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="De afbeelding van de CAF-migratielandingszone laat zien wat er wordt geïnstalleerd als onderdeel van CAF-richtlijnen voor de initiële landingszone" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="De afbeelding van de C A F-migratielandingszone laat zien wat er wordt geïnstalleerd als onderdeel van C A F-richtlijnen voor de initiële landingszone." border="false":::
+   Beschrijft een Azure-architectuur die wordt bereikt door de C A F-migratieblauwdruk te implementeren.  Deze is van toepassing op een abonnement met resourcegroepen dat bestaat uit een virtueel Azure-netwerk en een opslagaccount voor het opslaan van logboeken. De logboekanalyse wordt geconfigureerd om in het opslagaccount te worden opgeslagen.  Toont ook configuratie van Azure Key Vault en eerste installatie van Azure Migrate.  Al deze kerninfrastructuren zijn toegankelijk via Azure Active Directory.     
+:::image-end:::
 
 Deze omgeving bestaat uit diverse Azure-services die een veilige, volledig bewaakte en direct inzetbare governance bieden. De omgeving bestaat uit de volgende elementen:
 

@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling
               href: disk-encryption-faq.md
-            - name: Schijfversleuteling - vorige versie (AAD)
+            - name: Schijfversleuteling - vorige versie (Azure AD)
               items:
                 - name: Overzicht
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: Automatische patch-toepassing van VM-gast (preview)
           href: automatic-vm-guest-patching.md
-    - name: Platformonderhoud
+    - name: Onderhoudsbeheer
       items:
         - name: Onderhoudsmeldingen
           items:
@@ -682,7 +682,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Onderhoudsbeheer
+        - name: Platformonderhoud
           items:
             - name: Overzicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Windows-service voor geplande gebeurtenissen
           href: scheduled-event-service.md
+        - name: Upgrades voor besturingssysteeminstallatiekopieën van virtuele-machineschaalset
+          items:
+            - name: Automatische upgrades voor het besturingssysteem
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Onderhoudsbeheer
+              items:
+                - name: Overzicht (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (Preview)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Virtuele machines bewaken
       items:
         - name: Agents

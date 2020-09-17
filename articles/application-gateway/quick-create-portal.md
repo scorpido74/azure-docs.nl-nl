@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961955"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601347"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal
 
@@ -25,8 +25,6 @@ De toepassingsgateway stuurt webverkeer van toepassingen naar specifieke resourc
 U kunt deze snelstartgids ook voltooien met [Azure PowerShell](quick-create-powershell.md) of [Azure CLI](quick-create-cli.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -171,7 +169,7 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
 
 2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren. Wijzig indien nodig de parameter *Locatie*: 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -196,7 +194,6 @@ In dit voorbeeld installeert u IIS alleen op de virtuele machines om te controle
 4. Selecteer onder **Back-enddoelen**, **Doeltype** de optie **Virtuele machine** in de vervolgkeuzelijst.
 
 5. Selecteer onder **Doel** de virtuele machines **myVM** en **myVM2** en de bijbehorende netwerkinterfaces in de vervolgkeuzelijsten.
-
 
    > [!div class="mx-imgBorder"]
    > ![Back-endservers toevoegen](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)

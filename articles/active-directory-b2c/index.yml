@@ -12,122 +12,134 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 34cb40d385b007f8a41a6700448a1591b714c096
+  ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78187709"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90562754"
 landingContent:
-- title: De basisbeginselen
+- title: Azure AD B2C
   linkLists:
   - linkListType: overview
     links:
     - text: Wat is Azure AD B2C?
       url: overview.md
+    - text: Oplossingen voor externe identiteiten vergelijken
+      url: https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Aan de slag met Azure AD B2C
+      url: tutorial-create-tenant.md
     - text: Technisch en functieoverzicht
       url: technical-overview.md
-  - linkListType: get-started
-    links:
-    - text: Een Azure AD B2C-tenant maken
-      url: tutorial-create-tenant.md
-    - text: Een toepassing registreren
-      url: tutorial-register-applications.md
-    - text: Gebruikersstromen instellen
-      url: tutorial-create-user-flows.md
-  - linkListType: video
-    links:
-    - text: Wat is Azure AD B2C? (9:35)
-      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
-- title: Identiteit toevoegen aan ASP.NET-apps
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/active-directory-b2c/
+- title: Basisbeginselen
   linkLists:
-  - linkListType: quickstart
+  - linkListType: learn
     links:
-    - text: Aanmeldingsgegevens instellen
-      url: quickstart-web-app-dotnet.md
-  - linkListType: tutorial
-    links:
-    - text: Gebruikers verifiëren in een .NET-webtoepassing
-      url: tutorial-web-app-dotnet.md
-    - text: API-toegang tot een .NET-webtoepassing verlenen
-      url: tutorial-web-api-dotnet.md
-    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Codevoorbeelden voor webtoepassingen en API's
-      url: code-samples.md#web-apps-and-apis
-- title: Identiteit toevoegen aan toepassingen met één pagina
+    - text: Verificatie en autorisatie
+      url: https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Tokens
+      url: https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Protocollen
+      url: https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Authentication Library
+      url: https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 'Een website bouwen: HTML, CSS, JavaScript'
+      url: https://docs.microsoft.com/learn/modules/build-simple-website/
+- title: Algemene scenario’s
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Aanmeldingsgegevens instellen
-      url: quickstart-single-page-app.md
-  - linkListType: tutorial
-    links:
-    - text: Gebruikers verifiëren in een toepassing met één pagina
-      url: tutorial-single-page-app.md
-    - text: API-toegang tot een toepassing met één pagina verlenen
-      url: tutorial-single-page-app-webapi.md
-    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Codevoorbeelden voor toepassingen met één pagina
-      url: code-samples.md#single-page-apps
-- title: Identiteit toevoegen aan desktop-apps
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Aanmeldingsgegevens instellen
-      url: quickstart-native-app-desktop.md
-  - linkListType: tutorial
-    links:
-    - text: Gebruikers verifiëren in systeemeigen clients
-      url: tutorial-desktop-app.md
-    - text: API-toegang tot systeemeigen clients verlenen
-      url: tutorial-desktop-app-webapi.md
-    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: Codevoorbeelden voor mobiele en desktop-apps
-      url: code-samples.md
-- title: Veelvoorkomende identiteitsscenario's configureren
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Inleiding tot gebruikersstromen
+    - text: Selfserviceaanmelding inschakelen
       url: user-flow-overview.md
+    - text: 'Sociale en werkidentiteiten toevoegen: OIDC/OAuth2/SAML'
+      url: tutorial-add-identity-providers.md
+    - text: Eenmalige aanmelding (SSO)
+      url: session-overview.md
+    - text: Uw UI/UX aanpassen
+      url: customize-ui-overview.md
+    - text: Migratie van gebruikers en apps
+      url: user-migration.md
+- title: Aanmelding aan uw toepassingen toevoegen
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 'Quickstart: Web-app'
+      url: quickstart-web-app-dotnet.md
+    - text: Systeemeigen/mobiele app
+      url: code-samples.md#mobile-and-desktop-apps
+    - text: App met één pagina
+      url: code-samples.md#single-page-apps
+    - text: Web-app
+      url: code-samples.md#web-apps-and-apis
+- title: "Autorisatie: Uw API's aanroepen en beveiligen"
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Gebruikers registreren en aanmelden
-      url: tutorial-create-user-flows.md
-    - text: De gebruikersinterface aanpassen
-      url: customize-ui-overview.md
-    - text: Aanmelden met Facebook inschakelen
-      url: identity-provider-facebook.md
-  - linkListType: video
-    links:
-    - text: Basisbeleid configureren (9:41)
-      url: https://www.youtube.com/watch?v=nWJ3m82536A
-- title: Geavanceerde identiteitsscenario's ontwikkelen
+    - text: Een toegangstoken aanvragen
+      url: access-tokens.md
+    - text: Uw API registreren en beveiligen
+      url: tutorial-web-api-dotnet.md
+    - text: "Voorbeelden: Web-apps en -API's"
+      url: code-samples.md#web-apps-and-apis
+    - text: Integreren met API-gateway
+      url: secure-api-management.md?tabs=app-reg-ga
+- title: Beveiliging, privacy en compliance
   linkLists:
   - linkListType: concept
     links:
-    - text: Inleiding tot aangepast beleid
-      url: custom-policy-overview.md
+    - text: Bedreigingen beheren
+      url: threat-management.md
+    - text: Ontdek waar gebruikersgegevens worden opgeslagen
+      url: data-residency.md
+    - text: Voorschriften
+      url: overview.md
+    - text: Gebruikerstoegang en gebruiksvoorwaarden
+      url: manage-user-access.md
+- title: Bewerkingen
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Gebruikers registreren en aanmelden
-      url: custom-policy-get-started.md
-    - text: De gebruikersinterface aanpassen
-      url: custom-policy-ui-customization.md
-    - text: Aanmelden met Azure AD voor meerdere tenants inschakelen
-      url: identity-provider-azure-ad-multi-tenant-custom.md
-    - text: Uw eigen bedrijfslogica toevoegen met REST API's
-      url: custom-policy-rest-api-claims-validation.md
-  - linkListType: video
+    - text: CI/CD-pijplijn
+      url: deploy-custom-policies-devops.md
+    - text: Bewaking
+      url: azure-monitor.md
+    - text: Toegang voor beheerders op basis van rollen
+      url: overview.md
+    - text: Gebruikersbeheer
+      url: manage-user-accounts-graph-api.md
+    - text: Problemen oplossen
+      url: troubleshoot-custom-policies.md?tabs-app-reg-ga
+    - text: Aanbevolen procedures
+      url: best-practices.md
+- title: Resources
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Geavanceerde gebruiksvoorbeelden met Azure AD B2C (4:54)
-      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
+    - text: GitHub
+      url: https://github.com/azure-ad-b2c/samples
+    - text: YouTube
+      url: https://www.youtube.com/results?search_query=azure+ad+b2c
+    - text: Training
+      url: solution-articles.md
+    - text: Service-updates
+      url: https://azure.microsoft.com/updates/?product=active-directory-b2c
+    - text: Veelgestelde vragen
+      url: faq.md
+    - text: Microsoft Ondersteuning
+      url: support-options.md
+- title: Veelgebruikte integraties
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 'Azure Monitor: Uw logboeken bewaren en analyseren'
+      url: azure-monitor.md
+    - text: 'Azure DevOps Services: Uw CI/CD-pijplijn bouwen'
+      url: deploy-custom-policies-devops.md
+    - text: 'Application Insights: Problemen oplossen en uw gebruikersinzichten ontvangen'
+      url: troubleshoot-with-application-insights.md
+    - text: Integreren met onze technologiepartners
+      url: partner-gallery.md

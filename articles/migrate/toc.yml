@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: AWS-instanties detecteren
           href: tutorial-discover-aws.md
-        - name: Geïmporteerde servers detecteren
-          href: tutorial-discover-import.md
     - name: Evalueren
       items:
         - name: VMware-VM's evalueren voor migratie naar Azure-VM's
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: AWS-instanties beoordelen voor migratie naar Azure
           href: tutorial-assess-aws.md
+        - name: Geïmporteerde servers beoordelen
+          href: tutorial-discover-import.md
     - name: Migreren
       items:
         - name: Virtuele VMware-machines migreren

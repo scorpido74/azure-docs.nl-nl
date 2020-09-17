@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211365"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662363"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Quickstart: Azure Cache voor Redis gebruiken met een .NET Core-app
 
@@ -23,7 +23,6 @@ In deze quickstart neemt u Azure Cache voor Redis op in een .NET Core-app voor t
 
 - Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
 - [.NET Core-SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime) is vereist voor de client StackEdchange.Redis.
 
 ## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -315,7 +314,7 @@ In deze snelstartgids hebt u geleerd hoe u Azure Cache voor Redis gebruikt vanui
 > [!div class="nextstepaction"]
 > [Maak een ASP.NET-web-app die gebruikmaakt van Azure Cache voor Redis.](./cache-web-app-howto.md)
 
-Wilt u uw clouduitgaven optimaliseren en geld besparen?
+Wilt u optimaliseren en op uw cloudverbruik besparen?
 
 > [!div class="nextstepaction"]
 > [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

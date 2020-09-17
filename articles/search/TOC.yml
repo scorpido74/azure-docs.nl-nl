@@ -3,9 +3,11 @@
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat is Azure Cognitive Search?
+    - name: Wat is Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Nieuwe functies
+    - name: Functies in Cognitive Search
+      href: search-features-list.md
+    - name: Nieuwe functies in Cognitive Search
       href: whats-new.md
 - name: Snelstartgidsen
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: API voor zoeken
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: Beheer-API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: API voor zoeken
+          href: /java/api/overview/azure/search-documents-readme
         - name: Beheer-API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: Javascript
       items:
         - name: API voor zoeken
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: Beheer-API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: API voor zoeken
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: Beheer-API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: Naslaginformatie over de OData-taal
       items:
         - name: Overzicht

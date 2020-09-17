@@ -1,14 +1,14 @@
 ---
 title: Index van blauwdrukvoorbeelden
 description: Index van compatibiliteits- en standaardvoorbeelden voor het implementeren van omgevingen, beleidsregels en grondbeginselen voor Cloud Adoptions Framework met Azure Blueprints.
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031871"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530978"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-voorbeelden
 
@@ -42,7 +42,8 @@ De volgende tabel bevat links naar voorbeelden voor Azure Blueprints. Elk voorbe
 
 ## <a name="samples-strategy"></a>Voorbeeldstrategie
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Strategie voor blauwdrukvoorbeelden" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="Diagram van waar de blauwdrukvoorbeelden passen voor architecturale complexiteit versus nalevingsvereisten." border="false":::
+   Beschrijft een coördinatensysteem waarbij de architecturale complexiteit op de X-as en de nalevingsvereisten op de Y-as liggen.  Naarmate de architecturale complexiteit en nalevingsvereisten toenemen, gebruikt u standaard blauwdrukvoorbeelden van de portal in regio E. Klanten die aan de slag gaan met Azure gebruiken het Cloud Adoption Framework (C A F) gebaseerd op Foundation- en landingszoneblauwdrukken uit regio A en B. De resterende ruimte is gereserveerd voor aangepaste blauwdrukken die zijn gemaakt door klanten die partners voor de regio's C, D en F zijn. :::image-end:::
 
 Bij de CAF Foundation- en CAF Migrate- blauwdrukken voor landingszones wordt ervan uitgegaan dat de klant één bestaand leeg abonnement voorbereidt voor het migreren van on-premises activa en workloads naar Azure.
 (Regio A en B in de afbeelding).  

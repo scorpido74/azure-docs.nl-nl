@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Netwerken voor schaalsets
           href: virtual-machine-scale-sets-networking.md
-        - name: Automatische upgrades voor het besturingssysteem
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Upgrades voor besturingssysteeminstallatiekopieën
+          items:
+            - name: Automatische upgrades voor het besturingssysteem
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Onderhoudsbeheer
+              items:
+                - name: Overzicht (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Preview)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Automatische exemplaarreparaties
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Exemplaarbescherming

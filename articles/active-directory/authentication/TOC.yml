@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: Verificatiemethoden
-      href: concept-authentication-methods.md
+      items:
+        - name: Overzicht
+          href: concept-authentication-methods.md
+        - name: Microsoft Authenticator-app
+          href: concept-authentication-authenticator-app.md
+        - name: OATH-tokens
+          href: concept-authentication-oath-tokens.md
+        - name: Zonder wachtwoord
+          href: concept-authentication-passwordless.md
+        - name: Telefoonopties
+          href: concept-authentication-phone-options.md
+        - name: Beveiligingsvragen
+          href: concept-authentication-security-questions.md
     - name: Self-service voor wachtwoord opnieuw instellen
       items:
         - name: Hoe het opnieuw instellen van het wachtwoord werkt
@@ -46,8 +58,6 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: Veelgestelde vragen
           href: multi-factor-authentication-faq.md
-    - name: Verificatie zonder wachtwoord
-      href: concept-authentication-passwordless.md
     - name: Wachtwoordbeveiliging
       items:
         - name: Zwakke wachtwoorden in de cloud elimineren

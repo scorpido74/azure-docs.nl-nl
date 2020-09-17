@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069465"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561647"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Wat is eenmalige aanmelding?
 
@@ -53,7 +53,7 @@ Hoe u eenmalige aanmelding implementeert, is afhankelijk van de locatie waar de 
 > [!TIP]
 > In de cloud gehoste apps worden ook wel SaaS-apps (Software as a Service) genoemd. 
 
-Eenmalige aanmelding voor in de cloud gehoste apps is eenvoudig. U laat de id-provider weten dat dit wordt gebruikt voor de app. En vervolgens configureert u de app zodanig dat de id-provider wordt vertrouwd. Raadpleeg de [quickstartreeks over toepassingsbeheer](view-applications-portal.md) om te zien hoe u Azure AD gebruikt als een id-provider voor een app.
+Eenmalige aanmelding voor in de cloud gehoste apps is eenvoudig. U laat de id-provider weten dat dit wordt gebruikt voor de app. En vervolgens configureert u de app zodanig dat de id-provider wordt vertrouwd. Raadpleeg de [quickstartreeks over toepassingsbeheer](add-application-portal.md) om te zien hoe u Azure AD gebruikt als een id-provider voor een app.
 
 > [!TIP]
 > De termen 'cloud' en 'internet' worden vaak door elkaar gebruikt. De reden hiervoor heeft te maken met netwerkdiagrammen. Het is gebruikelijk om grote computernetwerken in een diagram aan te duiden met een cloudvorm, omdat het niet haalbaar is om elk onderdeel te tekenen. Internet is het meest bekende netwerk en daarom is het eenvoudig om de termen door elkaar te gebruiken. Elk computernetwerk kan echter een cloud worden genoemd.

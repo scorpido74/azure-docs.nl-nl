@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 94d4a035c95b8eb2a567c71ec2172f55881e8099
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 2d2a520540ad69697da869833d52ab10e63a7730
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488419"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527187"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link hebt u via een [privé-eindpunt](private-endpoint-overview.md) in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.
@@ -22,8 +22,6 @@ Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbon
 
 > [!IMPORTANT]
 > Azure Private Link is nu algemeen beschikbaar. Zowel privé-eindpunten als de Private Link-service (service achter standaard load balancer) zijn algemeen beschikbaar. Met verschillende Azure PaaS wordt de Azure Private Link volgens verschillende planningen uitgevoerd. Controleer het onderstaande gedeelte [beschikbaarheid](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) voor de juiste status van Azure PaaS op Private Link. Zie [Privé-eindpunt](private-endpoint-overview.md#limitations) en [Private Link-service](private-link-service-overview.md#limitations) voor bekende beperkingen. 
-
-![Overzicht Privé-eindpunt](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 Azure Private Link biedt de volgende voordelen:  

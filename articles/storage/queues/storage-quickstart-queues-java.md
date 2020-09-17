@@ -4,16 +4,16 @@ description: Ontdek hoe u de Azure Queue Java v12-bibliotheek kunt gebruiken om 
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319368"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015021"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Java
 
@@ -30,17 +30,17 @@ Gebruik de Azure Queue Storage-clientbibliotheek v12 voor Java om:
 
 Aanvullende bronnen:
 
-* [API-referentiedocumentatie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [API-referentiedocumentatie](/java/api/overview/azure/storage-queue-readme)
 * [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Voorbeelden](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Voorbeelden](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)-versie 8 of hoger
+* [Java Development Kit (JDK)](/java/azure/jdk/)-versie 8 of hoger
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
-* Azure Storage-account: [maak een opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-account: [maak een opslagaccount](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>Instellen
 
@@ -161,10 +161,10 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende Java-klassen om te communiceren met deze resources:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): De `QueueClientBuilder`-klasse configureert en instantieert een `QueueClient`-object.
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): De `QueueMessageItem`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) wordt aangeroepen voor een wachtrij.
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): De `QueueClientBuilder`-klasse configureert en instantieert een `QueueClient`-object.
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): Met de `QueueServiceClient` kunt u alle wachtrijen in uw opslagaccount beheren.
+* [QueueClient](/java/api/com.azure.storage.queue.queueclient): Met de `QueueClient`-klasse kunt u een afzonderlijke wachtrij en de bijbehorende berichten beheren en bewerken.
+* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): De `QueueMessageItem`-klasse vertegenwoordigt de afzonderlijke objecten die worden geretourneerd wanneer [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) wordt aangeroepen voor een wachtrij.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -204,7 +204,7 @@ Verzin een naam voor de nieuwe wachtrij. Met de onderstaande code wordt een GUID
 > Wachtrijnamen mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten en moeten beginnen met een letter of cijfer. Elk afbreekstreepje moet worden voorafgegaan en gevolgd door een cijfer of letter. De naam moet bovendien tussen 3 en 63 tekens lang zijn. Zie [Naamgeving van wachtrijen en metagegevens](/rest/api/storageservices/naming-queues-and-metadata) voor meer informatie over de naamgeving van wachtrijen.
 
 
-Maak een instantie van de klasse [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html). Roep vervolgens de methode [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) aan om de wachtrij in uw opslagaccount te maken.
+Maak een instantie van de klasse [QueueClient](/java/api/com.azure.storage.queue.queueclient). Roep vervolgens de methode [create](/java/api/com.azure.storage.queue.queueclient.create) aan om de wachtrij in uw opslagaccount te maken.
 
 Voeg deze code toe aan het einde van de `main`-methode:
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>Berichten aan een wachtrij toevoegen
 
-Met het volgende codefragment worden berichten aan de wachtrij toegevoegd door de methode [sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) aan te roepen. Het slaat ook een [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) op die geretourneerd wordt vanaf een `sendMessage`-aanroep. De resultaat wordt gebruikt om het bericht later in het programma bij te werken.
+Met het volgende codefragment worden berichten aan de wachtrij toegevoegd door de methode [sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) aan te roepen. Het slaat ook een [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) op die geretourneerd wordt vanaf een `sendMessage`-aanroep. De resultaat wordt gebruikt om het bericht later in het programma bij te werken.
 
 Voeg deze code toe aan het einde van de `main`-methode:
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Berichten in een wachtrij bekijken
 
-Bekijk de berichten in de wachtrij door de methode [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) aan te roepen. Met de methode `peelkMessages` worden één of meer berichten vooraan in de wachtrij opgehaald, maar wordt de zichtbaarheid van het bericht niet gewijzigd.
+Bekijk de berichten in de wachtrij door de methode [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) aan te roepen. Met de methode `peelkMessages` worden één of meer berichten vooraan in de wachtrij opgehaald, maar wordt de zichtbaarheid van het bericht niet gewijzigd.
 
 Voeg deze code toe aan het einde van de `main`-methode:
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Een bericht in een wachtrij bijwerken
 
-Werk de inhoud van een bericht bij door de methode [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) aan te roepen. De methode `updateMessage` kan de time-out voor zichtbaarheid en de inhoud van een bericht wijzigen. De inhoud van het bericht moet een UTF-8-gecodeerde tekenreeks zijn die maximaal 64 KB groot is. Gebruik de `SendMessageResult` die eerder werd opgeslagen in de code om het bericht-ID en de POP-ontvangstbevestiging samen met de nieuwe inhoud voor het bericht door te geven. De bericht-ID en de POP-ontvangstbevestiging identificeren het bericht dat bijgewerkt moet worden.
+Werk de inhoud van een bericht bij door de methode [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) aan te roepen. De methode `updateMessage` kan de time-out voor zichtbaarheid en de inhoud van een bericht wijzigen. De inhoud van het bericht moet een UTF-8-gecodeerde tekenreeks zijn die maximaal 64 KB groot is. Gebruik de `SendMessageResult` die eerder werd opgeslagen in de code om het bericht-ID en de POP-ontvangstbevestiging samen met de nieuwe inhoud voor het bericht door te geven. De bericht-ID en de POP-ontvangstbevestiging identificeren het bericht dat bijgewerkt moet worden.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>Berichten uit een wachtrij ontvangen en verwijderen
 
-Download eerder toegevoegde berichten door de methode [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) aan te roepen. De voorbeeldcode verwijdert ook berichten uit de wachtrij nadat ze zijn ontvangen en verwerkt. In dit geval betekent ‘verwerken’ gewoon dat het bericht wordt weergegeven in de console.
+Download eerder toegevoegde berichten door de methode [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) aan te roepen. De voorbeeldcode verwijdert ook berichten uit de wachtrij nadat ze zijn ontvangen en verwerkt. In dit geval betekent ‘verwerken’ gewoon dat het bericht wordt weergegeven in de console.
 
 De app pauzeert voor gebruikersinvoer door `System.console().readLine();` aan te roepen voordat deze de berichten ontvangt en verwijdert. Verifieer in uw [Azure-portal](https://portal.azure.com) dat de resources correct zijn gemaakt, voordat ze worden verwijderd. Berichten die niet expliciet worden verwijderd, worden uiteindelijk weer zichtbaar in de wachtrij, zodat u nog een kans hebt om ze te verwerken.
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Een wachtrij verwijderen
 
-Met de volgende code worden de resources opgeschoond die de app heeft gemaakt, door de wachtrij te verwijderen met de methode [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--).
+Met de volgende code worden de resources opgeschoond die de app heeft gemaakt, door de wachtrij te verwijderen met de methode [delete](/java/api/com.azure.storage.queue.queueclient.delete).
 
 Voeg deze code toe aan het einde van de `main`-methode:
 
@@ -372,6 +372,6 @@ In deze quickstart hebt u geleerd hoe u een wachtrij maakt en berichten eraan to
 Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Azure voor Java-cloudontwikkelaars](https://docs.microsoft.com/azure/developer/java/)
+> [Azure voor Java-cloudontwikkelaars](/azure/developer/java/)
 
 * Ga door naar [Voorbeelden van Azure Queue Storage SDK v12 Java-clientbibliotheken](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) om meer Azure Queue Storage-voorbeeld-apps te zien.

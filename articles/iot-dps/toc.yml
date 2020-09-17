@@ -15,40 +15,52 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-sjabloon
           href: quick-setup-auto-provision-rm.md
-    - name: Eén apparaat inrichten
+    - name: Een apparaat met een symmetrische sleutel inrichten
       items:
-        - name: Attestation met behulp van een symmetrische sleutel
-          items:
-            - name: C
-              href: quick-create-simulated-device-symm-key.md
-            - name: Java
-              href: quick-create-simulated-device-symmetric-key-java.md
-            - name: Python
-              href: quick-create-device-symmetric-key-python.md
-        - name: X.509-certificaatattestatie
-          items:
-            - name: C
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: C#
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-        - name: Gesimuleerde TPM-apparaatattestatie
-          items:
-            - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: C#
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
+        - name: C
+          href: quick-create-simulated-device-symm-key.md
+        - name: Java
+          href: quick-create-simulated-device-symmetric-key-java.md
+        - name: Python
+          href: quick-create-device-symmetric-key-python.md
+    - name: Een apparaat met een X.509-certificaat inrichten
+      items:
+        - name: C
+          href: quick-create-simulated-device-x509.md
+        - name: Java
+          href: quick-create-simulated-device-x509-java.md
+        - name: C#
+          href: quick-create-simulated-device-x509-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-x509-node.md
+        - name: Python
+          href: quick-create-simulated-device-x509-python.md
+- name: Zelfstudies
+  items:
+    - name: 1 - Apparaatsets met registratiegroepen inrichten
+      href: how-to-legacy-device-symm-key.md
+    - name: 2 - Apparaten op meerdere hubs inrichten
+      items:
+        - name: Meerdere hubs aan DPS koppelen
+          href: tutorial-provision-multiple-hubs.md
+        - name: Inrichten voor multitenancy
+          href: how-to-provision-multitenant.md
+        - name: Aangepast toewijzingsbeleid gebruiken
+          href: how-to-use-custom-allocation-policies.md
+- name: Voorbeelden
+  items:
+    - name: Voorbeeld van een gesimuleerde TPM-apparaatbevestiging
+      items:
+        - name: C
+          href: quick-create-simulated-device.md
+        - name: Java
+          href: quick-create-simulated-device-tpm-java.md
+        - name: C#
+          href: quick-create-simulated-device-tpm-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-tpm-node.md
+        - name: Python
+          href: quick-create-simulated-device-tpm-python.md
     - name: Apparaatinschrijvingen maken met behulp van DPS API's
       items:
         - name: Groepsinschrijving met behulp van X.509-certificaatattestatie
@@ -71,51 +83,33 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-- name: Zelfstudies
-  items:
-    - name: 1 - Cloudresources instellen
-      href: tutorial-set-up-cloud.md
-    - name: 2 - Een apparaat instellen
-      href: tutorial-set-up-device.md
-    - name: 3 - Een apparaat inrichten naar een IoT-hub
-      items:
-        - name: C
-          href: tutorial-provision-device-to-hub.md
-        - name: C#
-          href: tutorial-net-provision-device-to-hub.md
-    - name: 4 - Apparaten inrichten naar meerdere hubs
-      href: tutorial-provision-multiple-hubs.md
-    - name: 5 - Groepsinschrijvingen instellen
-      href: tutorial-group-enrollments.md
 - name: Concepten
   items:
-    - name: Automatische inrichting
-      href: concepts-auto-provisioning.md
-    - name: Opnieuw inrichten
-      href: concepts-device-reprovision.md
-    - name: Apparaten
-      href: concepts-device.md
-    - name: Beveiliging
-      href: concepts-security.md
-    - name: TLS-ondersteuning
-      href: tls-support.md
-    - name: Ondersteuning voor virtuele netwerken
-      href: virtual-network-support.md
-    - name: Service
+    - name: DPS-terminologie
       href: concepts-service.md
-    - name: Inzicht in IP-adressen van DPS
-      href: iot-dps-understand-ip-address.md
-    - name: TPM-attestation
-      href: concepts-tpm-attestation.md
     - name: Attestation met behulp van een symmetrische sleutel
       href: concepts-symmetric-key-attestation.md
+    - name: X.509-certificaatattestatie
+      href: concepts-x509-attestation.md
+    - name: TPM-attestation
+      href: concepts-tpm-attestation.md
+    - name: Rollen en bewerkingen
+      href: concepts-roles-operations.md
+    - name: Ondersteuning voor virtuele netwerken
+      href: virtual-network-support.md
+    - name: Opnieuw inrichten
+      href: concepts-device-reprovision.md
+    - name: Inzicht in IP-adressen van DPS
+      href: iot-dps-understand-ip-address.md
+    - name: TLS-ondersteuning
+      href: tls-support.md
     - name: Beveiligingsprocedures voor fabrikanten van apparaten
       href: concepts-device-oem-security-practices.md
 - name: Instructiegidsen
   items:
     - name: MXChip IoT DevKit verbinden met IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
-    - name: Configuratie van Device Provisioning Service beheren
+    - name: Device Provisioning Service beheren
       items:
         - name: Inschrijvingen beheren - Portal
           href: how-to-manage-enrollments.md
@@ -131,14 +125,12 @@
           href: how-to-revoke-device-access-portal.md
         - name: Ongedaan maken van inrichting beheren
           href: how-to-unprovision-devices.md
-    - name: Device Provisioning Service beheren
-      items:
-        - name: Device Provisioning Service configureren voor gebruik van Azure CLI
-          href: how-to-manage-dps-with-cli.md
         - name: Toegang tot de inrichtingsservice-API's beheren
           href: how-to-control-access.md
         - name: IP-filtering configureren
           href: iot-dps-ip-filtering.md
+        - name: Device Provisioning Service configureren voor gebruik van Azure CLI
+          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge-apparaten inrichten
       items:
         - name: Linux
@@ -149,12 +141,6 @@
           maintainContext: true
     - name: Attestation-mechanismen gebruiken met de SDK
       href: use-hsm-with-sdk.md
-    - name: Inrichten voor multitenancy
-      href: how-to-provision-multitenant.md
-    - name: Aangepast toewijzingsbeleid gebruiken
-      href: how-to-use-custom-allocation-policies.md
-    - name: Symmetrische sleutels gebruiken met verouderde apparaten
-      href: how-to-legacy-device-symm-key.md
     - name: SDK-hulpprogramma's gebruiken voor ontwikkeling
       href: how-to-use-sdk-tools.md
     - name: Aanvullende gegevens vanaf apparaten verzenden
