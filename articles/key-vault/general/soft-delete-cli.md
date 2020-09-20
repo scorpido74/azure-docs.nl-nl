@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662045"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531658"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met CLI
 
@@ -25,7 +25,7 @@ Met de functie voor voorlopig verwijderen van Azure Key Vault kunt u verwijderde
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure CLI: zie [Key Vault beheren met behulp van Azure CLI](manage-with-cli2.md)) als u deze instelling niet hebt voor uw omgeving.
+- Azure CLI: raadpleeg [Key Vault beheren met behulp van Azure CLI](manage-with-cli2.md) als u deze instelling niet hebt voor uw omgeving.
 
 Zie de [Naslaginformatie voor Azure CLI Key Vault](https://docs.microsoft.com/cli/azure/keyvault) voor Key Vault-specifieke informatie voor CLI.
 
@@ -39,7 +39,7 @@ Key Vault-bewerkingen worden als volgt afzonderlijk beheerd via machtigingen op 
 |Herstellen|Herstelt een verwijderde sleutelkluis.|Microsoft.KeyVault/vaults/write|
 |Opschonen|Verwijdert permanent een verwijderde sleutelkluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-Zie [Uw Key Vault beveiligen](secure-your-key-vault.md) voor meer informatie over machtigingen en toegangsbeheer.
+Raadpleeg [Uw Key Vault beveiligen](secure-your-key-vault.md) voor meer informatie over machtigingen en toegangsbeheer.
 
 ## <a name="enabling-soft-delete"></a>Voorlopig verwijderen inschakelen
 
@@ -241,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Meer informatie
 
-- Zie [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-overview.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
-- Zie [Wat is Azure Key Vault?](overview.md) voor een algemeen overzicht van het gebruik van Azure Key Vault.
+- Raadpleeg [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-overview.md) voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
+- Raadpleeg [Wat is Azure Key Vault?](overview.md) voor een algemeen overzicht van het gebruik van Azure Key Vault
 

@@ -1,181 +1,181 @@
 ---
 title: Prijzen van Azure Backup
-description: Meer informatie over het schatten van de kosten voor budget tering Azure Backup prijzen.
+description: Ontdek hoe u de kosten voor Azure Backup kunt schatten voor budgetteringsdoeleinden.
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
 ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
 ms.locfileid: "88654528"
 ---
 # <a name="azure-backup-pricing"></a>Prijzen van Azure Backup
 
-Ga naar de [pagina met Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie over Azure backup prijzen.
+Zie de [pagina met prijzen van Azure Backup](https://azure.microsoft.com/pricing/details/backup/) voor meer informatie over de prijzen van Azure Backup.
 
-## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Gedetailleerde schattingen voor de Azure Backup prijzen downloaden
+## <a name="download-detailed-estimates-for-azure-backup-pricing"></a>Gedetailleerde schattingen voor prijzen van Azure Backup downloaden
 
-Als u een schatting wilt maken van de kosten voor budget tering of het vergelijken van kosten, kunt u de gedetailleerde [Azure backup prijzen Estimator](https://aka.ms/AzureBackupCostEstimates).  
+Als u een kostenraming wilt maken voor budgetterings- of vergelijkingsdoeleinden, kunt u de gedetailleerde [schatter voor prijzen van Azure Backup](https://aka.ms/AzureBackupCostEstimates) downloaden.  
 
-### <a name="what-does-the-estimator-contain"></a>Wat bevat de estimator?
+### <a name="what-does-the-estimator-contain"></a>Wat bevat de schatter?
 
-Het Estimator-venster voor Azure Backup kosten bevat een optie waarmee u kunt schatten van alle mogelijke werk belastingen waarvan u een back-up wilt maken met behulp van Azure Backup. Deze werkbelastingen zijn onder andere:
+Het werkblad van de schatter voor de kosten van Azure Backup bevat een optie waarmee u een schatting kunt maken voor alle mogelijke werkbelastingen waarvan u een back-up met Azure Backup wilt maken. Deze werkbelastingen zijn onder andere:
 
 - Azure-VM's
 - On-premises servers
-- SQL in azure Vm's
-- SAP HANA in azure Vm's
-- Azure-bestands shares
+- SQL in Azure VM's
+- SAP HANA in Azure VM's
+- Azure-bestandsshares
 
-## <a name="estimate-costs-for-backing-up-azure-vms-or-on-premises-servers"></a>Kosten schatten voor het maken van back-ups van virtuele Azure-machines of on-premises servers
+## <a name="estimate-costs-for-backing-up-azure-vms-or-on-premises-servers"></a>Kosten schatten voor het maken van back-ups van Azure-VM's of on-premises servers
 
-Voor een schatting van de kosten voor het maken van een back-up van virtuele Azure-machines of on-premises servers met Azure Backup hebt u de volgende para meters nodig:
+Als u de kosten voor het maken van back-ups van Azure-VM's of on-premises servers met behulp van Azure Backup wilt schatten, hebt u de volgende parameters nodig:
 
-- Grootte van de Vm's of on-premises servers waarvan u een back-up wilt maken
-  - Geef de ' gebruikte grootte ' op van schijven of servers die vereist zijn om een back-up te maken
+- Grootte van de VM's of on-premises servers waarvan u een back-up wilt maken
+  - Geef de 'gebruikte grootte' op van schijven of servers waarvan een back-up moet worden gemaakt
 
 - Aantal servers met deze grootte
 
-- Wat is de verwachte hoeveelheid gegevens verloop op deze servers?<br>
-  Verloop verwijst naar de hoeveelheid wijziging in gegevens. Als u bijvoorbeeld een virtuele machine met 200 GB aan gegevens hebt waarvan een back-up moet worden gemaakt en er 10 GB aan wijzigingen per dag wordt aangebracht, is het dagelijkse verloop 5%.
+- Wat is de verwachte hoeveelheid gegevensverloop op deze servers?<br>
+  Verloop verwijst naar de hoeveelheid wijzigingen in gegevens. Als u bijvoorbeeld een VM met 200 GB aan gegevens hebt waarvan een back-up moet worden gemaakt en er 10 GB aan wijzigingen per dag wordt aangebracht, is het dagelijkse verloop 5%.
 
-  - Een hoger verloop betekent dat u een back-up maakt van meer gegevens
+  - Een hoger verloop betekent dat u een back-up van meer gegevens maakt
 
-  - Kies **laag** of **gemiddeld** voor bestands servers en **hoog** als u data bases uitvoert
+  - Kies **Laag** of **Gemiddeld** voor bestandsservers en **Hoog** als u databases uitvoert
 
-  - Als u het **verloop percentage**weet, kunt u de optie **uw eigen% opgeven** gebruiken
+  - Als u het **churn%** (verlooppercentage) weet, kunt u de optie **Enter your own%** (Uw eigen percentage invoeren) gebruiken
 
 - Het back-upbeleid kiezen
 
-  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
+  - Hoe lang verwacht u de dagelijkse back-ups te zullen bewaren? (in dagen)
 
-  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
+  - Hoe lang verwacht u de wekelijkse back-ups te zullen bewaren? (in weken)
 
-  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
+  - Hoe lang verwacht u de maandelijkse back-ups te zullen bewaren? (in maanden)
 
-  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
+  - Hoe lang verwacht u de jaarlijkse back-ups te zullen bewaren? (in jaren)
 
-  - Hoe lang verwacht u "moment opnamen direct terugzetten"? (1-5 dagen)
+  - Hoe lang verwacht u momentopnamen voor direct herstel te zullen bewaren? (1-5 dagen)
 
-    - Met deze optie kunt u vanaf een snelle manier herstellen van meer dan zeven dagen, met behulp van moment opnamen die op schijven zijn opgeslagen.
+    - Met deze optie kunt u op een snelle manier back-ups van tot wel zeven dagen geleden terugzetten, met behulp van momentopnamen die op schijven zijn opgeslagen.
 
-- **Optioneel** : selectieve schijf back-up
+- **Optioneel**: Back-up van selectieve schijf
 
-  - Als u de optie **selectieve schijf back-up** gebruikt tijdens het maken van een back-up van virtuele Azure-machines, kiest u de optie **schijf uitsluiten** en voert u het percentage schijven in dat is uitgesloten van back-up in termen van grootte. Als u bijvoorbeeld een virtuele machine hebt die is verbonden met drie schijven met 200 GB die op elke schijf worden gebruikt en als u twee wilt uitsluiten van een back-up, voert u 66,7% in.
+  - Als u de optie **Back-up van selectieve schijf** gebruikt bij het maken van back-ups van Azure-VM's, kiest u de optie **Exclude Disk** en voert u het schijfpercentage dat van back-ups moet worden uitgesloten in termen van grootte in. Als u bijvoorbeeld een VM hebt die is verbonden met drie schijven waarvan 200 GB per schijf is gebruikt en u wilt twee van de schijven uitsluiten van back-ups, voert u 66,7% in.
 
-- **Optioneel** : redundantie van back-upopslag
+- **Optioneel**: Opslagredundantie voor back-ups
 
-  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn. Selecteer de optie **RAGRS** in het blad als u wilt weten wat de kosten zijn wanneer het niet meer nodig is om een back-up te maken van [meerdere regio's](backup-azure-arm-restore-vms.md#cross-region-restore) .
+  - Hiermee wordt de redundantie aangegeven van het opslagaccount waarnaar de back-upgegevens worden verzonden. U kunt het beste **GRS** gebruiken voor de hoogste beschikbaarheid. Dit zorgt ervoor dat een kopie van uw back-upgegevens wordt bewaard in een andere regio, wat u helpt om te voldoen aan meerdere nalevingsstandaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel- of testomgevingen waarvoor geen back-up op bedrijfsniveau is vereist. Selecteer de optie **RAGRS** in het werkblad als u meer inzicht wilt in de kosten wanneer [Herstellen in meerdere regio's](backup-azure-arm-restore-vms.md#cross-region-restore) is ingeschakeld voor uw back-ups.
 
-- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
+- **Optioneel**: regionale prijzen wijzigen of kortingstarieven toepassen
 
-  - Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de **schatting pogingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
+  - Als u de schattingen voor een andere regio of kortingstarieven wilt zien, selecteert u **Ja** voor de optie **Wilt u schattingen voor een andere regio proberen?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
 
-## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Kosten schatten voor het maken van back-ups van SQL-servers in azure-Vm's
+## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Kosten schatten voor het maken van back-ups van SQL-servers in Azure-VM's
 
-Voor een schatting van de kosten voor het maken van een back-up van SQL-servers die worden uitgevoerd in azure Vm's met Azure Backup, hebt u de volgende para meters nodig:
+Als u de kosten voor het maken van back-ups van SQL-servers in Azure-VM's met behulp van Azure Backup wilt schatten, hebt u de volgende parameters nodig:
 
-- Grootte van de SQL-servers waarvan u een back-up wilt maken
+- Grootte van de VM's of on-premises servers waarvan u een back-up wilt maken
 
 - Aantal SQL-servers met de bovenstaande grootte
 
-- Wat is de verwachte compressie van de back-upgegevens van uw SQL-servers?
+- Wat is de verwachte compressie voor de back-upgegevens van uw SQL-servers?
 
-  - De meeste Azure Backup-klanten zien dat de back-upgegevens 80% compressie hebben ten opzichte van de SQL Server-grootte wanneer de SQL-compressie is **ingeschakeld**.
+  - De meeste Azure Backup-klanten zien dat de back-upgegevens 80% compressie hebben ten opzichte van de SQL-servergrootte wanneer de SQL-compressie is **ingeschakeld**.
 
-  - Als u verwacht een andere compressie te zien, voert u het nummer in dit veld in
+  - Als u verwacht een andere compressie te zien, voert u die in dit veld in
 
-- Wat is de verwachte grootte van logboek back-ups?
+- Wat is de verwachte grootte van back-ups van logboeken?
 
-  - De% geeft de dagelijkse logboek grootte aan als een% van de SQL-Server grootte
+  - Het percentage geeft de dagelijkse logboekgrootte aan als een percentage van de SQL-servergrootte
 
-- Wat is het verwachte aantal dagelijkse gegevens verloop op deze servers?
+- Wat is de verwachte dagelijkse hoeveelheid gegevensverloop op deze servers?
 
-  - Data bases hebben doorgaans ' hoog ' verloop
+  - Databases hebben doorgaans een hoog verloop
 
-  - Als u het **verloop percentage**weet, kunt u de optie **uw eigen% opgeven** gebruiken
+  - Als u het **churn%** (verlooppercentage) weet, kunt u de optie **Enter your own%** (Uw eigen percentage invoeren) gebruiken
 
 - Het back-upbeleid kiezen
 
   - Type back-up
 
-    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Azure Backup kunt het herstellen van verschillen met één klik ook.
+    - Het meest effectieve beleid dat u kunt kiezen, is **Daily differentials** (Dagelijkse verschillen) met wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Met Azure Backup kunt u herstellen op basis van verschillen met één druk op de muisknop uitvoeren.
 
-    - U kunt er ook voor kiezen om een beleid te hebben met dagelijkse/wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
+    - U kunt ook kiezen voor een beleid met dagelijkse/wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Bij deze optie wordt iets meer opslag verbruikt dan bij de eerste optie.
 
-  - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [7-35]
+  - Hoe lang verwacht u de back-ups van logboeken te zullen bewaren? (in dagen) [7-35]
 
-  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
+  - Hoe lang verwacht u de dagelijkse back-ups te zullen bewaren? (in dagen)
 
-  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
+  - Hoe lang verwacht u de wekelijkse back-ups te zullen bewaren? (in weken)
 
-  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
+  - Hoe lang verwacht u de maandelijkse back-ups te zullen bewaren? (in maanden)
 
-  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
+  - Hoe lang verwacht u de jaarlijkse back-ups te zullen bewaren? (in jaren)
 
-- **Optioneel** : redundantie van back-upopslag
+- **Optioneel**: Opslagredundantie voor back-ups
 
-  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn.
+  - Hiermee wordt de redundantie aangegeven van het opslagaccount waarnaar de back-upgegevens worden verzonden. U kunt het beste **GRS** gebruiken voor de hoogste beschikbaarheid. Dit zorgt ervoor dat een kopie van uw back-upgegevens wordt bewaard in een andere regio, wat u helpt om te voldoen aan meerdere nalevingsstandaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel- of testomgevingen waarvoor geen back-up op bedrijfsniveau is vereist.
 
-- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
+- **Optioneel**: regionale prijzen wijzigen of kortingstarieven toepassen
 
-  - Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de **schatting pogingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
+  - Als u de schattingen voor een andere regio of kortingstarieven wilt zien, selecteert u **Ja** voor de optie **Wilt u schattingen voor een andere regio proberen?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
 
-## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Kosten schatten voor het maken van back-ups van SAP HANA-servers in azure Vm's
+## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Kosten schatten voor het maken van back-ups van SAP HANA-servers in Azure-VM's
 
-Voor een schatting van de kosten voor het maken van een back-up van SAP HANA servers die worden uitgevoerd in azure Vm's met Azure Backup, hebt u de volgende para meters nodig:
+Als u de kosten voor het maken van back-ups van SAP HANA-servers in Azure-VM's met behulp van Azure Backup wilt schatten, hebt u de volgende parameters nodig:
 
-- De totale grootte van de SAP HANA data bases waarvan u een back-up wilt maken. Dit moet de som zijn van de volledige back-upgrootte van elk van de data bases, zoals gerapporteerd door SAP HANA.
-- Aantal SAP HANA servers met de bovenstaande grootte
-- Wat is de verwachte grootte van logboek back-ups?
+- Totale grootte van de SAP HANA-databases waarvan u een back-up wilt maken. Dit moet de som zijn van de grootte van de volledige back-up van elke database, zoals gerapporteerd door SAP HANA.
+- Aantal SAP HANA-servers met de bovenstaande grootte
+- Wat is de verwachte grootte van back-ups van logboeken?
   
-  - De% geeft de gemiddelde dagelijkse logboek grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
-- Wat is het verwachte aantal dagelijkse gegevens verloop op deze servers?
-  - De% geeft de gemiddelde dagelijkse verloop grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
-  - Data bases hebben doorgaans ' hoog ' verloop
-  - Als u het **verloop percentage**weet, kunt u de optie **uw eigen% opgeven** gebruiken
+  - Het percentage geeft de gemiddelde dagelijkse logboekgrootte aan als een percentage van de totale grootte van SAP HANA-databases waarvan u een back-up maakt op de SAP HANA-server
+- Wat is de verwachte dagelijkse hoeveelheid gegevensverloop op deze servers?
+  - Het percentage geeft de gemiddelde dagelijkse verloopgrootte aan als een percentage van de totale grootte van SAP HANA-databases waarvan u een back-up maakt op de SAP HANA-server
+  - Databases hebben doorgaans een hoog verloop
+  - Als u het **churn%** (verlooppercentage) weet, kunt u de optie **Enter your own%** (Uw eigen percentage invoeren) gebruiken
 - Het back-upbeleid kiezen
   - Type back-up
-    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van **wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Azure Backup kunt het herstellen van verschillen met één klik ook.
-    - U kunt er ook voor kiezen om een beleid te hebben met **dagelijkse/wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
-  - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [7-35]
-  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
-  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
-  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
-  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
-- **Optioneel** : redundantie van back-upopslag
+    - Het meest effectieve beleid dat u kunt kiezen, is **Daily differentials** (Dagelijkse verschillen) met **wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Met Azure Backup kunt u herstellen op basis van verschillen met één druk op de muisknop uitvoeren.
+    - U kunt ook kiezen voor een beleid met **dagelijkse/wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Bij deze optie wordt iets meer opslag verbruikt dan bij de eerste optie.
+  - Hoe lang verwacht u de back-ups van logboeken te zullen bewaren? (in dagen) [7-35]
+  - Hoe lang verwacht u de dagelijkse back-ups te zullen bewaren? (in dagen)
+  - Hoe lang verwacht u de wekelijkse back-ups te zullen bewaren? (in weken)
+  - Hoe lang verwacht u de maandelijkse back-ups te zullen bewaren? (in maanden)
+  - Hoe lang verwacht u de jaarlijkse back-ups te zullen bewaren? (in jaren)
+- **Optioneel**: Opslagredundantie voor back-ups
   
-  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn.
-- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
+  - Hiermee wordt de redundantie aangegeven van het opslagaccount waarnaar de back-upgegevens worden verzonden. U kunt het beste **GRS** gebruiken voor de hoogste beschikbaarheid. Dit zorgt ervoor dat een kopie van uw back-upgegevens wordt bewaard in een andere regio, wat u helpt om te voldoen aan meerdere nalevingsstandaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel- of testomgevingen waarvoor geen back-up op bedrijfsniveau is vereist.
+- **Optioneel**: regionale prijzen wijzigen of kortingstarieven toepassen
   
-  - Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de **schatting pogingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
+  - Als u de schattingen voor een andere regio of kortingstarieven wilt zien, selecteert u **Ja** voor de optie **Wilt u schattingen voor een andere regio proberen?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
   
-## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Kosten schatten voor het maken van back-ups van Azure-bestands shares
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Kosten schatten voor het maken van back-ups van Azure-bestandsshares
 
-Voor een schatting van de kosten voor het maken van een back-up van Azure-bestands shares met behulp van de [back-upoplossing op basis van moment opname](azure-file-share-backup-overview.md) die wordt aangeboden door Azure backup, hebt u de volgende
+Als u een schatting wilt van de kosten voor het maken van back-ups van Azure-bestandsshares met behulp van de [back-upoplossing op basis van momentopnamen](azure-file-share-backup-overview.md) van Azure Backup, hebt u de volgende parameters nodig:
 
-- Grootte (**in GB**) van de bestands shares waarvan u een back-up wilt maken.
+- Grootte (**in GB**) van de bestandsshares waarvan u een back-up wilt maken.
 
-- Als u een back-up van bestands shares wilt verspreiden over meerdere opslag accounts, geeft u het aantal opslag accounts op dat als host fungeert voor de bestands shares met de bovenstaande grootte.
+- Als u een back-up van bestandsshares van meerdere opslagaccounts wilt maken, geeft u het aantal opslagaccounts op dat als host fungeert voor de bestandsshares met de bovenstaande grootte.
 
-- Verwachte hoeveelheid gegevens verloop op de bestands shares waarvan u een back-up wilt maken. <br>Verloop verwijst naar de hoeveelheid wijziging in gegevens en is rechtstreeks van invloed op de opslag grootte van de moment opname. Als u bijvoorbeeld een bestands share hebt met 200 GB aan gegevens waarvan u een back-up wilt maken, en 10 GB aan het bestand elke dag wordt gewijzigd, is het dagelijkse verloop 5%.
-  - Hogere verloop: de hoeveelheid gegevens wijziging in de inhoud van de bestands share elke dag is hoog, en dus incrementele moment opname (alleen de gegevens wijzigingen vastleggen) zou ook groter zijn.
-  - Selecteer laag (1%), gemiddeld (3%) of hoog (5%) op basis van de kenmerken en het gebruik van de bestands share.
-  - Als u het exacte **verloop%** voor uw bestands share weet, kunt u de optie **uw eigen% opgeven** selecteren in de vervolg keuzelijst. Geef de waarden op (in%) dagelijks, wekelijks, maandelijks en jaarlijks verloop.
+- Verwachte hoeveelheid gegevensverloop op de bestandsshares waarvan u een back-up wilt maken. <br>Het verloop is de hoeveelheid wijzigingen in gegevens en is rechtstreeks van invloed op de opslaggrootte van de momentopname. Als u bijvoorbeeld een bestandsshare met 200 GB aan gegevens hebt waarvan een back-up moet worden gemaakt en er 10 GB aan wijzigingen per dag wordt aangebracht, is het dagelijkse verloop 5%.
+  - Een hoger verloop betekent dat er elke dag veel gegevens in de bestandsshare worden gewijzigd, en dat dus ook incrementele momentopnamen (waarin alleen de gegevenswijzigingen worden vastgelegd) groter zullen zijn.
+  - Selecteer Laag (1%), Gemiddeld (3%) of Hoog (5%), afhankelijk van de kenmerken en het gebruik van uw bestandsshare.
+  - Als u het exacte **churn%** (verlooppercentage) voor uw bestandsshare weet, kunt u de optie **Enter your own%** (Uw eigen percentage invoeren) in het keuzemenu selecteren. Geef de waarden op (in%) voor het dagelijkse, wekelijkse, maandelijkse en jaarlijkse verloop.
 
-- Type opslag account (Standard of Premium) en de instelling voor opslag redundantie van het opslag account dat als host fungeert voor de back-up van de bestands share. <br>In de huidige back-upoplossing voor Azure-bestands shares worden moment opnamen opgeslagen in hetzelfde opslag account als de back-up van de bestands share. De opslag kosten die zijn gekoppeld aan moment opnamen worden dus gefactureerd als onderdeel van uw Azure-bestanden factuur, op basis van de prijs van de moment opname voor het account type en de redundantie-instelling van het opslag account dat als host fungeert voor de back-up en moment opnamen.
+- Type opslagaccount (Standard of Premium) en de instelling voor de opslagredundantie van het opslagaccount dat als host fungeert voor de back-up van de bestandsshare. <br>In de huidige back-upoplossing voor Azure-bestandsshares worden momentopnamen opgeslagen in hetzelfde opslagaccount als de back-up van de bestandsshare. De opslagkosten die zijn gekoppeld aan momentopnamen worden dus gefactureerd als onderdeel van uw factuur voor Azure-bestanden, op basis van de prijzen van momentopnamen voor het accounttype en de redundantie-instelling van het opslagaccount dat als host fungeert voor de bestandsshare en momentopnamen waarvan een back-up wordt gemaakt.
 
-- Bewaren voor verschillende back-ups
-  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
-  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
-  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
-  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
+- Retentie voor verschillende back-ups
+  - Hoe lang verwacht u de dagelijkse back-ups te zullen bewaren? (in dagen)
+  - Hoe lang verwacht u de wekelijkse back-ups te zullen bewaren? (in weken)
+  - Hoe lang verwacht u de maandelijkse back-ups te zullen bewaren? (in maanden)
+  - Hoe lang verwacht u de jaarlijkse back-ups te zullen bewaren? (in jaren)
 
-  Raadpleeg [de ondersteunings matrix voor Azure-bestands share](azure-file-share-support-matrix.md#retention-limits) voor de Maxi maal ondersteunde Bewaar waarden in elke categorie.
+  Raadpleeg [de ondersteuningsmatrix voor Azure-bestandsshares](azure-file-share-support-matrix.md#retention-limits) voor de maximaal ondersteunde retentiewaarden per categorie.
 
-- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen.
-  - De standaard waarden die zijn ingesteld voor de opslag kosten voor moment opnamen per GB en de kosten van beveiligde instanties in de Estimator zijn voor de regio VS-Oost. Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de optie **schattingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
+- **Optioneel**: regionale prijzen wijzigen of kortingstarieven toepassen.
+  - De standaardwaarden die zijn ingesteld voor de opslagkosten voor momentopnamen per GB en de kosten van beveiligde instanties in de schatter zijn voor de regio US - oost. Als u de schattingen voor een andere regio of kortingstarieven wilt zien, selecteert u **Ja** voor de optie **Wilt u schattingen voor een andere regio proberen?** Voer vervolgens de tarieven in waarmee u de schattingen wilt uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

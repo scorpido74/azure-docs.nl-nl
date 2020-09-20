@@ -3,17 +3,17 @@ title: Azure-kosten beheren met automatisering
 description: In dit artikel wordt uitgelegd hoe u Azure-kosten kunt beheren met automatisering.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684402"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526643"
 ---
 # <a name="manage-costs-with-automation"></a>Kosten beheren met automatisering
 
@@ -161,6 +161,70 @@ Een GET-aanroep bij de API voor budgetten zal niet de huidige kosten retourneren
 ### <a name="automate-budget-creation"></a>Het maken van een budget automatiseren
 
 U kunt het maken van een budget automatiseren met behulp van de [API voor budgetten](/rest/api/consumption/budgets). U kunt ook een budget maken met een [budgetsjabloon](quick-create-budget-template.md). Sjablonen zijn een gemakkelijke manier voor u om Azure-implementaties te standaardiseren terwijl u verzekert dat kostenbeheer goed wordt geconfigureerd en afgedwongen.
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>Ondersteunde talen voor e-mails voor budgetwaarschuwingen
+
+Met budgetten wordt u gewaarschuwd als u een bepaalde drempelwaarde overschrijdt. U kunt maximaal vijf e-mailontvangers per budget instellen. Ontvangers ontvangen de e-mailwaarschuwingen binnen 24 uur nadat de budgetdrempelwaarde is overschreden. Het kan echter zijn dat uw ontvanger een e-mail in een andere taal moet ontvangen. U kunt de volgende taalcultuurcodes gebruiken met de Budget-API. Stel de cultuurcode in met de parameter `locale`, zoals in het volgende voorbeeld.
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+Talen die worden ondersteund door een cultuurcode:
+
+| Cultuurcode| Taal |
+| --- | --- |
+| nl-nl | Engels (Verenigde Staten) |
+| ja-jp | Japans (Japan) |
+| zh-cn | Chinees (Vereenvoudigd, China) |
+| de-de | Duits (Duitsland) |
+| es-es | Spaans (Spanje, internationaal) |
+| fr-fr | Frans (Frankrijk) |
+| it-it | Italiaans (Italië) |
+| ko-kr | Koreaans (Korea) |
+| pt-br | Portugees (Brazilië) |
+| ru-ru | Russisch (Rusland) |
+| zh-tw | Chinees (Traditioneel, Taiwan) |
+| cs-cz | Tsjechisch (Tsjechische Republiek) |
+| pl-pl | Pools (Polen) |
+| tr-tr | Turks (Turkije) |
+| da-dk | Deens (Denemarken) |
+| dn-gb | Engels (Verenigd Koninkrijk) |
+| hu-hu | Hongaars (Hongarije) |
+| nb-bo | Noors (Bokmål) (Noorwegen) |
+| nl-nl | Nederlands (Nederland) |
+| pt-pt | Portugees (Portugal) |
+| sv-se | Zweeds (Zweden) |
 
 #### <a name="common-budgets-api-configurations"></a>Algemene configuraties van de API voor budgetten
 

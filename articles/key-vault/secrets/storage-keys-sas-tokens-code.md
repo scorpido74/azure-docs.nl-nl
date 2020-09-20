@@ -9,14 +9,14 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007414"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086773"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Shared Acces Signature-tokens in code ophalen
+# <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definitie maken en gedeelde toegangstokens ophalen in code
 
 U kunt uw opslagaccount met SAS-tokens (Shared Access Signature) beheren die zijn opgeslagen in uw sleutelkluis. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md) voor meer informatie.
 
@@ -41,9 +41,9 @@ Nadat de SAS-definitie is gemaakt, kunt u SAS-tokens zoals geheimen ophalen met 
 
 Als uw handtekeningtoken voor gedeelde toegang bijna is verlopen, kunt u hetzelfde geheim nogmaals ophalen om een nieuw token te genereren.
 
+Voor meer informatie over hoe u SAS-tokens uit de Key Vault gebruikt om Azure Storage-services te openen, raadpleegt u [Een account-SAS gebruiken voor toegang tot de Blob service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md).
 - Meer informatie over [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Azure PowerShell](overview-storage-keys-powershell.md).
-- Zie het volledige [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/)-voorbeeld.
-- Meer [Key Vault-voorbeelden](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - Zie [Voorbeelden van sleutels voor beheerde opslagaccounts](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

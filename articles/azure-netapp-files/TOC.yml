@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Richtlijnen voor Azure NetApp Files-netwerkplanning
       href: azure-netapp-files-network-topologies.md
+    - name: Replicatie in meerdere regio's
+      items:
+        - name: Replicatie tussen regio's begrijpen
+          href: cross-region-replication-introduction.md
+        - name: Vereisten en overwegingen voor replicatie tussen regio's
+          href: cross-region-replication-requirements-considerations.md
     - name: Oplossingen
       items:
         - name: Oplossingsarchitecturen op basis van Azure NetApp Files
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Het serviceniveau van een volume dynamisch wijzigen
       href: dynamic-change-volume-service-level.md
+    - name: Replicatie tussen regio's beheren
+      items:
+        - name: Replicatiepeering maken
+          href: cross-region-replication-create-peering.md
+        - name: Status van replicatierelatie weergeven
+          href: cross-region-replication-display-health-status.md
+        - name: Herstel na noodgevallen beheren
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Replicaties verwijderen
+          href: cross-region-replication-delete.md
     - name: Ontwikkelen
       items:
         - name: REST-API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Problemen met Azure NetApp Files-resourceproviders oplossen
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Problemen oplossen
+      items:
+        - name: Problemen met replicatie tussen regio's oplossen
+          href: troubleshoot-cross-region-replication.md
 - name: Naslaginformatie
   items:
     - name: REST

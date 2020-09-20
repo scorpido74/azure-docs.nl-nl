@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
+ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068730"
+ms.lasthandoff: 09/19/2020
+ms.locfileid: "90817867"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v3 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 
 ## <a name="start-here"></a>Hier beginnen
 
-# <a name="explore"></a>[Verkennen](#tab/explore)
+# <a name="explore"></a>[Ontdek](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -67,22 +67,10 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 
 ### <a name="configure-dependencies"></a>Afhankelijkheden configureren
 
-Er zijn twee lente gegevens beschikbaar Azure Cosmos DB maven-artefacten van versie 3.
-
-- Artefacten die afhankelijk zijn van Lente data Framework versie 2,2:
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>latest</version>
-  </dependency>
-  ```
-
-- Artefacten die afhankelijk zijn van Lente data Framework versie 2,3:
-  ```xml
-  <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <artifactId>azure-spring-data-cosmos</artifactId>
       <version>latest</version>
   </dependency>
   ```
@@ -93,7 +81,7 @@ Er zijn twee lente gegevens beschikbaar Azure Cosmos DB maven-artefacten van ver
 
 Geef Azure Cosmos DB account en container Details op. Lente gegevens Azure Cosmos DB maakt de client automatisch en maakt verbinding met de container.
 
-[Application. Properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-2-cosmos-java-getting-started/src/main/resources/application.properties):
+[Application. Properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -108,30 +96,46 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>Document bewerkingen
 
-[Maken](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
+Creëren
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
 
-[Verwijderen](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
+Verwijderen:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
 
 # <a name="query"></a>[Query](#tab/queries)
 
-[Query](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java): [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
+Query:
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
 
 ---
 
 ## <a name="resources"></a>Resources
 
-| Resource | Lente data Framework 2,2 | Lente data Framework 2,3 |
-|---|---|
-| **SDK downloaden** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**Bijdragen aan de SDK** | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [Lente gegevens Azure Cosmos DB opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**Zelfstudie**| [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [Zelf studie over Azure Cosmos DB van Lente gegevens op GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+* **Bijdragen aan de SDK**: [lente data Azure Cosmos DB opslag plaats op github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
+
+* **Zelf studie**: [zelf studie over Lente data Azure Cosmos DB op github](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 ## <a name="release-history"></a>Release geschiedenis
 
-### <a name="300-beta2-unreleased"></a>3.0.0-bèta versie 2 (niet-vrijgegeven)
+### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta. 2 (17 september 2020)
+
+#### <a name="new-features"></a>Nieuwe functies
+
+* De artefact-id is bijgewerkt naar `azure-spring-data-cosmos` .
+* De Azure-Cosmos-afhankelijkheid is bijgewerkt naar `4.5.0` .
+* `Query Annotation` ondersteuning voor systeem eigen query's.
+* Ondersteuning voor Java 11.
+* Er is ondersteuning toegevoegd voor de geneste partitie sleutel door `partitionKeyPath` veld in `@Container` aantekening aan te geven.
+* Er is ondersteuning toegevoegd voor het `limit` query type waarmee `top` en kan `first` worden gebruikt bij het definiëren van opslagplaats-api's.
+
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+
+* Fout met vaste geneste partitie sleutel als deze wordt gebruikt met `@GeneratedValue` aantekening.
 
 ### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (17 augustus 2020)
+
 #### <a name="new-features"></a>Nieuwe functies
+
 * Groeps-ID bijwerken naar `com.azure` .
 * Hiermee wordt de artefact-ID bijgewerkt naar `azure-spring-data-2-3-cosmos` .
 * Hiermee wordt de Azure-Cosmos SDK-afhankelijkheid bijgewerkt naar `4.3.2-beta.2` .
@@ -143,7 +147,9 @@ cosmos.queryMetricsEnabled=true
 * Maakt `CosmosClientBuilder` van de Azure Cosmos DB SDK als lente bonen voor de `@Configuration` klasse.
 * Updates `CosmosConfig` voor het bevatten van query gegevens en de diagnostische gegevens van de reactie van de processor.
 * Voegt ondersteuning toe voor het retour neren van het `Optional` gegevens type voor query's met één resultaat.
+
 #### <a name="renames"></a>Naam
+
 * `CosmosDbFactory` tot `CosmosFactory` .
 * `CosmosDBConfig` tot `CosmosConfig` .
 * `CosmosDBAccessException` tot `CosmosAccessException` .
@@ -151,7 +157,9 @@ cosmos.queryMetricsEnabled=true
 * `DocumentIndexingPolicy` aantekening naar `CosmosIndexingPolicy` aantekening.
 * `DocumentQuery` tot `CosmosQuery` .
 * Application. Properties-markering `populateQueryMetrics` naar `queryMetricsEnabled` .
+
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+
 * Planning van de taak diagnose logboek registratie in `Parallel` threads om te voor komen dat I/O-threads van Netty worden geblokkeerd.
 * Herstelt optimistische vergren deling bij verwijderings bewerking.
 * Hiermee worden problemen opgelost met een Escape-query voor- `IN` component.
@@ -161,9 +169,11 @@ cosmos.queryMetricsEnabled=true
 * Hiermee verwijdert u de standaard waarde voor de aanvraag eenheid 4.000 wanneer er containers automatisch worden gemaakt.
 
 ## <a name="faq"></a>Veelgestelde vragen
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 Meer informatie over het [lente-Framework](https://spring.io/projects/spring-framework).

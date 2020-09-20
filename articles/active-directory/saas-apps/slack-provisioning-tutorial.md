@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gebruikers inrichten voor een toegestane vertraging-Azure AD'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op toegestane vertraging.
+title: 'Zelfstudie: Gebruikers inrichten voor Slack - Azure AD'
+description: Ontdek hoe u Azure Active Directory configureert om gebruikersaccounts automatisch in te richten en de inrichting van gebruikersaccounts ongedaan te maken voor Slack.
 services: active-directory
 author: ArvindHarinder1
 manager: CelesteDG
@@ -10,60 +10,60 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: MT
+ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527822"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563026"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelfstudie: Slack configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren, en hoe u in azure AD automatisch gebruikers accounts van Azure AD kunt inrichten en de inrichting van een toegestane vertraging. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
+Het doel van deze zelfstudie is om u te laten zien welke stappen u moet uitvoeren in Slack en Azure AD om automatisch gebruikersaccounts van Azure AD in te richten in Slack, of de inrichting van gebruikersaccounts ongedaan te maken. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
-> * Gebruikers in toegestane vertraging maken
-> * Gebruikers in een toegestane vertraging verwijderen wanneer ze niet meer toegang nodig hebben
-> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en toegestane vertraging
-> * Inrichtings groepen en groepslid maatschappen in toegestane vertraging
-> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) voor toegestane vertraging (aanbevolen)
+> * Gebruikers maken in Slack
+> * Gebruikers uit Slack verwijderen wanneer ze geen toegang meer nodig hebben
+> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en Slack
+> * Groepen en groepslidmaatschappen inrichten in Slack
+> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial) bij Slack (aanbevolen)
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
-* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
-* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder).
-* Een toegestane vertragings Tenant met het [plus plan](https://aadsyncfabric.slack.com/pricing) of beter ingeschakeld.
-* Een gebruikers account met een toegestane vertraging met team beheerders machtigingen.
+* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Een gebruikersaccount in Azure AD met [machtigingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassingsbeheerder, cloud-toepassingsbeheerder, toepassingseigenaar of globale beheerder).
+* Een Slack-tenant waarvoor het [Plus-plan](https://aadsyncfabric.slack.com/pricing) of hoger is ingeschakeld.
+* Een gebruikersaccount in Slack met teambeheerdersmachtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
-1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
-3. Bepalen welke gegevens moeten worden [toegewezen tussen Azure AD en een toegestane vertraging](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Implementatie van de inrichting plannen
+1. Lees [hoe de inrichtingsservice werkt](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie u wilt opnemen in het [bereik voor inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Bepaal welke gegevens u wilt [toewijzen tussen Azure AD en Slack](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>Stap 2. Toegestane vertraging toevoegen vanuit de Azure AD-toepassings galerie
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>Stap 2. Slack toevoegen vanuit de galerie met Azure AD-toepassingen
 
-Voeg een toegestane vertraging toe van de Azure AD-toepassings galerie om het beheer van de inrichting te starten met toegestane vertraging. Als u eerder een toegestane vertraging hebt ingesteld voor SSO, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+Voeg Slack toe vanuit de galerie met Azure AD-toepassingen om te beginnen met het inrichten voor Slack. Als u Slack eerder hebt ingesteld voor eenmalige aanmelding, kunt u dezelfde toepassing gebruiken. U wordt echter aangeraden een afzonderlijke app te maken wanneer u de integratie voor het eerst test. Klik [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) voor meer informatie over het toevoegen van een toepassing uit de galerie. 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>Stap 3. Definiëren wie binnen het bereik van de inrichting valt 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>Stap 3. Definiëren wie u wilt opnemen in het bereik voor inrichting 
 
-Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
+Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis van toewijzing aan de toepassing en/of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om uitsluitend te bepalen wie wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereikfilter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) wordt beschreven. 
 
-* Wanneer u gebruikers en groepen toewijst op toegestane vertraging, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan Slack, moet u een andere rol dan **Standaardtoegang** selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven.
+* Begin klein. Test de toepassing met een kleine set gebruikers en groepen voordat u de toepassing naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, kunt u een [bereikfilter op basis van kenmerken](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) opgeven.
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Stap 4. Automatische gebruikers inrichting op toegestane vertraging configureren 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>Stap 4. Automatische gebruikersinrichting configureren voor Slack 
 
-In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten van uw Azure AD-gebruikers account en het configureren van de inrichtings service om toegewezen gebruikers accounts in toegestane vertraging te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
+In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten van uw Azure AD-gebruikersaccounts voor Slack en het configureren van de inrichtingsservice om toegewezen gebruikersaccounts in Slack te maken, bij te werken en uit te schakelen op basis van de gebruikers- en groepstoewijzing in Azure AD.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor toegestane vertraging in azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Automatische gebruikersaccountinrichting configureren voor Slack in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -71,128 +71,128 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
     ![De Slack-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichting](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichting](common/provisioning-automatic.png)
 
-5. Klik onder de sectie **beheerders referenties** op **autoriseren**. Hiermee opent u een dialoog venster voor een toegestane autorisatie in een nieuw browser venster.
+5. Klik onder de sectie **Referenties voor beheerder** op **Autoriseren**. Hiermee opent u een Slack-autorisatievenster in een nieuw browservenster.
 
-    ![Autorisatie](media/slack-provisioning-tutorial/authorization.png)
+    ![Schermopname van de knop Autoriseren in Referenties voor beheerders.](media/slack-provisioning-tutorial/authorization.png)
 
 
-6. Meld u in het nieuwe venster aan met de beheerders account van uw team. Selecteer in het dialoog venster resulterende autorisatie het uitstel team waarvoor u het inrichten wilt inschakelen en selecteer vervolgens **autoriseren**. Als u klaar bent, keert u terug naar de Azure Portal om de inrichtings configuratie te volt ooien.
+6. Meld u in het nieuwe venster aan bij Slack met het beheerdersaccount van uw team. Selecteer in het resulterende autorisatievenster het Slack-team waarvoor u het inrichten wilt inschakelen en selecteer vervolgens **Autoriseren**. Ga daarna terug de Azure-portal om de configuratie van de inrichting te voltooien.
 
-    ![Autorisatie dialoogvenster](./media/slack-provisioning-tutorial/slackauthorize.png)
+    ![Autorisatievenster](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw toegestane marge-app. Als de verbinding mislukt, zorg er dan voor dat uw toegestane account beheerders machtigingen voor het team heeft en probeer de stap ' autoriseren ' opnieuw uit te voeren.
+7. Klik in de Azure-portal op **Verbinding testen** om te controleren of Azure AD verbinding kan maken met uw Slack-app. Als de verbinding mislukt, moet u controleren of uw Slack-account teambeheerdersmachtigingen heeft en probeer de stap Autoriseren nogmaals.
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
+8. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 9. Selecteer **Opslaan**.
 
-10. Selecteer in de sectie toewijzingen de optie **synchronisatie van Azure Active Directory gebruikers naar een toegestane vertraging**.
+10. Selecteer in de sectie Toewijzingen de optie **Azure Active Directory-gebruikers synchroniseren met Slack**.
 
-11. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die vanuit Azure AD worden gesynchroniseerd op toegestane vertraging. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de gebruikers accounts in de toegestane vertraging voor update bewerkingen te vergelijken. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
+11. Controleer in de sectie **Kenmerktoewijzingen** de gebruikerskenmerken die vanuit Azure AD met Slack worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de gebruikersaccounts in Slack te vinden voor updatebewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Boolean-waarde|
+   |actief|Booleaans|
    |externalId|Tekenreeks|
    |displayName|Tekenreeks|
-   |naam. familielid|Tekenreeks|
-   |name. naam|Tekenreeks|
-   |titel|Tekenreeks|
-   |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
+   |name.familyName|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |title|Tekenreeks|
+   |emails[type eq "work"].value|Tekenreeks|
    |userName|Tekenreeks|
-   |Naam|Tekenreeks|
-   |adressen [type EQ "geen type"]. streetAddress|Tekenreeks|
-   |adressen [type EQ "]. locatie|Tekenreeks|
-   |adressen [type EQ "]. Region|Tekenreeks|
-   |adressen [type EQ "niet-getypt"]. post code|Tekenreeks|
-   |adressen [type EQ "niet-getypt"]. land|Tekenreeks|
-   |phoneNumbers [type EQ "Mobile"]. waarde|Tekenreeks|
-   |phoneNumbers [type EQ "werk]. waarde|Tekenreeks|
-   |rollen [Primary EQ "True"]. Value|Tekenreeks|
+   |nickName|Tekenreeks|
+   |addresses[type eq "untyped"].streetAddress|Tekenreeks|
+   |addresses[type eq "untyped"].locality|Tekenreeks|
+   |addresses[type eq "untyped"].region|Tekenreeks|
+   |addresses[type eq "untyped"].postalCode|Tekenreeks|
+   |addresses[type eq "untyped"].country|Tekenreeks|
+   |phoneNumbers[type eq "mobile"].value|Tekenreeks|
+   |phoneNumbers[type eq "work"].value|Tekenreeks|
+   |roles[primary eq "True"].value|Tekenreeks|
    |landinstelling|Tekenreeks|
-   |naam. honorificPrefix|Tekenreeks|
-   |Foto's [type EQ "Photo"]. Value|Tekenreeks|
+   |name.honorificPrefix|Tekenreeks|
+   |photos[type eq "photo"].value|Tekenreeks|
    |profileUrl|Tekenreeks|
-   |tijd zone|Tekenreeks|
-   |User type|Tekenreeks|
-   |urn: scim: schemas: extensie: Enter prise: 1.0. Department|Tekenreeks|
-   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Naslaginformatie|
-   |urn: scim: schemas: extension: Enter prise: 1.0. employeeNumber|Tekenreeks|
-   |urn: scim: schemas: extension: Enter prise: 1.0. costCenter|Tekenreeks|
-   |urn: scim: schemas: extension: Enter prise: 1.0. Organization|Tekenreeks|
-   |urn: scim: schemas: extensie: Enter prise: 1.0. divisie|Tekenreeks|
+   |timezone|Tekenreeks|
+   |userType|Tekenreeks|
+   |urn:scim:schemas:extension:enterprise:1.0.department|Tekenreeks|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|Naslaginformatie|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Tekenreeks|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|Tekenreeks|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|Tekenreeks|
+   |urn:scim:schemas:extension:enterprise:1.0.division|Tekenreeks|
 
-12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren naar toegestane vertraging**.
+12. Selecteer in de sectie **Toewijzingen** de optie **Azure Active Directory-groepen synchroniseren met Slack**.
 
-13. Controleer in de sectie **kenmerk toewijzingen** de groeps kenmerken die worden gesynchroniseerd vanuit Azure AD naar een toegestane vertraging. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, overeenkomen met de groepen in de toegestane vertraging voor bijwerk bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
+13. Controleer in de sectie **Kenmerktoewijzingen** de groepskenmerken die vanuit Azure AD met Slack worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de groepen in Slack te vinden voor updatebewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
       |Kenmerk|Type|
       |---|---|
       |displayName|Tekenreeks|
       |leden|Naslaginformatie|
 
-14. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+14. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Als u de Azure AD-inrichtings service wilt inschakelen voor een toegestane vertraging, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen**
+15. Wijzig **Inrichtingsstatus** naar **Aan** in de sectie **Instellingen** om de Azure AD-inrichtingsservice in te schakelen voor Slack
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
-16. Definieer de gebruikers en/of groepen die u wilt inrichten voor toegestane vertraging door de gewenste waarden in het **bereik** in de sectie **instellingen** te kiezen.
+16. Definieer de gebruikers en/of groepen die u aan Slack wilt toevoegen door de gewenste waarden te kiezen in **Bereik** in de sectie **Instellingen** te kiezen.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 17. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
 ## <a name="step-5-monitor-your-deployment"></a>Stap 5. Uw implementatie bewaken
-Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te bewaken:
 
-1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
-2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
-3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+2. Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus weer te geven en te zien of deze al bijna is voltooid
+3. Als het configureren van de inrichting een foutieve status lijkt te hebben, wordt de toepassing in quarantaine geplaatst. [Klik hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) voor meer informatie over quarantainestatussen.
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-* Bij het configureren van het kenmerk **DisplayName** van de toegestane vertraging moet u rekening houden met het volgende gedrag:
+* Houd rekening met het volgende gedrag bij het configureren van het kenmerk **displayName** van Slack:
 
-  * Waarden zijn niet helemaal uniek (bijvoorbeeld 2 gebruikers kunnen dezelfde weergave naam hebben)
+  * Waarden zijn niet helemaal uniek (zo kunnen 2 gebruikers dezelfde weergavenaam hebben)
 
-  * Ondersteunt niet-Engelse tekens, spaties en hoofd letters. 
+  * Ondersteunt niet-Engelse tekens, spaties en hoofdlettergebruik. 
   
-  * Toegestane interpunctie omvat punten, onderstrepings tekens, afbreek streepjes, apostrofs, haakjes (bijvoorbeeld **[{}]**)) en scheidings tekens (bijvoorbeeld **/;**).
+  * Toegestane interpunctie omvat punten, onderstrepingstekens, afbreekstreepjes, apostrofs, haakjes (bijvoorbeeld **( [ { } ] )** ) en scheidingstekens (bijvoorbeeld **, / ;** ).
   
-  * eigenschap displayName kan geen @-teken hebben. Als een @ is opgenomen, kunt u een overgeslagen gebeurtenis vinden in de inrichtings logboeken met de beschrijving ' AttributeValidationFailed '.
+  * De eigenschap displayName kan geen @-teken bevatten. Als de weergavenaam een @ bevat, vindt u een gebeurtenis in de inrichtingslogboeken dat deze is overgeslagen, met de beschrijving "AttributeValidationFailed."
 
-  * Alleen updates als deze twee instellingen zijn geconfigureerd in de werk plek/organisatie- **profiel synchronisatie is ingeschakeld** en **gebruikers kunnen de weergave naam niet wijzigen**.
+  * Wordt alleen bijgewerkt als deze twee instellingen zijn geconfigureerd in de werkruimte/organisatie van Slack: **Profile syncing is enabled** (Profielsynchronisatie is ingeschakeld) en **Users cannot change their display name** (Gebruikers hun weergavenaam niet kunnen wijzigen).
 
-* Het kenmerk van de **gebruikers naam** van de toegestane vertraging moet minder dan 21 tekens bevatten en moet een unieke waarde hebben.
+* Het kenmerk **userName** van Slack moet korter zijn dan 21 tekens en de waarde ervan moet uniek zijn.
 
-* De toegestane vertraging kan alleen overeenkomen met de kenmerken **username** en **e-mail**.  
+* In Slack is alleen matching met de kenmerken **userName** en **email** toegestaan.  
   
-* Algemene erorr-codes worden beschreven in de officiële documentatie over toegestane vertragingen- https://api.slack.com/scim#errors
+* Veelvoorkomende foutcodes worden beschreven in de officiële documentatie over Slack: https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Wijzigingenlogboek
 
-* 06/16/2020-gewijzigd kenmerk DisplayName wordt alleen bijgewerkt tijdens het maken van een nieuwe gebruiker.
+* 06/16/2020: het kenmerk displayName kan alleen worden gewijzigd tijdens het maken van een nieuwe gebruiker.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../manage-apps/check-status-user-account-provisioning.md)

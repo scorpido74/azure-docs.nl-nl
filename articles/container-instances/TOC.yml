@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: Een containerinstantie implementeren - Docker-CLI
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: Zelfstudies
   items:
     - name: Een containerinstallatiekopie maken en implementeren
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: Een containergroep implementeren - Resource Manager
           href: container-instances-multi-container-group.md
+        - name: Een containergroep implementeren - Docker Compose
+          href: tutorial-docker-compose.md
     - name: Integreren met Azure-services
       items:
         - name: Activeren met Azure Functions
