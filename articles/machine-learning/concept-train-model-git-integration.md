@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661785"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893552"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -41,7 +41,7 @@ Lees hier hier voor een hand leiding voor het gebruik van de Git [cli.](https://
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git` opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
-| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Beschrijving |
+| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
@@ -70,12 +70,10 @@ De Git-informatie wordt opgeslagen in de eigenschappen voor een trainings uitvoe
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Selecteer uw werk ruimte in de [Azure Portal](https://portal.azure.com).
+1. Selecteer uw werk ruimte vanuit de [Studio Portal](https://ml.azure.com).
 1. Selecteer __experimenten__en selecteer vervolgens een van uw experimenten.
 1. Selecteer een van de uitvoeringen in de kolom __uitvoerings nummer__ .
-1. Selecteer __Logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __ ### \_ Azure__.
-
-    ![De # # #_azure vermelding in de portal](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. Selecteer __uitvoer en logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __ ### \_ Azure__.
 
 De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende JSON:
 

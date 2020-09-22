@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Database for MySQL Enkele server
+summary: Azure Database for PostgreSQL is een relationele databaseservice op basis van de open-source PostgreSQL-database-engine.  Enkele server is een van de verschillende implementatieopties voor het maken van een Postgres-server. Leer hoe u Enkele server gebruikt met onze snelstarts, zelfstudies en voorbeelden.
+metadata:
+  description: Azure Database voor PostgreSQL is een relationele databaseservice in de Microsoft Cloud die is gebouwd voor ontwikkelaars op basis van de open-source PostgreSQL-database-engine.
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/20/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 833b35b7a2f597186c69d95fc4ab8f2704b59c91
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928833"
+landingContent:
+- title: Over Enkele server
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Enkele server?
+      url: ../concepts-servers.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een server maken met de Azure-portal
+      url: ../quickstart-create-server-database-portal.md
+    - text: Een server maken met Azure CLI
+      url: ../quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Trainingsmodule: Een Azure-database voor PostgreSQL-server maken'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Prijscategorieën
+      url: ../concepts-pricing-tiers.md
+    - text: Limieten
+      url: ../concepts-limits.md
+    - text: PostgreSQL-versies
+      url: ../concepts-supported-versions.md
+    - text: PostgreSQL-extensies - één server
+      url: ../concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Een database ontwerpen op Enkele server
+      url: ../tutorial-design-database-using-azure-portal.md
+    - text: Een web-app maken met Python (Django)
+      url: ../../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+- title: Verbinding maken en query's uitvoeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: De firewall begrijpen
+      url: ../concepts-firewall-rules.md
+  - linkListType: how-to-guide
+    links:
+    - text: Firewall-regels maken
+      url: ../howto-manage-firewall-using-portal.md
+    - text: TLS configureren
+      url: ../howto-tls-configurations.md
+  - linkListType: get-started
+    links:
+    - text: Verbinding maken met Python
+      url: ../connect-python.md
+    - text: Verbinding maken met behulp van Node.js
+      url: ../connect-nodejs.md
+    - text: Verbinding maken met Java
+      url: ../connect-java.md
+    - text: Verbinding maken met Ruby
+      url: ../connect-ruby.md
+    - text: Verbinding maken met PHP
+      url: ../connect-php.md
+    - text: Verbinding maken met .NET
+      url: ../connect-csharp.md
+    - text: Verbinding maken met Go
+      url: ../connect-go.md
+- title: Beheren en migreren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Virtuele netwerken begrijpen
+      url: ../concepts-data-access-and-security-vnet.md
+    - text: De service controleren en afstemmen
+      url: ../tutorial-monitor-and-tune.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een database migreren met pg_dump en pg_restore
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: Een database migreren met pg_dump en psql
+      url: ../howto-migrate-using-export-and-import.md
+    - text: Migreren met Data Migration Service
+      url: ../howto-migrate-online.md
+- title: Bedrijfscontinuïteit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bedrijfscontinuïteit
+      url: ../concepts-business-continuity.md
+    - text: Back-up en herstel
+      url: ../concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een leesreplica maken
+      url: ../howto-read-replicas-portal.md
+    - text: Een server terugzetten
+      url: ../howto-restore-server-portal.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-scripts voor algemene taken
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
+      url: /rest/api/postgresql/
+    - text: Naslaginformatie voor REST API-ontwikkelaars
+      url: /cli/azure/postgres
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

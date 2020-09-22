@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882884"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Zelfstudie: Video Indexer met Logic App en Power Automate gebruiken
 
@@ -21,12 +21,15 @@ De [REST-API van Video Indexer v2](https://api-portal.videoindexer.ai/docs/servi
 
 Om de integratie nog gemakkelijker te maken, bieden we ondersteuning voor [Logic Apps](https://azure.microsoft.com/services/logic-apps/) en [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) -connectoren die compatibel zijn met onze API. U kunt de connectoren gebruiken om aangepaste werkstromen in te stellen waarmee u inzichten doeltreffend kunt indexeren en extraheren uit een grote hoeveelheid video- en audio-bestanden zonder één regel code te schrijven. Daarnaast geeft het gebruik van connectoren voor uw integratie u meer inzicht in de status van uw werkstroom, en een gemakkelijke manier om fouten op te sporen.  
 
-Om u snel op weg te helpen met de Video Indexer-connectoren, overlopen we snel een voorbeeld van een Logic App- en Power Automate-oplossing die u kunt instellen. 
+Om u snel op weg te helpen met de Video Indexer-connectoren, overlopen we snel een voorbeeld van een Logic App- en Power Automate-oplossing die u kunt instellen. Deze zelfstudie laat zien hoe u stromen kunt instellen met behulp van Logic Apps.
 
-In deze zelfstudie leert u het volgende:
+Het scenario voor het automatisch uploaden en indexeren van uw video dat in deze zelfstudie wordt behandeld, bestaat uit twee verschillende stromen die met elkaar samenwerken. 
+* De eerste stroom wordt geactiveerd wanneer een blob wordt toegevoegd aan of gewijzigd in een Azure Storage-account. Het uploadt het nieuwe bestand naar Video Indexer met een callback-URL om een melding te verzenden zodra de indexering voltooid is. 
+* De tweede stroom wordt geactiveerd op basis van de callback-URL en slaat de geëxtraheerde inzichten terug naar een JSON-bestand in Azure Storage. Deze aanpak met twee stromen wordt gebruikt om het asynchrone uploaden en indexeren van grotere bestanden effectief te laten verlopen. 
+
+Deze zelfstudie maakt gebruik van Logic Apps en omvat het volgende:
 
 > [!div class="checklist"]
-> * Uw video automatisch uploaden en indexeren
 > * De uploadstroom voor uw bestand instellen
 > * De JSON-extractiestroom instellen
 
@@ -34,19 +37,13 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen heeft u ook een Video Indexer-account nodig, alsook toegang tot de API's via API-sleutel. 
+* Om te beginnen heeft u een Video Indexer-account nodig, alsook [toegang tot de API's via API-sleutel](video-indexer-use-apis.md). 
+* U hebt ook een Azure Storage-account nodig. Noteer de toegangssleutel voor uw opslagaccount. Maak twee containers: één om video's op te slaan en één om inzichten van de Video Indexer op te slaan.  
+* Vervolgens moet u twee afzonderlijke stromen openen in Logic Apps of Power Automate (afhankelijk van welke u gebruikt). 
 
-U hebt ook een Azure Storage-account nodig. Noteer de toegangssleutel voor uw opslagaccount. Maak twee containers: één om video's op te slaan en één om inzichten van de Video Indexer op te slaan.  
+## <a name="set-up-the-first-flow---file-upload"></a>De eerste stroom instellen: de uploadstroom voor uw bestand   
 
-Vervolgens moet u twee afzonderlijke stromen openen in Logic Apps of Power Automate (afhankelijk van welke u gebruikt).  
-
-## <a name="upload-and-index-your-video-automatically"></a>Uw video automatisch uploaden en indexeren 
-
-Dit scenario bestaat uit twee verschillende stromen die samenwerken. De eerste stroom wordt geactiveerd wanneer een blob wordt toegevoegd aan of gewijzigd in een Azure Storage-account. Het uploadt het nieuwe bestand naar Video Indexer met een callback-URL om een melding te verzenden zodra de indexering voltooid is. De tweede stroom wordt geactiveerd op basis van de callback-URL en slaat de geëxtraheerde inzichten terug naar een JSON-bestand in Azure Storage. Deze aanpak met twee stromen wordt gebruikt om het asynchrone uploaden en indexeren van grotere bestanden effectief te laten verlopen. 
-
-### <a name="set-up-the-file-upload-flow"></a>De uploadstroom voor uw bestand instellen 
-
-De eerste stroom wordt geactiveerd wanneer een blob wordt toegevoegd aan de Azure Storage-container. Zodra deze geactiveerd is, maakt het een SAS-URI die u kunt gebruiken om de video te uploaden en te indexeren in Video Indexer. Begin door de volgende stroom te maken. 
+De eerste stroom wordt geactiveerd wanneer een blob wordt toegevoegd aan de Azure Storage-container. Zodra deze geactiveerd is, maakt het een SAS-URI die u kunt gebruiken om de video te uploaden en te indexeren in Video Indexer. In deze sectie gaat u de volgende stroom maken. 
 
 ![Uploadstroom bestand](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,15 +53,17 @@ Om de eerste stroom in te stellen, moet u uw Video Indexer-API-sleutel en Azure 
 
 ![Verbindingsnaam en API-sleutel](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Maak zodra dat mogelijk is verbinding met uw Azure Storage- en Video Indexer-accounts, ga naar de trigger 'Wanneer een blob wordt toegevoegd of gewijzigd' en selecteer de container waarin u uw videobestanden zult plaatsen. 
+Als u eenmaal verbinding kunt maken met uw Azure Storage- en Video Indexer-accounts, zoekt u kiest u de trigger 'Wanneer een blob wordt toegevoegd of gewijzigd' in de **Logic Apps-ontwerpfunctie**. Selecteer de container waarin u uw videobestanden wilt plaatsen. 
 
-![Container](./media/logic-apps-connector-tutorial/container.png)
+![Schermopname van het dialoogvenster 'Wanneer een blob wordt toegevoegd of gewijzigd' waarin u een container kunt selecteren.](./media/logic-apps-connector-tutorial/container.png)
 
-Ga vervolgens naar de actie 'SAS-URI maken op pad' en selecteer Lijst met bestandspaden in de opties voor Dynamische inhoud.  
+Zoek en selecteer vervolgens de actie 'SAS URI op pad maken'. Selecteer in het dialoogvenster voor de actie de optie voor de lijst met bestandspaden in de opties voor dynamische inhoud.  
+
+Voeg ook een nieuwe parameter toe met de naam 'Protocol voor gedeelde toegang'. Kies HttpsOnly (Alleen HTTPS) als waarde voor de parameter.
 
 ![SAS-uri op pad](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Vul [uw accountlocatie en ID](./video-indexer-use-apis.md#account-id) in om het Video Indexer-accounttoken op te halen.
+Vul [uw accountlocatie](regions.md) en [account-id](./video-indexer-use-apis.md#account-id)  in om het Video Indexer-accounttoken op te halen.
 
 ![Toegangstoken van account ophalen](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -78,7 +77,7 @@ U kunt voor de andere parameters de standaardwaarde gebruiken of deze instellen 
 
 Klik op 'Opslaan' om de tweede stroom te configureren en de inzichten op te halen zodra het uploaden en indexeren is voltooid. 
 
-## <a name="set-up-the-json-extraction-flow"></a>De JSON-extractiestroom instellen 
+## <a name="set-up-the-second-flow---json-extraction"></a>De tweede stroom instellen: JSON-extractie  
 
 Zodra de eerste stroom geüpload en geïndexeerd is, wordt een HTTP-aanvraag met de juiste callback-URL verzonden om de tweede stroom te activeren. Vervolgens haalt het inzichten op die door Video Indexer gegenereerd zijn. In dit voorbeeld wordt de uitvoer van uw indexeringstaak opgeslagen in uw Azure Storage.  U kiest echter zelf wat u met de uitvoert wilt doen.  
 
@@ -90,7 +89,7 @@ Om deze stroom in te stellen, moet u uw Video Indexer-API-sleutel en Azure Stora
 
 Voor uw trigger ziet u een HTTP POST-URL-veld. De URL wordt pas gegenereerd nadat u de stroom hebt opgeslagen. Uiteindelijk heeft u de URL echter wel nodig. We komen hierop terug. 
 
-Vul [uw accountlocatie en ID](./video-indexer-use-apis.md#account-id) in om het Video Indexer-accounttoken op te halen.  
+Vul [uw accountlocatie](regions.md) en [account-id](./video-indexer-use-apis.md#account-id)  in om het Video Indexer-accounttoken op te halen.  
 
 Ga naar de actie 'Video-index ophalen' en vul de vereiste parameters in. Geef de volgende expressie op voor Video-id: triggerOutputs()['queries']['id'] 
 
@@ -104,13 +103,13 @@ Ga naar de actie 'Blob maken' en selecteer het pad naar de map waarin u de inzic
 
 Deze expressie neemt de uitvoer van de actie 'Video-index ophalen' van deze stroom. 
 
-Klik op 'Stroom opslaan.' 
+Klik op **Stroom opslaan**. 
 
 Zodra de stroom is opgeslagen, wordt er een HTTP POST-URL gemaakt in de trigger. Kopieer de URL van de trigger. 
 
 ![URL-trigger opslaan](./media/logic-apps-connector-tutorial/save-url-trigger.png)
 
-Ga nu terug naar de eerste stroom en plak de URL in de actie 'Video en index uploaden' voor de parameter callback-URL. 
+Ga nu terug naar de eerste stroom en plak de URL in de actie 'Video en index uploaden' voor de parameter Callback-URL. 
 
 Zorg ervoor dat beide stromen zijn opgeslagen en u bent klaar. 
 

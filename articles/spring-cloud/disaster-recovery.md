@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076039"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892549"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Herstel na nood geval in de cloud van Azure lente
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
 
 In dit artikel worden enkele strategieën beschreven die u kunt gebruiken om te voor komen dat uw Azure lente-Cloud toepassingen downtime-uitval ondervinden.  Elke regio of Data Center kan downtime ondervinden die is veroorzaakt door regionale rampen, maar een zorgvuldige planning kan invloed hebben op uw klanten.
 
@@ -44,14 +46,14 @@ U hebt twee service-exemplaren van Azure lente-Cloud geïmplementeerd in twee ve
 | Servicenaam | Locatie | Toepassing |
 |--|--|--|
 | service-voor beeld-a | VS - oost | Gateway/auth-service/account-service |
-| service-voor beeld-b | Europa - west | Gateway/auth-service/account-service |
+| service-voor beeld-b | Europa -west | Gateway/auth-service/account-service |
 
 2. Aangepast domein voor service instellen Volg [aangepast domein document](spring-cloud-tutorial-custom-domain.md) voor het instellen van een aangepast domein voor deze twee bestaande service-exemplaren. Nadat de installatie is voltooid, worden beide service-exemplaren gebonden aan het aangepaste domein: bcdr-test.contoso.com
 
 3. Een Traffic Manager en twee eind punten maken: [Maak een Traffic Manager profiel met behulp van de Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
 
 Dit is het Traffic Manager-profiel:
-* Traffic Manager DNS-naam:`http://asc-bcdr.trafficmanager.net`
+* Traffic Manager DNS-naam: `http://asc-bcdr.trafficmanager.net`
 * Eindpunt profielen: 
 
 | Profiel | Type | Doel | Prioriteit | Instellingen voor aangepaste header |
@@ -62,3 +64,8 @@ Dit is het Traffic Manager-profiel:
 4. Maak een CNAME-record in DNS-zone: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
 
 5. De omgeving is nu volledig ingesteld. Klanten moeten toegang kunnen krijgen tot de app via: bcdr-test.contoso.com
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Snelstart: Uw eerste Azure Spring Cloud-toepassing implementeren](spring-cloud-quickstart.md)
+ 

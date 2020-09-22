@@ -2,19 +2,18 @@
 title: Veelgestelde vragen over Azure Service Bus | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Service Bus.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894529"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
 In dit artikel worden enkele veelgestelde vragen over Microsoft Azure Service Bus beschreven. U kunt ook de [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/) bezoeken voor algemene Azure-prijzen en-ondersteunings informatie.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Algemene vragen over Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Wat is Azure Service Bus?
@@ -36,6 +35,9 @@ De volg orde van het gebruik van gepartitioneerde entiteiten wordt niet gegarand
 
  Gepartitioneerde entiteiten worden niet meer ondersteund in de [Premium-SKU](service-bus-premium-messaging.md). 
 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Waar worden klant gegevens Azure Service Bus opgeslagen?
+Azure Service Bus klant gegevens worden opgeslagen. Deze gegevens worden automatisch opgeslagen door Service Bus in één regio, zodat deze service automatisch voldoet aan de locatie vereisten voor regio's, waaronder die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welke poorten moet ik op de firewall openen? 
 U kunt de volgende protocollen gebruiken met Azure Service Bus voor het verzenden en ontvangen van berichten:
 
@@ -48,7 +50,7 @@ Zie de volgende tabel voor de uitgaande poorten die u moet openen om deze protoc
 | Protocol | Poorten | Details | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 en 5672 | Zie [AMQP protocol Guide (Engelstalig](service-bus-amqp-protocol-guide.md) ) | 
-| SBMP | 9350 tot 9354 | Zie [connectiviteits modus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| SBMP | 9350 tot 9354 | Zie [connectiviteits modus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
 | HTTP, HTTPS | 80, 443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Welke IP-adressen moet ik toevoegen aan de acceptatie lijst?
@@ -59,9 +61,9 @@ Ga als volgt te werk om de juiste IP-adressen te zoeken die u wilt toevoegen aan
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Dit IP-adres is statisch. Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . 
 
-Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
+Als u de **zone redundantie** voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
 1. Eerst voert u Nslookup uit op de naam ruimte.
 
@@ -76,6 +78,9 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
     <name>-s3.cloudapp.net
     ```
 3. Voer nslookup uit voor elk met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die worden uitgevoerd in drie beschikbaarheids zones, 
+
+    > [!NOTE]
+    > Het IP-adres dat door de `nslookup` opdracht wordt geretourneerd, is geen statisch IP-adres. Het blijft echter constant totdat de onderliggende implementatie wordt verwijderd of verplaatst naar een ander cluster.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Waar vind ik het IP-adres van de client die berichten verzendt/ontvangt van een naam ruimte? 
 De IP-adressen van clients die berichten verzenden of ontvangen van uw naam ruimte worden niet geregistreerd. Genereer sleutels opnieuw zodat alle bestaande clients geen[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)-instellingen (Role-based Access Control) kunnen verifiëren en controleren om ervoor te zorgen dat alleen toegestane gebruikers of toepassingen toegang hebben tot de naam ruimte. 

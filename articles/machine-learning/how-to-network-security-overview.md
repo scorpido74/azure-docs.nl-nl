@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 57746b833e238bbd0cc99ba103f710a9239ee5ba
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664571"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893186"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -63,22 +63,6 @@ In de volgende vijf secties ziet u hoe u het netwerk scenario kunt beveiligen da
 1. Beveilig de [**omgeving**](#secure-the-inferencing-environment)voor het afwijzen van interferentie.
 1. Optioneel: [**Schakel de Studio-functionaliteit in**](#optional-enable-studio-functionality).
 1. [ **Firewall instellingen** configureren](#configure-firewall-settings)
-
-> [!TIP]
->  Voor sommige combi Naties van virtuele netwerken en Azure-Services is een werk ruimte in de Enter prise-editie vereist. Gebruik de volgende tabel om te begrijpen welke scenario's Enter prise Edition vereist:
->
-> | Scenario | Enterprise</br>editie | Basic</br>editie |
-> | ----- |:-----:|:-----:| 
-> | Geen virtueel netwerk of privé-koppeling | ✔ | ✔ |
-> | Werk ruimte zonder persoonlijke koppeling. Andere resources (met uitzonde ring van Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
-> | Werk ruimte zonder persoonlijke koppeling. Andere resources met persoonlijke koppeling | ✔ | |
-> | Werk ruimte met een persoonlijke koppeling. Andere resources (met uitzonde ring van Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
-> | Werk ruimte en alle andere resources met een persoonlijke koppeling | ✔ | |
-> | Werk ruimte met een persoonlijke koppeling. Andere resources zonder persoonlijke koppeling of virtueel netwerk | ✔ | ✔ |
-> | Azure Container Registry in een virtueel netwerk | ✔ | |
-> | Door de klant beheerde sleutels voor de werk ruimte | ✔ | |
->
-
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>De werk ruimte en de bijbehorende resources beveiligen
 

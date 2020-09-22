@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892505"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Meer informatie over app en implementatie in azure lente Cloud
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
 
 **App** en **implementatie** zijn de twee belang rijke concepten in het resource model van Azure lente Cloud. In azure lente Cloud is een *app* een abstractie van één zakelijke app of een micro service.  Een versie van code of binair wordt geïmplementeerd als de *app* wordt uitgevoerd in een *implementatie*.  Apps worden uitgevoerd in een *Azure lente-Cloud service-exemplaar*of gewoon *service-exemplaar*, zoals hieronder wordt weer gegeven.
 

@@ -3,12 +3,12 @@ title: Live video analyseren zonder opname-Azure
 description: Een media grafiek kan worden gebruikt om analyse alleen uit te pakken vanuit een live video stroom, zonder dat u deze hoeft op te slaan op de rand of in de Cloud. In dit artikel wordt dit concept besproken.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893045"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Live video analyseren zonder opname
 
@@ -40,7 +40,7 @@ In deze media grafiek verlaagt het processor knooppunt voor de frame frequentie 
 Een uitbrei ding van dit voor beeld is het gebruik van een bewegings detector processor vóór het knoop punt filter voor frame frequentie. Hierdoor wordt de belasting van de service voor afnemen kleiner, omdat deze alleen wordt gebruikt wanneer er sprake is van Motion-activiteit in de video.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="Live video analyse op basis van door Motion gedetecteerde frames via een externe module voor degradatie":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Live video analyse op basis van door Motion gedetecteerde frames via een externe module voor degradatie":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

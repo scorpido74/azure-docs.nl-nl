@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a8fbf9f2890ef169016108db61c93bfe6dd44326
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881911"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions uitvoer van Azure Stream Analytics
 
@@ -22,9 +22,9 @@ Azure Functions uitvoer van Stream Analytics is momenteel niet beschikbaar in de
 
 Azure Stream Analytics roept Azure Functions aan via HTTP-triggers. De Azure Functions uitvoer adapter is beschikbaar met de volgende Configureer bare eigenschappen:
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | --- | --- |
-| Functie-app |De naam van uw Azure Functions-app. |
+| Function App |De naam van uw Azure Functions-app. |
 | Functie |De naam van de functie in uw Azure Functions-app. |
 | Sleutel |Als u een Azure-functie van een ander abonnement wilt gebruiken, kunt u dit doen door de sleutel voor toegang tot uw functie te geven. |
 | Maximale Batch grootte |Een eigenschap waarmee u de maximale grootte kunt instellen voor elke uitvoer batch die wordt verzonden naar uw Azure-functie. De invoer eenheid bevindt zich in bytes. Deze waarde is standaard 262.144 bytes (256 KB). |
@@ -54,4 +54,4 @@ De standaard Batch grootte is 262.144 bytes (256 KB). Het aantal standaard gebeu
 * [Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon](quick-create-azure-resource-manager.md)
 * [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)

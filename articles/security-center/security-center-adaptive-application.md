@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276759"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894706"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -50,8 +50,8 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemene beschikbaarheid|
-|Koers|Standaardlaag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
@@ -65,7 +65,9 @@ Als Security Center groepen computers heeft geïdentificeerd in uw abonnementen 
 
 Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elementen om de lijst met voorgestelde, bekende veilige toepassingen en groepen machines weer te geven.
 
-1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging de optie **adaptieve toepassings besturings elementen**.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Besturings elementen voor adaptieve toepassingen openen vanuit het Azure-dash board" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     De pagina **adaptieve toepassings besturings elementen** wordt geopend met de vm's die zijn gegroepeerd op de volgende tabbladen:
 
@@ -86,7 +88,7 @@ Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elem
       - Het is een Windows-computer met een reeds bestaand [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
 
       > [!TIP]
-      > Security Center moet ten minste twee weken aan gegevens hebben om de unieke aanbevelingen per groep machines te definiëren. Computers die onlangs zijn gemaakt of die behoren tot abonnementen die alleen recent zijn ingeschakeld met de laag standaard, worden weer gegeven op het tabblad **geen aanbeveling** .
+      > Security Center moet ten minste twee weken aan gegevens hebben om de unieke aanbevelingen per groep machines te definiëren. Computers die onlangs zijn gemaakt of die deel uitmaken van abonnementen die alleen recent zijn ingeschakeld met Azure Defender, worden weer gegeven op het tabblad **geen aanbeveling** .
 
 
 1. Open het tabblad **Aanbevolen** . De groepen computers met aanbevolen acceptatie lijsten worden weer gegeven.
@@ -121,7 +123,7 @@ U kunt ervoor kiezen om de acceptatie lijst voor een groep machines te bewerken 
 
 De regels voor een groep machines bewerken:
 
-1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging de optie **adaptieve toepassings besturings elementen**.
 
 1. Selecteer op het tabblad **geconfigureerd** de groep met de regel die u wilt bewerken.
 
@@ -169,7 +171,7 @@ De problemen oplossen:
 
 ## <a name="audit-alerts-and-violations"></a>Waarschuwingen en schendingen controleren
 
-1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging de optie **adaptieve toepassings besturings elementen**.
 
 1. Als u groepen wilt weer geven met machines met recente waarschuwingen, controleert u de groepen die worden vermeld op het tabblad **geconfigureerd** .
 
@@ -184,6 +186,8 @@ De problemen oplossen:
 ## <a name="move-a-machine-from-one-group-to-another"></a>Een machine van de ene naar de andere groep verplaatsen
 
 Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toepassings beheer beleid dat wordt toegepast, gewijzigd in de instellingen van de groep waarnaar u het hebt verplaatst. U kunt een machine ook van een geconfigureerde groep naar een niet-geconfigureerde groep verplaatsen, waardoor alle toepassings beheer regels die op de machine zijn toegepast, worden verwijderd.
+
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging de optie **adaptieve toepassings besturings elementen**.
 
 1. Selecteer op de pagina **adaptieve toepassings besturings elementen** op het tabblad **geconfigureerd** de groep die de computer bevat die moet worden verplaatst.
 

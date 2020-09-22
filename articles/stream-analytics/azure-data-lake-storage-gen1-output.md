@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 98dfd51783ad3bc0b89f441f89436d3c3d928104
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a642f7dfc470a695f96967cad0ed738d45b11efb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881930"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Data Lake Storage-uitvoer van 1 tot en met Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Azure Data Lake Storage uitvoer van Stream Analytics is niet beschikbaar in de r
 
 De volgende tabel geeft een lijst van eigenschaps namen en de bijbehorende beschrijvingen om uw Data Lake Storage gen 1-uitvoer te configureren.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias | Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query om te leiden naar Data Lake Store. |
 | Abonnement | Het abonnement met uw Azure Data Lake Storage-account. |
@@ -53,4 +53,4 @@ Zie [Data Lake Storage limieten](../azure-resource-manager/management/azure-subs
 * [Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon](quick-create-azure-resource-manager.md)
 * [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)

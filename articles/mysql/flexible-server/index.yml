@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Documentatie voor flexibele server
+summary: Azure Database for MySQL Flexibele server is een volledig beheerde Database as a Service van MySQL die bedrijfskritische workloads kan verwerken met voorspelbare prestaties en dynamische schaalbaarheid. Ontwikkel toepassingen met Azure Database for MySQL met behulp van open-source hulpprogramma's en een platform naar keuze. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Database voor MySQL gebruikt.
+metadata:
+  description: Azure Database for MySQL Flexibele server is een relationele databaseservice in de Microsoft-cloud die is gebouwd voor ontwikkelaars op basis van de MySQL-communityversie.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928715"
+landingContent:
+- title: Over Flexibele server (preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Flexibele server?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Een flexibele server maken
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Een PHP-app maken met flexibele server
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Opties voor rekenkracht en opslag
+      url: concepts-compute-storage.md
+    - text: MySQL-versies
+      url: concepts-supported-versions.md
+    - text: Netwerken
+      url: concepts-networking.md
+    - text: Controleren
+      url: concepts-monitoring.md
+    - text: Auditlogboeken
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Server beheren
+      url: how-to-manage-server-portal.md
+    - text: Server stoppen/starten
+      url: how-to-stop-start-server-portal.md
+    - text: Logboeken configureren en openen
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: Onderhoud plannen
+      url: how-to-maintenance-portal.md
+- title: Bedrijfscontinuïteit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht voor bedrijfscontinuïteit
+      url: concepts-business-continuity.md
+    - text: Hoge beschikbaarheid
+      url: concepts-high-availability.md
+    - text: Back-ups en herstellen
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een server terugzetten
+      url: how-to-restore-server-portal.md
+- title: Verbinding maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verbinding maken met PHP
+      url: connect-php.md
+    - text: Verbinding maken met MySQL Workbench
+      url: connect-workbench.md
+    - text: Verbinding maken met Python
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Een web-app in een virtueel netwerk verbinden
+      url: tutorial-webapp-server-vnet.md
+- title: Migreren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Online migreren
+      url: ../howto-migrate-online.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
+      url: /cli/azure/mysql
+    - text: Naslaginformatie voor REST API-ontwikkelaars
+      url: /rest/api/mysql/
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbformysql/allversions

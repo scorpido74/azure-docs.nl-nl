@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065876"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882411"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Connectiviteits architectuur in Azure Database for PostgreSQL
 In dit artikel wordt uitgelegd wat de Azure Database for PostgreSQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for PostgreSQL data base-exemplaar van clients, zowel binnen als buiten Azure.
@@ -19,7 +19,7 @@ In dit artikel wordt uitgelegd wat de Azure Database for PostgreSQL connectivite
 ## <a name="connectivity-architecture"></a>Connectiviteitsarchitectuur
 De verbinding met uw Azure Database for PostgreSQL wordt tot stand gebracht via een gateway die verantwoordelijk is voor de route ring van binnenkomende verbindingen naar de fysieke locatie van uw server in onze clusters. In het volgende diagram ziet u de verkeers stroom.
 
-![Overzicht van de connectiviteits architectuur](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Overzicht van de connectiviteits architectuur":::
 
 Wanneer een client verbinding maakt met de data base, krijgen ze een connection string die verbinding maakt met de gateway. Deze gateway heeft een openbaar IP-adres dat luistert naar poort 5432. In het database cluster verkeer wordt doorgestuurd naar de juiste Azure Database for PostgreSQL. Daarom is het nodig om verbinding te maken met uw server, zoals van bedrijfs netwerken, het is nood zakelijk om de firewall aan de client zijde te openen zodat uitgaand verkeer de gateways kan bereiken. Hieronder vindt u een volledige lijst met de IP-adressen die worden gebruikt door onze gateways per regio.
 
@@ -35,11 +35,11 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Canada - midden |40.85.224.249  |
 | Canada - oost | 40.86.226.166    |
-| VS - centraal | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | China East | 139.219.130.35    |
-| China-oost 2 | 40.73.82.1  |
+| China - oost 2 | 40.73.82.1  |
 | China - noord | 139.219.15.17    |
-| China-noord 2 | 40.73.50.0     |
+| China - noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | VS - oost | 40.121.158.30, 191.238.6.43, 40.71.8.203, 40.71.83.113   |
 | VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
@@ -61,13 +61,13 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | South Central US |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Azië - zuidoost | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | UAE - centraal | 20.37.72.64  |
-| UAE - noord | 65.52.248.0    |
+| VAE - noord | 65.52.248.0    |
 | Verenigd Koninkrijk Zuid | 51.140.184.11   |
 | Verenigd Koninkrijk West | 51.141.8.11  |
 | VS - west-centraal | 13.78.145.25     |
 | Europa -west | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
 | VS - west | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
-| VS - west 2 | 13.66.226.202  |
+| West US 2 | 13.66.226.202  |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

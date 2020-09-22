@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 886e45e92fb3a882de167b5c59a9b5ee09a9c430
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657579"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892982"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning soevereine Cloud pariteit
 
@@ -49,9 +49,9 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | Pijplijn eindpunten maken met behulp van de Azure ML SDK                           | Algemene beschikbaarheid                   | JA                | JA         |
 | Geplande uitvoeringen van pijp lijnen maken, bewerken en verwijderen met behulp van de Azure ML SDK | Algemene beschikbaarheid                   | KLIKT               | KLIKT        |
 | Details van pijplijn uitvoering weer geven in Studio                                        | Algemene beschikbaarheid                   | JA                | JA         |
-| Pijp lijnen maken, uitvoeren, visualiseren en publiceren in azure ML Designer          | Open bare preview       | JA                | JA         |
+| Pijp lijnen maken, uitvoeren, visualiseren en publiceren in azure ML Designer          | Algemene beschikbaarheid      | JA                | JA         |
 | Integratie met ML-pijp lijn Azure Databricks                             | Algemene beschikbaarheid                   | NO                 | NO          |
-| Pijplijn eindpunten maken in azure ML Designer                             | Open bare preview       | JA                | JA         |
+| Pijplijn eindpunten maken in azure ML Designer                             | Algemene beschikbaarheid      | JA                | JA         |
 | **Geïntegreerde notebooks** |   |  | | 
 | Werkruimte notitieblokken en delen van bestanden                                        | Algemene beschikbaarheid                   | JA                | JA         |
 | Ondersteuning voor R en python                                                       | Algemene beschikbaarheid                   | JA                | JA         |
@@ -162,9 +162,9 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | Pijplijn eindpunten maken met behulp van de Azure ML SDK                           | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Geplande uitvoeringen van pijp lijnen maken, bewerken en verwijderen met behulp van de Azure ML SDK | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Details van pijplijn uitvoering weer geven in Studio                                        | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Pijp lijnen maken, uitvoeren, visualiseren en publiceren in azure ML Designer          | Open bare preview   | JA       | N.v.t.        |
+| Pijp lijnen maken, uitvoeren, visualiseren en publiceren in azure ML Designer          | Algemene beschikbaarheid  | JA       | N.v.t.        |
 | Integratie met ML-pijp lijn Azure Databricks                             | Algemene beschikbaarheid               | NO        | N.v.t.        |
-| Pijplijn eindpunten maken in azure ML Designer                             | Open bare preview   | JA       | N.v.t.        |
+| Pijplijn eindpunten maken in azure ML Designer                             | Algemene beschikbaarheid   | JA       | N.v.t.        |
 | **Geïntegreerde notebooks** |   | | |
 | Werkruimte notitieblokken en delen van bestanden                                        | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Ondersteuning voor R en python                                                       | Algemene beschikbaarheid               | JA       | N.v.t.        |

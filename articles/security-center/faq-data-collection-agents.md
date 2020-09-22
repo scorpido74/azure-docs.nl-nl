@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894812"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -29,9 +29,9 @@ Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), sc
 
 Nee. Werk ruimten die zijn gemaakt door Security Center en die zijn geconfigureerd voor Azure Monitor-logboeken per knoop punt, worden niet in rekening gebracht Azure Monitor logboek kosten. Security Center facturering is altijd gebaseerd op uw Security Center beveiligings beleid en de oplossingen die zijn geïnstalleerd op een werk ruimte:
 
-- **Gratis laag** – Security Center maakt de oplossing ' SecurityCenterFree ' in de standaardwerk ruimte. Er worden geen kosten in rekening gebracht voor de gratis laag.
+- **Azure Defender uit** : Security Center maakt de oplossing ' SecurityCenterFree ' in de standaardwerk ruimte. Als Azure Defender is uitgeschakeld, wordt deze niet in rekening gebracht.
 
-- **Standard-laag** – Security Center maakt de oplossing beveiliging in de standaardwerk ruimte.
+- **Met Azure Defender on** – Security Center wordt de oplossing ' Beveiliging ' ingeschakeld in de standaardwerk ruimte.
 
 Zie [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie over prijzen.
 
@@ -164,7 +164,7 @@ Als u de micro soft-bewakings extensie verwijdert, kan Security Center geen beve
 
 U kunt automatische inrichting voor uw abonnementen uitschakelen in het beveiligings beleid, maar dit wordt niet aanbevolen. Automatische inrichtings limieten Security Center aanbevelingen en waarschuwingen uitschakelen. Automatische inrichting uitschakelen:
 
-1. Als uw abonnement is geconfigureerd voor de Standard-laag, opent u het beveiligings beleid voor dat abonnement en selecteert u de laag **gratis** .
+1. Als Azure Defender is ingeschakeld voor uw abonnement, opent u het beveiligings beleid voor dat abonnement en selecteert u **Azure Defender uit**.
 
    ![Prijscategorie][1]
 

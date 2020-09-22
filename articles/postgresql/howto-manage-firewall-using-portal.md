@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 887b450c88e8d9d06e86cd7dc7725c7538522aa5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b2cb6a5378afac74c971ba5429775782723bef09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882083"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Firewall regels maken en beheren voor Azure Database for PostgreSQL-één server met behulp van de Azure Portal
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een Azure Database for PostgreSQL-server vanaf een opgegeven IP-adres of bereik van IP-adressen.
@@ -25,30 +25,30 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Een serverfirewallregel maken in Azure Portal
 1. Klik op de pagina PostgreSQL-server, onder instellingen kop, op **verbindings beveiliging** om de pagina verbindings beveiliging te openen voor de Azure database for PostgreSQL.
 
-   ![Azure Portal-Klik op verbindings beveiliging](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal-Klik op verbindings beveiliging":::
 
 2. Klik op **Mijn IP toevoegen** op de werk balk. Hiermee wordt automatisch een firewall regel gemaakt met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
 
-   ![Azure Portal-Klik op mijn IP toevoegen](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal-Klik op mijn IP toevoegen":::
 
 3. Controleer uw IP-adres voordat u de configuratie opslaat. In sommige gevallen wijkt het IP-adres van Azure Portal af van het IP-adres dat wordt gebruikt voor toegang tot het internet en Azure-servers. Daarom moet u het eerste IP-adres en het laatste IP-adres wijzigen om de regel te laten werken zoals verwacht.
    Gebruik een zoek machine of een ander online hulp programma om uw eigen IP-adres te controleren. Zoek bijvoorbeeld naar ' wat is mijn IP '.
 
-   ![Bing zoeken naar wat is mijn IP-adres](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Bing zoeken naar wat is mijn IP-adres":::
 
 4. Voeg extra adresbereiken toe. In de firewall regels voor de Azure Database for PostgreSQL, kunt u één IP-adres of een bereik van adressen opgeven. Als u de regel wilt beperken tot één IP-adres, typt u hetzelfde adres in het veld voor eerste IP en laatste IP. Als u de firewall opent, kunnen beheerders, gebruikers en toepassingen toegang krijgen tot alle data bases op de PostgreSQL-server waarvoor ze geldige referenties hebben.
 
-   ![Azure Portal-firewall regels](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/4-specify-addresses.png" alt-text="Azure Portal-firewall regels":::
 
 5. Klik op **Opslaan** op de werk balk om deze firewall regel op server niveau op te slaan. Wacht tot de bevestiging is geslaagd voor de update van de firewall regels.
 
-   ![Azure Portal-Klik op opslaan](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png" alt-text="Azure Portal-Klik op opslaan":::
 
 ## <a name="connecting-from-azure"></a>Verbinding maken vanuit Azure
 Azure-verbindingen moeten zijn ingeschakeld om toepassingen van Azure toe te staan om verbinding te maken met uw Azure Database for PostgreSQL server. Als u bijvoorbeeld een Azure Web Apps-toepassing wilt hosten, of een toepassing die wordt uitgevoerd in een Azure-VM of als u verbinding wilt maken vanuit een Azure Data Factory Data Management Gateway. De resources hoeven zich niet in dezelfde Virtual Network (VNet) of resource groep voor de firewall regel te bevinden om deze verbindingen in te scha kelen. Wanneer een toepassing vanuit Azure probeert verbinding te maken met uw databaseserver, verifieert de firewall of Azure-verbindingen zijn toegestaan. Er zijn een aantal methoden om deze typen verbindingen in te scha kelen. Een firewallinstelling waarvan het begin- en eindadres gelijk zijn aan 0.0.0.0 geeft aan dat deze verbindingen zijn toegestaan. U kunt ook de optie toegang tot **Azure-Services toestaan** in op in de Portal instellen in het deel **venster verbindings beveiliging** en **op** **Opslaan**klikken. Als de verbindings poging niet is toegestaan, wordt de Azure Database for PostgreSQL server niet bereikt door de aanvraag.
 
 > [!IMPORTANT]
-> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorg dan dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
+> Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorgt u er dan voor dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Bestaande firewallregels op serverniveau beheren via Azure Portal

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651094"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893568"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -184,7 +184,7 @@ Er is geen universeel antwoord op ' Hoe kan ik weet of ik opnieuw moet trainen? 
 - Vergelijk de uitvoer van uw nieuwe model met die van uw oude model
 - Vooraf gedefinieerde criteria gebruiken om te kiezen of u het oude model wilt vervangen 
 
-Een thema van de bovenstaande stappen is dat uw retraining automatisch moet worden geautomatiseerd, niet voor ad-hoc. [Azure machine learning pijp lijnen](concept-ml-pipelines.md) zijn een goed antwoord voor het maken van werk stromen met betrekking tot de voor bereiding van gegevens, training, validatie en implementatie. Lees [Retrain-modellen met Azure machine learning Designer (preview)](how-to-retrain-designer.md) om te zien hoe pijp lijnen en de Azure machine learning designer in een trainings scenario passen. 
+Een thema van de bovenstaande stappen is dat uw retraining automatisch moet worden geautomatiseerd, niet voor ad-hoc. [Azure machine learning pijp lijnen](concept-ml-pipelines.md) zijn een goed antwoord voor het maken van werk stromen met betrekking tot de voor bereiding van gegevens, training, validatie en implementatie. Lees opnieuw [Train modellen met Azure machine learning Designer](how-to-retrain-designer.md) om te zien hoe pijp lijnen en de Azure machine learning designer in een retrainings scenario passen. 
 
 ## <a name="automate-the-ml-lifecycle"></a>De levens cyclus van ML automatiseren 
 

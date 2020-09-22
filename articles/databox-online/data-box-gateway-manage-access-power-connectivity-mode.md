@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893948"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Data Box Gateway beheren
 
@@ -57,16 +57,16 @@ Voor de werk stroom opnieuw instellen is niet vereist dat de gebruiker het oude 
 
 ## <a name="manage-resource-access"></a>Toegang tot de bedrijfsresources
 
-Als u uw Azure Stack EDGE/Data Box Gateway, IoT Hub en Azure Storage resource wilt maken, hebt u machtigingen nodig als bijdrager of hoger op het niveau van een resource groep. U moet ook de bijbehorende resource providers registreren. Voor bewerkingen waarbij de activerings sleutel en referenties betrokken zijn, zijn er ook machtigingen voor het Azure Active Directory Graph API vereist. Deze worden beschreven in de volgende secties.
+Als u uw Azure Stack Edge Pro/Data Box Gateway-, IoT Hub-en Azure Storage-resource wilt maken, moet u machtigingen hebben als Inzender of hoger op het niveau van een resource groep. U moet ook de bijbehorende resource providers registreren. Voor bewerkingen waarbij de activerings sleutel en referenties betrokken zijn, zijn er ook machtigingen voor het Azure Active Directory Graph API vereist. Deze worden beschreven in de volgende secties.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API-machtigingen beheren
 
-Bij het genereren van de activerings sleutel voor het Azure Stack edge-apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor de Microsoft Graph-API. De bewerkingen die referenties nodig hebben, kunnen zijn:
+Bij het genereren van de activerings sleutel voor het Azure Stack Edge Pro-apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor de Microsoft Graph-API. De bewerkingen die referenties nodig hebben, kunnen zijn:
 
 -  Een share maken met een gekoppeld opslag account.
 -  Het maken van een gebruiker die toegang heeft tot de shares op het apparaat.
 
-U moet toegang hebben `User` tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects` . U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects` . Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack edge-apparaat en het maken van een gebruiker, niet meer uitgevoerd.
+U moet toegang hebben `User` tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects` . U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects` . Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack Edge Pro-apparaat en het maken van een gebruiker mislukt.
 
 Zie [Microsoft Graph permissions Reference](https://docs.microsoft.com/graph/permissions-reference)(Engelstalig) voor meer informatie over het verlenen van toegang aan gebruikers om de API te Microsoft Graph.
 
@@ -89,7 +89,7 @@ Voer de volgende opdracht uit om een lijst met geregistreerde resource providers
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Voor Azure Stack edge-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u de registratie wilt registreren `Microsoft.DataBoxEdge` , moet u de volgende opdracht uitvoeren:
+Voor Azure Stack Edge Pro-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u de registratie wilt registreren `Microsoft.DataBoxEdge` , moet u de volgende opdracht uitvoeren:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om de modus apparaat te wijzigen:
 
 ## <a name="manage-power"></a>Energie beheren
 
-U kunt het virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Deze actie minimaliseert de kans op beschadiging van gegevens.
+U kunt het virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Deze actie minimaliseert de kans op beschadigde gegevens.
 
 1. Ga in de lokale web-UI naar **onderhoud > energie-instellingen**.
 2. Klik op **Afsluiten** of **opnieuw opstarten** , afhankelijk van wat u wilt doen.

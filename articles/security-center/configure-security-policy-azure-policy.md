@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430938"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894794"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Een beveiligings beleid configureren in Azure Policy met behulp van de REST API
 
@@ -115,7 +115,7 @@ In dit voor beeld ziet u hoe u een toewijzing verwijdert:
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## <a name="policy-names-reference"></a>Naslag informatie over beleids namen<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Naslag informatie over beleids namen <a name="policy-names"></a>
 
 |Beleids naam in Security Center|Beleids naam die wordt weer gegeven in Azure Policy |Parameter naam van beleids effect|
 |----|----|----|
@@ -124,7 +124,7 @@ In dit voor beeld ziet u hoe u een toewijzing verwijdert:
 |Systeemupdates |Ontbrekende systeem updates bewaken in Azure Security Center |systemUpdatesMonitoringEffect|
 |Storage-versleuteling |Ontbrekende blobversleuteling voor opslagaccounts controleren |storageEncryptionMonitoringEffect|
 |JIT-netwerk toegang |Mogelijke JIT-toegang (just-in-time) in een netwerk controleren in Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptieve toepassingsbesturingselementen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
+|Adaptieve toepassingsbesturingselementen |Mogelijke apps toestaan lijsten in Azure Security Center te controleren |adaptiveApplicationControlsMonitoringEffect|
 |Netwerkbeveiligingsgroepen |Bewaak strikte netwerk toegang in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Beveiligingsconfiguraties |Beveiligings problemen met het besturings systeem in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 
 |Endpoint Protection |Ontbrekende Endpoint Protection bewaken in Azure Security Center |endpointProtectionMonitoringEffect |
