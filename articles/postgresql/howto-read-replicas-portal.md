@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274540"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884482"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
 
@@ -41,20 +41,20 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 
 3. Als Azure-replicatie ondersteuning niet is ingesteld op ten minste een **replica**, stelt u deze in. Selecteer **Opslaan**.
 
-   ![Azure Database for PostgreSQL replicatie: replica instellen en opslaan](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL replicatie: replica instellen en opslaan":::
 
 4. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
 
-   ![Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten":::
 
 5. Zodra de bewerking is voltooid, ontvangt u twee meldingen over Azure Portal. Er is één melding voor het bijwerken van de server parameter. Er is een andere melding voor de herstart van de server die onmiddellijk volgt.
 
-   ![Geslaagde meldingen](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Geslaagde meldingen":::
 
 6. Vernieuw de Azure Portal pagina om de werk balk replicatie bij te werken. U kunt nu lees replica's maken voor deze server.
    
 
-## <a name="create-a-read-replica"></a>Een lees replica maken
+## <a name="create-a-read-replica"></a>Een leesreplica maken
 Voer de volgende stappen uit om een lees replica te maken:
 
 1. Selecteer een bestaande Azure Database for PostgreSQL-server om te gebruiken als de hoofd server. 
@@ -63,15 +63,15 @@ Voer de volgende stappen uit om een lees replica te maken:
 
 3. Selecteer **replica toevoegen**.
 
-   ![Een replica toevoegen](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Een replica toevoegen":::
 
 4. Voer een naam in voor de Lees replica. 
 
-    ![De replica een naam](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="De replica een naam":::
 
 5. Selecteer een locatie voor de replica. De standaard locatie is dezelfde als die van de hoofd server.
 
-    ![Een locatie selecteren](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Selecteer een locatie":::
 
    > [!NOTE]
    > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
@@ -80,7 +80,7 @@ Voer de volgende stappen uit om een lees replica te maken:
 
 Nadat de Lees replica is gemaakt, kan deze worden weer gegeven in het venster **replicatie** :
 
-![De nieuwe replica weer geven in het venster replicatie](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="De nieuwe replica weer geven in het venster replicatie":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Voer de volgende stappen uit om de replicatie tussen een hoofd server en een lee
 
 3. Selecteer de replica server waarvoor u de replicatie wilt stoppen.
 
-   ![De replica selecteren](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="De replica selecteren":::
  
 4. Selecteer **Replicatie stoppen**.
 
-   ![Replicatie stoppen selecteren](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Replicatie stoppen selecteren":::
  
 5. Selecteer **OK** om de replicatie te stoppen.
 
-   ![Bevestigen om replicatie te stoppen](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Bevestigen om replicatie te stoppen":::
  
 
 ## <a name="delete-a-master-server"></a>Een hoofd server verwijderen
@@ -125,11 +125,11 @@ Voer de volgende stappen uit om een server te verwijderen uit de Azure Portal:
 
 2. Open de pagina **overzicht** voor de-server. Selecteer **Verwijderen**.
 
-   ![Selecteer op de pagina overzicht van de server om de hoofd server te verwijderen](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Selecteer op de pagina overzicht van de server om de hoofd server te verwijderen":::
  
 3. Voer de naam in van de hoofd server die u wilt verwijderen. Selecteer **verwijderen** om te bevestigen dat de hoofd server moet worden verwijderd.
 
-   ![Bevestigen dat de hoofd server moet worden verwijderd](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Bevestigen dat de hoofd server moet worden verwijderd":::
  
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen
@@ -137,7 +137,7 @@ U kunt een lees replica verwijderen die vergelijkbaar is met de manier waarop u 
 
 - Open in de Azure Portal de pagina **overzicht** voor de Lees replica. Selecteer **Verwijderen**.
 
-   ![Selecteer op de pagina overzicht van replica de optie om de replica te verwijderen](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Selecteer op de pagina overzicht van replica de optie om de replica te verwijderen":::
  
 U kunt ook de replica lezen uit het venster **replicatie** verwijderen door de volgende stappen uit te voeren:
 
@@ -147,15 +147,15 @@ U kunt ook de replica lezen uit het venster **replicatie** verwijderen door de v
 
 3. Selecteer de replica lezen die u wilt verwijderen.
 
-   ![Selecteer de replica die u wilt verwijderen](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Selecteer de replica die u wilt verwijderen":::
  
 4. Selecteer **replica verwijderen**.
 
-   ![Replica verwijderen selecteren](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Replica verwijderen selecteren":::
  
 5. Voer de naam in van de replica die u wilt verwijderen. Selecteer **verwijderen** om te bevestigen dat de replica moet worden verwijderd.
 
-   ![Bevestigen dat de replica moet worden verwijderd](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Bevestigen dat de replica moet worden verwijderd":::
  
 
 ## <a name="monitor-a-replica"></a>Een replica bewaken
@@ -168,7 +168,7 @@ De **maximale vertraging** voor de metrische gegevens van replica's toont de ver
 
 2.  Selecteer **Metrische gegevens**. In het venster **metrische gegevens** selecteert u **Max. vertraging in replica's**.
 
-    ![De maximale vertraging voor verschillende replica's bewaken](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="De maximale vertraging voor verschillende replica's bewaken":::
  
 3.  Voor uw **aggregatie**selecteert u **Max**.
 
@@ -180,7 +180,7 @@ De metriek van de **replica vertraging** toont de tijd sinds de laatste opnieuw 
 
 2. Selecteer **Metrische gegevens**. Selecteer **replica vertraging**in het venster **metrische gegevens** .
 
-   ![De replica vertraging bewaken](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="De replica vertraging bewaken":::
  
 3. Voor uw **aggregatie**selecteert u **Max**. 
  

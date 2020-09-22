@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024397"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884189"
 ---
 # <a name="hierarchical-state-override"></a>Hiërarchische status overschrijven
 
@@ -45,6 +45,10 @@ De vaste set statussen die kunnen worden overschreven is:
   ![Contour optie die wordt gebruikt om een geselecteerd onderdeel te markeren](./media/selection-outline.png)
 
 * **`DisableCollision`**: De geometrie wordt uitgesloten van [ruimtelijke query's](spatial-queries.md). De **`Hidden`** vlag heeft geen invloed op de status vlag voor conflicten, zodat deze twee vlaggen vaak samen worden ingesteld.
+
+* **`UseCutPlaneFilterMask`**: Gebruik een afzonderlijk filter bitmasker om de selectie van het Knip vlak te beheren. Met deze markering wordt bepaald of het afzonderlijke filter masker moet worden gebruikt of overgenomen van het bovenliggende element. Het filter-bit masker zelf wordt ingesteld via de `CutPlaneFilterMask` eigenschap. Voor gedetailleerde informatie over hoe de filters werken, raadpleegt u de [alinea selectief knippen](cut-planes.md#selective-cut-planes).
+![Selectief knip schema's](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > Als alternatief voor het uitschakelen van de zicht baarheid en ruimtelijke query's voor een volledige subgrafiek, `enabled` kan de status van een spel object worden in-of uitgeschakeld. Als een hiërarchie is uitgeschakeld, heeft deze voor keur boven alle `HierarchicalStateOverrideComponent` .

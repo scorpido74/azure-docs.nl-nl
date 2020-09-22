@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6ddfa1f6db06c2ca06b94efec7f890c2a714b2a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791729"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883867"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
@@ -62,6 +62,5 @@ In Security Center is een beveiligingsincident een samenloop van alle waarschuwi
 
 Op deze pagina zijn de mogelijkheden van het beveiligings incident van Security Center uitgelegd. Zie de volgende pagina's voor verwante informatie:
 
-* [Beveiliging tegen bedreigingen in Security Center](threat-protection.md)
-* [Beveiligings waarschuwingen in Security Center](security-center-alerts-overview.md)
-* [Beveiligingswaarschuwingen beheren en erop reageren](security-center-managing-and-responding-alerts.md)
+- [Beveiligings waarschuwingen in Security Center](security-center-alerts-overview.md)
+- [Beveiligingswaarschuwingen beheren en erop reageren](security-center-managing-and-responding-alerts.md)

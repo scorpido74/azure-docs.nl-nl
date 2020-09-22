@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: be725c574c54dfc298a900d3c043559d484d1bc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117845"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884346"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Gegevens versleuteling valideren voor Azure Database for PostgreSQL
 
@@ -19,7 +19,7 @@ Dit artikel helpt u bij het valideren of gegevens versleuteling met door de klan
 
 ## <a name="check-the-encryption-status"></a>De versleutelings status controleren
 
-### <a name="from-portal"></a>Van portal
+### <a name="from-portal"></a>Vanuit de portal
 
 1. Als u wilt controleren of de sleutel van de klant wordt gebruikt voor versleuteling, voert u de volgende stappen uit:
 
@@ -37,7 +37,7 @@ Dit artikel helpt u bij het valideren of gegevens versleuteling met door de klan
 
 2. Als u op het Azure Portal kunt controleren of de versleutelings sleutel is ingesteld, worden de gegevens versleuteld met behulp van de sleutel klanten die worden gebruikt in de Azure Portal.
 
-  ![Overzicht van toegangs beleid](media/concepts-data-access-and-security-data-encryption/byok-validate.png)
+  :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="Overzicht van toegangs beleid":::
 
 ### <a name="from-cli"></a>Van CLI
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032546"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884324"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels voor Azure Database for PostgreSQL-grootschalige beheren (Citus)
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een grootschalige (Citus)-coördinator knooppunt vanaf een opgegeven IP-adres of bereik van IP-adressen.
@@ -24,23 +24,24 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Een serverfirewallregel maken in Azure Portal
 
 > [!NOTE]
-> Deze instellingen zijn ook toegankelijk tijdens het maken van een Citus-Server groep (Azure Database for PostgreSQL-grootschalige). Klik op het tabblad **netwerken** op **open bare toegang**.
-> ![Azure Portal-tabblad netwerk](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> Deze instellingen zijn ook toegankelijk tijdens het maken van een Citus-Server groep (Azure Database for PostgreSQL-grootschalige). Klik op het tabblad **netwerken** op **openbaar eind punt**.
+
+> :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png" alt-text="Azure Portal-tabblad netwerk":::
 
 1. Klik op de pagina PostgreSQL-Server groep, onder de kop beveiliging, op **netwerken** om de firewall regels te openen.
 
-   ![Azure Portal-klikken op netwerken](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal-klikken op netwerken":::
 
 2. Klik op **huidige client-IP-adres toevoegen** om een firewall regel te maken met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
 
-   ![Azure Portal-Klik op IP van client toevoegen](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal-Klik op IP van client toevoegen":::
 
 U kunt ook op **+ toevoegen 0.0.0.0-255.255.255.255** (rechts van optie B) niet alleen uw IP-adres gebruiken, maar het hele internet heeft toegang tot de poort 5432 van het coördinator knooppunt. In deze situatie moeten clients zich nog steeds aanmelden met de juiste gebruikers naam en wacht woord om het cluster te gebruiken. Desondanks raden we u aan om wereld wijde toegang alleen in te stellen voor korte Peri Oden en alleen voor niet-productie databases.
 
 3. Controleer uw IP-adres voordat u de configuratie opslaat. In sommige gevallen wijkt het IP-adres van Azure Portal af van het IP-adres dat wordt gebruikt voor toegang tot het internet en Azure-servers. Daarom moet u het eerste IP-adres en het laatste IP-adres wijzigen om de regel te laten werken zoals verwacht.
    Gebruik een zoek machine of een ander online hulp programma om uw eigen IP-adres te controleren. Zoek bijvoorbeeld naar ' wat is mijn IP '.
 
-   ![Bing zoeken naar wat is mijn IP-adres](./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Bing zoeken naar wat is mijn IP-adres":::
 
 4. Voeg extra adresbereiken toe. In de firewall regels kunt u één IP-adres of een bereik van adressen opgeven. Als u de regel wilt beperken tot één IP-adres, typt u hetzelfde adres in het veld voor eerste IP en laatste IP. Als u de firewall opent, kunnen beheerders, gebruikers en toepassingen toegang krijgen tot het coördinator knooppunt op poort 5432.
 

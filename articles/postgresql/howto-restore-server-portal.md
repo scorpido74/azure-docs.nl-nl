@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884305"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for PostgreSQL-één server met behulp van de Azure Portal
 
@@ -28,16 +28,16 @@ U maakt de keuze tussen het configureren van uw server voor lokaal redundante ba
 
 Wanneer u een server maakt via de Azure Portal, selecteert u in het venster **prijs categorie** de optie **lokaal redundante** of **geografisch redundante** back-ups voor uw server. Dit venster is ook de plek waar u de **retentie periode voor back-ups** selecteert-hoe lang (in aantal dagen) u de back-ups van de server wilt opslaan.
 
-   ![Prijs categorie: Kies back-upredundantie](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 Zie de [Snelstartgids van Azure database for postgresql server](quickstart-create-server-database-portal.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
 De Bewaar periode van een back-up van een server kan worden gewijzigd door de volgende stappen uit te voeren:
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw Azure Database for PostgreSQL-server. Met deze actie wordt de pagina **overzicht** geopend.
 3. Selecteer **prijs categorie** in het menu onder **instellingen**. Met de schuif regelaar kunt u de **Bewaar periode voor back-ups** wijzigen van 7 tot 35 dagen.
 In de onderstaande scherm afbeelding is meer dan 34 dagen verg root.
-![De Bewaar periode voor back-ups is verhoogd](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="De Bewaar periode voor back-ups is verhoogd":::
 
 4. Klik op **OK** om de wijziging te bevestigen.
 
@@ -53,11 +53,11 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
 2. Selecteer in de werk balk van de pagina **overzicht** van de server **herstellen**.
 
-   ![Azure Database for PostgreSQL-overzicht-knop herstellen](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL-overzicht-knop herstellen":::
 
 3. Vul in het formulier Restore de vereiste gegevens in:
 
-   ![Azure Database for PostgreSQL-herstel informatie](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL-herstel informatie":::
    - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
    - **Doel server**: Geef een naam op voor de nieuwe server.
    - **Locatie**: u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.
@@ -75,11 +75,11 @@ De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de fire
 
 Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for PostgreSQL beschikbaar is.  
 
-1. Selecteer de knop **een resource maken** (+) in de linkerbovenhoek van de portal. **Data bases**  >  **Azure database for PostgreSQL**selecteren.
+1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal. Selecteer **Databases** > **Azure Database for PostgreSQL**.
 
    :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Navigeer naar Azure Database for PostgreSQL.":::
 
-2. Selecteer de implementatie optie voor **één server** .
+2. Selecteer de implementatieoptie **Enkele server**.
 
    :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Selecteer Azure Database for PostgreSQL-implementatie optie voor één server.":::
  
@@ -87,7 +87,7 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 4. Selecteer **back-up** als **gegevens bron**. Met deze actie wordt een vervolg keuzelijst geladen die een lijst met servers bevat waarvoor geo redundante back-ups zijn ingeschakeld.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Selecteer de gegevensbron.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Selecteer een gegevens bron.":::
     
    > [!NOTE]
    > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -111,7 +111,7 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
    :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Formulier opvulling."::: 
 
-9. Selecteer **controleren + maken** om uw selecties te controleren. 
+9. Selecteer **Beoordelen en maken** om uw selecties te controleren. 
 
 10. Selecteer **Maken** om de server in te richten. Deze bewerking kan enkele minuten duren.
 

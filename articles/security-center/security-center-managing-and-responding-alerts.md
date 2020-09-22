@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2551a3c860dbdf27e7c9473e88c3a3293f575faa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769766"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883957"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -28,7 +28,7 @@ In dit onderwerp wordt beschreven hoe u de waarschuwingen die u hebt ontvangen, 
 * Zie [how Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md)voor een overzicht van de manier waarop Security Center waarschuwingen genereert.
 
 > [!NOTE]
-> Als u geavanceerde detectie wilt inschakelen, voert u een upgrade uit naar Azure Security Center Standard. Er is een gratis proefversie beschikbaar. Als u een upgrade wilt uitvoeren, selecteert u de prijscategorie in het [beveiligingsbeleid](tutorial-security-policy.md). Zie [Prijsinformatie over Azure Security Center](security-center-pricing.md) voor meer informatie.
+> Als u geavanceerde detectie wilt inschakelen, schakelt u Azure Defender in. Er is een gratis proefversie beschikbaar. Als u een upgrade wilt uitvoeren, selecteert u de prijscategorie in het [beveiligingsbeleid](tutorial-security-policy.md). Zie [Prijsinformatie over Azure Security Center](security-center-pricing.md) voor meer informatie.
 
 ## <a name="what-are-security-alerts"></a>Wat zijn beveiligingswaarschuwingen?
 Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. In Security Center wordt een lijst met beveiligingswaarschuwingen met prioriteiten weergegeven samen met de informatie die u nodig hebt om snel onderzoek te doen naar het probleem en aanbevelingen voor het herstellen van een aanval.
@@ -38,7 +38,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 ## <a name="manage-your-security-alerts"></a>Beveiligings waarschuwingen beheren
 
-1. Ga in het Security Center-dash board naar de tegel **bedreigings beveiliging** om de waarschuwingen weer te geven en te bekijken.
+1. Ga in het Security Center-dash board naar de tegel  **bedreigings beveiliging** om de waarschuwingen weer te geven en te bekijken.
 
     ![De tegel Beveiligingswaarschuwingen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
@@ -64,7 +64,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
      
     ![Suggesties voor wat u moet doen over beveiligings waarschuwingen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    In het rechterdeel venster vindt u ook het tabblad **actie ondernemen** . Gebruik dit tabblad om verdere acties te ondernemen met betrekking tot de beveiligings waarschuwing. Acties zoals:
+    In het rechterdeel venster vindt u ook het tabblad **actie ondernemen** . Gebruik dit tabblad om verdere acties uit te voeren met betrekking tot de beveiligings waarschuwing. Acties zoals:
     - *De dreiging verminderen* : Hiermee worden hand matige herstel stappen voor deze beveiligings waarschuwing geboden
     - *Toekomstige aanvallen voor komen* : bevat aanbevelingen voor beveiliging om de kwets baarheid te verminderen, de beveiliging postuur te verbeteren en toekomstige aanvallen te voor komen
     - *Automatische reactie activeren* : biedt de mogelijkheid om een logische app te activeren als reactie op deze beveiligings waarschuwing
@@ -75,7 +75,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 In dit document hebt u geleerd hoe u beveiligings waarschuwingen kunt weer geven. Raadpleeg de volgende pagina's voor gerelateerde materialen:
 
