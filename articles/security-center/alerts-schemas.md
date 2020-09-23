@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901344"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
 
-Gebruikers van de Standard-laag van Azure Security Center ontvangen beveiligings waarschuwingen wanneer Security Center bedreigingen voor hun resources detecteert.
+Als Azure Defender is ingeschakeld voor uw abonnement, ontvangt u beveiligings waarschuwingen wanneer Security Center bedreigingen voor hun resources detecteert.
 
 U kunt deze beveiligings waarschuwingen bekijken op de pagina's van Azure Security Center **Threat Protection** of via externe hulpprogram ma's, zoals:
 
@@ -140,7 +140,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
 
-|Veld|Beschrijving|
+|Veld|Description|
 |----|----|
 |**detailhandelkanalen**|Constante, ' bewerking '|
 |**correlationId**|De meldings-ID Azure Security Center|
@@ -157,7 +157,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 |**resourceProviderName**|De subvelden value en localizedValue zijn constant-"micro soft. Security"|
 |**Resource**|De subvelden value en localizedValue zijn constant-"micro soft. Security/locations/Alerts"|
 |**resourceId**|De volledig gekwalificeerde Azure-Resource-ID|
-|**hebben**|De subvelden value en localizedValue zijn constant-"actief"|
+|**status**|De subvelden value en localizedValue zijn constant-"actief"|
 |**subStatus**|De subvelden value en localizedValue zijn leeg|
 |**submissionTimestamp**|De UTC-tijds tempel van het verzenden van gebeurtenissen naar het activiteiten logboek|
 |**Abonnements**|De abonnements-ID van de aangetaste resource|

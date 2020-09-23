@@ -1,25 +1,22 @@
 ---
-title: Een verbinding met een Cosmos DB account instellen met behulp van een beheerde identiteit (preview)
+title: Een verbinding met een Cosmos DB account instellen met behulp van een beheerde identiteit
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het instellen van een verbinding met een Indexeer functie met een Cosmos DB account met behulp van een beheerde identiteit (preview)
+description: Meer informatie over het instellen van een verbinding met een Indexeer functie met een Cosmos DB account met behulp van een beheerde identiteit
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936653"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971641"
 ---
-# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit (preview)
-
-> [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
+# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure Cosmos DB-Data Base met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
@@ -57,7 +54,7 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
-De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van hoe u een gegevens bron maakt om gegevens te indexeren van Cosmos DB met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van hoe u een gegevens bron maakt om gegevens te indexeren van Cosmos DB met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
 Wanneer beheerde identiteiten worden gebruikt voor verificatie, bevat de **referenties** geen account sleutel.
 

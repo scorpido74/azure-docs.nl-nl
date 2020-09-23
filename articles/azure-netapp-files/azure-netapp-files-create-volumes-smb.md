@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988327"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -74,15 +74,17 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
     
-<!--
-* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+* U kunt AES-versleuteling inschakelen voor een SMB-volume door het selectie vakje **AES-versleuteling** in het venster [lid worden Active Directory](#create-an-active-directory-connection) te controleren. Azure NetApp Files ondersteunt DES-, Kerberos AES 128-en Kerberos AES 256-versleutelings typen (van het minst veilig tot het veiligst). Als u AES-versleuteling inschakelt, moeten de gebruikers referenties die worden gebruikt om lid te worden van Active Directory de hoogste overeenkomende account optie ingeschakeld hebben die overeenkomt met de mogelijkheden die zijn ingeschakeld voor uw Active Directory.    
 
-    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+    Als uw Active Directory bijvoorbeeld alleen de functie AES-128 heeft, moet u de optie AES-128-account inschakelen voor de gebruikers referenties. Als uw Active Directory de functie AES-256 heeft, moet u de optie AES-256-account inschakelen (deze ondersteunt ook AES-128). Als uw Active Directory geen Kerberos-coderings functie heeft, gebruikt Azure NetApp Files standaard DES.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
+    U kunt de account opties inschakelen in de eigenschappen van de Active Directory gebruikers en computers micro soft Management Console (MMC):   
 
-    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
--->
+    ![MMC-Active Directory gebruikers en computers](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
+* Azure NetApp Files ondersteunt [LDAP-ondertekening](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), waarmee het LDAP-verkeer tussen de Azure NetApp files-service en de doel [Active Directory domein controllers](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)veilig kan worden verzonden. Als u de richt lijnen van micro soft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) voor LDAP-ondertekening volgt, moet u de functie voor LDAP-ondertekening inschakelen in azure NetApp files door het selectie vakje **LDAP** in het venster [lid worden van Active Directory](#create-an-active-directory-connection) in te scha kelen. 
+
+    Configuratie van [LDAP-kanaal binding](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) heeft geen invloed op de Azure NetApp files-service. 
 
 Zie Azure NetApp Files [SMB Veelgestelde vragen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) over extra AD-informatie. 
 
@@ -160,8 +162,56 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
 
         Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is het pad voor de organisatie-eenheid `OU=AADDC Computers` Wanneer u Active Directory configureert voor uw NetApp-account.
 
+    ![Active Directory toevoegen](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+
+    * **AES-versleuteling**   
+        Schakel dit selectie vakje in om AES-versleuteling in te scha kelen voor een SMB-volume. Bekijk de [vereisten voor Active Directory verbindingen](#requirements-for-active-directory-connections) voor vereisten. 
+
+        ![AES-versleuteling Active Directory](../media/azure-netapp-files/active-directory-aes-encryption.png)
+
+        De **AES-versleutelings** functie is momenteel beschikbaar als preview-versie. Als dit de eerste keer is dat u deze functie gebruikt, moet u de functie registreren voordat u deze gebruikt: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+
+        Controleer de status van de functie registratie: 
+
+        > [!NOTE]
+        > Het **RegistrationState** kan `Registering` tot 60 minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+        
+        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+
+    * **LDAP-ondertekening**   
+        Schakel dit selectie vakje in om LDAP-ondertekening in te scha kelen. Deze functionaliteit maakt beveiligde LDAP-zoek acties mogelijk tussen de Azure NetApp Files-service en de door de gebruiker opgegeven [Active Directory Domain Services domein controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). Zie ADV190023 voor meer informatie. [| Micro soft-richt lijnen voor het inschakelen van LDAP-kanaal binding en LDAP-ondertekening](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+
+        ![LDAP-ondertekening Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
+
+        De **LDAP-handtekening** functie is momenteel beschikbaar als preview-versie. Als dit de eerste keer is dat u deze functie gebruikt, moet u de functie registreren voordat u deze gebruikt: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+
+        Controleer de status van de functie registratie: 
+
+        > [!NOTE]
+        > Het **RegistrationState** kan `Registering` tot 60 minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+        
+        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+
      * **Back-upbeleid gebruikers**  
         U kunt aanvullende accounts toevoegen waarvoor verhoogde bevoegdheden zijn vereist voor het computer account dat is gemaakt voor gebruik met Azure NetApp Files. De opgegeven accounts kunnen de NTFS-machtigingen op bestands-of mapniveau wijzigen. U kunt bijvoorbeeld een niet-privileged service account opgeven dat wordt gebruikt voor het migreren van gegevens naar een SMB-bestands share in Azure NetApp Files.  
+
+        ![Active Directory gebruikers van het back-upbeleid](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
         De functie **gebruikers van back-upbeleid** is momenteel beschikbaar als preview-versie. Als dit de eerste keer is dat u deze functie gebruikt, moet u de functie registreren voordat u deze gebruikt: 
 
@@ -178,11 +228,11 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        U kunt ook Azure CLI-opdrachten [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) gebruiken [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) om de functie te registreren en de registratie status weer te geven. 
+        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
-    ![Active Directory toevoegen](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+        ![Active Directory referenties](../media/azure-netapp-files/active-directory-credentials.png)
 
 3. Klik op **Deelnemen**.  
 

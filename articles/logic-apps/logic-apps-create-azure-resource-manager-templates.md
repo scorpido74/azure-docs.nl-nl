@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066070"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971783"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps
 
@@ -60,14 +60,14 @@ Deze voor beelden laten zien hoe u logische apps maakt en implementeert met behu
 
 1. Voor de eenvoudigste manier om de LogicAppTemplate-module te installeren vanaf de [PowerShell Gallery](https://www.powershellgallery.com/packages/LogicAppTemplate), voert u deze opdracht uit:
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    Als u wilt bijwerken naar de nieuwste versie, voert u deze opdracht uit:
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 Als u hand matig wilt installeren, volgt u de stappen in GitHub voor [Logic app-sjabloon Maker](https://github.com/jeffhollan/LogicAppTemplateCreator).
@@ -80,28 +80,43 @@ Wanneer u de `Get-LogicAppTemplate` opdracht uitvoert met dit hulp programma, wo
 
 ### <a name="generate-template-with-powershell"></a>Sjabloon genereren met Power shell
 
-Als u uw sjabloon wilt genereren na de installatie van de LogicAppTemplate-module en [Azure cli](/cli/azure/?view=azure-cli-latest), voert u deze Power shell-opdracht uit:
+Als u uw sjabloon wilt genereren na de installatie van de LogicAppTemplate-module en [Azure cli](/cli/azure/), voert u deze Power shell-opdracht uit:
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Als u de aanbeveling voor pijpleidingen in een token van het [Azure Resource Manager-client hulpprogramma](https://github.com/projectkudu/ARMClient)wilt volgen, voert u deze opdracht uit in plaats van `$SubscriptionId` uw Azure-abonnements-id:
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Na extractie kunt u een parameter bestand maken op basis van uw sjabloon door de volgende opdracht uit te voeren:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Voer de volgende opdracht uit voor extractie met Azure Key Vault referenties (alleen statisch):
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | Parameters | Vereist | Beschrijving |

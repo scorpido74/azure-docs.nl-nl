@@ -8,20 +8,20 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772895"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987995"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Veelgestelde vragen over Azure vertrouwelijk computing
 
-In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over het uitvoeren van [werk belastingen voor vertrouwelijke computers op Azure](overview.md).
+In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over het uitvoeren van [werk belastingen op Azure virtual machines](overview.md).
 
 Als uw Azure-probleem niet in dit artikel wordt behandeld, gaat u naar de Azure-forums op [MSDN en stack overflow](https://azure.microsoft.com/support/forums/). U kunt uw probleem in deze forums plaatsen of een bericht plaatsen [ @AzureSupport op Twitter](https://twitter.com/AzureSupport). U kunt ook een ondersteunings aanvraag voor Azure indienen. Als u een ondersteunings aanvraag wilt indienen, selecteert u op de [pagina ondersteuning voor Azure](https://azure.microsoft.com/support/options/)de optie ondersteuning ophalen.
 
-## <a name="confidential-computing-virtual-machines"></a>Virtual Machines voor vertrouwelijke computing<a id="vm-faq"></a>
+## <a name="confidential-computing-virtual-machines"></a>Virtual Machines voor vertrouwelijke computing <a id="vm-faq"></a>
 
 **Hoe kan ik virtuele machines uit de DCsv2-serie implementeren op Azure?**
 
@@ -51,7 +51,7 @@ Zorg ervoor dat u een [beschik bare regio](https://azure.microsoft.com/global-in
 
 **Wat is het verschil tussen Vm's uit de DCsv2-serie en DC-serie?**
 
-Vm's uit de DC-serie worden uitgevoerd op oudere 6-core Intel-processors met Intel SGX en hebben minder geheugen, minder enclave-pagina cache geheugen (EPC) en zijn alleen beschikbaar in twee regio's (VS Oost en Europa-West in Standard_DC2s en Standard_DC4s grootten). Er zijn geen plannen om deze Vm's algemeen beschikbaar te maken en ze worden niet aanbevolen voor productie gebruik. Als u deze Vm's wilt implementeren, gebruikt u het Marketplace-exemplaar van de [vertrouwelijk Compute DC-serie [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
+Vm's uit de DC-serie worden uitgevoerd op oudere 6-core Intel-processors met Intel SGX en hebben minder geheugen, minder enclave-pagina cache geheugen (EPC) en zijn alleen beschikbaar in twee regio's (VS Oost en Europa-West in Standard_DC2s en Standard_DC4s grootten). Er zijn geen plannen om deze Vm's algemeen beschikbaar te maken en ze worden niet aanbevolen voor productie gebruik. Als u deze Vm's wilt implementeren, gebruikt u het Marketplace-exemplaar van de  [vertrouwelijk Compute DC-serie [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
 
 **Zijn virtuele DCsv2-machines wereld wijd beschikbaar?**
 

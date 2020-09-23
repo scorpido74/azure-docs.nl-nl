@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 904355b28af93d4a277f2158b1548517118a67ba
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482779"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529414"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met twee sets verificatiereferenties automatiseren
 
@@ -80,7 +80,7 @@ Deze onderdelen en configuratie zijn vereist voor de roulatiefunctie van functie
 
 1. Selecteer de koppeling voor de Azure-sjabloonimplementatie: 
 
-   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation**.
 1. Typ in **Naam van opslagaccount** de naam van het opslagaccount met de toegangssleutels die u wilt rouleren
@@ -204,7 +204,7 @@ az storage account keys list -n akvrotationstorage
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>Meer informatie
-- Overzicht: [Key Vault bewaken met Azure Event Grid (preview-versie)](../general/event-grid-overview.md)
+- Overzicht: [Key Vault bewaken met Azure Event Grid](../general/event-grid-overview.md)
 - Procedure: [Uw eerste functie maken in de Azure-portal](../../azure-functions/functions-create-first-azure-function.md)
 - Procedure: [E-mail ontvangen wanneer een sleutelkluisgeheim verandert](../general/event-grid-logicapps.md)
-- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault (preview-versie)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)

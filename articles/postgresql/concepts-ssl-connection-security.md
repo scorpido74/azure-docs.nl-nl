@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902036"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-connectiviteit configureren in Azure Database for PostgreSQL-één server
 
@@ -33,7 +33,7 @@ U kunt eventueel het afdwingen van TLS-connectiviteit uitschakelen. Microsoft Az
 
 Ga naar uw Azure Database for PostgreSQL-server en klik op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen. Klik vervolgens op **Opslaan**.
 
-![Verbindings beveiliging-TLS/SSL afdwingen uitschakelen](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+:::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="Verbindings beveiliging-TLS/SSL afdwingen uitschakelen":::
 
 U kunt de instelling bevestigen door de pagina **overzicht** te bekijken om de **SSL-afdwingings status** indicator te bekijken.
 

@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971632"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Incrementele verrijking en caching in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versies 2019-05-06-preview en 2020-06-30-preview](search-api-preview.md) bieden deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. 
+> [Rest API Preview-versies](search-api-preview.md) bieden deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
 *Incrementele verrijking* is een functie die gericht is op [vaardig heden](cognitive-search-working-with-skillsets.md). Het maakt gebruik van Azure Storage om de verwerkings uitvoer die door een verrijkings pijplijn wordt gegenereerd, op te slaan voor hergebruik in toekomstige Indexeer functies. Waar mogelijk gebruikt de Indexeer functie een in cache opgeslagen uitvoer die nog geldig is. 
 
@@ -166,7 +167,7 @@ REST API versie `2020-06-30-Preview` voorziet in incrementele verrijking via ext
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Incrementele verrijking is een krachtige functie waarmee wijzigingen in vaardig heden en AI-verrijking worden uitgebreid. AIncremental-verrijking maakt het hergebruik van bestaande verwerkte inhoud mogelijk tijdens het herhalen van het ontwerp van de vaardig heden.
+Incrementele verrijking is een krachtige functie waarmee wijzigingen in vaardig heden en AI-verrijking worden uitgebreid. Met incrementele verrijking kan bestaande verwerkte inhoud opnieuw worden gebruikt tijdens het herhalen van het ontwerp van vaardig heden.
 
 Als volgende stap moet u caching inschakelen voor een bestaande Indexeer functie of een cache toevoegen bij het definiëren van een nieuwe Indexeer functie.
 

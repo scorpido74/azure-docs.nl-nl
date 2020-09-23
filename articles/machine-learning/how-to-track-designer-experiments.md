@@ -1,5 +1,5 @@
 ---
-title: Metrische gegevens vastleggen in de ontwerp functie (preview-versie)
+title: Metrische gegevens in de ontwerp functie vastleggen
 titleSuffix: Azure Machine Learning
 description: Bewaak uw experimenten voor Azure ML Designer. Schakel logboek registratie in met de script module python uitvoeren en Bekijk de geregistreerde resultaten in de Studio.
 services: machine-learning
@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885969"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Logboek registratie inschakelen in Azure Machine Learning Designer (preview)-pijp lijnen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Logboek registratie inschakelen in Azure Machine Learning Designer-pijp lijnen
+
 
 In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan Designer-pijp lijnen. U leert ook hoe u deze logboeken kunt weer geven met behulp van de Azure Machine Learning Studio-webportal.
 
@@ -78,5 +78,6 @@ Nadat de uitvoering van de pijp lijn is voltooid, kunt u de *Mean_Absolute_Error
 
 In dit artikel hebt u geleerd hoe u Logboeken in de ontwerp functie kunt gebruiken. Zie voor de volgende stappen deze gerelateerde artikelen:
 
-* Meer informatie over het oplossen van problemen met Designer-pijp lijnen vindt u in [Debug & Troubleshooting ml-pijp lijnen oplossen](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
+
+* Meer informatie over het oplossen van problemen met Designer-pijp lijnen vindt u in [Debug & Troubleshooting ml-pijp lijnen oplossen](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Meer informatie over het gebruik van de python-SDK voor het vastleggen van metrische gegevens in de ontwikkel ervaring van de SDK raadpleegt u [logboek registratie inschakelen in azure ml-trainings uitvoeringen](how-to-track-experiments.md).

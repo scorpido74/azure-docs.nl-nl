@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987575"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -268,7 +268,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="schedule-a-runbook-in-the-azure-portal"></a>Een runbook plannen in de Azure Portal
+## <a name="schedule-a-runbook-in-the-azure-portal"></a>Een runbook inplannen in Azure Portal
 
 Als uw runbook is gepubliceerd, kunt u het voor de bewerking plannen:
 
@@ -293,7 +293,7 @@ In de samen vatting wordt een telling en grafische weer gave van de taak status 
 
 Als u op de tegel klikt, wordt de pagina taken weer gegeven, die een overzicht bevat van alle uitgevoerde taken. Op deze pagina worden de status, de runbook-naam, de start tijd en de voltooiings tijd voor elke taak weer gegeven.
 
-![Pagina Automation-account taken](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Scherm afbeelding van de pagina taken.":::
 
 U kunt de lijst met taken filteren door **taken filteren**te selecteren. Filter op een specifiek runbook, de taak status of een keuze in de vervolg keuzelijst en geef het tijds bereik voor de zoek opdracht op.
 
@@ -301,7 +301,7 @@ U kunt de lijst met taken filteren door **taken filteren**te selecteren. Filter 
 
 U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook door dat runbook te selecteren op de pagina Runbooks in uw Automation-account en vervolgens **taken**te selecteren. Deze actie geeft de pagina taken weer. Hier kunt u klikken op een taak record om de details en de uitvoer weer te geven.
 
-![Pagina Automation-account taken](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Scherm afbeelding van de pagina taken met de knop fouten gemarkeerd.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Taak statussen ophalen met behulp van Power shell
 

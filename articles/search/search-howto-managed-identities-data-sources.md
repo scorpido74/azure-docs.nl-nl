@@ -1,25 +1,22 @@
 ---
-title: Een verbinding met een gegevens bron instellen met behulp van een beheerde identiteit (preview)
+title: Een verbinding met een gegevens bron instellen met behulp van een beheerde identiteit
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het instellen van een Indexeer functie verbinding met een gegevens bron met behulp van een beheerde identiteit (preview)
+description: Meer informatie over het instellen van een Indexeer functie verbinding met een gegevens bron met behulp van een beheerde identiteit
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971551"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit (preview)
-
-> [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit
 
 Een [Indexeer functie](search-indexer-overview.md) in azure Cognitive Search is een verkenning die een manier biedt om gegevens uit uw gegevens bron op te halen in azure Cognitive Search. Een Indexeer functie haalt een gegevens bron verbinding op van het gegevens bron object dat u maakt. Het gegevens bron object bevat gewoonlijk referenties voor de gegevens bron van het doel. Het gegevens bron object kan bijvoorbeeld een Azure Storage account sleutel bevatten als u gegevens wilt indexeren van een BLOB storage-container.
 

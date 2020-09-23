@@ -10,15 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3803b9770d3caf3f45f109b62145677a38c5bcc2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 794e2c8b436b6a6dfa736bef59eb2ad0bda83bc2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657198"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893130"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installeer & gebruik de CLI-extensie voor Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 De Azure Machine Learning CLI is een uitbrei ding van [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdracht regel interface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met Azure Machine Learning. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
 
@@ -110,9 +110,6 @@ De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren 
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
-
-    > [!TIP]
-    > Met deze opdracht maakt u een werk ruimte Basic Edition. Als u een Enter prise-werk ruimte wilt maken, gebruikt u de `--sku enterprise` Schakel optie met de `az ml workspace create` opdracht. Zie [Wat is Azure machine learning](overview-what-is-azure-ml.md#sku)voor meer informatie over Azure machine learning-edities.
 
     Zie [AZ ml Workspace Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)(Engelstalig) voor meer informatie.
 
@@ -412,7 +409,7 @@ Als u de opdracht hebt gebruikt, wordt er `az ml environment scaffold` een sjabl
 
 De volgende tabel bevat informatie over elk veld op het hoogste niveau in het JSON-bestand, het type en een beschrijving. Als een object type is gekoppeld aan een klasse uit de python-SDK, is er een losse 1:1 overeenkomst tussen elk JSON-veld en de naam van de open bare variabele in de python-klasse. In sommige gevallen kan het veld worden toegewezen aan een constructor-argument in plaats van een klassen variabele. Het veld wordt bijvoorbeeld `environmentVariables` toegewezen aan de `environment_variables` variabele in de- [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) klasse.
 
-| JSON-veld | Type | Beschrijving |
+| JSON-veld | Type | Description |
 |---|---|---|
 | `name` | `string` | De naam van de omgeving. Start de naam niet met **micro soft** of **AzureML**. |
 | `version` | `string` | De versie van de omgeving. |

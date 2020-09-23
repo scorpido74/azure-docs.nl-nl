@@ -3,12 +3,12 @@ title: Azure-toepassing Insights-processen automatiseren met behulp van Logic Ap
 description: Meer informatie over hoe u Herhaal bare processen snel kunt automatiseren door de Application Insights-connector toe te voegen aan uw logische app.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970860"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights processen automatiseren met behulp van Logic Apps
 
@@ -36,7 +36,7 @@ In deze zelf studie leert u hoe u een logische app maakt die gebruikmaakt van he
 
     ![Venster Logic app Designer](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. Typ in het vak **interval** **1** en vervolgens,**frequentie** vak, selecteer **dag**.
+1. Typ in het vak  **interval** **1** en vervolgens,**frequentie** vak, selecteer **dag**.
 
     ![Venster ' terugkeer patroon ' van Logic app Designer](./media/automate-with-logic-apps/3recurrence.png)
 
@@ -53,7 +53,7 @@ In deze zelf studie leert u hoe u een logische app maakt die gebruikmaakt van he
 
 U hebt een toepassings-ID en een API-sleutel voor uw resource nodig om deze stap te volt ooien. U kunt ze ophalen uit de Azure Portal, zoals wordt weer gegeven in het volgende diagram:
 
-![Toepassings-ID in de Azure Portal](./media/automate-with-logic-apps/5apiaccess.png)
+![Scherm afbeelding toont de pagina API-toegang in de Azure Portal met de knop API-sleutel maken geselecteerd.](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Toepassings-ID in de Azure Portal](./media/automate-with-logic-apps/6apikey.png)
 
@@ -103,7 +103,7 @@ Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytic
     
    d. Klik op de vervolg keuzelijst **nieuwe para meter toevoegen** en selecteer bijlagen en HTML.
 
-      ![Office 365 Outlook-configuratie](./media/automate-with-logic-apps/10emailbody.png)
+      ![Scherm afbeelding toont het venster een e-mail verzenden met het vak tekst gemarkeerd en het menu met dynamische inhoud met de tekst aan de rechter kant gemarkeerd.](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook-configuratie](./media/automate-with-logic-apps/11emailparameter.png)
 

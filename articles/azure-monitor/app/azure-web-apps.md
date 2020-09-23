@@ -4,12 +4,12 @@ description: Bewaking van toepassings prestaties voor Azure app Services. Grafie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933780"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979440"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -55,7 +55,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 
 2. Nadat u hebt opgegeven welke resource moet worden gebruikt, kunt u kiezen hoe Application Insights gegevens per platform voor uw toepassing moet verzamelen. ASP.NET app monitoring is standaard ingeschakeld met twee verschillende verzamelings niveaus.
 
-    ![Opties per platform kiezen](./media/azure-web-apps/choose-options-new.png)
+    ![Scherm afbeelding toont de Application Insights pagina site-extensies waarvoor nieuwe resource maken is geselecteerd.](./media/azure-web-apps/choose-options-new.png)
  
  Hieronder vindt u een overzicht van de gegevens die voor elke route worden verzameld:
         
@@ -65,7 +65,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 | Verzamelt gebruikstrends en maakt correlatie mogelijk van beschikbaarheidsresultaten tot transacties | Ja |Ja |
 | Verzamelt uitzonderingen die niet zijn verwerkt door het hostproces | Ja |Ja |
 | Verbetert de nauwkeurigheid van metrische APM-gegevens onder belasting, wanneer steekproeven worden gebruikt | Ja |Ja |
-| Correleert microservices over aanvraag-/afhankelijkheidsgrenzen | Nee (alleen APM-mogelijkheden met één instantie) |Ja |
+| Correleert microservices over aanvraag-/afhankelijkheidsgrenzen | Nee (alleen APM-mogelijkheden met één instantie) |Yes |
 
 3. Voor het configureren van instellingen zoals steek proeven, die u eerder kunt beheren via het applicationinsights.config-bestand, hebt u nu de opdracht om te communiceren met dezelfde instellingen via toepassings instellingen met een bijbehorend voor voegsel. 
 

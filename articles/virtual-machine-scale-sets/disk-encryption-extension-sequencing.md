@@ -1,6 +1,6 @@
 ---
 title: Schaal sets voor Azure Disk Encryption en Azure virtual machine scaleset
-description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure schijf versleuteling voor virtuele Linux IaaS-machines.
+description: In dit artikel vindt u informatie over het inschakelen van Microsoft Azure schijf versleuteling voor virtuele Linux IaaS-machines.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117254"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988022"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption gebruiken met extensiereeksen voor virtuele-machineschaalsets
 

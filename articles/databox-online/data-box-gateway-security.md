@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195877"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893869"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Beveiligings-en gegevens beveiliging Azure Data Box Gateway
 
@@ -38,7 +38,7 @@ De Data Box Gateway-Service is een beheer service die wordt gehost in Azure. De 
 
 Het Data Box Gateway apparaat is een virtueel apparaat dat is ingericht in de Hyper Visor van een on-premises systeem dat u opgeeft. Het apparaat helpt bij het verzenden van gegevens naar Azure. Uw apparaat:
 
-- Er is een activerings sleutel nodig om toegang te krijgen tot de Azure Stack EDGE/Data Box Gateway-Service.
+- Er is een activerings sleutel nodig om toegang te krijgen tot de Azure Stack Edge Pro/Data Box Gateway-Service.
 - Is te allen tijde beveiligd door een apparaatwachtwoord.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->

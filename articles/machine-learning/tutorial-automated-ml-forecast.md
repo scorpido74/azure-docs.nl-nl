@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896690"
+ms.locfileid: "90979083"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
 
@@ -236,7 +236,7 @@ Raadpleeg dit artikel voor stappen voor het maken van een door Power BI onderste
 + Meer informatie over [geautomatiseerde machine learning](concept-automated-ml.md).
 + Raadpleeg het artikel [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md#classification) voor meer informatie over metrische classificatiegegevens en grafieken.
 + Meer informatie over [featurization](how-to-configure-auto-features.md#featurization).
-+ Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile).
++ Meer informatie over [gegevensprofilering](how-to-connect-data-ui.md#profile).
 
 >[!NOTE]
 > Deze bikeshare-gegevensset is gewijzigd voor deze zelfstudie. Deze gegevensset is beschikbaar gemaakt als onderdeel van een [Kaggle-wedstrijd](https://www.kaggle.com/c/bike-sharing-demand/data) en was oorspronkelijk beschikbaar via [Capital Bikeshare](https://www.capitalbikeshare.com/system-data). Hij kan ook worden gevonden in de [UCI Machine Learning-database](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>

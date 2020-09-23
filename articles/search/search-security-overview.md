@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979612"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -60,7 +60,7 @@ In azure Cognitive Search is dubbele versleuteling een uitbrei ding van CMK. Het
 
 Dubbele versleuteling is momenteel beschikbaar op nieuwe services die na 1 augustus zijn gemaakt in deze regio's:
 
-+ US - west 2
++ West US 2
 + VS - oost
 + VS - zuid-centraal
 + VS (overheid) - Virginia
@@ -94,7 +94,7 @@ Als u de toegang tot uw zoek service verder wilt beheren, kunt u binnenkomende f
 
 U kunt de portal gebruiken om [inkomende toegang te configureren](service-configure-firewall.md).
 
-U kunt ook de REST Api's voor beheer gebruiken. Met de para meter [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) van API-versie 2020-03-13 kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
+U kunt ook de REST Api's voor beheer gebruiken. Met ingang van API-versie 2020-03-13, met de para meter [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) , kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Privé-eind punt (geen Internet verkeer)
 
@@ -120,10 +120,10 @@ Hoe een gebruiker toegang heeft tot een index en andere objecten, wordt bepaald 
 
 Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, kunt u beveiligings filters voor uw query's maken en documenten retour neren die zijn gekoppeld aan een bepaalde beveiligings identiteit. In plaats van vooraf gedefinieerde rollen en roltoewijzingen, wordt toegangs beheer op basis van een id geïmplementeerd als een *filter* waarmee Zoek resultaten van documenten en inhoud worden verkleind op basis van identiteiten. In de volgende tabel worden twee benaderingen beschreven waarmee Zoek resultaten van niet-geautoriseerde inhoud worden bijgesneden.
 
-| Methode | Beschrijving |
+| Methode | Description |
 |----------|-------------|
 |[Beveiligings beperking op basis van identiteits filters](search-security-trimming-for-azure-search.md)  | Documenteert de basis werk stroom voor het implementeren van toegangs beheer voor gebruikers identiteit. Het onderwerp bevat het toevoegen van beveiligings-id's aan een index en legt vervolgens een overzicht van de filtering uit voor dat veld om de resultaten van verboden inhoud te kunnen knippen. |
-|[Beveiligings beperking op basis van Azure Active Directory-identiteiten](search-security-trimming-for-azure-search-with-aad.md)  | In dit artikel wordt het vorige artikel uitgebreid met stappen voor het ophalen van identiteiten van Azure Active Directory (AAD), een van de [gratis services](https://azure.microsoft.com/free/) in het Azure-Cloud platform. |
+|[Beveiligings beperking op basis van Azure Active Directory-identiteiten](search-security-trimming-for-azure-search-with-aad.md)  | In dit artikel wordt het vorige artikel uitgebreid met stappen voor het ophalen van identiteiten van Azure Active Directory (Azure AD), een van de [gratis services](https://azure.microsoft.com/free/) in het Azure-Cloud platform. |
 
 ## <a name="administrative-rights"></a>Beheer rechten
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707217"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979501"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Algemene scenario's in het beheer van rechten van Azure AD
 
@@ -119,24 +119,24 @@ Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie k
 1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. Open het toegangs pakket
 1. [Open de levenscyclus instellingen](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [De verloop instellingen bijwerken](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [De verloop instellingen bijwerken](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Access Package Manager: update hoe de toegang wordt goedgekeurd voor een project
 
 1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [De goedkeurings instellingen bijwerken](entitlement-management-access-package-request-policy.md#approval)
+1. [Een bestaande beleids regel voor aanvraag instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [De goedkeurings instellingen bijwerken](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>Toegangs pakket beheer: de personen voor een project bijwerken
 
 1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [Gebruikers verwijderen die geen toegang meer nodig hebben](entitlement-management-access-package-assignments.md)
-1. [Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Een bestaande beleids regel voor aanvraag instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Gebruikers toevoegen die toegang nodig hebben](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Access Package Manager: specifieke gebruikers rechtstreeks toewijzen aan een toegangs pakket
 
-1. [Als gebruikers verschillende levenscyclus instellingen nodig hebben, voegt u een nieuw beleid toe aan het toegangs pakket](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Als gebruikers verschillende levenscyclus instellingen nodig hebben, voegt u een nieuw beleid toe aan het toegangs pakket](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Rechtstreeks toewijzen van specifieke gebruikers aan het toegangs pakket](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>Toewijzingen en rapporten

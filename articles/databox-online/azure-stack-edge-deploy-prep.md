@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het voorbereiden van Azure-portal, datacenteromgeving om Azure Stack Edge te implementeren | Microsoft Docs
-description: De eerste zelfstudie over het implementeren van Azure Stack Edge omvat het voorbereiden van de Azure-portal.
+title: Zelfstudie voor het voorbereiden van de Azure-portal, datacenteromgeving om Azure Stack Edge Pro te implementeren | Microsoft Docs
+description: De eerste zelfstudie over het implementeren van Azure Stack Edge Pro omvat het voorbereiden van de Azure-portal.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894133"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge Pro  
 
-Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie die noodzakelijk zijn voor het voltooien van de implementatie van Azure Stack Edge. In deze zelfstudie wordt beschreven hoe u de Azure-portal voorbereidt voor de implementatie van een Azure Stack Edge-resource.
+Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie die noodzakelijk zijn voor het voltooien van de implementatie van Azure Stack Edge Pro. In deze zelfstudie wordt beschreven hoe u de Azure-portal voorbereidt voor de implementatie van een Azure Stack Edge-resource.
 
 U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. Het voorbereiden van de portal duurt minder dan 10 minuten.
 
@@ -33,21 +33,21 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="get-started"></a>Aan de slag
 
-Raadpleeg de volgende zelfstudies in de voorgeschreven volgorde voor het implementeren van Azure Stack Edge.
+Raadpleeg de volgende zelfstudies in de voorgeschreven volgorde voor het implementeren van Azure Stack Edge Pro.
 
 | **#** | **In deze stap** | **Gebruikt u deze documenten** |
 | --- | --- | --- | 
-| 1. |**[De Azure-portal voorbereiden voor Azure Stack Edge](azure-stack-edge-deploy-prep.md)** |Maak en configureer uw Azure Stack Edge-resource voordat u een fysiek Azure Stack Edge-apparaat installeert. |
-| 2. |**[Azure Stack Edge installeren](azure-stack-edge-deploy-install.md)**|Het fysieke Azure Stack Edge-apparaat uitpakken, plaatsen en aansluiten.  |
-| 3. |**[Azure Stack Edge verbinden, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md)** |Maak verbinding met de lokale webinterface, voltooi het instellen van het apparaat en activeer het. Het apparaat is klaar om er SMB- of NFS-shares op in te stellen.  |
-| 4. |**[Gegevens overdragen met Azure Stack Edge](azure-stack-edge-deploy-add-shares.md)** |Voeg shares toe en maak verbinding met shares via SMB of NFS. |
-| 5. |**[Gegevens transformeren met Azure Stack Edge](azure-stack-edge-deploy-configure-compute.md)** |Configureer de rekenmodules op het apparaat om gegevens te transformeren wanneer ze naar Azure worden overgezet. |
+| 1. |**[De Azure-portal voorbereiden voor Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)** |Maak en configureer uw Azure Stack Edge-resource voordat u een fysiek Azure Stack Edge-apparaat installeert. |
+| 2. |**[Azure Stack Edge Pro installeren](azure-stack-edge-deploy-install.md)**|Pak het fysieke Azure Stack Edge Pro-apparaat uit, plaats het en sluit het aan.  |
+| 3. |**[Azure Stack Edge Pro verbinden, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md)** |Maak verbinding met de lokale webinterface, voltooi het instellen van het apparaat en activeer het. Het apparaat is klaar om er SMB- of NFS-shares op in te stellen.  |
+| 4. |**[Gegevens overdragen met Azure Stack Edge Pro](azure-stack-edge-deploy-add-shares.md)** |Voeg shares toe en maak verbinding met shares via SMB of NFS. |
+| 5. |**[Gegevens transformeren met Azure Stack Edge Pro](azure-stack-edge-deploy-configure-compute.md)** |Configureer de rekenmodules op het apparaat om gegevens te transformeren wanneer ze naar Azure worden overgezet. |
 
 U kunt nu Azure Portal gaan instellen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Hier volgen de configuratievereisten voor uw Azure Stack Edge-resource, uw Azure Stack Edge-apparaat en het datacenternetwerk.
+Hier volgen de configuratievereisten voor uw Azure Stack Edge-resource, uw Azure Stack Edge Pro-apparaat en het datacenternetwerk.
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Voor de Azure Stack Edge-resource
 
@@ -66,7 +66,7 @@ Zorg voordat u begint voor het volgende:
 * U hebt een Microsoft Azure Storage-account met toegangsreferenties.
 * U bent niet geblokkeerd door een Azure-beleid dat door uw systeembeheerder is ingesteld. Zie voor meer informatie over beleid [Quickstart: Een beleidstoewijzing maken om niet-conforme resources te identificeren](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
-### <a name="for-the-azure-stack-edge-device"></a>Voor het Azure Stack Edge-apparaat
+### <a name="for-the-azure-stack-edge-pro-device"></a>Voor het Azure Stack Edge Pro-apparaat
 
 Voordat u een fysiek apparaat implementeert, controleert u of:
 
@@ -80,9 +80,9 @@ Voordat u een fysiek apparaat implementeert, controleert u of:
 
 Zorg voordat u begint voor het volgende:
 
-* Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge-apparaat. Zie [Systeemvereisten voor Azure Stack Edge](azure-stack-edge-system-requirements.md) voor meer informatie.
+* Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge Pro-apparaat. Zie [Systeemvereisten voor Azure Stack Edge Pro](azure-stack-edge-system-requirements.md) voor meer informatie.
 
-* Voor normale bedrijfsomstandigheden van uw Azure Stack Edge hebt u het volgende nodig:
+* Voor normale bedrijfsomstandigheden van uw Azure Stack Edge Pro hebt u het volgende nodig:
 
   * Minimaal 10 Mbps downloadbandbreedte om ervoor te zorgen dat het apparaat bijgewerkt blijft.
   * Minimaal 20 Mbps toegewezen upload- en downloadbandbreedte voor het overdragen van bestanden.
@@ -99,11 +99,11 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
     - Of de Azure Government Portal op deze URL: [https://portal.azure.us](https://portal.azure.us). Ga naar [Verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) voor meer informatie.
 
 2. Selecteer **En een resource maken** in het linkerdeelvenster. Zoek en selecteer **Azure Stack Edge / Data Box Gateway**. Selecteer **Maken**.
-3. Kies het abonnement dat u wilt gebruiken voor het Azure Stack Edge-apparaat. Selecteer de regio waar u de Azure Stack Edge-resource wilt implementeren. Zie [Azure-producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) voor een lijst met alle regio's waar de Azure Stack Edge-resource beschikbaar is.
+3. Kies het abonnement dat u wilt gebruiken voor het Azure Stack Edge Pro-apparaat. Selecteer de regio waar u de Azure Stack Edge-resource wilt implementeren. Zie [Azure-producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) voor een lijst met alle regio's waar de Azure Stack Edge-resource beschikbaar is.
 
     Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. In de regio worden alleen de metagegevens voor apparaatbeheer opgeslagen. De werkelijke gegevens kunnen worden opgeslagen in elk opslagaccount.
     
-    Selecteer bij **Maken** bij de optie **Azure Stack Edge**.
+    Selecteer bij **Maken** bij de optie **Azure Stack Edge Pro**.
 
     ![Azure Stack Edge-service zoeken](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -125,7 +125,7 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
 
 5. Selecteer **Volgende: Verzendadres**.
 
-    - Als u al een apparaat hebt, selecteert u de keuzelijst met invoervak voor **Ik heb een Azure Stack Edge-apparaat**.
+    - Als u al een apparaat hebt, selecteert u de keuzelijst met invoervak voor **Ik heb een Azure Stack Edge Pro-apparaat**.
     - Als dit het nieuwe apparaat is dat u bestelt, voert u de naam van de contactpersoon, het bedrijf, het adres voor het verzenden van het apparaat en contactgegevens in.
 
     ![Verzendadres voor nieuw apparaat](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -144,11 +144,11 @@ Het maken van de resource duurt enkele minuten. Nadat de resource succesvol is g
 
 Nadat de bestelling is geplaatst, controleert Microsoft de bestelling en neemt contact met u op (via e-mail) met verzendgegevens.
 
-![Melding voor beoordeling van de volgorde van de Azure Stack Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+![Melding voor beoordeling van de volgorde van de Azure Stack Edge Pro](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>De activeringssleutel ophalen
 
-Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel nodig. Deze sleutel wordt gebruikt om uw Azure Stack Edge-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
+Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel nodig. Deze sleutel wordt gebruikt om uw Azure Stack Edge Pro-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
 
 1. Selecteer de resource die u hebt gemaakt. Selecteer **Overzicht** en selecteer vervolgens **Apparaatinstallatie**.
 
@@ -165,14 +165,14 @@ Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Stack Edge, zoals:
+In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Stack Edge Pro, zoals:
 
 > [!div class="checklist"]
 >
 > * Een nieuwe resource maken
 > * De activeringssleutel ophalen
 
-Ga naar de volgende zelfstudie om te lezen hoe u Azure Stack Edge installeert.
+Ga naar de volgende zelfstudie om te lezen hoe u Azure Stack Edge Pro installeert.
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge installeren](./azure-stack-edge-deploy-install.md)
+> [Azure Stack Edge Pro installeren](./azure-stack-edge-deploy-install.md)

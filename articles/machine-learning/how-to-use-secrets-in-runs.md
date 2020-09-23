@@ -11,21 +11,21 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c7568b0914b5e60d1a47971424f1f04f41745da
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646962"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902324"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Verificatie referentie geheimen gebruiken in Azure Machine Learning training-uitvoeringen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u geheimen kunt gebruiken in de training die veilig worden uitgevoerd. Verificatie-informatie, zoals uw gebruikers naam en wacht woord, zijn geheimen. Als u bijvoorbeeld verbinding maakt met een externe data base om trainings gegevens op te vragen, moet u uw gebruikers naam en wacht woord door geven aan de context voor externe uitvoering. Het coderen van dergelijke waarden in trainings scripts is onveilig, omdat het geheim zou worden weer gegeven. 
 
 In plaats daarvan bevat uw Azure Machine Learning-werk ruimte een gekoppelde resource met de naam [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Gebruik deze Key Vault om geheimen door te geven aan externe uitvoering van een set Api's in de Azure Machine Learning python SDK.
 
-De basis stroom voor het gebruik van geheimen is:
+De standaard stroom voor het gebruik van geheimen is:
  1. Meld u op de lokale computer aan bij Azure en maak verbinding met uw werk ruimte.
  2. Stel op lokale computer een geheim in de werk ruimte Key Vault in.
  3. Een externe uitvoering verzenden.

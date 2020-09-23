@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971614"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Caching configureren voor incrementele verrijking in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versies 2019-05-06-preview en 2020-06-30-preview](search-api-preview.md) bieden deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. 
+> [Rest API Preview-versies](search-api-preview.md) bieden deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
 In dit artikel wordt beschreven hoe u caching toevoegt aan een verrijkings pijplijn, zodat u de stappen kunt aanpassen zonder dat elke keer opnieuw moet worden opgebouwd. Een vaardig heden is standaard stateless en het wijzigen van een deel van de samen stelling vereist een volledige herinstallatie van de Indexeer functie. Met incrementele verrijking kan de Indexeer functie bepalen welke delen van de document structuur moeten worden vernieuwd op basis van wijzigingen die zijn gedetecteerd in de vaardig heden of indexer definities. Bestaande verwerkte uitvoer blijft behouden en kan waar mogelijk opnieuw worden gebruikt. 
 

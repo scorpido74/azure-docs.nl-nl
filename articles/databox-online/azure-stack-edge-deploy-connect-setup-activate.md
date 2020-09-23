@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor verbinding maken met, configureren en activeren van Azure Stack Edge-apparaat in Azure Portal | Microsoft Docs
-description: In de zelfstudie voor het implementeren van Azure Stack Edge krijgt u de instructie om uw fysieke apparaat te verbinden, in te stellen en te activeren.
+title: Zelfstudie voor verbinding maken met, configureren en activeren van Azure Stack Edge Pro-apparaat in Azure Portal | Microsoft Docs
+description: In de zelfstudie voor het implementeren van Azure Stack Edge Pro krijgt u instructie om uw fysieke apparaat te verbinden, in te stellen en te activeren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894258"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Zelfstudie: Azure Stack Edge verbinden, instellen en activeren 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Zelfstudie: Azure Stack Edge Pro verbinden, instellen en activeren 
 
-In deze zelfstudie wordt beschreven hoe u met behulp van de lokale webinterface verbinding kunt maken met uw Azure Stack Edge-apparaat, hoe u het apparaat instelt en activeert.
+In deze zelfstudie wordt beschreven hoe u met behulp van de lokale webinterface verbinding kunt maken met uw Azure Stack Edge Pro-apparaat, hoe u het apparaat instelt en activeert.
 
 Het installatie- en activeringsproces kan ongeveer 20 minuten duren.
 
@@ -31,14 +31,14 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg dat aan deze voorwaarde wordt voldaan voordat u uw Azure Stack Edge-apparaat configureert en instelt:
+Zorg dat aan deze voorwaarden wordt voldaan voordat u uw Azure Stack Edge Pro-apparaat configureert en instelt:
 
-* U hebt het fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-deploy-install.md).
-* U hebt de activeringssleutel van de Azure Stack Edge-service die u hebt gemaakt om het Azure Stack Edge-apparaat te beheren. Ga voor meer informatie naar [Voorbereiding voor implementatie van Azure Stack Edge](azure-stack-edge-deploy-prep.md).
+* U hebt het fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge Pro installeren](azure-stack-edge-deploy-install.md).
+* U hebt de activeringssleutel van de Azure Stack Edge-service die u hebt gemaakt om het Azure Stack Edge Pro-apparaat te beheren. Ga voor meer informatie naar [Voorbereiding voor implementatie van Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md).
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de lokale gebruikersinterface instellen
 
-1. Configureer de Ethernet-adapter op de computer die u wilt verbinden met het Azure Stack Edge-apparaat met het statische IP-adres 192.168.100.5 en het subnet 255.255.255.0.
+1. Configureer de Ethernet-adapter op de computer die u wilt verbinden met het Azure Stack Edge Pro-apparaat met het vaste IP-adres 192.168.100.5 en het subnet 255.255.255.0.
 
 2. Verbind de computer met poort 1 op het apparaat. Gebruik de volgende afbeelding om poort 1 op uw apparaat te vinden.
 
@@ -56,7 +56,7 @@ Zorg dat aan deze voorwaarde wordt voldaan voordat u uw Azure Stack Edge-apparaa
 
 5. Meld u aan bij de webgebruikersinterface van uw apparaat. Het standaardapparaatwachtwoord is *Wachtwoord1*. 
    
-    ![Aanmeldingspagina van het Azure Stack Edge-apparaat](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Aanmeldingspagina van het Azure Stack Edge Pro-apparaat](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. Wijzig het beheerderswachtwoord voor het apparaat als u daarom wordt gevraagd.  
     Het nieuwe wachtwoord moet tussen 8 en 16 tekens bevatten. Het wachtwoord moet drie van de volgende tekens bevatten: kleine letters, hoofdletters, cijfers en speciale tekens.
@@ -96,7 +96,7 @@ Uw dashboard geeft de verschillende instellingen weer die nodig zijn voor het co
    
    a. Voer in het vak **Webproxy-URL** de URL in deze indeling in: `http://host-IP address or FQDN:Port number`. HTTPS-URL's worden niet ondersteund.
 
-   b. Selecteer onder **Verificatie** **Geen** of **NTLM**. Als u berekening inschakelt en IoT Edge-module op uw Azure Stack Edge-apparaat gebruikt, raden we u aan om de verificatie van de webproxy in te stellen op **Geen**. **NTLM** wordt niet ondersteund.
+   b. Selecteer onder **Verificatie** **Geen** of **NTLM**. Als u berekening inschakelt en IoT Edge-module op uw Azure Stack Edge Pro-apparaat gebruikt, raden we u aan om de verificatie van de webproxy in te stellen op **Geen**. **NTLM** wordt niet ondersteund.
 
    c. Als u verificatie gebruikt, voert u een gebruikersnaam en wachtwoord in.
 
@@ -105,7 +105,7 @@ Uw dashboard geeft de verschillende instellingen weer die nodig zijn voor het co
    > [!NOTE]
    > De bestanden voor het automatisch configureren van de proxy (PAC-bestanden) worden niet ondersteund. Een PAC-bestand definieert hoe webbrowsers en andere gebruikersagenten automatisch de juiste proxyserver (toegangsmethode) kunnen kiezen voor het ophalen van een bepaalde URL.
    > Proxy's die al het verkeer proberen te onderscheppen en lezen (en vervolgens alles opnieuw ondertekenen met hun eigen certificering) zijn niet compatibel, omdat het certificaat van de proxy niet wordt vertrouwd.
-   > Normaal gesproken werken transparante proxy's goed met Azure Stack Edge.
+   > Normaal gesproken werken transparante proxy's goed met Azure Stack Edge Pro.
 
 4. (Optioneel) Selecteer in het linkerdeelvenster **Tijdinstellingen** en configureer vervolgens de tijdzone en de primaire en secundaire NTP-servers voor uw apparaat.  
     NTP-servers zijn vereist, omdat uw apparaat de tijd moet synchroniseren voor verificatie met uw cloudserviceproviders.
@@ -133,7 +133,7 @@ Uw dashboard geeft de verschillende instellingen weer die nodig zijn voor het co
 
 6. Selecteer in het linkerdeelvenster de optie **Cloudinstellingen** en activeer uw apparaat vervolgens met de Azure Stack Edge-service in de Azure Portal.
     
-    1. Voer in het vak **Activeringssleutel** de activeringssleutel in die u hebt ontvangen in [De activeringssleutel krijgen](azure-stack-edge-deploy-prep.md#get-the-activation-key) voor Azure Stack Edge.
+    1. Voer in het vak **Activeringssleutel** de activeringssleutel in die u hebt ontvangen in [De activeringssleutel krijgen](azure-stack-edge-deploy-prep.md#get-the-activation-key) voor Azure Stack Edge Pro.
     2. Selecteer **Toepassen**.
        
         ![Pagina 'Cloudinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -158,7 +158,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Verbinding maken met een fysiek apparaat
 > * Het fysieke apparaat instellen en activeren
 
-Als u wilt weten hoe u gegevens overdraagt met uw Azure Stack Edge-apparaat, gaat u naar:
+Als u wilt weten hoe u gegevens overdraagt met uw Azure Stack Edge Pro-apparaat, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Gegevens overdragen met Azure Stack Edge](./azure-stack-edge-deploy-add-shares.md).
+> [Gegevens overdragen met Azure Stack Edge Pro](./azure-stack-edge-deploy-add-shares.md).

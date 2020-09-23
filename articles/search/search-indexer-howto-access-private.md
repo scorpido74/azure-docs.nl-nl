@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: bdf3863ae4683c6ef0e8dd3dd67a952bebf62d52
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971426"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Toegang tot beveiligde resources via persoonlijke eind punten
 
@@ -38,7 +38,7 @@ Hieronder ziet u de lijst met Azure-resources waarmee uitgaande privé-eind punt
 | Azure SQL Database | `sqlServer`|
 | Azure Database for MySQL (preview-versie) | `mysqlServer`|
 | Azure Key Vault | `vault` |
-| Azure functions (preview-versie) | `sites` |
+| Azure Functions (preview-versie) | `sites` |
 
 De lijst met Azure-resources waarvoor uitgaande particuliere endpoint-verbindingen worden ondersteund, kan ook worden opgevraagd via de [API List ondersteunde](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported).
 

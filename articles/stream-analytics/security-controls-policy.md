@@ -1,18 +1,18 @@
 ---
 title: Controles voor naleving van Azure Policy-regelgeving voor Azure Stream Analytics
 description: Een overzicht van de beschikbare controles voor naleving van Azure Policy-regelgeving voor Azure Stream Analytics. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van de naleving van uw Azure-resources.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: sample
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7e14783e3b928b11ae02e9d3a4084f9898d828f8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 08192bc0e6ab0364d7b64c4b939a380dc3c51a08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017134"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979524"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Controles voor naleving van Azure Policy-regelgeving voor Azure Stream Analytics
 

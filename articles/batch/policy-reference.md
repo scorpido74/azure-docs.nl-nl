@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Batch
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Batch. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: cb5fb6002a85ce285e146f408b05ff6c7ab72da1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: f7be80a4caf90334181beab24248d5aa6813a4e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987451"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Ingebouwde Azure Policy-definities voor Azure Batch
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566281"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979687"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -40,9 +40,9 @@ Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt on
 
 >[!IMPORTANT]
 > **Azure Sentinel-klanten:**
-> - Zodra Azure Sentinel is geïmplementeerd op een werk ruimte, wordt de verplaatsing van die werk ruimte op **dit moment niet ondersteund** voor andere resource groepen of abonnementen. 
+> - Azure Sentinel **ondersteunt momenteel niet** de verplaatsing van een werkruimte naar andere resourcegroepen of abonnement na de implementatie in deze werkruimte. 
 >
->   Als u de werk ruimte al hebt verplaatst, schakelt u alle actieve regels onder **Analytics** uit en schakelt u deze na vijf minuten weer in. Dit moet in de meeste gevallen effectief zijn, hoewel het niet wordt ondersteund en niet wordt uitgevoerd op uw eigen risico.
+>   Als u de werkruimte al hebt verplaatst, moet u alle actieve regels onder **Analyses** uitschakelen en na vijf minuten opnieuw inschakelen. In de meeste gevallen is dit effectief, hoewel de methode niet wordt ondersteund en voor eigen risico wordt uitgevoerd.
 
 ### <a name="delete-solutions-in-azure-portal"></a>Oplossingen in Azure Portal verwijderen
 Gebruik de volgende procedure om de oplossingen te verwijderen met behulp van de Azure Portal:
@@ -96,7 +96,7 @@ Gebruik de volgende procedure om uw werk ruimte te verplaatsen met behulp van de
 4. Selecteer een doel **abonnement** en **resource groep**. Als u de werk ruimte naar een andere resource groep in hetzelfde abonnement verplaatst, wordt de optie **abonnement** niet weer geven.
 5. Klik op **OK** om de werk ruimte en de geselecteerde resources te verplaatsen.
 
-    ![Portal](media/move-workspace/portal.png)
+    ![Scherm afbeelding toont het deel venster Overzicht in de werk ruimte Log Analytics met opties voor het wijzigen van de resource groep en de naam van het abonnement.](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 Als u uw werk ruimte wilt verplaatsen met behulp van Power shell, gebruikt u de [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) zoals in het volgende voor beeld:

@@ -1,25 +1,22 @@
 ---
-title: Een verbinding met een opslag account instellen met behulp van een beheerde identiteit (preview)
+title: Een verbinding met een opslag account instellen met behulp van een beheerde identiteit
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het instellen van een verbinding met een Indexeer functie met een Azure Storage-account met behulp van een beheerde identiteit (preview)
+description: Meer informatie over het instellen van een verbinding met een Indexeer functie met een Azure Storage account met behulp van een beheerde identiteit
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917972"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971514"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit (preview)
-
-> [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure-opslag account met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
@@ -68,7 +65,7 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
-De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens uit een opslag account met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+De [rest API](/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](/dotnet/api/microsoft.azure.search.models.datasource) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens uit een opslag account met behulp van de [rest API](/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
 Bij het indexeren van een opslag account moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
@@ -150,6 +147,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 ## <a name="see-also"></a>Zie ook
 
 Meer informatie over Azure Storage Indexeer functies:
+
 * [Indexer van Azure Blob](search-howto-indexing-azure-blob-storage.md)
 * [Indexeer functie Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 * [Indexeer functie van Azure-tabel](search-howto-indexing-azure-tables.md)
