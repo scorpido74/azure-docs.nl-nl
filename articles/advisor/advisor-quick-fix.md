@@ -4,12 +4,12 @@ description: Bulksgewijs herstel uitvoeren met snelle oplossing in Advisor
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518059"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968594"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Snel oplossen van herstel voor Advisor
 Met **snel oplossen** kunt u een snellere en eenvoudiger herstel methode voor een aanbeveling op meerdere resources. Het biedt mogelijkheden voor het bulksgewijs oplossen van resources en helpt u uw abonnementen sneller te optimaliseren met herbemiddeling op schaal voor uw resources.
@@ -20,13 +20,13 @@ De functie is alleen beschikbaar voor bepaalde aanbevelingen via Azure Portal.
 
 1. Klik in de lijst met aanbevelingen die het label **snel oplossen** hebben op de aanbeveling.
 
-   ![Snelle oplossing voor Advisor](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Scherm opname van Azure Advisor weer geven van labels voor snel oplossen in de aanbevelingen.}":::
    
    *De prijzen in de afbeelding zijn alleen bedoeld als voor beeld*
 
 2. Op de pagina aanbeveling details ziet u een lijst met resources waarvoor u deze aanbeveling hebt. Selecteer alle resources die u wilt herstellen voor de aanbeveling.
 
-   ![Snelle oplossing voor Advisor](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Scherm opname van het venster betrokken resources met lijst items en de knop snel herstellen gemarkeerd.":::
    
    *De prijzen in de afbeelding zijn alleen bedoeld als voor beeld*
 

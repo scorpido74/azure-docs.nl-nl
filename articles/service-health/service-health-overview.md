@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Service Health | Microsoft Docs
-description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
+description: Meer informatie over hoe Service Health u een aanpasbaar dash board biedt, waarmee u de status van uw Azure-Services kunt bijhouden in de regio's waar u ze gebruikt.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967796"
 ---
 # <a name="service-health-overview"></a>Overzicht van Service Health
 

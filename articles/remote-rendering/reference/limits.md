@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976561"
 ---
 # <a name="limitations"></a>Beperkingen
 
@@ -28,7 +28,7 @@ Een aantal functies hebben een grootte, aantal of andere beperkingen.
 
 ## <a name="geometry"></a>Geometrie
 
-* Totaal aantal toegestane materialen in een Asset: 65.535.
+* Totaal aantal toegestane materialen in een Asset: 65.535. Zie [materiaal deduplication (Engelstalig)](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) voor meer informatie.
 * Maximale dimensie van één textuur: 16.384 x 16.384. Grotere bron structuren worden omlaag geschaald door het conversie proces.
 
 ## <a name="overall-number-of-polygons"></a>Totaal aantal veelhoeken
@@ -37,7 +37,7 @@ Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van d
 
 | Server grootte | Maximum aantal veelhoeken |
 |:--------|:------------------|
-|standaard| 20.000.000 |
+|Standard| 20.000.000 |
 |ultieme| geen limiet |
 
 Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor meer gedetailleerde informatie over deze beperking.

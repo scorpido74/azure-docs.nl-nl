@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976259"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
@@ -69,14 +69,14 @@ In dit scenario moeten we echter nadenken over welke statische routes moeten wor
 
 De statische routes die we nodig hebben in de standaard tabel om verkeer te verzenden naar de NVA-spokes achter de NVA VNet, zijn als volgt:
 
-| Beschrijving | Routetabel | Statische route              |
+| Description | Routetabel | Statische route              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | Standaard     | 10.2.0.0/16-> eastusconn |
 | VNet 4       | Standaard     | 10.4.0.0/16-> weconn     |
 
 Het virtuele WAN weet nu naar welke verbinding de pakketten moeten worden verzonden, maar de verbinding moet weten wat er moet gebeuren wanneer deze pakketten worden ontvangen: hier worden de verbindings route tabellen gebruikt. Hier gaan we de kortere voor voegsels (/24 in plaats van de meer/16) gebruiken om ervoor te zorgen dat deze routes de voor keur hebben boven routes die worden geïmporteerd uit de NVA VNets (VNet 2 en VNet 4):
 
-| Beschrijving | Verbinding | Statische route            |
+| Description | Verbinding | Statische route            |
 | ----------- | ---------- | ----------------------- |
 | VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0.5 |
 | VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0.5 |

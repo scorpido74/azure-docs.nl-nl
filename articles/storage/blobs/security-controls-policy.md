@@ -1,19 +1,19 @@
 ---
 title: Besturingselementen voor naleving van Azure Policy-regelgeving voor Azure Data Lake Storage Gen2
 description: Toont beschikbare besturingselementen voor naleving van Azure Policy-regelgeving voor Azure Data Lake Storage Gen2. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van de naleving van uw Azure-resources.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f7ffc49af3e207e119c6fc1334b0946c3bcf0af6
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 11215940e1928a79bfd6523032f1bbbf205cabeb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018069"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984352"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen2"></a>Besturingselementen voor naleving van Azure Policy-regelgeving voor Azure Data Lake Storage Gen2
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976225"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -27,8 +27,6 @@ Met de waarden in dit artikel worden VPN-gateways (virtuele netwerk gateways die
 * Zie [over zone-redundant gateways](about-zone-redundant-vnet-gateways.md)voor zone-redundante gateways.
 
 * Zie [about Virtual WAN](../virtual-wan/virtual-wan-about.md)(Engelstalig) voor virtuele WAN.
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Gatewaytypen
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Lokale netwerkgateways
 
- Een lokale netwerk gateway wijkt af van de gateway van een virtueel netwerk. Wanneer u een configuratie voor een VPN-gateway maakt, vertegenwoordigt de lokale netwerk gateway meestal uw on-premises locatie. In het klassieke implementatiemodel werd de lokale gateway een lokale site genoemd.
+Een lokale netwerk gateway wijkt af van de gateway van een virtueel netwerk. Bij het maken van een VPN-gateway configuratie vertegenwoordigt de lokale netwerk gateway meestal uw on-premises netwerk en het bijbehorende VPN-apparaat. In het klassieke implementatiemodel werd de lokale gateway een lokale site genoemd.
 
-U geeft de lokale netwerk gateway een naam, het open bare IP-adres van het on-premises VPN-apparaat en geeft de adres voorvoegsels op die zich op de on-premises locatie bevinden. Azure zoekt naar de voor voegsels van het doel adres voor netwerk verkeer, raadpleegt de configuratie die u hebt opgegeven voor uw lokale netwerk gateway en routeert pakketten dienovereenkomstig. U geeft ook lokale netwerk gateways op voor VNet-naar-VNet-configuraties die gebruikmaken van een VPN-gateway verbinding.
+U geeft de lokale netwerk gateway een naam, het open bare IP-adres of de Fully Qualified Domain Name (FQDN) van het on-premises VPN-apparaat en geeft de adres voorvoegsels op die zich op de on-premises locatie bevinden. Azure zoekt naar de voor voegsels van het doel adres voor netwerk verkeer, raadpleegt de configuratie die u hebt opgegeven voor uw lokale netwerk gateway en routeert pakketten dienovereenkomstig. Als u Border Gateway Protocol (BGP) op uw VPN-apparaat gebruikt, geeft u het IP-adres van de BGP-peer op van uw VPN-apparaat en het autonome systeem nummer (ASN) van uw on-premises netwerk. U geeft ook lokale netwerk gateways op voor VNet-naar-VNet-configuraties die gebruikmaken van een VPN-gateway verbinding.
 
 In het volgende Power shell-voor beeld wordt een nieuwe lokale netwerk gateway gemaakt:
 

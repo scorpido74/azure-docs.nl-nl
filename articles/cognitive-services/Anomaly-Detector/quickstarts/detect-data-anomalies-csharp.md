@@ -8,32 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922341"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904579"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Quickstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API en C#
 
-Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee detectiemodi van de Anomaly Detector API's om anomalieën in uw tijdreeksgegevens te detecteren. Met deze C#-toepassing worden twee API-aanvragen met tijdreeksgegevens in JSON-indeling verzonden en worden de antwoorden opgehaald.
+Gebruik deze quickstart om aan de slag te gaan met de Anomaly Detector API om anomalieën in uw tijdreeksgegevens te detecteren. Met deze C#-toepassing worden API-aanvragen met tijdreeksgegevens in JSON-indeling verzonden en worden de antwoorden opgehaald.
 
 | API-aanvraag                                        | Toepassingsuitvoer                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Batchgewijs anomalieën detecteren                        | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor elk gegevenspunt in de tijdreeksgegevens en de posities van gedetecteerde anomalieën. |
-| De anomaliestatus van het laatste gegevenspunt detecteren | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor het laatste gegevenspunt in de tijdreeksgegevens.                                        |
+| De anomaliestatus van het laatste gegevenspunt detecteren | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor het laatste gegevenspunt in de tijdreeksgegevens. |
+| Wijzigingspunten detecteren die nieuwe gegevenstrends markeren | Het JSON-antwoord met de gedetecteerde wijzigingspunten in de tijdreeksgegevens. |
 
- Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. U kunt de broncode voor deze quickstart vinden op [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
+Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. U kunt de broncode voor deze quickstart vinden op [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
-- Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">, maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
-    - U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+- Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    - U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 - Een versie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/)
 - Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket. Newtonsoft.json installeren als een NuGet-pakket in Visual Studio:
@@ -61,6 +62,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
     |------------------------------------|--------------------------------------------------|
     | Batchdetectie                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Detectie op het laatste gegevenspunt | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | Detectie van wijzigingspunten | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Wijzigingspunten in de gegevens detecteren
+
+1. Maak een nieuwe functie met de naam `detectChangePoints()`. Stel de aanvraag op en verzend deze door de `Request()`-functie aan te roepen met uw eindpunt, de URL voor de batchgewijze anomaliedetectie, uw abonnementssleutel en de tijdreeksgegevens.
+
+2. Deserialiseer het JSON-object en schrijf het naar de console.
+
+3. Als het antwoord een `code`-veld bevat, drukt u de foutcode en het foutbericht af.
+
+4. Als dat niet het geval is, zoekt u de positie van wijzigingspunten in de gegevensset. Het veld `isChangePoint` van het antwoord bevat een matrix met booleaanse waarden, waarvan elke waarde aangeeft of een gegevenspunt is geïdentificeerd als een wijzigingspunt. Converteer deze naar een tekenreeksmatrix met de `ToObject<bool[]>()`-functie van het antwoordobject. Herhaal de matrix en druk de index van alle `true`-waarden af. Deze waarden komen overeen met de indexen van trendwijzigingspunten, als die zijn gevonden.
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>De gegevens van uw tijdreeks laden en de aanvraag verzenden
 
 1. In de hoofdmethode van uw toepassing laadt u uw JSON-tijdreeksgegevens met `File.ReadAllText()`.
@@ -108,5 +122,6 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 Er wordt een geslaagd antwoord geretourneerd in JSON-indeling. Klik op de onderstaande koppelingen om het JSON-antwoord op GitHub weer te geven:
 * [Voorbeeld van een antwoord op een batchdetectie](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Voorbeeld van een antwoord op de detectie van het laatste punt](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Voorbeeld van een antwoord op de detectie van het wijzigingspunt](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

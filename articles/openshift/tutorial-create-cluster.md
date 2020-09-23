@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503785"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053868"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -104,20 +104,22 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Maak een resourcegroep.**
+2. **Maak een resourcegroep.**
 
-    Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create).
+Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create).
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat OpenShift is niet in alle regio’s beschikbaar waarin een Azure-resource kan worden gemaakt. Zie [Beschikbare regio's](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) voor informatie over waar Azure Red Hat OpenShift wordt ondersteund.
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
     },
     "tags": null
     }
-    ```
+```
 
-2. **Maak een virtueel netwerk.**
+3. **Maak een virtueel netwerk.**
 
-    Azure Red Hat OpenShift-clusters met OpenShift 4 vereisen een virtueel netwerk met twee lege subnetten voor de hoofd- en werkknooppunten.
+Azure Red Hat OpenShift-clusters met OpenShift 4 vereisen een virtueel netwerk met twee lege subnetten voor de hoofd- en werkknooppunten.
 
-    Maak een nieuw virtueel netwerk in de resourcegroep die u eerder hebt gemaakt:
+Maak een nieuw virtueel netwerk in de resourcegroep die u eerder hebt gemaakt:
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    In de volgende voorbeelduitvoer ziet u dat het virtuele netwerk is gemaakt:
+In de volgende voorbeelduitvoer ziet u dat het virtuele netwerk is gemaakt:
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. **Voeg een leeg subnet toe voor de hoofdknooppunten.**
+4. **Voeg een leeg subnet toe voor de hoofdknooppunten.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **Voeg een leeg subnet toe voor de werkknooppunten.**
+5. **Voeg een leeg subnet toe voor de werkknooppunten.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ Nu gaat u een virtueel netwerk met twee lege subnetten maken.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Beleid voor privé-eindpunten van subnet uitschakelen](../private-link/disable-private-link-service-network-policy.md) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
+6. **[Beleid voor privé-eindpunten van subnet uitschakelen](../private-link/disable-private-link-service-network-policy.md) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
 
     ```azurecli-interactive
     az network vnet subnet update \

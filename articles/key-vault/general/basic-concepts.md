@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983298"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Basis concepten Azure Key Vault
 
-Azure Key Vault is een hulpprogramma om geheimen veilig op te slaan en te openen. Een geheim is alles waartoe u de toegang streng wilt beheren, zoals API-sleutels, wachtwoorden of certificaten. Een kluis is een logische groep geheimen.
+Azure Key Vault is een Cloud service voor het veilig opslaan en openen van geheimen. Een geheim is alles wat u de toegang tot, zoals API-sleutels, wacht woorden, certificaten of cryptografische sleutels, nauw keurig wilt beheren. Key Vault-service ondersteunt twee typen containers: kluizen en beheerde HSM-groepen. Kluizen ondersteunen de opslag van software-en HSM-sleutels, geheimen en certificaten. Beheerde HSM-Pools bieden alleen ondersteuning voor HSM-ondersteunde sleutels. Zie [Azure Key Vault rest API overzicht](about-keys-secrets-certificates.md) voor volledige informatie.
 
 Hier volgen enkele belang rijke voor waarden:
 
@@ -28,6 +28,12 @@ Hier volgen enkele belang rijke voor waarden:
 - **Kluiseigenaar**: een kluiseigenaar kan een sleutelkluis maken en heeft er volledige toegang toe en controle over. De eigenaar van de kluis kan ook controles instellen om vast te leggen wie toegang heeft tot geheimen en sleutels. Beheerders kunnen de levenscyclus van sleutels beheren. Ze kunnen een nieuwe versie van de sleutel instellen, een back-up maken en gerelateerde taken uitvoeren.
 
 - **Kluisconsument**: een kluisconsument kan acties uitvoeren op de elementen in de sleutelkluis wanneer de eigenaar van de kluis toegang verleent aan de consument. De beschikbare acties zijn afhankelijk van de verleende machtigingen.
+
+- **Beheerde HSM-beheerders**: gebruikers aan wie de rol beheerder is toegewezen, hebben volledige controle over een beheerde HSM-groep. Ze kunnen meer roltoewijzingen maken voor het delegeren van beheerde toegang tot andere gebruikers.
+
+- **Beheerde HSM crypto Officer/gebruiker**: ingebouwde rollen die meestal worden toegewezen aan gebruikers of service-principals die cryptografische bewerkingen uitvoeren met behulp van sleutels in beheerde HSM. Crypto grafie-gebruiker kan nieuwe sleutels maken, maar kan geen sleutels verwijderen.
+
+- **Beheerde HSM crypto Encryption service**: ingebouwde rol die meestal wordt toegewezen aan een service-account beheerde service-identiteit (bijvoorbeeld opslag account) voor versleuteling van gegevens in rust met door de klant beheerde sleutel.
 
 - **Resource**: een resource is een beheerbaar item dat beschikbaar is via Azure. Algemene voor beelden hiervan zijn virtuele machines, opslag accounts, Web-apps, data bases en virtuele netwerken. Er zijn nog veel meer.
 
@@ -59,7 +65,7 @@ Gebruik de volgende tabel om beter te begrijpen hoe Key Vault u kan helpen om aa
 | --- | --- | --- |
 | Ontwikkelaar voor een Azure-toepassing |"Ik wil een toepassing voor Azure schrijven die sleutels gebruikt voor ondertekening en versleuteling. Maar ik wil dat deze sleutels extern zijn van mijn toepassing, zodat de oplossing geschikt is voor een toepassing die geografisch wordt gedistribueerd. <br/><br/>Ik wil dat deze sleutels en geheimen worden beveiligd, zonder dat ik de code zelf hoef te schrijven. Ik wil ook dat deze sleutels en geheimen eenvoudig kunnen worden gebruikt in mijn toepassingen, met optimale prestaties. " |√ De sleutels worden opgeslagen in een kluis en wanneer dit nodig is, aangeroepen via een URI.<br/><br/> √ De sleutels worden beveiligd door Azure. Hiervoor wordt gebruikgemaakt van algoritmen, sleutellengten en HSM's die voldoen aan de industriestandaard.<br/><br/> √ Sleutels worden verwerkt in HSM's die zich in dezelfde Azure-datacenters bevinden als de toepassingen. Deze methode biedt betere betrouwbaarheid en minder latentie dan wanneer de sleutels zich op een afzonderlijke locatie bevinden, zoals on-premises. |
 | SaaS-ontwikkelaar (Software as a Service) |"Ik wil geen verantwoordelijkheid of mogelijke aansprakelijkheid voor de Tenant sleutels en geheimen van mijn klanten. <br/><br/>Ik wil dat klanten hun sleutels eigenaar kunnen maken en beheren, zodat ik kan concentreren op wat ik het beste kan doen, wat de kern software functies levert. " |√ Klanten kunnen hun eigen sleutels in Azure importeren en beheren. Wanneer een SaaS-toepassing cryptografische bewerkingen moet uitvoeren met behulp van de sleutels van de klant, Key Vault deze bewerkingen namens de toepassing. De toepassing ziet de sleutels van de klant niet. |
-| Chief Security Officer (CSO) |"Ik wil weten dat onze toepassingen voldoen aan de FIPS 140-2 level 2-Hsm's voor beveiligd sleutel beheer. <br/><br/>Ik wil ervoor zorgen dat mijn organisatie de controle heeft over de levenscyclus van de sleutel en het sleutelgebruik kan bewaken. <br/><br/>En hoewel we meerdere Azure-Services en-resources gebruiken, wil ik de sleutels vanaf één locatie in azure beheren. " |√ HSM's zijn FIPS 140-2 Level 2-gevalideerde modules.<br/><br/>√ Key Vault is zodanig ontworpen dat Microsoft uw sleutels niet kan zien of extraheren.<br/><br/>√ Sleutelgebruik wordt vrijwel in realtime vastgelegd.<br/><br/>√ De kluis biedt één interface, ongeacht het aantal kluizen dat u in Azure hebt, welke regio's ze ondersteunen en door welke toepassingen ze worden gebruikt. |
+| Chief Security Officer (CSO) |"Ik wil weten dat onze toepassingen voldoen aan het FIPS 140-2 level 2-of FIPS 140-2 level 3 Hsm's voor beveiligd sleutel beheer. <br/><br/>Ik wil ervoor zorgen dat mijn organisatie de controle heeft over de levenscyclus van de sleutel en het sleutelgebruik kan bewaken. <br/><br/>En hoewel we meerdere Azure-Services en-resources gebruiken, wil ik de sleutels vanaf één locatie in azure beheren. " |√ Kies **kluizen** voor het FIPS 140-2 level 2-gevalideerde hsm's.<br/>√ Kies **Managed HSM Pools** voor FIPS 140-2 level 3 valided hsm's.<br/><br/>√ Key Vault is zodanig ontworpen dat Microsoft uw sleutels niet kan zien of extraheren.<br/>√ Sleutelgebruik wordt vrijwel in realtime vastgelegd.<br/><br/>√ De kluis biedt één interface, ongeacht het aantal kluizen dat u in Azure hebt, welke regio's ze ondersteunen en door welke toepassingen ze worden gebruikt. |
 
 Iedereen met een Azure-abonnement kan sleutelkluizen maken en gebruiken. Hoewel Key Vault voor delen van ontwikkel aars en beveiligings beheerders, kan het worden geïmplementeerd en beheerd door de beheerder van een organisatie die andere Azure-Services beheert. Deze beheerder kan zich bijvoorbeeld aanmelden met een Azure-abonnement, een kluis maken voor de organisatie waarin sleutels moeten worden opgeslagen en vervolgens verantwoordelijk zijn voor operationele taken als deze:
 
@@ -77,7 +83,8 @@ Ontwikkelaars kunnen de sleutels ook rechtstreeks beheren door gebruik te maken 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [beveiligen van uw kluis](secure-your-key-vault.md).
+- Meer informatie over het [beveiligen van uw kluis](secure-your-key-vault.md).
+- Meer informatie over [het beveiligen van uw beheerde HSM-Pools](../managed-hsm/access-control.md)
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png

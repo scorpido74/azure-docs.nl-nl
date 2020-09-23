@@ -1,7 +1,7 @@
 ---
-title: Gegevens transformeren in de ontwerp functie (preview-versie)
+title: Gegevens transformeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het transformeren van gegevens in Azure Machine Learning Designer (preview) om uw eigen gegevens sets te maken.
+description: Meer informatie over het transformeren van gegevens in Azure Machine Learning Designer om uw eigen gegevens sets te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457818"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983845"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>Gegevens transformeren in Azure Machine Learning Designer
+
 
 In dit artikel leert u hoe u gegevens sets transformeert en opslaat in Azure Machine Learning Designer, zodat u uw eigen gegevens kunt voorbereiden voor machine learning.
 
@@ -48,7 +48,7 @@ Gebruik de volgende stappen om de voor beeld-gegevensset te importeren.
 
 1. Selecteer een standaard Compute-doel om de pijp lijn uit te voeren.
 
-1. Aan de linkerkant van het pijplijncanvas ziet u een palet met gegevenssets en modules. Selecteer **gegevens sets**. Bekijk vervolgens de sectie voor **beelden** .
+1. Aan de linkerkant van het pijplijncanvas ziet u een palet met gegevenssets en modules. Selecteer **Gegevenssets**. Bekijk vervolgens de sectie voor **beelden** .
 
 1. Sleep en zet de gegevensset voor de **binaire inkomsten van de volwassene** af op het canvas.
 
@@ -107,12 +107,12 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
 
     **Data Store**: Selecteer een bestaande gegevens opslag of selecteer nieuwe gegevens opslag om er nu een te maken.
 
-    **Pad**:`/data/us-income`
+    **Pad**: `/data/us-income`
 
     **Bestands indeling**: CSV
 
     > [!NOTE]
-    > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-access-data.md#studio)voor instructies over het instellen van een gegevens opslag.
+    > In dit artikel wordt ervan uitgegaan dat u toegang hebt tot een gegevens opslag die is geregistreerd in de huidige Azure Machine Learning-werk ruimte. Zie [verbinding maken met Azure Storage-services](how-to-connect-data-ui.md#create-datastores)voor instructies over het instellen van een gegevens opslag.
 
     Als u geen gegevens opslag hebt, kunt u er nu een maken. Voor beeld: in dit artikel worden de gegevens sets opgeslagen in het standaard-Blob Storage-account dat is gekoppeld aan de werk ruimte. De gegevens sets worden opgeslagen in de `azureml` container in een nieuwe map met de naam `data` .
 
@@ -124,7 +124,7 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
 
     **Data Store**: Selecteer dezelfde gegevens opslag als hierboven
 
-    **Pad**:`/data/non-us-income`
+    **Pad**: `/data/non-us-income`
 
     **Bestands indeling**: CSV
 

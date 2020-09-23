@@ -1,6 +1,6 @@
 ---
-title: Overzicht van het beleid voor gegevens retentie-Azure SQL Edge (preview)
-description: Meer informatie over het Bewaar beleid voor gegevens in Azure SQL Edge (preview)
+title: Overzicht van het beleid voor gegevens retentie-Azure SQL Edge
+description: Meer informatie over het Bewaar beleid voor gegevens in Azure SQL Edge
 keywords: SQL-rand, gegevens retentie
 services: sql-edge
 ms.service: sql-edge
@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: bb059a946c03f41e5b65944eec67070f84ee6b08
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550628"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976348"
 ---
-# <a name="data-retention-policy-overview"></a>Overzicht van het beleid voor gegevens retentie
+# <a name="data-retention-overview"></a>Overzicht van gegevensretentie
 
 Het verzamelen en opslaan van gegevens van de verbonden IoT-apparaten is belang rijk om operationeel en zakelijk inzicht te krijgen en te stimuleren. Gezien het volume van de gegevens die afkomstig zijn van deze apparaten, is het belang rijk voor organisaties om de hoeveelheid gegevens die ze willen behouden en de granulariteit te plannen. Het is echter wenselijk om alle gegevens te bewaren, maar dit is niet altijd praktisch. Daarnaast is het volume van de gegevens dat kan worden bewaard beperkt door de hoeveelheid opslag ruimte die beschikbaar is op de IoT-of edge-apparaten. 
 
-Azure SQL Edge (preview) CTP 2.3 voegt een nieuwe mogelijkheid toe waarmee database beheerders het Bewaar beleid voor gegevens kunnen definiëren voor een SQL EDGE-Data Base en de onderliggende tabellen. Zodra het beleid voor gegevens retentie is gedefinieerd, wordt een achtergrond systeem taak uitgevoerd om verouderde (oude) gegevens uit de gebruikers tabellen op te schonen. 
+In Azure SQL Edge-database beheerders kunnen gegevens Bewaar beleid definiëren voor een SQL-EDGE-Data Base en de onderliggende tabellen. Zodra het beleid voor gegevens retentie is gedefinieerd, wordt een achtergrond systeem taak uitgevoerd om verouderde (oude) gegevens uit de gebruikers tabellen op te schonen. 
 
 > [!Note]
 > Gegevens die zijn verwijderd uit de tabel, kunnen niet worden hersteld. De enige manier om de verwijderde gegevens te herstellen is door de data base te herstellen vanuit een oudere back-up.
@@ -40,9 +40,10 @@ Nadat het bewaren van gegevens is geconfigureerd voor een tabel, wordt een achte
 
 - Bewaren van gegevens, indien ingeschakeld, wordt automatisch uitgeschakeld wanneer de data base wordt hersteld vanuit een volledige back-up of opnieuw wordt gekoppeld. 
 - Bewaren van gegevens kan niet worden ingeschakeld voor een tijdelijke geschiedenis tabel
+- Het filter voor het bewaren van gegevens Colomn kan niet worden gewijzigd. Als u de kolom wilt wijzigen, schakelt u het bewaren van gegevens uit in de tabel.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Machine learning en kunst matige intelligentie met ONNX in SQL Edge](onnx-overview.md).
-- [Bouw een end-to-end IOT-oplossing met SQL Edge met behulp van IOT Edge](tutorial-deploy-azure-resources.md).
-- [Gegevens stromen in Azure SQL Edge](stream-data.md)
+- [Machine Learning en kunstmatige intelligentie met ONNX in SQL Edge](onnx-overview.md).
+- [Een end-to-end IoT-oplossing bouwen met SQL Edge met behulp van IoT Edge](tutorial-deploy-azure-resources.md).
+- [Gegevensstreaming in Azure SQL Edge](stream-data.md)

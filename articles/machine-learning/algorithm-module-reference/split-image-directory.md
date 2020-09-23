@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84810192"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890267"
 ---
 # <a name="split-image-directory"></a>Map om afbeeldingen te splitsen
 
-In dit onderwerp wordt beschreven hoe u de map voor afbeelding splitsen in Azure Machine Learning Designer (preview) gebruikt om de installatie kopieën van een map met installatie kopieën te verdelen in twee verschillende sets.
+In dit onderwerp wordt beschreven hoe u de map voor afbeelding splitsen in Azure Machine Learning Designer kunt gebruiken om de installatie kopieën van een map met installatie kopieën te verdelen in twee verschillende sets.
 
 Deze module is met name handig wanneer u afbeeldings gegevens moet scheiden in trainings-en test sets. 
 
@@ -43,7 +43,7 @@ Deze module is met name handig wanneer u afbeeldings gegevens moet scheiden in t
 
 | Naam                                   | Type  | Bereik | Optioneel | Description                            | Standaard |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
-| Fractie van afbeeldingen in de eerste uitvoer | Float | 0-1   | Vereist | Fractie van afbeeldingen in de eerste uitvoer | 0.9     |
+| Fractie van afbeeldingen in de eerste uitvoer | Float | 0-1   | Vereist | Fractie van afbeeldingen in de eerste uitvoer | 0,9     |
 
 ### <a name="outputs"></a>Uitvoerwaarden
 

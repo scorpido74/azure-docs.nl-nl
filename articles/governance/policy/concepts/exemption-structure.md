@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids uitsluiting
 description: Beschrijft de beleids uitsluiting definitie die wordt gebruikt door Azure Policy om resources uit te sluiten van de evaluatie van initiatieven of definities.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935732"
+ms.locfileid: "90968045"
 ---
 # <a name="azure-policy-exemption-structure"></a>Structuur van Azure Policy-uitzonde ring
 
@@ -99,11 +99,12 @@ Dit veld moet de volledige padnaam zijn van een beleids toewijzing of een initia
 
 Als de `policyAssignmentId` is voor een initiatief toewijzing, `policyDefinitionReferenceIds` kan de eigenschap worden gebruikt om op te geven welke beleids definitie (s) in het initiatief van de onderwerps bron een uitzonde ring op heeft. Omdat de resource kan worden uitgesloten van een of meer opgenomen beleids definities, is deze eigenschap een _matrix_. De waarden moeten overeenkomen met de waarden in de initiatief definitie in de `policyDefinitions.policyDefinitionReferenceId` velden.
 
-## <a name="required-permissions"></a>Vereiste machtigingen
+## <a name="exemption-category"></a>Categorie uitzonde ringen
 
-De Azure RBAC-machtigingen die nodig zijn voor het beheren van beleids uitsluiting objecten bevinden zich in de `Microsoft.Authorization/policyExemptions` bewerkings groep. De ingebouwde rollen Inzender en [beveiligings beheerder](../../../role-based-access-control/built-in-roles.md#security-admin) van het [resource beleid](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) hebben beide machtigingen en de `read` `write` machtiging [gegevens schrijver (preview)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) van het beleid `read` .
+Er bestaan twee vrijstellings categorieën en worden gebruikt om uitzonde ringen te groeperen:
 
-Uitzonde ringen hebben extra beveiligings maatregelen vanwege de gevolgen van het verlenen van een uitzonde ring. `Microsoft.Authorization/policyExemptions/write`De maker van een uitzonde ring moet de bewerking hebben voor de doel toewijzing, behalve dat hiervoor de resource hiërarchie of afzonderlijke resource wordt vereist `exempt/Action` .
+- **Verminderd**: de uitzonde ring wordt verleend omdat de beleids intentie wordt voldaan via een andere methode.
+- **Afwijzinger**: de uitzonde ring wordt verleend omdat de niet-nalevings status van de resource tijdelijk wordt geaccepteerd. Een andere reden voor het gebruik van deze categorie is voor een resource of resource hiërarchie die moet worden uitgesloten van een of meer definities in een initiatief, maar niet moeten worden uitgesloten van het hele initiatief.
 
 ## <a name="expiration"></a>Verloopdatum
 
@@ -111,6 +112,12 @@ Als u wilt instellen wanneer een resource hiërarchie of een afzonderlijke resou
 
 > [!NOTE]
 > De beleids uitzonderingen worden niet verwijderd wanneer de `expiresOn` datum is bereikt. Het object blijft behouden voor record behoud, maar de uitzonde ring wordt niet meer nageleefd.
+
+## <a name="required-permissions"></a>Vereiste machtigingen
+
+De Azure RBAC-machtigingen die nodig zijn voor het beheren van beleids uitsluiting objecten bevinden zich in de `Microsoft.Authorization/policyExemptions` bewerkings groep. De ingebouwde rollen Inzender en [beveiligings beheerder](../../../role-based-access-control/built-in-roles.md#security-admin) van het [resource beleid](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) hebben beide machtigingen en de `read` `write` machtiging [gegevens schrijver (preview)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) van het beleid `read` .
+
+Uitzonde ringen hebben extra beveiligings maatregelen vanwege de gevolgen van het verlenen van een uitzonde ring. `Microsoft.Authorization/policyExemptions/write`De maker van een uitzonde ring moet de bewerking hebben voor de doel toewijzing, behalve dat hiervoor de resource hiërarchie of afzonderlijke resource wordt vereist `exempt/Action` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

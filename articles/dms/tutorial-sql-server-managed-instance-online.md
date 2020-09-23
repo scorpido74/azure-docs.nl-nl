@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553305"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984336"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance online migreren met behulp van DMS
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!IMPORTANT]
 > Voor online migraties van SQL Server naar een door SQL beheerd exemplaar met behulp van Azure Database Migration Service, moet u de volledige back-up van de data base en volgende logboek back-ups in de SMB-netwerk share opgeven die door de service kan worden gebruikt om uw data bases te migreren. Azure Database Migration Service initieert geen back-ups en maakt in plaats daarvan gebruik van bestaande back-ups, die u mogelijk al hebt als onderdeel van het nood herstel plan voor de migratie.
-> Zorg ervoor dat u [back-ups maakt met behulp van de optie with checksum](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017). Zorg er ook voor dat u niet meerdere back-ups (dus volledig en t-Logboeken) toevoegt aan één back-upmedium. Maak elke back-up op een afzonderlijk back-upbestand. Ten slotte kunt u gecomprimeerde back-ups gebruiken om de kans te verkleinen dat er mogelijke problemen optreden bij het migreren van grote back-ups.
+> Zorg ervoor dat u [back-ups maakt met behulp van de optie with checksum](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true). Zorg er ook voor dat u niet meerdere back-ups (dus volledig en t-Logboeken) toevoegt aan één back-upmedium. Maak elke back-up op een afzonderlijk back-upbestand. Ten slotte kunt u gecomprimeerde back-ups gebruiken om de kans te verkleinen dat er mogelijke problemen optreden bij het migreren van grote back-ups.
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium.
@@ -245,7 +245,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
     U kunt de databases en aanmeldingscategorieën verder uitvouwen om de migratiestatus van de respectieve serverobjecten te controleren.
 
-   ![Migratieactiviteit wordt uitgevoerd](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![Status van de migratie activiteit](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Migratie-cutover uitvoeren
 
@@ -264,7 +264,7 @@ Nadat de volledige back-up van de data base is hersteld op het doel exemplaar va
     ![Voltooien van cutover voorbereiden](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > Na de cutover kan de beschik baarheid van het SQL-beheerde exemplaar met Bedrijfskritiek servicelaag aanzienlijk langer duren dan Algemeen omdat drie secundaire replica's moeten worden geseedd voor de AlwaysOn-groep met hoge Beschik baarheid. De duur van deze bewerking is afhankelijk van de grootte van de gegevens. Zie [beheer bewerkingen duur](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration)voor meer informatie.
+    > Na de cutover kan de beschik baarheid van het SQL-beheerde exemplaar met Bedrijfskritiek servicelaag aanzienlijk langer duren dan Algemeen omdat drie secundaire replica's moeten worden geseedd voor de AlwaysOn-groep met hoge Beschik baarheid. De duur van deze bewerking is afhankelijk van de grootte van de gegevens. Zie [beheer bewerkingen duur](../azure-sql/managed-instance/management-operations-overview.md#duration)voor meer informatie.
 
 5. Wanneer de status van de database migratie **is voltooid**, verbindt u uw toepassingen met het nieuwe doel exemplaar van SQL Managed instance.
 

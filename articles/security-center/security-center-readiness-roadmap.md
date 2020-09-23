@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904723"
 ---
-# <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
+# <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center gereedheids schema
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
 
 ## <a name="understanding-security-center"></a>Security Center
@@ -29,12 +29,12 @@ Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bed
 Gebruik de volgende bronnen om aan de slag te gaan met Security Center.
 
 Artikelen
-* [Inleiding tot Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Snelstartgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Inleiding tot Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Snelstartgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 Video's
-* [Korte introductievideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [Overzicht van de Security Center-preventie-, detectie- en reactiemogelijkheden](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [Korte introductievideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [Overzicht van de Security Center-preventie-, detectie- en reactiemogelijkheden](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>Planning en bewerkingen
 
@@ -42,20 +42,16 @@ Als u optimaal wilt profiteren van Security Center, is het belangrijk te begrijp
 
 Gebruik de volgende bronnen als hulpmiddel tijdens de plannings- en bewerkingsprocessen.
 
-Artikel
-* [Azure Security Center plannings-en bedienings handleiding](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Plannings- en bedieningsgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Computers voorbereiden voor Security Center
-Security Center detecteert automatisch alle Azure-abonnementen of werkruimten die niet zijn ingeschakeld voor Security Center Standard. Hiertoe behoren Azure-abonnementen die Security Center Free gebruiken en werkruimten waarvoor de Security-oplossing niet is ingeschakeld.
+Security Center detecteert automatisch alle Azure-abonnementen of-werk ruimten die niet zijn beveiligd door Azure Defender. Dit omvat Azure-abonnementen met Security Center gratis en werk ruimten waarvoor de beveiligings oplossing niet is ingeschakeld.
 
 Gebruik de volgende bronnen om u te helpen tijdens de voorbereidingsprocessen.
 
-Artikel
-* [Onboarding to Azure Security Center Standard for enhanced security](https://docs.microsoft.com/azure/security-center/security-center-onboarding) (Onboarding voor Azure Security Center Standard voor meer veiligheid)
-
-Video
-* [Azure Security Center Hybrid - Overzicht](https://youtu.be/NMa4L_M597k)
+- [Niet-Azure-computers onboarden](quickstart-onboard-machines.md)
+- [Azure Security Center Hybrid - Overzicht](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Beperkende beveiligingsproblemen met Security Center
 Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren.
@@ -63,14 +59,13 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 Gebruik de volgende bronnen om u te helpen met het beheer van beveiligingswaarschuwingen en de beveiliging van uw resources.
 
 Artikelen    
-* [Beveiligingsstatus bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
-* [Protecting your network in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations) (Uw netwerk beveiligen in Azure Security Center)
-* [Protecting Azure SQL service and data in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
+- [Beveiligingsstatus bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [Protecting your network in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations) (Uw netwerk beveiligen in Azure Security Center)
+- [Protecting Azure SQL service and data in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
 
 
 Video    
-* [Beperkende beveiligingsproblemen met Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Beperkende beveiligingsproblemen met Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center voor reactie op incidenten
 Om de kosten en schade te verminderen, is het belang rijk dat u een reactie plan voor incidenten hebt voordat een aanval plaatsvindt. U kunt Azure Security Center gebruiken in verschillende fasen tijdens een reactie op een incident.
@@ -82,7 +77,7 @@ Video's
 * [Respond quickly to threats with next-generation security operation, and investigation](https://youtu.be/e8iFCz5RM4g) (Snel op bedreigingen reageren met beveiligingsprocessen van een volgende generatie, en onderzoek)
 
 Artikelen    
-* [Azure Security Center gebruiken voor reacties op incidenten](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
+* [Beveiligingsincidenten afhandelen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
 * [Reactie automatiseren met werk stroom automatisering](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Geavanceerde cloudbeveiliging
@@ -105,7 +100,7 @@ Artikelen
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (ASC-playbook: Servers beschermen met Web Application Firewall)
 * [Azure Security Center Playbook: Beveiligingswaarschuwingen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 * [Documentatiepagina van Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Documentatiepagina van Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Veelgestelde vragen over Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)
@@ -119,6 +114,4 @@ Artikelen
 ## <a name="community-resources"></a>Communitybronnen
 
 * [Feedback over Security Center](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Micro soft Q&een vraag pagina voor Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Q&een pagina voor Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)

@@ -1,6 +1,6 @@
 ---
-title: Beheer van Azure Stack Edge GPU-share | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om shares te beheren op uw Azure Stack Edge GPU.
+title: Share beheer van Azure Stack Edge Pro GPU | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om shares te beheren op uw Azure Stack Edge Pro GPU.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268839"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904683"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack rand
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u shares op uw Azure Stack-rand beheert. U kunt de Azure Stack Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
+In dit artikel wordt beschreven hoe u shares kunt beheren op uw Azure Stack Edge Pro. U kunt de Azure Stack Edge Pro beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
 
 ## <a name="about-shares"></a>Info over shares
 
-Als u gegevens wilt overdragen naar Azure, moet u shares op uw Azure Stack Edge maken. De shares die u op het Azure Stack edge-apparaat toevoegt, kunnen lokale shares zijn of shares die gegevens pushen naar de Cloud.
+Als u gegevens wilt overdragen naar Azure, moet u shares maken op uw Azure Stack Edge Pro. De shares die u toevoegt op het Azure Stack Edge Pro-apparaat kunnen lokale shares zijn of shares die gegevens pushen naar de Cloud.
 
  - **Lokale shares**: gebruik deze shares wanneer u wilt dat de gegevens lokaal worden verwerkt op het apparaat.
  - **Shares**: gebruik deze shares als u wilt dat de apparaatgegevens automatisch naar uw opslag account in de cloud worden gepusht. Alle Cloud functies, zoals **vernieuwen** en **synchronisatie van opslag sleutels** , zijn van toepassing op de shares.
@@ -74,7 +74,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 3. Selecteer een **Type** voor de share. Het type kan **SMB** of **NFS** zijn. SMB is het standaardtype. SMB is het standaardtype voor Windows-clients; NFS wordt gebruikt voor Linux-clients. De opties wijken enigszins af, afhankelijk van welk type u kiest.
 
    > [!IMPORTANT]
-   > Controleer of er op het Azure Storage-account dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
+   > Controleer of voor het Azure-opslagaccount dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge Pro- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
 
 4. Gebruik het lokale koppel punt om eenvoudig toegang te krijgen tot de shares van Edge Compute-modules. Selecteer **de berekening delen met Edge gebruiken** zodat de rand module de compute kan gebruiken met het lokale koppel punt.
 
@@ -96,7 +96,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 ## <a name="mount-a-share"></a>Een share koppelen
 
-Als u een share hebt gemaakt voordat u Compute hebt geconfigureerd op uw Azure Stack edge-apparaat, moet u de share koppelen. Voer de volgende stappen uit om een share te koppelen.
+Als u een share hebt gemaakt voordat u Compute hebt geconfigureerd op uw Azure Stack Edge Pro-apparaat, moet u de share koppelen. Voer de volgende stappen uit om een share te koppelen.
 
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**. Selecteer in de lijst met shares de share die u wilt koppelen. In de kolom **gebruikt voor berekening** wordt de status **uitgeschakeld** weer gegeven voor de geselecteerde share.

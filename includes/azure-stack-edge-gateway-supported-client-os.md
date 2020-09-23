@@ -19,5 +19,5 @@ Hier volgt een lijst met de ondersteunde besturings systemen voor clients of hos
 | Windows |10 |
 | SUSE Linux |Enter prise Server 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
-| CentOS | 7,0 |
+| CentOS | 7.0 |
 | Mac OS | 10.14.1 |

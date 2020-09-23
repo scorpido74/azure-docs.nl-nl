@@ -4,14 +4,14 @@ description: Meer informatie over het configureren van een OpenID Connect Connec
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413915"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983880"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Configureer uw App Service-of Azure Functions-app om u aan te melden met een OpenID Connect Connect provider (preview-versie)
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Uw App Service- of Azure Functions-app configureren om u aan te melden met een OpenID Connect-provider (preview)
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -53,7 +53,7 @@ Als u geen meta gegevens document voor configuratie kunt gebruiken, moet u de vo
 In deze sectie wordt uitgelegd hoe u de configuratie bijwerkt om uw nieuwe IDP op te nemen. Hier volgt een voorbeeld configuratie.
 
 1. Voeg binnen het- `identityProviders` object een `openIdConnectProviders` object toe als er nog geen bestaat.
-1. Voeg binnen het- `openIdConnectProviders` object een sleutel toe voor uw nieuwe provider. Dit is een beschrijvende naam die wordt gebruikt om te verwijzen naar de provider in de rest van de configuratie. Als u bijvoorbeeld wilt vereisen dat alle aanvragen worden geverifieerd met deze provider, stelt u `globalValidation.unauthenticatedClientAction` in op ' RedirectToLoginPage ' en stelt u `globalValidation.unauthenticatedClientAction` deze dezelfde beschrijvende naam in.
+1. Voeg binnen het- `openIdConnectProviders` object een sleutel toe voor uw nieuwe provider. Dit is een beschrijvende naam die wordt gebruikt om te verwijzen naar de provider in de rest van de configuratie. Als u bijvoorbeeld wilt vereisen dat alle aanvragen worden geverifieerd met deze provider, stelt u `globalValidation.unauthenticatedClientAction` in op ' RedirectToLoginPage ' en stelt u `redirectToProvider` deze dezelfde beschrijvende naam in.
 1. Wijs een object toe aan die sleutel met een `registration` object binnen het, en optioneel een `login` object:
     
     ```json

@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564622"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889205"
 ---
 # <a name="what-is-azure-sentinel"></a>Wat is Azure Sentinel?
 
 Microsoft Azure Sentinel is een schaalbaar, cloudeigen oplossing voor **Security Information Event Management (SIEM)** en **Security Orchestration Automated Response (SOAR)** . Azure Sentinel levert intelligente beveiligingsanalyses en bedreigingsinformatie voor de hele onderneming en is daardoor één oplossing voor waarschuwingsdetectie, zichtbaarheid van bedreigingen, proactieve opsporing en reactie op bedreigingen. 
 
-Met Azure Sentinel hebt u het overzicht over de hele onderneming, waardoor u zich niet meer druk hoeft te maken over steeds geavanceerdere aanvallen, toenemende hoeveelheden waarschuwingen en de lange duur voordat oplossingen worden gevonden.
+Met Azure Sentinel hebt u overzicht over de hele onderneming, waardoor u zich niet meer druk hoeft te maken over steeds geavanceerdere aanvallen, toenemende hoeveelheden waarschuwingen en de lange duur voordat oplossingen worden gevonden.
 
 - **Verzamel gegevens op cloudschaal** voor alle gebruikers, apparaten, toepassingen en infrastructuur, zowel on-premises als in meerdere clouds. 
 
@@ -43,7 +43,7 @@ Azure Sentinel bouwt voort op het volledige scala aan bestaande Azure-services e
 
 ## <a name="connect-to-all-your-data"></a>Verbinden met al uw gegevens
 
-U moet eerst [verbinding maken met uw beveiligingsbronnen](connect-data-sources.md) om Azure Sentinel te onboarden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft Threat Protection-oplossingen en Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format, Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden.  
+U moet eerst [verbinding maken met uw beveiligingsbronnen](connect-data-sources.md) om Azure Sentinel te onboarden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft 365 Defender (voorheen Microsoft Threat Protection)-oplossingen en Microsoft 365-bronnen, waaronder Office 365, Azure AD, Microsoft Defender for Identity (voorheen Azure ATP), Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format, Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden. 
 
 ![Gegevensverzamelaars](./media/collect-data/collect-data-page.png)
 
@@ -82,13 +82,13 @@ Met de hulpprogramma's van Azure Sentinel voor [uitgebreid onderzoek](tutorial-i
 
 Gebruik de [krachtige opsporingsprogramma's voor zoeken en query's uitvoeren van Azure Sentinel](hunting.md), gebaseerd op het MITRE-framework, om proactief beveiligingsrisico's op te sporen in de gegevensbronnen van uw organisatie, voordat een waarschuwing wordt geactiveerd. Nadat u hebt ontdekt welke opsporingsquery waardevolle inzichten biedt in mogelijke aanvallen, kunt u ook aangepaste detectieregels maken op basis van uw query en deze inzichten weergeven als waarschuwingen voor de beantwoorders van uw beveiligingsincidenten. Tijdens het opsporen kunt u bladwijzers maken voor interessante gebeurtenissen, zodat u er later naar kunt terugkeren, deze met anderen kunt delen en ze kunt groeperen met andere gerelateerde gebeurtenissen om een duidelijk incident te maken voor onderzoek.
 
-![Zoeken](./media/overview/hunting.png)
+![Overzicht van opsporingsfunctie](./media/overview/hunting.png)
 
 ## <a name="community"></a>Community
 
 De Azure Sentinel-community is een belangrijke bron voor detectie en automatisering van bedreigingen. Onze Microsoft-beveiligingsanalisten werken voortdurend aan het maken en toevoegen van nieuwe werkmappen, playbooks, opsporingsquery's en meer en plaatsen deze in de community zodat u ze in uw omgeving kunt gebruiken. U kunt voorbeeldinhoud downloaden van de GitHub[-opslagplaats](https://aka.ms/asicommunity) van de privé-community om aangepaste werkmappen, opsporingsquery's, notebooks en playbooks voor Azure Sentinel te maken. 
 
-![Community](./media/overview/community.png)
+![De gebruikerscommunity verkennen](./media/overview/community.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
