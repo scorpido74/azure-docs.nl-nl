@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419262"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972266"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
+
+> [!NOTE]
+> Key Vault resource provider ondersteunt twee resource typen: **kluizen** en **beheerde hsm's**. Toegangs beheer dat in dit artikel wordt beschreven, is alleen van toepassing op **kluizen**. Zie [Managed HSM Access Control](../managed-hsm/access-control.md)(Engelstalig) voor meer informatie over toegangs beheer voor beheerde HSM.
 
 Toegangs beheer op basis van rollen (Azure RBAC) van Azure is een autorisatie systeem dat is gebaseerd op [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) dat een nauw keurig toegangs beheer van Azure-resources biedt.
 
@@ -61,10 +64,6 @@ Zie [ingebouwde rollen van Azure](https://docs.microsoft.com/azure/role-based-ac
 Het nieuwe Azure RBAC-machtigings model voor sleutel kluis biedt een alternatief voor het model voor het toegangs beleid van de kluis. 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Azure RBAC-machtigingen inschakelen voor Key Vault
-
-Tijdens de preview moet u de functie code van Azure RBAC (Microsoft_Azure_KeyVault_RBACEnabled = True) gebruiken om de nieuwe machtigings model opties te bekijken.
-
-https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > Als Azure RBAC-machtigings model wordt ingesteld, worden alle machtigingen voor toegangs beleid ongeldig gemaakt. Dit kan leiden tot storingen wanneer gelijkwaardige Azure-rollen niet zijn toegewezen.

@@ -1,14 +1,14 @@
 ---
 title: Overwegingen voor een Cloud Solution Provider-programma
 description: Voor CSP-partners zorgt Azure gedelegeerd resource beheer voor betere beveiliging en controle door gedetailleerde machtigingen in te scha kelen.
-ms.date: 07/29/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 27bb1c4f82fe3c9ff8abe74b74bef19f16a8a874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429450"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967166"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse en het programma Cloud Solution Provider
 
@@ -23,7 +23,7 @@ Met [Azure Lighthouse](../overview.md)kunt u Azure delegated Resource Management
 
 Met ADMINISTRATE krijgt elke gebruiker met de rol [beheerder agent](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in uw Tenant administrate toegang tot Azure-abonnementen die u via het CSP-programma maakt. Gebruikers die toegang nodig hebben tot abonnementen van klanten, moeten lid zijn van deze groep. ADMINISTRATE staat niet toe dat de flexibiliteit om afzonderlijke groepen te maken die met verschillende klanten werken, of om verschillende rollen voor groepen of gebruikers in te scha kelen.
 
-![Tenant beheer met ADMINISTRATE](../media/csp-1.jpg)
+![Diagram met het Tenant beheer met ADMINISTRATE.](../media/csp-1.jpg)
 
 ## <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
@@ -31,7 +31,7 @@ Met Azure Lighthouse kunt u verschillende groepen toewijzen aan verschillende kl
 
 Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die worden beschreven in [onboarding van een abonnement op Azure Lighthouse](../how-to/onboard-customer.md). Gebruikers met de rol beheerder agent in uw Tenant kunnen dit onboarding uitvoeren.
 
-![Tenant beheer met ADMINISTRATE en Azure delegated resource management](../media/csp-2.jpg)
+![Diagram van het beheer van tenants met behulp van ADMINISTRATE en Azure gedelegeerd resource beheer.](../media/csp-2.jpg)
 
 > [!TIP]
 > [Aanbiedingen voor beheerde services](managed-services-offers.md) met persoonlijke abonnementen worden niet ondersteund met-abonnementen die zijn gemaakt via een wederverkoper van het programma van de Cloud Solution Provider (CSP). U kunt deze abonnementen op Azure Lighthouse onboarden met [behulp van Azure Resource Manager-sjablonen](../how-to/onboard-customer.md).
@@ -39,7 +39,7 @@ Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die 
 > [!NOTE]
 > De [pagina **mijn klanten** in de Azure Portal](../how-to/view-manage-customers.md) bevat nu een **Cloud Solution Provider (preview)** -sectie waarin facturerings gegevens en resources voor CSP-klanten worden weer gegeven die [de micro soft-klant overeenkomst (MCA) hebben ondertekend](/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../cost-management-billing/understand/mpa-overview.md)voor meer informatie.
 >
-> CSP-klanten kunnen in deze sectie worden weer gegeven, ongeacht of ze ook zijn voor bereid voor Azure delegated resource management. Als dat het geval is, worden ze ook weer gegeven in de sectie **klanten** , zoals wordt beschreven in [klanten en gedelegeerde resources weer geven en beheren](../how-to/view-manage-customers.md). Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt uitbrengen voor het beheer van de gedelegeerde resources van Azure.
+> CSP-klanten kunnen in deze sectie worden weer gegeven, ongeacht of ze ook zijn geboardd naar Azure Lighthouse. Als dat het geval is, worden ze ook weer gegeven in de sectie **klanten** , zoals wordt beschreven in [klanten en gedelegeerde resources weer geven en beheren](../how-to/view-manage-customers.md). Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt opheffen in azure Lighthouse.
 
 ## <a name="next-steps"></a>Volgende stappen
 

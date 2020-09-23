@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018141"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969599"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerd toegangs beheer configureren in de oplossings versneller voor externe controle
 
@@ -52,7 +52,7 @@ De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatis
 
 Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/view-applications-portal.md) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Controleer of de [gebruiker zich in de map bevindt](../active-directory/fundamentals/add-users-azure-active-directory.md) die u gebruikt. U hebt gekozen voor de map die u wilt gebruiken wanneer u zich aanmeldt bij de [Microsoft Azure IOT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -site. De mapnaam wordt weer gegeven in de rechter bovenhoek van de [pagina](https://www.azureiotsolutions.com/Accelerators).
 
@@ -62,7 +62,7 @@ Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal geb
 
 1. Controleer of u de eigenaar van de toepassing bent door te klikken op de toepassing en vervolgens te klikken op **eigen aren**. In de volgende scherm afbeelding is **Contoso-beheerder** een eigenaar van de toepassing **Contoso-RM4** :
 
-    ![Eigenaren](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![Scherm afbeelding toont de optie eigen aars beheren geselecteerd, waarin de eigen aren van de toepassing contoso r m 4 worden weer gegeven.](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     Als u geen eigenaar bent, moet u een bestaande eigenaar vragen om u toe te voegen aan de lijst. Alleen eigen aars kunnen toepassings rollen toewijzen, zoals **beheerder** of **alleen-lezen** aan andere gebruikers.
 

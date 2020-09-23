@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/09/2020
-ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/22/2020
+ms.openlocfilehash: ac0b04db783571b6ef31161adaf18b4220244c6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950473"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969814"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Preview-functies in azure Cognitive Search
 
@@ -23,9 +23,8 @@ Preview-functies die worden overgezet naar algemene Beschik baarheid, worden ver
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
-| [**Vaardigheid van Azure Machine Learning (AML)**](cognitive-search-aml-skill.md) | AI-verrijking| Een nieuw vaardigheids type voor het integreren van een Afleidings eindpunt van Azure Machine Learning. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md). | [Zoek REST API 2020-06-30-preview](/rest/api/searchservice/) of 2019-05-06-preview gebruiken. Ook beschikbaar in de portal, in het ontwerp van vaardig heden, aangenomen dat Cognitive Search en Azure ML-Services in hetzelfde abonnement zijn geïmplementeerd. |
-| [**featuresMode-para meter**](/rest/api/searchservice/search-documents#featuresmode) | Relevantie (Score) | Uitbrei ding van relevantie score voor het toevoegen van Details: per veld vergelijk bare Score, per veld term frequentie en per veld aantal unieke tokens die overeenkomen. U kunt deze gegevens punten gebruiken in [aangepaste Score oplossingen](https://github.com/Azure-Samples/search-ranking-tutorial). | Voeg deze query parameter toe met behulp van [Zoek documenten (rest)](/rest/api/searchservice/search-documents) met API-Version = 2020-06 -30-preview of 2019-05-06-preview. |
-| [**Beheerde service-identiteit**](search-howto-managed-identities-data-sources.md) | Indexeer functies, beveiliging| Registreer een zoek service met Azure Active Directory om het een vertrouwde service te maken en gebruik vervolgens RBAC-machtigingen voor Azure-gegevens bronnen om alleen-lezen toegang toe te staan door een Indexeer functie. | Toegang tot deze mogelijkheid bij het gebruik van de portal of het maken van een [gegevens bron (rest)](/rest/api/searchservice/create-data-source) met API-Version = 2020-06 -30-preview of API-Version = 2019-05 -06-preview. |
+| [**Vaardigheid van Azure Machine Learning (AML)**](cognitive-search-aml-skill.md) | AI-verrijking| Een nieuw vaardigheids type voor het integreren van een Afleidings eindpunt van Azure Machine Learning. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md). | [Zoek REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/) of 2019-05-06-preview gebruiken. Ook beschikbaar in de portal, in het ontwerp van vaardig heden, aangenomen dat Cognitive Search en Azure ML-Services in hetzelfde abonnement zijn geïmplementeerd. |
+| [**featuresMode-para meter**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | Relevantie (Score) | Uitbrei ding van relevantie score voor het toevoegen van Details: per veld vergelijk bare Score, per veld term frequentie en per veld aantal unieke tokens die overeenkomen. U kunt deze gegevens punten gebruiken in [aangepaste Score oplossingen](https://github.com/Azure-Samples/search-ranking-tutorial). | Voeg deze query parameter toe met behulp van [Zoek documenten (rest)](https://docs.microsoft.com/rest/api/searchservice/search-documents) met API-Version = 2020-06 -30-preview of 2019-05-06-preview. |
 | [**Sessies voor fout opsporing**](cognitive-search-debug-session.md) | Portal, AI-verrijking (vaardig heden) | Een in-Session kwalificatieset-editor die wordt gebruikt om problemen met een vaardig heden te onderzoeken en op te lossen. Oplossingen die worden toegepast tijdens een foutopsporingssessie, kunnen worden opgeslagen in een vakkennisset in de service. | Alleen Portal, met behulp van koppelingen op de pagina overzicht voor het openen van een foutopsporingssessie. |
 | [**Voorlopig verwijderen van systeem eigen BLOB**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexeer functies, Azure-blobs| De Azure Blob Storage Indexeer functie in azure Cognitive Search herkent blobs met een voorlopig verwijderde status en verwijdert het bijbehorende Zoek document tijdens het indexeren. | Voeg deze configuratie-instelling toe met [Create Indexeer functie (rest)](/rest/api/searchservice/create-indexer) met API-Version = 2020-06 -30-preview of API-Version = 2019-05 -06-preview. |
 | [**Zoek vaardigheid aangepaste entiteit**](cognitive-search-skill-custom-entity-lookup.md ) | AI-verrijking (vaardig heden) | Een cognitieve vaardigheid die zoekt naar tekst van een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet helemaal exact. | Raadpleeg deze preview-vaardigheid met de editor van de vaardig heden in de portal of [Maak vaardig heden (rest)](/rest/api/searchservice/create-skillset) met API-Version = 2020-06 -30-preview of API-Version = 2019-05 -06-preview. |

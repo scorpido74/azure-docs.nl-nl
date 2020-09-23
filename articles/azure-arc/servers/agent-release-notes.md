@@ -1,18 +1,18 @@
 ---
-title: Wat is er nieuw in de agent voor Azure Arc enabled-servers (preview-versie)
-description: Dit artikel bevat opmerkingen bij de release van de agent voor Azure Arc-servers (preview). Voor veel van de samen vattingen vindt u koppelingen naar aanvullende informatie.
+title: Wat is er nieuw in de agent voor servers met Azure Arc ingeschakeld
+description: Dit artikel bevat opmerkingen bij de release voor servers agent voor Azure Arc ingeschakeld. Voor veel van de samen vattingen vindt u koppelingen naar aanvullende informatie.
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908166"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>Wat is er nieuw in de agent voor Azure Arc enabled-servers (preview-versie)
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Wat is er nieuw in de agent voor servers met Azure Arc ingeschakeld
 
-De met Azure Arc ingeschakelde servers (preview) verbonden machine agent ontvangt voortdurend verbeteringen. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
+De Azure-servers die zijn verbonden met de computer agent, ontvangen voortdurend verbeteringen. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 
 - De nieuwste releases
 - Bekende problemen
@@ -60,4 +60,4 @@ Als u een oudere versie van de Linux-agent gebruikt en deze hebt geconfigureerd 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees voordat u Arc voor servers (preview) evalueert of inschakelt op meerdere hybride machines het artikel [Overzicht van Connected Machine Agent](agent-overview.md) om inzicht te krijgen in de vereisten, de technische details van de agent en de implementatiemethoden.
+Lees voordat u Arc-servers evalueert of inschakelt op meerdere hybride machines het artikel [Overzicht van Connected Machine Agent](agent-overview.md) om inzicht te krijgen in de vereisten, de technische details van de agent en de implementatiemethoden.

@@ -1,6 +1,6 @@
 ---
 title: Een rol toewijzen aan een groep met behulp van Privileged Identity Management in azure AD | Microsoft Docs
-description: Preview van aangepaste Azure AD-rollen voor het delegeren van identiteits beheer. Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
+description: Meer informatie over hoe u een Azure Active Directory (Azure AD)-rol aan een groep kunt toewijzen met behulp van Azure AD Privileged Identity Management (PIM).
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476019"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971169"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Een rol toewijzen aan een groep met behulp van Privileged Identity Management
 
@@ -104,6 +104,6 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)
+- [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](roles-groups-faq-troubleshooting.md)
 - [Instellingen voor Azure AD-beheerdersrol configureren in Privileged Identity Management](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Azure-resource rollen toewijzen in Privileged Identity Management](../privileged-identity-management/pim-resource-roles-assign-roles.md)

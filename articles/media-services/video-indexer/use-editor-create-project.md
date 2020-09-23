@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73839168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970089"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>De Video Indexer editor gebruiken om projecten te maken
 
@@ -51,11 +51,11 @@ In dit artikel wordt beschreven hoe u een volledig nieuw project maakt en hoe u 
     
     In de onderstaande afbeelding zoeken we naar Video's waarin "GitHub" wordt vermeld.
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![Scherm afbeelding toont het zoeken naar Video's waarin GitHub met twee resultaten wordt vermeld.](./media/video-indexer-view-edit/github.png)
 
     U kunt de resultaten verder filteren door **filter resultaten**te selecteren. U kunt filteren om Video's weer te geven die een bepaalde persoon bevatten of om op te geven dat u alleen video resultaten wilt zien die een in een bepaalde taal of een specifieke eigenaar hebben. <br/> U kunt ook het bereik van uw query opgeven. Als u bijvoorbeeld wilt zoeken in ' GitHub ' in de OCR, selecteert u **visuele tekst**.
 
-    ![Filteren](./media/video-indexer-view-edit/visual-text.png)
+    ![Filter](./media/video-indexer-view-edit/visual-text.png)
 
     U kunt meerdere filters laag met uw query. Gebruik de **+** / **-** knoppen om filters toe te voegen/te verwijderen. Gebruik **Clear filters** om alle filters te verwijderen.
 1. Als u Video's wilt toevoegen, selecteert u deze en selecteert u vervolgens **toevoegen**.
@@ -63,7 +63,7 @@ In dit artikel wordt beschreven hoe u een volledig nieuw project maakt en hoe u 
 
     U kunt de volg orde van de Video's wijzigen door te slepen en neer te zetten of door de menu knop lijst te selecteren en **omlaag** of omhoog te **gaan**. In het menu lijst kunt u ook de video uit dit project verwijderen. 
 
-    ![Opnieuw rangschikken](./media/video-indexer-view-edit/rearrange.png)
+    ![Scherm afbeelding toont Video Indexer met een context menu voor een van de Video's die u wilt verwijderen, het wissen van de selectie of het omlaag verplaatsen.](./media/video-indexer-view-edit/rearrange.png)
     
     U hebt de mogelijkheid om op elk gewenst moment meer Video's toe te voegen aan dit project door **Video's toevoegen**te selecteren. U kunt ook meerdere exemplaren van dezelfde video toevoegen aan uw project. U kunt dit doen als u een clip van de ene video wilt weer geven en vervolgens een clip van een andere clip en vervolgens in de eerste video wilt maken. 
 
@@ -81,7 +81,7 @@ Als u op de pijl-omlaag aan de rechter kant van elke video klikt, wordt de inzic
 
     U kunt bijvoorbeeld clips zien waarin GitHub wordt genoemd terwijl Donovan bruin op het scherm wordt weer gegeven. Hiervoor moet u een ' include '-filter toevoegen dat "personen" als het type inzicht heeft. Vervolgens typt u ' Donovan Brown ' in het zoekvak voor het filter.
     
-    ![Opnemen](./media/video-indexer-view-edit/include.png)
+    ![Scherm afbeelding toont Video Indexer met personen die zijn geselecteerd voor een insluitings filter.](./media/video-indexer-view-edit/include.png)
     
     Als u clips wilt waar GitHub wordt vermeld terwijl Donovan bruin _niet_ op het scherm staat, wijzigt u het filter ' include ' in het filter ' exclude ' met behulp van de vervolg keuzelijst. 
 
@@ -96,7 +96,7 @@ Als u op de pijl-omlaag aan de rechter kant van elke video klikt, wordt de inzic
 > [!TIP]
 > Wanneer u uw clips selecteert en ordent, kunt u een voor beeld van de video in de speler aan de rechter kant van de pagina bekijken. 
 
-![Preview](./media/video-indexer-view-edit/preview.png)
+![Scherm afbeelding toont Video Indexer met de preview-versie van een video aan de rechter kant van het venster.](./media/video-indexer-view-edit/preview.png)
 
 Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **project opslaan**te selecteren. 
 
@@ -107,7 +107,7 @@ Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **pr
 
 1. Wanneer u klaar bent, controleert u of uw project is opgeslagen. U kunt dit project nu weer geven. Selecteer **renderen en downloaden**. 
 
-    ![Opslaan](./media/video-indexer-view-edit/save.png)
+    ![Scherm afbeelding toont Video Indexer met de optie om uw project weer te geven en te downloaden.](./media/video-indexer-view-edit/save.png)
 
     Er wordt een pop-upvenster weer gegeven waarin wordt aangegeven dat video indexer een bestand weergeeft en de download koppeling naar uw e-mail bericht wordt verzonden. Selecteer Doorgaan. 
     
@@ -130,7 +130,7 @@ U kunt rechtstreeks een nieuw project maken op basis van een video in uw account
 
     Hiermee gaat u naar de pagina die u hebt gebruikt om een nieuw project te maken. In tegens telling tot het nieuwe project ziet u de getimede Insights-segmenten van de video, die u eerder hebt bewerkt.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Overzicht van Video Indexer](video-indexer-overview.md)
 

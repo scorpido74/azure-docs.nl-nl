@@ -2,13 +2,13 @@
 title: Resourcetypen van extensies
 description: Een lijst met de Azure-resource typen wordt gebruikt om de mogelijkheden van andere resource typen uit te breiden.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/22/2020
+ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374011"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969750"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resource typen die de mogelijkheden van andere resources uitbreiden
 
@@ -21,6 +21,8 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. Advisor/onderdrukkingen
 - Micro soft. AlertsManagement/Alerts
 - Micro soft. AlertsManagement/alertsSummary
+- Micro soft. Authorization/accessReviewScheduleDefinitions
+- Micro soft. Authorization/accessReviewScheduleSettings
 - Micro soft. Authorization/checkAccess
 - Micro soft. Authorization/denyAssignments
 - Micro soft. Authorization/findOrphanRoleAssignments
@@ -34,6 +36,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Microsoft.Authorization/roleAssignments
 - Micro soft. Authorization/roleAssignmentsUsageMetrics
 - Micro soft. Authorization/roleDefinitions
+- Micro soft. automanage/configurationProfileAssignments
 - Micro soft. facturering/billingPeriods
 - Micro soft. facturering/billingPermissions
 - Micro soft. facturering/billingRoleAssignments
@@ -47,24 +50,24 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. verbruik/budgetten
 - Micro soft. verbruik/kosten
 - Micro soft. verbruik/CostTags
+- Micro soft. verbruik/tegoed
+- Micro soft. verbruik/gebeurtenissen
 - Micro soft. verbruik/prognoses
+- Micro soft. verbruik/loten
 - Micro soft. verbruik/markt plaatsen
 - Micro soft. verbruik/OperationResults
 - Micro soft. verbruik/OperationStatus
 - Micro soft. verbruik/Pricesheets
+- Micro soft. verbruik/producten
 - Micro soft. verbruik/ReservationDetails
 - Micro soft. verbruik/ReservationRecommendationDetails
 - Micro soft. verbruik/ReservationRecommendations
 - Micro soft. verbruik/ReservationSummaries
 - Micro soft. verbruik/ReservationTransactions
 - Micro soft. verbruik/Tags
+- Micro soft. verbruik/tenants
 - Micro soft. verbruik/voor waarden
 - Micro soft. verbruik/UsageDetails
-- Micro soft. verbruik/tegoed
-- Micro soft. verbruik/gebeurtenissen
-- Micro soft. verbruik/loten
-- Micro soft. verbruik/producten
-- Micro soft. verbruik/tenants
 - Micro soft. ContainerInstance/serviceAssociationLinks
 - Micro soft. CostManagement/Alerts
 - Micro soft. CostManagement/budgetten
@@ -73,12 +76,13 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. CostManagement/exports
 - Micro soft. CostManagement/ExternalSubscriptions
 - Micro soft. CostManagement/Forecast
+- Micro soft. CostManagement/Insights
 - Micro soft. CostManagement/query
 - Micro soft. CostManagement/Reportconfigs
 - Micro soft. CostManagement/Reports
 - Micro soft. CostManagement/showbackRules
 - Micro soft. CostManagement/views
-- Micro soft. CustomProviders/Associations
+- Microsoft.CustomProviders/associations
 - Micro soft. EventGrid/eventSubscriptions
 - Micro soft. EventGrid/extensionTopics
 - Micro soft. GuestConfiguration/configurationProfileAssignments
@@ -93,17 +97,19 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - micro soft. Insights/diagnosticSettingsCategories
 - micro soft. Insights/eventtypes
 - micro soft. Insights/extendedDiagnosticSettings
+- micro soft. Insights/generateLiveToken
 - micro soft. Insights/guestDiagnosticSettingsAssociation
 - micro soft. Insights/logDefinitions
 - micro soft. Insights/logboeken
+- micro soft. Insights/metricbaselines
 - micro soft. Insights/metricDefinitions
 - micro soft. Insights/metricNamespaces
-- micro soft. Insights/metricbaselines
 - micro soft. Insights/metrische gegevens
 - micro soft. Insights/myWorkbooks
 - micro soft. Insights/topologie
 - micro soft. Insights/trans acties
 - micro soft. Insights/vmInsightsOnboardingStatuses
+- Micro soft. KubernetesConfiguration/Extensions
 - Micro soft. KubernetesConfiguration/sourceControlConfigurations
 - Micro soft. Maintenance/applyUpdates
 - Micro soft. Maintenance/configurationAssignments
@@ -128,20 +134,22 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. ResourceHealth/meldingen
 - Micro soft. resources/koppelingen
 - Micro soft. resources/Tags
-- Micro soft. Security/Compliances
-- Micro soft. Security/InformationProtectionPolicies
 - Micro soft. Security/adaptiveNetworkHardenings
 - Micro soft. Security/advancedThreatProtectionSettings
 - Micro soft. Security/assessmentMetadata
 - Micro soft. Security/beoordelingen
 - Micro soft. Security/complianceResults
+- Micro soft. Security/Compliances
 - Micro soft. Security/dataCollectionAgents
 - Micro soft. Security/deviceSecurityGroups
+- Micro soft. Security/InformationProtectionPolicies
+- Micro soft. Security/iotSensors
 - Micro soft. Security/jitPolicies
 - Micro soft. Security/serverVulnerabilityAssessments
+- Micro soft. Security/sqlVulnerabilityAssessments
 - Micro soft. SecurityInsights/aggregaties
-- Micro soft. SecurityInsights/alertRuleTemplates
 - Micro soft. SecurityInsights/alertRules
+- Micro soft. SecurityInsights/alertRuleTemplates
 - Micro soft. SecurityInsights/automationRules
 - Micro soft. SecurityInsights/blad wijzers
 - Micro soft. SecurityInsights/cases
@@ -153,6 +161,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. SecurityInsights/officeConsents
 - Micro soft. SecurityInsights/Settings
 - Micro soft. SecurityInsights/threatIntelligence
+- Micro soft. SecurityInsights/Watchlists
 - Micro soft. SoftwarePlan/hybridUseBenefits
 - Micro soft. Subscription/CreateSubscription
 - micro soft. support/Supporttickets
