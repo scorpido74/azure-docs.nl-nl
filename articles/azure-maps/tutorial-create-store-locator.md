@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121252"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085311"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelfstudie: Een winkelzoeker maken met behulp van Azure Maps
 
@@ -385,7 +385,7 @@ Nu is alles ingesteld in de gebruikersinterface. We moeten nog steeds JavaScript
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Voeg code toe aan *index.js*. Met de volgende code wordt de kaart geïnitialiseerd. Er is een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens zijn er gebeurtenissen samengesteld voor het bewaken van het laden van de kaart, waarbij de zoekknop en de knop Mijn locatie in werking wordt gesteld.
+1. Voeg code toe aan *index.js*. Met de volgende code wordt de kaart geïnitialiseerd. Er is een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens zijn er gebeurtenissen samengesteld voor het bewaken van het laden van de kaart, waarbij de zoekknop en de knop Mijn locatie in werking wordt gesteld.
 
    Wanneer de gebruiker de zoekknop selecteert, of een locatie intypt in het zoekvak en op Enter drukt, wordt een fuzzy zoekopdracht gestart met de zoekopdracht van de gebruiker. Geef een matrix met ISO 2-land-/regiowaarden door aan de `countrySet`-optie om de zoekresultaten te beperken tot die landen/regio's. Het beperken van de te doorzoeken landen/regio's helpt de nauwkeurigheid van de geretourneerde zoekresultaten te verhogen. 
   
@@ -935,7 +935,7 @@ In dit zelfstudie leert u hoe u een eenvoudige winkelzoeker kunt maken met behul
 > * Voeg de mogelijkheid toe om [filters in te stellen](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
 > * Voeg ondersteuning toe voor het opgeven van een aanvankelijke zoekwaarde door een queryreeks te gebruiken. Wanneer u deze optie in uw winkelzoeker opneemt, kunnen gebruikers zoekopdrachten markeren met een bladwijzer en delen. Dit biedt ook een eenvoudige methode waarmee u zoekopdrachten naar deze pagina kunt doorgeven vanaf een andere pagina.  
 > * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/quickstart-html). 
-> * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
+> * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
 
 > [!div class="nextstepaction"]
 > [Volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)

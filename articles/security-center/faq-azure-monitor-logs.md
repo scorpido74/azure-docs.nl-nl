@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906378"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die Azure Monitor-logboeken al gebruiken<a name="existingloganalyticscust"></a>
 
@@ -32,10 +32,11 @@ Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte die is g
 > Als de Log Analytics-agent rechtstreeks op de virtuele machine is geïnstalleerd (niet als een Azure-extensie), installeert Security Center de Log Analytics agent niet en is de beveiligings controle beperkt.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installeert Security Center oplossingen op mijn bestaande Log Analytics-werk ruimten? Wat zijn de gevolgen voor facturering?
-Als Security Center identificeert dat er al een virtuele machine is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte inschakelen volgens de prijs categorie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md), zodat de facturering op dezelfde manier blijft.
+Als Security Center identificeert dat een virtuele machine al is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte op basis van uw prijs configuratie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md), zodat de facturering op dezelfde manier blijft.
 
-- **Gratis laag** – Security Center installeert de oplossing ' SecurityCenterFree ' in de werk ruimte. Er worden geen kosten in rekening gebracht voor de gratis laag.
-- **Standard-laag** – Security Center installeert de oplossing beveiliging in de werk ruimte.
+- **Azure Defender uit** : Security Center installeert de oplossing ' SecurityCenterFree ' in de werk ruimte. Er worden geen kosten in rekening gebracht.
+- 
+- **Met Azure Defender on** – Security Center installeert u de oplossing beveiliging in de werk ruimte.
 
    ![Oplossingen in de standaardwerk ruimte](./media/security-center-platform-migration-faq/solutions.png)
 
@@ -45,4 +46,4 @@ Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azur
 Als Security Center de Log Analytics-agent op Vm's installeert, worden de standaardwerk ruimte (n) gebruikt die door Security Center is gemaakt als Security Center niet naar een bestaande werk ruimte wijst.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Ik heb al een beveiligings oplossing voor mijn werk ruimten. Wat zijn de gevolgen voor facturering?
-De oplossing beveiligings & controle wordt gebruikt om Security Center Standard-laag functies voor Azure-Vm's in te scha kelen. Als de oplossing beveiligings & controle al is geïnstalleerd op een werk ruimte, gebruikt Security Center de bestaande oplossing. Er is geen wijziging in de facturering.
+De oplossing beveiligings & controle wordt gebruikt om **Azure Defender voor servers**in te scha kelen. Als de oplossing beveiligings & controle al is geïnstalleerd op een werk ruimte, gebruikt Security Center de bestaande oplossing. Er is geen wijziging in de facturering.

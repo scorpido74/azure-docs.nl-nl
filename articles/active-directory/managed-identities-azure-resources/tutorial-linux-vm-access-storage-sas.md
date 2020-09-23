@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3b0bb70b82e8c34c50743bf56069488e2d4c4e39
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260234"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968776"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Zelfstudie: Toegang krijgen tot Azure Storage via SAS-referenties met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM)
 
@@ -154,7 +154,7 @@ echo "This is a test file." > test.txt
 
 Voer de verificatie uit met de CLI-opdracht `az storage` met behulp van de SAS-referentie, en upload het bestand naar de blobcontainer. Voor deze stap moet u [de nieuwste versie van Azure CLI installeren](/cli/azure/install-azure-cli) op de virtuele machine, als u dat nog niet gedaan hebt.
 
-```azurecli-interactive
+```azurecli
  az storage blob upload --container-name 
                         --file 
                         --name
@@ -176,7 +176,7 @@ U kunt het bestand ook downloaden met behulp van Azure CLI en de verificatie uit
 
 Aanvraag: 
 
-```azurecli-interactive
+```azurecli
 az storage blob download --container-name
                          --file 
                          --name 

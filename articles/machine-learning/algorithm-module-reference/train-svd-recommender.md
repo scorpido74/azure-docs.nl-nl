@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890235"
 ---
 # <a name="train-svd-recommender"></a>Aanbevelingsfunctie van SVD-training
 
-In dit artikel wordt beschreven hoe u de module Train SVD Adviseering gebruikt in Azure Machine Learning Designer (preview). Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
+In dit artikel wordt beschreven hoe u de module Train SVD aanbevelen in Azure Machine Learning Designer gebruikt. Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
 
 De Train SVD Aanbevelener-module leest een gegevensset van de beoordeling van de gebruikers items. Er wordt een getrainde SVD-aanbeveling geretourneerd. U kunt het getrainde model vervolgens gebruiken om beoordelingen te voors pellen of aanbevelingen te genereren met behulp van de module [Score SVD aanbevelen](score-svd-recommender.md) .  
 

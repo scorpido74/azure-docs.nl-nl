@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890168"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Opties voor gegevens opname van Azure Machine Learning werk stromen
 
@@ -25,7 +25,7 @@ In dit artikel vindt u informatie over de voor-en nadelen van opties voor gegeve
 U kunt kiezen uit:
 + [Azure Data Factory](#azure-data-factory) pijp lijnen, speciaal gebouwd voor het extra heren, laden en transformeren van gegevens
 
-+ [Azure machine learning PYTHON SDK](#azure-machine-learning-python-sdk), die een aangepaste code oplossing biedt voor elementaire gegevens opname taken.
++ [Azure machine learning PYTHON SDK](#azure-machine-learning-python-sdk), met een oplossing voor aangepaste code voor gegevens opname taken.
 
 + een combi natie van beide
 
@@ -70,7 +70,7 @@ Uw eigen python-scripts configureren | Ondersteunt geen systeem eigen ondersteun
 Gegevens voorbereiding als onderdeel van elke model training-uitvoering|Ontwikkel vaardigheden vereist voor het maken van een script voor gegevens opname
 Ondersteunt gegevens voorbereidings scripts op verschillende reken doelen, waaronder [Azure machine learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) |Biedt geen gebruikers interface voor het maken van het opname mechanisme
 
-In het volgende diagram bestaat de Azure Machine Learning-pijp lijn uit twee stappen: gegevens opname en model training. De stap gegevens opname omvat taken die kunnen worden uitgevoerd met behulp van python-bibliotheken en de python-SDK, zoals het extra heren van gegevens uit lokale/webbronnen en basis gegevens transformaties, zoals ontbrekende waarde-overlopende waarden. De trainings stap gebruikt vervolgens de voor bereide gegevens als invoer voor uw trainings script om uw machine learning model te trainen. 
+In het volgende diagram bestaat de Azure Machine Learning-pijp lijn uit twee stappen: gegevens opname en model training. De stap gegevens opname omvat taken die kunnen worden uitgevoerd met behulp van python-bibliotheken en de python-SDK, zoals het extra heren van gegevens uit lokale/webbronnen en gegevens transformaties, zoals ontbrekende waarde-overlopende waarden. De trainings stap gebruikt vervolgens de voor bereide gegevens als invoer voor uw trainings script om uw machine learning model te trainen. 
 
 ![Azure-pijp lijn en SDK-gegevens opname](media/concept-data-ingestion/data-ingest-option-two.png)
 

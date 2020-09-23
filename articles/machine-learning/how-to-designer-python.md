@@ -1,7 +1,7 @@
 ---
-title: Python-script uitvoeren in de ontwerp functie (preview-versie)
+title: Python-script uitvoeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van python in Azure Machine Learning Designer (preview) voor het transformeren van gegevens.
+description: Meer informatie over het gebruik van python in Azure Machine Learning Designer voor het transformeren van gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: aae92b4a499a46956262ea902fc12341f8cda63b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 6a393cf2c0787a2bc2111581126cbc261d85f1f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897731"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
 

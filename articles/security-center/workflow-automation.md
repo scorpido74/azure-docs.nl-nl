@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375258"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904639"
 ---
-# <a name="workflow-automation"></a>Werk stroom automatisering
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatische reacties op waarschuwingen en aanbevelingen maken met werk stroom automatisering
 
 Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead. Het kan ook de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
 
@@ -30,8 +30,8 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar|
-|Koers|Gratis laag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|Gratis|
 |Vereiste rollen en machtigingen:|De rol of **eigenaar** van de **beveiligings beheerder** voor de resource groep<br>Moet ook schrijf machtigingen hebben voor de doel resource<br><br>Als u met Azure Logic Apps werk stromen wilt werken, moet u ook over de volgende Logic Apps-rollen/-machtigingen beschikken:<br> - De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )<br> - De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps<br>Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) China gov, andere gov|
 |||
@@ -42,7 +42,7 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
 1. Selecteer op de zijbalk van Security Center **werk stroom automatisering**.
 
-    [![Lijst met werk stroom Automatiseringen](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Lijst met werk stroom Automatiseringen":::
 
     Op deze pagina kunt u nieuwe Automation-regels maken, maar ook bestaande voor het inschakelen, uitschakelen of verwijderen.
 
@@ -53,7 +53,7 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
     1. De triggers waarmee deze automatische werk stroom wordt gestart. U wilt bijvoorbeeld dat uw logische app wordt uitgevoerd wanneer er een beveiligings waarschuwing wordt gegenereerd die ' SQL ' bevat.
     1. De logische app die wordt uitgevoerd wanneer aan de voor waarden van de trigger wordt voldaan. 
 
-        [![Lijst met werk stroom Automatiseringen](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Deel venster werk stroom automatisering toevoegen":::
 
 1. Klik in de sectie acties op **een nieuw item maken** om het proces voor het maken van de logische app te starten.
 
@@ -101,7 +101,7 @@ Als u de onbewerkte gebeurtenis schema's wilt bekijken van de beveiligings waars
 
 In dit artikel hebt u geleerd hoe u Logic Apps maakt, hoe u de uitvoering ervan automatiseert in Security Center en ze hand matig uitvoert. 
 
-Zie voor andere verwante materialen: 
+Zie voor verwante materiaal: 
 
 - [De module Microsoft Learn voor het automatiseren van een beveiligings antwoord met werk stroom automatisering](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Aanbevelingen voor beveiliging in Azure Security Center](security-center-recommendations.md)

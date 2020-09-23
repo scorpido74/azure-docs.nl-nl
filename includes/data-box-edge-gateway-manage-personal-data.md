@@ -18,7 +18,7 @@ ms.locfileid: "67176676"
   - Adres
   - Plaats
   - Post code
-  - Status
+  - Staat
   - Land/provincie/regio
   - Volgnummer van verzending
 

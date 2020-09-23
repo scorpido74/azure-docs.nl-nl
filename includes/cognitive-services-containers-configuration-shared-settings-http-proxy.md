@@ -13,7 +13,7 @@ ms.locfileid: "88638930"
 ---
 Als u een HTTP-proxy wilt configureren voor het maken van uitgaande aanvragen, gebruikt u deze twee argumenten:
 
-| Naam | Gegevenstype | Beschrijving |
+| Name | Gegevenstype | Beschrijving |
 |--|--|--|
 |HTTPS_PROXY|tekenreeks|De proxy die moet worden gebruikt, bijvoorbeeld `https://proxy:8888`<br>`<proxy-url>`|
 |HTTPS_PROXY_CREDS|tekenreeks|Alle referenties die nodig zijn voor verificatie bij de proxy, bijvoorbeeld gebruikers naam: wacht woord.|

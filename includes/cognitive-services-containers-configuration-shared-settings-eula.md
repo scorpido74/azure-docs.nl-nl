@@ -11,9 +11,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712428"
 ---
-De `Eula` instelling geeft aan dat u de licentie voor de container hebt geaccepteerd. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet worden ingesteld op `accept`.
+De `Eula` instelling geeft aan dat u de licentie voor de container hebt geaccepteerd. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet worden ingesteld op `accept` .
 
-|Vereist| Naam | Gegevenstype | Beschrijving |
+|Vereist| Name | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
 |Ja| `Eula` | Tekenreeks | Acceptatie van licenties<br><br>Voorbeeld:<br>`Eula=accept` |
 

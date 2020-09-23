@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Zie telemetrie-berichten van apparaten inslikken van IoT Hub.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 8/11/2020
+ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7e6c200f0bec90fb73122e50885f2e6ad7420aeb
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564386"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983328"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
@@ -31,20 +31,20 @@ Voordat u verder gaat met dit voor beeld, moet u de volgende resources instellen
 
 ### <a name="example-telemetry-scenario"></a>Voor beeld van telemetrie-scenario
 
-In deze procedure wordt beschreven hoe u berichten van IoT Hub naar Azure Digital Apparaatdubbels verzendt met behulp van een Azure-functie. Er zijn veel mogelijke configuraties en overeenkomende strategieën die u kunt gebruiken, maar het voor beeld voor dit artikel bevat de volgende onderdelen:
-* Een thermo meter-apparaat in IoT Hub met een bekende apparaat-ID.
+In deze procedure wordt beschreven hoe u berichten van IoT Hub naar Azure Digital Apparaatdubbels verzendt met behulp van een Azure-functie. Er zijn veel mogelijke configuraties en overeenkomende strategieën die u kunt gebruiken voor het verzenden van berichten, maar het voor beeld voor dit artikel bevat de volgende onderdelen:
+* Een thermo meter-apparaat in IoT Hub met een bekende apparaat-ID
 * Een digitale dubbele om het apparaat te vertegenwoordigen met een overeenkomende ID
 
 > [!NOTE]
 > In dit voor beeld wordt een eenvoudige ID-overeenkomst gebruikt tussen de apparaat-ID en de bijbehorende digitale dubbele ID, maar het is mogelijk om meer geavanceerde toewijzingen van het apparaat aan de dubbele waarde toe te voegen (zoals bij een toewijzings tabel).
 
-Wanneer een temperatuur telemetrie-gebeurtenis wordt verzonden door het Thermo meter-apparaat, moet de eigenschap *Tempe ratuur* van het digitale dubbele worden bijgewerkt. Dit scenario wordt beschreven in een diagram hieronder:
+Wanneer een temperatuur telemetrie-gebeurtenis wordt verzonden door het Thermo staat-apparaat, wordt de telemetrie door een Azure-functie verwerkt en wordt de eigenschap *Tempe ratuur* van de digitale dubbele taak moet worden bijgewerkt. Dit scenario wordt beschreven in een diagram hieronder:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek wordt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie verzonden, waarmee een temperatuur eigenschap op een dubbele in azure Digital Apparaatdubbels wordt bijgewerkt." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek verzendt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie, waarmee een temperatuur eigenschap wordt bijgewerkt op een dubbele in azure Digital Apparaatdubbels." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Een model en dubbele toevoegen
 
-U hebt een dubbele to-update met IoT hub-gegevens nodig.
+U kunt een model toevoegen/uploaden met behulp van de CLI-opdracht hieronder en vervolgens een dubbele gebruiken dit model maken dat wordt bijgewerkt met informatie uit IoT Hub.
 
 Het model ziet er als volgt uit:
 ```JSON
@@ -129,7 +129,9 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>Uw Azure-functie code bijwerken
 
-Nu u de code uit de vorige voor beelden kent, opent u Visual Studio en vervangt u de code van uw Azure-functie door deze voorbeeld code.
+Nu u de code van de eerdere voor beelden begrijpt, opent u de Azure-functie vanuit de sectie [*vereisten*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) in Visual Studio. (Als u geen Azure-functie hebt, gaat u naar de koppeling in de vereisten om er nu een te maken).
+
+Vervang de code van uw Azure-functie door deze voorbeeld code.
 
 ```csharp
 using System;
@@ -191,21 +193,52 @@ namespace IotHubtoTwins
     }
 }
 ```
+Sla uw functie code op en publiceer de functie-app in Azure. U kunt dit doen door te verwijzen naar [*het gedeelte functie-app publiceren*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure) van [*instructies: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md).
+
+Nadat de publicatie is voltooid, ziet u de uitvoer in het opdracht venster van Visual Studio, zoals hieronder wordt weer gegeven:
+
+```cmd
+1>------ Build started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+1>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>------ Publish started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\Out\
+2>Publishing C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\adtIngestFunctionSample - 20200911112545669.zip to https://adtingestfunctionsample20200818134346.scm.azurewebsites.net/api/zipdeploy...
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
+```
+U kunt ook de status van het publicatie proces controleren in het [Azure Portal](https://portal.azure.com/). Zoek naar de _resource groep_ en ga naar _activiteiten logboek_ en zoek naar het _publicatie profiel_ voor het publiceren van de web-app in de lijst en controleer of de status is geslaagd.
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Scherm afbeelding van de Azure Portal waarin de status van het publicatie proces wordt weer gegeven.":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>Verbind uw functie met IoT Hub
 
-1. Stel een gebeurtenis bestemming in voor hub-gegevens. Ga in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar. Maak onder **gebeurtenissen**een abonnement voor uw Azure-functie. 
+Stel een gebeurtenis bestemming in voor hub-gegevens.
+Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar dat u hebt gemaakt in de sectie [*vereisten*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) . Maak onder **gebeurtenissen**een abonnement voor uw Azure-functie.
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Scherm afbeelding van de Azure Portal die het toevoegen van een gebeurtenis abonnement weergeeft.":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Scherm afbeelding van de Azure Portal die het toevoegen van een gebeurtenis abonnement weergeeft.":::
 
-2. Vul op de pagina **gebeurtenis abonnement maken** de velden als volgt in:
-    1. Geef bij **naam**het abonnement een naam zoals u wilt.
-    2. Kies **Event grid schema**onder **gebeurtenis schema**.
-    3. Kies onder **naam van systeem onderwerp**een unieke naam.
-    4. Kies onder **gebeurtenis typen**het **apparaat telemetrie** als het gebeurtenis type waarop moet worden gefilterd.
-    5. Selecteer onder **Details van eind punt**uw Azure-functie als een eind punt.
+Vul op de pagina **gebeurtenis abonnement maken** de velden als volgt in:
+  1. Geef bij **naam**het abonnement een naam zoals u wilt.
+  2. Kies _Event grid schema_onder **gebeurtenis schema**.
+  3. Kies onder **gebeurtenis typen**het selectie vakje _telemetrie van apparaat_ en Schakel andere gebeurtenis typen uit.
+  4. Selecteer onder **type eind punt**de optie _Azure function_.
+  5. Kies onder **eind punt** _de optie Selecteer een eindpunt_ koppeling om een eind punt te maken.
+    
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Scherm afbeelding van de Azure Portal voor het maken van de details van het gebeurtenis abonnement":::
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="Scherm afbeelding van de Azure Portal waarin de details van het gebeurtenis abonnement worden weer gegeven":::
+Controleer de onderstaande gegevens op de pagina _Azure-functie selecteren_ die wordt geopend.
+ 1. **Abonnement**: Uw Azure-abonnement
+ 2. **Resource groep**: de resource groep
+ 3. **Functie-app**: naam van uw functie-app
+ 4. **Sleuf**: _productie_
+ 5. **Functie**: Selecteer uw Azure-functie in de vervolg keuzelijst.
+
+Sla uw gegevens op door de knop _selectie bevestigen_ te selecteren.            
+      
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="Scherm afbeelding van de Azure Portal Azure-functie selecteren":::
+
+Selecteer de knop _maken_ om een gebeurtenis abonnement te maken.
 
 ## <a name="send-simulated-iot-data"></a>Gesimuleerde IoT-gegevens verzenden
 

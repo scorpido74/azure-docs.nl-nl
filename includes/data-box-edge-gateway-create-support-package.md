@@ -31,11 +31,11 @@ Als u problemen ondervindt met het apparaat, kunt u een ondersteunings pakket ma
 
     De volgende para meters worden gebruikt:
 
-    - `-Path`-Geef het netwerk of het lokale pad op waarnaar u het ondersteunings pakket wilt kopiëren. lang
-    - `-Credential`-Geef de referenties op voor toegang tot het beveiligde pad.
-    - `-Zip`-Geef op of u een zip-bestand wilt genereren.
-    - `-Include`-Geef op of u de onderdelen wilt opnemen die moeten worden opgenomen in het ondersteunings pakket. Als niet wordt opgegeven, `Default` wordt ervan uitgegaan.
-    - `-IncludeArchived`-Geef op of u gearchiveerde logboeken wilt toevoegen aan het ondersteunings pakket.
-    - `-IncludePeriodicStats`-Geef op of u periodieke Statie logboeken wilt gebruiken in het ondersteunings pakket.
+    - `-Path` -Geef het netwerk of het lokale pad op waarnaar u het ondersteunings pakket wilt kopiëren. lang
+    - `-Credential` -Geef de referenties op voor toegang tot het beveiligde pad.
+    - `-Zip` -Geef op of u een zip-bestand wilt genereren.
+    - `-Include` -Geef op of u de onderdelen wilt opnemen die moeten worden opgenomen in het ondersteunings pakket. Als niet wordt opgegeven, `Default` wordt ervan uitgegaan.
+    - `-IncludeArchived` -Geef op of u gearchiveerde logboeken wilt toevoegen aan het ondersteunings pakket.
+    - `-IncludePeriodicStats` -Geef op of u periodieke Statie logboeken wilt gebruiken in het ondersteunings pakket.
 
     

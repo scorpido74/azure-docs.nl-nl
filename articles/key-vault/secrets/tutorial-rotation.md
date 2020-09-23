@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378012"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086862"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met één set verificatiereferenties automatiseren
 
@@ -24,7 +24,7 @@ De beste manier om te verifiëren bij Azure-services is met behulp van een [behe
 
 In deze zelfstudie leert u hoe u de periodieke roulatie van geheimen voor databases en services die gebruikmaken van één set verificatiereferenties kunt automatiseren. Deze zelfstudie laat met name zien hoe SQL Server-wachtwoorden die in Azure Key Vault zijn opgeslagen, worden gerouleerd met behulp van een functie die wordt geactiveerd door een melding van Azure Event Grid:
 
-![Diagram van roulatieoplossing](../media/rotate1.png)
+![Diagram van roulatieoplossing](../media/rotate-1.png)
 
 1. Dertig dagen voor de vervaldatum van een geheim publiceert Key Vault deze "bijna verlopende" gebeurtenis naar Event Grid.
 1. Event Grid controleert de gebeurtenisabonnementen en maakt gebruik van HTTP POST om het eindpunt voor de functie-app aan te roepen die is geabonneerd op de gebeurtenis.
@@ -49,7 +49,7 @@ U kunt de onderstaande implementatiekoppeling gebruiken als u geen bestaande sle
 1. Selecteer **Controleren + maken**.
 1. Selecteer **Maken**
 
-    ![Een resourcegroep maken](../media/rotate2.png)
+    ![Een resourcegroep maken](../media/rotate-2.png)
 
 U hebt nu een sleutelkluis en een SQL Server-exemplaar. U kunt deze instelling in de Azure CLI controleren door de volgende opdracht uit te voeren:
 
@@ -91,7 +91,7 @@ Voor de functie-app zijn de volgende onderdelen vereist:
 1. Selecteer **Controleren + maken**.
 1. Selecteer **Maken**.
 
-   ![Selecteer Beoordelen en maken](../media/rotate3.png)
+   ![Selecteer Beoordelen en maken](../media/rotate-3.png)
 
 Nadat u de voorgaande stappen hebt voltooid, hebt u een opslagaccount, een serverfarm en een functie-app. U kunt deze instelling in de Azure CLI controleren door de volgende opdracht uit te voeren:
 
@@ -207,11 +207,11 @@ Als u een geheim met een korte vervaldatum maakt, wordt een `SecretNearExpiry`-g
 
 Als u wilt controleren of het geheim is gerouleerd, gaat u naar **Key Vault** > **Geheimen**:
 
-![Naar Geheimen gaan](../media/rotate8.png)
+![Naar Geheimen gaan](../media/rotate-8.png)
 
 Open het **sqlPassword**-geheim en bekijk de oorspronkelijke en gerouleerde versies:
 
-![Het sqluser-geheim openen](../media/rotate9.png)
+![Het sqluser-geheim openen](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Een webtoepassing maken
 
@@ -245,6 +245,6 @@ Wanneer de toepassing in de browser wordt geopend, ziet u de **gegenereerde waar
 ## <a name="learn-more"></a>Meer informatie
 
 - Zelfstudie: [Roulatie voor resources met twee sets referenties](tutorial-rotation-dual.md)
-- Overzicht: [Key Vault bewaken met Azure Event Grid (preview-versie)](../general/event-grid-overview.md)
+- Overzicht: [Key Vault bewaken met Azure Event Grid](../general/event-grid-overview.md)
 - Procedure: [E-mail ontvangen wanneer een sleutelkluisgeheim verandert](../general/event-grid-logicapps.md)
-- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault (preview-versie)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)

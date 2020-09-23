@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906326"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Windows-beheer centrum-resources beveiligen met Security Center
 
 Windows-beheer centrum is een beheer programma voor uw Windows-servers. Het is één locatie voor systeem beheerders om toegang te krijgen tot het meren deel van de meest gebruikte beheer hulpprogramma's. Vanuit het Windows-beheer centrum kunt u uw on-premises servers rechtstreeks op de Azure Security Center. U kunt vervolgens een samen vatting van uw beveiligings aanbevelingen en waarschuwingen rechtstreeks bekijken in de Windows-beheer centrum-ervaring.
 
 > [!NOTE]
-> Voor uw Azure-abonnement en de bijbehorende Log Analytics-werk ruimte moet de Standard-laag van Security Center zijn ingeschakeld om de integratie van het Windows-beheer centrum mogelijk te maken.
-> De laag standaard is de eerste 30 dagen gratis als u deze nog niet eerder hebt gebruikt in het abonnement en de werk ruimte. Zie [de pagina met prijs informatie](security-center-pricing.md)voor meer informatie.
+> Voor uw Azure-abonnement en de bijbehorende Log Analytics-werk ruimte moet Azure Defender zijn ingeschakeld om de integratie van het Windows-beheer centrum mogelijk te maken.
+> Azure Defender is de eerste 30 dagen gratis als u deze nog niet eerder hebt gebruikt in het abonnement en de werk ruimte. Zie [de pagina met prijs informatie](security-center-pricing.md)voor meer informatie.
 >
 
 Wanneer u een server uit het Windows-beheer centrum hebt geboardd naar Azure Security Center, kunt u het volgende doen:
@@ -46,8 +46,8 @@ Door deze twee hulpprogram ma's te combi neren, wordt Security Center uw enige g
 1. Volg de instructies om uw server te verbinden met Security Center. Nadat u de benodigde gegevens hebt ingevoerd en bevestigd, Security Center de benodigde configuratie wijzigingen aanbrengen om ervoor te zorgen dat alle volgende voor waarden van toepassing zijn:
     * Er is een Azure-gateway geregistreerd.
     * De server heeft een werk ruimte om aan te melden en een gekoppeld abonnement.
-    * De standaardlaag Log Analytics oplossing van Security Center is ingeschakeld op de werk ruimte. Deze oplossing biedt de Standard-laag functies van Security Center voor *alle* servers en virtuele machines die aan deze werk ruimte rapporteren.
-    * De prijs categorie Standard van Security Center voor de virtuele machine is ingeschakeld voor het abonnement.
+    * De Log Analytics oplossing van Security Center is ingeschakeld op de werk ruimte. Deze oplossing biedt functies van Azure Defender voor *alle* servers en virtuele machines die aan deze werk ruimte rapporteren.
+    * Azure Defender voor servers is ingeschakeld voor het abonnement.
     * De Log Analytics-agent is geïnstalleerd op de server en geconfigureerd om te rapporteren aan de geselecteerde werk ruimte. Als de server al aan een andere werk ruimte rapporteert, wordt deze ook geconfigureerd om te rapporteren aan de zojuist geselecteerde werk ruimte.
 
     > [!NOTE]
@@ -63,12 +63,8 @@ Als u dit hebt gedaan, kunt u uw waarschuwingen en aanbevelingen rechtstreeks be
 ## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Aanbevelingen en waarschuwingen voor beveiliging voor door Windows-beheer centrum beheerde servers in Security Center weer geven
 Van Azure Security Center:
 
-* Als u beveiligings aanbevelingen voor al uw Windows-beheer centrum servers wilt weer geven, opent u **compute & apps** en klikt u op het tabblad **vm's en computers** . De lijst filteren op resource "server", zoals hier wordt weer gegeven:
-
-    [![Beveiligings aanbevelingen voor door Windows-beheer centrum beheerde servers weer geven](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
+* Als u beveiligings aanbevelingen voor al uw Windows-beheer centrum servers wilt weer geven, opent u [inventarisatie van assets](asset-inventory.md) en filtert u het type machine dat u wilt onderzoeken. Selecteer het tabblad **vm's en computers** .
 
 * Als u beveiligings waarschuwingen voor alle Windows-beheer centrum servers wilt weer geven, opent u **beveiligings waarschuwingen**. Klik op **filter** en zorg ervoor dat u **alleen** ' niet-Azure ' selecteert:
 
-    ![Beveiligings waarschuwingen voor door Windows-beheer centrum beheerde servers filteren](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
-
-    [![Beveiligings waarschuwingen weer geven voor door Windows-beheer centrum beheerde servers](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)
+    :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="Beveiligings waarschuwingen voor door Windows-beheer centrum beheerde servers filteren" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

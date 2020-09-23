@@ -1,5 +1,5 @@
 ---
-title: Vereiste para meters verzamelen
+title: Vereiste parameters verzamelen
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -15,9 +15,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875032"
 ---
-## <a name="gathering-required-parameters"></a>Vereiste para meters verzamelen
+## <a name="gathering-required-parameters"></a>Vereiste parameters verzamelen
 
-Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept` . Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
+Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept` . Bovendien zijn er een eindpunt-URL en API-sleutel nodig.
 
 ### <a name="endpoint-uri-endpoint_uri"></a>Eind punt-URI `{ENDPOINT_URI}`
 
