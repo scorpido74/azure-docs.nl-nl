@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985528"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -48,7 +48,7 @@ Azure Backup maakt gegevens beveiliging mogelijk voor verschillende werk belasti
 
 ### <a name="management-plane"></a>Beheerlaag
 
-* **Toegangs beheer** : de Recovery Services kluis biedt de beheer mogelijkheden en is toegankelijk via de Azure Portal, SDK, CLI en zelfs rest api's. Het is ook een RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
+* **Toegangs beheer** : kluizen (Recovery Services en back-upkluizen) bieden de beheer mogelijkheden en zijn toegankelijk via de Azure Portal, het Back-upcentrum, de kluis dashboards, SDK, CLI en zelfs rest api's. Het is ook een RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
 
 * **Beleids beheer** : Azure backup beleid binnen elke kluis definieert wanneer de back-ups moeten worden geactiveerd en hoe lang ze moeten worden bewaard. U kunt deze beleids regels ook beheren en deze Toep assen op meerdere items.
 
@@ -58,7 +58,7 @@ Azure Backup maakt gegevens beveiliging mogelijk voor verschillende werk belasti
 
 ## <a name="vault-considerations"></a>Kluis overwegingen
 
-Azure Backup gebruikt Recovery Services kluizen om back-ups te organiseren en te beheren. Er worden ook kluizen gebruikt voor het opslaan van back-upgegevens. Effectief kluis ontwerp helpt organisaties bij het maken van een structuur voor het organiseren en beheren van back-upassets in azure ter ondersteuning van uw bedrijfs prioriteiten. Houd rekening met de volgende richt lijnen bij het maken van een kluis:  
+Azure Backup maakt gebruik van kluizen (Recovery Services en back-upkluizen) om back-ups te organiseren en te beheren. Er worden ook kluizen gebruikt voor het opslaan van back-upgegevens. Effectief kluis ontwerp helpt organisaties bij het maken van een structuur voor het organiseren en beheren van back-upassets in azure ter ondersteuning van uw bedrijfs prioriteiten. Houd rekening met de volgende richt lijnen bij het maken van een kluis:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Uitlijnen op de ontwerp strategie voor abonnementen
 
@@ -71,7 +71,8 @@ U kunt één kluis of meerdere kluizen gebruiken om uw back-up te organiseren en
 * Als uw workloads allemaal worden beheerd door één abonnement en één resource, kunt u één kluis gebruiken om uw back-up te controleren en te beheren.
 
 * Als uw werk belastingen verspreid zijn over abonnementen, kunt u meerdere kluizen maken, een of meer abonnementen per abonnement.
-  * Als u de bewaking van operationele activiteiten in alle kluizen, abonnementen en tenants wilt vereenvoudigen, kunt u back-up Verkenner en rapporten gebruiken. Meer [informatie vindt u hier](monitor-azure-backup-with-backup-explorer.md) om een geaggregeerde weer gave te verkrijgen.
+  * Met het Back-upcentrum kunt u een enkel glas venster hebben voor het beheren van alle taken met betrekking tot het maken van een back-up. Meer [informatie vindt u hier]().
+  * U kunt uw weer gaven aanpassen met werkmap sjablonen. Backup Explorer is een sjabloon voor Azure-Vm's. Meer [informatie vindt u hier](monitor-azure-backup-with-backup-explorer.md).
   * Als u een consistent beleid voor de kluizen nodig hebt, kunt u Azure Policy gebruiken om het back-upbeleid door te geven over meerdere kluizen. U kunt een aangepaste [Azure Policy definitie](../governance/policy/concepts/definition-structure.md) schrijven die het effect [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) gebruikt voor het door geven van een back-upbeleid op meerdere kluizen. U toewijst [deze Azure Policy definitie toe aan](../governance/policy/assign-policy-portal.md) een bepaald bereik (abonnement of RG), zodat de resource een ' back-upbeleid ' implementeert op alle Recovery Services kluizen in het bereik van de Azure Policy toewijzing. De instellingen van het back-upbeleid (zoals back-upfrequentie, retentie, enzovoort) moeten door de gebruiker worden opgegeven als para meters in de toewijzing van de Azure Policy.
 
 * Als uw organisatie footprint groeit, wilt u mogelijk werk belastingen verplaatsen tussen abonnementen om de volgende redenen: uitlijnen op back-upbeleid, kluizen samen voegen, afhandelen tegen lagere redundantie om kosten op te slaan (van GRS naar LRS).  Azure Backup ondersteunt het verplaatsen van een Recovery Services kluis over Azure-abonnementen of naar een andere resource groep binnen hetzelfde abonnement. Meer [informatie vindt u hier](backup-azure-move-recovery-services-vault.md).

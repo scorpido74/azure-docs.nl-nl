@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack rand van technische specificaties en naleving | Microsoft Docs
-description: Meer informatie over de technische specificaties en naleving voor uw Azure Stack Edge
+title: Technische specificaties en naleving van Microsoft Azure Stack Edge Pro | Microsoft Docs
+description: Meer informatie over de technische specificaties en naleving voor uw Azure Stack Edge Pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652051"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883434"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Technische specificaties van Azure Stack rand
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Technische specificaties van Azure Stack Edge Pro
 
-De hardwareonderdelen van uw Microsoft Azure Stack edge-apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
+De hardwareonderdelen van uw Microsoft Azure Stack Edge Pro-apparaat voldoen aan de technische specificaties en regelgevings normen als beschreven in dit artikel. De technische specificaties beschrijven de voedings eenheden (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
 
 ## <a name="compute-memory-specifications"></a>Compute, geheugen specificaties
 
-Het Azure Stack edge-apparaat heeft de volgende specificaties voor Compute en geheugen:
+Het Azure Stack Edge Pro-apparaat heeft de volgende specificaties voor Compute en geheugen:
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Het Azure Stack edge-apparaat heeft de volgende specificaties voor Compute en ge
 
 ## <a name="fpga-specifications"></a>FPGA-specificaties
 
-Een veld Programmeer bare gate array (FPGA) is opgenomen op elk Azure Stack edge-apparaat dat Machine Learning (ML) scenario's mogelijk maakt.
+Een veld Programmeer bare gate array (FPGA) is opgenomen op elk Azure Stack Edge Pro-apparaat dat Machine Learning (ML) scenario's mogelijk maakt.
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
@@ -38,27 +38,27 @@ Een veld Programmeer bare gate array (FPGA) is opgenomen op elk Azure Stack edge
 
 ## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
 
-Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met hoge prestaties. De twee PSUs bieden een redundante energie configuratie. Als een PSU mislukt, blijft het apparaat normaal op de andere PSU functioneren totdat de module failed wordt vervangen. De volgende tabel geeft een lijst van de technische specificaties van de PSUs.
+Het Azure Stack Edge Pro-apparaat heeft twee 100-240 V-energievoedings eenheden (PSUs) met hoge prestaties. De twee PSUs bieden een redundante energie configuratie. Als een PSU mislukt, blijft het apparaat normaal op de andere PSU functioneren totdat de module failed wordt vervangen. De volgende tabel geeft een lijst van de technische specificaties van de PSUs.
 
 | Specificatie           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximale uitvoer kracht    | 750 W                     |
-| Frequentie               | 50/60 Hz                   |
+| Frequency               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
 | Hot pluggable           | Yes                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Specificaties van Azure Stack Edge-stroom kabel per regio
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Specificaties van Azure Stack Edge Pro-stroom kabel per regio
 
-Uw Azure Stack edge-apparaat moet een stroom kabel hebben dat afhankelijk is van uw Azure-regio.
-Zie [Azure stack Edge-stroom kabel specificaties per regio](azure-stack-edge-technical-specifications-power-cords-regional.md)voor technische specificaties van alle ondersteunde stroom kabels.
+Uw Azure Stack Edge Pro-apparaat moet een stroom kabel hebben dat afhankelijk is van uw Azure-regio.
+Zie [Azure stack Edge Pro Power koord-specificaties per regio](azure-stack-edge-technical-specifications-power-cords-regional.md)voor technische specificaties van alle ondersteunde stroom kabels.
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>Specificaties van netwerk interface
 
-Uw Azure Stack edge-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
+Uw Azure Stack Edge Pro-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
 | Specificatie           | Description                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ Uw Azure Stack edge-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
 ## <a name="storage-specifications"></a>Opslag specificaties
 
-Het Azure Stack edge-apparaat heeft 9 X 2,5 ' NVMe Ssd's, elk met een capaciteit van 1,6 TB. Van deze Ssd's, 1 is een schijf van het besturings systeem en de andere 8 zijn gegevens schijven. De totale bruikbare capaciteit van het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de Details voor de opslag capaciteit van het apparaat.
+De Azure Stack Edge Pro-apparaten hebben 9 X 2,5 ' NVMe Ssd's, elk met een capaciteit van 1,6 TB. Van deze Ssd's, 1 is een schijf van het besturings systeem en de andere 8 zijn gegevens schijven. De totale bruikbare capaciteit van het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de Details voor de opslag capaciteit van het apparaat.
 
 |     Specificatie                          |     Waarde             |
 |--------------------------------------------|-----------------------|
@@ -87,7 +87,7 @@ De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
 |     Sluit     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
-|    Height         |    44,45            |    1,75 '          |
+|    Hoogte         |    44,45            |    1,75 '          |
 |    Breedte          |    434,1           |    17,09 '          |
 |    Lengte          |    740,4           |    29,15 '          |
 
@@ -95,7 +95,7 @@ De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en i
 
 |     Pakket     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
-|    Height         |    311,2            |    12,25 '          |
+|    Hoogte         |    311,2            |    12,25 '          |
 |    Breedte          |    642,8          |    25,31 '          |
 |    Lengte          |   1.051,1          |    41,38 '          |
 
@@ -116,7 +116,7 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 |     Sluit         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Functioneren        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
+|    Operationeel        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
 |    Niet-operationeel    |    -40 °C tot 65 °C (-40 °F-149 °F)     |    5%-95% niet-condenserend.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Lucht stroom, hoogte, schokken, trillingen, oriëntatie, veiligheid en EMC
@@ -146,4 +146,4 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Azure Stack Edge implementeren](azure-stack-edge-deploy-prep.md)
+- [Uw Azure Stack Edge Pro implementeren](azure-stack-edge-deploy-prep.md)

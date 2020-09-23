@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906497"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Quickstart: een Hyperscale (Citus)-servergroep maken in Azure Portal
 
@@ -138,6 +138,5 @@ In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Al
 
 In deze quickstart hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd.
 
-Volg hierna een zelfstudie om schaalbare toepassingen met meerdere tenants te bouwen.
-> [!div class="nextstepaction"]
-> [Een database met meerdere tenants ontwerpen](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Volg hierna een [zelfstudie voor het bouwen van schaalbare toepassingen met meerdere tenants](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Bepaal de beste [begingrootte](howto-hyperscale-scaling.md#picking-initial-size) voor uw servergroep

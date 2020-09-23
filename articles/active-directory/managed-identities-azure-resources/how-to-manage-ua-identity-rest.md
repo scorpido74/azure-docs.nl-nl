@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969399"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met REST API-aanroepen
 
@@ -34,10 +34,23 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
 
 - Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](/windows/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
-- Als u het [Windows-subsysteem voor Linux](/windows/wsl/about) of een [Linux-distributie besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)gebruikt, installeert u [de lokale Azure cli-console](/cli/azure/install-azure-cli).
-- Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure met `az login` een account dat is gekoppeld aan het Azure-abonnement waarvoor u door de gebruiker toegewezen beheerde identiteits gegevens wilt implementeren of ophalen.
-- Haal een Bearer-toegangs token `az account get-access-token` op met om de volgende door de gebruiker toegewezen beheerde identiteits bewerkingen uit te voeren.
+- U kunt alle opdrachten in dit artikel in de Cloud of lokaal uitvoeren:
+    - Gebruik de [Azure Cloud shell](../../cloud-shell/overview.md)om in de Cloud uit te voeren.
+    - Als u lokaal wilt uitvoeren, installeert u [krul](https://curl.haxx.se/download.html) en de [Azure cli](/cli/azure/install-azure-cli).
+
+## <a name="obtain-a-bearer-access-token"></a>Een Bearer-toegangs token verkrijgen
+
+1. Als u lokaal uitvoert, meldt u zich aan bij Azure via de Azure CLI:
+
+    ```
+    az login
+    ```
+
+1. Een toegangs token verkrijgen met [AZ account Get-access-token](/cli/azure/account#az_account_get_access_token)
+
+    ```azurecli-interactive
+    az account get-access-token
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 
@@ -91,7 +104,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
 
 > [!NOTE]
-> Als u een door de gebruiker toegewezen beheerde identiteit verwijdert, wordt de verwijzing niet verwijderd uit een resource waaraan deze is toegewezen. Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een virtuele machine met behulp van krul Zie [een door de gebruiker toegewezen identiteit verwijderen uit een Azure-VM](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Als u een door de gebruiker toegewezen beheerde identiteit verwijdert, wordt de verwijzing niet verwijderd uit een resource waaraan deze is toegewezen. Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een virtuele machine met behulp van krul Zie [een door de gebruiker toegewezen identiteit verwijderen uit een Azure-VM](qs-configure-rest-vm.md#remove-a-user-assigned-managed-identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

@@ -1,21 +1,90 @@
 ---
-title: Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
-description: Meer informatie over het voorbereiden van een Java-lente toepassing voor implementatie in azure lente-Cloud.
+title: Een toepassing voorbereiden voor implementatie in azure lente Cloud
+description: Meer informatie over het voorbereiden van een toepassing voor implementatie in azure lente-Cloud.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 59318cca33ba1607498546161764aa3aaaaea13e
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90014936"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906839"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Een toepassing voorbereiden voor implementatie in azure lente-Cloud
 
+::: zone pivot="programming-language-csharp"
+Azure lente Cloud biedt krachtige services voor het hosten, controleren, schalen en bijwerken van een Steeltoe-app. In dit artikel wordt beschreven hoe u een bestaande Steeltoe-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. 
+
+In dit artikel worden de afhankelijkheden, configuratie en code beschreven die nodig zijn voor het uitvoeren van een .NET core Steeltoe-app in azure lente Cloud. Voor informatie over het implementeren van een toepassing in azure lente-Cloud, raadpleegt u [uw eerste Azure lente-Cloud toepassing implementeren](spring-cloud-quickstart.md).
+
+>[!Note]
+> Steeltoe-ondersteuning voor Azure lente-Cloud wordt momenteel aangeboden als een open bare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Raadpleeg de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)van het bestand voor meer informatie over ondersteuning tijdens previews.
+
+##  <a name="supported-versions"></a>Ondersteunde versies
+
+Azure lente Cloud ondersteunt:
+
+* .NET Core 3.1
+* Steeltoe 2,4
+
+## <a name="dependencies"></a>Afhankelijkheden
+
+Installeer het pakket [micro soft. Azure. SpringCloud. client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) .
+
+## <a name="update-programcs"></a>Program.cs bijwerken
+
+`Program.Main`Roep de methode aan in de-methode `UseAzureSpringCloudService` :
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Detectie van Eureka Server-service inschakelen
+
+Stel in de configuratie bron die wordt gebruikt wanneer de app wordt uitgevoerd in azure lente-Cloud, de naam in van de `spring.application.name` Azure lente-Cloud toepassing waarop het project wordt geïmplementeerd.
+
+Als u bijvoorbeeld een .NET-project `EurekaDataProvider` met de naam naar een Azure lente-Cloud toepassing implementeert met `planet-weather-provider` de naam *appSettings.jsin* file moet de volgende JSON bevatten:
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>Service detectie gebruiken
+
+Als u een service wilt aanroepen met behulp van de service detectie van de Eureka-server, moet u HTTP-aanvragen naar `http://<app_name>` een locatie met de `app_name` waarde van `spring.application.name` de doel-app. Met de volgende code wordt bijvoorbeeld de `planet-weather-provider` service aangeroepen:
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
 Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) proberen.
@@ -244,3 +313,4 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
 In dit onderwerp hebt u geleerd hoe u uw Java lente-toepassing kunt configureren voor implementatie in azure lente-Cloud. Zie [een configuratie Server-exemplaar instellen](spring-cloud-tutorial-config-server.md)voor meer informatie over het instellen van een configuratie Server-exemplaar.
 
 Meer voorbeelden zijn beschikbaar in GitHub: [Azure Spring Cloud-voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+::: zone-end

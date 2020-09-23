@@ -4,18 +4,21 @@ description: In deze zelfstudie gebruikt u een AI-modelserver van Intel om de li
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906604"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Zelfstudie: Live video analyseren met OpenVINO™ Model Server – AI Extension van Intel 
 
-In deze zelfstudie wordt uitgelegd hoe u de OpenVINO™ Model Server – AI Extension van Intel gebruikt om een live videofeed van een (gesimuleerde) IP-camera te analyseren. U ontdekt hoe deze deductieserver u toegang geeft tot modellen voor het detecteren van objecten (een persoon, een voertuig of een fiets) en u een model biedt voor het classificeren van voertuigen. Een subset van de frames in de live videofeed wordt verzonden naar een deductieserver en de resultaten worden verzonden naar de IoT Edge-hub. 
+In deze zelfstudie wordt uitgelegd hoe u de OpenVINO™ Model Server – AI Extension van Intel gebruikt om een live videofeed van een (gesimuleerde) IP-camera te analyseren. U ontdekt hoe deze deductieserver u toegang geeft tot modellen voor het detecteren van objecten (een persoon, een voertuig of een fiets) en u een model biedt voor het classificeren van voertuigen. Een subset van de frames in de live videofeed wordt verzonden naar een deductieserver en de resultaten worden verzonden naar de IoT Edge-hub.
 
-In deze zelfstudie wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live videostream. De quickstart is gebaseerd op de voorbeeldcode die is geschreven in C# en bouwt voort op de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md). 
+In deze zelfstudie wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live videostream. De quickstart is gebaseerd op de voorbeeldcode die is geschreven in C# en bouwt voort op de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md).
+
+> [!NOTE]
+> Deze zelfstudie vereist het gebruik van een x86-64-apparaat als Edge-apparaat.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +43,7 @@ In deze quickstart gebruikt u Live Video Analytics op IoT Edge en de OpenVINO™
 ## <a name="overview"></a>Overzicht
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Overzicht":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Overzicht":::
 
 Dit diagram laat zien hoe de signalen in deze quickstart stromen. Een [Edge-module](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuleert een IP-camera die als host fungeert voor een RTSP-server (Real-Time Streaming Protocol). Een [RTSP-bron](media-graph-concept.md#rtsp-source)-knooppunt haalt de videofeed van deze server, en verstuurt videoframes naar het [framefilterprocessor](media-graph-concept.md#frame-rate-filter-processor)-knooppunt. Deze processor beperkt de framesnelheid van de videostream die het knooppunt [HTTP-extensieprocessor](media-graph-concept.md#http-extension-processor) bereikt. 
 
@@ -53,6 +56,7 @@ In deze zelfstudie leert u het volgende:
 1. Resources opschonen.
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Over OpenVINO™ Model Server – AI Extension van Intel
+
 De Intel®-distributie van de [OpenVINO™-toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (open visuele deductie en optimalisatie van neurale netwerken) is een gratis softwareset waarmee ontwikkelaars en gegevenswetenschappers Computer Vision-workloads kunnen versnellen, deductie en implementaties van deep learning kunnen stroomlijnen en eenvoudige, heterogene uitvoering mogelijk kunnen maken op Intel®-platforms van rand naar cloud. De set bevat de Intel® Deep Learning Deployment Toolkit met modeloptimalisatie en deductieprogramma, en de opslagplaats [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo), die meer dan 40 geoptimaliseerde, vooraf getrainde modellen bevat.
 
 Als u complexe, hoogwaardige analyseoplossingen voor live videoanalyse wilt maken, moet u de module Live Video Analytics op IoT Edge koppelen aan een krachtige deductie-engine die de schaal aan de rand kan benutten. In deze zelfstudie worden deductieaanvragen verzonden naar de [OpenVINO™ Model Server – AI Extension van Intel](https://aka.ms/lva-intel-ovms), een Edge-module die is ontworpen om te werken met Live Video Analytics op IoT Edge. Deze deductieservermodule bevat de OpenVINO™ Model Server (OVMS), een deductieserver die wordt aangedreven door de OpenVINO™-toolkit, die geoptimaliseerd is voor Computer Vision-workloads en die is ontwikkeld voor Intel®-architecturen. Er is een uitbreiding toegevoegd aan OVMS voor een eenvoudige uitwisseling van videoframes en deductieresultaten tussen de deductieserver en Live Video Analytics-module op IoT Edge, zodat u elk voor OpenVINO™-toolkit ondersteund model kunt uitvoeren (u kunt de deductieservermodule aanpassen door de [code](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper) aan te passen). U kunt verder kiezen uit de vele versnellingsmechanismen van Intel®-hardware. Dit zijn onder andere CPU's (Atom, Core, Xeon), FPGA's en VPU’s.

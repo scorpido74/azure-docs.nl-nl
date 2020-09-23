@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612083"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907059"
 ---
 # <a name="what-is-azure-sql-database"></a>Wat is Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,25 +165,26 @@ SQL Database biedt een reeks [ingebouwde functies voor beveiliging en naleving](
 
 ### <a name="advance-threat-protection"></a>Geavanceerde beveiliging tegen bedreigingen
 
-Geavanceerde gegevens beveiliging is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Het bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het beheren van uw database problemen en het opsporen van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base. Het biedt één locatie om deze mogelijkheden in te scha kelen en te beheren.
+Azure Defender voor SQL is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Het bevat functionaliteit voor het beheren van uw database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base. Het biedt één locatie om deze mogelijkheden in te scha kelen en te beheren.
 
-- [Gegevens detectie en-classificatie](data-discovery-and-classification-overview.md):
-
-  Deze functie biedt mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het biedt inzicht in de status van de database classificatie en houdt de toegang tot gevoelige gegevens in de data base en de grenzen van de randen.
 - [Evaluatie van beveiligings problemen](sql-vulnerability-assessment.md):
 
   Met deze service kunt u mogelijke beveiligings problemen met de data base detecteren, bijhouden en helpen oplossen. Deze service biedt u inzicht in de status van de beveiliging en bruikbare stappen om beveiligingsproblemen op te lossen en de beveiliging van uw database te verbeteren.
 - [Detectie van bedreigingen](threat-detection-configure.md):
 
-  Deze functie detecteert afwijkende activiteiten die ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van uw data base. Hiermee wordt uw database continu gecontroleerd op verdachte activiteiten en wordt u onmiddellijk gewaarschuwd bij mogelijke beveiligingsproblemen, SQL-injectieaanvallen en afwijkende databasetoegangspatronen. Waarschuwingen voor detectie van bedreigingen bieden Details van de verdachte activiteit en aanbevolen actie voor het onderzoeken en oplossen van de dreiging.
+  Deze functie detecteert afwijkende activiteiten die ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van uw data base. Hiermee wordt uw database continu gecontroleerd op verdachte activiteiten en wordt u onmiddellijk gewaarschuwd bij mogelijke beveiligingsproblemen, SQL-injectieaanvallen en afwijkende databasetoegangspatronen. Meldingen over bedreigingsdetectie bevatten gedetailleerde informatie over verdachte activiteiten en aanbevelingen voor het onderzoeken en tegenhouden ervan.
 
 ### <a name="auditing-for-compliance-and-security"></a>Controles voor naleving en beveiliging
 
-Met [auditing](../../azure-sql/database/auditing-overview.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Controle kan u helpen de naleving van de regelgeving te hand haven, database activiteiten te begrijpen en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
+Met [auditing](../../azure-sql/database/auditing-overview.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Controle kan u helpen om wet- en regelgeving na te leven, activiteiten in de database te begrijpen en inzicht te krijgen in de afwijkingen en discrepanties die kunnen wijzen op problemen voor het bedrijf of vermoedelijke schendingen van de beveiliging.
 
 ### <a name="data-encryption"></a>Gegevensversleuteling
 
-SQL Database helpt uw gegevens te beveiligen door versleuteling te bieden. Voor gegevens in beweging wordt [trans port Layer Security](https://support.microsoft.com/kb/3135244)gebruikt. Voor Data-at-rest wordt er gebruik gemaakt van [transparante gegevens versleuteling](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Voor gegevens die in gebruik zijn, wordt gebruikgemaakt van [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+SQL Database helpt u om uw gegevens te beveiligen met versleuteling. Voor gegevens in beweging wordt [trans port Layer Security](https://support.microsoft.com/kb/3135244)gebruikt. Voor Data-at-rest wordt er gebruik gemaakt van [transparante gegevens versleuteling](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Voor gegevens die in gebruik zijn, wordt gebruikgemaakt van [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+
+### <a name="data-discovery-and-classification"></a>Gegevensdetectie en -classificatie
+
+[Gegevens detectie en-classificatie](data-discovery-and-classification-overview.md) bieden mogelijkheden die zijn ingebouwd in Azure SQL database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het biedt inzicht in de status van de database classificatie en houdt de toegang tot gevoelige gegevens in de data base en de grenzen van de randen.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integratie en meervoudige verificatie
 
@@ -196,7 +197,7 @@ SQL Database maakt het bouwen en onderhouden van toepassingen makkelijker en pro
 |Hulpprogramma|Beschrijving|
 |:---|:---|
 |[Azure Portal](https://portal.azure.com/)|Een webtoepassing voor het beheren van alle Azure-Services.|
-|[Azure Data Studio](/sql/azure-data-studio/)|Een platform voor meerdere platforms dat wordt uitgevoerd in Windows, MacOS en Linux.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Een platform voor meerdere platforms dat wordt uitgevoerd in Windows, macOS en Linux.|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Een gratis, Download bare client toepassing voor het beheren van een SQL-infra structuur, van SQL Server tot SQL Database.|
 |[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Een gratis, Download bare client toepassing voor het ontwikkelen van SQL Server relationele data bases, data bases in Azure SQL Database, integratie Services-pakketten, Analysis Services gegevens modellen en Reporting Services-rapporten.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Een gratis, Download bare, open-source code-editor voor Windows, macOS en Linux. Het ondersteunt extensies, waaronder de [MSSQL-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's Microsoft SQL Server, Azure SQL database en Azure Azure Synapse Analytics (voorheen SQL Data Warehouse).|

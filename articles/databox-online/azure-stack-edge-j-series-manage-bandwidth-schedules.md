@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU bandbreedte schema's beheren | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal gebruikt voor het beheren van bandbreedte schema's op uw Azure Stack Edge GPU.
+title: Azure Stack Edge Pro GPU bandbreedte schema's beheren | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om bandbreedte planningen te beheren op uw Azure Stack Edge Pro GPU.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890660"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>Gebruik de Azure Portal om bandbreedte planningen te beheren op uw Azure Stack Edge GPU 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Gebruik de Azure Portal om bandbreedte planningen te beheren op uw Azure Stack Edge Pro GPU 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u bandbreedte schema's op uw Azure Stack rand beheert. Met bandbreedteschema's kunt u het gebruik van netwerkbandbreedte beheren over schema's voor meerdere tijdstippen. Deze schema's kunnen worden toegepast op upload- en downloadbewerkingen van uw apparaat naar de cloud.
+In dit artikel wordt beschreven hoe u bandbreedte schema's beheert op uw Azure Stack Edge Pro. Met bandbreedteschema's kunt u het gebruik van netwerkbandbreedte beheren over schema's voor meerdere tijdstippen. Deze schema's kunnen worden toegepast op upload- en downloadbewerkingen van uw apparaat naar de cloud.
 
-U kunt de bandbreedte schema's voor uw Azure Stack rand toevoegen, wijzigen of verwijderen via de Azure Portal.
+U kunt de bandbreedte schema's voor uw Azure Stack Edge Pro toevoegen, wijzigen of verwijderen via de Azure Portal.
 
 In dit artikel leert u het volgende:
 
@@ -42,9 +42,9 @@ Voer de volgende stappen uit in de Azure Portal om een schema toe te voegen.
 
 3. Doe het volgende in **Schema toevoegen**: 
 
-   1. Geef de **Eerste dag**, **Laatste dag**, **Begintijd** en **Eindtijd** van de planning op.
+   1. Geef de **begin dag**, de **eind datum**, de **begin tijd**en de **eind tijd** van de planning op.
    2. Controleer de optie **alle dagen** als dit schema de hele dag moet worden uitgevoerd.
-   3. **Bandbreedtesnelheid** is de bandbreedte in Megabits per seconde (Mbps) die door uw apparaat wordt gebruikt bij bewerkingen die betrekking hebben op de cloud (uploaden en downloaden). Geef voor dit veld een getal tussen 20 en 2.147.483.647 op.
+   3. **Bandbreedte frequentie** is de band breedte in megabits per seconde (Mbps) die wordt gebruikt door uw apparaat in bewerkingen met betrekking tot de Cloud (zowel uploads als down Loads). Geef voor dit veld een getal tussen 20 en 2.147.483.647 op.
    4. Schakel **Onbeperkte** bandbreedte in als u de datumupload en -download niet wilt regelen.
    5. Selecteer **Toevoegen**.
 
@@ -73,7 +73,7 @@ Voer de volgende stappen uit als u een bandbreedteschema wilt bewerken.
 
 ## <a name="delete-a-schedule"></a>Een schema verwijderen
 
-Voer de volgende stappen uit om een bandbreedte schema te verwijderen dat is gekoppeld aan uw Azure Stack edge-apparaat.
+Voer de volgende stappen uit om een bandbreedte schema te verwijderen dat is gekoppeld aan uw Azure Stack Edge Pro-apparaat.
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **band breedte**.  
 

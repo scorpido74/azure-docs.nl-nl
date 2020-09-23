@@ -3,12 +3,12 @@ title: Bereik in Azure Policy begrijpen
 description: Hierin wordt het concept van bereik in Azure Resource Manager beschreven en wordt uitgelegd hoe dit wordt toegepast op Azure Policy om te bepalen welke resources Azure Policy evalueren.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936501"
+ms.locfileid: "90984438"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Bereik in Azure Policy begrijpen
 
@@ -34,6 +34,8 @@ Een toewijzing heeft verschillende eigenschappen die een bereik instellen. Het g
 - Opnemen: een resource hiërarchie of afzonderlijke resource moet worden geëvalueerd voor naleving door de definitie. De `properties.scope` eigenschap van een toewijzings object bepaalt wat moet worden opgezocht en beoordeeld op naleving. Zie [toewijzings definitie](./assignment-structure.md)voor meer informatie.
 
 - Uitsluiting: een resource hiërarchie of afzonderlijke resource moet niet worden geëvalueerd voor naleving door de definitie. De `properties.notScopes` _matrix_ eigenschap van een toewijzings object bepaalt wat moet worden uitgesloten. Resources binnen deze bereiken worden niet geëvalueerd of opgenomen in het aantal vereisten. Zie [toewijzings definitie-uitgesloten bereiken](./assignment-structure.md#excluded-scopes)voor meer informatie.
+
+Naast de eigenschappen van de beleids toewijzing is het uitzonderings object van het [beleid](./exemption-structure.md) . Uitzonde ringen verbeteren de reik wijdte van het bereik door een methode te bieden voor het identificeren van een deel van een toewijzing om niet te worden geëvalueerd.
 
 - Uitzonde ring (**gratis in Preview** -functie): een resource hiërarchie of afzonderlijke resource moet worden geëvalueerd voor naleving door de definitie, maar niet worden geëvalueerd om een reden, zoals een ontheffing of door middel van een andere methode. Resources in deze status geven aan dat ze zijn **uitgesloten** in nalevings rapporten, zodat ze kunnen worden getraceerd. Het uitzonderings object wordt gemaakt op de resource hiërarchie of afzonderlijke resource als onderliggend object, waardoor het bereik van de uitzonde ring wordt bepaald. Een resource hiërarchie of afzonderlijke resource kan worden vrijgesteld voor meerdere toewijzingen. De uitzonde ring kan worden geconfigureerd om te verlopen volgens een schema met behulp van de- `expiresOn` eigenschap. Zie de definitie van de [uitzonde ring](./exemption-structure.md)voor meer informatie.
 

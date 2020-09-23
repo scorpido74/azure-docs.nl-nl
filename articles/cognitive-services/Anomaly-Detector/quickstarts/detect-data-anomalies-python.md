@@ -8,32 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 7bfe10ea5e0e95bcabf02243bb8b7172a5aec08d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906741"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Quickstart: Anomalieën in uw tijdreeksgegevens detecteren met behulp van de Anomaly Detector REST API en Python
 
-Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee detectiemodi van de Anomaly Detector API's om anomalieën in uw tijdreeksgegevens te detecteren. Met deze Python-toepassing worden twee API-aanvragen met tijdreeksgegevens in JSON-indeling verzonden en worden de reacties opgehaald.
+Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee detectiemodi van de Anomaly Detector API's om anomalieën in uw tijdreeksgegevens te detecteren. Met deze Python-toepassing worden API-aanvragen met tijdreeksgegevens in JSON-indeling verzonden en worden de reacties opgehaald.
 
 | API-aanvraag                                        | Toepassingsuitvoer                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | Batchgewijs anomalieën detecteren                        | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor elk gegevenspunt in de tijdreeksgegevens en de posities van gedetecteerde anomalieën. |
-| De anomaliestatus van het laatste gegevenspunt detecteren | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor het laatste gegevenspunt in de tijdreeksgegevens.                                                                                                                                         |
+| De anomaliestatus van het laatste gegevenspunt detecteren | Het JSON-antwoord met de anomaliestatus (en andere gegevens) voor het laatste gegevenspunt in de tijdreeksgegevens.|
+| Wijzigingspunten detecteren die nieuwe gegevenstrends markeren | Het JSON-antwoord met de gedetecteerde wijzigingspunten in de tijdreeksgegevens. |
 
  Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. U kunt de broncode voor deze quickstart vinden op [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
-- Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">, maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
-    - U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+- Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
+    - U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 - [Python 2.x of 3.x](https://www.python.org/downloads/)
 - De [Aanvragenbibliotheek](https://pypi.org/project/requests/) voor Python
@@ -54,6 +55,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
     |---------|---------|
     |Batchdetectie    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Detectie op het laatste gegevenspunt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | Detectie van wijzigingspunten | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
@@ -91,6 +93,18 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>Wijzigingspunten in de gegevens detecteren
+
+1. Maak een methode met de naam `detect_change_point()` om anomalieën in de gegevens batchgewijs te detecteren. Roep de hierboven gemaakte `send_request()`-methode aan met uw eindpunt, URL, abonnementssleutel en JSON-gegevens.
+
+2. Roep `json.dumps()` aan op het resultaat om dit te formatteren en af te drukken naar de console.
+
+3. Als het antwoord een `code`-veld bevat, drukt u de foutcode en het foutbericht af.
+
+4. Als dat niet het geval is, zoekt u de positie van anomalieën in de gegevensset. Het veld `isChangePoint` van de reactie bevat een booleaanse waarde die aangeeft of een bepaald gegevenspunt een anomalie is. Loop de lijst door en druk de index van alle `True`-waarden af. Deze waarden komen overeen met de indexen van trendwijzigingspunten, als dergelijke punten zijn gevonden.
+
+    [!code-python[detect change points](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectChangePoint)]
+
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
 Roep de hierboven gemaakte anomaliedetectiemethoden aan.
@@ -102,5 +116,6 @@ Roep de hierboven gemaakte anomaliedetectiemethoden aan.
 Er wordt een geslaagd antwoord geretourneerd in JSON-indeling. Klik op de onderstaande koppelingen om het JSON-antwoord op GitHub weer te geven:
 * [Voorbeeld van een antwoord op een batchdetectie](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Voorbeeld van een antwoord op de detectie van het laatste punt](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Voorbeeld van een antwoord op de detectie van het wijzigingspunt](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

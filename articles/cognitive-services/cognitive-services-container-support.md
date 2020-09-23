@@ -1,5 +1,5 @@
 ---
-title: Ondersteuning voor containers
+title: Azure Cognitive Services-containers
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over hoe docker-containers Cognitive Services dichter bij uw gegevens kunnen krijgen.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424635"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907003"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Ondersteuning voor containers in azure Cognitive Services
+# <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
 > [!WARNING]
-> Op 11 juni 2020 kondigde Microsoft aan dat het geen gezichtsherkenningssoftware verkoopt aan politieafdelingen in de Verenigde Staten totdat er solide wetgeving op basis van mensenrechten in werking is getreden. Zo kunnen klanten geen gezichts herkennings functies of-functionaliteit gebruiken die deel uitmaakt van Azure-Services, zoals gezicht of Video Indexer, als een klant of het gebruik van dergelijke services door of voor een politie afdeling in het Verenigde Staten toestaat.
+> Op 11 juni 2020 kondigde Microsoft aan dat het geen gezichtsherkenningssoftware verkoopt aan politieafdelingen in de Verenigde Staten totdat er solide wetgeving op basis van mensenrechten in werking is getreden. Daardoor is het mogelijk dan klanten gezichtsherkenningsfuncties of een functionaliteit in Azure Services, zoals Face of Video Indexer, niet kunnen gebruiken als de klant deze services gebruikt of laat gebruiken voor of door een politieafdeling in de Verenigde Staten.
 
 Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars gebruikmaken van dezelfde uitgebreide Api's die beschikbaar zijn in Azure en kunnen ze de services die worden geleverd met [docker-containers](https://www.docker.com/what-container)implementeren en hosten. Container ondersteuning is momenteel beschikbaar voor een subset van Azure Cognitive Services, met inbegrip van delen van:
 
@@ -31,7 +31,7 @@ Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars ge
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Speech Service-API][sp-containers]
-> * [Text Analytics][ta-containers]
+> * [Tekstanalyse][ta-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
@@ -52,22 +52,23 @@ Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure
 
 Azure Cognitive Services-containers bieden de volgende set docker-containers, die elk een subset van functionaliteit van services in azure Cognitive Services bevat:
 
-| Service | Ondersteunde prijs categorie | Container | Beschrijving |
+| Service | Ondersteunde prijs categorie | Container | Description |
 |--|--|--|--|
-| [Anomalie detectie][ad-containers] | F0, S0 | **Anomalie detectie** | Met de anomalie detectie-API kunt u afwijkingen in uw time series-gegevens controleren en detecteren met machine learning.<br>[Toegang aanvragen][request-access] |
+| [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ([installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Lezen** | Hiermee wordt afgedrukte tekst geëxtraheerd uit afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belang rijk:** De Lees container werkt momenteel alleen met Engels. |
 | [Face][fa-containers] | F0, S0 | **Face** | Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, met inbegrip van gezichts bezienswaardigheden (zoals neus en ogen), geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score, of de gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook gelijksoortige gezichten in groepen indelen met behulp van gedeelde visuele elementen.<br>[Toegang aanvragen][request-access] |
 | [Formulier herkenning][fr-containers] | F0, S0 | **Form Recognizer** | Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken.<br>[Toegang aanvragen][request-access] |
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Laadt een getraind of gepubliceerd Language Understanding model, ook wel een LUIS-app genoemd, op in een docker-container en biedt toegang tot de query voorspellingen vanuit de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze weer uploaden naar de [Luis-Portal](https://www.luis.ai) om de nauw keurigheid van de app te verbeteren. |
-| [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** | Transcribeert continue realtime spraak naar tekst. |
-| [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom Speech-naar-tekst** | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |
-| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst-naar-spraak** | Converteert tekst naar natuurlijk klinkende spraak. |
-| [Speech Service-API][sp-containers-ctts] | F0, S0 | **Aangepaste tekst-naar-spraak** | Hiermee wordt tekst geconverteerd naar een natuurlijk geluids fragment met behulp van een aangepast model. |
-| [Speech Service-API][sp-containers-ntts] | F0, S0 | **Tekst-naar-spraak Neural** | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. |
-| [Text Analytics][ta-containers-keyphrase] | F0, S | **Sleuteltermextractie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraheert sleutel zinnen om de belangrijkste punten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'. |
-| [Text Analytics][ta-containers-language] | F0, S | **Taaldetectie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
-| [Text Analytics][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ([installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief*) voor elk document en elke zin daarin. |
-| [Text Analytics][ta-containers-health] | F0, S | **Text Analytics voor de status** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
+| [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Transcribeert continue realtime spraak naar tekst. |
+| [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom speech-naar-tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |
+| [Speech Service-API][sp-containers-tts] | F0, S0 | **Tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Converteert tekst naar natuurlijk klinkende spraak. |
+| [Speech Service-API][sp-containers-ctts] | F0, S0 | **Aangepaste tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Hiermee wordt tekst geconverteerd naar een natuurlijk geluids fragment met behulp van een aangepast model. |
+| [Speech Service-API][sp-containers-ntts] | F0, S0 | **Tekst-naar-spraak** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. |
+| [Tekstanalyse][ta-containers-keyphrase] | F0, S | **Sleuteltermextractie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraheert sleutel zinnen om de belangrijkste punten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'. |
+| [Tekstanalyse][ta-containers-language] | F0, S | **Taaldetectie** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Voor Maxi maal 120 talen detecteert u in welke taal de invoer tekst wordt geschreven en rapporteert u één taal code voor elk document dat voor de aanvraag wordt verzonden. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft. |
+| [Tekstanalyse][ta-containers-sentiment] | F0, S | **Sentimentanalyse v3** ([installatie kopie](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyseer onbewerkte tekst voor aanwijzingen over positieve of negatieve sentiment. Deze versie van sentiment analyse retourneert sentiment-labels (bijvoorbeeld *positief* of *negatief*) voor elk document en elke zin daarin. |
+| [Tekstanalyse][ta-containers-health] | F0, S | **Text Analytics voor de status** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
+| [Ruimtelijke analyse][spa-containers] | S0 | **Ruimtelijke analyse** | Medische gegevens uit ongestructureerde klinische tekst extra heren en labelen. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -127,6 +128,7 @@ Installeer en verken de functionaliteit van containers in azure Cognitive Servic
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

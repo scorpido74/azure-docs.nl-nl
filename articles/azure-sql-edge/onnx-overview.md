@@ -1,6 +1,6 @@
 ---
-title: Machine learning en AI met ONNX in Azure SQL Edge (preview-versie)
-description: Machine learning in Azure SQL Edge (preview) ondersteunt modellen in de open Neural Network Exchange (ONNX)-indeling. ONNX is een open indeling die u kunt gebruiken voor het uitwisselen van modellen tussen verschillende machine learning frameworks en hulpprogram ma's.
+title: Machine learning en AI met ONNX in Azure SQL Edge
+description: Machine learning in Azure SQL Edge ondersteunt modellen in de open Neural Network Exchange (ONNX)-indeling. ONNX is een open indeling die u kunt gebruiken voor het uitwisselen van modellen tussen verschillende machine learning frameworks en hulpprogram ma's.
 keywords: SQL-rand implementeren
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368053"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907132"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Machine learning en AI met ONNX in SQL Edge (preview-versie)
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine learning en AI met ONNX in SQL Edge
 
-Machine learning in Azure SQL Edge (preview) ondersteunt modellen in de [Open Neural Network Exchange (ONNX)-](https://onnx.ai/) indeling. ONNX is een open indeling die u kunt gebruiken voor het uitwisselen van modellen tussen verschillende [machine learning frameworks en hulpprogram ma's](https://onnx.ai/supported-tools).
+Machine learning in Azure SQL Edge ondersteunt modellen in de [Open Neural Network Exchange (ONNX)-](https://onnx.ai/) indeling. ONNX is een open indeling die u kunt gebruiken voor het uitwisselen van modellen tussen verschillende [machine learning frameworks en hulpprogram ma's](https://onnx.ai/supported-tools).
 
 ## <a name="overview"></a>Overzicht
 
@@ -36,7 +36,7 @@ Een model ophalen in de ONNX-indeling:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensor flow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-informatie](https://github.com/onnx/sklearn-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     Zie [converteren naar ONNX-indeling](https://github.com/onnx/tutorials#converting-to-onnx-format)voor een volledige lijst met ondersteunde frameworks en voor beelden.
@@ -55,4 +55,4 @@ De model invoer moet zodanig zijn gestructureerd dat elke invoer naar het model 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [SQL-rand via Azure Portal implementeren](deploy-portal.md)
-- [Een ONNX-model implementeren op Azure SQL Edge (preview)](deploy-onnx.md)
+- [Een ONNX-model implementeren op Azure SQL Edge ](deploy-onnx.md)

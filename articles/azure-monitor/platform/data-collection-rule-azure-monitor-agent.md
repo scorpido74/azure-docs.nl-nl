@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968410"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Gegevens verzameling configureren voor de Azure Monitor-agent (preview)
 Met regels voor gegevens verzameling (DCR) kunt u gegevens in Azure Monitor definiëren en opgeven waar deze moeten worden verzonden. In dit artikel wordt beschreven hoe u een regel voor het verzamelen van gegevens maakt voor het verzamelen van gegevens van virtuele machines met behulp van de Azure Monitor-agent.
@@ -26,7 +26,7 @@ Als u een DCR wilt Toep assen op een virtuele machine, maakt u een koppeling voo
 
 Denk bijvoorbeeld aan een omgeving met een set virtuele machines waarop een line-of-Business-toepassing en andere SQL Server worden uitgevoerd. Mogelijk hebt u één standaard regel voor gegevens verzameling die van toepassing is op alle virtuele machines en afzonderlijke regels voor het verzamelen van gegevens die specifiek zijn voor de line-of-Business-toepassing en voor SQL Server. De koppelingen voor de virtuele machines met de regels voor het verzamelen van gegevens zouden er ongeveer uit zien als in het volgende diagram.
 
-![Lidkoppelingen](media/data-collection-rule-azure-monitor-agent/associations.png)
+![In het diagram worden virtuele machines weer gegeven met een line-of-Business-toepassing en SQL Server gekoppeld aan regels voor gegevens verzameling met de naam centraal-i t-standaard en LOB-app voor line-of-Business-toepassing en centraal-i t-standaard en s q l voor SQL Server.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Maken met Azure Portal
 U kunt de Azure Portal gebruiken om een regel voor het verzamelen van gegevens te maken en virtuele machines in uw abonnement aan die regel te koppelen. De Azure Monitor-agent wordt automatisch geïnstalleerd en een beheerde identiteit die is gemaakt voor een virtuele machine waarop deze nog niet is geïnstalleerd.

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985167"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -75,6 +75,30 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
     ![Nieuwe toewijzing-melding](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>Een rol toewijzen met een beperkt bereik
+
+Voor bepaalde rollen geldt dat het bereik van de verleende machtigingen kan worden beperkt tot één beheer eenheid, Service-Principal of toepassing. Deze procedure is een voor beeld van het toewijzen van een rol die het bereik van een administratieve eenheid heeft. Zie [scoped rollen toewijzen aan een beheer eenheid](../users-groups-roles/roles-admin-units-assign-roles.md)voor een lijst met rollen die bereik ondersteunen via beheer eenheden. Deze functie wordt momenteel geïmplementeerd naar Azure AD-organisaties.
+
+1. Meld u aan bij het [beheer centrum van Azure Active Directory](https://aad.portal.azure.com) met privileged Role Administrator Permissions.
+
+1. Selecteer **Azure Active Directory**-  >  **rollen en-beheerders**.
+
+1. Selecteer de **gebruikers beheerder**.
+
+    ![De opdracht toewijzing toevoegen is beschikbaar wanneer u een rol opent in de portal](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. Selecteer **toewijzingen toevoegen**.
+
+    ![Wanneer een rol bereik ondersteunt, kunt u een bereik selecteren](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. Op de pagina **toewijzingen toevoegen** kunt u het volgende doen:
+
+   - Selecteer een gebruiker of groep die aan de rol moet worden toegewezen
+   - Het gebruikersrol bereik selecteren (in dit geval administratieve eenheden)
+   - Een administratieve eenheid voor de scope selecteren
+
+Zie [beheer eenheden toevoegen en verwijderen](../users-groups-roles/roles-admin-units-manage.md)voor meer informatie over het maken van administratieve eenheden.
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Een bestaande roltoewijzing bijwerken of verwijderen
 
 Volg deze stappen om een bestaande roltoewijzing bij te werken of te verwijderen.
@@ -101,7 +125,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Selecteer **functies** of **leden**.
 
-    ![Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD-rollen openen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Selecteer **lid toevoegen** om **beheerde leden toevoegen**te openen.
 
@@ -111,7 +135,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Selecteer **leden selecteren**, selecteer de gebruikers die u aan de rol wilt toewijzen en selecteer vervolgens **selecteren**.
 
-    ![Een rol selecteren](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Selecteer een gebruiker of groep die u wilt toewijzen](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. Selecteer in **beheerde leden toevoegen**de optie **OK** om de gebruiker aan de rol toe te voegen.
 
@@ -169,7 +193,7 @@ Volg deze stappen om een specifieke gebruiker te verwijderen uit een Azure AD-be
 
 1. Selecteer **Ja**in het bericht waarin u wordt gevraagd om te bevestigen.
 
-    ![Een rol verwijderen](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Het verwijderen bevestigen](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     De roltoewijzing wordt verwijderd.
 

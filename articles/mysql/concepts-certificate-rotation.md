@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 971554443e5b420cf759f86013445a6ff9069dea
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985768"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MySQL
 
@@ -122,8 +122,28 @@ Deze certificaten die worden gebruikt door Azure Database for MySQL worden door 
 ### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen op de hoofd server of de Lees replica's uitvoeren?
 Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen voor deze clients ook Toep assen als de client de gegevens van de replica server heeft gelezen.
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. hebben we een query aan de server zijde om te controleren of SSL wordt gebruikt?
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. als ik gegevens replicatie gebruik, moet ik dan elke actie uitvoeren?
+Als u [gegevens replicatie](concepts-data-in-replication.md) gebruikt om verbinding te maken met Azure database for MySQL, moet u rekening houden met twee dingen:
+*   Als de gegevens replicatie van een virtuele machine (on-premises of Azure virtual machine) naar Azure Database for MySQL is, moet u controleren of SSL wordt gebruikt om de replica te maken. Voer de **status van slave weer geven** uit en controleer de volgende instelling.  
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
+    Als het certificaat wordt weer gegeven voor de CA_file, SSL_Cert en SSL_Key, moet u het bestand bijwerken door het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)toe te voegen.
+
+*   Als de gegevens replicatie tussen twee Azure Database for MySQL ligt, moet u de replica opnieuw instellen door **mysql. az_replication_change_master** in te voeren en het nieuwe dubbele basis certificaat als laatste para meter op te geven [master_ssl_ca](howto-data-in-replication.md#link-master-and-replica-servers-to-start-data-in-replication)
+
+### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. hebben we een query aan server zijde om te controleren of SSL wordt gebruikt?
 Raadpleeg [SSL-verificatie](howto-configure-ssl.md#step-4-verify-the-ssl-connection)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.
 
-### <a name="13-what-if-i-have-further-questions"></a>13. Wat moet ik doen als ik meer vragen heb?
-Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseforMySQL@service.microsoft.com) opnemen
+### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. is er een actie vereist als ik DigiCertGlobalRootG2 al in mijn certificaat bestand heb?
+Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2**heeft.
+
+### <a name="15-what-if-i-have-further-questions"></a>15. Wat moet ik doen als ik meer vragen heb?
+Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseforMySQL@service.microsoft.com)opnemen.

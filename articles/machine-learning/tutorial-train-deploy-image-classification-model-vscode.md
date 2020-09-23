@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203551"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906690"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Een TensorFlow-model trainen en implementeren voor de classificatie van afbeeldingen met behulp van de Azure Machine Learning Visual Studio Code-extensie (preview-versie)
 
@@ -61,7 +61,7 @@ Het eerste wat u moet doen om een toepassing in Azure Machine Learning te bouwen
 1. Selecteer **Een nieuwe resourcegroep maken**. 
 1. Geef de resourcegroep de naam 'TeamWorkspace-rg' en druk op **Enter**. 
 1. Kies een locatie voor uw werkruimte. Het wordt aanbevolen om een locatie te kiezen die het dichtst bij de locatie ligt die u voor het implementeren van uw model wilt gebruiken. Bijvoorbeeld 'VS - west 2'.
-1. Wanneer u wordt gevraagd om het type werkruimte te selecteren, selecteert u **Basis** om een eenvoudige werkruimte te maken. Zie [Overzicht van Azure Machine Learning](./overview-what-is-azure-ml.md#sku) voor meer informatie over andere werkruimteaanbiedingen.
+1. Wanneer u wordt gevraagd het type werkruimte te selecteren, kiest u **basis**.
 
 Op dit punt wordt een aanvraag aan Azure gedaan om een nieuwe werkruimte in uw account te maken. Na een paar minuten wordt de nieuwe werkruimte weergegeven in uw abonnementknooppunt. 
 

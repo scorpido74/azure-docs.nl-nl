@@ -1,6 +1,6 @@
 ---
-title: Implementeer Vm's op uw Azure Stack Edge GPU-apparaat via Azure PowerShell
-description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge GPU-apparaat met behulp van Azure PowerShell.
+title: Implementeer Vm's op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell
+description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge Pro GPU-apparaat met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890696"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Implementeer Vm's op uw Azure Stack Edge GPU-apparaat via Azure PowerShell
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Implementeer Vm's op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack edge-apparaat maakt en beheert met behulp van Azure PowerShell.
+In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack Edge Pro-apparaat maakt en beheert met behulp van Azure PowerShell.
 
 ## <a name="vm-deployment-workflow"></a>VM-implementatiewerkstroom
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Alleen de lokale opslag accounts, zoals lokaal redundante opslag (Standard_LRS of Premium_LRS), kunnen worden gemaakt via Azure Resource Manager. Als u gelaagde opslag accounts wilt maken, raadpleegt u de stappen in [toevoegen, verbinding maken met opslag accounts op uw Azure stack rand](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Alleen de lokale opslag accounts, zoals lokaal redundante opslag (Standard_LRS of Premium_LRS), kunnen worden gemaakt via Azure Resource Manager. Als u gelaagde opslag accounts wilt maken, raadpleegt u de stappen in [toevoegen, verbinding maken met opslag accounts op uw Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
 Hieronder ziet u een voorbeeld van de uitvoer.
 
@@ -193,7 +193,7 @@ Als u *https*gebruikt, moet u de juiste certificaten op uw apparaat installeren.
 
 Kopieer de schijf installatie kopieën die moeten worden gebruikt in pagina-blobs in het lokale opslag account dat u in de vorige stappen hebt gemaakt. U kunt een hulp programma zoals [AzCopy](../storage/common/storage-use-azcopy-v10.md) gebruiken om de VHD te uploaden naar het opslag account dat u in de vorige stappen hebt gemaakt. 
 
-Voordat u AzCopy gebruikt, moet u ervoor zorgen dat de [AzCopy correct is geconfigureerd](#configure-azcopy) voor gebruik met de blob Storage rest API versie die u gebruikt met uw Azure stack edge-apparaat.
+Voordat u AzCopy gebruikt, moet u ervoor zorgen dat de [AzCopy correct is geconfigureerd](#configure-azcopy) voor gebruik met de blob Storage rest API versie die u gebruikt met uw Azure stack Edge Pro-apparaat.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>Virtuele machine beheren
 
-In de volgende sectie worden enkele van de algemene bewerkingen rond de virtuele machine beschreven die u op uw Azure Stack edge-apparaat maakt.
+In de volgende sectie worden enkele veelvoorkomende bewerkingen voor de virtuele machine beschreven die u op uw Azure Stack Edge Pro-apparaat gaat maken.
 
 ### <a name="list-vms-running-on-the-device"></a>Virtuele machines weer geven die worden uitgevoerd op het apparaat
 
-Voer de volgende opdracht uit om een lijst te retour neren van alle virtuele machines die worden uitgevoerd op uw Azure Stack edge-apparaat.
+Voer de volgende opdracht uit om een lijst te retour neren van alle virtuele machines die worden uitgevoerd op uw Azure Stack Edge Pro-apparaat.
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ Ga naar de [cmdlet Remove-AzureRmVm](https://docs.microsoft.com/powershell/modul
 
 De grootte van een VM bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en geheugen, die voor de VM beschikbaar zijn gesteld. Virtuele machines moeten worden gemaakt met een grootte die geschikt is voor de werkbelasting. Hoewel alle computers worden uitgevoerd op dezelfde hardware, hebben computer grootten verschillende limieten voor schijf toegang, die u kan helpen bij het beheren van de algemene schijf toegang op uw Vm's. Als een werkbelasting toeneemt, kan de grootte van een bestaande virtuele machine ook worden gewijzigd.
 
-De volgende standaard virtuele machines uit de dv2-serie worden ondersteund voor maken op Azure Stack edge-apparaat.
+De volgende standaard virtuele machines uit de dv2-serie worden ondersteund voor maken op Azure Stack Edge Pro-apparaat.
 
 ### <a name="dv2-series"></a>Dv2-serie
 |Grootte     |vCPU     |Geheugen (GiB) | Tijdelijke opslag (GiB)  | Maximale door Voer van de besturingssysteem schijf (IOPS) | Maximale tijdelijke opslag doorvoer (IOPS) | Maximum aantal gegevens schijven/door Voer (IOPS) | Max. aantal NIC's |
@@ -547,9 +547,9 @@ Extensie, schaal sets, beschikbaarheids sets, moment opnamen worden niet onderst
 
 ## <a name="configure-azcopy"></a>AzCopy configureren
 
-Wanneer u de meest recente versie van AzCopy installeert, moet u AzCopy configureren om ervoor te zorgen dat deze overeenkomt met de Blob Storage REST API versie van uw Azure Stack edge-apparaat.
+Wanneer u de nieuwste versie van AzCopy installeert, moet u AzCopy configureren om er zeker van te zijn dat deze overeenkomt met de Blob Storage REST API versie van uw Azure Stack Edge Pro-apparaat.
 
-Stel op de client die wordt gebruikt om toegang te krijgen tot uw Azure Stack edge-apparaat, een globale variabele in die overeenkomt met de Blob-opslag REST API versie.
+Stel op de client die wordt gebruikt voor toegang tot uw Azure Stack Edge Pro-apparaat, een globale variabele in die overeenkomt met de Blob-opslag REST API versie.
 
 ### <a name="on-windows-client"></a>Op Windows-client 
 

@@ -1,14 +1,9 @@
 - name: Documentatie voor Insluitende lezer
   href: index.yml
-- name: Overzicht
-  items:
-    - name: Wat is Insluitende lezer?
-      href: Overview.md
-- name: Snelstartgidsen
-  expanded: true
-  items:
-    - name: De clientbibliotheek gebruiken
-      href: ./quickstarts/client-libraries.md
+- name: Wat is Insluitende lezer?
+  href: Overview.md
+- name: Snelstart
+  href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: De Insluitende lezer starten (Android)

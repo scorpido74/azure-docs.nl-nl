@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907036"
 ---
 # <a name="group-data-into-bins-module"></a>Gegevens groeperen in module opslag locaties
 
-In dit artikel wordt beschreven hoe u de groeps gegevens in de module opslag locaties in Azure Machine Learning Designer (preview) gebruikt om getallen te groeperen of de distributie van doorlopende gegevens te wijzigen.
+In dit artikel wordt beschreven hoe u de groeps gegevens in de module opslag locaties in Azure Machine Learning Designer kunt gebruiken om nummers te groeperen of de distributie van doorlopende gegevens te wijzigen.
 
 De module gegevens groeperen in opslag locaties ondersteunt meerdere opties voor binning-gegevens. U kunt aanpassen hoe de randen van de opslag locatie worden ingesteld en hoe waarden worden verdeeld in de opslag locaties. U kunt bijvoorbeeld het volgende doen:  
 
@@ -50,7 +50,7 @@ Omdat er zoveel manieren zijn om gegevens te groeperen, is het raadzaam om te ex
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Groeps gegevens in opslag locaties configureren
 
-1. Voeg de **groeps gegevens** in de module opslag locaties toe aan uw pijp lijn in de ontwerp functie (preview). U kunt deze module vinden in de categorie **gegevens transformatie**.
+1. Voeg de **groeps gegevens** in de module opslag locaties toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden in de categorie **gegevens transformatie**.
 
 2. Verbind de gegevensset die numerieke gegevens op de bin heeft. Kwantisatiefouten kan alleen worden toegepast op kolommen die numerieke gegevens bevatten. 
 
