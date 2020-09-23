@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983632"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Virtuele WAN-logboeken en-metrische gegevens van Azure
 
@@ -62,7 +62,7 @@ De volgende stappen helpen u metrische gegevens te zoeken en weer te geven:
 
 3. Selecteer **Metrische gegevens**.
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="metrische gegevens":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
 
 4. Op de pagina **metrische gegevens** kunt u de metrische gegevens bekijken die u interesseren.
 

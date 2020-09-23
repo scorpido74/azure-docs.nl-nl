@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: a68622a921bb58513c7bb2154ccee81162a59c53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936182"
+ms.locfileid: "90977793"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook
 
@@ -23,12 +23,12 @@ Nadat een afwijkend is gedetecteerd door de para meters Advisor, wordt een waars
 
 ## <a name="create-a-hook"></a>Een hook maken
 
-De metrische gegevens adviseur ondersteunt drie verschillende typen hooks: e-mail Hook, webhook en Azure DevOps. U kunt de naam kiezen die geschikt is voor uw specifieke scenario. 
+De metrische gegevens adviseur ondersteunt drie verschillende typen hooks: e-mail Hook, webhook en Azure DevOps. U kunt de naam kiezen die geschikt is voor uw specifieke scenario.       
 
 ### <a name="email-hook"></a>E-mail Hook
 
 > [!Note]
-> De gegevens beheerders van de metrische gegevens adviseur moeten de **e-mail instellingen**configureren en aan de hand van de informatie over de SMTP-mede werkers in de para meters Advisor een melding verzenden voordat afwijkingen kunnen worden verzonden.
+> De metrische gegevens van de Advisor-resource beheerder moeten de e-mail instellingen configureren en met behulp van de informatie over het invoeren van SMTP-berichten in de Advisor-adviseur voordat afwijkende waarschuwingen kunnen worden verzonden. De beheerder van de resource groep of het abonnement moet ten minste één Cognitive Services-rol voor de functie voor *metrische gegevens adviseur* toewijzen op het tabblad toegangs beheer van de functie voor metrische gegevens van de Advisor. 
 
 Als u een e-mail Hook wilt maken, zijn de volgende para meters beschikbaar: 
 

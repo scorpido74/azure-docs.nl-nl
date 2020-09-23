@@ -1,6 +1,6 @@
 ---
-title: Historische gegevens beheren met Bewaar beleid-Azure SQL Edge (preview)
-description: Meer informatie over het beheren van historische gegevens met Bewaar beleid in Azure SQL Edge (preview)
+title: Historische gegevens beheren met Bewaar beleid-Azure SQL Edge
+description: Meer informatie over het beheren van historische gegevens met Bewaar beleid in Azure SQL Edge
 keywords: SQL-rand, gegevens retentie
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888128"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Historische gegevens beheren met Bewaar beleid
 
 Gegevens retentie kan op de data base en alle onderliggende tabellen afzonderlijk worden ingeschakeld, zodat gebruikers flexibele ouderdoms beleid kunnen maken voor hun tabellen en data bases. Het Toep assen van gegevens retentie is eenvoudig: er is slechts één para meter vereist voor het maken van tabellen of als onderdeel van een ALTER TABLE-bewerking. 
 
-Nadat het Bewaar beleid voor gegevens gedefinieerde is voor een Data Base en de onderliggende tabel, wordt een timer taak voor achtergrond tijd uitgevoerd om eventuele verouderde records uit de tabel die is ingeschakeld voor het bewaren van gegevens te verwijderen. De identificatie van overeenkomende rijen en het verwijderen van de tabel wordt op transparante wijze uitgevoerd in de achtergrond taak die door het systeem is gepland en uitgevoerd. De leeftijds voorwaarde voor de tabel rijen wordt gecontroleerd op basis van de kolom die wordt gebruikt als de `filter_column` in de tabel definitie. Als de Bewaar periode bijvoorbeeld is ingesteld op één week, voldoen de tabel rijen die in aanmerking komen voor opschoning aan de volgende voor waarde: 
+Nadat het Bewaar beleid voor gegevens gedefinieerde is voor een Data Base en de onderliggende tabel, wordt een timer taak voor achtergrond tijd uitgevoerd om eventuele verouderde records uit de tabel die is ingeschakeld voor het bewaren van gegevens te verwijderen. De identificatie van overeenkomende rijen en het verwijderen van de tabel wordt op transparante wijze uitgevoerd in de achtergrond taak die door het systeem is gepland en uitgevoerd. De leeftijds voorwaarde voor de tabel rijen wordt gecontroleerd op basis van de kolom die wordt gebruikt als de `filter_column` in de tabel definitie. Als de Bewaar periode bijvoorbeeld is ingesteld op één week, kunnen tabel rijen die in aanmerking komen voor opschonen, voldoen aan een van de volgende voor waarden: 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- Als in de kolom filter de date time offset-gegevens type wordt gebruikt, is de voor waarde `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- Anders is de voor waarde `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>Opschonings fasen voor het bewaren van gegevens
 
@@ -37,7 +36,7 @@ De opschoon bewerking voor het bewaren van gegevens bestaat uit twee fasen.
 
 ## <a name="manual-cleanup"></a>Hand matig opschonen
 
-Afhankelijk van de instellingen voor het bewaren van gegevens in een tabel en de aard van de werk belasting op de data base, is het mogelijk dat de automatische opschonings thread niet alle verouderde rijen verwijdert tijdens de uitvoering. Om dit te helpen en gebruikers toe te staan om de verouderde rijen hand matig te verwijderen, `sys.sp_cleanup_data_retention` is de opgeslagen procedure geïntroduceerd in Azure SQL Edge (preview). 
+Afhankelijk van de instellingen voor het bewaren van gegevens in een tabel en de aard van de werk belasting op de data base, is het mogelijk dat de automatische opschonings thread niet alle verouderde rijen verwijdert tijdens de uitvoering. Om dit te helpen en gebruikers toe te staan om de verouderde rijen hand matig te verwijderen, `sys.sp_cleanup_data_retention` is de opgeslagen procedure geïntroduceerd in de Azure SQL-rand. 
 
 Deze opgeslagen procedure heeft drie para meters. 
     - Schema naam: naam van het schema dat eigenaar is van de tabel. Dit is een vereiste para meter. 
@@ -67,7 +66,7 @@ Met uitstekende gegevens compressie en een efficiënte Bewaar periode voor reten
 
 ## <a name="monitoring-data-retention-cleanup"></a>Opruimen van gegevens retentie bewaken
 
-Het opruimen van het beleid voor het bewaren van gegevens kan worden bewaakt met behulp van Extended Events (XEvents) in Azure SQL Edge (preview). Zie [XEvents Overview](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)(Engelstalig) voor meer informatie over Extended Events.
+Het opruimen van het beleid voor het bewaren van gegevens kan worden bewaakt met behulp van Extended Events (XEvents) in de Azure SQL-rand. Zie [XEvents Overview](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)(Engelstalig) voor meer informatie over Extended Events. 
 
 De volgende zes uitgebreide gebeurtenissen helpen bij het volgen van de status van de opschoon bewerkingen. 
 
@@ -78,7 +77,9 @@ De volgende zes uitgebreide gebeurtenissen helpen bij het volgen van de status v
 | data_retention_task_exception  | Treedt op wanneer de achtergrond taak voor het opruimen van tabellen met het Bewaar beleid niet kan worden uitgevoerd buiten het opruim proces voor retentie dat specifiek is voor de tabel. |
 | data_retention_cleanup_started  | Treedt op wanneer het opschonen van de tabel met het Bewaar beleid voor gegevens wordt gestart. |
 | data_retention_cleanup_exception  | Gebeurt met het opruimen van de tabel met het Bewaar beleid mislukt. |
-| data_retention_cleanup_completed  | Treedt op wanneer het opschonen van de tabel met het Bewaar beleid voor gegevens eindigt. |
+| data_retention_cleanup_completed  | Treedt op wanneer het opschonen van de tabel met het Bewaar beleid voor gegevens eindigt. |  
+
+Daarnaast is een nieuw ring buffer type met de naam `RING_BUFFER_DATA_RETENTION_CLEANUP` toegevoegd aan sys. dm_os_ring_buffers dynamische beheer weergave. Deze weer gave kan worden gebruikt om de opschoon bewerkingen voor het bewaren van gegevens te bewaken. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

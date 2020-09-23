@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0718151039d88ffb76a07ce082c08fb011dab88b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652376"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061598"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Zelfstudie: Azure SQL Database-resources naar een andere regio verplaatsen
 
@@ -77,7 +77,6 @@ Selecteer de resources die u wilt verplaatsen.
 
 3. Selecteer in **Resources verplaatsen** > **Bron en doel** het bronabonnement en de regio.
 4. Selecteer in **Doel** de regio waarnaar u de resources wilt verplaatsen. Klik op **Volgende**.
-5. Selecteer in **Metagegevensregio**de locatie waar u metagegevens over de verplaatste resources wilt opslaan. Er wordt speciaal voor dit doel een resourcegroep gemaakt. Klik op **Volgende**.
 
     ![Pagina voor het selecteren van bron- en doelregio](./media/tutorial-move-region-sql/source-target.png)
 

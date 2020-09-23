@@ -11,20 +11,20 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646964"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906678"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelfstudie: Een Azure Machine Learning-pijplijn bouwen voor batchgewijs scoren
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze geavanceerde zelfstudie leert u hoe u een pijplijn kunt bouwen in Azure Machine Learning om een taak voor batchgewijs scoren uit te voeren. Machine Learning-pijplijnen optimaliseren uw werkstroom met snelheid, draagbaarheid en hergebruik, zodat u zich kunt concentreren op machine learning in plaats van op infrastructuur en automatisering. Nadat u een pijplijn hebt gemaakt en gepubliceerd, configureert u een REST-eindpunt dat u kunt gebruiken om de pijplijn te activeren vanuit elke HTTP-bibliotheek en op elk platform. 
 
-In het voorbeeld wordt gebruikgemaakt van een vooraf getraind convolutioneel neuraal netwerkmodel [Inception-V3](https://arxiv.org/abs/1512.00567) dat is geïmplementeerd in Tensorflow om ongelabelde afbeeldingen te classificeren. [Meer informatie over machine learning-pijplijnen](concept-ml-pipelines.md).
+In deze geavanceerde zelfstudie leert u hoe u een [Azure Machine Learning-pijplijn](concept-ml-pipelines.md) kunt bouwen om een taak voor batchgewijs scoren uit te voeren. Machine Learning-pijplijnen optimaliseren uw werkstroom met snelheid, draagbaarheid en hergebruik, zodat u zich kunt concentreren op machine learning in plaats van op infrastructuur en automatisering. Nadat u een pijplijn hebt gemaakt en gepubliceerd, configureert u een REST-eindpunt dat u kunt gebruiken om de pijplijn te activeren vanuit elke HTTP-bibliotheek en op elk platform. 
+
+In het voorbeeld wordt gebruikgemaakt van een vooraf getraind convolutioneel neuraal netwerkmodel [Inception-V3](https://arxiv.org/abs/1512.00567) dat is geïmplementeerd in Tensorflow om ongelabelde afbeeldingen te classificeren. 
 
 In deze zelfstudie voert u de volgende taken uit:
 

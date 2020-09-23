@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923472"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904365"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Zelfstudie: Gegevens overdragen met Azure Data Box Gateway
 
@@ -57,7 +57,7 @@ Ga als volgt te werk om een share te maken:
 
     3. Geef een opslagaccount op waaronder de share wordt opgeslagen. Als er nog geen container bestaat, wordt in het opslagaccount een container gemaakt met de naam van de zojuist gemaakte share. Als er al een container bestaat, wordt de bestaande container gebruikt.
        > [!IMPORTANT]
-       > Controleer of er op het Azure Storage-account dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
+       > Controleer of voor het Azure-opslagaccount dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge Pro- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
     
     4. Kies de **Opslagservice** vanuit blok-blob, pagina-blob of bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. In dit geval kiezen we ervoor de gegevens als blok-blobs in Azure op te slaan, dus we selecteren Blok-blob. Als u Pagina-blob kiest, dient u ervoor te zorgen dat uw gegevens op 512 bytes zijn uitgelijnd. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
    
@@ -115,7 +115,7 @@ Maak op de Windows Server-client die is verbonden met uw Data Box Gateway-appara
 
 ### <a name="connect-to-an-nfs-share"></a>Verbinding maken met een NFS-share
 
-Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edge-apparaat:
+Voer de volgende procedure uit met de Linux-client die is verbonden met het Azure Stack Edge Pro-apparaat:
 
 1. Zorg ervoor dat de NFSv4-client is geïnstalleerd op de client. Als u de NFS-client wilt installeren, gebruikt u de volgende opdracht:
 

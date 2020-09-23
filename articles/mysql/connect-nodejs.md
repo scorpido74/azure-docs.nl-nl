@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ab4783d2bcce6ec42d49ef9a3e70d7a1acf83b8d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185924"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906571"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Node.js gebruiken om verbinding te maken en query's uit te voeren op gegevens in Azure Database for MySQL
 
@@ -93,7 +93,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 2. Selecteer in het menu aan de linkerkant in de Azure-portal **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Selecteer de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
- ![Naam van Azure Database voor MySQL-server](./media/connect-nodejs/server-name-azure-database-mysql.png)
+ :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>De JavaScript-code in Node.js uitvoeren
 

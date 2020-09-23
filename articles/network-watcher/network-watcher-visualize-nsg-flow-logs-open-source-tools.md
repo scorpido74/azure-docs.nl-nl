@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807674"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986255"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>NSG-stroomlogboeken van Azure Network Watcher visualiseren met open-sourcehulpprogramma's
 
@@ -29,7 +29,7 @@ Deze stroom logboeken kunnen lastig zijn om hand matig te parseren en inzicht te
 
 In dit artikel gaan we een oplossing instellen waarmee u stroom logboeken van netwerk beveiligings groepen kunt visualiseren met behulp van de elastische stack.  Met een Logstash-invoer-invoeg toepassing worden de stroom logboeken rechtstreeks opgehaald uit de opslag-blob die is geconfigureerd voor de betreffende stroom Logboeken. Vervolgens worden de stroom logboeken met behulp van de elastische stack geïndexeerd en gebruikt om een Kibana-dash board te maken om de informatie te visualiseren.
 
-![scenario][scenario]
+![Diagram toont een scenario waarmee u stroom logboeken van netwerk beveiligings groepen kunt visualiseren met behulp van de elastische stack.][scenario]
 
 ## <a name="steps"></a>Stappen
 
@@ -193,7 +193,7 @@ Raadpleeg de [documentatie](https://github.com/Azure/azure-diagnostics-tools/tre
    ./bin/kibana
    ```
 
-3. Als u uw Kibana web interface wilt weer geven, gaat u naar`http://localhost:5601`
+3. Als u uw Kibana web interface wilt weer geven, gaat u naar `http://localhost:5601`
 4. Voor dit scenario is het index patroon dat wordt gebruikt voor de stroom logboeken ' NSG-flow-logs '. U kunt het index patroon wijzigen in de sectie uitvoer van het bestand logstash. conf.
 5. Als u het Kibana-dash board extern wilt weer geven, maakt u een inkomende NSG-regel waarmee toegang tot **poort 5601**wordt toegestaan.
 
@@ -215,27 +215,27 @@ Het voorbeeld Dashboard bevat verschillende visualisaties van de stroom logboeke
 
 1. Stromen op beslissing/richting in de time-time-reeks grafieken met het aantal stromen gedurende de periode. U kunt de tijds eenheid en de duur van beide visualisaties bewerken. Stromen per beslissing toont het aandeel van het toestaan of weigeren van beslissingen, terwijl stromen op richting het aandeel van binnenkomend en uitgaand verkeer toont. Met deze visualisaties kunt u de trends van verkeer in de loop van de tijd bekijken en zoeken naar pieken of ongebruikelijke patronen.
 
-   ![afbeelding 2][2]
+   ![Scherm afbeelding toont een voor beeld van een dash board met stromen op beslissing en richting in de loop van de tijd.][2]
 
 2. Stromen op basis van het doel/bron poort – cirkel diagrammen met de uitsplitsing van stromen naar hun respectieve poorten. In deze weer gave ziet u de meest gebruikte poorten. Als u op een specifieke poort in het cirkel diagram klikt, wordt de rest van het dash board gefilterd op stromen van die poort.
 
-   ![figure3][3]
+   ![Scherm afbeelding toont een voor beeld van een dash board met stromen op bestemming en bron poort.][3]
 
 3. Aantal stromen en vroegste logboek tijd – metrische gegevens waarmee u het aantal vastgelegde stromen en de datum van het vroegst vastgelegde logboek wordt weer gegeven.
 
-   ![figure4][4]
+   ![Scherm afbeelding toont een voor beeld van een dash board met het aantal stromen en de eerste logboek tijd.][4]
 
 4. Stromen op NSG en regel: een staaf diagram met de verdeling van stromen binnen elke NSG, evenals de verdeling van regels binnen elke NSG. Hier kunt u zien welke NSG en regels het meeste verkeer hebben gegenereerd.
 
-   ![figure5][5]
+   ![Scherm afbeelding toont een voor beeld van een dash board met stromen door N S G en regel.][5]
 
 5. Top 10 van bron-en doel-IP-adressen: staaf diagrammen met de Top 10 van de bron-en doel-IP-adressen. U kunt deze grafieken aanpassen zodat meer of minder Top Ip's worden weer gegeven. Hier ziet u de meest voorkomende IP-adressen, evenals de beslissing over verkeer (toestaan of weigeren) voor elk IP-adres.
 
-   ![figure6][6]
+   ![Scherm afbeelding toont een voor beeld van een dash board met stromen per top tien van de bron-en doel-I P-adressen.][6]
 
 6. Stroom Tuples: deze tabel bevat de informatie die is opgenomen in elke stroom-tuple, evenals de bijbehorende NGS en regel.
 
-   ![figure7][7]
+   ![Scherm opname toont stroom Tuples in een tabel.][7]
 
 Met de query balk boven aan het dash board kunt u het dash board filteren op basis van een para meter van de stromen, zoals abonnements-ID, resource groepen, regel of enige andere interessante variabele. Raadpleeg de [officiële documentatie](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) voor meer informatie over de query's en filters van Kibana.
 

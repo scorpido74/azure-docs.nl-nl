@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108784"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881875"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Wat is Azure Stream Analytics?
 
@@ -57,7 +57,7 @@ Zie [Uitvoer van Azure Stream Analytics begrijpen](stream-analytics-define-outpu
 
 ## <a name="programmer-productivity"></a>Productiviteit van programmeurs
 
-Azure Stream Analytics maakt gebruik van een eenvoudige, op SQL gebaseerde querytaal die is uitgebreid met krachtige, tijdelijke beperkingen voor het analyseren van gegevens in beweging. Voor het definiëren van taaktransformaties gebruikt u een eenvoudige, declaratieve [Stream Analytics-querytaal](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) waarmee u complexe, tijdelijke query’s en analyses kunt schrijven met behulp van SQL-constructs. Omdat de querytaal van Stream Analytics is consistent met SQL. Als u bekend bent met SQL, is dat voldoende om taken te kunnen maken. U kunt ook taken maken met ontwikkelaarstalen als Azure PowerShell, [Stream Analytics Visual Studio tools](stream-analytics-tools-for-visual-studio-install.md), de [Stream Analytics Visual Studio Code-extensie](quick-create-vs-code.md) of Azure Resource Manager-sjablonen. Met ontwikkelaarstalen kunt u offline transformatiequery’s ontwikkelen en de [CI/CD-pijplijn](stream-analytics-tools-for-visual-studio-cicd.md) gebruiken om taken bij Azure in te dienen.
+Azure Stream Analytics maakt gebruik van een eenvoudige, op SQL gebaseerde querytaal die is uitgebreid met krachtige, tijdelijke beperkingen voor het analyseren van gegevens in beweging. Voor het definiëren van taaktransformaties gebruikt u een eenvoudige, declaratieve [Stream Analytics-querytaal](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) waarmee u complexe, tijdelijke query’s en analyses kunt schrijven met behulp van SQL-constructs. Omdat de querytaal van Stream Analytics is consistent met SQL. Als u bekend bent met SQL, is dat voldoende om taken te kunnen maken. U kunt ook taken maken met ontwikkelaarstalen als Azure PowerShell, [Stream Analytics Visual Studio tools](stream-analytics-tools-for-visual-studio-install.md), de [Stream Analytics Visual Studio Code-extensie](quick-create-visual-studio-code.md) of Azure Resource Manager-sjablonen. Met ontwikkelaarstalen kunt u offline transformatiequery’s ontwikkelen en de [CI/CD-pijplijn](stream-analytics-tools-for-visual-studio-cicd.md) gebruiken om taken bij Azure in te dienen.
 
 De querytaal van Stream Analytics biedt een breed spectrum aan functies voor het analyseren en verwerken van streaming gegevens. Deze querytaal ondersteunt eenvoudige gegevensbewerking, -samenvoeging en analysefuncties, [georuimtelijke functies](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [patroonherkenning](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) en [anomaliedetectie](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection). U kunt query’s in de portal bewerken en ze testen met voorbeeldgegevens die uit een livestream worden opgehaald.
 
@@ -106,4 +106,4 @@ U hebt nu een overzicht van Azure Stream Analytics. Hierna kunt u zich verder in
 * [Een Stream Analytics-taak maken via Azure Portal](stream-analytics-quick-create-portal.md).
 * [Create a Stream Analytics job by using Azure PowerShell](stream-analytics-quick-create-powershell.md) (Een Stream Analytics-taak maken met behulp van Azure PowerShell).
 * [Create a Stream Analytics job by using Visual Studio](stream-analytics-quick-create-vs.md) (Een Stream Analytics-taak maken met behulp van Visual Studio).
-* [Create a Stream Analytics job by using Visual Studio Code](quick-create-vs-code.md) (Een Stream Analytics-taak maken met behulp van Visual Studio).
+* [Create a Stream Analytics job by using Visual Studio Code](quick-create-visual-studio-code.md) (Een Stream Analytics-taak maken met behulp van Visual Studio).

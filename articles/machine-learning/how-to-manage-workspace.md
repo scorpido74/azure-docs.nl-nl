@@ -7,18 +7,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1f68753e7b28163f3ec0c18c30cf5939e0bc5243
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 38784b006acac4c3ff70b2aa3c38648e939eddeb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889913"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) in de Azure Portal voor [Azure machine learning](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) of [via de VS code-extensie](tutorial-setup-vscode-extension.md).
 
@@ -47,11 +47,10 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen 
    Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
-   Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
 
     ![Uw werk ruimte configureren](./media/how-to-manage-workspace/select-edition.png)
 
-1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**. Gebruik eventueel de secties [netwerken](#networking) en [Geavanceerd](#advanced) om meer instellingen te configureren voor de werk ruimte.
+1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**.
 2. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
 
    > [!Warning] 
@@ -60,84 +59,6 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen 
    Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
  
  1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
-
-
-### <a name="networking"></a>Netwerken
-
-> [!IMPORTANT]
-> Zie [netwerk isolatie en privacy](how-to-enable-virtual-network.md)voor meer informatie over het gebruik van een persoonlijk eind punt en een virtueel netwerk met uw werk ruimte.
-
-1. De standaard netwerk configuratie is het gebruik van een __openbaar eind punt__dat toegankelijk is op het open bare Internet. Als u de toegang tot uw werk ruimte wilt beperken tot een Azure-Virtual Network die u hebt gemaakt, kunt u in plaats daarvan __persoonlijk eind punt__ (preview) selecteren als de __verbindings methode__en vervolgens __+ toevoegen__ gebruiken om het eind punt te configureren.
-
-   > [!IMPORTANT]
-   > Het gebruik van een persoonlijk eind punt met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
-
-   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Persoonlijke eindpunt selectie":::
-
-1. Stel op het formulier __persoonlijk eind punt maken__ de locatie, naam en het virtuele netwerk in op gebruik. Als u het eind punt met een Privé-DNS zone wilt gebruiken, selecteert u __integreren met privé-DNS-zone__ en selecteert u de zone in het veld __privé-DNS zone__ . Selecteer __OK__ om het eind punt te maken. 
-
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Persoonlijk eind punt maken":::
-
-1. Wanneer u klaar bent met het configureren van het netwerk, kunt u __controleren + maken__selecteren of door gaan naar de optionele __Geavanceerde__ configuratie.
-
-    > [!WARNING]
-    > Wanneer u een persoonlijk eind punt maakt, wordt er een nieuwe Privé-DNS zone gemaakt met de naam __privatelink.API.azureml.MS__ . Dit bevat een koppeling naar het virtuele netwerk. Als u meerdere werk ruimten met persoonlijke eind punten in dezelfde resource groep maakt, kan alleen het virtuele netwerk voor het eerste persoonlijke eind punt worden toegevoegd aan de DNS-zone. Gebruik de volgende stappen om vermeldingen toe te voegen voor de virtuele netwerken die worden gebruikt door de extra werk ruimten/persoonlijke eind punten:
-    > 
-    > 1. Selecteer in de [Azure Portal](https://portal.azure.com)de resource groep die de werk ruimte bevat. Selecteer vervolgens de Privé-DNS zone resource met de naam __privatelink.API.azureml.MS__.
-    > 2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__.
-    > 3. Selecteer __Toevoegen__. Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
-    >
-    > Zie voor meer informatie [Azure private endpoint DNS-configuratie](/azure/private-link/private-endpoint-dns).
-
-### <a name="advanced"></a>Geavanceerd
-
-Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels. 
-
-Als u de gegevens wilt beperken die door micro soft worden verzameld op uw werk ruimte, selecteert u een __werk ruimte met een grote bedrijfs impact__.
-
-> [!IMPORTANT]
-> Het selecteren van belang rijke bedrijfs impact kan alleen worden uitgevoerd bij het maken van een werk ruimte. U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt.
-
-Als u de __Enter prise__ -versie van Azure machine learning gebruikt, kunt u in plaats daarvan uw eigen sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de volgende stappen om uw eigen sleutel te gebruiken:
-
-> [!IMPORTANT]
-> Voordat u deze stappen volgt, moet u eerst de volgende acties uitvoeren:
->
-> 1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
-> 1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
->     * De Azure Cosmos DB provider registreren
->     * Een Azure Key Vault maken en configureren
->     * Een sleutel genereren
->
->     U hoeft het Azure Cosmos DB exemplaar niet hand matig te maken, er wordt een voor u gemaakt tijdens het maken van de werk ruimte. Dit Azure Cosmos DB exemplaar wordt in een afzonderlijke resource groep gemaakt met behulp van een naam op basis van dit patroon: `<your-resource-group-name>_<GUID>` .
->
-> U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt. Als u de Azure Cosmos DB die door uw werk ruimte worden gebruikt, verwijdert, moet u ook de werk ruimte verwijderen die er gebruik van maakt.
-
-1. Selecteer door de __klant beheerde sleutels__en selecteer vervolgens __klikken om een sleutel te selecteren__.
-
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Door klant beheerde sleutels":::
-
-1. Selecteer in het formulier __sleutel selecteren van Azure Key Vault__ een bestaande Azure Key Vault, een sleutel die deze bevat en de versie van de sleutel. Deze sleutel wordt gebruikt voor het versleutelen van de gegevens die zijn opgeslagen in Azure Cosmos DB. Gebruik tot slot de knop __selecteren__ om deze sleutel te gebruiken.
-
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Selecteer de sleutel":::
-
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Bijwerken naar Enter prise Edition
-
-U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om gebruik te maken van de uitgebreide functies, zoals ervaringen met weinig code en verbeterde beveiligings functies.
-
-1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
-
-1. Selecteer de werk ruimte die u wilt bijwerken.
-
-1. Selecteer in de rechter bovenhoek van de pagina **meer informatie**  .
-
-   [![Een werk ruimte ](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
-
-1. Selecteer **upgrade** in het venster dat wordt weer gegeven.
-
-
-> [!IMPORTANT]
-> U kunt een Enter prise Edition-werk ruimte niet naar een Basic editie-werk ruimte downgradeen.
 
 ### <a name="download-a-configuration-file"></a>Een configuratiebestand downloaden
 
@@ -148,10 +69,9 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
    ![Config.json downloaden](./media/how-to-manage-workspace/configure.png)
    
    Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
-
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **machine learning**in het bovenste zoek veld.  
 

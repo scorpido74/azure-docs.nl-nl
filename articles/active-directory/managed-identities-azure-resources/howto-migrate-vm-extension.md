@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260183"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969205"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Stoppen met het gebruik van de extensie voor beheerde identiteiten van de virtuele machine en het gebruik van Azure Instance Metadata Service
 
@@ -37,8 +37,8 @@ Als gevolg van verschillende beperkingen die in de volgende sectie worden beschr
 
 Wanneer u een schaalset voor een virtuele machine of virtuele machine configureert voor een beheerde identiteit, kunt u eventueel de beheerde identiteiten voor de VM-extensie van Azure-resources inrichten met behulp `-Type` van de para meter voor de cmdlet [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) . U kunt ofwel `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux` , afhankelijk van het type van de virtuele machine, een naam geven met behulp van de `-Name` para meter. De `-Settings` para meter geeft de poort die wordt gebruikt door het OAuth-token-eind punt voor het ophalen van tokens:
 
-```powershell
-   $settings = @{ "port" = 50342 }
+```azurepowershell-interactive
+$settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
@@ -68,7 +68,7 @@ U kunt ook de Azure Resource Manager-implementatie sjabloon gebruiken om de VM-e
     
 Als u werkt met schaal sets voor virtuele machines, kunt u ook de beheerde identiteiten voor de virtuele-machine Scale set-extensie van Azure-resources inrichten met de cmdlet [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . U kunt ofwel bepalen `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux` , afhankelijk van het type schaalset voor virtuele machines, en deze een naam geven met behulp van de `-Name` para meter. De `-Settings` para meter geeft de poort die wordt gebruikt door het OAuth-token-eind punt voor het ophalen van tokens:
 
-   ```powershell
+   ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
@@ -106,7 +106,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
 ```
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 In Windows en bepaalde versies van Linux, als de extensie stopt, kan de volgende cmdlet worden gebruikt om deze hand matig opnieuw te starten:
 
-```powershell
+```azurepowershell-interactive
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 

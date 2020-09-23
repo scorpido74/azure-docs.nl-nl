@@ -11,19 +11,20 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545655"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906038"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>De Text Analytics-containers installeren en uitvoeren
 
 > [!NOTE]
 > * De container voor Sentimentanalyse v3 is nu algemeen beschikbaar. De containers voor sleuteltermextractie en taaldetectie zijn beschikbaar als een openbare preview-versie.
 > * Entiteits koppelingen en NER zijn momenteel niet beschikbaar als container.
-> * Er worden momenteel geen kosten in rekening gebracht voor het gebruik van de container Text Analytics voor de status.
+> * Voor toegang tot de Text Analytics voor de status container is een [aanvraag formulier](https://aka.ms/cognitivegate)vereist. Op dit moment wordt er geen kosten in rekening gebracht voor het gebruik.
+> * De locaties van de container installatie kopie zijn mogelijk onlangs gewijzigd. Lees dit artikel om de bijgewerkte locatie voor deze container te bekijken.
 
 Containers bieden u de mogelijkheid de Text Analytics-API's in uw eigen omgeving uit te voeren en zijn ideaal voor uw specifieke vereisten voor beveiliging en gegevensbeheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. 
 

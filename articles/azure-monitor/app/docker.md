@@ -3,12 +3,12 @@ title: Docker-toepassingen bewaken in Azure-toepassing Insights | Microsoft Docs
 description: Docker-prestatie meter items, gebeurtenissen en uitzonde ringen kunnen worden weer gegeven op Application Insights, samen met de telemetrie van de apps in de container.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977589"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-toepassingen in Application Insights bewaken (afgeschaft)
 
@@ -61,7 +61,7 @@ Als uw toepassing is voorzien van de [Application INSIGHTS SDK voor Java](./java
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-Hiermee voegt u docker-informatie, zoals container en host-id, toe aan elk telemetrie-item dat vanuit uw app wordt verzonden.
+Hiermee voegt u docker-informatie, zoals container en host-ID, toe aan elk telemetrie-item dat vanuit uw app wordt verzonden.
 
 ## <a name="view-your-telemetry"></a>Uw telemetrie weergeven
 Ga terug naar uw Application Insights-resource in de Azure Portal.
@@ -71,12 +71,12 @@ Klik op de tegel docker.
 U ziet binnenkort gegevens die arriveren vanuit de docker-app, met name als u andere containers hebt die worden uitgevoerd op uw docker-engine.
 
 ### <a name="docker-container-events"></a>Docker-container gebeurtenissen
-![Hierbij](./media/docker/13.png)
+![Scherm afbeelding toont het selecteren van een zoek opdracht, een diagnostisch Zoek resultaat venster met een pijl die verwijst van een aangepaste gebeurtenis naar een venster met aangepaste gegevens.](./media/docker/13.png)
 
 Klik op [zoeken](./diagnostic-search.md)om afzonderlijke gebeurtenissen te onderzoeken. Zoek en filter om de gewenste gebeurtenissen te vinden. Klik op een gebeurtenis om meer details weer te geven.
 
 ### <a name="exceptions-by-container-name"></a>Uitzonde ringen op container naam
-![Hierbij](./media/docker/14.png)
+![In de scherm afbeelding ziet u de Metrics Explorer pagina met een diagram geselecteerd en het venster diagram Details open aan de rechter kant.](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Docker-context is toegevoegd aan app-telemetrie
 Aanvraag-telemetrie die is verzonden vanuit de toepassings instrument met AI SDK, wordt verrijkt met de gegevens van docker-context.

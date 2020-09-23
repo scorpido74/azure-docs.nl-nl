@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904945"
+ms.locfileid: "90985573"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 
@@ -86,7 +86,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
             
         Selecteer **Volgende.**
 
-    1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevensprofilering](#profile).
+    1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevensprofilering](how-to-connect-data-ui.md#profile).
 
         Selecteer **Next**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
@@ -111,7 +111,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
 
     >[!NOTE]
-    > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
+    > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](how-to-connect-data-ui.md#profile) voor meer informatie).
 
     Selecteer **Next**.
 
@@ -144,32 +144,6 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , worden de standaard parametrisatie-technieken toegepast. In de **instellingen van de weer gave-parametrisatie** kunt u deze standaard waarden wijzigen en dienovereenkomstig aanpassen. Meer informatie over het [aanpassen van featurizations](#customize-featurization). 
 
     ![Formulier Azure Machine Learning Studio-taak type](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
-
-<a name="profile"></a>
-
-## <a name="data-profiling--summary-stats"></a>Overzichts statistieken voor gegevens profilering &
-
-U kunt een groot aantal samenvattings statistieken in uw gegevensset ontvangen om te controleren of uw gegevensset van ML is. Voor niet-numerieke kolommen bevatten ze alleen basis statistieken zoals min, Max en aantal fouten. Voor numerieke kolommen kunt u ook hun statistische momenten en geschatte quantiles bekijken. Het gegevens profiel bevat met name:
-
->[!NOTE]
-> Lege vermeldingen worden weer gegeven voor functies met irrelevante typen.
-
-Statistic|Description
-------|------
-Functie| De naam van de kolom die wordt samenvatten.
-Profiel| In-line visualisatie op basis van het type dat is afgeleid. Teken reeksen, Booleaanse waarden en datums hebben bijvoorbeeld een aantal aantallen, terwijl decimalen (cijfers) geschatte histogrammen hebben. Zo kunt u een goed inzicht krijgen in de distributie van de gegevens.
-Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
-Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
-Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor functies waarvan het type geen inherente ordening (bijvoorbeeld Boole-waarden) heeft.
-Max| De maximum waarde van de kolom. 
-Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
-Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
-Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
-Gemiddeld| Reken kundige gemiddelde of gemiddelde van de kolom.
-Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
-Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
-Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
-Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
 ## <a name="customize-featurization"></a>Parametrisatie aanpassen
 

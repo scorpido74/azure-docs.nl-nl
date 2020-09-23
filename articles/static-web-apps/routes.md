@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906774"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routes in de preview-versie van statische Web Apps van Azure
 
@@ -32,7 +32,7 @@ Zie het [route bestand voor beeld](#example-route-file) voor meer informatie.
 
 De _routes.jsin_ het bestand moet bestaan in de hoofdmap van de map build artefact van de app. Als uw web-app een build-stap bevat waarmee ingebouwde bestanden van een specifieke map naar de map build-artefact worden gekopieerd, moet de _routes.jsin_ het bestand zich in die specifieke map bevinden.
 
-De volgende tabel bevat de juiste locatie voor het opslaan van uw _routes.jsin_ het bestand voor een aantal front-end Java script-frameworks en-bibliotheken.
+De volgende tabel bevat de juiste locatie voor het opslaan van uw _routes.jsin_ het bestand voor een aantal front-end-frameworks en-bibliotheken.
 
 |Framework/bibliotheek | Locatie  |
 |---------|----------|
@@ -40,6 +40,9 @@ De volgende tabel bevat de juiste locatie voor het opslaan van uw _routes.jsin_ 
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
+| Blazor  | _wwwroot_ |
+
+De bovenstaande tabel is alleen een vertegenwoordiger van een paar frameworks en bibliotheken die compatibel zijn met Azure static Web Apps. Raadpleeg [front-end-frameworks en-bibliotheken configureren](./front-end-frameworks.md) voor meer informatie.
 
 ## <a name="defining-routes"></a>Routes definiëren
 
@@ -47,10 +50,10 @@ Routes worden gedefinieerd in de _routes.jsop_ bestand als een matrix van route 
 
 | Regel eigenschap  | Vereist | Standaardwaarde | Opmerking                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index.html_.</ul>|
-| `serve`        | Nee       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als er `serve` geen waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. Query string-para meters worden niet ondersteund; de `serve` waarden moeten verwijzen naar de werkelijke bestanden.  |
-| `allowedRoles` | Nee       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
-| `statusCode`   | Nee       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
+| `route`        | Yes      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index.html_.</ul>|
+| `serve`        | No       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als er `serve` geen waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. Query string-para meters worden niet ondersteund; de `serve` waarden moeten verwijzen naar de werkelijke bestanden.  |
+| `allowedRoles` | No       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
+| `statusCode`   | No       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
 
 ## <a name="securing-routes-with-roles"></a>Routes beveiligen met rollen
 
@@ -106,7 +109,7 @@ U kunt routes ook beveiligen met Joker tekens. In het volgende voor beeld is voo
 
 ## <a name="fallback-routes"></a>Terugval routes
 
-Front-end Java script frameworks of-bibliotheken zijn vaak afhankelijk van route ring aan client zijde voor het navigeren door Web-apps. Deze routerings regels aan de client zijde voeren de venster locatie van de browser bij zonder aanvragen terug te sturen naar de server. Als u de pagina vernieuwt of rechtstreeks navigeert naar locaties die worden gegenereerd door routerings regels aan de client zijde, is er een terugval route aan de server zijde vereist voor de juiste HTML-pagina.
+Toepassingen met één pagina, ongeacht of ze front-end Java script frameworks of-bibliotheken of webassemblers-platformen zoals razendsnelle gebruiken, zijn vaak afhankelijk van route ring aan client zijde voor het navigeren door Web-apps. Deze routerings regels aan de client zijde voeren de venster locatie van de browser bij zonder aanvragen terug te sturen naar de server. Als u de pagina vernieuwt of rechtstreeks navigeert naar locaties die worden gegenereerd door routerings regels aan de client zijde, is er een terugval route aan de server zijde vereist voor de juiste HTML-pagina.
 
 In het volgende voor beeld wordt een algemene terugval route weer gegeven:
 
@@ -186,6 +189,9 @@ De volgende overwegingen zijn belang rijk bij het werken met MIME-typen:
 
 - Sleutels mogen niet null of leeg zijn, of meer dan 50 tekens bevatten
 - Waarden mogen niet null of leeg zijn, of meer dan 1000 tekens bevatten
+
+> [!NOTE]
+> Statische Web Apps begrijpt razendsnelle toepassingen en de verwachte MIME-typen voor de WASM-en DLL-bestanden, maar u hoeft geen toewijzingen voor die gebruikers toe te voegen.
 
 ## <a name="default-headers"></a>Standaard headers
 

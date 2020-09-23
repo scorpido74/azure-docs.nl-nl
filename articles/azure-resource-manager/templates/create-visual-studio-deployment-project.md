@@ -3,12 +3,12 @@ title: Visual Studio-resource groeps projecten maken & implementeren
 description: Gebruik Visual Studio om een Azure-resourcegroepproject te maken en de resources in Azure te implementeren.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985241"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure-resourcegroepen maken en implementeren met Visual Studio
 
@@ -23,7 +23,7 @@ In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sja
 1. Kies in Visual Studio **bestand** > **Nieuw** > **project**.
 1. Selecteer de project sjabloon **Azure-resource groep** en **volgende**.
 
-    ![Project maken](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Scherm afbeelding toont het venster een nieuw project maken met Azure-resource groep en de knop Volgende gemarkeerd.](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Geef uw project een naam. De andere standaard instellingen zijn waarschijnlijk verfijnd, maar bekijken ze voor uw omgeving. Wanneer u klaar bent, selecteert u **Maken**.
 
@@ -65,7 +65,7 @@ U kunt een implementatie project aanpassen door de Resource Manager-sjabloon te 
 
 1. U kunt een nieuwe resource toevoegen aan een sjabloon door op de knop **Resource toevoegen** te klikken boven aan het venster JSON Outline of door met de rechtermuisknop op **Resources** te klikken en **Nieuwe resource toevoegen** te selecteren.
 
-   ![Resource toevoegen](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![Scherm afbeelding toont het venster JSON-overzicht met de optie nieuwe resource toevoegen gemarkeerd.](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. Selecteer een **opslag account** en geef deze een naam. Geef een naam op die niet meer dan elf tekens (alleen cijfers en kleine letters) omvat.
 
@@ -189,7 +189,7 @@ U hebt nu de infrastructuur geïmplementeerd voor uw app, maar er is nog geen co
 
 1. Nu moet u nagaan of het nieuwe project gekoppeld is aan uw resourcegroepproject. Ga terug naar het project van de resource groep (ExampleAppDeploy). Klik met de rechtermuisknop op **Verwijzingen** en selecteer **Verwijzing toevoegen**.
 
-    ![Verwijzing toevoegen](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Scherm afbeelding toont het menu ExampleAppDeploy met de optie referentie toevoegen gemarkeerd.](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Selecteer het web-app-project dat u hebt gemaakt.
 
@@ -364,7 +364,7 @@ U bent niet beperkt tot alleen de resources die beschikbaar zijn via de Visual S
 
 1. Nadat de implementatie is voltooid, bekijkt u het dash board in de portal. Selecteer **dash board** en kies het abonnement dat u hebt geïmplementeerd.
 
-   ![Aangepast dashboard](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![Scherm afbeelding toont de dashboard pagina met een voor beeld van een aangepast dash board.](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. U ziet het aangepaste dash board.
 
@@ -384,7 +384,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u sjablonen maakt en implementeert met behulp van Visual Studio. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelf studie reeks voor beginners:
+In dit artikel hebt u geleerd hoe u sjablonen maakt en implementeert met behulp van Visual Studio. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelfstudiereeks voor beginners:
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor beginners](./template-tutorial-create-first-template.md)

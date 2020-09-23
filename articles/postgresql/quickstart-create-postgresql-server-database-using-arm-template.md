@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 0661e743fb2493b9eab4b90dcb65297e99c2cc64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906449"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for PostgreSQL te maken - enkele server
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-datab
 
 Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,7 +66,7 @@ Meer Azure Database for PostgreSQL-sjabloonvoorbeelden vindt u in [Azure-quickst
 
 Selecteer de volgende koppeling om de Azure Database for PostgreSQL-serversjabloon te implementeren in de Azure-portal:
 
-[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 Doe het volgende op de pagina **Azure Database for PostgreSQL implementeren met VNet**:
 
@@ -76,7 +76,7 @@ Doe het volgende op de pagina **Azure Database for PostgreSQL implementeren met 
 
 3. Voer gegevens bij **Servernaam**, **Aanmelden beheerder** en  **Wachtwoord aanmelden beheerder** in.
 
-    ![Azure Database for PostgreSQL implementeren met VNet-venster, Azure-snelstart-sjabloon, Azure-portal](./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Azure Database for PostgreSQL implementeren met VNet-venster, Azure-snelstart-sjabloon, Azure-portal":::
 
 4. Wijzig desgewenst de andere standaardinstellingen:
 

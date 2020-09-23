@@ -11,15 +11,15 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b2b435be2a39b6e31a7f44fa6acbe7e1bc9c2c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661668"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905150"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > Het detecteren van gegevens drift in gegevens sets is momenteel beschikbaar als open bare preview.
@@ -37,9 +37,6 @@ Met Azure Machine Learning gegevensset monitors (preview) kunt u het volgende do
 Er wordt een [Azure machine learning-gegevensset](how-to-create-register-datasets.md) gebruikt om de monitor te maken. De gegevensset moet een time stamp-kolom bevatten.
 
 U kunt metrische gegevens over data drift weer geven met de python-SDK of in Azure Machine Learning Studio.  Andere metrische gegevens en inzichten zijn beschikbaar via de [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -resource die aan de Azure machine learning-werk ruimte is gekoppeld.
-
-> [!Important]
-> Het bewaken van gegevens drift met de SDK is beschikbaar in alle edities. Het bewaken van gegevens drift via de studio op internet is echter alleen Enter prise Edition.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -88,7 +85,7 @@ Analyse uitvoeren op gegevens in het verleden. | Dit scenario kan worden gebruik
 
 Gegevensset monitors zijn afhankelijk van de volgende Azure-Services.
 
-|Azure-service  |Beschrijving  |
+|Azure-service  |Description  |
 |---------|---------|
 | *Gegevensset* | Drift maakt gebruik van Machine Learning gegevens sets om trainings gegevens op te halen en gegevens voor model training te vergelijken.  Het genereren van een gegevens profiel wordt gebruikt voor het genereren van een aantal van de gerapporteerde metrieken, zoals min, Max, DISTINCT-waarden en aantal afzonderlijke waarden. |
 | *Azureml-pijp lijn en-reken kracht* | De taak voor het berekenen van de drift wordt gehost in de azureml-pijp lijn.  De taak wordt op aanvraag geactiveerd of op schema om te worden uitgevoerd op een reken tijd die is geconfigureerd tijdens het maken van de drijf monitor.
@@ -135,7 +132,6 @@ dset = dset.register(ws, 'target')
 Voor een volledig voor beeld van het gebruik `timeseries` van de eigenschappen van gegevens sets raadpleegt u het [voor beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) of de SDK-documentatie voor [gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 Als u uw gegevensset maakt met behulp van Azure Machine Learning Studio, zorgt u ervoor dat het pad naar uw gegevens tijds tempel informatie bevat, alle submappen met gegevens bevatten en de partitie-indeling instellen.
 
@@ -209,15 +205,13 @@ monitor = monitor.enable_schedule()
 Zie voor een volledig voor beeld van het instellen van een `timeseries` gegevensset en gegevens drift een [voor beeld](https://aka.ms/datadrift-notebook)van een notebook.
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-Als u waarschuwingen wilt instellen op uw gegevenssetcontrole, moet de werk ruimte die de gegevensset bevat waarvoor u een monitor wilt maken, beschikken over de mogelijkheden van ENTER prise Edition.
+1. Ga naar de [Start pagina van de Studio](https://ml.azure.com).
+1. Selecteer het tabblad **gegevens sets** aan de linkerkant. 
+1. Selecteer de **monitors**voor de gegevensset.
+   ![Monitor lijst](./media/how-to-monitor-datasets/monitor-list.png)
 
-Nadat de werkruimte functionaliteit is bevestigd, gaat u naar de [Start pagina van de Studio](https://ml.azure.com) en selecteert u het tabblad **gegevens sets** aan de linkerkant. Selecteer de **monitors**voor de gegevensset.
-
-![Monitor lijst](./media/how-to-monitor-datasets/monitor-list.png)
-
-Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**te klikken.  
+1. Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**te klikken.  
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Een wizard voor het maken van een monitor":::
 
@@ -229,7 +223,7 @@ Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**t
 
     | Instelling | Beschrijving | Tips | Veranderlijk | 
     | ------- | ----------- | ---- | ------- |
-    | Naam | De naam van de monitor van de gegevensset. | | No |
+    | Name | De naam van de monitor van de gegevensset. | | No |
     | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Yes | 
     | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Yes | 
     | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Yes | 

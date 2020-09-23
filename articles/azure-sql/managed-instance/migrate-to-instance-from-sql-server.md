@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887650"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -198,7 +198,7 @@ Zelfs als u tijdens de migratie geen wijzigingen aanbrengt in het beheerde exemp
 
 U hoeft bijvoorbeeld geen back-ups te maken op een beheerd exemplaar. de service voert automatisch back-ups voor u uit. U hoeft zich geen zorgen meer te maken over het plannen, maken en beheren van back-ups. Met SQL Managed Instance kunt u op elk gewenst moment binnen deze Bewaar periode herstellen met behulp van [PITR (Point in time Recovery)](../database/recovery-using-backups.md#point-in-time-restore). Bovendien hoeft u zich geen zorgen te maken over het instellen van hoge Beschik baarheid, omdat [hoge Beschik baarheid](../database/high-availability-sla.md) is ingebouwd.
 
-U kunt de beveiliging versterken door [Azure Active Directory verificatie](../database/security-overview.md), [controle](auditing-configure.md), [detectie van bedreigingen](../database/advanced-data-security.md), [beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)en [dynamische gegevens maskering](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)te gebruiken.
+U kunt de beveiliging versterken door [Azure Active Directory verificatie](../database/security-overview.md), [controle](auditing-configure.md), [detectie van bedreigingen](../database/azure-defender-for-sql.md), [beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)en [dynamische gegevens maskering](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)te gebruiken.
 
 Naast geavanceerde beheer-en beveiligings functies biedt een beheerd exemplaar een aantal geavanceerde hulp middelen waarmee u [uw werk belasting kunt bewaken en afstemmen](../database/monitor-tune-overview.md). Met [Azure SQL-analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) kunt u een groot aantal beheerde exemplaren bewaken en de controle van een grote hoeveelheid exemplaren en data bases centraliseren. [Automatisch afstemmen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) in beheerde instanties bewaakt voortdurend de prestaties van de uitvoerings statistieken van uw SQL-plan en corrigeert de geïdentificeerde prestatie problemen automatisch.
 

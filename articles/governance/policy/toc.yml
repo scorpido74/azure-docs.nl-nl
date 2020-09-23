@@ -86,12 +86,18 @@
     - name: Inzicht in effecten
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Bereik
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: Initiatiefstructuur
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: Toewijzingsstructuur
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: Uitzonderingsstructuur
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: De impact van een nieuw beleid evalueren
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md

@@ -1,5 +1,5 @@
 ---
-title: Azure-activiteitenlogboek
+title: Azure-activiteiten logboek
 description: Bekijk het Azure-activiteiten logboek en verzend het naar Azure Monitor-logboeken, Azure Event Hubs en Azure Storage.
 author: bwren
 services: azure-monitor
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516138"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983212"
 ---
-# <a name="azure-activity-log"></a>Azure-activiteitenlogboek
+# <a name="azure-activity-log"></a>Azure-activiteiten logboek
 Het activiteiten logboek is een [platform logboek](platform-logs-overview.md) in azure dat inzicht biedt in gebeurtenissen op abonnements niveau. Dit geldt ook voor gegevens zoals wanneer een resource wordt gewijzigd of wanneer een virtuele machine wordt gestart. U kunt het activiteitenlogboek weergeven in de Azure-portal, of items ophalen met PowerShell en CLI. Voor aanvullende functionaliteit moet u een diagnostische instelling maken om het activiteiten logboek naar [Azure monitor logboeken](data-platform-logs.md)te verzenden naar Azure Event hubs om buiten Azure door te sturen, of om Azure Storage te archiveren. In dit artikel vindt u informatie over het weer geven van het activiteiten logboek en het verzenden ervan naar verschillende bestemmingen.
 
 Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling.
@@ -156,7 +156,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Elke PT1H.json-blob bevat een JSON-blob van gebeurtenissen die hebben plaatsgevonden binnen het uur dat is opgegeven in de blob-URL (bijvoorbeeld, h=12). Tijdens het huidige uur worden gebeurtenissen toegevoegd aan het bestand PT1H.json wanneer deze zich voordoen. De minuut waarde (m = 00) is altijd 00, omdat de bron logboek gebeurtenissen worden opgesplitst in afzonderlijke blobs per uur.
 
-Elke gebeurtenis wordt opgeslagen in het PT1H.jsbestand met de volgende indeling die gebruikmaakt van een algemeen schema op het hoogste niveau, maar is anders uniek voor elke categorie, zoals beschreven in het schema van het [activiteiten logboek](activity-log-schema.md).
+Elke gebeurtenis wordt opgeslagen in het PT1H.jsbestand met de volgende indeling die gebruikmaakt van een algemeen schema op het hoogste niveau, maar is anders uniek voor elke categorie, zoals beschreven in het schema van het  [activiteiten logboek](activity-log-schema.md).
 
 ``` JSON
 { "time": "2020-06-12T13:07:46.766Z", "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MV-VM-01", "correlationId": "0f0cb6b4-804b-4129-b893-70aeeb63997e", "operationName": "Microsoft.Resourcehealth/healthevent/Updated/action", "level": "Information", "resultType": "Updated", "category": "ResourceHealth", "properties": {"eventCategory":"ResourceHealth","eventProperties":{"title":"This virtual machine is starting as requested by an authorized user or process. It will be online shortly.","details":"VirtualMachineStartInitiatedByControlPlane","currentHealthStatus":"Unknown","previousHealthStatus":"Unknown","type":"Downtime","cause":"UserInitiated"}}}
@@ -201,12 +201,12 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 
     | Eigenschap | Vereist | Beschrijving |
     | --- | --- | --- |
-    | Naam |Ja |De naam van het logboek profiel. |
-    | StorageAccountId |Nee |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
-    | Servicebusruleid kunnen |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Name |Yes |De naam van het logboek profiel. |
+    | StorageAccountId |No |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
+    | Servicebusruleid kunnen |No |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
-    | RetentionInDays |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
-    | Categorie |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
+    | RetentionInDays |Yes |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
+    | Categorie |No |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
 
 ### <a name="example-script"></a>Voorbeeldscript
 Hier volgt een voor beeld van een Power shell-script voor het maken van een logboek profiel waarmee het activiteiten logboek naar zowel een opslag account als Event Hub wordt geschreven.
@@ -244,12 +244,12 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 
     | Eigenschap | Vereist | Beschrijving |
     | --- | --- | --- |
-    | naam |Ja |De naam van het logboek profiel. |
-    | Storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
-    | locaties |Ja |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement met behulp van `az account list-locations --query [].name` . |
-    | resterende |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
-    |enabled | Ja |Waar of Niet waar.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
-    | categorieën |Ja |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
+    | naam |Yes |De naam van het logboek profiel. |
+    | Storage-account-id |Yes |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
+    | locaties |Yes |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement met behulp van `az account list-locations --query [].name` . |
+    | resterende |Yes |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
+    |enabled | Yes |Waar of Niet waar.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
+    | categorieën |Yes |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
@@ -259,7 +259,7 @@ De verouderde methode voor het verzenden van het activiteiten logboek naar een L
 1. Selecteer in de sectie **werkruimte gegevens bronnen** van het menu van de werk ruimte **Azure-activiteiten logboek**.
 1. Klik op het abonnement dat u wilt verbinden.
 
-    ![Werkruimten](media/activity-log-collect/workspaces.png)
+    ![Scherm opname toont Log Analytics-werk ruimte waarvoor een Azure-activiteiten logboek is geselecteerd.](media/activity-log-collect/workspaces.png)
 
 1. Klik op **verbinden** om het activiteiten logboek in het abonnement te verbinden met de geselecteerde werk ruimte. Als het abonnement al is verbonden met een andere werk ruimte, klikt u eerst op **verbinding verbreken** om de verbinding te verbreken.
 

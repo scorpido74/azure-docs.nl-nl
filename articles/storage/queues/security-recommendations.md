@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: ee3808684ab2548999d71fe0d31fa9a160cd9347
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70bb96da858c94fbd2c75d56cda4e705f2ffa3ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200050"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986624"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Beveiligings aanbevelingen voor wachtrij opslag
 
@@ -25,17 +25,17 @@ Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt doo
 
 Azure Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen over hoe u deze kunt aanpakken. Zie [beveiligings aanbevelingen in azure Security Center](../../security-center/security-center-recommendations.md)voor meer informatie over Azure Security Center aanbevelingen.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke beveiligings verbeteringen, waaronder superieure toegangs beheer (RBAC) en controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en op Azure AD gebaseerde verificatie en autorisatie voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
-| Geavanceerde beveiliging tegen bedreigingen inschakelen voor al uw opslag accounts | Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Beveiligings waarschuwingen worden in Azure Security Center geactiveerd wanneer afwijkingen in de activiteit optreden en ook via e-mail worden verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. Zie [Advanced Threat Protection voor Azure Storage](../common/storage-advanced-threat-protection.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
+| Geavanceerde beveiliging tegen bedreigingen inschakelen voor al uw opslag accounts | Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Beveiligings waarschuwingen worden in Azure Security Center geactiveerd wanneer afwijkingen in de activiteit optreden en ook via e-mail worden verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. Zie [Advanced Threat Protection voor Azure Storage](../common/azure-defender-storage-configure.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Alleen SAS-tokens (Shared Access Signature) beperken tot HTTPS-verbindingen | HTTPS vereisen wanneer een client een SAS-token gebruikt voor toegang tot de wachtrij gegevens helpt het risico op inbreuk te minimaliseren. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)voor meer informatie. | - |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Azure Active Directory (Azure AD) gebruiken om toegang tot wachtrij gegevens te autoriseren | Azure AD biedt een superieure beveiliging en gebruiks gemak voor de gedeelde sleutel voor het machtigen van aanvragen voor de wachtrij opslag. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie. | - |
 | Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal via RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
@@ -47,7 +47,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 ## <a name="networking"></a>Netwerken
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Configureer de mini maal vereiste versie van Transport Layer Security (TLS) voor een opslag account.  | Vereisen dat clients een veiligere versie van TLS gebruiken om aanvragen voor een Azure Storage account te maken door de minimale versie van TLS voor dat account te configureren. Zie voor meer informatie [Mini maal vereiste versie van Transport Layer Security (TLS) configureren voor een opslag account](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)| - |
 | Schakel de optie **veilige overdracht vereist** in al uw opslag accounts in | Wanneer u de optie **beveiligde overdracht vereist** inschakelt, moeten alle aanvragen voor het opslag account via beveiligde verbindingen plaatsvinden. Aanvragen die via HTTP worden verzonden, mislukken. Zie [veilige overdracht vereisen in azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
@@ -59,7 +59,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 ## <a name="loggingmonitoring"></a>Loggen/bewaken
 
-| Aanbeveling | Opmerkingen | Security Center |
+| Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Bijhouden hoe aanvragen worden geautoriseerd | Schakel Azure Storage logboek registratie in om bij te houden hoe elke aanvraag voor Azure Storage is geautoriseerd. De logboeken geven aan of een aanvraag anoniem is gemaakt door gebruik te maken van een OAuth 2,0-token, met behulp van gedeelde sleutel of door gebruik te maken van een Shared Access Signature (SAS). Zie [Azure Storage Analytics-logboek registratie](../common/storage-analytics-logging.md)voor meer informatie. | - |
 

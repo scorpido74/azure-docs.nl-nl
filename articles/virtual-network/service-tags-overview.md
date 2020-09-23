@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434449"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983700"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Opmerking:* Deze tag heeft een afhankelijkheid van de tags **AzureActiveDirectory**, **AzureFrontDoor. frontend** en **AzureFrontDoor. FirstParty** . | Uitgaand | Nee | Nee |
 | **AzureIoTHub** | Azure IoT Hub. | Uitgaand | Nee | Nee |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **AzureActiveDirectory** -tag. | Uitgaand | Ja | Ja |
-| **AzureLoadBalancer** | De Azure-infrastructuur load balancer. De tag wordt omgezet in het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) waar de Azure Health-tests afkomstig zijn. Dit omvat geen verkeer naar uw Azure Load Balancer-resource. Als u Azure Load Balancer niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
+| **AzureLoadBalancer** | De Azure-infrastructuur load balancer. De tag wordt omgezet in het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) waar de Azure Health-tests afkomstig zijn. Dit omvat alleen test verkeer, niet het werkelijke verkeer naar uw back-end-resource. Als u Azure Load Balancer niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
 | **AzureMachineLearning** | Azure Machine Learning. | Beide | Nee | Ja |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon en aangepaste metrische gegevens (GB-eind punten).<br/><br/>*Opmerking:* Voor Log Analytics heeft deze tag een afhankelijkheid van de **opslag** code. | Uitgaand | Nee | Ja |
 | **AzureOpenDatasets** | Open gegevens sets van Azure.<br/><br/>*Opmerking:* Deze tag heeft een afhankelijkheid van het **AzureFrontDoor. frontend** -en **opslag** label. | Uitgaand | Nee | Nee |
