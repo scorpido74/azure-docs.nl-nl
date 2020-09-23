@@ -1,233 +1,403 @@
 ---
-title: 'Zelfstudie: Uw eerste Azure ML-model trainen in Python'
+title: 'Zelfstudie: Uw eerste machine learning-model - Python'
 titleSuffix: Azure Machine Learning
-description: In deze zelfstudie leert u de basisontwerppatronen in Azure Machine Learning en traint u een eenvoudig scikit-learn-model op basis van de gegevensset voor diabetes.
+description: In deel 3 van de Aan de slag-serie voor Azure Machine Learning ziet u hoe u een machine learning-model traint.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: sgilley
-author: sdgilley
-ms.date: 08/25/2020
+author: aminsaied
+ms.author: amsaied
+ms.reviewer: sgilley
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896742"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML-model trainen
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Zelfstudie: Uw eerste machine learning-model trainen (deel 3 van 4)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+Deze zelfstudie laat zien hoe u een machine learning-model traint in Azure Machine Learning.
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelfstudie hebt u [een werkruimte gemaakt en een ontwikkelomgeving](tutorial-1st-experiment-sdk-setup.md) gekozen. In deze zelfstudie leert u de basisontwerppatronen in Azure Machine Learning en traint u een eenvoudig scikit-learn-model op basis van de gegevensset voor diabetes. Na afronding van deze zelfstudie beschikt u over de praktische kennis over de SDK die u nodig hebt om meer complexe experimenten en werkstromen te gaan ontwikkelen.
+Deze zelfstudie is **deel drie van een vierdelige zelfstudiereeks** waarin u de grondbeginselen van Azure Machine Learning kunt zien en machine learning-taken op basis van taken in Azure uitvoert. Deze zelfstudie borduurt voort op het werk dat u hebt voltooid in [Deel 1: Instellen](tutorial-1st-experiment-sdk-setup-local.md) en [Deel 2: 'Hallo wereld' uitvoeren](tutorial-1st-experiment-hello-world.md) van de reeks.
 
-In deze zelfstudie leert u het volgende:
+In deze zelfstudie voert u de volgende stap uit door een script te verzenden dat een machine learning-model traint. Dit voorbeeld helpt u inzicht te krijgen in de manier waarop Azure Machine Learning consistent gedrag tussen lokale foutopsporing en externe uitvoeringen vereenvoudigt.
+
+In deze zelfstudie doet u het volgende:
 
 > [!div class="checklist"]
-> * Uw werkruimte verbinden en een experiment maken
-> * Gegevens laden en scikit-learn-modellen trainen
-> * Trainingsresultaten weergeven in de studio
-> * Het beste model ophalen
+> * Een trainingsscript maken.
+> * Conda gebruiken om een Azure Machine Learning-omgeving te definiëren.
+> * Een besturingsscript maken.
+> * Inzicht krijgen in Azure Machine Learning-klassen (omgeving, uitvoering, metrische gegevens).
+> * Uw trainingsscript verzenden en uitvoeren.
+> * De code-uitvoer weergeven in de cloud.
+> * De metrische gegevens vastleggen in Azure Machine Learning.
+> * Uw metrische gegevens bekijken in de cloud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het enige vereiste is om deel een van deze zelfstudie, [Omgeving en werkruimte instellen](tutorial-1st-experiment-sdk-setup.md), uit te voeren.
+* Voltooi [Deel 1](tutorial-1st-experiment-sdk-setup-local.md) als u nog geen Azure Machine Learning-werkruimte hebt.
+* Introductiekennis van de Python-taal en machine learning-werkstromen.
+* Lokale ontwikkelomgeving. Dit omvat, maar is niet beperkt tot Visual Studio-code, Jupyter of PyCharm.
+* Python (versie 3.5-3.7).
 
-In dit deel van de zelfstudie voert u de code uit in het voorbeeld van de Jupyter-notebook *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* dat is geopend aan het eind van deel één. In dit artikel wordt dezelfde code besproken als die zich in de notebook bevindt.
+## <a name="create-training-scripts"></a>Trainingsscripts maken
 
-## <a name="open-the-notebook"></a>De notebook openen
+Eerst definieert u de architectuur van het neurale netwerk in een `model.py`-bestand. Al uw trainingscode gaat naar de submap van `src`, met inbegrip van `model.py`.
 
-1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
-
-1. Open **tutorial-1st-experiment-sdk-train.ipynb** in uw map, zoals is aangegeven in [deel één](tutorial-1st-experiment-sdk-setup.md#open).
-
-Maak **niet** een *nieuwe* notebook in de Jupyter-interface! *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* van de notebook bevat **alle code en gegevens die nodig zijn** voor deze zelfstudie.
-
-## <a name="connect-workspace-and-create-experiment"></a>Werkruimte verbinden en experiment maken
-
-<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
-
-> [!TIP]
-> Inhoud van _tutorial-1st-experiment-sdk-train.ipynb_. Schakel nu over naar de Jupyter-notebook als u wilt meelezen tijdens het uitvoeren van de code. Als u één codecel in een notebook wilt uitvoeren, klikt u op de codecel en drukt u op **Shift + Enter**. U kunt ook de hele notebook uitvoeren door **Alle uitvoeren** te kiezen op de bovenste werkbalk.
-
-
-Importeer de `Workspace`-klasse en laad uw abonnementsgegevens vanuit het bestand `config.json` met behulp van de functie `from_config().`. Hiermee wordt standaard gezocht naar het JSON-bestand in de huidige map, maar u kunt ook een padparameter opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`. Als u deze notebook uitvoert op een cloudnotebookserver in uw werkruimte, bevindt het bestand zich automatisch in de hoofdmap.
-
-Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatietoken in. Als u meer dan één tenant hebt gekoppeld aan uw gebruiker, moet u bovendien de volgende regels toevoegen:
+De onderstaande code wordt gehaald uit [dit inleidende voorbeeld](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) van PyTorch. Houd er rekening mee dat de concepten van Azure Machine Learning van toepassing zijn op alle machine learning-code, niet alleen op PyTorch.
 
 ```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+# tutorial/src/model.py
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 ```
 
-Zie [Verificatie in Azure Machine Learning](https://aka.ms/aml-notebook-auth) voor meer informatie over verificatie
+Vervolgens definieert u het trainingsscript. Met dit script wordt de CIFAR10-gegevensset gedownload met behulp van PyTorch `torchvision.dataset`-API's, wordt het netwerk ingesteld dat is gedefinieerd in `model.py` en wordt het voor twee periodes getraind met behulp van standaard SGD en verlies van meerdere entropieën.
 
+Een `train.py`-script maken in de `src`-submap:
 
 ```python
+# tutorial/src/train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+
+from model import Net
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
+                running_loss = 0.0
+
+    print("Finished Training")
+
+```
+
+U hebt nu de volgende mapstructuur:
+
+```txt
+tutorial
+└──.azureml
+|  └──config.json
+└──src
+|  └──hello.py
+|  └──model.py
+|  └──train.py
+└──01-create-workspace.py
+└──02-create-compute.py
+└──03-run-hello.py
+```
+
+## <a name="define-a-python-environment"></a>Een Python-omgeving definiëren
+
+Voor demonstratiedoeleinden gaan we een Conda-omgeving gebruiken (de stappen voor een virtuele omgeving van PIP zijn bijna identiek).
+
+Maak een bestand met de naam `pytorch-env.yml` in de verborgen map van `.azureml`:
+
+```yml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+```
+
+Deze omgeving heeft alle afhankelijkheden die zijn vereist voor uw model- en trainingsscript. U ziet dat er geen afhankelijkheid is van de Azure Machine Learning Python-SDK.
+
+## <a name="test-locally"></a>Lokaal testen
+
+Testen of uw script lokaal wordt uitgevoerd in deze omgeving met:
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create conda environment
+conda activate pytorch-env             # activate conda environment
+python src/train.py                    # train model
+```
+
+Nadat u dit script hebt uitgevoerd, ziet u dat de gegevens zijn gedownload naar een map met de naam `tutorial/data`.
+
+## <a name="create-the-control-script"></a>Het besturingsscript maken
+
+Het verschil met het onderstaande besturingsscript en het script dat is gebruikt voor het verzenden van 'Hallo wereld' is dat u een aantal extra regels toevoegt om de omgeving in te stellen.
+
+Maak een nieuw Python-bestand in de `tutorial`-map met de naam `04-run-pytorch.py`:
+
+```python
+# tutorial/04-run-pytorch.py
 from azureml.core import Workspace
-ws = Workspace.from_config()
-```
-
-Maak nu een experiment in uw werkruimte. Een experiment is een andere basiscloudresource die een verzameling proeven vertegenwoordigt (afzonderlijke modeluitvoeringen). In deze zelfstudie gebruikt u het experiment om uitvoeringen te maken en uw modeltraining te volgen in de Azure Machine Learning Studio. Parameters bevatten uw werkruimtereferentie en een tekenreeksnaam voor het experiment.
-
-
-```python
 from azureml.core import Experiment
-experiment = Experiment(workspace=ws, name="diabetes-experiment")
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
+
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='src', script='train.py', compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(name='pytorch-env', file_path='.azureml/pytorch-env.yml')
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Gegevens laden en voorbereiden voor training
+### <a name="understand-the-code-changes"></a>De codewijzigingen begrijpen
 
-Voor deze zelfstudie gebruikt u de gegevensset voor diabetes, die functies als leeftijd, geslacht en BMI gebruikt om de voortgang van de ziekte diabetes te voorspellen. Laad de gegevens uit de klasse [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) en splits deze in trainings- en testsets met behulp van `train_test_split()`. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om te testen na training.
+:::row:::
+   :::column span="":::
+      `env = Environment.from_conda_specification( ... )`
+   :::column-end:::
+   :::column span="2":::
+      Azure Machine Learning biedt het concept van een [omgeving](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) om een reproduceerbare Python-omgeving met versies te vertegenwoordigen voor het uitvoeren van experimenten. Het is eenvoudig om een omgeving te maken op basis van een lokale Conda- of PIP-omgeving.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      `config.run_config.environment = env`
+   :::column-end:::
+   :::column span="2":::
+      De omgeving wordt toegevoegd aan de [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+   :::column-end:::
+:::row-end:::
 
+## <a name="submit-run-to-azure-machine-learning"></a>Uitvoering versturen naar Microsoft Azure Machine Learning
+
+Als u naar lokale omgevingen hebt geschakeld, moet u weer overschakelen naar een omgeving waarop de Azure Machine Learning Python-SDK is geïnstalleerd en uitgevoerd:
+
+```bash
+python 04-run-pytorch.py
+```
+
+>[!NOTE] 
+> De eerste keer dat u dit script uitvoert, wordt in Azure Machine Learning een nieuwe docker-installatiekopie van uw PyTorch-omgeving gemaakt. Het voltooien van de hele uitvoering kan 5-10 minuten duren. U kunt de docker-buildlogboeken zien in de Azure Machine Learning Studio: Volg de link naar de machine learning Studio > Selecteer het tabblad 'Uitvoer en logboeken' > Selecteer `20_image_build_log.txt`.
+Deze installatiekopie wordt opnieuw gebruikt in toekomstige uitvoeringen, waardoor deze veel sneller worden uitgevoerd.
+
+Wanneer de installatiekopie is gemaakt, selecteert u `70_driver_log.txt` om de uitvoer van uw trainingsscript weer te geven.
+
+```txt
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+...
+Files already downloaded and verified
+epoch=1, batch= 2000: loss 2.19
+epoch=1, batch= 4000: loss 1.82
+epoch=1, batch= 6000: loss 1.66
+epoch=1, batch= 8000: loss 1.58
+epoch=1, batch=10000: loss 1.52
+epoch=1, batch=12000: loss 1.47
+epoch=2, batch= 2000: loss 1.39
+epoch=2, batch= 4000: loss 1.38
+epoch=2, batch= 6000: loss 1.37
+epoch=2, batch= 8000: loss 1.33
+epoch=2, batch=10000: loss 1.31
+epoch=2, batch=12000: loss 1.27
+Finished Training
+```
+
+> [!WARNING]
+> Als er een foutmelding wordt weergegeven `Your total snapshot size exceeds the limit`, wordt aangegeven dat de `data`-map zich bevindt in de `source_directory` die wordt gebruikt in de `ScriptRunConfig`.
+> Zorg ervoor dat u `data` buiten `src` plaatst.
+
+Omgevingen kunnen worden geregistreerd in een werkruimte met `env.register(ws)`, zodat ze eenvoudig kunnen worden gedeeld, opnieuw kunnen worden gebruikt en er een versie aan kan worden toegewezen. Met omgevingen is het eenvoudig om eerdere resultaten te reproduceren en samen te werken met uw team.
+
+Azure Machine Learning houdt ook een verzameling van de gegroepeerde omgevingen bij. Deze omgevingen beslaan algemene machine learning-scenario's en worden ondersteund door docker-installatiekopieën in de cache. In cache geplaatste docker-installatiekopieën maken de eerste externe uitvoering sneller.
+
+Kortom, met behulp van geregistreerde omgevingen kunt u tijd besparen. Meer informatie vindt u in de [documentatie over omgevingen](./how-to-use-environments.md)
+
+## <a name="log-training-metrics"></a>Metrische gegevens van training registreren
+
+Nu u een modeltraining in Azure Machine Learning hebt, kunt u een aantal prestatiegegevens gaan bijhouden.
+Met het huidige trainingsscript worden metrische gegevens naar de terminal afgedrukt. Azure Machine Learning biedt een mechanisme voor het vastleggen van metrische gegevens met meer functionaliteit. Door een paar regels code toe te voegen, beschikt u over de mogelijkheid om metrische gegevens te visualiseren in de studio en om de metrische gegevens tussen meerdere uitvoeringen te vergelijken.
+
+### <a name="modify-trainpy-to-include-logging"></a>Wijzig `train.py` om logboekregistratie op te nemen
+
+Wijzig uw `train.py`-script en voeg er nog twee regels code aan toe:
 
 ```python
-from azureml.opendatasets import Diabetes
-from sklearn.model_selection import train_test_split
+# train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
 
-x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
-y_df = x_df.pop("Y")
-
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
-```
-
-## <a name="train-a-model"></a>Een model trainen
-
-Training voor een eenvoudig scikit-learn-model kan eenvoudig lokaal worden gedaan voor kleinschalige trainingen, maar bij het trainen van veel iteraties met tientallen verschillende functiepermutaties en hyperparameterinstellingen verliest u al snel het overzicht van welke modellen u hebt getraind en hoe u deze hebt getraind. In het volgende ontwerppatroon ziet u hoe u de SDK kunt gebruiken om uw training eenvoudig bij te houden in de cloud.
-
-Bouw een script dat ridge-modellen in een lus traint via verschillende hyperparameteralfawaarden.
-
-
-```python
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
-import math
-
-alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-
-for alpha in alphas:
-    run = experiment.start_logging()
-    run.log("alpha_value", alpha)
-    
-    model = Ridge(alpha=alpha)
-    model.fit(X=X_train, y=y_train)
-    y_pred = model.predict(X=X_test)
-    rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
-    run.log("rmse", rmse)
-    
-    model_name = "model_alpha_" + str(alpha) + ".pkl"
-    filename = "outputs/" + model_name
-    
-    joblib.dump(value=model, filename=filename)
-    run.upload_file(name=model_name, path_or_stream=filename)
-    run.complete()
-```
-
-Met de bovenstaande code worden de volgende handelingen uitgevoerd:
-
-1. Voor elke hyperparameteralfawaarde in de matrix `alphas` wordt een nieuwe uitvoering binnen het experiment gemaakt. De alfawaarde wordt vastgelegd om onderscheid te maken tussen elke uitvoering.
-1. Bij elke uitvoering wordt een ridge-model geïnstantieerd, getraind en gebruikt voor het uitvoeren van voorspellingen. De gemiddelde kwadratische fout wordt berekend voor de werkelijke versus voorspelde waarden en vervolgens geregistreerd bij de uitvoering. Op dit moment bevat de uitvoering metagegevens die zijn gekoppeld aan de alfawaarde en nauwkeurigheid van de gemiddelde kwadratische fout.
-1. Vervolgens wordt het model voor elke uitvoering geserialiseerd en geüpload naar de uitvoering. Zo kunt u het modelbestand downloaden uit de uitvoering in de studio.
-1. Aan het einde van elke iteratie wordt de uitvoering voltooid door `run.complete()` aan te roepen.
-
-Nadat de training is voltooid, roept u de `experiment`-variabele aan om een koppeling naar het experiment op te halen in de studio.
-
-```python
-experiment
-```
-
-<table style="width:100%"><tr><th>Naam</th><th>Werkruimte</th><th>Rapportpagina</th><th>Documentpagina</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimtenaam</td><td>Koppeling naar Azure Machine Learning-studio</td><td>Koppeling naar documentatie</td></tr></table>
-
-## <a name="view-training-results-in-studio"></a>Trainingsresultaten weergeven in studio
-
-Als u de **Koppeling naar Azure Machine Learning-studio** volgt, gaat u naar de hoofdpagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden (in dit geval `alpha_value` en `rmse`) worden velden voor elke uitvoering en komen ook beschikbaar voor de grafieken. Om een ​​nieuwe grafiek met vastgelegde metrische gegevens uit te zetten, klikt u op 'Grafiek toevoegen' en selecteert u de metrische gegevens die u wilt plotten.
-
-Wanneer trainingsmodellen worden geschaald op honderden en duizenden afzonderlijke uitvoeringen, kunt u op deze pagina eenvoudig elk model zien dat u hebt getraind, in het bijzonder hoe ze zijn getraind en hoe uw unieke metrische gegevens in de loop van de tijd zijn veranderd.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hoofdpagina van het experiment in de studio.":::
-
-
-Selecteer een koppeling voor het uitvoeringsnummer in de kolom `RUN NUMBER` om de pagina voor een afzonderlijke uitvoering weer te geven. Op het standaardtabblad **Details** wordt meer gedetailleerde informatie weergegeven over elke uitvoering. Ga naar het tabblad **Uitvoer en logboeken**. Hier ziet u het `.pkl`-bestand voor het model dat tijdens elke trainingsiteratie naar de uitvoering is geüpload. Hier kunt u het modelbestand downloaden in plaats van het handmatig opnieuw te moeten trainen.
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Pagina met details van de uitvoering in de studio.":::
-
-## <a name="get-the-best-model"></a>Het beste model verkrijgen
-
-Naast het downloaden van modelbestanden van het experiment in de studio, kunt u ze ook programmatisch downloaden. Met de volgende code wordt elke uitvoering in het experiment herhaald en worden de metrische gegevens en de details van de uitvoering (die de run_id bevat) weergegeven. Hiermee wordt de beste uitvoering bijgehouden, in dit geval de uitvoering met de laagste gemiddelde kwadratische fout.
-
-```python
-minimum_rmse_runid = None
-minimum_rmse = None
-
-for run in experiment.get_runs():
-    run_metrics = run.get_metrics()
-    run_details = run.get_details()
-    # each logged metric becomes a key in this returned dict
-    run_rmse = run_metrics["rmse"]
-    run_id = run_details["runId"]
-    
-    if minimum_rmse is None:
-        minimum_rmse = run_rmse
-        minimum_rmse_runid = run_id
-    else:
-        if run_rmse < minimum_rmse:
-            minimum_rmse = run_rmse
-            minimum_rmse_runid = run_id
-
-print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))    
-```
-```output
-Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-Best run_id rmse: 57.234760283951765
-```
-
-Gebruik de id van de beste uitvoering om de afzonderlijke uitvoering op te halen met behulp van de `Run`-constructor samen met het experimentobject. Roep vervolgens `get_file_names()` aan om alle bestanden te zien die via deze uitvoering kunnen worden gedownload. In dit geval hebt u slechts één bestand geüpload voor elke uitvoering tijdens de training.
-
-
-```python
+from model import Net
 from azureml.core import Run
-best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
-print(best_run.get_file_names())
+
+
+# ADDITIONAL CODE: get Azure Machine Learning run from the current context
+run = Run.get_context()
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                run.log('loss', loss) # ADDITIONAL CODE: log loss metric to Azure Machine Learning
+                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
+                running_loss = 0.0
+
+    print('Finished Training')
 ```
 
-```output
-['model_alpha_0.1.pkl']
-```
+#### <a name="understand-the-additional-two-lines-of-code"></a>Meer informatie over de twee extra regels code
 
-Roep `download()` aan voor het uitvoeringsobject, waarbij u de naam opgeeft van het modelbestand dat u wilt downloaden. Standaard wordt door deze functie gedownload naar de huidige map.
-
+In `train.py` opent u het uitvoeringsobject _vanuit_ het trainingsscript zelf met behulp van de methode `Run.get_context()` en gebruikt u dit voor het vastleggen van metrische gegevens:
 
 ```python
-best_run.download_file(name="model_alpha_0.1.pkl")
+# in train.py
+run = Run.get_context()
+
+...
+
+run.log('loss', loss)
 ```
-<!-- nbend -->
 
-## <a name="clean-up-resources"></a>Resources opschonen
+De metrische gegevens in Azure Machine Learning zijn:
 
-Voer deze sectie niet uit als u van plan bent andere Azure Machine Learning-zelfstudies uit te voeren.
+- Georganiseerd door experiment en uitvoering, zodat u gemakkelijk metrische gegevens kunt bijhouden en vergelijken.
+- Voorzien van een gebruikersinterface, zodat u de trainingsprestaties in de studio kunt visualiseren.
+- Ontworpen om te worden geschaald, dus u behoudt deze voordelen, zelfs als u honderden experimenten uitvoert.
 
-### <a name="stop-the-compute-instance"></a>Het rekenproces stoppen
+### <a name="update-the-conda-environment-file"></a>Het conda-omgevingsbestand bijwerken
 
-[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
+Het `train.py`-script heeft zojuist een nieuwe afhankelijkheid van `azureml.core` gekregen. Werk `pytorch-env.yml` bij om deze wijziging weer te geven:
 
-### <a name="delete-everything"></a>Alles verwijderen
+```yaml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+    - pip
+    - pip:
+        - azureml-sdk
+```
 
-[!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
+### <a name="submit-run-to-azure-machine-learning"></a>Uitvoering versturen naar Microsoft Azure Machine Learning
+Verstuur dit script nog een keer:
 
-U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bekijk de eigenschappen van de werkruimte en selecteer **Verwijderen**.
+```bash
+python 04-run-pytorch.py
+```
+
+Wanneer u deze keer de studio bezoekt, gaat u naar het tabblad 'Metrische gegevens', waar u nu live-updates kunt zien over het modeltrainingsverlies.
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Grafiek met trainingsverlies op het tabblad Metrische gegevens":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de volgende taken uitgevoerd:
+In deze sessie hebt u een upgrade uitgevoerd van een basis 'Hallo wereld!' script naar een realistischer trainingsscript dat vereist dat een specifieke Python-omgeving wordt uitgevoerd. U hebt gezien hoe u een lokale Conda-omgeving naar de cloud kunt brengen met Azure Machine Learning-omgevingen. Ten slotte hebt u gezien hoe u in een paar regels code de metrische gegevens kunt vastleggen voor Azure Machine Learning.
 
-> [!div class="checklist"]
-> * Uw werkruimte verbonden en een experiment gemaakt
-> * Gegevens geladen en scikit-learn-modellen getraind
-> * Trainingsresultaten bekeken in de studio en modellen opgehaald
+Er zijn andere manieren om Azure Machine Learning-omgevingen te maken, zoals [van een PIP-vereisten.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-), of zelfs [van een bestaande lokale Conda-omgeving](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-).
 
-[Uw model implementeren](tutorial-deploy-models-with-aml.md) met Azure Machine Learning.
-Meer informatie over het ontwikkelen van [geautomatiseerde machine learning](tutorial-auto-train-models.md)-experimenten.
+In de volgende sessie ziet u hoe u kunt werken met gegevens in Azure Machine Learning door de CIFAR10-gegevensset naar Azure te uploaden.
+
+> [!div class="nextstepaction"]
+> [Zelfstudie: Uw eigen gegevens meenemen](tutorial-1st-experiment-bring-data.md)
+
+>[!NOTE] 
+> Als u de reeks zelfstudies hier wilt voltooien en niet door wilt gaan met de volgende stap, moet u [uw resources opschonen](tutorial-1st-experiment-bring-data.md#clean-up-resources)

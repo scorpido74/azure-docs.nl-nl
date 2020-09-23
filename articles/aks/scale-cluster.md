@@ -2,16 +2,14 @@
 title: Een AKS-cluster (Azure Kubernetes Service) schalen
 description: Meer informatie over het schalen van het aantal knoop punten in een Azure Kubernetes service-cluster (AKS).
 services: container-service
-author: iainfoulds
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79368414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902932"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Aantal knooppunten in een AKS-cluster (Azure Kubernetes Service) schalen
 
@@ -41,7 +39,7 @@ In de volgende voorbeeld uitvoer ziet u dat de *naam* *nodepool1*is:
 ]
 ```
 
-Gebruik de opdracht [AZ AKS Scale][az-aks-scale] om de cluster knooppunten te schalen. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* naar één knoop punt geschaald. Geef uw eigen *-nodepool-naam* op uit de vorige opdracht, zoals *nodepool1*:
+Gebruik de opdracht [AZ AKS Scale][az-aks-scale] om de cluster knooppunten te schalen. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* naar één knoop punt geschaald. Geef uw eigen `--nodepool-name` opdracht op, zoals *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -69,6 +67,20 @@ In de volgende voorbeeld uitvoer ziet u dat het cluster met één knoop punt is 
 }
 ```
 
+
+## <a name="scale-user-node-pools-to-0"></a>Schaal `User` knooppunt groepen naar 0
+
+In tegens telling tot `System` knooppunt groepen waarvoor altijd actieve knoop punten zijn vereist, `User` kunt u met knooppunt groepen schalen tot 0. Zie [systeem-en gebruikers knooppunt groepen](use-system-pools.md)voor meer informatie over de verschillen tussen systeem-en gebruikers knooppunt groepen.
+
+Als u een gebruikers groep wilt schalen naar 0, kunt u met [AZ AKS nodepool Scale][az-aks-nodepool-scale] in alternatief voor de bovenstaande `az aks scale` opdracht en 0 instellen als het aantal knoop punten.
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+U kunt knooppunt groepen ook automatisch schalen `User` naar 0 knoop punten door de `--min-count` para meter van de cluster-automatische [schaal](cluster-autoscaler.md) functie in te stellen op 0.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u hand matig een AKS-cluster geschaald om het aantal knoop punten te verg Roten of verkleinen. U kunt ook de cluster-automatische [schaal][cluster-autoscaler] functie gebruiken om uw cluster automatisch te schalen.
@@ -81,3 +93,4 @@ In dit artikel hebt u hand matig een AKS-cluster geschaald om het aantal knoop p
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale&preserve-view=true

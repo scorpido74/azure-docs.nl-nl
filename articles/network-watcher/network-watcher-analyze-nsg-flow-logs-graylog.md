@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984055"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Stroom logboeken van netwerk beveiligings groepen beheren en analyseren in azure met behulp van Network Watcher en Graylog
 
@@ -175,10 +175,10 @@ Raadpleeg de [documentatie](https://github.com/Azure/azure-diagnostics-tools/tre
 
 Nu u een verbinding tot stand hebt gebracht met de stroom logboeken met behulp van Logstash en de Graylog-server hebt ingesteld, moet u Graylog configureren om de binnenkomende logboek bestanden te accepteren.
 
-1. Navigeer naar uw Graylog server-webinterface met behulp van de URL die u hiervoor hebt geconfigureerd. U kunt toegang krijgen tot de interface door uw browser naar te sturen naar`http://<graylog-server-ip>:9000/`
+1. Navigeer naar uw Graylog server-webinterface met behulp van de URL die u hiervoor hebt geconfigureerd. U kunt toegang krijgen tot de interface door uw browser naar te sturen naar `http://<graylog-server-ip>:9000/`
 
 2. Als u naar de configuratie pagina wilt gaan, selecteert u de vervolg keuzelijst **systeem** in de bovenste navigatie balk aan de rechter kant en klikt u vervolgens op **invoer**.
-   U kunt ook naar`http://<graylog-server-ip>:9000/system/inputs`
+   U kunt ook naar `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Aan de slag](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
@@ -186,7 +186,7 @@ Nu u een verbinding tot stand hebt gebracht met de stroom logboeken met behulp v
 
    Zorg ervoor dat u de invoer verbindt met het IP-adres waarmee u uw Graylog-server hebt geconfigureerd. Het IP-adres moet overeenkomen met het veld **host** van de UDP-uitvoer van het configuratie bestand Logstash. De standaard poort moet *12201*zijn. Zorg ervoor dat de poort overeenkomt met het **poort** veld in de UDP-uitvoer die is opgegeven in het Logstash-configuratie bestand.
 
-   ![Invoerwaarden](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Scherm afbeelding toont de Graylog-invoer, met opties voor het starten en zoeken van invoer.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Zodra u de invoer hebt gestart, wordt deze weer gegeven onder de sectie **lokale invoer** , zoals wordt weer gegeven in de volgende afbeelding:
 
@@ -200,11 +200,11 @@ Nu u een verbinding tot stand hebt gebracht met de stroom logboeken met behulp v
 
 Nadat u enige tijd hebt geduurd dat uw Graylog-server berichten kan verzamelen, kunt u de berichten doorzoeken. Als u wilt controleren of de berichten naar uw Graylog-server worden verzonden, klikt u op de pagina voor de configuratie van de **invoer** op de knop**ontvangen berichten weer geven**van de UDP-invoer van GELF die u hebt gemaakt. U wordt omgeleid naar een scherm dat lijkt op de volgende afbeelding: 
 
-![Histogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![Scherm afbeelding toont de Graylog-server die het Zoek resultaat, het histogram en de berichten weergeeft.](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 Als u op de blauwe koppeling '% {Message} ' klikt, wordt elk bericht uitgevouwen om de para meters van elke stroom-tuple weer te geven, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Berichten](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![Scherm opname toont de bericht gegevens van de Graylog-server.](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 Standaard worden alle bericht velden in de zoek opdracht opgenomen als u geen specifiek bericht veld selecteert om naar te zoeken. Als u wilt zoeken naar specifieke berichten (bijvoorbeeld – stroom Tuples van een specifiek bron-IP-adres) u kunt de Graylog-Zoek query taal gebruiken als [beschreven](https://docs.graylog.org/en/2.2/pages/queries.html)
 
@@ -214,11 +214,11 @@ Nu Graylog het is ingesteld, kunt u een deel van de functionaliteit gebruiken om
 
 ### <a name="create-a-dashboard"></a>Een dashboard maken
 
-1. Selecteer in de bovenste navigatie balk de optie **Dash boards** of navigeren naar`http://<graylog-server-ip>:9000/dashboards/`
+1. Selecteer in de bovenste navigatie balk de optie **Dash boards** of navigeren naar `http://<graylog-server-ip>:9000/dashboards/`
 
 2. Klik vervolgens op de knop groen **dash board maken** en vul het korte formulier in met de titel en beschrijving van uw dash board. Klik op de knop **Opslaan** om het nieuwe dash board te maken. Er wordt een dash board weer gegeven dat vergelijkbaar is met de volgende afbeelding:
 
-    ![Dashboards](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![Scherm opname toont Graylog server-Dash boards, met de opties voor het maken en bewerken van Dash boards.](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Widgets toevoegen
 

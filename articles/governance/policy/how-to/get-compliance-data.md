@@ -1,14 +1,14 @@
 ---
 title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648350"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895418"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -30,11 +30,13 @@ De resultaten van een voltooide evaluatie cyclus zijn beschikbaar in de `Microso
 
 De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg van verschillende gebeurtenissen:
 
-- Een beleid of initiatief wordt voor het eerst toegewezen aan een bereik. Het duurt ongeveer 30 minuten voordat de toewijzing wordt toegepast op het gedefinieerde bereik. Wanneer de evaluatie cyclus eenmaal is toegepast, begint deze met het nieuwe beleid of initiatief van bronnen binnen die scope en afhankelijk van de effecten die worden gebruikt door het beleid of initiatief, worden bronnen gemarkeerd als compatibel of niet-compatibel. Een groot beleid of initiatief dat is geëvalueerd op basis van een groot bereik van resources kan enige tijd duren. Als zodanig is er geen vooraf gedefinieerde verwachting van wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
+- Een beleid of initiatief wordt voor het eerst toegewezen aan een bereik. Het duurt ongeveer 30 minuten voordat de toewijzing wordt toegepast op het gedefinieerde bereik. Zodra deze is toegepast, begint de evaluatie cyclus voor bronnen binnen die scope op basis van het zojuist toegewezen beleid of initiatief, en afhankelijk van de effecten die worden gebruikt door het beleid of initiatief, worden bronnen gemarkeerd als compatibel, niet-compatibel of uitgezonderd. Een groot beleid of initiatief dat is geëvalueerd op basis van een groot bereik van resources kan enige tijd duren. Als zodanig is er geen vooraf gedefinieerde verwachting van wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
 
 - Een beleid of initiatief dat al is toegewezen aan een bereik, wordt bijgewerkt. De evaluatie cyclus en de timing voor dit scenario zijn hetzelfde als voor een nieuwe toewijzing aan een bereik.
 
 - Een resource wordt geïmplementeerd of bijgewerkt binnen een bereik met een toewijzing via Azure Resource Manager, REST API of een ondersteunde SDK. In dit scenario wordt de effect gebeurtenis (toevoegen, controleren, weigeren, implementeren) en compatibele status informatie voor de afzonderlijke resource beschikbaar in de portal en de Sdk's ongeveer 15 minuten later. Deze gebeurtenis veroorzaakt geen evaluatie van andere resources.
+
+- Er wordt een [beleids uitsluiting](../concepts/exemption-structure.md) gemaakt, bijgewerkt of verwijderd. In dit scenario wordt de bijbehorende toewijzing geëvalueerd voor het gedefinieerde uitsluitings bereik.
 
 - Evaluatie cyclus voor standaard compatibiliteit. Eenmaal per 24 uur worden toewijzingen automatisch opnieuw geëvalueerd. Een groot beleid of initiatief van veel resources kan enige tijd in beslag nemen, dus er is geen vooraf gedefinieerde verwachting wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Hoe naleving werkt
 
-In een toewijzing is een resource **niet-compatibel** als deze niet voldoet aan het beleid of initiatief regels.
-In de volgende tabel ziet u hoe verschillende beleids effecten werken met de evaluatie van de voor waarde voor de resulterende nalevings status:
+In een toewijzing is een resource **niet-compatibel** als deze niet voldoet aan het beleid of initiatief regels en niet wordt _uitgesloten_. In de volgende tabel ziet u hoe verschillende beleids effecten werken met de evaluatie van de voor waarde voor de resulterende nalevings status:
 
 | Resource status | Effect | Beleids evaluatie | Nalevings status |
 | --- | --- | --- | --- |
@@ -137,8 +138,7 @@ In de volgende tabel ziet u hoe verschillende beleids effecten werken met de eva
 | Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
 | Nieuw | Controleren, AuditIfNotExist\* | Niet waar | Compliant |
 
-\*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
-De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
+\* Voor de effecten wijzigen, toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn. De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
 
 Stel dat u een resource groep hebt – ContsoRG, waarbij sommige opslag accounts (rood gemarkeerd) worden weer gegeven in open bare netwerken.
 
@@ -146,22 +146,23 @@ Stel dat u een resource groep hebt – ContsoRG, waarbij sommige opslag accounts
    Diagram met afbeeldingen voor vijf opslag accounts in de resource groep contoso R G.  Opslag accounts 1 en 3 zijn blauw, terwijl opslag accounts twee, vier en vijf rood zijn.
 :::image-end:::
 
-In dit voor beeld moet u zich op het hoede zijn voor beveiligings Risico's. Nu u een beleids toewijzing hebt gemaakt, wordt deze geëvalueerd voor alle opslag accounts in de resource groep ContosoRG. De drie niet-compatibele opslag accounts worden gecontroleerd, waardoor de status ervan wordt gewijzigd in **niet-compatibel.**
+In dit voor beeld moet u zich op het hoede zijn voor beveiligings Risico's. Nu u een beleids toewijzing hebt gemaakt, wordt deze geëvalueerd voor alle opgenomen en niet-uitgesloten opslag accounts in de resource groep ContosoRG. De drie niet-compatibele opslag accounts worden gecontroleerd, waardoor de status ervan wordt gewijzigd in **niet-compatibel.**
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagram van naleving van het opslag account in de resource groep contoso R G." border="false":::
    Diagram met afbeeldingen voor vijf opslag accounts in de resource groep contoso R G. Opslag accounts die zich in één en drie bevinden, hebben nu een groen vinkje, terwijl voor opslag accounts twee, vier en vijf nu rode waarschuwings tekens onder zijn.
 :::image-end:::
 
-Naast het **conform** -en **niet-nalevings**beleid en de bronnen zijn er drie andere statussen:
+Naast het **conform** -en **niet-nalevings**beleid en de bronnen gelden vier andere statussen:
 
-- **Conflicterende**: er zijn twee of meer beleids regels met conflicterende regels. Bijvoorbeeld: twee beleids regels die dezelfde tag toevoegen met verschillende waarden.
+- **Uitgezonderd**: de resource bevindt zich binnen het bereik van een toewijzing, maar heeft een [gedefinieerde uitzonde ring](../concepts/exemption-structure.md).
+- **Conflicterende**: er zijn twee of meer beleids definities met conflicterende regels. Bijvoorbeeld, twee definities voegen dezelfde tag toe met verschillende waarden.
 - **Niet gestart**: de evaluatie cyclus is niet gestart voor het beleid of de resource.
 - **Niet geregistreerd**: de Azure Policy resource provider is niet geregistreerd of het account dat is aangemeld, heeft geen machtiging voor het lezen van de compatibiliteits gegevens.
 
-Azure Policy gebruikt de velden **type** en **naam** in de definitie om te bepalen of een resource een overeenkomst is. Wanneer de bron overeenkomt, wordt deze beschouwd als toepasselijk en heeft deze de status **compatibel** of **niet-compatibel**. Als een van beide **typen** of **namen** de enige eigenschap in de definitie is, worden alle resources gezien als toepasselijk en geëvalueerd.
+Azure Policy gebruikt de velden **type** en **naam** in de definitie om te bepalen of een resource een overeenkomst is. Wanneer de bron overeenkomt, wordt deze beschouwd als toepasselijk en heeft deze de status **compatibel**, **niet-compatibel**of **uitgezonderd**. Als een van beide **typen** of **namen** de enige eigenschap in de definitie is, worden alle opgenomen en niet-vrijgestelde resources beschouwd als toepasselijk en geëvalueerd.
 
-Het nalevings percentage wordt bepaald door het verdelen van de **compatibele** resources op basis van het _totale aantal resources_.
-Het _totale aantal resources_ wordt gedefinieerd als de som van de **compatibele**, **niet-compatibele**en **conflicterende** resources. De algemene compatibiliteits aantallen zijn de som van afzonderlijke resources die **compatibel** zijn gedeeld door de som van alle afzonderlijke resources. In de onderstaande afbeelding zijn er 20 afzonderlijke resources die van toepassing zijn en slechts één **niet-compatibel**is. De algemene bron compatibiliteit is 95% (19 van 20).
+Het nalevings percentage wordt bepaald door het verdelen van de **compatibele** en **vrijgestelde** resources op basis van het _totale aantal resources_. _Het totale aantal resources_ wordt gedefinieerd als de som van de **compatibele**, **niet-compatibele**, **uitgesloten**en **conflicterende** resources. De algemene compatibiliteits aantallen zijn de som van afzonderlijke resources die in **overeenstemming** zijn met of worden **uitgesloten** van de som van alle afzonderlijke resources. In de onderstaande afbeelding zijn er 20 afzonderlijke resources die van toepassing zijn en slechts één **niet-compatibel**is.
+De algemene bron compatibiliteit is 95% (19 van 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Scherm opname van Details van beleids naleving van de pagina naleving." border="false":::
 

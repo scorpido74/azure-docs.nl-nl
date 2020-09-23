@@ -4,12 +4,12 @@ description: Ontdek hoe u een on-premises WCF-service zichtbaar maakt voor een w
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983891"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Een on-premises WCF-service zichtbaar maken voor een webtoepassing in de cloud met behulp van Azure Relay
 
@@ -344,7 +344,7 @@ Voer de toepassing uit om te controleren of deze werkt.
 
 Uw toepassing moet dan in een browser worden weergegeven.
 
-![Webtoepassing][21]
+![Scherm afbeelding toont een voor beeld van de toepassing die in een browser wordt uitgevoerd en de URL is gemarkeerd.][21]
 
 ## <a name="put-the-pieces-together"></a>De softwareonderdelen samenstellen
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401772"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563791"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
@@ -162,13 +162,13 @@ De volgende stap is de functie-app toegang te geven tot Azure Digital Twins door
 
 Gebruik in Azure Cloud Shell de volgende opdracht om een toepassingsinstelling in te stellen die door uw functie-app wordt gebruikt om te verwijzen naar uw exemplaar van Azure Digital Twins.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken. Noteer het veld *principalId* in de uitvoer.
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -203,7 +203,7 @@ Azure Digital Twins is bedoeld om te werken naast [IoT Hub](../iot-hub/about-iot
 
 Gebruik in Azure Cloud Shell deze opdracht om een nieuwe IoT-hub te maken:
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ In deze sectie wordt in IoT Hub een apparaatweergave met de id *thermostat67* ge
 
 Maak in Azure Cloud Shell een apparaat in IoT Hub met de volgende opdracht:
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -330,7 +330,7 @@ In deze sectie maakt u een gebeurtenisrasteronderwerp en maakt u vervolgens een 
 
 Voer de volgende opdrachten uit in Azure Cloud Shell om een gebeurtenisrasteronderwerp te maken:
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-re
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

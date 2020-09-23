@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014588"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982968"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -37,7 +37,7 @@ Als u werkt met een laptop met twee Gpu's, is het mogelijk dat de GPU waarop u u
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>Status van ophalen van sessie/conversie mislukt
 
-Het te vaak verzenden van REST API opdrachten leidt ertoe dat de server uiteindelijk kan worden vertraagd en geretourneerd. De HTTP-status code in de beperkings case is 429 ("te veel aanvragen"). Als vuist regel moet er een vertraging van **5-10 seconden tussen de volgende aanroepen**optreden.
+Het te vaak verzenden van REST API opdrachten leidt ertoe dat de server uiteindelijk kan worden vertraagd en geretourneerd. De HTTP-status code in de beperkings case is 429 ("te veel aanvragen"). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
 
 Houd er rekening mee dat deze limiet niet alleen van invloed is op de REST API-aanroepen wanneer deze rechtstreeks worden aangeroepen, maar ook de bijbehorende C#/C + +-equivalenten, zoals `Session.GetPropertiesAsync` , `Session.RenewAsync` of `Frontend.GetAssetConversionStatusAsync` .
 
@@ -156,7 +156,8 @@ Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stelle
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dambord patroon wordt weer gegeven na laden van model
 
-Als de gerenderde afbeelding er als volgt uitziet: Dambord, worden ![ ](../reference/media/checkerboard.png) de [veelhoek limieten voor de standaard configuratie grootte](../reference/vm-sizes.md)in de renderer weer gegeven. U kunt dit oplossen door over te scha kelen naar de grootte van **Premium** -configuraties of het aantal zicht bare veelhoeken te verlagen.
+Als de gerenderde afbeelding er als volgt uitziet: ![ scherm opname toont een raster met zwarte en witte vier kanten met een extra menu.](../reference/media/checkerboard.png)
+vervolgens krijgt de renderer de [grenzen van de polygoon voor de standaard configuratie grootte](../reference/vm-sizes.md). U kunt dit oplossen door over te scha kelen naar de grootte van **Premium** -configuraties of het aantal zicht bare veelhoeken te verlagen.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>De gerenderde afbeelding in unit is ondersteboven
 
@@ -216,7 +217,7 @@ Als de bovenstaande stappen zijn uitgeput en de resterende z-vechten onaanvaardb
 
 ARR heeft een functie waarmee kan worden bepaald of Opper vlakken z-bestrij ding van een [dambord patroon](../overview/features/z-fighting-mitigation.md)zijn. U kunt ook visueel bepalen wat het voor de z-vechten veroorzaakt. In de volgende eerste animatie ziet u een voor beeld van een diepte nauwkeurigheids verlies op de afstand en de tweede een voor beeld van bijna coplanar-Opper vlakken:
 
-![diepte-precisie-z-vechten](./media/depth-precision-z-fighting.gif)  ![coplanar-z-vechten](./media/coplanar-z-fighting.gif)
+![Animatie toont een voor beeld van het verlies van nauw keurigheid op afstand.](./media/depth-precision-z-fighting.gif)  ![Animatie toont een voor beeld van bijna coplanar-Opper vlakken.](./media/coplanar-z-fighting.gif)
 
 Vergelijk deze voor beelden met uw z-vechten om de oorzaak te bepalen of voer deze stapsgewijze werk stroom eventueel uit:
 

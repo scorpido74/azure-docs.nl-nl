@@ -1,23 +1,23 @@
 ---
-title: Key Vault met Azure Monitor bewaken voor Key Vault (preview) | Microsoft Docs
+title: Key Vault met Azure Monitor bewaken voor Key Vault | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor sleutel kluizen beschreven.
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894501"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault (preview-versie)
-Azure Monitor voor Key Vault (preview) biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
-In dit artikel wordt uitgelegd hoe u de ervaring van Azure Monitor kunt opdoen en aanpassen voor Key Vault (preview).
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault
+Azure Monitor voor Key Vault biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
+In dit artikel wordt uitgelegd hoe u de ervaring van Azure Monitor voor Key Vault kunt aanpassen.
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Inleiding tot Azure Monitor voor Key Vault (preview-versie)
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Inleiding tot Azure Monitor voor Key Vault
 
 Voordat u naar de ervaring gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd.
 -    **Op schaal perspectief** met een moment opname weergave van de prestaties op basis van de aanvragen, uitsplitsing van fouten en een overzicht van de bewerkingen en latentie.
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om het gebruik en de bewerkingen van uw sleutel klu
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)
 
-2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie inzichten de optie **sleutel kluizen (preview-versie)**.
+2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie inzichten de optie **sleutel kluizen**.
 
 ![Scherm afbeelding van overzichts ervaring met meerdere grafieken](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ Direct toegang tot Azure Monitor voor Key Vault vanuit een sleutel kluis:
 
 1. Selecteer in de Azure Portal sleutel kluizen.
 
-2. Kies een sleutel kluis in de lijst. Klik in de sectie bewaking op inzichten (preview-versie).
+2. Kies een sleutel kluis in de lijst. Kies inzichten in het gedeelte bewaking.
 
 Deze weer gaven zijn ook toegankelijk door de resource naam van een sleutel kluis te selecteren in het Azure Monitor niveau van de werkmap.
 
@@ -140,7 +140,7 @@ Aanpassingen worden opgeslagen in een aangepaste werkmap om te voor komen dat de
 
 Door de volgende stappen uit te voeren, kunt u het overzicht van het abonnement op meerdere abonnementen en de sleutel kluis configureren of de werkmappen zodanig instellen dat er voor elke uitvoering een bepaald abonnement of een of meer sleutel kluis (s) wordt opgegeven:
 
-1. Selecteer **monitor** in de portal en selecteer vervolgens **sleutel kluizen (preview)** in het linkerdeel venster.
+1. Selecteer **monitor** in de portal en selecteer vervolgens **sleutel kluizen** in het linkerdeel venster.
 2. Selecteer in de werk blad **overzicht** de optie **bewerken**in de opdracht balk.
 3. Selecteer in de vervolg keuzelijst **abonnementen** een of meer abonnementen die door yo moeten worden gebruikt als standaard. Houd er rekening mee dat de werkmap ondersteuning biedt voor het selecteren van Maxi maal 10 abonnementen.
 4. Selecteer in de vervolg keuzelijst **sleutel kluizen** een of meer accounts die u wilt gebruiken als de standaard instelling. Houd er rekening mee dat de werkmap het selecteren van Maxi maal 200 opslag accounts ondersteunt.
@@ -150,11 +150,11 @@ Door de volgende stappen uit te voeren, kunt u het overzicht van het abonnement 
 
 Raadpleeg voor algemene richt lijnen voor probleem oplossing het [artikel specifieke informatie over probleem](troubleshoot-workbooks.md)oplossing op basis van een werkmap.
 
-Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor Key Vault (preview). Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
+Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor Key Vault. Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Prestatie problemen of fouten oplossen
 
-Raadpleeg de [documentatie van Azure Key Vault](../../key-vault/index.yml)als u wilt helpen bij het oplossen van problemen met de sleutel kluis die u identificeert met Azure Monitor voor Key Vault (preview).
+Zie de [Azure Key Vault documentatie](../../key-vault/index.yml)voor informatie over het oplossen van problemen met een sleutel kluis die u aanduidt met Azure Monitor voor Key Vault.
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Waarom kan ik alleen 200 sleutel kluizen zien
 

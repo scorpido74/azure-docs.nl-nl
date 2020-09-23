@@ -4,15 +4,15 @@ description: Meer informatie over de stappen die nodig zijn om de nieuwe Azure M
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783838"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894535"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
+# <a name="workspace-based-application-insights-resources"></a>Application Insights resources op basis van een werk ruimte
 
 Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. U kunt nu uw Application Insights telemetrie naar een gemeen schappelijke Log Analytics-werk ruimte verzenden, zodat u volledige toegang hebt tot alle functies van Log Analytics terwijl logboeken voor toepassings-, infra structuur-en platform bestanden in één geconsolideerde locatie worden bewaard.
 
@@ -21,7 +21,19 @@ Dit biedt ook algemene op rollen gebaseerde Access Control (RBAC) in uw resource
 > [!NOTE]
 > Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.
 
-Als u de nieuwe ervaring wilt testen, meldt u zich aan bij de [Azure Portal](https://portal.azure.com)en maakt u een Application Insights resource:
+## <a name="new-capabilities"></a>Nieuwe mogelijkheden
+
+Met Application Insights op basis van een werk ruimte kunt u profiteren van de nieuwste mogelijkheden van Azure Monitor en Log Analytics met inbegrip van:
+
+* Door de [klant beheerde sleutels (CMK)](../platform/customer-managed-keys.md) bieden versleuteling op rest voor uw gegevens met versleutelings sleutels waartoe alleen u toegang hebt.
+* Met de [persoonlijke Azure-koppeling](../platform/private-link-security.md) kunt u Azure PaaS-services veilig koppelen aan uw virtuele netwerk met behulp van privé-eind punten.
+* [Met uw eigen opslag (BYOS) voor Profiler en snapshot debugger](./profiler-bring-your-own-storage.md) hebt u volledige controle over het beleid voor versleuteling op rest, het beheer beleid voor levens duur en netwerk toegang tot alle gegevens die zijn gekoppeld aan Application Insights Profiler en snapshot debugger. 
+* Met [capaciteits reserverings lagen](../platform/manage-cost-storage.md#pricing-model) kunt u Maxi maal 25% besparen op basis van de betalen naar gebruik-prijs. 
+* Snellere gegevens opname via Log Analytics streaming-opname.
+
+## <a name="create-workspace-based-resource"></a>Resource op basis van werk ruimte maken
+
+Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Application Insights resource:
 
 ![Op werkruimte gebaseerde Application Insights-resource](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ Zodra de resource is gemaakt, worden de bijbehorende werkruimte gegevens weer ge
 Als u op de tekst van de blauwe koppeling klikt, gaat u naar de gekoppelde Log Analytics-werk ruimte waar u kunt profiteren van de nieuwe geïntegreerde werk ruimte query omgeving.
 
 > [!NOTE]
-> We bieden nog steeds volledige compatibiliteit voor uw Application Insights klassieke resource query's, werkmappen en waarschuwingen op basis van Logboeken in de Application Insights ervaring. Als u wilt zoeken/weer geven op [basis van de nieuwe, op werk ruimte gebaseerde tabel structuur/schema,](apm-tables.md) moet u eerst naar uw log Analytics-werk ruimte navigeren. Tijdens de preview-periode selecteert u **Logboeken** in het deel venster Application Insights. u krijgt dan toegang tot de klassieke Application Insights query-ervaring.
+> We bieden nog steeds volledige compatibiliteit voor uw Application Insights klassieke resource query's, werkmappen en waarschuwingen op basis van Logboeken in de Application Insights ervaring. Als u wilt zoeken/weer geven op [basis van de nieuwe, op werk ruimte gebaseerde tabel structuur/schema,](apm-tables.md) moet u eerst naar uw log Analytics-werk ruimte navigeren. Door **Logboeken (Analytics)** te selecteren in de Application Insights deel Vensters krijgt u toegang tot de klassieke Application Insights query-ervaring.
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 
@@ -185,14 +197,6 @@ De `New-AzApplicationInsights` Power shell-opdracht biedt momenteel geen onderst
 
 ```
 
-## <a name="new-capabilities"></a>Nieuwe mogelijkheden
-
-Met Application Insights op basis van een werk ruimte kunt u profiteren van de nieuwste mogelijkheden van Azure Monitor, waaronder:
-
-* Door de [klant beheerde sleutels (CMK)](../platform/customer-managed-keys.md) bieden versleuteling op rest voor uw gegevens met versleutelings sleutels waartoe alleen u toegang hebt.
-* Met de [persoonlijke Azure-koppeling](../platform/private-link-security.md) kunt u Azure PaaS-services veilig koppelen aan uw virtuele netwerk met behulp van privé-eind punten.
-* [Met uw eigen opslag (BYOS) voor Profiler en snapshot debugger](./profiler-bring-your-own-storage.md) hebt u volledige controle over het beleid voor versleuteling op rest, het beheer beleid voor levens duur en netwerk toegang tot alle gegevens die zijn gekoppeld aan Application Insights Profiler en snapshot debugger. 
-
 ## <a name="modifying-the-associated-workspace"></a>De gekoppelde werk ruimte wijzigen
 
 Zodra een Application Insights resource op basis van een werk ruimte is gemaakt, kunt u de gekoppelde Log Analytics werk ruimte wijzigen.
@@ -207,8 +211,3 @@ De verouderde functionaliteit voor continue export wordt niet ondersteund voor o
 
 * [Metrische gegevens verkennen](../platform/metrics-charts.md)
 * [Analytics-query's schrijven](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

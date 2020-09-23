@@ -10,20 +10,17 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047817"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896465"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 In deze zelfstudie leert u hoe u een eenvoudig classificatiemodel maakt zonder ook maar één regel code te schrijven, met de geautomatiseerde machine learning in de Azure Machine Learning Studio. Dit classificatiemodel voorspelt of een klant een termijnrekening zal openen bij een financiële instelling.
-
->[!IMPORTANT]
-> De geautomatiseerde machine learning-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
 
 Met geautomatiseerde machine learning kunt u tijdsintensieve taken automatiseren. Geautomatiseerde machine learning doorloopt of itereert snel allerlei combinaties van algoritmen en hyperparameters om het beste model te vinden op basis van uw maatstaaf voor succes.
 
@@ -47,9 +44,9 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
 
-U maakt een **Enterprise-editie**-werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
+Maak een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > Noteer uw **werkruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plek maakt. 

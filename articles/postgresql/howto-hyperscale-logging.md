@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 4ca64a7793d229e7910fb122fb33996b1ac0c4fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895870"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Meldt zich aan Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -22,15 +22,15 @@ PostgreSQL-logboeken zijn beschikbaar op elk knoop punt van een grootschalige (C
 
 Om toegang te krijgen tot PostgreSQL-logboeken voor een grootschalige (Citus)-coördinator of worker-knoop punt, opent u het knoop punt in de Azure Portal:
 
-![lijst met knoop punten](media/howto-hyperscale-logging/choose-node.png)
+:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="lijst met knoop punten":::
 
 Open voor het geselecteerde knoop punt **Diagnostische instellingen**en klik op **+ Diagnostische instelling toevoegen**.
 
-![Knop Diagnostische instellingen toevoegen](media/howto-hyperscale-logging/diagnostic-settings.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Knop Diagnostische instellingen toevoegen":::
 
 Kies een naam voor de nieuwe diagnostische instellingen en schakel het selectie vakje **PostgreSQLLogs** in.  Kies de doel (en) die de logboeken moeten ontvangen.
 
-![PostgreSQL-logboeken kiezen](media/howto-hyperscale-logging/diagnostic-create-setting.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-logboeken kiezen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

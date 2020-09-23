@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie (preview)'
+title: 'Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie'
 titleSuffix: Azure Machine Learning
 description: Ontdek hoe u een machine learning-model traint, een score geeft en implementeert aan de hand van een slepen-en-neerzetteninterface. Deze zelfstudie is deel 1 van een tweedelige serie over het voorspellen van autoprijzen aan de hand van lineaire regressie.
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896700"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie
+
 
 In deze tweedelige zelfstudie leert u hoe u het Azure Machine Learning-ontwerpprogramma gebruikt om een machine learning-model te trainen en te implementeren waarmee de prijs van een willekeurige auto kan worden voorspeld. De ontwerpfunctie is een slepen-en-neerzettenprogramma waarmee u machine learning-modellen kunt maken zonder ook maar één regel code.
 
@@ -49,10 +49,6 @@ Als u een Azure Machine Learning-pijplijn wilt maken, hebt u een Azure Machine L
 ### <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
 
 Als u de ontwerpfunctie wilt gebruiken, hebt u eerst een Azure Machine Learning-werkruimte nodig. De werkruimte is de resource op het hoogste niveau voor Azure Machine Learning en biedt een gecentraliseerde werkplek met alle artefacten die u in Azure Machine Learning maakt.
-
-Als u een Azure Machine Learning-werkruimte met een Enterprise-editie hebt, [kunt u deze stap overslaan en met de volgende sectie verdergaan](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Maak de pijplijn
 
@@ -94,7 +90,7 @@ U kunt een **standaardrekendoel** voor de gehele pijplijn instellen. Hierdoor ge
 
 Er zijn diverse voorbeeldgegevenssets meegeleverd in de ontwerpfunctie waarmee u kunt experimenteren. Voor deze zelfstudie gebruikt u **Automobile price data (Raw)** . 
 
-1. Aan de linkerkant van het pijplijncanvas ziet u een palet met gegevenssets en modules. Selecteer **Gegevenssets** en bekijk dan de sectie **Voorbeelden** om de beschikbare voorbeeldgegevenssets weer te geven.
+1. Aan de linkerkant van het pijplijncanvas ziet u een palet met gegevenssets en modules. Selecteer **Voorbeeldgegevenssets** om de beschikbare voorbeeldgegevenssets te bekijken.
 
 1. Selecteer de gegevensset **Automobile price data (Raw)** en sleep deze naar het canvas.
 

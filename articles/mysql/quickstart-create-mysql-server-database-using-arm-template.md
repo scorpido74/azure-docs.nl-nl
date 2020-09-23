@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c203eaea0c3fc2a39267ed78eb603c4836cd2b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660278"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896153"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for MySQL te maken
 
@@ -22,7 +22,7 @@ Azure Database for MySQL is een beheerde service waarmee u MySQL-databases met h
 
 Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,7 +66,7 @@ Meer Azure Database for MySQL-sjabloonvoorbeelden vindt u in de [galerie voor Az
 
 Selecteer de volgende koppeling om de Azure Database for MySQL-serversjabloon te implementeren in de Azure-portal:
 
-[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 Doe het volgende op de pagina **Azure Database for MySQL implementeren met VNet**:
 
@@ -76,7 +76,7 @@ Doe het volgende op de pagina **Azure Database for MySQL implementeren met VNet*
 
 3. Voer gegevens bij **Servernaam**, **Aanmelden beheerder** en  **Wachtwoord aanmelden beheerder** in.
 
-    ![Azure Database for MySQL implementeren met VNet-venster, Azure-quickstart-sjabloon, Azure-portal](./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure Database for MySQL implementeren met VNet-venster, Azure-quickstart-sjabloon, Azure-portal":::
 
 4. Wijzig desgewenst de andere standaardinstellingen:
 

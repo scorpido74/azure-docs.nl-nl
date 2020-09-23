@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8dbe36693e551bd03022f4a00044b75b912c834a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f93e0ffe74ade79059fc845788faf36ab5b4f13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025112"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
@@ -26,17 +26,16 @@ ms.locfileid: "80875105"
     |Naam|Gewenste naam (2-64 tekens)|
     |Abonnement|Selecteer het juiste abonnement|
     |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
-    |Prijscategorie|`F0`-de minimale prijs categorie|
+    |Prijscategorie|`F0` -de minimale prijs categorie|
     |Resourcegroep|Een beschik bare resource groep selecteren|
-    |Selectie vakje voor beeld bevestiging (vereist)|Of u de **Preview-versie** hebt gelezen|
 
 1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina Resource
 1. Geconfigureerde `endpoint` en API-sleutel verzamelen:
 
     |Het tabblad resource in de portal|Instelling|Waarde|
     |--|--|--|
-    |**Overzicht**|Eindpunt|Kopieer het eind punt. Deze lijkt op`https://westus2.api.cognitive.microsoft.com/`|
-    |**Sleutels**|API-sleutel|Kopieer 1 van de twee sleutels. Het is een teken reeks van 32 alfanumerieke tekens zonder spaties of streepjes `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Overzicht**|Eindpunt|Kopieer het eind punt. Deze lijkt op `https://westus2.api.cognitive.microsoft.com/`|
+    |**Sleutels**|API-sleutel|Kopieer 1 van de twee sleutels. Het is een teken reeks van 32 alfanumerieke tekens zonder spaties of streepjes `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
 
 
 

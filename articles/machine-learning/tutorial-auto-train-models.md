@@ -11,15 +11,15 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: efe2f062cc75fb05484fe810a3ae16c07e93339b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651752"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896793"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In deze zelfstudie gebruikt u geautomatiseerde machine learning in Azure Machine Learning om een regressiemodel te maken om de taxikosten van een NYC taxi te voorspellen. Dit proces gebruikt trainingsgegevens en configuratie-instellingen en doorloopt automatisch combinaties van verschillende methoden voor het normaliseren/standaardiseren van functies, modellen en instellingen van hyperparameters om het beste model te bepalen.
 
