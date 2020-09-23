@@ -29,6 +29,10 @@
       href: fusion.md
     - name: Azure-Sentinel uitbreiden in werkruimten en tenants
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Geavanceerde bedreigingen identificeren met UEBA
+      href: identify-threats-with-entity-behavior-analytics.md
+    - name: Bedreigingsinformatie importeren in Azure Sentinel
+      href: import-threat-intelligence.md
     - name: Uw gegevens normaliseren in verschillende tabellen
       href: normalization.md
     - name: Beveiliging
@@ -162,6 +166,8 @@
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines
           href: connect-azure-stack.md
+    - name: Analyse van gebruikers- en entiteitsgedrag inschakelen
+      href: enable-entity-behavior-analytics.md
     - name: Werken met meerdere tenants (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Werken met incidenten in meerdere werkruimten

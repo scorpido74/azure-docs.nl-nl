@@ -1,6 +1,6 @@
 ---
-title: Streamen van gegevens in Azure SQL Edge (preview-versie)
-description: Meer informatie over het streamen van gegevens in Azure SQL Edge (preview).
+title: Gegevens stromen in Azure SQL Edge
+description: Meer informatie over het streamen van gegevens in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,23 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 866c74fbdfcfcef7cbb7d6cddb360c4265a2f776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669610"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900557"
 ---
-# <a name="data-streaming-in-azure-sql-edge-preview"></a>Streamen van gegevens in Azure SQL Edge (preview-versie)
+# <a name="data-streaming-in-azure-sql-edge"></a>Gegevens stromen in Azure SQL Edge
 
-Azure SQL Edge (preview) biedt de volgende opties voor het implementeren van gegevens stromen: 
-
-- Azure Stream Analytics Edge-taken implementeren die zijn gemaakt in Azure. Zie [deploying Azure stream Analytics Jobs](deploy-dacpac.md)(Engelstalig) voor meer informatie.
-- Met T-SQL streaming kunt u streaming-taken maken in Azure SQL Edge, zonder de behoefte aan het configureren van streaming-taken in Azure. 
-
-Hoewel het mogelijk is om beide opties te gebruiken voor het implementeren van gegevens stromen in Azure SQL Edge, moet u slechts één ervan gebruiken. Wanneer u beide gebruikt, kunnen er timing fouten optreden die van invloed zijn op de werking van de gegevensstreaming-bewerkingen.
-
-T-SQL streaming is de focus van dit artikel. Het biedt realtime gegevens stromen, analyses en gebeurtenis verwerking voor het analyseren en verwerken van hoge volumes van gegevens snel streamen uit meerdere bronnen tegelijk. T-SQL-streaming is gebouwd met behulp van dezelfde Streaming-Engine met hoge prestaties die [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) in Microsoft Azure voorziet. De functie ondersteunt een vergelijk bare reeks mogelijkheden die wordt geboden door Azure Stream Analytics die aan de rand worden uitgevoerd.
+Azure SQL Edge biedt een systeem eigen implementatie van mogelijkheden voor het streamen van gegevens met de naam T-SQL-streaming. Het biedt realtime gegevens stromen, analyses en gebeurtenis verwerking voor het analyseren en verwerken van hoge volumes van gegevens snel streamen uit meerdere bronnen tegelijk. T-SQL-streaming is gebouwd met behulp van dezelfde Streaming-Engine met hoge prestaties die [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) in Microsoft Azure voorziet. De functie ondersteunt een vergelijk bare reeks mogelijkheden die wordt geboden door Azure Stream Analytics die aan de rand worden uitgevoerd.
 
 Net als bij Stream Analytics herkent T-SQL streaming patronen en relaties in gegevens die worden geëxtraheerd uit een aantal IoT-invoer bronnen, waaronder apparaten, Sens oren en toepassingen. U kunt deze patronen gebruiken om acties te activeren en werk stromen te initiëren. U kunt bijvoorbeeld waarschuwingen, feedgegevens maken voor een rapportage-of visualisatie-oplossing, of de gegevens opslaan voor later gebruik. 
 
@@ -49,7 +42,6 @@ Een stream Analytics-taak bestaat uit:
 - **Uitvoer**van de stream: Hiermee worden de verbindingen met een gegevens bron gedefinieerd om de gegevens stroom naar te schrijven. Azure SQL Edge ondersteunt momenteel de volgende uitvoer typen voor streams
     - Edge hub
     - SQL (de SQL-uitvoer kan een lokale Data Base zijn in het exemplaar van Azure SQL Edge of een externe SQL Server of Azure SQL Database.) 
-    - Azure Blob Storage
 
 - **Stroom query**: Hiermee definieert u de trans formatie, aggregaties, filters, sorteren en samen voegingen die moeten worden toegepast op de invoer stroom voordat deze wordt geschreven naar de uitvoer van de stroom. De stroom query is gebaseerd op de query taal die wordt gebruikt door Stream Analytics. Zie [Stream Analytics query language (Engelstalig](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)) voor meer informatie.
 
@@ -65,9 +57,11 @@ De volgende beperkingen en beperkingen zijn van toepassing op T-SQL-streaming.
 
 - Er kan slechts één streaming-taak op een specifiek tijdstip actief zijn. Taken die al worden uitgevoerd, moeten worden gestopt voordat een andere taak kan worden gestart.
 - De uitvoering van elke streaming-taak wordt uitgevoerd met één thread. Als de streaming-taak meerdere query's bevat, wordt elke query geëvalueerd in een seriële volg orde.
+- Wanneer u een streaming-taak in Azure SQL Edge hebt gestopt, kan er enige vertraging optreden voordat de volgende streaming-taak kan worden gestart. Deze vertraging wordt geïntroduceerd omdat het onderliggende streaming-proces moet worden gestopt als reactie op de aanvraag voor het stoppen van de taak en vervolgens opnieuw wordt gestart als reactie op de aanvraag voor het starten van een taak. 
+- T-SQL-streaming tot 32 partities voor een Kafka-stroom. Pogingen om een hoger aantal partities te configureren, resulteren in een fout. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een Stream Analytics-taak in Azure SQL Edge maken (preview)](create-stream-analytics-job.md)
-- [Meta gegevens weer geven die zijn gekoppeld aan stroom taken in Azure SQL Edge (preview)](streaming-catalog-views.md)
+- [Een Stream Analytics-taak maken in Azure SQL Edge ](create-stream-analytics-job.md)
+- [Meta gegevens weer geven die zijn gekoppeld aan stroom taken in Azure SQL Edge ](streaming-catalog-views.md)
 - [Externe stroom maken](create-external-stream-transact-sql.md)

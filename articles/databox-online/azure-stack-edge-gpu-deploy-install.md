@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie voor installatie: fysiek GPU-apparaat van Azure Stack Edge uitpakken, in rek monteren en bekabelen | Microsoft Docs'
-description: De tweede zelfstudie over het installeren van een GPU van Azure Stack Edge gaat over het uitpakken, in een rek monteren en bekabelen van het fysieke apparaat.
+title: 'Zelfstudie voor installatie: fysiek GPU-apparaat van Azure Stack Edge Pro uitpakken, in rek monteren en bekabelen | Microsoft Docs'
+description: De tweede zelfstudie over het installeren van een GPU van Azure Stack Edge Pro gaat over het uitpakken, in een rek monteren en bekabelen van het fysieke apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900009"
 ---
-# <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Zelfstudie: Azure Stack Edge installeren met GPU
+# <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Azure Stack Edge Pro met GPU installeren
 
-In deze zelfstudie wordt beschreven hoe u een fysiek Azure Stack Edge-apparaat installeert met een GPU. De installatieprocedure omvat het uitpakken, het in een rek monteren en het bekabelen van het apparaat. 
+In deze zelfstudie wordt beschreven hoe u een fysiek Azure Stack Edge Pro-apparaat met een GPU installeert. De installatieprocedure omvat het uitpakken, het in een rek monteren en het bekabelen van het apparaat. 
 
 De installatie duurt ongeveer twee uur.
 
@@ -37,12 +37,12 @@ De vereisten voor het installeren van een fysiek apparaat zijn als volgt:
 
 Zorg voordat u begint voor het volgende:
 
-* U hebt alle stappen in [Tutorial: Prepare to deploy Azure Stack Edge with GPU](azure-stack-edge-gpu-deploy-prep.md) (Implementatie van Azure Stack Edge met GPU voorbereiden) uitgevoerd.
+* U hebt alle stappen in [Tutorial: Prepare to deploy Azure Stack Edge Pro with GPU](azure-stack-edge-gpu-deploy-prep.md) (Implementatie van Azure Stack Edge Pro met GPU voorbereiden) uitgevoerd.
     * U hebt een Azure Stack Edge-resource gemaakt voor het implementeren van het apparaat.
     * U hebt de activeringscode gegenereerd om heet apparaat te activeren met de Azure Stack Edge-resource.
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Voor het fysieke Azure Stack Edge-apparaat
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Voor het fysieke Azure Stack Edge Pro-apparaat
 
 Voordat u een apparaat implementeert, controleert u het volgende:
 
@@ -58,7 +58,7 @@ Voordat u een apparaat implementeert, controleert u het volgende:
 
 Voordat u begint:
 
-- Controleer de netwerkvereisten voor het implementeren van Azure Stack Edge en configureer het netwerk van het datacenter aan de hand van deze vereisten. Zie [Netwerkvereisten voor Azure Stack Edge](azure-stack-edge-system-requirements.md#networking-port-requirements) voor meer informatie.
+- Controleer de netwerkvereisten voor het implementeren van Azure Stack Edge Pro en configureer het netwerk van het datacenter aan de hand van deze vereisten. Zie [Netwerkvereisten voor Azure Stack Edge Pro](azure-stack-edge-system-requirements.md#networking-port-requirements) voor meer informatie.
 
 - Voor een optimale werking van het apparaat heeft internet een minimale bandbreedte van 20 Mbps nodig.
 
@@ -70,7 +70,7 @@ Dit apparaat wordt verzonden in één doos. Voer de volgende stappen uit om het 
 1. Leg de doos op een vlak, horizontaal oppervlak.
 2. Controleer de doos en het verpakkingsmateriaal op deuken, scheuren, waterschade of andere duidelijk zichtbare schade. Als de doos of het verpakkingsmateriaal ernstig beschadigd is, moet u de doos niet openen. Neem contact op met Microsoft Support om in overleg te bepalen of het apparaat nog in goede staat zal zijn.
 3. Pak de doos uit. Controleer of de inhoud van de doos bestaat uit de volgende items:
-    - Eén Azure Stack Edge-apparaat met enkele behuizing
+    - Eén Azure Stack Edge Pro-apparaat met enkele behuizing
     - Twee netsnoeren
     - Eén railkitassembly
     - Het boekje Informatie over veiligheid, milieu en regelgeving
@@ -83,7 +83,7 @@ Als een of meer van de bovenstaande items ontbreken, neemt u [contact op met Mic
 Het apparaat moet worden geïnstalleerd in een standaard 19-inch rek. Gebruik de volgende procedure om het apparaat te monteren in een standaard 19-inch rek.
 
 > [!IMPORTANT]
-> Azure Stack Edge-apparaten moeten voor een goede werking in een rek worden gemonteerd.
+> Azure Stack Edge Pro-apparaten moeten voor een goede werking in een rek worden gemonteerd.
 
 
 ### <a name="prerequisites"></a>Vereisten
@@ -157,11 +157,11 @@ Zoek de onderdelen voor het installeren van de railkit-assembly:
 
 ## <a name="cable-the-device"></a>Het apparaat bekabelen
 
-Leg de kabels op hun plek en bekabel het apparaat. In de volgende procedures wordt uitgelegd hoe uw Azure Stack Edge-apparaat kunt bekabelen voor stroomtoevoer en aansluiting op het netwerk.
+Leg de kabels op hun plek en bekabel het apparaat. In de volgende procedures wordt uitgelegd hoe uw Azure Stack Edge Pro-apparaat kunt bekabelen voor stroomtoevoer en aansluiting op het netwerk.
 
 Voordat u begint met de bekabeling van uw apparaat, zorgt u ervoor dat u over de volgende zaken beschikt:
 
-- Uw fysieke Azure Stack Edge-apparaat, uitgepakt en in het rek gemonteerd.
+- Uw fysieke Azure Stack Edge Pro-apparaat, uitgepakt en in het rek gemonteerd.
 - Twee netsnoeren.
 - Ten minste één 1-GbE RJ-45-netwerkkabel voor verbinding met de beheerinterface. Er zijn twee 1-GbE-netwerkinterfaces, één beheerinterface en één gegevensinterface, op het apparaat aanwezig.
 - Eén koperen 25-GbE SFP+-kabel voor elke te configureren netwerkinterface. Ten minste één netwerkinterface (PORT 2, PORT 3, PORT 4, PORT 5 of PORT 6) moet worden verbonden met internet (en met Azure).  
@@ -171,9 +171,9 @@ Voordat u begint met de bekabeling van uw apparaat, zorgt u ervoor dat u over de
 > [!NOTE]
 > - Als u slechts één netwerkinterface verbindt, wordt u aangeraden een 25/10-GbE netwerkinterface, zoals PORT 3, PORT 4, PORT 5 of PORT 6, te gebruiken om gegevens naar Azure te verzenden. 
 > - Voor de beste prestaties en voor het verwerken van grote gegevensvolumes, kunt u eventueel alle gegevenspoorten verbinden.
-> - Het Azure Stack Edge-apparaat moet worden aangesloten op het netwerk van het datacenter, zodat het gegevens kan opnemen van gegevensbronservers.
+> - Het Azure Stack Edge Pro-apparaat moet worden aangesloten op het netwerk van het datacenter, zodat het gegevens kan opnemen van gegevensbronservers.
 
-Op uw Azure Stack Edge-apparaat:
+Op uw Azure Stack Edge Pro-apparaat:
 
 - Het voorpaneel heeft schijfstations en een aan/uit-knop.
 
@@ -232,7 +232,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen voor stroom en verbindi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Stack Edge, zoals:
+In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Stack Edge Pro, zoals:
 
 > [!div class="checklist"]
 > * Het apparaat uitpakken
@@ -242,4 +242,4 @@ In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen m
 Ga naar de volgende zelfstudie voor informatie over het verbinden van uw apparaat.
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)
+> [Verbinding maken met Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-connect.md)

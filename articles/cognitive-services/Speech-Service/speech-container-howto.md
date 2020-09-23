@@ -10,28 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: aahi
-ms.openlocfilehash: b242530b09f399a84f10a40ea35e21c1119f52b1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321010"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900471"
 ---
-# <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
+# <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren 
 
 Met containers kunt u enkele van de Speech Service-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een spraakcontainer downloadt, installeert en uitvoert.
 
-Met spraakcontainers kunnen klanten een spraaktoepassingsarchitectuur maken die is geoptimaliseerd voor zowel robuuste cloudmogelijkheden als edge-locaties. Er zijn vijf verschillende containers beschikbaar. De twee standaard containers zijn **spraak-naar-tekst**en **tekst-naar-spraak**. De twee aangepaste containers zijn **Custom speech-naar-tekst** -en **aangepaste tekst-naar-spraak**. De **Neural-tekst-naar-spraak** biedt meer natuurlijke uitingen, door het gebruik van een geavanceerdere model. Spraak containers hebben dezelfde [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) als de op de cloud gebaseerde Azure speech Services.
+Met spraakcontainers kunnen klanten een spraaktoepassingsarchitectuur maken die is geoptimaliseerd voor zowel robuuste cloudmogelijkheden als edge-locaties. Er zijn verschillende containers beschikbaar, die dezelfde [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) gebruiken als de in de cloud gebaseerde Azure speech Services.
+
 
 > [!IMPORTANT]
-> Alle spraak containers worden momenteel aangeboden als onderdeel van een [open bare preview-versie](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). Er wordt een aankondiging gedaan wanneer de voortgang van de spraak containers op algemene Beschik baarheid (GA) wordt weer gegeven.
+> De volgende spraak containers zijn nu algemeen beschikbaar:
+> * Standaard spraak naar tekst
+> * Custom Speech-naar-tekst
+> * Standaard tekst naar spraak
+> 
+> De volgende spraak containers bevinden zich in de test voorbeeld.
+> * Aangepaste tekst-naar-spraak
+> * Spraak Taaldetectie 
+> * Tekst-naar-spraak Neural
+>
+> Als u de spraak containers wilt gebruiken, moet u een online aanvraag indienen en deze goed keuren. Zie de sectie **goed keuring aanvragen** voor meer informatie.
 
 | Functie | Functies | Laatste |
 |--|--|--|
-| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.4.0 |
-| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.4.0 |
-| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.6.0 |
-| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.6.0 |
+| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.3.1 |
+| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.3.1 |
+| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
+| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
+| Spraak Taaldetectie | De taal detecteren die in audio bestanden wordt gesp roken. | 1,0 |
 | Tekst-naar-spraak Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. | 1.1.0 |
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
@@ -45,16 +57,6 @@ De volgende vereisten voordat u spraak containers gebruikt:
 | Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
 | Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten. |
 | Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht** |
-
-
-## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
-
-Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. 
-
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -82,6 +84,7 @@ In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources vo
 | Custom Speech-naar-tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 | Tekst naar spraak | 1 Core, 2 GB geheugen | 2 Core, 3 GB geheugen |
 | Aangepaste tekst-naar-spraak | 1 Core, 2 GB geheugen | 2 Core, 3 GB geheugen |
+| Spraak Taaldetectie | 1 Core, 1 GB geheugen | 1 Core, 1 GB geheugen |
 | Tekst-naar-spraak Neural | 6 kern geheugen van 12 GB | 8 core, 16 GB geheugen |
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
@@ -91,6 +94,13 @@ Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die w
 > [!NOTE]
 > De minimale en aanbevolen waarde zijn gebaseerd op de limieten van docker, *niet* op de hostcomputer. Bijvoorbeeld: spraak naar tekst containers delen van een groot taal model en het wordt *Aanbevolen* dat het hele bestand in het geheugen past, wat een extra 4-6 GB is. Het is ook mogelijk dat de eerste uitvoering van een van de containers langer duurt, omdat modellen in het geheugen worden gewisseld.
 
+## <a name="request-approval-to-the-run-the-container"></a>Goed keuring aanvragen voor het uitvoeren van de container
+
+Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. 
+
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+
+
 ## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 Container installatie kopieën voor spraak zijn beschikbaar in de volgende Container Registry.
@@ -99,31 +109,37 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 
 | Container | Opslagplaats |
 |-----------|------------|
-| Spraak naar tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
+| Spraak naar tekst | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest` |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 | Container | Opslagplaats |
 |-----------|------------|
-| Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
+| Custom Speech-naar-tekst | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
 # <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
 
 | Container | Opslagplaats |
 |-----------|------------|
-| Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| Tekst naar spraak | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest` |
 
 # <a name="neural-text-to-speech"></a>[Tekst-naar-spraak Neural](#tab/ntts)
 
 | Container | Opslagplaats |
 |-----------|------------|
-| Tekst-naar-spraak Neural | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest` |
+| Tekst-naar-spraak Neural | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 | Container | Opslagplaats |
 |-----------|------------|
-| Aangepaste tekst-naar-spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
+| Aangepaste tekst-naar-spraak | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
+
+# <a name="speech-language-detection"></a>[Spraak Taaldetectie](#tab/lid)
+
+| Container | Opslagplaats |
+|-----------|------------|
+| Spraak Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest` |
 
 ***
 
@@ -138,7 +154,7 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest
 ```
 
 > [!IMPORTANT]
@@ -167,7 +183,7 @@ Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -conta
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest
 ```
 
 > [!NOTE]
@@ -180,7 +196,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech:latest
 ```
 
 > [!IMPORTANT]
@@ -212,7 +228,7 @@ Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#t
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest
 ```
 
 > [!IMPORTANT]
@@ -244,11 +260,21 @@ Voor alle ondersteunde land instellingen en de overeenkomstige stemmen van de **
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
 ```
 
 > [!NOTE]
 > De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
+
+# <a name="speech-language-detection"></a>[Spraak Taaldetectie](#tab/lid)
+
+#### <a name="docker-pull-for-the-speech-language-detection-container"></a>Docker-pull voor de spraak Taaldetectie container
+
+Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden uit het REGI ster van container voorbeelden.
+
+```Docker
+docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest
+```
 
 ***
 
@@ -269,7 +295,7 @@ Voer de volgende opdracht uit om de standaard *-naar-tekst-* container uit te vo
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -295,7 +321,7 @@ De sleutel en het eind punt worden door gegeven aan de spraak container als argu
 
 ```bash
 docker run -it --rm -p 5000:5000 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
@@ -344,7 +370,7 @@ Als u de *Custom speech-naar-tekst* -container wilt uitvoeren, voert u de volgen
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -367,7 +393,7 @@ Voer de volgende opdracht uit om de standaard *-tekst-naar-spraak-* container ui
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -386,7 +412,7 @@ Voer de volgende opdracht uit om de *Neural tekst-naar-spraak* -container uit te
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
-containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -425,7 +451,7 @@ Als u de *aangepaste tekst-naar-spraak-* container wilt uitvoeren, voert u de vo
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 -v {VOLUME_MOUNT}:/usr/local/models \
-containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
 ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -442,6 +468,34 @@ Met deze opdracht gebeurt het volgende:
 * Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
+# <a name="language-detection"></a>[Taaldetectie](#tab/lid)
+
+Voer de volgende opdracht uit om de *Speech taaldetectie* -container uit te voeren `docker run` .
+
+```bash
+docker run --rm -it -p 5003:5003 --memory 1g --cpus 1 \
+mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Met deze opdracht gebeurt het volgende: 
+
+* Voert een taal detectie container voor spraak herkenning uit vanuit de container installatie kopie.
+* Wijst 1 CPU-kernen en 1 gigabyte (GB) aan geheugen toe.
+* Beschrijft TCP-poort 5003 en wijst een pseudo-TTY voor de container toe.
+* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+
+Als u deze container wilt uitvoeren met de spraak-naar-tekst-container, kunt u deze [docker-installatie kopie](https://hub.docker.com/r/antsu/on-prem-client)gebruiken. Nadat beide containers zijn gestart, gebruikt u de opdracht docker run om uit te voeren `speech-to-text-with-languagedetection-client` .
+
+```Docker
+docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-text-with-languagedetection-client ./audio/LanguageDetection_en-us.wav --host localhost --lport 5003 --sport 5000
+```
+
+> [!NOTE]
+> Het verhogen van het aantal gelijktijdige aanroepen kan invloed hebben op de betrouw baarheid en latentie. Voor taal detectie raden wij u aan een maximum van 4 gelijktijdige aanroepen te gebruiken met 1 CPU met en 1 GB aan geheugen. Voor hosts met 2 Cpu's en 2 GB geheugen raden wij u aan Maxi maal zes gelijktijdige aanroepen aan te bieden.
+
 ***
 
 > [!IMPORTANT]
@@ -455,7 +509,7 @@ Met deze opdracht gebeurt het volgende:
 | Containers | SDK-host-URL | Protocol |
 |--|--|--|
 | Standaard spraak naar tekst en Custom Speech-naar-tekst | `ws://localhost:5000` | WS |
-| Tekst-naar-spraak (inclusief standaard, aangepast en Neural) | `http://localhost:5000` | HTTP |
+| Tekst-naar-spraak (inclusief standaard, aangepast en Neural), taal detectie | `http://localhost:5000` | HTTP |
 
 Zie [Container Security](../cognitive-services-container-support.md#azure-cognitive-services-container-security)(Engelstalig) voor meer informatie over het gebruik van WSS-en HTTPS-protocollen.
 
@@ -624,6 +678,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te 
   * *Tekst-naar-spraak*
   * *Aangepaste tekst-naar-spraak*
   * *Tekst-naar-spraak Neural*
+  * *Spraak Taaldetectie*
 * Container installatie kopieën worden gedownload uit het container register in Azure.
 * Container installatie kopieën worden uitgevoerd in docker.
 * Of u de REST API (alleen tekst naar spraak) of de SDK (spraak naar tekst of tekst naar spraak) wilt gebruiken, geeft u de URI van de host op. 

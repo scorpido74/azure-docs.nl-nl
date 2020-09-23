@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: ceb6285448df2a5d87dfa87ab249c99bf22c9928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: d81550f5c6906e409675002fde670db3734de883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885049"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Geavanceerde bedreigingen beveiliging configureren in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,21 +26,18 @@ ms.locfileid: "84686321"
 
 U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldingen](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) of [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal)
 
-[Advanced Threat Protection](../database/threat-detection-overview.md) maakt deel uit van de [geavanceerde gegevens beveiliging](../database/advanced-data-security.md) , een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Advanced Threat Protection kan worden geopend en beheerd via de centrale SQL ADS-portal.
+[Advanced Threat Protection](../database/threat-detection-overview.md) maakt deel uit van de [Azure Defender voor SQL](../database/azure-defender-for-sql.md)  -aanbieding, een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de centrale Azure Defender voor SQL-Portal.
 
 ##  <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
-2. Ga naar de configuratie pagina van het exemplaar van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer op de pagina **instellingen** de optie **geavanceerde gegevens beveiliging**.
-3. Op de pagina Geavanceerde gegevens beveiliging configuratie
-   - Geavanceerde **gegevens** beveiliging inschakelen.
+1. Meld u aan bij de  [Azure Portal](https://portal.azure.com). 
+2. Ga naar de configuratie pagina van het exemplaar van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer **Security Center**onder **beveiliging**.
+3. Op de pagina Azure Defender voor SQL-configuratie
+   - Schakel Azure Defender voor SQL **in** .
    - De **lijst met e-mail** berichten configureren voor het ontvangen van beveiligings waarschuwingen bij het detecteren van afwijkende database activiteiten.
    - Selecteer het **Azure-opslag account** waarin records voor afwijkende bedreigings controle worden opgeslagen.
    - Selecteer de **Geavanceerde beveiligings typen voor bedreigingen** die u wilt configureren. Meer informatie over [Geavanceerde beveiligings waarschuwingen voor bedreigingen](../database/threat-detection-overview.md).
-4. Klik op **Opslaan** om het nieuwe of bijgewerkte geavanceerde gegevens beveiligings beleid op te slaan.
-
-   ![Advanced Threat Protection](./media/threat-detection-configure/threat-detection.png)
-
+4. Klik op **Opslaan** om het nieuwe of bijgewerkte Azure Defender voor SQL-beleid op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

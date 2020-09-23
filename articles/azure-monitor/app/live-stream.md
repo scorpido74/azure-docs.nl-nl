@@ -4,12 +4,12 @@ description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en 
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142210"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973585"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
@@ -148,7 +148,7 @@ Net als bij metrische gegevens kunt u wille keurige criteria opgeven voor elk va
 
 Bekijk de details van een item in de live feed door erop te klikken. U kunt de feed onderbreken door te klikken op **onderbreken** of omlaag schuiven of op een item te klikken. Live feed wordt hervat wanneer u weer naar boven schuift of door te klikken op het item van items die worden verzameld terwijl het is onderbroken.
 
-![Voorbeeld Live-fouten](./media/live-stream/sample-telemetry.png)
+![Scherm afbeelding toont het venster voor beeld-telemetrie waarin een uitzonde ring is geselecteerd en de uitzonderings details die onder aan het venster worden weer gegeven.](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Filteren op Server exemplaar
 
@@ -249,7 +249,7 @@ Als u echter alle verbonden servers herkent en vertrouwt, kunt u de aangepaste f
 
 Basis metrieken zijn onder andere aanvraag, afhankelijkheid en uitzonderings frequentie. Prestatie gegevens (prestatie meter items) zijn onder andere geheugen en CPU. Voor beeld-telemetrie toont een stroom van gedetailleerde informatie over mislukte aanvragen en afhankelijkheden, uitzonde ringen, gebeurtenissen en traceringen.
 
- \*PerfCounters-ondersteuning varieert enigszins per versie van .NET core die niet gericht is op de .NET Framework:
+ \* PerfCounters-ondersteuning varieert enigszins per versie van .NET core die niet gericht is op de .NET Framework:
 
 - PerfCounters-metrische gegevens worden ondersteund wanneer in Azure App Service voor Windows wordt uitgevoerd. (AspNetCore SDK-versie 2.4.1 of hoger)
 - PerfCounters worden ondersteund wanneer de app wordt uitgevoerd op een Windows-machine (VM of Cloud service of on-premises, enz.) (AspNetCore SDK-versie 2.7.1 of hoger), maar voor apps die zijn gericht op .NET Core 2,0 of hoger.

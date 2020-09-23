@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74967334"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884430"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -22,7 +22,7 @@ Co-locatie betekent dat verwante informatie samen op dezelfde knoop punten wordt
 
 In Azure Database for PostgreSQL – grootschalige (Citus), een rij wordt opgeslagen in een Shard als de hash van de waarde in de kolom distributie binnen het hash-bereik van de Shard valt. Shards met hetzelfde hash-bereik worden altijd op hetzelfde knoop punt geplaatst. Rijen met gelijke distributie kolom waarden bevinden zich altijd op hetzelfde knoop punt in tabellen.
 
-![Shards](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="Shards":::
 
 ## <a name="a-practical-example-of-colocation"></a>Een praktisch voor beeld van een co-locatie
 
@@ -96,7 +96,7 @@ Daarna moeten de resultaten van de twee stappen worden gecombineerd door de toep
 
 Het uitvoeren van de query's moet gegevens raadplegen in Shards verspreid over verschillende knoop punten.
 
-![Inefficiënte query's](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Inefficiënte query's":::
 
 In dit geval maakt de gegevens distributie aanzienlijke nadelen:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Vanwege het filter en de samen voeging van tenant_id, weet grootschalige (Citus) dat de volledige query kan worden beantwoord met behulp van de set met Shards die de gegevens voor die specifieke Tenant bevatten. Een enkel PostgreSQL-knoop punt kan de query in één stap beantwoorden.
 
-![Betere query](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Betere query":::
 
 In sommige gevallen moeten query's en tabel schema's worden gewijzigd om de Tenant-ID op te nemen in unieke beperkingen en voor waarden voor samen voegen. Deze wijziging is doorgaans eenvoudig.
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7ad1116f7c0168181dbf5b43f8f1595ce250949
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433616"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903934"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network Service-eind punten en-regels voor Azure Database for PostgreSQL-één server gebruiken
 
@@ -19,7 +19,7 @@ ms.locfileid: "89433616"
 
 Als u een regel voor een virtueel netwerk wilt maken, moet u eerst een [virtueel netwerk][vm-virtual-network-overview] (VNet) en een [virtueel netwerk service-eind punt][vm-virtual-network-service-endpoints-overview-649d] voor de regel waarnaar moet worden verwezen. In de volgende afbeelding ziet u hoe een Virtual Network Service-eind punt samen met Azure Database for PostgreSQL werkt:
 
-![Voor beeld van hoe een VNet-service-eind punt werkt](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="Voor beeld van hoe een VNet-service-eind punt werkt":::
 
 > [!NOTE]
 > Deze functie is beschikbaar in alle regio's van de open bare Azure-Cloud, waar Azure Database for PostgreSQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.

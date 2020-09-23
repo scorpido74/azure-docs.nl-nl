@@ -1,0 +1,55 @@
+- name: Metrics Advisor
+  href: index.yml
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Wat is Metrics Advisor?
+      href: overview.md
+- name: Snelstartgidsen
+  items:
+    - name: De demosite verkennen
+      href: quickstarts/explore-demo.md
+    - name: De webportal gebruiken
+      href: quickstarts/web-portal.md
+    - name: REST-API gebruiken
+      href: quickstarts/rest-api.md
+- name: Procedures
+  items:
+    - name: Onboarding van uw gegevens
+      href: how-tos/onboard-your-data.md
+    - name: Verbinding maken met verschillende gegevensfeedbronnen
+      href: data-feeds-from-different-sources.md
+    - name: Gegevensfeeds beheren
+      href: how-tos/manage-data-feeds.md
+    - name: Metrische gegevens configureren en detectieconfiguratie afstemmen
+      href: how-tos/configure-metrics.md
+    - name: Waarschuwingen configureren en meldingen ontvangen met behulp van een hook
+      href: how-tos/alerts.md
+    - name: Een incident vaststellen
+      href: how-tos/diagnose-incident.md
+    - name: Anomaliedetectie aanpassen met feedback
+      href: how-tos/anomaly-feedback.md
+    - name: Grafiek voor metrische gegevens bouwen
+      href: how-tos/metrics-graph.md
+- name: Naslaginformatie
+  items:
+    - name: Woordenlijst
+      href: glossary.md
+    - name: Veelgestelde vragen
+      href: faq.md
+    - name: Metrics Advisor API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Naslaginformatie over Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell-referentie
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+- name: Resources
+  items:
+    - name: Prijzen
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
+    - name: Regionale beschikbaarheid
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Naleving
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Versleuteling
+      href: encryption.md

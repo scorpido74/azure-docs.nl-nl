@@ -1,18 +1,18 @@
 ---
-title: Problemen met de verbinding van de agent voor Azure Arc-servers (preview) oplossen
-description: In dit artikel wordt beschreven hoe u problemen oplost en oplost met de verbonden machine agent die zich voordoet bij het maken van verbinding met de service met Azure Arc-servers (preview).
-ms.date: 07/20/2020
+title: Verbindings problemen met de agent voor Azure Arc ingeschakelde servers oplossen
+description: In dit artikel leest u hoe u problemen met de verbonden machine agent oplost en oplost die zich voordoen bij het maken van verbinding met de service met Azure Arc-servers.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213541"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900684"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Problemen met de verbindings problemen van de verbonden computer agent oplossen
 
-Dit artikel bevat informatie over het oplossen van problemen die zich kunnen voordoen bij het configureren van de verbonden computer agent van Azure Arc (preview) voor Windows of Linux. Bij het configureren van de verbinding met de service, worden zowel de interactieve installatie als de schaal op de juiste wijze gebruikt. Zie overzicht van Arc- [Ingeschakelde servers](./overview.md)voor algemene informatie.
+In dit artikel vindt u informatie over het oplossen van problemen die zich kunnen voordoen bij het configureren van de Azure-servers die zijn verbonden met de computer agent voor Windows of Linux. Bij het configureren van de verbinding met de service, worden zowel de interactieve installatie als de schaal op de juiste wijze gebruikt. Zie overzicht van Arc- [Ingeschakelde servers](./overview.md)voor algemene informatie.
 
 ## <a name="agent-verbose-log"></a>Uitgebreid logboek van agent
 

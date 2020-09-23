@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463553"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971418"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Beveiligde toegang tot gegevens in opslag accounts via een vertrouwde service-uitzonde ring
 
 Indexeer functies die toegang hebben tot gegevens in opslag accounts, kunnen gebruikmaken van de mogelijkheid van een [vertrouwde service-uitzonde ring](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) om veilig toegang te krijgen tot gegevens. Dit mechanisme biedt klanten die geen toegang tot de [Indexeer functie kunnen verlenen via IP-firewall regels](search-indexer-howto-access-ip-restricted.md) , een eenvoudig, veilig en gratis alternatief voor toegang tot gegevens in opslag accounts.
-
-> [!NOTE]
-> Het openen van een opslag account via de door het systeem toegewezen identiteit van een zoek service is nog steeds beschikbaar als preview-versie. Deze preview-functie is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>Stap 1: de verbinding met het opslag account configureren via de identiteit
 

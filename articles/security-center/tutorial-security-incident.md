@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076396"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901080"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
 Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. Bovendien kunt u waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. In deze zelfstudie leert u het volgende:
@@ -32,7 +32,7 @@ Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de functies in deze zelfstudie wilt doorlopen, moet u zich in de Standard-prijscategorie van Security Center bevinden. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. In de snelstartgids [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) wordt u begeleid bij het upgraden naar Standard.
+Om de functies in deze zelfstudie te doorlopen, moet Azure Defender zijn ingeschakeld. U kunt Azure Defender gratis uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. De quickstart [Aan de slag met Security Center](security-center-get-started.md) begeleidt u bij de upgrade.
 
 ## <a name="scenario"></a>Scenario
 Contoso heeft enkele van de on-premises resources onlangs naar Azure gemigreerd, met inbegrip van een aantal line-of-business workloads en SQL-databases op virtuele machines. Het Contoso Core Computer Security Incident Response Team (CSIRT) heeft een probleem met het onderzoeken van mogelijke beveiligingskwesties. De oorzaak hiervan is dat het bedrijf geen beveiligingsintelligence heeft die is geïntegreerd in de aanwezige hulpmiddelen voor het reageren op incidenten. Doordat deze integratie niet is doorgevoerd, ontstaat er een probleem tijdens de detectiefase (teveel onjuist positieve resultaten), en tijdens de beoordelings- en diagnosefase. Als onderdeel van deze migratie besloten ze Security Center in te schakelen om hen te helpen dit probleem aan te pakken.
@@ -68,13 +68,13 @@ Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuw
 
    ![Beveiligingswaarschuwingen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. Klik in de lijst met waarschuwingen op een beveiligingsincident, dus een verzameling waarschuwingen, voor meer informatie over dit incident. **Veiligheidsincident gedetecteerd** wordt geopend.
+2. Selecteer een beveiligingsincident (een verzameling waarschuwingen) in de lijst met waarschuwingen voor meer informatie over dit incident. **Veiligheidsincident gedetecteerd** wordt geopend.
 
-   ![Beveiligingsincident](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Veiligheidsincident gedetecteerd](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Bovenin dit scherm staat de beschrijving van het incident, met de lijst van waarschuwingen die deel uitmaken van dit incident. Klik op de waarschuwing die u verder wilt onderzoeken, voor meer informatie.
 
-   ![Beveiligingsincident](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Waarschuwingsdetails van incident](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    Het type waarschuwing kan verschillen. Lees [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) voor meer informatie over het type waarschuwing en mogelijke herstelstappen. Voor waarschuwingen die veilig kunnen worden genegeerd, klikt u met de rechtermuisknop op de waarschuwing en selecteert u de optie **Sluiten**:
 
@@ -99,13 +99,12 @@ Als u een zoekopdracht wilt uitvoeren, opent u het dashboard van **Security Cent
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende quickstarts en zelfstudies ook wilt doornemen, blijf dan de prijscategorie Standard gebruiken en houd automatische inrichting ingeschakeld. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
+Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende quickstarts en zelfstudies ook wilt doornemen, houdt u automatische inrichting en Azure Defender ingeschakeld. Als u niet wilt doorgaan of Azure Defender wilt uitschakelen:
 
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
-2. Selecteer het abonnement of het beleid dat u wilt terugzetten op Gratis. **Beveiligingsbeleid** wordt geopend.
-3. Selecteer onder **BELEIDSONDERDELEN** de optie **Prijscategorie**.
-4. Selecteer **Gratis** om het abonnement te wijzigen van de Standard-laag in de Gratis laag.
-5. Selecteer **Opslaan**.
+1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
+1. Selecteer het abonnement dat u wilt downgraden.
+1. Stel **Azure Defender** in op Uit.
+1. Selecteer **Opslaan**.
 
 Als u automatisch inrichten wilt uitschakelen:
 

@@ -8,16 +8,16 @@ ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4ad0ce1aef45dc4126d3ce17c7093b885f1b8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935414"
+ms.locfileid: "90974138"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Prestatie lagen voor beheerde schijven (preview-versie)
 
-Azure Disk Storage biedt momenteel ingebouwde burst-mogelijkheden voor betere prestaties bij het verwerken van onverwacht verkeer op korte termijn. Premium-Ssd's hebben de flexibiliteit om de schijf prestaties te verbeteren zonder de daad werkelijke schijf grootte te verg Roten, zodat u kunt voldoen aan de prestatie behoeften van uw werk belasting en de kosten te verlagen. Dit is ideaal voor gebeurtenissen die tijdelijk een consistent hoger prestatie niveau vereisen, zoals het kopen van vakantie, het testen van prestaties of het uitvoeren van een trainings omgeving. Als u deze gebeurtenissen wilt verwerken, kunt u zo lang als nodig een hogere prestatie laag selecteren en terugkeren naar de oorspronkelijke laag wanneer de extra prestaties niet meer nodig zijn.
+Azure Disk Storage biedt momenteel ingebouwde burst-mogelijkheden voor betere prestaties bij het verwerken van onverwacht verkeer op korte termijn. Premium Ssd's hebben de flexibiliteit om de schijf prestaties te verbeteren zonder de daad werkelijke schijf grootte te verg Roten, zodat u kunt voldoen aan de prestatie behoeften van uw werk belasting en de kosten kunt verlagen. deze functie is momenteel beschikbaar als preview-versie. Dit is ideaal voor gebeurtenissen die tijdelijk een consistent hoger prestatie niveau vereisen, zoals het kopen van vakantie, het testen van prestaties of het uitvoeren van een trainings omgeving. Als u deze gebeurtenissen wilt verwerken, kunt u zo lang als nodig een hogere prestatie laag selecteren en terugkeren naar de oorspronkelijke laag wanneer de extra prestaties niet meer nodig zijn.
 
 ## <a name="how-it-works"></a>Uitleg
 

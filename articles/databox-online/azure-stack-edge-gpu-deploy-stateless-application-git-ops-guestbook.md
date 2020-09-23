@@ -1,6 +1,6 @@
 ---
-title: PHP-Gastenboek-app implementeren op Kubernetes met Azure Stack Edge GPU | Microsoft Docs
-description: Hierin wordt beschreven hoe u een PHP-Gastenboek met redis implementeert met behulp van GitOps op een Kubernetes-cluster met Arc-functionaliteit van uw Azure Stack edge-apparaat.
+title: PHP-Gastenboek-app implementeren op Kubernetes met Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u een PHP-Gastenboek met redis implementeert met behulp van GitOps op een Kubernetes-cluster met Arc-functionaliteit van uw Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319289"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899565"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Een niet-beschik bare-gastenboek toepassing met redis implementeren op een Kubernetes-cluster dat is ingeschakeld op Azure Stack Edge GPU
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Een niet-beschik bare-gastenboek toepassing met redis implementeren op een Kubernetes-cluster op basis van Azure Stack Edge Pro GPU
 
 In dit artikel wordt beschreven hoe u een eenvoudige webtoepassing met meerdere lagen bouwt en implementeert met behulp van Kubernetes en Azure Arc. Dit voor beeld bestaat uit de volgende onderdelen:
 
@@ -23,9 +23,9 @@ In dit artikel wordt beschreven hoe u een eenvoudige webtoepassing met meerdere 
 - Meerdere gerepliceerde redis-instanties om Lees bewerkingen te behandelen
 - Meerdere web-front-end-instanties
 
-De implementatie wordt uitgevoerd met behulp van GitOps op het Kubernetes-cluster op uw Azure Stack edge-apparaat. 
+De implementatie wordt uitgevoerd met behulp van GitOps op het Kubernetes-cluster met Arc-functionaliteit op uw Azure Stack Edge Pro-apparaat. 
 
-Deze procedure is bedoeld voor gebruikers die de Kubernetes- [workloads op Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-workload-management.md) hebben gecontroleerd en die vertrouwd zijn met de concepten van [Wat is Azure Arc enabled Kubernetes (preview)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+Deze procedure is bedoeld voor gebruikers die de Kubernetes- [workloads op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-workload-management.md) hebben bekeken en die bekend zijn met de concepten van [Wat is Azure Arc enabled Kubernetes (preview)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -34,30 +34,30 @@ Voordat u de stateless toepassing kunt implementeren, moet u ervoor zorgen dat u
 
 ### <a name="for-device"></a>Voor het apparaat
 
-1. U hebt aanmeld referenties voor een Azure Stack edge-apparaat van 1 knoop punt.
+1. U hebt aanmeldings referenties naar een Azure Stack Edge Pro-apparaat met één knoop punt.
     1. Het apparaat wordt geactiveerd. Zie [het apparaat activeren](azure-stack-edge-gpu-deploy-activate.md).
     1. Op het apparaat is de compute-rol geconfigureerd via Azure Portal en heeft het een Kubernetes-cluster. Zie [Configure Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
 
-1. U hebt Azure Arc ingeschakeld op het bestaande Kubernetes-cluster op uw apparaat en u hebt een bijbehorende Azure-Arc-resource in de Azure Portal. Zie voor gedetailleerde stappen [Azure Arc inschakelen op Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md).
+1. U hebt Azure Arc ingeschakeld op het bestaande Kubernetes-cluster op uw apparaat en u hebt een bijbehorende Azure-Arc-resource in de Azure Portal. Zie [Azure Arc inschakelen op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)voor gedetailleerde stappen.
 
 ### <a name="for-client-accessing-the-device"></a>Voor client toegang tot het apparaat
 
-1. U hebt een Windows-client systeem dat wordt gebruikt voor toegang tot het Azure Stack edge-apparaat.
+1. U hebt een Windows-client systeem dat wordt gebruikt om toegang te krijgen tot het Azure Stack Edge Pro-apparaat.
   
     - Windows Power shell 5,0 of hoger wordt uitgevoerd op de client. Als u de meest recente versie van Windows Power shell wilt downloaden, gaat u naar [Windows Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - U kunt ook een andere client met een [ondersteund besturings systeem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) hebben. In dit artikel wordt de procedure beschreven voor het gebruik van een Windows-client. 
     
-1. U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
+1. U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
     
     - Geïnstalleerd `kubectl` op de client  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-Master versie die wordt uitgevoerd op uw Azure stack edge-apparaat. 
+    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-hoofd versie die wordt uitgevoerd op uw Azure stack Edge Pro-apparaat. 
       - Gebruiken `kubectl version` om te controleren welke versie van kubectl op de client wordt uitgevoerd. Noteer de volledige versie.
-      - Ga in de lokale gebruikers interface van uw Azure Stack edge-apparaat naar **overzicht** en noteer het Kubernetes-software nummer. 
+      - Ga in de lokale gebruikers interface van uw Azure Stack Edge Pro-apparaat naar **overzicht** en noteer het Kubernetes-software nummer. 
       - Controleer deze twee versies op compatibiliteit van de toewijzing die is opgenomen in de ondersteunde Kubernetes-versie <!--insert link-->.
 
-1. U hebt een [GitOps-configuratie die u kunt gebruiken om een implementatie van Azure Arc uit te voeren](https://github.com/kagoyal/dbehaikudemo). In dit voor beeld gebruikt u de volgende `yaml` bestanden om te implementeren op uw Azure stack edge-apparaat.
+1. U hebt een [GitOps-configuratie die u kunt gebruiken om een implementatie van Azure Arc uit te voeren](https://github.com/kagoyal/dbehaikudemo). In dit voor beeld gebruikt u de volgende `yaml` bestanden om te implementeren op uw Azure stack Edge Pro-apparaat.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -107,7 +107,7 @@ Volg deze stappen om de Azure Arc-resource te configureren voor het implementere
     ![Naar configuraties](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
-## <a name="verify-deployment"></a>Implementatie controleren
+## <a name="verify-deployment"></a>Implementatie verifiëren
 
 De implementatie via de GitOps-configuratie maakt een `demotestguestbook` naam ruimte zoals opgegeven in de implementatie `yaml` bestanden die zich bevinden in de Git opslag plaats.
 
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [gebruik van Kubernetes-dash board voor het bewaken van implementaties op uw Azure stack edge-apparaat](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)
+Meer informatie over het [gebruik van Kubernetes-dash board voor het bewaken van implementaties op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

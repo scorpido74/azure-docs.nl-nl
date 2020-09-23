@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 7df783f15280d9f5ba3330afaf504f3259aeccf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646253"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898711"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
-In dit artikel wordt beschreven hoe u de module converteren naar gegevensset in Azure Machine Learning Designer (preview) gebruikt om gegevens voor een pijp lijn te converteren naar de interne indeling van de ontwerp functie.
+In dit artikel wordt beschreven hoe u de module converteren naar gegevensset in Azure Machine Learning Designer kunt gebruiken om gegevens voor een pijp lijn om te zetten in de interne indeling van de ontwerp functie.
   
 Conversie is in de meeste gevallen niet vereist. Azure Machine Learning gegevens worden impliciet geconverteerd naar de indeling van de systeem eigen gegevensset wanneer een bewerking wordt uitgevoerd op de gegevens. 
 
