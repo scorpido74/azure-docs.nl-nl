@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het overdragen van gegevens naar shares met Azure Stack Edge GPU | Microsoft Docs
-description: Informatie over het toevoegen van en verbinding maken met shares op een Azure Stack Edge GPU-apparaat.
+title: Zelfstudie voor het overdragen van gegevens naar shares met Azure Stack Edge Pro GPU | Microsoft Docs
+description: Informatie over het toevoegen van en verbinding maken met shares op een Azure Stack Edge Pro GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4d7453ba34a7bc1dd26d0201f604c9028974c1a2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268924"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891104"
 ---
-# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-gpu"></a>Zelfstudie: Gegevens overdragen via shares met Azure Stack Edge GPU
+# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Zelfstudie: Gegevens overdragen via shares met Azure Stack Edge Pro GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In deze zelfstudie wordt beschreven hoe u shares toevoegt aan een Azure Stack Edge-apparaat en er verbinding mee maakt. Nadat u de shares hebt toegevoegd, kunnen via Azure Stack Edge gegevens worden overgedragen naar Azure.
+In deze zelfstudie wordt beschreven hoe u shares toevoegt aan een Azure Stack Edge Pro-apparaat en er verbinding mee maakt. Nadat u de shares hebt toegevoegd, kunnen via Azure Stack Edge Pro gegevens worden overgedragen naar Azure.
 
 Deze procedure neemt in totaal ongeveer tien minuten in beslag.
 
@@ -33,11 +33,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u shares aan Azure Stack Edge gaat toevoegen, controleert u het volgende:
+Voordat u shares aan Azure Stack Edge Pro gaat toevoegen, controleert u het volgende:
 
-* U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-gpu-deploy-install.md).
+* U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge Pro installeren](azure-stack-edge-gpu-deploy-install.md).
 
-* U hebt het fysieke apparaat geactiveerd zoals beschreven in [Azure Stack Edge activeren](azure-stack-edge-gpu-deploy-activate.md).
+* U hebt het fysieke apparaat geactiveerd, zoals beschreven in [Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md).
 
 ## <a name="add-a-share"></a>Een share toevoegen
 
@@ -66,7 +66,7 @@ Ga als volgt te werk om een share te maken:
     Het type service dat u selecteert, is afhankelijk van de gewenste indeling voor de gegevens in Azure. In dit voorbeeld selecteren we **Blok-blob** omdat we de gegevens in Azure willen opslaan als blob-blokken. Als u **Pagina-blob** selecteert, moet u ervoor zorgen dat uw gegevens zijn uitgelijnd op 512 bytes. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
 
    > [!IMPORTANT]
-   > Controleer of er op het Azure Storage-account dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
+   > Controleer of voor het Azure-opslagaccount dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge Pro- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
 
     e. Maak een nieuwe blobcontainer of gebruik een bestaande container in de vervolgkeuzelijst. Als u een blobcontainer maakt, moet u ook een naam voor die container opgeven. Als er nog geen container bestaat, wordt in het opslagaccount een container gemaakt met de naam van de zojuist gemaakte share.
    
@@ -120,7 +120,7 @@ Voer de volgende stappen uit op de Windows-client die u gebruikt om verbinding t
 
 ### <a name="connect-to-an-smb-share"></a>Verbinding maken met een SMB-share
 
-Maak op de Windows Server-client die met uw Azure Stack Edge-apparaat is verbonden, verbinding met een SMB-share door deze opdrachten in te voeren:
+Maak op de Windows Server-client die met uw Azure Stack Edge Pro-apparaat is verbonden, verbinding met een SMB-share door deze opdrachten in te voeren:
 
 
 1. Typ in een opdrachtvenster:
@@ -158,7 +158,7 @@ Maak op de Windows Server-client die met uw Azure Stack Edge-apparaat is verbond
 
 ### <a name="connect-to-an-nfs-share"></a>Verbinding maken met een NFS-share
 
-Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edge-apparaat:
+Voer de volgende procedure uit met de Linux-client die is verbonden met het Azure Stack Edge Pro-apparaat:
 
 1. Zorg ervoor dat de NFSv4-client is geïnstalleerd op de client. Als u de NFS-client wilt installeren, gebruikt u de volgende opdracht:
 
@@ -166,7 +166,7 @@ Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edg
 
     Ga naar [Install NFSv4 client](https://help.ubuntu.com/community/NFSv4Howto) (NFSv4-client installeren) voor meer informatie.
 
-2. Nadat de NFS-client is geïnstalleerd, koppelt u de NFS-share die u hebt gemaakt, aan het Azure Stack Edge-apparaat met behulp van de volgende opdracht:
+2. Nadat de NFS-client is geïnstalleerd, koppelt u de NFS-share die u hebt gemaakt, aan het Azure Stack Edge Pro-apparaat met behulp van de volgende opdracht:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
@@ -176,7 +176,7 @@ Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edg
     > Als u de `sync`-optie gebruikt wanneer u shares koppelt, verbetert u de overdrachtssnelheden van grote bestanden.
     > Voordat u de share koppelt, controleert u of de mappen die zullen fungeren als koppelpunten op de lokale computer, al zijn gemaakt. Deze mappen mogen geen bestanden of submappen bevatten.
 
-    Het volgende voorbeeld toont hoe u via NFS verbinding maakt met een share op een Azure Stack Edge-apparaat. Het IP-adres van het apparaat is `10.10.10.60`. De share `mylinuxshare2` is gekoppeld aan de ubuntuVM. Het koppelpunt van de share is `/home/azurestackedgeubuntuhost/edge`.
+    Het volgende voorbeeld toont hoe u via NFS verbinding maakt met een share op een Azure Stack Edge Pro-apparaat. Het IP-adres van het apparaat is `10.10.10.60`. De share `mylinuxshare2` is gekoppeld aan de ubuntuVM. Het koppelpunt van de share is `/home/azurestackedgeubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/azurestackedgeubuntuhost/Edge`
 
@@ -188,15 +188,15 @@ Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over de volgende Azure Stack Edge-onderwerpen:
+In deze zelfstudie bent u meer te weten gekomen over de volgende Azure Stack Edge Pro-onderwerpen:
 
 > [!div class="checklist"]
 > * Een share toevoegen
 > * Verbinding maken met een share
 
-Als u wilt leren hoe u gegevens kunt transformeren met behulp van Azure Stack Edge, gaat u verder met de volgende zelfstudie:
+Als u wilt leren hoe u gegevens kunt transformeren met behulp van Azure Stack Edge Pro, gaat u verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
-> [Gegevens transformeren met Azure Stack Edge](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Gegevens transformeren met Azure Stack Edge Pro](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

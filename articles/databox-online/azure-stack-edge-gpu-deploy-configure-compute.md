@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het filteren en analyseren van gegevens met rekenproces voor GPU van Azure Stack Edge | Microsoft Docs
-description: Leer hoe u een compute-rol configureert in Azure Stack Edge GPU en deze gebruikt om gegevens te transformeren voordat ze naar Azure worden verzonden.
+title: Zelfstudie voor het filteren en analyseren van gegevens met rekenproces voor GPU van Azure Stack Edge Pro | Microsoft Docs
+description: Leer hoe u een compute-rol configureert in Azure Stack Edge Pro GPU en deze gebruikt om gegevens te transformeren voordat ze naar Azure worden verzonden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903173"
 ---
-# <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Zelfstudie: Compute configureren op Azure Stack Edge GPU-apparaat
+# <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Zelfstudie: Compute configureren op Azure Stack Edge Pro GPU-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In deze zelfstudie wordt beschreven hoe u een compute-rol voor een configureert en een Kubernetes-cluster maakt op uw Azure Stack Edge-apparaat. 
+In deze zelfstudie wordt beschreven hoe u een compute-rol voor een configureert en een Kubernetes-cluster maakt op uw Azure Stack Edge Pro-apparaat. 
 
 Deze procedure neemt ongeveer 20 tot 30 minuten in beslag.
 
@@ -34,16 +34,16 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge-apparaat:
+Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge Pro-apparaat:
 
-- U hebt het Azure Stack Edge-apparaat geactiveerd zoals beschreven in [Azure Stack Edge activeren](azure-stack-edge-gpu-deploy-activate.md).
+- U hebt het Azure Stack Edge Pro-apparaat geactiveerd zoals beschreven in [Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md).
 - Zorg ervoor dat u de instructies in [Rekennetwerk inschakelen](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network) hebt gevolgd en:
     - Een netwerkinterface hebt ingeschakeld voor berekeningen.
     - IP-adressen van Kubernetes-knooppunten en van externe Kubernetes-services hebt toegewezen.
 
 ## <a name="configure-compute"></a>Rekenproces configureren
 
-Als u het rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een IoT Hub-resource via de Azure-portal.
+Als u het rekenproces wilt configureren voor uw Azure Stack Edge Pro, maakt u een IoT Hub-resource via de Azure-portal.
 
 1. Ga in Azure Portal van uw Azure Stack Edge-resource naar **Overzicht**. Selecteer in het rechterdeelvenster op de tegel **Compute** **Aan de slag**.
 
@@ -72,17 +72,17 @@ Als u het rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een Io
     ![Aan de slag met rekenproces](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 
+    > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge Pro-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 
     
 Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Er wordt ook een IoT Edge-runtime op dit IoT Edge-apparaat uitgevoerd. Op dit moment is alleen het Linux-platform beschikbaar voor uw IoT Edge-apparaat.
 
 Het kan 20-30 minuten duren om het rekenproces te configureren aangezien er op de achtergrond virtuele machines en een Kubernetes-cluster worden gemaakt. 
 
-Nadat u het rekenproces in de Azure-portal hebt geconfigureerd, beschikt u over een Kubernetes-cluster en een standaardgebruiker die is gekoppeld aan de IoT-naamruimte (een naamruimte van het systeem die wordt beheerd door Azure Stack Edge). 
+Nadat u het rekenproces in de Azure-portal hebt geconfigureerd, beschikt u over een Kubernetes-cluster en een standaardgebruiker die is gekoppeld aan de IoT-naamruimte (een naamruimte van het systeem die wordt beheerd door Azure Stack Edge Pro). 
 
 ## <a name="get-kubernetes-endpoints"></a>Kubernetes-eindpunten ophalen
 
-Als u een client wilt configureren voor toegang tot het Kubernetes-cluster, hebt u het Kubernetes-eindpunt nodig. Volg deze stappen om het Kubernetes API-eindpunt op te halen uit de lokale gebruikersinterface van uw Azure Stack Edge-apparaat.
+Als u een client wilt configureren voor toegang tot het Kubernetes-cluster, hebt u het Kubernetes-eindpunt nodig. Volg deze stappen om het Kubernetes API-eindpunt op te halen uit de lokale gebruikersinterface van uw Azure Stack Edge Pro-apparaat.
 
 1. Ga in de lokale webinterface van uw apparaat naar de pagina **Apparaten**.
 2. Kopieer het eindpunt van de **Kubernetes API-service** onder **Apparaateindpunten**. Dit eindpunt is een tekenreeks met de volgende indeling: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]`. 
@@ -117,7 +117,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Kubernetes-eindpunten ophalen
 
 
-Als u wilt weten hoe u uw Azure Stack Edge-apparaat beheert, gaat u naar:
+Als u wilt weten hoe u uw Azure Stack Edge Pro-apparaat beheert, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902795"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -32,16 +32,16 @@ U maakt de keuze tussen het configureren van uw server voor lokaal redundante ba
 
 Wanneer u een server maakt via de Azure Portal, selecteert u in het venster **prijs categorie** de optie **lokaal redundante** of **geografisch redundante** back-ups voor uw server. Dit venster is ook de plek waar u de **retentie periode voor back-ups** selecteert-hoe lang (in aantal dagen) u de back-ups van de server wilt opslaan.
 
-   ![Prijs categorie: Kies back-upredundantie](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 Zie de [Snelstartgids van Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-portal.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
 De Bewaar periode voor back-ups kan worden gewijzigd op een server met behulp van de volgende stappen:
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw Azure Database for MySQL-server. Met deze actie wordt de pagina **overzicht** geopend.
 3. Selecteer **prijs categorie** in het menu onder **instellingen**. Met de schuif regelaar kunt u de **Bewaar periode voor back-ups** wijzigen van 7 tot 35 dagen.
 In de onderstaande scherm afbeelding is meer dan 34 dagen verg root.
-![De Bewaar periode voor back-ups is verhoogd](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="De Bewaar periode voor back-ups is verhoogd":::
 
 4. Klik op **OK** om de wijziging te bevestigen.
 
@@ -57,11 +57,11 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
 2. Selecteer in de werk balk van de pagina **overzicht** van de server **herstellen**.
 
-   ![Azure Database for MySQL-overzicht-knop herstellen](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL-overzicht-knop herstellen":::
 
-3. Vul het formulier Restore in met de vereiste gegevens:
+3. Vul in het formulier Restore de vereiste gegevens in:
 
-   ![Azure Database for MySQL-herstel informatie](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL-herstel informatie":::
    - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
    - **Doel server**: Geef een naam op voor de nieuwe server.
    - **Locatie**: u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.

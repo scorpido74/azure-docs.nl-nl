@@ -1,6 +1,6 @@
 ---
-title: Problemen met het oplossen van certificaten met Azure Stack Edge met GPU | Microsoft Docs
-description: Hierin wordt het oplossen van certificaat fouten met Azure Stack Edge GPU-apparaat beschreven.
+title: Problemen met het oplossen van certificaten met Azure Stack Edge Pro met GPU | Microsoft Docs
+description: Hierin wordt het oplossen van certificaat fouten met Azure Stack Edge Pro GPU-apparaat beschreven.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269434"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891322"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Certificaat fouten oplossen
 
-Het artikel bevat oplossingen voor veelvoorkomende certificaat fouten bij het installeren van certificaten op uw Azure Stack edge-apparaat.
+Het artikel bevat oplossingen voor veelvoorkomende certificaat fouten bij het installeren van certificaten op uw Azure Stack Edge Pro-apparaat.
 
 ## <a name="common-certificate-errors"></a>Veelvoorkomende certificaat fouten
 
@@ -58,4 +58,4 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Certificaatvereisten](azure-stack-edge-j-series-certificate-requirements.md)
+[Certificaat vereisten](azure-stack-edge-j-series-certificate-requirements.md)

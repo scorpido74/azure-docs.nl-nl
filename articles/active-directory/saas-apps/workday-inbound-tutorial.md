@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018098"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974370"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -39,7 +39,7 @@ De [Azure Active Directory User Provisioning Service](../app-provisioning/user-p
 
 * Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Nieuwe functies
+### <a name="whats-new"></a>Wat is er nieuw?
 In deze sectie worden verbeteringen voor de recente werk dagen van integratie vastgelegd. Voor een lijst met uitgebreide updates, geplande wijzigingen en archieven gaat u naar de pagina [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Kan 2020-de mogelijkheid om telefoon nummers naar workday te terugschrijven:** Naast e-mail en gebruikers naam kunt u nu een telefoon nummer en een mobiel telefoon nummer van Azure AD naar werkdag terugschrijven. Raadpleeg de [zelf studie write-app](workday-writeback-tutorial.md)voor meer informatie.
@@ -373,7 +373,7 @@ Zet het installatie programma van de gedownloade agent over naar de server host 
 1. Controleer de installatie van de agent en zorg ervoor dat deze wordt uitgevoerd door de module ' Services ' te openen en te zoeken naar de service met de naam ' Microsoft Azure AD Connect inrichtings agent '.
 
    >[!div class="mx-imgBorder"]
-   >![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die wordt uitgevoerd in Services](./media/workday-inbound-tutorial/services.png)
+   >![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die in Services wordt uitgevoerd.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Deel 3: in de inrichtings-app de verbinding configureren voor workday en Active Directory
 In deze stap maken we verbinding met werkdag en Active Directory in de Azure Portal. 

@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500348"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900587"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Release opmerkingen bij Azure SQL Edge 
 
 In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke nieuwe build van Azure SQL Edge.
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>Buildnummer van SQL-engine-15.0.2000.1549
+
+### <a name="whats-new"></a>Wat is nieuw?
+1. Ubuntu-container installatie kopieën op basis van 18,04. 
+2. Ondersteuning voor `IGNORE NULL` en- `RESPECT NULL` syntaxis met `LAST_VALUE()` en- `FIRST_VALUE()` functies. 
+3. Verbetering van de betrouw baarheid voor voor SPELing met ONNX.
+4. Ondersteuning voor het opruimen van gegevens Bewaar beleid.      
+   - Ondersteuning voor geoptimaliseerde opschoning voor geclusterde column Store-indexen.
+5. Ondersteuning voor nieuwe functies 
+   - Snel herstel
+   - Automatisch afstemmen van query's
+
+### <a name="fixes"></a>Oplossingen
+1. Aanvullende fout berichten en Details voor het oplossen van problemen met TSQL-streaming. 
+2. Verbeteringen voor het behouden van de levens duur van de accu in de modus niet-actief 
+3. Oplossingen voor TSQL Streaming-Engine: 
+   - Taak voor gestopt streamen opschonen 
+   - Oplossingen voor verbeteringen voor lokalisatie en Unicode-verwerking
+4. Opschonen op basis van een beleid voor gegevens retentie
+   - Oplossingen voor het maken en opschonen van Bewaar beleid.
+5. Oplossingen voor achtergrond timer taken om energie besparing te verbeteren voor de modus voor laag energie verbruik.
+
 
 ## <a name="ctp-23"></a>CTP 2,3
 ### <a name="sql-engine-build-number---15020001549"></a>Buildnummer van SQL-engine-15.0.2000.1549
@@ -33,7 +58,7 @@ In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke 
 
 ### <a name="fixes"></a>Oplossingen
 1. Aanvullende fout berichten en Details voor het oplossen van problemen met TSQL-streaming. 
-2. Imporvements om de levens duur van de accu in de niet-actieve modus te behouden. 
+2. Verbeteringen voor het behouden van de levens duur van de accu in de modus niet-actief 
 3. Oplossingen voor TSQL Streaming-Engine: 
    - Probleem met vastgelopen water merk oplossen met verspringen-venster met substream 
    - Opgeloste verwerking van Framework-uitzonde ringen verhelpen om ervoor te zorgen dat deze wordt verzameld als een gebruikers actie fout

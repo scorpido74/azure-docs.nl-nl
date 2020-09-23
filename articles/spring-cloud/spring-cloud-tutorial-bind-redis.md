@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c21a6a2a42aa7417ddb53afd3beda735b54cff3d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ef77ba6e34f2a699c8c4f06fde8cb602ae98c728
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299130"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885675"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure Cache voor Redis verbinden met uw Azure Spring Cloud-toepassing 
+
+**Dit artikel is van toepassing op:** ✔️ java
 
 In plaats van uw Spring Boot-toepassingen handmatig te configureren, kunt u de geselecteerde Azure-services automatisch met uw toepassingen verbinden met behulp van Azure Spring Cloud. In dit artikel wordt uitgelegd hoe u uw toepassing verbindt met Azure Cache voor Redis.
 

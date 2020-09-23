@@ -4,12 +4,12 @@ description: Het bijhouden van problemen met Azure-automatisch schalen die wordt
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751330"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979041"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problemen oplossen met Azure automatisch schalen
  
@@ -47,7 +47,7 @@ We hebben een eenvoudige instelling voor automatisch schalen voor een schaalset 
 
 Laten we de metrische gegevens van de service voor automatisch schalen eens bekijken.
  
-![CPU-voor beeld van schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![Scherm afbeelding toont een CPU-voor beeld van een schaalset van virtuele machines.](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![CPU-voor beeld van schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Als de waarde van de **uitgaande stroom per instantie** groter is dan 10, moet d
 
 In dit geval wordt de geobserveerde metrische waarde van de engine voor automatisch schalen berekend als de werkelijke metrische waarde gedeeld door het aantal exemplaren. Als de waargenomen metrische waarde lager is dan de drempelwaarde, wordt er geen uitschaal actie gestart. 
  
-![Voor beeld van grafieken met metrische gegevens voor de schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Scherm afbeelding toont de pagina gemiddelde uitgaande stromen, met een voor beeld van een schaalset met metrische gegevens grafieken van de virtuele machine.](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![Voor beeld van grafieken met metrische gegevens voor de schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

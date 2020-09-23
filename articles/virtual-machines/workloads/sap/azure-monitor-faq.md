@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen-Azure Monitor voor SAP-oplossingen | Microsoft Docs
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure monitor for SAP-oplossingen
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure monitor voor SAP-oplossingen.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: cf0366300c4fab18a0f6231a97ca050eddd50132
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987246"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Veelgestelde vragen over Azure monitor voor SAP-oplossingen (preview-versie)
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen

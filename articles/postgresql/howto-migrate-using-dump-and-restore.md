@@ -5,15 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902664"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Uw PostgreSQL-database migreren met dumpen en herstel
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) gebruiken om een postgresql-data base te extra heren naar een dump bestand en [Pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) om de postgresql-data base te herstellen vanuit een archief bestand dat door pg_dump is gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -37,20 +39,30 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>Herstel de gegevens in het doel Azure Database for PostgreSQL met behulp van pg_restore
 Nadat u de doel database hebt gemaakt, kunt u de opdracht pg_restore en de para meter-d,--dbname gebruiken om de gegevens vanuit het dump bestand te herstellen in de doel database.
 ```bash
-pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
+pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-name> --dbname=<target database name> <database>.dump
 ```
+
 Met de para meter--no-owner worden alle objecten die zijn gemaakt tijdens het herstellen, het eigendom van de gebruiker die is opgegeven met--username. Zie de officiële PostgreSQL-documentatie over [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)voor meer informatie.
 
 > [!NOTE]
-> Als uw PostgreSQL-server TLS/SSL-verbindingen (standaard op Azure Database for PostgreSQL servers) vereist, stelt u een omgevings variabele in, `PGSSLMODE=require` zodat het hulp programma pg_restore verbinding maakt met TLS. Zonder TLS kan de fout worden gelezen`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Als uw PostgreSQL-server TLS/SSL-verbindingen (standaard op Azure Database for PostgreSQL servers) vereist, stelt u een omgevings variabele in, `PGSSLMODE=require` zodat het hulp programma pg_restore verbinding maakt met TLS. Zonder TLS kan de fout worden gelezen  `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
 > Voer in de Windows-opdracht regel de opdracht uit `SET PGSSLMODE=require` voordat u de opdracht pg_restore uitvoert. Voer in Linux of bash de opdracht uit `export PGSSLMODE=require` voordat u de opdracht pg_restore uitvoert.
 >
 
-In dit voor beeld herstelt u de gegevens uit het dump bestand **testdb. dump** in de Data Base **mypgsqldb** op de doel server **mydemoserver.postgres.database.Azure.com**. 
+In dit voor beeld herstelt u de gegevens uit het dump bestand **testdb. dump** in de Data Base **mypgsqldb** op de doel server **mydemoserver.postgres.database.Azure.com**.
+
+Hier volgt een voor beeld van het gebruik van deze **pg_restore** voor **één server**:
+
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+Hier volgt een voor beeld van het gebruik van deze **pg_restore** voor **flexibele server**:
+
+```bash
+pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
+```
+---
 
 ## <a name="optimizing-the-migration-process"></a>Het migratie proces optimaliseren
 
@@ -63,8 +75,8 @@ Een manier om uw bestaande PostgreSQL-data base te migreren naar Azure Database 
 ### <a name="for-the-backup"></a>Voor de back-up
 - Maak de back-up met de-FC-switch, zodat u de terugzet bewerking parallel kunt uitvoeren om deze sneller te maken. Bijvoorbeeld:
 
-    ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
+    ```bash
+    pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
     ```
 
 ### <a name="for-the-restore"></a>Voor de herstel bewerking
@@ -74,16 +86,21 @@ Een manier om uw bestaande PostgreSQL-data base te migreren naar Azure Database 
 
 - Herstel met de switches-FC en-j *#* om parallelliseren te herstellen. *#* is het aantal kernen op de doel server. U kunt ook proberen het *#* aantal kernen van de doel server twee maal op te geven om de impact te bekijken. Bijvoorbeeld:
 
-    ```
-    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
-    ```
+Hier volgt een voor beeld van het gebruik van deze **pg_restore** voor **één server**:
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+```
+Hier volgt een voor beeld van het gebruik van deze **pg_restore** voor **flexibele server**:
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+ ```
 
 - U kunt het dump bestand ook bewerken door de opdracht *set synchronous_commit = uit* te voegen aan het begin en de opdracht *set synchronous_commit = aan* aan het einde. Als u deze niet aan het einde inschakelt, kan dit leiden tot verlies van gegevens, voordat de gegevens worden gewijzigd.
 
 - Overweeg het volgende bij de doel-Azure Database for PostgreSQL server voordat de herstel bewerking wordt uitgevoerd:
     - Schakel het bijhouden van query prestaties uit, omdat deze statistieken niet nodig zijn tijdens de migratie. U kunt dit doen door pg_stat_statements. track, pg_qs. query_capture_mode en pgms_wait_sampling. query_capture_mode in te stellen op geen.
 
-    - Gebruik een high Compute-SKU met hoge hoeveelheid geheugen, zoals 32 vCore geheugen geoptimaliseerd, om de migratie te versnellen. Nadat het terugzetten is voltooid, kunt u de voor Keurs-SKU eenvoudig weer omlaag schalen. Hoe hoger de SKU, hoe meer parallellisme u kunt betrekken door de overeenkomstige `-j` para meter te verhogen in de pg_restore opdracht. 
+    - Gebruik een high Compute-SKU met hoge hoeveelheid geheugen, zoals 32 vCore geheugen geoptimaliseerd, om de migratie te versnellen. Nadat het terugzetten is voltooid, kunt u de voor Keurs-SKU eenvoudig weer omlaag schalen. Hoe hoger de SKU, hoe meer parallellisme u kunt betrekken door de overeenkomstige `-j` para meter te verhogen in de pg_restore opdracht.
 
     - Meer IOPS op de doel server kunnen de prestaties van het herstel verbeteren. U kunt meer IOPS inrichten door de opslag grootte van de server te verhogen. Deze instelling kan niet ongedaan worden gemaakt, maar u kunt ook overwegen of een hogere IOPS in de toekomst voor deel zou zijn van uw werkelijke workload.
 
