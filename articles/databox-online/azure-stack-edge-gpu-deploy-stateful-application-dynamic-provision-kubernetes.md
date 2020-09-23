@@ -1,6 +1,6 @@
 ---
-title: Gebruik kubectl om Kubernetes stateful-app te implementeren via een dynamische ingerichte share op Azure Stack Edge GPU-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u een Kubernetes stateful toepassings implementatie maakt en beheert via een dynamisch ingerichte share met behulp van kubectl op een Microsoft Azure Stack Edge GPU-apparaat.
+title: Gebruik kubectl om Kubernetes stateful app te implementeren via een dynamische ingerichte share op Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Kubernetes stateful toepassings implementatie maakt en beheert via een dynamisch ingerichte share met behulp van kubectl op een Microsoft Azure Stack Edge Pro GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899467"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>Gebruik kubectl om een Kubernetes stateful-toepassing uit te voeren met StorageClass op uw Azure Stack Edge GPU-apparaat
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Gebruik kubectl om een Kubernetes stateful-toepassing uit te voeren met StorageClass op uw Azure Stack Edge Pro GPU-apparaat
 
 In dit artikel wordt beschreven hoe u een stateful toepassing met één exemplaar implementeert in Kubernetes met behulp van een StorageClass om opslag en een implementatie dynamisch in te richten. De implementatie maakt gebruik `kubectl` van opdrachten op een bestaand Kubernetes-cluster en implementeert de MySQL-toepassing. 
 
-Deze procedure is bedoeld voor gebruikers die de Kubernetes- [opslag op Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-storage.md) hebben gecontroleerd en die bekend zijn met de concepten van [Kubernetes Storage](https://kubernetes.io/docs/concepts/storage/).
+Deze procedure is bedoeld voor gebruikers die de Kubernetes- [opslag op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-storage.md) hebben gecontroleerd en bekend zijn met de concepten van [Kubernetes Storage](https://kubernetes.io/docs/concepts/storage/).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -28,30 +28,30 @@ Voordat u de stateful toepassing kunt implementeren, moet u ervoor zorgen dat u 
 
 ### <a name="for-device"></a>Voor het apparaat
 
-- U hebt aanmeld referenties voor een Azure Stack edge-apparaat van 1 knoop punt.
+- U hebt aanmeldings referenties naar een Azure Stack Edge Pro-apparaat met één knoop punt.
     - Het apparaat wordt geactiveerd. Zie [het apparaat activeren](azure-stack-edge-gpu-deploy-activate.md).
     - Op het apparaat is de compute-rol geconfigureerd via Azure Portal en heeft het een Kubernetes-cluster. Zie [Configure Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Voor client toegang tot het apparaat
 
-- U hebt een Windows-client systeem dat wordt gebruikt voor toegang tot het Azure Stack edge-apparaat.
+- U hebt een Windows-client systeem dat wordt gebruikt om toegang te krijgen tot het Azure Stack Edge Pro-apparaat.
     - Windows Power shell 5,0 of hoger wordt uitgevoerd op de client. Als u de meest recente versie van Windows Power shell wilt downloaden, gaat u naar [Windows Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - U kunt ook een andere client met een [ondersteund besturings systeem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) hebben. In dit artikel wordt de procedure beschreven voor het gebruik van een Windows-client. 
     
-    - U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
+    - U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
       - Een `userns1` naam ruimte is gemaakt via de `New-HcsKubernetesNamespace` opdracht. 
       - Een gebruiker heeft gemaakt `user1` via de `New-HcsKubernetesUser` opdracht. 
       - De `user1` toegang tot `userns1` via de `Grant-HcsKubernetesNamespaceAccess` opdracht is verleend.       
       - Geïnstalleerd `kubectl` op de client en het `kubeconfig` bestand met de gebruikers configuratie opgeslagen op C: \\ gebruikers \\ &lt; gebruikers naam &gt; \\ . uitvoeren. 
     
-    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-Master versie die wordt uitgevoerd op uw Azure stack edge-apparaat. 
+    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-hoofd versie die wordt uitgevoerd op uw Azure stack Edge Pro-apparaat. 
         - Gebruiken `kubectl version` om te controleren welke versie van kubectl op de client wordt uitgevoerd. Noteer de volledige versie.
-        - Ga in de lokale gebruikers interface van uw Azure Stack edge-apparaat naar **overzicht** en noteer het Kubernetes-software nummer. 
+        - Ga in de lokale gebruikers interface van uw Azure Stack Edge Pro-apparaat naar **overzicht** en noteer het Kubernetes-software nummer. 
         - Controleer deze twee versies op compatibiliteit van de toewijzing die is opgenomen in de ondersteunde Kubernetes-versie<!-- insert link-->. 
 
 
-U bent klaar om een stateful toepassing te implementeren op uw Azure Stack edge-apparaat. 
+U bent klaar om een stateful toepassing te implementeren op uw Azure Stack Edge Pro-apparaat. 
 
 
 ## <a name="deploy-mysql"></a>MySQL implementeren
@@ -78,7 +78,7 @@ U kunt nu een stateful toepassing uitvoeren door een Kubernetes-implementatie te
 
 1. U gaat de volgende YAML-bestanden gebruiken. Het `mysql-deployment.yml` bestand beschrijft een implementatie die mysql uitvoert en verwijst naar het PVC. Het bestand definieert een volume koppeling voor `/var/lib/mysql` en maakt vervolgens een PVC dat zoekt naar een volume van 20 GB. Een dynamische hw wordt ingericht en de PVC is gebonden aan deze hw.
 
-    Kopieer het volgende bestand en sla het op in `mysql-deployment.yml` een map op de Windows-client die u gebruikt om toegang te krijgen tot het Azure stack edge-apparaat.
+    Kopieer het volgende bestand en sla het op in `mysql-deployment.yml` een map op de Windows-client die u gebruikt om toegang te krijgen tot het Azure stack Edge Pro-apparaat.
     
     ```yml
     apiVersion: v1
@@ -126,7 +126,7 @@ U kunt nu een stateful toepassing uitvoeren door een Kubernetes-implementatie te
               claimName: mysql-pv-claim-sc
     ```
     
-2. Kopieer en sla het `mysql-pvc.yml` bestand op in dezelfde map waarin u het hebt opgeslagen `mysql-deployment.yml` . Als u de ingebouwde StorageClass wilt gebruiken die Azure Stack edge-apparaat op een gekoppelde gegevens schijf, stelt `storageClassName` u het veld in het PVC-object in op `ase-node-local` en accessModes `ReadWriteOnce` . 
+2. Kopieer en sla het `mysql-pvc.yml` bestand op in dezelfde map waarin u het hebt opgeslagen `mysql-deployment.yml` . Als u de ingebouwde StorageClass wilt gebruiken die Azure Stack Edge Pro-apparaat op een gekoppelde gegevens schijf, stelt `storageClassName` u het veld in het PVC-object in op `ase-node-local` en accessModes `ReadWriteOnce` . 
 
     > [!NOTE] 
     > Zorg ervoor dat de YAML-bestanden de juiste inspringing hebben. U kunt controleren met [yaml pluis](http://www.yamllint.com/) om te valideren en vervolgens op te slaan.
@@ -326,4 +326,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een stateless toepassing implementeren op een Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md) voor meer informatie over het configureren van netwerken via kubectl
+Zie [een stateless toepassing implementeren op een Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md) voor meer informatie over het configureren van netwerken via kubectl

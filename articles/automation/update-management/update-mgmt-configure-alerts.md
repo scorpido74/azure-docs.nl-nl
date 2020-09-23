@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c39a07ceac4d36bf3ef7394927589b53da7d789
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450293"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977010"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Waarschuwingen voor Updatebeheer maken
 
@@ -56,7 +56,7 @@ Volg de onderstaande stappen om waarschuwingen in te stellen om u de status van 
 
 9. Stel het veld **Ernst** in op **Informational (Ernst 2)** voor een geslaagde uitvoering of **informatie (Ernst 1)** voor een mislukte uitvoering.
 
-    ![Signaallogica configureren](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
+    ![Scherm afbeelding toont de sectie waarschuwings Details definiëren met de velden naam, beschrijving en ernst van de waarschuwings regel.](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
 
 10. Selecteer **Ja** om de waarschuwings regel in te scha kelen.
 

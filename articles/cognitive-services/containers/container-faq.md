@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900047"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
 
@@ -22,11 +22,16 @@ ms.locfileid: "83701811"
 
 **V: wat is er beschikbaar?**
 
-**A:** Met Azure Cognitive Services-containers kunnen ontwikkel aars gebruikmaken van dezelfde intelligente Api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Sommige containers zijn beschikbaar als geteste preview waarvoor een toepassing voor toegang nodig is. Andere containers zijn openbaar beschikbaar als een niet-gegate preview-versie of zijn algemeen beschikbaar. U kunt een volledige lijst met containers en hun Beschik baarheid vinden in de [container ondersteuning in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikel. 
+**A:** Met Azure Cognitive Services-containers kunnen ontwikkel aars gebruikmaken van dezelfde intelligente Api's die beschikbaar zijn in azure, maar met de [voor delen](../cognitive-services-container-support.md#features-and-benefits) van container opslag. Sommige containers zijn beschikbaar als geteste preview waarvoor een toepassing voor toegang nodig is. Andere containers zijn openbaar beschikbaar als een niet-gegate preview-versie of zijn algemeen beschikbaar. U kunt een volledige lijst met containers en hun Beschik baarheid vinden in de [container ondersteuning in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikel. U kunt de containers ook weer geven in de [docker-hub](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 **V: is er een verschil tussen de Cognitive Services Cloud en de containers?**
 
 **A:** Cognitive Services containers zijn een alternatief voor de Cognitive Services Cloud. Containers bieden dezelfde mogelijkheden als de bijbehorende Cloud Services. Klanten kunnen de containers on-premises of in azure implementeren. De kern-AI-technologie, de prijs categorieën, de API-sleutels en de API-hand tekening zijn hetzelfde als die van de container en de bijbehorende Cloud Services. Hier vindt u de [functies en voor delen](../cognitive-services-container-support.md#features-and-benefits) voor het kiezen van containers ten opzichte van hun vergelijk bare Cloud service.
+
+**V: Hoe kan ik toegang en een container voor de voor beeld van een test gebruiken?**
+
+**A:** Voorheen werden gehoste preview-containers gehost op de `containerpreview.azurecr.io` opslag plaats. Vanaf september 22 2020 worden deze containers gehost op de micro soft-Container Registry en hoeft u deze niet te downloaden met de opdracht docker login. U kunt een container voor een geteste Preview uitvoeren als uw Azure-resource is gemaakt met de goedgekeurde Azure-abonnements-ID. U kunt de container niet uitvoeren als uw Azure-abonnement niet is goedgekeurd na het volt ooien van het [aanvraag formulier](https://aka.ms/csgate).
+
 
 **V: er zijn containers beschikbaar voor alle Cognitive Services en wat zijn de volgende sets containers die we moeten verwachten?**
 
@@ -77,6 +82,22 @@ Containers worden niet getest met openshift, maar in het algemeen moeten Cogniti
 
 **A:** Klanten worden geadviseerd om [hun bezorgdheid](https://cognitive.uservoice.com/) openbaar te maken en andere personen die hetzelfde doen hebben gedaan, wanneer potentiële problemen elkaar overlappen. Het hulp programma voor gebruikers spraak kan worden gebruikt voor de aanbevelingen voor de product feedback en functies.
 
+**V: welke status berichten en fouten worden geretourneerd door Cognitive Services containers?**
+
+**A:** Raadpleeg de volgende tabel voor een lijst met status berichten en fouten.
+
+|Status  | Beschrijving  |
+|---------|---------|
+| `Valid` | Uw API-sleutel is geldig, er is geen actie vereist. |
+| `Invalid` |   Uw API-sleutel is ongeldig. U moet een geldige API-sleutel opgeven om de container uit te voeren. Zoek uw API-sleutel en service regio in de sectie **sleutels en eind punt** voor uw Azure Cognitive Services-resource in de Azure Portal. |
+| `Mismatch` | U hebt een API-sleutel of-eind punt ingevoerd voor een ander type cognitieve Services-resource. Zoek uw API-sleutel en service regio in de sectie **sleutels en eindpunt** voor uw Azure Cognitive Services-resource. |
+| `CouldNotConnect` | De container kan geen verbinding maken met het facturerings eindpunt. Controleer de `Retry-After` waarde en wacht tot deze periode is beëindigd voordat u extra aanvragen doet. |
+| `OutOfQuota` | De API-sleutel bevindt zich buiten het quotum. U kunt een upgrade uitvoeren van uw prijs categorie of wachten tot extra quota beschikbaar worden gesteld. Zoek uw laag in de sectie **prijs categorie** van uw Azure cognitieve service-resource in de Azure Portal. |
+| `BillingEndpointBusy` | Het facturerings eindpunt is momenteel bezet. Controleer de `Retry-After` waarde en wacht tot deze periode is beëindigd voordat u extra aanvragen doet. |
+| `ContainerUseUnauthorized` | De meegeleverde API-sleutel is niet geautoriseerd voor gebruik met deze container. U gebruikt waarschijnlijk een gegatedde container, dus zorg ervoor dat uw Azure-abonnements-ID is goedgekeurd door een [online aanvraag](https://aka.ms/csgate)in te dienen. |
+| `Unknown` | De server kan op dit moment geen facturerings aanvragen verwerken. |
+
+
 **V: met wie moet ik contact opnemen voor ondersteuning?**
 
 **A:** De ondersteunings kanalen van de klant zijn hetzelfde als de Cognitive Services Cloud-aanbieding. Alle Cognitive Services-containers bevatten logboek functies waarmee wij en de Community klanten kunnen ondersteunen. Zie de volgende opties voor aanvullende ondersteuning.
@@ -102,7 +123,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 
 **A:** Klanten worden in rekening gebracht op basis van verbruik, vergelijkbaar met de Cognitive Services Cloud. De containers moeten worden geconfigureerd om meet gegevens naar Azure te verzenden en trans acties worden dienovereenkomstig gefactureerd. Resources die worden gebruikt voor de gehoste en on-premises Services, kunnen worden toegevoegd aan één quotum met prijzen per laag en worden geteld bij beide gebruik. Raadpleeg de pagina met prijzen van de bijbehorende aanbieding voor meer informatie.
 
-* [Anomaly Detector][ad-containers-billing]
+* [Anomaliedetectie][ad-containers-billing]
 * [Computer Vision][cv-containers-billing]
 * [Face][fa-containers-billing]
 * [Form Recognizer][fr-containers-billing]
@@ -129,7 +150,7 @@ Bekijk de volgende tags voor mogelijke vragen en antwoorden die zijn afgestemd o
 
 **A:** Cognitive Services containers zijn op x64 gebaseerde containers die elk compatibel Linux-knoop punt, een VM en een edge-apparaat kunnen uitvoeren dat ondersteuning biedt voor x64 Linux docker-containers. Alle vereisen CPU-processors. De minimale en aanbevolen configuraties voor elke container aanbieding zijn hieronder beschikbaar:
 
-* [Anomaly Detector][ad-containers-recommendations]
+* [Anomaliedetectie][ad-containers-recommendations]
 * [Computer Vision][cv-containers-recommendations]
 * [Face][fa-containers-recommendations]
 * [Form Recognizer][fr-containers-recommendations]

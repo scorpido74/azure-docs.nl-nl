@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge met GPU technische specificaties en naleving | Microsoft Docs
-description: Meer informatie over de technische specificaties en naleving voor uw Azure Stack edge-apparaat met GPU
+title: Microsoft Azure Stack Edge Pro met GPU-technische specificaties en naleving | Microsoft Docs
+description: Meer informatie over de technische specificaties en naleving voor uw Azure Stack Edge Pro-apparaat met GPU
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266660"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899038"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technische specificaties en naleving voor Azure Stack Edge met GPU 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische specificaties en naleving voor Azure Stack Edge Pro met GPU 
 
-De hardwareonderdelen van uw Azure Stack rand met een onboard grafische processor (GPU) voldoen aan de technische specificaties en regelgevings normen die in dit artikel worden beschreven. De technische specificaties beschrijven hardware, voedingen (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
+De hardwareonderdelen van uw Azure Stack Edge Pro met een onboard grafische eenheid (GPU) in acht nemen van de technische specificaties en de regelgevings normen die in dit artikel worden beschreven. De technische specificaties beschrijven hardware, voedingen (PSUs), opslag capaciteit, behuizingen en omgevings standaarden.
 
 ## <a name="compute-and-memory-specifications"></a>Specificaties van Compute en geheugen
 
-Het Azure Stack edge-apparaat heeft de volgende specificaties voor Compute en geheugen:
+Het Azure Stack Edge Pro-apparaat heeft de volgende specificaties voor Compute en geheugen:
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Het Azure Stack edge-apparaat heeft de volgende specificaties voor Compute en ge
 
 ## <a name="compute-acceleration-specifications"></a>Specificaties van Compute Acceleration
 
-Er is een GPU (graphics processing unit) opgenomen op elk Azure Stack edge-apparaat dat Kubernetes, dieper leren en machine learning scenario's mogelijk maakt.
+Er is een GPU (graphics processing unit) opgenomen op elk Azure Stack Edge Pro-apparaat dat Kubernetes, dieper leren en machine learning scenario's mogelijk maakt.
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
@@ -40,7 +40,7 @@ Er is een GPU (graphics processing unit) opgenomen op elk Azure Stack edge-appar
 
 ## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
 
-Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met hoge prestaties. De twee PSUs bieden een redundante energie configuratie. Als een PSU mislukt, blijft het apparaat normaal op de andere PSU functioneren totdat de module failed wordt vervangen. De volgende tabel geeft een lijst van de technische specificaties van de PSUs.
+Het Azure Stack Edge Pro-apparaat heeft twee 100-240 V-energievoedings eenheden (PSUs) met hoge prestaties. De twee PSUs bieden een redundante energie configuratie. Als een PSU mislukt, blijft het apparaat normaal op de andere PSU functioneren totdat de module failed wordt vervangen. De volgende tabel geeft een lijst van de technische specificaties van de PSUs.
 
 | Specificatie           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -52,16 +52,16 @@ Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met 
 
 ## <a name="network-interface-specifications"></a>Specificaties van netwerk interface
 
-Uw Azure Stack edge-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
+Uw Azure Stack Edge Pro-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
 | Specificatie           | Description                 |
 |-------------------------|----------------------------|
 |  Netwerkinterfaces    | **2 X 1 GbE-interfaces** – 1 beheer interface poort 1 wordt gebruikt voor initiële installatie en is standaard statisch. Nadat de eerste installatie is voltooid, kunt u de interface gebruiken voor gegevens met elk IP-adres. Bij het opnieuw instellen wordt de interface echter teruggezet naar het statische IP-adres. <br>De andere interface poort 2 kan door de gebruiker worden geconfigureerd, kan worden gebruikt voor gegevens overdracht en is standaard DHCP. <br>**4 X 25 GbE-interfaces** : deze gegevens interfaces, poort 3 tot en met poort 6, kunnen worden geconfigureerd door de gebruiker als DHCP (standaard) of statisch. Deze kunnen ook worden gebruikt als 10 GbE-interfaces.  | 
 
-Uw Azure Stack edge-apparaat heeft de volgende netwerkhardware:
+Uw Azure Stack Edge Pro-apparaat heeft de volgende netwerkhardware:
 
-* **Aangepaste micro soft QLogic Cavium 25G NDC-adapter** -poort 1 via poort 4.
-* **Mellanox Dual Port 25G connectx-4-kanaal netwerk adapter** -poort 5 en poort 6.
+* **Aangepaste Microsoft Qlogic Cavium 25G NDC-adapter**: poort 1 tot en met poort 4.
+* **Mellanox dual-port 25G Connectx-4 kanaalnetwerkadapter**: poort 5 en poort 6.
 
 Hier vindt u de Details voor de Mellanox-kaart:
 
@@ -72,14 +72,14 @@ Hier vindt u de Details voor de Mellanox-kaart:
 | Onderdeel nummer van apparaat (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
-Voor een volledige lijst met ondersteunde kabels, switches en transceivers voor deze netwerk kaarten gaat u naar:
+Voor een volledige lijst met ondersteunde kabels, schakelaars en ontvangers voor deze netwerkkaarten gaat u naar:
 
-- [Samenwerkings matrix QLogic Cavium 25G NDC-adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
-- [Mellanox Dual Port 25G connectx-4-kanaal netwerk adapter compatibele producten](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
+- [MARVELL FastLinQ® 41000 Series Adapters Interoperability Matrix](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)
+- [Producten die compatibel zijn met Mellanox dual-port 25G Connectx-4 kanaalnetwerkadapter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)  
 
 ## <a name="storage-specifications"></a>Opslag specificaties
 
-De Azure Stack edge-apparaten hebben vijf 2,5 ' NVMe DC P4610 Ssd's, elk met een capaciteit van 1,6 TB. De opstart schijf is een SATA SSD van 240 GB. De totale bruikbare capaciteit van het apparaat is ongeveer 8,28 TB. De volgende tabel geeft een overzicht van de opslag capaciteit van het apparaat.
+De Azure Stack Edge Pro-apparaten hebben vijf 2,5 ' NVMe DC P4610 Ssd's, elk met een capaciteit van 1,6 TB. De opstart schijf is een SATA SSD van 240 GB. De totale bruikbare capaciteit van het apparaat is ongeveer 8,28 TB. De volgende tabel geeft een overzicht van de opslag capaciteit van het apparaat.
 
 |     Specificatie                          |     Waarde             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ De Azure Stack edge-apparaten hebben vijf 2,5 ' NVMe DC P4610 Ssd's, elk met een
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw Azure Stack Edge implementeren](azure-stack-edge-gpu-deploy-prep.md)
+[Uw Azure Stack Edge Pro implementeren](azure-stack-edge-gpu-deploy-prep.md)

@@ -1,6 +1,6 @@
 ---
-title: Ondersteunings ticket vastleggen voor Azure Stack Edge, Azure Data Box Gateway | Microsoft Docs
-description: Meer informatie over het registreren van een ondersteunings aanvraag voor problemen met de Azure Stack rand of Data Box Gateway orders.
+title: Ondersteunings ticket vastleggen voor Azure Stack Edge Pro, Azure Data Box Gateway | Microsoft Docs
+description: Meer informatie over het registreren van een ondersteunings aanvraag voor problemen met uw Azure Stack Edge Pro of Data Box Gateway orders.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339906"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904514"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Open een ondersteunings ticket voor Azure Stack Edge en Azure Data Box Gateway
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Open een ondersteunings ticket voor Azure Stack Edge Pro en Azure Data Box Gateway
 
-Dit artikel is van toepassing op Azure Stack Edge en Azure Data Box Gateway beide die worden beheerd door de Azure Stack Edge/Azure Data Box Gateway-Service. Als u problemen ondervindt met uw service, kunt u een service aanvraag voor technische ondersteuning maken. Dit artikel begeleidt u door:
+Dit artikel is van toepassing op Azure Stack Edge Pro en Azure Data Box Gateway beide die worden beheerd door de service Azure Stack Edge Pro/Azure Data Box Gateway. Als u problemen ondervindt met uw service, kunt u een service aanvraag voor technische ondersteuning maken. Dit artikel begeleidt u door:
 
 * Een ondersteunings aanvraag maken.
 * Een ondersteunings aanvraag levenscyclus beheren vanuit de portal.
@@ -26,13 +26,13 @@ Dit artikel is van toepassing op Azure Stack Edge en Azure Data Box Gateway beid
 
 Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
 
-1. Ga naar uw Azure Stack-rand of Data Box Gateway volg orde. Navigeer naar ondersteuning en de sectie **probleem oplossing** en selecteer vervolgens **nieuwe ondersteunings aanvraag**.
+1. Ga naar uw Azure Stack Edge Pro-of Data Box Gateway-bestelling. Navigeer naar ondersteuning en de sectie **probleem oplossing** en selecteer vervolgens **nieuwe ondersteunings aanvraag**.
 
 2. Voer in de **nieuwe ondersteunings aanvraag**op het tabblad **basis beginselen** de volgende stappen uit:
 
     1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**.
     2. Kies uw **abonnement**.
-    3. Onder **service**, Controleer **Mijn services**. Selecteer in de vervolg keuzelijst **Azure stack rand en data Box gateway**.
+    3. Onder **service**, Controleer **Mijn services**. Selecteer in de vervolg keuzelijst de optie **Azure stack Edge Pro en data Box gateway**.
     4. Selecteer uw **resource**. Dit komt overeen met de naam van uw order.
     5. Geef een korte **samen vatting** van het probleem dat u ondervindt. 
     6. Selecteer het **type probleem**.
@@ -98,5 +98,5 @@ Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [oplossen van problemen met Azure stack Edge](azure-stack-edge-troubleshoot.md).
+Meer informatie over het [oplossen van problemen met Azure stack Edge Pro](azure-stack-edge-troubleshoot.md).
 Meer informatie over het [oplossen van problemen met data Box gateway](data-box-gateway-troubleshoot.md).

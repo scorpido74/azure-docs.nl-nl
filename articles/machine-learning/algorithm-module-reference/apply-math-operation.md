@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456740"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898890"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de bewerking math Toep assen om berekeningen te maken die worden toegepast op numerieke kolommen in de invoer gegevensset. 
 
@@ -32,7 +32,7 @@ Nadat u een bewerking hebt gedefinieerd en de pijp lijn hebt uitgevoerd, worden 
 
 Zoek naar de bewerking die u nodig hebt in de volgende categorieën:  
 
-- [Standaard](#basic-math-operations)  
+- [Basic](#basic-math-operations)  
   
      De functies in de categorie **Basic** kunnen worden gebruikt voor het bewerken van één waarde of een kolom met waarden. U kunt bijvoorbeeld de absolute waarde van alle getallen in een kolom ophalen of de vierkantswortel van elke waarde in een kolom berekenen.  
   
@@ -138,7 +138,7 @@ Retourneert e verheven tot de macht van de waarde in de geselecteerde kolom. Dit
 
 Retourneert de base-2 exponentiële waarde van de argumenten, oplossing voor y = x * 2<sup>t</sup> , waarbij t een kolom met waarden die exponenten bevatten.  
 
-Selecteer in **kolom set**de kolom die de exponent waarden t bevat.
+Selecteer in  **kolom set**de kolom die de exponent waarden t bevat.
 
 Voor **Exp2** kunt u een tweede argument x opgeven. Dit kan een constante of een andere kolom met waarden zijn. Geef bij **type tweede argument**aan of u de vermenigvuldiger x als constante wilt opgeven, of een waarde in een kolom.  
 
@@ -254,7 +254,7 @@ De volg orde waarin u de kolommen voor het delen en aftrekken hebt gekozen, lijk
 Bewerking|Num1|Num2|Resultaten kolom|Resultaat waarde|
 ----|----|----|----|----
 |Optellen|1|5|Toevoegen (Num2_Num1)| 4|
-|Vermenigvuldigen|1|5|Meerdere (Num2_Num1)|5|
+|Vermenigvuldiging|1|5|Meerdere (Num2_Num1)|5|
 |Aftrekking|1|5|Aftrekken (Num2_Num1)|4|
 |Aftrekking|0|1|Aftrekken (Num2_Num1)|0|
 |Afdeling|1|5|Delen (Num2_Num1)|5|
@@ -306,7 +306,7 @@ Retourneert het gedeelte van de waarden in de **kolomset**, naar de opgegeven pr
 
 Retourneert het gedeelte van de waarden in de **kolomset**, naar de opgegeven precisie.  
 
-### <a name="remainder"></a>Herinnering
+### <a name="remainder"></a>Rest
 
 Retourneert de rest van de waarden in de **kolomset**.  
 

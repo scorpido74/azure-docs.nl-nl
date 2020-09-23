@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2092a1aa3d5157db0392397e86553c5cc9da9de2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998829"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883790"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -55,7 +55,7 @@ Virtuele machines worden ook in een klanten abonnement gemaakt als onderdeel van
 
 Virtuele machines die worden uitgevoerd in een Cloud service, worden ook ondersteund. Alleen Cloud Services-Web-en-werk rollen die worden uitgevoerd in productie-sleuven worden bewaakt. Zie [overzicht van Azure Cloud Services](../cloud-services/cloud-services-choose-me.md)voor meer informatie over Cloud Services.
 
-De beveiliging van virtuele machines in Azure Stack wordt ook ondersteund. Voor meer informatie over de integratie van Security Center met Azure Stack raadpleegt u [de Azure stack virtuele machines Onboarden om te Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
+De beveiliging van virtuele machines in Azure Stack wordt ook ondersteund. Voor meer informatie over de integratie van Security Center met Azure Stack raadpleegt u [de Azure stack virtuele machines Onboarden om te Security Center](quickstart-onboard-machines.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 

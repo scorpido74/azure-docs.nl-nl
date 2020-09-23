@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650684"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889942"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van getrainde modellen met Azure Machine Learning.
 
@@ -184,7 +184,7 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
-* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest`Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
+* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest`Is bijvoorbeeld het pad naar een eenvoudige docker-installatie kopie van micro soft.
 
     > [!IMPORTANT]
     > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1` . Als u geen specifieke tag hebt gebruikt bij het maken van de installatie kopie, is een tag van `:latest` toegepast.
@@ -200,7 +200,7 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 
-| Installatiekopie | Beschrijving |
+| Installatiekopie | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |

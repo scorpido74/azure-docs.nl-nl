@@ -10,33 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1335b1034304b7efe2b113f7ff2d2927fea41638
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056598"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977360"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry afbeeldingen scannen door Security Center
 
 Azure Container Registry (ACR) is een beheerde, persoonlijke docker-register service waarmee uw container installatie kopieën voor Azure-implementaties in een centraal REGI ster worden opgeslagen en beheerd. Het is gebaseerd op de open-source docker Registry 2,0.
 
-Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bundel met container registers toevoegen. Deze optionele functie biedt meer inzicht in de beveiligings problemen van de installatie kopieën in uw op Azure Resource Manager gebaseerde registers. Hiermee schakelt u de bundel op het abonnements niveau in of uit om alle registers in een abonnement te behandelen. Deze functie wordt per afbeelding in rekening gebracht, zoals wordt weer gegeven op de [pagina met prijzen](security-center-pricing.md). Als u de container register bundel inschakelt, zorgt u ervoor dat Security Center gereed is voor het scannen van installatie kopieën die naar het REGI ster worden gepusht. 
-
-## <a name="availability"></a>Beschikbaarheid
-
-|Aspect|Details|
-|----|:----|
-|Release status:|Algemene beschikbaarheid|
-|Koers|Standard-laag|
-|Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/no-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/no-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/no-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
-|Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
-|||
-
-
+Schakel **Azure Defender voor container registers** in voor meer inzicht in de beveiligings problemen van de installatie kopieën in uw op Azure Resource Manager gebaseerde registers. Schakel het abonnement op het abonnements niveau in of uit om alle registers in een abonnement te behandelen. Deze functie wordt per afbeelding in rekening gebracht, zoals wordt weer gegeven op de [pagina met prijzen](security-center-pricing.md). Door Azure Defender in te scha kelen, zorgt u ervoor dat Security Center gereed is voor het scannen van afbeeldingen die naar het REGI ster worden gepusht. 
 
 
 ## <a name="when-are-images-scanned"></a>Wanneer worden afbeeldingen gescand?
@@ -74,7 +61,7 @@ Scans van afbeeldingen worden geactiveerd tijdens elke push.
 Ja. De resultaten bevinden zich onder [Subevaluaties van de rest-API](/rest/api/securitycenter/subassessments/list/). U kunt ook Azure resource Graph (ARG), de Kusto-achtige API voor al uw resources, gebruiken: een query kan een specifieke scan ophalen.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Welke register typen worden er gescand? Welke typen worden er gefactureerd?
-In het [gedeelte Beschik baarheid](#availability) worden de typen container registers vermeld die worden ondersteund door de container registers bundel. 
+De sectie Beschik baarheid bevat de typen container registers die worden ondersteund door Azure Defender voor container registers. 
 
 Als registers die niet worden ondersteund, zijn verbonden met uw Azure-abonnement, worden ze niet gescand en wordt u niet gefactureerd.
 
@@ -87,4 +74,4 @@ Zie voor meer informatie over de beveiligings functies van de container van Secu
 
 * [Integratie met Azure Kubernetes Service](azure-kubernetes-service-integration.md)
 
-* [Beveiliging van virtuele machines](security-center-virtual-machine-protection.md) -Hiermee worden de aanbevelingen van Security Center beschreven
+

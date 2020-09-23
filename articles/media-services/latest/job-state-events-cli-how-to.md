@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services gebeurtenissen controleren met Event Grid met behulp van CLI | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u zich abonneert op Event Grid om Azure Media Services-gebeurtenissen te controleren.
+description: In dit artikel wordt beschreven hoe u zich abonneert op Event Grid om Azure Media Services-gebeurtenissen te controleren met behulp van Azure CLI.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b840f00f23db1590422bae853fee070c3c43f899
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 072bfb22eba82d7a39d985f72cbc78c0639a4795
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976824"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services gebeurtenissen maken en bewaken met Event Grid met behulp van de Azure CLI
 

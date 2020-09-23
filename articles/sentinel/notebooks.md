@@ -9,17 +9,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 11/25/2019
-ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/06/2020
+ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889335"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-notebooks gebruiken om te zoeken naar beveiligings Risico's
 
-De basis van Azure Sentinel is het gegevens archief. de oplossing biedt een combi natie van hoge prestaties voor query's, dynamische schema's en schalen naar enorme gegevens volumes. De Azure Portal en alle Azure Sentinel-hulpprogram ma's gebruiken een gemeen schappelijke API voor toegang tot deze gegevens opslag. Dezelfde API is ook beschikbaar voor externe hulpprogram ma's, zoals [Jupyter](https://jupyter.org/) -notebooks en python. Hoewel veel algemene taken kunnen worden uitgevoerd in de portal, breidt Jupyter het bereik uit van wat u met deze gegevens kunt doen. Hiermee wordt volledige programmeer baarheid gecombineerd met een enorme verzameling bibliotheken voor machine learning, visualisatie en gegevens analyse. Deze kenmerken maken het Jupyter een fascinerend hulp programma voor beveiligings onderzoek en jacht.
+De basis van Azure Sentinel is het gegevens archief. Het combineert hoge prestaties voor query's, dynamische schema's en schalen naar enorme gegevens volumes. De Azure Portal en alle Azure Sentinel-hulpprogram ma's gebruiken een gemeen schappelijke API voor toegang tot deze gegevens opslag. Dezelfde API is ook beschikbaar voor externe hulpprogram ma's, zoals [Jupyter](https://jupyter.org/) -notebooks en python. Hoewel veel algemene taken kunnen worden uitgevoerd in de portal, breidt Jupyter het bereik uit van wat u met deze gegevens kunt doen. Hiermee wordt volledige programmeer baarheid gecombineerd met een enorme verzameling bibliotheken voor machine learning, visualisatie en gegevens analyse. Deze kenmerken maken het Jupyter een fascinerend hulp programma voor beveiligings onderzoek en jacht.
 
 ![voor beeld van notebook](./media/notebooks/sentinel-notebooks-map.png)
 
@@ -30,106 +30,109 @@ De geïntegreerde Jupyter-ervaring maakt gebruik van [Azure notebooks](https://n
 Notebooks hebben twee onderdelen:
 
 - De browser interface waar u query's en code invoert en uitvoert, en waar de resultaten van de uitvoering worden weer gegeven.
-- Een *kernel* die verantwoordelijk is voor het parseren en uitvoeren van de code zelf. 
+- Een *kernel* die verantwoordelijk is voor het parseren en uitvoeren van de code zelf.
 
-In Azure Notebooks wordt deze kernel standaard uitgevoerd op de *gratis Cloud Compute en Storage*van Azure. Als uw Notebooks complexe machine learning modellen of visualisaties bevatten, kunt u overwegen om krachtige, toegewezen reken resources zoals [Data Science virtual machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM) te gebruiken. Notitie blokken in uw account worden privé bewaard, tenzij u ervoor kiest om deze te delen.
+De kernel van Azure Sentinel notebook wordt uitgevoerd op een virtuele Azure-machine (VM). Er zijn verschillende licentie opties voor het gebruik van krachtigere virtuele machines als uw Notebooks complexe machine learning modellen bevatten.
 
 De Azure Sentinel-notebooks gebruiken veel populaire python-Bibliotheken, zoals Panda, matplotlib, bokeh en anderen. Er zijn een groot aantal andere Python-pakketten waaruit u kunt kiezen. Dit omvat gebieden zoals:
 
 - Visualisaties en afbeeldingen
 - Gegevens verwerking en-analyse
 - Statistieken en numerieke computing
-- Machine learning en diep gaande lessen
+- Machine learning en deep learning
 
 Daarnaast hebben we een aantal open-source Jupyter-beveiligings hulpprogramma's uitgebracht in een pakket met de naam [msticpy](https://github.com/Microsoft/msticpy/). Dit pakket wordt gebruikt in veel van de meegeleverde notitie blokken. Msticpy-hulpprogram ma's zijn speciaal ontworpen voor het maken van notitie blokken voor jacht en onderzoek en we werken op dit moment met nieuwe functies en verbeteringen.
 
-De eerste notitie blokken bevatten:
-
-- **Begeleid onderzoek-proces waarschuwingen**: Hiermee kunt u snel waarschuwingen sorteren door de activiteit op de betrokken host of hosts te analyseren.
-- **Begeleide jacht-Windows host Explorer**: Hiermee kunt u de account activiteit, uitvoeringen van processen, netwerk activiteit en andere gebeurtenissen op een host verkennen.
-- **Begeleide jacht-Office365**: zoeken naar verdachte Office 365-activiteiten in meerdere Office 365-gegevens sets.
-
 De [Azure Sentinel Community github-opslag plaats](https://github.com/Azure/Azure-Sentinel) is de locatie voor toekomstige Azure-Sentinel-notebooks die door micro soft zijn gebouwd of die zijn bijgedragen van de community.
 
-Als u de notitie blokken wilt gebruiken, moet u een Azure Notebooks-account hebben. Zie [Quick Start: Meld u aan en stel een gebruikers-id](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks) in vanuit de Azure notebooks documentatie voor meer informatie. Als u dit account wilt maken, kunt u de optie **registreren voor Azure notebooks** gebruiken vanaf de opdracht balk in **Azure Sentinel-notebooks**:
+Als u de notitie blokken wilt gebruiken, moet u eerst een Azure Machine Learning (ML)-werk ruimte maken.
+
+## <a name="create-an-azure-ml-workspace"></a>Een Azure ML-werk ruimte maken
+
+1. Navigeer vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**-  >  **notebooks** en selecteer vervolgens **notebook starten**.
+
+    > [!div class="mx-imgBorder"]
+    > ![notitie blok starten om Azure ml-werk ruimte te starten](./media/notebooks/sentinel-notebooks-launch.png)
+
+1. Selecteer in de **werk ruimte AzureML**de optie **nieuwe maken**.
+
+    > [!div class="mx-imgBorder"]
+    > ![werk ruimte maken](./media/notebooks/sentinel-notebooks-azureml-create.png)
+
+1. Geef op de pagina **machine learning** de volgende informatie op en selecteer vervolgens **controleren + maken**.
+
+    |Veld|Beschrijving|
+    |--|--|
+    |Abonnement|Selecteer het Azure-abonnement dat u wilt gebruiken.|
+    |Resourcegroep|Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **AzureMLRG**.|
+    |Werkruimtenaam|Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **testworkspace1**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.|
+    |Regio|Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.|
+    |Werkruimte editie|Selecteer **Basic** als het type werk ruimte in dit voor beeld. Het type werk ruimte (Basic & Enter prise) bepaalt de functies waartoe u toegang hebt en de prijzen.|
+
+    > [!div class="mx-imgBorder"]
+    > ![Details van de werk ruimte opgeven](./media/notebooks/sentinel-notebooks-azureml-basics.png)
+
+1. Controleer de informatie, Controleer of deze juist is en selecteer vervolgens **maken** om de implementatie van uw werk ruimte te starten.
+
+    > [!div class="mx-imgBorder"]
+    > ![Details van de werk ruimte bekijken](./media/notebooks/sentinel-notebooks-azureml-review.png)
+
+    Het kan enkele minuten duren om uw werk ruimte in de cloud te maken, op het moment dat de **overzichts** pagina de huidige implementatie status weergeeft.
+
+    > [!div class="mx-imgBorder"]
+    > ![implementatie van werk ruimte](./media/notebooks/sentinel-notebooks-azureml-deploy.png)
+
+Zodra de implementatie is voltooid, kunt u notitie blokken in uw nieuwe Azure ML-werk ruimte starten.
 
 > [!div class="mx-imgBorder"]
->![Registreren voor Azure Notebooks optie](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
+> ![implementatie van werk ruimte voltooid](./media/notebooks/sentinel-notebooks-azureml-complete.png)
 
-U kunt een notitie blok direct vanuit Azure Sentinel uitvoeren of alle Azure Sentinel-notebooks klonen naar een nieuw Azure Notebooks-project.
+## <a name="launch-a-notebook-using-your-azure-ml-workspace"></a>Een notitie blok starten met behulp van uw Azure ML-werk ruimte
 
-## <a name="run-a-notebook-from-azure-sentinel"></a>Een notitie blok uitvoeren vanuit Azure Sentinel
- 
-1. Ga vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**  >  -**notebooks**, waar u notitie blokken kunt zien die Azure Sentinel biedt. 
+1. Ga vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**  >  -**notebooks**, waar u notitie blokken kunt zien die Azure Sentinel biedt.
 
-2. Selecteer afzonderlijke notitie blokken om de bijbehorende beschrijvingen, vereiste gegevens typen en gegevens bronnen te lezen. Bijvoorbeeld:
-    
+    > [!TIP]
+    > Selecteer **hulp lijnen & feedback** om een deel venster te openen met aanvullende hulp en richt lijnen voor notebooks.
+    > ![Notebook richtlijnen weer geven](./media/notebooks/sentinel-azure-notebooks-guides.png)
+
+1. Selecteer afzonderlijke notitie blokken om de beschrijvingen, vereiste gegevens typen en gegevens bronnen weer te geven.
+
+    > [!div class="mx-imgBorder"]
+    > ![Details van notitie blok weer geven](./media/notebooks/sentinel-azure-notebooks-view.png)
+
+1. Selecteer het notitie blok dat u wilt gebruiken en selecteer vervolgens **notebook starten** om het notitie blok te klonen en te configureren in een nieuw Azure notebooks project dat verbinding maakt met uw Azure Sentinel-werk ruimte. Wanneer het proces is voltooid, wordt het notitie blok in Azure Notebooks geopend, zodat u het kunt uitvoeren.
+
+    > [!div class="mx-imgBorder"]
+    > ![notitie Blok selecteren](./media/notebooks/sentinel-azure-notebooks-select.png)
+
+1. Selecteer in de werk ruimte AzureML de Azure ML-werk ruimte en selecteer vervolgens **starten**.
+
     > [!div class="mx-imgBorder"]
     > ![notitie blok starten](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
-3. Selecteer het notitie blok dat u wilt gebruiken en selecteer vervolgens **notebook starten (preview)** om het notitie blok te klonen en te configureren in een nieuw Azure notebooks project dat verbinding maakt met uw Azure Sentinel-werk ruimte. Wanneer het proces is voltooid, wordt het notitie blok in Azure Notebooks geopend, zodat u het kunt uitvoeren.
+1. Selecteer een reken instantie. Als u geen reken instantie hebt, gaat u als volgt te werk:
+    1. Selecteer het plus teken (+) om de wizard **Nieuw reken exemplaar** te starten.
 
-## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Azure Sentinel notebooks klonen voor een nieuw Azure Notebooks project
+        > [!div class="mx-imgBorder"]
+        > ![wizard reken instantie starten](./media/notebooks/sentinel-azure-notebooks-compute-wizard.png)
 
-Met deze procedure maakt u een Azure Notebooks project voor u, dat de Azure Sentinel-notebooks bevat. U kunt de notitie blokken vervolgens uitvoeren als-is of wijzigingen aanbrengen en vervolgens uitvoeren.
+    1. Geef op de pagina **Nieuw reken** proces de vereiste gegevens op en selecteer vervolgens **maken**.
 
-1. Navigeer vanuit het Azure Portal naar **Azure Sentinel**  >  **Threat Management**-  >  **notebooks** en selecteer **notebooks klonen** in de opdracht balk:
-  
+        > [!div class="mx-imgBorder"]
+        > ![Reken instantie maken](./media/notebooks/sentinel-azure-notebooks-compute-create.png)
+
+1. Zodra uw notebook server is gemaakt, selecteert u in elke cel het pictogram uitvoeren om code in de notitie blokken uit te voeren.
+
     > [!div class="mx-imgBorder"]
-    >![Optie notebooks klonen](./media/notebooks/sentinel-azure-clone-notebooks.png)
-
-2. Wanneer het volgende dialoog venster wordt weer gegeven, selecteert u **importeren** om de GitHub opslag plaats te klonen in uw Azure notebooks-project. Als u geen bestaand Azure Notebooks account hebt, wordt u gevraagd om er een te maken en u aan te melden.
-
-   ![Notitie blok importeren](./media/notebooks/sentinel-notebooks-clone.png)
-
-3. In het dialoog venster **github-opslag plaats uploaden** selecteert u **recursief klonen** , omdat deze optie verwijst naar gekoppelde github opslag plaatsen. Voor de project naam gebruikt u de standaard naam of typt u een nieuwe. Klik vervolgens op **importeren** om te beginnen met het klonen van de GitHub-inhoud. Dit kan enkele minuten duren.
-
-   ![Notitie blok importeren](./media/notebooks/sentinel-create-project.png)
-
-4. Open het project dat u zojuist hebt gemaakt en open vervolgens de map **notitie blokken** om de notitie blokken weer te geven. Bijvoorbeeld:
-
-   ![Opslag plaats importeren](./media/notebooks/sentinel-open-notebook1.png)
-
-U kunt de notitie blokken vervolgens uit Azure Notebooks uitvoeren. Als u wilt terugkeren naar deze notitie blokken vanuit Azure Sentinel, selecteert **u naar uw notitie blokken gaan** vanaf de opdracht balk in **Azure Sentinel-notebooks**:
-
-> [!div class="mx-imgBorder"]
->![Ga naar uw notitieblok opties](./media/notebooks/sentinel-azure-to-go-notebooks.png)
-
-
-## <a name="using-notebooks-to-hunt"></a>Notitie blokken gebruiken om te jacht
-
-Elk notebook begeleidt u stapsgewijs door de stappen voor het uitvoeren van een opsporing of onderzoek. Bibliotheken en andere afhankelijkheden die nodig zijn voor de notebook, kunnen worden geïnstalleerd vanuit het notitie blok zelf of via een eenvoudige configuratie procedure. De configuratie die uw notitieblok project aan uw Azure Sentinel-abonnement vastmaakt, wordt automatisch in de voor gaande stappen ingericht.
-
-1. Als u zich nog niet in Azure Notebooks bevindt, kunt u de optie **Ga naar uw notitie blokken** gebruiken vanaf de opdracht balk in **Azure Sentinel-notebooks**:
-    
-    > [!div class="mx-imgBorder"]
-    >![Ga naar uw notitieblok opties](./media/notebooks/sentinel-azure-to-go-notebooks.png)
-    
-    In Azure Notebooks selecteert u **Mijn projecten**, vervolgens het project met de Azure Sentinel-notebooks en tot slot de map met **notitie blokken** .
-    
-2. Houd er rekening mee dat u bij het openen van een notitie blok standaard gratis Compute hebt geselecteerd voor het uitvoeren van de notitie blokken:
-    
-   ![notitie Blok selecteren](./media/notebooks/sentinel-open-notebook2.png)
-    
-    Als u een Data Science Virtual Machines (DSVM) hebt geconfigureerd om te gebruiken zoals wordt uitgelegd in de inleiding, selecteert u de DSVM en authenticatie voordat u het eerste notitie blok opent. 
-
-3. Selecteer een notitie blok om het te openen.
-    
-    De eerste keer dat u een notitie blok opent, wordt u mogelijk gevraagd om een versie van de kernel te selecteren. Als u niet wordt gevraagd, selecteert u **de kernel-versie van kernel**  >   **Change kernel**en selecteert u vervolgens een versie die ten minste 3,6 is. De geselecteerde versie van de kernel wordt weer gegeven in de rechter bovenhoek van het notitieblok venster:
-    
-   ![notitie Blok selecteren](./media/notebooks/sentinel-select-kernel.png)
-
-4. Voordat u wijzigingen aanbrengt in een notitie blok dat u hebt gedownload, is het een goed idee om een kopie van het oorspronkelijke notitie blok te maken en te werken aan de kopie. Hiertoe selecteert u **bestand**  >  **een kopie maken**. Door aan de slag te gaan, kunt u in toekomstige versies van notitie blokken veilig bijwerken zonder uw gegevens te overschrijven.
-    
-    U bent nu klaar om het geselecteerde notitie blok uit te voeren of te bewerken.
+    > ![notitie blok uitvoeren](./media/notebooks/sentinel-azure-notebooks-run.png)
 
 Vereisten
 
-- Voor een snelle inleiding op het uitvoeren van query's in azure Sentinel, kijkt u naar de [GetStarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) -notebook in de hoofdmap van de map met **notitie blokken** . 
+- Zie de hand leiding aan de slag [met Azure ml-notebooks en Azure-Sentinel](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/A%20Getting%20Started%20Guide%20For%20Azure%20Sentinel%20ML%20Notebooks.ipynb) voor een snelle inleiding in het opvragen van gegevens in azure Sentinel.
 
-- U vindt aanvullende voor beelden van notitie blokken in de submap voor **beeld-notebooks** . Deze voorbeeld notitieblokken zijn met gegevens opgeslagen, zodat de beoogde uitvoer gemakkelijker te zien is. U wordt aangeraden deze notitie blokken weer te geven in [nbviewer](https://nbviewer.jupyter.org/). 
+- U vindt aanvullende voor beelden van notitie blokken in de submap voor [**beeld-notebook**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/Sample-Notebooks) github. Deze voorbeeld notitieblokken zijn met gegevens opgeslagen, zodat de beoogde uitvoer gemakkelijker te zien is. U wordt aangeraden deze notitie blokken weer te geven in [nbviewer](https://nbviewer.jupyter.org/).
 
-- De map **HOWTOs** bevat notebooks, zoals het instellen van de standaard Python-versie, het configureren van een DSVM, het maken van Azure Sentinel-blad wijzers van een notitie blok en andere onderwerpen.
+- De [**HOWTOs**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/HowTos) github-submap bevat notebooks, zoals het instellen van de standaard Python-versie, het configureren van een DSVM, het maken van Azure Sentinel-blad wijzers van een notitie blok en andere onderwerpen.
 
 De meegeleverde notebooks zijn bedoeld als zowel nuttige hulpprogram ma's als illustraties en code voorbeelden die u kunt gebruiken in de ontwikkeling van uw eigen notitie blokken.
 

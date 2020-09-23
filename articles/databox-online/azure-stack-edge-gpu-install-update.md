@@ -1,6 +1,6 @@
 ---
-title: Update installeren op Azure Stack Edge GPU-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u updates toepast met de Azure Portal en de lokale web-UI voor Azure Stack Edge GPU-apparaat en het Kubernetes-cluster op het apparaat
+title: Update installeren op Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u updates toepast met de Azure Portal en de lokale web-UI voor Azure Stack Edge Pro GPU-apparaat en het Kubernetes-cluster op het apparaat
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268241"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899507"
 ---
-# <a name="update-your-azure-stack-edge-with-gpu"></a>Uw Azure Stack Edge bijwerken met GPU 
+# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>Uw Azure Stack Edge Pro bijwerken met GPU 
 
-In dit artikel worden de stappen beschreven die nodig zijn voor het installeren van een update op uw Azure Stack Edge met GPU via de lokale webgebruikersinterface en via de Azure Portal. U past de software-updates of hotfixes toe om uw Azure Stack edge-apparaat en de bijbehorende Kubernetes-cluaster op het apparaat up-to-date te houden. 
+In dit artikel worden de stappen beschreven die nodig zijn om updates te installeren op uw Azure Stack Edge Pro met GPU via de lokale webgebruikersinterface en via de Azure Portal. U past de software-updates of hotfixes toe om uw Azure Stack Edge Pro-apparaat en de bijbehorende Kubernetes cluaster op het apparaat up-to-date te houden. 
 
 > [!IMPORTANT]
 > - Update **2008** komt overeen met de **2.1.1328.1904** -software versie op het apparaat. Ga naar [release opmerkingen](azure-stack-edge-gpu-2008-release-notes.md)voor meer informatie over deze update.
 >
-> - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Voor deze update moet u twee updates sequentieel Toep assen. Eerst past u de software-updates van het apparaat toe en vervolgens Kubernetes-updates. Gezien de Azure Stack Edge een apparaat met één knoop punt is, wordt elke I/O-bewerking onderbroken en wordt het apparaat een downtime van Maxi maal 30 minuten voor de software-update van het apparaat.
+> - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Voor deze update moet u twee updates sequentieel Toep assen. Eerst past u de software-updates van het apparaat toe en vervolgens Kubernetes-updates. Gezien de Azure Stack Edge Pro is een apparaat met één knoop punt, worden alle I/O-bewerkingen onderbroken en duurt het apparaat een downtime van Maxi maal 30 minuten voor de software-update van het apparaat.
 
 Als u updates op uw apparaat wilt installeren, moet u eerst de locatie van de update server configureren. Nadat de update server is geconfigureerd, kunt u de updates Toep assen via de Azure Portal gebruikers interface of de lokale webgebruikersinterface.
 
@@ -44,7 +44,7 @@ Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
     
     Ga voor meer informatie naar [Windows Server Update Services (WSUS)](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 U wordt aangeraden updates te installeren via de Azure Portal. Op het apparaat wordt eenmaal per dag automatisch gescand op updates. Zodra de updates beschikbaar zijn, ziet u een melding in de portal. U kunt vervolgens de updates downloaden en installeren. 
 
@@ -159,9 +159,9 @@ Voer de volgende stappen uit om de update te downloaden uit de Microsoft Update 
 
     ![Catalogus doorzoeken](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. Voer in het zoekvak van de catalogus van Microsoft Update het Knowledge Base-nummer (KB) in van de hotfix of de voor waarden voor de update die u wilt downloaden. Voer bijvoorbeeld **Azure stack rand**in en klik vervolgens op **zoeken**.
+2. Voer in het zoekvak van de catalogus van Microsoft Update het Knowledge Base-nummer (KB) in van de hotfix of de voor waarden voor de update die u wilt downloaden. Voer bijvoorbeeld **Azure stack Edge Pro**in en klik vervolgens op **zoeken**.
    
-    De update vermelding wordt weer gegeven als **Azure stack rand 2006**.
+    De update vermelding wordt weer gegeven als **Azure stack Edge Pro 2006**.
    
     ![Catalogus doorzoeken](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
@@ -215,4 +215,4 @@ Het volt ooien van deze procedure duurt ongeveer 20 minuten. Voer de volgende st
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het beheren van uw Azure stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md).
+Meer informatie over [het beheren van uw Azure stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md).

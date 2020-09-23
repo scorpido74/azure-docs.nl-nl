@@ -1,6 +1,6 @@
 ---
-title: De GPU-module implementeren op uw Microsoft Azure Stack edge-apparaat vanuit Azure Marketplace | Microsoft Docs
-description: Hierin wordt beschreven hoe u Compute kunt inschakelen en uw Azure Stack edge-apparaat kunt instellen met behulp van de lokale gebruikers interface.
+title: De GPU-module implementeren op uw Microsoft Azure Stack Edge Pro-apparaat vanuit Azure Marketplace | Microsoft Docs
+description: Hierin wordt beschreven hoe u reken kracht kunt inschakelen en uw Azure Stack Edge Pro-apparaat kunt instellen met behulp van de lokale gebruikers interface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d29408c126844615666a4ab217027b6ae1d037d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899940"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren vanuit Azure Marketplace op Azure Stack Edge GPU-apparaat
+# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren vanuit Azure Marketplace op Azure Stack Edge Pro GPU-apparaat
 
-In dit artikel wordt beschreven hoe u een IoT Edge module voor grafische verwerkings eenheden (GPU) die is ingeschakeld, implementeert vanuit Azure Marketplace op uw Azure Stack edge-apparaat. 
+In dit artikel wordt beschreven hoe u een IoT Edge module voor grafische verwerkings eenheden (GPU) die is ingeschakeld, implementeert vanuit Azure Marketplace op uw Azure Stack Edge Pro-apparaat. 
 
 In dit artikel leert u het volgende:
-  - Azure Stack Edge voorbereiden om een GPU-module uit te voeren.
+  - Bereid Azure Stack Edge Pro voor op het uitvoeren van een GPU-module.
   - Down load en implementeer een IoT-module die is ingeschakeld voor GPU vanuit Azure Marketplace.
   - De module-uitvoer bewaken.
 
@@ -57,11 +57,11 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
     ![Voorbeeld module ophalen](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
-5. Kies het abonnement dat u hebt gebruikt voor het implementeren van uw Azure Stack edge-apparaat.
+5. Kies het abonnement dat u hebt gebruikt voor het implementeren van uw Azure Stack Edge Pro-apparaat.
 
     ![Abonnement selecteren](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/select-subscription-1.png)
 
-6. Voer de naam in van de IoT Hub-service die u hebt gemaakt tijdens het configureren van uw Azure Stack edge-apparaat. Als u deze IoT Hub-service naam wilt vinden, gaat u naar de Azure Stack Edge-resource die is gekoppeld aan uw apparaat in Azure Portal. 
+6. Voer de naam in van de IoT Hub-service die u hebt gemaakt tijdens het configureren van uw Azure Stack Edge Pro-apparaat. Als u deze IoT Hub-service naam wilt vinden, gaat u naar de Azure Stack Edge-resource die is gekoppeld aan uw apparaat in Azure Portal. 
 
     1. Ga in de menu opties van het linkerdeel venster naar **Edge compute > aan de slag**. 
 
@@ -71,7 +71,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
     1. Op de Blade **Edge Compute-configuratie** :
 
-        1. Noteer de IoT Hub-service die is gemaakt tijdens het configureren van de reken kracht op uw Azure Stack edge-apparaat.
+        1. Noteer de IoT Hub-service die is gemaakt tijdens het configureren van de reken kracht op uw Azure Stack Edge Pro-apparaat.
         2. Noteer de naam van het IoT Edge apparaat dat is gemaakt tijdens het configureren van compute. U gebruikt deze naam in de volgende stap.
 
         ![Edge Compute-configuratie](media/azure-stack-edge-gpu-deploy-sample-module/view-compute-config-1.png)
@@ -95,9 +95,9 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 1. Voer in het opdrachtenpalet van VS Code de opdracht **Azure IoT Hub: Select IoT Hub** uit.
 
-2. Kies het abonnement en de IoT-hub met het IoT Edge-apparaat dat u wilt configureren. In dit geval selecteert u het abonnement dat is gebruikt om het Azure Stack edge-apparaat te implementeren en selecteert u het IoT Edge apparaat dat u hebt gemaakt voor uw Azure Stack edge-apparaat. Dit gebeurt wanneer u Compute configureert via de Azure Portal in de eerdere stappen.
+2. Kies het abonnement en de IoT-hub met het IoT Edge-apparaat dat u wilt configureren. In dit geval selecteert u het abonnement dat is gebruikt om het Azure Stack Edge Pro-apparaat te implementeren en selecteert u het IoT Edge apparaat dat u hebt gemaakt voor uw Azure Stack Edge Pro-apparaat. Dit gebeurt wanneer u Compute configureert via de Azure Portal in de eerdere stappen.
 
-3. Vouw in de VS code Explorer de sectie Azure IoT Hub uit. Onder **apparaten**wordt het IOT edge apparaat weer geven dat overeenkomt met uw Azure stack edge-apparaat. 
+3. Vouw in de VS code Explorer de sectie Azure IoT Hub uit. Onder **apparaten**wordt het IOT edge apparaat weer geven dat overeenkomt met uw Azure stack Edge Pro-apparaat. 
 
     1. Selecteer dat apparaat, klik met de rechter muisknop en selecteer **controle van ingebouwd gebeurtenis begin punt starten**.
   
@@ -105,7 +105,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
     2. Ga naar **apparaten > modules** en u ziet dat uw **GPU-module** wordt uitgevoerd.
 
-    3. De VS code-terminal moet ook de IoT Hub gebeurtenissen weer geven als de bewakings uitvoer voor uw Azure Stack edge-apparaat.
+    3. De VS code-terminal moet ook de IoT Hub gebeurtenissen weer geven als de bewakings uitvoer voor uw Azure Stack Edge Pro-apparaat.
 
         ![Bewakings uitvoer](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

@@ -11,14 +11,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547389"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889490"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
+
 
 De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd Language Understanding model. Als [Luis-app](https://www.luis.ai)biedt de docker-container toegang tot de query voorspellingen van de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze opnieuw uploaden naar de Language Understanding-app om de nauw keurigheid van de app te verbeteren.
 
@@ -66,10 +69,10 @@ Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die w
 
 ## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
-Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden uit de `mcr.microsoft.com/azure-cognitive-services/luis` opslag plaats:
+Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden uit de `mcr.microsoft.com/azure-cognitive-services/language/luis` opslag plaats:
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/language/luis:latest
 ```
 
 Zie Luis op docker hub voor een volledige beschrijving van de beschik bare Tags, zoals `latest` in de voor gaande opdracht wordt gebruikt. [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204)
@@ -108,7 +111,7 @@ De map invoer koppeling kan de modellen **productie**, **fase ring**en **versie*
 |Pakket type|Query eind punt-API|Beschik baarheid van query's|Bestands naam indeling pakket|
 |--|--|--|--|
 |Versie|GET, POST|Alleen container|`{APP_ID}_v{APP_VERSION}.gz`|
-|Staging|GET, POST|Azure en container|`{APP_ID}_STAGING.gz`|
+|Faseren|GET, POST|Azure en container|`{APP_ID}_STAGING.gz`|
 |Productie|GET, POST|Azure en container|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -206,7 +209,7 @@ docker run --rm -it -p 5000:5000 ^
 --cpus 2 ^
 --mount type=bind,src=c:\input,target=/input ^
 --mount type=bind,src=c:\output\,target=/output ^
-mcr.microsoft.com/azure-cognitive-services/luis ^
+mcr.microsoft.com/azure-cognitive-services/language/luis ^
 Eula=accept ^
 Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
@@ -243,7 +246,7 @@ De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling. Ein
 
 Gebruik de host, `http://localhost:5000`, voor container-API's.
 
-# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-voorspellingseindpunt](#tab/v3)
 
 |Pakkettype|HTTP-woord|Route|Queryparameters|
 |--|--|--|--|
@@ -259,7 +262,7 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 |`log`|boolean|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
 |`show-all-intents`|boolean|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
 
-# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-voorspellingseindpunt](#tab/v2)
 
 |Pakkettype|HTTP-woord|Route|Queryparameters|
 |--|--|--|--|
@@ -282,7 +285,7 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 
 Een voor beeld van een krul opdracht voor het uitvoeren van query's op de container voor een gepubliceerde app is:
 
-# <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-voorspellingseindpunt](#tab/v3)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 
@@ -308,7 +311,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-voorspellingseindpunt](#tab/v2)
 
 Als u een model in een sleuf wilt opvragen, gebruikt u de volgende API:
 

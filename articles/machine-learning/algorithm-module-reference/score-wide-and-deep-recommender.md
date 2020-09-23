@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
-ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192735"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905172"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Aanbevelingsfunctie voor wide en deep learning-scores
 
-In dit artikel wordt beschreven hoe u de module **Score breed en diep aanbevolen** kunt gebruiken in azure machine learning Designer (preview) om voor spellingen te maken op basis van een getraind aanbevelings model, gebaseerd op de brede & diep gaande lessen van Google.
+In dit artikel wordt beschreven hoe u de **Score breedte en de diep aanbevolen** module in azure machine learning Designer kunt gebruiken om voor spellingen te maken op basis van een getraind aanbevelings model, gebaseerd op het brede & uitgebreide leer proces van Google.
 
 Met de brede en diepe aanbeveling kunt u twee verschillende soorten voor spellingen genereren:
 

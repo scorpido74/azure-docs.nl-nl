@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450729"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905199"
 ---
 # <a name="resnet"></a>ResNet
 
-In dit artikel wordt beschreven hoe u de **ResNet** -module in azure machine learning Designer (preview) gebruikt om een classificatie model voor installatie kopieën te maken met behulp van de ResNet-algoritme.  
+In dit artikel wordt beschreven hoe u de **ResNet** -module in azure machine learning Designer gebruikt om een classificatie model voor installatie kopieën te maken met behulp van de ResNet-algoritme.  
 
 Deze classificatie-algoritme is een geclassificeerde leer methode en vereist een gegevensset met een label. Raadpleeg [Convert to image directory](convert-to-image-directory.md) module voor meer informatie over het ophalen van een gelabelde map met afbeeldingen. U kunt het model trainen door een model en een gelabelde map met installatie kopieën op te geven als invoer voor het [trainen van Pytorch-model](train-pytorch-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoer voorbeelden te voors pellen met behulp van [Score afbeeldings model](score-image-model.md).
 
@@ -46,10 +46,10 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Name       | Bereik | Type    | Standaard           | Description                              |
+| Name       | Bereik | Type    | Standaard           | Beschrijving                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
-| Modelnaam | Alle   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
-| Voortraind | Alle   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
+| Modelnaam | Elk   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
+| Voortraind | Elk   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Uitvoer  

@@ -4,14 +4,14 @@ description: Include-bestand
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: dacoulte
-ms.openlocfilehash: 9fcaca3f89217f649eb970ec70514a5735222782
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2707523947cae77dd800dd5f560ebe1c47f3893a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905981"
 ---
 Voor elk objecttype in Azure Policy bestaat er een maximum. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
 
@@ -21,6 +21,7 @@ Voor elk objecttype in Azure Policy bestaat er een maximum. De vermelding _Berei
 | Bereik | Initiatiefdefinities | 200 |
 | Tenant | Initiatiefdefinities | 2500 |
 | Bereik | Beleids- of initiatieftoewijzingen | 200 |
+| Bereik | Uitzonderingen | 1000 |
 | Beleidsdefinitie | Parameters | 20 |
 | Initiatiefdefinitie | Beleidsregels | 1000 |
 | Initiatiefdefinitie | Parameters | 100 |

@@ -1,6 +1,6 @@
 ---
 title: 'Web Service input/output: module-verwijzing'
-description: Meer informatie over de webservice-modules in Azure Machine Learning Designer (preview)
+description: Meer informatie over de web service-modules in Azure Machine Learning Designer
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751108"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883221"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Webservices-invoer en-webservice-uitvoer modules
 
-In dit artikel worden de modules web service input en webservice-uitvoer beschreven in Azure Machine Learning Designer (preview).
+In dit artikel worden de modules web service input en webservice-uitvoer in Azure Machine Learning Designer beschreven.
 
 De module Web Service input kan alleen verbinding maken met een invoer poort met het type **DataFrameDirectory**. De module webservice-uitvoer kan alleen worden verbonden vanaf een uitvoer poort met het type **DataFrameDirectory**. U kunt de twee modules vinden in de module structuur, onder de categorie **Web Service** . 
 

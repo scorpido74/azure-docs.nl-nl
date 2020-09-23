@@ -1,6 +1,6 @@
 ---
-title: Kubernetes stateless app implementeren op Azure Stack Edge GPU via IoT Edge module | Microsoft Docs
-description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassing implementeert op uw Azure Stack Edge GPU-apparaat met behulp van een IoT Edge module die wordt geopend via een extern IP-adres.
+title: Kubernetes stateless app implementeren op Azure Stack Edge Pro GPU via IoT Edge module | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassing implementeert op uw Azure Stack Edge Pro GPU-apparaat met behulp van een IoT Edge module die wordt geopend via een extern IP-adres.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899527"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>IoT Edge-module gebruiken voor het uitvoeren van een Kubernetes stateless toepassing op uw Azure Stack Edge GPU-apparaat
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>IoT Edge-module gebruiken voor het uitvoeren van een Kubernetes stateless toepassing op uw Azure Stack Edge Pro GPU-apparaat
 
-In dit artikel wordt beschreven hoe u een IoT Edge module kunt gebruiken voor het implementeren van een staatloze toepassing op uw Azure Stack edge-apparaat.
+In dit artikel wordt beschreven hoe u een IoT Edge module kunt gebruiken om een staatloze toepassing te implementeren op uw Azure Stack Edge Pro-apparaat.
 
 Als u de stateless toepassing wilt implementeren, voert u de volgende stappen uit:
 
 - Zorg ervoor dat de vereisten zijn voltooid voordat u een IoT Edge module implementeert.
-- Voeg een IoT Edge module toe om toegang te krijgen tot het Compute-netwerk op uw Azure Stack rand.
+- Voeg een IoT Edge module toe om toegang te krijgen tot het Compute-netwerk op uw Azure Stack Edge Pro.
 - Controleer of de module toegang heeft tot de ingeschakelde netwerk interface.
 
 In dit artikel wordt uitgelegd hoe u een module webserver-app gebruikt om het scenario te demonstreren.
@@ -31,19 +31,19 @@ In dit artikel wordt uitgelegd hoe u een module webserver-app gebruikt om het sc
 
 Voordat u begint, hebt u het volgende nodig:
 
-- Een Azure Stack edge-apparaat. Zorg voor het volgende:
+- Een Azure Stack Edge Pro-apparaat. Zorg voor het volgende:
 
     - De berekenings netwerk instellingen worden geconfigureerd op het apparaat.
     - Het apparaat wordt geactiveerd volgens de stappen in de [zelf studie: Activeer uw apparaat](azure-stack-edge-gpu-deploy-activate.md).
-- U hebt de stappen voor het configureren van de **reken** stap voltooid volgens de [zelf studie: Configure Compute op uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md) op het apparaat. Op uw apparaat moet een IoT Hub resource, een IoT-apparaat en een IoT Edge apparaat zijn geïnstalleerd.
+- U hebt de stappen voor het configureren van de **reken** procedure voltooid volgens de [zelf studie: Configureer Compute op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md) op uw apparaat. Op uw apparaat moet een IoT Hub resource, een IoT-apparaat en een IoT Edge apparaat zijn geïnstalleerd.
 
 
 ## <a name="add-webserver-app-module"></a>Webserver-app-module toevoegen
 
-Voer de volgende stappen uit om een module webserver-app op uw Azure Stack edge-apparaat toe te voegen.
+Voer de volgende stappen uit om een module webserver-app op uw Azure Stack Edge Pro-apparaat toe te voegen.
 
 1. Ga in de IoT Hub resource die aan uw apparaat is gekoppeld, naar **automatische apparaatbeheer > IOT Edge**.
-1. Selecteer en klik op het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack edge-apparaat. 
+1. Selecteer en klik op het IoT Edge apparaat dat aan uw Azure Stack Edge Pro-apparaat is gekoppeld. 
 
     ![IoT Edge apparaat selecteren](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 

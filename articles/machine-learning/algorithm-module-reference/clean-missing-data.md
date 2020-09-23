@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898819"
 ---
 # <a name="clean-missing-data-module"></a>Ontbrekende gegevens module wissen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Met deze module kunt u ontbrekende waarden verwijderen, vervangen of afleiden. 
 
@@ -48,7 +48,7 @@ Met deze module kunt u een reinigings bewerking definiëren. U kunt ook de opsch
 
 ### <a name="replace-missing-values"></a>Ontbrekende waarden vervangen  
 
-Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepast op een set gegevens, wordt dezelfde reinigings bewerking toegepast op alle kolommen die u selecteert. Als u verschillende kolommen met verschillende methoden wilt opschonen, gebruikt u daarom afzonderlijke exemplaren van de module.
+Telkens wanneer u de module  [clean Missing Data](./clean-missing-data.md) toepast op een set gegevens, wordt dezelfde reinigings bewerking toegepast op alle kolommen die u selecteert. Als u verschillende kolommen met verschillende methoden wilt opschonen, gebruikt u daarom afzonderlijke exemplaren van de module.
 
 1.  Voeg de module [clean Missing Data](./clean-missing-data.md) toe aan de pijp lijn en verbind de gegevensset met ontbrekende waarden.  
   

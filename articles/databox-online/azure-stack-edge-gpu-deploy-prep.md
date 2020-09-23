@@ -1,24 +1,24 @@
 ---
-title: Zelfstudie voor het voorbereiden van de Azure-portal, datacenteromgeving om Azure Stack Edge GPU te implementeren | Microsoft Docs
-description: De eerste zelfstudie over het implementeren van Azure Stack Edge GPU omvat het voorbereiden van de Azure-portal.
+title: Zelfstudie voor het voorbereiden van het Azure-portal, datacenteromgeving om Azure Stack Edge Pro GPU te implementeren | Microsoft Docs
+description: De eerste zelfstudie over het implementeren van Azure Stack Edge Pro GPU omvat het voorbereiden van de Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/08/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c02af8983489651d8b5b83d5d3107a534c51f067
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254675"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899753"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge GPU 
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge Pro met GPU 
 
-Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie die noodzakelijk zijn voor het voltooien van de implementatie van Azure Stack Edge met GPU. In deze zelfstudie wordt beschreven hoe u de Azure-portal voorbereidt voor de implementatie van een Azure Stack Edge-resource.
+Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie die noodzakelijk zijn voor de volledige implementatie van Azure Stack Edge Pro met GPU. In deze zelfstudie wordt beschreven hoe u de Azure-portal voorbereidt voor de implementatie van een Azure Stack Edge-resource.
 
 U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. Het voorbereiden van de portal duurt minder dan 10 minuten.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 ### <a name="get-started"></a>Aan de slag
 
-Voor de implementatie van Azure Stack Edge moet u eerst uw omgeving voorbereiden. Zodra de omgeving gereed is, voert u de vereiste stappen en, indien nodig, optionele stappen en procedures uit om het apparaat volledig te implementeren. In de stapsgewijze implementatie-instructies wordt aangeven wanneer u deze optionele stappen moet uitvoeren.
+Voor de implementatie van Azure Stack Edge Pro moet u eerst uw omgeving voorbereiden. Zodra de omgeving gereed is, voert u de vereiste stappen en, indien nodig, optionele stappen en procedures uit om het apparaat volledig te implementeren. In de stapsgewijze implementatie-instructies wordt aangeven wanneer u deze optionele stappen moet uitvoeren.
 
 | Stap | Beschrijving |
 | --- | --- |
@@ -38,36 +38,36 @@ Voor de implementatie van Azure Stack Edge moet u eerst uw omgeving voorbereiden
 | **[Configuratiecontrolelijst voor implementatie](#deployment-configuration-checklist)** |Gebruik deze controlelijst om informatie te verzamelen en te registreren voorafgaand aan en tijdens de implementatie. |
 | **[Vereisten voor implementatie](#prerequisites)** |Hiermee wordt gecontroleerd of de omgeving gereed is voor implementatie. |
 |  | |
-|**Zelfstudies voor implementatie** |Deze zelfstudies zijn vereist als u uw Azure Stack Edge-apparaat in productie wilt implementeren. |
-|**[1. De Azure-portal voorbereiden voor Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)** |Maak en configureer uw Azure Stack Edge-resource voordat u een fysiek Azure Stack Edge-apparaat installeert. |
-|**[2. Azure Stack Edge installeren](azure-stack-edge-gpu-deploy-install.md)**|Het fysieke Azure Stack Edge-apparaat uitpakken, plaatsen en aansluiten.  |
-|**[3. Verbinding maken met Azure Stack Edge](azure-stack-edge-gpu-deploy-connect.md)** |Zodra het apparaat is geïnstalleerd, maakt u verbinding met de lokale webinterface van het apparaat.  |
-|**[4. Netwerkinstellingen configureren voor Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)** |Configureer een netwerk, inclusief het rekennetwerk en de webproxy-instellingen voor uw apparaat.   |
-|**[5. Netwerkinstellingen configureren voor Azure Stack Edge](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Wijs een apparaatnaam en een DNS-domein toe, configureer de updateserver en de apparaattijd. |
-|**[6. Beveiligingsinstellingen configureren voor Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Configureer certificaten voor het apparaat. Gebruik certificaten die door het apparaat zijn gegenereerd of gebruik uw eigen certificaten.   |
-|**[7. Azure Stack Edge-apparaat activeren](azure-stack-edge-gpu-deploy-activate.md)** |Gebruik de activeringssleutel van de service om het apparaat te activeren. Het apparaat is klaar om er SMB- of NFS-shares op in te stellen of om via REST verbinding te maken. |
+|**Zelfstudies voor implementatie** |Deze zelfstudies zijn vereist als u uw Azure Stack Edge Pro-apparaat in productie wilt implementeren. |
+|**[1. De Azure Portal voorbereiden voor Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)** |Maak en configureer uw Azure Stack Edge-resource voordat u een fysiek Azure Stack Edge-apparaat installeert. |
+|**[2. Azure Stack Edge Pro installeren](azure-stack-edge-gpu-deploy-install.md)**|Het fysieke Azure Stack Edge Pro-apparaat uitpakken, plaatsen en aansluiten.  |
+|**[3. Verbinding maken met Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-connect.md)** |Zodra het apparaat is geïnstalleerd, maakt u verbinding met de lokale webinterface van het apparaat.  |
+|**[4. Netwerkinstellingen configureren voor Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)** |Configureer een netwerk, inclusief het rekennetwerk en de webproxy-instellingen voor uw apparaat.   |
+|**[5. Apparaatinstellingen configureren voor Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Wijs een apparaatnaam en een DNS-domein toe, configureer de updateserver en de apparaattijd. |
+|**[6. Beveiligingsinstellingen configureren voor Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Configureer certificaten voor het apparaat. Gebruik certificaten die door het apparaat zijn gegenereerd of gebruik uw eigen certificaten.   |
+|**[7. Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md)** |Gebruik de activeringssleutel van de service om het apparaat te activeren. Het apparaat is klaar om er SMB- of NFS-shares op in te stellen of om via REST verbinding te maken. |
 |**[8. Rekenproces configureren](azure-stack-edge-gpu-deploy-configure-compute.md)** |Configureer de rekenprocesrol op het apparaat. Er wordt dan ook een Kubernetes-cluster gemaakt. |
 |**[9A. Gegevens overdragen met behulp van Edge-shares](azure-stack-edge-j-series-deploy-add-shares.md)** |Voeg shares toe en maak verbinding met shares via SMB of NFS. |
 |**[9B. Gegevens overdragen met Edge-opslagaccounts](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Voeg opslagaccounts toe en maak verbinding met de blobopslag via REST API's. |
 
 
-U kunt nu beginnen met het verzamelen van informatie over de softwareconfiguratie voor uw Azure Stack Edge-apparaat.
+U kunt nu beginnen met het verzamelen van informatie over de softwareconfiguratie voor uw Azure Stack Edge Pro-apparaat.
 
 ## <a name="deployment-configuration-checklist"></a>Configuratiecontrolelijst voor implementatie
 
-Voordat u uw apparaat implementeert, moet u informatie verzamelen om de software op uw Azure Stack Edge-apparaat te configureren. De implementatie van het Azure Stack Edge-apparaat in uw omgeving verloopt gestroomlijnder wanneer u deze gegevens zoveel mogelijk op voorhand voorbereidt. Gebruik de [configuratiecontrolelijst voor de implementatie van Azure Stack Edge](azure-stack-edge-gpu-deploy-checklist.md) om de configuratiegegevens te noteren terwijl u het apparaat implementeert.
+Voordat u uw apparaat implementeert, moet u informatie verzamelen om de software op uw Azure Stack Edge Pro-apparaat te configureren. De implementatie van het Azure Stack Edge-apparaat in uw omgeving verloopt gestroomlijnder wanneer u deze gegevens zoveel mogelijk op voorhand voorbereidt. Gebruik de [Configuratiecontrolelijst voor de implementatie van Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-checklist.md) om de configuratiegegevens te noteren terwijl u het apparaat implementeert.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Hier volgen de configuratievereisten voor uw Azure Stack Edge-resource, uw Azure Stack Edge-apparaat en het datacenternetwerk.
+Hier volgen de configuratievereisten voor uw Azure Stack Edge-resource, uw Azure Stack Edge Pro-apparaat en het datacenternetwerk.
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Voor de Azure Stack Edge-resource
 
 Zorg voordat u begint voor het volgende:
 
 - Uw Microsoft Azure-abonnement is ingeschakeld voor een Azure Stack Edge-resource. Zorg dat een ondersteund abonnement gebruikt zoals [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) of [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnementen waar u betaalt per gebruik worden niet ondersteund.
-- U hebt toegang als eigenaar of inzender op het niveau van de resourcegroep voor de Azure Stack Edge-/Data Box Gateway-, IoT Hub- en Azure Storage-resources.
+- U hebt toegang als eigenaar of inzender op het niveau van de resourcegroep voor de Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- en Azure Storage-resources.
 
     - Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
     - Als u een IoT Hub-resource wilt maken, moet u ervoor zorgen dat de provider Microsoft.Devices is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
@@ -75,7 +75,7 @@ Zorg voordat u begint voor het volgende:
 - U hebt beheerder-of gebruikerstoegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) voor meer informatie.
 - U hebt een Microsoft Azure Storage-account met toegangsreferenties.
 
-### <a name="for-the-azure-stack-edge-device"></a>Voor het Azure Stack Edge-apparaat
+### <a name="for-the-azure-stack-edge-pro-device"></a>Voor het Azure Stack Edge Pro-apparaat
 
 Voordat u een fysiek apparaat implementeert, controleert u of:
 
@@ -90,9 +90,9 @@ Voordat u een fysiek apparaat implementeert, controleert u of:
 
 Zorg voordat u begint voor het volgende:
 
-- Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge-apparaat. Zie [Systeemvereisten voor Azure Stack Edge](azure-stack-edge-system-requirements.md) voor meer informatie.
+- Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Azure Stack Edge Pro-apparaat. Zie [Systeemvereisten voor Azure Stack Edge Pro](azure-stack-edge-system-requirements.md) voor meer informatie.
 
-- Voor normale bedrijfsomstandigheden van uw Azure Stack Edge hebt u het volgende nodig:
+- Voor normale bedrijfsomstandigheden van uw Azure Stack Edge Pro hebt u het volgende nodig:
 
     - Minimaal 10 Mbps downloadbandbreedte om ervoor te zorgen dat het apparaat bijgewerkt blijft.
     - Minimaal 20 Mbps toegewezen upload- en downloadbandbreedte voor het overdragen van bestanden.
@@ -105,24 +105,19 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
 
 1. Gebruik uw Microsoft Azure-referenties om u aan te melden bij de Azure-portal op de volgende URL: [https://portal.azure.com](https://portal.azure.com).
 
-2. Selecteer **En een resource maken** in het linkerdeelvenster. Zoek en selecteer **Azure Stack Edge / Data Box Gateway**. Selecteer **Maken**. Als er problemen worden weergeven, gaat u naar [Problemen met de bestelling oplossen](azure-stack-edge-troubleshoot-ordering.md).
+2. Selecteer **En een resource maken** in het linkerdeelvenster. Zoek en selecteer **Azure Stack Edge / Data Box Gateway**. Selecteer **Maken**. 
 
-3. Kies het abonnement dat u wilt gebruiken voor het Azure Stack Edge-apparaat. Selecteer het land waar u dit fysieke apparaat naar wilt verzenden. Selecteer **Apparaten weergeven**.
+3. Kies het abonnement dat u wilt gebruiken voor het Azure Stack Edge Pro-apparaat. Selecteer het land waar u dit fysieke apparaat naar wilt verzenden. Selecteer **Apparaten weergeven**.
 
     ![Een resource maken 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
-4. Selecteer het apparaattype. Kies onder **Azure Stack Edge Commercial** de optie **Azure Stack Edge met GPU** en selecteer **Aanmelden**. 
-
-    ![Een resource maken 2](media/azure-stack-edge-gpu-deploy-prep/create-resource-2.png)
-
-5. Er wordt een verkorte vorm weergegeven. Vul het formulier in en selecteer **Verzenden**. Uw abonnement wordt door Microsoft ingeschakeld.
+4. Selecteer het apparaattype. Kies onder **Azure Stack Edge Commercial** de optie **Azure Stack Edge Pro met GPU** en kies **Selecteren**. Als u problemen ziet of als u het apparaattype niet kunt selecteren, gaat u naar [Problemen met de volgorde oplossen](azure-stack-edge-troubleshoot-ordering.md).
 
     ![Een resource maken 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
-5. Nadat het abonnement is ingeschakeld, zou u resources moeten kunnen maken. Kies in de blade **Apparaattype selecteren** de optie **Selecteren**.
+5. Op basis van uw bedrijfsbehoeften kunt u Azure Stack Edge Pro selecteren met 1 of 2 grafische processoreenheden (Gpu's) van NVIDIA selecteren. 
 
     ![Een resource maken 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
-
 
 6. Voer op het tabblad **Basisinstellingen** de volgende **Projectdetails** in of selecteer deze.
     
@@ -131,7 +126,7 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
     |Abonnement    |Dit wordt automatisch ingevuld op basis van de eerdere selectie. Abonnement is gekoppeld aan uw factureringsrekening. |
     |Resourcegroep  |Maak een nieuwe groep of selecteer een bestaande groep.<br>Meer informatie over [Azure-resourcegroepen](../azure-resource-manager/resource-group-overview.md).     |
 
-4. Voer de volgende **exemplaardetails** in of selecteer deze.
+7. Voer de volgende **exemplaardetails** in of selecteer deze.
 
     |Instelling  |Waarde  |
     |---------|---------|
@@ -141,9 +136,9 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
     ![Een resource maken 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
 
-5. Selecteer **Volgende: Verzendadres**.
+8. Selecteer **Volgende: Verzendadres**.
 
-    - Als u al een apparaat hebt, selecteert u de keuzelijst met invoervak voor **Ik heb een Azure Stack Edge-apparaat**.
+    - Als u al een apparaat hebt, selecteert u de keuzelijst met invoervak voor **Ik heb een Azure Stack Edge Pro-apparaat**.
 
         ![Een resource maken 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -151,35 +146,35 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
 
         ![Een resource maken 7](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
 
-6. Selecteer **Volgende: Beoordelen en maken**.
+9. Selecteer **Volgende: Tags**. Geef eventueel tags op voor het categoriseren van resources en het samenvoegen van facturering. Selecteer **Volgende: Beoordelen en maken**.
 
-7. Bekijk op het tabblad **Controleren en maken** de **Prijsdetails**, **Gebruiksvoorwaarden** en de details van uw resource. Selecteer de keuzelijst met invoervak voor **Ik heb de privacyvoorwaarden gecontroleerd**.
+10. Bekijk op het tabblad **Controleren en maken** de **Prijsdetails**, **Gebruiksvoorwaarden** en de details van uw resource. Selecteer de keuzelijst met invoervak voor **Ik heb de privacyvoorwaarden gecontroleerd**.
 
     ![Een resource maken 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
 
-8. Selecteer **Maken**.
+11. Selecteer **Maken**.
 
 Het maken van de resource duurt enkele minuten. Nadat de resource succesvol is gemaakt en geïmplementeerd, wordt u daarvan op de hoogte gebracht. Selecteer **Ga naar resource**.
 
-![Ga naar de Azure Stack Edge-resource](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+![Ga naar de Azure Stack Edge Pro-resource](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 Nadat de bestelling is geplaatst, controleert Microsoft de bestelling en neemt contact met u op (via e-mail) met verzendgegevens.
 
-![Melding voor beoordeling van de volgorde van de Azure Stack Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
 
 Als u problemen ondervindt tijdens het bestelproces, raadpleegt u [Problemen met de bestelling oplossen](azure-stack-edge-troubleshoot-ordering.md).
 
 ## <a name="get-the-activation-key"></a>De activeringssleutel ophalen
 
-Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel nodig. Deze sleutel wordt gebruikt om uw Azure Stack Edge-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
+Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel nodig. Deze sleutel wordt gebruikt om uw Azure Stack Edge Pro-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
 
 1. Selecteer de resource die u hebt gemaakt. Selecteer **Overzicht** en selecteer vervolgens **Apparaatinstallatie**.
 
-    ![Apparaatinstallatie selecteren](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Apparaatinstallatie selecteren](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. Selecteer **Sleutel genereren** op de tegel **Activeren** om een activeringssleutel te maken. Selecteer het kopieerpictogram om de sleutel te kopiëren en op te slaan voor later gebruik.
 
-    ![Activeringssleutel ophalen](media/azure-stack-edge-deploy-prep/get-activation-key.png)
+    ![Activeringssleutel ophalen](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
 > [!IMPORTANT]
 > - De activeringssleutel verloopt drie dagen nadat deze is gegenereerd.
@@ -187,16 +182,16 @@ Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Stack Edge, zoals:
+In deze zelfstudie bent u meer te weten gekomen over onderwerpen met betrekking tot Azure Stack Edge Pro, zoals:
 
 > [!div class="checklist"]
 > * Een nieuwe resource maken
 > * De activeringssleutel ophalen
 
-Ga naar de volgende zelfstudie om te lezen hoe u Azure Stack Edge installeert.
+Ga naar de volgende zelfstudie om te lezen hoe u Azure Stack Edge Pro installeert.
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge installeren](./azure-stack-edge-gpu-deploy-install.md)
+> [Azure Stack Edge Pro installeren](./azure-stack-edge-gpu-deploy-install.md)
 
 
 

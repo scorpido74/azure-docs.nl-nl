@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Experimenteren in Jupyter-notebooks (Python)'
-titleSuffix: Machine Learning - Azure
-description: In deze zelfstudie gaat u aan de slag met de Python SDK voor Azure Machine Learning die wordt uitgevoerd in Jupyter-notebooks.  In deel 1 maakt u een werkruimte waarin u experimenten en ML-modellen beheert.
+title: 'Zelfstudie: Aan de slag in Jupyter Notebooks (Python)'
+titleSuffix: Azure Machine Learning
+description: Installatie voor Jupyter Notebook-zelfstudies.  Maak een Azure Machine Learning-werkruimte, kloon Jupyter-notebooks in de werkruimte en maak een rekenproces waarin u de notebooks uitvoert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,44 +10,42 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896893"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Zelfstudie: Aan de slag met de Azure Machine Learning in Jupyter Notebooks
 
-In deze zelfstudie doorloopt u de end-to-end stappen om aan de slag te gaan met de Python SDK voor Azure Machine Learning die wordt uitgevoerd in Jupyter-notebooks. Deze zelfstudie is **deel 1 van een 2-delige reeks zelfstudies** en dekt het voorbereiden en configureren van een Python-omgeving, evenals het maken van een werkruimte om uw experimenten en machine learning-modellen te beheren. [**Deel 2**](tutorial-1st-experiment-sdk-train.md) bouwt hierop voort om meerdere machine learning-modellen te trainen en het modelbeheerproces te introduceren met behulp van zowel Azure Machine Learning Studio als de SDK.
+In deze zelfstudie voert u de stappen uit om aan de slag te gaan met de Azure Machine Learning met behulp van Jupyter Notebooks op een [beheerd werkstation in de cloud (rekenproces)](concept-compute-instance.md). Deze zelfstudie is een voorloper van alle andere Jupyter Notebook-zelfstudies.
 
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Maak een [Azure Machine Learning-werkruimte](concept-workspace.md) om in de volgende zelfstudie te gebruiken.
+> * Maak een [Azure Machine Learning-werkruimte](concept-workspace.md) om in andere Jupyter Notebook-zelfstudies te gebruiken.
 > * Kloon het zelfstudie-notebook naar uw map in de werkruimte.
 > * Maak een cloudgebaseerd rekenproces met de Python SDK voor Azure Machine Learning geïnstalleerd en vooraf geconfigureerd.
-
 
 Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
+Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service.
 
-U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren. 
+U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 > Noteer uw **werkruimte** en **abonnement**. U hebt deze nodig om ervoor te zorgen dat u uw experiment op de juiste plek aanmaakt. 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>Notebook uitvoeren in uw werkruimte
 
-In deze zelfstudie wordt de cloudnotebook-server in uw werkruimte gebruikt voor een installatieloze en vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u liever controle over uw omgeving, pakketten en afhankelijkheden hebt.
+Azure Machine Learning bevat een cloudnotebook-server in uw werkruimte voor een installatieloze en vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](tutorial-1st-experiment-sdk-setup-local.md) als u liever controle over uw omgeving, pakketten en afhankelijkheden hebt.
 
- Volg deze video of gebruik de gedetailleerde stappen hieronder om de zelfstudie te klonen en uit te voeren vanuit uw werkruimte. 
+ Volg deze video of gebruik de gedetailleerde stappen hieronder om de zelfstudienotebook te klonen en uit te voeren vanuit uw werkruimte.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -80,12 +78,11 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
     > [!IMPORTANT]
     > U kunt notebooks bekijken in de map **Voorbeelden**, maar u kunt een notebook niet uitvoeren vandaaruit.  Als u een notebook wilt uitvoeren, moet u de gekloonde versie van het notebook in de sectie **Gebruikersbestanden** openen.
     
-1. Selecteer het bestand **tutorial-1st-experiment-sdk-train.ipynb** in uw map **tutorials/create-first-ml-experiment**.
+1. Selecteer het bestand **tutorial-1st-experiment-sdk-train.ipynb** in de map **tutorials/image-classification-mnist-data**.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Map Zelfstudies openen":::
 
-
-1. Selecteer in de bovenste balk een rekenproces om te gebruiken voor het uitvoeren van het notebook. Deze VM’s zijn vooraf geconfigureerd met [alles wat u nodig hebt om Azure Machine Learning uit te voeren](concept-compute-instance.md#contents). 
+1. Selecteer in de bovenste balk een rekenproces om te gebruiken voor het uitvoeren van het notebook. Deze VM’s zijn vooraf geconfigureerd met [alles wat u nodig hebt om Azure Machine Learning uit te voeren](concept-compute-instance.md#contents).
 
 1. Als er geen VM’s zijn gevonden, selecteert u **+ Toevoegen** om de rekenproces-VM te maken. 
 
@@ -107,17 +104,11 @@ Als u aangepaste widgets hebt of liever Jupyter/JupyterLab gebruikt, selecteert 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de volgende taken voltooid:
-
-* Een Azure Machine Learning-werkruimte gemaakt.
-* Een cloudnotebook-server in uw werkruimte gemaakt en geconfigureerd.
-
-In **Deel 2** van de zelfstudie voert u de code in `tutorial-1st-experiment-sdk-train.ipynb` uit om een machine learning-model te trainen. 
+Nu u een ontwikkelomgeving hebt ingesteld, gaat u verder met het trainen van een model in een Jupyter Notebook:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)
+> [Zelfstudie: Modellen voor de classificatie van afbeeldingen trainen met MNIST-gegevens en scikit-learn](tutorial-train-models-with-aml.md)
 
-> [!IMPORTANT]
-> Als u niet van plan bent om Deel 2 van deze zelfstudie of andere zelfstudies te volgen, moet u [de VM van de cloudnotebook-server stoppen](tutorial-1st-experiment-sdk-train.md#clean-up-resources) wanneer u deze niet gebruikt, om de kosten te verlagen.
+<a name="stop-compute-instance"></a> Als u nu niet van plan bent om andere zelfstudies te volgen, moet u de VM van de cloudnotebook-server stoppen wanneer u deze niet gebruikt, om de kosten te verlagen:
 
-
+[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
