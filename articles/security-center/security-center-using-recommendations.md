@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: aac6f833985a708c7ed65542e314b65fa1039ef7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569047"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904667"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center-aanbevelingen gebruiken om de beveiliging te verbeteren
 
@@ -41,7 +41,7 @@ David, van de IT-beveiliging van contoso, heeft al gekozen om Security Center te
 
 Security Center analyseert automatisch de beveiligings status van de Azure-resources van Contoso en past het standaard beveiligings beleid toe. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden **aanbevelingen** gemaakt op basis van de besturings elementen die zijn ingesteld in het beveiligings beleid. 
 
-David voert de Azure Security-laag uit op alle abonnementen om de volledige suite met aanbevelingen en beveiligings functies beschikbaar te krijgen. Jeroen voert ook alle bestaande on-premises servers uit die nog niet zijn gemigreerd naar de Cloud, zodat ze kunnen profiteren van de hybride ondersteuning van Security Center op hun [Windows](quick-onboard-windows-computer.md) -en [Linux](quick-onboard-linux-computer.md) -servers.
+David voert Azure-beveiliging uit met Azure Defender ingeschakeld, voor al hun abonnementen voor het verkrijgen van de volledige suite met aanbevelingen en beveiligings functies die beschikbaar zijn. Jeroen voert ook alle bestaande on-premises servers uit die nog niet zijn gemigreerd naar de Cloud, zodat ze kunnen profiteren van de hybride ondersteuning van Security Center op hun [Windows-en Linux-servers](quickstart-onboard-machines.md).
 
 Jeff is een eigenaar van de Cloud-workload. Jeff is verantwoordelijk voor het Toep assen van beveiligings controles in overeenstemming met het beveiligings beleid van contoso. 
 
@@ -60,9 +60,9 @@ Als onderdeel van hun dagelijkse bewakings activiteiten houdt Jeff zich aan bij 
 
 3. Jeff moet bepalen welke aanbevelingen het eerst moeten worden verwerkt. Met Jeff klikt u op beveiligde Score en begint u met het afhandelen van aanbevelingen op basis van de mate waarin de [beveiligde Score](secure-score-security-controls.md)wordt verbeterd.
 
-4. Omdat Jeff een groot aantal aangesloten Vm's en servers heeft, besluit Jeff zich te richten op **Compute en apps**.
+4. Omdat Jeff veel verbonden Vm's heeft, besluit Jeff te focussen op zijn machines in [Asset Inventory](asset-inventory.md).
 
-5. Wanneer Jeff op **Compute en apps**klikt, wordt een lijst met aanbevelingen weer geven en worden deze verwerkt op basis van de impact op de beveiligde Score.
+5. Wanneer Jeff de asset-inventaris opent, wordt een lijst met aanbevelingen weer gegeven. Jeff verwerkt deze op basis van de impact op de beveiligde Score.
 
 6. Jeroen heeft talloze Internet gerichte Vm's en omdat hun poorten worden weer gegeven, is het een goed moment dat een aanvaller controle kan krijgen over de servers. Jeff kiest voor het gebruik [**van just-in-time-VM-toegang**](security-center-just-in-time.md).
 

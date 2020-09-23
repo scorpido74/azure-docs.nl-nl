@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Resource Health
-description: Overzicht van Azure Resource Health
+description: Meer informatie over hoe Azure Resource Health u helpt bij het vaststellen en verkrijgen van ondersteuning voor service problemen die van invloed zijn op uw Azure-resources.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041571"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967869"
 ---
 # <a name="resource-health-overview"></a>Overzicht van Resource Health
  
@@ -36,7 +36,7 @@ De status van een resource wordt weer gegeven als een van de volgende statussen.
 
 *Niet beschikbaar* betekent dat de service een voortdurende platform of een niet-platform gebeurtenis heeft gedetecteerd die van invloed is op de status van de resource.
 
-#### <a name="platform-events"></a>Platform gebeurtenissen
+#### <a name="platform-events"></a>Platformgebeurtenissen
 
 Platform gebeurtenissen worden geactiveerd door meerdere onderdelen van de Azure-infra structuur. Ze omvatten zowel geplande acties (bijvoorbeeld gepland onderhoud) als onverwachte incidenten (bijvoorbeeld een niet-geplande host opnieuw opstarten of gedegradeerde host-hardware die wordt voor speld na een opgegeven tijd venster).
 

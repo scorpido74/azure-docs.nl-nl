@@ -1,14 +1,14 @@
 ---
 title: SQL Server data bases herstellen op een virtuele Azure-machine
-description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
+description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup. U kunt ook meerdere regio's herstellen gebruiken om uw data bases terug te zetten naar een secundaire regio.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377978"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985442"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-databases herstellen in Azure-VM's
 
@@ -30,7 +30,7 @@ Let op het volgende voordat u een Data Base herstelt:
 - U kunt de database herstellen naar een exemplaar van SQL Server in dezelfde Azure-regio.
 - De doel server moet zijn geregistreerd bij dezelfde kluis als de bron.
 - Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) ingeschakelde data bases moeten worden hersteld met de optie [herstellen als bestanden](#restore-as-files) .
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) ingeschakelde data bases moeten worden hersteld met de optie [herstellen als bestanden](#restore-as-files) .
 - Voordat u de data base ' Master ' herstelt, start u het SQL Server-exemplaar in de modus voor één gebruiker met behulp van de opstart optie **-m AzureWorkloadBackup**.
   - De waarde voor **-m** is de naam van de client.
   - Alleen de opgegeven client naam kan de verbinding openen.
@@ -168,6 +168,51 @@ Ga als volgt te werk als u **volledige & differentieel** hebt geselecteerd als h
 Als de totale grootte van de teken reeks van bestanden in een Data Base groter is dan een [bepaalde limiet](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure backup slaat de lijst met database bestanden op in een ander onderdeel van de pit, zodat u het pad voor het terugzetten van de doel groep niet kunt instellen tijdens de herstel bewerking. De bestanden worden in plaats daarvan teruggezet naar het standaardpad voor SQL.
 
   ![Data base herstellen met een groot bestand](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>Meerdere regio's herstellen
+
+Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u SQL-data bases die worden gehost op virtuele Azure-machines, herstellen in een secundaire regio. Dit is een Azure-gekoppelde regio.
+
+Lees de [sectie voordat u begint](./backup-create-rs-vault.md#set-cross-region-restore)om het onderdeel tijdens de preview-periode onboarding uit te voeren.
+
+Als u wilt zien of CRR is ingeschakeld, volgt u de instructies in [herstel van meerdere regio's configureren](backup-create-rs-vault.md#configure-cross-region-restore)
+
+### <a name="view-backup-items-in-secondary-region"></a>Back-upitems in secundaire regio weer geven
+
+Als CRR is ingeschakeld, kunt u de back-upitems in de secundaire regio weer geven.
+
+1. Ga vanuit de portal naar **Recovery Services kluis**  >  **Back-upitems**.
+1. Selecteer **secundaire regio** om de items in de secundaire regio weer te geven.
+
+>[!NOTE]
+>Alleen back-upbeheer typen die ondersteuning bieden voor de functie CRR, worden weer gegeven in de lijst. Op dit moment is alleen ondersteuning voor het herstellen van secundaire regio gegevens naar een secundaire regio toegestaan.
+
+![Back-upitems in secundaire regio](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![Data bases in secundaire regio](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Herstellen in secundaire regio
+
+De gebruikers ervaring voor het herstellen van de secundaire regio is vergelijkbaar met de gebruikers ervaring voor het herstellen van de primaire regio. Wanneer u details in het configuratie venster voor herstellen configureert om uw herstel te configureren, wordt u gevraagd om alleen para meters van secundaire regio's op te geven.
+
+![Waar en hoe herstellen?](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>Het virtuele netwerk in de secundaire regio moet uniek worden toegewezen en kan niet worden gebruikt voor andere Vm's in die resource groep.
+
+![Melding activeren wordt uitgevoerd](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- Nadat de herstel bewerking is geactiveerd en in de fase voor gegevens overdracht, kan de herstel taak niet worden geannuleerd.
+>- De Azure-rollen die nodig zijn voor het herstellen van de secundaire regio, zijn hetzelfde als die in de primaire regio.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Taken voor het herstellen van secundaire regio's bewaken
+
+1. Ga vanuit de portal naar **Recovery Services kluis**  >  **back-uptaken**
+1. Selecteer **secundaire regio** om de items in de secundaire regio weer te geven.
+
+    ![Gefilterde back-uptaken](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

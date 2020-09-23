@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076025"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888781"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure Spring Cloud verifiëren met Key Vault in GitHub Actions
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+
 Sleutel kluis is een veilige plaats voor het opslaan van sleutels. Zakelijke gebruikers moeten referenties opslaan voor CI/CD-omgevingen binnen het bereik dat ze beheren. De sleutel voor het ophalen van referenties in de sleutel kluis moet beperkt zijn tot het bron bereik.  Het heeft alleen toegang tot het sleutel kluis bereik, niet voor het hele Azure-bereik. Het lijkt erop dat een sleutel die alleen een sterk vak kan openen, geen hoofd sleutel is die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te verkrijgen met een andere sleutel. Dit is handig in een CICD-werk stroom. 
 
 ## <a name="generate-credential"></a>Referentie genereren
@@ -43,7 +46,7 @@ Sla de resultaten vervolgens op in GitHub **geheimen** zoals beschreven in [uw g
 ## <a name="add-access-policies-for-the-credential"></a>Toegangs beleid voor de referentie toevoegen
 Met de referentie die u hierboven hebt gemaakt, krijgt u alleen algemene informatie over de Key Vault, niet de inhoud die wordt opgeslagen.  Als u geheimen wilt ophalen die zijn opgeslagen in de Key Vault, moet u toegangs beleid instellen voor de referentie.
 
-Ga naar het **Key Vault** dash board in azure Portal, klik op het **toegangs beheer** menu en open vervolgens het tabblad **roltoewijzingen** . Selecteer **apps** voor **type** en `This resource` **bereik**.  De referenties die u in de vorige stap hebt gemaakt, worden weer geven:
+Ga naar het **Key Vault** dash board in azure Portal, klik op het **toegangs beheer** menu en open vervolgens het tabblad **roltoewijzingen** . Selecteer **apps** voor **type** en `This resource` voor **bereik**.  De referenties die u in de vorige stap hebt gemaakt, worden weer geven:
 
  ![Toegangs beleid instellen](./media/github-actions/key-vault1.png)
 

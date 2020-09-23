@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904989"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>MILLILITERs logboeken en-metrische gegevens bewaken en weer geven
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u Azure Machine Learning uitvoeringen bewaakt en de logboeken bekijkt. Voordat u Logboeken kunt weer geven, moet u deze eerst inschakelen. Zie [logboek registratie inschakelen in azure ml-trainings uitvoeringen](how-to-track-experiments.md)voor meer informatie.
 
@@ -129,7 +129,7 @@ Gebruik de volgende methoden in de logboek registratie-Api's om uw metrische geg
 
 Voer de volgende stappen uit om te leren hoe u Azure Machine Learning gebruikt:
 
-* Meer informatie over het [bijhouden van experimenten en het inschakelen van Logboeken in de Azure machine learning Designer (preview)](how-to-track-designer-experiments.md).
+* Meer informatie over het [bijhouden van experimenten en het inschakelen van Logboeken in de Azure machine learning Designer](how-to-track-designer-experiments.md).
 
-* Bekijk een voor beeld van hoe u het beste model registreert en implementeert in de zelf studie, [een classificatie model voor installatie kopieën traint met Azure machine learning](tutorial-train-models-with-aml.md).
+* Bekijk een voorbeeld van hoe u het beste model registreert en implementeert in de zelfstudie [Een afbeeldingsclassificatiemodel trainen met Azure Machine Learning](tutorial-train-models-with-aml.md).
 

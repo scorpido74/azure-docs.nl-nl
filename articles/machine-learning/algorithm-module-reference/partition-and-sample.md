@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477507"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898484"
 ---
 # <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik de partitie-en voorbeeld module om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 
@@ -71,7 +71,7 @@ Deze optie ondersteunt eenvoudige wille keurige steek proeven of stratified will
 
 1. Voeg de **partitie-en voorbeeld** module toe aan uw pijp lijn en verbind de gegevensset.
 
-1. **Partitie of voorbeeld modus**: Stel deze optie in op **steek proeven**.
+1. **Partitie of voorbeeld modus**: Stel deze optie in op  **steek proeven**.
 
 1. **Sampling frequentie**: Voer een waarde in tussen 0 en 1. met deze waarde wordt het percentage rijen van de bron-gegevensset opgegeven dat moet worden opgenomen in de uitvoer gegevensset.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge gebruikers beheren | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om gebruikers te beheren op uw Azure Stack rand.
+title: Azure Stack Edge Pro-gebruikers beheren | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om gebruikers te beheren op uw Azure Stack Edge Pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339634"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904377"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>De Azure Portal gebruiken om gebruikers te beheren op uw Azure Azure Stack Edge
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>Gebruik de Azure Portal om gebruikers te beheren op uw Azure Azure Stack Edge Pro
 
-In dit artikel wordt beschreven hoe u gebruikers op uw Azure Stack Edge beheert. U kunt de Azure Stack Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik Azure Portal om gebruikers toe te voegen, te wijzigen of te verwijderen.
+In dit artikel wordt beschreven hoe u gebruikers beheert op uw Azure Stack Edge Pro. U kunt de Azure Stack Edge Pro beheren via de Azure Portal of via de lokale web-UI. Gebruik Azure Portal om gebruikers toe te voegen, te wijzigen of te verwijderen.
 
 In dit artikel leert u het volgende:
 
@@ -33,7 +33,7 @@ Gebruikers kunnen het recht alleen-lezen of volledige bevoegdheid hebben. Zoals 
  - **Gebruiker met volledige bevoegdheden** - een lokale gebruiker met volledige toegang.
  - **Alleen-lezengebruiker** - een lokale gebruiker met alleen-lezentoegang. Deze gebruikers zijn gekoppeld aan shares waarmee alleen-lezenbewerkingen mogelijk zijn.
 
-De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Het wijzigen van machtigingen op share niveau wordt momenteel niet ondersteund.
+De gebruikersmachtigingen worden eerst gedefinieerd wanneer de gebruiker wordt gemaakt tijdens het maken van de share. Het wijzigen van machtigingen op shareniveau wordt momenteel niet ondersteund.
 
 ## <a name="add-a-user"></a>Een gebruiker toevoegen
 

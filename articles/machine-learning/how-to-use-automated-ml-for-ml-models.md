@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660427"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904945"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u geautomatiseerde machine learning modellen kunt maken, verkennen en implementeren zonder één regel code in Azure Machine Learning Studio.
 
->[!IMPORTANT]
-> De automatische ML-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
-
- Automatische machine learning is een proces waarbij het beste machine learning algoritme voor uw specifieke gegevens wordt geselecteerd. Met dit proces kunt u snel machine learning modellen genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
+Automatische machine learning is een proces waarbij het beste machine learning algoritme voor uw specifieke gegevens wordt geselecteerd. Met dit proces kunt u snel machine learning modellen genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
  
 Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een classificatie model met de automatische ml-interface van Azure machine learning](tutorial-first-experiment-automated-ml.md). 
 
@@ -36,7 +33,7 @@ Voor een end-to-end-voor beeld probeert [u de zelf studie voor het maken van een
 
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Een Azure Machine Learning-werk ruimte met een type **Enter prise-editie**. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).  Als u een bestaande werk ruimte wilt bijwerken naar Enter prise Edition, raadpleegt [u upgrade to Enter prise Edition](how-to-manage-workspace.md#upgrade)(Engelstalig).
+* Een Azure Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md). 
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -75,7 +72,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Controleer de **instellingen en het voorbeeld** formulier op nauw keurigheid. Het formulier wordt op intelligente wijze ingevuld op basis van het bestands type. 
 
-        Veld| Beschrijving
+        Veld| Description
         ----|----
         Bestandsindeling| Definieert de indeling en het type gegevens dat is opgeslagen in een bestand.
         Scheidingsteken| Een of meer tekens die de grens aangeven tussen  afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevensstromen.
@@ -83,7 +80,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Kolomkoppen| Geeft aan hoe eventuele koppen van de gegevensset worden behandeld.
         Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.
     
-        Selecteer **Volgende**.
+        Selecteer **Next**.
 
     1. Het **schema** formulier wordt op de slimme wijze ingevuld op basis van de selecties in het formulier **instellingen en preview** . Hier configureert u het gegevens type voor elke kolom, bekijkt u de kolom namen en selecteert u welke kolommen niet voor uw experiment moeten worden **toegevoegd** . 
             
@@ -91,7 +88,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Het formulier **Details bevestigen** is een samen vatting van de gegevens die eerder zijn ingevuld in de **basis gegevens** en- **instellingen en preview** -formulieren. U kunt ook een gegevens profiel maken voor uw gegevensset met behulp van een profilerings functie ingeschakeld. Meer informatie over [gegevensprofilering](#profile).
 
-        Selecteer **Volgende**.
+        Selecteer **Next**.
 1. Selecteer de zojuist gemaakte gegevensset zodra deze wordt weer gegeven. U kunt ook een preview van de gegevensset en voorbeeld statistieken bekijken. 
 
 1. Voer een unieke naam voor het experiment in op het formulier voor het configureren van een **uitvoering** .
@@ -102,7 +99,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Selecteer **een nieuwe Compute maken** om uw berekenings context voor dit experiment te configureren.
 
-    Veld|Beschrijving
+    Veld|Description
     ---|---
     Naam berekening| Voer een unieke naam in die uw berekenings context identificeert.
     Prioriteit van virtuele machine| Virtuele machines met lage prioriteit zijn goed koper, maar garanderen niet de reken knooppunten. 
@@ -116,7 +113,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     >[!NOTE]
     > De naam van de berekening geeft aan of de compute die u selecteert/maakt, *profile ring is ingeschakeld*. (Zie de sectie [gegevens profilering](#profile) voor meer informatie).
 
-    Selecteer **Volgende**.
+    Selecteer **Next**.
 
 1. Selecteer op het **taak type en het instellingen** formulier het taak type: classificatie, regressie of prognose. Zie [ondersteunde taak typen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) voor meer informatie.
 
@@ -135,7 +132,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Beschrijving Aanvullende configuratie-instellingen weer geven: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment. 
 
-    Aanvullende configuraties|Beschrijving
+    Aanvullende configuraties|Description
     ------|------
     Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#primary-metric).
     Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om uitleg voor het aanbevolen model weer te geven. <br> Deze functionaliteit is momenteel niet beschikbaar voor [bepaalde prognose algoritmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -157,7 +154,7 @@ U kunt een groot aantal samenvattings statistieken in uw gegevensset ontvangen o
 >[!NOTE]
 > Lege vermeldingen worden weer gegeven voor functies met irrelevante typen.
 
-Statistic|Beschrijving
+Statistic|Description
 ------|------
 Functie| De naam van de kolom die wordt samenvatten.
 Profiel| In-line visualisatie op basis van het type dat is afgeleid. Teken reeksen, Booleaanse waarden en datums hebben bijvoorbeeld een aantal aantallen, terwijl decimalen (cijfers) geschatte histogrammen hebben. Zo kunt u een goed inzicht krijgen in de distributie van de gegevens.
@@ -168,7 +165,7 @@ Max| De maximum waarde van de kolom.
 Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
 Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
-Gemiddelde| Reken kundige gemiddelde of gemiddelde van de kolom.
+Gemiddeld| Reken kundige gemiddelde of gemiddelde van de kolom.
 Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
 Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
 Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
@@ -186,7 +183,7 @@ Inbegrepen | Hiermee geeft u op welke kolommen moeten worden toegevoegd voor de 
 Onderdeel type| Wijzig het waardetype voor de geselecteerde kolom.
 Toegerekend met| Selecteer welke waarde er ontbrekende waarden moeten worden toegerekend met in uw gegevens.
 
-![Formulier Azure Machine Learning Studio-taak type](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Aangepaste parametrisatie voor Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
 
@@ -228,7 +225,7 @@ Geautomatiseerde ML helpt u bij het implementeren van het model zonder code te s
     Veld| Waarde
     ----|----
     Naam| Voer een unieke naam in voor uw implementatie.
-    Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
+    Description| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
     Rekentype| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)*.
     Naam berekening| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
     Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.

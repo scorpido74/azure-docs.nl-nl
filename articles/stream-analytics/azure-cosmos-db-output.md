@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7832c53cfa9e0c5c3d0903c52bae8033402a2c0d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906254"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Cosmos DB uitvoer van Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Azure Cosmos DB uitvoer van Stream Analytics is momenteel niet beschikbaar in de
 
 In de volgende tabel worden de eigenschappen beschreven voor het maken van een Azure Cosmos DB uitvoer.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias | Een alias om deze uitvoer in uw Stream Analytics-query te verwijzen. |
 | Sink | Azure Cosmos DB. |
@@ -52,4 +52,4 @@ Zie [Azure Cosmos DB limieten](../azure-resource-manager/management/azure-subscr
 * [Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon](quick-create-azure-resource-manager.md)
 * [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)

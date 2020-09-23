@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650827"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898285"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelingsomgeving voor Azure Machine Learning configureren
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u een ontwikkel omgeving kunt configureren om met Azure Machine Learning te werken. Azure Machine Learning is platform neutraal. De enige harde vereiste voor uw ontwikkel omgeving is python 3. Een geïsoleerde omgeving zoals Anaconda of virtualenv wordt ook aanbevolen.
 
@@ -61,7 +61,7 @@ Er is niets om te installeren of te configureren voor een reken instantie.  Maak
 
 Zie [Compute instances](concept-compute-instance.md)voor meer informatie over reken instanties, inclusief het installeren van pakketten.
 
-Als u de reken kosten wilt stoppen, [stopt u het reken exemplaar](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
+Als u de reken kosten wilt stoppen, [stopt u het reken exemplaar](tutorial-1st-experiment-bring-data.md#clean-up-resources).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 

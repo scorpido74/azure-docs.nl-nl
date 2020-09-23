@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080745"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904805"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Het onboarden van Azure Security Center automatiseren met Power shell
 
@@ -29,9 +29,9 @@ Met behulp van de onboarding Azure Security Center met Power shell kunt u uw Azu
 
 Dit artikel bevat een voor beeld van een Power shell-script dat kan worden gewijzigd en in uw omgeving kan worden gebruikt om Security Center in uw abonnementen uit te vouwen. 
 
-In dit voor beeld wordt Security Center ingeschakeld voor een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en worden de aanbevolen instellingen toegepast die een hoog niveau van beveiliging bieden, door de standaard-laag van Security Center te implementeren. Dit biedt geavanceerde mogelijkheden voor bedreigings beveiliging en detectie:
+In dit voor beeld wordt Security Center ingeschakeld voor een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en worden de aanbevolen instellingen toegepast die een hoog niveau van beveiliging bieden, door Azure Defender in te scha kelen. Dit biedt geavanceerde mogelijkheden voor bedreigings beveiliging en detectie:
 
-1. Stel het [Security Center standaard beveiligings niveau in](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Schakel [Azure Defender](azure-defender.md)in. 
  
 2. Stel de Log Analytics werk ruimte in waarnaar de Log Analytics-agent de verzamelde gegevens gaat verzenden op de virtuele machines die zijn gekoppeld aan het abonnement. in dit voor beeld is dit een bestaande door de gebruiker gedefinieerde werk ruimte (myWorkspace).
 
@@ -61,7 +61,7 @@ Deze stappen moeten worden uitgevoerd voordat u de Security Center-cmdlets uitvo
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. Optioneel: het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
+1. Optioneel: Stel het dekkings niveau (Azure Defender aan/uit) van de abonnementen in. Indien niet gedefinieerd, is Defender uitgeschakeld:
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
@@ -98,7 +98,7 @@ U kunt deze Power shell-cmdlets nu met automatiserings scripts gebruiken om op e
 
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 Zie het volgende artikel voor meer informatie over hoe u Power shell kunt gebruiken om onboarding naar Security Center te automatiseren:
 
 * [AZ. Security](https://docs.microsoft.com/powershell/module/az.security)

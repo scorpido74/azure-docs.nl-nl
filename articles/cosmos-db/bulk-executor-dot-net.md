@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 829ddc0b63031722cdcb572a2833926a7837d05d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004116"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975884"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Gebruik de bulk-uitvoerder .NET-bibliotheek voor het uitvoeren van bulk bewerkingen in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ De bibliotheek voor bulk-uitvoering wordt momenteel alleen ondersteund door de A
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).
+* U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticate-requests).
 
 * Maak een Azure Cosmos DB SQL-API-account met behulp van de stappen in het gedeelte [Database account maken](create-sql-api-dotnet.md#create-account) van het artikel .net quick start.
 
@@ -93,7 +93,7 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. De toepassing roept de BulkImportAsync-API aan. De .NET-bibliotheek biedt twee overbelasting van de API voor bulk import: een die een lijst met geserialiseerde JSON-documenten accepteert en de andere die een lijst met gedeserialiseerd POCO-documenten accepteert. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet)voor meer informatie over de definities van elk van deze overbelaste methoden.
+5. De toepassing roept de BulkImportAsync-API aan. De .NET-bibliotheek biedt twee overbelasting van de API voor bulk import: een die een lijst met geserialiseerde JSON-documenten accepteert en de andere die een lijst met gedeserialiseerd POCO-documenten accepteert. Raadpleeg de [API-documentatie](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)voor meer informatie over de definities van elk van deze overbelaste methoden.
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -125,11 +125,11 @@ De toepassing ' BulkImportSample ' genereert wille keurige documenten en importe
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Gegevens bulksgewijs bijwerken in uw Azure Cosmos-account
 
-U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In dit voor beeld stelt u het `Name` veld in op een nieuwe waarde en verwijdert u het `Description` veld uit de bestaande documenten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor de volledige set met ondersteunde update bewerkingen.
+U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In dit voor beeld stelt u het `Name` veld in op een nieuwe waarde en verwijdert u het `Description` veld uit de bestaande documenten. Raadpleeg de [API-documentatie](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)voor de volledige set met ondersteunde update bewerkingen.
 
 1. Ga naar de map ' BulkUpdateSample ' en open het bestand ' BulkUpdateSample. SLN '.  
 
-2. Definieer de update-items samen met de bijbehorende veld Update bewerkingen. In dit voor beeld gaat u gebruiken `SetUpdateOperation` om het veld bij te werken `Name` en `UnsetUpdateOperation` het `Description` veld uit alle documenten te verwijderen. U kunt ook andere bewerkingen uitvoeren, zoals het ophogen van een document veld met een specifieke waarde, het pushen van specifieke waarden naar een matrix veld of het verwijderen van een specifieke waarde uit een matrix veld. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)voor meer informatie over de verschillende methoden van de API voor bulksgewijs bijwerken.
+2. Definieer de update-items samen met de bijbehorende veld Update bewerkingen. In dit voor beeld gaat u gebruiken `SetUpdateOperation` om het veld bij te werken `Name` en `UnsetUpdateOperation` het `Description` veld uit alle documenten te verwijderen. U kunt ook andere bewerkingen uitvoeren, zoals het ophogen van een document veld met een specifieke waarde, het pushen van specifieke waarden naar een matrix veld of het verwijderen van een specifieke waarde uit een matrix veld. Raadpleeg de [API-documentatie](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)voor meer informatie over de verschillende methoden van de API voor bulksgewijs bijwerken.
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -146,7 +146,7 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
    }
    ```
 
-3. De toepassing roept de BulkUpdateAsync-API aan. Raadpleeg de [API-documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)voor meer informatie over de definitie van de BulkUpdateAsync-methode.  
+3. De toepassing roept de BulkUpdateAsync-API aan. Raadpleeg de [API-documentatie](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true)voor meer informatie over de definitie van de BulkUpdateAsync-methode.  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(

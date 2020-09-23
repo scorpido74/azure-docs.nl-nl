@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager wacht woord instellen op uw Azure Stack Edge GPU-apparaat
-description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge GPU met behulp van Azure PowerShell.
+title: Azure Resource Manager wacht woord instellen op uw Azure Stack Edge Pro GPU-apparaat
+description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge Pro GPU met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254148"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904488"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>Azure Resource Manager wacht woord instellen op Azure Stack Edge GPU-apparaat
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Resource Manager wacht woord instellen op Azure Stack Edge Pro GPU-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ De procedure voor het instellen van het wacht woord kan verschillen, afhankelijk
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Gebruik de hierboven gegenereerde beveiligde teken reeksen als para meters in de cmdlet Set-AzDataBoxEdgeUser om het wacht woord opnieuw in te stellen. Gebruik dezelfde resource groep die u hebt gebruikt bij het maken van de Azure Stack EDGE/Data Box Gateway resource.
+    Gebruik de hierboven gegenereerde beveiligde teken reeksen als para meters in de cmdlet Set-AzDataBoxEdgeUser om het wacht woord opnieuw in te stellen. Gebruik dezelfde resource groep die u hebt gebruikt bij het maken van de Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: aad160f8a4ec96a1e0e627684c598062079b57e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896309"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -63,11 +63,11 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
    
 1. Zoek en selecteer in de portalzoekbalk de Azure Database for MySQL server die u hebt gemaakt, zoals **mydemoserver**.
    
-   ![Servernaam van Azure Database for MySQL](./media/connect-python/1_server-overview-name-login.png)
+   :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
    
 1. Ga naar de pagina **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord op deze pagina opnieuw instellen.
    
-   ![Servernaam van Azure Database for MySQL](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 ## <a name="run-the-python-examples"></a>De Python-voorbeelden uitvoeren
 

@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278136"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905479"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
 In Azure Security Center zijn er diverse waarschuwingen voor veel verschillende resource typen. Security Center genereert waarschuwingen voor resources die zijn geïmplementeerd op Azure en ook voor resources die zijn geïmplementeerd op on-premises en hybride Cloud omgevingen.
 
-Beveiligings waarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar in de laag standaard van Azure Security Center. Er is een gratis proefversie beschikbaar. U kunt de pagina **prijzen &-instellingen** bijwerken. Meer informatie over [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
+Beveiligings waarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar met Azure Defender. Er is een gratis proefversie beschikbaar. U kunt de pagina **prijzen &-instellingen** bijwerken. Meer informatie over [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="respond-to-todays-threats"></a>Reageer op de bedreigingen <a name="respond-threats"> </a> van vandaag
 
@@ -45,7 +45,7 @@ Met behulp van incidenten Security Center biedt u één weer gave van een aanval
 
 ## <a name="how-does-security-center-detect-threats"></a>Hoe detecteert Security Center bedreigingen? <a name="detect-threats"> </a>
 
-Beveiligingsonderzoekers van Microsoft zijn voortdurend op zoek naar bedreigingen. Vanwege de wereld wijde aanwezigheid van micro soft in de Cloud en on-premises, hebben ze toegang tot een expansieve,-set telemetrie. Dankzij de uitgebreide en gevarieerde verzameling gegevens sets kunt u nieuwe aanvals patronen en-trends detecteren in de on-premises consumenten-en bedrijfs producten, evenals de onlineservices. Als gevolg hiervan kan Security Center de detectie-algoritmen snel bijwerken wanneer aanvallers met nieuwe en steeds meer geavanceerde aanvallen komen. Met deze benadering kunt u de snel veranderende bedreigingen bijhouden.
+Beveiligingsonderzoekers van Microsoft zijn voortdurend op zoek naar bedreigingen. Vanwege onze wereld wijde aanwezigheid in de Cloud en on-premises, hebben we toegang tot een expansieve, set telemetrie. Dankzij de uitgebreide en gevarieerde verzameling gegevens sets kunnen wij nieuwe aanvals patronen en trends ontdekken over onze on-premises consumenten-en bedrijfs producten, evenals onze onlineservices. Als gevolg hiervan kan Security Center de detectie-algoritmen snel bijwerken wanneer aanvallers met nieuwe en steeds meer geavanceerde aanvallen komen. Met deze benadering kunt u de snel veranderende bedreigingen bijhouden.
 
 Security Center verzamelt, analyseert en integreert de logboek gegevens van uw Azure-resources en het netwerk om echte bedreigingen te detecteren en fout-positieven te verminderen. Het werkt ook met verbonden partner oplossingen, zoals firewall-en eindpunt beveiligings oplossingen. Security Center analyseert deze gegevens, vaak het correleren van informatie uit meerdere bronnen, om bedreigingen te identificeren.
 
@@ -90,6 +90,5 @@ Deze gecombineerde inspanningen culminate in nieuwe en verbeterde detecties, die
 
 In dit artikel hebt u geleerd over de verschillende soorten waarschuwingen die beschikbaar zijn in Security Center. Zie voor meer informatie:
 
-* [Beveiliging tegen bedreigingen in azure Security Center](threat-protection.md) : een korte beschrijving van de bronnen van de beveiligings waarschuwingen die worden weer gegeven door Azure Security Center 
-* **Beveiligings waarschuwingen in azure-activiteiten logboek** -naast de beschik baarheid van de Azure portal of programmatisch, worden beveiligings waarschuwingen en incidenten gecontroleerd als gebeurtenissen in [Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Zie [beveiligings waarschuwingen in azure-activiteiten logboek](https://go.microsoft.com/fwlink/?linkid=2114113) voor meer informatie over het gebeurtenis schema
+- **Beveiligings waarschuwingen in azure-activiteiten logboek** -naast de beschik baarheid van de Azure portal of programmatisch, worden beveiligings waarschuwingen en incidenten gecontroleerd als gebeurtenissen in [Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Zie [beveiligings waarschuwingen in azure-activiteiten logboek](https://go.microsoft.com/fwlink/?linkid=2114113) voor meer informatie over het gebeurtenis schema
 

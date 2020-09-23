@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904840"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -120,7 +120,7 @@ Beleidsregels van Security Center bevatten de volgende onderdelen:
 - [Gegevensverzameling](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): instellingen voor configuratie van agent en verzamelen van gegevens.
 - [Beveiligings beleid](https://docs.microsoft.com/azure/security-center/security-center-policies): een [Azure Policy](../governance/policy/overview.md) dat bepaalt welke besturings elementen worden bewaakt en aanbevolen door Security Center, of gebruik Azure Policy om nieuwe definities te maken, aanvullende beleids regels te definiëren en beleid toe te wijzen aan verschillende beheer groepen.
 - [E-mailmeldingen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): instellingen voor contactpersonen en meldingen voor beveiliging.
-- [Prijscategorie](https://docs.microsoft.com/azure/security-center/security-center-pricing): keuze uit de prijscategorie Gratis of Standaard, die bepaalt welke functies van Security Center beschikbaar zijn voor resources binnen het bereik (kan worden opgegeven voor abonnementen, resourcegroepen en werkruimten).
+- [Prijs categorie](https://docs.microsoft.com/azure/security-center/security-center-pricing): met of zonder Azure Defender waarmee wordt bepaald welke Security Center-functies beschikbaar zijn voor resources in het bereik (kan worden opgegeven voor abonnementen, resource groepen en werk ruimten).
 
 > [!NOTE]
 > Het opgeven van een contactpersoon voor beveiliging zorgt ervoor dat Azure de juiste persoon in uw organisatie kan bereiken als er zich een beveiligingsincident voordoet. Lees [Contactgegevens voor beveiliging verstrekken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) voor meer informatie over het inschakelen van deze mogelijkheid.
@@ -158,12 +158,12 @@ In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-we
 Voor werkruimten die zijn gemaakt door Azure Security Center worden gegevens 30 dagen bewaard. Voor bestaande werkruimten is de bewaarperiode gebaseerd op de prijscategorie van de werkruimte. Als u wilt, kunt u ook een bestaande werkruimte gebruiken.
 
 > [!NOTE]
-> Microsoft doet er alles aan om de privacy van gegevens te beschermen en deze gegevens te beveiligen. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service. Lees [Gegevensbeveiliging van Azure Security Center](security-center-data-security.md) voor meer informatie over de verwerking van gegevens en privacy.
+> Micro soft maakt sterke verplichtingen voor het beschermen van de privacy en beveiliging van deze gegevens. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service. Lees [Gegevensbeveiliging van Azure Security Center](security-center-data-security.md) voor meer informatie over de verwerking van gegevens en privacy.
 >
 
 ## <a name="onboarding-non-azure-resources"></a>Onboarding van niet-Azure-resources
 
-Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. Lees [Onboarding to Azure Security Center Standard for enhanced security](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers) (Onboarding bij Azure Security Center Standard voor een betere beveiliging) voor meer informatie over het onboarden van niet-Azure-resources.
+Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. Lees [onboarding van niet-Azure-computers](quickstart-onboard-machines.md) voor meer informatie over het onboarden van niet-Azure-resources.
 
 ## <a name="ongoing-security-monitoring"></a>Continue beveiligingsbewaking
 Na de eerste configuratie en toepassing van aanbevelingen voor Security Center, komen in de volgende stap de operationele processen voor Security Center ter sprake.
@@ -191,7 +191,7 @@ U moet ook regel matig bestaande resources controleren op wijzigingen in de conf
 
 Als onderdeel van uw beveiligingsbeleid moet u preventieve maatregelen nemen om de toegang tot virtuele machines te beperken en te bepalen welke toepassingen mogen worden uitgevoerd op virtuele machines. Door beperkingen in te stellen voor het inkomende verkeer naar uw VM's in Azure, vermindert u de blootstelling aan aanvallen en kunnen gebruikers tegelijkertijd eenvoudig verbinding maken met virtuele machines wanneer dit nodig is. Gebruik [just-in-time-VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) -toegang om de toegang tot uw vm's te verharden.
 
-U kunt [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) gebruiken om te beperken welke toepassingen kunnen worden uitgevoerd op uw virtuele machines die zich in azure bevinden. Met andere voor delen kunt u uw Vm's beschermen tegen malware. Security Center analyseert processen die worden uitgevoerd in de VM met behulp van machine learning, om u te helpen bij het maken van white list-regels.
+U kunt [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) gebruiken om te beperken welke toepassingen kunnen worden uitgevoerd op uw virtuele machines die zich in azure bevinden. Met andere voor delen kunt u uw Vm's beschermen tegen malware. Security Center analyseert processen die worden uitgevoerd in de VM met behulp van machine learning om regels voor het toestaan van vermeldingen te maken.
 
 
 ## <a name="incident-response"></a>Reageren op incidenten
@@ -199,7 +199,7 @@ Security Center detecteert en waarschuwt voor bedreigingen wanneer deze optreden
 
 Hoewel dit artikel niet het doel is om u te helpen bij het maken van uw eigen incidenten plan, gaan we Microsoft Azure beveiligings reactie in de levens cyclus van de Cloud gebruiken als de basis voor de reactie fase van een incident. In het volgende diagram ziet u de fasen:
 
-![Verdachte activiteit](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Fasen van de reactie op incidenten in de Cloud levenscyclus](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > U kunt de [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) van het National Institute of Standards and Technology (NIST) gebruiken als richtlijn om uw eigen plan te ontwikkelen.

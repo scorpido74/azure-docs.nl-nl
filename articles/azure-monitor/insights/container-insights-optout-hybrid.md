@@ -3,12 +3,12 @@ title: Stoppen met het bewaken van uw hybride Kubernetes-cluster | Microsoft Doc
 description: In dit artikel wordt beschreven hoe u de bewaking van uw hybride Kubernetes-cluster met Azure Monitor voor containers kunt stoppen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091195"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986052"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Het bewaken van uw hybride cluster stoppen
 
@@ -84,6 +84,25 @@ Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
 
+#### <a name="using-service-principal"></a>Service-Principal gebruiken
+Het script *disable-monitoring.ps1* maakt gebruik van de aanmelding voor interactieve apparaten. Als u de voor keur geeft aan niet-interactieve aanmelding, kunt u een bestaande Service-Principal gebruiken of een nieuwe maken die de vereiste machtigingen heeft, zoals wordt beschreven in [vereisten](container-insights-enable-arc-enabled-clusters.md#prerequisites). Als u de Service-Principal wilt gebruiken, moet u $servicePrincipalClientId, $servicePrincipalClientSecret en $tenantId para meters door geven aan de waarden van de service-principal die u wilt gebruiken voor enable-monitoring.ps1 script.
+
+```powershell
+$subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
+$servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
+
+$servicePrincipalClientId =  $servicePrincipal.ApplicationId.ToString()
+$servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $servicePrincipal.Secret).Password
+$tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
+```
+
+Bijvoorbeeld:
+
+```powershell
+\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
+```
+
+
 ### <a name="using-bash"></a>Bash gebruiken
 
 1. Down load het script en sla het op in een lokale map die uw cluster configureert met de invoeg toepassing voor bewaking met behulp van de volgende opdrachten:
@@ -117,6 +136,24 @@ Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
+
+#### <a name="using-service-principal"></a>Service-Principal gebruiken
+De bash script *Disable-monitoring.sh* maakt gebruik van de aanmelding van het interactieve apparaat. Als u de voor keur geeft aan niet-interactieve aanmelding, kunt u een bestaande Service-Principal gebruiken of een nieuwe maken die de vereiste machtigingen heeft, zoals wordt beschreven in [vereisten](container-insights-enable-arc-enabled-clusters.md#prerequisites). Als u de Service-Principal wilt gebruiken, moet u de waarden voor client-id,--client-Secret en--Tenant-id van de service-principal die u wilt gebruiken voor het *Enable-monitoring.sh* bash-script door geven.
+
+```bash
+subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
+servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${subscriptionId}")
+servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
+
+servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
+tenantId=$(echo $servicePrincipal | jq -r '.tenant')
+```
+
+Bijvoorbeeld:
+
+```bash
+bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

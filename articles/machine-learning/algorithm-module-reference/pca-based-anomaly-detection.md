@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749484"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898464"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>Module voor afwijkings detectie op basis van PCA
 
-In dit artikel wordt beschreven hoe u de module voor anomalie detectie op basis van PCA in Azure Machine Learning Designer (preview) gebruikt om een anomalie detectie model te maken op basis van Principal component Analysis (PCA).
+In dit artikel wordt beschreven hoe u de module voor afwijkings detectie op basis van PCA in Azure Machine Learning Designer kunt gebruiken om een anomalie detectie model te maken op basis van Principal component Analysis (PCA).
 
 Deze module helpt u bij het bouwen van een model in scenario's waarin het eenvoudig is om trainings gegevens uit een klasse op te halen, zoals geldige trans acties, maar moeilijk voldoende voor beelden van de doel afwijkingen te verkrijgen. 
 
@@ -109,4 +109,4 @@ Voor elke nieuwe invoer berekent de afwijkende detector eerst de projectie op de
 
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 
-Zie [uitzonde ringen en fout codes voor de ontwerp functie (preview)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.
+Zie [uitzonde ringen en fout codes voor de ontwerp functie](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.

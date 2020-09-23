@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 773a05b911bc8e785957b5cf93700a361dc621ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651130"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905707"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning omgevingen zijn een inkapseling van de omgeving waarin uw machine learning-training zich voordoet. Hiermee worden de Python-pakketten, omgevings variabelen en software-instellingen voor uw trainings-en Score scripts opgegeven. Ze specificeren ook uitvoerings tijden (python, Spark of docker). De omgevingen zijn beheerde en geversiede entiteiten in uw Machine Learning-werk ruimte waarmee u reproduceer bare, audit bare en Portable machine learning werk stromen kunt maken in verschillende reken doelen.
 

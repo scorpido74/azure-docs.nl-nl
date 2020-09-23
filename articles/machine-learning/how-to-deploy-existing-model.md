@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905659"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Uw bestaande model implementeren met Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u een machine learning model dat u hebt getraind buiten Azure Machine Learning kunt registreren en implementeren. U kunt implementeren als een webservice of op een IoT Edge apparaat.  Na de implementatie kunt u uw model controleren en gegevens drift detecteren in Azure Machine Learning. 
 
@@ -27,7 +27,7 @@ Zie [machine learning modellen beheren, implementeren en bewaken](concept-model-
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Een Azure Machine Learning-werk ruimte](how-to-manage-workspace.md)
+* [Een Azure Machine Learning-werkruimte](how-to-manage-workspace.md)
   + Bij python-voor beelden wordt ervan uitgegaan dat de `ws` variabele is ingesteld op uw Azure machine learning-werk ruimte. Raadpleeg de [documentatie van Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=trueworkspace)voor meer informatie over het maken van een verbinding met de werk ruimte.
   
   + CLI-voor beelden gebruiken tijdelijke aanduidingen van `myworkspace` en `myresourcegroup` , die u moet vervangen door de naam van uw werk ruimte en de resource groep waarin deze is opgenomen.

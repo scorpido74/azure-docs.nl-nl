@@ -1,6 +1,6 @@
 ---
-title: Upgraden naar de prijscategorie Standard - Azure Security Center
-description: In deze quickstart wordt beschreven hoe u upgradet naar de prijscategorie Standard van Security Center voor extra beveiliging.
+title: Upgraden naar Azure Defender - Azure Security Center
+description: In deze quickstart wordt beschreven hoe u upgradet naar Azure Defender van Security Center voor extra beveiliging.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,106 +14,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226006"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895786"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Quickstart: Uw Azure-abonnement onboarden voor Security Center Standard
-Azure Security Center biedt geïntegreerd beveiligingsbeheer en bedreigingsbeveiliging voor uw verschillende hybride cloudworkloads. De prijscategorie Gratis biedt beperkte beveiliging voor alleen uw Azure-resources, maar de prijscategorie Standard biedt deze mogelijkheden ook voor on-premises en andere clouds. Standard van Security Center helpt u beveiligingsproblemen te vinden en op te lossen, toegangs- en toepassingsbesturingselementen toe te passen om schadelijke activiteiten te blokkeren, bedreigingen te detecteren met behulp van analyses en gegevens en snel te reageren bij aanvallen. U kunt Security Center Standard kosteloos proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+# <a name="quickstart-setting-up-azure-security-center"></a>Quickstart: Azure Security Center instellen
 
-In dit artikel gaat u upgraden naar de prijscategorie Standard voor extra beveiliging en de Log Analytics-agent installeren op uw virtuele machines om te controleren op beveiligingsproblemen en bedreigingen.
+Azure Security Center biedt geïntegreerd beveiligingsbeheer en bedreigingsbeveiliging voor uw verschillende hybride cloudworkloads. De gratis functies bieden beperkte beveiliging voor alleen uw Azure-resources, maar Azure Defender biedt deze mogelijkheden ook voor on-premises en andere clouds. Azure Defender van Security Center helpt u beveiligingsproblemen te vinden en op te lossen, toegangs- en toepassingsbesturingselementen toe te passen om schadelijke activiteiten te blokkeren, bedreigingen te detecteren met behulp van analyses en gegevens en snel te reageren bij aanvallen. U kunt Azure Defender gratis uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+
+In dit artikel gaat u upgraden naar Azure Defender voor extra beveiliging en de Log Analytics-agent installeren op uw virtuele machines om te controleren op beveiligingsproblemen en bedreigingen.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
 
-Als u een abonnement wilt upgraden naar de prijscategorie Standard, moet de rol Abonnementhouder, Inzender of Beveiligingsbeheerder aan u zijn toegewezen.
+Als u Azure Defender wilt inschakelen voor een abonnement, moet de rol Abonnementhouder, Inzender of Beveiligingsbeheerder aan u zijn toegewezen.
 
-## <a name="enable-your-azure-subscription"></a>Uw Azure-abonnement inschakelen
+
+## <a name="open-security-center-for-the-first-time"></a>Security Center voor de eerste keer openen
 
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
-1. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
+1. Selecteer **Security Center** in het menu van de portal. 
 
-   ![Overzicht van Security Center][2]
+    De overzichtspagina van Security Center wordt geopend.
 
-**Security Center - overzicht** biedt een duidelijk overzicht van de beveiligingsstatus van uw hybride cloudworkloads, zodat u de beveiliging van uw workloads kunt bepalen en beoordelen en risico's kunt herkennen en verminderen. Security Center activeert automatisch de Azure-abonnementen naar de Gratis laag waarvoor u of een andere abonnementsgebruiker niet eerder onboarding hebt uitgevoerd.
+    :::image type="content" source="./media/security-center-get-started/overview.png" alt-text="Overzichtsdashboard van Security Center" lightbox="./media/security-center-get-started/overview.png":::
 
-U kunt de lijst met abonnementen bekijken en filteren door op het menu-item **Abonnementen** te klikken. Security Center begint met het beoordelen van de beveiliging van deze abonnementen om beveiligingsproblemen te identificeren. U kunt het beveiligingsbeleid wijzigen om de soorten evaluaties aan te passen. Een beveiligingsbeleid definieert de gewenste configuratie van uw workloads en helpt ervoor te zorgen dat aan de beveiligingsvereisten van het bedrijf of aan regelgeving wordt voldaan.
+**Security Center - overzicht** biedt een duidelijk overzicht van de beveiligingsstatus van uw hybride cloudworkloads, zodat u de beveiliging van uw workloads kunt bepalen en beoordelen en risico's kunt herkennen en verminderen. Security Center activeert automatisch, en gratis, de Azure-abonnementen waarvoor u of een andere abonnementsgebruiker niet eerder onboarding hebt uitgevoerd.
+
+U kunt de lijst met abonnementen bekijken en filteren door het menu-item **Abonnementen** te selecteren. Security Center past de weergave aan om het beveiligingspostuur van de geselecteerde abonnementen weer te geven. 
 
 Binnen enkele minuten nadat u Security Center voor het eerst hebt gestart, ziet u mogelijk het volgende:
 
-- **Aanbevelingen** voor manieren om de beveiliging van uw Azure-abonnementen te verbeteren. Als u op de tegel **Aanbevelingen** klikt, wordt er een gerangschikte lijst geopend.
-- Een overzicht van de resources **Compute en apps**, **Netwerken**, **Gegevensbeveiliging** en **Identiteit en toegang** die nu worden beoordeeld in Security Center, samen met de beveiligingsstatus van elke resource.
+- **Aanbevelingen** voor manieren om de beveiliging van uw verbonden resources te verbeteren.
+- Een overzicht van uw resources die nu worden beoordeeld door Security Center en het beveiligingspostuur van elke resource.
 
-Voltooi de stappen hieronder om naar de prijscategorie Standard te upgraden en de Log Analytics-agent te installeren om zo volledig van Security Center te profiteren.
+Voltooi de stappen hieronder om Azure Defender in te schakelen en de Log Analytics-agent te installeren om zo volledig van Security Center te profiteren.
 
 
-## <a name="upgrade-to-the-standard-tier"></a>Upgraden naar de prijscategorie Standard
+## <a name="enable-azure-defender"></a>Azure Defender inschakelen
 
-Voor de snelstartgidsen en zelfstudies van Security Center moet u upgraden naar de prijscategorie Standard. Er is een gratis proefversie van Security Center Standard. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. 
+Voor de quickstarts en zelfstudies van Security Center moet u Azure Defender inschakelen. Er is een gratis proefversie voor 30 dagen beschikbaar. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. 
 
 1. Selecteer **Aan de slag** in de zijbalk van Security Center.
- 
-   ![Aan de slag](./media/security-center-get-started/get-started-upgrade-tab.png)
+
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Tabblad Upgrade van de pagina Aan de slag"::: 
 
     Op het tabblad **Upgrade** worden abonnementen en werkruimten vermeld die in aanmerking komen voor onboarding.
 
-1. Selecteer in de lijst **Werkruimten selecteren waarvoor de prijscategorie Standard moet worden ingeschakeld** de werkruimten waarvoor een upgrade moet worden uitgevoerd.
+1. Selecteer in de lijst **Werkruimten selecteren waarvoor Azure Defender moet worden ingeschakeld** de werkruimten waarvoor een upgrade moet worden uitgevoerd.
+   - Als u abonnementen en werkruimten selecteert die niet in aanmerking komen voor een proefversie, wordt de volgende stap het uitvoeren van een upgrade en worden er kosten in rekening gebracht.
+   - Als u een werkruimte selecteert die in aanmerking komt voor een gratis proefversie, wordt in de volgende stap een proefversie gestart.
+1. Selecteer **Upgrade** om Azure Defender in te schakelen.
 
+## <a name="enable-automatic-data-collection"></a>Automatische gegevensverzameling inschakelen
+Security Center verzamelt gegevens van uw machines om deze te controleren op beveiligingsproblemen en bedreigingen. De gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Security Center maakt standaard een nieuwe werkruimte voor u.
 
-    > [!TIP]
-    > Als u een werkruimte selecteert die in aanmerking komt voor een gratis proefversie, wordt in de volgende stap een proefversie gestart. Als de werkruimten niet in aanmerking komen voor een proefversie, wordt de upgrade uitgevoerd en worden er kosten in rekening gebracht.
-
-1. Selecteer **Upgraden** om de geselecteerde werkruimten te upgraden naar de prijscategorie Standard.
-
-
-## <a name="automate-data-collection"></a>Gegevensverzameling automatiseren
-Security Center verzamelt gegevens van uw Azure-VM's en niet-Azure-computers om te controleren op beveiligingsproblemen en bedreigingen. De gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende configuraties en gebeurtenislogboeken met betrekking tot beveiliging van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Security Center maakt standaard een nieuwe werkruimte voor u.
-
-Als automatisch inrichten is ingeschakeld, installeert Security Center de Log Analytics-agent op alle ondersteunde Azure-VM's en op nieuwe VM's. Automatische inrichting wordt sterk aanbevolen.
+Als automatisch inrichten is ingeschakeld, installeert Security Center de Log Analytics-agent op alle ondersteunde machines en op nieuwe machines. Automatische inrichting wordt sterk aanbevolen.
 
 Automatische inrichting van de Log Analytics-agent inschakelen:
 
-1. Selecteer in het hoofdmenu van Security Center de optie **Prijzen en instellingen**.
-1. Klik in de rij van het abonnement op het abonnement waarvoor u de instellingen wilt wijzigen.
-1. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
+1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
+1. Selecteer het betreffende abonnement.
+1. Stel op de pagina **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
 1. Selecteer **Opslaan**.
----
-  ![Automatische inrichting inschakelen][6]
 
-Security Center kan deze nieuwe inzichten in uw Azure-VM's gebruiken om extra aanbevelingen te doen met betrekking tot de updatestatus van het systeem, de beveiligingsconfiguraties van het besturingssysteem en de eindpuntbeveiliging. Ook kan Security Center aanvullende beveiligingswaarschuwingen genereren.
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Automatische inrichting van de Log Analytics-agent inschakelen":::
 
-  ![Aanbevelingen][8]
+>[!TIP]
+> Als een werkruimte moet worden ingericht, kan de installatie van de agent tot wel 25 minuten duren.
 
-## <a name="clean-up-resources"></a>Resources opschonen
-Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende quickstarts en zelfstudies ook wilt doornemen, blijf dan de prijscategorie Standard gebruiken en houd automatische inrichting ingeschakeld. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
-
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
-2. Klik op het abonnement dat u wilt wijzigen naar de prijscategorie Gratis.
-3. Selecteer **Prijscategorie** en vervolgens **Gratis** om het abonnement te wijzigen van Standard in Gratis.
-5. Selecteer **Opslaan**.
-
-Als u automatisch inrichten wilt uitschakelen:
-
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
-2. Klik op het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
-3. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Uit**.
-4. Selecteer **Opslaan**.
+Als de agent is geïmplementeerd op uw machines, kan Security Center extra aanbevelingen doen met betrekking tot de updatestatus van het systeem, de beveiligingsconfiguraties van het besturingssysteem en de eindpuntbeveiliging. Ook kan Security Center aanvullende beveiligingswaarschuwingen genereren.
 
 >[!NOTE]
-> Wanneer u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
->
+> Wanneer u automatische inrichting instelt op **Uit**, wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent al is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze quickstart hebt u geüpgraded naar de prijscategorie Standard en de Log Analytics-agent ingericht voor geïntegreerd beveiligingsbeheer en bescherming tegen bedreigingen voor uw hybride cloudworkloads. Ga naar de snelstartgids voor het onboarden van Windows-computers die zich on-premises en in andere clouds bevinden voor meer informatie over hoe u Security Center kunt gebruiken.
+In deze quickstart hebt u Azure Defender ingeschakeld en de Log Analytics-agent ingericht voor geïntegreerd beveiligingsbeheer en bescherming tegen bedreigingen voor uw hybride cloudworkloads. Ga naar de snelstartgids voor het onboarden van Windows-computers die zich on-premises en in andere clouds bevinden voor meer informatie over hoe u Security Center kunt gebruiken.
 
 > [!div class="nextstepaction"]
-> [Snelstart: Windows-computers onboarden naar Azure Security Center](quick-onboard-windows-computer.md)
+> [Snelstart: Niet-Azure-computers onboarden](quickstart-onboard-machines.md)
 
-Wilt u uw clouduitgaven optimaliseren en geld besparen?
+Wilt u optimaliseren en op uw cloudverbruik besparen?
 
 > [!div class="nextstepaction"]
 > [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

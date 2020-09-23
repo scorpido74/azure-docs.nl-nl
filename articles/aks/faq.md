@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927144"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905338"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -115,7 +115,7 @@ Om de stabiliteit van het systeem te beschermen en te voor komen dat aangepaste 
 
 Als u een belang rijke gebruiks situatie hebt om iets te implementeren op een uitvoeren-systeem (niet aanbevolen), wat u nodig hebt om te worden gedekt door uw aangepaste Admission-webhook, kunt u het onderstaande label of de aantekening toevoegen, zodat de toegangs afdwingt deze negeert.
 
-Label: ```"admissions.enforcer/disabled": "true"``` of aantekening:```"admissions.enforcer/disabled": true```
+Label: ```"admissions.enforcer/disabled": "true"``` of aantekening: ```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Is Azure Key Vault geïntegreerd met AKS?
 
@@ -163,7 +163,7 @@ Dit kan, maar AKS wordt dit niet aanbevolen. Upgrades moeten in het ideale geval
 
 Nee, verwijder alle knoop punten met de status mislukt of verwijder deze uit het cluster voordat u een upgrade uitvoert.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ik heb een cluster verwijderd, maar zie de fout`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ik heb een cluster verwijderd, maar zie de fout `[Errno 11001] getaddrinfo failed` 
 
 Dit wordt meestal veroorzaakt door gebruikers die een of meer netwerk beveiligings groepen (Nsg's) nog in gebruik hebben en aan het cluster zijn gekoppeld.  Verwijder ze en probeer opnieuw te verwijderen.
 
@@ -173,7 +173,11 @@ Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de 
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Mijn cluster werkte, maar u kunt plotseling geen LoadBalancers, Mount-Pvc's, enzovoort inrichten. 
 
-Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](./kubernetes-service-principal.md) en de AKS- [Update](./update-credentials.md).
+Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](./kubernetes-service-principal.md)  en de AKS- [Update](./update-credentials.md).
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>Kan ik mijn AKS-cluster op nul schalen?
+U kunt [een actief AKS-cluster volledig stoppen](start-stop-cluster.md)en besparen op de respectieve reken kosten. Daarnaast kunt u ook kiezen voor het [schalen of automatisch schalen van alle of specifieke `User` knooppunt groepen](scale-cluster.md#scale-user-node-pools-to-0) naar 0, waarbij alleen de benodigde cluster configuratie behouden blijft.
+U kunt [systeem knooppunt groepen](use-system-pools.md) niet rechtstreeks schalen naar 0.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kan ik de Api's voor de schaalset van de virtuele machine gebruiken om hand matig te schalen?
 
@@ -193,7 +197,7 @@ Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Slaat AKS klant gegevens buiten de regio van het cluster op?
 
-De functie voor het opslaan van klant gegevens in één regio is momenteel alleen beschikbaar in de regio Zuidoost-Azië (Singapore) van de Azië en Stille Oceaan geo. Voor alle andere regio's worden klant gegevens opgeslagen in geografische regio.
+De functie voor het opslaan van klant gegevens in één regio is momenteel alleen beschikbaar in de regio Zuidoost-Azië (Singapore) van de Azië en Stille Oceaan geo. Voor alle andere regio's worden klantgegevens opgeslagen in Geo.
 
 <!-- LINKS - internal -->
 

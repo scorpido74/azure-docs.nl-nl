@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74184245"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976004"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Externe bewakings gegevens visualiseren met behulp van Power BI
 
@@ -45,7 +45,7 @@ In deze zelf studie leert u hoe u uw gegevens voor uw externe bewakings oplossin
    - URI
    - Primaire sleutel
 
-     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![Scherm afbeelding toont een Azure Cosmos D B-account waarvoor het item Keys is geselecteerd.](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>De stroom instellen in Power BI
   

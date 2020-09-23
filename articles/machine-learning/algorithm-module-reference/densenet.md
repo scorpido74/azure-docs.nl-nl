@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898521"
 ---
 # <a name="densenet"></a>DenseNet
 
-In dit artikel wordt beschreven hoe u de **DenseNet** -module in azure machine learning Designer (preview) gebruikt om een classificatie model voor installatie kopieën te maken met behulp van de DenseNet-algoritme.  
+In dit artikel wordt beschreven hoe u de **DenseNet** -module in azure machine learning Designer kunt gebruiken om een classificatie model voor installatie kopieën te maken met behulp van de DenseNet-algoritme.  
 
 Deze classificatie-algoritme is een geclassificeerde leer methode en vereist een gegevensset met een label. Raadpleeg [converteren naar afbeelding Directory](convert-to-image-directory.md) module voor meer instructies over het ophalen van een gelabelde map met een afbeelding. U kunt het model trainen door het model en de map met de gelabelde afbeelding op te geven als invoer voor het [trainen van Pytorch-model](train-pytorch-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoer voorbeelden te voors pellen met behulp van [Score afbeeldings model](score-image-model.md).
 
@@ -49,11 +49,11 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Name             | Bereik | Type    | Standaard     | Description                              |
+| Name             | Bereik | Type    | Standaard     | Beschrijving                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Modelnaam       | Alle   | Modus    | densenet201 | Naam van een bepaalde densenet-structuur     |
-| Voortraind       | Alle   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
-| Geheugen efficiënt | Alle   | Boolean-waarde | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
+| Modelnaam       | Elk   | Modus    | densenet201 | Naam van een bepaalde densenet-structuur     |
+| Voortraind       | Elk   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
+| Geheugen efficiënt | Elk   | Boolean-waarde | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
 ###  <a name="output"></a>Uitvoer  
 

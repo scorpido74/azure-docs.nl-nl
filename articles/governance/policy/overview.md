@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044189"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905969"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -18,8 +18,7 @@ Veelvoorkomende use-cases voor Azure Policy zijn onder andere het implementeren 
 
 ## <a name="overview"></a>Overzicht
 
-Azure Policy evalueert resources in Azure door de eigenschappen van deze resources te vergelijken met bedrijfsregels. Deze bedrijfsregels, zoals beschreven in [JSON-indeling](./concepts/definition-structure.md), worden ook wel [beleidsdefinities](#policy-definition) genoemd. Om het beheer te vereenvoudigen, kunnen meerdere bedrijfsregels worden gegroepeerd in een [beleidsinitiatief](#initiative-definition) (ook wel een _policySet_ genoemd). Zodra uw bedrijfsregels zijn gemaakt, wordt de beleidsdefinitie of het initiatief [toegewezen](#assignments) aan elk bereik van resources dat door Azure wordt ondersteund, zoals [beheergroepen](../management-groups/overview.md), abonnementen, [resourcegroepen](../../azure-resource-manager/management/overview.md#resource-groups) of afzonderlijke resources. De toewijzing is van toepassing op alle resources binnen het [bereik](../../azure-resource-manager/management/overview.md#understand-scope) van deze toewijzing.
-Subbereiken kunnen zo nodig worden uitgesloten.
+Azure Policy evalueert resources in Azure door de eigenschappen van deze resources te vergelijken met bedrijfsregels. Deze bedrijfsregels, zoals beschreven in [JSON-indeling](./concepts/definition-structure.md), worden ook wel [beleidsdefinities](#policy-definition) genoemd. Om het beheer te vereenvoudigen, kunnen meerdere bedrijfsregels worden gegroepeerd in een [beleidsinitiatief](#initiative-definition) (ook wel een _policySet_ genoemd). Zodra uw bedrijfsregels zijn gemaakt, wordt de beleidsdefinitie of het initiatief [toegewezen](#assignments) aan elk bereik van resources dat door Azure wordt ondersteund, zoals [beheergroepen](../management-groups/overview.md), abonnementen, [resourcegroepen](../../azure-resource-manager/management/overview.md#resource-groups) of afzonderlijke resources. De toewijzing is van toepassing op alle resources binnen het [Resource Manager-bereik](../../azure-resource-manager/management/overview.md#understand-scope) van deze toewijzing. Subbereiken kunnen zo nodig worden uitgesloten. Zie [Bereik in Azure Policy](./concepts/scope.md) voor meer informatie.
 
 Azure Policy gebruikt een [JSON-indeling](./concepts/definition-structure.md) om de logica te vormen waarmee de evaluatie bepaalt of een resource compatibel is. Definities bevatten metagegevens en de beleidsregel. De gedefinieerde regel kan gebruikmaken van functies, parameters, logische operators, voorwaarden en eigenschaps[aliassen](./concepts/definition-structure.md#aliases) voor een precieze afstemming op het gewenste scenario. De beleidsregel bepaalt welke resources in het bereik van de toewijzing worden geëvalueerd.
 

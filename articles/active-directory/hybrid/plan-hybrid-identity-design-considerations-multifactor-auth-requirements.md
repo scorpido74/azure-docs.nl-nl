@@ -1,6 +1,6 @@
 ---
 title: Hybride identiteits ontwerp-vereisten voor multi-factor Authentication Azure | Microsoft Docs
-description: Met voorwaardelijk toegangs beheer controleert Azure Active Directory de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan. Zodra aan deze voor waarden wordt voldaan, wordt de gebruiker geverifieerd en krijgt deze toegang tot de toepassing.
+description: Met voorwaardelijk toegangs beheer verifieert Azure AD de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109297"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976050"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Multi-factor Authentication-vereisten voor uw hybride identiteits oplossing bepalen
 In deze wereld van mobiliteit, met gebruikers die toegang hebben tot gegevens en toepassingen in de Cloud en vanaf elk apparaat, is het beveiligen van deze gegevens het grootste geworden.  Elke dag is een nieuwe kop over een inbreuk op de beveiliging.  Hoewel er geen garantie is tegen dergelijke inbreuken, biedt multi-factor Authentication een extra beveiligingslaag om deze inbreuken te voor komen.

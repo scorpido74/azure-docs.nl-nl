@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905123"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Meer informatie over het implementeren van een model van Azure Machine Learning als een web-app in Azure App Service.
 
@@ -54,7 +54,7 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
 
 ## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 
-Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de basis items beschreven die nodig zijn voor een implementatie:
+Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de belangrijkste items beschreven die nodig zijn voor een implementatie:
 
 * Een __invoer script__. Met dit script worden aanvragen geaccepteerd, wordt de aanvraag met het model gescoord en worden de resultaten geretourneerd.
 
