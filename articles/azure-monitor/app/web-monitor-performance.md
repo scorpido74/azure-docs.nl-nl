@@ -4,12 +4,12 @@ description: Aan de slag met Application Insights. Analyseer het gebruik, de bes
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323448"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987146"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Prestaties in webtoepassingen controleren
 
@@ -112,11 +112,11 @@ U kunt de ervaring voor prestatie onderzoek gebruiken om trage bewerkingen in uw
 
 Om een beter beeld te krijgen van de gebruikers ervaringen voor deze bewerking, kunnen we een groter tijds bereik selecteren. We kunnen vervolgens ook minder tijd inzoomen op een specifiek tijd venster waarin de bewerking is vertraagd. In het volgende voor beeld is het tijds bereik van de standaard periode van 24 uur gewijzigd in een periode van zeven dagen en vervolgens ingezoomd op de 9:47 tot 12:47 tijd venster tussen di de twaalfde en de 13. Zowel de duur van de distributie als het aantal voorbeeld-en Profiler-traceringen zijn aan de rechter kant bijgewerkt.
 
-![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Scherm opname toont prestaties (preview) met drie duur pieken in 7 dagen bereik met een tijd venster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 Om in te zoomen op de trage ervaring, wordt de duur van de 95e en het 99e percentiel in de volgende stap in de tijd ingezoomd. Deze vertegenwoordigen de 4% van gebruikers interacties die traag zijn.
 
-![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Scherm afbeelding toont klanten/Details drie duur pieken in 7 dagen bereik met een tijd venster.](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 We kunnen de representatieve voor beelden nu bekijken, door te klikken op de knop voor beelden of door te klikken op de representatieve Profiler traceringen door op de knop Profiler traceringen. In dit voor beeld zijn er vier traceringen die zijn verzameld voor het ophalen van klanten/Details in het tijd venster en de duur van het bereik van de rente.
 
@@ -126,7 +126,7 @@ Soms bevindt het probleem zich niet in uw code, maar in een afhankelijkheid van 
 
 In de ervaring voor prestatie onderzoek ziet u relevante inzichten aan de kant van de voor beeld-set die u hebt gekozen om zich te richten op. De beste manier om alle beschik bare inzichten te bekijken, is om over te scha kelen naar een periode van 30 dagen en vervolgens algemeen te selecteren om inzicht te krijgen in alle bewerkingen voor de afgelopen maand.
 
-![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Scherm afbeelding toont prestaties (preview) met het algemene venster open en inzichten geselecteerd.](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen

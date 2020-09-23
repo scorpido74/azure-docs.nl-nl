@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033269"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907401"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hoge Beschik baarheid van grootschalige (Citus) configureren
 
@@ -23,13 +23,13 @@ Azure Database for PostgreSQL-grootschalige (Citus) biedt hoge Beschik baarheid 
 
 Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **Compute + Storage** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** van Nee naar Ja:
 
-![ha-schuif regelaar](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="ha-schuif regelaar":::
 
 Klik op de knop **Opslaan** om uw selectie toe te passen. Het inschakelen van HA kan enige tijd in beslag nemen, omdat de Server groep stand-by staat en gegevens streamt naar deze.
 
 Op het tabblad Overzicht voor de Server groep worden alle knoop punten en de bijbehorende stand-by weer **gegeven** , samen met een kolom met **hoge Beschik baarheid** , die aangeeft of ha voor elk knoop punt is ingeschakeld.
 
-![de kolom ha in het overzicht van de Server groep](./media/howto-hyperscale-high-availability/02-ha-column.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="de kolom ha in het overzicht van de Server groep":::
 
 ### <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Reken beheer van Azure Stack Edge GPU | Microsoft Docs
-description: Hierin wordt beschreven hoe u de instellingen voor Edge-berekening beheert, zoals trigger, modules, compute-configuratie weer geven, configuratie verwijderen via de Azure Portal op uw Azure Stack Edge GPU.
+title: Reken beheer van Azure Stack Edge Pro GPU | Microsoft Docs
+description: Hierin wordt beschreven hoe u de instellingen voor Edge-berekening beheert, zoals trigger, modules, compute-configuratie weer geven, configuratie verwijderen via de Azure Portal op uw Azure Stack Edge Pro GPU.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ea52c393ec9897d43714d69ff448038b65ee555
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890602"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge-gpu"></a>Reken kracht beheren op uw Azure Stack Edge GPU
+# <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Reken kracht beheren op uw Azure Stack Edge Pro GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u Compute beheert op uw Azure Stack-rand. U kunt de compute beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om modules, triggers en Compute-configuratie te beheren, en de lokale webinterface voor het beheren van de reken instellingen.
+In dit artikel wordt beschreven hoe u Compute beheert op uw Azure Stack Edge Pro. U kunt de compute beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om modules, triggers en Compute-configuratie te beheren, en de lokale webinterface voor het beheren van de reken instellingen.
 
 In dit artikel leert u het volgende:
 
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="manage-triggers"></a>Triggers beheren
 
-Gebeurtenissen zijn wat er gebeurt in uw cloud omgeving of op uw apparaat waarop u mogelijk actie wilt ondernemen. Wanneer bijvoorbeeld een bestand wordt gemaakt in een share, is dit een gebeurtenis. Triggers veroorzaken de gebeurtenissen. Voor uw Azure Stack Edge kunnen triggers worden in reactie op bestands gebeurtenissen of een schema.
+Gebeurtenissen zijn de dingen die gebeuren in uw cloudomgeving of op uw apparaat op basis waarvan u mogelijk actie wilt ondernemen. Wanneer bijvoorbeeld een bestand wordt gemaakt in een share, is dit een gebeurtenis. Triggers veroorzaken de gebeurtenissen. Voor uw Azure Stack Edge Pro kunnen triggers worden in reactie op bestands gebeurtenissen of een schema.
 
 - **Bestand**: deze triggers zijn in antwoord op bestands gebeurtenissen, zoals het maken van een bestand, het wijzigen van een bestand.
 - **Gepland**: deze triggers bevinden zich in antwoord op een schema dat u kunt definiëren met een begin datum, begin tijd en het herhalings interval.
@@ -74,7 +74,7 @@ Voer de volgende stappen uit in de Azure Portal om een trigger te verwijderen.
 
 2. Klik met de rechter muisknop en selecteer **verwijderen**.
 
-    ![Selecteer verwijderen](media/azure-stack-edge-j-series-manage-compute/delete-trigger-2.png)
+    ![Verwijderen selecteren](media/azure-stack-edge-j-series-manage-compute/delete-trigger-2.png)
 
 3. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
@@ -84,7 +84,7 @@ De lijst met triggers-updates om de verwijdering weer te geven.
 
 ## <a name="manage-compute-configuration"></a>Reken configuratie beheren
 
-Gebruik de Azure Portal om de compute-configuratie weer te geven, een bestaande Compute-configuratie te verwijderen of de compute-configuratie te vernieuwen om toegangs sleutels voor het IoT-apparaat en IoT Edge apparaat voor uw Azure Stack Edge te synchroniseren.
+Gebruik de Azure Portal om de compute-configuratie weer te geven, een bestaande Compute-configuratie te verwijderen of de compute-configuratie te vernieuwen om toegangs sleutels voor het IoT-apparaat en IoT Edge apparaat voor uw Azure Stack Edge Pro te synchroniseren.
 
 ### <a name="view-compute-configuration"></a>Compute-configuratie weer geven
 
@@ -113,11 +113,11 @@ Voer de volgende stappen uit in de Azure Portal om de bestaande Edge Compute-con
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-apparaat en toegangs sleutels voor IoT Edge apparaten synchroniseren
 
-Wanneer u Compute configureert op uw Azure Stack Edge, worden er een IoT-apparaat en een IoT Edge apparaat gemaakt. Aan deze apparaten worden automatisch symmetrische toegangs sleutels toegewezen. Als beveiligings best practice worden deze sleutels regel matig gedraaid via de IoT Hub-service.
+Wanneer u Compute op uw Azure Stack Edge Pro configureert, worden er een IoT-apparaat en een IoT Edge apparaat gemaakt. Aan deze apparaten worden automatisch symmetrische toegangs sleutels toegewezen. Als beveiligings best practice worden deze sleutels regel matig gedraaid via de IoT Hub-service.
 
 Als u deze sleutels wilt draaien, gaat u naar de IoT Hub-service die u hebt gemaakt en selecteert u het IoT-apparaat of het IoT Edge-apparaat. Elk apparaat heeft een primaire toegangs sleutel en secundaire toegangs sleutels. Wijs de primaire toegangs sleutel toe aan de secundaire toegangs sleutel en Genereer de primaire toegangs sleutel opnieuw.
 
-Als uw IoT-apparaat en IoT Edge-apparaatklassen zijn geroteerd, moet u de configuratie op uw Azure Stack rand vernieuwen om de nieuwste toegangs sleutels te verkrijgen. De synchronisatie helpt het apparaat de meest recente sleutels te verkrijgen voor uw IoT-apparaat en IoT Edge apparaat. Azure Stack Edge gebruikt alleen de primaire toegangs sleutels.
+Als uw IoT-apparaat en IoT Edge-apparaatklassen zijn geroteerd, moet u de configuratie op uw Azure Stack Edge Pro vernieuwen om de nieuwste toegangs sleutels te verkrijgen. De synchronisatie helpt het apparaat de meest recente sleutels te verkrijgen voor uw IoT-apparaat en IoT Edge apparaat. Azure Stack Edge Pro maakt alleen gebruik van de primaire toegangs sleutels.
 
 Voer de volgende stappen uit in de Azure Portal om de toegangs sleutels voor uw apparaat te synchroniseren.
 
@@ -133,4 +133,4 @@ Voer de volgende stappen uit in de Azure Portal om de toegangs sleutels voor uw 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [het oplossen van problemen met uw Azure stack Edge](azure-stack-edge-gpu-troubleshoot.md).
+- Meer informatie over [het oplossen van problemen met uw Azure stack Edge Pro](azure-stack-edge-gpu-troubleshoot.md).

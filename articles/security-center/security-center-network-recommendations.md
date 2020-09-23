@@ -13,42 +13,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883917"
 ---
 # <a name="protect-your-network-resources"></a>Uw netwerk bronnen beveiligen
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
-
-In dit artikel wordt de pagina **netwerken** van de sectie resource beveiliging van Security Center beschreven.
 
 Zie [aanbevelingen voor netwerken](recommendations-reference.md#recs-network)voor een volledige lijst met aanbevelingen voor netwerken.
 
 In dit artikel worden aanbevelingen gedaan die van toepassing zijn op uw Azure-resources op basis van een netwerk beveiligings perspectief. Aanbevelingen voor netwerken rond de volgende generatie firewalls, netwerk beveiligings groepen, JIT-VM-toegang, meer regels voor binnenkomend verkeer, en meer. Zie [beveiligings aanbevelingen beheren in azure Security Center](security-center-recommendations.md)voor een lijst met aanbevelingen en herstel acties voor netwerken.
 
-> [!NOTE]
-> Op de pagina **netwerken** kunt u de Azure-resource status van een netwerk perspectief dieper laten opkomen. De netwerk kaart en adaptieve netwerk besturings elementen zijn alleen beschikbaar voor de laag Azure Security Center standaard. [Als u de laag gratis gebruikt, kunt u klikken op de knop om **verouderde netwerken weer te geven** en aanbevelingen voor netwerk bronnen te ontvangen](#legacy-networking).
->
+De **netwerk** functies van Security Center zijn onder andere: 
 
-Op de pagina **netwerken** vindt u een overzicht van de secties die u uitgebreid kunt bekijken, voor meer informatie over de status van uw netwerk bronnen:
-
-- Netwerk toewijzing (alleen Azure Security Center laag Standard)
-- Adaptieve netwerkbeveiliging
-- Aanbevelingen voor netwerk beveiliging.
-- Blade verouderde **netwerken** (de Blade vorige netwerken) 
+- Netwerk toewijzing (vereist Azure Defender)
+- [Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md) (vereist Azure Defender)
+- Aanbevelingen voor netwerk beveiliging
  
-[![Netwerk venster](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+## <a name="view-your-networking-resources-and-their-recommendations"></a>Uw netwerk bronnen en hun aanbevelingen weer geven
 
-## <a name="network-map"></a>Netwerk toewijzing
+Gebruik op de [pagina Asset Inventory](asset-inventory.md)het filter Resource type om de netwerk resources te selecteren die u wilt onderzoeken:
+
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="Netwerk resource typen activa inventaris" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+
+
+## <a name="network-map"></a>Netwerkoverzicht
+
 De interactieve netwerk kaart biedt een grafische weer gave met beveiligings-overlays waarmee u aanbevelingen en inzichten krijgt voor het versterken van uw netwerk bronnen. Met de kaart ziet u de netwerk topologie van uw Azure-workloads, verbindingen tussen uw virtuele machines en subnetten, en de mogelijkheid om in te zoomen op de kaart in specifieke bronnen en de aanbevelingen voor deze resources.
 
 De netwerk kaart openen:
 
-1. Selecteer in Security Center onder beveiligings hygiëne van de resource de optie **netwerken**.
-2. Klik onder **netwerk kaart** op **topologie weer geven**.
+1. Open in het menu van Security Center het Azure Defender-dash board en selecteer **netwerk overzicht**.
+
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="De netwerk kaart openen vanuit het Azure Defender-dash board" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+
+1. Selecteer in het menu **lagen** de optie **topologie**kiezen.
  
 De standaard weergave van de topologie kaart geeft het volgende weer:
 
@@ -114,31 +116,8 @@ Inzoomen op een resource:
 [![Netwerk verkeer toewijzing](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>Verouderde netwerken<a name ="legacy-networking"></a>
-
-Als u geen Security Center Standard-laag hebt, wordt in deze sectie uitgelegd hoe u aanbevelingen voor gratis netwerken kunt weer geven.
-
-Als u deze informatie wilt openen, klikt u op de Blade netwerken op **verouderde netwerken weer geven**. 
-
-[![Verouderde netwerken](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
-
-### <a name="internet-facing-endpoints-section"></a>Sectie Internetgerichte eindpunten
-In de sectie **Internet gerichte eind punten** kunt u de virtuele machines zien die momenteel zijn geconfigureerd met een Internet gericht eind punt en de status ervan.
-
-Deze tabel bevat de naam van het eind punt, het Internet gerichte IP-adres en de huidige Ernst status van de netwerk beveiligings groep en de NGFW-aanbevelingen. De tabel is gesorteerd op Ernst.
-
-### <a name="networking-topology-section"></a>Sectie Netwerktopologie
-De sectie **netwerk topologie** bevat een hiërarchische weer gave van de resources.
-
-Deze tabel is gesorteerd (virtuele machines en subnetten) op Ernst.
-
-In deze topologie weergave wordt op het eerste niveau Vnets weer gegeven. De tweede bevat subnetten en het derde niveau geeft de virtuele machines weer die deel uitmaken van deze subnetten. In de rechter kolom ziet u de huidige status van de aanbevelingen voor de netwerk beveiligings groep voor deze resources.
-
-Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar met wat eerder is beschreven. U kunt klikken op een resource voor meer informatie of de vereiste beveiligings controle of-configuratie Toep assen.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie het volgende voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
-* [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
-* [Uw Azure SQL-service beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
+- [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)

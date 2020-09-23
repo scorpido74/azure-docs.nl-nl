@@ -1,29 +1,29 @@
 ---
 title: Certificaten maken met het hulp programma voor het uitvoeren van Microsoft Azure Stack hub-gereedheids controlepunt | Microsoft Docs
-description: Hierin wordt beschreven hoe u certificaat aanvragen maakt en vervolgens certificaten op uw Azure Stack Edge GPU-apparaat ontvangt en installeert met behulp van het hulp programma Azure Stack hub Readiness Checker.
-services: Azure Stack Edge
+description: Hierin wordt beschreven hoe u certificaat aanvragen maakt en vervolgens certificaten op uw Azure Stack Edge Pro GPU-apparaat ontvangt en installeert met behulp van het hulp programma Azure Stack hub Readiness Checker.
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267374"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891094"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>Certificaten voor uw Azure Stack rand maken met behulp van Azure Stack hub-gereedheids controleprogramma 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Certificaten maken voor uw Azure Stack Edge Pro met behulp van Azure Stack hub-gereedheids controleprogramma 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u certificaten voor uw Azure Stack-rand maakt met behulp van het hulp programma Azure Stack hub Readiness Checker. 
+In dit artikel wordt beschreven hoe u certificaten voor uw Azure Stack Edge Pro maakt met behulp van de Azure Stack hub Readiness Checker. 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub-hulp programma voor de gereedheids controle gebruiken
 
-Gebruik het Azure Stack hub-hulp programma voor het maken van aanvragen voor certificaat ondertekening (Csr's) voor de implementatie van een Azure Stack edge-apparaat. U kunt deze aanvragen maken nadat u een bestelling voor het Azure Stack edge-apparaat hebt geplaatst en er wordt gewacht tot het apparaat is aangekomen. 
+Gebruik het hulp programma voor de Azure Stack hub-gereedheids controle voor het maken van aanvragen voor certificaat ondertekening (Csr's) voor een Azure Stack Edge Pro-implementatie van apparaten. U kunt deze aanvragen maken nadat u een bestelling voor het Azure Stack Edge Pro-apparaat hebt geplaatst en er wordt gewacht tot het apparaat is aangekomen. 
 
 > [!NOTE]
 > Gebruik dit hulp programma alleen voor test-of ontwikkelings doeleinden en niet voor productie apparaten. 
@@ -39,10 +39,10 @@ U kunt het hulp programma Azure Stack hub Readiness Checker (AzsReadinessChecker
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Csr's wilt maken voor de implementatie van Azure Stack edge-apparaat, controleert u het volgende: 
+Als u Csr's wilt maken voor de implementatie van Azure Stack Edge Pro-apparaat, moet u het volgende doen: 
 
 - U hebt een-client met Windows 10 of Windows Server 2016 of hoger. 
-- U hebt de Microsoft Azure Stack hub-gereedheids controleprogramma 1.2002.1133.85 gedownload [van de PowerShell Gallery](https://aka.ms/AzsReadinessChecker) op dit systeem. Mogelijk moet u zoeken naar dit pakket. Alleen deze versie van het hulp programma kan certificaten voor Azure Stack edge-apparaten maken.
+- U hebt de Microsoft Azure Stack hub-gereedheids controleprogramma 1.2002.1133.85 gedownload [van de PowerShell Gallery](https://aka.ms/AzsReadinessChecker) op dit systeem. Mogelijk moet u zoeken naar dit pakket. Alleen deze versie van het hulp programma kan certificaten voor Azure Stack Edge Pro-apparaten maken.
 - U hebt de volgende informatie voor de certificaten:
   - Apparaatnaam
   - Serie nummer van knoop punt
@@ -50,7 +50,7 @@ Als u Csr's wilt maken voor de implementatie van Azure Stack edge-apparaat, cont
 
 ## <a name="generate-certificate-signing-requests"></a>Aanvragen voor certificaat ondertekening genereren
 
-Volg deze stappen om de Azure Stack edge-apparaten voor te bereiden:
+Volg deze stappen om de Azure Stack Edge Pro-apparaten voor te bereiden:
 
 1. Voer Power shell uit als Administrator (5,1 of hoger).
 2. Installeer het hulp programma voor de Azure Stack hub-gereedheids controle. Typ het volgende bij de Power shell-prompt: 
@@ -121,15 +121,15 @@ Volg deze stappen om de Azure Stack edge-apparaten voor te bereiden:
     U ziet ook een map INF. Dit bevat een beheer. <Edge-apparaatnaam> informatie bestand in Lees bare tekst met uitleg over de details van het certificaat.  
 
 
-6. Deze bestanden verzenden naar uw certificerings instantie (intern of openbaar). Zorg ervoor dat uw CA certificaten genereert met behulp van de gegenereerde aanvraag die voldoet aan de Azure Stack Edge-certificaat vereisten voor [knooppunt certificaten](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [eindpunt certificaten](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)en [lokale UI-certificaten](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates).
+6. Deze bestanden verzenden naar uw certificerings instantie (intern of openbaar). Zorg ervoor dat uw CA certificaten genereert met behulp van de gegenereerde aanvraag die voldoet aan de Azure Stack Edge Pro-certificaat vereisten voor [knooppunt certificaten](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [eindpunt certificaten](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)en [lokale UI-certificaten](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates).
 
 ## <a name="prepare-certificates-for-deployment"></a>Certificaten voorbereiden voor implementatie
 
-De certificaat bestanden die u van uw certificerings instantie (CA) aanschaft, moeten worden geïmporteerd en geëxporteerd met eigenschappen die overeenkomen met de certificaat vereisten van Azure Stack edge-apparaat. Voer de volgende stappen uit op hetzelfde systeem waarop u de aanvragen voor certificaat ondertekening hebt gegenereerd.
+De certificaat bestanden die u van uw certificerings instantie (CA) aanschaft, moeten worden geïmporteerd en geëxporteerd met eigenschappen die overeenkomen met de certificaat vereisten van Azure Stack Edge Pro-apparaat. Voer de volgende stappen uit op hetzelfde systeem waarop u de aanvragen voor certificaat ondertekening hebt gegenereerd.
 
-- Als u de certificaten wilt importeren, volgt u de stappen in [certificaten importeren op de clients die toegang hebben tot uw Azure stack edge-apparaat](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- Volg de stappen in [certificaten importeren op de clients die toegang hebben tot uw Azure stack Edge Pro-apparaat](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)om de certificaten te importeren.
 
-- Als u de certificaten wilt exporteren, volgt u de stappen in [certificaten exporteren van de client die toegang hebben tot het Azure stack edge-apparaat](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- Als u de certificaten wilt exporteren, volgt u de stappen in [certificaten exporteren van de client die toegang hebben tot het Azure stack Edge Pro-apparaat](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 
 
 ## <a name="validate-certificates"></a>Certificaten valideren
@@ -152,4 +152,4 @@ Eerst genereert u een juiste mappen structuur en plaatst u de certificaten in de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw Azure Stack edge-apparaat implementeren](azure-stack-edge-gpu-deploy-prep.md)
+[Uw Azure Stack Edge Pro-apparaat implementeren](azure-stack-edge-gpu-deploy-prep.md)

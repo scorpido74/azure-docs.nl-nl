@@ -1,6 +1,6 @@
 ---
-title: Implementeer Vm's op uw Azure Stack Edge GPU-apparaat via Azure PowerShell
-description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack edge-apparaat met behulp van Azure PowerShell.
+title: Implementeer Vm's op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell
+description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge Pro-apparaat met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,53 +8,53 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890644"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Vm's implementeren op uw Azure Stack Edge GPU-apparaat via Azure PowerShell script
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Vm's implementeren op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell script
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack edge-apparaat maakt en beheert met behulp van een Azure PowerShell script.
+In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack Edge Pro-apparaat maakt en beheert met behulp van een Azure PowerShell script.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met dit script begint met het maken en beheren van een virtuele machine op uw Azure Stack edge-apparaat, moet u ervoor zorgen dat u de vereiste onderdelen hebt voltooid die in de volgende stappen worden vermeld:
+Voordat u begint met het maken en beheren van een virtuele machine op uw Azure Stack Edge Pro-apparaat met dit script, moet u ervoor zorgen dat u de vereiste onderdelen hebt voltooid die worden vermeld in de volgende stappen:
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Voor Azure Stack edge-apparaat via de lokale web-UI
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Voor Azure Stack Edge Pro-apparaat via de lokale web-UI
 
-1. U hebt de netwerk instellingen op uw Azure Stack edge-apparaat voltooid, zoals beschreven in [stap 1: Azure stack edge-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device).
+1. U hebt de netwerk instellingen op uw Azure Stack Edge Pro-apparaat voltooid, zoals beschreven in [stap 1: Azure stack Edge Pro-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
-2. Er is een netwerk interface ingeschakeld voor compute. Dit IP-adres van de netwerk interface wordt gebruikt voor het maken van een virtuele switch voor de VM-implementatie. De volgende stappen helpen u bij het proces:
+2. U hebt een netwerkinterface ingeschakeld voor berekeningen. Het IP-adres van de netwerkinterface wordt gebruikt om een virtuele switch te maken voor de VM-implementatie. Met de volgende stappen doorloopt u dit proces:
 
-    1. Ga naar de **instellingen**voor de berekening. Selecteer de netwerk interface die u gaat gebruiken om een virtuele switch te maken.
+    1. Ga naar de **instellingen**voor de berekening. Selecteer de netwerkinterface die u wilt gebruiken om een virtuele switch te maken.
 
         > [!IMPORTANT] 
-        > U kunt slechts één poort configureren voor compute.
+        > U kunt slechts één poort configureren voor berekeningen.
 
-    2. Schakel Compute in op de netwerk interface. Azure Stack Edge maakt en beheert een virtuele switch die overeenkomt met die netwerk interface.
+    2. Schakel Compute in op de netwerkinterface. Azure Stack Edge Pro maakt en beheert een virtuele switch die overeenkomt met die netwerk interface.
 
-3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack edge-apparaat en in het vertrouwde basis archief van uw client. Volg de procedure die wordt beschreven in [stap 2: certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack Edge Pro-apparaat en in het vertrouwde basis archief van uw client. Volg de procedure die wordt beschreven in [Stap 2: Certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
 ### <a name="for-your-windows-client"></a>Voor uw Windows-client
 
 1. U hebt de Azure consistente Services virtueel Internet Protocol (VIP) gedefinieerd op de pagina **netwerk** in de lokale web-UI van het apparaat. U moet deze VIP toevoegen aan:
 
-    - Het hostbestand op de client of,
-    - De configuratie van de DNS-server
+    - Het hostbestand op de client, OF
+    - De DNS-serverconfiguratie
     
     > [!IMPORTANT]
-    > U wordt aangeraden de configuratie van de DNS-server voor de naam omzetting van het eind punt te wijzigen.
+    > We raden aan de DNS-serverconfiguratie aan te passen voor de eindpuntnaamomzetting.
 
-    1. Start **Klad blok** als beheerder (er zijn beheerders bevoegdheden vereist om het bestand op te slaan) en open vervolgens het **hosts** -bestand dat zich bevindt in `C:\Windows\System32\Drivers\etc` .
+    1. Start **Kladblok** als beheerder (er zijn beheerdersrechten vereist om het bestand op te slaan) en open vervolgens het bestand **hosts** dat zich bevindt op `C:\Windows\System32\Drivers\etc`.
     
-        ![Windows Verkenner host bestand](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Hosts-bestand in Windows Verkenner](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
     
-    2. Voeg de volgende vermeldingen toe aan het **hosts** -bestand dat wordt vervangen door de juiste waarden voor uw apparaat:
+    2. Voeg de volgende vermeldingen toe aan uw **hosts**-bestand, waarbij u de juiste waarden voor uw apparaat invoert:
     
         ```
         <Azure consistent services VIP> login.<appliance name>.<DNS domain>
@@ -65,7 +65,7 @@ Voordat u met dit script begint met het maken en beheren van een virtuele machin
 
     3. Gebruik de volgende afbeelding ter referentie. Sla het bestand met **hosts** op.
 
-        ![hosts-bestand in Klad blok](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![Hosts-bestand in Kladblok](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. [Down load het Power shell-script](https://aka.ms/ase-vm-powershell) dat in deze procedure wordt gebruikt.
 

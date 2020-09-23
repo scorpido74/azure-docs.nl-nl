@@ -1,6 +1,6 @@
 ---
 title: Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)
-description: Dit artikel bevat de vereisten voor het gebruik van Microsoft Azure schijf versleuteling voor IaaS-Vm's.
+description: In dit artikel vindt u informatie over het maken en configureren van een sleutel kluis voor Azure Disk Encryption met Azure AD.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb625624fa6faa4fdf3ef4fba3b49a0d2d5d7e09
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977961"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)
 
@@ -23,7 +23,7 @@ Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schi
 
 Een sleutel kluis maken en configureren voor gebruik Azure Disk Encryption met Azure AD (eerdere versie) omvat drie stappen:
 
-1. Een sleutelkluis maken. 
+1. Maak een sleutelkluis. 
 2. Stel een Azure AD-toepassing en Service-Principal in.
 3. Het toegangsbeleid voor de sleutelkluis voor de Azure AD-app instellen.
 4. Geavanceerd toegangsbeleid voor de sleutelkluis instellen.
@@ -232,13 +232,13 @@ Als u een sleutel versleutelings sleutel (KEK) wilt gebruiken voor een extra bev
 
 * Uw sleutel kluis geheim en KEK Url's moeten een versie nummer hebben. Azure dwingt deze beperking van versie beheer af. Zie de volgende voor beelden voor geldige geheime en KEK-Url's:
 
-  * Voor beeld van een geldige geheime URL:*https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Voor beeld van een geldige KEK-URL:*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Voor beeld van een geldige geheime URL:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Voor beeld van een geldige KEK-URL:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure Disk Encryption biedt geen ondersteuning voor het opgeven van poort nummers als onderdeel van sleutel kluis geheimen en KEK-Url's. Voor voor beelden van niet-ondersteunde en ondersteunde sleutel kluis-Url's, zie de volgende voor beelden:
 
-  * Onaanvaardbaar URL voor sleutel kluis*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Aanvaard bare sleutel kluis-URL:*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Onaanvaardbaar URL voor sleutel kluis  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Aanvaard bare sleutel kluis-URL:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 ### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a>Een coderings sleutel met Azure PowerShell instellen 
 Voordat u het Power shell-script gebruikt, moet u vertrouwd zijn met de Azure Disk Encryption vereisten om inzicht te krijgen in de stappen in het script. Het voorbeeld script heeft mogelijk wijzigingen nodig voor uw omgeving. Met dit script worden alle Azure Disk Encryption vereisten gemaakt en wordt een bestaande IaaS-VM versleuteld, waarbij de schijf versleutelings sleutel wordt ingedrukt met behulp van een sleutel versleutelings sleutel. 

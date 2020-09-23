@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 92d4fb638e41c668c557ef9e618d30677481585d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829846"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907492"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server met behulp van portal
 
@@ -38,12 +38,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die
     | Instelling | Waarde |
     | ------- | ----- |
     | Naam | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
+    | Adresruimte | Voer *10.1.0.0/16*in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **Europa - west**.|
     | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
+    | Subnet - adresbereik | Voer *10.1.0.0/24*in. |
     |||
 3. Laat voor de rest de standaardwaarden staan en selecteer **Maken**.
 
@@ -133,7 +133,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
 1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal de optie **een resource maken**  >  **Networking**  >  **persoonlijke netwerk koppeling**.
 2. Selecteer in **Private Link-centrum – Overzicht** bij de optie **Een particuliere verbinding met een service maken** de optie **Start**.
 
-    ![Overzicht van persoonlijke koppelingen](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Overzicht van persoonlijke koppelingen":::
 
 1. Voer in **een persoonlijk eind punt maken-basis beginselen**de volgende gegevens in of Selecteer deze:
 
@@ -176,7 +176,7 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
 1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
 2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
-    ![Privé koppeling gemaakt](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Privé koppeling gemaakt":::
 
     > [!NOTE] 
     > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.

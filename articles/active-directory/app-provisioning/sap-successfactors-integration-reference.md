@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969524"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Hoe Azure Active Directory inrichting kan worden geïntegreerd met SAP-SuccessFactors 
 
@@ -63,7 +63,7 @@ Voor elke gebruiker in SuccessFactors haalt Azure AD Provisioning Service de vol
 | 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Alleen als `jobCode` or- `jobCodeId` kenmerk is toegewezen |
 | 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Alleen als het `payGrade` kenmerk is toegewezen |
 | 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Alleen als het `location` kenmerk is toegewezen |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Als de toewijzing een van de volgende kenmerken bevat:`officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Als de toewijzing een van de volgende kenmerken bevat: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
 | 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Alleen als het `eventReason` kenmerk is toegewezen |
 | 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Alleen als `assignmentType` is toegewezen |
 | 20 | Selectie lijst EmploymentType                | employmentNav/jobInfoNav/employmentTypeNav | Alleen als `employmentType` is toegewezen |
@@ -166,9 +166,9 @@ Het standaard Azure AD SuccessFactors-inrichtings app-schema wordt geleverd met 
    * Als het kenmerk deel uitmaakt van de *gebruikers* entiteit, zoekt u naar het kenmerk onder het knoop punt *employmentNav/userNav* .
    * Als het kenmerk deel uitmaakt van de *EmpJob* -entiteit, zoekt u naar het kenmerk onder het knoop punt *employmentNav/jobInfoNav* . 
 1. Maak het JSON-pad dat is gekoppeld aan het kenmerk en voeg dit nieuwe kenmerk toe aan de lijst met SuccessFactors-kenmerken. 
-   * Voor beeld 1: Stel dat u het kenmerk *okToRehire*, dat deel uitmaakt van de *employmentNav* -entiteit, wilt toevoegen en gebruik vervolgens de JSONPath`$.employmentNav.results[0].okToRehire`
-   * Voor beeld 2: Stel dat u de *Tijdzone*kenmerken wilt toevoegen, die deel uitmaakt van de *userNav* -entiteit en gebruik vervolgens de JSONPath`$.employmentNav.results[0].userNav.timeZone`
-   * Voor beeld 3: Stel dat u het kenmerk *flsaStatus*, dat deel uitmaakt van de *jobInfoNav* -entiteit, wilt toevoegen en gebruik vervolgens de JSONPath`$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
+   * Voor beeld 1: Stel dat u het kenmerk *okToRehire*, dat deel uitmaakt van de *employmentNav* -entiteit, wilt toevoegen en gebruik vervolgens de JSONPath  `$.employmentNav.results[0].okToRehire`
+   * Voor beeld 2: Stel dat u de *Tijdzone*kenmerken wilt toevoegen, die deel uitmaakt van de *userNav* -entiteit en gebruik vervolgens de JSONPath `$.employmentNav.results[0].userNav.timeZone`
+   * Voor beeld 3: Stel dat u het kenmerk *flsaStatus*, dat deel uitmaakt van de *jobInfoNav* -entiteit, wilt toevoegen en gebruik vervolgens de JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Sla het schema op. 
 1. Inrichting opnieuw starten.
 
@@ -182,14 +182,14 @@ Standaard zijn de volgende aangepaste kenmerken vooraf gedefinieerd in de Azure 
 Stel dat in het centrale exemplaar van uw werk nemers het kenmerk *customString35* in *EmpJobInfo* de locatie beschrijving opslaat. U wilt deze waarde debiet naar Active Directory kenmerk *physicalDeliveryOfficeName* . Gebruik de volgende stappen om kenmerk toewijzing te configureren voor dit scenario: 
 
 1. Bewerk de kenmerk lijst SuccessFactors om een nieuw kenmerk met de naam *empJobNavCustomString35*toe te voegen.
-1. Stel de JSONPath API-expressie voor dit kenmerk in op:`$.employmentNav.results[0].jobInfoNav.results[0].customString35`
+1. Stel de JSONPath API-expressie voor dit kenmerk in op: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Sla de wijziging van de toewijzing op en laad deze opnieuw in de Azure Portal.  
 1. Wijs in de Blade kenmerk toewijzing *empJobNavCustomString35* toe aan *physicalDeliveryOfficeName*.
 1. Sla de toewijzing op.
 
 Dit scenario uitbreiden: 
-* Als u *custom35* kenmerk van de *gebruikers* entiteit wilt toewijzen, gebruikt u de JSONPath`$.employmentNav.results[0].userNav.custom35`
-* Als u *customString35* kenmerk van de *EmpEmployment* -entiteit wilt toewijzen, gebruikt u de JSONPath`$.employmentNav.results[0].customString35`
+* Als u *custom35* kenmerk van de *gebruikers* entiteit wilt toewijzen, gebruikt u de JSONPath `$.employmentNav.results[0].userNav.custom35`
+* Als u *customString35* kenmerk van de *EmpEmployment* -entiteit wilt toewijzen, gebruikt u de JSONPath `$.employmentNav.results[0].customString35`
 
 ### <a name="handling-worker-conversion-scenario"></a>Conversie scenario voor werk nemers verwerken
 
@@ -199,20 +199,20 @@ De conversie van werk nemers is het proces van het converteren van een bestaande
 1. Schuif omlaag en klik op **Geavanceerde opties weer geven**.
 1. Klik op de koppeling om **uw schema hier te controleren** om de schema-editor te openen. 
 
-   >![beoordeling-schema](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![Scherm afbeelding toont de koppeling uw schema controleren waarmee de schema-editor wordt geopend.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. Klik op de **Download** koppeling om een kopie van het schema op te slaan voordat u deze bewerkt. 
 
-   >![downloaden-schema](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![Scherm afbeelding toont de schema-editor met down load selecteren om een kopie van het schema op te slaan.](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. Druk in de schema-editor op de toets CTRL-H om het besturings element zoeken-vervangen te openen.
-1. Kopieer en plak de waarde in het tekstvak zoeken.`$.employmentNav.results[0]`
+1. Kopieer en plak de waarde in het tekstvak zoeken. `$.employmentNav.results[0]`
 1. Kopieer en plak de waarde in het tekstvak vervangen `$.employmentNav.results[?(@.userNav != null)]` . Let op de witruimte rond de `!=` operator, wat belang rijk is voor een succes volle verwerking van de JSONPath-expressie. 
    >![zoeken-vervangen-conversie](media/sap-successfactors-integration-reference/find-replace-conversion-scenario.png#lightbox)
 1. Klik op de optie Alles vervangen om het schema bij te werken. 
 1. Sla het schema op. 
 1. Met het bovenstaande proces worden alle JSONPath-expressies als volgt bijgewerkt: 
-   * Oude JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nieuwe JSONPath:`$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
+   * Oude JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nieuwe JSONPath: `$.employmentNav.results[?(@.userNav != null)].jobInfoNav.results[0].departmentNav.name_localized`
 1. Inrichting opnieuw starten. 
 
 ### <a name="handling-rehire-scenario"></a>Scenario voor het opnieuw inhuren verwerken
@@ -230,13 +230,13 @@ Als u dit scenario voor het opnieuw inhuren wilt afhandelen (optie 2), zodat de 
 1. Klik op de koppeling om **uw schema hier te controleren** om de schema-editor te openen.   
 1. Klik op de **Download** koppeling om een kopie van het schema op te slaan voordat u deze bewerkt.   
 1. Druk in de schema-editor op de toets CTRL-H om het besturings element zoeken-vervangen te openen.
-1. Kopieer en plak de waarde in het tekstvak zoeken.`$.employmentNav.results[0]`
+1. Kopieer en plak de waarde in het tekstvak zoeken. `$.employmentNav.results[0]`
 1. Kopieer en plak de waarde in het tekstvak vervangen `$.employmentNav.results[-1:]` . Met deze JSONPath-expressie wordt de meest recente *EmpEmployment* -record geretourneerd.   
 1. Klik op de optie Alles vervangen om het schema bij te werken. 
 1. Sla het schema op. 
 1. Met het bovenstaande proces worden alle JSONPath-expressies als volgt bijgewerkt: 
-   * Oude JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nieuwe JSONPath:`$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
+   * Oude JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nieuwe JSONPath: `$.employmentNav.results[-1:].jobInfoNav.results[0].departmentNav.name_localized`
 1. Inrichting opnieuw starten. 
 
 Deze schema wijziging biedt ook ondersteuning voor het conversie scenario voor werk nemers. 
@@ -254,13 +254,13 @@ Als u kenmerken wilt ophalen die horen bij het standaard gebruikers profiel voor
 1. Klik op de koppeling om **uw schema hier te controleren** om de schema-editor te openen.   
 1. Klik op de **Download** koppeling om een kopie van het schema op te slaan voordat u deze bewerkt.   
 1. Druk in de schema-editor op de toets CTRL-H om het besturings element zoeken-vervangen te openen.
-1. Kopieer en plak de waarde in het tekstvak zoeken.`$.employmentNav.results[0]`
+1. Kopieer en plak de waarde in het tekstvak zoeken. `$.employmentNav.results[0]`
 1. Kopieer en plak de waarde in het tekstvak vervangen `$.employmentNav.results[?(@.assignmentClass == 'ST')]` . 
 1. Klik op de optie Alles vervangen om het schema bij te werken. 
 1. Sla het schema op. 
 1. Met het bovenstaande proces worden alle JSONPath-expressies als volgt bijgewerkt: 
-   * Oude JSONPath:`$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
-   * Nieuwe JSONPath:`$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
+   * Oude JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
+   * Nieuwe JSONPath: `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. Laad de Blade met kenmerk toewijzingen van de app opnieuw. 
 1. Schuif omlaag en klik op **Geavanceerde opties weer geven**.
 1. Klik op **kenmerk lijst bewerken voor SuccessFactors**.
@@ -278,7 +278,7 @@ Wanneer een gebruiker in werk nemers centraal gelijktijdige/meerdere taken heeft
 1. Open de Blade kenmerk toewijzing van uw SuccessFactors-inrichtings toepassing. 
 1. Schuif omlaag en klik op **Geavanceerde opties weer geven**.
 1. Klik op **kenmerk lijst bewerken voor SuccessFactors**.
-1. Stel dat u de afdeling wilt ophalen die is gekoppeld aan taak 1 en taak 2. De vooraf gedefinieerde kenmerk *afdeling* haalt al de waarde van afdeling voor de eerste taak op. U kunt een nieuw kenmerk met de naam *secondJobDepartment* definiëren en de JSONPath-expressie instellen op`$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
+1. Stel dat u de afdeling wilt ophalen die is gekoppeld aan taak 1 en taak 2. De vooraf gedefinieerde kenmerk *afdeling* haalt al de waarde van afdeling voor de eerste taak op. U kunt een nieuw kenmerk met de naam *secondJobDepartment* definiëren en de JSONPath-expressie instellen op `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. U kunt nu beide afdelings waarden door lopen naar Active Directory kenmerken of een waarde selectief door lopen met expressie toewijzing. 
 1. Sla de toewijzing op. 
 1. Inrichting opnieuw starten. 
@@ -291,11 +291,11 @@ Deze sectie behandelt verschillende scenario's voor write-back. Het beveelt conf
 
 | \# | Scenario vereiste | E-mail-primair <br> vlag waarde | Telefoon (werk) <br> primaire vlag waarde | Mobiele telefoon <br> primaire vlag waarde | Telefoon (werk) <br> toewijzing | Mobiele telefoon <br> toewijzing |
 |--|--|--|--|--|--|--|
-| 1 | * Stel alleen zakelijk e-mail adres in als primair. <br> * Stel geen telefoon nummers in. | waar | waar | onjuist | \[Niet ingesteld\] | \[Niet ingesteld\] | 
-| 2 | * In SuccessFactors, zakelijke e-mail en zakelijke telefoon is primair <br> * U kunt uw telefoon nummer van Azure AD altijd laten door lopen op telefoon en mobiel naar mobiele telefoon. | waar | waar | onjuist | telephoneNumber | mobiel | 
-| 3 | * In SuccessFactors, zakelijke e-mail en mobiele telefoon is primair <br> * Altijd een Azure AD-telefoon nummer laten door lopen naar een mobiele telefoon en mobiel naar een GSM | waar | onjuist | waar |  telephoneNumber | mobiel | 
-| 4 | * In SuccessFactors Business e-mail is primair <br> * Controleer in azure AD of het telefoon nummer van het werk aanwezig is, indien aanwezig, en controleer of het mobiele nummer ook aanwezig is, werk telefoon nummer markeren als primair alleen als het mobiele nummer niet aanwezig is. | waar | Expressie toewijzing gebruiken:`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Expressie toewijzing gebruiken:`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobiel | 
-| 5 | * In SuccessFactors Business e-mail en zakelijk telefoon nummer is primair. <br> * Als er in azure AD een mobiel apparaat beschikbaar is, stelt u dit in als de zakelijke telefoon, anders gebruikt u telephoneNumber. | waar | waar | onjuist | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Niet ingesteld\] | 
+| 1 | * Stel alleen zakelijk e-mail adres in als primair. <br> * Stel geen telefoon nummers in. | true | waar | onjuist | \[Niet ingesteld\] | \[Niet ingesteld\] | 
+| 2 | * In SuccessFactors, zakelijke e-mail en zakelijke telefoon is primair <br> * U kunt uw telefoon nummer van Azure AD altijd laten door lopen op telefoon en mobiel naar mobiele telefoon. | true | waar | onjuist | telephoneNumber | mobiel | 
+| 3 | * In SuccessFactors, zakelijke e-mail en mobiele telefoon is primair <br> * Altijd een Azure AD-telefoon nummer laten door lopen naar een mobiele telefoon en mobiel naar een GSM | waar | onjuist | true |  telephoneNumber | mobiel | 
+| 4 | * In SuccessFactors Business e-mail is primair <br> * Controleer in azure AD of het telefoon nummer van het werk aanwezig is, indien aanwezig, en controleer of het mobiele nummer ook aanwezig is, werk telefoon nummer markeren als primair alleen als het mobiele nummer niet aanwezig is. | true | Expressie toewijzing gebruiken: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | Expressie toewijzing gebruiken: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobiel | 
+| 5 | * In SuccessFactors Business e-mail en zakelijk telefoon nummer is primair. <br> * Als er in azure AD een mobiel apparaat beschikbaar is, stelt u dit in als de zakelijke telefoon, anders gebruikt u telephoneNumber. | true | waar | onjuist | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Niet ingesteld\] | 
 
 * Als er geen toewijzing is voor het telefoon nummer in het kenmerk toewijzing van write-back, wordt alleen e-mail bericht in de write-back opgenomen.
 * Tijdens het maken van een nieuwe onboarding in werk nemers centraal, zijn zakelijke e-mail en telefoon nummer mogelijk niet beschikbaar. Als het instellen van zakelijk e-mail adres en zakelijk telefoon nummer verplicht is tijdens het onboarden, kunt u een dummy waarde voor zakelijke telefoon en e-mail instellen tijdens het maken van een nieuwe huur bewerking, die uiteindelijk wordt bijgewerkt door de write-back-app.

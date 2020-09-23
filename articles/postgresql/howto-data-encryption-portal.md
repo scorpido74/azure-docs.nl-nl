@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 831c50fe608e3f7de18b4d8917bb2f98a0e78308
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0db0a705d97743bb199550bc74ade8e270c7472c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907478"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Gegevens versleuteling voor Azure Database for PostgreSQL Eén server met behulp van de Azure Portal
 
@@ -44,11 +44,11 @@ Meer informatie over het gebruik van de Azure Portal voor het instellen en beher
 
 1. Selecteer in Key Vault **toegangs**beleid toegangs  >  **beleid toevoegen**.
 
-   ![Scherm opname van Key Vault, met beleids regels voor toegang en toegangs beleid toevoegen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Scherm opname van Key Vault, met beleids regels voor toegang en toegangs beleid toevoegen gemarkeerd":::
 
 2. Selecteer **sleutel machtigingen**en selecteer **ophalen**, **teruglopen**, **uitpakken**en de **Principal**. Dit is de naam van de postgresql-server. Als uw server-Principal niet kan worden gevonden in de lijst met bestaande principals, moet u deze registreren. U wordt gevraagd om de serverprincipal te registreren wanneer u de gegevens versleuteling voor de eerste keer probeert in te stellen. dit mislukt.  
 
-   ![Overzicht van toegangs beleid](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Overzicht van toegangs beleid":::
 
 3. Selecteer **Opslaan**.
 
@@ -56,11 +56,11 @@ Meer informatie over het gebruik van de Azure Portal voor het instellen en beher
 
 1. Selecteer in Azure Database for PostgreSQL **gegevens versleuteling** om de door de klant beheerde sleutel in te stellen.
 
-   ![Scherm opname van Azure Database for PostgreSQL, met de gegevens versleuteling gemarkeerd](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Scherm opname van Azure Database for PostgreSQL, met de gegevens versleuteling gemarkeerd":::
 
 2. U kunt een sleutel kluis en sleutel paar selecteren of een sleutel-id invoeren.
 
-   ![Scherm opname van Azure Database for PostgreSQL, met opties voor gegevens versleuteling gemarkeerd](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Scherm opname van Azure Database for PostgreSQL, met opties voor gegevens versleuteling gemarkeerd":::
 
 3. Selecteer **Opslaan**.
 
@@ -72,28 +72,28 @@ Nadat Azure Database for PostgreSQL één server is versleuteld met een door de 
 
 1. Selecteer **overzicht**  >  **herstellen**op uw server.
 
-   ![Scherm opname van Azure Database for PostgreSQL, met overzicht en herstellen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Scherm opname van Azure Database for PostgreSQL, met overzicht en herstellen gemarkeerd":::
 
    Of voor een server waarvoor replicatie is ingeschakeld, selecteert u in de kop **instellingen** de optie **replicatie**.
 
-   ![Scherm opname van Azure Database for PostgreSQL, waarbij de replicatie is gemarkeerd](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Scherm opname van Azure Database for PostgreSQL, waarbij de replicatie is gemarkeerd":::
 
 2. Nadat de herstel bewerking is voltooid, wordt de nieuwe gemaakte server versleuteld met de sleutel van de primaire server. De functies en opties op de server zijn echter uitgeschakeld en de server is niet toegankelijk. Dit voor komt dat gegevens worden gemanipuleerd, omdat de identiteit van de nieuwe server nog niet is gemachtigd voor toegang tot de sleutel kluis.
 
-   ![Scherm opname van Azure Database for PostgreSQL, met een niet-toegankelijke status gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Scherm opname van Azure Database for PostgreSQL, met een niet-toegankelijke status gemarkeerd":::
 
 3. Valideer de sleutel op de herstelde server om de server toegankelijk te maken. Selecteer **Data Encryption**  >  **sleutel voor hervalideren**van gegevens versleuteling.
 
    > [!NOTE]
    > De eerste poging om opnieuw te valideren, mislukt, omdat de service-principal van de nieuwe server toegang moet krijgen tot de sleutel kluis. Als u de Service-Principal wilt genereren, selecteert u **sleutel opnieuw valideren**. er wordt dan een fout weer gegeven, maar de service-principal wordt gegenereerd. Ga daarna naar [deze stappen](#set-the-right-permissions-for-key-operations) eerder in dit artikel.
 
-   ![Scherm opname van Azure Database for PostgreSQL, waarbij de stap voor hervalidatie is gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Scherm opname van Azure Database for PostgreSQL, waarbij de stap voor hervalidatie is gemarkeerd":::
 
    U moet de sleutel kluis toegang verlenen tot de nieuwe server.
 
 4. Nadat u de Service-Principal hebt geregistreerd, moet u de sleutel opnieuw valideren en wordt de normale functionaliteit van de server hervat.
 
-   ![Scherm opname van Azure Database for PostgreSQL, met de herstelde functionaliteit](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Scherm opname van Azure Database for PostgreSQL, met de herstelde functionaliteit":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

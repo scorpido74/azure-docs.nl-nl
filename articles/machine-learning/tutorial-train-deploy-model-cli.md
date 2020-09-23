@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144019"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906643"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelfstudie: Een model trainen en implementeren vanuit de CLI
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In deze zelfstudie gebruikt u de machine learning-extensie voor Azure CLI om een model te trainen, te registreren en te implementeren.
 
-In de Python-trainingsscripts in deze zelfstudie wordt [scikit-learn](https://scikit-learn.org/) gebruikt om een basismodel te trainen. Deze zelfstudie is niet zozeer gericht op de scripts of het model, maar op het proces voor het gebruik van de CLI om met Azure Machine Learning te werken.
+In de Python-trainingsscripts in deze zelfstudie wordt [scikit-learn](https://scikit-learn.org/) gebruikt om een eenvoudig model te trainen. Deze zelfstudie is niet zozeer gericht op de scripts of het model, maar op het proces voor het gebruik van de CLI om met Azure Machine Learning te werken.
 
 U leert hoe u de volgende acties uitvoert:
 
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een basiscontainer van resources op het Azure-platform. Wanneer u met Azure Machine Learning werkt, bevat de resourcegroep uw Azure Machine Learning-werkruimte. Deze bevat ook andere Azure-services die worden gebruikt door de werkruimte. Als u bijvoorbeeld uw model traint met behulp van een cloudrekenresource, wordt die resource in de resourcegroep gemaakt.
+Een resourcegroep is een container van resources op het Azure-platform. Wanneer u met Azure Machine Learning werkt, bevat de resourcegroep uw Azure Machine Learning-werkruimte. Deze bevat ook andere Azure-services die worden gebruikt door de werkruimte. Als u bijvoorbeeld uw model traint met behulp van een cloudrekenresource, wordt die resource in de resourcegroep gemaakt.
 
 Met de volgende opdracht kunt u __een nieuwe resourcegroep maken__. Vervang `<resource-group-name>` door de naam die u voor deze resourcegroep wilt gebruiken. Vervang `<location>` door de Azure-regio die u voor deze resourcegroep wilt gebruiken:
 

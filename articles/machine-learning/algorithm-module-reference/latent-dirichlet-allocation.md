@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751698"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907849"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Dirichlet-toewijzings module
 
-In dit artikel wordt beschreven hoe u de Dirichlet-toewijzings module in Azure Machine Learning Designer (preview) gebruikt om niet-geclassificeerde tekst in categorieën te groeperen. 
+In dit artikel wordt beschreven hoe u de verwijzende module Dirichlet toewijzing in Azure Machine Learning Designer kunt gebruiken om niet-geclassificeerde tekst in categorieën te groeperen. 
 
 Latente Dirichlet toewijzing (LDA) wordt vaak gebruikt voor de verwerking van natuurlijke taal om teksten te vinden die vergelijkbaar zijn. Een andere algemene term is een *onderwerp model lering*.
 
@@ -58,7 +58,7 @@ Deze module vereist een gegevensset die een kolom met tekst bevat, hetzij RAW of
 
     Omdat LDA een grote functie matrix maakt op basis van de tekst, analyseert u doorgaans een enkele tekst kolom.
 
-4. Voer een geheel getal in tussen 1 en 1000 dat aangeeft hoeveel categorieën of onderwerpen u wilt afleiden van de invoer tekst voor het **aantal onderwerpen dat moet worden gemodelleerd**.
+4. Voer een geheel getal in tussen 1 en 1000 dat aangeeft hoeveel categorieën of onderwerpen u wilt afleiden van de invoer tekst voor het  **aantal onderwerpen dat moet worden gemodelleerd**.
 
     Standaard worden er vijf onderwerpen gemaakt.
 
@@ -75,7 +75,7 @@ Deze module vereist een gegevensset die een kolom met tekst bevat, hetzij RAW of
     + Waarden in de matrix van het functie-onderwerp worden weer gegeven als een kans waar `P(word|topic)` .
 
     > [!NOTE] 
-    > In Azure Machine Learning Designer (preview) ondersteunt de bibliotheek scikit-Learn niet meer ongebruikelijke *doc_topic_distr* uitvoer van versie 0,19. In deze module kan de para meter **normaliseren** alleen worden toegepast op de matrix uitvoer van het *functie onderwerp* . De uitvoer van de *getransformeerde gegevensset* is altijd genormaliseerd.
+    > In Azure Machine Learning Designer biedt de bibliotheek scikit-Learn geen ondersteuning meer voor ongebruikelijke *doc_topic_distr* uitvoer van versie 0,19. In deze module kan de para meter **normaliseren** alleen worden toegepast op de matrix uitvoer van het *functie onderwerp* . De uitvoer van de *getransformeerde gegevensset* is altijd genormaliseerd.
 
 7. Selecteer de optie **alle opties weer geven**en stel deze in op **waar** als u de volgende geavanceerde para meters wilt instellen.
 
@@ -148,7 +148,7 @@ U kunt de nauw keurigheid van modellen op basis van LDA vaak verbeteren door de 
 
 Zie [preproces-tekst](preprocess-text.md)voor meer informatie.
 
-In de ontwerp functie kunt u ook R-of python-bibliotheken gebruiken voor tekst verwerking: [R-script uitvoeren](execute-r-script.md), [python-script uitvoeren](execute-python-script.md).
+In de ontwerp functie kunt u ook R-of python-bibliotheken gebruiken voor tekst verwerking: [R-script uitvoeren](execute-r-script.md),  [python-script uitvoeren](execute-python-script.md).
 
 
 
@@ -181,7 +181,7 @@ Nadat de termen van de term zijn berekend, vergelijkt een op afstand gebaseerde 
 
 ###  <a name="module-parameters"></a>Module parameters
 
-|Naam|Type|Bereik|Optioneel|Standaard|Description|  
+|Naam|Type|Bereik|Optioneel|Standaard|Beschrijving|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Doel kolom (men)|Kolom selectie||Vereist|StringFeature|De naam of index van de doel kolom.|  
 |Aantal te model lerene onderwerpen|Geheel getal|[1; 1000]|Vereist|5|Model de document distributie met N onderwerpen.|  
@@ -195,10 +195,10 @@ Nadat de termen van de term zijn berekend, vergelijkt een op afstand gebaseerde 
 |Aanvankelijke waarde van herhaling die wordt gebruikt voor de update planning voor het trainings tempo|Geheel getal|[0; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0|Aanvankelijke waarde voor downweights Learning rate voor vroege iteraties. Komt overeen met de `learning_offset` para meter.|  
 |Kracht toegepast op de herhaling tijdens updates|Float|[0,0; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0,5|Kracht toegepast op het aantal iteraties om het leer tempo te beheren. Komt overeen met de `learning_decay` para meter. |  
 |Aantal opleidings herhalingen|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|25|Aantal opleidings herhalingen.|  
-|Woorden lijst van ngrams bouwen|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|True|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor het controleren van modellen en interpretaties.|  
+|Woorden lijst van ngrams bouwen|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|Waar|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor het controleren van modellen en interpretaties.|  
 |Maximale grootte van ngram-woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer de keuze **lijst Dictionary van Ngrams** **waar** is|20.000|Maximale grootte van de ngrams-woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden.|  
 |Het aantal bits dat moet worden gebruikt voor functie-hashing.|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** *niet* is ingeschakeld en het **bouwen van de woorden lijst ngrams** is ingesteld op **False**|12|Het aantal bits dat moet worden gebruikt voor functie-hashing.| 
-|Build Dictionary van ngrams vóór LDA|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|True|Hiermee maakt u een woorden lijst met ngrams vóór LDA. Nuttig voor het controleren van modellen en interpretaties.|  
+|Build Dictionary van ngrams vóór LDA|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|Waar|Hiermee maakt u een woorden lijst met ngrams vóór LDA. Nuttig voor het controleren van modellen en interpretaties.|  
 |Maximum aantal ngrams in woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld en de optie **woorden lijst van ngrams** is ingesteld op **True**|20.000|Maximum grootte van de woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden.|  
 |Aantal hash-bits|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld en de optie **woorden lijst van ngrams** is ingesteld op **False**|12|Aantal bits dat moet worden gebruikt tijdens het hashen van functies.|   
 

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het filteren en analyseren van gegevens met rekenproces voor Azure Stack Edge met GPU | Microsoft Docs
-description: Leer hoe u een rekenprocesrol configureert op een Azure Stack Edge GPU-apparaat en deze gebruikt om gegevens te transformeren voordat ze naar Azure worden verzonden.
+title: Zelfstudie voor het filteren en analyseren van gegevens met rekenproces voor Azure Stack Edge Pro met GPU | Microsoft Docs
+description: Leer hoe u een rekenprocesrol configureert op een Azure Stack Edge Pro GPU-apparaat en deze gebruikt om gegevens te transformeren voordat ze naar Azure worden verzonden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 92afbf6497ff55fb2c3c4761b6239651d10c08ab
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146093"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890923"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In deze zelfstudie wordt beschreven hoe u een rekenprocesrol configureert op uw Azure Stack Edge-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge gegevens transformeren voordat deze naar Azure worden verzonden.
+In deze zelfstudie wordt beschreven hoe u een rekenprocesrol configureert op uw Azure Stack Edge Pro-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge Pro gegevens transformeren voordat deze naar Azure worden verzonden.
 
 Deze procedure neemt 10-15 minuten in beslag.
 
@@ -36,14 +36,14 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge-apparaat:
+Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge Pro-apparaat:
 
-- U hebt het Azure Stack Edge-apparaat geactiveerd zoals beschreven in [Uw Azure Stack Edge activeren](azure-stack-edge-gpu-deploy-activate.md).
+- U hebt uw Azure Stack Edge Pro-apparaat geactiveerd zoals beschreven in [Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md).
 
 
 ## <a name="configure-compute"></a>Rekenproces configureren
 
-Als u de rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een IoT Hub-resource.
+Als u de rekenproces wilt configureren voor uw Azure Stack Edge Pro, maakt u een IoT Hub-resource.
 
 1. Ga in Azure Portal van uw Azure Stack Edge-resource naar **Overzicht**. Selecteer in het rechterdeelvenster op de tegel **Compute** **Aan de slag**.
 
@@ -72,7 +72,7 @@ Als u de rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een IoT
     ![Aan de slag met rekenproces](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 
+    > Als het dialoogvenster **Rekenproces configureren** wordt gesloten voordat de IoT Hub aan het Azure Stack Edge Pro-apparaat is gekoppeld, wordt de IoT Hub gemaakt, maar wordt deze niet weergegeven in de rekenprocesconfiguratie. 
     
     Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Er wordt ook een IoT Edge-runtime op dit IoT Edge-apparaat uitgevoerd. Op dit moment is alleen het Linux-platform beschikbaar voor uw IoT Edge-apparaat.
 
@@ -101,7 +101,7 @@ Voor de eenvoudige implementatie in deze zelfstudie hebt u twee shares nodig: é
     Voor meer informatie over de opdracht `rsync` raadpleegt u de [Rsync-documentatie](https://www.computerhope.com/unix/rsync.htm).
 
     > [!NOTE]
-    > Om de NFS-share te koppelen aan het rekenproces, moet het rekennetwerk zijn geconfigureerd op hetzelfde subnet als het virtuele IP-adres van NFS. Ga naar [Rekennetwerk inschakelen op uw Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) voor meer informatie over het configureren van rekennetwerken.
+    > Om de NFS-share te koppelen aan het rekenproces, moet het rekennetwerk zijn geconfigureerd op hetzelfde subnet als het virtuele IP-adres van NFS. Ga naar [Rekennetwerk inschakelen op uw Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) voor meer informatie over het configureren van rekennetwerken.
 
     De Edge-share wordt gemaakt en u ontvangt de melding dat het maken is voltooid. De lijst shares wordt mogelijk bijgewerkt. U moet echter wachten tot het maken van de share is voltooid.
 
@@ -117,9 +117,9 @@ Voor de eenvoudige implementatie in deze zelfstudie hebt u twee shares nodig: é
 
 ## <a name="add-a-module"></a>Een module toevoegen
 
-U kunt een aangepaste of vooraf gemaakte module toevoegen. Er zijn geen aangepaste modules aanwezig op dit Edge-apparaat. Ga naar [Een C#-module ontwikkelen voor uw Azure Stack Edge-apparaat](azure-stack-edge-j-series-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
+U kunt een aangepaste of vooraf gemaakte module toevoegen. Er zijn geen aangepaste modules aanwezig op dit Edge-apparaat. Ga naar [Een C#-module ontwikkelen voor uw Azure Stack Edge Pro-apparaat](azure-stack-edge-j-series-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
 
-In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Azure Stack Edge](azure-stack-edge-j-series-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale Edge-share op het Edge-apparaat en deze verplaatst naar een Edge-(cloud)share op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
+In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Azure Stack Edge Pro](azure-stack-edge-j-series-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale Edge-share op het Edge-apparaat en deze verplaatst naar een Edge-(cloud)share op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
 
 1. Ga naar **Edge-rekenproces > Aan de slag**. Selecteer op de tegel **Modules toevoegen** het scenariotype als **Eenvoudig**. Selecteer **Toevoegen**.
 2. Voer op de blade **Module configureren en toevoegen** de volgende waarden in:
@@ -127,7 +127,7 @@ In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat 
     
     |Veld  |Waarde  |
     |---------|---------|
-    |Naam     | Een unieke naam voor de module. Deze module is een Docker-container die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge-apparaat.        |
+    |Naam     | Een unieke naam voor de module. Deze module is een Docker-container die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge Pro-apparaat.        |
     |URI installatiekopie     | De URI installatiekopie voor de bijbehorende containerinstallatiekopie voor de module.        |
     |Referenties vereist     | Als u dit selectievakje inschakelt, worden gebruikersnaam en wachtwoord gebruikt om modules op te halen met een overeenkomende URL.        |
     |Invoershare     | Selecteer een invoershare. De lokale Edge-share is in dit geval de invoershare. De module die hier wordt gebruikt, verplaatst bestanden van de lokale Edge-share naar een Edge-share waar ze in de cloud worden geüpload.        |
@@ -181,7 +181,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Een rekenprocesmodule toevoegen
 > * Gegevenstransformatie controleren en gegevens overdragen
 
-Als u wilt weten hoe u uw Azure Stack Edge-apparaat beheert, gaat u naar:
+Als u wilt weten hoe u uw Azure Stack Edge Pro-apparaat beheert, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

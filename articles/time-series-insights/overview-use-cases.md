@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ede38edd9d24114eb4d0939ff9d4586a2d31daa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978151"
 ---
-# <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2-use cases
+# <a name="azure-time-series-insights-gen2-use-cases"></a>Gebruikscases van Azure Time Series Insights Gen2
 
 Dit artikel bevat een overzicht van een aantal algemene gebruiks voorbeelden voor Azure Time Series Insights Gen2. De aanbevelingen in dit artikel fungeren als uitgangs punt voor het ontwikkelen van uw toepassingen en oplossingen met Azure Time Series Insights Gen2.
 
@@ -66,7 +66,7 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Azu
 
 Gebruik Azure Time Series Insights Gen2 om de status, het gebruik en de prestaties van apparatuur op schaal te controleren en operationele efficiëntie te meten. Azure Time Series Insights Gen2 helpt bij het beheren van uiteenlopende en onvoorspelbare IoT-workloads zonder dat er opname-of query prestaties worden geoffert.
 
-[![Overzicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![In de scherm afbeelding ziet u welke apparaten/toepassings gegevens, stroom verwerking, operationele efficiëntie, intelligentie/inzichten en geavanceerde analyses in Azure Time Series Insights Gen2 worden weer gegeven.](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streaming en doorlopende verwerking van gegevens die afkomstig zijn van operationele processen kunnen alle bedrijven omzetten als deze worden gecombineerd met de juiste technologie of oplossing. Vaak zijn deze oplossingen een combi natie van meerdere systemen. Ze maken het mogelijk om gegevens te verkennen en te analyseren die voortdurend worden gewijzigd, met name in de IoT-realm en een gemeen schappelijk patroon delen.
 
