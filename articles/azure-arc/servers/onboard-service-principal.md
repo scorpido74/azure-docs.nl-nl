@@ -1,26 +1,26 @@
 ---
 title: Hybride machines op schaal aansluiten op Azure
-description: In dit artikel leert u hoe u met behulp van een Service-Principal computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview).
-ms.date: 07/23/2020
+description: In dit artikel leert u hoe u met behulp van een Service-Principal computers verbindt met Azure met servers met de Arc-functionaliteit.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908328"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
 
-U kunt voor Azure Arc ingeschakelde servers (preview) inschakelen voor meerdere Windows-of Linux-computers in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met het sjabloon script dat we bieden, kunt u elke stap van de installatie automatiseren, met inbegrip van het tot stand brengen van de verbinding met Azure Arc. U moet dit script echter interactief uitvoeren met een account dat verhoogde machtigingen heeft op de doel computer en in Azure. Als u de computers wilt verbinden met Azure Arc-servers (preview), kunt u een Azure Active Directory [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw bevoorrechte identiteit te gebruiken om [interactief verbinding te maken met de computer](onboard-portal.md). Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mini maal vereiste machtigingen krijgt om computers te verbinden met Azure met behulp van de `azcmagent` opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegdheden, zoals een Tenant Administrator, gevolgd door de aanbevolen procedures voor het beheren van de toegangs beveiliging. De service-principal wordt alleen gebruikt tijdens onboarding en wordt niet voor andere doel einden gebruikt.  
+U kunt Azure Arc-servers inschakelen voor meerdere Windows-of Linux-computers in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met het sjabloon script dat we bieden, kunt u elke stap van de installatie automatiseren, met inbegrip van het tot stand brengen van de verbinding met Azure Arc. U moet dit script echter interactief uitvoeren met een account dat verhoogde machtigingen heeft op de doel computer en in Azure. Als u de computers wilt verbinden met servers die geschikt zijn voor Azure, kunt u een Azure Active Directory [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw bevoorrechte identiteit te gebruiken om [interactief verbinding te maken met de computer](onboard-portal.md). Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mini maal vereiste machtigingen krijgt om computers te verbinden met Azure met behulp van de `azcmagent` opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegdheden, zoals een Tenant Administrator, gevolgd door de aanbevolen procedures voor het beheren van de toegangs beveiliging. De service-principal wordt alleen gebruikt tijdens onboarding en wordt niet voor andere doel einden gebruikt.  
 
 De installatie methoden voor het installeren en configureren van de verbonden machine agent vereist dat de geautomatiseerde methode die u gebruikt, beheerders rechten heeft op de computers. Op Linux, met behulp van het hoofd account en in Windows als lid van de lokale groep Administrators.
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Aan het einde van dit proces hebt u uw hybride computers verbonden met servers met Azure Arc-functionaliteit (preview).
+Aan het einde van dit proces hebt u uw hybride computers verbonden met servers waarop Azure Arc is ingeschakeld.
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een service-principal maken voor onboarding op schaal
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc, gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -141,4 +141,4 @@ Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken me
 
 - Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturingssysteem en workloads op de machine proactief wilt monitoren, deze wilt beheren met Automation-runbooks of oplossingen zoals Updatebeheer, of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md) wilt gebruiken.
+- Meer informatie over [[log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.

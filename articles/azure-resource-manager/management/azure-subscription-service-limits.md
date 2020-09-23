@@ -3,12 +3,12 @@ title: Limieten en quota voor Azure-abonnementen
 description: Biedt een lijst met algemene Azure-abonnementen en service limieten, quota's en beperkingen. Dit artikel bevat informatie over het verhogen van de limieten en maximum waarden.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: b9b2b7217b854153f03d61713d8b4a1bcf5bfd9d
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89470167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971020"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service
 
@@ -239,10 +239,6 @@ De volgende tabel bevat een overzicht van de functies en limieten van de [servic
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
 
-## <a name="identity-manager-limits"></a>Limieten van identiteits beheer
-
-[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
-
 ## <a name="iot-central-limits"></a>IoT Central limieten
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
@@ -257,6 +253,11 @@ De volgende tabel bevat een overzicht van de functies en limieten van de [servic
 ## <a name="key-vault-limits"></a>Key Vault limieten
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
+
+## <a name="managed-identity-limits"></a>Beheerde identiteits limieten
+
+[!INCLUDE [Managed-Identity-Limits](../../../includes/managed-identity-limits.md)]
+
 
 ## <a name="media-services-limits"></a>Media Services limieten
 
@@ -423,11 +424,11 @@ De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource g
 
 ### <a name="shared-image-gallery-limits"></a>Limieten voor gedeelde afbeeldingen galerie
 
-Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
+Elk abonnement kent limieten voor het implementeren van resources met behulp van galerieën met gedeelde installatiekopieën:
 
-- 100 gedeelde afbeeldings galerieën, per abonnement, per regio
-- 1.000 installatie kopie definities, per abonnement, per regio
-- 10.000 installatie kopie versies, per abonnement, per regio
+- 100 galerieën met gedeelde installatiekopieën per abonnement per regio
+- 1000 definities van installatiekopieën per abonnement per regio
+- 10.000 versies van installatiekopieën per abonnement per regio
 
 ## <a name="virtual-machine-scale-sets-limits"></a>Limieten voor virtuele-machine schaal sets
 

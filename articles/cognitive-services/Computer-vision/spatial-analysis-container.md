@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3d419268302ac8fd55559c6af9cd328f22bd2404
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935623"
+ms.locfileid: "90987185"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)
 
@@ -69,9 +69,9 @@ In dit artikel downloadt en installeert u de volgende software pakketten. De hos
 | Linux-besturings systeem | [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) moet zijn geïnstalleerd op de hostcomputer.  |
 
 
-## <a name="request-access-to-the-spatial-analysis-functionality"></a>Toegang aanvragen tot de functionaliteit van ruimtelijke analyse
+## <a name="request-approval-to-run-the-container"></a>Goed keuring aanvragen om de container uit te voeren
 
-Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. 
+Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om goed keuring te vragen om de container uit te voeren. 
 
 Het formulier vraagt informatie over u, uw bedrijf en het gebruikers scenario waarvoor u de container gaat gebruiken. Nadat u het formulier hebt verzonden, wordt het door het Azure Cognitive Services-team gecontroleerd en een e-mail bericht met een beslissing verzonden.
 
@@ -208,7 +208,8 @@ sudo systemctl restart docker
 ## <a name="enable-nvidia-mps-on-the-host-computer"></a>NVIDIA MPS inschakelen op de hostcomputer
 
 > [!TIP]
-> Voer de MPS-instructies uit vanuit een Terminal venster op de hostcomputer. Niet binnen uw docker-container exemplaar.
+> * Installeer MPS niet als uw GPU-reken capaciteit lager is dan 7. x (pre-Volta). Zie [CUDA-compatibiliteit](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-title) voor naslag informatie. 
+> * Voer de MPS-instructies uit vanuit een Terminal venster op de hostcomputer. Niet binnen uw docker-container exemplaar.
 
 Voor de beste prestaties en het gebruik van kunt u de GPU ('s) van de hostcomputer configureren voor de [NVIDIA multi processor-service (MPS)](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf). Voer de MPS-instructies uit vanuit een Terminal venster op de hostcomputer.
 
@@ -262,7 +263,9 @@ az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-
 Als de hostcomputer geen Azure Stack edge-apparaat is, moet u [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) versie 1.0.8 installeren. Volg deze stappen om de juiste versie te downloaden: Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-Copy the generated list.
+```
+
+Kopieer de gegenereerde lijst.
 
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
@@ -335,7 +338,8 @@ Wanneer u de voorbeeld [DeploymentManifest.js](https://go.microsoft.com/fwlink/?
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'" -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+
 ```
 
 |Parameter  |Beschrijving  |

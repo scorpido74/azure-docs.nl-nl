@@ -3,12 +3,12 @@ title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzich
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324349"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979185"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -95,12 +95,12 @@ Het voorvoegsel patroon van het pad geeft aan waar Stream Analytics de invoer be
 
 `webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
-In dit voorbeeld:
+In dit voorbeeld geldt het volgende:
 
-* `webapplication27`is de naam van de Application Insights resource **alle kleine letters**.
-* `1234...`is de instrumentatie sleutel van de Application Insights resource, waarbij **streepjes worden wegge laten**. 
-* `PageViews`is het type gegevens dat u wilt analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](export-data-model.md).
-* `/{date}/{time}`is een patroon dat letterlijk is geschreven.
+* `webapplication27` is de naam van de Application Insights resource **alle kleine letters**.
+* `1234...` is de instrumentatie sleutel van de Application Insights resource, waarbij **streepjes worden wegge laten**. 
+* `PageViews` is het type gegevens dat u wilt analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](export-data-model.md).
+* `/{date}/{time}` is een patroon dat letterlijk is geschreven.
 
 > [!NOTE]
 > Inspecteer de opslag om er zeker van te zijn dat u het juiste pad krijgt.
@@ -196,7 +196,7 @@ Open Power BI met uw werk-of school account en selecteer de gegevensset en tabel
 
 U kunt deze gegevensset nu gebruiken in rapporten en dash boards in [Power bi](https://powerbi.microsoft.com).
 
-![Selecteer uw gegevensset en velden in Power BI.](./media/export-stream-analytics/210.png)
+![Scherm afbeelding toont een rapport dat is gemaakt op basis van een gegevensset in Power BI.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Zijn er geen gegevens?
 * Controleer of u [de datum notatie correct instelt](#set-path-prefix-pattern) op jjjj-mm-dd (met streepjes).

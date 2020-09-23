@@ -6,19 +6,19 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133503"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885573"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics-functies
 
-Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op het IoT Edge met behulp van [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-vs-code.md). In de tabellen in dit artikel ziet u welke functies door elk platform worden ondersteund voor beide taak typen.
+Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op het IoT Edge met behulp van [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-visual-studio-code.md). In de tabellen in dit artikel ziet u welke functies door elk platform worden ondersteund voor beide taak typen.
 
 > [!NOTE]
-> Visual Studio en Visual Studio code-hulpprogram ma's bieden geen ondersteuning voor taken in de regio's China-oost, China-noord, Duitsland-centraal en Duitsland.
+> De hulpprogramma's Visual Studio en Visual Studio Code bieden geen ondersteuning voor taken in de regio's China - oost, China - noord, Duitsland - centraal en Duitsland - noordoost.
 
 ## <a name="cloud-job-features"></a>Cloud taak functies
 
@@ -42,10 +42,10 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 |Resourcelogboeken     |Ja         |Nee         |Nee         |
 |Aangepaste bericht eigenschappen     |Ja         |Ja         |Nee       |
 |Aangepaste C#-code functie en deserializer|Alleen-lezen modus|Ja|Nee|
-|Java script UDF en UDA     |Ja         |Ja         |Alleen op Windows         |
+|Java script UDF en UDA     |Ja         |Ja         |Alleen in Windows         |
 |Machine Learning Service     |Ja        |Ja         |Nee         |
 |Machine Learning Studio     |Ja, maar de query kan niet worden getest        |Ja |Nee         |
-|Compatibiliteitsniveau     |1.0</br>1.1</br>1,2 (standaard)         |1.0</br>1.1</br>1,2 (standaard)           |1.0</br>1.1</br>1,2 (standaard)           |
+|Compatibiliteitsniveau     |1,0</br>1.1</br>1,2 (standaard)         |1,0</br>1.1</br>1,2 (standaard)           |1,0</br>1.1</br>1,2 (standaard)           |
 |Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |
 |Ingebouwde georuimtelijke functies     |Ja         |Ja         |Ja         |
 

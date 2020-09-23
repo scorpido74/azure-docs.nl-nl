@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 2c028bff80856f7edcb34688ffa5c3320a66ccc9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d4dc5c2690be7b9abbda685e78ea562878626b5c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112609"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902860"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Opslag in Azure Database for MySQL automatisch verg Roten met behulp van de Azure Portal
 In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
@@ -32,13 +32,13 @@ Volg deze stappen voor het instellen van de automatische groei van MySQL-server 
 
 3. In de sectie automatische groei selecteert u **Ja** om automatische groei van opslag in te scha kelen.
 
-    ![Azure Database for MySQL-Settings_Pricing_tier-automatische groei](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/3-auto-grow.png" alt-text="Azure Database for MySQL-Settings_Pricing_tier-automatische groei":::
 
 4. Klik op **OK** om de wijzigingen op te slaan.
 
 5. Bij een melding wordt bevestigd dat automatisch uitbreiden is ingeschakeld.
 
-    ![Azure Database for MySQL-automatisch groei geslaagd](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-success.png" alt-text="Azure Database for MySQL-automatisch groei geslaagd":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,15 +1,15 @@
 ---
 title: Vm's terugzetten met behulp van de Azure Portal
-description: Een virtuele Azure-machine herstellen vanaf een herstel punt met behulp van de Azure Portal
+description: Een virtuele Azure-machine herstellen vanaf een herstel punt met behulp van de Azure Portal, met inbegrip van de functie voor het terugzetten van meerdere regio's.
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986546"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -138,18 +138,21 @@ Als een van de [Opties voor terugzetten](#restore-options)met behulp van cross R
 
 Lees de [sectie voordat u begint](./backup-create-rs-vault.md#set-cross-region-restore)om het onderdeel tijdens de preview-periode onboarding uit te voeren.
 
-Als u wilt zien of CRR is ingeschakeld, volgt u de instructies in [herstel van meerdere regio's configureren](backup-create-rs-vault.md#configure-cross-region-restore)
+Volg de instructies in [Restore voor meerdere regio's configureren](backup-create-rs-vault.md#configure-cross-region-restore)om te controleren of CRR is ingeschakeld.
 
 ### <a name="view-backup-items-in-secondary-region"></a>Back-upitems in secundaire regio weer geven
 
 Als CRR is ingeschakeld, kunt u de back-upitems in de secundaire regio weer geven.
 
-1. Ga vanuit de portal naar **Recovery Services kluis**  >  **Back-upitems**
+1. Ga vanuit de portal naar **Recovery Services kluis**  >  **Back-upitems**.
 1. Selecteer **secundaire regio** om de items in de secundaire regio weer te geven.
 
-    ![Virtuele machines in de secundaire regio](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>Alleen back-upbeheer typen die ondersteuning bieden voor de functie CRR, worden weer gegeven in de lijst. Op dit moment is alleen ondersteuning voor het herstellen van secundaire regio gegevens naar een secundaire regio toegestaan.
 
-    ![Secundaire regio selecteren](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![Virtuele machines in de secundaire regio](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![Secundaire regio selecteren](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>Herstellen in secundaire regio
 

@@ -3,12 +3,12 @@ title: Exporteren naar Power BI vanuit Azure-toepassing inzichten | Microsoft Do
 description: Analytische query's kunnen worden weer gegeven in Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324366"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979170"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Feed Power BI van Application Insights
 [Power bi](https://www.powerbi.com/) is een suite met zakelijke hulp middelen waarmee u gegevens kunt analyseren en inzichten deelt. Uitgebreide Dash boards zijn beschikbaar op elk apparaat. U kunt gegevens uit een groot aantal bronnen combi neren, met inbegrip van analyse query's van [Azure-toepassing Insights](./app-insights-overview.md).
@@ -67,11 +67,11 @@ Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    Plak het geëxporteerde M-taal script in de Geavanceerde editor. 
 
-   ![Scherm opname van Power BI Desktop, met Geavanceerde editor gemarkeerd](./media/export-power-bi/advancedquery.png)
+   ![Scherm afbeelding toont de Power BI Desktop, met Geavanceerde editor gemarkeerd](./media/export-power-bi/advancedquery.png)
 
 4. Selecteer items in de query en kies een trechter visualisatie.
 
-   ![Scherm opname van Power BI Desktop visualisatie opties](./media/export-power-bi/selectsequence.png)
+   ![Scherm afbeelding toont de visualisatie opties van Power BI Desktop trechter](./media/export-power-bi/selectsequence.png)
 
 5. Wijzig de titel zodat deze zinvol is en publiceer uw rapport naar uw Power BI Cloud werkruimte. 
 
@@ -86,7 +86,7 @@ Dit kan gebeuren als uw vernieuwings token niet is bijgewerkt. Voer de volgende 
 
 1. Meld u aan bij de Azure Portal en zorg ervoor dat u toegang hebt tot de resource.
 2. Probeer de referenties voor het dash board te vernieuwen.
-3. Probeer de cache te wissen van uw PowerBI-bureau blad.
+3. Probeer de cache te wissen van uw Power BI Desktop.
 
 
    Open een ondersteunings ticket als u toegang hebt en de referenties niet werkt.
@@ -121,14 +121,14 @@ Met deze methode maakt u een volledig dash board van telemetrie. De eerste gegev
 1. Meld u aan bij [Power BI](https://app.powerbi.com/).
 2. Open de scherm afbeelding **gegevens ophalen** ![ van het pictogram GetData linksonder ](./media/export-power-bi/001.png) , **Services**.
 
-    ![Scherm opnamen van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/002.png)
+    ![Scherm afbeeldingen toont de knop ophalen in het venster Services.](./media/export-power-bi/002.png)
 
 3. Selecteer **nu downloaden** onder Application Insights.
 
    ![Scherm opnamen van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/003.png)
 4. Geef de details van de Application Insights resource op en **Meld**u aan.
 
-    ![Scherm afbeelding van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/005.png)
+    ![Scherm opname toont het venster verbinding maken met Application Insights.](./media/export-power-bi/005.png)
 
      Deze informatie vindt u in het overzichts venster van Application Insights:
 

@@ -6,16 +6,16 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 0676b987725a33049d9da3256bdd4e6dc8028d00
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045175"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885490"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.jsop velden
 
-De volgende velden worden ondersteund in de *JobConfig.jsvoor* het bestand dat wordt gebruikt om [een Azure stream Analytics taak te maken met Visual Studio code](quick-create-vs-code.md).
+De volgende velden worden ondersteund in de *JobConfig.jsvoor* het bestand dat wordt gebruikt om [een Azure stream Analytics taak te maken met Visual Studio code](quick-create-visual-studio-code.md).
 
 ```json
 {
@@ -46,7 +46,7 @@ De volgende velden worden ondersteund in de *JobConfig.jsvoor* het bestand dat w
 |EventsOutOfOrderPolicy|tekenreeks|No|Hiermee wordt het beleid aangegeven dat moet worden toegepast op gebeurtenissen die niet in de juiste volg orde in de invoer gebeurtenis stroom arriveren. -Aanpassen of verwijderen|
 |StreamingUnits|geheel getal|Yes|Hiermee geeft u het aantal streaming-eenheden op dat door de streaming-taak wordt gebruikt.|
 |Compatibiliteits niveau|tekenreeks|No|Hiermee wordt bepaald runtime-gedrag van de streaming-taak bepaald. -Acceptabele waarden zijn ' 1,0 ', ' 1,1 ', ' 1,2 '|
-|UseSystemAssignedIdentity|booleaans|No|Stel waar in om deze taak in te scha kelen voor communicatie met andere Azure-Services, met behulp van een beheerde Azure Active Directory identiteit.|
+|UseSystemAssignedIdentity|boolean|No|Stel waar in om deze taak in te scha kelen voor communicatie met andere Azure-Services, met behulp van een beheerde Azure Active Directory identiteit.|
 |GlobalStorage. AccountName|tekenreeks|No|Globaal opslag account wordt gebruikt voor het opslaan van inhoud die betrekking heeft op uw stream Analytics-taak, zoals moment opnamen van SQL-referentie gegevens.|
 |GlobalStorage. AccountKey|tekenreeks|No|Bijbehorende sleutel voor globaal opslag account.|
 |DataSourceCredentialDomain|tekenreeks|No|Gereserveerde eigenschap voor lokale opslag van referenties.|
@@ -55,7 +55,7 @@ De volgende velden worden ondersteund in de *JobConfig.jsvoor* het bestand dat w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
-* [Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code](visual-studio-code-local-run.md)
+* [Een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)
+* [Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code](visual-studio-code-local-run.md)
 * [Stream Analytics query's lokaal testen op invoer van live streams met behulp van Visual Studio code](visual-studio-code-local-run-live-input.md) 
 * [Een Azure stream Analytics-taak implementeren met CI/cd NPM-pakket](setup-cicd-vs-code.md)

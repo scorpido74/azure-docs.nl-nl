@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213683"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903890"
 ---
 # <a name="logical-decoding"></a>Logische decodering
  
@@ -52,11 +52,11 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 
 1. Stel ondersteuning voor Azure-replicatie in op **logisch**. Selecteer **Opslaan**.
 
-   ![Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie":::
 
 2. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
 
-   ![Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten":::
 
 
 ## <a name="start-logical-decoding"></a>Logische decodering starten

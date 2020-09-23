@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Arc-gegevensservices
+summary: Voer Azure-gegevensservices uit on-premises, aan de rand en in multi-cloudomgevingen met behulp van Kubernetes en de infrastructuur van uw keuze.
+metadata:
+  title: Gegevensservices met Azure Arc (preview)
+  description: Voer Azure-gegevensservices uit on-premises, aan de rand en in multi-cloudomgevingen met behulp van Kubernetes en de infrastructuur van uw keuze.
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928720"
+landingContent:
+- title: Over
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn gegevensservices met Azure Arc?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Connectiviteitsmodi en -vereisten
+      url: connectivity.md
+    - text: Opslagconfiguratie
+      url: storage-configuration.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Gegevenscontroller maken
+      url: create-data-controller.md
+    - text: Clienttools installeren
+      url: install-client-tools.md
+- title: PostgreSQL Hyperscale met Azure Arc (preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Maken
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Verbinding maken
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migreren
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Herstellen
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: SQL Managed Instance met Azure Arc (preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Maken
+      url: create-sql-managed-instance.md
+    - text: Verbinding maken
+      url: connect-managed-instance.md
+    - text: Migreren
+      url: migrate-to-managed-instance.md
+    - text: Herstellen
+      url: restore-adventureworks-sample-db.md

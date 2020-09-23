@@ -4,38 +4,78 @@
   expanded: true
   items:
     - name: Over Security Center
-      href: security-center-intro.md
-    - name: Ondersteunde platforms
-      href: security-center-os-coverage.md
-    - name: Security Center-functies
       items:
+        - name: Wat is Azure Security Center?
+          href: security-center-introduction.md
+        - name: Ondersteunde platforms
+          displayName: coverage
+          href: security-center-os-coverage.md
         - name: Functiedekking voor VM's
           href: security-center-services.md
         - name: Functiedekking voor Azure PaaS-resources
           href: features-paas.md
     - name: Wat is er nieuw in Security Center?
+      displayName: release notes
       href: release-notes.md
-    - name: Aanbevelingen voor beveiliging
-      href: recommendations-reference.md
-    - name: Beveiligingswaarschuwingen en de kill chain voor intentie
-      href: alerts-reference.md
-    - name: Machtigingen
-      href: security-center-permissions.md
+    - name: Basisprincipes van Security Center
+      items:
+        - name: Overzichtspagina van Security Cente
+          href: overview-page.md
+        - name: Aanbevelingen voor beveiliging
+          href: recommendations-reference.md
+        - name: Beveiligingswaarschuwingen en de kill chain voor intentie
+          href: alerts-reference.md
+        - name: Hoe Microsoft klantgegevens beveiligt
+          href: security-center-data-security.md
+        - name: Machtigingen
+          href: security-center-permissions.md
+    - name: Geavanceerde beveiliging van Azure Defender
+      items:
+        - name: Overzicht van Azure Defender
+          href: azure-defender.md
+        - name: Azure Defender voor servers
+          href: defender-for-servers-introduction.md
+        - name: Azure Defender voor App Service
+          href: defender-for-app-service-introduction.md
+        - name: Azure Defender voor Storage
+          href: defender-for-storage-introduction.md
+        - name: Azure Defender voor SQL
+          href: defender-for-sql-introduction.md
+        - name: Azure Defender voor IoT
+          href: defender-for-iot-introduction.md
+        - name: Azure Defender voor Key Vault
+          displayName: KV
+          href: defender-for-key-vault-introduction.md
+        - name: Azure Defender voor Kubernetes
+          displayName: 'clusters, k8s'
+          href: defender-for-kubernetes-introduction.md
+        - name: Azure Defender voor containerregisters
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
+        - name: Aanvullende bedreigingsbeveiligingen
+          href: other-threat-protections.md
+    - name: Beveiligingsfuncties voor containers van Security Center
+      href: container-security.md
     - name: Prijzen
       href: security-center-pricing.md
 - name: Snelstartgidsen
   items:
-    - name: Azure-abonnementen
+    - name: Aan de slag
       href: security-center-get-started.md
-    - name: Windows-computers
-      href: quick-onboard-windows-computer.md
-    - name: Linux-computers
-      href: quick-onboard-linux-computer.md
-    - name: Azure Stack-VM's
-      href: quick-onboard-azure-stack.md
+    - name: Verbinding maken met niet-Azure-machines
+      displayName: 'azure stack, windows, linux'
+      href: quickstart-onboard-machines.md
+    - name: Verbinding maken met AWS- en GCP-accounts
+      items:
+        - name: Verbinding maken met AWS-accounts
+          displayName: 'hybrid, multicloud, amazon'
+          href: quickstart-onboard-aws.md
+        - name: Verbinding maken met GCP-accounts
+          displayName: 'hybrid, multicloud, google'
+          href: quickstart-onboard-gcp.md
     - name: Onboarding automatiseren met PowerShell
       href: security-center-powershell-onboarding.md
-    - name: Uw gegevensverzameling configureren
+    - name: Gegevensverzameling configureren
       href: security-center-enable-data-collection.md
     - name: E-mailmeldingen instellen
       href: security-center-provide-security-contact-details.md
@@ -53,85 +93,29 @@
       href: security-center-compliance-dashboard.md
 - name: Concepten
   items:
-    - name: 'Beveiligingsscore, aanbevelingen en beleidsregels'
+    - name: Cloud Security Posture Management
       items:
+        - name: Beheer uw resources met assetinventarissen
+          href: asset-inventory.md
         - name: Beveiligingsscore
           href: secure-score-security-controls.md
         - name: Overzicht van beveiligingsaanbevelingen
           href: security-center-recommendations.md
         - name: Overzicht van beveiligingsbeleid
           href: tutorial-security-policy.md
+        - name: Ingebouwd beveiligingsbeleid
+          displayName: 'samples, policy'
+          href: ./policy-reference.md
         - name: Aanbevelingen gebruiken om de beveiliging te verbeteren
           href: security-center-using-recommendations.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-    - name: Bescherming tegen bedreiging en beveiligingswaarschuwingen
-      items:
-        - name: Overzicht van bescherming tegen bedreigingen in Security Center
-          href: threat-protection.md
-        - name: Overzicht van beveiligingswaarschuwingen
-          href: security-center-alerts-overview.md
-        - name: Verwijzingenlijst met waarschuwingen
-          href: alerts-reference.md
-        - name: Schema's voor waarschuwingen
-          href: alerts-schemas.md
-        - name: Overzicht van beveiligingsincidenten
-          href: security-center-alerts-cloud-smart.md
-    - name: Gegevensbeveiliging
-      href: security-center-data-security.md
-    - name: Just-in-time-toegang voor virtuele machines
-      href: just-in-time-explained.md
-    - name: Beheer in meerdere tenants
-      href: security-center-cross-tenant-management.md
-    - name: Beveiliging van de container
-      items:
-        - name: Overzicht van containerbeveiliging
-          href: container-security.md
-        - name: Integratie met Azure Container Registry
-          href: azure-container-registry-integration.md
-        - name: Integratie met Azure Kubernetes Service
-          href: azure-kubernetes-service-integration.md
-- name: Instructiegidsen
-  items:
-    - name: Upgraden naar geavanceerde beveiliging
-      href: security-center-onboarding.md
-    - name: Beveiligingsbeleid en nalevingsstandaarden configureren
-      items:
-        - name: Aangepast beveiligingsbeleid maken
-          href: custom-security-policies.md
-        - name: Beleid beheren met de Azure Policy REST API
-          href: configure-security-policy-azure-policy.md
-        - name: Standaarden voor uw compatibiliteitsdashboard kiezen
-          href: update-regulatory-compliance-packages.md
-    - name: Uw VM's scannen op beveiligingsproblemen
-      items:
-        - name: De geïntegreerde scanner voor beveiligingsproblemen implementeren in uw VM's
-          href: deploy-vulnerability-assessment-vm.md
-        - name: Een BYOL-beveiligingsoplossing implementeren in uw VM's
-          href: deploy-vulnerability-assessment-byol-vm.md
-        - name: Beveiligingsproblemen in uw VM's beoordelen en oplossen
-          href: remediate-vulnerability-findings-vm.md
-    - name: Bedreigingsbeveiliging configureren en waarschuwingen afhandelen
-      items:
-        - name: Beveiligingswaarschuwingen beheren
-          href: security-center-managing-and-responding-alerts.md
-        - name: Regels voor het onderdrukken van waarschuwingen maken en beheren
-          href: alerts-suppression-rules.md
-        - name: Advanced beveiliging tegen bedreigingen instellen voor Azure Key Vault
-          href: advanced-threat-protection-key-vault.md
-        - name: Beveiligingsincidenten beheren
-          href: security-center-incident.md
-        - name: Bedreigingsinformatierapporten genereren
-          href: security-center-threat-report.md
-        - name: Uw waarschuwingsconfiguratie (EICAR-testbestand) valideren
-          href: security-center-alert-validation.md
-        - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines gebruiken
-          href: security-center-iaas-advanced-data.md
-        - name: Reacties op waarschuwingen automatiseren
-          href: workflow-automation.md
-        - name: Waarschuwingen exporteren
-          displayName: continuous
-          href: continuous-export.md
+        - name: Beheer in meerdere tenants
+          href: security-center-cross-tenant-management.md
+        - name: Uw Windows Admin Center-servers beschermen
+          href: windows-admin-center-integration.md
+        - name: Beveiligingsoplossingen en gegevensbronnen integreren
+          href: security-center-partner-integration.md
     - name: Beveiligingsaanbevelingen gebruiken om de beveiliging te verbeteren
       items:
         - name: Aanbevelingen doorvoeren
@@ -140,56 +124,116 @@
           displayName: recommendations
           href: prevent-misconfigurations.md
         - name: Beveiligingspostuur verbeteren
-          displayName: recommendations
           href: security-center-monitoring.md
         - name: Verwijzingenlijst met aanbevelingen
           href: recommendations-reference.md
-        - name: Uw machines en apps beschermen
-          href: security-center-virtual-machine-protection.md
         - name: Netwerkresources beschermen
           href: security-center-network-recommendations.md
-        - name: Gegevens en opslagservices beschermen
-          href: security-center-sql-service-recommendations.md
         - name: Identiteit en toegang beveiligen
           href: security-center-identity-access.md
-        - name: Reacties op aanbevelingen automatiseren
+        - name: Aanbevelingen voor beveiliging beheren
+          items:
+            - name: Reacties op aanbevelingen automatiseren
+              href: workflow-automation.md
+            - name: Aanbevelingen exporteren
+              href: continuous-export.md
+            - name: Een resource uitsluiten van een aanbeveling
+              href: exempt-resource.md
+    - name: Azure Defender-waarschuwingen
+      items:
+        - name: Overzicht van Azure Defender-waarschuwingen
+          href: security-center-alerts-overview.md
+        - name: Verwijzingenlijst met waarschuwingen
+          href: alerts-reference.md
+        - name: Schema's voor waarschuwingen
+          href: alerts-schemas.md
+        - name: Overzicht van beveiligingsincidenten
+          href: security-center-alerts-cloud-smart.md
+- name: Instructiegidsen
+  items:
+    - name: Het Azure Defender-dashboard gebruiken
+      href: azure-defender-dashboard.md
+    - name: Beveiligingsbeleid en nalevingsstandaarden configureren
+      items:
+        - name: Aangepast beveiligingsbeleid maken
+          href: custom-security-policies.md
+        - name: Beleid beheren met de Azure Policy REST API
+          href: configure-security-policy-azure-policy.md
+        - name: Standaarden voor uw compatibiliteitsdashboard kiezen
+          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
+          href: update-regulatory-compliance-packages.md
+    - name: Azure Defender voor servers gebruiken
+      items:
+        - name: Scannen op beveiligingsproblemen voor VM's
+          items:
+            - name: Uw VM's scannen met de geïntegreerde VA-oplossing
+              displayName: 'qualys, vulnerability'
+              href: deploy-vulnerability-assessment-vm.md
+            - name: Uw VM's scannen met een BYOL VA-oplossing
+              displayName: 'qualys, rapid7, vulnerability'
+              href: deploy-vulnerability-assessment-byol-vm.md
+            - name: Beveiligingsproblemen in uw VM's beoordelen en oplossen
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md
+        - name: Beheerpoorten beveiligen met Just-in-time-toegang voor VM's
+          items:
+            - name: Overzicht van Just-In-time-toegang voor VM's
+              displayName: 'jit, management'
+              href: just-in-time-explained.md
+            - name: Just-in-time-toegang beheren
+              displayName: 'jit, management'
+              href: security-center-just-in-time.md
+        - name: Adaptieve toepassingsregelaars beheren
+          href: security-center-adaptive-application.md
+        - name: Bewaking van bestandsintegriteit gebruiken
+          items:
+            - name: Overzicht van bewaking van bestandsintegriteit
+              href: security-center-file-integrity-monitoring.md
+            - name: Basislijnen vergelijken met Bestandsintegriteit controleren
+              href: security-center-file-integrity-monitoring-baselines.md
+        - name: Adaptieve netwerkbeveiliging beheren
+          href: security-center-adaptive-network-hardening.md
+        - name: Microsoft Defender ATP integreren
+          href: security-center-wdatp.md
+        - name: Docker-hosts verharden
+          displayName: containers
+          href: harden-docker-hosts.md
+    - name: Azure Defender voor SQL gebruiken
+      items:
+        - name: Azure Defender voor SQL configureren op virtuele Azure-machines
+          href: defender-for-sql-usage.md
+        - name: Het informatiebeschermingsbeleid aanpassen
+          href: security-center-info-protection-policy.md
+    - name: Azure Defender voor containerregisters gebruiken
+      displayName: 'ACR, registry, images'
+      href: defender-for-container-registries-usage.md
+    - name: Azure Defender-waarschuwingen verwerken
+      items:
+        - name: Beveiligingswaarschuwingen beheren
+          href: security-center-managing-and-responding-alerts.md
+        - name: Regels voor het onderdrukken van waarschuwingen maken en beheren
+          href: alerts-suppression-rules.md
+        - name: Reageren op Azure Defender voor Key Vault-waarschuwingen
+          href: defender-for-key-vault-usage.md
+        - name: Beveiligingsincidenten beheren
+          href: security-center-incident.md
+        - name: Bedreigingsinformatierapporten genereren
+          href: security-center-threat-report.md
+        - name: Uw waarschuwingsconfiguratie (EICAR-testbestand) valideren
+          href: security-center-alert-validation.md
+        - name: Reacties op waarschuwingen automatiseren
           href: workflow-automation.md
-        - name: Aanbevelingen exporteren
+        - name: Waarschuwingen exporteren
           displayName: continuous
           href: continuous-export.md
-    - name: Beheer uw resources met assetinventarissen
-      href: asset-inventory.md
-    - name: Integreren met andere hulpprogramma's en services
-      items:
-        - name: Uw Windows Admin Center-servers beschermen
-          href: windows-admin-center-integration.md
-        - name: Web-apps en API's van Azure App Service beveiligen
-          href: security-center-app-services.md
-        - name: Integreren met Microsoft Defender ATP
-          href: security-center-wdatp.md
-        - name: Beveiligingsoplossingen en gegevensbronnen integreren
-          href: security-center-partner-integration.md
-    - name: Cloudbeveiliging toepassen
-      items:
-        - name: Just-in-time-toegang beheren
-          href: security-center-just-in-time.md
-        - name: Adaptieve toepassingsbesturingselementen
-          href: security-center-adaptive-application.md
-        - name: Bestandsintegriteit controleren
-          href: security-center-file-integrity-monitoring.md
-        - name: Basislijnen vergelijken met Bestandsintegriteit controleren
-          href: security-center-file-integrity-monitoring-baselines.md
-        - name: Adaptieve netwerkbeveiliging
-          href: security-center-adaptive-network-hardening.md
-    - name: Uw containers bewaken
-      href: monitor-container-security.md
-    - name: Het informatiebeschermingsbeleid aanpassen
-      href: security-center-info-protection-policy.md
+    - name: Kubernetes-workloads beveiligen
+      displayName: 'k8s, containers'
+      href: kubernetes-workload-protections.md
     - name: Onderzoek gebruikersgegevens beheren
       href: security-center-investigation-user-data.md
     - name: Zichtbaarheid in de hele tenant verkrijgen
       href: security-center-management-groups.md
-- name: Naslaginformatie
+- name: Verwijzing
   items:
     - name: REST-API’s
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
@@ -215,16 +259,13 @@
       href: security-center-features-retirement-july2019.md
     - name: Evaluatie van eindpuntbeveiliging en aanbevelingen
       href: security-center-endpoint-protection.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?term=securityS
     - name: Gebruikersgegevens beheren
       href: security-center-privacy.md
-    - name: Documentatie voor Azure Security Center for IoT
+    - name: Documentatie voor Azure Defender voor IoT
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Documentatie over beveiliging in Azure
       href: /azure/security/
@@ -232,12 +273,12 @@
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Roadmap naar gereedheid
       href: security-center-readiness-roadmap.md
-    - name: 'Blog over veiligheid, privacy en naleving met betrekking tot Azure'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+    - name: Azure Security Center Tech Community-blogs
+      href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
     - name: Azure Security Center op Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure-security-center'
-    - name: Video's
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: ASCinTheField YouTube-video's
+      href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Regionale beschikbaarheid

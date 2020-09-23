@@ -1,6 +1,6 @@
 ---
-title: Een Kubernetes-cluster maken en beheren op Azure Stack Edge GPU-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u een Kubernetes-cluster maakt en beheert op Azure Stack Edge GPU-apparaat via de Windows Power shell-interface.
+title: Een Kubernetes-cluster maken en beheren op Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Kubernetes-cluster maakt en beheert op Azure Stack Edge Pro GPU-apparaat via de Windows Power shell-interface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903219"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Verbinding maken met en beheren van een Kubernetes-cluster via kubectl op uw Azure Stack Edge GPU-apparaat
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Verbinding maken met en beheren van een Kubernetes-cluster via kubectl op uw Azure Stack Edge Pro GPU-apparaat
 
-Op uw Azure Stack edge-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunt u via een systeem eigen hulp programma, zoals *kubectl*, verbinding maken met het cluster en het lokaal beheren vanaf een client computer.
+Op uw Azure Stack Edge Pro-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunt u via een systeem eigen hulp programma, zoals *kubectl*, verbinding maken met het cluster en het lokaal beheren vanaf een client computer.
 
-In dit artikel wordt beschreven hoe u verbinding maakt met een Kubernetes-cluster op uw Azure Stack edge-apparaat en dit vervolgens beheert met behulp van *kubectl*. 
+In dit artikel wordt beschreven hoe u verbinding maakt met een Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat en het vervolgens beheert met behulp van *kubectl*. 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt toegang tot een Azure Stack edge-apparaat.
+1. U hebt toegang tot een Azure Stack Edge Pro-apparaat.
 
-2. U hebt uw Azure Stack edge-apparaat geactiveerd, zoals beschreven in de [rand activeren Azure stack](azure-stack-edge-gpu-deploy-activate.md).
+2. U hebt het Azure Stack Edge Pro-apparaat geactiveerd zoals beschreven in [Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md).
 
-3. U hebt reken functie ingeschakeld op het apparaat. Er is ook een Kubernetes-cluster op het apparaat gemaakt toen u Compute op het apparaat hebt geconfigureerd volgens de instructies in [Configure Compute op uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
+3. U hebt reken functie ingeschakeld op het apparaat. Er is ook een Kubernetes-cluster op het apparaat gemaakt toen u Compute op het apparaat hebt geconfigureerd volgens de instructies in [Configure Compute op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 4. U hebt toegang tot een Windows-client systeem met Power shell 5,0 of hoger voor toegang tot het apparaat. U kunt ook een andere client met een [ondersteund besturings systeem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) hebben. 
 
@@ -48,7 +48,7 @@ Nadat het Kubernetes-cluster is gemaakt, kunt u toegang krijgen tot dit cluster 
 
 Nadat het Kubernetes-cluster is gemaakt, kunt u het *kubectl* via de opdracht regel gebruiken om toegang te krijgen tot het cluster. 
 
-In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt u de gebruiker aan de naam ruimte. U moet ook een *configuratie* bestand ophalen waarmee u een Kubernetes-client kunt gebruiken om rechtstreeks te communiceren met het Kubernetes-cluster dat u hebt gemaakt zonder verbinding te maken met de Power shell-interface van uw Azure stack edge-apparaat.
+In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt u de gebruiker aan de naam ruimte. U moet ook een *configuratie* bestand ophalen waarmee u een Kubernetes-client kunt gebruiken om rechtstreeks te communiceren met het Kubernetes-cluster dat u hebt gemaakt zonder verbinding te maken met de Power shell-interface van uw Azure stack Edge Pro-apparaat.
 
 1. Een naamruimte maken. Type:
 
@@ -66,7 +66,7 @@ In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt 
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > U kunt *aseuser* niet gebruiken als de gebruikers naam omdat deze is gereserveerd voor een standaard gebruiker die is gekoppeld aan een IOT-naam ruimte voor Azure stack Edge.
+    > U kunt *aseuser* niet gebruiken als de gebruikers naam omdat deze is gereserveerd voor een standaard gebruiker die is gekoppeld aan IOT-naam ruimte voor Azure stack Edge Pro.
 
     Hier volgt een voor beeld van de uitvoer van het configuratie bestand:
    
@@ -113,7 +113,7 @@ In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt 
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    Zodra u het configuratie bestand hebt, hebt u geen fysieke toegang tot het cluster nodig. Als uw client het IP-adres van het Azure Stack edge-apparaat kan pingen, moet u het cluster met behulp van *kubectl* -opdrachten kunnen door sturen.
+    Zodra u het configuratie bestand hebt, hebt u geen fysieke toegang tot het cluster nodig. Als uw client het IP-adres van het Azure Stack Edge Pro-apparaat kan pingen, moet u het cluster met behulp van *kubectl* -opdrachten kunnen door sturen.
 
 6. Start een nieuwe Power shell-sessie op de client. U hoeft geen verbinding te maken met de interface van het apparaat. U kunt nu `kubectl` op uw client installeren met de volgende opdracht:
 
@@ -125,7 +125,7 @@ In deze benadering maakt u een naam ruimte en een gebruiker. Vervolgens koppelt 
     Als bijvoorbeeld het hoofd knooppunt Kubernetes werd uitgevoerd op v 1.15.2, installeert u v 1.15.2 op de client.
 
     > [!IMPORTANT]
-    > Down load een client die niet meer dan één secundaire versie uit de Master heeft. De client versie, maar kan het hoofd naar een secundaire versie leiden. Een v 1.3-Master zou bijvoorbeeld moeten werken met de knoop punten v 1.1, v 1.2 en v 1.3, en moet werken met clients met de v 1.2, v 1.3 en v 1.4. Zie [ondersteunings beleid voor Kubernetes-versie en-versie](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)voor meer informatie over de Kubernetes-client versie. Ga voor meer informatie over de Kubernetes-Server versie op Azure Stack Edge naar Kubernetes-Server versie ophalen.<!-- insert link-->
+    > Down load een client die niet meer dan één secundaire versie uit de Master heeft. De client versie, maar kan het hoofd naar een secundaire versie leiden. Een v 1.3-Master zou bijvoorbeeld moeten werken met de knoop punten v 1.1, v 1.2 en v 1.3, en moet werken met clients met de v 1.2, v 1.3 en v 1.4. Zie [ondersteunings beleid voor Kubernetes-versie en-versie](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)voor meer informatie over de Kubernetes-client versie. Ga naar Kubernetes-Server versie ophalen voor meer informatie over de Kubernetes-Server versie op Azure Stack Edge Pro.<!-- insert link-->
     > Soms `kubectl` wordt vooraf geïnstalleerd op uw systeem als u docker voor Windows of andere hulpprogram ma's uitvoert. Het is belang rijk dat u de specifieke versie van `kubectl` zoals beschreven in deze sectie gebruikt om met dit kubernetes-cluster te werken. 
 
     De installatie duurt enkele minuten.
@@ -172,4 +172,4 @@ Ga naar [Compute-configuratie verwijderen](azure-stack-edge-j-series-manage-comp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Implementeer een staatloze toepassing op uw Azure stack-rand](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Implementeer een staatloze toepassing op uw Azure stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

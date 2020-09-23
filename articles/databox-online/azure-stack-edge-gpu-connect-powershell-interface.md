@@ -1,23 +1,23 @@
 ---
-title: Verbinding maken met Microsoft Azure Stack edge-apparaat en deze beheren via de Windows Power shell-interface | Microsoft Docs
-description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge beheert via de Windows Power shell-interface.
+title: Verbinding maken met en beheren van Microsoft Azure Stack Edge Pro-apparaat via de Windows Power shell-interface | Microsoft Docs
+description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge Pro beheert via de Windows Power shell-interface.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b58c38dd0257a65bad6021b6152c14a37f905e0a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461830"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903510"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge GPU-apparaat beheren via Windows Power shell
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge Pro GPU-apparaat beheren via Windows Power shell
 
-Met Azure Stack EDGE-oplossing kunt u gegevens verwerken en via het netwerk verzenden naar Azure. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Azure Stack edge-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
+Met Azure Stack Edge Pro-oplossing kunt u gegevens verwerken en via het netwerk verzenden naar Azure. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Azure Stack Edge Pro-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
 
 In dit artikel wordt uitgelegd hoe u verbinding kunt maken met de Power shell-interface van het apparaat en de taken die u met deze interface kunt uitvoeren. 
 
@@ -84,11 +84,11 @@ Als de compute-functie op uw apparaat is geconfigureerd, kunt u ook de informati
 
 ## <a name="enable-multi-process-service-mps"></a>Service voor meerdere processen inschakelen (MPS)
 
-Een MPS (multi-process service) op NVIDIA-Gpu's biedt een mechanisme waarbij Gpu's kunnen worden gedeeld door meerdere taken, waarbij elke taak een percentage van de resources van de GPU toegewezen heeft. Voer de volgende stappen uit om MPS in te scha kelen op uw Azure Stack edge-apparaat:
+Een MPS (multi-process service) op NVIDIA-Gpu's biedt een mechanisme waarbij Gpu's kunnen worden gedeeld door meerdere taken, waarbij elke taak een percentage van de resources van de GPU toegewezen heeft. MPS is een preview-functie op uw Azure Stack Edge Pro GPU-apparaat. Voer de volgende stappen uit om MPS in te scha kelen op uw apparaat:
 
 1. Voordat u begint, moet u het volgende doen: 
 
-    1. U hebt [uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-activate.md) geconfigureerd en geactiveerd met een Azure stack edge/data Box gateway resource in Azure.
+    1. U hebt [uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-activate.md) geconfigureerd en geactiveerd met een Azure stack Edge pro/data Box gateway-resource in Azure.
     1. U hebt [Compute op dit apparaat geconfigureerd in de Azure Portal](azure-stack-edge-deploy-configure-compute.md#configure-compute).
     
 1. [Verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
@@ -187,7 +187,7 @@ users:
 ```
 -->
 
-Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, kunt u problemen oplossen of het apparaat bewaken met behulp van twee verschillende sets opdrachten.
+Op een Azure Stack Edge Pro-apparaat waarop de compute-rol is geconfigureerd, kunt u problemen oplossen of het apparaat bewaken met behulp van twee verschillende sets opdrachten.
 
 - `iotedge`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor basis bewerkingen voor uw apparaat.
 - `kubectl`Opdrachten gebruiken. Deze opdrachten zijn beschikbaar voor een uitgebreide set bewerkingen voor uw apparaat.
@@ -212,7 +212,7 @@ Commands:
 
 De volgende tabel bevat een korte beschrijving van de opdrachten die beschikbaar zijn voor `iotedge` :
 
-|command  |Beschrijving |
+|command  |Description |
 |---------|---------|
 |`list`     | Modules in lijst weergeven         |
 |`logs`     | De logboeken van een module ophalen        |
@@ -241,7 +241,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>Kubectl-opdrachten gebruiken
 
-Op een Azure Stack edge-apparaat waarop de compute-rol is geconfigureerd, `kubectl` zijn alle opdrachten beschikbaar voor het controleren of oplossen van problemen met modules. Voer `kubectl --help` uit vanuit het opdracht venster om een lijst met beschik bare opdrachten weer te geven.
+Op een Azure Stack Edge Pro-apparaat waarop de compute-rol is geconfigureerd, `kubectl` zijn alle opdrachten beschikbaar voor het controleren of oplossen van problemen met modules. Voer `kubectl --help` uit vanuit het opdracht venster om een lijst met beschik bare opdrachten weer te geven.
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -433,4 +433,4 @@ Als u de externe Power shell-sessie wilt afsluiten, sluit u het Power shell-vens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) in de Azure-portal implementeren.
+- [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) in de Azure-portal implementeren.

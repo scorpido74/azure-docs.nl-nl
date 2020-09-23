@@ -1,18 +1,18 @@
 ---
 title: Een sleutelkluis voor Azure Disk Encryption maken en configureren
-description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption
+description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutel kluis voor gebruik met Azure Disk Encryption op een virtuele Linux-machine.
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 0de1f1c1012315d2b9e6dd0297443f2633440869
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372685"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970961"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
@@ -30,7 +30,7 @@ Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption be
 Deze stappen worden geïllustreerd in de volgende quickstarts:
 
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](disk-encryption-cli-quickstart.md)
-- [Een virtuele Linux-machine maken en versleutelen met Azure PowerShell](disk-encryption-powershell-quickstart.md)
+- [Een Linux-VM maken en versleutelen met behulp van Azure PowerShell](disk-encryption-powershell-quickstart.md)
 
 U kunt eventueel ook een sleutelversleutelingssleutel genereren of importeren (KEK).
 

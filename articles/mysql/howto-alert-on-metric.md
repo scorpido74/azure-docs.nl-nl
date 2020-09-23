@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c20177b3dceca3b32cf8f2e2f8f60fa4227e2082
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b7054b520d31c6c5363c8784bb9a4839e9249c88
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902871"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor Azure Database for MySQL 
 
@@ -34,25 +34,25 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
 2. Selecteer in de sectie **bewaking** van de zijbalk **waarschuwingen** zoals wordt weer gegeven:
 
-   ![Waarschuwings regels selecteren](./media/howto-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-alert-on-metric/2-alert-rules.png" alt-text="Waarschuwings regels selecteren":::
 
 3. Selecteer **metrische waarschuwing toevoegen** (+ pictogram).
 
 4. De pagina **regel maken** wordt geopend, zoals hieronder wordt weer gegeven. Vul de vereiste gegevens in:
 
-   ![Formulier voor metrische waarschuwing toevoegen](./media/howto-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Formulier voor metrische waarschuwing toevoegen":::
 
 5. Selecteer **voor waarde toevoegen**in de sectie **voor waarde** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
-   ![Metrische waarde selecteren](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrische waarde selecteren":::
 
 7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie**, **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
    
    Selecteer **gereed** wanneer u klaar bent.
 
-   ![Metrische waarde selecteren](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Metrische waarde selecteren":::
 
 8. Selecteer in de sectie **actie groepen** de optie **nieuwe maken** om een nieuwe groep te maken voor het ontvangen van meldingen over de waarschuwing.
 
@@ -66,11 +66,11 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
     Selecteer **OK** wanneer u klaar bent.
 
-    ![Actiegroep](./media/howto-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Actiegroep":::
 
 11. Geef een naam, beschrijving en ernst voor de waarschuwings regel op.
 
-    ![Actiegroep](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Actiegroep"::: 
 
 12. Selecteer **waarschuwings regel maken** om de waarschuwing te maken.
 

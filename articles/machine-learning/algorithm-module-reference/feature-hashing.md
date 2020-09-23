@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907921"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer.
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
@@ -39,7 +39,7 @@ Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sent
 
 Intern maakt de functie hashing-module een woorden lijst van n-gram. De lijst met bigrams voor deze gegevensset zou er bijvoorbeeld als volgt moeten uitzien:
 
-|Term (bigrams)|Frequentie|
+|Term (bigrams)|Frequency|
 |------------|---------------|
 |Dit boek|3|
 |Ik gek|1|
@@ -48,7 +48,7 @@ Intern maakt de functie hashing-module een woorden lijst van n-gram. De lijst me
 
 U kunt de grootte van het n-gram instellen met behulp van de eigenschap **n-gram** . Als u kiest voor bigrams, worden unigrams ook berekend. De woorden lijst bevat ook enkele voor waarden, zoals de volgende:
 
-|Term (unigrams)|Frequentie|
+|Term (unigrams)|Frequency|
 |------------|---------------|
 |boek|3|
 |I|3|
@@ -111,7 +111,7 @@ Nadat de verwerking is voltooid, voert de module een getransformeerde gegevensse
 
 Nadat u de getransformeerde gegevensset hebt gemaakt, kunt u deze gebruiken als invoer voor de module Train model.
  
-## <a name="best-practices"></a>Aanbevolen procedures
+## <a name="best-practices"></a>Best practices
 
 Met de volgende aanbevolen procedures kunt u optimaal profiteren van de functie hashing module:
 
