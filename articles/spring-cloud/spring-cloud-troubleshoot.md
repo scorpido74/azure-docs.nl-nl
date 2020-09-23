@@ -4,15 +4,16 @@ description: Gids voor probleem oplossing voor Azure lente-Cloud
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b34bd51e9d84629682565592c733b23a320597aa
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669762"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904205"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -20,6 +21,7 @@ In dit artikel vindt u instructies voor het oplossen van problemen met Azure len
 
 ## <a name="availability-performance-and-application-issues"></a>Problemen met Beschik baarheid, prestaties en toepassingen
 
+::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Mijn toepassing kan niet worden gestart (bijvoorbeeld omdat het eind punt niet kan worden verbonden, of het retourneert een 502 na een paar nieuwe pogingen)
 
 De logboeken exporteren naar Azure Log Analytics. De tabel voor veer toepassings logboeken heeft de naam *AppPlatformLogsforSpring*. Zie [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](diagnostic-services.md)voor meer informatie.
@@ -67,6 +69,7 @@ Wanneer u fouten opspoort in de toepassing, moet u eerst de status en detectie s
 
 
 Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics.
+::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Mijn toepassing heeft een hoog CPU-gebruik of een hoog geheugengebruik
 
@@ -90,6 +93,7 @@ Als alle exemplaren actief zijn, gaat u naar Azure Log Analytics om een query ui
 
 Zie aan de [slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie over Azure log Analytics. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
 
+::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Controle lijst voor het implementeren van uw lente toepassing in azure veer Cloud
 
 Voordat u de toepassing uitschakelt, moet u controleren of deze voldoet aan de volgende criteria:
@@ -101,6 +105,7 @@ Voordat u de toepassing uitschakelt, moet u controleren of deze voldoet aan de v
 * De JVM-para meters hebben hun verwachte waarden.
 * U wordt aangeraden de Inge sloten _Configuratie server_ -en _veer service register_ services uit het toepassings pakket uit te scha kelen of te verwijderen.
 * Als Azure-resources moeten worden gebonden via _servicebinding_, moet u ervoor zorgen dat de doelresources actief zijn.
+::: zone-end
 
 ## <a name="configuration-and-management"></a>Configuratie en beheer
 
@@ -119,6 +124,17 @@ Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de R
 
 De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io` , zodat de installatie mislukt als de naam in conflict is met een bestaande. Mogelijk vindt u meer informatie in de activiteiten Logboeken.
 
+::: zone pivot="programming-language-java"
+### <a name="i-cant-deploy-a-net-core-app"></a>Ik kan geen .NET core-app implementeren
+
+U kunt een *zip* -bestand voor een .net core Steeltoe-app niet uploaden met behulp van de Azure portal of de Resource Manager-sjabloon.
+
+Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
+
+Zorg ervoor dat uw toepassing is ingepakt in de juiste *. zip* -bestands indeling. Als deze niet correct is verpakt, reageert het proces niet of wordt er een fout bericht weer gegeven.
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>Ik kan geen JAR-pakket implementeren
 
 U kunt het/source-pakket van Java Archive File (JAR) niet uploaden met behulp van de Azure Portal of de Resource Manager-sjabloon.
@@ -216,3 +232,8 @@ Controleer of de `spring-boot-actuator` afhankelijkheid is ingeschakeld in uw to
 ```
 
 Als uw toepassings logboeken kunnen worden gearchiveerd in een opslag account, maar niet naar Azure Log Analytics worden verzonden, controleert u of u [uw werk ruimte op de juiste wijze hebt ingesteld](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Als u een gratis laag van Azure Log Analytics gebruikt, moet u er rekening mee houden dat [de gratis laag geen Sla (Service Level Agreement) biedt](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+::: zone-end
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Zelf diagnose en probleem oplossing in azure lente Cloud](spring-cloud-howto-self-diagnose-solve.md)

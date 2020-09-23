@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659626"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895804"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -38,6 +38,7 @@ Zodra u Azure Sentinel hebt ingeschakeld, moet u eerst verbinding maken met uw g
 
    ![Volgende stappen voor connectors](./media/collect-data/data-insights.png)
  
+
 ## <a name="data-connection-methods"></a>Gegevensverbindingsmethoden
 
 De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel:
@@ -49,7 +50,7 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     - [Azure AD-identiteitsbeveiliging](connect-azure-ad-Identity-protection.md)
     - [Micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Defender](connect-azure-security-center.md) (voorheen Azure Security Center)
+    - [Azure Security Center](connect-azure-security-center.md) -waarschuwingen van Azure Defender-oplossingen
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Domeinnaamserver](connect-dns.md)
     - [Office 365](connect-office-365.md)
@@ -135,7 +136,7 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 | WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
 | AATP SecurityAlert  | [Verbinding maken met micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure ATP) | &#10003; | |
-| ASC SecurityAlert  | [Verbinding maken met Azure Defender](connect-azure-security-center.md) (voorheen Azure Security Center)  | &#10003; | |
+| ASC SecurityAlert  | [Azure Defender-waarschuwingen verbinden](connect-azure-security-center.md) vanuit Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Voor-en naactiviteit (gebeurtenis) | [Verbinding maken](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-gebeurtenissen verbinden](../azure-monitor/platform/data-sources-windows-events.md) <br> [De ophaal-parser ophalen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | De garbagecollection-verzameling wordt niet standaard op virtuele machines geïnstalleerd. [Zie voor](https://docs.microsoft.com/sysinternals/downloads/sysmon)meer informatie over het installeren van de opschoon agent. |

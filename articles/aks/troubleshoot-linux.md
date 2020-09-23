@@ -1,19 +1,19 @@
 ---
 title: Linux-prestatiehulpprogramma's
 titleSuffix: Azure Kubernetes Service
-description: Meer informatie over het oplossen van veelvoorkomende problemen bij het gebruik van Azure Kubernetes service (AKS)
+description: Meer informatie over het gebruik van Linux-prestatie hulpprogramma's voor het oplossen van veelvoorkomende problemen bij het gebruik van Azure Kubernetes service (AKS).
 services: container-service
 author: alexeldeib
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
-ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77925603"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982032"
 ---
 # <a name="linux-performance-troubleshooting"></a>Problemen met Linux-prestaties oplossen
 
@@ -78,13 +78,13 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top`biedt een breed overzicht van de huidige systeem status. De headers bieden enkele nuttige statistische informatie:
+`top` biedt een breed overzicht van de huidige systeem status. De headers bieden enkele nuttige statistische informatie:
 
 - status van taken: uitvoeren, in slaap stand, gestopt.
 - CPU-gebruik: in dit geval wordt meestal niet-actieve tijd weer gegeven.
 - totaal, vrij en gebruikt systeem geheugen.
 
-`top`Er kunnen processen met een korte levens duur worden gemist; alternatieven als `htop` en `atop` bieden vergelijk bare interfaces tijdens het oplossen van enkele van deze tekortkomingen.
+`top` Er kunnen processen met een korte levens duur worden gemist; alternatieven als `htop` en `atop` bieden vergelijk bare interfaces tijdens het oplossen van enkele van deze tekortkomingen.
 
 ## <a name="cpu"></a>CPU
 
@@ -108,7 +108,7 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat`Hiermee worden vergelijk bare CPU-informatie naar boven afgedrukt, maar dit wordt onderverdeeld per CPU-thread. Alle kernen tegelijk bekijken kan nuttig zijn bij het detecteren van het CPU-gebruik met een zeer groot aantal, bijvoorbeeld wanneer een toepassing met één thread één kern op 100% gebruik gebruikt. Dit probleem kan lastiger zijn bij het samen voegen van alle Cpu's in het systeem.
+`mpstat` Hiermee worden vergelijk bare CPU-informatie naar boven afgedrukt, maar dit wordt onderverdeeld per CPU-thread. Alle kernen tegelijk bekijken kan nuttig zijn bij het detecteren van het CPU-gebruik met een zeer groot aantal, bijvoorbeeld wanneer een toepassing met één thread één kern op 100% gebruik gebruikt. Dit probleem kan lastiger zijn bij het samen voegen van alle Cpu's in het systeem.
 
 ### <a name="vmstat"></a>vmstat
 
@@ -119,7 +119,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`bevat vergelijk bare informatie `mpstat` en het `top` inventariseren van het aantal processen dat wacht op CPU (r-kolom), geheugen statistieken en percentage CPU-tijd die aan elke werk status worden besteed.
+`vmstat` bevat vergelijk bare informatie `mpstat` en het `top` inventariseren van het aantal processen dat wacht op CPU (r-kolom), geheugen statistieken en percentage CPU-tijd die aan elke werk status worden besteed.
 
 ## <a name="memory"></a>Geheugen
 
@@ -134,7 +134,7 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free`geeft basis informatie over het totale geheugen en het gebruikte en vrije geheugen. `vmstat`is mogelijk handiger, zelfs bij een elementaire geheugen analyse door de mogelijkheid om uitvoer te leveren.
+`free` geeft basis informatie over het totale geheugen en het gebruikte en vrije geheugen. `vmstat` is mogelijk handiger, zelfs bij een elementaire geheugen analyse door de mogelijkheid om uitvoer te leveren.
 
 ## <a name="disk"></a>Schijf
 
@@ -157,21 +157,21 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`biedt uitgebreide inzichten in het schijf gebruik. Deze aanroep geeft `-x` uitgebreide statistieken, `-y` om de eerste uitvoer van het afdruk systeem na het opstarten over te slaan, en `1 1` om op te geven dat het interval van 1 seconde moet eindigen na één uitvoer blok. 
+`iostat` biedt uitgebreide inzichten in het schijf gebruik. Deze aanroep geeft `-x` uitgebreide statistieken, `-y` om de eerste uitvoer van het afdruk systeem na het opstarten over te slaan, en `1 1` om op te geven dat het interval van 1 seconde moet eindigen na één uitvoer blok. 
 
-`iostat`beschrijft veel nuttige statistieken:
+`iostat` beschrijft veel nuttige statistieken:
 
-- `r/s`en `w/s` zijn Lees bewerkingen per seconde. De som van deze waarden is IOPS.
-- `rkB/s`en `wkB/s` zijn kilo bytes per seconde voor lezen/schrijven. De som van deze waarden is door voer.
-- `await`is de gemiddelde iowait tijd in milliseconden voor aanvragen in de wachtrij.
-- `avgqu-sz`is de gemiddelde wachtrij grootte boven het gegeven interval.
+- `r/s` en `w/s` zijn Lees bewerkingen per seconde. De som van deze waarden is IOPS.
+- `rkB/s` en `wkB/s` zijn kilo bytes per seconde voor lezen/schrijven. De som van deze waarden is door voer.
+- `await` is de gemiddelde iowait tijd in milliseconden voor aanvragen in de wachtrij.
+- `avgqu-sz` is de gemiddelde wachtrij grootte boven het gegeven interval.
 
 Op een virtuele Azure-machine:
 
 - de som van `r/s` en `w/s` voor een afzonderlijk blok apparaat mag niet hoger zijn dan de SKU-limieten van die schijf.
-- de som van `rkB/s` en `wkB/s` voor een afzonderlijk blok apparaat mag de SKU-limieten van die schijf niet overschrijden
+- de som van `rkB/s` en `wkB/s`  voor een afzonderlijk blok apparaat mag de SKU-limieten van die schijf niet overschrijden
 - de som van `r/s` en `w/s` voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
-- de som van `rkB/s` en ' wkB/s voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
+- de som van  `rkB/s` en ' wkB/s voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
 
 Houd er rekening mee dat de schijf van het besturings systeem telt als een beheerde schijf van de kleinste SKU die overeenkomt met de capaciteit. Een 1024GB-besturingssysteem schijf komt bijvoorbeeld overeen met een P30-schijf. Tijdelijke besturingssysteem schijven en tijdelijke schijven hebben geen afzonderlijke schijf limieten. ze worden alleen beperkt door de volledige VM-limieten.
 
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`is een krachtig hulp middel voor een breed scala aan analyses. Hoewel in dit voor beeld de mogelijkheid van netwerk statistieken wordt gebruikt, is deze even krachtig voor het meten van CPU-en geheugen gebruik. In dit voor beeld wordt `sar` met `-n` vlag aangeroepen om het `DEV` sleutel woord (netwerk apparaat) op te geven, waarbij de netwerk doorvoer per apparaat wordt weer gegeven.
+`sar` is een krachtig hulp middel voor een breed scala aan analyses. Hoewel in dit voor beeld de mogelijkheid van netwerk statistieken wordt gebruikt, is deze even krachtig voor het meten van CPU-en geheugen gebruik. In dit voor beeld wordt `sar` met `-n` vlag aangeroepen om het `DEV` sleutel woord (netwerk apparaat) op te geven, waarbij de netwerk doorvoer per apparaat wordt weer gegeven.
 
 - De som van `rxKb/s` en `txKb/s` is de totale door Voer voor een bepaald apparaat. Wanneer deze waarde de limiet voor de ingerichte Azure-NIC overschrijdt, hebben werk belastingen op de computer een verhoogde netwerk latentie.
-- `%ifutil`meet gebruik voor een bepaald apparaat. Omdat deze waarde 100% benadert, hebben werk belastingen een verhoogde netwerk latentie.
+- `%ifutil` meet gebruik voor een bepaald apparaat. Omdat deze waarde 100% benadert, hebben werk belastingen een verhoogde netwerk latentie.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat`kan een groot aantal netwerk statistieken introspect, die hier wordt aangeroepen met een samenvattings uitvoer. Er zijn hier veel nuttige velden, afhankelijk van het probleem. Een handig veld in de TCP-sectie is mislukte Verbindings pogingen. Dit kan een indicatie zijn van de SNAT-poort afvoer of andere problemen met het maken van uitgaande verbindingen. Een hoog tempo van opnieuw verzonden segmenten (ook onder het TCP-gedeelte) kan duiden op problemen met pakket levering. 
+`netstat` kan een groot aantal netwerk statistieken introspect, die hier wordt aangeroepen met een samenvattings uitvoer. Er zijn hier veel nuttige velden, afhankelijk van het probleem. Een handig veld in de TCP-sectie is mislukte Verbindings pogingen. Dit kan een indicatie zijn van de SNAT-poort afvoer of andere problemen met het maken van uitgaande verbindingen. Een hoog tempo van opnieuw verzonden segmenten (ook onder het TCP-gedeelte) kan duiden op problemen met pakket levering. 

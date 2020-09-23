@@ -11,15 +11,15 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897439"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpreteer van modellen in Azure Machine Learning (preview-versie)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 ## <a name="overview-of-model-interpretability"></a>Overzicht van de interpretatie van modellen
 
@@ -71,7 +71,7 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
  `azureml-interpret` maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
 
-|Geïnterpreteerde techniek|Beschrijving|Type|
+|Geïnterpreteerde techniek|Description|Type|
 |--|--|--------------------|
 |Uitleg over de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
 |Uitgebreide uitleg van SHAP| Op basis van de uitleg van SHAP is diepe uitleg een uiterst snelle benaderings algoritme voor SHAP-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|

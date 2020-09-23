@@ -10,16 +10,16 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: abb24ef1cc6a693acbaf6561a185fd5ae536a66d
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 64665c0b1e32970f29233f5abdd6b2d2d020a6b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89668793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897513"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning tolerantie verg Roten
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u uw Microsoft Azure Machine Learning-resources kunt gebruiken met behulp van configuraties met een hoge Beschik baarheid. U kunt de Azure-Services configureren waarvan Azure Machine Learning afhankelijk is voor hoge Beschik baarheid. In dit artikel worden de services geïdentificeerd die u kunt configureren voor maximale Beschik baarheid en koppelingen naar aanvullende informatie over het configureren van deze resources.
 

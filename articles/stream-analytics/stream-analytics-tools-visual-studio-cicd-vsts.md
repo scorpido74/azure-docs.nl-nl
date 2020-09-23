@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75354438"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903840"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure Pipelines
 This tutorial descriIn deze zelfstudie wordt beschreven hoe u continue integratie en implementatie instelt voor een Azure Stream Analytics-taak met behulp van Azure Pipelines. 
@@ -26,8 +26,12 @@ In deze zelfstudie leert u het volgende:
 > * Een release-pijplijn in Azure Pipelines maken
 > * Automatisch een upgrade en een toepassing implementeren
 
+> [!NOTE]
+> De CI/CD NuGet wordt afgeschaft. Voor informatie over het migreren naar de meest recente versie van NPM, raadpleegt u het [overzicht voor continue integratie en implementatie](cicd-overview.md)
+
 ## <a name="prerequisites"></a>Vereisten
-Zorg ervoor dat u het volgende hebt voordat u begint:
+
+Zorg ervoor dat u de volgende stappen hebt uitgevoerd voordat u begint:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 * Installeer [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) en de workload **Azure-ontwikkeling** of **Gegevensopslag en verwerking**.
@@ -63,9 +67,9 @@ Deel de bronbestanden van uw toepassing met een project in Azure DevOps zodat u 
     Als u de opslagplaats pusht, wordt er een nieuw project voor uw organisatie gemaakt met dezelfde naam als de lokale opslagplaats. Als u de opslagplaats in een bestaand project wilt maken, klikt u naast de **naam van de opslagplaats** op **Advanced** en selecteert u een teamproject. U kunt uw code in de browser weergeven door **See it on the web** te selecteren.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Continue levering configureren met Azure DevOps
-Een build-pijplijn van Azure Pipelines beschrijft een werkstroom die bestaat uit build-stappen die achtereenvolgens worden uitgevoerd. Meer informatie over [build-pijplijnen van Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
+Een build-pijplijn van Azure Pipelines beschrijft een werkstroom die bestaat uit build-stappen die achtereenvolgens worden uitgevoerd. Meer informatie over [build-pijplijnen van Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
 
-Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build- en release-pijplijnen samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [release-pijplijnen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts) van Azure Pipelines.
+Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build- en release-pijplijnen samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [release-pijplijnen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true) van Azure Pipelines.
 
 ### <a name="create-a-build-pipeline"></a>Een build-pijplijn maken
 Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [Azure DevOps](https://app.vsaex.visualstudio.com/). 
@@ -121,7 +125,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     |Resourcegroep  |  Voer een resourcegroepnaam in.   |
     |Template  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project]. JobTemplate.json   |
     |Sjabloonparameters  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project].JobTemplate.parameters.json   |
-    |Sjabloonparameters overschrijven  | Typ de sjabloonparameters die u wilt overschrijven in het tekstvak. Bijvoorbeeld: –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Deze eigenschap is optioneel, maar er treden fouten op in uw build als belangrijke parameters worden niet overschreven.    |
+    |Sjabloonparameters overschrijven  | Typ de sjabloonparameters die u wilt overschrijven in het tekstvak. Voorbeeld: `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)`. Deze eigenschap is optioneel, maar er treden fouten op in uw build als belangrijke parameters worden niet overschreven.    |
     
     ![Implementatie-eigenschappen voor Azure-resourcegroep instellen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 

@@ -8,22 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759203"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904096"
 ---
 # <a name="whats-new-in-computer-vision"></a>Wat is er nieuw in Computer Vision?
 
 Meer informatie over nieuwe functies in de service. Dit kunnen opmerkingen bij de release, video's, blogposts en andere soorten informatie zijn. Voeg een bladwijzer toe voor deze pagina om up-to-date te blijven over de service.
 
+## <a name="september-2020"></a>September 2020
+
+### <a name="spatial-analysis-container-preview"></a>Ruimtelijke analyse-container (preview)
+
+De [ruimtelijke analyse-container](spatial-analysis-container.md) is nu beschikbaar als preview-versie. Met de functie voor ruimtelijke analyse van Computer Vision kunt u realtime streaming-video analyseren om inzicht te krijgen in de ruimtelijke relaties tussen mensen en hun verplaatsing door fysieke omgevingen. Ruimtelijke analyse is een Docker-container die u on-premises kunt gebruiken. 
+
+### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Met de openbare preview-versie van Lees-API v3.1 wordt OCR voor Japans toegevoegd
+Lees-API v3.1 (openbare preview-versie) voegt de volgende functies toe:
+* OCR voor de Japanse taal
+* Geef voor elke tekstregel aan of het met de hand geschreven of gedrukte tekst is, samen met een betrouwbaarheidsscore (alleen Latijnse talen).
+* Extraheer alleen tekst voor de geselecteerde pagina's of het paginabereik voor een document met meerdere pagina's.
+
+* Deze preview-versie van de lees-API ondersteunt de talen Engels, Nederlands, Frans, Duits, Italiaans, Japans, Portugees, vereenvoudigd Chinees en Spaans.
+
+Zie het [Lees-API: overzicht](concept-recognizing-text.md) voor meer informatie.
+
+> [!div class="nextstepaction"]
+> [Meer informatie over de Lees-API v3.1 (openbare preview-versie 2)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
+
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>Lees-API v3.1 (openbare preview-versie) voegt ondersteuning toe voor vereenvoudigd Chinees
+### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Lees-API v3.1 (openbare preview-versie) met OCR voor vereenvoudigd Chinees
 Lees-API v3.1 (openbare preview-versie) voegt ondersteuning toe voor vereenvoudigd Chinees van Computer Vision.
 
 * Deze preview-versie van de lees-API ondersteunt de talen Engels, Nederlands, Frans, Duits, Italiaans, Portugees, vereenvoudigd Chinees en Spaans.
@@ -31,7 +50,7 @@ Lees-API v3.1 (openbare preview-versie) voegt ondersteuning toe voor vereenvoudi
 Zie het [Lees-API: overzicht](concept-recognizing-text.md) voor meer informatie.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de Lees-API v3.1 (openbare preview-versie)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [Meer informatie over de Lees-API v3.1 (openbare preview-versie 1)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mei 2020
 Computer Vision API v3.0 is nu algemeen beschikbaar, met updates voor de [lees-API](concept-recognizing-text.md):

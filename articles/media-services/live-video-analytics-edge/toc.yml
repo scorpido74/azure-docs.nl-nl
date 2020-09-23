@@ -6,7 +6,7 @@
       href: overview.md
     - name: Terminologie
       href: terminology.md
-    - name: Nieuwe functies
+    - name: Wat is er nieuw?
       items:
         - name: Releaseopmerkingen
           href: release-notes.md
@@ -51,6 +51,10 @@
         - name: Met OVMS via HTTP-extensie
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: Custom Vision gebruiken
+          href: custom-vision-tutorial.md
+        - name: Ruimtelijke analyse gebruiken
+          href: spatial-analysis-tutorial.md
 - name: Voorbeelden
   items:
     - name: Voorbeelden van directe methode voor C#
@@ -89,6 +93,8 @@
       href: manage-recording-policy-how-to.md
     - name: Directe methoden aanroepen met de portal
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Implementeren op Azure Stack Edge
+      href: deploy-azure-stack-edge-how-to.md
     - name: Problemen oplossen
       href: troubleshoot-how-to.md
 - name: Naslaginformatie

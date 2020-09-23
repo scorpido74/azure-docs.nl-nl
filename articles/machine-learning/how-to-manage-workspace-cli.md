@@ -10,15 +10,15 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661637"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897350"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met behulp van de Azure CLI. De Azure CLI bevat opdrachten voor het beheer van Azure-resources. De machine learning-extensie voor de CLI bevat opdrachten voor het werken met Azure Machine Learning-resources.
 
@@ -109,9 +109,6 @@ Zie [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest
 
 Als u een nieuwe werk ruimte wilt maken waar de __Services automatisch worden gemaakt__, gebruikt u de volgende opdracht:
 
-> [!TIP]
-> Met de opdrachten in deze sectie wordt een Basic Edition-werk ruimte gemaakt. Als u een Enter prise-werk ruimte wilt maken, gebruikt u de `--sku enterprise` Schakel optie met de `az ml workspace create` opdracht. Zie [Wat is Azure machine learning](overview-what-is-azure-ml.md#sku)voor meer informatie over Azure machine learning-edities.
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -161,7 +158,7 @@ Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overv
 
 Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels. 
 
-Als u een __Enter prise__ -versie van Azure machine learning maakt, kunt u de zelf code opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
+In plaats van de door micro soft beheerde sleutel te gebruiken, kunt u de zelf-sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
 
 > [!IMPORTANT]
 > Voordat u de `--cmk-keyvault` `--resource-cmk-uri` para meters en gebruikt, moet u eerst de volgende acties uitvoeren:

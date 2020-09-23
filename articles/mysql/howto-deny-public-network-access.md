@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f8156b01244012d78214f2ba8c49ed76dbceed6d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118780"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896141"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Open bare netwerk toegang in Azure Database for MySQL weigeren met Azure Portal
 
@@ -33,13 +33,13 @@ Voer de volgende stappen uit om de MySQL-server toegang tot het open bare netwer
 
 1. Selecteer in **open bare netwerk toegang weigeren**de optie **Ja** om open bare toegang voor uw MySQL-server in te scha kelen.
 
-    ![Netwerk toegang Azure Database for MySQL weigeren](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG" alt-text="Netwerk toegang Azure Database for MySQL weigeren":::
 
 1. Klik op **Opslaan** om de wijzigingen op te slaan.
 
 1. Bij een melding wordt bevestigd dat de instelling verbindings beveiliging is ingeschakeld.
 
-    ![Azure Database for MySQL netwerk toegang weigeren](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL netwerk toegang weigeren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: b5e024536cdd0829435b9676501b21bc99fff49a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c1cc658708a8429e635d23a058a784f6fc4ef05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020045"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904016"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: .NET (C#) gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -49,7 +49,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
- ![Naam van Azure Database voor MySQL-server](./media/connect-csharp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen
 Gebruik de volgende code om verbinding te maken en de gegevens te laden met behulp van de SQL-instructies `CREATE TABLE` en `INSERT INTO`. In de code wordt de klasse `MySqlConnection` met de methode [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) gebruikt om een verbinding te maken met MySQL. Vervolgens wordt de methode [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) gebruikt, de eigenschap CommandText ingesteld en de methode [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) aangeroepen om de databaseopdrachten uit te voeren. 

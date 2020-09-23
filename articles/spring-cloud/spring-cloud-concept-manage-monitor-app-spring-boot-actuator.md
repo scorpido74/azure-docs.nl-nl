@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904290"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>App beheren en bewaken met Azure Spring Boot Actuator
+
+**Dit artikel is van toepassing op:** ✔️ java
 
 Nadat u het nieuwe binaire bestand hebt geïmplementeerd voor uw app, kunt u de functionaliteit controleren en informatie over uw actieve toepassing bekijken. In dit artikel wordt uitgelegd hoe u toegang krijgt tot de API vanuit een test eindpunt dat is opgenomen in azure lente Cloud en de functies voor productie gereed voor uw app beschikbaar maakt.
 
@@ -73,5 +75,7 @@ U kunt nu teruggaan naar het app-overzichts deel venster en wachten tot de inric
 Als u alle ingebouwde eind punten wilt weer geven, raadpleegt u [eind punten zichtbaar](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints) maken
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Informatie over metrische gegevens voor Azure lente-Cloud](spring-cloud-concept-metrics.md)
-* [Wat is app-status in azure lente-Cloud](spring-cloud-concept-app-status.md)?
+* [Informatie over appstatus in Azure Spring Cloud](spring-cloud-concept-app-status.md)
+

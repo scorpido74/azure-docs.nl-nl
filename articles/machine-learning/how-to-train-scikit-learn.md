@@ -10,15 +10,15 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce052fa80d8aa0d30d1de7268b82e727c952cab1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648190"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897230"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel leert u hoe u uw scikit-trainings scripts kunt uitvoeren met Azure Machine Learning.
 

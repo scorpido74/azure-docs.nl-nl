@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897407"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dit artikel vindt u informatie over vooraf geconfigureerde limieten voor Azure-resources voor uw [Azure machine learning](overview-what-is-azure-ml.md) -abonnement en welke quota's u kunt beheren. Deze limieten worden zodanig ingesteld dat budget overschrijdingen door fraude worden voor komen en om te voldoen aan de Azure-capaciteits beperkingen. 
 
@@ -99,8 +99,6 @@ Als u quota's op het niveau van de werk ruimte wilt instellen, gaat u naar een w
 
 
 > [!NOTE]
-> Dit is alleen een Enter prise Edition-functie. Als u in uw abonnement zowel een basis-als [een Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimte hebt, kunt u deze gebruiken om alleen quota's in te stellen voor uw werk ruimten in uw onderneming. In uw basis werkruimte blijven de quota niveau quotum, de standaard instelling.
->
 > U hebt machtigingen op abonnements niveau nodig om quota in te stellen op het niveau van de werk ruimte. Dit wordt afgedwongen zodat afzonderlijke eigen aars van werk ruimten hun quota niet kunnen bewerken of verhogen en encroaching kunnen starten op resources die zijn gereserveerd voor een andere werk ruimte. Een abonnements beheerder is daarom het meest geschikt voor het toewijzen en distribueren van deze quota's in werk ruimten.
 
 
@@ -137,7 +135,7 @@ De limieten kunnen niet hoger zijn dan de maximum waarde die in de tabellen word
 Wanneer u een quota verhoging wilt aanvragen, moet u de service selecteren die u aanvraagt om het quotum te verhogen. Dit kan services zijn zoals Machine Learning service quotum, container instanties of opslag quotum. Naast Azure Machine Learning compute, kunt u op de knop **aanvraag quotum** klikken terwijl u het quotum bekijkt volgens de bovenstaande stappen.
 
 > [!NOTE]
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](../billing/billing-upgrade-azure-subscription.md) en [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
+> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](../billing/billing-upgrade-azure-subscription.md) en  [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

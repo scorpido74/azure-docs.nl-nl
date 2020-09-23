@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 6aa550a9c3f58fc7101e632bcd56800b27efc84e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8119cbbb6619b923068723a6c855c04a8de48876
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185975"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904031"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Connector/C++ gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
 
@@ -57,7 +57,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
- ![Naam van Azure Database voor MySQL-server](./media/connect-cpp/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen
 Gebruik de volgende code om verbinding te maken en de gegevens te laden met behulp van de SQL-instructies **CREATE TABLE** EN **INSERT INTO**. In de code wordt de klasse sql::Driver met de methode connect() gebruikt om een verbinding te maken met MySQL. Vervolgens worden de methoden createStatement() en execute()) gebruikt om de databaseopdrachten uit te voeren. 

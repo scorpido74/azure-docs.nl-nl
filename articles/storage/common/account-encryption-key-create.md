@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070493"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967468"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Een account maken dat door de klant beheerde sleutels voor tabellen en wacht rijen ondersteunt
 
-Azure Storage versleutelt alle gegevens in een opslag account in rust. Wachtrij opslag en tabel opslag gebruiken standaard een sleutel die is toegewezen aan de service en die wordt beheerd door micro soft. U kunt er ook voor kiezen om door de klant beheerde sleutels te gebruiken om wachtrij-of tabel gegevens te versleutelen. Als u door de klant beheerde sleutels met wacht rijen en tabellen wilt gebruiken, moet u eerst een opslag account maken dat gebruikmaakt van een versleutelings sleutel die is afgestemd op het account, in plaats van naar de service. Nadat u een account hebt gemaakt dat gebruikmaakt van de account versleutelings sleutel voor wachtrij-en tabel gegevens, kunt u door de klant beheerde sleutels configureren met Azure Key Vault voor dat opslag account.
+Azure Storage versleutelt alle gegevens in een opslag account in rust. Wachtrij opslag en tabel opslag gebruiken standaard een sleutel die is toegewezen aan de service en die wordt beheerd door micro soft. U kunt er ook voor kiezen om door de klant beheerde sleutels te gebruiken om wachtrij-of tabel gegevens te versleutelen. Als u door de klant beheerde sleutels met wacht rijen en tabellen wilt gebruiken, moet u eerst een opslag account maken dat gebruikmaakt van een versleutelings sleutel die is afgestemd op het account, in plaats van naar de service. Nadat u een account hebt gemaakt dat gebruikmaakt van de account versleutelings sleutel voor wachtrij-en tabel gegevens, kunt u door de klant beheerde sleutels configureren voor dat opslag account.
 
 In dit artikel wordt beschreven hoe u een opslag account maakt dat afhankelijk is van een sleutel die is afgestemd op het account. Wanneer het account voor het eerst wordt gemaakt, gebruikt micro soft de account sleutel voor het versleutelen van de gegevens in het account en wordt de sleutel door micro soft beheerd. U kunt vervolgens door de klant beheerde sleutels voor het account configureren om gebruik te maken van deze voor delen, waaronder de mogelijkheid om uw eigen sleutels op te geven, de sleutel versie bij te werken, de sleutels te draaien en toegangs beheer in te trekken.
 
@@ -32,7 +32,7 @@ U kunt een opslag account maken dat afhankelijk is van de account versleutelings
 
 - VS - oost
 - VS - zuid-centraal
-- US - west 2  
+- VS - west 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Registreren voor het gebruik van de account versleutelings sleutel
 
@@ -49,7 +49,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -81,7 +81,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
@@ -110,7 +110,7 @@ Als u de resource provider opnieuw wilt registreren bij Power shell, roept u de 
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de resource provider opnieuw wilt registreren bij Azure CLI, roept u de opdracht [AZ provider REGI ster](/cli/azure/provider#az-provider-register) aan.
 
@@ -154,7 +154,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -EncryptionKeyTypeForQueue Account
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een opslag account te maken dat afhankelijk is van de versleutelings sleutel van het account, moet u ervoor zorgen dat u Azure CLI-versie 2.0.80 of hoger hebt geïnstalleerd. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie.
 
@@ -215,11 +215,7 @@ In het volgende JSON-voor beeld wordt een v2-opslag account voor algemeen gebrui
 
 ---
 
-Nadat u een account hebt gemaakt dat afhankelijk is van de versleutelings sleutel van het account, raadpleegt u een van de volgende artikelen voor het configureren van door de klant beheerde sleutels met Azure Key Vault:
-
-- [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure Portal](storage-encryption-keys-portal.md)
-- [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Power shell](storage-encryption-keys-powershell.md)
-- [Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI](storage-encryption-keys-cli.md)
+Nadat u een account hebt gemaakt dat afhankelijk is van de versleutelings sleutel van het account, kunt u door de klant beheerde sleutels configureren die zijn opgeslagen in Azure Key Vault of in Key Vault beheerde hardware-beveiligings model (HSM) (preview). Zie [Configure Encryption with door de klant beheerde sleutels die zijn opgeslagen in azure Key Vault](customer-managed-keys-configure-key-vault.md)voor meer informatie over het opslaan van door de klant beheerde sleutels in een sleutel kluis. Zie [Configure Encryption with door de klant beheerde sleutels die zijn opgeslagen in azure Key Vault Managed HSM (preview)](customer-managed-keys-configure-key-vault-hsm.md)voor meer informatie over het opslaan van door de klant beheerde sleutels in een beheerde HSM.
 
 ## <a name="verify-the-account-encryption-key"></a>De versleutelings sleutel voor het account controleren
 
@@ -236,7 +232,7 @@ $account.Encryption.Services.Queue
 $account.Encryption.Services.Table
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is ingesteld op `Account` .
 
@@ -254,5 +250,6 @@ N.v.t.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md) 
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)
+- [Door de klant beheerde sleutels voor Azure Storage versleuteling](customer-managed-keys-overview.md)
 - [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

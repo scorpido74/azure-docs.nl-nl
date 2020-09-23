@@ -1,6 +1,6 @@
 ---
-title: Replicatie naar Azure SQL Edge configureren (preview-versie)
-description: Meer informatie over het configureren van replicatie naar Azure SQL Edge (preview).
+title: Replicatie naar Azure SQL Edge configureren
+description: Meer informatie over het configureren van replicatie naar Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282769"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888421"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Replicatie naar Azure SQL Edge configureren (preview-versie) 
+# <a name="configure-replication-to-azure-sql-edge"></a>Replicatie naar Azure SQL Edge configureren 
 
 U kunt een exemplaar van de Azure SQL-rand configureren als de push-abonnee voor transactionele replicatie of momentopname replicatie op eenrichtings wijze. Dit exemplaar kan niet fungeren als de uitgever of de Distributor voor een transactionele replicatie Configuratie. Houd er rekening mee dat Azure SQL Edge geen ondersteuning biedt voor samenvoeg replicatie, peer-to-peer-replicatie of Oracle-publicatie.
 

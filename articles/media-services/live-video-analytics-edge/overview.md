@@ -3,12 +3,12 @@ title: Wat is Live Video Analytics op IoT Edge - Azure
 description: Dit onderwerp geeft u een overzicht van Live Video Analytics op IoT Edge. Het platform biedt u mogelijkheden om uw IoT-oplossingen te verbeteren. Bijvoorbeeld het vastleggen, opnemen en analyseren van live video en het publiceren van de resultaten (video en/of video-analyse) naar Azure-services.
 ms.topic: overview
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a67322d0a5e524d75b9bf3e481be7157e09e63
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904352"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>Wat is Live Video Analytics in IoT Edge? (preview)
 
@@ -26,7 +26,10 @@ Met Live Video Analytics van IoT Edge kunt u uw [CCTV-camera's](https://en.wikip
 
 ## <a name="supported-environments"></a>Ondersteunde omgevingen
 
-Linux AMD64- en x64-omgevingen worden ondersteund.
+Linux x86-64- en ARM64-omgevingen worden ondersteund.
+> [!NOTE]
+> Ondersteuning voor ARM64-apparaten is beschikbaar in builds `1.0.4` en nieuwer.
+> Ondersteuning voor de uitvoering van Azure IoT Edge-runtime op ARM64-apparaten vindt u in [openbare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="get-started"></a>Aan de slag
 

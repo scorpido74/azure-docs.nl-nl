@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids toewijzing
 description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904075"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -17,7 +17,7 @@ Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke r
 U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
 - weergave naam
-- beschrijving
+- description
 - metagegevens
 - Afdwingings modus
 - uitgesloten bereiken
@@ -70,7 +70,10 @@ Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie
 
 ## <a name="excluded-scopes"></a>Uitgesloten bereiken
 
-Het **bereik** van de toewijzing bevat alle onderliggende resource containers en onderliggende resources. Als de definitie van een onderliggende bron container of onderliggende bron niet moet worden toegepast, kan deze worden uitgesloten van de evaluatie door **notScopes**in te stellen. Deze eigenschap is een matrix waarmee een of meer resource containers of bronnen kunnen worden uitgesloten. **notScopes** kunnen worden toegevoegd of bijgewerkt na het maken van de eerste toewijzing.
+Het **bereik** van de toewijzing bevat alle onderliggende resource containers en onderliggende resources. Als de definitie van een onderliggende bron container of onderliggende bron niet moet worden toegepast, kan deze worden _uitgesloten_ van de evaluatie door **notScopes**in te stellen. Deze eigenschap is een matrix waarmee een of meer resource containers of bronnen kunnen worden uitgesloten. **notScopes** kunnen worden toegevoegd of bijgewerkt na het maken van de eerste toewijzing.
+
+> [!NOTE]
+> Een _uitgesloten_ resource wijkt af van een _vrijgestelde_ resource. Zie [bereik begrijpen in azure Policy](./scope.md)voor meer informatie.
 
 ## <a name="policy-definition-id"></a>Beleids definitie-ID
 

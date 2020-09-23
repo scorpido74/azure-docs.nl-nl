@@ -1,6 +1,6 @@
 ---
-title: SQL Database DACPAC-en BACPAC-pakketten gebruiken-Azure SQL Edge (preview)
-description: Meer informatie over het gebruik van dacpacs en bacpacs in Azure SQL Edge (preview)
+title: SQL Database DACPAC-en BACPAC-pakketten gebruiken-Azure SQL Edge
+description: Meer informatie over het gebruik van dacpacs en bacpacs in Azure SQL Edge
 keywords: SQL-Edge, sqlpackage
 services: sql-edge
 ms.service: sql-edge
@@ -9,37 +9,29 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 52c8e9586d8ee53cdaac28cb1c48d2927d82c2ed
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462755"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887494"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-en BACPAC-pakketten in SQL-rand SQL Database
 
-Azure SQL Edge (preview) is een geoptimaliseerde relationele data base-engine die is afgestemd op IoT-en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
+Azure SQL Edge is een geoptimaliseerde relationele database-engine voor IoT- en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de micro soft SQL Database-Engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. SQL Database dacpacs kan worden geïmplementeerd op SQL Edge met behulp van de para meter SqlPackage die wordt weer gegeven via de `module twin's desired properties` optie van de SQL Edge-module:
+Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. 
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|Veld | Beschrijving |
-|------|-------------|
-| SqlPackage | Azure Blob-opslag-URI voor het *zip* -bestand dat de SQL database DAC-of BACPAC-pakket bevat. Het zip-bestand kan zowel meerdere DAC-pakketten als Bacpac-bestanden bevatten.
-| ASAJobInfo | Azure Blob-opslag-URI voor de ASA Edge-taak.
+SQL Database dacpac-en Bacpac-pakketten kunnen worden geïmplementeerd naar SQL Edge met behulp van de `MSSQL_PACKAGE` omgevings variabele. De omgevings variabele kan worden geconfigureerd met een van de volgende.  
+- Een locatie van een lokale map binnen de SQL-container met de dacpac-en Bacpac-bestanden. Deze map kan worden toegewezen aan een host volume met behulp van koppel punten of gegevens volume containers. 
+- Een lokaal bestandspad binnen de SQL-container toewijzing aan het dacpac-of Bacpac-bestand. Dit bestandspad kan worden toegewezen aan een hostvolume met behulp van koppel punten of gegevens volume containers. 
+- Een lokaal bestandspad binnen de SQL-container toewijzing aan een zip-bestand met de dacpac-of Bacpac-bestanden. Dit bestandspad kan worden toegewezen aan een hostvolume met behulp van koppel punten of gegevens volume containers. 
+- Een SAS-URL van Azure Blob naar een zip-bestand met de dacpac-en Bacpac-bestanden.
+- Een SAS-URL voor Azure-Blob naar een dacpac-of Bacpac-bestand. 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>Een SQL Database DAC-pakket gebruiken met SQL Edge
 
-Als u een SQL Database DAC `(*.dacpac)` -pakket of een BACPAC `(*.bacpac)` -bestand met SQL Edge wilt gebruiken, volgt u deze stappen:
+Volg de onderstaande stappen om een SQL Database DAC-pakket of een BACPAC-bestand te implementeren (of importeren) `(*.dacpac)` `(*.bacpac)` met behulp van Azure Blob-opslag en een zip-bestand. 
 
 1. Een DAC-pakket maken/extra heren of een Bacpac-bestand exporteren met behulp van het hieronder vermelde mechanisme. 
     - Een SQL Database DAC-pakket maken of extra heren. Zie [een DAC extra heren uit een Data Base](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) voor informatie over het genereren van een DAC-pakket voor een bestaande SQL Server-Data Base.
@@ -59,34 +51,22 @@ Als u een SQL Database DAC `(*.dacpac)` -pakket of een BACPAC `(*.bacpac)` -best
 
     4. Selecteer op de pagina **apparaat IOT edge apparaten** de optie **module instellen**.
 
-    5. Selecteer op de pagina **modules instellen** de optie **configureren** voor de SQL-rand module.
+    5. Op de pagina **modules instellen** en klikt u op de Azure SQL Edge-module.
 
-    6. Selecteer in het deel venster **aangepaste Modules IOT Edge** de **gewenste eigenschappen van module configureren**. Werk de gewenste eigenschappen bij om de URI voor de `SQLPackage` optie op te geven, zoals wordt weer gegeven in het volgende voor beeld.
+    6. In het deel venster **IOT Edge module bijwerken** selecteert u **omgevings variabelen**. Voeg de `MSSQL_PACKAGE` omgevings variabele toe en geef de SAS-URL op die u in stap 3 hierboven hebt gegenereerd als de waarde voor de omgevings variabele. 
 
-        > [!NOTE]
-        > De SAS-URI in de volgende JSON is slechts een voor beeld. Vervang de URI door de daad werkelijke URI van uw implementatie.
+    7. Selecteer **Update**.
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac and/or the bacpac files",
-                }
-            }
-        ```
+    8. Selecteer op de pagina **modules instellen** de optie **controleren + maken**.
 
-    7. Selecteer **Opslaan**.
+    9. Selecteer op de pagina **modules instellen** de optie **maken**.
 
-    8. Selecteer op de pagina **modules instellen** de optie **volgende**.
+5. Nadat de module is bijgewerkt, worden de pakket bestanden gedownload, uitgepakt en geïmplementeerd op basis van het SQL Edge-exemplaar.
 
-    9. Selecteer op de pagina **modules instellen** de optie **volgende** en vervolgens **verzenden**.
-
-5. Na het bijwerken van de module wordt het pakket bestand gedownload, uitgepakt en geïmplementeerd op basis van het SQL Edge-exemplaar.
-
-Op elke keer dat de Azure SQL Edge-container opnieuw `*.dacpac` wordt opgestart, wordt het bestands pakket gedownload en geëvalueerd op wijzigingen. Als er een nieuwe versie van het dacpac-bestand wordt aangetroffen, worden de wijzigingen geïmplementeerd in de data base in SQL-rand. Bacpac-bestanden 
+Op elke keer dat de Azure SQL Edge-container opnieuw wordt opgestart, probeert SQL Edge het zip-pakket te downloaden en te evalueren of er wijzigingen zijn. Als er een nieuwe versie van het dacpac-bestand wordt aangetroffen, worden de wijzigingen geïmplementeerd in de data base in SQL-rand.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Implementeer SQL Edge via Azure Portal](deploy-portal.md).
 - [Gegevens streamen](stream-data.md)
-- [Machine learning en AI met ONNX in SQL Edge (preview-versie)](onnx-overview.md)
+- [Machine learning en AI met ONNX in SQL Edge](onnx-overview.md)

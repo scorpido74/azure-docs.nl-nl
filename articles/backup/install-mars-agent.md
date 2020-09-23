@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533475"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975311"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -42,10 +42,10 @@ De gegevens die beschikbaar zijn voor back-up, zijn afhankelijk van waar de agen
 
 ## <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md).
+Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) gebruiken om de kosten voor Azure Storage te reduceren.
+* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) gebruiken om de kosten voor Azure Storage te reduceren.
 
 Het type opslag replicatie wijzigen:
 
@@ -160,7 +160,7 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
     * Sla de wachtwoordzin op een veilige locatie op. U hebt deze nodig om een back-up te herstellen.
     * Als u de wachtwoordzin kwijtraakt of vergeet, kan micro soft u niet helpen bij het herstellen van de back-upgegevens.
 
-1. Selecteer **Voltooien**. De agent is nu geïnstalleerd en de computer is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
+1. Selecteer **Finish**. De agent is nu geïnstalleerd en de computer is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

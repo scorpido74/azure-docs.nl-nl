@@ -1,6 +1,6 @@
 ---
-title: Beschik bare machtigingen voor aangepaste beheerdersrol-Azure AD | Microsoft Docs
-description: Aangepaste machtigingen voor de beheerdersrol voor het delegeren van identiteits beheer.
+title: Aangepaste rolmachtigingen voor app-registratie-Azure AD | Microsoft Docs
+description: Gedelegeerde machtigingen voor aangepaste beheerdersrol voor het beheren van app-registraties.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967688"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Subtypen en machtigingen voor toepassings registratie in Azure Active Directory
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Machtigingen voor toepassings registratie voor aangepaste rollen in Azure Active Directory
 
 Dit artikel bevat de momenteel beschik bare app-registratie machtigingen voor aangepaste roldefinities in Azure Active Directory (Azure AD).
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Machtigingen voor het beheren van toepassingen met één map
+## <a name="permissions-for-managing-single-tenant-applications"></a>Machtigingen voor het beheren van toepassingen met één Tenant
 
-Wanneer u de machtigingen voor uw aangepaste rol kiest, hebt u de mogelijkheid om alleen toegang te verlenen voor het beheren van toepassingen met één directory. Toepassingen met één map zijn alleen beschikbaar voor gebruikers in de Azure AD-organisatie waar de toepassing is geregistreerd. Toepassingen met één map worden gedefinieerd als alleen **account typen** waarvoor alleen accounts in deze organisatie Directory zijn ingesteld. In de Graph API is voor toepassingen met één directory de eigenschap signInAudience ingesteld op ' AzureADMyOrg '.
+Wanneer u de machtigingen voor uw aangepaste rol kiest, hebt u de mogelijkheid om alleen toegang te verlenen voor het beheren van toepassingen met één Tenant. toepassingen met één Tenant zijn alleen beschikbaar voor gebruikers in de Azure AD-organisatie waar de toepassing is geregistreerd. toepassingen met één Tenant worden gedefinieerd als alleen **account typen** waarvoor alleen accounts in deze organisatie Directory zijn ingesteld. In de Graph API is voor toepassingen met één Tenant de eigenschap signInAudience ingesteld op ' AzureADMyOrg '.
 
-Als u toegang wilt verlenen voor het beheren van alleen toepassingen met één directory, gebruikt u de onderstaande machtigingen voor de subtype **toepassingen. myOrganization**. Bijvoorbeeld: micro soft. Directory/Applications. myOrganization/Basic/update.
+Als u toegang wilt verlenen om alleen toepassingen met één Tenant te beheren, gebruikt u de onderstaande machtigingen voor de subtype **toepassingen. myOrganization**. Bijvoorbeeld: micro soft. Directory/Applications. myOrganization/Basic/update.
 
 Bekijk het [overzicht van aangepaste rollen](roles-custom-overview.md) voor een uitleg van de algemene voor waarden subtype, machtigingen en eigenschappen sets. De volgende informatie is specifiek voor toepassings registraties.
 
@@ -42,7 +42,7 @@ Als u deze machtiging toewijst, wordt de maker toegevoegd als de eerste eigenaar
 
 #### <a name="microsoftdirectoryapplicationscreate"></a>micro soft. Directory/toepassingen/maken
 
-Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld op basis van het 250 gemaakte object quota van de maker. Gebruik deze machtiging aandachtig door, omdat er niets is dat de toegewezen persoon app-registraties kan maken totdat de quotum op Directory niveau is bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voor rang.
+Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld op basis van het 250 gemaakte object quota van de maker. Gebruik deze machtiging op een verantwoorde manier, omdat de toegewezen persoon app-registraties kan maken totdat de quotum op directoryniveau wordt bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voorrang.
 
 Als beide machtigingen zijn toegewezen, heeft de/Create-machtiging prioriteit. Hoewel de/createAsOwner-machtiging de maker niet automatisch toevoegt als de eerste eigenaar, kunnen eigen aren worden opgegeven tijdens het maken van de app-registratie bij gebruik van Graph Api's of Power shell-cmdlets.
 
@@ -95,7 +95,7 @@ Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toe
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>micro soft. Directory/toepassingen/allProperties/update
 
-De mogelijkheid om alle eigenschappen voor toepassingen met één map en meerdere mappen bij te werken.
+De mogelijkheid om alle eigenschappen voor toepassingen met één Tenant en meerdere tenants bij te werken.
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>micro soft. Directory/Applications. myOrganization/allProperties/update
 
@@ -103,7 +103,7 @@ Verleent dezelfde machtigingen als micro soft. Directory/Applications/allPropert
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>micro soft. Directory/toepassingen/publiek/update
 
-De mogelijkheid om de ondersteunde signInAudience-eigenschap (account type) bij te werken voor toepassingen met één map en meerdere mappen.
+De mogelijkheid om de ondersteunde account type-eigenschap (signInAudience) bij te werken in toepassingen met één Tenant en multi tenant.
 
 ![Deze machtiging verleent toegang tot de account type-eigenschap van de app-registratie op de verificatie pagina](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ De mogelijkheid om de certificaten en eigenschappen van client geheimen bij te w
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>micro soft. Directory/Applications. myOrganization/credentials/update
 
-Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/referenties/update, maar alleen voor toepassingen met één directory.
+Hiermee worden dezelfde machtigingen verleend als voor micro soft. Directory/toepassingen/referenties/update, maar alleen voor toepassingen met één Tenant.
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>micro soft. Directory/toepassingen/eigen aren/bijwerken
 
@@ -163,11 +163,11 @@ De mogelijkheid om de gedelegeerde machtigingen, toepassings machtigingen, geaut
 
 Verleent dezelfde machtigingen als micro soft. Directory/Applications/permissions/update, maar alleen voor toepassingen met één Tenant.
 
-## <a name="required-license-plan"></a>Vereist licentie plan
+## <a name="required-license-plan"></a>Vereiste licentieplan
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Aangepaste rollen maken met behulp van [de Azure Portal, Azure AD Power shell en Graph API](roles-create-custom.md)
-- [De toewijzingen voor een aangepaste rol weer geven](roles-view-assignments.md)
+- [De toewijzingen voor een aangepaste rol bekijken](roles-view-assignments.md)

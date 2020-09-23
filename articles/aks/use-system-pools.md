@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8d985587dc436d55e17c69e25295b5a58cb15b0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647494"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888956"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
-In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Systeem knooppunt groepen en gebruikers knooppunt groepen zijn twee verschillende modi voor de knooppunt groep voor uw AKS-clusters. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeem knooppunt groep bevatten met ten minste één knoop punt.
+In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Systeem knooppunt groepen en gebruikers knooppunt groepen zijn twee verschillende modi voor de knooppunt groep voor uw AKS-clusters. Systeem knooppunt groepen gebruiken het primaire doel om essentiële systemen te hosten, zoals `CoreDNS` en `metrics-server` . Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeem knooppunt groep bevatten met ten minste één knoop punt.
 
 > [!Important]
 > Als u één systeem knooppunt groep voor uw AKS-cluster in een productie omgeving uitvoert, raden we u aan om ten minste drie knoop punten voor de knooppunt groep te gebruiken.
@@ -164,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > Als u systeem knooppunt groepen op AKS-clusters vóór API-versie 2020-03-02 wilt gebruiken, voegt u een nieuwe groep systeem knooppunten toe en verwijdert u de oorspronkelijke standaard knooppunt groep.
 
-U kunt de groep van het systeem knooppunt niet verwijderen. Dit is de eerste standaard knooppunten groep in een AKS-cluster. U hebt nu de flexibiliteit om alle knooppunt groepen uit uw clusters te verwijderen. Aangezien voor AKS-clusters ten minste één groep van systeem knooppunten is vereist, moet u ten minste twee systeem knooppunt groepen hebben op uw AKS-cluster voordat u er een kunt verwijderen.
+U moet ten minste twee systeem knooppunt groepen hebben op uw AKS-cluster voordat u er een kunt verwijderen.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool

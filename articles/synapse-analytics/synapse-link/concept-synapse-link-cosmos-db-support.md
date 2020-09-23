@@ -6,15 +6,15 @@ author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7fbc7b1cb8119a6ee9403bf0139380aa5dcd0613
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089121"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895528"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Ondersteunde functies van Azure Synapse Link (preview) voor Azure Cosmos DB
 
@@ -24,30 +24,30 @@ In dit artikel worden de functies beschreven die momenteel worden ondersteund in
 
 Er zijn twee typen containers in Azure Cosmos DB:
 * HTAP-container: een container waarvoor Synapse Link is ingeschakeld. Deze container heeft zowel een transactionele opslag als een analytische opslag. 
-* OLTP-container: een container met alleen een transactieopslag, zonder dat Synapse Link is ingeschakeld. 
+* OLTP-container-een container met de Synaspe-koppeling is niet ingeschakeld. Deze container heeft alleen transactionele Store en geen analytische opslag.
 
 > [!IMPORTANT]
-> Azure Synapse-koppeling voor Azure Cosmos DB wordt momenteel ondersteund voor werkruimten waarvoor geen beheerd virtueel netwerk is ingeschakeld. 
+> De koppeling van Azure Synapse voor Azure Cosmos DB wordt momenteel ondersteund in Synapse-werk ruimten waarvoor geen beheerd virtueel netwerk is ingeschakeld. 
 
-U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in te schakelen. In dit geval kunt u alleen lezen/schrijven naar de transactionele opslag. Hier volgt een lijst met de functies die momenteel worden ondersteund in Synapse Link voor Azure Cosmos DB. 
+U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in te schakelen. In dit geval kunt u alleen lezen/schrijven naar de transactionele opslag. Hier volgt een lijst met de momenteel ondersteunde functies in de Synapse-koppeling voor Azure Cosmos DB. 
 
 | Categorie              | Beschrijving |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [Serverloze SQL](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
-| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| **Ondersteuning tijdens uitvoeringen** |Ondersteuning voor lees- of schrijfbewerkingen tijdens een Azure Synapse-uitvoering| ✓ | [Contact opnemen](mailto:AskSynapse@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB)|
-| **API-ondersteuning voor Azure Cosmos DB** |API-ondersteuning als Synapse Link| SQL / MongoDB | SQL / MongoDB |
-| **Object**  |Objecten, zoals een tabel, die kunnen worden gemaakt en rechtstreeks naar de Azure Cosmos DB-container verwijzen| Weergave, tabel | Weergave |
-| **Lezen**    |Gegevens lezen uit een Azure Cosmos DB-container| OLTP / HTAP | HTAP  |
-| **Schrijven**   |Gegevens vanuit de uitvoering naar een Azure Cosmos DB-container schrijven| OLTP | N.v.t. |
+| -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
+| **Ondersteuning tijdens uitvoeringen** |Ondersteunde Azure Synapse runtime voor toegang tot Azure Cosmos DB| ✓ | [Contact opnemen](mailto:cosmosdbsynapselink@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB) |
+| **API-ondersteuning voor Azure Cosmos DB** | Ondersteund Azure Cosmos DB-API-soort | SQL / MongoDB | SQL / MongoDB |
+| **Object**  |Objecten, zoals een tabel, die kunnen worden gemaakt en rechtstreeks naar de Azure Cosmos DB-container verwijzen| Data frame, weer gave, tabel | Weergave |
+| **Lezen**    | Type Azure Cosmos DB container dat kan worden gelezen | OLTP / HTAP | HTAP  |
+| **Schrijven**   | Kan Azure Synapse runtime worden gebruikt voor het schrijven van gegevens naar een Azure Cosmos DB-container | Ja | Nee |
 
-* Als u gegevens in een Azure Cosmos DB-container schrijft vanuit Spark, vindt dit proces plaats via de transactionele opslag van Azure Cosmos DB. Dit heeft invloed op de transactionele prestaties van Azure Cosmos DB, omdat aanvraageenheden worden verbruikt.
-* Integratie van SQL-pools via externe tabellen wordt momenteel niet ondersteund.
+* Als u gegevens in een Azure Cosmos DB container schrijft vanuit Spark, gebeurt dit via het transactionele archief van Azure Cosmos DB en heeft dit invloed op de prestaties van transactionele werk belastingen op Azure Cosmos DB en worden aanvraag eenheden verbruikt.
+* Integratie van Synapse-SQL-pool via externe tabellen wordt momenteel niet ondersteund.
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Ondersteunde met code gegenereerde acties voor Spark
 
 | Bewegen              | Beschrijving |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Laden in Dataframe** |Gegevens laden en lezen in een Spark-dataframe |X| ✓ |
-| **Spark-tabel maken** |Een tabel maken die verwijst naar een Azure Cosmos DB-container|X| ✓ |
+| **Laden in Dataframe** |Gegevens laden en lezen in een Spark-dataframe |✓| ✓ |
+| **Spark-tabel maken** |Een tabel maken die verwijst naar een Azure Cosmos DB-container|✓| ✓ |
 | **Dataframe naar een container schrijven** |Gegevens naar een container schrijven|✓| ✓ |
 | **Streaming-dataframe laden vanuit een container** |Gegevens streamen met behulp van de wijzigingenfeed in Azure Cosmos DB|✓| ✓ |
 | **Streaming-dataframe naar een container schrijven** |Gegevens streamen met behulp van de wijzigingenfeed in Azure Cosmos DB|✓| ✓ |
@@ -58,8 +58,9 @@ U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in
 
 | Bewegen              | Beschrijving |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Top 100 selecteren** |Een voorbeeld van de belangrijkste 100 items uit een container bekijken|X| ✓ |
-| **Weergave maken** |Een weergave maken om rechtstreeks BI-toegang tot een container te hebben via Synapse SQL|X| ✓ |
+| **Gegevens verkennen** |Gegevens verkennen uit een container met bekende T-SQL-syntaxis en automatische schema-deinterferentie|X| ✓ |
+| **Weer gaven maken en BI-rapporten bouwen** |Een SQL-weer gave maken voor directe toegang tot een container voor BI via Synapse SQL serverloos |X| ✓ |
+| **Samen voegen met ongelijksoortige gegevens bronnen en Cosmos DB gegevens** | Sla de resultaten op van het lezen van gegevens uit Cosmos DB containers samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met behulp van CETAS |X| ✓ |
 
 ## <a name="next-steps"></a>Volgende stappen
 

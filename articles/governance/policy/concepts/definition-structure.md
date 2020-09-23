@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895375"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -206,8 +206,10 @@ Tijdens het maken van een initiatief of beleid is het nood zakelijk om de defini
 
 Als de definitie locatie een:
 
-- Voor alleen **abonnements** resources binnen dit abonnement kan het beleid worden toegewezen.
-- **Beheer groep** -alleen resources binnen onderliggende beheer groepen en onderliggende abonnementen kunnen het beleid toewijzen. Als u van plan bent de beleids definitie toe te passen op verschillende abonnementen, moet de locatie een beheer groep zijn die het abonnement bevat.
+- Alleen voor **abonnements** resources binnen dit abonnement kan de beleids definitie worden toegewezen.
+- **Beheer groep** -alleen resources binnen onderliggende beheer groepen en onderliggende abonnementen kunnen worden toegewezen aan de beleids definitie. Als u van plan bent de beleids definitie toe te passen op verschillende abonnementen, moet de locatie een beheer groep zijn die elk abonnement bevat.
+
+Zie [bereik begrijpen in azure Policy](./scope.md#definition-location)voor meer informatie.
 
 ## <a name="policy-rule"></a>Beleidsregel
 
@@ -576,16 +578,16 @@ Alle [Resource Manager-sjabloon functies](../../../azure-resource-manager/templa
 De volgende functie is beschikbaar voor gebruik in een beleids regel, maar verschilt van gebruik in een Azure Resource Manager sjabloon (ARM-sjabloon):
 
 - `utcNow()` -In tegens telling tot een ARM-sjabloon kan deze eigenschap buiten de _standaard waarde_worden gebruikt.
-  - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd 8601 in de indeling JJJJ-MM-DDTuu: mm: SS. fffffffZ
+  - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd in de indeling van de Universal ISO 8601 DateTime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 De volgende functies zijn alleen beschikbaar in beleids regels:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] string-string in de indeling Universal ISO 8601 datetime ' jjjj-mm-ddTuu: mm: SS. fffffffZ '
-  - **numberOfDaysToAdd**: [vereist] geheel getal-aantal dagen dat moet worden toegevoegd
+  - **DateTime**: [required] string-teken reeks in de indeling Universal ISO 8601 datetime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
+  - **numberOfDaysToAdd**: [vereist] geheel getal-aantal dagen dat moet worden toegevoegd.
 - `field(fieldName)`
   - **FieldName**: [required] string: naam van het [veld](#fields) dat moet worden opgehaald
-  - Retourneert de waarde van het veld van de resource die wordt geëvalueerd door de if-voor waarde
+  - Retourneert de waarde van het veld van de resource die wordt geëvalueerd door de if-voor waarde.
   - `field` wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Retourneert de API-versie van de aanvraag waarvoor beleids evaluatie is geactiveerd (bijvoorbeeld: `2019-09-01` ).

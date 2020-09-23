@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge-toegang tot apparaten, kracht en connectiviteits modus | Microsoft Docs
-description: Hierin wordt beschreven hoe u de toegang, de kracht en de connectiviteits modus beheert voor het Azure Stack edge-apparaat waarmee gegevens kunnen worden overgebracht naar Azure
+title: Azure Stack Edge Pro-toegang tot apparaten, kracht en connectiviteits modus | Microsoft Docs
+description: Hierin wordt beschreven hoe u de toegang, de kracht en de connectiviteits modus beheert voor het Azure Stack Edge Pro-apparaat waarmee gegevens kunnen worden overgebracht naar Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079792"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904411"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Stack Edge beheren
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Stack Edge Pro beheren
 
-In dit artikel wordt beschreven hoe u de modus toegang, kracht en connectiviteit beheert voor uw Azure Stack rand. Deze bewerkingen worden uitgevoerd via de lokale webgebruikersinterface of de Azure Portal.
+In dit artikel wordt beschreven hoe u de modus toegang, kracht en connectiviteit beheert voor uw Azure Stack Edge Pro. Deze bewerkingen worden uitgevoerd via de lokale webgebruikersinterface of de Azure Portal.
 
 In dit artikel leert u het volgende:
 
@@ -29,7 +29,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="manage-device-access"></a>Apparaattoegang beheren
 
-De toegang tot uw Azure Stack edge-apparaat wordt bepaald door het gebruik van een apparaatwachtwoord. U kunt het wacht woord wijzigen via de lokale webgebruikersinterface. U kunt het wacht woord van het apparaat ook opnieuw instellen in de Azure Portal.
+De toegang tot uw Azure Stack Edge Pro-apparaat wordt bepaald door het gebruik van een wacht woord voor het apparaat. U kunt het wacht woord wijzigen via de lokale webgebruikersinterface. U kunt het wacht woord van het apparaat ook opnieuw instellen in de Azure Portal.
 
 ### <a name="change-device-password"></a>Wachtwoord voor apparaat wijzigen
 
@@ -61,12 +61,12 @@ Als u uw Azure Stack EDGE/Data Box Gateway, IoT Hub en Azure Storage resource wi
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API-machtigingen beheren
 
-Bij het genereren van de activerings sleutel voor het Azure Stack edge-apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor het Azure Active Directory van Graph API. De bewerkingen die referenties nodig hebben, kunnen zijn:
+Bij het genereren van de activerings sleutel voor het Azure Stack Edge Pro-apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor het Azure Active Directory van Graph API. De bewerkingen die referenties nodig hebben, kunnen zijn:
 
 -  Een share maken met een gekoppeld opslag account.
 -  Het maken van een gebruiker die toegang heeft tot de shares op het apparaat.
 
-U moet toegang hebben `User` tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects` . U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects` . Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack edge-apparaat, het maken van een gebruiker, de configuratie van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat niet uitgevoerd.
+U moet toegang hebben `User` tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects` . U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects` . Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack Edge Pro-apparaat, het maken van een gebruiker, het configureren van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat, niet meer uitgevoerd.
 
 Zie [Microsoft Graph permissions Reference](https://docs.microsoft.com/graph/permissions-reference)(Engelstalig) voor meer informatie over het verlenen van toegang aan gebruikers om de API te Microsoft Graph.
 
@@ -89,7 +89,7 @@ Voer de volgende opdracht uit om een lijst met geregistreerde resource providers
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Voor Azure Stack edge-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u de registratie wilt registreren `Microsoft.DataBoxEdge` , moet u de volgende opdracht uitvoeren:
+Voor Azure Stack Edge Pro-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u de registratie wilt registreren `Microsoft.DataBoxEdge` , moet u de volgende opdracht uitvoeren:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
