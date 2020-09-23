@@ -1,30 +1,30 @@
 ---
-title: Voorbeeld pijplijnen en gegevenssets voor de ontwerpfunctie (preview-versie)
+title: Voorbeeldpijplijnen en gegevenssets voor de ontwerpfunctie
 titleSuffix: Azure Machine Learning
 description: Gebruik voorbeelden in de Azure Machine Learning-ontwerpfunctie om snel aan de slag te gaan met uw machine learning-pijplijnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812934"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889749"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Voorbeeldpijplijnen en -gegevenssets voor de Azure Machine Learning-ontwerpfunctie (preview)
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Voorbeeldpijplijnen en -gegevenssets voor de Azure Machine Learning-ontwerpfunctie
 
 Gebruik de ingebouwde voorbeelden in de Azure Machine Learning-ontwerpfunctie om snel aan de slag te gaan met het ontwerpen van uw eigen machine learning-pijplijnen. De [GitHub-opslagplaats](https://github.com/Azure/MachineLearningDesigner) van de Azure Machine Learning-ontwerpfunctie bevat gedetailleerde documentatie om u te helpen enkele veelvoorkomende machine learning-scenario’s te begrijpen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) aan.
-* Een Azure Machine Learning-werkruimte met de Enterprise-SKU.
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree)
+* Een Azure Machine Learning-werkruimte 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -67,8 +67,8 @@ Verken deze ingebouwde regressievoorbeelden.
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| [Voorbeeld 1: Regressie - Autoprijzen voorspellen (basis)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Voorspel autoprijzen met behulp van lineaire regressie. |
-| [Voorbeeld 2: Regressie - Autoprijzen voorspellen (geavanceerd)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Voorspel autoprijzen met behulp van regressors voor beslissingsforests en versterkte beslissingsstructuren. Vergelijk modellen om het beste algoritme te vinden.
+| [Regressie - Autoprijzen voorspellen (basis)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Voorspel autoprijzen met behulp van lineaire regressie. |
+| [Regressie - Autoprijzen voorspellen (geavanceerd)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Voorspel autoprijzen met behulp van regressors voor beslissingsforests en versterkte beslissingsstructuren. Vergelijk modellen om het beste algoritme te vinden.
 
 ## <a name="classification"></a>Classificatie
 
@@ -76,11 +76,19 @@ Verken deze ingebouwde classificatievoorbeelden. U kunt zonder documentatiekoppe
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| [Voorbeeld 3: Binaire classificatie met functieselectie - Inkomen voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Voorspel inkomen als hoog of laag met behulp van een versterkte beslissingsstructuur met twee klassen. Gebruik Pearson-correlatie om functies te selecteren.
-| [Voorbeeld 4: Binaire classificatie met aangepast Python-script - Kredietrisico voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Classificeer kredietaanvragen als hoog of laag risico. Gebruik de module Python-script uitvoeren om uw gegevens een gewicht te geven.
-| [Voorbeeld 5: Binaire classificatie - Klantrelaties voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Voorspel klantverloop met behulp van versterkte beslissingsstructuren met twee klassen. Gebruik SMOTE bevooroordeelde gegevens te samplen.
-| [Voorbeeld 7: Tekstclassificatie - Gegevensset Wikipedia SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Classificeer bedrijfstypen uit Wikipedia-artikelen met behulp van logistieke regressie met meerdere klassen. |
-| Voorbeeld 12: Classificatie met meerdere klassen - Brieven herkennen | Maak een set binaire classificaties om geschreven brieven te classificeren. |
+| [Binaire classificatie met functieselectie - Inkomen voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Voorspel inkomen als hoog of laag met behulp van een versterkte beslissingsstructuur met twee klassen. Gebruik Pearson-correlatie om functies te selecteren.
+| [Binaire classificatie met aangepast Python-script - Kredietrisico voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Classificeer kredietaanvragen als hoog of laag risico. Gebruik de module Python-script uitvoeren om uw gegevens een gewicht te geven.
+| [Binaire classificatie - Klantrelaties voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Voorspel klantverloop met behulp van versterkte beslissingsstructuren met twee klassen. Gebruik SMOTE bevooroordeelde gegevens te samplen.
+| [Tekstclassificatie - Gegevensset Wikipedia SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Classificeer bedrijfstypen uit Wikipedia-artikelen met behulp van logistieke regressie met meerdere klassen. |
+| Classificatie met meerdere klassen - Brieven herkennen | Maak een set binaire classificaties om geschreven brieven te classificeren. |
+
+## <a name="computer-vision"></a>Computer Vision
+
+Verken deze ingebouwde computervisievoorbeelden. U kunt zonder documentatiekoppelingen meer informatie over de voorbeelden krijgen door de voorbeelden te openen en de moduleopmerkingen te bekijken.
+
+| Voorbeeldtitel | Beschrijving | 
+| --- | --- |
+| Wide & Deep-aanbeveling - Voorspelling van restaurantbeoordeling | Bouw een aanbevelingsengine voor restaurants van restaurant/gebruikersfuncties en beoordelingen.|
 
 ## <a name="recommender"></a>Aanbevelingsfunctie
 
@@ -88,7 +96,7 @@ Verken deze ingebouwde aanbevelingsvoorbeelden. U kunt zonder documentatiekoppel
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| Voorbeeld 10: Aanbeveling - Tweets met filmbeoordelingen | Maak een filmaanbevelings-engine van filmtitels en -beoordelingen. |
+| Afbeeldingsclassificatie met behulp van DenseNet | Gebruik computervisie-modules voor het maken van een model voor afbeeldingsclassificatie op basis van PyTorch DenseNet.| 
 
 ## <a name="utility"></a>Hulpprogramma
 
@@ -96,10 +104,11 @@ Meer informatie over de voorbeelden die machine learning-hulpprogramma’s en -f
 
 | Voorbeeldtitel | Beschrijving | 
 | --- | --- |
-| [Voorbeeld 6: Aangepast R-script gebruiken - Vertraagde vluchten voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| Voorbeeld 8: Kruisvalidatie voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik kruisvalidatie om een binaire classificatie voor volwassen inkomen te ontwerpen.
-| Voorbeeld 9: Belang van permutatiefunctie | Gebruik belang van permutatiefunctie om belangscores voor de testgegevensset te berekenen. 
-| Voorbeeld 11: Parameters afstemmen voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik Model Hyperparameters afstemmen voor het vinden van optimale hyperparameters om een binaire classificatie te ontwerpen. |
+| Binaire classificatie met behulp van Vowpal Wabbit Model - Volwassen inkomen voorspellen | Vowpal Wabbit is een machine learning-systeem dat de grens van machine learning pusht met technieken zoals online, hashing, allreduce, reducties, learning2search, actief en interactief leren. In dit voorbeeld ziet u hoe u het Vowpal Wabbit-model gebruikt om een binair classificatiemodel te maken. 
+| [Aangepast R-script gebruiken - Vertraagde vluchten voorspellen](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Gebruik aangepast R-script om te voorspellen of een geplande vlucht meer dan 15 minuten vertraging gaat hebben.
+| Kruisvalidatie voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik kruisvalidatie om een binaire classificatie voor volwassen inkomen te ontwerpen.
+| Belang van permutatiefunctie | Gebruik belang van permutatiefunctie om belangscores voor de testgegevensset te berekenen. 
+| Parameters afstemmen voor binaire classificatie - Volwassen inkomen voorspellen | Gebruik Model Hyperparameters afstemmen voor het vinden van optimale hyperparameters om een binaire classificatie te ontwerpen. |
 
 ## <a name="datasets"></a>Gegevenssets
 

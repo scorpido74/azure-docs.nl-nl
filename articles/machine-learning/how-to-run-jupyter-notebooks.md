@@ -11,15 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897386"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Meer informatie over het rechtstreeks uitvoeren van uw Jupyter-notebook in uw werk ruimte in Azure Machine Learning Studio. Hoewel u [Jupyter](https://jupyter.org/) of [jjupyterlab](https://jupyterlab.readthedocs.io)kunt starten, kunt u uw notitie blokken ook bewerken en uitvoeren zonder de werk ruimte te verlaten.
 
@@ -141,7 +141,7 @@ Selecteer **controle punten** in het menu van het notitie blok om een benoemd co
 
 ### <a name="useful-keyboard-shortcuts"></a>Nuttige sneltoetsen
 
-|Toetsenbord  |Actie  |
+|Toetsenbord  |Bewerking  |
 |---------|---------|
 |SHIFT + ENTER     |  Een cel uitvoeren       |
 |Ctrl + spatie | IntelliSense activeren |
@@ -181,14 +181,14 @@ Op de werk balk van notitie blokken kunt u de omgeving wijzigen waarop uw notiti
 
 Met deze acties worden de status van het notitie blok of de waarden van variabelen in het notitie blok niet gewijzigd:
 
-|Actie  |Resultaat  |
+|Bewerking  |Resultaat  |
 |---------|---------| --------|
 |De kernel stoppen     |  Stopt elke actieve cel. Als u een cel uitvoert, wordt de kernel automatisch opnieuw gestart. |
 |Naar een andere sectie van de werk ruimte navigeren     |     Actieve cellen worden gestopt. |
 
 Met deze acties wordt de status van het notitie blok opnieuw ingesteld en worden alle variabelen in het notitie blok opnieuw ingesteld.
 
-|Actie  |Resultaat  |
+|Bewerking  |Resultaat  |
 |---------|---------| --------|
 | De kernel wijzigen | Notebook maakt gebruik van nieuwe kernel |
 | Scha kelen tussen compute    |     In de notitie blok wordt automatisch de nieuwe Compute gebruikt. |
@@ -224,7 +224,7 @@ Een van de [beschik bare Jupyter-kernels](https://github.com/jupyter/jupyter/wik
 
 Een indicator naast de vervolg keuzelijst voor **berekeningen** toont de status.  De status wordt ook weer gegeven in de vervolg keuzelijst zelf.  
 
-|Color |Compute-status |
+|Kleur |Compute-status |
 |---------|---------| 
 | Green | Compute running |
 | Red |Kan niet berekenen | 
@@ -234,7 +234,7 @@ Een indicator naast de vervolg keuzelijst voor **berekeningen** toont de status.
 
 Een indicator naast de vervolg keuzelijst **kernel** toont de status.
 
-|Color |Kernel-status |
+|Kleur |Kernel-status |
 |---------|---------|
 |  Green |Kernel verbonden, niet-actief, bezet|
 |  Grijs |Kernel niet verbonden |

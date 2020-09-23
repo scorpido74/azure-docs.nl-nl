@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905741"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -42,7 +42,7 @@ Zie [verificatie instellen voor Azure machine learning resources en werk stromen
 
 Azure Machine Learning ondersteunt twee verificatie vormen voor webservices: sleutel en token. Elke webservice kan per keer slechts één vorm van authenticatie inschakelen.
 
-|Verificatiemethode|Beschrijving|Azure Container Instances|AKS|
+|Verificatiemethode|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Sleutel|Sleutels zijn statisch en hoeven niet te worden vernieuwd. Sleutels kunnen hand matig opnieuw worden gegenereerd.|Standaard uitgeschakeld| Standaard ingeschakeld|
 |Token|Tokens verlopen na een opgegeven tijds periode en moeten worden vernieuwd.| Niet beschikbaar| Standaard uitgeschakeld |
@@ -63,7 +63,6 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | ---- |:----:|:----:|:----:|
 | Werkruimte maken | ✓ | ✓ | |
 | Werk ruimte delen | ✓ | |  |
-| Werk ruimte bijwerken naar Enter prise Edition | ✓ | |
 | Reken doel maken | ✓ | ✓ | |
 | Reken doel koppelen | ✓ | ✓ | |
 | Gegevens archieven koppelen | ✓ | ✓ | |
@@ -105,7 +104,7 @@ Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of 
 
 Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen (Compute-doelen) worden gebruikt om modellen te trainen en te implementeren. U kunt deze reken doelen maken in een virtueel netwerk. U kunt bijvoorbeeld Azure Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens implementeren in AKS.  
 
-Zie [Virtual Network-isolatie en privacy overview](how-to-network-security-overview.md)(Engelstalig) voor meer informatie.
+Zie [Overzicht van isolatie van virtueel netwerk en privacy](how-to-network-security-overview.md).
 
 U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met persoonlijke koppeling kunt u de communicatie met uw werk ruimte beperken vanuit een Azure-Virtual Network. Zie een [persoonlijke koppeling configureren](how-to-configure-private-link.md)voor meer informatie.
 

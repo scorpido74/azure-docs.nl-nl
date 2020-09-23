@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/12/2020
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e4a0dfb658bb9388aa43b568fe0d28576026d1e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569251"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905599"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -33,7 +33,16 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 ## <a name="september-2020"></a>September 2020
 
 De updates in september zijn onder andere:
-
+- [Security Center krijgt een nieuw uiterlijk.](#security-center-gets-a-new-look)
+- [Azure Defender uitgebracht](#azure-defender-released)
+- [Azure Defender voor Key Vault is algemeen verkrijgbaar](#azure-defender-for-key-vault-is-generally-available)
+- [Azure Defender voor opslag beveiliging voor bestanden en ADLS Gen2 is algemeen beschikbaar](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [Hulpprogram ma's voor inventarisatie van middelen zijn nu algemeen beschikbaar](#asset-inventory-tools-are-now-generally-available)
+- [Een specifiek beveiligings probleem voor het zoeken naar scans van container registers en virtuele machines uitschakelen](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [Een resource uitsluiten van een aanbeveling](#exempt-a-resource-from-a-recommendation)
+- [AWS-en GCP-connectors in Security Center een multi Cloud-ervaring bieden](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Aanbevelings bundel Kubernetes workload Protection](#kubernetes-workload-protection-recommendation-bundle)
+- [Verbeteringen voor IoT Threat Protection in azure Defender voor IoT](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [Conclusies voor evaluatie van beveiligings problemen zijn nu beschikbaar in continue export](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Beveiligings onjuiste configuraties voor komen door aanbevelingen af te dwingen bij het maken van nieuwe resources](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [Aanbevelingen voor de netwerk beveiligings groep zijn verbeterd](#network-security-group-recommendations-improved)
@@ -41,6 +50,127 @@ De updates in september zijn onder andere:
 - [E-mail meldingen van Azure Security Center verbeterd](#email-notifications-from-azure-security-center-improved)
 - [De beveiligde Score bevat geen preview-aanbevelingen](#secure-score-doesnt-include-preview-recommendations)
 - [Aanbevelingen bevatten nu een Ernst-indicator en het interval voor versheid](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>Security Center krijgt een nieuw uiterlijk.
+
+We hebben een vernieuwde gebruikers interface voor de portal pagina's van Security Center uitgebracht. De nieuwe pagina's bevatten een nieuwe overzichts pagina en dash boards voor een veilige Score, inventarisatie van de activa en Azure Defender.
+
+De opnieuw ontworpen overzichts pagina heeft nu een tegel voor toegang tot de beveiligde Score, inventarisatie van activa en Azure Defender-Dash boards. Het bevat ook een tegel koppeling naar het nalevings Dashboard van de regelgeving.
+
+Meer informatie over de [pagina overzicht](overview-page.md).
+
+
+### <a name="azure-defender-released"></a>Azure Defender uitgebracht
+
+**Azure Defender** is het Cloud werkbelasting platform (CWPP) geïntegreerd in Security Center voor geavanceerde, intelligente beveiliging van uw Azure-en hybride werk belastingen. De prijs categorie Standaard wordt vervangen door Security Center. 
+
+Wanneer u Azure Defender inschakelt vanuit het gebied met **prijzen en instellingen** van Azure Security Center, zijn de volgende Defender-abonnementen allemaal tegelijkertijd ingeschakeld en bieden zij uitgebreide beveiligingen voor de reken-, gegevens-en service lagen van uw omgeving:
+
+- [Azure Defender voor servers](defender-for-servers-introduction.md)
+- [Azure Defender voor App Service](defender-for-app-service-introduction.md)
+- [Azure Defender voor Storage](defender-for-storage-introduction.md)
+- [Azure Defender voor SQL](defender-for-sql-introduction.md)
+- [Azure Defender voor IoT](defender-for-iot-introduction.md)
+- [Azure Defender voor Key Vault](defender-for-key-vault-introduction.md)
+- [Azure Defender voor Kubernetes](defender-for-kubernetes-introduction.md)
+- [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md)
+
+Elk van deze plannen wordt afzonderlijk uitgelegd in de Security Center documentatie.
+
+Met zijn toegewezen dash board biedt Azure Defender beveiligings waarschuwingen en geavanceerde beveiliging tegen bedreigingen voor virtuele machines, SQL-data bases, containers, webtoepassingen, uw netwerk en meer.
+
+[Meer informatie over Azure Defender](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>Azure Defender voor Key Vault is algemeen verkrijgbaar
+
+Azure Key Vault is een Cloud service die versleutelings sleutels en geheimen beveiligt, zoals certificaten, verbindings reeksen en wacht woorden. 
+
+**Azure Defender voor Key Vault** biedt Azure-systeem eigen, geavanceerde beveiliging tegen bedreigingen voor Azure Key Vault, waardoor er een extra beveiligingslaag is. Op basis van uitbrei ding van Azure Defender voor Key Vault wordt de meeste bronnen die afhankelijk zijn van uw Key Vault-accounts, daarom beschermd.
+
+Het optionele abonnement is nu beschikbaar. Deze functie was als preview-versie beschikbaar als "Advanced Threat Protection voor Azure Key Vault".
+
+Daarnaast bevatten de Key Vault pagina's in de Azure Portal nu een speciale **beveiligings** pagina voor **Security Center** aanbevelingen en waarschuwingen.
+
+Meer informatie vindt u in [Azure Defender voor Key Vault](defender-for-key-vault-introduction.md).
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Azure Defender voor opslag beveiliging voor bestanden en ADLS Gen2 is algemeen beschikbaar 
+
+**Azure Defender voor opslag** detecteert mogelijk schadelijke activiteiten op uw Azure Storage-accounts. Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren.
+
+Ondersteuning voor [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) en [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) is nu algemeen beschikbaar.
+
+Vanaf 1 oktober 2020 beginnen we met de beveiliging van resources op deze services.
+
+Meer informatie vindt u in [Azure Defender voor opslag](defender-for-storage-introduction.md).
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>Hulpprogram ma's voor inventarisatie van middelen zijn nu algemeen beschikbaar
+
+De pagina Asset Inventory van Azure Security Center biedt één pagina voor het weer geven van de beveiligings postuur van de resources waarmee u verbinding hebt gemaakt met Security Center.
+
+Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligings problemen.
+
+Wanneer een resource openstaande aanbevelingen heeft, worden deze weer gegeven in de inventarisatie.
+
+Meer informatie vindt [u in Verken en beheert u uw resources met Asset Inventory and management tools](asset-inventory.md).
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>Een specifiek beveiligings probleem voor het zoeken naar scans van container registers en virtuele machines uitschakelen
+
+Azure Defender bevat scanners voor beveiligings problemen om afbeeldingen in uw Azure Container Registry en uw virtuele machines te scannen.
+
+Als u een organisatie nodig hebt om een zoek functie te negeren in plaats van deze te herstellen, kunt u deze eventueel uitschakelen. Uitgeschakelde bevindingen hebben geen invloed op uw beveiligde Score of genereren ongewenste ruis.
+
+Wanneer een Zoek resultaat overeenkomt met de criteria die u hebt gedefinieerd in de regels voor uitschakelen, worden deze niet weer gegeven in de lijst met bevindingen.
+
+Deze optie is beschikbaar op de pagina met aanbevelingen voor:
+
+- **Beveiligingsproblemen met installatiekopieën in Azure Container Registry moeten worden hersteld**
+- **Beveiligings problemen in uw virtuele machines moeten worden hersteld**
+
+Meer informatie over [het uitschakelen van specifieke bevindingen voor uw container installatie kopieën](defender-for-container-registries-usage.md#disable-specific-findings-preview) en [het uitschakelen van specifieke bevindingen voor uw virtuele machines](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview).
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>Een resource uitsluiten van een aanbeveling
+
+In sommige gevallen wordt een resource vermeld als slechte status met betrekking tot een specifieke aanbeveling (en waardoor uw beveiligde score wordt verlaagd), zelfs als u denkt dat deze niet is. Het kan zijn opgelost door een proces dat niet wordt bijgehouden door Security Center. Of misschien heeft uw organisatie besloten het risico voor die specifieke resource te accepteren. 
+
+In dergelijke gevallen kunt u een uitzonderings regel maken en ervoor zorgen dat de resource in de toekomst niet wordt vermeld onder de beschadigde resources. Deze regels kunnen gedocumenteerde redenen bevatten zoals hieronder wordt beschreven.
+
+Meer informatie over [het uitsluiten van een resource van aanbevelingen en beveiligde scores](exempt-resource.md).
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>AWS-en GCP-connectors in Security Center een multi Cloud-ervaring bieden
+
+Met Cloud werkbelastingen die doorgaans meerdere Cloud platforms bespannen, moeten Cloud beveiligings Services hetzelfde doen.
+
+Azure Security Center beschermt nu werk belastingen in azure, Amazon Web Services (AWS) en Google Cloud Platform (GCP).
+
+Het onboarding van uw AWS-en GCP-accounts in Security Center, integreert AWS Security hub, GCP Security-opdracht en Azure Security Center. 
+
+Meer informatie vindt [u in Connect your AWS accounts to Azure Security Center](quickstart-onboard-aws.md) en [verbindt u uw GCP-accounts met Azure Security Center](quickstart-onboard-gcp.md).
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Aanbevelings bundel Kubernetes workload Protection
+
+Om ervoor te zorgen dat Kubernetes-werk belastingen standaard veilig zijn, voegt Security Center aanbevelingen voor het Kubernetes-niveau toe, met inbegrip van handhavings opties met Kubernetes Admission Control.
+
+Wanneer u de invoeg toepassing Azure Policy voor Kubernetes op uw AKS-cluster hebt geïnstalleerd, wordt elke aanvraag voor de Kubernetes-API-server gecontroleerd op basis van de vooraf gedefinieerde set aanbevolen procedures voordat deze in het cluster wordt bewaard. U kunt vervolgens configureren om de best practices af te dwingen en ze te verplichten voor toekomstige workloads.
+
+U kunt er bijvoorbeeld voor zorgen dat geprivilegieerde containers niet moeten worden gemaakt, en toekomstige aanvragen worden geblokkeerd.
+
+Meer informatie over de [Aanbevolen procedures voor de beveiliging van werk belasting met behulp van Kubernetes Admission Control](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
+
+
+### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>Verbeteringen voor IoT Threat Protection in azure Defender voor IoT
+
+Azure Defender voor IoT biedt meer mogelijkheden voor bedreigings beveiliging dankzij het opnemen van de Cyber-technologie zonder agent. Dit brengt beveiligings beveiliging voor op onbeheerde Brownfield-apparaten die worden gebruikt in omgevingen met operationele technologie (OT) zoals productie, bouw beheer systemen (BMS), biowetenschappen, hulp middelen voor energie en water, olie & gas en logistiek.
+
+Meer informatie vindt [u in Inleiding tot Azure Defender voor IOT](defender-for-iot-introduction.md).
+
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Conclusies voor evaluatie van beveiligings problemen zijn nu beschikbaar in continue export
 
@@ -55,7 +185,7 @@ De beveiligings bevindingen zijn nu beschikbaar om te worden geëxporteerd via c
 Gerelateerde pagina's:
 
 - [De oplossing voor het evalueren van geïntegreerde beveiligings problemen voor Azure virtual machines Security Center](deploy-vulnerability-assessment-vm.md)
-- [De oplossing voor de evaluatie van geïntegreerde beveiligings problemen van Security Center voor Azure Container Registry installatie kopieën](monitor-container-security.md)
+- [De oplossing voor de evaluatie van geïntegreerde beveiligings problemen van Security Center voor Azure Container Registry installatie kopieën](defender-for-container-registries-usage.md)
 - [Continue export](continuous-export.md)
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Beveiligings onjuiste configuraties voor komen door aanbevelingen af te dwingen bij het maken van nieuwe resources
@@ -182,7 +312,7 @@ Om ervoor te zorgen dat alle gebruikers een consistente ervaring hebben, ongeach
 
 |Uniforme aanbeveling|Beschrijving wijzigen|
 |----|:----|
-|**Er moet een oplossing voor de evaluatie van beveiligings problemen worden ingeschakeld op uw virtuele machines**|Vervangt de volgende twee aanbevelingen:<br> **•** De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (mogelijk gemaakt door Qualys (nu afgeschaft) (inbegrepen bij de laag standaard)<br> **•** De oplossing voor de evaluatie van beveiligings problemen moet worden geïnstalleerd op uw virtuele machines (nu afgeschaft) (standaard en gratis lagen)|
+|**A vulnerability assessment solution should be enabled on your virtual machines** (Er moet een oplossing voor de evaluatie van beveiligingsproblemen op uw virtuele machines worden ingeschakeld)|Vervangt de volgende twee aanbevelingen:<br> **•** De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (mogelijk gemaakt door Qualys (nu afgeschaft) (inbegrepen bij de laag standaard)<br> **•** De oplossing voor de evaluatie van beveiligings problemen moet worden geïnstalleerd op uw virtuele machines (nu afgeschaft) (standaard en gratis lagen)|
 |**Beveiligings problemen in uw virtuele machines moeten worden hersteld**|Vervangt de volgende twee aanbevelingen:<br>**•** Beveiligings problemen op uw virtuele machines herstellen (mogelijk gemaakt door Qualys) (nu afgeschaft)<br>**•** Beveiligings problemen moeten worden opgelost door een oplossing voor beveiligings evaluatie (nu afgeschaft)|
 |||
 
@@ -216,7 +346,7 @@ Als u scripts, query's of Automatiseringen hebt die verwijzen naar de vorige aan
 
 |Aanbeveling|Bereik|
 |----|:----|
-|**Er moet een oplossing voor de evaluatie van beveiligings problemen worden ingeschakeld op uw virtuele machines**<br>Sleutel: ffff0522-1e88-47fc-8382-2a80ba848f5d|Ingebouwde en BYOL|
+|**A vulnerability assessment solution should be enabled on your virtual machines** (Er moet een oplossing voor de evaluatie van beveiligingsproblemen op uw virtuele machines worden ingeschakeld)<br>Sleutel: ffff0522-1e88-47fc-8382-2a80ba848f5d|Ingebouwde en BYOL|
 |**Beveiligings problemen in uw virtuele machines moeten worden hersteld**<br>Sleutel: 1195afff-c881-495e-9bc5-1486211ae03f|Ingebouwde en BYOL|
 ||||
 
@@ -257,20 +387,18 @@ Bij het implementeren van een oplossing voor de evaluatie van beveiligings probl
 
 Op basis van deze update is de controle verwijderd en kunt u nu hulpprogram ma's voor evaluatie van beveiligings problemen implementeren op aangepaste Windows-en Linux-machines. Aangepaste installatie kopieën zijn bestanden die u hebt gewijzigd op basis van de standaard instellingen voor Marketplace.
 
-Hoewel u nu de geïntegreerde uitbrei ding van het beveiligingslek kunt implementeren (mogelijk gemaakt door Qualys) op veel meer computers, is ondersteuning alleen beschikbaar als u een besturings systeem gebruikt dat wordt vermeld in [de geïntegreerde scanner voor beveiligings problemen implementeren op vm's van de Standard-laag](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms) .
+Hoewel u nu de geïntegreerde uitbrei ding van het beveiligingslek kunt implementeren (mogelijk gemaakt door Qualys) op veel meer computers, is ondersteuning alleen beschikbaar als u een besturings systeem gebruikt dat wordt vermeld in [de geïntegreerde scanner voor beveiligings problemen implementeren op vm's van de Standard-laag](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms) .
 
-Meer informatie over de [geïntegreerde scanner voor beveiligings problemen voor virtuele machines (alleen de laag standaard)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
+Meer informatie over de [geïntegreerde scanner voor beveiligings problemen voor virtuele machines (Azure Defender is vereist)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 
-Meer informatie over het gebruik van uw eigen, privé-beoordelings oplossing voor beveiligings problemen van Qualys of Rapid7 bij [het implementeren van een oplossing voor het scannen van beveiligings problemen](deploy-vulnerability-assessment-vm.md).
+Meer informatie over het gebruik van uw eigen, met een particuliere licentie beoordelings oplossing voor beveiligings problemen van Qualys of Rapid7 bij [het implementeren van een oplossing voor het scannen van een partner beveiligings probleem](deploy-vulnerability-assessment-vm.md).
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)
 
 Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activiteiten op uw Azure Storage-accounts. Security Center geeft een waarschuwing weer wanneer er wordt geprobeerd toegang te krijgen tot uw opslag accounts. 
 
-Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren. 
-
-Meer informatie over [beveiliging tegen bedreigingen voor Azure Storage](threat-protection.md#threat-protection-for-azure-storage-).
+Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren.
 
 
 
@@ -386,13 +514,13 @@ De geavanceerde gegevens beveiliging van Azure Security Center voor SQL-machines
 
 Geavanceerde gegevens beveiliging biedt evaluatie van beveiligings problemen en geavanceerde beveiliging tegen bedreigingen voor uw SQL-machines, waar ze zich ook bevinden.
 
-Setup bestaat uit twee stappen:
+Instellen bestaat uit twee stappen:
 
 1. De Log Analytics-agent implementeren op de hostcomputer van uw SQL Server om verbinding te maken met het Azure-account.
 
 1. Het inschakelen van de optionele bundel op de pagina prijzen en instellingen van Security Center.
 
-Meer informatie over [geavanceerde gegevens beveiliging voor SQL-machines](security-center-iaas-advanced-data.md).
+Meer informatie over [geavanceerde gegevens beveiliging voor SQL-machines](defender-for-sql-usage.md).
 
 
 
@@ -551,7 +679,7 @@ De beveiligings besturings elementen-en deze wissel knop maken deel uit van de n
 
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
-![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Groeperen op besturings elementen wissel knop voor aanbevelingen":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 

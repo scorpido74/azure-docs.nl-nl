@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ebb524a5297380fca575ce6849fe4c5f15507cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904001"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u [replicatie van inkomende gegevens](concep
 > Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
 >
 
-Voor het maken van een replica in de Azure Database for MySQL-service, [replicatie van inkomende gegevens](concepts-data-in-replication.md) synchroniseert gegevens van een hoofd-mysql-server on-premises, in virtuele machines (vm's) of in Cloud database services. Replicatie van binnenkomende gegevens is gebaseerd op het binaire logbestand (binlog) met replicatie op basis van positie eigen aan MySQL. Meer informatie over binlog-replicatie vindt u in het [overzicht van MySQL binlog-replicatie](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+Voor het maken van een replica in de Azure Database for MySQL-service, [replicatie van inkomende gegevens](concepts-data-in-replication.md)  synchroniseert gegevens van een hoofd-mysql-server on-premises, in virtuele machines (vm's) of in Cloud database services. Replicatie van binnenkomende gegevens is gebaseerd op het binaire logbestand (binlog) met replicatie op basis van positie eigen aan MySQL. Meer informatie over binlog-replicatie vindt u in het [overzicht van MySQL binlog-replicatie](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van gegevens replicatie voordat u de stappen in dit artikel uitvoert.
 
@@ -105,15 +105,15 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    Als u de replicatie functie in MySQL Workbench wilt maken, opent u het paneel **gebruikers en bevoegdheden** vanuit het deel venster **beheer** . Klik vervolgens op **account toevoegen**. 
  
-   ![Gebruikers en bevoegdheden](./media/howto-data-in-replication/users_privileges.png)
+   :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Gebruikers en bevoegdheden":::
 
    Typ de gebruikers naam in het veld **aanmeldings naam** . 
 
-   ![Gebruiker synchroniseren](./media/howto-data-in-replication/syncuser.png)
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Gebruiker synchroniseren":::
  
    Klik op het paneel **beheerders rollen** en selecteer vervolgens **replicatie-slave** in de lijst met **globale bevoegdheden**. Klik vervolgens op **Toep assen** om de replicatie functie te maken.
 
-   ![Replicatie-slave](./media/howto-data-in-replication/replicationslave.png)
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replicatie-slave":::
 
 1. De master-server instellen op de modus alleen-lezen
 
@@ -133,7 +133,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    ```
    De resultaten moeten er als volgt uitzien. Noteer de naam van het binaire bestand zoals deze wordt gebruikt in latere stappen.
 
-   ![Resultaten van de hoofd status](./media/howto-data-in-replication/masterstatus.png)
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Resultaten van de hoofd status":::
  
 ## <a name="dump-and-restore-master-server"></a>Hoofd server dumpen en herstellen
 
@@ -169,8 +169,8 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    - master_host: de hostnaam van de hoofd server
    - master_user: gebruikers naam voor de hoofd server
    - master_password: wacht woord voor de hoofd server
-   - master_log_file: de naam van het binaire logboek bestand is niet actief`show master status`
-   - master_log_pos: de positie van het binaire logboek van wordt uitgevoerd`show master status`
+   - master_log_file: de naam van het binaire logboek bestand is niet actief `show master status`
+   - master_log_pos: de positie van het binaire logboek van wordt uitgevoerd `show master status`
    - master_ssl_ca: de context van het CA-certificaat. Als SSL niet wordt gebruikt, geeft u een lege teken reeks door.
        - U wordt aangeraden deze para meter door te geven als een variabele. Raadpleeg de volgende voor beelden voor meer informatie.
 
@@ -226,7 +226,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    show slave status;
    ```
 
-   Als de status van `Slave_IO_Running` en `Slave_SQL_Running` Ja is en de waarde van `Seconds_Behind_Master` is 0, werkt replicatie goed. `Seconds_Behind_Master`Hiermee wordt aangegeven hoe laat de replica. Als de waarde niet 0 is, betekent dit dat de replica updates verwerkt. 
+   Als de status van `Slave_IO_Running` en `Slave_SQL_Running` Ja is en de waarde van `Seconds_Behind_Master` is 0, werkt replicatie goed. `Seconds_Behind_Master` Hiermee wordt aangegeven hoe laat de replica. Als de waarde niet 0 is, betekent dit dat de replica updates verwerkt. 
 
 ## <a name="other-stored-procedures"></a>Andere opgeslagen procedures
 

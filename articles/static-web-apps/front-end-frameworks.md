@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075963"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905375"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Front-end-frameworks en-bibliotheken configureren met de preview-versie van Azure static Web Apps
 
@@ -35,6 +35,7 @@ De bedoeling van de tabel kolommen wordt uitgelegd door de volgende items:
 | [Hoek, universeel](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
 | [Aurelia](https://aurelia.io/) | `dist` | N.v.t. |
 | [Backbone.js](https://backbonejs.org/) | `/` | N.v.t. |
+| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | N.v.t. |
 | [Ember](https://emberjs.com/) | `dist` | N.v.t. |
 | [Flutter](https://flutter.dev/) | `build/web` | `flutter build web` |
 | [Framework7](https://framework7.io/) | `www` | `npm run build-prod` |
@@ -46,7 +47,7 @@ De bedoeling van de tabel kolommen wordt uitgelegd door de volgende items:
 | [KnockoutJS](https://knockoutjs.com/) | `dist` | N.v.t. |
 | [LitElement](https://lit-element.polymer-project.org/) | `dist` | N.v.t. |
 | [Marko](https://markojs.com/) | `public` | N.v.t. |
-| [Meteor](https://www.meteor.com/) | `bundle` | N.v.t. |
+| [Meteoor](https://www.meteor.com/) | `bundle` | N.v.t. |
 | [Mithril](https://mithril.js.org/) | `dist` | N.v.t. |
 | [Omvat](https://www.polymer-project.org/) | `build/default` | N.v.t. |
 | [Preact](https://preactjs.com/) | `build` | N.v.t. |

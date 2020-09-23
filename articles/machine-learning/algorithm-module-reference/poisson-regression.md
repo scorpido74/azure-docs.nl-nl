@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905257"
 ---
-# <a name="poisson-regression"></a>Poisson-regressie
+# <a name="poisson-regression"></a>Regressie Poisson
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een Poisson-regressie model in een pijp lijn te maken. Poisson-regressie is bedoeld voor het voors pellen van numerieke waarden, meestal aantal. Daarom moet u deze module gebruiken om het regressie model alleen te maken als de waarden die u wilt voors pellen, voldoen aan de volgende voor waarden:
 
@@ -49,7 +49,7 @@ Omdat de reactie variabele een Poisson-verdeling heeft, maakt het model verschil
 
 ## <a name="how-to-configure-poisson-regression"></a>Poisson-regressie configureren
 
-1. Voeg de module **Poisson regressie** toe aan uw pijp lijn in Designer (preview). U kunt deze module vinden onder **machine learning-algoritmen**in de categorie **regressie** .
+1. Voeg de module **Poisson regressie** toe aan uw pijp lijn in Designer. U kunt deze module vinden onder **machine learning-algoritmen**in de categorie **regressie** .
 
 2. Voeg een gegevensset toe die de opleidings gegevens van het juiste type bevat. 
 

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e33e80a7363ac27bd7e0983a1ff3b65ee85b86b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031413"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882390"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Ruby gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 
@@ -26,7 +26,7 @@ In deze snelstartgids worden de resources die in een van deze handleidingen zijn
 
 Daarnaast moet ook het volgende zijn geïnstalleerd:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby pg, de PostgreSQL-module voor Ruby
+- [Ruby pg](https://rubygems.org/gems/pg/), de PostgreSQL-module voor Ruby
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
@@ -35,17 +35,17 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
- ![Servernaam Azure Database for PostgreSQL](./media/connect-ruby/1-connection-string.png)
+ :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="Servernaam Azure Database for PostgreSQL":::
 
 > [!NOTE]
-> Het `@`-symbool in de Azure Postgres-gebruikersnaam is als URL gecodeerd als `%40` in alle verbindingstekenreeksen. 
+> Het `@`-symbool in de Azure Postgres-gebruikersnaam is als URL gecodeerd als `%40` in alle verbindingstekenreeksen.
 
 ## <a name="connect-and-create-a-table"></a>Verbinding maken en een tabel maken
 Gebruik de volgende code om een tabel te verbinden en te maken met de SQL-instructie **CREATE TABLE**, gevolgd door **INSERT INTO**-instructies om rijen in de tabel toe te voegen.
 
-In de code wordt het object [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) gebruikt met de constructor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt de methode [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) aangeroepen op de opdrachten DROP, CREATE TABLE en INSERT INTO uit te voeren. Met de code wordt met de klasse [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) gecontroleerd op fouten. Vervolgens wordt methode [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) aangeroepen om de verbinding vóór het sluiten te verbreken.
+In de code wordt een ```PG::Connection```-object met de ```new```-constructor gebruikt om verbinding te maken met Azure Database for PostgreSQL. Vervolgens wordt de methode ```exec()``` aangeroepen op de opdrachten DROP, CREATE TABLE en INSERT INTO uit te voeren. Met de code wordt met de klasse ```PG::Error``` gecontroleerd op fouten. Vervolgens wordt methode ```close()``` aangeroepen om de verbinding vóór het sluiten te verbreken. Zie [de referentiedocumentatie voor Ruby Pg](https://www.rubydoc.info/gems/pg/PG) (Engelstalig) voor meer informatie over deze klassen en methoden.
 
-Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden. 
+Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden.
 
 
 ```ruby
@@ -77,19 +77,19 @@ begin
     puts 'Inserted 3 rows of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="read-data"></a>Gegevens lezen
-Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **SELECT**. 
+Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **SELECT**.
 
-In de code wordt het object [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) gebruikt met de constructor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) om verbinding te maken met Azure Database voor PostgreSQL. De methode [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) wordt dan aangeroepen om de opdracht SELECT uit te voeren. De resultaten worden in een resultatenset opgeslagen. De resultatensetverzameling wordt herhaald met de lus `resultSet.each do`. De huidige rijwaarden worden opgeslagen in de variabele `row`. Met de code wordt met de klasse [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) gecontroleerd op fouten. Vervolgens wordt methode [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) aangeroepen om de verbinding vóór het sluiten te verbreken.
+In de code wordt het object ```PG::Connection``` gebruikt met de constructor ```new``` om verbinding te maken met Azure Database voor PostgreSQL. De methode ```exec()``` wordt dan aangeroepen om de opdracht SELECT uit te voeren. De resultaten worden in een resultatenset opgeslagen. De resultatensetverzameling wordt herhaald met de lus `resultSet.each do`. De huidige rijwaarden worden opgeslagen in de variabele `row`. Met de code wordt met de klasse ```PG::Error``` gecontroleerd op fouten. Vervolgens wordt methode ```close()``` aangeroepen om de verbinding vóór het sluiten te verbreken. Zie [de referentiedocumentatie voor Ruby Pg](https://www.rubydoc.info/gems/pg/PG) (Engelstalig) voor meer informatie over deze klassen en methoden.
 
-Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden. 
+Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden.
 
 ```ruby
 require 'pg'
@@ -111,8 +111,8 @@ begin
     end
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -121,9 +121,9 @@ end
 ## <a name="update-data"></a>Gegevens bijwerken
 Gebruik de volgende code om verbinding te maken en de gegevens bij te werken met de SQL-instructie **UPDATE**.
 
-In de code wordt het object [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) gebruikt met de constructor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt de methode [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) aangeroepen om de opdracht UPDATE uit te voeren. Met de code wordt met de klasse [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) gecontroleerd op fouten. Vervolgens wordt methode [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) aangeroepen om de verbinding vóór het sluiten te verbreken.
+In de code wordt het object ```PG::Connection``` gebruikt met de constructor ```new``` om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt de methode ```exec()``` aangeroepen om de opdracht UPDATE uit te voeren. Met de code wordt met de klasse ```PG::Error``` gecontroleerd op fouten. Vervolgens wordt methode ```close()``` aangeroepen om de verbinding vóór het sluiten te verbreken. Zie [de referentiedocumentatie voor Ruby Pg](https://www.rubydoc.info/gems/pg/PG) (Engelstalig) voor meer informatie over deze klassen en methoden.
 
-Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden. 
+Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden.
 
 ```ruby
 require 'pg'
@@ -144,8 +144,8 @@ begin
     puts 'Updated 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -153,11 +153,11 @@ end
 
 
 ## <a name="delete-data"></a>Gegevens verwijderen
-Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **DELETE**. 
+Gebruik de volgende code om verbinding te maken en de gegevens te lezen met de SQL-instructie **DELETE**.
 
-In de code wordt het object [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) gebruikt met de constructor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt de methode [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) aangeroepen om de opdracht UPDATE uit te voeren. Met de code wordt met de klasse [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) gecontroleerd op fouten. Vervolgens wordt methode [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) aangeroepen om de verbinding vóór het sluiten te verbreken.
+In de code wordt het object ```PG::Connection``` gebruikt met de constructor ```new``` om verbinding te maken met Azure Database voor PostgreSQL. Vervolgens wordt de methode ```exec()``` aangeroepen om de opdracht UPDATE uit te voeren. Met de code wordt met de klasse ```PG::Error``` gecontroleerd op fouten. Vervolgens wordt methode ```close()``` aangeroepen om de verbinding vóór het sluiten te verbreken.
 
-Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden. 
+Vervang de tekenreeksen `host`, `database`, `user` en `password` door uw eigen waarden.
 
 ```ruby
 require 'pg'
@@ -178,13 +178,16 @@ begin
     puts 'Deleted 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 > [!div class="nextstepaction"]
-> [Een database migreren met behulp van Exporteren en importeren](./howto-migrate-using-export-and-import.md)
+> [Een database migreren met behulp van Exporteren en importeren](./howto-migrate-using-export-and-import.md) <br/>
+> [!div class="nextstepaction"]
+> [Ruby Pg-referentiedocumentatie](https://www.rubydoc.info/gems/pg/PG)

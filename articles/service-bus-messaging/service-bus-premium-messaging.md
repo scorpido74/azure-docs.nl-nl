@@ -3,12 +3,12 @@ title: Azure Service Bus Premium-en Standard-lagen
 description: In dit artikel worden de standaard-en Premium-lagen van Azure Service Bus beschreven. Vergelijkt deze lagen en biedt technische verschillen.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386347"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966791"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Prijscategorieën voor Service Bus Premium en Standard Messaging
 
@@ -72,7 +72,7 @@ Er zijn een aantal factoren waarmee rekening moet worden gehouden bij het bepale
     - Als het CPU-gebruik ***lager is dan 20%***, kunt u het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen, wellicht ***omlaag schalen*** .
     - Als het CPU-gebruik ***hoger is dan 70%***, zal uw toepassing profiteren van het ***opschalen*** van het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen.
 
-Het proces voor het schalen van de resources die zijn toegewezen aan een Service Bus naam ruimte kan worden geautomatiseerd met behulp van [Azure Automation Runbooks](../automation/automation-quickstart-create-runbook.md).
+Zie [bericht eenheden automatisch bijwerken](automate-update-messaging-units.md)voor informatie over het configureren van een service bus naam ruimte om automatisch te schalen (verg Roten of verkleinen van Messa ging-eenheden).
 
 > [!NOTE]
 > Het **schalen** van de resources die zijn toegewezen aan de naam ruimte kan preventieve of reactiveren zijn.
@@ -96,10 +96,9 @@ U kunt ook [Premium-naamruimtes maken met behulp van Azure Resource Manager-sjab
 
 Zie de volgende koppelingen voor meer informatie over de Service Bus Messaging-service:
 
-* [Inleiding tot Azure Service Bus Premium Messa ging (blog bericht)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Introducing Azure Service Bus Premium messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Overzicht van Service Bus Messaging](service-bus-messaging-overview.md)
-* [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
+- [Bericht eenheden automatisch bijwerken](automate-update-messaging-units.md).
+- [Inleiding tot Azure Service Bus Premium Messa ging (blog bericht)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Introducing Azure Service Bus Premium messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

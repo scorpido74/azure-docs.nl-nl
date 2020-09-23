@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: peering configureren: Power shell'
-description: Dit artikel begeleidt u stapsgewijs door de procedure voor het maken en inrichten van de persoonlijke, openbare en Microsoft-peering van een ExpressRoute-circuit. In dit artikel leest u hoe u de status controleert en peerings voor uw circuit bijwerkt of verwijdert.
+description: Meer informatie over het maken en beheren van routerings configuratie voor een ExpressRoute-circuit in het Resource Manager-implementatie model met behulp van Power shell.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: e1f1a36e84567a56ddb25366f96d1b2dba1d82fb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2c29dc051780b15fb55d446d3f4002c3870fb529
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968377"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Peering voor een ExpressRoute-circuit maken en wijzigen met behulp van Power shell
 

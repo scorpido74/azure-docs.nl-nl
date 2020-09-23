@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f20abffa429add8edcbffba16529c467cb9506fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21153d3c914864966106bf66edccb3c549398bc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898238"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -49,7 +49,7 @@ De volgende scherm afbeelding toont de kosten raming door gebruik te maken van d
 
 Wanneer u nieuwe resources aan uw werk ruimte toevoegt, keert u terug naar deze reken machine en voegt u hier dezelfde resource toe om uw kosten ramingen bij te werken.
 
-Hoewel de Enter prise Edition een preview-versie is, is er geen extra toeslag. Als de Enter prise-editie algemeen beschikbaar wordt, heeft deze een toeslag (voor training en dezicht).  Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie.
+Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie.
 
 ## <a name="get-cost-alerts"></a>Kosten waarschuwingen ophalen
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747534"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967505"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -64,14 +64,14 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 * VS - oost
 * VS - oost 2
 * VS - noord-centraal
-* VS - zuid-centraal
-* VS - centraal
+* South Central US
+* Central US
 * VS - west
 * VS - west 2
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord
-* Brazilië - zuid
+* Brazil South
 * Verenigd Koninkrijk West
 * Verenigd Koninkrijk Zuid
 * Australië - oost
@@ -79,12 +79,12 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
-* India - centraal
+* Central India
 * India - zuid
 * Japan - oost 
 * Japan - west
 * VS (overheid) - Virginia
-* China-oost 2
+* China - oost 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics werk ruimten
 
@@ -94,15 +94,15 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * VS - oost
 * VS - oost 2
 * VS - noord-centraal
-* VS - zuid-centraal
-* VS - centraal
+* South Central US
+* Central US
 * VS - west
 * VS - west 2
-* VS - centraal
+* Central US
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord
-* Brazilië - zuid
+* Brazil South
 * Verenigd Koninkrijk West
 * Verenigd Koninkrijk Zuid
 * Australië - oost
@@ -110,10 +110,10 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
-* India - centraal
-* Japan - oost
+* Central India
+* Japan East
 * VS (overheid) - Virginia
-* China-oost 2
+* China - oost 2
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -339,7 +339,7 @@ Distributie van verkeer per toepassings gateway & Load Balancer, topologie, de b
  - Weten welk subnet praat met de toepassings gateway of Load Balancer. Als u onverwachte conversaties bekijkt, kunt u uw configuratie corrigeren.
  - Als rogue-netwerken worden gepraat met een toepassings gateway of Load Balancer, kunt u deze corrigeren door NSG-regels te configureren om de Rogue-netwerken te blok keren. 
 
-    ![subnet-topologie-show-data verkeer-distribueren-naar-a-Application-Gateway-subnet-with-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Scherm afbeelding toont een subnet topologie met verkeers distributie naar een Application Gateway-subnet met betrekking tot stromen.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Poorten en virtuele machines weer geven die verkeer ontvangen van Internet
 

@@ -10,17 +10,16 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: cad1c8b7250ddf1e675145e764abcc90b4db9d86
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 616cdb1d0940ea6f64c3be3d687adaa9c2a98cc2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661725"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889972"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u problemen met [machine learning pijp lijnen](concept-ml-pipelines.md) oplost en fouten opspoort in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) en [Azure machine learning Designer (preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer). 
+In dit artikel leert u hoe u fouten opspoort en oplost [machine learning pijp lijnen](concept-ml-pipelines.md) in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) en [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer). Informatie over het volgende:
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
@@ -108,31 +107,7 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-### <a name="finding-and-reading-pipeline-log-files"></a>Logboek bestanden voor de pijp lijn zoeken en lezen
-
-Het logboek bestand `70_driver_log.txt` bevat: 
-
-* Alle afgedrukte instructies tijdens de uitvoering van uw script
-* De stack-trace voor het script 
-
-Als u deze en andere logboek bestanden wilt vinden in de portal, klikt u eerst op de pijplijn uitvoering in uw werk ruimte.
-
-![Lijst pagina pijplijn uitvoering](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-Ga naar de detail pagina van de pijplijn uitvoering.
-
-![Detail pagina pijp lijn uitvoeren](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-Klik op de module voor de specifieke stap. Ga naar het tabblad **Logboeken** . Andere logboeken bevatten informatie over het proces van het bouwen van de omgevings installatie kopie en stap voorbereidings scripts.
-
-![Tabblad detail pagina voor uitvoering van pijp lijn](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> Wordt uitgevoerd voor *gepubliceerde pijp lijnen* vindt u op het tabblad **eind punten** in uw werk ruimte. Wordt uitgevoerd voor *niet-gepubliceerde pijp lijnen* vindt u in **experimenten** of **pijp lijnen**.
-
-`ParallelRunStep`Zie [debug en Troubleshoot ParallelRunStep](how-to-debug-parallel-run-step.md)voor meer informatie over logboek registratie en tracering vanuit een.
-
-## <a name="logging-in-azure-machine-learning-designer-preview"></a>Aanmelden Azure Machine Learning Designer (preview-versie)
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerpprogramma
 
 Voor pijp lijnen die in de ontwerp functie zijn gemaakt, kunt u het **70_driver_log** bestand vinden op de pagina ontwerpen of op de detail pagina van de pijplijn uitvoering.
 

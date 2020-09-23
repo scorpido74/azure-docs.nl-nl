@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433926"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905627"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -33,8 +33,8 @@ Met deze hulpprogram ma's kunt u het volgende doen:
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar|
-|Koers|Gratis laag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|Gratis|
 |Vereiste rollen en machtigingen:|**Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)<br>Moet ook schrijf machtigingen hebben voor de doel resource|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) China gov (naar Event hub), andere gov|
 |||
@@ -123,13 +123,13 @@ Als u de voortdurend geëxporteerde gegevens automatisch van uw geconfigureerde 
 
 ## <a name="continuous-export-to-a-log-analytics-workspace"></a>Doorlopend exporteren naar een Log Analytics-werk ruimte
 
-Als u Azure Security Center gegevens in een Log Analytics werk ruimte wilt analyseren of als u Azure-waarschuwingen wilt gebruiken in combi natie met Security Center, doorlopende export naar uw Log Analytics-werk ruimte.
+Als u Azure Security Center gegevens in een Log Analytics werk ruimte wilt analyseren of als u Azure-waarschuwingen wilt gebruiken in combi natie met Security Center, stelt u continue export in op uw Log Analytics-werk ruimte.
 
-Als u wilt exporteren naar een Log Analytics-werk ruimte, moet u de Log Analytics oplossingen van Security Center op uw werk ruimte hebben ingeschakeld. Als u de Azure Portal gebruikt, wordt de oplossing gratis laag van Security Center automatisch ingeschakeld wanneer u doorlopend exporteren inschakelt. Als u echter de instellingen voor continue export programmatisch configureert, moet u hand matig de prijs categorie gratis of standaard selecteren voor de vereiste werk ruimte in de **instellingen voor de prijs &**.  
+Als u wilt exporteren naar een Log Analytics-werk ruimte, moet u de Log Analytics oplossingen van Security Center op uw werk ruimte hebben ingeschakeld. Als u de Azure Portal gebruikt, wordt de gratis oplossing van Security Center automatisch ingeschakeld wanneer u doorlopend exporteren inschakelt. Als u echter de instellingen voor continue export programmatisch configureert, moet u Azure Defender hand matig in-of uitschakelen via de pagina met **prijs & instellingen** .
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabellen en schema's
 
-Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen in de *SecurityAlert* -en *SecurityRecommendations* -tabellen. De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u zich in de laag gratis of Standard bevindt (Zie [prijzen](security-center-pricing.md)): Security (beveiliging en audit) of SecurityCenterFree.
+Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen in de *SecurityAlert* -en *SecurityRecommendations* -tabellen. De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u Azure Defender hebt ingeschakeld: Security (Beveiliging en audit) of SecurityCenterFree.
 
 ![De * SecurityAlert *-tabel in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 
@@ -187,6 +187,6 @@ In dit artikel hebt u geleerd hoe u continue export van uw aanbevelingen en waar
 Raadpleeg de volgende documentatie voor gerelateerde materialen: 
 
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Informatie over Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/)
+- [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor-documentatie](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

@@ -10,322 +10,510 @@
       items:
         - name: SSL-basiscertificaat verloopt
           href: concepts-certificate-rotation.md
-- name: Snelstartgidsen
+- name: Gedeelde documentatie
+  items:
+    - name: Migratie
+      items:
+        - name: Gegevens migreren met mysqldump of phpmyadmin
+          href: concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: Gegevens migreren met MySQL Workbench
+          href: concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: Migratie met minimale downtime met DMS
+          href: howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+    - name: Databases en gebruikers maken
+      href: howto-create-users.md
+      displayName: users
+    - name: Databasebeschadiging oplosseen
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
+- name: Enkele server
   expanded: true
   items:
-    - name: Database maken
+    - name: Documentatie voor enkele server
+      href: single-server/index.yml
+      displayName: single server
+    - name: Overzicht
       items:
-        - name: Database maken - Portal
-          href: quickstart-create-mysql-server-database-using-azure-portal.md
-        - name: Database maken - Azure CLI
-          href: quickstart-create-mysql-server-database-using-azure-cli.md
-        - name: Database maken - up-opdracht in Azure CLI
-          href: quickstart-create-server-up-azure-cli.md
-        - name: Database maken - Azure PowerShell
-          href: quickstart-create-mysql-server-database-using-azure-powershell.md
-        - name: Database maken - ARM-sjabloon
-          href: quickstart-create-mysql-server-database-using-arm-template.md
-          displayName: deploy azure resource manager template
-    - name: Verbinding maken en query uitvoeren
+        - name: Wat is Enkele server?
+          href: single-server-overview.md
+    - name: Snelstartgidsen
+      expanded: true
       items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: Java met Spring Data JDBC
-          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Java met Spring Data JPA
-          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Java met Spring Data R2DBC
-          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: .NET
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Aan de slag
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
-- name: Zelfstudies
-  items:
-    - name: 1 - Een database ontwerpen
+        - name: Een server maken
+          items:
+            - name: Azure Portal
+              href: quickstart-create-mysql-server-database-using-azure-portal.md
+              displayName: 'portal, create, server'
+            - name: Azure CLI
+              href: quickstart-create-mysql-server-database-using-azure-cli.md
+              displayName: 'cli, create, server'
+            - name: Up-opdracht in Azure CLI
+              href: quickstart-create-server-up-azure-cli.md
+              displayName: 'cli, up command, create, server'
+            - name: Azure PowerShell
+              href: quickstart-create-mysql-server-database-using-azure-powershell.md
+              displayName: 'powershell, create, server'
+            - name: ARM-sjabloon
+              href: quickstart-create-mysql-server-database-using-arm-template.md
+              displayName: deploy azure resource manager template
+        - name: Verbinding maken en query's uitvoeren
+          items:
+            - name: MySQL Workbench
+              href: connect-workbench.md
+            - name: PHP
+              href: connect-php.md
+            - name: Java
+              href: connect-java.md
+            - name: Java met Spring Data JDBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Java met Spring Data JPA
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Java met Spring Data R2DBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: .NET
+              href: connect-csharp.md
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: C++
+              href: connect-cpp.md
+            - name: Aan de slag
+              href: connect-go.md
+    - name: Zelfstudies
       items:
-        - name: Azure Portal
-          href: tutorial-design-database-using-portal.md
+        - name: Een database ontwerpen
+          items:
+            - name: Azure Portal
+              href: tutorial-design-database-using-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
+            - name: Azure Resource Manager-sjabloon
+              href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
+        - name: Een PHP-web-app bouwen met MySQL
+          items:
+            - name: WordPress in containers met MySQL
+              href: ../app-service/containers/tutorial-multi-container-app.md
+              maintainContext: true
+            - name: PHP met MySQL
+              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              maintainContext: true
+    - name: Voorbeelden
+      items:
         - name: Azure CLI
-          href: tutorial-design-database-using-cli.md
-        - name: Azure PowerShell
-          href: tutorial-design-database-using-powershell.md
-        - name: Azure Resource Manager-sjabloon
-          href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
-    - name: 2 - Een web-app maken
-      items:
-        - name: WordPress in containers met MySQL
-          href: ../app-service/tutorial-multi-container-app.md
-          maintainContext: true
-        - name: PHP met MySQL
-          href: ../app-service/tutorial-php-mysql-app.md
-          maintainContext: true
-- name: Voorbeelden
-  items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
-    - name: Groepsgewijze Java-verbinding
-      href: sample-scripts-java-connection-pooling.md
-- name: Concepten
-  items:
-    - name: DB en servers
+          href: sample-scripts-azure-cli.md
+        - name: Groepsgewijze Java-verbinding
+          href: sample-scripts-java-connection-pooling.md
+        - name: Ingebouwde modules voor Azure Policy
+          href: ./policy-samples.md
+    - name: Concepten
       items:
         - name: Servers
           href: concepts-servers.md
         - name: Ondersteunde versies
           href: concepts-supported-versions.md
-        - name: Hoge beschikbaarheid
-          href: concepts-high-availability.md
-    - name: Resources
-      items:
-        - name: Prijscategorieën
-          href: concepts-pricing-tiers.md
-        - name: Vooruitbetalen voor reservecapaciteit
-          href: concept-reserved-pricing.md
         - name: Beperkingen
           href: concepts-limits.md
-    - name: Gegevenstoegang en -beveiliging
-      items:
-        - name: Beveiligingsoverzicht
-          href: concepts-security.md
-        - name: SSL configureren
-          href: concepts-ssl-connection-security.md
-        - name: Connectiviteitsarchitectuur
-          href: concepts-connectivity-architecture.md
-        - name: Firewall-regels
-          href: concepts-firewall-rules.md
-        - name: Virtual Network
-          href: concepts-data-access-and-security-vnet.md
-        - name: Advanced Threat Protection
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: Private Link
-          href: concepts-data-access-security-private-link.md
-        - name: Gegevensversleuteling
-          href: concepts-data-encryption-mysql.md
-        - name: Azure Active Directory-verificatie
-          href: concepts-azure-ad-authentication.md
-        - name: Dubbele infrastructuurversleuteling
-          href: concepts-infrastructure-double-encryption.md
-        - name: Besturingselementen voor beveiliging van Azure Policy
-          displayName: 'regulatory, compliance, standards, domains'
-          href: ./security-controls-policy.md
-        - name: Beveiligingsbasislijn
-          href: security-baseline.md
-    - name: Bedrijfscontinuïteit
-      items:
-        - name: Inleiding tot bedrijfscontinuïteit
-          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
-          href: concepts-business-continuity.md
-        - name: Back-ups en herstellen
-          href: concepts-backup.md
-    - name: Controleren en afstemmen
-      items:
+        - name: Prijscategorieën
+          items:
+            - name: Prijscategorieën
+              href: concepts-pricing-tiers.md
+            - name: Vooruitbetalen voor reservecapaciteit
+              href: concept-reserved-pricing.md
+        - name: Netwerken
+          items:
+            - name: Virtual Network (VNET) gebruiken
+              href: concepts-data-access-and-security-vnet.md
+            - name: Privétoegang inschakelen met Private Link
+              href: concepts-data-access-security-private-link.md
+        - name: Beveiliging
+          items:
+            - name: Beveiligingsoverzicht
+              href: concepts-security.md
+            - name: SSL configureren
+              href: concepts-ssl-connection-security.md
+            - name: Connectiviteitsarchitectuur
+              href: concepts-connectivity-architecture.md
+            - name: Firewall-regels
+              href: concepts-firewall-rules.md
+            - name: Advanced Threat Protection
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Gegevensversleuteling
+              href: concepts-data-encryption-mysql.md
+            - name: Azure Active Directory-verificatie
+              href: concepts-azure-ad-authentication.md
+            - name: Dubbele infrastructuurversleuteling
+              href: concepts-infrastructure-double-encryption.md
+            - name: Beveiligingsbasislijn
+              href: security-baseline.md
+        - name: Bedrijfscontinuïteit
+          items:
+            - name: Inleiding tot bedrijfscontinuïteit
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+              href: concepts-business-continuity.md
+            - name: Hoge beschikbaarheid
+              href: concepts-high-availability.md
+              displayName: 'backup, restore,high availability'
+            - name: Back-ups en herstellen
+              href: concepts-backup.md
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
         - name: Controleren en afstemmen
-          href: concepts-monitoring.md
-        - name: Logboeken voor langzame query's
-          href: concepts-server-logs.md
-        - name: Auditlogboeken
-          href: concepts-audit-logs.md
-        - name: Query Store
-          href: concepts-query-store.md
-        - name: Inzicht in queryprestaties
-          href: concepts-query-performance-insight.md
-        - name: Aanbevelingen voor prestaties
-          href: concepts-performance-recommendations.md
-        - name: Serverparameters
-          href: concepts-server-parameters.md
-    - name: Ontwikkeling
-      items:
-        - name: Best practices voor toepassingen
-          href: app-development-best-practices.md
-        - name: Compatibiliteit van stuurprogramma's en hulpprogramma's
-          href: concepts-compatibility.md
+          items:
+            - name: Bewakingsoverzicht
+              href: concepts-monitoring.md
+              displayName: 'monitor, alerts, audit log, slow query log'
+            - name: Serverparameters
+              href: concepts-server-parameters.md
+              displayName: server parameters
+            - name: Logboeken voor langzame query's
+              href: concepts-server-logs.md
+              displayName: 'monitor, slow query log, alert'
+            - name: Auditlogboeken
+              href: concepts-audit-logs.md
+              displayName: 'monitor, alerts, audit log'
+            - name: Query Store
+              href: concepts-query-store.md
+              displayName: 'performance, query store'
+            - name: Inzicht in queryprestaties
+              href: concepts-query-performance-insight.md
+              displayName: query performance insights
+            - name: Aanbevelingen voor prestaties
+              href: concepts-performance-recommendations.md
+              displayName: recommendation
         - name: Toepassingen ontwikkelen
-          href: concepts-database-application-development.md
-        - name: Verbindingstolerantie
-          href: concepts-connectivity.md
-        - name: Ontwikkelen met Azure Kubernetes Service (AKS)
-          href: concepts-aks.md
-        - name: Java
           items:
-            - name: Java en JDBC gebruiken
-              href: connect-java.md
-            - name: Spring Data JDBC gebruiken
-              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Spring Data JPA gebruiken
-              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Spring Data R2DBC gebruiken
-              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-    - name: Replicatie
-      items:
-        - name: Replicatie van binnenkomende gegevens
-          href: concepts-data-in-replication.md
-        - name: Leesreplica's
-          href: concepts-read-replicas.md
-- name: Instructiegidsen
-  items:
-    - name: Een server beheren
-      items:
-        - name: Azure Portal
-          href: howto-create-manage-server-portal.md
-    - name: Firewall-regels
-      items:
-        - name: Azure Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Een server terugzetten
-      items:
-        - name: Azure Portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restore-server-powershell.md
-    - name: Een database migreren
-      items:
-        - name: Dumpen en terugzetten
-          href: concepts-migrate-dump-restore.md
-        - name: Importeren en exporteren
-          href: concepts-migrate-import-export.md
-        - name: Migratie met minimale downtime
-          href: howto-migrate-online.md
-    - name: Toepassingen koppelen
-      items:
-        - name: Gebruikers maken
-          href: howto-create-users.md
-        - name: Verbindingsreeksen
+            - name: Overzicht van de ontwikkeling van toepassingen
+              href: concepts-database-application-development.md
+            - name: Compatibiliteit van stuurprogramma's en hulpprogramma's
+              href: concepts-compatibility.md
+              displayName: 'drivers, tools'
+            - name: Best practices voor toepassingen
+              href: app-development-best-practices.md
+              displayName: application
+            - name: Verbindingstolerantie
+              href: concepts-connectivity.md
+              displayName: 'connection, resiliency'
+        - name: Replicatie
           items:
-            - name: Toepassingen koppelen
-              href: howto-connection-string.md
+            - name: Replicatie van binnenkomende gegevens
+              href: concepts-data-in-replication.md
+              displayName: 'replication, read replica'
+            - name: Leesreplica's
+              href: concepts-read-replicas.md
+              displayName: 'replication, read replica'
+    - name: Instructiegidsen
+      items:
+        - name: Een server beheren en schalen
+          items:
+            - name: Azure Portal
+              href: howto-create-manage-server-portal.md
+              displayName: 'manage, reset password, scale'
+            - name: Azure CLI
+              href: how-to-manage-single-server-cli.md
+              displayName: 'manage, reset password, scale'
+            - name: Firewall-regels
+              items:
+                - name: Azure Portal
+                  href: howto-manage-firewall-using-portal.md
+                  displayName: firewall
+                - name: Azure CLI
+                  href: howto-manage-firewall-using-cli.md
+                  displayName: firewall
+        - name: Verificatie
+          items:
+            - name: Azure AD-integratie configureren
+              href: howto-configure-sign-in-azure-ad-authentication.md
+              displayName: active directory
+            - name: Verbinding maken met beheerde identiteit
+              href: howto-connect-with-managed-identity.md
+              displayName: 'managed identity, msi'
+        - name: Een server terugzetten
+          items:
+            - name: Azure Portal
+              href: howto-restore-server-portal.md
+              displayName: 'restore server,backup'
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+              displayName: 'restore server, backup'
             - name: Azure PowerShell
-              href: howto-connection-string-powershell.md
-        - name: SSL configureren
-          href: howto-configure-ssl.md
-        - name: TLS configureren
-          href: howto-tls-configurations.md
-        - name: Web-apps
-          href: howto-connect-webapp.md
-        - name: Verbinding maken met omleiding
-          href: howto-redirection.md
-    - name: Parameters van de server configureren
-      items:
-        - name: Azure Portal
-          href: howto-server-parameters.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-        - name: Azure PowerShell
-          href: howto-configure-server-parameters-using-powershell.md
-    - name: Opslag automatisch vergroten
-      items:
-        - name: Azure Portal
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-        - name: Azure PowerShell
-          href: howto-auto-grow-storage-powershell.md
-    - name: Serverlogboeken openen
-      items:
+              href: howto-restore-server-powershell.md
+              displayName: 'restore server, backup, geo-restore powershell'
+        - name: Toepassingen koppelen
+          items:
+            - name: SSL configureren
+              href: howto-configure-ssl.md
+              displayName: 'ssl, security, application'
+            - name: TLS configureren
+              href: howto-tls-configurations.md
+              displayName: 'TLS, security, developement'
+            - name: Handleiding voor verbinding maken en query uitvoeren
+              href: how-to-connect-overview-single-server.md
+              displayName: 'connect , query , libraries, TLS, runtime'
+            - name: Web-apps
+              href: howto-connect-webapp.md
+              displayName: 'azure web app, security, web app, app service'
+            - name: Verbinding maken met omleiding
+              href: howto-redirection.md
+              displayName: 'development, redirection , php'
+        - name: Parameters van de server configureren
+          items:
+            - name: Azure Portal
+              href: howto-server-parameters.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+              displayName: 'server parameters, cli'
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+              displayName: 'server parameters, powershell'
+        - name: Opslag automatisch vergroten
+          items:
+            - name: Azure Portal
+              href: howto-auto-grow-storage-portal.md
+              displayName: 'storage, business continuity , downtime, portal'
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+              displayName: 'storage, business continuity , downtime, cli'
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
+              displayName: 'storage, business continuity , downtime, powershell'
         - name: Logboeken voor langzame query's
           items:
             - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
+              displayName: 'debug, slow query log , performance'
             - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
+              displayName: 'debug, slow query log , performance'
         - name: Auditlogboeken
           items:
             - name: Azure Portal
               href: howto-configure-audit-logs-portal.md
+              displayName: 'debug, audit log'
             - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
-    - name: Controleren
+              displayName: 'debug, audit log'
+        - name: Controleren
+          items:
+            - name: Waarschuwingen maken op basis van metrische gegevens
+              href: howto-alert-on-metric.md
+              displayName: 'debug, monitor, alerts, metrics'
+        - name: Replicatie
+          items:
+            - name: Replicatie van binnenkomende gegevens configureren
+              href: howto-data-in-replication.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Leesreplica's maken in de Azure-portal
+              href: howto-read-replicas-portal.md
+              displayName: 'data-in replication, replica, failover'
+            - name: 'Leesreplica''s maken met de Azure CLI, REST API'
+              href: howto-read-replicas-cli.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Leesreplica's maken met Azure PowerShell
+              href: howto-read-replicas-powershell.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Problemen oplossen
+              items:
+                - name: Verbindingsfouten oplossen
+                  href: howto-troubleshoot-common-connection-issues.md
+                  displayName: 'debug, connection issues, connectivity, cannot connect'
+                - name: Prestatieproblemen van query's oplossen
+                  href: howto-troubleshoot-query-performance.md
+                  displayName: 'debug, performance issues, query performance'
+                - name: Weergaven gebruiken in sys-schema
+                  href: howto-troubleshoot-sys-schema.md
+                  displayName: 'sys schema, views'
+                - name: Problemen met gegevensversleuteling oplossen
+                  href: howto-data-encryption-troubleshoot.md
+                  displayName: 'encryption, security'
+        - name: Geavanceerde beveiliging tegen bedreigingen
+          items:
+            - name: Azure Portal
+              href: howto-database-threat-protection-portal.md
+              displayName: 'atp, advanced thread, security'
+            - name: Virtual Network
+              items:
+                - name: Azure Portal
+                  href: howto-manage-vnet-using-portal.md
+                  displayName: 'vnet, virtual network, service endpoint'
+                - name: Azure CLI
+                  href: howto-manage-vnet-using-cli.md
+                  displayName: 'vnet, virtual network, service endpoint'
+        - name: Private Link
+          items:
+            - name: Azure Portal
+              href: howto-configure-privatelink-portal.md
+              displayName: 'private link, private endpoint'
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
+              displayName: 'private link, private endpoint'
+        - name: Gegevensversleuteling
+          items:
+            - name: Azure Portal
+              href: howto-data-encryption-portal.md
+              displayName: 'encryption, security'
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+              displayName: 'encryption, security'
+            - name: Validatie voor gegevensversleuteling
+              href: howto-data-encryption-validation.md
+              displayName: 'encryption, security'
+        - name: Dubbele infrastructuurversleuteling
+          items:
+            - name: Dubbele infrastructuurversleuteling configureren
+              href: howto-double-encryption.md
+              displayName: 'infrastructure encryption, security'
+        - name: Openbare netwerktoegang weigeren
+          items:
+            - name: Azure Portal
+              href: howto-deny-public-network-access.md
+              displayName: 'security, public access'
+        - name: Server opnieuw opstarten
+          items:
+            - name: Azure Portal
+              href: howto-restart-server-portal.md
+              displayName: restart
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+              displayName: restart
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+              displayName: restart
+        - name: Schakelen tussen regio's
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
+              displayName: move servers across regions
+- name: Flexibele server (preview)
+  items:
+    - name: Documentatie voor flexibele server
+      href: flexible-server/index.yml
+    - name: Overzicht
       items:
-        - name: Waarschuwingen maken op basis van metrische gegevens
-          href: howto-alert-on-metric.md
-    - name: Replicatie
+        - name: Wat is Flexible Server?
+          href: flexible-server/overview.md
+    - name: Snelstartgidsen
+      expanded: true
       items:
-        - name: Replicatie van binnenkomende gegevens configureren
-          href: howto-data-in-replication.md
-        - name: Leesreplica's maken in de Azure-portal
-          href: howto-read-replicas-portal.md
-        - name: 'Leesreplica''s maken met de Azure CLI, REST API'
-          href: howto-read-replicas-cli.md
-        - name: Leesreplica's maken met Azure PowerShell
-          href: howto-read-replicas-powershell.md
-    - name: Problemen oplossen
+        - name: Een server maken
+          expanded: true
+          items:
+            - name: Azure Portal
+              href: flexible-server/quickstart-create-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/quickstart-create-server-cli.md
+            - name: ARM-sjabloon
+              href: flexible-server/quickstart-create-arm-template.md
+        - name: Verbinding maken en query's uitvoeren
+          items:
+            - name: PHP
+              href: flexible-server/connect-php.md
+            - name: MySQL Workbench
+              href: flexible-server/connect-workbench.md
+            - name: Python
+              href: flexible-server/connect-python.md
+    - name: Zelfstudies
       items:
-        - name: Veelvoorkomende fouten oplossen
-          href: howto-troubleshoot-common-errors.md
-        - name: Verbindingsfouten oplossen
-          href: howto-troubleshoot-common-connection-issues.md
-        - name: Prestatieproblemen van query's oplossen
-          href: howto-troubleshoot-query-performance.md
-        - name: Weergaven gebruiken in sys-schema
-          href: howto-troubleshoot-sys-schema.md
-        - name: Problemen met gegevensversleuteling oplossen
-          href: howto-data-encryption-troubleshoot.md
-    - name: Advanced Threat Protection
+        - name: PHP-app (Laravel) bouwen met database
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Verbinding maken met privé-web-app
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Concepten
       items:
-        - name: Azure Portal
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
+        - name: Servers
+          href: flexible-server/concept-servers.md
+        - name: Ondersteunde versies
+          href: flexible-server/concepts-supported-versions.md
+        - name: Beperkingen
+          href: flexible-server/concepts-limitations.md
+        - name: Berekeningen en opslag
+          href: flexible-server/concepts-compute-storage.md
+        - name: Netwerken
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Onderhoud
+          href: flexible-server/concepts-maintenance.md
+        - name: Bedrijfscontinuïteit
+          items:
+            - name: Overzicht voor bedrijfscontinuïteit
+              href: flexible-server/concepts-business-continuity.md
+            - name: Back-ups en herstellen
+              href: flexible-server/concepts-backup-restore.md
+            - name: Hoge beschikbaarheid
+              href: flexible-server/concepts-high-availability.md
+        - name: Bewaking en logboeken
+          items:
+            - name: Logboeken voor langzame query's
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Auditlogboeken
+              href: flexible-server/concepts-audit-logs.md
+            - name: Metrische gegevens
+              href: flexible-server/concepts-monitoring.md
+    - name: Instructiegidsen
       items:
-        - name: Azure Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Private Link
-      items:
-        - name: Azure Portal
-          href: howto-configure-privatelink-portal.md
-        - name: Azure CLI
-          href: howto-configure-privatelink-cli.md
-    - name: Gegevensversleuteling
-      items:
-        - name: Azure Portal
-          href: howto-data-encryption-portal.md
-        - name: Azure CLI
-          href: howto-data-encryption-cli.md
-        - name: Validatie voor gegevensversleuteling
-          href: howto-data-encryption-validation.md
-    - name: Dubbele infrastructuurversleuteling
-      items:
-        - name: Dubbele infrastructuurversleuteling configureren
-          href: howto-double-encryption.md
-    - name: Azure AD-integratie
-      items:
-        - name: Azure AD-integratie configureren
-          href: howto-configure-sign-in-azure-ad-authentication.md
-        - name: Verbinding maken met beheerde identiteit
-          href: howto-connect-with-managed-identity.md
-    - name: Openbare netwerktoegang weigeren
-      items:
-        - name: Azure Portal
-          href: howto-deny-public-network-access.md
-    - name: Server opnieuw opstarten
-      items:
-        - name: Azure Portal
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restart-server-powershell.md
-    - name: Schakelen tussen regio's
-      items:
-        - name: Azure Portal
-          href: howto-move-regions-portal.md
+        - name: Een server beheren
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Onderhoud
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-maintenance-portal.md
+        - name: Server stoppen/starten
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Een server terugzetten
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-restore-server-portal.md
+        - name: Hoge beschikbaarheid
+          items:
+            - name: Azure Portal
+              href: flexible-server/how-to-configure-high-availability.md
+        - name: Netwerken
+          items:
+            - name: Privétoegang (VNet-integratie)
+              items:
+                - name: Azure Portal
+                  href: flexible-server/how-to-manage-virtual-network-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-virtual-network-cli.md
+            - name: Openbare toegang (toegestane IP-adressen)
+              items:
+                - name: Azure Portal
+                  href: flexible-server/how-to-manage-firewall-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-firewall-cli.md
+            - name: TLS/SSL
+              items:
+                - name: Verbinding maken met behulp van TLS/SSL
+                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Bewaking en logboeken
+          items:
+            - name: Waarschuwingen maken op basis van metrische gegevens
+              href: flexible-server/how-to-alert-on-metric.md
+            - name: Logboeken voor langzame query's
+              items:
+                - name: Azure Portal
+                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Auditlogboeken
+              items:
+                - name: Azure Portal
+                  href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: Problemen oplossen
+          items:
+            - name: Verbindingsfouten
+              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI
@@ -336,9 +524,6 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Opgeslagen procedures beheren
       href: reference-stored-procedures.md
-    - name: Ingebouwde modules voor Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Resources
   items:
     - name: Implementatiesjablonen
@@ -363,8 +548,6 @@
               href: 'https://aka.ms/mysql-migrate-vid'
             - name: Web Apps bouwen en implementeren
               href: 'https://aka.ms/mysql-webapps-vid'
-            - name: Containers verbinden met behulp van OSBA
-              href: 'https://aka.ms/mysql-osba-vid'
     - name: Verzoeken om een functie toe te voegen
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: Beschikbaarheid in regio’s

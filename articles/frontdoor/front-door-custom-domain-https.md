@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bac1d1e41cab4aa3be10fb226df57277db20c78e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648877"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030273"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -241,7 +241,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     Nee, een CAA-record is momenteel niet vereist. Als u er echter wel een hebt, moet deze DigiCert bevatten als een geldige CA.
 
-## <a name="clean-up-resources---disable-https"></a>Resources opschonen - HTTPS uitschakelen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 In de voorgaande stappen hebt u het HTTPS-protocol in uw aangepaste domein ingeschakeld. Als u het aangepaste domein niet meer wilt gebruiken met HTTPS, kunt u HTTPS uitschakelen door de volgende stappen uit te voeren:
 

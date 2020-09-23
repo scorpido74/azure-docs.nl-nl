@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145651"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986500"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -41,10 +41,11 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
 ### <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md).
+Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) gebruiken voor een goedkopere optie.
+* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) gebruiken voor een goedkopere optie.
+* [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd.
 
 Wijzig het type opslag replicatie als volgt:
 
@@ -146,7 +147,7 @@ De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afha
 
 De taak status kan variëren, afhankelijk van de volgende scenario's:
 
-**Momentopname** | **Gegevens overdragen aan de kluis** | **Taak status**
+**Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
 --- | --- | ---
 Voltooid | Actief | Actief
 Voltooid | Overgeslagen | Voltooid

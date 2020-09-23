@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904740"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
@@ -64,7 +64,7 @@ Als u de Services Management Console (Services. msc) opent, ziet u ook de Log An
 
 Als u wilt zien welke versie van de agent u hebt, opent u **taak beheer**, gaat u naar het tabblad **processen** en gaat u naar de **log Analytics Agent-service**, klikt u erop met de rechter muisknop en klikt u op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
 
-![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Bestand](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Installatie scenario's voor Log Analytics agent
 
@@ -81,7 +81,7 @@ Er zijn twee installatie scenario's die verschillende resultaten kunnen oplevere
 
 **Bewakingsstatus** toont de reden waarom Security Center VM's en computers die zijn geïnitialiseerd voor automatische inrichting niet afdoende kan bewaken. In de volgende tabel ziet u de waarden, beschrijvingen en oplossingen voor **Bewakingsstatus**.
 
-| Bewakingsstatus | Beschrijving | Stappen om het probleem op te lossen |
+| Bewakingsstatus | Description | Stappen om het probleem op te lossen |
 |---|---|---|
 | Agent wacht op installatie | De installatie van de Log Analytics-agent is nog actief.  De installatie kan enkele uren duren. | Wacht totdat de automatische installatie is voltooid. |
 | Energiestatus uitgeschakeld | De virtuele machine is gestopt.  De Log Analytics-agent kan alleen worden geïnstalleerd op een virtuele machine waarop wordt uitgevoerd. | Start de VM opnieuw op. |
@@ -132,7 +132,7 @@ Als u problemen ondervindt met het laden van het dashboard van Security Center, 
 
 ## <a name="contacting-microsoft-support"></a>Contact opnemen met Microsoft-ondersteuning
 
-Sommige problemen kunnen worden geïdentificeerd aan de hand van de richt lijnen in dit artikel, anderen die u ook kunt vinden op de pagina Security Center open bare [micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-security-center.html). Als u echter meer problemen wilt oplossen, kunt u een nieuwe ondersteunings aanvraag openen met **Azure Portal** , zoals hieronder wordt weer gegeven:
+Sommige problemen kunnen worden geïdentificeerd aan de hand van de richt lijnen in dit artikel, anderen die u ook kunt vinden op de Security Center open bare [micro soft Q&een pagina](https://docs.microsoft.com/answers/topics/azure-security-center.html). Als u echter meer problemen wilt oplossen, kunt u een nieuwe ondersteunings aanvraag openen met **Azure Portal** , zoals hieronder wordt weer gegeven:
 
 ![Microsoft-ondersteuning](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477456"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898271"
 ---
 # <a name="smote"></a>SMOTE
 
-In dit artikel wordt beschreven hoe u de SMOTE-module in Azure Machine Learning Designer (preview) gebruikt om het aantal ondergemaakte cases in een gegevensset te verg Roten die wordt gebruikt voor machine learning. SMOTE is een betere manier om het aantal zeldzame gevallen te verhogen dan alleen bestaande aanvragen te dupliceren.  
+In dit artikel wordt beschreven hoe u de SMOTE-module in Azure Machine Learning Designer kunt gebruiken om het aantal onderaangeduide cases in een gegevensset te verhogen die wordt gebruikt voor machine learning. SMOTE is een betere manier om het aantal zeldzame gevallen te verhogen dan alleen bestaande aanvragen te dupliceren.  
 
 U verbindt de SMOTE-module met een gegevensset die niet in *balans*is. Er zijn verschillende redenen waarom een gegevensset niet in balans kan worden opgenomen. De categorie die u aanwijst, kan bijvoorbeeld zeldzaam zijn in de populatie of de gegevens kunnen lastig zijn te verzamelen. Normaal gesp roken gebruikt u SMOTE als de *klasse* die u wilt analyseren, wordt weer gegeven. 
   
