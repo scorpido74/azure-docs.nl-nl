@@ -11,16 +11,16 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144104"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897459"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen (preview)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In deze hand leiding leert u hoe u het vertolkings pakket van de Azure Machine Learning python SDK kunt gebruiken om de volgende taken uit te voeren:
 
@@ -304,7 +304,7 @@ Nadat u de uitleg in uw lokale Jupyter-notebook hebt gedownload, kunt u het visu
 
 De volgende grafieken bieden een algemeen overzicht van het getrainde model samen met de voor spellingen en toelichtingen.
 
-|Ontwerp|Beschrijving|
+|Plotten|Description|
 |----|-----------|
 |Gegevens verkennen| Geeft een overzicht van de gegevensset samen met Voorspellings waarden.|
 |Wereld wijd belang|Aggregateert de belang rijke waarden van de functie van afzonderlijke data Points om de algemene belangrijkste K (Configureer bare K) belangrijkste functies van het model weer te geven. Hiermee wordt het algemene gedrag van het onderliggende model duidelijker.|
@@ -318,7 +318,7 @@ De volgende grafieken bieden een algemeen overzicht van het getrainde model same
 
 U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt laden door te klikken op een van de afzonderlijke gegevens punten in een van de algemene grafieken.
 
-|Ontwerp|Beschrijving|
+|Plotten|Description|
 |----|-----------|
 |Lokale urgentie|Hier worden de belangrijkste K (Configureer bare K) belang rijke functies voor een afzonderlijke voor spelling weer gegeven. Helpt het lokale gedrag van het onderliggende model op een specifiek gegevens punt te illustreren.|
 |Perturbation exploratie (wat als-analyse)|Hiermee kunnen de functie waarden van het geselecteerde gegevens punt worden gewijzigd en worden de resulterende wijzigingen in de Voorspellings waarde geobserveerd.|

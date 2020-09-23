@@ -1,6 +1,6 @@
 ---
-title: Gegevens synchroniseren vanuit Azure SQL Edge (preview) met behulp van SQL Data Sync
-description: Meer informatie over het synchroniseren van gegevens van Azure SQL Edge (preview) met behulp van Azure SQL Data Sync
+title: Gegevens synchroniseren vanuit Azure SQL Edge met behulp van SQL Data Sync
+description: Meer informatie over het synchroniseren van gegevens van Azure SQL Edge met behulp van Azure SQL Data Sync
 keywords: SQL Edge, gegevens synchroniseren vanaf SQL Edge, SQL Edge-gegevenssynchronisatie
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254047"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904112"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Zelfstudie: Gegevens synchroniseren vanuit Azure SQL Edge naar Azure SQL Database met behulp van SQL Data Sync
 

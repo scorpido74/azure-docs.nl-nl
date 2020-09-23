@@ -1,7 +1,7 @@
 ---
-title: Gegevens importeren in de ontwerp functie (preview-versie)
+title: Gegevens importeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer (preview) van verschillende gegevens bronnen.
+description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer van verschillende gegevens bronnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006981"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985607"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Gegevens importeren in Azure Machine Learning Designer (preview-versie)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Gegevens importeren in Azure Machine Learning Designer
 
 In dit artikel leert u hoe u uw eigen gegevens in de ontwerp functie kunt importeren om aangepaste oplossingen te maken. Er zijn twee manieren waarop u gegevens kunt importeren in de ontwerp functie: 
 
@@ -32,7 +32,7 @@ U wordt aangeraden gegevens [sets](concept-data.md#datasets) te gebruiken voor h
 
 ### <a name="register-a-dataset"></a>Een gegevensset registreren
 
-U kunt bestaande gegevens sets [programmatisch registreren met de SDK](how-to-create-register-datasets.md#datasets-sdk) of [visueel in azure machine learning Studio](how-to-create-register-datasets.md#datasets-ui).
+U kunt bestaande gegevens sets [programmatisch registreren met de SDK](how-to-create-register-datasets.md#datasets-sdk) of [visueel in azure machine learning Studio](how-to-connect-data-ui.md#create-datasets).
 
 U kunt de uitvoer voor elke ontwerp module ook registreren als een gegevensset.
 
@@ -68,7 +68,7 @@ We raden u aan om gegevens sets te gebruiken voor het importeren van informatie,
 Zie de [referentie pagina gegevens importeren](algorithm-module-reference/import-data.md)voor gedetailleerde informatie over het gebruik van de module gegevens importeren.
 
 > [!NOTE]
-> Als uw gegevensset te veel kolommen bevat, kan de volgende fout optreden: "validatie mislukt vanwege grootte beperking". Als u dit wilt voor komen, [registreert u de gegevensset in de gegevens sets-interface](how-to-create-register-datasets.md#datasets-ui).
+> Als uw gegevensset te veel kolommen bevat, kan de volgende fout optreden: "validatie mislukt vanwege grootte beperking". Als u dit wilt voor komen, [registreert u de gegevensset in de gegevens sets-interface](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Ondersteunde bronnen
 
@@ -107,4 +107,4 @@ Als uw werk ruimte zich in een virtueel netwerk bevindt, moet u aanvullende conf
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer de basis beginselen van de ontwerp functie met [de zelf studie: prijs van auto Mobile voor speld met de ontwerp functie](tutorial-designer-automobile-price-train-score.md).
+Leer de basis principes van Designer met deze [zelf studie: prijs van auto Mobile voor speld met de ontwerp functie](tutorial-designer-automobile-price-train-score.md).

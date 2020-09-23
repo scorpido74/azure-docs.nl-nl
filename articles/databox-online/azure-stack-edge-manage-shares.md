@@ -1,6 +1,6 @@
 ---
-title: Delen van Azure Stack Edge-beheer | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om shares te beheren op uw Azure Stack rand.
+title: Azure Stack Edge Pro-share beheer | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt om shares te beheren op uw Azure Stack Edge Pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904474"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack rand
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack Edge Pro
 
-In dit artikel wordt beschreven hoe u shares op uw Azure Stack-rand beheert. U kunt de Azure Stack Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
+In dit artikel wordt beschreven hoe u shares kunt beheren op uw Azure Stack Edge Pro. U kunt de Azure Stack Edge Pro beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
 
 ## <a name="about-shares"></a>Info over shares
 
-Als u gegevens wilt overdragen naar Azure, moet u shares op uw Azure Stack Edge maken. De shares die u op het Azure Stack edge-apparaat toevoegt, kunnen lokale shares zijn of shares die gegevens pushen naar de Cloud.
+Als u gegevens wilt overdragen naar Azure, moet u shares maken op uw Azure Stack Edge Pro. De shares die u toevoegt op het Azure Stack Edge Pro-apparaat kunnen lokale shares zijn of shares die gegevens pushen naar de Cloud.
 
  - **Lokale shares**: gebruik deze shares wanneer u wilt dat de gegevens lokaal worden verwerkt op het apparaat.
  - **Shares**: gebruik deze shares als u wilt dat de apparaatgegevens automatisch naar uw opslag account in de cloud worden gepusht. Alle Cloud functies, zoals **vernieuwen** en **synchronisatie van opslag sleutels** , zijn van toepassing op de shares.
@@ -54,7 +54,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 5. Kies in de vervolg keuzelijst de **opslag service** van blok-blob, pagina-BLOB of bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. In dit geval willen we bijvoorbeeld dat de gegevens zich bevinden als blok-blobs in Azure. Daarom selecteren we **blok-BLOB**. Als u **pagina-BLOB**kiest, moet u ervoor zorgen dat uw gegevens 512 bytes zijn uitgelijnd. Gebruik de **pagina-BLOB** voor VHD'S of VHDX die altijd 512 bytes zijn uitgelijnd.
 
    > [!IMPORTANT]
-   > Zorg ervoor dat voor het Azure Storage account dat u gebruikt geen Onveranderbaarheid-beleid is ingesteld als u dit gebruikt met een Azure Stack Edge-of Data Box Gateway-apparaat. Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)voor meer informatie.
+   > Controleer of voor het Azure-opslagaccount dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge Pro- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
 
 6. Deze stap hangt af van of u een SMB- of een NFS-share gaat maken.
    - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
@@ -102,7 +102,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 ## <a name="mount-a-share"></a>Een share koppelen
 
-Als u een share hebt gemaakt voordat u Compute hebt geconfigureerd op uw Azure Stack edge-apparaat, moet u de share koppelen. Voer de volgende stappen uit om een share te koppelen.
+Als u een share hebt gemaakt voordat u Compute hebt geconfigureerd op uw Azure Stack Edge Pro-apparaat, moet u de share koppelen. Voer de volgende stappen uit om een share te koppelen.
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**. Selecteer in de lijst met shares de share die u wilt koppelen. In de kolom **gebruikt voor berekening** wordt de status **uitgeschakeld** weer gegeven voor de geselecteerde share.
 
@@ -134,7 +134,7 @@ Voer de volgende stappen uit in de Azure Portal om een share te ontkoppelen.
 
 2. Selecteer in de lijst met shares de share die u wilt ontkoppelen. U wilt er zeker van zijn dat de share die u ontkoppelt, niet wordt gebruikt door modules. Als de share wordt gebruikt door een module, worden er problemen met de bijbehorende module weer geven. Selecteer **ontkoppelen**.
 
-   ![Selecteer ontkoppelen](media/azure-stack-edge-manage-shares/select-unmount.png)
+   ![Ontkoppelen selecteren](media/azure-stack-edge-manage-shares/select-unmount.png)
 
 3. Selecteer **Ja**als u om bevestiging wordt gevraagd. Hiermee wordt de share ontkoppeld.
 

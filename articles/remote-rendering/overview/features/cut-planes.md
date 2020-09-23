@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904882"
 ---
 # <a name="cut-planes"></a>Vlakken knippen
 
@@ -19,16 +19,6 @@ Een *knip vlak* is een visuele functie die pixels aan één zijde van een virtue
 In de onderstaande afbeelding ziet u het effect. Links ziet u de oorspronkelijke mesh, aan de rechter kant kan in het net kijken:
 
 ![Vlak knippen](./media/cutplane-1.png)
-
-## <a name="limitations"></a>Beperkingen
-
-* Voor de periode ondersteunt Azure remote rendering een **maximum van acht actieve knip abonnementen**. U kunt meer knip vlak onderdelen maken, maar als u meerdere tegelijk probeert in te scha kelen, wordt de activering genegeerd. Schakel eerst andere abonnementen uit als u wilt overschakelen welk onderdeel van invloed op de scène moet zijn.
-* Elk knip vlak is van invloed op alle extern gerenderde objecten. Er is momenteel geen manier om specifieke objecten of netonderdelen uit te sluiten.
-* Knip abonnementen zijn louter een visuele functie. ze hebben geen invloed op het resultaat van [ruimtelijke query's](spatial-queries.md). Als u een straal wilt omzetten in een cut, kunt u het begin punt van de Ray aanpassen zodat deze zich op het Knip vlak bevindt. Op deze manier kan de Ray alleen zicht bare onderdelen aanraken.
-
-## <a name="performance-considerations"></a>Prestatieoverwegingen
-
-Elk actief knip vlak maakt een kleine kosten tijdens de rendering. Knip abonnementen uitschakelen of verwijderen wanneer ze niet nodig zijn.
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
@@ -67,6 +57,40 @@ De volgende eigenschappen worden weer gegeven op een knip vlak onderdeel:
 * `FadeColor` en `FadeLength`:
 
   Als de Alfa waarde van *FadeColor* niet gelijk is aan nul, wordt pixels dicht bij het Knip vlak overvloeien naar het RGB-onderdeel van FadeColor. De sterkte van het Alfa kanaal bepaalt of deze volledig naar de vervagings kleur of slechts gedeeltelijk vervaagt. *FadeLength* definieert de afstand die de vervaging zal plaatsvinden.
+
+* `ObjectFilterMask`: Een filter-bit masker dat bepaalt welke geometrie wordt beïnvloed door het Knip vlak. Zie de volgende alinea voor gedetailleerde informatie.
+
+### <a name="selective-cut-planes"></a>Selectief knip schema's
+
+Het is mogelijk om afzonderlijke knip plannen te configureren zodat ze alleen van invloed zijn op specifieke geometrie. In de volgende afbeelding ziet u hoe deze instellingen in de praktijk kunnen worden weer geven:
+
+![Selectief knip schema's](./media/selective-cut-planes.png)
+
+De filtering werkt via een **logische-bits masker vergelijking** tussen een bitmasker op de knip vlak en een tweede-bits masker dat is ingesteld op de geometrie. Als het resultaat van een logische `AND` bewerking tussen de maskers niet nul is, is het snij vlak van invloed op de geometrie.
+
+* Het bitmasker op het Knip vlak onderdeel wordt ingesteld via de bijbehorende `ObjectFilterMask` eigenschap
+* Het bitmasker op een subhiërarchie van geometrie wordt ingesteld via de [HierarchicalStateOverrideComponent](override-hierarchical-state.md#features)
+
+Voorbeelden:
+
+| Filter masker voor knip vlak | Masker voor geometrie filter  | Resultaat van logische `AND` | Vlak knippen is van invloed op geometrie?  |
+|--------------------|-------------------|-------------------|:----------------------------:|
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | No |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | No |
+
+>[!TIP]
+> Als u een cut instelt `ObjectFilterMask` op 0, heeft dit geen invloed op een geometrie omdat het resultaat van logische waarde `AND` nooit niet-null mag zijn. In het rendering-systeem worden deze schema's in de eerste plaats niet in overweging gegeven. Dit is dus een lichte methode om afzonderlijke knip abonnementen uit te scha kelen. Deze knip abonnementen tellen ook niet mee op basis van de limiet van 8 actieve abonnementen.
+
+## <a name="limitations"></a>Beperkingen
+
+* De externe rendering van Azure biedt ondersteuning **voor Maxi maal acht actieve knip abonnementen**. U kunt meer knip vlak onderdelen maken, maar als u meerdere tegelijk probeert in te scha kelen, wordt de activering genegeerd. Schakel eerst andere abonnementen uit als u wilt overschakelen welke onderdelen van invloed op de scène moeten zijn.
+* Knip abonnementen zijn een louter visuele functie. ze hebben geen invloed op het resultaat van [ruimtelijke query's](spatial-queries.md). Als u een straal wilt omzetten in een cut, kunt u het begin punt van de Ray aanpassen zodat deze zich op het Knip vlak bevindt. Op deze manier kan de Ray alleen zicht bare onderdelen aanraken.
+
+## <a name="performance-considerations"></a>Prestatieoverwegingen
+
+Elk actief knip vlak maakt een kleine kosten tijdens de rendering. Knip abonnementen uitschakelen of verwijderen wanneer ze niet nodig zijn.
 
 ## <a name="api-documentation"></a>API-documentatie
 

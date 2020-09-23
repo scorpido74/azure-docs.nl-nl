@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: ff327372a0ec22ca6291615ca64f01a4aa5807be
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 239fc9de991066ec0603247abafae36a618d534f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646218"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889859"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Meer informatie over het implementeren van een model van Azure Machine Learning als een functie-app in Azure Functions.
 
@@ -45,7 +45,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
 
 ## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 
-Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de basis items beschreven die nodig zijn voor een implementatie:
+Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de belangrijkste items beschreven die nodig zijn voor een implementatie:
 
 * Een __invoer script__. Met dit script worden aanvragen geaccepteerd, wordt de aanvraag met het model gescoord en worden de resultaten geretourneerd.
 

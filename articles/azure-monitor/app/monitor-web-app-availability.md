@@ -4,12 +4,12 @@ description: Stel webtests in Application Insights in. Ontvang een waarschuwing 
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310273"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986034"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -78,7 +78,7 @@ De resultaten van de beschikbaarheids test kunnen worden gevisualiseerd met zowe
 
 Klik na een paar minuten op **vernieuwen** om de test resultaten weer te geven.
 
-![Regel weergave](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Scherm afbeelding toont de beschikbaarheids pagina met de knop Vernieuwen gemarkeerd.](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 In de weer gave scatterplot ziet u voor beelden van de test resultaten met details over diagnostische test stappen. De testengine slaat diagnostische gegevens op voor tests met fouten. Bij geslaagde tests wordt diagnostische informatie voor een subset van de uitvoeringen opgeslagen. Beweeg de muis aanwijzer over een van de groene/rode stippen om de test, naam en locatie te bekijken.
 

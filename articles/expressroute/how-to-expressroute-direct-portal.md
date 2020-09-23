@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401466"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986367"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Direct ExpressRoute maken met behulp van de Azure Portal
 
@@ -97,7 +97,7 @@ Met de volgende stappen kunt u een ExpressRoute-circuit maken op basis van de Ex
 
 1. Selecteer in de sectie directe **instellingen** van ExpressRoute **circuits**en selecteer vervolgens **+ toevoegen**. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Add" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Scherm afbeelding toont de instellingen voor ExpressRoute waarvoor circuits zijn geselecteerd en die zijn gemarkeerd." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Configureer de instellingen op de pagina **configuratie** .
 

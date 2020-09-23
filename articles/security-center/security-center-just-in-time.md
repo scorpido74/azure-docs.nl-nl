@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904868"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheer poorten met Just-in-time-toegang
 
@@ -33,15 +33,15 @@ Op deze pagina leert u hoe u JIT kunt toevoegen in uw beveiligings programma. U 
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemene beschikbaarheid|
-|Koers|Standard-laag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Ondersteunde Vm's:|![Ja ](./media/icons/yes-icon.png) virtuele machines die via Azure Resource Manager worden geïmplementeerd.<br>![Er zijn geen ](./media/icons/no-icon.png) vm's geïmplementeerd met klassieke implementatie modellen. Meer [informatie over deze implementatie modellen](../azure-resource-manager/management/deployment-models.md).<br>![Geen ](./media/icons/no-icon.png) vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
 |Vereiste rollen en machtigingen:|Met de rollen **lezer** en **SECURITYREADER** kunnen de JIT-status en-para meters worden weer gegeven.<br>Als u aangepaste rollen wilt maken die met JIT kunnen werken, raadpleegt u de [machtigingen die nodig zijn voor het configureren en gebruiken van JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Gebruik het [script set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) op de pagina's van de Security Center github-Community om een rol met een beperkte bevoegdheid te maken voor gebruikers die JIT-toegang moeten aanvragen voor een virtuele machine en geen andere JIT-bewerkingen kunnen uitvoeren.|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 
-## <a name="enable-jit-vm-access"></a>JIT-VM-toegang inschakelen<a name="jit-configure"></a>
+## <a name="enable-jit-vm-access"></a>JIT-VM-toegang inschakelen <a name="jit-configure"></a>
 
 U kunt JIT-VM-toegang inschakelen met uw eigen aangepaste opties voor een of meer virtuele machines met Security Center of via een programma. 
 
@@ -51,13 +51,13 @@ Elk van deze opties wordt in een afzonderlijk tabblad hieronder uitgelegd.
 
 ### <a name="azure-security-center"></a>[**Azure Security Center**](#tab/jit-config-asc)
 
-### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Activeer JIT op uw Vm's van Azure Security Center<a name="jit-asc"></a>
+### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Activeer JIT op uw Vm's van Azure Security Center <a name="jit-asc"></a>
 
-![JIT-VM-toegang configureren in Azure Security Center](./media/security-center-just-in-time/jit-config-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="JIT-VM-toegang configureren in Azure Security Center":::
 
 Vanuit Security Center kunt u de JIT-VM-toegang inschakelen en configureren.
 
-1. Selecteer in het menu van Security Center **just-in-time-VM-toegang**.
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging **just-in-time-VM-toegang**.
 
     De **just-in-time-VM-toegangs** pagina wordt geopend met de vm's die zijn gegroepeerd op de volgende tabbladen:
 
@@ -101,13 +101,13 @@ Vanuit Security Center kunt u de JIT-VM-toegang inschakelen en configureren.
 
 
 
-### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>De JIT-configuratie op een met JIT ingeschakelde VM bewerken met Security Center<a name="jit-modify"></a>
+### <a name="edit-the-jit-configuration-on-a-jit-enabled-vm-using-security-center"></a>De JIT-configuratie op een met JIT ingeschakelde VM bewerken met Security Center <a name="jit-modify"></a>
 
 U kunt de just-in-time-configuratie van een virtuele machine wijzigen door een nieuwe poort toe te voegen en te configureren voor de beveiliging van die virtuele machine of door een andere instelling te wijzigen die betrekking heeft op een reeds beveiligde poort.
 
 De bestaande JIT-regels voor een virtuele machine bewerken:
 
-1. Selecteer in het menu van Security Center **just-in-time-VM-toegang**.
+1. Open het dash board van Azure Defender en selecteer in het gebied geavanceerde beveiliging de optie **adaptieve toepassings besturings elementen**.
 
 1. Klik op het tabblad **geconfigureerd** met de rechter muisknop op de virtuele machine waaraan u een poort wilt toevoegen en selecteer Bewerken. 
 
@@ -241,7 +241,7 @@ Elk van deze opties wordt in een afzonderlijk tabblad hieronder uitgelegd.
 
 Wanneer een virtuele machine is ingeschakeld, moet u toegang aanvragen om er verbinding mee te maken. U kunt toegang tot een van de ondersteunde manieren aanvragen, ongeacht hoe u JIT hebt ingeschakeld.
 
-![JIT-toegang aanvragen via Security Center](./media/security-center-just-in-time/jit-request-security-center.gif)
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT-toegang aanvragen via Security Center":::
 
 1. Selecteer op de **just-in-time-pagina voor toegang tot de VM** het tabblad **geconfigureerd** .
 
@@ -365,7 +365,7 @@ U kunt inzicht krijgen in VM-activiteiten met zoeken in Logboeken. De logboeken 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u just-in-time-VM-toegang kunt instellen en gebruiken. Lees voor meer informatie waarom JIT moet worden gebruikt, het concept artikel waarin wordt uitgelegd welke bedreigingen het beschermt tegen:
+In dit artikel hebt u geleerd hoe just-in-time-VM-toegang kan worden ingesteld en gebruikt. Lees voor meer informatie waarom JIT moet worden gebruikt, het concept artikel waarin wordt uitgelegd welke bedreigingen het beschermt tegen:
 
 > [!div class="nextstepaction"]
 > [Uitleg over JIT](just-in-time-explained.md)

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401721"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986568"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
 
@@ -299,7 +299,7 @@ In de trigger plannings schema kunt u de tijd zone en een terugkeer patroon inst
 
 Aan het einde van de werk stroom configuratie kunt u de consistentie van de terugkeer frequentie controleren door de werk stroom een paar keer uit te voeren en vervolgens de uitkomst te controleren in de **geschiedenis van uitvoeringen**.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Terugkeerpatroon" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Scherm afbeelding toont het interval en de frequentie waarden van het terugkeer patroon." lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. een taak maken
 
@@ -320,7 +320,7 @@ Een logische app heeft toegang tot andere apps, services en het platform, hoewel
 
 5. Op de pagina **taak maken** moet de service-principal de rol ' lezer ' hebben voor de **resource groep** die als host fungeert voor het Automation-account en ' Automation-taak operator ' op het **Automation-account**. Controleer bovendien of u de **runbooknaam** hebt toegevoegd als een nieuwe para meter.
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Rollen" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Scherm opname toont taak waarden in terugkeer patroon, waar u de Runbooknaam kunt controleren." lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. de taak uitvoer ophalen
 
@@ -343,7 +343,7 @@ De informatie in de uitvoer van de actie ' Azure Automation taak maken ' (vorige
 
 3. Klik in het vak **inhoud** . Wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u **inhoud**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Inhoud" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Scherm afbeelding toont het dialoog venster JSON parseren met geselecteerde inhoud." lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. Voor het parseren van een JSON is een schema vereist. Het schema kan worden gegenereerd met de uitvoer van het Automation-runbook. Open een nieuwe webbrowser sessie, voer het Automation-runbook uit en pak de uitvoer. Ga terug naar de **Logic apps bewerking JSON-gegevens parseren** . Selecteer aan de onderkant van de pagina **voor beeld Payload gebruiken om een schema te genereren**.
 
@@ -363,7 +363,7 @@ In deze stap van de werk stroom maken we een voor waarde voor het verzenden van 
 
 1. Selecteer **nieuwe stap**onder de **actie taak uitvoer ophalen**. Zoek en selecteer in het zoekvak **variabelen**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Variabelen":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Scherm afbeelding toont het dialoog venster een actie kiezen met variabele in het zoekvak en de geselecteerde variabelen.":::
 
 2. Selecteer in de lijst **acties** de actie **variabele initialiseren** .
 
@@ -371,7 +371,7 @@ In deze stap van de werk stroom maken we een voor waarde voor het verzenden van 
 
 3. Geef de naam van de variabele op. Selecteer bij **type**de optie **teken reeks**. De **waarde** van de variabele wordt later in de werk stroom toegewezen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Tekenreeks" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Scherm afbeelding toont JSON parseren die is gekoppeld aan de initialisatie variabele, waar u een naam, type en waarde kunt invoeren." lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. een ' voor elke ' actie maken
 
@@ -379,7 +379,7 @@ Zodra de JSON is geparseerd, wordt de inhoud in *de uitvoer van de* **geparseerd
 
 1. Selecteer **een actie toevoegen**onder **variabele initialiseren**. Typ in het zoekvak ' voor elke ' als uw filter.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Beheer":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Scherm afbeelding toont het dialoog venster een actie kiezen met voor elk in het zoekvak en het geselecteerde besturings element.":::
 
 2. Selecteer in de lijst **acties** de actie **voor elk besturings element**.
 
@@ -387,7 +387,7 @@ Zodra de JSON is geparseerd, wordt de inhoud in *de uitvoer van de* **geparseerd
 
 3. Klik in het tekstvak **Selecteer een uitvoer van de vorige stappen** . Wanneer de lijst met **dynamische inhoud** wordt weer gegeven, selecteert u de **hoofd tekst**van de geparseerde JSON.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Hoofdtekst":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="In de scherm afbeelding wordt de geïnitialiseerde variabele voor elke weer gegeven, die het tekstvak selecteer een uitvoer van vorige stappen bevat.":::
 
 4. We willen voor elk element van de JSON-hoofd tekst een voor waarde instellen. Selecteer in de actie groep de optie **besturings element**.
 

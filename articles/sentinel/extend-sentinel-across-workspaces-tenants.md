@@ -1,6 +1,6 @@
 ---
 title: Azure-Sentinel uitbreiden in werk ruimten en tenants | Microsoft Docs
-description: Hoe u de analyse mogelijkheden van Azure Sentinel uitbreidt in werk ruimten en tenants.
+description: Azure Sentinel gebruiken voor het opvragen en analyseren van gegevens in werk ruimten en tenants.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9e0fe46e0a7382c0adcfa1f1f781f282e9e77942
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019322"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905420"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
 
@@ -29,7 +29,7 @@ Azure Sentinel is gebaseerd op een Log Analytics-werk ruimte. U ziet dat de eers
 
 U kunt het volledige voor deel van de Azure-Sentinel-ervaring krijgen wanneer u één werk ruimte gebruikt. Er zijn ook enkele omstandigheden waarin u mogelijk meerdere werk ruimten moet hebben. In de volgende tabel worden enkele van deze situaties vermeld en wordt, indien mogelijk, voorgesteld hoe aan de vereiste kan worden voldaan met één werk ruimte:
 
-| Vereiste | Beschrijving | Manieren om het aantal werk ruimten te verminderen |
+| Vereiste | Description | Manieren om het aantal werk ruimten te verminderen |
 |-------------|-------------|--------------------------------|
 | Soevereiniteit en naleving van regelgeving | Een werk ruimte is gekoppeld aan een bepaalde regio. Als gegevens in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) moeten worden bewaard om te voldoen aan de wettelijke vereisten, moet deze worden opgesplitst in afzonderlijke werk ruimten. |  |
 | Eigendom van gegevens | De grenzen van gegevens eigendom, bijvoorbeeld door dochter ondernemingen of gelieerde ondernemingen, worden beter afgebakend met afzonderlijke werk ruimten. |  |
@@ -37,7 +37,7 @@ U kunt het volledige voor deel van de Azure-Sentinel-ervaring krijgen wanneer u 
 | Gedetailleerd toegangs beheer voor gegevens | Een organisatie moet mogelijk verschillende groepen binnen of buiten de organisatie toestaan om toegang te krijgen tot een aantal van de gegevens die worden verzameld door Azure Sentinel. Bijvoorbeeld:<br><ul><li>Resource-eigen aren hebben toegang tot gegevens met betrekking tot hun resources</li><li>Regionale of subsidiaire SOCs toegang tot gegevens die relevant zijn voor hun delen van de organisatie</li></ul> | [Resource RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) of [tabel niveau RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) gebruiken |
 | Gedetailleerde instellingen voor retentie | In het verleden waren meerdere werk ruimten de enige manier om verschillende Bewaar perioden voor verschillende gegevens typen in te stellen. Dit is in veel gevallen niet langer nodig, dankzij de introductie van instellingen voor het bewaren van een tabel niveau. | Instellingen voor het [bewaren van tabel niveau](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) gebruiken of [gegevens verwijdering](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatiseren |
 | Facturering splitsen | Door werk ruimten in afzonderlijke abonnementen te plaatsen, kunnen ze worden gefactureerd aan verschillende partijen. | Gebruiks rapportage en cross-oplaad |
-| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een wille keurige ontwerp keuze zijn die kan worden aangepast om Azure Sentinel beter te maken.<br><br>Voorbeelden zijn:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werk ruimten opnieuw ontwerpen |
+| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een wille keurige ontwerp keuze zijn die kan worden aangepast om Azure Sentinel beter te maken.<br><br>Enkele voorbeelden:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werk ruimten opnieuw ontwerpen |
 
 ### <a name="managed-security-service-provider-mssp"></a>MSSP (Managed Security service provider)
 

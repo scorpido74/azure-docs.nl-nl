@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307196"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897571"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Tags toevoegen aan afbeeldingen in een labelproject 
 
@@ -111,7 +111,7 @@ Als uw project van het type 'Objectidentificatie (begrenzingsvakken)' is, geeft 
 1. Selecteer het hulpprogramma **Rechthoekig vak** ![hulpprogramma Rechthoekig vak](./media/how-to-label-images/rectangular-box-tool.png) of selecteer 'R'.
 3. Klik en versleep de cursor diagonaal over uw doel om een onbewerkt begrenzingsvak te maken. Als u het begrenzingsvak wilt aanpassen, versleept u de randen of de hoeken.
 
-![Schermopname met het maken van een basisbegrenzingsvak.](./media/how-to-label-images/bounding-box-sequence.png)
+![Begrenzingsvak maken](./media/how-to-label-images/bounding-box-sequence.png)
 
 Als u een begrenzingsvak wilt verwijderen, klikt u op het X-vormige doel dat naast het begrenzingsvak wordt weergegeven zodra het vak is gemaakt.
 

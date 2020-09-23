@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c260643d7d553e407d0758f286aac76c91ae08d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137685"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890368"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
@@ -24,7 +24,7 @@ ms.locfileid: "82137685"
   
 ## <a name="module-overview"></a>Module overzicht  
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
   
@@ -50,7 +50,7 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
     
     Deze optie is het beste als u al enigszins bekend bent met Neural Networks. U gebruikt de net # taal om de netwerk architectuur te definiëren.  
 
-##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Een Neural-netwerk model maken met behulp van de standaard architectuur
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a> Een Neural-netwerk model maken met behulp van de standaard architectuur
 
 1.  Voeg de **Neural-module netwerk regressie** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
   

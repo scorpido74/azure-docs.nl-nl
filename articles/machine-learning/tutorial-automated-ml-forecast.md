@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092278"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896690"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 In deze zelfstudie gebruikt u geautomatiseerde machine learning, of geautomatiseerde ML, in de Azure Machine Learning Studio om een prognosemodel voor tijdreeksen te maken om de huurvraag voor een service voor het delen van fietsen te voorspellen.
-
->[!IMPORTANT]
-> De automatische ML-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
 
 Voor een voorbeeld van een classificatiemodel, zie [zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
@@ -38,8 +35,8 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Enterprise Edition Azure Machine Learning-werkruimte. Als u geen werkruimte hebt, kunt u [een Enterprise Edition-werkruimte maken](how-to-manage-workspace.md). 
-    * Automatische machine learning in Azure Machine Learning Studio is alleen beschikbaar voor werkruimten in de Enterprise-editie. 
+* Een Azure Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md). 
+
 * Het gegevensbestand [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) downloaden
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Aan de slag met Azure Machine Learning Studio

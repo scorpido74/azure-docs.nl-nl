@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3080836e8b9ed38e99c691c66e71a4620829c90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84447557"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890214"
 ---
 # <a name="train-model-module"></a>Train model-module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een classificatie of regressie model te trainen. De training vindt plaats nadat u een model hebt gedefinieerd en de para meters hebt ingesteld, en dat gelabelde gegevens vereist. U kunt ook het **Train-model** gebruiken om een bestaand model opnieuw te trainen met nieuwe gegevens. 
 

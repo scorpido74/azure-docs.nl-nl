@@ -1,6 +1,6 @@
 ---
 title: Ontwerp van hybride identiteiten-beheer taken Azure | Microsoft Docs
-description: Met voorwaardelijk toegangs beheer controleert Azure Active Directory de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing wordt toegestaan. Zodra aan deze voor waarden wordt voldaan, wordt de gebruiker geverifieerd en krijgt deze toegang tot de toepassing.
+description: Azure AD controleert de specifieke voor waarden die u kiest bij het verifiëren van de gebruiker en voordat toegang tot de toepassing met voorwaardelijk toegangs beheer wordt toegestaan.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109389"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986523"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>De levens cyclus van hybride identiteit plannen
 Identiteit is een van de basis principes van uw bedrijfs mobiliteit en toegangs strategie voor toepassingen. Of u zich aanmeldt bij uw mobiele apparaat of SaaS-app, uw identiteit is de sleutel om toegang te krijgen tot alles. Op het hoogste niveau omvat een oplossing voor identiteits beheer samen voegen en synchroniseren tussen uw identiteits opslagplaatsen, waaronder het automatiseren en centraliseren van het proces van het inrichten van resources. De identiteits oplossing moet een gecentraliseerde identiteit in on-premises en Cloud zijn en ook een vorm van identiteits Federatie gebruiken om gecentraliseerde verificatie te onderhouden en veilig te delen en samen te werken met externe gebruikers en bedrijven. Bronnen variëren van besturings systemen en toepassingen tot mensen in of gekoppeld aan een organisatie. Organisatie structuur kan worden gewijzigd om het inrichtings beleid en de procedures te kunnen aanpassen.

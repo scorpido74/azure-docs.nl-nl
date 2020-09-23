@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986422"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -45,7 +45,7 @@ Ja. Raadpleeg dit [artikel](backup-azure-move-recovery-services-vault.md) als u 
 
 Nee. Back-upgegevens die zijn opgeslagen in een kluis, kunnen niet worden verplaatst naar een andere kluis.
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Kan ik na een back-up overschakelen van GRS naar LRS?
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>Kan ik de instelling voor opslag redundantie wijzigen na een back-up?
 
 Het type opslag replicatie is standaard ingesteld op geografisch redundante opslag (GRS). Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld en kan deze niet meer worden gewijzigd.
 

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Documentatie voor statische web-apps van Azure
-summary: Met statische web-apps van Azure kunt u JavaScript-webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
+summary: Met statische web-apps van Azure kunt u moderne webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
 metadata:
   title: Documentatie voor statische web-apps van Azure
-  description: Met statische web-apps van Azure kunt u JavaScript-webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
+  description: Met statische web-apps van Azure kunt u moderne webtoepassingen bouwen die automatisch wijzigingen in GitHub publiceren.
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: a72c9ab1dfcaf6fd95ac706bc0f0a7b8adb17c0f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528652"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90905349"
 landingContent:
 - title: Over statische web-apps
   linkLists:
@@ -54,6 +54,8 @@ landingContent:
       url: publish-vuepress.md
     - text: Publiceren vanuit Jekyll
       url: publish-jekyll.md
+    - text: Implementeren vanuit Blazor
+      url: deploy-blazor.md
     - text: Implementeren vanuit Next.js
       url: deploy-nextjs.md
     - text: Implementeren vanuit Nuxt.js

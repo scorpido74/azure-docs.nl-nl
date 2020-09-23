@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984868"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Managed instance met SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
 
@@ -141,7 +141,7 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
 
     De hostnaam van het open bare eind punt bevat de indeling <mi_name>. public. <dns_zone>. database.windows.net en dat de poort die voor de verbinding wordt gebruikt, 3342 is.  
 
-    ![catalogus-openbaar-eind punt](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![In de scherm opname wordt de installatie van de Integration runtime weer gegeven met Create S S I S-catalogus geselecteerd en het eind punt van de Catalog-database server](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. Selecteer Azure AD-verificatie wanneer van toepassing is.
 
@@ -157,7 +157,7 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
 
     Zie [een Azure SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie over het toevoegen van Azure-SSIS IR aan een virtueel netwerk.
 
-    ![lid worden van virtueel netwerk](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![Scherm afbeelding toont de geavanceerde instellingen voor Integration runtime Setup, waarin u een virtueel netwerk voor uw runtime kunt selecteren om lid te worden.](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 Zie [een Azure SSIS Integration runtime in azure Data Factory maken](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)voor meer informatie over het maken van een Azure-SSIS IR.
 

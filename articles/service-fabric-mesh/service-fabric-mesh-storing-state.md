@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984130"
 ---
 # <a name="state-management-with-service-fabric"></a>Status beheer met Service Fabric
 
@@ -22,7 +22,7 @@ Met Service Fabric net kunt u eenvoudig een nieuwe toepassing implementeren en d
 
 Containers maken vaak gebruik van tijdelijke schijven. Tijdelijke schijven zijn echter tijdelijk een nieuwe tijdelijke schijf en verliezen de informatie wanneer een container vastloopt. Het is ook lastig om informatie over tijdelijke schijven met andere containers te delen. Volumes zijn mappen die in de container instanties worden gekoppeld die u kunt gebruiken om de status te behouden. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf. De volume resource beschrijft hoe een directory moet worden gekoppeld en welke back-ups van opslag moet worden gebruikt. U kunt kiezen voor Azure file storage of Service Fabric volume schijf om gegevens op te slaan.
 
-![Volumes][image3]
+![In het diagram wordt de service weer gegeven, die naar volume doorloopt, die beide naar Service Fabric betrouw bare volume op een gerepliceerde lokale schijf en Azure Files volume in de netwerk opslag.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Betrouw bare volume Service Fabric
 

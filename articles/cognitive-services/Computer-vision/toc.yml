@@ -109,6 +109,22 @@
       href: concept-recognizing-text.md
     - name: Detectie van erotische inhoud
       href: concept-detecting-adult-content.md
+- name: Verantwoordelijke AI
+  items:
+    - name: Transparantienotitie
+      items:
+        - name: Inleiding tot ruimtelijke analyse
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+        - name: Kenmerken en beperkingen
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+    - name: 'Naleving, privacy en beveiliging'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+    - name: Verantwoordelijk gebruik in AI-implementatie
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+    - name: Richtlijnen voor het ontwerpen van openbaarmakingen
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+    - name: Inzichten onderzoeken
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
 - name: Containers
   items:
     - name: API-container lezen
@@ -125,6 +141,20 @@
         - name: Containerinstanties gebruiken
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+    - name: Ruimtelijke analyse-container
+      items:
+        - name: De hostcomputer instellen en de container uitvoeren
+          href: spatial-analysis-container.md
+        - name: Bewerkingen configureren
+          href: spatial-analysis-operations.md
+        - name: Een web-app voor het tellen van personen implementeren
+          href: Spatial-analysis-web-app.md
+        - name: Logboekregistratie en problemen oplossen
+          href: spatial-analysis-logging.md
+        - name: Zone- en regelplaatsing
+          href: spatial-analysis-zone-line-placement.md
+        - name: Cameraplaatsing
+          href: spatial-analysis-camera-placement.md
 - name: Instructiegidsen
   items:
     - name: De Computer Vision-API aanroepen

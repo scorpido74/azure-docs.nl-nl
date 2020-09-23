@@ -1,6 +1,6 @@
 ---
 title: 'Power shell-script: lijst met uitnodigingen voor Azure-gegevens delen die worden verzonden naar een consument | Microsoft Docs'
-description: Dit Power shell-script accepteert uitnodigingen van een bestaande gegevens share.
+description: Meer informatie over hoe dit Power shell-script uitnodigingen voor een consument ontvangt en een voor beeld van het script dat u kunt gebruiken.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 157b844afd9d59b6c03c7ae8585bc2182370d3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307155"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985616"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>Power shell gebruiken voor het ophalen van een uitnodiging voor een gegevens share
 

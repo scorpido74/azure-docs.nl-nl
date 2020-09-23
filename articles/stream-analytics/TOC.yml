@@ -4,8 +4,8 @@
   items:
     - name: Wat is een Stream Analytics?
       href: stream-analytics-introduction.md
-    - name: End-to-end-oplossingspatronen
-      href: stream-analytics-solution-patterns.md
+    - name: Stream Analytics-cluster
+      href: cluster-overview.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Een cluster maken
+      items:
+        - name: Azure Portal
+          href: create-cluster.md
 - name: Zelfstudies
   items:
     - name: 1 - Een taak maken/beheren
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Concepten
   items:
+    - name: End-to-end-oplossingspatronen
+      href: stream-analytics-solution-patterns.md
     - name: Een streaming analytics-technologie kiezen
       href: streaming-technologies.md
     - name: Een hulpprogramma voor taakontwikkeling kiezen
@@ -145,6 +151,14 @@
   items:
     - name: Beheren
       items:
+        - name: Clusters
+          items:
+            - name: Privé-eindpunten maken en verwijderen
+              href: private-endpoints.md
+            - name: Taken toevoegen en verwijderen
+              href: manage-jobs-cluster.md
+            - name: Schaalgrootte cluster aanpassen
+              href: scale-cluster.md
         - name: Taken automatisch schalen
           href: stream-analytics-autoscale.md
         - name: Referenties bijwerken
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Exporteren en implementeren met Azure Resource Manager
           href: resource-manager-export.md
+    - name: Continue integratie en implementatie
+      items:
+        - name: Overzicht van CI/CD
+          href: cicd-overview.md
+        - name: 'Bouwen, testen en implementeren met PowerShell'
+          href: cicd-tools.md
+        - name: Een pijplijn instellen met Azure DevOps
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Hulpprogramma's installeren
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: Query's oplossen met een taakdiagram
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: Een CI/CD-pijplijn instellen
-          href: setup-cicd-vs-code.md
         - name: Taken verkennen
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json-velden

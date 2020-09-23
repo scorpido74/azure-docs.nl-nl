@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/03/2020
-ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897391"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning resources beheren met de extensie VS (preview)
 
@@ -44,7 +44,6 @@ Zie [werk ruimten](concept-workspace.md)voor meer informatie.
     1. Kies uw Azure-abonnement
     1. Kies of maak een nieuwe resource groep om de werk ruimte in te richten
     1. Selecteer de locatie waar de werk ruimte moet worden ingericht.
-    1. Kies tussen de *Basic* -en *Enter prise* -editie. Meer informatie over de verschillende [Azure machine learning-edities](concept-editions.md).
 
 Alternatieve methoden voor het maken van een werk ruimte zijn onder andere:
 

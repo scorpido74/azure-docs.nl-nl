@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456060"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905272"
 ---
 # <a name="permutation-feature-importance"></a>Belang van permutatiefunctie
 
-In dit artikel wordt beschreven hoe u de permutatie functie urgentie module in Azure Machine Learning Designer (preview) gebruikt om een aantal score punten van de functie voor uw gegevensset te berekenen. U kunt deze scores gebruiken om u te helpen bij het bepalen van de beste functies die in een model moeten worden gebruikt.
+In dit artikel wordt beschreven hoe u de permutatie functie urgentie module in Azure Machine Learning Designer gebruikt voor het berekenen van een aantal belang rijke scores voor de functie van uw gegevensset. U kunt deze scores gebruiken om u te helpen bij het bepalen van de beste functies die in een model moeten worden gebruikt.
 
 In deze module worden functie waarden wille keurig in de andere volg orde, één kolom per keer. De prestaties van het model worden vóór en na gemeten. U kunt een van de standaard metrische gegevens kiezen om prestaties te meten.
 

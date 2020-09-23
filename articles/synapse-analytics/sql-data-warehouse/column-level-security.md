@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208090"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986215"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolom niveau
 
@@ -28,9 +28,9 @@ Omdat deze video is gepost, is [beveiliging op rijniveau](/sql/relational-databa
 
 Beveiliging op kolom niveau vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing, zodat u kolom toegang kunt beperken voor het beveiligen van gevoelige gegevens. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer gegevens toegang vanuit een wille keurige laag wordt uitgevoerd. Deze beperking zorgt ervoor dat uw beveiliging betrouwbaarder en robuuster wordt door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert beveiliging op kolom niveau ook de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.
 
-U kunt beveiliging op kolom niveau implementeren met de instructie [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Met dit mechanisme worden de authenticatie van SQL en Azure Active Directory (AAD) ondersteund.
+U kunt beveiliging op kolom niveau implementeren met de instructie [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Bij dit mechanisme worden de verificatie van SQL-en Azure Active Directory (Azure AD) ondersteund.
 
-![compatibiliteit](./media/column-level-security/cls.png)
+![Diagram toont een schematische tabel met de eerste kolom met een gesloten hang slot en de cellen in een oranje kleur terwijl de andere kolommen witte cellen zijn.](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntax
 

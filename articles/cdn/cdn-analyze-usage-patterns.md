@@ -1,6 +1,6 @@
 ---
 title: Kern rapporten van Verizon | Microsoft Docs
-description: 'U kunt gebruiks patronen voor uw CDN weer geven met behulp van de volgende rapporten: band breedte, verzonden gegevens, treffers, cache status, verhouding van cache treffers, IPV4/IPV6-gegevens overgedragen.'
+description: Meer informatie over het openen en weer geven van Verizon-kern rapporten via de profielen portal voor Verizon beheren.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888441"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985545"
 ---
 # <a name="core-reports-from-verizon"></a>Kernrapporten van Verizon
 
@@ -77,7 +77,7 @@ In dit rapport wordt de distributie van aanvraag status codes voor uw inhoud bes
 In dit rapport wordt de distributie van cache treffers en cache missers voor client aanvragen beschreven. Omdat de snelste prestaties resultaten van cache treffers zijn, kunt u de snelheid van de gegevens levering optimaliseren door cache missers en verlopen cache treffers te minimaliseren. 
 
 Als u de cache missers wilt verkleinen, configureert u de bron server zo dat het gebruik van het volgende wordt geminimaliseerd: 
- * `no-cache`antwoord headers
+ * `no-cache` antwoord headers
  * Query-teken reeks cache, tenzij strikt nood zakelijk  
  * Niet-cachebaar antwoord codes
 
