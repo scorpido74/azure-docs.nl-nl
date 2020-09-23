@@ -1,17 +1,17 @@
 ---
 title: Uw Log Analytics dashboard visualisaties bijwerken
-description: Query's die u kunt starten en wijzigen voor uw behoeften
+description: Meer informatie over het bijwerken van uw Log Analytics dashboard visualisaties met query's waarmee u krachtige inzichten kunt krijgen.
 ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505768"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988251"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Uw Log Analytics dashboard visualisaties bijwerken
 
@@ -62,7 +62,7 @@ Nadat de visualisaties zijn bijgewerkt, moet u het dash board opnieuw publiceren
 
 Nadat een eerste aanmeldings periode is afgelopen, zal het Log Analytics team alle Dash boards in het systeem bijwerken. Met het uitlijnen van alle Azure-Dash boards kan het team meer visualisaties maken en verbeteringen op het bord ervaren.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 Log Analytics visualisaties die zijn vastgemaakt aan een dash board, hebben een specifiek gedrag dat is ontworpen voor een optimale ervaring. Bekijk de volgende aandachtspunten bij het vastmaken van een visualisatie aan een dash board.
 

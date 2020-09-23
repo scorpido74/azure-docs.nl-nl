@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905741"
+ms.locfileid: "90988074"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -361,6 +361,17 @@ Dit zijn de details:
 * Telemetrie wordt ook gepusht naar het micro soft/Azure-abonnement.
 
 [![Werk stroom afwijzen](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>Naleving controleren en beheren
+
+[Azure Policy](/azure/governance/policy) is een beheer programma waarmee u ervoor kunt zorgen dat Azure-resources voldoen aan uw beleid. Met Azure Machine Learning kunt u de volgende beleids regels toewijzen:
+
+* Door de **klant beheerde sleutel**: controleren of afdwingen of werk ruimten een door de klant beheerde sleutel moeten gebruiken.
+* **Privé-koppeling**: controleren of werk ruimten een persoonlijk eind punt gebruiken om te communiceren met een virtueel netwerk.
+
+Raadpleeg de [Azure Policy documentatie](/azure/governance/policy/overview)voor meer informatie over Azure Policy.
+
+Zie [naleving controleren en beheren met Azure Policy](how-to-integrate-azure-policy.md)voor meer informatie over het beleid dat specifiek is voor Azure machine learning.
 
 ## <a name="next-steps"></a>Volgende stappen
 
