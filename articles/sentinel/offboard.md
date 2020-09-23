@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885834"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Azure-Sentinel uit uw werk ruimte verwijderen
 
-Als u de Azure-Sentinel niet meer wilt gebruiken, wordt in dit artikel uitgelegd hoe u het kunt verwijderen uit uw werk ruimte.
+Als u Azure Sentinel niet meer wilt gebruiken, wordt in dit artikel uitgelegd hoe u het kunt verwijderen uit uw werk ruimte.
 
 ## <a name="how-to-remove-azure-sentinel"></a>Azure Sentinel verwijderen
 
@@ -48,13 +48,13 @@ Nadat de verbinding is vastgesteld, wordt het offboarding-proces gestart.
 
 -   AWS
 
--   Beveiligings waarschuwingen van micro soft-Services: micro soft Defender for Identity (*voorheen Azure ATP*), Microsoft Cloud App Security inclusief Cloud Discovery Shadow it reporting, Azure AD Identity Protection, micro soft Defender voor eind punt (*voorheen micro soft Defender ATP*), Azure Defender (*voorheen Azure Security Center*)
+-   Beveiligings waarschuwingen van micro soft-Services: micro soft Defender for Identity (*voorheen Azure ATP*), Microsoft Cloud App Security inclusief Cloud Discovery Shadow it reporting, Azure AD Identity Protection, micro soft Defender voor eind punt (*voorheen micro soft Defender ATP*), Azure defender-waarschuwingen van Azure Security Center
 
 -   Bedreigingsinformatie
 
--   Algemene beveiligings Logboeken (met inbegrip van CEF-logboeken, Barracuda en syslog) (als u Azure Defender hebt, worden deze logboeken nog steeds verzameld.)
+-   Veelvoorkomende beveiligings Logboeken (inclusief op CEF gebaseerde logboeken, Barracuda en syslog) (als u Azure Defender-waarschuwingen van Azure Security Center ontvangt, worden deze logboeken nog steeds verzameld.)
 
--   Windows-beveiligings gebeurtenissen (als u Azure Defender hebt, worden deze logboeken nog steeds verzameld.)
+-   Windows-beveiligings gebeurtenissen (als u Azure Defender-waarschuwingen van Azure Security Center ontvangt, worden deze logboeken nog steeds verzameld.)
 
 Binnen de eerste 48 uur zijn de gegevens-en analytische regels (inclusief realtime-automatiserings configuratie) niet langer toegankelijk of kunnen ze niet meer worden opgevraagd in azure Sentinel.
 

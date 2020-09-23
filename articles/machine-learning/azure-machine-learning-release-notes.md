@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 245b977e0aeda3df933b6ab4b27735264444c4df
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659169"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886420"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -22,6 +22,54 @@ In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
 
+## <a name="2020-09-21"></a>2020-09-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1140"></a>Azure Machine Learning SDK voor python v-1.14.0
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **Azure-cli-ml**
+    + Raster profilering verwijderd uit de SDK en wordt niet meer ondersteund.
+  + **azureml-accel-models**
+    + het pakket voor azureml-accel.-modellen ondersteunt nu tensor Flow 2. x
+  + **azureml-automl-core**
+    + Fout afhandeling toegevoegd in get_output voor gevallen waarin lokale versies van Pandas/sklearn niet overeenkomen met de toepassingen die tijdens de training worden gebruikt
+  + **azureml-automl-runtime**
+    + Er is een fout opgelost waarbij AutoArima-iteraties mislukken met een PredictionException en het bericht: ' er is een stille fout opgetreden tijdens de voor spelling '.
+  + **azureml-cli-algemeen**
+    + Raster profilering verwijderd uit de SDK en wordt niet meer ondersteund.
+  + **azureml-contrib-server**
+    + Update beschrijving van de pagina pakket voor pypi overzicht.
+  + **azureml-core**
+    + Raster profilering verwijderd uit de SDK en wordt niet meer ondersteund.
+    + Verminder het aantal fout berichten wanneer het ophalen van werk ruimten mislukt.
+    + Geen waarschuwing weer geven als meta gegevens niet worden opgehaald
+    + Nieuwe Kusto-stap en Kusto Compute-doel.
+    + Document bijwerken voor SKU-para meter. Verwijder de SKU in de werk ruimte-update functionaliteit in CLI en SDK.
+    + Update beschrijving van de pagina pakket voor pypi overzicht.
+    + Bijgewerkte documentatie voor AzureML-omgevingen.
+    + Services Managed resources-instellingen voor de AML-werk ruimte in SDK beschikbaar maken.
+  + **azureml-dataprep**
+    + Machtiging voor uitvoeren inschakelen voor bestanden voor gegevensset-koppeling.
+  + **azureml-mlflow**
+    + Bijgewerkte voor beelden van AzureML MLflow-documentatie en-notebooks 
+    + Nieuwe ondersteuning voor MLflow-projecten met AzureML-back-end
+    + Ondersteuning voor MLflow-model register
+    + Toegevoegde RBAC-ondersteuning voor AzureML-MLflow-bewerkingen 
+    
+  + **azureml-pipeline-core**
+    + De documentatie van de methoden PipelineOutputFileDataset. parse_ * is verbeterd.
+    + Nieuwe Kusto-stap en Kusto Compute-doel.
+    + De gegeven Swaggerurl-eigenschap voor pijplijn entiteit via die gebruiker kan de schema definitie voor het gepubliceerde pipeline-eind punt zien.
+  + **azureml-pipeline-steps**
+    + Nieuwe Kusto-stap en Kusto Compute-doel.
+  + **azureml-telemetry**
+    + Update beschrijving van de pagina pakket voor pypi overzicht.
+  + **azureml-trainen**
+    + Update beschrijving van de pagina pakket voor pypi overzicht.
+  + **azureml-train-automl-client**
+    + Fout afhandeling toegevoegd in get_output voor gevallen waarin lokale versies van Pandas/sklearn niet overeenkomen met de toepassingen die tijdens de training worden gebruikt
+  + **azureml-train-core**
+    + Update beschrijving van de pagina pakket voor pypi overzicht.
+    
 ## <a name="2020-08-31"></a>2020-08-31
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Azure Machine Learning SDK voor python v-1.13.0
@@ -592,9 +640,9 @@ U kunt nu machine learning-notitie blokken en bestanden rechtstreeks maken, bewe
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
     
-| Webgebaseerd hulp programma  |     Beschrijving  | Editie | 
-|---|---|---|
-| Azure ML Studio-notebooks   |     Eerste in-class ontwerpen voor notebook-bestanden en biedt ondersteuning voor alle bewerkingen die beschikbaar zijn in de Azure ML python SDK. | Basis & Enter prise  |   
+| Webgebaseerd hulp programma  |     Description  |
+|---|---|
+| Azure ML Studio-notebooks   |     Eerste in-class ontwerpen voor notebook-bestanden en biedt ondersteuning voor alle bewerkingen die beschikbaar zijn in de Azure ML python SDK. | 
 
 ## <a name="2020-04-27"></a>2020-04-27
 
@@ -1051,7 +1099,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 ### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK voor python v-1.0.74
 
   + **Preview-functies**
-    + **azureml-contrib-DataSet**
+    + **azureml-contrib-dataset**
       + Nadat u azureml-contrib-dataset hebt geïmporteerd, kunt u `Dataset.Labeled.from_json_lines` in plaats van `._Labeled` een gegevensset met een label maken een aanroep uit te voeren.
       + Wanneer `to_pandas_dataframe` u een gegevensset met een label met de optie downloaden aanroept, kunt u nu opgeven of bestaande bestanden moeten worden overschreven.
       + Bij het aanroepen `keep_columns` of `drop_columns` dat resulteert in een time series-, label-of image-kolom die wordt neergezet, worden de bijbehorende mogelijkheden ook voor de gegevensset verwijderd.
@@ -1098,17 +1146,17 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
 
 ### <a name="web-experience"></a>Webervaring
 
-De landings pagina voor de werk ruimte voor samen werking op [https://ml.azure.com](https://ml.azure.com) is verbeterd en opnieuw ingesteld als Azure machine learning Studio (preview).
+De landings pagina van de werk ruimte voor samen werking op [https://ml.azure.com](https://ml.azure.com) is verbeterd en is opnieuw ingesteld als Azure machine learning Studio.
 
 Vanuit de Studio kunt u Azure Machine Learning assets trainen, testen, implementeren en beheren, zoals gegevens sets, pijp lijnen, modellen, eind punten en meer.
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
 
-| Webgebaseerd hulp programma | Beschrijving | Editie |
+| Webgebaseerd hulp programma | Description | 
 |-|-|-|
-| VM van notebook (preview-versie) | Volledig beheerd werk station in de Cloud | Basis & Enter prise |
-| [Automatische machine learning](tutorial-first-experiment-automated-ml.md) (preview-versie) | Geen code-ervaring voor het automatiseren van de ontwikkeling van machine learning modellen | Enterprise |
-| [Designer](concept-designer.md) (preview-versie) | Hulp programma voor machine learning model leren met slepen en neerzetten, voorheen bekend als de ontwerp functie | Enterprise |
+| VM van notebook (preview-versie) | Volledig beheerd werk station in de Cloud | 
+| [Automatische machine learning](tutorial-first-experiment-automated-ml.md) (preview-versie) | Geen code-ervaring voor het automatiseren van de ontwikkeling van machine learning modellen | 
+| [Designer](concept-designer.md) | Hulp programma voor het machine learning modellen model slepen en neerzetten voorheen bekend als de visuele interface | 
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Verbeteringen in Azure Machine Learning Designer
@@ -1146,7 +1194,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
   + **Preview-functies**
     + We geven preview-ondersteuning uit voor schijf versleuteling van uw lokale SSD in Azure Machine Learning compute. Verhoog het technische ondersteunings ticket om uw abonnement in staat te stellen deze functie te gebruiken.
     + Open bare preview van Azure Machine Learning batch deinterferentie. Azure Machine Learning batch-demijner doelen verkleint grote interferentie taken die niet tijd gevoelig zijn. Batch-demijnen bieden rendabele berekenings berekeningen, met een niet-parallelle door Voer voor asynchrone toepassingen. De oplossing is geoptimaliseerd voor een hoge door Voer, brand-en-vergeet om grote verzamelingen gegevens te deactiveren.
-    + [**azureml-contrib-DataSet**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
+    + [**azureml-contrib-dataset**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + Ingeschakelde functionaliteiten voor gegevensset met labels
         ```Python
         import azureml.core

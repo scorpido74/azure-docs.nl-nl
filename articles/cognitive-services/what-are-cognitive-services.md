@@ -5,23 +5,31 @@ description: Azure Cognitive Services zijn cloudservices met REST API's en clien
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: cognitive services, cognitieve intelligentie, cognitieve services, AI als een service, cognitieve oplossingen, cognitieve kunstmatige intelligentie, cognitieve software, AI-services, cognitieve AI, cognitieve inzichten
+keywords: Cognitive Services, cognitieve intelligentie, cognitieve oplossingen, AI-services, cognitieve inzichten, cognitieve functies
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381286"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894433"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Wat zijn Azure Cognitive Services?
 
-Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligente toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen. Het doel van Azure Cognitive Services is ontwikkelaars te helpen met het maken van toepassingen die kunnen zien, horen, spreken, begrijpen en zelfs beginnen te redeneren. De services binnen Azure Cognitive Services kunnen worden onderverdeeld in vijf hoofdcategorieën: visie, spraak, taal, webzoekopdrachten en besluitvorming.
+Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligentie in toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
+
+De catalogus met AI-services, die cognitieve intelligentie bieden, is onderverdeeld in vijf hoofdcategorieën:
+
+* Vision
+* Speech
+* Taal
+* Webpagina's zoeken
+* Besluit
 
 De huidige lijst met nieuwe documentatie is beschikbaar op [Wat is er nieuw in Cognitive Services-documenten](whats-new-docs.md).
 
@@ -80,7 +88,17 @@ De huidige lijst met nieuwe documentatie is beschikbaar op [Wat is er nieuw in C
 |:-----------|:------------------|
 |[Anomaliedetectie](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (preview)|Met anomaliedetectie kunt u afwijkingen in uw tijdreeksgegevens controleren en detecteren.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator controleert mogelijk aanstootgevende, ongewenste en riskant inhoud.|
+|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (preview) | Metrics Advisor bevat functies als aangepaste anomaliedetectie voor uiteenlopende tijdreeksgegevens en een volledig uitgeruste webportal om u te helpen bij het gebruik van de service.
 |[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Met Personalizer kunt u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.|
+
+## <a name="learn-with-the-quickstarts"></a>Leren met behulp van quickstarts
+
+Leer meer over het maken van een Cognitive Services-resource met praktische quickstarts, met behulp van de:
+
+* [Azure-portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure Portal")
+* [Azure-CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK-clientbibliotheken](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [ARM-sjablonen (Azure Resource Manager)](resource-manager-template.md?tabs=portal "ARM-sjablonen (Azure Resource Manager)")
 
 ## <a name="subscription-management"></a>Abonnementsbeheer
 
@@ -119,6 +137,9 @@ Ga naar het [Vertrouwenscentrum](https://servicetrust.microsoft.com/ "Vertrouwen
 ## <a name="support"></a>Ondersteuning
 
 Cognitive Services bieden verschillende [ondersteuningsopties](cognitive-services-support-options.md "ondersteuningsopties").
+
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

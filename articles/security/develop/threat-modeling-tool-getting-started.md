@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539897"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980471"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Aan de slag met de Threat Modeling Tool
 
@@ -97,7 +97,7 @@ Ricardo begint met het selecteren van het eerste item in de lijst. Wat gebeurt e
 
 Ten eerste is de interactie tussen de twee stencils verbeterd
 
-![Interactie](./media/threat-modeling-tool-getting-started/interaction.png)
+![In de scherm opname ziet u twee stencils en de gekromde pijl waarmee ze worden verbonden met een dikker gewicht lijn.](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Ten tweede wordt er meer informatie over de bedreiging weer gegeven in de dreiging venster Eigenschappen
 

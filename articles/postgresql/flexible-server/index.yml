@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Documentatie voor flexibele server (preview)
+summary: Azure Database for PostgreSQL Flexibele server (preview) is een volledig beheerde Database as a Service van PostgreSQL die bedrijfskritische workloads kan verwerken met voorspelbare prestaties en dynamische schaalbaarheid. Ontwikkel toepassingen met Azure Database for PostgreSQL met behulp van open-source hulpprogramma's en een platform naar keuze. Leer hoe u Flexibele servers gebruikt met onze quickstarts, zelfstudies en voorbeelden.
+metadata:
+  title: Azure Database for PostgreSQL - Flexible server (preview)
+  description: Azure Database for PostgreSQL Flexibele server (preview) is een relationele databaseservice in de Microsoft-cloud die is gebouwd voor ontwikkelaars op basis van de PostgreSQL-communityversie.
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/22/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 7c214662a37083708b0a38148382e16b553145c4
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928867"
+landingContent:
+- title: About Flexible server (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Flexibele server?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Een flexibele server maken
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Een Django-app maken met flexibele server
+      url: tutorial-django-app-service-postgres.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Opties voor rekenkracht en opslag
+      url: concepts-compute-storage.md
+    - text: Netwerken
+      url: concepts-networking.md
+    - text: Postgres-versies
+      url: concepts-supported-versions.md
+    - text: Extensies
+      url: concepts-extensions.md
+    - text: Controleren
+      url: concepts-monitoring.md
+    - text: Logische replicatie
+      url: concepts-logical.md
+  - linkListType: how-to-guide
+    links:
+    - text: Server beheren
+      url: how-to-manage-server-portal.md
+    - text: Server stoppen/starten
+      url: how-to-stop-start-server-portal.md
+    - text: Omhoog schalen
+      url: how-to-scale-compute-storage-portal.md
+    - text: Een server opnieuw opstarten
+      url: how-to-restart-server-portal.md
+    - text: Logboeken configureren en openen
+      url: howto-configure-and-access-logs.md
+    - text: Onderhoud plannen
+      url: how-to-maintenance-portal.md
+- title: Bedrijfscontinuïteit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht voor bedrijfscontinuïteit
+      url: concepts-business-continuity.md
+    - text: Hoge beschikbaarheid
+      url: concepts-high-availability.md
+    - text: Back-ups en herstellen
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hoge beschikbaarheid beheren
+      url: how-to-manage-high-availability-portal.md
+    - text: Een server terugzetten
+      url: how-to-restore-server-portal.md
+- title: Verbinding maken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verbinding maken met Python
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: Een web-app in een virtueel netwerk verbinden
+      url: tutorial-webapp-server-vnet.md
+- title: Migreren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een database migreren met pg_dump en pg_restore
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: Online migreren
+      url: ../howto-migrate-online.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
+      url: /cli/azure/postgres
+    - text: Naslaginformatie voor REST API-ontwikkelaars
+      url: /rest/api/postgresql/
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

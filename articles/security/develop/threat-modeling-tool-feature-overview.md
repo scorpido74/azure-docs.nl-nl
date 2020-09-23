@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539999"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980681"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Overzicht van Threat Modeling Tool-functies
 
@@ -54,7 +54,7 @@ De symbolen zijn snelkoppelingen voor de menu's op het hoogste niveau:
 | --------------------------------------- | ------------ |
 | **Openen** | Hiermee opent u een nieuw bestand. |
 | **Opslaan** | Hiermee slaat u het huidige bestand. |
-| **Ontwerp** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
+| **Ontwerpen** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
 | **Analyseren** | Toont gegenereerde bedreigingen en hun eigenschappen. |
 | **Diagram toevoegen** | Hiermee voegt u een nieuw diagram toe (vergelijkbaar met nieuwe tabbladen in Excel). |
 | **Diagram verwijderen** | Hiermee verwijdert u het huidige diagram. |
@@ -83,8 +83,8 @@ Op basis van de sjabloon die u selecteert, vindt u alle beschik bare stencils di
 | --------------------------------------- | ------------ |
 | **Proces** | Toepassingen, invoeg toepassingen voor browsers, threads, virtuele machines |
 | **Externe interactie** | Verificatie providers, browsers, gebruikers, webtoepassingen |
-| **Gegevens archief** | Cache, opslag, configuratie bestanden, data bases, REGI ster |
-| **Gegevens stroom** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, named pipe, RPC/DCOM, SMB, UDP |
+| **Gegevensarchief** | Cache, opslag, configuratie bestanden, data bases, REGI ster |
+| **Gegevensstroom** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, named pipe, RPC/DCOM, SMB, UDP |
 | **Grens lijn/rand vertrouwen** | Bedrijfs netwerken, Internet, computer, sandbox, gebruikers-en kernelmodus-modus |
 
 ### <a name="notesmessages"></a>Opmerkingen/berichten
@@ -122,7 +122,7 @@ Beweeg de muis aanwijzer over **Open een model** om twee opties weer te geven: *
 
 Wanneer u **feedback, suggesties en problemen**selecteert, gaat u naar het MSDN-forum voor sdl-hulpprogram ma's. U kunt lezen wat andere mensen zeggen over het hulp programma, met inbegrip van tijdelijke oplossingen en nieuwe ideeën.
 
-![Feedback](./media/threat-modeling-tool-feature-overview/feedback.png)
+![In de scherm afbeelding ziet u een knop met de tekst feedback, suggesties en problemen.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Ontwerpweergave
 
@@ -158,9 +158,9 @@ U kunt elementen op twee manieren verbinden:
 
 Als u een bedreigings model maakt en verg eten bent om gegevens stromen naar elementen te koppelen, krijgt u een melding. U kunt het bericht negeren of u kunt de instructies volgen om het probleem op te lossen. 
 
-![Berichten](./media/threat-modeling-tool-feature-overview/messages.png)
+![Scherm afbeelding toont een bedreigings model connector dat niet is verbonden met elementen, met het bericht dat dit probleem veroorzaakt.](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Opmerkingen
+### <a name="notes"></a>Notities
 
 Als u notities wilt toevoegen aan uw diagram, gaat u naar het tabblad **notities** van het tabblad **berichten** .
 
@@ -178,7 +178,7 @@ Wanneer u een bedreiging selecteert, kunt u drie afzonderlijke functies gebruike
 | --------------------------------------- | ------------ |
 | **Indicator lezen** | <p>De dreiging is gemarkeerd als gelezen. Hiermee kunt u bijhouden welke items u hebt bekeken.</p><p>![Indicator voor lezen/lezen](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interactie focus** | <p>De interactie in het diagram dat bij een bedreiging hoort, is gemarkeerd.</p><p>![Interactie focus](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Bedreigings eigenschappen** | <p>Meer informatie over de bedreiging wordt weer gegeven in het venster **bedreigings eigenschappen** .</p><p>![Bedreigings eigenschappen](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Bedreigingseigenschappen** | <p>Meer informatie over de bedreiging wordt weer gegeven in het venster **bedreigings eigenschappen** .</p><p>![Bedreigingseigenschappen](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Prioriteit wijzigen
 
@@ -190,13 +190,13 @@ U kunt het prioriteits niveau van elke gegenereerde bedreiging wijzigen. Met ver
 
 Zoals in de voor gaande afbeelding wordt weer gegeven, kunt u de gegevens wijzigen die door het hulp programma worden gegenereerd. U kunt ook informatie toevoegen aan bepaalde velden, zoals uitvulling. Deze velden worden gegenereerd door de sjabloon. Als u meer informatie voor elke dreiging nodig hebt, kunt u wijzigingen aanbrengen.
 
-![Bedreigings eigenschappen](./media/threat-modeling-tool-feature-overview/threatproperties.png)
+![Bedreigingseigenschappen](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Rapporten
 
 Nadat u de prioriteiten hebt gewijzigd en de status van elke gegenereerde bedreiging hebt bijgewerkt, kunt u het bestand opslaan en/of een rapport afdrukken. Ga naar **rapport**  >  **volledig rapport maken**. Geef het rapport een naam en ziet er ongeveer als volgt uit:
 
-![Rapport](./media/threat-modeling-tool-feature-overview/report.png)
+![Scherm afbeelding toont een voor beeld van een bedreigings model rapport, met inbegrip van een samen vatting, diagrammen en andere informatie.](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

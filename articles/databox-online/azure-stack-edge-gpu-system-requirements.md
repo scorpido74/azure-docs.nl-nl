@@ -1,6 +1,6 @@
 ---
-title: Systeem vereisten voor Microsoft Azure Stack Edge | Microsoft Docs
-description: Meer informatie over de software-en netwerk vereisten voor uw Azure Stack Edge
+title: Systeem vereisten voor Microsoft Azure Stack Edge Pro | Microsoft Docs
+description: Meer informatie over de software-en netwerk vereisten voor uw Azure Stack Edge Pro
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899153"
 ---
-# <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>Systeem vereisten voor Azure Stack Edge met GPU 
+# <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systeem vereisten voor Azure Stack Edge Pro met GPU 
 
-In dit artikel worden de belangrijkste systeem vereisten voor uw Microsoft Azure Stack EDGE-oplossing en voor de clients die verbinding maken met Azure Stack Edge beschreven. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Azure Stack Edge implementeert. U kunt deze informatie naar behoefte terugsturen tijdens de implementatie en de volgende bewerking.
+In dit artikel worden de belangrijkste systeem vereisten beschreven voor uw Microsoft Azure Stack Edge Pro-oplossing en voor de clients die verbinding maken met Azure Stack Edge Pro. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Azure Stack Edge Pro implementeert. U kunt deze informatie naar behoefte terugsturen tijdens de implementatie en de volgende bewerking.
 
-De systeem vereisten voor de Azure Stack Edge zijn onder andere:
+De systeem vereisten voor de Azure Stack Edge Pro zijn onder andere:
 
 - **Software vereisten voor hosts** : beschrijft de ondersteunde platforms, browsers voor de lokale configuratie-UI, SMB-clients en eventuele aanvullende vereisten voor de clients die toegang hebben tot het apparaat.
 - **Netwerk vereisten voor het apparaat** : bevat informatie over eventuele netwerk vereisten voor de werking van het fysieke apparaat.
@@ -59,9 +59,9 @@ Bij het beheer van Azure Stack worden de volgende gelaagde opslag accounts onder
 
 ## <a name="networking-port-requirements"></a>Vereisten voor netwerk poort
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Poort vereisten voor Azure Stack Edge
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Poort vereisten voor Azure Stack Edge Pro
 
-De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om SMB-, Cloud-of beheer verkeer toe te staan. In deze tabel verwijst *naar* of *binnenkomend* naar de richting waarin de inkomende client toegang tot uw apparaat vraagt. *Out* of *uitgaand* verwijst naar de richting waarin uw Azure stack edge-apparaat gegevens extern verzendt, bijvoorbeeld uitgaand naar Internet.
+De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om SMB-, Cloud-of beheer verkeer toe te staan. In deze tabel verwijst *naar* of *binnenkomend* naar de richting waarin de inkomende client toegang tot uw apparaat vraagt. *Out* of *uitgaand* verwijst naar de richting waarin uw Azure stack Edge Pro-apparaat gegevens extern verzendt, bijvoorbeeld uitgaand naar Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -79,9 +79,9 @@ Voor volledige informatie gaat u naar de [firewall-en poort configuratie regels 
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-patronen voor firewall regels
 
-Netwerk beheerders kunnen regel matig geavanceerde firewall regels configureren op basis van de URL-patronen om het binnenkomende en uitgaande verkeer te filteren. Uw Azure Stack edge-apparaat en de service zijn afhankelijk van andere micro soft-toepassingen, zoals Azure Service Bus, Azure Active Directory Access Control, opslag accounts en Microsoft Update servers. De URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gebruikt voor het configureren van firewall regels. Het is belang rijk te weten dat de URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gewijzigd. Deze wijzigingen vereisen dat de netwerk beheerder firewall regels bewaken en bijwerkt voor uw Azure Stack rand als dat nodig is.
+Netwerk beheerders kunnen regel matig geavanceerde firewall regels configureren op basis van de URL-patronen om het binnenkomende en uitgaande verkeer te filteren. Uw Azure Stack Edge Pro-apparaat en de service zijn afhankelijk van andere micro soft-toepassingen, zoals Azure Service Bus, Azure Active Directory Access Control, opslag accounts en Microsoft Update servers. De URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gebruikt voor het configureren van firewall regels. Het is belang rijk te weten dat de URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gewijzigd. Deze wijzigingen vereisen dat de netwerk beheerder firewall regels voor uw Azure Stack Edge Pro kan controleren en bijwerken als dat nodig is.
 
-We raden u aan de firewall regels voor uitgaand verkeer in te stellen, op basis van Azure Stack rand vaste IP-adressen in de meeste gevallen. U kunt echter de onderstaande informatie gebruiken om geavanceerde firewall regels in te stellen die nodig zijn om beveiligde omgevingen te maken.
+We raden u aan de firewall regels voor uitgaand verkeer in te stellen, op basis van Azure Stack Edge Pro vaste IP-adressen in de meeste gevallen. U kunt echter de onderstaande informatie gebruiken om geavanceerde firewall regels in te stellen die nodig zijn om beveiligde omgevingen te maken.
 
 > [!NOTE]
 > - De IP-adressen van het apparaat moeten altijd worden ingesteld op alle netwerk interfaces die zijn ingeschakeld voor de Cloud.
@@ -117,7 +117,7 @@ We raden u aan de firewall regels voor uitgaand verkeer in te stellen, op basis 
 
 ## <a name="compute-sizing-considerations"></a>Overwegingen bij reken grootte
 
-Gebruik uw ervaring bij het ontwikkelen en testen van uw oplossing om ervoor te zorgen dat er voldoende capaciteit is op uw Azure Stack edge-apparaat. u krijgt de optimale prestaties van uw apparaat.
+Gebruik uw ervaring bij het ontwikkelen en testen van uw oplossing om ervoor te zorgen dat u over voldoende capaciteit beschikt op uw Azure Stack Edge Pro-apparaat en u beschikt over de optimale prestaties van uw apparaat.
 
 Denk hierbij aan de volgende factoren:
 
@@ -137,8 +137,8 @@ Als u de prestaties van uw oplossing wilt begrijpen en verfijnen, kunt u het vol
 - De metrische reken gegevens die beschikbaar zijn in de Azure Portal. Ga naar uw Azure Stack Edge-resource en ga vervolgens naar **bewaking > metrische gegevens**. Bekijk de **Edge Compute-Memory Usage** en **Edge Compute-percentage CPU** om inzicht te krijgen in de beschik bare bronnen en hoe de bronnen worden gebruikt.
 - Als u Compute-modules wilt bewaken en oplossen, gaat u naar [debug Kubernetes issues](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge).
 
-Ten slotte moet u ervoor zorgen dat u uw oplossing valideert op uw gegevensset en de prestaties van Azure Stack Edge te kwantificeren voordat u de implementatie in productie neemt.
+Ten slotte moet u ervoor zorgen dat u uw oplossing valideert op uw gegevensset en de prestaties van Azure Stack Edge Pro te kwantificeren voordat u de implementatie in productie neemt.
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Uw Azure Stack Edge implementeren](azure-stack-edge-gpu-deploy-prep.md)
+- [Uw Azure Stack Edge Pro implementeren](azure-stack-edge-gpu-deploy-prep.md)

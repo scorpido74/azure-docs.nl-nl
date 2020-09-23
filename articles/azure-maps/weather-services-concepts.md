@@ -1,23 +1,23 @@
 ---
-title: Concepten van weer Services | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over de concepten die van toepassing zijn op Microsoft Azure kaarten weer Services.
+title: Concepten van weer Services in Microsoft Azure Maps
+description: Meer informatie over de concepten die van toepassing zijn op Microsoft Azure kaarten weer Services.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132106"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972033"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
-In dit artikel worden concepten geïntroduceerd die van toepassing zijn op de [Azure Maps weers Services](https://aka.ms/AzureMapsWeatherService). We raden u aan dit artikel uit te voeren voordat u begint met de weers-Api's. 
+In dit artikel worden concepten geïntroduceerd die van toepassing zijn op de [Azure Maps weers Services](https://aka.ms/AzureMapsWeatherService). We raden u aan dit artikel uit te voeren voordat u begint met de weers-Api's.
 
 ## <a name="unit-types"></a>Eenheids typen
 
@@ -56,39 +56,39 @@ Sommige van de weer service Api's retour neren de `iconCode` in het antwoord. De
 
 | Pictogram nummer |Pictogram| Dag | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  Nee    | Zon|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  Nee    | Grotendeels zonnig|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  Nee    | Deels zonnig|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  Nee    | Periodieke Clouds|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  Nee    | Hazy schijnt |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  Nee    | Overwegend bewolkt|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Ja |  Nee    | Zonnig|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Ja |  Nee    | Grotendeels zonnig|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Ja |  Nee    | Deels zonnig|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Ja |  Nee    | Periodieke Clouds|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Ja |  Nee    | Hazy schijnt |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Ja |  Nee    | Overwegend bewolkt|
 | 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Ja |  Ja   | Cloud |
 | 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Ja |  Ja   | Dreary (Overcast)|
 | 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Ja |  Ja   | Fogcomputing|
 | 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Ja |  Ja   | Douchen|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  Nee    | Overwegend bewolkt met Showers|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  Nee    | Deels zonnig met Showers|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Ja |  Nee    | Overwegend bewolkt met Showers|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Ja |  Nee    | Deels zonnig met Showers|
 | 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Ja |  Ja   | Thunderstorms|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  Nee    | Overwegend bewolkt met thunderstorms|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  Nee    | Deels zonnig met thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Ja |  Nee    | Overwegend bewolkt met thunderstorms|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Ja |  Nee    | Deels zonnig met thunderstorms|
 | 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Ja |  Ja   | Vloeiend|
 | 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Ja |  Ja   | Flurries|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  Nee    | Overwegend bewolkt met Flurries|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  Nee    | Deels zonnig met Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Ja |  Nee    | Overwegend bewolkt met Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Ja |  Nee    | Deels zonnig met Flurries|
 | 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Ja |  Ja   | Richting|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  Nee    | Overwegend bewolkt met sneeuw|     
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Ja |  Nee    | Overwegend bewolkt met sneeuw|     
 | 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Ja |  Ja   | Ice |
 | 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Ja |  Ja   | Sleet|
 | 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Ja |  Ja   | Vries regen|
 | 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Ja |  Ja   | Regen en sneeuw|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ja |  Ja   | Dynamisch|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ja |  Ja   | Warm|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Ja |  Ja   | Koud|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Ja |  Ja   | Wikkeling|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nee  |  Yes   | Veilig|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nee  |  Yes   | Voornamelijk wissen|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nee  |  Yes   | Deels Cloud|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nee  |  Yes   | Periodieke Clouds|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nee  |  Yes   | Hazy Moonlight|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nee  |  Ja   | Veilig|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nee  |  Ja   | Voornamelijk wissen|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nee  |  Ja   | Deels Cloud|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nee  |  Ja   | Periodieke Clouds|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nee  |  Ja   | Hazy Moonlight|
 | 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Nee  |  Ja   | Overwegend bewolkt|
 | 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Nee  |  Ja   | Deels Cloudy met Showers|
 | 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Nee  |  Ja   | Overwegend bewolkt met Showers|
@@ -472,3 +472,169 @@ Het gedetailleerde kleuren palet voor infra rood satelliet tegels wordt hieronde
 |307,57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>Index-Id's en index groep-Id's
+
+Met de [dagelijkse indexen API](https://aka.ms/AzureMapsWeatherDailyIndices) kunnen gebruikers geretourneerde resultaten beperken tot specifieke index typen of index groepen.
+
+Hieronder ziet u een tabel met beschik bare index-Id's, hun namen en een koppeling naar de bereik sets. Onder deze tabel ziet u een tabel met een lijst met de verschillende index groepen.
+
+  Index naam |  Id  | Waardebereik
+  -------------------------- |---|-----
+  Pijn van arteritis             |21 | [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Asthma                     |23|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Strand & pool               |10| [Slecht-uitstekend 1](#poor-excellent-1)
+  Fietsen                  |4| [Slecht-uitstekend 1](#poor-excellent-1)
+  Normaal koude                |25|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Compostering                 |38| [Slecht-uitstekend 1](#poor-excellent-1)
+  Bouw               |14| [Slecht-uitstekend 1](#poor-excellent-1)
+  COPD                       |44|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Honden wandel        |43| [Slecht-uitstekend 1](#poor-excellent-1)
+  Auto                    |40|  [Slecht-uitstekend 2](#poor-excellent-2)
+  Stof & dander              |18| [Laag-extreem 1](#low-extreme-1)
+  Veld gereedheid            |32| [Slecht-uitstekend 1](#poor-excellent-1)
+  Vist                    |13| [Slecht-uitstekend 1](#poor-excellent-1)
+  Vlucht vertragingen              |-3|  [Zeer onwaarschijnlijk: zeer waarschijnlijk 2](#very-unlikely-very-likely-2)
+  Flu                        |26|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Reis index in de vaart        |31| [Uitstekend-slecht](#excellent-poor)
+  Brandstof economie               |37| [Slecht-uitstekend 1](#poor-excellent-1)
+  Golf weer               |5| [Slecht-uitstekend 1](#poor-excellent-1)
+  Gras groeiende              |33| [Slecht-uitstekend 1](#poor-excellent-1)
+  Haar frizz                 |42| [Onwaarschijnlijke nood situatie](#unlikely-emergency)
+  Goede hart geschiktheid      |16| [Slecht-uitstekend 1](#poor-excellent-1)
+  Rond trekken                     |3| [Slecht-uitstekend 1](#poor-excellent-1)
+  Energie-efficiëntie thuis     |36| [Slecht-uitstekend 1](#poor-excellent-1)
+  Zoeken                    | 20| [Slecht-uitstekend 1](#poor-excellent-1)
+  Activiteit in de binnenshuis            | -2| [Slecht-uitstekend 1](#poor-excellent-1)
+  Jogging                    |2| [Slecht-uitstekend 1](#poor-excellent-1)
+  Kite vaart                |9| [Slecht-uitstekend 1](#poor-excellent-1)
+  Gras mowing                |28| [Slecht-uitstekend 1](#poor-excellent-1)
+  Migrainee hoofd pijn          |27|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Morgen school bus         |35| [Slecht-uitstekend 1](#poor-excellent-1)
+  Mosquito-activiteit          |17|[Laag-extreem 1](#low-extreme-1)
+  Activiteit buiten           |29| [Slecht-uitstekend 1](#poor-excellent-1)
+  Buiten-barbecue           |24| [Slecht-uitstekend 1](#poor-excellent-1)
+  Concert            |8| [Slecht-uitstekend 1](#poor-excellent-1)
+  Wordt uitgevoerd                    |1|  [Slecht-uitstekend 1](#poor-excellent-1)
+  Tennis                     |6| [Slecht-uitstekend 1](#poor-excellent-1)
+  Thirst                     |41| [Laag-extreem 2](#low-extreme-2)
+  Vaar                    |11| [Slecht-uitstekend 1](#poor-excellent-1)
+  Shop                   |39| [Slecht-uitstekend 1](#poor-excellent-1)
+  Sinuse hoofd pijn             |30|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
+  Skateboarding              | 7| [Slecht-uitstekend 1](#poor-excellent-1)
+  Ski-weer                | 15| [Slecht-uitstekend 1](#poor-excellent-1)
+  Winter dagen                  | 19| [Zeer onwaarschijnlijk: zeer waarschijnlijk](#very-unlikely-very-likely)
+  Bodem vocht              | 34| [Slecht-uitstekend 1](#poor-excellent-1)
+  Stargazing                 | 12| [Slecht-uitstekend 1](#poor-excellent-1)
+
+Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
+
+  Id   | Groepsnaam | Indexen in deze groep |
+  -------- | ------------------|------
+  1       |Alles | Alles
+  2       |Aches en pijnen | Pijn van arteritis (21) </br> Migrainee pijn (27) </br> Sinuse hoofd pijn (30)
+  3       |Ademhalings | Asthma (23) </br> Gebruikelijk koud (25) </br> Flu-prognose (26)
+  4       |Garden | Gereedheid veld (32) </br> Gras mowing (28) </br> Bodem vocht (34)</br>
+  5       |Morph | Samen stellen (38) </br> Energie-efficiëntie thuis (36) </br> Brandstof economie (37)
+  6       |Buiten leven | Buiten-barbecue (24) </br> Mosquito-activiteit (17)
+  7       |Strand en mariene | Strand & pool (10) </br> Vissen (13) </br> Zeil (11)
+  8       |Sportsman | Vissen (13) </br> Jacht (20) </br> Activiteit in het buiten (29)</br>
+  9       |Huisdieren |  Gereedheid veld (32) </br>  Bodem vocht (34)
+  10      |Gezondheidszorg | Pijn van arteritis (21) </br> Asthma (23) </br> Gebruikelijk koud (25) </br> Stof & dander (18) </br> Flu (26) </br> Goede hart geschiktheid (16) </br> Migrainee pijn (27)
+  11      |Outdooruitrusting | Buiten-barbecue (24) </br> Strand & pool (10) </br> Fietsen (4) </br> Samen overleg (8) </br>  Gereedheid veld (32) </br> Vissen (13) </br> Golf weer (5) </br> Rond trekken (3) </br> Jacht (20) </br> Jogging (2) </br> Kite vaart (9) </br> Mosquito-activiteit (17)</br> Gras mowing (28) </br> Activiteit in het buiten (29) </br> Uitvoeren (1) </br> Zeil (11) </br> Skateboarding (7) </br> Ski-weer (15) </br>  Bodem vocht (34)</br> Stargazing (12) </br> Tennis (6)
+  12      |Sport evenement | Fietsen (4) </br> Golf weer (5) </br> Rond trekken (3) </br>  Jogging (2) </br> Uitvoeren (1) </br> Skateboarding (7) </br> Ski-weer (15) </br>Tennis (6)
+  13      |Startpagina | Energie-efficiëntie thuis (36) </br> Brandstof economie (37) </br> Activiteit in de binnenshuis (-2)
+
+## <a name="daily-index-range-sets"></a>Dagelijkse index bereik sets
+
+[Dagelijkse indexen ophalen API](https://aka.ms/AzureMapsWeatherDailyIndices) retourneert de bereik waarde en de bijbehorende categorie naam voor elke index-id. Bereik sets zijn niet hetzelfde voor alle indexen. In de onderstaande tabellen worden de verschillende bereik sets weer gegeven die worden gebruikt door de ondersteunde indexen in [index-id's en index groep-id's](#index-ids-and-index-groups-ids). Als u wilt weten welke indexen de bereik sets gebruiken, gaat u naar de sectie [index-id's en index groepen-id's](#index-ids-and-index-groups-ids) van dit document.
+
+### <a name="poor-excellent-1"></a>Slecht-uitstekend 1
+
+  | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Slecht              |  0 |                2,99
+  Redelijk              |  3  |               4,99
+  Goed              |  5  |              6,99
+  Heel goed         |  7  |               8,99
+  Uitstekend         |  9  |               10
+
+### <a name="poor-excellent-2"></a>Slecht-uitstekend 2
+
+ | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Slecht           |0              |  3
+  Redelijk           |3,01           |  6
+  Goed           |6,01           |  7,5
+  Heel goed      |7,51           |  8,99
+  Uitstekend      |9              |  10
+
+### <a name="excellent-poor"></a>Uitstekend-slecht
+
+ | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Uitstekend      |     0,00        |    1,00
+  Heel goed        |   1.01          |  3,00
+  Goed             |   3,01          |  5,00
+  Redelijk             |   5,01          |  7,00
+  Slecht             |   7,01          |  10,00
+
+### <a name="low-extreme-1"></a>Laag-extreem 1
+
+   | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Beperkt                |  0         |        1,99
+  Matig           |  2         |        3,99
+  Hoog               |  4         |        5,99
+  Zeer hoog          |  6         |        7,99
+  Extreem            |  8         |        10
+
+### <a name="low-extreme-2"></a>Laag-extreem 2
+
+   | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Beperkt                |  0            |      2,99
+  Matig           |  3            |      4,99
+  Hoog               |  5            |      6,99
+  Zeer hoog          |  7            |      8,99
+  Extreem            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>Zeer onwaarschijnlijk: zeer waarschijnlijk
+
+ | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Zeer onwaarschijnlijk      | 0     |           1,99
+  Voorkomende           | 2     |           3,99
+  Mogelijk           | 4     |           5,99
+  Vaak             | 6     |           7,99
+  Zeer waarschijnlijk        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>Zeer onwaarschijnlijk: zeer waarschijnlijk 2
+
+ | Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Zeer onwaarschijnlijk      |  0,00     |         1,00
+  Voorkomende           |  1.01     |         3,00
+  Mogelijk           |  3,01     |         5,00
+  Vaak             |  5,01     |         7,00
+  Zeer waarschijnlijk        |  7,01     |         10,00
+
+### <a name="unlikely-emergency"></a>Onwaarschijnlijke nood situatie
+
+| Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Voorkomende         |  0     |          2,99
+  Bekijken            |  3     |          4,99
+  Advies         |  5     |          6,99
+  Waarschuwing          |  7     |          8,99
+  Urgentie        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>Nuttig, met extreem risico
+
+| Categorienaam | Begin bereik | Eind bereik |
+  ----------------|--------------|------------
+  Nuttig        |    0        |        1,99
+  Neutraal           |    2        |        3,99
+  Loopt risico           |    4        |        5,99
+  Met hoog risico      |    6        |        7,99
+  Met extreem risico   |    8        |        10

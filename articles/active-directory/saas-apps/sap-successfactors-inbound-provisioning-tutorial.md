@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017996"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979842"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Active Directory gebruikers inrichting 
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. 
@@ -234,7 +234,7 @@ Zet het installatie programma van de gedownloade agent over naar de server host 
    
 1. Controleer de installatie van de agent en zorg ervoor dat deze wordt uitgevoerd door de module ' Services ' te openen en te zoeken naar de service met de naam ' Microsoft Azure AD Connect inrichtings agent '.
   
-   ![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die wordt uitgevoerd in Services](./media/workday-inbound-tutorial/services.png)
+   ![Scherm afbeelding van de Microsoft Azure AD verbinding maken met de inrichtings agent die in Services wordt uitgevoerd.](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Deel 3: Configureer de verbinding met SuccessFactors en Active Directory in de app voor inrichting
 In deze stap maken we verbinding met SuccessFactors en Active Directory in de Azure Portal. 
