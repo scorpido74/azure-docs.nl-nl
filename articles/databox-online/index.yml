@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie over Azure Stack Edge en Azure Data Box Gateway - Onlineoverdracht
-summary: Gebruik Azure Data Box Gateway- en Azure Stack Edge-apparaten voor gegevensoverdracht met hoge prestaties via het netwerk. Kies Data Box Gateway voor het verzenden van gegevens voor archivering in de cloud, voor herstel na noodgevallen of voor de verwerking van gegevens met de kracht van de cloud. Gebruik Azure Stack Edge om gegevens te filteren, analyseren en transformeren voordat deze naar Azure worden verplaatst. Azure Data Box Edge heeft onlangs de nieuwe naam Azure Stack Edge gekregen.
+summary: Gebruik Azure Stack Edge- en Azure Data Box Gateway-apparaten voor gegevensoverdracht met hoge prestaties via het netwerk. Gebruik Compute Acceleration Hardware die is uitgerust Azure Stack Edge Pro-apparaten om uw gegevens te filteren, te analyseren en te transformeren voordat deze wordt verplaatst naar Azure. Kies Data Box Gateway voor het verzenden van gegevens voor archivering in de cloud, voor herstel na noodgevallen of voor de verwerking van gegevens met de kracht van de cloud.
 metadata:
   title: Documentatie over Azure Stack Edge en Azure Data Box Gateway - Onlineoverdracht
-  description: Documentatie over Data Box Gateway en Azure Stack Edge (de nieuwe naam voor Data Box Edge) voor gegevensoverdracht met hoge prestaties via het netwerk naar Azure.
+  description: Documentatie voor Data Box Gateway, Azure Stack Edge voor gegevensoverdracht met hoge prestaties via het netwerk naar Azure.
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,22 +11,28 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 11/04/2019
-  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.date: 09/08/2020
+  ms.openlocfilehash: 2995a94f1b56144afd191bc3e8eb97c2da4593ef
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562352"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90902990"
 landingContent:
 - title: Info over Azure Stack Edge en Data Box Gateway
   linkLists:
   - linkListType: overview
     links:
+    - text: Wat is Azure Stack Edge Pro GPU?
+      url: azure-stack-edge-gpu-overview.md
+    - text: Wat is Azure Stack Edge Pro FPGA?
+      url: azure-stack-edge-overview.md
+    - text: Wat is Azure Stack Edge R?
+      url: azure-stack-edge-j-series-overview.md
+    - text: Wat is Azure Stack Edge Mini?
+      url: azure-stack-edge-k-series-overview.md
     - text: Wat is Data Box Gateway?
       url: data-box-gateway-overview.md
-    - text: Wat is Azure Stack Edge?
-      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: Opties voor Azure-gegevensoverdracht kiezen
@@ -35,28 +41,36 @@ landingContent:
       url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: Releaseopmerkingen voor versie 1905
-      url: data-box-gateway-1905-release-notes.md
+    - text: 2009 - Opmerkingen bij de release
+      url: azure-stack-edge-gpu-2008-release-notes.md
 - title: Vereisten en limieten
   linkLists:
   - linkListType: concept
     links:
+    - text: Vereisten voor Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Vereisten voor Azure Stack Edge Pro FPGA
+      url: azure-stack-edge-gpu-system-requirements.md
     - text: Vereisten voor Data Box Gateway
       url: data-box-gateway-system-requirements.md
-    - text: Vereisten voor Azure Stack Edge
-      url: azure-stack-edge-system-requirements.md
+    - text: Limieten voor Azure Stack Edge Pro R
+      url: azure-stack-edge-limits.md
     - text: Limieten voor Data Box Gateway
       url: data-box-gateway-limits.md
-    - text: Limieten voor Azure Stack Edge
-      url: azure-stack-edge-limits.md
 - title: Implementeren
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Controlelijst voor de implementatie vooraf weergeven
+      url: azure-stack-edge-gpu-deploy-checklist.md
+    - text: Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-deploy-prep.md
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-deploy-prep.md
+    - text: GPU-module via Marketplace
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: Kubernetes-workload via IoT Edge
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
 - title: Ontwikkelen
   linkLists:
   - linkListType: how-to-guide
@@ -65,31 +79,31 @@ landingContent:
       url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: 'Voorbeelden: C# voor Azure Stack Edge'
+    - text: Voorbeelden - C# for Azure Stack Edge Pro GPU
       url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: Beheren
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge Pro-shares
+      url: azure-stack-edge-manage-shares.md
     - text: Data Box Gateway-shares
       url: data-box-gateway-manage-shares.md
-    - text: Azure Stack Edge-shares
-      url: azure-stack-edge-manage-shares.md
     - text: Edge-rekenproces
       url: azure-stack-edge-manage-compute.md
-    - text: Edge-rekenprocesnetwerk
-      url: azure-stack-edge-extend-compute-access-modules.md
+    - text: Edge-opslagaccounts
+      url: azure-stack-edge-j-series-manage-storage-accounts.md
 - title: Problemen oplossen
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Stack Edge GPU
+      url: azure-stack-edge-gpu-troubleshoot.md
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-troubleshoot.md
     - text: Edge-rekenprocesmodules
-      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: Azure Stack Edge retourneren of vervangen
+      url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
+    - text: Azure Stack Edge GPU retourneren
       url: azure-stack-edge-return-device.md
     - text: Ondersteuningsticket openen
       url: azure-stack-edge-contact-microsoft-support.md

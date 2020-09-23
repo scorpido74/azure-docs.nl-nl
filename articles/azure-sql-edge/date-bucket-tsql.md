@@ -1,6 +1,6 @@
 ---
-title: Date_Bucket (Transact-SQL)-Azure SQL Edge (preview-versie)
-description: Meer informatie over het gebruik van Date_Bucket in Azure SQL Edge (preview)
+title: Date_Bucket (Transact-SQL)-Azure SQL Edge
+description: Meer informatie over het gebruik van Date_Bucket in Azure SQL Edge
 keywords: Date_Bucket, SQL-rand
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886845"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -52,11 +52,11 @@ Het deel van de *datum* dat met de para meter ' Number ' wordt gebruikt. Bijvoor
 
 Het gehele getal dat de breedte van de Bucket in combi natie met het argument *date Part* bepaalt. Dit vertegenwoordigt de breedte van de data Part bevindt buckets van de oorspronkelijke tijd. **`This argument cannot be a negative integer value`**. 
 
-*vallen*
+*datum*
 
 Een expressie die kan worden omgezet in een van de volgende waarden:
 
-+ **vallen**
++ **datum**
 + **datetime**
 + **datetimeoffset**
 + **datetime2**
@@ -69,7 +69,7 @@ Voor *datum* `DATE_BUCKET` accepteert een kolom expressie, expressie of door de 
 
 Een optionele expressie die kan worden omgezet in een van de volgende waarden:
 
-+ **vallen**
++ **datum**
 + **datetime**
 + **datetimeoffset**
 + **datetime2**

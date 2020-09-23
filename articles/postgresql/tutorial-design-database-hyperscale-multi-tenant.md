@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Een database met meerdere tenants ontwerpen - Hyperscale (Citus) - Azure Database for PostgreSQL'
-description: In deze zelfstudie ziet u hoe u gedistribueerde tabellen op Azure Database for PostgreSQL Hyperscale (Citus) maakt en invult en hoe u hier query's op uitvoert.
+description: Deze zelfstudie laat zien hoe u een toepassing met meerdere tenants kunt baseren op Azure Database for PostgreSQL Hyperscale (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386386"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895257"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelfstudie: een database met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -275,6 +275,5 @@ In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Al
 
 In deze zelfstudie hebt u geleerd hoe u een Hyperscale (Citus)-servergroep inricht. U hebt psql gebruikt om hiermee verbinding te maken, u hebt een schema gemaakt en u hebt gegevens gedistribueerd. U hebt geleerd om een query uit te voeren op gegevens zowel in als tussen tenants en om het schema per tenant aan te passen.
 
-Hierna krijgt u meer informatie over de hyperscale-concepten.
-> [!div class="nextstepaction"]
-> [Knooppunttypen met hyperscale](https://aka.ms/hyperscale-concepts)
+- Meer informatie over [knooppunttypen](https://aka.ms/hyperscale-concepts) voor servergroepen
+- Bepaal de beste [begingrootte](howto-hyperscale-scaling.md#picking-initial-size) voor uw servergroep

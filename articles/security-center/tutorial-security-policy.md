@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277660"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894584"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -33,7 +33,7 @@ Azure Security Center worden de beveiligings aanbevelingen gebaseerd op uw gekoz
 
 Security Center biedt de volgende opties voor het werken met beveiligings beleid:
 
-* **Het ingebouwde standaard beleid weer geven en bewerken** : wanneer u Security Center inschakelt, wordt er automatisch een ingebouwd initiatief met de naam ' ASC default ' toegewezen aan alle Security Center geregistreerde abonnementen (gratis of standaard prijs categorieën). Als u dit initiatief wilt aanpassen, kunt u afzonderlijk beleids regels in-of uitschakelen. Bekijk de lijst met [ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschik bare opties.
+* **Het ingebouwde standaard beleid weer geven en bewerken** : wanneer u Security Center inschakelt, wordt er automatisch een ingebouwd initiatief met de naam ' ASC default ' toegewezen aan alle Security Center geregistreerde abonnementen. Als u dit initiatief wilt aanpassen, kunt u afzonderlijk beleids regels in-of uitschakelen. Bekijk de lijst met [ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschik bare opties.
 
 * **Uw eigen aangepaste beleids regels toevoegen** : als u de beveiligings initiatieven wilt aanpassen die op uw abonnement zijn toegepast, kunt u dit doen in Security Center. U ontvangt dan aanbevelingen als uw computers niet voldoen aan het beleid dat u maakt. Zie [aangepaste beveiligings beleidsregels gebruiken](custom-security-policies.md)voor instructies voor het maken en toewijzen van aangepaste beleids regels.
 

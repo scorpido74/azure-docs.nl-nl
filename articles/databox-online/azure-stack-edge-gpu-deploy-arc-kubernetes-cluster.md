@@ -1,6 +1,6 @@
 ---
-title: Azure-Arc op Kubernetes inschakelen op Azure Stack Edge GPU-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u Azure-Arc op een bestaand Kubernetes-cluster op uw Azure Stack Edge GPU-apparaat inschakelt.
+title: Azure-Arc op Kubernetes inschakelen op Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u Azure-Arc op een bestaand Kubernetes-cluster op uw Azure Stack Edge Pro GPU-apparaat inschakelt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322021"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903202"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack Edge GPU-apparaat inschakelen
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Arc op Kubernetes-cluster op uw Azure Stack Edge Pro GPU-apparaat inschakelen
 
-Dit artikel laat u zien hoe u Azure Arc kunt inschakelen op een bestaand Kubernetes-cluster op uw Azure Stack edge-apparaat. 
+Dit artikel laat u zien hoe u Azure Arc kunt inschakelen op een bestaand Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat. 
 
-Deze procedure is bedoeld voor gebruikers die de Kubernetes- [workloads op Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-workload-management.md) hebben bekeken en die bekend zijn met de concepten van [Wat is Azure Arc enabled Kubernetes (preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
+Deze procedure is bedoeld voor gebruikers die de Kubernetes- [workloads op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-workload-management.md) hebben bekeken en die bekend zijn met de concepten van [Wat is Azure Arc enabled Kubernetes (preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u Azure Arc op Kubernetes-cluster kunt inschakelen, moet u ervoor zorgen dat u de volgende vereisten hebt voltooid op uw Azure Stack edge-apparaat en de client die u gaat gebruiken voor toegang tot het apparaat:
+Voordat u Azure Arc op Kubernetes-cluster kunt inschakelen, moet u ervoor zorgen dat u de volgende vereisten hebt voltooid op uw Azure Stack Edge Pro-apparaat en de client die u gaat gebruiken voor toegang tot het apparaat:
 
 ### <a name="for-device"></a>Voor het apparaat
 
-1. U hebt aanmeld referenties voor een Azure Stack edge-apparaat van 1 knoop punt.
+1. U hebt aanmeldings referenties naar een Azure Stack Edge Pro-apparaat met één knoop punt.
     1. Het apparaat wordt geactiveerd. Zie [het apparaat activeren](azure-stack-edge-gpu-deploy-activate.md).
     1. Op het apparaat is de compute-rol geconfigureerd via Azure Portal en heeft het een Kubernetes-cluster. Zie [Configure Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
 
@@ -37,19 +37,19 @@ Voordat u Azure Arc op Kubernetes-cluster kunt inschakelen, moet u ervoor zorgen
 
 ### <a name="for-client-accessing-the-device"></a>Voor client toegang tot het apparaat
 
-1. U hebt een Windows-client systeem dat wordt gebruikt voor toegang tot het Azure Stack edge-apparaat.
+1. U hebt een Windows-client systeem dat wordt gebruikt om toegang te krijgen tot het Azure Stack Edge Pro-apparaat.
   
     - Windows Power shell 5,0 of hoger wordt uitgevoerd op de client. Als u de meest recente versie van Windows Power shell wilt downloaden, gaat u naar [Windows Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - U kunt ook een andere client met een [ondersteund besturings systeem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) hebben. In dit artikel wordt de procedure beschreven voor het gebruik van een Windows-client. 
     
-1. U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
+1. U hebt de procedure die wordt beschreven in [toegang tot het Kubernetes-cluster op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voltooid. U hebt het volgende:
     
     - Geïnstalleerd `kubectl` op de client  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-Master versie die wordt uitgevoerd op uw Azure stack edge-apparaat. 
+    - Zorg ervoor dat de `kubectl` client versie niet meer dan één versie van de Kubernetes-hoofd versie die wordt uitgevoerd op uw Azure stack Edge Pro-apparaat. 
       - Gebruiken `kubectl version` om te controleren welke versie van kubectl op de client wordt uitgevoerd. Noteer de volledige versie.
-      - Ga in de lokale gebruikers interface van uw Azure Stack edge-apparaat naar **Software-update** en noteer het versie nummer van de Kubernetes-server. 
+      - Ga in de lokale gebruikers interface van uw Azure Stack Edge Pro-apparaat naar **Software-update** en noteer het versie nummer van de Kubernetes-server. 
     
         ![Het versie nummer van de Kubernetes-server controleren](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,7 +142,7 @@ Voer de volgende stappen uit om het Kubernetes-cluster voor Azure Arc management
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Als u Azure-Arc wilt implementeren op Azure Stack edge-apparaat, moet u ervoor zorgen dat u een [ondersteunde regio gebruikt voor Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions). Azure Arc is momenteel beschikbaar als preview-versie. U kunt ook de exacte naam van de regio met behulp van de opdracht afgeven in de cmdlet `az account list-locations` .
+    Als u Azure-Arc wilt implementeren op Azure Stack Edge Pro-apparaat, moet u ervoor zorgen dat u een [ondersteunde regio gebruikt voor Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions). Azure Arc is momenteel beschikbaar als preview-versie. U kunt ook de exacte naam van de regio met behulp van de opdracht afgeven in de cmdlet `az account list-locations` .
     
     Hier volgt een voorbeeld:
    
@@ -224,4 +224,4 @@ Voer de volgende stappen uit om Azure Arc management te verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een STAATLOZE PHP-Gastenboek toepassing implementeren met redis via GitOps op een Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md) voor meer informatie over het uitvoeren van een implementatie van Azure Arc.
+Zie [een STAATLOZE PHP-Gastenboek toepassing implementeren met redis via GitOps op een Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md) voor meer informatie over het uitvoeren van een implementatie van Azure Arc.

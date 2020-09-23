@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 088d1e409f14fdba02311d1ff17eb655f6e41ad3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982988"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
 
@@ -26,9 +26,37 @@ U kunt de JSON-kopieën van de conversie toewijzing gebruiken voor het bewerken 
 > [!TIP]
 > Als u een [Azure-ondersteunings](https://azure.microsoft.com/support/create-ticket/) ticket voor Azure IOT connector voor FHIR opent, moet u ervoor zorgen dat u kopieën van de JSON-conversie toewijzing opneemt om u te helpen bij het oplossen van het probleem.
 
+## <a name="device-and-fhir-conversion-mapping-json-template-validations-for-azure-iot-connector-for-fhir-preview"></a>Validatie toewijzing van JSON-sjabloon voor apparaat en FHIR voor Azure IoT-connector voor FHIR (preview-versie)
+In deze sectie vindt u meer informatie over het validatie proces dat door Azure IoT connector voor FHIR wordt uitgevoerd om de JSON-sjablonen van het apparaat en de FHIR-conversie te valideren voordat ze voor gebruik kunnen worden opgeslagen.  Deze elementen zijn vereist in de JSON van het apparaat en de FHIR-conversie toewijzing.
+
+**Apparaattoewijzing**
+
+|Element|Vereist|
+|:-------|:------|
+|TypeName|Waar|
+|TypeMatchExpression|Waar|
+|DeviceIdExpression|Waar|
+|TimestampExpression|Waar|
+|Values []. ValueName|Waar|
+|Values []. ValueExpression|Waar|
+
+> [!NOTE]
+> Values []. Waardenaam en waarden []. ValueExpression
+>
+> Deze elementen zijn alleen vereist als u een waarde hebt ingevoerd in de matrix. het kan zijn dat er geen waarden zijn toegewezen. Dit wordt gebruikt wanneer de telemetrie die wordt verzonden een gebeurtenis is. Bijvoorbeeld: wanneer een wearable IoMT-apparaat wordt geplaatst of verwijderd. De elementen hebben geen waarden behalve een naam die Azure IoT connector voor FHIR overeenkomt met en levert. Op de FHIR-conversie wijst Azure IoT connector voor FHIR het toe aan een code concept op basis van het semantische type: er worden geen werkelijke waarden ingevuld.
+
+**FHIR toewijzing**
+
+|Element|Vereist|
+|:------|:-------|
+|TypeName|Waar|
+
+> [!NOTE]
+> Dit is het enige vereiste FHIR-toewijzings element dat op dit moment is gevalideerd.
+
 ## <a name="error-messages-and-fixes-for-azure-iot-connector-for-fhir-preview"></a>Fout berichten en oplossingen voor Azure IoT connector voor FHIR (preview)
 
-|Bericht|Weer|Voorwaarde|Herstellen| 
+|Bericht|Weer|Conditie|Herstellen| 
 |-------|---------|---------|---|
 |Ongeldige toewijzings naam. de naam van de toewijzing moet apparaat of FHIR zijn.|API|Het opgegeven toewijzings type is geen apparaat-of FHIR.|Gebruik een van de twee ondersteunde toewijzings typen (bijvoorbeeld: apparaat of FHIR).|
 |Validatie is mislukt. De vereiste gegevens ontbreken of zijn ongeldig.|API en Azure Portal|Bij het opslaan van een conversie toewijzing ontbreekt de vereiste informatie of element.|Voeg ontbrekende gegevens van de conversie toewijzing of het element toe en probeer de conversie toewijzing opnieuw op te slaan.|
@@ -42,8 +70,8 @@ U kunt de JSON-kopieën van de conversie toewijzing gebruiken voor het bewerken 
 
 ##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Waarom is mijn Azure IoT connector voor FHIR (preview)-gegevens die niet worden weer gegeven in de Azure-API voor FHIR?
 
-|Potentiële problemen  |Oplossingen            |
-|------------------|-----------------|
+|Potentiële problemen|Oplossingen|
+|----------------|-----|
 |De gegevens worden nog verwerkt.|Gegevens worden egressed naar de Azure-API voor FHIR in batches (elke ~ 15 minuten).  Het is mogelijk dat de gegevens nog worden verwerkt en dat er extra tijd nodig is om te voor komen dat de gegevens behouden blijven in de Azure API voor FHIR.|
 |De JSON voor de toewijzing van de apparaat conversie is niet geconfigureerd.|De conformiteit van de JSON van de apparaat conversie configureren en opslaan.|
 |De JSON van de FHIR-conversie toewijzing is niet geconfigureerd.|De FHIR-conversie toewijzing JSON configureren en opslaan.|
@@ -67,22 +95,22 @@ Het toewijzings bestand moet worden voorzien van de technische ondersteuning van
 
 1. Selecteer **' IOT-connector (preview) '** in de linkerbenedenhoek van de Azure API for FHIR resource dash board in de sectie **' invoeg toepassingen '** .
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT-connector" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT-Connector1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
 2. Selecteer de **connector** waarmee u de JSON van de conversie toewijzing wilt kopiëren.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-connector" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Dit proces kan ook worden gebruikt voor het kopiëren en opslaan van de inhoud van de JSON **FHIR-toewijzing configureren** .
 
 3. Selecteer **apparaattoewijzing configureren**.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-connector" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Selecteer de inhoud van de JSON en voer een Kopieer bewerking uit (bijvoorbeeld: Selecteer CTRL + c). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-connector" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Maak een plak bewerking (bijvoorbeeld: Selecteer CTRL + v) in een nieuw bestand binnen een editor (bijvoorbeeld Visual Studio code, Klad blok) en sla het bestand op met de extensie *. json.
 

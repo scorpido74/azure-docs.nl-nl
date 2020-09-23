@@ -2,22 +2,40 @@
 title: Verificatie, vragen en antwoorden
 description: Meer informatie over hoe Azure Key Vault aanvragen voor JSON-indeling en antwoorden en over vereiste verificatie voor het gebruik van een sleutel kluis gebruikt.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983257"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
+
+Azure Key Vault biedt twee typen containers voor het opslaan en beheren van geheimen voor uw Cloud toepassingen:
+
+|Container type|Ondersteunde object typen|Data-vlak eindpunt|
+|--|--|--|
+| **Kluizen**|<ul><li>Met software beschermde sleutels</li><li>Met HSM beveiligde sleutels (met Premium-SKU)</li><li>Certificaten</li><li>Opslagaccountsleutels</li></ul> | https://{kluis-name}. kluis. Azure. net
+|**Beheerde HSM** |<ul><li>HSM-beveiligde sleutels</li></ul> | https://{HSM-name}. managedhsm. Azure. net
+
+Hier vindt u de URL-achtervoegsels die worden gebruikt voor toegang tot elk type object
+
+|Objecttype|URL-achtervoegsel|
+|--|--|
+|Met software beschermde sleutels| /keys |
+|HSM-beveiligde sleutels| /keys |
+|Geheimen|/secrets|
+|Certificaten| /certificates|
+|Opslagaccountsleutels|/storageaccounts
+||
 
 Azure Key Vault ondersteunt aanvragen en antwoorden in JSON-indeling. Aanvragen voor de Azure Key Vault worden omgeleid naar een geldige Azure Key Vault URL met behulp van HTTPS met enkele URL-para meters en JSON-gecodeerde aanvraag-en antwoord teksten.
 
@@ -36,7 +54,9 @@ In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Z
 
 - Een samen vatting ondertekenen met behulp van een sleutel met de naam TESTKEY in een Key Vault gebruik- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  De instantie voor een aanvraag voor een Key Vault is altijd als volgt:  `https://{keyvault-name}.vault.azure.net/`  
+- De instantie voor een aanvraag voor een Key Vault is altijd als volgt:
+  - Voor kluizen: `https://{keyvault-name}.vault.azure.net/`
+  - Voor beheerde Hsm's: `https://{HSM-name}.managedhsm.azure.net/`
 
   Sleutels worden altijd opgeslagen onder het pad/Keys, geheimen worden altijd opgeslagen onder het pad/Secrets.  
 

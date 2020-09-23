@@ -1,18 +1,18 @@
 ---
 title: Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Event Hubs
 description: Toont beschikbare besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Event Hubs. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van de naleving van uw Azure-resources.
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 18d33d3a3fbe9a7502d1106e48491dd013b9861d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0585777725dae10eb2202db675b52e97e8534c4d
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489716"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015348"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Event Hubs
 

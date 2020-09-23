@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189917"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983243"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault klant gegevens functies
 
-Azure Key Vault ontvangt klant gegevens tijdens het maken of bijwerken van kluizen, sleutels, geheimen, certificaten en beheerde opslag accounts. Deze klant gegevens zijn direct zichtbaar in de Azure Portal en via de REST API. Klant gegevens kunnen worden bewerkt of verwijderd door het object dat de gegevens bevat, bij te werken of te verwijderen.
+Azure Key Vault ontvangt klant gegevens tijdens het maken of bijwerken van kluizen, beheerde HSM-Pools, sleutels, geheimen, certificaten en beheerde opslag accounts. Deze klant gegevens zijn direct zichtbaar in de Azure Portal en via de REST API. Klant gegevens kunnen worden bewerkt of verwijderd door het object dat de gegevens bevat, bij te werken of te verwijderen.
 
 Systeem toegangs logboeken worden gegenereerd wanneer een gebruiker of toepassing toegang heeft tot Key Vault. Gedetailleerde toegangs logboeken zijn beschikbaar voor klanten die Azure Insights gebruiken.
 
@@ -52,7 +52,7 @@ Azure Key Vault Diagnostische logboeken die persoonlijke gegevens bevatten, kunn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault logboek registratie](logging.md))
+- [Logboekregistratie van Azure Key Vault](logging.md)
 
 - [Azure Key Vault: overzicht van voorlopig verwijderen](soft-delete-cli.md)
 

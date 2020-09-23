@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983711"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -30,7 +30,7 @@ In de volgende secties worden de belangrijkste concepten in virtuele hub-route r
 
 Een route tabel van de virtuele hub kan een of meer routes bevatten. Een route bevat de naam, een label, een doel type, een lijst met doel voorvoegsels en de volgende hop-informatie voor een pakket dat moet worden doorgestuurd. Een **verbinding** heeft meestal een routerings configuratie die aan een route tabel is gekoppeld of door gegeven
 
-### <a name="connection"></a><a name="connection"></a>Verbinding
+### <a name="connection"></a><a name="connection"></a>Combi
 
 Verbindingen zijn Resource Manager-resources die een routerings configuratie hebben. De vier typen verbindingen zijn:
 

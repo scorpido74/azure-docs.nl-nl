@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89039283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902922"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>What is Azure Machine Learning-studio?
 
@@ -34,13 +34,13 @@ De studio biedt meerdere ontwerpfuncties, afhankelijk van het type project en de
 
   Uw eigen code schrijven en uitvoeren in beheerde [Jupyter Notebook-servers](how-to-run-jupyter-notebooks.md) die rechtstreeks zijn geïntegreerd in de studio. 
 
-+ **Azure Machine Learning-ontwerpfunctie (preview)**
++ **Azure Machine Learning-ontwerpprogramma**
 
   Gebruik de Designer om Machine learning-modellen te trainen en te implementeren zonder code te schrijven. U kunt gegevenssets en modules slepen en neerzetten om ML-pijplijnen te maken. Probeer de [zelfstudie over de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md).
 
     ![Voorbeeld van ontwerpfunctie van Azure Machine Learning](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **Gebruikersinterface voor geautomatiseerde machine learning (preview)**
++ **Gebruikersinterface voor geautomatiseerde machine learning**
 
   Leer hoe u [geautomatiseerde ML-experimenten](tutorial-first-experiment-automated-ml.md) maakt met een gebruiksvriendelijke interface. 
 
@@ -82,7 +82,7 @@ De volgende tabel bevat een overzicht van enkele van de belangrijkste verschille
 
 | Functie | ML Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
-| Interface met slepen en neerzetten | Klassieke ervaring | Bijgewerkte ervaring - [Azure Machine Learning Designer (preview-versie)](concept-designer.md) <br/>(Hiervoor is Enterprise Workspace vereist) | 
+| Interface met slepen en neerzetten | Klassieke ervaring | Bijgewerkte ervaring - [Azure Machine Learning Designer](concept-designer.md)| 
 | Code-SDK's | Niet ondersteund | Volledig geïntegreerd met [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) en [R](tutorial-1st-r-experiment.md) SDK's |
 | Experiment | Schaalbaar (max. 10 GB aan trainingsgegevens) | Schalen met rekendoel |
 | Rekendoelen voor training | Eigen rekendoel, alleen CPU-ondersteuning | Breed scala aan aanpasbare [rekendoelen voor training](concept-compute-target.md#train). Inclusief GPU- en CPU-ondersteuning | 

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431294"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983756"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Een VPN Gateway (virtuele netwerk gateway) verbinden met een virtueel WAN
 
@@ -47,7 +47,7 @@ Schakel op de pagina **configuratie** van virtuele netwerk gateway de modus acti
 
 Op de pagina **configuratie** van virtuele netwerk gateway kunt u de **BGP ASN**configureren. Wijzig de BGP ASN. De BGP-ASN kan niet 65515 zijn. 66515 wordt gebruikt door virtuele WAN van Azure.
 
-![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
+![Scherm afbeelding toont de configuratie pagina van een virtuele netwerk gateway met BGP ASN configureren geselecteerd.](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
 
 ### <a name="public-ip-addresses"></a><a name="pip"></a>Openbare IP-adressen
 

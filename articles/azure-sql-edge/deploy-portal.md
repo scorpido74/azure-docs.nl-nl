@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (preview) implementeren met behulp van de Azure Portal
-description: Meer informatie over het implementeren van Azure SQL Edge (preview) met behulp van de Azure Portal
+title: Azure SQL Edge implementeren met behulp van de Azure Portal
+description: Meer informatie over het implementeren van Azure SQL Edge met behulp van de Azure Portal
 keywords: SQL-rand implementeren
 services: sql-edge
 ms.service: sql-edge
@@ -8,17 +8,17 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816861"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886750"
 ---
-# <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge implementeren (preview-versie) 
+# <a name="deploy-azure-sql-edge"></a>Azure SQL Edge implementeren 
 
-Azure SQL Edge (preview) is een relationele data base-engine die is geoptimaliseerd voor IoT-en Azure IoT Edge-implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. In deze Quick start ziet u hoe u aan de slag gaat met het maken van een Azure SQL Edge-module via Azure IoT Edge met behulp van de Azure Portal.
+Azure SQL Edge is een relationele data base-engine die is geoptimaliseerd voor IoT-en Azure IoT Edge-implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. In deze Quick start ziet u hoe u aan de slag gaat met het maken van een Azure SQL Edge-module via Azure IoT Edge met behulp van de Azure Portal.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -28,7 +28,7 @@ Azure SQL Edge (preview) is een relationele data base-engine die is geoptimalise
 * Registreer een [IOT edge apparaat vanuit de Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Bereid het IoT Edge apparaat voor om [IOT Edge module te implementeren vanuit de Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
 
-> [!NOTE]
+> [!NOTE]   
 > Zie deze [Snelstartgids](../iot-edge/quickstart-linux.md)voor informatie over het implementeren van een Azure Linux-VM als IOT edge apparaat.
 
 ## <a name="deploy-sql-edge-module-from-azure-marketplace"></a>SQL Edge-module implementeren vanuit Azure Marketplace
@@ -51,109 +51,107 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
    |IoT Hub   |  De naam van de IoT Hub waarbij het IoT Edge-apparaat is geregistreerd en selecteer vervolgens de optie op een apparaat implementeren|
    |Naam van IoT Edge apparaat  |  De naam van het IoT Edge apparaat waarop de SQL-rand moet worden geïmplementeerd |
 
-4. Ga op de pagina **modules instellen** naar de sectie over implementatie modules en klik op **configureren** voor de SQL Edge-module. 
+4. Op de pagina **modules op apparaat instellen:** klikt u op de Azure SQL Edge-module onder **IOT Edge modules**. De standaard module naam is ingesteld op *AzureSQLEdge*. 
 
-5. Geef in het deel venster **aangepaste Modules IOT Edge** de gewenste waarden voor de omgevings variabelen op en/of pas de opties voor maken en de gewenste eigenschappen voor de module aan. Zie [SQL Server container omgevings variabelen](/sql/linux/sql-server-linux-configure-environment-variables/)voor een volledige lijst met ondersteunde omgevings variabelen.
+5. Geef in de sectie *module-instellingen* van de Blade **Update IOT Edge module** de gewenste waarden op voor de naam van de *IOT Edge module*, *Start het beleid opnieuw* op en de *gewenste status*. 
+
+   > [!IMPORTANT]    
+   > Wijzig of werk de URI-instellingen voor de **installatie kopie** niet bij in de module.
+
+6. Geef in de sectie *omgevings variabelen* van de Blade **Update IOT Edge module** de gewenste waarden op voor de omgevings variabelen. Zie [configure using Environment Varia](configure.md#configure-by-using-environment-variables)bles voor een volledige lijst met Azure SQL Edge-omgevings variabelen. De volgende standaard omgevings variabelen zijn voor de module gedefinieerd. 
 
    |**Parameter**  |**Beschrijving**|
    |---------|---------|
    | Naam | Naam voor de module. |
-   |SA_PASSWORD  | Geef een sterk wacht woord op voor het SQL Edge-beheerders account. |
-   |MSSQL_LCID   | Hiermee stelt u de taal-ID in die moet worden gebruikt voor SQL Server. Bijvoorbeeld, 1036 is Frans. |
-   |MSSQL_COLLATION | Hiermee stelt u de standaard sortering voor SQL Server. Deze instelling overschrijft de standaard toewijzing van taal-ID (LCID) in sortering. |
+   | MSSQL_SA_PASSWORD  | Wijzig de standaard waarde om een sterk wacht woord op te geven voor het SQL Edge-beheerders account. |
+   | MSSQL_LCID   | Wijzig de standaard waarde om de gewenste taal-ID in te stellen voor gebruik voor SQL-rand. Bijvoorbeeld, 1036 is Frans. |
+   | MSSQL_COLLATION | Wijzig de standaard waarde om de standaard sortering voor de SQL-rand in te stellen. Deze instelling overschrijft de standaard toewijzing van taal-ID (LCID) in sortering. |
 
-   > [!NOTE]
-   > Wijzig of werk de **afbeeldings-URI** of de **ACCEPT_EULA** -instellingen niet bij in de module.
+   > [!IMPORTANT]    
+   > Wijzig of werk de **ACCEPT_EULA** omgevings variabele voor de module niet bij.
 
-6. Werk in het deel venster **aangepaste Modules IOT Edge** de container maken opties voor de gewenste waarde voor de poort van de **host**bij. Als u meer dan één SQL DB-rand module moet implementeren, moet u ervoor zorgen dat u de koppelings optie bijwerkt om een nieuw bron & doel voor het permanente volume te maken. Zie [volumes gebruiken](https://docs.docker.com/storage/volumes/) in docker-documentatie voor meer informatie over koppels en volumes. 
-
-   ```json
-       {
-         "HostConfig": {
-           "Binds": [
-             "sqlvolume:/sqlvolume"
-           ],
-           "PortBindings": {
-             "1433/tcp": [
-               {
-                 "HostPort": "1433"
-               }
-             ]
-           },
-           "Mounts": [
-             {
-               "Type": "volume",
-               "Source": "sqlvolume",
-               "Target": "/var/opt/mssql"
-             }
-           ]
-         },
-         "Env": [
-           "MSSQL_AGENT_ENABLED=TRUE",
-           "MSSQL_PID=Developer"
-         ]
-       }
-   ```
-
-7. Werk in het deel venster **aangepaste Modules IOT Edge** de *gewenste eigenschappen van de set-module configureren* om de locatie van het SQL-pakket en de gegevens van de stream Analytics-taak op te laten bevatten. Deze twee velden zijn optioneel en moeten worden gebruikt als u de module SQL Edge wilt implementeren met een Data Base en een streaming-taak.
+7. Werk in de sectie *Opties voor container maken* van de Blade **Update IOT Edge module** de volgende opties bij volgens vereiste. 
+   - **Poort van host:** Wijs de opgegeven host poort toe aan poort 1433 (standaard SQL-poort) in de container.
+   - **Bindingen** en **koppelen:** als u meer dan één SQL-rand module moet implementeren, moet u ervoor zorgen dat u de koppelings optie bijwerkt om een nieuw bron & doel paar te maken voor het permanente volume. Zie [volumes gebruiken](https://docs.docker.com/storage/volumes/) in docker-documentatie voor meer informatie over koppels en volumes. 
 
    ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+   {
+    "HostConfig": {
+        "CapAdd": [
+            "SYS_PTRACE"
+        ],
+        "Binds": [
+            "sqlvolume:/sqlvolume"
+        ],
+        "PortBindings": {
+            "1433/tcp": [
+                {
+                    "HostPort": "1433"
+                }
+            ]
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Source": "sqlvolume",
+                "Target": "/var/opt/mssql"
+            }
+        ]
+    },
+    "Env": [
+        "MSSQL_AGENT_ENABLED=TRUE",
+        "ClientTransportType=AMQP_TCP_Only",
+        "PlanId=asde-developer-on-iot-edge"
+    ]
+   }
    ```
-
-8. Stel in het deel venster **aangepaste Modules IOT Edge** het beleid voor het *opnieuw opstarten* in op altijd en de *gewenste status* om uit te voeren.
-9. Klik in het deel venster **aangepaste Modules IOT Edge** op **Opslaan**.
-10. Klik op de pagina **modules instellen** op **volgende**.
-11. Geef op de pagina **route opgeven (optioneel)** van de **set-modules** de routes voor module naar module of module op IOT Edge hub-communicatie, Zie [modules implementeren en routes instellen in IOT Edge](../iot-edge/module-composition.md).
-12. Klik op **Volgende**.
-13. Klik op **Submit**
+   > [!IMPORTANT]    
+   > Wijzig de `PlanId` omgevings variabele die is gedefinieerd in de instelling configuratie maken niet. Als deze waarde wordt gewijzigd, kan de Azure SQL Edge-container niet worden gestart. 
+   
+8. Klik in het deel venster **IOT Edge module bijwerken** op **bijwerken**.
+9. Klik op de pagina **modules op apparaat instellen** op **volgende: routes >** als u routes voor uw implementatie wilt definiëren. Klik anders op **beoordeling + maken**. Zie [modules implementeren en routes instellen in IOT Edge](../iot-edge/module-composition.md)voor meer informatie over het configureren van routes.
+11. Klik in het deel venster **IOT Edge module bijwerken** op **maken**.
 
 ## <a name="connect-to-azure-sql-edge"></a>Verbinding maken met Azure SQL Edge
 
-In de volgende stappen wordt het opdracht regel programma voor Azure SQL Edge, **Sqlcmd**, in de container gebruikt om verbinding te maken met Azure SQL Edge.
+In de volgende stappen wordt het Azure SQL Edge-opdrachtregelprogramma, **sqlcmd**, in de container gebruikt om verbinding te maken met Azure SQL Edge.
 
-> [!NOTE]
-> Sqlcmd-hulp programma is niet beschikbaar in de ARM64-versie van SQL Edge-containers.
+> [!NOTE]      
+> SQL-opdracht regel programma's (Sqlcmd) zijn niet beschikbaar in de ARM64-versie van Azure SQL Edge-containers.
 
-1. Gebruik de `docker exec -it` opdracht om een interactieve bash-shell in de container die wordt uitgevoerd te starten. In het volgende voor beeld `azuresqledge` is de naam die is opgegeven door de `Name` para meter van uw IOT Edge-module.
+1. Gebruik de opdracht `docker exec -it` voor het starten van een interactieve bash-shell in de container die wordt uitgevoerd. In het volgende voor beeld `azuresqledge` is de naam die is opgegeven door de `Name` para meter van uw IOT Edge-module.
 
    ```bash
    sudo docker exec -it azuresqledge "bash"
    ```
 
-2. In de container kunt u lokaal verbinding maken met Sqlcmd. Sqlcmd bevindt zich standaard niet in het pad, dus u moet het volledige pad opgeven.
+2. Maak als u in de container bent lokaal verbinding met sqlcmd. sqlcmd bevindt zich standaard niet in het pad, dus u moet het volledige pad opgeven.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
    ```
 
-   > [!TIP]
-   > U kunt het wacht woord op de opdracht regel weglaten om het in te voeren.
+   > [!TIP]    
+   > U kunt het wachtwoord op de opdrachtregel weglaten om te worden gevraagd het in te voeren.
 
-3. Als dit is gelukt, krijgt u een **Sqlcmd** -opdracht prompt: `1>` .
+3. Als dit is gelukt, krijgt u een opdrachtprompt voor **sqlcmd**: `1>`.
 
 ## <a name="create-and-query-data"></a>Gegevens maken en er query's op uitvoeren
 
-In de volgende secties wordt uitgelegd hoe u **Sqlcmd** en Transact-SQL kunt gebruiken om een nieuwe Data Base te maken, gegevens toe te voegen en een eenvoudige query uit te voeren.
+In de volgende secties wordt uitgelegd hoe u **Sqlcmd** en Transact-SQL kunt gebruiken om een nieuwe Data Base te maken, gegevens toe te voegen en een query uit te voeren.
 
 ### <a name="create-a-new-database"></a>Een nieuwe database maken
 
-Met de volgende stappen maakt u een nieuwe Data Base met de naam `TestDB` .
+Met de volgende stappen maakt u een nieuwe database met de naam `TestDB`.
 
-1. Plak de volgende Transact-SQL-opdracht in de **Sqlcmd** -opdracht prompt om een test database te maken:
+1. Plak de volgende Transact-SQL-opdracht van de opdrachtprompt van **sqlcmd** om een testdatabase te maken:
 
    ```sql
    CREATE DATABASE TestDB
    Go
    ```
 
-2. Op de volgende regel schrijft u een query om de naam van alle data bases op uw server te retour neren:
+2. Schrijf op de volgende regel een query om de naam van alle databases op uw server te retourneren:
 
    ```sql
    SELECT Name from sys.Databases
@@ -162,21 +160,21 @@ Met de volgende stappen maakt u een nieuwe Data Base met de naam `TestDB` .
 
 ### <a name="insert-data"></a>Gegevens invoegen
 
-Maak vervolgens een nieuwe tabel `Inventory` en Voeg twee nieuwe rijen in.
+Maak vervolgens een nieuwe tabel, `Inventory`, en voeg twee nieuwe rijen in.
 
-1. Ga vanaf de **Sqlcmd** -opdracht prompt naar de nieuwe `TestDB` Data Base:
+1. Ga vanuit de opdrachtprompt van **sqlcmd** naar de nieuwe `TestDB`-database:
 
    ```sql
    USE TestDB
    ```
 
-2. Nieuwe tabel maken met de naam `Inventory` :
+2. Maak een nieuwe tabel met de naam `Inventory`:
 
    ```sql
    CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
    ```
 
-3. Gegevens invoegen in de nieuwe tabel:
+3. Voeg gegevens in de nieuwe tabel in:
 
    ```sql
    INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
@@ -190,38 +188,39 @@ Maak vervolgens een nieuwe tabel `Inventory` en Voeg twee nieuwe rijen in.
 
 ### <a name="select-data"></a>Gegevens selecteren
 
-Voer nu een query uit om gegevens uit de tabel te retour neren `Inventory` .
+Voer nu een query uit om gegevens op te halen uit de tabel `Inventory`.
 
-1. Voer vanaf de **Sqlcmd** -opdracht prompt een query in die rijen uit de `Inventory` tabel retourneert waarin de hoeveelheid groter is dan 152:
+1. Voer vanuit de opdrachtprompt van **sqlcmd** een query in die rijen uit de tabel `Inventory` retourneert, waarbij de hoeveelheid groter is dan 152:
 
    ```sql
    SELECT * FROM Inventory WHERE quantity > 152;
    ```
 
-2. Voer de volgende opdracht uit:
+2. Voer de opdracht uit:
 
    ```sql
    GO
    ```
 
-### <a name="exit-the-sqlcmd-command-prompt"></a>Sluit de Sqlcmd-opdracht prompt
+### <a name="exit-the-sqlcmd-command-prompt"></a>De sqlcmd-opdrachtprompt afsluiten
 
-1. Als u uw **Sqlcmd** -sessie wilt beëindigen, typt u `QUIT` :
+1. Als u uw **sqlcmd**-sessie wilt beëindigen, typt u `QUIT`:
 
    ```sql
    QUIT
    ```
 
-2. Als u de interactieve opdracht prompt in uw container wilt afsluiten, typt u `exit` . Uw container blijft actief nadat u de interactieve bash-shell hebt afgesloten.
+2. Als u de interactieve opdrachtprompt in de container wilt afsluiten, typt u `exit`. Uw container blijft actief nadat u de interactieve bash-shell hebt afgesloten.
 
 ## <a name="connect-from-outside-the-container"></a>Verbinding maken van buiten de container
 
-U kunt vanuit elk extern Linux-, Windows-of macOS-hulp programma verbinding maken met SQL-query's en deze uitvoeren op een exemplaar van de Azure SQL-rand die SQL-verbindingen ondersteunt. Voor meer informatie over het maken van een verbinding met een SQL Edge-container van buiten, raadpleegt u [verbinding maken en Query's uitvoeren op Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+U kunt vanuit elk extern Linux-, Windows-of macOS-hulp programma verbinding maken met SQL-query's en deze uitvoeren op een exemplaar van de Azure SQL-rand die SQL-verbindingen ondersteunt. Zie [Verbinding maken met en query's uitvoeren op Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect) voor meer informatie over het maken van een verbinding met een SQL Edge-container van buiten.
 
 In deze Quick Start hebt u een SQL Edge-module geïmplementeerd op een IoT Edge apparaat. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Machine learning en kunst matige intelligentie met ONNX in SQL Edge](onnx-overview.md).
-- [Bouw een end-to-end IOT-oplossing met SQL Edge met behulp van IOT Edge](tutorial-deploy-azure-resources.md).
-- [Gegevens stromen in Azure SQL Edge](stream-data.md)
+- [Machine Learning en kunst matige intelligentie met ONNX in SQL Edge](onnx-overview.md)
+- [Een end-to-end IoT-oplossing bouwen met SQL Edge met behulp van IoT Edge](tutorial-deploy-azure-resources.md)
+- [Gegevensstreaming in Azure SQL Edge](stream-data.md)
+- [Implementatiefouten oplossen](troubleshoot.md)

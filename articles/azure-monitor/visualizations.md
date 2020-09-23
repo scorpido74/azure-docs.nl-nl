@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325522"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983599"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Gegevens van Azure Monitor visualiseren
 Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
@@ -21,7 +21,7 @@ Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren va
 ## <a name="workbooks"></a>Werkmappen
 [Werkmappen](./platform/workbooks-overview.md) zijn interactieve documenten die diep inzicht geven in uw gegevens, onderzoek en samen werking binnen het team. Specifieke voor beelden waarin werkmappen handig zijn, zijn probleemoplossings richtlijnen en incident postmortem.
 
-![Werkmap](media/visualizations/workbook.png)
+![Diagram toont scherm opnamen van verschillende pagina's van een werkmap, inclusief analyse van pagina weergaven, het gebruik en de tijd die aan de pagina zijn besteed.](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Voordelen
 - Ondersteunt metrische gegevens en Logboeken.
@@ -39,7 +39,7 @@ Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren va
 ## <a name="azure-dashboards"></a>Azure Dashboards
 [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md) zijn de primaire Dashboard technologie voor Azure. Ze zijn vooral handig voor het leveren van een enkel glas venster over uw Azure-infra structuur en-services, zodat u snel belang rijke problemen kunt identificeren.
 
-![Dashboard](media/visualizations/dashboard.png)
+![Scherm afbeelding toont een voor beeld van een Azure-dash board met aanpas bare informatie.](media/visualizations/dashboard.png)
 
 Hier volgt een video-overzicht van het maken van Dash boards.
 
@@ -88,7 +88,7 @@ Hier volgt een video-overzicht van het maken van Dash boards.
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) is een open platform dat Excel in operationele Dash boards bevat. Dit is met name handig voor het detecteren en isoleren en uitsorteren van operationele incidenten. U kunt [Grafana Azure monitor gegevens bron-invoeg toepassing](platform/grafana-plugin.md) toevoegen aan uw Azure-abonnement om uw Azure-metrische gegevens te visualiseren.
 
-![Grafana](media/visualizations/grafana.png)
+![Scherm opname toont Grafana-visualisaties.](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties.
@@ -120,7 +120,7 @@ U kunt toegang krijgen tot gegevens in logboek-en metrische gegevens in Azure Mo
 Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste visualisaties met logboek gegevens maken. Deze worden gebruikt door [bewakings oplossingen](insights/solutions.md) om de verzamelde gegevens te presen teren.
 
 
-![Weergave](media/visualizations/view.png)
+![In de scherm afbeelding ziet u een tegel van de container bewakings oplossing en de gedetailleerde Azure Monitor weer gave die wordt geopend wanneer u deze selecteert.](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties voor logboek gegevens.

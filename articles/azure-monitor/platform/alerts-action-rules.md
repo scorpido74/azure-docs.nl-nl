@@ -4,12 +4,12 @@ description: Meer informatie over actie regels in Azure Monitor zijn en hoe u de
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045729"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983134"
 ---
 # <a name="action-rules-preview"></a>Actie regels (preview-versie)
 
@@ -21,7 +21,7 @@ Met actie regels kunt u acties definiëren of onderdrukken voor elk Azure Resour
 
 ### <a name="suppression-of-alerts"></a>Waarschuwingen onderdrukken
 
-Er zijn veel scenario's waarin het nuttig is om de meldingen te onderdrukken die worden gegenereerd door waarschuwingen. Deze scenario's lopen uiteen van onderdrukking tijdens het geplande onderhouds venster tot onderdrukking tijdens niet-kantoor uren. Het team dat verantwoordelijk is voor **ContosoVM** wil bijvoorbeeld waarschuwings meldingen onderdrukken voor het komende weekend, omdat **ContosoVM** het gepland onderhoud ondergaat.
+Er zijn veel scenario's waarin het nuttig is om de meldingen te onderdrukken die worden gegenereerd door waarschuwingen. Deze scenario's lopen uiteen van onderdrukking tijdens het geplande onderhouds venster tot onderdrukking tijdens niet-kantoor uren. Het team dat verantwoordelijk is voor  **ContosoVM** wil bijvoorbeeld waarschuwings meldingen onderdrukken voor het komende weekend, omdat **ContosoVM** het gepland onderhoud ondergaat.
 
 Hoewel het team elke waarschuwings regel die is geconfigureerd voor **ContosoVM** hand matig kan uitschakelen (en deze opnieuw inschakelt na onderhoud), is het geen eenvoudig proces. Met actie regels kunt u waarschuwings onderdrukking op schaal definiëren, zodat de periode van onderdrukking flexibel kan worden geconfigureerd. In het vorige voor beeld kan het team één actie regel definiëren voor **ContosoVM** die alle waarschuwings meldingen voor het weekend onderdrukt.
 
@@ -44,11 +44,11 @@ U kunt de functie openen door **acties beheren** te selecteren op de pagina **wa
 
 Selecteer **+ nieuwe actie regel**.
 
-![Nieuwe actie regel toevoegen](media/alerts-action-rules/action-rules-new-rule.png)
+![Scherm afbeelding toont de pagina acties beheren met de knop nieuwe actie regel gemarkeerd.](media/alerts-action-rules/action-rules-new-rule.png)
 
 U kunt ook een actie regel maken tijdens het configureren van een waarschuwings regel.
 
-![Nieuwe actie regel toevoegen](media/alerts-action-rules/action-rules-alert-rule.png)
+![Scherm afbeelding toont de pagina regel maken met de knop actie regel maken gemarkeerd.](media/alerts-action-rules/action-rules-alert-rule.png)
 
 U ziet nu de pagina stroom voor het maken van actie regels. Configureer de volgende elementen:
 
@@ -103,11 +103,11 @@ Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie g
 ### <a name="action-rule-details"></a>Details van de actie regel
 
 Configureer als laatste de volgende Details voor de actie regel:
-* Naam
+* Name
 * De resource groep waarin deze is opgeslagen
-* Beschrijving
+* Description
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt actie regels maken met de Azure CLI met behulp van de opdracht [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) .  De `az monitor action-rule` verwijzing is slechts een van de vele [Azure cli-verwijzingen voor Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
 
@@ -117,7 +117,7 @@ U kunt actie regels maken met de Azure CLI met behulp van de opdracht [AZ monito
 
    Als u wilt, kunt u ook Azure Cloud Shell gebruiken om de stappen in dit artikel uit te voeren.  Azure Cloud Shell is een interactieve shell-omgeving die u via uw browser gebruikt.  Start Cloud Shell met een van de volgende methoden:
 
-   - Open Cloud Shell door naar te gaan[https://shell.azure.com](https://shell.azure.com)
+   - Open Cloud Shell door naar te gaan [https://shell.azure.com](https://shell.azure.com)
 
    - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
 
@@ -183,7 +183,7 @@ az monitor action-rule create --resource-group MyResourceGroupName \
 
 * * *
 
-## <a name="example-scenarios"></a>Voorbeeldscenario 's
+## <a name="example-scenarios"></a>Voorbeeldscenario's
 
 ### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>Scenario 1: waarschuwingen onderdrukken op basis van Ernst
 
@@ -229,7 +229,7 @@ U kunt uw actie regels weer geven en beheren in de lijst weergave:
 
 Hier kunt u actie regels op schaal inschakelen, uitschakelen of verwijderen door het selectie vakje ernaast in te scha kelen. Wanneer u een actie regel selecteert, wordt de bijbehorende configuratie pagina geopend. De pagina helpt u de definitie van de actie regel bij te werken en in of uit te scha kelen.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt uw actie regels weer geven en beheren met behulp van de opdracht [AZ monitor Action-Rule](/cli/azure/ext/alertsmanagement/monitor) van de Azure cli.
 
@@ -255,7 +255,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 Logboek waarschuwingen die u met de optie [aantal resultaten](alerts-unified-log.md) maakt, genereren één waarschuwings exemplaar met behulp van het hele Zoek resultaat (dat mogelijk meerdere computers kan omvatten). Als in dit scenario een actie regel gebruikmaakt van het filter van de **waarschuwings context (Payload)** , wordt het op de waarschuwings instantie gereageerd zolang er een overeenkomst is. In scenario 2, dat eerder beschreven, wordt de volledige melding onderdrukt als de zoek resultaten voor de gegenereerde logboek waarschuwing zowel **computer-01** als **computer-02**bevatten. Er is helemaal geen melding voor **computer-02** gegenereerd.
 
-![Actie regels en logboek waarschuwingen (aantal resultaten)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![In het diagram worden de actie regels en logboek waarschuwingen weer gegeven met één waarschuwings exemplaar gemarkeerd.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 Als u het beste logboek waarschuwingen met actie regels wilt gebruiken, maakt u logboek waarschuwingen met de optie [metrische meet](alerts-unified-log.md) waarde. Afzonderlijke waarschuwings instanties worden gegenereerd door deze optie op basis van het gedefinieerde groeps veld. In scenario 2 worden afzonderlijke waarschuwings instanties gegenereerd voor **computer-01** en **computer-02**. Als gevolg van de actie regel die in het scenario wordt beschreven, wordt alleen de melding voor **computer-01** onderdrukt. De melding voor **computer-02** blijft gewoon actief.
 
@@ -272,7 +272,7 @@ Nadat u een bereik hebt gedefinieerd tijdens het configureren van een actie rege
 * Een omvattend: de actie regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de overlappende actie regel bevindt zich op het abonnement dat de resource groep bevat.
 * Een door snede: de actie regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de overlappende actie regel bevindt zich op **VM2** en **VM3**.
 
-![Overlappende actie regels](media/alerts-action-rules/action-rules-overlapping.png)
+![Scherm afbeelding toont de nieuwe actie regel pagina met de overlappende actie regels die worden weer gegeven in de actie regels die zijn gedefinieerd in hetzelfde bereik venster.](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>Terwijl ik een waarschuwings regel Configureer, is het mogelijk te weten of er al actie regels zijn gedefinieerd die kunnen worden toegepast op de waarschuwings regel die ik Definieer?
 
