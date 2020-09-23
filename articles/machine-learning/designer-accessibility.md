@@ -1,5 +1,5 @@
 ---
-title: Toegankelijkheids functies in de ontwerp functie gebruiken (preview-versie)
+title: Toegankelijkheids functies in de ontwerp functie gebruiken
 titleSuffix: Azure Machine Learning
 description: Meer informatie over de sneltoetsen en scherm lezers toegankelijkheids functies die beschikbaar zijn in de ontwerp functie.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210375"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893420"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer (preview) te gebruiken
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer te gebruiken
 
 Meer informatie over het gebruik van een toetsen bord en scherm lezer om Azure Machine Learning Designer te gebruiken. Zie [sneltoetsen in de Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md) voor een lijst met sneltoetsen die overal in de Azure Portal werken.
 
@@ -53,7 +53,7 @@ De eigenschappen van een module aanpassen:
 
 ## <a name="navigation-shortcuts"></a>Navigatie snelkoppelingen
 
-| Toetsaanslag | Beschrijving |
+| Toetsaanslag | Description |
 |-|-|
 | Ctrl + F6 | Scha kelen tussen de focus op het canvas en de module structuur |
 | CTRL + F1   | De informatie kaart openen bij het richten op een knoop punt in de module structuur |

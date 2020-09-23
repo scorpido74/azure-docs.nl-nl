@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 5974ebe7960eec1ca3bb8610f66061395fea64d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980727"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Sessie bewaking en-beheer voor Azure Bastion
 
@@ -22,13 +22,13 @@ Zodra de Bastion-service is ingericht en geïmplementeerd in uw virtuele netwerk
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw Azure Bastion-resource en selecteer **sessies** op de pagina Azure Bastion.
 
-   ![sessies](./media/session-monitoring/sessions.png)
+   ![Scherm afbeelding toont de Azure Portal menu-instellingen waarvoor sessies zijn geselecteerd.](./media/session-monitoring/sessions.png)
 2. Op de pagina **sessies** kunt u de actieve externe sessies aan de rechter kant bekijken.
 
    ![sessie weer geven](./media/session-monitoring/view-session.png)
 3. Selecteer **vernieuwen** om de bijgewerkte lijst met externe sessies weer te geven. Wanneer u vernieuwen selecteert, haalt Azure Bastion de meest recente bewakings gegevens op en vernieuwt deze in de portal.
 
-   ![refresh](./media/session-monitoring/refresh.png)
+   ![Scherm afbeelding toont een sessie die gebruikmaakt van Azure Bastion, met de optie vernieuwen gemarkeerd.](./media/session-monitoring/refresh.png)
 
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Een actieve externe sessie verwijderen of forceren
@@ -37,16 +37,16 @@ U kunt een set sessie (s) selecteren en de verbinding forceren. De volgende stap
 
 1. Navigeer naar uw Azure Bastion-resource en selecteer **sessies** op de Azure Bastion-pagina.
 
-   ![navigate](./media/session-monitoring/navigate.png)
+   ![Scherm afbeelding toont de Azure Portal met sessies geselecteerd onder instellingen.](./media/session-monitoring/navigate.png)
 2. Nadat u sessies hebt geselecteerd, ziet u een lijst met externe sessies.
 
    ![sessies weer geven](./media/session-monitoring/list.png)
 3. Selecteer een specifieke externe sessie en selecteer vervolgens de drie weglatings tekens aan de rechter kant van de rij met de sessie en selecteer vervolgens **verwijderen**.
 
-   ![delete](./media/session-monitoring/delete.png)
+   ![Scherm afbeelding toont de Azure Portal het weer geven van een sessie waarbij het pictogram verwijderen is geselecteerd.](./media/session-monitoring/delete.png)
 4. Wanneer u verwijderen selecteert, wordt de externe sessie verbroken en wordt de gebruiker in de externe sessie een bericht weer gegeven dat de verbinding is verbroken.
 
-   ![verbinding verbreken](./media/session-monitoring/disconnect.png)
+   ![Scherm afbeelding toont een bericht dat de verbinding is verbroken.](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

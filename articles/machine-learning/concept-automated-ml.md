@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658555"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886380"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -78,8 +78,6 @@ Met **Azure machine learning**kunt u uw automatische ml-experimenten ontwerpen e
 
    * Voor een beperkte of geen code-ervaring kunt u de Azure Machine Learning Studio Web Experience op [https://ml.azure.com](https://ml.azure.com/)  
    * Bekijk voor python-ontwikkel aars de [Azure machine learning PYTHON SDK](how-to-configure-auto-train.md) 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **Geef de bron en de indeling van de gelabelde trainings gegevens op**: numpy-matrices of Panda-data frame
 
@@ -118,7 +116,7 @@ Voor automatische machine learning experimenten wordt parametrisatie automatisch
 
 In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren. Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model. Meer informatie over hoe AutoML helpt [om te voor komen dat gegevens in uw modellen worden gespreid en niet in evenwicht worden gegeven](concept-manage-ml-pitfalls.md) .
 
-|Normalisatie aanpassen &nbsp; & &nbsp;| Beschrijving |
+|Normalisatie aanpassen &nbsp; & &nbsp;| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Functies standaardiseren door het gemiddelde en de schaal aanpassing te verwijderen voor eenheids variantie  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformeert functies door elke functie te schalen op basis van het minimum en maximum van die kolom  |
@@ -172,25 +170,25 @@ Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus ex
 
 ### <a name="feature-availability"></a>Beschikbaarheid van functies 
 
- Meer functies zijn beschikbaar wanneer u de externe Compute gebruikt, zoals wordt weer gegeven in de volgende tabel. Sommige van deze functies zijn alleen beschikbaar in een bedrijfs werkruimte.
+ Meer functies zijn beschikbaar wanneer u de externe Compute gebruikt, zoals wordt weer gegeven in de volgende tabel. 
 
-| Functie                                                    | Extern | Lokaal | Nodig <br>Enter prise-werk ruimte |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Gegevens streaming (ondersteuning voor grote gegevens, Maxi maal 100 GB)          | ✓      |       | ✓                             |
-| DNN: op BERT gebaseerde tekst parametrisatie en training             | ✓      |       | ✓                             |
-| Out-of-the-box GPU-ondersteuning (training en interferentie)        | ✓      |       | ✓                             |
-| Ondersteuning voor afbeeldings classificatie en labeling                  | ✓      |       | ✓                             |
-| Automatische ARIMA-, Prophet-en ForecastTCN-modellen voor prognoses | ✓      |       | ✓                             |
-| Meerdere uitvoeringen/herhalingen parallel                       | ✓      |       | ✓                             |
-| Modellen maken met interpretiteit in de gebruikers interface van AutoML Studio Web Experience      | ✓      |       | ✓                             |
-| Functie techniek aanpassen in de gebruikers interface van Studio Web Experience                        | ✓      |       | ✓                              |
-| Azure ML afstemming tuning                             | ✓      |       |                               |
-| Ondersteuning voor werk stromen van Azure ML-pipeline                         | ✓      |       |                               |
-| Een uitvoering voortzetten                                             | ✓      |       |                               |
-| Prognose                                                | ✓      | ✓     | ✓                             |
-| Experimenten maken en uitvoeren in notitie blokken                    | ✓      | ✓     |                               |
-| Info en metrische gegevens van experimenten registreren en visualiseren in de gebruikers interface | ✓      | ✓     |                               |
-| Gegevens Guardrails                                            | ✓      | ✓     |                               |
+| Functie                                                    | Extern | Lokaal | 
+|------------------------------------------------------------|--------|-------|
+| Gegevens streaming (ondersteuning voor grote gegevens, Maxi maal 100 GB)          | ✓      |       | 
+| DNN: op BERT gebaseerde tekst parametrisatie en training             | ✓      |       |
+| Out-of-the-box GPU-ondersteuning (training en interferentie)        | ✓      |       |
+| Ondersteuning voor afbeeldings classificatie en labeling                  | ✓      |       |
+| Automatische ARIMA-, Prophet-en ForecastTCN-modellen voor prognoses | ✓      |       | 
+| Meerdere uitvoeringen/herhalingen parallel                       | ✓      |       |
+| Modellen maken met interpretiteit in de gebruikers interface van AutoML Studio Web Experience      | ✓      |       |
+| Functie techniek aanpassen in de gebruikers interface van Studio Web Experience| ✓      |       |
+| Azure ML afstemming tuning                             | ✓      |       |
+| Ondersteuning voor werk stromen van Azure ML-pipeline                         | ✓      |       |
+| Een uitvoering voortzetten                                             | ✓      |       |
+| Prognose                                                | ✓      | ✓     |
+| Experimenten maken en uitvoeren in notitie blokken                    | ✓      | ✓     |
+| Info en metrische gegevens van experimenten registreren en visualiseren in de gebruikers interface | ✓      | ✓     |
+| Gegevens Guardrails                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Veel modellen 
 

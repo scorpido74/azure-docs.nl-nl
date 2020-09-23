@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over Kubernetes-netwerken op Azure Stack edge-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe Kubernetes-netwerken werken op een Azure Stack edge-apparaat.
+title: Meer informatie over Kubernetes-netwerken op Azure Stack Edge Pro-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe Kubernetes-netwerken werken op een Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899315"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes-netwerken in uw Azure Stack Edge GPU-apparaat
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-netwerken in uw Azure Stack Edge Pro GPU-apparaat
 
-Op uw Azure Stack edge-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren waarop netwerken worden gebruikt voor het Peul in uw Kubernetes-cluster. 
+Op uw Azure Stack Edge Pro-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren waarop netwerken worden gebruikt voor het Peul in uw Kubernetes-cluster. 
 
-In dit artikel wordt het netwerk in een Kubernetes-cluster in het algemeen en vooral in de context van uw Azure Stack edge-apparaat beschreven. 
+In dit artikel wordt het netwerk in een Kubernetes-cluster in het algemeen en vooral in de context van uw Azure Stack Edge Pro-apparaat beschreven. 
 
 ## <a name="networking-requirements"></a>Netwerk vereisten
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Kubernetes-netwerken op Azure Stack Edge
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Kubernetes-netwerken op Azure Stack Edge Pro
 
-Calico, Metallb en Core DNS zijn alle onderdelen die voor netwerken op uw Azure Stack Edge zijn geïnstalleerd. 
+Calico, Metallb en Core DNS zijn alle onderdelen die zijn geïnstalleerd voor netwerken op uw Azure Stack Edge Pro. 
 
 - **Calico** wijst een IP-adres toe van een privé-IP-bereik aan elke pod en configureert netwerken voor deze doel einden, zodat pod op één knoop punt kan communiceren met de pod op een ander knoop punt. 
 - **Metallb** wordt uitgevoerd op een pod in het cluster en wijst IP-adres toe aan services van het type Load Balancer. IP-adressen van de Load Balancer worden gekozen uit het IP-adres bereik van de service dat is opgegeven via de lokale gebruikers interface. 
@@ -80,8 +80,8 @@ De IP-toewijzing is voor:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor het configureren van Kubernetes-netwerken op uw Azure Stack Edge:
+Voor het configureren van Kubernetes-netwerken op uw Azure Stack Edge Pro raadpleegt u:
 
-- Maak [een staatloze toepassing extern op uw Azure stack rand via IOT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- Maak [een staatloze toepassing extern op uw Azure stack Edge Pro via IOT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- Maak [een staatloze toepassing extern op uw Azure stack Edge via kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- Maak [een staatloze toepassing extern op uw Azure stack Edge Pro via kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

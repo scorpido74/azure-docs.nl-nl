@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052276"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970663"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Gegevens locatie en klant gegevens voor Azure Multi-Factor Authentication
 
@@ -24,13 +24,12 @@ Klant gegevens worden door Azure AD opgeslagen op een geografische locatie op ba
 
 Azure Multi-Factor Authentication op de Cloud en Azure Multi-Factor Authentication-server proces en een zekere hoeveelheid persoonlijke gegevens en bedrijfs gegevens opslaan. In dit artikel wordt beschreven wat en waar gegevens worden opgeslagen.
 
-De volgende Multi-Factor Authentication activiteiten zijn momenteel afkomstig uit de Amerikaanse data centers, tenzij anders vermeld:
+De Azure Multi-Factor Authentication-service heeft data centers in de Verenigde Staten, Europa en Azië en Stille Oceaan. De volgende activiteiten zijn afkomstig uit de regionale data centers, tenzij anders vermeld:
 
-* Twee ledige verificatie met behulp van telefoon gesprekken of SMS-berichten die doorgaans afkomstig zijn van Amerikaanse data centers en worden gerouteerd door wereld wijde providers.
-    * Verificatie aanvragen voor algemeen gebruik van andere regio's, zoals Europa of Australië, worden momenteel verwerkt door data centers in die regio. Andere gebeurtenissen, zoals het opnieuw instellen van wacht woorden, Azure B2C-gebeurtenissen of hybride scenario's die gebruikmaken van de NPS-extensie of de AD FS adapter, worden allemaal momenteel verwerkt door de Amerikaanse data centers.
-* Push meldingen met behulp van de Microsoft Authenticator-app, afkomstig van Amerikaanse data centers. Daarnaast kunnen leverancierspecifieke services van apparaten ook in verschillende regio's worden afgespeeld.
-* OATH-codes worden doorgaans momenteel gevalideerd in de Verenigde Staten
-    * Opnieuw, gebruikers authenticatie gebeurtenissen voor algemeen gebruik die afkomstig zijn uit andere regio's, zoals Europa of Australië, worden verwerkt door data centers in die regio. Aanvullende gebeurtenissen worden momenteel verwerkt door data centers in de VS.
+* Multi-factor Authentication met telefoon gesprekken afkomstig van Amerikaanse data centers en wordt gerouteerd door wereld wijde providers.
+* Verificatie aanvragen voor algemeen gebruik van andere regio's, zoals Europa of Australië, worden momenteel verwerkt op basis van de locatie van de gebruiker.
+* Push meldingen met behulp van de Microsoft Authenticator-app zijn afkomstig van de regionale data centers op basis van de locatie van de gebruiker.
+    * Leverancierspecifieke services van apparaten, zoals Apple Push meldingen, kunnen buiten de locatie van de gebruiker vallen.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Persoons gegevens die zijn opgeslagen door Azure Multi-Factor Authentication
 

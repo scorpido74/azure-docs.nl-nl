@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc Servers (preview)
-summary: Azure Arc Servers
+title: Servers met Azure Arc
+summary: Servers met Azure Arc
 metadata:
-  title: Azure Arc Servers
+  title: Servers met Azure Arc
   description: Meer informatie over het beheren van on-premises machines in Azure
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763758"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908111"
 landingContent:
 - title: Computers verbinden met Azure met behulp van Azure Arc voor ingeschakelde servers
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Wat zijn servers met Azure Arc?
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
     - text: Machines verbinden met Azure Arc vanuit de Azure-portal
       url: onboard-portal.md
@@ -30,3 +30,9 @@ landingContent:
       url: onboard-service-principal.md
     - text: Machines verbinden met Azure met PowerShell DSC
       url: onboard-dsc.md
+- title: Quickstarts van tien minuten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Servers met Arc-agent implementeren
+      url: ./learn/quick-enable-hybrid-vm.md

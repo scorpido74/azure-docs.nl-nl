@@ -5,15 +5,15 @@ author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019246"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981916"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Gegevens bulksgewijs importeren in Azure Cosmos DB SQL API-account met behulp van de .NET SDK
 
@@ -86,7 +86,7 @@ De voorbeeldtoepassing moet de toegang tot uw Azure Cosmos-account verifiëren. 
 1.  Navigeer naar uw Azure Cosmos-account.
 1.  Open het deelvenster **Sleutels** en kopieer de **URI** en **PRIMAIRE SLEUTEL** van uw account.
 
-Als u Azure Cosmos DB Emulator gebruikt, raadpleegt u [dit artikel om de aanmeldingsgegevens voor de emulator](local-emulator.md#authenticating-requests) op te halen.
+Als u Azure Cosmos DB Emulator gebruikt, raadpleegt u [dit artikel om de aanmeldingsgegevens voor de emulator](local-emulator.md#authenticate-requests) op te halen.
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>Stap 5: Het CosmosClient-object initialiseren met ondersteuning voor bulkuitvoering
 

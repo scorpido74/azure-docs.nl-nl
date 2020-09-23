@@ -1,6 +1,6 @@
 ---
-title: Beleid voor gegevens retentie in-en uitschakelen-Azure SQL Edge (preview-versie)
-description: Meer informatie over het in-en uitschakelen van het Bewaar beleid voor gegevens in Azure SQL Edge (preview-versie)
+title: Bewaar beleid voor gegevens in-en uitschakelen-Azure SQL Edge
+description: Meer informatie over het inschakelen en uitschakelen van het Bewaar beleid voor gegevens in Azure SQL Edge
 keywords: SQL-rand, gegevens retentie
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9787f2cfa87a16d9e7dd1753e4389977c6753b81
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550629"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902499"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Het Bewaar beleid voor gegevens in-en uitschakelen
 
@@ -23,9 +23,6 @@ In dit onderwerp wordt beschreven hoe u het Bewaar beleid voor gegevens inschake
 ## <a name="enable-data-retention-for-a-database"></a>Bewaren van gegevens voor een Data Base inschakelen
 
 In het volgende voor beeld ziet u hoe u het bewaren van gegevens inschakelt met behulp van [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options).
-
-> [!NOTE]
-> Als u de functie voor het bewaren van gegevens in Azure SQL Edge (preview) wilt inschakelen, schakelt u TF 12825 in als opstart optie of gebruikt u de DBCC TRACEON-opdracht. Zie [configureren met een MSSQL. conf-bestand](configure.md#configure-by-using-an-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met behulp van een MSSQL. conf-bestand. 
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -59,12 +56,12 @@ Het `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD 
 
 - DATA_DELETION-geeft aan of het bewaren van gegevens is in-of uitgeschakeld.
 - FILTER_COLUMN naam van de kolom in de tabel, die wordt gebruikt om te bepalen of de rijen verouderd zijn of niet. De filter kolom kan alleen een kolom met de volgende gegevens typen zijn 
-    - Datum
+    - Date
     - SmallDateTime
-    - Datum/Tijd
+    - DateTime
     - DateTime2
     - Date time offset
-- RETENTION_PERIOD-een integerwaarde gevolgd door de descriptor van een eenheid. De toegestane eenheden zijn dag, WEEK, maand en jaar.
+- RETENTION_PERIOD-een integerwaarde gevolgd door de descriptor van een eenheid. De toegestane eenheden zijn dag, dagen, WEEK, weken, maand, maanden, jaar en jaar.
 
 In het volgende voor beeld ziet u hoe u de Bewaar periode voor gegevens inschakelt voor een tabel met behulp van [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).  
 
@@ -98,9 +95,9 @@ De instelling gegevens retentie voor de data base en de tabel wordt in combi nat
 |Database optie | Tabel optie | Gedrag |
 |----------------|--------------|----------|
 | UIT | UIT | Het Bewaar beleid voor gegevens is uitgeschakeld en het automatisch en hand matig opschonen van verouderde records is uitgeschakeld.|
-| UIT | AAN  | Het beleid voor gegevens retentie is ingeschakeld voor de tabel, maar zowel automatische als hand matig opschonen van verouderde records is uitgeschakeld. |
+| UIT | AAN  | Het Bewaar beleid voor gegevens is ingeschakeld voor de tabel. Automatisch opruimen van verouderde records is uitgeschakeld, maar de hand matige opschoon methode kan worden gebruikt om verouderde records op te schonen. |
 | AAN | UIT | Het Bewaar beleid voor gegevens is ingeschakeld op database niveau. Omdat de optie echter op tabel niveau is uitgeschakeld, is het opschonen van verouderde rijen niet op basis van een Bewaar bewerking.|
-| AAN | AAN | Het beleid voor gegevens retentie is ingeschakeld voor zowel de Data Base als de tabellen. Het automatisch/hand matig opschonen van verouderde records is ingeschakeld |
+| AAN | AAN | Het beleid voor gegevens retentie is ingeschakeld voor zowel de Data Base als de tabellen. Het automatisch opschonen van verouderde records is ingeschakeld. |
 
 ## <a name="disable-data-retention-on-a-table"></a>Bewaren van gegevens uitschakelen voor een tabel 
 

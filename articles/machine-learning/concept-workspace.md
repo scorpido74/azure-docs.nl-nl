@@ -8,21 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/08/2020
-ms.openlocfilehash: e765422ebfce1a4328bac9a17edb8b581f87e6f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 09/22/2020
+ms.openlocfilehash: 7185adf559f429feb0ada60fef65e1edb106da66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907633"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
 De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning, waardoor u een centrale locatie kunt gebruiken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt.  De werk ruimte houdt een geschiedenis bij van alle uitvoeringen van de training, met inbegrip van Logboeken, metrische gegevens, uitvoer en een moment opname van uw scripts. U gebruikt deze informatie om te bepalen welke trainings uitvoering het beste model produceert.  
 
 Wanneer u een model hebt dat u wilt, registreert u het bij de werk ruimte. Vervolgens gebruikt u de geregistreerde model-en Score scripts om te implementeren op Azure Container Instances, Azure Kubernetes-service of een veld-Programmeer bare poort matrix (FPGA) als een HTTP-eind punt op basis van de REST. U kunt het model ook implementeren op een Azure IoT Edge-apparaat als een module.
-
-Prijzen en functies die beschikbaar zijn, zijn afhankelijk van het feit of [Basic of ENTER prise Edition](overview-what-is-azure-ml.md#sku) is geselecteerd voor de werk ruimte. U selecteert de editie wanneer u [de werk ruimte maakt](#create-workspace).  U kunt ook een [upgrade uitvoeren](#upgrade) van Basic naar Enter prise Edition.
 
 ## <a name="taxonomy"></a>Taxonomie 
 
@@ -53,7 +51,7 @@ U kunt op de volgende manieren met uw werk ruimte werken:
 
 + Op het web:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
-    + [Azure machine learning Designer (preview)](concept-designer.md) : alleen beschikbaar in [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten.
+    + [Azure Machine Learning-ontwerpprogramma](concept-designer.md) 
 + In een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + In elke R-omgeving met de [Azure machine learning SDK voor R (preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
@@ -80,7 +78,6 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 |---------------------------|---------|---------|------------|------------|------------|
 | Een werkruimte maken        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Toegang tot de werk ruimte beheren    | **&check;**   || |  **&check;**    ||
-| Bijwerken naar Enter prise Edition    | **&check;** | **&check;**  | |     ||
 | Reken resources maken en beheren    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
 | Een VM voor een notebook maken |   | **&check;** | |     ||
 
@@ -88,8 +85,6 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 > Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a> Een werk ruimte maken
-
-Wanneer u een werk ruimte maakt, bepaalt u of u deze maakt met [Basic of ENTER prise Edition](overview-what-is-azure-ml.md#sku). De editie bepaalt de functies die beschikbaar zijn in de werk ruimte. Enter prise Edition biedt onder andere functies toegang tot [Azure machine learning Designer](concept-designer.md) en de Studio-versie van het bouwen van [geautomatiseerde machine learning experimenten](tutorial-first-experiment-automated-ml.md).  Zie voor meer informatie en prijs informatie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Er zijn meerdere manieren om een werk ruimte te maken:  
 
@@ -101,32 +96,35 @@ Er zijn meerdere manieren om een werk ruimte te maken:
 > [!NOTE]
 > De naam van de werk ruimte is niet hoofdletter gevoelig.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Bijwerken naar Enter prise Edition
-
-U kunt [uw werk ruimte bijwerken met behulp van de Basic-naar-Enter prise-editie](how-to-manage-workspace.md#upgrade) met Azure Portal. U kunt een Enter prise Edition-werk ruimte niet naar een Basic editie-werk ruimte downgradeen. 
-
 ## <a name="associated-resources"></a><a name="resources"></a> Gekoppelde resources
 
 Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azure-resources gemaakt die worden gebruikt door de werk ruimte:
 
++ [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning Reken instanties worden hier ook opgeslagen. 
+  
+  > [!IMPORTANT]
+  > Het opslag account is standaard een v1-account voor algemeen gebruik. U kunt [deze upgrade uitvoeren naar de versie v2 voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) nadat de werk ruimte is gemaakt. Schakel de hiërarchische naam ruimte op het opslag account niet in na de upgrade naar de versie van het algemene doel v2.
+
+  Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimten worden ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
+  
 + [Azure container Registry](https://azure.microsoft.com/services/container-registry/): registreert docker-containers die u tijdens de training gebruikt en wanneer u een model implementeert. Om de kosten te minimaliseren, wordt ACR **Lazy geladen** totdat implementatie installatie kopieën zijn gemaakt.
-+ [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning Reken instanties worden hier ook opgeslagen.
+
 + [Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/): slaat bewakings informatie over uw modellen op.
+
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
 
 > [!NOTE]
 > Naast het maken van nieuwe versies, kunt u ook bestaande Azure-Services gebruiken.
 
-### <a name="azure-storage-account"></a>Azure Storage-account
+<a name="wheres-enterprise"></a>
 
-Het Azure Storage-account dat standaard is gemaakt met de werk ruimte is een v1-account voor algemeen gebruik. U kunt dit bijwerken naar de algemene versie v2 nadat de werk ruimte is gemaakt door de stappen te volgen in het artikel [upgraden naar een document van het v2-opslag account voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) .
+## <a name="what-happened-to-enterprise-edition"></a>Wat is er gebeurd met de Enter prise Edition?
 
-> [!IMPORTANT]
-> Schakel de hiërarchische naam ruimte op het opslag account niet in na de upgrade naar de versie van het algemene doel v2.
+Vanaf september 2020 zijn alle mogelijkheden die beschikbaar waren in Enter prise Edition-werk ruimten, nu ook beschikbaar in de Basic Edition-werk ruimten. Nieuwe ondernemings-werk ruimten kunnen niet meer worden gemaakt.  Alle SDK-, CLI-of Azure Resource Manager-aanroepen die gebruikmaken van de `sku` para meter blijven werken, maar er wordt een eenvoudige werk ruimte ingericht.
 
-Als u een bestaand Azure Storage account wilt gebruiken, kan het geen Premium-account zijn (Premium_LRS en Premium_GRS). Het kan ook geen hiërarchische naam ruimte hebben (gebruikt met Azure Data Lake Storage Gen2). Geen enkele Premium-opslag of hiërarchische naam ruimten worden ondersteund met het _standaard_ opslag account van de werk ruimte. U kunt Premium-opslag of een hiërarchische naam ruimte gebruiken met _niet-standaard_ opslag accounts.
+Vanaf 21 december worden alle Enter prise Edition-werk ruimten automatisch ingesteld op Basic Edition, dat dezelfde mogelijkheden heeft. Er wordt geen downtime uitgevoerd tijdens dit proces. Op 1 januari 2021 wordt Enter prise Edition formeel buiten gebruik gesteld. 
 
-
+In beide edities zijn klanten verantwoordelijk voor de kosten van verbruikte Azure-resources en hoeven er geen extra kosten te worden betaald voor Azure Machine Learning. Raadpleeg de pagina met [prijzen voor Azure machine learning](https://azure.microsoft.com/pricing/details/machine-learning/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -137,5 +135,5 @@ Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 + [Een werkruimte beheren](how-to-manage-workspace.md)
 + [Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK](tutorial-1st-experiment-sdk-setup.md)
 + [Zelf studie: aan de slag met Azure Machine Learning met de R SDK](tutorial-1st-r-experiment.md)
-+ [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) (alleen beschikbaar in de [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten)
-+ [Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie](tutorial-designer-automobile-price-train-score.md) (alleen beschikbaar in werk ruimten voor [Enter prise Edition](overview-what-is-azure-ml.md#sku) )
++ [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) 
++ [Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md)

@@ -1,6 +1,6 @@
 ---
-title: Ondersteunde functies van de Azure SQL-rand (preview-versie)
-description: Meer informatie over de functies die worden ondersteund door Azure SQL Edge (preview).
+title: Ondersteunde functies van Azure SQL Edge
+description: Meer informatie over de functies die door Azure SQL Edge worden ondersteund.
 keywords: Inleiding tot SQL Edge, wat is SQL Edge, overzicht van SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,21 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 87ccb28f527082dccee338396b460124652c0e76
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886542"
 ---
-# <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
+# <a name="supported-features-of-azure-sql-edge"></a>Ondersteunde functies van Azure SQL Edge 
 
-Azure SQL Edge is gebaseerd op de nieuwste versie van de Microsoft SQL Server data base-engine op Linux. Het ondersteunt een subset van de functies die worden ondersteund in SQL Server 2019 op Linux, naast sommige functies die momenteel niet worden ondersteund of beschikbaar zijn in SQL Server 2019 op Linux (of in SQL Server in Windows).
+Azure SQL Edge is gebaseerd op de nieuwste versie van de SQL Database-Engine. Het ondersteunt een subset van de functies die worden ondersteund in SQL Server 2019 op Linux, naast sommige functies die momenteel niet worden ondersteund of beschikbaar zijn in SQL Server 2019 op Linux (of in SQL Server in Windows).
 
 Zie voor een volledige lijst van de functies die worden ondersteund in SQL Server on Linux [edities en ondersteunde functies van SQL Server 2019 op Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019). Zie [edities en ondersteunde functies van SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15)voor edities en ondersteunde functies van SQL Server in Windows.
-
-> [!NOTE]
-> Azure SQL Edge is momenteel beschikbaar als preview-product en kan niet worden gebruikt in productie omgevingen. Micro soft raadt u mogelijk aan Azure SQL Edge uit te voeren in productie omgevingen, afhankelijk van de validatie van de implementatie en uw use-case scenario's.
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge-edities
 
@@ -36,9 +33,7 @@ Azure SQL Edge is beschikbaar in twee verschillende edities of software plannen.
 
 ## <a name="operating-system"></a>Besturingssysteem
 
-Azure SQL Edge-containers zijn momenteel gebaseerd op Ubuntu 16,04 en worden alleen ondersteund voor docker-hosts waarop Ubuntu 16,04 LTS (aanbevolen) of Ubuntu 18,04 LTS worden uitgevoerd. Het is mogelijk om Azure SQL Edge-containers op andere hosts van het besturings systeem uit te voeren. het kan bijvoorbeeld worden uitgevoerd op andere distributies van Linux of op Windows (met behulp van docker CE of docker EE), maar micro soft raadt u echter niet aan om dit te doen, omdat deze configuratie mogelijk niet uitgebreid is getest.
-
-Azure SQL Edge wordt momenteel alleen ondersteund voor implementatie via Azure IoT Edge. Zie [Azure IOT Edge ondersteunde systemen](https://docs.microsoft.com/azure/iot-edge/support)voor meer informatie.
+Azure SQL Edge-containers zijn gebaseerd op Ubuntu 18,04 en worden alleen ondersteund om te worden uitgevoerd op docker-hosts met Ubuntu 18,04 LTS (aanbevolen) of Ubuntu 20,04 LTS. Het is mogelijk om Azure SQL Edge-containers op andere hosts van het besturings systeem uit te voeren. het kan bijvoorbeeld worden uitgevoerd op andere distributies van Linux of op Windows (met behulp van docker CE of docker EE), maar micro soft raadt u echter niet aan om dit te doen, omdat deze configuratie mogelijk niet uitgebreid is getest.
 
 De aanbevolen configuratie voor het uitvoeren van Azure SQL Edge in Windows is het configureren van een Ubuntu VM op de Windows-host en het uitvoeren van Azure SQL Edge in de Linux-VM.
 
@@ -46,7 +41,7 @@ Het aanbevolen en ondersteunde bestands systeem voor Azure SQL Edge is EXT4 en X
 
 ## <a name="hardware-support"></a>Hardwareondersteuning
 
-Voor Azure SQL Edge is een 64-bits processor vereist (x64 of ARM64), met mini maal één processor en één GB RAM-geheugen op de host. Terwijl het geheugen voor het opstarten van de Azure SQL-rand zich dicht bij 500 MB bevindt, is het extra geheugen nodig voor andere IoT Edge-modules die op het apparaat Edge worden uitgevoerd. De werkelijke geheugen-en CPU-vereisten voor Azure SQL Edge variëren, afhankelijk van de complexiteit van de werk belasting en het volume van de gegevens die worden verwerkt. Wanneer u een hardware voor uw oplossing kiest, raadt micro soft u aan uitgebreide prestatie tests uit te voeren om ervoor te zorgen dat aan de vereiste prestatie kenmerken voor uw oplossing wordt voldaan.  
+Voor Azure SQL Edge is een 64-bits processor vereist (x64 of ARM64), met mini maal één processor en één GB RAM-geheugen op de host. Hoewel het geheugen voor het opstarten van de 450MB van Azure SQL Edge bijna is, is het extra geheugen nodig voor andere IoT Edge modules of processen die op het apparaat Edge worden uitgevoerd. De werkelijke geheugen-en CPU-vereisten voor Azure SQL Edge variëren, afhankelijk van de complexiteit van de werk belasting en het volume van de gegevens die worden verwerkt. Wanneer u een hardware voor uw oplossing kiest, raadt micro soft u aan uitgebreide prestatie tests uit te voeren om ervoor te zorgen dat aan de vereiste prestatie kenmerken voor uw oplossing wordt voldaan.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge-onderdelen
 
@@ -76,6 +71,7 @@ De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet 
 | &nbsp; | Poly base. Houd er rekening mee dat u Azure SQL Edge kunt configureren als een doel voor externe tabellen in poly base. |
 | &nbsp; | Taal uitbreid baarheid via Java en Spark. |
 | &nbsp; | Integratie van Active Directory. |
+| &nbsp; | Data base automatisch verkleinen. De eigenschap automatisch verkleinen voor een Data Base kan worden ingesteld met behulp van de `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` opdracht, maar deze wijziging heeft geen effect. De automatische verkleinings taak wordt niet uitgevoerd voor de data base. Gebruikers kunnen de database bestanden nog steeds verkleinen met behulp van de opdracht ' DBCC '. |
 | &nbsp; | Database momentopnamen. |
 | &nbsp; | Ondersteuning voor permanent geheugen. |
 | &nbsp; | Micro soft Distributed Transaction Coordinator. |

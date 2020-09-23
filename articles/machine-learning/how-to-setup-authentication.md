@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 878b3d4a522fd2b7567ed6005283d041064d9fe5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904535"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885987"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Meer informatie over het verifiëren van uw Azure Machine Learning-werk ruimte en modellen die zijn geïmplementeerd als webservices.
 
@@ -32,7 +32,7 @@ Ongeacht welk verificatie type wordt gebruikt, wordt op rollen gebaseerd toegang
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Maak een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
+* Een [Azure Machine Learning-werkruimte](how-to-manage-workspace.md) maken.
 * [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning-notebook-VM](concept-azure-machine-learning-architecture.md#compute-instance) met de SDK die al is geïnstalleerd.
 
 ## <a name="interactive-authentication"></a>Interactieve verificatie

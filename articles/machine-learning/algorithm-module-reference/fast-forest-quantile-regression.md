@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097327"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907958"
 ---
-# <a name="fast-forest-quantile-regression"></a>Quantile regressie van Fast-forest
+# <a name="fast-forest-quantile-regression"></a>Regressie snelle forestkwantiel
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Met deze module kunt u een quantile regressie model in een snelle structuur maken in een pijp lijn. Quantile regressie van Fast forest is handig als u meer wilt weten over de verdeling van de voorspelde waarde, in plaats van een enkele gemiddelde Voorspellings waarde te verkrijgen. Deze methode heeft veel toepassingen, waaronder:  
   
@@ -32,7 +32,7 @@ Dit regressie algoritme is een gemarkeerde leer methode. Dit betekent dat **er e
 
 ## <a name="more-about-quantile-regression"></a>Meer informatie over quantile regressie
 
-Er zijn veel verschillende typen regressies. In de meest eenvoudige zin betekent regressie het aanpassen van een model op een doel uitgedrukt in een numerieke vector. Statistici zijn echter steeds meer geavanceerde methoden ontwikkeld voor regressie.
+Er zijn veel verschillende typen regressies. Eenvoudigweg gezegd, regressie betekent dat een model wordt toegepast op een doel uitgedrukt in een numerieke vector. Statistici zijn echter steeds meer geavanceerde methoden ontwikkeld voor regressie.
 
 De eenvoudigste definitie van *quantile* is een waarde die een set gegevens opsplitst in groepen van gelijke grootte. de waarden voor quantile markeren dus de grenzen tussen groepen. Statistische spraak: quantiles zijn waarden die met regel matige tussen pozen worden uitgevoerd op basis van de inverse van de functie van de cumulatieve verdeling (CDF) van een wille keurige variabele.
 

@@ -3,12 +3,12 @@ title: Azure Event Hubs-uitzonde ringen
 description: Dit artikel bevat een lijst met uitzonde ringen en voorgestelde acties van Azure Event Hubs Messa ging.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512364"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908384"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Uitzonde ringen voor Event Hubs berichten-.NET
 In deze sectie vindt u de .NET-uitzonde ringen die worden gegenereerd door .NET Framework-Api's. 
@@ -19,10 +19,10 @@ De Event Hubs .NET-Api's genereren uitzonde ringen die kunnen vallen in de volge
 
  - Fout bij gebruikers codering: 
  
-   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
-   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
-   - [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
-   - [System. runtime. serialisatie. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
+   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)
+   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true)
+   - [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true)
+   - [System. runtime. serialisatie. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1&preserve-view=true)
    
    Algemene actie: Probeer de code te corrigeren voordat u doorgaat.
  
@@ -30,7 +30,7 @@ De Event Hubs .NET-Api's genereren uitzonde ringen die kunnen vallen in de volge
  
    - [Micro soft. ServiceBus. Messa ging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Micro soft. Azure. Event hubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
+   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true)
    
    Algemene actie: Controleer uw configuratie en wijzig deze indien nodig.
    
@@ -45,7 +45,7 @@ De Event Hubs .NET-Api's genereren uitzonde ringen die kunnen vallen in de volge
  
  - Andere uitzonde ringen: 
  
-   - [System. Trans actions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
+   - [System. Trans actions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1&preserve-view=true)
    - [System. TimeoutException](#timeoutexception)
    - [Micro soft. ServiceBus. Messa ging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [Micro soft. ServiceBus. Messa ging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +57,11 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten, en de o
 
 | Uitzonderings type | Beschrijving/oorzaak/voor beelden | Aanbevolen actie | Opmerking over automatische/directe nieuwe poging |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) |De server heeft niet gereageerd op de aangevraagde bewerking binnen de opgegeven tijd, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). De server heeft de aangevraagde bewerking mogelijk voltooid. Deze uitzonde ring kan zich voordoen als gevolg van vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het opnieuw als dat nodig is.<br /> Zie [TimeoutException](#timeoutexception). | In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
-| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |De aangevraagde gebruikers bewerking is niet toegestaan binnen de server of service. Zie het uitzonderings bericht voor meer informatie. Als u bijvoorbeeld [volt ooien](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , wordt deze uitzonde ring gegenereerd als het bericht in de [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) -modus is ontvangen. | Controleer de code en de documentatie. Controleer of de aangevraagde bewerking geldig is. | Opnieuw proberen wordt niet geholpen. |
-| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | Er wordt geprobeerd een bewerking aan te roepen voor een object dat al is gesloten, afgebroken of verwijderd. In zeldzame gevallen is de ambient trans actie al verwijderd. | Controleer de code en zorg ervoor dat deze geen bewerkingen aanroept op een verwijderd object. | Opnieuw proberen wordt niet geholpen. |
-| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | Het [token provider](/dotnet/api/microsoft.servicebus.tokenprovider) -object kan geen token verkrijgen, het token is ongeldig of het token bevat niet de claims die vereist zijn om de bewerking uit te voeren. | Zorg ervoor dat de token provider is gemaakt met de juiste waarden. Controleer de configuratie van de Access Control Service. | In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
-| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | Een of meer argumenten die zijn opgegeven voor de methode, zijn ongeldig. De URI die is geleverd aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) bevat een of meer paden. Het URI-schema dat is opgegeven aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) , is ongeldig. De waarde van de eigenschap is groter dan 32 KB. | Controleer de aanroepende code en controleer of de argumenten juist zijn. | Opnieuw proberen wordt niet geholpen. |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) |De server heeft niet gereageerd op de aangevraagde bewerking binnen de opgegeven tijd, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). De server heeft de aangevraagde bewerking mogelijk voltooid. Deze uitzonde ring kan zich voordoen als gevolg van vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het opnieuw als dat nodig is.<br /> Zie [TimeoutException](#timeoutexception). | In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true) |De aangevraagde gebruikers bewerking is niet toegestaan binnen de server of service. Zie het uitzonderings bericht voor meer informatie. Als u bijvoorbeeld [volt ooien](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) , wordt deze uitzonde ring gegenereerd als het bericht in de [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) -modus is ontvangen. | Controleer de code en de documentatie. Controleer of de aangevraagde bewerking geldig is. | Opnieuw proberen wordt niet geholpen. |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true) | Er wordt geprobeerd een bewerking aan te roepen voor een object dat al is gesloten, afgebroken of verwijderd. In zeldzame gevallen is de ambient trans actie al verwijderd. | Controleer de code en zorg ervoor dat deze geen bewerkingen aanroept op een verwijderd object. | Opnieuw proberen wordt niet geholpen. |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true) | Het [token provider](/dotnet/api/microsoft.servicebus.tokenprovider) -object kan geen token verkrijgen, het token is ongeldig of het token bevat niet de claims die vereist zijn om de bewerking uit te voeren. | Zorg ervoor dat de token provider is gemaakt met de juiste waarden. Controleer de configuratie van de Access Control Service. | In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) | Een of meer argumenten die zijn opgegeven voor de methode, zijn ongeldig. De URI die is geleverd aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) bevat een of meer paden. Het URI-schema dat is opgegeven aan [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) of [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) , is ongeldig. De waarde van de eigenschap is groter dan 32 KB. | Controleer de aanroepende code en controleer of de argumenten juist zijn. | Opnieuw proberen wordt niet geholpen. |
 | [Micro soft. ServiceBus. Messa ging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Micro soft. Azure. Event hubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | De entiteit die aan de bewerking is gekoppeld, bestaat niet of is verwijderd. | Controleer of de entiteit bestaat. | Opnieuw proberen wordt niet geholpen. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | De client kan geen verbinding maken met Event hub. |Controleer of de opgegeven hostnaam juist is en of de host bereikbaar is. | Opnieuw proberen kan helpen als er onregelmatige verbindings problemen zijn. |
 | [Micro soft. ServiceBus. Messa ging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Micro soft. Azure. Event hubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | De aanvraag kan op dit moment niet door de service worden verwerkt. | De client kan gedurende een bepaalde tijd wachten en vervolgens de bewerking opnieuw uitvoeren. <br /> Zie [ServerBusyException](#serverbusyexception). | Client kan na een bepaald interval opnieuw proberen. Als een nieuwe poging resulteert in een andere uitzonde ring, controleert u het gedrag voor opnieuw proberen van deze uitzonde ring. |
@@ -80,9 +80,12 @@ Deze uitzonde ring kan zich voordoen als het maximum aantal ontvangers (5) al is
 Event Hubs heeft een limiet van 20 consumenten groepen per Event hub. Wanneer u probeert meer te maken, ontvangt u een [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception). 
 
 ## <a name="timeoutexception"></a>TimeoutException
-Een [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
+Een [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) geeft aan dat een door de gebruiker geïnitieerde bewerking langer duurt dan de time-out van de bewerking. 
 
 Voor Event Hubs wordt de time-out opgegeven als onderdeel van de connection string of via [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder). Het fout bericht zelf kan variëren, maar het bevat altijd de time-outwaarde die voor de huidige bewerking is opgegeven. 
+
+Er wordt verwacht dat er time-outs optreden tijdens of tussen onderhouds bewerkingen, zoals Event Hubs service-updates (of) updates van het besturings systeem op resources die de service uitvoeren. Tijdens updates van het besturings systeem worden de entiteiten verplaatst en worden de knoop punten bijgewerkt of opnieuw opgestart. Dit kan leiden tot time-outs. Zie [Sla voor Event hubs](https://azure.microsoft.com/support/legal/sla/event-hubs/)voor Service Level Agreement Sla-gegevens voor de Azure Event hubs-service. 
+
 
 ### <a name="common-causes"></a>Veelvoorkomende oorzaken
 Er zijn twee veelvoorkomende oorzaken voor deze fout: onjuiste configuratie of een tijdelijke service fout.
