@@ -1,6 +1,6 @@
 ---
-title: Reken netwerk op Azure Stack Edge beheren voor toegang tot modules | Microsoft Docs
-description: Hierin wordt beschreven hoe u het Compute-netwerk uitbreidt op uw Azure Stack Edge om modules te openen via een extern IP-adres.
+title: Berekenings netwerk op Azure Stack Edge Pro beheren voor toegang tot modules | Microsoft Docs
+description: Hierin wordt beschreven hoe u het Compute-netwerk uitbreidt op uw Azure Stack Edge Pro om modules te openen via een extern IP-adres.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894109"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Berekenings netwerk op uw Azure Stack rand inschakelen
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Berekenings netwerk op uw Azure Stack Edge Pro inschakelen
 
-In dit artikel wordt beschreven hoe de modules die op uw Azure Stack Edge worden uitgevoerd, toegang krijgen tot het berekenings netwerk dat op het apparaat is ingeschakeld.
+In dit artikel wordt beschreven hoe de modules die op uw Azure Stack Edge Pro worden uitgevoerd, toegang hebben tot het berekenings netwerk dat op het apparaat is ingeschakeld.
 
 Als u het netwerk wilt configureren, voert u de volgende stappen uit:
 
-- Een netwerk interface op uw Azure Stack edge-apparaat inschakelen voor compute
-- Een module toevoegen voor toegang tot het Compute-netwerk op uw Azure Stack rand
+- Een netwerk interface op uw Azure Stack Edge Pro-apparaat inschakelen voor reken kracht
+- Een module toevoegen voor toegang tot het Compute-netwerk op uw Azure Stack Edge Pro
 - Controleren of de module toegang heeft tot de ingeschakelde netwerk interface
 
 In deze zelf studie gebruikt u een module webserver-app om het scenario te demonstreren.
@@ -31,8 +31,8 @@ In deze zelf studie gebruikt u een module webserver-app om het scenario te demon
 
 Voordat u begint, hebt u het volgende nodig:
 
-- Een Azure Stack edge-apparaat met het installatie programma van het apparaat is voltooid.
-- U hebt de stappen voor het configureren van de **reken** stap voltooid volgens de [zelf studie: gegevens transformeren met Azure stack rand](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) op het apparaat. Op uw apparaat moet een IoT Hub resource, een IoT-apparaat en een IoT Edge apparaat zijn geïnstalleerd.
+- Een Azure Stack Edge Pro-apparaat met de installatie van het apparaat is voltooid.
+- U bent klaar met het configureren van de **reken** stap volgens de [zelf studie: gegevens transformeren met Azure stack Edge Pro](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) op het apparaat. Op uw apparaat moet een IoT Hub resource, een IoT-apparaat en een IoT Edge apparaat zijn geïnstalleerd.
 
 ## <a name="enable-network-interface-for-compute"></a>Netwerk interface inschakelen voor compute
 
@@ -55,10 +55,10 @@ Voer de volgende stappen uit op uw lokale webinterface om reken instellingen te 
 
 ## <a name="add-webserver-app-module"></a>Webserver-app-module toevoegen
 
-Voer de volgende stappen uit om een module webserver-app op uw Azure Stack edge-apparaat toe te voegen.
+Voer de volgende stappen uit om een module webserver-app op uw Azure Stack Edge Pro-apparaat toe te voegen.
 
-1. Ga naar de IoT Hub bron die is gekoppeld aan uw Azure Stack edge-apparaat en selecteer vervolgens **IOT edge apparaat**.
-2. Selecteer het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack edge-apparaat. Selecteer **modules instellen**op de details van het **apparaat**. Selecteer **+ toevoegen** in **modules toevoegen**en selecteer vervolgens **IOT Edge module**.
+1. Ga naar de IoT Hub bron die is gekoppeld aan uw Azure Stack Edge Pro-apparaat en selecteer vervolgens **IOT edge apparaat**.
+2. Selecteer het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack Edge Pro-apparaat. Selecteer **modules instellen**op de details van het **apparaat**. Selecteer **+ toevoegen** in **modules toevoegen**en selecteer vervolgens **IOT Edge module**.
 3. Op de Blade **aangepaste modules IOT Edge** :
 
     1. Geef een **naam** op voor de module webserver-app die u wilt implementeren.

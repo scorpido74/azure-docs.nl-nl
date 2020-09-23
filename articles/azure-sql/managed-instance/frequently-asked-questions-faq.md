@@ -1,7 +1,7 @@
 ---
 title: Veelgestelde vragen
 titleSuffix: Azure SQL Managed Instance
-description: Veelgestelde vragen over Azure SQL Managed instance (FAQ)
+description: Veelgestelde vragen over Azure SQL Managed Instance (FAQ)
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661415"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887388"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed Instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Dit artikel bevat de meest voorkomende vragen over [Azure SQL Managed instance](sql-managed-instance-paas-overview.md).
@@ -82,7 +82,7 @@ Zie [release opmerkingen](../database/doc-changes-updates-release-notes.md?tabs=
 
 **Hoe kan ik een SQL Managed instance inrichten?**
 
-U kunt een exemplaar inrichten via [Azure Portal](instance-create-quickstart.md), [Power shell](scripts/create-configure-managed-instance-powershell.md), [Azure cli](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) en [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
+U kunt een exemplaar inrichten vanuit [Azure Portal](instance-create-quickstart.md), [Power shell](scripts/create-configure-managed-instance-powershell.md), [Azure cli](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) en [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
 
 **Kan ik beheerde exemplaren inrichten in een bestaand abonnement?**
 
@@ -94,7 +94,7 @@ Dit is een huidige beperking voor het onderliggende onderdeel dat de subnetnaam 
 
 **Hoe kan ik het formaat van mijn beheerde exemplaar schalen?**
 
-U kunt uw beheerde exemplaar schalen vanuit [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [Power shell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) of [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+U kunt uw beheerde instantie schalen vanuit [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [Power shell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) of [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Kan ik mijn beheerde exemplaar verplaatsen van de ene regio naar een andere?**
 
@@ -326,7 +326,7 @@ Beheer-en implementatie services maken verbinding met een beheerd exemplaar met 
 
 **Kan ik het open bare eind punt gebruiken om toegang te krijgen tot de gegevens in de data bases van het beheerde exemplaar?**
 
-Ja. De klant moet toegang tot open bare eindpunt gegevens inschakelen vanuit de [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [Power shell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /arm en NSG configureren om de toegang tot de gegevens poort (poort nummer 3342) te vergren delen. Zie voor meer informatie het [configureren van een openbaar eind punt in Azure SQL Managed instance](public-endpoint-configure.md) en het [gebruik van Azure SQL Managed instance veilig met een openbaar eind punt](public-endpoint-overview.md). 
+Ja. De klant moet toegang tot open bare eindpunt gegevens inschakelen vanuit [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [Power shell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /arm en NSG configureren om de toegang tot de gegevens poort (poort nummer 3342) te vergren delen. Zie voor meer informatie het [configureren van een openbaar eind punt in Azure SQL Managed instance](public-endpoint-configure.md) en het [gebruik van Azure SQL Managed instance veilig met een openbaar eind punt](public-endpoint-overview.md). 
 
 **Kan ik een aangepaste poort opgeven voor SQL data endpoint (s)?**
 
@@ -350,7 +350,7 @@ Klanten wordt aangeraden een aantal beveiligings instellingen en-besturings elem
 - Toegang tot het exemplaar met een account met beperkte bevoegdheden.
 - Configureer JIT JumpBox-toegang voor het account sysadmin.
 - Schakel [SQL auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)in en integreer deze met waarschuwings mechanismen.
-- Schakel de [detectie van bedreigingen](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in vanuit het pakket [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) .
+- Schakel de [detectie van bedreigingen](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in van de [Azure Defender voor SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) -Suite.
 
 ## <a name="dns"></a>DNS
 

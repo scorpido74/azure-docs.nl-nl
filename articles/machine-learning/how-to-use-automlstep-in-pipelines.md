@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897237"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Met de functie voor automatische ML van Azure Machine Learning kunt u hoogwaardige modellen ontdekken zonder dat u elke mogelijke benadering hoeft te implementeren. In combi natie met Azure Machine Learning pijp lijnen kunt u Implementeer bare werk stromen maken waarmee u de algoritme die het beste werkt voor uw gegevens kunt detecteren. In dit artikel wordt uitgelegd hoe u een stap voor het voorbereiden van gegevens efficiënt kunt samen voegen met een stap van een automatische ML. Automatische ML kan snel de algoritme vinden die het meest geschikt is voor uw gegevens, terwijl u onderweg bent naar MLOps en de levens cyclus van modellen uitoefening met pijp lijnen.
 
@@ -29,7 +29,7 @@ Met de functie voor automatische ML van Azure Machine Learning kunt u hoogwaardi
 
 * Een Azure Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).  
 
-* Basis kennis van het [geautomatiseerde machine learning](concept-automated-ml.md) van Azure en [machine learning pijp lijnen](concept-ml-pipelines.md) en-SDK.
+* Vertrouwd met de [automatische machine learning](concept-automated-ml.md) van Azure en [machine learning pijp lijnen](concept-ml-pipelines.md) en-SDK.
 
 ## <a name="review-automated-mls-central-classes"></a>Bekijk de centrale klassen van automatische ML
 
@@ -368,7 +368,7 @@ U kunt af en toe gebruikmaken van het gebruik `X` voor gegevens functies en `y` 
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Het model registreren dat is gegenereerd door automatische MILLILITERs 
 
-In de laatste stap van een Basic ML-pijp lijn wordt het gemaakte model geregistreerd. Door het model toe te voegen aan het model register van de werk ruimte, is het beschikbaar in de portal en kan dit versie nummer hebben. Als u het model wilt registreren, schrijft u een andere `PythonScriptStep` die de `model_data` uitvoer van de uitvoert `AutoMLStep` .
+In de laatste stap van een eenvoudige ML-pijp lijn wordt het gemaakte model geregistreerd. Door het model toe te voegen aan het model register van de werk ruimte, is het beschikbaar in de portal en kan dit versie nummer hebben. Als u het model wilt registreren, schrijft u een andere `PythonScriptStep` die de `model_data` uitvoer van de uitvoert `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>De code schrijven om het model te registreren
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883232"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-model trainen
 
-In dit artikel wordt beschreven hoe u de **Pytorch-model module Train** in azure machine learning Designer (preview) gebruikt om Pytorch-modellen als DenseNet te trainen. De training vindt plaats nadat u een model hebt gedefinieerd en de para meters hebt ingesteld en dat gelabelde gegevens vereist. 
+In dit artikel wordt beschreven hoe u de **Pytorch-model module Train** in azure machine learning Designer kunt gebruiken om Pytorch-modellen zoals DenseNet te trainen. De training vindt plaats nadat u een model hebt gedefinieerd en de para meters hebt ingesteld en dat gelabelde gegevens vereist. 
 
 ## <a name="how-to-use-train-pytorch-model"></a>Het Pytorch-model van Train gebruiken 
 
@@ -58,7 +58,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 ## <a name="technical-notes"></a>Technische opmerkingen
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam               | Type                    | Beschrijving                              |
+| Naam               | Type                    | Description                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Niet-traind model    | UntrainedModelDirectory | Niet-traind model, vereisen pytorch         |
 | Trainings gegevensset   | ImageDirectory          | Trainings gegevensset                         |
@@ -66,7 +66,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam          | Bereik            | Type    | Standaard | Beschrijving                              |
+| Name          | Bereik            | Type    | Standaard | Beschrijving                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoches        | >0               | Geheel getal | 5       | Selecteer de kolom die de kolom Label of het resultaat bevat |
 | Batchgrootte    | >0               | Geheel getal | 16      | Het aantal exemplaren dat in een batch moet worden getraind   |
@@ -76,7 +76,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="outputs"></a>Uitvoerwaarden  
 
-| Naam          | Type           | Beschrijving   |
+| Naam          | Type           | Description   |
 | ------------- | -------------- | ------------- |
 | Getraind model | ModelDirectory | Getraind model |
 

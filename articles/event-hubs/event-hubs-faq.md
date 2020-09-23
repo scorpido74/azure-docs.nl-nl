@@ -2,13 +2,13 @@
 title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288964"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883382"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -55,6 +55,9 @@ U kunt de Bewaar periode voor de vastgelegde gegevens in uw opslag account confi
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Mijn Event Hubs Hoe kan ik controleren?
 Event Hubs levert uitgebreide metrische gegevens die de status van uw resources [Azure monitor](../azure-monitor/overview.md). Ze kunnen ook de algemene status van de Event Hubs-service alleen beoordelen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Meer informatie over welke bewaking wordt aangeboden voor [Azure Event hubs](event-hubs-metrics-azure-monitor.md).
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Waar worden klant gegevens opgeslagen door Azure Event Hubs?
+Klant gegevens worden opgeslagen in azure Event Hubs. Deze gegevens worden automatisch opgeslagen door Event Hubs in één regio, zodat deze service automatisch voldoet aan de locatie vereisten voor regio's, waaronder die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welke poorten moet ik op de firewall openen? 
 U kunt de volgende protocollen gebruiken met Azure Service Bus voor het verzenden en ontvangen van berichten:
 
@@ -78,9 +81,9 @@ Ga als volgt te werk om de juiste IP-adressen te zoeken die u wilt toevoegen aan
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . 
 
-Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
+Als u de **zone redundantie** voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
 1. Eerst voert u Nslookup uit op de naam ruimte.
 
@@ -94,9 +97,12 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > Het IP-adres dat door de `nslookup` opdracht wordt geretourneerd, is geen statisch IP-adres. Het blijft echter constant totdat de onderliggende implementatie wordt verwijderd of verplaatst naar een ander cluster.
 3. Voer nslookup uit voor elk met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die worden uitgevoerd in drie beschikbaarheids zones, 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Waar kan ik het IP-adres van de client vinden dat berichten naar mijn naam ruimte verzendt of ontvangt?
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Waar kan ik het IP-adres van de client vinden dat berichten naar mijn naam ruimte verzendt of ontvangt?
 Schakel eerst [IP-filtering](event-hubs-ip-filtering.md) in voor de naam ruimte. 
 
 Schakel vervolgens de volgende instructies in [Diagnostische logboeken inschakelen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)in om Diagnostische logboeken in te scha kelen voor [Event hubs gebeurtenissen van een virtueel netwerk](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) . U ziet het IP-adres waarvoor verbinding wordt geweigerd.

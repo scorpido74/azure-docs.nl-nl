@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 7a7b603efe376250607b4a48ff3ef2833f40a2bd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650727"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886188"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Gegevens splitsingen en kruis validatie in automatische machine learning configureren
 
@@ -37,7 +37,7 @@ Voor dit artikel hebt u het volgende nodig:
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor het maken van de werk ruimte.
 
-* Vertrouwd met het instellen van een automatische machine learning experiment met de Azure Machine Learning SDK. Volg de [zelf studie](tutorial-auto-train-models.md) of Lees [hoe](how-to-configure-auto-train.md) u de ontwerp patronen voor automatische machine learning experimenten kunt zien.
+* Vertrouwd met het instellen van een automatische machine learning experiment met de Azure Machine Learning SDK. Volg de [zelf studie](tutorial-auto-train-models.md) of Lees [hoe](how-to-configure-auto-train.md) u de ontwerp patronen voor het basisautomatische machine learning experiment kunt zien.
 
 * Het is een goed idee om gegevens over Kruis validatie en Train/validatie te splitsen als ML. Voor een uitleg op hoog niveau
 

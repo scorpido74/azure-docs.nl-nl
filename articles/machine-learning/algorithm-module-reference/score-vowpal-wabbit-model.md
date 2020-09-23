@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857745"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898405"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit-model scoren
-In dit artikel wordt beschreven hoe u de module **Score Vowpal Wabbit model** in azure machine learning Designer (preview) gebruikt om scores voor een set invoer gegevens te genereren met behulp van een bestaand getraind Vowpal Wabbit-model.  
+In dit artikel wordt beschreven hoe u de module **Score Vowpal Wabbit model** in azure machine learning Designer kunt gebruiken om scores voor een set invoer gegevens te genereren met behulp van een bestaand getraind Vowpal Wabbit-model.  
 
 Deze module biedt de nieuwste versie van het Vowpal Wabbit Framework, versie 8.8.1. Gebruik deze module om gegevens te scoren met behulp van een getraind model dat is opgeslagen in de VW-versie 8-indeling.  
 
@@ -74,7 +74,7 @@ Vowpal Wabbit heeft veel opdracht regel opties voor het kiezen en afstemmen van 
 
 De volgende para meters worden niet ondersteund in Azure Machine Learning Studio (klassiek).  
 
--   De invoer-en uitvoer opties die zijn opgegeven in[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   De invoer-en uitvoer opties die zijn opgegeven in [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Deze eigenschappen zijn al automatisch geconfigureerd door de module.  
   

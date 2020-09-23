@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 07a39edcb7a5605759ae70a014549863a038de1c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437051"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885143"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Geavanceerde bedreigings beveiliging voor Azure SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Advanced Threat Protection voor [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) en [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detecteert afwijkende activiteiten die duiden op ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te exploiteren.
 
-Advanced Threat Protection maakt deel uit van de [geavanceerde gegevens beveiliging](advanced-data-security.md) , een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Advanced Threat Protection kan worden geopend en beheerd via de centrale SQL ADS-portal.
+Advanced Threat Protection maakt deel uit van de [Azure Defender voor SQL](azure-defender-for-sql.md) -aanbieding, een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de centrale Azure Defender voor SQL-Portal.
 
 ## <a name="overview"></a>Overzicht
 
@@ -55,19 +55,15 @@ U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>Waarschuwingen in de Azure Portal verkennen
 
-Geavanceerde bedreigings beveiliging integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). Live SQL Advanced Threat Protection-tegels in de data base en SQL ADS-blades in de Azure Portal de status van actieve bedreigingen bijhouden.
+Geavanceerde bedreigings beveiliging integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). Live SQL Advanced Threat Protection-tegels in de data base en SQL Azure Defender-blades in de Azure Portal de status van actieve bedreigingen bijhouden.
 
 Klik op **Geavanceerde bedreigings beveiliging waarschuwing** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
-
-   ![Waarschuwing geavanceerde bedreigings beveiliging](./media/threat-detection-overview/threat_detection_alert.png)
-
-   ![Advanced Threat Protection alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [geavanceerde beveiliging tegen bedreigingen vindt u in Azure SQL Database & Azure Synapse](threat-detection-configure.md).
 - Meer informatie over [geavanceerde bedreigingen beveiliging in Azure SQL Managed instance](../managed-instance/threat-detection-configure.md).
-- Meer informatie over [geavanceerde gegevens beveiliging](advanced-data-security.md).
+- Meer informatie over [Azure Defender voor SQL](azure-defender-for-sql.md).
 - Meer informatie over het [controleren van Azure SQL database](../../azure-sql/database/auditing-overview.md)
 - Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - Zie de [pagina met prijzen voor Azure SQL database](https://azure.microsoft.com/pricing/details/sql-database/) voor meer informatie over prijzen.  

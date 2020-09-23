@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het overdragen van gegevens naar een opslagaccount met Azure Stack Edge GPU | Microsoft Docs
-description: Informatie over het toevoegen van en verbinding maken met lokale en Edge-opslagaccounts op een Azure Stack Edge GPU-apparaat.
+title: Zelfstudie voor het overdragen van gegevens naar een opslagaccount met Azure Stack Edge Pro GPU | Microsoft Docs
+description: Informatie over het toevoegen van en verbinding maken met lokale en Edge-opslagaccounts op een Azure Stack Edge Pro GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891060"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Zelfstudie: Gegevens overdragen via opslagaccounts met Azure Stack Edge GPU 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Zelfstudie: Gegevens overdragen via opslagaccounts met Azure Stack Edge Pro GPU 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In deze zelfstudie wordt beschreven hoe u opslagaccounts toevoegt aan een Azure Stack Edge-apparaat en er verbinding mee maakt. Nadat u de opslagaccounts hebt toegevoegd, kunnen via Azure Stack Edge gegevens naar Azure worden overgedragen.
+In deze zelfstudie wordt beschreven hoe u opslagaccounts toevoegt aan een Azure Stack Edge Pro-apparaat en er verbinding mee maakt. Nadat u de opslagaccounts hebt toegevoegd, kunnen via Azure Stack Edge Pro gegevens naar Azure worden overgedragen.
 
 Deze procedure neemt circa dertig minuten in beslag.
 
@@ -33,11 +33,11 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u opslagaccounts aan Azure Stack Edge gaat toevoegen, controleert u het volgende:
+Voordat u opslagaccounts aan Azure Stack Edge Pro gaat toevoegen, controleert u het volgende:
 
-- U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-gpu-deploy-install.md).
+- U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge Pro installeren](azure-stack-edge-gpu-deploy-install.md).
 
-- U hebt het fysieke apparaat geactiveerd, zoals beschreven in [Azure Stack Edge activeren](azure-stack-edge-gpu-deploy-activate.md).
+- U hebt het fysieke apparaat geactiveerd, zoals beschreven in [Azure Stack Edge Pro activeren](azure-stack-edge-gpu-deploy-activate.md).
 
 
 ## <a name="add-an-edge-storage-account"></a>Edge-opslagaccount toevoegen
@@ -135,7 +135,7 @@ Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 
 ### <a name="get-certificate"></a>Certificaat ophalen
 
-Voor toegang tot Blob Storage via HTTPS is een SSL-certificaat voor het apparaat vereist. U uploadt dit certificaat ook naar uw Azure Stack Edge-apparaat als *PFX*-bestand waaraan een persoonlijke sleutel is gekoppeld. Voor meer informatie over het maken (alleen voor test- en ontwikkeldoeleinden) en het uploaden van deze certificaten naar uw Azure Stack Edge-apparaat, gaat u naar:
+Voor toegang tot Blob Storage via HTTPS is een SSL-certificaat voor het apparaat vereist. U uploadt dit certificaat ook naar uw Azure Stack Edge Pro-apparaat als *PFX*-bestand waaraan een persoonlijke sleutel is gekoppeld. Voor meer informatie over het maken (alleen voor test- en ontwikkeldoeleinden) en het uploaden van deze certificaten naar uw Azure Stack Edge Pro-apparaat, gaat u naar:
 
 - [Blob-eindpuntcertificaat maken](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
 - [Blob-eindpuntcertificaat uploaden](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
@@ -167,15 +167,15 @@ Volg de stappen voor het [configureren en verifiëren van de verbinding die u he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over de volgende Azure Stack Edge-onderwerpen:
+In deze zelfstudie bent u meer te weten gekomen over de volgende Azure Stack Edge Pro-onderwerpen:
 
 > [!div class="checklist"]
 > * Een opslagaccount toevoegen
 > * Verbinding maken met een opslagaccount
 
-Als u wilt leren hoe u gegevens kunt transformeren met behulp van Azure Stack Edge, gaat u verder met de volgende zelfstudie:
+Als u wilt leren hoe u gegevens kunt transformeren met behulp van Azure Stack Edge Pro, gaat u verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
-> [Gegevens transformeren met Azure Stack Edge](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Gegevens transformeren met Azure Stack Edge Pro](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

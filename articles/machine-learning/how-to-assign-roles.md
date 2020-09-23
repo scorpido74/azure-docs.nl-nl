@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661934"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893401"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>De toegang tot een Azure Machine Learning-werkruimte beheren
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
 
@@ -135,7 +134,6 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 | Activiteit | Bereik op abonnements niveau | Bereik van resource groeps niveau | Bereik op werkruimte niveau |
 | ----- | ----- | ----- | ----- |
 | Nieuwe werk ruimte maken | Niet vereist | Eigenaar of bijdrager | N.v.t. (wordt eigenaar of neemt de hogere bereik functie over nadat deze is gemaakt) |
-| De versie van de werk ruimte bijwerken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/write` |
 | Amlcompute-quotum niveau aanvragen of quotum voor werkruimte niveau instellen | Eigenaar of Inzender, of aangepaste rol </br>kunnen `/locations/updateQuotas/action`</br> bij abonnements bereik | Niet geautoriseerd | Niet geautoriseerd |
 | Nieuw reken cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
 | Nieuw reken exemplaar maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `/workspaces/computes/write` |
@@ -301,7 +299,6 @@ Ja hier volgen enkele algemene scenario's met aangepaste roldefinities die u als
 
     * Een nieuwe werk ruimte maken
     * Quota voor abonnements-of werkruimte niveau toewijzen
-    * De versie van de werk ruimte bijwerken
 
     De werkruimte beheerder kan ook geen nieuwe rol maken. U kunt alleen bestaande ingebouwde of aangepaste rollen toewijzen binnen het bereik van hun werk ruimte:
 
@@ -415,11 +412,7 @@ U moet machtigingen hebben voor het hele bereik van de nieuwe roldefinitie. Als 
 
 > [!NOTE]
 > Het kan 15 minuten tot een uur duren voordat de functie-updates zijn toegepast op alle roltoewijzingen in dat bereik.
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>V. Kan ik een rol definiëren waarmee wordt voor komen dat de werkruimte editie wordt bijgewerkt? 
 
-Ja, u kunt een rol definiëren die voor komt dat de werkruimte editie wordt bijgewerkt. Omdat het bijwerken van de werk ruimte een PATCH oproep in het werkruimte object is, doet u dit door de volgende actie in de `"NotActions"` matrix in de JSON-definitie te plaatsen: 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>V. Welke machtigingen zijn er nodig om quotum bewerkingen in een werk ruimte uit te voeren? 
 

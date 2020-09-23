@@ -1,11 +1,11 @@
-- name: Documentatie over Azure Stack Edge en Data Box Gateway
+- name: Documentatie voor Azure Stack Edge Pro en Data Box Gateway
   href: /azure/databox-online/
   expanded: true
-- name: Azure Stack Edge met GPU (preview)
+- name: Azure Stack Edge Pro - GPU
   items:
     - name: Overzicht
       items:
-        - name: Wat is Azure Stack Edge met GPU?
+        - name: Wat is Azure Stack Edge Pro met GPU?
           href: azure-stack-edge-gpu-overview.md
     - name: Zelfstudies
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Netsnoerspecificaties
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Kubernetes begrijpen
+        - name: Inzicht in Kubernetes (preview)
           items:
             - name: Wat is Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-module via Marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Kubernetes-werkbelastingen implementeren
+        - name: Kubernetes-workloads (preview) implementeren
           items:
             - name: Via kubectl
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: Staatloze app
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Via Azure Arc
+            - name: Via Azure Arc (preview)
               items:
                 - name: Arc inschakelen op Kubernetes-cluster
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Stateless-app implementeren via GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Azure Resource Manager configureren
+        - name: Azure Resource Manager (preview) configureren
           items:
             - name: Verbinding maken via Azure PowerShell
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: TLS-instellingen van client configureren
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: Virtuele machines implementeren
+        - name: VM's (preview) implementeren
           items:
             - name: VM's implementeren - sjablonen
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: Apparaten beheren
           items:
             - name: 'Energieopties, toegang en connectiviteit'
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: Via PowerShell
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Updates toepassen
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Releaseopmerkingen
       items:
-        - name: 2008 - Opmerkingen bij de release
+        - name: 2009 - GA
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 - preview
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Naslaginformatie
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: Azure Stack Edge met FPGA
+- name: Azure Stack Edge Pro - FPGA
   items:
     - name: Overzicht
       items:
-        - name: Wat is Azure Stack Edge met FPGA?
+        - name: Wat is Azure Stack Edge Pro met FPGA?
           href: azure-stack-edge-overview.md
     - name: Zelfstudies
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Overzicht
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: Resources
   items:
-    - name: Voorbeelden van Azure Stack Edge C#-modules (.NET)
+    - name: Voorbeelden van Azure Stack Edge Pro C#-module (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge-/Data Box Gateway-product
+    - name: Azure Stack Edge Pro-/Data Box Gateway-product
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

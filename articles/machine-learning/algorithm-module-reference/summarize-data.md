@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477439"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898214"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de module gegevens samenvatten om een set standaard statistische maat eenheden te maken waarmee elke kolom in de invoer tabel wordt beschreven.
 
@@ -54,7 +54,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**Aantal ontbrekende waarden**|Aantal unieke waarden in kolom|
 |**Haal**|Laagste waarde in kolom|  
 |**Aantal**|Hoogste waarde in kolom|
-|**Greenwich**|Gemiddelde van alle kolom waarden|
+|**Gemiddeld**|Gemiddelde van alle kolom waarden|
 |**Gemiddelde afwijking**|Gemiddelde afwijking van kolom waarden|
 |**1e kwartiel**|Waarde bij eerste kwartiel|
 |**Mediaan**|Kolom waarde mediaan|
@@ -67,7 +67,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**Voor beeld van kurtosis**|Kurtosis voor kolom; Zie opmerking|
 |**P 0,5**|0,5% percentiel|
 |**P1**|1% percentiel|
-|**P5**|5% percentiel|
+|**B5**|5% percentiel|
 |**P95**|95% percentiel|
 |**P 99,5**|99,5% percentiel |
 

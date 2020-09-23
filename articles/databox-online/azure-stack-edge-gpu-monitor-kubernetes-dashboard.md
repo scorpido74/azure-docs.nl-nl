@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Stack edge-apparaat bewaken via Kubernetes-dash board | Microsoft Docs
-description: Hierin wordt beschreven hoe u het Kubernetes-dash board opent en gebruikt om uw Azure Stack edge-apparaat te bewaken.
+title: Uw Azure Stack Edge Pro-apparaat bewaken via Kubernetes-dash board | Microsoft Docs
+description: Hierin wordt beschreven hoe u het Kubernetes-dash board opent en gebruikt om uw Azure Stack Edge Pro-apparaat te bewaken.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297824"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899199"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Kubernetes-dash board gebruiken om uw Azure Stack Edge GPU-apparaat te bewaken
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-dash board gebruiken om uw Azure Stack Edge Pro GPU-apparaat te bewaken
 
-In dit artikel wordt beschreven hoe u het Kubernetes-dash board opent en gebruikt om uw Azure Stack Edge GPU-apparaat te bewaken. Als u uw apparaat wilt bewaken, kunt u grafieken gebruiken in Azure Portal, het Kubernetes-dash board weer geven of `kubectl` opdrachten uitvoeren via de Power shell-interface van het apparaat. 
+In dit artikel wordt beschreven hoe u het Kubernetes-dash board opent en gebruikt om uw Azure Stack Edge Pro GPU-apparaat te bewaken. Als u uw apparaat wilt bewaken, kunt u grafieken gebruiken in Azure Portal, het Kubernetes-dash board weer geven of `kubectl` opdrachten uitvoeren via de Power shell-interface van het apparaat. 
 
 Dit artikel richt zich alleen op de bewakings taken die kunnen worden uitgevoerd op het Kubernetes-dash board.
 
@@ -35,7 +35,7 @@ In dit artikel leert u het volgende:
 
 Kubernetes dash board is een webinterface die u kunt gebruiken voor het oplossen van problemen met in containers geplaatste toepassingen. Het Kubernetes-dash board is een alternatief voor de Kubernetes- `kubectl` opdracht regel. Zie [Kubernetes-dash board](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)voor meer informatie. 
 
-Op uw Azure Stack edge-apparaat kunt u het Kubernetes-dash board in de modus *alleen-lezen* gebruiken om een overzicht te krijgen van de toepassingen die worden uitgevoerd op uw Azure stack edge-apparaat, de status van Kubernetes-cluster bronnen weer geven en eventuele fouten op het apparaat te bekijken.
+Op uw Azure Stack Edge Pro-apparaat kunt u het Kubernetes-dash board in de modus *alleen-lezen* gebruiken om een overzicht te krijgen van de toepassingen die worden uitgevoerd op uw Azure stack Edge Pro-apparaat, de status van Kubernetes-cluster bronnen weer geven en eventuele fouten te bekijken die op het apparaat zijn opgetreden.
 
 ## <a name="access-dashboard"></a>Access-dash board
 
@@ -54,19 +54,19 @@ Het Kubernetes-dash board is *alleen-lezen* en wordt uitgevoerd op het Kubernete
     1. Het weglatings teken selecteren.. **.** Blader naar en ga naar de `kubeconfig` versie die u eerder hebt gedownload op uw lokale systeem. Selecteer **Aanmelden**.
         ![Bladeren naar het kubeconfig-bestand](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. U kunt nu het Kubernetes-dash board weer geven voor uw Azure Stack edge-apparaat in de modus alleen-lezen.
+6. U kunt nu het Kubernetes-dash board weer geven voor uw Azure Stack Edge Pro-apparaat in de modus alleen-lezen.
 
     ![Hoofd pagina van Kubernetes-dash board](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>Module status weer geven
 
-Compute-modules zijn containers waarvoor een bedrijfs logica is geïmplementeerd. U kunt het dash board gebruiken om te controleren of een compute-module is geïmplementeerd op uw Azure Stack edge-apparaat.
+Compute-modules zijn containers waarvoor een bedrijfs logica is geïmplementeerd. U kunt het dash board gebruiken om te controleren of een compute-module is geïmplementeerd op uw Azure Stack Edge Pro-apparaat.
 
 Volg deze stappen in het dash board om de module status weer te geven:
 
 1. Ga in het linkerdeel venster van het dash board naar de **naam ruimte**. Filter op de naam ruimte waar IoT Edge modules worden weer gegeven, in dit geval **iotedge**.
 1. Ga in het linkerdeel venster naar **workloads > implementaties**.
-1. In het rechterdeel venster ziet u alle modules die op uw apparaat zijn geïmplementeerd. In dit geval is er een GettingStartedWithGPU-module geïmplementeerd op de Azure Stack-rand. U kunt zien dat de module is geïmplementeerd.
+1. In het rechterdeel venster ziet u alle modules die op uw apparaat zijn geïmplementeerd. In dit geval is er een GettingStartedWithGPU-module geïmplementeerd op de Azure Stack Edge Pro. U kunt zien dat de module is geïmplementeerd.
 
     ![Module-implementatie weer geven](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Voer de volgende stappen uit op het dash board om het IP-adres op te halen:
 
 1. Ga in het linkerdeel venster van het dash board naar de **naam ruimte**. Filter op de naam ruimte waarin een externe service is geïmplementeerd, in dit geval **iotedge**.
 1. Ga in het linkerdeel venster naar detectie- **en taak verdeling > Services**.
-1. In het rechterdeel venster ziet u alle services die worden uitgevoerd in de `iotedge` naam ruimte op uw Azure stack edge-apparaat.
+1. In het rechterdeel venster ziet u alle services die worden uitgevoerd in de `iotedge` naam ruimte op uw Azure stack Edge Pro-apparaat.
 
     ![IP ophalen voor externe services](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Als u de container logboeken wilt weer geven, voert u de volgende stappen uit op
 
 ## <a name="view-cpu-memory-usage"></a>CPU, geheugen gebruik weer geven
 
-Het Kubernetes-dash board voor Azure Stack edge-apparaat heeft ook een [invoeg toepassing voor metrische gegevens](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) die het CPU-en geheugen gebruik in Kubernetes-bronnen samenvoegt.
+Het Kubernetes-dash board voor Azure Stack Edge Pro-apparaat heeft ook een [invoeg toepassing voor metrische gegevens](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) die het CPU-en geheugen gebruik in Kubernetes-bronnen samenvoegt.
  
 U kunt bijvoorbeeld de CPU en het geheugen weer geven die zijn verbruikt over implementaties in alle naam ruimten. 
 

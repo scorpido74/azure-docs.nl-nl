@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079452"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024414"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Kopieer de gegevens veilig vanuit Azure Blob-opslag naar een SQL-database met privé-eindpunten
 
@@ -57,7 +57,7 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL-database voor te bereide
 
 #### <a name="create-a-sink-sql-table"></a>Een SQL-sink-tabel maken
 
-1. Gebruik het volgende SQL-script om de tabel **dbo.emp** te maken in uw SQL database:
+Gebruik het volgende SQL-script om de tabel **dbo.emp** te maken in uw SQL database:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL-database voor te bereide
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. Geef Azure-services toegang tot SQL Server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor de SQL-server, zodat Data Factory gegevens naar de SQL-server kan schrijven. Ga naar **Azure SQL Server** > **Overzicht** > **Serverfirewall instellen** als u deze instelling wilt verifiëren en inschakelen. Stel de optie **Toegang tot Azure-services toestaan** in op **AAN**.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory.

@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886501"
 ---
 # <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ Uw meest gevoelige gegevens kunnen bedrijfs-, financiële, gezondheids zorg of p
 - Helpt te voldoen aan normen voor gegevens bescherming en vereisten voor naleving van de regelgeving.
 - Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
 - Het beheren van de toegang tot en het beveiligen van de beveiliging van data bases die uiterst gevoelige gegevens bevatten.
-
-Gegevens detectie & classificatie maakt deel uit van de [geavanceerde gegevens beveiliging](advanced-data-security.md) . Dit is een uniform pakket voor geavanceerde Azure SQL-beveiligings mogelijkheden. U kunt gegevens detectie & classificatie openen en beheren via de sectie **geavanceerde gegevens beveiliging van SQL** van de Azure Portal.
 
 > [!NOTE]
 > Zie voor meer informatie over on-premises SQL Server de [classificatie van SQL-gegevens detectie &](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -79,31 +77,23 @@ Nadat u het beleid voor de hele organisatie hebt gedefinieerd, kunt u afzonderli
 
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 
-2. Ga naar **geavanceerde gegevens beveiliging** onder de kop **beveiliging** in het deel venster Azure SQL database. Selecteer **geavanceerde gegevens beveiliging**en selecteer vervolgens de kaart **gegevens detectie & classificatie** .
+1. Ga naar **gegevens detectie & classificatie** onder de kop beveiliging in het deel venster Azure SQL database. Het tabblad Overzicht bevat een samen vatting van de huidige classificatie status van de data base. De samen vatting bevat een gedetailleerde lijst met alle geclassificeerde kolommen, die u ook kunt filteren om alleen specifieke schema onderdelen, informatie typen en labels weer te geven. Als u nog geen kolommen hebt geclassificeerd, [gaat u verder met stap 4](#step-4).
 
-   ![Het deel venster Geavanceerde gegevens beveiliging in Azure Portal](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Als u een rapport in Excel-indeling wilt downloaden, selecteert u **exporteren** in het bovenste menu van het deel venster.
 
-3. Op de pagina **gegevens detectie & classificatie** bevat het tabblad **overzicht** een samen vatting van de huidige classificatie status van de data base. De samen vatting bevat een gedetailleerde lijst met alle geclassificeerde kolommen, die u ook kunt filteren om alleen specifieke schema onderdelen, informatie typen en labels weer te geven. Als u nog geen kolommen hebt geclassificeerd, [gaat u verder met stap 5](#step-5).
-
-   ![Samen vatting van huidige classificatie status](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Als u een rapport in Excel-indeling wilt downloaden, selecteert u **exporteren** in het bovenste menu van het deel venster.
-
-5. <a id="step-5"></a>Als u uw gegevens wilt classificeren, selecteert u het tabblad **classificatie** op de pagina **gegevens detectie & classificatie** .
+1. <a id="step-4"></a>Als u uw gegevens wilt classificeren, selecteert u het tabblad **classificatie** op de pagina **gegevens detectie & classificatie** .
 
     De classificatie-engine scant uw Data Base op kolommen met mogelijk gevoelige gegevens en bevat een lijst met aanbevolen kolom classificaties.
 
-6. Aanbevelingen voor classificatie weer geven en Toep assen:
+1. Aanbevelingen voor classificatie weer geven en Toep assen:
 
    - Als u de lijst met aanbevolen kolom classificaties wilt weer geven, selecteert u het deel venster aanbevelingen onder aan het deel venster.
 
    - Als u een aanbeveling voor een specifieke kolom wilt accepteren, schakelt u het selectie vakje in de linkerkolom van de relevante rij in. Als u alle aanbevelingen als geaccepteerd wilt markeren, selecteert u het meest linkse selectie vakje in de koptekst van de tabel met aanbevelingen.
 
-       ![Controleren en selecteren in de lijst met aanbevelingen voor classificatie](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - Selecteer **geselecteerde aanbevelingen accepteren**om de geselecteerde aanbevelingen toe te passen.
 
-7. U kunt kolommen ook hand matig classificeren, als een alternatief of naast de classificatie op basis van aanbevelingen:
+1. U kunt kolommen ook hand matig classificeren, als een alternatief of naast de classificatie op basis van aanbevelingen:
 
    1. Selecteer **classificatie toevoegen** in het bovenste menu van het deel venster.
 
@@ -111,9 +101,7 @@ Nadat u het beleid voor de hele organisatie hebt gedefinieerd, kunt u afzonderli
 
    1. Selecteer **classificatie toevoegen** onder aan het context venster.
 
-      ![Een kolom selecteren die u wilt classificeren](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. Als u de classificatie wilt volt ooien en de database kolommen persistent wilt labelen (labelen) met de nieuwe meta gegevens van de classificatie, selecteert u **Opslaan** in het bovenste menu van het venster.
+1. Als u de classificatie wilt volt ooien en de database kolommen persistent wilt labelen (labelen) met de nieuwe meta gegevens van de classificatie, selecteert u **Opslaan** in het bovenste menu van het venster.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Toegang tot gevoelige gegevens controleren
 
@@ -128,14 +116,14 @@ Deze ingebouwde rollen kunnen de gegevens classificatie van een Data Base lezen:
 - Eigenaar
 - Lezer
 - Inzender
-- SQL-beveiligings beheer
+- SQL-beveiligingsbeheerder
 - Beheerder van gebruikerstoegang
 
 Deze ingebouwde rollen kunnen de gegevens classificatie van een Data Base wijzigen:
 
 - Eigenaar
 - Inzender
-- SQL-beveiligings beheer
+- SQL-beveiligingsbeheerder
 
 Meer informatie over op rollen gebaseerde machtigingen in [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
@@ -191,6 +179,5 @@ U kunt de REST API gebruiken om classificaties en aanbevelingen programmatisch t
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Volgende stappen
 
-- Meer informatie over [geavanceerde gegevens beveiliging](advanced-data-security.md).
 - U kunt [Azure SQL auditing](../../azure-sql/database/auditing-overview.md) configureren voor het bewaken en controleren van de toegang tot uw geclassificeerde gevoelige gegevens.
 - Zie [detecteren, classificeren, labelen & beveiligen van SQL-gegevens voor een presentatie met gegevens detectie & classificatie. Gegevens die worden weer gegeven](https://www.youtube.com/watch?v=itVi9bkJUNc).

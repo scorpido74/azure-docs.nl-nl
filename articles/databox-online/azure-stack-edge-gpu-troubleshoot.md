@@ -1,6 +1,6 @@
 ---
-title: De Azure Portal gebruiken om problemen met Azure Stack Edge op te lossen met GPU | Microsoft Docs
-description: Hierin wordt beschreven hoe u problemen met Azure Stack Edge GPU oplost.
+title: De Azure Portal gebruiken om problemen met Azure Stack Edge Pro op te lossen met GPU | Microsoft Docs
+description: Hierin wordt beschreven hoe u problemen met Azure Stack Edge Pro GPU oplost.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891551"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Problemen met uw Azure Stack Edge GPU-apparaat oplossen 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Problemen met uw Azure Stack Edge Pro GPU-apparaat oplossen 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u problemen oplost op uw Azure Stack Edge GPU-apparaat. 
+In dit artikel wordt beschreven hoe u problemen oplost op uw Azure Stack Edge Pro GPU-apparaat. 
 
 
 ## <a name="run-diagnostics"></a>Diagnose uitvoeren
@@ -55,7 +55,7 @@ Voer de volgende stappen uit om een ondersteuningspakket te verzamelen.
 
 ## <a name="gather-advanced-security-logs"></a>Geavanceerde beveiligings logboeken verzamelen
 
-De geavanceerde beveiligings logboeken kunnen software-of hardware-inbreuk logboeken voor uw Azure Stack edge-apparaat zijn.
+De geavanceerde beveiligings logboeken kunnen software-of hardware-inbreuk logboeken voor uw Azure Stack Edge Pro-apparaat zijn.
 
 ### <a name="software-intrusion-logs"></a>Software-indringings logboeken
 
@@ -67,7 +67,7 @@ De software-indringing of de standaard firewall logboeken worden verzameld voor 
 
 - Als er geen specifieke insluitings optie is opgegeven, wordt het firewall logboek in het ondersteunings pakket opgenomen als standaard.
 
-- In het ondersteunings pakket is het firewall logboek het en bevindt zich `pfirewall.log` in de hoofdmap. Hier volgt een voor beeld van het logboek voor software-inbreuk voor het Azure Stack edge-apparaat. 
+- In het ondersteunings pakket is het firewall logboek het en bevindt zich `pfirewall.log` in de hoofdmap. Hier volgt een voor beeld van het logboek voor software-inbreuk voor het Azure Stack Edge Pro-apparaat. 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ Voor het detecteren van eventuele hardwareproblemen op het apparaat worden momen
 
 - Als er geen specifieke insluitings optie is opgegeven, wordt het inbraak logboek van de hardware opgenomen als standaard waarde in het ondersteunings pakket.
 
-- In het ondersteunings pakket is het indringings logboek van de hardware de en bevindt zich `HWIntrusion.txt` in de hoofdmap. Hier volgt een voor beeld van het logboek voor hardware-inbreuken voor het Azure Stack edge-apparaat. 
+- In het ondersteunings pakket is het indringings logboek van de hardware de en bevindt zich `HWIntrusion.txt` in de hoofdmap. Hier volgt een voor beeld van het logboek voor hardware-inbreuken voor het Azure Stack Edge Pro-apparaat. 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ Hier vindt u de fouten die kunnen worden weer gegeven tijdens de configuratie va
 | **Probleem/fouten** |  **Oplossing** | 
 |------------|-----------------|
 |Algemene problemen|<li>[Controleer of het edge-apparaat juist is geconfigureerd](#verify-the-device-is-configured-properly).<li> [Controleren of de client correct is geconfigureerd](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment: er is een fout opgetreden tijdens het verzenden van de aanvraag.<br>Op regel: 1 teken: 1<br>+ Add-AzureRmEnvironment-name Az3-ARMEndpoint " https://management.dbe ...|Deze fout betekent dat uw Azure Stack edge-apparaat niet bereikbaar is of niet juist is geconfigureerd. Controleer of het edge-apparaat en de-client correct zijn geconfigureerd. Zie de rij met **algemene problemen** in deze tabel voor hulp.|
+|Add-AzureRmEnvironment: er is een fout opgetreden tijdens het verzenden van de aanvraag.<br>Op regel: 1 teken: 1<br>+ Add-AzureRmEnvironment-name Az3-ARMEndpoint " https://management.dbe ...|Deze fout betekent dat uw Azure Stack Edge Pro-apparaat niet bereikbaar is of niet juist is geconfigureerd. Controleer of het edge-apparaat en de-client correct zijn geconfigureerd. Zie de rij met **algemene problemen** in deze tabel voor hulp.|
 |De service heeft een fout geretourneerd. Controleer InnerException voor meer details: de onderliggende verbinding is gesloten: kan geen vertrouwens relatie tot stand brengen voor het beveiligde SSL/TLS-kanaal. |   Deze fout wordt waarschijnlijk veroorzaakt door een of meer stappen voor het uitvoeren van uw eigen certificaat. U vindt [hier](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)meer informatie. |
 |De bewerking heeft een ongeldige status code ServiceUnavailable geretourneerd <br> De antwoord status code geeft niet aan dat geslaagd is: 503 (service niet beschikbaar). | Deze fout kan het gevolg zijn van een van deze voor waarden.<li>ArmStsPool heeft de status gestopt.</li><li>Een van de websites van Azure Resource Manager/Security Token Services is niet beschikbaar.</li><li>De Azure Resource Manager cluster bron is niet beschikbaar.</li><br><strong>Opmerking:</strong> Door het apparaat opnieuw op te starten, kan het probleem worden opgelost, maar moet u het ondersteunings pakket verzamelen zodat u het verder kunt opsporen.|
 |AADSTS50126: Ongeldige gebruikers naam of wacht woord.<br>Traceer-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Correlatie-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tijds tempel: 2019-11-15 09:21:57Z: de externe server heeft een fout geretourneerd: (400) ongeldige aanvraag.<br>Op regel: 1 teken: 1 |Deze fout kan het gevolg zijn van een van deze voor waarden.<li>Voor een ongeldige gebruikers naam en wacht woord controleert u of de klant het wacht woord heeft gewijzigd van Azure Portal door de volgende stappen te volgen en vervolgens het juiste wacht [woord te gebruiken](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) .<li>De Tenant-id voor een ongeldige Tenant-ID is een vaste GUID en moet worden ingesteld op `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -182,7 +182,7 @@ Hier vindt u de fouten die kunnen worden weer gegeven tijdens de configuratie va
 
 ## <a name="blob-storage-on-device"></a>Blob Storage op het apparaat 
 
-Hier vindt u de fouten met betrekking tot Blob Storage op Azure Stack EDGE/Data Box Gateway apparaat.
+Hier vindt u de fouten met betrekking tot Blob Storage op Azure Stack Edge Pro/Data Box Gateway-apparaat.
 
 | **Probleem/fouten** |  **Oplossing** | 
 |--------------------|-----------------|
@@ -197,7 +197,7 @@ Hier vindt u de fouten met betrekking tot Blob Storage op Azure Stack EDGE/Data 
 |De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven: `Error parsing source location… The SSL connection could not be established` .|Importeer het SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Zie [het certificaat downloaden](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)voor meer informatie.|
 |De waarde voor een van de HTTP-headers heeft niet de juiste indeling.|De geïnstalleerde versie van de Microsoft Azure Storage-bibliotheek voor python wordt niet ondersteund door Data Box. Zie Azure Data Box vereisten voor Blob Storage voor ondersteunde versies.|
 |… [SSL: CERTIFICATE_VERIFY_FAILED]...| Voordat u python uitvoert, stelt u de omgevings variabele REQUESTS_CA_BUNDLE in op het pad van het met base64 gecodeerde SSL-certificaat bestand (Zie How to [down load the Certificate](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Bijvoorbeeld:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>U kunt het certificaat ook toevoegen aan het certificaat archief van het systeem en deze omgevings variabele vervolgens instellen op het pad van dat archief. Bijvoorbeeld op Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|Er is een time-out opgestaan.|Meld u aan bij de Azure Stack rand en controleer of deze is ontgrendeld. Telkens wanneer het apparaat opnieuw wordt opgestart, blijft het vergrendeld totdat iemand zich aanmeldt.|
+|Er is een time-out opgestaan.|Meld u aan bij de Azure Stack Edge Pro en controleer of deze is ontgrendeld. Telkens wanneer het apparaat opnieuw wordt opgestart, blijft het vergrendeld totdat iemand zich aanmeldt.|
 
 
 ## <a name="next-steps"></a>Volgende stappen

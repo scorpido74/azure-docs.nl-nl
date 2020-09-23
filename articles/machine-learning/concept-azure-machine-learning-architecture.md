@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c24e9f58154b1523496a82761a8c48ba06dea46c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651263"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886311"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -193,7 +193,7 @@ Voor een voor beeld van het implementeren van een model als een webservice raadp
 
 #### <a name="real-time-endpoints"></a>Realtime-eind punten
 
-Wanneer u een getraind model in de ontwerp functie (preview-versie) implementeert, kunt u [het model als een real-time-eind punt implementeren](tutorial-designer-automobile-price-deploy.md). Een real-time eind punt ontvangt doorgaans één aanvraag via het REST-eind punt en retourneert een voor spelling in realtime. Dit is in tegens telling tot batch verwerking, waarbij meerdere waarden tegelijk worden verwerkt en de resultaten worden opgeslagen na voltooiing naar een gegevens opslag.
+Wanneer u een getraind model in de ontwerp functie implementeert, kunt u [het model als een real-time-eind punt implementeren](tutorial-designer-automobile-price-deploy.md). Een real-time eind punt ontvangt doorgaans één aanvraag via het REST-eind punt en retourneert een voor spelling in realtime. Dit is in tegens telling tot batch verwerking, waarbij meerdere waarden tegelijk worden verwerkt en de resultaten worden opgeslagen na voltooiing naar een gegevens opslag.
 
 #### <a name="pipeline-endpoints"></a>Pijplijneindpunten
 
@@ -229,7 +229,7 @@ U kunt de stappen van de pijp lijn herbruikbaresen en uitvoeren zonder de vorige
 
 De studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken van Azure Machine Learning:
 
-+ [Azure machine learning Designer (preview)](concept-designer.md) om werk stroom stappen uit te voeren zonder code te schrijven
++ [Azure machine learning Designer](concept-designer.md) om werk stroom stappen uit te voeren zonder code te schrijven
 + Webervaring voor [automatische machine learning](concept-automated-ml.md)
 + [Azure machine learning notitie blokken](how-to-run-jupyter-notebooks.md) om uw eigen code te schrijven en uit te voeren in geïntegreerde Jupyter-notebook servers.
 + [Gegevens label projecten](how-to-create-labeling-projects.md) voor het maken, beheren en bewaken van projecten voor het labelen van uw gegevens
@@ -242,6 +242,7 @@ De studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken 
 
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview).
++ Gebruik [Azure machine learning Designer](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven. 
 + Gebruik [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) voor Automation.
 + De [Many Models Solution Accelerator](https://aka.ms/many-models) (preview) heeft Azure Machine Learning als basis en stelt u in staat om honderden, of zelfs duizenden machine Learning-modellen, te trainen, te gebruiken en te beheren.
 
@@ -250,5 +251,5 @@ De studio heeft ook toegang tot de interactieve hulp middelen die deel uitmaken 
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 * [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
+* [Een Azure Machine Learning-werk ruimte maken](how-to-manage-workspace.md)
 * [Zelf studie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

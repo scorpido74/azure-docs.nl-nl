@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898012"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Het labelen van grote hoeveelheden gegevens in machine learning-projecten is vaak een hele klus. Voor projecten met een Computer Vision-onderdeel, zoals afbeeldingsclassificatie of objectdetectie, zijn over het algemeen labels vereist voor duizenden afbeeldingen.
  
@@ -144,13 +144,7 @@ Voor begrenzingsvakken zijn dit een aantal belangrijke vragen:
 >[!NOTE]
 > Zorg ervoor dat labelaars de eerste 9 labels kunnen selecteren met de cijfertoetsen 1 tot en met 9.
 
-## <a name="use-ml-assisted-labeling-preview"></a>Met ML ondersteund labelen gebruiken (preview)
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> Door ML ondersteund labelen is momenteel beschikbaar als openbare preview-versie.
-> De preview-versie wordt aangeboden zonder Service Level Agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+## <a name="use-ml-assisted-labeling"></a>Met ML ondersteund labelen gebruiken
 
 Op de pagina **Met ML ondersteund labelen** kunt u automatische machine Learning-modellen activeren om de labeltaak te versnellen. Aan het begin van het labelproject worden de afbeeldingen in een willekeurige volgorde gerangschikt om mogelijke vooroordelen te verminderen. Eventuele vooroordelen die al aanwezig zijn in de gegevensset, worden echter wel weerspiegeld in het getrainde model. Als bijvoorbeeld 80% van uw afbeeldingen van één klasse zijn, dan is ongeveer 80% van de gegevens die zijn gebruikt om het model te trainen, ook van deze klasse. Deze training omvat geen actief onderwijs.
 
@@ -175,9 +169,6 @@ De clusteringsfase wordt niet weergegeven voor objectdetectiemodellen.
 Wanneer voldoende afbeeldingslabels zijn verzonden, wordt een classificatiemodel gebruikt om afbeeldingstags te voorspellen. Of er wordt een objectdetectiemodel gebruikt om begrenzingsvakken te voorspellen. De labelaar ziet nu pagina's met voorspelde labels die al aanwezig zijn voor elke afbeelding. Voor objectdetectie worden ook voorspelde vakken weergegeven. Vervolgens is het zaak om deze voorspellingen te beoordelen en eventuele verkeerd gelabelde afbeeldingen te corrigeren voordat de pagina wordt verzonden.  
 
 Zodra een machine learning-model is getraind met uw handmatig gelabelde gegevens, wordt het model geëvalueerd in een testset met handmatig gelabelde afbeeldingen om de nauwkeurigheid ervan te bepalen bij verschillende drempelwaarden voor betrouwbaarheid. Dit evaluatieproces wordt gebruikt om een drempelwaarde voor betrouwbaarheid te bepalen waarboven het model nauwkeurig genoeg is om pre-labels weer te geven. Het model wordt vervolgens geëvalueerd op basis van niet-gelabelde gegevens. Afbeeldingen met voorspellingen met een hogere betrouwbaarheid dan deze drempelwaarde, worden gebruikt om vooraf te labelen.
-
-> [!NOTE]
-> Met ML ondersteund labelen is **alleen** beschikbaar in Enterprise Edition-werkruimten.
 
 ## <a name="initialize-the-labeling-project"></a>Het labelproject initialiseren
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: bd2f7798ca02f4d6eab6d6d78d158a48bcccc010
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206071"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882550"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Hoge Beschik baarheid in Azure Database for MySQL
 De Azure Database for MySQL-service biedt een gegarandeerd hoog niveau van Beschik baarheid met de SLA (financieel ondersteunde service level agreement) van [99,99%](https://azure.microsoft.com/support/legal/sla/mysql) uptime. Azure Database for MySQL biedt een hoge Beschik baarheid tijdens geplande gebeurtenissen, zoals de initated van de gebruiker en ook wanneer niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten, optreden. Azure Database for MySQL kan snel van de meeste kritieke omstandigheden worden hersteld, waardoor er bijna geen toepassings tijd meer is bij het gebruik van deze service.
@@ -29,7 +29,7 @@ Azure Database for MySQL is geschikt voor het uitvoeren van essentiële data bas
 ## <a name="planned-downtime-mitigation"></a>Geplande downtime van uitval tijd
 Azure Database for MySQL is ontworpen om hoge Beschik baarheid te bieden tijdens geplande downtime. 
 
-![weer gave van elastisch schalen in azure MySQL](./media/concepts-high-availability/elastic-scaling-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/elastic-scaling-mysql-server.png" alt-text="weer gave van elastisch schalen in azure MySQL":::
 
 Hier volgen enkele geplande onderhouds scenario's:
 
@@ -46,7 +46,7 @@ Hier volgen enkele geplande onderhouds scenario's:
 Ongeplande uitval tijd kan optreden als gevolg van onvoorziene storingen, waaronder onderliggende hardwarestoringen, netwerk problemen en software fouten. Als de database server onverwacht uitvalt, wordt er in een paar seconden automatisch een nieuwe database server ingericht. De externe opslag wordt automatisch gekoppeld aan de nieuwe database server. MySQL-engine voert de herstel bewerking uit met WAL en database bestanden, en opent de database server om clients toe te staan verbinding te maken. Niet-doorgevoerde trans acties gaan verloren en moeten opnieuw worden geprobeerd door de toepassing. Hoewel een ongeplande uitval tijd niet kan worden vermeden, Azure Database for MySQL de uitval tijd verminderen door automatisch herstel bewerkingen uit te voeren op de database server en opslag lagen zonder menselijke tussen komst. 
 
 
-![weer gave van hoge Beschik baarheid in azure MySQL](./media/concepts-high-availability/availability-for-mysql-server.png)
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="weer gave van hoge Beschik baarheid in azure MySQL":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Ongeplande downtime: fout scenario's en service herstel
 Hier volgen enkele fout scenario's en hoe Azure Database for MySQL automatisch herstelt:
@@ -60,8 +60,8 @@ Hier volgen enkele fout scenario's waarvoor gebruikers actie moet worden herstel
 
 | **Scenario** | **Herstel plan** |
 | ---------- | ---------- |
-| <b>Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](howto-read-replicas-portal.md) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
-| <b>Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](concepts-backup.md) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [mysqldump](concepts-migrate-dump-restore.md)en vervolgens [herstellen](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) gebruiken om die tabellen te herstellen in uw data base. |
+| <b> Regio fout | Uitval van een regio is een zeldzame gebeurtenis. Als u echter beveiliging van een regio fout nodig hebt, kunt u een of meer Lees replica's in andere regio's configureren voor herstel na nood gevallen (DR). (Zie [dit artikel](howto-read-replicas-portal.md) over het maken en beheren van Lees replica's voor meer informatie). In het geval van een storing op regio niveau kunt u de Lees replica die is geconfigureerd voor de andere regio hand matig promo veren tot de productie database server. |
+| <b> Logische/gebruikers fouten | Herstel van gebruikers fouten, zoals het per ongeluk verwijderen van tabellen of onjuiste bijgewerkte gegevens, omvat het uitvoeren van een herstel naar een bepaald [tijdstip](concepts-backup.md) (PITR), door de gegevens te herstellen en te herstellen tot het moment dat de fout zich voordeed.<br> <br>  Als u alleen een subset van data bases of specifieke tabellen wilt herstellen in plaats van alle data bases in de database server, kunt u de database server herstellen in een nieuw exemplaar, de tabel (len) exporteren via [mysqldump](concepts-migrate-dump-restore.md)en vervolgens [herstellen](concepts-migrate-dump-restore.md#restore-your-mysql-database-using-command-line-or-mysql-workbench) gebruiken om die tabellen te herstellen in uw data base. |
 
 
 

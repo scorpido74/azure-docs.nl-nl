@@ -1,26 +1,26 @@
 ---
 title: Aangesloten machine agent installeren met behulp van Windows Power shell DSC
-description: In dit artikel leert u hoe u met behulp van Windows Power shell DSC computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview).
-ms.date: 03/12/2020
+description: In dit artikel leert u hoe u met behulp van Windows Power shell DSC computers kunt verbinden met Azure met behulp van Azure Arc-servers.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5349ff870be324c0137d2adcaf201ecdac286cbc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565817"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887632"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
 
-Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken voor het installeren van de met Azure Arc ingeschakelde computer agent (preview) op hybride Windows-computers.
+Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken om de met Azure Arc ingeschakelde computer agent op hybride Windows-computers te installeren.
 
 ## <a name="requirements"></a>Vereisten
 
 - Windows Power shell-versie 4,0 of hoger
 
-- De DSC-module [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0)
+- De DSC-module [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc)
 
-- Een Service-Principal om de computers te koppelen aan Azure Arc-servers (preview) die niet interactief zijn. Volg de stappen in de sectie [een service-principal voor onboarding op schaal maken](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) als u al een Service-Principal hebt gemaakt voor het gebruik van Arc ingeschakelde servers (preview).
+- Een Service-Principal om de computers te koppelen aan Azure Arc-servers die niet interactief zijn. Volg de stappen in de sectie [een service-principal maken voor onboarding op schaal](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) als u nog geen Service-Principal hebt gemaakt voor het inschakelen van Arc-servers.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>De ConnectedMachine DSC-module installeren
 
@@ -44,7 +44,7 @@ Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/
 
 De resources in deze module zijn ontworpen voor het beheren van de configuratie van de Azure Connected machine agent. Ook is een Power shell `AzureConnectedMachineAgent.ps1` -script gevonden dat in de map is opgenomen `AzureConnectedMachineDsc\examples` . Het maakt gebruik van community-bronnen voor het automatiseren van het downloaden en installeren en tot stand brengen van een verbinding met Azure Arc. Dit script voert soort gelijke stappen uit die worden beschreven in het artikel de [Azure Portal hybride computers verbinden met Azure](onboard-portal.md) .
 
-Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](manage-agent.md#update-or-remove-proxy-settings)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` . In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) -module.
+Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](manage-agent.md#update-or-remove-proxy-settings)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` . In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) -module.
 
 >[!NOTE]
 >Als u DSC wilt uitvoeren, moet u Windows configureren om externe Power shell-opdrachten te ontvangen, zelfs wanneer u een localhost-configuratie uitvoert. Als u uw omgeving eenvoudig op de juiste wijze wilt configureren, voert u de opdracht `Set-WsManQuickConfig -Force` uit in een Power shell-terminal met verhoogde bevoegdheden.
@@ -64,11 +64,11 @@ Hieronder vindt u de para meters die u aan het Power shell-script geeft.
 
 - `Tags`: Teken reeks matrix van tags die moeten worden toegepast op de bron van de verbonden machine.
 
-- `Credential`: Een Power shell-referentie object met de **ApplicationId** en het **wacht woord** dat wordt gebruikt om machines op schaal te registreren met behulp van een [Service-Principal](onboard-service-principal.md). 
+- `Credential`: Een Power shell-referentie object met de **ApplicationId** en het **wacht woord** dat wordt gebruikt om machines op schaal te registreren met behulp van een [Service-Principal](onboard-service-principal.md).
 
 1. Navigeer in een Power shell-console naar de map waarin u het `.ps1` bestand hebt opgeslagen.
 
-2. Voer de volgende Power shell-opdrachten uit om het MOF-document te compileren (Zie DSC- [configuraties](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)voor informatie over het compileren van DSC-configuraties:
+2. Voer de volgende Power shell-opdrachten uit om het MOF-document te compileren (Zie DSC- [configuraties](/powershell/scripting/dsc/configurations/configurations)voor informatie over het compileren van DSC-configuraties:
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -76,13 +76,13 @@ Hieronder vindt u de para meters die u aan het Power shell-script geeft.
 
 3. Hiermee maakt u een `localhost.mof file` in een nieuwe map met de naam `C:\dsc` .
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc, gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Toevoegen aan bestaande configuraties
 
 Deze resource kan worden toegevoegd aan bestaande DSC-configuraties om een end-to-end-configuratie voor een machine aan te duiden. U kunt deze resource bijvoorbeeld toevoegen aan een configuratie waarin de instellingen voor beveiligde besturings systemen worden ingesteld.
 
-De [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
+De [CompositeResource](https://www.powershellgallery.com/packages/compositeresource) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](/powershell/scripting/dsc/resources/authoringResourceComposite) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

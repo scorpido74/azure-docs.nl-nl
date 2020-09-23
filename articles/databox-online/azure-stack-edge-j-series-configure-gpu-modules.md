@@ -1,6 +1,6 @@
 ---
-title: Een GPU-module op Microsoft Azure Stack Edge GPU-apparaat uitvoeren | Microsoft Docs
-description: Hierin wordt beschreven hoe u via de Azure Portal een module op GPU kunt configureren en uitvoeren op een Azure Stack edge-apparaat.
+title: Een GPU-module op Microsoft Azure Stack Edge Pro GPU-apparaat uitvoeren | Microsoft Docs
+description: Hierin wordt beschreven hoe u een module op GPU kunt configureren en uitvoeren op een Azure Stack Edge Pro-apparaat via de Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266949"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891472"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Een module op GPU configureren en uitvoeren op Azure Stack edge-apparaat
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Een module op GPU op Azure Stack Edge Pro-apparaat configureren en uitvoeren
 
-Uw Azure Stack edge-apparaat bevat een of meer GPU (graphics processing unit). Gpu's zijn een populaire keuze voor AI-berekeningen wanneer ze parallelle verwerkings mogelijkheden bieden en sneller zijn bij het weer geven van afbeeldingen dan Cpu's (Central Processing Units). Voor meer informatie over de GPU die zich in uw Azure Stack edge-apparaat bevindt, gaat u naar de [technische specificaties van het Azure stack edge-apparaat](azure-stack-edge-gpu-technical-specifications-compliance.md).
+Uw Azure Stack Edge Pro-apparaat bevat een of meer GPU (graphics processing unit). Gpu's zijn een populaire keuze voor AI-berekeningen wanneer ze parallelle verwerkings mogelijkheden bieden en sneller zijn bij het weer geven van afbeeldingen dan Cpu's (Central Processing Units). Voor meer informatie over de GPU die zich in uw Azure Stack Edge Pro-apparaat bevindt, gaat u naar de [technische specificaties van het Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
-In dit artikel wordt beschreven hoe u een module kunt configureren en uitvoeren op de GPU op uw Azure Stack edge-apparaat. In dit artikel gebruikt u een openbaar toegankelijke container module **cijfers** die zijn geschreven voor nvidia T4-gpu's. Deze procedure kan worden gebruikt voor het configureren van andere modules die door NVIDIA worden gepubliceerd voor deze Gpu's.
+In dit artikel wordt beschreven hoe u een module op de GPU op uw Azure Stack Edge Pro-apparaat configureert en uitvoert. In dit artikel gebruikt u een openbaar toegankelijke container module **cijfers** die zijn geschreven voor nvidia T4-gpu's. Deze procedure kan worden gebruikt voor het configureren van andere modules die door NVIDIA worden gepubliceerd voor deze Gpu's.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt toegang tot een met GPU ingeschakelde 1-knoop punt Azure Stack edge-apparaat. Dit apparaat wordt geactiveerd met een resource in Azure.  
+1. U hebt toegang tot een op GPU ingeschakelde apparaat met 1 knoop punt Azure Stack Edge Pro. Dit apparaat wordt geactiveerd met een resource in Azure.  
 
 ## <a name="configure-module-to-use-gpu"></a>Module configureren voor het gebruik van GPU
 
-Als u een module wilt configureren voor het gebruik van de GPU op uw Azure Stack edge-apparaat om een module uit te voeren, volgt u deze stappen.
+Als u een module wilt configureren voor het gebruik van de GPU op uw Azure Stack Edge Pro-apparaat om een module uit te voeren, volgt u deze stappen.
 
 1. Ga in het Azure Portal naar de resource die aan uw apparaat is gekoppeld. 
 
@@ -54,7 +54,7 @@ Als u een module wilt configureren voor het gebruik van de GPU op uw Azure Stack
 
     ![Module configureren voor het gebruik van GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    In het rechterdeel venster ziet u het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack edge-apparaat. Dit komt overeen met het IoT Edge apparaat dat u in de vorige stap hebt gemaakt bij het maken van de IoT Hub resource. 
+    In het rechterdeel venster ziet u het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack Edge Pro-apparaat. Dit komt overeen met het IoT Edge apparaat dat u in de vorige stap hebt gemaakt bij het maken van de IoT Hub resource. 
     
 6. Selecteer dit IoT Edge apparaat.
 

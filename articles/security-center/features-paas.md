@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042353"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894778"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>Functie dekking voor Azure PaaS Services<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Functie dekking voor Azure PaaS Services <a name="paas-services"></a>
 
 In de volgende tabel ziet u de beschik baarheid van Azure Security Center-functies voor de ondersteunde Azure PaaS-resources.
 
-|Service|Aanbevelingen (gratis)|Beveiligings waarschuwingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
+|Service|Aanbevelingen (gratis)|Beveiligings waarschuwingen (Azure Defender)|Evaluatie van beveiligings problemen (Azure Defender)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation-account|✔|-|-|
@@ -41,7 +41,7 @@ In de volgende tabel ziet u de beschik baarheid van Azure Security Center-functi
 |Azure Database for PostgreSQL *|✔|✔|-|
 |Naam ruimte van Azure Event Hubs|✔|-|-|
 |Azure Functions-app|✔|-|-|
-|Azure Key Vault|✔|✔ *|-|
+|Azure Key Vault|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -54,6 +54,6 @@ In de volgende tabel ziet u de beschik baarheid van Azure Security Center-functi
 |Azure-abonnement|✔ **|✔|-|
 |Azure Virtual Network</br> (incl. subnetten, Nic's en netwerk beveiligings groepen)|✔|-|-|
 
-\*Deze functies worden momenteel ondersteund in de preview-versie.
+\* Deze functies worden momenteel ondersteund in de preview-versie.
 
-\*\*Aanbevelingen voor Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
+\*\* Aanbevelingen voor Azure Active Directory (Azure AD) zijn alleen beschikbaar voor abonnementen waarvoor Azure Defender is ingeschakeld.
