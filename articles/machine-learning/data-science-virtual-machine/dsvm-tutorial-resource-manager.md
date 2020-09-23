@@ -10,16 +10,14 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f83cdb09b94fb7eda1f8f700390be8b2c2147e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855066"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883155"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Ubuntu Data Science-machine maken met een ARM-sjabloon
-
-[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In deze quickstart ziet u hoe u een Data Science Virtual Machine maakt voor Ubuntu 18.04 met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). Data Science Virtual Machines zijn virtuele machines in de cloud waarop vooraf een reeks frameworks en hulpprogramma's voor gegevenswetenschappen en machine learning wordt geladen. Wanneer de VM wordt geïmplementeerd op rekenresources met een GPU, worden alle hulpprogramma's en bibliotheken geconfigureerd voor het gebruik van de GPU.
 

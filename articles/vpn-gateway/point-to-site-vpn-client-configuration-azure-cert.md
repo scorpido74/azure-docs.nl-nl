@@ -1,19 +1,19 @@
 ---
 title: 'P2S-configuratie bestanden voor VPN-client maken & installeren: certificaat verificatie'
 titleSuffix: Azure VPN Gateway
-description: Windows-, Linux-, Linux-, strongSwan-en Mac OS X VPN-client configuratie bestanden maken en installeren voor P2S-certificaat verificatie.
+description: Windows-, Linux-, Linux-, strongSwan-en macOS X VPN-client configuratie bestanden maken en installeren voor P2S-certificaat authenticatie.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420775"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986641"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Configuratie bestanden voor de VPN-client maken en installeren voor P2S-configuraties voor systeemeigen Azure-certificaatverificatie
 
@@ -96,7 +96,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
 
    De **Interface** waarde is ' VPN ' en de waarde van het **VPN-type** is ' IKEv2 '. Geef een naam op voor het profiel in het veld **service naam** en klik vervolgens op **maken** om het VPN-client verbindings profiel te maken.
 
-   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Scherm afbeelding toont het netwerk venster met de optie om een interface te selecteren, selecteer VPN-type en voer een service naam in.](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. Kopieer de waarde van de **VpnServer** -code uit het **VpnSettings.xml** -bestand in de **algemene** map. Plak deze waarde in de velden **server adres** en **externe ID** van het profiel.
 
    ![Server gegevens](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
 
    * Selecteer voor Catalina de optie **geen** en vervolgens **certificaat**. **Selecteer** het juiste certificaat:
    
-   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![Scherm afbeelding toont het netwerk venster waarvoor geen verificatie-instellingen en certificaat zijn geselecteerd.](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. Klik op **selecteren...** om het client certificaat te kiezen dat u voor verificatie wilt gebruiken. Dit is het certificaat dat u in stap 2 hebt geïnstalleerd.
 
-   ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![Scherm afbeelding toont het netwerk venster met verificatie-instellingen, waarin u een certificaat kunt selecteren.](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Kies een identiteit** om een lijst met certificaten weer te geven waaruit u kunt kiezen. Selecteer het juiste certificaat en klik vervolgens op **door gaan**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![Scherm afbeelding toont het dialoog venster een identiteit kiezen, waarin u het juiste certificaat kunt selecteren.](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
    ![toepassen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ Ga terug naar het artikel om [uw P2S-configuratie te volt ooien](vpn-gateway-how
 Raadpleeg de volgende artikelen om problemen met P2S-verbindingen op te lossen:
 
   * [Problemen met Azure Point-to-site-verbindingen oplossen](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [Problemen met VPN-verbindingen van Mac OS X VPN-clients oplossen](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [Problemen met VPN-verbindingen van macOS X VPN-clients oplossen](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

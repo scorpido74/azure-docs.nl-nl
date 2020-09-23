@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5db25f993fa006fa635ac12c1be5ff1c3eb92f68
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009304"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883458"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.2): ondersteunde functies en syntaxis
 
@@ -25,7 +25,9 @@ Door gebruik te maken van de API van Azure Cosmos DB voor MongoDB hebt u de besc
 
 ## <a name="protocol-support"></a>Ondersteuning voor protocol
 
-De API van Azure Cosmos DB voor MongoDB is compatibel met MongoDB-serverversie **3.6**. Dit artikel is van toepassing op MongoDB-versie 3.2. De ondersteunde operators en eventuele beperkingen of uitzonderingen worden hieronder vermeld. Elk clientstuurprogramma dat deze protocollen kent, kan verbinding maken met de API van Azure Cosmos DB voor MongoDB.
+De API van Azure Cosmos DB voor MongoDB is compatibel met MongoDB-serverversie **3.6**. Dit artikel is van toepassing op MongoDB-versie 3.2. De ondersteunde operators en eventuele beperkingen of uitzonderingen worden hieronder vermeld. Elk clientstuurprogramma dat deze protocollen kent, kan verbinding maken met de API van Azure Cosmos DB voor MongoDB. 
+
+Azure Cosmos DB-API voor MongoDB biedt ook een naadloze upgrade-ervaring voor in aanmerkingen komende accounts. Meer informatie vindt u in de [versie-upgradehandleiding voor MongoDB](mongodb-version-upgrade.md).
 
 ## <a name="query-language-support"></a>Ondersteuning voor querytaal
 

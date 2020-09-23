@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171139"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898697"
 ---
 # <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
-In dit artikel wordt beschreven hoe u de map converteren naar afbeelding kunt gebruiken om de gegevensset van de afbeelding te converteren naar het gegevens type van de afbeelding. Dit is een gestandaardiseerde gegevens indeling in aan afbeeldingen gerelateerde taken zoals afbeeldings classificatie in Azure Machine Learning Designer (preview).
+In dit artikel wordt beschreven hoe u de map Convert to Image Directory kunt gebruiken om de gegevensset van afbeeldingen te converteren naar het gegevens type van de afbeelding. Dit is een gestandaardiseerde gegevens indeling in aan afbeeldingen gerelateerde taken zoals afbeeldings classificatie in Azure Machine Learning Designer.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Converteren naar afbeeldings Directory gebruiken  
 
@@ -58,13 +58,13 @@ De uitvoer van de modus **converteren naar afbeeldings mappen** is in de indelin
 
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam          | Type                  | Beschrijving   |
+| Naam          | Type                  | Description   |
 | ------------- | --------------------- | ------------- |
 | Invoer gegevensset | AnyDirectory, ZipFile | Invoer gegevensset |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam                   | Type           | Beschrijving            |
+| Naam                   | Type           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Uitvoer afbeelding map | ImageDirectory | Uitvoer afbeelding map |
 

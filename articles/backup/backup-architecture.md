@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824029"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986498"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -35,18 +35,22 @@ Meer informatie over [waarvan u een back-up kunt maken](backup-overview.md) en o
 
 ## <a name="where-is-data-backed-up"></a>Waar wordt een back-up van gegevens gemaakt?
 
-Azure Backup slaat back-upgegevens op in een Recovery Services kluis. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
+Azure Backup slaat back-upgegevens op in een kluis-Services-kluizen en back-upkluizen herstellen. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
 
-Recovery Services kluizen hebben de volgende kenmerken:
+Kluizen hebben de volgende kenmerken:
 
 - Kluizen maken het eenvoudig om uw back-upgegevens te organiseren en zo de beheer overhead te minimaliseren.
-- In elk Azure-abonnement kunt u Maxi maal 500 kluizen maken.
 - U kunt back-upitems bewaken in een kluis, waaronder Azure Vm's en on-premises machines.
 - U kunt de toegang tot de kluis beheren met [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md).
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
-  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md).
-  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md).
+  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zone-redundante opslag (ZRS)**: repliceert uw gegevens in [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd. [Meer informatie](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services kluizen gebruiken standaard GRS.
+
+Recovery Services kluizen hebben de volgende extra functies:
+
+- In elk Azure-abonnement kunt u Maxi maal 500 kluizen maken.
 
 ## <a name="backup-agents"></a>Back-upagents
 
@@ -95,8 +99,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 

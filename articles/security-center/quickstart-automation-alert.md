@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: ecef318978194ac3773c54e2d9c960781086de65
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687149"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906356"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Quickstart: een automatisch antwoord op een specifieke beveiligingswaarschuwing maken met behulp van een ARM-sjabloon (Azure Resource Manager)
 
@@ -73,9 +73,7 @@ Gebruik Azure Portal om te controleren of de werkstroomautomatisering is geïmpl
 1. Ga naar [Azure Portal](https://portal.azure.com) en open **Security Center**.
 1. Selecteer het filterpictogram op de bovenste menubalk en selecteer het specifieke abonnement waarin u de nieuwe werkstroomautomatisering hebt geïmplementeerd.
 1. Open **werkstroomautomatisering** in de zijbalk van Security Center en controleer of uw nieuwe automatisering erbij staat.
-
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Afbeelding met alternatieve tekst." lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Lijst met geconfigureerde automatiseringen" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Gebruik de optie **filteren op naam** als uw abonnement veel werkstroomautomatiseringen bevat. 
 
@@ -86,11 +84,9 @@ Als u de werkstroomautomatisering niet langer nodig hebt, verwijdert u deze via 
 1. Ga naar [Azure Portal](https://portal.azure.com) en open **Security Center**.
 1. Selecteer het filterpictogram op de bovenste menubalk en selecteer het specifieke abonnement waarin u de nieuwe werkstroomautomatisering hebt geïmplementeerd.
 1. Open **werkstroomautomatisering** in de zijbalk van Security Center en zoek de automatisering die u wilt verwijderen.
-
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Afbeelding met alternatieve tekst." lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Stappen voor het verwijderen van een werkstroomautomatisering" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Schakel het selectievakje in voor het item dat u wilt verwijderen.
-1. Selecteer Verwijderen op de werkbalk.
+1. Selecteer **Verwijderen** op de werkbalk.
 
 
 ## <a name="next-steps"></a>Volgende stappen

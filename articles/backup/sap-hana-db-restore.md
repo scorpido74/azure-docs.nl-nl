@@ -1,14 +1,14 @@
 ---
 title: SAP HANA data bases herstellen op virtuele Azure-machines
-description: In dit artikel vindt u informatie over het herstellen van SAP HANA-data bases die worden uitgevoerd op Azure Virtual Machines.
+description: In dit artikel vindt u informatie over het herstellen van SAP HANA-data bases die worden uitgevoerd op Azure Virtual Machines. U kunt ook meerdere regio's herstellen gebruiken om uw data bases terug te zetten naar een secundaire regio.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986117"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA data bases herstellen op virtuele Azure-machines
 
@@ -249,6 +249,51 @@ Ga als volgt te werk als u **volledige & differentieel** hebt geselecteerd als h
 
     > [!NOTE]
     > In meerdere database container (MDC) herstel bewerkingen nadat de systeem database is hersteld naar een doel exemplaar, moet het script vooraf worden uitgevoerd. Alleen dan zullen de volgende Tenant-DB-herstel bewerkingen slagen. Raadpleeg voor meer informatie over het [oplossen van problemen – MDC herstellen](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore).
+
+## <a name="cross-region-restore"></a>Meerdere regio's herstellen
+
+Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u SAP HANA-data bases die worden gehost op virtuele machines van Azure in een secundaire regio herstellen. Dit is een Azure-gekoppelde regio.
+
+Lees de [sectie voordat u begint](./backup-create-rs-vault.md#set-cross-region-restore)om het onderdeel tijdens de preview-periode onboarding uit te voeren.
+
+Als u wilt zien of CRR is ingeschakeld, volgt u de instructies in [herstel van meerdere regio's configureren](backup-create-rs-vault.md#configure-cross-region-restore)
+
+### <a name="view-backup-items-in-secondary-region"></a>Back-upitems in secundaire regio weer geven
+
+Als CRR is ingeschakeld, kunt u de back-upitems in de secundaire regio weer geven.
+
+1. Ga vanuit de portal naar **Recovery Services kluis**  >  **Back-upitems**.
+1. Selecteer **secundaire regio** om de items in de secundaire regio weer te geven.
+
+>[!NOTE]
+>Alleen back-upbeheer typen die ondersteuning bieden voor de functie CRR, worden weer gegeven in de lijst. Op dit moment is alleen ondersteuning voor het herstellen van secundaire regio gegevens naar een secundaire regio toegestaan.
+
+![Back-upitems in secundaire regio](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![Data bases in secundaire regio](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Herstellen in secundaire regio
+
+De gebruikers ervaring voor het herstellen van de secundaire regio is vergelijkbaar met de gebruikers ervaring voor het herstellen van de primaire regio. Wanneer u details in het configuratie venster voor herstellen configureert om uw herstel te configureren, wordt u gevraagd om alleen para meters van secundaire regio's op te geven.
+
+![Waar en hoe herstellen?](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>Het virtuele netwerk in de secundaire regio moet uniek worden toegewezen en kan niet worden gebruikt voor andere Vm's in die resource groep.
+
+![Melding activeren wordt uitgevoerd](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* Nadat de herstel bewerking is geactiveerd en in de fase voor gegevens overdracht, kan de herstel taak niet worden geannuleerd.
+>* De Azure-rollen die nodig zijn voor het herstellen van de secundaire regio, zijn hetzelfde als die in de primaire regio.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Taken voor het herstellen van secundaire regio's bewaken
+
+1. Ga vanuit de portal naar **Recovery Services kluis**  >  **back-uptaken**
+1. Selecteer **secundaire regio** om de items in de secundaire regio weer te geven.
+
+    ![Gefilterde back-uptaken](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

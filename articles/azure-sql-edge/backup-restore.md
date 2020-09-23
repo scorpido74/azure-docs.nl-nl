@@ -1,6 +1,6 @@
 ---
-title: Back-up en herstel van data bases-Azure SQL Edge (preview)
-description: Meer informatie over de mogelijkheden voor back-up en herstel in Azure SQL Edge (preview).
+title: Back-up en herstel van data bases-Azure SQL Edge
+description: Meer informatie over de mogelijkheden voor back-up en herstel in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667859"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905957"
 ---
-# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Back-ups van data bases in Azure SQL Edge maken en herstellen (preview-versie) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Back-up en herstel van data bases in Azure SQL Edge 
 
-Azure SQL Edge is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine op Linux. Het biedt vergelijk bare mogelijkheden voor back-up en herstel van data bases die beschikbaar zijn in SQL Server on Linux en SQL Server worden uitgevoerd in containers. Het onderdeel back-up maken en herstellen biedt een essentiële beveiliging voor het beveiligen van gegevens die zijn opgeslagen in uw Azure SQL Edge-data bases. 
+Azure SQL Edge is gebaseerd op de nieuwste versies van de micro soft SQL Database-Engine. Het biedt vergelijk bare mogelijkheden voor back-up en herstel van data bases die beschikbaar zijn in SQL Server on Linux en SQL Server worden uitgevoerd in containers. Het onderdeel back-up maken en herstellen biedt een essentiële beveiliging voor het beveiligen van gegevens die zijn opgeslagen in uw Azure SQL Edge-data bases. 
 
 Als u het risico op onherstelbaar gegevens verlies wilt beperken, moet u regel matig een back-up van uw data bases maken om de wijzigingen in uw gegevens regel matig te hand haven. Een goed geplande strategie voor back-up en herstel beschermt databases tegen gegevensverlies veroorzaakt door een verscheidenheid aan fouten. Test uw strategie door een reeks back-ups te herstellen en vervolgens uw data base te herstellen, om u voor te bereiden om effectief te reageren op een nood geval.
 
@@ -75,7 +75,7 @@ In het volgende voor beeld gebruikt u de `BACKUP DATABASE` Transact-SQL-opdracht
 
 ### <a name="back-up-to-url"></a>Back-up naar URL
 
-Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een back-up maken om de BLOB tegenover de pagina te blok keren](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)voor meer informatie. In het volgende voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
+Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een back-up maken om de BLOB tegenover de pagina te blok keren](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)voor meer informatie. In het volgende voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
 
 1. Als u back-ups wilt configureren om blobs te blok keren, moet u eerst een SAS-token (Shared Access Signature) genereren dat u kunt gebruiken om een SQL Server referentie te maken op Azure SQL Edge. Het script maakt een SAS die is gekoppeld aan een opgeslagen toegangs beleid. Zie [Shared Access Signatures, Part 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie. Het script schrijft ook de T-SQL-opdracht die is vereist om de referentie te maken op SQL Server. In het volgende script wordt ervan uitgegaan dat u al een Azure-abonnement hebt met een opslag account en een opslag container voor de back-ups.
 
@@ -133,7 +133,10 @@ Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een ba
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Een data base in Azure SQL Edge herstellen
 
-In Azure SQL Edge kunt u herstellen vanaf een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstellen en](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)herstellen voor meer informatie over herstel en herstel in SQL Server. Zie [volledige database herstel (Simple Recovery model)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)voor een overzicht van het eenvoudige herstel model in SQL Server.
+In Azure SQL Edge kunt u herstellen vanaf een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstellen en](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)herstellen voor meer informatie over herstel en herstel in SQL Server. Zie [volledige database herstel (Simple Recovery model)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)voor een overzicht van het eenvoudige herstel model in SQL Server.
+
+> [!IMPORTANT] 
+> Data bases die zijn gemaakt in Azure SQL Edge, kunnen niet worden hersteld op een exemplaar van Microsoft SQL Server of Azure SQL. Daarnaast kan een Data Base die is gemaakt op Microsoft SQL Server of Azure SQL worden hersteld op Azure SQL Edge, op voor hand dat de data base geen van de functies bevat die niet worden ondersteund door Azure SQL Edge. 
 
 ### <a name="restore-from-a-local-disk"></a>Herstellen vanaf een lokale schijf
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905726"
 ---
 # <a name="train-anomaly-detection-model-module"></a>Model module voor detectie van anomalieën trainen
 
-In dit artikel wordt beschreven hoe u met behulp van de module voor het detecteren van een Train-detectie model in Azure Machine Learning Designer (preview) een getraind anomalie detectie model maakt.
+In dit artikel wordt beschreven hoe u de model module voor het detecteren van de Train-detectie in Azure Machine Learning Designer kunt gebruiken om een getraind anomalie detectie model te maken.
 
 De module gebruikt de invoer van een set para meters voor een anomalie detectie model en een niet-gelabelde gegevensset. Er wordt een getraind anomalie detectie model geretourneerd, samen met een set labels voor de trainings gegevens.  
 
@@ -53,5 +53,5 @@ Nadat de training is voltooid:
 
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 
-Zie [uitzonde ringen en fout codes voor de ontwerp functie (preview)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.
+Zie [uitzonde ringen en fout codes voor de ontwerp functie](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.
 '

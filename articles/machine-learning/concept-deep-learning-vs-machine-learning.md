@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414586"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905129"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -26,7 +26,7 @@ In dit artikel vindt u meer informatie over het vergelijken van diep gaande en m
 
 Houd rekening met de volgende definities voor een beter begrip van diep leren en machine learning versus AI:
 
-- **Diep leren** is een subset van machine learning die is gebaseerd op kunst matige Neural netwerken. Het _leer proces_ is _dieper_ omdat de structuur van kunst matige Neural netwerken uit meerdere invoer-, uitvoer-en verborgen lagen bestaat. Elke laag bevat eenheden die de invoer gegevens transformeren naar informatie die de volgende laag voor een bepaalde voorspellende taak kan gebruiken. Dankzij deze structuur kan een machine een eigen gegevens verwerking leren.
+- **Diep leren** is een subset van machine learning die is gebaseerd op kunst matige Neural netwerken. Het _leer proces_ is _dieper_ omdat de structuur van kunst matige Neural netwerken uit meerdere invoer-, uitvoer-en verborgen lagen bestaat. Elke laag bevat eenheden waarmee de invoergegevens worden getransformeerd tot informatie die door de volgende laag voor een bepaalde voorspellingstaak kan worden gebruikt. Dankzij deze structuur kan een machine een eigen gegevens verwerking leren.
 
 - **Machine learning** is een subset van kunst matige intelligentie die gebruikmaakt van technieken (zoals diepe learning) waarmee computers ervaring kunnen gebruiken om taken te verbeteren. Het _leer proces_ is gebaseerd op de volgende stappen:
 

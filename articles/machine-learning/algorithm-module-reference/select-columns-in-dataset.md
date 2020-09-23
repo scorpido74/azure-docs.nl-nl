@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153771"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890289"
 ---
 # <a name="select-columns-in-dataset-module"></a>Kolommen in de module gegevensset selecteren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen. De-module verwijdert de kolommen niet fysiek uit de gegevensset van de bron. in plaats daarvan wordt er een subset met kolommen gemaakt, zoals een database *weergave* of *projectie*.
 
@@ -62,7 +62,7 @@ De module bevat meerdere opties voor het kiezen van kolommen op naam:
     Als uw gegevensset breed is, is het eenvoudiger om indexen of gegenereerde lijsten met namen te gebruiken in plaats van de kolommen afzonderlijk te selecteren. Ervan uitgaande dat u de lijst van tevoren hebt voor bereid:
 
     1. Klik op de optie **with Rules** . 
-    2. Selecteer **geen kolommen**, selecteer **insluiten**en klik in het tekstvak met het rode uitroep teken. 
+    2. Selecteer **geen kolommen**, selecteer  **insluiten**en klik in het tekstvak met het rode uitroep teken. 
     3. Plak of typ een door komma's gescheiden lijst met eerder gevalideerde kolom namen. U kunt de module niet opslaan als een kolom een ongeldige naam heeft. Zorg er dus voor dat u de namen van tevoren controleert.
     
     U kunt deze methode ook gebruiken om een lijst met kolommen op te geven met behulp van de index waarden. 

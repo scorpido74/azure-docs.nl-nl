@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 73037ac3725ad1e7e9dd84597936c47406244630
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/22/2020
+ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949878"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986891"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -53,7 +53,7 @@ De volgende tabel bevat de versie geschiedenis van huidige en eerder uitgebracht
 
 Inhoud maken en beheren in een zoek service.
 
-| Versie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Probleem met achterwaartse compatibiliteit |
+| Versie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Beschrijving |
 |-------------------------|--------|------------------------------|
 | [Search 2020-06-30](/rest/api/searchservice/index)| Stabiel | De nieuwste stabiele versie van de zoek REST-Api's, met behulp van relevantie scores en algemeen Beschik baarheid voor kennis opslag.|
 | [Search 2020-06-30-Preview](/rest/api/searchservice/index-preview)| Preview | Preview-versie gekoppeld aan stabiele versie. Bevat meerdere [Preview-functies](search-api-preview.md). |
@@ -72,12 +72,14 @@ Inhoud maken en beheren in een zoek service.
 
 Een zoek service maken en configureren en API-sleutels beheren.
 
-| Versie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Probleem met achterwaartse compatibiliteit |
+| Versie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Beschrijving |
 |-------------------------|--------|------------------------------|
-| [Management 2020-03-13](/rest/api/searchmanagement/) | Stabiel | Nieuwste stabiele versie van de beheer REST-Api's, met verbeteringen in Endpoint Protection. Voegt een [persoonlijk eind punt](service-create-private-endpoint.md) toe via een persoonlijke koppeling en [netwerk-IP-regels](service-configure-firewall.md) voor nieuwe services. |
-| [Management 2019-10-01-Preview](/rest/api/searchmanagement/index-2019-10-01-preview) | Preview  | Ondanks het versie nummer is dit nog steeds de huidige preview-versie van de REST Api's voor beheer. Er zijn op dit moment geen preview-functies. Alle preview-functies zijn onlangs overgegaan op algemene Beschik baarheid. |
-| Beheer 2015-08-19  | Stabiel | De eerste beschik bare versie van de beheer REST-Api's. Biedt service-inrichting, opschalen en API-sleutel beheer. |
-| Beheer 2015-08-19-preview | Preview | De eerste preview-versie van de beheer REST-Api's. |
+| [Beheer 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stabiel | Nieuwste stabiele versie van de beheer REST-Api's. Hiermee wordt algemeen beschik bare ondersteuning voor gedeelde persoonlijke koppelings bronnen toegevoegd voor alle bronnen waarvoor toegang wordt verkregen via uitgaande resources, behalve die in de preview-versie |
+| [Beheer 2020-08-01-preview](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Preview  | Momenteel als Preview: de resource ondersteuning voor gedeelde persoonlijke koppelingen voor Azure Functions en Azure Database for MySQL. |
+| Management 2020-03-13  | Stabiel | Voegt een [persoonlijk eind punt](service-create-private-endpoint.md) toe via een persoonlijke koppeling en [netwerk-IP-regels](service-configure-firewall.md) voor nieuwe services. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
+| Management 2019-10-01-Preview | Preview  | Er zijn geen preview-functies geïntroduceerd in deze lijst. Dit voor beeld is functioneel equivalent aan 2020-03-13. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
+| Beheer 2015-08-19  | Stabiel | De eerste beschik bare versie van de beheer REST-Api's. Biedt service-inrichting, opschalen en API-sleutel beheer. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
+| Beheer 2015-08-19-preview  | Preview | De eerste preview-versie van de beheer REST-Api's. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview). |
 
 ## <a name="azure-sdk-for-net"></a>Azure-SDK voor .NET
 
@@ -85,19 +87,17 @@ De volgende tabel bevat koppelingen naar recentere SDK-versies.
 
 | SDK-versie | Status | Beschrijving |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2020-06-30 REST API, maar nog niet ondersteund, geo-filters of [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
+| [Azure.Search.Documents 11,0](/dotnet/api/overview/azure/search.documents-readme) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2020-06-30 REST API, maar nog niet ondersteund, geo-filters of [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). |
 | [Micro soft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stabiel | Uitgebracht op 2019 mei. Streeft naar de Search REST API-Version = 2019-05-06.|
-| [Micro soft. Azure. Search 8,0-Preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Preview | uitgebracht op 2019 april. Streeft naar de Search REST API-Version = 2019-05 -06-preview.|
-| [Micro soft. Azure. Management. Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19.  |
-
-Voor meer informatie over eerdere versies van micro soft. Azure. Search gaat u naar een [NuGet-pakket pagina](https://www.nuget.org/packages/Microsoft.Azure.Search/) voor elke release, bladert u omlaag naar **versie geschiedenis**en vouwt u de sectie uit om de volledige lijst met releases weer te geven.
+| [Micro soft. Azure. Management. Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stabiel | Streeft naar de beheer REST API-Version = 2020-08-01.  |
+| Micro soft. Azure. Management. Search 3.0.0 | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19.  |
 
 ## <a name="azure-sdk-for-java"></a>Azure SDK voor Java
 
 | SDK-versie | Status | Beschrijving  |
 |-------------|--------|------------------------------|
-| [Java Azure-Search-documenten 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
-| [1.35.0 java-beheer client](/java/api/overview/azure/search/management?view=azure-java-stable) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |
+| [Java Azure-Search-documenten 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
+| [1.35.0 java-beheer client](/java/api/overview/azure/search/management) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure-SDK voor JavaScript
 
@@ -110,5 +110,5 @@ Voor meer informatie over eerdere versies van micro soft. Azure. Search gaat u n
 
 | SDK-versie | Status | Beschrijving  |
 |-------------|--------|------------------------------|
-| [Python Azure-Search-documenten 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
-| [Python Azure-beheer-Search 1,0](/python/api/overview/azure/search?view=azure-python) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |
+| [Python Azure-Search-documenten 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
+| [Python Azure-beheer-Search 1,0](/python/api/overview/azure/search) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753897"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898608"
 ---
 # <a name="convert-word-to-vector-module"></a>Woord naar vector module converteren
 
-In dit artikel wordt beschreven hoe u met behulp van de module woord naar vector converteren in Azure Machine Learning Designer (preview) de volgende taken uitvoert:
+In dit artikel wordt beschreven hoe u met behulp van de module woord naar vector converteren in Azure Machine Learning Designer deze taken uitvoert:
 
 - Verschillende Word2Vec-modellen (Word2Vec, FastText, ondersteunt pretraind model) Toep assen op de verzameling van de tekst die u als invoer hebt opgegeven.
 - Genereer een vocabulaire met Word-insluitingen.
@@ -55,7 +55,7 @@ Deze module vereist een gegevensset die een tekst kolom bevat. Voor verwerkte te
 
     Omdat deze module een vocabulaire van tekst maakt, verschilt de inhoud van de kolommen, wat leidt tot een andere woordenlijst inhoud. Daarom accepteert de module slechts één doel kolom.
 
-4. Voor **Word2Vec-strategie**kiest u **uit ondersteunt pretraind English model**, **Gensim Word2Vec**en **Gensim FastText**.
+4. Voor  **Word2Vec-strategie**kiest u **uit ondersteunt pretraind English model**, **Gensim Word2Vec**en **Gensim FastText**.
 
 5. Als de **Word2Vec-strategie** **Gensim Word2Vec** of **Gensim FastText**is:
 
@@ -93,7 +93,7 @@ De module heeft één uitvoer:
 
 + **Vocabulaire with Embedding**: bevat de gegenereerde vocabulaire, samen met het insluiten van elk woord. Eén dimensie neemt één kolom in beslag.
 
-In het volgende voor beeld ziet u hoe de module woord converteren naar vector werkt. Deze module wordt toegepast op basis van de standaard instellingen voor de vooraf verwerkte gegevensset van Wikipedia SP 500 die is opgenomen in Azure Machine Learning (preview).
+In het volgende voor beeld ziet u hoe de module woord converteren naar vector werkt. Deze module wordt toegepast op basis van de standaard instellingen voor de voor verwerkte gegevensset van Wikipedia SP 500 die is opgenomen in Azure Machine Learning.
 
 ### <a name="source-dataset"></a>Brongegevensset
 
@@ -149,4 +149,4 @@ Deze sectie bevat tips en antwoorden op veelgestelde vragen.
 
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 
-Zie [machine learning fout codes](designer-error-codes.md)voor een lijst met fouten die specifiek zijn voor de Designer-modules (preview-versie).
+Zie [machine learning fout codes](designer-error-codes.md)voor een lijst met fouten die specifiek zijn voor de ontwerp modules.

@@ -10,16 +10,16 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649407"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897357"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
 
@@ -423,5 +423,5 @@ In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) ge
 ## <a name="next-steps"></a>Volgende stappen
 
 - Verken de volledige [referentie voor AzureML-rest API](https://docs.microsoft.com/rest/api/azureml/).
-- Meer informatie over het gebruik van Studio & Designer voor het voors [pellen van prijzen voor auto Mobile met de ontwerp functie (preview)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
+- Meer informatie over hoe u de Designer kunt gebruiken om [de prijs van een auto Mobile te voors pellen met de ontwerper](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
 - Verken [Azure machine learning met Jupyter-notebooks](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).

@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Event Grid
 description: Overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Event Grid. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 86d7454d12d3b1ac66eac47a37b17bb1d0123fc5
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 3edf48d11a426d1a5359b4862be7463734a4608e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986980"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Ingebouwde Azure Policy-definities voor Azure Event Grid
 
