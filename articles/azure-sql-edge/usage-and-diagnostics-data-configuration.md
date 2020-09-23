@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650479"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888043"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Gegevens configuratie voor het gebruik van Azure SQL Edge en diagnose
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Het verzamelen van gebruiks-en diagnostische gegevens op Azure SQL Edge kan worden uitgeschakeld met behulp van een van de onderstaande methoden.
 
+> [!NOTE]
+> Het gebruik en de diagnostische gegevens kunnen niet worden uitgeschakeld voor de versie van de ontwikkelaar.
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>Gebruik en diagnostische gegevens uitschakelen met omgevings variabelen
 
 Als u het verzamelen van gebruiks-en diagnostische gegevens wilt uitschakelen op Azure SQL Edge, voegt u de volgende omgevings variabele toe en stelt u de waarde ervan in op `*False*` . Voor meer informatie over het configureren van Azure SQL Edge met behulp van omgevings variabelen raadpleegt u [configureren met omgevings variabelen](configure.md#configure-by-using-environment-variables).
@@ -68,7 +71,7 @@ Als u het verzamelen van gebruiks-en diagnostische gegevens wilt uitschakelen op
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE: Hiermee kunt u het gebruik en de diagnostische gegevens verzamelen. Dit is de standaard configuratie.
-- Onwaar: Hiermee wordt het verzamelen van gebruiks-en diagnostische gegevens uitgeschakeld
+- FALSE: Hiermee wordt het verzamelen van gebruiks-en diagnostische gegevens uitgeschakeld.
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>Gebruik en diagnostische gegevens uitschakelen met het bestand MSSQL. conf
 

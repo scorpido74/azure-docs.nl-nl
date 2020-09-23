@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge stroom kabel technische specificaties op basis van locatie | Microsoft Docs
-description: Meer informatie over de technische specificaties voor uw Azure Stack Edge-stroom kabels.
+title: Technische specificaties Microsoft Azure Stack Edge Pro-stroom kabel op basis van locatie | Microsoft Docs
+description: Meer informatie over de technische specificaties voor uw Azure Stack Edge Pro-stroom kabels.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 34f5b578581c5a11b3dbfba76f68819c2ed706d0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055925"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903621"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Specificaties Azure Stack Edge-stroom kabel
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Specificaties van Azure Stack Edge Pro-stroom kabel
 
-Uw Azure Stack edge-apparaat heeft een stroom kabel nodig dat afhankelijk is van uw Azure-regio.
+Uw Azure Stack Edge Pro-apparaat heeft een stroom kabel nodig dat afhankelijk is van uw Azure-regio.
 
 ## <a name="supported-power-cords"></a>Ondersteunde stroom kabels
 
@@ -158,4 +158,4 @@ U kunt de volgende tabel gebruiken om de juiste koord specificaties te vinden vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Technische specificaties van Azure Stack rand](data-box-edge-technical-specifications-compliance.md)
+[Technische specificaties van Azure Stack Edge Pro](data-box-edge-technical-specifications-compliance.md)

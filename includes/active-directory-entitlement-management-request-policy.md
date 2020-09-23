@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: active-directory
 author: msaburnley
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024810"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -207,3 +207,33 @@ Als u bijvoorbeeld Anne en Bob als eerste fiatteur (s) hebt genoteerd, vermeldt 
     ![Toegangs pakket-beleids instelling beleid inschakelen](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klik op **Volgende**.
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>Informatie van de aanvrager (preview-versie) toevoegen aan een toegangs pakket
+
+1. Ga naar het tabblad **aanvraag gegevens** en klik op het subtabblad **vragen** .
+ 
+1. Typ in wat u wilt vragen de aanvrager, ook wel de weergave teken reeks genoemd, voor de vraag in het vak **vraag** .
+
+    ![Toegangs pakket-beleid-instelling van gegevens van aanvrager inschakelen](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Als u uw eigen lokalisatie opties wilt toevoegen, klikt u op **lokalisatie toevoegen**.
+    1. Selecteer in het deel venster **lokalisaties voor vraag toevoegen** de **taal code** voor de taal waarin u de vraag lokalisatie.
+    1. In de taal die u hebt geconfigureerd, typt u de vraag in het **gelokaliseerde** tekstvak.
+    1. Zodra u alle benodigde lokalisaties hebt toegevoegd, klikt u op **Opslaan**.
+
+    ![Toegangs pakket-beleid: gelokaliseerde tekst configureren](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. Selecteer de **antwoord indeling** waarin aanvragers moeten reageren. Antwoord indelingen zijn: *korte tekst*, *meerdere keuzen*en *lange tekst*.
+ 
+    ![Toegangs pakket-beleid: Selecteer weer geven en bewerken van de antwoord indeling voor meerdere keuzes](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Als u meerdere keuzen selecteert, klikt u op de knop **weer geven en bewerken** om de antwoord opties te configureren.
+    1. Nadat u weer geven en bewerken hebt geselecteerd, wordt het deel venster **weer gave/bewerken vragen** geopend.
+    1. Typ de antwoord opties die u wilt toewijzen aan de aanvrager bij het beantwoorden van de vraag in de vakken **antwoord waarden** .
+    1. Typ zoveel reacties als u nodig hebt en klik vervolgens op **Opslaan**.
+    
+    ![Toegangs pakket-beleid: meerdere keuze opties opgeven](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Als u wilt dat aanvragers deze vraag beantwoorden wanneer ze toegang tot een toegangs pakket aanvragen, klikt u op het selectie vakje onder **vereist**.
+
+1. Klik op Next

@@ -4,15 +4,16 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322038"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888707"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -61,9 +62,11 @@ Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aa
 
 Voor de snelste manier om aan de slag te gaan met Azure lente Cloud, volgt u de instructies in [Quick Start: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Wat Java runtime ondersteunt Azure lente-Cloud ondersteuning?
 
 Azure lente-Cloud ondersteunt Java 8 en 11. Zie [Java runtime en versies van het besturings systeem](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Waar kan ik de logboeken en metrische gegevens van mijn lente-Cloud weer geven?
 
@@ -75,12 +78,14 @@ Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboek
 
 Ja. Zie [zelf studie: gedistribueerde tracering gebruiken met Azure lente-Cloud](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Welke resource typen worden ondersteund door service binding?
 
 Er worden momenteel drie services ondersteund:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure-cache voor redis.
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kan ik permanente volumes weer geven, toevoegen of verplaatsen vanuit mijn toepassingen?
 
@@ -96,6 +101,7 @@ U kunt de diagnostische instellingen van de lente-Cloud verwijderen met behulp v
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java runtime en besturingssysteem versies
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welke versies van Java runtime worden ondersteund in azure lente-Cloud?
@@ -136,10 +142,11 @@ U kunt een ondersteunings ticket openen met ondersteuning voor Azure.  Zie [een 
 
 De meest recente Ubuntu LTS-versie wordt gebruikt, momenteel [Ubuntu 20,04 LTS (brandpuntsafstand Fossa)](https://releases.ubuntu.com/focal/) is het standaard besturingssysteem.
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>Hoe vaak worden er beveiligings patches voor het besturings systeem toegepast?
+### <a name="how-often-are-os-security-patches-applied"></a>Hoe vaak worden er beveiligings patches voor het besturings systeem toegepast?
 
-Beveiligings patches die van toepassing zijn op Azure lente Cloud, worden maandelijks geïmplementeerd op productie.
+Beveiligings patches die van toepassing zijn op Azure lente-Cloud, worden maandelijks geïmplementeerd op productie.
 Essentiële beveiligings patches (CVE Score >= 9) die van toepassing zijn op een Azure lente-Cloud worden zo snel mogelijk uitgerold.
+::: zone-end
 
 ## <a name="deployment"></a>Implementatie
 
@@ -158,6 +165,7 @@ Ja. Zie [de lente Cloud toepassing vanuit de bron code starten](spring-cloud-qui
 
 Nee.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Wat zijn de aanbevolen procedures voor het migreren van bestaande lente-Cloud micro Services naar Azure veer Cloud?
 
 Wanneer u bestaande lente-Cloud micro Services migreert naar Azure lente-Cloud, is het een goed idee om de volgende best practices te bekijken:
@@ -168,8 +176,22 @@ Wanneer u bestaande lente-Cloud micro Services migreert naar Azure lente-Cloud, 
 * U wordt aangeraden officiële, stabiele Pivot-veer bibliotheken te gebruiken. Niet-officiële, bèta-of gevorkeerde versies van Pivot-lente bibliotheken hebben geen SLA-ondersteuning (Service Level Agreement).
 
 Controleer na de migratie de CPU/RAM-metrische gegevens en het netwerk verkeer om ervoor te zorgen dat de toepassings exemplaren op de juiste wijze worden geschaald.
+::: zone-end
 
-## <a name="trouble-shooting"></a>Problemen oplossen
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core-versies
+
+### <a name="which-net-core-versions-are-supported"></a>Welke .NET Core-versies worden ondersteund?
+
+.NET Core 3,1 en hoger.
+
+### <a name="how-long-will-net-core-31-be-supported"></a>Hoelang wordt .NET Core 3,1 ondersteund?
+
+Tot 3 december 2022. Zie [.net core-ondersteunings beleid](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+::: zone-end
+
+
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Wat zijn de gevolgen van het service register zelden niet beschikbaar?
 

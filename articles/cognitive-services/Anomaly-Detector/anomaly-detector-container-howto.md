@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530706"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903547"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Afwijkende detector containers installeren en uitvoeren (preview-versie)
+# <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector-containers installeren en uitvoeren 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 De Anomaly Detector heeft de volgende functionaliteit voor containerfuncties:
 
 | Functie | Functies |
 |--|--|
-| Anomalie detectie | <li> Detecteert afwijkingen die in realtime optreden. <li> Detecteert afwijkingen in uw gegevensset als een batch. <li> Het verwachte normale bereik van uw gegevens afleiden. <li> Ondersteunt de gevoeligheids aanpassing van anomalie detectie om uw gegevens beter aan te passen. |
+| Anomalie detectie | <li> Detecteert afwijkingen die in realtime optreden. <li> Detecteert afwijkingen in uw gegevensset als een batch. <li> Detecteert trend wijzigings punten in uw gegevensset als een batch.<li> Het verwachte normale bereik van uw gegevens afleiden. <li> Ondersteunt de gevoeligheids aanpassing van anomalie detectie om uw gegevens beter aan te passen. |
 
 Voor gedetailleerde informatie over de Api's raadpleegt u:
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/
 
 | Container | Opslagplaats |
 |-----------|------------|
-| cognitieve Services-anomaliey-detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| cognitieve Services-anomaliey-detector | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ Zie [containers configureren](anomaly-detector-container-configuration.md)voor m
 In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, installeren en uitvoeren van afwijkende detector containers. Samenvatting:
 
 * Afwijkings detectie biedt één Linux-container voor docker, die anomalie detectie inkapselt met batch versus streaming, verwachte bereik reductie en gevoeligheids afstemming.
-* Container installatie kopieën worden gedownload van een persoonlijke Azure Container Registry toegewezen voor containers preview.
+* Container installatie kopieën worden gedownload van een persoonlijke Azure Container Registry toegewezen voor containers.
 * Container installatie kopieën worden uitgevoerd in docker.
 * U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in afwijkende detector containers door de URI van de host op te geven van de container.
 * U moet factuur gegevens opgeven bij het instantiëren van een container.

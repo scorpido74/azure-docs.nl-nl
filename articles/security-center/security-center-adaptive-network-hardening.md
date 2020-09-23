@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378199"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894762"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
 Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
+
+## <a name="availability"></a>Beschikbaarheid
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Vereiste rollen en machtigingen:|Schrijf machtigingen op de Nsg's van de computer|
+|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Wat is adaptieve netwerk beveiliging?
 Het Toep assen van [netwerk beveiligings groepen (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het filteren van verkeer naar en van resources verbetert uw netwerk beveiligings postuur. Er kunnen echter wel enkele gevallen zijn waarin het daad werkelijke verkeer dat via de NSG stroomt, een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u de beveiligings postuur verder verbeteren door de NSG-regels te verfijnen op basis van de werkelijke verkeers patronen.
@@ -37,15 +46,6 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
 ![Weer gave netwerk beveiliging](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>Beschikbaarheid
-
-|Aspect|Details|
-|----|:----|
-|Release status:|Algemene beschikbaarheid|
-|Koers|Standaardlaag|
-|Vereiste rollen en machtigingen:|Schrijf machtigingen op de Nsg's van de computer|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Waarschuwingen en regels voor adaptieve netwerk beveiliging weer geven
@@ -56,7 +56,7 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
    * Niet- **gescande resources**: vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
       * **Vm's zijn klassieke vm's**: alleen Azure Resource Manager vm's worden ondersteund.
       * **Er zijn onvoldoende gegevens beschikbaar**: voor het genereren van nauw keurige aanbevelingen voor het beveiligen van de beveiliging is Security Center ten minste 30 dagen aan verkeers gegevens vereist.
-      * **VM wordt niet beveiligd door ASC Standard**: alleen vm's die zijn ingesteld op de prijs categorie standard van Security Center, komen in aanmerking voor deze functie.
+      * **VM wordt niet beveiligd door Azure Defender**: alleen vm's die zijn beveiligd met [Azure Defender voor servers](defender-for-servers-introduction.md) komen in aanmerking voor deze functie.
 
      ![beschadigde resources](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -69,7 +69,7 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
 
 1. Selecteer een virtuele machine op het tabblad **beschadigde resources** . De waarschuwingen en aanbevolen regels voor de beveiliging worden weer gegeven.
 
-     ![beveiligings regels](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+     ![Beveiligings regels](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
    > Het tabblad **regels** bevat een lijst met de regels die adaptieve netwerk beveiliging aanbeveelt. Op het tabblad **waarschuwingen** worden de waarschuwingen weer gegeven die zijn gegenereerd als gevolg van verkeer, stromen naar de resource, die niet binnen het IP-bereik vallen dat is toegestaan in de aanbevolen regels.
@@ -106,14 +106,14 @@ Enkele belang rijke richt lijnen voor het wijzigen van een adaptieve netwerk bep
 
 1. Als u een aantal para meters van een regel wilt wijzigen, klikt u op het tabblad **regels** op de drie puntjes (...) aan het einde van de rij van de regel en klikt u op **bewerken**.
 
-   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![Regel voor het bewerken van s](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. In het venster **regel bewerken** werkt u de details bij die u wilt wijzigen en klikt u op **Opslaan**.
 
    > [!NOTE]
-   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en op **afdwingen** klikken (zoals in de volgende stap wordt uitgelegd).
+   > Nadat u op **Opslaan**hebt geklikt, is de regel gewijzigd. *U hebt deze echter niet toegepast op de NSG.* Als u deze wilt Toep assen, moet u de regel in de lijst selecteren en vervolgens **afdwingen** selecteren (zoals in de volgende stap wordt uitgelegd).
 
-   ![regel bewerken](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Opslaan selecteren](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. Als u de bijgewerkte regel wilt Toep assen, selecteert u in de lijst de bijgewerkte regel en klikt u op **afdwingen**.
 
@@ -150,4 +150,4 @@ Als dat nodig is, kunt u een aanbevolen regel voor de huidige sessie verwijderen
 
 1. Klik op het tabblad **regels** op de drie puntjes (...) aan het einde van de rij van de regel en klik op **verwijderen**.  
 
-    ![beveiligings regels](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![Een regel verwijderen](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

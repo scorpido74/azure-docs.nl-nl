@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: 8a988895cd8999d15c32d7056d35abf40aeaba7e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420690"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887049"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -21,13 +21,13 @@ Azure Database for MySQL ondersteunt de configuratie van sommige server paramete
 
 1. Meld u aan bij de Azure Portal en zoek vervolgens de Azure Database for MySQL-server.
 2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for mysql-server te openen.
-![Pagina Azure Portal Server parameters](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+:::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Pagina Azure Portal Server parameters":::
 3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
-![Vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Vervolg keuzelijst opsommen":::
 4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
-![Wijzigingen opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Wijzigingen opslaan of negeren":::
 5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
-![Alles opnieuw instellen op standaard waarden](./media/howto-server-parameters/5-reset_parameters.png)
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Alles opnieuw instellen op standaard waarden":::
 
 ## <a name="setting-parameters-not-listed"></a>Ingestelde para meters niet vermeld
 
@@ -41,7 +41,7 @@ Als de server parameter die u wilt bijwerken niet wordt weer gegeven in de Azure
 4. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
 >[!Note]
-> `init_connect` kan worden gebruikt voor het wijzigen van para meters die geen SUPER-bevoegdheid (en) op sessie niveau vereisen. Als u wilt controleren of u de para meter kunt instellen met `init_connect` , voert u de `set session parameter_name=YOUR_DESIRED_VALUE;` opdracht uit en als er fouten zijn opgetreden in de toegang is geweigerd; er is een fout van **superbevoegdheden (en)** , dan kunt u de para meter niet instellen met behulp van init_connect.
+> `init_connect` kan worden gebruikt om parameters te wijzigen die geen SUPER-bevoegdhed(en) op sessieniveau vereisen. Als u wilt weten of u de parameter kunt instellen met `init_connect`, voert u de opdracht `set session parameter_name=YOUR_DESIRED_VALUE;` uit. Als er fouten optreden met het foutbericht **Toegang geweigerd; u hebt SUPER-privileges(s) nodig**, dan kunt u de parameter niet instellen met init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone
 
@@ -69,7 +69,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. In het onderstaande voor de globale tijd zone wordt de waarde ' VS/Pacific ' ingesteld.
 
-![De para meter voor de tijd zone instellen](./media/howto-server-parameters/timezone.png)
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="De para meter voor de tijd zone instellen":::
 
 ### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
 

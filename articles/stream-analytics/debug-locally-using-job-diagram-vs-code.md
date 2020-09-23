@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: c31f3c998df918466e707c95f041592051e8251c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903820"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio code
 
@@ -27,7 +27,7 @@ Een Azure Stream Analytics script wordt gebruikt om invoer gegevens naar uitvoer
 
 ### <a name="start-local-testing"></a>Lokale tests starten
 
-Gebruik deze [Quick](quick-create-vs-code.md) start om te leren hoe u met Visual Studio Code een stream Analytics taak maakt of [een bestaande taak naar een lokaal project exporteert](visual-studio-code-explore-jobs.md). Referenties voor invoer en uitvoer worden automatisch ingevuld voor geëxporteerde taken.
+Gebruik deze [Quick](quick-create-visual-studio-code.md) start om te leren hoe u met Visual Studio Code een stream Analytics taak maakt of [een bestaande taak naar een lokaal project exporteert](visual-studio-code-explore-jobs.md). Referenties voor invoer en uitvoer worden automatisch ingevuld voor geëxporteerde taken.
 
 Als u de query wilt testen met lokale invoer gegevens, volgt u deze [instructies](visual-studio-code-local-run.md). Als u met Live-invoer wilt testen, gaat u naar de volgende stap om [uw invoer te configureren](stream-analytics-add-inputs.md) . 
 
@@ -59,7 +59,7 @@ In deze sectie bekijkt u de metrische gegevens die beschikbaar zijn voor elk dee
 3. Selecteer de naam van de invoer gegevens bron in de vervolg keuzelijst om invoer metrieken te bekijken. De invoer bron in de onderstaande scherm afbeelding heet *aanhalings tekens*. Zie voor meer informatie over invoer metrieken [begrijpen stream Analytics taak bewaking en query's bewaken](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
-   > ![Metrische gegevens van taak diagram](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![Invoer gegevens van het taak diagram](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. Selecteer een query stap in het taak diagram of selecteer de naam van de stap in de vervolg keuzelijst om meet waarden voor het stap niveau weer te geven. Watermerk vertraging is de enige beschik bare stap metriek.
 
@@ -108,7 +108,7 @@ Selecteer **taak samenvatting** in de rechter bovenhoek van het taak diagram om 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: een Stream Analytics-taak maken met Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Stream Analytics-taak maken met Visual Studio code](quick-create-visual-studio-code.md)
 * [Azure Stream Analytics verkennen met Visual Studio code](visual-studio-code-explore-jobs.md)
-* [Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code](visual-studio-code-local-run.md)
+* [Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code](visual-studio-code-local-run.md)
 * [Azure Stream Analytics taken lokaal met live input testen met Visual Studio code](visual-studio-code-local-run-live-input.md)

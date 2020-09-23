@@ -6,23 +6,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 1a46cba6e3b74a2f8d4b63ab631830569c521291
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6f1c016efb300dea2cdef91c84bb901cffd09fa0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246457"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024980"
 ---
 Ga aan de slag met de Anomaly Detector-clientbibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. Met de Anomaly Detector-service kunt u afwijkingen in uw tijdreeksgegevens vinden door hierop automatisch de best passende modellen uit te voeren, ongeacht de branche, het scenario of het gegevensvolume.
 
 Gebruik de Anomaly Detector-clientbibliotheek voor .NET om:
 
-* Afwijkingen in uw tijdreeksgegevensset als een batchaanvraag te detecteren
+* Anomalieën in uw tijdreeksgegevensset als een batchaanvraag te detecteren
 * De anomaliestatus van het laatste gegevenspunt in uw tijdreeks te detecteren
+* Trendwijzigingspunten in uw gegevensset te detecteren.
 
-[Referentiedocumentatie voor bibliotheek](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [De code zoeken op GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[Referentiedocumentatie voor bibliotheek](https://aka.ms/anomaly-detector-dotnet-ref) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [De code zoeken op GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +31,7 @@ Gebruik de Anomaly Detector-clientbibliotheek voor .NET om:
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
 * Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
-    U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen en later upgraden naar een betaalde laag voor productie.
+    U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -65,7 +66,7 @@ Build succeeded.
 Installeer in de toepassingsmap de Anomaly Detector-clientbibliotheek voor .NET met de volgende opdracht:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
+dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
 ```
 
 Open vanuit de projectmap het *program.cs*-bestand en voeg het volgende toe met behulp van `directives`:
@@ -78,11 +79,11 @@ Maak in de `main()`-methode van de toepassing variabelen voor de Azure-locatie v
 
 ## <a name="object-model"></a>Objectmodel
 
-De Anomaly Detector-client is een [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient)-object dat met behulp van [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), dat uw sleutel bevat, wordt geverifieerd bij Azure. De client biedt twee methoden voor anomaliedetectie: Op een hele gegevensset met behulp van [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) en op het laatste gegevenspunt met behulp van [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync).
+De Anomaly Detector-client is een [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient)-object dat met behulp van [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), dat uw sleutel bevat, wordt geverifieerd bij Azure. De client kan anomaliedetectie uitvoeren op een hele gegevensset met behulp van [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync), of op het laatste gegevenspunt met behulp van [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync). De methode [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) detecteert punten die wijzigingen in een trend markeren.
 
 Tijdreeksgegevens worden verzonden als een reeks [punten](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) in een [aanvraagobject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request). Het `Request`-object bevat eigenschappen die de gegevens beschrijven ([granulariteit](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) bijvoorbeeld) en parameters voor de anomaliedetectie.
 
-Het antwoord van Anomaly Detector is ofwel een [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)- of [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)-object afhankelijk van de gebruikte methode.
+Het antwoord van Anomaly Detector is een [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)-, [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)- of [ChangePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref)-object afhankelijk van de gebruikte methode.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -92,6 +93,7 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Ano
 * [Een tijdreeksgegevensset laden vanuit een bestand](#load-time-series-data-from-a-file)
 * [Anomalieën in de volledige gegevensset detecteren](#detect-anomalies-in-the-entire-data-set)
 * [De anomaliestatus van het laatste gegevenspunt detecteren](#detect-the-anomaly-status-of-the-latest-data-point)
+* [De wijzigingspunten in de gegevensset detecteren](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
@@ -125,6 +127,12 @@ Maak een methode voor het aanroepen van de [EntireDetectAsync()](https://docs.mi
 Maak een methode voor het aanroepen van de [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_)-methode van de client met het `Request`-object en wacht op het antwoord als een [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview)-object. Controleer het [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview)-kenmerk van de reactie om te bepalen of het meest recente verzonden gegevenspunt wel of niet afwijkend is.
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Wijzigingspunten in de gegevensset detecteren
+
+Maak een methode voor het aanroepen van de [DetectChangePointAsync](https://aka.ms/anomaly-detector-dotnet-ref)-methode van de client met het `Request`-object en wacht op het antwoord als een [ChangePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref)-object. Controleer de IsChangePoint-waarden van het antwoord en druk alle waarden af die `true` zijn. Deze waarden komen overeen met trendwijzigingspunten, als die zijn gevonden.
+
+[!code-csharp[DetectChangePoint() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=changePointExample)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

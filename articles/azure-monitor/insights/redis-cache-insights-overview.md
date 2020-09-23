@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor voor Azure-cache voor redis (preview-versie) | Microsoft Docs
+title: Azure Monitor voor Azure-cache voor redis | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor Azure Redis Cache functie beschreven, die eigen aren van caches biedt met een duidelijk beeld van de prestaties en het gebruik van problemen.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045853"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887007"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor voor Azure cache verkennen voor redis
 
-Azure Monitor voor Azure cache voor redis (preview) voor al uw Azure-cache voor redis-bronnen, biedt een uniforme, interactieve weer gave van:
+Azure Monitor voor Azure cache voor redis-resources voor al uw Azure cache voor redis biedt een uniforme, interactieve weer gave van:
 
 - Algehele prestaties
 - Fouten
@@ -44,13 +44,13 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. De Azure-ca
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts voor al uw abonnementen weer te geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek naar **monitor**en selecteer **monitor**.
 
     ![Zoekvak met het woord ' Monitor ' en het Zoek resultaat van de service waarbij ' Monitor ' wordt weer gegeven met een snelheids meter](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. Selecteer **Azure-cache voor redis (preview-versie)**. Als deze optie niet aanwezig is, selecteert u **meer**  >  **Azure-cache voor redis**.
+1. Selecteer **Azure-cache voor redis**. Als deze optie niet aanwezig is, selecteert u **meer**  >  **Azure-cache voor redis**.
 
 ### <a name="overview"></a>Overzicht
 
@@ -79,7 +79,7 @@ Wanneer u de naam van het Azure-cache geheugen selecteert voor de redis-resource
 - **Cachemissers**
 - **Fouten (max)**
 
-### <a name="operations"></a>Bewerkingen
+### <a name="operations"></a>Operations
 
 Wanneer u **bewerkingen** boven aan de pagina selecteert, wordt de tabel **bewerkingen** van de werkmap sjabloon geopend. Deze kolommen worden weer gegeven:
 
@@ -128,9 +128,9 @@ Voor toegang tot Azure Monitor voor Azure cache voor redis, rechtstreeks vanuit 
 
 1. Selecteer in de Azure Portal Azure-cache voor redis.
 
-2. Kies in de lijst een afzonderlijke Azure-cache voor redis-resource. Klik in de sectie bewaking op inzichten (preview-versie).
+2. Kies in de lijst een afzonderlijke Azure-cache voor redis-resource. Kies inzichten in het gedeelte bewaking.
 
-    ![Scherm opname van menu opties met de woorden ' Insights (preview) ' gemarkeerd in een rood vak](./media/redis-cache-insights-overview/insights.png)
+    ![Scherm afbeelding van menu opties met de woorden ' inzichten ' die in een rood vak zijn gemarkeerd](./media/redis-cache-insights-overview/insights.png)
 
 Deze weer gaven zijn ook toegankelijk door de resource naam van een Azure-cache te selecteren voor de redis-resource in de werkmap van het Azure Monitor niveau.
 
@@ -168,7 +168,7 @@ Als u alle weer gaven in een werkmap wilt uitvouwen of samen vouwen, selecteert 
 
 ![Een gemarkeerd symbool voor een uitgevouwen werkmap](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache aanpassen voor redis (preview-versie)
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor voor Azure-cache voor redis aanpassen
 
 Omdat deze ervaring is gebouwd hierop Azure monitor werkmap sjablonen, kunt u de **optie voor**het  >  opslaan van**wijzigingen bewerken**selecteren  >  **Save** om een kopie van uw gewijzigde versie in een aangepaste werkmap op te slaan.
 

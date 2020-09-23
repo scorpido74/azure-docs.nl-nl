@@ -1,6 +1,6 @@
 ---
 title: Voor spellingen implementeren en maken met ONNX
-description: Meer informatie over het trainen van een model, het converteren naar ONNX, het implementeren ervan naar Azure SQL Edge (preview) of Azure SQL Managed instance (preview), en vervolgens systeem eigen voor spel uitvoeren op gegevens met het geüploade ONNX-model.
+description: Meer informatie over het trainen van een model, het converteren naar ONNX, het implementeren ervan naar Azure SQL Edge of Azure SQL Managed instance (preview), en vervolgens systeem eigen voor spel uitvoeren op gegevens met behulp van het geüploade ONNX-model.
 keywords: SQL-rand implementeren
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886826"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Voor spellingen implementeren en maken met een ONNX-model
 
-In deze Quick Start leert u hoe u een model traint, converteert naar ONNX, het implementeert in [Azure SQL Edge (preview)](onnx-overview.md) of [Azure SQL Managed instance (preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)en vervolgens systeem eigen voor beeld uitvoert op gegevens met behulp van het geüploade ONNX-model.
+In deze Quick Start leert u hoe u een model traint, converteert naar ONNX, het implementeert in [Azure SQL Edge](onnx-overview.md) of [Azure SQL Managed instance (preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)en vervolgens systeem eigen voor beeld uitvoert op gegevens met behulp van het geüploade ONNX-model.
 
 Deze Quick start is gebaseerd op **scikit-Learn** en maakt gebruik van de [Boston huisvesting-gegevensset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Als u Azure SQL Edge gebruikt en u geen Azure SQL Edge-module hebt geïmplementeerd, volgt u de stappen voor [het implementeren van SQL Edge (preview) met behulp van de Azure Portal](deploy-portal.md).
+* Als u Azure SQL Edge gebruikt en u geen Azure SQL Edge-module hebt geïmplementeerd, volgt u de stappen voor het [implementeren van SQL Edge met behulp van de Azure Portal](deploy-portal.md).
 
 * Installeer [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
