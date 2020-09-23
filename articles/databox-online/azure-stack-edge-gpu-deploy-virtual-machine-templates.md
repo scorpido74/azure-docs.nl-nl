@@ -1,6 +1,6 @@
 ---
-title: Vm's op uw Azure Stack edge-apparaat implementeren via sjablonen
-description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack edge-apparaat met behulp van sjablonen.
+title: Vm's op uw Azure Stack Edge Pro-apparaat implementeren via sjablonen
+description: Hierin wordt beschreven hoe u virtuele machines (Vm's) maakt en beheert op een Azure Stack Edge Pro-apparaat met behulp van sjablonen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899715"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Vm's op uw Azure Stack Edge GPU-apparaat implementeren via sjablonen
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Vm's op uw Azure Stack Edge Pro GPU-apparaat implementeren via sjablonen
 
-In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack edge-apparaat maakt en beheert met behulp van sjablonen. Deze sjablonen zijn JavaScript Object Notation (JSON)-bestanden waarmee de infra structuur en configuratie voor uw virtuele machine worden gedefinieerd. In deze sjablonen geeft u de resources op die u wilt implementeren en de eigenschappen voor deze resources.
+In deze zelf studie wordt beschreven hoe u een virtuele machine op uw Azure Stack Edge Pro-apparaat maakt en beheert met behulp van sjablonen. Deze sjablonen zijn JavaScript Object Notation (JSON)-bestanden waarmee de infra structuur en configuratie voor uw virtuele machine worden gedefinieerd. In deze sjablonen geeft u de resources op die u wilt implementeren en de eigenschappen voor deze resources.
 
 Sjablonen zijn flexibel in verschillende omgevingen, omdat deze para meters als invoer kunnen worden ingevoerd tijdens runtime vanuit een bestand. De standaard naamgevings structuur is `TemplateName.json` voor de sjabloon en `TemplateName.parameters.json` voor het parameter bestand. Ga voor meer informatie over ARM-sjablonen naar [Wat zijn Azure Resource Manager sjablonen?](../azure-resource-manager/templates/overview.md).
 
@@ -25,7 +25,7 @@ In deze zelf studie gebruiken we vooraf geschreven voorbeeld sjablonen voor het 
 
 ## <a name="vm-deployment-workflow"></a>VM-implementatiewerkstroom
 
-Als u Azure Stack Edge-Vm's wilt implementeren op een groot aantal apparaten, kunt u een enkele Sysprep-VHD gebruiken voor uw volledige vloot, dezelfde sjabloon voor implementatie en hoeft u alleen kleine wijzigingen aan te brengen in de para meters voor die sjabloon voor elke implementatie locatie (deze wijzigingen kunnen hand matig worden uitgevoerd, zoals we hier of programmatisch doen.) 
+Als u Azure Stack Edge Pro-Vm's wilt implementeren op een groot aantal apparaten, kunt u één Sysprep-VHD gebruiken voor uw volledige vloot, dezelfde sjabloon voor implementatie en hoeft u alleen kleine wijzigingen aan te brengen in de para meters voor die sjabloon voor elke implementatie locatie (deze wijzigingen kunnen hand matig worden uitgevoerd, zoals we hier of programmatisch doen.) 
 
 Het overzicht op hoog niveau van de implementatie werk stroom met behulp van sjablonen is als volgt:
 
@@ -57,13 +57,13 @@ Het overzicht op hoog niveau van de implementatie werk stroom met behulp van sja
 
 ## <a name="device-prerequisites"></a>Vereisten voor apparaten
 
-Configureer deze vereisten op uw Azure Stack edge-apparaat.
+Configureer deze vereisten op uw Azure Stack Edge Pro-apparaat.
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>Client vereisten
 
-Deze vereisten configureren op uw client die worden gebruikt voor toegang tot het Azure Stack edge-apparaat.
+Configureer deze vereisten op uw client die worden gebruikt voor toegang tot het Azure Stack Edge Pro-apparaat.
 
 1. [Down load Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) als u het gebruikt om een VHD te uploaden. U kunt ook AzCopy downloaden om een VHD te uploaden. Mogelijk moet u TLS 1,2 op uw client computer configureren als u oudere versies van AzCopy uitvoert. 
 1. [Down load de VM-sjablonen en parameter bestanden](https://aka.ms/ase-vm-templates) naar uw client computer. Pak het bestand uit in een map die u wilt gebruiken als werkmap.
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Alleen de lokale opslag accounts, zoals lokaal redundante opslag (Standard_LRS of Premium_LRS), kunnen worden gemaakt via Azure Resource Manager. Als u gelaagde opslag accounts wilt maken, raadpleegt u de stappen in [toevoegen, verbinding maken met opslag accounts op uw Azure stack rand](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Alleen de lokale opslag accounts, zoals lokaal redundante opslag (Standard_LRS of Premium_LRS), kunnen worden gemaakt via Azure Resource Manager. Als u gelaagde opslag accounts wilt maken, raadpleegt u de stappen in [toevoegen, verbinding maken met opslag accounts op uw Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
 Hieronder ziet u een voorbeeld van de uitvoer.
 
@@ -145,7 +145,7 @@ Zorg ervoor dat u de BLOB-URI in het hosts-bestand al hebt toegevoegd voor de cl
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-In een typische omgeving zou uw DNS zo zijn geconfigureerd dat alle opslag accounts naar het Azure Stack edge-apparaat verwijzen met een `*.blob.devicename.domainname.com` vermelding.
+In een typische omgeving zou uw DNS zo zijn geconfigureerd dat alle opslag accounts verwijzen naar het Azure Stack Edge Pro-apparaat met een `*.blob.devicename.domainname.com` vermelding.
 
 ### <a name="optional-install-certificates"></a>Beschrijving Certificaten installeren
 
@@ -185,11 +185,11 @@ Kopieer de schijf installatie kopieën die moeten worden gebruikt in pagina-blob
 
     ![Verbinding maken met Azure Storage 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. Selecteer **De naam en sleutel van een opslagaccount gebruiken**. Selecteer **Volgende**.
+5. Selecteer **De naam en sleutel van een opslagaccount gebruiken**. Selecteer **Next**.
 
     ![Verbinding maken met Azure Storage 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. Geef in de **naam en sleutel verbinding maken**de **weergave naam**, de **naam van het opslag account**, Azure Storage **account sleutel**op. Selecteer een **ander** opslag domein en geef vervolgens de `<device name>.<DNS domain>` Connection String op. Als u een certificaat niet in Storage Explorer hebt geïnstalleerd, controleert u de optie **http gebruiken** . Selecteer **Volgende**.
+6. Geef in de **naam en sleutel verbinding maken**de **weergave naam**, de **naam van het opslag account**, Azure Storage **account sleutel**op. Selecteer een **ander** opslag domein en geef vervolgens de `<device name>.<DNS domain>` Connection String op. Als u een certificaat niet in Storage Explorer hebt geïnstalleerd, controleert u de optie **http gebruiken** . Selecteer **Next**.
 
     ![Verbinding maken met naam en sleutel](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -215,7 +215,7 @@ Kopieer de schijf installatie kopieën die moeten worden gebruikt in pagina-blob
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -269,7 +269,7 @@ Het bestand `CreateImageAndVnet.parameters.json` heeft de volgende para meters:
     }
 ```
 
-Bewerk het bestand `CreateImageAndVnet.parameters.json` om het volgende toe te voegen aan uw Azure stack edge-apparaat:
+Bewerk het bestand `CreateImageAndVnet.parameters.json` om het volgende toe te voegen aan uw Azure stack Edge Pro-apparaat:
 
 1. Geef het type besturings systeem op dat overeenkomt met de VHD die u wilt uploaden. Het type besturings systeem kan Windows of Linux zijn.
 
@@ -341,7 +341,7 @@ Bewerk het bestand `CreateImageAndVnet.parameters.json` om het volgende toe te v
 Implementeer de sjabloon `CreateImageAndVnet.json` . Met deze sjabloon implementeert u de VNet-en installatie kopie bronnen die worden gebruikt voor het maken van Vm's in de volgende stap.
 
 > [!NOTE]
-> Wanneer u de sjabloon implementeert als u een verificatie fout krijgt, zijn uw Azure-referenties voor deze sessie mogelijk verlopen. Voer de `login-AzureRM` opdracht opnieuw uit om verbinding te maken met Azure Resource Manager op uw Azure stack edge-apparaat.
+> Wanneer u de sjabloon implementeert als u een verificatie fout krijgt, zijn uw Azure-referenties voor deze sessie mogelijk verlopen. Voer de `login-AzureRM` opdracht opnieuw uit om verbinding te maken met Azure Resource Manager op uw Azure stack Edge Pro-apparaat opnieuw.
 
 1. Voer de volgende opdracht uit: 
     
@@ -437,7 +437,7 @@ Als u een virtuele machine wilt maken, gebruikt u het `CreateVM.parameters.json`
         }
 ```    
 
-Wijs de juiste para meters toe aan `CreateVM.parameters.json` voor uw Azure stack edge-apparaat.
+Wijs de juiste para meters toe aan `CreateVM.parameters.json` voor uw Azure stack Edge Pro-apparaat.
 
 1. Geef een unieke naam, de naam van de netwerk interface en de naam van de ipconfig op. 
 1. Voer een gebruikers naam, wacht woord en een ondersteunde VM-grootte in.
@@ -594,7 +594,7 @@ Volg deze stappen om verbinding te maken met een virtuele Linux-machine.
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -609,9 +609,9 @@ Extensies, schaal sets, beschikbaarheids sets, moment opnamen worden niet onders
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

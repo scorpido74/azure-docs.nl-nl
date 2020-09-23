@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a5f56beb179f7c72fe66c7423999201f3460b143
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7637cc911ea2fbb950a18c2c8d91f5c3eaf02c23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646299"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905085"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) en laat zien hoe u uw modellen implementeert met behulp van [Azure machine learning](overview-what-is-azure-ml.md) naar een Azure-FPGA.
 
@@ -30,7 +30,7 @@ FPGA's bevatten een matrix van programmeerbare logische blokken en een hiërarch
 
 ![Diagram van Azure Machine Learning FPGA-vergelijking](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processor| Afkorting |Beschrijving|
+|Processor| Afkorting |Description|
 |---|:-------:|------|
 |Toepassingsspecifieke geïntegreerde circuits|ASICs|Aangepaste circuits, zoals Google tensor flow processor units (TPU), bieden de hoogste efficiëntie. Ze kunnen niet opnieuw worden geconfigureerd als uw behoeften veranderen.|
 |Veld-Programmeer bare poort matrices|FPGAs|Fpga's, zoals die beschikbaar zijn op Azure, bieden de prestaties bijna ASICs. Ze zijn ook flexibel en kunnen na verloop van tijd opnieuw worden geconfigureerd om nieuwe logica te implementeren.|
@@ -69,7 +69,7 @@ Fpga's zijn beschikbaar in deze Azure-regio's:
   - VS - oost
   - Azië - zuidoost
   - Europa -west
-  - VS - west 2
+  - West US 2
 
 Om de latentie en door voer te optimaliseren, moet uw client gegevens verzenden naar het FPGA-model in een van de bovenstaande regio's (het model dat u hebt geïmplementeerd.)
 

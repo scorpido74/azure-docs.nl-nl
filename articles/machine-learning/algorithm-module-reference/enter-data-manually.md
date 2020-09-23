@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367513"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908081"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik de module **gegevens hand matig invoeren** om een kleine gegevensset te maken door waarden te typen. De gegevensset kan meerdere kolommen bevatten.
   

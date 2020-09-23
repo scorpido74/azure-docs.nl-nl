@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782155"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907773"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
-In dit artikel wordt beschreven hoe u de module Tune model Hyper parameters gebruikt in Azure Machine Learning Designer (preview). Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
+In dit artikel wordt beschreven hoe u de module model Hyper parameters in Azure Machine Learning Designer kunt gebruiken. Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
 De termen *para meter* en *afstemming* kunnen verwarrend zijn. De *para meters* van het model zijn wat u in het rechterdeel venster van de module hebt ingesteld. In principe voert deze module een *opruiming* van de para meters uit op basis van de opgegeven parameter instellingen. Het leert een optimale set _Hyper parameters_, die mogelijk verschillend is voor elke specifieke beslissings structuur, gegevensset of regressie methode. Het proces van het vinden van de optimale configuratie wordt soms *afstemming*genoemd. 
 

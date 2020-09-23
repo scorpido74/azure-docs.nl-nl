@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Kubernetes-cluster op Microsoft Azure Stack edge-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe Kubernetes wordt geïmplementeerd op uw Azure Stack edge-apparaat.
+title: Overzicht van Kubernetes-cluster op Microsoft Azure Stack Edge Pro-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe Kubernetes wordt geïmplementeerd op uw Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: be7e01644d7d1f232c50b1efbadf100671a262fe
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899256"
 ---
-# <a name="kubernetes-on-your-azure-stack-edge-gpu-device"></a>Kubernetes op uw Azure Stack Edge GPU-apparaat
+# <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes op uw Azure Stack Edge Pro GPU-apparaat
 
-Kubernetes is een populair open-source platform voor het organiseren van container toepassingen. Dit artikel bevat een overzicht van Kubernetes en beschrijft hoe Kubernetes werkt op uw Azure Stack edge-apparaat. 
+Kubernetes is een populair open-source platform voor het organiseren van container toepassingen. Dit artikel bevat een overzicht van Kubernetes en beschrijft hoe Kubernetes werkt op uw Azure Stack Edge Pro-apparaat. 
 
 ## <a name="about-kubernetes"></a>Over Kubernetes 
 
@@ -27,19 +27,19 @@ Als open platform kunt u Kubernetes gebruiken om toepassingen te bouwen met uw f
 
 Zie [How Kubernetes Works](https://www.youtube.com/watch?v=q1PcAawa4Bg&list=PLLasX02E8BPCrIhFrc_ZiINhbRkYMKdPT&index=2&t=0s)(Engelstalig) voor meer informatie.
 
-## <a name="kubernetes-on-azure-stack-edge"></a>Kubernetes op Azure Stack rand
+## <a name="kubernetes-on-azure-stack-edge-pro"></a>Kubernetes op Azure Stack Edge Pro
 
-Op uw Azure Stack edge-apparaat kunt u een Kubernetes-cluster maken door de compute te configureren. Wanneer de compute-functie is geconfigureerd, wordt het Kubernetes-cluster met de Master-en worker-knoop punten allemaal geïmplementeerd en geconfigureerd voor u. Dit cluster wordt vervolgens gebruikt voor de implementatie van de werk belasting via `kubectl` , IOT Edge of Azure Arc.
+Op uw Azure Stack Edge Pro-apparaat kunt u een Kubernetes-cluster maken door de compute te configureren. Wanneer de compute-functie is geconfigureerd, wordt het Kubernetes-cluster met de Master-en worker-knoop punten allemaal geïmplementeerd en geconfigureerd voor u. Dit cluster wordt vervolgens gebruikt voor de implementatie van de werk belasting via `kubectl` , IOT Edge of Azure Arc.
 
-Het Azure Stack edge-apparaat is beschikbaar als een configuratie met één knoop punt die het infrastructuur cluster vormt. Het Kubernetes-cluster is gescheiden van het infrastructuur cluster en wordt boven op het infrastructuur cluster geïmplementeerd. Het infrastructuur cluster biedt de permanente opslag voor uw Azure Stack edge-apparaat terwijl het Kubernetes-cluster alleen verantwoordelijk is voor de indeling van toepassingen. 
+Het Azure Stack Edge Pro-apparaat is beschikbaar als een configuratie met één knoop punt die het infrastructuur cluster vormt. Het Kubernetes-cluster is gescheiden van het infrastructuur cluster en wordt boven op het infrastructuur cluster geïmplementeerd. Het infrastructuur cluster biedt de permanente opslag voor uw Azure Stack Edge Pro-apparaat terwijl het Kubernetes-cluster alleen verantwoordelijk is voor de indeling van toepassingen. 
 
 Het Kubernetes-cluster in dit geval heeft een hoofd knooppunt en een worker-knoop punt. De Kubernetes-knoop punten in een cluster zijn virtuele machines waarop uw toepassingen en Cloud-werk stromen worden uitgevoerd. 
 
 Het hoofd knooppunt Kubernetes is verantwoordelijk voor het onderhouden van de gewenste status voor het cluster. Het hoofd knooppunt beheert ook het worker-knoop punt waarop de container toepassingen worden uitgevoerd. 
 
-In het volgende diagram ziet u de implementatie van Kubernetes op een Azure Stack edge-apparaat met één knoop punt. Het apparaat met 1 knoop punt is niet Maxi maal beschikbaar en als het ene knoop punt uitvalt, wordt het apparaat niet meer uitgevoerd. Het Kubernetes-cluster gaat ook omlaag.
+In het volgende diagram ziet u de implementatie van Kubernetes op een Azure Stack Edge Pro-apparaat met één knoop punt. Het apparaat met 1 knoop punt is niet Maxi maal beschikbaar en als het ene knoop punt uitvalt, wordt het apparaat niet meer uitgevoerd. Het Kubernetes-cluster gaat ook omlaag.
 
-![Kubernetes-architectuur voor een Azure Stack edge-apparaat van 1 knoop punt](media/azure-stack-edge-gpu-kubernetes-overview/kubernetes-architecture-1-node.png)
+![Kubernetes-architectuur voor een Azure Stack Edge Pro-apparaat van 1 knoop punt](media/azure-stack-edge-gpu-kubernetes-overview/kubernetes-architecture-1-node.png)
 
 Voor meer informatie over de Kubernetes-cluster architectuur gaat u naar [Kubernetes core-concepten](https://kubernetes.io/docs/concepts/architecture/).
 
@@ -53,33 +53,33 @@ Voor meer informatie over de Kubernetes-cluster architectuur gaat u naar [Kubern
 
 ## <a name="storage-volume-provisioning"></a>Inrichting van opslag volume
 
-Voor de ondersteuning van toepassings werkbelastingen kunt u opslag volumes koppelen voor permanente gegevens op uw Azure Stack edge-apparaat-shares. U kunt zowel statische als dynamische volumes gebruiken. 
+Voor de ondersteuning van toepassings werkbelastingen kunt u opslag volumes koppelen voor permanente gegevens op uw Azure Stack Edge Pro-apparaat-shares. U kunt zowel statische als dynamische volumes gebruiken. 
 
-Zie opslag inrichtings opties voor toepassingen in [Kubernetes-opslag voor uw Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-storage.md)voor meer informatie.
+Zie opslag inrichtings opties voor toepassingen in [Kubernetes-opslag voor uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-storage.md)voor meer informatie.
 
 ## <a name="networking"></a>Netwerken
 
-Met Kubernetes-netwerken kunt u communicatie in uw Kubernetes-netwerk configureren, met inbegrip van container-naar-container netwerken, Pod-to-pod-netwerken, Pod-to-service-netwerken en Internet-naar-service-netwerken. Zie het netwerk model in [Kubernetes Networking voor uw Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-networking.md)voor meer informatie.
+Met Kubernetes-netwerken kunt u communicatie in uw Kubernetes-netwerk configureren, met inbegrip van container-naar-container netwerken, Pod-to-pod-netwerken, Pod-to-service-netwerken en Internet-naar-service-netwerken. Zie het netwerk model in [Kubernetes Networking voor uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-networking.md)voor meer informatie.
 
 ## <a name="updates"></a>Updates
 
-Wanneer er nieuwe Kubernetes-versies beschikbaar komen, kan uw cluster worden bijgewerkt met behulp van de standaard updates die beschikbaar zijn voor uw Azure Stack edge-apparaat. Zie [updates Toep assen op uw Azure stack rand](azure-stack-edge-gpu-install-update.md)voor stappen voor het uitvoeren van een upgrade.
+Wanneer er nieuwe Kubernetes-versies beschikbaar komen, kan uw cluster worden bijgewerkt met behulp van de standaard updates die beschikbaar zijn voor uw Azure Stack Edge Pro-apparaat. Zie [updates Toep assen op uw Azure stack Edge Pro](azure-stack-edge-gpu-install-update.md)voor stappen voor het uitvoeren van een upgrade.
 
 ## <a name="access-monitoring"></a>Toegang, bewaking
 
-Het Kubernetes-cluster op uw Azure Stack edge-apparaat staat op rollen gebaseerd toegangs beheer (RBAC) toe. Zie [op rollen gebaseerd toegangs beheer voor Kubernetes-cluster op uw Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-rbac.md)voor meer informatie.
+Het Kubernetes-cluster op uw Azure Stack Edge Pro-apparaat staat op rollen gebaseerd toegangs beheer (RBAC) toe. Zie [op rollen gebaseerd toegangs beheer voor Kubernetes-cluster op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-rbac.md)voor meer informatie.
 
-U kunt ook de status van uw cluster en resources bewaken via het Kubernetes-dash board. Er zijn ook container logboeken beschikbaar. Zie [het Kubernetes-dash board gebruiken voor het bewaken van de Kubernetes-cluster status op uw Azure stack edge-apparaat](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)voor meer informatie.
+U kunt ook de status van uw cluster en resources bewaken via het Kubernetes-dash board. Er zijn ook container logboeken beschikbaar. Zie [het Kubernetes-dash board gebruiken voor het bewaken van de Kubernetes-cluster status op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)voor meer informatie.
 
 Azure Monitor is ook beschikbaar als een invoeg toepassing voor het verzamelen van status gegevens uit containers, knoop punten en controllers. Zie [Azure monitor Overview](../azure-monitor/overview.md) (Engelstalig) voor meer informatie
 
 <!--## Private container registry
 
-Kubernetes on Azure Stack Edge device allows for the private storage of your images by providing a local container registry.-->
+Kubernetes on Azure Stack Edge Pro device allows for the private storage of your images by providing a local container registry.-->
 
 ## <a name="application-management"></a>Toepassingsbeheer
 
-Nadat een Kubernetes-cluster is gemaakt op uw Azure Stack edge-apparaat, kunt u de toepassingen die op dit cluster zijn geïmplementeerd, beheren via een van de volgende methoden:
+Nadat een Kubernetes-cluster is gemaakt op uw Azure Stack Edge Pro-apparaat, kunt u de toepassingen die op dit cluster zijn geïmplementeerd, beheren via een van de volgende methoden:
 
 - Systeem eigen toegang via `kubectl`
 - IoT Edge 
@@ -92,16 +92,16 @@ Deze methoden worden beschreven in de volgende secties.
 
 Zodra het Kubernetes-cluster is geïmplementeerd, kunt u de toepassingen die op het cluster zijn geïmplementeerd, lokaal vanaf een client computer beheren. U gebruikt een systeem eigen hulp programma zoals *kubectl* via de opdracht regel om te communiceren met de toepassingen. 
 
-Ga voor meer informatie over het implementeren van Kubernetes-cluster naar [een Kubernetes-cluster implementeren op uw Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md). Ga voor meer informatie over het beheer [Kubectl gebruiken om Kubernetes-cluster op uw Azure stack edge-apparaat te beheren](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Ga voor meer informatie over het implementeren van Kubernetes-cluster naar [een Kubernetes-cluster implementeren op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md). Ga voor meer informatie over het beheer [Kubectl gebruiken om Kubernetes-cluster op uw Azure stack Edge Pro-apparaat te beheren](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
 ### <a name="kubernetes-and-iot-edge"></a>Kubernetes en IoT Edge
 
-Kubernetes kan ook worden geïntegreerd met IoT Edge werk belastingen op Azure Stack edge-apparaat, waar Kubernetes schaalbaar is en het ecosysteem en IoT het IoT-georiënteerde ecosysteem bieden. De laag Kubernetes wordt gebruikt als een laag voor de infra structuur voor het implementeren van Azure IoT Edge workloads. De levens duur van de module en netwerk taakverdeling worden beheerd door Kubernetes, terwijl het Edge-toepassings platform wordt beheerd door IoT Edge.
+Kubernetes kan ook worden geïntegreerd met IoT Edge werk belastingen op Azure Stack Edge Pro-apparaat waar Kubernetes schaalbaar is en het ecosysteem en IoT het IoT-georiënteerde ecosysteem bieden. De laag Kubernetes wordt gebruikt als een laag voor de infra structuur voor het implementeren van Azure IoT Edge workloads. De levens duur van de module en netwerk taakverdeling worden beheerd door Kubernetes, terwijl het Edge-toepassings platform wordt beheerd door IoT Edge.
 
 Ga voor meer informatie over het implementeren van toepassingen op uw Kubernetes-cluster via IoT Edge naar: 
 
-- Maak [stateless toepassingen beschikbaar op Azure stack edge-apparaat via IOT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- Maak [stateless toepassingen beschikbaar op Azure stack Edge Pro-apparaat via IOT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes en Azure Arc
@@ -111,6 +111,6 @@ Azure Arc is een Hybrid management tool waarmee u toepassingen kunt implementere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over Kubernetes-opslag op [Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-storage.md).
-- Meer informatie over het Kubernetes-netwerk model op [Azure stack edge-apparaat](azure-stack-edge-gpu-kubernetes-networking.md).
-- [Azure stack Edge](azure-stack-edge-gpu-deploy-prep.md) implementeren in azure Portal.
+- Meer informatie over Kubernetes-opslag op [Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-storage.md).
+- Meer informatie over het Kubernetes-netwerk model op [Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-networking.md).
+- [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) in de Azure-portal implementeren.

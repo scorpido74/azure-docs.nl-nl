@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420886"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907792"
 ---
 # <a name="train-wide--deep-recommender"></a>Uitgebreide aanbevolen &er trainen
-In dit artikel wordt beschreven hoe u de module **train & diep aanbevolen** in azure machine learning Designer (preview) gebruikt om een aanbevelings model te trainen. Deze module is gebaseerd op brede & diep gaande lessen, dat door Google wordt voorgesteld.
+In dit artikel wordt beschreven hoe u de module **train & diep aanbevolen** in azure machine learning Designer kunt gebruiken om een aanbevelings model te trainen. Deze module is gebaseerd op brede & diep gaande lessen, dat door Google wordt voorgesteld.
 
 De **Uitdiepse aanbeveling van de trein &** een gegevensset leest over de beoordeling van de gebruikers-item classificatie en, optioneel, sommige gebruikers-en item functies. Er wordt een getraind breed & diep aanbevolen.  U kunt het getrainde model vervolgens gebruiken om waarderings voorspellingen of aanbevelingen te genereren met behulp van de module voor de [Score breedte en de diep aanbevolener](score-wide-and-deep-recommender.md) .  
 
@@ -77,14 +77,14 @@ De gegevensset van item functies moet item-id's in de eerste kolom bevatten. De 
 
 Een typische set met item functies kan er bijvoorbeeld als volgt uitzien:  
 
-|MovieId|Titel|Oorspronkelijke taal|Genres|Jaar|
+|MovieId|Titel|Oorspronkelijke taal|Genres|Year|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|De Godfather|Engels|Drama|1972|
 |31381|Met de wind weg|Engels|Geschiedenis|1939|
 
 ### <a name="train-the-model"></a>Het model trainen
 
-1.  Voeg de module **breed en diep aanbevolen trainer** toe aan uw experiment in de ontwerp functie (preview) en verbind deze met de gegevensset van de training.  
+1.  Voeg de module **breed en diep aanbevolen trainer** toe aan uw experiment in de Designer en verbind deze met de gegevensset van de training.  
   
 2. Als u een afzonderlijke gegevensset hebt van gebruikers onderdelen en/of de functies van het item, verbindt u deze met de module **Wide Train en diep aanbevolen** .  
   

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU-opslag account beheren | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal gebruikt voor het beheren van het opslag account op uw Azure Stack-rand.
+title: Beheer van Azure Stack Edge Pro GPU-opslag account | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal gebruikt voor het beheren van het opslag account op uw Azure Stack Edge Pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254289"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904533"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Gebruik de Azure Portal om Edge-opslag accounts te beheren op uw Azure Stack rand
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om Edge-opslag accounts te beheren op uw Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel wordt beschreven hoe u Edge Storage-accounts op uw Azure Stack Edge beheert. U kunt de Azure Stack Edge beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om Edge-opslag accounts op uw apparaat toe te voegen of te verwijderen.
+In dit artikel wordt beschreven hoe u Edge-opslag accounts kunt beheren op uw Azure Stack Edge Pro. U kunt de Azure Stack Edge Pro beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om Edge-opslag accounts op uw apparaat toe te voegen of te verwijderen.
 
 ## <a name="about-edge-storage-accounts"></a>Over Edge-opslag accounts
 
-U kunt gegevens van uw Azure Stack edge-apparaat overdragen via de SMB-, NFS-of REST-protocollen. Als u gegevens wilt overdragen naar Blob-opslag met behulp van de REST Api's, moet u Edge-opslag accounts maken op uw Azure Stack-rand. 
+U kunt gegevens van uw Azure Stack Edge Pro-apparaat overdragen via de SMB-, NFS-of REST-protocollen. Als u gegevens wilt overdragen naar Blob-opslag met behulp van de REST Api's, moet u Edge-opslag accounts maken op uw Azure Stack Edge Pro. 
 
-De Edge-opslag accounts die u op het Azure Stack edge-apparaat toevoegt, worden toegewezen aan Azure Storage-accounts. Alle gegevens die naar de Edge-opslag accounts worden geschreven, worden automatisch naar de Cloud gepusht.
+De Edge-opslag accounts die u op het Azure Stack Edge Pro-apparaat toevoegt, worden toegewezen aan Azure Storage-accounts. Alle gegevens die naar de Edge-opslag accounts worden geschreven, worden automatisch naar de Cloud gepusht.
 
 Hieronder ziet u een diagram met een gedetailleerde beschrijving van de twee typen accounts en de wijze waarop de gegevens stromen van elk van deze accounts naar Azure worden weer gegeven:
 
@@ -34,13 +34,13 @@ Hieronder ziet u een diagram met een gedetailleerde beschrijving van de twee typ
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Edge-opslag account toevoegen
+> * Edge-opslagaccount toevoegen
 > * Een Edge-opslag account verwijderen
 
 
-## <a name="add-an-edge-storage-account"></a>Een Edge-opslag account toevoegen
+## <a name="add-an-edge-storage-account"></a>Edge-opslagaccount toevoegen
 
-Voer de volgende procedure uit om een Edge-opslag account te maken:
+Voer de volgende procedure uit om een Edge-opslagaccount te maken:
 
 [!INCLUDE [Add an Edge storage account](../../includes/azure-stack-edge-gateway-add-storage-account.md)]
 

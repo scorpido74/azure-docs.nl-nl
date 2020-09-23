@@ -7,14 +7,17 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290324"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885680"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Een bestaand aangepast domein toewijzen aan Azure Spring Cloud
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
+
 Domain Name Service (DNS) is een techniek voor het opslaan van namen van netwerkknooppunten in een netwerk. In deze zelfstudie wordt een domein, zoals www.contoso.com, gekoppeld met behulp van een CNAME-record. Het aangepaste domein wordt beveiligd met een certificaat en laat zien hoe u Transport Layer Security (TLS) afdwingt, ook wel bekend als Secure Sockets Layer (SSL). 
 
 Certificaten versleutelen webverkeer. Deze TLS/SSL-certificaten kunnen worden opgeslagen in Azure Key Vault. 

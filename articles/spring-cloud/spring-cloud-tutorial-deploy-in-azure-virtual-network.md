@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688450"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892888"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Zelfstudie: Azure Spring Cloud implementeren in een virtueel Azure-netwerk (VNet-injectie)
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 In deze zelfstudie wordt uitgelegd hoe u een Azure Spring Cloud service-exemplaar implementeert in uw virtuele netwerk. Dit wordt ook wel VNet-injectie genoemd.  
 
@@ -38,7 +40,7 @@ Het virtuele netwerk waarnaar u het Azure Spring Cloud-service-exemplaar impleme
 * **Subnetten**: Het virtuele netwerk moet twee subnetten bevatten die zijn toegewezen aan een Azure Spring Cloud-service-exemplaar: 
     * Een voor de runtime van de service
     * Een voor uw Spring Boot-microservicetoepassingen. 
-    * Er is een een-op-een-relatie tussen deze subnetten en een Azure Spring Cloud-service-exemplaar. U kunt niet meerdere service-exemplaren in één subnet delen. U moet nieuwe subnetten gebruiken voor elk service-exemplaar dat u implementeert.
+    * Er is een een-op-een-relatie tussen deze subnetten en een Azure Spring Cloud-service-exemplaar. U moet een nieuw subnet gebruiken voor elk service-exemplaar dat u implementeert en elk subnet kan slechts één service-exemplaar bevatten.
 * **Adresruimte**: Eén CIDR-blok maximaal /28 voor het subnet van de serviceruntime en een ander CIDR-blok maximaal /24 voor het subnet van de Spring Boot-microservicetoepassingen.
 * **Routeringstabel**: Aan de subnetten mag geen bestaande routeringstabel zijn gekoppeld.
 

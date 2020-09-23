@@ -1,7 +1,7 @@
 ---
-title: Modellen opnieuw trainen met behulp van Azure Machine Learning Designer (preview)
+title: Modellen opnieuw trainen met behulp van Azure Machine Learning Designer
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer (preview).
+description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661626"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905684"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellen opnieuw trainen met Azure Machine Learning Designer
+
 
 In dit artikel leert u hoe u Azure Machine Learning Designer kunt gebruiken om een machine learning model opnieuw te trainen. U gebruikt gepubliceerde pijp lijnen om uw werk stroom te automatiseren en para meters in te stellen voor het trainen van uw model op nieuwe gegevens. 
 
@@ -32,12 +32,12 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure Machine Learning-werkruimte met de Enterprise-SKU.
-* Voltooi deel 1 van deze instructie-to-reeks, zet [gegevens om in de ontwerp functie](how-to-designer-transform-data.md).
+* Een Azure Machine Learning-werkruimte
+* Volledige deel 1 van deze instructie-to-reeks, [transformatie gegevens in de ontwerp functie](how-to-designer-transform-data.md)
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van pijp lijnen in de ontwerp functie. Voor een begeleide Inleiding voltooit u de [zelf studie](tutorial-designer-automobile-price-train-score.md). 
+In dit artikel wordt ervan uitgegaan dat u enige kennis hebt van het bouwen van pijp lijnen in de ontwerp functie. Voor een begeleide Inleiding voltooit u de [zelf studie](tutorial-designer-automobile-price-train-score.md). 
 
 ### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 

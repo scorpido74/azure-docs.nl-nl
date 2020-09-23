@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over Kubernetes Storage Management op Azure Stack edge-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe Kubernetes Storage Management plaatsvindt op een Azure Stack edge-apparaat.
+title: Meer informatie over Kubernetes Storage Management op Azure Stack Edge Pro-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe Kubernetes Storage Management plaatsvindt op een Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268088"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899275"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Kubernetes-opslag beheer op uw Azure Stack Edge GPU-apparaat
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-opslag beheer op uw Azure Stack Edge Pro GPU-apparaat
 
-Op uw Azure Stack edge-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren om opslag te bieden aan een Peul in uw Kubernetes-cluster. 
+Op uw Azure Stack Edge Pro-apparaat wordt een Kubernetes-cluster gemaakt wanneer u een compute-functie configureert. Nadat het Kubernetes-cluster is gemaakt, kunnen in een van beide toepassingen met containers in de Kubernetes-cluster worden geïmplementeerd. Er zijn verschillende manieren om opslag te bieden aan een Peul in uw Kubernetes-cluster. 
 
-In dit artikel worden de methoden beschreven voor het inrichten van opslag in een Kubernetes-cluster in het algemeen en met name in de context van uw Azure Stack edge-apparaat. 
+In dit artikel worden de methoden beschreven voor het inrichten van opslag in een Kubernetes-cluster in het algemeen en met name in de context van uw Azure Stack Edge Pro-apparaat. 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Opslag vereisten voor Kubernetes peul
 
@@ -75,9 +75,9 @@ De volgende stappen worden uitgevoerd:
 1. **PVC koppelen aan container**: zodra de PVC is gebonden aan de HW, kunt u het PVC aan de container koppelen op dezelfde manier als statische inrichting en lezen van of schrijven naar de share.
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Opslag inrichten op Azure Stack Edge
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Opslag inrichten op Azure Stack Edge Pro
 
-Op het Azure Stack edge-apparaat worden er statisch ingericht `PersistentVolumes` gemaakt met behulp van de opslag mogelijkheden van het apparaat. Bij het inrichten van een share en **het gebruik van de optie delen met Edge Compute** is ingeschakeld, maakt deze actie automatisch een HW-resource in het Kubernetes-cluster.
+Op het Azure Stack Edge Pro-apparaat worden er statisch ingericht `PersistentVolumes` gemaakt met behulp van de opslag mogelijkheden van het apparaat. Bij het inrichten van een share en **het gebruik van de optie delen met Edge Compute** is ingeschakeld, maakt deze actie automatisch een HW-resource in het Kubernetes-cluster.
 
 ![Lokale share maken in Azure Portal voor statische inrichting](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Als u Cloud lagen wilt gebruiken, kunt u een Edge-Cloud share maken met de optie
 
 ![Cloud share maken in Azure Portal voor statische inrichting](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-U kunt SMB-en NFS-shares maken om PVs op Azure Stack edge-apparaat statisch in te richten. Zodra de HW is ingericht, stuurt u een PVC om deze opslag te claimen. Hier volgt een voor beeld van een PVC-implementatie `yaml` die de opslag claimt en gebruikmaakt van de shares die u hebt ingericht.
+U kunt SMB-en NFS-shares maken om PVs op Azure Stack Edge Pro-apparaat statisch in te richten. Zodra de HW is ingericht, stuurt u een PVC om deze opslag te claimen. Hier volgt een voor beeld van een PVC-implementatie `yaml` die de opslag claimt en gebruikmaakt van de shares die u hebt ingericht.
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-Zie [een stateful toepassing implementeren met behulp van statische inrichting op uw Azure stack Edge via kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)voor meer informatie.
+Zie [een stateful toepassing implementeren met behulp van statische inrichting op uw Azure stack Edge Pro via kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)voor meer informatie.
 
-Azure Stack Edge heeft ook een ingebouwde `StorageClass` naam `ase-node-local` die gebruikmaakt van een opslag voor gegevens schijven die is gekoppeld aan het Kubernetes-knoop punt. Dit `StorageClass` biedt ondersteuning voor dynamische inrichting. U kunt een `StorageClass` verwijzing maken in de pod-toepassingen en een hw wordt automatisch voor u gemaakt. Zie het [Kubernetes-dash board](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) voor meer informatie `ase-node-local StorageClass` .
+Azure Stack Edge Pro heeft ook een ingebouwde `StorageClass` naam `ase-node-local` die gebruikmaakt van een opslag voor gegevens schijven die is gekoppeld aan het Kubernetes-knoop punt. Dit `StorageClass` biedt ondersteuning voor dynamische inrichting. U kunt een `StorageClass` verwijzing maken in de pod-toepassingen en een hw wordt automatisch voor u gemaakt. Zie het [Kubernetes-dash board](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) voor meer informatie `ase-node-local StorageClass` .
 
 ![Ingebouwde opslag klasse in Kubernetes-dash board](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-Zie [een stateful toepassing implementeren met behulp van dynamische inrichting op uw Azure stack Edge via kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)voor meer informatie.
+Zie [een stateful toepassing implementeren met behulp van dynamische inrichting op uw Azure stack Edge Pro via kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)voor meer informatie.
 
 ## <a name="choose-storage-type"></a>Opslag type kiezen
 
@@ -127,8 +127,8 @@ Zie [Kubernetes volume Access mode](https://kubernetes.io/docs/concepts/storage/
 
 Zie voor meer informatie over hoe u een statische toewijzing van een kunt maken `PersistentVolume` :
 
-- [Implementeer een stateful toepassing via statische inrichting op uw Azure stack Edge via kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+- [Implementeer een stateful toepassing via statische inrichting op uw Azure stack Edge Pro via kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
 Zie voor meer informatie over hoe u een dynamische inrichting kunt maken `StorageClass` :
 
-- [Implementeer een stateful toepassing via dynamische inrichting op uw Azure stack Edge via kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+- [Implementeer een stateful toepassing via dynamische inrichting op uw Azure stack Edge Pro via kuebctl](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).

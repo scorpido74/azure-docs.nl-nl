@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477609"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907971"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-gram-functies uit de naslag gids voor tekst modules extra heren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven. Gebruik de module N-gram functies van de tekst modules uitpakken om ongestructureerde tekst gegevens te *parametriseer* . 
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven. Gebruik de module N-gram functies van de tekst modules uitpakken om ongestructureerde tekst gegevens te *parametriseer* . 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Configuratie van de extra heren N-gram-functies uit de tekst module
 

@@ -11,15 +11,14 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: e718ed13cfd67092b50b42584d861a2bcf5dacc5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664555"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907652"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Een Azure Machine Learning-werk ruimte beveiligen met virtuele netwerken
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een Azure Machine Learning werkruimte en de bijbehorende resources in een virtueel netwerk kunt beveiligen.
 
@@ -138,7 +137,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- File
+- Bestand
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 
@@ -172,8 +171,6 @@ Als u Azure Machine Learning experimenten wilt gebruiken met Azure Key Vault ach
 ## <a name="enable-azure-container-registry-acr"></a>Azure Container Registry inschakelen (ACR)
 
 Als u Azure Container Registry binnen een virtueel netwerk wilt gebruiken, moet u voldoen aan de volgende vereisten:
-
-* Uw Azure Machine Learning-werk ruimte moet Enter prise Edition zijn. Zie voor meer informatie over het uitvoeren van een [upgrade naar Enter prise Edition](how-to-manage-workspace.md#upgrade).
 
 * Uw Azure Container Registry moet Premium-versie zijn. Zie [wijzigen van sku's](/azure/container-registry/container-registry-skus#changing-skus)voor meer informatie over het uitvoeren van upgrades.
 
@@ -256,8 +253,8 @@ Als aan deze vereisten wordt voldaan, gebruikt u de volgende stappen om Azure Co
             "type": "SystemAssigned"
         },
         "sku": {
-            "tier": "enterprise",
-            "name": "enterprise"
+            "tier": "basic",
+            "name": "basic"
         },
         "properties": {
             "sharedPrivateLinkResources":

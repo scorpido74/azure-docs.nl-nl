@@ -1,6 +1,6 @@
 ---
-title: De Azure Portal gebruiken om problemen met Azure Stack Edge op te lossen | Microsoft Docs
-description: Meer informatie over het oplossen van problemen met uw Azure Stack-rand. U kunt Diagnostische gegevens uitvoeren, informatie voor ondersteuning verzamelen en Logboeken gebruiken om problemen op te lossen.
+title: Gebruik de Azure Portal voor het oplossen van problemen met Azure Stack Edge Pro | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met uw Azure Stack Edge Pro. U kunt Diagnostische gegevens uitvoeren, informatie voor ondersteuning verzamelen en Logboeken gebruiken om problemen op te lossen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903655"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Problemen met de Azure Stack rand oplossen
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Problemen met uw Azure Stack Edge Pro oplossen
 
-In dit artikel wordt beschreven hoe u problemen op uw Azure Stack rand kunt oplossen. 
+In dit artikel wordt beschreven hoe u problemen kunt oplossen met uw Azure Stack Edge Pro. 
 
 In dit artikel leert u het volgende:
 
@@ -37,7 +37,7 @@ U kunt de diagnostische tests uitvoeren om apparaatfouten vast te stellen en op 
 
 2. Wanneer de tests zijn voltooid, worden de resultaten weergegeven.
 
-    ![Test resultaten controleren](media/azure-stack-edge-troubleshoot/run-diag-2.png)
+    ![Testresultaten evalueren](media/azure-stack-edge-troubleshoot/run-diag-2.png)
 
     Als een test mislukt, wordt er een URL voor de aanbevolen actie weergegeven. Selecteer de URL om de aanbevolen actie weer te geven.
 
@@ -65,7 +65,7 @@ Eventuele fouten die zich hebben voorgedaan tijdens de upload- en vernieuwingspr
 
       ![Verbinding maken met en de share-inhoud weer geven](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Selecteer de _map Microsoft Azure stack Edge_. Deze map heeft twee submappen:
+2. Selecteer de _map Microsoft Azure stack Edge Pro_. Deze map heeft twee submappen:
 
     * uploadmap met logboekbestanden van fouten tijdens het uploaden.
     * vernieuwingsmap met logboekbestanden van fouten tijdens het vernieuwen.

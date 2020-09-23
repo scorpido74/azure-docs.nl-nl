@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392808"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902704"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 
@@ -23,7 +23,7 @@ Controle logboek registratie wordt beschikbaar gesteld via een post gres-extensi
 ## <a name="configure-logging"></a>Logboek registratie configureren 
 U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. Op elke Azure Database for PostgreSQL-server `log_checkpoints` en `log_connections` zijn standaard ingeschakeld. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
 
-![Azure Database for PostgreSQL-registratie parameters](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL-registratie parameters":::
 
 Ga voor meer informatie over post gres-logboek parameters naar de secties [Wanneer u zich wilt registreren](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) en [wat u wilt registreren in](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) de post gres-documentatie. De meeste, maar niet alle, post gres registratie parameters zijn beschikbaar voor configuratie in Azure Database for PostgreSQL.
 
@@ -103,10 +103,10 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | TenantId | Uw Tenant-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Tijds tempel voor het vastleggen van het logboek in UTC |
-| Type | Het type van het logboek. Altijd`AzureDiagnostics` |
+| Type | Het type van het logboek. Altijd `AzureDiagnostics` |
 | SubscriptionId | GUID voor het abonnement waartoe de server behoort |
 | ResourceGroup | Naam van de resource groep waartoe de server behoort |
-| ResourceProvider | De naam van de resource provider. Altijd`MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | De naam van de resource provider. Altijd `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Resource-URI |
 | Resource | Naam van de server |

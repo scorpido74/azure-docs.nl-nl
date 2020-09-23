@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299223"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892543"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelfstudie: Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud-waarschuwingen bieden ondersteuning voor het bewaken van resources op basis van voorwaarden als beschikbare opslag, frequentie van aanvragen of gegevensgebruik. Er wordt een melding verzonden wanneer de frequenties of voorwaarden aan de gedefinieerde specificaties voldoen.
 
@@ -58,11 +60,11 @@ Op de pagina **Actiegroep toevoegen** doet u het volgende:
 
 ## <a name="set-up-alert"></a>Waarschuwing instellen 
 
-In de vorige stappen is een **Actiegroep** gemaakt die gebruikmaakt van e-mail. U kunt ook telefoon meldingen via telefoon, webhooks, Azure-functies, enzovoort gebruiken.  
+In de vorige stappen is een **Actiegroep** gemaakt die gebruikmaakt van e-mail. U kunt ook telefoon meldingen via telefoon, webhooks, Azure-functies, enzovoort gebruiken. Met de volgende stappen configureert u een **Waarschuwing**.
 
-Als u een **waarschuwing** wilt configureren, gaat u terug naar de pagina **Waarschuwingen** en klikt u op **Waarschuwingsregels beheren**.
+1. ga terig naar de pagina **Waarschuwingen** en klik op **Waarschuwingsregels beheren**.
 
-  ![Schermopname van het definiëren van een waarschuwing in de portal](media/alerts-action-groups/alerts-2.png)
+   ![Schermopname van het definiëren van een waarschuwing in de portal](media/alerts-action-groups/alerts-2.png)
 
 1. Selecteer de **resource** voor de waarschuwing.
 
@@ -84,9 +86,9 @@ Als u een **waarschuwing** wilt configureren, gaat u terug naar de pagina **Waar
 
 1. Klik op **Gereed**.
 
-Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-metrics.md#user-metrics-options)voor meer informatie over de beschikbare voorwaarden voor bewaking.
+   Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-metrics.md#user-metrics-options)voor meer informatie over de beschikbare voorwaarden voor bewaking.
 
- Klik onder **ACTIES** op **Actiegroep selecteren**. Selecteer in het deelvenster **ACTIES** de eerder gedefinieerde **Actiegroep**.
+1. Klik onder **ACTIES** op **Actiegroep selecteren**. Selecteer in het deelvenster **ACTIES** de eerder gedefinieerde **Actiegroep**.
 
    ![Schermopname van nieuwe waarschuwingsregel in de portal 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,13 +100,13 @@ Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-m
 
    ![Schermopname van nieuwe waarschuwingsregel in de portal 5](media/alerts-action-groups/alerts-3-4.png)
 
-Controleer of de nieuwe waarschuwingsregel is ingeschakeld.
+1. Controleer of de nieuwe waarschuwingsregel is ingeschakeld.
 
    ![Schermopname van nieuwe waarschuwingsregel in de portal 6](media/alerts-action-groups/alerts-4.png)
 
 Een regel kan ook worden gemaakt op de pagina **Metrische gegevens**:
 
-   ![Schermopname van nieuwe waarschuwingsregel in de portal 7](media/alerts-action-groups/alerts-5.png)
+![Schermopname van nieuwe waarschuwingsregel in de portal 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

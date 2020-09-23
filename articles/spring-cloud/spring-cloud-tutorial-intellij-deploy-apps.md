@@ -7,20 +7,23 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 587b26d821b9701df435b9ee0a1c5f9ba5602fc0
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e5b8dc325fa7eaceaa0274029049f546db5b6995
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050927"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888539"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ gebruiken om Azure Spring Cloud-toepassingen te implementeren
+
+**Dit artikel is van toepassing op:** ✔️ Java
+
 De IntelliJ-invoegtoepassing voor Azure Spring Cloud ondersteunt de implementatie van toepassingen vanuit de IntelliJ IDEA.  
 
 Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) uitproberen.
 
 ## <a name="prerequisites"></a>Vereisten
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
+* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable&preserve-view=true)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 * [IntelliJ IDEA, Community/Ultimate Edition, versie 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543432"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900988"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
@@ -33,23 +33,39 @@ Voer de volgende stappen uit voordat u een machine learning model toevoegt als e
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning model toevoegen aan uw taak
 
-U kunt rechtstreeks vanuit de Azure Portal Azure Machine Learning-functies aan uw Stream Analytics-taak toevoegen.
+U kunt rechtstreeks vanuit de Azure Portal of Visual Studio code Azure Machine Learning functies aan uw Stream Analytics-taak toevoegen.
 
-1. Navigeer naar uw Stream Analytics-taak in de Azure Portal en selecteer **functies** onder **taak topologie**. Selecteer vervolgens **Azure ml-service** in het vervolg keuzemenu **+ toevoegen** .
+### <a name="azure-portal"></a>Azure Portal
 
-   ![Azure ML UDF toevoegen](./media/machine-learning-udf/add-azureml-udf.png)
+1. Navigeer naar uw Stream Analytics-taak in de Azure Portal en selecteer **functies** onder **taak topologie**. Selecteer vervolgens **Azure machine learning-service** in de vervolg keuzelijst **+ toevoegen** .
+
+   ![Azure Machine Learning UDF toevoegen](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. Vul het formulier **Azure machine learning service functie** in met de volgende eigenschaps waarden:
 
-   ![Azure ML UDF configureren](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Azure Machine Learning UDF configureren](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-De volgende tabel beschrijft elke eigenschap van Azure ML-service functies in Stream Analytics.
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Open uw Stream Analytics-project in Visual Studio code en klik met de rechter muisknop op de map **functions** . Kies vervolgens **functie toevoegen**. Selecteer **machine learning UDF** in de vervolg keuzelijst.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="UDF toevoegen in VS code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Azure Machine Learning UDF toevoegen in VS code":::
+
+2. Voer de naam van de functie in en vul de instellingen in het configuratie bestand in met behulp **van selecteren uit uw abonnementen** in code lens.
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Azure Machine Learning UDF selecteren in VS code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Azure Machine Learning UDF configureren in VS code":::
+
+In de volgende tabel worden de eigenschappen van Azure Machine Learning-service functies in Stream Analytics beschreven.
 
 |Eigenschap|Beschrijving|
 |--------|-----------|
 |Functiealias|Voer een naam in om de functie in uw query aan te roepen.|
 |Abonnement|Uw Azure-abonnement..|
-|Azure ML-werk ruimte|De Azure Machine Learning-werk ruimte die u hebt gebruikt voor het implementeren van uw model als een webservice.|
+|Azure Machine Learning-werkruimte|De Azure Machine Learning-werk ruimte die u hebt gebruikt voor het implementeren van uw model als een webservice.|
 |Implementaties|De webservice die als host fungeert voor uw model.|
 |Functie handtekening|De hand tekening van de webservice die is afgeleid van de schema specificatie van de API. Als uw hand tekening niet kan worden geladen, controleert u of u voorbeeld invoer en uitvoer hebt opgegeven in uw score script om het schema automatisch te genereren.|
 |Aantal parallelle aanvragen per partitie|Dit is een geavanceerde configuratie voor het optimaliseren van een hoge schaal doorvoer. Dit nummer vertegenwoordigt de gelijktijdige aanvragen die vanuit elke partitie van uw taak naar de webservice worden verzonden. Taken met zes streaming-eenheden (SU) en lager hebben één partitie. Taken met 12 SUs hebben twee partities, 18 SUs heeft drie partities, enzovoort.<br><br> Als uw taak bijvoorbeeld twee partities heeft en u deze para meter instelt op vier, zijn er acht gelijktijdige aanvragen van uw taak naar uw webservice. Op dit moment van de open bare preview-versie is de standaard waarde 20 en kan niet worden bijgewerkt.|
@@ -168,4 +184,3 @@ Als u een dergelijke latentie wilt voor komen, moet u ervoor zorgen dat uw Azure
 
 * [Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
 * [Uw Stream Analytics-taak schalen met de functie Azure Machine Learning Studio (klassiek)](stream-analytics-scale-with-machine-learning-functions.md)
-

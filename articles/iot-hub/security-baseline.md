@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906923"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure-beveiligings basislijn voor Azure IoT Hub
 
@@ -71,7 +71,7 @@ Azure DDoS Protection Basic is al ingeschakeld en beschikbaar voor geen extra ko
 
 - [IP-filter IoT Hub](iot-hub-ip-filtering.md)
 
-- [Azure Security Center voor IoT verdachte IP-adres communicatie](../asc-for-iot/concept-security-alerts.md)
+- [Azure Security Center voor IoT verdachte IP-adres communicatie](../defender-for-iot/concept-security-alerts.md)
 
 - [Azure DDoS Protection Basic beheren](../virtual-network/ddos-protection-overview.md)
 
@@ -234,7 +234,7 @@ U kunt ook gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden
 
 - [Status van Azure IoT Hub controleren](iot-hub-monitor-resource-health.md)
 - [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
-- [Azure Security Center voor IoT-waarschuwingen](../asc-for-iot/concept-security-alerts.md)
+- [Azure Security Center voor IoT-waarschuwingen](../defender-for-iot/concept-security-alerts.md)
 
 - [Een waarschuwing over logboek gegevens van log Analytics](../azure-monitor/learn/tutorial-response.md)
 
@@ -422,7 +422,7 @@ Gebruiker Azure Monitor Diagnostische logboeken voor het bewaken van niet-geauto
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [Azure Security Bench Mark: Data Protection](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
