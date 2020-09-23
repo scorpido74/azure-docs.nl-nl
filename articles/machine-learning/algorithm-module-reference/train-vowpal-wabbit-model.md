@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857738"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907810"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit-model trainen
-In dit artikel wordt beschreven hoe u de module **Train Vowpal Wabbit model** gebruikt in azure machine learning Designer (preview) om een machine learning model te maken met behulp van Vowpal Wabbit.  
+In dit artikel wordt beschreven hoe u de **Wabbit-model module Train Vowpal** in azure machine learning Designer kunt gebruiken om een machine learning model te maken met behulp van Vowpal Wabbit.  
 
 Als u Vowpal Wabbit voor machine learning wilt gebruiken, formatteert u uw invoer volgens Vowpal Wabbit-vereisten en bereidt u de gegevens voor in de vereiste indeling. Gebruik deze module om Vowpal Wabbit opdracht regel argumenten op te geven. 
 
@@ -112,7 +112,7 @@ Over het algemeen worden alleen een beperkt aantal argumenten ondersteund. Gebru
 
 De volgende para meters worden niet ondersteund:
 
--   De invoer-en uitvoer opties die zijn opgegeven in[https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
+-   De invoer-en uitvoer opties die zijn opgegeven in [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)  
   
      Deze eigenschappen zijn al automatisch geconfigureerd door de module.  
   

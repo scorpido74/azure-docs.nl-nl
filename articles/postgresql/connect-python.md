@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182679"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901813"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - individuele server
 
@@ -46,7 +46,7 @@ Voor het maken van verbinding met een Azure Database for PostgreSQL-database zij
    
    U hebt ook uw beheerderswachtwoord nodig. Als u deze vergeten bent, kunt u deze opnieuw instellen op deze pagina. 
    
-   ![Servernaam Azure Database for PostgreSQL](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Servernaam Azure Database for PostgreSQL":::
 
 ## <a name="how-to-run-the-python-examples"></a>De Python-voorbeelden uitvoeren
 
@@ -105,7 +105,7 @@ conn.close()
 
 Wanneer de code wordt uitgevoerd, wordt de volgende uitvoer gegenereerd:
 
-![Opdrachtregeluitvoer](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Opdrachtregeluitvoer":::
 
 ## <a name="read-data"></a>Gegevens lezen
 In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database en wordt [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) gebruikt met de SQL-instructie **SELECT** om gegevens te lezen. Deze functie accepteert een query en retourneert een resultatenset die met behulp van [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) kan worden herhaald. 

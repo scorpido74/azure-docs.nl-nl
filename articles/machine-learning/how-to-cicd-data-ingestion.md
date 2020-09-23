@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228882"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971262"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een pijp lijn voor gegevens opname
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 Deze naam wijkt af van ***ontwikkel***-, ***QA***-, ***bedoeld***-en ***productie*** omgevingen. In een complexe pijp lijn met meerdere activiteiten kunnen er verschillende aangepaste eigenschappen zijn. Het is raadzaam om al deze waarden op één plek te verzamelen en ze als pijplijn ***variabelen***te definiëren:
 
-![ADF-variabelen](media/how-to-cicd-data-ingestion/adf-variables.png)
+![In de scherm afbeelding wordt een notitie blok met de naam PrepareData en M L-pijp lijn uitvoeren met de naam M L uitvoeren pijp lijn weer gegeven bovenaan met het tabblad variabelen dat hieronder is geselecteerd, met de optie om nieuwe variabelen toe te voegen.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 De pijplijn activiteiten kunnen verwijzen naar de pijplijn variabelen en ze in feite gebruiken:
 
-![ADF-notebook-para meters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![Scherm afbeelding toont een notitie blok met de naam PrepareData en M L-pijp lijn uitvoeren met de naam M L Voer pijp lijn uit, bovenaan met het tabblad instellingen hieronder geselecteerd.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 In de Azure Data Factory-werk ruimte worden pijplijn variabelen ***niet*** standaard weer gegeven als Azure Resource Manager sjablonen-para meters. In de werk ruimte wordt gebruikgemaakt van de [standaard sjabloon voor parameterisering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) die bepaalt welke pijplijn eigenschappen moeten worden weer gegeven als Azure Resource Manager sjabloon parameters. Als u pijplijn variabelen wilt toevoegen aan de lijst, werkt u de `"Microsoft.DataFactory/factories/pipelines"` sectie van de [standaard sjabloon parameterisering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) bij met het volgende code fragment en plaatst u het JSON-bestand in de hoofdmap van de bronmap:
 

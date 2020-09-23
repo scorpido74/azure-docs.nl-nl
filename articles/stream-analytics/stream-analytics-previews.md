@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815705"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900795"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Preview-functies Azure Stream Analytics
 
@@ -25,10 +25,6 @@ De volgende functies zijn beschikbaar in de open bare preview-versie. U kunt dez
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Verifiëren voor SQL Database uitvoer met beheerde identiteiten
 
 Azure Stream Analytics ondersteunt [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor Azure SQL database uitvoer-Sinks. Beheerde identiteiten elimineren de beperkingen van verificatie methoden op basis van gebruikers, zoals de nood zaak om opnieuw te verifiëren vanwege wachtwoord wijzigingen. 
-
-### <a name="output-to-azure-synapse-analytics"></a>Uitvoer naar Azure Synapse Analytics
-
-Azure Stream Analytics-taken kunnen worden uitgevoerd naar een SQL-groeps tabel in [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Beoordeling in realtime hoge prestaties met aangepaste ML-modellen die worden beheerd door Azure Machine Learning
 
@@ -52,7 +48,7 @@ Visual Studio Tools for Azure Stream Analytics verbeteren de lokale test functie
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio code voor Azure Stream Analytics
 
-Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
+Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code).
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met Live-gegevens in Visual Studio code
 

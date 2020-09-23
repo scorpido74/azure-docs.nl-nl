@@ -1,6 +1,6 @@
 ---
-title: Bijhouden van gegevens wijzigingen in Azure SQL Edge (preview-versie)
-description: Meer informatie over het bijhouden van wijzigingen en het change data capture in Azure SQL Edge (preview).
+title: Wijzigingen in de gegevens bijhouden in Azure SQL Edge
+description: Meer informatie over het bijhouden van wijzigingen en het change data capture in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669593"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900059"
 ---
-# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Bijhouden van gegevens wijzigingen in Azure SQL Edge (preview-versie)
+# <a name="track-data-changes-in-azure-sql-edge"></a>Wijzigingen in de gegevens bijhouden in Azure SQL Edge
 
 Azure SQL Edge ondersteunt de twee SQL Server functies waarmee wijzigingen in gegevens worden bijgehouden in een Data Base: het bijhouden en [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture) [wijzigen](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) . Met deze functies kunnen toepassingen bepalen welke taal wijzigingen voor het wijzigen van de gegevens (insert-, update-en delete-bewerkingen) zijn aangebracht in gebruikers tabellen in een Data Base. U kunt change data capture en het bijhouden van wijzigingen inschakelen voor dezelfde data base. Er zijn geen speciale overwegingen vereist.
 
@@ -60,10 +60,10 @@ Zie [tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/ta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Streamen van gegevens in Azure SQL Edge (preview-versie)](stream-data.md)
-- [Machine learning en AI met ONNX in Azure SQL Edge (preview-versie)](onnx-overview.md)
-- [Replicatie naar Azure SQL Edge configureren (preview-versie)](configure-replication.md)
-- [Back-up en herstel van data bases in Azure SQL Edge (preview-versie)](backup-restore.md)
+- [Gegevens stromen in Azure SQL Edge ](stream-data.md)
+- [Machine learning en AI met ONNX in Azure SQL Edge ](onnx-overview.md)
+- [Replicatie naar Azure SQL Edge configureren](configure-replication.md)
+- [Back-up en herstel van data bases in Azure SQL Edge](backup-restore.md)
 
 
 

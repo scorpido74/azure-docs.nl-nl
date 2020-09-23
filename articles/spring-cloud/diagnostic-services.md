@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892570"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
 
 Met de diagnostische functionaliteit van Azure lente-Cloud kunt u Logboeken en metrische gegevens analyseren met een van de volgende services:
 
@@ -25,11 +27,11 @@ Met de diagnostische functionaliteit van Azure lente-Cloud kunt u Logboeken en m
 Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
 
 > [!TIP]
-> Wilt u uw logboeken gewoon streamen? Bekijk deze [Azure cli-opdracht](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs).
+> Wilt u uw logboeken gewoon streamen? Bekijk deze [Azure cli-opdracht](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs).
 
 ## <a name="logs"></a>Logboeken
 
-|Log | Beschrijving |
+|Logboek | Description |
 |----|----|
 | **ApplicationConsole** | Console logboek van alle toepassingen van klanten. |
 | **SystemLogs** | Op dit moment worden alleen logboeken met [lente-Cloud configuratie servers](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in deze categorie vastgelegd. |
@@ -106,7 +108,7 @@ Er zijn verschillende methoden om logboeken en metrische gegevens weer te geven,
     | limit 50
     ```
 > [!NOTE]
-> `==`is hoofdletter gevoelig, maar `=~` niet.
+> `==` is hoofdletter gevoelig, maar `=~` niet.
 
 Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie over de query taal die wordt gebruikt in log Analytics.
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 Mogelijk kunt u dezelfde strategie gebruiken voor andere Java-logboek bibliotheken.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Snelstart: Uw eerste Azure Spring Cloud-toepassing implementeren](spring-cloud-quickstart.md)

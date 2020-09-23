@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503001"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969799"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Beheerde API-verwijzing voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Als u beheerde exemplaren met Azure PowerShell wilt maken en beheren, gebruikt u
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Retourneert informatie over een beheerd exemplaar.|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Hiermee stelt u eigenschappen in voor een beheerd exemplaar.|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Hiermee verwijdert u een beheerd exemplaar.|
+|[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|Hiermee wordt een lijst opgehaald met beheer bewerkingen die worden uitgevoerd op het beheerde exemplaar of een specifieke bewerking.|
+|[Stoppen-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|Hiermee wordt de specifieke beheer bewerking die op het beheerde exemplaar is uitgevoerd, geannuleerd.|
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Hiermee maakt u een SQL Managed instance-data base.|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Retourneert informatie over een SQL Managed instance-data base.|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Hiermee verwijdert u een SQL Managed instance-data base.|
@@ -63,6 +65,9 @@ Als u beheerde exemplaren wilt maken en configureren met [Azure cli](/cli/azure)
 |[AZ SQL mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Hiermee haalt u de Details voor een beheerd exemplaar op.|
 |[AZ SQL mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Hiermee wordt een beheerd exemplaar bijgewerkt.|
 |[AZ SQL mi Delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Hiermee verwijdert u een beheerd exemplaar.|
+|[AZ SQL mi op lijst](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|Hiermee wordt een lijst opgehaald met beheer bewerkingen die worden uitgevoerd op het beheerde exemplaar.|
+|[AZ SQL mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|Hiermee wordt de specifieke beheer bewerking opgehaald die wordt uitgevoerd op het beheerde exemplaar.|
+|[AZ SQL mi op Cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Hiermee wordt de specifieke beheer bewerking die op het beheerde exemplaar is uitgevoerd, geannuleerd.|
 |[AZ SQL DEELB Create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Hiermee maakt u een beheerde data base.|
 |[AZ SQL DEELB List](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Een lijst met beschik bare beheerde data bases.|
 |[AZ SQL DEELB Restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Hiermee herstelt u een beheerde data base.|
@@ -80,8 +85,8 @@ Als u exemplaar databases wilt maken en configureren nadat het beheerde exemplaa
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[DATA BASE MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Hiermee maakt u een nieuwe instantie database in een SQL-beheerd exemplaar. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
-| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Hiermee wijzigt u een exemplaar database in een SQL Managed instance.|
+|[DATA BASE MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|Hiermee maakt u een nieuwe instantie database in een SQL-beheerd exemplaar. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
+| [DATABASE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Hiermee wijzigt u een exemplaar database in een SQL Managed instance.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: beheerde instanties maken en configureren
 
@@ -95,6 +100,9 @@ Gebruik deze REST API aanvragen om beheerde exemplaren te maken en te configurer
 |[Beheerde instanties-lijst](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Retourneert een lijst met beheerde exemplaren in een abonnement.|
 |[Beheerde instanties-lijst op resource groep](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Retourneert een lijst met beheerde exemplaren in een resource groep.|
 |[Beheerde instanties-bijwerken](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Hiermee wordt een beheerd exemplaar bijgewerkt.|
+|[Beheerde exemplaar bewerkingen-lijst op beheerde instantie](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Hiermee wordt een lijst opgehaald met beheer bewerkingen die worden uitgevoerd op het beheerde exemplaar.|
+|[Bewerkingen voor beheerd exemplaar-ophalen](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Hiermee wordt de specifieke beheer bewerking opgehaald die wordt uitgevoerd op het beheerde exemplaar.|
+|[Bewerkingen voor beheerd exemplaar-annuleren](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Hiermee wordt de specifieke beheer bewerking die op het beheerde exemplaar is uitgevoerd, geannuleerd.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

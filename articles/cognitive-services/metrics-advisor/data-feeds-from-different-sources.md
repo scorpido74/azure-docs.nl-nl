@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935503"
+ms.locfileid: "90973380"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor
 
@@ -27,10 +27,10 @@ In dit artikel vindt u informatie over de instellingen en vereisten voor het ver
 | ---------------------|-------------|
 |**Basic** | U moet de algemene para meters voor toegang tot gegevens bronnen kunnen opgeven. Bijvoorbeeld een connection string of-sleutel. Beheerders van gegevens invoer kunnen deze referenties weer geven. |
 | **AzureManagedIdentity** | [Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor Azure-resources is een functie van Azure Active Directory. Het biedt Azure-Services met een automatisch beheerde identiteit in azure AD. U kunt de identiteit gebruiken om te verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie.|
-| **AzureSQLConnectionString**| Sla uw SQL-connection string als een **verificatie-entiteit** op in de data Advisor, en gebruik deze direct elke keer wanneer de metrische gegevens voor onboarding worden uitgevoerd. Alleen beheerders van de verificatie-entiteit kunnen deze referenties weer geven, maar kunnen geautoriseerde kijkers gegevensfeeds maken zonder dat ze meer informatie over de referenties hoeven te weten. |
-| **DataLakeGen2SharedKey**| Sla uw data Lake-account sleutel als een **verificatie-entiteit** op in de metrische gegevens adviseur en gebruik deze direct telkens wanneer er informatie over de kosten voor het onboarding wordt gebruikt. Alleen beheerders van de verificatie-entiteit kunnen deze referenties weer geven, maar kunnen geautoriseerde viewers een gegevensfeed maken zonder dat ze de referentie gegevens hoeven te kennen.|
-| **ServicePrincipal**| Sla uw service-principal op als een **verificatie-entiteit** in Metrics Advisor en gebruik deze direct telkens wanneer de metrische gegevens voor onboarding worden uitgevoerd. Alleen beheerders van een verificatie-entiteit kunnen de referenties weer geven, maar kunnen geautoriseerde viewers een gegevensfeed maken zonder dat ze de referentie gegevens hoeven te kennen.|
-| **ServicePrincipalInKeyVault**|Sla uw service-principal op in de sleutel kluis als een **verificatie-entiteit** in Metrics Advisor en gebruik deze direct telkens wanneer er gegevens voor de onboarding worden uitgevoerd. Alleen beheerders van een **verificatie-entiteit** kunnen de referenties weer geven, maar ook de gebruikers kunnen de gegevens feed maken zonder dat ze gedetailleerde referenties hoeven te kennen. |
+| **AzureSQLConnectionString**| Sla uw SQL-connection string als een **referentie-entiteit** op in de data Advisor en gebruik deze direct telkens wanneer de metrische gegevens voor onboarding worden uitgevoerd. Alleen beheerders van de referentie-entiteit kunnen deze referenties weer geven, maar kunnen geautoriseerde kijkers gegevens feeds maken zonder dat ze meer informatie over de referenties hoeven te weten. |
+| **DataLakeGen2SharedKey**| Sla uw data Lake-account sleutel als een **referentie-entiteit** op in Metrics Advisor en gebruik deze direct telkens wanneer de metrische gegevens voor onboarding worden uitgevoerd. Alleen beheerders van de referentie-entiteit kunnen deze referenties weer geven, maar kunnen geautoriseerde viewers een gegevensfeed maken zonder dat ze de referentie gegevens hoeven te kennen.|
+| **Service-Principal**| Sla uw service-principal op als **referentie-entiteit** in Metrics Advisor en gebruik deze direct telkens wanneer de metrische gegevens voor onboarding worden uitgevoerd. Alleen beheerders van de referentie-entiteit kunnen de referenties weer geven, maar kunnen geautoriseerde viewers een gegevensfeed maken zonder dat ze de referentie gegevens hoeven te kennen.|
+| **Service-Principal van sleutel kluis**|Sla uw service-principal op in een sleutel kluis als **referentie-entiteit** in Metrics Advisor en gebruik deze direct telkens wanneer u de metrische gegevens voor de onboarding oplaadt. Alleen beheerders van een **referentie-entiteit** kunnen de referenties weer geven, maar u kunt ook zien dat viewers de data feed kunnen maken zonder dat ze gedetailleerde referenties hoeven te kennen. |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>Gegevens bronnen die worden ondersteund en de bijbehorende verificatie typen
 
@@ -41,8 +41,8 @@ In dit artikel vindt u informatie over de instellingen en vereisten voor het ver
 |[**Azure Blob Storage (JSON)**](#blob) | Basic<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Basic |
 |[**Azure Data Explorer (Kusto)**](#kusto) | Basic<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>Service-principal<br>Service-Principal van sleutel kluis<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>Service-principal<br>Service-Principal van sleutel kluis<br>AzureSQLConnectionString
 |[**Azure-tabelopslag**](#table) | Basic | 
 |[**ElasticSearch**](#es) | Basic |
 |[**HTTP-aanvraag**](#http) | Basic | 
@@ -51,7 +51,7 @@ In dit artikel vindt u informatie over de instellingen en vereisten voor het ver
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-Maak een **verificatie-entiteit** en gebruik deze om te verifiëren met uw gegevens bronnen. De volgende secties bevatten de para meters die vereist zijn voor *basis* verificatie. 
+Maak een **referentie-entiteit** en gebruik deze om te verifiëren met uw gegevens bronnen. De volgende secties bevatten de para meters die vereist zijn voor *basis* verificatie. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

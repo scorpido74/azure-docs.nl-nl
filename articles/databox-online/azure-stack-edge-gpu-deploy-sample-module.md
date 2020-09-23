@@ -1,6 +1,6 @@
 ---
-title: De GPU-module implementeren op uw Azure Stack Edge GPU-apparaat | Microsoft Docs
-description: Hierin wordt beschreven hoe u Compute kunt inschakelen en uw Azure Stack edge-apparaat kunt instellen met behulp van de lokale gebruikers interface.
+title: De GPU-module implementeren op uw Azure Stack Edge Pro GPU-apparaat | Microsoft Docs
+description: Hierin wordt beschreven hoe u reken kracht kunt inschakelen en uw Azure Stack Edge Pro-apparaat kunt instellen met behulp van de lokale gebruikers interface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254556"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899730"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren op Azure Stack Edge GPU-apparaat
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren op Azure Stack Edge Pro GPU-apparaat
 
-In dit artikel wordt beschreven hoe u een IoT Edge module met GPU-functionaliteit implementeert op uw Azure Stack Edge GPU-apparaat. 
+In dit artikel wordt beschreven hoe u een IoT Edge module met GPU-functionaliteit implementeert op uw Azure Stack Edge Pro GPU-apparaat. 
 
 In dit artikel leert u het volgende:
-  - Azure Stack Edge voorbereiden om een GPU-module uit te voeren.
+  - Bereid Azure Stack Edge Pro voor op het uitvoeren van een GPU-module.
   - Down load en installeer voorbeeld code uit een Git-opslag plaats.
   - Bouw de oplossing en Genereer een implementatie manifest.
-  - Implementeer de oplossing op Azure Stack edge-apparaat.
+  - Implementeer de oplossing op Azure Stack Edge Pro-apparaat.
   - De module-uitvoer bewaken.
 
 
@@ -35,8 +35,8 @@ De GPU-voorbeeld module in dit artikel bevat PyTorch-en tensor flow-benchmark co
 
 Voordat u begint, controleert u of u over het volgende beschikt:
 
-- U hebt toegang tot een met GPU ingeschakelde 1-knoop punt Azure Stack edge-apparaat. Dit apparaat wordt geactiveerd met een resource in Azure. Zie [het apparaat activeren](azure-stack-edge-gpu-deploy-activate.md).
-- U hebt Compute geconfigureerd op dit apparaat. Volg de stappen in [zelf studie: Configure Compute op uw Azure stack edge-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
+- U hebt toegang tot een op GPU ingeschakelde apparaat met 1 knoop punt Azure Stack Edge Pro. Dit apparaat wordt geactiveerd met een resource in Azure. Zie [het apparaat activeren](azure-stack-edge-gpu-deploy-activate.md).
+- U hebt Compute geconfigureerd op dit apparaat. Volg de stappen in [zelf studie: Configure Compute op uw Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Een Azure Container Registry (ACR). Ga naar de Blade **toegangs sleutels** en noteer de aanmeldings server, de gebruikers naam en het wacht woord van ACR. Ga voor meer informatie naar [Quick Start: een persoonlijk container register maken met behulp van de Azure Portal](../container-registry/container-registry-get-started-portal.md#create-a-container-registry).
 - De volgende ontwikkel bronnen op een Windows-client:
     - [Azure CLI 2,0 of hoger](https://aka.ms/installazurecliwindows)
@@ -117,7 +117,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 6. Push uw installatie kopie naar uw Azure container Registry. In de VS code Explorer selecteert u en klikt u met de rechter muisknop op de **deployment.template.jsin** het bestand en selecteert u vervolgens **Build and push IOT Edge Solution**. 
 
-    ![IoT Edge oplossing bouwen en pushen](media/azure-stack-edge-gpu-deploy-sample-module/build-push-iot-edge-solution-1.png)   
+    ![IoT Edge-oplossingen bouwen en pushen](media/azure-stack-edge-gpu-deploy-sample-module/build-push-iot-edge-solution-1.png)   
 
     Als de extensie python en python niet is geïnstalleerd, worden deze geïnstalleerd wanneer u de oplossing bouwt en pusht. Dit resulteert echter in langere build-tijden. 
 
@@ -144,9 +144,9 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 1. Voer in het opdrachtenpalet van VS Code de opdracht **Azure IoT Hub: Select IoT Hub** uit.
 
-2. Kies het abonnement en de IoT-hub met het IoT Edge-apparaat dat u wilt configureren. In dit geval selecteert u het abonnement dat is gebruikt om het Azure Stack edge-apparaat te implementeren en selecteert u het IoT Edge apparaat dat u hebt gemaakt voor uw Azure Stack edge-apparaat. Dit gebeurt wanneer u Compute configureert via de Azure Portal in de eerdere stappen.
+2. Kies het abonnement en de IoT-hub met het IoT Edge-apparaat dat u wilt configureren. In dit geval selecteert u het abonnement dat is gebruikt om het Azure Stack Edge Pro-apparaat te implementeren en selecteert u het IoT Edge apparaat dat u hebt gemaakt voor uw Azure Stack Edge Pro-apparaat. Dit gebeurt wanneer u Compute configureert via de Azure Portal in de eerdere stappen.
 
-3. Vouw in de VS code Explorer de sectie Azure IoT Hub uit. Onder **apparaten**wordt het IOT edge apparaat weer geven dat overeenkomt met uw Azure stack edge-apparaat. 
+3. Vouw in de VS code Explorer de sectie Azure IoT Hub uit. Onder **apparaten**wordt het IOT edge apparaat weer geven dat overeenkomt met uw Azure stack Edge Pro-apparaat. 
 
     1. Selecteer dat apparaat, klik met de rechter muisknop en selecteer **controle van ingebouwd gebeurtenis begin punt starten**.
   
@@ -156,7 +156,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
         ![Module in IoT Hub](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. De VS code-terminal moet ook de IoT Hub gebeurtenissen weer geven als de bewakings uitvoer voor uw Azure Stack edge-apparaat.
+    3. De VS code-terminal moet ook de IoT Hub gebeurtenissen weer geven als de bewakings uitvoer voor uw Azure Stack Edge Pro-apparaat.
 
         ![Bewakings uitvoer](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

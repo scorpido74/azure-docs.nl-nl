@@ -1,14 +1,14 @@
 ---
 title: Waarschuwingen registreren van Azure Monitor voor containers | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u aangepaste waarschuwingen maakt op basis van logboek query's voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
+description: In dit artikel wordt beschreven hoe u aangepaste logboek waarschuwingen maakt voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c023471ae041fa524fc4a2164c633ca80bcfdd88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096975"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973721"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Logboek waarschuwingen maken op basis van Azure Monitor voor containers
 
@@ -281,7 +281,7 @@ In deze sectie wordt uitgelegd hoe u een waarschuwings regel voor metrische meti
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in het Azure Portal naar en selecteer **log Analytics-werk ruimten**.
 3. Selecteer de werk ruimte die Azure Monitor ondersteunt voor containers in de lijst met Log Analytics-werk ruimten. 
 4. Selecteer in het deel venster aan de linkerkant **Logboeken** om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure-logboek query's te schrijven en uit te voeren.

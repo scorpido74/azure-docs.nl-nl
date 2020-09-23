@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542650"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969824"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Snelstartgids: een Azure-VM configureren om verbinding te maken met een door Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ Met de volgende stappen maakt u een nieuw subnet in het SQL Managed instance VNe
    | **Netwerkbeveiligingsgroep** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
    | **Routetabel** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
    | **Service-eindpunten** | 0 geselecteerd | De standaard waarde is geschikt voor deze Quick Start.|
-   | **Subnet delegering** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
+   | **Delegatie van subnet** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
 
    ![Nieuw subnet met SQL-beheerde instantie voor client-VM](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -74,7 +74,7 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
 
 1. Zorg ervoor dat u bent aangemeld bij de Azure Portal op een ander browser tabblad. Selecteer vervolgens de volgende knop om een virtuele client machine te maken en Installeer SQL Server Management Studio:
 
-   [![Afbeelding met een knop met het label implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
 
 2. Vul het formulier in met behulp van de informatie in de volgende tabel:
 
@@ -110,7 +110,7 @@ De volgende stappen laten zien hoe u verbinding maakt met uw nieuwe virtuele mac
 
 1. Nadat de implementatie is voltooid, gaat u naar de virtuele machine-resource.
 
-    ![VM](./media/connect-vm-instance-configure/vm.png)  
+    ![Scherm afbeelding toont de Azure Portal op de overzichts pagina voor een geselecteerde virtuele machine en gemarkeerde verbinding maken.](./media/connect-vm-instance-configure/vm.png)  
 
 2. Selecteer **Verbinden**.
 

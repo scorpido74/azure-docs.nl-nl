@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829512"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902768"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema gebruiken voor het afstemmen van prestaties en het beheren van data bases in Azure Database for MySQL
 
 De MySQL-performance_schema, die voor het eerst beschikbaar is in MySQL 5,5, biedt instrumentatie voor veel cruciale Server bronnen, zoals geheugen toewijzing, opgeslagen Program ma's, vergren deling van meta gegevens, enzovoort. De performance_schema bevat echter meer dan 80 tabellen en het ophalen van de benodigde gegevens vereist vaak join-tabellen in de performance_schema, evenals de tabellen uit de information_schema. De sys_schema biedt op zowel performance_schema als information_schema een krachtige verzameling [gebruiks vriendelijke weer gaven](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) in een alleen-lezen data base en is volledig ingeschakeld in Azure Database for MySQL versie 5,7.
 
-![weer gaven van sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/sys-schema-views.png" alt-text="weer gaven van sys_schema":::
 
 De sys_schema bevat 52 weer gaven en elke weer gave heeft een van de volgende voor voegsels:
 
@@ -37,23 +37,23 @@ Laten we nu eens kijken naar enkele veelvoorkomende gebruiks patronen van de sys
 
 IO is de duurste bewerking in de-data base. We kunnen de gemiddelde IO-latentie achterhalen door de weer gave *sys. user_summary_by_file_io* te doorzoeken. Met de standaard 125 GB aan ingerichte opslag ruimte, is mijn i/o-latentie ongeveer 15 seconden.
 
-![io-latentie: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="io-latentie: 125 GB":::
 
 Omdat Azure Database for MySQL IO inschaalt ten opzichte van opslag, vermindert mijn i/o-wacht tijd tot 571 MS.
 
-![io-latentie: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="io-latentie: 1 TB":::
 
 ### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
 
 Ondanks een zorgvuldige planning kunnen veel query's nog steeds leiden tot volledige tabel scans. Raadpleeg dit artikel voor meer informatie over de typen indexen en hoe u deze kunt optimaliseren: [problemen met query prestaties oplossen](./howto-troubleshoot-query-performance.md). Volledige tabel scans zijn resource-intensief en verminderen de prestaties van uw data base. De snelste manier om tabellen met volledige tabel scan te vinden, is door de weer gave *sys. schema_tables_with_full_table_scans* op te vragen.
 
-![volledige tabel scans](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="volledige tabel scans":::
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
 
 Voor het oplossen van problemen met database prestaties kan het nuttig zijn om de gebeurtenissen in uw data base te identificeren en de weer gave *sys. user_summary_by_statement_type* te gebruiken.
 
-![samen vatting per overzicht](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="samen vatting per overzicht":::
 
 In dit voor beeld Azure Database for MySQL 53 minuten besteed aan het leegmaken van het slog-query logboek 44579 keer. Dat is een lange tijd en veel IOs. U kunt deze activiteit verminderen door uw logboek voor trage query's uit te scha kelen of de frequentie van langzame query's te verlagen Azure Portal.
 
@@ -66,7 +66,7 @@ In dit voor beeld Azure Database for MySQL 53 minuten besteed aan het leegmaken 
 
 De InnoDB-buffer groep bevindt zich in het geheugen en is het hoofd cache mechanisme tussen het DBMS en de opslag. De grootte van de buffer groep InnoDB is gekoppeld aan de prestatie-laag en kan alleen worden gewijzigd als er een andere product-SKU is gekozen. Net als bij geheugen in uw besturings systeem worden oude pagina's omgewisseld om ruimte te maken voor de gegevens van de nieuwer. Als u wilt weten welke tabellen het meeste geheugen van de InnoDB buffer gebruiken, kunt u de weer gave *sys. innodb_buffer_stats_by_table* opvragen.
 
-![Status van InnoDB-buffer](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="Status van InnoDB-buffer":::
 
 In de bovenstaande afbeelding ziet u dat naast de systeem tabellen en weer gaven, elke tabel in de mysqldatabase033-data base, die als host fungeert voor een van mijn WordPress-sites, 16 KB of 1 pagina van de gegevens in het geheugen in beslag neemt.
 
@@ -74,9 +74,9 @@ In de bovenstaande afbeelding ziet u dat naast de systeem tabellen en weer gaven
 
 Indexen zijn fantastische hulp middelen voor het verbeteren van de Lees prestaties, maar er zijn extra kosten in rekening gebracht voor toevoegingen en opslag. *Sys. schema_unused_indexes* en *sys. schema_redundant_indexes* bieden inzicht in ongebruikte of dubbele indexen.
 
-![ongebruikte indexen](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="ongebruikte indexen":::
 
-![redundante indexen](./media/howto-troubleshoot-sys-schema/redundant-indexes.png)
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="redundante indexen":::
 
 ## <a name="conclusion"></a>Conclusie
 

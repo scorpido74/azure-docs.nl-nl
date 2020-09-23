@@ -1,7 +1,7 @@
 ---
-title: Fout bij het oplossen van problemen met de module Designer (preview)
+title: Problemen met de module fouten in Designer oplossen
 titleSuffix: Azure Machine Learning
-description: Problemen met module fout codes in Azure Machine Learning Designer oplossen (preview-versie)
+description: Problemen met module fout codes in Azure Machine Learning Designer oplossen
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876917"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908087"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Uitzonde ringen en fout codes voor de ontwerper
 
-In dit artikel worden de fout berichten en uitzonderings codes in Azure Machine Learning Designer (preview) beschreven om u te helpen bij het oplossen van problemen met uw machine learning pijp lijnen.
+In dit artikel worden de fout berichten en uitzonderings codes in Azure Machine Learning Designer beschreven om u te helpen bij het oplossen van problemen met uw machine learning pijp lijnen.
 
 U kunt het fout bericht in de ontwerp functie vinden door de volgende stappen uit te voeren:  
 
@@ -491,7 +491,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 
 **Oplossing:**
 
-+ Open de module die de fout heeft gegenereerd en controleer of er een label kolom aanwezig is. De naam of het gegevens type van de kolom is niet van belang, op voor waarde dat de kolom een enkel resultaat (of een afhankelijke variabele) bevat die u wilt voors pellen. Als u niet zeker weet welke kolom het label heeft, zoekt u naar een algemene naam, bijvoorbeeld *klasse* of *doel*. 
++ Open de module die de fout heeft gegenereerd en controleer of er een label kolom aanwezig is. De naam of het gegevens type van de kolom is niet van belang, op voor waarde dat de kolom een enkel resultaat (of een afhankelijke variabele) bevat die u wilt voors pellen. Als u niet zeker weet welke kolom het label heeft, zoekt u naar een algemene naam, bijvoorbeeld  *klasse* of *doel*. 
 +  Als de gegevensset geen kolom Label bevat, is het mogelijk dat de kolom Label expliciet of per ongeluk een upstream heeft verwijderd. Het kan ook zijn dat de gegevensset niet de uitvoer van een upstream-Score module is.
 + Als u de kolom expliciet wilt markeren als de kolom Label, voegt u de module [meta gegevens bewerken](edit-metadata.md) toe en verbindt u de gegevensset. Selecteer alleen de kolom Label en selecteer **Label** in de vervolg keuzelijst **velden** . 
 + Als de verkeerde kolom als label is gekozen, kunt u **label wissen** uit de **velden** selecteren om de meta gegevens van de kolom te herstellen. 

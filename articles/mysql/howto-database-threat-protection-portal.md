@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ef39d04b980d4f9c7f5baf11bc047acf6239f803
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902807"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
 
@@ -34,7 +34,7 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
    - Geavanceerde beveiliging tegen bedreigingen inschakelen op de-server.
    - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen**.
   
-   ![Detectie van bedreigingen instellen](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Detectie van bedreigingen instellen":::
 
 ## <a name="explore-anomalous-database-activities"></a>Afwijkende database activiteiten verkennen
 
@@ -42,15 +42,15 @@ U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden
  
 1. Klik op de koppeling **recente waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
     
-    ![Rapport afwijkende activiteiten](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Rapport afwijkende activiteiten":::
 
     Actieve bedreigingen weer geven:
 
-    ![Actieve bedreigingen](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Actieve bedreigingen":::
 
 2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
     
-    ![Specifieke waarschuwing](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Specifieke waarschuwing":::
 
 ## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor detectie van dreigingen verkennen
 
@@ -58,7 +58,7 @@ SQL Database detectie van bedreigingen integreert de waarschuwingen met [Azure S
 
 Klik op **waarschuwing bedreigingen detectie** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
 
-   ![Waarschuwing voor detectie van bedreigingen](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Waarschuwing voor detectie van bedreigingen":::
    
 
 ## <a name="next-steps"></a>Volgende stappen

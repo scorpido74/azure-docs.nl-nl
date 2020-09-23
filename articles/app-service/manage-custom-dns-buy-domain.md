@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958725"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970055"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
 
@@ -51,7 +51,7 @@ Schuif in de navigatiebalk links van de app-pagina naar de sectie **Instellingen
 
 De huidige laag van de app wordt gemarkeerd door een blauwe rand. Controleer of de app zich niet in de **F1**-laag bevindt. Aangepaste DNS wordt niet ondersteund in de **F1**-laag. 
 
-![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Scherm afbeelding van het navigatie menu links van de app-pagina met omhoog schalen (App Service plan) geselecteerd.":::
 
 Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina **opschalen** en gaat u verder met [het kopen van het domein](#buy-the-domain).
 
@@ -61,7 +61,7 @@ Selecteer een van de lagen die niet gratis zijn (**D1**, **B1**, **B2**, **B3** 
 
 Klik op **Toepassen**.
 
-![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Scherm opname van de prijs categorieën voor aangepaste domeinen in de productie categorie met het tabblad productie, B1 plannen en de knop Toep assen gemarkeerd.":::
 
 Wanneer u de volgende melding ziet, is de schaalbewerking voltooid.
 

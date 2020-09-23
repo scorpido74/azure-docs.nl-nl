@@ -1,18 +1,18 @@
 ---
 title: Clusters maken op Windows Server en Linux
-description: Service Fabric-clusters worden uitgevoerd op Windows Server en Linux, wat betekent dat u Service Fabric toepassingen kunt implementeren en hosten overal waar u Windows Server of Linux moet uitvoeren.
+description: Service Fabric-clusters worden uitgevoerd op Windows Server en Linux. U kunt Service Fabric-toepassingen implementeren en hosten overal waar u Windows Server of Linux kunt uitvoeren.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978712"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
 Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.

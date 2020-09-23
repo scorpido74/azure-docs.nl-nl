@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: fe562b8202c508c13f4127d14aeb5f994d15f962
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649607"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886212"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In deze hand leiding vindt u informatie over het definiëren van verschillende configuratie-instellingen van uw geautomatiseerde machine learning experimenten met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Automatische machine learning kiest een algoritme en Hyper parameters voor u en genereert een model dat gereed is voor implementatie. Er zijn verschillende opties die u kunt gebruiken voor het configureren van geautomatiseerde machine learning experimenten.
 
@@ -201,7 +201,7 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 
 Wanneer u uw experimenten in uw `AutoMLConfig` object configureert, kunt u de instelling in-of uitschakelen `featurization` . De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in het [AutoMLConfig-object](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Parametrisatie-configuratie | Beschrijving |
+|Parametrisatie-configuratie | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-configure-auto-features.md#featurization) automatisch worden uitgevoerd. **Standaard instelling**.|
 |`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|

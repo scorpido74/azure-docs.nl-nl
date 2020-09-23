@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146858"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531641"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
@@ -254,7 +254,7 @@ Een functie-app in Azure beheert de uitvoering van uw functies in uw hostingabon
 1. Maak de functie-app met behulp van de opdracht [az functionapp create](/cli/azure/functionapp#az-functionapp-create). Vervang in het volgende voorbeeld `<storage_name>` door de naam die u in het vorige gedeelte hebt gebruikt voor het opslagaccount. Vervang ook `<app_name>` door een globaal unieke naam van uw keuze en `<docker_id>` door uw Docker-ID.
 
     ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
     Met de parameter *deployment-container-image-name* wordt de installatiekopie opgegeven die moet worden gebruikt voor de functie-app. U kunt de opdracht [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) gebruiken om informatie weer te geven over de installatiekopie die wordt gebruikt voor de implementatie. U kunt ook de opdracht [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) gebruiken om vanuit een andere installatiekopie te implementeren.

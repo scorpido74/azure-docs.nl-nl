@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798355"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979784"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 
@@ -48,6 +48,22 @@ Als u het e-mail bericht niet hebt, kunt u de toegangs aanvragen vinden die in b
 1. Klik in het linkermenu op **goed keuringen** om een lijst weer te geven met toegangs aanvragen die in behandeling zijn.
 
 1. Zoek de aanvraag op het tabblad **in behandeling** .
+
+## <a name="view-requestors-answers-to-questions-preview"></a>Antwoorden op vragen van de aanvrager weer geven (preview)
+
+1. Navigeer naar het tabblad **goed keuringen** in mijn toegang.
+
+1. Ga naar de aanvraag die u wilt goed keuren en klik op **Details**. U kunt ook op **goed keuren** of **weigeren** klikken als u klaar bent om een beslissing te nemen.
+
+1. Klik op **aanvraag gegevens**.
+
+     ![Mijn toegangs Portal-toegangs aanvraag-Klik op aanvraag Details](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. De gegevens die door de aanvrager worden verstrekt, staan onder aan het deel venster.
+
+     ![Mijn toegangs Portal-toegangs aanvraag](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. Op basis van de informatie die de aanvrager heeft verstrekt, kunt u de aanvraag vervolgens goed keuren of weigeren. Zie de stappen in een aanvraag voor hulp goed keuren of weigeren.
 
 ## <a name="approve-or-deny-request"></a>Aanvraag goed keuren of weigeren
 

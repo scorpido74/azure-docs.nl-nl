@@ -323,11 +323,12 @@
           items:
             - name: Taken vooraf instellen
               href: indexer-task-preset.md
+    - name: Inhoud analyseren
+      items:
         - name: Verwerken met Face Redactor
           href: media-services-face-redaction.md
-          items:
-            - name: Walkthrough door Face Redactor
-              href: media-services-redactor-walkthrough.md
+        - name: Walkthrough door Face Redactor
+          href: media-services-redactor-walkthrough.md
     - name: Telemetrie configureren
       href: media-services-telemetry-overview.md
       items:

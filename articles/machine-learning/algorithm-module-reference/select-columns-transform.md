@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893622"
 ---
 # <a name="select-columns-transform"></a>Kolomtransformatie selecteren
 
-In dit artikel wordt beschreven hoe u de module column Transform SELECT in Azure Machine Learning Designer (preview) gebruikt. Het doel van de transformatie module select columns is ervoor te zorgen dat een voorspel bare, consistente set kolommen wordt gebruikt in downstream-machine learning bewerkingen.
+In dit artikel wordt beschreven hoe u de module column Transform SELECT in Azure Machine Learning Designer kunt gebruiken. Het doel van de transformatie module select columns is ervoor te zorgen dat een voorspel bare, consistente set kolommen wordt gebruikt in downstream-machine learning bewerkingen.
 
 Deze module is handig voor taken zoals scores, waarvoor specifieke kolommen zijn vereist. Wijzigingen in de beschik bare kolommen kunnen de pijp lijn verstoren of de resultaten wijzigen.
 

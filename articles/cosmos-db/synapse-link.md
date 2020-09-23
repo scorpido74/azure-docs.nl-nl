@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814387"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891487"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -21,7 +21,7 @@ ms.locfileid: "88814387"
 
 De Azure Synapse-koppeling voor Azure Cosmos DB is een Cloud-native hybride transactionele en analytische verwerking (HTAP) waarmee u bijna realtime analyses kunt uitvoeren via operationele gegevens in Azure Cosmos DB. Met Azure Synapse link maakt u een naadloze integratie tussen Azure Cosmos DB en Azure Synapse Analytics.
 
-Met behulp van [Azure Cosmos DB-analytische opslag](analytical-store-introduction.md), een volledig geïsoleerde column Store, kunt u met Azure Synapse link geen ETL-analyse (extract-Transform-Load) uitvoeren in [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) voor uw operationele gegevens op schaal. Bedrijfs analisten, gegevens technici en gegevens wetenschappers kunnen nu Synapse Spark of Synapse SQL-verwisselbaar gebruiken om bijna realtime business intelligence, analyses en machine learning pijp lijnen uit te voeren. U kunt dit doen zonder dat dit van invloed is op de prestaties van uw transactionele workloads op Azure Cosmos DB. 
+Met behulp van [Azure Cosmos DB-analytische opslag](analytical-store-introduction.md), een volledig geïsoleerde column Store, kunt u met Azure Synapse link geen ETL-analyse (extract-Transform-Load) uitvoeren in [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) voor uw operationele gegevens op schaal. Bedrijfs analisten, gegevens technici en gegevens wetenschappers kunnen nu Synapse Spark of Synapse SQL-verwisselbaar gebruiken om bijna realtime business intelligence, analyses en machine learning pijp lijnen uit te voeren. U kunt dit doen zonder dat dit van invloed is op de prestaties van uw transactionele werkbelastingen op Azure Cosmos DB. 
 
 In de volgende afbeelding ziet u de integratie van de Azure Synapse-koppeling met Azure Cosmos DB en Azure Synapse Analytics: 
 
@@ -40,7 +40,6 @@ Met Azure Synapse link kunt u rechtstreeks toegang krijgen tot Azure Cosmos DB A
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Bijna realtime inzichten in uw operationele gegevens
 
 U kunt nu in bijna realtime inzicht krijgen in uw operationele gegevens met behulp van de Azure Synapse-koppeling. ETL-gebaseerde systemen hebben vaak een hogere latentie voor het analyseren van uw operationele gegevens, omdat er veel lagen nodig zijn om de operationele gegevens te extra heren, te transformeren en te laden. Met de systeem eigen integratie van Azure Cosmos DB analytische opslag met Azure Synapse Analytics kunt u operationele gegevens in bijna realtime analyseren door nieuwe bedrijfs scenario's in te scha kelen. 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>Geen invloed op operationele werk belastingen
 
@@ -91,7 +90,7 @@ U kunt de gegevens van Azure Cosmos DB analytische opslag tegelijk opvragen, met
 
 Deze integratie maakt de volgende HTAP-scenario's mogelijk voor verschillende gebruikers:
 
-* Een BI-engineer die een rapport wil maken en publiceren voor toegang tot de operationele gegevens in Azure Cosmos DB rechtstreeks via Synapse SQL.
+* Een BI-engineer die een Power BI-rapport wil model leren en publiceren om de operationele gegevens in Azure Cosmos DB rechtstreeks te openen via Synapse SQL.
 
 * Een gegevens analist die inzichten wil afleiden van de operationele gegevens in een Azure Cosmos DB-container door deze te doorzoeken met Synapse SQL, de gegevens te lezen op schaal en deze resultaten te combi neren met andere gegevens bronnen.
 
@@ -115,16 +114,15 @@ In dergelijke gevallen biedt Synapse link een meer geïntegreerde analyse-ervari
 
 Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Data Warehouse vereisten, zoals een hoge gelijktijdigheid, werkbelasting beheer en persistentie van aggregaties over meerdere gegevens bronnen. Zie [algemene scenario's die kunnen worden ingeschakeld met de Azure Synapse-koppeling voor Azure Cosmos DB](synapse-link-use-cases.md)voor meer informatie.
 
-
 ## <a name="limitations"></a>Beperkingen
 
-* Tijdens de open bare Preview wordt de Azure Synapse-koppeling alleen ondersteund voor de SQL-API (core) van Azure Cosmos DB. Ondersteuning voor de API van Azure Cosmos DB voor MongoDB & Cassandra-API bevindt zich momenteel in een preview-versie. Als u toegang wilt aanvragen tot de geteste preview, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
+* De koppeling van Azure Synapse wordt ondersteund voor de Azure Cosmos DB SQL-API (core) en de Azure Cosmos DB-API voor MongoDB. Ondersteuning voor Cassandra-API bevindt zich momenteel onder een geteste preview. Als u toegang wilt aanvragen tot de geteste preview, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
 
-* Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers (zowel in nieuwe als bestaande Azure Cosmos DB-accounts).
-
-* In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u productie werkbelastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
+* Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers. Als u een analytische archief wilt gebruiken voor bestaande containers, migreert u gegevens vanuit uw bestaande containers naar nieuwe containers met [Azure Cosmos DB-migratie hulpprogramma's](cosmosdb-migrationchoices.md). U kunt de Synapse-koppeling inschakelen voor nieuwe en bestaande Azure Cosmos DB accounts.
 
 * Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
+
+* In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u werk belastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
 
 * Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned.
 
