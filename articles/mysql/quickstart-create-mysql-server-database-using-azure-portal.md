@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705143"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906556"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Quickstart: Een Azure Database for MySQL-server maken met behulp van Azure Portal
 
@@ -34,12 +34,12 @@ Volg deze stappen voor het maken van een Azure Database voor MySQL-server:
 
   
 >[!div class="mx-imgBorder"]
-> ![De optie Azure Database for MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="De optie Azure Database for MySQL":::
 
 3. Vul het formulier voor de gegevens van de nieuwe server als volgt in:
     
 >[!div class="mx-imgBorder"]
-> ![Formulier voor het maken van een server](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Formulier voor het maken van een server":::
 
 **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld** 
 ---|---|---
@@ -67,7 +67,7 @@ Standaard worden de volgende databases gemaakt voor de server: **information_sch
 De server die wordt gemaakt, is standaard beveiligd met een firewall en is niet openbaar toegankelijk. Om toegang tot uw IP-adres te geven, gaat u in Azure Portal naar uw serverresource en selecteert u **Verbindingsbeveiliging** in het linkermenu van uw serverresource. Als u niet weet hoe u uw resource moet vinden, gaat u naar [Een resource openen](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 >[!div class="mx-imgBorder"]
-> ![Verbindingsbeveiliging - Firewallregels](./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Verbindingsbeveiliging - Firewallregels":::
    
 Selecteer **Huidig IP-adres van client toevoegen** en selecteer daarna **Opslaan**. U kunt extra IP-adressen toevoegen of een IP-bereik opgeven om verbinding met uw server te maken vanaf die IP-adressen. Zie [Firewallregels beheren op een Azure Database for MySQL-server](./concepts-firewall-rules.md) voor meer informatie
 
@@ -83,7 +83,7 @@ U kunt [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) of [MySQL
     >Als u Cloud Shell voor de eerste keer start, wordt er een prompt weergegeven om een resourcegroep en opslagaccount te maken. Dit is een eenmalige stap die voor alle volgende sessies automatisch wordt toegevoegd. 
 
    >[!div class="mx-imgBorder"]
-   > ![Volledige portalweergave van Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Volledige portalweergave van Cloud Shell":::
 2. Voer deze opdracht uit in de Azure Cloud Shell-terminal. Vervang de waarden door uw servernaam en aanmeldings-id voor de gebruiker met beheerdersrechten. Voor de gebruikersnaam van de beheerder is @\<servername> vereist, zoals hieronder wordt weergegeven voor Azure Database for MySQL  
 
   ```azurecli-interactive
@@ -136,7 +136,7 @@ U hebt een Azure Database for MySQL-server in een resourcegroep gemaakt.  Als u 
 
 Om uw server te verwijderen, klikt u op de knop **Verwijderen** op de pagina **Overzicht** van uw server, zoals hieronder weergegeven:
 > [!div class="mx-imgBorder"]
-> ![Uw resources verwijderen](media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Uw resources verwijderen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

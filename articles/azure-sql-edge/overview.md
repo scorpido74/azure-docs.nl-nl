@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure SQL Edge (preview)?
-description: Meer informatie over Azure SQL Edge (preview-versie)
+title: Wat is Azure SQL Edge?
+description: Meer informatie over Azure SQL Edge
 keywords: Inleiding tot SQL Edge, wat is SQL Edge, overzicht van SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489524"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907116"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>Wat is Azure SQL Edge (preview)?
+# <a name="what-is-azure-sql-edge"></a>Wat is Azure SQL Edge?
 
-Azure SQL Edge (preview) is een geoptimaliseerde relationele data base-engine die is toegespitst op IoT en IoT Edge implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. Azure SQL Edge biedt mogelijkheden voor het streamen, verwerken en analyseren van relationele en niet-relationele gegevens, zoals JSON, Graph en time-series, waardoor deze de juiste keuze is voor een groot aantal moderne IoT-toepassingen.
+Azure SQL Edge is een geoptimaliseerde relationele data base-engine die is toegespitst op IoT en IoT Edge implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. Azure SQL Edge biedt mogelijkheden voor het streamen, verwerken en analyseren van relationele en niet-relationele gegevens, zoals JSON, Graph en time-series, waardoor deze de juiste keuze is voor een groot aantal moderne IoT-toepassingen.
 
-Azure SQL Edge is gebaseerd op de nieuwste versies van de micro soft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-documentation? TOC =/Azure/Azure-SQL-Edge/toc.json), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) en [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), beschikt u over dezelfde T-SQL-programmeer Surface Area die het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller maakt, en tegelijkertijd de toepassings portabiliteit tussen IOT edge apparaten, data centers en de Cloud direct kunt door lopen.
+Azure SQL Edge is gebaseerd op de nieuwste versies van de [SQL server data base-engine](/sql/sql-server/sql-server-technical-documentation), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als [SQL Server](/sql/sql-server/sql-server-technical-documentation) en [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), levert deze dezelfde Transact-SQL (T-sql)-programmeer Surface Area die het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller maakt, en zorgt u ervoor dat toepassings portabiliteit tussen IOT edge apparaten, data centers en de Cloud direct kan worden uitgevoerd.
 
-> [!NOTE]
-> Azure SQL Edge is momenteel beschikbaar als preview-versie en kan niet worden gebruikt in productie omgevingen.
+Wat is Azure SQL Edge video op Channel 9:
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>Implementatie modellen
 
-Azure SQL Edge is beschikbaar op de Azure Marketplace en kan worden geïmplementeerd als een module voor [Azure IOT Edge](../iot-edge/about-iot-edge.md). Zie [Azure SQL Edge implementeren](deploy-portal.md)voor meer informatie.<br>
+Azure SQL Edge ondersteunt twee implementatie modi.
+
+- Verbonden implementatie via Azure IoT Edge: Azure SQL Edge is beschikbaar op de Azure Marketplace en kan worden geïmplementeerd als een module voor [Azure IOT Edge](../iot-edge/about-iot-edge.md). Zie [Azure SQL Edge implementeren](deploy-portal.md)voor meer informatie.<br>
 
 ![Diagram van overzicht van SQL-rand](media/overview/overview.png)
+
+- Niet-verbonden implementatie: Azure SQL Edge-container installatie kopieën kunnen worden opgehaald uit de docker-hub en worden geïmplementeerd als een zelfstandige docker-container of een kubernetes-cluster. Zie [Azure SQL Edge implementeren met docker](disconnected-deployment.md) en [een Azure SQL Edge-container implementeren in Kubernetes](deploy-kubernetes.md)voor meer informatie.
 
 ## <a name="editions-of-sql-edge"></a>Edities van SQL-rand
 
@@ -42,7 +46,7 @@ SQL Edge is beschikbaar in twee verschillende edities of software plannen. Deze 
 
 ## <a name="pricing-and-availability"></a>Prijzen en beschik baarheid
 
-Azure SQL Edge is momenteel beschikbaar als preview-versie. Zie [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/)(Engelstalig) voor meer informatie over de prijzen en beschik baarheid.
+Azure SQL Edge is nu algemeen beschikbaar. Zie [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/)(Engelstalig) voor meer informatie over de prijzen en beschik baarheid in bepaalde regio's.
 
 > [!IMPORTANT]
 > Zie [ondersteunde functies van Azure SQL Edge](features.md)voor meer informatie over de functie verschillen tussen Azure SQL edge en SQL Server, evenals de verschillen tussen de verschillende opties van de Azure SQL-rand.

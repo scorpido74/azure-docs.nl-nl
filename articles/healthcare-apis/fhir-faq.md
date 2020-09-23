@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843518"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978622"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -49,7 +49,24 @@ Vanuit een ontwikkelings standpunt wordt elke functie eerst geïmplementeerd op 
 SLIMME (Vervang bare medische toepassingen en herbruikbare technologie) op FHIR is een set open specificaties voor het integreren van partner toepassingen met FHIR-servers en andere Health IT-systemen, zoals elektronische status records en informatie uitwisselingen van de status. Door een slimme on FHIR-toepassing te maken, kunt u ervoor zorgen dat uw toepassing toegankelijk is en kan worden gebruikt door een verdwaald van verschillende systemen.
 Verificatie en Azure API voor FHIR. Ga voor meer informatie naar Smart [Health](https://smarthealthit.org/).
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT connector voor FHIR (preview-versie)
+### <a name="can-i-create-a-custom-fhir-resource"></a>Kan ik een aangepaste FHIR-resource maken?
+
+Er zijn geen aangepaste FHIR-resources toegestaan. Als u een aangepaste FHIR-resource nodig hebt, kunt u een aangepaste resource maken boven op de [basis bron](http://www.hl7.org/fhir/basic.html) met uitbrei dingen. 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Worden [extensies](https://www.hl7.org/fhir/extensibility.html) ondersteund op de Azure API voor FHIR?
+
+U kunt alle geldige FHIR JSON-gegevens naar de server laden. Als u de structuur definitie wilt opslaan die de uitbrei ding definieert, kunt u deze opslaan als een structuur definitie resource. Op dit moment kunt u niet zoeken op uitbrei dingen.
+
+### <a name="what-is-the-limit-on-_count"></a>Wat is de limiet voor _count?
+
+De huidige limiet voor aantal is 100.
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Zijn er beperkingen voor de export functionaliteit van de groep?
+
+Voor het exporteren van de groep exporteert u alleen de opgenomen verwijzingen van de groep, niet alle kenmerken van de [groeps resource](https://www.hl7.org/fhir/group.html).
+
+
+## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (preview)
 
 ### <a name="what-is-iomt"></a>Wat is IoMT?
 IoMT staat voor Internet of medische dingen en is een categorie van IoT-apparaten die status-en Wellness-gegevens vastleggen en uitwisselen met andere IT-systemen in de gezondheids zorg via een netwerk. IoMT-apparaten zijn bijvoorbeeld wearables voor fitness en klinische toepassingen, bewakingssensoren, activiteitstrackers, zorgkiosken of zelfs slimme pillen.
@@ -88,6 +105,6 @@ In dit artikel hebt u enkele veelgestelde vragen over de Azure API voor FHIR gel
 >[!div class="nextstepaction"]
 >[Ondersteunde FHIR-functies](fhir-features-supported.md)
 
-* In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
+*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 
 FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: ceafbe1fd1682fc5e92ab3048ed09866fb9ebbdf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570454"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906391"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Onjuiste configuraties voor komen met aanbevelingen voor afdwingen/weigeren
 
@@ -24,10 +24,9 @@ Deze functie kan u helpen uw workloads veilig te houden en uw veilige score te s
 Het afdwingen van een veilige configuratie op basis van een specifieke aanbeveling wordt aangeboden in twee modi:
 
 - Met het **weigeren** van het effect van Azure Policy kunt u stoppen met het maken van beschadigde resources
-
 - Met de optie **afdwingen** kunt u profiteren van het **DeployIfNotExist** -effect van het Azure-beleid en niet-compatibele resources automatisch herstellen wanneer deze worden gemaakt
- 
-Dit is beschikbaar voor geselecteerde beveiligings aanbevelingen en is te vinden boven aan de pagina Resource Details.
+
+Deze vindt u boven aan de pagina Resource Details voor geselecteerde beveiligings aanbevelingen (Zie [aanbevelingen met opties voor weigeren/afdwingen](#recommendations-with-denyenforce-options)).
 
 ## <a name="prevent-resource-creation"></a>Het maken van resources voor komen
 

@@ -1,6 +1,6 @@
 ---
 title: TmaxSoft open frame installeren op Azure Virtual Machines
-description: Host uw IBM z/OS mainframe-workloads met behulp van de open-frame omgeving van TmaxSoft op Azure Virtual Machines (Vm's).
+description: Meer informatie over het instellen van een open-frame omgeving in azure die geschikt is voor ontwikkelings-, demonstratie-, test-en productie werk belastingen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082389"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987484"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft open frame installeren op Azure
 
@@ -64,7 +64,7 @@ De volgende tabel bevat de vereisten voor de installatie van Azure.
 
 <table>
 <thead>
-    <tr><th>Vereiste</th><th>Beschrijving</th></tr>
+    <tr><th>Vereiste</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr><td>Ondersteunde Linux-distributies op Azure
@@ -349,7 +349,7 @@ Tibero biedt de verschillende belang rijke functies in de open frame-omgeving va
      )
     ```
 
-7. Maak de data base. De volgende uitvoer verschijnt:
+7. Maak de data base. De volgende uitvoer wordt weergegeven:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -460,7 +460,7 @@ ODBC installeren:
 
      UnixODBC is standaard geïnstalleerd in/usr/local, dus wordt `--prefix` een waarde door gegeven om de locatie te wijzigen. Op dezelfde manier worden configuratie bestanden standaard in/etc geïnstalleerd, zodat `--sysconfdir` de waarde van de gewenste locatie wordt door gegeven.
 
-4. Makefile uitvoeren:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. Makefile uitvoeren: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
 5. Kopieer het uitvoer bare bestand in de map Program ma's na het compileren. Bijvoorbeeld:
 
@@ -945,7 +945,7 @@ Prosorteren is een hulp programma dat wordt gebruikt in batch-trans acties voor 
      export PATH
      ```
 
-6. Als u het bash-profiel wilt uitvoeren, typt u bij de opdracht prompt:`. .bash_profile`
+6. Als u het bash-profiel wilt uitvoeren, typt u bij de opdracht prompt: `. .bash_profile`
 
 7. Maak het configuratie bestand. Bijvoorbeeld:
 
@@ -1342,7 +1342,7 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Wijzigen `jeus.password=jeusadmin nodename=Tmaxsoft` in`jeus.password=tmax1234 nodename=ofdemo`
+7. Wijzigen `jeus.password=jeusadmin nodename=Tmaxsoft` in `jeus.password=tmax1234 nodename=ofdemo`
 
 8. Voer de `ant install` opdracht uit om JEUS te bouwen.
 9.  Werk het. bash- \_ profiel bestand bij met de JEUS-variabelen, zoals wordt weer gegeven:

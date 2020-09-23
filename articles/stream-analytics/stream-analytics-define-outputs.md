@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068980"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907152"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Uitvoer van Azure Stream Analytics
 
@@ -24,17 +24,17 @@ Sommige typen uitvoer ondersteunen [partitionering](#partitioning)en [uitvoer ba
 
 | Uitvoertype | Partitionering | Beveiliging | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory gebruiker </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory gebruiker </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Ja, moet zijn ingeschakeld.|SQL-gebruikers authenticatie </br> MSI (preview-versie)|
-|[Azure Synapse Analytics (preview-versie)](azure-synapse-analytics-output.md)|Nee|SQL-gebruikers authenticatie|
-|[Blob-opslag en Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Toegangssleutel|
-|[Azure Event Hubs](event-hubs-output.md)|Ja|Toegangssleutel|
-|[Power BI](power-bi-output.md)|Nee|Azure Active Directory gebruiker </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Ja|Accountsleutel|
-|[Azure Service Bus-wachtrijen](service-bus-queues-output.md)|Ja|Toegangssleutel|
-|[Azure Service Bus onderwerpen](service-bus-topics-output.md)|Ja|Toegangssleutel|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Ja|Toegangssleutel|
-|[Azure Functions](azure-functions-output.md)|Ja|Toegangssleutel|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|No|SQL-gebruikers authenticatie|
+|[Blob-opslag en Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Toegangssleutel|
+|[Azure Event Hubs](event-hubs-output.md)|Yes|Toegangssleutel|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory gebruiker </br> MSI|
+|[Azure Table storage](table-storage-output.md)|Yes|Accountsleutel|
+|[Azure Service Bus-wachtrijen](service-bus-queues-output.md)|Yes|Toegangssleutel|
+|[Azure Service Bus onderwerpen](service-bus-topics-output.md)|Yes|Toegangssleutel|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Toegangssleutel|
+|[Azure Functions](azure-functions-output.md)|Yes|Toegangssleutel|
 
 ## <a name="partitioning"></a>Partitionering
 

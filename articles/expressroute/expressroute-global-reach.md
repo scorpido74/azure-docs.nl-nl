@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 8c6ed19a585bc1ebae65045cd1cc4c442f113597
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987621"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute is een privé-en robuuste manier om uw on-premises netwerken te verbinden met de Microsoft Cloud. U hebt toegang tot veel Cloud Services van micro soft, zoals Azure en Microsoft 365 van uw persoonlijke data center of uw bedrijfs netwerk. Zo kunt u bijvoorbeeld een filiaal in San Francisco hebben met een ExpressRoute-circuit in Silicon dal en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde plaats. Beide filialen hebben snelle connectiviteit met Azure-resources in VS West en UK-zuid. De filialen kunnen echter geen verbinding maken en gegevens rechtstreeks met elkaar verzenden. Met andere woorden, 10.0.1.0/24 kan gegevens verzenden naar 10.0.3.0/24-en 10.0.4.0/24-netwerk, maar niet op 10.0.2.0/24-netwerk.
@@ -29,10 +30,27 @@ ExpressRoute Global Reach is ontworpen voor een aanvulling op de WAN-implementat
 ![Diagram waarin een use-case voor Express route Global Reach wordt weer gegeven.][3]
 
 ## <a name="availability"></a>Beschikbaarheid 
-ExpressRoute Global Reach wordt ondersteund in de meeste regio's waarbij ExpressRoute momenteel wordt ondersteund. U kunt verwijzen naar [ExpressRoute-connectiviteits providers](expressroute-locations-providers.md#partners) voor de huidige ondersteunde regio's. 
+ExpressRoute Global Reach wordt ondersteund op de volgende locaties. 
 
 > [!NOTE] 
 > Om ExpressRoute Global Reach te scha kelen tussen [verschillende geopolitieke regio's](expressroute-locations-providers.md#locations), moeten uw circuits een **Premium-SKU**zijn.
+
+* Australië
+* Canada
+* Frankrijk
+* Duitsland
+* Hongkong SAR
+* Ierland
+* Japan
+* Korea
+* Nederland
+* Nieuw-Zeeland
+* Noorwegen
+* Singapore
+* Zweden
+* Zwitserland
+* Verenigd Koninkrijk
+* Verenigde Staten
 
 ## <a name="next-steps"></a>Volgende stappen
 - Bekijk de [Veelgestelde vragen over Global Reach](expressroute-faqs.md#globalreach).

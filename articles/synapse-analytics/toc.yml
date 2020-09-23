@@ -464,27 +464,31 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Verbinding maken met Azure Synapse Link voor Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
+            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met Apache Spark
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Gegevens kopiëren van Synapse Link naar een SQL-pool met Apache Spark
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met SQL on demand
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Query uitvoeren op gegevens in opslag
+            - name: Externe gegevens ophalen
               items:
                 - name: Overzicht
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Query uitvoeren op CSV-bestand
+                - name: Query uitvoeren op CSV-bestanden
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op Parquet-bestanden
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Query uitvoeren op met Parquet geneste typen
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op JSON-bestanden
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Query Azure Cosmos DB
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Query uitvoeren op geneste typen
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op mappen en meerdere bestanden
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Metagegevens van bestand gebruiken
+                - name: Gepartitioneerde bestanden doorzoeken met behulp van metagegevens van bestanden
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Weergaven maken en gebruiken
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120640"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988117"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -184,8 +184,8 @@ Ingeschakelde regio's:
 - Brazilië - zuid
 - Canada - midden
 - VS - centraal
-- China-oost 2
-- China-noord 2
+- China - oost 2
+- China - noord 2
 - Azië - oost
 - VS - oost
 - VS-Oost 2
@@ -228,7 +228,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks worden gemigreerd naar een niet-grootschalige. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) en [az SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import), en van [rest API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
 | Migratie van data bases met in-Memory OLTP-objecten | Grootschalige ondersteunt een subset van in-Memory OLTP-objecten, waaronder door het geheugen geoptimaliseerde tabel typen, tabel variabelen en systeem eigen, gecompileerde modules. Als er echter een wille keurig type in-Memory OLTP-objecten aanwezig zijn in de data base die wordt gemigreerd, wordt de migratie van Premium-en Bedrijfskritiek-service lagen naar grootschalige niet ondersteund. Als u een dergelijke Data Base wilt migreren naar grootschalige, moeten alle OLTP-objecten in het geheugen en de bijbehorende afhankelijkheden worden verwijderd. Nadat de data base is gemigreerd, kunnen deze objecten opnieuw worden gemaakt. Duurzame en niet-duurzame tabellen die zijn geoptimaliseerd voor geheugen, worden momenteel niet ondersteund in grootschalige en moeten opnieuw worden gemaakt als schijf tabellen.|
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
-| Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
+| Data base kopiëren | Het kopiëren van de Data Base op grootschalige is nu beschikbaar als open bare preview. |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (vaak uw eigen sleutel of BYOK genoemd) is momenteel beschikbaar als preview-versie. |
 | Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
 | Inzicht in queryprestaties | Query performance Insights wordt momenteel niet ondersteund voor grootschalige-data bases. |

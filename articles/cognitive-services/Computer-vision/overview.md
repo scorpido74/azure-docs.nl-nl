@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision-toepassingen, computer vision-service
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907075"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -92,7 +92,11 @@ U kunt Computer Vision gebruiken om [erotische inhoud te detecteren](concept-det
 
 ## <a name="use-containers"></a>Containers gebruiken
 
-[Gebruik Computer Vision-containers](computer-vision-how-to-install-containers.md) voor het lokaal herkennen van gedrukte en handgeschreven tekst door het installeren van een gestandaardiseerde Docker-container die zich dichter bij uw gegevens bevindt.
+Gebruik Docker-containers van Computer Vision om de service on-premises te gebruiken. Er zijn momenteel twee containers beschikbaar:
+
+* Met de [Computer Vision-leescontainer](computer-vision-how-to-install-containers.md) kunt u gedrukte en handgeschreven tekst in afbeeldingen herkennen.
+
+* Met de [container voor ruimtelijke analyse van Computer Vision](spatial-analysis-container.md) kunt u realtime streaming-video analyseren om inzicht te krijgen in de ruimtelijke relaties tussen mensen en hun verplaatsing door fysieke omgevingen.
 
 ## <a name="image-requirements"></a>Vereisten voor installatiekopieën
 

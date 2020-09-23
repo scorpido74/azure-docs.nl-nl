@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997146"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988038"
 ---
 # <a name="server-sizes"></a>Servergrootten
 
@@ -23,7 +23,7 @@ Externe rendering met `Standard` grootte server heeft een maximale grootte van 2
 
 Wanneer de renderer op een ' standaard ' server grootte op deze beperking van toepassing is, schakelt deze over naar een achtergrond met een dambord:
 
-![Dambord](media/checkerboard.png)
+![In de scherm afbeelding ziet u een raster met zwarte en witte vier kanten met een extra menu.](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>De server grootte opgeven
 

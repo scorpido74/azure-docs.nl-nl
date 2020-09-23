@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 5b46dc0197022aa72b6ca4c206d1da4369234167
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707676"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978910"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for PostgreSQL één server
 
@@ -126,5 +126,8 @@ Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen vo
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. hebben we een query aan de server zijde om te controleren of SSL wordt gebruikt?
 Raadpleeg [SSL-verificatie](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.
 
-### <a name="13-what-if-i-have-further-questions"></a>13. Wat moet ik doen als ik meer vragen heb?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. is er een actie vereist als ik DigiCertGlobalRootG2 al in mijn certificaat bestand heb?
+Nee. Er is geen actie vereist als uw certificaat bestand al het **DigiCertGlobalRootG2**heeft.
+
+### <a name="14-what-if-i-have-further-questions"></a>14. Wat moet ik doen als ik meer vragen heb?
 Als u vragen hebt, kunt u antwoorden krijgen van experts van community's in [micro soft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). Als u een ondersteunings abonnement hebt en technische hulp nodig hebt, kunt u [contact met ons](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) opnemen

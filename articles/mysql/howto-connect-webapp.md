@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101621"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905847"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Een bestaande Azure App Service koppelen aan Azure Database for MySQL server
 In dit onderwerp wordt uitgelegd hoe u een bestaande Azure App Service kunt verbinden met uw Azure Database for MySQL-server.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij [Azure Portal](https://portal.azure.com). Een Azure Database for MySQL-server maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Er zijn momenteel twee oplossingen voor het inschakelen van toegang vanaf een Azure App Service naar een Azure Database for MySQL. Beide oplossingen moeten firewall regels op server niveau instellen.
 
@@ -26,21 +26,21 @@ Azure Database for MySQL biedt toegangs beveiliging met behulp van een firewall 
 
 1. Klik op de Blade MySQL-server, onder de kop instellingen, op **verbindings beveiliging** om de Blade verbindings beveiliging te openen voor Azure database for MySQL.
 
-   ![Azure Portal-Klik op verbindings beveiliging](./media/howto-connect-webapp/1-connection-security.png)
+   :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure Portal-Klik op verbindings beveiliging":::
 
 2. Selecteer **aan** in **toegang tot Azure-Services toestaan**en **Sla**het bestand op.
-   ![Azure Portal-toegang tot Azure toestaan](./media/howto-connect-webapp/allow-azure.png)
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure Portal-toegang tot Azure toestaan":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Oplossing 2: een firewall regel maken om uitgaande IP-adressen expliciet toe te staan
 U kunt alle uitgaande IP-adressen van uw Azure App Service expliciet toevoegen.
 
 1. Bekijk op de Blade App Service eigenschappen uw **uitgaande IP-adres**.
 
-   ![Azure Portal-uitgaand IP-adressen weer geven](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure Portal-uitgaand IP-adressen weer geven":::
 
 2. Voeg op de Blade met de MySQL-verbinding de uitgaand IP-adressen één voor één toe.
 
-   ![Azure Portal-expliciete IP-adressen toevoegen](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure Portal-expliciete IP-adressen toevoegen":::
 
 3. Vergeet niet om uw firewall regels op te **slaan** .
 

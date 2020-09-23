@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/02/2020
-ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 46fa489c5a72c3de923f5281cc9be205925dd42d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421302"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988100"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Big data analyse in realtime versnellen met behulp van de Spark-connector
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ De gegevens stroom is als volgt:
 
 In het volgende diagram ziet u de gegevens stroom.
 
-   ![architectuur](./media/spark-connector/architecture.png)
+   ![Diagram toont de beschreven stroom, met een hoofd knooppunt dat rechtstreeks verbinding maakt met de data base en verbinding maakt met drie werk knooppunten die verbinding maken met de data base.](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>De Spark-connector bouwen
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965005"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908043"
 ---
 # <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer.
 
 Gebruik de module meta gegevens bewerken om meta gegevens te wijzigen die zijn gekoppeld aan kolommen in een gegevensset. De waarde en het gegevens type van de gegevensset worden gewijzigd na gebruik van de module meta gegevens bewerken.
 

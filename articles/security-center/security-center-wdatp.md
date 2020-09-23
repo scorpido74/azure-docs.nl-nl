@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907352"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -28,8 +28,8 @@ Azure Security Center integreert met [micro soft Defender Advanced Threat Protec
 
 |Aspect|Details|
 |----|:----|
-|Release status:|**Algemene beschikbaarheid**|
-|Koers|Standaardlaag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|Vereist [Azure Defender](security-center-pricing.md)|
 |Ondersteunde machines:|![Yes](./media/icons/yes-icon.png) Azure-machines met Windows<br>![Yes](./media/icons/yes-icon.png) Azure-Arc-machines met Windows|
 |Vereiste rollen en machtigingen:|De integratie: **beveiligings beheerder** of **eigenaar** inschakelen/uitschakelen<br>MDATP-waarschuwingen weer geven in Security Center: **beveiligings lezer**, **lezer**, **Inzender voor resource groep**, **eigenaar van resource groep**, **beveiligings beheerder**, **abonnements eigenaar**of **mede werker** van het abonnement|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds.<br>![No](./media/icons/no-icon.png) GCC-klanten die werk belastingen uitvoeren in open bare Azure-Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
@@ -57,7 +57,7 @@ Door Defender ATP te integreren met Azure Security Center, kunt u ook profiteren
 
 ## <a name="platform-support"></a>Platformondersteuning
 
-Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1. Voor virtuele machines van Azure hebt u een Standard-laag abonnement en voor virtuele machines die niet van Azure zijn, hebt u alleen een Standard-laag op het niveau van de werk ruimte nodig.
+Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1. Voor virtuele Azure-machines hebt u een nodig om Azure Defender in te scha kelen voor uw abonnement en voor virtuele machines die niet van Azure zijn, moet Azure Defender alleen worden ingeschakeld op het niveau van de werk ruimte.
 
 Server eindpunt bewaking met deze integratie is uitgeschakeld voor Office 365 GCC-klanten.
 
@@ -74,24 +74,25 @@ Als u servers wilt Security Center, klikt u op **Ga naar Azure Security Center v
 
 1. Selecteer of maak **in het** voorbereidings gebied een werk ruimte waarin u de gegevens wilt opslaan.
 
-2. Als u niet alle werk ruimten kunt zien, kan dit worden veroorzaakt door een gebrek aan machtigingen. Zorg ervoor dat uw werk ruimte is ingesteld op de prijs categorie Azure-beveiligings Standard. Zie voor meer informatie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging](security-center-pricing.md).
+2. Als u niet alle werk ruimten kunt zien, kan dit worden veroorzaakt door een gebrek aan machtigingen. Zorg ervoor dat uw werk ruimte wordt beveiligd door Azure Defender.
     
 3. Selecteer **servers toevoegen** om instructies te bekijken over het installeren van de log Analytics-agent. 
 
-4. Nadat u het onboarding hebt uitgevoerd, kunt u de machines bewaken onder **Compute en apps**.
+4. Nadat u het onboarding hebt uitgevoerd, kunt u de machines in de [inventaris van activa](asset-inventory.md)controleren.
 
    ![Onboard computers](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Micro soft Defender ATP-integratie inschakelen
 
-Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u de prijzen voor **Security Center**  >  **& instellingen** > klikt u op uw abonnement.
+Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u de prijzen voor **Security Center**  >  **& instellingen** > selecteert u uw abonnement.
+
 Hier ziet u de integraties die momenteel zijn ingeschakeld.
 
   ![Azure Security Center pagina instellingen voor detectie van bedreigingen met micro soft Defender ATP-integratie ingeschakeld](media/security-center-wdatp/enable-integrations.png)
 
-- Als u de servers al hebt geklaard om Azure Security Center Standard-laag te maken, hoeft u geen verdere actie te ondernemen. De servers worden automatisch door Azure Security Center op de micro soft Defender ATP-server geïmplementeerd. Het kan tot 24 uur duren voordat de onboarding is uitgevoerd.
+- Als u Azure Defender al hebt ingeschakeld, is er geen verdere actie nodig. De servers worden automatisch door Azure Security Center op de micro soft Defender ATP-server geïmplementeerd. Het kan tot 24 uur duren voordat de onboarding is uitgevoerd.
 
-- Als u de servers nooit hebt gevrijt op Azure Security Center Standard-laag, kunt u deze op de gebruikelijke manier Azure Security Center.
+- Als u de servers niet hebt geklaard voor Azure Security Center, kunt u ze op de gebruikelijke manier Azure Security Center en inschakelen.
 
 - Als u de servers hebt geklaard via micro soft Defender ATP:
   - Raadpleeg de documentatie voor meer informatie over [het niet meer vrijgeven van Server computers](https://go.microsoft.com/fwlink/p/?linkid=852906).

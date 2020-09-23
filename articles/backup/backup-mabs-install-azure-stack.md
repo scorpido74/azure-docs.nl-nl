@@ -3,12 +3,12 @@ title: Azure Backup Server installeren op Azure Stack
 description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970231"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -107,7 +107,7 @@ Voeg Azure Backup Server altijd toe aan een domein. Als u Azure Backup Server na
 
 ### <a name="set-storage-replication"></a>Opslagreplicatie instellen
 
-Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die minder duurzaam is. Meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy.md) en [lokaal redundante](../storage/common/storage-redundancy.md) opslag vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
+Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die minder duurzaam is. Meer informatie over [geo-redundante](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokaal redundante](../storage/common/storage-redundancy.md#locally-redundant-storage)en [zone-redundante](../storage/common/storage-redundancy.md#zone-redundant-storage) opslag opties vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
 
 De instelling voor opslagreplicatie bewerken:
 
@@ -217,7 +217,7 @@ Azure Backup Server deelt code met Data Protection Manager. U ziet verwijzingen 
 
     ![Azure Backup Server-vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Als uw omgeving aan de vereisten voldoet, wordt er een bericht weer gegeven waarin staat dat de computer aan de eisen voldoet. Selecteer **Volgende**.  
+    Als uw omgeving aan de vereisten voldoet, wordt er een bericht weer gegeven waarin staat dat de computer aan de eisen voldoet. Selecteer **Next**.  
 
     ![Controle van vereisten voor Azure Backup Server](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -243,7 +243,7 @@ Azure Backup Server deelt code met Data Protection Manager. U ziet verwijzingen 
 
     ![Locatie opgeven voor installatie van bestanden](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. Geef in het scherm **beveiligings instellingen** een sterk wacht woord op voor beperkte lokale gebruikers accounts en selecteer **volgende**.
 
@@ -316,7 +316,7 @@ De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azu
 >
 >
 
-## <a name="network-connectivity"></a>Netwerkconnectiviteit
+## <a name="network-connectivity"></a>Netwerkverbinding
 
 Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de ```Get-DPMCloudConnection``` cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet waar is, bestaat de verbinding, anders is er geen verbinding.
 

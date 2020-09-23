@@ -3,12 +3,12 @@ title: Kubernetes bewaking met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de prestaties van een Kubernetes-cluster kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166634"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988122"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
@@ -161,7 +161,7 @@ Azure Container Instances virtuele knoop punten waarop het Linux-besturings syst
 
 Vanuit een uitgevouwen knoop punt kunt u inzoomen op de Pod of container die op het knoop punt wordt uitgevoerd op de controller om de prestatie gegevens te bekijken die voor die controller zijn gefilterd. Selecteer de waarde onder de kolom **controller** voor het specifieke knoop punt.
 
-![Voor beeld inzoomen van het knoop punt naar de controller in de prestatie weergave](./media/container-insights-analyze/drill-down-node-controller.png)
+![Scherm afbeelding toont het inzoomen van het knoop punt naar de controller in de prestatie weergave](./media/container-insights-analyze/drill-down-node-controller.png)
 
 Selecteer controllers of containers boven aan de pagina om de status en het resource gebruik voor die objecten te controleren. Als u het geheugen gebruik wilt controleren, selecteert u in de vervolg keuzelijst **metriek** de optie **geheugen RSS** of **Geheugen werkset**. **Geheugen-RSS** wordt alleen ondersteund voor Kubernetes-versie 1,8 en hoger. Anders bekijkt u waarden voor **min &nbsp; % ** als *Nan &nbsp; % *. Dit is een numeriek gegevens type waarde die een niet-gedefinieerde of onvertegenwoordigde waarde vertegenwoordigt.
 
@@ -191,12 +191,12 @@ De informatie die wordt weer gegeven wanneer u het tabblad **knoop punten** beki
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Naam | De naam van de host. |
+| Name | De naam van de host. |
 | Status | De weer gave Kubernetes van de knooppunt status. |
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;%  | Gemiddeld knooppunt percentage op basis van percentiel tijdens de geselecteerde duur. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De gemiddelde werkelijke waarde van knoop punten op basis van percentiel tijdens de geselecteerde tijds duur. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een knoop punt. Voor peulen en containers is het de gemiddelde waarde die wordt gerapporteerd door de host. |
 | Containers | Aantal containers. |
-| Systeem | Vertegenwoordigt de tijd sinds een knoop punt is gestart of opnieuw is opgestart. |
+| Uptime | Vertegenwoordigt de tijd sinds een knoop punt is gestart of opnieuw is opgestart. |
 | Regelaar | Alleen voor containers en peulen. Hier wordt weer gegeven in welke controller het zich bevindt. Niet alle peulen bevinden zich in een controller, waardoor er mogelijk niet meer dan **n.v.t.** kan worden weer gegeven. |
 | Min &nbsp; . trend%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;% | De trend van een staaf diagram geeft het gemiddelde percentage van de percentiel waarde van de controller aan. |
 
@@ -234,13 +234,13 @@ De informatie die wordt weer gegeven wanneer u controllers bekijkt, wordt beschr
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Naam | De naam van de controller.|
+| Name | De naam van de controller.|
 | Status | De rollup-status van de containers nadat deze is uitgevoerd met de status *OK*, *beëindigd*, *mislukt*, *gestopt*of *onderbroken*. Als de container actief is, maar de status niet correct wordt weer gegeven of niet is opgehaald door de agent en al meer dan 30 minuten niet heeft gereageerd, is de status *onbekend*. Meer informatie over het status pictogram vindt u in de volgende tabel.|
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;%| Rollup gemiddelde van het gemiddelde percentage van elke entiteit voor de geselecteerde metriek en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max  | Rollup van de gemiddelde CPU-millicore of geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een pod. |
 | Containers | Het totale aantal containers voor de controller of het pod. |
 | Opnieuw wordt opgestart | Rollup van het aantal opnieuw opstarten vanuit containers. |
-| Systeem | Vertegenwoordigt de tijd sinds een container is gestart. |
+| Uptime | Vertegenwoordigt de tijd sinds een container is gestart. |
 | Knooppunt | Alleen voor containers en peulen. Hier wordt weer gegeven in welke controller het zich bevindt. |
 | Min &nbsp; . trend%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;% | De trend van een staaf diagram vertegenwoordigt de gemiddelde percentiel waarde van de controller. |
 
@@ -271,14 +271,14 @@ De informatie die wordt weer gegeven wanneer u containers bekijkt, wordt beschre
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Naam | De naam van de controller.|
+| Name | De naam van de controller.|
 | Status | De status van de containers, indien van toepassing. Meer informatie over het status pictogram vindt u in de volgende tabel.|
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;% | De rollup van het gemiddelde percentage van elke entiteit voor de geselecteerde metriek en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De rollup van de gemiddelde CPU-millicore of-geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een pod. |
 | Pod | Container waar de pod zich bevindt.|
 | Knooppunt |  Het knoop punt waar de container zich bevindt. |
 | Opnieuw wordt opgestart | Vertegenwoordigt de tijd sinds een container is gestart. |
-| Systeem | Vertegenwoordigt de tijd sinds een container is gestart of opnieuw is opgestart. |
+| Uptime | Vertegenwoordigt de tijd sinds een container is gestart of opnieuw is opgestart. |
 | Min &nbsp; . trend%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;% | De trend van een staaf diagram geeft het gemiddelde percentage van de percentiel waarde van de container aan. |
 
 De pictogrammen in het veld status geven de online statussen aan, zoals wordt beschreven in de volgende tabel.

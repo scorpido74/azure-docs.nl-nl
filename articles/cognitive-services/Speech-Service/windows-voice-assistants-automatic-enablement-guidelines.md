@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981758"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987394"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Richt lijnen voor privacy voor spraak assistenten in Windows
 
@@ -31,7 +31,7 @@ Ontwikkel aars die spraak assistenten op Windows maken, moeten duidelijke gebrui
 Windows-gebruikers kunnen de beschik baarheid van hun assistent-toepassingen in bekijken en beheren **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
- > [![privacy-app-vermelding](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Een privacyinstelling voor een Windows Voice-activerings vermelding voor een assistent-toepassing")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![Scherm afbeelding toont opties voor het beheren van Beschik baarheid van Cortana. ](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Een privacyinstelling voor een Windows Voice-activerings vermelding voor een assistent-toepassing")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 Neem contact op met micro soft om aan de slag te gaan om in aanmerking te komen voor opname in deze lijst winvoiceassistants@microsoft.com . Standaard moeten gebruikers spraak activering expliciet inschakelen voor een nieuwe assistent in **`Settings > Privacy > Voice Activation`** , waarmee een toepassing een protocol kan koppelen aan `ms-settings:privacy-voiceactivation` . Een toegestane toepassing wordt weer gegeven in de lijst zodra deze is uitgevoerd en de `Windows.ApplicationModel.ConversationalAgent` api's werden gebruikt. De instellingen voor spraak activering kunnen worden gewijzigd zodra de toepassing de microfoon toestemming van de gebruiker heeft verkregen.
 
