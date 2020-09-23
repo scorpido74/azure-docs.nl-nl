@@ -5,12 +5,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973339"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sjablonen maken en implementeren met behulp van het IntelliJ-idee
 
@@ -60,13 +60,13 @@ In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [A
 
 ## <a name="edit-and-update-an-existing-deployment"></a>Een bestaande implementatie bewerken en bijwerken
 
-1. Selecteer **implementatie bewerken** in het menu met de rechter muisknop of de weer gave eigenschappen weer geven voor. Er wordt nog een andere tabblad weergave geopend, met daarin de sjabloon en de parameter bestanden voor de implementatie op Azure. Als u deze bestanden op een lokale locatie wilt opslaan, kunt u klikken op **sjabloon bestand exporteren** of **parameter bestanden exporteren**.
+1. Selecteer **implementatie bewerken** in het menu met de rechter muisknop of de weer gave eigenschappen weer geven voor. Er wordt nog een andere tabblad weergave geopend, met daarin de sjabloon en de parameter bestanden voor de implementatie op Azure. Als u deze bestanden op een lokale locatie wilt opslaan, kunt u klikken op **sjabloon bestand exporteren**  of **parameter bestanden exporteren**.
 
     ![Resource Manager-sjabloon implementatie bewerken](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
 1. U kunt de twee bestanden op deze pagina bewerken en de wijzigingen in azure implementeren. Hier wijzigen we de waarde van **storageAccountType** in parameter bestanden van `Standard_LRS` tot `Standard_GRS` . Klik op **Update-implementatie** onder en bevestig de update.
 
-    ![Resource Manager-sjabloon implementatie bewerken](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![Scherm afbeelding toont de Resource Manager-sjabloon met de prompt update-implementatie weer gegeven.](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. Nadat de update-implementatie is voltooid, kunt u controleren op de portal waar het gemaakte opslag account is gewijzigd `Standard_GRS` .
 

@@ -1,15 +1,15 @@
 ---
 title: Recovery Services kluizen maken en configureren
-description: In dit artikel vindt u informatie over het maken en configureren van Recovery Services kluizen waarin de back-ups en herstel punten worden opgeslagen.
+description: In dit artikel vindt u informatie over het maken en configureren van Recovery Services kluizen waarin de back-ups en herstel punten worden opgeslagen. Meer informatie over het gebruik van de bewerking voor het herstellen van meerdere regio's om te herstellen in een secundaire regio.
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177190"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981484"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -30,34 +30,45 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
 
 1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
 
-     ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - Als u Azure als een primair eind punt voor back-upopslag gebruikt, wordt u aangeraden de standaard **geo-redundante** instelling te gebruiken.
    - Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt.
-   - Meer informatie over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie.
+   - Meer informatie over [geo](../storage/common/storage-redundancy.md#geo-redundant-storage) en [lokale](../storage/common/storage-redundancy.md#locally-redundant-storage) redundantie.
+   - Als u de beschik baarheid van gegevens zonder downtime in een regio nodig hebt, moet u de gegevens locatie garanderen en vervolgens [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)kiezen.
 
 >[!NOTE]
 >De instellingen voor de opslag replicatie voor de kluis zijn niet relevant voor een back-up van Azure file share, omdat de huidige oplossing moment opname is en er geen gegevens worden overgebracht naar de kluis. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.
 
 ## <a name="set-cross-region-restore"></a>Meerdere regio's herstellen instellen
 
-Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](../best-practices-availability-paired-regions.md). Met deze optie kunt u:
+Met de herstel optie **Cross Region Restore (CRR)** kunt u gegevens herstellen in een secundaire, [gekoppelde Azure-regio](../best-practices-availability-paired-regions.md).
+
+Het ondersteunt de volgende gegevens bronnen:
+
+- Azure-VM's
+- SQL-data bases die worden gehost op virtuele machines van Azure
+- SAP HANA-data bases die worden gehost op virtuele machines van Azure
+
+Met de functie voor het terugzetten van meerdere regio's kunt u:
 
 - oefeningen uitvoeren als er een controle-of nalevings vereiste is
-- herstel de virtuele machine of de schijf als er sprake is van een nood geval in de primaire regio.
+- de gegevens herstellen als er sprake is van een nood geval in de primaire regio
+
+Wanneer u een virtuele machine herstelt, kunt u de virtuele machine of de schijf herstellen. Als u de data bases van SQL/SAP HANA herstelt die worden gehost op virtuele machines van Azure, kunt u data bases of hun bestanden herstellen.
 
 Als u deze functie wilt kiezen, selecteert u de optie voor het **terugzetten van meerdere regio's inschakelen** in het deel venster **back-upconfiguratie** .
 
-Voor dit proces gelden de prijs implicaties voor het opslag niveau.
+Aangezien dit proces zich op het opslag niveau bevindt, zijn er [prijs implicaties](https://azure.microsoft.com/pricing/details/backup/).
 
 >[!NOTE]
 >Voordat u begint:
 >
 >- Bekijk de [ondersteunings matrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
->- De functie voor het terugzetten van meerdere regio's (CRR) wordt nu weer gegeven in alle open bare Azure-regio's.
+>- De functie Cross Region Restore (CRR) wordt nu weer gegeven in alle open bare Azure-regio's en soevereine Clouds.
 >- CRR is een opt-in-functie op kluis niveau voor elke GRS-kluis (standaard uitgeschakeld).
 >- Na het inbrengen kan het tot 48 uur duren voordat de back-upitems beschikbaar zijn in secundaire regio's.
->- Momenteel wordt CRR alleen ondersteund voor het type back-upbeheer. ARM Azure VM (klassieke Azure-VM wordt niet ondersteund).  Wanneer extra beheer typen CRR ondersteunen, worden ze **automatisch** Inge schreven.
+>- Momenteel wordt CRR voor Azure-Vm's alleen ondersteund voor Azure Resource Manager Azure-Vm's. Klassieke Azure-Vm's worden niet ondersteund.  Wanneer extra beheer typen CRR ondersteunen, worden ze **automatisch** Inge schreven.
 >- Het terugzetten van meerdere regio's kan op dit moment niet worden teruggedraaid naar GRS of LRS zodra de beveiliging voor de eerste keer wordt gestart.
 
 ### <a name="configure-cross-region-restore"></a>Herstel van meerdere regio's configureren
@@ -69,15 +80,13 @@ Een kluis die is gemaakt met GRS-redundantie bevat de optie voor het configurere
 1. Ga in de portal naar Recovery Services kluis > instellingen > eigenschappen.
 2. Selecteer de optie **voor het terugzetten van meerdere regio's in deze kluis inschakelen** om de functionaliteit in te scha kelen.
 
-   ![Voordat u Restore voor meerdere regio's inschakelen inschakelt in deze kluis](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Het terugzetten van meerdere regio's inschakelen](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![Nadat u het terugzetten van meerdere regio's inschakelen hebt geselecteerd in deze kluis](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+Zie deze artikelen voor meer informatie over back-up en herstel met CRR:
 
-Meer informatie over het [weer geven van back-upitems in de secundaire regio](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
-
-Meer informatie over [het herstellen van de secundaire regio](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
-
-Meer informatie over het [bewaken van herstel taken van secundaire regio's](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+- [Meerdere regio's herstellen voor Azure-Vm's](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Meerdere regio's herstellen voor SQL-data bases](restore-sql-database-azure-vm.md#cross-region-restore)
+- [Meerdere regio's herstellen voor SAP HANA-data bases](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>Versleutelings instellingen instellen
 

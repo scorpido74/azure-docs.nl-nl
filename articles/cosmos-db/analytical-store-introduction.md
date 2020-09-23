@@ -4,21 +4,21 @@ description: Meer informatie over Azure Cosmos DB transactionele (op rijen gebas
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: fdaffef6c682bd1f9c81f14af6cd949816f7555a
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900274"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
 > [!IMPORTANT]
 > Azure Cosmos DB Analytical Store is momenteel beschikbaar als preview-versie. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB Analytical Store is een volledig geïsoleerd kolom Archief voor het inschakelen van grootschalige analyses op basis van operationele gegevens in uw Azure Cosmos DB, zonder dat dit invloed heeft op uw transactionele werk belastingen.  
+Azure Cosmos DB Analytical Store is een volledig geïsoleerde column Store voor het inschakelen van grootschalige analyses op basis van operationele gegevens in uw Azure Cosmos DB, zonder dat dit invloed heeft op uw transactionele werk belastingen.  
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Uitdagingen met grootschalige analyses op operationele gegevens
 
@@ -34,7 +34,7 @@ Azure Cosmos DB Analytical Store verhelpt de complexiteits-en latentie uitdaging
 
 Met de koppeling Azure Synapse kunt u nu geen ETL-HTAP-oplossingen bouwen door rechtstreeks een koppeling te maken met Azure Cosmos DB Analytical Store van Synapse Analytics. Zo kunt u bijna realtime grootschalige analyses uitvoeren op uw operationele gegevens.
 
-## <a name="analytical-store-details"></a>Details van analytische opslag
+## <a name="features-of-analytical-store"></a>Functies van de analytische opslag 
 
 Wanneer u het analytische archief in een Azure Cosmos DB container inschakelt, wordt een nieuwe kolom opgeslagen die intern wordt gemaakt op basis van de operationele gegevens in de container. Dit kolom archief wordt afzonderlijk van het rij-georiënteerde transactionele Archief voor die container bewaard. De toevoegingen, updates en verwijderingen voor uw operationele gegevens worden automatisch gesynchroniseerd naar de analytische opslag. U hebt de wijzigings feed of ETL niet nodig om de gegevens te synchroniseren.
 
@@ -72,33 +72,92 @@ Door gebruik te maken van horizontale partitionering kan Azure Cosmos DB transac
 
 Azure Cosmos DB transactionele Store is schema-neutraal en biedt u de mogelijkheid om uw transactionele toepassingen te herhalen zonder schema-of index beheer te hoeven afhandelen. Azure Cosmos DB Analytical Store daarentegen is geschematiseerde om te optimaliseren voor analytische query prestaties. Met de functie Automatische synchronisatie beheert Azure Cosmos DB het schema dezicht over de meest recente updates van het transactionele archief.  Het beheert ook de schema weergave in de analytische out-of-the-box, inclusief het verwerken van geneste gegevens typen.
 
-In het geval van een schema-evolutie, waarbij nieuwe eigenschappen na verloop van tijd worden toegevoegd, presenteert de analytische opslag automatisch een samenvoegings schema voor alle historische schema's in het transactionele archief.
+Naarmate uw schema wordt gegroeid en nieuwe eigenschappen worden toegevoegd na verloop van tijd, presenteert de analytische opslag automatisch een samenvoegings schema voor alle historische schema's in het transactionele archief.
 
-Als alle operationele gegevens in Azure Cosmos DB een goed gedefinieerd schema voor analyse volgen, wordt het schema automatisch afgeleid en correct weer gegeven in de analytische opslag. Als het goed gedefinieerde schema voor analyse, zoals hieronder gedefinieerd, wordt geschonden door bepaalde items, worden deze niet opgenomen in de analytische opslag. Als u scenario's hebt geblokkeerd vanwege een goed gedefinieerd schema voor analyse definitie, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
+##### <a name="schema-constraints"></a>Schema beperkingen
 
-Een goed gedefinieerd schema voor analyse is gedefinieerd met de volgende overwegingen:
+De volgende beperkingen zijn van toepassing op de operationele gegevens in Azure Cosmos DB wanneer u de analyse opslag inschakelt om het schema op de juiste wijze automatisch af te leiden en te representeren:
 
-* Een eigenschap heeft altijd hetzelfde type over meerdere items
-
-  * `{"a":123} {"a": "str"}`Heeft bijvoorbeeld geen goed gedefinieerd schema, omdat dit `"a"` soms een teken reeks is en soms een getal. 
+* U kunt Maxi maal 200 eigenschappen hebben voor elk genest niveau in het schema en een maximale geneste diepte van 5.
   
-    In dit geval registreert de analytische opslag het gegevens type van `“a”` als het gegevens type van `“a”` in het eerste item in de levens duur van de container. Items waarvan het gegevens type `“a”` verschilt, worden niet opgenomen in de analytische opslag.
+  * Een item met 201-eigenschappen op het hoogste niveau voldoet niet aan deze beperking en wordt dus niet weer gegeven in de analytische opslag.
+  * Een item met meer dan vijf geneste niveaus in het schema voldoet ook niet aan deze beperking en wordt dus niet weer gegeven in de analytische opslag. Het volgende item voldoet bijvoorbeeld niet aan de vereiste:
+
+     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+
+* Eigenschaps namen moeten uniek zijn wanneer het hoofdletter gevoelig is. De volgende items voldoen bijvoorbeeld niet aan deze beperking en worden dus niet weer gegeven in het analytische archief:
+
+  `{"Name": "fred"} {"name": "john"}` – "Naam" en "naam" zijn hetzelfde als deze in een niet-hoofdletter gevoelige manier worden vergeleken.
+
+##### <a name="schema-representation"></a>Schema representatie
+
+Er zijn twee modi voor schema weergave in de analytische opslag. Deze modi hebben een afweging tussen de eenvoud van een kolom weergave, het afhandelen van polymorphing-schema's en eenvoud van query-ervaring:
+
+* Goed gedefinieerde schema representatie
+* Schema representatie van volledig beeld kwaliteit
+
+> [!NOTE]
+> Voor SQL-api's (core-API-accounts), als analytische opslag is ingeschakeld, is de standaard schema weergave in het analytische archief goed gedefinieerd. Overwegende dat voor Azure Cosmos DB-API voor MongoDB-accounts de standaard schema representatie in de analytische opslag een volledig beeld van een schema weergave is. Als u scenario's hebt waarvoor een andere schema weergave is vereist dan de standaard aanbieding voor elk van deze Api's, neem dan contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com) om het in te scha kelen.
+
+**Goed gedefinieerde schema representatie**
+
+Met de goed gedefinieerde schema representatie maakt u een eenvoudige tabellaire weer gave van de schema-neutraal gegevens in het transactionele archief. De goed gedefinieerde schema weergave heeft de volgende overwegingen:
+
+* Een eigenschap heeft altijd hetzelfde type over meerdere items.
+
+  * `{"a":123} {"a": "str"}`Heeft bijvoorbeeld geen goed gedefinieerd schema, omdat dit `"a"` soms een teken reeks is en soms een getal. In dit geval registreert de analytische opslag het gegevens type van `“a”` als het gegevens type van `“a”` in het eerste item in de levens duur van de container. Items waarvan het gegevens type `“a”` verschilt, worden niet opgenomen in de analytische opslag.
   
     Deze voor waarde is niet van toepassing op null-eigenschappen. `{"a":123} {"a":null}`Is bijvoorbeeld nog steeds goed gedefinieerd.
 
-* Matrix typen moeten één herhaald type bevatten
+* Matrix typen moeten één herhaald type bevatten.
 
-  * `{"a": ["str",12]}`Is bijvoorbeeld geen goed gedefinieerd schema, omdat de matrix een combi natie van integer-en teken reeks typen bevat
+  * `{"a": ["str",12]}`Is bijvoorbeeld geen goed gedefinieerd schema, omdat de matrix een combi natie van integer-en teken reeks typen bevat.
 
-* Er zijn Maxi maal 200 eigenschappen voor een nest niveau van een schema en een maximale geneste diepte van 5
+> [!NOTE]
+> Als de Azure Cosmos DB Analytical Store de goed gedefinieerde schema weergave volgt en de bovenstaande specificatie wordt geschonden door bepaalde items, worden deze items niet opgenomen in de analytische opslag.
 
-  * Een item met 201-eigenschappen op het hoogste niveau heeft geen goed gedefinieerd schema.
+**Schema representatie van volledig beeld kwaliteit**
 
-  * Een item met meer dan vijf geneste niveaus in het schema heeft ook geen goed gedefinieerd schema. Bijvoorbeeld: `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+De weer gave van het schema voor volledig beeld kwaliteit is ontworpen voor het afhandelen van de volledige breedte van polymorfisme-schema's in de neutraal operationele gegevens. In deze schema representatie worden er geen items uit de analytische opslag verwijderd, zelfs niet als de goed gedefinieerde schema beperkingen (die geen gemengde gegevens type velden of matrices voor gemengde gegevens typen zijn) worden geschonden.
 
-* Eigenschapnamen zijn uniek wanneer ze in een niet-hoofdletter gevoelige manier worden vergeleken
+Dit wordt bereikt door de blad eigenschappen van de operationele gegevens in de analytische opslag te vertalen met DISTINCT-kolommen op basis van het gegevens type van de waarden in de eigenschap. De namen van de Leaf-eigenschappen worden uitgebreid met gegevens typen als achtervoegsel in het analytische opslag schema, zodat ze query's zonder dubbel zinnigheid kunnen zijn.
 
-  * De volgende items hebben bijvoorbeeld geen goed gedefinieerd schema `{"Name": "fred"} {"name": "john"}` : `"Name"` en `"name"` zijn hetzelfde als in vergelijking met een niet-hoofdletter gevoelige manier
+Laten we bijvoorbeeld het volgende voorbeeld document in het transactionele archief volgen:
+
+```json
+{
+name: "John Doe",
+age: 32,
+profession: "Doctor",
+address: {
+  streetNo: 15850,
+  streetName: "NE 40th St.",
+  zip: 98052
+},
+salary: 1000000
+}
+```
+
+De blad eigenschap `streetName` binnen het geneste object `address` wordt weer gegeven in het analytische-archief schema als kolom `address.object.streetName.int32` . Het gegevens type wordt toegevoegd als een achtervoegsel aan de kolom. Op deze manier wordt, als een ander document wordt toegevoegd aan de transactionele Store, waar de waarde van de Leaf `streetNo` -eigenschap ' 123 ' is (Let op een teken reeks), wordt het schema van de analytische opslag automatisch gegroeid zonder het type van een eerder geschreven kolom te wijzigen. Een nieuwe kolom die wordt toegevoegd aan de analytische opslag, `address.object.streetName.string` waar deze waarde van "123" wordt opgeslagen.
+
+**Het gegevens type voor de toewijzing van het achtervoegsel**
+
+Hier volgt een overzicht van alle eigenschaps gegevens typen en de bijbehorende achtervoegsels in het analytische archief:
+
+|Oorspronkelijk gegevens type  |Achtervoegsel  |Voorbeeld  |
+|---------|---------|---------|
+| Dubbel |  ".float64" |    24,99|
+| Matrix | ". matrix" |    ["a", "b"]|
+|Binair | '. binary ' |0|
+|Boolean-waarde    | ". BOOL"   |Waar|
+|Int32  | ". Int32"  |123|
+|Int64  | ". int64"  |255486129307|
+|Null   | ". null"   | null|
+|Tekenreeks|    ". teken reeks" | "ABC"|
+|Tijdstempel |    '. time stamp ' |  Tijds tempel (0, 0)|
+|DateTime   |". datum"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|ObjectId   |'. objectId '    | ObjectId ("5f3f7b59330ec25c132623a2")|
+|Document   |'. object ' |    {"a": "a"}|
 
 ### <a name="cost-effective-archival-of-historical-data"></a>Rendabele archivering van historische gegevens
 
@@ -155,15 +214,17 @@ De analyse-TTL voor een container wordt ingesteld met behulp van de `AnalyticalS
 * Indien aanwezig en de waarde is ingesteld op een positief getal ' n ': items verlopen vanaf de ' n ' seconden van het analytische archief na de laatste wijziging in het transactionele archief. Deze instelling kan worden gebruikt als u uw operationele gegevens gedurende een beperkte periode wilt bewaren in de analytische opslag, ongeacht de retentie van de gegevens in het transactionele archief
 
 Enkele punten om in overweging te nemen:
-*   Nadat de analytische opslag is ingeschakeld met een analytische TTL-waarde, kan deze later worden bijgewerkt naar een andere geldige waarde 
-*   Hoewel transactionele TTL kan worden ingesteld op container-of item niveau, kan analytische TTL alleen worden ingesteld op het niveau van de container
-*   U kunt uw operationele gegevens in het analytische archief langer bewaren door de analytische TTL >= transactionele TTL op het niveau van de container in te stellen
-*   De analytische opslag kan worden gemaakt om het transactionele archief te spie gelen door analytische TTL = transactionele TTL in te stellen
 
-Wanneer u anaytical-archief inschakelt in een container:
- * met behulp van Azure Portal is de analyse-TTL ingesteld op de standaard waarde-1. U kunt deze waarde wijzigen in ' n ' seconden door te navigeren naar container instellingen onder Data Explorer. 
+*   Nadat de analytische opslag is ingeschakeld met een analytische TTL-waarde, kan deze later worden bijgewerkt naar een andere geldige waarde. 
+*   Hoewel transactionele TTL kan worden ingesteld op container-of item niveau, kan analytische TTL alleen op het container niveau worden ingesteld.
+*   U kunt uw operationele gegevens in het analytische archief langer bewaren door de analytische TTL >= transactionele TTL op het niveau van de container in te stellen.
+*   De analytische opslag kan worden gemaakt om het transactionele archief te spie gelen door analytische TTL = transactionele TTL in te stellen.
+
+Wanneer u het analytische archief op een container inschakelt:
+
+* Van de Azure Portal is de optie analyse-TTL ingesteld op de standaard waarde-1. U kunt deze waarde wijzigen in ' n ' seconden door te navigeren naar container instellingen onder Data Explorer. 
  
- * met Azure SDK of Power shell of CLI kunt u de analytische TTL inschakelen door deze in te stellen op-1 of n. 
+* Vanuit de Azure SDK of Power shell of CLI kunt u de optie voor de analytische TTL inschakelen door deze in te stellen op-1 of n. 
 
 Zie [analytische TTL configureren voor een container](configure-synapse-link.md#create-analytical-ttl)voor meer informatie.
 

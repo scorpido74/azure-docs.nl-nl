@@ -15,21 +15,28 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Python-SDK
+    - name: Python (dag 1)
       expanded: true
       items:
-        - name: Uw eerste ML-experiment maken
-          items:
-            - name: 1. Werkruimte en dev-omgeving instellen
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. Uw eerste model trainen
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. Lokale computer instellen
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hallo wereld
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. Een model trainen
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. Uw eigen gegevens meenemen
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Jupyter Notebooks
+      expanded: true
+      items:
         - name: Afbeeldingsclassificatie (MNIST-gegevens)
           items:
-            - name: 1. Een model trainen
+            - name: 1. Een rekenproces instellen
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Een model trainen
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. Een model implementeren
+            - name: 3. Een model implementeren
               href: tutorial-deploy-models-with-aml.md
         - name: Regressie met geautomatiseerde ML (gegevens van taxi's in NYC)
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Concepten
   items:
-    - name: Enterprise- versus Basic-edities
-      href: concept-editions.md
     - name: Kosten voorspellen en beheren
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: Veilige codering
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: Naleving controleren en beheren
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: Verantwoordelijke ML
       items:
         - name: Overzicht van verantwoordelijke ML
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: Toegang tot gegevens
           items:
-            - name: Verbinding maken met Azure Storage
+            - name: Verbinding maken met Azure-opslag (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Gegevens uit gegevensarchief ophalen
+            - name: Gegevens uit gegevensarchief ophalen (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: Verbinding maken met gegevens (UI)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: Gegevens beheren en verbruiken
           items:
             - name: Trainen met gegevenssets
@@ -448,6 +459,9 @@
         - name: Profielmodellen
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: Designer-modellen implementeren
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (Preview) implementatie zonder code
           displayName: no code
           href: how-to-deploy-no-code-deployment.md

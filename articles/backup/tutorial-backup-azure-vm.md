@@ -4,12 +4,12 @@ description: In deze zelfstudie wordt uitgebreid ingegaan op het maken van back-
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 53a5df430a3ea57201ecb19bac68ef9f073beb14
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980969"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Back-ups maken van Azure-VM's met behulp van PowerShell
 
@@ -48,7 +48,7 @@ In deze zelfstudie leert u het volgende:
 [Een Recovery Services-kluis](backup-azure-recovery-services-vault-overview.md) is een logische container waarin de back-upgegevens voor beveiligde resources worden opgeslagen, zoals virtuele Azure-machines. Wanneer en back-uptaak wordt uitgevoerd, wordt er binnen de Recovery Services-kluis een herstelpunt gemaakt. U kunt vervolgens een van deze herstelpunten gebruiken om gegevens voor dat tijdstip te herstellen.
 
 * In deze zelfstudie maakt u de kluis in dezelfde resourcegroep en op dezelfde locatie als de VM waarvan u een back-up wilt maken.
-* Azure Backup verwerkt automatisch de opslag voor back-upgegevens. De kluis maakt standaard gebruik van [GRS (geografisch redundante opslag)](../storage/common/storage-redundancy.md). Geografisch redundantie zorgt ervoor dat uw back-upgegevens worden gerepliceerd naar een secundaire Azure-regio, honderden kilometers verwijderd van de primaire regio.
+* Azure Backup verwerkt automatisch de opslag voor back-upgegevens. De kluis maakt standaard gebruik van [GRS (geografisch redundante opslag)](../storage/common/storage-redundancy.md#geo-redundant-storage). Geografisch redundantie zorgt ervoor dat uw back-upgegevens worden gerepliceerd naar een secundaire Azure-regio, honderden kilometers verwijderd van de primaire regio.
 
 Maak het account als volgt:
 

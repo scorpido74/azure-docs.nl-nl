@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981068"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -27,14 +27,6 @@ Voor Visual Studio stelt u de `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` omgev
 In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` Switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces` . Op een Mac kan de map *temp* worden gevonden door `echo $TMPDIR` vanuit een Terminal venster te worden uitgevoerd. Op een Linux-computer is de map *temp* doorgaans `/tmp` . Controleer bovendien of logboek registratie is ingeschakeld in uw [Azure cli-configuratie bestand](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount*, die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
-
-## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Veelvoorkomende problemen bij het gebruik van lokaal proces met Kubernetes
-
-### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>De oorspronkelijke configuratie van de implementatie op het cluster kan niet worden hersteld
-
-Wanneer een lokaal proces met Kubernetes wordt gebruikt en het lokale proces met Kubernetes-client plotseling vastloopt of onverwacht wordt beëindigd, kan de service die lokaal proces met Kubernetes wordt omgeleid, mogelijk niet worden hersteld naar de oorspronkelijke status voordat het lokale proces met Kubernetes is verbonden.
-
-U kunt dit probleem oplossen door de service opnieuw te implementeren in uw cluster.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Veelvoorkomende problemen bij het inschakelen van Azure dev Spaces
 
@@ -265,7 +257,7 @@ Deze fout treedt op omdat Azure dev Spaces momenteel geen builds van meerdere fa
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Netwerk verkeer wordt niet doorgestuurd naar uw AKS-cluster bij het verbinden van uw ontwikkel computer
 
-Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](https://code.visualstudio.com/docs/containers/local-process-kubernetes), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
+Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
 
 Wanneer u uw ontwikkel machine verbindt met uw AKS-cluster, stuurt Azure dev Spaces het netwerk verkeer tussen uw AKS-cluster en uw ontwikkel computer door het bestand van uw ontwikkel machine te wijzigen `hosts` . Met Azure dev Spaces maakt u een vermelding in het `hosts` adres van de Kubernetes-service die u vervangt als een hostnaam. Dit item wordt gebruikt bij het door sturen van poorten om het netwerk verkeer tussen uw ontwikkel computer en het AKS-cluster te omleiden. Als een service op uw ontwikkel computer een conflict veroorzaakt met de poort van de Kubernetes-service die u vervangt, kunnen Azure-ontwikkel ruimten geen netwerk verkeer door sturen voor de Kubernetes-service. De *Windows BranchCache* -service is bijvoorbeeld doorgaans gebonden aan *0.0.0.0:80*, wat conflicten veroorzaakt voor poort 80 op alle lokale IP-adressen.
 

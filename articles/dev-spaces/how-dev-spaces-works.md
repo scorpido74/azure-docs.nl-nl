@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981278"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
 
@@ -22,9 +22,9 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 Azure dev Spaces vermindert de inspanningen voor het ontwikkelen, testen en herhalen van uw Kubernetes-toepassing in de context van uw AKS-cluster. Met deze reductie in inspanningen kunnen ontwikkel aars zich richten op de bedrijfs logica van hun toepassingen en hun services niet configureren om te worden uitgevoerd in Kubernetes.
 
-### <a name="local-process-with-kubernetes"></a>Lokaal proces met Kubernetes
+### <a name="bridge-to-kubernetes"></a>Brug naar Kubernetes
 
-Met een lokaal proces met Kubernetes kunt u uw ontwikkel computer verbinden met uw Kubernetes-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Azure dev Spaces omleidt verkeer tussen uw verbonden cluster door een pod uit te voeren in uw cluster dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en services die in uw cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde cluster bevonden. Zie [How Local process with Kubernetes][how-it-works-local-process-kubernetes](Engelstalig) voor meer informatie over het verbinden van uw ontwikkel computer met een Kubernetes-cluster.
+Met Bridge to Kubernetes kunt u uw ontwikkel computer verbinden met uw Kubernetes-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Brug naar Kubernetes omleidt verkeer tussen uw verbonden cluster door een pod uit te voeren op uw cluster dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en services die in uw cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde cluster bevonden. Zie [hoe Bridge to Kubernetes werkt][how-it-works-bridge-to-kubernetes]voor meer informatie over het verbinden van uw ontwikkel computer met een Kubernetes-cluster.
 
 ### <a name="run-your-code-in-aks"></a>Uw code uitvoeren in AKS
 
@@ -47,8 +47,8 @@ U kunt ook GitHub-acties met Azure-ontwikkel ruimten gebruiken om wijzigingen in
 Zie [uw ontwikkel computer verbinden met een AKS-cluster][connect]om aan de slag te gaan met het verbinden van uw lokale ontwikkel computer met uw AKS-cluster.
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

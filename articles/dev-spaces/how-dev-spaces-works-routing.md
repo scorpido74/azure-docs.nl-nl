@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces en hoe route ring werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981309"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hoe route ring werkt met Azure dev Spaces
 
@@ -64,11 +64,7 @@ Wanneer *azureuser*wordt gebruikt, worden alle aanvragen naar *servicea* doorges
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor enkele voor beelden van hoe Azure dev Spaces route ring gebruiken om snel te kunnen iteratieen en te ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes], [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging]en [github acties & Azure Kubernetes-service][pr-flow].
+Voor een voor beeld van hoe Azure dev Spaces route ring gebruiken om snel te kunnen iteratieen en te ontwikkelen, raadpleegt u [hoe u uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
 
 
-[helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
-[pr-flow]: how-to/github-actions.md
-[troubleshooting]: troubleshooting.md

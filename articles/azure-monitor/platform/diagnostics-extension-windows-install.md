@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069575"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974533"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>De Windows Azure Diagnostics-extensie (WAD) installeren en configureren
 [Azure Diagnostics-extensie](diagnostics-extension-overview.md) is een agent in azure monitor die bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele Azure-machines en andere reken bronnen verzamelt. Dit artikel bevat informatie over het installeren en configureren van de Windows diagnostische uitbrei ding en een beschrijving van de manier waarop de gegevens worden opgeslagen in en Azure Storage-account.
@@ -51,7 +51,7 @@ U kunt de diagnostische extensie installeren en configureren op een afzonderlijk
 
 6. Selecteer op het tabblad **Logboeken** de logboeken die u wilt verzamelen van de virtuele machine. Logboeken kunnen worden verzonden naar opslag-of event hubs, maar niet naar Azure Monitor. Gebruik de [log Analytics-agent](log-analytics-agent.md) om gast logboeken te verzamelen in azure monitor.
 
-   ![Logboeken](media/diagnostics-extension-windows-install/logs.png)
+   ![Scherm afbeelding toont het tabblad logboeken met verschillende logboeken die voor een virtuele machine zijn geselecteerd.](media/diagnostics-extension-windows-install/logs.png)
 
 7. Geef op het tabblad **crash dumps** de gewenste processen op voor het verzamelen van geheugen dumps na een crash. De gegevens worden naar het opslag account geschreven voor de diagnostische instelling en u kunt desgewenst een BLOB-container opgeven.
 
@@ -59,7 +59,7 @@ U kunt de diagnostische extensie installeren en configureren op een afzonderlijk
 
 8. Geef op het tabblad **sinks** op of de gegevens naar andere locaties dan Azure Storage moeten worden verzonden. Als u **Azure monitor**selecteert, worden de prestatie gegevens van de gast naar Azure monitor metrieken verzonden. U kunt de Sink voor Event hubs niet configureren met behulp van de Azure Portal.
 
-   ![Wastafel](media/diagnostics-extension-windows-install/sinks.png)
+   ![Scherm afbeelding toont het tabblad sinks met de optie diagnostische gegevens verzenden naar Azure Monitor ingeschakeld.](media/diagnostics-extension-windows-install/sinks.png)
    
    Als u geen door het systeem toegewezen identiteit hebt ingeschakeld die voor uw virtuele machine is geconfigureerd, ziet u mogelijk de volgende waarschuwing wanneer u een configuratie opslaat met de Sink Azure Monitor. Klik op de banner om de door het systeem toegewezen identiteit in te scha kelen.
    
@@ -67,7 +67,7 @@ U kunt de diagnostische extensie installeren en configureren op een afzonderlijk
 
 9. In de **agent**kunt u het opslag account wijzigen, het schijf quotum instellen en opgeven of Logboeken met diagnostische infra structuur moeten worden verzameld.  
 
-   ![Agent](media/diagnostics-extension-windows-install/agent.png)
+   ![Scherm afbeelding toont het tabblad agent met de optie om het opslag account in te stellen.](media/diagnostics-extension-windows-install/agent.png)
 
 10. Klik op **Opslaan** om de configuratie op te slaan. 
 
@@ -192,7 +192,7 @@ Zie ook [Power shell gebruiken om Azure Diagnostics in te scha kelen op een virt
 De volgende tabel geeft een lijst van de verschillende typen gegevens die worden verzameld uit de diagnostische uitbrei ding en of ze worden opgeslagen als een tabel of BLOB. De gegevens die zijn opgeslagen in tabellen kunnen ook worden opgeslagen in blobs, afhankelijk van de [instelling para](diagnostics-extension-schema-windows.md#publicconfig-element) in uw open bare configuratie.
 
 
-| Gegevens | Opslagtype | Beschrijving |
+| Gegevens | Opslagtype | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabel | Diagnostische monitor-en configuratie wijzigingen. |
 | WADDirectoriesTable | Tabel | Mappen die door de diagnostische monitor worden bewaakt.  Dit zijn onder andere IIS-logboeken, IIS-aanvraag logboeken en aangepaste directory's.  De locatie van het BLOB-logboek bestand wordt opgegeven in het container veld en de naam van de BLOB bevindt zich in het veld RelativePath.  Het veld AbsolutePath geeft de locatie en de naam van het bestand aan zoals het aanwezig is op de virtuele Azure-machine. |

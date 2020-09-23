@@ -1,6 +1,6 @@
 ---
 title: Resource parameters voor Azure Monitor werkmappen
-description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
+description: Meer informatie over het gebruik van resource parameters om het verzamelen van resources in werkmappen toe te staan. Gebruik de resource parameters om het bereik in te stellen waaruit de gegevens moeten worden opgehaald.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504988"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972852"
 ---
 # <a name="workbook-resource-parameters"></a>Resource parameters voor werkmap
 
@@ -27,12 +27,12 @@ Waarden van resource-kiezers kunnen afkomstig zijn uit de context van de werkmap
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`Applications`
-    2. Parameter type:`Resource picker`
-    3. Vereist:`checked`
-    4. Meerdere selecties toestaan:`checked`
-5. Gegevens ophalen uit:`Workbook Resources`
-6. Alleen resource typen toevoegen:`Application Insights`
+    1. Parameter naam: `Applications`
+    2. Parameter type: `Resource picker`
+    3. Vereist: `checked`
+    4. Meerdere selecties toestaan: `checked`
+5. Gegevens ophalen uit: `Workbook Resources`
+6. Alleen resource typen toevoegen: `Application Insights`
 7. Kies opslaan op de werk balk om de para meter te maken.
 
 ![Afbeelding van het maken van een resource parameter met werkmap resources](./media/workbooks-resources/resource-create.png)
@@ -42,13 +42,13 @@ Waarden van resource-kiezers kunnen afkomstig zijn uit de context van de werkmap
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`Applications`
-    2. Parameter type:`Resource picker`
-    3. Vereist:`checked`
-    4. Meerdere selecties toestaan:`checked`
-5. Gegevens ophalen uit:`Query`
-    1. Query type:`Azure Resource Graph`
-    2. Geabonneerd`Use default subscriptions`
+    1. Parameter naam: `Applications`
+    2. Parameter type: `Resource picker`
+    3. Vereist: `checked`
+    4. Meerdere selecties toestaan: `checked`
+5. Gegevens ophalen uit: `Query`
+    1. Query type: `Azure Resource Graph`
+    2. Geabonneerd `Use default subscriptions`
     3. Voeg dit fragment toe aan het besturings element query
     ```kusto
     where type == 'microsoft.insights/components'
@@ -68,11 +68,11 @@ Waarden van resource-kiezers kunnen afkomstig zijn uit de context van de werkmap
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`Applications`
-    2. Parameter type:`Resource picker`
-    3. Vereist:`checked`
-    4. Meerdere selecties toestaan:`checked`
-5. Gegevens ophalen uit:`JSON`
+    1. Parameter naam: `Applications`
+    2. Parameter type: `Resource picker`
+    3. Vereist: `checked`
+    4. Meerdere selecties toestaan: `checked`
+5. Gegevens ophalen uit: `JSON`
     1. Voeg dit JSON-fragment toe in het besturings element voor inhoud
     ```json
     [

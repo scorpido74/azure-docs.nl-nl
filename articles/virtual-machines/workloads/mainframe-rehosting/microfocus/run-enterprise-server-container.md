@@ -1,6 +1,6 @@
 ---
 title: Micro Focus Enter prise Server 5,0 uitvoeren in een docker-container in azure | Microsoft Docs
-description: Host uw IBM z/OS mainframe-workloads met behulp van de micro focus ontwikkelings-en test omgeving op virtuele machines van Azure (Vm's).
+description: In dit artikel leert u hoe u micro focus Enter prise Server 5,0 kunt uitvoeren in een docker-container op Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083460"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974055"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Micro Focus Enter prise Server 5,0 uitvoeren in een docker-container in azure
 
@@ -44,7 +44,7 @@ Bekijk de volgende vereisten voordat u aan de slag gaat:
 
 1.  Beveilig de media van het \_ bestand server \_ dockerfiles \_ 5,0 \_windows.zip. Beveilig het licentie bestand ES-docker-Prod-XXXXXXXX. mflic (vereist om de docker-installatie kopieën te bouwen).
 
-2.  Maak de virtuele machine. Hiertoe opent u Azure Portal, selecteert u **een resource maken** in het menu linksboven en filtert u op *Windows Server-besturings systeem*. Selecteer in de resultaten **Windows Server.** Selecteer in het volgende scherm **Windows Server 2016 Data Center – met containers**.
+2.  Maak de VM. Hiertoe opent u Azure Portal, selecteert u **een resource maken** in het menu linksboven en filtert u op *Windows Server-besturings systeem*. Selecteer in de resultaten **Windows Server.** Selecteer in het volgende scherm **Windows Server 2016 Data Center – met containers**.
 
     ![Scherm opname van Azure Portal Zoek resultaten](./media/run-image-1.png)
 

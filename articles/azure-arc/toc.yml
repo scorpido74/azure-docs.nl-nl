@@ -8,3 +8,7 @@
   href: ./servers/overview.md
 - name: Kubernetes met Arc >
   href: ./kubernetes/overview.md
+- name: Gegevensservices met Arc (preview) >
+  href: ./data/overview.md
+- name: SQL Server met Arc (preview) >
+  href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'
