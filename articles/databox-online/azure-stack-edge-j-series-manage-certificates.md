@@ -1,6 +1,6 @@
 ---
-title: Certificaten met Azure Stack Edge GPU gebruiken | Microsoft Docs
-description: Beschrijft het gebruik van certificaten met Azure Stack Edge GPU-apparaat, met inbegrip van de reden voor het gebruik van, het type en het uploaden van certificaten op uw apparaat.
+title: Certificaten gebruiken met Azure Stack Edge Pro GPU | Microsoft Docs
+description: Beschrijft het gebruik van certificaten met Azure Stack Edge Pro GPU-apparaat, met inbegrip van de reden voor het gebruik van, het type en het uploaden van certificaten op het apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890749"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Certificaten met Azure Stack Edge GPU-apparaat gebruiken
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Certificaten gebruiken met Azure Stack Edge Pro GPU-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In dit artikel worden de typen certificaten beschreven die op uw Azure Stack edge-apparaat kunnen worden geïnstalleerd. Het artikel bevat ook de Details voor elk certificaat type samen met de procedure voor het installeren en identificeren van de verval datum. 
+In dit artikel worden de typen certificaten beschreven die op uw Azure Stack Edge Pro-apparaat kunnen worden geïnstalleerd. Het artikel bevat ook de Details voor elk certificaat type samen met de procedure voor het installeren en identificeren van de verval datum. 
 
 ## <a name="about-certificates"></a>Over certificaten
 
 Een certificaat biedt een koppeling tussen een **open bare sleutel** en een entiteit (zoals een domein naam) die is **ondertekend** (geverifieerd) door een vertrouwde derde partij (zoals een **certificerings instantie**).  Een certificaat biedt een handige manier om vertrouwde open bare versleutelings sleutels te distribueren. Certificaten zorgen ervoor dat uw communicatie vertrouwd is en dat u versleutelde gegevens naar de juiste server verzendt. 
 
-Wanneer uw Azure Stack edge-apparaat in eerste instantie is geconfigureerd, worden automatisch zelfondertekende certificaten gegenereerd. U kunt desgewenst uw eigen certificaten meenemen. Er zijn richt lijnen die u moet volgen als u van plan bent om uw eigen certificaten te nemen.
+Wanneer uw Azure Stack Edge Pro-apparaat in eerste instantie is geconfigureerd, worden automatisch zelfondertekende certificaten gegenereerd. U kunt desgewenst uw eigen certificaten meenemen. Er zijn richt lijnen die u moet volgen als u van plan bent om uw eigen certificaten te nemen.
 
 ## <a name="types-of-certificates"></a>Typen certificaten
 
-De verschillende typen certificaten die op uw Azure Stack edge-apparaat worden gebruikt, zijn als volgt: 
+De verschillende typen certificaten die op uw Azure Stack Edge Pro-apparaat worden gebruikt, zijn als volgt: 
 - Handtekeningcertificaten
     - Basis-CA
     - Gevorderd
@@ -68,7 +68,7 @@ Deze certificaten kunnen basis certificaten of tussenliggende certificaten zijn.
 
 ## <a name="node-certificates"></a>Knooppunt certificaten
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> Alle knoop punten in het apparaat communiceren voortdurend met elkaar en hebben daarom een vertrouwens relatie nodig. Knooppunt certificaten bieden een manier om die vertrouwens relatie tot stand te brengen. Knooppunt certificaten komen ook aan het spelen wanneer u verbinding maakt met het knoop punt van het apparaat met behulp van een externe Power shell-sessie via https.
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> Alle knoop punten in het apparaat communiceren voortdurend met elkaar en hebben daarom een vertrouwens relatie nodig. Knooppunt certificaten bieden een manier om die vertrouwens relatie tot stand te brengen. Knooppunt certificaten komen ook aan het spelen wanneer u verbinding maakt met het knoop punt van het apparaat met behulp van een externe Power shell-sessie via https.
 
 ### <a name="caveats"></a>Waarschuwingen
 
@@ -121,9 +121,9 @@ U kunt via een browser toegang krijgen tot de lokale webgebruikersinterface van 
 
 ## <a name="iot-edge-device-certificates"></a>Certificaten van IoT Edge apparaten
 
-Uw Azure Stack edge-apparaat is ook een IoT-apparaat met de compute die is ingeschakeld door een IoT Edge apparaat. Voor beveiligde communicatie tussen deze IoT Edge apparaat en de downstream-apparaten waarmee verbinding kan worden gemaakt, kunt u ook IoT Edge certificaten uploaden. 
+Uw Azure Stack Edge Pro-apparaat is ook een IoT-apparaat met de reken kracht die is ingeschakeld door een IoT Edge apparaat. Voor beveiligde communicatie tussen deze IoT Edge apparaat en de downstream-apparaten waarmee verbinding kan worden gemaakt, kunt u ook IoT Edge certificaten uploaden. 
 
-Het apparaat heeft zelfondertekende certificaten die kunnen worden gebruikt als u alleen het reken scenario met het apparaat wilt gebruiken. Als de Azure Stack edge-apparaat echter is aangesloten op downstream-apparaten, moet u uw eigen certificaten meenemen.
+Het apparaat heeft zelfondertekende certificaten die kunnen worden gebruikt als u alleen het reken scenario met het apparaat wilt gebruiken. Als de Azure Stack Edge Pro-apparaat echter is aangesloten op downstream-apparaten, moet u uw eigen certificaten meenemen.
 
 Er zijn drie IoT Edge certificaten die u moet installeren om deze vertrouwens relatie in te scha kelen:
 
@@ -140,7 +140,7 @@ Zie [Azure IOT Edge certificaat Details](../iot-edge/iot-edge-certs.md#iot-edge-
 
 ## <a name="support-session-certificates"></a>Sessie certificaten ondersteunen
 
-Als uw Azure Stack edge-apparaat problemen ondervindt, kunt u deze problemen oplossen door een externe Power shell-ondersteunings sessie op het apparaat te openen. Als u een beveiligde, versleutelde communicatie over deze ondersteunings sessie wilt inschakelen, kunt u een certificaat uploaden.
+Als uw Azure Stack Edge Pro-apparaat problemen ondervindt, kunt u deze problemen oplossen door een externe Power shell-ondersteunings sessie op het apparaat te openen. Als u een beveiligde, versleutelde communicatie over deze ondersteunings sessie wilt inschakelen, kunt u een certificaat uploaden.
 
 ### <a name="caveats"></a>Waarschuwingen
 
@@ -155,7 +155,7 @@ Als uw Azure Stack edge-apparaat problemen ondervindt, kunt u deze problemen opl
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-Zodra de certificaten zijn gemaakt, is de volgende stap het uploaden van de certificaten op uw Azure Stack edge-apparaat
+Zodra de certificaten zijn gemaakt, is de volgende stap het uploaden van de certificaten op uw Azure Stack Edge Pro-apparaat
 
 
 ## <a name="upload-certificates"></a>Certificaten uploaden 
@@ -385,7 +385,7 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
 
     ![Certificaat exporteren 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. De wizard certificaat wordt geopend. Selecteer de indeling als **der Encoded Binary X. 509 (. CER)**. Selecteer **Volgende**.
+2. De wizard certificaat wordt geopend. Selecteer de indeling als **der Encoded Binary X. 509 (. CER)**. Selecteer **Next**.
 
     ![Certificaat exporteren 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
@@ -401,7 +401,7 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
 
 ## <a name="supported-certificate-algorithms"></a>Ondersteunde certificaat algoritmen
 
- Alleen de Rivest – Shamir – Adleman (RSA)-certificaten worden ondersteund met uw Azure Stack edge-apparaat. Als elliptische curve ECDSA-certificaten (Digital Signature Algorithm) worden gebruikt, is het gedrag van het apparaat onbepaald.
+ Alleen de Rivest – Shamir – Adleman (RSA)-certificaten worden ondersteund met uw Azure Stack Edge Pro-apparaat. Als elliptische curve ECDSA-certificaten (Digital Signature Algorithm) worden gebruikt, is het gedrag van het apparaat onbepaald.
 
  Certificaten die een open bare RSA-sleutel bevatten, worden RSA-certificaten genoemd. Certificaten die een met elliptische curve cryptografische (ECC) open bare sleutel bevatten, worden ECDSA (elliptische digitale hand tekening algoritme) genoemd. 
 
@@ -418,4 +418,4 @@ De verval datum van het certificaat weer geven op de pagina **certificaten** in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw Azure Stack edge-apparaat implementeren](azure-stack-edge-gpu-deploy-prep.md)
+[Uw Azure Stack Edge Pro-apparaat implementeren](azure-stack-edge-gpu-deploy-prep.md)

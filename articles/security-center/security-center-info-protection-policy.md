@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711082"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901107"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
@@ -56,7 +56,7 @@ Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moe
  
 4. Labels worden weer gegeven in volg orde van oplopende gevoeligheid. Als u de rang schikking tussen labels wilt wijzigen, sleept u de labels om ze in de tabel opnieuw te rangschikken of gebruikt u de knoppen **omhoog** en **omlaag** om de volg orde te wijzigen. 
  
-    ![Information Protection-beleid configureren](./media/security-center-info-protection-policy/move-up.png)
+    ![Lijst met labels](./media/security-center-info-protection-policy/move-up.png)
  
 5. Zorg ervoor dat u boven aan het scherm op **Opslaan** klikt wanneer u klaar bent.
  
@@ -66,7 +66,7 @@ Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moe
 1. U kunt gegevens typen beheren en aanpassen door te klikken op **informatie typen beheren**.
 2. Als u een nieuw **gegevens type**wilt toevoegen, selecteert u **gegevens type maken** in het bovenste menu. U kunt een naam, beschrijving en zoek patroon teken reeksen voor het **informatie type**configureren. Zoek patroon teken reeksen kunnen optioneel tref woorden gebruiken met Joker tekens (met het teken%), die de geautomatiseerde detectie-engine gebruikt om gevoelige gegevens in uw data bases te identificeren, op basis van de meta gegevens van de kolommen.
  
-    ![Information Protection-beleid configureren](./media/security-center-info-protection-policy/info-types.png)
+    ![Informatie type maken](./media/security-center-info-protection-policy/info-types.png)
  
 3. U kunt ook de ingebouwde **informatie typen** configureren door extra Zoek patronen toe te voegen, een aantal bestaande teken reeksen uit te scha kelen of door de beschrijving te wijzigen. U kunt geen ingebouwde **gegevens typen** verwijderen of hun namen bewerken. 
 4. **Informatie typen** worden weer gegeven in volg orde van oplopende detectie classificatie, wat betekent dat de typen die hoger in de lijst staan, worden geprobeerd eerst te komen. Als u de rang schikking tussen gegevens typen wilt wijzigen, sleept u de typen naar de juiste plaats in de tabel of gebruikt u de knoppen **omhoog** en **omlaag** om de volg orde te wijzigen. 

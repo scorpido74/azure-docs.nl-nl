@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180844"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883930"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -35,11 +35,11 @@ Geïntegreerde beveiligings oplossingen omvatten momenteel de evaluatie van beve
 > [!NOTE]
 > Security Center installeert de Log Analytics agent niet op virtualisatie apparaten van de partner, omdat de meeste beveiligings leveranciers externe agents die op hun apparaten worden uitgevoerd, niet verbieden.
 
-Zie voor meer informatie over de integratie van hulpprogram ma's voor het scannen van beveiligings problemen van Qualys, met inbegrip van een ingebouwde scanner die beschikbaar is voor klanten met een Standard-laag, [het beveiligings risico voor uw Azure-virtual machines](deploy-vulnerability-assessment-vm.md).
+Zie voor meer informatie over de integratie van hulpprogram ma's voor het scannen van beveiligings problemen van Qualys, met inbegrip van een ingebouwde scanner die beschikbaar is voor Azure Defender-klanten, [de evaluatie van beveiligings problemen voor uw Azure-virtual machines](deploy-vulnerability-assessment-vm.md).
 
 Security Center biedt ook een beveiligingslek met betrekking tot de analyse van uw:
 
-* SQL-data bases-Zie [evaluatie van beveiligings problemen analyseren in het dash board evaluatie van beveiligings problemen](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* SQL-data bases-Zie [evaluatie van beveiligings problemen analyseren in het dash board evaluatie van beveiligings problemen](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry-installatie kopieën-Zie [Azure container Registry integratie met Security Center (preview-versie)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Beveiligingsoplossingen integreren
@@ -88,7 +88,7 @@ Selecteer **weer geven** voor meer informatie en opties, zoals:
 Security Center detecteert automatisch beveiligings oplossingen die worden uitgevoerd in azure, maar zijn niet verbonden met Security Center en de oplossingen worden weer gegeven in de sectie **gedetecteerde oplossingen** . Deze oplossingen omvatten Azure-oplossingen, zoals [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)en partner oplossingen.
 
 > [!NOTE]
-> De laag standaard van Security Center is vereist op het abonnements niveau voor de functie gedetecteerde oplossingen. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie over de prijs categorieën.
+> Schakel **Azure Defender** in op het abonnements niveau voor de functie gedetecteerde oplossingen. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie over de prijs categorieën.
 >
 
 Selecteer **verbinding maken** onder een oplossing om te integreren met Security Center en op de hoogte te worden gesteld van beveiligings waarschuwingen.

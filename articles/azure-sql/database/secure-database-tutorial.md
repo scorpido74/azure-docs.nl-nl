@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 09/03/2019
+ms.reviewer: ''
+ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496913"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885406"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Zelfstudie: Een database beveiligen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ In deze zelfstudie leert u het volgende:
 > - Firewallregels op server- en databaseniveau maken
 > - Een Azure Active Directory-beheerder configureren
 > - Gebruikerstoegang beheren met SQL-verificatie, Azure AD-verificatie en beveiligde verbindingsreeksen
-> - Beveiligingsfuncties inschakelen, zoals Advanced Data Security, controle, gegevensmaskering en versleuteling
+> - Beveiligingsfuncties inschakelen, zoals Azure Defender voor SQL, controle, gegevensmaskering en versleuteling
 
 Met Azure SQL Database kunt u gegevens beveiligen door:
 
@@ -62,7 +62,7 @@ Voor alle stappen in deze zelfstudie moet u zich aanmelden bij de [Azure-portal]
 
 Databases in SQL Database worden in Azure beveiligd door een firewall. Standaard worden alle verbindingen met de server en database geweigerd. Zie voor meer informatie [Firewallregels op server- en databaseniveau maken](firewall-configure.md).
 
-Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [resourcebeheer](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
+Stel **Toegang tot Azure services toestaan** in op **UIT** voor de veiligste configuratie. Vervolgens maakt u een [gereserveerd IP-adres (klassieke implementatie)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) voor de resource die verbinding moet maken, zoals een Azure-VM of cloudservice, en laat u alleen dat IP-adres toe door de firewall. Als u het [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-implementatiemodel gebruikt, is er voor elke resource een toegewezen openbaar IP-adres nodig.
 
 > [!NOTE]
 > SQL Database communiceert via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met de server, tenzij de beheerder poort 1433 openstelt.
@@ -233,30 +233,30 @@ Ga als volgt te werk om een beveiligde verbindingsreeks te kopiëren:
 
 ## <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
 
-Azure SQL Database biedt beveiligingsfuncties die toegankelijk zijn met behulp van de Azure-portal. Deze functies zijn beschikbaar voor zowel de database als de server, behalve gegevensmaskering, wat alleen beschikbaar is op de database. Zie voor meer informatie deze artikelen over [Advanced Data Security](advanced-data-security.md), [controle](../../azure-sql/database/auditing-overview.md), [dynamische gegevensmaskering](dynamic-data-masking-overview.md) en [transparante gegevensversleuteling](transparent-data-encryption-tde-overview.md).
+Azure SQL Database biedt beveiligingsfuncties die toegankelijk zijn met behulp van de Azure-portal. Deze functies zijn beschikbaar voor zowel de database als de server, behalve gegevensmaskering, wat alleen beschikbaar is op de database. Zie [Azure Defender voor SQL](azure-defender-for-sql.md), [Controle](../../azure-sql/database/auditing-overview.md), [Dynamische gegevensmaskering](dynamic-data-masking-overview.md) en [Transparante gegevensversleuteling](transparent-data-encryption-tde-overview.md) voor meer informatie.
 
-### <a name="advanced-data-security"></a>Advanced Data Security
+### <a name="azure-defender-for-sql"></a>Azure Defender voor SQL
 
-De functie Advanced Data Security detecteert bedreigingen terwijl ze zich voordoen en biedt beveiligingswaarschuwingen over afwijkende activiteiten. Gebruikers kunnen de controlefunctie gebruiken om deze verdachte gebeurtenissen te onderzoeken en te bepalen of die het gevolg zijn van pogingen om toegang te krijgen tot, of misbruik te maken van, gegevens in de database. Gebruikers krijgen ook een beveiligingsoverzicht met een evaluatie van beveiligingsproblemen en het hulpprogramma voor gegevensdetectie en -classificatie.
+De functie Azure Defender voor SQL detecteert bedreigingen terwijl ze zich voordoen en biedt beveiligingswaarschuwingen over afwijkende activiteiten. Gebruikers kunnen de controlefunctie gebruiken om deze verdachte gebeurtenissen te onderzoeken en te bepalen of die het gevolg zijn van pogingen om toegang te krijgen tot, of misbruik te maken van, gegevens in de database. Gebruikers krijgen ook een beveiligingsoverzicht met een evaluatie van beveiligingsproblemen en het hulpprogramma voor gegevensdetectie en -classificatie.
 
 > [!NOTE]
 > Een voorbeeld van een bedreiging is SQL-injectie, een proces waarbij aanvallers schadelijke SQL in de invoer van de toepassing injecteren. Een toepassing kan dan onbewust de schadelijke SQL uitvoeren en aanvallers toegang geven om in te breken in de database of gegevens erin te wijzigen.
 
-U schakelt Advanced Data Security als volgt in:
+Azure Defender voor SQL inschakelen:
 
 1. Selecteer in de Azure-portal **SQL-databases** in het menu links en selecteer uw database op de pagina **SQL-databases**.
 
 1. Selecteer op de pagina **Overzicht** de koppeling **Servernaam**. De pagina Server wordt geopend.
 
-1. Ga op de pagina **SQL-server** naar de sectie **Beveiliging** en selecteer **Advanced Data Security**.
+1. Zoek op de pagina **SQL-server** de sectie **Beveiliging** en selecteer **Beveiligingscentrum**.
 
-   1. Selecteer **AAN** onder **Advanced Data Security** om de functie in te schakelen. Kies een opslagaccount om de evaluaties van beveiligingsproblemen in op te slaan. Selecteer vervolgens **Opslaan**.
+   1. Selecteer **AAN** onder **Azure Defender voor SQL** om de functie in te schakelen. Kies een opslagaccount om de evaluaties van beveiligingsproblemen in op te slaan. Selecteer vervolgens **Opslaan**.
 
       ![Navigatievenster](./media/secure-database-tutorial/threat-settings.png)
 
       U kunt ook e-mailberichten configureren voor het ontvangen van beveiligingswaarschuwingen, opslaggegevens en detectie van typen bedreigingen.
 
-1. Ga terug naar de pagina**SQL-databases** van uw database en selecteer **Advanced Data Security** in de sectie **Beveiliging**. Hier vindt u verschillende beveiligingsindicatoren die beschikbaar zijn voor de database.
+1. Ga terug naar de pagina**SQL-databases** van uw database en selecteer **Beveiligingscentrum** in de sectie **Beveiliging**. Hier vindt u verschillende beveiligingsindicatoren die beschikbaar zijn voor de database.
 
     ![Bedreigingsstatus](./media/secure-database-tutorial/threat-status.png)
 
@@ -347,7 +347,7 @@ In deze zelfstudie hebt u geleerd de beveiliging van uw database met een paar ee
 > - Firewallregels op server- en databaseniveau maken
 > - Een Azure Active Directory-beheerder configureren
 > - Gebruikerstoegang beheren met SQL-verificatie, Azure AD-verificatie en beveiligde verbindingsreeksen
-> - Beveiligingsfuncties inschakelen, zoals Advanced Data Security, controle, gegevensmaskering en versleuteling
+> - Beveiligingsfuncties inschakelen, zoals Azure Defender voor SQL, controle, gegevensmaskering en versleuteling
 
 Ga door naar de volgende zelfstudie om te leren hoe u geo-replicatie kunt implementeren.
 

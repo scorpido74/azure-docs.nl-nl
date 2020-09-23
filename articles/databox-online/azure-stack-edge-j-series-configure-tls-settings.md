@@ -1,6 +1,6 @@
 ---
-title: TLS 1,2 configureren op Windows-clients die toegang krijgen tot Azure Stack Edge GPU-apparaat
-description: Hierin wordt beschreven hoe u TLS 1,2 configureert op Windows-clients die toegang krijgen tot Azure Stack Edge GPU-apparaat.
+title: TLS 1,2 configureren op Windows-clients die toegang krijgen tot Azure Stack Edge Pro GPU-apparaat
+description: Hierin wordt beschreven hoe u TLS 1,2 configureert op Windows-clients die toegang krijgen tot Azure Stack Edge Pro GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891183"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>TLS 1,2 configureren op Windows-clients die toegang hebben tot Azure Stack edge-apparaat
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>TLS 1,2 configureren op Windows-clients die toegang krijgen tot Azure Stack Edge Pro-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Als u een Windows-client gebruikt om toegang te krijgen tot uw Azure Stack edge-apparaat, moet u TLS 1,2 configureren op uw client. In dit artikel vindt u bronnen en richt lijnen voor het configureren van TLS 1,2 op uw Windows-client. 
+Als u een Windows-client gebruikt om toegang te krijgen tot uw Azure Stack Edge Pro-apparaat, moet u TLS 1,2 configureren op uw client. In dit artikel vindt u bronnen en richt lijnen voor het configureren van TLS 1,2 op uw Windows-client. 
 
 De richt lijnen die hier worden beschreven, zijn gebaseerd op tests die worden uitgevoerd op een client met Windows Server 2016.
 

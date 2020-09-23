@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 70097ad02c17f8c23bd9613487a905ccd562635e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 797577ce976f71f41ece0d103bd0145775d48b56
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337548"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885581"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics taken lokaal ontwikkelen en fouten opsporen
 
@@ -23,15 +23,15 @@ De manier waarop u Stream Analytics taken op uw lokale computer ontwikkelt, is a
 
 De omgevingen in de volgende tabel ondersteunen lokale ontwikkeling:
 
-|Omgeving                              |Beschrijving    |
+|Omgeving                              |Description    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Met de [uitbrei ding voor de Azure stream Analytics-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) voor Visual Studio code kunt u uw stream Analytics-taak zowel lokaal als in de Cloud ontwerpen, beheren en testen met uitgebreide IntelliSense en systeem eigen broncode beheer. Ondersteunt de ontwikkeling van Linux, MacOS en Windows. Zie [een Azure stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)voor meer informatie. De uitbrei ding biedt ook ondersteuning voor [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) . Dit is een in de Cloud gehoste ontwikkel omgeving.|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Met de [uitbrei ding voor de Azure stream Analytics-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) voor Visual Studio code kunt u uw stream Analytics-taak zowel lokaal als in de Cloud ontwerpen, beheren en testen met uitgebreide IntelliSense en systeem eigen broncode beheer. Ondersteunt de ontwikkeling van Linux, MacOS en Windows. Zie [een Azure stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)voor meer informatie. De uitbrei ding biedt ook ondersteuning voor [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) . Dit is een in de Cloud gehoste ontwikkel omgeving.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics-Hulpprogram Ma's maken deel uit van de werk belastingen voor ontwikkeling en gegevens opslag en-verwerking van Azure in Visual Studio. U kunt Visual Studio gebruiken om aangepaste door de gebruiker gedefinieerde C#-functies en-deserials te schrijven. Zie [een Azure stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)voor meer informatie.|
 |[Opdracht prompt of Terminal](stream-analytics-tools-for-visual-studio-cicd.md)|Het Azure Stream Analytics CI/CD NuGet-pakket bevat hulpprogram ma's voor Visual Studio project build, lokale tests op een wille keurige computer. Het Azure Stream Analytics CI/CD NPM-pakket bevat hulpprogram ma's voor Visual Studio code project builds (waarmee een Azure Resource Manager sjabloon wordt gegenereerd) op een wille keurige computer.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code](visual-studio-code-local-run.md)
+* [Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code](visual-studio-code-local-run.md)
 * [Stream Analytics query's lokaal testen op invoer van live streams met behulp van Visual Studio code](visual-studio-code-local-run-live-input.md)
 * [Stream Analytics query's lokaal testen met Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Live-gegevens lokaal testen met Azure Stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-live-data-local-testing.md)

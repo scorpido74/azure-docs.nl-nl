@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037440"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892161"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Stream Analytics query's lokaal testen op invoer van live streams met behulp van Visual Studio code
 
@@ -21,39 +21,39 @@ U kunt Azure Stream Analytics-Hulpprogram Ma's voor Visual Studio code gebruiken
 
 * Installeer de [.net core SDK](https://dotnet.microsoft.com/download) en Start Visual Studio code opnieuw.
 
-* In [deze Quick](quick-create-vs-code.md) start leert u hoe u een stream Analytics-taak kunt maken met behulp van Visual Studio code.
+* In [deze Quick](quick-create-visual-studio-code.md) start leert u hoe u een stream Analytics-taak kunt maken met behulp van Visual Studio code.
 
 ## <a name="define-a-live-stream-input"></a>Een live stream-invoer definiëren
 
-1. Klik met de rechter muisknop op de map met **invoer** gegevens in uw stream Analytics-project. Selecteer vervolgens **ASA: invoer toevoegen** in het context menu.
+1. Klik met de rechtermuisknop op de map **Invoer** in uw Stream Analytics-project. Selecteer vervolgens **ASA: Invoer toevoegen** vanuit het contextmenu.
 
-   ![Invoer toevoegen vanuit de map met invoer](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Invoer toevoegen vanuit de map Invoer](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    U kunt ook **CTRL + SHIFT + P** selecteren om het opdracht palet te openen en **ASA: invoer toevoegen**.
 
-   ![Stream Analytics invoer toevoegen in Visual Studio code](./media/quick-create-vs-code/add-input.png)
+   ![Stream Analytics-invoer toevoegen in Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Kies een invoer bron type in de vervolg keuzelijst.
 
-   ![IoT hub selecteren als de optie invoer](./media/quick-create-vs-code/iot-hub.png)
+   ![IoT-hub als de invoeroptie selecteren](./media/quick-create-visual-studio-code/iot-hub.png)
 
-3. Als u de invoer van het opdracht palet hebt toegevoegd, kiest u het Stream Analytics query script waarmee de invoer wordt gebruikt. Deze moet automatisch worden ingevuld met het bestandspad naar **myASAproj. asaql**.
+3. Als u de invoer vanuit het opdrachtenpalet hebt toegevoegd, kiest u het Stream Analytics-queryscript dat de invoer gaat gebruiken. Hierin moet het bestandspad naar **myASAproj.asaql** automatisch worden ingevuld.
 
-   ![Een Stream Analytics script selecteren in Visual Studio code](./media/quick-create-vs-code/asa-script.png)
+   ![Een Stream Analytics-script selecteren in Visual Studio Code](./media/quick-create-visual-studio-code/asa-script.png)
 
-4. Kies **selecteren in uw Azure-abonnementen** in de vervolg keuzelijst.
+4. Kies **Selecteren in uw Azure-abonnementen** in de vervolgkeuzelijst.
 
-    ![Selecteren uit abonnementen](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Selecteren in abonnementen](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
-5. Configureer het zojuist gegenereerde JSON-bestand. U kunt de functie code lens gebruiken om een teken reeks op te geven, een selectie uit een vervolg keuzelijst te selecteren of de tekst rechtstreeks in het bestand te wijzigen. Op de volgende scherm afbeelding ziet u een voor beeld **van uw abonnementen** .
+5. Configureer het zojuist gegenereerde JSON-bestand. U kunt de functie CodeLens gebruiken om een tekenreeks in te voeren, een selectie in een vervolgkeuzelijst te maken of de tekst rechtstreeks in het bestand te wijzigen. De volgende schermopname toont **Selecteren in uw abonnementen** als voorbeeld.
 
-   ![Invoer in Visual Studio code configureren](./media/quick-create-vs-code/configure-input.png)
+   ![Invoer configureren in Visual Studio Code](./media/quick-create-visual-studio-code/configure-input.png)
 
-## <a name="preview-input"></a>Preview-invoer
+## <a name="preview-input"></a>Invoer vooraf bekijken
 
 Om ervoor te zorgen dat de invoer gegevens afkomstig zijn, selecteert u **voorbeeld gegevens** in uw Live-invoer configuratie bestand vanaf de bovenste regel. Sommige invoer gegevens zijn afkomstig van een IoT-hub en worden weer gegeven in het voorbeeld venster. Het kan een paar seconden duren voordat het voor beeld wordt weer gegeven.
 
- ![Live-invoer preview](./media/quick-create-vs-code/preview-live-input.png)
+ ![Live invoer vooraf bekijken](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Query's lokaal uitvoeren
 
@@ -73,4 +73,4 @@ De standaard waarde voor de taak voor het maken van de uitvoer is ingesteld op *
 
 * [Azure Stream Analytics-taken verkennen met Visual Studio code (preview)](visual-studio-code-explore-jobs.md)
 
-* [CI/CD-pijp lijnen instellen met behulp van het NPM-pakket](setup-cicd-vs-code.md)
+* [CI/CD-pijplijnen instellen met behulp van het NPM-pakket](setup-cicd-vs-code.md)

@@ -4,15 +4,15 @@ description: Als u Maxi maal beschik bare en flexibele toepassingen in azure wil
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: cf1fc81ea63db21d2e864c00e1987eec3d376b59
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853157"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891690"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regio's die ondersteuning bieden voor Beschikbaarheidszones in azure
 
@@ -24,36 +24,36 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Service | Central US | VS - oost | VS - oost 2 | US - west 2 |
-| --- | :---: | :---: | :---: | :---: |
+| Service | Central US | VS - oost | VS - oost 2 | US - west 2 | Canada - midden
+| --- | :---: | :---: | :---: | :---: | :---: |
 | **Compute** |  |  |  |  |
-| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service omgevingen ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Virtuele-machineschaalsets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure App Service omgevingen ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |  |
-| Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Zone-redundante opslag             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Zone-redundante opslag             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Netwerken** |  |  |  |  |
-| Standaard-IP-adres                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| ExpressRoute-gateway               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standaard-IP-adres                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ExpressRoute-gateway               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Databases** |  |  |  |  |
-| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (preview-versie) |
-| Azure Cache voor Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | : heavy_check_mark: (preview-versie) | :heavy_check_mark: |
+| Azure Cache voor Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analyse** |  |  |  |  |
-| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Integratie** |  |  |  |  |
-| Service Bus (alleen Premium-laag)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Persoon** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Service Bus (alleen Premium-laag)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| **Identiteit** |  |  |  |  |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |   |
 
 ## <a name="europe"></a>Europa
 
@@ -62,7 +62,7 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 | **Compute** |  |  |  |  |
 | Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Virtuele-machineschaalsets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure App Service omgevingen ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |  |
@@ -85,8 +85,8 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 | **Integratie**  |  |  |  |  |
 | Service Bus (alleen Premium-laag)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Persoon** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| **Identiteit** |  |  |  |  |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
@@ -95,9 +95,9 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 | **Compute** |  |  |  |
 | Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service omgevingen ILB | :heavy_check_mark: | :heavy_check_mark: |  |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: |  |
+| Virtuele-machineschaalsets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure App Service omgevingen ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |
 | Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Zone-redundante opslag             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -107,18 +107,18 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 | VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | ExpressRoute-gateway               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Application Gateway (v2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Databases** |  |  |  |
-| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cache voor Redis              | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Cache voor Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analyse** |  |  |  |
 | Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Integratie** |  |  |  |
 | Service Bus (alleen Premium-laag)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: |  |
-| **Persoon** |  |  |  |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| **Identiteit** |  |  |  |
 | Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="other"></a>Anders
@@ -128,9 +128,8 @@ Azure biedt ook Beschikbaarheidszones ondersteuning in de volgende regio's:
 - VS (overheid) - Virginia
 - Zuid-Afrika - noord
 - South Central US
-- Canada - midden
 
-Neem contact op met uw micro soft-verkoop-of klant vertegenwoordiger of open een technische ondersteunings aanvraag voor meer informatie over de ondersteuning van Beschikbaarheidszones in deze vier regio's.
+Neem contact op met uw micro soft-verkoop-of klant vertegenwoordiger of open een technische ondersteunings aanvraag voor meer informatie over de ondersteuning van Beschikbaarheidszones in deze drie regio's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

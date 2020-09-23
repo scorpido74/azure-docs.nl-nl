@@ -3,12 +3,12 @@ title: Aan de slag met Live Video Analytics in IoT Edge - Azure
 description: Deze quickstart laat zien hoe u aan de slag kunt met Live Video Analytics in IoT Edge. Leer hoe u beweging kunt detecteren in een live-videostream.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568044"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884936"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Quickstart: Over Live Video Analytics in IoT Edge
 
@@ -84,6 +84,9 @@ Volg deze instructies om verbinding te maken met uw IoT-hub met behulp van de Az
 Als er verbinding is gemaakt, wordt de lijst met edge-apparaten weergegeven. U zou ten minste één apparaat met de naam **lva-sample-device** moeten zien. U kunt nu uw IoT Edge-apparaten beheren en interactief werken met Azure IoT Hub via het contextmenu. Om de modules die op het edge-apparaat zijn geïmplementeerd te bekijken, vouwt u het knooppunt **Modules** uit onder **Iva-sample-device**.
 
 ![Knooppunt lva-sample-device](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Als u zelf [handmatig Live Video Analytics op IoT Edge hebt geïmplementeerd](deploy-iot-edge-device.md) op een Edge-apparaat (zoals een ARM64-apparaat), ziet u de module onder dat apparaat weergegeven, onder de Azure IoT Hub. U kunt deze module selecteren en de rest van de onderstaande stappen volgen.
 
 ## <a name="use-direct-method-calls"></a>Aanroepen van directe methoden gebruiken
 

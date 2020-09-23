@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d18d4aa4bf9306bcdd667faa53f0d888c090e2fd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875752"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892034"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs uitvoer van Azure Stream Analytics
 
@@ -22,7 +22,7 @@ De [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/) -service
 
 De volgende tabel bevat de para meters die nodig zijn voor het configureren van gegevens stromen van Event hubs als uitvoer.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias | Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze Event Hub te sturen. |
 | Event hub-naamruimte | Een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub hebt gemaakt, hebt u ook een Event Hub naam ruimte gemaakt. |
@@ -38,7 +38,7 @@ De volgende tabel bevat de para meters die nodig zijn voor het configureren van 
 
 ## <a name="partitioning"></a>Partitionering
 
-Partitioneren varieert, afhankelijk van de uitlijning van de partitie. Wanneer de partitie sleutel voor Event Hub uitvoer gelijk wordt uitgelijnd met de stap upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in Event Hub uitvoer. Elke schrijver maakt gebruik van de [EventHubSender-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) voor het verzenden van gebeurtenissen naar de specifieke partitie. Wanneer de partitie sleutel voor Event Hub uitvoer niet is afgestemd op de stap van de upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in die vorige stap. Elke schrijver maakt gebruik van de [SendBatchAsync-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient** om gebeurtenissen te verzenden naar alle uitvoer partities. 
+Partitioneren varieert, afhankelijk van de uitlijning van de partitie. Wanneer de partitie sleutel voor Event Hub uitvoer gelijk wordt uitgelijnd met de stap upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in Event Hub uitvoer. Elke schrijver maakt gebruik van de [EventHubSender-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true) voor het verzenden van gebeurtenissen naar de specifieke partitie. Wanneer de partitie sleutel voor Event Hub uitvoer niet is afgestemd op de stap van de upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in die vorige stap. Elke schrijver maakt gebruik van de [SendBatchAsync-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true) in **EventHubClient** om gebeurtenissen te verzenden naar alle uitvoer partities. 
 
 ## <a name="output-batch-size"></a>Grootte van uitvoer batch
 
@@ -55,4 +55,4 @@ U kunt query kolommen als gebruikers eigenschappen aan uw uitgaande berichten to
 * [Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon](quick-create-azure-resource-manager.md)
 * [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)

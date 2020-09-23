@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Resource Manager op uw Azure Stack Edge GPU-apparaat
-description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge GPU met behulp van Azure PowerShell.
+title: Verbinding maken met Azure Resource Manager op uw Azure Stack Edge Pro GPU-apparaat
+description: Hierin wordt beschreven hoe u verbinding maakt met de Azure Resource Manager die wordt uitgevoerd op uw Azure Stack Edge Pro GPU met behulp van Azure PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269808"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891219"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Verbinding maken met Azure Resource Manager op uw Azure Stack edge-apparaat
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Verbinding maken met Azure Resource Manager op uw Azure Stack Edge Pro-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager biedt een Management-laag waarmee u resources in uw Azure-abonnement kunt maken, bijwerken en verwijderen. Het Azure Stack edge-apparaat ondersteunt dezelfde Azure Resource Manager Api's om Vm's te maken, bij te werken en te verwijderen in een lokaal abonnement. Met deze ondersteuning kunt u het apparaat beheren op een manier die overeenkomt met de Cloud. 
+Azure Resource Manager biedt een Management-laag waarmee u resources in uw Azure-abonnement kunt maken, bijwerken en verwijderen. Het Azure Stack Edge Pro-apparaat ondersteunt dezelfde Azure Resource Manager Api's om Vm's te maken, bij te werken en te verwijderen in een lokaal abonnement. Met deze ondersteuning kunt u het apparaat beheren op een manier die overeenkomt met de Cloud. 
 
-In deze zelf studie wordt beschreven hoe u met behulp van Azure PowerShell verbinding maakt met de lokale Api's op uw Azure Stack Edge-Azure Resource Manager apparaat.
+In deze zelf studie wordt beschreven hoe u verbinding maakt met de lokale Api's op uw Azure Stack Edge Pro-apparaat via Azure Resource Manager met behulp van Azure PowerShell.
 
 ## <a name="about-azure-resource-manager"></a>Over Azure Resource Manager
 
-Azure Resource Manager biedt een consistente management-laag voor het aanroepen van de Azure Stack edge-apparaat-API en het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van Vm's. De architectuur van de Azure Resource Manager wordt gedetailleerd beschreven in het volgende diagram.
+Azure Resource Manager biedt een consistente management-laag voor het aanroepen van de API voor het Azure Stack Edge Pro-apparaat en het uitvoeren van bewerkingen, zoals het maken, bijwerken en verwijderen van Vm's. De architectuur van de Azure Resource Manager wordt gedetailleerd beschreven in het volgende diagram.
 
 ![Diagram voor Azure Resource Manager](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Eind punten op Azure Stack edge-apparaat
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Eind punten op Azure Stack Edge Pro-apparaat
 
 De volgende tabel bevat een overzicht van de verschillende eind punten die beschikbaar zijn op uw apparaat, de ondersteunde protocollen en de poorten voor toegang tot deze eind punten. In het hele artikel vindt u verwijzingen naar deze eind punten.
 
@@ -47,7 +47,7 @@ Het proces voor het maken van verbinding met lokale Api's van het apparaat met A
 
 | Wizardstap # | U voert deze stap uit... | .. op deze locatie. |
 | --- | --- | --- |
-| 1. | [Uw Azure Stack edge-apparaat configureren](#step-1-configure-azure-stack-edge-device) | Lokale web-UI |
+| 1. | [Uw Azure Stack Edge Pro-apparaat configureren](#step-1-configure-azure-stack-edge-pro-device) | Lokale web-UI |
 | 2. | [Certificaten maken en installeren](#step-2-create-and-install-certificates) | Windows-client/lokale web-UI |
 | 3. | [De vereisten controleren en configureren](#step-3-install-powershell-on-the-client) | Windows-client |
 | 4. | [Azure PowerShell instellen op de client](#step-4-set-up-azure-powershell-on-the-client) | Windows-client |
@@ -59,13 +59,13 @@ De volgende secties beschrijven elk van de bovenstaande stappen bij het maken va
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat de client die wordt gebruikt om verbinding te maken met het apparaat via Azure Resource Manager TLS 1,2 gebruikt. Ga voor meer informatie naar [Configure TLS 1,2 on Windows client access Azure stack Edge Device](azure-stack-edge-j-series-configure-tls-settings.md).
+Voordat u begint, moet u ervoor zorgen dat de client die wordt gebruikt om verbinding te maken met het apparaat via Azure Resource Manager TLS 1,2 gebruikt. Ga voor meer informatie naar [Configure TLS 1,2 on Windows client access Azure stack Edge Pro Device](azure-stack-edge-j-series-configure-tls-settings.md).
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>Stap 1: Azure Stack edge-apparaat configureren 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>Stap 1: Azure Stack Edge Pro-apparaat configureren 
 
-Voer de volgende stappen uit in de lokale web-UI van uw Azure Stack edge-apparaat.
+Voer de volgende stappen uit in de lokale web-UI van uw Azure Stack Edge Pro-apparaat.
 
-1. Voltooi de netwerk instellingen voor uw Azure Stack edge-apparaat. 
+1. Voltooi de netwerk instellingen voor uw Azure Stack Edge Pro-apparaat. 
 
     ![Pagina 'Netwerkinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -74,7 +74,7 @@ Voer de volgende stappen uit in de lokale web-UI van uw Azure Stack edge-apparaa
 
 2. Configureer de naam van het apparaat en het DNS-domein vanaf de pagina **apparaat** . Noteer de naam van het apparaat en het DNS-domein, zoals u deze later gebruikt.
 
-    ![Pagina apparaat van lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
+    ![Pagina Apparaat van de lokale webinterface](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
     > [!IMPORTANT]
     > De apparaatnaam, het DNS-domein wordt gebruikt om de eind punten te vormen die worden weer gegeven.
@@ -83,7 +83,7 @@ Voer de volgende stappen uit in de lokale web-UI van uw Azure Stack edge-apparaa
 
 ## <a name="step-2-create-and-install-certificates"></a>Stap 2: certificaten maken en installeren
 
-Certificaten zorgen ervoor dat uw communicatie vertrouwd is. Op uw Azure Stack edge-apparaat worden automatisch ondertekende apparaten, blobs en Azure Resource Manager certificaten gegenereerd. U kunt eventueel ook uw eigen ondertekende Blob en Azure Resource Manager certificaten meenemen.
+Certificaten zorgen ervoor dat uw communicatie vertrouwd is. Op uw Azure Stack Edge Pro-apparaat worden automatisch ondertekende apparaten, blobs en Azure Resource Manager certificaten gegenereerd. U kunt eventueel ook uw eigen ondertekende Blob en Azure Resource Manager certificaten meenemen.
 
 Wanneer u een ondertekend certificaat van uw eigen certificaten inbrengt, moet u ook de bijbehorende ondertekening keten van het certificaat hebben. Voor de handtekening keten, Azure Resource Manager en de BLOB-certificaten op het apparaat hebt u de bijbehorende certificaten op de client computer ook nodig om te verifiëren en te communiceren met het apparaat.
 
@@ -249,8 +249,8 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
 U voegt nu het Azure consistente VIP toe dat u hebt gedefinieerd in de lokale web-UI van het apparaat naar:
 
-- Het hostbestand op de client of,
-- De configuratie van de DNS-server
+- Het hostbestand op de client, OF
+- De DNS-serverconfiguratie
 
 > [!IMPORTANT]
 > U wordt aangeraden de configuratie van de DNS-server voor de naam omzetting van het eind punt te wijzigen.
@@ -259,9 +259,9 @@ Voer de volgende stappen uit op de Windows-client die u gebruikt om verbinding t
 
 1. Start **Klad blok** als beheerder en open vervolgens het **hosts** -bestand dat zich bevindt in C:\Windows\System32\Drivers\etc.
 
-    ![Windows Verkenner host bestand](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+    ![Hosts-bestand in Windows Verkenner](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
 
-2. Voeg de volgende vermeldingen toe aan het **hosts** -bestand dat wordt vervangen door de juiste waarden voor uw apparaat: 
+2. Voeg de volgende vermeldingen toe aan uw **hosts**-bestand, waarbij u de juiste waarden voor uw apparaat invoert: 
 
     ```
     <Device IP> login.<appliance name>.<DNS domain>
@@ -278,7 +278,7 @@ Voer de volgende stappen uit op de Windows-client die u gebruikt om verbinding t
 
 3. Gebruik de volgende afbeelding ter referentie. Sla het bestand met **hosts** op.
 
-    ![hosts-bestand in Klad blok](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file-notepad.png)
+    ![Hosts-bestand in Kladblok](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file-notepad.png)
 
 ## <a name="step-6-verify-endpoint-name-resolution-on-the-client"></a>Stap 6: de naam omzetting van eind punten op de client controleren
 
@@ -309,7 +309,7 @@ Stel de Azure Resource Manager omgeving in en controleer of uw apparaat naar cli
     Add-AzureRmEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>/"
     ```
 
-    Hieronder ziet u een voor beeld van uitvoer:
+    Hieronder ziet u een voorbeeld van de uitvoer:
     
     ```powershell
     PS C:\windows\system32> Add-AzureRmEnvironment -Name AzDBE -ARMEndpoint https://management.dbe-n6hugc2ra.microsoftdatabox.com/
@@ -319,7 +319,7 @@ Stel de Azure Resource Manager omgeving in en controleer of uw apparaat naar cli
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Stel de omgeving in als Azure Stack rand en de poort die moet worden gebruikt voor Azure Resource Manager-aanroepen als 443. U definieert de omgeving op twee manieren:
+2. Stel de omgeving in als Azure Stack Edge Pro en de poort die moet worden gebruikt voor Azure Resource Manager-aanroepen als 443. U definieert de omgeving op twee manieren:
 
     - Stel de omgeving in. Typ de volgende opdracht:
 
@@ -329,7 +329,7 @@ Stel de Azure Resource Manager omgeving in en controleer of uw apparaat naar cli
     
     Ga naar [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)voor meer informatie.
 
-    - Definieer de omgeving inline voor elke cmdlet die u uitvoert. Dit zorgt ervoor dat alle API-aanroepen via de juiste omgeving worden uitgevoerd. Standaard worden de aanroepen via Azure openbaar, maar u wilt dat deze door de omgeving die u instelt voor Azure Stack edge-apparaat.
+    - Definieer de omgeving inline voor elke cmdlet die u uitvoert. Dit zorgt ervoor dat alle API-aanroepen via de juiste omgeving worden uitgevoerd. Standaard worden de aanroepen via Azure openbaar, maar u wilt dat deze door de omgeving die u instelt voor Azure Stack Edge Pro-apparaat.
 
     - Zie voor meer informatie over [het scha kelen tussen AzureRM-omgevingen](#switch-environments).
 
@@ -376,7 +376,7 @@ Stel de Azure Resource Manager omgeving in en controleer of uw apparaat naar cli
 
 
 > [!IMPORTANT]
-> De verbinding met Azure Resource Manager verloopt elke 1,5 uur of als uw Azure Stack edge-apparaat opnieuw wordt opgestart. Als dit gebeurt, worden met de cmdlets die u uitvoert, fout berichten geretourneerd naar het effect dat u niet meer met Azure hebt verbonden. U moet zich opnieuw aanmelden.
+> De verbinding met Azure Resource Manager verloopt elke 1,5 uur of als uw Azure Stack Edge Pro-apparaat opnieuw wordt opgestart. Als dit gebeurt, worden met de cmdlets die u uitvoert, fout berichten geretourneerd naar het effect dat u niet meer met Azure hebt verbonden. U moet zich opnieuw aanmelden.
 
 ## <a name="switch-environments"></a>Scha kelen tussen omgevingen
 
@@ -460,4 +460,4 @@ U bent nu overgeschakeld naar de gewenste omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Implementeer vm's op uw Azure stack edge-apparaat](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Implementeer vm's op uw Azure stack Edge Pro-apparaat](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

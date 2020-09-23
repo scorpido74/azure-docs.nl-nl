@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 8/10/2020
-ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/18/2020
+ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906468"
+ms.locfileid: "90986730"
 ---
 # <a name="server-group-size"></a>Grootte van servergroep
 
@@ -60,9 +60,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 Met de `rebalance_table_shards` functie worden alle tabellen in de groep co- [locatie](concepts-hyperscale-colocation.md) van de tabel met de naam in het argument opnieuw gebalanceerd. U hoeft de functie dus niet aan te roepen voor elke gedistribueerde tabel, maar u kunt deze ook aanroepen in een representatieve tabel vanuit elke groep voor co-locaties.
 
 ### <a name="increase-or-decrease-vcores-on-nodes"></a>VCores op knoop punten verg Roten of verkleinen
-
-> [!NOTE]
-> Deze functie is momenteel beschikbaar als preview-product. [Neem contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als u een wijziging wilt aanvragen in vCores voor knoop punten in uw server groep.
 
 Naast het toevoegen van nieuwe knoop punten, kunt u de mogelijkheden van bestaande knoop punten verg Roten. Het aanpassen van de reken capaciteit omhoog en omlaag kan nuttig zijn bij het uitvoeren van prestatie experimenten en op korte of lange termijn wijzigingen in verkeers vereisten.
 
