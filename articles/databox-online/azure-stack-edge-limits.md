@@ -1,6 +1,6 @@
 ---
-title: Limieten voor Azure Stack rand | Microsoft Docs
-description: Meer informatie over limieten en aanbevolen grootten tijdens het implementeren en uitvoeren van Azure Stack Edge, inclusief service limieten, limieten voor apparaten en opslag limieten.
+title: Pro-limieten Azure Stack rand | Microsoft Docs
+description: Meer informatie over limieten en aanbevolen grootten tijdens het implementeren en uitvoeren van Azure Stack Edge Pro, inclusief service limieten, limieten voor apparaten en opslag limieten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079809"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904449"
 ---
-# <a name="azure-stack-edge-limits"></a>Limieten voor Azure Stack Edge
+# <a name="azure-stack-edge-pro-limits"></a>Limieten voor Azure Stack Edge Pro R
 
-Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Stack EDGE-oplossing implementeert en gebruikt. 
+Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Stack Edge Pro-oplossing implementeert en gebruikt. 
 
 ## <a name="azure-stack-edge-service-limits"></a>Service limieten voor Azure Stack Edge
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Limieten voor Azure Stack apparaten
+## <a name="azure-stack-edge-device-limits"></a>Limieten voor Azure Stack edge-apparaten
 
-In de volgende tabel worden de limieten voor het Azure Stack edge-apparaat beschreven. 
+In de volgende tabel worden de limieten voor het Azure Stack Edge Pro-apparaat beschreven. 
 
-| Beschrijving | Waarde |
+| Description | Waarde |
 |---|---|
 |Nee. bestanden per apparaat |100.000.000 |
 |Nee. van shares per apparaat |24 |
@@ -53,4 +53,4 @@ In de volgende tabel worden de limieten voor het Azure Stack edge-apparaat besch
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorbereiden om Azure Stack Edge te implementeren](azure-stack-edge-deploy-prep.md)
+- [Voorbereiden om Azure Stack Edge Pro te implementeren](azure-stack-edge-deploy-prep.md)

@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Stack edge-apparaat bewaken | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Azure Portal en de lokale web-UI gebruikt om uw Azure Stack rand te bewaken.
+title: Uw Azure Stack Edge Pro-apparaat bewaken | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Portal en de lokale web-UI gebruikt om uw Azure Stack Edge Pro te bewaken.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339549"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904402"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>Uw Azure Stack rand bewaken
+# <a name="monitor-your-azure-stack-edge-pro"></a>Uw Azure Stack Edge Pro bewaken
 
-In dit artikel wordt beschreven hoe u uw Azure Stack Edge kunt bewaken. Als u uw apparaat wilt bewaken, kunt u Azure Portal of de lokale web-UI gebruiken. Gebruik de Azure Portal voor het weer geven van faxgebeurtenissen, het configureren en beheren van waarschuwingen en het weer geven van metrische gegevens. Gebruik de lokale webgebruikersinterface op het fysieke apparaat om de hardware-status van de verschillende onderdelen van het apparaat weer te geven.
+In dit artikel wordt beschreven hoe u uw Azure Stack Edge Pro kunt bewaken. Als u uw apparaat wilt bewaken, kunt u Azure Portal of de lokale web-UI gebruiken. Gebruik de Azure Portal voor het weer geven van faxgebeurtenissen, het configureren en beheren van waarschuwingen en het weer geven van metrische gegevens. Gebruik de lokale webgebruikersinterface op het fysieke apparaat om de hardware-status van de verschillende onderdelen van het apparaat weer te geven.
 
 In dit artikel leert u het volgende:
 
@@ -34,10 +34,10 @@ In dit artikel leert u het volgende:
 
 ## <a name="view-hardware-status"></a>Hardware-status weer geven
 
-Voer de volgende stappen uit in de lokale web-UI om de hardware-status van de onderdelen van uw apparaat weer te geven.
+Voer de volgende stappen uit in de lokale web-UI om de hardwarestatus van de onderdelen van uw apparaat weer te geven.
 
-1. Verbinding maken met de lokale webgebruikersinterface van uw apparaat.
-2. Ga naar **onderhoud > hardware-status**. U kunt de status van de verschillende onderdelen van het apparaat weer geven.
+1. Maak verbinding met de lokale gebruikersinterface van uw apparaat.
+2. Ga naar **onderhoud > hardware-status**. U kunt de status van de verschillende onderdelen van het apparaat weergeven.
 
     ![Hardware-status weer geven](media/azure-stack-edge-monitor/view-hardware-status.png)
 
@@ -57,7 +57,7 @@ In deze sectie worden de metrische gegevens over bewaking op het apparaat beschr
 
 In de volgende tabel ziet u een volledige lijst met metrische gegevens:
 
-|Metrische capaciteitsgegevens                     |Description  |
+|Metrische gegevens over capaciteit                     |Description  |
 |-------------------------------------|-------------|
 |**Beschik bare capaciteit**               | Verwijst naar de grootte van de gegevens die naar het apparaat kunnen worden geschreven. Met andere woorden, dit is de capaciteit die beschikbaar kan worden gemaakt op het apparaat. <br></br>U kunt de capaciteit van het apparaat vrijmaken door de lokale kopie van bestanden te verwijderen die zowel op het apparaat als in de Cloud zijn gekopieerd.        |
 |**Totale capaciteit**                   | Verwijst naar het totale aantal bytes op het apparaat om gegevens naar te schrijven. Dit wordt ook wel de totale grootte van de lokale cache genoemd. <br></br> U kunt nu de capaciteit van een bestaand virtueel apparaat verg Roten door een gegevens schijf toe te voegen. Voeg een gegevens schijf toe via het Hyper Visor beheer voor de virtuele machine en start vervolgens de virtuele machine opnieuw op. De lokale opslag groep van het gateway-apparaat wordt uitgebreid met de nieuwe toegevoegde gegevens schijf. <br></br>Ga voor meer informatie naar [een harde schijf toevoegen voor Hyper-V virtuele machine](https://www.youtube.com/watch?v=EWdqUw9tTe4). |

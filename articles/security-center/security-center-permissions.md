@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067219"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904822"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -44,7 +44,7 @@ De volgende tabel bevat rollen en toegestane acties in Security Center.
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Beveiligings beleid bewerken|-|✔|-|-|✔|
 |Initiatieven (waaronder) reglementaire nalevings standaarden toevoegen/toewijzen|-|-|-|-|✔|
-|Prijs categorie voor abonnement wijzigen|-|✔|-|-|✔|
+|Azure Defender in-/uitschakelen|-|✔|-|-|✔|
 |Automatische inrichting in-of uitschakelen|-|✔|-|✔|✔|
 |Aanbevelingen voor beveiliging Toep assen op een resource</br> (en gebruik een [snelle oplossing!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Waarschuwingen negeren|-|✔|-|✔|✔|

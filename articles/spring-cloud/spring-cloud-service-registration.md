@@ -4,19 +4,25 @@ description: Meer informatie over het automatiseren van service detectie en regi
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/05/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c3e26b157630df6004292c93a0a0a47307d5949a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1e60799878cc30b729344c03df36a4c5e4f4a199
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071023"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904223"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Uw lente-Cloud Services ontdekken en registreren
 
 Service detectie is een belang rijke vereiste voor een architectuur op basis van micro Services.  Het configureren van elke client kost hand matig tijd en introduceert de kans op menselijke fouten.  Dit probleem wordt opgelost met het REGI ster van de Azure veer Cloud service.  Zodra de service register server is geconfigureerd, wordt de service registratie en detectie van de micro services van uw toepassing beheerd. De service register server onderhoudt een REGI ster van de geïmplementeerde micro Services, maakt taak verdeling aan de client zijde mogelijk en koppelt service providers van clients af zonder dat hiervoor DNS nodig is.
+
+::: zone pivot="programming-language-csharp"
+Voor informatie over het instellen van service registratie voor een Steeltoe-app raadpleegt u [een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud](spring-cloud-tutorial-prepare-app-deployment.md).
+::: zone-end
+::: zone pivot="programming-language-java"
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Uw toepassing registreren met een lente-Cloud service register
 
@@ -56,3 +62,4 @@ Ten slotte voegen we een aantekening toe aan de klasse op het hoogste niveau van
 Het eind punt van de register server van de lente-Cloud service wordt als een omgevings variabele in uw toepassing ingevoegd.  Micro Services kan zich nu registreren bij de service register server en andere afhankelijke micro services ontdekken.
 
 Houd er rekening mee dat het enkele minuten kan duren voordat de wijzigingen van de server worden door gegeven aan alle micro Services.
+::: zone-end

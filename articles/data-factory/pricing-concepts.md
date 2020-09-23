@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087181"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983613"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory-prijzen leren begrijpen met voorbeelden
 
@@ -38,7 +38,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 
 3. Een schema trigger om elk uur de pijp lijn uit te voeren.
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![Diagram toont een pijp lijn met een plannings trigger. Kopieer in de pijp lijn activiteit stromen naar een invoer-gegevensset, die stromen naar een gekoppelde service van W S S3 en de Kopieer activiteit ook stromen naar een uitvoer gegevensset, die naar een Azure Storage gekoppelde service doorloopt.](media/pricing-concepts/scenario1.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
@@ -69,7 +69,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 2. Een Azure Databricks activiteit voor de gegevens transformatie.
 3. Eén schema-trigger voor het uitvoeren van de pijp lijn elk uur.
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![Diagram toont een pijp lijn met een plannings trigger. Kopieer in de pijp lijn activiteit stromen naar een invoer-gegevensset, een uitvoer-gegevensset en een DataBricks-activiteit, die wordt uitgevoerd op Azure Databricks. De invoer gegevensset loopt over naar een gekoppelde service van W S-S3. De uitvoer gegevensset loopt door naar een Azure Storage gekoppelde service.](media/pricing-concepts/scenario2.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
@@ -103,7 +103,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 3. Een Azure Databricks activiteit voor de gegevens transformatie.
 4. Eén schema-trigger voor het uitvoeren van de pijp lijn elk uur.
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![Diagram toont een pijp lijn met een plannings trigger. Kopieer in de pijp lijn activiteit stromen naar een invoer-gegevensset, een uitvoer gegevensset en lookup-activiteit die stromen naar een DataBricks-activiteit, die wordt uitgevoerd op Azure Databricks. De invoer gegevensset loopt over naar een gekoppelde service van W S-S3. De uitvoer gegevensset loopt door naar een Azure Storage gekoppelde service.](media/pricing-concepts/scenario3.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |

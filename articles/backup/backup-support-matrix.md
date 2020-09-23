@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892181"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985009"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -77,11 +77,11 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 **Back-uptype** | **Linux (goedgekeurd door Azure)**
 --- | ---
-**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
+**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
 **DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
 **MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
-**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Niet ondersteund.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
@@ -149,10 +149,10 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's.  |
-| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
-| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
-| AFS                    | Nee                                                           | N.v.t.               |
+| Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's en soevereine Clouds.  |
+| SQL-/SAP HANA | Yes                                                          | Alle open bare Azure-regio's en soevereine Clouds.             |
+| MARS-agent/on-premises  | No                                                           | N.v.t.               |
+| AFS                    | No                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

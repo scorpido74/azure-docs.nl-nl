@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022861"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985274"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassings dashboard configureren
 
@@ -56,7 +56,7 @@ In de volgende tabel worden de verschillende typen tegels beschreven die u aan e
 | Markdown         | Geprijsde tegels kunnen worden weer gegeven op tegels met een kop en beschrijving tekst die is opgemaakt met prijs verlaging. De URL kan een relatieve koppeling zijn naar een andere pagina in de toepassing of een absolute koppeling naar een externe site.|
 | Installatiekopie            | Afbeeldings tegels geven een aangepaste afbeelding weer en kunnen worden geklikt. De URL kan een relatieve koppeling zijn naar een andere pagina in de toepassing of een absolute koppeling naar een externe site.|
 | Label            | Met label tegels wordt aangepaste tekst op een dash board weer gegeven. U kunt de grootte van de tekst kiezen. Gebruik een label tegel om relevante informatie toe te voegen aan het dash board, zoals beschrijvingen, contact gegevens of Help.|
-| Count            | Met de tegels tellen wordt het aantal apparaten in een apparaatgroep weer gegeven.|
+| Aantal            | Met de tegels tellen wordt het aantal apparaten in een apparaatgroep weer gegeven.|
 | Kaart              | Kaart tegels geven de locatie weer van een of meer apparaten op een kaart. U kunt ook Maxi maal 100 punten van de locatie geschiedenis van een apparaat weer geven. U kunt bijvoorbeeld een bemonsterde route weer geven van waar een apparaat zich in de afgelopen week bevindt.|
 | KPI              |  KPI-tegels geven geaggregeerde telemetrie-waarden weer voor een of meer apparaten gedurende een bepaalde periode. U kunt dit bijvoorbeeld gebruiken om de maximale Tempe ratuur en druk voor een of meer apparaten in het afgelopen uur weer te geven.|
 | Lijndiagram       | Met tegels in lijn diagrammen worden een of meer geaggregeerde telemetriegegevens voor een of meer apparaten voor een bepaalde periode getekend. U kunt bijvoorbeeld een lijn diagram weer geven om de gemiddelde Tempe ratuur en druk van een of meer apparaten in het afgelopen uur af te zetten.|
@@ -79,7 +79,19 @@ Voor lijn diagrammen, staaf diagrammen en cirkel diagrammen kunt u de kleur van 
 
 Voor tegels die teken reeks eigenschappen of telemetrie-waarden weer geven, kunt u kiezen hoe u de tekst wilt weer geven. Als het apparaat bijvoorbeeld een URL in een teken reeks eigenschap opslaat, kunt u deze weer geven als een klikbare koppeling. Als de URL verwijst naar een afbeelding, kunt u de installatie kopie weer geven in een laatste bekende waarde of eigenschaps tegel. Als u wilt wijzigen hoe een teken reeks wordt weer gegeven, selecteert u in de tegel configuratie het tandwiel pictogram naast het type telemetrie of de eigenschap:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bepalen hoe een teken reeks op een tegel wordt weer gegeven":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Wijzigen hoe een teken reeks op een tegel wordt weer gegeven":::
+
+Voor numerieke **kpi's**, de **laatste bekende waarde**en **Eigenschappen** tegels kunt u voorwaardelijke opmaak gebruiken om de kleur van de tegel aan te passen op basis van de huidige waarde. Als u voorwaardelijke opmaak wilt toevoegen, selecteert u **configureren** op de tegel en selecteert u vervolgens het pictogram **voorwaardelijke opmaak** naast de waarde die u wilt aanpassen:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Scherm afbeelding die laat zien hoe u de optie configureren voor een tegel kunt vinden en vervolgens het pictogram voor voorwaardelijke opmaak":::
+
+Voeg uw regels voor voorwaardelijke opmaak toe:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Scherm opname van regels met voorwaardelijke opmaak voor de gemiddelde stroom. Er zijn drie regels: minder dan tha 20 groen, kleiner dan 50 is geel, en iets meer dan 50 is rood":::
+
+Op de volgende scherm afbeelding ziet u het effect van de regel voor voorwaardelijke opmaak:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Scherm afbeelding van de gele achtergrond kleur op de tegel gemiddelde water stroom. Het aantal op de tegel is 40,84":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

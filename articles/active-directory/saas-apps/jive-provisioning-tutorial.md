@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547083"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983129"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Zelf studie: Jive configureren voor automatische gebruikers inrichting
 
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 *   Een Azure Active Directory-Tenant.
 *   Een Jive-abonnement dat is ingeschakeld voor eenmalige aanmelding.
@@ -31,7 +31,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-jive"></a>Gebruikers toewijzen aan Jive
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Jive-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw Jive-app door de volgende instructies te volgen:
 
@@ -61,9 +61,9 @@ Als onderdeel van deze procedure moet u een beveiligings token van de gebruiker 
 
 1. Selecteer uw exemplaar van Jive en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **inrichtings modus** in op **automatisch**. 
+1. Stel de **Inrichtingsmodus** in op **Automatisch**. 
 
-    ![inrichtings](./media/jive-provisioning-tutorial/provisioning.png)
+    ![In de scherm afbeelding wordt de Jive-inrichtings pagina weer gegeven, waarbij de inrichtings modus is ingesteld op automatisch en andere waarden die u kunt instellen.](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. Geef onder de sectie **beheerders referenties** de volgende configuratie-instellingen op:
    
@@ -93,10 +93,10 @@ Als onderdeel van deze procedure moet u een beveiligings token van de gebruiker 
 
 Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan Jive in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw Jive-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](jive-tutorial.md)

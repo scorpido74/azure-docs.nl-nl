@@ -1,6 +1,6 @@
 ---
 title: Prestaties afstemmen met gerealiseerde weer gaven
-description: Aanbevelingen en overwegingen die u moet kennen wanneer u gerealiseerde weer gaven gebruikt om de query prestaties te verbeteren.
+description: Meer informatie over aanbevelingen en overwegingen die u moet kennen bij het gebruik van gerealiseerde weer gaven om de query prestaties te verbeteren.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ddab106e11340dd040b99d1e8abf9d93e9338ab7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984106"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weer gaven
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor werkmappen-para meters maken
-description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
+description: Meer informatie over hoe u met para meters de makers van de gebruikers in staat stelt invoer van de consumenten te verzamelen en ernaar te verwijzen in andere delen van de werkmap.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984569"
 ---
 # <a name="workbook-parameters"></a>Werkmap parameters
 
@@ -40,8 +40,8 @@ U kunt naar deze parameter waarden verwijzen in andere delen van werkmappen door
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
     1. Parameter naam: `TimeRange` *(de parameter __namen__ **mogen geen** spaties of speciale tekens bevatten)*
     2. Weergave naam: `Time Range` *( __weergave namen__ mogen echter spaties, speciale tekens, Emoji, enzovoort) bevatten.*  
-    2. Parameter type:`Time range picker`
-    3. Vereist:`checked`
+    2. Parameter type: `Time range picker`
+    3. Vereist: `checked`
     4. Beschik bare Peri Oden: vorig uur, laatste 12 uur, afgelopen 24 uur, afgelopen 48 uur, afgelopen 3 dagen, afgelopen 7 dagen en aangepast tijds bereik toestaan
 5. Kies opslaan op de werk balk om de para meter te maken.
 
@@ -62,7 +62,7 @@ Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 
 ### <a name="in-kql"></a>In KQL
 1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
-2. Voer in het KQL een tijd bereik filter in met behulp van de para meter:`| where timestamp {TimeRange}`
+2. Voer in het KQL een tijd bereik filter in met behulp van de para meter: `| where timestamp {TimeRange}`
 3. Dit wordt uitgebreid naar de evaluatie tijd `| where timestamp > ago(1d)` van de query tot, dat wil zeggen de waarde voor het tijds bereik van de para meter.
 4. Query uitvoeren om de resultaten te bekijken
 
@@ -70,7 +70,7 @@ Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 
 ### <a name="in-text"></a>In tekst 
 1. Voeg een besturings element tekst toe aan de werkmap.
-2. Voer in de prijs verlaging`The chosen time range is {TimeRange:label}`
+2. Voer in de prijs verlaging `The chosen time range is {TimeRange:label}`
 3. Kies _gereed bewerken_
 4. In het tekst besturings element wordt tekst weer gegeven: _het gekozen tijds bereik is afgelopen 24 uur_
 

@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Zie Logic Apps verbinding maken met Azure Digital Apparaatdubbels met behulp van een aangepaste connector
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401058"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983456"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -26,8 +26,12 @@ In dit artikel gaat u de [Azure Portal](https://portal.azure.com) gebruiken om *
 ## <a name="prerequisites"></a>Vereisten
 
 Als u geen abonnement op Azure hebt, **maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** voordat u begint.
+Meld u aan bij de [Azure Portal](https://portal.azure.com) met dit account. 
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com) met dit account.
+In de rest van deze sectie wordt u stapsgewijs begeleid bij de volgende stappen:
+- Een Azure Digital Twins-instantie instellen
+- Client geheim voor registratie van apps ophalen
+- Voeg een digitale dubbele
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Een Azure Digital Twins-exemplaar instellen
 
@@ -49,7 +53,12 @@ Klik op *certificaten en geheimen* in het menu van de registratie en selecteer *
 :::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Portal weergave van een Azure AD-App-registratie. Er is een hooglicht rondom ' certificaten en geheimen ' in het resource menu en een highlight op de pagina rondom ' nieuw client geheim '":::
 
 Voer de gewenste waarden in voor beschrijving en verloopt en klik op *toevoegen*.
-Het geheim wordt toegevoegd aan de lijst met client geheimen op de pagina *certificaten en geheimen* . Noteer de waarde die u later wilt gebruiken (u kunt deze ook kopiëren naar het klem bord met het Kopieer pictogram).
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Client geheim toevoegen":::
+
+Controleer nu of het client geheim zichtbaar is op de pagina _certificaten & geheimen_ met velden _Expires_ en _waarde_ . Noteer de _waarde_ die u later wilt gebruiken (u kunt deze ook naar het klem bord kopiëren met het Kopieer pictogram)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Geheime waarde van client kopiëren":::
 
 ### <a name="add-a-digital-twin"></a>Voeg een digitale dubbele
 
@@ -67,9 +76,13 @@ Ga naar de pagina [Logic apps aangepaste connector](https://portal.azure.com/#bl
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="De pagina ' Logic Apps aangepaste connector ' in de Azure Portal. Markeren rond de knop toevoegen":::
 
-Selecteer uw abonnement en resource groep en een naam en implementatie locatie voor uw nieuwe connector op de pagina *Logic apps aangepaste connector maken* die volgt. Druk op *beoordelen + maken*. Hiermee gaat u naar het tabblad *controleren en maken* , waar u onder *maken* kunt raken om uw resource te maken.
+Selecteer uw abonnement en resource groep en een naam en implementatie locatie voor uw nieuwe connector op de pagina *Logic apps aangepaste connector maken* die volgt. Druk op *beoordelen + maken*. 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Het tabblad ' controleren + maken ' van de pagina ' Logic Apps aangepaste connector maken ' in de Azure Portal. Markeren rond de knop maken":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="De pagina Logic Apps aangepaste connector maken in de Azure Portal.":::
+
+Hiermee gaat u naar het tabblad *controleren en maken* , waar u onder *maken* kunt raken om uw resource te maken.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Het tabblad ' controleren + maken ' van de pagina ' Logic Apps aangepaste connector controleren ' in de Azure Portal. Markeren rond de knop maken":::
 
 U wordt naar de implementatie pagina voor de connector geleid. Wanneer de implementatie is voltooid, klikt u op de knop *Ga naar resource* om de details van de connector in de portal weer te geven.
 
@@ -89,7 +102,9 @@ Configureer de volgende gegevens op de pagina *Logic apps aangepaste connector b
     - Import modus: OpenAPI-bestand (standaard instelling behouden)
     - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jsaan*) en klik op *openen*.
 * **Algemene informatie**
-    - Pictogram, achtergrond kleur van pictogram, beschrijving: Vul de gewenste waarden in.
+    - Pictogram: Upload een pictogram dat u wilt
+    - Achtergrond kleur van pictogram: Voer hexadecimale code in de notatie #xxxxxx in voor de kleur.
+    - Beschrijving: Vul de gewenste waarden in.
     - Schema: HTTPS (standaard instelling behouden)
     - Host: de *hostnaam* van uw Azure Digital apparaatdubbels-exemplaar.
     - Basis-URL:/(standaard instelling behouden)
@@ -145,11 +160,15 @@ U bent nu klaar met het instellen van een aangepaste connector die toegang heeft
 
 Vervolgens maakt u een logische app die uw nieuwe connector gebruikt voor het automatiseren van Azure Digital Apparaatdubbels-updates.
 
-Ga naar de pagina [Logic apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) in het Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op *logische app maken*.
+Ga naar de pagina [Logic apps (verbruik)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) in de Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op de knop *toevoegen* om een logische app te maken.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="De pagina Logic Apps in de Azure Portal. De knop voor het maken van een logische app markeren":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="De pagina Logic Apps (verbruik) in de Azure Portal. Knop toevoegen":::
 
-Selecteer op de pagina *logische app* die volgt uw abonnement en de resource groep en een naam en implementatie locatie voor uw nieuwe logische app. Druk op *beoordelen + maken*. Hiermee gaat u naar het tabblad *controleren en maken* , waar u onder *maken* kunt raken om uw resource te maken.
+Voer op de pagina *Logic apps (verbruik)* het volgende in: uw abonnement, de resource groep. Kies ook een naam voor uw logische app en selecteer de locatie.
+
+Selecteer de knop _beoordeling + maken_ .
+
+Hiermee gaat u naar het tabblad *controleren en maken* , waar u uw gegevens kunt bekijken en onder aan de slag wilt gaan om uw resource *te maken.*
 
 U gaat naar de implementatie pagina voor de logische app. Wanneer de implementatie is voltooid, klikt u op de knop *Ga naar resource* om door te gaan naar de *Logic apps Designer*, waarin u de logica van de werk stroom moet invullen.
 
@@ -172,11 +191,13 @@ Selecteer deze optie om de lijst met Api's in die connector weer te geven. Gebru
 U wordt mogelijk gevraagd om u aan te melden met uw Azure-referenties om verbinding te maken met de connector. Als u een dialoog venster *machtigingen hebt aangevraagd* , volgt u de aanwijzingen om toestemming te geven voor uw app en om te accepteren.
 
 Vul in het vak nieuwe *DigitalTwinsAdd* de velden als volgt in:
-* id: Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
-* Item-1: in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate*is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
-* API-Version: in de huidige open bare preview is deze waarde *2020-05-31-preview*
+* _id_: Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
+* _dubbele_: in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate*is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
+* _API-Version_: in de huidige open bare preview is deze waarde *2020-05-31-preview*
 
 Druk op *Opslaan* in de Logic apps Designer.
+
+U kunt andere bewerkingen kiezen door _+ nieuwe stap_ te selecteren in hetzelfde venster.
 
 :::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Voltooide weer gave van de app in de logische app-connector. Het vak DigitalTwinsAdd is gevuld met de waarden die hierboven worden beschreven, inclusief een voor beeld van een JSON-patch voor de toepassing. De knop Opslaan voor het venster is gemarkeerd.":::
 

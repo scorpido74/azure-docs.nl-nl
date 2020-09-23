@@ -4,18 +4,18 @@ description: Meer informatie over duurzame software engineering in azure Kuberne
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084474"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984976"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Duurzame software engineering-principals in azure Kubernetes service (AKS)
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Duurzame software techniek Principles in azure Kubernetes service (AKS)
 
-De duurzame software engineering-principals zijn een set competenties die u helpen bij het definiëren, bouwen en uitvoeren van duurzame toepassingen. Het algemene doel is het verminderen van de carbon footprint van elk aspect van uw toepassing. Het [project principes. groen][principals-green] bevat een overzicht van de principals van duurzame software techniek.
+De methoden van duurzame software techniek zijn een set competenties die u helpen bij het definiëren, bouwen en uitvoeren van duurzame toepassingen. Het algemene doel is het verminderen van de carbon footprint van elk aspect van uw toepassing. Het [project Principles. Green][principles-green] bevat een overzicht van de principes van duurzame software techniek.
 
-Een belang rijk idee van een duurzame software techniek is dat het een verschuiving in prioriteiten is en de focus heeft. In veel gevallen is software ontworpen en uitgevoerd op een manier die zich richt op snelle prestaties en een lage latentie. Duurzame software techniek richt zich op het verminderen van zoveel mogelijk kool emissies. In sommige gevallen kan het Toep assen van duurzame software engineering-principals leiden tot snellere prestaties of een lagere latentie, zoals door de totale netwerk reis te verlagen. In andere gevallen kan het verminderen van de uitstoot van emissies leiden tot tragere prestaties of een grotere latentie, zoals het vertragen van het uitstellen van werk belastingen met een lage prioriteit. Voordat u overweegt om duurzame software engineering-principals toe te passen op uw toepassing, kunt u de prioriteiten, behoeften en de berekenings verhouding van uw toepassing controleren.
+Een belang rijk idee van een duurzame software techniek is dat het een verschuiving in prioriteiten is en de focus heeft. In veel gevallen is software ontworpen en uitgevoerd op een manier die zich richt op snelle prestaties en een lage latentie. Duurzame software techniek richt zich op het verminderen van zoveel mogelijk kool emissies. In sommige gevallen kan het Toep assen van duurzame software techniek leiden tot snellere prestaties of een lagere latentie, zoals bij het verlagen van de totale netwerk reis. In andere gevallen kan het verminderen van de uitstoot van emissies leiden tot tragere prestaties of een grotere latentie, zoals het vertragen van het uitstellen van werk belastingen met een lage prioriteit. Voordat u overweegt de ontwikkeling van duurzame software techniek toe te passen op uw toepassing, kunt u de prioriteiten, behoeften en de berekenings verhouding van uw toepassing controleren.
 
 ## <a name="measure-and-optimize"></a>Meten en optimaliseren
 
@@ -74,4 +74,4 @@ Meer informatie over de functies van AKS die in dit artikel worden genoemd:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4a97a084b11b34f97e0c020f367ec730d8dfb079
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075729"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985132"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Een back-up van een virtuele machine maken in Azure met PowerShell
 
@@ -46,7 +46,7 @@ Bij het maken van de kluis:
 
 - Geef voor de resourcegroep en locatie de resourcegroep en de locatie op van de VM waarvan u een back-up wilt maken.
 - Als u dit [voorbeeldscript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) hebt gebruikt om de VM te maken, is de resourcegroep **myResourceGroup**, is de VM **myVM**, en bevinden de resources zich op de locatie **WestEurope**.
-- Azure Backup verwerkt automatisch de opslag voor back-upgegevens. De kluis maakt standaard gebruik van [GRS (geografisch redundante opslag)](../storage/common/storage-redundancy.md). Geografisch redundantie zorgt ervoor dat uw back-upgegevens worden gerepliceerd naar een secundaire Azure-regio, honderden kilometers verwijderd van de primaire regio.
+- Azure Backup verwerkt automatisch de opslag voor back-upgegevens. De kluis maakt standaard gebruik van [GRS (geografisch redundante opslag)](../storage/common/storage-redundancy.md#geo-redundant-storage). Geografisch redundantie zorgt ervoor dat uw back-upgegevens worden gerepliceerd naar een secundaire Azure-regio, honderden kilometers verwijderd van de primaire regio.
 
 Nu gaat u een kluis maken:
 

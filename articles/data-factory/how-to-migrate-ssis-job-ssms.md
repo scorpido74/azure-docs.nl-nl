@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984904"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-taken migreren naar ADF met SSMS
 
@@ -31,7 +31,7 @@ Over het algemeen kunt u voor geselecteerde SQL-Agent taken met de betreffende t
     > De pakket locatie van het bestands systeem wordt alleen ondersteund.
 - Migreer toepasselijke taken met de betreffende taak stappen naar de bijbehorende ADF-resources, zoals hieronder wordt beschreven:
 
-|SQL Agent-taak object  |ADF-resource  |Opmerkingen|
+|SQL Agent-taak object  |ADF-resource  |Notities|
 |---------|---------|---------|
 |SQL-Agent taak|pijp lijn     |De naam van de pijp lijn die wordt *gegenereerd \<job name> voor *. <br> <br> Ingebouwde Agent taken zijn niet van toepassing: <li> Onderhouds taak voor SSIS-server <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
 |SSIS-taak stap|SSIS-pakket activiteit uitvoeren|<li> De naam van de activiteit wordt \<step name> . <li> Het proxy account dat in de taak stap wordt gebruikt, wordt gemigreerd als Windows-verificatie van deze activiteit. <li> *Uitvoerings opties* , met uitzonde ring van de *32-bits runtime* die is gedefinieerd in de taak stap, worden genegeerd tijdens de migratie. <li> De *verificatie* die in taak stap is gedefinieerd, wordt genegeerd tijdens de migratie.|
@@ -46,7 +46,7 @@ Voor de functie die in dit artikel wordt beschreven, is SQL Server Management St
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS-taken migreren naar ADF
 
 1. In SSMS selecteert u in Objectverkenner SQL Server Agent, selecteert u taken, klikt u met de rechter muisknop en selecteert **u SSIS-taken migreren naar ADF**.
-![snelmenu's](media/how-to-migrate-ssis-job-ssms/menu.png)
+![Scherm afbeelding toont SQL Server Management Studio Objectverkenner, waar u taken kunt selecteren en vervolgens S S I s-taken naar een D F wilt migreren.](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Meld u aan bij Azure, selecteer Azure-abonnement, Data Factory en Integration Runtime. Azure Storage is optioneel. dit wordt gebruikt in de stap toewijzing van pakket locatie als SSIS-taken moeten worden gemigreerd SSIS-bestandssysteem pakketten.
 ![snelmenu's](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ Voor de functie die in dit artikel wordt beschreven, is SQL Server Management St
     1. Pad naar de bronmap bijwerken. Geldige paden zijn mappaden of paden van bovenliggende mappen van pakketten.
     1. Het pad naar de doelmap bijwerken. De standaard waarde is een relatief pad naar het standaard opslag account dat is geselecteerd in stap 1.
     1. Een geselecteerde toewijzing verwijderen via **toewijzing verwijderen**.
-![step2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
- ![ step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Scherm afbeelding toont de pagina toewijzings-en configuratie paden van de kaart, waar u de toewijzing kunt toevoegen. ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ Scherm afbeelding toont de pagina toewijzings-en configuratie paden van de map S, waar u de paden voor de bron-en doelmap kunt bijwerken.](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Selecteer de van toepassing zijnde taken die moeten worden gemigreerd en configureer de instellingen van de bijbehorende *uitgevoerde SSIS-pakket activiteit*.
 
     - *Standaard instelling*, is standaard van toepassing op alle geselecteerde stappen. Zie het *tabblad Instellingen* voor de [activiteit uitvoeren SSIS-pakket](how-to-invoke-ssis-package-ssis-activity.md) wanneer de pakket locatie *Bestands systeem is (pakket)* voor meer informatie over elke eigenschap.
-    ![stap 3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![In de scherm afbeelding ziet u de pagina S S I S-taken selecteren, waar u de instellingen van de bijbehorende uitgevoerde SSIS-pakket activiteit kunt configureren.](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *Stap instelling*, Configureer de instelling voor een geselecteerde stap.
         
         **Standaard instelling Toep assen**: standaard is geselecteerd. Schakel het selectie vakje uit om de instelling alleen voor de geselecteerde stap te configureren.  
         Zie voor meer informatie over andere eigenschappen het *tabblad Instellingen* voor de [activiteit SSIS-pakket uitvoeren](how-to-invoke-ssis-package-ssis-activity.md) wanneer de pakket locatie *Bestands systeem is (pakket)*.
-    ![stap 3-2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![In de scherm afbeelding ziet u de pagina S S I S-taken selecteren, waar u de standaard instellingen kunt Toep assen.](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM-sjabloon genereren en implementeren.
     1. Het uitvoerpad selecteren of invoeren voor de ARM-sjablonen van de gemigreerde ADF-pijp lijnen. De map wordt automatisch gemaakt als deze nog niet bestaat.
     2. Selecteer de optie voor het **implementeren van arm-sjablonen voor uw Data Factory**:
         - De standaard instelling is niet geselecteerd. U kunt gegenereerde ARM-sjablonen later hand matig implementeren.
         - Selecteer deze optie om direct gegenereerde ARM-sjablonen te implementeren op data factory.
-    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![Scherm afbeelding toont de pagina migratie configureren, waar u het uitvoerpad kunt selecteren of invoeren voor de ARM-sjablonen van de gemigreerde ADF-pijp lijnen en selecteert u de optie om ARM-sjablonen te implementeren op uw data factory.](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. Migreer en controleer vervolgens de resultaten.
-![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![Scherm afbeelding toont de pagina migratie resultaten, die de voortgang van de migratie weergeeft.](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

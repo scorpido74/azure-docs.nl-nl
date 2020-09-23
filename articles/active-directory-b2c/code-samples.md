@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181155"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029015"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C: codevoorbeelden
 
@@ -26,7 +26,7 @@ In de volgende tabellen ziet u koppelingen naar voorbeelden voor toepassingen, w
 | Voorbeeld | Beschrijving |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Een iOS-voorbeeld in Swift waarmee Azure AD B2C-gebruikers worden geverifieerd en een API wordt aangeroepen met behulp van OAuth 2.0 |
-| [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Een eenvoudige Android-app die laat zien hoe u MSAL kunt gebruiken om gebruikers te verifiëren via Active Directory B2C en toegang kunt krijgen tot een Web-API met behulp van de resulterende tokens. |
+| [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Een eenvoudige Android-app die laat zien hoe u MSAL kunt gebruiken om gebruikers te verifiëren via Active Directory B2C en toegang kunt krijgen tot een Web-API met behulp van de resulterende tokens. |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Een voorbeeld van hoe u een bibliotheek van derden kunt gebruiken om een iOS-toepassing te bouwen in Objective-C waarmee Microsoft-id-gebruikers kunnen worden geverifieerd bij de Azure AD B2C-id-service. |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Een voorbeeld van hoe u een bibliotheek van derden kunt gebruiken om een Android-toepassing te bouwen waarmee Microsoft-id-gebruikers kunnen worden geverifieerd bij de B2C-id-service, en waarmee een Web-API wordt aangeroepen met behulp van OAuth 2.0-toegangstokens. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Een voorbeeld van hoe een gebruiker wordt aangemeld bij een WPF-toepassing (Windows Desktop .NET) via Azure AD B2C, een toegangstoken wordt verkregen met behulp van MSAL.NET en een API wordt aangeroepen. |

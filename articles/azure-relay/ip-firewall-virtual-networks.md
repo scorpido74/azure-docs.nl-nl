@@ -3,12 +3,12 @@ title: IP-Firewall configureren voor Azure Relay naam ruimte
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbindingen van bepaalde IP-adressen toe te staan Azure Relay naam ruimten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141853"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976023"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
 Relay-naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -29,7 +29,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal kunt gebruiken om IP-firew
 1. Navigeer naar uw **Relay-naam ruimte** in de [Azure Portal](https://portal.azure.com).
 2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** in de sectie  **toegang toestaan vanaf** selecteert, accepteert de relay-naam ruimte verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
-    ![Optie Firewall: alle netwerken geselecteerd](./media/ip-firewall/all-networks-selected.png)
+    ![Scherm afbeelding toont de pagina netwerken met de optie alle netwerken geselecteerd.](./media/ip-firewall/all-networks-selected.png)
 1. Selecteer de optie **geselecteerde netwerken** om de toegang tot specifieke netwerken en IP-adressen te beperken. Voer de volgende stappen uit in de sectie **firewall** :
     1. Selecteer **de optie uw IP-adres voor client toevoegen** om uw huidige client-IP de toegang tot de naam ruimte te geven. 
     2. Voer bij **adres bereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
@@ -51,7 +51,7 @@ De sjabloon heeft één para meter: **ipMask**, een enkel IPv4-adres of een blok
 > ```json
 > "defaultAction": "Allow"
 > ```
-> in
+> in op
 > ```json
 > "defaultAction": "Deny"
 > ```

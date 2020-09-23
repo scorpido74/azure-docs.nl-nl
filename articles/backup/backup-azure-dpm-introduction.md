@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021031"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975464"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -61,7 +61,7 @@ U kunt kiezen tussen geografisch redundante opslag en lokaal redundante opslag.
 
 - Uw kluis heeft standaard geografisch redundante opslag.
 - Als de kluis uw primaire back-up is, houdt u de optie ingesteld op geografisch redundante opslag. Als u een goedkopere optie wilt gebruiken die niet zo duurzaam is, gebruikt u de volgende procedure om lokaal redundante opslag te configureren.
-- Meer informatie over [Azure Storage](../storage/common/storage-redundancy.md)en de opties voor [geografisch redundante](../storage/common/storage-redundancy.md) en [lokaal redundante](../storage/common/storage-redundancy.md) opslag.
+- Meer informatie over [Azure Storage](../storage/common/storage-redundancy.md)en de [geografisch redundante](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokaal redundante](../storage/common/storage-redundancy.md#locally-redundant-storage) en [zone redundante](../storage/common/storage-redundancy.md#zone-redundant-storage) opslag opties.
 - Wijzig de opslag instellingen vóór de eerste back-up. Als u al een back-up van een item hebt gemaakt, stopt u het maken van de back-up in de kluis voordat u de opslag instellingen wijzigt.
 
 De instelling voor opslagreplicatie bewerken:
@@ -97,7 +97,7 @@ Down load het kluis referentie bestand via een beveiligd kanaal van de Azure Por
 
 Down load het kluis referentie bestand als volgt naar een lokale computer:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de kluis waarin u de DPM-server wilt registreren.
 3. Selecteer in **instellingen**de optie **Eigenschappen**.
 
@@ -165,7 +165,7 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
 
 7. Selecteer **registreren** om de DPM-server te registreren bij de kluis.
 
-Nadat de server is geregistreerd in de kluis, bent u nu klaar om een back-up te maken van Microsoft Azure. U moet de beveiligings groep configureren in de DPM-console om een back-up te maken van werk belastingen naar Azure. [Meer informatie over het](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) implementeren van beveiligings groepen.
+Nadat de server is geregistreerd in de kluis, bent u nu klaar om een back-up te maken van Microsoft Azure. U moet de beveiligings groep configureren in de DPM-console om een back-up te maken van werk belastingen naar Azure. [Meer informatie over het](/system-center/dpm/create-dpm-protection-groups) implementeren van beveiligings groepen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problemen met kluis referenties oplossen
 

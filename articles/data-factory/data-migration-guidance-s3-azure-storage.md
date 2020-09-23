@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984889"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -37,7 +37,7 @@ ADF biedt een serverloze architectuur die parallellisme op verschillende niveaus
 
 Klanten hebben PETA bytes van gegevens gemigreerd die bestaan uit honderden miljoenen bestanden van Amazon S3 naar Azure Blob Storage, met een aanhoudende door Voer van 2 GBps en hoger. 
 
-![prestaties](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![Diagram toont verschillende bestands partities in een W S S3-opslag met gekoppelde Kopieer acties naar Azure Blob Storage een D L S Gen2.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 In de bovenstaande afbeelding ziet u hoe u met behulp van verschillende niveaus van parallellisme uitstekende gegevens verplaatsings snelheden kunt realiseren:
  
@@ -61,7 +61,7 @@ Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kun
 
 Gegevens migreren via het open bare Internet:
 
-![oplossing-architectuur-openbaar-netwerk](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![In het diagram ziet u de migratie via internet per uur T/m P van een W S S3-archief via Azure Integration Runtime in een D F Azure naar Azure Storage. De runtime heeft een besturings kanaal met Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - In deze architectuur worden gegevens veilig overgedragen met behulp van HTTPS via open bare Internet. 
 - Zowel de bron Amazon S3 als de doel-Azure-Blob Storage of Azure Data Lake Storage Gen2 zijn zodanig geconfigureerd dat verkeer van alle IP-adressen van het netwerk wordt toegestaan.  Raadpleeg de tweede architectuur hieronder voor informatie over hoe u de netwerk toegang tot een specifiek IP-bereik kunt beperken. 
@@ -70,7 +70,7 @@ Gegevens migreren via het open bare Internet:
 
 Gegevens migreren via een persoonlijke koppeling: 
 
-![oplossing-architectuur-privé-netwerk](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![Diagram toont de migratie via een particuliere peering-verbinding van een W S S3-opslag via zelf-hostende Integration runtime op Azure virtual machines naar de eind punten van de V net-service naar Azure Storage. De runtime heeft een besturings kanaal met Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - In deze architectuur wordt de gegevens migratie uitgevoerd via een koppeling voor een privé-peering tussen AWS Direct Connect en Azure Express route zodat de gegevens nooit via het open bare Internet worden gepasseerd.  Hiervoor is het gebruik van AWS VPC en een virtueel Azure-netwerk vereist. 
 - U moet de zelf-hostende Integration runtime van ADF installeren op een Windows-VM in uw virtuele Azure-netwerk om deze architectuur te verzorgen.  U kunt uw zelf-hostende IR-Vm's hand matig schalen of uitschalen naar meerdere Vm's (Maxi maal 4 knoop punten) om uw netwerk en opslag-IOPS/band breedte volledig te benutten. 
@@ -122,7 +122,7 @@ Wanneer u vertragings fouten ondervindt die worden gerapporteerd door de ADF-Kop
 
 Bekijk de volgende pijp lijn die is gebouwd voor het migreren van gegevens van S3 naar Azure Blob Storage: 
 
-![prijs informatie-pijp lijn](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![Diagram toont een pijp lijn voor het migreren van gegevens, met hand matige trigger stroom om te zoeken, Flowing naar ForEach, stromend naar een subpijplijn voor elke partitie die Kopieer stroom naar opgeslagen procedure bevat. Buiten de pijp lijn worden opgeslagen procedures doorstromen naar Azure SQL D B, die stromen om te zoeken en een W S S3-stroom om te kopiëren, die stromen naar Blob Storage.](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 We nemen het volgende uit: 
 
@@ -135,7 +135,7 @@ We nemen het volgende uit:
 
 Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen: 
 
-![prijs informatie: tabel](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![Scherm afbeelding van een tabel toont een geschatte prijs.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Aanvullende naslaginformatie 
 - [Amazon Simple Storage-service connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)

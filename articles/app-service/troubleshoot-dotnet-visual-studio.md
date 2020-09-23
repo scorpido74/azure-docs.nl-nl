@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982997"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -70,15 +70,15 @@ U implementeert doorgaans een webproject met de `customErrors` markering in het 
 
 **Server fout in/-toepassing:**
 
-![Niet-Help fout pagina](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Scherm opname met een server fout in de toepassings fout in een webbrowser.":::
 
 **Er is een fout opgetreden:**
 
-![Niet-Help fout pagina](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Scherm afbeelding met een voor beeld van een algemene fout in een webbrowser.":::
 
 **De website kan de pagina niet weer geven**
 
-![Niet-Help fout pagina](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Scherm opname met een website kan de pagina fout niet weer geven in een webbrowser.":::
 
 De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetailleerde fout berichten in te scha kelen, zoals in de eerste van de voor gaande scherm afbeeldingen wordt uitgelegd hoe u dit moet doen. Hiervoor is een wijziging in het geïmplementeerde Web.config-bestand vereist. U kunt het *Web.config* -bestand in het project bewerken en het project opnieuw implementeren, of een [Web.config-trans formatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) maken en een debug-build implementeren, maar er is een snellere manier: in **Solution Explorer**u de bestanden in de externe app rechtstreeks weer geven en bewerken met behulp van de functie *externe weer gave* .
 
@@ -97,7 +97,7 @@ De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetaill
     ![Web.config bewerken](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Vernieuw de browser waarin het fout bericht niet meer wordt weer gegeven en u krijgt nu een gedetailleerd fout bericht, zoals het volgende voor beeld:
 
-    ![Gedetailleerd fout bericht](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
+    ![Gedetailleerd foutbericht](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
     (De fout die wordt weer gegeven, is gemaakt door de regel die wordt weer gegeven in rood, toe te voegen aan *Views\Home\Index.cshtml*.)
 
@@ -139,7 +139,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
 1. Klik in **Server Explorer**met de rechter muisknop op uw app en klik vervolgens op **fout opsporing toevoegen**.
 
-    ![Fout opsporingsprogramma koppelen](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Scherm opname van het Server Explorer venster waarin een app is geselecteerd en klik vervolgens op fout opsporing toevoegen.":::
 
     De browser wordt automatisch geopend op uw start pagina die in azure wordt uitgevoerd. Mogelijk moet u 20 seconden wachten, terwijl Azure de server instelt voor fout opsporing. Deze vertraging treedt alleen op wanneer u voor de eerste keer in de foutopsporingsmodus op een app in een periode van 48 uur wordt uitgevoerd. Wanneer u de fout opsporing opnieuw in dezelfde periode start, is er geen vertraging.
 
@@ -192,7 +192,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
 8. Klik op **fout opsporing toevoegen**.
 
-    ![Fout opsporingsprogramma koppelen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Scherm opname van Server Explorer weer geven dat ContosoAdsWebJob is geselecteerd in de vervolg keuzelijst en het fout opsporingsprogramma koppelen is geselecteerd.":::
 
     De browser wordt automatisch geopend op uw start pagina die in azure wordt uitgevoerd. Mogelijk moet u 20 seconden wachten, terwijl Azure de server instelt voor fout opsporing. Deze vertraging treedt alleen op wanneer u voor de eerste keer in de foutopsporingsmodus op een app in een periode van 48 uur wordt uitgevoerd. Wanneer u de fout opsporing opnieuw in dezelfde periode start, is er geen vertraging.
 
@@ -340,11 +340,11 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
 1. Voeg in de adres balk van het browser venster *tracering. axd* toe aan de URL en druk op ENTER (de URL is vergelijkbaar met `http://localhost:53370/trace.axd` ).
 1. Klik op de pagina **toepassings tracering** op **Details weer geven** op de eerste regel (niet op de regel BrowserLink).
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Scherm afbeelding van de pagina Toepassings tracering in een webbrowser met weer gave-details die zijn geselecteerd op de eerste regel.":::
 
     De pagina **aanvraag Details** wordt weer gegeven en in de sectie **tracerings gegevens** ziet u de uitvoer van de trace-instructies die u hebt toegevoegd aan de- `Index` methode.
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Scherm afbeelding van de pagina met details van de aanvraag in een webbrowser waarin een bericht wordt weer gegeven dat is gemarkeerd in de sectie informatie over tracering.":::
 
     `trace.axd`Is standaard alleen lokaal beschikbaar. Als u het beschikbaar wilt maken vanuit een externe app, kunt u dit toevoegen `localOnly="false"` aan het `trace` -element in het *Web.config* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -361,11 +361,12 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
     Nadat Visual Studio uw update heeft gepubliceerd, wordt er een browser venster geopend op uw start pagina (ervan uitgaande dat u de **doel-URL** niet hebt gewist op het tabblad **verbinding** ).
 3. Klik in **Server Explorer**met de rechter muisknop op uw app en selecteer **streaming-logboeken weer geven**.
 
-    ![Streaming-Logboeken in het context menu weer geven](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Scherm opname van Server Explorer nadat u met de rechter muisknop op uw app hebt geklikt, waarbij streaming-logboeken weer geven in een nieuw venster zijn geselecteerd.":::
 
     In het **uitvoer** venster ziet u dat u verbonden bent met de service voor logboek registratie en wordt elke minuut een meldings regel toegevoegd zonder dat een logboek wordt weer gegeven.
 
-    ![Streaming-Logboeken in het context menu weer geven](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Scherm afbeelding van het uitvoer venster met een voor beeld van een verbinding met een service voor logboek registratie met behulp van meldings regels.":::
+
 4. Klik in het browser venster waarin de start pagina van uw toepassing wordt weer gegeven op **contact persoon**.
 
     Binnen een paar seconden wordt de uitvoer van de tracering op fout niveau die u hebt toegevoegd aan de- `Contact` methode weer gegeven in het **uitvoer** venster.
@@ -393,7 +394,7 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
 ### <a name="output-window-features"></a>Functies van het uitvoer venster
 Het tabblad **Microsoft Azure logboeken** van het **uitvoer** venster bevat verschillende knoppen en een tekstvak:
 
-![Knoppen op het tabblad logboeken](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Scherm afbeelding met de knoppen en het tekstvak van het tabblad Microsoft Azure Logboeken in het uitvoer venster.":::
 
 U voert de volgende functies uit:
 
@@ -457,14 +458,15 @@ Logboeken die u kunt bewaken in het **uitvoer** venster kunnen ook worden gedown
 
 1. Klik in het venster **uitvoer** op **streaming-logboek bestanden downloaden**.
 
-    ![Knoppen op het tabblad logboeken](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Scherm afbeelding van het uitvoer venster met de knop streaming-logboeken downloaden gemarkeerd.":::
 
     Bestanden Verkenner wordt geopend in de map *down loads* met het gedownloade bestand dat is geselecteerd.
 
-    ![Gedownload bestand](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Scherm afbeelding van de map down loads in Verkenner waarin een gedownload bestand is geselecteerd.":::
+
 2. Pak het *zip* -bestand uit en u ziet de volgende mapstructuur:
 
-    ![Gedownload bestand](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Scherm afbeelding van de mapstructuur van het zip-bestand nadat het bestand is geëxtraheerd.":::
 
    * Logboeken voor toepassings tracering bevinden zich in *. txt* -bestanden in de map *LogFiles\Application*
    * Webserver logboeken bevinden zich in *. log* -bestanden in de map *LogFiles\http\RawLogs* . U kunt een hulp programma zoals [log parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) gebruiken om deze bestanden weer te geven en te bewerken.

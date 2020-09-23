@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825970"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896177"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
@@ -38,12 +38,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die
     | Instelling | Waarde |
     | ------- | ----- |
     | Naam | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
+    | Adresruimte | Voer *10.1.0.0/16*in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **Europa - west**.|
     | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
+    | Subnet - adresbereik | Voer *10.1.0.0/24*in. |
     |||
 3. Laat voor de rest de standaardwaarden staan en selecteer **Maken**.
 
@@ -134,7 +134,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
 
 2. Selecteer in **Private Link-centrum – Overzicht** bij de optie **Een particuliere verbinding met een service maken** de optie **Start**.
 
-    ![Overzicht van persoonlijke koppelingen](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Overzicht van persoonlijke koppelingen":::
 
 1. Voer in **een persoonlijk eind punt maken-basis beginselen**de volgende gegevens in of Selecteer deze:
 
@@ -178,7 +178,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
 1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
 2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
-    ![Privé koppeling gemaakt](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Privé koppeling gemaakt":::
 
     > [!NOTE] 
     > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.

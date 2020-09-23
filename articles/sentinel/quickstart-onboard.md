@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566247"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889027"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Quickstart: Azure Sentinel onboarden
 
 In deze Quick Start leert u hoe u Azure Sentinel kunt onboarden. 
 
-Om Azure Sentinel te onboarden, moet u eerst Azure Sentinel inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format (CEF), Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden.  
+Om Azure Sentinel te onboarden, moet u eerst Azure Sentinel inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft 365 Defender (voorheen Microsoft Threat Protection)-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Microsoft Defender for Identity (voorheen Azure ATP), Microsoft Cloud App Security, Azure Defender-waarschuwingen van Azure Security Center, en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format (CEF), Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden. 
 
 Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie van deskundig gemaakte werkboeken die op basis van uw gegevens inzichten aan het licht brengen. Deze werkmappen kunnen gemakkelijk worden aangepast aan uw behoeften.
 
@@ -45,13 +45,13 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
 
 1. Zoek en selecteer **Azure Sentinel**.
 
-   ![zoeken](./media/quickstart-onboard/search-product.png)
+   ![Services zoeken](./media/quickstart-onboard/search-product.png)
 
 1. Selecteer **Toevoegen**.
 
 1. Selecteer de werkruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werkruimte, maar de gegevens worden geïsoleerd in één werkruimte.
 
-   ![zoeken](./media/quickstart-onboard/choose-workspace.png)
+   ![Een werkruimte kiezen](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Door Azure Security Center gemaakte standaardwerkruimten worden niet weergegeven in de lijst; u kunt Azure Sentinel er niet op installeren.
@@ -64,7 +64,6 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
    >   Als u de werkruimte al hebt verplaatst, moet u alle actieve regels onder **Analyses** uitschakelen en na vijf minuten opnieuw inschakelen. In de meeste gevallen is dit effectief, hoewel de methode niet wordt ondersteund en voor eigen risico wordt uitgevoerd.
 
 1. Selecteer **Azure Sentinel toevoegen**.
-  
 
 ## <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
