@@ -1,18 +1,18 @@
 ---
 title: 'Virtuele WAN: Azure AD-Tenant voor verschillende gebruikers groepen: Azure AD-verificatie'
-description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
+description: Stel een Azure AD-Tenant in voor P2S OpenVPN-verificatie en maak en registreer meerdere apps in azure AD om verschillende gebruikers en groepen toegang te geven.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507689"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988264"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant (AD) maken voor P2S OpenVPN-protocol verbindingen
 
@@ -123,11 +123,11 @@ Gebruik deze [koppeling](https://go.microsoft.com/fwlink/?linkid=2117554) om de 
 
 1. Selecteer het beletsel teken (...) naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![verwijderen](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![verwijderen](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Verbindings problemen vaststellen
 

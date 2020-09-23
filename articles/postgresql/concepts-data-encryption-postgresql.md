@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902133"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -43,7 +43,7 @@ De DEKs, versleuteld met de KEKs, worden afzonderlijk opgeslagen. Alleen een ent
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Hoe gegevens versleuteling met een door de klant beheerde sleutel werkt
 
-![Diagram waarin een overzicht van Bring Your Own Key wordt weer gegeven](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png" alt-text="Diagram waarin een overzicht van Bring Your Own Key wordt weer gegeven":::
 
 Voor een PostgreSQL-server voor het gebruik van door de klant beheerde sleutels die zijn opgeslagen in Key Vault voor het versleutelen van de DEK, geeft een Key Vault-beheerder de volgende toegangs rechten voor de server:
 
@@ -79,7 +79,7 @@ Wanneer u gegevens versleuteling gebruikt door gebruik te maken van een door de 
 * Zorg ervoor dat Key Vault en Azure Database for PostgreSQL enkele server zich in dezelfde regio bevinden, zodat u een snellere toegang hebt tot DEK-terugloop en de bewerking voor het uitpakken.
 * Vergrendel de Azure-sleutel kluis alleen op **privé-eind punten en geselecteerde netwerken** en sta alleen *vertrouwde micro soft* -Services toe om de bronnen te beveiligen.
 
-    ![Trusted-service-with-Azure](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Trusted-service-with-Azure":::
 
 Hier vindt u aanbevelingen voor het configureren van een door de klant beheerde sleutel:
 

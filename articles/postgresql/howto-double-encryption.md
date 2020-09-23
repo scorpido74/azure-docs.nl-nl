@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 6612fe38adcd3c8002dd4a11122b5bb2e797a4dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102171"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901544"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infra structuur dubbele versleuteling voor Azure Database for PostgreSQL
 
@@ -25,23 +25,23 @@ Meer informatie over het gebruik van de manier waarop u een infra structuur met 
 
 Volg deze stappen voor het maken van een Azure Database for MySQL server met dubbele infra structuur versleuteling van Azure Portal:
 
-1. Selecteer **een resource maken** (+) in de linkerbovenhoek van de portal.
+1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** (+).
 
-2. **Data bases**  >  **Azure database for PostgreSQL**selecteren. U kunt ook PostgreSQL in het zoekvak typen om de service te vinden. De implementatie optie voor **één server** is ingeschakeld.
+2. Selecteer **Databases** > **Azure Database for PostgreSQL**. U kunt ook PostgreSQL in het zoekvak typen om de service te vinden. De implementatie optie voor **één server** is ingeschakeld.
 
-   ![De Azure Database for PostgreSQL in menu](./media/quickstart-create-database-portal/1-create-database.png)
+   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
 3. Geef de basis gegevens van de server op. Selecteer **extra instellingen** en schakel het selectie vakje **infra structuur dubbele versleuteling** in om de para meter in te stellen.
 
-    ![Azure Database for PostgreSQL selecties](./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for PostgreSQL selecties":::
 
-4. Selecteer **controleren + maken** om de server in te richten.
+4. Selecteer **Beoordelen en maken** om de server in te richten.
 
-    ![Azure Database for PostgreSQL overzicht](./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for PostgreSQL overzicht":::
 
 5. Nadat de server is gemaakt, kunt u de infra structuur voor dubbele versleuteling valideren door de status op de Blade **gegevens versleutelings** server te controleren.
 
-    ![Azure Database for MySQL validatie](./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for MySQL validatie":::
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Een Azure Database for PostgreSQL-server met dubbele versleuteling van de infra structuur maken-CLI
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970676"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,14 +35,14 @@ Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op het Az
 
 Aanbevelingen voor prestaties worden weer gegeven in de tabel zoals die wordt weer gegeven op de volgende afbeelding:
 
-![Aanbevelingen](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![Scherm afbeelding toont prestatie aanbevelingen in een tabel met een beschrijving van de actie en aanbeveling.](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 Aanbevelingen worden gesorteerd op de mogelijke invloed op de prestaties van de volgende categorieën:
 
-| Impact | Beschrijving |
+| Impact | Description |
 |:--- |:--- |
 | Hoog |Aanbevelingen met hoge impact moeten de belangrijkste prestatie-impact bieden. |
-| Middelgroot |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
+| Normaal |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
 | Beperkt |De aanbevelingen met weinig effect moeten betere prestaties leveren dan zonder, maar de verbeteringen zijn mogelijk niet aanzienlijk. |
 
 > [!NOTE]
@@ -168,8 +168,8 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 * Bekijk de [aanbevelingen voor prestaties](database-advisor-implement-performance-recommendations.md) voor een overzicht van Azure SQL database prestatie aanbevelingen.
 * Zie [query performance Insights](query-performance-insight-use.md) voor meer informatie over het weer geven van de prestatie-impact van uw meest voorkomende query's.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 * [INDEX MAKEN](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/overview.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md)

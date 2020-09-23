@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442102"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885173"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -376,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 
@@ -647,7 +647,7 @@ Met geavanceerde beveiliging tegen bedreigingen kunt u potentiële bedreigingen 
 
 **Aanbevolen procedures**:
 
-- [Geavanceerde gegevens beveiliging (ADS)](advanced-data-security.md#getting-started-with-ads)configureren   voor een specifieke server of een beheerd exemplaar. U kunt ook ADS configureren voor alle servers en beheerde exemplaren in een abonnement door te scha kelen naar [Azure Security Center Standard-laag](../../security-center/security-center-pricing.md).
+- [Azure Defender voor SQL](azure-defender-for-sql.md)configureren   voor een specifieke server of een beheerd exemplaar. U kunt ook Azure Defender voor SQL voor alle servers en beheerde exemplaren in een abonnement configureren door over te scha kelen op [Azure Security Center Standard-laag](../../security-center/security-center-pricing.md).
 
 - Voor een volledige onderzoek is het raadzaam om [SQL database controle](../../azure-sql/database/auditing-overview.md)in te scha kelen. Met controle kunt u database gebeurtenissen volgen en deze naar een audit logboek schrijven in een Azure Storage-account of Azure Log Analytics-werk ruimte.
 

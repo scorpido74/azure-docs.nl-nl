@@ -3,12 +3,12 @@ title: Overzichts dashboard voor Azure-toepassing Insights | Microsoft Docs
 description: Bewaak toepassingen met Azure-toepassing inzicht en overzicht dashboard functionaliteit.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970606"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-overzichts dashboard
 
@@ -36,7 +36,7 @@ Toepassings dashboard maakt gebruik van de bestaande dash board-technologie in a
 
 Als u het standaard dashboard wilt openen, selecteert u _toepassings dashboard_ in de linkerbovenhoek.
 
-![Dashboardweergave](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![Scherm afbeelding toont de knop Application dash board gemarkeerd.](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Als dit de eerste keer is dat u het dash board opent, wordt er een standaard weergave geopend:
 

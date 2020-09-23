@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580923"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902090"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels in Azure Database for PostgreSQL-grootschalige (Citus)
 Azure Database for PostgreSQL Server firewall voor komt dat alle toegang tot uw grootschalige-coördinator knooppunt (Citus) wordt voor komen, totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -24,7 +24,7 @@ U configureert de firewall door firewallregels te maken die bereiken opgeven van
 Alle database toegang tot uw coördinator knooppunt wordt standaard geblokkeerd door de firewall. Als u uw server vanaf een andere computer wilt gebruiken, moet u een of meer firewall regels op server niveau opgeven om toegang tot uw server mogelijk te maken. Gebruik de firewall regels om op te geven welke IP-adresbereiken van Internet moeten worden toegestaan. De firewall regels hebben geen invloed op de Azure Portal website zelf.
 Verbindings pogingen via internet en Azure moeten eerst door de firewall worden door gegeven voordat ze uw PostgreSQL-data base kunnen bereiken, zoals wordt weer gegeven in het volgende diagram:
 
-![Voor beeld van de werking van de firewall](media/concepts-hyperscale-firewall-rules/1-firewall-concept.png)
+:::image type="content" source="media/concepts-hyperscale-firewall-rules/1-firewall-concept.png" alt-text="Voor beeld van de werking van de firewall":::
 
 ## <a name="connecting-from-the-internet-and-from-azure"></a>Verbinding maken via internet en Azure
 

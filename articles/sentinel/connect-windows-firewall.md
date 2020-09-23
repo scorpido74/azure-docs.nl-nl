@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5804dcc840eb666c1d43ea7d7ed7640b8f7ff371
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657444"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883814"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Windows Defender Firewall met geavanceerde beveiliging verbinden met Azure Sentinel
 
@@ -31,7 +31,7 @@ De oplossing verzamelt Windows Firewall-gebeurtenissen van de Windows-computers 
 > [!NOTE]
 > - Gegevens worden opgeslagen in de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
 >
-> - Als Azure Sentinel en Azure Defender (voorheen Azure Security Center) worden verzameld in dezelfde werk ruimte, is het niet nodig om de Windows Firewall oplossing via deze connector in te scha kelen. Als u dit toch hebt ingeschakeld, worden er geen dubbele gegevens weer gegeven. 
+> - Als Azure Defender-waarschuwingen van Azure Security Center al zijn verzameld in de Azure Sentinel-werk ruimte, is het niet nodig om de Windows Firewall oplossing via deze connector in te scha kelen. Als u de functie echter hebt ingeschakeld, worden er geen dubbele gegevens weer gegeven. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,40 +47,37 @@ De oplossing verzamelt Windows Firewall-gebeurtenissen van de Windows-computers 
 
 ### <a name="instructions-tab"></a>Tabblad instructies
 
-Voer de volgende stappen uit op het tabblad **instructies** .
+- **Als uw Windows-computers zich in azure bevinden:**
 
-- **Als uw Windows-computers zich in azure bevinden, voert u de volgende stappen uit:**
+    1. Selecteer **agent installeren op virtuele machine van Azure Windows**.
 
-   1. Selecteer **agent installeren op virtuele machine van Azure Windows**.
-   
-   1. Klik op de koppeling **& installatie agent voor Azure Windows-machines installeren >** die wordt weer gegeven.
-   
-   1. Selecteer in de lijst **virtuele machines** de Windows-machine die u wilt streamen naar Azure Sentinel. (U kunt **Windows** selecteren in het kolom filter van het besturings systeem om ervoor te zorgen dat alleen Windows-vm's worden weer gegeven).
-   
-   1. Klik in het venster dat wordt geopend voor die VM op **verbinden**.
-   
-   1. Ga terug naar het **virtual machines** venster en herhaal de vorige twee stappen voor andere vm's die u wilt verbinden. Wanneer u klaar bent, keert u terug naar het deel venster **Windows Firewall** .
+    1. Klik op de koppeling **& installatie agent voor Azure Windows-machines installeren >** die wordt weer gegeven.
 
-- **Als uw Windows-computer geen virtuele machine van Azure is, voert u de volgende stappen uit:**
-   
-   1. Selecteer **agent installeren op niet-Azure Windows-machine**.
-   
-   1. Klik op de **& installatie agent voor niet-Azure Windows-machines downloaden >** die wordt weer gegeven.
-   
-   1. Selecteer in het deel venster **agents beheren** de optie **Windows-agent (64 bits) downloaden** of **Windows-agent (32 bits) downloaden**, indien nodig.
-   
-   1. Kopieer de **werk ruimte-id**, **primaire sleutel**en **secundaire sleutel** teken reeksen naar een tekst bestand. Kopieer het bestand en het gedownloade installatie bestand naar uw Windows-computer. Voer het installatie bestand uit en voer, wanneer u hierom wordt gevraagd, de ID en de sleutel teken reeksen in het tekst bestand tijdens de installatie in.
-   
-   1. Ga terug naar het deel venster **Windows Firewall** .
+    1. Selecteer in de lijst **virtuele machines** de Windows-machine die u wilt streamen naar Azure Sentinel. (U kunt **Windows** selecteren in het kolom filter van het besturings systeem om ervoor te zorgen dat alleen Windows-vm's worden weer gegeven).
 
-Nadat u de stappen op het tabblad **instructies** hebt voltooid, klikt u op **oplossing installeren**.
+    1. Klik in het venster dat wordt geopend voor die VM op **verbinden**.
+
+    1. Ga terug naar het **virtual machines** venster en herhaal de vorige twee stappen voor andere vm's die u wilt verbinden. Wanneer u klaar bent, keert u terug naar het deel venster **Windows Firewall** .
+
+- **Als uw Windows-computer geen Azure-VM is:**
+
+    1. Selecteer **agent installeren op niet-Azure Windows-machine**.
+
+    1. Klik op de **& installatie agent voor niet-Azure Windows-machines downloaden >** die wordt weer gegeven.
+
+    1. Selecteer in het deel venster **agents beheren** de optie **Windows-agent (64 bits) downloaden** of **Windows-agent (32 bits) downloaden**, indien nodig.
+
+    1. Kopieer de **werk ruimte-id**, **primaire sleutel**en **secundaire sleutel** teken reeksen naar een tekst bestand. Kopieer het bestand en het gedownloade installatie bestand naar uw Windows-computer. Voer het installatie bestand uit en voer, wanneer u hierom wordt gevraagd, de ID en de sleutel teken reeksen in het tekst bestand tijdens de installatie in.
+
+    1. Ga terug naar het deel venster **Windows Firewall** .
+
+1. Klik op **oplossing installeren**.
 
 ### <a name="next-steps-tab"></a>Tabblad volgende stappen
 
-- Zie de beschik bare aanbevolen werkmappen en query voorbeelden die zijn gebundeld in de **Windows Firewall** Data Connector om inzicht te krijgen in uw Windows Firewall-logboek gegevens.
+- Bekijk de beschik bare aanbevolen werkmappen en query voorbeelden die zijn gebundeld met de **Windows Firewall** Data Connector om inzicht te krijgen in uw Windows Firewall-logboek gegevens.
 
 - Als u gegevens van Windows Firewall in **Logboeken**wilt opvragen, typt u **WindowsFirewall** in het query venster.
-
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren
  

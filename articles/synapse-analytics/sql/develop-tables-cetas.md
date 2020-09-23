@@ -1,27 +1,27 @@
 ---
-title: CETAS in Synapse SQL
-description: CETAS gebruiken met Synapse SQL
+title: CREATE EXTERNAL TABLE AS SELECT (CETAS) in Synapse SQL
+description: CREATE EXTERNAL TABLE AS SELECT (CETAS) gebruiken met Synapse SQL
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 18f472da30b34fcacd70bba9ea7371b56f1a7abf
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032908"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885348"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS met Synapse SQL
 
-In SQL-pool of SQL on-demand (preview) kunt u CREATE EXTERNAL TABLE AS SELECT (CETAS) gebruiken om de volgende taken uit te voeren:  
+U kunt CREATE EXTERNAL TABLE AS SELECT (CETAS) in SQL-pool of SQL on demand (preview) gebruiken om de volgende taken uit te voeren:  
 
 - Een externe tabel maken
-- De resultaten van de Transact-SQL-instructie SELECT gelijktijdig exporteren naar
+- De resultaten van de Transact-SQL-instructie SELECT gelijktijdig exporteren naar:
 
   - Hadoop
   - Azure Storage Blob
@@ -29,11 +29,12 @@ In SQL-pool of SQL on-demand (preview) kunt u CREATE EXTERNAL TABLE AS SELECT (C
 
 ## <a name="cetas-in-sql-pool"></a>CETAS in SQL-pool
 
-Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor het gebruik en de syntaxis van CETAS in SQL-pool. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over CTAS met SQL-pool.
+Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor het gebruik en de syntaxis van CETAS in SQL-pool. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over CTAS met SQL-pool.
+Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor het gebruik en de syntaxis van CETAS in SQL-pool. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over CTAS met SQL-pool.
 
 ## <a name="cetas-in-sql-on-demand"></a>CETAS in SQL op aanvraag
 
-Wanneer u de SQL on-demand-resource gebruikt, wordt CETAS gebruikt om een externe tabel te maken en queryresultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
+Wanneer u SQL on-demand gebruikt, wordt CETAS gebruikt om een externe tabel te maken en queryresultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -68,18 +69,18 @@ Hiermee geeft u de naam op van het object voor de externe gegevensbron die de lo
 
 FILE_FORMAT = *external_file_format_name*
 
-Hiermee geeft u de naam op van het object voor de externe bestandsindeling dat de indeling van het externe gegevensbestand bevat. Als u een externe bestandsindeling wilt maken, gebruikt u [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). Alleen externe bestandsindelingen met FORMAT=PARQUET worden momenteel ondersteund.
+Hiermee geeft u de naam op van het object voor de externe bestandsindeling dat de indeling van het externe gegevensbestand bevat. Als u een externe bestandsindeling wilt maken, gebruikt u [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). Alleen externe bestandsindelingen met FORMAT-TYPE=PARQUET en FORMAT_TYPE=DELIMITEDTEXT worden momenteel ondersteund.
 
 WITH *<common_table_expression>*
 
-Hiermee geeft u een tijdelijke benoemde resultatenset op, ook wel een algemene tabelexpressie (Common Table Expression of CTE) genoemd. Zie [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+Hiermee geeft u een tijdelijke benoemde resultatenset op, ook wel een algemene tabelexpressie (Common Table Expression of CTE) genoemd. Zie [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie.
 
 SELECT <select_criteria>
 
-Hiermee wordt de nieuwe tabel gevuld met de resultaten van een SELECT-instructie. *select_criteria* is de hoofdtekst van de SELECT-instructie die bepaalt welke gegevens naar de nieuwe tabel moeten worden gekopieerd. Zie [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor informatie over SELECT-instructies.
+Hiermee wordt de nieuwe tabel gevuld met de resultaten van een SELECT-instructie. *select_criteria* is de hoofdtekst van de SELECT-instructie die bepaalt welke gegevens naar de nieuwe tabel moeten worden gekopieerd. Zie [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor informatie over SELECT-instructies.
 
 > [!NOTE]
-> Het component ORDER BY in het gedeelte met SELECT van CETAS wordt niet ondersteund.
+> ORDER BY-component in SELECT wordt niet ondersteund voor CETAS.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -112,7 +113,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +133,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 

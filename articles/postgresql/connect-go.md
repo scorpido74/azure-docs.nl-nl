@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 21ae18b239eaa5f9e894d76bc143161b2d536638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182898"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902022"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: De programmeertaal Go gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 
@@ -83,7 +83,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
- ![Servernaam Azure Database for PostgreSQL](./media/connect-go/1-connection-string.png)
+ :::image type="content" source="./media/connect-go/1-connection-string.png" alt-text="Servernaam Azure Database for PostgreSQL":::
 
 ## <a name="build-and-run-go-code"></a>Go-code schrijven en uitvoeren 
 1. Als u Golang-code wilt schrijven, gebruikt u een eenvoudige teksteditor zoals Kladblok in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) of [Nano](https://www.nano-editor.org/) in Ubuntu en TextEdit in macOS. Als u liever een uitgebreidere Interactive Development Environment (IDE) gebruikt, gaat u aan de slag met [Goland](https://www.jetbrains.com/go/) van Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) van Microsoft of [Atom](https://atom.io/).

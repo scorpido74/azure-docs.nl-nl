@@ -6,24 +6,24 @@ author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 00705e40ca17959701af325ed52a4c3754d35122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039055"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891971"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Azure Stream Analytics verkennen met Visual Studio code (preview)
 
 De Azure Stream Analytics voor Visual Studio code-extensie biedt ontwikkel aars een licht gewicht ervaring voor het beheren van hun Stream Analytics taken. Het kan worden gebruikt in Windows, Mac en Linux. Met de Azure Stream Analytics extensie kunt u het volgende doen:
 
-- Taken [maken](quick-create-vs-code.md), starten en stoppen
+- Taken [maken](quick-create-visual-studio-code.md), starten en stoppen
 - Bestaande taken exporteren naar een lokaal project
 - Taken weer geven en taak entiteiten bekijken
 
 ## <a name="export-a-job-to-a-local-project"></a>Een taak exporteren naar een lokaal project
 
-Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Explorer** in Visual Studio code. Selecteer vervolgens een map voor uw project. Het project wordt geëxporteerd naar de map die u selecteert, en u kunt de taak blijven beheren vanuit Visual Studio code. Zie Visual Studio code [Quick](quick-create-vs-code.md)start (Engelstalig) voor meer informatie over het gebruik van Visual Studio code voor het beheren van stream Analytics taken.
+Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Explorer** in Visual Studio code. Selecteer vervolgens een map voor uw project. Het project wordt geëxporteerd naar de map die u selecteert, en u kunt de taak blijven beheren vanuit Visual Studio code. Zie Visual Studio code [Quick](quick-create-visual-studio-code.md)start (Engelstalig) voor meer informatie over het gebruik van Visual Studio code voor het beheren van stream Analytics taken.
 
 ![De taak ASA exporteren in Visual Studio code](./media/vscode-explore-jobs/export-job.png)
 
@@ -44,4 +44,4 @@ U kunt de taak weergave gebruiken om te communiceren met Azure Stream Analytics 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)](quick-create-vs-code.md)
+* [Een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)](quick-create-visual-studio-code.md)

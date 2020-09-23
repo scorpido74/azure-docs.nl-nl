@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9e8bd56655adfa1f7cdb769ac6cd282193b1bcf2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459790"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901364"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
@@ -28,8 +28,8 @@ Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azu
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar|
-|Koers|Standaardlaag|
+|Release status:|Algemeen beschikbaar (GA)|
+|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Vereiste rollen en machtigingen:|**Eigenaar van de werk ruimte** kan FIM inschakelen/uitschakelen (Zie [Azure-rollen voor log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) voor meer informatie.<br>**Lezer** kan resultaten weer geven.|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
 |||
@@ -50,7 +50,7 @@ De bestands integriteits controle van Security Center valideert de integriteit v
 Security Center raadt entiteiten aan om te bewaken, waarmee u eenvoudig FIM kunt inschakelen. U kunt ook uw eigen FIM-beleid of-entiteiten definiëren om te bewaken. In dit scenario ziet u hoe.
 
 > [!NOTE]
-> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en-Vm's en is beschikbaar op de standaardlaag van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
+> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en Vm's en is alleen beschikbaar wanneer **Azure Defender voor servers** is ingeschakeld. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
 
 FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Als bestands integriteits controle is ingeschakeld, hebt u een **Wijzigingen bijhouden** bron van het type **oplossing**. Zie [Details van gegevensverzameling voor Wijzigingen bijhouden](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) voor informatie over de gegevensverzameling door Wijzigingen bijhouden van Azure.
 
@@ -94,13 +94,18 @@ Security Center biedt de volgende lijst met aanbevolen items die moeten worden b
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile|
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
-## <a name="using-file-integrity-monitoring"></a>Bestands integriteit controleren
-1. Open het dashboard van **Security Center**.
-2. Selecteer in het linkerdeel venster onder **geavanceerde Cloud beveiliging**de optie **Bestands integriteit controleren**.
-![Dashboard van Security Center][1]
 
-**Controle van bestands integriteit** wordt geopend.
-  ![Dashboard van Security Center][2]
+## <a name="using-file-integrity-monitoring"></a>Bestands integriteit controleren
+
+1. Open het dash board van **Azure Defender** .
+
+1. Selecteer in het gebied **geavanceerde beveiliging** de optie **Bestands integriteit controleren**.
+
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM starten" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+
+
+    **Controle van bestands integriteit** wordt geopend.
+    ![Dashboard van Security Center][2]
 
 De volgende informatie wordt gegeven voor elke werk ruimte:
 
@@ -112,26 +117,28 @@ De volgende informatie wordt gegeven voor elke werk ruimte:
 De volgende knoppen kunnen ook worden weer gegeven voor een werk ruimte:
 
 - ![Pictogram inschakelen][3] Geeft aan dat FIM niet is ingeschakeld voor de werk ruimte. Als u de werk ruimte selecteert, kunt u FIM inschakelen op alle computers onder de werk ruimte.
-- ![Pictogram upgrade plan ][4] geeft aan dat de werk ruimte of het abonnement niet wordt uitgevoerd onder de Standard-laag van Security Center. Als u de FIM-functie wilt gebruiken, moet uw abonnement standaard worden uitgevoerd.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren naar Standard. Zie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging voor](security-center-pricing.md)meer informatie over de laag standaard en hoe u de upgrade uitvoert.
+- ![Pictogram upgrade plan][4] Geeft aan dat de werk ruimte of het abonnement niet wordt beveiligd door Azure Defender. Als u de FIM-functie wilt gebruiken, moet uw abonnement worden beveiligd door Azure Defender.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren.
 - Een leeg (er is geen knop) betekent dat FIM al is ingeschakeld in de werk ruimte.
 
-Onder **File Integrity Monitoring**kunt u een werk ruimte selecteren om FIM voor die werk ruimte in te scha kelen, het dash board bestands integriteit controleren voor die werk ruimte weer te geven of een upgrade van de werk ruimte naar Standard [uit](security-center-pricing.md) te voeren.
+Onder **File Integrity Monitoring**kunt u een werk ruimte selecteren om FIM voor die werk ruimte in te scha kelen, het dash board bestands integriteit controleren voor die werk ruimte te bekijken of de werk ruimte bij te [werken](security-center-pricing.md) om Azure Defender te gebruiken.
 
 ## <a name="enable-fim"></a>FIM inschakelen
 FIM inschakelen op een werk ruimte:
 
 1. Selecteer onder **Bestands integriteit controleren**een werk ruimte met de knop **inschakelen** .
-2. **Bestands integriteit controleren** wordt geopend met de weer gave van het aantal Windows-en Linux-machines onder de werk ruimte.
+
+1. **Bestands integriteit controleren** wordt geopend met de weer gave van het aantal Windows-en Linux-machines onder de werk ruimte.
 
    ![Controle van bestands integriteit inschakelen][5]
 
    De aanbevolen instellingen voor Windows en Linux worden ook vermeld.  Vouw **Windows-bestanden**, het **REGI ster**en de **Linux-bestanden** uit om de volledige lijst met aanbevolen items weer te geven.
 
-3. Schakel alle aanbevolen entiteiten uit waarop u FIM niet wilt Toep assen.
-4. Selecteer **Bestands integriteit controleren Toep assen** om FIM in te scha kelen.
+1. Schakel alle aanbevolen entiteiten uit waarop u FIM niet wilt Toep assen.
+
+1. Selecteer **Bestands integriteit controleren Toep assen** om FIM in te scha kelen.
 
 > [!NOTE]
-> U kunt de instellingen op elk gewenst moment wijzigen. Zie de onderstaande bewaakte entiteiten bewerken voor meer informatie.
+> U kunt de instellingen op elk gewenst moment wijzigen. Zie de onderstaande [bewaakte entiteiten bewerken](#edit-monitored-entities) voor meer informatie.
 
 
 ## <a name="view-the-fim-dashboard"></a>Het FIM-dash board weer geven

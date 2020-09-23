@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875759"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891986"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI uitvoer van Azure Stream Analytics
 
@@ -20,11 +20,11 @@ U kunt [Power bi](https://powerbi.microsoft.com/) als uitvoer voor een stream An
 
 Power BI uitvoer van Stream Analytics is momenteel niet beschikbaar in de regio's 21Vianet en Azure Duitsland (T-Systems International) van Azure China.
 
-## <a name="ouput-configuration"></a>Uitvoer geproduceerd-configuratie
+## <a name="output-configuration"></a>Uitvoer configuratie
 
 De volgende tabel geeft een lijst van eigenschaps namen en de bijbehorende beschrijvingen om uw Power BI-uitvoer te configureren.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | --- | --- |
 | Uitvoeralias |Geef een beschrijvende naam op die wordt gebruikt in query's om de uitvoer van de query naar deze Power BI uitvoer te sturen. |
 | Groeps werkruimte |Als u het delen van gegevens met andere Power BI gebruikers wilt inschakelen, kunt u groepen in uw Power BI account selecteren of **mijn werk ruimte** kiezen als u niet naar een groep wilt schrijven. Als u een bestaande groep wilt bijwerken, moet u de Power BI-verificatie vernieuwen. |
@@ -82,4 +82,4 @@ Zie [Power bi-limieten voor rest API](https://msdn.microsoft.com/library/dn95005
 * [Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon](quick-create-azure-resource-manager.md)
 * [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)

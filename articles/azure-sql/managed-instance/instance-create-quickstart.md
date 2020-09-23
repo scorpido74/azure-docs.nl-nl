@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533866"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986839"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Quickstart: Een beheerd exemplaar van SQL Managed Instance maken
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -124,7 +124,7 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 > 3. Selecteer de SQL Managed Instance-implementatie die wordt uitgevoerd.
 
 > [!IMPORTANT]
-> - Het maken van een SQL Managed Instance is een langlopende bewerking die enkele uren kan duren, afhankelijk van de specifieke omstandigheden. Zie [Duur van beheerbewerkingen](management-operations-overview.md#management-operations-duration) voor gemiddelde tijden.
+> - Het maken van een SQL Managed Instance is een langlopende bewerking die enkele uren kan duren, afhankelijk van de specifieke omstandigheden. Zie [Duur van beheerbewerkingen](management-operations-overview.md#duration) voor gemiddelde tijden.
 > - Het starten van het maken van een SQL Managed Instance kan worden vertraagd wanneer er andere intensieve bewerkingen actief zijn, zoals het uitvoeren van grote herstel- of schaalbewerkingen op andere beheerde exemplaren in hetzelfde subnet. Zie [Management operations cross-impact](management-operations-overview.md#management-operations-cross-impact) (Wederzijdse impact van beheerbewerkingen) voor meer informatie.
 > - Als u de status van het maken van beheerde exemplaren wilt ophalen, moet u **leesrechten hebben** voor de resourcegroep. Als u deze machtigingen niet hebt of als deze zijn ingetrokken tijdens het maken van het beheerde exemplaar, is het met SQL beheerd exemplaar mogelijk niet zichtbaar in de lijst met implementaties voor resourcegroepen.
 >

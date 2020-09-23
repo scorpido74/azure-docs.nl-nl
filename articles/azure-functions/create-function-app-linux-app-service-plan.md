@@ -1,14 +1,14 @@
 ---
 title: Een functie-app in Linux maken op basis van de Azure Portal
-description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
+description: Meer informatie over het maken van uw eerste Azure-functie in Linux met behulp van de Azure Portal.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 5aae60900a61c28f6c53f89b8e273daccb047eef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83116000"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970731"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Een functie-app in Linux maken in een Azure App Service plan
 
@@ -54,7 +54,7 @@ U moet beschikken over een functie-app om de uitvoering van uw functies in Linux
     |**Besturingssysteem**| **Linux** | Er wordt vooraf een besturingssysteem geselecteerd voor u op basis van de selectie van de runtimestack, maar u kunt de instelling wijzigen, indien nodig. |
     | **[Plannen](../azure-functions/functions-scale.md)** | **Verbruik (serverloos)** | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **Verbruiksabonnement** worden resources dynamisch toegevoegd zoals door uw functies wordt vereist. Met hosten [zonder server](https://azure.microsoft.com/overview/serverless-computing/) betaalt u alleen voor de tijd dat uw functies actief zijn. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../azure-functions/functions-scale.md) beheren.  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Hosting pagina":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Hostingpagina":::
 
 1. Selecteer **Volgende : Bewaking**. Voer op de pagina **Bewaking** de volgende instellingen in.
 
@@ -62,7 +62,7 @@ U moet beschikken over een functie-app om de uitvoering van uw functies in Linux
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Ja** (standaard instelling) | Hiermee maakt u een Application Insights-resource van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **Nieuwe maken** te selecteren, kunt u de naam van Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Bewakings pagina":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Pagina Bewaking":::
 
 1. Selecteer **Beoordelen + maken** om de selecties van appconfiguratie te controleren.
 

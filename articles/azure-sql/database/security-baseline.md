@@ -4,15 +4,15 @@ description: Azure-beveiligings basislijn voor Azure SQL Database en Azure SQL M
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231024"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885208"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-beveiligings basislijn voor Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: gebruik Azure Security Center Advanced Threat Protection voor Azure SQL database voor bewaking en waarschuwingen over afwijkende activiteiten. Geavanceerde gegevens beveiliging inschakelen voor uw SQL-data bases. Geavanceerde gegevens beveiliging bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het halen en het beperken van potentiële database problemen en de detectie van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base.
+**Hulp**: gebruik Azure Security Center Advanced Threat Protection voor Azure SQL database voor bewaking en waarschuwingen over afwijkende activiteiten. Schakel Azure Defender voor SQL in voor uw SQL-data bases. Azure Defender voor SQL bevat functionaliteit voor halen en het beperken van potentiële database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base.
 
 Meer informatie over geavanceerde beveiliging tegen bedreigingen en waarschuwingen voor Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Geavanceerde gegevens beveiliging inschakelen voor Azure SQL Database:
+Azure Defender voor SQL inschakelen voor Azure SQL Database:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Waarschuwingen beheren in Azure Security Center:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: Azure Active Directory (Aad) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de AAD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
+**Hulp**: Azure Active Directory (Azure AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
 Een directory-rol verkrijgen in azure AD met Power shell:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
 
-**Hulp**: Schakel Azure Active Directory (AAD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
+**Hulp**: Schakel Azure Active Directory (Azure AD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
 MFA inschakelen in Azure:
 
@@ -445,13 +445,13 @@ Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: maak een Azure Active Directory (Aad)-beheerder voor uw server.
+**Hulp**: maak een Azure Active Directory (Azure AD)-beheerder voor uw server.
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-Een AAD-exemplaar maken en configureren:
+Een Azure AD-exemplaar maken en configureren:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
-**Hulp**: Azure Active Directory (Aad) biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. De toegang van gebruikers kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
+**Hulp**: Azure Active Directory (Azure AD) biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. De toegang van gebruikers kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
 Azure Identity Access revisies gebruiken:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde accounts
 
-**Hulp**bij het configureren van Azure Active Directory (Aad)-verificatie met Azure SQL en het maken van diagnostische instellingen voor Azure Active Directory gebruikers accounts, het verzenden van de audit logboeken en aanmeldings logboeken naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren in Log Analytics werk ruimte.
+**Hulp**bij het configureren van Azure Active Directory-verificatie (Azure AD) met Azure SQL en het maken van diagnostische instellingen voor Azure Active Directory gebruikers accounts, het verzenden van de audit logboeken en aanmeldings logboeken naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren in Log Analytics werk ruimte.
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
 
-**Hulp**: gebruik Azure Active Directory (Aad) identiteits beveiliging en risico detecties om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. Daarnaast kunt u gegevens opnemen in azure Sentinel voor verder onderzoek.
+**Hulp**: gebruik Azure Active Directory (Azure AD) identiteits beveiliging en risico detecties om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. Daarnaast kunt u gegevens opnemen in azure Sentinel voor verder onderzoek.
 
 Azure AD-risico aanmeldingen weer geven:
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik Azure Active Directory (Aad) voor het verifiëren en beheren van toegang tot Azure SQL database-exemplaren.
+**Hulp**: gebruik Azure Active Directory (Azure AD) voor het verifiëren en beheren van toegang tot Azure SQL database-exemplaren.
 
 Azure SQL Database integreren met Azure Active Directory voor verificatie:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
-**Hulp**: geavanceerde gegevens beveiliging inschakelen voor Azure SQL database en aanbevelingen volgen van Azure Security Center over het uitvoeren van beveiligings evaluaties op uw servers.
+**Hulp**: Azure Defender voor SQL inschakelen voor Azure SQL database en aanbevelingen volgen van Azure Security Center over het uitvoeren van beveiligings evaluaties op uw servers.
 
 Beveiligings evaluaties uitvoeren op Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Geavanceerde gegevens beveiliging inschakelen:
+Azure Defender voor SQL inschakelen:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
-**Richt lijnen**: gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure Active Directory (Aad). Met beheerde identiteiten kunt u zich verifiëren bij elke service die AAD-verificatie ondersteunt, met inbegrip van Azure Key Vault, zonder enige referenties in uw code.
+**Richt lijnen**: gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure Active Directory (Azure AD). Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Azure Key Vault, zonder enige referenties in uw code.
 
 Zelf studie: een door Windows-VM-systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure SQL:
 

@@ -13,21 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82462af3f1fc939cb30730360f75303cb1be9432
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901165"
 ---
 # <a name="billing-questions"></a>Vragen over facturering
 
 ## <a name="how-does-billing-work-for-azure-security-center"></a>Hoe werkt de facturering voor Azure Security Center?
-Security Center wordt aangeboden in twee prijscategorieën:
+Security Center wordt aangeboden met en zonder Azure Defender:
 
-- De **gratis laag** biedt inzicht in de beveiligings status van uw Azure-resources, basis beveiligings beleid, aanbevelingen voor beveiliging en integratie met beveiligings producten en-services van partners.
+- **Zonder Azure Defender**heeft Security Center inzicht in de beveiligings status van uw Azure-resources, basis beveiligings beleid, beveiligings aanbevelingen en integratie met beveiligings producten en-services van partners.
 
-- De **laag standaard** biedt beveiligings waarschuwingen, bedreigings informatie, gedrags analyse, afwijkings detectie en rapporten voor bedreigings beveiliging. U kunt een gratis proef versie van de Standard-laag starten. Als u een upgrade wilt uitvoeren, selecteert u [prijs categorie](https://docs.microsoft.com/azure/security-center/security-center-pricing) in het beveiligings beleid. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+- **Azure Defender** voegt mogelijkheden voor beveiliging tegen bedreigingen toe met beveiligings waarschuwingen, bedreigings informatie, gedrags analyse, afwijkings detectie en rapporten met betrekking tot risico toewijzing. U kunt een gratis proef versie van 30 dagen voor Azure Defender starten. Als u een upgrade wilt uitvoeren, selecteert u [prijs categorie](https://docs.microsoft.com/azure/security-center/security-center-pricing) in het beveiligings beleid. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
-## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Hoe kan ik bijhouden wie in mijn organisatie de prijs categorie heeft gewijzigd in Azure Security Center
-Azure-abonnementen kunnen meerdere beheerders met machtigingen hebben om de prijs categorie te wijzigen. Als u wilt weten welke gebruiker een wijziging in de prijs categorie heeft uitgevoerd, gebruikt u het Azure-activiteiten logboek. Klik [hier](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) voor meer informatie.
+## <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Hoe kan ik bijhouden wie in mijn organisatie Azure Defender-wijzigingen heeft ingeschakeld in Azure Security Center
+Azure-abonnementen kunnen meerdere beheerders met machtigingen hebben om de prijs instellingen te wijzigen. Als u wilt weten welke gebruiker een wijziging heeft uitgevoerd, gebruikt u het Azure-activiteiten logboek. 
+
+Klik [hier](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) voor meer informatie.
