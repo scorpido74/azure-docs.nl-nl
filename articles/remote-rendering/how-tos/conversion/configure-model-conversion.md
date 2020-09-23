@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967208"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -73,42 +73,48 @@ Een voorbeeld bestand `box.ConversionSettings.json` kan zijn:
 
 ### <a name="geometry-parameters"></a>Geometry-para meters
 
-* `scaling`-Met deze para meter wordt een model uniform geschaald. Schalen kan worden gebruikt om een model te verg Roten of verkleinen, bijvoorbeeld om een model op een tabel bovenaan weer te geven.
+* `scaling` -Met deze para meter wordt een model uniform geschaald. Schalen kan worden gebruikt om een model te verg Roten of verkleinen, bijvoorbeeld om een model op een tabel bovenaan weer te geven.
 Schalen is ook belang rijk wanneer een model wordt gedefinieerd in andere eenheden dan meters, omdat de rendering-engine meters verwacht.
 Als bijvoorbeeld een model in centimeters is gedefinieerd, moet het model op de juiste grootte worden gerenderd met een schaal van 0,01.
 Sommige brongegevens indelingen (bijvoorbeeld. fbx) bieden een hint voor eenheids schaal, in welk geval de conversie het model impliciet schaalt naar meter eenheden. De impliciete schaal aanpassing van de bron indeling wordt boven op de schaal parameter toegepast.
 De uiteindelijke schaal factor wordt toegepast op de geometrie hoekpunten en de lokale trans formaties van de knoop punten van de scène grafiek. De schaal van de trans formatie van de basis entiteit blijft ongewijzigd.
 
-* `recenterToOrigin`-Geeft aan dat een model moet worden geconverteerd zodat het selectie vakje wordt gecentreerd bij de oorsprong.
+* `recenterToOrigin` -Geeft aan dat een model moet worden geconverteerd zodat het selectie vakje wordt gecentreerd bij de oorsprong.
 Als een bron model ver van de oorsprong wordt overgeplaatst, kunnen drijvende-komma precisie problemen leiden tot rendering-artefacten.
 Het model centreren kan in deze situatie helpen.
 
-* `opaqueMaterialDefaultSidedness`-De rendering-engine veronderstelt dat dekkende materialen dubbelzijdig worden weer gegeven.
+* `opaqueMaterialDefaultSidedness` -De rendering-engine veronderstelt dat dekkende materialen dubbelzijdig worden weer gegeven.
 Als deze veronderstelling niet van toepassing is op een bepaald model, moet deze para meter worden ingesteld op ' SingleSided '. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
 
 ### <a name="material-overrides"></a>Overschrijvingen van materiaal
 
-* `material-override`-Met deze para meter kan de verwerking van materialen [tijdens de conversie worden aangepast](override-materials.md).
+* `material-override` -Met deze para meter kan de verwerking van materialen [tijdens de conversie worden aangepast](override-materials.md).
 
 ### <a name="material-de-duplication"></a>Materiaal van de duplicatie
 
-* `deduplicateMaterials`-Met deze para meter wordt de automatische verdubbeling van materialen die dezelfde eigenschappen en bitmappatronen delen, in-of uitgeschakeld. De-duplicatie vindt plaats nadat de overschrijvingen van het materiaal zijn verwerkt. Het is standaard ingeschakeld.
+* `deduplicateMaterials` -Met deze para meter wordt de automatische verdubbeling van materialen die dezelfde eigenschappen en bitmappatronen delen, in-of uitgeschakeld. De-duplicatie vindt plaats nadat de overschrijvingen van het materiaal zijn verwerkt. Het is standaard ingeschakeld.
+
+* Als zelfs na het weglaten van een model meer dan 65.535 materialen worden gedupliceerd, probeert de service materialen samen te voegen met vergelijk bare eigenschappen. Als laatste redmiddel worden alle materialen die de limiet overschrijden, vervangen door een rood fout materiaal.
+
+![Afbeelding toont twee kubussen van 68.921 gekleurde drie hoeken.](media/mat-dedup.png?raw=true)
+
+Twee kubussen van 68.921 gekleurde drie hoeken. Links: vóór de verdubbeling met 68.921-kleuren materialen. Rechts: na de ontdubbeling met 64.000-kleuren materialen. De limiet is 65.535 materialen. (Zie [limieten](../../reference/limits.md).)
 
 ### <a name="color-space-parameters"></a>Kleur ruimte parameters
 
 De rendering-engine verwacht dat kleur waarden in lineaire ruimte worden weer gegeven.
 Als een model is gedefinieerd met behulp van gamma ruimte, moeten deze opties worden ingesteld op True.
 
-* `gammaToLinearMaterial`-Materiaal kleuren van gamma-ruimte naar lineaire ruimte converteren
-* `gammaToLinearVertex`- :::no-loc text="vertex"::: Kleuren van gamma-ruimte naar lineaire ruimte converteren
+* `gammaToLinearMaterial` -Materiaal kleuren van gamma-ruimte naar lineaire ruimte converteren
+* `gammaToLinearVertex` - :::no-loc text="vertex"::: Kleuren van gamma-ruimte naar lineaire ruimte converteren
 
 > [!NOTE]
 > Voor FBX-bestanden worden deze instellingen standaard ingesteld op `true` . Voor alle andere bestands typen is de standaard waarde `false` .
 
 ### <a name="scene-parameters"></a>Scène parameters
 
-* `sceneGraphMode`-Definieert hoe de scène grafiek in het bron bestand wordt geconverteerd:
-  * `dynamic`(standaard): alle objecten in het bestand worden weer gegeven als [entiteiten](../../concepts/entities.md) in de API en kunnen onafhankelijk worden getransformeerd. De knooppunt hiërarchie tijdens runtime is identiek aan de structuur in het bron bestand.
+* `sceneGraphMode` -Definieert hoe de scène grafiek in het bron bestand wordt geconverteerd:
+  * `dynamic` (standaard): alle objecten in het bestand worden weer gegeven als [entiteiten](../../concepts/entities.md) in de API en kunnen onafhankelijk worden getransformeerd. De knooppunt hiërarchie tijdens runtime is identiek aan de structuur in het bron bestand.
   * `static`: Alle objecten worden weer gegeven in de API, maar ze kunnen niet onafhankelijk worden getransformeerd.
   * `none`: De scène grafiek is samengevouwen in één object.
 
@@ -123,27 +129,27 @@ De `none` modus heeft de minste runtime overhead en ook iets betere laad tijden.
 
 ### <a name="physics-parameters"></a>Fysische para meters
 
-* `generateCollisionMesh`-Als u ondersteuning nodig hebt voor [ruimtelijke query's](../../overview/features/spatial-queries.md) in een model, moet deze optie zijn ingeschakeld. In het ergste geval kan het maken van een botsend net de conversie tijd verdubbelen. Modellen met botsingen kunnen langer worden geladen en wanneer u een `dynamic` scène diagram gebruikt, hebben ze ook een hogere runtime-prestatie overhead. Voor algemene optimale prestaties moet u deze optie uitschakelen voor alle modellen waarvoor u geen ruimtelijke query's nodig hebt.
+* `generateCollisionMesh` -Als u ondersteuning nodig hebt voor [ruimtelijke query's](../../overview/features/spatial-queries.md) in een model, moet deze optie zijn ingeschakeld. In het ergste geval kan het maken van een botsend net de conversie tijd verdubbelen. Modellen met botsingen kunnen langer worden geladen en wanneer u een `dynamic` scène diagram gebruikt, hebben ze ook een hogere runtime-prestatie overhead. Voor algemene optimale prestaties moet u deze optie uitschakelen voor alle modellen waarvoor u geen ruimtelijke query's nodig hebt.
 
 ### <a name="unlit-materials"></a>Unlit-materialen
 
-* `unlitMaterials`-Standaard maakt de conversie het voor keur om [PBR-materialen](../../overview/features/pbr-materials.md)te maken. Met deze optie geeft u aan dat het conversie programma alle materialen als [kleur materiaal](../../overview/features/color-materials.md) behandelt. Als u gegevens hebt die al een verlichting bevatten, zoals modellen die zijn gemaakt via Photogrammetry, kunt u met deze optie snel de juiste conversie afdwingen voor alle materialen, zonder dat u [elk materiaal](override-materials.md) afzonderlijk hoeft te overschrijven.
+* `unlitMaterials` -Standaard maakt de conversie het voor keur om [PBR-materialen](../../overview/features/pbr-materials.md)te maken. Met deze optie geeft u aan dat het conversie programma alle materialen als [kleur materiaal](../../overview/features/color-materials.md) behandelt. Als u gegevens hebt die al een verlichting bevatten, zoals modellen die zijn gemaakt via Photogrammetry, kunt u met deze optie snel de juiste conversie afdwingen voor alle materialen, zonder dat u [elk materiaal](override-materials.md) afzonderlijk hoeft te overschrijven.
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Conversie van oudere FBX-indelingen, met een Phong-materiaal model
 
-* `fbxAssumeMetallic`-Oudere versies van de FBX-indeling definiëren hun materialen met behulp van een Phong-materiaal model. Het conversie proces moet afleiden hoe deze materialen worden toegewezen aan het pbr- [model](../../overview/features/pbr-materials.md)van de renderer. Dit werkt normaal gesp roken goed, maar een dubbel zinnigheid kan zich voordoen wanneer een materiaal geen bitmappatronen, hoge indirecte waarden en een niet-grijze albedo kleur heeft. In dit geval moet de conversie worden gekozen om te kiezen uit de prioriteit van de hoge, ondoorzichtige waarden, waarbij u een zeer reflecterende, metallische stof definieert waarbij de kleur van de albedo wordt opgelost, of de prioriteit van de albedo kleur kan worden bepaald, zoals een glanzend kleurige plastic. Het conversie proces veronderstelt standaard dat zeer onduidelijke waarden een metaal materiaal impliceren in gevallen waarin ambiguïteit van toepassing is. Deze para meter kan worden ingesteld op `false` om naar het tegenovergestelde te scha kelen.
+* `fbxAssumeMetallic` -Oudere versies van de FBX-indeling definiëren hun materialen met behulp van een Phong-materiaal model. Het conversie proces moet afleiden hoe deze materialen worden toegewezen aan het pbr- [model](../../overview/features/pbr-materials.md)van de renderer. Dit werkt normaal gesp roken goed, maar een dubbel zinnigheid kan zich voordoen wanneer een materiaal geen bitmappatronen, hoge indirecte waarden en een niet-grijze albedo kleur heeft. In dit geval moet de conversie worden gekozen om te kiezen uit de prioriteit van de hoge, ondoorzichtige waarden, waarbij u een zeer reflecterende, metallische stof definieert waarbij de kleur van de albedo wordt opgelost, of de prioriteit van de albedo kleur kan worden bepaald, zoals een glanzend kleurige plastic. Het conversie proces veronderstelt standaard dat zeer onduidelijke waarden een metaal materiaal impliceren in gevallen waarin ambiguïteit van toepassing is. Deze para meter kan worden ingesteld op `false` om naar het tegenovergestelde te scha kelen.
 
 ### <a name="coordinate-system-overriding"></a>Het coördinaten systeem overschrijven
 
-* `axis`-Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]` . In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
+* `axis` -Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]` . In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
 
 ### <a name="node-meta-data"></a>Meta gegevens van knoop punt
 
-* `metadataKeys`-Hiermee kunt u sleutels van eigenschappen van knoop punt meta gegevens opgeven die u in het conversie resultaat wilt laten blijven. U kunt exacte sleutels of joker tekens opgeven. Joker tekens hebben de notatie ABC * en komen overeen met een sleutel die begint met ' ABC '. Ondersteunde typen waarden voor meta gegevens zijn `bool` , `int` , en `float` `string` .
+* `metadataKeys` -Hiermee kunt u sleutels van eigenschappen van knoop punt meta gegevens opgeven die u in het conversie resultaat wilt laten blijven. U kunt exacte sleutels of joker tekens opgeven. Joker tekens hebben de notatie ABC * en komen overeen met een sleutel die begint met ' ABC '. Ondersteunde typen waarden voor meta gegevens zijn `bool` , `int` , en `float` `string` .
 
     Voor GLTF-bestanden zijn deze gegevens afkomstig uit het [extras-object op knoop punten](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras). Voor FBX-bestanden zijn deze gegevens afkomstig uit de `Properties70` gegevens op `Model nodes` . Raadpleeg de documentatie van uw 3D-hulp programma voor meer informatie.
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::Formatteer
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: Formatteer
 
 Het is mogelijk om de :::no-loc text="vertex"::: indeling van een net aan te passen aan de handels nauwkeurigheid voor het besparen van geheugen. Met een lagere geheugen capaciteit kunt u grotere modellen laden of betere prestaties behaalt. Afhankelijk van uw gegevens kan dit echter een onjuiste indeling hebben die de weergave kwaliteit aanzienlijk kan beïnvloeden.
 
@@ -194,7 +200,7 @@ Deze indelingen zijn toegestaan voor de respectieve onderdelen:
 
 De geheugen footprint van de indelingen zijn als volgt:
 
-| Indeling | Beschrijving | Bytes per:::no-loc text="vertex"::: |
+| Indeling | Beschrijving | Bytes per :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|twee onderdelen met een volledige zwevende komma precisie|8
 |16_16_FLOAT|twee onderdelen, half zwevende punt precisie|4
@@ -208,7 +214,7 @@ De geheugen footprint van de indelingen zijn als volgt:
 * `position`: Het is niet vaak voldoende nauw keurigheid te verminderen. **16_16_16_16_FLOAT** introduceert duidelijk kwantisatiefouten artefacten, zelfs voor kleine modellen.
 * `normal`, `tangent` , `binormal` : Doorgaans worden deze waarden samen gewijzigd. Tenzij er merk bare belichtings artefacten zijn die het resultaat zijn van normale kwantisatiefouten, is er geen reden om de nauw keurigheid te verg Roten. In sommige gevallen kunnen deze onderdelen echter worden ingesteld op **geen**:
   * `normal`, `tangent` en `binormal` zijn alleen nodig wanneer ten minste één materiaal in het model moet worden gebrand. In ARR is dit het geval wanneer een [PBR-materiaal](../../overview/features/pbr-materials.md) op elk gewenst moment op het model wordt gebruikt.
-  * `tangent`en `binormal` zijn alleen nodig als een van de Lit-materialen gebruikmaakt van een normaal kaart patroon.
+  * `tangent` en `binormal` zijn alleen nodig als een van de Lit-materialen gebruikmaakt van een normaal kaart patroon.
 * `texcoord0`, `texcoord1` : Texture-coördinaten kunnen een gereduceerde nauw keurigheid (**16_16_FLOAT**) gebruiken wanneer hun waarden binnen het `[0; 1]` bereik blijven en wanneer de geadresseerde bitmappatronen een maximum grootte hebben van 2048 x 2048 pixels. Als deze limieten worden overschreden, zal de kwaliteit van de toewijzing van het patroon afnemen.
 
 #### <a name="example"></a>Voorbeeld
@@ -241,9 +247,9 @@ Een eenvoudige manier om te testen of instancing-informatie tijdens de conversie
 
 ![Klonen in 3ds Max.](./media/3dsmax-clone-object.png)
 
-* **`Copy`**: In deze modus wordt het net gekloond, dus er wordt geen instancing gebruikt ( `numMeshPartsInstanced` = 0).
-* **`Instance`**: De twee objecten delen dezelfde mesh, dus instancing wordt gebruikt ( `numMeshPartsInstanced` = 1).
-* **`Reference`**: DISTINCT-wijzigings functies kunnen worden toegepast op de geometrie, zodat de Exporter een conservatieve benadering kiest en geen instancing ( `numMeshPartsInstanced` = 0) gebruikt.
+* **`Copy`** : In deze modus wordt het net gekloond, dus er wordt geen instancing gebruikt ( `numMeshPartsInstanced` = 0).
+* **`Instance`** : De twee objecten delen dezelfde mesh, dus instancing wordt gebruikt ( `numMeshPartsInstanced` = 1).
+* **`Reference`** : DISTINCT-wijzigings functies kunnen worden toegepast op de geometrie, zodat de Exporter een conservatieve benadering kiest en geen instancing ( `numMeshPartsInstanced` = 0) gebruikt.
 
 
 ### <a name="depth-based-composition-mode"></a>Op diepte gebaseerde compositie modus
@@ -259,8 +265,8 @@ Zoals beschreven in de sectie [Aanbevolen procedures voor het wijzigen van onder
 Afhankelijk van het type scenario, kan de hoeveelheid textuur gegevens zwaarder zijn dan het geheugen dat wordt gebruikt voor netgegevens. Photogrammetry-modellen zijn kandidaten.
 De conversie configuratie biedt geen manier om bitmappatronen automatisch te schalen. Als dat nodig is, moet het schalen van het patroon worden uitgevoerd als een vooraf verwerkings stap aan de client zijde. Tijdens de conversie wordt echter een geschikte [patroon compressie-indeling](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)gekozen:
 
-* `BC1`voor ondoorzichtige kleur structuren
-* `BC7`voor Bronk leur patronen met alfa kanaal
+* `BC1` voor ondoorzichtige kleur structuren
+* `BC7` voor Bronk leur patronen met alfa kanaal
 
 Aangezien notatie `BC7` twee maal zo groot is als de geheugen footprint in vergelijking tot `BC1` , is het belang rijk om ervoor te zorgen dat de invoer structuren geen alfa kanaal bevatten.
 

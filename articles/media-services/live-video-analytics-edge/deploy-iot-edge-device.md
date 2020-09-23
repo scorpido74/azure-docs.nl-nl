@@ -2,28 +2,32 @@
 title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/09/2020
+ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526320"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887236"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
 In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 
+> [!NOTE]
+> Ondersteuning voor ARM64-apparaten is beschikbaar in live video Analytics op IoT Edge builds `1.0.4` en nieuwer.
+> Ondersteuning voor de uitvoering van Azure IoT Edge-runtime op ARM64-apparaten vindt u in [openbare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Linux-computer die voldoet aan de HW/SW-beperkingen voor live video Analytics
+* Een x86-64-of een ARM64-apparaat met een van de [ondersteunde Linux-besturings systemen](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)
 * Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner) hebt
 * [IoT Hub maken en instellen](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)
 * [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
 
-    * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
+    * Gebruik een van deze regio's: VS-Oost 2, VS-West, VS-midden, VS-West, Japan-Oost, VS-West, VS-West 2, westelijk-Centraal VS, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
     * U wordt aangeraden v2-opslag accounts voor algemeen gebruik (GPv2) te gebruiken
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-resources configureren voor het gebruik van live video Analytics
@@ -81,7 +85,6 @@ sudo chown -R edgeuser /var/media
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Live video Analytics Edge-module implementeren
 
-<!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 Met de live video Analytics op IoT Edge worden de eigenschappen van de module dubbel weer gegeven die zijn gedocumenteerd in het [Configuratie schema](module-twin-configuration-schema.md)van de module. 
 
 ### <a name="deploy-using-the-azure-portal"></a>Implementeren met behulp van de Azure-portal
@@ -252,4 +255,4 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
 Probeer [Quick Start: aan de slag-live video Analytics op IOT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> In de opdracht voert u volgende uit en gebruikt u `device-id` in plaats van de standaard instelling `lva-sample-device` .
+> Als u doorgaat met de bovenstaande Snelstartgids, gebruikt u het apparaat dat is toegevoegd aan de IoT Hub via dit artikel, in plaats van de standaard instelling, wanneer u de directe methoden aanroept met behulp van Visual Studio code `lva-sample-device` .

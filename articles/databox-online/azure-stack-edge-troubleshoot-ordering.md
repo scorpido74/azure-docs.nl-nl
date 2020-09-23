@@ -1,6 +1,6 @@
 ---
-title: De Azure Portal gebruiken om problemen met de Azure Stack Edge-volg orde op te lossen | Microsoft Docs
-description: Hierin wordt beschreven hoe u problemen met het rangschikken van Azure Stack Edge oplost.
+title: Gebruik de Azure Portal voor het oplossen van problemen met Azure Stack Edge Pro-volg orde | Microsoft Docs
+description: Hierin wordt beschreven hoe u problemen met het rangschikken van Azure Stack Edge Pro oplost.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055942"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903636"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Problemen met de volg orde van uw Azure Stack rand oplossen
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Problemen met uw Azure Stack Edge Pro-volg orde oplossen
 
-In dit artikel wordt beschreven hoe u problemen met het rangschikken van Azure Stack Edge kunt oplossen.
+In dit artikel wordt beschreven hoe u problemen met het rangschikken van Azure Stack Edge Pro oplost.
 
 In deze zelfstudie leert u het volgende:
 
@@ -59,7 +59,7 @@ Zie [resource providers registreren](azure-stack-edge-manage-access-power-connec
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Micro soft. DataBoxEdge niet geregistreerd voor abonnement
 
-**Fout:** In Azure Portal selecteert u een abonnement dat u wilt gebruiken voor Azure Stack Edge of Data Box Gateway en krijgt u de volgende fout:
+**Fout:** In Azure Portal selecteert u een abonnement dat u wilt gebruiken voor Azure Stack Edge Pro of Data Box Gateway en krijgt u de volgende fout:
 
 *Resource provider (s): micro soft. DataBoxEdge zijn niet geregistreerd voor abonnements &lt; naam &gt; en u bent niet gemachtigd om een resource provider te registreren voor abonnements &lt; naam &gt; abonnement*.
 
@@ -75,4 +75,4 @@ Zie [resource providers registreren](azure-stack-edge-manage-access-power-connec
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het oplossen van problemen [met de Azure stack Edge](azure-stack-edge-troubleshoot.md).
+* Meer informatie over het oplossen van problemen [met uw Azure stack Edge Pro](azure-stack-edge-troubleshoot.md).

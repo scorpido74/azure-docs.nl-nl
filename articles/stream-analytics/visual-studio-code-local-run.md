@@ -6,14 +6,14 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903800"
 ---
-# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code
+# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code
 
 U kunt Azure Stream Analytics-hulpprogram ma's voor Visual Studio code gebruiken om uw Stream Analytics-taken lokaal te testen met voorbeeld gegevens. U vindt de query resultaten in JSON-bestanden in de map **LocalRunOutputs** van het project.
 
@@ -21,7 +21,7 @@ U kunt Azure Stream Analytics-hulpprogram ma's voor Visual Studio code gebruiken
 
 * Installeer de [.net core-SDK](https://dotnet.microsoft.com/download) en Start Visual Studio code opnieuw.
 
-* Gebruik deze [Quick](quick-create-vs-code.md) start om te leren hoe u met Visual Studio Code een stream Analytics taak maakt.
+* Gebruik deze [Quick](quick-create-visual-studio-code.md) start om te leren hoe u met Visual Studio Code een stream Analytics taak maakt.
 
 ## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
 
@@ -31,17 +31,17 @@ U moet eerst voorbeeld invoer gegevens bestanden voorbereiden. Als u al een aant
 
 2. Zodra de gegevens zijn weer gegeven, klikt u op **Opslaan als** om de gegevens op te slaan in een lokaal bestand.
 
- ![Live-invoer preview](./media/quick-create-vs-code/preview-live-input.png)
+ ![Live invoer vooraf bekijken](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>Een lokale invoer definiëren
 
 1. Klik op **input.js** in de map inputs in uw stream Analytics-project. Selecteer vervolgens **lokale invoer toevoegen** van de bovenste regel.
 
-    ![Lokale invoer uit project toevoegen](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Lokale invoer uit project toevoegen](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     U kunt ook **CTRL + SHIFT + P** gebruiken om het opdracht palet te openen en **ASA: invoer toevoegen**.
 
-   ![Stream Analytics invoer in VS code toevoegen](./media/quick-create-vs-code/add-input.png)
+   ![Stream Analytics invoer in VS code toevoegen](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Selecteer **lokale invoer**.
 

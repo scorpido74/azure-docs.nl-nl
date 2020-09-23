@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74774734"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895093"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelfstudie: Bewaken en afstemmen van Azure Database for PostgreSQL - één server
 
@@ -40,7 +40,7 @@ U hebt een Azure Database for PostgreSQL-server met PostgreSQL versie 9.6 of 10 
 
 4. Stel **pg_qs.query_capture_mode** in op **TOP** om queryprestatiegegevens te gaan verzamelen. Stel **pgms_wait_sampling.query_capture_mode** in op **ALLE** om wachtstatistieken te gaan verzamelen. Sla op.
    
-   ![Parameters voor Query Store-server](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Parameters voor Query Store-server":::
 
 5. Wacht 20 minuten tot de eerste batch met gegevens is vastgelegd in database **azure_sys**.
 
@@ -52,7 +52,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 
 2. Op het tabblad **Langlopende query's** ziet u de top 5 query's op de gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. 
    
-   ![Landingspagina van Query Performance Insight](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Landingspagina van Query Performance Insight":::
 
    U kunt meer query's weergeven door een optie te selecteren in de vervolgkeuzelijst **Aantal query's**. Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
 
@@ -64,7 +64,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 
 6. Selecteer het tabblad **Wachtstatistieken** om de bijbehorende visualisaties voor wachttijden in de server weer te geven.
    
-   ![Wachtstatistieken van Query Performance Insight](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Wachtstatistieken van Query Performance Insight":::
 
 ### <a name="permissions"></a>Machtigingen
 De machtigingen **Eigenaar** of **Inzender** zijn vereist om de tekst van de query's weer te geven in Query Performance Insight. Met de machtiging **Lezer** kunt u grafieken en tabellen weergeven maar geen tekst opvragen.
@@ -75,7 +75,7 @@ De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) ana
 
 1. Open **Prestatieaanbevelingen** in de sectie **Ondersteuning en probleemoplossing** van de menubalk op de Azure Portal-pagina voor uw PostgreSQL-server.
    
-   ![Landingspagina van Prestatieaanbevelingen](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Landingspagina van Prestatieaanbevelingen":::
 
 2. Selecteer **Analyseren** en kies een database. De analyse wordt hiermee gestart.
 
@@ -85,7 +85,7 @@ De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) ana
 
 5. Een aanbeveling bevat informatie over de relevante **Database**, **Tabel**, **Kolom** en **Indexgrootte**.
 
-   ![Resultaat van Prestatieaanbevelingen](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Resultaat van Prestatieaanbevelingen":::
 
 6. Als u de aanbeveling wilt implementeren, kopieert u de querytekst en voert u deze uit vanaf de gewenste client.
 

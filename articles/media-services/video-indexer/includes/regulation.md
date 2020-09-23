@@ -4,11 +4,11 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: juliako
-ms.openlocfilehash: ead8b68030d1f0df1a774acfe5ecd4534d29cfff
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 3de260e0e5fc68f1495e7a37def06a2289b548c7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025387"
 ---
-![breed](../media/banner/banner.svg)
+![Op 11 juni 2020 kondigde Microsoft aan dat het geen gezichtsherkenningssoftware verkoopt aan politieafdelingen in de Verenigde Staten totdat er solide wetgeving op basis van mensenrechten in werking is getreden. Daardoor is het mogelijk dan klanten gezichtsherkenningsfuncties of een functionaliteit in Azure Services, zoals Face of Video Indexer, niet kunnen gebruiken als de klant deze services gebruikt of laat gebruiken voor of door een politieafdeling in de Verenigde Staten.](../media/banner/banner.svg)

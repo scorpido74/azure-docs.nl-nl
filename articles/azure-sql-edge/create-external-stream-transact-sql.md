@@ -1,6 +1,6 @@
 ---
-title: EXTERNE STREAM maken (Transact-SQL)-Azure SQL Edge (preview)
-description: Meer informatie over de instructie externe STREAM maken in Azure SQL Edge (preview)
+title: EXTERNE STREAM maken (Transact-SQL)-Azure SQL Edge
+description: Meer informatie over de instructie externe STREAM maken in Azure SQL Edge
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489541"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888164"
 ---
 # <a name="create-external-stream-transact-sql"></a>EXTERNE STREAM maken (Transact-SQL)
 
@@ -24,7 +24,7 @@ Een externe stroom kan ook worden opgegeven en gemaakt als uitvoer en invoer voo
 
 Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als invoer en uitvoer van streams.
 
-| Gegevens bron type | Invoer | Uitvoer | Beschrijving |
+| Gegevens bron type | Invoer | Uitvoer | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
 | SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Voor Azure Blob Storage Stream-object locatie verwijst naar het pad patroon dat in de BLOB-container moet worden gebruikt. Raadpleeg voor meer informatie over deze functie (/articles/stream-Analytics/stream-Analytics-define-outputs.MD # Blob-Storage-and-Azure-data-Lake-Gen2)
 
 - **INPUT_OPTIONS**: Geef opties op als sleutel-waardeparen voor services, zoals Kafka, IOT Edge hub die is invoer van streaming-query's
-    - PARTITIES: aantal partities dat is gedefinieerd voor een onderwerp
+    - PARTITIES: aantal partities dat is gedefinieerd voor een onderwerp. Het maximum aantal partities dat kan worden gebruikt, is beperkt tot 32.
       - Is van toepassing op Kafka-invoer stromen
     - CONSUMER_GROUP: gebeurtenis-en IoT-hubs beperken het aantal lezers binnen één consumer groep (tot 5). Als dit veld leeg blijft, wordt de gebruikers groep ' $Default ' gebruikt.
       - Gereserveerd voor toekomstig gebruik. Is niet van toepassing op Azure SQL Edge.  
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>Zie ook
 
-- [EXTERNE stroom wijzigen (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [EXTERNE stroom verwijderen (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

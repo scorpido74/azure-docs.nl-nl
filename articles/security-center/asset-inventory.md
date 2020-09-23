@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895164"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Uw resources verkennen en beheren met Asset Inventory and management tools
 
@@ -25,19 +25,22 @@ Wanneer een resource openstaande aanbevelingen heeft, worden deze weer gegeven i
 
 Gebruik deze weer gave en de bijbehorende filters om deze vragen te beantwoorden:
 
-- Welke van mijn abonnementen op de Standard-laag hebben openstaande aanbevelingen?
+- Welke van mijn abonnementen waarvoor Azure Defender is ingeschakeld, heeft uitstaande aanbevelingen?
 - Op welke van mijn machines met het label productie ontbreekt de Log Analytics-agent?
-- Hoeveel van mijn machines hebben uitstaande aanbevelingen voor een label met een specifieke tag?
+- Hoeveel van mijn machines met een specifieke tag hebben openstaande aanbevelingen?
 - Hoeveel resources in een specifieke resource groep hebben beveiligings bevindingen van een beveiligings evaluatie service?
 
 De mogelijkheden voor het beheer van middelen voor dit hulp programma zijn aanzienlijk en blijven groeien. 
+
+> [!TIP]
+> De aanbevelingen voor beveiliging zijn hetzelfde als die op de pagina **aanbevelingen** , maar hier worden ze gefilterd op het specifieke resource type dat u hebt geselecteerd. Zie [beveiligings aanbevelingen implementeren in azure Security Center](security-center-recommendations.md)voor meer informatie over het oplossen van aanbevelingen.
 
 
 ## <a name="availability"></a>Beschikbaarheid
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Preview|
+|Release status:|Algemeen beschikbaar (GA)|
 |Koers|Gratis|
 |Vereiste rollen en machtigingen:|Alle gebruikers|
 |Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
@@ -56,7 +59,7 @@ De pagina inventarisatie bevat de volgende hulpprogram ma's:
 
 - **Filters** : de meerdere filters boven aan de pagina bieden een manier om de lijst met resources snel te verfijnen op basis van de vraag die u probeert te beantwoorden. Als u bijvoorbeeld de vraag wilt beantwoorden op *welke van mijn machines met het label productie ontbreekt de log Analytics agent?* u kunt het **bewakings** filter van de agent combi neren met het filter **Tags** , zoals wordt weer gegeven in de volgende clip:
 
-    ![Filteren op productie resources die niet worden bewaakt](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Filteren op productie resources die niet worden bewaakt":::
 
     Zodra u filters hebt toegepast, worden de samenvattings waarden bijgewerkt om te koppelen aan de query resultaten. 
 
@@ -69,8 +72,9 @@ De pagina inventarisatie bevat de volgende hulpprogram ma's:
 
 - **Asset Management-opties** : inventaris biedt u de mogelijkheid om complexe detectie query's uit te voeren. Wanneer u de resources hebt gevonden die overeenkomen met uw query's, biedt de inventarisatie snelkoppelingen voor bewerkingen, zoals:
 
-    - Tags toewijzen aan de gefilterde resources: Selecteer de selectie vakjes naast de resources die u wilt labelen
-    - Nieuwe servers onboarden naar Security Center: gebruik de werkbalk knop **niet-Azure-servers toevoegen**
+    - Tags toewijzen aan de gefilterde resources: Selecteer de selectie vakjes naast de resources die u wilt labelen.
+    - Nieuwe servers onboarden naar Security Center: gebruik de werkbalk knop **niet-Azure-servers toevoegen** .
+    - Werk belastingen automatiseren met Azure Logic Apps: gebruik de knop **trigger Logic app** om een logische app uit te voeren op een of meer resources. Uw logische apps moeten vooraf worden voor bereid en accepteren het relevante trigger type (HTTP-aanvraag). Meer [informatie over Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hoe werkt Asset Inventory?
@@ -86,11 +90,11 @@ Met behulp van de [Kusto-query taal (KQL)](https://docs.microsoft.com/azure/data
 
 1. Selecteer op de zijbalk van Security Center de optie **inventaris**.
 
-1. Als u een specifieke resource wilt weer geven, voert u de naam in het vak **filteren op naam** in.
+1. Gebruik het vak **filteren op naam** om een specifieke resource weer te geven of gebruik de filters zoals hieronder wordt beschreven.
 
 1. Selecteer de relevante opties in de filters om de specifieke query te maken die u wilt uitvoeren.
 
-    ![Inventarisatie filters](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Filter opties voor inventaris" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Standaard worden de resources gesorteerd op het aantal actieve beveiligings aanbevelingen.
 
@@ -106,19 +110,24 @@ Met behulp van de [Kusto-query taal (KQL)](https://docs.microsoft.com/azure/data
     > [!TIP]
     > De **beveiligings resultaten bevatten** en **Tags** filters accepteren slechts één waarde. Gebruik filters toevoegen om op meer dan één filter **toe te voegen**.
 
-1. Als u het filter **prijs categorie** wilt gebruiken, selecteert u een of meer opties (gratis, gedeeltelijk of standaard):
+1. Als u het filter van **Azure Defender** wilt gebruiken, selecteert u een of meer opties (uit, op of gedeeltelijk):
 
-    - **Gratis** -resources die zich in de gratis prijs categorie bevinden
-    - **Standard** -resources die zich op de prijs categorie Standard bevinden
-    - **Gedeeltelijk** : dit is van toepassing op abonnementen die zich op de prijs categorie Standard bevinden, maar waarvoor enkele van de optionele beveiligings abonnementen zijn uitgeschakeld. Het volgende abonnement bevindt zich bijvoorbeeld op de Standard-laag, maar heeft vijf elementen van de laag standaard uitgeschakeld. 
+    - **Off** -resources die niet worden beveiligd door een Azure Defender-abonnement. U kunt met de rechter muisknop op een van deze opties klikken en deze upgraden:
 
-        ![Prijs categorie abonnement op Standard (gedeeltelijk)](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Een resource upgraden van met de rechter muisknop naar Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - **On** -resources die worden beveiligd met een Azure Defender-abonnement
+    - **Gedeeltelijk** : dit is van toepassing op **abonnementen** die niet alle Azure Defender-abonnementen hebben uitgeschakeld. Het volgende abonnement bevat bijvoorbeeld vijf Azure Defender-abonnementen die zijn uitgeschakeld. 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Abonnement gedeeltelijk op Azure Defender":::
 
 1. Als u de resultaten van uw query verder wilt onderzoeken, selecteert u de resources die u interesseren.
 
-1. Selecteer eventueel **weer gave in resource Graph Explorer** om de query te openen in resource Graph Explorer.
+1. Als u de huidige geselecteerde filter opties wilt weer geven als een query in resource Graph Explorer, selecteert u **weer gave in resource Graph Explorer**.
 
     ![Inventarisatie query in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. Een eerder gedefinieerde logische app uitvoeren met 
 
 1. Als u sommige filters hebt gedefinieerd en de pagina hebt geopend, worden Security Center de resultaten niet automatisch bijgewerkt. Wijzigingen in resources zijn niet van invloed op de weer gegeven resultaten tenzij u de pagina hand matig opnieuw laadt of **vernieuwen**selecteert.
 
@@ -127,22 +136,19 @@ Met behulp van de [Kusto-query taal (KQL)](https://docs.microsoft.com/azure/data
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>Waarom worden niet alle abonnementen, machines, opslag accounts, enz. weer gegeven?
 
-De inventaris weergave bevat uw resources van een CSPM-perspectief (Cloud Security postuur Management). De filters retour neren niet alle resources in uw omgeving. alleen de taken met openstaande (of ' Active ') aanbevelingen. 
+De inventaris weergave bevat uw Security Center verbonden resources van een CSPM-perspectief (Cloud Security postuur Management). De filters retour neren niet alle resources in uw omgeving. alleen de taken met openstaande (of ' Active ') aanbevelingen. 
 
-Als u bijvoorbeeld negen abonnementen hebt, maar er nog maar acht aanbevelingen hebt, worden de acht abonnementen met actieve aanbevelingen alleen weer geven als u filtert op **resource type = abonnementen** .
+In de volgende scherm afbeelding ziet u bijvoorbeeld een gebruiker met toegang tot 38-abonnementen, maar er zijn nog maar 10 aanbevelingen. Als ze worden gefilterd op **resource type = abonnementen**, worden alleen die 10 abonnementen met actieve aanbevelingen weer gegeven in de inventaris:
 
-![Niet alle hoeven worden geretourneerd wanneer er geen actieve aanbevelingen zijn](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Niet alle hoeven worden geretourneerd wanneer er geen actieve aanbevelingen zijn":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>Waarom worden in sommige resources lege waarden weer gegeven in de kolommen prijzen of agent bewaking?
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Waarom worden in sommige resources lege waarden weer gegeven in de kolommen van Azure Defender of de agent bewaking?
 
 Niet alle Security Center bewaakte resources hebben agents. Bijvoorbeeld Azure Storage accounts of PaaS resources zoals schijven, Logic Apps, Data Lake analyse en Event hub.
 
 Wanneer de prijs-of agent bewaking niet relevant is voor een resource, worden er niets weer gegeven in die kolommen met de inventarisatie.
 
-![In sommige resources worden lege gegevens weer gegeven in de kolom agent bewaking of prijzen](./media/asset-inventory/agent-pricing-blanks.png)
-
-
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Sommige resources bevatten lege gegevens in de agent bewaking of Azure Defender-kolommen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -151,5 +157,4 @@ In dit artikel wordt de pagina Asset Inventory van Azure Security Center beschre
 Zie de volgende pagina's voor meer informatie over gerelateerde hulpprogram ma's:
 
 - [Azure-resource grafiek (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [Kusto-querytaal (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

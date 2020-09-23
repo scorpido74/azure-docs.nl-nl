@@ -1,24 +1,24 @@
 ---
-title: VM-extensie beheer met servers voor Azure Arc ingeschakeld (preview)
-description: Servers met Azure-Arc (preview) kunnen de implementatie van extensies van virtuele machines beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
-ms.date: 06/17/2020
+title: VM-extensie beheer met servers die geschikt zijn voor Azure-Arc
+description: Servers met Azure-Arc kunnen de implementatie van virtuele-machine uitbreidingen beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887766"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Extensie beheer voor virtuele machines met Azure Arc-servers (preview-versie)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Extensie beheer voor virtuele machines met servers die geschikt zijn voor Azure-Arc
 
 Virtuele-machine-uitbrei dingen zijn kleine toepassingen die configuratie-en automatiserings taken na de implementatie leveren op Azure-Vm's. Als op een virtuele machine bijvoorbeeld software of antivirusbeveiliging moet worden geïnstalleerd of een script moet worden uitgevoerd, kan hiervoor een VM-extensie worden gebruikt.
 
-Met Azure Arc enabled servers (preview) kunt u Azure VM-extensies implementeren op niet-Azure Windows-en Linux-Vm's, waardoor u het beheer van uw hybride machine on-premises, Edge en andere Cloud omgevingen kunt vereenvoudigen door hun levens cyclus.
+Met Azure Arc-servers kunt u Azure-VM-extensies implementeren op niet-Azure Windows-en Linux-Vm's, waardoor het beheer van uw hybride machine on-premises, Edge en andere Cloud omgevingen via hun levens cyclus wordt vereenvoudigd.
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-Ondersteuning voor de VM-extensie van Azure Arc is ingeschakeld (preview) biedt de volgende belang rijke voor delen:
+Ondersteuning voor VM-extensies voor Azure Arc ingeschakelde servers biedt de volgende belang rijke voor delen:
 
 * Gebruik [Azure Automation status configuratie](../../automation/automation-dsc-overview.md) om configuraties centraal op te slaan en de gewenste status van hybride verbonden computers te onderhouden die zijn ingeschakeld via de DSC-extensie voor vm's.
 
@@ -32,7 +32,7 @@ Ondersteuning voor de VM-extensie van Azure Arc is ingeschakeld (preview) biedt 
 
 De functionaliteit van de VM-extensie is alleen beschikbaar in de lijst met [ondersteunde regio's](overview.md#supported-regions). Zorg ervoor dat u uw computer in een van deze regio's onboardt.
 
-## <a name="extensions"></a>Extensies
+## <a name="extensions"></a>Uitbreidingen
 
 In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-computers.
 
@@ -47,7 +47,7 @@ In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-
 |Log Analytics-agent |Linux |Micro soft. EnterpriseCloud. monitoring |[VM-extensie Log Analytics voor Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Micro soft-afhankelijkheids agent | Linux |Microsoft.Compute | [Extensie van de virtuele machine van de afhankelijkheids agent voor Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM-extensies kunnen worden uitgevoerd met Azure Resource Manager sjablonen, van de Azure Portal of Azure PowerShell op hybride servers die worden beheerd door servers waarop Arc is ingeschakeld (preview).
+VM-extensies kunnen worden uitgevoerd met Azure Resource Manager sjablonen, van de Azure Portal of Azure PowerShell op hybride servers die worden beheerd door servers waarop Arc is ingeschakeld.
 
 Zie [overzicht van agents](agent-overview.md#agent-component-details)voor meer informatie over het Azure Connected machine agent-pakket en Details over het onderdeel van de extensie agent.
 
@@ -55,8 +55,8 @@ Zie [overzicht van agents](agent-overview.md#agent-component-details)voor meer i
 
 Deze functie is afhankelijk van de volgende Azure-resource providers in uw abonnement:
 
-* **Micro soft. HybridCompute**
-* **Micro soft. GuestConfiguration**
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
 
 Als ze nog niet zijn geregistreerd, volgt u de stappen onder [Azure-resource providers registreren](agent-overview.md#register-azure-resource-providers).
 
@@ -75,13 +75,13 @@ Zie [upgrade agent](manage-agent.md#upgrading-agent)om uw computer te upgraden n
 
 ## <a name="enable-extensions-from-the-portal"></a>Uitbrei dingen van de portal inschakelen
 
-VM-extensies kunnen worden toegepast op uw Arc voor Server (preview) Managed machine via de Azure Portal.
+Voor VM-extensies kan uw Arc worden toegepast voor de door de server beheerde machine via de Azure Portal.
 
 1. Ga in uw browser naar de [Azure Portal](https://aka.ms/arcserver-preview).
 
-2. Blader in de portal naar **machines-Azure-boog** en selecteer uw hybride machine in de lijst.
+2. Ga in de portal naar **servers-Azure-boog** en selecteer uw hybride machine in de lijst.
 
-3. Kies **extensies**en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard. In dit voor beeld wordt de VM-extensie Log Analytics geïmplementeerd. 
+3. Kies **extensies**en selecteer vervolgens **toevoegen**. Kies de gewenste uitbrei ding in de lijst met beschik bare uitbrei dingen en volg de instructies in de wizard. In dit voor beeld wordt de VM-extensie Log Analytics geïmplementeerd.
 
     ![VM-extensie voor geselecteerde machine selecteren](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ VM-extensies kunnen worden toegepast op uw Arc voor Server (preview) Managed mac
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Met de VM-extensies die worden ondersteund door Arc-servers (preview), kunt u de ondersteunde VM-extensie implementeren op Linux-of Windows-computers met behulp van Azure PowerShell. Elk voor beeld hieronder bevat een sjabloon bestand en een parameter bestand met voorbeeld waarden die aan de sjabloon kunnen worden door gegeven.
+VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Met de VM-extensies die worden ondersteund door Arc-servers, kunt u de ondersteunde VM-extensie implementeren op Linux-of Windows-computers met behulp van Azure PowerShell. Elk voor beeld hieronder bevat een sjabloon bestand en een parameter bestand met voorbeeld waarden die aan de sjabloon kunnen worden door gegeven.
 
 >[!NOTE]
 >Hoewel meerdere uitbrei dingen tegelijk kunnen worden gebatcheerd en verwerkt, worden ze serieel geïnstalleerd. Zodra de eerste installatie van de extensie is voltooid, wordt de installatie van de volgende uitbrei ding geprobeerd.
@@ -707,6 +707,18 @@ Als u de Azure Monitor dependency agent-extensie wilt gebruiken, is het volgende
 }
 ```
 
+## <a name="uninstall-extension"></a>Extensie verwijderen
+
+Het verwijderen van een of meer uitbrei dingen van een door Arc ingeschakelde server kan alleen worden uitgevoerd vanuit de Azure Portal. Voer de volgende stappen uit om een uitbrei ding te verwijderen.
+
+1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com).
+
+2. Ga in de portal naar **servers-Azure-boog** en selecteer uw hybride machine in de lijst.
+
+3. Kies **uitbrei dingen**en selecteer een uitbrei ding in de lijst met geïnstalleerde uitbrei dingen.
+
+4. Selecteer **verwijderen** en wanneer u wordt gevraagd om te verifiëren, selecteert u **Ja** om door te gaan.
+
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal.
@@ -715,7 +727,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de gast agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` voor Windows en voor Linux onder `/var/lib/GuestConfig/ext_mgr_logs` .
 
-2. Raadpleeg de extensie logboeken voor de specifieke extensie voor meer informatie over `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` Windows. Uitvoer van de extensie wordt vastgelegd in een bestand voor elke uitbrei ding die is geïnstalleerd in Linux onder `/var/log/GuestConfig/extension_logs` .
+2. Raadpleeg de extensie logboeken voor de specifieke extensie voor meer informatie over `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` Windows. Uitvoer van de extensie wordt vastgelegd in een bestand voor elke uitbrei ding die is geïnstalleerd in Linux onder `/var/lib/GuestConfig/extension_logs` .
 
 3. Raadpleeg de onderwerpen over probleem oplossing voor specifieke documentatie voor fout codes, bekende problemen, enzovoort. Meer informatie over het oplossen van problemen voor elke uitbrei ding vindt u in de sectie **problemen oplossen en ondersteuning** in het overzicht voor de uitbrei ding. Dit omvat de beschrijving van fout codes die naar het logboek zijn geschreven. De uitbrei ding artikelen worden gekoppeld in de [tabel extensies](#extensions) die eerder in dit artikel zijn gevonden.
 
@@ -725,4 +737,4 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 - Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturingssysteem en workloads op de machine proactief wilt monitoren, deze wilt beheren met Automation-runbooks of oplossingen zoals Updatebeheer, of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md) wilt gebruiken.
+- Meer informatie over [[log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.

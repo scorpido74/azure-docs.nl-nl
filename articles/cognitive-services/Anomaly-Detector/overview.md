@@ -1,95 +1,96 @@
 ---
 title: Wat is de Anomaly Detector-API?
 titleSuffix: Azure Cognitive Services
-description: Gebruik de geavanceerde algoritmen van de anomalie detectie-API om afwijkingen in uw time series-gegevens te identificeren.
+description: Met de geavanceerde algoritmen van de Anomaly Detector-API's kunt u anomalieën in uw tijdreeksgegevens detecteren.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887500"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Wat is de Anomaly Detector-API?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Met de anomalie detectie-API kunt u afwijkingen in uw time series-gegevens controleren en detecteren met machine learning. De anomalie detectie-API wordt aangepast door automatisch de beste modellen te identificeren en toe te passen op uw gegevens, ongeacht de branche, het scenario of het gegevens volume. Met behulp van uw time series-gegevens bepaalt de API grenzen voor anomalie detectie, verwachte waarden en welke gegevens punten afwijkingen zijn.
+Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning. De Anomaly Detector-API wordt aangepast door automatisch de geschiktste modellen te bepalen en toe te passen op uw gegevens, ongeacht de branche, het scenario of het gegevensvolume. Met behulp van uw tijdreeksgegevens worden de grenzen voor anomaliedetectie en verwachte waarden vastgesteld, alsmede welke gegevenspunten anomalieën zijn.
 
-![Wijzigingen in het patroon van service aanvragen detecteren](./media/anomaly_detection2.png)
+![Detectiepatroonwijzigingen in serviceaanvragen](./media/anomaly_detection2.png)
 
-Het gebruik van de anomalie detectie vereist geen eerdere ervaring in machine learning. met de REST-API kunt u de service eenvoudig integreren in uw toepassingen en processen.
+Voor het gebruik van Anomaly Detector is geen ervaring met machine learning vereist. Met de RESTful-API kunt u de service eenvoudig integreren in uw toepassingen en processen.
 
 ## <a name="features"></a>Functies
 
-Met de anomalie detectie kunt u automatisch afwijkingen in uw tijdreeks gegevens detecteren of wanneer deze in realtime optreden.
+Met Anomaly Detector kunt u automatisch anomalieën in uw tijdreeksgegevens detecteren of wanneer deze in realtime optreden.
 
 |Functie  |Beschrijving  |
 |---------|---------|
-|Detecteer afwijkingen die in realtime optreden. | Detecteer afwijkingen in uw streaminggegevens met behulp van eerder waargenomen gegevens punten om te bepalen of uw laatste een afwijkend item is. Met deze bewerking wordt een model gegenereerd met de gegevens punten die u verzendt, en wordt bepaald of het doel punt een afwijkend is. Door de API aan te roepen met elk nieuw gegevens punt dat u genereert, kunt u uw gegevens bewaken terwijl deze worden gemaakt. |
-|Detecteer afwijkingen in uw gegevensset als een batch. | Gebruik uw tijd reeks om eventuele afwijkingen op te sporen die in uw gegevens mogelijk zijn. Met deze bewerking wordt een model gegenereerd met uw volledige tijdreeks gegevens, waarbij elk punt wordt geanalyseerd met hetzelfde model.         |
-| Ontvang aanvullende informatie over uw gegevens. | Krijg nuttige informatie over uw gegevens en eventuele afwijkingen, waaronder verwachte waarden, afwijkende grenzen en posities. |
-| De grenzen voor afwijkings detectie aanpassen. | De anomalie detector API maakt automatisch grenzen voor anomalie detectie. U kunt deze grenzen aanpassen om de gevoeligheid van de API voor gegevens afwijkingen te verhogen of verlagen en uw gegevens beter aan te passen. |
+|Detecteert anomalieën die in realtime optreden. | Anomalieën in uw streaminggegevens detecteren door de nieuwste punten te vergelijken met eerder gedetecteerde gegevenspunten. Met deze bewerking wordt een model gegenereerd met de gegevenspunten die u verzendt, en wordt bepaald of het doelpunt een anomalie is. Door de API aan te roepen bij elk nieuw gegevenspunt dat u genereert, kunt u uw gegevens bewaken terwijl ze worden gemaakt. |
+|Detecteert anomalieën in uw gegevensset als een batch. | Uw tijdreeks gebruiken om eventuele anomalieën in uw gegevens op te sporen. Met deze bewerking wordt een model gegenereerd op basis van uw volledige tijdreeksgegevens, waarbij elk punt wordt geanalyseerd met hetzelfde model.         |
+|Detecteert wijzigingspunten in uw gegevensset als een batch. | Uw tijdreeks om eventuele wijzigingspunten in uw gegevens te detecteren. Met deze bewerking wordt een model gegenereerd op basis van uw volledige tijdreeksgegevens, waarbij elk punt wordt geanalyseerd met hetzelfde model.    |
+| Aanvullende informatie over het probleem ophalen. | Nuttige informatie over uw gegevens en gedetecteerde anomalieën, waaronder verwachte waarden, grenzen en posities van anomalieën. |
+| Grenzen voor anomaliedetectie aanpassen. | Met de Anomaly Detector-API worden automatisch grenzen voor anomaliedetectie gemaakt. U kunt deze grenzen aanpassen om de gevoeligheid van de API voor anomalieën in gegevens te verhogen of verlagen, en te optimaliseren voor uw gegevens. |
 
 ## <a name="demo"></a>Demo
 
-Bekijk deze [interactieve demo](https://aka.ms/adDemo) om te begrijpen hoe anomalie detectie werkt.
-Als u de demo wilt uitvoeren, moet u een afwijkende detector-resource maken en de API-sleutel en het eind punt ophalen.
+Bekijk deze [interactieve demo](https://aka.ms/adDemo) om beter te begrijpen hoe Anomaly Detector werkt.
+Als u de demo wilt uitvoeren, moet u een Anomaly Detector-resource maken en de API-sleutel en het eindpunt ophalen.
 
 ## <a name="notebook"></a>Notebook
 
-Probeer dit [Azure-notitie blok](https://aka.ms/adNotebook)voor meer informatie over het aanroepen van de anomalie detectie-API. Dit webhoste Jupyter Notebook laat zien hoe u een API-aanvraag verzendt en het resultaat kunt visualiseren.
+Als u wilt weten hoe u de Anomaly Detector-API aanroept, probeert u dit [notebook](https://aka.ms/adNotebook). Dit Jupyter Notebook laat zien hoe u een API-aanvraag verzendt en het resultaat visualiseert.
 
-Als u het notitie blok wilt uitvoeren, voert u de volgende stappen uit:
+Voer de volgende stappen uit om het notebook uit te voeren:
 
-1. Haal een geldige Anomaliey-API-abonnements sleutel en een API-eind punt op. In de volgende sectie vindt u instructies voor het aanmelden.
-1. Meld u aan en klik op klonen in de rechter bovenhoek.
-1. Schakel de optie ' openbaar ' in het dialoog venster uit voordat u de kloon bewerking voltooit, anders is uw notitie blok, inclusief abonnements sleutels, openbaar.
-1. Klik op **uitvoeren op gratis Compute**
-1. Selecteer een van de notitie blokken.
-1. Voeg uw geldige Anomaliey API-abonnements sleutel toe aan `subscription_key` de variabele.
-1. Wijzig de `endpoint` variabele in uw eind punt. Bijvoorbeeld: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. Klik in de bovenste menu balk op **cel**en **Voer alles uit**.
+1. Haal een geldige abonnementssleutel en een geldig eindpunt voor de Anomaly Detector-API op. In de volgende sectie vindt u instructies voor het registreren.
+1. Meld u aan en klik op Klonen in de rechterbovenhoek.
+1. Schakel de optie 'public' in het dialoogvenster uit voordat u de kloonbewerking voltooit, anders is uw notebook, inclusief abonnementssleutels, openbaar.
+1. Klik op **Uitvoeren op gratis Compute**
+1. Selecteer een van de notebooks.
+1. Voeg uw geldige abonnementssleutel voor de Anomaly Detector-API toe aan de variabele `subscription_key`.
+1. Wijzig de variabele `endpoint` in uw eindpunt. Bijvoorbeeld: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Klik in de bovenste menubalk op **Cel** en vervolgens op **Alle uitvoeren**.
 
 ## <a name="workflow"></a>Werkstroom
 
-De anomalie detectie-API is een REST-webservice, waarmee u eenvoudig kunt aanroepen vanuit elke programmeer taal die HTTP-aanvragen kan maken en JSON kan parseren.
+De Anomaly Detector-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-Nadat u zich hebt aangemeld:
+Nadat u zich hebt geregistreerd:
 
-1. Neem uw time series-gegevens mee en converteer deze naar een geldige JSON-indeling. Gebruik [Aanbevolen procedures](concepts/anomaly-detection-best-practices.md) voor het voorbereiden van uw gegevens om de beste resultaten te krijgen.
-1. Verzend een aanvraag naar de anomalie detectie-API met uw gegevens.
+1. Converteer uw tijdreeksgegevens naar een geldige JSON-indeling. Bereid uw gegevens voor in overeenstemming met de [best practices](concepts/anomaly-detection-best-practices.md) voor de beste resultaten.
+1. Verzend een aanvraag naar de Anomaly Detector-API met uw gegevens.
 1. Verwerk de API-reactie door het geretourneerde JSON-bericht te parseren.
 
 ## <a name="algorithms"></a>Algoritmen
 
-* Raadpleeg de volgende technische blogs voor informatie over de gebruikte algoritmen:
+* Zie de volgende technische blogs voor informatie over de gebruikte algoritmen:
     * [Inleiding tot de Azure Anomaly Detector-API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
-    * [Overzicht van de SR-CNN-algoritme in azure anomalie detectie](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+    * [Overzicht van het SR-CNN-algoritme in Azure Anomaly Detector](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
 
-U kunt de [afwijkings detectie service voor de papieren time-series lezen bij micro soft](https://arxiv.org/abs/1906.03821) (geaccepteerd door KDD 2019) voor meer informatie over de CNN-algoritmen die zijn ontwikkeld door micro soft.
+U kunt de paper [Time-Series Anomaly Detection Service at Microsoft](https://arxiv.org/abs/1906.03821) (goedgekeurd door KDD 2019) lezen voor meer informatie over de SR-CNN-algoritmen die zijn ontwikkeld door Microsoft.
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
 ## <a name="join-the-anomaly-detector-community"></a>Lid worden van de Anomaly Detector-community
 
-* Word lid [van de groep afwijkingen van de detectorshim van micro soft-teams](https://aka.ms/AdAdvisorsJoin)
-* Geselecteerde door [gebruiker gegenereerde inhoud](user-generated-content.md) weer geven
+* Word lid van de [Anomaly Detector-adviesgroep van Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
+* Zie de geselecteerde [door gebruikers gegenereerde inhoud](user-generated-content.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API](quickstarts/detect-data-anomalies-csharp.md)
-* De [online demo](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) over anomalie detectie-API
-* De afwijkings detector [rest API referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* [Snelstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API](quickstarts/detect-data-anomalies-csharp.md)
+* [Online demo](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) voor de Anomaly Detector-API
+* [Naslaginformatie over de REST API](https://aka.ms/anomaly-detector-rest-api-ref) van Anomaly Detector

@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037253"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903720"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-hulpprogram ma's voor Visual Studio code
 
@@ -37,7 +37,7 @@ Stream Analytics-hulpprogram ma's voor VS code IntelliSense bieden verschillende
 |Voltooiing     |  Type       |
 | ----- | ------- |
 | Trefwoorden | `keyword`
-| Functions | `build-in function`, `user defined function`  |
+| Functies | `build-in function`, `user defined function`  |
 | Naam van gegevensset| `input`, `output`, `intermediate result set`|
 | Kolom naam voor gegevensset|`input`, `intermediate result set`|
 
@@ -71,6 +71,6 @@ Dit probleem wordt veroorzaakt door een ontbrekende invoer configuratie die gege
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-vs-code.md)
-* [Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code](visual-studio-code-local-run.md)
+* [Snelstartgids: een Azure Stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)
+* [Stream Analytics-query's lokaal testen met voorbeeldgegevens testen met behulp van Visual Studio Code](visual-studio-code-local-run.md)
 * [Stream Analytics query's lokaal testen op invoer van live streams met behulp van Visual Studio code](visual-studio-code-local-run-live-input.md)

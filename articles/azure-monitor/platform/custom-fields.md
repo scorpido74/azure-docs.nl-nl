@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906799"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974712"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor (preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906799"
 
 Met de functie voor **aangepaste velden** van Azure monitor kunt u bestaande records in uw log Analytics-werk ruimte uitbreiden door uw eigen Doorzoek bare velden toe te voegen.  Aangepaste velden worden automatisch ingevuld op basis van gegevens die zijn geëxtraheerd uit andere eigenschappen in dezelfde record.
 
-![Overzicht](media/custom-fields/overview.png)
+![Diagram toont een oorspronkelijke record die is gekoppeld aan een gewijzigde record in een Log Analytics-werk ruimte met eigenschaps waarde-paren die zijn toegevoegd aan de oorspronkelijke eigenschap in de gewijzigde record.](media/custom-fields/overview.png)
 
 De voorbeeld record hieronder bevat bijvoorbeeld nuttige gegevens die in de beschrijving van de gebeurtenis worden overspoeld. Als u deze gegevens uitpakt in een afzonderlijke eigenschap, wordt deze beschikbaar voor acties als sorteren en filteren.
 
@@ -81,7 +81,7 @@ In het volgende gedeelte wordt een volledig voor beeld van het maken van een aan
 
 We voeren de volgende query in om alle gebeurtenissen te retour neren van service besturings beheer met de gebeurtenis-ID 7036. Dit is de gebeurtenis die aangeeft dat een service wordt gestart of gestopt.
 
-![Query’s uitvoeren](media/custom-fields/query.png)
+![Scherm afbeelding toont een query voor een gebeurtenis bron en-ID.](media/custom-fields/query.png)
 
 Vervolgens selecteert u een record met gebeurtenis-ID 7036 en vouwt u deze uit.
 

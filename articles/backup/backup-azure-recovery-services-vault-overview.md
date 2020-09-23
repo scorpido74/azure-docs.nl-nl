@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Recovery Services-kluizen
-description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
+description: Een overzicht van Recovery Services kluizen.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889614"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975145"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -30,7 +30,7 @@ Een Recovery Service-kluis is een entiteit waarin de back-ups en herstelpunten w
 
 - Azure Backup beheert automatisch de opslag voor de kluis. Bekijk hoe [opslag instellingen kunnen worden gewijzigd](./backup-create-rs-vault.md#set-storage-redundancy).
 
-- Zie deze artikelen over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie voor meer informatie over opslag redundantie.
+- Zie deze artikelen over [geo](../storage/common/storage-redundancy.md#geo-zone-redundant-storage), [lokale](../storage/common/storage-redundancy.md#locally-redundant-storage) en [zonegebonden](../storage/common/storage-redundancy.md#zone-redundant-storage) -redundantie voor meer informatie over opslag redundantie.
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Versleutelings instellingen in de Recovery Services kluis
 
@@ -54,7 +54,7 @@ Azure Advisor voorziet in elk uur [aanbevelingen](../advisor/advisor-high-availa
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Door de kluis ondersteunde en niet-ondersteunde scenario's](backup-support-matrix.md#vault-support)
 - [Veelgestelde vragen over de kluis](backup-azure-backup-faq.md)

@@ -3,16 +3,16 @@ title: Beleid en voor waarden voor commerciële Marketplace, Azure Marketplace
 description: Het beleid en de voor waarden van micro soft Commercial Marketplace zijn van toepassing op alle uitgevers en aanbiedingen in azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: reference
+ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974837"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Beleidsregels en voorwaarden voor de commerciële marketplace
 
@@ -25,12 +25,11 @@ Aanbiedingen op de commerciële Marketplace moeten voldoen aan het beleid en de 
 
 ## <a name="policies-and-terms"></a>Beleidsregels en voorwaarden
 
-* [Commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies) (Beleid voor certificering van Commerciële Marketplace)
-
-* [Beleid voor classificatie en beoordeling](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
-
-* [Voorwaarden voor Azure Marketplace](https://docs.microsoft.com/legal/marketplace/terms)
+- [Commercial marketplace certification policies](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context) (Beleid voor certificering van Commerciële Marketplace)
+- [Beoordelings beleid voor Microsoft AppSource en Azure Marketplace](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [Azure Marketplace participation policies](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context) (Beleid over deelname van Azure Marketplace)
+- [Voorwaarden voor Azure Marketplace](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-step"></a>Volgende stap
 
-Ga naar de pagina [publicatie gids voor commerciële Marketplace](./marketplace-publishers-guide.md) .
+Ga naar de pagina [publicatie gids voor commerciële Marketplace](marketplace-publishers-guide.md) .

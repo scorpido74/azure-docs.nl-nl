@@ -1,40 +1,40 @@
 ---
 title: Verbinding maken tussen hybride computers en Azure via de Azure Portal
-description: In dit artikel leert u hoe u de agent kunt installeren en computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview) van de Azure Portal.
-ms.date: 08/07/2020
+description: In dit artikel leert u hoe u de agent kunt installeren en computers kunt verbinden met Azure met behulp van Azure Arc-servers van de Azure Portal.
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7435256dda68b2689aeb19b237f499d50b418055
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213514"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887623"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
-U kunt Azure Arc-servers (preview) inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een reeks stappen hand matig uit te voeren. U kunt ook een geautomatiseerde methode gebruiken door een sjabloon script uit te voeren dat wij bieden. Met dit script wordt het downloaden en installeren van beide agents geautomatiseerd.
+U kunt servers voor Azure-Arc inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een reeks stappen hand matig uit te voeren. U kunt ook een geautomatiseerde methode gebruiken door een sjabloon script uit te voeren dat wij bieden. Met dit script wordt het downloaden en installeren van beide agents geautomatiseerd.
 
 Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators.
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Het installatie script genereren op basis van de Azure Portal
 
-Het script om het downloaden en installeren te automatiseren en de verbinding met Azure Arc tot stand te brengen, is beschikbaar via de Azure Portal. Ga als volgt te werk om het proces te volt ooien:
+Het script om het downloaden en installeren te automatiseren en de verbinding met Azure Arc tot stand te brengen, is beschikbaar via de Azure Portal. Ga als volgt te werk om het proces te voltooien:
 
 1. Ga in uw browser naar de [Azure Portal](https://aka.ms/hybridmachineportal).
 
-1. Op de pagina **machines-Azure-boog** selecteert u **toevoegen**, linksboven of de optie **machine-Azure-boog maken** onder aan het middelste deel venster.
+1. Selecteer op de pagina **servers-Azure-boog** de optie **toevoegen** aan de linkerbovenhoek.
 
-1. Selecteer op de pagina **een methode selecteren** de tegel **computers met interactieve script toevoegen** en selecteer vervolgens **script genereren**.
+1. Selecteer op de pagina **een methode selecteren** de tegel **servers met interactieve script toevoegen** en selecteer vervolgens **script genereren**.
 
-1. Selecteer op de pagina **script genereren** het abonnement en de resource groep waar u de machine in azure wilt beheren. Selecteer een Azure-locatie waar de meta gegevens van de computer worden opgeslagen.
+1. Selecteer op de pagina **Script genereren** het abonnement en de resourcegroep waarin u de machine wilt beheren binnen Azure. Selecteer een Azure-locatie waar de metagegevens van de machine worden opgeslagen.
 
     >[!NOTE]
-    >Servers met Azure-Arc (preview) ondersteunen alleen de volgende regio's:
+    >Servers met Azure-Arc ondersteunen alleen de volgende regio's:
     >- EastUS
     >- WestUS2
     >- West-Europa
@@ -42,15 +42,21 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
     >
     >Bekijk extra [overwegingen bij het selecteren van een](overview.md#supported-regions) regio in het overzichts artikel.
 
-1. Selecteer op de pagina **script genereren** in de vervolg keuzelijst **besturings systeem** het besturings systeem waarop het script wordt uitgevoerd.
+1. Controleer de informatie op de pagina **vereisten** en selecteer **volgende: Resource Details**.
 
-1. Als de computer communiceert via een proxy server om verbinding te maken met internet, selecteert u **volgende: proxy server**.
+1. Geef op de pagina **Resource Details** het volgende op:
 
-1. Geef op het tabblad **proxy server** het IP-adres van de proxy server of de naam en het poort nummer op dat door de computer wordt gebruikt om te communiceren met de proxy server. Voer de waarde in de notatie in `http://<proxyURL>:<proxyport>` .
+    1. Selecteer in de vervolg keuzelijst **resource groep** de resource groep waarvan de machine wordt beheerd.
+    1. Selecteer in de vervolg keuzelijst **regio** de Azure-regio om de meta gegevens van de server op te slaan.
+    1. Selecteer in de vervolg keuzelijst **besturings systeem** het besturings systeem waarop het script moet worden uitgevoerd.
+    1. Als de computer communiceert via een proxy server om verbinding te maken met internet, geeft u het IP-adres van de proxy server of de naam en het poort nummer op dat door de computer wordt gebruikt om te communiceren met de proxy server. Voer de waarde in de indeling `http://<proxyURL>:<proxyport>` in.
+    1. Selecteer **Volgende: Tags**.
 
-1. Selecteer **controleren + genereren**.
+1. Controleer op de pagina **Tags** of de standaard **fysieke locatie Tags** worden voorgesteld en voer een waarde in, of geef een of meer **aangepaste labels** op ter ondersteuning van uw standaarden.
 
-1. Controleer de overzichts gegevens op het tabblad **controleren en genereren** en selecteer vervolgens **downloaden**. Als u nog wijzigingen wilt aanbrengen, selecteert u **vorige**.
+1. Selecteer **volgende: script downloaden en uitvoeren**.
+
+1. Controleer de samenvattings informatie op de pagina **script downloaden en uitvoeren** en selecteer vervolgens **downloaden**. Als u nog wijzigingen wilt aanbrengen, selecteert u **Vorige**.
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>De agent in Windows installeren en valideren
 
@@ -101,7 +107,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 ### <a name="install-with-the-scripted-method"></a>Installeren met de script methode
 
-1. Meld u aan bij de-server.
+1. Meld u aan bij de server.
 
 1. Open een PowerShell-opdrachtprompt met verhoogde bevoegdheid.
 
@@ -109,7 +115,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     >Het script ondersteunt alleen uitvoering vanaf een 64-bits versie van Windows Power shell.
     >
 
-1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer deze uit op de server door het script uit te voeren `./OnboardingScript.ps1` .
+1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer dit uit op de server door het script `./OnboardingScript.ps1` uit te voeren.
 
 Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
@@ -147,7 +153,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc, gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -155,4 +161,4 @@ Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken me
 
 - Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturingssysteem en workloads op de machine proactief wilt monitoren, deze wilt beheren met Automation-runbooks of oplossingen zoals Updatebeheer, of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md) wilt gebruiken.
+- Meer informatie over [[log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.

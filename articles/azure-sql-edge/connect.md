@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure SQL Edge en query's uitvoeren (preview-versie)
-description: Meer informatie over hoe u verbinding kunt maken met Azure SQL Edge (preview) en hoe u er query's op uitvoert.
+title: Verbinding maken en query's uitvoeren op Azure SQL Edge
+description: Meer informatie over hoe u verbinding kunt maken met Azure SQL Edge en hoe u er query's op uitvoert.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373110"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888234"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>Verbinding maken met Azure SQL Edge en query's uitvoeren (preview-versie)
+# <a name="connect-and-query-azure-sql-edge"></a>Verbinding maken en query's uitvoeren op Azure SQL Edge
 
 In Azure SQL Edge kunt u, nadat u een container hebt geïmplementeerd, verbinding maken met de data base-engine vanaf een van de volgende locaties:
 
@@ -57,7 +57,7 @@ Als u verbinding wilt maken met een Azure SQL Edge data base-engine vanaf een ne
 
 De [SQL Server opdracht regel Programma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) zijn opgenomen in de container installatie kopie van Azure SQL Edge. Als u aan de container met een interactieve opdracht prompt koppelt, kunt u de hulpprogram ma's lokaal uitvoeren. SQL Client-hulpprogram ma's zijn niet beschikbaar op het ARM64-platform, omdat ze niet zijn opgenomen in de ARM64-versie van de SQL Edge-containers. 
 
-1. Gebruik de `docker exec -it` opdracht om een interactieve bash-shell in de container die wordt uitgevoerd te starten. In het volgende voor beeld `e69e056c702d` is de container-ID.
+1. Gebruik de opdracht `docker exec -it` voor het starten van een interactieve bash-shell in de container die wordt uitgevoerd. In het volgende voor beeld `e69e056c702d` is de container-ID.
 
     ```bash
     docker exec -it <Azure SQL Edge container ID or name> /bin/bash

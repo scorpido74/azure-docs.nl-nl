@@ -4,12 +4,12 @@ description: Waarschuwingen voor activiteiten logboeken maken met behulp van de 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322411"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983089"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor  
 
@@ -41,7 +41,7 @@ Gebruik de volgende procedure.
 1. Selecteer in de Azure Portal **controle**  >  **waarschuwingen**.
 2. Selecteer **nieuwe waarschuwings regel** in de linkerbovenhoek van het venster **waarschuwingen** .
 
-     ![Nieuwe waarschuwings regel](media/alerts-activity-log/AlertsPreviewOption.png)
+     ![Nieuwe waarschuwingsregel](media/alerts-activity-log/AlertsPreviewOption.png)
 
      Het venster **regel maken** wordt weer gegeven.
 
@@ -111,7 +111,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
 1. Selecteer in de Azure Portal **controle**  >  **waarschuwingen**. Selecteer **waarschuwings regels beheren** in de linkerbovenhoek van het venster.
 
-    ![Waarschuwingsregels beheren](media/alerts-activity-log/manage-alert-rules.png)
+    ![Scherm afbeelding toont het activiteiten logboek waarin het zoekvak is gemarkeerd.](media/alerts-activity-log/manage-alert-rules.png)
 
     De lijst met beschik bare regels wordt weer gegeven.
 
@@ -119,7 +119,7 @@ Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels k
 
     ![Waarschuwings regels voor het activiteiten logboek zoeken](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    U kunt de beschik bare filters, het _abonnement_, de _resource groep_, de _resource_, het _signaal type_of de _status_gebruiken om de activiteit regel te vinden die u wilt bewerken.
+    U kunt de beschik bare filters, het _abonnement_, de _resource groep_, de  _resource_, het _signaal type_of de _status_gebruiken om de activiteit regel te vinden die u wilt bewerken.
 
    > [!NOTE]
    > 
@@ -287,6 +287,6 @@ Regel resources voor waarschuwings logboeken kunnen worden verwijderd met behulp
 
 - Meer informatie over [webhook-schema voor activiteiten logboeken](./activity-log-alerts-webhook.md).
 - Lees een [overzicht van activiteiten logboeken](./activity-log-alerts.md).
-- Meer informatie over [actie groepen](./action-groups.md).  
+- Meer informatie over [actiegroepen](./action-groups.md).  
 - Meer informatie over [service status meldingen](../../service-health/service-notifications.md).
 
