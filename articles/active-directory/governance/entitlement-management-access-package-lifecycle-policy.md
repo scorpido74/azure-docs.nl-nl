@@ -1,6 +1,6 @@
 ---
 title: Levenscyclus instellingen voor een toegangs pakket wijzigen in azure AD-recht beheer-Azure Active Directory
-description: Meer informatie over het wijzigen van de levenscyclus instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
+description: Meer informatie over het wijzigen van de gegevens van de aanvrager & levenscyclus instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,21 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c628c3c1f11cb973176e7a689856b64177036c9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980101"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Levenscyclus instellingen voor een toegangs pakket wijzigen in het beheer van rechten van Azure AD
 
 Als Access Package Manager kunt u de levenscyclus instellingen voor een toegangs pakket op elk gewenst moment wijzigen door een bestaand beleid te bewerken. Als u de verval datum voor een beleid wijzigt, wordt de verval datum voor aanvragen waarvoor al een goed keuring in behandeling of goedgekeurd staat, niet gewijzigd.
 
 In dit artikel wordt beschreven hoe u de levenscyclus instellingen voor een bestaand toegangs pakket wijzigt.
+
+## <a name="open-requestor-information"></a>Gegevens van de aanvrager openen
+Om ervoor te zorgen dat gebruikers over de juiste toegang tot een toegangs pakket beschikken, kunnen aangepaste vragen worden geconfigureerd om gebruikers te vragen toegang te krijgen tot bepaalde toegangs pakketten. De volgende configuratie opties zijn beschikbaar: lokalisatie, vereist/optioneel, en tekst/meerkeuze antwoord indelingen. Aanvragers zien de vragen wanneer ze het pakket en de goed keurders vragen de antwoorden op de vragen te bekijken om hen te helpen hun beslissing te nemen. Gebruik de volgende stappen om vragen te configureren in een toegangs pakket:
 
 ## <a name="open-lifecycle-settings"></a>Open levenscyclus instellingen
 

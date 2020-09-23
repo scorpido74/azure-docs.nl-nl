@@ -10,21 +10,20 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661315"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893112"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Een model trainen met een aangepaste docker-installatie kopie
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een aangepaste docker-installatie kopie gebruikt wanneer u een trainings model met Azure Machine Learning. 
 
 De voorbeeld scripts in dit artikel worden gebruikt voor het classificeren van huisdier installatie kopieën door het maken van een convolutional Neural-netwerk. 
 
-Hoewel Azure Machine Learning een standaard docker-basis installatie kopie biedt, kunt u ook Azure Machine Learning-omgevingen gebruiken om een specifieke basis installatie kopie op te geven, zoals een van de beheerde [basis installatie kopieën van Azure ml](https://github.com/Azure/AzureML-Containers) of uw eigen [aangepaste installatie kopie](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image). Aangepaste basis installatie kopieën bieden u de mogelijkheid om uw afhankelijkheden nauw keurig te beheren en de controle over onderdeel versies nauw keuriger te houden wanneer u trainings taken uitvoert. 
+Hoewel Azure Machine Learning een standaard docker-basis installatie kopie biedt, kunt u ook Azure Machine Learning-omgevingen gebruiken om een specifieke basis installatie kopie op te geven, zoals een van de beheerde [basis installatie kopieën van Azure ml](https://github.com/Azure/AzureML-Containers) of uw eigen [aangepaste installatie kopie](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Aangepaste basis installatie kopieën bieden u de mogelijkheid om uw afhankelijkheden nauw keurig te beheren en de controle over onderdeel versies nauw keuriger te houden wanneer u trainings taken uitvoert. 
 
 ## <a name="prerequisites"></a>Vereisten 
 Voer deze code uit in een van de volgende omgevingen:
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Bestaande AmlCompute maken of koppelen
-U moet een [reken doel](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) maken voor het trainen van uw model. In deze zelf studie maakt u AmlCompute als uw trainings Compute-resource.
+U moet een [reken doel](concept-azure-machine-learning-architecture.md#compute-targets) maken voor het trainen van uw model. In deze zelf studie maakt u AmlCompute als uw trainings Compute-resource.
 
 Het maken van AmlCompute duurt ongeveer 5 minuten. Als de AmlCompute met die naam al in uw werk ruimte staat, wordt met deze code het aanmaak proces overs Laan.
 
-Net als bij andere Azure-Services gelden er limieten voor bepaalde bronnen (bijvoorbeeld AmlCompute) die zijn gekoppeld aan de Azure Machine Learning service. Lees [dit artikel](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) over de standaard limieten en hoe u meer quota kunt aanvragen. 
+Net als bij andere Azure-Services gelden er limieten voor bepaalde bronnen (bijvoorbeeld AmlCompute) die zijn gekoppeld aan de Azure Machine Learning service. Lees [dit artikel](how-to-manage-quotas.md) over de standaard limieten en hoe u meer quota kunt aanvragen. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>Een ScriptRunConfig maken
-Met deze ScriptRunConfig wordt uw taak geconfigureerd voor uitvoering op het gewenste [Compute-doel](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training).
+Met deze ScriptRunConfig wordt uw taak geconfigureerd voor uitvoering op het gewenste [Compute-doel](how-to-set-up-training-targets.md).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -160,4 +159,4 @@ Zie [& software omgevingen maken](how-to-use-environments.md)voor meer informati
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u een model getraind met behulp van een aangepaste docker-installatie kopie. Raadpleeg de volgende artikelen voor meer informatie over Azure Machine Learning.
 * [Metrische uitvoerings gegevens](how-to-track-experiments.md) tijdens de training volgen
-* [Implementeer een model](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image) met behulp van een aangepaste docker-installatie kopie.
+* [Implementeer een model](how-to-deploy-custom-docker-image.md) met behulp van een aangepaste docker-installatie kopie.

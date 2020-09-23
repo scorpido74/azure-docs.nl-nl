@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037760"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892856"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Informatie over appstatus in Azure Spring Cloud
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
 
 De Azure veer Cloud-gebruikers interface levert informatie over de status van actieve toepassingen.  Er is een optie voor **apps** voor elke resource groep in een abonnement dat algemene status van toepassings typen weergeeft.  Voor elk toepassings type worden **toepassings exemplaren**weer gegeven.
 
@@ -71,5 +73,5 @@ Als u de status van een specifiek exemplaar van een geïmplementeerde app wilt w
 | OPGESOMD | Het app-exemplaar is niet geregistreerd bij Eureka of is geregistreerd, maar kan geen verkeer ontvangen. |
 
 
-## <a name="see-also"></a>Zie tevens
-* [Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud](spring-cloud-tutorial-prepare-app-deployment.md)
+## <a name="see-also"></a>Zie ook
+* [Een lente-of Steeltoe-toepassing voorbereiden voor implementatie in azure lente-Cloud](spring-cloud-tutorial-prepare-app-deployment.md)

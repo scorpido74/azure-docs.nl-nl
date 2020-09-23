@@ -15,10 +15,15 @@
   items:
     - name: SQL Edge implementeren
       href: deploy-portal.md
+    - name: Implementeren met Docker
+      href: disconnected-deployment.md
     - name: ONNX-modellen implementeren in SQL Edge
       href: deploy-onnx.md
 - name: Zelfstudies
+  expanded: true
   items:
+    - name: Implementeren in Kubernetes
+      href: deploy-kubernetes.md
     - name: Gegevens synchroniseren met Azure Data Factory
       href: tutorial-sync-data-factory.md
     - name: Gegevens synchroniseren met SQL Data Sync
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: Model implementeren in SQL Edge
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: Procedures
-  items:
-    - name: Stream Analytics-taken implementeren
-      href: stream-analytics.md
-    - name: Replicatie configureren
-      href: configure-replication.md
-    - name: Gegevenswijzigingen bijhouden
-      href: track-data-changes.md
-    - name: T-SQL-streamingtaken beheren
-      href: create-stream-analytics-job.md
-    - name: Verbinding maken met SQL Edge
-      href: connect.md
-    - name: SQL Edge configureren
-      href: configure.md
-    - name: DAC-pakket implementeren
-      href: deploy-dacpac.md
 - name: Concepten
   items:
-    - name: Machine learning en AI met ONNX trainen
-      href: onnx-overview.md
-    - name: Back-ups en herstellen
-      href: backup-restore.md
-    - name: Gegevensstreaming in SQL Edge
+    - name: Implementeren
+      items:
+        - name: Implementeren met behulp van de Azure-portal
+          href: deploy-portal.md
+        - name: Implementeren met Docker
+          href: disconnected-deployment.md
+        - name: Implementeren in Kubernetes
+          href: deploy-kubernetes.md
+        - name: SQL-hulpprogramma's
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: Machine learning
+      items:
+        - name: Machine learning en AI met ONNX trainen
+          href: onnx-overview.md
+        - name: ONNX-models implementeren
+          href: deploy-onnx.md
+    - name: Prestaties
+      items:
+        - name: Prestatierichtlijnen
+          href: performance-best-practices.md
+    - name: Bedrijfscontinuïteit configureren
+      items:
+        - name: Back-ups en herstellen
+          href: backup-restore.md
+        - name: Hoge beschikbaarheid voor containers
+          href: high-availability-sql-edge-containers.md
+    - name: Gegevensstreaming
       items:
         - name: Gegevens streamen
           href: stream-data.md
+        - name: Streaming-taken maken en beheren
+          href: create-stream-analytics-job.md
         - name: Externe stroom maken (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: Externe stroom bewerken (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: Externe stroom stoppen (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: Weergaven en DMV's streamen
@@ -69,14 +80,20 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: Time Series-gegevens verwerken
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: Tijdsintervallen en ontbrekende waarden
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
         - name: Gegevensretentie en opschoning
           items:
             - name: Overzicht van gegevensretentie
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: Gegevensretentie opschonen
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsoverzicht
+          href: security-overview.md
+        - name: Beveiligingsfuncties
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: Verbindingen versleutelen
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: Azure Security Center voor IoT
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: Procedures
+  items:
+    - name: SQL Edge configureren
+      items:
+        - name: Configureren met behulp van omgevingsvariabelen
+          href: configure.md#configure-by-using-environment-variables
+        - name: Configureren met behulp van het bestand mssql.conf
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: Uitvoeren als niet-hoofdgebruiker
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: Gegevens persistent maken
+          href: configure.md#persist-your-data
+        - name: Replicatie configureren
+          href: configure-replication.md
+    - name: Verbinding maken met SQL Edge
+      href: connect.md
+    - name: DAC-pakket implementeren
+      href: deploy-dacpac.md
+    - name: Gegevenswijzigingen bijhouden
+      href: track-data-changes.md
+    - name: T-SQL-streamingtaken beheren
+      href: create-stream-analytics-job.md
+    - name: Oplossen van implementatieproblemen
+      href: troubleshoot.md
+- name: Naslaginformatie
+  items:
+    - name: Referentie voor Transact-SQL (T-SQL)
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

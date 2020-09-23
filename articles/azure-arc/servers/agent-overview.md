@@ -1,18 +1,18 @@
 ---
 title: Overzicht van de verbonden computer Windows-agent
-description: Dit artikel bevat een gedetailleerd overzicht van de agent die beschikbaar is voor Azure Arc enabled-servers (preview), die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
-ms.date: 08/06/2020
+description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare Azure Arc-servers agent, die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908176"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Overzicht van de agent voor Azure Arc-servers (preview-versie)
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
 
-Met de met Azure Arc ingeschakelde server (preview) verbonden machine agent kunt u uw Windows-en Linux-machines beheren die buiten Azure worden gehost in uw bedrijfs netwerk of een andere Cloud provider. Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
+Met de met Azure Arc ingeschakelde servers verbonden machine-agent kunt u uw Windows-en Linux-machines beheren die buiten Azure worden gehost op uw bedrijfs netwerk of een andere Cloud provider. Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
 
 ## <a name="agent-component-details"></a>Details van agent onderdeel
 
@@ -47,15 +47,11 @@ De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bij
 De volgende versies van het Windows-en Linux-besturings systeem worden officieel ondersteund voor de Azure Connected machine agent: 
 
 - Windows Server 2012 R2 en hoger (inclusief Windows Server Core)
-- Ubuntu 16,04 en 18,04 (x64)
+- Ubuntu 16,04 en 18,04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
-
->[!NOTE]
->Deze preview-versie van de verbonden machine-agent voor Windows ondersteunt alleen Windows Server die is geconfigureerd voor gebruik van de Engelse taal.
->
 
 ### <a name="required-permissions"></a>Vereiste machtigingen
 
@@ -65,7 +61,7 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
-Voordat u uw computers configureert met Azure Arc-servers (preview), controleert u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) om te plannen voor het aantal machines dat moet worden verbonden.
+Voordat u uw computers configureert met servers voor Azure-Arc, controleert u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de beperkingen van de [resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) om het aantal machines te plannen dat moet worden verbonden.
 
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1,2-protocol
 
@@ -89,7 +85,7 @@ Service Tags:
 
 Adres
 
-| Agentresource | Beschrijving |
+| Agentresource | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -103,12 +99,12 @@ Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- 
 
 De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van de service label, omdat de meeste services momenteel geen servicetag registratie hebben. Zo kunnen de IP-adressen worden gewijzigd. Als IP-adresbereiken vereist zijn voor de configuratie van de firewall, moet de **Cloud** -servicetag worden gebruikt om toegang tot alle Azure-Services toe te staan. Schakel de beveiligings controle of inspectie van deze Url's niet uit, en sta ze toe als andere Internet verkeer.
 
-### <a name="register-azure-resource-providers"></a>Azure-resource providers registreren
+### <a name="register-azure-resource-providers"></a>Azure-resourceproviders registreren
 
-Servers voor Azure-Arc (preview) zijn afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
+Servers voor Azure-Arc zijn afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
 
-* **Micro soft. HybridCompute**
-* **Micro soft. GuestConfiguration**
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
 
 Als ze niet zijn geregistreerd, kunt u ze registreren met de volgende opdrachten:
 
@@ -155,7 +151,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Beschrijving |
+    |Map |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Standaardpad met de agent ondersteunings bestanden.|
     |%ProgramData%\AzureConnectedMachineAgent |Bevat de configuratie bestanden voor de agent.|
@@ -167,7 +163,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende Windows-Services worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
+    |Servicenaam |Weergavenaam |Procesnaam |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |DscService |Gast configuratie service |dsc_service.exe |De code basis die voor desired state Configuration (DSC v2) in azure wordt gebruikt voor het implementeren van beleid in de gast.|
@@ -181,7 +177,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Log |Beschrijving |
+    |Logboek |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -206,7 +202,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Beschrijving |
+    |Map |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Standaardpad met de agent ondersteunings bestanden.|
     |/opt/azcmagent/ |
@@ -218,14 +214,14 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende daemons worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
+    |Servicenaam |Weergavenaam |Procesnaam |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |dscd. service |Gast configuratie service |/opt/DSC/dsc_linux_service |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt voor het implementeren van beleid in de gast.|
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Log |Beschrijving |
+    |Logboek |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -248,4 +244,4 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt beginnen met het evalueren van Azure Arc-servers (preview), volgt u het artikel [verbinding maken tussen hybride computers en Azure via de Azure Portal](onboard-portal.md).
+Als u wilt beginnen met de evaluatie van Azure Arc-servers, volgt u het artikel een [verbinding maken tussen hybride computers en Azure via de Azure Portal](onboard-portal.md).

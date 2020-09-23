@@ -1,6 +1,6 @@
 ---
-title: Kubernetes stateless toepassing implementeren op Azure Stack Edge GPU-apparaat met behulp van kubectl | Microsoft Docs
-description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassings implementatie maakt en beheert met behulp van kubectl op een Microsoft Azure Stack edge-apparaat.
+title: Kubernetes stateless toepassing implementeren op Azure Stack Edge Pro GPU-apparaat met behulp van kubectl | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Kubernetes stateless toepassings implementatie maakt en beheert met behulp van kubectl op een Microsoft Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890728"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Een Kubernetes stateless toepassing implementeren via kubectl op uw Azure Stack Edge GPU-apparaat
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Een Kubernetes stateless toepassing implementeren via kubectl op uw Azure Stack Edge Pro GPU-apparaat
 
 In dit artikel wordt beschreven hoe u een staatloze toepassing implementeert met behulp van kubectl-opdrachten op een bestaand Kubernetes-cluster. Dit artikel begeleidt u stapsgewijs door het proces voor het maken en instellen van een Peul in uw stateless toepassing.
 
@@ -23,13 +23,13 @@ In dit artikel wordt beschreven hoe u een staatloze toepassing implementeert met
 
 Voordat u een Kubernetes-cluster kunt maken en het `kubectl` opdracht regel programma gebruikt, moet u het volgende controleren:
 
-- U hebt aanmeld referenties voor een Azure Stack edge-apparaat van 1 knoop punt.
+- U hebt aanmeldings referenties naar een Azure Stack Edge Pro-apparaat met één knoop punt.
 
-- Windows Power shell 5,0 of hoger is geïnstalleerd op een Windows-client systeem om toegang te krijgen tot het Azure Stack edge-apparaat. U kunt ook een andere client met een ondersteund besturings systeem hebben. In dit artikel wordt de procedure beschreven voor het gebruik van een Windows-client. Als u de meest recente versie van Windows Power shell wilt downloaden, gaat u naar [Windows Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Windows Power shell 5,0 of hoger is geïnstalleerd op een Windows-client systeem om toegang te krijgen tot het Azure Stack Edge Pro-apparaat. U kunt ook een andere client met een ondersteund besturings systeem hebben. In dit artikel wordt de procedure beschreven voor het gebruik van een Windows-client. Als u de meest recente versie van Windows Power shell wilt downloaden, gaat u naar [Windows Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
-- Compute is ingeschakeld op het Azure Stack edge-apparaat. Als u Compute wilt inschakelen, gaat u naar de **Compute** -pagina in de lokale gebruikers interface van het apparaat. Selecteer vervolgens een netwerk interface die u wilt inschakelen voor compute. Selecteer **Inschakelen**. Het inschakelen van Compute-resultaten bij het maken van een virtuele switch op het apparaat op die netwerk interface. Zie [Compute Network op uw Azure stack Edge inschakelen](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)voor meer informatie.
+- Compute is ingeschakeld op het Azure Stack Edge Pro-apparaat. Als u Compute wilt inschakelen, gaat u naar de **Compute** -pagina in de lokale gebruikers interface van het apparaat. Selecteer vervolgens een netwerk interface die u wilt inschakelen voor compute. Selecteer **Inschakelen**. Het inschakelen van Compute-resultaten bij het maken van een virtuele switch op het apparaat op die netwerk interface. Zie [Compute Network inschakelen op uw Azure stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)voor meer informatie.
 
-- Op uw Azure Stack edge-apparaat bevindt zich een Kubernetes-cluster server waarop versie v 1,9 of hoger wordt uitgevoerd. Zie [een Kubernetes-cluster maken en beheren op Microsoft Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voor meer informatie.
+- Uw Azure Stack Edge Pro-apparaat heeft een Kubernetes-cluster server waarop versie v 1,9 of hoger wordt uitgevoerd. Zie [een Kubernetes-cluster maken en beheren op Microsoft Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md)voor meer informatie.
 
 - U hebt geïnstalleerd `kubectl` .
 
@@ -43,7 +43,7 @@ Voordat we beginnen, hebt u het volgende nodig:
 4. De gebruikers configuratie is opgeslagen in `C:\Users\<username>\.kube` .
 5. Geïnstalleerd `kubectl` .
 
-Nu kunt u beginnen met het uitvoeren en beheren van stateless toepassings implementaties op een Azure Stack edge-apparaat. Voordat u begint met `kubectl` het gebruik van, moet u controleren of u de juiste versie van hebt `kubectl` .
+Nu kunt u beginnen met het uitvoeren en beheren van stateless toepassings implementaties op een Azure Stack Edge Pro-apparaat. Voordat u begint met `kubectl` het gebruik van, moet u controleren of u de juiste versie van hebt `kubectl` .
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>Controleer of u de juiste versie van kubectl hebt en configuratie hebt ingesteld
 
@@ -109,7 +109,7 @@ Een Pod is de basis uitvoerings eenheid van een Kubernetes-toepassing, de kleins
 
 Het type stateless toepassing dat u maakt, is een nginx-webserver implementatie.
 
-Alle kubectl-opdrachten die u gebruikt om stateless toepassings implementaties te maken en te beheren, moeten de naam ruimte opgeven die aan de configuratie is gekoppeld. U hebt de naam ruimte gemaakt terwijl u verbonden bent met het cluster op het Azure Stack edge-apparaat in de zelf studie [een Kubernetes-cluster maken en beheren op Microsoft Azure stack edge-apparaat](azure-stack-edge-gpu-create-kubernetes-cluster.md) `New-HcsKubernetesNamespace` .
+Alle kubectl-opdrachten die u gebruikt om stateless toepassings implementaties te maken en te beheren, moeten de naam ruimte opgeven die aan de configuratie is gekoppeld. U hebt de naam ruimte gemaakt terwijl u verbonden bent met het cluster op het Azure Stack Edge Pro-apparaat in het [cluster een Kubernetes maken en beheren in Microsoft Azure stack Edge Pro](azure-stack-edge-gpu-create-kubernetes-cluster.md) -zelf studie met `New-HcsKubernetesNamespace` .
 
 Als u de naam ruimte in een kubectl-opdracht wilt opgeven, gebruikt u `kubectl <command> -n <namespace-string>` .
 

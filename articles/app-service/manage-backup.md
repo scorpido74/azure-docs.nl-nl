@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961921"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987844"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -60,23 +60,23 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
     > [!NOTE]
     > Als het volgende bericht wordt weer gegeven, klikt u hierop om uw App Service-abonnement bij te werken voordat u kunt door gaan met back-ups.
     > Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie.
-    > ![Opslag account kiezen](./media/manage-backup/upgrade-plan.png)
+    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="Scherm afbeelding van een banner met een bericht voor het bijwerken van het App Service-abonnement om toegang te krijgen tot de functie voor maken en herstellen van back-ups.":::
     > 
     > 
 
 2. Selecteer op de pagina **back-up** de optie **back-up is niet geconfigureerd. Klik hier om een back-up voor uw app te configureren**.
 
-    ![Klik op Configureren](./media/manage-backup/configure-start.png)
+    ![Klik op configureren](./media/manage-backup/configure-start.png)
 
 3. Klik op de pagina **back-upconfiguratie** op **opslag is niet geconfigureerd** voor het configureren van een opslag account.
 
-    ![Opslag account kiezen](./media/manage-backup/configure-storage.png)
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Scherm afbeelding van de sectie Back-upopslag waarvoor de instelling opslag niet geconfigureerd is geselecteerd.":::
 
 4. Kies het doel van de back-up door een **opslag account** en **container**te selecteren. Het opslag account moet deel uitmaken van hetzelfde abonnement als de app waarvan u een back-up wilt maken. Als u wilt, kunt u een nieuw opslag account of een nieuwe container maken op de respectieve pagina's. Wanneer u klaar bent, klikt u op **selecteren**.
 
 5. Op de pagina **back-upconfiguratie** die nog geopend is, kunt u de **back-updatabase**configureren en vervolgens de data bases selecteren die u wilt toevoegen in de back-ups (SQL database of MySQL). Klik vervolgens op **OK**.
 
-    ![Opslag account kiezen](./media/manage-backup/configure-database.png)
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Scherm afbeelding van de sectie back-updatabase met de optie voor het insluiten van back-ups.":::
 
     > [!NOTE]
     > Als u een data base in deze lijst wilt weer geven, moet de connection string bestaan in de sectie **verbindings reeksen** van de pagina **Toepassings instellingen** voor uw app. 

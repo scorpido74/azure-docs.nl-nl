@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Stack edge-apparaat retour neren | Microsoft Docs
-description: Meer informatie over het wissen van de gegevens en het retour neren van uw Azure Stack edge-apparaat en het verwijderen van de bron die aan het apparaat is gekoppeld.
+title: Uw Azure Stack Edge Pro-apparaat retour neren | Microsoft Docs
+description: Meer informatie over het wissen van de gegevens en het retour neren van uw Azure Stack Edge Pro-apparaat en het verwijderen van de bron die aan het apparaat is gekoppeld.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923948"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903670"
 ---
-# <a name="return-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren
+# <a name="return-your-azure-stack-edge-pro-device"></a>Uw Azure Stack Edge Pro-apparaat retour neren
 
-In dit artikel wordt beschreven hoe u de gegevens wist en vervolgens uw Azure Stack edge-apparaat retourneert. Nadat u het apparaat hebt geretourneerd, kunt u ook de resource verwijderen die aan het apparaat is gekoppeld.
+In dit artikel wordt beschreven hoe u de gegevens kunt wissen en vervolgens uw Azure Stack Edge Pro-apparaat kunt herstellen. Nadat u het apparaat hebt geretourneerd, kunt u ook de resource verwijderen die aan het apparaat is gekoppeld.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
 > * De gegevens van de gegevens schijven op het apparaat wissen
-> * Retour neren van apparaat initiëren in Azure Portal
+> * Retourzending van apparaat starten in de Azure-portal
 > * Het apparaat inpakken en een ophaling plannen
 > * De resource in Azure Portal verwijderen
 
-## <a name="erase-data-from-the-device"></a>Gegevens wissen van het apparaat
+## <a name="erase-data-from-the-device"></a>Gegevens van het apparaat wissen
 
 Als u de gegevens van de gegevens schijven van uw apparaat wilt wissen, moet u uw apparaat opnieuw instellen. U kunt uw apparaat opnieuw instellen met behulp van de lokale webgebruikersinterface of de Power shell-interface.
 
@@ -59,7 +59,7 @@ U kunt ook verbinding maken met de Power shell-interface van het apparaat en de 
 
 Voer de volgende stappen uit om het retour proces te starten.
 
-1. Ga naar de Azure Stack EDGE/Data Box Gateway resource in Azure Portal. In het **overzicht**gaat u naar de opdracht balk in het rechterdeel venster en selecteert u **apparaat retour neren**. 
+1. Ga in Azure Portal naar uw Azure Stack Edge Pro/Data Box Gateway-resource. In het **overzicht**gaat u naar de opdracht balk in het rechterdeel venster en selecteert u **apparaat retour neren**. 
 
     ![Apparaat 1 retour neren](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -90,11 +90,11 @@ Voer de volgende stappen uit om het retour proces te starten.
 
     ![Apparaat 4 retour neren](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. Zodra de retour gegevens van uw apparaat zijn vastgelegd, kunt u het Azure Stack Edge-team via een e-mail op de hoogte stellen. U kunt uw e-mail toepassing gebruiken als u ervan uitgaat dat de e-mail toepassing is geïnstalleerd en geconfigureerd. U kunt ook de gegevens kopiëren om deze te maken en een e-mail te verzenden.
+6. Zodra de details van het apparaat zijn vastgelegd, kunt u via een e-mail aan het Azure Stack Edge pro-team door sturen. U kunt uw e-mail toepassing gebruiken als u ervan uitgaat dat de e-mail toepassing is geïnstalleerd en geconfigureerd. U kunt ook de gegevens kopiëren om deze te maken en een e-mail te verzenden.
 
     ![Apparaat 5 retour neren](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Zodra het Azure Stack Edge Operations-team het e-mail bericht ontvangt, stuurt hij u een terugkerend verzend label. Wanneer u dit label ontvangt, kunt u het ophalen van het apparaat plannen met de provider. 
+7. Zodra het Azure Stack Edge Pro Operations-team het e-mail bericht ontvangt, wordt er een terugkerend verzend label verzonden. Wanneer u dit label ontvangt, kunt u het ophalen van het apparaat plannen met de provider. 
 
 ## <a name="schedule-a-pickup"></a>Een ophaling plannen
 
@@ -111,20 +111,20 @@ Als u een ophaling wilt plannen, voert u de volgende stappen uit.
     2. Neem in uw gesprek het tracerings nummer van omgekeerde verzen ding op zoals op het afgedrukte label wordt weer gegeven.
     3. Als het tracking nummer niet wordt vermeld, moet u een extra kosten betalen tijdens het ophalen.
 
-    In plaats van het ophalen te plannen, kunt u ook de Azure Stack rand op de dichtstbijzijnde neerzet locatie neerzetten.
+    In plaats van het ophalen te plannen, kunt u ook de Azure Stack Edge Pro verwijderen op de dichtstbijzijnde uitval locatie.
 
 ## <a name="delete-the-resource"></a>De resource verwijderen
 
 Nadat het apparaat is ontvangen in het Azure-Data Center, wordt het apparaat geïnspecteerd op beschadiging of op een geknoeid tijdstip.
 
-- Als het apparaat intact is en een goede vorm heeft, stopt de facturerings meter voor die bron. Azure Stack Edge-team neemt contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
+- Als het apparaat intact is en een goede vorm heeft, stopt de facturerings meter voor die bron. Azure Stack Edge Pro Operations-team neemt contact met u op om te bevestigen dat het apparaat is geretourneerd. U kunt vervolgens de resource die aan het apparaat is gekoppeld, verwijderen in de Azure Portal.
 - Als het apparaat aanzienlijk is aangekomen, kunnen de verfijningen van toepassing zijn. Raadpleeg de [Veelgestelde vragen op verloren of beschadigd apparaat](https://azure.microsoft.com/pricing/details/databox/edge/) en [product service voorwaarden](https://www.microsoft.com/licensing/product-licensing/products)voor meer informatie.  
 
 
 U kunt het apparaat verwijderen in de Azure Portal:
 
 - Nadat u de order hebt geplaatst en voordat het apparaat door micro soft wordt voor bereid.
-- Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie op het Azure-Data Center door gegeven en worden Azure Stack Edge-team aanroepen om te bevestigen dat het apparaat is geretourneerd.
+- Nadat u het apparaat hebt geretourneerd naar micro soft, wordt de fysieke inspectie door gegeven aan het Azure-Data Center en worden Azure Stack Edge Pro Operations-team aangeroepen om te bevestigen dat het apparaat is geretourneerd.
 
 Als u het apparaat hebt geactiveerd op basis van een ander abonnement of een andere locatie, zal micro soft uw bestelling binnen één werkdag naar het nieuwe abonnement of deze locatie verplaatsen. Nadat de order is verplaatst, kunt u deze resource verwijderen.
 
@@ -133,7 +133,7 @@ Voer de volgende stappen uit om het apparaat en de resource in Azure Portal te v
 
 1. Ga in het Azure Portal naar uw resource en klik vervolgens op **overzicht**. Selecteer **verwijderen**op de opdracht balk.
 
-    ![Selecteer verwijderen](media/azure-stack-edge-return-device/delete-resource-1.png)
+    ![Verwijderen selecteren](media/azure-stack-edge-return-device/delete-resource-1.png)
 
 2. Typ op de Blade **apparaat verwijderen** de naam van het apparaat dat u wilt verwijderen en selecteer **verwijderen**.
 
@@ -144,4 +144,4 @@ U wordt gewaarschuwd wanneer het apparaat en de bijbehorende resource zijn verwi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [verkrijgen van een vervangend Azure stack edge-apparaat](azure-stack-edge-replace-device.md).
+- Meer informatie over het [verkrijgen van een vervangend Azure stack Edge Pro-apparaat](azure-stack-edge-replace-device.md).

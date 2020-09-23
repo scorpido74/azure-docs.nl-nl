@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het filteren en analyseren van gegevens voor geavanceerde implementatie met rekenproces voor Azure Stack Edge | Microsoft Docs
-description: Leer hoe u een rekenprocesrol configureert in Azure Stack Edge en deze gebruikt om gegevens te transformeren voor een geavanceerde implementatiestroom voordat ze naar Azure worden verzonden.
+title: Zelfstudie voor het filteren en analyseren van gegevens voor geavanceerde implementatie met rekenproces voor Azure Stack Edge Pro | Microsoft Docs
+description: Leer hoe u een rekenprocesrol configureert in Azure Stack Edge Pro en deze gebruikt om gegevens te transformeren voor een geavanceerde implementatiestroom voordat ze naar Azure worden verzonden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080383"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903686"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge voor een geavanceerde implementatiestroom
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge Pro voor een geavanceerde implementatiestroom
 
-In deze zelfstudie wordt beschreven hoe u een rekenprocesrol voor een geavanceerde implementatiestroom configureert op uw Azure Stack Edge-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge gegevens transformeren voordat deze naar Azure worden verzonden.
+In deze zelfstudie wordt beschreven hoe u een rekenprocesrol voor een geavanceerde implementatiestroom configureert op uw Azure Stack Edge Pro-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge Pro gegevens transformeren voordat deze naar Azure worden verzonden.
 
 Compute kan worden geconfigureerd voor een eenvoudige of geavanceerde implementatiestroom op uw apparaat.
 
@@ -43,14 +43,14 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge-apparaat:
+Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge Pro-apparaat:
 
-- U hebt het Azure Stack Edge-apparaat geactiveerd zoals beschreven in [Azure Stack Edge aansluiten, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md).
+- U hebt het Azure Stack Edge Pro-apparaat geactiveerd zoals beschreven in [Azure Stack Edge Pro aansluiten, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="configure-compute"></a>Rekenproces configureren
 
-Als u de rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een IoT Hub-resource.
+Als u de rekenproces wilt configureren voor uw Azure Stack Edge Pro, maakt u een IoT Hub-resource.
 
 1. Ga in Azure Portal van uw Azure Stack Edge-resource naar **Overzicht**. Selecteer in het rechterdeelvenster op de tegel **Compute** **Aan de slag**.
 
@@ -150,9 +150,9 @@ Voor de geavanceerde implementatie in deze zelfstudie hebt u twee shares nodig: 
 
 ## <a name="add-a-module"></a>Een module toevoegen
 
-Er zijn geen aangepaste modules aanwezig op dit Edge-apparaat. U kunt een aangepaste of vooraf gemaakte module toevoegen. Ga naar [Een C#-module ontwikkelen voor uw Azure Stack Edge-apparaat](azure-stack-edge-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
+Er zijn geen aangepaste modules aanwezig op dit Edge-apparaat. U kunt een aangepaste of vooraf gemaakte module toevoegen. Ga naar [Een C#-module ontwikkelen voor uw Azure Stack Edge Pro-apparaat](azure-stack-edge-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
 
-In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale Edge-share op het Edge-apparaat en deze verplaatst naar een Edge-(cloud)share op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
+In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Azure Stack Edge Pro](azure-stack-edge-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale Edge-share op het Edge-apparaat en deze verplaatst naar een Edge-(cloud)share op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
 
 1. Ga naar **Edge-rekenproces > Aan de slag**. Selecteer op de tegel **Modules toevoegen** het scenariotype als **Geavanceerd**. Selecteer **Ga naar IoT Hub**.
 
@@ -175,7 +175,7 @@ In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat 
 4. Doe het volgende in **Modules toevoegen**:
 
     1. Geef in de Containerregisterinstellingen waarden op voor Naam, Adres, Gebruikersnaam en Wachtwoord voor de aangepaste module.
-    De naam, het adres en de vermelde referenties worden gebruikt om modules met een overeenkomende URL op te halen. Als u deze module wilt implementeren, selecteert u **IoT Edge-module** onder **Implementatiemodules**. Deze IoT Edge-module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge-apparaat.
+    De naam, het adres en de vermelde referenties worden gebruikt om modules met een overeenkomende URL op te halen. Als u deze module wilt implementeren, selecteert u **IoT Edge-module** onder **Implementatiemodules**. Deze IoT Edge-module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge Pro-apparaat.
 
         ![De pagina Modules instellen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat 
      
         |Veld  |Waarde  |
         |---------|---------|
-        |Naam     | Een unieke naam voor de module. Deze module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge.        |
+        |Naam     | Een unieke naam voor de module. Deze module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge Pro.        |
         |URI installatiekopie     | De URI installatiekopie voor de bijbehorende containerinstallatiekopie voor de module.        |
         |Referenties vereist     | Als u dit selectievakje inschakelt, worden gebruikersnaam en wachtwoord gebruikt om modules op te halen met een overeenkomende URL.        |
     
@@ -270,7 +270,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Een rekenprocesmodule toevoegen
 > * Gegevenstransformatie controleren en gegevens overdragen
 
-Als u wilt weten hoe u uw Azure Stack Edge-apparaat beheert, gaat u naar:
+Als u wilt weten hoe u uw Azure Stack Edge Pro-apparaat beheert, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

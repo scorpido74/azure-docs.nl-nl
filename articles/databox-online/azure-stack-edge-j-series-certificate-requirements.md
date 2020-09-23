@@ -1,6 +1,6 @@
 ---
-title: Certificaten vereisten en probleem oplossing met Azure Stack Edge | Microsoft Docs
-description: Beschrijft de vereisten voor certificaten en het oplossen van problemen met certificaat fouten met Azure Stack edge-apparaat.
+title: Certificaten vereisten en probleem oplossing met Azure Stack Edge Pro | Microsoft Docs
+description: Beschrijft de vereisten voor certificaten en het oplossen van problemen met certificaat fouten met Azure Stack Edge Pro-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268259"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891383"
 ---
 # <a name="certificate-requirements"></a>Certificaatvereisten
 
-In dit artikel worden de certificaat vereisten beschreven waaraan moet worden voldaan voordat certificaten kunnen worden geïnstalleerd op uw Azure Stack edge-apparaat. De vereisten zijn gerelateerd aan de PFX-certificaten, de uitgevende instantie, de onderwerpnaam van het certificaat en de alternatieve naam voor het onderwerp en ondersteunde certificaat algoritmen.
+In dit artikel worden de certificaat vereisten beschreven waaraan moet worden voldaan voordat certificaten kunnen worden geïnstalleerd op uw Azure Stack Edge Pro-apparaat. De vereisten zijn gerelateerd aan de PFX-certificaten, de uitgevende instantie, de onderwerpnaam van het certificaat en de alternatieve naam voor het onderwerp en ondersteunde certificaat algoritmen.
 
 ## <a name="certificate-issuing-authority"></a>Instantie voor het verlenen van certificaten
 
@@ -64,13 +64,13 @@ Certificaten moeten de volgende onderwerpnaam en alternatieve naam voor onderwer
     
 ## <a name="pfx-certificate"></a>PFX-certificaat
 
-De PFX-certificaten die op uw Azure Stack edge-apparaat zijn geïnstalleerd, moeten voldoen aan de volgende vereisten:
+De PFX-certificaten die op uw Azure Stack Edge Pro-apparaat zijn geïnstalleerd, moeten voldoen aan de volgende vereisten:
 
 * Wanneer u uw certificaten van de SSL-instantie ontvangt, zorgt u ervoor dat u de volledige handtekening keten voor de certificaten krijgt.
 
 * Wanneer u een PFX-certificaat exporteert, moet u ervoor zorgen dat u de optie **alle certificaten in de keten toevoegen, indien mogelijk** hebt geselecteerd.
 
-* Gebruik een PFX-certificaat voor eind punt, lokale gebruikers interface, knoop punt, VPN en Wi-Fi als de open bare en persoonlijke sleutels zijn vereist voor Azure Stack Edge. Voor de persoonlijke sleutel moet het sleutel kenmerk van de lokale computer zijn ingesteld.
+* Gebruik een PFX-certificaat voor eind punt, lokale gebruikers interface, knoop punt, VPN en Wi-Fi als de open bare en persoonlijke sleutels zijn vereist voor Azure Stack Edge Pro. Voor de persoonlijke sleutel moet het sleutel kenmerk van de lokale computer zijn ingesteld.
 
 * De PFX-versleuteling van het certificaat moet 3DES zijn. Dit is de standaard versleuteling die wordt gebruikt bij het exporteren van een Windows 10-client of een Windows Server 2016-certificaat archief. Zie [Triple des](https://en.wikipedia.org/wiki/Triple_DES)voor meer informatie over 3DES.
 
@@ -78,7 +78,7 @@ De PFX-certificaten die op uw Azure Stack edge-apparaat zijn geïnstalleerd, moe
 
 * De PFX-bestanden van het certificaat moeten de waarden *server authenticatie (1.3.6.1.5.5.7.3.1)* en *client verificatie (1.3.6.1.5.5.7.3.2)* hebben in het veld *uitgebreid sleutel gebruik* .
 
-* De wacht woorden voor alle PFX-bestanden van het certificaat moeten gelijk zijn op het moment van de implementatie als u het hulp programma Azure Stack Readiness Checker gebruikt. Zie [certificaten voor uw Azure stack Edge maken met behulp van Azure stack hub-gereedheids controleprogramma](azure-stack-edge-j-series-create-certificates-tool.md)voor meer informatie.
+* De wacht woorden voor alle PFX-bestanden van het certificaat moeten gelijk zijn op het moment van de implementatie als u het hulp programma Azure Stack Readiness Checker gebruikt. Zie [certificaten voor uw Azure stack Edge Pro maken met behulp van Azure stack hub-gereedheids controleprogramma](azure-stack-edge-j-series-create-certificates-tool.md)voor meer informatie.
 
 * Het wacht woord voor het PFX van het certificaat moet een complex wacht woord zijn. Noteer dit wacht woord, omdat dit wordt gebruikt als een implementatie parameter.
 
@@ -86,9 +86,9 @@ Zie [PFX-certificaten exporteren met de persoonlijke sleutel](azure-stack-edge-j
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Certificaten gebruiken met Azure Stack Edge](azure-stack-edge-j-series-manage-certificates.md)
+[Certificaten gebruiken met Azure Stack Edge Pro](azure-stack-edge-j-series-manage-certificates.md)
 
-[Certificaten voor uw Azure Stack rand maken met behulp van Azure Stack hub-gereedheids controleprogramma](azure-stack-edge-j-series-create-certificates-tool.md)
+[Certificaten maken voor uw Azure Stack Edge Pro met behulp van Azure Stack hub-gereedheids controleprogramma](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [PFX-certificaten exporteren met de persoonlijke sleutel](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

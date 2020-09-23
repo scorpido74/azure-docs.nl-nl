@@ -1,0 +1,143 @@
+### YamlMime:Landing
+title: Documentatie voor enkele server
+summary: Azure Database for MySQL Enkele server is een relationele database op basis van de MySQL-communityversie.  Deze volledig beheerde Database as a Service kan bedrijfskritische workloads verwerken met voorspelbare prestaties en dynamische schaalbaarheid. Leer hoe u Enkele server gebruikt met onze snelstarts, zelfstudies en voorbeelden.
+metadata:
+  description: Azure Database for MySQL Enkele server is een relationele databaseservice in de Microsoft-cloud die is gebouwd voor ontwikkelaars op basis van de MySQL-communityversie.
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/20/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: a9ddd354a97578c5b83455fc6d709d5c2d60494f
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928726"
+landingContent:
+- title: Over Enkele server
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Enkele server?
+      url: ../concepts-servers.md
+  - linkListType: whats-new
+    links:
+    - text: Bekijk ons blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een server maken met de Azure-portal
+      url: ../quickstart-create-mysql-server-database-using-azure-portal.md
+    - text: Een server maken met Azure CLI
+      url: ../quickstart-create-mysql-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Prijscategorieën begrijpen
+      url: ../concepts-pricing-tiers.md
+    - text: Limieten begrijpen
+      url: ../concepts-limits.md
+    - text: Ondersteunde MySQL-versies begrijpen
+      url: ../concepts-supported-versions.md
+    - text: Plannen voor hoge beschikbaarheid
+      url: ../concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Een database ontwerpen voor Enkele server
+      url: ../tutorial-design-database-using-portal.md
+    - text: Wordpress implementeren in Web App for Containers met MySQL
+      url: ../../app-service/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+    - text: Een PHP-web-app (Laravel) bouwen met MySQL
+      url: ../../app-service/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json
+- title: Verbinding maken en query's uitvoeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: De firewall begrijpen
+      url: ../concepts-firewall-rules.md
+    - text: SSL begrijpen
+      url: ../concepts-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Firewall-regels maken
+      url: ../howto-manage-firewall-using-portal.md
+    - text: SSL-connectiviteit configureren
+      url: ../howto-configure-ssl.md
+    - text: Verbindingsproblemen oplossen
+      url: ../howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: Verbinding maken met MySQL Workbench
+      url: ../connect-workbench.md
+    - text: Verbinding maken met PHP
+      url: ../connect-php.md
+    - text: Verbinding maken met Java
+      url: ../connect-java.md
+    - text: Verbinding maken met .NET
+      url: ../connect-csharp.md
+    - text: Verbinding maken met Python
+      url: ../connect-python.md
+    - text: Verbinding maken met Node.js
+      url: ../connect-nodejs.md
+- title: Gegevens beheren en migreren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Serverparameters begrijpen
+      url: ../concepts-server-parameters.md
+    - text: Virtuele netwerken begrijpen
+      url: ../concepts-data-access-and-security-vnet.md
+    - text: Bewaking inschakelen
+      url: ../concepts-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Parameters van de server configureren
+      url: ../howto-server-parameters.md
+    - text: Migreren met Data Migration Service
+      url: ../howto-migrate-online.md
+    - text: Migreren met behulp van dump en herstel
+      url: ../concepts-migrate-dump-restore.md
+    - text: Migreren met behulp van importeren en exporteren
+      url: ../concepts-migrate-import-export.md
+- title: Bedrijfscontinuïteit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bedrijfscontinuïteit
+      url: ../concepts-business-continuity.md
+    - text: Back-up en herstel
+      url: ../concepts-backup.md
+    - text: Replicatie van binnenkomende gegevens
+      url: ../concepts-data-in-replication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Replicatie van binnenkomende gegevens configureren
+      url: ../howto-data-in-replication.md
+    - text: Een server herstellen met behulp van de Azure-portal
+      url: ../howto-restore-server-portal.md
+    - text: Een server herstellen met behulp van de Azure-portal
+      url: ../howto-restore-server-cli.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: download
+    links:
+    - text: MySQL Workbench
+      url: https://www.mysql.com/products/workbench
+    - text: MySQL .NET-connector
+      url: https://dev.mysql.com/doc/connector-net/en/
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-scripts voor algemene taken
+      url: /azure/mysql/sample-scripts-azure-cli
+    - text: Azure Resource Manager-sjablonen
+      url: /azure/templates/microsoft.dbformysql/allversions
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie voor Azure CLI-ontwikkelaars
+      url: /cli/azure/mysql
+    - text: Naslaginformatie voor REST API-ontwikkelaars
+      url: /rest/api/mysql/
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.mysql

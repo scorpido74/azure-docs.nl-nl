@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Microsoft Azure Stack edge-apparaat en deze beheren via de Windows Power shell-interface | Microsoft Docs
-description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge beheert via de Windows Power shell-interface.
+title: Verbinding maken met en beheren van Microsoft Azure Stack Edge Pro-apparaat via de Windows Power shell-interface | Microsoft Docs
+description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge Pro beheert via de Windows Power shell-interface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313195"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894426"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Een Azure Stack edge-apparaat beheren via Windows Power shell
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Een Azure Stack Edge Pro-apparaat beheren via Windows Power shell
 
-Met Azure Stack EDGE-oplossing kunt u gegevens verwerken en via het netwerk verzenden naar Azure. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Azure Stack edge-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
+Met Azure Stack Edge Pro-oplossing kunt u gegevens verwerken en via het netwerk verzenden naar Azure. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Azure Stack Edge Pro-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
 
 Dit artikel is gericht op de taken die u gebruikt om de Power shell-interface te gebruiken. 
 
 Dit artikel bevat de volgende procedures:
 
-- Verbinding maken met de Power shell-interface
+- Verbinding maken met de PowerShell-interface
 - Een ondersteunings pakket maken
 - Certificaat uploaden
 - Het apparaat opnieuw instellen
@@ -31,7 +31,7 @@ Dit artikel bevat de volgende procedures:
 - Reken logboeken ophalen
 - Reken modules controleren en problemen oplossen
 
-## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de Power shell-interface
+## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de PowerShell-interface
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -43,7 +43,7 @@ Dit artikel bevat de volgende procedures:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-U kunt ook IoT Edge certificaten uploaden om een beveiligde verbinding in te scha kelen tussen uw IoT Edge apparaat en de downstream-apparaten waarmee verbinding kan worden gemaakt. Er zijn drie IoT Edge certificaten (*PEM* -indeling) die u moet installeren:
+U kunt ook IoT Edge-certificaten uploaden om een beveiligde verbinding mogelijk te maken tussen uw IoT Edge-apparaat en de downstreamapparaten waarmee verbinding kan worden gemaakt. Er zijn drie IoT Edge certificaten (*PEM* -indeling) die u moet installeren:
 
 - Basis-CA-certificaat of de eigenaar-CA
 - CA-certificaat van apparaat
@@ -94,4 +94,4 @@ Als u de externe Power shell-sessie wilt afsluiten, sluit u het Power shell-vens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure stack Edge](azure-stack-edge-deploy-prep.md) implementeren in azure Portal.
+- [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) in de Azure-portal implementeren.

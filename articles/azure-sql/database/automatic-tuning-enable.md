@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981459"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen in de Azure Portal om query's te bewaken en de prestaties van de werk belasting te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Op server niveau kunt u kiezen voor het overnemen van de automatische afstemming
 
 Als u automatisch afstemmen wilt inschakelen op een [Server](logical-servers.md) in Azure SQL database, gaat u naar de-server in de Azure Portal en selecteert u vervolgens **automatisch afstemmen** in het menu.
 
-![Server](./media/automatic-tuning-enable/server.png)
+![Scherm opname toont automatische afstemming in de Azure Portal, waar u opties voor een server kunt Toep assen.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Houd er rekening mee dat de optie **DROP_INDEX** op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen moeten worden ingeschakeld. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen.
@@ -77,7 +77,7 @@ Als u automatisch afstemmen wilt inschakelen voor **één data base**, gaat u na
 
 Individuele instellingen voor automatisch afstemmen kunnen afzonderlijk worden geconfigureerd voor elke Data Base. U kunt hand matig een afzonderlijke optie voor automatisch afstemmen configureren of opgeven dat een optie de instellingen van de server overneemt.
 
-![Database](./media/automatic-tuning-enable/database.png)
+![Scherm opname toont automatische afstemming in de Azure Portal, waar u opties voor één Data Base kunt Toep assen.](./media/automatic-tuning-enable/database.png)
 
 Houd er rekening mee dat DROP_INDEX optie op dit moment niet compatibel is met toepassingen die gebruikmaken van partitie-switches en index hints en niet in deze gevallen mogen worden ingeschakeld.
 

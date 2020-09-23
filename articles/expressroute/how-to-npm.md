@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 0783675450bb6ddf2de7d012a6870f5e4c90408d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393672"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981321"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Netwerkprestatiemeter configureren voor ExpressRoute
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het configureren van een Netwerkprestatiemeter-extensie 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-U kunt het volgende doen:
+U kunt:
 
 * Verlies en latentie bewaken in verschillende VNets en waarschuwingen instellen
 
@@ -228,7 +228,7 @@ Zodra u de tegels voor bewaking ziet, worden uw ExpressRoute-circuits en verbind
 
 De pagina NPM bevat een pagina voor ExpressRoute waarin een overzicht van de status van ExpressRoute-circuits en peerings wordt weer gegeven.
 
-![Dashboard](./media/how-to-npm/dashboard.png)
+![Scherm afbeelding toont een dash board met een overzicht van de status van de ExpressRoute-circuits en peerings.](./media/how-to-npm/dashboard.png)
 
 ### <a name="list-of-circuits"></a><a name="circuits"></a>Lijst met circuits
 

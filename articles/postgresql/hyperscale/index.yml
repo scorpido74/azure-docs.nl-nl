@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Database for PostgreSQL - Hyperscale (Citus)
+summary: Azure Database for PostgreSQL is een volledig beheerde Database as a Service, op basis van de relationele open-source PostgreSQL-database-engine. De Hyperscale (Citus)-implementatieoptie schaalt query's horizontaal op meerdere machines met behulp van sharding, voor toepassingen die betere schaalbaarheid en prestaties vereisen.
+metadata:
+  description: Azure Database voor PostgreSQL is een relationele databaseservice in de Microsoft Cloud die is gebouwd voor ontwikkelaars op basis van de open-source PostgreSQL-database-engine.
+  author: jonels-msft
+  ms.author: jonels
+  ms.date: 09/27/2020
+  ms.service: postgresql
+  ms.subservice: hyperscale-citus
+  ms.topic: landing-page
+  ms.openlocfilehash: 20e99db5f380ee24cf88987a7884292ca47f7e1e
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928843"
+landingContent:
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een servergroep maken met behulp van de Azure-portal
+      url: ../quickstart-create-hyperscale-portal.md
+  - linkListType: concept
+    links:
+    - text: Knooppunten en tabellen van servergroep
+      url: ../concepts-hyperscale-nodes.md
+  - linkListType: tutorial
+    links:
+    - text: Een multitenant-database ontwerpen
+      url: ../tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Een realtime-analysedashboard ontwerpen
+      url: ../tutorial-design-database-hyperscale-realtime.md
+- title: Verbinding maken en query's uitvoeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: De firewall begrijpen
+      url: ../concepts-hyperscale-firewall-rules.md
+    - text: TLS configureren
+      url: ../concepts-hyperscale-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Firewall-regels
+      url: ../howto-hyperscale-manage-firewall-using-portal.md
+    - text: Verbindingsproblemen oplossen
+      url: ../howto-hyperscale-troubleshoot-common-connection-issues.md
+- title: Schalen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Knooppunten en tabellen
+      url: ../concepts-hyperscale-nodes.md
+    - text: Distributiekolommen kiezen
+      url: ../concepts-hyperscale-choose-distribution-column.md
+  - linkListType: how-to-guide
+    links:
+    - text: Grootte van servergroep
+      url: ../howto-hyperscale-scaling.md
+    - text: Tabellen distribueren
+      url: ../howto-hyperscale-modify-distributed-tables.md
+    - text: Waarschuwingen maken op basis van metrische gegevens
+      url: ../howto-hyperscale-alert-on-metric.md
+- title: Beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back-ups en herstellen
+      url: ../concepts-hyperscale-backup.md
+    - text: Controleren en afstemmen
+      url: ../concepts-hyperscale-monitoring.md
+    - text: Hoge beschikbaarheid
+      url: ../concepts-hyperscale-high-availability.md
+    - text: Gereserveerde capaciteit
+      url: ../concepts-hyperscale-reserved-pricing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Databasegebruikers maken
+      url: ../howto-hyperscale-create-users.md
+    - text: Hoge beschikbaarheid configureren
+      url: ../howto-hyperscale-high-availability.md
+    - text: Toegang tot logboeken van database
+      url: ../howto-hyperscale-logging.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SQL API-functies
+      url: ../reference-hyperscale-functions.md
+    - text: Serverparameters
+      url: ../reference-hyperscale-parameters.md
+    - text: Systeemtabellen
+      url: ../reference-hyperscale-metadata.md

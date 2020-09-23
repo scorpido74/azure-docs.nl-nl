@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986405"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Gegevensopname met Azure Data Factory
 
@@ -35,7 +35,7 @@ Er zijn verschillende algemene technieken van het gebruik van Azure Data Factory
 
 ## <a name="adf-with-azure-functions"></a>ADF met Azure functions
 
-![ADF-functie](media/how-to-data-ingest-adf/adf-function.png)
+![Diagram toont een Azure Data Factory pijp lijn, met Azure function en run M L-pijp lijn, en een Azure Machine Learning pijp lijn, met Train model, en hoe ze communiceren met onbewerkte gegevens en voor bereide gegevens.](media/how-to-data-ingest-adf/adf-function.png)
 
 Met Azure Functions kunt u kleine stukjes code (functies) uitvoeren zonder dat u zich zorgen hoeft te maken over de infra structuur van de toepassing. In deze optie worden de gegevens verwerkt met aangepaste python-code die is ingepakt in een Azure-functie. 
 
@@ -51,7 +51,7 @@ De functie wordt aangeroepen met de [activiteit ADF Azure function](https://docs
 
 ## <a name="adf-with-custom-component-activity"></a>ADF met aangepaste onderdeel activiteit
 
-![ADF-customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![In het diagram ziet u een Azure Data Factory pijp lijn, met een aangepast onderdeel en een pijp lijn met M L, en een Azure Machine Learning pijp lijn, met Train model, en hoe ze communiceren met onbewerkte gegevens en voor bereide gegevens.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 In deze optie worden de gegevens verwerkt met aangepaste python-code die is ingepakt in een uitvoerbaar bestand. Deze wordt aangeroepen met een [aangepaste ADF-onderdeel activiteit](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity). Deze aanpak is beter geschikt voor grote gegevens dan de vorige techniek.
 
@@ -64,7 +64,7 @@ In deze optie worden de gegevens verwerkt met aangepaste python-code die is inge
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF met Azure Databricks python-notebook
 
-![ADF-databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![Diagram toont een Azure Data Factory pijp lijn, met Azure Databricks python, een pijp lijn met M L en een Azure Machine Learning pijp lijn, met Train model, en hoe ze communiceren met onbewerkte gegevens en voor bereide gegevens.](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) is een op Apache Spark gebaseerd analyse platform in de micro soft Cloud.
 
@@ -82,7 +82,7 @@ In deze techniek wordt de gegevens transformatie uitgevoerd door een [python-not
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>Gegevens in Azure Machine Learning pijp lijnen gebruiken
 
-![AML-gegevensset](media/how-to-data-ingest-adf/aml-dataset.png)
+![Diagram toont een Azure Data Factory pijp lijn en een Azure Machine Learning pijp lijn en hoe ze communiceren met onbewerkte gegevens en voor bereide gegevens. Met de Data Factory pijp lijn worden gegevens naar de voor bereide data base gevoed, waarmee een gegevens archief wordt gevoed, wat gegevens sets in de werk ruimte Machine Learning.](media/how-to-data-ingest-adf/aml-dataset.png)
 
 De getransformeerde gegevens van de ADF-pijp lijn worden opgeslagen in de gegevens opslag (zoals Azure Blob). Azure Machine Learning heeft toegang tot deze gegevens via [data stores](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) en [gegevens sets](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
