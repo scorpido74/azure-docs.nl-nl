@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell gebruikt om Azure Backup in te stellen op Windows Server of een Windows-client, en back-up en herstel te beheren.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892368"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987100"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -42,10 +42,10 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Geef het type opslag redundantie op dat moet worden gebruikt. U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie **-BackupStorageRedundancy** voor *testVault* is ingesteld op **georedundant**.
+4. Geef het type opslag redundantie op dat moet worden gebruikt. U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), [geografisch redundante opslag (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) of [zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)gebruiken. In het volgende voor beeld ziet u de optie **-BackupStorageRedundancy** voor *testVault* ingesteld op **georedundant**.
 
    > [!TIP]
-   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handig om de back-up Recovery Services kluis-object op te slaan in een variabele.
+   > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handiger het object Backup Recovery Services-kluis in een variabele op te slaan.
    >
    >
 

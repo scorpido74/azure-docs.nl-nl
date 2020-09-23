@@ -1,29 +1,29 @@
 ---
-title: Gegevens exporteren uit Azure IoT Central (preview) | Microsoft Docs
+title: Gegevens exporteren uit Azure IoT Central | Microsoft Docs
 description: De nieuwe gegevens export gebruiken om uw IoT-gegevens te exporteren naar Azure en aangepaste Cloud bestemmingen.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461932"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974399"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export (preview-versie)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export
 
 > [!Note]
-> In dit artikel worden de functies voor preview-gegevens export in IoT Central beschreven.
+> In dit artikel worden de functies voor gegevens export in IoT Central beschreven.
 >
 > - Zie [IOT-gegevens naar Cloud bestemmingen exporteren met behulp van gegevens export (verouderd)](./howto-export-data-legacy.md)voor meer informatie over de verouderde functies voor gegevens export.
-> - Zie de onderstaande [vergelijkings tabel](#comparison-of-legacy-data-export-and-preview-data-export) voor meer informatie over de verschillen tussen de functies voor het exporteren van gegevens en verouderde gegevens export.
+> - Zie de onderstaande [vergelijkings tabel](#comparison-of-legacy-data-export-and-data-export) voor meer informatie over de verschillen tussen de functies voor het exporteren van gegevens en verouderde gegevens export.
 
-In dit artikel wordt beschreven hoe u de nieuwe preview-functie voor het exporteren van gegevens kunt gebruiken in azure IoT Central. Gebruik deze functie om voortdurend gefilterde en verrijkt IoT-gegevens te exporteren uit uw IoT Central-toepassing. Gegevens export pusht wijzigingen in bijna realtime aan andere onderdelen van uw Cloud oplossing voor inzichten, analyses en opslag van warme paden.
+In dit artikel wordt beschreven hoe u de nieuwe functie voor gegevens export kunt gebruiken in azure IoT Central. Gebruik deze functie om voortdurend gefilterde en verrijkt IoT-gegevens te exporteren uit uw IoT Central-toepassing. Gegevens export pusht wijzigingen in bijna realtime aan andere onderdelen van uw Cloud oplossing voor inzichten, analyses en opslag van warme paden.
 
 U kunt bijvoorbeeld:
 
@@ -37,7 +37,7 @@ U kunt bijvoorbeeld:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de preview-functies voor gegevens export wilt gebruiken, moet u een [v3-toepassing](howto-get-app-info.md)hebben en moet u de machtiging [gegevens exporteren](howto-manage-users-roles.md) hebben.
+Als u functies voor gegevens export wilt gebruiken, moet u een [v3-toepassing](howto-get-app-info.md)hebben en moet u de machtiging [gegevens exporteren](howto-manage-users-roles.md) hebben.
 
 ## <a name="set-up-export-destination"></a>Export bestemming instellen
 
@@ -63,7 +63,12 @@ Als u geen bestaande Event Hubs naam ruimte hebt om naar te exporteren, voert u 
     - Selecteer **instellingen > beleid voor gedeelde toegang**.
     - Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
     - Kopieer de primaire of secundaire connection string. U gebruikt deze connection string om een nieuwe bestemming in IoT Central in te stellen.
-
+    - U kunt ook een connection string genereren voor de volledige Event Hubs naam ruimte:
+        1. Ga naar de naam ruimte van uw Event Hubs in de Azure Portal.
+        2. Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
+        3. Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
+        4. De primaire of secundaire connection string kopiëren
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>Een Service Bus wachtrij of onderwerp bestemming maken
 
 Als u geen bestaande Service Bus naam ruimte hebt om naar te exporteren, voert u de volgende stappen uit:
@@ -78,6 +83,11 @@ Als u geen bestaande Service Bus naam ruimte hebt om naar te exporteren, voert u
     - Selecteer **instellingen/beleid voor gedeelde toegang**.
     - Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
     - Kopieer de primaire of secundaire connection string. U gebruikt deze connection string om een nieuwe bestemming in IoT Central in te stellen.
+    - U kunt ook een connection string genereren voor de volledige Service Bus naam ruimte:
+        1. Ga naar de naam ruimte van uw Service Bus in de Azure Portal.
+        2. Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
+        3. Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
+        4. De primaire of secundaire connection string kopiëren
 
 ### <a name="create-an-azure-blob-storage-destination"></a>Een Azure Blob Storage-bestemming maken
 
@@ -109,10 +119,10 @@ Nu u een bestemming hebt voor het exporteren van uw gegevens naar, moet u de geg
 
 1. Meld u aan bij uw IoT Central-toepassing.
 
-1. Selecteer in het linkerdeel venster **gegevens export (preview-versie)**.
+1. Selecteer in het linkerdeel venster **gegevens export**.
 
     > [!Tip]
-    > Als u **gegevens export (preview)** niet ziet in het linkerdeel venster, bent u niet gemachtigd om de gegevens export in uw app te configureren. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
+    > Als het exporteren van **gegevens** niet in het linkerdeel venster wordt weer gegeven, bent u niet gemachtigd om de gegevens export in uw app te configureren. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
 
 1. Selecteer **+ nieuwe export**.
 
@@ -127,9 +137,10 @@ Nu u een bestemming hebt voor het exporteren van uw gegevens naar, moet u de geg
 
 1. Voeg eventueel filters toe om de hoeveelheid geëxporteerde gegevens te verminderen. Er zijn verschillende typen filters beschikbaar voor elk type gegevens export:
 
-    Als u telemetrie wilt filteren, gebruikt u een:
+    Als u telemetrie wilt filteren, kunt u het volgende doen:
 
-    - **Mogelijkheidsprofiel**: als u een telemetrie-item kiest in de vervolg keuzelijst **naam** , bevat de geëxporteerde stroom alleen telemetriegegevens die voldoen aan de filter voorwaarde. Als u een apparaat-of Cloud eigenschaps item in de vervolg keuzelijst **naam** kiest, bevat de geëxporteerde stroom alleen telemetrie van apparaten met eigenschappen die overeenkomen met de filter voorwaarde.
+    - **Filter** de geëxporteerde stroom zodanig dat deze alleen telemetrie bevat van apparaten die overeenkomen met de apparaatnaam, de apparaat-id en de filter voorwaarde voor de Apparaatbeheer.
+    - Mogelijkheden **filteren** : als u een telemetrie-item in de vervolg keuzelijst **naam** kiest, bevat de geëxporteerde stroom alleen telemetriegegevens die voldoen aan de filter voorwaarde. Als u een apparaat-of Cloud eigenschaps item in de vervolg keuzelijst **naam** kiest, bevat de geëxporteerde stroom alleen telemetrie van apparaten met eigenschappen die overeenkomen met de filter voorwaarde.
     - **Filter voor bericht eigenschappen**: apparaten die gebruikmaken van de apparaat-sdk's kunnen *bericht eigenschappen* of *toepassings eigenschappen* voor elk telemetrie-bericht verzenden. De eigenschappen zijn een verzameling sleutel-waardeparen die het bericht labelen met aangepaste id's. Als u een bericht eigenschaps filter wilt maken, voert u de bericht eigenschap sleutel in die u zoekt en geeft u een voor waarde op. Alleen telemetrie-berichten met eigenschappen die overeenkomen met de opgegeven filter voorwaarde, worden geëxporteerd. De volgende teken reeks vergelijkings operatoren worden ondersteund: is gelijk aan, is niet gelijk aan, bevat, niet bevat, bestaat niet. Meer [informatie over toepassings eigenschappen van IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
     Als u de wijzigingen wilt filteren op Eigenschappen, gebruikt u een **functie filter**. Kies een eigenschaps item in de vervolg keuzelijst. De geëxporteerde stroom bevat alleen wijzigingen in de geselecteerde eigenschap die voldoen aan de filter voorwaarde.
@@ -143,8 +154,8 @@ Nu u een bestemming hebt voor het exporteren van uw gegevens naar, moet u de geg
 
     - **Doel naam**: de weergave naam van de bestemming in IOT Central.
     - **Doel type**: Kies het type bestemming. Als u uw bestemming nog niet hebt ingesteld, raadpleegt u [export bestemming instellen](#set-up-export-destination).
-    - Plak voor Azure Event Hubs, Azure Service Bus wachtrij of onderwerp, de connection string voor uw resource.
-    - Plak voor Azure Blob Storage de connection string voor uw resource en voer de hoofdletter gevoelige container naam in.
+    - Plak voor Azure Event Hubs, Azure Service Bus wachtrij of onderwerp, de connection string voor uw resource en voer indien nodig de naam van het hoofdletter gevoelige Event Hub, de wachtrij of het onderwerp in.
+    - Plak voor Azure Blob Storage de connection string voor uw resource en voer zo nodig de hoofdletter gevoelige container naam in.
     - Plak voor webhook de call back-URL voor het webhook-eind punt.
     - Selecteer **Maken**.
 
@@ -185,7 +196,7 @@ Elk geëxporteerd bericht bevat een genormaliseerde vorm van het volledige beric
 - `enrichments`: Eventuele verrijkingen die zijn ingesteld voor de export.
 - `messageProperties`: Extra eigenschappen die het apparaat met het bericht heeft verzonden. Deze eigenschappen worden ook wel *toepassings eigenschappen*genoemd. [Meer informatie over IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-Voor Event Hubs en Service Bus, IoT Central een nieuw bericht snel exporteren nadat het bericht van een apparaat is ontvangen.
+Voor Event Hubs en Service Bus, IoT Central een nieuw bericht snel exporteren nadat het bericht van een apparaat is ontvangen. In de gebruikers eigenschappen (ook wel toepassings eigenschappen genoemd) van elk bericht, de `iotcentral-device-id` , en `iotcentral-application-id` `iotcentral-message-source` worden automatisch opgenomen.
 
 Voor Blob-opslag worden berichten per minuut in batch verzonden en geëxporteerd.
 
@@ -197,7 +208,7 @@ In het volgende voor beeld ziet u een geëxporteerd telemetrie-bericht:
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ Elk bericht of record vertegenwoordigt een wijziging van een apparaat of Cloud e
 - `templateId`: De ID van de Device-sjabloon die aan het apparaat is gekoppeld.
 - `enrichments`: Eventuele verrijkingen die zijn ingesteld voor de export.
 
-IoT Central exporteert voor Event Hubs en Service Bus nieuwe bericht gegevens naar uw Event Hub-of Service Bus-wachtrij of-onderwerp in bijna realtime.
+IoT Central exporteert voor Event Hubs en Service Bus nieuwe bericht gegevens naar uw Event Hub-of Service Bus-wachtrij of-onderwerp in bijna realtime. In de gebruikers eigenschappen (ook wel toepassings eigenschappen genoemd) van elk bericht, de `iotcentral-device-id` ,, `iotcentral-application-id` en `iotcentral-message-source` `iotcentral-message-type` worden automatisch opgenomen.
 
 Voor Blob-opslag worden berichten per minuut in batch verzonden en geëxporteerd.
 
@@ -244,11 +255,11 @@ In het volgende voor beeld ziet u het wijzigings bericht voor een geëxporteerde
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,9 +268,9 @@ In het volgende voor beeld ziet u het wijzigings bericht voor een geëxporteerde
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>Vergelijking van verouderde gegevens export en preview-gegevens export
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>Vergelijking van verouderde gegevens export en gegevens export
 
-De volgende tabel bevat de verschillen tussen de [verouderde](howto-export-data-legacy.md) functies voor het exporteren van gegevens en de preview-versie van gegevens:
+In de volgende tabel ziet u de verschillen tussen de [verouderde gegevens export](howto-export-data-legacy.md) en de nieuwe functies voor gegevens export:
 
 | Functies  | Verouderde gegevens export | Nieuwe gegevens export |
 | :------------- | :---------- | :----------- |

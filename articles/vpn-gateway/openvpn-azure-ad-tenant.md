@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: Azure AD-Tenant voor P2S VPN-verbindingen: Azure AD-verificatie'
-description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
+description: Meer informatie over het instellen van een Azure AD-Tenant voor P2S open VPN-verificatie.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 01fe9331d4063ae45a5d30aa3546d6338d30822d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89499957"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981532"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
@@ -85,7 +85,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 6. Selecteer **accepteren** wanneer u hierom wordt gevraagd.
 
-    ![Accepteren](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Scherm afbeelding toont de bericht machtigingen die voor uw organisatie zijn aangevraagd en de optie voor het accepteren van gegevens.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. Onder uw Azure AD, in **bedrijfs toepassingen**, wordt **Azure VPN** weer gegeven.
 

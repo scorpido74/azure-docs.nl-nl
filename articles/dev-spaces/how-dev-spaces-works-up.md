@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de procedures beschreven voor het uitvoeren van uw code in azure Kubernetes service met Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981295"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Hoe u uw code uitvoert met Azure dev Spaces werkt
 
@@ -199,12 +199,12 @@ ingress:
 
 Zie [hoe route ring werkt met Azure dev Spaces][how-it-works-routing]voor meer informatie over netwerken en hoe aanvragen worden gerouteerd in azure dev Spaces.
 
-Voor meer informatie over het gebruik van Azure dev Spaces voor het snel herhalen en ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes] en [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging].
+Voor meer informatie over het snel herhalen en ontwikkelen met Kubernetes raadpleegt u [hoe Bridge to Kubernetes werkt][how-it-works-bridge-to-kubernetes] en [hoe u uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

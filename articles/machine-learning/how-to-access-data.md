@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893467"
+ms.locfileid: "90976791"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
 
-In dit artikel leert u hoe u **verbinding kunt maken met Azure Storage-services via Azure machine learning gegevens opslag**. Data stores maken een beveiligde verbinding met uw Azure Storage-service zonder dat uw verificatie referenties en de integriteit van de oorspronkelijke gegevens bron risico lopen. Er worden verbindings gegevens opgeslagen, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. U kunt de [Azure machine learning python-SDK](#python) of de [Azure machine learning Studio](#studio) gebruiken om gegevens opslag te maken en te registreren.
+In dit artikel leert u hoe u **verbinding kunt maken met Azure Storage-services via Azure machine learning gegevens opslag**. Data stores maken een beveiligde verbinding met uw Azure Storage-service zonder dat uw verificatie referenties en de integriteit van de oorspronkelijke gegevens bron risico lopen. Er worden verbindings gegevens opgeslagen, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. U kunt de [Azure machine learning python-SDK](#python) of de [Azure machine learning Studio](how-to-connect-data-ui.md) gebruiken om gegevens opslag te maken en te registreren.
 
 Als u gegevens opslag wilt maken en beheren met behulp van de Azure Machine Learning VS code-extensie; Ga naar de [bron beheer handleiding voor het VS code-overzicht](how-to-manage-resources-vscode.md#datastores) voor meer informatie.
 
@@ -92,7 +92,7 @@ Als uw gegevens opslag account zich in een **virtueel netwerk**bevindt, moet u e
 
 ### <a name="access-validation"></a>Toegangs validatie
 
-**Als onderdeel van het proces voor het maken en registreren van de eerste gegevens opslag**, Azure machine learning automatisch gevalideerd of de onderliggende opslag service bestaat en de door de gebruiker opgegeven principal (gebruikers naam, Service-Principal of SAS-token) heeft toegang tot de opgegeven opslag.
+**Als onderdeel van het proces voor het maken en registreren van de eerste Data Store**, Azure machine learning automatisch gevalideerd of de onderliggende opslag service bestaat en de door de gebruiker opgegeven principal (gebruikers naam, Service-Principal of SAS-token) heeft toegang tot de opgegeven opslag.
 
 **Nadat Data Store is gemaakt**, wordt deze validatie alleen uitgevoerd voor methoden waarvoor toegang tot de onderliggende opslag container is vereist. **niet** elke keer dat de objecten gegevens opslag worden opgehaald. Validatie vindt bijvoorbeeld plaats als u bestanden wilt downloaden uit uw gegevens archief. maar als u de standaard gegevens opslag gewoon wilt wijzigen, vindt validatie niet plaats.
 
@@ -117,7 +117,7 @@ Voor Azure Blob-container en Azure Data Lake gen 2-opslag, moet u ervoor zorgen 
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>Gegevens opslag maken en registreren via de SDK
+## <a name="create-and-register-datastores"></a>Gegevens opslag maken en registreren
 
 Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt en registreert u die gegevens opslag automatisch aan een specifieke werk ruimte. Raadpleeg de sectie [machtigingen voor opslag toegang &](#storage-access-and-permissions) voor hulp bij scenario's voor virtuele netwerken en waar u de vereiste verificatie referenties kunt vinden. 
 
@@ -129,7 +129,7 @@ In deze sectie vindt u voor beelden van het maken en registreren van een gegeven
 
  Zie de [documentatie van de betreffende `register_azure_*` methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods)voor het maken van gegevens opslag voor andere ondersteunde opslag Services.
 
-Als u liever een lage code hebt, raadpleegt u [gegevens opslag maken in azure machine learning Studio](#studio).
+Zie [verbinding maken met gegevens met Azure machine learning Studio](how-to-connect-data-ui.md)als u de voor keur geeft aan een lage code-ervaring.
 
 > [!NOTE]
 > De naam van het gegevens archief mag alleen bestaan uit kleine letters, cijfers en onderstrepings tekens. 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>Gegevens opslag maken in de Studio 
-
-Maak in een paar stappen een nieuwe gegevens opslag met behulp van de Azure Machine Learning Studio.
-
-> [!IMPORTANT]
-> Als uw gegevens opslag account zich in een virtueel netwerk bevindt, zijn er extra configuratie stappen vereist om ervoor te zorgen dat Studio toegang heeft tot uw gegevens. Zie [Azure machine learning Studio gebruiken in een virtueel Azure-netwerk](how-to-enable-studio-virtual-network.md) om ervoor te zorgen dat de juiste configuratie stappen worden toegepast. 
-
-1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
-1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
-1. Selecteer **+ Nieuw gegevensarchief**.
-1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor het Azure-opslag type en verificatie type. Zie de [sectie opslag toegang en-machtigingen](#access-validation) voor meer informatie over waar u de verificatie referenties kunt vinden die u nodig hebt om dit formulier in te vullen.
-
-In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Azure Blob-gegevens opslag**maakt: 
-    
-![Formulier voor een nieuwe gegevens opslag](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Gegevens in uw gegevens opslag gebruiken

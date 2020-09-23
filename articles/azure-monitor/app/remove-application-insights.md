@@ -3,12 +3,12 @@ title: Application Insights verwijderen in Visual Studio-Azure Monitor
 description: Application Insights SDK voor ASP.NET en ASP.NET Core verwijderen in Visual Studio.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049761"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981471"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights verwijderen in Visual Studio
 
@@ -66,11 +66,11 @@ Als u Application Insights wilt verwijderen, moet u de NuGet-pakketten en-verwij
 
 1. Selecteer **Verwijderen**.
     
-    ![Schakel afhankelijkheden verwijderen uit en verwijder vervolgens](./media/remove-application-insights/uninstall-framework.png)
+    ![Scherm afbeelding toont het venster micro soft. ApplicationInsights. web met de optie voor het verwijderen van afhankelijkheden is geselecteerd en verwijderen gemarkeerd.](./media/remove-application-insights/uninstall-framework.png)
 
     Er verschijnt een dialoog venster waarin alle afhankelijkheden worden weer gegeven die uit de toepassing moeten worden verwijderd.Selecteer **OK**   om te verwijderen.
     
-    ![Schakel afhankelijkheden verwijderen uit en verwijder vervolgens](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![In de scherm afbeelding wordt een dialoog venster weer gegeven met de afhankelijkheden die moeten worden verwijderd.](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  Nadat alles is verwijderd, ziet u mogelijk nog steeds ' ApplicationInsights.config ' en ' AiHandleErrorAttribute.cs ' in de *Solution Explorer*.U kunt de twee bestanden hand matig verwijderen.
 

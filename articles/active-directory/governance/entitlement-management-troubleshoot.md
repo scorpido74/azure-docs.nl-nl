@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979413"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -75,7 +75,7 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 ### <a name="view-a-requests-delivery-errors"></a>De leverings fouten van een aanvraag weer geven
 
-**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar, toegangs pakket beheer of toegangs pakket toewijzings beheer
 
 1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
@@ -103,7 +103,7 @@ U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw
 
 - Als de fout **niet is** opgelost tijdens het venster experimenten, kan de status van de aanvraag mogelijk niet worden **bezorgd of gedeeltelijk geleverd**. Vervolgens kunt u de knop opnieuw **verwerken** gebruiken. U hebt zeven dagen nodig om de aanvraag opnieuw te verwerken.
 
-**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar, toegangs pakket beheer of toegangs pakket toewijzings beheer
 
 1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
@@ -121,7 +121,7 @@ U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw
 
 U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd of waarvoor de bezorging is mislukt. De knop **Annuleren** wordt anders grijs weer gegeven.
 
-**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar, toegangs pakket beheer of toegangs pakket toewijzings beheer
 
 1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 

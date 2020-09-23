@@ -3,12 +3,12 @@ title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | M
 description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor analyse van gebruikers gedrag voor uw ASP.NET-website, die on-premises of in azure wordt gehost.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475529"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973784"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
@@ -42,7 +42,7 @@ Application Insights-configuratiescherm:
 
 Selecteer **aan de slag**.
 
-![Schermopname van de pagina Uw app registreren bij Application Insights](./media/asp-net/00004-start-free.png)
+![Scherm afbeelding toont de Application Insights pagina en de knop aan de slag.](./media/asp-net/00004-start-free.png)
 
 Als u een resourcegroep of locatie wilt instellen voor het opslaan van uw gegevens, klikt u op **Instellingen configureren**. Resourcegroepen worden gebruikt om toegang tot gegevens te beheren. Als u verschillende apps hebt die deel uitmaken van hetzelfde systeem, kunt u hun Application Insights-gegevens in dezelfde resourcegroep plaatsen.
 
@@ -104,16 +104,16 @@ U kunt ook door gaan met het analyseren van uw telemetrie in [Visual Studio](./v
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>U bent klaar
+## <a name="youre-all-set"></a><a name="land"></a> U bent klaar
 
-Gefeliciteerd! U hebt het pakket Application Insights geïnstalleerd in uw app en dit zo geconfigureerd dat telemetrie wordt verzonden naar de Application Insights-service in Azure.
+Gefeliciteerd U hebt het pakket Application Insights geïnstalleerd in uw app en dit zo geconfigureerd dat telemetrie wordt verzonden naar de Application Insights-service in Azure.
 
 De Azure-resource die de telemetrie van uw app ontvangt, wordt aangeduid met een *instrumentatiesleutel*. U vindt deze sleutel in het bestand ApplicationInsights.config.
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Upgraden naar toekomstige SDK-versies
 
-* [Releaseopmerkingen](./release-notes.md)
+* [Release opmerkingen](./release-notes.md)
 
 Als u een upgrade wilt uitvoeren naar een nieuwe release van de SDK, opent u het **NuGet-pakket beheer**en filtert u op geïnstalleerde pakketten. Selecteer **micro soft. ApplicationInsights. Web**en kies **upgraden**.
 
@@ -144,7 +144,7 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 * [Slimme diagnostische gegevens](./proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
 * [Metrische waarschuwingen](../platform/alerts-log.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
 
-### <a name="automation"></a>Automatisering
+### <a name="automation"></a>Automation
 
 * [Het maken van een Application Insights-resource automatiseren](./powershell.md)
 

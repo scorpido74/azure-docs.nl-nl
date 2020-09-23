@@ -4,12 +4,12 @@ description: Zoek logboeken die zijn gegenereerd door Trace, NLog of Log4Net.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: c17f1f4eb8d2fb680f31a42009247b25c74941c9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936449"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973845"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET core-en python-traceer Logboeken in Application Insights verkennen
 
@@ -51,19 +51,19 @@ Gebruik deze methode als uw project type niet wordt ondersteund door het Applica
 4. Selecteer een van de volgende pakketten:
 
    - Voor ILogger: [micro soft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+ [ ![ NuGet ILogger banner](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
    - Voor NLog: [micro soft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+ [ ![ NuGet NLog banner](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
    - Voor log4net: [micro soft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+ [ ![ NuGet log4net banner](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
    - Voor System. Diagnostics: [micro soft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+ [ ![ NuGet System. diagnose banner](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
    - [Micro soft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+ [ ![ Span doek voor NuGet diagnostische bron](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
    - [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) 
- [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+ [ ![ Banner voor NuGet etw-Collector](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
    - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
- [ ![ Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+ [ ![ Span doek voor NuGet-gebeurtenis bron](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 Het NuGet-pakket installeert de benodigde assembly's en wijzigt web.config of app.config als dit van toepassing is.
 
@@ -205,7 +205,7 @@ Als u de Java-SDK gebruikt, gebruikt u de [Java-logboek adapters](./java-trace-l
 * Zorg ervoor dat u beschikt over de nieuwste versie van Application Insights. Ga in Visual Studio naar **hulpprogram ma's**voor  >  **uitbrei dingen en updates**en open het tabblad **updates** . Als **Developer Analytics-Hulpprogram ma's** er is, selecteert u deze om het bij te werken.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Fout bericht ' de instrumentatie sleutel mag niet leeg zijn '
-Waarschijnlijk hebt u het Nuget-pakket voor de logboek registratie adapter geïnstalleerd zonder Application Insights te installeren. Klik in Solution Explorer met de rechter muisknop op *ApplicationInsights.config*en selecteer **Update Application Insights**. U wordt gevraagd om u aan te melden bij Azure en een Application Insights resource te maken of een bestaande te hergebruiken. Dat het probleem moet oplossen.
+Waarschijnlijk hebt u het NuGet-pakket voor de logboek registratie adapter geïnstalleerd zonder Application Insights te installeren. Klik in Solution Explorer met de rechter muisknop op *ApplicationInsights.config*en selecteer **Update Application Insights**. U wordt gevraagd om u aan te melden bij Azure en een Application Insights resource te maken of een bestaande te hergebruiken. Dat het probleem moet oplossen.
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>Ik zie traceringen maar geen andere gebeurtenissen in diagnostische Zoek opdrachten
 Het kan even duren voordat alle gebeurtenissen en aanvragen worden ontvangen via de pijp lijn.

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986778"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
@@ -22,7 +22,7 @@ In deze best practices vindt u informatie over het uitvoeren van uw cluster en w
 
 > [!div class="checklist"]
 > * Wat zijn pod-resource aanvragen en-limieten
-> * Manieren om toepassingen te ontwikkelen en implementeren met dev Spaces en Visual Studio code
+> * Manieren om toepassingen te ontwikkelen en implementeren met Bridge to Kubernetes en Visual Studio code
 > * Het `kube-advisor` hulp programma gebruiken om te controleren of er problemen zijn met implementaties
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod-resource aanvragen en-limieten definiëren
@@ -74,13 +74,13 @@ Zie [reken resources voor containers beheren][k8s-resource-limits]voor meer info
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Toepassingen ontwikkelen en fouten opsporen in een AKS-cluster
 
-**Best Practice-richt lijnen** : ontwikkel teams moeten een AKS-cluster implementeren en fouten opsporen met behulp van ontwikkel ruimten. Dit ontwikkel model zorgt ervoor dat op rollen gebaseerd toegangs beheer (RBAC), netwerk of opslag behoeften worden geïmplementeerd voordat de app naar productie wordt geïmplementeerd.
+**Best Practice-richt lijnen** : ontwikkel teams moeten implementaties en fouten opsporen voor een AKS-cluster met behulp van Bridge to Kubernetes.
 
-Met Azure dev Spaces kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor dev-ruimten die een optie bieden om de toepassing uit te voeren en fouten op te sporen in een AKS-cluster.
+Met Bridge to Kubernetes kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor Bridge naar Kubernetes, waarmee u rechtstreeks in een AKS-cluster kunt ontwikkelen.
 
-Dit geïntegreerde ontwikkelings-en test proces met ontwikkel ruimten vermindert de nood zaak van lokale test omgevingen, zoals [minikube][minikube]. In plaats daarvan ontwikkelt en test u op basis van een AKS-cluster. Dit cluster kan worden beveiligd en geïsoleerd, zoals wordt beschreven in de vorige sectie over het gebruik van naam ruimten om een cluster logisch te isoleren. Wanneer uw apps klaar zijn om te worden geïmplementeerd in productie, kunt u de implementatie van een echt AKS-cluster op vertrouwen uitvoeren.
+Dankzij dit geïntegreerde ontwikkelings-en test proces met Bridge to Kubernetes wordt de nood zaak van lokale test omgevingen, zoals [minikube][minikube], gereduceerd. In plaats daarvan ontwikkelt en test u op basis van een AKS-cluster. Dit cluster kan worden beveiligd en geïsoleerd, zoals wordt beschreven in de vorige sectie over het gebruik van naam ruimten om een cluster logisch te isoleren.
 
-Azure dev Spaces is bedoeld voor gebruik met toepassingen die worden uitgevoerd op Linux en knoop punten.
+Bridge to Kubernetes is bedoeld voor gebruik met toepassingen die worden uitgevoerd op Linux, peul en knoop punten.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>De Visual Studio code Extension voor Kubernetes gebruiken
 
@@ -106,7 +106,7 @@ Dit artikel Best practices is gericht op het uitvoeren van uw cluster en workloa
 
 Raadpleeg de volgende artikelen voor meer informatie over het implementeren van een aantal van deze aanbevolen procedures:
 
-* [Ontwikkelen met Dev Spaces][dev-spaces]
+* [Ontwikkelen met Bridge naar Kubernetes][btk]
 * [Controleren op problemen met uitvoeren-Advisor][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het implementeren van 
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

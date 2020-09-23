@@ -7,20 +7,20 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1202e46f2ea12db62062ac50b8e83b51fe9e5ca0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89428120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974420"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export (verouderd)
 
 > [!Note]
 > In dit artikel worden de verouderde functies voor gegevens export in IoT Central beschreven.
 >
-> - Zie [IOT-gegevens naar Cloud bestemmingen exporteren met behulp van gegevens export (preview)](./howto-export-data.md)voor meer informatie over de nieuwe functies voor het exporteren van gegevens.
-> - Zie voor meer informatie over de verschillen tussen de functies voor het exporteren van de voorbeeld gegevens en verouderde gegevens export de [vergelijkings tabel](./howto-export-data.md#comparison-of-legacy-data-export-and-preview-data-export).
+> - Zie [IOT-gegevens naar Cloud bestemmingen exporteren met behulp van gegevens export](./howto-export-data.md)voor meer informatie over de nieuwe functies voor het exporteren van gegevens.
+> - Zie voor meer informatie over de verschillen tussen de functies voor het exporteren van de voorbeeld gegevens en verouderde gegevens export de [vergelijkings tabel](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export).
 
 In dit artikel wordt beschreven hoe u de functie voor gegevens export kunt gebruiken in azure IoT Central. Met deze functie kunt u uw gegevens continu exporteren naar **azure Event hubs**, **Azure service bus**of **Azure Blob Storage** -exemplaren. Gegevens export maakt gebruik van de JSON-indeling en kan informatie over telemetrie, apparaatgegevens en apparaatinstellingen bevatten. De geëxporteerde gegevens gebruiken voor:
 

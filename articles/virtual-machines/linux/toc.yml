@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Architecturencentrum
       href: /azure/architecture/
+    - name: Azure Hybrid Benefit
+      href: azure-hybrid-benefit-linux.md
 - name: Instructiegidsen
   items:
     - name: Virtuele machines maken

@@ -10,12 +10,12 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0d03b2708bfd4aac2565b303ddce44f50be65ef9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612339"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987053"
 ---
 # <a name="object-replication-for-block-blobs"></a>Object replicatie voor blok-blobs
 
@@ -68,7 +68,7 @@ U kunt ook een of meer filters opgeven als onderdeel van een replicatie regel vo
 
 De bron-en doel containers moeten beide bestaan voordat u ze in een regel kunt opgeven. Nadat u het replicatiebeleid hebt gemaakt, wordt de doelcontainer alleen-lezen. Pogingen om naar de doelcontainer te schrijven, mislukken met foutcode 409 (Conflict). U kunt echter de bewerking [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier) aanroepen op een BLOB in de doel container om deze naar de laag archief te verplaatsen. Zie voor meer informatie over de laag archief [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](storage-blob-storage-tiers.md#archive-access-tier).
 
-## <a name="billing"></a>Billing 
+## <a name="billing"></a>Billing
 
 Met object replicatie worden er extra kosten in rekening gebracht voor lees-en schrijf transacties op basis van de bron-en doel accounts, en worden er uitvoer kosten berekend voor de replicatie van gegevens van het bron account naar het doel account en de Lees kosten voor het verwerken van wijzigings invoer.
 

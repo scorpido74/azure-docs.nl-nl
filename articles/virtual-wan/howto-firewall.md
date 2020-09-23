@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753689"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983669"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Azure Firewall configureren in een virtuele WAN-hub
 
@@ -32,20 +32,20 @@ Als u een nieuwe virtuele WAN en een nieuwe hub wilt maken, gebruikt u de stappe
 
 Op de **overzichts** pagina voor uw virtuele WAN wordt een lijst met virtuele hubs en beveiligde hubs weer gegeven. In de volgende afbeelding ziet u een virtueel WAN zonder beveiligde hubs.
 
-[![overzicht](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[![Scherm afbeelding toont de overzichts pagina voor een virtueel WAN met een lijst met virtuele hubs.](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>Converteren naar beveiligde hub
 
 1. Selecteer op de pagina **overzicht** voor uw virtuele WAN de hub die u wilt converteren naar een beveiligde hub. Op de pagina virtuele hub ziet u twee opties voor het implementeren van Azure Firewall in deze hub. Selecteer een van beide opties.
 
-   [![beveiliging](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [![Scherm afbeelding toont de overzichts pagina voor uw virtuele WAN, waar u converteren naar beveiligde hub of Azure firewall kunt selecteren.](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. Nadat u een van de opties hebt geselecteerd, ziet u de pagina **converteren naar beveiligde hub** . Selecteer een hub die u wilt converteren en selecteer vervolgens **volgende: Azure firewall** aan de onderkant van de pagina.
 
    [![hub selecteren](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. Nadat de werk stroom is voltooid, selecteert u **bevestigen**.
 
-   [![bevestigen](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [![Scherm afbeelding toont het deel venster converteren naar beveiligde hub met bevestigen geselecteerd.](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. Nadat de hub is geconverteerd naar een beveiligde hub, kunt u deze weer geven op de **overzichts** pagina van het virtuele WAN.
 

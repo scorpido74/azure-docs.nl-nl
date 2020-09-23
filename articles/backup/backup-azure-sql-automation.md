@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975178"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -102,7 +102,7 @@ De Recovery Services kluis is een resource manager-resource, dus u moet deze in 
 
 3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag.
 
-    * U kunt [lokaal redundante opslag](../storage/common/storage-redundancy.md) of [geografisch redundante opslag](../storage/common/storage-redundancy.md)gebruiken.
+    * U kunt [lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage), [geografisch redundante](../storage/common/storage-redundancy.md#geo-redundant-storage) opslag of [zone-redundante opslag](../storage/common/storage-redundancy.md#zone-redundant-storage) gebruiken.
     * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de[set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op **georedundant**.
 
     ```powershell

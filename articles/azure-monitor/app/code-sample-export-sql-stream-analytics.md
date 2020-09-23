@@ -3,12 +3,12 @@ title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311225"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979444"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
 In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar Azure SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -133,21 +133,21 @@ In dit voor beeld gebruiken we gegevens uit pagina weergaven. Als u de overige b
 ## <a name="create-an-azure-stream-analytics-instance"></a>Een Azure Stream Analytics-exemplaar maken
 Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure stream Analytics-service en maak een nieuwe stream Analytics taak:
 
-![Instellingen voor stream Analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![In de scherm afbeelding wordt de pagina stream Analytics-taak weer gegeven met de knop maken gemarkeerd.](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![Nieuwe stream Analytics-taak](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Wanneer de nieuwe taak is gemaakt, selecteert **u naar resource**.
 
-![Instellingen voor stream Analytics](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![Scherm afbeelding ziet u het bericht implementatie voltooid en gaat u naar de knop resource.](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Een nieuwe invoer toevoegen
 
-![Instellingen voor stream Analytics](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Scherm afbeelding toont de pagina invoer met de knop toevoegen geselecteerd.](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 Stel deze waarde in om in te voeren op basis van de doorlopende export-blob:
 
-![Instellingen voor stream Analytics](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Scherm afbeelding toont het nieuwe invoer venster met opties voor de vervolg keuzelijst invoer alias, bron en opslag account geselecteerd.](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 Nu hebt u de primaire toegangs sleutel van uw opslag account nodig die u eerder hebt genoteerd. Stel dit in als de sleutel voor het opslag account.
 
@@ -161,12 +161,12 @@ Het voor voegsel van het pad geeft aan hoe Stream Analytics de invoer bestanden 
 webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 ```
 
-In dit voorbeeld:
+In dit voorbeeld geldt het volgende:
 
-* `webapplication27`is de naam van de Application Insights resource, **in kleine letters**. 
-* `1234...`is de instrumentatie sleutel van de Application Insights resource **waarvoor streepjes zijn verwijderd**. 
-* `PageViews`is het type gegevens dat we willen analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](./export-data-model.md).
-* `/{date}/{time}`is een patroon dat letterlijk is geschreven.
+* `webapplication27` is de naam van de Application Insights resource, **in kleine letters**. 
+* `1234...` is de instrumentatie sleutel van de Application Insights resource **waarvoor streepjes zijn verwijderd**. 
+* `PageViews` is het type gegevens dat we willen analyseren. Welke typen beschikbaar zijn, is afhankelijk van het filter dat u in continue export hebt ingesteld. Controleer de geëxporteerde gegevens om de andere beschik bare typen te bekijken en Bekijk het [gegevens model exporteren](./export-data-model.md).
+* `/{date}/{time}` is een patroon dat letterlijk is geschreven.
 
 Als u de naam en iKey van uw Application Insights resource wilt ophalen, opent u essentiële elementen op de pagina overzicht of opent u de instellingen.
 

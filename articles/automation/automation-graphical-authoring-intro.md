@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186330"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987323"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafische runbooks ontwerpen in Azure Automation
 
@@ -61,7 +61,7 @@ Selecteer een activiteit op het canvas om de eigenschappen en para meters te con
 
 Een parameterset definieert de verplichte en optionele para meters waarmee waarden voor een bepaalde cmdlet worden geaccepteerd. Alle cmdlets hebben ten minste één parameterset en sommige hebben verschillende sets. Als een cmdlet meerdere parameter sets heeft, moet u het abonnement selecteren dat u wilt gebruiken voordat u para meters kunt configureren. U kunt de parameterset die door een activiteit wordt gebruikt, wijzigen door **para meters** in te stellen en een andere set te kiezen. In dit geval gaan alle parameter waarden die u al hebt geconfigureerd verloren.
 
-In het volgende voor beeld heeft de cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drie parameter sets. In het voor beeld wordt één set met de naam **ListVirtualMachineInResourceGroupParamSet**, met één optionele para meter, gebruikt voor het retour neren van alle virtuele machines in een resource groep. In het voor beeld wordt ook de para meter **GetVirtualMachineInResourceGroupParamSet** gebruikt voor het opgeven van de virtuele machine die moet worden geretourneerd. Deze set heeft twee verplichte para meters en een optionele para meter.
+In het volgende voor beeld heeft de cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) drie parameter sets. In het voor beeld wordt één set met de naam **ListVirtualMachineInResourceGroupParamSet**, met één optionele para meter, gebruikt voor het retour neren van alle virtuele machines in een resource groep. In het voor beeld wordt ook de para meter **GetVirtualMachineInResourceGroupParamSet** gebruikt voor het opgeven van de virtuele machine die moet worden geretourneerd. Deze set heeft twee verplichte para meters en een optionele para meter.
 
 ![Parameterset](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -69,7 +69,7 @@ In het volgende voor beeld heeft de cmdlet [Get-AzVM](/powershell/module/az.comp
 
 Wanneer u een waarde voor een para meter opgeeft, selecteert u een gegevens bron om te bepalen hoe de waarde is opgegeven. De gegevens bronnen die beschikbaar zijn voor een bepaalde para meter, zijn afhankelijk van de geldige waarden voor die para meter. Zo is null bijvoorbeeld geen beschik bare optie voor een para meter die geen Null-waarden toestaat.
 
-| Gegevensbron | Beschrijving |
+| Gegevensbron | Description |
 |:--- |:--- |
 | Constante waarde |Typ een waarde voor de para meter. Deze gegevens bron is alleen beschikbaar voor de volgende gegevens typen: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Uitvoer van activiteit |Gebruik uitvoer van een activiteit die voorafgaat aan de huidige activiteit in de werk stroom. Alle geldige activiteiten worden weer gegeven. Gebruik voor de parameter waarde alleen de activiteit die de uitvoer produceert. Als met de activiteit een object met meerdere eigenschappen wordt uitgevoerd, kunt u de naam van een specifieke eigenschap typen nadat u de activiteit hebt geselecteerd. |
@@ -91,11 +91,11 @@ Met de functionaliteit voor opnieuw proberen voor een activiteit kan deze meerde
 
 Wanneer u opnieuw proberen voor een activiteit inschakelt, kunt u een vertraging en een voor waarde instellen. De vertraging is de tijd (gemeten in seconden of minuten) die het runbook wacht voordat de activiteit opnieuw wordt uitgevoerd. Als u geen vertraging opgeeft, wordt de activiteit opnieuw uitgevoerd direct nadat deze is voltooid.
 
-![Vertraging voor opnieuw proberen van activiteit](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="Scherm afbeelding van de functie-instellingen voor opnieuw proberen in te scha kelen.":::
 
 De voor waarde voor opnieuw proberen is een Power shell-expressie die wordt geëvalueerd na elke keer dat de activiteit wordt uitgevoerd. Als de expressie wordt omgezet in ' True ', wordt de activiteit opnieuw uitgevoerd. Als de expressie wordt omgezet in False, wordt de activiteit niet opnieuw uitgevoerd en wordt het runbook verplaatst naar de volgende activiteit.
 
-![Vertraging voor opnieuw proberen van activiteit](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Scherm afbeelding met de nieuwe poging tot deze voor waarde is waar veld en voor beelden van Power shell-expressies die kunnen worden gebruikt in de voor waarde voor opnieuw proberen.":::
 
 De voor waarde voor opnieuw proberen kan een variabele hebben met de naam `RetryData` die toegang geeft tot informatie over de nieuwe pogingen van de activiteit. Deze variabele heeft de eigenschappen in de volgende tabel:
 
@@ -151,7 +151,7 @@ U kunt een koppeling tussen twee activiteiten maken door de bron activiteit te s
 
 Selecteer de koppeling om de eigenschappen ervan te configureren in de Blade configuratie. Eigenschappen bevatten het koppelings type, dat wordt beschreven in de volgende tabel.
 
-| Koppelings type | Beschrijving |
+| Koppelings type | Description |
 |:--- |:--- |
 | Pijplijn |De doel activiteit wordt één keer uitgevoerd voor elke object uitvoer van de bron activiteit. De doel activiteit wordt niet uitgevoerd als de bron activiteit resulteert in geen uitvoer. Uitvoer van de bron activiteit is beschikbaar als een object. |
 | Reeks |De doel activiteit wordt slechts eenmaal uitgevoerd wanneer de uitvoer van de bron activiteit wordt ontvangen. Uitvoer van de bron activiteit is beschikbaar als een matrix met objecten. |
@@ -256,7 +256,7 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Naam | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
+| Name | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
 | Beschrijving |Optioneel. Beschrijving van het doel van de invoer parameter. |
 | Type | Optioneel. Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. Ondersteunde parameter typen zijn String, Int32, Int64, Decimal, Boolean, DateTime en object. Als er geen gegevens type is geselecteerd, wordt standaard de teken reeks gebruikt.|
 | Verplicht | Optioneel. Instelling die aangeeft of er een waarde moet worden opgegeven voor de para meter. Als u kiest `yes` , moet u een waarde opgeven wanneer het runbook wordt gestart. Als u kiest `no` , is een waarde niet vereist wanneer het runbook wordt gestart en kan een standaard waarde worden gebruikt. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
@@ -433,6 +433,6 @@ U hebt de mogelijkheid om terug te keren naar de gepubliceerde versie van een ru
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [zelf studie: een grafisch Runbook maken](learn/automation-tutorial-runbook-graphical.md)om aan de slag te gaan met grafische runbooks.
-* Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbook en hun voor delen en beperkingen.
+* Zie [Azure Automation-runbooktypen](automation-runbook-types.md) voor meer informatie over runbooktypen en hun voordelen en beperkingen.
 * Zie [uitvoeren als-account](automation-security-overview.md#run-as-account)voor informatie over het verifiëren met behulp van het uitvoeren als-account voor Automation.
-* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

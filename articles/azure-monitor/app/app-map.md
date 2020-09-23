@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936602"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974030"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
@@ -34,7 +34,7 @@ Wanneer u op de knop onderdelen bijwerken klikt, wordt de kaart vernieuwd met al
 
 Als alle onderdelen rollen zijn binnen één Application Insights resource, is deze detectie stap niet vereist. De initiële belasting voor een dergelijke toepassing heeft al zijn onderdelen.
 
-![Scherm opname van toepassings kaart](media/app-map/app-map-001.png)
+![Scherm afbeelding toont een voor beeld van een toepassings kaart.](media/app-map/app-map-001.png)
 
 Een van de belangrijkste doel stellingen bij deze ervaring is om complexe topologieën te visualiseren met honderden onderdelen.
 
