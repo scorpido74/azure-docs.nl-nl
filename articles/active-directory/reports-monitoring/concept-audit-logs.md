@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331247"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
 Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u nodig hebt om te bepalen hoe uw omgeving wordt uitgevoerd.
+
+
 
 De rapportage architectuur bestaat uit de volgende onderdelen:
 
@@ -45,7 +47,7 @@ In dit artikel vindt u een overzicht van het controle rapport.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **bewaking** van **Azure Active Directory**. Houd er rekening mee dat audit Logboeken een latentie van Maxi maal een uur kunnen hebben, zodat het lang kan duren voordat de gegevens van de controle activiteit worden weer gegeven in de portal nadat u de taak hebt voltooid.
+De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **bewaking** van **Azure Active Directory**. 
 
 
 
@@ -62,15 +64,15 @@ Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 
 U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk.
 
-![Auditlogboeken](./media/concept-audit-logs/columns.png "Auditlogboeken")
+![Controle kolommen](./media/concept-audit-logs/columns.png "Controle kolommen")
 
 Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weergegeven.
 
-![Auditlogboeken](./media/concept-audit-logs/columnselect.png "Auditlogboeken")
+![Velden verwijderen](./media/concept-audit-logs/columnselect.png "Velden verwijderen")
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Auditlogboeken](./media/concept-audit-logs/details.png "Auditlogboeken")
+![item selecteren](./media/concept-audit-logs/details.png "Item selecteren")
 
 
 ## <a name="filtering-audit-logs"></a>Auditlogboeken filteren
@@ -85,7 +87,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 - Gestart door (actor)
 - Datumbereik
 
-![Auditlogboeken](./media/concept-audit-logs/filter.png "Auditlogboeken")
+![Object filteren](./media/concept-audit-logs/filter.png "Object filteren")
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
@@ -157,7 +159,7 @@ Wanneer u een aangepast tijdsbestek selecteert, kunt u een begintijd en eindtijd
 
 U kunt er ook voor kiezen om de gefilterde gegevens te downloaden, tot 250.000 records door de knop **downloaden** te selecteren. U kunt de logboeken downloaden in de CSV-of JSON-indeling. Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.
 
-![Auditlogboeken](./media/concept-audit-logs/download.png "Auditlogboeken")
+![Gegevens downloaden](./media/concept-audit-logs/download.png "Gegevens downloaden")
 
 ## <a name="audit-logs-shortcuts"></a>Snelkoppelingen naar auditlogboeken
 
@@ -170,7 +172,7 @@ Naast **Azure Active Directory** biedt de Azure Portal twee extra beginpunten vo
 
 Met de controlerapporten op basis van gebruikers en groepen krijgt u antwoord op vragen zoals:
 
-- Welke soorten updates zijn toegepast op de gebruikers?
+- Welke typen updates zijn op gebruikers toegepast?
 
 - Hoeveel gebruikers zijn gewijzigd?
 
@@ -188,11 +190,11 @@ Met de controlerapporten op basis van gebruikers en groepen krijgt u antwoord op
 
 Als u alleen controle gegevens wilt bekijken die gerelateerd zijn aan gebruikers, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **gebruikers** . Dit ingangs punt heeft **UserManagement** als voorgeselecteerde categorie.
 
-![Auditlogboeken](./media/concept-audit-logs/users.png "Auditlogboeken")
+![Gebruiker](./media/concept-audit-logs/users.png "Gebruiker")
 
 Als u alleen controle gegevens wilt bekijken die aan groepen zijn gerelateerd, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **groepen** . Dit ingangs punt heeft **GroupManagement** als voorgeselecteerde categorie.
 
-![Auditlogboeken](./media/concept-audit-logs/groups.png "Auditlogboeken")
+![Groepen filteren](./media/concept-audit-logs/groups.png "Groepen filteren")
 
 ### <a name="enterprise-applications-audit-logs"></a>Auditlogboeken voor bedrijfstoepassingen
 
@@ -206,7 +208,7 @@ Met de controlerapporten op basis van toepassingen krijgt u antwoord op vragen z
 
 Als u controle gegevens wilt bekijken die betrekking hebben op uw toepassingen, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **activiteit** van de Blade **bedrijfs toepassingen** . Voor dit ingangs punt zijn **bedrijfs toepassingen** voorgeselecteerd als het **toepassings type**.
 
-![Auditlogboeken](./media/concept-audit-logs/enterpriseapplications.png "Auditlogboeken")
+![Bedrijfstoepassingen](./media/concept-audit-logs/enterpriseapplications.png "Bedrijfstoepassingen")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 activiteiten logboeken
 

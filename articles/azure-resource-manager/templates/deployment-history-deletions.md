@@ -3,12 +3,12 @@ title: Verwijderingen in de implementatiegeschiedenis
 description: Hierin wordt beschreven hoe Azure Resource Manager automatisch implementaties uit de implementatie geschiedenis verwijdert. Implementaties worden verwijderd wanneer de geschiedenis bijna de limiet van 800 overschrijdt.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284730"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische verwijderingen van de implementatie geschiedenis
 
@@ -16,7 +16,7 @@ Telkens wanneer u een sjabloon implementeert, wordt informatie over de implement
 
 Met Azure Resource Manager worden implementaties automatisch uit uw geschiedenis verwijderd, net zoals u de limiet hebt bereikt. Automatisch verwijderen is een wijziging ten opzichte van het gedrag van vorige. Voorheen moest u implementaties hand matig verwijderen uit de implementatie geschiedenis om te voor komen dat er een fout optreedt. Deze wijziging is geïmplementeerd op 6 augustus 2020.
 
-**Automatische verwijderingen worden ondersteund voor implementaties van resource groepen. Op dit moment worden implementaties in de implementatie geschiedenis voor het [abonnement](deploy-to-subscription.md), de [beheer groep](deploy-to-management-group.md)en [Tenant](deploy-to-tenant.md) implementaties niet verwijderd.**
+**Automatische verwijderingen worden ondersteund voor implementaties van resource groepen. Op dit moment worden implementaties in de geschiedenis van het [abonnement](deploy-to-subscription.md), de [beheer groep](deploy-to-management-group.md)en [Tenant](deploy-to-tenant.md) implementaties niet automatisch verwijderd.**
 
 > [!NOTE]
 > Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
@@ -76,7 +76,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName Disabl
 
 Als u automatische verwijderingen opnieuw wilt inschakelen, gebruikt u Azure REST API of Azure CLI.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik [AZ feature REGI ster](/cli/azure/feature#az-feature-register)voor Azure cli.
 

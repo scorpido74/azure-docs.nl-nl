@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329343"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -34,8 +34,8 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 | Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nee |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nee |
 
-<sup>1</sup> Windows 10, versies 1507, 1607, 1709, 1803, 1809, 1903 en 1909.  
-<sup>2</sup> Windows Server, versies 1809, 1903 en 1909.  
+<sup>1</sup> Windows 10, versies 1507, 1607, 1803, 1809, 1903, 1909 en 2004.  
+<sup>2</sup> Windows Server, versies 1809, 1903, 1909, 2004.  
 <sup>3</sup> Reguliere micro soft-ondersteuning voor Windows 7 en Windows Server 2008 R2 is beëindigd. Het is mogelijk om aanvullende ondersteuning voor beveiligings updates te kopen via het [Extended Security Update (ESU)-programma](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). We raden u ten zeerste aan de migratie uit te voeren van deze besturings systemen.
 
 > [!Note]  
@@ -58,14 +58,14 @@ De Azure Portal biedt u een script dat u kunt gebruiken om uw bestands share rec
 
 Dit script ophalen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
 1. Selecteer **Bestandsshares**.
 1. Selecteer de bestands share die u wilt koppelen.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-1. Selecteer **Verbinding maken**.
+1. Selecteer **Verbinden**.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 

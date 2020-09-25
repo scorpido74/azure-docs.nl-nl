@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319104"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-gegevens controleren
 
@@ -79,11 +79,13 @@ Nadat de gegevens zijn geïmporteerd, kunt u in de gegevens sets klikken en de b
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>Transcriptie bewerken door naar audio te Luis teren
 
-Nadat het uploaden van gegevens is geslaagd, klikt u op elke item naam om de details van de gegevens weer te geven. Op de detail pagina vindt u een overzicht van alle bestanden in uw gegevensset en kunt u klikken op de gewenste utterance. Voor elke utterance kunt u de audio afspelen en de transcripten bekijken, en de transcripties bewerken als u fouten bij het invoegen, verwijderen of vervangen hebt gevonden. Raadpleeg de [evaluatie van gegevens](how-to-custom-speech-evaluate-data.md) voor meer informatie over fout typen.
+Nadat het uploaden van gegevens is geslaagd, klikt u op elke item naam om de details van de gegevens weer te geven. U kunt ook **vorige** en **volgende** gebruiken om tussen elk bestand te scha kelen.
+
+De detail pagina bevat alle segmenten in elk audio bestand en u kunt klikken op de gewenste utterance. Voor elke utterance kunt u de audio afspelen en de transcripten bekijken, en de transcripties bewerken als u fouten bij het invoegen, verwijderen of vervangen hebt gevonden. Raadpleeg de [evaluatie van gegevens](how-to-custom-speech-evaluate-data.md) voor meer informatie over fout typen.
 
 ![Pagina editor](media/custom-speech/custom-speech-editor.png)
 
-Als het audio bestand lang is, wordt het automatisch in kleinere delen gesegmenteerd. U kunt ze één voor één bewerken met behulp van **vorige** en **volgende** om tussen pagina's te scha kelen. Nadat u wijzigingen hebt aangebracht, klikt u op de knop **Opslaan** .
+Nadat u wijzigingen hebt aangebracht, klikt u op de knop **Opslaan** .
 
 ### <a name="export-datasets-from-the-editor"></a>Gegevens sets exporteren uit de editor
 

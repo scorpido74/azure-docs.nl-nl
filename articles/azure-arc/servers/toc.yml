@@ -47,7 +47,9 @@
       items:
         - name: Verbindingsproblemen met de agent
           href: troubleshoot-agent-onboard.md
-- name: Verwijzing
+        - name: Problemen met VM-extensies
+          href: troubleshoot-vm-extensions.md
+- name: Naslaginformatie
   items:
     - name: Gegevenslocatie
       href: data-residency.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331155"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Zelf studie: de levens gebruiker configureren voor het automatisch inrichten van gebruikers
 
@@ -71,11 +71,11 @@ Als u een levens gebruiker wilt configureren voor het automatisch inrichten van 
 
 Ga als volgt te werk om een levens middel toe te voegen vanuit de Azure AD-toepassings galerie:
 
-1. Selecteer **Azure Active Directory**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com).
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**.
 
     ![De Azure Active Directory opdracht](common/select-azuread.png)
 
-1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -104,13 +104,13 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
 
     ![De koppeling van de levens middelen in de lijst met toepassingen](common/all-applications.png)
 
-1. Selecteer het tabblad **inrichten** .
+1. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
 1. Selecteer in de vervolg keuzelijst **inrichtings modus** de optie **automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 1. Ga als volgt te werk onder **beheerders referenties**:
 
@@ -171,4 +171,4 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en kopp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

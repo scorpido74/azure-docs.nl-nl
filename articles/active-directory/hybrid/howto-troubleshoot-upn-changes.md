@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279785"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319840"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Wijzigingen in de principal-naam van gebruikers plannen en oplossen in Azure Active Directory
 
@@ -94,7 +94,7 @@ Zie de bekende problemen en tijdelijke oplossingen in dit document.
 
 Wanneer u gebruikers accounts synchroniseert van Active Directory naar Azure AD, moet u ervoor zorgen dat de Upn's in Active Directory worden toegewezen aan geverifieerde domeinen in azure AD.
 
-![Scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![Scherm afbeelding met voor beelden van Upn's die zijn toegewezen aan geverifieerde Azure A D-domeinen.](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 Als de waarde van het kenmerk userPrincipalName niet overeenkomt met een geverifieerd domein in azure AD, wordt het achtervoegsel door het synchronisatie proces vervangen door de standaard waarde. onmicrosoft.com.
 
@@ -140,7 +140,7 @@ Sta voldoende tijd toe om de UPN-wijziging te synchroniseren met Azure AD. Nadat
 ![Scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/other-user.png)
 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>Apparaten die zijn toegevoegd aan hybride Azure AD
+### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
 
 [Hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) -apparaten worden toegevoegd aan Active Directory en Azure AD. U kunt hybride deelname aan Azure AD implementeren als uw omgeving een on-premises Active Directory footprint heeft en u ook wilt profiteren van de mogelijkheden van Azure AD.
 

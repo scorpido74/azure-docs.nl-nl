@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool release 07/14/2020-Azure
-description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
+description: Documenteer de release opmerkingen voor de 7.3.00714.2 van het hulp programma voor het maken van bedreigings modellen.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 741d8c96059d379ae453f7ac1da1d5a02127a680
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8cea0ab15b79a94f76350c2264b24e6c258490a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317868"
 ---
 # <a name="threat-modeling-tool-update-release-73007142---07142020"></a>Threat Modeling Tool Update release 7.3.00714.2-07/14/2020
 

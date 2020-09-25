@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318072"
 ---
 # <a name="laying-out-files-for-conversion"></a>Bestanden indelen voor conversie
 
@@ -28,6 +28,10 @@ Als de paden worden opgeslagen als relatieve paden en de relatieve locatie tusse
 
 > [!Note]
 > We raden u aan bestanden in de invoer container te plaatsen, zodat de relatieve locaties van de bestanden hetzelfde zijn als toen de Asset werd gemaakt.
+
+> [!Note]
+> Maak de voor keur aan activa die relatieve paden bevatten.
+> De zelf studie over het [instellen van materialen voor 3ds Max](../../tutorials/modeling/3dsmax-material-setup.md) biedt een 3ds maximum voor beeld van hoe u ervoor kunt zorgen dat een Asset relatieve paden gebruikt.
 
 ## <a name="finding-textures"></a>Structuren zoeken
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318293"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Een uitvoering van een Machine Learning pijp lijn vanuit een logische app activeren
 
@@ -94,3 +94,14 @@ Als uw logische app is ingericht, gebruikt u deze stappen om een trigger voor uw
     > ![HTTP-instellingen](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Selecteer **Opslaan** en uw planning is nu gereed.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie voor meer informatie:
+
+> [!div class="nextstepaction"]
+> [Azure Machine Learning pijplijnen gebruiken voor batch scores](tutorial-pipeline-batch-scoring-classification.md)
+
+* Meer informatie over [pijp lijnen](concept-ml-pipelines.md)
+* Meer informatie over het [verkennen van Azure machine learning met Jupyter](samples-notebooks.md)
+

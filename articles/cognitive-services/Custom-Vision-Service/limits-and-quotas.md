@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316576"
 ---
 # <a name="limits-and-quotas"></a>Limieten en quota
 
@@ -26,7 +26,7 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 |Factor|**F0**|**S0**|
 |-----|-----|-----|
 |Projecten|2|100|
-|Trainings afbeeldingen per project |5\.000|100.000|
+|Trainings afbeeldingen per project |5.000|100.000|
 |Voor spellingen/maand|10.000 |Onbeperkt|
 |Tags/project|50|500|
 |Iteraties |10|10|
@@ -39,7 +39,7 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 |[Andere API-aanroepen](https://go.microsoft.com/fwlink/?linkid=865446) (trans acties per seconde)|10|10|
 |Geaccepteerde afbeeldings typen|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
 |Minimale afbeeldings hoogte/-breedte in pixels|256 (zie opmerking)|256 (zie opmerking)|
-|Maximale hoogte of breedte van afbeelding in pixels|onbeperkt|onbeperkt|
+|Maximale hoogte of breedte van afbeelding in pixels|10.240|10.240|
 |Maximale afbeeldings grootte (uploaden van trainings afbeelding) |6 MB|6 MB|
 |Maximale afbeeldings grootte (voor spelling)|4 MB|4 MB|
 |Afbeelding van het maximum aantal regio's per object detectie|300|300|
@@ -47,3 +47,4 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 
 > [!NOTE]
 > Afbeeldingen die kleiner zijn dan 256 pixels, worden geaccepteerd, maar worden uitgebreid.
+> De hoogte-breedte verhouding van de afbeelding mag niet groter zijn dan 25

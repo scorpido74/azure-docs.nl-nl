@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318038"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -45,7 +45,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
 |Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
-|Analyse van schijf versleuteling|✔|✔|-|Gratis|
+|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Gratis|
 |Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 
@@ -69,7 +69,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
 |Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Gratis|
-|Analyse van schijf versleuteling|✔|✔|-|Gratis|
+|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Gratis|
 |Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 

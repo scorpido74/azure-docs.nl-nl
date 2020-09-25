@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317613"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
 Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
@@ -64,7 +64,7 @@ Het is ook mogelijk om een resultaat te krijgen dat geen UpgradeResult is, dat w
 Zorg er vervolgens voor dat u de vereiste Url's hebt geopend in uw proxy of firewall. Automatische updates maakt gebruik van Azure AD Connect Health zoals beschreven in het [overzicht](#overview). Als u een proxy gebruikt, zorg er dan voor dat de status is geconfigureerd voor het gebruik van een [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Test ook de [status verbinding](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) met Azure AD.
 
 Als de connectiviteit met Azure AD is geverifieerd, is het tijd om te kijken naar de gebeurtenis Logboeken. Start de logboeken en zoek in het gebeurtenis logboek van de **toepassing** . Voeg een Eventlog-filter toe voor de bron **Azure AD Connect-upgrade** en het gebeurtenis-id-bereik **300-399**.  
-![Eventlog-filter voor automatische upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+![Scherm opname van het venster ' Huidig logboek filteren ' met ' gebeurtenis bronnen ' en het selectie vakje ' include/exclude ' voor gebeurtenis-Id's gemarkeerd.](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 U kunt nu de gebeurtenis logboeken zien die zijn gekoppeld aan de status voor automatische upgrade.  
 ![Eventlog-filter voor automatische upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3906878755b7c7c2e3801da1bfa70a50d73ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318786"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Werken met data bases, containers en items in Azure Cosmos DB
 
@@ -39,15 +39,15 @@ U kunt communiceren met een Azure Cosmos-data base met Azure Cosmos-Api's, zoals
 
 | Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Alle data bases opsommen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | NA | NA |
-|Data Base lezen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | NA | NA |
-|Nieuwe data base maken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | NA | NA |
-|Data base bijwerken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | NA | NA |
+|Alle data bases opsommen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Data Base lezen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Nieuwe data base maken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Data base bijwerken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-containers
 
-Een Azure Cosmos-container is de eenheid van schaal baarheid voor ingerichte door Voer en opslag. Een container is horizon taal gepartitioneerd en vervolgens gerepliceerd in meerdere regio's. De items die u toevoegt aan de container en de door Voer die u hebt ingericht, worden automatisch gedistribueerd over een set logische partities op basis van de partitie sleutel. Zie [partitie gegevens](partition-data.md)voor meer informatie over partitioneren en partitie sleutels. 
+Een Azure Cosmos-container is de eenheid van schaal baarheid voor ingerichte door Voer en opslag. Een container is horizon taal gepartitioneerd en vervolgens gerepliceerd in meerdere regio's. De items die u aan de container toevoegt, worden automatisch gegroepeerd in logische partities, die worden gedistribueerd over fysieke partities, op basis van de partitie sleutel. De door Voer voor een container wordt gelijkmatig verdeeld over de fysieke partities. Zie [partitie gegevens](partition-data.md)voor meer informatie over partitioneren en partitie sleutels. 
 
 Wanneer u een Azure Cosmos-container maakt, configureert u door Voer in een van de volgende modi:
 
@@ -125,7 +125,7 @@ Elk Azure Cosmos-item heeft de volgende door het systeem gedefinieerde eigenscha
 |\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
 |\_Terminal | Door het systeem gegenereerd | Tijds tempel van de laatste update van het item | Ja | Nee | Nee | Nee | Nee |
 |\_Online | Door het systeem gegenereerd | Adresseer bare URI van het item | Ja | Nee | Nee | Nee | Nee |
-|id | Merken | Door de gebruiker gedefinieerde unieke naam in een logische partitie. | Ja | Ja | Ja | Ja | Ja |
+|id | Ofwel | Door de gebruiker gedefinieerde unieke naam in een logische partitie. | Ja | Ja | Ja | Ja | Ja |
 |Wille keurige door de gebruiker gedefinieerde eigenschappen | Door de gebruiker gedefinieerde routes | Door de gebruiker gedefinieerde eigenschappen die worden weer gegeven in API-native representatie (waaronder JSON, BSON en CQL) | Ja | Ja | Ja | Ja | Ja |
 
 > [!NOTE]

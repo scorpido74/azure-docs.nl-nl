@@ -1,22 +1,22 @@
 ---
-title: Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
-description: De Azure Database for PostgreSQL-grootschalige beveiligings basislijn biedt procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-benchmark test.
+title: Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige (Citus)
+description: De beveiligings basislijn van de Azure Database for PostgreSQL-grootschalige (Citus) biedt procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231296"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318123"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige (Citus)
 
-De Azure-beveiligings basislijn voor Azure Database for PostgreSQL-grootschalige bevat aanbevelingen waarmee u de beveiligings-postuur van uw implementatie kunt verbeteren.
+De Azure Security Baseline voor Azure Database for PostgreSQL-grootschalige (Citus) bevat aanbevelingen die u helpen de beveiliging van uw implementatie te verbeteren.
 
 De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 

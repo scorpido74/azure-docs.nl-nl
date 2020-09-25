@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329258"
 ---
 # <a name="public-ip-addresses"></a>Openbare IP-adressen
 
@@ -165,6 +165,13 @@ U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../appl
 * Wijs een **dynamisch** , algemeen openbaar IP-adres toe aan een Application Gateway v1-front-end-configuratie. 
 * Wijs een **statisch** standaard-SKU-adres toe aan een v2-front-end-configuratie.
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+Met [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kunt u toepassingen en beleids regels voor netwerk verbindingen maken, afdwingen en registreren in abonnementen en virtuele netwerken.
+
+U kunt alleen **statische** standaard open bare IP-adressen koppelen aan een firewall. Hierdoor kunnen externe firewalls het verkeer identificeren dat afkomstig is van het virtuele netwerk. 
+
+
 ## <a name="at-a-glance"></a>In een oogopslag
 
 In de volgende tabel ziet u de eigenschap waarmee een openbaar IP-adres kan worden gekoppeld aan een resource op het hoogste niveau en de mogelijke toewijzings methoden.
@@ -173,8 +180,9 @@ In de volgende tabel ziet u de eigenschap waarmee een openbaar IP-adres kan word
 | --- | --- | --- | --- |
 | Virtuele machine |Netwerkinterface |Ja |Ja |
 | Internetgerichte load balancer |Front-end-configuratie |Ja |Ja |
-| VPN-gateway |Gateway-IP-configuratie |Yes |Nee |
+| VPN-gateway |Gateway-IP-configuratie |Ja |Nee |
 | Toepassingsgateway |Front-end-configuratie |Ja (alleen V1) |Ja (alleen V2) |
+| Azure Firewall | Front-end-configuratie | Nee | Ja|
 
 ## <a name="limits"></a>Limieten
 

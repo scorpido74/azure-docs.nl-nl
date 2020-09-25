@@ -1,6 +1,6 @@
 ---
 title: B2B Collaboration API en Customization-Azure Active Directory
-description: Azure Active Directory B2B-samenwerking ondersteunt uw externe bedrijfsrelaties door zakelijke partners selectief toegang te verlenen tot uw zakelijke toepassingen
+description: Azure Active Directory B2B-samen werking ondersteunt uw relaties tussen bedrijven door zakelijke partners selectief toegang te geven tot uw bedrijfs toepassingen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295155"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-samenwerkings-API en-aanpassing
 
@@ -80,7 +80,7 @@ In deze modus moet degene die de API gebruikt, de machtigingen hebben om B2B-uit
 
 In alleen app-context moet de app de gebruiker. uitnodigen. het bereik van de uitnodiging is voltooid.
 
-Raadpleeg voor meer informatie:https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+Raadpleeg voor meer informatie: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
@@ -115,7 +115,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > Zorg ervoor dat u beschikt over de nieuwste versie van de Power shell-module AzureAD of de Power shell-module AzureADPreview. 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Bekijk de API-verwijzing voor de uitnodiging in [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) .
 

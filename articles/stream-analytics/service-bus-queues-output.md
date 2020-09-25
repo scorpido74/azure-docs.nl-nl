@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ba4b8f1d3aaa9b06f3bc24e9e267f6778734152a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317774"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus uitvoer wachtrijen van Azure Stream Analytics
 
@@ -24,7 +24,7 @@ In [compatibiliteits niveau 1,2](stream-analytics-compatibility-level.md)maakt A
 
 De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van een wachtrij-uitvoer.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | --- | --- |
 | Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze Service Bus wachtrij te sturen. |
 | Service Bus naam ruimte |Een container voor een set met bericht entiteiten. |
@@ -51,6 +51,22 @@ De maximale bericht grootte is 256 KB per bericht voor de Standard-laag en 1 MB 
 ## <a name="custom-metadata-properties-for-output"></a>Aangepaste meta gegevens eigenschappen voor uitvoer
 
 U kunt query kolommen als gebruikers eigenschappen aan uw uitgaande berichten toevoegen. Deze kolommen gaan niet naar de payload. De eigenschappen zijn aanwezig in de vorm van een woorden lijst in het uitvoer bericht. *Sleutel* is de kolom naam en- *waarde* is de kolom waarde in de woorden lijst eigenschappen. Alle Stream Analytics gegevens typen worden ondersteund, behalve record en matrix.
+
+In het volgende voor beeld worden de velden `DeviceId` en `DeviceStatus` worden toegevoegd aan de meta gegevens.
+
+1. Gebruik de volgende query:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Configureren `DeviceId,DeviceStatus` als eigenschaps kolommen in de uitvoer.
+
+   :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="Eigenschappen kolommen":::
+
+De volgende afbeelding heeft de verwachte uitvoer bericht eigenschappen die in EventHub zijn geïnspecteerd met behulp van [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
+
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Aangepaste eigenschappen van gebeurtenis":::
 
 ## <a name="system-properties"></a>Systeemeigenschappen
 

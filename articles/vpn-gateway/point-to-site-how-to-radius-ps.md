@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e45afed3332d26006cf0b4296986edb6f6588962
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329156"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Een punt-naar-site-verbinding met een VNet configureren met RADIUS-verificatie: Power shell
 
@@ -24,8 +24,9 @@ Er wordt een P2S-VPN-verbinding gestart vanaf Windows en Mac-apparaten. Clients 
 
 * RADIUS-server
 * Verificatie van systeem eigen certificaten VPN Gateway
+* Systeem eigen Azure Active Directory-verificatie (alleen Windows 10)
 
-Dit artikel helpt u bij het configureren van een P2S-configuratie met verificatie met behulp van RADIUS-server. Zie [een punt-naar-site-verbinding met een VNet configureren met behulp van systeem eigen certificaat verificatie van de VPN-gateway](vpn-gateway-howto-point-to-site-rm-ps.md)als u wilt verifiëren met behulp van gegenereerde certificaten en native certificaat verificatie voor de VPN-gateway.
+Dit artikel helpt u bij het configureren van een P2S-configuratie met verificatie met behulp van RADIUS-server. Zie [een punt-naar-site-verbinding met een VNet configureren met native certificaat authenticatie van de VPN-gateway](vpn-gateway-howto-point-to-site-rm-ps.md) of [een Azure Active Directory TENANT maken voor P2S openvpn-protocol verbindingen](openvpn-azure-ad-tenant.md) voor Azure Active Directory-verificatie als u in plaats daarvan wilt verifiëren met behulp van gegenereerde certificaten en native certificaat verificatie voor de VPN-gateway.
 
 ![Verbindings diagram-RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
@@ -40,7 +41,7 @@ Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig.
 Voor P2S-verbindingen is het volgende vereist:
 
 * Een RouteBased VPN-gateway. 
-* Een RADIUS-server voor het afhandelen van gebruikers verificatie. De RADIUS-server kan on-premises of in het Azure-VNet worden geïmplementeerd.
+* Een RADIUS-server voor het afhandelen van gebruikers verificatie. De RADIUS-server kan on-premises of in het Azure-VNet worden geïmplementeerd. U kunt ook twee RADIUS-servers configureren voor maximale Beschik baarheid.
 * Een configuratie pakket voor de VPN-client voor de Windows-apparaten die verbinding kunnen maken met het VNet. Een VPN-client configuratie pakket bevat de instellingen die zijn vereist voor een VPN-client om verbinding te maken via P2S.
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Over Active Directory (AD) domein authenticatie voor P2S Vpn's
@@ -113,7 +114,7 @@ Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en ve
 
 Met de volgende stappen maakt u een resource groep en een virtueel netwerk in de resource groep met drie subnetten. Bij het vervangen van waarden is het belang rijk dat u de naam van het subnet van de gateway altijd ' GatewaySubnet '. Als u een andere naam kiest, mislukt het maken van de gateway.
 
-1. Maak een resourcegroep.
+1. Een resourcegroep maken.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
@@ -221,6 +222,17 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
+    ```
+
+   Als u **twee** RADIUS-servers **(preview)** wilt opgeven, gebruikt u de volgende syntaxis. Wijzig de waarde **-vpnclientprotocol toegevoegd** naar wens
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
     ```
 
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> het configuratie pakket voor de VPN-client downloaden en de VPN-client instellen

@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9e032b8bb2dd8c82e8b076517f4309baae41c6f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320315"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -85,7 +85,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
    1. In C# kan de volgende code het token namens de toepassing verkrijgen. Lees [query gegevens met C#](time-series-insights-query-data-csharp.md)voor een volledig voor beeld over het opvragen van gegevens uit een gen1-omgeving.
 
-        Zie de [Azure time series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] opslag plaats voor toegang tot de C#-code. 
+        Zie de [Azure time series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] opslag plaats voor toegang tot de C#-code.
 
    1. Het token kan vervolgens worden door gegeven in de `Authorization` header wanneer de toepassing de Azure time series Insights-API aanroept.
 
@@ -117,7 +117,7 @@ De vereiste aanvraag headers worden hieronder beschreven.
 > [!IMPORTANT]
 > Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).
 
-> * Uw [postman](https://www.getpostman.com/) **AuthURL** is daarom: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
+> * Uw [postman](https://www.getpostman.com/) **AuthURL** is daarom: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com//.default`
 > * `https://api.timeseries.azure.com/` is geldig, maar `https://api.timeseries.azure.com` niet.
 
 De optionele aanvraag headers worden hieronder beschreven.

@@ -1,6 +1,6 @@
 ---
 title: Meer informatie over Azure AD-toepassingsproxy-connectors | Microsoft Docs
-description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
+description: Meer informatie over de Azure AD-toepassingsproxy-connectors.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319823"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD-toepassingsproxy-connectors begrijpen
 
@@ -99,7 +99,7 @@ Over het algemeen, hoe meer gebruikers u hebt, hoe groter de computer die u nodi
 |8|32|270|1190|
 |16|64|245|1200 *|
 
-\*Op deze computer is een aangepaste instelling gebruikt om een aantal van de standaard verbindings limieten van meer dan .NET aanbevolen instellingen te verhogen. Het is raadzaam om een test uit te voeren met de standaard instellingen voordat u contact opneemt met ondersteuning om deze limiet voor uw Tenant te wijzigen.
+\* Op deze computer is een aangepaste instelling gebruikt om een aantal van de standaard verbindings limieten van meer dan .NET aanbevolen instellingen te verhogen. Het is raadzaam om een test uit te voeren met de standaard instellingen voordat u contact opneemt met ondersteuning om deze limiet voor uw Tenant te wijzigen.
 
 > [!NOTE]
 > Er is niet veel verschil in de maximale TPS tussen computers met 4, 8 en 16 kernen. Het belangrijkste verschil tussen deze bevindt zich in de verwachte latentie.

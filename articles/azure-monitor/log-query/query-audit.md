@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285057"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Query's controleren in Azure Monitor Logboeken (preview-versie)
 Controle logboeken voor logboek query's bieden telemetrie over logboek query's die in Azure Monitor worden uitgevoerd. Dit omvat informatie zoals wanneer een query werd uitgevoerd, wie deze uitvoert, welk hulp programma is gebruikt, de query tekst en prestatie statistieken die de uitvoering van de query beschrijven.
@@ -64,6 +64,7 @@ Telkens wanneer een query wordt uitgevoerd, wordt een controle record gemaakt. A
 
 ## <a name="considerations"></a>Overwegingen
 
+- Query's worden alleen geregistreerd wanneer ze worden uitgevoerd in een gebruikers context. Er wordt geen service-to-service in azure vastgelegd. De twee primaire sets van query's die deze uitsluiting omvat, zijn facturerings berekeningen en automatische waarschuwings uitvoeringen. In het geval van waarschuwingen wordt alleen de geplande waarschuwings query zelf vastgelegd. de eerste uitvoering van de waarschuwing in het scherm voor het maken van waarschuwingen wordt uitgevoerd in een gebruikers context, en is beschikbaar voor controle doeleinden. 
 - Prestatie statistieken zijn niet beschikbaar voor query's die afkomstig zijn van de Azure Data Explorer-proxy. Alle andere gegevens voor deze query's worden nog steeds ingevuld.
 - De *h* -hint van teken reeksen die [teken reeks-literals](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) vergelijkt, heeft geen invloed op de controle logboeken van de query. De query's worden precies zo vastgelegd als verzonden zonder dat de teken reeks is verborgen. U moet ervoor zorgen dat alleen gebruikers die nalevings rechten hebben om deze gegevens te zien, dit kunnen doen met behulp van de verschillende RBAC-modi die beschikbaar zijn in Log Analytics-werk ruimten.
 - Voor query's die gegevens uit meerdere werk ruimten bevatten, wordt de query alleen vastgelegd in de werk ruimten waartoe de gebruiker toegang heeft.

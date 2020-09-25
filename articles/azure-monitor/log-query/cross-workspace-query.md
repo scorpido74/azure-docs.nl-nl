@@ -6,27 +6,30 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285125"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Query's tussen bronnen en logboeken uitvoeren in Azure Monitor  
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Een logboek query uitvoeren in Azure Monitor die betrekking hebben op alle werk ruimten en apps
+
+Azure Monitor-logboeken ondersteunen query's voor meerdere Log Analytics-werk ruimten en Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit geeft u een overzicht van uw gegevens op het hele systeem.
+
+Er zijn twee methoden voor het opvragen van gegevens die zijn opgeslagen in meerdere werk ruimten en apps:
+1. Expliciet door de werk ruimte en app-Details op te geven. Deze techniek wordt beschreven in dit artikel.
+2. Impliciet met behulp van [resource context query's](../platform/design-logs-deployment.md#access-mode). Wanneer u een query uitvoert in de context van een specifieke resource, resource groep of abonnement, worden de relevante gegevens opgehaald uit alle werk ruimten die gegevens voor deze resources bevatten. Application Insights gegevens die zijn opgeslagen in apps, worden niet opgehaald.
 
 > [!IMPORTANT]
 > Als u een [Application Insights resource-](../app/create-workspace-resource.md) telemetrie op basis van een werk ruimte gebruikt, wordt deze opgeslagen in een log Analytics werk ruimte met alle andere logboek gegevens. Gebruik de log ()-expressie voor het schrijven van een query die toepassing bevat in meerdere werk ruimten. Voor meerdere toepassingen in dezelfde werk ruimte hebt u geen query op meerdere werk ruimten nodig.
 
-Azure Monitor voorheen kon u alleen gegevens uit de huidige werk ruimte analyseren, maar u kunt ook een query uitvoeren op meerdere werk ruimten die in uw abonnement zijn gedefinieerd.  Daarnaast kunt u alleen vanuit uw webtoepassing verzamelde telemetriegegevens doorzoeken met Application Insights rechtstreeks in Application Insights of vanuit Visual Studio. Hierdoor is het ook een uitdaging om operationele en toepassings gegevens samen te analyseren.
-
-U kunt nu niet alleen een query uitvoeren op meerdere Log Analytics-werk ruimten, maar ook gegevens uit een specifieke Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit geeft u een overzicht van uw gegevens op het hele systeem. U kunt deze typen query's alleen uitvoeren in [log Analytics](./log-query-overview.md).
 
 ## <a name="cross-resource-query-limits"></a>Limieten voor meerdere bron query's 
 
 * Het aantal Application Insights resources en Log Analytics werk ruimten die u in één query kunt toevoegen, is beperkt tot 100.
-* Query op meerdere resources wordt niet ondersteund in de ontwerp functie voor weer gaven. U kunt een query in Log Analytics ontwerpen en deze vastmaken aan Azure dash board om [een logboek query te visualiseren](../learn/tutorial-logs-dashboards.md). 
-* Er wordt een query voor meerdere resources in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](../platform/api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van [VERouderde API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor meerdere resources maken zonder de switch te maken met behulp van de [Azure Resource Manager sjabloon voor scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
+* Query's voor meerdere resources worden niet ondersteund in View Designer. U kunt een query in Log Analytics ontwerpen en deze vastmaken aan Azure dash board om [een logboek query te visualiseren](../learn/tutorial-logs-dashboards.md). 
+* Query's voor meerdere resources in logboek waarschuwingen worden alleen ondersteund in de huidige [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). Als u de API legacy Log Analytics Alerts gebruikt, moet u [overschakelen naar de huidige API](../platform/alerts-log-api-switch.md).
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Query's uitvoeren voor Log Analytics-werk ruimten en van Application Insights
@@ -132,7 +135,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->Deze methode kan niet worden gebruikt met logboek waarschuwingen omdat de toegangs validatie van de resources van de waarschuwings regel, inclusief werk ruimten en toepassingen, wordt uitgevoerd tijdens het maken van de waarschuwing. Het toevoegen van nieuwe resources aan de functie nadat het maken van de waarschuwing niet wordt ondersteund. Als u de functie voor het bereik van resources in logboek waarschuwingen wilt gebruiken, moet u de waarschuwings regel in de portal of met een resource manager-sjabloon bewerken om de resources binnen het bereik bij te werken. U kunt ook de lijst met resources opnemen in de waarschuwings query voor Logboeken.
+> Deze methode kan niet worden gebruikt met logboek waarschuwingen omdat de toegangs validatie van de resources van de waarschuwings regel, inclusief werk ruimten en toepassingen, wordt uitgevoerd tijdens het maken van de waarschuwing. Het toevoegen van nieuwe resources aan de functie nadat het maken van de waarschuwing niet wordt ondersteund. Als u de functie voor het bereik van resources in logboek waarschuwingen wilt gebruiken, moet u de waarschuwings regel in de portal of met een resource manager-sjabloon bewerken om de resources binnen het bereik bij te werken. U kunt ook de lijst met resources opnemen in de waarschuwings query voor Logboeken.
 
 
 ![Timechart](media/cross-workspace-query/chart.png)

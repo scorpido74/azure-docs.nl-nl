@@ -1,18 +1,18 @@
 ---
 title: Migreer uw Windows-Vm's naar Azure Premium Storage met Azure Site Recovery
-description: Migreer uw bestaande virtuele machines naar Azure Premium Storage met behulp van Site Recovery. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
+description: Meer informatie over het migreren van uw VM-schijven vanuit een Standard-opslag account naar een Premium Storage-account met behulp van Azure Site Recovery.
 author: luywang
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 51fa0c063de106f627fc097910514e7c5416ee51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320095"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
 
@@ -104,7 +104,7 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 3. Op de virtuele machine die u als configuratie server gebruikt, voert u Unified Setup uit om de configuratie server en de proces server te installeren. U kunt [de scherm afbeeldingen door](../../site-recovery/vmware-azure-tutorial.md) lopen om de installatie te volt ooien. U kunt de volgende scherm afbeeldingen raadplegen voor de stappen die zijn opgegeven voor dit migratie scenario.
 
-   1. In **voordat u begint**, selecteert u **de configuratie server en proces server installeren**.
+   1. Selecteer bij **Voordat u begint** de optie **De configuratieserver en processerver installeren**.
 
       ![Voordat u begint met de pagina][6]
 

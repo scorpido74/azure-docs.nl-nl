@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320235"
 ---
 # <a name="linux-support"></a>Linux Support
 
@@ -24,6 +24,7 @@ De volgende partners hebben goedgekeurde Windows virtual desktop-clients voor Li
 |Partner|Documentatie voor partners|Partner ondersteuning|
 |:------|:--------------------|:--------------|
 |![IGEL-logo](./media/partners/igel.png)|[Documentatie voor IGEL-client](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-ondersteuning](https://www.igel.com/support/)|
+|![NComputing-logo](./media/partners/ncomputing.png)|[Documentatie voor NComputing-client](https://www.ncomputing.com/microsoft)|[NComputing-ondersteuning](https://www.ncomputing.com/support/support-options)|
 |![Stratodesk-logo](./media/partners/stratodesk.png)|[Documentatie voor Stratodesk-client](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-ondersteuning](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,6 +1,6 @@
 ---
 title: Voor deur van Azure front-caching | Microsoft Docs
-description: Dit artikel helpt u te begrijpen hoe de status van uw back-ends wordt gecontroleerd door Azure front-deur
+description: Dit artikel helpt u bij het begrijpen van het gedrag voor de voor deur met routerings regels die caching hebben ingeschakeld.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318451"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
 In het volgende document wordt het gedrag voor de voor deur opgegeven met routerings regels waarvoor caching is ingeschakeld. De voor deur is een modern Content Delivery Network (CDN), samen met dynamische site versnelling en taak verdeling, ondersteunt ook caching-gedrag, net als bij andere CDN.
@@ -113,7 +113,7 @@ De volgende volg orde van koppen wordt gebruikt om te bepalen hoe lang een item 
 2. Cache-Control: Max-Age =\<seconds>
 3. Verstreken \<http-date>
 
-Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd. Als er echter meerdere aanvragen in de vlucht zijn bij een POP voor dezelfde URL, kunnen ze de reactie delen. Als er geen cache-Control aanwezig is, is het standaard gedrag dat AFD de resource gedurende X-tijd in de cache plaatst waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
+Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd.  Als er geen cache-Control aanwezig is, is het standaard gedrag dat AFD de resource gedurende X-tijd in de cache plaatst waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
 
 ## <a name="request-headers"></a>Aanvraagheaders
 

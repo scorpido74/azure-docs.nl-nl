@@ -1,6 +1,6 @@
 ---
 title: FQDN maken voor een virtuele machine in de Azure Portal
-description: Meer informatie over het maken van een FQDN-naam (Fully Qualified Domain Name) voor een virtuele machine op basis van een resource manager in de Azure Portal.
+description: Meer informatie over het maken van een FQDN-naam (Fully Qualified Domain Name), of FQDN, voor een virtuele Linux-machine in de Azure Portal.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ac44c8d157102a39df9c580938589862dafd0a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: deae22ad0c763e48df053d19beefba6054ed2767
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331468"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Een Fully Qualified Domain Name maken in de Azure Portal voor een Linux-VM
 

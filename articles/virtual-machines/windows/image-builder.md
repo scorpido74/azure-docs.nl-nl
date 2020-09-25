@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320010"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Voor beeld: een Windows-VM maken met Azure Image Builder
 
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt deze niet gebruiken `latest` .
+> Voor de bron installatie kopie moet u altijd [een versie opgeven](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version). u kunt deze niet gebruiken `latest` .
 > Als u de resource groep waaraan de afbeelding is gedistribueerd toevoegt of wijzigt, moet u de [machtigingen instellen](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) voor de resource groep.
  
 ## <a name="create-the-image"></a>De installatiekopie maken
@@ -179,13 +179,13 @@ az resource create \
 
 Als u klaar bent, wordt er een bericht weer gegeven dat de console is voltooid en maakt u een `Image Builder Configuration Template` in de `$imageResourceGroup` . Als u verborgen typen weer geven inschakelt, ziet u deze resource in de resource groep in de Azure Portal.
 
-Op de achtergrond maakt de opbouw functie voor installatie kopieën ook een staging-resource groep in uw abonnement. Deze resource groep wordt gebruikt voor het bouwen van de installatie kopie. Deze heeft de volgende indeling:`IT_<DestinationResourceGroup>_<TemplateName>`
+Op de achtergrond maakt de opbouw functie voor installatie kopieën ook een staging-resource groep in uw abonnement. Deze resource groep wordt gebruikt voor het bouwen van de installatie kopie. Deze heeft de volgende indeling: `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > U moet de faserings resource groep niet rechtstreeks verwijderen. Verwijder eerst de afbeeldings sjabloon artefact, waardoor de faserings resource groep wordt verwijderd.
 
 Als de service een fout meldt tijdens het verzenden van de installatie kopie:
--  Bekijk deze [probleemoplossings](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) stappen. 
+-  Bekijk deze [probleemoplossings](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) stappen. 
 - U moet de sjabloon verwijderen met behulp van het volgende code fragment voordat u het opnieuw probeert te verzenden.
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 Wacht tot het build is voltooid. Dit kan ongeveer 15 minuten duren.
 
-Als er fouten optreden, raadpleegt u deze [probleemoplossings](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) stappen.
+Als er fouten optreden, raadpleegt u deze [probleemoplossings](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) stappen.
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329751"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
 
@@ -38,10 +38,9 @@ Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https:/
 ## <a name="marketing-resources"></a>Marketing Resources  
 
 | Ondersteuningskanaal | Beschrijving | Beschikbaarheid |  
-|:--- |:--- |:--- |  
-| E-mail:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Ondersteuning voor voorbereidings processen en vragen met betrekking tot het programma voor gezamenlijk verkopen. | Op basis van de Pacific time zone. |  
-| E-mail:[gtm@microsoft.com](mailto:gtm@microsoft.com) | Ondersteuning voor GTM-voor delen en programma vragen. | Kantoor uren bevinden zich in de zone Pacific time. |  
-| E-mail:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antwoorden op vragen over het gebruik van Azure-logo's en-huis stijl. |  |  
+|:--- |:--- |:--- |
+| E-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Ondersteuning voor GTM-voor delen en programma vragen. | Kantoor uren bevinden zich in de zone Pacific time. |  
+| E-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antwoorden op vragen over het gebruik van Azure-logo's en-huis stijl. |  |  
 
 ## <a name="next-steps"></a>Volgende stappen
 

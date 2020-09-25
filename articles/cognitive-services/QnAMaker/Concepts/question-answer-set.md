@@ -1,20 +1,20 @@
 ---
 title: Ontwerp kennis basis-QnA Maker
-description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord-paren (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
+description: Meer informatie over het ontwerpen van een Knowledge Base-QnA Maker.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 86e176a378d02d294e0123aba0d2e08d99b044fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992994"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330652"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Concepten van vraag-en antwoord paren
 
 Een Knowledge Base bestaat uit vraag-en antwoord paren (QnA).  Elk paar heeft één antwoord en een paar bevat alle informatie die aan het _antwoord_is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
 
-## <a name="question-and-answer-pairs"></a>Vraag-en antwoord paren
+## <a name="question-and-answer-pairs"></a>Vraag-en-antwoord-paren
 
 De **vereiste** instellingen in een vraag-en-antwoord-paar (QnA) zijn:
 

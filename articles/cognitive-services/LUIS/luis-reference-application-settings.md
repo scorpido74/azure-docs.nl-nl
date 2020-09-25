@@ -1,16 +1,18 @@
 ---
 title: Toepassings instellingen-LUIS
 description: Toepassings instellingen voor Azure Cognitive Services Language-informatie over apps worden opgeslagen in de app en de portal.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/04/2020
-ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0578e3c3c952a475c6beb01ffcf354e19eda6e26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319160"
 ---
-# <a name="app-and-version-settings"></a>App-en versie-instellingen
+# <a name="app-and-version-settings"></a>Instellingen voor app en versie
 
 Deze instellingen worden opgeslagen in de [geëxporteerde](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) app en bijgewerkt met de rest api's of de Luis-Portal.
 

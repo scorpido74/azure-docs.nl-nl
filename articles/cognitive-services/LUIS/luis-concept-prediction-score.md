@@ -1,14 +1,16 @@
 ---
 title: Voorspellings scores-LUIS
 description: Een Voorspellings score geeft de mate van betrouw baarheid van de LUIS API-service voor Voorspellings resultaten op basis van een gebruikers utterance.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316457"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Voorspellings scores geven de nauw keurigheid van de voor spelling voor intentie en entiteiten aan
 
@@ -19,7 +21,7 @@ Een Voorspellings Score ligt tussen nul (0) en een (1). Een voor beeld van een z
 |Score waarde|Betrouwbaarheid|
 |--|--|
 |1|definitieve overeenkomst|
-|0.99|hoge betrouw baarheid|
+|0,99|hoge betrouw baarheid|
 |0,01|lage betrouw baarheid|
 |0|afwijkende fout|
 
@@ -46,7 +48,7 @@ Het controleren van de score voor alle doel stellingen is een goede manier om te
 
 Als meerdere doel einden Voorspellings scores hebben, op basis van de context van een utterance, kan LUIS scha kelen tussen de intenties. Om deze situatie op te lossen, gaat u door met het toevoegen van uitingen aan elke intentie met een breder scala aan contextuele verschillen of kunt u de client toepassing, zoals een chat-bot, programmatische keuzes maken over het afhandelen van de twee belangrijkste intenties.
 
-De twee intenten, die te nauw keurig zijn, kunnen worden tegengehouden als gevolg van **niet-deterministische training**. De hoogste score kan de tweede boven zijn en de tweede hoogste score zou de eerste hoogste score kunnen worden. Om deze situatie te voor komen, voegt u bijvoorbeeld uitingen toe aan elk van de twee bovenste doel stellingen voor die utterance met de keuze en context van het woord dat de 2 intentie onderscheidt. De twee doel stellingen moeten ongeveer hetzelfde aantal voorbeeld uitingen hebben. Een regel voor het scheiden van een schei ding om te voor komen dat de inversie wordt veroorzaakt door trainingen, is een verschil van 15% in scores.
+De twee intenties, die te nauwkeurig zijn, kunnen worden omgekeerd door **niet-deterministische training**. De hoogste score kan de tweede boven zijn en de tweede hoogste score zou de eerste hoogste score kunnen worden. Om deze situatie te voor komen, voegt u bijvoorbeeld uitingen toe aan elk van de twee bovenste doel stellingen voor die utterance met de keuze en context van het woord dat de 2 intentie onderscheidt. De twee doel stellingen moeten ongeveer hetzelfde aantal voorbeeld uitingen hebben. Een regel voor het scheiden van een schei ding om te voor komen dat de inversie wordt veroorzaakt door trainingen, is een verschil van 15% in scores.
 
 U kunt de **niet-deterministische training** uitschakelen door te [trainen op alle gegevens](luis-how-to-train.md#train-with-all-data).
 
@@ -60,7 +62,7 @@ U kunt de **niet-deterministische training** uitschakelen door te [trainen op al
 
 ## <a name="e-exponent-notation"></a>E (exponent) notatie
 
-Voor Voorspellings scores kunnen de notatie exponent gebruiken die boven het 0-1-bereik `9.910309E-07`wordt _weer gegeven_ , zoals. Deze score geeft een indicatie van een zeer **klein** getal.
+Voor Voorspellings scores kunnen de notatie exponent gebruiken die boven het 0-1-bereik wordt _weer gegeven_ , zoals `9.910309E-07` . Deze score geeft een indicatie van een zeer **klein** getal.
 
 |E-notatie Score |Werkelijke Score|
 |--|--|

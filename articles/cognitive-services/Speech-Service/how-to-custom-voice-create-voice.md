@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319058"
 ---
-# <a name="create-a-custom-voice"></a>Een aangepaste stem maken
+# <a name="create-a-custom-voice"></a>Een Custom Voice maken
 
 In [gegevens voorbereiden voor aangepaste spraak](how-to-custom-voice-prepare-data.md), worden de verschillende gegevens typen beschreven die u kunt gebruiken voor het trainen van een aangepaste stem en de verschillende indelings vereisten. Wanneer u uw gegevens hebt voor bereid, kunt u deze uploaden naar de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal)of via de aangepaste training-API voor spraak. Hier worden de stappen beschreven voor het trainen van een aangepaste stem via de portal.
 
@@ -146,5 +146,5 @@ Het aangepaste eind punt is functioneel identiek aan het standaard eindpunt dat 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Hand leiding: uw stem voorbeelden vastleggen](record-custom-voice-samples.md)
-* [Naslaginformatie voor Text to Speech-API](rest-text-to-speech.md)
+* [Naslag informatie over de tekst-naar-spraak-API](rest-text-to-speech.md)
 * [Lange audio-API](long-audio-api.md)

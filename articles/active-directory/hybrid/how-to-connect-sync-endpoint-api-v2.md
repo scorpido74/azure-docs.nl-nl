@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319908"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connect die de prestaties verbetert van de synchronisatie service-bewerkingen naar Azure Active Directory. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt ondersteunt het volgende:
@@ -116,12 +116,12 @@ De volgende stappen kunnen worden gebruikt om de limiet voor lidmaatschappen te 
 1. Editor voor synchronisatie regels van Azure AD openen 
 2. Kies **uitgaande** voor richting in de editor 
 3. Klik op de regel **voor het samen voegen van de groep aan Aad** 
-4. Klik op de knop **bewerken** ![ synch regel bewerken](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Klik op **Edit** de ![ scherm opname van de knop bewerken die de selectie vakjes voor het weer geven en beheren van uw synchronisatie regels ' met ' uit voor Aad-groeps koppeling ' is geselecteerd.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Klik op de knop **Ja** om de standaard regel uit te scha kelen en een Bewerk bare kopie te maken.
- ![Synch regel bewerken](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![Scherm opname van het venster ' bevestiging van de gereserveerde regel bewerken ' met de knop Ja geselecteerd.](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. Stel in het pop-upvenster op de pagina **Beschrijving** de prioriteit in op een beschik bare waarde tussen 1 en 99 ![ synch regel bewerken](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. In het pop-upvenster op de pagina **Beschrijving** stelt u de prioriteit in op een beschik bare waarde tussen 1 en 99 ![ scherm afbeelding met het venster ' regel voor uitgaande synchronisatie bewerken ' met ' prioriteit ' gemarkeerd.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. Werk op de pagina trans **formaties** de **bron** waarde voor de **leden** transformatie bij en vervang ' 50000 ' door een waarde tussen 50001 en 250000. Met deze vervanging wordt de maximale grootte van het lidmaatschap van groepen die worden gesynchroniseerd met Azure AD verg root. We raden aan om te beginnen met een aantal 100.000 om inzicht te krijgen in de gevolgen die het synchroniseren van grote groepen op de synchronisatie prestaties heeft. 
  

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320350"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Deel twee: machtigingen op share niveau toewijzen aan een identiteit
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om een Azure-rol toe te wijzen aan een Azure AD-ide
 1. Ga in het Azure Portal naar de bestands share of [Maak een bestands share](storage-how-to-create-file-share.md).
 1. Selecteer **Access Control (IAM)**.
 1. Selecteer **een roltoewijzing toevoegen**
-1. Selecteer in de Blade **roltoewijzing toevoegen** de geschikte ingebouwde rol (opslag BESTANDS gegevens SMB-share, opslag BESTANDS gegevens SMB delen Inzender) uit de lijst met **functies** . Zorg ervoor dat er geen **toegang wordt toegewezen aan** de standaard instelling: **Azure AD-gebruiker,-groep of Service-Principal**. Selecteer de Azure AD-doel-id op naam of e-mail adres. De geselecteerde Azure AD-identiteit moet een hybride identiteit zijn en mag niet alleen een Cloud identiteit zijn. Dit betekent dat dezelfde identiteit ook wordt weer gegeven in AD DS.
+1. Selecteer in de Blade **roltoewijzing toevoegen** de geschikte ingebouwde rol (opslag BESTANDS gegevens SMB-share, opslag BESTANDS gegevens SMB delen Inzender) uit de lijst met **functies** . Zorg ervoor dat er geen **toegang wordt toegewezen aan** de standaard instelling: **Azure AD-gebruiker,-groep of Service-Principal**. Selecteer de Azure AD-doel-id op naam of e-mail adres. **De geselecteerde Azure AD-identiteit moet een hybride identiteit zijn en mag niet alleen een Cloud identiteit zijn.** Dit betekent dat dezelfde identiteit ook wordt weer gegeven in AD DS.
 1. Selecteer **Opslaan** om de roltoewijzings bewerking te volt ooien.
 
 ### <a name="powershell"></a>PowerShell

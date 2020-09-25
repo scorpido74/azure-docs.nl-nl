@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330601"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)
 
@@ -192,7 +192,7 @@ Bevat informatie over een fout.
 
 ## <a name="types"></a>Typen
 
-### <a name="content"></a>Content
+### <a name="content"></a>Inhoud
 
 Bevat de inhoud die in de insluitende lezer moet worden weer gegeven.
 
@@ -310,12 +310,12 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
 | uiLang | Tekenreeks | Taal van de gebruikers interface, de waarde is in de indeling van de code van het IETF BCP 47-taal label, bijvoorbeeld en, es-ES. De standaard instelling is browser taal als deze niet is opgegeven. |
 | timeout | Getal | De duur (in milliseconden) voordat [launchAsync](#launchasync) mislukt met een time-outfout (de standaard waarde is 15000 MS). Deze time-out is alleen van toepassing op de eerste keer dat de lees pagina wordt gestart, waar succes wordt waargenomen wanneer de lees pagina wordt geopend en het kring veld wordt gestart. De aanpassing van de time-out moet niet nodig zijn. |
 | uiZIndex | Getal | Z-index van het iframe dat wordt gemaakt (de standaard waarde is 1000). |
-| useWebview | Booleaans| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
+| useWebview | Boolean-waarde| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
 | Verlaten | Functie | Wordt uitgevoerd wanneer de insluitende lezer wordt afgesloten. |
-| allowFullscreen | Booleaans | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
-| hideExitButton | Booleaans | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
+| allowFullscreen | Boolean-waarde | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
+| hideExitButton | Boolean-waarde | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Instelling voor het cookie gebruik van de insluitende lezer (de standaard waarde is *CookiePolicy. Disable*). Het is de verantwoordelijkheid van de hosttoepassing om elke vereiste toestemming van de gebruiker te verkrijgen in overeenstemming met het nalevings beleid van de EU-cookie. Zie [cookie-beleids opties](#cookiepolicy-options). |
-| disableFirstRun | Booleaans | Schakel de eerste sessie uit. |
+| disableFirstRun | Boolean-waarde | Schakel de eerste sessie uit. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Opties voor het configureren van hardop voor lezen. |
 | translationOptions | [TranslationOptions](#translationoptions) | Opties voor het configureren van de vertaling. |
 | displayOptions | [DisplayOptions](#displayoptions) | Opties voor het configureren van tekst grootte, letter type, enzovoort. |
@@ -394,7 +394,7 @@ type ReadAloudOptions = {
 | ---- | ---- |------------ |
 | stem | Tekenreeks | Stem, "vrouwelijk" of "mannelijk". Houd er rekening mee dat niet alle talen zowel geslachten ondersteunen. |
 | snelheid | Getal | De afspeel snelheid moet liggen tussen 0,5 en 2,5. |
-| Zorgen | Booleaans | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
+| Zorgen | Boolean-waarde | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
 
 ##### `-voice`
 ```Parameters
@@ -432,8 +432,8 @@ type TranslationOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | language | Tekenreeks | Hiermee stelt u de taal van de vertaling in, de waarde is in de indeling van de taal code van de IETF BCP 47, bijvoorbeeld fr-FR, es-MX, zh-Hans-CN. Vereist om automatische vertaling van woorden of documenten in te scha kelen. |
-| autoEnableDocumentTranslation | Booleaans | Het hele document automatisch vertalen. |
-| autoEnableWordTranslation | Booleaans | Automatische vertaling van woorden inschakelen. |
+| autoEnableDocumentTranslation | Boolean-waarde | Het hele document automatisch vertalen. |
+| autoEnableWordTranslation | Boolean-waarde | Automatische vertaling van woorden inschakelen. |
 
 ##### `-language`
 ```Parameters
@@ -460,7 +460,7 @@ type DisplayOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
-| increaseSpacing | Booleaans | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
+| increaseSpacing | Boolean-waarde | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
 
 ##### `-textSize`
@@ -496,25 +496,25 @@ enum CookiePolicy { Disable, Enable }
 | textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
 | textSpacing | Getal | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
-| formattingEnabled | Booleaans | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
+| formattingEnabled | Boolean-waarde | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
 | ThemeName | Tekenreeks | Hiermee stelt u het gekozen thema (bijvoorbeeld ' licht ', ' donker '...). |
-| syllabificationEnabled | Booleaans | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
-| nounHighlightingEnabled | Booleaans | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
+| syllabificationEnabled | Boolean-waarde | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
+| nounHighlightingEnabled | Boolean-waarde | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
 | nounHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de uitnaam van de uitwoording. |
-| verbHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
+| verbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
 | verbHighlightingColor | Tekenreeks | Hiermee stelt u de markerings kleur van de gekozen term in. |
-| adjectiveHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
+| adjectiveHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
 | adjectiveHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de markering van de bijnaam. |
-| adverbHighlightingEnabled | Booleaans | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
+| adverbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
 | adverbHighlightingColor | Tekenreeks | Hiermee stelt u de geselecteerde belichtings kleur voor de markering in. |
-| pictureDictionaryEnabled | Booleaans | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
-| posLabelsEnabled | Booleaans | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
+| pictureDictionaryEnabled | Boolean-waarde | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
+| posLabelsEnabled | Boolean-waarde | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
 
 <br>
 
 ## <a name="supported-languages"></a>Ondersteunde talen
 
-De Vertaal functie van insluitende lezer ondersteunt veel talen. Raadpleeg [dit artikel](https://www.onenote.com/learningtools/languagesupport) voor meer informatie.
+De Vertaal functie van insluitende lezer ondersteunt veel talen. Zie [taal ondersteuning](./language-support.md) voor meer informatie.
 
 <br>
 

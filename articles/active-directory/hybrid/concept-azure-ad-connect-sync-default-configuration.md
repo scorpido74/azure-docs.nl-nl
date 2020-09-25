@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295223"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie
 In dit artikel worden de out-of-box-configuratie regels uitgelegd. De regels worden gedocumenteerd en hoe deze regels van invloed zijn op de configuratie. U wordt ook begeleid bij de standaard configuratie van Azure AD Connect Sync. Het doel is dat de lezer begrijpt hoe het configuratie model, met de naam declaratief inrichten, in een echt wereld voorbeeld werkt. In dit artikel wordt ervan uitgegaan dat u Azure AD Connect synchronisatie al hebt geïnstalleerd en geconfigureerd met behulp van de installatie wizard.
@@ -160,7 +160,7 @@ U kunt ook zien dat deze synchronisatie regel wordt gebruikt voor wachtwoord syn
 #### <a name="scoping-filter"></a>Bereik filter
 De sectie Filter bereik wordt gebruikt om te configureren wanneer een synchronisatie regel moet worden toegepast. Omdat de naam van de synchronisatie regel aangeeft dat deze alleen moet worden toegepast voor ingeschakelde gebruikers, wordt het bereik geconfigureerd zodat het AD-kenmerk **userAccountControl** geen bit 2-set moet hebben. Wanneer de synchronisatie-engine een gebruiker in AD vindt, wordt deze synchronisatie regel toegepast wanneer **userAccountControl** is ingesteld op de decimale waarde 512 (ingeschakelde normale gebruiker). De regel wordt niet toegepast wanneer de gebruiker **userAccountControl** heeft ingesteld op 514 (uitgeschakelde normale gebruiker).
 
-![Het tabblad bereik in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Scherm afbeelding met de sectie ' filter bereik ' in het venster ' regel voor binnenkomende synchronisatie bewerken '.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Het filter bereik heeft groepen en componenten die kunnen worden genest. Voor alle componenten in een groep moet worden voldaan aan een synchronisatie regel die moet worden toegepast. Wanneer er meerdere groepen zijn gedefinieerd, moet aan ten minste één groep worden voldaan om de regel toe te passen. Dat wil zeggen, een logische of wordt geëvalueerd tussen groepen en een logische en wordt geëvalueerd in een groep. Een voor beeld van deze configuratie vindt u in de regel voor uitgaande synchronisatie **naar Aad-Group-koppeling**. Er zijn verschillende synchronisatie filter groepen, bijvoorbeeld één voor beveiligings groepen ( `securityEnabled EQUAL True` ) en één voor distributie groepen ( `securityEnabled EQUAL False` ).
 
