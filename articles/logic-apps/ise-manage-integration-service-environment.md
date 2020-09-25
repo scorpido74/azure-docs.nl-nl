@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269366"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integratieserviceomgeving) beheren in Azure Logic Apps
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u beheer taken kunt uitvoeren voor uw [Integ
 
 ## <a name="view-your-ise"></a>Uw ISE weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Voer in het zoekvak van de portal "integratie service omgevingen" in en selecteer vervolgens **integratie service omgevingen**.
 
@@ -122,7 +122,7 @@ De Premium ISE-basis eenheid heeft een vaste capaciteit, dus als u meer door voe
    * [**Hand matig schalen**](#manual-scale): schalen op basis van het aantal verwerkings eenheden dat u wilt gebruiken.
    * [**Aangepaste automatisch schalen**](#custom-autoscale): schalen op basis van metrische gegevens voor prestaties door te selecteren uit verschillende criteria en de drempel waarden op te geven voor het voldoen aan de criteria.
 
-   ![Selecteer het gewenste schaal type](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Scherm afbeelding waarin de pagina uitschalen wordt weer gegeven als hand matig schalen is geselecteerd.](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
@@ -136,7 +136,7 @@ De Premium ISE-basis eenheid heeft een vaste capaciteit, dus als u meer door voe
 
 <a name="custom-autoscale"></a>
 
-### <a name="custom-autoscale"></a>Aangepaste automatisch schalen
+### <a name="custom-autoscale"></a>Aangepaste automatische schaalaanpassing
 
 1. Nadat u **aangepaste automatisch schalen**hebt geselecteerd, moet u bij **naam van instelling voor automatisch schalen**een naam opgeven voor de instelling en optioneel de Azure-resource groep selecteren waarvan de instelling deel uitmaakt.
 

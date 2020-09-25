@@ -3,16 +3,16 @@ title: Reageren op waarschuwingen over Azure Defender voor Key Vault
 description: Meer informatie over de stappen die nodig zijn voor het reageren op waarschuwingen van Azure Defender voor Key Vault.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a3f47f00b171601e73ea4668286adf944f48459f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301683"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reageren op Azure Defender voor Key Vault-waarschuwingen
 Wanneer u een waarschuwing ontvangt van Azure Defender voor Key Vault, raden we u aan de waarschuwing te onderzoeken en erop te reageren, zoals hieronder wordt beschreven. Azure Defender voor Key Vault beveiligt toepassingen en referenties, zelfs als u bekend bent met de toepassing of gebruiker die de waarschuwing heeft geactiveerd, is het belang rijk om de situatie rondom elke waarschuwing te controleren.  

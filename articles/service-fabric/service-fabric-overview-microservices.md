@@ -4,12 +4,12 @@ description: Een overzicht van het bouwen van Cloud toepassingen met een micro S
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300765"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Waarom een micro Services-benadering gebruiken voor het ontwikkelen van toepassingen
 
@@ -138,6 +138,9 @@ Ga naar het Azure Architecture Center voor meer informatie over het [ontwerpen e
 Azure Service Fabric opgetreden toen micro soft overstapt van het leveren van producten in de periode, meestal monolithische, om services te leveren. De ervaring van het bouwen en gebruiken van grote Services, zoals Azure SQL Database en Azure Cosmos DB, Shaped Service Fabric. Het platform is na verloop van tijd ontwikkeld naarmate er meer services zijn aangenomen. Service Fabric moest niet alleen worden uitgevoerd in azure, maar ook in zelfstandige implementaties van Windows Server.
 
 ***Het doel van Service Fabric is het oplossen van de vaste problemen bij het bouwen en uitvoeren van een service en het efficiënt gebruiken van infrastructuur resources, zodat teams bedrijfs problemen kunnen oplossen met behulp van een micro Services-benadering.***
+
+In deze korte video worden Service Fabric en microservices geïntroduceerd:
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric helpt u bij het bouwen van toepassingen die gebruikmaken van een micro Services-benadering door het volgende te bieden:
 

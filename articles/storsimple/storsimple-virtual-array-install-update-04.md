@@ -1,6 +1,6 @@
 ---
 title: Updates installeren op de virtuele StorSimple-matrix | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Web-UI van de StorSimple Virtual array gebruikt om updates toe te passen met behulp van de Azure Portal en de methode hotfix
+description: Hierin wordt beschreven hoe u de Web-UI van StorSimple Virtual array gebruikt om update 0,4 toe te passen met behulp van de methode Azure Portal en Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300561"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Update 0,4 installeren op de virtuele StorSimple-matrix
 

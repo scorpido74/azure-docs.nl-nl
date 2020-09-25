@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258622"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
@@ -31,11 +31,11 @@ Beleids regels worden afgedwongen voor samenwerkings gebruikers van Business-to-
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Is er ook een share point online-beleid van toepassing op OneDrive voor bedrijven?
 
-Ja. Een share point online-beleid is ook van toepassing op OneDrive voor bedrijven. Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Ja. Een share point online-beleid is ook van toepassing op OneDrive voor bedrijven. Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Waarom kan ik een beleid niet rechtstreeks instellen op client-apps, zoals Word of Outlook?
 
-Een beleid voor voorwaardelijke toegang stelt vereisten in voor het openen van een service. Deze wordt afgedwongen wanneer verificatie voor die service plaatsvindt. Het beleid is niet rechtstreeks ingesteld voor een client toepassing. In plaats daarvan wordt deze toegepast wanneer een-client een service aanroept. Een beleid dat is ingesteld op share point is bijvoorbeeld van toepassing op clients die share point aanroepen. Een beleid dat is ingesteld op Exchange, is van toepassing op Outlook. Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Een beleid voor voorwaardelijke toegang stelt vereisten in voor het openen van een service. Deze wordt afgedwongen wanneer verificatie voor die service plaatsvindt. Het beleid is niet rechtstreeks ingesteld voor een client toepassing. In plaats daarvan wordt deze toegepast wanneer een-client een service aanroept. Een beleid dat is ingesteld op share point is bijvoorbeeld van toepassing op clients die share point aanroepen. Een beleid dat is ingesteld op Exchange, is van toepassing op Outlook. Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Is er een beleid voor voorwaardelijke toegang van toepassing op service accounts?
 
@@ -53,7 +53,7 @@ Micro soft teams worden ook afzonderlijk ondersteund als een Cloud-app in beleid
 
 Micro soft teams bureau blad-clients voor Windows en Mac bieden ondersteuning voor moderne verificatie. Moderne verificatie brengt aanmelden op basis van de Azure Active Directory Authentication Library (ADAL) om client toepassingen te Microsoft Office op verschillende platforms.
 
-Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365-preview) .
+Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Waarom werken sommige tabbladen niet in micro soft teams nadat het beleid voor voorwaardelijke toegang is ingeschakeld?
 

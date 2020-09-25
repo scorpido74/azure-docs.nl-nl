@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170051"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259065"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>De Twilio-verificatie-app integreren met Azure Active Directory B2C
 
@@ -34,8 +34,8 @@ Om aan de slag te gaan, hebt u het volgende nodig:
 
 De volgende onderdelen vormen een Twilio-oplossing:
 
-- .NET PSD2 demo web app, waarmee u zich kunt aanmelden of registreren en een dummy-trans actie met een hoog risico moet uitvoeren.
-- Azure AD B2C gecombineerde aanmeldings-en registratie beleid.
+- .NET [PSD2 demo web app](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App), waarmee u zich kunt aanmelden of registreren en een dummy-trans actie met een hoog risico moet uitvoeren.
+- Azure AD B2C gecombineerde [aanmeldings-en registratie beleid](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy).
 - Azure AD B2C-beleid dat is geïntegreerd met Twilio verify-API met behulp van `id_token_hint` .
 - .NET-Web-app, die `.well-known` als host fungeert voor een OpenIdConnect-eind punt om validatie van een te kunnen maken `id_token_hint` .
 
@@ -73,7 +73,7 @@ De volgende onderdelen vormen een Twilio-oplossing:
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. De web-app fungeert ook als host voor de ID-token hint en het eind punt voor meta gegevens.
+2. De [Web-app](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App) fungeert ook als host voor de id-token hint en het eind punt voor meta gegevens.
    - Maak uw Ondertekeningscertificaat zoals beschreven in deze [voorbeeld beschrijving](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate).
    - Werk de volgende regels op basis van uw certificaat bij in de web.config:
    
@@ -86,7 +86,7 @@ De volgende onderdelen vormen een Twilio-oplossing:
 
 4. Werk de registratie van uw Azure AD B2C-toepassing bij door een antwoord-URL toe te voegen die gelijk is aan de URL waarop de toepassing wordt gehost.
 
-5. Open de beleids bestanden en vervang alle exemplaren van  `contoso` met de naam van uw Tenant.
+5. Open de [beleids bestanden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) en vervang alle exemplaren van  `contoso` met de naam van uw Tenant.
 
 6. Zoek het Twilio REST API technische profiel **aangepaste SMS-inschrijven**. Werk de  `ServiceURL`   met uw Twilio-AccountSID en het van-nummer bij naar uw aangeschafte telefoon nummer.
 

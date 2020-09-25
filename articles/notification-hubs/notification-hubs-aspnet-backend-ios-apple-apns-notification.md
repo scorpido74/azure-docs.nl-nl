@@ -1,8 +1,8 @@
 ---
 title: Push meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs | Microsoft Docs
-description: Leer hoe u pushmeldingen kunt verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs.
+description: Meer informatie over het verzenden van push meldingen naar specifieke iOS-gebruikers met behulp van Azure Notification Hubs.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302186"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
 
@@ -86,7 +86,7 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. `ViewController.h`Voeg in het volgende toe `#define` na uw import-instructies. Vervang de `<Your backend endpoint>` tijdelijke aanduiding door de doel-URL die u hebt gebruikt voor het implementeren van de back-end van uw app in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net` :
+4. `ViewController.h`Voeg in het volgende toe `#define` na uw import-instructies. Vervang de `<Your backend endpoint>` tijdelijke aanduiding door de doel-URL die u hebt gebruikt voor het implementeren van de back-end van uw app in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net`:
 
     ```objc
     #define BACKEND_ENDPOINT @"<Your backend endpoint>"
@@ -312,7 +312,7 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
     ```
 
     > [!NOTE]
-    > Het volgende code fragment is geen beveiligd verificatie schema. u moet de implementatie van de `createAndSetAuthenticationHeaderWithUsername:AndPassword:` met uw specifieke verificatie mechanisme vervangen door het genereren van een verificatie token dat wordt gebruikt door de client klasse registreren, bijvoorbeeld OAuth, Active Directory.
+    > Het volgende code fragment is geen beveiligd verificatie schema. u moet de implementatie van de    `createAndSetAuthenticationHeaderWithUsername:AndPassword:` met uw specifieke verificatie mechanisme vervangen door het genereren van een verificatie token dat wordt gebruikt door de client klasse registreren, bijvoorbeeld OAuth, Active Directory.
 
 10. Voeg vervolgens in de `@implementation` sectie van `ViewController.m` de volgende code toe, waarmee de implementatie wordt toegevoegd voor het instellen van het apparaat-token en de verificatie-header.
 

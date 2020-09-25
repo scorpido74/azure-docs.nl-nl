@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269043"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -34,12 +34,14 @@ Zie de volgende onderwerpen voor meer informatie over Resource Manager-sjablonen
 * [Best practices voor Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-best-practices.md)
 * [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+Zie [resource typen van micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts, integratie-account artefacten en integratie service omgevingen.
+
 Voor voor beelden van Logic app-sjablonen raadpleegt u deze voor beelden:
 
 * [Volledige sjabloon](#full-example-template) die wordt gebruikt voor de voor beelden van dit onderwerp
 * [Voorbeeld sjabloon voor Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) start-app in github
 
-Zie [resource typen van micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Voor de Logic Apps REST API begint u met het [overzicht Azure Logic Apps rest API](/rest/api/logic).
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ Zie de volgende onderwerpen voor algemene informatie over sjabloon bronnen en hu
 
 ### <a name="logic-app-resource-definition"></a>Resource definitie van Logic app
 
-De resource definitie van de logische app begint met het `properties` object, dat deze informatie bevat:
+De [werk stroom resource definitie](/azure/templates/microsoft.logic/workflows) van uw logische app in een sjabloon begint met het `properties` -object, dat deze informatie bevat:
 
 * De status van uw logische app tijdens de implementatie
 * De ID voor een integratie account dat wordt gebruikt door uw logische app
@@ -328,13 +330,37 @@ Dit zijn de kenmerken die specifiek zijn voor de resource definitie van de logis
 | Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
 | `state` | Ja | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie gebruiken `Disabled` . |
-| `integrationAccount` | Nee | Object | Als uw logische app een integratie account gebruikt dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de id voor het integratie account wordt opgegeven. |
+| `integrationAccount` | No | Object | Als uw logische app een integratie account gebruikt dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de id voor het integratie account wordt opgegeven. |
 | `definition` | Ja | Object | De onderliggende werk stroom definitie van uw logische app, die hetzelfde is als het object dat wordt weer gegeven in de code weergave, en dat volledig wordt beschreven in het onderwerp [schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md) . In deze werk stroom definitie `parameters` declareert het object para meters voor de waarden die moeten worden gebruikt in de runtime van de logische app. Zie [werk stroom definitie en-para meters](#workflow-definition-parameters)voor meer informatie. <p><p>Als u de kenmerken in de werk stroom definitie van de logische app wilt weer geven, schakelt u over naar de code weergave in de Azure Portal of Visual Studio of gebruikt u een hulp programma zoals [Azure resource Explorer](https://resources.azure.com). |
-| `parameters` | Nee | Object | De [waarden van de werk stroom definitie parameter](#workflow-definition-parameters) die moeten worden gebruikt tijdens de runtime van de logische app. De parameter definities voor deze waarden worden weer gegeven in het [Parameter object van uw werk stroom definitie](#workflow-definition-parameters). Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot andere services en systemen, bevat dit object ook een `$connections` object waarmee de verbindings waarden worden ingesteld die tijdens runtime worden gebruikt. |
-| `accessControl` | Nee | Object | Voor het opgeven van beveiligings kenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van de invoer en uitvoer van de geschiedenis. Zie [veilige toegang tot Logic apps](../logic-apps/logic-apps-securing-a-logic-app.md)voor meer informatie. |
+| `parameters` | No | Object | De [waarden van de werk stroom definitie parameter](#workflow-definition-parameters) die moeten worden gebruikt tijdens de runtime van de logische app. De parameter definities voor deze waarden worden weer gegeven in het [Parameter object van uw werk stroom definitie](#workflow-definition-parameters). Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot andere services en systemen, bevat dit object ook een `$connections` object waarmee de verbindings waarden worden ingesteld die tijdens runtime worden gebruikt. |
+| `accessControl` | No | Object | Voor het opgeven van beveiligings kenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van de invoer en uitvoer van de geschiedenis. Zie [veilige toegang tot Logic apps](../logic-apps/logic-apps-securing-a-logic-app.md)voor meer informatie. |
 ||||
 
-Zie [resource typen van micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Zie [resource typen micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor meer informatie over resource definities voor deze Logic apps-objecten:
+
+* [Definitie van werk stroom resource](/azure/templates/microsoft.logic/workflows)
+* [Resource definitie van de integratie service omgeving](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [Resource definitie van beheerde API voor Integration service Environment](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [Resource definitie van integratie account](/azure/templates/microsoft.logic/integrationaccounts)
+
+* Artefacten van integratie-account:
+
+  * [Definitie van de bron van de overeenkomst](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [Assembly-resource definitie](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [Resource definitie voor batch configuratie](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [Certificaat bron definitie](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [Resource definitie toewijzen](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [Bron definitie van de partner](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [Schema resource definitie](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [Bron definitie voor de sessie](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 

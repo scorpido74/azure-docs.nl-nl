@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301920"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Inleiding tot Azure Defender voor container registers
 
@@ -64,14 +64,11 @@ De installatie kopie wordt opgehaald uit het REGI ster. Het wordt vervolgens uit
 
 Security Center filters en classificeert de resultaten van de scanner. Wanneer een afbeelding in orde is, wordt deze als zodanig gemarkeerd door Security Center. Security Center genereert alleen beveiligings aanbevelingen voor installatie kopieën waarvoor problemen moeten worden opgelost. Als er alleen een melding wordt weer geven als er problemen zijn, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
 
-### <a name="how-often-does-security-center-scan-my-images"></a>Hoe vaak Security Center mijn afbeeldingen scannen?
-Scans van afbeeldingen worden geactiveerd tijdens elke push-of import bewerking, en als de installatie kopie in de afgelopen 30 dagen is getrokken. 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Kan ik de scan resultaten verkrijgen via REST API?
 Ja. De resultaten bevinden zich onder [Subevaluaties van de rest-API](/rest/api/securitycenter/subassessments/list/). U kunt ook Azure resource Graph (ARG), de Kusto-achtige API voor al uw resources, gebruiken: een query kan een specifieke scan ophalen.
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Welke register typen worden er gescand? Welke typen worden er gefactureerd?
-In het gedeelte Beschik baarheid worden de typen container registers vermeld die door Azure Defender worden ondersteund voor container registers. 
+Zie [Beschik baarheid](defender-for-container-registries-usage.md#availability)voor een lijst met de typen container registers die worden ondersteund door Azure Defender voor container registers.
 
 Als u niet-ondersteunde registers verbindt met uw Azure-abonnement, worden ze niet gescand en worden er geen kosten in rekening gebracht.
 

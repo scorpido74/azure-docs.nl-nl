@@ -1,6 +1,6 @@
 ---
 title: Update 0,5 op StorSimple Virtual array installeren | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Web-UI van de StorSimple Virtual array gebruikt om updates toe te passen met behulp van de Azure Portal en de methode hotfix
+description: Hierin wordt beschreven hoe u de Web-UI van StorSimple Virtual array gebruikt om update 0,5 toe te passen met behulp van de methode Azure Portal en Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513650"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300596"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Update 0,5 installeren op de virtuele StorSimple-matrix
 

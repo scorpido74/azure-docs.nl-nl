@@ -3,12 +3,12 @@ title: Verifiëren met beheerde identiteit
 description: Toegang bieden tot installatie kopieën in uw persoonlijke container register met behulp van een door de gebruiker toegewezen of door het systeem toegewezen beheerde Azure-identiteit.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253459"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Een door Azure beheerde identiteit gebruiken om te verifiëren bij een Azure container Registry 
 
@@ -230,6 +230,8 @@ Er wordt een `Login succeeded` bericht weer gegeven. U kunt vervolgens `docker` 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> Door het systeem toegewezen beheerde service-identiteiten kunnen worden gebruikt om te communiceren met ACRs en App Service kan door het systeem toegewezen beheerde service-identiteiten gebruiken. U kunt deze echter niet combi neren, omdat App Service geen MSI kunt gebruiken om te praten met een ACR. De enige manier is om de beheerder in te scha kelen op de ACR en de beheerders naam/-wacht woord te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

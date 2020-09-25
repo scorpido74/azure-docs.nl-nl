@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258776"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hoe vertrouwens relaties werken voor bron-forests in Azure Active Directory Domain Services
 
@@ -99,12 +99,12 @@ Als er bijvoorbeeld een eenrichtings vertrouwensrelatie tussen *forest 1* (het v
 Voordat u een forestvertrouwensrelatie kunt maken, moet u controleren of de juiste Domain Name System-infra structuur (DNS) aanwezig is. Forestvertrouwensrelaties kunnen alleen worden gemaakt wanneer een van de volgende DNS-configuraties beschikbaar is:
 
 * Een enkele DNS-basis server is de DNS-basis server voor beide forest-DNS-naam ruimten: de hoofd zone bevat delegaties voor elk van de DNS-naam ruimten en de basis servers van alle DNS-servers bevatten de DNS-basis server.
-* Als er geen gedeelde basis-DNS-server is, en de DNS-basis servers voor elke domein naam van een forest, worden voor elke DNS-naam ruimte query's voor de namen in de andere naam ruimte gerouteerd.
+* Wanneer er geen gedeelde basis-DNS-server is en de DNS-basis servers in elke forest-naam ruimte gebruiken, worden voor elke DNS-naam ruimte query's voor de namen in de andere naam ruimte gerouteerd.
 
     > [!IMPORTANT]
     > Azure AD Domain Services resource-forest moet deze DNS-configuratie gebruiken. Het hosten van een andere DNS-naam ruimte dan het resource forest DNS namespace is geen functie van Azure AD Domain Services. Voorwaardelijke doorstuur servers is de juiste configuratie.
 
-* Als er geen gedeelde basis-DNS-server is, en de DNS-basis servers voor elke forest-naam ruimte worden gebruikt, worden de secundaire DNS-zones in elke DNS-naam ruimte geconfigureerd voor het routeren van query's voor namen in de andere naam ruimte.
+* Wanneer er geen gedeelde basis-DNS-server is en de DNS-basis servers in elke forest-naam ruimte worden gebruikt, worden de secundaire DNS-zones in elke DNS-naam ruimte geconfigureerd om query's voor namen in de andere naam ruimte te routeren.
 
 Als u een forestvertrouwensrelatie wilt maken, moet u lid zijn van de groep domein Administrators (in het forest-hoofd domein) of de groep Ondernemings Administrators in Active Directory. Aan elke vertrouwens relatie wordt een wacht woord toegewezen dat de beheerders in beide forests moeten kennen. Leden van de ondernemings Administrators in beide forests kunnen de vertrouwens relaties in beide forests tegelijk maken. in dit scenario wordt een wacht woord dat cryptografisch wille keurig is, automatisch gegenereerd en geschreven voor beide forests.
 

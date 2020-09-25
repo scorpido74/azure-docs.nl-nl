@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259421"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth1 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -37,7 +37,7 @@ Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAut
 
 ## <a name="input-claims"></a>Invoer claims
 
-De **InputClaims** -en **InputClaimsTransformations** -elementen zijn leeg of ontbreken.
+De **InputClaims** -en **InputClaimsTransformations**  -elementen zijn leeg of ontbreken.
 
 ## <a name="output-claims"></a>Uitvoer claims
 
@@ -88,23 +88,8 @@ Het element **CryptographicKeys** bevat het volgende kenmerk:
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URL van uw ID-provider configureert, voert u in `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` . Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
-
-Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
+Wanneer u de omleidings-URI van uw ID-provider configureert, voert u in `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` . Zorg ervoor dat u vervangt door `{tenant-name}` de naam van uw Tenant (bijvoorbeeld contosob2c) en `{policy-id}` met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
 
 Voorbeelden:
 
 - [Twitter toevoegen als een OAuth1-ID-provider met behulp van aangepast beleid](identity-provider-twitter-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

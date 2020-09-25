@@ -1,14 +1,14 @@
 ---
 title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651363"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269842"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Niet-compatibele resources herstellen met Azure Policy
 
@@ -17,12 +17,16 @@ Resources die niet compatibel zijn met een **deployIfNotExists** -of **Modify** 
 ## <a name="how-remediation-security-works"></a>Hoe herstel beveiliging werkt
 
 Als Azure Policy de sjabloon uitvoert in de **deployIfNotExists** -beleids definitie, wordt een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)gebruikt.
-Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
+Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. Wanneer u SDK gebruikt, moeten de rollen hand matig worden verleend aan de beheerde identiteit. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Scherm opname van een deployIfNotExists-beleid waarvoor een gedefinieerde machtiging voor de beheerde identiteit ontbreekt." border="false":::
 
 > [!IMPORTANT]
-> Als een resource die is gewijzigd door **deployIfNotExists** of **Modify** zich buiten het bereik van de beleids toewijzing bevindt of als de sjabloon eigenschappen voor bronnen buiten het bereik van de beleids toewijzing heeft geopend, moet de beheerde identiteit van de toewijzing [hand matig worden verleend voor toegang](#manually-configure-the-managed-identity) of kan de herstel implementatie niet worden uitgevoerd.
+> In de volgende scenario's moet de beheerde identiteit van de toewijzing [hand matig worden verleend](#manually-configure-the-managed-identity) of kan de herstel implementatie mislukken:
+>
+> - Als de toewijzing is gemaakt via SDK
+> - Als een resource die is gewijzigd door **deployIfNotExists** of **Modify** zich buiten het bereik van de beleids toewijzing bevindt
+> - Als de sjabloon eigenschappen voor bronnen buiten het bereik van de beleids toewijzing opent
 
 ## <a name="configure-policy-definition"></a>Beleids definitie configureren
 

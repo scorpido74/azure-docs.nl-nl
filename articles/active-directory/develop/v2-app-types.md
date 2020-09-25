@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256753"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -117,6 +117,9 @@ Apps die zijn geïnstalleerd op apparaten, zoals mobiele en desktop-apps, hebben
 In deze stroom ontvangt de app een autorisatie code van het micro soft Identity platform-eind punt wanneer de gebruiker zich aanmeldt. De autorisatie code vertegenwoordigt de machtiging van de app voor het aanroepen van back-end-services namens de gebruiker die zich heeft aangemeld. De app kan de autorisatie code op de achtergrond voor een OAuth 2,0-toegangs token en een vernieuwings token uitwisselen. De app kan het toegangs token gebruiken om te verifiëren bij Web-Api's in HTTP-aanvragen en het vernieuwings token gebruiken om nieuwe toegangs tokens op te halen wanneer oudere toegangs tokens verlopen.
 
 ![Toont de systeem eigen app-verificatie stroom](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> Als de toepassing de standaard systeem-Webweergave gebruikt, raadpleegt u de informatie over "bevestig mijn aanmelding" en de fout code AADSTS50199 in [Azure AD-verificatie en autorisatie fout codes](reference-aadsts-error-codes.md).
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons en apps aan de server zijde
 

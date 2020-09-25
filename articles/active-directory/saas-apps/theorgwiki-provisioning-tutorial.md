@@ -11,25 +11,25 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255812"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Zelf studie: TheOrgWiki configureren voor automatische gebruikers inrichting
 
 Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in TheOrgWiki en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in TheOrgWiki.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebaseerd op de Azure AD-service voor het inrichten van gebruikers. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie voor meer informatie over de algemene Microsoft Azure-gebruiksvoorwaarden voor preview-functies [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-tenant.
 * [Een OrgWiki-Tenant](https://www.theorgwiki.com/welcome/).
@@ -47,7 +47,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan TheOrgWiki om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan TheOrgWiki, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan TheOrgWiki, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-theorgwiki-for-provisioning"></a>TheOrgWiki instellen voor inrichting
 
@@ -55,23 +55,23 @@ Voordat u TheOrgWiki configureert voor het automatisch inrichten van gebruikers 
 
 1. Meld u aan bij de [TheOrgWiki-beheer console](https://www.theorgwiki.com/login/). Klik op **beheer console**.
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/login.png)
+    ![Scherm opname van de wiki van org met de avatar van de gebruiker en de beheer console.](media/theorgwiki-provisioning-tutorial/login.png)
 
 2. Klik in de beheer console op het **tabblad Instellingen**. 
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![Scherm afbeelding van de beheer console van de organisatie-wiki met het tabblad instellingen.](media/theorgwiki-provisioning-tutorial/settings.png)
     
 3. Navigeer naar **service accounts**.
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![Scherm afbeelding van de pagina service accounts in de wiki-beheer console van de organisatie.](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
 4. Klik op **+ Service account**. Selecteer bij **type service account**de optie **op token gebaseerd**. Klik op **Opslaan**.
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![Scherm afbeelding van het dialoog venster nieuw service account met het type service-account, de op tokens gebaseerde en opgeslagen opties.](media/theorgwiki-provisioning-tutorial/auth.png)
 
 5.  Kopieer de **actieve tokens**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw TheOrgWiki-toepassing in de Azure Portal.
      
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/token.png)
+    ![Scherm afbeelding van het dialoog venster tokens beheren voor S C I M-inrichting.](media/theorgwiki-provisioning-tutorial/token.png)
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>TheOrgWiki toevoegen vanuit de galerie
 
@@ -95,15 +95,15 @@ Als u TheOrgWiki wilt configureren voor het automatisch inrichten van gebruikers
 
 5. Selecteer de knop **Aanmelden voor TheOrgWiki** , waarmee u wordt doorgestuurd naar de aanmeldings pagina van TheOrgWiki. 
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![Scherm afbeelding van de aanmeldings pagina van de organisatie-wiki met de URL out out](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  Selecteer **Aanmelden**in de rechter bovenhoek.
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![Scherm afbeelding van de rechter bovenhoek van de aanmeldings pagina met de optie aanmelden.](media/theorgwiki-provisioning-tutorial/image02.png)
 
 7. Als TheOrgWiki een OpenIDConnect-app is, kiest u aanmelden bij OrgWiki met uw micro soft-werk account.
 
-    ![SCIM TheOrgWiki toevoegen](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![Scherm afbeelding van de aanmeldings pagina voor de organisatie-wiki met de optie Aanmelden met Microsoft aangeroepen.](media/theorgwiki-provisioning-tutorial/image03.png)
     
 8. Na een geslaagde verificatie wordt de toepassing automatisch toegevoegd aan uw Tenant en wordt u omgeleid naar uw TheOrgWiki-account.
 
@@ -116,7 +116,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor TheOrgWiki in azure AD:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -124,13 +124,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling OrgWiki in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` in de Tenant- **URL**. 
 
@@ -143,9 +143,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+7. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en vink het vakje **Een e-mailmelding verzenden als een fout optreedt** aan.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 8. Klik op **Opslaan**.
 
@@ -157,21 +157,21 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![TheOrgWiki-gebruikers kenmerken](media/theorgwiki-provisioning-tutorial/userattribute.png).
 
-11. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+11. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Als u de Azure AD-inrichtings service voor **TheOrgWiki wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
 13. Definieer de gebruikers en/of groepen die u wilt inrichten voor OrgWiki door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
 
 U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op TheOrgWiki. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 

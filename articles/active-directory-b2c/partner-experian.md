@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259370"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Experian met Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ In deze voorbeeld zelfstudie bieden we richt lijnen voor het integreren van Azur
 
 In dit voor beeld wordt het geïntegreerde digitale identiteits-Experian en het fraude risico platform **CrossCore** gebruikt. CrossCore is een ID-verificatie service die wordt gebruikt om de gebruikers identificatie te controleren. Er wordt een risico analyse uitgevoerd op basis van verschillende gegevens die door de gebruiker tijdens de registratie worden verstrekt. CrossCore wordt gebruikt om te bepalen of de gebruiker zich moet blijven aanmelden of niet. De volgende kenmerken kunnen worden gebruikt in de CrossCore-risico analyse:
 
-- Email
+- E-mail
 - IP-adres
 - Voornaam
 - Middelste naam
@@ -77,7 +77,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 ### <a name="part-1---deploy-the-api"></a>Deel 1: de API implementeren
 
-Implementeer de meegeleverde API-code voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Implementeer de meegeleverde [API-code](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 >[!NOTE]
 >U hebt de URL van de geïmplementeerde service nodig om Azure AD te configureren met de vereiste instellingen.
@@ -117,7 +117,7 @@ Raadpleeg dit [document](https://docs.microsoft.com/azure/active-directory-b2c/s
 
 ### <a name="part-5---replace-the-configuration-values"></a>Deel 5: de configuratie waarden vervangen
 
-Zoek in het meegeleverde aangepaste beleid de volgende tijdelijke aanduidingen en vervang door de bijbehorende waarden uit uw exemplaar
+Zoek in het meegeleverde [aangepaste beleid](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)de volgende tijdelijke aanduidingen en vervang door de bijbehorende waarden uit uw exemplaar
 
 |                      Tijdelijke aanduiding                       |                                   Vervangen door waarde                                 |                   Voorbeeld                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

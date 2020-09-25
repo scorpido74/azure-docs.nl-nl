@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257670"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -51,16 +51,13 @@ In MSAL-bibliotheken worden de client referenties (geheim of certificaat) door g
 
 Het configuratie bestand definieert het volgende:
 
-- De instantie of het Cloud exemplaar en de Tenant-ID.
+- De Cloud instantie en Tenant-ID, die samen de *instantie*vormen.
 - De client-ID die u hebt ontvangen van de registratie van de toepassing.
 - Een client geheim of een certificaat.
 
-> [!NOTE]
-> De .net-code fragmenten in de rest van het artikel referentie [configuratie](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) van het voor beeld [Active-Directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appsettings.jsop](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) vanuit het voor beeld van de [.net Core-Console-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
+Hier volgt een voor beeld van het definiëren van de configuratie in een [*appsettings.jsin*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) het bestand. Dit voor beeld is afkomstig uit het voor beeld van een [.net Core-Console-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) op github.
 
 ```json
 {
@@ -124,9 +121,9 @@ Raadpleeg het MSAL-pakket in de code van uw toepassing.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Voeg het [micro soft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-pakket toe aan uw toepassing.
+Voeg het pakket [micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet toe aan uw toepassing en voeg vervolgens een `using` instructie in uw code toe om hiernaar te verwijzen.
+
 In MSAL.NET wordt de vertrouwelijke client toepassing vertegenwoordigd door de `IConfidentialClientApplication` interface.
-Gebruik de naam ruimte MSAL.NET in de bron code.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+Het `Authority` is een samen voeging van het Cloud exemplaar en de Tenant-id, bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com` of `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` . In de *appsettings.jsvoor* het bestand dat wordt weer gegeven in de sectie [configuratie bestand](#configuration-file) , worden deze weer gegeven met de `Instance` `Tenant` waarden en respectievelijk.
+
+In het code voorbeeld van het vorige fragment is opgehaald uit, `Authority` is een eigenschap van de klasse  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) en is als volgt gedefinieerd:
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)

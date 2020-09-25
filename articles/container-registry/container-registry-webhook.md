@@ -3,16 +3,16 @@ title: Webhooks om te reageren op register acties
 description: Meer informatie over het gebruik van webhooks om gebeurtenissen te activeren wanneer push-of pull-acties worden uitgevoerd in uw register opslagplaatsen.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83685030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253391"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry-webhooks gebruiken
 
-Een Azure-containerregister slaat persoonlijke Docker-containerinstallatiekopieën op en beheert ze, vergelijkbaar met de manier waarop Docker Hub openbare Docker-installatiekopieën opslaat. Het kan ook opslag plaatsen hosten voor [helm-grafieken](container-registry-helm-repos.md) (preview), een verpakkings indeling voor het implementeren van toepassingen naar Kubernetes. U kunt webhooks gebruiken om gebeurtenissen te activeren wanneer bepaalde acties in een van uw register opslagplaatsen worden uitgevoerd. Webhooks kunnen reageren op gebeurtenissen op het register niveau of de scope kan worden beperkt tot een specifieke opslagplaats label. Met een [geo-gerepliceerd](container-registry-geo-replication.md) REGI ster configureert u elke webhook om te reageren op gebeurtenissen in een specifieke regionale replica.
+Een Azure-containerregister slaat persoonlijke Docker-containerinstallatiekopieën op en beheert ze, vergelijkbaar met de manier waarop Docker Hub openbare Docker-installatiekopieën opslaat. Het kan ook opslag plaatsen hosten voor [helm-grafieken](container-registry-helm-repos.md) (preview), een verpakkings indeling voor het implementeren van toepassingen naar Kubernetes. U kunt webhooks gebruiken om gebeurtenissen te activeren wanneer bepaalde acties in een van uw register opslagplaatsen worden uitgevoerd. Webhooks kunnen reageren op gebeurtenissen op het register niveau of de scope kan worden beperkt tot een specifieke opslagplaats label. Met een  [geo-gerepliceerd](container-registry-geo-replication.md) REGI ster configureert u elke webhook om te reageren op gebeurtenissen in een specifieke regionale replica.
 
 Zie [Azure container Registry webhook-schema verwijzing](container-registry-webhook-reference.md)voor meer informatie over webhook-aanvragen.
 
@@ -23,7 +23,7 @@ Zie [Azure container Registry webhook-schema verwijzing](container-registry-webh
 
 ## <a name="create-webhook---azure-portal"></a>Webhook-Azure Portal maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Navigeer naar het container register waarin u een webhook wilt maken.
 1. Onder **Services**selecteert u **webhooks**.
 1. Selecteer **toevoegen** op de werk balk van de webhook.
@@ -41,7 +41,7 @@ Zie [Azure container Registry webhook-schema verwijzing](container-registry-webh
 
 Voor beeld van webhook-formulier:
 
-![Gebruikers interface voor het maken van ACR-webhooks in de Azure Portal](./media/container-registry-webhook/webhook.png)
+![Scherm opname waarin de ACR-webhook wordt gemaakt en U in de Azure Portal.](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Webhook maken-Azure CLI
 

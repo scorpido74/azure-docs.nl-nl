@@ -1,6 +1,6 @@
 ---
 title: Een telefoon gesprek doen vanuit Twilio (.NET) | Microsoft Docs
-description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in .NET.
+description: Meer informatie over het maken van een telefoon gesprek met de Twilio API-service in Azure. Code voorbeelden geschreven in .NET.
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268482"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Een telefoon gesprek doen met behulp van Twilio in een webrol in azure
 In deze hand leiding wordt gedemonstreerd hoe u Twilio kunt gebruiken om een aanroep uit te voeren vanaf een webpagina die wordt gehost in Azure. De resulterende toepassing vraagt de gebruiker om een gesprek te voeren met het opgegeven aantal en bericht, zoals wordt weer gegeven in de volgende scherm afbeelding.

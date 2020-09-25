@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80289600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254802"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Waarschuwingen maken op basis van Azure Monitor voor VM's
 [Waarschuwingen in azure monitor](../platform/alerts-overview.md) proactief u op de hoogte stellen van interessante gegevens en patronen in uw bewakings gegevens. Azure Monitor voor VM's bevat geen vooraf geconfigureerde waarschuwings regels, maar u kunt uw eigen waarschuwing maken op basis van de gegevens die worden verzameld. Dit artikel bevat richt lijnen voor het maken van waarschuwings regels, met inbegrip van een aantal voorbeeld query's.
@@ -22,8 +22,8 @@ Azure Monitor heeft [verschillende typen waarschuwings regels](../platform/alert
 
 Er zijn twee typen logboek waarschuwingen in Azure Monitor:
 
-- [Met het aantal resultaten waarschuwingen](../platform/alerts-unified-log.md#number-of-results-alert-rules) wordt een enkele waarschuwing gemaakt wanneer een query ten minste een opgegeven aantal records retourneert. Deze zijn ideaal voor niet-numerieke gegevens, zoals Windows-en syslog-gebeurtenissen die worden verzameld door de [log Analytics agent](../platform/log-analytics-agent.md) of voor het analyseren van prestatie trends op meerdere computers.
-- Met [metrische metings waarschuwingen](../platform/alerts-unified-log.md#metric-measurement-alert-rules) wordt een afzonderlijke waarschuwing gemaakt voor elke record in een query met een waarde die hoger is dan een drempelwaarde die is gedefinieerd in de waarschuwings regel. Deze waarschuwings regels zijn ideaal voor prestatie gegevens die door Azure Monitor voor VM's worden verzameld, omdat ze afzonderlijke waarschuwingen voor elke computer kunnen maken.
+- [Met het aantal resultaten waarschuwingen](../platform/alerts-unified-log.md#count-of-the-results-table-rows) wordt een enkele waarschuwing gemaakt wanneer een query ten minste een opgegeven aantal records retourneert. Deze zijn ideaal voor niet-numerieke gegevens, zoals Windows-en syslog-gebeurtenissen die worden verzameld door de [log Analytics agent](../platform/log-analytics-agent.md) of voor het analyseren van prestatie trends op meerdere computers.
+- Met [metrische metings waarschuwingen](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) wordt een afzonderlijke waarschuwing gemaakt voor elke record in een query met een waarde die hoger is dan een drempelwaarde die is gedefinieerd in de waarschuwings regel. Deze waarschuwings regels zijn ideaal voor prestatie gegevens die door Azure Monitor voor VM's worden verzameld, omdat ze afzonderlijke waarschuwingen voor elke computer kunnen maken.
 
 
 ## <a name="alert-rule-walkthrough"></a>Scenario voor waarschuwings regels

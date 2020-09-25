@@ -11,25 +11,25 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255727"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Zelf studie: belonings gateway voor automatische gebruikers inrichting configureren
 
 Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in belonings gateway en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen tot belonings gateway.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebaseerd op de Azure AD-service voor het inrichten van gebruikers. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie voor meer informatie over de algemene Microsoft Azure-gebruiksvoorwaarden voor preview-functies [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-tenant.
 * Een [beloning gateway-Tenant](https://www.rewardgateway.com/).
@@ -46,22 +46,22 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan de prijs van de automatische gebruikers inrichtings configuratie. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan belonings gateway, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan belonings gateway, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-reward-gateway--for-provisioning"></a>Stel de gateway in voor de inrichting van het inrichten
 Voordat u een belonings gateway configureert voor automatische gebruikers toewijzing met Azure AD, moet u SCIM Provisioning inschakelen voor de belonings gateway.
 
-1. Meld u aan bij de [beheer console van uw belonings gateway](https://rewardgateway.photoshelter.com/login/). Klik op **integraties**.
+1. Meld u aan bij de [beheer console van uw belonings gateway](https://rewardgateway.photoshelter.com/login/). Klik op **Integraties**.
 
-    ![Beheer console van belonings gateway](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![Scherm opname van de beheer console van de belonings gateway met de optie integraties.](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  Selecteer **mijn integratie**.
 
-    ![Beheer console van belonings gateway](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![Scherm afbeelding van de twee integratie opties met de optie mijn integraties.](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  Kopieer de waarden van de **scim-URL (v2)** en het **OAuth Bearer-token**. Deze waarden worden ingevoerd in het veld Tenant-URL en geheim token op het tabblad inrichting van uw belonings gateway toepassing in de Azure Portal.
 
-    ![Beheer console van belonings gateway](media/reward-gateway-provisioning-tutorial/image03.png)
+    ![Scherm afbeelding van het deel venster mijn integraties met het tekstvak OAuth Bearer-token.](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>Belonings gateway toevoegen vanuit de galerie
 
@@ -94,7 +94,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-reward-gateway-in-azure-ad"></a>Automatische gebruikers inrichting voor belonings gateway in azure AD configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -102,59 +102,59 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling Reward Gateway in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 5. In het gedeelte **beheerders referenties** voert u de **scim-URL (v2)** en de **OAuth Bearer-token** waarden in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de belonings gateway. Als de verbinding mislukt, zorg er dan voor dat uw beloning gateway-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en vink het vakje **Een e-mailmelding verzenden als een fout optreedt** aan.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
 8. Selecteer in de sectie **toewijzingen** de optie **Synchroniseer Azure Active Directory gebruikers om de gateway te belonen**.
 
-    ![Beheer console van belonings gateway](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    ![Scherm afbeelding van de sectie toewijzingen met de optie Azure Active Directory gebruikers synchroniseren om de gateway te belonen.](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD to beloning gateway in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in belonings gateway voor update bewerkingen te vergelijken. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Beheer console van belonings gateway](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![Scherm afbeelding van de sectie kenmerk toewijzingen waarbij zes toewijzingen worden weer gegeven.](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Als u de Azure AD Provisioning Service voor belonings gateway wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
 12. Definieer de gebruikers en/of groepen die u wilt inrichten voor de berekenings gateway door de gewenste waarden in het **bereik** in de sectie **instellingen** te kiezen.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op belonings gateway.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op belonings gateway.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Connectorbeperkingen
 
 De belonings gateway biedt momenteel geen ondersteuning voor het inrichten van groepen.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+[Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

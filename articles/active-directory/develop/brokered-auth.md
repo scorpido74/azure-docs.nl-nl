@@ -1,6 +1,6 @@
 ---
 title: Brokered-verificatie in Android | Azure
-titlesuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform
 description: Een overzicht van brokered verificatie & autorisatie voor Android in het micro soft Identity-platform
 services: active-directory
 author: shoatman
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258404"
 ---
 # <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
 
@@ -33,14 +33,11 @@ U moet een van de verificatie-Brokers van micro soft gebruiken om deel te nemen 
   -  via Android AccountManager &-account instellingen
   - "Werk account"-aangepast account type
 
-Op Android is de micro soft Authentication Broker een onderdeel dat is opgenomen in [Microsoft Authenticator app](https://play.google.com/store/apps/details?id=com.azure.authenticator) en [intune-bedrijfsportal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
-
-> [!TIP]
-> Er is slechts één toepassing die als host fungeert voor de Broker als de Broker tegelijk actief is. Welke toepassing is actief als Broker, wordt bepaald door de installatie volgorde op het apparaat. Het eerste dat moet worden geïnstalleerd, of de laatste huidige op het apparaat, wordt de actieve Broker.
+Op Android is de micro soft Authentication Broker een onderdeel dat is opgenomen in [Microsoft Authenticator app](https://play.google.com/store/apps/details?id=com.azure.authenticator) en [intune-bedrijfsportal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal).
 
 In het volgende diagram ziet u de relatie tussen uw app, de micro soft Authentication Library (MSAL) en de verificatie-Brokers van micro soft.
 
-![Broker-implementatie diagram](./media/brokered-auth/brokered-deployment-diagram.png)
+![Diagram waarin wordt getoond hoe een toepassing is gekoppeld aan MSAL, Broker-apps en de Android-account beheerder.](./media/brokered-auth/brokered-deployment-diagram.png)
 
 ## <a name="installing-apps-that-host-a-broker"></a>Apps installeren die een Broker hosten
 
@@ -58,11 +55,15 @@ Als op een apparaat nog geen Broker-app is geïnstalleerd, geeft MSAL de gebruik
 
 Wanneer een Broker op een apparaat is geïnstalleerd, worden alle volgende interactieve token aanvragen (aanroepen naar `acquireToken()` ) afgehandeld door de broker in plaats van lokaal door MSAL. Elke SSO-status die eerder beschikbaar is voor MSAL, is niet beschikbaar voor de Broker. Als gevolg hiervan moet de gebruiker zich opnieuw verifiëren of een account selecteren uit de bestaande lijst met accounts die bekend zijn bij het apparaat.
 
-Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een moet omzetten `MsalUiRequiredException` , gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException` wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
+Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een moet omzetten `MsalUiRequiredException` , gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException` kan om verschillende redenen worden gegenereerd en moet interactief worden opgelost. Bijvoorbeeld:
 
 - De gebruiker heeft het wacht woord gewijzigd dat is gekoppeld aan het account.
 - Het account van de gebruiker voldoet niet meer aan het beleid voor voorwaardelijke toegang.
 - De gebruiker heeft de toestemming ingetrokken om de app te koppelen aan hun account.
+
+#### <a name="multiple-brokers"></a>Meerdere Brokers
+
+Als er meerdere makelaars op een apparaat zijn geïnstalleerd, is de eerst geïnstalleerde Broker altijd de actieve Broker. Er kan slechts één Broker actief zijn op een apparaat.
 
 ### <a name="when-a-broker-is-uninstalled"></a>Wanneer een Broker wordt verwijderd
 
@@ -74,40 +75,46 @@ Als Intune-bedrijfsportal is geïnstalleerd en als de actieve Broker fungeert, e
 
 ### <a name="generating-a-redirect-uri-for-a-broker"></a>Een omleidings-URI voor een Broker genereren
 
-U moet een omleidings-URI registreren die compatibel is met de Broker. De omleidings-URI voor de Broker moet de pakket naam van uw app bevatten, evenals de door base64 gecodeerde representatie van de hand tekening van uw app.
+U moet een omleidings-URI registreren die compatibel is met de Broker. De omleidings-URI voor de Broker moet de pakket naam van uw app en de door base64 gecodeerde weer gave van de hand tekening van uw app bevatten.
 
 De indeling van de omleidings-URI is: `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-Genereer uw base64 URL-gecodeerde hand tekening met behulp van de handtekening sleutels van uw app. Hier volgen enkele voor beelden van opdrachten die gebruikmaken van uw handtekening sleutels voor fout opsporing:
+U kunt met het [hulp programma](https://manpages.debian.org/buster/openjdk-11-jre-headless/keytool.1.en.html) Keys een met base64 gecodeerde hand tekening-hash genereren met behulp van de handtekening sleutels van uw app en vervolgens de Azure Portal gebruiken om de omleidings-URI te genereren met behulp van die hash.
 
-#### <a name="macos"></a>macOS
+Linux en macOS:
 
 ```bash
 keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-#### <a name="windows"></a>Windows
+Windows:
 
 ```powershell
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-Zie [uw app ondertekenen](https://developer.android.com/studio/publish/app-signing) voor informatie over het ondertekenen van uw app.
+Nadat u een hand tekening-hash hebt gegenereerd met het *hulp programma*, gebruikt u de Azure Portal om de omleidings-URI te genereren:
+
+1. Meld u aan bij de [Azure Portal](https://protal.azure.com) en selecteer uw Android-app in **app-registraties**.
+1. Selecteer **verificatie**  >  **een platform**  >  **Android**toevoegen.
+1. In het deel venster **uw Android-app configureren** dat wordt geopend, voert u de **hand tekening-hash** in die u eerder hebt gegenereerd en een **pakket naam**.
+1. Selecteer de knop **configureren** .
+
+De Azure Portal genereert de omleidings-URI voor u en wordt weer gegeven in het veld **omleidings-URI** van het configuratie deel venster van **Android** .
+
+Zie [uw app ondertekenen](https://developer.android.com/studio/publish/app-signing) in de gebruikers handleiding van Android Studio voor meer informatie over het ondertekenen van uw app.
 
 > [!IMPORTANT]
 > Gebruik de handtekening sleutel van uw productie voor de productie versie van uw app.
 
 ### <a name="configure-msal-to-use-a-broker"></a>MSAL configureren voor het gebruik van een Broker
 
-Als u een Broker in uw app wilt gebruiken, moet u bevestigen dat u de omleiding van de Broker hebt geconfigureerd. Neem bijvoorbeeld zowel de door Broker ingeschakelde omleidings-URI op, en geef aan dat u deze hebt geregistreerd, door het volgende op te nemen in uw MSAL-configuratie bestand:
+Als u een Broker in uw app wilt gebruiken, moet u bevestigen dat u de omleiding van de Broker hebt geconfigureerd. Neem bijvoorbeeld zowel de door Broker ingeschakelde omleidings-URI op, en geef aan dat u deze hebt geregistreerd, door de volgende instellingen op te nemen in uw MSAL-configuratie bestand:
 
-```javascript
+```json
 "redirect_uri" : "<yourbrokerredirecturi>",
 "broker_redirect_uri_registered": true
 ```
-
-> [!TIP]
-> De nieuwe Azure Portal app-registratie GEBRUIKERSINTERFACE helpt u bij het genereren van de Broker omleidings-URI. Als u uw app hebt geregistreerd met behulp van de oudere ervaring of als u de micro soft app-registratie Portal hebt gebruikt, moet u mogelijk de omleidings-URI genereren en de lijst met omleidings-Uri's in de portal hand matig bijwerken.
 
 ### <a name="broker-related-exceptions"></a>Uitzonde ringen die betrekking hebben op Broker
 
@@ -116,7 +123,7 @@ MSAL communiceert met de Broker op twee manieren:
 - Broker gebonden service
 - Android-AccountManager
 
-MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als de machtiging al is toegekend aan uw app `"READ_CONTACTS"` .
+MSAL maakt eerst gebruik van de Broker-gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als de machtiging al is toegekend aan uw app `"READ_CONTACTS"` .
 
 Als er een met de fout code wordt weer geven `MsalClientException` `"BROKER_BIND_FAILURE"` , zijn er twee opties:
 
@@ -131,3 +138,7 @@ Het is mogelijk niet onmiddellijk duidelijk dat de integratie van de Broker werk
 1. Zoek in de instellingen op uw Android-apparaat naar een nieuw gemaakt account dat overeenkomt met het account waarmee u bent geverifieerd. Het account moet van het type *work-account*zijn.
 
 U kunt het account uit instellingen verwijderen als u de test wilt herhalen.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Met de [modus gedeeld apparaat voor Android-apparaten](msal-android-shared-devices.md) kunt u een Android-apparaat configureren zodat het eenvoudig kan worden gedeeld door meerdere werk nemers.

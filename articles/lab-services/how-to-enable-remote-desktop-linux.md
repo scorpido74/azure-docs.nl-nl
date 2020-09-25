@@ -3,12 +3,12 @@ title: Grafische extern bureau blad inschakelen voor Linux in Azure Lab Services
 description: Meer informatie over het inschakelen van extern bureau blad voor virtuele Linux-machines in een lab in Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251606"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Grafische extern bureau blad inschakelen voor virtuele Linux-machines in Azure Lab Services
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -46,7 +46,7 @@ Deze stap is alleen nodig om verbinding te maken met behulp van RDP.  Als u van 
 
 1.  Tijdens het maken van het lab heeft de docent de mogelijkheid om **verbinding met extern bureaublad in te scha kelen**.  De docent moet deze optie **inschakelen** om de poort op de virtuele Linux-machine te openen die nodig is voor een externe RDP-bureaublad sessie.  Als deze optie niet is **ingeschakeld**, wordt alleen de poort voor SSH geopend.
   
-    ![Verbinding met extern bureau blad inschakelen voor een Linux-installatie kopie](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![Scherm opname van het venster ' nieuw Lab ' met de optie ' Verbinding met extern bureaublad inschakelen '.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. Selecteer in het vak **verbinding met extern bureaublad bericht inschakelen** de optie **door gaan met extern bureaublad**. 
 
@@ -107,4 +107,4 @@ De X2Go-client wordt gebruikt om verbinding te maken met een sjabloon-VM waarvoo
 Nadat een docent RDP of X2Go op hun sjabloon-VM heeft ingesteld, kunnen studenten via de gebruikers interface van het externe bureau blad of SSH verbinding maken met hun virtuele machines.
 
 Zie voor meer informatie:
- - [Verbinding maken met een virtuele Linux-machine](how-to-use-remote-desktop-linux-student.md)
+ - [Verbinding maken met een Linux-VM](how-to-use-remote-desktop-linux-student.md)

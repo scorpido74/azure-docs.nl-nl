@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259217"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Onfido met Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Toepassings instellingen kunnen worden geconfigureerd in de [app service in azur
 
 1. Een [Blob Storage-container in uw opslag account](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) instellen
 
-2. Sla de bestanden van de gebruikers interface op in de map met de gebruikers interface van de BLOB-container.
+2. Sla de bestanden van de gebruikers interface op in de map met de [gebruikers interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) van de BLOB-container.
 
 3. Sta toegang tot de opslag container die u hebt gemaakt toe door de volgende instructies te volgen:
 
@@ -124,7 +124,7 @@ Toepassings instellingen kunnen worden geconfigureerd in de [app service in azur
 
 #### <a name="replace-the-configuration-values"></a>De configuratie waarden vervangen
 
-Zoek in het meegeleverde aangepaste beleid de volgende tijdelijke aanduidingen en vervang door de bijbehorende waarden uit uw exemplaar.
+Zoek in het meegeleverde [aangepaste beleid](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)de volgende tijdelijke aanduidingen en vervang door de bijbehorende waarden uit uw exemplaar.
 
 | Tijdelijke aanduiding | Vervangen door waarde | Voorbeeld  |
 |:---------------|:----------------|:-------------------|

@@ -3,12 +3,12 @@ title: Lab-accounts beheren in Azure Lab Services | Microsoft Docs
 description: Meer informatie over het maken van een Lab-account, het weer geven van alle Lab-accounts of het verwijderen van een Lab-account in een Azure-abonnement.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251657"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Labaccounts maken en beheren
 In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. In dit artikel wordt beschreven hoe u een Lab-account maakt, alle Lab-accounts weergeeft of een Lab-account verwijdert.
@@ -41,9 +41,9 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
         > De eigenschap **adres bereik** is alleen van toepassing als er een **virtueel peer netwerk** is ingeschakeld voor het lab.
 
         ![Een Lab-account maken-> Geavanceerd](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
-6. Selecteer **volgende: Labels** onder aan de pagina om over te scha kelen naar het tabblad **labels** . Voeg labels toe die u wilt koppelen aan het lab-account. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)voor meer informatie.
+6. Selecteer **volgende: Labels** onder aan de pagina om over te scha kelen naar het tabblad **labels** . Voeg labels toe die u wilt koppelen aan het lab-account. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Raadpleeg [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md) voor meer informatie.
 
-    ![Een Lab-account maken-> Tags](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![Scherm afbeelding waarin de pagina Lab-account maken wordt weer gegeven op het tabblad Labels gemarkeerd.](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. Selecteer onder aan deze pagina de optie **controleren + maken** om over te scha kelen naar het tabblad **controleren + maken** . 
 4. Bekijk de samenvattings informatie op deze pagina en selecteer **maken**. 
 
@@ -60,7 +60,7 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
     ![Pagina lab-account](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="view-lab-accounts"></a>Lab-accounts weer geven
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle resources** in het menu. 
 3. Selecteer een **Lab-account** voor het **type**. 
     U kunt ook filteren op abonnement, resource groep, locaties en tags. 

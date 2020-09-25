@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301353"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes-workloads beveiligen
 
@@ -95,11 +95,15 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
     1. Selecteer **Opslaan**.
 
 
-1. Als u een van de aanbevelingen wilt afdwingen, stelt **u deze in** op het tabblad **para meters** van het beveiligings beleid van Security Center:
+1. Om een van de aanbevelingen af te dwingen, 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="De optie weigeren voor de para meter Azure Policy":::
+    1. Open de pagina aanbeveling Details en selecteer **weigeren**:
 
-    Hiermee wordt een niet-compatibele aanvraag voor uw AKS-clusters geweigerd
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="De optie weigeren voor de para meter Azure Policy":::
+
+        Hiermee opent u het deel venster waarin u het bereik hebt ingesteld. 
+
+    1. Wanneer u het bereik hebt ingesteld, selecteert u **wijzigen in weigeren**.
 
 1. Om te zien welke aanbevelingen van toepassing zijn op uw clusters:
 

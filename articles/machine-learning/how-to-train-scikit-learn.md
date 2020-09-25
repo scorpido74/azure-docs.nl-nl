@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e2f1eb50f6d878eecb4b5c448e683a3024e8c396
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250841"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit bouwen-modellen op schaal leren met Azure Machine Learning
 
@@ -166,7 +166,7 @@ Het model dat u zojuist hebt geregistreerd, kan op dezelfde manier worden geïmp
 
 ### <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
 
-In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor scikit-learn. Implementatie van geen code model wordt ondersteund voor alle ingebouwde scikit-informatie over model typen. Als u het model registreert zoals hierboven wordt weer gegeven, `model_framework` `model_framework_version` `resource_configuration` kunt u gewoon de [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) statische functie gebruiken om uw model te implementeren.
+In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor scikit-learn. Implementatie van geen code model wordt ondersteund voor alle ingebouwde scikit-informatie over model typen. Als u het model registreert zoals hierboven wordt weer gegeven, `model_framework` `model_framework_version` `resource_configuration` kunt u gewoon de [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) statische functie gebruiken om uw model te implementeren.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269162"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -75,6 +75,8 @@ Elke URL bevat de `sp` `sv` para meter,, en `sig` query zoals beschreven in deze
 | `sig` | Hiermee geeft u de hand tekening op die moet worden gebruikt voor het verifiëren van de toegang tot de trigger. Deze hand tekening wordt gegenereerd met behulp van de SHA256-algoritme met een geheime toegangs sleutel voor alle URL-paden en eigenschappen. Nooit beschikbaar of gepubliceerd, deze sleutel wordt versleuteld bewaard en opgeslagen met de logische app. Uw logische app machtigt alleen de triggers die een geldige hand tekening bevatten die is gemaakt met de geheime sleutel. |
 |||
 
+Inkomende aanroepen naar een aanvraag eindpunt kunnen slechts één autorisatie schema, ofwel SAS ofwel [Azure Active Directory open-verificatie](#enable-oauth)gebruiken. Hoewel het gebruik van één schema het andere schema niet uitschakelt, veroorzaakt het gebruik van beide schema's tegelijk een fout omdat de service niet weet welk schema u moet kiezen.
+
 Zie de volgende secties in dit onderwerp voor meer informatie over het beveiligen van de toegang met SAS:
 
 * [Toegangssleutels regenereren](#access-keys)
@@ -121,62 +123,62 @@ In de hoofd tekst, neemt `KeyType` u de eigenschap op als `Primary` of `Secondar
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Verificatie Azure Active Directory openen inschakelen (Azure AD OAuth)
 
-Als uw logische app begint met een [trigger voor aanvragen](../connectors/connectors-native-reqres.md), kunt u [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml) inschakelen door een autorisatie beleid voor inkomende oproepen te definiëren of toe te voegen aan de aanvraag trigger.
+Voor inkomende aanroepen naar een eind punt dat is gemaakt door een trigger die is gebaseerd op een aanvraag, kunt u [Azure Active Directory open verificatie (Azure AD OAuth)](../active-directory/develop/index.yml) inschakelen door een autorisatie beleid te definiëren of toe te voegen voor uw logische app. Op deze manier gebruiken inkomende oproepen OAuth- [toegangs tokens](../active-directory/develop/access-tokens.md) voor verificatie.
 
-Lees de volgende overwegingen voordat u deze verificatie inschakelt:
+Wanneer uw logische app een binnenkomende aanvraag met een OAuth-toegangs token ontvangt, vergelijkt de Azure Logic Apps-service de claims van het token met de claims die zijn opgegeven door elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
 
-* De inkomende oproep naar de trigger voor aanvragen kan slechts één autorisatie schema gebruiken: Azure AD OAuth met behulp van een verificatie token. dit wordt alleen ondersteund voor de trigger van de aanvraag, of door gebruik te maken van een [Shared Access Signature SAS-URL](#sas) die u niet beide schema's kunt gebruiken.
+Lees de volgende overwegingen voordat u Azure AD OAuth inschakelt:
 
-  Hoewel het gebruik van één schema het andere schema niet uitschakelt, veroorzaakt het gebruik van beide tegelijkertijd een fout omdat de service niet weet welk schema u moet kiezen. Daarnaast worden alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) ondersteund voor OAuth-verificatie tokens, die alleen voor de aanvraag trigger worden ondersteund. Het verificatie token moet worden opgegeven `Bearer-type` in de autorisatie-header.
+* Een inkomende oproep naar het eind punt van de aanvraag kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access Signature (SAS)](#sas), gebruiken. Hoewel het gebruik van één schema het andere schema niet uitschakelt, veroorzaakt het gebruik van beide schema's tegelijk een fout omdat de Logic Apps-service niet weet welk schema u moet kiezen.
+
+* Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor Azure AD OAuth-toegangs tokens, wat betekent dat de `Authorization` header voor het toegangs token het `Bearer` type moet opgeven.
 
 * Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
 
-* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
+* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met ofwel `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de Azure AD-Uitgever.
 
-Wanneer uw logische app een binnenkomende aanvraag met een OAuth-verificatie token ontvangt, Azure Logic Apps vergelijkt de claims van het token met de claims in elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
+  Stel dat uw logische app een autorisatie beleid heeft waarvoor twee claim typen, **doel groep** en **Uitgever**vereist zijn. Deze sectie voor beeld van [nettolading](../active-directory/develop/access-tokens.md#payload-claims) voor een gedecodeerd toegangs token bevat beide claim typen waarbij `aud` de waarde van de **doel groep** is en `iss` de waarde van de **verlener** is:
 
-Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee claim typen vereist, **verlener** en **publiek**. Dit voor beeld van een gedecodeerd [toegangs token](../active-directory/develop/access-tokens.md) bevat beide claim typen:
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ Als u Azure AD OAuth wilt inschakelen voor uw logische app in de Azure Portal, v
 
    ![Selecteer autorisatie > beleid toevoegen](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Geef informatie op over het autorisatie beleid door de [claim typen](../active-directory/develop/developer-glossary.md#claim) en waarden op te geven die uw logische app verwacht in het verificatie token dat wordt gepresenteerd door elke binnenkomende aanroep naar de aanvraag trigger:
+1. Geef informatie op over het autorisatie beleid door de [claim typen](../active-directory/develop/developer-glossary.md#claim) en waarden op te geven die uw logische app verwacht in het toegangs token dat wordt gepresenteerd door elke inkomende oproep naar de aanvraag trigger:
 
    ![Informatie opgeven voor autorisatie beleid](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Naam van beleid** | Yes | De naam die u wilt gebruiken voor het autorisatie beleid |
-   | **Claims** | Yes | De claim typen en-waarden die uw logische app accepteert van binnenkomende oproepen. Dit zijn de beschik bare claim typen: <p><p>- **Verlener** <br>- **Gericht** <br>- **Onderwerp** <br>- **JWT-id** (JSON Web token-id) <p><p>De lijst met **claims** moet mini maal de claim van de **verlener** bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven. |
+   | **Claims** | Yes | De claim typen en-waarden die uw logische app accepteert van binnenkomende oproepen. Dit zijn de beschik bare claim typen: <p><p>- **Verlener** <br>- **Gericht** <br>- **Onderwerp** <br>- **JWT-id** (JSON Web token-id) <p><p>De **claim** lijst moet mini maal de claim van de **verlener** bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven. |
    |||
 
 1. Selecteer een van de volgende opties om een claim toe te voegen:
@@ -210,14 +212,27 @@ Als u Azure AD OAuth wilt inschakelen voor uw logische app in de Azure Portal, v
 
 1. Selecteer **Opslaan** als u klaar bent.
 
+1. Als u de `Authorization` header wilt toevoegen uit het toegangs token in de trigger uitvoer op basis van een aanvraag, raadpleegt u de [header Authorization in de trigger uitvoer van aanvragen](#include-auth-header).
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Autorisatie beleid definiëren in Azure Resource Manager sjabloon
 
-Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren van uw logische app, voegt u in de `properties` sectie voor de [resource definitie van de logische app](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)een `accessControl` object toe als er geen bestaat, dat een `triggers` object bevat. Voeg in het- `triggers` object een `openAuthenticationPolicies` object toe waarin u een of meer autorisatie beleidsregels definieert door de volgende syntaxis te volgen:
+Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren van uw logische app, volgt u deze stappen en de volgende syntaxis:
 
-> [!NOTE]
-> De matrix moet ten minste `claims` de `iss` claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven.
+1. Voeg in de `properties` sectie voor de [resource definitie van de logische app](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)een `accessControl` object toe als er geen bestaat, dat een `triggers` object bevat.
+
+   Zie voor meer informatie over het `accessControl` object [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+1. Voeg in het `triggers` -object een `openAuthenticationPolicies` object toe dat het `policies` object bevat waarin u een of meer autorisatie beleidsregels definieert.
+
+1. Geef een naam op voor het autorisatie beleid, stel het beleids type in op `AAD` en voeg een `claims` matrix toe waarin u een of meer claim typen opgeeft.
+
+   De matrix moet mini maal `claims` het claim type van de verlener bevatten waarbij u de eigenschap van de claim instelt `name` op `iss` en instellen `value` op starten met `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven.
+
+1. Als u de `Authorization` header wilt toevoegen uit het toegangs token in de trigger uitvoer op basis van een aanvraag, raadpleegt u de [header Authorization in de trigger uitvoer van aanvragen](#include-auth-header).
+
+Dit is de syntaxis die u moet volgen:
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren 
 ],
 ```
 
-Zie voor meer informatie over de `accessControl` sectie [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/azure/templates/microsoft.logic/2019-05-01/workflows).
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>Kop ' Authorization ' insluiten in uitvoer van aanvragen trigger
+
+Voor logische apps waarmee [Azure Active Directory open verificatie (Azure AD OAuth)](#enable-oauth) voor het autoriseren van binnenkomende oproepen voor toegang tot op aanvragen gebaseerde triggers wordt ingeschakeld, kunt u de trigger voor aanvragen of http-webhook activeren om de `Authorization` header uit het OAuth-toegangs token op te halen. Voeg in de onderliggende JSON-definitie van de trigger de eigenschap toe en stel deze in `operationOptions` op `IncludeAuthorizationHeadersInOutputs` . Hier volgt een voor beeld van de aanvraag trigger:
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+Raadpleeg de volgende onderwerpen voor meer informatie:
+
+* [Schema verwijzing voor de trigger en actie typen-trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [Schema verwijzing voor de trigger en actie typen-trigger voor HTTP-webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Schema verwijzing voor de trigger-en actie typen-bewerkings opties](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -896,12 +934,12 @@ Op aanvraag triggers kunt u [Azure Active Directory open-verificatie (Azure AD O
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Yes | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
-| **Instantie** | `authority` | No | <*URL-voor-Authority-token-Uitgever*> | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard ingesteld op `https://login.windows.net` . |
-| **Bouw** | `tenant` | Yes | <*Tenant-ID*> | De Tenant-ID voor de Azure AD-Tenant |
+| **Instantie** | `authority` | No | <*URL-voor-Authority-token-Uitgever*> | De URL voor de instantie die het toegangs token levert. Deze waarde is standaard ingesteld op `https://login.windows.net` . |
+| **Tenant** | `tenant` | Yes | <*Tenant-ID*> | De Tenant-ID voor de Azure AD-Tenant |
 | **Doelgroep** | `audience` | Yes | <*resource-naar-autoriseren*> | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
-| **Client-ID** | `clientId` | Yes | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
+| **Client ID** | `clientId` | Yes | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
 | **Referentie type** | `credentialType` | Yes | Certificaat <br>of <br>Geheim | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in de onderliggende definitie van de logische app, maar bepaalt de eigenschappen die worden weer gegeven voor het geselecteerde referentie type. |
-| **Gescheiden** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
+| **Geheim** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
 | **Pfx** | `pfx` | Ja, maar alleen voor het referentie type ' certificaat ' | <*encoded-pfx-file-content*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
 | **Wachtwoord** | `password` | Ja, maar alleen voor het referentie type ' certificaat ' | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
 |||||

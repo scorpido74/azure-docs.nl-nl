@@ -3,12 +3,12 @@ title: Toegang autoriseren met behulp van Azure Active Directory
 description: In dit artikel vindt u informatie over het verlenen van toegang tot Event Hubs-resources met behulp van Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 101e40420493156c7b1a0c3c5b767eda023e62c6
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d26838831964b66beea4ed1e3c6e9873cfce247e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270029"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
 Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -33,9 +33,13 @@ Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, ver
 ## <a name="azure-built-in-roles-for-azure-event-hubs"></a>Ingebouwde rollen van Azure voor Azure Event Hubs
 Azure biedt de volgende ingebouwde rollen van Azure voor het machtigen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
 
-- [Azure Event hubs-gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): gebruik deze rol om volledige toegang tot Event hubs resources te geven.
-- [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): gebruik deze rol om de verzend toegang te geven tot Event hubs-resources.
-- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): gebruik deze rol om de verbruiks-en ontvangst toegang tot Event hubs resources te geven.
+| Rol | Beschrijving | 
+| ---- | ----------- | 
+[Eigenaar van Azure Event Hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Gebruik deze rol om volledige toegang tot Event Hubs resources te geven. |
+| [Afzender van Azure Event Hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Gebruik deze rol om de toegang tot Event Hubs resources te verlenen. |
+| [Gegevens ontvanger van Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Gebruik deze rol om de verbruiks-en ontvangst toegang tot Event Hubs resources te verlenen. |
+| Schema register lezer (preview-versie) | Register groepen en schema's van het schema lezen en weer geven. |
+| Inzender voor het schema register (preview-versie) | Schema register groepen en schema's lezen, schrijven en verwijderen. |
 
 ## <a name="resource-scope"></a>Resourcebereik 
 Voordat u een Azure-rol toewijst een beveiligingsprincipal, moet u het toegangsbereik bepalen dat de beveiligingsprincipal moet hebben. Uit best practices blijkt dat het het beste is om het nauwst mogelijke bereik toe te wijzen.

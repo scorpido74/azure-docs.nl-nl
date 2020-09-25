@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258605"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
 
@@ -25,7 +25,7 @@ Met beleid voor voorwaardelijke toegang kunt u toegangs vereisten voor websites 
 Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van een gerelateerd beleid doorgaans gemakkelijk te beoordelen. Als u bijvoorbeeld een beleid hebt waarvoor multi-factor Authentication (MFA) voor share point online is geconfigureerd, wordt MFA afgedwongen voor elke aanmelding bij de share point-webportal. Het is echter niet altijd direct voor het beoordelen van de impact van een beleid, omdat er Cloud-apps zijn met afhankelijkheden van andere Cloud-apps. Micro soft teams kunnen bijvoorbeeld toegang bieden tot resources in share point online. Als u in het huidige scenario toegang hebt tot micro soft-teams, bent u daarom ook gebonden aan het share point MFA-beleid. 
 
 > [!TIP]
-> Als u de app [office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) gebruikt, zijn alle Office-apps gericht op het voor komen van problemen met service afhankelijkheden in de Office-stack.
+> Het gebruik van de [office 365](concept-conditional-access-cloud-apps.md#office-365) -app is gericht op alle Office-apps om problemen met service afhankelijkheden in de Office-stack te voor komen.
 
 ## <a name="policy-enforcement"></a>Beleidsafdwinging 
 
@@ -40,7 +40,7 @@ In het onderstaande diagram ziet u de service afhankelijkheden van MS teams. Eff
 
 Als best practice moet u waar mogelijk algemene beleids regels instellen voor alle gerelateerde apps en services. Een consistente beveiligings postuur biedt u de beste gebruikers ervaring. Als u bijvoorbeeld een gemeen schappelijk beleid instelt voor Exchange Online, share point online, micro soft teams en Skype voor bedrijven, worden onverwachte prompts die kunnen voortvloeien uit verschillende beleids regels die worden toegepast op downstream-Services, aanzienlijk verminderd. 
 
-Een fantastische manier om dit te doen met toepassingen in de Office-stack is het gebruik van [Office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) in plaats van afzonderlijke toepassingen te richten.
+Een fantastische manier om dit te doen met toepassingen in de Office-stack is het gebruik van de [office 365-app](concept-conditional-access-cloud-apps.md#office-365) in plaats van afzonderlijke toepassingen te richten.
 
 In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de client-apps moeten voldoen  
 
@@ -61,7 +61,7 @@ In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de
 | PowerApps           | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 |                     | Windows Azure Active Directory              | Vroeg gebonden |
 | Project             | Dynamics CRM                                | Vroeg gebonden |
-| Skype voor bedrijven  | Exchange                                    | Vroeg gebonden |
+| Skype voor Bedrijven  | Exchange                                    | Vroeg gebonden |
 | Visual Studio       | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 | Microsoft Forms     | Exchange                                    | Vroeg gebonden |
 |                     | SharePoint                                  | Vroeg gebonden |

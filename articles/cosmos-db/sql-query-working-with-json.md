@@ -4,18 +4,18 @@ description: Meer informatie over het opvragen en openen van geneste JSON-eigens
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270848"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Werken met JSON in Azure Cosmos DB
 
-In de SQL-API (core) van Azure Cosmos DB worden items opgeslagen als JSON. Het type systeem en expressies zijn beperkt tot het verwerken van JSON-typen. Zie voor meer informatie de [JSON-specificatie](https://www.json.org/).
+In de Azure Cosmos DB SQL (core)-API worden items opgeslagen als JSON. Dit betekent dat het typesysteem en expressies alleen geschikt zijn voor JSON-typen. Zie voor meer informatie de [JSON-specificatie](https://www.json.org/).
 
 We beschrijven een aantal belang rijke aspecten van het werken met JSON:
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Verschil tussen Null en niet-gedefinieerd
+
+Als een eigenschap niet in een item is gedefinieerd, is de waarde ervan `undefined` . Een eigenschap met de waarde `null` moet expliciet worden gedefinieerd en een `null` waarde toegewezen.
+
+Bekijk bijvoorbeeld dit voor beeld-item:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+In dit voor beeld heeft de eigenschap `isRegistered` een waarde van `undefined` omdat deze wordt wegge laten uit het item. De eigenschap `creationDate` heeft een `null` waarde.
+
+Azure Cosmos DB ondersteunt twee nuttige typen die systeem functies voor `null` en `undefined` Eigenschappen controleren:
+
+* [IS_NULL](sql-query-is-null.md) : controleert of een eigenschaps waarde is `null`
+* [IS_DEFINED](sql-query-is-defined.md) : controleert of een eigenschaps waarde is gedefinieerd
+
+U vindt meer informatie over [ondersteunde Opera tors](sql-query-operators.md) en hun gedrag voor `null` en `undefined` waarden.
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Gereserveerde sleutel woorden en speciale tekens in JSON
 

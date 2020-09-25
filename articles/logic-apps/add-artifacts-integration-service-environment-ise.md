@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269740"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -40,13 +40,13 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
 
 1. Geef informatie op over de logische app die u wilt maken, bijvoorbeeld:
 
-   ![Integratie service omgeving selecteren](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
+   ![Scherm opname van het venster ' Logic app ' maken ', waarin voorbeeld gegevens zijn ingevoerd.](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Yes | De naam van de logische app die moet worden gemaakt |
-   | **Abonnement** | Yes | De naam voor het te gebruiken Azure-abonnement |
-   | **Resourcegroep** | Yes | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
+   | **Naam** | Ja | De naam van de logische app die moet worden gemaakt |
+   | **Abonnement** | Ja | De naam voor het te gebruiken Azure-abonnement |
+   | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
    | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
    ||||
 
@@ -76,9 +76,9 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Yes | De naam voor het integratie account dat u wilt maken |
-   | **Abonnement** | Yes | De naam voor het Azure-abonnement dat u wilt gebruiken |
-   | **Resourcegroep** | Yes | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
+   | **Naam** | Ja | De naam voor het integratie account dat u wilt maken |
+   | **Abonnement** | Ja | De naam voor het Azure-abonnement dat u wilt gebruiken |
+   | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
    | **Prijscategorie** | Yes | De prijs categorie die moet worden gebruikt voor het integratie account |
    | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
    ||||
@@ -121,7 +121,7 @@ Als u aangepaste connectors in uw ISE wilt gebruiken, maakt u die aangepaste con
 
 1. Selecteer in de lijst **locatie** , onder de sectie **integratie service omgevingen** , dezelfde ISE die uw Logic apps gebruiken en selecteer **maken**, bijvoorbeeld:
 
-   ![Integratie service omgeving selecteren](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
+   ![Scherm opname van het venster ' maken Logic Apps aangepaste connector ' met voorbeeld informatie geselecteerd.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Selecteer de nieuwe aangepaste connector en selecteer vervolgens **bewerken**, bijvoorbeeld:
 

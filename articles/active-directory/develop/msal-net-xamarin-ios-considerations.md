@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258056"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Overwegingen voor het gebruik van Xamarin iOS met MSAL.NET
 
@@ -81,7 +81,7 @@ Zie de documentatie voor IOS- [rechten](https://developer.apple.com/documentatio
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Het delen van tokens in de cache inschakelen voor iOS-toepassingen
 
-Vanaf MSAL 2. x kunt u een toegangs groep voor de sleutel hanger opgeven om de token cache in meerdere toepassingen te behouden. Met deze instelling kunt u de token cache delen tussen verschillende toepassingen die dezelfde toegangs groep voor de sleutel hanger hebben. U kunt de token kas delen tussen [ADAL.net](https://aka.ms/adal-net) -toepassingen, MSAL.net Xamarin. IOS-toepassingen en systeem eigen IOS-toepassingen die zijn ontwikkeld in [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) of [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
+Vanaf MSAL 2. x kunt u een toegangs groep voor de sleutel hanger opgeven om de token cache in meerdere toepassingen te behouden. Met deze instelling kunt u de token cache delen tussen verschillende toepassingen die dezelfde toegangs groep voor de sleutel hanger hebben. U kunt de token cache delen tussen [ADAL.net](https://aka.ms/adal-net) toepassingen, MSAL.net Xamarin. IOS-toepassingen en systeem eigen IOS-toepassingen die zijn ontwikkeld in [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) of [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
 
 Door de token cache te delen, kunt u eenmalige aanmelding (SSO) toestaan voor alle toepassingen die gebruikmaken van de toegangs groep voor de sleutel hanger.
 

@@ -4,12 +4,12 @@ description: Beschrijft wacht rijen voor onbestelbare berichten in Azure Service
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301020"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Overzicht van Service Bus wacht rijen voor onbestelbare berichten
 
@@ -62,7 +62,7 @@ Verlopen berichten worden alleen opgeschoond en verplaatst naar de DLQ wanneer e
 
 ## <a name="errors-while-processing-subscription-rules"></a>Fouten bij het verwerken van abonnements regels
 
-Wanneer de eigenschap [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) is ingeschakeld voor een abonnement, worden eventuele fouten die optreden tijdens het uitvoeren van de SQL-filter regel van een abonnement, samen met het foutieve bericht vastgelegd in de DLQ.
+Wanneer de eigenschap [SubscriptionDescription. EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) is ingeschakeld voor een abonnement, worden eventuele fouten die optreden tijdens het uitvoeren van de SQL-filter regel van een abonnement, samen met het foutieve bericht vastgelegd in de DLQ. Gebruik deze optie niet in een productie omgeving waarin niet alle bericht typen abonnees hebben.
 
 ## <a name="application-level-dead-lettering"></a>Onbestelbare berichten op toepassings niveau
 

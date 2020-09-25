@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269281"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
 Als u alleen acties wilt uitvoeren nadat een andere groep acties is geslaagd of mislukt, groepeert u deze acties binnen een *bereik*. Deze structuur is handig als u acties wilt ordenen als logische groep, de status van die groep wilt evalueren en acties wilt uitvoeren die zijn gebaseerd op de status van het bereik. Nadat alle acties in een bereik zijn uitgevoerd, krijgt de scope ook een eigen status. U kunt bijvoorbeeld bereiken gebruiken als u [uitzonde ringen en fout afhandeling](../logic-apps/logic-apps-exception-handling.md#scopes)wilt implementeren. 
 
-Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een Logic apps, zoals geslaagd, mislukt, geannuleerd, enzovoort te bepalen. Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als geslaagd. Maar wanneer een actie in de scope mislukt of wordt geannuleerd, wordt de status van het bereik gemarkeerd als mislukt. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes. 
+Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een Logic apps te bepalen, zoals geslaagd, mislukt, geannuleerd, enzovoort. Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als geslaagd. Maar wanneer een actie in de scope mislukt of wordt geannuleerd, wordt de status van het bereik gemarkeerd als mislukt. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes. 
 
 Dit is bijvoorbeeld een logische app op hoog niveau die gebruikmaakt van een bereik voor het uitvoeren van specifieke acties en een voor waarde om de status van het bereik te controleren. Als een of meer acties in de scope onverwacht zijn mislukt of eindigen, wordt het bereik gemarkeerd als ' mislukt ' of ' afgebroken ' en verzendt de logische app een bericht dat de scope is mislukt. Als alle acties binnen het bereik zijn geslaagd, verzendt de logische app een bericht ' scope geslaagd '.
 
-![Trigger voor planning-terugkeer patroon instellen](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Diagram toont de bereik stroom van de logische app met voor beelden van ' scope failed ' en ' scope geslaagd '.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -64,7 +64,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
       | Instelling | Waarde | Beschrijving |
       | ------- | ----- | ----------- |
       | **Verbindingsnaam** | BingMapsConnection | Geef een naam op voor uw verbinding. | 
-      | **API-sleutel** | <*uw-Bing-Kaarten-sleutel*> | Voer de sleutel voor Bing Kaarten in die u eerder hebt ontvangen. | 
+      | **API-sleutel** | <*your-Bing-Maps-key*> | Voer de sleutel voor Bing Kaarten in die u eerder hebt ontvangen. | 
       ||||  
 
    1. Stel de actie **route ophalen** in, zoals wordt weer gegeven in de tabel onder deze afbeelding:
@@ -79,7 +79,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
       | **Routepunt 2** | <*endsystemen*> | Voer de bestemming van uw route in. | 
       | **Vermijden** | Geen | Voer items in om te voor komen op uw route, zoals snelwegen, gestuurde berichten, enzovoort. Zie [een route berekenen](/bingmaps/rest-services/routes/calculate-a-route)voor mogelijke waarden. | 
       | **Optimaliseren** | timeWithTraffic | Selecteer een para meter voor het optimaliseren van uw route, zoals de afstand, tijd met de huidige verkeers informatie, enzovoort. In dit voor beeld wordt deze waarde gebruikt: ' timeWithTraffic ' | 
-      | **Afstandseenheid** | <*uw voor keur*> | Voer de afstands eenheid in om uw route te berekenen. In dit voor beeld wordt deze waarde gebruikt: ' mijl ' | 
+      | **Afstandseenheid** | <*your-preference*> | Voer de afstands eenheid in om uw route te berekenen. In dit voor beeld wordt deze waarde gebruikt: ' mijl ' | 
       | **Vervoermiddel** | Auto | Voer de reis wijze in voor uw route. In dit voor beeld wordt deze waarde ' aangedreven ' gebruikt | 
       | **Datum/tijd openbaar vervoer** | Geen | Is alleen van toepassing op de doorvoer modus. | 
       | **Transit datum-type type** | Geen | Is alleen van toepassing op de doorvoer modus. | 
@@ -143,7 +143,7 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
    1. Als u klaar bent, kiest u **Done**.
 
    <!-- markdownlint-disable MD038 -->
-   1. Nadat de expressie is opgelost, voegt u deze tekst toe met een voorloop spatie:``` minutes```
+   1. Nadat de expressie is opgelost, voegt u deze tekst toe met een voorloop spatie: ``` minutes```
   
        Uw **tekst** veld ziet er nu uit als in dit voor beeld:
 
@@ -192,7 +192,7 @@ Vervolgens voegt u een bereik toe zodat u specifieke acties kunt groeperen en de
    
       `result('Scope')[0]['status']`
 
-      ![Expressie toevoegen waarmee de status van het bereik wordt gecontroleerd](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Scherm afbeelding met het venster ' expressie toevoegen ', waarin de resultaat expressie is gemarkeerd.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Voor beide rijen selecteert u **is gelijk aan** als de operator. 
    

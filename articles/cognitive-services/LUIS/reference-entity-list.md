@@ -1,14 +1,16 @@
 ---
 title: Entiteits type van lijst-LUIS
 description: Lijst entiteiten vertegenwoordigen een vaste, gesloten set verwante woorden samen met hun synoniemen. LUIS detecteert geen aanvullende waarden voor lijst entiteiten. Gebruik de functie aanbevolen om suggesties voor nieuwe woorden op basis van de huidige lijst te bekijken.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253833"
 ---
 # <a name="list-entity"></a>Lijstentiteit
 

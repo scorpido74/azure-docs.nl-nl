@@ -1,6 +1,6 @@
 ---
 title: Diagnostisch hulp programma voor het oplossen van problemen met het StorSimple 8000-apparaat | Microsoft Docs
-description: Hierin worden de StorSimple beschreven en wordt uitgelegd hoe u Windows PowerShell voor StorSimple kunt gebruiken om de modus apparaat te wijzigen.
+description: Dit artikel bevat een overzicht van het diagnostische hulp programma en beschrijft hoe het hulp programma kan worden gebruikt met een StorSimple-apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300442"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Het hulp programma StorSimple Diagnostics gebruiken om problemen met de 8000 Series-apparaten op te lossen
 
@@ -414,11 +414,11 @@ Controller0>
 
 Hier volgt een tabel met een beschrijving van de verschillende Windows Power shell-para meters in de systeem informatie worden toegewezen aan. 
 
-| Power shell-para meter    | Description  |
+| PowerShell-parameter    | Beschrijving  |
 |-------------------------|------------------|
 | Instance ID             | Elke controller heeft een unieke id of een GUID die eraan is gekoppeld.|
-| Name                    | De beschrijvende naam van het apparaat, zoals geconfigureerd via de Azure Portal tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat. |
-| Model                   | Het model van uw StorSimple 8000-serie apparaat. Het model kan 8100 of 8600 zijn.|
+| Naam                    | De beschrijvende naam van het apparaat, zoals geconfigureerd via de Azure Portal tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat. |
+| Modelleren                   | Het model van uw StorSimple 8000-serie apparaat. Het model kan 8100 of 8600 zijn.|
 | SerialNumber            | Het serie nummer van het apparaat wordt toegewezen aan de fabriek en is 15 tekens lang. 8600-SHX0991003G44HT geeft bijvoorbeeld het volgende aan:<br> 8600: is het model van het apparaat.<br>SHX: is de productie site.<br> 0991003-is een specifiek product. <br> G44HT: de laatste vijf cijfers worden verhoogd om unieke serie nummers te maken. Dit kan geen opeenvolgende set zijn.|
 | Tijdzone                | De tijd zone van het apparaat zoals geconfigureerd in de Azure Portal tijdens de implementatie van het apparaat.|
 | CurrentController       | De controller waarmee u verbinding hebt via de Windows Power shell-interface van uw StorSimple-apparaat.|

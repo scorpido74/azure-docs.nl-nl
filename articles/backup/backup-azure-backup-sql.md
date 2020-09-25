@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server naar Azure als een DPM-workload
 description: Een inleiding tot het maken van back-ups van SQL Server-data bases met behulp van de Azure Backup-Service
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254581"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Back-ups maken van SQL Server naar Azure als een DPM-workload
 
@@ -29,10 +29,10 @@ Een back-up maken van een SQL Server Data Base naar Azure en deze herstellen van
 
 * Als u een database met bestanden op een externe bestandsshare hebt, mislukt de beveiliging met fout-id 104. DPM biedt geen ondersteuning voor de beveiliging van SQL Server gegevens op een externe bestands share.
 * DPM kan geen data bases beveiligen die zijn opgeslagen op externe SMB-shares.
-* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * U moet de systeem account **NTAuthority\System** expliciet toevoegen aan de groep Sysadmin op SQL Server.
-* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) is ingeschakeld voor het SQL-doel exemplaar.
-* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream) is ingeschakeld voor het SQL-doel exemplaar.
 * Beveiliging voor SQL Server AlwaysOn:
   * DPM detecteert beschikbaarheidsgroepen bij het uitvoeren van een query bij het maken van beveiligingsgroepen.
   * DPM detecteert een failover en zet de beveiliging van de database voort.
@@ -50,7 +50,7 @@ Een back-up maken van een SQL Server Data Base naar Azure en deze herstellen van
     * Als de back-up mislukt op het geselecteerde knoop punt, mislukt de back-upbewerking.
     * Herstel naar de oorspronkelijke locatie wordt niet ondersteund.
 * Back-upproblemen SQL Server 2014 of hoger:
-  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). DPM kan niet worden gebruikt om deze configuratie te beveiligen.
+  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). DPM kan niet worden gebruikt om deze configuratie te beveiligen.
   * Er zijn enkele bekende problemen met de voor keur voor secundaire back-upvoorkeur voor de SQL AlwaysOn-optie. DPM maakt altijd een back-up van secundair. Als er geen secundair kan worden gevonden, mislukt de back-up.
 
 ## <a name="before-you-start"></a>Voordat u begint
@@ -91,7 +91,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
    >
    >
 
-1. Selecteer **Volgende**. DPM toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
+1. Selecteer **Next**. DPM toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
 
     ![Schijf toewijzing instellen](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -179,7 +179,7 @@ Een beveiligde entiteit, zoals een SQL Server Data Base, herstellen vanuit Azure
 1. Klik met de rechter muisknop op de naam van de data base en selecteer **herstellen**.
 
     ![Een Data Base herstellen vanuit Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM toont de details van het herstel punt. Selecteer **Volgende**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
+1. DPM toont de details van het herstel punt. Selecteer **Next**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
 
     ![Een Data Base op de oorspronkelijke locatie herstellen](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

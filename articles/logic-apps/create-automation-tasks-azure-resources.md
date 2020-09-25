@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269723"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Azure-resources beheren en kosten bewaken door automatiserings taken te maken (preview)
 
@@ -30,6 +30,7 @@ Dit zijn de momenteel beschik bare taak sjablonen in deze preview-versie:
 | Alle Azure-resources | **Verzend de maandelijkse kosten voor de resource** |
 | Azure-VM's | Aanvullend: <p>- **Virtuele machine uitschakelen** <br>- **Virtuele machine starten** |
 | Azure Storage-accounts | Aanvullend: <p>- **Oude blobs verwijderen** |
+| Azure Cosmos DB | Let <p>- **Query resultaat verzenden via e-mail** |
 |||
 
 In dit artikel wordt beschreven hoe u de volgende taken kunt uitvoeren:
@@ -40,11 +41,13 @@ In dit artikel wordt beschreven hoe u de volgende taken kunt uitvoeren:
 
 * [Bewerk de taak](#edit-task) zodat u de taak kunt bijwerken of pas de onderliggende werk stroom van de taak aan in de ontwerp functie voor logische apps.
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Hoe verschillen de automatiserings taken van Azure Automation?
 
-Op dit moment kunt u een Automation-taak alleen op resource niveau maken, de uitvoerings geschiedenis van de taak bekijken en de werk stroom van de onderliggende logische app van de taak bewerken, die wordt ingeschakeld door de [Azure Logic apps](../logic-apps/logic-apps-overview.md) -service.
+Op dit moment kunt u een Automation-taak alleen op resource niveau maken, de uitvoerings geschiedenis van de taak bekijken en de werk stroom van de onderliggende logische app van de taak bewerken, die wordt ingeschakeld door de [Azure Logic apps](../logic-apps/logic-apps-overview.md) -service. Automatiserings taken zijn meer basis en licht gewicht dan [Azure Automation](../automation/automation-intro.md).
 
-[Azure Automation](../automation/automation-intro.md) is een op de cloud gebaseerde automatiserings-en configuratie service die consistent beheer in uw Azure-en niet-Azure-omgevingen ondersteunt. De service omvat [proces automatisering voor](../automation/automation-intro.md#process-automation) het indelen van processen door gebruik te maken van [runbooks](../automation/automation-runbook-execution.md), configuratie beheer met [Wijzigingen bijhouden en inventaris](../automation/change-tracking.md), update beheer, gedeelde mogelijkheden en heterogene functies. Automatisering geeft u volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van workloads en bronnen.
+Azure Automation is een op de cloud gebaseerde automatiserings-en configuratie service die consistent beheer in uw Azure-en niet-Azure-omgevingen ondersteunt. De service omvat [proces automatisering voor](../automation/automation-intro.md#process-automation) het indelen van processen door gebruik te maken van [runbooks](../automation/automation-runbook-execution.md), configuratie beheer met [Wijzigingen bijhouden en inventaris](../automation/change-tracking.md), update beheer, gedeelde mogelijkheden en heterogene functies. Automatisering geeft u volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van workloads en bronnen.
 
 ## <a name="prerequisites"></a>Vereisten
 

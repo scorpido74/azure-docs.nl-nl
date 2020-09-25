@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302040"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Uw resources verkennen en beheren met Asset Inventory and management tools
 
@@ -54,7 +54,7 @@ De pagina inventarisatie bevat de volgende hulpprogram ma's:
 - **Samen vattingen** : voordat u filters definieert, ziet u boven aan de inventarisatie weergave een duidelijke Stripe van waarden:
 
     - **Totaal resources**: het totale aantal resources dat is verbonden met Security Center.
-    - **Slechte resources**: bronnen met actieve beveiligings aanbevelingen. Meer [informatie over beveiligings aanbevelingen](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+    - **Slechte resources**: bronnen met actieve beveiligings aanbevelingen. Meer [informatie over beveiligings aanbevelingen](security-center-recommendations.md).
     - Niet- **bewaakte resources**: bronnen met problemen met de agent bewaking-ze hebben de log Analytics agent geïmplementeerd, maar de agent verzendt geen gegevens of heeft andere status problemen.
 
 - **Filters** : de meerdere filters boven aan de pagina bieden een manier om de lijst met resources snel te verfijnen op basis van de vraag die u probeert te beantwoorden. Als u bijvoorbeeld de vraag wilt beantwoorden op *welke van mijn machines met het label productie ontbreekt de log Analytics agent?* u kunt het **bewakings** filter van de agent combi neren met het filter **Tags** , zoals wordt weer gegeven in de volgende clip:

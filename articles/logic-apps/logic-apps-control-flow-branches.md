@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269230"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Parallelle vertakkingen maken of koppelen aan werk stroom acties in Azure Logic Apps
 
@@ -47,7 +47,7 @@ Uw logische app wacht totdat alle vertakkingen zijn voltooid voordat u doorgaat 
 
 1. Zoek in het zoekvak de gewenste actie en selecteer deze.
 
-   ![Zoek en selecteer de gewenste actie](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Scherm opname van het venster ' Kies een actie ' in de ontwerp functie voor logische apps.](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    De geselecteerde actie wordt nu weer gegeven in de parallelle vertakking, bijvoorbeeld:
 
@@ -59,7 +59,7 @@ Uw logische app wacht totdat alle vertakkingen zijn voltooid voordat u doorgaat 
 
 1. Zoek in het zoekvak de gewenste actie en selecteer deze.
 
-   ![Zoek en selecteer sequentiële actie](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Scherm opname van het venster ' Kies een actie ' en het zoekvak in de ontwerp functie voor logische apps.](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    De geselecteerde actie wordt nu weer gegeven in de huidige vertakking, bijvoorbeeld:
 

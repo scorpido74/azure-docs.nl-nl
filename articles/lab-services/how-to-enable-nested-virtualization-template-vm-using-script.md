@@ -1,14 +1,14 @@
 ---
 title: Geneste virtualisatie inschakelen op een sjabloon-VM in Azure Lab Services (script) | Microsoft Docs
-description: Meer informatie over het maken van een sjabloon-VM met meerdere virtuele machines in.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
+description: Meer informatie over het maken van een sjabloon-VM met meerdere virtuele machines in met behulp van een script.  Met andere woorden, schakel geneste virtualisatie in op een sjabloon-VM in Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251492"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services met behulp van een script
 
@@ -29,7 +29,7 @@ De stappen in dit artikel zijn gericht op het instellen van geneste virtualisati
 
         ![Vertrouwde sites](./media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Down load de Git-opslagplaats bestanden zoals beschreven in de volgende stappen.
-    1. Ga naar [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
+    1. Ga naar  [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Klik op de knop **klonen of downloaden** .
     1. Klik op **down load zip**.
     1. Het ZIP-bestand uitpakken

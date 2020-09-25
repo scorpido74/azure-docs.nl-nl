@@ -11,12 +11,12 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b27675f152132a015a6dc6f5aea35aff036e1a63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251011"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Uw Machine Learning service werkruimte gegevens exporteren of verwijderen
 
@@ -82,10 +82,10 @@ model_output_port.download('.', show_progress=True)
 
 De volgende machine learning resources kunnen worden verwijderd met behulp van de python-SDK: 
 
-| Type | Functie aanroep | Notities | 
+| Type | Functie aanroep | Opmerkingen | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Gebruiken `delete-dependent-resources` om de verwijdering te trapsgewijs |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#&preserve-view=truedelete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#&preserve-view=truedelete--) | |
+| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Gebruiken `delete-dependent-resources` om de verwijdering te trapsgewijs |
+| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 
+| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | |
 | `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) | | 
 

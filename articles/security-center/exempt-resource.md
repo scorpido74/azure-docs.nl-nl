@@ -3,16 +3,16 @@ title: Een resource uitsluiten van Azure Security Center beveiligings aanbevelin
 description: Meer informatie over het uitsluiten van een resource van beveiligings aanbevelingen en de beveiligde Score
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301530"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Een resource uitsluiten van aanbevelingen en beveiligde Score
 
@@ -62,7 +62,7 @@ De resource wordt weer gegeven als niet van toepassing en de reden wordt weer ge
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Een uitzonde ring wijzigen":::
 
-    De reden voor elke uitzonde ring is opgenomen in de tabel. 
+    De reden voor elke uitzonde ring is opgenomen in de tabel (1).
 
     Als u een uitzonde ring wilt wijzigen of verwijderen, selecteert u het menu met het weglatings teken ("..."), zoals weer gegeven (2).
 

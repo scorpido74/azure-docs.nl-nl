@@ -1,50 +1,50 @@
 ---
 title: Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
-description: Meer informatie over het inschakelen van Synapse-koppeling voor Azure Cosmos-accounts, het maken van een container met een analytische opslag, het verbinden van de Azure Cosmos-data base in Synapse-werk ruimte en het uitvoeren van query's.
+description: Meer informatie over het inschakelen van de Synapse-koppeling voor Azure Cosmos DB accounts, het maken van een container met een analytische opslag, het verbinden van de Azure Cosmos-Data Base naar Synapse-werk ruimte en het uitvoeren van query's.
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a375656f579e626d8f41afe49adc3f2ebdb3b27d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253153"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
 De Synapse-koppeling voor Azure Cosmos DB is een HTAP-functie (hybride transactionele activiteit) in de Cloud waarmee u bijna realtime analyses kunt uitvoeren via operationele gegevens in Azure Cosmos DB. Synapse-koppeling maakt een strakkere integratie tussen Azure Cosmos DB en Azure Synapse Analytics.
 
 > [!IMPORTANT]
-> Als u Azure Synapse-koppeling wilt gebruiken, zorgt u ervoor dat u uw Azure Cosmos-account inricht & Azure Synapse Analytics-werk ruimte in een van de ondersteunde regio's. De koppeling naar Azure Synapse is momenteel beschikbaar in de volgende Azure-regio's: US West-Centraal, VS-Oost, West-VS2, Europa-noord, Europa-west, Zuid-Centraal VS, Zuidoost-Azië, Australië-oost, Oost-U2, UK-zuid.
+> Als u Azure Synapse-koppeling wilt gebruiken, moet u uw Azure Cosmos DB-account inrichten & Azure Synapse Analytics-werk ruimte in een van de ondersteunde regio's. De koppeling naar Azure Synapse is momenteel beschikbaar in de volgende Azure-regio's: US West-Centraal, VS-Oost, West-VS2, Europa-noord, Europa-west, Zuid-Centraal VS, Zuidoost-Azië, Australië-oost, Oost-U2, UK-zuid.
 
-Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-koppeling voor Azure Cosmos DB:
+De koppeling Azure Synapse is beschikbaar voor Azure Cosmos DB SQL API-containers of voor Azure Cosmos DB-API voor Mongo DB-verzamelingen. Gebruik de volgende stappen om analytische query's uit te voeren met de Azure Synapse-koppeling voor Azure Cosmos DB:
 
-* [Synapse-koppeling inschakelen voor uw Azure Cosmos-accounts](#enable-synapse-link)
-* [Een Azure Cosmos-container maken waarvoor een analytische opslag is ingeschakeld](#create-analytical-ttl)
-* [Uw Azure Cosmos-data base koppelen aan een Synapse-werk ruimte](#connect-to-cosmos-database)
+* [Synapse-koppeling voor uw Azure Cosmos DB-accounts inschakelen](#enable-synapse-link)
+* [Een analytische archief maken Azure Cosmos DB container is ingeschakeld](#create-analytical-ttl)
+* [Uw Azure Cosmos DB-Data Base koppelen aan een Synapse-werk ruimte](#connect-to-cosmos-database)
 * [Een query uitvoeren op de analytische opslag met behulp van Synapse Spark](#query-analytical-store-spark)
 * [Een query uitvoeren op de analytische opslag met Synapse SQL serverloos](#query-analytical-store-sql-on-demand)
 * [Synapse SQL Server gebruiken voor het analyseren en visualiseren van gegevens in Power BI](#analyze-with-powerbi)
 
-## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>Azure Synapse-koppeling voor Azure Cosmos-accounts inschakelen
+## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Synapse-koppeling voor Azure Cosmos DB accounts inschakelen
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
+1. [Maak een nieuw Azure-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos DB-account.
 
-1. Ga naar uw Azure Cosmos-account en open het deel venster **functies** .
+1. Navigeer naar uw Azure Cosmos DB-account en open het deel venster **functies** .
 
 1. Selecteer **Synapse link** in de lijst met functies.
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Preview-functie voor Synapse link zoeken":::
 
-1. Vervolgens wordt u gevraagd om de Synapse-koppeling in te scha kelen voor uw account. Selecteer Inschakelen.
+1. Vervolgens wordt u gevraagd om de Synapse-koppeling in te scha kelen voor uw account. Selecteer **Inschakelen**. Dit proces kan 1 tot vijf minuten duren.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse-koppelings functie inschakelen":::
 
@@ -64,15 +64,17 @@ U kunt de analytische opslag inschakelen op een Azure Cosmos-container tijdens h
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) of [Azure Cosmos Explorer](https://cosmos.azure.com/).
 
-1. Ga naar uw Azure Cosmos-account en open het tabblad **Data Explorer** .
+1. Navigeer naar uw Azure Cosmos DB-account en open het tabblad **Data Explorer** .
 
 1. Selecteer **nieuwe container** en voer een naam in voor uw data base, container, partitie sleutel en gegevens doorvoer. Schakel de optie voor de **analytische opslag** in. Nadat u het analytische archief hebt ingeschakeld, maakt het een container waarvan `AnalyicalTTL` de eigenschap is ingesteld op de standaard waarde-1 (oneindige retentie). Dit analytische archief behoudt alle historische versies van records.
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Analytische opslag inschakelen voor Azure Cosmos-container":::
 
-1. Als u de Synapse-koppeling voor dit account nog niet hebt ingeschakeld, wordt u gevraagd dit te doen omdat het een vereiste is om een container voor een analytische opslag te maken. Selecteer **Synapse-koppeling inschakelen**als u hierom wordt gevraagd.
+1. Als u de Synapse-koppeling voor dit account nog niet hebt ingeschakeld, wordt u gevraagd dit te doen omdat het een vereiste is om een container voor een analytische opslag te maken. Selecteer **Synapse-koppeling inschakelen**als u hierom wordt gevraagd. Dit proces kan 1 tot vijf minuten duren.
 
 1. Selecteer **OK**om een Azure Cosmos-container met analytische opslag te maken.
+
+1. Nadat de container is gemaakt, controleert u of het analytische archief is ingeschakeld door te klikken op **instellingen**, rechts onder documenten in Data Explorer en controleert u of de optie voor het **analytische archief time to Live** is ingeschakeld.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -170,7 +172,7 @@ Als u een container voor een analytische opslag hebt gemaakt via de Azure Portal
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) of [Azure Cosmos Explorer](https://cosmos.azure.com/).
 
-1. Ga naar uw Azure Cosmos-account en open het tabblad **Data Explorer** .
+1. Navigeer naar uw Azure Cosmos DB-account en open het tabblad **Data Explorer** .
 
 1. Selecteer een bestaande container waarvoor het analytische archief is ingeschakeld. Vouw het item uit en wijzig de volgende waarden:
 
@@ -215,7 +217,7 @@ Volg de instructies in het artikel [query Azure Cosmos DB Analytical Store](../s
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> Een query uitvoeren op de analytische opslag met Synapse SQL serverloos
 
-Synapse SQL serverloos (een preview-functie die voorheen **SQL on-demand**werd genoemd) kunt u gegevens in uw Azure Cosmos DB containers die zijn ingeschakeld met de koppeling Azure Synapse, opvragen en analyseren. U kunt gegevens in bijna realtime analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de analytische opslag en de geïntegreerde connectiviteit met een breed scala aan BI-en ad-hoc hulp middelen voor query's via de T-SQL-interface. Zie voor meer informatie de [analytische query voor query's met Synapse SQL Server](../synapse-analytics/sql/on-demand-workspace-overview.md) zonder artikelen.
+Synapse SQL serverloos (een preview-functie die voorheen **SQL on-demand**werd genoemd) kunt u gegevens in uw Azure Cosmos DB containers die zijn ingeschakeld met de koppeling Azure Synapse, opvragen en analyseren. U kunt gegevens in bijna realtime analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de analytische opslag en de geïntegreerde connectiviteit met een breed scala aan BI-en ad-hoc hulp middelen voor query's via de T-SQL-interface. Zie voor meer informatie de [analytische query voor query's met Synapse SQL Server](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) zonder artikelen.
 
 > [!NOTE]
 > Het gebruik van het Azure Cosmos DB analytic-archief met Synapse SQL Server is momenteel onder gated preview. Neem contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com)om toegang aan te vragen.
@@ -226,7 +228,7 @@ U kunt een Synapse SQL serverloze data base en weer gaven maken via de Synapse-k
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-De [Azure Resource Manager-sjabloon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) maakt een Azure Cosmos-account met Synapse-koppeling voor SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
+Met de [Azure Resource Manager-sjabloon](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store) wordt een Synapse-koppeling ingeschakeld Azure Cosmos DB account voor de SQL-API. Met deze sjabloon maakt u een core-API-account (SQL) in één regio met een container die is geconfigureerd met analytische TTL ingeschakeld en een optie om de door Voer van hand matig of automatisch schalen te gebruiken. Als u deze sjabloon wilt implementeren, klikt **u op implementeren in azure** op de pagina README.
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Aan de slag met Azure Synpase-koppeling-voor beelden
 

@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269094"
 ---
-# <a name="handle-content-types-in-azure-logic-apps"></a>Inhouds typen in Azure Logic Apps verwerken
+# <a name="handle-content-types-in-azure-logic-apps"></a>Typen inhoud in Azure Logic Apps afhandelen
 
 Verschillende inhouds typen kunnen stromen via een logische app, zoals JSON, XML, platte bestanden en binaire gegevens. Hoewel Logic Apps alle inhouds typen ondersteunt, hebben sommige systeem eigen ondersteuning en hoeven ze geen casting of conversie in uw Logic apps te hebben. Andere typen kunnen indien nodig casts of conversie vereisen. In dit artikel wordt beschreven hoe Logic Apps inhouds typen verwerkt en hoe u deze typen correct kunt casten of omzetten wanneer dat nodig is.
 
@@ -61,7 +61,7 @@ Logic Apps biedt de mogelijkheid om gebruikers vriendelijke tokens te genereren 
   
   2. Geef onder een voor **beeld van een JSON-nettolading op of plak**een nettolading voor beeld op en kies vervolgens **gereed**. Bijvoorbeeld: 
 
-     ![Voor beeld van JSON-nettolading opgeven](./media/logic-apps-content-type/request-trigger.png)
+     ![Scherm afbeelding met het venster ' wanneer een HTTP-aanvraag wordt ontvangen ' met een JSON-voor beeld-nettolading.](./media/logic-apps-content-type/request-trigger.png)
 
      Het gegenereerde schema wordt nu weer gegeven in de trigger.
 
@@ -136,13 +136,13 @@ Als u sommige gegevens typen wilt behouden, wordt de inhoud door Logic Apps geco
 
 In deze lijst wordt beschreven hoe Logic Apps inhoud converteert wanneer u deze [functies](../logic-apps/workflow-definition-language-functions-reference.md)gebruikt:
 
-* `json()`: Cast gegevens naar`application/json`
-* `xml()`: Cast gegevens naar`application/xml`
-* `binary()`: Cast gegevens naar`application/octet-stream`
-* `string()`: Cast gegevens naar`text/plain`
+* `json()`: Cast gegevens naar `application/json`
+* `xml()`: Cast gegevens naar `application/xml`
+* `binary()`: Cast gegevens naar `application/octet-stream`
+* `string()`: Cast gegevens naar `text/plain`
 * `base64()`: Hiermee wordt inhoud geconverteerd naar een base64-gecodeerde teken reeks
-* `base64toString()`: Converteert een met base64 gecodeerde teken reeks naar`text/plain`
-* `base64toBinary()`: Converteert een met base64 gecodeerde teken reeks naar`application/octet-stream`
+* `base64toString()`: Converteert een met base64 gecodeerde teken reeks naar `text/plain`
+* `base64toBinary()`: Converteert een met base64 gecodeerde teken reeks naar `application/octet-stream`
 * `dataUri()`: Converteert een teken reeks naar een gegevens-URI
 * `dataUriToBinary()`: Converteert een gegevens-URI naar een binaire teken reeks
 * `dataUriToString()`: Converteert een gegevens-URI naar een teken reeks

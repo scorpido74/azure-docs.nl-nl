@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263275"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256582"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Micro soft Identity platform en OpenID Connect Connect protocol
 
@@ -37,9 +37,9 @@ De meest eenvoudige aanmeldings stroom bevat de stappen die in het volgende diag
 
 OpenID Connect Connect beschrijft een meta gegevens document [(RFC)](https://openid.net/specs/openid-connect-discovery-1_0.html) dat de meeste informatie bevat die vereist is voor een app om u aan te melden. Dit omvat informatie zoals de Url's die moeten worden gebruikt en de locatie van de open bare handtekeningen sleutels van de service. U kunt dit document vinden door het pad naar het detectie document toe te voegen aan de URL van de instantie:
 
-Pad detectie document:`/.well-known/openid-configuration`
+Pad detectie document: `/.well-known/openid-configuration`
 
-Provider`https://login.microsoftonline.com/{tenant}/v2.0`
+Provider `https://login.microsoftonline.com/{tenant}/v2.0`
 
 De `{tenant}` kan een van de volgende vier waarden hebben:
 
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parameter | Voorwaarde | Description |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | U kunt de `{tenant}` waarde in het pad van de aanvraag gebruiken om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn `common` , `organizations` , `consumers` en Tenant-id's. Zie [basis beginselen van protocollen](active-directory-v2-protocols.md#endpoints)voor meer informatie. |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 In de volgende tabel worden fout codes beschreven die kunnen worden geretourneerd in de `error` para meter van het fout bericht:
 
-| Foutcode | Description | Client actie |
+| Foutcode | Beschrijving | Client actie |
 | --- | --- | --- |
 | `invalid_request` | Protocol fout, zoals een ontbrekende, vereiste para meter. |Corrigeer en verzend de aanvraag opnieuw. Dit is een ontwikkelings fout die normaal gesp roken tijdens de eerste test wordt gedetecteerd. |
 | `unauthorized_client` | De client toepassing kan geen autorisatie code aanvragen. |Dit gebeurt meestal wanneer de client toepassing niet is geregistreerd in azure AD of niet is toegevoegd aan de Azure AD-Tenant van de gebruiker. De toepassing kan de gebruiker vragen om de toepassing te installeren en deze toe te voegen aan Azure AD. |
@@ -249,7 +249,7 @@ Antwoord parameters betekenen hetzelfde, ongeacht de stroom die wordt gebruikt o
 
 | Parameter | Beschrijving |
 | --- | --- |
-| `token` | Het token dat wordt gebruikt om het user info-eind punt aan te roepen.|
+| `access_token` | Het token dat wordt gebruikt om het user info-eind punt aan te roepen.|
 | `token_type` | Altijd ' Bearer ' |
 | `expires_in`| Hoe lang duurt totdat het toegangs token is verlopen, in seconden. |
 | `scope` | De machtigingen die zijn verleend voor het toegangs token.  Houd er rekening mee dat omdat het user info-eind punt wordt gehost op MS Graph, er mogelijk extra Graph-bereiken worden weer gegeven (bijvoorbeeld User. Read) als ze eerder aan de app zijn verleend.  Dat komt omdat een token voor een bepaalde resource altijd elke machtiging omvat die momenteel aan de client wordt verleend.  |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parameter | Voorwaarde | Description |
+| Parameter | Conditie | Beschrijving |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Aanbevolen | De URL waarnaar de gebruiker wordt omgeleid na het afmelden. Als de para meter niet is opgenomen, wordt de gebruiker een algemeen bericht weer gegeven dat wordt gegenereerd door het micro soft Identity platform-eind punt. Deze URL moet overeenkomen met een van de omleidings-Uri's die zijn geregistreerd voor uw toepassing in de app-registratie Portal. |
 

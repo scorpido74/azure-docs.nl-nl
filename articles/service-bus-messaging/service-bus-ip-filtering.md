@@ -3,12 +3,12 @@ title: IP-firewall regels voor Azure Service Bus configureren
 description: Hoe u firewall regels kunt gebruiken om verbindingen van bepaalde IP-adressen toe te staan Azure Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ba6b1902213af8d968b220a387e419e56e8aa67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300952"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Toegang tot Azure Service Bus naam ruimte van specifieke IP-adressen of bereiken toestaan
 Service Bus naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -51,7 +51,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om IP-firewall re
     
     Als u de optie **alle netwerken** selecteert, accepteert uw service bus-naam ruimte verbindingen van elk IP-adres. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
-    ![Optie Firewall: alle netwerken geselecteerd](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+    ![Scherm afbeelding van de pagina met het Azure Portal-netwerk. De optie om toegang vanaf alle netwerken toe te staan, is geselecteerd op het tabblad firewalls en virtuele netwerken.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Als u alleen toegang vanaf een opgegeven IP-adres wilt toestaan, selecteert u de optie **geselecteerde netwerken** als deze nog niet is geselecteerd. Voer de volgende stappen uit in de sectie **firewall** :
     1. Selecteer **de optie uw IP-adres voor client toevoegen** om uw huidige client-IP de toegang tot de naam ruimte te geven. 
     2. Voer bij **adres bereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
@@ -60,7 +60,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om IP-firewall re
         > [!WARNING]
         > Als u de optie **geselecteerde netwerken** kiest en geen IP-adres of adres bereik opgeeft, is verkeer van alle netwerken toegestaan door de service. 
 
-        ![Optie Firewall: alle netwerken geselecteerd](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![Scherm afbeelding van de pagina met het Azure Portal-netwerk. De optie om toegang via geselecteerde netwerken toe te staan is geselecteerd en het gedeelte firewall is gemarkeerd.](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan. Wacht een paar minuten totdat de bevestiging op de portal meldingen wordt weer gegeven.
 
     > [!NOTE]
@@ -84,7 +84,7 @@ Sjabloon parameters:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> in
+> in op
 > ```json
 > "defaultAction": "Deny"
 > ```

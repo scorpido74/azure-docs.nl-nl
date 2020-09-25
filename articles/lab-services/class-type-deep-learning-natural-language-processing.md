@@ -1,14 +1,14 @@
 ---
 title: Stel een lab in dat is gericht op diep leren met behulp van Azure Lab Services | Microsoft Docs
-description: Meer informatie over het instellen van een Lab voor het leren van shell scripting op Linux.
+description: Meer informatie over het instellen van een Lab gericht op diep leren in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c5ac93109d24c0d5936c8f271276c02e4e6f6c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251453"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
 In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  

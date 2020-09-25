@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dcf80ffa26ecaeb0f4481b3997146c07bd89be10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259048"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van TypingDNA met Azure Active Directory B2C
 
@@ -36,9 +36,9 @@ In dit overzicht leert u hoe u een voor beeld van een online-betalings toepassin
 
 2. Wanneer de gebruiker de pagina verzendt, wordt de type kenmerk van de gebruiker door de TypingDNA-bibliotheek berekend. Daarna voegt u de gegevens in een verborgen tekst veld in dat Azure AD B2C heeft gerenderd. Dit veld is verborgen met CSS.  
 
-    Het voor beeld bevat HTML-bestanden met de Java script-en CSS-wijzigingen, waarnaar wordt verwezen door de- `api.selfasserted.tdnasignin` en- `api.selfasserted.tdnasignup` inhouds definities. Raadpleeg [de pagina-inhoud](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) hosten om uw HTML-bestanden te hosten.
+    Het voor [Beeld bevat HTML-bestanden](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) met de Java script-en CSS-wijzigingen, waarnaar wordt verwezen door de- `api.selfasserted.tdnasignin` en- `api.selfasserted.tdnasignup` inhouds definities. Raadpleeg [de pagina-inhoud](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) hosten om uw HTML-bestanden te hosten.
 
-3. Azure AD B2C heeft nu het type patroon binnen de claim verzameling wanneer de gebruiker zijn of haar referenties verzendt. Dit moet een API (u) aanroepen om deze gegevens door te geven aan het TypingDNA-REST API-eind punt. Deze API is opgenomen in het voor beeld (typingDNA-API-interface).
+3. Azure AD B2C heeft nu het type patroon binnen de claim verzameling wanneer de gebruiker zijn of haar referenties verzendt. Dit moet een API (u) aanroepen om deze gegevens door te geven aan het TypingDNA-REST API-eind punt. Deze API is opgenomen in het voor [beeld (typingDNA-API-interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. De middelste laag-API geeft de type patroon gegevens door aan TypingDNA REST API. Bij het aanmelden wordt het [eind punt van de controle gebruiker](https://api.typingdna.com/index.html#api-API_Services-GetUser) aangeroepen om te bevestigen dat de gebruiker niet bestaat en vervolgens wordt het eind punt van het [opslag patroon](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) aangeroepen om het eerste type patroon van de gebruiker op te slaan.
 
 > [!NOTE]
@@ -61,7 +61,7 @@ De REST API-aanroepen worden gemodelleerd `validationTechnicalProfiles` in `Loca
 
 ### <a name="sign-in"></a>Aanmelden
 
-Bij de volgende aanmelding wordt het type patroon van de gebruiker op dezelfde manier berekend als bij het aanmelden met behulp van de aangepaste HTML. Wanneer het type profiel zich in de Azure AD B2C claim Bag bevindt, roept Azure AD B2C uw API aan om het REST API-eind punt van TypingDNA aan te roepen. Het [controle gebruikers](https://api.typingdna.com/index.html#api-API_Services-GetUser) eindpunt wordt aangeroepen om te bevestigen dat de gebruiker bestaat. Controleer vervolgens [of](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) het eind punt eindpunt wordt aangeroepen om de te retour neren `net_score` . Hier `net_score` wordt aangegeven hoe dicht het type patroon het origineel was bij het aanmelden.
+Bij de volgende aanmelding wordt het type patroon van de gebruiker op dezelfde manier berekend als bij het aanmelden met behulp van de [aangepaste HTML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignIn.cshtml). Wanneer het type profiel zich in de Azure AD B2C claim Bag bevindt, roept Azure AD B2C uw API aan om het REST API-eind punt van TypingDNA aan te roepen. Het [controle gebruikers](https://api.typingdna.com/index.html#api-API_Services-GetUser) eindpunt wordt aangeroepen om te bevestigen dat de gebruiker bestaat. Controleer vervolgens [of](https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern) het eind punt eindpunt wordt aangeroepen om de te retour neren `net_score` . Hier `net_score` wordt aangegeven hoe dicht het type patroon het origineel was bij het aanmelden.
 
 Dit type patroon is gemodelleerd met `validationTechnicalProfiles` binnen `SelfAsserted-LocalAccountSignin-Email-TDNA` :
 
@@ -99,7 +99,7 @@ Dit type patroon is gemodelleerd met `validationTechnicalProfiles` binnen `SelfA
 
  Als de gebruiker een type patroon verkrijgt dat een hoog niveau heeft `net_score` , kunt u dit opslaan met behulp van het [type patroon TypingDNA opslaan](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) .  
 
-Uw API moet een claim retour neren `saveTypingPattern` Als u wilt dat het type patroon-eind punt TypingDNA opslaan wordt aangeroepen door Azure AD B2C (via uw API).
+Uw API moet een claim retour neren  `saveTypingPattern` Als u wilt dat het type patroon-eind punt TypingDNA opslaan wordt aangeroepen door Azure AD B2C (via uw API).
 
 Het voor beeld in de opslag plaats bevat een API (TypingDNA-API-interface) die is geconfigureerd met de volgende eigenschappen.
 
@@ -158,16 +158,16 @@ Deze drempel waarden moeten worden aangepast aan uw use-case.
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>TypingDNA integreren met Azure AD B2C
 
-1. Host de TypingDNA-API-interface bij de door u gewenste hosting provider
-2. Alle exemplaren van `apiKey` en `apiSecret` in TYPINGDNA-API-interface oplossing vervangen door de referenties van uw TypingDNA-dash board
+1. Host de [TypingDNA-API-interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) bij de door u gewenste hosting provider
+2. Alle exemplaren van `apiKey` en `apiSecret` in [TypingDNA-API-interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) oplossing vervangen door de referenties van uw TypingDNA-dash board
 3. Host de HTML-bestanden van uw provider van de keuze volgens de [vereisten voor](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) CORS
 4. Vervang de LoadURI-elementen voor de `api.selfasserted.tdnasignup` en de `api.selfasserted.tdnasignin` inhouds definities in het `TrustFrameworkExtensions.xml` bestand respectievelijk naar de URI van uw gehoste HTML-bestanden.
 5. Maak een B2C-beleids sleutel onder Identity experience Framework op de Blade Azure AD in de **Azure Portal**. Gebruik de `Generate` optie en geef deze sleutel een naam `tdnaHashedId` .
 6. De TenantId in de beleids bestanden vervangen
-7. Vervang de ServiceURLs in alle TypingDNA REST API technische profielen (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) door het eind punt voor uw TypingDNA-API-interface-API.
-8. Upload beleids bestanden naar uw Tenant.
+7. Vervang de ServiceURLs in alle TypingDNA REST API technische profielen (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) door het eind punt voor uw [TypingDNA-API-interface-API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
+8. Upload [beleids bestanden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) naar uw Tenant.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. Open de B2C-Tenant en kies identiteits ervaring Framework.
 2. Selecteer de eerder gemaakte **gebruikers stroom**.

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268720"
 ---
 # <a name="co-sell-partner-engagement"></a>Betrokkenheid van partner bij collectieve verkoop
 
@@ -36,7 +36,7 @@ Aanbiedingen die de **gemotiveerd-status van Azure IP-co-sell bereiken,** profit
 * De kosten voor Marketplace-service zijn gereduceerd van 20% tot 10%. Deze korting is van toepassing op uw IaaS-of SaaS-aanbieding die wordt verkocht via de commerciële Marketplace. Bekijk de [beperkte service kosten](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) voor meer informatie.
 * Cloud Solution Provider (CSP)-partners ontvangen een stimulans van 10% om uw IaaS of SaaS-aanbieding te verkopen. Meer informatie over het CSP-programma op het [Cloud Solution Provider-programma](cloud-solution-providers.md).
 * Verkoop van uw aanbieding via commerciële Marketplace draagt bij aan de verplichtingen van Azure-verbruik van klanten. In aanmerking komende klanten zien dat de aanbieding is gemarkeerd als **' Azure-voor deel kwalificeren '** in azure Portal. Zie het voor [deel van Azure-verbruiks toezeg ging](azure-consumption-commitment-benefit.md) voor meer informatie.
-* Uw aanbieding ontvangt de badge **"preferente oplossingen"** in de winkel. Met de badge worden de kwaliteit, prestaties en capaciteit van de aanbiedingen van klanten in een bepaalde branche verticaal of oplossings gebied gepromoot. Meer informatie vindt u op de [Aanbevolen oplossingen in Microsoft AppSource en Azure Marketplace](preferred-solutions.md).
+* Aanbiedingen die **Azure IP gemotiveerd** of **Business Applications co-sell gemotiveerd-** status kunnen behalen, ontvangen de badge **' preferente oplossingen '** in de winkel. De badge profileert de kwaliteit, prestaties en mogelijkheid van een aanbieding om klant behoeften in een bepaalde branche verticaal of oplossings gebied aan te pakken. Meer informatie vindt u op de [Aanbevolen oplossingen in Microsoft AppSource en Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Publicatie stappen en-vereisten samen verkopen
 

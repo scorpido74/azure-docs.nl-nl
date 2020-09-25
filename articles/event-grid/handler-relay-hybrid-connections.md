@@ -3,12 +3,12 @@ title: Hybride verbinding door geven als gebeurtenis-handler voor Azure Event Gr
 description: Hierin wordt beschreven hoe u Azure Relay hybride verbindingen als gebeurtenis-handlers kunt gebruiken voor Azure Event Grid-gebeurtenissen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3807e2d125d652b8f5ed7c9dec1b972d69f699f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270199"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>Hybride verbinding door geven als gebeurtenis-handler voor Azure Event Grid gebeurtenissen
 Een gebeurtenis-handler is de plaats waar de gebeurtenis wordt verzonden. De handler heeft een aantal verdere acties nodig om de gebeurtenis te verwerken. Verschillende Azure-Services worden automatisch geconfigureerd voor het afhandelen van gebeurtenissen en **Azure relay** is een hiervan. 
@@ -40,6 +40,9 @@ Raadpleeg de volgende zelf studie voor een voor beeld van het gebruik van een Az
     }
 }
 ```
+
+> [!NOTE]
+> Het leveren van gebeurtenissen aan een Azure Relay hybride verbinding in **een andere Tenant** wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het artikel over [gebeurtenis-handlers](event-handlers.md) voor een lijst met ondersteunde gebeurtenis-handlers. 

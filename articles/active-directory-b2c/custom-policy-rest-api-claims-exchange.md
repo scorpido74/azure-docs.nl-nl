@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259591"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Walkthrough: REST API claims-uitwisselingen toevoegen aan aangepaste beleids regels in Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ De volgende JSON-code illustreert de gegevens Azure AD B2C naar uw REST API-eind
 ```json
 {
     "objectId": "User objectId",
-    "language": "Current UI language"
+    "lang": "Current UI language"
 }
 ```
 
@@ -177,9 +177,9 @@ Sla de bestanden op die u hebt gewijzigd: *TrustFrameworkBase.xml*, en *TrustFra
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
-1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD-tenant bevat door in het bovenste menu op het filter **Map en abonnement** te klikken en de map te kiezen waarin de Azure AD-tenant zich bevindt.
+1. Kies linksboven in de Azure Portal **Alle services**, zoek **App-registraties** en selecteer deze.
 1. Selecteer een **Framework voor identiteits ervaring**.
 1. Selecteer **aangepast beleid uploaden**en upload vervolgens de beleids bestanden die u hebt gewijzigd: *TrustFrameworkBase.xml*en *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*en *PasswordReset.xml*. 
 1. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 87b674a9c6b7f7d591b39f1baf54c4d54082f306
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252830"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
 
@@ -27,7 +27,7 @@ U kunt ook eind punten en routes beheren met de [EventRoutes-api's](how-to-use-a
 ## <a name="prerequisites"></a>Vereisten
 
 * U hebt een **Azure-account** nodig (u kunt deze [hier](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)gratis instellen)
-* U hebt een **Azure Digital apparaatdubbels-exemplaar** in uw Azure-abonnement nodig. Als u nog geen exemplaar hebt, kunt u er een maken met behulp van de stappen in [*How-to: een instantie en verificatie instellen*](how-to-set-up-instance-scripted.md). Laat de volgende waarden van Setup handig zijn om later in dit artikel te gebruiken:
+* U hebt een **Azure Digital apparaatdubbels-exemplaar** in uw Azure-abonnement nodig. Als u nog geen exemplaar hebt, kunt u er een maken met behulp van de stappen in [*How-to: een instantie en verificatie instellen*](how-to-set-up-instance-portal.md). Laat de volgende waarden van Setup handig zijn om later in dit artikel te gebruiken:
     - Exemplaarnaam
     - Resourcegroep
 
@@ -58,7 +58,7 @@ Zodra u het onderwerp hebt gemaakt, kunt u het koppelen aan Azure Digital Appara
 
 Selecteer _eind punten_in het menu exemplaar. Selecteer vervolgens op de pagina met *eind punten* de optie *+ een eind punt maken*. 
 
-Op de pagina *een eind punt maken* die wordt geopend, kunt u een eind punt van het type _Event grid_ maken door het bijbehorende keuze rondje te selecteren. De overige details volt ooien: Voer een naam in voor het eind punt in het veld _naam_ , kies uw _abonnement_ in de vervolg keuzelijst en kies het vooraf gemaakte _Event grid onderwerp_ in de derde vervolg keuzelijst.
+Op de pagina *een eind punt maken* die wordt geopend, kunt u een eind punt van het type _Event grid_ maken door het bijbehorende keuze rondje te selecteren. De overige details volt ooien: Voer een naam in voor het eind punt in het veld _naam_ , kies uw _abonnement_ in de vervolg keuzelijst en kies het vooraf gemaakte  _Event grid onderwerp_ in de derde vervolg keuzelijst.
 
 Maak vervolgens uw eind punt op _Opslaan_.
 
@@ -133,8 +133,8 @@ Een definitie van een gebeurtenis route bevat deze elementen:
 * De naam van de route die u wilt gebruiken
 * De naam van het eind punt dat u wilt gebruiken
 * Een filter dat definieert welke gebeurtenissen naar het eind punt worden verzonden
-    - Als u de route wilt uitschakelen zodat er geen gebeurtenissen worden verzonden, gebruikt u een filter waarde van`false`
-    - Als u een route wilt inschakelen die geen specifieke filters heeft, gebruikt u een filter waarde van`true`
+    - Als u de route wilt uitschakelen zodat er geen gebeurtenissen worden verzonden, gebruikt u een filter waarde van `false`
+    - Als u een route wilt inschakelen die geen specifieke filters heeft, gebruikt u een filter waarde van `true`
     - Zie de sectie [*filter gebeurtenissen*](#filter-events) hieronder voor meer informatie over elk ander type filter.
 
 U kunt meerdere meldingen en gebeurtenis typen toestaan om één route te selecteren.

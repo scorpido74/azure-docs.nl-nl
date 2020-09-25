@@ -1,6 +1,6 @@
 ---
 title: Wat zijn geregistreerde Azure AD-apparaten?
-description: Meer informatie over hoe het beheer van apparaat-id's u kan helpen bij het beheren van apparaten die toegang hebben tot resources in uw omgeving.
+description: Meer informatie over de geregistreerde Azure AD-apparaten bieden uw gebruikers ondersteuning voor de scenario's van uw eigen apparaat (BYOD) of mobiele apparaten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256435"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-geregistreerde apparaten
 
 Het doel van geregistreerde Azure AD-apparaten is om uw gebruikers ondersteuning te bieden voor de scenario's voor het nemen van uw eigen apparaten (BYOD) of mobiele apparaten. In deze scenario's heeft een gebruiker toegang tot de Azure Active Directory beheerde resources van uw organisatie met behulp van een persoonlijk apparaat.
 
-| Geregistreerde Azure AD | Description |
+| Geregistreerde Azure AD | Beschrijving |
 | --- | --- |
-| **Beschrijving** | Geregistreerd bij Azure AD zonder organisatie account om u aan te melden bij het apparaat |
+| **Definitie** | Geregistreerd bij Azure AD zonder organisatie account om u aan te melden bij het apparaat |
 | **Primaire doel groep** | Van toepassing op alle gebruikers met de volgende criteria: |
 |   | BYOD (Bring Your Own Device) |
 |   | Mobiele apparaten |
@@ -36,7 +36,7 @@ Het doel van geregistreerde Azure AD-apparaten is om uw gebruikers ondersteuning
 | **Aanmeldings opties voor apparaten** | Lokale referenties voor eind gebruikers |
 |   | Wachtwoord |
 |   | Windows Hello |
-|   | Pincode |
+|   | PIN |
 |   | Biometrie of patroon voor andere apparaten |
 | **Apparaatbeheer** | Beheer van mobiele apparaten (voor beeld: Microsoft Intune) |
 |   | mobiel applicatiebeheer |
@@ -61,5 +61,5 @@ Een andere gebruiker wil toegang tot hun organisatie-e-mail op hun persoonlijke 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Apparaat-id's beheren met de Azure Portal](device-management-azure-portal.md)
-- [Verlopen apparaten beheren in Azure Active Directory](manage-stale-devices.md)
+- [Apparaat-id's beheren in Azure Portal](device-management-azure-portal.md)
+- [Langdurig inactieve apparaten beheren in Azure AD](manage-stale-devices.md)

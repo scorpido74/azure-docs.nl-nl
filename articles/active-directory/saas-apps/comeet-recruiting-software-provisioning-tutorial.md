@@ -11,25 +11,25 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299902"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Zelf studie: coontmoeting software configureren voor het automatisch inrichten van gebruikers
 
 Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd om de wervings software en Azure Active Directory (Azure AD) aan te passen om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen om te voldoen aan wervings software.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebaseerd op de Azure AD-service voor het inrichten van gebruikers. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie voor meer informatie over de algemene Microsoft Azure-gebruiksvoorwaarden voor preview-functies [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
 * [Een mede werker van de aanwerving-software Tenant](https://www.comeet.co/)
@@ -69,7 +69,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te passen aan de wervings software om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst om aan wervings software te voldoen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst om aan wervings software te voldoen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Automatische gebruikers inrichting configureren om te voldoen aan wervings software 
 
@@ -80,7 +80,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Voor het configureren van automatische gebruikers inrichting voor het ontmoeten van wervings software in azure AD:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -88,13 +88,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling Comeet Recruiting Software in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 5. In het gedeelte **beheerders referenties** voert u de **Tenant-URL** en het **geheime token** in van uw mede ontmoet het account van de wervings software, zoals beschreven in stap 6.
 
@@ -106,9 +106,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Token](common/provisioning-testconnection-token.png)
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+8. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en vink het vakje **Een e-mailmelding verzenden als een fout optreedt** aan.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
@@ -120,34 +120,34 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Voldoen aan wervings software groeps kenmerken](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 13. Als u de Azure AD-inrichtings service wilt inschakelen voor het ontmoeten van wervings software, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
 14. Definieer de gebruikers en/of groepen die u wilt inrichten om te voldoen aan wervings software door de gewenste waarden in het **bereik** te kiezen in het gedeelte **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service aan wervings software.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële synchronisatie duurt langer dan volgende synchronisaties, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service aan wervings software.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
 * Het is niet mogelijk om op dit moment te voldoen aan wervings software.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 

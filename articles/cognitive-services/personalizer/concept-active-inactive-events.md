@@ -1,14 +1,16 @@
 ---
 title: Actieve en inactieve gebeurtenissen-persoonlijker
 description: In dit artikel wordt het gebruik van actieve en inactieve gebeurtenissen in de Personaler-service besproken.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253646"
 ---
 # <a name="active-and-inactive-events"></a>Actieve en inactieve gebeurtenissen
 
@@ -37,9 +39,9 @@ Als de toepassing de informatie van de classificatie oproep gebruikt, wordt de g
 
 ## <a name="inactive-events"></a>Inactieve gebeurtenissen
 
-Als u de training voor een gebeurtenis wilt uitschakelen, roept `learningEnabled = False`u de rang orde aan met behulp van.
+Als u de training voor een gebeurtenis wilt uitschakelen, roept u de rang orde aan met behulp van `learningEnabled = False` .
 
-Voor een inactieve gebeurtenis wordt Learning impliciet geactiveerd als u een beloning voor de gebeurtenis-Event stuurt of als u `activate` de API voor die gebeurtenis-activiteit aanroept.
+Voor een inactieve gebeurtenis wordt Learning impliciet geactiveerd als u een beloning voor de gebeurtenis-Event stuurt of als u de `activate` API voor die gebeurtenis-activiteit aanroept.
 
 ## <a name="next-steps"></a>Volgende stappen
 

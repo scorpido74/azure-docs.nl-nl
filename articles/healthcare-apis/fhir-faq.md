@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269706"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -65,6 +65,23 @@ De huidige limiet voor aantal is 100.
 
 Voor het exporteren van de groep exporteert u alleen de opgenomen verwijzingen van de groep, niet alle kenmerken van de [groeps resource](https://www.hl7.org/fhir/group.html).
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>Kan ik een bundel voor FHIR in de Azure-API plaatsen?
+
+We ondersteunen momenteel het boeken van [batch bundels](https://www.hl7.org/fhir/valueset-bundle-type.html) , maar bieden geen ondersteuning voor het boeken van transactie bundels in de Azure API voor FHIR. U kunt de open-source FHIR-server die wordt ondersteund door SQL gebruiken voor het boeken van transactie bundels.
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>Hoe krijg ik alle resources voor één patiënt in de Azure API voor FHIR?
+
+Het [zoeken naar compartimenten](https://www.hl7.org/fhir/compartmentdefinition.html) wordt ondersteund in de Azure API voor FHIR. Zo kunt u alle resources met betrekking tot een specifieke patiënt ophalen. Houd er rekening mee dat de afdeling nu alle resources bevat die aan de patiënt zijn gerelateerd, maar niet de patiënt zelf, dus u moet ook zoeken naar de patiënt als u de patiënt resource in uw resultaten nodig hebt.
+
+Enkele voor beelden hiervan zijn:
+
+* Ontvang een patiënt/<id>/*
+* Patiënt/ <id> /OBSERVATION ophalen
+* Bent u de <id> /Observation? code = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Waar kan ik enkele voor beelden zien van het gebruik van de Azure API voor FHIR binnen een werk stroom?
+
+We hebben een verzameling referentie architecturen die beschikbaar zijn op de GitHub-pagina van de [status architectuur](https://github.com/microsoft/health-architectures).
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (preview)
 

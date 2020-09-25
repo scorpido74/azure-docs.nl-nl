@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136906"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250328"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Functies in de grootschalige (Citus) SQL-API
 
@@ -20,7 +20,7 @@ Deze sectie bevat referentie-informatie voor de door de gebruiker gedefinieerde 
 
 > [!NOTE]
 >
-> Grootschalige-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande functies.
+> Grootschalige (Citus)-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande functies.
 
 ## <a name="table-and-shard-ddl"></a>DDL voor tabel en Shard
 

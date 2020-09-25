@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301102"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>RabbitMQ integreren met Azure Service Bus
 
@@ -112,7 +112,7 @@ Ga in de RabbitMQ-beheer interface naar `Queues` , selecteer de `azure` wachtrij
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Eerste bericht publiceren":::
 
-Ga terug naar Azure en controleer uw wachtrij. Klik `Service Bus Explorer` in het linkerdeel venster. Als alles goed is, ziet u de wachtrij nu één bericht. Yay, gefeliciteerd!
+Ga terug naar Azure en controleer uw wachtrij. Klik `Service Bus Explorer` in het linkerdeel venster en klik vervolgens op de knop _Peek_ . Als alles goed is, ziet u de wachtrij nu één bericht. Yay, gefeliciteerd!
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure Service Bus wachtrij":::
 
@@ -136,3 +136,8 @@ Gefeliciteerd! U hebt een hoop! U hebt de volgende stappen uitgevoerd om uw beri
 Door de vorige stappen te volgen, hebt u gedeelten van uw organisatie geïntegreerd die zich buiten Azure bevonden. Met de shovel-invoeg toepassing kunt u berichten verzenden van RabbitMQ naar Azure Service Bus. Dit heeft enorm voor delen omdat u nu vertrouwde derden toestaat hun apps te verbinden met uw Azure-implementatie.
 
 In het eind is de Messa ging over het inschakelen van verbindingen en met deze techniek hebben we zojuist een nieuw item geopend.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [Azure service bus](./service-bus-messaging-overview.md)
+- Meer informatie over [ondersteuning voor AMQP 1,0 in service bus](./service-bus-amqp-overview.md)

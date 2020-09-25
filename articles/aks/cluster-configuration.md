@@ -3,28 +3,30 @@ title: Cluster configuratie in azure Kubernetes Services (AKS)
 description: Meer informatie over het configureren van een cluster in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255295"
 ---
 # <a name="configure-an-aks-cluster"></a>Een AKS-cluster configureren
 
 Als onderdeel van het maken van een AKS-cluster moet u mogelijk uw cluster configuratie aanpassen aan uw behoeften. Dit artikel bevat een aantal opties voor het aanpassen van uw AKS-cluster.
 
-## <a name="os-configuration-preview"></a>BESTURINGSSYSTEEM configuratie (preview-versie)
+## <a name="os-configuration"></a>Configuratie van besturings systeem
 
-AKS ondersteunt nu Ubuntu 18,04 als het besturings systeem van het knoop punt (OS) in de preview-versie. Tijdens de preview-periode zijn zowel Ubuntu 16,04 als Ubuntu 18,04 beschikbaar.
+AKS ondersteunt nu Ubuntu 18,04 als het besturings systeem van het knoop punt (OS) in algemene Beschik baarheid voor clusters in kubernetes-versies hoger dan 1.18.8. Voor versies onder 1.18. x is AKS Ubuntu 16,04 nog steeds de standaard basis installatie kopie. Van kubernetes v 1.18. x en later is de standaard basis AKS Ubuntu 18,04.
 
 > [!IMPORTANT]
-> Knooppunt groepen die zijn gemaakt op Kubernetes v 1.18 of een hogere standaard waarde voor een vereiste `AKS Ubuntu 18.04` knooppunt installatie kopie. Knooppunt Pools op een ondersteunde Kubernetes-versie kleiner dan 1,18 `AKS Ubuntu 16.04` worden als de knooppunt afbeelding ontvangen, maar worden bijgewerkt naar een moment dat `AKS Ubuntu 18.04` de Kubernetes-versie van de knooppunt groep wordt bijgewerkt naar v 1.18 of hoger.
+> Knooppunt groepen die zijn gemaakt op Kubernetes v 1.18 of meer standaard naar `AKS Ubuntu 18.04` knooppunt installatie kopie. Knooppunt Pools op een ondersteunde Kubernetes-versie kleiner dan 1,18 `AKS Ubuntu 16.04` worden als de knooppunt afbeelding ontvangen, maar worden bijgewerkt naar een moment dat `AKS Ubuntu 18.04` de Kubernetes-versie van de knooppunt groep wordt bijgewerkt naar v 1.18 of hoger.
 > 
 > Het wordt sterk aanbevolen om uw workloads te testen op AKS Ubuntu 18,04-knooppunt Pools voordat u clusters op 1,18 of hoger gebruikt. Meer informatie over het [testen van Ubuntu 18,04-knooppunt groepen](#use-aks-ubuntu-1804-existing-clusters-preview).
+
+In het volgende gedeelte wordt uitgelegd hoe u AKS Ubuntu 18,04 gebruikt en test op clusters die nog geen kubernetes-versie 1.18. x of hoger gebruiken, of die zijn gemaakt voordat deze functie algemeen beschikbaar werd, met behulp van de configuratie voorbeeld van het besturings systeem.
 
 U moet de volgende resources hebben geïnstalleerd:
 
@@ -44,13 +46,13 @@ De `UseCustomizedUbuntuPreview` functie registreren:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true):
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true):
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure biedt ondersteuning voor [generatie 2 (Gen2) virtuele machines (vm's)](../
 Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur in plaats van de op BIOS gebaseerde architectuur die wordt gebruikt door virtuele machines van de eerste generatie.
 Alleen specifieke Sku's en grootten bieden ondersteuning voor Gen2-Vm's. Controleer de [lijst met ondersteunde grootten](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)om te zien of uw SKU Gen2 ondersteunt of vereist.
 
-Niet alle VM-installatie kopieën ondersteunen Gen2, op AKS Gen2-Vm's wordt de nieuwe [AKS Ubuntu 18,04-installatie kopie](#os-configuration-preview)gebruikt. Deze installatie kopie ondersteunt alle Gen2 Sku's en grootten.
+Niet alle VM-installatie kopieën ondersteunen Gen2, op AKS Gen2-Vm's wordt de nieuwe [AKS Ubuntu 18,04-installatie kopie](#os-configuration)gebruikt. Deze installatie kopie ondersteunt alle Gen2 Sku's en grootten.
 
 Als u Gen2-Vm's wilt gebruiken tijdens de preview, hebt u het volgende nodig:
 - De `aks-preview` cli-extensie is geïnstalleerd.
@@ -191,13 +193,13 @@ De `Gen2VMPreview` functie registreren:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true):
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ De `EnableEphemeralOSDiskPreview` functie registreren:
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratiestatus controleren met behulp van de opdracht [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true):
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) :
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+Voor het tijdelijke besturings systeem is ten minste versie 0.4.63 van de CLI-extensie AKS-Preview vereist.
 
 Als u de AKS-preview CLI-extensie wilt installeren, gebruikt u de volgende Azure CLI-opdrachten:
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Kortstondige besturings systemen gebruiken in nieuwe clusters (preview-versie)
 
-Configureer het cluster voor het gebruik van tijdelijke besturingssysteem schijven wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` markering om kortstondig besturings systeem in te stellen als het schijf type van het besturings systeem voor het nieuwe cluster.
+Configureer het cluster voor het gebruik van tijdelijke besturingssysteem schijven wanneer het cluster wordt gemaakt. Gebruik de `--node-osdisk-type` markering om kortstondig besturings systeem in te stellen als het schijf type van het besturings systeem voor het nieuwe cluster.
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Als u een normaal cluster wilt maken met behulp van besturingssysteem schijven die zijn gekoppeld aan het netwerk, kunt u dit doen door de aangepaste code weg te laten `--aks-custom-headers` . U kunt er ook voor kiezen om meer tijdelijke OS-knooppunt groepen toe te voegen aan de hand van hieronder.
+Als u een normaal cluster wilt maken met behulp van besturingssysteem schijven die zijn gekoppeld aan het netwerk, kunt u dit doen door de aangepaste code te weglaten of op te `--node-osdisk-type` geven `--node-osdisk-type=Managed` . U kunt er ook voor kiezen om meer tijdelijke OS-knooppunt groepen toe te voegen aan de hand van hieronder.
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Kortstondige besturings systeem op bestaande clusters gebruiken (preview-versie)
-Configureer een nieuwe knooppunt groep om tijdelijke besturingssysteem schijven te gebruiken. Gebruik de `--aks-custom-headers` vlag om in te stellen als het schijf type van het besturings systeem voor die knooppunt groep.
+Configureer een nieuwe knooppunt groep om tijdelijke besturingssysteem schijven te gebruiken. Gebruik de `--node-osdisk-type` vlag om in te stellen als het schijf type van het besturings systeem voor die knooppunt groep.
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > Met het tijdelijke besturings systeem kunt u installatie kopieën van VM'S en instanties implementeren tot aan de grootte van de VM-cache. In het geval van AKS gebruikt de standaard schijf configuratie van het knoop punt 100GiB, wat betekent dat u een VM-grootte nodig hebt die een cache heeft die groter is dan 100 GiB. De standaard Standard_DS2_v2 heeft een cache grootte van 86 GiB, die niet groot genoeg is. Het Standard_DS3_v2 heeft een cache grootte van 172 GiB, die groot genoeg is. U kunt ook de standaard grootte van de besturingssysteem schijf verminderen met behulp van `--node-osdisk-size` . De minimale grootte voor AKS-installatie kopieën is 30GiB. 
 
-Als u knooppunt groepen met door het netwerk gekoppelde besturingssysteem schijven wilt maken, kunt u dit doen door de aangepaste code weg te laten `--aks-custom-headers` .
+Als u knooppunt groepen met door het netwerk gekoppelde besturingssysteem schijven wilt maken, kunt u dit doen door de aangepaste code weg te laten `--node-osdisk-type` .
 
 ## <a name="custom-resource-group-name"></a>Aangepaste naam van resource groep
 

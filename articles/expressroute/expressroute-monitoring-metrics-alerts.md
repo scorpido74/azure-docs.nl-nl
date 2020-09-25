@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252626"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -42,8 +42,8 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 |GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
 |LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >
@@ -154,6 +154,19 @@ U kunt pakketten per seconde weer geven die de gateway door lopen.
 In de **waarschuwings criteria**kunt u het **activiteiten logboek** voor het signaal type selecteren en het signaal selecteren.
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="activiteiten logboeken":::
+
+## <a name="additional-metrics-in-log-analytics"></a>Aanvullende metrische gegevens in Log Analytics
+
+U kunt ook ExpressRoute-metrische gegevens weer geven door te navigeren naar uw ExpressRoute-circuit resource en het tabblad *Logboeken* te selecteren. Voor alle metrische gegevens die u opvraagt, bevat de uitvoer de onderstaande kolommen.
+
+|**Kolom**|**Type**|**Beschrijving**|
+| --- | --- | --- |
+|TimeGrain|tekenreeks|PT1M (metrische waarden worden elke minuut gepusht)|
+|Aantal|werkelijk|Meestal gelijk aan 2 (elke MSEE pusht elke minuut één metrische waarde)|
+|Minimum|werkelijk|Het minimum van de twee metrische waarden die door de twee Msee's worden gepusht|
+|Maximum|werkelijk|De Maxiumum van de twee metrische waarden die door de twee Msee's worden gepusht|
+|Average|werkelijk|Gelijk aan (mini maal + maximum)/2|
+|Totaal|werkelijk|Som van de twee metrieke waarden van beide Msee's (de belangrijkste waarde waarop wordt gefocust voor de opgevraagde metrische gegevens)|
   
 ## <a name="next-steps"></a>Volgende stappen
 

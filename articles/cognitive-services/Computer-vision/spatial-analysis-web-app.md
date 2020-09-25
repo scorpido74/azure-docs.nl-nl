@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936698"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254020"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Procedure: een web-app voor het tellen van een persoon implementeren
 
@@ -181,8 +181,8 @@ Nadat u de bovenstaande para meters hebt ingevoerd, klikt u op **controleren + m
 
 Wacht totdat de installatie is voltooid en navigeer naar uw resource in de Azure Portal. Ga naar de **configuratie** sectie en voeg de volgende twee **Toepassings instellingen**toe.
 
-* `EventHubConsumerGroup` – De teken reeks naam van de Consumer groep van uw Azure IoT hub kunt u een nieuwe consumenten groep in uw IoT-hub maken of de standaard groep gebruiken. 
-* `IotHubConnectionString` : De connection string naar uw Azure IoT hub, kan dit worden opgehaald uit de sectie sleutels van uw Azure IoT hub-resource ![ para meters configureren](./media/spatial-analysis/solution-app-config-page.png)
+* `EventHubConsumerGroup` : De teken reeks naam van de Consumer groep van uw Azure IoT Hub, u kunt een nieuwe consumenten groep maken in uw IoT Hub of de standaard groep gebruiken. 
+* `IotHubConnectionString` : De connection string naar uw Azure IoT Hub, kan dit worden opgehaald uit de sectie sleutels van de Azure IoT Hub resource ![ para meters configureren](./media/spatial-analysis/solution-app-config-page.png)
 
 Zodra deze twee instellingen zijn toegevoegd, klikt u op **Opslaan**. Klik vervolgens op **verificatie/autorisatie** in het navigatie menu links en werk het bij met het gewenste verificatie niveau. We raden Azure Active Director (Azure AD) Express aan. 
 

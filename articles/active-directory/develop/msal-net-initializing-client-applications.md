@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 30f9f1998ee133c2546c9f4de7a99c51feb8740f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258282"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Client toepassingen initialiseren met MSAL.NET
 In dit artikel wordt beschreven hoe u open bare client-en vertrouwelijke client toepassingen initialiseert met behulp van micro soft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -98,7 +98,7 @@ De opties die u kunt instellen op een open bare client of de opbouw functie voor
 
 |Modifier | Beschrijving|
 |--------- | --------- |
-|`.WithAuthority()`7 onderdrukkingen | Hiermee stelt u de standaard instantie van de toepassing in op een Azure AD-instantie, met de mogelijkheid om de Azure-Cloud, de doel groep, de Tenant (Tenant-ID of domein naam) te kiezen of rechtstreeks de CA-URI op te geven.|
+|`.WithAuthority()` 7 onderdrukkingen | Hiermee stelt u de standaard instantie van de toepassing in op een Azure AD-instantie, met de mogelijkheid om de Azure-Cloud, de doel groep, de Tenant (Tenant-ID of domein naam) te kiezen of rechtstreeks de CA-URI op te geven.|
 |`.WithAdfsAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als ADFS-instantie.|
 |`.WithB2CAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als Azure AD B2C-instantie.|
 |`.WithClientId(string)` | Hiermee wordt de client-ID overschreven.|
@@ -137,7 +137,7 @@ We gaan ervan uit dat uw toepassing een line-of-Business-toepassing is, die alle
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzurePublic, tenantId)
+        .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
         .Build();
 ```
 
@@ -146,7 +146,7 @@ Het is belang rijk dat de programmering van nationale Clouds nu wordt vereenvoud
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
+        .WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
 ```
 

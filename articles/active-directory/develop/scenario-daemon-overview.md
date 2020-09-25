@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c01724340df7e0efffe9847b49e1fe9d444ee01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257619"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenario: daemon-toepassing die web-Api's aanroept
 
 Meer informatie over wat u nodig hebt om een daemon-toepassing te bouwen die web-Api's aanroept.
-
-## <a name="prerequisites"></a>Vereisten
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>Overzicht
 
@@ -58,6 +54,10 @@ Voor ontwikkel aars heeft de end-to-end-ervaring voor dit scenario de volgende a
 - Tijdens de registratie van de [toepassing](./scenario-daemon-app-registration.md)is de antwoord-URI niet nodig. U moet geheimen of certificaten of ondertekende verklaringen delen met Azure AD. U moet ook toepassings machtigingen aanvragen en toestemming van de beheerder verlenen om deze app-machtigingen te gebruiken.
 - De [configuratie](./scenario-daemon-app-configuration.md) van de toepassing moet client referenties opgeven die worden gedeeld met Azure ad tijdens de registratie van de toepassing.
 - Het [bereik](scenario-daemon-acquire-token.md#scopes-to-request) dat wordt gebruikt om een token met de client referentie stroom te verkrijgen, moet een statisch bereik zijn.
+
+## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302091"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Een gegevensset op naam ophalen
 
-De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) voor de `Dataset` klasse retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte. 
+De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) voor de `Dataset` klasse retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte. 
 
 Met de volgende code wordt versie 1 van de `titanic_ds` gegevensset opgehaald.
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het `Run` object experiment.
 
-De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
+De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
 
 ```Python
 # get input datasets

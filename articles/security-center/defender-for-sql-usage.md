@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 76015602cbf949b166c4067ad72bace5d355d70b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301649"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
 
@@ -79,7 +79,7 @@ Beide worden hieronder beschreven.
 
 
 1. U kunt ook e-mail meldingen configureren voor beveiligings waarschuwingen. 
-    U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wanneer Security Center waarschuwingen worden gegenereerd. Het e-mail bericht bevat een directe koppeling naar de waarschuwing in Azure Security Center met alle relevante informatie. Zie [e-mail meldingen instellen voor beveiligings waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)voor meer informatie.
+    U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wanneer Security Center waarschuwingen worden gegenereerd. Het e-mail bericht bevat een directe koppeling naar de waarschuwing in Azure Security Center met alle relevante informatie. Zie [e-mail meldingen instellen voor beveiligings waarschuwingen](security-center-provide-security-contact-details.md)voor meer informatie.
 
 
 
@@ -121,7 +121,7 @@ Azure Defender-waarschuwingen zijn beschikbaar op de pagina waarschuwingen van S
     * Schakel de controle functie van SQL Server in voor verdere onderzoeken. Als u een Azure Sentinel-gebruiker bent, kunt u de SQL-controle logboeken uploaden van de gebeurtenissen van het Windows-beveiligings logboek naar Sentinel en een rijke onderzoek ervaring hebben. [Meer informatie over het controleren van SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
     * Gebruik de aanbevelingen van Security Center voor de hostmachine die in elke waarschuwing worden aangegeven om uw beveiligings postuur te verbeteren. Hierdoor worden de Risico's van toekomstige aanvallen verminderd. 
 
-    Meer [informatie over het beheren van en reageren op waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
+    Meer [informatie over het beheren van en reageren op waarschuwingen](security-center-managing-and-responding-alerts.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

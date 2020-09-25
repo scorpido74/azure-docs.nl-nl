@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256599"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform
 
@@ -48,15 +48,15 @@ In OAuth 2,0 worden deze typen machtigingen *scopes*genoemd. Ze worden ook vaak 
 * Schrijven naar de agenda van een gebruiker met behulp van `Calendars.ReadWrite`
 * E-mail verzenden als gebruiker met behulp van `Mail.Send`
 
-Een app vraagt meestal deze machtigingen door de scopes op te geven in aanvragen voor het micro soft Identity platform Authorization-eind punt. Bepaalde machtigingen met een hoge bevoegdheid kunnen echter alleen worden verleend via toestemming van de beheerder en aangevraagd/verleend met behulp van het [eind punt voor toestemming](v2-permissions-and-consent.md#admin-restricted-permissions)van de beheerder. Lees verder voor meer informatie.
+Een app vraagt meestal deze machtigingen door de scopes op te geven in aanvragen voor het micro soft Identity platform Authorization-eind punt. Bepaalde machtigingen met een hoge bevoegdheid kunnen echter alleen worden verleend via toestemming van de beheerder en aangevraagd/verleend met behulp van het [eind punt voor toestemming](#admin-restricted-permissions)van de beheerder. Lees verder voor meer informatie.
 
 ## <a name="permission-types"></a>Machtigings typen
 
 Micro soft Identity platform ondersteunt twee typen machtigingen: **gedelegeerde machtigingen** en **toepassings machtigingen**.
 
-* **Gedelegeerde machtigingen** worden gebruikt door apps waarvoor een aangemelde gebruiker aanwezig is. Voor deze apps is de gebruiker of een beheerder in staat om de machtigingen die door de app worden aangevraagd en de app gedelegeerde toestemming te laten fungeren als de aangemelde gebruiker bij het aanroepen van de doel bron. Sommige gedelegeerde machtigingen kunnen worden toegestuurd aan door gebruikers zonder beheerders rechten, maar sommige machtigingen met een hogere bevoegdheid zijn vereist voor de [beheerder](v2-permissions-and-consent.md#admin-restricted-permissions). Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
+* **Gedelegeerde machtigingen** worden gebruikt door apps waarvoor een aangemelde gebruiker aanwezig is. Voor deze apps is de gebruiker of een beheerder in staat om de machtigingen die door de app worden aangevraagd en de app gedelegeerde toestemming te laten fungeren als de aangemelde gebruiker bij het aanroepen van de doel bron. Sommige gedelegeerde machtigingen kunnen worden toegestuurd aan door gebruikers zonder beheerders rechten, maar sommige machtigingen met een hogere bevoegdheid zijn vereist voor de [beheerder](#admin-restricted-permissions). Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
 
-* **Toepassings machtigingen** worden gebruikt door apps die worden uitgevoerd zonder een aangemelde gebruiker. bijvoorbeeld: apps die worden uitgevoerd als achtergrond Services of daemons.  Toepassings machtigingen kunnen alleen worden [gezonden door een beheerder](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+* **Toepassings machtigingen** worden gebruikt door apps die worden uitgevoerd zonder een aangemelde gebruiker. bijvoorbeeld: apps die worden uitgevoerd als achtergrond Services of daemons.  Toepassings machtigingen kunnen alleen worden [gezonden door een beheerder](#requesting-consent-for-an-entire-tenant).
 
 _Efficiënte machtigingen_ zijn de machtigingen die uw app heeft wanneer er aanvragen worden gedaan voor de doel bron. Het is belang rijk dat u begrijpt wat het verschil is tussen de gedelegeerde en toepassings machtigingen die uw app krijgt en de juiste machtigingen wanneer u aanroepen naar de doel bron.
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 Dit produceert een venster voor toestemming voor alle geregistreerde machtigingen (indien van toepassing op basis van de bovenstaande beschrijvingen van toestemming en `/.default` ) en retourneert vervolgens een id_token in plaats van een toegangs token.  Dit gedrag bestaat voor bepaalde verouderde clients die van ADAL naar MSAL worden verplaatst en **mogen niet** worden gebruikt door nieuwe clients die gericht zijn op het micro soft Identity platform-eind punt.
 
+### <a name="client-credentials-grant-flow-and-default"></a>Client referenties geven stroom en/.default
+
+Een ander gebruik van `./default` is wanneer u toepassings machtigingen (of *rollen*) aanvraagt in een niet-interactieve toepassing, zoals een daemon-app die gebruikmaakt van de [client referenties](v2-oauth2-client-creds-grant-flow.md) toekennings stroom om een web-API aan te roepen.
+
+Zie [How to: app-rollen toevoegen in uw toepassing](howto-add-app-roles-in-azure-ad-apps.md)om toepassings machtigingen (rollen) voor een web-API te maken.
+
+Aanvragen voor client referenties in uw client-app **moeten** bevatten `scope={resource}/.default` , waarbij `{resource}` de Web-API is die uw app wil aanroepen. Het uitgeven van een aanvraag voor client referenties met afzonderlijke toepassings machtigingen (rollen) wordt **niet** ondersteund. Alle toepassings machtigingen (rollen) die zijn verleend voor die Web-API, worden opgenomen in het geretourneerde toegangs token.
+
+Als u toegang wilt verlenen tot de toepassings machtigingen die u definieert, met inbegrip van het verlenen van beheerders toestemming voor de toepassing, raadpleegt u [Quick Start: een client toepassing configureren voor toegang tot een web-API](quickstart-configure-app-access-web-apis.md).
+
 ### <a name="trailing-slash-and-default"></a>Afsluitende slash en/.default
 
 Sommige bron-Uri's hebben een afsluitende slash ( `https://contoso.com/` in plaats `https://contoso.com` van), waardoor er problemen kunnen ontstaan met de validatie van tokens.  Dit kan voornamelijk optreden bij het aanvragen van een token voor Azure Resource Management ( `https://management.azure.com/` ), dat een afsluitende slash op de resource-URI heeft en vereist dat deze aanwezig is wanneer het token wordt aangevraagd.  Daarom moet u, wanneer u een token aanvraagt voor `https://management.azure.com/` en gebruikt `/.default` , een aanvraag indienen om `https://management.azure.com//.default` de dubbele slash te noteren.
@@ -311,3 +321,8 @@ In het algemeen: als u hebt gevalideerd dat het token wordt uitgegeven en het to
 ## <a name="troubleshooting-permissions-and-consent"></a>Problemen met machtigingen en toestemming
 
 Als u of de gebruikers van uw toepassing onverwachte fouten zien tijdens het toestemming proces, raadpleegt u dit artikel voor het oplossen van problemen: [onverwachte fout bij het uitvoeren van de toestemming voor een toepassing](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [ID-tokens | Micro soft Identity-platform](id-tokens.md)
+* [Toegangs tokens | Micro soft Identity-platform](access-tokens.md)

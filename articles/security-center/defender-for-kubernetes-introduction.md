@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e72875135243733a6acf03bb3aa6fb9405392d9d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301700"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Inleiding tot Azure Defender voor Kubernetes
 
@@ -44,14 +44,14 @@ Security Center biedt bedreigings beveiliging op verschillende niveaus:
 
 - **Hostniveau (door Azure Defender voor servers)** : met behulp van dezelfde log Analytics-agent die Security Center gebruikt op andere vm's, bewaakt Azure Defender uw Linux AKS-knoop punten voor verdachte activiteiten, zoals detectie van webshells en verbinding met bekende verdachte IP-adressen. De agent bewaakt ook voor container-specifieke analyses, zoals het maken van geprivilegieerde containers, verdachte toegang tot API-servers en SSH-servers (Secure Shell) die binnen een docker-container worden uitgevoerd.
 
-    Zie de [naslag tabel met waarschuwingen](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)voor een lijst met waarschuwingen op hostniveau op AKS.
+    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-containerhost)voor een lijst met waarschuwingen op hostniveau op AKS.
 
     >[!IMPORTANT]
     > Als u ervoor kiest om de agents op uw hosts niet te installeren, ontvangt u alleen een subset van de voor delen van bedreigings beveiliging en beveiligings waarschuwingen. U ontvangt nog steeds waarschuwingen met betrekking tot netwerk analyse en communicatie met schadelijke servers.
 
 - **AKS-cluster niveau (door Azure Defender voor Kubernetes)** -op het cluster niveau is beveiliging tegen bedreigingen gebaseerd op het analyseren van de audit logboeken van Kubernetes. Schakel Azure Defender in om deze bewaking zonder **agents** in te scha kelen. Als u waarschuwingen op dit niveau wilt genereren, controleert Security Center uw door AKS beheerde services met de logboeken die zijn opgehaald door AKS. Voor beelden van gebeurtenissen op dit niveau zijn onder andere beschik bare Kubernetes-Dash boards, het maken van rollen met hoge bevoegdheden en het maken van gevoelige koppels.
 
-    Zie de [naslag tabel met waarschuwingen](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)voor een lijst met waarschuwingen op AKS-cluster niveau.
+    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-akscluster)voor een lijst met waarschuwingen op AKS-cluster niveau.
 
     >[!NOTE]
     > Security Center genereert beveiligings waarschuwingen voor Azure Kubernetes-service acties en implementaties die worden uitgevoerd nadat de optie Kubernetes is ingeschakeld op de abonnements instellingen. 

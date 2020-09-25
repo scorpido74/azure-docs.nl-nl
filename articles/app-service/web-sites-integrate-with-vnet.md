@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255235"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Een app integreren met een virtueel Azure-netwerk
 
@@ -54,6 +54,10 @@ Apps in App Service worden gehost op werk rollen. De basis-en hogere prijs plann
 
 Wanneer regionale VNet-integratie is ingeschakeld, maakt uw app uitgaande oproepen naar het Internet via dezelfde kanalen als normaal. De uitgaande adressen die worden vermeld in de app-eigenschappen Portal zijn de adressen die nog steeds worden gebruikt door uw app. Welke wijzigingen voor uw app zijn de aanroepen van beveiligde services voor service-eind punten of RFC 1918-adressen gaan naar uw VNet. Als WEBSITE_VNET_ROUTE_ALL is ingesteld op 1, kan al het uitgaande verkeer naar uw VNet worden verzonden.
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` wordt momenteel niet ondersteund in Windows-containers.
+> 
+
 De functie ondersteunt slechts één virtuele interface per werk nemer. Eén virtuele interface per werk nemer betekent één regionale VNet-integratie per App Service plan. Alle apps in hetzelfde App Service-abonnement kunnen gebruikmaken van dezelfde VNet-integratie. Als u een app nodig hebt om verbinding te maken met een aanvullend VNet, moet u een ander App Service plan aanmaken. De virtuele interface wordt gebruikt, is geen resource waarmee klanten rechtstreeks toegang hebben tot.
 
 Vanwege de aard van de werking van deze technologie, wordt het verkeer dat wordt gebruikt met VNet-integratie niet weer gegeven in azure Network Watcher-of NSG-stroom Logboeken.
@@ -72,7 +76,8 @@ Gateway-vereiste VNet-integratie biedt ondersteuning voor het verbinden met een 
 U kunt Gateway-vereiste VNet-integratie niet gebruiken:
 
 * Met een VNet dat is verbonden met Azure ExpressRoute.
-* Vanuit een Linux-app
+* Vanuit een Linux-app.
+* Vanuit een [Windows-container](quickstart-custom-container.md).
 * Om toegang te krijgen tot beveiligde bronnen van service-eind punten.
 * Met een gateway voor samen werking die zowel ExpressRoute als Point-to-site-of site-naar-site-Vpn's ondersteunt.
 

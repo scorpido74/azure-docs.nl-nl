@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253188"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -60,7 +60,7 @@ Er is geen invloed op de prestaties van uw transactionele workloads vanwege anal
 
 ### <a name="auto-sync"></a>Automatische synchronisatie
 
-Automatische synchronisatie verwijst naar de volledig beheerde mogelijkheid van Azure Cosmos DB waarbij de toevoegingen, updates, verwijderingen van de operationele gegevens, binnen vijf minuten automatisch worden gesynchroniseerd vanuit transactioneel archief naar een analytische opslag.
+Automatische synchronisatie verwijst naar de volledig beheerde mogelijkheid van Azure Cosmos DB waarbij de toevoegingen, updates en verwijderingen van de operationele gegevens automatisch worden gesynchroniseerd vanuit transactioneel archief naar een analytische opslag in de nabije real-time. Latentie van automatische synchronisatie is doorgaans binnen twee minuten. In het geval van een gedeelde doorvoer database met een groot aantal containers, kan de latentie van de automatische synchronisatie van afzonderlijke containers hoger zijn en kan het tot vijf minuten duren. We willen graag meer informatie over hoe deze latentie past bij uw scenario's. Neem hiervoor contact op met het Azure Cosmos DB- [team](mailto:cosmosdbsynapselink@microsoft.com).
 
 De functie voor automatische synchronisatie in combi natie met analytische opslag biedt de volgende belang rijke voor delen:
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-De blad eigenschap `streetName` binnen het geneste object `address` wordt weer gegeven in het analytische-archief schema als kolom `address.object.streetName.int32` . Het gegevens type wordt toegevoegd als een achtervoegsel aan de kolom. Op deze manier wordt, als een ander document wordt toegevoegd aan de transactionele Store, waar de waarde van de Leaf `streetNo` -eigenschap ' 123 ' is (Let op een teken reeks), wordt het schema van de analytische opslag automatisch gegroeid zonder het type van een eerder geschreven kolom te wijzigen. Een nieuwe kolom die wordt toegevoegd aan de analytische opslag, `address.object.streetName.string` waar deze waarde van "123" wordt opgeslagen.
+De blad eigenschap `streetNo` binnen het geneste object `address` wordt weer gegeven in het analytische-archief schema als kolom `address.object.streetNo.int32` . Het gegevens type wordt toegevoegd als een achtervoegsel aan de kolom. Op deze manier wordt, als een ander document wordt toegevoegd aan de transactionele Store, waar de waarde van de Leaf `streetNo` -eigenschap ' 123 ' is (Let op een teken reeks), wordt het schema van de analytische opslag automatisch gegroeid zonder het type van een eerder geschreven kolom te wijzigen. Een nieuwe kolom die wordt toegevoegd aan de analytische opslag, `address.object.streetNo.string` waar deze waarde van "123" wordt opgeslagen.
 
 **Het gegevens type voor de toewijzing van het achtervoegsel**
 

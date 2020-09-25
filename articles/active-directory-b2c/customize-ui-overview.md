@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259540"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -34,7 +34,7 @@ Als u gebruik maakt van [gebruikers stromen](user-flow-overview.md), kunt u het 
 U gebruikt de [Azure Portal](tutorial-customize-ui.md) voor het configureren van de UI-aanpassing voor gebruikers stromen.
 
 > [!TIP]
-> Als u alleen het banner logo, de achtergrond afbeelding en de achtergrond kleur van de pagina's van uw gebruikers stroom wilt wijzigen, kunt u de functie [voor bedrijfs huisstijl (preview)](#company-branding-preview) proberen die verderop in dit artikel wordt beschreven.
+> Als u alleen het banner logo, de achtergrond afbeelding en de achtergrond kleur van de pagina's van uw gebruikers stroom wilt wijzigen, kunt u de functie voor [bedrijfs huisstijl](#company-branding) proberen. dit wordt verderop in dit artikel beschreven.
 
 ### <a name="custom-policies"></a>Aangepast beleid
 
@@ -42,7 +42,7 @@ Als u [aangepaste beleids regels](custom-policy-overview.md) gebruikt voor het a
 
 Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 U kunt Java script-code aan de client zijde inschakelen in zowel [gebruikers stromen](user-flow-javascript-overview.md) als [aangepaste beleids regels](page-layout.md).
 
@@ -158,13 +158,11 @@ De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd 
 | Meervoudige verificatie | Klanten kunnen hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
 | Fout | Geeft fout informatie aan de klant. |
 
-## <a name="company-branding-preview"></a>Huis stijl van bedrijf (preview-versie)
+## <a name="company-branding"></a>Aangepaste huisstijl
 
 U kunt de pagina's van uw gebruikers stroom aanpassen met een banner logo, achtergrond afbeelding en achtergrond kleur door Azure Active Directory [bedrijfs huisstijl](../active-directory/fundamentals/customize-branding.md)te gebruiken.
 
 Als u de pagina's van uw gebruikers stroom wilt aanpassen, moet u eerst de huis stijl van het bedrijf in Azure Active Directory configureren. vervolgens schakelt u deze in op de pagina-indelingen van uw gebruikers stromen in Azure AD B2C.
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Bedrijfshuisstijl configureren
 

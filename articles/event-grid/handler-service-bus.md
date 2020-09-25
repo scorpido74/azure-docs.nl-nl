@@ -3,12 +3,12 @@ title: Service Bus-wacht rijen en-onderwerpen als gebeurtenis-handlers voor Azur
 description: Hierin wordt beschreven hoe u Service Bus-wacht rijen en-onderwerpen kunt gebruiken als gebeurtenis-handlers voor Azure Event Grid-gebeurtenissen.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440793"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270165"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus-wacht rijen en-onderwerpen als gebeurtenis-handlers voor Azure Event Grid gebeurtenissen
 Een gebeurtenis-handler is de plaats waar de gebeurtenis wordt verzonden. De handler heeft een aantal verdere acties nodig om de gebeurtenis te verwerken. Verschillende Azure-Services worden automatisch geconfigureerd voor het afhandelen van gebeurtenissen en **Azure service bus** is een hiervan. 
@@ -51,7 +51,7 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>Bericht eigenschappen
-Als u een **Service Bus onderwerp of wachtrij** als gebeurtenis-handler voor gebeurtenissen van Event grid gebruikt, stelt u de volgende bericht koppen in: 
+Als u een **Service Bus onderwerp of wachtrij** als gebeurtenis-handler gebruikt voor gebeurtenissen van Event grid, zijn dit de eigenschappen die u ontvangt in de bericht koppen: 
 
 | Naam van eigenschap | Beschrijving |
 | ------------- | ----------- | 
@@ -156,6 +156,9 @@ De interne systeem-ID voor het bericht wordt gehandhaafd over de herlevering van
     }
 }
 ```
+
+> [!NOTE]
+> Het leveren van gebeurtenissen aan een Azure Serviceart bus-wachtrij of-onderwerp in **een andere Tenant** wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het artikel over [gebeurtenis-handlers](event-handlers.md) voor een lijst met ondersteunde gebeurtenis-handlers. 

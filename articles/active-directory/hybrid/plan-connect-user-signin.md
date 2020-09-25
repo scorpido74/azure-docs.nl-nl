@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299907"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Opties voor Azure AD Connect gebruikers aanmelding
 Met Azure Active Directory (Azure AD) Connect kunnen uw gebruikers zich aanmelden bij zowel Cloud-als on-premises resources met behulp van dezelfde wacht woorden. In dit artikel worden de belangrijkste concepten voor elk identiteits model beschreven, waarmee u de identiteit kunt kiezen die u wilt gebruiken om u aan te melden bij Azure AD.
@@ -126,7 +126,7 @@ De aanmeldings ervaring van Azure AD is afhankelijk van het feit of Azure AD kan
 Azure AD Connect geeft een lijst van de UPN-achtervoegsels die zijn gedefinieerd voor de domeinen en probeert deze te koppelen aan een aangepast domein in azure AD. Vervolgens helpt u met de juiste actie die moet worden uitgevoerd.
 Op de aanmeldings pagina van Azure AD worden de UPN-achtervoegsels vermeld die zijn gedefinieerd voor on-premises Active Directory en wordt de bijbehorende status voor elk achtervoegsel weer gegeven. De status waarden kunnen een van de volgende zijn:
 
-| Staat | Beschrijving | Actie vereist |
+| Status | Beschrijving | Actie vereist |
 |:--- |:--- |:--- |
 | Gegaan |Azure AD Connect heeft een overeenkomend gecontroleerd domein gevonden in azure AD. Alle gebruikers voor dit domein kunnen zich aanmelden met behulp van hun on-premises referenties. |Er is geen actie nodig. |
 | Niet geverifieerd |Azure AD Connect heeft een overeenkomend aangepast domein gevonden in azure AD, maar dit is niet geverifieerd. Het UPN-achtervoegsel van de gebruikers van dit domein wordt gewijzigd in het default. onmicrosoft.com-achtervoegsel na synchronisatie als het domein niet is geverifieerd. | [Controleer het aangepaste domein in azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -155,7 +155,7 @@ Voor de volgende informatie wordt ervan uitgegaan dat we het UPN-achtervoegsel c
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Snelle instellingen/wachtwoord-hash-synchronisatie
 
-| Staat | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
+| Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
 | Niet toegevoegd |In dit geval is er geen aangepast domein voor contoso.com toegevoegd aan de Azure AD-adres lijst. Gebruikers met UPN on-premises met het achtervoegsel @contoso.com kunnen hun lokale UPN niet gebruiken om zich aan te melden bij Azure. Ze moeten in plaats daarvan een nieuwe UPN gebruiken die door Azure AD wordt geleverd door het achtervoegsel voor de standaard Azure AD-adres lijst toe te voegen. Als u bijvoorbeeld gebruikers synchroniseert met de Azure AD-adres lijst azurecontoso.onmicrosoft.com, krijgt de lokale gebruiker user@contoso.com een UPN van user@azurecontoso.onmicrosoft.com . |
 | Niet geverifieerd |In dit geval hebben we een aangepast domein contoso.com dat wordt toegevoegd aan de Azure AD-adres lijst. Het is echter nog niet geverifieerd. Als u de synchronisatie van gebruikers verloopt zonder het domein te verifiëren, worden de gebruikers een nieuwe UPN toegewezen door Azure AD, net als in het scenario ' niet toegevoegd '. |
@@ -166,7 +166,7 @@ U kunt geen Federatie maken met het default. onmicrosoft.com-domein in azure AD 
 
 Als u de optie Federatie gebruiker aanmelden hebt geselecteerd **met AD FS**, moet u een aangepast domein hebben om door te gaan met het maken van een Federatie in azure AD. Voor onze discussie betekent dit dat er een aangepast domein contoso.com is toegevoegd aan de Azure AD-adres lijst.
 
-| Staat | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
+| Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
 | Niet toegevoegd |In dit geval heeft Azure AD Connect geen overeenkomend aangepast domein gevonden voor het UPN-achtervoegsel contoso.com in de Azure AD-adres lijst. U moet een aangepast domein contoso.com toevoegen als u gebruikers wilt aanmelden met behulp van AD FS met hun lokale UPN (zoals user@contoso.com ). |
 | Niet geverifieerd |In dit geval vraagt Azure AD Connect u de juiste informatie over hoe u uw domein in een later stadium kunt controleren. |
@@ -179,7 +179,7 @@ U kunt de aanmeldings methode voor gebruikers wijzigen vanuit Federatie, synchro
 
 Op de volgende pagina wordt u gevraagd de referenties voor Azure AD op te geven.
 
-![Verbinding maken met Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
+![Scherm afbeelding die laat zien waar u de referenties voor Azure AD moet typen.](./media/plan-connect-user-signin/changeusersignin2.png)
 
 Selecteer op de aanmeldings pagina van de **gebruiker** de aanmeldings locatie van de gewenste gebruiker.
 

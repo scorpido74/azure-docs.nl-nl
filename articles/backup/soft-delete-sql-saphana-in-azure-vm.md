@@ -3,59 +3,18 @@ title: Voorlopig verwijderen voor SQL Server in azure VM en SAP HANA in werk bel
 description: Meer informatie over hoe zacht verwijderen voor SQL Server in azure VM en SAP HANA in azure VM-workloads maakt back-ups veiliger.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254292"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Voorlopig verwijderen voor SQL Server in azure VM en SAP HANA in werk belastingen voor Azure VM
 
 Azure Backup biedt nu zacht verwijderen voor SQL Server in azure VM en SAP HANA in azure VM-workloads. Dit is een aanvulling op het al ondersteunde [scenario voor het voorlopig verwijderen van een virtuele machine van Azure](soft-delete-virtual-machines.md).
 
 [Zacht verwijderen](backup-azure-security-feature-cloud.md) is een beveiligings functie die u helpt bij het beveiligen van back-upgegevens, zelfs na het verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een Data Base verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard. Hiermee kan het back-upitem worden hersteld zonder gegevens verlies. Bij deze extra Bewaar periode van 14 dagen van de back-upgegevens in de status ' voorlopig verwijderen ' worden er geen kosten in rekening gebracht voor de klant.
-
->[!NOTE]
->Zodra de preview-versie voor een abonnement is ingeschakeld, is het niet mogelijk om alleen de optie voorlopig verwijderen uit te scha kelen voor SQL Server of SAP HANA Db's terwijl de virtuele machines in dezelfde kluis ingeschakeld blijven. U kunt afzonderlijke kluizen maken voor gedetailleerde controle.
-
-## <a name="steps-to-enroll-in-preview"></a>Stappen voor het inschrijven van de preview-versie
-
-1. Meld u aan bij uw Azure-account.
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. Selecteer het abonnement dat u wilt inschrijven in de preview-versie:
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. Dit abonnement registreren bij het preview-programma:
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. Wacht 30 minuten totdat het abonnement is inge schreven in de preview-versie.
-
-5. Voer de volgende cmdlets uit om de status te controleren:
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. Wanneer het abonnement wordt weer gegeven als geregistreerd, voert u de volgende opdracht uit:
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->Telkens wanneer een nieuwe kluis/kluis wordt gemaakt onder het abonnement voor voorlopig verwijderen, moet de volgende opdracht opnieuw worden uitgevoerd om de functie in te scha kelen voor de nieuwe kluizen.<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Voorlopig verwijderen voor SQL Server in azure VM met behulp van Azure Portal
 
