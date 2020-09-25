@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250654"
 ---
 # <a name="feature-engineering-in-data-science"></a>Functie techniek in data wetenschappen
 
-In dit artikel vindt u informatie over feature engineering en de bijbehorende rol bij het verbeteren van gegevens in machine learning. Leer van voor beelden die zijn getekend uit [Azure machine learning Studio (klassieke)](../studio/what-is-ml-studio.md) experimenten. 
+In dit artikel vindt u informatie over feature engineering en de bijbehorende rol bij het verbeteren van gegevens in machine learning. Leer van voor beelden die zijn getekend uit [Azure machine learning Studio (klassieke)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenten. 
 
 * **Functie techniek**: het proces van het maken van nieuwe functies van onbewerkte gegevens om de voorspellende kracht van het leer algoritme te verg Roten. Functies die zijn ontworpen, moeten extra informatie vastleggen die niet eenvoudig zichtbaar is in de oorspronkelijke functieset.
 * **Functie selectie**: het proces van het selecteren van de sleutel subset van functies om de dimensionaliteit van het trainings probleem te verminderen.
@@ -74,7 +74,7 @@ Een vergelijking van de prestatie resultaten van de vier modellen wordt in de vo
 
 De beste resultaten worden weer gegeven door functies A + B + C. De fout frequentie neemt af wanneer extra functie sets zijn opgenomen in de trainings gegevens. Hiermee wordt het vermoeden gecontroleerd dat de functie set B, C aanvullende relevante informatie biedt voor de regressie taak. Het toevoegen van de D-functie lijkt geen extra verlaging van het fout aantal te bieden.
 
-## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a>Voor beeld 2: functies maken voor tekst analyse
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> Voor beeld 2: functies maken voor tekst analyse
 
 Functie techniek wordt veel toegepast in taken met betrekking tot tekst analyse, zoals document classificatie en sentiment analyse. Omdat afzonderlijke gedeelten van onbewerkte tekst doorgaans als invoer gegevens dienen, is het technisch proces van de functie nodig om de functies te maken met behulp van woord-en woordgroepen frequenties.
 

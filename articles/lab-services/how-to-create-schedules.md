@@ -3,12 +3,12 @@ title: Planning voor klassikale Labs maken in Azure Lab Services | Microsoft Doc
 description: Meer informatie over het maken van planningen voor klassikale Labs in Azure Lab Services zodat Vm's in de Labs op een opgegeven tijdstip worden gestart en afgesloten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326436"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Planningen voor het maken en beheren van klassikale Labs in Azure Lab Services 
 Met planningen kunt u een leslokaal Lab zodanig configureren dat de virtuele machines in het lab automatisch worden gestart en op een opgegeven tijdstip worden afgesloten. U kunt een eenmalig schema of een terugkerende planning definiëren. De volgende procedures geven u stappen voor het maken en beheren van planningen voor een klas Lab: 
@@ -27,7 +27,7 @@ Maak een geplande gebeurtenis voor het lab, zodat VM's in het lab op opgegeven m
 
 1. Ga naar de pagina **Planningen** en selecteer **Geplande gebeurtenis toevoegen** in de werkbalk. 
 
-    ![Knop Planning toevoegen op de pagina Planningen](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Scherm opname van de Azure Lab Services pagina ' schema ', met de knop schema toevoegen geselecteerd.](./media/how-to-create-schedules/add-schedule-button.png)
 2. Controleer of **Standaard** is geselecteerd voor het **Gebeurtenistype**. U selecteert **alleen starten** om alleen de begin tijd voor de virtuele machines op te geven. U selecteert **alleen stoppen** om alleen de eind tijd voor de virtuele machines op te geven. 
 7. Selecteer in de sectie **herhalen** het huidige schema. 
 

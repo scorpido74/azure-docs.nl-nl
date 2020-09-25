@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: Jive configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Jive.
+description: Meer informatie over de stappen die u moet uitvoeren in Jive en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar Jive.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312093"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Zelf studie: Jive configureren voor automatische gebruikers inrichting
 

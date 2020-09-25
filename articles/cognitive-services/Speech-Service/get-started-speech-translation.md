@@ -10,26 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
 keywords: spraak omzetting
-ms.openlocfilehash: da321e2f259ae6e994cddcb928cc139a28c6d9ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 855e999feddfa9c87f10115866f9b393e6cecc96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326899"
 ---
 # <a name="get-started-with-speech-translation"></a>Aan de slag met spraakomzetting
-
-Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
-
-* Omzetten van spraak naar tekst
-* Spraak omzetten naar meerdere doel talen
-* Direct omzetten van spraak naar spraak uitvoeren
-
-> [!TIP]
-> Raadpleeg de [quickstart-voorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) op GitHub als u direct naar voorbeeldcode wilt gaan.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-translation-basics/speech-translation-basics-csharp.md)]

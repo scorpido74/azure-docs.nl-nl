@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 4b069dea3f07477fcbca21e08166cdfad8cad2cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326725"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Gebruik MongoDB-extensie opdrachten voor het beheren van gegevens die zijn opgeslagen in de API van Azure Cosmos DB voor MongoDB 
 
@@ -26,14 +26,14 @@ De API van Azure Cosmos DB voor MongoDB is compatibel met MongoDB Server versie 
 
 De volgende extensie opdrachten bieden de mogelijkheid om Azure Cosmos DB-specifieke resources te maken en te wijzigen via database aanvragen:
 
-* [Database maken](#create-database)
+* [Data base maken](#create-database)
 * [Data base bijwerken](#update-database)
 * [Data base ophalen](#get-database)
 * [Verzameling maken](#create-collection)
 * [Verzameling bijwerken](#update-collection)
 * [Verzameling ophalen](#get-collection)
 
-## <a name="create-database"></a><a id="create-database"></a>Data base maken
+## <a name="create-database"></a><a id="create-database"></a> Data base maken
 
 Met de opdracht Create Data Base extension maakt u een nieuwe MongoDB-data base. De database naam kan worden gebruikt vanuit de database context die met de `use database` opdracht is ingesteld. In de volgende tabel worden de para meters in de opdracht beschreven:
 
@@ -86,7 +86,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughput: 20000 } });
 ```
 
-## <a name="update-database"></a><a id="update-database"></a>Data base bijwerken
+## <a name="update-database"></a><a id="update-database"></a> Data base bijwerken
 
 Met de opdracht data base-extensie bijwerken worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven Data Base. In de volgende tabel worden de para meters in de opdracht beschreven:
 
@@ -129,7 +129,7 @@ db.runCommand({customAction: "UpdateDatabase", autoScaleSettings: { maxThroughpu
 ```
 
 
-## <a name="get-database"></a><a id="get-database"></a>Data base ophalen
+## <a name="get-database"></a><a id="get-database"></a> Data base ophalen
 
 De opdracht data base-extensie ophalen retourneert het database object. De database naam wordt gebruikt vanuit de database context waartegen de opdracht wordt uitgevoerd.
 
@@ -195,7 +195,7 @@ Als voor de Data Base een [automatisch schalen door Voer op database niveau](pro
 }
 ```
 
-## <a name="create-collection"></a><a id="create-collection"></a>Verzameling maken
+## <a name="create-collection"></a><a id="create-collection"></a> Verzameling maken
 
 Met de opdracht verzamelings extensie maken maakt u een nieuwe MongoDB-verzameling. De database naam wordt gebruikt in de context van de data bases die is ingesteld met de `use database` opdracht. De indeling van de CreateCollection opdracht is als volgt:
 
@@ -288,7 +288,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", shardKey: "a.b", autoScaleSettings: { maxThroughput: 20000 }});
 ```
 
-## <a name="update-collection"></a><a id="update-collection"></a>Verzameling bijwerken
+## <a name="update-collection"></a><a id="update-collection"></a> Verzameling bijwerken
 
 Met de opdracht verzamelings extensie bijwerken worden de eigenschappen bijgewerkt die zijn gekoppeld aan de opgegeven verzameling.
 
@@ -324,7 +324,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a name="get-collection"></a><a id="get-collection"></a>Verzameling ophalen
+## <a name="get-collection"></a><a id="get-collection"></a> Verzameling ophalen
 
 De opdracht verzameling aangepaste ophalen retourneert het verzamelings object.
 
@@ -413,7 +413,7 @@ Als de verzameling een [door Voer op database niveau](set-throughput.md#set-thro
 ```
 
 
-## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>Standaard uitvoer van een aangepaste opdracht
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a> Standaard uitvoer van een aangepaste opdracht
 
 Als deze niet is opgegeven, bevat een aangepast antwoord een document met de volgende velden:
 

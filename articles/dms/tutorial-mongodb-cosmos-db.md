@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: b5e335659a26568ae11a17425c4e53c53f02a843
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282354"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Zelf studie: MongoDB migreren naar de API van Azure Cosmos DB voor MongoDB offline met DMS
 
@@ -29,7 +29,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 
 In deze zelf studie migreert u een gegevensset in MongoDB die wordt gehost op een virtuele machine van Azure naar Azure Cosmos DB API voor MongoDB met behulp van Azure Database Migration Service. Als u nog geen MongoDB-bron hebt ingesteld, raadpleegt u het artikel over het [installeren en configureren van MongoDB op een Windows-VM in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
 
@@ -96,7 +96,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 7. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 

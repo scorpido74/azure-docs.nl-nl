@@ -9,14 +9,17 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a0c5c601b0d3bc0d862ea4984ee2c6d4b76d13ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282065"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC dubbele module en afhankelijkheden helemaal zelf implementeren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 De OPC-dubbele module wordt uitgevoerd op IoT Edge en biedt verschillende Edge-services aan de OPC Device-dubbele en register Services. 
 
@@ -181,7 +184,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 1. Installeer [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
-### <a name="quickstart"></a>Snelstartgids
+### <a name="quickstart"></a>Snelstart
 
 1. Sla het bovenstaande implementatie manifest op in een `deployment.json` bestand.  
 

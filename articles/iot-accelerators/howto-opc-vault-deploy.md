@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282020"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service in azure implementeert.
 
@@ -75,9 +78,9 @@ Een Power shell-script biedt een eenvoudige manier om de OPC-kluis micro service
    > [!NOTE]
    > In het geval van problemen raadpleegt u de sectie ' problemen met implementatie fouten oplossen ' verderop in dit artikel.
 
-8. Open uw favoriete browser en open de toepassings pagina:`https://myResourceGroup.azurewebsites.net`
+8. Open uw favoriete browser en open de toepassings pagina: `https://myResourceGroup.azurewebsites.net`
 8. Geef de web-app en de OPC-kluis micro service een paar minuten om na de implementatie te warmten. De start pagina van het web reageert mogelijk niet meer bij het eerste gebruik, Maxi maal een minuut, totdat u de eerste reacties krijgt.
-11. Als u de Swagger API wilt bekijken, opent u:`https://myResourceGroup-service.azurewebsites.net`
+11. Als u de Swagger API wilt bekijken, opent u: `https://myResourceGroup-service.azurewebsites.net`
 13. Start om een lokale GDS-server te starten met DotNet `.\myResourceGroup-gds.cmd` . Start met docker `.\myResourceGroup-dockergds.cmd` .
 
 Het is mogelijk om een build opnieuw te implementeren met precies dezelfde instellingen. Houd er rekening mee dat een dergelijke bewerking alle toepassings geheimen vernieuwt en mogelijk sommige instellingen in de toepassings registraties van de Azure Active Directory (Azure AD) opnieuw kan instellen.
@@ -88,7 +91,7 @@ Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de servi
 
 ## <a name="delete-the-services-from-the-subscription"></a>De services verwijderen uit het abonnement
 
-U doet dit als volgt:
+Dit doet u als volgt:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar de resource groep waarin de service is geïmplementeerd.

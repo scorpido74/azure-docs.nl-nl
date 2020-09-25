@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 05f81e4d93244db854bf8d0ec254ee647f81d9cc
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069166"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326674"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark connector voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -56,12 +56,20 @@ U kunt de connector gebruiken met [Azure Databricks](https://azure.microsoft.com
 
 | Resource | Koppeling |
 |---|---|
-| **SDK downloaden** | [Downloaden van Apache Spark](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) |
+| **SDK downloaden** | [Down load nieuwste. jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG), [maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**API-documentatie** | [Naslag informatie voor Spark-connector]() |
 |**Bijdragen aan de SDK** | [Azure Cosmos DB connector voor Apache Spark op GitHub](https://github.com/Azure/azure-cosmosdb-spark) | 
 |**Aan de slag** | [big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>Release geschiedenis
+
+### <a name="330"></a>3.3.0
+#### <a name="new-features"></a>Nieuwe functies
+- Hiermee voegt u een nieuwe configuratie optie toe, `changefeedstartfromdatetime` die kan worden gebruikt om de start tijd op te geven waarop de changefeed moet worden verwerkt. Zie [configuratie opties](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)voor meer informatie.
+
+### <a name="320"></a>3.2.0
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+- Hiermee wordt een regressie opgelost die het overmatige geheugen gebruik heeft veroorzaakt door de uitvoerendeers voor grote resultaten sets (bijvoorbeeld met miljoenen rijen), wat uiteindelijk resulteert in de fout `java.lang.OutOfMemoryError: GC overhead limit exceeded` .
 
 ### <a name="311"></a>3.1.1
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311543"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Veelgestelde vragen over Azure automanage voor Vm's
 
@@ -36,7 +36,9 @@ Hier volgen de vereisten voor het inschakelen van Azure automanage:
 
 **Welke RBAC-machtiging is nodig om automanage in te scha kelen?**
 
-Gebruikers moeten de rol eigenaar hebben. Gebruikers kunnen ook de rol Inzender samen met de rol beheerder van gebruikers toegang hebben om automanage toe te passen.
+Als u automanage op een virtuele machine met een bestaand automanage-account inschakelt, moet u de rol Inzender hebben voor de resource groep waar de virtuele machine zich bevindt. 
+
+Als u een nieuw account voor automanage gebruikt wanneer u dit inschakelt, moeten gebruikers de rol eigenaar hebben of beschikken over de rol Inzender + gebruikers toegang voor het abonnement.
 
 
 **Welke regio's worden ondersteund?**
@@ -82,6 +84,11 @@ Ja, er is een ingebouwd beleid voor automatisch beheer van alle virtuele machine
 **Wat is een automanage-account?**
 
 Het account voor automatisch beheer is een MSI-bestand (Managed Service Identity) dat de beveiligings context of de identiteit waarmee de geautomatiseerde bewerkingen worden uitgevoerd.
+
+
+**Als u automanage inschakelt, heeft dit invloed op eventuele extra Vm's naast de virtuele machine (s) die ik heb geselecteerd?**
+
+Als uw virtuele machine is gekoppeld aan een bestaande Log Analytics-werk ruimte, wordt die werk ruimte opnieuw gebruikt voor het Toep assen van deze oplossingen: Wijzigingen bijhouden, inventarisatie en Updatebeheer. Voor alle Vm's die zijn verbonden met deze werk ruimte, zijn deze oplossingen ingeschakeld. 
 
 
 **Kan ik het configuratie Profiel van mijn VM wijzigen?**

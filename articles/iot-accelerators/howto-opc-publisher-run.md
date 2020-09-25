@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282133"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher uitvoeren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In dit artikel wordt beschreven hoe u de Publisher-fout opsporing OPC uitvoert. De oplossing biedt ook een oplossing voor prestatie-en geheugen overwegingen.
 
@@ -519,7 +522,7 @@ De runtime-omgeving heeft invloed op de persistentie van certificaten. Vermijd h
 
 - Als u systeem eigen op Windows uitvoert, kunt u een certificaat archief van het type toepassing niet gebruiken, `Directory` omdat de toegang tot de persoonlijke sleutel mislukt. In dit geval gebruikt u de optie `--at X509Store` .
 - Als Linux docker-container wordt uitgevoerd, kunt u de certificaat archieven toewijzen aan het bestands systeem van de host met de optie docker run `-v <hostdirectory>:/appdata` . Met deze optie wordt het certificaat persistent gemaakt voor alle toepassingen.
-- Als Linux docker-container wordt uitgevoerd en u een x509-archief wilt gebruiken voor het toepassings certificaat, gebruikt u de optie docker run `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` en de optie toepassing`--at X509Store`
+- Als Linux docker-container wordt uitgevoerd en u een x509-archief wilt gebruiken voor het toepassings certificaat, gebruikt u de optie docker run `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` en de optie toepassing `--at X509Store`
 
 ## <a name="performance-and-memory-considerations"></a>Overwegingen voor prestaties en geheugen
 
@@ -531,9 +534,9 @@ Wanneer u OPC Publisher uitvoert, moet u rekening houden met de prestatie vereis
 
 Het geheugen en de prestaties zijn afhankelijk van de configuratie van het aantal knoop punten dat u configureert om te publiceren. Zorg ervoor dat de volgende para meters aan uw vereisten voldoen:
 
-- Interval voor verzenden van IoT Hub:`--si`
-- Grootte van IoT Hub bericht (standaard `1` ):`--ms`
-- Capaciteit van de wachtrij voor bewaakte items:`--mq`
+- Interval voor verzenden van IoT Hub: `--si`
+- Grootte van IoT Hub bericht (standaard `1` ): `--ms`
+- Capaciteit van de wachtrij voor bewaakte items: `--mq`
 
 De `--mq` para meter bepaalt de bovengrens van de capaciteit van de interne wachtrij, die alle OPC-wijzigings meldingen voor knooppunt waarden buffert. Als OPC Publisher berichten niet kan verzenden naar IoT Hub snel genoeg is, buffert deze wachtrij de meldingen. Met de para meter wordt het aantal meldingen ingesteld dat in de buffer kan worden opgeslagen. Als u het aantal items in deze wachtrij verg root in uw test uitvoeringen ziet, kunt u voor komen dat er berichten verloren gaan:
 

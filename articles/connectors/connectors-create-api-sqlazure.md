@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326776"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
@@ -79,7 +79,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    Dit voor beeld gaat verder met **Azure AD Integrated**:
 
-   ![Selecteer het verificatie type dat u wilt gebruiken](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+   ![Scherm afbeelding met het verbindings venster ' SQL Server ' met de geopende lijst ' verificatie type ' en ' Azure AD Integrated ' geselecteerd.](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
 1. Nadat u **Azure AD Integrated**hebt geselecteerd, selecteert u **Aanmelden**. Selecteer uw gebruikers referenties voor verificatie op basis van het feit of u Azure SQL Database of Azure SQL Managed instance gebruikt.
 
@@ -87,9 +87,9 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Tabel naam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
+   | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
+   | **Databasenaam** | Yes | De naam voor uw SQL database, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
+   | **Tabel naam** | Yes | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -129,10 +129,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **SQL Server-naam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-databasenaam** | Ja | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Gebruikersnaam** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
-   | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
+   | **SQL Server-naam** | Yes | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-databasenaam** | Yes | De naam voor uw SQL Server-Data Base, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
+   | **Gebruikersnaam** | Yes | Uw gebruikers naam voor de SQL-Server en-data base |
+   | **Wachtwoord** | Yes | Uw wacht woord voor de SQL-Server en-data base |
    | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
    | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](../logic-apps/logic-apps-gateway-connection.md)correct hebt ingesteld. |
    |||
@@ -191,7 +191,7 @@ In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../co
 
    Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Onder **Kies een actie**, typt u in het zoekvak `sql server` . Selecteer in de lijst acties de gewenste SQL-actie. In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
+1. Voer in het zoekvak onder **Kies een actie** `sql server` in. Selecteer in de lijst acties de gewenste SQL-actie. In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
 
    ![Selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/select-sql-get-row-action.png)
 

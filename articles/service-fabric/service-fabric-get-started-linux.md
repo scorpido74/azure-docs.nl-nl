@@ -3,13 +3,13 @@ title: Uw ontwikkel omgeving instellen in Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249991"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -270,7 +270,7 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 
 6. Voer de installatiestappen uit. Ga vervolgens akkoord met de gebruiksrechtovereenkomst.
 
-Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **Update** als er een nieuwere versie beschikbaar is.
+Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **bijwerken** als er een nieuwere versie beschikbaar is.
 
 Zie [Service Fabric-invoegtoepassing voor de ontwikkeling van Eclipse Java-toepassingen](service-fabric-get-started-eclipse.md) voor meer informatie.
 

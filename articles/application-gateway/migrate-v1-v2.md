@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311594"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure-toepassing gateway en Web Application firewall migreren van v1 naar v2
 
@@ -25,7 +25,7 @@ Er zijn twee fasen in een migratie:
 
 In dit artikel wordt beschreven hoe u de configuratie migreert. Migratie van client verkeer varieert afhankelijk van uw specifieke omgeving. Er zijn echter algemene aanbevelingen [van](#migrate-client-traffic)een hoog niveau.
 
-## <a name="migration-overview"></a>Overzicht van Migratie
+## <a name="migration-overview"></a>Migratieoverzicht
 
 Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
@@ -36,6 +36,8 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
 * De nieuwe v2-gateway heeft nieuwe open bare en privé IP-adressen. Het is niet mogelijk om de IP-adressen die zijn gekoppeld aan de bestaande v1-gateway naadloos te verplaatsen naar v2. U kunt echter een bestaand (niet-toegewezen) openbaar of privé IP-adres toewijzen aan de nieuwe v2-gateway.
 * U moet een IP-adres ruimte opgeven voor een ander subnet in het virtuele netwerk waarin uw v1-gateway zich bevindt. Het script kan de v2-gateway niet maken in bestaande subnetten die al een v1-gateway hebben. Als het bestaande subnet al een v2-gateway heeft, kan dit echter nog steeds werken omdat er voldoende IP-adres ruimte beschikbaar is.
+* Als u een netwerk beveiligings groep of door de gebruiker gedefinieerde routes hebt die zijn gekoppeld aan het v2-gateway subnet, moet u ervoor zorgen dat ze voldoen aan de vereisten voor [NSG](../application-gateway/configuration-infrastructure.md#network-security-groups) en [UDR](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes) voor een geslaagde migratie
+* [Beleids regels voor het virtuele netwerk service-eind punten](../virtual-network/virtual-network-service-endpoint-policies-overview.md) worden momenteel niet ondersteund in een Application Gateway subnet.
 * Als u een TLS/SSL-configuratie wilt migreren, moet u alle TLS/SSL-certificaten opgeven die worden gebruikt in uw v1-gateway.
 * Als de FIPS-modus is ingeschakeld voor uw v1-gateway, wordt deze niet gemigreerd naar de nieuwe v2-gateway. De FIPS-modus wordt niet ondersteund in v2.
 * v2 biedt geen ondersteuning voor IPv6, zodat de voor IPv6 ingeschakelde v1-gateways niet worden gemigreerd. Als u het script uitvoert, wordt het mogelijk niet voltooid.
@@ -44,7 +46,7 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
 ## <a name="download-the-script"></a>Het script downloaden
 
-Down load het migratie script van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+Down load het migratie script van de  [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
 ## <a name="use-the-script"></a>Het script gebruiken
 

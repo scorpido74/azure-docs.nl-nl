@@ -4,19 +4,19 @@ description: Reactie van Azure Security Bench Mark v2-incident
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326385"
 ---
-# <a name="security-control-incident-response"></a>Beveiligings beheer: respons op incidenten
+# <a name="security-control-v2-incident-response"></a>Beveiligings controle v2: reactie op incidenten
 
-Reactie op incidenten betreft controles in de levens cyclus van incidenten-voor bereiding, detectie en analyse, insluiting en activiteiten na incidenten. Dit geldt ook voor het gebruik van Azure-Services, zoals Azure Security Center en Sentinel, om het respons proces van het incident te automatiseren.
+Reactie op incidenten heeft betrekking op besturings elementen in de levens cyclus van incidenten-voor bereiding, detectie en analyse, insluiting en activiteiten na incidenten. Dit geldt ook voor het gebruik van Azure-Services, zoals Azure Security Center en Sentinel, om het respons proces van het incident te automatiseren.
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: voor bereiding-respons proces van incidenten bijwerken voor Azure
 
@@ -28,13 +28,13 @@ Zorg ervoor dat uw organisatie processen heeft om te reageren op beveiligings in
 
 - [Implementeer beveiliging in de bedrijfs omgeving](https://aka.ms/AzSec4)
 
-- [Naslag Gids voor respons op incidenten](https://aka.ms/IRRG)
+- [Naslag Gids voor respons op incidenten](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Contact gegevens voor beveiligings incidenten in Azure Security Center instellen
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp va
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp va
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Zorg ervoor dat analisten verschillende gegevens bronnen kunnen opvragen en gebruiken bij het onderzoeken van mogelijke incidenten, om een volledig overzicht te maken van wat er is gebeurd. Zorg ervoor dat inzichten en informatie worden vastgelegd voor andere analisten en voor toekomstige historische Naslag informatie. 
+Zorg ervoor dat analisten verschillende gegevens bronnen kunnen opvragen en gebruiken bij het onderzoeken van mogelijke incidenten, om een volledig overzicht te maken van wat er is gebeurd. Diverse logboeken moeten worden verzameld om de activiteiten van een mogelijke aanvaller in de Kill-keten te volgen om blinde vlekken te voor komen.  U moet er ook voor zorgen dat inzichten en informatie worden vastgelegd voor andere analisten en voor toekomstige historische Naslag informatie.  
 
 De gegevens bronnen voor onderzoek bevatten de gecentraliseerde logboek registratie bronnen die al worden verzameld van de services binnen het bereik en het uitvoeren van systemen, maar kan ook het volgende omvatten:
 
-Netwerk gegevens: gebruik stroom logboeken voor netwerk beveiligings groepen, Azure Network Watcher en Azure Monitor om netwerk stroom logboeken en andere analyse-informatie vast te leggen. Moment opnamen van actieve systemen: 
+- Netwerk gegevens: gebruik stroom logboeken voor netwerk beveiligings groepen, Azure Network Watcher en Azure Monitor om netwerk stroom logboeken en andere analyse-informatie vast te leggen. 
 
--   Gebruik de functie voor moment opnamen van de virtuele machine van Azure om een moment opname te maken van de schijf waarop het systeem wordt uitgevoerd. 
+- Moment opnamen van actieve systemen: 
 
--   Gebruik de systeem eigen geheugen dump functie van het besturings systeem om een moment opname te maken van het actieve systeem geheugen.
+    - Gebruik de functie voor moment opnamen van de virtuele machine van Azure om een moment opname te maken van de schijf waarop het systeem wordt uitgevoerd. 
 
--   Gebruik de functie snap shot van de Azure-Services of de eigen mogelijkheid van uw software om moment opnamen van de actieve systemen te maken.
+    - Gebruik de systeem eigen geheugen dump functie van het besturings systeem om een moment opname te maken van het actieve systeem geheugen.
+
+    - Gebruik de functie snap shot van de Azure-Services of de eigen mogelijkheid van uw software om moment opnamen van de actieve systemen te maken.
 
 Azure Sentinel biedt uitgebreide gegevens analyse voor vrijwel elke logboek bron en een case beheer Portal om de volledige levens duur van incidenten te beheren. Informatie over Intelligence tijdens een onderzoek kan worden gekoppeld aan een incident voor het bijhouden en rapporteren van de doel einden. 
 
@@ -116,9 +118,9 @@ Azure Sentinel biedt uitgebreide gegevens analyse voor vrijwel elke logboek bron
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Bied de context aan analisten waarop incidenten zich richten op basis van ernst 
 
 Azure Security Center wijst aan elke waarschuwing een Ernst toe om u te helpen bepalen welke waarschuwingen het eerst moeten worden onderzocht. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau waarvan er sprake is van schadelijke opzet achter de activiteit die tot de waarschuwing heeft geleid.
 
-Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het identificeren en categoriseren van Azure-resources, met name voor de verwerking van gevoelige gegevens.  Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
+Daarnaast kunt u resources markeren met behulp van tags en een naamgevings systeem maken om Azure-resources te identificeren en categoriseren, met name voor de verwerking van gevoelige gegevens.  Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
 - [Beveiligingswaarschuwingen in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Automatiseer hand matige terugkerende taken om de reactie tijd te versnellen en 
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidentvoorbereiding](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 982aa4bdb37af53999e75b7e33db990adb057938
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250229"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Voor beeld: synoniemen voor Azure-Cognitive Search in C toevoegen #
 
@@ -97,7 +97,7 @@ results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
 Geen van de twee geïndexeerde documenten bevat deze termen, dus wordt de volgende uitvoer gegenereerd met de eerste `RunQueriesWithNonExistentTermsInIndex`.
-~~~
+```
 Search the entire index for the phrase "five star":
 
 no document matched
@@ -109,7 +109,7 @@ no document matched
 Search the entire index for the terms 'economy' AND 'hotel':
 
 no document matched
-~~~
+```
 
 ## <a name="enable-synonyms"></a>Synoniemen inschakelen
 
@@ -148,7 +148,7 @@ U kunt synoniemen op basis van twee stappen inschakelen. Als eerste definieert e
 
 Wanneer de synoniemtoewijzing is geüpload en de index is bijgewerkt voor gebruik van de synoniemtoewijzing, wordt met de tweede `RunQueriesWithNonExistentTermsInIndex`-aanroep de volgende uitvoer gegenereerd:
 
-~~~
+```
 Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
@@ -160,7 +160,7 @@ Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concier
 Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
-~~~
+```
 Met de eerste query wordt het document opgehaald uit de regel `five star=>luxury`. Met de tweede query wordt de zoekopdracht uitgebreid met `internet,wifi` en met de derde met zowel `hotel, motel` als `economy,inexpensive=>budget` bij het zoeken naar de overeenkomende documenten.
 
 Door synoniemen toe te voegen, wordt de zoekervaring volledig veranderd. In dit voor beeld zijn de oorspronkelijke query's niet in staat om zinvolle resultaten te retour neren, zelfs als de documenten in onze index relevant waren. Door synoniemen in te schakelen, breidt u de index zodanig uit dat deze ook termen bevat die regelmatig worden gebruikt, zonder dat daarbij wijzigingen worden aangebracht aan de onderliggende gegevens in de index.

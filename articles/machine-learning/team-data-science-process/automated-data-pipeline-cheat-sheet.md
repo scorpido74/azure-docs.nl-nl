@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250637"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Overzichtskaart voor een geautomatiseerde pijplijn voor voorspellingen van Azure Machine Learning
 Het **Microsoft Azure machine learning Cheat van de automatische gegevens pijplijn** helpt u bij het navigeren door de technologie die u kunt gebruiken om uw gegevens naar uw machine learning-webservice te halen waar deze door uw Predictive Analytics model kunnen worden beoordeeld.
@@ -35,7 +35,6 @@ Down load het Cheat-blad hier: ** [Microsoft Azure machine learning model voor a
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Meer hulp bij Machine Learning Studio
-* Zie [Inleiding tot machine learning op Microsoft Azure](../studio/what-is-machine-learning.md)voor een overzicht van Microsoft Azure machine learning.
-* Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor een uitleg over het implementeren van een score-webservice.
-* Zie [How to verbruik an Azure machine learning web service](../studio/consume-web-services.md)(Engelstalig) voor een bespreking van het gebruik van een score-webservice.
-
+* Zie [Inleiding tot machine learning op Microsoft Azure](../classic/index.yml)voor een overzicht van Microsoft Azure machine learning.
+* Zie [Deploy a Azure machine learning web service](../classic/deploy-a-machine-learning-web-service.md)(Engelstalig) voor een uitleg over het implementeren van een score-webservice.
+* Zie [How to verbruik an Azure machine learning web service](../classic/consume-web-services.md)(Engelstalig) voor een bespreking van het gebruik van een score-webservice.

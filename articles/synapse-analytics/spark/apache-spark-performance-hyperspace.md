@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249362"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hyper Space-een subsysteem voor indexering voor Apache Spark
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyper Space: een subsysteem voor indexering voor Apache Spark
 
-Hyper Space introduceert de mogelijkheid om Apache Spark gebruikers indexen te maken op hun gegevens sets (bijvoorbeeld CSV, JSON, Parquet enzovoort) en ze te gebruiken voor mogelijke query's en werklast versnelling.
+Hyper Space introduceert de mogelijkheid om Apache Spark-gebruikers indexen te maken op hun gegevens sets, zoals CSV, JSON en Parquet, en ze gebruiken voor mogelijke query's en werklast versnelling.
 
-In dit artikel benadrukken we de basis beginselen van Hyper Space, nadruk op de eenvoud en laat zien hoe deze kunnen worden gebruikt door vrijwel iedereen.
+In dit artikel benadrukken we de basis beginselen van Hyper Space, benadrukt u de eenvoud en laten we zien hoe deze kunnen worden gebruikt door alleen informatie over iedereen.
 
-Disclaimer: Hyper Space helpt u bij het versnellen van uw workloads/query's, onder twee omstandigheden:
+Disclaimer: Hyper Space helpt u bij het versnellen van uw workloads of query's in twee omstandigheden:
 
-* Query's bevatten filters op predikaten met hoge selectiviteit (u wilt bijvoorbeeld 100 overeenkomende rijen selecteren uit een miljoen kandidaten rijen)
-* Query's bevatten een koppeling waarbij veel wille keurige volg orde vereist zijn (bijvoorbeeld, u wilt deel nemen aan een gegevensset van 100 GB met een gegevensset van 10 GB)
+* Query's bevatten filters op predikaten met hoge selectiviteit. U kunt bijvoorbeeld 100 overeenkomende rijen selecteren uit een miljoen kandidaten rijen.
+* Query's bevatten een koppeling waarvoor zware wille keurige Volg ordes zijn vereist. U kunt bijvoorbeeld een gegevensset van 100 GB toevoegen met een gegevensset van 10 GB.
 
 U kunt uw werk belastingen zorgvuldig controleren en bepalen of het indexeren per geval wordt voor komen.
 
-Dit document is ook beschikbaar in de notitieblok vorm, voor [python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), voor [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) en [scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
+Dit document is ook beschikbaar in de notitieblok vorm, voor [python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)en [scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
 
 ## <a name="setup"></a>Instellen
 
-Start een nieuwe Spark-sessie om te beginnen met. Aangezien dit document een zelf studie is waarmee u kunt zien wat Hyper Space kan bieden, maakt u een configuratie wijziging waarmee we kunnen markeren wat Hyper Space op kleine gegevens sets doet. Spark maakt standaard gebruik van broadcast-koppeling om samenvoeg query's te optimaliseren wanneer de gegevens grootte voor één zijde van de koppeling klein is (dit is het geval voor de voorbeeld gegevens die we in deze zelf studie gebruiken). Daarom worden broadcast-samen voegingen uitgeschakeld, zodat er later wordt gebruikgemaakt van de functie voor sorteren samen voegen. Dit is hoofd zakelijk om te laten zien hoe Hyper Space-indexen op schaal worden gebruikt voor het versnellen van samenvoeg query's.
+Start een nieuwe Spark-sessie om te beginnen met. Aangezien dit document een zelf studie is waarmee u kunt zien wat Hyper Space kan bieden, maakt u een configuratie wijziging waarmee we kunnen markeren wat Hyper Space op kleine gegevens sets doet. 
 
-De uitvoer van de volgende cel bevat een verwijzing naar de geslaagde Spark-sessie en drukt '-1 ' af als de waarde voor de gewijzigde koppelings configuratie, wat aangeeft dat broadcast-koppeling is uitgeschakeld.
+Spark maakt standaard gebruik van broadcast-koppeling om samenvoeg query's te optimaliseren wanneer de gegevens grootte voor één zijde van de koppeling klein is (dit is het geval voor de voorbeeld gegevens die we in deze zelf studie gebruiken). Daarom worden broadcast-samen voegingen uitgeschakeld, zodat er later wordt gebruikgemaakt van de functie voor sorteren samen voegen. Dit is hoofd zakelijk om te laten zien hoe Hyper Space-indexen op schaal worden gebruikt voor het versnellen van samenvoeg query's.
+
+De uitvoer van de volgende cel bevat een verwijzing naar de met succes gemaakte Spark-sessie en drukt '-1 ' af als de waarde voor de gewijzigde koppelings configuratie, wat aangeeft dat broadcast-koppeling is uitgeschakeld.
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ De uitvoer van de volgende cel bevat een verwijzing naar de geslaagde Spark-sess
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -90,11 +92,11 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 
 ## <a name="data-preparation"></a>Gegevensvoorbereiding
 
-Om uw omgeving voor te bereiden, maakt u voorbeeld gegevens records en slaat u deze op als Parquet-gegevens bestanden. Hoewel Parquet wordt gebruikt voor een afbeelding, kunt u gebruikmaken van andere indelingen, zoals CSV. In de volgende cellen ziet u hoe u verschillende Hyper Space-indexen maakt voor deze voor beeld-gegevensset en hoe u Spark kunt gebruiken bij het uitvoeren van query's.
+Om uw omgeving voor te bereiden, maakt u voorbeeld gegevens records en slaat u deze op als Parquet-gegevens bestanden. Parquet wordt gebruikt voor een afbeelding, maar u kunt ook andere indelingen gebruiken, zoals CSV. In de volgende cellen ziet u hoe u verschillende Hyper Space-indexen kunt maken in deze voor beeld-gegevensset en hoe u Spark gebruikt bij het uitvoeren van query's.
 
 De voorbeeld records komen overeen met twee gegevens sets: afdeling en werk nemer. U moet de paden ' empLocation ' en ' deptLocation ' zodanig configureren dat ze op het opslag account naar de gewenste locatie verwijzen om gegenereerde gegevens bestanden op te slaan.
 
-De uitvoer van de onderliggende cel toont de inhoud van de gegevens sets als lijsten van triplets gevolgd door verwijzingen naar dataFrames die zijn gemaakt om de inhoud van elke gegevensset op de gewenste locatie op te slaan.
+In de uitvoer van de volgende cel wordt de inhoud van de gegevens sets weer gegeven als lijsten met triplets gevolgd door verwijzingen naar dataFrames die zijn gemaakt om de inhoud van elke gegevensset op de gewenste locatie op te slaan.
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-U kunt de inhoud van de Parquet-bestanden die we hierboven hebben gemaakt, controleren om er zeker van te zijn dat ze de verwachte records in de juiste indeling bevatten. We gebruiken deze gegevens bestanden later om Hyper Space-indexen te maken en voorbeeld query's uit te voeren.
+U kunt de inhoud van de Parquet-bestanden die we hebben gemaakt, controleren om er zeker van te zijn dat ze de verwachte records in de juiste indeling bevatten. Later gebruiken we deze gegevens bestanden om Hyper Space-indexen te maken en voorbeeld query's uit te voeren.
 
-Als de onderstaande cel wordt uitgevoerd, worden in de uitvoer de rijen in werk nemer-en afdelings dataFrames in een tabel vorm weer gegeven. Er moeten 14 werk nemers en 4 afdelingen zijn die overeenkomen met een van de triplets die u hebt gemaakt in de vorige cel.
+Het uitvoeren van de volgende cel produceert en uitvoer waarmee de rijen in de dataFrames van werk nemers en afdelingen in een tabel vorm worden weer gegeven. Er moeten 14 werk nemers en 4 afdelingen zijn die overeenkomen met een van de triplets die u hebt gemaakt in de vorige cel.
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -329,18 +331,22 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>Indexen
 
-Met Hyper Space kunt u indexen maken voor records die worden gescand vanuit persistente gegevens bestanden. Wanneer een item is gemaakt dat overeenkomt met de index wordt toegevoegd aan de meta gegevens van de Hyper Space. Deze meta gegevens worden later gebruikt door de optimalisatie van Apache Spark (met onze uitbrei dingen) tijdens de verwerking van query's om de juiste indexen te vinden en te gebruiken.
+Met Hyper Space kunt u indexen maken voor records die worden gescand vanuit persistente gegevens bestanden. Nadat ze zijn gemaakt, wordt een item dat overeenkomt met de index toegevoegd aan de meta gegevens van de Hyper Space. Deze meta gegevens worden later gebruikt door de optimalisatie van Apache Spark (met onze uitbrei dingen) tijdens de verwerking van query's om de juiste indexen te vinden en te gebruiken.
 
-Zodra indexen zijn gemaakt, kunt u verschillende acties uitvoeren:
+Nadat indexen zijn gemaakt, kunt u verschillende acties uitvoeren:
+
+* **Vernieuw of de onderliggende gegevens worden gewijzigd.** U kunt een bestaande index vernieuwen om de wijzigingen vast te leggen.
+* **Verwijder dit als de index niet nodig is.** U kunt een tijdelijke verwijdering uitvoeren, dat wil zeggen dat de index niet fysiek wordt verwijderd, maar is gemarkeerd als ' verwijderd ' zodat deze niet meer wordt gebruikt in uw workloads.
+* **Vacuüm als een index niet meer nodig is.** U kunt een index vacuüm, waardoor de inhoud van de index en de gekoppelde meta gegevens volledig worden verwijderd uit de meta gegevens van Hyper Spaces.
 
 Vernieuwen als de onderliggende gegevens worden gewijzigd, kunt u een bestaande index vernieuwen om die te registreren.
 Verwijderen als de index niet nodig is, kunt u een tijdelijke verwijdering uitvoeren. index is niet fysiek verwijderd maar is gemarkeerd als ' verwijderd ' zodat deze niet meer wordt gebruikt in uw workloads.
-Vacuüm als een index niet meer nodig is, kunt u deze vacuüm, waardoor de inhoud van de index en de gekoppelde meta gegevens volledig worden verwijderd uit de meta gegevens van de Hyper Space.
-In de onderstaande secties ziet u hoe de bewerkingen voor index beheer kunnen worden uitgevoerd in Hyper Space.
+
+In de volgende secties ziet u hoe de bewerkingen voor index beheer kunnen worden uitgevoerd in Hyper Space.
 
 Eerst moet u de vereiste bibliotheken importeren en een exemplaar van Hyper Space maken. Later gebruikt u dit exemplaar om verschillende Hyper Space-Api's aan te roepen om indexen te maken voor uw voorbeeld gegevens en om die indexen te wijzigen.
 
-Uitvoer van uitgevoerd onder-cel toont een verwijzing naar het gemaakt exemplaar van Hyper Space.
+In de uitvoer van de volgende cel wordt een verwijzing naar het gemaakte exemplaar van Hyper Space weer gegeven.
 
 :::zone pivot = "programming-language-scala"
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Als u een Hyper Space-index wilt maken, moet u twee soorten gegevens opgeven:
 
-Een Spark-data frame die verwijst naar de gegevens die moeten worden geïndexeerd.
-Een index configuratie object: IndexConfig, waarmee de index naam, geïndexeerde en opgenomen kolommen van de index worden opgegeven.
-U begint met het maken van drie Hyper Space-indexen op basis van de voorbeeld gegevens: twee indexen op de afdelings-gegevensset met de naam ' deptIndex1 ' en ' deptIndex2 ', en één index voor de werknemers gegevensverzameling met de naam ' empIndex '. Voor elke index hebt u een bijbehorende IndexConfig nodig om de naam samen met kolommen lijsten voor de geïndexeerde en opgenomen kolommen vast te leggen. Als u de onderstaande cel uitvoert, worden deze indexConfigs en de bijbehorende uitvoer weer gegeven.
+* Een Spark-data frame die verwijst naar de gegevens die moeten worden geïndexeerd.
+* Een index configuratie object, IndexConfig, waarmee de index naam en de geïndexeerde en opgenomen kolommen van de index worden opgegeven.
+
+U begint met het maken van drie Hyper Space-indexen op basis van de voorbeeld gegevens: twee indexen op de afdelings-gegevensset met de naam ' deptIndex1 ' en ' deptIndex2 ' en één index voor de gegevensset van de werk nemer met de naam ' empIndex '. Voor elke index hebt u een bijbehorende IndexConfig nodig om de naam samen met kolommen lijsten voor de geïndexeerde en opgenomen kolommen vast te leggen. Als u de volgende cel uitvoert, worden deze IndexConfigs gemaakt en worden deze in de uitvoer weer gegeven.
 
 > [!Note]
 > Een index kolom is een kolom die wordt weer gegeven in de filters of de voor waarden voor samen voegen. Een opgenomen kolom is een kolom die wordt weer gegeven in uw SELECT/project.
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-Nu maakt u drie indexen met behulp van uw index configuraties. Voor dit doel roept u de opdracht ' createIndex ' aan op onze Hyper Space-instantie. Voor deze opdracht is een index configuratie vereist en de data frame die rijen bevatten die moeten worden geïndexeerd. Als u de onderstaande cel uitvoert, worden er drie indexen gemaakt.
+Nu maakt u drie indexen met behulp van uw index configuraties. Voor dit doel roept u de opdracht ' createIndex ' aan op onze Hyper Space-instantie. Voor deze opdracht is een index configuratie vereist en de data frame die rijen bevatten die moeten worden geïndexeerd. Als u de volgende cel uitvoert, worden er drie indexen gemaakt.
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>Lijst indexen
 
-De onderstaande code laat zien hoe u alle beschik bare indexen in een Hyper Space-exemplaar kunt weer geven. Er wordt gebruikgemaakt van de API indices die informatie over bestaande indexen retourneert als Spark-data frame zodat u extra bewerkingen kunt uitvoeren. U kunt bijvoorbeeld geldige bewerkingen op deze data frame aanroepen om de inhoud ervan te controleren of deze verder te analyseren (bijvoorbeeld om specifieke indexen te filteren of ze te groeperen op basis van een gewenste eigenschap).
+De volgende code laat zien hoe u alle beschik bare indexen in een Hyper Space-exemplaar kunt weer geven. Er wordt gebruikgemaakt van de API indices die informatie over bestaande indexen retourneert als Spark-data frame zodat u extra bewerkingen kunt uitvoeren. 
 
-Onder cel gebruikt de actie ' weer geven ' van data frame om de rijen volledig af te drukken en de details van de indexen in een tabel vorm weer te geven. Voor elke index kunt u alle informatie-Hyper-in de meta gegevens opslaan. U ziet dan onmiddellijk het volgende:
+U kunt bijvoorbeeld geldige bewerkingen op deze data frame aanroepen om de inhoud ervan te controleren of deze verder te analyseren (bijvoorbeeld om specifieke indexen te filteren of ze te groeperen op basis van een gewenste eigenschap).
 
-* "config. indexnaam", "config. indexedColumns", "config. includedColumns" en "status. status" zijn de velden waarnaar een gebruiker normaal gesp roken verwijst.
+In de volgende cel wordt de actie ' show ' gebruikt om de rijen volledig af te drukken en de details van de indexen in een tabel vorm weer te geven. Voor elke index kunt u alle informatie-Hyper-in de meta gegevens opslaan. U ziet dan onmiddellijk het volgende:
+
+* config. indexnaam, config. indexedColumns, config. includedColumns en status. status zijn de velden waarnaar een gebruiker normaal gesp roken verwijst.
 * dfSignature wordt automatisch gegenereerd door Hyper Space en is uniek voor elke index. Hyper Space gebruikt deze hand tekening intern voor het onderhouden van de index en om deze te gebruiken op het moment van de query.
 
-In de onderstaande uitvoer moeten alle drie de indexen ' actief ' hebben als status en hun naam, geïndexeerde kolommen en opgenomen kolommen moeten overeenkomen met wat we hebben gedefinieerd in de bovenstaande index configuraties.
+
+In de volgende uitvoer moeten alle drie de indexen ' actief ' hebben als status en hun naam, geïndexeerde kolommen en opgenomen kolommen moeten overeenkomen met wat we hebben gedefinieerd in de bovenstaande index configuraties.
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,9 +563,11 @@ Resulteert in:
 
 ## <a name="delete-indexes"></a>Indexen verwijderen
 
-U kunt een bestaande index verwijderen door de API ' deleteIndex ' te gebruiken en de index naam op te geven. Index verwijderen voert een tijdelijke verwijdering uit: het hoofd zakelijk de index status in de Hyper Space-meta gegevens van ' ACTIVE ' wordt bijgewerkt naar ' verwijderd '. Hiermee wordt de verwijderde index uitgesloten van toekomstige query optimalisatie en Hyper Space wordt die index niet meer voor een query gekozen. Index bestanden voor een verwijderde index blijven echter wel beschikbaar (omdat het een tijdelijke verwijdering is), zodat de index kan worden hersteld als de gebruiker om vraagt.
+U kunt een bestaande index verwijderen door de API ' deleteIndex ' te gebruiken en de index naam op te geven. Index verwijderen voert een tijdelijke verwijdering uit: het hoofd zakelijk de index status in de Hyper Space-meta gegevens van ' ACTIVE ' wordt bijgewerkt naar ' verwijderd '. Hiermee wordt de verwijderde index uitgesloten van toekomstige query optimalisatie en Hyper Space wordt die index niet meer voor een query gekozen. 
 
-Onder cel wordt de index met de naam ' deptIndex2 ' verwijderd en worden vervolgens de Hyper Space-meta gegevens weer gegeven. De uitvoer moet vergelijkbaar zijn met de bovenstaande cel voor ' lijst indexen ', met uitzonde ring van ' deptIndex2 ', waarvan de status nu moet worden gewijzigd in ' verwijderd '.
+Index bestanden voor een verwijderde index blijven echter wel beschikbaar (omdat het een tijdelijke verwijdering is), zodat de index kan worden hersteld als de gebruiker om vraagt.
+
+De volgende cel verwijdert index met de naam ' deptIndex2 ' en bevat vervolgens de Hyper Space-meta gegevens. De uitvoer moet vergelijkbaar zijn met de bovenstaande cel voor ' lijst indexen ', met uitzonde ring van ' deptIndex2 ', waarvan de status nu moet worden gewijzigd in ' verwijderd '.
 
 :::zone pivot = "programming-language-scala"
 
@@ -602,7 +613,7 @@ Resulteert in:
 
 ## <a name="restore-indexes"></a>Indexen herstellen
 
-U kunt de API ' restoreIndex ' gebruiken om een verwijderde index te herstellen. Hiermee wordt de meest recente versie van de index teruggezet naar de actieve status en wordt deze opnieuw bruikbaar voor query's. In de onderstaande cel ziet u een voor beeld van het gebruik van ' restoreIndex '. U verwijdert "deptIndex1" en herstelt het. De uitvoer laat zien dat "deptIndex1" eerst is verwijderd na het aanroepen van "deleteIndex" en de opdracht ' ACTIVE ' na het aanroepen van "restoreIndex" werd weer gegeven.
+U kunt de API ' restoreIndex ' gebruiken om een verwijderde index te herstellen. Hiermee wordt de meest recente versie van de index teruggezet naar de actieve status en wordt deze opnieuw bruikbaar voor query's. In de volgende cel ziet u een voor beeld van het gebruik van ' restoreIndex '. U verwijdert "deptIndex1" en herstelt het. De uitvoer laat zien dat "deptIndex1" eerst is verwijderd na het aanroepen van "deleteIndex" en de opdracht ' ACTIVE ' na het aanroepen van "restoreIndex" werd weer gegeven.
 
 :::zone pivot = "programming-language-scala"
 
@@ -666,9 +677,9 @@ Resulteert in:
 
 ## <a name="vacuum-indexes"></a>Vacuüm indexen
 
-U kunt de opdracht ' vacuumIndex ' gebruiken om bestanden volledig te verwijderen en de meta gegevens vermelding voor een verwijderde index uit te voeren. Wanneer u klaar bent, wordt deze actie onomkeerbaar omdat alle index bestanden worden verwijderd (waarom het een moeilijk te verwijderen is).
+U kunt een harde verwijdering uitvoeren, dat wil zeggen, bestanden volledig verwijderen en de meta gegevens vermelding voor een verwijderde index met behulp van de **vacuumIndex** -opdracht. Deze actie kan niet ongedaan worden gemaakt. Hiermee verwijdert u alle index bestanden, wat de oorzaak is van een harde verwijdering.
 
-De cel onder vacuüm de index ' deptIndex2 ' en geeft Hyper Space-meta gegevens na vacuüm weer. U zou meta gegevens vermeldingen voor twee indexen "deptIndex1" en "empIndex" moeten zien, zowel met de status "actief" en geen vermelding voor "deptIndex2".
+De volgende cel vacuüm de index "deptIndex2" en geeft Hyper Space-meta gegevens na vacuüm weer. U zou meta gegevens vermeldingen voor twee indexen "deptIndex1" en "empIndex" moeten zien, zowel met de status "actief" en geen vermelding voor "deptIndex2".
 
 :::zone pivot = "programming-language-scala"
 
@@ -711,13 +722,14 @@ Resulteert in:
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Hyper Space inschakelen/uitschakelen
+## <a name="enable-or-disable-hyperspace"></a>Hyper Space in-of uitschakelen
 
 Hyper Space biedt Api's voor het in-of uitschakelen van index gebruik met Spark.
 
-Door de opdracht ' enableHyperspace ' te gebruiken, worden de Hyper Space-optimalisatie regels zichtbaar voor de Spark-Optimizer en zullen ze gebruikmaken van bestaande Hyper Space-indexen om gebruikers query's te optimaliseren.
-Met behulp van de opdracht ' disableHyperspace ', worden de Hyper Space-regels niet meer toegepast tijdens de optimalisatie van query's. Houd er rekening mee dat het uitschakelen van Hyper Space geen invloed heeft op gemaakte indexen, aangezien deze intact blijven.
-Onder cel ziet u hoe u deze opdrachten kunt gebruiken om Hyper Space in of uit te scha kelen. De uitvoer bevat alleen een verwijzing naar de bestaande Spark-sessie waarvan de configuratie is bijgewerkt.
+* Door gebruik te maken van de **enableHyperspace** -opdracht, worden de Hyper Space-optimalisatie regels zichtbaar voor de Spark-Optimizer en kunnen ze gebruikmaken van bestaande Hyper Space-indexen om gebruikers query's te optimaliseren.
+* Met behulp van de **disableHyperspace** -opdracht worden Hyper Space-regels niet meer toegepast tijdens de optimalisatie van query's. Het uitschakelen van Hyper Space heeft geen invloed op gemaakte indexen, omdat deze intact blijven.
+
+In de volgende cel ziet u hoe u deze opdrachten kunt gebruiken om Hyper Space in of uit te scha kelen. In de uitvoer ziet u een verwijzing naar de bestaande Spark-sessie waarvan de configuratie is bijgewerkt.
 
 :::zone pivot = "programming-language-scala"
 
@@ -770,7 +782,7 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 Als u met Spark Hyper Space-indexen wilt maken tijdens het verwerken van query's, moet u ervoor zorgen dat Hyper Space is ingeschakeld.
 
-De cel hieronder maakt Hyper Space mogelijk en maakt twee DataFrames die uw voorbeeld gegevens records bevatten, die u kunt gebruiken voor het uitvoeren van voorbeeld query's. Voor elke data frame worden enkele voorbeeld rijen afgedrukt.
+In de volgende cel kunt u Hyper-DataFrames inschakelen en twee gegevens maken die uw voorbeeld gegevensrecords bevatten, die u gebruikt voor het uitvoeren van voorbeeld query's. Voor elke data frame worden enkele voorbeeld rijen afgedrukt.
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 Hyper Space bevat momenteel regels voor het exploiteren van indexen voor twee groepen query's:
 
 * Selectie query's met selectieve predikaten voor het opzoeken van lookups of bereiken.
-* Voeg query's toe met een gelijkheid samenvoegings predicaat (dat wil zeggen equi-samen voegingen).
+* Voeg query's toe met een gelijkheid samenvoegings predicaat (equijoins).
 
 ## <a name="indexes-for-accelerating-filters"></a>Indexen voor versnellende filters
 
-In het eerste voor beeld wordt er een zoek opdracht op afdelings records weer gegeven (zie onder cel). In SQL ziet deze query er als volgt uit:
+In het eerste voor beeld wordt er een zoek opdracht op afdelings records weer gegeven, zoals in de volgende cel. In SQL ziet deze query eruit als in het volgende voor beeld:
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-De uitvoer van de volgende cel wordt weer gegeven:
+De uitvoer van het uitvoeren van de volgende cel wordt weer gegeven:
 
 * Query resultaat: dit is één afdelings naam.
 * Query plan dat Spark gebruikt om de query uit te voeren.
 
-In het query plan toont de operator ' FileScan ' aan de onderkant van het plan de gegevens bron waaruit de records zijn gelezen. De locatie van dit bestand geeft het pad naar de meest recente versie van de index ' deptIndex1 ' aan. Dit toont aan dat volgens de query en het gebruik van de Hyper Space-optimalisatie regels, Spark heeft besloten de juiste index tijdens runtime te misbruiken.
+In het query plan toont de operator **FileScan** aan de onderkant van het plan de gegevens bron waaruit de records zijn gelezen. De locatie van dit bestand geeft het pad naar de meest recente versie van de index ' deptIndex1 ' aan. In deze informatie ziet u dat volgens de query en het gebruik van de Hyper Space-optimalisatie regels, Spark heeft besloten de juiste index tijdens runtime te misbruiken.
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-Het tweede voor beeld is een bereik selectie query op afdelings records. In SQL ziet deze query er als volgt uit:
+Het tweede voor beeld is een bereik selectie query op afdelings records. In SQL ziet deze query eruit als in het volgende voor beeld:
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-Net als in het eerste voor beeld bevat de uitvoer van de volgende cel de query resultaten (namen van twee afdelingen) en het query plan. De locatie van het gegevens bestand in de FileScan-operator geeft aan dat ' deptIndex1 ' is gebruikt om de query uit te voeren.
+Net als in het eerste voor beeld ziet u in de uitvoer van de volgende cel de query resultaten (namen van twee afdelingen) en het query plan. De locatie van het gegevens bestand in de **FileScan** -operator geeft aan dat ' deptIndex1 ' is gebruikt om de query uit te voeren.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,16 +1053,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
-Het derde voor beeld is een query waarmee afdelings-en werknemerrecords worden toegevoegd aan de afdelings-ID. De equivalente SQL-instructie wordt hieronder weer gegeven:
+Het derde voor beeld is een query waarmee afdelings-en werknemerrecords worden toegevoegd aan de afdelings-ID. De equivalente SQL-instructie wordt als volgt weer gegeven:
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-In de uitvoer van de volgende cel worden de query resultaten weer gegeven. Dit zijn de namen van 14 werk nemers en de naam van de afdeling waarmee elke werk nemer werkt. Het query plan is ook opgenomen in de uitvoer. U ziet hoe de bestands locaties voor twee FileScan-Opera tors tonen dat Spark ' empIndex ' en ' deptIndex1 ' indexen heeft gebruikt om de query uit te voeren.
+In de uitvoer van de volgende cel worden de query resultaten weer gegeven. Dit zijn de namen van 14 werk nemers en de naam van de afdeling waarop elke werk nemer werkt. Het query plan is ook opgenomen in de uitvoer. U ziet hoe de bestands locaties voor twee **FileScan** -Opera tors tonen dat Spark ' empIndex ' en ' deptIndex1 ' indexen gebruikt voor het uitvoeren van de query.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>Uitleg over API
 
-Indexen zijn geweldig, maar hoe weet u of ze worden gebruikt? Met Hyper Space kunnen gebruikers hun oorspronkelijke abonnement vergelijken met het bijgewerkte schema voor index afhankelijk voordat ze hun query uitvoeren. U hebt de mogelijkheid om te kiezen uit de HTML/Lees bare/console modus om de uitvoer van de opdracht weer te geven.
+Zijn er fantastische indexen, maar hoe weet u dan of ze worden gebruikt? Met Hyper Space kunnen gebruikers hun oorspronkelijke abonnement vergelijken met het bijgewerkte schema voor index afhankelijk voordat ze hun query uitvoeren. U hebt de mogelijkheid om te kiezen uit HTML, lees bare tekst of console modus om de uitvoer van de opdracht weer te geven.
 
 In de volgende cel ziet u een voor beeld met HTML. De gemarkeerde sectie vertegenwoordigt het verschil tussen de oorspronkelijke en bijgewerkte abonnementen, samen met de indexen die worden gebruikt.
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>Indexen vernieuwen
 
-Als de oorspronkelijke gegevens waarop een index is gemaakt, worden gewijzigd, wordt de meest recente status van de gegevens niet meer door de index vastgelegd. U kunt een dergelijke verouderde index vernieuwen met behulp van de opdracht ' refreshIndex '. Hierdoor wordt de index volledig opnieuw opgebouwd en bijgewerkt op basis van de meest recente gegevens records (het maakt niet uit of u kunt zien hoe u uw index in andere notitie blokken incrementeel kunt vernieuwen).
+Als de oorspronkelijke gegevens waarop een index is gemaakt, worden gewijzigd, wordt de meest recente status van de gegevens niet meer door de index vastgelegd. U kunt een verlopen index vernieuwen met behulp van de **refreshIndex** -opdracht. Met deze opdracht wordt de index volledig opnieuw opgebouwd en bijgewerkt op basis van de meest recente gegevens records. We laten u zien hoe u uw index incrementeel kunt vernieuwen in andere notitie blokken.
 
-In de twee cellen hieronder ziet u een voor beeld van dit scenario:
+In de volgende twee cellen ziet u een voor beeld van dit scenario:
 
-* Eerste cel voegt twee meer afdelingen toe aan de gegevens van de oorspronkelijke kosten plaatsen. Er wordt een lijst met afdelingen gelezen en afgedrukt om te controleren of nieuwe afdelingen correct worden toegevoegd. In de uitvoer ziet u zes afdelingen in totaal: vier oude en twee nieuwe. Het aanroepen van "refreshIndex"-updates "deptIndex1", dus de index legt nieuwe afdelingen vast.
-* In de tweede cel wordt het bereik selectie query voor beeld uitgevoerd. De resultaten moeten nu vier afdelingen bevatten: twee de volgende afdelingen, gezien vóór wanneer we de bovenstaande query hebben uitgevoerd, en twee de nieuwe afdeling die we zojuist hebben toegevoegd.
+* De eerste cel voegt twee meer afdelingen toe aan de gegevens van de oorspronkelijke kosten plaatsen. Er wordt een lijst met afdelingen gelezen en afgedrukt om te controleren of nieuwe afdelingen correct worden toegevoegd. In de uitvoer ziet u zes afdelingen in totaal: vier oude en twee nieuwe. Het aanroepen van **refreshIndex** -updates ' deptIndex1 ' zodat de index nieuwe afdelingen vastlegt.
+* In de tweede cel wordt het bereik selectie query-voor beeld uitgevoerd. De resultaten moeten nu vier afdelingen bevatten: twee zijn de diensten die worden weer gegeven voordat de voor gaande query werd uitgevoerd en twee de nieuwe afdelingen die we hebben toegevoegd.
 
 ### <a name="specific-index-refresh"></a>Specifieke index vernieuwen
 

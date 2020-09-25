@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249583"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Problemen met Azure Files oplossen in Linux (SMB)
 
@@ -49,7 +49,7 @@ Veelvoorkomende oorzaken van dit probleem zijn:
 
 ### <a name="solution"></a>Oplossing
 
-Om het probleem op te lossen, gebruikt u het [hulp programma voor probleem oplossing voor het Azure files koppelen van fouten in Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Dit hulp programma:
+Om het probleem op te lossen, gebruikt u het [hulp programma voor probleem oplossing voor het Azure files koppelen van fouten in Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux). Dit hulp programma:
 
 * Helpt u bij het valideren van de client die omgeving uitvoert.
 * Detecteert de niet-compatibele client configuratie waardoor er geen toegang kan worden Azure Files.

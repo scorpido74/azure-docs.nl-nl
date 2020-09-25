@@ -3,12 +3,12 @@ title: De Azure Resource Manager-sjabloon van een virtuele machine weer geven en
 description: Meer informatie over het gebruik van de Azure Resource Manager-sjabloon van een virtuele machine om andere Vm's te maken
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282490"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Virtuele machines maken met behulp van een Azure Resource Manager sjabloon 
 
@@ -23,7 +23,7 @@ Er zijn twee manieren om Vm's in DevTest Labs te maken met behulp van een resour
 
 - Resource Manager-sjablonen die gebruikmaken van het resource type micro soft. DevTestLab/Labs/informatie (zoals gedeclareerd in de eigenschap ' resource ' in de sjabloon), kunnen afzonderlijke Lab-Vm's inrichten. Elke VM wordt vervolgens als één item weer gegeven in de lijst met virtuele machines van DevTest Labs:
 
-   ![Lijst met Vm's als afzonderlijke items in de lijst met virtuele machines van DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![Scherm opname van de lijst met virtuele machines als afzonderlijke items in de lijst met virtuele DevTest Labs-machines.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
    Dit type resource manager-sjabloon kan worden ingericht via de Azure PowerShell opdracht **New-AzResourceGroupDeployment** of via de Azure cli-opdracht **AZ Group Deployment maken**. Hiervoor zijn beheerders machtigingen vereist, zodat gebruikers die zijn toegewezen met een gebruikersrol van DevTest Labs de implementatie niet kunnen uitvoeren. 
 
@@ -40,7 +40,7 @@ In de rest van dit artikel worden Resource Manager-sjablonen beschreven die gebr
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>De Resource Manager-sjabloon van een virtuele machine weer geven en opslaan
 1. Volg de stappen bij het [maken van uw eerste vm in een Lab](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) om te beginnen met het maken van een virtuele machine.
 1. Voer de vereiste gegevens voor uw virtuele machine in en Voeg eventuele artefacten toe die u voor deze VM wilt.
-1. SWTICH naar het tabblad **Geavanceerde instellingen** . 
+1. Ga naar het tabblad **Geavanceerde instellingen** . 
 1. Klik onder aan het venster instellingen configureren op ARM- **sjabloon weer geven**.
 1. Kopieer de Resource Manager-sjabloon en sla deze op om later een andere virtuele machine te maken.
 

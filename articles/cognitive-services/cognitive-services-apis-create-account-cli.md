@@ -6,20 +6,24 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+keywords: cognitieve Services, cognitieve intelligentie, cognitieve oplossingen, AI-Services
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262430"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Snelstartgids: een Cognitive Services-resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
-Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Cognitive Services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u in uw Azure-abonnement hebt gemaakt. Nadat u de resource hebt gemaakt, gebruikt u de sleutels en het eind punt dat u hebt gegenereerd voor het verifiëren van uw toepassingen.
+Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
+Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligentie in toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
+
+Cognitive Services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u in uw Azure-abonnement hebt gemaakt. Nadat u de resource hebt gemaakt, gebruikt u de sleutels en het eind punt dat u hebt gegenereerd voor het verifiëren van uw toepassingen.
 
 In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Services en hoe u een account met een single-service of meerdere service-abonnement kunt maken met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Deze services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), waarmee u verbinding kunt maken met een of meer van de azure-Cognitive Services-API's.
 
@@ -32,7 +36,7 @@ In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Ser
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>De Azure CLI installeren en aanmelden
 
-Installeer de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
+Installeer de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
 ```azurecli-interactive
 az login
@@ -50,7 +54,7 @@ Als u een resource wilt maken, hebt u een van de Azure-locaties die beschikbaar 
 
 > [!IMPORTANT]
 > * Onthoud uw Azure-locatie, omdat u deze nodig hebt wanneer u de Azure Cognitive Services aanroept.
-> * De beschik baarheid van sommige Cognitive Services kan per regio verschillen. Zie [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)voor meer informatie.  
+> * De beschik baarheid van sommige Cognitive Services kan per regio verschillen. Zie [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)voor meer informatie.
 
 ```azurecli-interactive
 az account list-locations \
@@ -74,7 +78,7 @@ az group create \
 
 Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u wilt gebruiken, samen met de gewenste [prijs categorie](https://azure.microsoft.com/pricing/details/cognitive-services/) (of SKU). U gebruikt deze en andere informatie als para meters bij het maken van de resource.
 
-### <a name="multi-service"></a>Meerdere services
+### <a name="multi-service"></a>Multi-service
 
 | Service                    | Soort                      |
 |----------------------------|---------------------------|
@@ -89,20 +93,20 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Service                    | Soort                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
-| Custom Vision-voor spelling | `CustomVision.Prediction` |
-| Custom Vision-training   | `CustomVision.Training`   |
+| Custom Vision - Voorspelling | `CustomVision.Prediction` |
+| Custom Vision - Training   | `CustomVision.Training`   |
 | Face                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Zoeken
+### <a name="search"></a>Search
 
 | Service            | Soort                  |
 |--------------------|-----------------------|
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
 | Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
+| Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Spraak
@@ -116,7 +120,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 | Service            | Soort                |
 |--------------------|---------------------|
-| Formulier uitleg | `FormUnderstanding` |
+| Informatie over formulier | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Tekstanalyse     | `TextAnalytics`     |
@@ -172,11 +176,11 @@ Gebruik de opdracht [AZ cognitiveservices account Keys List](https://docs.micros
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
-## <a name="pricing-tiers-and-billing"></a>Prijs categorieën en facturering
+## <a name="pricing-tiers-and-billing"></a>Prijscategorieën en facturering
 
-De prijs categorieën (en de hoeveelheid die u ontvangt) zijn gebaseerd op het aantal trans acties dat u verzendt met behulp van uw verificatie gegevens. Met elke prijs categorie geeft u het volgende op:
-* het maximum aantal toegestane trans acties per seconde (TPS).
-* Service functies zijn ingeschakeld in de prijs categorie.
+Prijscategorieën (en het bedrag dat in rekening wordt gebracht) zijn gebaseerd op het aantal transacties dat u verzendt met behulp van uw verificatiegegevens. Voor elke prijsklasse wordt het volgende gespecificeerd:
+* het maximumaantal toegestane transacties per seconde (TPS).
+* servicefuncties die zijn ingeschakeld binnen de prijscategorie.
 * De kosten voor een vooraf gedefinieerd bedrag aan trans acties. Boven deze hoeveelheid worden er extra kosten in rekening gebracht, zoals is opgegeven in de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) voor uw service.
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Huidig quotum gebruik voor uw resource ophalen

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311560"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage voor virtuele machines
 
@@ -43,12 +43,11 @@ Er zijn verschillende vereisten die u moet overwegen voordat u Azure automanage 
 
 - Alleen Windows Server Vm's
 - Vm's moeten worden uitgevoerd
-- Alleen virtuele machines die geen schaal zijn ingesteld
 - Vm's moeten zich in een ondersteunde regio bevinden
 - De gebruiker moet over de juiste machtigingen beschikken
 - Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
 
-De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol van **eigenaar** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
+U moet de rol **Inzender** hebben om automanage in te scha kelen met behulp van een bestaand automanage-account. Als u automanage inschakelt met een nieuw automanage-account, hebt u de volgende machtigingen nodig: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** .
 
 Het is ook belang rijk te weten dat automanage alleen virtuele Windows-machines ondersteunt die zich in de volgende regio's bevinden: Europa-west, VS-Oost, VS-West 2, Canada-centraal, West-Centraal vs.
 
@@ -105,7 +104,7 @@ Het account voor automatisch beheer is de beveiligings context of de identiteit 
 Wanneer u automatisch beheer op uw virtuele machines inschakelt, is er een geavanceerde vervolg keuzelijst op de Blade **Azure VM-best practice inschakelen** waarmee u het automatisch beheer account kunt toewijzen of hand matig maken. Azure Portal
 
 > [!NOTE]
-> De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol van **eigenaar** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
+> U moet de rol **Inzender** hebben om automanage in te scha kelen met behulp van een bestaand automanage-account. Als u automanage inschakelt met een nieuw automanage-account, hebt u de volgende machtigingen nodig: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** .
 
 
 ## <a name="status-of-vms"></a>Status van virtuele machines
@@ -130,9 +129,9 @@ U kunt een dag kiezen om automanage op bepaalde Vm's uit te scha kelen. Op uw co
 
 Ga hiervoor in het Azure Portal naar de pagina aanbevolen procedures voor het automatisch **beheren van virtuele Azure-machines** met een lijst met alle automatische beheerde vm's. Schakel het selectie vakje in naast de virtuele machine die u wilt uitschakelen voor automatisch beheer en klik vervolgens op de knop **automanagement uitschakelen** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Automatisch beheer uitschakelen op een virtuele machine.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Automanage uitschakelen op een virtuele machine.":::
 
-Lees de berichten in het pop-upvenster met de melding aandachtig door voordat **u ermee**akkoord gaat.
+Lees aandachtig door de berichten in het pop-upvenster voordat u akkoord gaat met het **uitschakelen**.
 
 ```
 Disabling automanagement in a VM results in the following behavior:

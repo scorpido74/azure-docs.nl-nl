@@ -1,6 +1,6 @@
 ---
 title: Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
-description: Meer informatie over hoe u de Pig-activiteit in een Azure data factory kunt gebruiken om Pig-scripts uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
+description: Meer informatie over hoe u de Pig-activiteit in een Azure data factory v1 kunt gebruiken om Pig-scripts uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282575"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -84,7 +84,7 @@ Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-cre
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam |Naam van de activiteit |Yes |
+| name |Naam van de activiteit |Yes |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
 | type |HDinsightPig |Yes |
 | invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |No |

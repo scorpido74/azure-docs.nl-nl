@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7b1030c816bff5b50c0c47a16fa5f1812bb16b15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250824"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Toepassingen, processen of CI/CD-werk stromen activeren op basis van Azure Machine Learning gebeurtenissen (preview)
 
@@ -62,7 +62,7 @@ Deze gebeurtenissen worden gepubliceerd via Azure Event Grid. Met Azure Portal, 
 
 Bij het instellen van uw gebeurtenissen kunt u filters toep assen op alleen triggers voor specifieke gebeurtenis gegevens. In het onderstaande voor beeld, voor gewijzigde gebeurtenissen, kunt u filteren op uitvoer typen. De gebeurtenis wordt alleen geactiveerd wanneer aan de criteria wordt voldaan. Raadpleeg het [Azure machine learning Event grid-schema](/azure/event-grid/event-schema-machine-learning) voor meer informatie over gebeurtenis gegevens waarop u kunt filteren. 
 
-Abonnementen voor Azure Machine Learning gebeurtenissen worden beveiligd door middel van op rollen gebaseerd toegangs beheer (RBAC). Alleen [Inzender of eigenaar](how-to-assign-roles.md#default-roles) van een werk ruimte kan gebeurtenis abonnementen maken, bijwerken en verwijderen.  Filters kunnen worden toegepast op gebeurtenis abonnementen tijdens het [maken](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) van het gebeurtenis abonnement of op een later tijdstip. 
+Abonnementen voor Azure Machine Learning gebeurtenissen worden beveiligd door middel van op rollen gebaseerd toegangs beheer (RBAC). Alleen [Inzender of eigenaar](how-to-assign-roles.md#default-roles) van een werk ruimte kan gebeurtenis abonnementen maken, bijwerken en verwijderen.  Filters kunnen worden toegepast op gebeurtenis abonnementen tijdens het [maken](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) van het gebeurtenis abonnement of op een later tijdstip. 
 
 
 1. Ga naar de Azure Portal, selecteer een nieuw abonnement of een bestaande. 
@@ -126,14 +126,14 @@ Met Azure Event Grid kunnen klanten ongekoppelde bericht-handlers bouwen, die ku
 
 1. Selecteer het eind punt waarnaar u de gebeurtenis wilt publiceren. In de volgende scherm afbeelding is __Event hub__ het geselecteerde eind punt:
 
-    ![Select-event-handler](./media/how-to-use-event-grid/select-event-handler.png)
+    ![gebeurtenis-handler](./media/how-to-use-event-grid/select-event-handler.png)
 
 Nadat u de selectie hebt bevestigd, klikt u op __maken__. Na de configuratie worden deze gebeurtenissen naar uw eind punt gepusht.
 
 
 ### <a name="set-up-with-the-cli"></a>Ingesteld met de CLI
 
-U kunt de nieuwste versie van [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)installeren of de Azure Cloud shell gebruiken die wordt meegeleverd als onderdeel van uw Azure-abonnement.
+U kunt de nieuwste versie van [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)installeren of de Azure Cloud shell gebruiken die wordt meegeleverd als onderdeel van uw Azure-abonnement.
 
 Als u de uitbrei ding Event Grid wilt installeren, gebruikt u de volgende opdracht vanuit de CLI:
 
@@ -164,15 +164,15 @@ Gebruik [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) voor he
 
 1. Ga in het Azure Portal naar uw werk ruimte Azure Machine Learning en selecteer het tabblad gebeurtenissen in de balk aan de linkerkant. Selecteer hier __Logic apps__. 
 
-    ![Select-Logic-AP](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![Select-Logic-app](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. Meld u aan bij de gebruikers interface van de logische app en selecteer Machine Learning service als onderwerps type. 
 
-    ![Select-topic-type](./media/how-to-use-event-grid/select-topic-type.png)
+    ![onderwerp-type](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. Selecteer voor welke gebeurtenis (en) u een melding wilt ontvangen. Bijvoorbeeld de volgende scherm afbeelding __RunCompleted__.
 
-    ![Select-Event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![Select-Event-run-complete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. U kunt de filter methode in de bovenstaande sectie gebruiken of filters toevoegen om alleen de logische app te activeren voor een subset van gebeurtenis typen. In de volgende scherm afbeelding wordt een __voor voegsel filter__ van __/datadriftID/runs/__ gebruikt.
 
@@ -180,15 +180,15 @@ Gebruik [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) voor he
 
 1. Voeg vervolgens een stap toe om deze gebeurtenis te gebruiken en te zoeken naar e-mail. Er zijn verschillende e-mail accounts die u kunt gebruiken om gebeurtenissen te ontvangen. U kunt ook voor waarden configureren op wanneer u een e-mail bericht wilt verzenden.
 
-    ![Select-email-Action](./media/how-to-use-event-grid/select-email-action.png)
+    ![e-mail actie](./media/how-to-use-event-grid/select-email-action.png)
 
 1. Selecteer __een E-mail verzenden__ en vul de para meters in. In het onderwerp kunt u het __gebeurtenis type__ en __onderwerp__ toevoegen om gebeurtenissen te filteren. U kunt ook een koppeling naar de werkruimte pagina toevoegen voor uitvoeringen in de hoofd tekst van het bericht. 
 
-    ![e-mail configureren-hoofd tekst](./media/how-to-use-event-grid/configure-email-body.png)
+    ![e-mail configureren](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. Als u deze actie wilt opslaan, selecteert u **Opslaan als** in de linkerbovenhoek van de pagina. Bevestig het maken van deze actie vanaf de rechter balk die wordt weer gegeven.
 
-    ![bevestigings logica-app-maken](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Bevestig logica-app-maken](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>Voor beeld: het opnieuw trainen van gegevens drift wordt geactiveerd
@@ -204,7 +204,7 @@ Voordat u begint, moet u de volgende acties uitvoeren:
 
 In dit voor beeld wordt een eenvoudige Data Factory-pijp lijn gebruikt om bestanden te kopiëren naar een BLOB Store en een gepubliceerde Machine Learning-pijp lijn uit te voeren. Zie een [Machine Learning stap instellen in azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service) voor meer informatie over dit scenario.
 
-![ADF-mlpipeline-fase](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![ADF-mlpipeline](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. Begin met het maken van de logische app. Ga naar de [Azure Portal](https://portal.azure.com), zoek naar Logic apps en selecteer maken.
 
@@ -212,31 +212,31 @@ In dit voor beeld wordt een eenvoudige Data Factory-pijp lijn gebruikt om bestan
 
 1. Vul de vereiste gegevens in. Gebruik hetzelfde abonnement en dezelfde resource groep als uw Azure Data Factory pijp lijn en Azure Machine Learning werk ruimte om de ervaring te vereenvoudigen.
 
-    ![instellen-Logic-app-voor-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![instellen-Logic-app-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. Wanneer u de logische app hebt gemaakt, selecteert u __Wanneer een event grid resource gebeurtenis optreedt__. 
 
-    ![Select-Event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Select-eventgrid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. Meld u aan en vul de Details voor de gebeurtenis in. Stel de __resource naam__ in op de naam van de werk ruimte. Stel het __gebeurtenis type__ in op __DatasetDriftDetected__.
 
-    ![aanmelden en toevoegen-gebeurtenis](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![aanmelden-gebeurtenis toevoegen](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. Voeg een nieuwe stap toe en zoek naar __Azure Data Factory__. Selecteer __een pijplijn uitvoering maken__. 
 
-    ![Create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![maken-ADF-pijp lijn-uitvoeren](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. Meld u aan en geef de gepubliceerde Azure Data Factory-pijp lijn op om uit te voeren.
 
-    ![op te geven-ADF-pijp lijn](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![adfpipeline opgeven](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. Sla de logische app op en maak deze op met behulp van de knop **Opslaan** in de linkerbovenhoek van de pagina. Als u uw app wilt weer geven, gaat u naar uw werk ruimte in de [Azure Portal](https://portal.azure.com) en klikt u op **gebeurtenissen**.
 
-    ![weer geven-logica-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![show-logicapp-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 Nu wordt de data factory-pijp lijn geactiveerd wanneer drift optreedt. Bekijk details over uw data drift-uitvoering en machine learning pijp lijn op de [nieuwe werkruimte Portal](https://ml.azure.com). 
 
-![weer gave-in-werk ruimte](./media/how-to-use-event-grid/view-in-workspace.png)
+![weer gave-werk ruimte](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>Voor beeld: een model implementeren op basis van Tags
 

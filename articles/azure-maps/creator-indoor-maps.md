@@ -1,6 +1,6 @@
 ---
 title: Werken met kaarten voor binnen Azure Maps Maker
-description: In dit artikel worden concepten geïntroduceerd die van toepassing zijn op Azure Maps Creator-Services.
+description: In dit artikel worden concepten geïntroduceerd die van toepassing zijn op Azure Maps Creator-Services
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 05/18/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d55a0726000a6ed55f049ac4a4146f66421a7085
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad1b7ae08e74f455190c44a813dde44b0b683014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311356"
 ---
 # <a name="creator-for-indoor-maps"></a>Maker voor kaarten in de binnenste
 
@@ -43,10 +43,10 @@ Als er een fout optreedt, biedt de conversie service een koppeling naar de [Azur
 
 Azure Maps Maker biedt drie services:
 
-* [DataSet-service](https://docs.microsoft.com/rest/api/maps/dataset/createpreview).
-Gebruik de DataSet-service om een gegevensset te maken op basis van geconverteerde teken pakket gegevens.
-* [Tegelset-service](https://docs.microsoft.com/rest/api/maps/tileset/createpreview).
-Gebruik de Tegelset-service om een op vector gebaseerde weer gave van een gegevensset te maken. Toepassingen kunnen een tegelset gebruiken om een weer gave op basis van een visuele tegel van de gegevensset te presen teren.
+* [Gegevenssetservice](https://docs.microsoft.com/rest/api/maps/dataset/createpreview).
+De DataSet-service gebruiken om een gegevensset te maken op basis van geconverteerde gegevens voor tekenpakketen.
+* [Tegelsetservice](https://docs.microsoft.com/rest/api/maps/tileset/createpreview).
+Gebruik de Tegelset-service om een op vector gebaseerde weergave van een gegevensset te maken. Toepassingen kunnen een tegelset gebruiken om een weergave op basis van een visuele tegel van de gegevensset te presenteren.
 * [Functie status service](https://docs.microsoft.com/rest/api/maps/featurestate). Gebruik de functie status service voor het ondersteunen van de stijl van dynamische kaarten. Met de stijl dynamische kaarten kunnen toepassingen realtime-gebeurtenissen weer geven op ruimten die worden meegeleverd met IoT-systeem.
 
 ### <a name="datasets"></a>Gegevenssets
@@ -65,7 +65,7 @@ Naast de vector gegevens biedt de tegelset meta gegevens voor optimalisatie van 
 
 Zodra een tegelset is gemaakt, kan deze worden opgehaald door de [service rendering v2](#render-v2-service).
 
-Als een tegelset verouderd is en niet langer handig is, kunt u de tegelset verwijderen. Zie [gegevens onderhoud](#data-maintenance)voor meer informatie over het verwijderen van tilesets.
+Als een tegelset verouderd is en niet langer handig is, kunt u de tegelset verwijderen. Zie  [gegevens onderhoud](#data-maintenance)voor meer informatie over het verwijderen van tilesets.
 
 >[!NOTE]
 >Een tegelset is onafhankelijk van de gegevensset waaruit deze is gemaakt. Als u tilesets maakt op basis van een gegevensset en vervolgens die gegevensset bijwerkt, wordt de tilesets niet bijgewerkt. Als u wijzigingen in een gegevensset wilt weer geven, moet u nieuwe tilesets maken. Op dezelfde manier geldt dat als u een tegelset verwijdert, dit geen invloed heeft op de gegevensset.

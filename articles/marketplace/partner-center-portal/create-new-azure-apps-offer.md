@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251433"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -50,7 +50,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 * Voor beelden
 
-    * [Azure-CLI](../../managed-applications/cli-samples.md)
+    * [Azure CLI](../../managed-applications/cli-samples.md)
     * [Azure PowerShell](../../managed-applications/powershell-samples.md)
     * [Beheerde toepassingsoplossingen](../../managed-applications/sample-projects.md)
 
@@ -72,7 +72,7 @@ Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te be
 
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
-* [Azure-opslagverkenner](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
     * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -559,7 +559,7 @@ Als u wilt dat het test station namens u kan worden geïmplementeerd, maakt en g
 * **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 * **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links Navigator, selecteert u **app-registraties**en zoekt u naar het **toepassings-id** -nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
-* **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)
+* **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 

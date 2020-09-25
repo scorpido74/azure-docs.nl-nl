@@ -1,7 +1,7 @@
 ---
 title: Betrouwbaarheids Score-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepubliceerd, wordt deze in de runtime-Voorspellings eindpunt opgevraagd met behulp van de generateAnswer-API.
+description: Wanneer een gebruikers query wordt vergeleken met een Knowledge Base, retourneert QnA Maker relevante antwoorden, samen met een betrouwbaarheids Score.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327150"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>De betrouwbaarheids Score van een antwoord
 Wanneer een gebruikers query wordt vergeleken met een Knowledge Base, retourneert QnA Maker relevante antwoorden, samen met een betrouwbaarheids Score. Met deze score wordt het vertrouwen aangegeven dat het antwoord het juiste resultaat voor de opgegeven gebruikers query is.

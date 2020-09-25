@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250416"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Push meldingen verzenden met Azure Notification Hubs en Node.js
 
@@ -96,10 +96,10 @@ Haal de verbindings `connectionstring` waarde uit de [Azure Portal] door de volg
 
 Het `NotificationHubService` object bevat de volgende object instanties voor het verzenden van push meldingen naar specifieke apparaten en toepassingen:
 
-- **Android** : gebruik het `GcmService` object dat beschikbaar is op`notificationHubService.gcm`
-- **IOS** : gebruik het `ApnsService` object dat toegankelijk is op`notificationHubService.apns`
-- **Windows Phone** -gebruik het `MpnsService` object, dat beschikbaar is op`notificationHubService.mpns`
-- **Universeel Windows-platform** -gebruik het `WnsService` object, dat beschikbaar is op`notificationHubService.wns`
+- **Android** : gebruik het `GcmService` object dat beschikbaar is op `notificationHubService.gcm`
+- **IOS** : gebruik het `ApnsService` object dat toegankelijk is op `notificationHubService.apns`
+- **Windows Phone** -gebruik het `MpnsService` object, dat beschikbaar is op `notificationHubService.mpns`
+- **Universeel Windows-platform** -gebruik het `WnsService` object, dat beschikbaar is op `notificationHubService.wns`
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Procedure: Push meldingen verzenden naar Android-toepassingen
 
@@ -155,7 +155,7 @@ Het `MpnsService` object biedt een `send` methode die kan worden gebruikt om Pus
 
 - **Tags** : de tag-id. Als er geen tag wordt gegeven, wordt de melding verzonden naar alle clients.
 - **Payload** : de XML-nettolading van het bericht.
-- **Doel naam**  -  `toast` voor pop-upmeldingen. `token`voor tegel meldingen.
+- **Doel naam**  -  `toast` voor pop-upmeldingen. `token` voor tegel meldingen.
 - **NotificationClass** : de prioriteit van de melding. Zie de sectie **http-header-elementen** van de [Push meldingen van een server](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) document voor geldige waarden.
 - **Opties** -optionele aanvraag headers.
 - **Call back** -de functie call back.

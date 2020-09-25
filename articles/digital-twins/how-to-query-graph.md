@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282303"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -25,6 +25,15 @@ In de rest van dit artikel vindt u voor beelden van hoe u deze bewerkingen kunt 
 ## <a name="query-syntax"></a>Querysyntaxis
 
 Deze sectie bevat voorbeeld query's die de query taal structuur illustreren en mogelijke query bewerkingen uitvoeren op [digitale apparaatdubbels](concepts-twins-graph.md).
+
+### <a name="show-all-existing-digital-twins"></a>Alle bestaande digitale apparaatdubbels weer geven
+
+Dit is de basis query waarmee een lijst met alle digitale apparaatdubbels in het exemplaar wordt geretourneerd:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>Bovenste items selecteren
 
@@ -208,8 +217,8 @@ De volgende teken reeks functies worden ondersteund:
 
 | Functie | Beschrijving |
 | -------- | ----------- |
-| STARTS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie begint met de tweede. |
-| ENDS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie eindigt op de tweede. |
+| STARTSWITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie begint met de tweede. |
+| ENDSWITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie eindigt op de tweede. |
 
 ## <a name="run-queries-with-an-api-call"></a>Query's uitvoeren met een API-aanroep
 

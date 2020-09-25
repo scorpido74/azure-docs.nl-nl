@@ -1,6 +1,6 @@
 ---
 title: De StorSimple Apparaatbeheer-service in azure implementeren | Microsoft Docs
-description: Hierin wordt uitgelegd hoe u de StorSimple-Apparaatbeheer-service in de Azure Portal maakt en verwijdert, en wordt beschreven hoe u de service registratie sleutel beheert.
+description: Meer informatie over de stappen die nodig zijn voor het maken, verwijderen, migreren van de service en het beheer van de service registratie sleutel.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249549"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>De StorSimple Apparaatbeheer-service voor StorSimple 8000 Series-apparaten implementeren
 
@@ -177,12 +177,12 @@ Voer de volgende stappen uit om de service gegevens versleuteling op uw apparaat
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>De versleutelings sleutel voor service gegevens op fysieke apparaten bijwerken
 1. Gebruik Windows PowerShell voor StorSimple om verbinding te maken met de console. Selecteer optie 1 om u aan te melden met volledige toegang.
-2. Typ het volgende achter de opdracht prompt:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Typ het volgende achter de opdracht prompt:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Geef de versleutelings sleutel voor service gegevens op die u hebt verkregen in [stap 2: gebruik Windows PowerShell voor StorSimple om de wijziging van de versleutelings sleutel van de service gegevens te initiëren](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>De versleutelings sleutel voor service gegevens op alle 8010/8020-Cloud apparaten bijwerken
 1. Down load en Setup [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) Power shell-script. 
-2. Open Power shell en typ bij de opdracht prompt:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Open Power shell en typ bij de opdracht prompt:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Met dit script wordt ervoor gezorgd dat de versleutelings sleutel voor service gegevens is ingesteld op alle 8010/8020-Cloud apparaten onder Apparaatbeheer.
 

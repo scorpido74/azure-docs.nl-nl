@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311373"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -98,6 +98,8 @@ Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie.
 | `['length', string | array]` | getal | Hiermee wordt de lengte van een teken reeks of een matrix opgehaald. |
 | `['in', boolean | string | number, array]` | boolean | Hiermee wordt bepaald of een item in een matrix voor komt |
 | `['in', substring, string]` | boolean | Hiermee wordt bepaald of een subtekenreeks voor komt in een teken reeks |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | getal | Retourneert de eerste positie waarop een item kan worden gevonden in een matrix of een subtekenreeks kan worden gevonden in een teken reeks of `-1` als de invoer niet kan worden gevonden. Hiermee wordt een optionele index voor het starten van de zoek opdracht geaccepteerd. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|matrix | Retourneert een item uit een matrix of een subtekenreeks uit een teken reeks uit een opgegeven start index of tussen een start-index en een end-index als deze is ingesteld. De geretourneerde waarde is inclusief de begin index, maar niet van de eind index. |
 
 **Voorbeelden**
 
@@ -151,8 +153,11 @@ Hier volgen enkele aanvullende voor beelden van het gebruik van gegevens express
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ Hier volgen enkele aanvullende voor beelden van het gebruik van gegevens express
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>Wiskundige expressies
@@ -225,8 +236,8 @@ Bij het vergelijken van waarden is de vergelijking strikt getypt. Waarden van ve
 
 | Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
-| `['! ', boolean]` | booleaans | Logische negatie. Retourneert `true` of de invoer is `false` en `false` of de invoer is `true` . |
-| `['!= ', value, value]` | boolean | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
+| `['!', boolean]` | booleaans | Logische negatie. Retourneert `true` of de invoer is `false` en `false` of de invoer is `true` . |
+| `['!=', value, value]` | boolean | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
 | `['<', value, value]` | boolean | Retourneert `true` of de eerste invoer strikt kleiner is dan de seconde, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
 | `['<=', value, value]` | boolean | Retourneert `true` of de eerste invoer kleiner dan of gelijk aan de tweede is, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
 | `['==', value, value]` | boolean | Retourneert `true` of de invoer waarden gelijk zijn, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |

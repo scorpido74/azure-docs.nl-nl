@@ -3,12 +3,12 @@ title: VHD-bestand uploaden naar Azure DevTest Labs met behulp van Storage Explo
 description: VHD-bestand uploaden naar het opslag account van de Lab met behulp van Microsoft Azure Storage Explorer
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282524"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>VHD-bestand uploaden naar het opslag account van de Lab met behulp van Microsoft Azure Storage Explorer
 
@@ -90,13 +90,13 @@ De volgende stappen begeleiden u bij het uploaden van een VHD-bestand naar DevTe
 
     1. In het Storage Explorer rechterdeel venster ziet u een lijst met de blobs in de container **uploads** blob van het opslag account van de test omgeving. Selecteer **uploaden** op de werk balk van de BLOB-editor 
         
-        ![Knop Uploaden][6]
+        ![Scherm opname van het Storage Explorer rechterdeel venster met de knop uploaden geselecteerd.][6]
     
     1. Selecteer in de vervolg keuzelijst **uploaden** de optie **bestanden uploaden...**.
     
     1. Selecteer het beletsel teken in het dialoog venster **bestanden uploaden** .
         
-        ![Bestand selecteren][8]  
+        ![Scherm opname van het dialoog venster ' bestanden uploaden ' met het beletsel teken dat is geselecteerd.][8]  
 
     1. Blader in het dialoog venster **Selecteer de bestanden die u wilt uploaden** naar het gewenste VHD-bestand, selecteer het en selecteer vervolgens **openen**.
     

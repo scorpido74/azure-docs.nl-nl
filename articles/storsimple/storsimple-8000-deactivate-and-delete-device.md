@@ -1,6 +1,6 @@
 ---
 title: Een StorSimple 8000 Series-apparaat deactiveren en verwijderen | Microsoft Docs
-description: Hierin wordt beschreven hoe u het StorSimple-apparaat uit de service verwijdert door het eerst te deactiveren en vervolgens te verwijderen.
+description: Meer informatie over het deactiveren en verwijderen van een StorSimple-apparaat dat is verbonden met een StorSimple Apparaatbeheer service.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249634"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Een StorSimple-apparaat deactiveren en verwijderen
 
@@ -100,7 +100,7 @@ Als u geïnteresseerd bent in het verwijderen van het apparaat, maar de gegevens
        ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Zodra het verwijderen is voltooid, wordt u hiervan op de hoogte gebracht. De lijst met apparaten wordt ook bijgewerkt om de verwijdering weer te geven.
 
-## <a name="deactivate-and-delete-a-cloud-appliance"></a>Een Cloud apparaat deactiveren en verwijderen
+## <a name="deactivate-and-delete-a-cloud-appliance"></a>Een cloudapparaat deactiveren en verwijderen
 
 Voor een StorSimple Cloud Appliance wordt de toewijzing van de virtuele machine ongedaan gemaakt en verwijderd uit de portal en worden de resources die zijn aangemaakt toen deze werd ingericht. Wanneer het cloudapparaat is gedeactiveerd, kan het niet meer worden hersteld naar de oorspronkelijke staat.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283034"
 ---
 # <a name="specify-a-face-recognition-model"></a>Een model voor gezichtsherkenning opgeven
 
@@ -37,8 +37,9 @@ Lees in voor meer informatie over het opgeven van een geselecteerd model in vers
 
 U moet bekend zijn met de concepten van detectie en identificatie van AI-gezicht. Als dat niet het geval is, raadpleegt u eerst deze hand leidingen:
 
+* [Concepten van gezichts detectie](../concepts/face-detection.md)
+* [Gezichtsherkenningsconcepten](../concepts/face-recognition.md)
 * [Gezichten detecteren in een installatie kopie](HowtoDetectFacesinImage.md)
-* [Hoe kan ik gezichten identificeren in een installatie kopie?](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>Gezichten met het opgegeven model detecteren
 

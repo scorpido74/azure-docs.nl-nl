@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 86b15b0059c2e3466ef65daeb53780798b3882d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326793"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Versleuteling van de gegevens in de rest van de formulier herkenning
 
-Azure Form Recognizer versleutelt uw gegevens automatisch wanneer deze persistent worden gemaakt in de Cloud. Met versleuteling voor formulier herkenning beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
+Azure Form Recognizer versleutelt uw gegevens automatisch wanneer deze persistent worden gemaakt in de Cloud. Met versleuteling voor formulier herkenning worden uw gegevens beschermd zodat u kunt voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

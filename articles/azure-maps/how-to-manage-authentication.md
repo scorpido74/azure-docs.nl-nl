@@ -5,16 +5,16 @@ description: Vertrouwd raken met Azure Maps-verificatie. Bekijk welke benadering
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037334"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311100"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -45,8 +45,8 @@ De volgende tabel bevat een overzicht van de algemene scenario's voor verificati
 
 | Scenario                                                                                    | Verificatie | Autorisatie | Ontwikkelings inspanning | Operationele inspanningen |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Vertrouwde daemon/niet-interactieve client toepassing](./how-to-secure-daemon-app.md)        | Gedeelde sleutel     | N.v.t.           | Middelgroot             | Hoog               |
-| [Vertrouwde daemon/niet-interactieve client toepassing](./how-to-secure-daemon-app.md)        | Azure AD       | Hoog          | Laag                | Middelgroot             |
+| [Vertrouwde daemon/niet-interactieve client toepassing](./how-to-secure-daemon-app.md)        | Gedeelde sleutel     | N.v.t.           | Normaal             | Hoog               |
+| [Vertrouwde daemon/niet-interactieve client toepassing](./how-to-secure-daemon-app.md)        | Azure AD       | Hoog          | Laag                | Normaal             |
 | [Toepassing met één pagina op internet met interactieve eenmalige aanmelding](./how-to-secure-spa-users.md) | Azure AD       | Hoog          | Gemiddeld             | Gemiddeld             |
 | [Toepassing voor één pagina op internet met niet-interactieve aanmelding](./how-to-secure-spa-app.md)      | Azure AD       | Hoog          | Gemiddeld             | Gemiddeld             |
 | [Webtoepassing met interactieve eenmalige aanmelding](./how-to-secure-webapp-users.md)          | Azure AD       | Hoog          | Hoog               | Gemiddeld             |

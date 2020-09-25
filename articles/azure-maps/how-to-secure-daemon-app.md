@@ -5,16 +5,16 @@ description: Gebruik de Azure Portal om verificatie te beheren voor het configur
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311067"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
 
@@ -105,7 +105,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
     * Nadat u **toevoegen**hebt geselecteerd, kopieert u het geheim en slaat u het veilig op in een service zoals Azure Key Vault. Raadpleeg [Azure Key Vault ontwikkelaars handleiding](https://docs.microsoft.com/azure/key-vault/general/developers-guide) om het certificaat of geheim veilig op te slaan. U gebruikt dit geheim om tokens van Azure AD op te halen.
 
         > [!div class="mx-imgBorder"]
-        > ![Een client geheim toevoegen](./media/how-to-manage-authentication/add-key.png)
+        > ![Een clientgeheim toevoegen](./media/how-to-manage-authentication/add-key.png)
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Op rollen gebaseerde toegang verlenen voor de daemon-toepassing Azure Maps
 
@@ -120,7 +120,7 @@ U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de
     > ![Toegang verlenen met behulp van Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Voeg op het tabblad **roltoewijzingen** een roltoewijzing **toe** . 
-    
+
     > [!div class="mx-imgBorder"]
     > ![Roltoewijzing toevoegen](./media/how-to-manage-authentication/add-role-assignment.png)
 
@@ -139,7 +139,7 @@ Wanneer een beheerde identiteit is geconfigureerd voor de hosting bron, gebruikt
 
 Nadat u uw app hebt geregistreerd en aan Azure Maps hebt gekoppeld, kunt u toegangs tokens aanvragen.
 
-* Resource-ID voor Azure AD`https://atlas.microsoft.com/`
+* Resource-ID voor Azure AD `https://atlas.microsoft.com/`
 * Azure AD-app-ID
 * Azure AD-tenant-id
 * Client geheim registreren Azure AD-app

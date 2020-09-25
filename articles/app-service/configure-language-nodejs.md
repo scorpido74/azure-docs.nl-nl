@@ -1,17 +1,17 @@
 ---
 title: Node.js-apps configureren
 description: Meer informatie over het configureren van een Node.js-app in de systeem eigen Windows-exemplaren of in een vooraf ontwikkelde Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e6daf176504427c96f8dce0a4e9a6b6d5e999a0a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311832"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Een Node.js-app configureren voor Azure App Service
 
@@ -98,9 +98,9 @@ Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouw
 1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
 > [!NOTE]
-> Zoals beschreven in [NPM-documenten](https://docs.npmjs.com/misc/scripts), scripts `prebuild` met de namen en `postbuild` uitvoeren vóór en na `build` , respectievelijk, indien opgegeven. `preinstall`en `postinstall` vóór en na `install` , respectievelijk worden uitgevoerd.
+> Zoals beschreven in [NPM-documenten](https://docs.npmjs.com/misc/scripts), scripts `prebuild` met de namen en `postbuild` uitvoeren vóór en na `build` , respectievelijk, indien opgegeven. `preinstall` en `postinstall` vóór en na `install` , respectievelijk worden uitgevoerd.
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
 In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
 

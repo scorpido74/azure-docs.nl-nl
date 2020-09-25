@@ -5,20 +5,23 @@ description: Ga aan de slag met Azure Cognitive Services door een resource te ma
 services: cognitive-services
 author: aahill
 manager: nitinme
+keywords: cognitieve Services, cognitieve intelligentie, cognitieve oplossingen, AI-Services
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 079ab59652c9ba709d8476c33a538b1d4a9f4846
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 623982826f82e44b8d031d19002d33e0a8e798bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326861"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Snelstartgids: een Cognitive Services resource maken met behulp van de Azure Portal
 
 Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een cognitieve service resource hebt gemaakt in de Azure Portal, krijgt u een eind punt en een sleutel voor het verifiëren van uw toepassingen.
+
+Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligentie in toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
 
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
@@ -60,6 +63,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entiteiten zoeken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Tekstanalyse](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing Spellingcontrole](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Automatische suggesties](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+
     ***
 
 3. Geef op de pagina **maken** de volgende informatie op:
@@ -74,9 +78,9 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie [Prijsopgaven](https://azure.microsoft.com/pricing/details/cognitive-services/) voor API's voor meer informatie.
     | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of deze toevoegen aan een bestaande groep. |
 
-    ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+    ![Scherm voor het maken van resources voor meerdere services](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klik op **Maken**.
+    Klik op **Create**.
 
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
@@ -88,9 +92,9 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie [Prijsopgaven](https://azure.microsoft.com/pricing/details/cognitive-services/) voor API's voor meer informatie.
     | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of deze toevoegen aan een bestaande groep. |
 
-    ![Het scherm voor het maken van één resource](media/cognitive-services-apis-create-account/resource_create_screen.png)
+    ![Het scherm voor het maken van een resource voor één service](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klik op **Maken**.
+    Klik op **Create**.
 
     ***
 

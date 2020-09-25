@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282609"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Taakbrowser en taakweergave gebruiken voor Azure Data Lake Analytics
 De Azure Data Lake Analytics-Service archiveert taken in een query-archief. In dit artikel leert u hoe u taak browser en taak weergave kunt gebruiken in Azure Data Lake-Hulpprogram Ma's voor Visual Studio om de historische taak gegevens te vinden. 
@@ -38,7 +38,7 @@ Taak weergave bevat:
     
       Taak status geeft een overzicht van de taak fasen:
     
-      ![Status van Azure Data Lake Analytics-taak fasen](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Scherm opname van de Azure Data Lake Analytics-taak fasen.](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Voorbereiden: Upload uw script naar de Cloud, compileer en optimaliseer het script met behulp van de compiler service.
     * In wachtrij: taken worden in de wachtrij geplaatst wanneer ze wachten op voldoende resources, of de taken overschrijden het maximum aantal gelijktijdige taken per account beperking. De prioriteits instelling bepaalt de volg orde van taken in de wachtrij. Hoe lager het getal, des te hoger de prioriteit.
@@ -50,7 +50,7 @@ Taak weergave bevat:
     
       De basis taak informatie wordt weer gegeven in het onderste deel van het deel venster taak overzicht.
     
-      ![Status van Azure Data Lake Analytics-taak fasen](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![Scherm opname van het samen vatting van de taak met beschrijvingen in de tekst vakken.](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * Taak resultaat: geslaagd of mislukt. De taak kan in elke fase mislukken.
     * Totale duur: de klok tijd van de wand (duur) tussen de verzend tijd en de eind tijd.
@@ -60,10 +60,10 @@ Taak weergave bevat:
     * Account: het Data Lake Analytics account dat wordt gebruikt voor het uitvoeren van de taak.
     * Auteur: de gebruiker die de taak heeft ingediend, kan een account van een echte persoon of een systeem account zijn.
     * Prioriteit: de prioriteit van de taak. Hoe lager het getal, des te hoger de prioriteit. Dit is alleen van invloed op de volg orde van de taken in de wachtrij. Het instellen van een hogere prioriteit heeft geen voor rang op het uitvoeren van taken.
-    * Parallellisme: het aangevraagde maximum aantal gelijktijdige Azure Data Lake Analytics units (ADLAUs), ook wel hoek punten. Momenteel is één hoek punt gelijk aan één virtuele machine met twee Virtual core-en 6 GB RAM, maar dit kan in toekomstige Data Lake Analytics updates worden bijgewerkt.
+    * Parallellisme: het aangevraagde maximum aantal gelijktijdige Azure Data Lake Analytics units (ADLAUs), ook wel vertices genoemd. Momenteel is één hoek punt gelijk aan één virtuele machine met twee Virtual core-en 6 GB RAM, maar dit kan in toekomstige Data Lake Analytics updates worden bijgewerkt.
     * Resterende bytes: bytes die moeten worden verwerkt totdat de taak is voltooid.
     * Gelezen/geschreven bytes: bytes die zijn gelezen/geschreven sinds de uitvoering van de taak is gestart.
-    * Totaal aantal hoek punten: de taak is opgesplitst in veel werk stukken, elk werk item wordt een hoek punt genoemd. Met deze waarde wordt het aantal stukjes werk waaruit de taak bestaat, beschreven. U kunt een hoek punt beschouwen als een basis proces-eenheid, ook wel Azure Data Lake Analytics Unit (ADLAU) en hoek punten kunnen worden uitgevoerd op parallelle wijze. 
+    * Totaal aantal hoek punten: de taak is opgesplitst in veel werk stukken, elk werk item wordt een hoek punt genoemd. Met deze waarde wordt het aantal stukjes werk waaruit de taak bestaat, beschreven. U kunt een hoek punt beschouwen als een elementaire proces-eenheid, ook wel bekend als Azure Data Lake Analytics Unit (ADLAU) en hoek punten kunnen worden uitgevoerd op parallelle wijze. 
     * Voltooid/uitgevoerd/mislukt: het aantal voltooide of actieve/mislukte of defecte hoek punten. Hoek punten kunnen mislukken als gevolg van zowel gebruikers code-als systeem fouten, maar het systeem probeert automatisch een aantal keren nieuwe pogingen uit te proberen. Als het hoek punt nog steeds niet kan worden uitgevoerd na het opnieuw proberen, mislukt de hele taak.
 * Taak grafiek
   
@@ -71,7 +71,7 @@ Taak weergave bevat:
   
     ![Status van Azure Data Lake Analytics-taak fasen](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Een taak wordt onderverdeeld in veel werk stukken. Elk werk stuk wordt een hoek punt genoemd. De hoek punten zijn gegroepeerd als Super hoekpunt (ook wel stage) en gevisualiseerd als taak diagram. De placards voor het groene stadium in de taak grafiek tonen de fasen.
+    Een taak wordt onderverdeeld in veel werk stukken. Elk werk stuk wordt een hoek punt genoemd. De hoek punten zijn gegroepeerd als Super hoekpunt (ook wel bekend als fase) en gevisualiseerd als taak diagram. De placards voor het groene stadium in de taak grafiek tonen de fasen.
   
     Elk hoek punt in een fase voert hetzelfde soort werk uit met verschillende delen van dezelfde gegevens. Als u bijvoorbeeld een bestand hebt met één TB gegevens en er honderden hoek punten worden gelezen, wordt een segment gelezen. Deze hoek punten worden gegroepeerd in dezelfde fase en voeren hetzelfde werk uit op verschillende delen van hetzelfde invoer bestand.
   

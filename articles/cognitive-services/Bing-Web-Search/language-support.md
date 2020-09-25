@@ -1,7 +1,7 @@
 ---
 title: Taal ondersteuning-Bing Webzoekopdrachten-API
 titleSuffix: Azure Cognitive Services
-description: Een lijst met natuurlijke talen, landen en regio's die worden ondersteund door de Bing Nieuws zoeken-API.
+description: Een lijst met natuurlijke talen, landen en regio's die worden ondersteund door de Bing Webzoekopdrachten-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262821"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Ondersteuning van talen en regio's voor de Bing Webzoekopdrachten-API
 
@@ -34,7 +34,7 @@ U kunt ook de-markt met de `mkt` query parameter en een code uit de tabel **Mark
 |Oostenrijk|AT|
 |België|BE|
 |Brazilië|BR|
-|Canada|CA|
+|Canada|CA (consistentie en beschikbaarheid)|
 |Chili|CL|
 |Denemarken|DK|
 |Finland|FI|
@@ -93,7 +93,7 @@ U kunt ook de-markt met de `mkt` query parameter en een code uit de tabel **Mark
 |Mexico|Spaans|es-MX|
 |Nederland|Nederlands|nl-NL|
 |Nieuw-Zeeland|Engels|en-NZ|
-|Noorwegen|Norwegian|Nee-Nee|
+|Noorwegen|Noors|Nee-Nee|
 |China|Chinees|zh-CN|
 |Polen|Pools|pl-PL|
 |Portugal|Portugees|pt-PT|

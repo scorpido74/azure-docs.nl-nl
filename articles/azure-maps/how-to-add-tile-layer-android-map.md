@@ -4,16 +4,16 @@ description: Meer informatie over het toevoegen van een tegel laag aan een kaart
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311084"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 
@@ -30,12 +30,12 @@ Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}` .
-* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
-* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
-* `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
-* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
-* `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein als de subdomeinwaarde is opgegeven.
+* `{x}` -X-positie van de tegel. Ook nodig `{y}` en `{z}` .
+* `{y}` -Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
+* `{z}` -Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
+* `{quadkey}` -Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
+* `{bbox-epsg-3857}` -Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
+* `{subdomain}` -Een tijdelijke aanduiding voor de waarden van het subdomein als de subdomeinwaarde is opgegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -4,16 +4,16 @@ description: Meer informatie over het toevoegen van shapes aan Maps. Zie code vo
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311305"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Een shape aan een kaart toevoegen met Azure Maps Android SDK
 
@@ -238,7 +238,7 @@ Met de **polygoon laag** kunt u het gebied van de veelhoek naar de kaart rendere
     });
     ```
 
-    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een gegevens bron object gemaakt met behulp van de klasse **Data Source** en toegevoegd aan de kaart. Een **veelhoek** object wordt vervolgens gemaakt op basis van een lijst met **punt** objecten en wordt toegevoegd aan de gegevens bron. Met een **polygoon laag** worden gegevens weer gegeven die in de gegevens bron op de kaart zijn verpakt. Vervolgens wordt er een polygoon laag gemaakt waarmee het polygoon gebied wordt weer gegeven en wordt er een gegevens bron aan toegevoegd. Met een **lijn laag** worden lijn objecten weer gegeven die zijn verpakt in een gegevens bron. In het laatste deel van het code fragment wordt een laag gemaakt om het overzicht van de veelhoek weer te geven en de gegevens bron hieraan toe te voegen.
+    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een gegevens bron object gemaakt met behulp van de klasse **Data Source** en toegevoegd aan de kaart. Een **veelhoek** object wordt vervolgens gemaakt op basis van een lijst met **punt**  objecten en wordt toegevoegd aan de gegevens bron. Met een **polygoon laag** worden gegevens weer gegeven die in de gegevens bron op de kaart zijn verpakt. Vervolgens wordt er een polygoon laag gemaakt waarmee het polygoon gebied wordt weer gegeven en wordt er een gegevens bron aan toegevoegd. Met een **lijn laag** worden lijn objecten weer gegeven die zijn verpakt in een gegevens bron. In het laatste deel van het code fragment wordt een laag gemaakt om het overzicht van de veelhoek weer te geven en de gegevens bron hieraan toe te voegen.
 
     Nadat u het code fragment hierboven hebt toegevoegd, `MainActivity.java` ziet uw er als volgt uit:
 
