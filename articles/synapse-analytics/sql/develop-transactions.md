@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288610"
 ---
 # <a name="use-transactions-in-sql-pool"></a>Trans acties in SQL-groep gebruiken
 
@@ -29,10 +29,10 @@ Zoals verwacht, ondersteunt de SQL-groep trans acties als onderdeel van de werk 
 
 De SQL-Groep implementeert zure trans acties. Het isolatie niveau van de transactionele ondersteuning is standaard om niet-doorgevoerd te lezen.  U kunt deze wijzigen om doorgevoerde MOMENTOPNAME isolatie te lezen door de optie READ_COMMITTED_SNAPSHOT data base in te scha kelen voor een gebruikers database wanneer deze is verbonden met de hoofd database.  
 
-Wanneer deze optie is ingeschakeld, worden alle trans acties in deze data base uitgevoerd onder Lees-VASTGELEGDe snap shot-isolatie en wordt het lezen van niet-toegewezen op sessie niveau niet in rekening gehouden. Raadpleeg [ALTER data base set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) voor meer informatie.
+Wanneer deze optie is ingeschakeld, worden alle trans acties in deze data base uitgevoerd onder Lees-VASTGELEGDe snap shot-isolatie en wordt het lezen van niet-toegewezen op sessie niveau niet in rekening gehouden. Raadpleeg [ALTER data base set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) voor meer informatie.
 
 ## <a name="transaction-size"></a>Transactie grootte
-Een trans actie met één gegevens wijziging is beperkt. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal distributies. 
+Een trans actie met één gegevens wijziging is beperkt. De limiet wordt per distributie toegepast. Als zodanig kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal distributies. 
 
 Om het maximum aantal rijen in de trans actie te benaderen, deelt u de verdelings limiet door de totale grootte van elke rij. Overweeg voor kolommen met variabele lengte een gemiddelde kolom lengte in plaats van de maximum grootte te gebruiken.
 
@@ -71,7 +71,7 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 | DW300 |2.25 |60 |135 |9.000.000 |540.000.000 |
 | DW400 |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW600 |4,5 |60 |270 |18.000.000 |1.080.000.000 |
+| DW600 |4.5 |60 |270 |18.000.000 |1.080.000.000 |
 | DW1000 |7,5 |60 |450 |30.000.000 |1.800.000.000 |
 | DW1200 |9 |60 |540 |36.000.000 |2.160.000.000 |
 | DW1500 |11,25 |60 |675 |45.000.000 |2.700.000.000 |
@@ -81,7 +81,7 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 
 De limiet voor de transactie grootte wordt toegepast per trans actie of bewerking. Het wordt niet toegepast op alle gelijktijdige trans acties. Elke trans actie is daarom toegestaan om deze hoeveelheid gegevens naar het logboek te schrijven.
 
-Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt optimaliseren en minimaliseren, raadpleegt u het artikel [Best practices voor trans acties](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Als u de hoeveelheid gegevens die naar het logboek moet worden geschreven, wilt optimaliseren en minimaliseren, raadpleegt u het artikel [trans acties best practices](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 > [!WARNING]
 > De maximale transactie grootte kan alleen worden bereikt voor HASH-of ROUND_ROBIN gedistribueerde tabellen waarin de sprei ding van de gegevens zich ook bevindt. Als de trans actie gegevens op een gescheefe manier naar de distributies schrijft, wordt de limiet waarschijnlijk bereikt vóór de maximale transactie grootte.
@@ -134,11 +134,11 @@ SELECT @xact_state AS TransactionState;
 
 De voor gaande code bevat het volgende fout bericht:
 
-Msg 111233, niveau 16, status 1, regel 1 111233; De huidige trans actie is afgebroken en alle openstaande wijzigingen zijn teruggedraaid. Oorzaak: een trans actie in een alleen-herstel status is niet expliciet teruggedraaid vóór een DDL-, DML-of SELECT-instructie.
+Msg 111233, niveau 16, status 1, regel 1 111233; De huidige trans actie is afgebroken en alle openstaande wijzigingen zijn teruggedraaid. Oorzaak: een trans actie in een alleen-herstel status is niet expliciet teruggezet vóór een DDL-, DML-of SELECT-instructie.
 
 U krijgt geen uitvoer van de ERROR_ *-functies.
 
-In de SQL-groep moet de code iets worden gewijzigd:
+In de SQL-groep moet de code enigszins worden gewijzigd:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,7 +181,7 @@ Alle wijzigingen die zijn gewijzigd, zijn dat het terugdraaien van de trans acti
 
 ## <a name="error_line-function"></a>Functie Error_Line ()
 
-Het is ook een goed idee dat de functie ERROR_LINE () niet wordt geïmplementeerd of ondersteund door de SQL-groep. Als u dit in uw code hebt, moet u deze verwijderen om te voldoen aan de SQL-groep. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](develop-label.md) voor meer informatie.
+Het is ook een goed idee dat de functie ERROR_LINE () niet wordt geïmplementeerd of ondersteund door de SQL-groep. Als u deze functie in uw code hebt, moet u deze verwijderen om te voldoen aan de SQL-groep. Gebruik in plaats daarvan query labels in uw code om gelijkwaardige functionaliteit te implementeren. Zie het artikel [Label](develop-label.md) voor meer informatie.
 
 ## <a name="use-of-throw-and-raiserror"></a>Gebruik van THROW en///////
 
@@ -193,9 +193,7 @@ THROW is de meer moderne implementatie voor het verhogen van uitzonde ringen in 
 
 ## <a name="limitations"></a>Beperkingen
 
-De SQL-groep heeft enkele andere beperkingen die betrekking hebben op trans acties.
-
-De verschillen zijn als volgt:
+De SQL-groep heeft enkele andere beperkingen die betrekking hebben op trans acties. De verschillen zijn als volgt:
 
 * Geen gedistribueerde trans acties
 * Geen geneste trans acties toegestaan

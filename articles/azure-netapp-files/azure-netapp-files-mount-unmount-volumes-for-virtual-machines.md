@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325535"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen 
 
 U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines.  De koppelings instructies voor virtuele Linux-machines zijn beschikbaar op Azure NetApp Files.  
 
-> [!IMPORTANT] 
-> U moet ten minste één export beleid hebben om toegang te kunnen krijgen tot een NFS-volume.
+## <a name="requirements"></a>Vereisten 
+
+* U moet ten minste één export beleid hebben om toegang te kunnen krijgen tot een NFS-volume.
+* Als u een NFS-volume met succes wilt koppelen, moet u ervoor zorgen dat de volgende NFS-poorten zijn geopend tussen de client en de NFS-volumes:
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` (alleen NFSv3)
+    * 4046 = `status` (alleen NFSv3)
+
+## <a name="steps"></a>Stappen
 
 1. Klik op de Blade **volumes** en selecteer vervolgens het volume dat u wilt koppelen. 
 2. Klik op **koppelings instructies** van het geselecteerde volume en volg de instructies om het volume te koppelen. 

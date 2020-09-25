@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 35e5e688f5589c23c7c583c7bcbca3fd0956eec7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336306"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Gepland onderhoud in Azure Database for PostgreSQL: flexibele server
  
@@ -46,5 +46,5 @@ Als de onderhouds gebeurtenis door het systeem wordt geannuleerd of niet kan wor
 ## <a name="next-steps"></a>Volgende stappen
  
 * Meer informatie over [het wijzigen van de onderhouds planning](how-to-maintenance-portal.md)
-* Meer informatie [over het verkrijgen van meldingen over aanstaande onderhouds werkzaamheden](/azure/service-health/service-notifications.md) met Azure service Health
-* Meer informatie [over het instellen van waarschuwingen over aanstaande geplande onderhouds gebeurtenissen](/azure/service-health/resource-health-alert-monitor-guide.md)
+* Meer informatie [over het verkrijgen van meldingen over aanstaande onderhouds werkzaamheden](../../service-health/service-notifications.md) met Azure service Health
+* Meer informatie [over het instellen van waarschuwingen over aanstaande geplande onderhouds gebeurtenissen](../../service-health/resource-health-alert-monitor-guide.md)

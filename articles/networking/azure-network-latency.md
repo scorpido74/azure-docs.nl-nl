@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/05/2020
 ms.author: kumud
-ms.openlocfilehash: 1898bcf619f1fc9aaf19384968225e35c9589688
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a1ae6386ddbf9e8bc226598b0b9218ba20669356
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336344"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Statistieken voor round-trip-latentie van Azure Network
 
@@ -22,9 +22,9 @@ Azure bewaakt voortdurend de latentie (snelheid) van de kern gebieden van het ne
 
 De latentie metingen worden verzameld van ThousandEyes-agents die wereld wijd worden gehost in azure-Cloud regio's, waardoor voortdurend netwerk tests tussen zichzelf worden verzonden binnen een interval van 1 minuut. De statistieken voor de maandelijkse latentie worden afgeleid van de verzamelde voor beelden voor de maand.
 
-## <a name="july-2020-round-trip-latency-figures"></a>Cijfers met retour vertraging van 2020 juli
+## <a name="august-2020-round-trip-latency-figures"></a>Cijfers met retour vertraging van 2020 augustus
 
-De maandelijkse gemiddelde retour tijden tussen Azure-regio's voor de afgelopen 31 dagen (eindigend op 31 juli 2020) worden hieronder weer gegeven. De volgende metingen worden aangedreven door [ThousandEyes](https://thousandeyes.com).
+De maandelijkse gemiddelde retour tijden tussen Azure-regio's voor de afgelopen 31 dagen (eindigend op 31 augustus 2020) worden hieronder weer gegeven. De volgende metingen worden aangedreven door [ThousandEyes](https://thousandeyes.com).
 
 [![Latentie statistieken tussen Azure-regio's](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

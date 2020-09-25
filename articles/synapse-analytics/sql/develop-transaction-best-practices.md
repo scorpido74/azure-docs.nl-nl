@@ -1,6 +1,6 @@
 ---
 title: Trans acties voor SQL-groep optimaliseren
-description: Informatie over het optimaliseren van de prestaties van uw transactionele code in de SQL-groep (Data Warehouse) en het minimaliseren van het risico op lange terugdraai acties.
+description: Meer informatie over het optimaliseren van de prestaties van uw transactionele code in de SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288644"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>Trans acties in SQL-groep optimaliseren
 
@@ -68,7 +68,7 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 
 | Primaire index | Scenario voor laden | Modus logboek registratie |
 | --- | --- | --- |
-| Heap |Alle |**Minimaal** |
+| Heap |Elk |**Minimaal** |
 | Geclusterde index |Lege doel tabel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |
@@ -84,7 +84,7 @@ Het laden van gegevens in een niet-lege tabel met een geclusterde index kan vaak
 
 ## <a name="optimize-deletes"></a>Verwijderingen optimaliseren
 
-VERWIJDEREN is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet verwijderen, is het vaak beter voor `SELECT` de gegevens die u wilt blijven gebruiken, die kunnen worden uitgevoerd als een mini maal vastgelegde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Nadat deze is gemaakt, gebruikt u de [naam wijzigen](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om de oude tabel om te wisselen met de zojuist gemaakte tabel.
+VERWIJDEREN is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet verwijderen, is het vaak beter voor `SELECT` de gegevens die u wilt blijven gebruiken, die kunnen worden uitgevoerd als een mini maal vastgelegde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Nadat deze is gemaakt, gebruikt u de [naam wijzigen](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) om de oude tabel om te wisselen met de zojuist gemaakte tabel.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.

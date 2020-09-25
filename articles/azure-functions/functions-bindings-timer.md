@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325790"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
+# <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u met timer triggers in Azure Functions kunt werken. Met een timer trigger kunt u een functie uitvoeren volgens een schema. 
+In dit artikel wordt uitgelegd hoe u met timer triggers in Azure Functions kunt werken. Met een timer trigger kunt u een functie uitvoeren volgens een schema.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -52,7 +52,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een binding van een timer trigger in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Het [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) object wordt door gegeven aan de functie.
 
@@ -67,7 +67,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -77,6 +77,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
         log.LogInformation("Timer is running late!");
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}" );  
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie [als cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
 }
 ```
 
@@ -95,7 +110,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+In het volgende voor beeld ziet u hoe u de *function.jsop* en *run.ps1* bestand kunt configureren voor een timer trigger in [Power shell](./functions-reference-powershell.md).
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+Er wordt een exemplaar van het [object Timer](#usage) door gegeven als het eerste argument voor de functie.
+
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld wordt een timer trigger binding gebruikt waarvan de configuratie wordt beschreven in de *function.jsin* het bestand. De daad werkelijke [python-functie](functions-reference-python.md) die gebruikmaakt van de binding, wordt beschreven in het bestand * __init__. py* . Het object dat is door gegeven aan de functie, is van het type [Azure. functions. TimerRequest-object](/python/api/azure-functions/azure.functions.timerrequest). De functie logica schrijft naar de logboeken die aangeven of de huidige aanroep wordt veroorzaakt door een gemist schema voorval. 
+In het volgende voor beeld wordt een timer trigger binding gebruikt waarvan de configuratie wordt beschreven in de *function.jsin* het bestand. De daad werkelijke [python-functie](functions-reference-python.md) die gebruikmaakt van de binding, wordt beschreven in het bestand * __init__. py* . Het object dat is door gegeven aan de functie, is van het type [Azure. functions. TimerRequest-object](/python/api/azure-functions/azure.functions.timerrequest). De functie logica schrijft naar de logboeken die aangeven of de huidige aanroep wordt veroorzaakt door een gemist schema voorval.
 
 Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
@@ -126,7 +176,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import datetime
@@ -143,21 +193,6 @@ def main(mytimer: func.TimerRequest) -> None:
         logging.info('The timer is past due!')
 
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie [als cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
 ```
 
 ---
@@ -184,17 +219,9 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Kenmerken worden niet ondersteund door Java script.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -211,16 +238,28 @@ public void keepAlive(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door JavaScript.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Kenmerken worden niet ondersteund door Power shell.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door Python.
+
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `TimerTrigger` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `TimerTrigger`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal.|
+|**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
 |**name** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
 |**planning**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de app-instelling die wordt verpakt in **%** tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
 |**runOnStartup**|**RunOnStartup**|Als de `true` functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true` , met name bij de productie. |
@@ -229,7 +268,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> We raden u aan om **runOnStartup** in te stellen op `true` in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.   
+> We raden u aan om **runOnStartup** in te stellen op `true` in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.
 
 ## <a name="usage"></a>Gebruik
 
@@ -250,8 +289,7 @@ Wanneer een timer functie wordt geactiveerd, wordt er een timer object door gege
 
 De `IsPastDue` eigenschap is op het `true` moment dat de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB-expressies 
+## <a name="ncrontab-expressions"></a>NCRONTAB-expressies
 
 Azure Functions maakt gebruik van de [NCronTab](https://github.com/atifaziz/NCrontab) -bibliotheek om NCronTab-expressies te interpreteren. Een NCRONTAB-expressie is vergelijkbaar met een CRON-expressie, behalve dat het een extra zesde veld bevat die aan het begin moet worden gebruikt voor tijd nauwkeurigheid in seconden:
 
@@ -300,12 +338,12 @@ In tegens telling tot een CRON-expressie `TimeSpan` specificeert een waarde het 
 
 Wordt weer gegeven als een teken reeks, de `TimeSpan` notatie is `hh:mm:ss` `hh` kleiner dan 24. Als de eerste twee cijfers 24 of hoger zijn, is de notatie `dd:hh:mm` . Enkele voorbeelden:
 
-|Voorbeeld |Wanneer geactiveerd  |
-|---------|---------|
-|"01:00:00" | elk uur        |
-|"00:01:00"|elke minuut         |
-|"24:00:00" | elke 24 dagen        |
-|"1,00:00:00" | Elke dag        |
+| Voorbeeld      | Wanneer geactiveerd |
+|--------------|----------------|
+| "01:00:00"   | elk uur     |
+| "00:01:00"   | elke minuut   |
+| "24:00:00"   | elke 24 dagen  |
+| "1,00:00:00" | Elke dag      |
 
 ## <a name="scale-out"></a>Uitschalen
 

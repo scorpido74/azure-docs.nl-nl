@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335966"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migreren van Federatie naar Pass-Through-verificatie voor Azure Active Directory
 
@@ -283,9 +283,9 @@ Volgende. aanvullende verificatie methoden implementeren:
 
 4. De verificatie agent-installatie uitvoeren. Tijdens de installatie moet u de referenties van een algemeen Administrator-account invoeren.
 
-   ![Scherm opname van de knop installeren op de pagina Microsoft Azure AD-verbindings agent-pakket](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Scherm opname van de knop die u gebruikt voor het uitvoeren van het Microsoft Azure AD-pakket voor verbindings verificatie.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![Scherm opname van de aanmeldings pagina](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Scherm opname van de micro soft-aanmeldings pagina.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Wanneer de verificatie agent is geïnstalleerd, kunt u teruggaan naar de status pagina Pass-Through-verificatie agent om de status van de extra agents te controleren.
 
@@ -327,7 +327,7 @@ Schakel eerst Pass-Through-verificatie in:
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
    * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.
    
-   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![Scherm afbeelding met de instellingen die moeten worden gecontroleerd in het gedeelte aanmelden bij de gebruiker.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. Selecteer **Pass-Through-verificatie** en controleer of de status **actief**is.<br />
    
    Als de verificatie agent niet actief is, voltooit u de [stappen voor probleem oplossing](./tshoot-connect-pass-through-authentication.md) voordat u verdergaat met het domein conversie proces in de volgende stap. U kunt een verificatie storing veroorzaken als u uw domeinen converteert voordat u valideert dat uw Pass Through-verificatie agenten zijn geïnstalleerd en dat de status ervan **actief** is in de Azure Portal.
@@ -368,7 +368,7 @@ De conversie volt ooien met behulp van de Azure AD Power shell-module:
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
    * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.<br />
 
-   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding in de Azure AD-Portal.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Testen en volgende stappen
 

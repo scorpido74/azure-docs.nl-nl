@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84142143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325603"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodel voor Azure NetApp Files 
 
-Wat is het kosten model voor Azure NetApp Files helpt u bij het beheren van uw kosten van de service.
+Wat is het kosten model voor Azure NetApp Files helpt u bij het beheren van uw kosten van de service. 
+
+Zie [kosten model voor replicatie tussen regio's](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)voor een specifiek kosten model voor replicatie tussen regio's.
 
 ## <a name="calculation-of-capacity-consumption"></a>Berekening van capaciteits verbruik
 
@@ -61,6 +63,7 @@ U kunt de groeps grootte hand matig Verg Roten of verkleinen. De volgende beperk
 * Een verhoging van 1-TiB na de eerste 4-TiB-minimale aankoop
 * Een minimale facturerings toename van één uur
 * De ingerichte grootte van de groep mag niet kleiner zijn dan de totale gebruikte capaciteit in de pool.
+* Voor capaciteits Pools met hand matige QoS kan de pool grootte alleen worden verminderd als de grootte en het service niveau meer door Voer bieden dan de daad werkelijke toegewezen door Voer van alle volumes.
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>Gedrag van groep met maximale grootte overschrijding   
 
@@ -94,3 +97,4 @@ Het capaciteits verbruik van moment opnamen in Azure NetApp Files wordt berekend
 * [Pagina met Azure NetApp Files prijzen](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Serviceniveau's voor Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Kosten model voor replicatie tussen regio's](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

@@ -1,5 +1,5 @@
 ---
-title: Server parameters – grootschalige (grootschalige (Citus)-Azure Database for PostgreSQL
+title: Server parameters – grootschalige (Citus)-Azure Database for PostgreSQL
 description: Para meters in de grootschalige (Citus) SQL-API
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336238"
 ---
 # <a name="server-parameters"></a>Serverparameters
 
 Er zijn verschillende server parameters die van invloed zijn op het gedrag van grootschalige (Citus), zowel van standaard PostgreSQL, en specifiek voor grootschalige (Citus).
 Deze para meters kunnen worden ingesteld in de Azure Portal voor een Citus-Server groep (grootschalige). Kies in de categorie **instellingen** de para meters van **worker-knoop punten** of **para meters van coördinator knooppunt**. Met deze pagina's kunt u para meters instellen voor alle worker-knoop punten of alleen voor het coördinator knooppunt.
 
-## <a name="hyperscale-parameters"></a>Grootschalige-para meters
+## <a name="hyperscale-citus-parameters"></a>Citus-para meters (grootschalige)
 
 > [!NOTE]
 >
-> Grootschalige-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande para meters.
+> Grootschalige (Citus)-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande para meters.
 
 ### <a name="general-configuration"></a>Algemene configuratie
 

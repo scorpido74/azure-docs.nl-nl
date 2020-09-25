@@ -4,17 +4,17 @@ description: Meer informatie over het toevoegen van Maps aan web-en mobiele toep
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7d45adc10a84af2cf1e5bfddd09c990e53a9f7e2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335327"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
 
@@ -198,7 +198,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
    ![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>Lokaliseren van de kaart
+## <a name="localizing-the-map"></a>De kaart lokaliseren
 
 Azure Maps biedt twee verschillende manieren om de taal-en regionale weer gave voor de gerenderde kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de globale `atlas` naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 

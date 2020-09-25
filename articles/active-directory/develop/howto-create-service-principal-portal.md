@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265898"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
-In dit artikel wordt beschreven hoe u een nieuwe Azure Active Directory (Azure AD)-toepassing en Service-Principal maakt die kunnen worden gebruikt met het toegangs beheer op basis van rollen. Wanneer u toepassingen, gehoste services of geautomatiseerde hulpprogram ma's hebt die toegang nodig hebben tot of wijzigen van resources, kunt u een identiteit voor de app maken. Deze identiteit staat bekend als een service-principal. De toegang tot resources wordt beperkt door de functies die aan de Service-Principal zijn toegewezen, zodat u kunt bepalen welke resources toegankelijk zijn en op welk niveau. Uit veiligheidsoverwegingen is het altijd aanbevolen om voor geautomatiseerde tools service-principals te gebruiken, in plaats van deze zich te laten aanmelden met een gebruikers-id. 
+In dit artikel wordt beschreven hoe u een nieuwe Azure Active Directory (Azure AD)-toepassing en Service-Principal maakt die kunnen worden gebruikt met het toegangs beheer op basis van rollen. Wanneer u toepassingen, gehoste services of geautomatiseerde hulpprogram ma's hebt die toegang nodig hebben tot of wijzigen van resources, kunt u een identiteit voor de app maken. Deze identiteit staat bekend als een service-principal. De toegang tot resources wordt beperkt door de functies die aan de Service-Principal zijn toegewezen, zodat u kunt bepalen welke resources toegankelijk zijn en op welk niveau. Uit veiligheidsoverwegingen is het altijd aanbevolen om voor geautomatiseerde tools service-principals te gebruiken, in plaats van deze zich te laten aanmelden met een gebruikers-id.
 
 In dit artikel leest u hoe u de-portal kunt gebruiken om de service-principal te maken in de Azure Portal. Het is gericht op een toepassing met één Tenant waarbij de toepassing alleen binnen één organisatie kan worden uitgevoerd. Normaal gesp roken gebruikt u toepassingen met één Tenant voor line-of-business-toepassingen die binnen uw organisatie worden uitgevoerd.  U kunt ook [Azure PowerShell gebruiken om een service-principal te maken](howto-authenticate-service-principal-powershell.md).
 
@@ -55,7 +55,7 @@ Uw abonnements machtigingen controleren:
 
 1. Zoek en selecteer **abonnementen**of selecteer **abonnementen** op de **Start** pagina.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Zoeken](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Selecteer het abonnement waarin u de Service-Principal wilt maken.
 
@@ -129,12 +129,13 @@ Wanneer u zich programmatisch aanmeldt, moet u de Tenant-ID door geven aan uw ve
 
    ![De toepassings-id (client-id) kopiëren](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Een certificaat uploaden of een geheim maken om u aan te melden
-Er zijn twee soorten verificatie beschikbaar voor service-principals: verificatie op basis van wacht woorden (toepassings geheim) en verificatie op basis van certificaten.  We raden u aan een certificaat te gebruiken, maar u kunt ook een nieuw toepassings geheim maken.
+## <a name="authentication-two-options"></a>Verificatie: twee opties
 
-### <a name="upload-a-certificate"></a>Een certificaat uploaden
+Er zijn twee soorten verificatie beschikbaar voor service-principals: verificatie op basis van wacht woorden (toepassings geheim) en verificatie op basis van certificaten. *We raden u aan een certificaat te gebruiken*, maar u kunt ook een toepassings geheim maken.
 
-U kunt een bestaand certificaat gebruiken als u er een hebt.  U kunt eventueel ook een zelfondertekend certificaat maken voor *test doeleinden*. Als u een zelfondertekend certificaat wilt maken, opent u Power shell en voert u [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om het certificaat in het certificaat archief van de gebruiker op uw computer te maken: 
+### <a name="option-1-upload-a-certificate"></a>Optie 1: een certificaat uploaden
+
+U kunt een bestaand certificaat gebruiken als u er een hebt.  U kunt eventueel ook een zelfondertekend certificaat maken voor *test doeleinden*. Als u een zelfondertekend certificaat wilt maken, opent u Power shell en voert u [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om het certificaat in het certificaat archief van de gebruiker op uw computer te maken:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -163,7 +164,7 @@ Het certificaat uploaden:
 
 Nadat u het certificaat hebt geregistreerd bij uw toepassing in de portal voor toepassings registratie, moet u de client toepassings code inschakelen om het certificaat te gebruiken.
 
-### <a name="create-a-new-application-secret"></a>Een nieuw toepassingsgeheim maken
+### <a name="option-2-create-a-new-application-secret"></a>Optie 2: een nieuw toepassings geheim maken
 
 Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings geheim maken.
 
@@ -178,14 +179,15 @@ Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings g
    ![De geheimwaarde kopiëren omdat u deze later niet meer kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Toegangs beleid voor resources configureren
-Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
+Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.  
+1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.
 1. Selecteer **toegangs beleid toevoegen**en selecteer vervolgens de sleutel, het geheim en de certificaat machtigingen die u uw toepassing wilt verlenen.  Selecteer de service-principal die u eerder hebt gemaakt.
 1. Selecteer **toevoegen** om het toegangs beleid toe te voegen en **Sla** vervolgens op om uw wijzigingen door te voeren.
     ![Toegangs beleid toevoegen](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [gebruik van Azure PowerShell voor het maken van een Service-Principal](howto-authenticate-service-principal-powershell.md).
-* Zie voor meer informatie over het opgeven van beveiligings beleid [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).  
+* Zie voor meer informatie over het opgeven van beveiligings beleid [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met beschik bare acties die kunnen worden verleend of geweigerd aan gebruikers.
+* Voor informatie over het werken met app-registraties met behulp van **Microsoft Graph**, zie de API-naslag informatie voor [toepassingen](/graph/api/resources/application) .

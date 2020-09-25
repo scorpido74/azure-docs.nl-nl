@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325569"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -132,6 +132,12 @@ Azure NetApp Files ondersteunt NFSv3 en NFSv 4.1. U kunt [een volume maken](azur
 
 U kunt opgeven of het hoofd account toegang heeft tot het volume of niet met behulp van het export beleid van het volume. Zie [export beleid voor een NFS-volume configureren](azure-netapp-files-configure-export-policy.md) voor meer informatie.
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>Kan ik hetzelfde bestandspad gebruiken (token voor het maken van een volume) voor meerdere volumes?
+
+Ja, dat kunt u. Het bestandspad moet echter worden gebruikt in een ander abonnement of in een andere regio.   
+
+U maakt bijvoorbeeld een volume met de naam `vol1` . En vervolgens maakt u een ander volume, ook wel `vol1` in een andere capaciteits groep, maar in hetzelfde abonnement en dezelfde regio. In dit geval resulteert het gebruik van dezelfde volume naam in `vol1` een fout. Als u hetzelfde bestandspad wilt gebruiken, moet de naam zich in een andere regio of een ander abonnement bevinden.
+
 ## <a name="smb-faqs"></a>Veelgestelde vragen over SMB
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Welke SMB-versies worden ondersteund door Azure NetApp Files?
@@ -161,12 +167,6 @@ Azure NetApp Files ondersteunt Windows Server 2008r2SP1-2019-versies van Active 
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Waarom wordt de ingerichte grootte niet weer gegeven in de beschik bare ruimte op mijn SMB-client?
 
 De grootte van het volume dat door de SMB-client wordt gerapporteerd, is de maximale grootte waarmee het Azure NetApp Files volume kan worden uitgebreid. De grootte van het Azure NetApp Files volume, zoals weer gegeven op de SMB-client, komt niet overeen met het quotum of de grootte van het volume. U kunt de Azure NetApp Files volume grootte of-quota verkrijgen via de Azure Portal of de API.
-
-<!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

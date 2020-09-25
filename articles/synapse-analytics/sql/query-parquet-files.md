@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288304"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -22,7 +22,7 @@ In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (pr
 
 ## <a name="quickstart-example"></a>Quick start-voor beeld
 
-`OPENROWSET`met de functie kunt u de inhoud van het Parquet-bestand lezen door de URL naar uw bestand op te geven.
+`OPENROWSET` met de functie kunt u de inhoud van het Parquet-bestand lezen door de URL naar uw bestand op te geven.
 
 ### <a name="read-parquet-file"></a>Parquet-bestand lezen
 
@@ -57,7 +57,7 @@ Als een gegevens bron wordt beveiligd met een SAS-sleutel of aangepaste identite
 
 ### <a name="explicitly-specify-schema"></a>Expliciet schema opgeven
 
-`OPENROWSET`Hiermee kunt u expliciet opgeven welke kolommen u wilt lezen uit het bestand met behulp van de `WITH` component:
+`OPENROWSET` Hiermee kunt u expliciet opgeven welke kolommen u wilt lezen uit het bestand met behulp van de `WITH` component:
 
 ```sql
 select top 10 *
@@ -182,7 +182,7 @@ Parquet-bestanden bevatten type beschrijvingen voor elke kolom. In de volgende t
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |date |
+| INT32 |DATE |datum |
 | INT32 |KOMMA |decimal |
 | INT32 |TIJD (MILLIS)|tijd |
 | INT64 |INT (64, True) |bigint |

@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336323"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logische replicatie en logische decodering in Azure Database for PostgreSQL-flexibele server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - Flexible Server is als preview-versie beschikbaar
 
-De functies logische replicatie en logische decodering van PostgreSQL worden ondersteund in Azure Database for PostgreSQL-flexibele server.
+De functies logische replicatie en logische decodering van PostgreSQL worden ondersteund in Azure Database for PostgreSQL-flexibele server voor post gres versie 11.
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Logische replicatie en logische decodering vergelijken
 Logische replicatie en logische decodering hebben verschillende overeenkomsten. Beide
@@ -43,7 +43,11 @@ Logische decodering
 1. Stel de server parameter `wal_level` in op `logical` .
 2. Start de server opnieuw op om de wijziging toe te passen `wal_level` .
 3. Bevestig dat uw PostgreSQL-instantie netwerk verkeer van de verbinding met de bron toestaat.
-4. De gebruiker met beheerders rechten gebruiken bij het uitvoeren van replicatie opdrachten.
+4. Verleen de beheerder replicatie machtigingen voor de gebruiker.
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>Logische replicatie en logische decodering gebruiken
 
@@ -54,7 +58,7 @@ Logische replicatie maakt gebruik van de termen ' Publisher ' en ' Subscriber '.
 
 Hier volgt een voor beeld van een code die u kunt gebruiken om logische replicatie uit te proberen.
 
-1. Verbinding maken met de uitgever. Een tabel maken en gegevens toevoegen.
+1. Maak verbinding met de publicatiedata base. Een tabel maken en gegevens toevoegen.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Hier volgt een voor beeld van een code die u kunt gebruiken om logische replicat
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. Verbinding maken met de abonnee. Maak een tabel met hetzelfde schema als op de Publisher.
+3. Verbinding maken met de abonnee database. Maak een tabel met hetzelfde schema als op de Publisher.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. Maak een abonnement dat verbinding maakt met de publicatie die u eerder hebt gemaakt.
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. U kunt nu een query uitvoeren op de tabel op de abonnee. U ziet dat er gegevens van de uitgever zijn ontvangen.
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 [Stel waarschuwingen](howto-alert-on-metrics.md) in voor de **Maxi maal gebruikte trans actie-Id's** en de **opslag** van flexibele server metrieken om u te waarschuwen wanneer de waarden de drempel waarde voor het vorige gemiddelde verhogen. 
 
-## <a name="read-replicas"></a>Leesreplica's
-Azure Database for PostgreSQL Lees replica's worden momenteel niet ondersteund voor flexibele servers.
+## <a name="limitations"></a>Beperkingen
+* **Replica's lezen** : Azure database for PostgreSQL Lees replica's worden momenteel niet ondersteund voor flexibele servers.
+* **Sleuven en ha-failover** -logische replicatie sleuven op de primaire server zijn niet beschikbaar op de standby-server in uw secundaire AZ. Dit geldt voor u als op de server de optie zone-redundante hoge Beschik baarheid wordt gebruikt. In het geval van een failover naar de stand-by-server zijn logische replicatie sleuven niet beschikbaar op stand-by.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [netwerk opties](concepts-networking.md)

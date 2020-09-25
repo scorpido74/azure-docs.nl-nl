@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288321"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -24,7 +24,7 @@ In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (pr
 
 ## <a name="read-json-documents"></a>JSON-documenten lezen
 
-De eenvoudigste manier om de inhoud van uw JSON-bestand te bekijken is door de bestands-URL te bieden `OPENROWSET` , CSV op te geven `FORMAT` en waarden `0x0b` in te stellen voor `fieldterminator` en `fieldquote` . Als u JSON-bestanden met regel scheiding wilt lezen, is dit voldoende. Als u een klassiek JSON-bestand hebt, moet u waarden instellen `0x0b` voor `rowterminator` . `OPENROWSET`de functie parseert JSON en retourneert elk document in de volgende indeling:
+De eenvoudigste manier om de inhoud van uw JSON-bestand te bekijken, is door de URL van het bestand op te geven voor de `OPENROWSET` functie, CSV op te geven `FORMAT` en waarden `0x0b` in te stellen voor `fieldterminator` en `fieldquote` . Als u JSON-bestanden met regel scheiding wilt lezen, is dit voldoende. Als u een klassiek JSON-bestand hebt, moet u waarden instellen `0x0b` voor `rowterminator` . `OPENROWSET` de functie parseert JSON en retourneert elk document in de volgende indeling:
 
 | documenten |
 | --- |
@@ -33,7 +33,7 @@ De eenvoudigste manier om de inhoud van uw JSON-bestand te bekijken is door de b
 |{"date_rep": "2020-07-26", "dag": 26, "maand": 7, "jaar": 2020, "cases": 4, "sterf": 0, "geo_id": "AF"}|
 |{"date_rep": "2020-07-27", "dag": 27, "maand": 7, "jaar": 2020, "cases": 8, "sterf": 0, "geo_id": "AF"}|
 
-Als het bestand openbaar beschikbaar is, of als uw Azure AD-identiteit toegang heeft tot dit bestand, moet u de inhoud van het bestand kunnen zien met behulp van de query zoals die in de volgende voor beelden wordt weer gegeven.
+Als het bestand openbaar beschikbaar is, of als uw Azure AD-identiteit toegang heeft tot dit bestand, ziet u de inhoud van het bestand met behulp van de query zoals die in de volgende voor beelden wordt weer gegeven.
 
 ### <a name="read-json-files"></a>JSON-bestanden lezen
 
@@ -58,11 +58,11 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Deze query retourneert elk JSON-document als een afzonderlijke rij van de resultatenset. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referentie voor het server niveau voor SQL-aanmelding](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen. 
+Deze query retourneert elk JSON-document als een afzonderlijke rij van de resultatenset. Zorg ervoor dat u toegang tot dit bestand hebt. Als uw bestand is beveiligd met een SAS-sleutel of aangepaste identiteit, moet u de [referentie op server niveau voor SQL-aanmelding](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)instellen. 
 
 ### <a name="data-source-usage"></a>Gebruik van gegevens bronnen
 
-In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die naar de hoofdmap van de opslag verwijst en die gegevens bron en het relatieve pad naar het bestand in `OPENROWSET` functie gebruiken:
+In het vorige voor beeld wordt het volledige pad naar het bestand gebruikt. Als alternatief kunt u een externe gegevens bron maken met de locatie die verwijst naar de hoofdmap van de opslag en die gegevens bron en het relatieve pad naar het bestand in de `OPENROWSET` functie gebruiken:
 
 ```sql
 create external data source covid
