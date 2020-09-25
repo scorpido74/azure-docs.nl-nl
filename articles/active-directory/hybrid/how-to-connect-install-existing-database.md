@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265388"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect installeren met behulp van een bestaande ADSync-database
 Azure AD Connect vereist een SQL Server-Data Base om gegevens op te slaan. U kunt de standaard SQL Server 2012 Express LocalDB gebruiken dat is geïnstalleerd met Azure AD Connect of uw eigen volledige versie van SQL gebruiken. Toen u Azure AD Connect hebt geïnstalleerd, werd er altijd een nieuwe data base gemaakt met de naam ADSync. Met Azure AD Connect versie 1.1.613.0 (of later) hebt u de mogelijkheid om Azure AD Connect te installeren door het te wijzen naar een bestaande ADSync-data base.
@@ -58,7 +58,7 @@ Belang rijke opmerkingen voordat u doorgaat:
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Stappen voor het installeren van Azure AD Connect met de modus ' bestaande Data Base gebruiken '
 1.  Down load Azure AD Connect Installer (AzureADConnect.MSI) naar de Windows-Server. Dubbel klik op het installatie programma van Azure AD Connect om te beginnen met de installatie van Azure AD Connect.
 2.  Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
-![Welkom](./media/how-to-connect-install-existing-database/db1.png)
+![Scherm afbeelding waarin de pagina Welkom bij Azure A D Connect wordt weer gegeven, met snelle instellingen in het menu aan de linkerkant.](./media/how-to-connect-install-existing-database/db1.png)
 3.  Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar de map C:\Program Files\Microsoft Azure Active Directory Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
 
 > [!NOTE]
@@ -66,9 +66,9 @@ Belang rijke opmerkingen voordat u doorgaat:
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
-   ![Welkom](./media/how-to-connect-install-existing-database/db3.png)
+   ![Scherm opname van de pagina Welkom bij Azure A D Connect](./media/how-to-connect-install-existing-database/db3.png)
 1. Op het scherm **Vereiste onderdelen installeren** is de optie **Een bestaande SQL-server gebruiken** ingeschakeld. Geef de naam op van de SQL-server waarop de ADSync-database wordt gehost. Als het SQL Engine-exemplaar dat wordt gebruikt om de ADSync-database te hosten, niet het standaardexemplaar is op de SQL-server, moet u de naam van het SQL Engine-exemplaar opgeven. Daarnaast moet u, indien bladeren in SQL niet is ingeschakeld, ook het poortnummer voor het SQL Engine-exemplaar opgeven. Bijvoorbeeld:         
-   ![Welkom](./media/how-to-connect-install-existing-database/db4.png)           
+   ![Scherm afbeelding met de pagina vereiste onderdelen installeren.](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. Op het scherm **Verbinding maken met Azure AD** moet u de referenties opgeven van een globale beheerder van de Azure AD-adreslijst. U wordt aangeraden om een account te gebruiken in het standaarddomein onmicrosoft.com. Dit account wordt alleen gebruikt om een serviceaccount in Azure AD aan te maken en wordt niet gebruikt wanneer de wizard is voltooid.
    ![Verbinding maken](./media/how-to-connect-install-existing-database/db5.png)
@@ -77,10 +77,10 @@ Belang rijke opmerkingen voordat u doorgaat:
    ![Adreslijsten](./media/how-to-connect-install-existing-database/db6.png)
  
 1. In het pop-updialoogvenster kunt u (i) de referenties van een ondernemingsadministrator opgeven en het AD DS-account voor u laten maken in Azure AD Connect of (ii) zelf het AD DS-account maken en de bijbehorende referenties opgeven in Azure AD Connect. Zodra u een optie hebt geselecteerd en de benodigde referenties hebt opgegeven, klikt u op **OK** om het pop-updialoogvenster te sluiten.
-   ![Welkom](./media/how-to-connect-install-existing-database/db7.png)
+   ![Scherm opname van het pop-updialoogvenster ' A D forest-account ' met ' nieuwe A D account maken ' geselecteerd.](./media/how-to-connect-install-existing-database/db7.png)
  
 1. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **Volgende**.
-   ![Welkom](./media/how-to-connect-install-existing-database/db8.png)
+   ![Scherm opname van de pagina ' Connect your directory's '.](./media/how-to-connect-install-existing-database/db8.png)
  
 1. Klik in het scherm **gereed voor configuratie** op **installeren**.
    ![Welkom](./media/how-to-connect-install-existing-database/db9.png)

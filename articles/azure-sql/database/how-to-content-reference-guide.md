@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335001"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Inhouds referentie configureren en beheren-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 - [Verificatie van Azure Active Directory (Azure AD) configureren](authentication-aad-configure.md)
 - [Voorwaardelijke toegang configureren](conditional-access-configure.md)
-- [Multi-factor Azure AD-verificatie](authentication-mfa-ssms-overview.md)
+- [Meervoudige Azure AD-verificatie](authentication-mfa-ssms-overview.md)
 - [Multi-Factor Authentication configureren](authentication-mfa-ssms-configure.md)
 - [Tijdelijk bewaarbeleid configureren](temporal-tables-retention-policy.md)
 - [TDE met BYOK (Bring Your Own Key) configureren](transparent-data-encryption-byok-configure.md)

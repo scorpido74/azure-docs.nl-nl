@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f859700be32bda5d8245429076c2359d1adf9d5a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287744"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Problemen met Azure Synapse Studio (preview) oplossen
 
@@ -31,7 +31,8 @@ De optie ' SQL op aanvraag ' is grijs weer gegeven in de vervolg keuzelijst verb
 
 Als u de query uitvoert met ' SQL on-demand ', wordt het fout bericht ' kan geen verbinding maken met server ' weer gegeven.
 
-![Scherm afbeelding toont een fout bij het tot stand brengen van een verbinding met server bericht.](media/troubleshooting-synapse-studio/symptom2.png)
+![symptoom 2](media/troubleshooting-synapse-studio/symptom2.png)
+ 
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
@@ -54,7 +55,7 @@ Controleer of "cache uitschakelen" in het paneel netwerk is ingeschakeld.
 
 Voer de bewerking opnieuw uit die u hebt uitgevoerd in azure Synapse Studio. U ziet mogelijk nieuwe items die worden weer gegeven in de lijst ' netwerk ' in Ontwikkelhulpprogramma's. Noteer uw huidige systeem tijd om in het ondersteunings ticket op te geven.
 
-![Scherm opname toont het DevTools-venster met het netwerk en het uitschakelen van de cache ingeschakeld.](media/troubleshooting-synapse-studio/network-panel.png)
+![netwerk paneel 1](media/troubleshooting-synapse-studio/network-panel.png)
 
 Zoek het item waarvan de URL-kolom overeenkomt met het volgende patroon:
 
@@ -64,9 +65,9 @@ Waarbij [*A*] de naam van uw werk ruimte is en "-OnDemand" kan '-sqlod ' zijn en
 
 Als een van beide items een andere waarde heeft dan ' 20x ' en:
 
-- status begint met ' (mislukt) ', breid de kolom ' status ' uit of Beweeg de muis aanwijzer over de status tekst om de volledige tekst te zien. Neem de tekst en/of de scherm opname op wanneer u het ondersteunings ticket opent.
+- Status begint met ' (mislukt) ', breid de kolom ' status ' uit of Beweeg de muis aanwijzer over de status tekst om de volledige tekst te zien. Neem de tekst en/of de scherm opname op wanneer u het ondersteunings ticket opent.
 
-    ![Scherm opname toont resultaten, inclusief een mislukte waarde in de kolom Status.](media/troubleshooting-synapse-studio/status-text.png)
+    ![status tekst](media/troubleshooting-synapse-studio/status-text.png)
 
     - Als ERR_NAME_NOT_RESOLVED en u uw werk ruimte binnen 10 minuten hebt gemaakt, wacht u 10 minuten en probeert u opnieuw of het probleem zich nog steeds voordoet.
     - Als ERR_INTERNET_DISCONNECTED of ERR_NETWORK_CHANGED wordt weer geven, is het mogelijk dat de netwerk verbinding van uw PC problemen ondervindt. Controleer uw netwerk verbinding en voer de bewerking opnieuw uit.
@@ -74,7 +75,7 @@ Als een van beide items een andere waarde heeft dan ' 20x ' en:
     - Als ERR_NETWORK_ACCESS_DENIED wordt weer geven, moet u mogelijk de beheerder vragen of uw lokale firewall beleid de toegang heeft geblokkeerd tot een database.windows.net-domein of externe poort 1443.
     - Probeer eventueel dezelfde bewerking direct op een andere computer en/of netwerk omgeving om een probleem met de netwerk configuratie op uw PC uit te voeren.
 
-- de status is "40x", "50x" of andere nummers. Selecteer de items om de details weer te geven. U ziet nu de item gegevens aan de rechter kant. De sectie antwoord header zoeken; Controleer vervolgens of een item met de naam ' Access-Control-Allow-Origin ' bestaat. Als dit het geval is, controleert u of deze een van de volgende waarden heeft:
+- De status is "40x", "50x" of andere nummers. Selecteer de items om de details weer te geven. U ziet nu de item gegevens aan de rechter kant. De sectie antwoord header zoeken; Controleer vervolgens of een item met de naam ' Access-Control-Allow-Origin ' bestaat. Als dit het geval is, controleert u of deze een van de volgende waarden heeft:
 
     - `*` (enkel sterretje)
     - https://web.azuresynapse.net/ (of een andere waarde die de tekst in de adres balk van de browser begint met)
@@ -83,21 +84,22 @@ Als de antwoord header een van de bovenstaande waarden bevat, betekent dit dat d
 
 Als de koptekst niet kan worden weer gegeven of als de koptekst niet een van de bovenstaande waarden bevat, koppelt u een scherm opname van de item gegevens wanneer u het ticket opent.
 
-![Scherm afbeelding toont het venster DevTools met een U R L gemarkeerd in de antwoord headers.](media/troubleshooting-synapse-studio/item-details.png)
-
+ 
+![Details van item](media/troubleshooting-synapse-studio/item-details.png)
+ 
 Als u met de bovenstaande stappen het probleem niet kunt oplossen, moet u mogelijk een ondersteunings ticket openen. Wanneer u uw ondersteunings ticket verzendt, neemt u de "sessie-ID" of "diagnostische gegevens" die aan het begin van deze hand leiding zijn gedownload.
 
 Wanneer u het probleem meldt, kunt u eventueel een scherm opname maken van het tabblad ' console ' in het ' Ontwikkelhulpprogramma's ' en dit koppelen aan het ondersteunings ticket. De inhoud schuiven en meer dan één scherm opname maken, indien nodig, om het hele bericht vast te leggen.
 
-![Scherm afbeelding toont het DevTools venster met het formaat, zodat het hele bericht wordt weer gegeven voor een mogelijke scherm opname.](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![console voor ontwikkel hulpprogramma's](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
 Als u scherm afbeeldingen koppelt, geeft u de tijd (of een schatting van het tijds bereik) op van het moment waarop u de scherm opnamen hebt gemaakt. Het helpt ons bij het inkijken van het probleem.
 
 Bepaalde browsers ondersteunen het weer geven van tijds tempels op het tabblad ' console '. Open voor chroom rand/Chrome het dialoog venster instellingen in Ontwikkelhulpprogramma's en schakel het selectie vakje tijds tempels weer geven in op het tabblad voor keuren.
 
-![Scherm afbeelding toont het DevTools-venster met instellingen die zijn geselecteerd in een context menu.](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![instellingen voor ontwikkelaars hulpprogramma console](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![Scherm afbeelding toont de DevTools-venster Voorkeuren met geselecteerde tijds tempels weer geven.](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![tijds tempel weer geven](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Als de vorige stappen niet helpen om uw probleem op te lossen, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

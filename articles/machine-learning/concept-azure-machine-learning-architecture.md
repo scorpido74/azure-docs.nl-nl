@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886311"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276081"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -102,24 +102,17 @@ U produceert een uitvoering wanneer u een script voor het trainen van een model 
 
 [Werk ruimte](#workspace)  >  [Experimenten](#experiments)  >  [Uitvoeren](#runs)  >  **Configuratie uitvoeren**
 
-Een uitvoerings configuratie is een set instructies die definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. De configuratie bevat een breed scala aan gedrags definities, zoals of u een bestaande python-omgeving wilt gebruiken of een Conda-omgeving wilt gebruiken die is gebaseerd op een specificatie.
+Een uitvoerings configuratie definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. U gebruikt de configuratie om het script, het reken doel en de Azure ML-omgeving op te geven die moeten worden uitgevoerd, alle gedistribueerde taak configuraties en enkele aanvullende eigenschappen. Zie [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)voor meer informatie over de volledige set Configureer bare opties voor uitvoeringen.
 
 Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map die uw trainings script bevat.   Of kan worden geconstrueerd als een in-memory-object en worden gebruikt voor het verzenden van een run.
 
-Zie voor beelden van configuraties uitvoeren [een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
-
-### <a name="estimators"></a>Schattingen
-
-Om model training met populaire Frameworks mogelijk te maken, kunt u met de klasse Estimator eenvoudig uitvoer configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren).
-
-Zie voor meer informatie over schattingen [Train ml-modellen met schattingen](how-to-train-ml-models.md).
+Zie [een training configureren voor een](how-to-set-up-training-targets.md)voor beeld van het uitvoeren van configuraties.
 
 ### <a name="snapshots"></a>Momentopnamen
 
 [Werk ruimte](#workspace)  >  [Experimenten](#experiments)  >  [Uitvoeren](#runs)  >  **Moment opname**
 
 Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning slaat het zip-bestand ook als een moment opname op als onderdeel van de uitvoerings record. Iedereen met toegang tot de werk ruimte kan bladeren in een uitvoerings record en de moment opname downloaden.
-
 
 ### <a name="logging"></a>Logboekregistratie
 
@@ -133,7 +126,7 @@ Er zijn meerdere manieren om uw logboeken weer te geven: uitvoerings status van 
 
 ### <a name="git-tracking-and-integration"></a>Git-tracking en-integratie
 
-Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Dit werkt met uitvoeringen die zijn verzonden met behulp van een Estimator, ML-pijp lijn of script uitvoering. Het werkt ook voor uitvoeringen die zijn verzonden vanuit de SDK of Machine Learning CLI.
+Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Dit werkt met uitvoeringen die zijn verzonden met behulp van een script configuratie of ML-pijp lijn. Het werkt ook voor uitvoeringen die zijn verzonden vanuit de SDK of Machine Learning CLI.
 
 Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
 

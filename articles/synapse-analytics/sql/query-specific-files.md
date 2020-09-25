@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288100"
 ---
 # <a name="use-file-metadata-in-queries"></a>Metagegevens van bestand gebruiken in query's
 
@@ -22,7 +22,7 @@ De SQL on-demand kan meerdere bestanden en mappen adresseren, zoals beschreven i
 
 Het kan voor komen dat u moet weten welk bestands-of bronmap-bron overeenkomt met een specifieke rij in de resultatenset.
 
-U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pad in de resultatenset retour neren. U kunt ze ook gebruiken om gegevens te filteren op basis van de bestands naam en/of het pad van de map. Deze functies worden beschreven in de syntaxis sectie [Bestands naam functie](query-data-storage.md#filename-function) en [filepath-functie](query-data-storage.md#filepath-function). Hieronder vindt u een korte beschrijving van de voor beelden.
+U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pad in de resultatenset retour neren. U kunt ze ook gebruiken om gegevens te filteren op basis van de bestands naam en/of het pad van de map. Deze functies worden beschreven in de syntaxis sectie [Bestands naam functie](query-data-storage.md#filename-function) en [filepath-functie](query-data-storage.md#filepath-function). In de volgende secties vindt u korte beschrijvingen en voor beelden.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 3bc68b7f4682ff00d2b93a75e39e0e5eabe4637b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287437"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Doorvoer limieten voor stroom inslikken
 
@@ -35,7 +35,7 @@ Standaard kan Azure Time Series Insights Gen2 binnenkomende gegevens opnemen met
 > [!TIP]
 >
 > * Omgevings ondersteuning voor het opnemen van snelheden van Maxi maal 8 MBps kan worden geboden door de aanvraag.
-> * Neem contact met ons op als u een hogere door voer nodig hebt door een ondersteunings ticket in te dienen via Azure Portal.
+> * Neem contact met ons op als u een hogere door voer nodig hebt door een ondersteunings ticket in te dienen via de Azure Portal.
  
 * **Voor beeld 1:**
 

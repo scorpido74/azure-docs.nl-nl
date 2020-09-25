@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335065"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Bestands ruimte voor data bases in Azure SQL Database beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ De meeste metrische gegevens over opslag ruimte worden weer gegeven in het Azure
 
 De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen voor data bases en elastische Pools:
 
-- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL:  [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Gegevens bestanden verkleinen
@@ -236,7 +236,7 @@ Nadat database gegevensbestanden zijn verkleind, kunnen de indexen gefragmenteer
 
 - Zie voor informatie over de maximale grootte van data bases:
   - [Azure SQL Database op vCore gebaseerde inkoop model limieten voor één data base](resource-limits-vcore-single-databases.md)
-  - [Resource limieten voor afzonderlijke data bases met behulp van het DTU-gebaseerd inkoop model](resource-limits-dtu-single-databases.md)
+  - [Resourcelimieten voor individuele databases met behulp van het DTU-aankoopmodel](resource-limits-dtu-single-databases.md)
   - [Azure SQL Database op vCore gebaseerde inkoop model limieten voor elastische Pools](resource-limits-vcore-elastic-pools.md)
   - [Bronnen limieten voor elastische Pools met behulp van het DTU-gebaseerd inkoop model](resource-limits-dtu-elastic-pools.md)
 - Zie SHRINKDATABASE voor meer informatie over de `SHRINKDATABASE` opdracht [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).

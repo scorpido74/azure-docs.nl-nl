@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325195"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Naslag informatie voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 - [Azure AD-verificatie configureren](../database/authentication-aad-configure.md)
 - [Voorwaardelijke toegang configureren](../database/conditional-access-configure.md)
-- [Multi-factor Azure AD-verificatie](../database/authentication-mfa-ssms-overview.md)
+- [Meervoudige Azure AD-verificatie](../database/authentication-mfa-ssms-overview.md)
 - [Multi-Factor Authentication instellen](../database/authentication-mfa-ssms-configure.md)
 - [Een tijdelijk Bewaar beleid configureren](../database/temporal-tables-retention-policy.md)
 - [TDE met BYOK (Bring Your Own Key) configureren](../database/transparent-data-encryption-byok-configure.md)
@@ -77,7 +77,7 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 ### <a name="alerting"></a>Waarschuwingen
 
-- [Waarschuwingen maken voor een beheerd exemplaar](alerts-create.md)
+- [Waarschuwingen in beheerd exemplaar maken](alerts-create.md)
 
 ## <a name="operations"></a>Bewerkingen
 

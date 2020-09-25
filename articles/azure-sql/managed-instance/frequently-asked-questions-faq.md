@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325212"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed Instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Dit is een huidige beperking voor het onderliggende onderdeel dat de subnetnaam 
 
 **Hoe kan ik het formaat van mijn beheerde exemplaar schalen?**
 
-U kunt uw beheerde instantie schalen vanuit [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [Power shell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) of [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+U kunt uw beheerde instantie schalen vanuit [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [Power shell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) of [arm-sjablonen](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Kan ik mijn beheerde exemplaar verplaatsen van de ene regio naar een andere?**
 
@@ -102,7 +102,7 @@ Ja, dat kunt u. Zie [resources verplaatsen tussen regio's](../database/move-reso
 
 **Hoe kan ik mijn beheerde exemplaar verwijderen?**
 
-U kunt beheerde exemplaren verwijderen via Azure Portal, [Power shell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) of [Resource Manager rest-api's](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
+U kunt beheerde exemplaren verwijderen via Azure Portal, [Power shell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), [Azure cli](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) of [Resource Manager rest-api's](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
 
 **Hoe lang duurt het om een instantie te maken of bij te werken of om een Data Base te herstellen?**
 
@@ -135,9 +135,9 @@ Beheerde instantie biedt dezelfde prestatie niveaus per Compute en opslag groott
 
 U kunt ook [een Data Base exporteren naar BACPAC](../database/database-export.md) en vervolgens [het BACPAC-bestand importeren](../database/database-import.md). Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB.
 
-[Transactionele replicatie](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kan worden gebruikt als alle tabellen in de Data Base *primaire* sleutels hebben en er geen in-Memory OLTP-objecten in de Data Base zijn.
+[Transactionele replicatie](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kan worden gebruikt als alle tabellen in de Data Base *primaire* sleutels hebben en er geen in-Memory OLTP-objecten in de Data Base zijn.
 
-Systeem eigen COPY_ONLY back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)voor meer informatie.
+Systeem eigen COPY_ONLY back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)voor meer informatie.
 
 **Hoe kan ik mijn SQL Server-exemplaar migreren naar een SQL Managed instance?**
 
@@ -184,11 +184,11 @@ Zie het [blog bericht bewakings opties voor Azure SQL Managed instance](https://
 
 **Kan ik SQL Profiler gebruiken voor het bijhouden van prestaties?**
 
-Ja, SQL Profiler wordt ondersteund of SQL Managed instance. Zie [SQL](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)Profiler voor meer informatie.
+Ja, SQL Profiler wordt ondersteund of SQL Managed instance. Zie [SQL](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true)Profiler voor meer informatie.
 
 **Worden Database Advisor en Query Performance Insight ondersteund voor beheerde exemplaar databases?**
 
-Nee, ze worden niet ondersteund. U kunt [dmv's](../database/monitoring-with-dmvs.md) en [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) samen met [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) en [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) gebruiken om uw data bases te bewaken.
+Nee, ze worden niet ondersteund. U kunt [dmv's](../database/monitoring-with-dmvs.md) en [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) samen met [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) en [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) gebruiken om uw data bases te bewaken.
 
 **Kan ik metrische waarschuwingen maken op een SQL Managed instance?**
 
@@ -228,7 +228,7 @@ Zie [de geautomatiseerde back-up voor een Azure SQL Managed instance volgen](htt
 
 **Wordt back-up op aanvraag ondersteund?**
 
-Ja, u kunt een volledige back-up in hun Azure-Blob Storage maken, maar deze kan alleen worden vrijgemaakt in een beheerd exemplaar. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)voor meer informatie. Alleen back-ups kopiëren is niet mogelijk als de data base is versleuteld met TDE die door de service worden beheerd, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. In dat geval kunt u de functie voor het herstellen van een punt gebruiken om de data base te verplaatsen naar een ander SQL-beheerd exemplaar of over te scha kelen naar een door de klant beheerde sleutel.
+Ja, u kunt een volledige back-up in hun Azure-Blob Storage maken, maar deze kan alleen worden vrijgemaakt in een beheerd exemplaar. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)voor meer informatie. Alleen back-ups kopiëren is niet mogelijk als de data base is versleuteld met TDE die door de service worden beheerd, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. In dat geval kunt u de functie voor het herstellen van een punt gebruiken om de data base te verplaatsen naar een ander SQL-beheerd exemplaar of over te scha kelen naar een door de klant beheerde sleutel.
 
 **Wordt systeem eigen herstel (van. bak-bestanden) naar een beheerd exemplaar ondersteund?**
 
@@ -390,7 +390,7 @@ Ja, Transparent Data Encryption wordt ondersteund voor SQL Managed instance. Zie
 
 **Kan ik gebruikmaken van het model ' uw eigen sleutel meenemen ' voor TDE?**
 
-Ja, Azure Key Vault voor het BYOK-scenario is beschikbaar voor Azure SQL Managed instance. Zie [transparent Data Encryption met door de klant beheerde sleutel](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)voor meer informatie.
+Ja, Azure Key Vault voor het BYOK-scenario is beschikbaar voor Azure SQL Managed instance. Zie [transparent Data Encryption met door de klant beheerde sleutel](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true)voor meer informatie.
 
 **Kan ik een versleutelde SQL Server-Data Base migreren?**
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>Service-updates
+
+**Wat is de wijziging van de basis-CA voor Azure SQL Database & SQL Managed instance?**
+
+Zie de [draaiing van certificaten voor Azure SQL Database & SQL Managed instance](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
 
 **Wat is een gepland onderhouds gebeurtenis voor een SQL Managed instance?**
 

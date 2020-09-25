@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287825"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Ondersteunde functies van Azure Synapse Link (preview) voor Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Er zijn twee typen containers in Azure Cosmos DB:
 > [!IMPORTANT]
 > De koppeling van Azure Synapse voor Azure Cosmos DB wordt momenteel ondersteund in Synapse-werk ruimten waarvoor geen beheerd virtueel netwerk is ingeschakeld. 
 
-U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in te schakelen. In dit geval kunt u alleen lezen/schrijven naar de transactionele opslag. Hier volgt een lijst met de momenteel ondersteunde functies in de Synapse-koppeling voor Azure Cosmos DB. 
+U kunt verbinding maken met een Azure Cosmos DB-container zonder de Synapse-koppeling in te scha kelen. In dit scenario kunt u alleen lezen/schrijven naar de transactionele Store. Hier volgt een lijst met de momenteel ondersteunde functies in de Synapse-koppeling voor Azure Cosmos DB. 
 
 | Categorie              | Beschrijving |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [Serverloze SQL](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -39,9 +39,9 @@ U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in
 | **Lezen**    | Type Azure Cosmos DB container dat kan worden gelezen | OLTP / HTAP | HTAP  |
 | **Schrijven**   | Kan Azure Synapse runtime worden gebruikt voor het schrijven van gegevens naar een Azure Cosmos DB-container | Ja | Nee |
 
-* Als u gegevens in een Azure Cosmos DB container schrijft vanuit Spark, gebeurt dit via het transactionele archief van Azure Cosmos DB en heeft dit invloed op de prestaties van transactionele werk belastingen op Azure Cosmos DB en worden aanvraag eenheden verbruikt.
-* Integratie van Synapse-SQL-pool via externe tabellen wordt momenteel niet ondersteund.
-
+* Als u gegevens in een Azure Cosmos DB container schrijft vanuit Spark, wordt dit proces uitgevoerd via het transactionele archief van Azure Cosmos DB. Dit heeft invloed op de transactionele prestaties van Azure Cosmos DB door aanvraag eenheden te gebruiken.
+* Integratie van SQL-pools via externe tabellen wordt momenteel niet ondersteund.
+ 
 ## <a name="supported-code-generated-actions-for-spark"></a>Ondersteunde met code gegenereerde acties voor Spark
 
 | Bewegen              | Beschrijving |OLTP |HTAP  |
@@ -51,7 +51,6 @@ U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in
 | **Dataframe naar een container schrijven** |Gegevens naar een container schrijven|✓| ✓ |
 | **Streaming-dataframe laden vanuit een container** |Gegevens streamen met behulp van de wijzigingenfeed in Azure Cosmos DB|✓| ✓ |
 | **Streaming-dataframe naar een container schrijven** |Gegevens streamen met behulp van de wijzigingenfeed in Azure Cosmos DB|✓| ✓ |
-
 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>Ondersteunde met code gegenereerde acties voor serverloze SQL

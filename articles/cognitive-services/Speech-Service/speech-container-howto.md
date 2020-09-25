@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334668"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren 
 
@@ -37,12 +37,12 @@ Met spraakcontainers kunnen klanten een spraaktoepassingsarchitectuur maken die 
 >
 > Als u de spraak containers wilt gebruiken, moet u een online aanvraag indienen en deze goed keuren. Zie de sectie **goed keuring aanvragen** voor meer informatie.
 
-| Functie | Functies | Laatste |
+| Container | Functies | Laatste |
 |--|--|--|
-| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.3.1 |
-| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.3.1 |
-| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
-| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
+| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.5.0 |
+| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.5.0 |
+| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.7.0 |
+| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.7.0 |
 | Spraak Taaldetectie | De taal detecteren die in audio bestanden wordt gesp roken. | 1,0 |
 | Tekst-naar-spraak Neural | Hiermee wordt tekst geconverteerd naar spraak herkenning met behulp van diepe Neural-netwerk technologie, waardoor natuurlijk gesynthesizerde spraak kan worden gebruikt. | 1.1.0 |
 
@@ -96,7 +96,7 @@ Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die w
 
 ## <a name="request-approval-to-the-run-the-container"></a>Goed keuring aanvragen voor het uitvoeren van de container
 
-Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om toegang tot de container aan te vragen. 
+Vul het [aanvraag formulier](https://aka.ms/csgate) in en verzend het om toegang tot de container aan te vragen. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -468,7 +468,7 @@ Met deze opdracht gebeurt het volgende:
 * Als het aangepaste model eerder is gedownload, `ModelId` wordt de genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="language-detection"></a>[Taaldetectie](#tab/lid)
+# <a name="speech-language-detection"></a>[Spraak Taaldetectie](#tab/lid)
 
 Voer de volgende opdracht uit om de *Speech taaldetectie* -container uit te voeren `docker run` .
 
@@ -482,7 +482,7 @@ ApiKey={API_KEY}
 
 Met deze opdracht gebeurt het volgende: 
 
-* Voert een taal detectie container voor spraak herkenning uit vanuit de container installatie kopie.
+* Voert een taal detectie container voor spraak herkenning uit vanuit de container installatie kopie. Op dit moment worden er geen kosten in rekening gebracht voor het uitvoeren van deze installatie kopie. 
 * Wijst 1 CPU-kernen en 1 gigabyte (GB) aan geheugen toe.
 * Beschrijft TCP-poort 5003 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
@@ -509,7 +509,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | Containers | SDK-host-URL | Protocol |
 |--|--|--|
 | Standaard spraak naar tekst en Custom Speech-naar-tekst | `ws://localhost:5000` | WS |
-| Tekst-naar-spraak (inclusief standaard, aangepast en Neural), taal detectie | `http://localhost:5000` | HTTP |
+| Tekst-naar-spraak (inclusief standaard, aangepast en Neural), detectie van spraak taal | `http://localhost:5000` | HTTP |
 
 Zie [Container Security](../cognitive-services-container-support.md#azure-cognitive-services-container-security)(Engelstalig) voor meer informatie over het gebruik van WSS-en HTTPS-protocollen.
 

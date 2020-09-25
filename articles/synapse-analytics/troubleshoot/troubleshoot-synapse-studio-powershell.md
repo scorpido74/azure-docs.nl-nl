@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287709"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Problemen met de connectiviteit van Azure Synapse Studio (preview) vaststellen met Power shell-script
 
@@ -27,13 +27,13 @@ Azure Synapse Studio (preview) is afhankelijk van een aantal web-API-eind punten
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
-Klik met de rechter muisknop op de volgende koppeling en klik op "doel opslaan als":
+Klik met de rechter muisknop op de volgende koppeling en selecteer doel opslaan als:
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 U kunt de koppeling ook rechtstreeks openen en het geopende script bestand opslaan. Sla het adres van de bovenstaande koppeling niet op, omdat deze in de toekomst kan worden gewijzigd.
 
-Klik in Verkenner met de rechter muisknop op het gedownloade script bestand en op uitvoeren met Power shell.
+Klik in Verkenner met de rechter muisknop op het gedownloade script bestand en selecteer uitvoeren met Power shell.
 
 ![Gedownload script bestand uitvoeren met Power shell](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
@@ -58,4 +58,4 @@ Als u een netwerk beheerder bent en uw firewall configuratie afstemt voor Azure 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als de vorige stappen niet helpen bij het oplossen van het probleem, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Als de vorige stappen niet helpen om uw probleem op te lossen, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4840363b2f6645fceca80f6dd57ece64fb2c8163
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7f887aac91bdb1b8c752806c7c5076708a40bc10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276166"
 ---
 # <a name="implement-the-device-model-behavior"></a>Het gedrag van het model apparaat implementeren
 
@@ -37,8 +37,8 @@ In dit artikel leert u het volgende:
 
 In het gedeelte [simulatie](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) van het model voor het Apparaatbeheer definieert u de interne status van een gesimuleerd apparaat:
 
-- `InitialState`Hiermee worden de initiële waarden voor alle eigenschappen van het object Apparaatstatus gedefinieerd.
-- `Script`identificeert een Java script-bestand dat volgens een schema wordt uitgevoerd om de status van het apparaat bij te werken.
+- `InitialState` Hiermee worden de initiële waarden voor alle eigenschappen van het object Apparaatstatus gedefinieerd.
+- `Script` identificeert een Java script-bestand dat volgens een schema wordt uitgevoerd om de status van het apparaat bij te werken.
 
 In het volgende voor beeld ziet u de definitie van het object Apparaatstatus voor een gesimuleerd Chiller-apparaat:
 
@@ -79,9 +79,9 @@ function main(context, previousState, previousProperties) {
 
 De `context` para meter heeft de volgende eigenschappen:
 
-- `currentTime`Als een teken reeks met notatie`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, bijvoorbeeld`Simulated.Chiller.123`
-- `deviceModel`, bijvoorbeeld`Chiller`
+- `currentTime` Als een teken reeks met notatie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, bijvoorbeeld `Simulated.Chiller.123`
+- `deviceModel`, bijvoorbeeld `Chiller`
 
 De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service. Deze waarde is het `state` object dat wordt geretourneerd door de vorige aanroep van `main` .
 
@@ -200,9 +200,9 @@ function main(context, previousState, previousProperties) {
 
 De `context` para meter heeft de volgende eigenschappen:
 
-- `currentTime`Als een teken reeks met notatie`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, bijvoorbeeld`Simulated.Chiller.123`
-- `deviceModel`, bijvoorbeeld`Chiller`
+- `currentTime` Als een teken reeks met notatie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, bijvoorbeeld `Simulated.Chiller.123`
+- `deviceModel`, bijvoorbeeld `Chiller`
 
 De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service.
 
@@ -210,9 +210,9 @@ De `properties` para meter bevat de eigenschappen van het apparaat die zijn gesc
 
 Er zijn drie globale functies die u kunt gebruiken om het gedrag van de-methode te implementeren:
 
-- `updateState`de status van de simulatie service bijwerken.
-- `updateProperty`om één apparaat-eigenschap bij te werken.
-- `sleep`om de uitvoering te onderbreken om een langlopende taak te simuleren.
+- `updateState` de status van de simulatie service bijwerken.
+- `updateProperty` om één apparaat-eigenschap bij te werken.
+- `sleep` om de uitvoering te onderbreken om een langlopende taak te simuleren.
 
 In het volgende voor beeld ziet u een verkorte versie van het **IncreasePressure-method.js** script dat wordt gebruikt door de gesimuleerde Chiller-apparaten:
 
