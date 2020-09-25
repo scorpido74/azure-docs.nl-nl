@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276659"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
@@ -122,8 +122,7 @@ De y-as is het aantal pakketten dat in één uur wordt uitgevoerd. Houd er reken
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Voor Standard_D1_v2 knooppunten worden 1-4 parallelle uitvoeringen per knoop punt ondersteund. Voor alle andere typen knoop punten, Maxi maal 1 (2 x aantal kernen, 8) parallelle uitvoeringen per knoop punt worden ondersteund. Als u **AzureSSISMaxParallelExecutionsPerNode** meer wilt dan de Maxi maal ondersteunde waarde, kunt u een ondersteunings ticket openen en kunnen we de maximale waarde voor u en nadat u Azure Power shell nodig hebt, gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken.
-U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/windows/sizes-general.md).
+Wanneer u al een krachtig worker-knoop punt gebruikt voor het uitvoeren van pakketten, kan het toenemende aantal **AzureSSISMaxParallelExecutionsPerNode** de algemene door Voer van de Integration runtime verhogen. Als u de maximum waarde wilt verhogen, moet u Azure PowerShell gebruiken om **AzureSSISMaxParallelExecutionsPerNode**bij te werken. U kunt een schatting maken van de juiste waarde op basis van de kosten van uw pakket en de volgende configuraties voor de worker-knoop punten. Zie voor meer informatie de grootten van [virtuele machines voor algemene doel einden](../virtual-machines/windows/sizes-general.md).
 
 | Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal NIC's/verwachte netwerkprestaties (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308432"
 ---
 # <a name="azure-private-dns-faq"></a>Veelgestelde vragen over privé-DNS in Azure
 
@@ -43,6 +43,14 @@ Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netw
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Worden de automatisch geregistreerde DNS-records van virtuele machines in een privé zone automatisch verwijderd wanneer u de virtuele machine verwijdert?
 
 Ja. Als u een virtuele machine in een gekoppeld virtueel netwerk verwijdert waarvoor automatische registratie is ingeschakeld, worden de geregistreerde records automatisch verwijderd.
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>Ik heb het besturings systeem in mijn virtuele machine opnieuw geconfigureerd voor een nieuwe hostnaam of een statisch IP-adres. Waarom kan ik niet zien dat de wijziging wordt doorgevoerd in de privé zone?
+
+De records van de privé zone worden ingevuld door de Azure DHCP-service. client registratie berichten worden genegeerd. Als u DHCP-client ondersteuning in de virtuele machine hebt uitgeschakeld door een statisch IP-adres te configureren, worden wijzigingen aan de hostnaam of het statische IP in de virtuele machine niet weer gegeven in de zone.
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Ik heb een voor Keurs-DNS-achtervoegsel geconfigureerd in mijn virtuele Windows-machine. Waarom worden mijn records nog steeds geregistreerd in de zone die is gekoppeld aan het virtuele netwerk?
+
+De Azure DHCP-service negeert eventuele DNS-achtervoegsel wanneer het de privé-DNS-zone registreert. Als uw virtuele machine bijvoorbeeld is geconfigureerd `contoso.com` als het primaire DNS-achtervoegsel, maar het virtuele netwerk is gekoppeld aan de `fabrikam.com` privé-DNS-zone, wordt de registratie van de virtuele machine weer gegeven in de `fabrikam.com` privé-DNS-zone.
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Kan een automatisch geregistreerde virtuele-machine record in een privé zone van een gekoppeld virtueel netwerk hand matig worden verwijderd?
 

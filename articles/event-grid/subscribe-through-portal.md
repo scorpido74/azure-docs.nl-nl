@@ -3,12 +3,12 @@ title: Abonnementen Azure Event Grid via de portal
 description: In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt voor de ondersteunde bronnen, zoals Azure Blob Storage, door gebruik te maken van de Azure Portal.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308500"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Abonneren op gebeurtenissen via de portal
 
@@ -40,7 +40,7 @@ Als u een Event Grid-abonnement wilt maken voor een van de ondersteunde [gebeurt
 
 1. Geef aanvullende informatie op over het gebeurtenis abonnement, zoals het eind punt voor het afhandelen van gebeurtenissen en de naam van een abonnement.
 
-   ![Abonnements gegevens opgeven](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Scherm opname van de secties ' Details van eind punt ' en ' Details van gebeurtenis abonnement ' met een opgegeven abonnements naam waarde.](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. Als u onbestelbare berichten wilt inschakelen en beleid voor opnieuw proberen wilt aanpassen, selecteert u **extra functies**.
 

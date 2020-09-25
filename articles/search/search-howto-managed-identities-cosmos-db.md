@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275282"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit
 
@@ -136,6 +136,14 @@ Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingeste
 Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als u vindt dat u geen gegevens van Cosmos DB kunt indexeren, moet u rekening houden met het volgende:
+
+1. Als u onlangs uw Cosmos DB-account sleutels hebt gedraaid, moet u tot 15 minuten wachten totdat de beheerde identiteit connection string werkt.
+
+1. Controleer of voor het Cosmos DB-account de toegang is beperkt tot het selecteren van netwerken. Als dit het geval is, raadpleegt u de [Indexeer functie toegang tot gegevens bronnen met behulp van Azure-netwerk beveiligings functies](search-indexer-securing-resources.md).
 
 ## <a name="see-also"></a>Zie ook
 

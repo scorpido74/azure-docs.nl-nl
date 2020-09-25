@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 665bb89d929433db5868eff1c2a5d182d7a94d54
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336391"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
 
@@ -42,7 +42,7 @@ Deze specificatie bevat een overzicht van verschillende modi die worden onderste
 
 ## <a name="11-terms-used"></a>1,1 gebruikte termen
 
-| Termijn                | Definitie                                                                                                                                                                                                                                    |
+| Term                | Definitie                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AD-afbreek punt            | Een locatie of tijdstip waarop een of meer advertenties mogen worden gepland voor levering; hetzelfde als beschik bare verkoop kansen.                                                                                                                     |
 | AD-besluit service | externe service die bepaalt welke AD ('s) en de duur van de gebruiker worden weer gegeven. De services worden doorgaans door een partner verschaft en zijn buiten het bereik van dit document.                                                                    |
@@ -72,20 +72,20 @@ De volgende documenten bevatten voorzieningen, die door de verwijzing in deze te
 | [Adobe-Primetime] | [Primetime Digital-invoeg signalerings specificatie 1,2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
 | [Adobe-Flash-AS]  | [Naslag informatie voor FLASH action script-taal](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
 | [AMF0]            | ["Actie bericht indeling AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
-| [STREEPJE-IF-ONTDUBBELINGS IOP]     | Richt 4,2 lijnen voor samen werking met DASH Industry-Forum[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
-| [HLS-TMD]         | Getimede meta gegevens voor HTTP Live Streaming-[https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
+| [STREEPJE-IF-ONTDUBBELINGS IOP]     | Richt 4,2 lijnen voor samen werking met DASH Industry-Forum [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
+| [HLS-TMD]         | Getimede meta gegevens voor HTTP Live Streaming- [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
 | [CMAF-ID3]        | [Getimede meta gegevens in de common media-toepassings indeling (CMAF)](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
-| [ID3v2]           | ID3-code versie 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
+| [ID3v2]           | ID3-code versie 2.4.0  [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
 | [ISO-14496-12]    | ISO/IEC 14496-12: deel 12 ISO-basis media bestands indeling, FourthEdition 2012-07-15                                                                                                                                 |
-| [MPEGDASH]        | Informatie technologie--dynamisch adaptief streamen via HTTP (DASH)--deel 1: beschrijving van media presentatie en segment indelingen. Mei 2014. Gemaakt. URLhttps://www.iso.org/standard/65274.html         |
-| [MPEGCMAF]        | Informatie technologie: multi media-toepassings indeling (MPEG-A)--deel 19: common media toepassings indeling (CMAF) voor gesegmenteerde media. Januari 2018. Gemaakt. URLhttps://www.iso.org/standard/71975.html |
-| [MPEGCENC]        | Informatie technologie--MPEG-systeem technologieën--deel 7: algemene versleuteling in ISO-basis bestanden voor media bestands indeling. Februari 2016. Gemaakt. URLhttps://www.iso.org/standard/68042.html                   |
+| [MPEGDASH]        | Informatie technologie--dynamisch adaptief streamen via HTTP (DASH)--deel 1: beschrijving van media presentatie en segment indelingen. Mei 2014. Gemaakt. URL https://www.iso.org/standard/65274.html         |
+| [MPEGCMAF]        | Informatie technologie: multi media-toepassings indeling (MPEG-A)--deel 19: common media toepassings indeling (CMAF) voor gesegmenteerde media. Januari 2018. Gemaakt. URL https://www.iso.org/standard/71975.html |
+| [MPEGCENC]        | Informatie technologie--MPEG-systeem technologieën--deel 7: algemene versleuteling in ISO-basis bestanden voor media bestands indeling. Februari 2016. Gemaakt. URL https://www.iso.org/standard/68042.html                   |
 | [MS-SSTR]         | ["Micro soft Smooth Streaming-Protocol", 15 mei 2014](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
 | [MS-SSTR-opname]  | [Azure Media Services gefragmenteerde MP4 Live opname-specificatie](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | N. Pantos, ed.; W. mei. HTTP Live Streaming. 2017 augustus. Informatief. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
-| [RFC4648]         | De Base16-, Base32-en base64-gegevens codering-[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
+| [RFC4648]         | De Base16-, Base32-en base64-gegevens codering- [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Het real-time Messa ging-Protocol van Adobe", december 21, 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
-| [SCTE-35-2019]    | SCTE 35:2019-cueing-bericht van Digital-invoeg toepassing voor kabel-https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
+| [SCTE-35-2019]    | SCTE 35:2019-cueing-bericht van Digital-invoeg toepassing voor kabel- https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
 | [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH voor op IP gebaseerde kabel Services deel 1: MPD-beperkingen en-extensies                                                                                                                 |
 | [SCTE-214-3]      | SCTE 214-3 2015 MPEG-DASH voor IP-gebaseerde kabel Services deel 3: streepje/FF profile                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – gebeurtenis planning en meldings interface                                                                                                                                                  |
@@ -251,7 +251,7 @@ De volgende sectie bevat de RTMP-' eenvoudige ' modus ' payload, die kan worden 
 
 Zie voor beeld [3.3.2.1 MPEG Dash. mpd EventStream met behulp van de eenvoudige modus van Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
-Bekijk een voor beeld [van een 3.3.3.1-streepje-manifest met één periode en Adobe-eenvoudige modus](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
+Bekijk een voor beeld [van een 3.3.3.1-streepje-manifest met één periode en Adobe-eenvoudige modus ](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
 #### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Voor beeld van HLS-manifest uitvoer bij gebruik van Adobe RTMP eenvoudige modus
 
@@ -306,7 +306,7 @@ Wanneer deze modus van AD-markering wordt gebruikt, is de HLS-manifest uitvoer v
 
 #### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>Voor beeld van MPEG-streep-MPD, enkelvoudige periode, Adobe-eenvoudige modus signalen
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="dynamic" publishTime="2020-01-07T18:58:03Z" minimumUpdatePeriod="PT0S" timeShiftBufferDepth="PT58M56S" availabilityStartTime="2020-01-07T17:44:47Z" minBufferTime="PT7S">
@@ -357,14 +357,13 @@ Wanneer deze modus van AD-markering wordt gebruikt, is de HLS-manifest uitvoer v
         </AdaptationSet>
     </Period>
 </MPD>
-~~~
-
+```
 
 #### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>Voor beeld van een HLS-afspeel lijst, Adobe simple mode-signalen met een EXT-X-CUE-tag (afgekapt...) voor beknoptheid)
 
 In het volgende voor beeld ziet u de uitvoer van de Media Services Dynamic packager voor een RTMP-opname stroom met behulp van Adobe ' eenvoudige ' modus signalen en de verouderde [Adobe-Primetime] EXT-X-CUE-tag.  
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -401,8 +400,7 @@ Fragments(video=1583487999666666,format=m3u8-aapl-v8)
 #EXTINF:6.400000,no-desc
 Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 ...
-
-~~~
+```
 
 ### <a name="216-cancellation-and-updates"></a>2.1.6 annuleren en updates
 
@@ -425,7 +423,7 @@ De sparse track **moet** worden gedeclareerd in het manifest van de live-server 
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Getal         | Vereist      | **Moet** ' 0 ' zijn, wat een track met een onbekende variabele bitrate aangeeft.                                                                                                                                                          |
 | parentTrackName    | Tekenreeks         | Vereist      | **Moet** de naam zijn van het bovenliggende spoor, waarbij de tijd codes van de sparse track worden uitgelijnd. Het bovenliggende spoor kan geen sparse track zijn.                                                                             |
-| manifestOutput     | Booleaans        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
+| manifestOutput     | Boolean-waarde        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
 | Subtype            | Tekenreeks         | Vereist      | **Moet** de vier teken code ' data ' zijn.                                                                                                                                                                                  |
 | Schema             | Tekenreeks         | Vereist      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
 | nummer bijhouden          | Tekenreeks         | Vereist      | **Moet** de naam van de sparse track zijn. De tracknaam kan worden gebruikt om meerdere gebeurtenis stromen te onderscheiden met hetzelfde schema. Elke unieke gebeurtenis stroom **moet** een unieke Track naam hebben.                                |
@@ -506,7 +504,7 @@ Raadpleeg de verwerking van sparse track [MS-SSTR] voor meer informatie over het
 De StreamIndex **moet** een subtype van ' data ' hebben en de CustomAttributes **moet** een kenmerk met name = "schema" en value = "urn: scte: scte35:2013: bin" bevatten.
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>Glad client manifest voorbeeld met base64-gecodeerde [SCTE35] splice_info_section ()
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
   LookAheadFragmentCount="2" DVRWindowLength="6000000000">
@@ -542,7 +540,7 @@ De StreamIndex **moet** een subtype van ' data ' hebben en de CustomAttributes *
     </c>
   </StreamIndex>
 </SmoothStreamingMedia>
-~~~
+```
 
 ## <a name="32-apple-hls-manifest-decoration"></a>3,2 Apple HLS-manifest decoratie
 
@@ -567,7 +565,7 @@ The **RECOMMENDED** approach in Azure Media Services (version 3 API) is to follo
 
 In het volgende voor beeld wordt HLS van de manifest uitvoer van de Media Services Dynamic packager bevat een EXT-X-CUE-tag voor [Adobe-Primetime] in de modus SCTE35. 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:8
 #EXT-X-MEDIA-SEQUENCE:0
@@ -719,7 +717,7 @@ Fragments(video=28513485,format=m3u8-aapl-v8)
 #EXTINF:1.501500,no-desc
 Fragments(video=28648620,format=m3u8-aapl-v8)
 
-~~~
+```
 
 
 <!---
@@ -935,7 +933,7 @@ De "verouderde" EXT-X-CUE-tag wordt hieronder gedefinieerd en er kan ook normati
 | WMS                | teken reeks tussen aanhalings tekens                 | Vereist                                  | Het bericht dat is gecodeerd als een base64-gecodeerde teken reeks, zoals beschreven in [RFC4648]. Voor [SCTE-35] berichten is dit de met base64 gecodeerde splice_info_section ().                                                                                                                                      |
 | TYPE               | teken reeks tussen aanhalings tekens                 | Vereist                                  | Een URN of URL die het bericht schema aangeeft. Voor [SCTE-35]-berichten neemt het type de speciale waarde ' scte35 '.                                                                                                                                                                          |
 | Id                 | teken reeks tussen aanhalings tekens                 | Vereist                                  | Een unieke id voor de gebeurtenis. Als de ID niet is opgegeven wanneer het bericht wordt opgenomen, wordt door Azure Media Services een unieke id gegenereerd.                                                                                                                                              |
-| HEBBEN           | decimaal getal met drijvende komma | Vereist                                  | De duur van de gebeurtenis. Als dit onbekend is, **moet** de waarde 0 zijn. Eenheden zijn factional seconden.                                                                                                                                                                                           |
+| DURATION           | decimaal getal met drijvende komma | Vereist                                  | De duur van de gebeurtenis. Als dit onbekend is, **moet** de waarde 0 zijn. Eenheden zijn factional seconden.                                                                                                                                                                                           |
 | VERSTREKEN            | decimaal getal met drijvende komma | Optioneel, maar vereist voor sliding window | Wanneer het signaal wordt herhaald ter ondersteuning van een schuif presentatie venster, **moet** dit veld de hoeveelheid presentatie tijd zijn die is verstreken sinds de gebeurtenis is gestart. Eenheden zijn fractie seconden. Deze waarde kan groter zijn dan de oorspronkelijke opgegeven duur van de Splice of het segment. |
 | TIME               | decimaal getal met drijvende komma | Vereist                                  | De presentatie tijd van de gebeurtenis. Eenheden zijn fractie seconden.                                                                                                                                                                                                                        |
 
@@ -949,7 +947,7 @@ In het volgende voor beeld ziet u de HLS-manifest decoratie met behulp van de ta
 --->
 
 
-~~~
+```
 #EXTM3U
 #EXT-X-VERSION:4
 #EXT-X-PLAYLIST-TYPE:VOD
@@ -1008,7 +1006,7 @@ Fragments(video=4011692972,format=m3u8-aapl)
 #EXTINF:8.008000,no-desc
 Fragments(video=4011702982,format=m3u8-aapl)
 
-~~~
+```
 
 ### <a name="324-hls-message-handling-for-adobe-primetime-ext-x-cue"></a>3.2.4 HLS-bericht verwerking voor Adobe Primetime EXT-X-CUE
 
@@ -1054,8 +1052,8 @@ Het EventStream-element heeft de volgende kenmerken:
 
 | **Kenmerknaam** | **Type**                | **Vereist?** | **Beschrijving**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | string                  | Vereist      | Hiermee wordt het schema van het bericht aangegeven. Het schema wordt ingesteld op de waarde van het kenmerk schema in het vak Live server-manifest. De waarde **moet** een urn of URL zijn die het bericht schema aangeeft. De ondersteunde uitvoer schemeId moet "urn: scte: scte35:2014: XML + bin" per [SCTE-214-1] SEC 6.7.4 (MPD) zijn, aangezien de service op dit moment alleen de XML + bin ondersteunt voor het boog gebruik in de MPD. |
-| waarde              | string                  | Optioneel      | Een extra teken reeks waarde die door de eigen aren van het schema wordt gebruikt om de semantiek van het bericht aan te passen. Als u meerdere gebeurtenis stromen wilt onderscheiden met hetzelfde schema, **moet** de waarde worden ingesteld op de naam van de gebeurtenis stroom (Tracknaam voor [MS-SSTR-ingestie] of AMF-bericht naam voor een [RTMP]-opname).                                                                         |
+| scheme_id_uri      | tekenreeks                  | Vereist      | Hiermee wordt het schema van het bericht aangegeven. Het schema wordt ingesteld op de waarde van het kenmerk schema in het vak Live server-manifest. De waarde **moet** een urn of URL zijn die het bericht schema aangeeft. De ondersteunde uitvoer schemeId moet "urn: scte: scte35:2014: XML + bin" per [SCTE-214-1] SEC 6.7.4 (MPD) zijn, aangezien de service op dit moment alleen de XML + bin ondersteunt voor het boog gebruik in de MPD. |
+| waarde              | tekenreeks                  | Optioneel      | Een extra teken reeks waarde die door de eigen aren van het schema wordt gebruikt om de semantiek van het bericht aan te passen. Als u meerdere gebeurtenis stromen wilt onderscheiden met hetzelfde schema, **moet** de waarde worden ingesteld op de naam van de gebeurtenis stroom (Tracknaam voor [MS-SSTR-ingestie] of AMF-bericht naam voor een [RTMP]-opname).                                                                         |
 | Tijdschaal          | 32-bits geheel getal zonder teken | Vereist      | De tijd schaal, in ticks per seconde.                                                                                                                                                                                                                                                                                                                                                     |
 
 
@@ -1065,7 +1063,7 @@ Het EventStream-element heeft de volgende kenmerken:
 
 In het volgende voor beeld ziet u een fragment EventStream van de Media Services Dynamic packager voor een RTMP-stroom met behulp van de eenvoudige modus-Signa lering van Adobe.
 
-~~~ xml
+```xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
     <EventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="simplesignal" timescale="10000000">
         <Event presentationTime="1583497601000000" duration="300000000" id="1085900"/>
@@ -1080,7 +1078,7 @@ In het volgende voor beeld ziet u een fragment EventStream van de Media Services
         <Event presentationTime="1583527306666666" duration="300000000" id="4056466"/>
         <Event presentationTime="1583530607333333" duration="300000000" id="4386533"/>
     </EventStream>
-~~~
+```
 
 
 #### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>voor beeld van een 3.3.2.2 MPEG DASH. mpd-manifest van een RTMP-stroom met Adobe SCTE-35-modus
@@ -1089,7 +1087,7 @@ In het volgende voor beeld ziet u een fragment EventStream van de Media Services
 
 Voor beeld van een EventStream-element met behulp van XML + bin-notatie signalering per [SCTE-214-1]
 
-~~~ xml
+```xml
 
       <EventStream schemeIdUri="urn:scte:scte35:2014:xml+bin" value="scte35" timescale="10000000">
         <Event presentationTime="2595092444" duration="11011000" id="1002">
@@ -1103,7 +1101,7 @@ Voor beeld van een EventStream-element met behulp van XML + bin-notatie signaler
             </Signal>
         </Event>
       </EventStream>
-~~~
+```
 
 
 
@@ -1119,7 +1117,7 @@ Voor beeld van een EventStream-element met behulp van XML + bin-notatie signaler
 In het volgende voor beeld ziet u de uitvoer van de Media Services Dynamic packager voor een bron-RTMP-stroom met behulp van de Adobe ' Simple ' modus AD-signaal methode. De uitvoer is een enkelvoudig periode manifest met een EventStream met behulp van de schemeId-URI ingesteld op "urn: com: Adobe: dpi: simple: 2015" en de eigenschap value ingesteld op "simplesignal".
 Elk eenvoudig signaal wordt gegeven in een gebeurtenis element met de @presentationTime Eigenschappen, en die zijn @duration @id gevuld op basis van de binnenkomende eenvoudige signalen.
 
-~~~ xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" mediaPresentationDuration="PT28M1.680S" minBufferTime="PT3S">
@@ -1168,7 +1166,7 @@ Elk eenvoudig signaal wordt gegeven in een gebeurtenis element met de @presentat
     </Period>
 </MPD>
 
-~~~
+```
 
 <!---
 #### 3.3.3.2 Example MPEG DASH manifest (MPD) with multi-period, EventStream, using Adobe SCTE35 mode signaling
@@ -1312,8 +1310,8 @@ In de volgende details worden de specifieke waarden beschreven die de client in 
 
 | **Veld naam**          | **Veld type**          | **Vereist?** | **Beschrijving**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | string                  | Vereist      | Hiermee wordt het schema van het bericht aangegeven. Het schema wordt ingesteld op de waarde van het kenmerk schema in het vak Live server-manifest. De waarde **moet** een urn zijn waarmee het bericht schema wordt aangeduid. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn in overeenstemming met [SCTE-214-3]          |
-| Waarde                   | string                  | Vereist      | Een extra teken reeks waarde die door de eigen aren van het schema wordt gebruikt om de semantiek van het bericht aan te passen. Als u meerdere gebeurtenis stromen wilt onderscheiden met hetzelfde schema, wordt de waarde ingesteld op de naam van de gebeurtenis stroom (Tracknaam voor Smooth-opname of AMF-bericht naam voor RTMP-opname). |
+| scheme_id_uri           | tekenreeks                  | Vereist      | Hiermee wordt het schema van het bericht aangegeven. Het schema wordt ingesteld op de waarde van het kenmerk schema in het vak Live server-manifest. De waarde **moet** een urn zijn waarmee het bericht schema wordt aangeduid. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn in overeenstemming met [SCTE-214-3]          |
+| Waarde                   | tekenreeks                  | Vereist      | Een extra teken reeks waarde die door de eigen aren van het schema wordt gebruikt om de semantiek van het bericht aan te passen. Als u meerdere gebeurtenis stromen wilt onderscheiden met hetzelfde schema, wordt de waarde ingesteld op de naam van de gebeurtenis stroom (Tracknaam voor Smooth-opname of AMF-bericht naam voor RTMP-opname). |
 | Tijdschaal               | 32-bits geheel getal zonder teken | Vereist      | De tijd schaal, in maten per seconde, van de velden tijden en duur in het vak ' emsg '.                                                                                                                                                                                                            |
 | Presentation_time_delta | 32-bits geheel getal zonder teken | Vereist      | De tijd van de media presentatie verschilt van de presentatie tijd van de gebeurtenis en de eerste presentatie tijd in dit segment. De tijd en duur van de presentatie **moeten** worden uitgelijnd met Stream Access points (SAP) van het type 1 of 2, zoals gedefinieerd in [ISO-14496-12] bijlage I.                                  |
 | event_duration          | 32-bits geheel getal zonder teken | Vereist      | De duur van de gebeurtenis, of 0xFFFFFFFF, om een onbekende duur aan te geven.                                                                                                                                                                                                                              |
@@ -1322,10 +1320,10 @@ In de volgende details worden de specifieke waarden beschreven die de client in 
 
 
 #### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Voor beeld van een InBandEvenStream-entiteit voor de eenvoudige modus van Adobe
-~~~ xml
+```xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
-~~~
+```
 
 ### <a name="335-dash-message-handling"></a>Verwerking van 3.3.5-streepje-berichten
 

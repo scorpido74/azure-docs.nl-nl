@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287097"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -32,7 +32,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 - U hoeft niet langer lokale beheerders accounts te beheren.
 - Met Azure RBAC kunt u de juiste toegang verlenen aan Vm's op basis van behoefte en deze verwijderen wanneer deze niet meer nodig is.
 - Voordat u toegang tot een virtuele machine toestaat, kan voorwaardelijke toegang van Azure AD aanvullende vereisten afdwingen, zoals: 
-   - Multi-Factor Authentication
+   - Meervoudige verificatie
    - Aanmeldings risico controle
 - Automatiseer en schaal Azure AD-samen voeging van Azure Windows-Vm's die deel uitmaken van uw VDI-implementaties.
 
@@ -49,7 +49,7 @@ De volgende Windows-distributies worden momenteel ondersteund tijdens de preview
 - Windows 10 1809 en hoger
 
 > [!IMPORTANT]
-> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn toegevoegd aan Azure AD of hybride Azure AD zijn toegevoegd aan **dezelfde** map als de virtuele machine. 
+> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn geregistreerd bij Azure AD (het starten van Windows 10 20H1), Azure AD is toegevoegd aan of hybride Azure AD en is toegevoegd aan **dezelfde** map als de virtuele machine. 
 
 De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie van deze functie:
 

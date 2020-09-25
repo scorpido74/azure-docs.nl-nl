@@ -1,6 +1,6 @@
 ---
 title: Meta gegevens schema voor uitvoer Azure Media Services | Microsoft Docs
-description: Dit artikel bevat een overzicht van Azure Media Services schema voor uitvoer van meta gegevens.
+description: Dit artikel geeft een overzicht van Azure Media Services v3 uitvoer van meta gegevens schema.
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336408"
 ---
 # <a name="output-metadata"></a>Uitvoermetagegevens
 
@@ -54,7 +54,7 @@ Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getrac
 | **Id**<br /> Vereist |Op nul gebaseerde index van deze video track. **Opmerking:**  Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. <br /><br />Voorbeeld: `"Id": 1`|
 | **FourCC**<br />Vereist | Een code van de video-codec die wordt gerapporteerd door ffmpeg.  <br /><br />Voorbeeld: `"FourCC": "avc1"`|
 | **Profiel** |H264-Profiel (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Profile": "High"` |
-| **Afvlakking** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
+| **Niveau** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
 | **Breedte**<br />Vereist |Breedte van gecodeerde video in pixels.  <br /><br />Voorbeeld: `"Width": "1280"`|
 | **Hoogte**<br />Vereist |Versleutelde video hoogte in pixels.  <br /><br />Voorbeeld: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vereist|Teller voor hoogte-breedte verhouding video weergave.  <br /><br />Voorbeeld: `"DisplayAspectRatioNumerator": 16.0`|

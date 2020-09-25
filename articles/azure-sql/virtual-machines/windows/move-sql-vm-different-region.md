@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298573"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Een SQL Server VM verplaatsen naar een andere regio in azure met Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,12 +37,12 @@ Als u een SQL Server VM naar een andere regio wilt verplaatsen, moet u het volge
 
 - Controleer of het verplaatsen van de bron regio naar de doel regio [wordt ondersteund](../../../site-recovery/azure-to-azure-support-matrix.md#region-support).  
 - Bekijk de [scenario architectuur en-onderdelen](../../../site-recovery/azure-to-azure-architecture.md) , evenals de [beperkingen en vereisten voor ondersteuning](../../../site-recovery/azure-to-azure-support-matrix.md). 
-- Controleer de account machtigingen. Als u uw gratis Azure-account hebt gemaakt, bent u de beheerder van uw abonnement. Als u niet de abonnements beheerder bent, kunt u met de beheerder samen werken om de benodigde machtigingen toe te wijzen. Als u replicatie wilt inschakelen voor een VM en gegevens wilt kopiëren met behulp van Azure Site Recovery, hebt u het volgende nodig: 
+- Controleer de accountmachtigingen. Als u een gratis Azure-account hebt gemaakt, bent u de beheerder van uw abonnement. Als u niet de abonnementsbeheerder bent, vraagt u de beheerder om u de machtigingen toe te wijzen die u nodig hebt. Als u replicatie wilt inschakelen voor een VM en gegevens wilt kopiëren met behulp van Azure Site Recovery, hebt u het volgende nodig: 
     - Machtigingen voor het maken van een virtuele machine. De ingebouwde rol *Inzender voor virtuele machines* beschikt over deze machtigingen, waaronder: 
         - Machtigingen voor het maken van een virtuele machine in de geselecteerde resource groep. 
         - Machtigingen voor het maken van een virtuele machine in het geselecteerde virtuele netwerk. 
         - Machtigingen voor het schrijven naar het geselecteerde opslag account. 
-      - Machtigingen voor het beheren van Azure Site Recovery bewerkingen. De rol *site Recovery Inzender* heeft alle machtigingen die nodig zijn voor het beheren van site Recovery bewerkingen in een Recovery Services kluis.  
+      - Machtigingen om Azure Site Recovery-bewerkingen te beheren. De rol *site Recovery Inzender* heeft alle machtigingen die nodig zijn voor het beheren van site Recovery bewerkingen in een Recovery Services kluis.  
 
 ## <a name="prepare-to-move"></a>Voorbereiden om te verplaatsen
 Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor. 
@@ -53,16 +53,16 @@ Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor.
 - Voor virtuele Windows-machines installeert u alle meest recente Windows-updates op de VM, zodat alle vertrouwde basis certificaten zich op de computer bevinden. In een niet-verbonden omgeving volgt u de standaard Windows Update en het update proces van het certificaat voor uw organisatie. 
 - Voor Linux-VM’s volgt u de richtlijnen van de Linux-distributeur voor het verkrijgen van de meest recente basiscertificaten en de certificaatintrekkingslijst op de VM. 
 - Zorg ervoor dat u geen verificatie proxy gebruikt voor het beheren van de netwerk verbinding voor de virtuele machines die u wilt verplaatsen. 
-- Als de virtuele machine die u wilt verplaatsen geen toegang tot internet heeft of een firewall proxy gebruikt om uitgaande toegang te beheren, controleert u de vereisten. 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Dit omvat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's. 
+- Controleer de vereisten als de VM die u wilt verplaatsen, geen toegang tot internet heeft, of een firewallproxy gebruikt voor het beheren van uitgaande toegang. 
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Dit omvat, maar is niet beperkt tot load balancers, NSG’s (netwerkbeveiligingsgroepen), en openbare IP-adressen. 
 
 ### <a name="prepare-the-target-region"></a>De doelregio voorbereiden
 
-- Controleer of u met uw Azure-abonnement virtuele machines kunt maken in de doel regio die wordt gebruikt voor herstel na nood gevallen. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum. 
+- Controleer of u een Azure-abonnement hebt waarmee u in staat bent om VM’s te maken in de doelregio die wordt gebruikt voor herstel na noodgevallen. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum. 
 - Zorg ervoor dat uw abonnement voldoende bronnen heeft voor de ondersteuning van Vm's met een grootte die overeenkomt met uw bron-Vm's. Als u Site Recovery gebruikt voor het kopiëren van gegevens naar het doel, Site Recovery kiest voor dezelfde grootte of de dichtstbijzijnde grootte voor de doel-VM. 
-- Zorg ervoor dat u een doel bron maakt voor elk onderdeel dat in de bron netwerk indeling wordt geïdentificeerd. Deze stap is belang rijk om ervoor te zorgen dat uw virtuele machines beschikken over alle functionaliteit en functies in de doel regio die u in de bron regio had. 
+- Zorg ervoor dat u een doelresource maakt voor elk onderdeel dat is geïdentificeerd in de bronnetwerkindeling. Deze stap is belangrijk om ervoor te zorgen dat de VM’s in de doelregio beschikken over alle functionaliteit en functies, die u had in de bronregio. 
     - Azure Site Recovery detecteert en maakt automatisch een virtueel netwerk wanneer u replicatie inschakelt voor de bron-VM. U kunt ook een netwerk vooraf maken en dit toewijzen aan de virtuele machine in de gebruikers stroom voor het inschakelen van replicatie. U moet hand matig andere resources in de doel regio maken.
-- Als u de meest gebruikte netwerk bronnen wilt maken die relevant zijn voor u op basis van de configuratie van de bron-VM, raadpleegt u de volgende documentatie: 
+- Raadpleeg de volgende documentatie om de meest gebruikte netwerkresources te maken die relevant zijn voor u, op basis van de bron-VM-configuratie: 
     - [Netwerkbeveiligingsgroepen](../../../virtual-network/tutorial-filter-network-traffic.md) 
     - [Load Balancer](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
     - [Openbaar IP-adres](../../../virtual-network/virtual-network-public-ip-address.md)
@@ -73,7 +73,7 @@ Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor.
 
 De volgende stappen laten zien hoe u Azure Site Recovery kunt gebruiken om gegevens te kopiëren naar de doel regio. Maak de Recovery Services kluis in een andere regio dan de bron regio. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Kies ervoor om **een resource te maken** in de linkerbovenhoek van het navigatie deel venster. 
 1. Selecteer **deze &-beheer hulpprogramma's** en selecteer vervolgens **back-up en site Recovery**. 
 1. Op het tabblad **basis beginselen** onder **Project Details**maakt u een nieuwe resource groep in de doel regio of selecteert u een bestaande resource groep in de doel regio. 
@@ -130,7 +130,7 @@ De volgende stappen laten zien hoe u de SQL Server VM van de bron regio kunt ver
 1. Selecteer **OK** om de failover te starten.
 1. U kunt het failoverproces bewaken op dezelfde **site Recovery** -pagina die u hebt bekeken bij het controleren van de failover-test in de vorige sectie. 
 1. Nadat de taak is voltooid, controleert u of de SQL Server virtuele machine wordt weer gegeven in de doel regio zoals verwacht. 
-1. Ga terug naar de kluis, selecteer **gerepliceerde items**, selecteer de SQL Server virtuele machine en selecteer **door voeren** om het verplaatsings proces te volt ooien naar de doel regio. Wacht tot de doorvoer taak is voltooid. 
+1. Ga terug naar de kluis, selecteer **gerepliceerde items**, selecteer de SQL Server virtuele machine en selecteer **door voeren** om het verplaatsings proces te volt ooien naar de doel regio. Wacht tot de doorvoertaak is voltooid. 
 1. Registreer uw SQL Server-VM met de resource provider van de SQL-VM om de beheer baarheid van **virtuele SQL-machines** in te scha kelen in de Azure Portal en functies die zijn gekoppeld aan de resource provider. Zie [SQL Server VM registreren bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md)voor meer informatie. 
 
   > [!WARNING]

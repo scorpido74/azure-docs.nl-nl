@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78274708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306664"
 ---
 # <a name="application-security-groups"></a>Toepassingsbeveiligingsgroepen
 
@@ -26,7 +26,7 @@ Met behulp van toepassingsbeveiligingsgroepen kunt u netwerkbeveiliging configur
 
 ![Toepassingsbeveiligingsgroepen](./media/security-groups/application-security-groups.png)
 
-In de vorige afbeelding zijn *NIC1* en *NIC2* leden van de toepassingsbeveiligingsgroep *AsgWeb*. *NIC3* is een lid van de toepassingsbeveiligingsgroep *AsgLogic*. *NIC4* is een lid van de toepassingsbeveiligingsgroep *AsgDb*. Hoewel elke netwerkinterface in dit voorbeeld een lid is van slechts één toepassingsbeveiligingsgroep, kan een netwerkinterface lid zijn van meerdere toepassingsbeveiligingsgroepen, maar niet meer dan de opgegeven [Azure-limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Aan geen van de netwerkinterfaces is een netwerkbeveiligingsgroep gekoppeld. *NSG1* is gekoppeld aan beide subnetten en bevat de volgende regels:
+In de vorige afbeelding zijn *NIC1* en *NIC2* leden van de toepassingsbeveiligingsgroep *AsgWeb*. *NIC3* is een lid van de toepassingsbeveiligingsgroep *AsgLogic*. *NIC4* is een lid van de toepassingsbeveiligingsgroep *AsgDb*. Hoewel elke netwerk interface in dit voor beeld lid is van slechts één netwerk beveiligings groep, kan een netwerk interface lid zijn van meerdere toepassings beveiligings groepen, tot aan de [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Aan geen van de netwerkinterfaces is een netwerkbeveiligingsgroep gekoppeld. *NSG1* is gekoppeld aan beide subnetten en bevat de volgende regels:
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 
@@ -42,7 +42,7 @@ De standaardbeveiligingsregel **AllowVNetInBound** staat communicatie toe tussen
 
 |Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Alle | Weigeren |
+| 120 | * | * | AsgDb | 1433 | Elk | Weigeren |
 
 ## <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 

@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306392"
 ---
 # <a name="risky-ip-report-public-preview"></a>Risk ante IP-rapport (open bare preview)
 AD FS klanten kunnen wacht woord verificatie-eind punten beschikbaar stellen aan Internet om verificatie services te bieden aan eind gebruikers die toegang hebben tot SaaS-toepassingen, zoals Microsoft 365. In dat geval kunnen criminelen aanmeldpogingen uitvoeren op uw AD FS-systeem om het wachtwoord van een eindgebruiker te achterhalen en toegang te krijgen tot toepassingsresources. AD FS biedt de extranetfunctionaliteit voor accountvergrendeling om dergelijke aanvallen te voorkomen vanaf AD FS in Windows Server 2012 R2. Als u een lagere versie gebruikt, raden we u ten zeerste aan uw AD FS-systeem naar Windows Server 2016 te upgraden. <br />
@@ -39,7 +39,7 @@ Daarnaast is het mogelijk dat vanaf één IP-adres meerdere aanmeldpogingen voor
 > 
 
 ## <a name="what-is-in-the-report"></a>Wat is er in het rapport?
-De mislukte aanmeldings activiteit client-IP-adressen worden geaggregeerd via Web Application proxy-servers. Elk item in het rapport Riskant IP-adres toont verzamelde informatie over mislukte AD FS-aanmeldactiviteiten die de aangewezen drempelwaarde overschrijden. Het biedt de volgende informatie: ![Azure AD Connect Health-portal](./media/how-to-connect-health-adfs/report4a.png)
+De mislukte aanmeldings activiteit client-IP-adressen worden geaggregeerd via Web Application proxy-servers. Elk item in het rapport Riskant IP-adres toont verzamelde informatie over mislukte AD FS-aanmeldactiviteiten die de aangewezen drempelwaarde overschrijden. Het bevat de volgende informatie: ![ scherm afbeelding met een Risk ante IP-rapport met kolom koppen gemarkeerd.](./media/how-to-connect-health-adfs/report4a.png)
 
 | Rapportitem | Beschrijving |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ De mislukte aanmeldings activiteit client-IP-adressen worden geaggregeerd via We
 
 Het onderstaande rapportitem geeft bijvoorbeeld aan dat in het tijdvenster van 18:00 tot 19:00 uur op 28-02-2018 het IP-adres <i>104.2XX.2XX.9</i> geen mislukte wachtwoordpogingen en 284 mislukte extranetvergrendelingen had. 14 unieke gebruikers zijn volgens de criteria beïnvloed. De activiteitsgebeurtenis overschrijdt de aangewezen drempelwaarde per uur van het rapport. 
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report4b.png)
+![Scherm afbeelding met een voor beeld van een Risk ante IP-rapport vermelding.](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - Alleen activiteiten die de aangewezen drempelwaarde overschrijden, worden in de rapportlijst weergegeven. 
@@ -60,7 +60,7 @@ Het onderstaande rapportitem geeft bijvoorbeeld aan dat in het tijdvenster van 1
 > - Dit waarschuwingsrapport geeft geen Exchange-IP-adressen of privé-IP-adressen weer. Ze worden wel opgenomen in de exportlijst. 
 >
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report4c.png)
+![Scherm opname van het rapport Risk ante IP met de opties ' downloaden ', ' meldings instellingen ' en ' drempel instellingen ' gemarkeerd.](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>IP-adressen van Load Balancer in de lijst
 Load balancer verzamelt mislukte aanmeldactiviteiten en bereikt de drempelwaarde voor waarschuwingen. Als u load balancer IP-adressen ziet, is het zeer waarschijnlijk dat uw externe load balancer het client-IP-adres niet verzendt wanneer deze de aanvraag naar de proxyserver van de webtoepassing doorstuurt. Configureer de load balancer op een juiste manier om het client-IP-adres door te schakelen. 

@@ -1,26 +1,28 @@
 ---
 title: Bron beheer en ontwikkelings filialen-LUIS
 description: Uw Language Understanding-app (LUIS) onderhouden onder broncode beheer. Updates Toep assen op een LUIS-app terwijl u aan het werk bent in een ontwikkelings vertakking.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 2d060fefbd32ecea1f91e6b062da7606699a63c4
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309503"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-procedures voor LUIS
 
 Software-engineers die een Language Understanding-app (LUIS) ontwikkelen, kunnen DevOps-procedures rond [broncode beheer](luis-concept-devops-sourcecontrol.md)en [geautomatiseerde builds](luis-concept-devops-automation.md), [testen](luis-concept-devops-testing.md)en [release beheer](luis-concept-devops-automation.md#release-management) Toep assen door deze richt lijnen te volgen.
 
-## <a name="source-control-and-branch-strategies-for-luis"></a>Broncode beheer en vertakkings strategieën voor LUIS
+## <a name="source-control-and-branch-strategies-for-luis"></a>Broncodebeheer en vertakkingsstrategieën voor LUIS
 
 Een van de belangrijkste factoren die het succes van DevOps is, is afhankelijk van het [bron beheer](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). Met een broncode beheer systeem kunnen ontwikkel aars samen werken aan code en wijzigingen bijhouden. Door het gebruik van branches kunnen ontwikkel aars scha kelen tussen verschillende versies van de code basis en onafhankelijk van andere leden van het team. Wanneer ontwikkel aars een [pull-aanvraag](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) opleggen om updates van de ene vertakking naar een andere te stellen, of wanneer wijzigingen worden samengevoegd, kan dit de trigger zijn voor het maken van [automatische builds](luis-concept-devops-automation.md) en het continu testen van code.
 
 Door gebruik te maken van de concepten en richt lijnen die in dit document worden beschreven, kunt u een LUIS-App ontwikkelen tijdens het bijhouden van wijzigingen in een broncode beheer systeem. Volg deze aanbevolen procedures voor software techniek:
 
-- **Broncode beheer**
+- **Broncodebeheer**
   - De bron code voor uw LUIS-app bevindt zich in een Human Lees bare indeling.
   - Het model kan op een Herhaal bare manier worden gebouwd op basis van de bron.
   - De bron code kan worden beheerd door een bron code opslagplaats.
@@ -40,7 +42,7 @@ Door gebruik te maken van de concepten en richt lijnen die in dit document worde
 
 ## <a name="source-control"></a>Broncodebeheer
 
-Als u de [definitie](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) van het app-schema van een Luis-app in een broncode beheersysteem wilt behouden, gebruikt u de [LUDown-indeling ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) voor de weer gave van de app. `.lu`de indeling heeft de voor keur om te `.json` Format teren omdat deze door iedereen kan worden gelezen, waardoor het eenvoudiger is om wijzigingen aan te brengen en te controleren in pull.
+Als u de [definitie](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) van het app-schema van een Luis-app in een broncode beheersysteem wilt behouden, gebruikt u de [LUDown-indeling ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  voor de weer gave van de app. `.lu` de indeling heeft de voor keur om te `.json` Format teren omdat deze door iedereen kan worden gelezen, waardoor het eenvoudiger is om wijzigingen aan te brengen en te controleren in pull.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Een LUIS-app opslaan met de LUDown-indeling
 
@@ -52,7 +54,7 @@ Als u een LUIS-app in een indeling wilt opslaan `.lu` en deze wilt plaatsen onde
 
 > [!TIP]
 > Als u werkt met de JSON-export van een LUIS-app, kunt u [deze converteren naar LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) met behulp van de [BotBuilder-HULPPROGRAM ma's Luis cli](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS). Gebruik de `--sort` optie om ervoor te zorgen dat de intenties en uitingen alfabetisch worden gesorteerd.  
-> Houd er rekening mee dat **. **Met de Lu-export functie die in de Luis-Portal is ingebouwd, wordt de uitvoer al gesorteerd.
+> Houd er rekening mee dat **. ** Met de Lu-export functie die in de Luis-Portal is ingebouwd, wordt de uitvoer al gesorteerd.
 
 ### <a name="build-the-luis-app-from-source"></a>De LUIS-app bouwen vanuit de bron
 
@@ -66,7 +68,7 @@ Als u een LUIS-app wilt *bouwen op basis van bron* , betekent dit dat u [een nie
 
 De volgende typen bestanden voor uw LUIS-toepassing moeten worden onderhouden onder broncode beheer:
 
-- `.lu`bestand voor de LUIS-toepassing
+- `.lu` bestand voor de LUIS-toepassing
 
 - [Definitie bestanden voor de eenheids test](luis-concept-devops-testing.md#writing-tests) (uitingen en verwachte resultaten)
 

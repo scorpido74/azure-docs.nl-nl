@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287318"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -33,7 +33,7 @@ Een opslag account instellen:
 
 2. Zoek naar het **opslag account** in de zoek balk.
 
-3. Selecteer **+ toevoegen**.
+3. Selecteer **+Toevoegen**.
 
 4. Voer de volgende gegevens in op de pagina  **opslag account maken** :
 
@@ -56,7 +56,7 @@ Een bestandsshare maken:
 
 1. Selecteer **Ga naar resource**.
 
-2. Selecteer op de pagina overzicht de optie **Bestands shares**.
+2. Selecteer op de pagina Overzicht **Bestandsshares**.
 
 3. Selecteer **+ Bestands**shares, maak een nieuwe bestands share met de naam **profielen**en voer vervolgens een geschikt quotum in of laat het veld leeg voor geen quota.
 
@@ -154,7 +154,7 @@ Uw NTFS-machtigingen configureren:
 2. Voer de volgende opdracht uit om de Azure-bestands share te koppelen en een stationsletter toe te wijzen:
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. Voer de volgende opdracht uit om de toegangs machtigingen voor de Azure-bestands share te controleren:

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587341"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335378"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
@@ -27,7 +27,7 @@ App-configuratie ondersteunt:
 - Hiërarchische naamruimten
 - Labels
 - Uitgebreide query's
-- Batch ophalen
+- Bulksgewijs ophalen
 - Gespecialiseerde beheer bewerkingen
 - Een gebruikers interface voor het beheer van functies
 
@@ -42,6 +42,10 @@ U kunt app-configuratie waarden maken die verwijzen naar geheimen die zijn opges
 ## <a name="does-app-configuration-encrypt-my-data"></a>Versleutelen de app-configuratie mijn gegevens?
 
 Ja. App-configuratie versleutelt alle sleutel waarden die worden bewaard en versleutelt de netwerk communicatie. Sleutel namen en labels worden gebruikt als indexen voor het ophalen van configuratie gegevens en worden niet versleuteld.
+
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>Waar worden gegevens opgeslagen in de app-configuratie? 
+
+Klant gegevens die zijn opgeslagen in app-configuratie bevinden zich in de regio waar de app-configuratie van de klant is gemaakt. App-configuratie kan gegevens repliceren naar [gekoppelde regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) voor gegevens tolerantie, maar er worden geen klant gegevens gerepliceerd of verplaatst buiten hun geografische regio zoals gedefinieerd door [Data locatie in azure](https://azure.microsoft.com/global-infrastructure/data-residency/). Klanten en eind gebruikers kunnen hun klant gegevens vanaf elke locatie wereld wijd verplaatsen, kopiëren of gebruiken.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Hoe wijkt de configuratie van de app af van Azure App Service instellingen?
 
@@ -107,7 +111,7 @@ Wanneer de limiet van een Store is bereikt, wordt de HTTP-status code 429 gereto
 
 Als uw toepassing regel matig HTTP-status code 429 reacties ondervindt, kunt u deze het beste opnieuw ontwerpen om het aantal aanvragen te verminderen. Zie [aanvragen beperken tot app-configuratie](./howto-best-practices.md#reduce-requests-made-to-app-configuration) voor meer informatie.
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Waarom?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe komt dat?
 
 In deze gevallen ontvangt u een HTTP-status code van 429:
 

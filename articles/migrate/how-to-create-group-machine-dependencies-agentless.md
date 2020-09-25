@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536435"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275588"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 
 - In de weer gave afhankelijkheids analyse kunt u op dit moment geen server toevoegen aan of verwijderen uit een groep.
 - Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
-- Het verzamelen van afhankelijkheids gegevens kan gelijktijdig worden ingesteld voor 400-servers. U kunt een groter aantal servers analyseren door sequentiëren in batches van 400.
+- Het verzamelen van afhankelijkheids gegevens kan gelijktijdig worden ingesteld voor 1000-servers. U kunt een hoger aantal servers analyseren door sequentiëren in batches van 1000.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -57,7 +57,7 @@ Voeg het gebruikers account toe aan het apparaat.
 
 ## <a name="start-dependency-discovery"></a>Detectie van afhankelijkheid starten
 
-Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen.
+Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen. 
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
@@ -68,7 +68,7 @@ Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen.
 
     ![Detectie van afhankelijkheid starten](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afhankelijkheden visualiseren.
+U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afhankelijkheden visualiseren. Als u meerdere computers wilt inschakelen, kunt u [Power shell](#start-or-stop-dependency-discovery-using-powershell) gebruiken om dit te doen.
 
 ## <a name="visualize-dependencies"></a>Afhankelijkheden visualiseren
 
@@ -125,7 +125,7 @@ Doelpoort | Poort nummer op de doel computer
 
 ## <a name="stop-dependency-discovery"></a>Detectie van afhankelijkheid stoppen
 
-Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
+Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen. 
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
@@ -133,6 +133,114 @@ Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
 3. Kies op de pagina **servers verwijderen** het **apparaat** dat de vm's detecteert waarop u de detectie van de afhankelijkheid wilt stoppen.
 4. Selecteer de machines in de lijst met computers.
 5. Klik op **servers verwijderen**.
+
+Als u de afhankelijkheid op meerdere computers wilt stoppen, kunt u [Power shell](#start-or-stop-dependency-discovery-using-powershell) gebruiken om dit te doen.
+
+
+### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Detectie van afhankelijkheden starten of stoppen met Power shell
+
+Down load de Power shell-module van [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) opslag plaats op github.
+
+
+#### <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+
+1. Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+    Gebruik de volgende opdracht als u Azure Government gebruikt.
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+2. Selecteer het abonnement waarin u het Azure Migrate project hebt gemaakt 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. De gedownloade AzMig_Dependencies Power shell-module importeren
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+#### <a name="enable-or-disable-dependency-data-collection"></a>Verzamelen van afhankelijkheids gegevens in-of uitschakelen
+
+1. Bekijk de lijst met gedetecteerde virtuele VMware-machines in uw Azure Migrate-project met behulp van de volgende opdrachten. In het onderstaande voor beeld is de project naam FabrikamDemoProject en de resource groep waartoe deze behoort, is FabrikamDemoRG. De lijst met computers wordt opgeslagen in FabrikamDemo_VMs.csv
+
+    ```PowerShell
+    Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
+    ```
+
+    In het bestand ziet u de weergave naam van de virtuele machine, de huidige status van de afhankelijkheids verzameling en de ARM-ID van alle gedetecteerde Vm's. 
+
+2. Als u afhankelijkheden wilt in-of uitschakelen, maakt u een CSV-invoer bestand. Het bestand moet een kolom met de header ' ARM-ID ' hebben. Eventuele aanvullende headers in het CSV-bestand worden genegeerd. U kunt het CSV maken met het bestand dat u in de vorige stap hebt gegenereerd. Maak een kopie van het bestand waarin de Vm's worden bewaard waarvoor u afhankelijkheden wilt in-of uitschakelen. 
+
+    In het volgende voor beeld wordt afhankelijkheids analyse ingeschakeld op de lijst met Vm's in het invoer bestand FabrikamDemo_VMs_Enable.csv.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
+    ```
+
+    In het volgende voor beeld wordt de afhankelijkheids analyse uitgeschakeld in de lijst met virtuele machines in het invoer bestand FabrikamDemo_VMs_Disable.csv.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
+    ```
+
+## <a name="visualize-network-connections-in-power-bi"></a>Netwerk verbindingen in Power BI visualiseren
+
+Azure Migrate biedt een Power BI sjabloon die u kunt gebruiken om netwerk verbindingen van veel servers tegelijk te visualiseren en te filteren op proces en server. Als u wilt visualiseren, laadt u de Power BI met afhankelijkheids gegevens volgens de onderstaande instructies.
+
+1. Down load de Power shell-module en de Power BI sjabloon vanuit [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) opslag plaats op github.
+
+2. Meld u aan bij Azure met behulp van de onderstaande instructies: 
+- Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+
+- Gebruik de volgende opdracht als u Azure Government gebruikt.
+
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+- Selecteer het abonnement waarin u het Azure Migrate project hebt gemaakt 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. De gedownloade AzMig_Dependencies Power shell-module importeren
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+4. Voer de volgende opdracht uit. Met deze opdracht worden de afhankelijkheids gegevens in een CSV gedownload en wordt deze verwerkt voor het genereren van een lijst met unieke afhankelijkheden die kunnen worden gebruikt voor visualisatie in Power BI. In het voor beeld hieronder is de project naam FabrikamDemoProject en de resource groep waartoe deze behoort, is FabrikamDemoRG. De afhankelijkheden worden gedownload voor computers die zijn gedetecteerd door FabrikamAppliance. De unieke afhankelijkheden worden opgeslagen in FabrikamDemo_Dependencies.csv
+
+    ```PowerShell
+    Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
+    ```
+
+5. De gedownloade Power BI-sjabloon openen
+
+6. Laad de gedownloade afhankelijkheids gegevens in Power BI.
+    - Open de sjabloon in Power BI.
+    - Klik op **gegevens ophalen** op de werk balk. 
+    - Kies **tekst/CSV** in algemene gegevens bronnen.
+    - Kies het bestand met afhankelijkheden dat is gedownload.
+    - Klik op **laden**.
+    - U ziet dat er een tabel wordt geïmporteerd met de naam van het CSV-bestand. U ziet de tabel in de velden balk aan de rechter kant. Wijzig de naam in AzMig_Dependencies
+    - Klik op Vernieuwen in de werk balk.
+
+    De tabel netwerk verbindingen en de naam van de bron server, de naam van de doel server, de naam van het bron proces, de Slicers van de doel proces naam moeten licht worden gemaakt met de geïmporteerde gegevens.
+
+7. Visualiseer de kaart van netwerk verbindingen die worden gefilterd op servers en processen. Sla het bestand op.
 
 
 ## <a name="next-steps"></a>Volgende stappen

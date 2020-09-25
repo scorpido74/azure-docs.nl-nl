@@ -3,12 +3,12 @@ title: Evaluaties van Azure VM in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275520"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Overzicht van server evaluatie (migreren naar Azure Vm's)
 
@@ -80,7 +80,7 @@ Als u het apparaat voor detectie gebruikt, worden de prestatie gegevens voor de 
     - **Virtuele Hyper-V-machines**: een voor beeld van een punt wordt elke 30 seconden verzameld.
     - **Fysieke servers**: een voor beeld van een punt wordt elke vijf minuten verzameld.
 
-1. Het apparaat combineert de voorbeeld punten om elke 10 minuten één gegevens punt te maken. Het apparaat selecteert de piek waarden van alle voor beelden om het gegevens punt te maken. Vervolgens wordt het gegevens punt naar Azure verzonden.
+1. Het apparaat combineert de voorbeeld punten voor het maken van één gegevens punt om de 10 minuten voor VMware-en Hyper-V-servers en om de 5 minuten voor fysieke servers. Het apparaat selecteert de piek waarden van alle voor beelden om het gegevens punt te maken. Vervolgens wordt het gegevens punt naar Azure verzonden.
 1. In Server beoordeling worden alle gegevens punten van 10 minuten voor de afgelopen maand opgeslagen.
 1. Wanneer u een evaluatie maakt, identificeert server assessment het juiste gegevens punt dat moet worden gebruikt voor supportte. Identificatie is gebaseerd op de percentiel waarden voor de *prestatie geschiedenis* en het *percentiel gebruik*.
 
@@ -124,7 +124,7 @@ Dit is what's opgenomen in een Azure VM-evaluatie in Server evaluatie:
 **VM-reeks** | De Azure-VM-reeks die u wilt overwegen voor supportte. Als u bijvoorbeeld geen productie omgeving hebt die virtuele machines van de A-serie nodig heeft in azure, kunt u een-serie uitsluiten van de lijst met reeksen.
 **Comfortfactor** | De buffer die wordt gebruikt tijdens de evaluatie. Deze wordt toegepast op de CPU-, RAM-, schijf-en netwerk gegevens voor Vm's. IT-accounts voor problemen zoals seizoen gebruik, korte prestatie geschiedenis en waarschijnlijk toename van toekomstig gebruik.<br/><br/> Zo resulteert een virtuele machine met 10 kern met 20% gebruik doorgaans in een virtuele machine met twee kernen. Met een comfort factor van 2,0 is het resultaat een virtuele machine met vier kernen.
 **Aanbieding** | De [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) waarin u bent Inge schreven. Met server evaluatie worden de kosten voor die aanbieding geschat.
-**Valuta** | De facturerings valuta voor uw account.
+**Gelijktijdig** | De facturerings valuta voor uw account.
 **Korting (%)** | Alle abonnements kortingen die u boven op de Azure-aanbieding ontvangt. De standaardinstelling is 0%.
 **VM tijd actief** | De duur in dagen per maand en uur per dag voor virtuele Azure-machines die niet continu worden uitgevoerd. Kosten ramingen zijn gebaseerd op die duur.<br/><br/> De standaard waarden zijn 31 dagen per maand en 24 uur per dag.
 **Azure Hybrid Benefit** | Hiermee geeft u op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als de instelling de standaard waarde Ja heeft, worden de Azure-prijzen voor andere besturings systemen dan Windows in aanmerking genomen voor Windows-Vm's.

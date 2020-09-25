@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336646"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het proces voor team gegevens wetenschap in actie-een Azure HDInsight Hadoop cluster op een gegevensset van 1 TB gebruiken
 
@@ -67,7 +67,7 @@ Stel uw Azure data Science-omgeving in voor het bouwen van predictive analytics 
 
    * Koppel het opslag account dat u in stap 1 hebt gemaakt met uw HDInsight-cluster wanneer het wordt gemaakt. Dit opslag account wordt gebruikt voor toegang tot gegevens die in het cluster kunnen worden verwerkt.
    * Externe toegang tot het hoofd knooppunt van het cluster inschakelen nadat dit is gemaakt. Onthoud de externe toegangs referenties die u hier opgeeft (anders dan de referenties die zijn opgegeven tijdens het maken van het cluster): Voer de volgende procedures uit.
-3. [Een Azure machine learning studio-werk ruimte (klassieke) maken](../studio/create-workspace.md): deze Azure machine learning-werk ruimte wordt gebruikt voor het bouwen van machine learning modellen na een eerste gegevens exploratie en-bemonstering op het HDInsight-cluster.
+3. [Een Azure machine learning studio-werk ruimte (klassieke) maken](../classic/create-workspace.md): deze Azure machine learning-werk ruimte wordt gebruikt voor het bouwen van machine learning modellen na een eerste gegevens exploratie en-bemonstering op het HDInsight-cluster.
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Gegevens uit een open bare bron ophalen en gebruiken
 U kunt de [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -gegevensset openen door op de koppeling te klikken, de gebruiks voorwaarden te accepteren en een naam op te geven. Hier wordt een moment opname weer gegeven:
@@ -98,7 +98,7 @@ Aan de linkerkant is de ' Hadoop-opdracht regel ', het paard van het verkennen v
 
 U bent nu klaar om te beginnen met het eerste deel van het scenario: gegevens verkennen met behulp van Hive en gegevens ophalen die gereed zijn voor Azure Machine Learning.
 
-## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>Hive-data base en-tabellen maken
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Hive-data base en-tabellen maken
 Als u Hive-tabellen voor onze Criteo-gegevensset wilt maken, opent u de ***Hadoop-opdracht regel*** op het bureau blad van het hoofd knooppunt en voert u de Hive-map in door de opdracht in te voeren
 
 ```console
@@ -208,7 +208,7 @@ criteo_train
 Time taken: 1.437 seconds, Fetched: 4 row(s)
 ```
 
-## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Component gegevens verkennen in
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a> Component gegevens verkennen in
 U bent nu klaar om een aantal elementaire gegevens te verkennen in Hive. U begint met het tellen van het aantal voor beelden in de tabellen voor het trainen en testen van gegevens.
 
 ### <a name="number-of-train-examples"></a>Aantal voor beelden van treinen
@@ -402,7 +402,7 @@ e5f3fd8d        a0aaffa6        792250
 Time taken: 560.22 seconds, Fetched: 15 row(s)
 ```
 
-## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>Voor beeld van de gegevens sets voor Azure Machine Learning
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a> Voor beeld van de gegevens sets voor Azure Machine Learning
 Door de gegevens sets te verkennen en te laten zien hoe u dit type onderzoek kunt doen voor alle variabelen (inclusief combi Naties), zet u een voor beeld van de gegevenssets, zodat modellen in Azure Machine Learning kunnen worden gebouwd. De focus van het probleem is: als er een aantal voorbeeld kenmerken (functie waarden van col2-Col40) wordt gegeven, voors pellen als Kol1 een 0 (geen klik) of een 1 (klik) is.
 
 Als u de gegevens sets van de trein en test op 1% van de oorspronkelijke grootte wilt bemonsteren, gebruikt u de functie systeem eigen RAND () van de component. Het volgende script, [voorbeeld&#95;-hive&#95;criteo&#95;downsamplen&#95;train&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) doet dit voor de Train-gegevensset:
@@ -471,7 +471,7 @@ U bent nu klaar om onze voor beeld-en test gegevens sets te gebruiken voor het b
 
 Er is een laatste belang rijk onderdeel voordat u verdergaat op Azure Machine Learning, wat betrekking heeft op de tabel Count. In de volgende Subsectie wordt de tabel Count besproken.
 
-## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>Een korte discussie over de tabel aantal
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> Een korte discussie over de tabel aantal
 Zoals u hebt gezien, hebben verschillende categorische-variabelen een hoge dimensionaliteit. In de walkthrough wordt een krachtige techniek genoemd [met de naam learning met aantallen](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) om deze variabelen op een efficiënte en robuuste manier te coderen. Meer informatie over deze techniek vindt u in de koppeling.
 
 >[!NOTE]
@@ -480,7 +480,7 @@ Zoals u hebt gezien, hebben verschillende categorische-variabelen een hoge dimen
 
 Gebruik de gegevens in de map RAW/Count om tellings tabellen te maken op basis van de hoeveelheid gegevens. In de sectie model lering worden gebruikers weer gegeven hoe u deze aantal tabellen kunt bouwen voor categorische-functies, of om een vooraf gemaakte telling tabel te gebruiken voor hun onderzoek. In de volgende gevallen wordt bij het gebruik van ' vooraf gemaakte tellingen tabellen ' verwezen naar de aantal tabellen die zijn verschaft. Gedetailleerde instructies voor toegang tot deze tabellen vindt u in de volgende sectie.
 
-## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a>Een model bouwen met Azure Machine Learning
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a> Een model bouwen met Azure Machine Learning
 Het bouw proces voor modellen in Azure Machine Learning volgt deze stappen:
 
 1. [De gegevens uit Hive-tabellen ophalen in Azure Machine Learning](#step1)
@@ -491,7 +491,7 @@ Het bouw proces voor modellen in Azure Machine Learning volgt deze stappen:
 
 Nu bent u klaar om modellen te bouwen in Azure Machine Learning Studio. De gegevens van een voor beeld worden opgeslagen als Hive-tabellen in het cluster. Gebruik de module Azure Machine Learning **gegevens importeren** om deze gegevens te lezen. De referenties voor toegang tot het opslag account van dit cluster zijn op de volgende manier beschikbaar.
 
-### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>Stap 1: gegevens uit Hive-tabellen ophalen in Azure Machine Learning met behulp van de module gegevens importeren en deze selecteren voor een machine learning experiment
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> Stap 1: gegevens uit Hive-tabellen ophalen in Azure Machine Learning met behulp van de module gegevens importeren en deze selecteren voor een machine learning experiment
 Begin met het selecteren van een leeg experiment met **+ nieuwe**  ->  **experimenten**  ->  **Blank Experiment**. Zoek vervolgens **in het zoekvak** linksboven op ' gegevens importeren '. Sleep de module **gegevens importeren** naar het canvas op het experiment (het middelste gedeelte van het scherm) om de module voor gegevens toegang te gebruiken.
 
 Dit is de manier waarop de **import gegevens** eruitzien tijdens het ophalen van gegevens uit de Hive-tabel:
@@ -525,7 +525,7 @@ Als u de opgeslagen gegevensset voor gebruik in een machine learning experiment 
 >
 >
 
-### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>Stap 2: een experiment maken in Azure Machine Learning om te voors pellen klikken/geen klikken
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> Stap 2: een experiment maken in Azure Machine Learning om te voors pellen klikken/geen klikken
 Onze Azure Machine Learning Studio (klassiek) experiment ziet er als volgt uit:
 
 ![Machine Learning experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -602,7 +602,7 @@ Dit fragment toont aan dat voor de kolommen die worden geteld op, de aantallen e
 
 U bent nu klaar om een Azure Machine Learning model te bouwen met behulp van deze getransformeerde gegevens sets. In de volgende sectie ziet u hoe dit kan worden gedaan.
 
-### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a>Stap 3: het model bouwen, trainen en beoordelen
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a> Stap 3: het model bouwen, trainen en beoordelen
 
 #### <a name="choice-of-learner"></a>Keuze van de kenniser
 Eerst moet u een leerer kiezen. Gebruik een geboostte beslissings structuur met twee klassen als onze kenniser. Dit zijn de standaard opties voor deze kenniser:
@@ -616,12 +616,12 @@ Voor training kunt u gewoon een **Train model** -module aanroepen. De twee ingan
 
 ![Train model-module](./media/hive-criteo-walkthrough/2bZDZTy.png)
 
-#### <a name="score-the-model"></a>Het model scoren
+#### <a name="score-the-model"></a>Het model beoordelen
 Zodra u een getraind model hebt, bent u klaar om de test gegevensset te beoordelen en de prestaties te evalueren. Doe dit met behulp van de module **score model** die in de volgende afbeelding wordt weer gegeven, samen met de module **Evaluate model** :
 
 ![De module Score Model (Scoremodel)](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step-4-evaluate-the-model"></a><a name="step4"></a>Stap 4: het model evalueren
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> Stap 4: het model evalueren
 Ten slotte moet u de model prestaties analyseren. Normaal gesp roken is een goede meting voor problemen met twee klasse (binaire)-classificatie de AUC. Als u deze curve wilt visualiseren, koppelt u de module **score model** aan een module **Evaluate model** . Als u op **visualiseren** in de module **Evaluate model** klikt, wordt er een afbeelding weer gegeven zoals in het volgende voor beeld:
 
 ![Het BDT-model van de module evalueren](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -630,7 +630,7 @@ In binaire classificatie problemen (of twee klassen) is een goede meting van de 
 
 ![Visualiseren-model module evalueren](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a>Stap 5: het model publiceren als een webservice
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> Stap 5: het model publiceren als een webservice
 De mogelijkheid om een Azure Machine Learning model te publiceren als webservices met een minimum van Fuss is een waardevol onderdeel om het algemeen beschikbaar te maken. Als dat is gebeurd, kan iedereen aanroepen naar de webservice met invoer gegevens waarvoor ze voor spellingen nodig hebben. de webservice gebruikt het model om deze voor spellingen te retour neren.
 
 Sla eerst ons getrainde model op als een getraind model object door met de rechter muisknop op de module **Train model** te klikken en de optie **Opslaan als opgeleid model** te gebruiken.
@@ -695,4 +695,3 @@ De standaard-API-sleutel is vervangen door de API-sleutel van onze webservice. A
 Voor de twee test voorbeelden die worden gevraagd in het schema van het python-script, krijgt u terug-antwoorden in de vorm ' gescoorde labels, gescoorde kansen '. In dit geval zijn de standaard waarden gekozen. de vooraf ingecheckte code levert (0 voor alle numerieke kolommen en de teken reeks "waarde" voor alle kolommen van categorische).
 
 In deze walkthrough ziet u hoe u met Azure Machine Learning een grootschalige gegevensset kunt verwerken. U bent begonnen met een terabyte aan gegevens, een Voorspellings model gemaakt en deze als een webservice in de Cloud geïmplementeerd.
-

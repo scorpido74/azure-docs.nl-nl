@@ -3,13 +3,13 @@ title: Azure service Health-waarschuwingen verzenden met ServiceNow
 description: Krijg persoonlijke meldingen over service status gebeurtenissen aan uw ServiceNow-exemplaar.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 68175dc17c1601eab097b94d4eefaa2706731f5c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307565"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met ServiceNow met behulp van webhooks
 
@@ -43,9 +43,9 @@ In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceN
 
     >[!NOTE]
     >U moet de `<secret>` `<group>` waarde, en `<email>` in het onderstaande script bijwerken.
-    >* `<secret>`moet een wille keurige teken reeks zijn, zoals een GUID
-    >* `<group>`moet de ServiceNow-groep waaraan u het incident wilt toewijzen
-    >* `<email>`moet de specifieke persoon waaraan u het incident wilt toewijzen (optioneel)
+    >* `<secret>` moet een wille keurige teken reeks zijn, zoals een GUID
+    >* `<group>` moet de ServiceNow-groep waaraan u het incident wilt toewijzen
+    >* `<email>` moet de specifieke persoon waaraan u het incident wilt toewijzen (optioneel)
     >
 
     ```javascript

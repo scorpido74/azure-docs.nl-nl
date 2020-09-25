@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336153"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -131,7 +131,7 @@ U kunt een *zip* -bestand voor een .net core Steeltoe-app niet uploaden met behu
 
 Wanneer u uw toepassings pakket implementeert met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), pollt de Azure cli regel matig de voortgang van de implementatie en wordt het resultaat weer gegeven in het einde.
 
-Zorg ervoor dat uw toepassing is ingepakt in de juiste *. zip* -bestands indeling. Als deze niet correct is verpakt, reageert het proces niet of wordt er een fout bericht weer gegeven.
+Zorg ervoor dat uw toepassing is ingepakt in de juiste *. zip* -bestands indeling. Als de app niet goed is verpakt, reageert het proces niet meer of ontvangt u een fout melding.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"

@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284479"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Release opmerkingen bij Azure SQL Edge 
 
@@ -23,17 +23,23 @@ In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke 
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>Buildnummer van SQL-engine-15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>Buildnummer van SQL-engine-15.0.2000.1552
 
 ### <a name="whats-new"></a>Wat is nieuw?
 1. Ubuntu-container installatie kopieën op basis van 18,04. 
 2. Ondersteuning voor `IGNORE NULL` en- `RESPECT NULL` syntaxis met `LAST_VALUE()` en- `FIRST_VALUE()` functies. 
 3. Verbetering van de betrouw baarheid voor voor SPELing met ONNX.
-4. Ondersteuning voor het opruimen van gegevens Bewaar beleid.      
-   - Ondersteuning voor geoptimaliseerde opschoning voor geclusterde column Store-indexen.
+4. Ondersteuning voor het opruimen van gegevens Bewaar beleid.
+   - Ondersteuning voor ring buffer voor het opruimen van Bewaar taken voor het oplossen van problemen.
 5. Ondersteuning voor nieuwe functies 
    - Snel herstel
    - Automatisch afstemmen van query's
+   - Parallelle uitvoerings scenario's inschakelen
+6. Energiebesparende verbeteringen voor de modus voor laag energie verbruik
+7. Ondersteuning voor streaming van nieuwe functies 
+   - [Snap shot-Vensters](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : het nieuwe venster type waarmee kan worden gegroepeerd op gebeurtenissen die op dezelfde tijd aankomen. 
+   - Schakel [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) en [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) in als analytische functie. Dit kan ertoe leiden dat records worden geretourneerd die zijn gesorteerd op basis van de kolom van uw keuze, zonder dat het nodig is om een deel van een venster te maken. 
+   - Verbeteringen in [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Oplossingen
 1. Aanvullende fout berichten en Details voor het oplossen van problemen met TSQL-streaming. 
@@ -41,9 +47,13 @@ In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke 
 3. Oplossingen voor TSQL Streaming-Engine: 
    - Taak voor gestopt streamen opschonen 
    - Oplossingen voor verbeteringen voor lokalisatie en Unicode-verwerking
+   - Verbetering van de fout opsporing voor Edge TSQL-streaming, waarmee gebruikers fouten in taken kunnen opvragen van get_streaming_job.
 4. Opschonen op basis van een beleid voor gegevens retentie
    - Oplossingen voor het maken en opschonen van Bewaar beleid.
 5. Oplossingen voor achtergrond timer taken om energie besparing te verbeteren voor de modus voor laag energie verbruik.
+
+### <a name="known-issues"></a>Bekende problemen 
+1. Date_Bucket T-SQL-functie kan niet worden gebruikt in een berekende kolom.
 
 
 ## <a name="ctp-23"></a>CTP 2,3

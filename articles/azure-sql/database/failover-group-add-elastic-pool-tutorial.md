@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335174"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -147,7 +147,7 @@ Maak uw failover-groep met behulp van de Azure Portal.
     - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial` .
     - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden voor de nieuwe secundaire server hebt ingevoerd, selecteert u **selecteren**.
         - **Server naam**: Typ een unieke naam voor de secundaire server, bijvoorbeeld `mysqlsecondary` .
-        - **Aanmelding van de server beheerder**: type`azureuser`
+        - **Aanmelding van de server beheerder**: type `azureuser`
         - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
         - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US` . Deze locatie mag niet dezelfde locatie zijn als de primaire server.
 
@@ -355,7 +355,7 @@ Resources opschonen door de resource groep te verwijderen.
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep.
-1. Selecteer **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
+1. Selecteer  **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
 1. Typ de naam van de resource groep, `myResourceGroup` in het tekstvak en selecteer vervolgens **verwijderen** om de resource groep te verwijderen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

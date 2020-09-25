@@ -3,7 +3,7 @@ title: Oracle Data Guard implementeren op een virtuele machine van Azure Linux |
 description: Profiteer snel van Oracle-gegevens beveiliging in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335898"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard implementeren op een virtuele machine van Azure Linux 
 
@@ -71,7 +71,7 @@ az vm availability-set create \
 
 Maak een VM met de opdracht [az vm create](/cli/azure/vm). 
 
-In het volgende voor beeld worden twee virtuele machines gemaakt met de naam `myVM1` en `myVM2` . Ook worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voor beeld worden twee virtuele machines gemaakt met de naam `myVM1` en `myVM2` . Er worden ook SSH-sleutels gemaakt, indien deze niet al op een standaardsleutellocatie aanwezig zijn. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 MyVM1 maken (primair):
 ```azurecli
@@ -85,7 +85,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Nadat u de virtuele machine hebt gemaakt, toont Azure CLI soort gelijke informatie als in het volgende voor beeld. Noteer de waarde van `publicIpAddress` . U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI soort gelijke informatie als in het volgende voor beeld. Noteer de waarde van `publicIpAddress` . Dit adres wordt gebruikt voor toegang tot de virtuele machine.
 
 ```output
 {
@@ -178,7 +178,7 @@ Schakel over naar de Oracle-super gebruiker:
 $ sudo su - oracle
 ```
 
-Maak de Data Base:
+Maak de database:
 
 ```bash
 $ dbca -silent \
