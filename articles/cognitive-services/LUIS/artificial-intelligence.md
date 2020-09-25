@@ -2,14 +2,16 @@
 title: Kunstmatige intelligentie (AI)
 description: LUIS maakt gebruik van kunst matige intelligentie (AI) om inzicht te krijgen in de taal van uw gegevens op basis van het schema dat u hebt gedefinieerd.
 ms.topic: conceptual
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327201"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Kunst matige intelligentie in Language Understanding (LUIS)
 
@@ -39,7 +41,7 @@ De verwerking van natuurlijke taal is op de volgende manieren beschikbaar voor u
 * Vóór of na het verwerken van de query utterance van andere [Cognitive Services](../Welcome.md) , zoals:
     * [Rekening](../translator/translator-info-overview.md)
 
-## <a name="natural-language-understanding-nlu"></a>Natuurlijk taal memorandum (NLU)
+## <a name="natural-language-understanding-nlu"></a>NLU (natuurlijk taalbegrip)
 
 NLU is de mogelijkheid om een taal kundige verklaring te _Transformeren_ naar een representatie waarmee u uw gebruikers op natuurlijke wijze kunt begrijpen. In natuurlijke taal is er een probleem met de meeste problemen en wordt gedefinieerd als een _AI-hard_ probleem.
 

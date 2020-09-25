@@ -4,16 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b8cbbbb24293a3ae931a55299a3a97411e74c910
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326902"
 ---
+Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
+
+* Omzetten van spraak naar tekst
+* Spraak omzetten naar meerdere doel talen
+* Direct omzetten van spraak naar spraak uitvoeren
+
+## <a name="skip-to-samples-on-github"></a>Overs laan voor voor beelden op GitHub
+
+Als u direct naar voorbeeld code wilt overs Laan, raadpleegt u de voor [beelden van C++ Quick](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/translate-speech-to-text) start op github.
+
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
@@ -48,19 +58,19 @@ auto SPEECH__SERVICE__REGION = getenv("SPEECH__SERVICE__REGION");
 
 ## <a name="create-a-speech-translation-configuration"></a>Een configuratie voor spraak omzetting maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechTranslationConfig`][config] . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechTranslationConfig`][config] maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!TIP]
-> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
 
-Er zijn een paar manieren waarop u een kunt initialiseren [`SpeechTranslationConfig`][config] :
+Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config] kunt initialiseren:
 
-* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
-* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
-* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
-* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
+* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+* Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
+* Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
+* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -78,9 +88,9 @@ int main(int argc, char** argv) {
 }
 ```
 
-## <a name="change-source-language"></a>Bron taal wijzigen
+## <a name="change-source-language"></a>Brontaal wijzigen
 
-Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. In uw code communiceert u met het [`SpeechTranslationConfig`][config] exemplaar en roept u de- `SetSpeechRecognitionLanguage` methode aan.
+Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. In uw code communiceert u met het [`SpeechTranslationConfig`][config] exemplaar en roept u de- `SetSpeechRecognitionLanguage` methode aan.
 
 ```cpp
 void translateSpeech() {
@@ -92,7 +102,7 @@ void translateSpeech() {
 }
 ```
 
-De [`SpeechRecognitionLanguage`][recognitionlang] eigenschap verwacht een indelings teken reeks voor taal-land instellingen. U kunt elke waarde in de kolom **land instelling** opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
+De eigenschap [`SpeechRecognitionLanguage`][recognitionlang] verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
 
 ## <a name="add-translation-language"></a>Vertaal taal toevoegen
 
@@ -115,9 +125,9 @@ Bij elke aanroep van [`AddTargetLanguage`][addlang] wordt een nieuwe doel taal v
 
 ## <a name="initialize-a-translation-recognizer"></a>Een omzettings herkenning initialiseren
 
-Nadat u een hebt gemaakt [`SpeechTranslationConfig`][config] , is de volgende stap het initialiseren van een [`TranslationRecognizer`][recognizer] . Wanneer u een initialiseert [`TranslationRecognizer`][recognizer] , moet u het door geven aan uw `translationConfig` . Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
+Nadat u een [`SpeechTranslationConfig`][config] hebt gemaakt, is de volgende stap het initialiseren van een [`TranslationRecognizer`][recognizer]. Wanneer u een [`TranslationRecognizer`][recognizer] initialiseert, moet u er uw `translationConfig` aan doorgeven. Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
 
-Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`TranslationRecognizer`][recognizer] volgende:
+Als u spraak wilt herkennen met de standaardmicrofoon van uw apparaat, ziet u hier hoe de [`TranslationRecognizer`][recognizer] eruit moet zien:
 
 ```cpp
 void translateSpeech() {
@@ -135,10 +145,10 @@ void translateSpeech() {
 }
 ```
 
-Als u het audio-invoer apparaat wilt opgeven, moet u een maken [`AudioConfig`][audioconfig] en de `audioConfig` para meter opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer] .
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`][audioconfig] maken en de parameter `audioConfig` opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer].
 
 > [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
+> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
 
 Eerst verwijst u `AudioConfig` als volgt naar het object:
 
@@ -159,7 +169,7 @@ void translateSpeech() {
 }
 ```
 
-Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een opgeven `audioConfig` . Wanneer u echter een maakt [`AudioConfig`][audioconfig] in plaats van het aanroepen van `FromDefaultMicrophoneInput` , roept u `FromWavFileInput` de para meter op en geeft u deze door `filename` .
+Als u een audiobestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig` opgeven. Wanneer u echter een [`AudioConfig`][audioconfig] maakt in plaats van `FromDefaultMicrophoneInput` aan te roepen, roept u `FromWavFileInput` aan en geeft u de parameter `filename` door.
 
 ```cpp
 void translateSpeech() {

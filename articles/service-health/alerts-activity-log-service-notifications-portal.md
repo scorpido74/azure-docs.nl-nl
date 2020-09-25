@@ -1,14 +1,14 @@
 ---
 title: Waarschuwingen voor activiteiten logboeken ontvangen op Azure-service meldingen met behulp van Azure Portal
-description: Ontvang een melding via SMS, e-mail of webhook wanneer de Azure-service wordt uitgevoerd.
+description: Meer informatie over het gebruik van de Azure Portal voor het instellen van waarschuwingen voor activiteiten logboeken voor service status meldingen met behulp van de Azure Portal.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499257"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289783"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Waarschuwingen voor activiteiten logboeken maken voor service meldingen met behulp van de Azure Portal
 ## <a name="overview"></a>Overzicht

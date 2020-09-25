@@ -1,16 +1,16 @@
 ---
 title: Netwerk beveiliging voor Azure Event Grid bronnen
-description: In dit artikel wordt beschreven hoe u toegang kunt configureren vanaf privé-eind punten
+description: In dit artikel wordt beschreven hoe u service tags gebruikt voor uitgaand verkeer, IP-firewall regels voor binnenkomend en privé-eind punten voor ingangs gegevens met Azure Event Grid.
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326453"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Grid: 
@@ -25,7 +25,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **AzureEventGrid**) op te geven in het juiste *bron*-   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
 | AzureEventGrid | Azure Event Grid. | Beide | Nee | Nee |
 
