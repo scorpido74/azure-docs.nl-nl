@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284105"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Detecteer bare typen query prestaties knelpunten in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -58,7 +58,7 @@ Een suboptimaal plan dat door SQL query Optimizer wordt gegenereerd, kan de oorz
 
 In de volgende secties wordt beschreven hoe u query's kunt oplossen met een suboptimaal query-uitvoerings plan.
 
-### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a>Query's met parameter gevoelige plan problemen (PSP)
+### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a> Query's met parameter gevoelige plan problemen (PSP)
 
 Er treedt een fout op in het parameter gevoelige plan (PSP) wanneer het query optimalisatie programma een query-uitvoerings plan genereert dat optimaal is voor een specifieke parameter waarde (of een set waarden) en het schema in de cache vervolgens niet optimaal is voor parameter waarden die in opeenvolgende uitvoeringen worden gebruikt. Plannen die niet optimaal zijn, kunnen vervolgens problemen met de prestaties van query's veroorzaken en de door Voer van de algehele werk belasting verminderen.
 

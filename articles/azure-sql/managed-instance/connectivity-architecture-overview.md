@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283374"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteitsarchitectuur van Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ Sommige bewerkingen die door eind gebruikers of toepassingen worden gestart, heb
 
 SQL Managed instance is afhankelijk van Azure-Services zoals Azure Storage voor back-ups, Azure Event Hubs voor telemetrie, Azure Active Directory (Azure AD) voor verificatie, Azure Key Vault voor Transparent Data Encryption (TDE) en een aantal Azure-platform services die functies voor beveiliging en ondersteuning bieden. Met SQL Managed instance worden verbindingen met deze services gemaakt.
 
-Alle communicaties zijn versleuteld en ondertekend met behulp van certificaten. Om de betrouw baarheid van communicatie partijen te controleren, controleert SQL Managed instance voortdurend deze certificaten via certificaatintrekkingslijsten. Als de certificaten zijn ingetrokken, sluit SQL Managed instance de verbindingen voor het beveiligen van de gegevens.
+Alle communicatie wordt versleuteld en ondertekend met behulp van certificaten. Om de betrouw baarheid van communicatie partijen te controleren, controleert SQL Managed instance voortdurend deze certificaten via certificaatintrekkingslijsten. Als de certificaten zijn ingetrokken, sluit SQL Managed instance de verbindingen voor het beveiligen van de gegevens.
 
 ## <a name="high-level-connectivity-architecture"></a>Connectiviteits architectuur op hoog niveau
 
@@ -111,7 +111,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -121,7 +121,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -331,15 +331,15 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
+|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Elk              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 |health_probe|Alle                         |Alle     |AzureLoadBalancer|MI-SUBNET  |Toestaan |
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |

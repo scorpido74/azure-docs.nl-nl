@@ -80,7 +80,7 @@
     - name: Gegevens exporteren
       expanded: false
       items:
-        - name: Niet-geïdentificeerde export
+        - name: Gegevens exporteren
           href: export-data.md
     - name: ID's van identiteitsobjecten vinden
       href: find-identity-object-ids.md

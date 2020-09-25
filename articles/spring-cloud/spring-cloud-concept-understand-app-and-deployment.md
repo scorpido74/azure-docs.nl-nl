@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323634"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Meer informatie over app en implementatie in azure lente Cloud
 
-**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 **App** en **implementatie** zijn de twee belang rijke concepten in het resource model van Azure lente Cloud. In azure lente Cloud is een *app* een abstractie van één zakelijke app of een micro service.  Een versie van code of binair wordt geïmplementeerd als de *app* wordt uitgevoerd in een *implementatie*.  Apps worden uitgevoerd in een *Azure lente-Cloud service-exemplaar*of gewoon *service-exemplaar*, zoals hieronder wordt weer gegeven.
 
@@ -29,11 +29,11 @@ In de Cloud Standard-laag van Azure lente kan één app één productie-implemen
 ## <a name="app"></a>App
 De volgende functies/eigenschappen worden gedefinieerd op app-niveau.
 
-| Enum | Definitie |
+| Functies | Beschrijving |
 |:--|:----------------|
 | Openbaar</br>Eindpunt | De URL voor toegang tot de app |
 | Aangepast</br>Domain | CNAME-record dat het aangepaste domein beveiligt |
-| Service</br>Binding | Eigenschappen van bindings configuratie die zijn ingesteld in de function.jsvoor het bestand en het kenmerk *ServiceBusTrigger* |
+| Service</br>Binding | Out-of-Box-verbinding met andere Azure-Services |
 | Beheerd</br>Identiteit | Met beheerde identiteit door Azure Active Directory kan uw app eenvoudig toegang krijgen tot andere met Azure AD beveiligde resources, zoals Azure Key Vault |
 | Permanent</br>Storage | Instelling die ervoor zorgt dat gegevens behouden blijven na het opnieuw opstarten van de app |
 
@@ -41,14 +41,14 @@ De volgende functies/eigenschappen worden gedefinieerd op app-niveau.
 
 De volgende functies/eigenschappen worden gedefinieerd op implementatie niveau en worden uitgewisseld bij het wisselen van productie-en faserings implementatie.
 
-| Enum | Definitie |
+| Functies | Beschrijving |
 |:--|:----------------|
 | CPU | Aantal vcores per app-exemplaar |
-| Geheugen | Instelling die geheugen toewijst om implementaties omhoog of uit te schalen |
+| Geheugen | GB aan geheugen per app-exemplaar|
 | Exemplaar</br>Aantal | Het aantal app-exemplaren, hand matig of automatisch instellen |
 | Automatisch schalen | Aantal exemplaren automatisch schalen op basis van vooraf gedefinieerde regels en schema's |
-| JVM</br>Opties | instelling: JAVA_OPTS |
-| Omgeving</br>Variabelen | Instellingen die van toepassing zijn op de volledige Azure veer-cloud omgeving |
+| JVM</br>Opties | Opties voor JVM instellen  |
+| Omgeving</br>Variabelen | Omgevings variabelen instellen |
 | Runtime</br>Versie | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Beperkingen

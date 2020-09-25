@@ -1,14 +1,16 @@
 ---
 title: Voor beeld van een label entiteit utterance
 description: Meer informatie over het labelen van een machine learning-entiteit met subentiteiten in een voor beeld van een utterance op een pagina met details van de LUIS-Portal.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303723"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Label machine-learning-entiteit in een voor beeld-utterance
 
@@ -22,7 +24,7 @@ Omdat u geen reguliere expressie, lijst of vooraf gedefinieerde entiteiten kunt 
 
 Als u voor beelden wilt van entiteiten in de utterance, selecteert u de intentie van de utterance.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer de intentie met het voor beeld uitingen dat u wilt labelen voor extractie met een entiteit.
 1. Selecteer de tekst die u wilt labelen en selecteer vervolgens de entiteit.
@@ -53,7 +55,7 @@ Het entiteits palet biedt een alternatief voor de vorige label ervaring. Hiermee
 3. In het voor beeld utterance _tekent_ u de entiteit met de cursor.
 
     > [!div class="mx-imgBorder"]
-    > ![Het palet van de entiteit voor de machine learning-entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![Scherm afbeelding toont de entiteit die met de cursor is getekend.](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Entiteit toevoegen als een functie uit het entiteits palet
 

@@ -7,6 +7,10 @@
       items:
         - name: Wat is Azure Stack Edge Pro met GPU?
           href: azure-stack-edge-gpu-overview.md
+    - name: Snelstartgidsen
+      items:
+        - name: Aan de slag
+          href: azure-stack-edge-gpu-quickstart.md
     - name: Zelfstudies
       items:
         - name: 0 - Controlelijst verkrijgen

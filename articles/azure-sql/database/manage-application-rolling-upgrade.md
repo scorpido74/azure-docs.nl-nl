@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334880"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Rolling upgrades van Cloud toepassingen beheren door gebruik te maken van SQL Database actieve geo-replicatie
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Om deze doel stellingen te bereiken, kunt u, naast het gebruik van de Web Apps o
 * De primaire data base in de primaire regio (2)
 * Een stand-by-exemplaar van de web-app in de back-upregio (3)
 * De geo-gerepliceerde secundaire data base in de back-upregio (4)
-* Een Traffic Manager prestatie profiel met een online eind punt met de naam `contoso-1.azurewebsites.net` en een offline-eind punt met de naam`contoso-dr.azurewebsites.net`
+* Een Traffic Manager prestatie profiel met een online eind punt met de naam `contoso-1.azurewebsites.net` en een offline-eind punt met de naam `contoso-dr.azurewebsites.net`
 
 Om het mogelijk te maken om de upgrade te herstellen, moet u een faserings omgeving maken met een volledig gesynchroniseerde kopie van de toepassing. Omdat u er zeker van wilt zijn dat de toepassing snel kan worden hersteld wanneer er tijdens het upgrade proces een onherstelbare fout optreedt, moet de faserings omgeving ook geografisch redundant zijn. De volgende stappen zijn vereist voor het maken van een faserings omgeving voor de upgrade:
 

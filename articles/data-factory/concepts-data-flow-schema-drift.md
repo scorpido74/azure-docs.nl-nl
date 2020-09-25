@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324345"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
 
@@ -60,7 +60,7 @@ Als schema-drift is ingeschakeld, zorgt u ervoor dat de schuif regelaar **automa
 Wanneer de gegevens stroom een geplaatste kolom heeft, kunt u deze in uw trans formaties gebruiken met de volgende methoden:
 
 * Gebruik de `byPosition` and- `byName` expressies om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
-* Een kolom patroon toevoegen aan een afgeleide kolom of aggregatie transformatie die overeenkomt met een combi natie van naam, stroom, positie of type
+* Een kolom patroon toevoegen aan een afgeleide kolom of aggregatie transformatie die overeenkomt met een combi natie van naam, stroom, positie, oorsprong of type
 * Op een regel gebaseerde toewijzing in een SELECT-of sink-trans formatie toevoegen om gedrijfte kolommen te vergelijken met kolommen aliassen via een patroon
 
 Zie voor meer informatie over het implementeren van kolom patronen [kolom patronen in gegevens stroom toewijzen](concepts-data-flow-column-pattern.md).

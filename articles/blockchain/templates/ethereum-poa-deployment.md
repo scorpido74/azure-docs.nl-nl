@@ -4,13 +4,13 @@ description: Gebruik de Ethereum proof-of-Authority consortium-oplossing voor he
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283425"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -27,7 +27,7 @@ Voordat u kiest voor het gebruik van de sjabloon Ethereum proof-of-Authority con
 > [!IMPORTANT]
 > U kunt overwegen de [Azure Block Chain-Service](../service/overview.md) te gebruiken in plaats van de Ethereum op de Azure-oplossings sjabloon. De Azure Block Chain-service is een ondersteunde beheerde Azure-service. Pariteit Ethereum overgang naar gestuurde ontwikkeling en onderhoud door de community. Zie [overstappen op pariteit Ethereum naar OPENETHEREUM DAO](https://www.parity.io/parity-ethereum-openethereum-dao/)voor meer informatie.
 
-Optie | Service model | Algemene use-case
+Optie | Service model | Algemeen scenario
 -------|---------------|-----------------
 Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [Microsoft Q&A-vragenpagina](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 [Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
@@ -99,7 +99,7 @@ Verificatietype | De methode voor verificatie bij de virtuele machine. | Wachtwo
 Wachtwoord | Het wacht woord voor het beheerders account voor elk van de virtuele machines die zijn geïmplementeerd. Alle Vm's hebben in eerste instantie hetzelfde wacht woord. U kunt het wacht woord na het inrichten wijzigen. | 12-72 tekens 
 Abonnement | Het abonnement waarop het consortium netwerk moet worden geïmplementeerd |
 Resourcegroep| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
-Locatie | De Azure-regio voor de resource groep. | VS - west 2
+Locatie | De Azure-regio voor de resource groep. | West US 2
 
 Selecteer **OK**.
 
@@ -112,7 +112,7 @@ Geef onder *implementatie regio's*het aantal regio's en locaties voor elk op. U 
 Parameter | Beschrijving | Voorbeeldwaarde
 ----------|-------------|--------------
 Aantal regio's|Aantal regio's voor de implementatie van het consortium netwerk| 2
-Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | VS - west 2
+Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | West US 2
 Tweede regio | Tweede regio voor het implementeren van het consortium netwerk. Extra regio's zijn zichtbaar wanneer het aantal regio's twee of meer is. | VS - oost 2
 
 Selecteer **OK**.

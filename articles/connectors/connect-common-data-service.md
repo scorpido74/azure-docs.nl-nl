@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334579"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Records in Common Data Service maken en beheren met behulp van Azure Logic Apps
 
@@ -51,9 +51,9 @@ Voor dit voor beeld voegt u de trigger Common Data Service toe die wordt geactiv
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Omgeving** | Ja | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](/power-platform/admin/environments-overview)voor meer informatie. |
-   | **Naam van entiteit** | Ja | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
-   | **Bereik** | Ja | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
+   | **Omgeving** | Yes | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](/power-platform/admin/environments-overview)voor meer informatie. |
+   | **Naam van entiteit** | Yes | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
+   | **Bereik** | Yes | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service actie toevoegen
@@ -72,8 +72,8 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam van organisatie** | Ja | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
-   | **Naam van entiteit** | Ja | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
+   | **Naam van organisatie** | Yes | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
+   | **Naam van entiteit** | Yes | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
    | **Onderwerp** | Ja, op basis van de entiteit die in dit voor beeld is geselecteerd | Een korte beschrijving van de doel stelling voor deze taak |
    ||||
 
@@ -108,7 +108,7 @@ Voor triggers die worden uitgevoerd wanneer records worden bijgewerkt, zoals de 
 
 1. Selecteer **kenmerk filters**in de lijst **nieuwe para meter toevoegen** van de trigger.
 
-   ![Eigenschap attribute filters toevoegen](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![Scherm afbeelding met de actie ' wanneer een record wordt bijgewerkt ' en de lijst ' nieuwe para meter toevoegen ' met de eigenschap ' attribute filters ' geselecteerd.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. Selecteer voor elk **item kenmerk filters**het kenmerk dat u wilt controleren op updates, bijvoorbeeld:
 
@@ -122,7 +122,7 @@ Voor acties die records retour neren, zoals de actie **records weer** geven, kun
 
    ![De eigenschap filter query toevoegen](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. Voer in de **filter query** -eigenschap die nu wordt weer gegeven in de actie deze ODATA-filter query in:`statuscode eq 1`
+1. Voer in de **filter query** -eigenschap die nu wordt weer gegeven in de actie deze ODATA-filter query in: `statuscode eq 1`
 
    ![ODATA-filter query voor het filteren van records invoeren](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
@@ -136,7 +136,7 @@ Voor acties die records retour neren, zoals de actie **records lijst** , kunt u 
 
    ![Eigenschap Order by toevoegen](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. Voer in de eigenschap **order by** die nu wordt weer gegeven in de actie deze ODATA-filter query in:`name`
+1. Voer in de eigenschap **order by** die nu wordt weer gegeven in de actie deze ODATA-filter query in: `name`
 
    ![ODATA-filter query voor het ordenen van records invoeren](./media/connect-common-data-service/list-records-action-order-by-value.png)
 

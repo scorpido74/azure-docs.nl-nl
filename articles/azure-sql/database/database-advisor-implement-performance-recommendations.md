@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284357"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Aanbevelingen voor Database Advisor prestaties voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,9 +84,9 @@ Aanbevelingen voor *para meters-query's* worden weer gegeven wanneer u een of me
 
 Elke query moet eerst worden gecompileerd om een uitvoerings plan te genereren. Elk gegenereerd plan wordt toegevoegd aan de plannings cache. Volgende uitvoeringen van dezelfde query kunnen dit plan opnieuw gebruiken uit de cache, waardoor er geen verdere compilatie meer nodig is.
 
-Query's met niet-geparametriseerde waarden kunnen leiden tot prestatie overhead, omdat het uitvoerings plan opnieuw wordt gecompileerd telkens wanneer de niet-geparametriseerde waarden verschillend zijn. In veel gevallen genereren dezelfde query's met verschillende parameter waarden dezelfde uitvoerings plannen. Deze plannen worden echter nog steeds afzonderlijk toegevoegd aan de plannings cache.
+Query's met waarden zonder parameters kunnen leiden tot prestatie-overhead, omdat het uitvoeringsplan opnieuw wordt gecompileerd telkens wanneer de waarden zonder parameters verschillend zijn. In veel gevallen genereren dezelfde query's met verschillende parameterwaarden dezelfde uitvoeringsplannen. Deze plannen worden echter nog steeds afzonderlijk toegevoegd aan de plancache.
 
-Het proces van het opnieuw compileren van uitvoerings plannen maakt gebruik van database resources, verhoogt de duur van de query en overschrijdt de plannings cache. Deze gebeurtenissen zorgen ervoor dat er op zijn beurt plannen uit de cache worden verwijderd. Dit gedrag kan worden gewijzigd door de optie geforceerde parameterisering in de data base in te stellen.
+Het proces van het opnieuw compileren van uitvoeringsplannen maakt gebruik van databaseresources, verhoogt de duur van de query en overschrijdt de plancache. Deze gebeurtenissen zorgen ervoor dat er plannen uit de cache worden verwijderd. Dit gedrag kan worden gewijzigd door de optie geforceerde parameterisering in de data base in te stellen.
 
 Om u te helpen bij het schatten van de impact van deze aanbeveling, krijgt u een vergelijking van het werkelijke CPU-gebruik en het verwachte CPU-gebruik (alsof de aanbeveling is toegepast). Deze aanbeveling kan u helpen CPU-besparingen te realiseren. Het kan ook helpen de duur en overhead van de query te verlagen voor de plannings cache, wat betekent dat meer van de plannen in de cache kunnen blijven en opnieuw worden gebruikt. U kunt deze aanbeveling snel Toep assen door de opdracht **Toep assen** te selecteren.
 

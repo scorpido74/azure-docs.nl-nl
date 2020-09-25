@@ -1,14 +1,16 @@
 ---
 title: Doorlopende werk stromen voor LUIS-apps
 description: CI/CD-werk stromen implementeren voor DevOps voor Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324804"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continue integratie en doorlopende leverings werk stromen voor LUIS DevOps
 

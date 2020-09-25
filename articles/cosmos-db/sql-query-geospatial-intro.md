@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302928"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
 
@@ -164,7 +164,7 @@ Een **multiveelhoek** is een matrix met nul of meer veelhoeken. **Multiveelhoeke
 
 Omdat de vorm van de aarde onregelmatig is, worden coördinaten van georuimtelijke gegevens weer gegeven in veel coördinaten referentie systemen (CRS), elk met hun eigen frames van referentie-en meet eenheden. Bijvoorbeeld, het ' National Grid of UK ' is een referentie systeem is nauw keurig voor het Verenigd Konink rijk, maar niet buiten het.
 
-Het populairste CRS dat momenteel wordt gebruikt, is de World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS-apparaten en veel toewijzings Services, waaronder Google Maps en Bing Maps-Api's, gebruiken WGS-84. Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke gegevens op geografische locatie alleen met behulp van de WGS-84-CRS.
+Het populairste CRS dat momenteel wordt gebruikt, is de World Geodetic System  [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS-apparaten en veel toewijzings Services, waaronder Google Maps en Bing Maps-Api's, gebruiken WGS-84. Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke gegevens op geografische locatie alleen met behulp van de WGS-84-CRS.
 
 ## <a name="creating-documents-with-spatial-data"></a>Documenten maken met ruimtelijke gegevens
 Wanneer u documenten maakt die geojson-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexerings beleid van de container. Als u werkt met een Azure Cosmos DB SDK in een dynamisch getypeerde taal, zoals python of Node.js, moet u een geldige geojson maken.

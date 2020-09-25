@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255237"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
@@ -56,7 +56,7 @@ Er wordt één adres gebruikt voor elk exemplaar van het abonnement. Als u uw ap
 
 Als u wilt dat uw apps in een ander abonnement een VNet bereiken dat al is verbonden met apps in een ander abonnement, selecteert u een ander subnet dan het subnetwerk dat wordt gebruikt door de bestaande VNet-integratie.
 
-De functie wordt volledig ondersteund voor Windows-en Linux-web-apps. Alle gedragingen handelen hetzelfde tussen Windows-apps en Linux-apps.
+De functie wordt volledig ondersteund voor zowel Windows-als Linux-apps, waaronder [aangepaste containers](../articles/app-service/quickstart-custom-container.md). Alle gedragingen handelen hetzelfde tussen Windows-apps en Linux-apps.
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 

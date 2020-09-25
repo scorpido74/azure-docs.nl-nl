@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 6f1199b29e3bdaa2200aeb7fe4f76c4c9d0d8e19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324260"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Release opmerkingen voor Azure Stack Edge Pro met GPU-algemene Beschik baarheid (GA)
 
@@ -21,11 +21,9 @@ In de volgende release opmerkingen worden de essentiële openstaande problemen e
 
 De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Azure Stack Edge Pro-apparaat implementeert.
 
-Dit artikel is van toepassing op de **Azure stack Edge Pro 2009** -software release. 
+Dit artikel is van toepassing op de **Azure stack Edge Pro 2009** -release die wordt toegewezen aan het software versie nummer **2.1.1358.2075**.
 
-<!--- This software release corresponds to software version number **2.1.1328.1904**-->
-
-## <a name="whats-new"></a>Wat is er nieuw?
+## <a name="whats-new"></a>Nieuwe functies
 
 De volgende nieuwe functies zijn beschikbaar in de Azure Stack Edge 2009-release. 
 

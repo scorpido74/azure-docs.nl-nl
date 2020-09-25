@@ -3,12 +3,12 @@ title: Een Knowledge Base bewerken-QnA Maker
 description: Met QnA Maker kunt u de inhoud van uw Knowledge Base beheren door een gebruiks vriendelijke ervaring te bieden.
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34eec343defa4614881e23543f2099040b866997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324617"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-paren in uw Knowledge Base bewerken
 
@@ -72,7 +72,7 @@ Met RTF-bewerking van uw antwoord tekst kunt u de opmaak van een eenvoudige werk
 
 
     > [!div class="mx-imgBorder"]
-    > ![Gebruik de RTF-editor om een openbaar toegankelijke afbeelding en de bijbehorende ALT-tekst toe te voegen.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![Scherm afbeelding toont de in-place editor met de URL voor de open bare afbeelding en de alternatieve tekst voor de ingevoerde afbeelding.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. Voeg een koppeling naar een URL toe door de tekst in het antwoord te selecteren en vervolgens het koppelings pictogram op de werk balk te selecteren of door het koppelings pictogram in de werk balk te selecteren en vervolgens nieuwe tekst en de URL in te voeren.
 
@@ -113,8 +113,8 @@ U kunt geen QnA-paren koppelen in de meta gegevens van het antwoord.
 Voeg eerst de **Opties voor**het toevoegen van meta gegevens toe, en selecteer vervolgens **meta gegevens weer geven**. Hiermee wordt de kolom meta gegevens weer gegeven. Selecteer vervolgens het **+** teken om een meta gegevens paar toe te voegen. Dit paar bestaat uit één sleutel en één waarde.
 
 Meer informatie over meta gegevens vindt u in de QnA Maker portal voor meta gegevens:
-* [Ontwerpen: meta gegevens toevoegen aan QnA-paar](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
-* [Query's voor voor spelling-antwoorden filteren op meta gegevens](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
+* [Creatie: metagegevens toevoegen aan QnA-paar](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Queryvoorspelling: antwoorden filteren op metagegevens](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Wijzigingen in de QnA-paren opslaan
 

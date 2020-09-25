@@ -1,15 +1,17 @@
 ---
 title: Aanbevolen procedures voor het bouwen van uw LUIS-app
 description: Meer informatie over de aanbevolen procedures voor het verkrijgen van de beste resultaten van het model van uw LUIS-app.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6ab7b8db3e1bc1b1134c0e7ab6c14bd17f819935
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324872"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Aanbevolen procedures voor het bouwen van een LUIS-app (Language memorandum)
 Gebruik het ontwerp proces voor apps om uw LUIS-app te bouwen:
@@ -65,7 +67,7 @@ Bekijk het volgende voor beeld uitingen:
 |Een vlucht boeken|
 |Een hotel boeken|
 
-`Book a flight`en `Book a hotel` gebruiken dezelfde woorden lijst van `book a ` . Deze indeling is hetzelfde, zodat deze hetzelfde doel moet zijn met de verschillende woorden van `flight` en `hotel` als geëxtraheerde entiteiten.
+`Book a flight` en `Book a hotel` gebruiken dezelfde woorden lijst van `book a ` . Deze indeling is hetzelfde, zodat deze hetzelfde doel moet zijn met de verschillende woorden van `flight` en `hotel` als geëxtraheerde entiteiten.
 
 ## <a name="do-add-features-to-intents"></a>Functies toevoegen aan intenties
 

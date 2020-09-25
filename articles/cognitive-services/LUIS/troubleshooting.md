@@ -1,15 +1,17 @@
 ---
 title: Veelgestelde vragen (FAQ)-LUIS
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff7beff6682d594f9b9fc1901d396d29028ec989
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054828"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334698"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s) over Language Understanding
 
@@ -78,7 +80,7 @@ Meer informatie over [fouten](luis-how-to-manage-versions.md#import-errors)bij h
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hoe kan ik deel nemers toegang geven tot LUIS met Azure Active Directory (Azure AD) of op rollen gebaseerd toegangs beheer (RBAC)?
 
-Zie [Azure Active Directory resources](luis-how-to-collaborate.md#azure-active-directory-resources) en [Azure Active Directory Tenant gebruiker](luis-how-to-collaborate.md#azure-active-directory-tenant-user) voor meer informatie over hoe u samen werkers toegang kunt verlenen.
+Zie [Azure Active Directory resources](luis-how-to-collaborate.md#azure-active-directory-resources)  en [Azure Active Directory Tenant gebruiker](luis-how-to-collaborate.md#azure-active-directory-tenant-user) voor meer informatie over hoe u samen werkers toegang kunt verlenen.
 
 <a name="luis-endpoint"></a>
 
@@ -267,7 +269,7 @@ De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
 Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen.
+* `Out of call volume quota. Quota will be replenished in <time>.` : Dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem in Azure Bot Service oplossen
 

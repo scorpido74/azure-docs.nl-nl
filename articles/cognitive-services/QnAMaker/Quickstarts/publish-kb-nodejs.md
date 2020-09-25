@@ -3,14 +3,14 @@ title: "Snelstartgids: QnA Maker met REST-Api's voor Node.js"
 description: In deze Quick start ziet u hoe u aan de slag gaat met de QnA Maker REST Api's voor Node.js. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, devx-track-javascript
+ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324600"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Snelstartgids: QnA Maker REST-Api's voor Node.js
 

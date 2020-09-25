@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283816"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Waarschuwingen maken voor Azure SQL Managed instance met behulp van de Azure Portal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In dit artikel wordt beschreven hoe u waarschuwingen instelt voor data bases in Azure SQL Managed instance data base met behulp van de Azure Portal. Waarschuwingen kunnen u een e-mail bericht sturen, een webhook aanroepen, Azure function uitvoeren, runbook, een extern ITSM-compatibel ticket systeem aanroepen, u bellen op de telefoon of een SMS-bericht verzenden wanneer bepaalde metrische gegevens, zoals bijvoorbeeld de opslag grootte van het exemplaar of het CPU-gebruik, een vooraf gedefinieerde drempel waarde hebben bereikt. Dit artikel bevat ook aanbevolen procedures voor het instellen van waarschuwings perioden.
+In dit artikel wordt beschreven hoe u waarschuwingen instelt voor data bases in Azure SQL Managed instance data base met behulp van de Azure Portal. Met waarschuwingen kan een e-mailbericht worden gestuurd, een webhook aangeroepen, een Azure-functie of runbook uitgevoerd, een extern, met ITSM compatibel ticketsysteem aangeroepen, kunt u via de telefoon worden gebeld of een sms-bericht worden toegezonden wanneer bepaalde metrische gegevens, zoals bijvoorbeeld de opslaggrootte van het exemplaar of het CPU-gebruik, een vooraf gedefinieerde drempelwaarde bereikt. Dit artikel bevat ook aanbevolen procedures voor het instellen van waarschuwings perioden.
 
 
 ## <a name="overview"></a>Overzicht
@@ -56,7 +56,7 @@ De volgende metrische gegevens over beheerde exemplaren zijn beschikbaar voor co
 | Gelezen IO-bytes | I/o-bytes in de geselecteerde tijds periode gelezen. | Bytes |
 | Geschreven IO-bytes | I/o bytes geschreven in de geselecteerde tijds periode. | Bytes |
 | Aantal i/o-aanvragen | Aantal i/o-aanvragen in de geselecteerde tijds periode. | Cijfer |
-| Gereserveerde opslag ruimte | Huidige Max. de opslag ruimte die is gereserveerd voor het beheerde exemplaar. Wijzigingen met de bewerking voor het schalen van resources. | MB (mega bytes) |
+| Gereserveerde opslag ruimte | Huidige Max. opslag ruimte die is gereserveerd voor het beheerde exemplaar. Wijzigingen met de bewerking voor het schalen van resources. | MB (mega bytes) |
 | Gebruikte opslag ruimte | De opslag ruimte die in de geselecteerde periode is gebruikt. Wijzigingen met opslag verbruik door data bases en het exemplaar. | MB (mega bytes) |
 | Aantal virtuele kernen | vCores ingericht voor het beheerde exemplaar. Wijzigingen met de bewerking voor het schalen van resources. | 4-80 (vCores) |
 

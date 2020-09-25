@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 21239d868213df5d3208b8c790c67d675928d98a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283765"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Beheerde API-verwijzing voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -86,7 +86,7 @@ Als u exemplaar databases wilt maken en configureren nadat het beheerde exemplaa
 | Opdracht | Beschrijving |
 | --- | --- |
 |[DATA BASE MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|Hiermee maakt u een nieuwe instantie database in een SQL-beheerd exemplaar. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
-| [DATABASE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Hiermee wijzigt u een exemplaar database in een SQL Managed instance.|
+| [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Hiermee wijzigt u een exemplaar database in een SQL Managed instance.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: beheerde instanties maken en configureren
 

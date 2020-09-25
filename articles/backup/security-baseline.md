@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334834"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -252,9 +252,9 @@ U kunt ook een Log Analytics werk ruimte onboarden naar Azure Sentinel, aangezie
 
 Ondersteunende documentatie:
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center bewaking**: Ja
 
@@ -410,7 +410,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -760,9 +760,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -914,7 +914,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 **Richt lijnen**: het herstellen van back-ups van door de klant beheerde sleutels testen.
 
-- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center bewaking**: niet van toepassing
 

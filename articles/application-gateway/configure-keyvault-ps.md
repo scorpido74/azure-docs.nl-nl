@@ -1,19 +1,19 @@
 ---
 title: TLS-beëindiging met Key Vault certificaten configureren-Power shell
 titleSuffix: Azure Application Gateway
-description: Meer informatie over hoe u Azure-toepassing gateway kunt integreren met Key Vault voor server certificaten die zijn gekoppeld aan listeners met HTTPS-functionaliteit.
+description: Meer informatie over hoe u een Azure PowerShell script kunt gebruiken om uw sleutel kluis te integreren met uw toepassings gateway voor het beëindigen van TLS/SSL-certificaten.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386279"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323420"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>TLS-beëindiging met Key Vault certificaten met behulp van Azure PowerShell configureren
 

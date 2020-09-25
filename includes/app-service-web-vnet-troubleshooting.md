@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255236"
 ---
 De functie is eenvoudig in te stellen, maar dit betekent niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. De ene is de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar **hulpprogram ma's**  >  **kudu**. U kunt de Kudo-console ook bereiken op [site naam]. scm. azurewebsites. net. Nadat de website is geladen, gaat u naar het tabblad **debug console** . Als u vanuit uw app naar de door Azure Portal gehoste console wilt gaan, gaat u naar de console **hulpprogram ma's**  >  **Console**.
 
 #### <a name="tools"></a>Hulpprogramma's
-De hulpprogram ma's **ping**, **nslookup**en **tracert** werken vanwege beveiligings beperkingen niet via de-console. Als u de void wilt vullen, worden er twee afzonderlijke hulpprogram ma's toegevoegd. We hebben een hulp programma toegevoegd met de naam **nameresolver.exe**om de DNS-functionaliteit te testen. De syntaxis is:
+In systeem eigen Windows-apps werken de hulpprogram ma's **ping**, **nslookup**en **tracert** niet via de-console vanwege beveiligings beperkingen (ze werken in [aangepaste Windows-containers](../articles/app-service/quickstart-custom-container.md)). Als u de void wilt vullen, worden er twee afzonderlijke hulpprogram ma's toegevoegd. We hebben een hulp programma toegevoegd met de naam **nameresolver.exe**om de DNS-functionaliteit te testen. De syntaxis is:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 U kunt nameresolver gebruiken om de hostnamen te controleren waarvan uw app afhankelijk is. Op deze manier kunt u testen of er iets mis is met uw DNS of dat u mogelijk geen toegang hebt tot uw DNS-server. U kunt de DNS-server zien die uw app gebruikt in de-console door te kijken naar de omgevings variabelen WEBSITE_DNS_SERVER en WEBSITE_DNS_ALT_SERVER.
+
+> [!NOTE]
+> nameresolver.exe werkt momenteel niet in aangepaste Windows-containers.
+>
 
 U kunt het volgende hulp programma gebruiken om te testen op TCP-connectiviteit met een combi natie van host en poort. Dit hulp programma heet **tcpping** en de syntaxis is:
 

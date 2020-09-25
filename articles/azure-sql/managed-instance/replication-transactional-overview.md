@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283204"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transactionele replicatie met Azure SQL Managed instance (preview-versie)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

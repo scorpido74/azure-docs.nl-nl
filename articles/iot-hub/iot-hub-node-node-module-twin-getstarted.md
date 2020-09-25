@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.custom: amqp, devx-track-javascript
-ms.openlocfilehash: 214c0533e6aefcfa496533359221f7a3061031b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: amqp, devx-track-js
+ms.openlocfilehash: c3862cae096adc2284469750cefd5538493cf653
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302853"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Aan de slag met IoT Hub module-identiteit en-module dubbele (Node.js)
 
@@ -39,7 +39,7 @@ Aan het einde van deze zelf studie hebt u twee Node.js-apps:
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-## <a name="create-an-iot-hub"></a>Een IoT Hub maken
+## <a name="create-an-iot-hub"></a>Een IoT-hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

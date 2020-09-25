@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302414"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -158,7 +158,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 > [!TIP]
 > Hoewel er automatisch een aantal informatie over modellen en gegevens sets wordt vastgelegd, kunt u extra informatie toevoegen met behulp van __Tags__. Wanneer u op zoek bent naar geregistreerde modellen en gegevens sets in uw werk ruimte, kunt u Tags gebruiken als filter.
 >
-> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
+> Een gegevensset koppelen aan een geregistreerd model is een optionele stap. Zie de verwijzing naar [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) klassen voor informatie over het verwijzen naar een gegevensset bij het registreren van een model.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML

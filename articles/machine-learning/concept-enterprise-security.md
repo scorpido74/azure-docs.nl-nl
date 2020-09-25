@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302618"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -42,7 +42,7 @@ Zie [verificatie instellen voor Azure machine learning resources en werk stromen
 
 Azure Machine Learning ondersteunt twee verificatie vormen voor webservices: sleutel en token. Elke webservice kan per keer slechts één vorm van authenticatie inschakelen.
 
-|Verificatiemethode|Description|Azure Container Instances|AKS|
+|Verificatiemethode|Beschrijving|Azure Container Instances|AKS|
 |---|---|---|---|
 |Sleutel|Sleutels zijn statisch en hoeven niet te worden vernieuwd. Sleutels kunnen hand matig opnieuw worden gegenereerd.|Standaard uitgeschakeld| Standaard ingeschakeld|
 |Token|Tokens verlopen na een opgegeven tijds periode en moeten worden vernieuwd.| Niet beschikbaar| Standaard uitgeschakeld |
@@ -118,7 +118,7 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 > [!IMPORTANT]
-> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
+> Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
 
 De `hbi_workspace` markering bepaalt de hoeveelheid [gegevens die micro soft verzamelt voor diagnostische doel einden](#microsoft-collected-data) en maakt [extra versleuteling mogelijk in door micro soft beheerde omgevingen](../security/fundamentals/encryption-atrest.md). Daarnaast kunnen de volgende acties worden uitgevoerd:
 
@@ -156,7 +156,7 @@ Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw a
     * `cmk_keyvault`: Deze para meter is de resource-ID van de sleutel kluis in uw abonnement. Deze sleutel kluis moet zich in dezelfde regio en hetzelfde abonnement bevinden als de-werk ruimte die u wilt gebruiken voor de Azure Machine Learning. 
     
         > [!NOTE]
-        > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
+        > Dit sleutel kluis exemplaar kan afwijken van de sleutel kluis die door Azure Machine Learning wordt gemaakt wanneer u de werk ruimte inricht. Als u hetzelfde sleutel kluis exemplaar voor de werk ruimte wilt gebruiken, moet u dezelfde sleutel kluis door geven tijdens het inrichten van de werk ruimte met behulp van de [para meter key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
 Dit Cosmos DB exemplaar wordt gemaakt in een door micro soft beheerde resource groep in uw abonnement, samen met alle benodigde resources. De beheerde resource groep krijgt de naam in de indeling `<AML Workspace Resource Group Name><GUID>` . Als uw Azure Machine Learning-werk ruimte een persoonlijk eind punt gebruikt, wordt er ook een virtueel netwerk voor het Cosmos DB exemplaar gemaakt. Dit VNet wordt gebruikt voor het beveiligen van de communicatie tussen Cosmos DB en Azure Machine Learning.
 
@@ -197,7 +197,7 @@ Als u de sleutel wilt gebruiken bij het implementeren van een model naar Azure c
 
 Zie de volgende artikelen voor meer informatie over het maken en gebruiken van een implementatie configuratie:
 
-* Naslag informatie over [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* Naslag informatie over [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Waar en hoe u implementeert](how-to-deploy-and-where.md)
 * [Een model implementeren op Azure Container Instances](how-to-deploy-azure-container-instance.md)
 
@@ -290,6 +290,10 @@ Details van Score aanvragen worden opgeslagen in Application Insights. Applicati
 > Sommige acties in de Azure Machine Learning-werk ruimte registreren geen gegevens in het activiteiten logboek. Bijvoorbeeld, het begin van een trainings uitvoering en de registratie van een model worden niet geregistreerd.
 >
 > Sommige van deze acties worden weer gegeven in het gebied **activiteiten** van uw werk ruimte, maar deze meldingen geven niet aan wie de activiteit heeft gestart.
+
+### <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen
+
+Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor verschillende hybride cloudworkloads. Voor Azure machine learning moet u het scannen van uw Azure Container Registry resource en Azure Kubernetes-service resources inschakelen. Zie [Azure container Registry Image scanning door Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) en [Azure Kubernetes Services-integratie met Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
 
 ## <a name="data-flow-diagrams"></a>Gegevensstroom diagrammen
 

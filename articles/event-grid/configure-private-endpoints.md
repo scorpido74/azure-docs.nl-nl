@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u privé-eind punten voor Azure
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324141"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw onderwerp of domein. Zie [netwerk beveiliging](network-security.md)voor meer conceptuele informatie.
@@ -42,7 +42,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om een persoonlij
         3. Controleer of de **doel-subresource** is ingesteld op **onderwerp** of **domein** (op basis van het bron type dat u hebt geselecteerd).    
         4. Selecteer **volgende: configuratie >** knop onder aan de pagina. 
 
-            ![Persoonlijk eind punt-resource pagina](./media/configure-private-endpoints/resource-page.png)
+            ![Scherm afbeelding met de pagina ' een privé-eind punt maken-resource ' weer gegeven.](./media/configure-private-endpoints/resource-page.png)
     2. Als u **verbinding maken met een resource selecteert met een resource-id of alias**, voert u de volgende stappen uit:
         1. Voer de ID van de resource in. Bijvoorbeeld: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Voor **resource**voert u **onderwerp** of **domein**in. 
@@ -78,7 +78,7 @@ Er zijn vier inrichtingsstatussen:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt beheren
 In de volgende secties ziet u hoe u een verbinding met een privé-eind punt kunt goed keuren of afwijzen. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Typ in de zoek balk **Event grid onderwerpen** of **Event grid domeinen**.
 1. Selecteer het **onderwerp** dat of het **domein** dat u wilt beheren.
 1. Selecteer het tabblad **netwerken** .
@@ -108,7 +108,7 @@ U kunt een privé-eind punt dat de status in behandeling of goedgekeurd heeft, a
 
 1. Selecteer het **persoonlijke eind punt** dat u wilt afwijzen en selecteer op de werk balk de optie **weigeren** .
 
-    ![Persoonlijk eind punt-afwijzen](./media/configure-private-endpoints/reject-button.png)
+    ![Scherm opname waarin de ' netwerk-privé-eindpunt verbindingen (preview) ' worden weer gegeven en ' afwijzen ' is geselecteerd.](./media/configure-private-endpoints/reject-button.png)
 1. Voer in het dialoog venster **verbinding afwijzen** een opmerking in (optioneel) en selecteer **Ja**. 
 
     ![Persoonlijk eind punt-afwijzen](./media/configure-private-endpoints/reject.png)

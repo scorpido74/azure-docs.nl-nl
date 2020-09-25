@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: devx-track-js
+ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324226"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
-Op dit moment zijn de enige uitgegeven gegevenslaag-Sdk's voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#) en Java script. Meer informatie over deze Sdk's en de Api's in het algemeen vindt u in de [*instructies: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen gegevenslaag SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
+Op dit moment is het enige gepubliceerde gegevenslaag-Sdk's voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#), java script en Java. Meer informatie over deze Sdk's en de Api's in het algemeen vindt u in de [*instructies: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen gegevenslaag SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
 >[!NOTE]
 > U kunt auto rest ook gebruiken om een Control vlak-SDK te genereren als u dat wilt. U doet dit door de stappen in dit artikel uit te voeren met behulp van het [OpenAPI-bestand (Control best Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) in plaats van het gegevens vlak One.

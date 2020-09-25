@@ -1,14 +1,16 @@
 ---
 title: App testen in de LUIS-Portal
 description: Gebruik Language Understanding (LUIS) om voortdurend aan uw toepassing te werken om deze te verfijnen en de taal inzichten te verbeteren.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b6fcc294c2b8c131d9a4a058c653ae1f64652ccf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324855"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Uw LUIS-app testen in de LUIS-Portal
 
@@ -22,7 +24,7 @@ Het [testen](luis-concept-test.md) van een app is een iteratief proces. Nadat u 
 
 ## <a name="train-before-testing"></a>Trainen voor testen
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Als u wilt testen op de meest recente versie van de actieve app, selecteert u **trainen** in het bovenste menu voordat u gaat testen.
 
@@ -30,7 +32,7 @@ Het [testen](luis-concept-test.md) van een app is een iteratief proces. Nadat u 
 
 De test utterance mag niet exact hetzelfde zijn als een voor beeld van een uitingen in de app. De test utterance moet de woord keuze, de woord lengte en het entiteits gebruik bevatten die u verwacht voor een gebruiker.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 
 1. Als u toegang wilt krijgen tot het **toetsen paneel testen** , selecteert u **testen** in het bovenste paneel van de toepassing.

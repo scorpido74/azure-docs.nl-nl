@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284275"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -26,7 +26,7 @@ Azure SQL Database biedt verschillende methoden voor het maken van een kopie van
 
 ## <a name="overview"></a>Overzicht
 
-Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte van de bron database te hand haven of een andere reken grootte te gebruiken binnen dezelfde of een andere servicelaag. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de koppeling met geo-replicatie automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de Kopieer bewerking van de data base. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
+Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte van de bron database te hand haven of een andere reken grootte te gebruiken binnen dezelfde of een andere servicelaag. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de geo-replicatiekoppeling automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de kopieerbewerking van de database. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
 
 ## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 
@@ -36,13 +36,13 @@ Wanneer u een Data Base naar een andere server kopieert, wordt de beveiligingspr
 
 Ongeacht de doel server worden alle database gebruikers, hun machtigingen en hun beveiligings-id's (Sid's) gekopieerd naar de kopie van de data base. Wanneer u [Inge sloten database gebruikers](logins-create-manage.md) gebruikt voor gegevens toegang, zorgt u ervoor dat de gekopieerde data base dezelfde gebruikers referenties heeft, zodat u, nadat de kopie is voltooid, u deze onmiddellijk kunt openen met dezelfde referenties.
 
-Als u aanmeldingen op server niveau gebruikt voor gegevens toegang en de Data Base naar een andere server kopieert, werkt de op aanmelding gebaseerde toegang mogelijk niet. Dit kan gebeuren omdat de aanmeldingen niet bestaan op de doel server of omdat hun wacht woord en de beveiligings-id's (Sid's) verschillen. Zie [Azure SQL database beveiliging beheren na nood herstel](active-geo-replication-security-configure.md)voor meer informatie over het beheren van aanmeldingen wanneer u een Data Base naar een andere server kopieert. Nadat de Kopieer bewerking naar een andere server is geslaagd, en voordat andere gebruikers opnieuw worden toegewezen, kan alleen de aanmelding die is gekoppeld aan de eigenaar van de data base of de server beheerder zich aanmelden bij de gekopieerde data base. Zie [aanmeldingen oplossen](#resolve-logins)om aanmeldingen op te lossen en gegevens toegang tot stand te brengen nadat de Kopieer bewerking is voltooid.
+Als u aanmeldingen op serverniveau gebruikt voor gegevenstoegang en de database naar een andere server kopieert, werkt de op aanmelding gebaseerde toegang mogelijk niet. Dit kan gebeuren omdat de aanmeldingen niet bestaan op de doelserver of omdat hun wachtwoorden en beveiligings-id's (SID's) verschillen. Zie [Azure SQL database beveiliging beheren na nood herstel](active-geo-replication-security-configure.md)voor meer informatie over het beheren van aanmeldingen wanneer u een Data Base naar een andere server kopieert. Nadat de Kopieer bewerking naar een andere server is geslaagd, en voordat andere gebruikers opnieuw worden toegewezen, kan alleen de aanmelding die is gekoppeld aan de eigenaar van de data base of de server beheerder zich aanmelden bij de gekopieerde data base. Zie [aanmeldingen oplossen](#resolve-logins)om aanmeldingen op te lossen en gegevens toegang tot stand te brengen nadat de Kopieer bewerking is voltooid.
 
 ## <a name="copy-using-the-azure-portal"></a>Kopiëren met Azure Portal
 
 Als u een Data Base wilt kopiëren met behulp van de Azure Portal, opent u de pagina voor uw data base en klikt u vervolgens op **kopiëren**.
 
-   ![Data base kopiëren](./media/database-copy/database-copy.png)
+   ![Database-kopie](./media/database-copy/database-copy.png)
 
 ## <a name="copy-using-powershell-or-the-azure-cli"></a>Kopiëren met behulp van Power shell of de Azure CLI
 
@@ -64,7 +64,7 @@ Het kopiëren van de data base is een asynchrone bewerking, maar de doel databas
 
 Zie [een Data Base naar een nieuwe server kopiëren](scripts/copy-database-to-new-server-powershell.md)voor een volledig voor beeld Power shell-script.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `

@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302380"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>machine learning pijp lijnen publiceren en bijhouden
 
@@ -84,6 +84,74 @@ response = requests.post(published_pipeline1.endpoint,
                          json={"ExperimentName": "My_Pipeline",
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
+Het `json` argument voor de post-aanvraag moet voor de `ParameterAssignments` sleutel een woorden lijst bevatten met de pijplijn parameters en de bijbehorende waarden. Daarnaast `json` kan het argument de volgende sleutels bevatten:
+
+| Sleutel | Beschrijving |
+| --- | --- | 
+| `ExperimentName` | De naam van het experiment dat is gekoppeld aan dit eind punt |
+| `Description` | Vrije-vorm tekst met een beschrijving van het eind punt | 
+| `Tags` | Vrije-vorm sleutel-waardeparen die kunnen worden gebruikt voor het labelen en aantekenen van aanvragen  |
+| `DataSetDefinitionValueAssignments` | Woorden lijst die wordt gebruikt voor het wijzigen van gegevens sets zonder opnieuw te trainen (Zie de onderstaande discussie) | 
+| `DataPathAssignments` | Woorden lijst die wordt gebruikt voor het wijzigen van datapaths zonder opnieuw te trainen (Zie de onderstaande discussie) | 
+
+### <a name="changing-datasets-and-datapaths-without-retraining"></a>Gegevens sets en datapaths wijzigen zonder opnieuw te trainen
+
+Mogelijk wilt u de verschillende gegevens sets en datapaths trainen en dezichpen. U kunt bijvoorbeeld een kleinere, sparse gegevensset trainen, maar voor de volledige gegevensset afleiden. U schakelt gegevens sets door met de `DataSetDefinitionValueAssignments` sleutel in het argument van de aanvraag `json` . U schakelt datapaths door `DataPathAssignments` . De techniek voor beide is vergelijkbaar:
+
+1. Maak een voor de gegevensset in het definitie script van de pijp lijn `PipelineParameter` . Maak een `DatasetConsumptionConfig` of `DataPath` op basis van `PipelineParameter` :
+
+    ```python
+    tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+    tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+    tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+    ```
+
+1. Open in uw ML-script de dynamisch opgegeven gegevensset met behulp van `Run.get_context().input_datasets` :
+
+    ```python
+    from azureml.core import Run
+    
+    input_tabular_ds = Run.get_context().input_datasets['tabular_dataset']
+    dataframe = input_tabular_ds.to_pandas_dataframe()
+    # ... etc ...
+    ```
+
+    U ziet dat het ML-script toegang krijgt tot de waarde die is opgegeven voor de `DatasetConsumptionConfig` ( `tabular_dataset` ) en niet de waarde van de `PipelineParameter` ( `tabular_ds_param` ).
+
+1. Stel in het definitie script voor de pijp lijn de `DatasetConsumptionConfig` as a-para meter in op `PipelineScriptStep` :
+
+    ```python
+    train_step = PythonScriptStep(
+        name="train_step",
+        script_name="train_with_dataset.py",
+        arguments=["--param1", tabular_ds_consumption],
+        inputs=[tabular_ds_consumption],
+        compute_target=compute_target,
+        source_directory=source_directory)
+    
+    pipeline = Pipeline(workspace=ws, steps=[train_step])
+    ```
+
+1. Gebruik het volgende om gegevens sets dynamisch te scha kelen in uw reactieve REST-aanroep `DataSetDefinitionValueAssignments` :
+    
+    ```python
+    tabular_ds1 = Dataset.Tabular.from_delimited_files('path_to_training_dataset')
+    tabular_ds2 = Dataset.Tabular.from_delimited_files('path_to_inference_dataset')
+    ds1_id = tabular_ds1.id
+    d22_id = tabular_ds2.id
+    
+    response = requests.post(rest_endpoint, 
+                             headers=aad_token, 
+                             json={
+                                "ExperimentName": "MyRestPipeline",
+                               "DataSetDefinitionValueAssignments": {
+                                    "tabular_ds_param": {
+                                        "SavedDataSetReference": {"Id": ds1_id #or ds2_id
+                                    }}}})
+    ```
+
+De notitie blokken voor het inzien van [gegevensset en PipelineParameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb) en [DataPath en PipelineParameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) hebben volledige voor beelden van deze techniek.
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Een versie-pipeline-eind punt maken
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323652"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -40,7 +40,7 @@ Zie voor meer informatie over de integratie van hulpprogram ma's voor het scanne
 Security Center biedt ook een beveiligingslek met betrekking tot de analyse van uw:
 
 * SQL-data bases-Zie [evaluatie van beveiligings problemen analyseren in het dash board evaluatie van beveiligings problemen](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
-* Azure Container Registry-installatie kopieën-Zie [Azure container Registry integratie met Security Center (preview-versie)](azure-container-registry-integration.md)
+* Azure Container Registry-installatie kopieën: Zie [Azure Defender gebruiken voor container registers voor het scannen van uw installatie kopieën op beveiligings problemen](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Beveiligingsoplossingen integreren
 Azure-beveiligingsoplossingen die zijn geïmplementeerd vanuit Security Center, zijn automatisch verbonden. U kunt ook verbinding maken met andere beveiligings gegevens bronnen, waaronder computers die on-premises of in andere Clouds worden uitgevoerd.
