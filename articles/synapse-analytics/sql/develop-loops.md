@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289052"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>T-SQL-lussen gebruiken in Synapse SQL
 In dit artikel vindt u belang rijke tips voor het gebruik van T-SQL-lussen, het vervangen van cursors en het ontwikkelen van gerelateerde oplossingen met SQL-pool in Synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Doel van WHILE-lussen
 
-Synapse SQL ondersteunt de [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) -lus voor het herhaaldelijk uitvoeren van instructie blokken. Deze lus wordt voortgezet zolang de opgegeven voor waarden waar zijn of totdat de code de lus met behulp van het sleutel woord desplit verbreekt. 
+Synapse SQL ondersteunt de [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) -lus voor het herhaaldelijk uitvoeren van instructie blokken. Deze lus wordt voortgezet zolang de opgegeven voor waarden waar zijn of totdat de code de lus met behulp van het sleutel woord desplit verbreekt. 
 
-Lussen in SQL-groep zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van het besnelde, alleen-lezen RAS. [WHILE] lussen zijn dus een geweldig alternatief voor het vervangen van cursors.
+Lussen in SQL-groep zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van het besnelde, alleen-lezen RAS. En lussen zijn dus een geweldig alternatief voor het vervangen van cursors.
 
 ## <a name="replace-cursors-in-sql-pool"></a>Cursors in SQL-groep vervangen
 

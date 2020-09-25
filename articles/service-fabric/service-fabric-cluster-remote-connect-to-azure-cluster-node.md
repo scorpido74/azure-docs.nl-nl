@@ -3,12 +3,12 @@ title: Externe verbinding maken met een Azure Service Fabric-cluster knooppunt
 description: Meer informatie over hoe u extern verbinding maakt met een exemplaar van een schaalset (een Service Fabric cluster knooppunt).
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268091"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Externe verbinding maken met een virtuele-machine Scale set-exemplaar of een cluster knooppunt
 In een Service Fabric cluster dat in azure wordt uitgevoerd, stelt elk type cluster knooppunt dat u definieert [een afzonderlijke schaal in voor een virtuele machine](service-fabric-cluster-nodetypes.md).  U kunt externe verbinding maken met specifieke instanties van de schaalset (cluster knooppunten).  In tegens telling tot Vm's met één exemplaar hebben instanties van een schaalset niet hun eigen virtuele IP-adressen. Dit kan lastig zijn wanneer u zoekt naar een IP-adres en poort die u kunt gebruiken om extern verbinding te maken met een specifiek exemplaar.
@@ -21,11 +21,11 @@ Voer de volgende stappen uit om een IP-adres en poort te vinden die u kunt gebru
     
     Selecteer op de pagina voor uw Load Balancer in azure Portal **instellingen**  >  **binnenkomende NAT-regels**: 
 
-    ![Binnenkomende NAT-regels voor Load Balancer](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Scherm opname van een load balancer pagina in de Azure Portal. Selecteer in het menu links onder instellingen de optie binnenkomende NAT-regels.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     De volgende scherm afbeelding toont de binnenkomende NAT-regels voor een knooppunt type met de naam front-end: 
 
-    ![Binnenkomende NAT-regels voor Load Balancer](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Scherm afbeelding met de binnenkomende NAT-regels voor een load balancer. De naam, de IP-versie, de bestemming, het doel en de service worden voor elke regel weer gegeven.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     Voor elk knoop punt wordt het IP-adres weer gegeven in de **doel** kolom, de **doel** kolom bevat het exemplaar van de schaalset en de kolom **service** geeft het poort nummer. Voor externe verbinding worden poorten toegewezen aan elk knoop punt in oplopende volg orde, beginnend met poort 3389.
 

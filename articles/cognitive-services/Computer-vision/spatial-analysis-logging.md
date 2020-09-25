@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983015"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254071"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie en probleem oplossing
 
@@ -103,7 +103,7 @@ Zodra de telegrafie module is geïmplementeerd, zijn de gerapporteerde metrische
 
 ### <a name="system-health-events"></a>Systeem status gebeurtenissen
 
-| Gebeurtenisnaam | Description|
+| Gebeurtenisnaam | Beschrijving|
 |------|---------|
 |archon_exit    |Verzonden wanneer een gebruiker de status van de ruimtelijke analyse module wijzigt van *actief* in *gestopt*.  |
 |archon_error   |Wordt verzonden wanneer een van de processen in de container vastloopt. Dit is een kritieke fout.  |
@@ -248,7 +248,7 @@ De onderstaande tabel geeft een lijst van de para meters die u kunt gebruiken bi
 
 De volgende tabel bevat de kenmerken in de query-antwoord.
 
-| Zoek | Description|
+| Zoek | Beschrijving|
 |--|--|
 |DoPost| *Waar* of *Onwaar*. Hiermee wordt aangegeven of Logboeken zijn geüpload of niet. Wanneer u ervoor kiest geen logboeken te uploaden, retourneert de API gegevens ***synchroon***. Wanneer u ervoor kiest om logboeken te uploaden, retourneert de API 200, als de aanvraag geldig is, waarna logboeken ***asynchroon***worden geüpload.|
 |TimeFilter| Tijd filter toegepast op de logboeken.|
@@ -313,8 +313,7 @@ Als het volgende bericht wordt weer gegeven in de module Logboeken, kan het zijn
 
 Container heeft geen geldige status. De validatie van het abonnement is mislukt met de status komt niet overeen. De API-sleutel is niet bedoeld voor het opgegeven container type. "
 
-Zie [goed keuring aanvragen voor het uitvoeren van de container](spatial-analysis-container.md#request-approval-to-run-the-container)voor meer informatie. 
-
+Zie [goed keuring aanvragen voor het uitvoeren van de container](spatial-analysis-container.md#request-approval-to-run-the-container)voor meer informatie.
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Problemen met het Azure Stack edge-apparaat oplossen
 

@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293064"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -331,7 +331,7 @@ Als u bestaande Recovery Services kluis wilt verwijderen, voert u de volgende st
                        [--yes]
     ```
 
-    Raadpleeg dit [artikel](/cli/azure/backup/vault?view=azure-cli-latest) voor meer informatie
+    Raadpleeg dit [artikel](/cli/azure/backup/vault) voor meer informatie
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>De Recovery Services kluis verwijderen door gebruik te maken van Azure Resource Manager
 

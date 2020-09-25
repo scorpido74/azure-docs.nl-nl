@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7e4da2051ab84cebff5aae857c02907f7b58e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263620"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Zelf studie: actieve geo-replicatie en failover configureren in de Azure Portal (Azure SQL Database)
 
@@ -55,12 +55,12 @@ Nadat de secundaire data base is gemaakt en geseedd, begint de gegevens van de h
     ![Geo-replicatie configureren](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. Selecteer of configureer de server en prijs categorie voor de secundaire data base.
 
-    ![Secundair configureren](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![secundair formulier maken](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. Desgewenst kunt u een secundaire data base toevoegen aan een elastische pool. Als u de secundaire data base in een groep wilt maken, klikt u op **elastische pool** en selecteert u een pool op de doel server. Er moet al een groep bestaan op de doel server. Met deze werk stroom wordt geen groep gemaakt.
 5. Klik op **maken** om de secundaire toe te voegen.
 6. De secundaire data base wordt gemaakt en het seeding proces begint.
 
-    ![Secundair configureren](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![de toewijzing van de secundaire zones](./media/active-geo-replication-configure-portal/seeding0.png)
 7. Wanneer het seeding proces is voltooid, wordt de status van de secundaire Data Base weer gegeven.
 
     ![Seeding voltooid](./media/active-geo-replication-configure-portal/seeding-complete.png)
@@ -73,7 +73,7 @@ De secundaire data base kan worden verwisseld om de primaire te worden.
 2. Selecteer op de Blade SQL database **alle instellingen**  >  **geo-replicatie**.
 3. Selecteer in de lijst met **secundaire** zones de data base waarvan u de nieuwe primaire wilt worden en klik op **geforceerde failover**.
 
-    ![cluster](./media/active-geo-replication-configure-portal/secondaries.png)
+    ![failover](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Klik op **Ja** om de failover te starten.
 
 De opdracht schakelt de secundaire data base onmiddellijk over naar de primaire rol. Dit proces moet normaal gesp roken binnen 30 seconden worden voltooid.

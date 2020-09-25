@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425531"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252001"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -24,7 +24,7 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 - [Uitgeschakeld](#disabled)
 - [Wijzigen](#modify)
 
-De volgende effecten worden _afgeschaft_:
+De volgende effecten zijn _afgeschaft_:
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ Wanneer **enforcementMode** is _uitgeschakeld_, worden er nog steeds resources g
 
 Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.Kubernetes.Data` . Het wordt gebruikt voor het door geven van Gate Keeping-regels voor toegangs beheer die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) voor Kubernetes-clusters in Azure.
 
-> [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceOPAConstraint** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> De beperkte definities van de preview-beleids regels met **EnforceOPAConstraint** -effect en de gerelateerde **Kubernetes-service** categorie zijn _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
 
@@ -430,8 +430,8 @@ Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limiet
 
 Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.ContainerService.Data` . Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
 
-> [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
+> [!IMPORTANT]
+> De beperkte definities van de preview-beleids regels met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie zijn _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
 

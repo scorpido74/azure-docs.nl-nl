@@ -1,6 +1,6 @@
 ---
 title: Hoe SSO voor on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD | Microsoft Docs
-description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Meer informatie over het uitbreiden van de SSO-ervaring door hybride Azure Active Directory gekoppelde apparaten te configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256459"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hoe SSO voor on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>De werking van SSO voor on-premises resources op apparaten die zijn toegevoegd aan Azure AD
 
 Het is waarschijnlijk niet een verrassing dat een Azure Active Directory (Azure AD) aan het apparaat is gekoppeld, u een eenmalige aanmelding (SSO) hebt voor de Cloud-apps van uw Tenant. Als uw omgeving een on-premises Active Directory (AD) heeft, kunt u de SSO-ervaring op deze apparaten uitbreiden naar bronnen en toepassingen die ook gebruikmaken van on-premises AD. 
 

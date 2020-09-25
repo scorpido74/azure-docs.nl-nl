@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) biedt de mogelijkheid om het quotum voor eindpunt aanvragen te verhogen buiten het quotum van een enkele sleutel. Dit doet u door meer sleutels te maken voor LUIS en deze toe te voegen aan de LUIS-toepassing op de pagina **publiceren** in de sectie **resources en sleutels** .
 author: diberry
 manager: nitinme
-ms.custom: seodec18, devx-track-javascript, devx-track-azurepowershell
+ms.custom: seodec18, devx-track-js, devx-track-azurepowershell
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 96d844d52fa554b7f9a467ae59d8ed4ccd2f6ee2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 827dec47fa6ea3925513b2b3aadfb103a2b58c72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298385"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager gebruiken voor het beheren van eindpunt quotum voor sleutels
 Language Understanding (LUIS) biedt de mogelijkheid om het quotum voor eindpunt aanvragen te verhogen buiten het quotum van een enkele sleutel. Dit doet u door meer sleutels te maken voor LUIS en deze toe te voegen aan de LUIS-toepassing op de pagina **publiceren** in de sectie **resources en sleutels** .

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254003"
 ---
 # <a name="spatial-analysis-operations"></a>Ruimtelijke analyse bewerkingen
 
@@ -23,7 +23,7 @@ Ruimtelijke analyse maakt het mogelijk om realtime streaming video van camera ap
 
 De container voor ruimtelijke analyse implementeert de volgende bewerkingen:
 
-| Bewerkings-id| Description|
+| Bewerkings-id| Beschrijving|
 |---------|---------|
 | cognitiveservices. Vision. spatialanalysis-personcount | Telt het aantal personen in een aangewezen zone in het veld weer gave van de camera. <br> Hiermee wordt een eerste _personCountEvent_ -gebeurtenis verzonden en vervolgens _personCountEvent_ -gebeurtenissen wanneer het aantal wordt gewijzigd.  |
 | cognitiveservices. Vision. spatialanalysis-personcrossingline | Hiermee wordt getraceerd wanneer een persoon een opgegeven regel in het veld weer gave van de camera kruist. <br>Hiermee wordt een _personLineEvent_ -gebeurtenis verzonden wanneer de persoon de lijn snijdt en informatie geeft over de richting. 
@@ -32,7 +32,7 @@ De container voor ruimtelijke analyse implementeert de volgende bewerkingen:
 
 Alle bovenstaande bewerkingen zijn ook beschikbaar in de `.debug` versie, die de mogelijkheid hebben om de video frames te visualiseren wanneer ze worden verwerkt. U moet `xhost +` op de hostcomputer worden uitgevoerd om de visualisatie van video frames en-gebeurtenissen in te scha kelen.
 
-| Bewerkings-id| Description|
+| Bewerkings-id| Beschrijving|
 |---------|---------|
 | cognitiveservices. Vision. spatialanalysis-personcount. debug | Telt het aantal personen in een aangewezen zone in het veld weer gave van de camera. <br> Hiermee wordt een eerste _personCountEvent_ -gebeurtenis verzonden en vervolgens _personCountEvent_ -gebeurtenissen wanneer het aantal wordt gewijzigd.  |
 | cognitiveservices. Vision. spatialanalysis-personcrossingline. debug | Hiermee wordt getraceerd wanneer een persoon een opgegeven regel in het veld weer gave van de camera kruist. <br>Hiermee wordt een _personLineEvent_ -gebeurtenis verzonden wanneer de persoon de lijn snijdt en informatie geeft over de richting. 
@@ -43,7 +43,7 @@ Ruimtelijke analyse kan ook worden uitgevoerd met [Live video Analytics](https:/
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Bewerkings-id| Description|
+| Bewerkings-id| Beschrijving|
 |---------|---------|
 | cognitiveservices. Vision. spatialanalysis-personcount. livevideoanalytics | Telt het aantal personen in een aangewezen zone in het veld weer gave van de camera. <br> Hiermee wordt een eerste _personCountEvent_ -gebeurtenis verzonden en vervolgens _personCountEvent_ -gebeurtenissen wanneer het aantal wordt gewijzigd.  |
 | cognitiveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Hiermee wordt getraceerd wanneer een persoon een opgegeven regel in het veld weer gave van de camera kruist. <br>Hiermee wordt een _personLineEvent_ -gebeurtenis verzonden wanneer de persoon de lijn snijdt en informatie geeft over de richting. 
@@ -57,7 +57,7 @@ Live video Analytics-bewerkingen zijn ook beschikbaar in de `.debug` versie (bij
 
 Dit zijn de para meters die vereist zijn voor elk van deze ruimtelijke analyse bewerkingen.
 
-| Bewerkingsparameters| Description|
+| Bewerkingsparameters| Beschrijving|
 |---------|---------|
 | Bewerkings-ID | De bewerkings-id uit de bovenstaande tabel.|
 | enabled | Booleaans: waar of onwaar|
@@ -88,7 +88,7 @@ Dit zijn de para meters die vereist zijn voor elk van deze ruimtelijke analyse b
 }
 ```
 
-| Naam | Type| Description|
+| Naam | Type| Beschrijving|
 |---------|---------|---------|
 | `zones` | list| Lijst met zones. |
 | `name` | tekenreeks| Beschrijvende naam voor deze zone.|
@@ -121,7 +121,7 @@ Dit is een voor beeld van een JSON-invoer voor de para meter SPACEANALYTICS_CONF
 }
 ```
 
-| Naam | Type| Description|
+| Naam | Type| Beschrijving|
 |---------|---------|---------|
 | `lines` | list| Lijst met regels.|
 | `name` | tekenreeks| Beschrijvende naam voor deze regel.|
@@ -152,7 +152,7 @@ Dit is een voor beeld van een JSON-invoer voor de para meter SPACEANALYTICS_CONF
 }
 ```
 
-| Naam | Type| Description|
+| Naam | Type| Beschrijving|
 |---------|---------|---------|
 | `zones` | list| Lijst met zones. |
 | `name` | tekenreeks| Beschrijvende naam voor deze zone.|
@@ -184,7 +184,7 @@ Dit is een voor beeld van een JSON-invoer voor de para meter SPACEANALYTICS_CONF
 }
 ```
 
-| Naam | Type| Description|
+| Naam | Type| Beschrijving|
 |---------|---------|---------|
 | `zones` | list| Lijst met zones. |
 | `name` | tekenreeks| Beschrijvende naam voor deze zone.|
@@ -644,7 +644,7 @@ Mogelijk wilt u de detectie van ruimtelijke analyses of gebeurtenissen in uw toe
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Ruimtelijke analyse bewerkingen op schaal implementeren (meerdere camera's)
 
-Als u de beste prestaties en het gebruik van de Gpu's wilt krijgen, kunt u alle ruimtelijke analyse bewerkingen op meerdere camera's implementeren met behulp van Graph-exemplaren. Hieronder ziet u een voor beeld van het uitvoeren van de bewerking cognitiveservices. Vision. spatialanalysis-personcount op vijf (5) camera's.
+U kunt de prestaties en het gebruik van de Gpu's optimaal benutten door gebruik te maken van grafiek exemplaren voor het implementeren van ruimtelijke analyse bewerkingen op meerdere camera's. Hieronder ziet u een voor beeld van het uitvoeren `cognitiveservices.vision.spatialanalysis-personcount` van de bewerking op vijf camera's.
 
 ```json
  "properties.desired": {
@@ -725,9 +725,9 @@ Als u de beste prestaties en het gebruik van de Gpu's wilt krijgen, kunt u alle 
       }
   }
   ```
-| Naam | Type| Description|
+| Naam | Type| Beschrijving|
 |---------|---------|---------|
-| `batch_size` | int | Hiermee wordt het aantal camera's aangegeven dat in die bewerking wordt gebruikt.|
+| `batch_size` | int | Hiermee wordt het aantal camera's aangegeven dat in de bewerking wordt gebruikt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

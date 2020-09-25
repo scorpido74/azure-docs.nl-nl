@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over bekende problemen en tijdeli
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 884e850255856b39ccbe52544a47a7453e975960
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254258"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 
@@ -60,7 +60,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 4. [Installeren](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5. Rapportage configureren met de para meters zoals beschreven in de [SSRS-configuratie met SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 6. [Installeren](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Herstellen](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)wordt beschreven.
+7. [Herstellen](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](/system-center/dpm/back-up-the-dpm-server#using-dpmsync)wordt beschreven.
 8. Werk de eigenschap DataBaseVersion in de tabel dbo. tbl_DLS_GlobalSetting met behulp van de volgende opdracht:
 
     ```sql

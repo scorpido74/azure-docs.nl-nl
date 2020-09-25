@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 97d3b5030ed0ddb29fc439f4a0f6bcc7ff98b6ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268023"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
 Om klanten te helpen bedreigingen te voor komen, te detecteren en erop te reageren, Azure Security Center gegevens verzamelen en verwerken, met inbegrip van configuratie-informatie, meta gegevens, gebeurtenis logboeken en meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
@@ -34,7 +34,7 @@ Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in 
 - Uw Virtual Machines en servers: gebruikt configuratie-informatie en informatie over beveiligings gebeurtenissen, zoals Windows-gebeurtenis-en audit logboeken, IIS-logboeken en syslog-berichten van uw virtuele machines. Bovendien kan Azure Security Center wanneer er een waarschuwing wordt gemaakt een momentopname maken van de beïnvloede VM-schijf en machine-artefacten gekoppeld aan de waarschuwing van de VM-schijf, zoals een registerbestand, extraheren voor onderzoeksdoeleinden.
 
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 **Scheiding van gegevens**: gegevens worden op een logische manier apart van elkaar gehouden, in elk onderdeel van de service. Alle gegevens worden gemarkeerd per organisatie. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service.
 
 **Gegevens toegang**: om aanbevelingen voor beveiliging te bieden en mogelijke beveiligings Risico's te onderzoeken, kunnen mede werkers van micro soft toegang hebben tot gegevens die worden verzameld of geanalyseerd door Azure-Services, waaronder het maken van proces gebeurtenissen, moment opnamen van virtuele machines en artefacten, wat per ongeluk klant gegevens of persoonlijke gegevens van uw virtuele machine kan bevatten. We voldoen aan de [voorwaarden voor Microsoft Online Services en de Privacyverklaring](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), die stellen dat Microsoft niet de klantgegevens gebruikt of gegevens ervan afleidt voor reclame- of vergelijkbare commerciële doeleinden. We gebruiken klantgegevens alleen indien nodig om u Azure-services te bieden, met inbegrip van doeleinden die compatibel zijn met het leveren van die services. U behoudt alle rechten op de klantgegevens.
@@ -76,7 +76,7 @@ Als u Azure Defender niet gebruikt, kunt u het verzamelen van gegevens van virtu
 
 Klanten kunnen gegevens die verband houden met Security Center gebruiken uit verschillende gegevensstromen, zoals hieronder weergegeven:
 
-* **Azure activity**: alle beveiligings waarschuwingen, goedgekeurd Security Center [just-in-time-](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) aanvragen en alle waarschuwingen die worden gegenereerd door [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
+* **Azure activity**: alle beveiligings waarschuwingen, goedgekeurd Security Center [just-in-time-](security-center-just-in-time.md) aanvragen en alle waarschuwingen die worden gegenereerd door [adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
 * **Azure monitor-logboeken**: alle beveiligings waarschuwingen.
 
 

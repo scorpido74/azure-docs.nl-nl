@@ -1,5 +1,5 @@
 ---
-title: Rollen toewijzen en weer geven met het bereik van de beheer eenheid (preview)-Azure Active Directory | Microsoft Docs
+title: Rollen toewijzen en weer geven met het bereik van de beheer eenheid-Azure Active Directory | Microsoft Docs
 description: Beheer eenheden gebruiken om het bereik van roltoewijzingen in Azure Active Directory te beperken
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/10/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264921"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -36,7 +36,7 @@ Groeps beheerder  |  Kan alle aspecten van groepen en groeps instellingen, zoals
 Helpdesk beheerder  |  Kan wacht woorden voor niet-beheerders en helpdesk beheerders opnieuw instellen in de toegewezen beheer eenheid.
 Licentie beheerder  |  Kan alleen licentie toewijzingen binnen de beheer eenheid toewijzen, verwijderen en bijwerken.
 Wachtwoord beheerder  |  Kan wacht woorden voor niet-beheerders en wachtwoord beheerders binnen de toegewezen beheer eenheid opnieuw instellen.
-Gebruikers beheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
+Gebruikersbeheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
 
 ## <a name="assign-a-scoped-role"></a>Een scoped rol toewijzen
 
@@ -105,4 +105,4 @@ Request body
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)
+- [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](roles-groups-faq-troubleshooting.md)

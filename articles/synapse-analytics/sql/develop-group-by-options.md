@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032296"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289166"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>GROEPEREN op Opties in Synapse SQL
 Met Synapse SQL kunt u oplossingen ontwikkelen door verschillende opties voor groeperen op te implementeren. 
 
 ## <a name="what-does-group-by-do"></a>Wat doet GROUP BY
 
-Met de component [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL worden gegevens geaggregeerd naar een samen vatting van rijen.
+Met de component [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL worden gegevens geaggregeerd naar een samen vatting van rijen.
 
 SQL on-demand ondersteunt het hele bereik met opties voor groeperen op. De SQL-pool ondersteunt een beperkt aantal opties voor groeperen op.
 
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-In de volgende afbeelding ziet u de resultaten van [Create Table als selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest):
+In de volgende afbeelding ziet u de resultaten van [Create Table als selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true):
 
 ![Groeperen op kubus](./media/develop-group-by-options/develop-group-by-cube.png)
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264606"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -162,7 +162,7 @@ U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een servic
 
 De volgende IP-adresbereiken worden ook gedefinieerd als onderdeel van het proces voor het maken van een cluster:
 
-* De *--service-CIDR* wordt gebruikt voor het toewijzen van interne services in het AKS-cluster een IP-adres. Dit IP-adres bereik moet een adres ruimte zijn die elders niet in uw netwerk omgeving wordt gebruikt. Dit bereik bevat alle on-premises netwerkbereiken als u verbinding maakt met uw virtuele Azure-netwerken of een verbinding wilt maken met behulp van een snelle route of een site-naar-site-VPN-verbinding.
+* De *--service-CIDR* wordt gebruikt voor het toewijzen van interne services in het AKS-cluster een IP-adres. Dit IP-adres bereik moet een adres ruimte zijn die elders niet in uw netwerk omgeving wordt gebruikt, inclusief eventuele lokale netwerkbereiken als u verbinding maakt of verbinding maakt met uw virtuele Azure-netwerken via Express route of een site-naar-site-VPN-verbinding.
 
 * Het *--DNS-service-IP-* adres moet het *.10* -adres van het IP-adres bereik van uw service zijn.
 

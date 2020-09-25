@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 310a7578fe9d3af8c4600968178cb677658feaa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982062"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254326"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
@@ -40,7 +40,7 @@ U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 
 ## <a name="request-approval-to-run-the-container"></a>Goed keuring aanvragen om de container uit te voeren
 
-Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om goed keuring te vragen om de container uit te voeren. 
+Vul het [aanvraag formulier](https://aka.ms/csgate) in en verzend het om goed keuring te vragen om de container uit te voeren. 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -345,7 +345,7 @@ U kunt de volgende bewerking gebruiken om een installatie kopie synchroon te lez
 
 # <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
 
-`POST /vision/v3.0/read/SyncAnalyze`
+`POST /vision/v3.0/read/syncAnalyze`
 
 ---
 

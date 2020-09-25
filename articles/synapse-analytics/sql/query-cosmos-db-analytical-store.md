@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935653"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288390"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Azure Cosmos DB gegevens opvragen met behulp van SQL op aanvraag in azure Synapse link (preview)
 
-SQL serverloze (voorheen SQL on-demand) biedt u de mogelijkheid om gegevens in uw Azure Cosmos DB containers te analyseren die [in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
+SQL serverloze (voorheen SQL on-demand) biedt u de mogelijkheid om gegevens in uw Azure Cosmos DB containers te analyseren die in bijna realtime zijn ingeschakeld met de [koppeling van Azure Synapse](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
 
 > [!NOTE]
 > Ondersteuning voor het uitvoeren van query's in Azure Cosmos DB analytische opslag met SQL on-demand is momenteel in de test fase preview. 
@@ -85,7 +85,7 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>Expliciet schema opgeven
 
-In het geval van automatische schema-deinterferentie in `OPENROWSET` biedt een eenvoudige, gebruiks vriendelijke querience, uw zakelijke scenario's vereisen mogelijk dat u het schema expliciet moet opgeven om alleen relevante eigenschappen van de Azure Cosmos DB gegevens te lezen.
+In het geval van automatische schema-deinterferentie in `OPENROWSET` biedt een eenvoudige, gebruiks vriendelijke querience, uw bedrijfs scenario's vereisen mogelijk dat u het schema expliciet moet opgeven voor alleen-lezen relevante eigenschappen van de Azure Cosmos DB gegevens.
 
 `OPENROWSET` Hiermee kunt u expliciet opgeven welke eigenschappen u wilt lezen uit de gegevens in de container en de gegevens typen ervan opgeven. Stel dat we gegevens hebben geïmporteerd uit [ECDC COVID gegevensset](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) met de volgende structuur in azure Cosmos DB:
 
@@ -118,7 +118,7 @@ Raadpleeg de [regels voor SQL-type toewijzingen](#azure-cosmos-db-to-sql-type-ma
 
 ## <a name="querying-nested-objects-and-arrays"></a>Query's uitvoeren op geneste objecten en matrices
 
-Met Azure Cosmos DB kunt u complexere gegevens modellen vertegenwoordigen door ze als geneste objecten of matrices samen te stellen. De functie voor automatische synchronisatie van Synapse-koppeling voor Azure Cosmos DB beheert de schema representatie in de analytische out-of-the-box, waarbij de verwerking van geneste gegevens typen voorziet in uitgebreide query's van SQL op aanvraag.
+Met Azure Cosmos DB kunt u complexere gegevens modellen vertegenwoordigen door ze als geneste objecten of matrices samen te stellen. Met de functie voor automatische synchronisatie van de Synapse-koppeling voor Azure Cosmos DB wordt de schema weergave in de analytische out-of-the-box beheerd. Dit omvat het verwerken van geneste gegevens typen voor uitgebreide query's van SQL op aanvraag.
 
 De gegevensset van de koord bevat bijvoorbeeld JSON [-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) documenten die volgen op de volgende structuur:
 
@@ -179,7 +179,7 @@ Meer informatie over het analyseren van [complexe gegevens typen in Synapse-kopp
 
 ## <a name="flattening-nested-arrays"></a>Geneste matrices afvlakken
 
-Azure Cosmos DB gegevens kunnen geneste submatrixen hebben, zoals de AUTHORS-matrix van [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) data set:
+Azure Cosmos DB gegevens kunnen geneste submatrixen hebben, zoals de matrix van de auteur uit de [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) -gegevensset:
 
 ```json
 {
@@ -236,7 +236,7 @@ Aanvullende informatie een eco-epidemi... | `[{"first":"Nicolas","last":"4#","su
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Toewijzingen van het SQL-type Azure Cosmos DB
 
-Het is belang rijk om eerst te weten dat hoewel Azure Cosmos DB transactionele Store schema-neutraal is, de analytische opslag geschematiseerde kan worden geoptimaliseerd voor de prestaties van analytische query's. Met de functie Automatische synchronisatie van Synapse-koppeling beheert Azure Cosmos DB de schema representatie in de analytische out-of-the-box, waarbij de verwerking van geneste gegevens typen is inbegrepen. Aangezien SQL op aanvraag een query voor de analytische opslag is, is het belang rijk om te begrijpen hoe Azure Cosmos DB invoer gegevens typen worden toegewezen aan SQL-gegevens typen.
+Het is belang rijk om eerst te weten dat hoewel Azure Cosmos DB transactionele Store schema-neutraal is, de analytische opslag geschematiseerde kan worden geoptimaliseerd voor de prestaties van analytische query's. Met de functie voor automatische synchronisatie van de Synapse-koppeling beheert Azure Cosmos DB de schema weergave in de analytische out-of-the-box. Dit omvat het verwerken van geneste gegevens typen. Aangezien SQL op aanvraag een query voor de analytische opslag is, is het belang rijk om te begrijpen hoe Azure Cosmos DB invoer gegevens typen worden toegewezen aan SQL-gegevens typen.
 
 Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typen Number, String, Boolean, null, genest object of matrix. U moet SQL-typen kiezen die overeenkomen met deze JSON-typen als u `WITH` component gebruikt in `OPENROWSET` . Zie onder de SQL-kolom typen die moeten worden gebruikt voor verschillende eigenschaps typen in Azure Cosmos DB.
 

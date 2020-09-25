@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253231"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Meer informatie over het modelleren en partitioneren van gegevens in Azure Cosmos DB aan de hand van een praktijkvoorbeeld
 
@@ -323,7 +323,7 @@ function createComment(postId, comment) {
 In deze opgeslagen procedure worden de ID van het bericht en de hoofd tekst van de nieuwe opmerking als para meters gebruikt, waarna:
 
 - Hiermee wordt het bericht opgehaald
-- verhoogt de`commentCount`
+- verhoogt de `commentCount`
 - vervangt het bericht
 - voegt de nieuwe opmerking toe
 
@@ -365,7 +365,7 @@ In deze opgeslagen procedure worden de ID van de gebruiker en de nieuwe gebruike
 
 - Hiermee worden alle items opgehaald die overeenkomen met de `userId` (die berichten, opmerkingen of leuk kunnen zijn)
 - voor elk van deze items
-  - vervangt de`userUsername`
+  - vervangt de `userUsername`
   - Hiermee wordt het item vervangen
 
 > [!IMPORTANT]
@@ -418,8 +418,8 @@ Maar de resterende query wordt nog steeds niet gefilterd op de partitie sleutel 
 De manier waarop u rekening moet houden met deze situatie is eigenlijk eenvoudig:
 
 1. Deze aanvraag *moet* worden gefilterd op de `userId` omdat we alle Posts voor een bepaalde gebruiker willen ophalen
-1. De app wordt niet goed uitgevoerd omdat deze wordt uitgevoerd op de `posts` container, die niet is gepartitioneerd door`userId`
-1. Wat het duidelijkst is, wij zullen ons prestatie probleem oplossen door deze aanvraag uit te voeren op een container die *is* gepartitioneerd door`userId`
+1. De app wordt niet goed uitgevoerd omdat deze wordt uitgevoerd op de `posts` container, die niet is gepartitioneerd door `userId`
+1. Wat het duidelijkst is, wij zullen ons prestatie probleem oplossen door deze aanvraag uit te voeren op een container die *is* gepartitioneerd door `userId`
 1. Het maakt niet uit of een dergelijke container al is: de `users` container!
 
 We introduceren dus een tweede niveau van denormalisatie door volledige berichten naar de container te dupliceren `users` . Op die manier krijgen we een kopie van onze berichten, alleen gepartitioneerd langs een andere dimensie, waardoor ze efficiënter zijn om ze op te halen `userId` .

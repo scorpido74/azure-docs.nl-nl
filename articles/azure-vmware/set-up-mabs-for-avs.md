@@ -3,16 +3,16 @@ title: Azure Backup Server voor de Azure VMware-oplossing instellen
 description: Stel uw Azure VMware-oplossings omgeving in om een back-up te maken van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255006"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server voor de Azure VMware-oplossing instellen
 
-Azure Backup Server is een robuust systeem voor back-up en herstel op bedrijfs niveau dat bijdraagt aan de strategie voor bedrijfscontinuïteit en herstel na nood gevallen (BCDR). Tijdens de preview-oplossing van Azure VMware kunt u alleen back-ups van virtuele machines (VM) configureren met behulp van Azure Backup Server. 
+Azure Backup Server is een robuust systeem voor back-up en herstel op bedrijfs niveau dat bijdraagt aan de strategie voor bedrijfscontinuïteit en herstel na nood gevallen (BCDR). Tijdens de Azure VMware-oplossing kunt u alleen back-ups van virtuele machines (VM) configureren met behulp van Azure Backup Server. 
 
 Azure Backup Server kunnen back-upgegevens opslaan naar:
 
@@ -34,7 +34,7 @@ In dit artikel kunt u uw Azure VMware-oplossings omgeving voorbereiden op het ma
 - **Back-up zonder agent:** Azure Backup Server geen agent moet worden geïnstalleerd op de vCenter-of ESXi-server om een back-up van de virtuele machine te maken. Geef in plaats daarvan alleen het IP-adres of de Fully Qualified Domain Name (FQDN) op en de aanmeldings referenties die worden gebruikt voor het verifiëren van de VMware-Server met Azure Backup Server.
 - **Met de Cloud geïntegreerde back-up:** Azure Backup Server beveiligt workloads op schijf en in de Cloud. De werk stroom voor back-up en herstel van Azure Backup Server helpt u bij het beheren van lange termijn retentie en externe back-ups.
 - **Vm's detecteren en beveiligen die worden beheerd door vCenter:** Azure Backup Server detecteert en beveiligt Vm's die op een vCenter-of ESXi-server zijn geïmplementeerd. Azure Backup Server detecteert ook Vm's die worden beheerd door vCenter, zodat u grote implementaties kunt beveiligen.
-- **Autobeveiliging op mapniveau:** met vCenter kunt u uw virtuele machines in VM-mappen ordenen. Azure Backup Server deze mappen detecteert en u kunt deze gebruiken voor het beveiligen van Vm's op mapniveau, die alle submappen bevatten. Bij het beveiligen van mappen beschermt Azure Backup Server niet alleen de virtuele machines in die map, maar beveiligt u ook de virtuele machines die later worden toegevoegd. Azure Backup Server detecteert dagelijks nieuwe Vm's en beveiligt deze automatisch. Bij het indelen van uw Vm's in recursieve mappen, Azure Backup Server automatisch detecteert en beveiligt de nieuwe Vm's die in de recursieve mappen zijn geïmplementeerd.
+- **Autobeveiliging op mapniveau:** met vCenter kunt u uw virtuele machines in VM-mappen ordenen. Azure Backup Server deze mappen worden gedetecteerd. U kunt deze gebruiken voor het beveiligen van Vm's op mapniveau, met inbegrip van alle submappen. Bij het beveiligen van mappen beschermt Azure Backup Server niet alleen de virtuele machines in die map, maar beveiligt u ook de virtuele machines die later worden toegevoegd. Azure Backup Server detecteert dagelijks nieuwe Vm's en beveiligt deze automatisch. Bij het indelen van uw Vm's in recursieve mappen, Azure Backup Server automatisch detecteert en beveiligt de nieuwe Vm's die in de recursieve mappen zijn geïmplementeerd.
 - **Azure backup server blijft VMotioned vm's in het cluster beveiligen:** Als Vm's vMotioned zijn voor taak verdeling binnen het cluster, detecteert Azure Backup Server automatisch de VM-beveiliging.
 - **Nood zakelijke bestanden sneller herstellen:** Azure Backup Server kunt bestanden of mappen van een Windows-VM herstellen zonder de volledige VM te herstellen.
 
@@ -68,7 +68,7 @@ Zorg ervoor dat u [netwerken configureert voor uw VMware privécloud in azure](t
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>De grootte van de virtuele machine bepalen
 
-U moet een virtuele Windows-machine maken in het virtuele netwerk dat u in de vorige stap hebt gemaakt. Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, begint u met een galerie-afbeelding van Windows Server 2019 Data Center. Met deze zelf studie [maakt u uw eerste virtuele Windows-machine in het Azure Portal](../virtual-machines/windows/quick-create-portal.md) u aan de slag gaat met de aanbevolen vm in azure, zelfs als u Azure nog nooit hebt gebruikt.
+Maak een virtuele Windows-machine in het virtuele netwerk dat u in de vorige stap hebt gemaakt. Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, begint u met een galerie-afbeelding van Windows Server 2019 Data Center. Met deze zelf studie [maakt u uw eerste virtuele Windows-machine in het Azure Portal](../virtual-machines/windows/quick-create-portal.md) u aan de slag gaat met de aanbevolen vm in azure, zelfs als u Azure nog nooit hebt gebruikt.
 
 De volgende tabel bevat een overzicht van het maximum aantal beveiligde werk belastingen voor elke Azure Backup Server grootte van de virtuele machine. De informatie is gebaseerd op interne prestatie- en schaaltests met canonieke waarden voor de grootte van de werkbelasting en het verloop. De werkelijke werkbelasting grootte kan groter zijn, maar moet voldoen aan de schijven die zijn gekoppeld aan de virtuele machine van Azure Backup Server.
 
@@ -140,7 +140,7 @@ Een Recovery Services kluis is een opslag entiteit waarin de herstel punten word
 
 1. Selecteer in het menu links **Alle services**.
 
-   ![Selecteer in het menu links alle services.](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![Selecteer in het menu links Alle services.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. Voer in het dialoog venster **alle services** het **Recovery Services** in en selecteer **Recovery Services kluizen** in de lijst.
 
@@ -183,8 +183,6 @@ Met de optie voor opslag replicatie kunt u kiezen tussen geo-redundante opslag (
 1. Selecteer onder **Alle instellingen** de optie **Eigenschappen**. Selecteer **Update**onder **back-upconfiguratie**.
 
 1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
-
-   ![Stel de opslag configuratie voor de nieuwe kluis in.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>Het software pakket downloaden en installeren
 
@@ -309,7 +307,7 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
    * **Data Base**: **DATABASENAME** moet ** \<SQLInstanceName> Report Server $** zijn.
    * **URL van webportal**: de **virtuele map** moet **Reports_ \<SQLInstanceName> **zijn.
 
-   Meer [informatie](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
+   Meer informatie over de [configuratie van SSRS](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode).
 
    > [!NOTE]
    > [Micro soft Online Services-voor waarden](https://www.microsoft.com/licensing/product-licensing/products) (OST) bepaalt de licentie voor SQL Server gebruikt als de data base voor Azure backup server. Volgens OST kunnen SQL Server gebundeld met Azure Backup Server alleen worden gebruikt als de Data Base voor Azure Backup Server.

@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295986"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Database activiteiten bijhouden met audit Logboeken in Azure Database for MySQL flexibele server
 
 > [!IMPORTANT] 
 > Azure Database for MySQL Flexible Server is momenteel beschikbaar als openbare preview
+
+> [!NOTE]
+> Integratie met Azure Monitor Diagnostische instellingen voor toegang tot logboeken is in het implementatie proces en de volledige functionaliteit is binnenkort beschikbaar.
 
 Azure Database for MySQL flexibele server biedt gebruikers de mogelijkheid om audit logboeken te configureren. Audit logboeken kunnen worden gebruikt om activiteiten op database niveau te volgen, waaronder verbindings-, beheer-, DDL-en DML-gebeurtenissen. Deze typen logboeken worden vaak gebruikt voor nalevingsdoeleinden.
 
@@ -49,6 +52,9 @@ Andere para meters die u kunt aanpassen om het gedrag van de controle logboek re
 | `TABLE_ACCESS` | -Alleen beschikbaar voor MySQL 5,7 <br> -Lees instructies voor tabellen, zoals selecteren of invoegen in... UITGESCHAKELD <br> -Instructies voor het verwijderen van tabellen, zoals verwijderen of TRUNCATE TABLE <br> -Instructies voor het invoegen van tabellen, zoals invoegen of vervangen <br> -Update-instructies voor tabellen, zoals UPDATE |
 
 ## <a name="access-audit-logs"></a>Auditlogboeken inzien
+
+> [!NOTE]
+> Integratie met Azure Monitor Diagnostische instellingen voor toegang tot logboeken is in het implementatie proces en de volledige functionaliteit is binnenkort beschikbaar.
 
 Audit logboeken zijn geïntegreerd met Azure Monitor Diagnostische instellingen. Zodra u audit logboeken op uw MySQL-flexibele server hebt ingeschakeld, kunt u deze naar Azure Monitor-logboeken, Event Hubs of Azure Storage verzenden. Raadpleeg de documentatie van de [Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over diagnostische instellingen. Zie het artikel over het [controle logboek](how-to-configure-audit-logs-portal.md#set-up-diagnostics)van de portal voor meer informatie over het inschakelen van diagnostische instellingen in de Azure Portal.
 

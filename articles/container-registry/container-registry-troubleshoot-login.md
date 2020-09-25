@@ -3,12 +3,12 @@ title: Problemen met aanmelding bij REGI ster oplossen
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het aanmelden bij een Azure container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253351"
 ---
 # <a name="troubleshoot-registry-login"></a>Problemen met register aanmelding oplossen
 
@@ -107,7 +107,7 @@ Gerelateerde koppelingen:
 * [Aanmelden met een token uit de opslag plaats](container-registry-repository-scoped-permissions.md)
 * [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../role-based-access-control/role-assignments-portal.md)
 * [Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Een nieuw toepassings geheim maken](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [Een nieuw toepassingsgeheim maken](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Verificatie-en autorisatie codes voor Azure AD](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>Controleren of de referenties zijn verlopen
@@ -140,7 +140,7 @@ Als u uw probleem hier niet kunt oplossen, raadpleegt u de volgende opties.
 
 * Andere onderwerpen over het oplossen van problemen met het REGI ster zijn:
   * [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
-  * [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
+  * [Problemen met registerprestaties oplossen](container-registry-troubleshoot-performance.md)
 * Opties voor [Community-ondersteuning](https://azure.microsoft.com/support/community/)
 * [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Open een ondersteunings ticket](https://azure.microsoft.com/support/create-ticket/) op basis van de gegevens die u verstrekt, een snelle diagnose kan worden uitgevoerd voor verificatie fouten in uw REGI ster

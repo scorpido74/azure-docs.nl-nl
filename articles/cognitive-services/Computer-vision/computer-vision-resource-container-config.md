@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254173"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision docker-containers configureren
 
@@ -60,7 +60,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 Vergeet niet om de `vision/v1.0` route ring toe te voegen aan de URI van het eind punt, zoals wordt weer gegeven in de volgende tabel. 
 
-|Vereist| Name | Gegevenstype | Beschrijving |
+|Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt<br><br>Voorbeeld:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -88,7 +88,7 @@ De Computer Vision-containers gebruiken geen invoer-of uitvoer koppelingen om tr
 
 De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppel locatie van de [hostcomputer](computer-vision-how-to-install-containers.md#the-host-computer)mogelijk niet toegankelijk als gevolg van een conflict tussen de machtigingen die worden gebruikt door het docker-service account en de machtigingen voor het koppelen van de host-locatie. 
 
-|Optioneel| Name | Gegevenstype | Beschrijving |
+|Optioneel| Naam | Gegevenstype | Beschrijving |
 |-------|------|-----------|-------------|
 |Niet toegestaan| `Input` | Tekenreeks | Computer Vision containers gebruiken deze niet.|
 |Optioneel| `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -124,7 +124,7 @@ De volgende docker-voor beelden zijn voor de Lees-container.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -134,7 +134,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

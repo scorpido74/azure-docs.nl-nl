@@ -3,12 +3,12 @@ title: Modern Backup Storage gebruiken met Azure Backup Server
 description: Meer informatie over de nieuwe functies in Azure Backup Server. In dit artikel wordt beschreven hoe u de installatie van de back-upserver bijwerkt.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292894"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 
@@ -18,7 +18,7 @@ Azure Backup Server v2 en hoger ondersteunt Modern Backup Storage die opslag bes
 > Als u Modern Backup Storage wilt gebruiken, moet u back-upserver v2 of v3 uitvoeren op Windows Server 2016 of v3 op Windows Server 2019.
 > Als u back-upserver v2 uitvoert op een eerdere versie van Windows Server, kan Azure Backup Server niet profiteren van Modern Backup Storage. In plaats daarvan beveiligt de werk belasting zoals bij back-upserver v1. Zie voor meer informatie de matrix van de back-upserver versie [beveiliging](backup-mabs-protection-matrix.md).
 >
-> Om verbeterde back-upprestaties te bieden, raden we u aan om MABS v3 te implementeren met gelaagde opslag op Windows Server 2019. Raadpleeg het DPM-artikel '[MBS met tiered Storage instellen](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)' voor de stappen voor het configureren van gelaagde opslag.
+> Om verbeterde back-upprestaties te bieden, raden we u aan om MABS v3 te implementeren met gelaagde opslag op Windows Server 2019. Raadpleeg het DPM-artikel '[MBS met tiered Storage instellen](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)' voor de stappen voor het configureren van gelaagde opslag.
 
 ## <a name="volumes-in-backup-server"></a>Volumes in back-upserver
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 928a68cff5dc8043e69c25be3dcfa3510a7d3a2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267294"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuele WAN-partners en virtuele-hub-locaties
 
@@ -23,7 +23,7 @@ Azure Virtual WAN is een netwerkservice die via Azure voor een geoptimaliseerde 
 
 De connectiviteit van het on-premises apparaat wordt op een geautomatiseerde manier ingesteld voor de virtuele hub. Een virtuele hub is een virtueel netwerk dat door micro soft wordt beheerd. De hub bevat verschillende service-eindpunten die verbindingen vanaf uw on-premises netwerk (vpnsite) mogelijk maken. U kunt slechts één hub per regio hebben.
 
-## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>Automatisering van connectiviteits partners
+## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>Versleutelde IPSec-connectiviteits automatisering van partners
 
 Apparaten die verbinding maken met Azure Virtual WAN hebben ingebouwde automatisering om verbinding te maken. Dit wordt meestal ingesteld in de gebruikers interface van het apparaat (of gelijkwaardig), waarmee de connectiviteit en het configuratie beheer tussen het VPN-vertakkings apparaat worden ingesteld op een Azure Virtual hub VPN-eind punt (VPN-gateway).
 
@@ -36,11 +36,31 @@ De volgende automatisering op hoog niveau is ingesteld in de console van het app
 
 Sommige connectiviteits partners kunnen de automatisering uitbreiden om de virtuele Azure-hub VNet en VPN Gateway op te nemen. Als u meer wilt weten over Automation, raadpleegt u de [richt lijnen voor automatisering voor virtuele WAN-partners](virtual-wan-configure-automation-providers.md).
 
-## <a name="connectivity-through-partners"></a><a name="partners"></a>Connectiviteit via partners
+## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>Filiaal-verbindings partners
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-De volgende partners zijn zou op ons schema voor de nabije toekomst: 128 technologieën, Arista, Aruba HPE, Cisco Systems (Viptela), F5 Networks, Open Systems, Oracle SD-WAN en SharpLink.
+De volgende partners zijn zou op ons schema voor de nabije toekomst: 128 technologieën, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN en SharpLink.
+
+## <a name="partners-with-integrated-virtual-hub-offerings"></a>Partners met geïntegreerde Virtual hub-aanbiedingen
+Sommige partners hebben niet alleen IPSec-verbinding met een geautomatiseerd filiaal, maar ook **nva's (Network Virtual Appliances)** die rechtstreeks kunnen worden geïntegreerd in de virtuele WAN-hub van Azure.  Hierdoor kunnen klanten de mogelijkheid hebben om hun vertakkings verbindingen te beëindigen in een compatibel apparaat van derden in de virtuele hub.  
+
+Partners die NVA bieden in de virtuele WAN-hub, moeten:
+
+* De automatisering van de IPSec-verbinding vanaf hun vertakkings apparaat heeft geïmplementeerd en de NVA-aanbieding aan Azure Virtual WAN hub hebben toegevoegd.
+* Een bestaand virtuele netwerk apparaat beschikbaar stellen in azure Marketplace.
+
+Als u een partner bent en vragen hebt over de beheerde NVA in de virtuele hub-aanbieding, kunt u contact met ons opnemen door een e-mail te verzenden naar vwannvaonboarding@microsoft.com
+
+## <a name="integrated-virtual-hub-nva-partners"></a>Geïntegreerde virtuele hub-NVA-partners
+Deze partners hebben **beheerde toepassings** aanbiedingen die nu beschikbaar zijn voor implementatie in de virtuele WAN-hub.
+
+|Partners|Hand leiding voor configuratie/instructies/implementatie|
+|---|---|
+|[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN Deployment Guide (Engelstalig)](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
+|[Cisco Cloud service router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| [Implementatie handleiding voor Cisco Cloud service router (CSR) VWAN]()
+
+De volgende partners zijn zou om NVA te bieden in de virtuele hub in de nabije toekomst: Citrix-, versa-netwerken en VeloCloud.
 
 ## <a name="locations"></a><a name="locations"></a>Locaties
 

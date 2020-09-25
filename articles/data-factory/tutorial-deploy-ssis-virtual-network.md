@@ -1,6 +1,6 @@
 ---
 title: Zelf studie voor het configureren van een Azure SSIS Integration runtime om lid te worden van een virtueel netwerk
-description: Meer informatie over hoe u een Azure-SSIS-integratie-runtime kunt koppelen aan een virtueel Azure-netwerk.
+description: Meer informatie over het toevoegen aan een Azure-SSIS Integration runtime om lid te worden van een virtueel Azure-netwerk.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292299"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Een Azure-SQL Server Integration Services (SSIS) Integration runtime (IR) configureren om lid te worden van een virtueel netwerk
 
@@ -72,7 +72,7 @@ Gebruik de Azure Portal om een virtueel netwerk te configureren voordat u probee
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken**.
 
@@ -110,7 +110,7 @@ Nadat u uw Azure Resource Manager virtuele netwerk of het klassieke virtuele net
 
    ![Lijst met gegevens fabrieken](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Selecteer uw data factory met de Azure-SSIS IR in de lijst. U ziet de start pagina voor uw data factory. Selecteer de tegel **auteur & monitor** . U ziet de Data Factory gebruikers interface op een afzonderlijk tabblad.
+1. Selecteer uw data factory met de Azure-SSIS IR in de lijst. U ziet de start pagina voor uw data factory. Selecteer de tegel **Maken en bewaken**. U ziet de Data Factory gebruikers interface op een afzonderlijk tabblad.
 
    ![Startpagina van de gegevensfactory](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Probleem bij het opslaan van beheerders referenties de Azure AD Gallery-App configureren
-description: Algemene problemen oplossen die zich voordoen bij het configureren van het inrichten van gebruikers voor een toepassing die al wordt vermeld in de Azure AD-toepassings galerie
+description: Informatie over het oplossen van problemen bij het opslaan van beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4f47954f3f4943846cab2dd9a38fd310abce3469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a3340e72499087dce7773264272601dfce8a50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266779"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing 
 

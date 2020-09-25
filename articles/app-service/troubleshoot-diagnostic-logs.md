@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264368"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -185,16 +185,16 @@ Met de nieuwe [integratie van Azure monitor](https://aka.ms/appsvcblog-azmon)kun
 
 De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen: 
 
-| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | Yes | Standaard uitvoer en standaard fout |
-| AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |
-| AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
-| AppServiceAuditLogs | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
-| AppServiceFileAuditLogs | Yes | NOG TE BEPALEN | Bestands wijzigingen in de site-inhoud; alleen beschikbaar voor de Premium-laag en hoger |
-| AppServiceAppLogs | TBA | Java SE & Tomcat | Toepassings logboeken |
-| AppServiceIPSecAuditLogs  | Ja | Ja | Aanvragen van IP-regels |
-| AppServicePlatformLogs  | TBA | Yes | Container logboeken |
+| Logboek type | Windows | Windows-container | Linux | Linux-container | Beschrijving |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA | TBA | Ja | Ja | Standaard uitvoer en standaard fout |
+| AppServiceHTTPLogs | Yes | TBA | Ja | Ja | Webserver logboeken |
+| AppServiceEnvironmentPlatformLogs | Yes | N.v.t. | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
+| AppServiceAuditLogs | Yes | TBA | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
+| AppServiceFileAuditLogs | Yes | TBA | TBA | TBA | Bestands wijzigingen in de site-inhoud; alleen beschikbaar voor de Premium-laag en hoger |
+| AppServiceAppLogs | ASP.NET | TBA | Java SE & Tomcat | Java SE & Tomcat | Toepassings logboeken |
+| AppServiceIPSecAuditLogs  | Yes | TBA | Ja | Ja | Aanvragen van IP-regels |
+| AppServicePlatformLogs  | TBA | TBA | Ja | Ja | Container bewerkings logboeken |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Volgende stappen
 * [Logboeken doorzoeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 54d33b849f809dbe1ebefbbc3d2f63db6877e86e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296668"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Verbinding maken met gegevens met behulp van de Azure Machine Learning Studio
 
@@ -24,14 +24,14 @@ In dit artikel leert u hoe u toegang krijgt tot uw gegevens met behulp van de [A
 
 In de volgende tabel worden de voor delen van data stores en gegevens sets gedefinieerd en samenvatten. 
 
-||Description| Voordelen|   
+|Object|Beschrijving| Voordelen|   
 |---|---|---|
-|Gegevensarchieven| U kunt veilig verbinding maken met uw opslag service op Azure door uw verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld. | Omdat uw gegevens veilig worden opgeslagen, kunt u <br><br> <li> &nbsp;Plaats geen &nbsp; &nbsp; risico voor verificatie referenties of oorspronkelijke gegevens bronnen. <li> U hoeft deze niet meer vast te coderen in uw scripts.
+|Gegevensarchieven| U kunt veilig verbinding maken met uw opslag service op Azure door uw verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld. | Omdat uw gegevens veilig worden opgeslagen, kunt u <br><br> <li> &nbsp;Plaats geen &nbsp; &nbsp; risico voor verificatie referenties &nbsp; of &nbsp; oorspronkelijke &nbsp; gegevens bronnen. <li> U hoeft deze niet meer vast te coderen in uw scripts.
 |Gegevenssets| Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron, samen met een kopie van de bijbehorende metagegevens. Met gegevens sets kunt u <br><br><li> Toegang tot gegevens tijdens model training.<li> Gegevens delen en samen werken met andere gebruikers.<li> Maak gebruik van open-source bibliotheken, zoals Pandas, voor het verkennen van gegevens. | Omdat gegevens sets worden geëvalueerd als vertraagd, en de huidige locatie blijft bestaan, kunt u <br><br><li>Bewaar één kopie van de gegevens in uw opslag.<li> Geen extra opslag kosten in rekening brengen <li> Geen risico dat u onbedoeld uw oorspronkelijke gegevens bronnen wijzigt.<li>Verbeter de prestaties van de werk stroom snelheid. 
 
 Zie het artikel over [beveiligde toegang](concept-data.md#data-workflow) als u wilt weten waar gegevens opslag en gegevens sets passen in de algehele werk stroom van Azure machine learning Data Access.
 
-Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) te gebruiken voor het volgende:
+Raadpleeg de volgende artikelen voor een code-eerste ervaring om de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) te gebruiken voor het volgende:
 * [Verbinding maken met Azure Storage-services met gegevens opslag](how-to-access-data.md). 
 * [Azure machine learning gegevens sets maken](how-to-create-register-datasets.md). 
 
@@ -112,22 +112,22 @@ Het gegevens Profiel van Azure Machine Learning gegevensset bevat met name het v
 >[!NOTE]
 > Lege vermeldingen worden weer gegeven voor functies met irrelevante typen.
 
-Statistic|Description
-------|------
-Functie| De naam van de kolom die wordt samenvatten.
-Profiel| In-line visualisatie op basis van het type dat is afgeleid. Teken reeksen, Booleaanse waarden en datums hebben bijvoorbeeld een aantal aantallen, terwijl decimalen (cijfers) geschatte histogrammen hebben. Zo kunt u een goed inzicht krijgen in de distributie van de gegevens.
-Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
-Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
-Min.| Minimum waarde van de kolom. Lege vermeldingen worden weer gegeven voor functies waarvan het type geen inherente ordening (zoals Boole-waarden) heeft.
-Max| De maximum waarde van de kolom. 
-Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
-Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
-Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
-Gemiddeld| Reken kundige gemiddelde of gemiddelde van de kolom.
-Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
-Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
-Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
-Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
+|Statistic|Beschrijving
+|------|------
+|Functie| De naam van de kolom die wordt samenvatten.
+|Profiel| In-line visualisatie op basis van het type dat is afgeleid. Teken reeksen, Booleaanse waarden en datums hebben bijvoorbeeld een aantal aantallen, terwijl decimalen (cijfers) geschatte histogrammen hebben. Zo kunt u een goed inzicht krijgen in de distributie van de gegevens.
+|Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
+|Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
+|Min.| Minimum waarde van de kolom. Lege vermeldingen worden weer gegeven voor functies waarvan het type geen inherente ordening (zoals Boole-waarden) heeft.
+|Max| De maximum waarde van de kolom. 
+|Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
+|Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
+|Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
+|Gemiddeld| Reken kundige gemiddelde of gemiddelde van de kolom.
+|Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
+|Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 
+|Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een normale distributie zijn.
+|Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
 ## <a name="storage-access-and-permissions"></a>Toegang tot en machtigingen voor opslag
 

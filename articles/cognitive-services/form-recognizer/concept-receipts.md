@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262345"
 ---
-# <a name="receipt-concepts"></a>Ontvangstbewijs concepten
+# <a name="receipt-concepts"></a>Concepten van ontvangsten
 
 Met een van de vooraf ontwikkelde modellen van Azure Form Recognizer kunt u ontvangst bevestigingen analyseren. De ontvangst-API extraheert belang rijke informatie uit verkoop ontvangsten in het Engels, zoals de naam van de verkoper, de transactie datum, het transactie totaal, de regel items en meer. 
 
@@ -29,7 +29,7 @@ Het automatisch extra heren van gegevens van deze Ontvangstsen kan gecompliceerd
 
 Met behulp van optische teken herkenning (OCR) en ons vooraf gegenereerde ontvangst model kunnen de ontvangst-API deze scenario's voor ontvangst verwerking inschakelen en gegevens ophalen uit de bevestigingen, zoals de naam van de verkoper, de tip, het totaal, de regel items en nog veel meer. Bij deze API is het niet nodig om een model te trainen. u hoeft alleen maar de kwitantie naar de API voor het analyseren van gegevens te sturen.
 
-![voorbeeld bevestiging](./media/contoso-receipt-small.png)
+![voorbeeld van aankoopbewijs](./media/contoso-receipt-small.png)
 
 ## <a name="what-does-the-receipt-api-do"></a>Wat doet de ontvangst-API? 
 
@@ -71,17 +71,14 @@ De kwitantie-API retourneert ook de volgende informatie:
   * EN-IN 
 
   > [!NOTE]
-  > Taal invoer 
+  > Taalinvoer 
   >
   > Vooraf ontwikkelde ontvangst versie 2.1-Preview. 1 bevat een optionele aanvraag parameter voor het opgeven van een land instelling voor de ontvangst van extra Engelse markten. Voor verkoop ontvangsten in het Engels vanuit Australië (EN-AU), Canada (EN-CA), Groot-Brittannië (en-GB) en India (EN-IN) kunt u de land instelling opgeven om de resultaten te verbeteren. Als er geen land instelling is opgegeven in v 2.1-Preview. 1, wordt het model standaard ingesteld op het model nl-nl.
-  
- ### <a name="input-requirements"></a>Invoer vereisten 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>De bewerking toename analyseren
 
-De [analyse-ontvangst](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) neemt een afbeelding of PDF van een ontvangst op als de invoer en extraheert de waarden van intrest en text. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de resultaat-id bevat die in de volgende stap moet worden gebruikt.
+De [analyse-ontvangst](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) neemt een afbeelding of PDF van een ontvangst op als de invoer en extraheert de waarden van interest en text. De aanroep retourneert een veld met een antwoord header met de naam `Operation-Location` . De `Operation-Location` waarde is een URL die de resultaat-id bevat die in de volgende stap moet worden gebruikt.
 
 |Reactie header| Resultaten-URL |
 |:-----|:----|
@@ -456,7 +453,10 @@ De kassabon-API voorziet ook in de [AIBuilder-functie voor ontvangst verwerking]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Volg de Quick Start om aan de slag te gaan met de Snelstartgids voor de [ontvangst-API python](./quickstarts/python-receipts.md).
-- Meer informatie over de [rest API voor formulier herkenning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api).
-- Meer informatie over het [herkennen van formulieren](overview.md).
+- Voltooi de Quick Start van de [client bibliotheek](quickstarts/client-library.md) van een formulier om aan de slag te gaan met het schrijven van een app voor het verwerken van de kwitantie met de formulier Recognizer in de taal van uw keuze.
+- U kunt ook de Quick Start van de [kassabon-API python](./quickstarts/python-receipts.md) gebruiken om de bevestigingen te herkennen met de rest API.
 
+## <a name="see-also"></a>Zie ook
+
+* [Wat is Form Recognizer?](./overview.md)
+* [REST API referentie documenten](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

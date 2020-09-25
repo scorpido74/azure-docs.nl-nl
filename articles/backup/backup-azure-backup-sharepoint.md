@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met DPM
 description: Dit artikel bevat een overzicht van DPM/Azure Backup Server-beveiliging van een share point-Farm naar Azure
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: a667626fb53920150a4b5a16759228aacbfae75d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254428"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Een back-up maken van een share point-Farm naar Azure met DPM
 
@@ -18,7 +18,7 @@ Het maken van een back-up van share Point naar Azure met DPM is een zeer vergeli
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Ondersteunde versies van share point en gerelateerde beveiligings scenario's
 
-Zie [Waarvan kunt u een back-up maken met DPM?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup) voor een lijst met ondersteunde SharePoint-versies en de vereiste DPM-versies voor het maken van een back-up.
+Zie [Waarvan kunt u een back-up maken met DPM?](/system-center/dpm/dpm-protection-matrix#applications-backup) voor een lijst met ondersteunde SharePoint-versies en de vereiste DPM-versies voor het maken van een back-up.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -28,19 +28,19 @@ Er zijn enkele dingen die u moet bevestigen voordat u een back-up van een share 
 
 Voordat u doorgaat, moet u ervoor zorgen dat u voldoet aan alle [vereisten voor het gebruik van Microsoft Azure backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) voor het beveiligen van werk belastingen. Enkele taken voor vereisten zijn: Maak een back-upkluis, down load kluis referenties, installeer Azure Backup Agent en registreer DPM/Azure Backup Server met de kluis.
 
-Aanvullende vereisten en beperkingen vindt u in het artikel [back-up maken van share point met DPM](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) .
+Aanvullende vereisten en beperkingen vindt u in het artikel [back-up maken van share point met DPM](/system-center/dpm/back-up-sharepoint#prerequisites-and-limitations) .
 
 ## <a name="configure-backup"></a>Back-up configureren
 
-Als u een back-up wilt maken van een SharePoint-farm, configureert u de beveiliging voor SharePoint met ConfigureSharePoint.exe en maakt u vervolgens een beveiligingsgroep in DPM. Zie [back-up configureren](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) in de DPM-documentatie voor instructies.
+Als u een back-up wilt maken van een SharePoint-farm, configureert u de beveiliging voor SharePoint met ConfigureSharePoint.exe en maakt u vervolgens een beveiligingsgroep in DPM. Zie [back-up configureren](/system-center/dpm/back-up-sharepoint#configure-backup) in de DPM-documentatie voor instructies.
 
 ## <a name="monitoring"></a>Bewaking
 
-Als u de back-uptaak wilt bewaken, volgt u de instructies in [DPM-back-up controleren](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)
+Als u de back-uptaak wilt bewaken, volgt u de instructies in [DPM-back-up controleren](/system-center/dpm/back-up-sharepoint#monitoring)
 
 ## <a name="restore-sharepoint-data"></a>SharePoint-gegevens terugzetten
 
-Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)voor meer informatie over het herstellen van een share point-item van een schijf met DPM.
+Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint#restore-sharepoint-data)voor meer informatie over het herstellen van een share point-item van een schijf met DPM.
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Een share point-data base terugzetten vanuit Azure met behulp van DPM
 
@@ -61,7 +61,7 @@ Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint?view
 
     ![DPM share point-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Close** (Sluiten).
+    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Sluiten**.
 
     ![DPM share point-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. Selecteer het share point-object dat wordt weer gegeven op het tabblad DPM- **herstel** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen**.
@@ -71,7 +71,7 @@ Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint?view
 
 ## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de front-end-webserver
 
-Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die door DPM wordt gebruikt om de farm te beveiligen, volgt u de instructies in [overschakelen van de front-end-webserver](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server).
+Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die door DPM wordt gebruikt om de farm te beveiligen, volgt u de instructies in [overschakelen van de front-end-webserver](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server).
 
 ## <a name="next-steps"></a>Volgende stappen
 

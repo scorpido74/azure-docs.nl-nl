@@ -8,23 +8,23 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288066"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Ondersteuning voor database sortering voor Synapse SQL
 
-Met sorteringen kunt u de land instelling, de code pagina, de sorteer volgorde en de teken gevoeligheids regels voor gegevens typen op basis van tekens opgeven. Nadat u hebt gekozen, nemen alle kolommen en expressies die sorteer gegevens vereisen de gekozen sortering van de data base-instelling over. De standaard overname kan worden overschreven door expliciet een andere sortering voor een gegevens type op basis van een teken te vermelden.
+Met sorteringen kunt u de land instellingen, de code pagina, de sorteer volgorde en de teken gevoeligheids regels voor gegevens typen op basis van tekens opgeven. Nadat u hebt gekozen, nemen alle kolommen en expressies die sorteer gegevens vereisen de gekozen sortering van de data base-instelling over. De standaard overname kan worden overschreven door expliciet een andere sortering voor een gegevens type op basis van een teken te vermelden.
 
 U kunt de standaard sortering van de data base wijzigen van de Azure Portal wanneer u een nieuwe SQL-groeps database maakt. Hierdoor is het nog eenvoudiger om een nieuwe Data Base te maken met behulp van een van de ondersteunde database sorteringen van 3800.
 
 U kunt de standaard Synapse SQL-database sortering op aanvraag opgeven tijdens de aanmaak tijd met behulp van de instructie CREATE data base.
 
 ## <a name="change-collation"></a>Sortering wijzigen
-Als u de standaard sortering voor de SQL-groeps database wilt wijzigen, kunt u eenvoudig bijwerken naar het veld sortering in de inrichtings ervaring. Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig, wijzigt u de naam van de sortering van SQL_Latin1_General_CP1_CI_AS in SQL_Latin1_General_CP1_CS_AS. 
+Als u de standaard sortering voor de data base van SQL-groepen wilt wijzigen, werkt u bij het inrichtings veld naar het selectie vakje bij. Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig, wijzigt u de naam van de sortering van SQL_Latin1_General_CP1_CI_AS naar SQL_Latin1_General_CP1_CS_AS. 
 
 Als u de standaard sortering voor een SQL-Data Base op aanvraag wilt wijzigen, kunt u de instructie ALTER Data Base gebruiken.
 
@@ -98,7 +98,7 @@ Als u de standaard sortering voor een SQL-Data Base op aanvraag wilt wijzigen, k
 *    Japanese_XJIS_140_CS_AS_KS
 *    Japanese_XJIS_140_CS_AS_KS_WS
 
-Daarnaast biedt SQL-pool geen ondersteuning voor de volgende sorterings typen:
+Daarnaast biedt de SQL-groep geen ondersteuning voor de volgende sorterings typen:
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS

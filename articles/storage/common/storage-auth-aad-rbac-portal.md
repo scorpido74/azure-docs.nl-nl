@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249655"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -59,16 +59,16 @@ Met de procedure die hier wordt weer gegeven, wordt een rol binnen een container
 1. Zoek de container waarvoor u een rol wilt toewijzen en geef de instellingen van de container weer.
 1. Selecteer **toegangs beheer (IAM)** om instellingen voor toegangs beheer voor de container weer te geven. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien.
 
-    ![Scherm opname van instellingen voor toegangs beheer voor container](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="Scherm opname van instellingen voor toegangs beheer voor container":::
 
 1. Klik op de knop roltoewijzing **toevoegen** om een nieuwe rol toe te voegen.
 1. Selecteer in het venster **roltoewijzing toevoegen** de Azure Storage rol die u wilt toewijzen. Zoek vervolgens naar de beveiligingsprincipal waaraan u de rol wilt toewijzen.
 
-    ![Scherm afbeelding die laat zien hoe een Azure-rol kan worden toegewezen](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Scherm afbeelding die laat zien hoe een Azure-rol kan worden toegewezen":::
 
 1. Klik op **Opslaan**. De identiteit waaraan u de rol hebt toegewezen, wordt weer gegeven onder die rol. In de volgende afbeelding ziet u bijvoorbeeld dat de gebruiker die nu heeft toegevoegd, lees machtigingen heeft voor de gegevens in de container *sample-container*.
 
-    ![Scherm afbeelding met een lijst met gebruikers die zijn toegewezen aan een rol](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Scherm afbeelding met een lijst met gebruikers die zijn toegewezen aan een rol":::
 
 U kunt vergelijk bare stappen volgen om een rollen bereik toe te wijzen aan het opslag account, de resource groep of het abonnement.
 

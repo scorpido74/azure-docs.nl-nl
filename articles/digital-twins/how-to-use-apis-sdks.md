@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252660"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -61,6 +61,8 @@ De data-vlak-Api's gebruiken:
 * U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
    - u kunt het pakket weer geven en installeren vanuit NPM: [Azure Azure Digital apparaatdubbels-client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - u kunt de [SDK-referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)raadplegen.
+* U kunt de **Java script** -SDK gebruiken. De Java script-SDK gebruiken...
+   - u kunt het pakket weer geven en installeren vanuit maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
 * U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [cli](how-to-use-cli.md).
@@ -298,7 +300,7 @@ Hier kunt u de metrische gegevens voor uw exemplaar bekijken en aangepaste weer 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie hoe u de Api's gebruikt om een Azure Digital Apparaatdubbels-exemplaar en-verificatie in te stellen:
-* [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-scripted.md)
+* [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md)
 
 Of volg de stappen voor het maken van een client-app, zoals de toepassing die wordt gebruikt in deze procedure:
 * [*Zelfstudie: Een client-app coderen*](tutorial-code.md)

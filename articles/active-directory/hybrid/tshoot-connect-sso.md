@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294815"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen
 
@@ -37,6 +37,7 @@ In dit artikel vindt u informatie over het oplossen van problemen met de naadloz
 - Als u 30 of meer Active Directory-forests wilt synchroniseren, kunt u naadloze eenmalige aanmelding via Azure AD Connect niet inschakelen. Als tijdelijke oplossing kunt u de functie [hand matig inschakelen](#manual-reset-of-the-feature) op uw Tenant.
 - Als de Azure AD-service-URL () wordt toegevoegd `https://autologon.microsoftazuread-sso.com` aan de zone met vertrouwde websites in plaats van de zone Lokaal intranet, blokkeert u de *aanmelding van gebruikers*.
 - Naadloze SSO ondersteunt de AES256_HMAC_SHA1, AES128_HMAC_SHA1 en RC4_HMAC_MD5 versleutelings typen voor Kerberos. Het is raadzaam om het versleutelings type voor de AzureADSSOAcc $-account in te stellen op AES256_HMAC_SHA1, of een van de AES-typen versus RC4 voor extra beveiliging. Het versleutelings type wordt opgeslagen in het kenmerk msDS-SupportedEncryptionTypes van het account in uw Active Directory.  Als het versleutelings type AzureADSSOAcc $-account is ingesteld op RC4_HMAC_MD5 en u het wilt wijzigen in een van de AES-versleutelings typen, moet u ervoor zorgen dat u de eerste keer de Kerberos-ontsleutelingssleutel van het AzureADSSOAcc $-account uitschakelt, zoals wordt uitgelegd in het [document met veelgestelde vragen](how-to-connect-sso-faq.md) onder de relevante vraag, anders wordt naadloze SSO niet uitgevoerd.
+-  Als u meer dan één forest met forestvertrouwensrelatie hebt en u eenmalige aanmelding in een van de forests inschakelt, schakelt u SSO in in alle vertrouwde forests. Als u SSO inschakelt in een forest waarin SSO al is ingeschakeld, wordt er een fout bericht weer gegeven dat de SSO al is ingeschakeld in het forest.
 
 ## <a name="check-status-of-feature"></a>De status van de functie controleren
 

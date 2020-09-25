@@ -1,14 +1,16 @@
 ---
 title: Leerling-modus-persoonlijker
 description: ''
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087194"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253527"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>De leerling-modus gebruiken om uw persoonlijker te trainen zonder dat dit van invloed is op uw bestaande toepassing
 
@@ -57,7 +59,7 @@ De leerling-modus is handig voor ontwikkel aars, gegevens wetenschappers en besl
 
 De volgende manieren van het verschil in de modus leerlingen van de online modus is.
 
-|Onderwerp|Leerlingmodus|Online modus|
+|Gebied|Leerlingmodus|Online modus|
 |--|--|--|
 |Gevolgen voor de gebruikers ervaring|U kunt het bestaande gebruikers gedrag gebruiken om uw persoonlijker te trainen door het te laten weten wat uw **standaard actie** zou hebben en wat de beslag is. Dit betekent dat de gebruikers ervaring en de bedrijfs resultaten hiervan niet worden beïnvloed.|De bovenste actie weer geven die wordt geretourneerd door de positie aanroep om het gedrag van de gebruiker te beïnvloeden.|
 |Leer snelheid|Personaler leert langzaamer in de modus van de werk wijze dan bij het leren in de online modus. De praktijk modus kan alleen leren door de door uw **standaard actie**verkregen beloningen te bestuderen, waardoor de snelheid van het leren wordt beperkt omdat er geen onderzoek kan worden uitgevoerd.|Gaat sneller, omdat deze zowel het huidige model kan exploiteren als om nieuwe trends te verkennen.|
@@ -88,7 +90,7 @@ Het is alleen handig om A/B-tests uit te voeren op persoonlijke handelingen nada
 
 Zelfs als Personaler alleen de _behandeling_is, is dezelfde uitdaging aanwezig bij het valideren van de gegevens voor het aanpassen van de persoonlijke voor keuren. In plaats daarvan kan de modus in de praktijk worden gebruikt, met 100% van het verkeer en met alle gebruikers die het besturings element (onaangetast) krijgen.
 
-Als u een use-case gebruikt met Personaler en online leren, kunt u met een/B-experimenten gefundeerde cohort en een weten schappelijke vergelijking van de resultaten uitvoeren die complexer zijn dan de signalen die voor beloningen worden gebruikt. Een voor beeld van een vraag van een A/B-test kan worden beantwoord:`In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
+Als u een use-case gebruikt met Personaler en online leren, kunt u met een/B-experimenten gefundeerde cohort en een weten schappelijke vergelijking van de resultaten uitvoeren die complexer zijn dan de signalen die voor beloningen worden gebruikt. Een voor beeld van een vraag van een A/B-test kan worden beantwoord: `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
 ## <a name="next-steps"></a>Volgende stappen
 

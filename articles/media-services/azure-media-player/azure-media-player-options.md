@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296192"
 ---
 # <a name="options"></a>Opties #
 
@@ -51,7 +51,7 @@ Als AutoPlay is ingesteld op True, wordt de video afgespeeld zodra de pagina wor
 > [!NOTE]
 > Deze optie wordt niet ondersteund door mobiele apparaten zoals Windows Phone, Apple iOS en Android. Mobiele apparaten blok keren de functionaliteit voor automatisch afspelen om te voor komen dat het gebruik van de maandelijkse gegevens plannen van de consument (vaak duur). Een gebruiker/klik is vereist voor het starten van de video in dit geval.
 
-`<video autoplay ...>`of`{ "autoplay": true }`
+`<video autoplay ...>`of `{ "autoplay": true }`
 
 ### <a name="poster"></a>poster ###
 Het poster kenmerk stelt de afbeelding in die wordt weer gegeven voordat de video wordt afgespeeld. Dit is vaak een frame van de video of een aangepaste titel scherm. Zodra de gebruiker op afspelen klikt, wordt de afbeelding verwijderd.
@@ -93,11 +93,11 @@ Als u deze optie instelt op True video-element krijgt de volledige breedte van d
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`optie overschrijft expliciete `width` en `height` instellingen. Deze optie is alleen beschikbaar in Azure Media Player-versie `2.0.0` en hoger.
+`fluid` optie overschrijft expliciete `width` en `height` instellingen. Deze optie is alleen beschikbaar in Azure Media Player-versie `2.0.0` en hoger.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`Option Controls playbackSpeed Control en set met instellingen voor de afspeel snelheid die beschikbaar zijn voor de gebruiker. `playbackSpeed`neemt een object. Als u het besturings element voor de afspeel snelheid wilt inschakelen op de werk balk, `enabled` moet de eigenschap van het object worden ingesteld op True. Een voor beeld van het inschakelen van afspeel snelheid in Markeringen:
+`playbackSpeed` Option Controls playbackSpeed Control en set met instellingen voor de afspeel snelheid die beschikbaar zijn voor de gebruiker. `playbackSpeed` neemt een object. Als u het besturings element voor de afspeel snelheid wilt inschakelen op de werk balk, `enabled` moet de eigenschap van het object worden ingesteld op True. Een voor beeld van het inschakelen van afspeel snelheid in Markeringen:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 

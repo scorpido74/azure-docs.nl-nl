@@ -1,6 +1,6 @@
 ---
 title: Update 1,0 op StorSimple Virtual array installeren | Microsoft Docs
-description: Hierin wordt beschreven hoe u de Web-UI van de StorSimple Virtual array gebruikt om updates toe te passen met behulp van de Azure Portal en de methode hotfix
+description: Hierin wordt beschreven hoe u de Web-UI van StorSimple Virtual array gebruikt om update 1,0 toe te passen met behulp van de methode Azure Portal en Hot Fix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508092"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295563"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Update 1,0 installeren op de virtuele StorSimple-matrix
 

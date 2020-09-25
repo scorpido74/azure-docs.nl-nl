@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258409"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
@@ -89,9 +89,9 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | Levens duur van toegangs token |AccessTokenLifetime<sup>2</sup> |Toegangs tokens, ID-tokens, SAML2-tokens |1 uur |10 minuten |1 dag |
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
 | Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |180 dagen<sup>1</sup> |
-| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |180 dagen<sup>1</sup> |
+| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) | 180 dagen |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) | 180 dagen |10 minuten |Until-ingetrokken<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
 * <sup>2</sup> Om ervoor te zorgen dat de webclient van micro soft teams werkt, wordt aanbevolen om AccessTokenLifetime meer dan 15 minuten te houden voor micro soft-teams.
@@ -549,6 +549,6 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 ## <a name="license-requirements"></a>Licentievereisten
 
-Voor het gebruik van deze functie is een Azure AD Premium P1-licentie vereist. Zie [Algemeen beschik bare functies van de gratis en Premium-edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
+Voor deze functie hebt u een Azure AD Premium P1-licentie nodig. Zie [Algemeen beschik bare functies van de gratis en Premium-edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
 
 Klanten met een [Microsoft 365 Business-licentie](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.

@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
-ms.openlocfilehash: a47a6e1860edcb9b2bf89c25e78f6a66e8a7cf4d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295614"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus) oplossen
 
@@ -27,7 +27,7 @@ Verbindings problemen kunnen verschillende oorzaken hebben, zoals:
 * Onderhoud van de service
 * Het coördinator knooppunt voert een failover uit naar nieuwe hardware
 
-Over het algemeen kunnen verbindings problemen met grootschalige als volgt worden geclassificeerd:
+Over het algemeen kunnen verbindings problemen met grootschalige (Citus) als volgt worden geclassificeerd:
 
 * Tijdelijke fouten (kort geduurd of tijdelijk)
 * Permanente of niet-tijdelijke fouten (fouten die regel matig worden herhaald)
@@ -36,7 +36,7 @@ Over het algemeen kunnen verbindings problemen met grootschalige als volgt worde
 
 Er zijn een aantal redenen om tijdelijke fouten te voor komen. Het meest voorkomende systeem onderhoud, fout met hardware of software en vCore upgrades van het coördinator knooppunt.
 
-Het inschakelen van hoge Beschik baarheid voor grootschalige-server groeps knooppunten kan deze typen problemen automatisch oplossen. Uw toepassing moet echter nog steeds worden voor bereid om de verbinding kort te verliezen. Ook kunnen andere gebeurtenissen langer duren om te beperken, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt.
+Het inschakelen van grootschalige-knoop punten (Citus) met hoge Beschik baarheid kan deze typen problemen automatisch oplossen. Uw toepassing moet echter nog steeds worden voor bereid om de verbinding kort te verliezen. Ook kunnen andere gebeurtenissen langer duren om te beperken, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke verbinding
 
@@ -49,7 +49,7 @@ Het inschakelen van hoge Beschik baarheid voor grootschalige-server groeps knoop
 
 Als de toepassing permanent geen verbinding kan maken met grootschalige (Citus), zijn de meest voorkomende oorzaken voor een onjuiste firewall configuratie of een gebruikers fout.
 
-* Firewall configuratie van coördinator knooppunt: Zorg ervoor dat de firewall van de grootschalige-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
+* Firewall configuratie van coördinator knooppunt: Controleer of de grootschalige-Server firewall (Citus) is geconfigureerd voor het toestaan van verbindingen van uw client, inclusief proxy servers en gateways.
 * Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. Sommige firewalls vereisen niet alleen toepassing op naam, maar kunnen de IP-adressen en poorten van de server toestaan.
 * Gebruikers fout: dubbel Controleer de connection string. Mogelijk hebt u niet-getypte para meters zoals de server naam. U kunt verbindings reeksen vinden voor verschillende taal frameworks en psql in de Azure Portal. Ga naar de pagina **verbindings reeksen** in de Server groep grootschalige (Citus). Houd er ook wel voor dat grootschalige-clusters (Citus) slechts één data base hebben en dat de vooraf gedefinieerde naam **Citus**is.
 

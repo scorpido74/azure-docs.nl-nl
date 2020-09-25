@@ -3,12 +3,12 @@ title: Klassikale Labs beheren in Azure Lab Services | Microsoft Docs
 description: Meer informatie over het maken en configureren van een leslokaal Lab, het weer geven van alle klassikale Labs, het delen van de registratie koppeling met een test gebruiker of het verwijderen van een lab.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251674"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -32,7 +32,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     1. Bekijk de **totale prijs per uur** die op de pagina wordt weer gegeven. 
     1. Selecteer **Opslaan**.
 
-        ![Nieuw labvenster](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![Scherm afbeelding met het venster New Lab.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > U ziet een optie voor het selecteren van een locatie voor uw Lab als het lab-account zodanig is geconfigureerd dat [Lab Creator de optie Lab-locatie kan kiezen](allow-lab-creator-pick-lab-location.md) . 
@@ -89,7 +89,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 
 ### <a name="vm-sizes"></a>Formaten van virtuele machines  
 
-| Grootte | Kernen | RAM | Description | 
+| Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
 | Normaal | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse | 

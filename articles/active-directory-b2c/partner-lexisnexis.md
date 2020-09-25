@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259251"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van LexisNexis met Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ Zodra een account is gemaakt, ontvangt u de informatie die u nodig hebt voor de 
 
 ### <a name="part-1---deploy-the-api"></a>Deel 1: de API implementeren
 
-Implementeer de meegeleverde API-code voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Implementeer de meegeleverde [API-code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 >[!NOTE]
 >U hebt de URL van de geïmplementeerde service nodig om Azure AD te configureren met de vereiste instellingen.
@@ -95,9 +95,9 @@ Toepassings instellingen kunnen worden [geconfigureerd in de app service in azur
 
 Deze oplossing maakt gebruik van aangepaste UI-sjablonen die door Azure AD B2C worden geladen. Deze UI-sjablonen doen het profileren dat rechtstreeks naar de ThreatMetrix-service wordt verzonden.
 
-Raadpleeg deze [instructies](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) voor het implementeren van de toegevoegde gebruikers interface bestanden naar een Blob Storage-account. De instructies omvatten het instellen van een Blob Storage-account, het configureren van CORS en het inschakelen van open bare toegang.
+Raadpleeg deze [instructies](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) voor het implementeren van de toegevoegde [gebruikers interface bestanden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) naar een Blob Storage-account. De instructies omvatten het instellen van een Blob Storage-account, het configureren van CORS en het inschakelen van open bare toegang.
 
-De gebruikers interface is gebaseerd op de pagina sjabloon oceaan blauw. Alle koppelingen in de gebruikers interface moeten worden bijgewerkt om te verwijzen naar de geïmplementeerde locatie. Zoek en vervang in de map gebruikers interface https://yourblobstorage/blobcontainer de geïmplementeerde locatie.
+De gebruikers interface is gebaseerd op de sjabloon van de [oceaan blauw](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue). Alle koppelingen in de gebruikers interface moeten worden bijgewerkt om te verwijzen naar de geïmplementeerde locatie. Zoek en vervang in de map gebruikers interface https://yourblobstorage/blobcontainer de geïmplementeerde locatie.
 
 ### <a name="part-4---create-api-policy-keys"></a>Deel 4: API-beleids sleutels maken
 
@@ -111,23 +111,23 @@ In het voorbeeld beleid worden de volgende sleutel namen gebruikt:
 
 ### <a name="part-5---update-the-api-url"></a>Deel 5: de API-URL bijwerken
 
-Zoek in het opgegeven TrustFrameworkExtensions-beleid het technische profiel met de naam `Rest-LexisNexus-SessionQuery` en werk het `ServiceUrl` meta gegevens item bij met de locatie van de hierboven geïmplementeerde API.
+Zoek in het opgegeven [TrustFrameworkExtensions-beleid](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)het technische profiel met de naam `Rest-LexisNexus-SessionQuery` en werk `ServiceUrl` het meta gegevens item bij met de locatie van de hierboven geïmplementeerde API.
 
 ### <a name="part-6---update-ui-url"></a>Deel 6-URL voor bijwerken van gebruikers interface
 
-Ga in het meegeleverde TrustFrameworkExtensions-beleid naar zoeken en vervangen om te zoeken naar https://yourblobstorage/blobcontainer/ de locatie waarin de gebruikers interface bestanden worden geïmplementeerd.
-
-### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Deel 7: het Azure AD B2C-beleid configureren
-
-Raadpleeg dit [document](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) om [Local accounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) te downloaden en configureer het beleid voor de Azure AD B2C Tenant.
-
->[!NOTE]
->Werk het opgegeven beleid bij om te koppelen aan uw specifieke Tenant.
+Ga in het meegeleverde [TrustFrameworkExtensions-beleid](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/ThreatMetrix/policy/TrustFrameworkExtensions.xml)naar zoeken en vervangen om te zoeken naar https://yourblobstorage/blobcontainer/ de locatie waarin de gebruikers interface bestanden worden geïmplementeerd.
 
 >[!NOTE]
 > Als best practice, raden we aan dat klanten toestemming berichten toevoegen op de pagina met kenmerk verzameling. Informeer gebruikers dat er informatie wordt verzonden naar services van derden voor identiteits verificatie.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Deel 7: het Azure AD B2C-beleid configureren
+
+Raadpleeg dit [document](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) om [Local accounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) te downloaden en configureer het [beleid](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) voor de Azure AD B2C Tenant.
+
+>[!NOTE]
+>Werk het opgegeven beleid bij om te koppelen aan uw specifieke Tenant.
+
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. Open de Azure AD B2C Tenant en selecteer onder beleids regels **gebruikers stromen**.
 

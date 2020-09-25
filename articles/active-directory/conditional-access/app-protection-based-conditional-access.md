@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 03069bc37333cbd26dfe4f40ce4496f3afe768ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266039"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -51,7 +51,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
    1. Selecteer **Gereed**.
-1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **Office 365**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
@@ -102,7 +102,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
    1. Selecteer **Gereed**.
-1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **Office 365**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.

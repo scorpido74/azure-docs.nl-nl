@@ -4,12 +4,12 @@ description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsof
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263926"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
@@ -101,9 +101,10 @@ Voor ASP.NET-toepassingen wordt volledige SQL-query tekst verzameld met de hulp 
 | Platform | Er zijn een of meer stappen nodig om een volledige SQL-query te verkrijgen |
 | --- | --- |
 | Azure Web App |Open in het configuratie scherm van uw web-app [de blade Application Insights](../../azure-monitor/app/azure-web-apps.md) en Schakel SQL-opdrachten in onder .net |
-| IIS-server (Azure VM, on-premises, enzovoort) | Gebruik het pakket [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet of gebruik de status monitor Power shell-module om [de instrumentatie-engine te installeren](../../azure-monitor/app/status-monitor-v2-api-reference.md) en IIS opnieuw te starten. |
+| IIS-server (Azure VM, on-premises, enzovoort) | Gebruik het pakket [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet of gebruik de status monitor Power shell-module om [de instrumentatie-engine te installeren](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine) en IIS opnieuw te starten. |
 | Azure Cloud Service | [Opstart taak toevoegen om StatusMonitor te installeren](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uw app moet worden uitgevoerd tot ApplicationInsights SDK tijdens het bouwen door NuGet-pakketten te installeren voor [ASP.net](./asp-net.md) -of [ASP.net core-toepassingen](./asp-net-core.md) |
 | IIS Express | Gebruik het [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-pakket.
+| Azure-webtaken | Gebruik het [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-pakket.
 
 Naast de hierboven beschreven platformspecifieke stappen moet u ook expliciet aanwijzen **om SQL-opdrachten verzamelen in te scha kelen** door het applicationInsights.config bestand te wijzigen met het volgende:
 

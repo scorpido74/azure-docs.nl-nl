@@ -12,14 +12,14 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258146"
 ---
-# <a name="publisher-verification"></a>Uitgever verificatie
+# <a name="publisher-verification"></a>Verificatie van uitgever
 
 Verificatie van de uitgever helpt beheerders en eind gebruikers begrijpen van de echtheid van toepassings ontwikkelaars die integreren met het micro soft Identity-platform. Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van een [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid en dat dit MPN-account is gekoppeld aan de registratie van de toepassing. 
 
@@ -33,9 +33,10 @@ Verificatie van de uitgever biedt de volgende voor delen:
 
 - **Verbeterde huis stijl**: een ' geverifieerde ' badge wordt weer gegeven op de Azure AD- [opdracht prompt voor toestemming](application-consent-experience.md), de pagina voor zakelijke apps en extra UX-Opper vlakken die worden gebruikt door eind gebruikers en beheerders. 
 
-- **Vloeiendere ondernemings acceptatie**: beheerders kunnen het beleid voor de [gebruikers toestemming](../manage-apps/configure-user-consent.md)configureren met de verificatie status van de uitgever als een van de primaire beleids criteria. 
+- **Vloeiendere ondernemings acceptatie**: beheerders kunnen het beleid voor de [gebruikers toestemming](../manage-apps/configure-user-consent.md)configureren met de verificatie status van de uitgever als een van de primaire beleids criteria.
 
-- **Verbeterde risico beoordeling**: de micro soft-detecties voor toestemmings aanvragen voor ' Risk ante ' bevatten uitgevers verificatie als signaal. 
+> [!NOTE]
+> Vanaf november 2020 kunnen eind gebruikers geen toestemming meer geven aan de meeste nieuw geregistreerde multi tenant-apps zonder geverifieerde uitgevers. Dit is van toepassing op apps die zijn geregistreerd na november 2020, OAuth 2.0 gebruiken om machtigingen aan te vragen buiten het basis aanmeld-en lees gebruikers profiel en toestemming vragen aan gebruikers in verschillende tenants dan de app die is geregistreerd in. Er wordt een waarschuwing weer gegeven op het scherm voor toestemming waarmee gebruikers worden geïnformeerd dat deze apps riskant zijn en afkomstig zijn van niet-geverifieerde uitgevers.    
 
 ## <a name="requirements"></a>Vereisten
 Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-partners al zijn voltooid. Dit zijn: 
@@ -69,7 +70,7 @@ Hieronder vindt u enkele veelgestelde vragen met betrekking tot het Uitgever ver
 
   Ontwikkel aars die ook met Microsoft 365 integreren, kunnen extra voor delen ontvangen van deze Program ma's. Raadpleeg voor meer informatie [Microsoft 365 Uitgever verklaring](/microsoft-365-app-certification/docs/attestation) en [Microsoft 365 app-certificering](/microsoft-365-app-certification/docs/certification). 
 
-- **Is dit hetzelfde als de Azure AD-toepassings galerie?** Geen uitgever verificatie is een complementair, maar afzonderlijk programma aan de [Azure Active Directory-toepassings galerie](../azuread-dev/howto-app-gallery-listing.md). Ontwikkel aars die voldoen aan de bovenstaande criteria, moeten het verificatie proces voor de uitgever onafhankelijk van deelname aan het programma volt ooien. 
+- **Is dit hetzelfde als de Azure AD-toepassings galerie?** Geen uitgever verificatie is een complementair, maar afzonderlijk programma aan de [Azure Active Directory-toepassings galerie](v2-howto-app-gallery-listing.md). Ontwikkel aars die voldoen aan de bovenstaande criteria, moeten het verificatie proces voor de uitgever onafhankelijk van deelname aan het programma volt ooien. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [markeren van een app als uitgever gecontroleerd](mark-app-as-publisher-verified.md).

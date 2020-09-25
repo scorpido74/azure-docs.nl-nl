@@ -12,34 +12,24 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257551"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenario: bureau blad-app voor het aanroepen van web-Api's
 
 Meer informatie over wat u nodig hebt om een bureau blad-app te bouwen die web-Api's aanroept.
 
-## <a name="prerequisites"></a>Vereisten
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>Aan de slag
 
-Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door de Snelstartgids voor het .NET-bureau blad, de Universeel Windows-platform (UWP) Quick Start of de macOS-Snelstartgids voor de systeem eigen app te volgen:
+Als u dat nog niet hebt gedaan, maakt u uw eerste toepassing door een Snelstartgids te volt ooien:
 
-> [!div class="nextstepaction"]
-> [Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
+- [Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app](./quickstart-v2-windows-desktop.md)
+- [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een UWP-app](./quickstart-v2-uwp.md)
+- [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een macOS-systeem eigen app](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Overzicht
 
@@ -64,6 +54,10 @@ U schrijft een bureaublad toepassing en u wilt gebruikers aanmelden bij uw toepa
 ## <a name="specifics"></a>Opsporingsgegevens
 
 Desktop toepassingen hebben een aantal specifieke kenmerken. Ze zijn voornamelijk afhankelijk van of uw toepassing interactieve authenticatie gebruikt.
+
+## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268065"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Validatie van waarschuwingen in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -62,16 +62,16 @@ Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgend
 
 ## <a name="validate-alerts-on-kubernetes"></a>Waarschuwingen valideren op Kubernetes <a name="validate-kubernetes"></a>
 
-Als u de preview-functie Security Center van het integreren van de Azure Kubernetes-service gebruikt, voert u de volgende kubectl-opdracht uit om te testen of uw waarschuwingen werken:
+Als u Azure Kubernetes service hebt geïntegreerd met Security Center, kunt u testen of uw waarschuwingen werken met de volgende kubectl-opdracht:
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-Raadpleeg [dit artikel](azure-kubernetes-service-integration.md)voor meer informatie over de integratie van de Azure Kubernetes-Service en Azure Security Center.
+Zie [Inleiding tot Azure Defender voor Kubernetes](defender-for-kubernetes-introduction.md) voor meer informatie over het beschermen van uw Kubernetes-knoop punten en-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebben we aandacht besteed aan het valideren van waarschuwingen. Raadpleeg de volgende artikelen als u meer over dit onderwerp wilt weten:
 
 * [Azure Key Vault detectie van dreigingen in Azure Security Center valideren](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
-* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -meer informatie over het beheren van waarschuwingen en het reageren op beveiligings incidenten in Security Center.
+* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) -meer informatie over het beheren van waarschuwingen en het reageren op beveiligings incidenten in Security Center.
 * [Beveiligingsstatus controleren in Azure Security Center](security-center-monitoring.md): meer informatie over het controleren van de status van uw Azure-resources.
-* [Beveiligings waarschuwingen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -meer informatie over de verschillende typen beveiligings waarschuwingen.
+* [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-type.md) -meer informatie over de verschillende typen beveiligings waarschuwingen.

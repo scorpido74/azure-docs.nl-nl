@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293081"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
@@ -34,7 +34,7 @@ Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het ver
 
 1. Meld u aan bij de Azure Portal en navigeer naar het **beleids** dashboard.
 2. Selecteer **definities** in het linkermenu om een lijst op te halen met alle ingebouwde beleids regels voor Azure-resources.
-3. De lijst filteren op **categorie = bewaking**. Zoek het beleid met de naam **[Preview]: Diagnostische instellingen voor Recovery Services kluis implementeren in log Analytics werk ruimte voor resource-specifieke categorieën**.
+3. Filter de lijst voor **Category = backup**. Zoek het beleid met de naam **[Preview]: Diagnostische instellingen voor Recovery Services kluis implementeren in log Analytics werk ruimte voor resource-specifieke categorieën**.
 
     ![Deel venster beleids definitie](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

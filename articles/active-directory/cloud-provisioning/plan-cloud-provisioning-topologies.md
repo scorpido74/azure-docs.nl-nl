@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266289"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Ondersteuning voor topologieën en scenario's voor het inrichten van Clouds Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Cloud inrichting. Dit artikel bevat alleen ondersteunde configuraties en scenario's.
@@ -34,7 +34,7 @@ Hier volgt een lijst met informatie die u moet onthouden wanneer u een oplossing
 - U kunt het kenmerk dat wordt gebruikt voor het bron anker niet wijzigen.
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/single-forest.png)
+![Diagram waarin de topologie voor één forest en één Tenant wordt weer gegeven.](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 De eenvoudigste topologie is één on-premises forest met een of meer domeinen en één Azure AD-Tenant.  Zie [zelf studie: Eén forest met één Azure AD-Tenant](tutorial-single-forest.md) voor een voor beeld van dit scenario.
 
@@ -45,7 +45,7 @@ De eenvoudigste topologie is één on-premises forest met een of meer domeinen e
 Een algemene topologie is een meerdere AD-forests met een of meer domeinen en één Azure AD-Tenant.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Bestaand forest met Azure AD Connect, nieuw forest met Cloud inrichting
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![Diagram waarin de topologie voor een bestaand forest en een nieuw forest wordt weer gegeven.](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 Dit scenario is een topologie die vergelijkbaar is met het scenario met meerdere forests, maar dit is een bestaande Azure AD Connect omgeving en brengt vervolgens een nieuw forest met Azure AD Connect Cloud inrichting aan.  Zie [zelf studie: een bestaand forest met één Azure AD-Tenant](tutorial-existing-forest.md) voor een voor beeld van dit scenario.
 

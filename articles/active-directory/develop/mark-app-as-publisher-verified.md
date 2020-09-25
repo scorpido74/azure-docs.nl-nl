@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258333"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uw app markeren als Uitgever geverifieerd
 
-Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de registratie van de toepassing. In dit artikel wordt beschreven hoe u het verificatie proces van de [Uitgever](publisher-verification-overview.md) kunt volt ooien.
+Wanneer een app-registratie een geverifieerde uitgever heeft, betekent dit dat de uitgever van de app de identiteit heeft [gecontroleerd](/partner-center/verification-responses) met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de app-registratie. In dit artikel wordt beschreven hoe u het verificatie proces van de [Uitgever](publisher-verification-overview.md) kunt volt ooien.
 
 ## <a name="quickstart"></a>Snelstart
 Als u al bent Inge schreven in de Microsoft Partner Network (MPN) en u aan de [vereisten](publisher-verification-overview.md#requirements)hebt voldaan, kunt u meteen aan de slag gaan: 
@@ -42,9 +42,9 @@ Zorg ervoor dat u aan de [vereisten](publisher-verification-overview.md#requirem
 
 1. Zorg ervoor dat u bent aangemeld met [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) voor een organisatie-of Azure ad-account dat is gemachtigd om wijzigingen aan te brengen in de app (s) die u wilt markeren als uitgever en op het MPN-account in partner centrum.
 
-    - In azure AD moet deze gebruiker lid zijn van een van de volgende rollen: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
+    - In azure AD moet deze gebruiker lid zijn van een van de volgende [rollen](../users-groups-roles/directory-assign-admin-roles.md): toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
 
-    - In het partner centrum moet deze gebruiker over de volgende rollen beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD). 
+    - In het partner centrum moet deze gebruiker over de volgende [rollen](/partner-center/permissions-overview)beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD). 
 
 1. Ga naar de app registratie-portal:  
 

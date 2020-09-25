@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257449"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -111,6 +111,12 @@ Als u de URI voor de App-ID hebt geaccepteerd die is voorgesteld door de app-reg
 
 Wanneer een app wordt aangeroepen voor een controller actie met een kenmerk **[autoriseren]** , ASP.NET en ASP.net core het toegangs token uit het Bearer-token van de autorisatie-header ophalen. Het toegangs token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, die micro soft Identity model-extensies aanroept voor .NET.
 
+#### <a name="microsoftidentityweb"></a>Micro soft. Identity. Web
+
+Micro soft raadt u aan het NuGet-pakket [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) te gebruiken bij het ontwikkelen van een web-API met ASP.net core.
+
+_Micro soft. Identity. Web_ biedt de lijm tussen ASP.net core, de verificatie-middleware en de [micro soft Authentication Library (MSAL)](msal-overview.md) voor .net. Het biedt een duidelijker, robuuster ervaring voor ontwikkel aars en maakt gebruik van de kracht van het micro soft-identiteits platform en de Azure AD B2C.
+
 #### <a name="using-microsoftidentityweb-templates"></a>Micro soft. Identity. Web sjablonen gebruiken
 
 U kunt een volledig nieuwe web-API maken met behulp van micro soft. Identity. web project-sjablonen. Zie [micro soft. Identity. Web-Web API project Temp late (Engelstalig)](https://aka.ms/ms-id-web/webapi-project-templates) voor meer informatie.
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. U kunt de sjablonen echter wijzigen om het micro soft Identity platform-eind punt te gebruiken met behulp van [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web), beschikbaar als een NuGet-pakket, waarbij u de code in *Startup.cs*vervangt:
+ Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. U kunt de sjablonen echter wijzigen om het micro soft Identity platform-eind punt te gebruiken met behulp van [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Vervang de code in *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289800"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -76,7 +76,7 @@ De Security Center verdediging omvat:
 - **Aanbevelingen voor beveiliging** -beschik bare aanbevelingen om u te helpen te voldoen aan de aanbevolen procedures voor beveiliging voor AKS. Deze aanbevelingen zijn opgenomen in uw beveiligde Score om ervoor te zorgen dat ze worden weer gegeven als onderdeel van de beveiligings postuur van uw organisatie. Een voor beeld van een AKS-aanbeveling die u kunt zien, is ' op rollen gebaseerd toegangs beheer moet worden gebruikt om de toegang tot een Kubernetes-service cluster te beperken '.
 - **Bedreigings beveiliging** : Security Center u wordt gewaarschuwd voor bedreigingen en schadelijke activiteiten die zijn gedetecteerd op het niveau van de host en het AKS-cluster.
 
-Meer informatie over de [integratie van Azure Kubernetes Services met Security Center](azure-kubernetes-service-integration.md).
+Meer informatie over de [integratie van Azure Kubernetes Services met Security Center](defender-for-kubernetes-introduction.md).
 
 Meer informatie over [de beveiligings functies van de container in Security Center](container-security.md).
 

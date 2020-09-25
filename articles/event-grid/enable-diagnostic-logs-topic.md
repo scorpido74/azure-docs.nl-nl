@@ -3,12 +3,12 @@ title: Azure Event Grid-Diagnostische logboeken voor onderwerpen of domeinen ins
 description: In dit artikel vindt u stapsgewijze instructies voor het inschakelen van Diagnostische logboeken voor een Azure Event grid-onderwerp.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297518"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnostische logboeken inschakelen voor Azure Event grid-onderwerpen of-domeinen
 Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bezorg fouten** logboeken vastleggen en weer geven in een opslag account, een event hub of een log Analytics-werk ruimte. In dit artikel vindt u stapsgewijze instructies voor het inschakelen van deze instellingen in een Event Grid onderwerp.
@@ -26,7 +26,7 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
 > [!NOTE]
 > De volgende procedure bevat stapsgewijze instructies voor het inschakelen van Diagnostische logboeken voor een onderwerp. Stappen voor het inschakelen van Diagnostische logboeken voor een domein zijn vergelijkbaar. In stap 2 gaat u naar het gebeurtenis raster **domein** in de Azure Portal.  
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar het event grid-onderwerp waarvoor u de instellingen voor Diagnostische logboeken wilt inschakelen. 
     1. Zoek in de zoek balk aan de bovenkant naar **Event grid onderwerpen**. 
     
@@ -37,25 +37,25 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
     
     ![Knop diagnostische instelling toevoegen](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Geef een **naam** op voor de diagnostische instelling. 
-7. Selecteer de opties **DeliveryFailures** en **PublishFailures** in de sectie **logboek** . 
+6. Selecteer de opties **DeliveryFailures** en **PublishFailures** in de sectie **logboek** . 
     ![De fouten selecteren](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. Schakel een of meer van de vastleg doelen in voor de logboeken en configureer ze vervolgens door een eerder gemaakte Capture-bron te selecteren. 
+7. Schakel een of meer van de vastleg doelen in voor de logboeken en configureer ze vervolgens door een eerder gemaakte Capture-bron te selecteren. 
     - Als u **archiveren naar een opslag account**selecteert, selecteert u **opslag account-configureren**en selecteert u vervolgens het opslag account in uw Azure-abonnement. 
 
-        ![Archiveren naar een Azure Storage-account](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![Scherm opname van de pagina Diagnostische instellingen met ' archiveren naar een Azure-opslag account ' ingeschakeld en een opslag account geselecteerd.](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - Als u **Stream naar een event hub**selecteert, selecteert u **Event hub-configure**en selecteert u vervolgens de Event Hubs naam ruimte, Event hub en het toegangs beleid. 
-        ![Streamen naar een Event Hub](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![Scherm opname van de pagina Diagnostische instellingen met ' stream to a Event Hub ' ingeschakeld.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Als u **verzenden naar log Analytics**selecteert, selecteert u de werk ruimte log Analytics.
-        ![Verzenden naar Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![Scherm opname van de pagina Diagnostische instellingen met de optie Send to Log Analytics.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. Selecteer **Opslaan**. Selecteer vervolgens **X** in de rechter bovenhoek om de pagina te sluiten. 
 9. Ga nu terug naar de pagina **Diagnostische instellingen** en controleer of er een nieuwe vermelding wordt weer gegeven in de tabel **Diagnostische instellingen** . 
-    ![Diagnostische instelling in de lijst](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![Scherm opname van de pagina Diagnostische instellingen met een nieuwe vermelding die is gemarkeerd in de tabel Diagnostische instellingen.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      U kunt ook het verzamelen van alle metrische gegevens inschakelen voor het onderwerp. 
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Diagnostische logboeken inschakelen voor een systeem onderwerp
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar het event grid-onderwerp waarvoor u de instellingen voor Diagnostische logboeken wilt inschakelen. 
     1. Zoek in de zoek balk aan de bovenkant naar **Event grid systeem onderwerpen**. 
     

@@ -3,13 +3,13 @@ title: Hybride verbindingen-HTTP-aanvragen in een knoop punt Azure Relay
 description: Hier leert u hoe u een consoletoepassing schrijft in Node.js voor HTTP-aanvragen voor hybride verbindingen van Azure Relay.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff6b4e6b99299091910df537bf90984f493405e3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 249b4fa231cd54a1a8054b32985ed0e48fcc16f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263756"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Aan de slag met HTTP-aanvragen voor hybride verbindingen van Relay in Node
 

@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295035"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Een SAML 2.0-id-provider (IdP) gebruiken voor eenmalige aanmelding
 
@@ -306,7 +306,7 @@ Micro soft heeft een hulp programma meegeleverd dat u kunt gebruiken om uw ID-pr
 2.  Klik op nu installeren om te beginnen met het downloaden en installeren van het hulp programma.
 3.  Selecteer Ik kan Federatie niet instellen met Office 365, Azure of andere services die gebruikmaken van Azure Active Directory.
 4.  Wanneer het hulp programma is gedownload en uitgevoerd, ziet u het venster connectiviteits diagnostiek. Het hulp programma gaat u stapsgewijs door uw Federatie verbinding te testen.
-5.  De connectiviteits analyse opent uw SAML 2,0 IDP om u aan te melden, voert u de referenties in voor de gebruikers-principal die u wilt testen: ![ SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  De connectiviteits analyse opent uw SAML 2,0 IDP om u aan te melden, voert u de referenties in voor de gebruikers-principal die u wilt testen: ![ scherm opname van het aanmeld venster voor uw SAML 2,0 IDP.](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  In het venster voor de Federatie test aanmelding voert u een account naam en wacht woord in voor de Azure AD-Tenant die is geconfigureerd voor federatief met uw SAML 2,0-ID-provider. Het hulp programma probeert zich aan te melden met die referenties en gedetailleerde resultaten van tests die tijdens de aanmeldings poging worden uitgevoerd, worden als uitvoer geleverd.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Dit venster toont een mislukt resultaat van testen. Als u op gedetailleerde resultaten bekijken klikt, wordt informatie weer gegeven over de resultaten voor elke test die is uitgevoerd. U kunt de resultaten ook opslaan op schijf om ze te delen.

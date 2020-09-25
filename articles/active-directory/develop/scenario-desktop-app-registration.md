@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257504"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Bureau blad-app voor het aanroepen van web-Api's: app-registratie
 
@@ -33,7 +33,6 @@ Als uw bureaublad toepassing interactieve verificatie gebruikt, kunt u gebruiker
 ### <a name="audience-for-desktop-app-silent-flows"></a>Doel groep voor desktop-app Silent flows
 
 - Als u geïntegreerde Windows-verificatie of een gebruikers naam en wacht woord wilt gebruiken, moet uw toepassing zich aanmelden bij uw eigen Tenant, bijvoorbeeld als u een LOB-ontwikkelaar (line-of-Business) bent. Of, in Azure Active Directory organisaties, moet uw toepassing gebruikers in uw eigen Tenant aanmelden als deze een ISV-scenario is. Deze verificatie stromen worden niet ondersteund voor persoonlijke micro soft-accounts.
-- Als u de apparaatcode stroom wilt gebruiken, kunt u zich nog niet aanmelden bij gebruikers met hun persoonlijke micro soft-accounts.
 - Als u gebruikers aanmeldt met sociale identiteiten die een Business-to-commerce (B2C)-instantie en-beleid door geven, kunt u alleen de interactieve verificatie en gebruikers naam-wacht woord gebruiken.
 
 ## <a name="redirect-uris"></a>Omleidings-Uri's
@@ -45,11 +44,14 @@ De omleidings-Uri's voor gebruik in een bureaublad toepassing is afhankelijk van
   > [!IMPORTANT]
   > Vandaag gebruikt MSAL.NET een andere omleidings-URI standaard in bureaublad toepassingen die worden uitgevoerd op Windows ( `urn:ietf:wg:oauth:2.0:oob` ). In de toekomst wilt u deze standaard instelling wijzigen. u wordt aangeraden om te gebruiken `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
-- Als u een systeem eigen doel stelling-C of SWIFT-app voor macOS bouwt, registreert u de omleidings-URI op basis van de bundel-id van uw toepassing in de volgende notatie: msauth. <your.app.bundle.id>://auth. Vervang <your.app.bundle.id> door de bundel-id van uw toepassing.
+- Als u een systeem eigen doel-C of SWIFT-app voor macOS bouwt, moet u de omleidings-URI registreren op basis van de bundel-id van uw toepassing in de volgende indeling: `msauth.<your.app.bundle.id>://auth` . Vervang door `<your.app.bundle.id>` de bundel-id van uw toepassing.
 - Als uw app alleen geïntegreerde Windows-verificatie of een gebruikers naam en wacht woord gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stromen maken een retour afronding naar het micro soft Identity platform v 2.0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI.
-- Als u de apparaatcode stroom, geïntegreerde Windows-verificatie en een gebruikers naam en wacht woord van een vertrouwelijke client toepassings stroom die geen omleidings-Uri's heeft, wilt onderscheiden (de client referentie stroom die wordt gebruikt in de daemon-toepassingen), moet u uitdrukkelijk controleren of uw toepassing een open bare client toepassing is. Voor deze configuratie gaat u naar het gedeelte **verificatie** voor uw toepassing. In de Subsectie **Geavanceerde instellingen** , in de **standaard client type** alinea, selecteert u **Ja** voor **toepassing behandelen als een open bare client**.
+- Voor het onderscheiden van de [apparaatcode stroom](scenario-desktop-acquire-token.md#device-code-flow), [geïntegreerde Windows-verificatie](scenario-desktop-acquire-token.md#integrated-windows-authentication)en een [gebruikers naam en wacht woord](scenario-desktop-acquire-token.md#username-and-password) van een vertrouwelijke client toepassing met behulp van een client referentie stroom die wordt gebruikt in [daemon-toepassingen](scenario-daemon-overview.md), waarvoor geen omleidings-URI is vereist, moet u deze configureren als een open bare client toepassing. Deze configuratie wordt gerealiseerd:
 
-  ![Open bare client toestaan](media/scenarios/default-client-type.png)
+    1. Selecteer in de [Azure Portal](https://portal.azure.com)uw app in **app-registraties**en selecteer vervolgens **verificatie**.
+    1. In **Geavanceerde instellingen**  >  **standaard client type**  >  **behandel toepassing als een open bare client**, selecteert u **Ja**.
+
+        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Instelling van open bare client inschakelen in het deel venster verificatie in Azure Portal":::
 
 ## <a name="api-permissions"></a>API-machtigingen
 

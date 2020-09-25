@@ -4,12 +4,12 @@ description: Hoe u gebruikers beheert in azure Block Chain Workbench.
 ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263008"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Gebruikers beheren in azure Block Chain workbench
 
@@ -79,7 +79,7 @@ Gebruik de toepassing Block Chain Workbench voor het beheren van gebruikers en o
 1. Selecteer de tegel member om een lijst met de huidige leden weer te geven.
 1. Selecteer **leden toevoegen**.
 
-    ![Leden toevoegen](./media/manage-users/application-add-members.png)
+    ![Scherm afbeelding toont het venster toepassings lidmaatschap met de knop een lid toevoegen gemarkeerd.](./media/manage-users/application-add-members.png)
 
 1. Zoek de naam van de gebruiker.  Alleen Azure AD-gebruikers die voorkomen in de Blockchain Workbench-tenant staan vermeld. Als de gebruiker niet wordt gevonden, moet u [Azure AD-gebruikers toevoegen](#add-azure-ad-users).
 

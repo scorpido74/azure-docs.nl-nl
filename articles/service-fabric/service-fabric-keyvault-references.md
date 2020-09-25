@@ -3,16 +3,22 @@ title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen
 description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261138"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
 
 Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veilig opslaan van geheimen dat vereist is voor uw toepassing. U kunt bijvoorbeeld de referenties van de container opslagplaats opslaan in de sleutel kluis en hiernaar verwijzen in het toepassings manifest. Service Fabric KeyVaultReference gebruikt Service Fabric beheerde identiteit en maakt het eenvoudig om te verwijzen naar sleutel kluis geheimen. In de rest van dit artikel vindt u informatie over het gebruik van Service Fabric KeyVaultReference en bevat een typisch gebruik.
+
+> [!IMPORTANT]
+> Het gebruik van deze preview-functie wordt niet aanbevolen in productie omgevingen.
+
+> [!NOTE]
+> De preview-functie voor de sleutel kluis referentie ondersteunt alleen [versie](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) -geheimen. Geheimen zonder versie worden niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -97,7 +103,7 @@ Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat i
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- Raadpleeg de nieuwe sectie in ApplicationManifest.xml in`<ConfigPackagePolicies>`
+- Raadpleeg de nieuwe sectie in ApplicationManifest.xml in `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>

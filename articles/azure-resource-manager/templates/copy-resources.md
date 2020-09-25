@@ -2,19 +2,19 @@
 title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om het resource type meermaals te implementeren.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293965"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Resource iteratie in ARM-sjablonen
 
 In dit artikel wordt beschreven hoe u meer dan één exemplaar van een resource in uw Azure Resource Manager-sjabloon (ARM) kunt maken. Door het element **kopiëren** toe te voegen aan de sectie resources van uw sjabloon, kunt u het aantal resources dat moet worden geïmplementeerd, dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
 
-U kunt ook kopiëren met [Eigenschappen](copy-properties.md), [variabelen](copy-variables.md) en [uitvoer](copy-outputs.md)gebruiken.
+U kunt ook kopiëren met [Eigenschappen](copy-properties.md), [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
 
 Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
 
@@ -155,6 +155,8 @@ Als u waarden van de geïmplementeerde resources wilt retour neren, kunt u [in d
 Resource Manager maakt standaard de resources parallel. Er geldt geen limiet voor het aantal resources dat parallel is geïmplementeerd, met uitzonde ring van de totale limiet van 800 resources in de sjabloon. De volg orde waarin ze worden gemaakt, is niet gegarandeerd.
 
 Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een bron wilt implementeren, stelt `mode` u in op **serie** en `batchSize` op het aantal exemplaren dat tegelijk moet worden geïmplementeerd. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
+
+De waarde voor `batchSize` kan niet groter zijn dan de waarde voor `count` in het element copy.
 
 Als u opslag accounts bijvoorbeeld twee keer tegelijk wilt implementeren, gebruikt u:
 

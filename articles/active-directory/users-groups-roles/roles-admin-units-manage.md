@@ -1,5 +1,5 @@
 ---
-title: Beheer eenheden toevoegen en verwijderen (preview)-Azure Active Directory | Microsoft Docs
+title: Beheer eenheden toevoegen en verwijderen-Azure Active Directory | Microsoft Docs
 description: Beheer eenheden gebruiken om het bereik van rolmachtigingen te beperken in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264692"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Beheer eenheden in Azure Active Directory beheren
 
@@ -45,7 +45,7 @@ Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure 
 
 1. Ga in de Azure Portal naar Azure AD en selecteer vervolgens in het linkerdeel venster **beheer eenheden**.
 
-    ![Scherm afbeelding van de koppeling administratieve eenheden (preview) in azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Scherm afbeelding van de beheer unitslink in azure AD](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
 1. Selecteer **toevoegen** en voer vervolgens de naam van de beheer eenheid in. U kunt desgewenst een beschrijving van de beheer eenheid toevoegen.
 

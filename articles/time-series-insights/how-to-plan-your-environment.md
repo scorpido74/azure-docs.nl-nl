@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287408"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Uw Azure Time Series Insights Gen2-omgeving plannen
 
@@ -69,10 +69,7 @@ U kunt Maxi maal drie sleutels selecteren om uw resources uniek te onderscheiden
 
 De **tijds tempel** eigenschap is ook belang rijk. U kunt deze eigenschap aanwijzen wanneer u gebeurtenis bronnen toevoegt. Elke gebeurtenis bron heeft een optionele time stamp-eigenschap die wordt gebruikt om gebeurtenis bronnen na verloop van tijd bij te houden. Time Stamp-waarden zijn hoofdletter gevoelig en moeten worden opgemaakt als afzonderlijke specificatie van elke bron van de gebeurtenis.
 
-> [!TIP]
-> Controleer de vereisten voor de indeling en het parseren van uw gebeurtenis bronnen.
-
-Als dit veld leeg blijft, wordt de tijd voor het plaatsen van gebeurtenissen van een gebeurtenis bron gebruikt als tijds tempel van de gebeurtenis. Als u historische gegevens of batch gebeurtenissen verzendt, is het aanpassen van de tijds tempel eigenschap handiger dan de standaard tijd voor het in de wachtrij plaatsen van gebeurtenissen. Lees voor meer informatie over het toevoegen van [gebeurtenis bronnen in Azure IOT hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Als u niets opgeeft, wordt het tijdstip waarop de gebeurtenis in de IoT Hub of event hub in de wachtrij is geplaatst, gebruikt als tijds tempel van de gebeurtenis. Over het algemeen moeten gebruikers ervoor kiezen om de tijds tempel eigenschap aan te passen en de tijd te gebruiken waarop de sensor of tag het lezen heeft gegenereerd, in plaats van de hub in de tijd. Lees voor meer informatie over tijd zone-offsets de [tijds tempel](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)van de gebeurtenis.
 
 ## <a name="understand-the-time-series-model"></a>Meer informatie over het time series-model
 
@@ -91,7 +88,7 @@ Een goede vuist regel:
 * Sla meta gegevens op in uw time series-model.
 * Zorg ervoor dat de modus Time Series, instance Fields en Events alleen de benodigde informatie bevat, zoals een tijd reeks-ID of eigenschap time stamp.
 
-Lees voor meer informatie [Shape-gebeurtenissen](./time-series-insights-send-events.md#supported-json-shapes).
+Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-escaping-rules.md)voor meer informatie en om te begrijpen hoe gebeurtenissen worden afgevlakt en opgeslagen.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

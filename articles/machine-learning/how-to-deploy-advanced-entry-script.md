@@ -1,19 +1,20 @@
 ---
 title: Invoer script voor geavanceerde scenario's
 titleSuffix: Azure Machine Learning entry script authoring
+description: Meer informatie over het schrijven van Azure Machine Learning invoer scripts voor vóór en na de verwerking tijdens de implementatie.
 author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/17/2020
 ms.author: gopalv
-ms.openlocfilehash: c135d649feb42c8fa735e67ad6f3c3e51551d3e9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0146c6c003e3c22b63b5fde5c8979a9d7c112b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261388"
 ---
 # <a name="advanced-entry-script-authoring"></a>Geavanceerde scriptinvoer ontwerpen
 
@@ -40,6 +41,49 @@ Als u schema generatie wilt gebruiken, neemt u het open-source `inference-schema
 * Retour neren van een woorden lijst van het type ' StandardPythonParameterType ', dat misschien is genest met PandasDataFrameParameterTypes.
 Definieer de voorbeeld indelingen voor invoer en uitvoer in `input_sample` de `output_sample` variabelen en, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de `run()` functie. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
 
+
+
+```python
+#Example: scikit-learn and Swagger
+import json
+import numpy as np
+import os
+from sklearn.externals import joblib
+from sklearn.linear_model import Ridge
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
+    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
+    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+
+    # If your model were stored in the same directory as your score.py, you could also use the following:
+    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
+
+    # Deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+
+input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
+output_sample = np.array([3726.995])
+
+
+@input_schema('data', NumpyParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # You can return any data type, as long as it is JSON serializable.
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI compatibel eind punt 
 
@@ -266,9 +310,19 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam met de methode [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand of de bestanden op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad van de map die de bestanden bevat.
+Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam met de methode [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand of de bestanden op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad van de map die de bestanden bevat.
 
 Wanneer u een model registreert, geeft u het een naam. De naam komt overeen met de locatie waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
+
+## <a name="framework-specific-examples"></a>Framework-specifieke voor beelden
+
+Hieronder vindt u meer voor beelden van script voorbeelden voor specifieke machine learning use cases:
+
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
+* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
+* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

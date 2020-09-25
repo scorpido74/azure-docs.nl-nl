@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255159"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
@@ -196,7 +196,7 @@ Als u integreert met Log Analytics, kunt u de logboeken bekijken door **Logboeke
 
 **Een waarschuwing maken**
 
-Volg de instructies in [logboek waarschuwingen maken, weer geven en beheren met Azure monitor][logalerts]om een waarschuwing te maken voor uw logboeken. In het kort:
+Volg de instructies in [logboek waarschuwingen maken, weer geven en beheren met Azure monitor](../../azure-monitor/platform/alerts-log.md)om een waarschuwing te maken voor uw logboeken. In het kort:
 
 * Open de pagina waarschuwingen in uw ASE-Portal
 * **Nieuwe waarschuwings regel** selecteren

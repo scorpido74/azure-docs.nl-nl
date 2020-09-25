@@ -1,14 +1,16 @@
 ---
 title: Belonings Score-persoonlijker
 description: De belonings score geeft aan hoe goed de aanpassings keuze, RewardActionID, voor de gebruiker heeft geresulteerd. De waarde van de belonings score wordt bepaald door uw bedrijfs logica, op basis van waarnemingen van gebruikers gedrag. Personaler traint de machine learning modellen door de beloningen te evalueren.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253493"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Belonings scores geven aan dat het succes van personalisatie is geslaagd
 
@@ -91,7 +93,7 @@ Als u belonings scores opneemt, ligt uw definitieve beloning mogelijk buiten het
     * Als er een lijst met films wordt weer gegeven, kunt u, als de gebruiker de eerste keer aanwijst voor een tijdje, bepalen dat er een bepaalde gebruikers betrokkenheid heeft plaatsgevonden. Het gedrag kan tellen met een belonings Score van 0,1.
     * Als de gebruiker de pagina opent en vervolgens afsluit, kan de belonings score 0,2 zijn.
 
-## <a name="reward-wait-time"></a>Wacht tijd op beloning
+## <a name="reward-wait-time"></a>Wachttijd voor beloning
 
 Personaler geeft de informatie van een classificatie oproep samen met de beloningen die worden verzonden in belonings gesprekken om het model te trainen. Deze kunnen zich op verschillende tijdstippen voordoen. Personaler wacht op een beperkte tijd, vanaf het moment dat de rang oproep heeft plaatsgevonden, zelfs als de rang oproep is gemaakt als inactieve gebeurtenis en later wordt geactiveerd.
 

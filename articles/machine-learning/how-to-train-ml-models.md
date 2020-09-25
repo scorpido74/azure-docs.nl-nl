@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2b944f6207ecc47df4176a512a900e08e6b0d643
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 051a910fb8803f7c9ebc6d9cdfb00bc814db4c0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250858"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 Zodra u het model hebt getraind, kunt u het opslaan en registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen.
 
-Als u de volgende code uitvoert, wordt het model geregistreerd in uw werk ruimte en wordt het beschikbaar gemaakt om te verwijzen op naam in externe Compute-contexten of implementatie scripts. Zie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) de naslag documentatie voor meer informatie en aanvullende para meters.
+Als u de volgende code uitvoert, wordt het model geregistreerd in uw werk ruimte en wordt het beschikbaar gemaakt om te verwijzen op naam in externe Compute-contexten of implementatie scripts. Zie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) de naslag documentatie voor meer informatie en aanvullende para meters.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

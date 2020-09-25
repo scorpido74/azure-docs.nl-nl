@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259319"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van IDology met Azure Active Directory B2C 
 
@@ -67,7 +67,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 ### <a name="part-1---deploy-the-api"></a>Deel 1: de API implementeren
 
-Implementeer de meegeleverde API-code voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Implementeer de meegeleverde [API-code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) voor een Azure-service. De code kan worden gepubliceerd vanuit Visual Studio, gevolgd door deze [instructies](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 U hebt de URL van de geïmplementeerde service nodig om Azure AD te configureren met de vereiste instellingen.
 
@@ -103,7 +103,7 @@ In het voorbeeld beleid worden de volgende sleutel namen gebruikt:
 
       1. Werk in de sectie `Idology-ExpectId-API` het `ServiceUrl` meta gegevens item bij met de locatie van de hierboven geïmplementeerde API.
 
-      1. Vervang door `yourtenant` de naam van uw Azure AD B2C-Tenant.
+      1. Vervang `yourtenant` door de naam van uw Azure AD B2C-tenant.
       Als de naam van uw Azure AD B2C Tenant bijvoorbeeld is  `contosotenant` , vervangt u alle exemplaren van  `yourtenant.onmicrosoft.com`   met `contosotenant.onmicrosoft.com` .
 
    1. Open het bestand TrustFrameworkExtensions.xml:
@@ -117,7 +117,7 @@ In het voorbeeld beleid worden de volgende sleutel namen gebruikt:
 > [!NOTE]
 > Als best practice, raden we aan dat klanten toestemming berichten toevoegen op de pagina met kenmerk verzameling. Informeer gebruikers dat er informatie wordt verzonden naar services van derden voor identiteits verificatie.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. Open de Azure AD B2C-Tenant en selecteer onder **beleids regels** **gebruikers stromen**.
 

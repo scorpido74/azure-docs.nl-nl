@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266680"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -45,6 +45,7 @@ Er zijn drie manieren om te controleren of een toepassing in quarantaine is gepl
   - Zorg ervoor dat u een geldig **e-mail adres voor meldingen** hebt opgegeven in de inrichtings configuratie voor de toepassing.
   - Zorg ervoor dat er geen spam filtering is in het postvak in van de meldings-e-mail.
   - Zorg ervoor dat u zich niet afmeldt bij e-mail berichten.
+  - Controleren op e-mails van azure-noreply@microsoft.com
 
 ## <a name="why-is-my-application-in-quarantine"></a>Waarom wordt mijn toepassing in quarantaine geplaatst?
 

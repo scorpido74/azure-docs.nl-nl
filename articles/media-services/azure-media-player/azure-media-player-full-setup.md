@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296243"
 ---
 # <a name="azure-media-player-full-setup"></a>Volledige installatie van Azure Media Player #
 
@@ -56,11 +56,11 @@ Met Azure Media Player kunt u een HTML5-Video code gebruiken om een video in te 
 1. Met het `<data-setup>` kenmerk op de `<video>` Azure Media Player vertelt u automatisch de video instellen wanneer de pagina gereed is en leest u de (in JSON-indeling) van het kenmerk.
 1. Het `id` kenmerk: moet worden gebruikt en uniek zijn voor elke video op dezelfde pagina.
 1. Het `class` kenmerk bevat twee klassen:
-    - `azuremediaplayer`Hiermee worden stijlen toegepast die vereist zijn voor de functionaliteit van Azure Media Player-gebruikers interface
-    - `amp-default-skin`de standaard weergave Toep assen op de HTML5-besturings elementen
+    - `azuremediaplayer` Hiermee worden stijlen toegepast die vereist zijn voor de functionaliteit van Azure Media Player-gebruikers interface
+    - `amp-default-skin` de standaard weergave Toep assen op de HTML5-besturings elementen
 1. De `<source>` bevat twee vereiste kenmerken
-    - `src`het kenmerk kan een bestand met de extensie **. ISM/manifest* van Azure Media Services toevoegen, Azure Media Player automatisch de URL'S voor Dash, Smooth en HLS toevoegen aan de speler
-    - `type`het kenmerk is het vereiste MIME-type van de stroom. Het MIME-type dat is gekoppeld aan *'. ISM/manifest '* is *' application/vnd. MS-sstr + XML '*
+    - `src` het kenmerk kan een bestand met de extensie **. ISM/manifest* van Azure Media Services toevoegen, Azure Media Player automatisch de URL'S voor Dash, Smooth en HLS toevoegen aan de speler
+    - `type` het kenmerk is het vereiste MIME-type van de stroom. Het MIME-type dat is gekoppeld aan *'. ISM/manifest '* is *' application/vnd. MS-sstr + XML '*
 1. Het *optionele* `<data-setup>` kenmerk op de `<source>` vertelt Azure Media Player als er een uniek afleverings beleid voor de stream van Azure Media Services is, inclusief, maar niet beperkt tot, het versleutelings type (AES of PlayReady, Widevine of Fairplay) en het token.
 
 Kenmerken, instellingen, bronnen en sporen op exact dezelfde manier opnemen/uitsluiten als voor HTML5-Video.

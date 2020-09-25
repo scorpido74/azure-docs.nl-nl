@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b8673dd98ab66714c54720ea1d909a90e117c18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266425"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Gegevens locatie en klant gegevens voor Azure Multi-Factor Authentication
 
@@ -28,7 +28,7 @@ De Azure Multi-Factor Authentication-service heeft data centers in de Verenigde 
 
 * Multi-factor Authentication met telefoon gesprekken afkomstig van Amerikaanse data centers en wordt gerouteerd door wereld wijde providers.
 * Verificatie aanvragen voor algemeen gebruik van andere regio's, zoals Europa of Australië, worden momenteel verwerkt op basis van de locatie van de gebruiker.
-* Push meldingen met behulp van de Microsoft Authenticator-app zijn afkomstig van de regionale data centers op basis van de locatie van de gebruiker.
+* Push meldingen met behulp van de app Microsoft Authenticator worden momenteel verwerkt in de regionale data centers op basis van de locatie van de gebruiker.
     * Leverancierspecifieke services van apparaten, zoals Apple Push meldingen, kunnen buiten de locatie van de gebruiker vallen.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Persoons gegevens die zijn opgeslagen door Azure Multi-Factor Authentication

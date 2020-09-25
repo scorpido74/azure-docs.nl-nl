@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258673"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -262,7 +262,7 @@ De naamgevings standaard helpt u bij het vinden van beleids regels en het begrij
 
 * Wanneer dit van toepassing is (indien van toepassing)
 
-![Naamgevings standaard](media/plan-conditional-access/11.png)
+![Scherm opname van de naamgevings standaarden voor beleids regels.](media/plan-conditional-access/11.png)
 
 **Voor beeld**; Een beleid om MFA te vereisen voor marketing gebruikers die toegang hebben tot de Dynamics CRP-app vanuit externe netwerken kunnen het volgende zijn:
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088320"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256888"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problemen met Verificatie van uitgever oplossen
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
@@ -150,31 +150,45 @@ Hier volgt een lijst met mogelijke fout codes die u kunt ontvangen, hetzij bij h
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-De MPN-ID die u hebt gegeven ( <MPNID> ) bestaat niet of u hebt er geen toegang toe. Geef een geldige MPN-ID op en probeer het opnieuw. 
+De MPN-ID die u hebt gegeven ( <MPNID> ) bestaat niet of u hebt er geen toegang toe. Geef een geldige MPN-ID op en probeer het opnieuw.
+    
+Dit wordt meestal veroorzaakt door de aangemelde gebruiker die geen lid is van de juiste rol voor het MPN-account in het partner centrum. Zie de [vereisten](publisher-verification-overview.md#requirements) voor een lijst met in aanmerking komende rollen en Zie [veelvoorkomende problemen](#common-issues) voor meer informatie. Kan ook worden veroorzaakt door de Tenant waarvoor de app is geregistreerd, niet wordt toegevoegd aan het MPN-account of een ongeldige MPN-ID.
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw. 
+De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw.
+    
+Dit wordt meestal veroorzaakt wanneer er een MPN-ID wordt gegeven die overeenkomt met een partner locatie account (PLA). Alleen globale accounts van partners worden ondersteund. Zie de structuur van het [Partner Center-account](/partner-center/account-structure) voor meer informatie.
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw. 
+De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw.
+    
+Dit wordt meestal veroorzaakt door de verkeerde MPN-ID.
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 De MPN-ID ( <MPNID> ) die u hebt ingevoerd, heeft het hebben-proces nog niet voltooid. Voltooi dit proces in het partner centrum en probeer het opnieuw. 
+    
+Dit wordt meestal veroorzaakt door wanneer het MPN-account het [verificatie](/partner-center/verification-responses) proces niet heeft voltooid.
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw. 
+   
+Dit wordt meestal veroorzaakt door de verkeerde MPN-ID.
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw. 
+De MPN-ID die u hebt gegeven ( <MPNID> ) is niet geldig. Geef een geldige MPN-ID op en probeer het opnieuw.
+    
+Dit wordt meestal veroorzaakt door de verkeerde MPN-ID.
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-De doel toepassing ( <AppId> ) is niet gevonden. Geef een geldige toepassings-ID op en probeer het opnieuw. 
+De doel toepassing ( <AppId> ) is niet gevonden. Geef een geldige toepassings-ID op en probeer het opnieuw.
+    
+Dit wordt meestal veroorzaakt wanneer de verificatie wordt uitgevoerd via Graph API, en de id van de door gegeven toepassing onjuist is. Opmerking: de id van de toepassing moet worden gegeven, niet de AppId/ClientId.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Deze functie wordt niet ondersteund in een door e-mail geverifieerde Tenant.
 
 Voor de doel toepassing ( \<AppId\> ) moet een uitgevers domein zijn ingesteld. Stel een uitgever domein in en probeer het opnieuw.
 
+Treedt op wanneer een domein van een [Uitgever](howto-configure-publisher-domain.md) niet is geconfigureerd op de app.
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 Het Uitgever domein () van de doel toepassing <publisherDomain> komt niet overeen met het domein dat wordt gebruikt om e-mail verificatie uit te voeren in Partner Center ( <pcDomain> ). Zorg ervoor dat deze domeinen overeenkomen en probeer het opnieuw. 
+    
+Treedt op wanneer het [Uitgever domein](howto-configure-publisher-domain.md) van de app of een van de [aangepaste domeinen](../fundamentals/add-custom-domain.md) die zijn toegevoegd aan de Azure AD-Tenant overeenkomt met het domein dat wordt gebruikt om e-mail verificatie uit te voeren in het partner centrum.
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 U bent niet gemachtigd om de eigenschap geverifieerde uitgever in te stellen voor de toepassing ( <AppId> ) 
+  
+Dit wordt meestal veroorzaakt door de aangemelde gebruiker die geen lid is van de juiste rol voor het MPN-account in azure AD: Zie de [vereisten](publisher-verification-overview.md#requirements) voor een lijst met in aanmerking komende rollen en Zie [algemene problemen](#common-issues) voor meer informatie.
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ De MPN-ID is niet in de aanvraag tekst of het type van de aanvraag inhoud is nie
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen toepassingen die zijn geregistreerd in azure AD door een Azure AD-gebruiker, worden ondersteund. 
+Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen toepassingen die zijn geregistreerd in azure AD door een Azure AD-gebruiker, worden ondersteund.
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+Treedt op wanneer multi-factor Authentication niet is uitgevoerd voordat een geverifieerde uitgever aan de app wordt toegevoegd. Zie [algemene problemen](#common-issues) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -216,4 +240,4 @@ Als u alle voor gaande informatie hebt gecontroleerd en nog steeds een fout ontv
 - TenantId waar de app is geregistreerd
 - MPN-id
 - REST-aanvraag wordt gedaan 
-- De fout code en het bericht worden geretourneerd 
+- De fout code en het bericht worden geretourneerd

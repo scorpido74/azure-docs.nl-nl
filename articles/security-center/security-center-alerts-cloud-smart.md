@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73686489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268058"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
@@ -38,5 +38,5 @@ Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodi
 
 ![Scherm afbeelding van gedetecteerd rapport van beveiligings incident](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Zie [beveiligings incidenten afhandelen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident)voor meer informatie over beveiligings incidenten.
+Zie [beveiligings incidenten afhandelen in azure Security Center](security-center-incident.md)voor meer informatie over beveiligings incidenten.
 

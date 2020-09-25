@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262991"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-Server naar Azure met Azure Backup Server
 
@@ -23,8 +23,8 @@ Voordat u doorgaat, moet u ervoor zorgen dat Azure Backup Server is [geïnstalle
 
 Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de Exchange-Server:
 
-1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installeer de agent op de Exchange-Server door **beheer > agents** te selecteren > in MABS Administrator console te installeren. Zie [de MABS-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
+1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Installeer de agent op de Exchange-Server door **beheer > agents** te selecteren > in MABS Administrator console te installeren. Zie [de MABS-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
 
    * Ik wil kortetermijnbeveiliging met schijf.
    * Ik wil online beveiliging.
-6. Selecteer **Volgende**.
+6. Selecteer **Next**.
 7. Selecteer de optie **Eseutil uitvoeren om gegevens integriteit te controleren** als u de integriteit van de Exchange server-data bases wilt controleren.
 
     Nadat u deze optie hebt geselecteerd, wordt de consistentie controle van de back-up op MABS uitgevoerd om te voor komen dat het I/O-verkeer dat wordt gegenereerd door de opdracht **Eseutil** uit te voeren op de Exchange-Server.
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
    > ![Eseutil-fout](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Selecteer **Volgende**.
+8. Selecteer **Next**.
 9. Selecteer de Data Base voor **back-up kopiëren**en selecteer vervolgens **volgende**.
 
    > [!NOTE]
@@ -86,7 +86,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
 
     ![Online Bewaar beleid opgeven](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. Bevestig de instellingen en selecteer vervolgens **groep maken**.
-19. Selecteer **Close** (Sluiten).
+19. Selecteer **Sluiten**.
 
 ## <a name="recover-the-exchange-database"></a>De Exchange-data base herstellen
 

@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289868"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
 U kunt statische inhoud (HTML-, CSS-, java script-en afbeeldings bestanden) rechtstreeks vanuit een container in een Azure Storage GPv2-account verwerken. Zie voor meer informatie [statische website-hosting in azure Storage](storage-blob-static-website.md).
 
 Dit artikel laat u zien hoe u statische website-hosting kunt inschakelen met behulp van de Azure Portal, de Azure CLI of Power shell.
+
+> [!NOTE]
+> Zorg ervoor dat u een standaardopslagaccount van het type v2 voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslagaccount.
 
 ## <a name="enable-static-website-hosting"></a>Statisch website hosting inschakelen
 
@@ -47,7 +50,7 @@ Het hosten van statische websites is een functie die u moet inschakelen op het o
 
     ![Het hosten van een statische website inschakelen voor een opslagaccount](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 <a id="cli"></a>
 
@@ -150,7 +153,7 @@ In deze instructies wordt uitgelegd hoe u bestanden kunt uploaden met behulp van
    >[!NOTE]
    > Storage Explorer wordt deze eigenschap automatisch ingesteld op `text/html` voor gebruikelijke, herkende extensies zoals `.html` . In sommige gevallen moet u dit echter zelf instellen. Als u deze eigenschap niet instelt op `text/html` , wordt gebruikers door de browser gevraagd het bestand te downloaden in plaats van de inhoud te renderen. Als u deze eigenschap wilt instellen, klikt u met de rechter muisknop op het bestand en klikt u vervolgens op **Eigenschappen**.
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
@@ -205,7 +208,7 @@ In het deel venster dat wordt weer gegeven naast de pagina account overzicht van
 
 ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Zoek de open bare URL van uw statische website met behulp van de volgende opdracht:
 

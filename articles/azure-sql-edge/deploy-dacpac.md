@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293897"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-en BACPAC-pakketten in SQL-rand SQL Database
 
 Azure SQL Edge is een geoptimaliseerde relationele database-engine voor IoT- en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de micro soft SQL Database-Engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. 
+Azure SQL Edge biedt systeem eigen mechanisme waarmee u een [SQL database DACPAC-en BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens of na de implementatie van SQL Edge.
 
 SQL Database dacpac-en Bacpac-pakketten kunnen worden geïmplementeerd naar SQL Edge met behulp van de `MSSQL_PACKAGE` omgevings variabele. De omgevings variabele kan worden geconfigureerd met een van de volgende.  
 - Een locatie van een lokale map binnen de SQL-container met de dacpac-en Bacpac-bestanden. Deze map kan worden toegewezen aan een host volume met behulp van koppel punten of gegevens volume containers. 
@@ -64,6 +64,10 @@ Volg de onderstaande stappen om een SQL Database DAC-pakket of een BACPAC-bestan
 5. Nadat de module is bijgewerkt, worden de pakket bestanden gedownload, uitgepakt en geïmplementeerd op basis van het SQL Edge-exemplaar.
 
 Op elke keer dat de Azure SQL Edge-container opnieuw wordt opgestart, probeert SQL Edge het zip-pakket te downloaden en te evalueren of er wijzigingen zijn. Als er een nieuwe versie van het dacpac-bestand wordt aangetroffen, worden de wijzigingen geïmplementeerd in de data base in SQL-rand.
+
+## <a name="known-issue"></a>Bekend probleem
+
+Tijdens sommige DACPAC-of BACPAC-implementaties kunnen gebruikers een time-out van de opdracht ondervinden, wat resulteert in het mislukken van de implementatie bewerking DACPAC. Als u dit probleem ondervindt, gebruikt u de SQLPackage.exe (of SQL Client Tools) om de DACPAC of BACPAC-maually toe te passen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

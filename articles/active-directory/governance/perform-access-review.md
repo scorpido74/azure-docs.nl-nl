@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265678"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen en toepassingen in azure AD-toegangs beoordelingen controleren
 
@@ -37,7 +37,7 @@ U kunt het toegangs beoordelings proces starten vanuit de e-mail melding of door
 
 1. Zoek naar een e-mail bericht van micro soft waarin u wordt gevraagd de toegang te controleren. Hier volgt een voor beeld van een e-mail bericht om de toegang tot een groep te controleren.
 
-    ![Voor beeld van een e-mail bericht van micro soft om de toegang tot een groep te controleren](./media/perform-access-review/access-review-email.png)
+    ![Scherm afbeelding met een voor beeld van een e-mail bericht van micro soft om de toegang tot een groep te controleren.](./media/perform-access-review/access-review-email.png)
 
 1. Klik op de koppeling **controle starten** om de toegangs beoordeling te openen.
 
@@ -54,7 +54,7 @@ U kunt het toegangs beoordelings proces starten vanuit de e-mail melding of door
         > [!NOTE]
         > Als de tegel **toegangs beoordelingen** niet zichtbaar is, zijn er geen toegangs Beoordelingen voor die organisatie en hoeft u op dit moment geen actie te ondernemen.
 
-        ![Lijst met openstaande toegangs Beoordelingen voor apps en groepen](./media/perform-access-review/access-reviews-list.png)
+        ![Scherm opname van de lijst met openstaande toegangs Beoordelingen voor apps en groepen.](./media/perform-access-review/access-reviews-list.png)
 
     1. Klik op de koppeling **controle starten** voor de toegangs beoordeling die u wilt uitvoeren.
 
@@ -99,7 +99,7 @@ Om toegangs beoordelingen gemakkelijker en sneller te laten verlopen, bieden we 
 
 1. Klik in de blauwe balk onder aan de pagina op **aanbevelingen accepteren**.
 
-    ![Open de toegangs beoordelings vermelding met de knop aanbevelingen accepteren](./media/perform-access-review/accept-recommendations.png)
+    ![Scherm afbeelding met de knop voor het openen van de toegangs beoordeling met de button aanbevelingen accepteren geselecteerd.](./media/perform-access-review/accept-recommendations.png)
 
     Er wordt een samen vatting van de aanbevolen acties weer gegeven.
 

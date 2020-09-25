@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: jrasnick
+ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207628"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288338"
 ---
 # <a name="query-folders-and-multiple-files"></a>Query uitvoeren op mappen en meerdere bestanden  
 
@@ -24,7 +24,7 @@ SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met behulp van
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een database** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap bestaat uit het **maken van een Data Base** waarin u de query's uitvoert. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 U gebruikt de map *CSV/taxi* om de voorbeeld query's te volgen. Het bevat NYC-Gelee taxi-excursie records van 2016 juli tot juni 2018. Bestanden in *CSV/taxi* worden na jaar en maand benoemd met het volgende patroon: yellow_tripdata_ <year> - <month> . CSV
 
