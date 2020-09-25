@@ -1,0 +1,88 @@
+- name: Documentatie van Azure Communication Services
+  href: index.yml
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Wat is Azure Communication Services?
+      href: overview.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: Een Communication Services-resource maken
+      href: quickstarts/create-communication-resource.md
+    - name: Toegangstokens maken en beheren
+      href: quickstarts/access-tokens.md
+    - name: Chat
+      items:
+        - name: Chat toevoegen aan uw app
+          href: quickstarts/chat/get-started.md
+    - name: Telefonie en sms
+      items:
+        - name: Een telefoonnummer ophalen
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Een sms-bericht verzenden
+          href: quickstarts/telephony-sms/send.md
+        - name: Sms-gebeurtenissen verwerken
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: Audio- en videobellen
+      items:
+        - name: Audiobellen toevoegen aan uw app
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: De aanroepende clientbibliotheek gebruiken
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: Zelfstudies
+  expanded: false
+  items:
+    - name: Een vertrouwde verificatieservice maken met behulp van Azure Functions
+      href: tutorials/trusted-service-tutorial.md
+- name: Concepten
+  expanded: false
+  items:
+    - name: Chat
+      items:
+        - name: Overzicht van de chat-clientbibliotheek
+          href: concepts/chat/sdk-features.md
+        - name: Chatconcepten
+          href: concepts/chat/concepts.md
+    - name: Telefonie en sms
+      items:
+        - name: Overzicht van de sms-clientbibliotheek
+          href: concepts/telephony-sms/sdk-features.md
+        - name: Sms-concepten
+          href: concepts/telephony-sms/concepts.md
+        - name: Uw telefoon- en sms-oplossing plannen
+          href: concepts/telephony-sms/plan-solution.md
+    - name: Audio- en videobellen
+      items:
+        - name: Overzicht van de aanroepende clientbibliotheek
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: Audio- en videoconcepten
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: Architectuur van client en server
+      href: concepts/client-and-server-architecture.md
+    - name: Aanroepstromen
+      href: concepts/call-flows.md
+    - name: Clientbibliotheken en REST API's
+      href: concepts/sdk-options.md
+    - name: Prijsmodel
+      href: concepts/pricing.md
+    - name: Verificatie
+      href: concepts/authentication.md
+    - name: Gebeurtenisverwerking
+      href: concepts/event-handling.md
+    - name: Meldingen
+      href: concepts/notifications.md
+- name: Voorbeelden
+  items:
+    - name: Hero-voorbeeld van groepsgesprek
+      href: samples/calling-hero-sample.md
+    - name: Hero-voorbeeld van groeps-chat
+      href: samples/chat-hero-sample.md
+- name: Referenties
+  items:
+    - name: REST API-documentatie
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: Resources
+  items:
+    - name: Releaseopmerkingen
+      href: release-notes.md

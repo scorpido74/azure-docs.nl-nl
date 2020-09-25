@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Communication Services
+summary: Azure Communication Services is een communicatieservice in de cloud waarmee u spraak, video, chat en telefonie aan uw apps kunt toevoegen. Houd er rekening mee dat Azure Communication Services momenteel beschikbaar is als openbare preview.
+metadata:
+  title: Azure Communication Services
+  description: Azure Communication Services is een communicatieservice in de cloud waarmee u spraak, video, chat en telefonie aan uw apps kunt toevoegen. Houd er rekening mee dat Azure Communication Services momenteel beschikbaar is als openbare preview.
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928851"
+landingContent:
+- title: Informatie over Azure Communication Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Communication Services?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Clientbibliotheekopties
+      url: concepts/sdk-options.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een Communication Services-resource maken
+      url: quickstarts/create-communication-resource.md
+    - text: Tokens voor gebruikerstoegang maken en beheren
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: Architectuur van client en server
+      url: concepts/client-and-server-architecture.md
+    - text: Verificatie en autorisatie
+      url: concepts/authentication.md
+    - text: Gebeurtenisverwerking
+      url: concepts/event-handling.md
+    - text: Meldingen
+      url: concepts/notifications.md
+- title: Audio- en videobellen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Audio- en videobellen aan uw app toevoegen
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: De aanroepende clientbibliotheek gebruiken
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: Audio- en videoconcepten
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: Overzicht van de aanroepende clientbibliotheek
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Aanroepstromen
+      url: concepts/call-flows.md
+- title: Telefonie en sms
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een telefoonnummer ophalen
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: Een sms-bericht verzenden
+      url: quickstarts/telephony-sms/send.md
+    - text: Sms-gebeurtenissen verwerken
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: Sms-concepten
+      url: concepts/telephony-sms/concepts.md
+    - text: Overzicht van de sms-clientbibliotheek
+      url: concepts/telephony-sms/sdk-features.md
+    - text: Overzicht gesprekken
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Uw telefoon- en sms-oplossing plannen
+      url: concepts/telephony-sms/plan-solution.md
+- title: Chat
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Chat toevoegen aan uw app
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: Chatconcepten
+      url: concepts/chat/concepts.md
+    - text: Overzicht van de chat-clientbibliotheek
+      url: concepts/chat/sdk-features.md
+- title: Voorbeelden
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Aan de slag met het hero-voorbeeld voor groepsgesprekken
+      url: samples/calling-hero-sample.md
+    - text: Aan de slag met het hero-voorbeeld voor chatten
+      url: samples/chat-hero-sample.md

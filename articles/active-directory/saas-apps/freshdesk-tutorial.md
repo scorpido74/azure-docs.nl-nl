@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551047"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Zelfstudie: Azure Active Directory-integratie met FreshDesk
 
@@ -55,7 +55,7 @@ Om de integratie van FreshDesk te configureren in Azure AD, moet u FreshDesk van
 1. Typ in de sectie **Toevoegen uit de galerie** in het zoekvak **FreshDesk**.
 1. Selecteer **FreshDesk** in de resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>Eenmalige aanmelding van Azure AD configureren en testen voor FreshDesk
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>Eenmalige aanmelding van Azure AD voor FreshDesk configureren en testen
 
 Configureer en test eenmalige aanmelding bij Azure AD met FreshDesk met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in FreshDesk.
 
@@ -81,9 +81,11 @@ Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met FreshDesk t
     a. Typ in het tekstvak **Aanmeldings-URL** een URL met de volgende notatie: `https://<tenant-name>.freshdesk.com` of een andere waarde die door FreshDesk is voorgesteld.
 
     b. Typ in het tekstvak **Id (Entiteits-id)** een URL met de volgende notatie: `https://<tenant-name>.freshdesk.com` of een andere waarde die door Freshdesk is voorgesteld.
-
+     
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantondersteuningsteam van FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [klantondersteuningsteam van FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. In FreshDesk worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermopname ziet u de lijst met standaardkenmerken, waarbij **Unieke gebruikers-id** is toegewezen aan **user.userprincipalname** terwijl FreshDesk verwacht dat deze claim moet worden toegewezen aan **user.mail**. Dit betekent dat u de kenmerktoewijzing moet bewerken door op het pictogram Bewerken te klikken en de kenmerktoewijzing aan te passen.
 

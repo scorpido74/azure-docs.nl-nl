@@ -132,6 +132,8 @@
       items:
         - name: De schaal van een AKS-cluster aanpassen
           href: scale-cluster.md
+        - name: Een AKS-cluster stoppen (preview)
+          href: start-stop-cluster.md
         - name: Een AKS-cluster upgraden
           href: upgrade-cluster.md
         - name: SLA voor uptime gebruiken
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Toepassingen ontwikkelen en uitvoeren
       items:
-        - name: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: Bridge to Kubernetes gebruiken met Visual Studio Code
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: Bridge to Kubernetes gebruiken met Visual Studio
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: Bestaande toepassingen installeren met Helm
           href: kubernetes-helm.md
         - name: OpenFaaS gebruiken

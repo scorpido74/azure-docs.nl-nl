@@ -70,7 +70,7 @@
     - name: Versleuteling at-rest
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Versleuteling at-rest van gegevens met door de klant beheerde sleutels
-      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Schaalbaarheids- en prestatiedoelen
       href: storage-files-scale-targets.md
     - name: Nalevingsaanbiedingen
@@ -243,18 +243,16 @@
           items:
             - name: Het versleutelingssleutelmodel controleren voor het account
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Door de klant beheerde versleutelingssleutels configureren
+            - name: Versleuteling configureren met door de klant beheerde sleutels
               items:
-                - name: Portal
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Infrastructuurversleuteling voor een opslagaccount inschakelen
+                - name: Door de klant beheerde sleutels opslaan in een sleutelkluis
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Door de klant beheerde sleutels opslaan in een beheerde HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Infrastructuurversleuteling voor het account inschakelen
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Geavanceerde beveiliging tegen bedreigingen
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure Defender configureren voor bedreigingen
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Firewalls en virtuele netwerken configureren
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Veilige overdracht vereisen

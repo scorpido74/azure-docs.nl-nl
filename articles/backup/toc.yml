@@ -50,6 +50,8 @@
       items:
         - name: Ondersteuningsmatrix voor Azure Backup
           href: backup-support-matrix.md
+        - name: Ondersteuningsmatrix voor back-upcentrum
+          href: backup-center-support-matrix.md
         - name: Ondersteuningsmatrix voor Azure VM Backup
           href: backup-support-matrix-iaas.md
         - name: Ondersteuningsmatrix voor DPM/Azure Backup Server (MABS)
@@ -68,6 +70,8 @@
       items:
         - name: 'Veelgestelde vragen: Recovery Services-kluizen'
           href: backup-azure-backup-faq.md
+        - name: 'Veelgestelde vragen: back-upcentrum'
+          href: backup-center-faq.md
         - name: 'Veelgestelde vragen: Azure VM Backup'
           href: backup-azure-vm-backup-faq.md
         - name: 'Veelgestelde vragen: MARS-agent'
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: Handleidingen
   items:
-    - name: Recovery Services-kluis
+    - name: Kluizen
+      items:
+        - name: Recovery Services-kluis
+          items:
+            - name: Overzicht
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: Maken
+              href: backup-create-rs-vault.md
+            - name: Verwijderen
+              href: backup-azure-delete-vault.md
+            - name: Verplaatsen
+              href: backup-azure-move-recovery-services-vault.md
+            - name: Beheren
+              href: backup-azure-manage-windows-server.md
+        - name: Back-upkluis
+          items:
+            - name: Overzicht
+              href: backup-vault-overview.md
+    - name: Back-upcentrum
       items:
         - name: Overzicht
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Maken
-          href: backup-create-rs-vault.md
-        - name: Verwijderen
-          href: backup-azure-delete-vault.md
-        - name: Verplaatsen
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Beheren
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: Bewaken en uitvoeren
+          href: backup-center-monitor-operate.md
+        - name: Inzichten verkrijgen
+          href: backup-center-obtain-insights.md
+        - name: Omgeving beheren
+          href: backup-center-govern-environment.md
+        - name: Acties uitvoeren
+          href: backup-center-actions.md
     - name: Azure VM Backup
       items:
         - name: Overzicht
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: Beheren
           href: manage-monitor-sql-database-backup.md
+    - name: Back-up van Azure Database for PostgreSQL
+      items:
+        - name: Backup
+          href: backup-azure-database-postgresql.md
     - name: Back-up van Windows met MARS-agent
       items:
         - name: Overzicht

@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten
@@ -180,6 +180,8 @@
               href: manage/grant-access-to-create-subscription.md
             - name: Abonnementsgegevens exporteren
               href: manage/export-subscriptions.md
+            - name: Een betalingswijze voor Azure-facturering verwijderen
+              href: manage/delete-azure-payment-method.md
             - name: Creditcard wijzigen
               href: manage/change-credit-card.md
             - name: Beheerder wijzigen

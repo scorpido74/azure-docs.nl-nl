@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: Delegeren aan toegangspakketbeheerders
               href: entitlement-management-delegate-managers.md
-        - name: Toegangspakketbeheerders
+        - name: Toegangspakketbeheer en toewijzingsbeheer van toegangspakketten
           items:
             - name: Een nieuw toegangspakket maken
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: Resourcerollen wijzigen
               href: entitlement-management-access-package-resources.md
-            - name: Instellingen voor aanvragen en goedkeuringen wijzigen
+            - name: Instellingen voor wijzigingsaanvragen
               href: entitlement-management-access-package-request-policy.md
+            - name: Instellingen voor wijzigingsgoedkeuringen
+              href: entitlement-management-access-package-approval-policy.md
             - name: Instellingen voor de levenscyclus wijzigen
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: Aanvragen weergeven

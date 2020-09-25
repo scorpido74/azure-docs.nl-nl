@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905385"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Zelfstudie: Automatische schaalaanpassing instellen voor microservicetoepassingen
+
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
+
 Automatisch schalen is een ingebouwde functie van Azure Spring Cloud die ervoor zorgt dat microservicetoepassingen ook optimaal presteren wanneer de vraag verandert. Dit kan door het wijzigen van het aantal virtuele CPU's, de hoeveelheid geheugen en het aantal app-instanties. In dit artikel wordt beschreven hoe u instellingen voor automatisch schalen instelt voor uw toepassingen met behulp van de Microsoft Azure-portal of de Azure CLI.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -68,4 +71,4 @@ Als u zich in de Basic-laag bevindt en bent beperkt door een of meer van deze li
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van automatische schaalaanpassing in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Automatische schaalaanpassing controleren met Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Automatische schaalaanpassing controleren met Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

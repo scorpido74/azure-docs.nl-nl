@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Documentatie over Azure Confidential Computing
+summary: Azure Confidential Computing biedt oplossingen waarmee u de isolatie van gevoelige gegevens kunt inschakelen terwijl deze in de cloud worden verwerkt. Leer toepassingen maken en implementeren op basis van een Confidential Computing-infrastructuur door concepten te lezen, zelfstudies te voltooien en met codevoorbeelden te werken. Gebruik Microsoft-producten die zijn gebaseerd op Confidential Computing om uw workloads zo veilig mogelijk te houden.
+metadata:
+  title: Azure Confidential Computing
+  description: Meer informatie over hoe Azure Confidential Computing gegevens in gebruik beveiligt en hoe u in de cloud vertrouwelijke werkbelastingen kunt bouwen.
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991964"
+landingContent:
+- title: Informatie over Azure Confidential Computing
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Confidential Computing?
+      url: overview.md
+    - text: Scenario's
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Virtuele machines
+      url: confidential-computing-enclaves.md
+    - text: Container-computing in AKS
+      url: confidential-containers.md
+    - text: Ontwikkeling van toepassingen
+      url: application-development.md
+    - text: Attestation
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Virtuele machines van Intel SGX
+      url: ../virtual-machines/dcv2-series.md
+- title: Virtuele machines
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Virtuele machines van Intel SGX
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: Oplossingen op virtuele machines
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: Implementeren in Azure Portal
+      url: quick-create-portal.md
+    - text: Implementeren in Azure Marketplace
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: Veelgestelde vragen over Confidential Computing-VM's
+      url: faq.md
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: Beschikbaarheid
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: Container-compute
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Confidential Computing-knooppunten in Azure Kubernetes Service (AKS) (preview)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: Vertrouwelijke containers
+      url: confidential-containers.md
+    - text: Enclave-compatibele containers
+      url: enclave-aware-containers.md
+    - text: 'Geen procedures meer: bevestiging'
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: Een eenvoudige enclave-container-app in AKS
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: Voorbeelden van vertrouwelijke containers (niet-gewijzigde containers in SGX)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Voorbeelden van enclave-compatibele containers
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Veelgestelde vragen over vertrouwelijke knooppunten in AKS
+      url: confidential-nodes-aks-overview.md
+    - text: Over AKS (Azure Kubernetes Service)
+      url: ../aks/intro-kubernetes.md
+- title: Vertrouwelijke cloudservices
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure Attestation
+      url: ../attestation/overview.md
+    - text: ONNX Runtime voor vertrouwelijke deductie
+      url: https://aka.ms/confidentialinference
+- title: Gebouwd met Confidential Computing
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Demonstratie in AKS van vertrouwelijke gezondheidszorg
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Bevestigde wederzijdse TLS met Open Enclave in AKS
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Open Enclave (OE) SDK
+      url: https://aka.ms/oesdkGitHubRepo

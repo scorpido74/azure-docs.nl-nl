@@ -1,6 +1,6 @@
 ---
 title: Voorbeelden van Azure CLI - Een aangepaste VM-installatiekopie gebruiken
-description: Met dit script maakt u een virtuele-machineschaalset die gebruikmaakt van een aangepaste VM-installatiekopie als bron voor VM-exemplaren.
+description: Met dit Azure CLI-script maakt u een virtuele-machineschaalset die gebruikmaakt van een aangepaste VM-installatiekopie als bron voor VM-exemplaren.
 author: axayjo
 ms.author: akjosh
 ms.topic: sample
@@ -9,12 +9,12 @@ ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 8f8384667eb9f0c3fc0b3368ac38cbb3e25e979b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d5b7c2814bd6b4be5c0a2243cc61af3405054db4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499718"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526728"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>Een virtuele-machineschaalset maken op basis van een aangepaste VM-installatiekopie met de Azure CLI
 Met dit script maakt u een virtuele-machineschaalset die gebruikmaakt van een aangepaste VM-installatiekopie als bron voor VM-exemplaren.

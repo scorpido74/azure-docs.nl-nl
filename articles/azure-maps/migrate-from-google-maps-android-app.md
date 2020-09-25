@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747420"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085860"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Een Android-app migreren vanuit Google Maps
 
@@ -494,8 +494,8 @@ Er kunnen aangepaste afbeeldingen worden gebruikt om punten op een kaart weer te
 
 <center>
 
-![afbeelding van een gele punaise](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-ylw\_pushpin.png</center>
+![afbeelding van een gele punaise](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
+yellow-pushpin.png</center>
 
 In beide voorbeelden wordt de bovenstaande afbeelding toegevoegd aan de drawable-map van de appsresources.
 
@@ -509,7 +509,7 @@ public void onMapReady(GoogleMap googleMap) {
     mapView = googleMap;
 
     mapView.addMarker(new MarkerOptions().position(new LatLng(47.64, -122.33))
-    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ylw_pushpin))
+    .icon(BitmapDescriptorFactory.fromResource(R.drawable.yellow-pushpin))
     .anchor(0.2f, 1f));
 }
 ```
@@ -532,7 +532,7 @@ mapControl.onReady(map -> {
     dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
 
     //Load the custom image icon into the map resources.
-    map.images.add("my-yellow-pin", R.drawable.ylw_pushpin);
+    map.images.add("my-yellow-pin", R.drawable.yellow_pushpin);
 
     //Create a symbol that uses the custom image icon and add it to the map.
     map.layers.add(new SymbolLayer(dataSource,

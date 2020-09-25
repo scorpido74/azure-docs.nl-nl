@@ -61,10 +61,14 @@
       items:
         - name: Maken op basis van bestaande sjablonen
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: Azure-resources beheren door automatiseringstaken te maken
+          href: create-automation-tasks-azure-resources.md
         - name: Migreren vanuit BizTalk Services
           href: logic-apps-move-from-mabs.md
         - name: Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: Stateful of staatloze werkstromen maken in Visual Studio Code
+          href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Werkstroomuitvoering beheren
           items:
             - name: Voorwaardelijke instructies
@@ -166,8 +170,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: EDIFACT-bestanden behandelen met UNH2.5-segment
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: RosettaNet-berichten uitwisselen
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: RosettaNet-berichten uitwisselen
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: X12-berichten uitwisselen
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +316,7 @@
         - name: Logische apps beheren - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: Integratieaccounts beheren
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Integratieserviceomgevingen beheren
           href: ise-manage-integration-service-environment.md
         - name: Resources voor logische apps verplaatsen

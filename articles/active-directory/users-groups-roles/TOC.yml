@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: Aangepaste rollen
           items:
-            - name: Aangepaste rollen
+            - name: Overzicht van aangepaste rollen
               href: roles-custom-overview.md
             - name: Een aangepaste rol maken
               href: roles-create-custom.md
             - name: Aangepaste roltoewijzingen weergeven
               href: roles-view-assignments.md
-            - name: Rollen toewijzen in Azure AD-beheercentrum
+            - name: Aangepaste rollen toewijzen in Azure Portal
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Aangepaste rollen toewijzen in PowerShell
               href: roles-assign-powershell.md
+            - name: Aangepaste rollen toewijzen voor zakelijke apps
+              href: custom-enterprise-apps.md
             - name: Aangepaste rolmachtigingen
-              href: roles-custom-available-permissions.md
+              items:
+                - name: Machtigingen voor app-registratie
+                  href: roles-custom-available-permissions.md
+                - name: Machtigingen voor zakelijke apps
+                  href: custom-enterprise-app-permissions.md
             - name: App-beheerdersmachtigingen delegeren
               href: roles-delegate-app-roles.md
         - name: Groepen gebruiken om roltoewijzingen te beheren

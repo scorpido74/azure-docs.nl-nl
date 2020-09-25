@@ -1,27 +1,27 @@
 ---
-title: VM's implementeren op uw GPU-apparaat voor Azure Stack Edge via Azure CLI en Python
-description: Hierin wordt beschreven hoe u virtuele machines (VM's) maakt en beheert op een GPU-apparaat voor Azure Stack Edge met behulp van Azure CLI en Python.
+title: VM's implementeren op uw GPU-apparaat voor Azure Stack Edge Pro via Azure CLI en Python
+description: Hierin wordt beschreven hoe u virtuele machines (VM's) maakt en beheert op een GPU-apparaat voor Azure Stack Edge Pro met behulp van Azure CLI en Python.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500229"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890709"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>VM's implementeren op uw GPU-apparaat voor Azure Stack Edge met behulp van Azure CLI en Python
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>VM's implementeren op uw GPU-apparaat voor Azure Stack Edge Pro met behulp van Azure CLI en Python
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-In deze zelfstudie wordt beschreven hoe u een virtuele machine op uw Azure Stack Edge-apparaat maakt en beheert met behulp van de Azure-opdrachtregelinterface (CLI) en Python.
+In deze zelfstudie wordt beschreven hoe u een virtuele machine op uw Azure Stack Edge Pro-apparaat maakt en beheert met behulp van de Azure-opdrachtregelinterface (CLI) en Python.
 
 ## <a name="vm-deployment-workflow"></a>VM-implementatiewerkstroom
 
@@ -43,13 +43,13 @@ Een overzicht op hoog niveau van de implementatiewerkstroom is als volgt:
 10. Een VNet maken
 11. Een VNIC maken met de VNet-subnet-ID
 
-Zie [VM's op uw Azure Stack Edge-apparaat implementeren met behulp van Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md) voor een gedetailleerde uitleg van het werkstroomdiagram. Voor informatie over verbinding maken met Azure Resource Manager raadpleegt u [Verbinding maken met Azure Resource Manager met behulp van Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
+Zie [VM's op uw Azure Stack Edge Pro-apparaat implementeren met behulp van Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md) voor een gedetailleerde uitleg van het werkstroomdiagram. Voor informatie over verbinding maken met Azure Resource Manager raadpleegt u [Verbinding maken met Azure Resource Manager met behulp van Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beheren met behulp van Azure CLI en Python, moet u ervoor zorgen dat u voldoet aan de vereisten die worden genoemd in de volgende stappen:
+Voordat u een virtuele machine op uw Azure Stack Edge Pro-apparaat gaat maken en beheren met behulp van Azure CLI en Python, moet u ervoor zorgen dat u voldoet aan de vereisten die worden genoemd in de volgende stappen:
 
-1. U hebt de netwerkinstellingen op uw Azure Stack Edge-apparaat geconfigureerd, zoals wordt beschreven in [Stap 1: Een Azure Stack Edge-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device).
+1. U hebt de netwerkinstellingen op uw Azure Stack Edge Pro-apparaat geconfigureerd, zoals wordt beschreven in [Stap 1: Een Azure Stack Edge Pro-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
 2. U hebt een netwerkinterface ingeschakeld voor berekeningen. Het IP-adres van de netwerkinterface wordt gebruikt om een virtuele switch te maken voor de VM-implementatie. Met de volgende stappen doorloopt u dit proces:
 
@@ -58,7 +58,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
         > [!IMPORTANT] 
         > U kunt slechts één poort configureren voor berekeningen.
 
-    2. Schakel Compute in op de netwerkinterface. Azure Stack Edge maakt en beheert een virtuele switch die overeenkomt met die netwerkinterface.
+    2. Schakel Compute in op de netwerkinterface. Azure Stack Edge Pro maakt en beheert een virtuele switch die overeenkomt met die netwerkinterface.
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
 
     - You can now enable another network interface for compute.-->
 
-3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack Edge-apparaat en in het vertrouwensarchief van uw client. Volg de procedure die wordt beschreven in [Stap 2: Certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
+3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack Edge Pro-apparaat en in het vertrouwensarchief van uw client. Volg de procedure die wordt beschreven in [Stap 2: Certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
-4. U hebt een met Base-64 versleuteld *.CER*-certificaat (PEM-indeling) gemaakt voor uw Azure Stack Edge-apparaat. Dit is al geüpload als een handtekeningketen op het apparaat en is geïnstalleerd in het basisvertrouwensarchief op uw client. Dit certificaat is ook vereist in *PEM*-indeling om Python te laten werken op deze client.
+4. U hebt een met Base-64 versleuteld *.CER*-certificaat (PEM-indeling) gemaakt voor uw Azure Stack Edge Pro-apparaat. Dit is al geüpload als een handtekeningketen op het apparaat en is geïnstalleerd in het basisvertrouwensarchief op uw client. Dit certificaat is ook vereist in *PEM*-indeling om Python te laten werken op deze client.
 
     Converteer dit certificaat naar de PEM-indeling met behulp van de opdracht `certutil`. U moet deze opdracht uitvoeren in de map met uw certificaat.
 
@@ -199,7 +199,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>Het CA-basiscertificaat van Azure Stack Edge vertrouwen
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>Het CA-basiscertificaat van Azure Stack Edge Pro vertrouwen
 
 1. Zoek de locatie van het certificaat op de computer. De locatie kan variëren, afhankelijk van waar u `az cli` hebt geïnstalleerd. Voer Windows PowerShell uit als beheerder. Schakel over naar het pad waar `az cli` Python heeft geïnstalleerd: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe`.
 
@@ -219,7 +219,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
       
     Noteer deze locatie als u deze later gaat gebruiken: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`
 
-2. Vertrouw het CA-basiscertificaat van Azure Stack Edge door het toe te voegen aan het bestaande Python-certificaat. U geeft het pad op naar de locatie waar u het PEM-certificaat eerder hebt opgeslagen.
+2. Vertrouw het CA-basiscertificaat van Azure Stack Edge Pro door het toe te voegen aan het bestaande Python-certificaat. U geeft het pad op naar de locatie waar u het PEM-certificaat eerder hebt opgeslagen.
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>Verbinding maken met Azure Stack Edge
+### <a name="connect-to-azure-stack-edge-pro"></a>Verbinding maken met Azure Stack Edge Pro
 
-1. Registreer uw Azure Stack Edge-omgeving door de opdracht `az cloud register` uit te voeren.
+1. Registreer uw Azure Stack Edge Pro-omgeving door de opdracht `az cloud register` uit te voeren.
 
     In sommige gevallen worden directe uitgaande Internet-verbindingen gerouteerd via een proxy of firewall, waarmee SSL-onderschepping wordt afgedwongen. In dergelijke gevallen kan de opdracht az cloud register mislukken met een fout als \"Kan geen eindpunten ophalen uit de cloud.\" U kunt deze fout omzeilen door de volgende omgevingsvariabelen in te stellen in Windows PowerShell:
 
@@ -266,7 +266,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Stel omgevingsvariabelen in voor het script voor het Azure Resource Manager-eindpunt, de locatie waar de resources zijn gemaakt en het pad naar de locatie van de bron-VHD. De locatie van de resources is hetzelfde op alle Azure Stack Edge-apparaten en is ingesteld op `dbelocal`. U moet ook de adresvoorvoegsels en het privé-IP-adres opgeven. De volgende omgevingsvariabelen zijn waarden die zijn gebaseerd op uw waarden, met uitzondering van `AZURE_RESOURCE_LOCATION`, die moeten worden vastgelegd op `"dbelocal"`.
+2. Stel omgevingsvariabelen in voor het script voor het Azure Resource Manager-eindpunt, de locatie waar de resources zijn gemaakt en het pad naar de locatie van de bron-VHD. De locatie van de resources is hetzelfde op alle Azure Stack Edge Pro-apparaten en is ingesteld op `dbelocal`. U moet ook de adresvoorvoegsels en het privé-IP-adres opgeven. De volgende omgevingsvariabelen zijn waarden die zijn gebaseerd op uw waarden, met uitzondering van `AZURE_RESOURCE_LOCATION`, die moeten worden vastgelegd op `"dbelocal"`.
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ Voordat u een virtuele machine op uw Azure Stack Edge-apparaat gaat maken en beh
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Meld u aan bij uw Azure Stack Edge-omgeving door de opdracht `az login` uit te voeren. U kunt zich aanmelden bij de Azure Stack Edge-omgeving als een gebruiker of als een [service-principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+4. Meld u aan bij uw Azure Stack Edge Pro-omgeving door de opdracht `az login` uit te voeren. U kunt zich aanmelden bij de Azure Stack Edge Pro-omgeving als een gebruiker of als een [service-principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
    Voer de volgende stappen uit om u aan te melden als een *gebruiker*:
 

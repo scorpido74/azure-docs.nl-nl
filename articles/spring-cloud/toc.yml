@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Uw eerste app lanceren
@@ -13,7 +13,7 @@
     - name: Microservices bouwen en uitvoeren
       expanded: true
       items:
-        - name: Inleiding in voorbeeldapps
+        - name: Inleiding tot de voorbeeld-app
           href: spring-cloud-quickstart-sample-app-introduction.md
         - name: Azure Spring Cloud-service inrichten
           href: spring-cloud-quickstart-provision-service-instance.md
@@ -37,8 +37,6 @@
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Aangepaste DNS-naam
       href: spring-cloud-tutorial-custom-domain.md
-    - name: IntelliJ gebruiken om Azure Spring Cloud-toepassingen te implementeren
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Een Azure Spring Cloud-exemplaar inrichten met terraform
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: CI/CD met Jenkins

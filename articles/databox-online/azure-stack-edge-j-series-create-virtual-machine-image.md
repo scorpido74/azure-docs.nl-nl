@@ -1,6 +1,6 @@
 ---
-title: VM-installatiekopiën maken voor uw GPU-apparaat in Azure Stack Edge
-description: Hierin wordt beschreven hoe u Linux- of Windows-VM-installatiekopieën maakt voor gebruik met uw GPU-apparaat in Azure Stack Edge.
+title: VM-installatiekopiën maken voor uw GPU-apparaat in Azure Stack Edge Pro
+description: Hierin wordt beschreven hoe u Linux- of Windows-VM-installatiekopieën maakt voor gebruik met uw GPU-apparaat in Azure Stack Edge Pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500280"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890985"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Aangepaste VM-installatiekopiën maken voor uw Azure Stack Edge-apparaat
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Aangepaste VM-installatiekopiën maken voor uw Azure Stack Edge Pro-apparaat
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Om VM's te implementeren op uw Azure Stack Edge-apparaat, moet u aangepaste VM-installatiekopieën kunnen maken om VM's mee te maken. In dit artikel worden de stappen beschreven die nodig zijn voor het maken van aangepaste Linux- of Windows VM-installatiekopieën die u kunt gebruiken om VM's te implementeren op uw Azure Stack Edge-apparaat.
+Om VM's te implementeren op uw Azure Stack Edge Pro-apparaat, moet u aangepaste VM-installatiekopieën kunnen maken om VM's mee te maken. In dit artikel worden de stappen beschreven die nodig zijn voor het maken van aangepaste Linux- of Windows VM-installatiekopieën die u kunt gebruiken om VM's te implementeren op uw Azure Stack Edge Pro-apparaat.
 
 ## <a name="vm-image-workflow"></a>Werkstroom voor VM-installatiekopie
 
-Voor deze werkstroom moet u een virtuele machine maken in Azure, de VM aanpassen, generaliseren en vervolgens de VHD downloaden die hoort bij de virtuele machine. Deze gegeneraliseerde VHD wordt geüpload naar Azure Stack Edge en er wordt een beheerde schijf gemaakt op basis van die VHD. Vervolgens wordt er een installatiekopie gemaakt van de beheerde schijf en tot slot worden er op basis van die installatiekopie VM's gemaakt.   
+Voor deze werkstroom moet u een virtuele machine maken in Azure, de VM aanpassen, generaliseren en vervolgens de VHD downloaden die hoort bij de virtuele machine. Deze gegeneraliseerde VHD wordt geüpload naar Azure Stack Edge Pro en er wordt een beheerde schijf gemaakt op basis van die VHD. Vervolgens wordt er een installatiekopie gemaakt van de beheerde schijf en tot slot worden er op basis van die installatiekopie VM's gemaakt.   
 
-Ga voor meer informatie naar [Een VM op uw Azure Stack Edge-apparaat implementeren met behulp van Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+Ga voor meer informatie naar [Een VM op uw Azure Stack Edge Pro-apparaat implementeren met behulp van Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
 
 
 ## <a name="create-a-windows-custom-vm-image"></a>Een aangepaste VM-installatiekopie voor Windows maken
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om een installatiekopie voor een Windows-VM te make
    
        U kunt ook verwijzen naar [Overzicht van Sysprep (systeemvoorbereiding)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Gebruik deze VHD om nu een virtuele machine te maken en te implementeren op uw Azure Stack Edge-apparaat.
+Gebruik deze VHD om nu een virtuele machine te maken en te implementeren op uw Azure Stack Edge Pro-apparaat.
 
 ## <a name="create-a-linux-custom-vm-image"></a>Een aangepaste VM-installatiekopie voor Linux maken
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om een installatiekopie voor een Linux-VM te maken.
 
 1. [Download een bestaande besturingssysteemschijf.](../virtual-machines/linux/download-vhd.md)
 
-Gebruik deze VHD om nu een virtuele machine te maken en te implementeren op uw Azure Stack Edge-apparaat. U kunt de volgende twee Azure Marketplace-installatiekopieën gebruiken om aangepaste Linux-installatiekopieën te maken:
+Gebruik deze VHD om nu een virtuele machine te maken en te implementeren op uw Azure Stack Edge Pro-apparaat. U kunt de volgende twee Azure Marketplace-installatiekopieën gebruiken om aangepaste Linux-installatiekopieën te maken:
 
 |Itemnaam  |Description  |Publisher  |
 |---------|---------|---------|

@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967520"
 ---
 # <a name="secure-access-to-application-data"></a>Toegang tot toepassingsgegevens beveiligen
 
@@ -160,7 +160,7 @@ In de vorige taak zijn de volgende klassen, eigenschappen en methoden gebruikt:
 
 [Azure Storage-versleuteling](../common/storage-service-encryption.md) helpt u bij het beveiligen en beschermen van uw gegevens door data-at-rest te versleutelen en versleuteling en ontsleuteling te verwerken. Alle gegevens worden versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krachtigste blokversleutelingsmethoden die er bestaan.
 
-U kunt ervoor kiezen om versleutelingssleutels te laten beheren door Microsoft of u kunt uw eigen sleutels met door de klant beheerde sleutels gebruiken met Azure Key Vault. Zie [Door de klant beheerde sleutels gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren](../common/encryption-customer-managed-keys.md) voor meer informatie.
+U kunt ervoor kiezen om versleutelingssleutels te laten beheren door Microsoft of u kunt uw eigen sleutels met door de klant beheerde sleutels gebruiken met Azure Key Vault of Key Vault Managed Hardware Security Model (HSM) (preview-versie). Zie [Door de klant beheerde sleutels voor Azure Storage-versleuteling](../common/customer-managed-keys-overview.md) voor meer informatie.
 
 Met Azure Storage-versleuteling worden automatisch gegevens versleuteld in alle prestatielagen (Standard en Premium), alle implementatiemodellen (Azure Resource Manager en het klassieke model) en alle services van Azure Storage (Blob, Queue, Table en File).
 

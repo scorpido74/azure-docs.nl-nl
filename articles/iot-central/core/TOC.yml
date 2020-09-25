@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: Transformeren
       items:
-        - name: Gegevens exporteren naar cloudbestemmingen (preview)
+        - name: Gegevens exporteren naar cloudbestemmingen
           href: howto-export-data.md
         - name: Gegevens exporteren naar cloudbestemmingen (verouderd)
           href: howto-export-data-legacy.md

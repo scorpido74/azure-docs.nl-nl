@@ -1,0 +1,28 @@
+- name: Azure Automanage
+  href: automanage-virtual-machines.md
+- name: Quickstarts
+  expanded: true
+  items:
+    - name: VM's inschakelen in Azure Portal
+      href: quick-create-virtual-machines-portal.md
+- name: Concepten
+  expanded: true
+  items:
+    - name: Virtuele machines
+      href: automanage-virtual-machines.md
+    - name: Best practices voor VM's
+      href: virtual-machines-best-practices.md
+- name: Procedures
+  expanded: true
+  items:
+    - name: Aangepaste voorkeuren maken
+      href: virtual-machines-custom-preferences.md
+    - name: VM's inschakelen via Azure Policy
+      href: virtual-machines-policy-enable.md
+- name: Resources
+  expanded: true
+  items:
+    - name: Veelgestelde vragen
+      href: faq.md
+    - name: Cloud Adoption Framework
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie over Azure Spring Cloud
-summary: Azure Spring Cloud biedt een beheerde service waarmee Java-ontwikkelaars eenvoudig op Spring Boot gebaseerde microservices voor Azure kunnen bouwen en uitvoeren, zonder codewijzigingen.
+summary: Azure Spring Cloud biedt een beheerde service waarmee u zonder codewijzigingen microservices in Azure kunt uitvoeren met behulp van Spring Boot of Steeltoe (preview).
 metadata:
   title: Azure Spring Cloud
-  description: Azure Spring Cloud biedt een beheerde service waarmee Java-ontwikkelaars eenvoudig op Spring Boot gebaseerde microservices voor Azure kunnen bouwen en uitvoeren, zonder codewijzigingen.
+  description: Azure Spring Cloud biedt een beheerde service waarmee u zonder codewijzigingen microservices in Azure kunt uitvoeren met behulp van Spring Boot of Steeltoe (preview).
   services: spring-cloud
   ms.service: spring-cloud
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: 277d058427cc9527e6ed71ed252a4930489353fd
-  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.openlocfilehash: 1c1f45ab0f589634446a7d329f69609797071b36
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89049890"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90902961"
 landingContent:
 - title: Over Azure Spring Cloud
   linkLists:
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: Snelstart - Uw eerste Azure Spring Cloud-toepassing implementeren
       url: spring-cloud-quickstart.md
-    - text: Inleiding tot de voorbeeld-app Piggy Metrics
+    - text: Inleiding tot de voorbeeld-app PiggyMetrics
       url: spring-cloud-quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
-    - text: Een Java Spring-app voorbereiden voor implementatie
+    - text: Een Spring- of Steeltoe-app voorbereiden voor implementatie
       url: spring-cloud-tutorial-prepare-app-deployment.md
 - title: Uw service configureren
   linkLists:

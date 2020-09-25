@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74975037"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526439"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zelfstudie: Het apparaat inrichten in een IoT-hub met behulp van IoT Hub Device Provisioning Service
 
@@ -28,12 +28,12 @@ In de vorige zelfstudie hebt u geleerd hoe u een apparaat kunt instellen om verb
 
 Voordat u doorgaat, moet uw apparaat zijn geconfigureerd zoals is besproken in de zelfstudie [Een apparaat instellen voor inrichten met behulp van Azure IoT Hub Device Provisioning Service](./tutorial-set-up-device.md).
 
-Als u niet bekend bent met het proces van automatische inrichting, bekijkt u de [Concepten voor automatische inrichting](concepts-auto-provisioning.md) voordat u verdergaat.
+Als u niet bekend bent met het proces van automatische inrichting, bekijkt u het overzicht voor [inrichting](about-iot-dps.md#provisioning-process) voordat u verdergaat.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Het apparaat inschrijven
 
-In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd aan Device Provisioning Service. Deze beveiligingsartefacten zijn als volgt gebaseerd op het [Attestation-mechanisme](concepts-device.md#attestation-mechanism) van het apparaat:
+In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd aan Device Provisioning Service. Deze beveiligingsartefacten zijn als volgt gebaseerd op het [Attestation-mechanisme](concepts-service.md#attestation-mechanism) van het apparaat:
 
 - Voor TPM-apparaten hebt u het volgende nodig:
     - De *Goedkeuringssleutel* die uniek is voor elke TPM-chip of -simulatie en kan worden verkregen bij de TPM-chipfabrikant.  Lees [TPM-goedkeuringssleutel begrijpen](https://technet.microsoft.com/library/cc770443.aspx) voor meer informatie.
@@ -48,7 +48,7 @@ In deze stap worden de unieke beveiligingsartefacten van het apparaat toegevoegd
 
 Er zijn twee manieren om het apparaat te registreren bij Device Provisioning Service:
 
-- **Inschrijvingsgroepen**: dit is een groep apparaten die een specifiek attestation-mechanisme delen. We raden u aan om een inschrijvingsgroep te gebruiken bij een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal zijn verbonden met dezelfde tenant. Raadpleeg [Beveiliging](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie over identiteit-attestation voor registratiegroepen.
+- **Inschrijvingsgroepen**: dit is een groep apparaten die een specifiek attestation-mechanisme delen. We raden u aan om een inschrijvingsgroep te gebruiken bij een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal zijn verbonden met dezelfde tenant. Raadpleeg [Beveiliging](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates) voor meer informatie over identiteit-attestation voor registratiegroepen.
 
     [![Groepsinschrijving voor attestation X.509 toevoegen in de portal](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 

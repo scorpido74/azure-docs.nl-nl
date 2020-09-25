@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: Een probleem met een VM-filter voor netwerkverkeer vaststellen
       href: network-watcher-ip-flow-verify-overview.md
+    - name: NSG-regels en filteren van verkeer diagnosticeren
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: VM-routeringsproblemen vaststellen
       href: network-watcher-next-hop-overview.md
     - name: Uitgaande VM-communicatieproblemen vaststellen

@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: bestand opnemen
 services: active-directory
 author: daveba
@@ -9,14 +9,17 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: dc7849e52b3e00c87d271ee8aef8788d816dff7a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176444"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971035"
 ---
-| Categorie | Limiet |
-| --- | --- |
-| Door de gebruiker toegewezen beheerde identiteiten | <ul><li>Wanneer u door de gebruiker toegewezen beheerde identiteiten maakt, worden alleen alfanumerieke tekens (0-9, a-z en A-Z) en het koppel teken (-) ondersteund. Voor een juiste werking van de toewijzing aan een virtuele machine of virtuele-machine schaalset is de naam beperkt tot 24 tekens.</li><li>Als u de extensie voor de virtuele machine van de beheerde identiteit gebruikt, wordt de ondersteunde limiet 32 door de gebruiker toegewezen beheerde identiteiten. Als de extensie van de virtuele machine van de beheerde identiteit niet wordt ondersteund, is de ondersteunde limiet 512 door de gebruiker toegewezen identiteiten.</li>|
+- Elke beheerde identiteit telt mee voor de quotumlimiet voor objecten in een Azure AD-tenant, zoals beschreven in [Limieten en beperkingen van de Azure AD-service](../articles/active-directory/users-groups-roles/directory-service-limits-restrictions.md).
+-   De snelheid waarmee beheerde identiteiten kunnen worden gemaakt, kent de volgende limieten:
 
+    1. Per Azure AD-tenant per Azure-regio: 200 maakbewerkingen per 20 seconden.
+    2. Per Azure-abonnement per Azure-regio: 40 maakbewerkingen per 20 seconden.
+
+- Wanneer u aan gebruikers toegewezen beheerde identiteiten maakt, worden alleen alfanumerieke tekens (0-9, a-z, A-Z) en het afbreekstreepje (-) ondersteund. De toewijzing aan een virtuele machine of virtuele-machineschaalset verloopt goed als de naam wordt beperkt tot 24 tekens.

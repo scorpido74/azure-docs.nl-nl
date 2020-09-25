@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346346"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025099"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wordt het aangepaste beleid voor IPsec/IKE op alle Azure VPN Gateway-SKU's ondersteund?
-Aangepaste IPsec/IKE-beleid wordt ondersteund op alle Azure Sku's, met uitzonde ring van de basis-SKU.
+Aangepast IPsec-/IKE-beleid wordt ondersteund in alle Azure-SKU's, behalve Basic.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hoeveel beleidsregels kan ik opgeven voor een verbinding?
 U kunt maar ***één*** beleidscombinatie opgeven voor een bepaalde verbinding.
@@ -31,7 +31,7 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutelste
 | ---              | ---                                                                           |
 | IKEv2-versleuteling | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2-integriteit  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH-groep         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, geen |
+| DH-groep         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, geen  |
 | IPsec-versleuteling | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, geen      |
 | IPsec-integriteit  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
 | PFS-groep        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, geen                              |
@@ -42,7 +42,7 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutelste
 > [!IMPORTANT]
 > 1. DHGroup2048 en PFS2048 zijn hetzelfde als Diffie-Hellman-groep **14** in IKE en IPsec PFS. Zie [Diffie-Hellman-groepen](#DH) voor de volledige toewijzingen.
 > 2. Voor GCMAES-algoritmen moet u de hetzelfde GCMAES-algoritme en dezelfde lengte van de sleutel voor de IPsec-codering en -integriteit opgeven.
-> 3. De levens duur van de SA-hoofd modus van IKEv2 wordt 28.800 seconden op de Azure VPN-gateways vastgesteld.
+> 3. SA-levensduur voor IKEv2 Main Mode staat vastgesteld op 28.800 seconden op de Azure VPN-gateways.
 > 4. De QM SA-levensduur is een optionele parameter. Als niets is opgegeven, worden de standaardwaarden 27.000 seconden (7,5 uur) en 102400000 kilobytes (102 GB) gebruikt.
 > 5. UsePolicyBasedTrafficSelector is een optieparameter voor de verbinding. Zie het volgende FAQ-item voor 'UsePolicyBasedTrafficSelectors'
 
@@ -100,20 +100,23 @@ Ja, u kunt een aangepast beleid toepassen op zowel cross-premises IPsec-verbindi
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Moet ik hetzelfde beleid opgeven voor beide VNet-naar-VNet-verbindingsresources?
 Ja. Een VNet-naar-VNet-tunnel bestaat uit twee verbindingsresources in Azure, één voor elke richting. Zorg dat beide verbindingsresources hetzelfde beleid hebben, anders kan de VNet-naar-VNet-verbinding niet tot stand worden gebracht.
 
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>Wat is de standaard time-outwaarde voor DPD? Kan ik een andere time-out voor DPD opgeven?
+De standaard time-out voor DPD is 45 seconden. U kunt een andere time-outwaarde voor DPD opgeven voor elke IPsec of VNet-naar-VNet-verbinding tussen 9 tot 3600 seconden.
+
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Werkt een aangepast IPsec/IKE-beleid op een ExpressRoute-verbinding?
 Nee. IPsec/IKE-beleid werkt alleen op S2S-VPN- en VNet-naar-VNet-verbindingen via de Azure VPN-gateways.
 
-### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hoe kan ik verbindingen met het type IKEv1 of IKEv2-Protocol maken?
-IKEv1-verbindingen kunnen worden gemaakt op alle RouteBased VPN-type Sku's, met uitzonde ring van de basis-SKU, standaard-SKU en andere [verouderde sku's](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku). U kunt een verbindings protocol type IKEv1 of IKEv2 opgeven tijdens het maken van verbindingen. Als u geen type verbindings protocol opgeeft, wordt IKEv2 als standaard optie gebruikt, indien van toepassing. Zie de [Power shell-cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) -documentatie voor meer informatie. Zie [gateways verbinden met op beleid gebaseerde VPN-apparaten](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)voor meer informatie over SKU-typen en IKEv1/IKEv2-ondersteuning.
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hoe maak ik verbindingen met IKEv1- of IKEv2-protocoltypen?
+IKEv1-verbindingen kunnen worden gemaakt op alle RouteBased VPN-type SKU's, met uitzondering van de Basic, Standard en andere [verouderde SKU's](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku). U kunt een verbindingsprotocol opgeven van IKEv1 of IKEv2 wanneer u een verbinding maakt. Als u geen verbindingsprotocoltype opgeeft, wordt IKEv2 gebruikt als standaardinstelling waar dat mogelijk is. Raadpleeg de documentatie voor [PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) voor meer informatie. Voor SKY-typen en IKEv1-/IKEv2-ondersteuning, raadpleegt u [Gateways verbinden met op beleid gebaseerde VPN-apparaten](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Is transit tussen twee IKEv1-en IKEv2-verbindingen toegestaan?
-Ja. De door Voer tussen IKEv1 en IKEv2-verbindingen wordt ondersteund.
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Is er doorvoer tussen IKEv1- en IKEv2-verbindingen toegestaan?
+Ja. Doorvoer tussen IKEv1- en IKEv2-verbindingen wordt ondersteund.
 
-### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Kan ik geikev1e site-naar-site-verbindingen hebben op de Basic-Sku's van het VPN-type RouteBased?
-Nee. De basis-SKU biedt geen ondersteuning voor dit.
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Kan ik een IKEv1-site-naar-site-verbindingen hebben in het VPN-type Basic SKU of RouteBased?
+Nee. De Basic SKU ondersteunt dit niet.
 
-### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Kan ik het type verbindings protocol wijzigen nadat de verbinding is gemaakt (IKEv1 naar IKEv2 en vice versa)?
-Nee. Als de verbinding tot stand is gebracht, kunnen IKEv1/IKEv2-protocollen niet worden gewijzigd. U moet een nieuwe verbinding met het gewenste protocol type verwijderen en opnieuw maken.
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Kan ik het verbindingsprotocoltype wijzigen nadat de verbinding is gemaakt (IKEv1 naar IKEv2 en vice versa)?
+Nee. Nadat de verbinding is gemaakt, kunnen IKEv1-/IKEv2-protocollen niet worden gewijzigd. U moet een verbinding verwijderen en een nieuwe maken met het gewenste protocoltype.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Waar vind ik meer informatie over de configuratie van IPsec?
-Zie [IPSec/IKE-beleid configureren voor S2S-of vnet-naar-vnet-verbindingen](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Waar vind ik meer configuratie-informatie voor IPsec?
+Raadpleeg [IPsec/IKE-beleid configureren voor S2S-verbindingen of VNet-naar-VNet-verbindingen](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

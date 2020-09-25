@@ -5,23 +5,94 @@ author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c91237e3a14c60e477f58be0bf62f634b462960b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 16d40c334d51a66df4a4d2d56e2fa2379dda3726
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951670"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905411"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Quickstart: Azure Spring Cloud-service inrichten
 
+::: zone pivot="programming-language-csharp"
+In deze quickstart gebruikt u de Azure CLI om een exemplaar van de Azure Spring Cloud-service in te richten.
+
+## <a name="prerequisites"></a>Vereisten
+
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). De Azure Spring Cloud-service ondersteunt .NET Core 3.1 en latere versies.
+* [Azure CLI versie 2.0.67 of nieuwer](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* [Git](https://git-scm.com/).
+
+## <a name="install-azure-cli-extension"></a>Azure CLI-extensie installeren
+
+Controleer of de Azure CLI-versie 2.0.67 of hoger is:
+
+```azurecli
+az --version
+```
+
+Voer de volgende opdracht uit om de Azure Spring Cloud-extensie voor de Azure CLI te installeren:
+
+```azurecli
+az extension add --name spring-cloud
+```
+
+## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+
+1. Meld u aan bij de Azure CLI.
+
+    ```azurecli
+    az login
+    ```
+
+1. Als u meerdere abonnementen hebt, kiest u het abonnement dat u voor deze quickstart wilt gebruiken.
+
+   ```azurecli
+   az account list -o table
+   ```
+
+   ```azurecli
+   az account set --subscription <Name or ID of a subscription from the last step>
+   ```
+
+## <a name="provision-an-instance-of-azure-spring-cloud"></a>Een exemplaar van Azure Spring Cloud inrichten
+
+1. Maak een [resourcegroep](../azure-resource-manager/management/overview.md) die uw Azure Spring Cloud-service moet bevatten. De naam van de resourcegroep kan alfanumerieke tekens, onderstrepingstekens, haakjes, afbreekstreepjes, punten (behalve aan het einde) en Unicode-tekens bevatten.
+
+   ```azurecli
+   az group create --location eastus --name <resource group name>
+   ```
+
+1. Richt een exemplaar van Azure Spring Cloud in. De naam van het server-exemplaar moet uniek zijn, tussen de 4 en 32 tekens lang en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten. Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
+
+    ```azurecli
+    az spring-cloud create -n <service instance name> -g <resource group name>
+    ```
+
+    Het uitvoeren van deze opdracht kan enkele minuten in beslag nemen.
+
+1. Stel de naam van de standaardresourcegroep en de naam van het service-exemplaar in, zodat u deze waarden niet herhaaldelijk hoeft op te geven in navolgende opdrachten.
+
+   ```azurecli
+   az configure --defaults group=<resource group name>
+   ```
+
+   ```azurecli
+   az configure --defaults spring-cloud=<service instance name>
+   ```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 U kunt Azure Spring Cloud instantiëren met behulp van de Azure-portal of de Azure CLI.  Beide methoden worden beschreven in de volgende procedures.
 ## <a name="prerequisites"></a>Vereisten
 
-* [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
-* (Optioneel) [De Azure CLI versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en de Azure Spring Cloud-extensie installeren met de opdracht: `az extension add --name spring-cloud`
+* (Optioneel) [De Azure CLI versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) en de Azure Spring Cloud-extensie installeren met de opdracht: `az extension add --name spring-cloud`
 * (Optioneel) [De Azure-toolkit voor IntelliJ installeren](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) en [aanmelden](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Een exemplaar van Azure Spring Cloud inrichten
@@ -59,7 +130,7 @@ Met de volgende procedure maakt u een exemplaar van Azure Spring Cloud met behul
 
 De volgende procedure maakt gebruik van de Azure CLI-extensie om een exemplaar van Azure Spring Cloud in te richten.
 
-1. Meld u aan bij de Azure CLI en kies uw actieve abonnement. Zorg ervoor dat u het actieve abonnement kiest dat is goedgekeurd voor Azure Spring Cloud
+1. Meld u aan bij de Azure CLI en kies uw actieve abonnement.
 
     ```azurecli
     az login
@@ -85,9 +156,25 @@ De volgende procedure maakt gebruik van de Azure CLI-extensie om een exemplaar v
 
     De implementatie van de service-instantie duurt ongeveer vijf minuten.
 ---
+::: zone-end
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u door wilt gaan naar de volgende quickstart van deze reeks, slaat u deze stap over.
+
+In deze quickstarts hebt u Azure-resources gemaakt waarmee de kosten blijven toenemen als de resources in uw abonnement blijven. Als u door wilt gaan naar de volgende quickstart en u deze resources niet meer nodig denkt te hebben, verwijdert u de resourcegroep via de portal of door de volgende opdracht in Cloud Shell uit te voeren:
+
+```azurecli
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+In deze quickstart hebt u ook de standaardnaam van de resourcegroep ingesteld. Als u niet van plan bent om door te gaan naar de volgende quickstart, wist u die standaardinstelling door de volgende CLI-opdracht uit te voeren:
+
+```azurecli
+az configure --defaults group=
+```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 > [!div class="nextstepaction"]
 > [Configuratieserver instellen](spring-cloud-quickstart-setup-config-server.md)
-
-
