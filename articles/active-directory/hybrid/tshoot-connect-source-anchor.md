@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb82eb2d8e23daec0ddb8856b713c1aa051f25c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6460015430850c11fbf70a005d7440ce1b92fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306001"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>Problemen met bron anker tijdens de installatie oplossen
 In dit artikel vindt u informatie over de verschillende bron anker problemen die kunnen optreden tijdens de installatie en die manieren bieden om deze problemen op te lossen.
@@ -27,16 +27,16 @@ In dit artikel vindt u informatie over de verschillende bron anker problemen die
 Tijdens een aangepaste installatie wordt Azure AD Connect het bron anker beleid gelezen van Azure Active Directory. Als het beleid bestaat in Azure Active Directory, past Azure AD Connect hetzelfde beleid toe, tenzij het wordt overschreven door de klant. De wizard informeert welk kenmerk is gelezen. Daarnaast wordt de wizard gewaarschuwd als u probeert het bron anker beleid te negeren.
 
 Tijdens deze Lees bewerking is het mogelijk dat het bron anker beleid in Azure Active Directory onverwacht is. In dit geval weet Azure AD Connect niet welk bron anker moet worden gebruikt en moet er hand matig worden overschreven.</br>
-![ongewenste](media/tshoot-connect-source-anchor/source1.png)
+![Scherm afbeelding die laat zien waar het bron anker hand matig moet worden overschreven.](media/tshoot-connect-source-anchor/source1.png)
 
 U kunt dit probleem oplossen door het bron anker hand matig te overschrijven door een specifiek kenmerk te selecteren. Ga door met deze optie alleen als u zeker weet welk kenmerk moet worden geselecteerd. Als u niet zeker weet, neemt u contact op met [micro soft ondersteuning](https://support.microsoft.com/contactus/) voor hulp. Als u het bron anker beleid wijzigt, kan dit de koppeling tussen uw on-premises gebruikers en de bijbehorende Azure-resources verstoren.</br>
-![ongewenste](media/tshoot-connect-source-anchor/source2.png)
+![Scherm afbeelding met het opgegeven kenmerk dat het bron anker overschrijft.](media/tshoot-connect-source-anchor/source2.png)
 
 ### <a name="express-installation"></a>Snelle installatie
 Tijdens de snelle installatie wordt Azure AD Connect het bron anker beleid gelezen van Azure Active Directory. Als het beleid bestaat in Azure Active Directory, past Azure AD Connect hetzelfde beleid toe. Er is geen optie om hand matig te negeren.
 
 Tijdens deze Lees bewerking is het mogelijk dat het bron anker beleid in Azure Active Directory onverwacht is. In dit geval weet Azure AD Connect niet wat het bron anker moet zijn.</br>
-![ongewenste](media/tshoot-connect-source-anchor/source3.png)
+![Scherm afbeelding waarin wordt weer gegeven wat er gebeurt wanneer het bron anker in Azure Active Directory onverwacht is.](media/tshoot-connect-source-anchor/source3.png)
 
 U kunt dit probleem oplossen door opnieuw te installeren met de aangepaste modus en het bron anker hand matig te vervangen door een specifiek kenmerk te selecteren. Ga door met deze optie alleen als u zeker weet welk kenmerk moet worden geselecteerd. Als u niet zeker weet, neemt u contact op met [micro soft ondersteuning](https://support.microsoft.com/contactus/) voor hulp. Als u het bron anker beleid wijzigt, kan dit de koppeling tussen uw on-premises gebruikers en de bijbehorende Azure-resources verstoren.
 

@@ -1,7 +1,7 @@
 ---
 title: Een VM-netwerk routerings probleem vaststellen-Azure CLI
 titleSuffix: Azure Network Watcher
-description: In dit artikel leert u hoe u een probleem met de netwerk routering van een virtuele machine kunt vaststellen met behulp van de volgende hop-functionaliteit van Azure Network Watcher.
+description: In dit artikel leert u hoe u met Azure CLI een probleem met de netwerk routering van een virtuele machine kunt vaststellen met behulp van de volgende hop-functionaliteit van Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302244"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Een probleem met de netwerk routering van een virtuele machine diagnosticeren-Azure CLI
 
@@ -32,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd, voert u uit `az login` om een verbinding te maken met Azure. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd, voert u `az login` uit om een verbinding met Azure te maken. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
@@ -42,7 +42,7 @@ Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Ma
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voor beeld wordt een VM gemaakt met de naam *myVm*:
+Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voorbeeld wordt een VM gemaakt met de naam *myVm*:
 
 ```azurecli-interactive
 az vm create \
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de resterende stappen totdat de virtuele machine is gemaakt en de Azure CLI uitvoer retourneert.
+Het maken van de virtuele machine duurt een paar minuten. Ga niet door met de resterende stappen totdat de VM is gemaakt en uitvoer wordt geretourneerd door de Azure CLI.
 
 ## <a name="test-network-communication"></a>Netwerkcommunicatie testen
 

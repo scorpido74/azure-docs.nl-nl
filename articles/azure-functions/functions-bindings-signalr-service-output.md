@@ -1,17 +1,17 @@
 ---
 title: Uitvoer binding van Azure Functions signalerings service
-description: Meer informatie over het verzenden van signaal service berichten van Azure Functions.
+description: Meer informatie over de uitvoer binding van de signaal/service voor Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323325"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Uitvoer binding van de signaal/service voor Azure Functions
 
@@ -45,7 +45,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
@@ -96,7 +96,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -123,7 +123,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -177,7 +177,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Voor beeld function.jsop:
 
@@ -226,7 +226,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -255,7 +255,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -312,7 +312,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Voor beeld function.jsop:
 
@@ -361,7 +361,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -390,7 +390,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -479,7 +479,7 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > Als `ClaimsPrincipal` u de juiste binding wilt krijgen, moet u de verificatie-instellingen hebben geconfigureerd in azure functions.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
@@ -726,12 +726,12 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalRConnectionInfo` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `SignalRConnectionInfo`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**| N.v.t. | Moet worden ingesteld op `signalRConnectionInfo` .|
-|**direction**| N.v.t. | Moet worden ingesteld op `in` .|
+|**type**| N.v.t. | Moet worden ingesteld op `signalRConnectionInfo`.|
+|**direction**| N.v.t. | Moet worden ingesteld op `in`.|
 |**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
 |**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
@@ -739,12 +739,12 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 ### <a name="signalr"></a>SignalR
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalR` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `SignalR`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**| N.v.t. | Moet worden ingesteld op `signalR` .|
-|**direction**| N.v.t. | Moet worden ingesteld op `out` .|
+|**type**| N.v.t. | Moet worden ingesteld op `signalR`.|
+|**direction**| N.v.t. | Moet worden ingesteld op `out`.|
 |**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |

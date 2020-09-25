@@ -3,12 +3,12 @@ title: IP-Firewall configureren voor Azure Event Grid onderwerpen of domeinen
 description: In dit artikel wordt beschreven hoe u Firewall instellingen configureert voor Event Grid onderwerpen of domeinen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324158"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>IP-Firewall configureren voor Azure Event Grid onderwerpen of domeinen 
 Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord. Zie [netwerk beveiliging voor Event grid](network-security.md)voor meer informatie over de beveiligings functies van het netwerk die door Event grid worden ondersteund.
@@ -23,7 +23,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt voor het maken va
 
     U kunt het verkeer beperken met behulp van firewall regels op basis van IP. Geef één IPv4-adres of een bereik van IP-adressen in een CIDR-notatie (Classless Inter-Domain Routing) op. 
 
-    ![Pagina open bare netwerken](./media/configure-firewall/public-networks-page.png)
+    ![Scherm opname van de pagina ' open bare netwerk toegang ' waarvoor ' open bare netwerken ' is geselecteerd.](./media/configure-firewall/public-networks-page.png)
 3. Selecteer **privé-eind punten alleen** om alleen privé-eindpunt verbindingen toe te staan om toegang te krijgen tot deze bron. Gebruik het tabblad **verbindingen met privé-eind punten** op deze pagina om verbindingen te beheren. 
 
     ![Pagina open bare netwerken](./media/configure-firewall/private-endpoints-page.png)

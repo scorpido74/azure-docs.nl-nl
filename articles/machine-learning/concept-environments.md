@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302499"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
 
@@ -85,7 +85,7 @@ De tweede stap wordt wegge laten als u door de [gebruiker beheerde afhankelijkhe
 
 Als u dezelfde omgevings definitie gebruikt voor een andere uitvoering, gebruikt de Azure Machine Learning-service de in de cache opgeslagen afbeelding van de werk ruimte ACR. 
 
-Als u de details van een afbeelding in de cache wilt weer geven, gebruikt u de methode [environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) .
+Als u de details van een afbeelding in de cache wilt weer geven, gebruikt u de methode [environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) .
 
 Als u wilt bepalen of u een installatie kopie in cache opnieuw wilt gebruiken of een nieuwe afbeelding wilt maken, berekent de service [een hashwaarde](https://en.wikipedia.org/wiki/Hash_table) van de omgevings definitie en vergelijkt deze met de hashes van bestaande omgevingen. De hash is gebaseerd op:
  
@@ -108,10 +108,10 @@ In het volgende diagram ziet u drie omgevings definities. Er zijn twee verschill
 Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen stellen van de installatie kopie af te dwingen ```numpy==1.18.1``` . Er worden nieuwe afhankelijkheden, inclusief geneste items, geïnstalleerd die een eerder werkend scenario kunnen verstoren. 
 
 > [!WARNING]
->  Met de methode [environment. build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.
+>  Met de methode [environment. build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [maken en gebruiken van omgevingen](how-to-use-environments.md) in azure machine learning.
-* Raadpleeg de documentatie van python SDK voor de [omgevings klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true).
+* Raadpleeg de documentatie van python SDK voor de [omgevings klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true).
 * Raadpleeg de naslag documentatie over R SDK voor [omgevingen](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

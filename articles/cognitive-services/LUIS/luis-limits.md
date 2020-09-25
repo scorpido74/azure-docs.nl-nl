@@ -1,14 +1,16 @@
 ---
 title: Limieten-LUIS
 description: Dit artikel bevat de bekende limieten van Azure Cognitive Services Language Understanding (LUIS). LUIS heeft verschillende limiet gebieden. De limiet voor het aantal besturings elementen voor modellen is intenties, entiteiten en functies in LUIS. Quotum limieten op basis van het sleutel type. Met toetscombinaties bepaalt u de LUIS-website.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324702"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Limieten voor uw LUIS-model en-sleutels
 LUIS heeft verschillende limiet gebieden. De eerste is de [model limiet](#model-limits), waarmee de intenties, entiteiten en onderdelen in Luis worden beheerd. Het tweede gebied is [quotum limieten](#key-limits) op basis van het sleutel type. Een derde gebied met limieten is de [toetscombinatie voor het beheren van de Luis](#keyboard-controls) -website. Een vierde gebied is de [wereld wijde toewijzing](luis-reference-regions.md) tussen de Luis-ontwerp website en de Luis- [eindpunt](luis-glossary.md#endpoint) api's.
@@ -19,7 +21,7 @@ LUIS heeft verschillende limiet gebieden. De eerste is de [model limiet](#model-
 
 Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [Luis-verzend](luis-concept-enterprise.md#dispatch-tool-and-model) -app te gebruiken of een [Luis-container](luis-container-howto.md)te gebruiken.
 
-|Onderwerp|Limiet|
+|Gebied|Limiet|
 |--|:--|
 | [Naam van app][luis-get-started-create-app] | * Standaard teken Max |
 | Toepassingen| 500-toepassingen per Azure-ontwerp bron |
@@ -39,7 +41,7 @@ Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [L
 | [Rollen](luis-concept-roles.md)|300 rollen per toepassing. 10 rollen per entiteit|
 | [Utterance][utterances] | 500 tekens<br><br>Als u tekst langer hebt dan deze limiet, moet u de utterance vóór de invoer in LUIS segmenteren en krijgt u afzonderlijke intentie reacties per segment. Er zijn duidelijke onderbrekingen waarmee u kunt werken, zoals Lees tekens en lange pauzes in spraak.|
 | [Utterance-voor beelden][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie<br><br>Als u de toepassing wilt trainen met meer voor beelden, gebruikt u een methode voor het [verzendings](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) model. U traint afzonderlijke LUIS-apps (ook wel onderliggende apps genoemd in de bovenliggende verzend-app) met een of meer intenties en traint vervolgens een Dispatch-app die steek proeven van elke onderliggende LUIS-app uitingen om de Voorspellings aanvraag naar de juiste onderliggende app te sturen. |
-| [Lager](luis-concept-version.md)| 100 versies per toepassing |
+| [Versies](luis-concept-version.md)| 100 versies per toepassing |
 | [Versie naam][luis-how-to-manage-versions] | 128 tekens |
 
 * Standaard teken Max is 50 tekens.
@@ -106,7 +108,7 @@ Gebruik de _soort_, `LUIS` , wanneer u resources in de Azure Portal filtert. De 
 
 ## <a name="keyboard-controls"></a>Toetsenbord besturings elementen
 
-|Toetsenbord invoer | Description |
+|Toetsenbord invoer | Beschrijving |
 |--|--|
 |Control + E|scha kelen tussen tokens en entiteiten in de lijst uitingen|
 

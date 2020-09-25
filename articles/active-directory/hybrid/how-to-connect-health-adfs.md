@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306273"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS bewaken met Azure AD Connect Health
 De volgende documentatie is specifiek voor het bewaken van uw Azure AD FS-infrastructuur met Azure AD Connect Health. Zie voor meer informatie over het controleren van Azure AD Connect (Sync) met Azure AD Connect Health, [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md). Zie [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)voor meer informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
@@ -33,7 +33,7 @@ In de sectie Waarschuwingen van Azure AD Connect Health vindt u een lijst met ac
 
 U kunt dubbelklikken op een actieve of opgeloste waarschuwing om een nieuwe blade te openen met aanvullende informatie, stappen die u kunt nemen om de waarschuwing op te lossen en koppelingen naar relevante documentatie. U kunt ook u historische gegevens bekijken voor waarschuwingen die in het verleden zijn opgelost.
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/alert2.png)
+![Scherm afbeelding met de Azure AD Connect Health pagina waarschuwingen waarop een waarschuwing is geselecteerd en het venster waarschuwings Details wordt weer gegeven.](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>Gebruiksanalyses voor AD FS
 Gebruiksanalyse Azure AD Connect Health analyseert het verificatieverkeer van uw federatieve servers. U kunt dubbelklikken op het vakje voor gebruiksanalyses om een blade met gebruiksanalyses te openen waarin u bepaalde gegevens en groeperingen kunt zien.
@@ -43,7 +43,7 @@ Gebruiksanalyse Azure AD Connect Health analyseert het verificatieverkeer van uw
 >
 >
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report1.png)
+![Scherm opname van de Azure AD Connect Health pagina gebruiks analyse.](./media/how-to-connect-health-adfs/report1.png)
 
 Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u met de rechtermuisknop op de grafiek met gebruiksanalyses en selecteert u Grafiek bewerken om de groepering te wijzigen. Vervolgens kunt u de tijdsperiode opgeven, andere gegevens selecteren en de groepering wijzigen. U kunt de distributie van het verificatieverkeer op basis van verschillende metrische gegevens weergeven en alle gegevens groeperen met behulp van de relevante 'groeperen op'-parameters die in het volgende gedeelte worden beschreven:
 
@@ -53,7 +53,7 @@ Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u me
 | --- | --- |
 | Alles | Geeft het berekende totale aantal verzoeken weer dat door alle AD FS-servers is verwerkt.|
 | Toepassing | Hiermee worden alle verzoeken gegroepeerd op basis van de beoogde Relying Party. Dankzij deze groep krijgt u meer inzicht in de percentages van al het verkeer die worden verwerkt per toepassing. |
-|  Server |Hiermee worden alle verzoeken gegroepeerd op basis van de server die het verzoek heeft verwerkt. Met deze groepering kunt u zien hoe de belasting van al het verkeer is verdeeld.
+|  server |Hiermee worden alle verzoeken gegroepeerd op basis van de server die het verzoek heeft verwerkt. Met deze groepering kunt u zien hoe de belasting van al het verkeer is verdeeld.
 | Werkplek koppelen |Hiermee worden alle verzoeken gegroepeerd op verzoeken die worden verzonden door apparaten die aan de werkplek gekoppeld (bekend) zijn of niet. Deze groepering is nuttig wanneer uw resources worden geopend met behulp van apparaten die niet bekend zijn in uw infrastructuur voor identiteiten. |
 |  Verificatiemethode | Hiermee worden alle verzoeken gegroepeerd op basis van de gebruikte verificatiemethode. Deze groepering biedt meer inzicht in de veelgebruikte verificatiemethoden. Hier volgen enkele mogelijke verificatiemethoden <ol> <li>Geïntegreerde Windows-verificatie (Windows)</li> <li>Op formulieren gebaseerde verificatie (formulieren)</li> <li>Optie voor eenmalige aanmelding (SSO)</li> <li>Op X509-certificaat gebaseerde verificatie (certificaat)</li> <br>Als een federatieve service het verzoek ontvangt met een SSO-cookie, wordt dit verzoek beschouwd als een eenmalige aanmelding (SSO). In zo’n geval, wanneer het cookie geldig is, wordt de gebruiker niet gevraagd om inloggegevens en krijgt deze naadloos toegang tot de toepassing. Dit gebeurt vaak wanneer u meerdere Relying Party’s hebt die worden beschermd door de federatieve servers. |
 | Netwerklocatie | Hiermee worden alle verzoeken gegroepeerd op basis van de netwerklocatie van de gebruiker. Dit kan intranet of extranet zijn. Met deze groepering kunt u zien welk percentage van het verkeer van het intranet komt, en welk percentage van het extranet. |
@@ -64,7 +64,7 @@ Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u me
 |Groeperen op | Wat houdt de groepering in en waarom heeft dit zin? |
 | --- | --- |
 | Fouttype | Hiermee wordt het aantal fouten op basis van vooraf gedefinieerde fouttypen weergegeven. Deze groepering is nuttig om meer inzicht te verkrijgen in de veelvoorkomende fouttypen. <ul><li>Onjuiste gebruikersnaam of wachtwoord: fouten als gevolg van onjuiste gebruikersnaam of wachtwoord.</li> <li>"Extranet Lockout": fouten omdat het verzoek werd ontvangen van een gebruiker die is uitgesloten van extranet </li><li> 'Wachtwoord verlopen': mislukt omdat de gebruiker zich heeft aangemeld met een verlopen wachtwoord.</li><li>"Account uitgeschakeld": mislukt omdat gebruikers zich aanmelden met een uitgeschakeld account.</li><li>"Apparaatverificatie": mislukt omdat gebruikers niet kunnen worden geverifieerd met behulp van Apparaatverificatie.</li><li>"Verificatie met gebruikerscertificaat": mislukt omdat gebruikers niet kunnen worden geverifieerd vanwege een ongeldig certificaat.</li><li>"MFA": mislukt omdat de gebruiker niet kan worden geverifieerd met behulp van Multi-Factor Authentication.</li><li>"Andere referentie": "Autorisatie uitgifte": mislukt vanwege autorisatiefouten.</li><li>"Overgedragen uitgifte": mislukt wegens fouten bij het delegeren van de uitgifte.</li><li>"Acceptatie token": mislukt omdat ADFS het token van een externe id-provider weigert.</li><li>"Protocol": mislukt wegens protocolfouten.</li><li>'Onbekend': algemene melding. Andere fouten die niet in de gedefinieerde categorieën vallen.</li> |
-| Server | Hiermee worden fouten gegroepeerd op basis van de server. Dit is handig om te begrijpen hoe de fouten zijn verdeeld over de servers. Een ongelijke verdeling kan wijzen op een server die in slechte staat is. |
+| server | Hiermee worden fouten gegroepeerd op basis van de server. Dit is handig om te begrijpen hoe de fouten zijn verdeeld over de servers. Een ongelijke verdeling kan wijzen op een server die in slechte staat is. |
 | Netwerklocatie | Hiermee worden fouten gegroepeerd op basis van de netwerklocatie van de verzoeken (intranet vs. extranet). Zo kunt u beter zien wat voor type verzoeken het vaakst mislukt. |
 |  Toepassing | Hiermee worden fouten gegroepeerd op basis van de beoogde applicatie (Relying Party). Dit is handig om te begrijpen bij welke doeltoepassing de meeste fouten voorkomen. |
 
@@ -78,7 +78,7 @@ Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u me
 ## <a name="performance-monitoring-for-ad-fs"></a>Prestatiebewaking voor AD FS
 Prestatiebewaking voor Azure AD Connect Health biedt bewakingsinformatie over de gegevens. Door het vakje Bewaking te selecteren, wordt een blade geopend met gedetailleerde informatie over de gegevens.
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/perf1.png)
+![Scherm opname van de pagina met de Azure AD Connect Health prestatie bewaking.](./media/how-to-connect-health-adfs/perf1.png)
 
 Door de filteroptie boven aan de blade te selecteren, kunt u filteren op server om de gegevens van een individuele server te bekijken. Als u de gegevens wilt bewerken, klikt u op de bewakingsgrafiek onder de bewakingsblade en selecteert u vervolgens Grafiek bewerken (of klikt u op de knop Grafiek bewerken). In de nieuwe blade die wordt geopend, kunt u nu aanvullende gegevens selecteren uit het vervolgkeuzemenu en een tijdsperiode opgeven om de prestatiegegevens te bekijken.
 
@@ -89,7 +89,7 @@ Maar er zijn andere redenen die kunnen leiden tot een onverwacht aantal aanvrage
 
 Azure AD Connect Health voor AD FS biedt een rapport over top 50 van gebruikers met mislukte inlogpogingen vanwege een ongeldige gebruikersnaam of wachtwoord. Dit rapport komt tot stand door het verwerken van de controlegebeurtenissen die worden gegenereerd door de AD FS-servers in de farms.
 
-![Portal voor Azure AD Connect Health](./media/how-to-connect-health-adfs/report1a.png)
+![Scherm afbeelding met de sectie ' rapporten ' met het aantal mislukte wachtwoord pogingen van de afgelopen 30 dagen.](./media/how-to-connect-health-adfs/report1a.png)
 
 Met dit rapport hebt u een eenvoudig overzicht van de volgende informatie:
 

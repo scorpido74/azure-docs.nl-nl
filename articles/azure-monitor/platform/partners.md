@@ -3,13 +3,13 @@ title: Partners die integreren met Azure Monitor
 description: Meer informatie over de partners van Azure Monitor en hoe u toegang kunt krijgen tot documentatie voor de integratie met deze.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278801"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -74,11 +74,19 @@ CloudMonix biedt bewaking, automatisering en Self-Retoucheer Services voor Micro
 
 ![DataDog-logo](./media/partners/datadog.png)
 
-Datadog is de toonaangevende bewakings service voor Cloud toepassingen. Er worden gegevens verzameld van servers, data bases, hulpprogram ma's en services om een uniforme weer gave van uw hele stack te presen teren. Deze mogelijkheden worden geboden op een SaaS-gebaseerd gegevens analyse platform. Met deze service kunnen ontwikkel aars en OPS-teams samen werken om uitval tijd te voor komen, prestatie problemen op te lossen en ervoor te zorgen dat de ontwikkelings-en implementatie cycli op tijd worden voltooid. Door Datadog en Azure te integreren, kunt u metrische gegevens van uw infra structuur verzamelen en weer geven. Correleer metrische gegevens van de virtuele machine met metrische gegevens op toepassings niveau. Segmenteer en dobbel uw metrische gegevens met een combi natie van eigenschappen en aangepaste labels.
+Met Azure kunnen klanten hun toepassingen migreren en moderniseren om ze uit te voeren in de Cloud, in combi natie met veel partner oplossingen. Een dergelijke partner is Datadog, waarmee u beschikt over hulpprogram ma's voor de bedenkbaarheid en beveiliging voor gebruikers om inzicht te krijgen in de status en prestaties van hun toepassingen in hybride en omgevingen met meerdere clouds.  Maar het configureren van de vereiste integraties vereist vaak dat er wordt genavigeerd tussen het Azure Portal en het Datadog.  Dit voegt complexiteit toe, neemt enige tijd in beslag en maakt het moeilijk om problemen op te lossen als er geen dingen werken.  Micro soft heeft met Datadog gewerkt aan het maken van een geïntegreerde Datadog-oplossing op het Azure-Cloud platform om de belasting van meerdere portals te verminderen.  Deze oplossing is beschikbaar via Azure Marketplace en biedt een naadloze ervaring voor het gebruik van de Cloud bewakings oplossing van Datadog in Azure.  
 
-[Ga naar de documentatie.][datadog-doc]
+Met de nieuwe integratie van Azure-Datadog kunnen organisaties hun oude en Cloud systemen nu volledig toewijzen, realtime-gegevens bewaken tijdens elke fase van de Cloud overgang en ervoor zorgen dat gemigreerde toepassingen voldoen aan de prestatie doelen. Deze integratie combineert de wereld wijde aanwezigheid, flexibiliteit, beveiliging en naleving van Azure voor de logboek registratie en bewakings mogelijkheden van Datadog om de beste ervaring voor ondernemingen te creëren. Met deze geïntegreerde ervaring kunt u het volgende doen: 
 
-In eerste oktober 2020 is een nieuwe Azure Marketplace-integratie van Datadog gepland voor release. Er wordt een koppeling toegevoegd tijdens de release. 
+- Richt een nieuwe Datadog-organisatie in en configureer hun Azure-resources voor het verzenden van Logboeken en metrische gegevens naar Datadog, een volledig beheerde installatie zonder infra structuur voor het instellen en uitvoeren van klanten.  
+- Verstuur probleemloos logboeken en metrische gegevens naar Datadog. Het proces voor het door sturen van Logboeken is volledig geautomatiseerd. in plaats van een pijp lijn voor het door sturen van een logboek te bouwen met Diagnostische instellingen, Event Hubs en functions, kunt u alles met slechts enkele klikken configureren.
+-   Installeer de Datadog-agent eenvoudig op VM-hosts via een enkele klik.
+-   Eenmalige aanmelding (SSO) stroom lijnen naar Datadog: een afzonderlijke aanmelding vanuit de Datadog-Portal is niet meer vereist. 
+-   Profiteer van Unified billing voor de Datadog-service via de facturering van een Azure-abonnement.
+
+Meld u aan voor de [open bare preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) van de nieuwe Datadog-integratie met Azure.  Open bare preview is beschikbaar op Azure Marketplace vanaf oktober 2020.
+
+Als u nog steeds de vorige hand matig geconfigureerde integratie gebruikt, raadpleegt u de [documentatie op de DataDog-website][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -140,7 +148,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality of Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Lees meer
+Meer informatie
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.

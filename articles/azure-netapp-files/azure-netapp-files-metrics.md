@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325552"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metrische gegevens voor Azure NetApp Files
 
@@ -37,21 +37,24 @@ Azure NetApp Files voorziet in metrische gegevens over de toegewezen opslag, het
 - *Verbruikte grootte van pool*  
     Het totale aantal logische ruimte (GiB) dat wordt gebruikt voor alle volumes in een capaciteits pool.  
 
-- *Totale grootte van de moment opname van de groep*    
+- *Totale grootte van de moment opname voor de pool*    
     De som van de grootte van de moment opname van alle volumes in de pool.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Metrische gegevens over het gebruik voor volumes
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *Grootte van toegewezen volume*   
+    De ingerichte grootte van een volume
+- *Volume quotum grootte*    
+    De quotum grootte (GiB) waarmee het volume is ingericht.   
 - *Grootte van gebruikt volume*   
-    De totale logische ruimte die wordt gebruikt in een volume (GiB).  
+    Logische grootte van het volume (gebruikte bytes).  
     Deze grootte bevat logische ruimte die wordt gebruikt door actieve bestands systemen en moment opnamen.  
 - *Grootte van moment opname van volume*   
-   De incrementele logische ruimte die wordt gebruikt door moment opnamen in een volume.  
+   De grootte van alle moment opnamen in een volume.  
 
 ## <a name="performance-metrics-for-volumes"></a>Prestatie gegevens voor volumes
 
@@ -63,11 +66,28 @@ Azure NetApp Files voorziet in metrische gegevens over de toegewezen opslag, het
     Het aantal lees bewerkingen naar het volume per seconde.
 - *IOPS schrijven*   
     Het aantal schrijf bewerkingen naar het volume per seconde.
+- *MiB lezen/s*   
+    Lees doorvoer in bytes per seconde.
+- *MiB/s schrijven*   
+    Schrijf doorvoer in bytes per seconde.
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metrische gegevens van de volume replicatie
 
 - *Is de status van de volume replicatie in orde*   
-    De voor waarde van de replicatie relatie. 
+    De voor waarde van de replicatie relatie. De status in orde wordt aangegeven door `1` . Een slechte status wordt aangegeven door `0` .
 
 - *Wordt de overdracht van de volume replicatie*    
     Hiermee wordt aangegeven of de status van de volume replicatie ' Transfer ' is. 

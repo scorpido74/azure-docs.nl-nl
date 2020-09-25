@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324056"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -100,6 +100,31 @@ Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor 
 
 -    Voer een GET-bewerking uit op uw voor deur met de API-versie `2020-01-01` of hoger. Zoek in de API-aanroep naar `frontdoorID` veld. Filter op de inkomende header '**X-Azure-FDID**' die door de voor deur naar uw back-end wordt verzonden met de waarde van het veld `frontdoorID` . U kunt `Front Door ID` de waarde ook vinden in de sectie Overzicht van de portal-pagina voor de voor deur. 
 
+- Regel filtering Toep assen op uw back-end-webserver om verkeer te beperken op basis van de resulterende waarde ' X-Azure-FDID '.
+
+  Hier volgt een voor beeld van [micro soft Internet Information Services (IIS)](https://www.iis.net/):
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
+
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kan het anycast-IP-adres worden gewijzigd gedurende de levens duur van mijn front-deur?
 
 Het front-end-frontend-IP-adres voor de voor deur moet normaal gesp roken niet worden gewijzigd en kan statisch blijven gedurende de levens duur van de voor deur. Er zijn echter **geen garanties** voor dezelfde. Neem geen directe afhankelijkheden op het IP-adres.
@@ -132,6 +157,10 @@ Voor de Azure-deur (AFD) is een openbaar IP-adres of een openbaar omgezette DNS-
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Wat zijn de verschillende time-outs en limieten voor de Azure front-deur?
 
 Meer informatie over alle gedocumenteerde [time-outs en limieten voor de Azure front-deur](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Hoe lang duurt het voordat een regel van kracht wordt nadat deze is toegevoegd aan de engine voor de voor deur regels?
+
+De configuratie van de regel engine duurt ongeveer 10 tot 15 minuten om een update te volt ooien. Zodra de update is voltooid, kunt u ervan uitgaan dat de regel van kracht wordt. 
 
 ## <a name="performance"></a>Prestaties
 

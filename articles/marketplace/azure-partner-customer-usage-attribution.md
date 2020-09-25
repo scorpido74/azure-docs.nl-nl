@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261376"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -268,39 +268,7 @@ Wanneer u software implementeert \<PARTNER> , kan micro soft de software-install
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Er zijn twee ondersteunings kanalen, afhankelijk van de problemen die u ondervindt.
-
-Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![Scherm afbeelding van de ondersteunings pagina ophalen](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-Als u hulp nodig hebt bij het voorbereiden van de Marketplace en/of de toewijzing van klant gebruik in het algemeen, zoals het instellen van de toewijzing van klant gebruik, volgt u de onderstaande stappen:
-
-1. Ga naar de [ondersteunings pagina](https://go.microsoft.com/fwlink/?linkid=844975).
-
-1. Onder **probleem type**selecteert u **Marketplace-onboarding**.
-
-1. Kies de **categorie** voor uw probleem:
-
-   - Selecteer voor problemen met de gebruiks koppeling **andere**.
-   - Selecteer voor toegangs problemen met Azure Marketplace het **toegangs probleem**.
-
-     ![De probleem categorie kiezen](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. Selecteer **aanvraag starten**.
-
-1. Voer op de volgende pagina de vereiste waarden in. Selecteer **Doorgaan**.
-
-1. Voer op de volgende pagina de vereiste waarden in.
-
-   > [!IMPORTANT]
-   > In het vak **titel van incident** voert u het bijhouden van ISV- **gebruik**in. Beschrijf uw probleem in detail.
-
-   ![Het bijhouden van ISV-gebruik voor de incident titel invoeren](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. Vul het formulier in en selecteer vervolgens **verzenden**.
-
-U kunt ook technische richt lijnen ontvangen van een technische consultant van micro soft-partners voor technische preverkoop-, implementatie-en app-ontwikkelings scenario's voor het begrijpen en opnemen van de toewijzing van klant gebruik.
+Meer informatie over de ondersteunings opties in de commerciële Marketplace met [ondersteuning voor het commerciële Marketplace-programma in het partner centrum](./partner-center-portal/support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Een technische consultatie aanvraag indienen
 

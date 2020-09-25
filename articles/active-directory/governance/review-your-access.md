@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274007"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen of toepassingen in azure AD-toegangs beoordelingen bekijken
 
@@ -65,13 +65,13 @@ Zodra u de toegangs beoordeling hebt geopend, kunt u uw toegang zien.
 
     Als de aanvraag de toegang voor anderen wil controleren, ziet de pagina er anders uit. Zie [toegang tot groepen of toepassingen controleren](perform-access-review.md)voor meer informatie.
 
-    ![Open toegangs beoordeling waarin u wordt gevraagd of u nog steeds toegang tot een groep nodig hebt](./media/review-your-access/perform-access-review.png)
+    ![Scherm opname met een open toegangs beoordeling waarin wordt gevraagd of u nog steeds toegang tot een groep nodig hebt.](./media/review-your-access/perform-access-review.png)
 
 1. Klik op **Ja** om uw toegang te beperken of op **Nee** om uw toegang te verwijderen.
 
 1. Als u op **Ja**klikt, moet u mogelijk een motivering opgeven in het vak **reden** .
 
-    ![Voltooide toegangs beoordeling waarin u wordt gevraagd of u nog steeds toegang tot een groep nodig hebt](./media/review-your-access/perform-access-review-submit.png)
+    ![Scherm afbeelding met een voltooide toegangs beoordeling waarin wordt gevraagd of u nog steeds toegang tot een groep nodig hebt, waarbij ' ja ' is geselecteerd.](./media/review-your-access/perform-access-review-submit.png)
 
 1. Klik op **Submit**
 

@@ -3,12 +3,12 @@ title: Azure Event Grid levering en probeer het opnieuw
 description: Hierin wordt beschreven hoe Azure Event Grid gebeurtenissen levert en hoe er niet-bezorgde berichten worden verwerkt.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324090"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Bericht bezorging Event Grid en probeer het opnieuw
 
@@ -89,11 +89,151 @@ Event Grid verzendt een gebeurtenis naar de locatie van de onbestelbare berichte
 
 Er is een vertraging van vijf minuten tussen de laatste poging om een gebeurtenis te leveren en wanneer deze wordt geleverd aan de locatie van de onbestelbare berichten. Deze vertraging is bedoeld om het aantal Blob Storage-bewerkingen te verminderen. Als de locatie voor onbestelbare berichten vier uur niet beschikbaar is, wordt de gebeurtenis verwijderd.
 
-Voordat u de locatie van de onbestelbare letter instelt, moet u een opslag account hebben met een container. U geeft het eind punt voor deze container op bij het maken van het gebeurtenis abonnement. Het eind punt heeft de volgende indeling:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Voordat u de locatie van de onbestelbare letter instelt, moet u een opslag account hebben met een container. U geeft het eind punt voor deze container op bij het maken van het gebeurtenis abonnement. Het eind punt heeft de volgende indeling: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Mogelijk wilt u een melding ontvangen wanneer een gebeurtenis naar de locatie van de onbestelbare brief is verzonden. Als u Event Grid wilt gebruiken om te reageren op niet-bezorgde gebeurtenissen, [maakt u een gebeurtenis abonnement](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) voor de onbestelbare Blob-opslag. Telkens wanneer uw dead-letter-Blob-opslag een niet-bezorgd gebeurtenis ontvangt, wordt Event Grid een melding verzonden naar uw handler. De handler reageert met de acties die u wilt uitvoeren voor het afstemmen van niet-bezorgde gebeurtenissen.
+Mogelijk wilt u een melding ontvangen wanneer een gebeurtenis naar de locatie van de onbestelbare brief is verzonden. Als u Event Grid wilt gebruiken om te reageren op niet-bezorgde gebeurtenissen, [maakt u een gebeurtenis abonnement](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) voor de onbestelbare Blob-opslag. Telkens wanneer uw dead-letter-Blob-opslag een niet-bezorgd gebeurtenis ontvangt, wordt Event Grid een melding verzonden naar uw handler. De handler reageert met de acties die u wilt uitvoeren voor het afstemmen van niet-bezorgde gebeurtenissen. Zie [Dead-letter en beleid voor opnieuw proberen](manage-event-delivery.md)voor een voor beeld van het instellen van een niet-actieve locatie en het beleid voor opnieuw proberen.
 
-Zie [Dead-letter en beleid voor opnieuw proberen](manage-event-delivery.md)voor een voor beeld van het instellen van een locatie met een onbestelbare letter.
+## <a name="delivery-event-formats"></a>Bezorgings gebeurtenis indelingen
+In deze sectie vindt u voor beelden van gebeurtenissen en gebeurtenissen met onbestelbare berichten in verschillende indelingen voor afleverings schema's (Event Grid schema, CloudEvents 1,0-schema en aangepast schema). Zie [Event grid](event-schema.md) schema-en [Cloud evenementen 1,0-schema](cloud-event-schema.md) artikelen voor meer informatie over deze indelingen. 
+
+### <a name="event-grid-schema"></a>Event Grid-schema
+
+#### <a name="event"></a>Gebeurtenis 
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/000000000-0000-0000-0000-00000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Onbestelbare gebeurtenis
+
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    },
+
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T17:18:14.0265758Z",
+    "lastDeliveryAttemptTime": "2020-08-13T17:18:14.0465788Z" 
+}
+```
+
+### <a name="cloudevents-10-schema"></a>CloudEvents 1,0-schema
+
+#### <a name="event"></a>Gebeurtenis
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Onbestelbare gebeurtenis
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    },
+
+    "deadletterreason": "MaxDeliveryAttemptsExceeded",
+    "deliveryattempts": 1,
+    "lastdeliveryoutcome": "NotFound",
+    "publishtime": "2020-08-13T21:21:36.4018726Z",
+}
+```
+
+### <a name="custom-schema"></a>Aangepast schema
+
+#### <a name="event"></a>Gebeurtenis
+
+```json
+{
+    "prop1": "my property",
+    "prop2": 5,
+    "myEventType": "fooEventType"
+}
+
+```
+
+#### <a name="dead-letter-event"></a>Onbestelbare gebeurtenis
+```json
+{
+    "id": "8bc07e6f-0885-4729-90e4-7c3f052bd754",
+    "eventTime": "2020-08-13T18:11:29.4121391Z",
+    "eventType": "myEventType",
+    "dataVersion": "1.0",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/00000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.EventGrid/topics/myCustomSchemaTopic",
+    "subject": "subjectDefault",
+  
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T18:11:29.4121391Z",
+    "lastDeliveryAttemptTime": "2020-08-13T18:11:29.4277644Z",
+  
+    "data": {
+        "prop1": "my property",
+        "prop2": 5,
+        "myEventType": "fooEventType"
+    }
+}
+```
+
 
 ## <a name="message-delivery-status"></a>Leverings status van bericht
 
@@ -117,7 +257,7 @@ Alle andere codes die zich niet in de bovenstaande set (200-204) bevinden, worde
 | ------------|----------------|
 | 400 Ongeldige aanvraag | Na 5 minuten of meer opnieuw proberen (Deadletter direct bij het instellen van Deadletter) |
 | 401 Onbevoegd | Opnieuw proberen na 5 minuten of langer |
-| 403 Verboden | Opnieuw proberen na 5 minuten of langer |
+| 403 verboden | Opnieuw proberen na 5 minuten of langer |
 | 404 Niet gevonden | Opnieuw proberen na 5 minuten of langer |
 | 408 Time-out van aanvraag | Opnieuw proberen na twee minuten of langer |
 | de 413-aanvraag entiteit is te groot | Na 10 seconden of meer opnieuw proberen (Deadletter onmiddellijk als Deadletter is ingesteld) |

@@ -8,17 +8,17 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 5f2fa1f33fe57b0d96ad3d6faa334b98d21c5f4a
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272522"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Een FCI maken met Opslagruimten Direct (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,15 +92,15 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
 1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag**, zoals hier wordt weer gegeven:
 
    ![Cluster validatie tests selecteren](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Klik onder **bevestiging**op **volgende**.
 
     Met de wizard **een configuratie valideren** worden de validatie tests uitgevoerd.

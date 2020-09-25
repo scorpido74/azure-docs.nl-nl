@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278853"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren in Azure Portal
 
 Azure AD biedt een centrale plek voor het beheren van apparaat-id's.
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory**  >  **apparaten**.
-
-[![Weer gave alle apparaten in de Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 Op de pagina **alle apparaten** kunt u het volgende doen:
 
@@ -38,6 +33,13 @@ Op de pagina **alle apparaten** kunt u het volgende doen:
 - Configureer de instellingen voor uw apparaat-id.
 - Enterprise State Roaming in-of uitschakelen.
 - Audit logboeken met betrekking tot het apparaat controleren
+
+[![Weer gave alle apparaten in de Azure Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+U kunt de portal voor apparaten openen met de volgende stappen:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Blader naar **Azure Active Directory**  >  **apparaten**.
 
 ## <a name="manage-devices"></a>Apparaten beheren
 
@@ -146,6 +148,13 @@ U kunt nu **filters toevoegen** aan uw weer gave **alle apparaten** .
 ## <a name="configure-device-settings"></a>Apparaatinstellingen configureren
 
 Als u apparaat-id's wilt beheren met de Azure AD-Portal, moeten die apparaten zijn [geregistreerd of zijn gekoppeld](overview.md) aan Azure AD. Als beheerder kunt u het proces voor het registreren en toevoegen van apparaten beheren door de volgende apparaatinstellingen te configureren.
+
+U moet een van de volgende rollen zijn toegewezen om Apparaatinstellingen weer te geven of te beheren in de Azure Portal:
+
+- Globale beheerder
+- Beheerder van Cloud apparaat
+- Algemene lezer
+- Directory-lezer
 
 ![Apparaatinstellingen met betrekking tot Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

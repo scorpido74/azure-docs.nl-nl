@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259632"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -48,7 +48,7 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Culture: taal instelling} | De ISO-code van twee letters voor de taal. | nl |
+| {Culture: taal instelling} | De ISO-code van twee letters voor de taal. | en |
 | {Culture: LCID}   | De LCID van de taal code. | 1043 |
 | {Culture: regionaam} | De ISO-code van twee tekens voor de regio. | VS |
 | {Culture: RFC5646} | De RFC5646-taal code. | nl-NL |
@@ -67,16 +67,16 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
 | {OIDC: AuthenticationContextReferences} |De `acr_values` query teken reeks parameter. | N.v.t. |
-| {OIDC: ClientId} |De `client_id` query teken reeks parameter. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |De `domain_hint` query teken reeks parameter. | facebook.com |
+| {OIDC: ClientId} |De `client_id`  query teken reeks parameter. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC: DomainHint} |De `domain_hint`  query teken reeks parameter. | facebook.com |
 | {OIDC: LoginHint} |  De `login_hint` query teken reeks parameter. | someone@contoso.com |
 | {OIDC: MaxAge} | De `max_age` . | N.v.t. |
-| {OIDC: nonce} |De `Nonce` query teken reeks parameter. | defaultNonce |
+| {OIDC: nonce} |De `Nonce`  query teken reeks parameter. | defaultNonce |
 | {OIDC: wacht woord}| Het wacht woord van de gebruiker van het [wacht woord voor de resource-eigenaar loopt](ropc-custom.md) .| Wachtwoord1| 
 | {OIDC: prompt} | De `prompt` query teken reeks parameter. | aanmelding |
-| {OIDC: RedirectUri} |De `redirect_uri` query teken reeks parameter. | https://jwt.ms |
-| {OIDC: resource} |De `resource` query teken reeks parameter. | N.v.t. |
-| {OIDC: bereik} |De `scope` query teken reeks parameter. | OpenID Connect |
+| {OIDC: RedirectUri} |De `redirect_uri`  query teken reeks parameter. | https://jwt.ms |
+| {OIDC: resource} |De `resource`  query teken reeks parameter. | N.v.t. |
+| {OIDC: bereik} |De `scope`  query teken reeks parameter. | OpenID Connect |
 | {OIDC: gebruikers naam}| De gebruikers naam van de gebruiker van het [wacht woord](ropc-custom.md) voor de resource-eigenaar.| emily@contoso.com| 
 
 ### <a name="context"></a>Context
@@ -113,6 +113,7 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
 | {oauth2: access_token} | Het toegangs token. | N.v.t. |
+| {oauth2: refresh_token} | Het vernieuwings token. | N.v.t. |
 
 
 ### <a name="saml"></a>SAML
@@ -120,10 +121,10 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
 | {SAML: AuthnContextClassReferences} | De `AuthnContextClassRef` element waarde, van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 2.0: AC: klassen: PasswordProtectedTransport |
-| {SAML: NameIdPolicyFormat} | Het `Format` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress |
+| {SAML: NameIdPolicyFormat} | Het `Format` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | {SAML: verlener} |  De SAML- `Issuer` element waarde van de SAML-aanvraag.| `https://contoso.com` |
-| {SAML: AllowCreate} | De `AllowCreate` kenmerk waarde, van het `NameIDPolicy` element van de SAML-aanvraag. | True |
-| {SAML: ForceAuthn} | De `ForceAuthN` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag. | True |
+| {SAML: AllowCreate} | De `AllowCreate` kenmerk waarde, van het `NameIDPolicy` element van de SAML-aanvraag. | Waar |
+| {SAML: ForceAuthn} | De `ForceAuthN` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag. | Waar |
 | {SAML: ProviderName} | De `ProviderName` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
 | {SAML: RelayState} | De `RelayState` query teken reeks parameter.| 
 

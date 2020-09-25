@@ -1,6 +1,6 @@
 ---
-title: Galerie-installatie kopieën delen via tenants in azure
-description: Meer informatie over het delen van VM-installatie kopieën in azure-tenants met behulp van de galerie met gedeelde afbeeldingen.
+title: Galerie-installatie kopieën delen via tenants
+description: Meer informatie over het maken van schaal sets met behulp van installatie kopieën die worden gedeeld via Azure-tenants met behulp van de galerie met gedeelde afbeeldingen.
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 542dfbc28621e02cd2842fb174e986bfeb91e6ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323478"
 ---
-# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>Galerie-VM-installatie kopieën delen via tenants in azure
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Installatie kopieën delen via tenants met de galerie voor gedeelde afbeeldingen
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -51,4 +51,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen ondervindt, kunt u [problemen met gedeelde afbeeldings galerieën oplossen](troubleshooting-shared-images.md).
+Als u problemen ondervindt, kunt u [problemen met gedeelde afbeeldings galerieën oplossen](../virtual-machines/troubleshooting-shared-images.md).

@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276498"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Delta-indeling in Azure Data Factory
 
@@ -35,12 +35,13 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`delta` | ja | `delta` | indeling |
+| Indeling | Indeling moet `delta` | ja | `delta` | indeling |
 | Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
 | Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
 | Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | `Optimal` of `Fastest` | compressionLevel |
 | Tijd reis | Kies of u een query wilt uitvoeren op een oudere moment opname van een Delta tabel | nee | Query op tijds tempel: tijds tempel <br> Query op versie: geheel getal | timestampAsOf <br> versionAsOf |
+| Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>Schema importeren
 
@@ -71,7 +72,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`delta` | ja | `delta` | indeling |
+| Indeling | Indeling moet `delta` | ja | `delta` | indeling |
 | Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
 | Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
 | Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |

@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: b808038c9b973cbf4ba9e0b2e54d97bd41664297
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 3e19701abe152e947e87ef624a003538ab7062a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271797"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -57,7 +57,7 @@ Met privé-eindpunten kunt u veilig verbinding maken tussen servers in een virtu
 
 #### <a name="nsg-tags"></a>NSG-tags
 
-Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast de Azure Backup-tag moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [NSG-regels](../virtual-network/security-overview.md#service-tags) voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
+Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](../virtual-network/security-overview.md#service-tags) te maken voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*opslag*).  In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
 
 1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 

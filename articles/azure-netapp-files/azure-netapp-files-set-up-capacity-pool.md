@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325404"
 ---
 # <a name="set-up-a-capacity-pool"></a>Een capaciteitspool instellen
 
@@ -49,16 +49,27 @@ U moet al een NetApp-account hebben gemaakt.
      In dit veld worden de doelprestaties voor de capaciteitspool weergegeven.  
      Geef het service niveau voor de capaciteits groep op: [**Ultra**](azure-netapp-files-service-levels.md#Ultra), [**Premium**](azure-netapp-files-service-levels.md#Premium)of [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
-   * **Size**     
+    * **Size**     
      Geef de grootte op van de capaciteitspool die u aanschaft.        
      De minimale grootte van de capaciteitspool is 4 TiB. U kunt een pool maken met een grootte die een veelvoud is van 4 TiB.   
-      
-     ![Nieuwe capaciteitspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Klik op **OK**.
+   * **QoS**   
+     Geef op of de capaciteits groep het type **hand matig** of **automatisch** QoS moet gebruiken.  
+
+     Zie [opslag hiërarchie](azure-netapp-files-understand-storage-hierarchy.md) en [prestatie overwegingen](azure-netapp-files-performance-considerations.md) om inzicht te krijgen in de QoS-typen.  
+
+     > [!IMPORTANT] 
+     > **QoS-type** instellen op **hand matig** is permanent. U kunt een hand matige QoS-capaciteits groep niet converteren om automatische QoS te gebruiken. U kunt echter een capaciteits groep voor automatische QoS converteren om hand matig QoS te gebruiken. Zie [een capaciteits groep wijzigen om hand matig QoS te gebruiken](manage-manual-qos-capacity-pool.md#change-to-qos).   
+     > Als u het hand matige QoS-type voor een capaciteits groep wilt gebruiken, moet u registratie. Zie [een hand matige QoS-capaciteits groep beheren](manage-manual-qos-capacity-pool.md#register-the-feature). 
+
+    ![Nieuwe capaciteitspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. Klik op **Create**.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
+- [Opslag hiërarchie](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Serviceniveau's voor Azure NetApp Files](azure-netapp-files-service-levels.md)
-- Bekijk de [pagina met prijzen van Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) voor informatie over de prijs van verschillende serviceniveaus
+- [Pagina met Azure NetApp Files prijzen](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Een hand matige QoS-capaciteits groep beheren](manage-manual-qos-capacity-pool.md)
 - [Een subnet delegeren aan Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

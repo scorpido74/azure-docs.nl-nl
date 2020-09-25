@@ -2,66 +2,63 @@
 title: Toepassings pakketten implementeren op reken knooppunten
 description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoudig meerdere toepassingen en versies te beheren voor installatie op batch Compute-knoop punten.
 ms.topic: how-to
-ms.date: 09/16/2020
-ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 0d705ca731c40563deaeb02c29da120211db7ff4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.custom:
+- H1Hack27Feb2017
+- devx-track-csharp
+- contperfq1
+ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277696"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
-De functie voor toepassings pakketten van Azure Batch helpt u bij het beheren van taak toepassingen en de implementatie ervan tot reken knooppunten in uw Pools. Toepassings pakketten kunnen de code in uw batch-oplossing vereenvoudigen en de overhead verminderen die nodig is voor het beheren van de toepassingen die door uw taken worden uitgevoerd. Met toepassings pakketten kunt u meerdere versies van de toepassingen die door uw taken worden uitgevoerd, uploaden en beheren, met inbegrip van de bijbehorende ondersteunende bestanden. U kunt vervolgens automatisch een of meer van deze toepassingen implementeren op de reken knooppunten in uw pool.
-
-Toepassings pakketten kunnen uw klanten helpen bij het selecteren van toepassingen voor hun taken, waarbij de exacte versie wordt opgegeven die moet worden gebruikt bij het verwerken van taken met uw batch-service. U kunt uw klanten ook de mogelijkheid bieden om hun eigen toepassingen te uploaden en bij te houden in uw service.
+Met toepassings pakketten kan de code in uw Azure Batch-oplossing worden vereenvoudigd en kunnen de toepassingen die door uw taken worden uitgevoerd eenvoudiger worden beheerd. Met toepassings pakketten kunt u meerdere versies van toepassingen die door uw taken worden uitgevoerd, uploaden en beheren, met inbegrip van de bijbehorende ondersteunende bestanden. U kunt vervolgens automatisch een of meer van deze toepassingen implementeren op de reken knooppunten in uw pool.
 
 De Api's voor het maken en beheren van toepassings pakketten maken deel uit van de [Batch Management .net](/dotnet/api/overview/azure/batch/management) -bibliotheek. De Api's voor het installeren van toepassings pakketten op een reken knooppunt maken deel uit van de [batch .net](/dotnet/api/overview/azure/batch/client) -bibliotheek. Vergelijk bare functies bevinden zich in de beschikbaar batch-Api's voor andere talen.
 
-In dit artikel wordt uitgelegd hoe u toepassings pakketten uploadt en beheert in de Azure Portal, en hoe u deze kunt installeren op de reken knooppunten van een pool met de [batch .net](/dotnet/api/overview/azure/batch/client) -bibliotheek.
+In dit artikel wordt uitgelegd hoe u toepassings pakketten uploadt en beheert in de Azure Portal. Ook wordt uitgelegd hoe u deze op de reken knooppunten van een groep kunt installeren met de [batch .net](/dotnet/api/overview/azure/batch/client) -bibliotheek.
 
 ## <a name="application-package-requirements"></a>Toepassings pakket vereisten
 
 Als u toepassings pakketten wilt gebruiken, moet u [een Azure Storage-account koppelen](#link-a-storage-account) aan uw batch-account.
 
-Er gelden beperkingen voor het aantal toepassingen en toepassings pakketten in een batch-account en op de maximale grootte van het toepassings pakket. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md) voor meer informatie over deze limieten.
+Er gelden beperkingen voor het aantal toepassingen en toepassings pakketten in een batch-account en op de maximale grootte van het toepassings pakket. Zie [quota's en limieten voor de Azure batch-service](batch-quota-limit.md)voor meer informatie.
 
 > [!NOTE]
-> Batch-Pools die zijn gemaakt vóór 5 juli 2017 bieden geen ondersteuning voor toepassings pakketten (tenzij ze zijn gemaakt na 10 maart 2016 met behulp van Cloud Services configuratie).
->
-> De functie voor toepassings pakketten die hier wordt beschreven, vervangt de functie Batch-apps die beschikbaar is in vorige versies van de service.
+> Batch-Pools die zijn gemaakt vóór 5 juli 2017 bieden geen ondersteuning voor toepassings pakketten (tenzij ze zijn gemaakt na 10 maart 2016 met behulp van Cloud Services configuratie). De functie voor toepassings pakketten die hier wordt beschreven, vervangt de functie Batch-apps die beschikbaar is in vorige versies van de service.
 
-## <a name="about-applications-and-application-packages"></a>Over toepassingen en toepassings pakketten
+## <a name="understand-applications-and-application-packages"></a>Meer informatie over toepassingen en toepassings pakketten
 
-Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die automatisch kunnen worden gedownload naar de reken knooppunten in uw pool. Een *toepassings pakket* verwijst naar een specifieke set binaire bestanden die een bepaalde versie van de toepassing vertegenwoordigen.
+Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die automatisch kunnen worden gedownload naar de reken knooppunten in uw pool. Een toepassing bevat een of meer *toepassings pakketten*die verschillende versies van de toepassing vertegenwoordigen.
+
+Elk *toepassings pakket* is een zip-bestand met de binaire bestanden van de toepassing en eventuele ondersteunende bestanden. Alleen de zip-indeling wordt ondersteund.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="Diagram van een weer gave op hoog niveau van toepassingen en toepassings pakketten.":::
 
-Een *toepassing* in batch bevat een of meer toepassings pakketten en bevat configuratie opties voor de toepassing. Een toepassing kan bijvoorbeeld de standaard versie van het toepassings pakket opgeven die op reken knooppunten moet worden geïnstalleerd en of de pakketten kunnen worden bijgewerkt of verwijderd.
-
-Een *toepassings pakket* is een zip-bestand dat de binaire bestanden van de toepassing bevat en de ondersteunings dossiers die vereist zijn voor uw taken om de toepassing uit te voeren. Elk toepassings pakket vertegenwoordigt een specifieke versie van de toepassing. Alleen de zip-indeling wordt ondersteund.
-
-U kunt toepassings pakketten opgeven op het niveau van de groep of taak. U kunt een of meer van deze pakketten en (eventueel) een versie opgeven wanneer u een groep of taak maakt.
+U kunt toepassings pakketten opgeven op het niveau van de groep of taak.
 
 - **Groeps toepassings pakketten** worden geïmplementeerd op elk knoop punt in de pool. Toepassingen worden geïmplementeerd wanneer een knoop punt wordt toegevoegd aan een pool en wanneer deze opnieuw wordt opgestart of een installatie kopie wordt gemaakt.
   
-    Groeps toepassings pakketten zijn geschikt wanneer alle knoop punten in een pool de taken van een taak uitvoeren. U kunt een of meer toepassings pakketten opgeven wanneer u een pool maakt en u kunt de pakketten van een bestaande groep toevoegen of bijwerken. Als u de toepassings pakketten van een bestaande groep bijwerkt, moet u de knoop punten opnieuw opstarten om het nieuwe pakket te installeren.
+    Groeps toepassings pakketten zijn geschikt wanneer alle knoop punten in een pool de taken van een taak uitvoeren. U kunt een of meer toepassings pakketten opgeven die moeten worden geïmplementeerd wanneer u een groep maakt. U kunt ook de pakketten van een bestaande groep toevoegen of bijwerken. Als u een nieuw pakket wilt installeren op een bestaande pool, moet u de knoop punten opnieuw opstarten.
 
 - **Taak toepassings pakketten** worden alleen geïmplementeerd op een reken knooppunt dat is gepland voor het uitvoeren van een taak, net voordat de opdracht regel van de taak wordt uitgevoerd. Als het opgegeven toepassings pakket en de versie zich al op het knoop punt bevindt, wordt het niet opnieuw geïmplementeerd en wordt het bestaande pakket gebruikt.
   
-    Taak toepassings pakketten zijn handig in omgevingen met gedeelde groepen, waarbij verschillende taken worden uitgevoerd op één groep en de groep niet wordt verwijderd wanneer een taak is voltooid. Als de job minder taken dan knooppunten in de groep heeft, kunnen toepassingspakketten van taken gegevensoverdracht minimaliseren omdat uw toepassing alleen wordt geïmplementeerd op de knooppunten die taken uitvoeren.
+    Taak toepassings pakketten zijn handig in omgevingen met gedeelde groepen, waarbij verschillende taken worden uitgevoerd op één groep en de groep niet wordt verwijderd wanneer een taak is voltooid. Als uw taak minder taken dan knoop punten in de groep heeft, kunnen taak toepassings pakketten gegevens overdracht minimaliseren omdat uw toepassing alleen wordt geïmplementeerd op de knoop punten waarop taken worden uitgevoerd.
   
-    Andere scenario's die kunnen profiteren van taak toepassings pakketten zijn taken die een grote toepassing uitvoeren, maar slechts enkele taken. Een voor beeld: een voorbereidings fase of een samenvoeg taak, waarbij de preprocessing-of Merge-toepassing Heavyweight is, kan profiteren van het gebruik van taak toepassings pakketten.
+    Andere scenario's die kunnen profiteren van taak toepassings pakketten zijn taken die een grote toepassing uitvoeren, maar slechts enkele taken. Taak toepassingen kunnen bijvoorbeeld nuttig zijn voor een voorbereidings stadium van een Heavyweight of een samenvoeg taak.
 
-Met toepassings pakketten hoeft de begin taak van de pool geen lange lijst op te geven met afzonderlijke bron bestanden die op de knoop punten moeten worden geïnstalleerd. U hoeft niet hand matig meerdere versies van uw toepassings bestanden in Azure Storage of op uw knoop punten te beheren. En u hoeft zich geen zorgen te maken over het genereren van [SAS-url's](../storage/common/storage-sas-overview.md) voor toegang tot de bestanden in uw opslag account. Batch werkt op de achtergrond met Azure Storage om toepassings pakketten op te slaan en te implementeren op reken knooppunten.
+Met toepassings pakketten hoeft de begin taak van de pool geen lange lijst op te geven met afzonderlijke bron bestanden die op de knoop punten moeten worden geïnstalleerd. U hoeft niet hand matig meerdere versies van uw toepassings bestanden in Azure Storage of op uw knoop punten te beheren. En u hoeft zich geen zorgen te maken over het genereren van [SAS-url's](../storage/common/storage-sas-overview.md) om toegang te bieden tot de bestanden in uw opslag account. Batch werkt op de achtergrond met Azure Storage om toepassings pakketten op te slaan en te implementeren op reken knooppunten.
 
 > [!NOTE]
 > De totale grootte van een begintaak moet kleiner zijn dan of gelijk zijn aan 32.768 tekens, inclusief bronbestanden en omgevingsvariabelen. Als uw begin taak deze limiet overschrijdt, is het gebruik van toepassings pakketten een andere optie. U kunt ook een zip-bestand met uw bron bestanden maken, dit uploaden als een BLOB naar Azure Storage en het vervolgens uitpakken vanaf de opdracht regel van de begin taak.
 
 ## <a name="upload-and-manage-applications"></a>Toepassingen uploaden en beheren
 
-U kunt de [Azure Portal](https://portal.azure.com) -of de batch beheer-api's gebruiken om de toepassings pakketten in uw batch-account te beheren. In de volgende secties laten we eerst zien hoe u een opslag account koppelt en hoe u toepassingen en pakketten toevoegt en ze beheert met de portal.
+U kunt de [Azure Portal](https://portal.azure.com) -of de batch beheer-api's gebruiken om de toepassings pakketten in uw batch-account te beheren. In de volgende secties wordt uitgelegd hoe u een opslag account koppelt en hoe u toepassingen en toepassings pakketten kunt toevoegen en beheren in de Azure Portal.
 
 ### <a name="link-a-storage-account"></a>Een opslag account koppelen
 
@@ -88,19 +85,19 @@ Als u deze menu optie selecteert, wordt het venster **toepassingen** geopend. In
 - **Standaard versie**: indien van toepassing, de versie van de toepassing die wordt geïnstalleerd als er geen versie wordt opgegeven bij het implementeren van de toepassing.
 - **Updates toestaan**: Hiermee geeft u op of pakket updates en verwijderingen zijn toegestaan.
 
-Als u de [bestands structuur](files-and-directories.md) van het toepassings pakket op het reken knooppunt wilt zien, gaat u naar uw batch-account in de Azure Portal. Selecteer **Pools** en selecteer vervolgens de pool met het reken knooppunt waarin u bent geïnteresseerd. Selecteer vervolgens het reken knooppunt waarop het toepassings pakket is geïnstalleerd en open de map **toepassingen** .
+Als u de [bestands structuur](files-and-directories.md) van het toepassings pakket op een reken knooppunt wilt zien, gaat u naar uw batch-account in de Azure Portal. Selecteer **groepen**. Selecteer vervolgens de pool die het reken knooppunt bevat. Selecteer het reken knooppunt waarop het toepassings pakket is geïnstalleerd en open de map **toepassingen** .
 
 ### <a name="view-application-details"></a>Details van toepassing weer geven
 
 Als u de details van een toepassing wilt bekijken, selecteert u deze in het venster **toepassingen** . U kunt de volgende instellingen configureren voor uw toepassing.
 
-- **Updates toestaan**: geeft aan of toepassings pakketten kunnen worden [bijgewerkt of verwijderd](#update-or-delete-an-application-package). De standaard waarde is **Ja**. Als deze waarde is ingesteld op **Nee**, worden pakket updates en verwijderingen niet toegestaan voor de toepassing, maar nieuwe toepassings pakket versies kunnen worden toegevoegd.
+- **Updates toestaan**: geeft aan of toepassings pakketten kunnen worden [bijgewerkt of verwijderd](#update-or-delete-an-application-package). De standaard waarde is **Ja**. Indien ingesteld op **Nee**, kunnen bestaande toepassings pakketten niet worden bijgewerkt of verwijderd, maar nieuwe toepassings pakket versies kunnen nog steeds worden toegevoegd.
 - **Standaard versie**: het standaard toepassings pakket dat moet worden gebruikt wanneer de toepassing wordt geïmplementeerd, als er geen versie is opgegeven.
 - **Weergave naam**: een beschrijvende naam die door uw batch-oplossing kan worden gebruikt wanneer informatie over de toepassing wordt weer gegeven. Deze naam kan bijvoorbeeld worden gebruikt in de gebruikers interface van een service die u via batch aan uw klanten verstrekt.
 
 ### <a name="add-a-new-application"></a>Een nieuwe toepassing toevoegen
 
-Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een nieuwe, unieke toepassings-ID op.
+Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een unieke toepassings-ID op.
 
 Selecteer in uw batch-account **toepassingen** en selecteer vervolgens **toevoegen**.
 
@@ -143,7 +140,7 @@ Nu u hebt geleerd hoe u toepassings pakketten kunt beheren in de Azure Portal, k
 
 ### <a name="install-pool-application-packages"></a>Groeps toepassings pakketten installeren
 
-Als u een toepassings pakket wilt installeren op alle reken knooppunten in een pool, geeft u een of meer toepassings pakket verwijzingen op voor de groep. De toepassings pakketten die u voor een groep opgeeft, worden op elk reken knooppunt geïnstalleerd wanneer dat knoop punt aan de pool wordt toegevoegd en wanneer het knoop punt opnieuw wordt opgestart of een installatie kopie wordt gemaakt.
+Als u een toepassings pakket wilt installeren op alle reken knooppunten in een pool, geeft u een of meer toepassings pakket verwijzingen op voor de groep. De toepassings pakketten die u voor een groep opgeeft, worden geïnstalleerd op elk reken knooppunt dat wordt gekoppeld aan de groep, en op elk knoop punt dat opnieuw wordt opgestart of de installatie kopie wordt gerecycled.
 
 Geef in batch .NET een of meer [CloudPool. ApplicationPackageReferences](/dotnet/api/microsoft.azure.batch.cloudpool.applicationpackagereferences) op wanneer u een nieuwe groep maakt of voor een bestaande groep. De klasse [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) geeft een toepassings-id en versie op die op de reken knooppunten van een pool moet worden geïnstalleerd.
 
@@ -170,7 +167,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Als een implementatie van een toepassings pakket om welke reden dan ook mislukt, markeert de batch-service het knoop punt [onbruikbaar](/dotnet/api/microsoft.azure.batch.computenode.state)en worden er geen taken gepland voor uitvoering op dat knoop punt. In dit geval moet u het knoop punt opnieuw opstarten om de implementatie van het pakket opnieuw te starten. Wanneer het knoop punt opnieuw wordt gestart, wordt de taak planning ook opnieuw ingeschakeld op het knoop punt.
+> Als de implementatie van een toepassings pakket mislukt, markeert de batch-service het knoop punt [onbruikbaar](/dotnet/api/microsoft.azure.batch.computenode.state)en worden er geen taken gepland voor uitvoering op dat knoop punt. Als dit het geval is, start u het knoop punt opnieuw op om de implementatie van het pakket opnieuw te starten. Wanneer het knoop punt opnieuw wordt gestart, wordt de taak planning ook opnieuw ingeschakeld op het knoop punt.
 
 ### <a name="install-task-application-packages"></a>Taak toepassings pakketten installeren
 
@@ -246,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>De toepassingspakketten van een groep bijwerken
 
-Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u een nieuw pakket voor de groep opgeven. Als u een nieuwe pakket verwijzing voor een groep opgeeft, is het volgende van toepassing:
+Als een bestaande pool al is geconfigureerd met een toepassings pakket, kunt u een nieuw pakket voor de groep opgeven. Dit houdt in:
 
 - De batch-service installeert het zojuist opgegeven pakket op alle nieuwe knoop punten die lid zijn van de groep en op elk bestaand knoop punt dat opnieuw wordt opgestart of een nieuwe installatie kopie heeft gemaakt.
 - Reken knooppunten die zich al in de groep bevinden wanneer u de pakket verwijzingen bijwerkt, installeren het nieuwe toepassings pakket niet automatisch. Deze reken knooppunten moeten opnieuw worden opgestart of worden geimageeerd om het nieuwe pakket te ontvangen.

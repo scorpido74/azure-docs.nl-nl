@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324464"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor
 
@@ -23,7 +23,7 @@ In dit artikel vindt u informatie over de instellingen en vereisten voor het ver
 
 ## <a name="supported-authentication-types"></a>Ondersteunde verificatie typen
 
-| Verificatietypen | Description |
+| Verificatietypen | Beschrijving |
 | ---------------------|-------------|
 |**Basic** | U moet de algemene para meters voor toegang tot gegevens bronnen kunnen opgeven. Bijvoorbeeld een connection string of-sleutel. Beheerders van gegevens invoer kunnen deze referenties weer geven. |
 | **AzureManagedIdentity** | [Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor Azure-resources is een functie van Azure Active Directory. Het biedt Azure-Services met een automatisch beheerde identiteit in azure AD. U kunt de identiteit gebruiken om te verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie.|

@@ -2,18 +2,18 @@
 title: Versleuteling aan de server zijde van Azure Managed Disks-Power shell
 description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274772"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Versleuteling aan de server zijde van Azure Disk Storage voor Power shell
 
@@ -47,6 +47,10 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 - Als deze functie is ingeschakeld voor uw schijf, kunt u deze niet uitschakelen.
     Als u dit wilt omzeilen, moet u [alle gegevens](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) naar een volledig andere beheerde schijf kopiëren die geen door de klant beheerde sleutels gebruikt.
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>Ondersteunde regio’s
+
+Door de klant beheerde sleutels zijn beschikbaar in alle regio's waarvoor beheerde schijven beschikbaar zijn.
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Versleuteling van host-end-to-end-versleuteling voor uw VM-gegevens
 

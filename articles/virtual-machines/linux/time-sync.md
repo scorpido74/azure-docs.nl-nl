@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306953"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
@@ -138,7 +138,7 @@ In Ubuntu 19,10 en hoger, Red Hat Enterprise Linux en CentOS 8. x, [chrony](http
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu en ntp.
+Zie [tijd synchronisatie](https://ubuntu.com/server/docs/network-ntp)voor meer informatie over Ubuntu en ntp.
 
 Zie [NTP configureren](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)voor meer informatie over Red Hat en ntp. 
 
@@ -158,7 +158,7 @@ Hier dwingt chrony een tijd update af als de drift groter is dan 1 seconde. Als 
 systemctl restart chronyd
 ```
 
-### <a name="systemd"></a>gesystemeerd 
+### <a name="systemd"></a>systemd 
 
 In SUSE-en Ubuntu-releases vóór 19,10 wordt tijd synchronisatie geconfigureerd met behulp van [systemed](https://www.freedesktop.org/wiki/Software/systemd/). Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu. Zie voor meer informatie over SUSE sectie 4.5.8 in [SuSE Linux Enterprise Server 12 SP3-Release opmerkingen](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 

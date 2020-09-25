@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova, jovanpop
+ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a629d230d63506a163cac0c530a1a8fbfed9627f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325076"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Snelstartgids: een punt-naar-site-verbinding naar een met Azure SQL beheerd exemplaar van on-premises configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ In deze Quick Start wordt gedemonstreerd hoe u via een punt-naar-site verbinding
 
 Voor deze snelstartgids geldt het volgende:
 
-- Maakt gebruik van de resources die zijn gemaakt in [een beheerde instantie maken](instance-create-quickstart.md) als uitgangs punt.
+- Maakt gebruik van de resources die zijn gemaakt in  [een beheerde instantie maken](instance-create-quickstart.md) als uitgangs punt.
 - Power shell 5,1 en Azure PowerShell 1.4.0 of hoger is vereist op uw on-premises client computer. Zie, indien nodig, de instructies voor [het installeren van de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module).
 - Vereist de nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) op uw on-premises client computer.
 
@@ -65,7 +65,7 @@ Voor deze snelstartgids geldt het volgende:
 
 ## <a name="create-a-vpn-connection"></a>Een VPN-verbinding maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de resource groep waarin u de gateway van het virtuele netwerk hebt gemaakt en open vervolgens de bron van de virtuele netwerk gateway.
 3. Selecteer **punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden**.
 
@@ -83,7 +83,7 @@ Voor deze snelstartgids geldt het volgende:
 1. Ga naar **VPN** in **netwerk & Internet** op uw on-premises client computer en selecteer het virtuele netwerk van uw SQL Managed instance om een verbinding met dit VNet tot stand te brengen. Het VNet bevindt zich in de volgende afbeelding met de naam **MyNewVNet**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Selecteer **Verbinding maken**.
+2. Selecteer **Verbinden**.
 3. Selecteer in het dialoog venster **verbinding maken**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection2.png)  

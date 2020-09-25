@@ -5,17 +5,17 @@ services: virtual-machines-linux
 author: MashaMSFT
 ms.date: 10/22/2019
 tags: azure-service-management
-ms.topic: conceptual
+ms.topic: quickstart
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: MT
+ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273078"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Richt een virtuele Linux-machine in met SQL Server in het Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ In deze quickstart-zelfstudie gaat u Azure Portal gebruiken om een virtuele Linu
 
 * [Een virtuele Linux-machine met SQL Server maken vanuit de galerie](#create)
 * [Verbinding te maken met de nieuwe virtuele machine via ssh](#connect)
-* [Het SA-wacht woord wijzigen](#password)
+* [Het SA-wachtwoord wijzigen](#password)
 * [Configureren voor externe verbindingen](#remote)
 
 ## <a name="prerequisites"></a>Vereisten
@@ -100,7 +100,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Selecteer **Controleren + maken**.
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.
 
-## <a name="connect-to-the-linux-vm"></a><a id="connect"></a>Verbinding maken met de virtuele Linux-machine
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Verbinding maken met de virtuele Linux-machine
 
 Als u al een BASH-shell gebruikt, moet u verbinding maken met de virtuele Azure-machine via de opdracht **ssh**. In de volgende opdracht vervangt u de VM-gebruikersnaam en het IP-adres om verbinding te maken met uw virtuele Linux-machine.
 
@@ -127,7 +127,7 @@ Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](../../.
 > [!NOTE]
 > Als er een PuTTY-beveiligingswaarschuwing wordt weergegeven dat de hostsleutel van de server niet in het register wordt opgeslagen, kunt u uit de volgende opties kiezen. Als u deze host vertrouwt, selecteert u **Ja** om de sleutel aan de PuTTy-cache toe te voegen en door te gaan met verbinding maken. Als u eenmalig verbinding wilt maken, zonder de sleutel aan de cache toe te voegen, selecteert u **Nee**. Als u deze host niet vertrouwt, selecteert u **Annuleren** om de verbinding te verbreken.
 
-## <a name="change-the-sa-password"></a><a id="password"></a>Het SA-wachtwoord wijzigen
+## <a name="change-the-sa-password"></a><a id="password"></a> Het SA-wacht woord wijzigen
 
 Op de nieuwe virtuele machine wordt SQL Server geïnstalleerd met een willekeurig SA-wachtwoord. Stel dit wachtwoord opnieuw in voordat u met de SA-aanmeldingsgegevens verbinding met SQL Server maakt.
 

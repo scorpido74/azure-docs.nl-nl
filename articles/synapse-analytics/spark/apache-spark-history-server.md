@@ -9,18 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260407"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
 Dit artikel bevat richt lijnen voor het gebruik van de uitgebreide Apache Spark-geschiedenis server voor het opsporen en diagnosticeren van voltooide en actieve Spark-toepassingen.
 
-De uitbrei ding bevat een tabblad gegevens, tabblad grafiek en diagnose. gebruik het tabblad **gegevens** om de invoer-en uitvoer gegevens van de Spark-taak te controleren. Op het tabblad **grafiek** ziet u de gegevens stroom en het opnieuw afspelen van de taak grafiek. Het tabblad **diagnose** toont u **gegevens scheefheid**, **tijds scheefheid**en **gebruiks analyse**.
+De uitbrei ding bevat een tabblad gegevens, het tabblad grafiek en het tabblad diagnose. Gebruik het tabblad **gegevens** om de invoer-en uitvoer gegevens van de Spark-taak te controleren. Op het tabblad **grafiek** ziet u de gegevens stroom en het opnieuw afspelen van de taak grafiek. Het tabblad **diagnose** toont u  **gegevens scheefheid**, **tijds scheefheid**en **gebruiks analyse**.
 
 ## <a name="access-the-apache-spark-history-server"></a>De Apache Spark-geschiedenis server openen
 
@@ -30,11 +30,11 @@ Apache Spark geschiedenis server is de webgebruikersinterface voor voltooide en 
 
 1. [Azure Synapse Analytics](https://web.azuresynapse.net/) openen.
 
-2. Klik op **bewaken**en selecteer vervolgens **Apache Spark toepassingen**.
+2. Selecteer **monitor**en selecteer vervolgens **Apache Spark toepassingen**.
 
-    ![Klik op controle en selecteer vervolgens Spark-toepassing.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![Selecteer monitor en selecteer vervolgens Spark-toepassing.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Selecteer een toepassing en open vervolgens **logboek query** door erop te klikken.
+3. Selecteer een toepassing en open vervolgens **logboek query** door deze te selecteren.
 
     ![Logboek query venster openen.](./media/apache-spark-history-server/open-application-window.png)
 
@@ -46,11 +46,11 @@ Apache Spark geschiedenis server is de webgebruikersinterface voor voltooide en 
 
 1. Selecteer vanuit uw Azure Synapse Studio-notebook **Spark-geschiedenis server** in de uitvoer-cel van de taak of in het deel venster status aan de onderkant van het notebook document. Selecteer **Sessiegegevens**.
 
-   ![Spark-geschiedenis server starten](./media/apache-spark-history-server/launch-history-server2.png "Spark-geschiedenis server starten")
+   ![Spark-geschiedenis server 1 starten](./media/apache-spark-history-server/launch-history-server2.png "Spark-geschiedenis server starten")
 
 2. Selecteer **Spark-geschiedenis server** in het deel venster schuiven.
 
-   ![Spark-geschiedenis server starten](./media/apache-spark-history-server/launch-history-server.png "Spark-geschiedenis server starten")
+   ![Spark-geschiedenis Server 2 starten](./media/apache-spark-history-server/launch-history-server.png "Spark-geschiedenis server starten")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>Het tabblad gegevens in de Spark-geschiedenis server verkennen
 
@@ -157,7 +157,7 @@ Beweeg de muis aanwijzer op het grafiek knooppunt om de knop Info weer te geven 
 
 Op het tabblad taak grafiek worden de knop Info en een klein pictogram weer gegeven als er taken zijn die voldoen aan de volgende voor waarden:
 
-|Voorwaarde|Beschrijving|
+|Conditie|Beschrijving|
 |-|-|
 |Gegevens scheef trekken|gegevens lezen grootte > gemiddelde grootte van het lezen van gegevens van alle taken in deze fase * 2 en grootte van gegevens lezen > 10 MB|
 |Tijd verschil|uitvoerings tijd > gemiddelde uitvoerings tijd van alle taken in deze fase * 2 en uitvoerings tijd > 2 minuten|
@@ -200,7 +200,7 @@ Controleer de **gebruiks analyse** van de **gegevens scheefheid**, het **tijds v
 
 Wanneer u het tabblad **gegevens scheefheid** selecteert, worden de bijbehorende gescheefe taken weer gegeven op basis van de opgegeven para meters.
 
-* **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven, die worden gebruikt voor het detecteren van gegevens scheefheid. De standaard regel is: het lezen van de taak gegevens is groter dan drie keer van het gemiddelde van de taak gegevens gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen, de secties **scheefe fase** en **schuine tekens** worden dienovereenkomstig vernieuwd.
+* **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven, die worden gebruikt voor het detecteren van gegevens scheefheid. De standaard regel is: het lezen van de taak gegevens is groter dan drie keer van het gemiddelde van de taak gegevens gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen. De secties **scheefe fase** en **scheefe tekens** worden dienovereenkomstig vernieuwd.
 
 * Verdeelde **fase** : in het tweede gedeelte worden fasen weer gegeven, die gescheefe taken hebben die voldoen aan de bovenstaande criteria. Als er meer dan een scheefe taak in een fase is, wordt in de tabel verscheefde fase alleen de meest verlaagde taak weer gegeven (bijvoorbeeld de grootste gegevens voor het scheef trekken van gegevens).
 
@@ -224,7 +224,7 @@ Op het tabblad **tijd verschil** worden scheefe taken weer gegeven op basis van 
 
 In de gebruiks grafiek van de uitvoerder wordt de toewijzings-en uitvoerings status van de Spark-taak uitwerkt.  
 
-1. Selecteer **gebruiks analyse**uitvoeren en vervolgens vier typen curven over het gebruik van de uitvoerder, met inbegrip **van toegewezen uitvoerende**machines, het **uitvoeren van uitvoerende**machines, **niet-actieve uitvoerende**machines en **Maxi maal**bewerkings instanties. Met betrekking tot toegewezen uitvoerder neemt elke gebeurtenis ' uitvoerder toegevoegd ' of ' uitvoeringen verwijderd ' de toegewezen uitvoerder toe of af. U kunt ' gebeurtenis tijdlijn ' op het tabblad taken voor meer vergelijking controleren.
+1. Selecteer **gebruiks analyse**uitvoeren en vervolgens vier typen curven over het gebruik van de uitvoerder, met inbegrip **van toegewezen uitvoerende**machines, het **uitvoeren van uitvoerende**machines, **niet-actieve uitvoerende**machines en **Maxi maal**bewerkings instanties. Voor toegewezen uitvoerendeers verhoogt of verkleint elke ' uitvoerder ' of ' uitvoeringen verwijderd ' de toegewezen uitvoerder. U kunt ' gebeurtenis tijdlijn ' op het tabblad taken voor meer vergelijking controleren.
 
    ![tabblad sparkui diagnose-uitvoeringen](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

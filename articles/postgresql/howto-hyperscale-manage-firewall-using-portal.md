@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275418"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels voor Azure Database for PostgreSQL-grootschalige beheren (Citus)
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een grootschalige (Citus)-coördinator knooppunt vanaf een opgegeven IP-adres of bereik van IP-adressen.
@@ -49,7 +49,7 @@ U kunt ook op **+ toevoegen 0.0.0.0-255.255.255.255** (rechts van optie B) niet 
 
 ## <a name="connecting-from-azure"></a>Verbinding maken vanuit Azure
 
-Er is een eenvoudige manier om toegang tot grootschalige-data bases toe te kennen aan toepassingen die worden gehost op Azure (zoals een Azure Web Apps-toepassing, of die worden uitgevoerd in een Azure-VM). Stel de optie **Azure-Services en-resources toegang tot deze server groep toestaan** in op **Ja** in de portal in het deel venster **netwerken** en druk op **Opslaan**.
+Er is een eenvoudige manier om toegang tot grootschalige (Citus) toe te kennen aan toepassingen die worden gehost op Azure (zoals een Azure Web Apps-toepassing, of die worden uitgevoerd in een Azure-VM). Stel de optie **Azure-Services en-resources toegang tot deze server groep toestaan** in op **Ja** in de portal in het deel venster **netwerken** en druk op **Opslaan**.
 
 > [!IMPORTANT]
 > Met deze optie configureert u de firewall zo dat alle verbindingen vanuit Azure zijn toegestaan, inclusief verbindingen vanuit de abonnementen van andere klanten. Wanneer u deze optie selecteert, zorgt u er dan voor dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.

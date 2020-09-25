@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261427"
 ---
 # <a name="create-an-advanced-device-model"></a>Een geavanceerd apparaatmodel maken
 
@@ -188,7 +188,7 @@ Gesimuleerde apparaten kunnen ook reageren op methode aanroepen, in welk geval z
 
 In deze hand leiding ziet u hoe u een model maakt voor een drone. De drone keert wille keurig rond een initiële set coördinaten om locatie en hoogte te wijzigen.
 
-Kopieer de volgende JSON naar een tekst editor en sla deze **op alsdrone.jsop**.
+Kopieer de volgende JSON naar een tekst editor en sla deze ** op alsdrone.jsop**.
 
 ### <a name="device-definition-json-example"></a>JSON-voor beeld van Device definition
 

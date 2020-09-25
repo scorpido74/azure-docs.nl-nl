@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d1d74f1240f919bb20d8893755a86abc19fa828
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271984"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -215,7 +215,7 @@ Het rapport wordt gegenereerd als een `.txt` bestand met `RegisterSqlVMScriptRep
 | Aantal overgeslagen Vm's omdat deze niet worden uitgevoerd SQL Server op Windows | Het aantal virtuele machines dat is overgeslagen omdat deze niet worden uitgevoerd SQL Server of geen virtuele Windows-machine zijn. De virtuele machines worden weer gegeven in de indeling `SubscriptionID, Resource Group, Virtual Machine` . | 
 | &nbsp; | &nbsp; |
 
-### <a name="log"></a>Log 
+### <a name="log"></a>Logboek 
 
 Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDueToError<Timestamp>.log` , waarbij tijds tempel het tijdstip is waarop het script is gestart. Als de fout zich op het abonnements niveau bevindt, bevat het logboek de door komma's gescheiden abonnements-ID en het fout bericht. Als de fout is opgetreden bij de registratie van de virtuele machine, bevat het logboek de abonnements-ID, de naam van de resource groep, de naam van de virtuele machine, de fout code en het bericht, gescheiden door komma's. 
 

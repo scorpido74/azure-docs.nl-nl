@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325756"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure verbinden met ITSM-hulpprogramma's met behulp van IT Service Management Connector
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
 ![IT Service Management-connector-symbool](media/itsmc-overview/itsmc-symbol.png)
 
@@ -114,8 +114,8 @@ Actie groepen bieden een modulaire en herbruikbare manier om acties voor uw Azur
 
 Gebruik de volgende procedure:
 
-1. Klik in Azure Portal op **monitor**.
-2. Klik in het linkerdeel venster op **actie groepen**. Het venster **actie groep toevoegen** wordt weer gegeven.
+1. Klik in Azure Portal op  **monitor**.
+2. Klik in het linkerdeel venster op  **actie groepen**. Het venster **actie groep toevoegen** wordt weer gegeven.
 
     ![Actiegroepen](media/itsmc-overview/action-groups.png)
 
@@ -137,6 +137,10 @@ Wanneer u een Azure-waarschuwings regel maakt/bewerkt, gebruikt u een actie groe
 > [!NOTE]
 >
 > Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor actie groepen voor meer informatie over de prijzen van de ITSM-actie.
+
+> [!NOTE]
+>
+> Het veld voor de korte beschrijving in de definitie van de waarschuwings regel is beperkt tot 40 tekens wanneer het wordt verzonden met behulp van de ITSM-actie.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Het incident en de gegevens van de wijzigings aanvraag visualiseren en analyseren
@@ -289,7 +293,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
-   -  ITSMC: de oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
+   -  ITSMC: de oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen**  in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
    - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie rechtstreeks met behulp van de query `*` ServiceDeskLog_CL `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen

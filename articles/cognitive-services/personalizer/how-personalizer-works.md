@@ -1,14 +1,16 @@
 ---
 title: 'Hoe Personaler werkt: Personaler'
 description: De Personaler- _lus_ gebruikt machine learning om het model te bouwen dat de meest voorkomende actie voor uw inhoud voorspelt. Het model wordt uitsluitend getraind op uw gegevens die u hebt verzonden met behulp van de rang en beloning.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303604"
 ---
 # <a name="how-personalizer-works"></a>Hoe Personalizer werkt
 

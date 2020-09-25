@@ -2,22 +2,24 @@
 title: Service Fabric service-eind punten opgeven
 description: Eindpunt resources beschrijven in een service manifest, inclusief het instellen van HTTPS-eind punten
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267802"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
-Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd, zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het ServiceManifest.xml bestand wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
+Service Fabric-toepassingen en-services worden gedefinieerd en geversiond met behulp van manifest bestanden. Zie [service Fabric toepassings-en service manifesten](service-fabric-application-and-service-manifests.md)voor een overzicht op een hoger niveau van ServiceManifest.xml en ApplicationManifest.xml.
+
+Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd, zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het ServiceManifest.xml bestand wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*, en wordt beschreven in de documentatie van het [ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
 
 ## <a name="endpoints"></a>Eindpunten
 Wanneer een eindpunt resource is gedefinieerd in het service manifest, Service Fabric wijst poorten toe uit het gereserveerde poort bereik van de toepassing wanneer een poort niet expliciet is opgegeven. Bekijk bijvoorbeeld het eind punt *ServiceEndpoint1* dat is opgegeven in het manifest fragment dat wordt gegeven na deze alinea. Daarnaast kunnen services ook een specifieke poort aanvragen in een bron. Er kunnen verschillende poort nummers worden toegewezen aan service replica's die worden uitgevoerd op verschillende cluster knooppunten, terwijl replica's van een service die op hetzelfde knoop punt wordt uitgevoerd, de poort delen. De service replica's kunnen deze poorten vervolgens gebruiken als nodig voor replicatie en Luis teren naar client aanvragen.
 
-Bij het activeren van een service die een HTTPS-eind punt opgeeft, stelt Service Fabric de vermelding van het toegangs beheer voor de poort in, koppelt u het opgegeven server certificaat aan de poort en verleent u ook de identiteit dat de service wordt uitgevoerd als machtigingen voor de persoonlijke sleutel van het certificaat. De activerings stroom wordt elke keer aangeroepen Service Fabric wordt gestart, of wanneer de certificaat declaratie van de toepassing wordt gewijzigd via een upgrade. Het eindpunt certificaat wordt ook gecontroleerd op wijzigingen/vernieuwingen en de machtigingen worden periodiek opnieuw toegepast wanneer dat nodig is.
+Bij het activeren van een service die een HTTPS-eind punt opgeeft, stelt Service Fabric de vermelding van het toegangs beheer voor de poort in, koppelt u het opgegeven server certificaat aan de poort en verleent u ook de identiteit dat de service wordt uitgevoerd als machtigingen voor de persoonlijke sleutel van het certificaat. De activerings stroom wordt elke keer aangeroepen Service Fabric wordt gestart, of wanneer de certificaat declaratie van de toepassing wordt gewijzigd via een upgrade. Het eindpunt certificaat wordt ook gecontroleerd op wijzigingen/vernieuwingen en de machtigingen worden zo nodig periodiek opnieuw toegepast.
 
 Wanneer de service wordt beëindigd, wordt de toegangs beheer vermelding van het endpoint door Service Fabric opgeschoond en wordt de certificaat binding verwijderd. Machtigingen die zijn toegepast op de persoonlijke sleutel van het certificaat, worden echter niet opgeschoond.
 
@@ -155,14 +157,16 @@ Hier volgt een voor beeld van een ApplicationManifest die de configuratie demons
 
 Voor Linux-clusters wordt **mijn** winkel standaard ingesteld op de map **/var/lib/sfcerts**.
 
+Zie [een HTTPS-eind punt toevoegen aan een ASP.net core web API-front-end-service met Kestrel](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)voor een voor beeld van een volledige toepassing die gebruikmaakt van een HTTPS-eind punt.
+
 ## <a name="port-acling-for-http-endpoints"></a>Poort Acl's voor voor HTTP-eind punten
 Service Fabric worden automatisch de door de HTTP (S) standaard-eind punten die zijn opgegeven, ACL'S. Er wordt **geen** automatische acl's voor uitgevoerd als aan een eind punt geen [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) is gekoppeld en service Fabric is geconfigureerd om te worden uitgevoerd met een account met Administrator bevoegdheden.
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Eind punten in ServiceManifest.xml overschrijven
 
-In de ApplicationManifest voegt u een ResourceOverrides-sectie toe, die deel uitmaakt van de sectie op hetzelfde niveau als ConfigOverrides. In deze sectie kunt u de overschrijving opgeven voor de sectie endpoints in het gedeelte resources dat is opgegeven in het service manifest. Het overschrijven van eind punten wordt ondersteund in runtime 5.7.217/SDK 2.7.217 en hoger.
+Voeg in het ApplicationManifest een sectie ResourceOverrides toe, die deel uitmaakt van de sectie ConfigOverrides op hetzelfde niveau. In deze sectie kunt u de overschrijving opgeven voor de sectie endpoints in het gedeelte resources dat is opgegeven in het service manifest. Het overschrijven van eind punten wordt ondersteund in runtime 5.7.217/SDK 2.7.217 en hoger.
 
-Om het eind punt in ServiceManifest te overschrijven met behulp van Application parameters wijzigt u de ApplicationManifest als volgt:
+Als u het eind punt in ServiceManifest wilt overschrijven met behulp van Application parameters, wijzigt u de ApplicationManifest als volgt:
 
 Voeg in de sectie ServiceManifestImport een nieuwe sectie ' ResourceOverrides ' toe.
 
@@ -194,13 +198,13 @@ In de onderstaande para meters toevoegen:
   </Parameters>
 ```
 
-Tijdens het implementeren van de toepassing kunt u deze waarden als Application parameters door geven.  Bijvoorbeeld:
+Tijdens de implementatie van de toepassing kunt u deze waarden door geven als Application parameters.  Bijvoorbeeld:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Opmerking: als de waarden voor Application parameters leeg zijn, gaan we terug naar de standaard waarde die is opgegeven in het ServiceManifest voor de bijbehorende eind punt.
+Opmerking: als de waarde die is opgegeven voor een opgegeven ApplicationParameter leeg is, gaan we terug naar de standaard waarde die is opgegeven in het ServiceManifest voor de bijbehorende eind punt.
 
 Bijvoorbeeld:
 
@@ -214,6 +218,18 @@ Als in de ServiceManifest die u hebt opgegeven
   </Resources>
 ```
 
-En de Port1-en Protocol1-waarde voor toepassings parameters is null of leeg. De poort wordt nog steeds bepaald door ServiceFabric. En het protocol TCP.
+Stel dat de waarde Port1 en Protocol1 voor toepassings parameters null of leeg is. De poort wordt bepaald door ServiceFabric en het protocol is TCP.
 
-Stel dat u een verkeerde waarde opgeeft. Net als voor de poort hebt u een teken reeks waarde ' foo ' opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: de onderdrukkings parameter met de naam ' ServiceEndpoint1 ' kenmerk ' Port1 ' in de sectie ' ResourceOverrides ' is ongeldig. De opgegeven waarde is ' foo ' en is vereist ' int '.
+Stel dat u een verkeerde waarde opgeeft. Stel dat u voor poort een teken reeks waarde ' foo ' hebt opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+
+## <a name="next-steps"></a>Volgende stappen
+
+In dit artikel wordt uitgelegd hoe u eind punten kunt definiëren in het service manifest van Service Fabric. Zie voor meer gedetailleerde voor beelden:
+
+> [!div class="nextstepaction"]
+> [Voorbeelden van toepassings- en servicemanifesten](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+
+Zie voor een door loop-through verpakking en het implementeren van een bestaande toepassing op een Service Fabric cluster:
+
+> [!div class="nextstepaction"]
+> [Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)

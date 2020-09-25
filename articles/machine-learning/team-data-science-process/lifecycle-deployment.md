@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe5eba72b507ebea6bc1012c567de70bc3deb5ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261342"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Implementatie fase van de team data Science proces levenscyclus
 
-In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de implementatie van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus bevat een overzicht van de belangrijkste fasen die door projecten meestal worden uitgevoerd, vaak iteratief:
+In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de implementatie van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levenscyclus bevat de belangrijkste fasen die projecten meestal doorlopen, vaak iteratief:
 
-   1. **Inzicht in het bedrijf**
-   2. **Gegevens verzamelen en begrijpen**
-   3. **Modellen maken**
+   1. **Zakelijke inzichten**
+   2. **Gegevens verkrijgen en meer informatie**
+   3. **Modelleren**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -50,7 +50,7 @@ Nadat u een set modellen hebt die goed pres teren, kunt u deze operationeel make
    * Line-of-business-toepassingen 
    * Back-end-toepassingen 
 
-Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor voor beelden van model uitoefening met een Azure machine learning-webservice. Het is een best practice om telemetrie te bouwen en te controleren in het productie model en de gegevens pijplijn die u implementeert. Deze werk wijze helpt bij het volgen van de systeem status rapportage en probleem oplossing.  
+Zie [Deploy a Azure machine learning web service](../classic/deploy-a-machine-learning-web-service.md)(Engelstalig) voor voor beelden van model uitoefening met een Azure machine learning-webservice. Het is een best practice om telemetrie te bouwen en te controleren in het productie model en de gegevens pijplijn die u implementeert. Deze werk wijze helpt bij het volgen van de systeem status rapportage en probleem oplossing.  
 
 ## <a name="artifacts"></a>Artifacts
 
@@ -65,7 +65,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
-   3. [Modellen maken](lifecycle-modeling.md)
+   3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

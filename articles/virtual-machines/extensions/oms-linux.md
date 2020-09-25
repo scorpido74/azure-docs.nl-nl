@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307446"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>De virtuele-machine-extensie Log Analytics voor Linux
 
@@ -43,7 +43,7 @@ De volgende tabel bevat een overzicht van de versie van de Log Analytics VM-exte
 
 | Versie van de Linux VM-extensie Log Analytics | Versie van Log Analytics agent bundel | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -211,7 +211,9 @@ Uitvoer voor uitvoering van extensie wordt vastgelegd in het volgende bestand:
 | 19 | Installatie fout OMI-pakket | 
 | 20 | Installatie fout van het SCX-pakket |
 | 51 | Deze extensie wordt niet ondersteund op het besturings systeem van de virtuele machine | |
-| 55 | Kan geen verbinding maken met de Azure Monitor-service of de vereiste pakketten ontbreken of met dpkg Package Manager is vergrendeld| Controleer of het systeem toegang heeft tot internet of dat er een geldige HTTP-proxy is ingesteld. Controleer bovendien de juistheid van de werk ruimte-ID en controleer of er krul-en tar-hulpprogram ma's zijn geïnstalleerd. |
+| 52 | Deze uitbrei ding is mislukt vanwege een ontbrekende afhankelijkheid | Controleer de uitvoer en logboeken voor meer informatie over welke afhankelijkheden ontbreken. |
+| 53 | Deze uitbrei ding is mislukt vanwege ontbrekende of onjuiste configuratie parameters | Controleer de uitvoer en logboeken voor meer informatie over wat er mis ging. Controleer ook de juistheid van de werk ruimte-ID en controleer of de machine is verbonden met internet. |
+| 55 | Kan geen verbinding maken met de Azure Monitor-service of de vereiste pakketten ontbreken of met dpkg Package Manager is vergrendeld| Controleer of het systeem toegang heeft tot internet of dat er een geldige HTTP-proxy is ingesteld. Controleer bovendien de juistheid van de werk ruimte-ID en controleer of krul-en tar-hulpprogram ma's zijn geïnstalleerd. |
 
 Meer informatie over het oplossen van problemen vindt u in de [log Analytics-agent-for-Linux Troubleshooting Guide (Engelstalig](../../azure-monitor/platform/vmext-troubleshoot.md)).
 

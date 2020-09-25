@@ -9,36 +9,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276935"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainings gegevensverzameling voor een aangepast model bouwen
 
-Wanneer u het aangepaste model voor formulier herkenning gebruikt, geeft u uw eigen trainings gegevens op zodat het model kan worden opgeleid voor uw branchespecifieke formulieren. 
+Wanneer u het aangepaste model van de formulier Recognizer gebruikt, geeft u uw eigen trainings gegevens op voor de [aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) bewerking voor het trainen, zodat het model kan worden opgeleid voor uw branchespecifieke formulieren. Volg deze hand leiding voor informatie over het verzamelen en voorbereiden van gegevens om het model effectief te trainen.
 
 Als u training hebt zonder hand matige labels, kunt u vijf ingevulde formulieren gebruiken of een leeg formulier (u moet het woord ' empty ' in de bestands naam) plus twee ingevulde formulieren toevoegen. Zelfs als u voldoende ingevulde formulieren hebt, kunt u een leeg formulier toevoegen aan uw trainings gegevensset om de nauw keurigheid van het model te verbeteren.
 
 Als u hand matig gelabelde trainings gegevens wilt gebruiken, moet u beginnen met ten minste vijf ingevulde formulieren van hetzelfde type. Naast de vereiste gegevensset kunt u nog steeds niet-gelabelde formulieren en een leeg formulier gebruiken.
 
+## <a name="custom-model-input-requirements"></a>Vereisten voor aangepast model invoer
+
+Zorg er eerst voor dat uw trainings gegevensverzameling de invoer vereisten voor de formulier herkenner volgt.
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>Tips voor trainings gegevens
 
-Het is belang rijk dat u een gegevens verzameling gebruikt die is geoptimaliseerd voor training. Gebruik de volgende tips om ervoor te zorgen dat u de beste resultaten krijgt van de bewerking [aangepast model van Train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) :
+Volg deze aanvullende tips om uw gegevensset verder te optimaliseren voor training.
 
 * Gebruik zo mogelijk PDF-documenten op basis van tekst in plaats van op afbeeldingen gebaseerde documenten. Gescande Pdf's worden behandeld als installatie kopieën.
 * Voor ingevulde formulieren gebruikt u voor beelden waarvoor alle velden zijn ingevuld.
 * Gebruik in formulieren met in elk veld verschillende waarden.
 * Als uw formulier afbeeldingen een lagere kwaliteit hebben, gebruikt u een grotere gegevensset (bijvoorbeeld 10-15 installatie kopieën).
-* De totale grootte van de set met trainings gegevens kan Maxi maal 500 pagina's zijn.
-
-## <a name="general-input-requirements"></a>Algemene invoer vereisten
-
-Zorg ervoor dat uw trainings gegevensverzameling ook voldoet aan de invoer vereisten voor alle inhoud van de formulier herkenning. 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>Uw trainings gegevens uploaden
 
@@ -73,7 +72,12 @@ Als u de volgende inhoud aan de aanvraag tekst toevoegt, wordt de API getraind m
 
 Nu u hebt geleerd hoe u een set trainings gegevens bouwt, volgt u een Snelstartgids om een aangepast model voor formulier herkenning te trainen en te beginnen met het gebruik ervan in uw formulieren.
 
+* [Een model trainen en formulier gegevens extra heren met behulp van de client bibliotheek](./quickstarts/client-library.md)
 * [Een model trainen en formulier gegevens extra heren met behulp van krul](./quickstarts/curl-train-extract.md)
 * [Een model trainen en formulier gegevens extra heren met behulp van de REST API en python](./quickstarts/python-train-extract.md)
 * [Trainen met labels met behulp van het voor beeld-label programma](./quickstarts/label-tool.md)
 * [Trainen met labels met behulp van de REST API en Python](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>Zie ook
+
+* [Wat is Form Recognizer?](./overview.md)

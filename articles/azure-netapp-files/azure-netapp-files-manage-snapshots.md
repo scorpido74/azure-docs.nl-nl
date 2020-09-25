@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325686"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -65,7 +65,7 @@ De functie voor het **momentopname beleid** is momenteel beschikbaar als preview
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-U kunt ook Azure CLI-opdrachten [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) gebruiken [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) om de functie te registreren en de registratie status weer te geven. 
+U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
 ### <a name="create-a-snapshot-policy"></a>Een momentopname beleid maken 
 
@@ -221,6 +221,6 @@ Als u het selectie vakje pad naar moment opname verbergen hebt geselecteerd tijd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Informatie over de opslaghiërarchie van Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+* [Problemen met het momentopname beleid oplossen](troubleshoot-snapshot-policies.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video over Azure NetApp Files-moment opnamen 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

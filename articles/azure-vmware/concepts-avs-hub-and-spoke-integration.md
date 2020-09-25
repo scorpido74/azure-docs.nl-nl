@@ -3,12 +3,12 @@ title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in 
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a2007e159d23a02ca573fd833590651061c59973
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271729"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
@@ -100,7 +100,7 @@ Een tweede niveau van Traffic segmentatie met behulp van de netwerk beveiligings
 
 Azure-toepassing gateway v1 en v2 zijn getest met web apps die worden uitgevoerd op virtuele machines uit de Azure VMware-oplossing als back-end-groep. Application Gateway is momenteel de enige methode die wordt ondersteund om web-apps die worden uitgevoerd op virtuele machines van Azure VMware-oplossingen, beschikbaar te maken op internet. Ook kunnen de apps veilig worden blootgesteld aan interne gebruikers.
 
-Bekijk het specifieke artikel over de Azure VMware-oplossing op [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) voor de details en vereisten.
+Raadpleeg het artikel over de Azure VMware-oplossing op [Application Gateway](./protect-avs-web-apps-with-app-gateway.md) voor de details en vereisten.
 
 :::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Tweede niveau van verkeers segmentatie met behulp van de netwerk beveiligings groepen" border="false":::
 
@@ -109,7 +109,7 @@ Bekijk het specifieke artikel over de Azure VMware-oplossing op [Application Gat
 
 Toegang tot de Azure VMware-oplossings omgeving met JumpBox, een Windows 10-of Windows Server-VM die is geïmplementeerd in het subnet van de gedeelde service binnen het virtuele netwerk van de hub.
 
-Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend, waarin het JumpBox-bureau blad wordt weer gegeven, en op dat bureau blad hebt u toegang tot het beheer vlak van de privécloud-oplossing van Azure VMware.
+Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend met het JumpBox bureau blad waar u toegang hebt tot het beheer vlak van de privécloud-oplossing van Azure VMware.
 
 > [!IMPORTANT]
 > Geef geen openbaar IP-adres aan de JumpBox-VM of open de poort 3389/TCP voor het open bare Internet. 
@@ -142,7 +142,7 @@ On-premises en Azure VMware-oplossingen kunnen worden geconfigureerd met voorwaa
 
 ## <a name="identity-considerations"></a>Identiteits overwegingen
 
-Voor identiteits doeleinden is de beste benadering om ten minste één AD-domein controller op de hub te implementeren, met behulp van het subnet van de gedeelde service, in het ideale niveau twee in een zone-gedistribueerde mode of een VM-beschikbaarheidsset. Zie [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) voor het uitbreiden van uw on-PREMISes AD-domein naar Azure.
+Voor identiteits doeleinden is de beste benadering om ten minste één AD-domein controller op de hub te implementeren met behulp van het subnet van de gedeelde service. In het ideale geval zijn er twee in de zone gedistribueerde mode of een VM-beschikbaarheidsset. Zie [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) voor het uitbreiden van uw on-PREMISes AD-domein naar Azure.
 
 Implementeer daarnaast een andere domein controller op de Azure VMware-oplossing zijde om als identiteits-en DNS-bron binnen de vSphere omgeving te fungeren.
 

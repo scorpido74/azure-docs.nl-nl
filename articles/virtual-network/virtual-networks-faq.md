@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d39e66e205c592d58a93c1187a1c77269da9e7ad
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438225"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306597"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -266,7 +266,7 @@ De volgende resources kunnen Basic load balancers gebruiken. Dit betekent dat u 
 U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Kan ik VNet-peering inschakelen als mijn virtuele netwerken deel uitmaken van abonnementen binnen verschillende Azure Active Directory tenants?
-Ja. Het is mogelijk om VNet-peering (lokaal of globaal) tot stand te brengen als uw abonnementen deel uitmaken van verschillende Azure Active Directory tenants. U kunt dit doen via Power shell of CLI. De portal wordt nog niet ondersteund.
+Ja. Het is mogelijk om VNet-peering (lokaal of globaal) tot stand te brengen als uw abonnementen deel uitmaken van verschillende Azure Active Directory tenants. U kunt dit doen via Portal, Power shell of CLI.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Mijn VNet-peering-verbinding heeft de status *gestart* , waarom kan ik geen verbinding maken?
 Als uw peering-verbinding een *geïnitieerde* status heeft, betekent dit dat u slechts één koppeling hebt gemaakt. Er moet een bidirectionele koppeling worden gemaakt om een geslaagde verbinding te kunnen maken. Voor bijvoorbeeld een peer VNet A naar VNet B, moet er een koppeling worden gemaakt van VNetA naar VNetB en van VNetB naar VNetA. Als u beide koppelingen maakt, wordt de status gewijzigd in *verbonden*.

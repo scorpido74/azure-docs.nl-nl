@@ -1,14 +1,16 @@
 ---
 title: Migreren naar v3 machine-learning-entiteit
 description: De V3-ontwerp functie biedt een nieuw entiteits type, de machine learning-entiteit, en de mogelijkheid om relaties toe te voegen aan de entiteit machine learning en andere entiteiten of functies van de toepassing.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324685"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migreren naar v3-ontwerp entiteit
 
@@ -106,7 +108,7 @@ In de volgende tabel ziet u de migratie:
 
 |V2-modellen|V3-modellen|
 |--|--|
-|Entiteit van bovenliggend onderdeel met de naam`Order`|Bovenliggende-machine-learning entiteit met de naam`Order`|
+|Entiteit van bovenliggend onderdeel met de naam `Order`|Bovenliggende-machine-learning entiteit met de naam `Order`|
 |Kinder datetimeV2|* Vooraf gebouwde entiteit migreren naar een nieuwe app.<br>* Voeg de vereiste functie op Parent toe voor vooraf gebouwde datetimeV2.|
 |Onderliggende lijst entiteit voor toppings|* Migreer de lijst entiteit naar een nieuwe app.<br>* Voeg vervolgens een vereiste functie toe aan het bovenliggende item voor de lijst entiteit.|
 
@@ -132,7 +134,7 @@ In de volgende tabel ziet u de migratie:
 
 |V2-modellen|V3-modellen|
 |--|--|
-|Entiteit van bovenliggend onderdeel met de naam`Order`|Bovenliggende-machine-learning entiteit met de naam`Order`|
+|Entiteit van bovenliggend onderdeel met de naam `Order`|Bovenliggende-machine-learning entiteit met de naam `Order`|
 |Onderliggende hiërarchische entiteit met oorspronkelijke en laatste Pizza-Topping|* Voeg een rol toe aan `Order` voor elke topping.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>De API-wijzigings beperking is vervangen door de vereiste functie

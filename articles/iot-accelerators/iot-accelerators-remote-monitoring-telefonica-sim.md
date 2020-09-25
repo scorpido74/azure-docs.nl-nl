@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61442212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323954"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-gegevens integreren in de oplossing voor controle op afstand
 
@@ -61,7 +61,7 @@ De volgende connectiviteits parameters zijn gepubliceerd:
 * Locatie op het netwerk
 * Verbruikte gegevens verkeer
 
-![Dashboard](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Scherm afbeelding van het Device Explorer-venster in het Azure IoT-dash board voor externe controle. Er wordt een rij met WeatherStation apparaatgegevens gemarkeerd.](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -70,5 +70,5 @@ Nu u een overzicht hebt van het integreren van SIM-gegevens in azure IoT-externe
 * [De Azure IoT-oplossing voor externe controle uitvoeren](quickstart-remote-monitoring-deploy.md)
 * [Geavanceerde bewaking uitvoeren](iot-accelerators-remote-monitoring-monitor.md)
 * [Uw apparaten beheren](iot-accelerators-remote-monitoring-manage.md)
-* [Apparaatproblemen oplossen](iot-accelerators-remote-monitoring-maintain.md)
+* [Problemen met het apparaat oplossen](iot-accelerators-remote-monitoring-maintain.md)
 

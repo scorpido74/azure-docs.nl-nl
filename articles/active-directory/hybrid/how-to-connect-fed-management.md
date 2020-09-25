@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274109"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
 In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
@@ -52,11 +52,11 @@ U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-
    ![AAD-en ADFS-vertrouwens relatie herstellen](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Geef op de pagina **verbinding maken met Azure AD** uw globale beheerders referenties voor Azure AD op en klik op **volgende**.
-   ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Scherm opname van de pagina ' verbinding maken met Azure AD ' met voor beelden van referenties die zijn ingevoerd.](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. Voer op de pagina **referenties voor externe toegang** de referenties voor de domein beheerder in.
 
-   ![Referenties voor externe toegang](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Scherm opname van de pagina ' Remote Access credentials ' met voor beelden van referenties ingevoerd.](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     Nadat u op **volgende**hebt geklikt, controleert Azure AD Connect de status van het certificaat en worden eventuele problemen weer gegeven.
 
@@ -64,7 +64,7 @@ U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-
 
     De pagina **gereed voor configuratie** toont de lijst met acties die worden uitgevoerd om de vertrouwens relatie te herstellen.
 
-    ![Klaar om te configureren](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Scherm opname van de pagina gereed voor configuratie met een lijst met acties.](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Klik op **installeren** om de vertrouwens relatie te herstellen.
 
@@ -98,7 +98,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 2. Voer op de pagina **verbinding maken met Azure AD** uw globale beheerders referenties in voor Azure AD en klik op **volgende**.
 
-   ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Scherm afbeelding waarin de pagina ' verbinding maken met Azure AD ' wordt weer gegeven, waarbij de voorbeeld referenties zijn ingevoerd.](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Geef de referenties voor de domein beheerder op.
 
@@ -106,9 +106,9 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 4. Azure AD Connect vraagt naar het wacht woord van het PFX-bestand dat u hebt opgegeven bij het configureren van uw nieuwe AD FS farm met Azure AD Connect. Klik op **wacht woord invoeren** om het wacht woord voor het pfx-bestand op te geven.
 
-   ![Certificaat wachtwoord](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Scherm opname waarin de pagina SSL-certificaat opgeven wordt weer gegeven met het venster certificaat wachtwoord geopend.](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![TLS/SSL-certificaat opgeven](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Scherm afbeelding met de pagina SSL-certificaat opgeven nadat een wacht woord voor het PFX-bestand is ingevoerd.](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Voer op de pagina **AD FS servers** de server naam of het IP-adres in dat moet worden toegevoegd aan de AD FS-farm.
 
@@ -116,9 +116,9 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 6. Klik op **volgende**en ga door de pagina definitieve **configuratie** . Nadat Azure AD Connect het toevoegen van de servers aan de AD FS-farm hebt voltooid, krijgt u de mogelijkheid om de verbinding te controleren.
 
-   ![Klaar om te configureren](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Scherm opname van de pagina gereed voor configuratie met een lijst met te volt ooien acties nadat u op installeren hebt geklikt.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![Installatie voltooid](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![Scherm opname van de pagina ' installatie voltooid ' met het bericht ' de intranet configuratie is gecontroleerd ' wordt weer gegeven. ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>Een AD FS WAP-server toevoegen 
 
@@ -131,7 +131,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 2. Geef de referenties van de globale Azure-beheerder op.
 
-   ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Scherm opname van de pagina ' verbinding maken met Azure AD ' met een voor beeld van een gebruikers naam en wacht woord.](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Geef op de pagina **SSL-certificaat opgeven** het wacht woord op voor het pfx-bestand dat u hebt opgegeven toen u de AD FS farm met Azure AD Connect hebt geconfigureerd.
    ![Certificaat wachtwoord](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 6. Op de pagina **gereed voor configuratie** bevat de wizard de lijst met acties die worden uitgevoerd.
 
-   ![Klaar om te configureren](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Scherm opname van de pagina gereed om te configureren met een lijst met acties die moeten worden uitgevoerd.](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Klik op **installeren** om de configuratie te volt ooien. Nadat de configuratie is voltooid, krijgt u de mogelijkheid om de verbinding met de servers te controleren. Klik op **controleren** om de verbinding te controleren.
 

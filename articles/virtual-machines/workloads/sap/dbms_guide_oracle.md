@@ -4,23 +4,23 @@ description: DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machine
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, azure, Oracle, Data Guard
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2018
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690320"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279005"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -344,18 +344,20 @@ Zelfs als u uw Oracle DBMS-en SAP-toepassings exemplaren uitvoert op Oracle Linu
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Oracle-configuratie richtlijnen voor SAP-installaties in azure-Vm's in Windows
 
-In overeenstemming met de SAP-installatie handleiding kunnen Oracle-gerelateerde bestanden niet worden geïnstalleerd of bevinden zich in het systeem stuur programma voor de besturingssysteem schijf van een VM (station c:). Virtuele machines met verschillende grootten kunnen een wisselend aantal gekoppelde schijven ondersteunen. Kleinere typen virtuele machines kunnen een kleiner aantal gekoppelde schijven ondersteunen. 
+In overeenstemming met de SAP-installatie handleiding moeten Oracle-gerelateerde bestanden niet worden geïnstalleerd of zich bevinden op de besturingssysteem schijf van de virtuele machine (station c:). Virtuele machines met verschillende grootten kunnen een wisselend aantal gekoppelde schijven ondersteunen. Kleinere typen virtuele machines kunnen een kleiner aantal gekoppelde schijven ondersteunen. 
 
-Als u kleinere Vm's hebt, raden we u aan om Oracle Home, stage, "saptrace", "saparch", "sapbackup", "sapcheck" of "sapreorg" te installeren op de besturingssysteem schijf. Deze onderdelen van Oracle DBMS-onderdelen zijn niet intens over I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf is 127 GB. 
+Als u kleinere vm's hebt en de limiet bereikt van het aantal schijven dat u aan de virtuele machine kunt koppelen, kunt u Oracle Home, stage,,, `saptrace` ,, `saparch` `sapbackup` `sapcheck` of `sapreorg` naar de besturingssysteem schijf installeren. Deze onderdelen van Oracle DBMS-onderdelen zijn niet te intensief op I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf moet 127 GB zijn. 
 
-Als er onvoldoende vrije ruimte beschikbaar is, kan de grootte van de schijf worden [gewijzigd](../../windows/expand-os-disk.md) in 2048 GB. Logboek bestanden Oracle Database en opnieuw moeten worden opgeslagen op afzonderlijke gegevens schijven. Er is een uitzonde ring voor de tijdelijke tabel ruimte van Oracle. Temp files kan op D:/worden gemaakt (niet-permanente schijf). De niet-permanente D:\ Station biedt ook betere I/O-latentie en door Voer (met uitzonde ring van Vm's van de A-serie). 
+Logboek bestanden Oracle Database en opnieuw moeten worden opgeslagen op afzonderlijke gegevens schijven. Er is een uitzonde ring voor de tijdelijke tabel ruimte van Oracle. `Tempfiles` kan worden gemaakt op D:/ (niet-permanente schijf). De niet-permanente D:\ Station biedt ook betere I/O-latentie en door Voer (met uitzonde ring van Vm's van de A-serie). 
 
-Als u de juiste hoeveelheid ruimte wilt bepalen voor de Temp files, kunt u de grootte van de Temp files op bestaande systemen controleren.
+Als u de juiste hoeveelheid ruimte voor de `tempfiles` wilt bepalen, kunt u de grootte van de `tempfiles` op bestaande systemen controleren.
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wordt ondersteund. Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op Managed Disks (aanbevolen) of op Vhd's. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) of [Azure Managed disks](../../managed-disks-overview.md). 
 
-Het is raadzaam [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../disks-types.md) te gebruiken voor uw Oracle database-implementaties.
+Bekijk het artikel [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) voor meer informatie over de specifieke Azure Block-opslag typen die geschikt zijn voor DBMS-workloads.
+
+Het is raadzaam [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. We raden u ook ten zeerste aan [Azure Premium Storage of Azure Ultra disk te](../../disks-types.md) gebruiken voor uw Oracle database-implementaties.
 
 Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
 
@@ -374,37 +376,37 @@ De minimale configuratie is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Premium | Geen | Niet nodig |
-| \oracle \<SID> \origlogaB & mirrlogA | Premium | Geen | Niet nodig |
-| \oracle \<SID> \sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
+| \oracle \<SID> \origlogaA & mirrlogB | Premium of Ultra Disk | Geen | Niet nodig |
+| \oracle \<SID> \origlogaB & mirrlogA | Premium of Ultra Disk | Geen | Niet nodig |
+| \oracle \<SID> \sapdata1... nvt | Premium of Ultra Disk | Alleen-lezen | Kan worden gebruikt voor Premium |
 | \oracle \<SID> \oraarch | Standard | Geen | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
+| Oracle Home, `saptrace` ,... | BESTURINGSSYSTEEM schijf (Premium) | | Niet nodig |
 
 
-Schijven selecteren voor het hosten van online logboeken voor opnieuw uitvoeren moet worden aangestuurd door IOPs-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang de grootte, IOPS en door Voer voldoen aan de vereisten. 
+Schijven selecteren voor het hosten van online logboeken voor opnieuw uitvoeren moet worden aangestuurd door IOPS-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang de grootte, IOPS en door Voer voldoen aan de vereisten. 
 
 De configuratie van de prestaties is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Geen | Kan worden gebruikt  |
-| \oracle \<SID> \origlogaB | Premium | Geen | Kan worden gebruikt |
-| \oracle \<SID> \mirrlogAB | Premium | Geen | Kan worden gebruikt |
-| \oracle \<SID> \mirrlogBA | Premium | Geen | Kan worden gebruikt |
-| \oracle \<SID> \sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| \oracle \<SID> \oraarch * | Premium | Geen | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
+| \oracle \<SID> \origlogaA | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium  |
+| \oracle \<SID> \origlogaB | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| \oracle \<SID> \mirrlogAB | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| \oracle \<SID> \mirrlogBA | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| \oracle \<SID> \sapdata1... nvt | Premium of Ultra Disk | Alleen-lezen | Aanbevolen voor Premium  |
+| \oracle\SID\sapdata (n + 1) * | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| \oracle \<SID> \oraarch * | Premium of Ultra Disk | Geen | Niet nodig |
+| Oracle Home, `saptrace` ,... | BESTURINGSSYSTEEM schijf (Premium) | Niet nodig |
 
 * (n + 1): host systeem, TEMP en ongedaan maken van tablespaces. Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
 
 * oraarch: opslag groep is niet nodig van het prestatie punt van de weer gave. Het kan worden gebruikt om meer ruimte te krijgen.
 
-Als meer IOPS vereist zijn, kunt u het beste Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken om één groot logisch apparaat te maken voor meerdere gekoppelde schijven. Deze aanpak vereenvoudigt de beheer overhead voor het beheren van de schijf ruimte en helpt u bij het hand matig distribueren van bestanden op meerdere gekoppelde schijven te voor komen.
+Als er meer IOPS vereist zijn in het geval van Azure Premium-opslag, raden we u aan Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) te gebruiken om één groot logisch apparaat te maken voor meerdere gekoppelde schijven. Deze aanpak vereenvoudigt de beheer overhead voor het beheren van de schijf ruimte en helpt u bij het hand matig distribueren van bestanden op meerdere gekoppelde schijven te voor komen.
 
 
 #### <a name="write-accelerator"></a>Write Accelerator
-Voor virtuele machines uit de M-serie van Azure kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met factoren in vergelijking met Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie.
+Voor virtuele machines uit de M-serie van Azure kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met factoren in vergelijking met Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie. Of gebruik Azure Ultra disk voor het online logboek volume voor opnieuw uitvoeren.
 
 
 ### <a name="backuprestore"></a>Back-up maken/herstellen
@@ -420,7 +422,7 @@ Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azur
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
-### <a name="other"></a>Overig
+### <a name="other"></a>Anders
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
@@ -437,7 +439,7 @@ Algemene informatie over het uitvoeren van SAP Business Suite op Oracle vindt u 
 
 In overeenstemming met SAP-installatie handleidingen kunnen Oracle-gerelateerde bestanden niet worden geïnstalleerd of bevinden zich in systeem Stuur Programma's voor de opstart schijf van een virtuele machine. Verschillende grootten van virtuele machines ondersteunen een wisselend aantal gekoppelde schijven. Kleinere typen virtuele machines kunnen een kleiner aantal gekoppelde schijven ondersteunen. 
 
-In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage, saptrace, saparch, sapbackup, sapcheck of sapreorg naar de opstart schijf installeren. Deze onderdelen van Oracle DBMS-onderdelen zijn niet intens over I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf is 30 GB. U kunt de opstart schijf uitbreiden met behulp van de Azure Portal, Power shell of CLI. Nadat de opstart schijf is uitgevouwen, kunt u een extra partitie voor Oracle binaire bestanden toevoegen.
+In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage,,, `saptrace` `saparch` `sapbackup` , `sapcheck` of `sapreorg` naar de opstart schijf installeren. Deze onderdelen van Oracle DBMS-onderdelen zijn niet intens over I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf is 30 GB. U kunt de opstart schijf uitbreiden met behulp van de Azure Portal, Power shell of CLI. Nadat de opstart schijf is uitgevouwen, kunt u een extra partitie voor Oracle binaire bestanden toevoegen.
 
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
@@ -445,6 +447,8 @@ In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage, sap
 De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../managed-disks-overview.md).
 
 Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](../../premium-storage-performance.md#disk-caching).
+
+Het artikel [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) uitchecken voor meer informatie over de specifieke Azure Block-opslag typen die geschikt zijn voor DBMS-workloads.
 
 Het wordt sterk aanbevolen om [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
@@ -456,7 +460,7 @@ Netwerk stations of externe shares zoals Azure File Services worden niet onderst
 
 Als u schijven gebruikt op basis van Azure-pagina-Blob-opslag of Managed Disks, zijn de instructies [voor de implementatie van azure virtual machines DBMS voor SAP-werk belasting](dbms_guide_general.md) ook van toepassing op implementaties met Oracle database.
 
- Quota voor IOPS-door Voer voor Azure-schijven bestaan. Dit concept wordt uitgelegd in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md). De exacte quota's zijn afhankelijk van het type virtuele machine dat wordt gebruikt. Zie [grootten voor virtuele Linux-machines in azure][virtual-machines-sizes-linux]voor een lijst met VM-typen met hun quota.
+Quota voor IOPS-door Voer voor Azure-schijven bestaan. Dit concept wordt uitgelegd in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md). De exacte quota's zijn afhankelijk van het type virtuele machine dat wordt gebruikt. Zie [grootten voor virtuele Linux-machines in azure][virtual-machines-sizes-linux]voor een lijst met VM-typen met hun quota.
 
 Zie SAP Note [1928533]om de ondersteunde typen Azure VM te identificeren.
 
@@ -464,11 +468,11 @@ Minimale configuratie:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Geen | Niet nodig |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Geen | Niet nodig |
-| /Oracle/ \<SID> /sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium of Ultra Disk | Geen | Niet nodig |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium of Ultra Disk | Geen | Niet nodig |
+| /Oracle/ \<SID> /sapdata1... nvt | Premium of Ultra Disk | Alleen-lezen | Kan worden gebruikt voor Premium |
 | /Oracle/ \<SID> /oraarch | Standard | Geen | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
+| Oracle Home, `saptrace` ,... | BESTURINGSSYSTEEM schijf (Premium) | | Niet nodig |
 
 * Verwijderen: LVM Stripe of MDADM met RAID0
 
@@ -478,14 +482,14 @@ Configuratie van prestaties:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Geen | Kan worden gebruikt  |
-| /Oracle/ \<SID> /origlogaB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/ \<SID> /mirrlogAB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/ \<SID> /mirrlogBA | Premium | Geen | Kan worden gebruikt |
-| /Oracle/ \<SID> /sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| /Oracle/ \<SID> /oraarch * | Premium | Geen | Niet nodig |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
+| /Oracle/ \<SID> /origlogaA | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium  |
+| /Oracle/ \<SID> /origlogaB | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| /Oracle/ \<SID> /mirrlogAB | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| /Oracle/ \<SID> /mirrlogBA | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| /Oracle/ \<SID> /sapdata1... nvt | Premium of Ultra Disk | Alleen-lezen | Aanbevolen voor Premium  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium of Ultra Disk | Geen | Kan worden gebruikt voor Premium |
+| /Oracle/ \<SID> /oraarch * | Premium of Ultra Disk | Geen | Niet nodig |
+| Oracle Home, `saptrace` ,... | BESTURINGSSYSTEEM schijf (Premium) | Niet nodig |
 
 * Verwijderen: LVM Stripe of MDADM met RAID0
 
@@ -494,11 +498,11 @@ Configuratie van prestaties:
 * oraarch: opslag groep is niet nodig van het prestatie punt van de weer gave.
 
 
-Als meer IOPS vereist zijn, kunt u het beste LVM (Logical Volume Manager) of MDADM gebruiken om één groot logisch volume te maken op meerdere gekoppelde schijven. Zie [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) met betrekking tot richt lijnen en aanwijzers voor het gebruik van LVM of MDADM voor meer informatie. Deze aanpak vereenvoudigt de beheer overhead van het beheren van de schijf ruimte en helpt u om te voor komen dat bestanden hand matig worden gedistribueerd over meerdere gekoppelde schijven.
+Als er meer IOPS vereist zijn bij het gebruik van Azure Premium Storage, raden we u aan LVM (Logical Volume Manager) of MDADM te gebruiken om één grote logische volume te maken op meerdere gekoppelde schijven. Zie [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) met betrekking tot richt lijnen en aanwijzers voor het gebruik van LVM of MDADM voor meer informatie. Deze aanpak vereenvoudigt de beheer overhead van het beheren van de schijf ruimte en helpt u om te voor komen dat bestanden hand matig worden gedistribueerd over meerdere gekoppelde schijven.
 
 
 #### <a name="write-accelerator"></a>Write Accelerator
-Voor virtuele machines uit de M-serie van Azure, wanneer u Azure Write Accelerator gebruikt, kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met de factoren in vergelijking met de prestaties van Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie.
+Voor virtuele machines uit de M-serie van Azure, wanneer u Azure Write Accelerator gebruikt, kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met de factoren die Azure Premium Storage gebruiken. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie. Of gebruik Azure Ultra disk voor het online logboek volume voor opnieuw uitvoeren.
 
 
 ### <a name="backuprestore"></a>Back-up maken/herstellen
@@ -523,5 +527,9 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Overig
-[Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
+## <a name="next-steps"></a>Volgende stappen
+Lees het artikel 
+
+- [Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads](dbms_guide_general.md)
+ 
+

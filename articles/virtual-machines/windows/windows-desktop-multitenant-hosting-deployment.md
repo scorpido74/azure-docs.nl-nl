@@ -1,18 +1,18 @@
 ---
 title: Windows 10 implementeren op Azure met multi tenant-hosting rechten
-description: Meer informatie over hoe u uw voor delen van Windows Software Assurance kunt maximaliseren om on-premises licenties naar Azure te brengen
+description: Lees hoe u uw voor delen voor Windows-Software Assurance kunt maximaliseren om on-premises licenties naar Azure te brengen met multi tenant-hosting rechten.
 author: xujing
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279022"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 implementeren op Azure met multi tenant-hosting rechten 
 Voor klanten met Windows 10 Enter prise E3/E5 per gebruiker of Windows Virtual Desktop Access per gebruiker (licenties voor gebruikers abonnement of licenties voor gebruikers abonnementen), kunt u met multi tenant hosting rechten voor Windows 10 uw Windows 10-licenties naar de Cloud brengen en Windows 10-Virtual Machines op Azure uitvoeren zonder dat u voor een andere licentie betaalt. Zie [multi tenant-hosting voor Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)voor meer informatie.
@@ -26,7 +26,7 @@ Voor klanten met Windows 10 Enter prise E3/E5 per gebruiker of Windows Virtual D
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Windows 10-installatie kopie implementeren vanuit Azure Marketplace 
 Voor implementaties van Power shell, CLI en Azure Resource Manager-sjabloon kunt u de Windows 10-installatie kopie vinden met de volgende Uitgever, aanbieding, SKU.
 
-| Besturingssysteem  |      PublisherName      |  Aanbieding | Sku |
+| OS  |      PublisherName      |  Aanbieding | Sku |
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325620"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>NFSv4.1-standaarddomein configureren voor Azure NetApp Files
 
@@ -54,7 +54,7 @@ Zoals in het bovenstaande voor beeld wordt weer gegeven, is de gebruiker voor de
 
 In het volgende voor beeld ziet u de resulterende gebruikers-/groeps wijziging: 
 
-![Resulterende configuratie voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Scherm afbeelding met een voor beeld van de resulterende wijziging van de gebruiker/groep.](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 Zoals in het voor beeld wordt getoond, is de gebruiker/groep nu gewijzigd van `nobody` in `root` .
 
@@ -64,7 +64,7 @@ Azure NetApp Files ondersteunt lokale gebruikers (gebruikers die lokaal op een h
 
 In het volgende voor beeld `Host1` heeft drie bestaande test gebruikers accounts ( `testuser01` , `testuser02` , `testuser03` ): 
 
-![Resulterende configuratie voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Scherm opname die laat zien dat host1 drie bestaande test gebruikers accounts heeft.](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 `Host2`De test gebruikers accounts zijn niet gemaakt, maar hetzelfde volume is op beide hosts gekoppeld:
 

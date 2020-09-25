@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306936"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Updates beheren met onderhouds beheer en Azure PowerShell
 
@@ -66,6 +66,33 @@ U kunt een query uitvoeren voor beschik bare onderhouds configuraties met [Get-A
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Een onderhouds configuratie maken met een gepland venster (in preview-versie)
+
+
+> [!IMPORTANT]
+> De functie voor gepland venster is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Gebruik New-AzMaintenanceConfiguration om een onderhouds configuratie te maken met een gepland venster wanneer de updates worden toegepast op de resources in Azure. In dit voor beeld wordt een onderhouds configuratie met de naam myConfig gemaakt met een geplande periode van vijf uur op de vierde maandag van elke maand. Wanneer u een gepland venster hebt gemaakt, hoeft u de updates niet meer hand matig toe te passen.
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> De **duur** van het onderhoud moet *2 uur* of langer zijn. **Terugkeer patroon** van onderhoud moet worden ingesteld op ten minste één keer in 35 dagen.
+
+**Terugkeer patroon** van onderhoud kan worden uitgedrukt in dagelijkse, wekelijkse of maandelijkse planningen. Voor beelden van dagelijkse planningen zijn recurEvery: Day, recurEvery: 3Days. Voor beelden van wekelijkse planningen zijn recurEvery: 3Weeks, recurEvery: week zaterdag, zondag. Voor beelden van maandelijkse planningen zijn recurEvery: month day23, day24, recurEvery: month last zondag, recurEvery: Monthly maandag.
+
 
 ## <a name="assign-the-configuration"></a>De configuratie toewijzen
 

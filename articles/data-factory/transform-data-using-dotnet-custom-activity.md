@@ -1,6 +1,6 @@
 ---
 title: Aangepaste activiteiten gebruiken in een pijp lijn
-description: Meer informatie over het maken van aangepaste activiteiten en het gebruik ervan in een Azure Data Factory pijp lijn.
+description: Meer informatie over het maken van aangepaste activiteiten met behulp van .NET en het gebruik van de activiteiten in een Azure Data Factory-pijp lijn.
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276489"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 
@@ -102,7 +102,7 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 
 | Eigenschap              | Beschrijving                              | Vereist |
 | :-------------------- | :--------------------------------------- | :------- |
-| naam                  | Naam van de activiteit in de pijp lijn     | Yes      |
+| name                  | Naam van de activiteit in de pijp lijn     | Yes      |
 | description           | Tekst die beschrijft wat de activiteit doet.  | No       |
 | type                  | Voor aangepaste activiteit is het type activiteit **aangepast**. | Yes      |
 | linkedServiceName     | Gekoppelde service aan Azure Batch. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  | Yes      |
@@ -325,7 +325,7 @@ Deze serialisatie is niet echt veilig en is niet bedoeld om te worden beveiligd.
 
 Als u eigenschappen van het type *SecureString* vanuit een aangepaste activiteit wilt openen, leest u het `activity.json` bestand, dat zich in dezelfde map als uw heeft bevindt. EXE, deserialiseren van de JSON en vervolgens toegang tot de JSON-eigenschap (extendedProperties => [propertyname] => waarde).
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>V2-aangepaste activiteit vergelijken en versie 1 (aangepast) DotNet-activiteit
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> V2-aangepaste activiteit vergelijken en versie 1 (aangepast) DotNet-activiteit
 
 In Azure Data Factory versie 1 implementeert u een (aangepaste) DotNet-activiteit door een .NET Class Library-project te maken met een klasse die de `Execute` methode van de interface implementeert `IDotNetActivity` . De gekoppelde services, gegevens sets en uitgebreide eigenschappen in de JSON-nettolading van een (aangepaste) DotNet-activiteit worden door gegeven aan de uitvoerings methode als objecten met een sterk type. Zie [(aangepast) DotNet in versie 1](v1/data-factory-use-custom-activities.md)voor meer informatie over het gedrag van versie 1. Als gevolg van deze implementatie moet uw versie 1 DotNet-activiteit code .NET Framework 4.5.2. De activiteit versie 1 DotNet moet ook worden uitgevoerd op op Windows gebaseerde Azure Batch pool-knoop punten.
 

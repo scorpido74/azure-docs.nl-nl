@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278291"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replicatie tussen regio's van Azure NetApp Files volumes
 
@@ -45,6 +45,7 @@ Azure NetApp Files volume replicatie is momenteel beschikbaar in de volgende vas
 * Japan-Oost en Japan-West
 * UK-zuid en Duitsland-west-centraal
 * Zuidoost-Azië en Australië-oost
+* Centraal-India en India-zuid
 
 ## <a name="service-level-objectives"></a>Serviceniveau doelstellingen
 
@@ -110,8 +111,8 @@ De kosten voor de opslag capaciteit van de vaste Azure NetApp Files voor maand 2
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Vereisten en overwegingen voor het gebruik van replicatie tussen regio's](cross-region-replication-requirements-considerations.md)
-* [Replicatie-peering maken](cross-region-replication-create-peering.md)
-* [Status van replicatie relatie weer geven](cross-region-replication-display-health-status.md)
+* [Replicatiepeering maken](cross-region-replication-create-peering.md)
+* [Status van replicatierelatie weergeven](cross-region-replication-display-health-status.md)
 * [Herstel na noodgevallen beheren](cross-region-replication-manage-disaster-recovery.md)
 * [Metrische gegevens van de volume replicatie](azure-netapp-files-metrics.md#replication)
 * [Problemen met replicatie tussen regio's oplossen](troubleshoot-cross-region-replication.md)

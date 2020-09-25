@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324889"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Uw gezichts gegevens migreren naar een ander gezichts abonnement
 
@@ -30,7 +30,7 @@ U hebt de volgende items nodig:
 
 - Twee gezichts abonnements sleutels, één met de bestaande gegevens en één om naar te migreren. Volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)om u te abonneren op de face-service en uw sleutel op te halen.
 - De teken reeks voor het gezichts abonnement-ID die overeenkomt met het doel abonnement. Selecteer **overzicht** in het Azure Portal om het te vinden. 
-- Elke versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
+- Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Het Visual Studio-project maken
 
@@ -237,4 +237,3 @@ Bekijk vervolgens de relevante API-referentie documentatie, verken een voor beel
 - [Voor beeld van gezichts momentopname](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Gezichten toevoegen](how-to-add-faces.md)
 - [Gezichten in een afbeelding detecteren](HowtoDetectFacesinImage.md)
-- [Gezichten identificeren in een installatie kopie](HowtoIdentifyFacesinImage.md)

@@ -1,18 +1,18 @@
 ---
-title: Hybrid Cloud extension (HCX) installeren
-description: De VMware Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing
+title: VMware-HCX installeren
+description: De VMware HCX-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing
 ms.topic: how-to
-ms.date: 07/15/2020
-ms.openlocfilehash: fb8497af33b364c1d2ab475233bd2a83ef1befad
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/24/2020
+ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263198"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
-In dit artikel worden de procedures beschreven voor het instellen van de VMWare Hybrid Cloud extension (HCX)-oplossing voor uw persoonlijke cloud van Azure VMWare-oplossing. HCX maakt de migratie van uw VMware-workloads naar de Cloud en andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen.
+In dit artikel worden de procedures beschreven voor het instellen van de VMWare HCX-oplossing voor uw persoonlijke cloud van Azure VMWare-oplossing. HCX maakt de migratie van uw VMware-workloads naar de Cloud en andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen.
 
 HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie site verbindingen (on-premises of in de Cloud). Als er meer dan drie site verbindingen zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing in te scha kelen via ondersteuning, die momenteel als preview-versie beschikbaar is. HCX Enter prise heeft extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
@@ -40,7 +40,7 @@ Nadat de installatie is voltooid, kunt u de aanbevolen vervolg stappen volgen di
 
 Het formaat van werk belastingen met reken-en opslag resources is een essentiële plannings stap wanneer u de Azure VMware-oplossing HCX-oplossing voor de Privécloud wilt voorbereiden. Adresseer de grootte stap als onderdeel van de eerste planning van de particuliere cloud omgeving. 
 
-U kunt werk belastingen ook verg Roten of verkleinen door een Azure VMware-oplossings beoordeling uit te voeren in de Azure Migrate Portal ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
+U kunt werk belastingen ook verg Roten of verkleinen door een [Azure VMware-oplossings evaluatie](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) in de Azure migrate Portal uit te voeren.
 
 ## <a name="software-version-requirements"></a>Software versie vereisten
 
@@ -48,7 +48,7 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
                                                          
 | Onderdeel type    | Vereisten voor de bron omgeving    | Vereisten voor de doel omgeving   |
 | --- | --- | --- |
-| vCenter Server   | 5,1<br/><br/>Als u 5,5 U1 of eerder gebruikt, gebruikt u de zelfstandige HCX-gebruikers interface voor HCX-bewerkingen.  | 6,0 U2 en hoger   |
+| vCenter Server   | 5.1<br/><br/>Als u 5,5 U1 of eerder gebruikt, gebruikt u de zelfstandige HCX-gebruikers interface voor HCX-bewerkingen.  | 6,0 U2 en hoger   |
 | ESXi   | 5,0    | ESXi 6,0 en hoger   |
 | NSX    | Voor HCX netwerk extensie van logische switches op de bron: NSXv 6.2 + of NSX-T 2.4 +   | NSXv 6.2 + of NSX-T 2.4 +<br/><br/>Voor HCX nabij route ring: NSXv 6.4 + (proximity Routing wordt niet ondersteund met NSX-T) |
 | vCloud Director   | Niet vereist-geen interoperabiliteit met vCloud Director op de bron site | Wanneer u de doel omgeving met vCloud Director integreert, is de minimale 9.1.0.2.  |
@@ -67,15 +67,13 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>De VMware HCX-eicellen on-premises implementeren
 
+1. Meld u aan bij de Azure VMware Solution HCX Manager op `https://x.x.x.9` poort 443 met de gebruikers referenties van **cloudadmin** en ga vervolgens naar **ondersteuning**.
+
+1. Selecteer de download koppeling voor het VMware HCX eicellen-bestand. 
+
 1. Meld u aan bij de Azure VMware-oplossing SDDC vCenter en selecteer **HCX**.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/avs-vsphere-client.png" alt-text="Meld u aan bij de Azure VMware-oplossing SDDC vCenter en selecteer HCX.":::
-
-1. Selecteer onder **beheer** **systeem updates** en selecteer vervolgens **Download koppeling aanvragen** om het VMware HCX eicellen-bestand te downloaden.
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="Selecteer onder beheer systeem updates en selecteer vervolgens Download koppeling aanvragen om het VMware HCX eicellen-bestand te downloaden.":::
-
-1. Ga vervolgens naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.  
+   
+1. Ga naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Ga vervolgens naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.":::
 
@@ -95,7 +93,7 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 Na de installatie voert u de volgende stappen uit.
 
-1. Meld u aan bij on-premises HCX Manager op `https://HCXManagerIP:9443` en meld u aan met uw gebruikers naam en wacht woord. 
+1. Meld u aan bij on-premises HCX Manager op `https://HCXManagerIP:9443` en meld u aan met de referenties van de **beheerders** naam. 
 
    > [!IMPORTANT]
    > Zorg ervoor dat u het `9443` poort nummer opneemt met het IP-adres van HCX Manager.

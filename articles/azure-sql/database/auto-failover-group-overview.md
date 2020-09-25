@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277730"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure-portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -213,11 +213,11 @@ Ter illustratie van de wijzigings volgorde gaan we ervan uit dat Server A de pri
 
 ## <a name="best-practices-for-sql-managed-instance"></a>Aanbevolen procedures voor SQL Managed instance
 
-De groep voor automatische failover moet worden geconfigureerd op het primaire exemplaar en wordt verbonden met het secundaire exemplaar in een andere Azure-regio.  Alle data bases in het exemplaar worden gerepliceerd naar het secundaire exemplaar.
+De groep voor automatische failover moet worden geconfigureerd op het primaire exemplaar en wordt verbonden met het secundaire exemplaar in een andere Azure-regio.  Alle databases in het exemplaar worden gerepliceerd naar het secundaire exemplaar.
 
 Het volgende diagram illustreert een typische configuratie van een geo-redundante Cloud toepassing met behulp van beheerde exemplaren en de groep voor automatische failover.
 
-![automatische failover](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![diagram voor automatische failover](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > Zie [Managed instance toevoegen aan een failovergroep](../managed-instance/failover-group-add-instance-tutorial.md) voor een gedetailleerde stapsgewijze zelf studie voor het toevoegen van een failovergroep door een door SQL beheerd exemplaar toe te voegen.
@@ -237,16 +237,16 @@ Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group
 
 Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkeer tussen deze VNets worden toegestaan. Zie [Azure VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Een failovergroep maken tussen beheerde instanties in verschillende abonnementen
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Een failovergroep maken tussen beheerde exemplaren in verschillende abonnementen
 
 U kunt een failovergroep tussen SQL Managed instances maken in twee verschillende abonnementen, zolang abonnementen zijn gekoppeld aan dezelfde [Azure Active Directory Tenant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Wanneer u Power shell API gebruikt, kunt u dit doen door de `PartnerSubscriptionId` para meter op te geven voor het secundaire SQL-beheerde exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de `properties.managedInstancePairs` para meter een eigen subscriptionID hebben.
   
 > [!IMPORTANT]
-> Azure Portal biedt geen ondersteuning voor het maken van failover-groepen voor verschillende abonnementen. Voor de bestaande failover-groepen voor verschillende abonnementen en/of resource groepen kan failover ook niet hand matig worden gestart via de portal van het primaire SQL-beheerde exemplaar. Start de service vanuit het geo-secundaire exemplaar.
+> Azure Portal biedt geen ondersteuning voor het maken van failover-groepen voor verschillende abonnementen. Voor de bestaande failover-groepen voor verschillende abonnementen en/of resource groepen kan failover ook niet hand matig worden gestart via de portal van het primaire SQL-beheerde exemplaar. Start deze vanuit het geo-secundaire exemplaar.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Failover naar een secundair exemplaar beheren
 
-De failovergroep beheert de failover van alle data bases in het SQL Managed instance. Wanneer een groep wordt gemaakt, wordt elke data base in het exemplaar automatisch geo-gerepliceerd naar het secundaire SQL-beheerde exemplaar. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de data bases te initiëren.
+De failovergroep beheert de failover van alle databases in de SQL Managed Instance. Wanneer een groep wordt gemaakt, wordt elke database in het exemplaar automatisch geo-gerepliceerd naar de secundaire SQL Managed Instance. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de databases te initiëren.
 
 > [!IMPORTANT]
 > Als een Data Base wordt verwijderd uit het primaire exemplaar van SQL Managed, wordt deze ook automatisch neergezet op het geo-secundair SQL-beheerde exemplaar.
@@ -260,7 +260,7 @@ Bij het uitvoeren van OLTP-bewerkingen gebruikt u `<fog-name>.zone_id.database.w
 Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het geo-gerepliceerde secundair, gebruikt u `<fog-name>.secondary.<zone_id>.database.windows.net` als de server-URL en wordt de verbinding direct tot stand gebracht met het geo-gerepliceerde secundaire.
 
 > [!NOTE]
-> In bepaalde service lagen ondersteunt SQL Database het gebruik van [alleen-lezen replica's](read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly` para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
+> In bepaalde service lagen ondersteunt SQL Database het gebruik van [alleen-lezen replica's](read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly` para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen-replica op de primaire locatie of op de geo-gerepliceerde locatie.
 >
 > - Gebruik om verbinding te maken met een alleen-lezen replica op de primaire locatie `<fog-name>.<zone_id>.database.windows.net` .
 > - Gebruik om verbinding te maken met een alleen-lezen replica op de secundaire locatie `<fog-name>.secondary.<zone_id>.database.windows.net` .
@@ -348,16 +348,16 @@ De bovenstaande configuratie zorgt ervoor dat de automatische failover geen verb
 > [!IMPORTANT]
 > Om de bedrijfs continuïteit voor regionale uitval te garanderen, moet u ervoor zorgen dat u geografische redundantie voor zowel de front-end-onderdelen als de data bases hebt.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Geo-replicatie tussen beheerde instanties en hun VNets inschakelen
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Geo-replicatie tussen beheerde exemplaren en hun VNets inschakelen
 
 Wanneer u een failovergroep tussen de primaire en secundaire SQL Managed instances in twee verschillende regio's instelt, wordt elk exemplaar geïsoleerd met behulp van een onafhankelijk virtueel netwerk. Als u replicatie verkeer tussen deze VNets wilt toestaan, moet u ervoor zorgen dat aan deze vereisten wordt voldaan:
 
 - De twee exemplaren van SQL Managed instance moeten zich in verschillende Azure-regio's bevindt.
 - De twee exemplaren van SQL Managed instance moeten dezelfde servicelaag hebben en dezelfde opslag grootte hebben.
 - Uw secundaire exemplaar van een door SQL beheerd exemplaar moet leeg zijn (geen gebruikers databases).
-- De virtuele netwerken die worden gebruikt door de instanties van SQL Managed instance moeten worden verbonden via een [VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewall regel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
+- De virtuele netwerken die worden gebruikt door de instanties van SQL Managed instance moeten worden verbonden via een [VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewallregel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
 - De twee SQL Managed instance VNets kunnen geen overlappende IP-adressen hebben.
-- U moet uw netwerk beveiligings groepen (NSG) zodanig instellen dat de poorten 5022 en het bereik 11000 ~ 12000 zijn geopend als binnenkomend en uitgaand verkeer voor verbindingen van het subnet van het andere beheerde exemplaar. Dit is om replicatie verkeer tussen de instanties toe te staan.
+- U moet uw netwerkbeveiligingsgroepen (NSG) zodanig instellen dat poort 5022 en het bereik 11000–12000 zijn geopend voor inkomende en uitgaande verbindingen van het subnet van het andere beheerde exemplaar. Dit is om replicatieverkeer tussen de exemplaren mogelijk te maken.
 
    > [!IMPORTANT]
    > Onjuist geconfigureerde NSG-beveiligings regels leiden tot vastgelopen database Kopieer bewerkingen.
@@ -369,9 +369,9 @@ Wanneer u een failovergroep tussen de primaire en secundaire SQL Managed instanc
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Een primaire data base bijwerken of downgrade uitvoeren
 
-U kunt een upgrade of downgrade van een primaire Data Base naar een andere reken grootte (binnen dezelfde servicelaag, niet tussen Algemeen en Bedrijfskritiek) zonder de verbinding van secundaire data bases te verbreken. Wanneer u een upgrade uitvoert, raden we u aan om eerst alle secundaire data bases bij te werken en vervolgens een upgrade uit te voeren van de primaire. Wanneer u een downgrade uitvoert, maakt u de volg orde ongedaan: downgradet u eerst de primaire data base. Wanneer u de data base bijwerkt of downgradet naar een andere servicelaag, wordt deze aanbeveling afgedwongen.
+U kunt een upgrade of downgrade van een primaire Data Base naar een andere reken grootte (binnen dezelfde servicelaag, niet tussen Algemeen en Bedrijfskritiek) zonder de verbinding van secundaire data bases te verbreken. Wanneer u een upgrade uitvoert, raden we u aan om eerst alle secundaire data bases bij te werken en vervolgens een upgrade uit te voeren van de primaire. Wanneer u een downgrade uitvoert, maakt u de volg orde ongedaan: downgradet u eerst de primaire data base. Bij het upgraden of downgraden van de database naar een andere servicelaag wordt deze aanbeveling afgedwongen.
 
-Deze volg orde wordt aangeraden om het probleem te voor komen waarbij de secundaire bij een lagere SKU overbelast is en opnieuw moet worden geseed tijdens een upgrade of downgrade proces. U kunt het probleem ook vermijden door de primaire alleen-lezen te maken, tegen kosten die van invloed zijn op alle werk belastingen voor lezen/schrijven op basis van de primaire.
+Deze volgorde wordt aangeraden om te voorkomen dat het secundaire exemplaar bij een lagere SKU overbelast raakt en opnieuw moet worden geseed tijdens een upgrade- of downgradeproces. U kunt dit probleem ook vermijden door het primaire exemplaar alleen-lezen te maken. Dit gaat ten koste van alle lezen/schrijven-werkbelastingen die zijn gekoppeld aan het primaire exemplaar.
 
 > [!NOTE]
 > Als u een secundaire Data Base hebt gemaakt als onderdeel van de configuratie van de failovergroep, wordt het niet aanbevolen de secundaire data base te downgradeen. Zo zorgt u ervoor dat uw gegevenslaag voldoende capaciteit heeft om uw normale werk belasting te verwerken nadat de failover is geactiveerd.

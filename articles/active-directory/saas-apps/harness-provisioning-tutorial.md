@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305627"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
 
@@ -45,7 +45,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *standaard toegang* worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan de harnas, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster **toewijzing** . Gebruikers met de rol *Standaard toegang* worden uitgesloten van het inrichten.
 
 ## <a name="set-up-harness-for-provisioning"></a>Harnas instellen voor inrichting
 
@@ -78,11 +78,11 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 Voordat u een harnas configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u een harnas van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-1. Selecteer **Azure Active Directory**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com).
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
 
     ![De koppeling alle toepassingen](common/enterprise-applications.png)
 
@@ -110,7 +110,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-1. Selecteer in de lijst toepassingen de optie **harnas**.
+1. Selecteer **Harness** in de lijst met toepassingen.
 
     ![De harnas koppeling in de lijst met toepassingen](common/all-applications.png)
 
@@ -126,7 +126,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. Voer in het vak **Tenant-URL** in **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
+   a. Voer in het vak **Tenant-URL** in **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** . U kunt uw harnas account-ID ophalen uit de URL in uw browser wanneer u bent aangemeld bij harnas.
    b. Voer in het vak **geheim token** de waarde voor het scim-verificatie token in dat u hebt opgeslagen in stap 6 van de sectie ' harnas instellen voor het inrichten '.  
    c. Selecteer **verbinding testen** om te controleren of Azure AD verbinding kan maken met de harnas. Als de verbinding mislukt, zorg er dan voor dat uw harnas account *beheerders* machtigingen heeft en probeer het opnieuw.
 
@@ -140,7 +140,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![De koppeling ' synchronisatie van Azure Active Directory gebruikers naar een harnas ' harnas](media/harness-provisioning-tutorial/usermappings.png)
 
-1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *match* , worden gebruikt voor de gebruikers accounts in combi natie met update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *match* , worden gebruikt voor de gebruikers accounts in combi natie met update bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Deel venster voor het toewijzen van kenmerken aan gebruikers](media/harness-provisioning-tutorial/userattributes.png)
 
@@ -148,7 +148,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![De koppeling voor het synchroniseren van Azure Active Directory groepen op elkaar bundelen](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. Controleer onder **kenmerk toewijzingen**de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *overeenkomende* eigenschappen worden gebruikt om de groepen in harnas te vergelijken voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer onder **kenmerk toewijzingen**de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de harnas. De kenmerken die zijn geselecteerd als *overeenkomende* eigenschappen worden gebruikt om de groepen in harnas te vergelijken voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Deel venster kenmerk toewijzingen van harnas groep](media/harness-provisioning-tutorial/groupattributes.png)
 
@@ -160,7 +160,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
 1. Selecteer onder **instellingen**in de vervolg keuzelijst **bereik** hoe u de gebruikers of groepen die u wilt inrichten, wilt synchroniseren.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 1. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
@@ -177,4 +177,4 @@ Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provis
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

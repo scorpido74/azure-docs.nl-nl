@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324328"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Functies voor het optimaliseren van de activiteit prestaties
 
@@ -124,32 +124,36 @@ Wanneer u een waarde voor de `parallelCopies` eigenschap opgeeft, neemt u de bel
 
 ## <a name="staged-copy"></a>Gefaseerde kopie
 
-Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Blob-opslag te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
+Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Azure Blob Storage of Azure Data Lake Storage Gen2 te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
 
-- **U wilt gegevens uit verschillende gegevens archieven opnemen in azure Synapse Analytics (voorheen SQL Data Warehouse) via Poly base.** Azure Synapse Analytics maakt gebruik van poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in azure Synapse Analytics te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens in azure Synapse Analytics. Zie [poly Base gebruiken om gegevens te laden in azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)voor meer informatie.
+- **U wilt gegevens uit verschillende gegevens archieven opnemen in azure Synapse Analytics (voorheen SQL Data Warehouse) via Poly Base, gegevens kopiëren van/naar sneeuw of gegevens opnemen vanuit Amazon Redshift/HDFS performantly.** Meer informatie over:
+  - [Gebruik poly Base om gegevens te laden in azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+  - [Sneeuw-connector](connector-snowflake.md)
+  - [Amazon Redshift-connector](connector-amazon-redshift.md)
+  - [HDFS-connector](connector-hdfs.md)
+- **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u bijvoorbeeld gegevens van een on-premises gegevens archief naar een Azure SQL Database of een Azure Synapse-analyse kopieert, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario kan de gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag via HTTP of HTTPS op poort 443, en vervolgens de gegevens van staging te laden in SQL Database of Azure Synapse Analytics. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 - **Soms duurt het even om een hybride gegevens verplaatsing (dat wil zeggen, kopiëren van een on-premises gegevens archief naar een gegevens archief in de Cloud) uit te voeren via een trage netwerk verbinding.** Om de prestaties te verbeteren, kunt u gefaseerde kopie gebruiken om de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u ze laadt in de doel gegevens opslag.
-- **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure Synapse Analytics-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario kan een gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag instantie van een BLOB via HTTP of HTTPS op poort 443. Vervolgens kunnen de gegevens worden geladen in SQL Database of Azure Synapse Analytics vanuit de fase van het maken van Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 
 ### <a name="how-staged-copy-works"></a>Hoe gefaseerd kopiëren werkt
 
-Wanneer u de faserings functie activeert, worden de gegevens eerst uit de brongegevens opslag gekopieerd naar de staging Blob-opslag (neem uw eigen op). Vervolgens worden de gegevens uit de staging-gegevens opslag naar de Sink-gegevens opslag gekopieerd. Azure Data Factory beheert automatisch de twee fase stroom voor u. Azure Data Factory verwijdert ook tijdelijke gegevens uit de staging-opslag nadat de gegevens verplaatsing is voltooid.
+Wanneer u de faserings functie activeert, worden de gegevens eerst uit de brongegevens opslag gekopieerd naar de staging-opslag (neem uw eigen Azure Blob of Azure Data Lake Storage Gen2). Vervolgens worden de gegevens uit de fase ring naar het gegevens archief van de Sink gekopieerd. Azure Data Factory Kopieer activiteit beheert automatisch de tweestage stroom voor u en worden er ook tijdelijke gegevens uit de staging-opslag opgeschoond nadat de gegevens verplaatsing is voltooid.
 
 ![Gefaseerde kopie](media/copy-activity-performance/staged-copy.png)
 
-Wanneer u gegevens verplaatsing activeert met behulp van een staging Store, kunt u opgeven of u wilt dat de gegevens worden gecomprimeerd voordat u gegevens verplaatst van het brongegevens archief naar een tussentijds-of faserings gegevensopslag en vervolgens wordt gedecomprimeerd voordat u gegevens verplaatst van een tussentijds-of faserings gegevens archief naar de Sink-gegevens opslag.
+Wanneer u gegevens verplaatsing activeert met behulp van een faserings opslag, kunt u opgeven of u wilt dat de gegevens worden gecomprimeerd voordat u gegevens van de brongegevens opslag naar de faserings opslag verplaatst en vervolgens gedecomprimeerd voordat u gegevens verplaatst van een tussentijds-of faserings gegevens archief naar de Sink-gegevens opslag.
 
 Op dit moment kunt u geen gegevens kopiëren tussen twee gegevens archieven die zijn verbonden via een andere zelf-hostende IRs, noch zonder een gefaseerde kopie. Voor dit scenario kunt u twee expliciet gekoppelde Kopieer activiteiten configureren om te kopiëren van bron naar fase ring en vervolgens van fase ring naar sink.
 
 ### <a name="configuration"></a>Configuratie
 
-Configureer de instelling **enableStaging** in de Kopieer activiteit om op te geven of u wilt dat de gegevens in Blob Storage worden klaargezet voordat u deze in een doel gegevens archief laadt. Wanneer u **enableStaging** instelt op `TRUE` , geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. U moet ook een gekoppelde service voor het maken van een hand tekening voor gedeelde toegang met een opslag locatie voor Azure Storage of Storage gebruiken als u er geen hebt.
+Configureer de instelling **enableStaging** in de Kopieer activiteit om op te geven of u wilt dat de gegevens in de opslag worden klaargezet voordat u deze in een doel gegevens archief laadt. Wanneer u **enableStaging** instelt op `TRUE` , geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. 
 
 | Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
-| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |No |
-| linkedServiceName |Geef de naam op van een gekoppelde [opslag](connector-azure-blob-storage.md#linked-service-properties) -service die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in azure Synapse Analytics via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
-| leertraject |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |No |
-| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |No |
+| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |Niet waar |No |
+| linkedServiceName |Geef de naam op van een [Azure Blob-opslag](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) gekoppelde service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
+| leertraject |Geef het pad op dat u wilt dat de gefaseerde gegevens bevat. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. |N.v.t. |No |
+| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |Niet waar |No |
 
 >[!NOTE]
 > Als u een gefaseerde kopie gebruikt terwijl compressie is ingeschakeld, wordt de service-principal of MSI-verificatie voor de gekoppelde BLOB-hostservice niet ondersteund.
@@ -159,25 +163,24 @@ Hier volgt een voor beeld van een Kopieer activiteit met de eigenschappen die in
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

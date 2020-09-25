@@ -12,23 +12,27 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273854"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
 In dit document wordt beschreven hoe u de Azure AD Connect Health-agents installeert en configureert. U kunt de agents [hier](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) downloaden.
 
 ## <a name="requirements"></a>Vereisten
+
+
+> [!IMPORTANT]
+> Het installeren van de Azure AD Connect Health-Agent op Windows Server Core wordt niet ondersteund.
 
 In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Connect Health.
 
@@ -48,7 +52,7 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 
 > [!NOTE]
 > Als u een zeer vergrendelde en zeer beperkte omgeving hebt, moet u de Url's die worden vermeld in de lijst met Service-eind punten toevoegen naast de hieronder vermelde lijst met toegestane verbeterde beveiliging van Internet Explorer. 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Uitgaande verbinding met de Azure-service-eindpunten
 

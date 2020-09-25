@@ -1,6 +1,6 @@
 ---
 title: Azure Serial console voor Linux | Microsoft Docs
-description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets.
+description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Linux-voor beeld.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306868"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console voor Linux
 
@@ -133,38 +133,38 @@ Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord i
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**V. Hoe kan ik feedback verzenden?**
+**Nils. Hoe kan ik feedback verzenden?**
 
-A. Geef feedback door het maken van een GitHub-probleem op https://aka.ms/serialconsolefeedback . Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com .
+A. Geef feedback door het maken van een GitHub-probleem op  https://aka.ms/serialconsolefeedback . Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com .
 
-**V. ondersteunt de seriële console kopiëren/plakken?**
+**Nils. Ondersteunt de seriële console kopiëren/plakken?**
 
 A. Ja. Gebruik **CTRL** + **SHIFT** + **C** en **CTRL** + **SHIFT** + **V** om de Terminal te kopiëren en plakken.
 
-**V. kan ik seriële console gebruiken in plaats van een SSH-verbinding?**
+**Nils. Kan ik een seriële console gebruiken in plaats van een SSH-verbinding?**
 
 A. Hoewel dit gebruik technisch mogelijk lijkt, is de seriële console voornamelijk bedoeld om te worden gebruikt als hulp programma voor probleem oplossing in situaties waarin connectiviteit via SSH niet mogelijk is. U wordt aangeraden de seriële console als SSH-vervanging te gebruiken om de volgende redenen:
 
 - De seriële console heeft niet zoveel band breedte als SSH. Omdat het een alleen-tekst verbinding is, zijn er lastigere interacties in meerdere gebruikers.
 - Seriële console toegang is momenteel alleen mogelijk als u een gebruikers naam en wacht woord gebruikt. Omdat SSH-sleutels veel veiliger zijn dan combi Naties van gebruikers namen en wacht woorden, wordt u aangeraden SSH via seriële console te maken.
 
-**V. wie kan seriële console in-of uitschakelen voor mijn abonnement?**
+**Nils. Wie kan de seriële console in-of uitschakelen voor mijn abonnement?**
 
 A. Als u de seriële console op het niveau van een abonnement wilt in-of uitschakelen, moet u schrijf machtigingen hebben voor het abonnement. Rollen met schrijf machtiging zijn onder andere beheerders-of eigenaar rollen. Aangepaste rollen kunnen ook schrijf machtigingen hebben.
 
-**V. wie kan toegang krijgen tot de seriële console voor mijn virtuele machine/VM-schaalset?**
+**Nils. Wie heeft toegang tot de seriële console voor mijn virtuele machine/VM-schaalset?**
 
 A. U moet de rol Inzender voor virtuele machines of hoger hebben voor een VM of virtuele-machine schaalset om toegang te krijgen tot de seriële console.
 
-**V. mijn seriële console geeft niets weer, wat moet ik doen?**
+**Nils. Mijn seriële console geeft niets weer, wat moet ik doen?**
 
 A. De installatie kopie is waarschijnlijk onjuist geconfigureerd voor toegang tot seriële consoles. Zie [seriële console Linux-distributie Beschik baarheid](#serial-console-linux-distribution-availability)voor meer informatie over het configureren van uw installatie kopie om de seriële console in te scha kelen.
 
-**V. is de seriële console beschikbaar voor schaal sets voor virtuele machines?**
+**Nils. Is de seriële console beschikbaar voor schaal sets voor virtuele machines?**
 
 A. Ja dat is zo! Zie de [seriële console voor Virtual Machine Scale sets](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-**V. als ik mijn VM of schaalset voor virtuele machines heb ingesteld met behulp van alleen SSH-sleutel verificatie, kan ik dan nog steeds de seriële console gebruiken om verbinding te maken met mijn VM/virtual machine Scale set-exemplaar?**
+**Nils. Als ik mijn VM of virtuele-machine schaalset stel met alleen authenticatie van SSH-sleutel, kan ik dan nog steeds de seriële console gebruiken om verbinding te maken met mijn virtuele machine voor de VM-schaalset?**
 
 A. Ja. Omdat de seriële console geen SSH-sleutels nodig heeft, hoeft u alleen een combi natie van gebruikers naam en wacht woord in te stellen. U kunt dit doen door **wacht woord opnieuw instellen** in het Azure portal te selecteren en deze referenties te gebruiken om u aan te melden bij de seriële console.
 

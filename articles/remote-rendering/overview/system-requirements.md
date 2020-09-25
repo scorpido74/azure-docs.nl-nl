@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323722"
 ---
 # <a name="system-requirements"></a>Systeemvereisten
 
@@ -63,6 +63,17 @@ Een stabiele netwerk verbinding met lage latentie is essentieel voor een goede g
 Zie speciaal hoofd stuk voor [netwerk vereisten](../reference/network-requirements.md).
 
 Raadpleeg de [hand leiding](../resources/troubleshoot.md#unstable-holograms)voor het oplossen van problemen met netwerk problemen.
+
+### <a name="network-ports"></a>Netwerkpoorten
+
+Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) niet de volgende poorten blok keren:
+
+| Poort              | Protocol | Toestaan    | Beschrijving |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | Verzendt | Eerste verbinding (HTTP-Handshake) |
+| 8266              | UDP      | Verzendt | Gegevensoverdracht |
+| 5000, 5433, 8443  | TCP      | Verzendt | Vereist voor het [hulp programma ArrInspector](../resources/tools/arr-inspector.md)|
+
 
 ## <a name="software"></a>Software
 

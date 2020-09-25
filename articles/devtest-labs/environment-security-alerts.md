@@ -3,12 +3,12 @@ title: Beveiligings waarschuwingen voor omgevingen in Azure DevTest Labs
 description: In dit artikel leest u hoe u beveiligings waarschuwingen kunt weer geven voor een omgeving in DevTest Labs en een passende maat regelen kunt nemen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9eea06066cfca5f67d920456f16e2eb7893dce39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308687"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Beveiligings waarschuwingen voor omgevingen in Azure DevTest Labs
 Als test gebruiker kunt u nu Azure Security Center waarschuwingen weer geven voor uw test omgevingen. Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. In Security Center wordt een lijst met beveiligingswaarschuwingen met prioriteiten weergegeven samen met de informatie die u nodig hebt om snel onderzoek te doen naar het probleem en aanbevelingen voor het herstellen van een aanval. Meer [informatie over beveiligings waarschuwingen in azure Security Center](../security-center//security-center-alerts-overview.md).  
@@ -24,7 +24,7 @@ Op dit moment kunt u alleen beveiligings waarschuwingen weer geven voor PaaS-omg
     ![Beveiligings waarschuwingen-overzicht](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. Klik met de rechter muisknop op drie punten (...) in de laatste kolom en selecteer **beveiligings waarschuwingen weer geven**. 
 
-    ![Beveiligingswaarschuwingen bekijken](./media/environment-security-alerts/view-security-alerts-menu.png)
+    ![Scherm opname van de pagina beveiligings waarschuwingen met de melding beveiligings waarschuwingen weer geven geselecteerd.](./media/environment-security-alerts/view-security-alerts-menu.png)
     
 3. U vindt meer informatie over de aanbevelingen voor waarschuwingen en Advisor. Meer informatie over [het beheren van en reageren op beveiligings waarschuwingen in azure Security Center](../security-center/security-center-managing-and-responding-alerts.md).
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab, sstein
+ms.reviewer: sstein
 ms.date: 07/21/2020
-ms.openlocfilehash: f71daab55139f6b4690df50472928db466774cb3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 345fd0df5b56bac164e78a540f8b26221294eabe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325292"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,12 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|512|756|1536|1536|1536|2048|
-|Maximale logboek grootte|154|227|461|461|461|614|
+|Maximale logboekgrootte|154|227|461|461|461|614|
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. aantal gegevens IOPS per pool <sup>2</sup> |400|800|1200|1600|2000|2400|
-|Maximale logboek frequentie per pool (MBps)|4,7|9.4|14,1|18,8|23,4|28,1|
+|Maximale logboek frequentie per pool (MBps)|4.7|9,4|14,1|18,8|23,4|28,1|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) <sup>3</sup> |210|420|630|840|1050|1260|
 |Maxi maal aantal gelijktijdige aanmeldingen per pool <sup>3</sup> |210|420|630|840|1050|1260|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -110,7 +110,7 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
-|Geheugen (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
+|Geheugen (GB)|10.4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Maximum aantal Db's per pool <sup>1</sup>|100|200|500|500|500|500|500|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
@@ -120,7 +120,7 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Max. aantal gegevens IOPS per pool <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Maximale logboek frequentie per pool (MBps)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
+|Maximale logboek frequentie per pool (MBps)|9,4|18,8|28,1|37,5|37,5|37,5|37,5|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -281,7 +281,7 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |Geheugen (GB)|49|56|63|70|112|159,5|
 |Maximum aantal Db's per pool <sup>1</sup>|100|100|100|100|100|100|
 |Column Store-ondersteuning|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
-|OLTP-opslag in het geheugen (GB)|7|8|9,5|11|20|36|
+|OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|1024|
 |Maximale logboek grootte (GB)|307|307|307|307|307|307|

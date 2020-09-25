@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275129"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit
 
@@ -143,6 +143,10 @@ Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingeste
 Bekijk [Indexeer functie maken](/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Toegang tot beveiligde gegevens in opslag accounts
+
+Azure Storage-accounts kunnen verder worden beveiligd met firewalls en virtuele netwerken. Als u inhoud wilt indexeren van een Blob Storage-account of Data Lake Gen2-opslag account dat is beveiligd met een firewall of een virtueel netwerk, volgt u de instructies voor het [veilig benaderen van gegevens in opslag accounts via een vertrouwde service-uitzonde ring](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Zie ook
 

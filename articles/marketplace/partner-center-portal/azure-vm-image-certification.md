@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275776"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Validatie van installatie kopie van virtuele Azure-machine
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een installatie kopie van een virtuele mac
 
 Voer de volgende stappen uit voordat u uw VM-aanbieding verzendt:
 
-- Implementeer een Azure VM met behulp van uw gegeneraliseerde installatie kopie.
+- Implementeer een Azure VM met behulp van uw gegeneraliseerde installatie kopie. Zie hier voor meer informatie over [gegeneraliseerde installatie kopieën](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image).
 - Voer validaties uit.
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Een Azure-VM implementeren met behulp van uw gegeneraliseerde installatie kopie
@@ -31,7 +31,7 @@ In deze sectie wordt beschreven hoe u een gegeneraliseerde virtuele harde schijf
 
 In deze sectie wordt beschreven hoe u een installatie kopie van een door de gebruiker gedefinieerde virtuele machine (VM) maakt en implementeert. U kunt dit doen door VHD-installatie kopieën van besturings systeem en gegevens schijven te voorzien van een door Azure geïmplementeerde virtuele harde schijf. Met deze stappen implementeert u de virtuele machine met gegeneraliseerde VHD.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Upload uw gegeneraliseerde virtuele harde schijf van het besturings systeem en de Vhd's met gegevens schijven naar uw Azure Storage-account.
 3. Op de start pagina selecteert u **een resource maken**, zoekt u naar "sjabloon implementatie" en selecteert u **maken**.
 4. Kies **uw eigen sjabloon bouwen in de editor**.
@@ -589,7 +589,7 @@ Het certificerings test hulpprogramma voor Azure Certified wordt uitgevoerd op e
 
     :::image type="content" source="media/vm/azure-vm-cert-4.png" alt-text="Toont de selectie van de gebruikers naam en het wacht woord van de VM.":::
 
-6. Selecteer **Volgende**.
+6. Selecteer **Next**.
 
 #### <a name="run-a-certification-test"></a>Een certificerings test uitvoeren
 
@@ -599,7 +599,9 @@ Nadat de geautomatiseerde test is voltooid, geeft u aanvullende informatie over 
 
 In het laatste scherm kunt u meer informatie opgeven, zoals SSH-toegangs gegevens voor een Linux VM-installatie kopie, en een uitleg voor eventuele mislukte beoordelingen als u op zoek bent naar uitzonde ringen.
 
-Selecteer ten slotte rapport genereren om de test resultaten en logboek bestanden voor de uitgevoerde test cases samen met uw antwoorden op de vragen lijst te downloaden. Sla de resultaten op in dezelfde container als uw Vhd's.
+Selecteer ten slotte rapport genereren om de test resultaten en logboek bestanden voor de uitgevoerde test cases samen met uw antwoorden op de vragen lijst te downloaden. 
+> [!Note]
+> Enkele uitgevers hebben scenario's waarbij Vm's moeten worden vergrendeld omdat ze software hebben, zoals firewalls die zijn geïnstalleerd op de virtuele machine. In dit geval kunnen uitgevers het [gecertificeerde test programma](https://aka.ms/AzureCertificationTestTool) hier downloaden en het rapport op Marketplace- [Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) bieden.
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Power shell gebruiken voor het verbruiken van de zelf test-API
 
