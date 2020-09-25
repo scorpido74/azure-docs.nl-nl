@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266612"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Verificatie opties met een wacht woord voor Azure Active Directory
 
@@ -82,7 +82,7 @@ Voer de volgende instructies uit om aan de slag te gaan met aanmelden zonder wac
 
 ## <a name="fido2-security-keys"></a>FIDO2-beveiligings sleutels
 
-De FIDO-Alliantie (Fast IDentity online) helpt u bij het promo veren van open-verificatie standaarden en de gebruiker van wacht woorden te beperken als een vorm van verificatie. FIDO2 is de nieuwste standaard die de webverificatie (webauth)-standaard bevat.
+De FIDO-Alliantie (Fast IDentity online) helpt u bij het promo veren van open-verificatie standaarden en het gebruik van wacht woorden te beperken als verificatie vorm. FIDO2 is de nieuwste standaard die de webverificatie (webauth)-standaard bevat.
 
 FIDO2-beveiligings sleutels zijn een niet-verwerkte op standaarden gebaseerde verificatie methode op basis van een wacht woord, die in elke vorm factor kan worden gebruikt. Fast Identity online (FIDO) is een open standaard voor verificatie met een wacht woord. Met FIDO kunnen gebruikers en organisaties de standaard gebruiken om zich aan te melden bij hun resources zonder gebruikers naam of wacht woord met behulp van een externe beveiligings sleutel of een platform sleutel die is ingebouwd in een apparaat.
 

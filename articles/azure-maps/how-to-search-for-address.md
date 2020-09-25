@@ -4,16 +4,16 @@ description: Meer informatie over de Azure Maps Search-service. Zie hoe u deze s
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310982"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 
@@ -139,9 +139,9 @@ In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionel
     | Sleutel | Waarde | Retouren
     |-----|------------|------|
     | getal | 1 |Het antwoord kan de zijde van de straat (links/rechts) bevatten en ook een verschuivings positie voor het getal.|
-    | returnSpeedLimit | waar | Retourneert de snelheids limiet op het adres.|
-    | returnRoadUse | waar | Hiermee wordt het gebruik van typen weg op het adres geretourneerd. Voor alle mogelijke typen weg gebruik, Zie [typen voor gebruik](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)van de weg.|
-    | returnMatchType | waar| Hiermee wordt het type overeenkomst geretourneerd. Zie [omgekeerde adres Zoek resultaten](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) voor alle mogelijke waarden
+    | returnSpeedLimit | true | Retourneert de snelheids limiet op het adres.|
+    | returnRoadUse | true | Hiermee wordt het gebruik van typen weg op het adres geretourneerd. Voor alle mogelijke typen weg gebruik, Zie [typen voor gebruik](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)van de weg.|
+    | returnMatchType | true| Hiermee wordt het type overeenkomst geretourneerd. Zie [omgekeerde adres Zoek resultaten](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) voor alle mogelijke waarden
 
    :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Zoeken in omgekeerde volg orde.":::
 

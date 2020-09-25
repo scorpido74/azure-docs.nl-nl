@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279554"
 ---
 Het inschakelen van gedeelde schijven is alleen beschikbaar voor een subset van schijf typen. Op dit moment kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Op elke beheerde schijf waarvoor gedeelde schijven zijn ingeschakeld, gelden de volgende beperkingen, geordend op schijf type:
 
@@ -51,15 +51,15 @@ Gedeelde Premium-Ssd's worden alleen ondersteund in de volgende regio's:
 - VS - west-centraal
 - South Central US
 - VS - noord-centraal
-- US - centraal
-- Europa - west
+- Central US
+- Europa -west
 - Europa - noord
 - Korea - centraal
 - Canada - midden
 - Canada - oost
 - Japan - oost
 - Japan - west
+- Azië - zuidoost
+- Azië - oost
 - VS (overheid) - Virginia
 - VS (overheid) - Arizona
-
-Als u geïnteresseerd bent in het proberen van gedeelde Premium Ssd's, [meldt u zich aan voor toegang](https://aka.ms/AzureSharedDiskGASignUp).

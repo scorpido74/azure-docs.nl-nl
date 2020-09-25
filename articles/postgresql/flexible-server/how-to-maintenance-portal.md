@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336289"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>Geplande onderhouds instellingen beheren voor Azure Database for PostgreSQL-flexibele server
  
@@ -31,9 +31,9 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>Meldingen over geplande onderhouds gebeurtenissen
  
-U kunt Azure Service Health gebruiken om [meldingen](/azure/service-health/service-notifications.md) over aanstaande en uitgevoerd gepland onderhoud op uw flexibele server weer te geven. U kunt ook waarschuwingen [instellen](/azure/service-health/resource-health-alert-monitor-guide.md) in azure service Health om meldingen over onderhouds gebeurtenissen te ontvangen.
+U kunt Azure Service Health gebruiken om [meldingen](../../service-health/service-notifications.md) over aanstaande en uitgevoerd gepland onderhoud op uw flexibele server weer te geven. U kunt ook waarschuwingen [instellen](../../service-health/resource-health-alert-monitor-guide.md) in azure service Health om meldingen over onderhouds gebeurtenissen te ontvangen.
  
 ## <a name="next-steps"></a>Volgende stappen  
  
 * Meer informatie over [gepland onderhoud in azure database for PostgreSQL-flexibele server](concepts-maintenance.md)
-* [Azure service Health](/azure/service-health/overview.md) van Lean
+* [Azure service Health](../../service-health/overview.md) van Lean

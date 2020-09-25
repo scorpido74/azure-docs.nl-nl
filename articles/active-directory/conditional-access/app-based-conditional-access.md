@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266136"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Procedure: goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang
 
@@ -47,7 +47,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
    1. Selecteer **Gereed**.
-1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **Office 365**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.

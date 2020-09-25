@@ -1,7 +1,7 @@
 ---
 title: Upgrade Automatische suggestie-API voor Bing v5 naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw Bing Automatische suggesties toepassing geïdentificeerd die u moet bijwerken om versie 7 te gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65498e25108a28183ae6596a8a7288c071ef1147
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68405414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277509"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Upgrade handleiding voor Automatische suggestie-API
 
@@ -25,17 +25,17 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 ### <a name="endpoints"></a>Eindpunten
 
-- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld https:\//API.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */Suggestions.
+- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld https: \/ /API.Cognitive.Microsoft.com/Bing/ \* \* v 7.0 * */Suggestions.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fout bericht objecten en fout codes
 
 - Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
+- De volgende velden zijn toegevoegd aan het `Error` object.  
   - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
   - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.
+- De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.
 
 |Code|SubCode|Beschrijving
 |-|-|-

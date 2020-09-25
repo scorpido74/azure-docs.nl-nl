@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310166"
 ---
 # <a name="supported-data-format-details"></a>Details van ondersteunde gegevensindeling
 
@@ -52,7 +52,7 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `atom:author`        | ja     | ja     |                                                                                                                            |
 | `atom:link`          | ja     | ja     |                                                                                                                            |
 | `atom:name`          | ja     | ja     |                                                                                                                            |
-| `BalloonStyle`       | gedeeltelijke | gedeeltelijke | `displayMode`wordt niet ondersteund. Geconverteerd naar een `PopupTemplate` . Als u wilt schrijven, voegt `popupTemplate` u een eigenschap toe als een eigenschap van de functie waarvoor u deze wilt schrijven. |
+| `BalloonStyle`       | gedeeltelijke | gedeeltelijke | `displayMode` wordt niet ondersteund. Geconverteerd naar een `PopupTemplate` . Als u wilt schrijven, voegt `popupTemplate` u een eigenschap toe als een eigenschap van de functie waarvoor u deze wilt schrijven. |
 | `begin`              | ja     | ja     |                                                                                                                            |
 | `color`              | ja     | ja     | Inclusief `#AABBGGRR` en `#BBGGRR` . Geparseerd naar een CSS-kleur teken reeks                                                           |
 | `colorMode`          | ja     | nee      |                                                                                                                            |
@@ -68,12 +68,12 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `extrude`            | gedeeltelijke | gedeeltelijke | Alleen ondersteund voor veelhoeken. Meerdere geometrie met veelhoeken met verschillende hoogten wordt onderverdeeld in afzonderlijke functies. Lijn stijlen worden niet ondersteund. Veelhoeken met een hoogte van 0 worden weer gegeven als een platte veelhoek. Bij het lezen wordt de hoogte van de eerste coördinaat in de buitenste ring toegevoegd als eigenschap height van de polygoon. Vervolgens wordt de hoogte van de eerste coördinaat gebruikt om de veelhoek op de kaart weer te geven. |
 | `fill`               | ja     | ja     |                                                                                                                            |
 | `Folder`             | ja     | ja     |                                                                                                                            |
-| `GroundOverlay`      | ja     | ja     | `color`wordt niet ondersteund                                                                                                   |
+| `GroundOverlay`      | ja     | ja     | `color` wordt niet ondersteund                                                                                                   |
 | `heading`            | gedeeltelijke | nee      | Geparseerd maar niet gerenderd door `SimpleDataLayer` . Schrijft alleen als de gegevens worden opgeslagen in de eigenschap van de vorm.                 |
 | `hotSpot`            | ja     | gedeeltelijke | Schrijft alleen als de gegevens worden opgeslagen in de eigenschap van de vorm. Eenheden worden alleen als ' pixels ' gegenereerd.                         |
 | `href`               | ja     | ja     |                                                                                                                            |
 | `Icon`               | gedeeltelijke | gedeeltelijke | Geparseerd maar niet gerenderd door `SimpleDataLayer` . Schrijft alleen de eigenschap icon van de vorm als deze een URI-gegevens bevat. Alleen `href` wordt ondersteund. |
-| `IconStyle`          | gedeeltelijke | gedeeltelijke | `icon`, `heading` , `colorMode` en `hotspots` waarden worden geparseerd, maar ze worden niet weer gegeven door`SimpleDataLayer`         |
+| `IconStyle`          | gedeeltelijke | gedeeltelijke | `icon`, `heading` , `colorMode` en `hotspots` waarden worden geparseerd, maar ze worden niet weer gegeven door `SimpleDataLayer`         |
 | `innerBoundaryIs`    | ja     | ja     |                                                                                                                            |
 | `kml`                | ja     | ja     |                                                                                                                            |
 | `LabelStyle`         | nee      | nee      |                                                                                                                            |
@@ -81,7 +81,7 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `gx:LatLonQuad`      | ja     | ja     |                                                                                                                            |
 | `LinearRing`         | ja     | ja     |                                                                                                                            |
 | `LineString`         | ja     | ja     |                                                                                                                            |
-| `LineStyle`          | ja     | ja     | `colorMode`wordt niet ondersteund.                                                                                         |
+| `LineStyle`          | ja     | ja     | `colorMode` wordt niet ondersteund.                                                                                         |
 | `Link`               | ja     | nee      | Alleen de `href` eigenschap wordt ondersteund voor netwerk koppelingen.                                                                   |
 | `MultiGeometry`      | gedeeltelijke | gedeeltelijke | Kan worden opgesplitst in afzonderlijke functies wanneer ze worden gelezen.                                                                     |
 | `name`               | ja     | ja     |                                                                                                                            |
@@ -92,14 +92,14 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `outerBoundaryIs`    | ja     | ja     |                                                                                                                            |
 | `outline`            | ja     | ja     |                                                                                                                            |
 | `overlayXY`          | nee      | nee      |                                                                                                                            |
-| `Pair`               | gedeeltelijke | nee      | Alleen de `normal` stijl in een `StyleMap` wordt ondersteund. `highlight`wordt niet ondersteund.                                   |
+| `Pair`               | gedeeltelijke | nee      | Alleen de `normal` stijl in een `StyleMap` wordt ondersteund. `highlight` wordt niet ondersteund.                                   |
 | `phoneNumber`        | ja     | ja     |                                                                                                                            |
 | `PhotoOverlay`       | nee      | nee      |                                                                                                                            |
 | `Placemark`          | ja     | ja     |                                                                                                                            |
 | `Point`              | ja     | ja     |                                                                                                                            |
 | `Polygon`            | ja     | ja     |                                                                                                                            |
 | `PolyStyle`          | ja     | ja     |                                                                                                                            |
-| `Region`             | gedeeltelijke | gedeeltelijke | `LatLongBox`wordt ondersteund op document niveau.                                                                      |
+| `Region`             | gedeeltelijke | gedeeltelijke | `LatLongBox` wordt ondersteund op document niveau.                                                                      |
 | `rotation`           | nee      | nee      |                                                                                                                            |
 | `rotationXY`         | nee      | nee      |                                                                                                                            |
 | `scale`              | nee      | nee      |                                                                                                                            |
@@ -111,7 +111,7 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `SimpleData`         | ja     | ja     |                                                                                                                            |
 | `SimpleField`        | ja     | ja     |                                                                                                                            |
 | `size`               | nee      | nee      |                                                                                                                            |
-| `Snippet`            | gedeeltelijke | gedeeltelijke | `maxLines`het kenmerk wordt genegeerd.                                                                                  |
+| `Snippet`            | gedeeltelijke | gedeeltelijke | `maxLines` het kenmerk wordt genegeerd.                                                                                  |
 | `south`              | ja     | ja     |                                                                                                                            |
 | `Style`              | ja     | ja     |                                                                                                                            |
 | `StyleMap`           | gedeeltelijke | nee      | Alleen de stijl standaard in een `StyleMap` wordt ondersteund.                                                                        |
@@ -225,12 +225,12 @@ De ruimtelijke IO-module ondersteunt de volgende GML-elementen.
 | `gml:LineString`        | ja  | ja   |                                                                                        |
 | `gml:lineStringMember`  | ja  | ja   |                                                                                        |
 | `gml:lineStringMembers` | ja  | nee    |                                                                                        |
-| `gml:MultiCurve`        | ja  | nee    | Alleen leden worden gelezen `gml:LineString` . Geschreven als`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | ja  | nee    | Alleen leden worden gelezen `gml:LineString` . Geschreven als `gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | gedeeltelijke  | gedeeltelijke   | Alleen lezen als een FeatureCollection.                                              |
 | `gml:MultiLineString`   | ja  | ja   |                                                                                        |
 | `gml:MultiPoint`        | ja  | ja   |                                                                                        |
 | `gml:MultiPolygon`      | ja  | ja   |                                                                                        |
-| `gml:MultiSurface`      | ja  | nee    | Alleen leden worden gelezen `gml:Polygon` . Geschreven als`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | ja  | nee    | Alleen leden worden gelezen `gml:Polygon` . Geschreven als `gml.MultiPolygon`                        |
 | `gml:name`              | ja  | ja   |                                                                                        |
 | `gml:outerBoundaryIs`   | ja  | nee    | Geschreven met `gml.exterior` .                                                          |
 | `gml:Point`             | ja  | ja   |                                                                                        |
@@ -246,7 +246,7 @@ De ruimtelijke IO-module ondersteunt de volgende GML-elementen.
 #### <a name="additional-notes"></a>aanvullende opmerkingen
 
 - Member-elementen worden doorzocht op een geometrie die kan worden overspoeld binnen onderliggende elementen. Deze zoek bewerking is nood zakelijk omdat veel XML-indelingen die van GML zijn, geen geometrie mag hebben als een direct onderliggend element van een lid.
-- `srsName`wordt gedeeltelijk ondersteund voor WGS84-coördinaten en de volgende codes:[EPSG: 4326](https://epsg.io/4326)) en Web Mercator ([EPSG: 3857](https://epsg.io/3857) of een van de alternatieve codes. Elk ander coördinaten systeem wordt geparseerd als WGS84 as-is.
+- `srsName` wordt gedeeltelijk ondersteund voor WGS84-coördinaten en de volgende codes:[EPSG: 4326](https://epsg.io/4326)) en Web Mercator ([EPSG: 3857](https://epsg.io/3857) of een van de alternatieve codes. Elk ander coördinaten systeem wordt geparseerd als WGS84 as-is.
 - Tenzij wordt opgegeven bij het lezen van een XML-feed, wordt de volg orde van de as bepaald op basis van hints in de XML-feed. Er wordt een voor keur gegeven voor de volg orde "breedte graad, lengte graad".
 - Tenzij er een aangepaste GML-naam ruimte is opgegeven voor de eigenschappen bij het schrijven naar een GML-bestand, worden er geen aanvullende eigenschappen meer toegevoegd.
 
@@ -391,7 +391,7 @@ De eerste rij met gegevens wordt gescand op teken reeksen met een bekende tekst 
 
 Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolom naam staan, geëxtraheerd en gebruikt om de cellen in die kolom te casten. Hier volgt een voor beeld van een kolom naam die een type waarde heeft: ' columnName (typeName) '. De volgende niet-hoofdletter gevoelige type namen worden ondersteund:
 
-#### <a name="numbers"></a>Getallen
+#### <a name="numbers"></a>Cijfers
 
 - EDM. int64
 - int
@@ -410,7 +410,7 @@ Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolo
 #### <a name="dates"></a>Datums
 
 - EDM. datetime
-- date
+- datum
 - datum/tijd
 
 #### <a name="geography"></a>Geografie
@@ -431,5 +431,4 @@ Als er geen type gegevens kunnen worden geëxtraheerd uit de header en de optie 
 
 Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
 
-> [!div class="nextstepaction"]
-> [Ruimtelijke gegevens lezen en schrijven](spatial-io-read-write-spatial-data.md)
+[Ruimtelijke gegevens lezen en schrijven](spatial-io-read-write-spatial-data.md)

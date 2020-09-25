@@ -1,14 +1,14 @@
 ---
 title: Hybride infra structuur op schaal beheren met Azure Arc
 description: Meer informatie over het effectief beheren van de computers en Kubernetes-clusters van uw klanten buiten Azure.
-ms.date: 09/15/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ffbe9019398896c594b7cb0e0424d2b5f4dc37a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336612"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Hybride infra structuur op schaal beheren met Azure Arc
 
@@ -16,19 +16,16 @@ Als service provider hebt u mogelijk meerdere tenants voor klanten in [Azure Lig
 
 [Azure Arc](../../azure-arc/overview.md) helpt bij het vereenvoudigen van complexe en gedistribueerde omgevingen over on-premises, Edge en multicloud, waardoor Azure-Services overal kunnen worden geïmplementeerd en Azure-beheer kan worden uitgebreid naar elke infra structuur.
 
-Met [Azure Arc servers (preview)](../../azure-arc/servers/overview.md)kunnen klanten alle Windows-en Linux-machines beheren die buiten Azure worden gehost op hun bedrijfs netwerk, op dezelfde manier als waarop ze systeem eigen virtuele machines van Azure beheren. Door een hybride computer aan Azure te koppelen, wordt deze verbonden en wordt deze behandeld als een resource in Azure. Service providers kunnen vervolgens deze niet-Azure-machines beheren samen met de Azure-resources van hun klanten.
+Met [Azure Arc-servers](../../azure-arc/servers/overview.md)kunnen klanten alle Windows-en Linux-machines beheren die buiten Azure worden gehost op hun bedrijfs netwerk, op dezelfde manier als waarop ze systeem eigen virtuele machines van Azure beheren. Door een hybride computer aan Azure te koppelen, wordt deze verbonden en wordt deze behandeld als een resource in Azure. Service providers kunnen vervolgens deze niet-Azure-machines beheren samen met de Azure-resources van hun klanten.
 
 Met [Azure Arc enabled Kubernetes (preview)](../../azure-arc/kubernetes/overview.md) kunnen klanten Kubernetes-clusters binnen of buiten Azure aansluiten en configureren. Wanneer een Kubernetes-cluster is gekoppeld aan Azure-Arc, wordt het weer gegeven in de Azure Portal, met een Azure Resource Manager-ID en een beheerde identiteit. Clusters zijn gekoppeld aan standaardabonnementen in Azure, bevinden zich in een resourcegroep, en kunnen labels ontvangen zoals elke andere Azure-resource.
 
-In dit onderwerp vindt u een overzicht van hoe service providers Azure Arc-servers (preview) en Kubernetes (preview) voor Azure Arc kunnen gebruiken op een schaal bare manier om de hybride omgeving van hun klanten te beheren, met zicht baarheid in alle beheerde tenants van de klant.
+In dit onderwerp vindt u een overzicht van hoe service providers Azure Arc ingeschakelde servers en Kubernetes (preview) van Azure Arc kunnen gebruiken op een schaal bare manier om de hybride omgeving van hun klanten te beheren, met zicht baarheid van alle beheerde tenants van klanten.
 
 > [!TIP]
 > Hoewel we in dit onderwerp naar service providers en klanten verwijzen, is deze richt lijn ook van toepassing op [ondernemingen die Azure Lighthouse gebruiken om meerdere tenants te beheren](../concepts/enterprise.md).
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers-preview"></a>Hybride servers op schaal beheren met Azure Arc-servers (preview-versie)
-
-> [!NOTE]
-> Servers met Azure-Arc zijn momenteel beschikbaar als preview-versie. Het is op dit moment niet aanbevolen om dit te doen voor productie werkbelastingen.
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Hybride servers op schaal beheren met servers die geschikt zijn voor Azure-Arc
 
 Als service provider kunt u on-premises Windows Server-of Linux-computers buiten Azure beheren die uw klanten hebben verbonden met hun abonnement met behulp van de [Azure Connected machine agent](../../azure-arc/servers/agent-overview.md).
 

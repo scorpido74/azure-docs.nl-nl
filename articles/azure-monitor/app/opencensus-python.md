@@ -1,18 +1,16 @@
 ---
-title: Python-toepassingen bewaken met Azure Monitor (preview) | Microsoft Docs
+title: Python-toepassingen bewaken met Azure Monitor | Microsoft Docs
 description: Biedt instructies om opentellingen python te bekabelen met Azure Monitor
 ms.topic: conceptual
-author: lzchen
-ms.author: lechen
-ms.date: 10/11/2019
+ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323262"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -31,8 +29,6 @@ Installeer de Azure Monitor Exporters van opentellingen:
 ```console
 python -m pip install opencensus-ext-azure
 ```
-
-Zie [pakket met Opentellingen](./nuget.md#common-packages-for-python-using-opencensus)voor een volledige lijst met pakketten en integraties.
 
 > [!NOTE]
 > De `python -m pip install opencensus-ext-azure` opdracht gaat ervan uit dat u een `PATH` omgevings variabele hebt ingesteld voor uw python-installatie. Als u deze variabele niet hebt geconfigureerd, moet u het volledige mappad opgeven waar uw python-uitvoerbaar bestand zich bevindt. Het resultaat is een opdracht die er als volgt uitziet: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .

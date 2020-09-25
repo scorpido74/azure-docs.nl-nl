@@ -3,13 +3,13 @@ title: Door API server geautoriseerde IP-bereiken in azure Kubernetes service (A
 description: Meer informatie over het beveiligen van uw cluster met behulp van een IP-adres bereik voor toegang tot de API-server in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/21/2020
+ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006890"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299660"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -17,18 +17,21 @@ In Kubernetes ontvangt de API-server aanvragen voor het uitvoeren van acties in 
 
 Dit artikel laat u zien hoe u met de API-server geautoriseerde IP-adresbereiken kunt beperken welke IP-adressen en CIDRs het beheer vlak kunnen hebben.
 
-> [!IMPORTANT]
-> Op clusters die zijn gemaakt na de door de API server geautoriseerde IP-adresbereiken in oktober 2019, worden door API-server geautoriseerde IP-adresbereiken alleen ondersteund voor de *standaard* SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de door de API server geautoriseerde IP-adresbereiken blijven werken, maar kunnen niet worden gemigreerd naar een *standaard* -SKU Load Balancer. Deze bestaande clusters blijven werken als hun Kubernetes-versie of besturings vlak wordt geüpgraded. Geautoriseerde IP-adresbereiken van de API-server worden niet ondersteund voor persoonlijke clusters.
-
 ## <a name="before-you-begin"></a>Voordat u begint
 
 In dit artikel wordt beschreven hoe u een AKS-cluster maakt met behulp van de Azure CLI.
 
 U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
+### <a name="limitations"></a>Beperkingen
+
+De functie voor door de API-server geautoriseerde IP-bereiken heeft de volgende beperkingen:
+- Op clusters die zijn gemaakt na de door de API server geautoriseerde IP-adresbereiken in oktober 2019, worden door API-server geautoriseerde IP-adresbereiken alleen ondersteund voor de *standaard* SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de door de API server geautoriseerde IP-adresbereiken blijven werken, maar kunnen niet worden gemigreerd naar een *standaard* -SKU Load Balancer. Deze bestaande clusters blijven werken als hun Kubernetes-versie of besturings vlak wordt geüpgraded. Geautoriseerde IP-adresbereiken van de API-server worden niet ondersteund voor persoonlijke clusters.
+- Deze functie is niet compatibel met clusters die gebruikmaken van de [Preview-functie voor het gebruik van open bare IP per knooppunt groep](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)knoop punten.
+
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Overzicht van door de API server geautoriseerde IP-adresbereiken
 
-De Kubernetes API-server is hoe de onderliggende Kubernetes-Api's worden weer gegeven. Dit onderdeel biedt de interactie voor beheer hulpprogramma's, zoals `kubectl` of het Kubernetes-dash board. AKS biedt een cluster Master met één Tenant, met een speciale API-server. Standaard wordt aan de API-server een openbaar IP-adres toegewezen. u moet de toegang beheren via op rollen gebaseerd toegangs beheer (RBAC).
+De Kubernetes API-server is hoe de onderliggende Kubernetes-Api's worden weer gegeven. Dit onderdeel biedt de interactie voor beheer hulpprogramma's, zoals `kubectl` of het Kubernetes-dash board. AKS biedt een cluster beheer vlak met één Tenant, met een speciale API-server. Standaard wordt aan de API-server een openbaar IP-adres toegewezen. u moet de toegang beheren via op rollen gebaseerd toegangs beheer (RBAC).
 
 Als u de toegang tot de anderszins toegankelijke AKS Control vlak/API-server wilt beveiligen, kunt u geautoriseerde IP-bereiken inschakelen en gebruiken. Met deze geautoriseerde IP-bereiken zijn alleen gedefinieerde IP-adresbereiken toegestaan om te communiceren met de API-server. Een aanvraag naar de API-server vanaf een IP-adres dat geen deel uitmaakt van deze toegestane IP-bereiken, wordt geblokkeerd. Blijf RBAC gebruiken om gebruikers en de acties die ze aanvragen te autoriseren.
 
@@ -82,7 +85,7 @@ az aks create \
 
 In het bovenstaande voor beeld zijn alle IP-adressen die in de para meter zijn opgenomen, *`--load-balancer-outbound-ip-prefixes`* toegestaan in combi natie met de IP-adressen in de *`--api-server-authorized-ip-ranges`* para meter.
 
-U kunt ook de *`--load-balancer-outbound-ip-prefixes`* para meter opgeven om uitgaande Load Balancer IP-voor voegsels toe te staan.
+In plaats daarvan kunt u de *`--load-balancer-outbound-ip-prefixes`* para meter opgeven om uitgaande Load Balancer IP-voor voegsels toe te staan.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Alleen het uitgaande open bare IP-adres van de standaard-SKU toestaan load balancer
 
