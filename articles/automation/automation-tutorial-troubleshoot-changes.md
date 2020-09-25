@@ -7,12 +7,12 @@ keywords: wijziging, bijhouden, bijhouden van wijzigingen, inventaris, automatis
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185803"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530536"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Problemen met wijzigingen aan een virtuele machine van Azure oplossen
 
@@ -220,7 +220,7 @@ Het kan handig zijn om wijzigingen te bekijken in Azure Portal, maar het is nóg
 
 19. Voor **Regel maken** selecteert u **E-mailonderwerp** en vervolgens **Waarschuwingsregel maken**. De waarschuwing laat u weten wanneer een update-implementatie is voltooid en op welke machines deze update-implementatie is uitgevoerd. In de volgende afbeelding ziet u een e-mail die u zou kunnen ontvangen wanneer de W3SVC-service stopt.
 
-    ![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![Schermopname toont een e-mailmelding die wordt ontvangen wanneer de W 3 S V C-services worden gestopt.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: a154f75b496676f3c639a19f604d5d5727d43fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 36ca2bc8ba7812229c9c22cedd294085d5a63af7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521345"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Zelfstudie: Azure Active Directory-integratie met Ariba
 
@@ -43,59 +43,42 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Ariba ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
+* Zodra u Ariba hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens in uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
 ## <a name="adding-ariba-from-the-gallery"></a>Ariba toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van Ariba in Azure AD moet u Ariba uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Ariba toe te voegen vanuit de galerie:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ **Ariba** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Ariba** in het venster met resultaten en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
-
-    ![De knop Azure Active Directory](common/select-azuread.png)
-
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
-
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
-
-4. Typ **Ariba** in het zoekvak, selecteer **Ariba** in het deelvenster met resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
-
-     ![Ariba in de lijst met resultaten](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+## <a name="configure-and-test-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren en testen
 
 In dit gedeelte gaat u Azure AD-eenmalige aanmelding met Ariba configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
 Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Ariba tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met Ariba wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[FEenmalige aanmelding voor Ariba configureren](#configure-ariba-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding bij Ariba configureren](#configure-ariba-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Een testgebruiker maken in Ariba](#create-ariba-test-user)** : om in Ariba een tegenhanger van Britta Simon te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+6. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij Ariba te configureren:
+1. Ga in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Ariba** naar de sectie **Beheren**, en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
-1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de pagina voor integratie van toepassingen met **Ariba**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
@@ -110,73 +93,63 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij Ariba te confi
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `http://<subdomain>.procurement-2.ariba.com`
 
+    c. Voer bij **Antwoord-URL** een van de volgende URL-patronen in:
+
+    | Antwoord-URL|
+    |----------|
+    | `https://<subdomain>.ariba.com/CUSTOM_URL` |
+    | `https://<subdomain>.procurement-eu.ariba.com/CUSTOM_URL` |
+    | `https://<subdomain>.procurement-eu.ariba.com` |
+    | `https://<subdomain>.procurement-2.ariba.com` |
+    | `https://<subdomain>.procurement-2.ariba.com/CUSTOM_URL` |
+
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Neem contact op met het ondersteuningsteam van Ariba op **1-866-218-2155** om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Neem contact op met het ondersteuningsteam van Ariba op **1-866-218-2155** om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-### <a name="configure-ariba-single-sign-on"></a>Eenmalige aanmelding voor Ariba configureren
-
-Om eenmalige aanmelding voor uw toepassing te configureren, belt u het Ariba-ondersteuningsteam op **1-866-218-2155**. Zij zullen u verder helpen bij het verstrekken van het gedownloade **certificaatbestand (Base64)** .
-
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
-    Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Create**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer bovenaan het scherm **Nieuwe gebruiker**.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
+   1. Typ **B.Simon** in het veld **Naam**.  
+   1. Voer `<username>@<companydomain>.<extension>` in in het veld **Gebruikersnaam**. Bijvoorbeeld: `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Ariba.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Ariba.
 
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **Ariba**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Ariba** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-2. Typ en selecteer **Ariba** in de lijst met toepassingen.
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling Ariba in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+## <a name="configure-ariba-sso"></a>SSO voor Ariba configureren
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
-
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
-
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
-
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+Om eenmalige aanmelding voor uw toepassing te configureren, belt u het Ariba-ondersteuningsteam op **1-866-218-2155**. Zij zullen u verder helpen bij het verstrekken van het gedownloade **certificaatbestand (Base64)** .
 
 ### <a name="create-ariba-test-user"></a>Een testgebruiker maken in Ariba
 
 In dit gedeelte maakt u in Ariba een gebruiker met de naam Britta Simon. Werk samen met het ondersteuningsteam van Ariba op **1-866-218-2155** om de gebruikers in het Ariba-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 

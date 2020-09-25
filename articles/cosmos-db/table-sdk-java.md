@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB Table-API voor Java
-description: Meer informatie over de Azure Cosmos DB Table-API, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie.
+description: Meer informatie over de Azure Cosmos DB Table-API voor Java, waaronder release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
@@ -9,12 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308114"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261886"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table-API voor Java: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -52,6 +52,6 @@ Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevo
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
 

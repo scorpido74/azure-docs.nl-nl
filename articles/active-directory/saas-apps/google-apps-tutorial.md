@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017508"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Google Cloud (G Suite) Connector
 
@@ -72,9 +72,9 @@ Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
     Het e-mailkenmerk wordt automatisch ingevuld voor elke gebruiker met een geldige Exchange-licentie. Als e-mail niet is ingeschakeld voor een gebruiker, wordt dit foutbericht ontvangen omdat de toepassing dit kenmerk moet ophalen om toegang te kunnen verlenen.
 
-    U kunt met een beheerdersaccount naar portal.office.com gaan, in het beheercentrum klikken op Facturering > Abonnementen, uw Office 365-abonnement selecteren en vervolgens klikken op Toewijzen aan gebruikers. Selecteer de gebruikers van wie u het abonnement wilt controleren, en klik in het rechterdeelvenster op Licenties bewerken.
+    U kunt met een beheerdersaccount naar portal.office.com gaan, in het beheercentrum klikken op Facturering > Abonnementen, uw Microsoft 365-abonnement selecteren en vervolgens klikken op Toewijzen aan gebruikers. Selecteer de gebruikers van wie u het abonnement wilt controleren, en klik in het rechterdeelvenster op Licenties bewerken.
 
-    Nadat de O365-licentie is toegewezen, kan het enkele minuten duren voordat deze is toegepast. Hierna wordt het kenmerk user.mail automatisch ingevuld en is het probleem zeer waarschijnlijk opgelost.
+    Nadat de Microsoft 365-licentie is toegewezen, kan het enkele minuten duren voordat deze is toegepast. Hierna wordt het kenmerk user.mail automatisch ingevuld en is het probleem zeer waarschijnlijk opgelost.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -240,7 +240,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Testgebruiker voor Google Cloud (G Suite) Connector maken
 
-Het doel van deze sectie is het [maken van een gebruiker in Google Cloud (G Suite) Connector](https://support.google.com/a/answer/33310?hl=en) met de naam B.Simon. Nadat de gebruiker handmatig is gemaakt in Google Cloud (G Suite) Connector, kan de gebruiker zich nu aanmelden met haar aanmeldingsreferenties voor Office 365.
+Het doel van deze sectie is het [maken van een gebruiker in Google Cloud (G Suite) Connector](https://support.google.com/a/answer/33310?hl=en) met de naam B.Simon. Nadat de gebruiker handmatig is gemaakt in Google Cloud (G Suite) Connector, kan de gebruiker zich nu aanmelden met haar aanmeldingsreferenties voor Microsoft 365.
 
 Google Cloud (G Suite) Connector biedt ook ondersteuning voor automatische gebruikersinrichting. Als u het automatisch inrichten van gebruikers wilt configureren, moet u de [Google Cloud (G Suite) Connector eerst configureren voor automatische gebruikersinrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 

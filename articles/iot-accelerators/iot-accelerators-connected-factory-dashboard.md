@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261869"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Functies in het Connected Factory Solution Accelerator-dash board gebruiken
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 De Snelstartgids [een Cloud oplossing implementeren voor het beheren van mijn industriële IOT-apparaten](quickstart-connected-factory-deploy.md) Quick Start leert u hoe u door het dash board navigeert en reageert op waarschuwingen. In deze hand leiding worden enkele extra dashboard functies weer gegeven die u kunt gebruiken om uw industriële IoT-apparaten te bewaken en te beheren.
 

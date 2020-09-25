@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257126"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scenario: een web-app die web-Api's aanroept
 
@@ -24,12 +24,7 @@ Informatie over het bouwen van een web-app die gebruikers ondertekent bij het mi
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-In dit scenario wordt ervan uitgegaan dat u het volgende scenario al hebt door lopen:
-
-> [!div class="nextstepaction"]
-> [Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md)
+In dit scenario wordt ervan uitgegaan dat u het scenario al hebt voltooid [: Web-app die gebruikers aantekent](scenario-web-app-sign-user-overview.md).
 
 ## <a name="overview"></a>Overzicht
 
@@ -51,6 +46,10 @@ Voor de ontwikkeling van dit scenario zijn de volgende specifieke taken vereist:
 
 - Tijdens de registratie van de [toepassing](scenario-web-app-call-api-app-registration.md)moet u een antwoord-URI, geheim of certificaat opgeven dat wordt gedeeld met Azure AD. Als u uw app op verschillende locaties implementeert, geeft u voor elke locatie een antwoord-URI op.
 - De [configuratie](scenario-web-app-call-api-app-configuration.md) van de toepassing moet de client referenties opgeven die met Azure AD zijn gedeeld tijdens de registratie van de toepassing.
+
+## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

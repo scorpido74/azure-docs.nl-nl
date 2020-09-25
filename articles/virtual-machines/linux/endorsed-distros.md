@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279430"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 
@@ -37,7 +37,7 @@ De Azure Linux-agent is al vooraf geïnstalleerd op Azure Marketplace-installati
 | CentOS door Rogue Wave software |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [Lis downloaden](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: in kernel |Pakket: in [opslag plaats](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS is nu [eind tijd](https://coreos.com/os/eol/) vanaf 26 mei 2020. |Niet meer beschikbaar | | |
 | Debian door credativ |8.x, 9.x |In kernel |Pakket: in opslag plaats onder waagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
-|Flatcar container Linux door Kinvolk| Stable, Edge| | |
+|Flatcar container Linux door Kinvolk| Stabiel, bèta| In kernel | WA-Linux-agent is al geïnstalleerd in/usr/share/OEM/bin/waagent |
 | Oracle Linux door Oracle |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [Red Hat Enterprise Linux door Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enter prise door SUSE |SLES/SLES voor SAP 11. x, 12. x, 15. x <br/> [Levenscyclus van de open bare Cloud installatie kopie van SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |In kernel |Pakket<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |

@@ -11,37 +11,127 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b756d7df03bd3c06b703617dbf84a194d716f1e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257143"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
 
-Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. U kunt dit doen vanuit de controller van uw web-API.
+Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. Gewoonlijk roept u de downstream-Api's aan vanaf de controller of pagina's van uw web-API.
 
 ## <a name="controller-code"></a>Controller code
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+Wanneer u *micro soft. Identity. Web*gebruikt, hebt u drie gebruiks scenario's:
 
-Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
+- [Microsoft Graph aanroepen](#call-microsoft-graph)
+- [Een andere web-API aanroepen dan Microsoft Graph](#call-web-api-other-than-microsoft-graph)
+- [Een token hand matig ophalen](#acquire-a-token-manually)
+
+#### <a name="call-microsoft-graph"></a>Microsoft Graph aanroepen
+
+In dit scenario hebt u Startup.cs toegevoegd `.AddMicrosoftGraph()` zoals *Startup.cs* opgegeven in [code configuratie](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), en kunt u het in de-controller of de pagina-constructor rechtstreeks injecteren `GraphServiceClient` voor gebruik in de acties. In het volgende voor beeld wordt een pagina weer gegeven met de foto van de aangemelde gebruiker.
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(Scopes = new[] { "user.read" })]
+ public class IndexModel : PageModel
+ {
+     private readonly GraphServiceClient _graphServiceClient;
+
+     public IndexModel(GraphServiceClient graphServiceClient)
+     {
+         _graphServiceClient = graphServiceClient;
+     }
+
+     public async Task OnGet()
+     {
+         var user = await _graphServiceClient.Me.Request().GetAsync();
+         try
+         {
+             using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+             {
+                 byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+                 ViewData["photo"] = Convert.ToBase64String(photoByte);
+             }
+             ViewData["name"] = user.DisplayName;
+         }
+         catch (Exception)
+         {
+             ViewData["photo"] = null;
+         }
+     }
+ }
+```
+
+#### <a name="call-web-api-other-than-microsoft-graph"></a>Een andere web-API dan Microsoft Graph aanroepen
+
+In dit scenario hebt u Startup.cs toegevoegd `.AddDownstreamWebApi()` zoals *Startup.cs* opgegeven in [code configuratie](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), en kunt u rechtstreeks een `IDownstreamWebApi` service in uw controller of pagina-constructor injecteren en gebruiken in de volgende acties:
+
+```CSharp
+ [Authorize]
+ [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+ public class TodoListController : Controller
+ {
+     private IDownstreamWebApi _downstreamWebApi;
+     private const string ServiceName = "TodoList";
+
+     public TodoListController(IDownstreamWebApi downstreamWebApi)
+     {
+         _downstreamWebApi = downstreamWebApi;
+     }
+
+     public async Task<ActionResult> Details(int id)
+     {
+         var value = await _downstreamWebApi.CallWebApiForUserAsync(
+             ServiceName,
+             options =>
+             {
+                 options.RelativePath = $"me";
+             });
+         return View(value);
+     }
+```
+
+De- `CallWebApiForUserAsync` methode heeft ook sterk getypeerde generieke onderdrukkingen waarmee u direct een object kunt ontvangen. De volgende methode heeft bijvoorbeeld een exemplaar ontvangen `Todo` , een sterk getypeerde weer gave van de JSON die wordt geretourneerd door de Web-API.
+
+```CSharp
+ // GET: TodoList/Details/5
+ public async Task<ActionResult> Details(int id)
+ {
+     var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+         ServiceName,
+         null,
+         options =>
+         {
+             options.HttpMethod = HttpMethod.Get;
+             options.RelativePath = $"api/todolist/{id}";
+         });
+     return View(value);
+ }
+```
+
+#### <a name="acquire-a-token-manually"></a>Een token hand matig ophalen
+
+Als u hebt besloten om een token hand matig te verkrijgen met behulp van de `ITokenAcquisition` -service, moet u het token nu gebruiken. In dat geval wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
+
+ Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
 
 ```csharp
-private async Task CallTodoListService(string accessToken)
-{
+ private async Task CallTodoListService(string accessToken)
+ {
+  // After the token has been returned by Microsoft.Identity.Web, add it to the HTTP authorization header before making the call to access the todolist service.
+ _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
-// After the token has been returned by Microsoft Identity Web, add it to the HTTP authorization header before making the call to access the To Do list service.
-_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call the To Do list service.
-HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
-...
-}
-```
+ // Call the todolist service.
+ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
+ // ...
+ }
+ ```
 
 # <a name="java"></a>[Java](#tab/java)
 

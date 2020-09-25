@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4c87ee92a2bc30dc2923127241013601cf3f4419
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519838"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory bij Clever
 
@@ -40,6 +40,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Clever ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Zodra u Concur hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
@@ -56,7 +57,7 @@ Voor het configureren van de integratie van Clever in Azure AD, moet u Clever va
 1. Selecteer in het resultatenvenster **Clever** en voeg dan de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-clever"></a>Eenmalige aanmelding via Azure AD configureren en testen voor Clever
+## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Eenmalige aanmelding van Azure AD voor Cherwell configureren en testen
 
 Configureer en test eenmalige aanmelding via Azure AD bij Clever met behulp van een testgebruiker met de naam **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Clever.
 
@@ -83,10 +84,12 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://clever.com/in/<companyname>`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://clever.com/oauth/saml/metadata.xml`
+    b. Typ in het tekstvak **Id (Entiteits-id)** de volgende URL: `https://clever.com/oauth/saml/metadata.xml`
 
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://clever.com/<companyname>`
+    
     > [!NOTE]
-    > De waarde van de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [Clever-ondersteuningsteam](https://clever.com/about/contact/) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    >  Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en antwoord-URL. Neem contact op met het [Clever-ondersteuningsteam](https://clever.com/about/contact/) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
@@ -131,11 +134,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     ![Directe aanmelding](./media/clever-tutorial/ic798984.png "Directe aanmelding")
 
     > [!NOTE]
-    > Voordat u eenmalige aanmelding kunt testen, moet u contact opnemen met het [Clever-ondersteuningsteam](https://clever.com/about/contact/) om eenmalige aanmelding voor Office 365 in de back-end in te schakelen.
+    > Voordat u eenmalige aanmelding kunt testen, moet u contact opnemen met het [Clever-ondersteuningsteam](https://clever.com/about/contact/) om eenmalige aanmelding voor Microsoft 365 in de back-end in te schakelen.
 
 1. Voer op de pagina **Directe aanmelding** de volgende stappen uit:
  
-    ![Directe aanmelding](./media/clever-tutorial/ic798985.png "Directe aanmelding")
+    ![SSO-configuratie op de pagina voor instant aanmelding](./media/clever-tutorial/ic798985.png "Directe aanmelding")
 
     a. Typ de **aanmeldings-URL**.
 

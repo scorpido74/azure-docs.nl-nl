@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52e33177b5fc6c68f615b8eb7738e66b18a1763a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257062"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app die gebruikers aantekent
 
 Meer informatie over wat u nodig hebt om een web-app te bouwen die gebruikmaakt van het micro soft Identity-platform om gebruikers aan te melden.
-
-## <a name="prerequisites"></a>Vereisten
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -60,7 +56,7 @@ Als u met python ontwikkelt, voert u de volgende Snelstartgids uit:
 
 ## <a name="overview"></a>Overzicht
 
-U voegt verificatie toe aan uw web-app zodat gebruikers zich kunnen aanmelden. Door verificatie toe te voegen kan uw web-app toegang krijgen tot beperkte profiel gegevens om de gebruikers ervaring aan te passen. 
+U voegt verificatie toe aan uw web-app zodat gebruikers zich kunnen aanmelden. Door verificatie toe te voegen kan uw web-app toegang krijgen tot beperkte profiel gegevens om de gebruikers ervaring aan te passen.
 
 Web-apps verifiëren een gebruiker in een webbrowser. In dit scenario wordt de browser van de gebruiker door de web-app doorgestuurd om deze aan te melden bij Azure Active Directory (Azure AD). Azure AD retourneert een aanmeldings reactie via de browser van de gebruiker, die claims bevat over de gebruiker in een beveiligings token. Bij het aanmelden van gebruikers wordt gebruikgemaakt van het [Open-ID Connect-](./v2-protocols-oidc.md) standaard protocol, vereenvoudigd door het gebruik van middleware- [bibliotheken](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
@@ -69,13 +65,17 @@ Web-apps verifiëren een gebruiker in een webbrowser. In dit scenario wordt de b
 Als tweede fase kunt u ervoor zorgen dat uw toepassing namens de aangemelde gebruiker Web-Api's aanroept. Deze volgende fase is een ander scenario dat u vindt in web- [apps die web-api's aanroepen](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Het toevoegen van een aanmelding aan een web-app is het beveiligen van de web-app en het valideren van een gebruikers token. Dit zijn de **middleware** -bibliotheken. In het geval van .NET hebt u voor dit scenario nog geen micro soft Authentication Library (MSAL) nodig. Dit is het verkrijgen van een token voor het aanroepen van beveiligde Api's. Verificatie bibliotheken worden geïntroduceerd in het vervolg scenario, wanneer de web-app Web-Api's moet aanroepen.
+> Het toevoegen van een aanmelding aan een web-app is het beveiligen van de web-app en het valideren van een gebruikers token. Dit zijn de  **middleware** -bibliotheken. In het geval van .NET hebt u voor dit scenario nog geen micro soft Authentication Library (MSAL) nodig. Dit is het verkrijgen van een token voor het aanroepen van beveiligde Api's. Verificatie bibliotheken worden geïntroduceerd in het vervolg scenario, wanneer de web-app Web-Api's moet aanroepen.
 
 ## <a name="specifics"></a>Opsporingsgegevens
 
 - Tijdens de registratie van de toepassing moet u een of meer opgeven (als u uw app op verschillende locaties implementeert) antwoord-Uri's. In sommige gevallen (ASP.NET en ASP.NET Core) moet u het ID-token inschakelen. Ten slotte wilt u een afmeldings-URI instellen, zodat uw toepassing reageert op gebruikers die zich afmelden.
 - In de code voor uw toepassing moet u de instantie opgeven waarnaar uw web-app zich aanmeldt. Mogelijk wilt u de token validatie aanpassen (met name in partner scenario's).
 - Webtoepassingen ondersteunen elk account type. Zie [supported account types](v2-supported-account-types.md)(Engelstalig) voor meer informatie.
+
+## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

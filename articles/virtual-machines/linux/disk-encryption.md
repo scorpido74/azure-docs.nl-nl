@@ -2,18 +2,18 @@
 title: Versleuteling aan de server zijde van Azure Managed Disks-Azure CLI
 description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels, of u kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279753"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -44,6 +44,10 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 - Als deze functie is ingeschakeld voor uw schijf, kunt u deze niet uitschakelen.
     Als u dit wilt omzeilen, moet u [alle gegevens](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) naar een volledig andere beheerde schijf kopiëren die geen door de klant beheerde sleutels gebruikt.
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>Ondersteunde regio’s
+
+Door de klant beheerde sleutels zijn beschikbaar in alle regio's waarvoor beheerde schijven beschikbaar zijn.
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks niet overgedragen naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c1c882694f6ae3d8a3b217ed5e7e3d6050189135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257181"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-Api's aanroept: code configuratie
 
@@ -27,9 +27,18 @@ De code die u gebruikt om uw web-API te configureren, zodat downstream Web-Api's
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Micro soft. Identity. Web
+
+Micro soft raadt u aan het NuGet-pakket [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) te gebruiken bij het ontwikkelen van een ASP.net core beveiligde API die stroomafwaartse Web-api's aanroept. Zie de [beveiligde web-API: code configuratie | Micro soft. Identity. Web](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) voor een snelle presentatie van die bibliotheek in de context van een web-API.
+
 ## <a name="client-secrets-or-client-certificates"></a>Client geheimen of client certificaten
 
-Gezien dat uw web-API nu een stroomafwaartse Web-API aanroept, moet u een client geheim of client certificaat opgeven in de *appsettings.jsin* het bestand.
+Gezien dat uw web-API nu een stroomafwaartse Web-API aanroept, moet u een client geheim of client certificaat opgeven in de *appsettings.jsin* het bestand. U kunt ook een sectie toevoegen waarin het volgende wordt opgegeven:
+
+- De URL van de stroomafwaartse Web-API
+- De bereiken die vereist zijn voor het aanroepen van de API
+
+In het volgende voor beeld `GraphBeta` geeft de sectie deze instellingen op.
 
 ```JSON
 {
@@ -37,12 +46,16 @@ Gezien dat uw web-API nu een stroomafwaartse Web-API aanroept, moet u een client
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
@@ -54,7 +67,7 @@ In plaats van een client geheim kunt u een client certificaat opgeven. Het volge
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,8 +75,12 @@ In plaats van een client geheim kunt u een client certificaat opgeven. Het volge
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
@@ -71,28 +88,88 @@ Micro soft. Identity. Web biedt verschillende manieren om certificaten te beschr
 
 ## <a name="startupcs"></a>Startup.cs
 
-Gebruik micro soft. Identity. web als u wilt dat uw web-API downstream Web-Api's aanroept, voeg de `.EnableTokenAcquisitionToCallDownstreamApi()` regel na `.AddMicrosoftIdentityWebApi(Configuration)` en kies vervolgens een implementatie van de token cache, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs*:
+De Web-API moet een token aanschaffen voor de downstream API. U geeft deze op door de `.EnableTokenAcquisitionToCallDownstreamApi()` regel na te voegen `.AddMicrosoftIdentityWebApi(Configuration)` . Deze regel beschrijft de `ITokenAcquisition` service, die u kunt gebruiken in de acties van uw besturing/pagina. Zoals u echter in de volgende twee opsommings punten ziet, kunt u nog eenvoudiger werken. U moet ook een implementatie van de token cache kiezen, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-Net als bij Web apps, kunt u verschillende implementaties van de token-cache kiezen. Zie voor meer informatie [micro soft Identity Web wiki-token cache serialisatie](https://aka.ms/ms-id-web/token-cache-serialization) op github.
+Als u het token zelf niet zelf wilt verkrijgen, biedt *micro soft. Identity. Web* twee mechanismen voor het aanroepen van een stroomafwaartse Web-API vanuit een andere API. Welke optie u kiest, is afhankelijk van het feit of u Microsoft Graph of een andere API wilt aanroepen.
+
+### <a name="option-1-call-microsoft-graph"></a>Optie 1: oproep Microsoft Graph
+
+Als u Microsoft Graph wilt aanroepen, kunt u met micro soft. Identity. web rechtstreeks de `GraphServiceClient` (beschikbaar gemaakt door de Microsoft Graph SDK) in uw API-acties gebruiken. Microsoft Graph beschikbaar maken:
+
+1. Voeg het NuGet-pakket [micro soft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) toe aan uw project.
+1. Voeg toe `.AddMicrosoftGraph()` na `.EnableTokenAcquisitionToCallDownstreamApi()` in het *Startup.cs* -bestand. `.AddMicrosoftGraph()` heeft verschillende onderdrukkingen. Met behulp van de onderdrukking waarvoor een configuratie sectie als para meter wordt gebruikt, wordt de code:
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>Optie 2: een andere stroomafwaartse Web-API aanroepen dan Microsoft Graph
+
+Voor het aanroepen van een andere stroomafwaartse API dan Microsoft Graph, wordt door *micro soft. Identity. Web* geboden `.AddDownstreamWebApi()` , waarmee tokens worden aangevraagd en de stroomafwaartse Web-API aangeroepen.
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+Net als bij Web apps, kunt u verschillende implementaties van de token-cache kiezen. Zie [micro soft Identity Web-token cache serialisatie](https://aka.ms/ms-id-web/token-cache-serialization) op github voor meer informatie.
+
+In de volgende afbeelding ziet u de verschillende mogelijkheden van *micro soft. Identity. Web* en hun impact op het *Startup.cs* -bestand:
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Bij het maken van een web-API kunt u kiezen voor het aanroepen van een downstream API en implementaties van token-cache.":::
+
+> [!NOTE]
+> Als u de code voorbeelden hier volledig wilt begrijpen, moet u bekend zijn met [ASP.net core fundamentals](/aspnet/core/fundamentals), met name bij het [invoegen van afhankelijkheden](/aspnet/core/fundamentals/dependency-injection) en [Opties](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="java"></a>[Java](#tab/java)
 
