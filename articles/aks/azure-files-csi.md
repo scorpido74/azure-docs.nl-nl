@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299303"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Files-Stuur Programma's van de container Storage interface (CSI) gebruiken in azure Kubernetes service (AKS) (preview)
 
@@ -194,6 +194,88 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+
+## <a name="nfs-file-shares"></a>NFS-bestands shares
+[Azure files ondersteunt nu het protocol NFS v 4.1](../storage/files/storage-files-how-to-create-nfs-shares.md). NFS 4,1-ondersteuning voor Azure Files biedt u een volledig beheerd NFS-bestands systeem als een service die is gebouwd op een Maxi maal beschikbaar en zeer duurzaam gedistribueerd robuust opslag platform.
+
+ Deze optie is geoptimaliseerd voor wille keurige toegangs werkbelastingen met in-place gegevens updates en biedt volledige ondersteuning van het POSIX-bestands systeem. In deze sectie wordt beschreven hoe u NFS-shares gebruikt met het Azure file CSI-stuur programma in een AKS-cluster.
+
+Controleer de [beperkingen](../storage/files/storage-files-compare-protocols.md#limitations) en [Beschik baarheid van regio's](../storage/files/storage-files-compare-protocols.md#regional-availability) tijdens de preview-fase.
+
+### <a name="register-the-allownfsfileshares-preview-feature"></a>De `AllowNfsFileShares` Preview-functie registreren
+
+Als u een bestands share wilt maken die gebruikmaakt van NFS 4,1, moet u de `AllowNfsFileShares` functie vlag inschakelen voor uw abonnement.
+
+Registreer de `AllowNfsFileShares` functie vlag met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
+```
+
+Het duurt enkele minuten voordat de status is *geregistreerd*. Controleer de registratie status met behulp van de opdracht [AZ Feature List][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
+```
+
+Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. Storage* met behulp van de opdracht [AZ provider REGI ster][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Storage
+```
+
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Een opslag account maken voor de NFS-bestands share
+
+[Maak een `Premium_LRS` Azure Storage-account](../storage/files/storage-how-to-create-premium-fileshare.md) met de volgende configuraties ter ondersteuning van NFS-shares:
+- soort account: FileStorage
+- beveiligde overdracht vereist (alleen HTTPS-verkeer inschakelen): onwaar
+- het virtuele netwerk van uw agent knooppunten in firewalls en virtuele netwerken selecteren
+
+### <a name="create-nfs-file-share-storage-class"></a>Opslag klasse voor NFS-bestands share maken
+
+Sla een `nfs-sc.yaml` bestand met het onderstaande manifest op om de betreffende tijdelijke aanduidingen te bewerken.
+
+```yml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
+  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
+  protocol: nfs
+```
+
+Nadat u het bestand hebt bewerkt en opgeslagen, maakt u de opslag klasse met de opdracht [kubectl apply][kubectl-apply] :
+
+```console
+$ kubectl apply -f nfs-sc.yaml
+
+storageclass.storage.k8s.io/azurefile-csi created
+```
+
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Een implementatie met een bestands share met NFS-back-up maken
+U kunt een voor beeld [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) implementeren waarmee tijds tempels worden opgeslagen in een bestand `data.txt` door de volgende opdracht te implementeren met de opdracht [kubectl apply][kubectl-apply] :
+
+ ```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+
+statefulset.apps/statefulset-azurefile created
+```
+
+De inhoud van het volume valideren door het volgende uit te voeren:
+
+```console
+$ kubectl exec -it statefulset-azurefile-0 -- df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+...
+/dev/sda1                                                                                 29G   11G   19G  37% /etc/hosts
+accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
+...
+```
+
 ## <a name="windows-containers"></a>Windows-containers
 
 Het Azure Files CSI-stuur programma biedt ook ondersteuning voor Windows-knoop punten en-containers. Als u Windows-containers wilt gebruiken, volgt u de [zelf studie over Windows-containers](windows-container-cli.md) om een Windows-knooppunt groep toe te voegen.
@@ -203,7 +285,7 @@ Nadat u een Windows-knooppunt groep hebt, gebruikt u de ingebouwde opslag klasse
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
-statefulset.apps/busybox-azuredisk created
+statefulset.apps/busybox-azurefile created
 ```
 
 De inhoud van het volume valideren door het volgende uit te voeren:
@@ -248,10 +330,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

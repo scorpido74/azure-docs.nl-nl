@@ -1,17 +1,17 @@
 ---
 title: Uw eerste betrouw bare service maken in Java
-description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met stateless en stateful Services.
+description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met stateless en stateful Services in Java.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f74265c7b774e4b471c8621e99377a009f939ee1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250093"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Aan de slag met Reliable Services in Java
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Het platform roept deze methode aan wanneer een exemplaar van een service wordt 
 
 Deze indeling wordt beheerd door Service Fabric om ervoor te zorgen dat uw service Maxi maal beschikbaar is en op de juiste wijze is gebalanceerd.
 
-`runAsync()`moet synchroon niet worden geblokkeerd. Uw implementatie van runAsync moet een CompletableFuture retour neren zodat de runtime kan door gaan. Als uw werk belasting een langlopende taak moet implementeren die in de CompletableFuture moet worden uitgevoerd.
+`runAsync()` moet synchroon niet worden geblokkeerd. Uw implementatie van runAsync moet een CompletableFuture retour neren zodat de runtime kan door gaan. Als uw werk belasting een langlopende taak moet implementeren die in de CompletableFuture moet worden uitgevoerd.
 
 #### <a name="cancellation"></a>Opzegging
 Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht tot de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt ooien en `runAsync()` zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd. In het volgende voor beeld ziet u hoe u een annulerings gebeurtenis kunt afhandelen:
@@ -184,7 +184,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
+`RunAsync()` werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
 ```java

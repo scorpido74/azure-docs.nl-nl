@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272066"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Een SQL Server VM registreren in azure met de SQL-VM-resource provider (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Als u een Azure Marketplace-installatie kopie van SQL Server VM implementeert vi
 
 - **Vereenvoudigd licentie beheer**: registreren met de resource provider van de SQL-VM vereenvoudigt het beheer van SQL Server licenties en stelt u in staat om snel SQL Server vm's te identificeren met de Azure Hybrid Benefit die is ingeschakeld met behulp van de [Azure Portal](manage-sql-vm-portal.md), de Azure CLI of Power shell: 
 
-   # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
@@ -102,7 +102,7 @@ Als u uw SQL Server-VM wilt registreren bij de resource provider van de SQL-VM, 
 
 Registreer uw SQL VM-resource provider bij uw Azure-abonnement met behulp van Azure CLI of Power shell. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
@@ -128,7 +128,7 @@ Geef SQL Server licentie type op als betalen `PAYG` per gebruik () als u `AHUB` 
 
 Failover-cluster exemplaren en implementaties met meerdere exemplaren kunnen alleen worden geregistreerd bij de resource provider van de SQL-VM in de Lightweight-modus. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 Registreer een SQL Server-VM in de licht gewicht modus met de Azure CLI: 
 
@@ -179,7 +179,7 @@ Geef `AHUB` , `PAYG` , of `DR` als **sqlLicenseType**, en `SQL2008-WS2008` of `S
 Als u uw SQL Server 2008 of 2008 R2 wilt registreren op Windows Server 2008-exemplaar, gebruikt u het volgende Azure CLI-of Power shell-code fragment: 
 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 Registreer uw virtuele SQL Server 2008-machine in de modus niet-agent met de Azure CLI: 
 
@@ -254,7 +254,7 @@ De agent modus bijwerken naar Full:
 
 ### <a name="command-line"></a>Opdrachtregel
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 Voer het volgende Azure CLI-code fragment uit:
 
@@ -293,7 +293,7 @@ U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de 
 
 Controleer de huidige SQL Server VM-registratie status met behulp van Azure CLI of Power shell. `ProvisioningState` geeft aan `Succeeded` of de registratie is geslaagd. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 
   ```azurecli-interactive
@@ -321,7 +321,7 @@ Het ongedaan maken van de registratie van de virtuele SQL-machine bij de resourc
 
 Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machine bij de resource provider ongedaan te maken met behulp van de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Ga naar de SQL-VM-resource. 
   
    ![Resource van virtuele SQL-machines](./media/sql-vm-resource-provider-register/sql-vm-manage.png)
@@ -341,7 +341,7 @@ Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machin
 
 ### <a name="command-line"></a>Opdrachtregel
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Als u de registratie van uw SQL Server-VM van de resource provider met Azure CLI ongedaan wilt maken, gebruikt u de opdracht [AZ SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Hiermee wordt de SQL Server VM- *resource* verwijderd, maar wordt de virtuele machine niet verwijderd. 
 
 

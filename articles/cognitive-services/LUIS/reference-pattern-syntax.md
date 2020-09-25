@@ -1,15 +1,17 @@
 ---
 title: Naslag informatie over patroon syntaxis-LUIS
 description: Maak entiteiten voor het extra heren van belang rijke gegevens van gebruikers uitingen in apps van Language Understanding (LUIS). Geëxtraheerde gegevens worden gebruikt door de client toepassing.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322815"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
@@ -22,12 +24,12 @@ Entiteiten in patronen worden omgeven door accolades, `{}` . Patronen kunnen ent
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
-|Functie|Syntaxis|Niveau nesten|Voorbeeld|
+|Functie|Syntax|Niveau nesten|Voorbeeld|
 |--|--|--|--|
-|vennootschap| {}-accolades|2|Waar is formulier {entity-name}?|
+|vennootschap| {} -accolades|2|Waar is formulier {entity-name}?|
 |optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
 |shapes|()-haakjes|2|is (a \| b)|
-|of| \|-verticale streep (pipe)<br><br>Er is een limiet van 2 op de verticale balken (of) in één groep |-|Waar is formulier ({Form-name-Short} &#x7c; {Form-name-Long} &#x7c; {Form-Number})|
+|of| \| -verticale streep (pipe)<br><br>Er is een limiet van 2 op de verticale balken (of) in één groep |-|Waar is formulier ({Form-name-Short} &#x7c; {Form-name-Long} &#x7c; {Form-Number})|
 |begin en/of einde van utterance|^-caret|-|^ utterance starten<br>de utterance is voltooid.<br>^ strikte letterlijke overeenkomst van de volledige utterance met {Number} entiteit ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Syntaxis nesten in patronen
@@ -56,8 +58,8 @@ Een combi natie van **groepering** met **optionele** syntaxis heeft een limiet v
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|([(test1 &#x7c; Test2)] &#x7c; Test3)|
-|Nee|([([test1] &#x7c; Test2)] &#x7c; Test3)|
+|Yes|([(test1 &#x7c; Test2)] &#x7c; Test3)|
+|No|([([test1] &#x7c; Test2)] &#x7c; Test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limieten voor het nesten van groepen met de syntaxis
 
@@ -65,8 +67,8 @@ Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
-|Nee|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
+|No|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroon sjabloon
 Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?` .
@@ -126,7 +128,7 @@ Markeer optionele tekst in de utterance met de reguliere expressie vier Kante ha
 
 |Patroon met optionele tekst|Betekenis|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`en `from {person}` zijn optioneel|
+|`[find] email about {subject} [from {person}]`|`find` en `from {person}` zijn optioneel|
 |' Kan ik me helpen [?]|Het lees teken is optioneel|
 
 Lees tekens ( `?` , `!` , `.` ) moeten worden genegeerd en u moet ze negeren met de syntaxis van het vier Kante haakje in patronen.

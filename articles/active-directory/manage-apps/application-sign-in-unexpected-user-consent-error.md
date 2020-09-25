@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321943"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Er is een onverwachte fout opgetreden bij het uitvoeren van de toestemming voor een toepassing
 
@@ -77,6 +77,14 @@ Deze fouten treden allemaal op wanneer de toepassing een gebruiker probeert toes
     -   De toepassings machtigingen verlenen via de Azure Portal
 
     -   De toepassing toevoegen vanuit de Azure AD-toepassings galerie
+
+## <a name="risky-app-error-and-warning"></a>Fout met Risk ante app en waarschuwing
+* Deze app kan riskant zijn. Als u deze app vertrouwt, vraagt u uw beheerder om toegang te verlenen.
+* Deze app kan riskant zijn. Ga alleen door als u deze app vertrouwt.
+
+Beide berichten worden weer gegeven wanneer micro soft heeft vastgesteld dat de aanvraag voor toestemming mogelijk riskant is. Onder een aantal andere factoren kan dit gebeuren als een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) niet is toegevoegd aan de app-registratie. Het eerste bericht wordt weer gegeven voor eind gebruikers wanneer de [beheerder toestemming werk stroom](configure-admin-consent-workflow.md) is uitgeschakeld. Het tweede bericht wordt weer gegeven voor eind gebruikers wanneer de beheerder toestemming werk stroom is ingeschakeld en aan beheerders. 
+
+Eind gebruikers kunnen geen toestemming verlenen voor apps die zijn gedetecteerd als riskant. Beheerders zijn in staat om de app zeer zorgvuldig te evalueren en voorzichtig te gaan. Als de app verdacht lijkt te zijn bij verdere beoordeling, kan deze worden gerapporteerd aan micro soft vanuit het venster voor toestemming. 
 
 ## <a name="next-steps"></a>Volgende stappen 
 

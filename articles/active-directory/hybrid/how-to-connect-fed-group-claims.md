@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265466"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Groeps claims configureren voor toepassingen met Azure Active Directory
 
@@ -78,11 +78,11 @@ Als u groeps claims wilt configureren voor een SAML-toepassing in een galerie of
 
 Klik op **een groepclaim toevoegen**  
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![Scherm opname waarin de pagina ' gebruikers kenmerken & claims ' wordt weer gegeven met een groeps claim toevoegen geselecteerd.](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 Gebruik de keuze rondjes om te selecteren welke groepen in het token moeten worden opgenomen
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![Scherm opname van het venster ' groeps claims ' met ' beveiligings groepen ' geselecteerd.](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Selectie | Beschrijving |
 |----------|-------------|
@@ -93,15 +93,15 @@ Gebruik de keuze rondjes om te selecteren welke groepen in het token moeten word
 
 Als u bijvoorbeeld alle beveiligings groepen wilt genereren waarvan de gebruiker lid is, selecteert u beveiligings groepen
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![Scherm opname van het venster ' groeps claims ' met ' beveiligings groepen ' geselecteerd en de vervolg keuzelijst source attribute open.](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Als u groepen wilt verzenden met Active Directory kenmerken die zijn gesynchroniseerd vanuit Active Directory in plaats van met Azure AD Objectid's, selecteert u de gewenste indeling in de vervolg keuzelijst. Alleen groepen die zijn gesynchroniseerd vanuit Active Directory worden opgenomen in de claims.
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![Scherm afbeelding met de vervolg keuzelijst source attribute open.](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Als u alleen groepen wilt verzenden die aan de toepassing zijn toegewezen, selecteert u **groepen die zijn toegewezen aan de toepassing**
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![Scherm opname van het venster ' groepclaims ' met ' groepen die zijn toegewezen aan de toepassing ' geselecteerd.](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Groepen die zijn toegewezen aan de toepassing, worden opgenomen in het token.  Andere groepen waarvan de gebruiker lid is, worden wegge laten.  Met deze optie geneste groepen worden niet opgenomen en de gebruiker moet een direct lid zijn van de groep die is toegewezen aan de toepassing.
 
@@ -115,11 +115,11 @@ De manier waarop groeps claims worden verzonden, kunnen worden gewijzigd door de
 
 De naam van de groepclaim aanpassen: als deze is geselecteerd, kan een ander claim type worden opgegeven voor groepclaims.   Geef het claim type op in het veld naam en de optionele naam ruimte voor de claim in het veld naam ruimte.
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![Scherm afbeelding met de sectie ' Geavanceerde opties ' waarbij ' de naam van de groeps claim ' geselecteerd en ' naam ' en ' namespace ' worden opgegeven.](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Voor sommige toepassingen moet de gegevens van het groepslid maatschap worden weer gegeven in de claim van de rol. U kunt desgewenst de gebruikers groepen als rollen verzenden door het selectie vakje groepen een rol claimen verzenden in te scha kelen.
 
-![claim GEBRUIKERSINTERFACE](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![Scherm afbeelding met de sectie ' Geavanceerde opties ' waarbij ' de naam van de groeps claim aanpassen ' en ' groepen verzenden als roldefinities ' is geselecteerd.](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Als de optie voor het verzenden van groeps gegevens als rollen wordt gebruikt, worden alleen groepen weer gegeven in de rol claim.  Alle toepassings rollen waaraan de gebruiker is toegewezen, worden niet weer gegeven in de claim.

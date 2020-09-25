@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273004"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Arc enabled PostgreSQL grootschalige maken met behulp van Azure Data Studio
 
@@ -42,6 +42,19 @@ Password:
 Namespace: arc
 Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
 ```
+
+## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Voorlopige en tijdelijke stap voor alleen openshift-gebruikers
+
+Implementeer deze stap voordat u verdergaat met de volgende stap. Als u een PostgreSQL grootschalige-Server groep wilt implementeren op Red Hat open Shift in een ander project dan de standaard, moet u de volgende opdrachten uitvoeren op uw cluster om de beveiligings beperkingen bij te werken. Met deze opdracht worden de benodigde bevoegdheden verleend aan de service accounts die uw PostgreSQL grootschalige-Server groep zullen uitvoeren. De beveiligings context constraint (SCC) **_Arc-data-SCC_** is het account dat u hebt toegevoegd tijdens de implementatie van de Azure Arc-gegevens controller.
+
+```console
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
+```
+
+_**Server-group-name** is de naam van de Server groep die u tijdens de volgende stap gaat implementeren._
+   
+Raadpleeg voor meer informatie over SCCs in open Shift de documentatie van open [SHIFT](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
+U kunt nu de volgende stap implementeren.
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een Azure-PostgreSQL grootschalige-Server groep maken
 
@@ -80,6 +93,5 @@ Het maken van een paar minuten is voltooid.
 
 - [Uw Azure Database for PostgreSQL grootschalige-Server groep uitschalen](scale-out-postgresql-hyperscale-server-group.md)
 - [Opslag configuraties en Kubernetes opslag concepten](storage-configuration.md)
-- [Claims voor permanente volumes uitbreiden](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes-resource model](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

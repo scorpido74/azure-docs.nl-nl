@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b5571f24cc7acfd35cf2979318110ba2eecbb0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320537"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Gegevenswetenschapomgevingen instellen voor gebruik in Team Data Science Process
 In het proces van het team data Science worden diverse data Science-omgevingen gebruikt voor de opslag, verwerking en analyse van gegevens. Dit zijn onder andere Azure Blob Storage, verschillende typen Azure virtual machines-, HDInsight-clusters (Hadoop) en Azure Machine Learning-werk ruimten. De beslissing over welke omgeving moet worden gebruikt, is afhankelijk van het type en de hoeveelheid gegevens die moeten worden gemodelleerd en de doel bestemming voor die gegevens in de Cloud. 
@@ -28,7 +28,7 @@ In de volgende artikelen wordt beschreven hoe u de diverse data Science-omgeving
 
 * [Azure-opslag account](../../storage/common/storage-account-create.md)
 * [HDInsight-cluster (Hadoop)](customize-hadoop-cluster.md)
-* [Azure Machine Learning Studio (klassieke) werk ruimte](../studio/create-workspace.md)
+* [Azure Machine Learning Studio (klassieke) werk ruimte](../classic/create-workspace.md)
 
 **Micro soft data Science virtual machine (DSVM)** is ook beschikbaar als een installatie kopie van een virtuele machine van Azure (VM). Deze VM is vooraf geïnstalleerd en geconfigureerd met verschillende populaire hulpprogram ma's die vaak worden gebruikt voor gegevens analyse en machine learning. De DSVM is beschikbaar op zowel Windows als Linux. Zie [Introduction to the cloud data Science virtual machine voor Linux en Windows](../data-science-virtual-machine/overview.md)voor meer informatie.
 

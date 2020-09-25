@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321404"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de 
 
 In zowel serverloze als ingerichte Compute-data bases kunnen cache vermeldingen worden verwijderd als alle beschik bare geheugen wordt gebruikt.
 
-Houd er rekening mee dat wanneer het CPU-gebruik laag is, het actieve cache gebruik hoog kan blijven, afhankelijk van het gebruiks patroon en te voor komen dat geheugen wordt terugwinning.  Daarnaast kan er meer vertraging optreden nadat de gebruikers activiteit is gestopt voordat het geheugen wordt terugwinning als gevolg van periodieke achtergrond processen die reageren op eerdere gebruikers activiteit.  Delete-bewerkingen genereren bijvoorbeeld Ghost-records die zijn gemarkeerd voor verwijdering, maar die niet fysiek worden verwijderd totdat het Ghost Cleanup-proces wordt uitgevoerd, waardoor het lezen van gegevens pagina's in de cache kan omvatten.
+Houd er rekening mee dat wanneer het CPU-gebruik laag is, het actieve cache gebruik hoog kan blijven, afhankelijk van het gebruiks patroon en te voor komen dat geheugen wordt terugwinning.  Daarnaast kan er meer vertraging optreden nadat de gebruikers activiteit is gestopt voordat het geheugen wordt terugwinning als gevolg van periodieke achtergrond processen die reageren op eerdere gebruikers activiteit.  Verwijder bewerkingen en QDS opschonings taken genereren bijvoorbeeld Ghost-records die zijn gemarkeerd voor verwijdering, maar die niet fysiek worden verwijderd totdat het Ghost Cleanup-proces wordt uitgevoerd, waardoor het lezen van gegevens pagina's in de cache kan zijn vereist.
 
 #### <a name="cache-hydration"></a>Cache Hydration
 
@@ -133,7 +133,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Evaluatie van beveiligingsproblemen|Ad hoc-scans en periodieke scans als deze functie is ingeschakeld|

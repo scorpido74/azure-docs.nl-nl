@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321795"
 ---
 # <a name="add-a-simple-data-layer"></a>Een eenvoudige gegevenslaag toevoegen
 
@@ -114,7 +114,7 @@ Als een functie een `Point` of een is `MultiPoint` en de functie geen `image` ei
 
 Clusters worden ook weer gegeven met behulp van de laag bubble. De RADIUS van een cluster is standaard ingesteld op `16` . De kleur van het cluster is afhankelijk van het aantal punten in het cluster, zoals hieronder wordt beschreven:
 
-| aantal punten | Color    |
+| aantal punten | Kleur    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

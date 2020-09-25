@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273911"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336510"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het proces van de team data Science in actie: Azure HDInsight Hadoop clusters gebruiken
 In dit scenario gebruiken we het [team data Science process (TDSP)](overview.md) in een end-to-end-scenario. We gebruiken een [Azure HDInsight Hadoop-cluster](https://azure.microsoft.com/services/hdinsight/) om gegevens op te slaan, te verkennen en te onderbouwen vanuit de openbaar beschik bare NYC van de [taxi](https://www.andresmh.com/nyctaxitrips/) en om de gegevens voor te bereiden. Voor het afhandelen van binaire en multiklasse-classificatie en regressie taken, maken we modellen van de gegevens met Azure Machine Learning. 
@@ -89,7 +89,7 @@ U kunt een Azure-omgeving instellen voor geavanceerde analyses die in drie stapp
    
    * Vergeet niet om het opslag account dat u in stap 1 hebt gemaakt te koppelen aan uw HDInsight-cluster wanneer u het maakt. Dit opslag account heeft toegang tot gegevens die in het cluster zijn verwerkt.
    * Nadat u het cluster hebt gemaakt, schakelt u externe toegang in voor het hoofd knooppunt van het cluster. Ga naar het tabblad **configuratie** en selecteer **Extern inschakelen**. Met deze stap geeft u de gebruikers referenties op die worden gebruikt voor externe aanmelding.
-3. [Een Azure machine learning-werk ruimte maken](../studio/create-workspace.md): u kunt deze werk ruimte gebruiken om machine learning modellen te maken. Deze taak is gericht op het volt ooien van een initiële gegevens exploratie en een lagere steek proef, met behulp van het HDInsight-cluster.
+3. [Een Azure machine learning-werk ruimte maken](../classic/create-workspace.md): u kunt deze werk ruimte gebruiken om machine learning modellen te maken. Deze taak is gericht op het volt ooien van een initiële gegevens exploratie en een lagere steek proef, met behulp van het HDInsight-cluster.
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>De gegevens ophalen uit een open bare bron
 > [!NOTE]
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-De query resultaten worden geschreven naar negen Azure-blobs (**queryoutputdir/000000 \_ 0** to **queryoutputdir/000008 \_ 0**), onder de standaard container van het Hadoop-cluster.
+De query resultaten worden geschreven naar negen Azure-blobs (**queryoutputdir/000000 \_ 0** to  **queryoutputdir/000008 \_ 0**), onder de standaard container van het Hadoop-cluster.
 
 Als u de grootte van de afzonderlijke blobs wilt zien, voert u de volgende opdracht uit vanaf de Hive-prompt:
 
@@ -654,7 +654,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 ```
 
 > [!WARNING]
-> `copyToLocal`kan erg traag zijn voor grote bestanden en wordt niet aanbevolen voor gebruik met ze.  
+> `copyToLocal` kan erg traag zijn voor grote bestanden en wordt niet aanbevolen voor gebruik met ze.  
 > 
 > 
 
@@ -894,7 +894,7 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 
   b. Voor dit experiment gebruiken we een Verwar ring matrix om de Voorspellings keurigheden te bekijken, zoals hier wordt weer gegeven:
 
-  ![Verwar ring matrix](./media/hive-walkthrough/cxFmErM.png)
+  ![Verwarringsmatrix](./media/hive-walkthrough/cxFmErM.png)
 
   Hoewel de klasse keurigheden op de voorgangte klassen goed is, heeft het model geen goede taak van ' learning ' in de rarer-klassen.
 
@@ -915,16 +915,16 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
   Hier is de determinatie coëfficiënt 0,709, wat inhoudt dat ongeveer 71 procent van de afwijking wordt uitgelegd door de model coëfficiënten.
 
 > [!IMPORTANT]
-> Zie [Wat is er machine learning](../studio/what-is-machine-learning.md)voor meer informatie over machine learning en hoe u deze kunt openen en gebruiken. Daarnaast bevat de [Azure AI Gallery](https://gallery.cortanaintelligence.com/) een kleur omvang van experimenten en een uitgebreide inleiding tot de mogelijkheden van machine learning.
+> Zie [Wat is er machine learning](../classic/index.yml)voor meer informatie over machine learning en hoe u deze kunt openen en gebruiken. Daarnaast bevat de [Azure AI Gallery](https://gallery.cortanaintelligence.com/) een kleur omvang van experimenten en een uitgebreide inleiding tot de mogelijkheden van machine learning.
 > 
 > 
 
 ## <a name="license-information"></a>Licentie gegevens
 Dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door micro soft onder de MIT-licentie. Zie het **LICENSE.txt** -bestand in de map van de voorbeeld code op github voor meer informatie.
 
-## <a name="references"></a>Verwijzingen
-• [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
-• [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+## <a name="references"></a>Referenties
+•    [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
+•    [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC van de taxi en limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) van de Commissie
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
@@ -937,6 +937,3 @@ Dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door micro soft
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-

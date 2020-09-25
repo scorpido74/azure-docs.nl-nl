@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Global Reach configureren: CLI'
-description: Dit artikel helpt u bij het koppelen van ExpressRoute-circuits om een particulier netwerk te maken tussen uw on-premises netwerken en Global Reach in te scha kelen.
+description: Leer hoe u ExpressRoute-circuits kunt koppelen om een privé netwerk te maken tussen uw on-premises netwerken en Global Reach in te scha kelen met behulp van de Azure CLI.
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322492"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>ExpressRoute Global Reach configureren met behulp van de Azure CLI
 

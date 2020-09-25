@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297603"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 
@@ -35,7 +35,7 @@ De volgende functionaliteit is beschikbaar in de controle stroom:
 
 ## <a name="capabilities"></a>Functies
 
-De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 2 MB.
+De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is ongeveer 4 MB.
 
 >[!NOTE]
 >Als u de activiteit meta gegevens ophalen uitvoert op een zelf-hostende Integration runtime, worden de meest recente mogelijkheden ondersteund in versie 3,6 of hoger.
@@ -87,7 +87,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 | contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
 | structuur | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
-| reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening mee dat als `exists` is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan `exists: false` wordt geretourneerd in de uitvoer. |
+| reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Als `exists` is opgegeven in de lijst met velden ophalen van meta gegevens, mislukt de activiteit zelfs als het bestand, de map of de tabel niet bestaat. In plaats daarvan `exists: false` wordt geretourneerd in de uitvoer. |
 
 >[!TIP]
 >Als u wilt controleren of een bestand, map of tabel bestaat, geeft u `exists` in de velden lijst activiteit van meta gegevens ophalen op. U kunt vervolgens het `exists: true/false` resultaat controleren in de uitvoer van de activiteit. Als `exists` niet wordt opgegeven in de lijst met velden, mislukt de activiteit meta gegevens ophalen als het object niet is gevonden.

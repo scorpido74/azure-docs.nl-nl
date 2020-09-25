@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320792"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Beheer van Kubernetes-werk belasting op uw Azure Stack Edge Pro-apparaat
 
@@ -29,7 +29,7 @@ De twee algemene typen werk belastingen die u kunt implementeren op uw Azure Sta
 
     U kunt een Kubernetes-implementatie maken om een stateless toepassing in uw cluster te implementeren. 
 
-- **Stateful toepassingen** vereisen dat hun status wordt opgeslagen. Stateful toepassingen gebruiken permanente opslag, zoals permanente volumes, om gegevens op te slaan voor gebruik door de server of door andere gebruikers. Voor beelden van stateful toepassingen zijn data bases zoals MongoDB.
+- **Stateful toepassingen** vereisen dat hun status wordt opgeslagen. Stateful toepassingen gebruiken permanente opslag, zoals permanente volumes, om gegevens op te slaan voor gebruik door de server of door andere gebruikers. Voor beelden van stateful toepassingen zijn data bases zoals [Azure SQL Edge](../azure-sql-edge/overview.md) en MongoDb.
 
     U kunt een Kubernetes-implementatie maken om een stateful toepassing te implementeren. 
 

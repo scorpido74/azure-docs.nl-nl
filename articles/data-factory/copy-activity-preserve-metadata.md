@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324294"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Meta gegevens en Acl's behouden met Kopieer activiteit in Azure Data Factory
 
@@ -24,18 +24,18 @@ ms.locfileid: "82891758"
 
 Wanneer u Azure Data Factory Kopieer activiteit gebruikt om gegevens te kopiëren van bron naar sink, kunt u in de volgende scenario's ook de meta gegevens en Acl's behouden.
 
-## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>Meta gegevens voor Lake Migration behouden
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Meta gegevens voor Lake Migration behouden
 
-Wanneer u gegevens migreert van de ene data Lake naar een andere, met inbegrip van [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), kunt u ervoor kiezen om de meta gegevens van het bestand te behouden, samen met de gegevens.
+Wanneer u gegevens migreert van de ene data Lake naar een andere, met inbegrip van [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md)en [Azure File Storage](connector-azure-file-storage.md), kunt u ervoor kiezen om de meta gegevens van het bestand te behouden samen met de gegevens.
 
 De Kopieer activiteit biedt ondersteuning voor het behouden van de volgende kenmerken tijdens het kopiëren van de gegevens:
 
 - **Alle door de klant opgegeven meta gegevens** 
 - En de volgende **vijf ingebouwde systeem eigenschappen van het gegevens archief**: `contentType` , `contentLanguage` (behalve voor Amazon S3), `contentEncoding` , `contentDisposition` ,, `cacheControl` .
 
-**Verschillen in meta gegevens afhandelen:** Amazon S3 en Azure Storage staan verschillende sets tekens toe aan de sleutels van de door de klant opgegeven meta gegevens. Wanneer u ervoor kiest om meta gegevens te bewaren met behulp van Copy acivity, worden de ongeldige tekens automatisch vervangen door _.
+**Verschillen in meta gegevens afhandelen:** Amazon S3 en Azure Storage staan verschillende sets tekens toe aan de sleutels van de door de klant opgegeven meta gegevens. Wanneer u ervoor kiest om meta gegevens te bewaren met behulp van Kopieer activiteit, vervangt ADF automatisch de ongeldige tekens door ' _ '.
 
-Wanneer u bestanden kopieert als-afkomstig van Amazon S3/Azure data Lake Storage Gen2/Azure Blob naar Azure data Lake Storage Gen2/Azure Blob met binaire indeling, kunt u de optie **behouden** vinden op het tabblad instellingen van de **Kopieer activiteit**  >  **Settings** voor het ontwerpen van activiteiten of de pagina **instellingen** in gegevens kopiëren hulp programma.
+Wanneer u bestanden kopieert als-afkomstig van Amazon S3/Azure data Lake Storage Gen2/Azure Blob/Azure File Storage naar Azure data Lake Storage Gen2/Azure Blob/Azure File Storage met binaire indeling, kunt u de optie **behouden** vinden op het tabblad instellingen van de **Kopieer activiteit**  >  **Settings** voor het ontwerpen van activiteiten of de pagina **instellingen** in gegevens kopiëren hulp programma.
 
 ![De meta gegevens van de Kopieer activiteit behouden](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -80,7 +80,7 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
 ]
 ```
 
-## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>Acl's van Data Lake Storage Gen1/Gen2 naar Gen2 behouden
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a> Acl's van Data Lake Storage Gen1/Gen2 naar Gen2 behouden
 
 Wanneer u een upgrade uitvoert van Azure Data Lake Storage Gen1 naar Gen2 of gegevens kopieert tussen ADLS Gen2, kunt u ervoor kiezen om de POSIX Access Control Lists (Acl's) samen met gegevens bestanden te bewaren. Zie voor meer informatie over toegangs beheer [toegangs beheer in azure data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md) en [toegangs beheer in azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
@@ -149,5 +149,5 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
 
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Prestaties van kopieeractiviteit](copy-activity-performance.md)

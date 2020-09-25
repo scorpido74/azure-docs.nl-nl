@@ -10,16 +10,16 @@ ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7da9b83001d50c8e9a03188ed8dbf1245189bc30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83b29252038f88bf8b81299303442abd0cc36814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298657"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>Een SQL Server-Data Base migreren naar SQL Server op een virtuele machine van Azure
 
@@ -61,7 +61,7 @@ Als het niet mogelijk is om de bovenstaande methoden te gebruiken, migreert u de
 
 De volgende tabel bevat een overzicht van de primaire migratie methoden en komt aan de orde wanneer het gebruik van elke methode het meest geschikt is.
 
-| Methode | Versie van de bron database | Versie van de doel database | Beperking van de back-upgrootte van de bron database | Notities |
+| Methode | Versie van de bron database | Versie van de doel database | Beperking van de back-upgrootte van de bron database | Opmerkingen |
 | --- | --- | --- | --- | --- |
 | [Een on-premises back-up uitvoeren met compressie en het back-upbestand hand matig kopiëren naar de virtuele machine van Azure](#back-up-and-restore) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Deze techniek is eenvoudig en goed getest voor het verplaatsen van data bases op verschillende computers. |
 | [Maak een back-up naar de URL en herstel de virtuele Azure-machine vanuit de URL](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 of hoger | SQL Server 2012 SP1 CU2 of hoger | < 12,8 TB voor SQL Server 2016, anders < 1 TB | Deze methode is een andere manier om het back-upbestand naar de virtuele machine te verplaatsen met behulp van Azure Storage. |

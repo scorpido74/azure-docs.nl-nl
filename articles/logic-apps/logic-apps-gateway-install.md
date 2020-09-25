@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322509"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -114,7 +114,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
    Let op de optie om toe **te voegen aan een bestaand gateway cluster**, dat u selecteert wanneer u extra gateways voor [scenario's met hoge Beschik baarheid](#high-availability)installeert.
 
-1. Controleer de regio voor de gateway-Cloud service en [Azure service bus](https://azure.microsoft.com/services/service-bus/) die wordt gebruikt door de installatie van de gateway. Standaard is deze regio dezelfde locatie als de Azure AD-Tenant voor uw Azure-account.
+1. Controleer de regio voor de gateway-Cloud service en het [Azure service bus Messa ging-exemplaar](../service-bus-messaging/service-bus-messaging-overview.md) dat wordt gebruikt door de gateway-installatie. Standaard is deze regio dezelfde locatie als de Azure AD-Tenant voor uw Azure-account.
 
    ![Regio bevestigen voor de Gateway Service en service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 ## <a name="check-or-adjust-communication-settings"></a>Communicatie-instellingen controleren of aanpassen
 
-De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Raadpleeg de volgende onderwerpen voor meer informatie:
+De on-premises gegevens gateway is afhankelijk van [Azure Service Bus berichten](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus berichten. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Communicatie-instellingen voor de on-premises gegevensgateway aanpassen](/data-integration/gateway/service-gateway-communication)
 * [Proxyinstellingen configureren voor de on-premises gegevensgateway](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ Gebruikers in uw organisatie hebben toegang tot on-premises gegevens waarvoor ze
 
 De gateway helpt sneller en veiliger achter de schermen communicatie. Deze communicatie loopt tussen een gebruiker in de Cloud, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen de gebruiker, de gateway en uw on-premises gegevens bron.
 
-De gateway werkt met firewalls en maakt gebruik van alleen uitgaande verbindingen. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. De gateway doorstuurt gegevens van on-premises bronnen op versleutelde kanalen via [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md). Met deze service bus wordt een kanaal gemaakt tussen de gateway en de aanroepende service, maar worden er geen gegevens opgeslagen. Alle gegevens die via de gateway worden uitgewisseld, worden versleuteld.
+De gateway werkt met firewalls en maakt gebruik van alleen uitgaande verbindingen. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. De Gateway verzendt de gegevens van on-premises bronnen op versleutelde kanalen via [Azure Service Bus berichten](../service-bus-messaging/service-bus-messaging-overview.md). Met deze service bus wordt een kanaal gemaakt tussen de gateway en de aanroepende service, maar worden er geen gegevens opgeslagen. Alle gegevens die via de gateway worden uitgewisseld, worden versleuteld.
 
 ![Architectuur voor on-premises gegevens gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ In deze stappen wordt beschreven wat er gebeurt wanneer u communiceert met een-e
 
 1. De Cloud service maakt een query, samen met de versleutelde referenties voor de gegevens bron. De service verzendt vervolgens de query en referenties naar de gateway wachtrij voor verwerking.
 
-1. De gatewaycloudservice analyseert de query en pusht de aanvraag naar Azure Service Bus.
+1. De gateway-Cloud service analyseert de query en duwt de aanvraag naar Azure Service Bus berichten.
 
-1. Azure Service Bus verzendt de in behandeling zijnde aanvragen naar de gateway.
+1. Azure Service Bus berichten verzendt de in behandeling zijnde aanvragen naar de gateway.
 
 1. De gateway haalt de query op, ontsleutelt de aanmeldingsgegevens en maakt met deze aanmeldingsgegevens verbinding met een of meer gegevensbronnen.
 

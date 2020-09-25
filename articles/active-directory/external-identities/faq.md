@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274041"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
 
@@ -63,8 +63,8 @@ Tenzij aan een gebruiker de rol van beperkte beheerder is toegewezen, is voor B2
 
 Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor komen dat alle gasten en externe gebruikers toegang krijgen tot de Azure Portal. Wanneer u dit beleid configureert, moet u voorzichtig zijn om te voor komen dat de toegang tot leden en beheerders per ongeluk wordt geblokkeerd.
 
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) als een beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
-2. Selecteer **Azure Active Directory**In het Azure Portal. 
+1. Meld u als beveiligingsbeheerder of beheerder voor voorwaardelijke toegang aan bij [Azure Portal](https://portal.azure.com/).
+2. Selecteer in Azure Portal **Azure Active Directory**. 
 3. Selecteer onder **beheren**de optie **beveiliging**.
 4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
 5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
@@ -116,6 +116,9 @@ Als de partner een Azure AD-Tenant heeft die federatief is voor de on-premises v
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Ik dacht dat Azure AD B2B geen gmail.com-en outlook.com-e-mail adressen heeft geaccepteerd en dat B2C voor dit soort accounts werd gebruikt?
 We verwijderen de verschillen tussen B2B-en Business-to-consumer (B2C)-samen werking in termen van welke identiteiten worden ondersteund. De identiteit die wordt gebruikt, is niet een goede reden om te kiezen tussen het gebruik van B2B of het gebruik van B2C. Zie [B2B-samen werking en B2C vergelijken in azure Active Directory](compare-with-b2c.md)voor meer informatie over het kiezen van uw samenwerkings optie.
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Kan een Azure AD B2C lokaal account worden uitgenodigd voor een Azure AD-Tenant voor B2B-samen werking?
+Nee. Een Azure AD B2C lokale account kan alleen worden gebruikt om u aan te melden bij de Azure AD B2C-Tenant. Het account kan niet worden gebruikt om u aan te melden bij een Azure AD-Tenant. Het uitnodigen van een Azure AD B2C lokale account bij een Azure AD-Tenant voor B2B-samen werking wordt niet ondersteund.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welke toepassingen en services ondersteunen Azure B2B-gast gebruikers?
 Alle met Azure AD geïntegreerde toepassingen kunnen ondersteuning bieden voor Azure B2B-gast gebruikers, maar ze moeten een endpoint instellen als Tenant om gast gebruikers te verifiëren. Mogelijk moet u ook [de claims aanpassen](claims-mapping.md) in het SAML-token dat wordt uitgegeven wanneer een gast gebruiker zich verifieert bij de app. 

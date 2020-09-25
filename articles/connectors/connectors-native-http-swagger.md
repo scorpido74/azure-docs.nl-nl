@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271185"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
 
@@ -54,17 +54,17 @@ Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![URL voor Swagger-eind punt invoeren](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Scherm opname van de logica van de logische app met de trigger ' H T/m P + Swagger ' en de eigenschap ' Swagger endpoint U R L ' ingesteld op een U R L-waarde.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Wanneer de ontwerp functie de bewerkingen weergeeft die worden beschreven door het Swagger-bestand, selecteert u de bewerking die u wilt gebruiken.
 
-   ![Bewerkingen in het Swagger-bestand](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Scherm opname van de Logic app Designer met de trigger ' H T/m + Swagger ' en een lijst met Swagger-bewerkingen.](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Geef de waarden op voor de trigger parameters, die variëren op basis van de geselecteerde bewerking, die u wilt opnemen in de eindpunt aanroep. Stel het terugkeer patroon in voor de frequentie waarmee u wilt dat de trigger het eind punt aanroept.
 
    In dit voor beeld wordt de naam van de trigger gewijzigd in ' HTTP + Swagger trigger: Face-detect ' zodat de stap een meer beschrijvende naam heeft.
 
-   ![Bewerkingsdetails](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Scherm opname van de Logic app Designer met de trigger ' H T/m + Swagger ' die de bewerking ' face-detect ' weergeeft.](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
 
@@ -118,7 +118,7 @@ Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-besta
 
 U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet aan de beveiligings-en cross-Origin-vereisten door dat bestand te uploaden naar BLOB-container in een Azure-opslag account en CORS in te scha kelen voor dat opslag account. Voer de volgende stappen uit om Swagger-bestanden te maken, in te stellen en op te slaan in Azure Storage:
 
-1. [Maak een Azure-opslag account](../storage/common/storage-account-create.md).
+1. [Maak een Azure Storage-account](../storage/common/storage-account-create.md).
 
 1. Schakel nu CORS in voor de blob. Selecteer **CORS**in het menu van uw opslag account. Geef op het tabblad **BLOB service** deze waarden op en selecteer vervolgens **Opslaan**.
 

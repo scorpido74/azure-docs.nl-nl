@@ -3,13 +3,13 @@ title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323291"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
@@ -32,7 +32,7 @@ Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights resource instellen
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Een Application Insights resource instellen
 
 1. Meld u aan bij de [Azure-portal][portal].
 2. [Create an Application Insights resource](create-new-resource.md) (Een Application Insights-resource maken)
@@ -59,7 +59,7 @@ Neem de SKD op in de app zodat gegevens kunnen worden verzameld.
    ```javascript
    let appInsights = require('applicationinsights');
    ```
-4.  U kunt ook een iKey via de omgevings variabele opgeven `APPINSIGHTS_INSTRUMENTATIONKEY` , in plaats van deze hand matig door te geven aan `setup()` of `new appInsights.TelemetryClient()` . Met deze procedure kunt u iKeys buiten vastgelegde broncode houden en kunt u verschillende iKeys opgeven voor verschillende omgevingen. Hand matig aanroepen configureren `appInsights.setup('[your ikey]');` .
+4.  U kunt ook een iKey via de omgevings variabele opgeven `APPINSIGHTS_INSTRUMENTATIONKEY` , in plaats van deze hand matig door te geven aan  `setup()` of `new appInsights.TelemetryClient()` . Met deze procedure kunt u iKeys buiten vastgelegde broncode houden en kunt u verschillende iKeys opgeven voor verschillende omgevingen. Hand matig aanroepen configureren `appInsights.setup('[your ikey]');` .
 
     Zie de volgende secties voor extra configuratieopties.
 
@@ -67,7 +67,7 @@ Neem de SKD op in de app zodat gegevens kunnen worden verzameld.
 
 5. Automatisch gegevens verzamelen en verzenden door aan te roepen `appInsights.start();` .
 
-### <a name="monitor-your-app"></a><a name="monitor"></a>Uw app controleren
+### <a name="monitor-your-app"></a><a name="monitor"></a> Uw app controleren
 
 De SDK verzamelt automatisch telemetrie over de Node.js runtime en enkele algemene modules van derden. Gebruik de toepassing om een aantal van deze gegevens te genereren.
 
@@ -110,7 +110,7 @@ Eerdere versies van versie 0,22 en later worden gewijzigd. Deze wijzigingen zijn
 Over het algemeen kunt u migreren met het volgende:
 
 - Vervang verwijzingen naar `appInsights.client` with `appInsights.defaultClient` .
-- Verwijzingen `appInsights.getClient()` vervangen door`new appInsights.TelemetryClient()`
+- Verwijzingen `appInsights.getClient()` vervangen door `new appInsights.TelemetryClient()`
 - Vervang alle argumenten door client. track *-methoden met één object dat benoemde eigenschappen bevat als argumenten. Zie het ingebouwde type hint of [TelemetryTypes](https://github.com/Microsoft/ApplicationInsights-node.js/tree/develop/Declarations/Contracts/TelemetryTypes) van uw IDE voor het uitgezonderde object voor elk type telemetrie.
 
 Als u toegang hebt tot de SDK-configuratie functies zonder ze aan te koppelen `appInsights.setup()` , kunt u deze functies nu vinden `appInsights.Configurations` (bijvoorbeeld `appInsights.Configuration.setAutoCollectDependencies(true)` ). Bekijk de wijzigingen in de standaard configuratie in de volgende sectie.

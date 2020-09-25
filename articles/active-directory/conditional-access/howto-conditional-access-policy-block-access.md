@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265983"
 ---
 # <a name="conditional-access-block-access"></a>Voorwaardelijke toegang: toegang blok keren
 
@@ -38,7 +38,7 @@ Beleids regels voor voorwaardelijke toegang zijn krachtige hulp middelen. u word
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-De volgende stappen helpen u bij het maken van beleid voor voorwaardelijke toegang om de toegang tot alle apps, met uitzonde ring van [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) , te blok keren als gebruikers zich niet in een vertrouwd netwerk bevinden. Deze beleids regels worden in de [modus alleen rapport](howto-conditional-access-insights-reporting.md) gezet om te beginnen, zodat beheerders kunnen bepalen welke invloed ze hebben op bestaande gebruikers. Wanneer beheerders weten dat de beleids regels **van**toepassing zijn, kunnen ze overschakelen naar.
+De volgende stappen helpen u bij het maken van beleid voor voorwaardelijke toegang om de toegang tot alle apps, met uitzonde ring van [Office 365](concept-conditional-access-cloud-apps.md#office-365) , te blok keren als gebruikers zich niet in een vertrouwd netwerk bevinden. Deze beleids regels worden in de [modus alleen rapport](howto-conditional-access-insights-reporting.md) gezet om te beginnen, zodat beheerders kunnen bepalen welke invloed ze hebben op bestaande gebruikers. Wanneer beheerders weten dat de beleids regels **van**toepassing zijn, kunnen ze overschakelen naar.
 
 Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Microsoft 365-toepassingen als dat niet op een vertrouwde locatie is.
 
@@ -52,7 +52,7 @@ Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Micr
    1. Selecteer **Gereed**.
 1. Selecteer onder **Cloud-apps of acties**de volgende opties:
    1. Onder **insluiten**selecteert u **alle Cloud-apps**.
-   1. Onder **uitsluiten**selecteert u **Office 365 (preview)**, selecteert **u selecteren**en selecteert u **gereed**.
+   1. Onder **uitsluiten**selecteert u **Office 365**, selecteert **u selecteren**en selecteert u **gereed**.
 1. Onder **voor waarden**:
    1. Onder **voor waarden**  >  **locatie**.
       1. Stel **configureren** op **Ja** in
@@ -72,7 +72,7 @@ Hieronder wordt een tweede beleid gemaakt om multi-factor Authentication of een 
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Gereed**.
-1. Onder **Cloud-apps of acties**  >  **Include**, selecteert **u apps selecteren**, kiest u **Office 365 (preview)** en selecteert u **selecteren**en **gereed**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert **u apps selecteren**, kiest u **Office 365**en selecteert u **selecteren**en **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**.
    1. Selecteer **multi-factor Authentication vereisen** en **vereisen dat het apparaat moet worden gemarkeerd als compatibel** selectie **vakje**selecteren.
    1. Zorg ervoor dat **alle geselecteerde besturings elementen** zijn geselecteerd.

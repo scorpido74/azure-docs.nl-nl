@@ -3,12 +3,12 @@ title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334171"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -106,9 +106,15 @@ De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [vo
 
 ## <a name="compliance-details-for-guest-configuration"></a>Compliance-details voor gastconfiguratie
 
-Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er meerdere instellingen worden geëvalueerd in de virtuele machine en moet u Details per instelling weer geven. Als u bijvoorbeeld wilt controleren op een lijst met wachtwoord beleid en slechts een van de statussen _niet-compatibel_is, moet u weten welke specifieke wachtwoord beleidsregels niet voldoen aan de vereisten en waarom.
+Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er meerdere instellingen worden geëvalueerd in de virtuele machine en moet u Details per instelling bekijken. Als u bijvoorbeeld wilt controleren op een lijst met wachtwoord beleid en slechts een van de statussen _niet-compatibel_is, moet u weten welke specifieke wachtwoord beleidsregels niet voldoen aan de vereisten en waarom.
 
 Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine, maar u moet rapporteren waarom de virtuele machine _niet compatibel_is.
+
+## <a name="compliance-details-for-resource-provider-modes"></a>Compatibiliteits Details voor resource provider modi
+
+Voor toewijzingen met een [resource provider modus](../concepts/definition-structure.md#resource-manager-modes)selecteert u de _niet-compatibele_ resource om een diep gaande weer gave te openen. Op het **tabblad Compatibiliteit van onderdelen** is aanvullende informatie specifiek voor de resource provider modus in het toegewezen beleid met het _niet-compatibele_ **onderdeel** en de **onderdeel-id**.
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Scherm afbeelding van het tabblad Compatibiliteit van onderdelen en Details van naleving voor een toewijzing van de resource provider modus." border="false":::
 
 ### <a name="azure-portal"></a>Azure Portal
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320826"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-dash board gebruiken om uw Azure Stack Edge Pro GPU-apparaat te bewaken
 
@@ -114,9 +114,9 @@ U kunt ook filteren op een specifieke naam ruimte. In het volgende voor beeld ku
 
 ![CPU-en geheugen gebruik voor Azure Arc-implementaties weer geven](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-De Kubernetes Metrics-server biedt automatisch schalen van pijp lijnen die vergelijkbaar zijn met die van de [horizontale pod automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+De Kubernetes Metrics-server biedt automatisch schalen van pijp lijnen, zoals [horizontale pod-automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het oplossen van problemen met Kubernetes <!--insert link-->.
+Meer informatie over het [oplossen van problemen met apparaten](azure-stack-edge-gpu-troubleshoot.md).

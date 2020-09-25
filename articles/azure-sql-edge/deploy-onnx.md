@@ -1,5 +1,6 @@
 ---
 title: Voor spellingen implementeren en maken met ONNX
+titleSuffix: SQL machine learning
 description: Meer informatie over het trainen van een model, het converteren naar ONNX, het implementeren ervan naar Azure SQL Edge of Azure SQL Managed instance (preview), en vervolgens systeem eigen voor spel uitvoeren op gegevens met behulp van het geüploade ONNX-model.
 keywords: SQL-rand implementeren
 ms.prod: sql
@@ -8,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298902"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Voor spellingen implementeren en maken met een ONNX-model
 

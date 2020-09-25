@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334290"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-indeling in Azure Data Factory
 
@@ -85,7 +85,9 @@ Ondersteunde **XML-Lees instellingen** onder `formatSettings` :
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Het type formatSettings moet zijn ingesteld op **XmlReadSettings**. | Yes      |
 | validationMode | Hiermee wordt opgegeven of het XML-schema moet worden gevalideerd.<br>Toegestane waarden zijn **geen** (standaard instelling, geen validatie), **xsd** (valideren met XSD), **DTD** (valideren met DTD). | No |
+| naam ruimten | Hiermee wordt aangegeven of naam ruimte moet worden ingeschakeld bij het parseren van de XML-bestanden. Toegestane waarden zijn: **True** (standaard), **False**. | No |
 | namespacePrefixes | Naam ruimte-URI naar voorvoegsel toewijzing, die wordt gebruikt om velden te benoemen tijdens het parseren van het XML-bestand.<br/>Als een XML-bestand naam ruimte en naam ruimte is ingeschakeld, is de veld naam standaard hetzelfde als in het XML-document.<br>Als er een item is gedefinieerd voor de naam ruimte-URI in deze kaart, is de veld naam `prefix:fieldName` . | No |
+| detectDataType | Hiermee wordt aangegeven of integer-, double-en Boolean-gegevens typen moeten worden gedetecteerd. Toegestane waarden zijn: **True** (standaard), **False**.| No |
 | compressionProperties | Een groep eigenschappen voor het decomprimeren van gegevens voor een bepaalde compressie-codec. | No       |
 | preserveZipFileNameAsFolder<br>(*onder `compressionProperties` -> `type` als `ZipDeflateReadSettings` *)  | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur.<br>-Als deze eigenschap is ingesteld op **True (standaard)**, wordt in Data Factory ongecomprimeerde bestanden naar `<path specified in dataset>/<folder named as source zip file>/` .<br>-Als deze eigenschap is ingesteld op **Onwaar**, wordt door Data Factory ongecomprimeerde bestanden rechtstreeks naar te schrijven `<path specified in dataset>` . Zorg ervoor dat u geen dubbele bestands namen in verschillende zip-bron bestanden hebt om te voor komen dat u racet of onverwacht gedrag.  | No |
 | preserveCompressionFileNameAsFolder<br>(*onder `compressionProperties` -> `type` als `TarGZipReadSettings` *) | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **TarGzip** -compressie. Hiermee wordt aangegeven of de gecomprimeerde bestands naam van de bron moet worden behouden als mapstructuur tijdens het kopiëren.<br>-Als deze eigenschap is ingesteld op **True (standaard)**, schrijft Data Factory gedecomprimeerde bestanden naar `<path specified in dataset>/<folder named as source compressed file>/` . <br>-Als deze eigenschap is ingesteld op **Onwaar**, schrijft Data Factory de gedecomprimeerde bestanden rechtstreeks naar `<path specified in dataset>` . Zorg ervoor dat u geen dubbele bestands namen in verschillende bron bestanden hebt om te voor komen dat u racet of onverwacht gedrag. | No |
@@ -109,6 +111,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Validatie modus | Hiermee wordt opgegeven of het XML-schema moet worden gevalideerd. | No | `None` (standaard, geen validatie)<br>`xsd` (valideren met XSD)<br>`dtd` (valideren met DTD). | validationMode |
 | Naamruimten | Hiermee wordt aangegeven of naam ruimte moet worden ingeschakeld bij het parseren van de XML-bestanden. | No | `true` (standaard) of `false` | naam ruimten |
 | Naam ruimte voorvoegsel paren | Naam ruimte-URI naar voorvoegsel toewijzing, die wordt gebruikt om velden te benoemen tijdens het parseren van het XML-bestand.<br/>Als een XML-bestand naam ruimte en naam ruimte is ingeschakeld, is de veld naam standaard hetzelfde als in het XML-document.<br>Als er een item is gedefinieerd voor de naam ruimte-URI in deze kaart, is de veld naam `prefix:fieldName` . | No | Matrix met patroon`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
+| Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
 ### <a name="xml-source-script-example"></a>Voor beeld van XML-bron script
 

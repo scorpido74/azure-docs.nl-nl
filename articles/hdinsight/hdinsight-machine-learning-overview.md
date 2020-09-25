@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 6c7f50e4ba3803b5cb929b75f5ad1127f7f063d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3c050b414e322f08fd45a569a22cea2db591b99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75931671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302686"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
 
@@ -41,7 +41,7 @@ Azure Machine Learning voorziet in hulpprogram ma's om predictive analytics te m
 
 ![Overzicht van Microsoft Azure machine learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Maak functies voor gegevens in een HDInsight Hadoop-cluster met behulp van [Hive-query's](../machine-learning/team-data-science-process/create-features-hive.md). *Feature engineering* probeert de voorspellende kracht van leer algoritmen te verhogen door functies te maken op basis van onbewerkte gegevens die het leer proces vergemakkelijken. U kunt HiveQL-query's uitvoeren vanuit Azure Machine Learning Studio (klassiek) en toegang krijgen tot gegevens die in Hive zijn verwerkt en worden opgeslagen in Blob Storage met behulp van de [module gegevens importeren](../machine-learning/studio/import-data.md).
+Maak functies voor gegevens in een HDInsight Hadoop-cluster met behulp van [Hive-query's](../machine-learning/team-data-science-process/create-features-hive.md). *Feature engineering* probeert de voorspellende kracht van leer algoritmen te verhogen door functies te maken op basis van onbewerkte gegevens die het leer proces vergemakkelijken. U kunt HiveQL-query's uitvoeren vanuit Azure Machine Learning Studio (klassiek) en toegang krijgen tot gegevens die in Hive zijn verwerkt en worden opgeslagen in Blob Storage met behulp van de [module gegevens importeren](../machine-learning/classic/import-data.md).
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
@@ -49,7 +49,7 @@ Maak functies voor gegevens in een HDInsight Hadoop-cluster met behulp van [Hive
 
 Micro soft heeft de gratis, gebruiks vriendelijke, open-source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)ontwikkeld om haar eigen werk in de hand te zetten. Deze Toolkit wordt gebruikt door een groot aantal micro soft-producten, van bedrijven wereld wijd, met een nood zaak om diep gaande lessen op schaal te implementeren en door studenten die geïnteresseerd zijn in de nieuwste algoritmen en technieken.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 ### <a name="scenarios"></a>Scenario's
 

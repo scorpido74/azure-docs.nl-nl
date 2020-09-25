@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 900471675c0e77cc5d82641fead3f019a0fa90c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306120"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronisatie: een tweede keer uitvoeren van de installatie wizard
 De eerste keer dat u de Azure AD Connect-installatie wizard uitvoert, wordt u begeleid bij het configureren van de installatie. Als u de installatie wizard opnieuw uitvoert, biedt het opties voor onderhoud.
@@ -32,7 +32,7 @@ De eerste keer dat u de Azure AD Connect-installatie wizard uitvoert, wordt u be
 
 U kunt de installatie wizard vinden in het menu Start met de naam **Azure AD Connect**.
 
-![Het menu Start](./media/how-to-connect-installation-wizard/startmenu.png)
+![Startmenu](./media/how-to-connect-installation-wizard/startmenu.png)
 
 Wanneer u de installatie wizard start, ziet u een pagina met de volgende opties:
 
@@ -79,7 +79,7 @@ Wanneer u deze optie selecteert, worden alle mappen in uw configuratie weer gege
 Met deze optie kunt u de faserings modus op de server inschakelen en uitschakelen. Meer informatie over de faserings modus en hoe deze wordt gebruikt, vindt u in [bewerkingen](how-to-connect-sync-staging-server.md).
 
 De optie geeft aan of fase ring op dit moment is ingeschakeld of uitgeschakeld:  
-![Optie die ook de huidige status van de faserings modus weergeeft](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+![Scherm opname waarin de faserings modus wordt weer gegeven.](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
 Als u de status wilt wijzigen, selecteert u deze optie en schakelt u het selectie vakje in of uit.  
 ![Optie die ook de huidige status van de faserings modus weergeeft](./media/how-to-connect-installation-wizard/stagingmodeenable.png)

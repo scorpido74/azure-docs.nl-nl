@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336629"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -48,7 +48,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 
 [Azure-boog](../../azure-arc/index.yml):
 
-- Hybride servers op schaal beheren- [servers met Azure-Arc (preview)](../../azure-arc/servers/overview.md):
+- Hybride servers op schaal beheren- [servers met Azure-Arc-functionaliteit](../../azure-arc/servers/overview.md):
   - [Windows Server-of Linux-computers buiten Azure beheren die zijn verbonden](../../azure-arc/servers/onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
   - Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
   - Zorg ervoor dat dezelfde set beleids regels wordt toegepast op hybride omgevingen van klanten

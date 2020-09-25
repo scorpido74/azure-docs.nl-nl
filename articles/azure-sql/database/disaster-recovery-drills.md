@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f53a08a12c5afda8dbc3f25d9102f52b870ceea4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321659"
 ---
 # <a name="performing-disaster-recovery-drills"></a>Nood herstel analyse uitvoeren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ Als u de storing wilt simuleren, kunt u de naam van de bron database wijzigen. D
 
 Voer de analyse uit door de controle van de toepassings integriteit te controleren (inclusief verbindings reeksen, aanmeldingen, testen van basis functies of andere validaties van signoffs procedures voor de standaard toepassing).
 
-## <a name="failover-groups"></a>Failover-groepen
+## <a name="failover-groups"></a>Failovergroepen
 
 Voor een Data Base die wordt beveiligd met behulp van failover-groepen, omvat de analyse oefening een geplande failover naar de secundaire server. De geplande failover zorgt ervoor dat de primaire en secundaire data bases in de failover-groep synchroon blijven wanneer de rollen worden overgeschakeld. In tegens telling tot de niet-geplande failover resulteert deze bewerking niet in gegevens verlies, waardoor de analyse kan worden uitgevoerd in de productie omgeving.
 

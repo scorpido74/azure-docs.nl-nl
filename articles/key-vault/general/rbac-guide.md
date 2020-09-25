@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4f943b11830c19ebb69dd501827deb158cecadf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972266"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336748"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
 
@@ -45,6 +45,8 @@ Meer informatie over de richt lijnen voor Azure Key Vault beheer vindt u in:
 - [Azure Key Vault-service limieten](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Ingebouwde rollen van Azure voor Key Vault gegevenslaag bewerkingen (preview-versie)
+> [!NOTE]
+> `Key Vault Contributor` rol is voor beheer vlak bewerkingen voor het beheren van sleutel kluizen. Er is geen toegang tot sleutels, geheimen en certificaten toegestaan.
 
 | Ingebouwde rol | Beschrijving | Id |
 | --- | --- | --- |

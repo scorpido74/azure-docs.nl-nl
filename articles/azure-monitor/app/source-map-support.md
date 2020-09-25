@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335127"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Ondersteuning van bron toewijzing voor Java script-toepassingen
 
@@ -24,7 +24,7 @@ Bron kaarten kunnen worden gebruikt voor het unminify van aanroep stacks op de p
 
 Als u al een bestaand opslag account of BLOB-container hebt, kunt u deze stap overs Laan.
 
-1. [Een nieuw opslag account maken][create storage account]
+1. [Een nieuw opslagaccount maken][create storage account]
 2. [Maak een BLOB-container][create blob container] in uw opslag account. Stel het ' open bare toegangs niveau ' in om `Private` ervoor te zorgen dat uw bron kaarten niet openbaar toegankelijk zijn.
 
 > [!div class="mx-imgBorder"]
@@ -78,7 +78,7 @@ Alle gebruikers op de portal die deze functie gebruiken, moeten ten minste worde
 
 1. Controleer of de bijbehorende bron toewijzing is geüpload naar de juiste BLOB-container
 2. Controleer of het bron toewijzings bestand de naam heeft nadat het Java script-bestand is toegewezen aan, met een achtervoegsel `.map` .
-    - Zoekt bijvoorbeeld naar `/static/js/main.4e2ca5fa.chunk.js` de blob met de naam`main.4e2ca5fa.chunk.js.map`
+    - Zoekt bijvoorbeeld naar `/static/js/main.4e2ca5fa.chunk.js` de blob met de naam `main.4e2ca5fa.chunk.js.map`
 3. Controleer de console van uw browser om te zien of er fouten worden geregistreerd. Neem deze op in een ondersteunings ticket.
 
 ## <a name="next-steps"></a>Volgende stappen

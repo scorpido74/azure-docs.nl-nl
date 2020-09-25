@@ -4,19 +4,16 @@ description: In dit artikel vindt u informatie over selectieve back-ups en herst
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271372"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
 Azure Backup biedt ondersteuning voor het maken van een back-up van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing voor VM'S. Nu kunt u, met behulp van de functies voor het maken en herstellen van selectieve schijven, een back-up maken van een subset van de gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat alleen de schijven die zijn opgenomen in de back-upbewerking. Hierdoor kunt u tijdens de herstel bewerking een subset van schijven herstellen die zijn hersteld vanaf het opgegeven herstel punt. Dit is van toepassing op beide herstel bewerkingen van moment opnamen en de kluis.
-
->[!NOTE]
->Het maken van back-ups en herstellen van selectieve schijven voor virtuele Azure-machines is in alle regio's open bare preview.
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -38,7 +35,7 @@ Zorg ervoor dat u AZ CLI versie 2.0.80 of hoger gebruikt. U kunt de CLI-versie o
 az --version
 ```
 
-Meld u aan bij de abonnement-ID waarin de Recovery Services kluis en de virtuele machine zich bevindt:
+Meld u aan bij de abonnement-ID waar de Recovery Services kluis en de virtuele machine bestaan:
 
 ```azurecli
 az account set -s {subscriptionID}
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 Als de virtuele machine zich niet in dezelfde resource groep bevindt als de kluis, verwijst **ResourceGroup** naar de resource groep waar de kluis is gemaakt. Geef in plaats van de naam van de virtuele machine de VM-ID op zoals hieronder wordt aangegeven.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Beveiliging wijzigen voor al back-ups van Vm's met Azure CLI
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Schijven herstellen met Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Alleen besturingssysteem schijf herstellen met Azure CLI
@@ -289,11 +286,32 @@ De back-upfunctie voor selectieve schijven wordt niet ondersteund voor klassieke
 
 De herstel opties voor het maken van een **nieuwe virtuele machine** en **vervangen** , worden niet ondersteund voor de virtuele machine waarvoor selectieve schijven back-upfunctie is ingeschakeld.
 
+Azure VM Backup biedt momenteel geen ondersteuning voor virtuele machines met ultra schijven of gedeelde schijven die eraan zijn gekoppeld. In dergelijke gevallen kunt u geen back-up van selectieve schijven gebruiken om de schijf op te nemen en een back-up te maken van de virtuele machine.
+
 ## <a name="billing"></a>Billing
 
 Back-ups van virtuele Azure-machines volgen het bestaande prijs model, [in detail beschreven](https://azure.microsoft.com/pricing/details/backup/).
 
-De kosten voor het **beveiligde exemplaar (PI)** worden alleen berekend voor de besturingssysteem schijf als u een back-up wilt maken met behulp van de optie **alleen de besturingssysteem schijf** .  Als u back-up configureert en ten minste één gegevens schijf selecteert, worden de PI-kosten berekend voor alle schijven die aan de virtuele machine zijn gekoppeld. De **kosten voor back-upopslag** worden berekend op basis van alleen de schijven die zijn opgenomen, en u kunt besparen op de opslag kosten. De **kosten voor moment opnamen** worden altijd berekend voor alle schijven in de virtuele machine (zowel de opgenomen als de uitgesloten schijven).  
+De kosten voor het **beveiligde exemplaar (PI)** worden alleen berekend voor de besturingssysteem schijf als u een back-up wilt maken met behulp van de optie **alleen de besturingssysteem schijf** .  Als u back-up configureert en ten minste één gegevens schijf selecteert, worden de PI-kosten berekend voor alle schijven die aan de virtuele machine zijn gekoppeld. De **kosten voor back-upopslag** worden berekend op basis van alleen de schijven die zijn opgenomen, en u kunt besparen op de opslag kosten. De **kosten voor moment opnamen** worden altijd berekend voor alle schijven in de virtuele machine (zowel de opgenomen als de uitgesloten schijven).
+
+Als u de functie Cross Region Restore (CRR) hebt gekozen, geldt de [CRR-prijs](https://azure.microsoft.com/pricing/details/backup/) voor de kosten voor back-upopslag na de uitsluiting van de schijf.
+
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Hoe worden de kosten van beveiligde exemplaren (PI) berekend voor alleen back-ups van de besturingssysteem schijf in Windows en Linux?
+
+De kosten voor PI worden berekend op basis van de werkelijke (gebruikte) grootte van de virtuele machine.
+
+- Voor Windows: gebruikte ruimte berekening is gebaseerd op het station waarop het besturings systeem wordt opgeslagen (meestal C:).
+- Voor Linux: gebruikte ruimte berekening is gebaseerd op het apparaat met root file system (/).
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Ik heb alleen back-up van de besturingssysteem schijf geconfigureerd, waarom wordt de moment opname voor alle schijven gemaakt?
+
+Met de functies voor selectieve schijf back-ups kunt u besparen op back-ups van de opslag kosten door de inbegrepen schijven te beveiligen die deel uitmaken van de back-up. De moment opname wordt echter gemaakt voor alle schijven die zijn gekoppeld aan de virtuele machine. De kosten voor moment opnamen worden dus altijd berekend voor alle schijven in de virtuele machine (zowel de opgenomen als de uitgesloten schijven). Zie [facturering](#billing)voor meer informatie.
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>Ik kan geen back-up configureren voor de virtuele Azure-machine door het uitsluiten van ultra schijf of gedeelde schijven die zijn gekoppeld aan de VM
+
+De functie Selectieve schijf back-up is een mogelijkheid die boven op de back-upoplossing van Azure virtual machine wordt geboden. Op dit moment ondersteunt Azure VM Backup geen Vm's met een ultra schijf of een gedeelde schijf die eraan is gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295019"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
@@ -125,7 +125,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 1. Open het Groepsbeleidsbeheer-editor-hulp programma.
 2. Bewerk het groeps beleid dat is toegepast op enkele of al uw gebruikers. In dit voor beeld wordt het **standaard domein beleid**gebruikt.
 3. Blader naar **gebruikers configuratie**  >  **beleid**  >  **Beheersjablonen**  >  pagina**Windows-onderdelen**  >  **Internet Explorer**  >  **Internet configuratie scherm**  >  **beveiliging**. Selecteer vervolgens de **lijst site naar zone toewijzing**.
-    ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![Scherm opname waarin de ' beveiligings pagina ' met de lijst ' site naar zone toewijzing ' is geselecteerd.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Schakel het beleid in en voer de volgende waarden in het dialoog venster in:
    - **Waardenaam**: de Azure AD-URL waar de Kerberos-tickets worden doorgestuurd.
    - **Waarde** (gegevens): **1** geeft de intranet zone aan.
@@ -142,15 +142,15 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
 5. Selecteer **OK** en vervolgens weer **OK**.
 
-    ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Scherm opname van het venster inhoud weer geven met een zone toewijzing geselecteerd.](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. Blader naar **gebruikers configuratie**  >  **beleid**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Internet Explorer**Internet-  >  **configuratie scherm**  >  **Security Page**  >  **intranet zone**van beveiligings pagina. Selecteer vervolgens **updates toestaan voor status balk via script**.
 
-    ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![Scherm opname van de pagina ' intranet zone ' met ' updates toestaan voor status balk via script ' geselecteerd.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. Schakel de beleids instelling in en selecteer **OK**.
 
-    ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![Scherm afbeelding met het venster ' updates toestaan voor status balk via script ', waarbij de beleids instelling is ingeschakeld.](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>De optie voor keuren voor groeps beleid-gedetailleerde stappen
 
@@ -158,7 +158,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 2. Bewerk het groeps beleid dat is toegepast op enkele of al uw gebruikers. In dit voor beeld wordt het **standaard domein beleid**gebruikt.
 3. Bladeren naar **gebruikers configuratie**  >  **voor keuren**het  >  **Windows Settings**  >  **REGI ster**  >  **Nieuw**  >  **register item**.
 
-    ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![Scherm opname van het geselecteerde "REGI ster" en "register item" geselecteerd.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Voer de volgende waarden in de juiste velden in en klik op **OK**.
    - **Sleutelpad:** ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
@@ -166,7 +166,7 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
    - **Waardetype**: ***REG_DWORD***
    - **Waardegegevens**: ***00000001***
  
-     ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Scherm opname van het venster ' nieuwe register eigenschappen '.](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso17.png)
 

@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297467"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Migratie activiteiten bewaken met behulp van de Azure Database Migration Service
 In dit artikel leert u hoe u de voortgang van een migratie kunt controleren op database niveau en op tabel niveau.
@@ -42,7 +42,7 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
   <tbody>
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Activiteitsstatus</strong></td>
-      <td>In uitvoering</td>
+      <td>Wordt uitgevoerd</td>
       <td>De migratie activiteit wordt uitgevoerd.</td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
       <td>DMS is het instellen van de migratie pijplijn.</td>
     </tr>
     <tr>
-      <td>In uitvoering</td>
+      <td>Wordt uitgevoerd</td>
       <td>De DMS-pijp lijn wordt uitgevoerd en er wordt gemigreerd.</td>
     </tr>
     <tr>

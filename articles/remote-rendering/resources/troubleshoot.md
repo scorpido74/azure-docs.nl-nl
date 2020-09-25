@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322186"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -23,11 +23,7 @@ Soms wordt tijdens het [koppelen van een opslag account](../how-tos/create-an-ac
 
 ## <a name="client-cant-connect-to-server"></a>Client kan geen verbinding maken met de server
 
-Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) niet de volgende poorten blok keren:
-
-* **50051 (TCP)** : vereist voor de eerste verbinding (http-Handshake)
-* **8266 (TCP + UDP)** -vereist voor gegevens overdracht
-* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** -vereist voor [ArrInspector](tools/arr-inspector.md)
+Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) de poorten die worden vermeld in de [systeem vereisten](../overview/system-requirements.md#network-ports), niet blok keren.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Fout ' `Disconnected: VideoFormatNotAvailable` '
 
@@ -152,7 +148,7 @@ Er kunnen twee problemen zijn met dit selectie kader die leiden tot onzichtbare 
 
 Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *:::no-loc text="Window > Analysis > Frame debugger":::* . Schakel dit in en zorg ervoor dat er twee vermeldingen zijn voor de `HolographicRemotingCallbackPass` in de pijp lijn:
 
-![Unity frame debugger](./media/troubleshoot-unity-pipeline.png)
+![Unit weergave-pijp lijn](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dambord patroon wordt weer gegeven na laden van model
 
@@ -184,6 +180,12 @@ Er zijn onlogische fouten gedetecteerd bij het compileren van unit-voor beelden 
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Arm64-builds voor Unity-projecten mislukken omdat AudioPluginMsHRTF.dll ontbreekt
 
 De `AudioPluginMsHRTF.dll` for-Arm64 is toegevoegd aan het *Windows Mixed Reality* -pakket *(com. unit. XR. windowsmr. metro)* in versie 3.0.1. Zorg ervoor dat u versie 3.0.1 of hoger hebt geïnstalleerd via unit package manager. Navigeer in de menu balk Unit naar *Window > package manager* en zoek naar het *Windows Mixed Reality* -pakket.
+
+## <a name="native-c-based-application-does-not-compile"></a>Op systeem eigen C++ gebaseerde toepassing wordt niet gecompileerd
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>Fout ' bibliotheek niet gevonden ' voor UWP-toepassing of-dll
+
+In het C++ Nuget-pakket bevindt zich een bestands `microsoft.azure.remoterendering.Cpp.targets` bestand dat definieert welke binaire waarde moet worden gebruikt. Voor `UWP` het identificeren van de voor waarden in het bestand controleren op `ApplicationType == 'Windows Store'` . Daarom moet worden gegarandeerd dat dit type is ingesteld in het project. Dit moet het geval zijn bij het maken van een UWP-toepassing of-dll via de project wizard van Visual Studio.
 
 ## <a name="unstable-holograms"></a>Onstabiele hologrammen
 

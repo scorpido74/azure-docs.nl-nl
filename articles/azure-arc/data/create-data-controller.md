@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273038"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>De Azure Arc-gegevens controller maken
 
@@ -45,7 +45,7 @@ Momenteel zijn de ondersteunde lijst met Kubernetes-Services en-distributies de 
 > [!NOTE]
 > Als u het Red Hat open Shift container platform gebruikt in azure, is het raadzaam om de meest recente beschik bare versie te gebruiken.
 
-Afhankelijk van de optie die u kiest, zijn bepaalde hulpprogram ma's _vereist_, maar u wordt aangeraden [alle client hulpprogramma's te installeren](install-client-tools.md) voordat u begint met het maken van de Azure Arc-gegevens controller.
+Afhankelijk van de optie die u kiest, zijn bepaalde hulpprogram ma's _vereist_, maar u wordt aangeraden [alle client hulpprogramma's te installeren](./install-client-tools.md) voordat u begint met het maken van de Azure Arc-gegevens controller.
 
 Ongeacht de optie die u kiest, moet u tijdens het aanmaak proces de volgende informatie opgeven:
 
@@ -53,7 +53,7 @@ Ongeacht de optie die u kiest, moet u tijdens het aanmaak proces de volgende inf
 - **Gebruikers naam van de gegevens controller** : de gebruikers naam voor de beheerder van de gegevens controller.
 - **Wacht woord voor gegevens controller** : een wacht woord voor de gebruiker van de gegevens controller beheerder.
 - **Naam van uw Kubernetes-naam ruimte** : de naam van de Kubernetes-naam ruimte waarin u de gegevens controller wilt maken.
-- **Connectiviteits modus** : de [connectiviteits modus](connectivity.md) van uw cluster. Momenteel wordt alleen indirect ondersteund.
+- **Connectiviteits modus** : de [connectiviteits modus](./connectivity.md) van uw cluster. Momenteel wordt alleen indirect ondersteund.
 - **Azure-abonnements-id** : de GUID van het Azure-abonnement waarvoor u de gegevens controller bron in azure wilt maken.
 - **Naam van de Azure-resource groep** : de naam van de resource groep waar u de gegevens controller bron in azure wilt maken.
 - **Azure-locatie** : de Azure-locatie waar de meta gegevens van de resource controller bron worden opgeslagen in Azure. Zie [globale Azure-infra structuur/-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)voor een lijst met beschik bare regio's.
@@ -68,5 +68,5 @@ Er zijn meerdere opties voor het maken van de Azure Arc-gegevens controller:
 - [Een gegevens controller maken met Azure data CLI (azdata)](create-data-controller-using-azdata.md)
 - [Een gegevens controller maken met Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Een gegevens controller maken van de Azure Portal via een Jupyter-notebook in Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
-- [Een gegevens controller maken met Kubernetes-hulpprogram ma's zoals kubectl of OC](create-data-controller-using-k8s-native-tools.md)
+- [Een gegevens controller maken met Kubernetes-hulpprogram ma's zoals kubectl of OC](create-data-controller-using-kubernetes-native-tools.md)
 - [Een gegevens controller maken met Azure Arc aan de slag voor een versnelde ervaring van een test implementatie](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

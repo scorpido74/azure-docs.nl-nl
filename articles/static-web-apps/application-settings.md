@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250025"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Toepassings instellingen configureren voor de preview-versie van Azure static Web Apps
 
@@ -34,7 +34,7 @@ Toepassings instellingen worden soms ook aangeduid als omgevings variabelen.
 ## <a name="prerequisites"></a>Vereisten
 
 - Een statische Web Apps-toepassing voor Azure
-- [Azure-CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>Typen toepassings instellingen
 
@@ -116,7 +116,7 @@ De Azure Portal biedt een interface voor het maken, bijwerken en verwijderen van
 
 U kunt de `az rest` opdracht gebruiken om bulksgewijs uploads van uw instellingen naar Azure uit te voeren. De opdracht accepteert toepassings instellingen als JSON-objecten in een bovenliggende eigenschap met de naam `properties` .
 
-De eenvoudigste manier om een JSON-bestand met de juiste waarden te maken, is door een aangepaste versie van uwlocal.settings.jste maken _in_ het bestand.
+De eenvoudigste manier om een JSON-bestand met de juiste waarden te maken, is door een aangepaste versie van uwlocal.settings.jste maken _ in_ het bestand.
 
 1. Om ervoor te zorgen dat het nieuwe bestand met gevoelige gegevens niet openbaar wordt weer gegeven, voegt u de volgende vermelding toe aan uw _. gitignore_ -bestand.
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
 description: Meer informatie over het gebruik van Azure Policy voor het implementeren van governance en controles voor Azure Cosmos DB resources.
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320894"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
 
@@ -19,7 +19,10 @@ ms.locfileid: "84431979"
 
 Azure Policy biedt ingebouwde beleids definities. U kunt aangepaste beleids definities maken voor scenario's die niet worden behandeld door de ingebouwde beleids definities. Raadpleeg de [Azure Policy-documentatie](../governance/policy/overview.md) voor meer informatie.
 
-## <a name="assign-a-built-in-policy-definition"></a>Een ingebouwde beleids definitie toewijzen
+> [!IMPORTANT]
+> Azure Policy wordt afgedwongen op het niveau van de resource provider voor Azure-Services. Cosmos DB Sdk's kunnen de meeste beheer bewerkingen uitvoeren op Data Base-, container-en doorvoer resources die de resource provider van Cosmos DB overs Laan, waardoor beleids regels die zijn gemaakt met behulp van Azure Policy worden genegeerd. Om ervoor te zorgen dat beleids regels worden nageleefd, kunt u voor [komen dat de Azure Cosmos DB sdk's worden gewijzigd](role-based-access-control.md#prevent-sdk-changes)
+
+## <a name="assign-a-built-in-policy-definition"></a>Een ingebouwde beleidsdefinitie toewijzen
 
 Beleids definities beschrijven de nalevings voorwaarden voor bronnen en het effect dat moet worden genomen als aan een voor waarde wordt voldaan. Beleids _toewijzingen_ worden gemaakt op basis van beleids _definities_. U kunt ingebouwde of aangepaste beleids definities gebruiken voor uw Azure Cosmos DB-resources. Beleids toewijzingen bevinden zich in een bereik van een Azure-beheer groep, een Azure-abonnement of een resource groep en ze worden toegepast op de resources binnen de geselecteerde scope. U kunt eventueel specifieke resources uitsluiten van het bereik.
 

@@ -5,12 +5,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299264"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
 
@@ -33,6 +33,7 @@ Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share word
 * *Standard_ZRS* -standaard zone redundante opslag (ZRS)
 * *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang (RA-GRS)
 * *Premium_LRS* -Premium lokaal redundante opslag (LRS)
+* *Premium_ZRS* -Premium zone-redundante opslag (ZRS)
 
 > [!NOTE]
 > Azure Files Premium Storage ondersteunen in AKS-clusters met Kubernetes 1,13 of hoger, is de minimale Premium-bestands share 100 GB

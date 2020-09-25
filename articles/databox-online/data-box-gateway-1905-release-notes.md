@@ -1,6 +1,6 @@
 ---
 title: Opmerkingen bij de release van Azure Data Box Gateway 1905 | Microsoft Docs
-description: Hierin worden essentiële openstaande problemen en oplossingen beschreven voor het Azure Data Box Gateway uitvoeren van algemene Beschik baarheid.
+description: Hierin worden essentiële openstaande problemen en oplossingen beschreven voor de versie van Azure Data Box Gateway 1905 met algemene Beschik baarheid.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b97165f19ac07e5a783203ece1a28420f731b649
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320673"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Release opmerkingen bij Azure Data Box Edge en Azure Data Box Gateway 1905
 
@@ -31,7 +31,7 @@ Deze release komt overeen met de software versies:
 > [!NOTE]
 > Update 1905 kan alleen worden toegepast op Data Box Edge apparaten met de versie van de software.
 
-## <a name="whats-new"></a>Nieuw
+## <a name="whats-new"></a>Nieuwe functies
 
 - **Verbeteringen in de logboek registratie van de Programmeer bare gate array (FPGA)** -in deze release hebben we logboek registratie-en waarschuwings verbeteringen aangebracht die betrekking hebben op FPGA. Dit is een vereiste update voor Data Box Edge als u de functie Edge Compute gebruikt met de FPGA. Zie [gegevens transformeren met Edge Compute op uw data Box Edge](azure-stack-edge-deploy-configure-compute-advanced.md)voor meer informatie.
 

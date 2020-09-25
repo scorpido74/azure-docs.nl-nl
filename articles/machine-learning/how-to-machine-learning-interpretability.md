@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322356"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpreteer van modellen in Azure Machine Learning (preview-versie)
 
@@ -39,20 +39,11 @@ Het inschakelen van de mogelijkheid om een machine learning model uit te leggen,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretiteit met Azure Machine Learning
 
-De interpretatieve klassen worden beschikbaar gesteld via meerdere SDK-pakketten: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+De interpretatieve klassen worden beschikbaar gesteld via het volgende SDK-pakket: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
-* `azureml.interpret`, het hoofd pakket, dat functionaliteiten bevat die door micro soft worden ondersteund.
+* `azureml.interpret`, bevat functionaliteiten die door micro soft worden ondersteund.
 
-* `azureml.contrib.interpret`, de preview-versie en experimentele functionele functies die u kunt proberen.
-
-Gebruik `pip install azureml-interpret` en `pip install azureml-contrib-interpret` voor algemeen gebruik.
-
-
-> [!IMPORTANT]
-> Inhoud in de `contrib` naam ruimte wordt niet volledig ondersteund. Naarmate de experimentele functionele onderdelen rijp worden, worden ze geleidelijk verplaatst naar de hoofd naam ruimte.
-.
-
-
+Gebruiken `pip install azureml-interpret` voor algemeen gebruik.
 
 ## <a name="how-to-interpret-your-model"></a>Het model interpreteren
 
@@ -71,7 +62,7 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
  `azureml-interpret` maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
 
-|Geïnterpreteerde techniek|Description|Type|
+|Geïnterpreteerde techniek|Beschrijving|Type|
 |--|--|--------------------|
 |Uitleg over de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
 |Uitgebreide uitleg van SHAP| Op basis van de uitleg van SHAP is diepe uitleg een uiterst snelle benaderings algoritme voor SHAP-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320809"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Op rollen gebaseerd Access Control op Kubernetes op uw Azure Stack Edge Pro GPU-apparaat
 
@@ -91,25 +91,7 @@ Hier volgt een diagram waarin de implementatie van RBAC op Azure Stack Edge Pro-
 
 In dit diagram hebben Anne, Bob en Chuck alleen toegang tot toegewezen gebruikers naam ruimten, in dit geval, `ns1` `ns2` en `ns3` respectievelijk. Binnen deze naam ruimten hebben ze beheerders toegang. De Cluster beheerder van de andere kant heeft beheerders toegang tot systeem naam ruimten en cluster bronnen.
 
-U kunt `kubectl` opdrachten gebruiken om naam ruimten en gebruikers te maken, gebruikers toe te wijzen aan naam ruimten of bestanden te downloaden `kubeconfig` . Hier volgt een werk stroom op hoog niveau:
-
-1. Een naam ruimte en een gebruiker maken.  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. Maak een gebruiker.  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. Koppel de naam ruimte aan de gebruiker die u hebt gemaakt.  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. Sla de gebruikers configuratie op naar `C:\Users\<username>\.kube` .  
-
-5. Installeer `kubectl` en begin met het implementeren van toepassingen in `kubectl` . 
-
-Voor gedetailleerde stapsgewijze instructies gaat u naar [Access Kubernetes cluster via kuebctl op uw Azure stack Edge Pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Als gebruiker kunt u naam ruimten en gebruikers maken, gebruikers toewijzen aan naam ruimten of `kubeconfig` bestanden downloaden. Voor gedetailleerde stapsgewijze instructies gaat u naar [Access Kubernetes cluster via kuebctl op uw Azure stack Edge Pro](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
 Wanneer u met naam ruimten en gebruikers op uw Azure Stack Edge Pro-apparaten werkt, gelden de volgende voor behoud:

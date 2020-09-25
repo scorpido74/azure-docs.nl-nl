@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: ab6eb4851b9f2574fc235056f8f512edcb2054bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321778"
 ---
 # <a name="connect-to-a-wfs-service"></a>Verbinding maken met een WFS-service
 
@@ -22,7 +22,7 @@ Een Web Feature Service (WFS) is een webservice voor het opvragen van ruimtelijk
 
 De volgende functies worden ondersteund door de `WfsClient` klasse:
 
-- Ondersteunde versies: `1.0.0` , `1.1.0` en`2.0.0`
+- Ondersteunde versies: `1.0.0` , `1.1.0` en `2.0.0`
 - Ondersteunde filter operators: binaire vergelijkingen, logica, wiskunde, waarde en `bbox` .
 - Aanvragen worden alleen gemaakt met behulp van `HTTP GET` .
 - Ondersteunde bewerkingen:
@@ -66,7 +66,7 @@ De specificatie voor de WFS-standaard maakt gebruik van OGC-filters. De ondersta
 - `Mul`
 - `Div`
 
-**Vergelijkingsoperators**
+**Vergelijkingsoperatoren**
 
 - `PropertyIsEqualTo`
 - `PropertyIsNotEqualTo`

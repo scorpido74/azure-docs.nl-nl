@@ -1,6 +1,6 @@
 ---
 title: Pagina sjablonen in azure API Management | Microsoft Docs
-description: Meer informatie over het aanpassen van de inhoud van de pagina's van de ontwikkelaars Portal met behulp van een set sjablonen in azure API Management.
+description: Meer informatie over het aanpassen van de inhoud van de pagina sjablonen voor de ontwikkelaars Portal in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335582"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Pagina sjablonen in azure API Management
 Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
@@ -38,7 +38,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="sign-in"></a><a name="SignIn"></a>Aanmelden  
+##  <a name="sign-in"></a><a name="SignIn"></a> Aanmelden  
  Met de **aanmeldings** sjabloon kunt u de aanmeldings pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Aanmeldings pagina](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign in-pagina ontwikkelaars Portal sjablonen")  
@@ -137,7 +137,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }
 ```  
   
-##  <a name="sign-up"></a><a name="SignUp"></a>Aanmelden  
+##  <a name="sign-up"></a><a name="SignUp"></a> Aanmelden  
  Met de **registratie** sjabloon kunt u de registratie pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Pagina registreren](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM aanmelden pagina ontwikkelaars Portal sjablonen")  
@@ -185,7 +185,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a>Pagina niet gevonden  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> Pagina niet gevonden  
  Met de sjabloon **pagina niet gevonden** kunt u de pagina niet gevonden pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Pagina niet gevonden](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM niet gevonden pagina ontwikkelaars Portal sjablonen")  
@@ -230,7 +230,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |referenceCode|tekenreeks|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
-|Code|tekenreeks|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
+|errorCode|tekenreeks|Code gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
 |emailBody|tekenreeks|E-mail hoofdtekst gegenereerd als deze pagina wordt weer gegeven als gevolg van een interne fout.|  
 |requestedUrl|tekenreeks|De aangevraagde URL wanneer de pagina niet is gevonden.|  
 |referrerUrl|tekenreeks|De verwijzende URL naar de aangevraagde URL.|  

@@ -3,12 +3,12 @@ title: Azure Migrate-apparaatarchitectuur
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514561"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322254"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate-apparaatarchitectuur
 
@@ -21,7 +21,7 @@ Het Azure Migrate apparaat wordt gebruikt in de volgende scenario's.
 **Scenario** | **Hulpprogramma** | **Gebruikt voor** 
 --- | --- | ---
 **VMware VM-evaluatie** | Azure Migrate: Server evaluatie | Virtuele VMware-machines detecteren.<br/><br/> Machine-apps en-afhankelijkheden detecteren.<br/><br/> Meta gegevens en prestaties van de computer verzamelen en verzenden naar Azure.
-**Migratie van VMware-VM'S (zonder agent)** | Azure Migrate: Server migratie | VMware-Vm's detecteren<br/><br/>  Virtuele VMware-machines repliceren met [migratie zonder agent](server-migrate-overview.md).
+**Migratie van VMware-VM'S (zonder agent)** | Azure Migrate: Server migratie | VMware-VM's detecteren<br/><br/>  Virtuele VMware-machines repliceren met [migratie zonder agent](server-migrate-overview.md).
 **Hyper-V-VM-evaluatie** | Azure Migrate: Server evaluatie | Virtuele Hyper-V-machines detecteren.<br/><br/> Meta gegevens en prestaties van de computer verzamelen en verzenden naar Azure.
 **Fysieke machine** |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren.<br/><br/> Meta gegevens en prestaties van de computer verzamelen en verzenden naar Azure.
 
@@ -72,7 +72,7 @@ Het apparaat communiceert met vCenter-servers en Hyper-V-hosts/cluster met behul
 2. **Meta gegevens en prestatie gegevens verzamelen**:
     - Het apparaat maakt gebruik van een Common Information Model (CIM) om Hyper-V VM-gegevens te verzamelen van de Hyper-V-host op poort 5985.
     - Het apparaat communiceert standaard met poort 443 om VMware-VM-gegevens van de vCenter Server te verzamelen.
-3. **Gegevens verzenden**: het apparaat verzendt de verzamelde gegevens naar Azure migrate server-evaluatie en Azure migrate server migratie via SSL-poort 443. Het apparaat kan verbinding maken met Azure via internet of u kunt ExpressRoute gebruiken met open bare/micro soft-peering.
+3. **Gegevens verzenden**: het apparaat verzendt de verzamelde gegevens naar Azure migrate server-evaluatie en Azure migrate server migratie via SSL-poort 443. Het apparaat kan verbinding maken met Azure via internet of via ExpressRoute (micro soft-peering is vereist).
     - Het apparaat verzamelt gegevens over realtime gebruik voor prestatie gegevens.
         - De prestatie gegevens worden elke 20 seconden voor VMware verzameld, en elke 30 seconden voor Hyper-V, voor elke prestatie metriek.
         - De verzamelde gegevens worden samengevouwen om één gegevens punt gedurende tien minuten te maken.

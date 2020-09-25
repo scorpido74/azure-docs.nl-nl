@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320520"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Data science tasks uitvoeren: verkennen, model leren en implementeren
 
@@ -98,11 +98,11 @@ Er zijn verschillende benaderingen en platformen om modellen in productie te bre
 Meer voor beelden zijn beschikbaar in een scenario waarin alle stappen in het proces voor **specifieke scenario's**worden getoond. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.
 
 > [!NOTE]
-> Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
+> Zie [Deploy a Azure machine learning web service](../classic/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
 >
 >
 
-### <a name="ab-testing"></a>A/B testen
+### <a name="ab-testing"></a>A/B-tests
 Wanneer er meerdere modellen in productie zijn, kan het nuttig zijn om [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) uit te voeren om de prestaties van de modellen te vergelijken. 
 
  
@@ -111,5 +111,3 @@ Wanneer er meerdere modellen in productie zijn, kan het nuttig zijn om [een/B-te
 [Houd de voortgang bij van data Science-projecten](track-progress.md) om te zien hoe een gegevens wetenschapper de voortgang van een Data Science-project kan volgen.
 
 [Model bewerking en CI/cd](ci-cd-flask.md) laat zien hoe CI/cd kan worden uitgevoerd met ontwikkelde modellen.
-
-

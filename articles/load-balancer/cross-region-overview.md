@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/01/2020
+ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 11184b2e9770ba6fd7c4ec9d04862c0890ac94c6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336527"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Load balancer voor meerdere regio's (preview-versie)
 
@@ -45,7 +45,7 @@ De front-end-IP-configuratie van uw load balancer voor meerdere regio's is stati
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Diagram van de load balancer voor meerdere regio's." border="true":::
 
 > [!NOTE]
-> De back-uppoort van uw taakverdelings regel op een cross-Region Load Balancer moet overeenkomen met de frontend-poort van de taakverdelings regel en binnenkomende NAT-regel op regionale standaard load balancer. 
+> De back-uppoort van uw taakverdelings regel in de Kruis regio load balancer moet overeenkomen met de frontend-poort van de taakverdelings regel of binnenkomende NAT-regel op regionale standaard load balancer. 
 
 ### <a name="regional-redundancy"></a>Regionale redundantie
 

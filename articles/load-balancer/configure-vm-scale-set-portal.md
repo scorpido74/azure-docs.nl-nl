@@ -1,17 +1,17 @@
 ---
 title: Virtuele-machine schaal sets configureren met een bestaande Azure Load Balancer-Azure Portal
-description: Meer informatie over het configureren van een schaalset voor virtuele machines met een bestaande Azure Load Balancer.
+description: Meer informatie over het configureren van een schaalset voor virtuele machines met een bestaande Azure Load Balancer met behulp van de Azure Portal.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333882"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal
 
@@ -50,10 +50,10 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
     | **Details van schaal sets**          |                                                                                                       |
     | Naam van virtuele-machineschaalset | **MyVMSS** invoeren                                                                                      |
     | Regio                         | Selecteer **VS Oost 2**                                                                                    |
-    | Beschikbaarheidszone              | **Geen** selecteren                                                                                       |
+    | Beschikbaarheidszone              | Selecteer **Geen**                                                                                       |
     | **Exemplaardetails**           |                                                                                                       |
     | Installatiekopie                          | Selecteer **Ubuntu Server 18,04 LTS**                                                                    |
-    | Azure spot-instantie            | **Nee** selecteren                                                                                         |
+    | Azure Spot-exemplaar            | Selecteer **Nee**                                                                                         |
     | Grootte                           | Standaard behouden                                                                                      |
     | **Beheerdersaccount**      |                                                                                                       |
     | Verificatietype            | **Wacht woord** selecteren                                                                                   |
@@ -73,11 +73,11 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
     | **Virtual Network configuratie** |                                                          |
     | Virtueel netwerk                   | Selecteer **myVNet** of uw bestaande virtuele netwerk.      |
     | **Taakverdeling**                |                                                          |
-    | Een load balancer gebruiken               | **Ja** selecteren                                           |
-    | **Instellingen voor taak verdeling**       |                                                          |
-    | Opties voor taak verdeling            | **Azure-Load Balancer** selecteren                           |
+    | Een load balancer gebruiken               | Selecteer **Ja**                                           |
+    | **Instellingen voor taakverdeling**       |                                                          |
+    | Opties voor taakverdeling            | **Azure-Load Balancer** selecteren                           |
     | Een load balancer selecteren            | **MyLoadBalancer** of uw bestaande Load Balancer selecteren |
-    | Een back-end-pool selecteren             | Selecteer **myBackendPool** of uw bestaande back-end-pool.  |
+    | Een back-endpool selecteren             | Selecteer **myBackendPool** of uw bestaande back-end-pool.  |
 
     :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Een schaalset voor virtuele machines maken." border="true":::
 

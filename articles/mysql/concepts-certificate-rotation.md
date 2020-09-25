@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9faa9dcd664f5dc8b7b0b633eedd19431a4b826
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322203"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MySQL
 
@@ -30,6 +30,7 @@ Het nieuwe certificaat wordt vanaf 26 oktober 2020 (10/26/2020) gebruikt. Als u 
 Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken. U kunt bepalen of uw verbindingen het basis certificaat verifiëren door uw connection string te controleren.
 -   Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-full` , moet u het certificaat bijwerken.
 -   Als uw Connection String bevat `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
+-  Als u Java-connectors gebruikt en uw connection string bevat useSSL = False of requireSSL = False, hoeft u geen certificaten bij te werken.
 -   Als uw connection string geen sslmode opgeeft, hoeft u geen certificaten bij te werken.
 
 Als u een-client gebruikt die het connection string verwijderd, raadpleegt u de documentatie van de client om te begrijpen of de certificaten worden geverifieerd.

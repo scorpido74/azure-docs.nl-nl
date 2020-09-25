@@ -3,12 +3,12 @@ title: host.jsbij verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321846"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
 
@@ -162,12 +162,12 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 | isEnabled | true | Hiermee worden steek proeven in-of uitgeschakeld. | 
 | maxTelemetryItemsPerSecond | 20 | Het doel aantal telemetriegegevens dat per seconde op elke server host is geregistreerd. Als uw app op meerdere hosts wordt uitgevoerd, vermindert u deze waarde zodat deze binnen het totale doel tempo van het verkeer blijft. | 
 | evaluationInterval | 01:00:00 | Het interval waarmee de huidige frequentie van de telemetrie opnieuw wordt geëvalueerd. De evaluatie wordt uitgevoerd als een zwevend gemiddelde. Mogelijk wilt u dit interval verkorten als uw telemetrie op plotselinge bursts is. |
-| initialSamplingPercentage| 1.0 | Het eerste bemonsterings percentage dat aan het begin van het bemonsterings proces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het opsporen van fouten. |
+| initialSamplingPercentage| 100,0 | Het eerste bemonsterings percentage dat aan het begin van het bemonsterings proces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het opsporen van fouten. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | Wanneer de waarde voor het sampling percentage wordt gewijzigd, bepaalt deze eigenschap hoe snel later Application Insights het steekproef percentage opnieuw mag worden gegenereerd om meer gegevens vast te leggen. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | Wanneer de waarde voor het sampling percentage wordt gewijzigd, bepaalt deze eigenschap hoe snel Application Insights later het sampling percentage opnieuw wordt toegestaan om minder gegevens vast te leggen. |
-| minSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het minimale toegestane sampling percentage. |
-| maxSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het Maxi maal toegestane steekproef percentage. |
-| movingAverageRatio | 1.0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
+| minSamplingPercentage | 0,1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het minimale toegestane sampling percentage. |
+| maxSamplingPercentage | 100,0 | Als het steekproef percentage varieert, bepaalt deze eigenschap het Maxi maal toegestane steekproef percentage. |
+| movingAverageRatio | 1,0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
 | excludedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet worden opgegeven, worden steek proeven gegeven. |
 | includedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken; een lege lijst impliceert alle typen. Typ in het `excludedTypes` veld overschrijvings typen die hier worden vermeld. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Voor exemplaren van de opgegeven typen wordt een steek proef gegeven; de typen die niet worden opgegeven of geïmpliceerd, worden zonder steek proeven verzonden. |
 
@@ -186,7 +186,7 @@ Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op u
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
-| captureSnapshotMemoryWeight | 0,5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
 | handleUntrackedExceptions | true | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
 | isEnabled | true | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 

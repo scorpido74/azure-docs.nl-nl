@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321880"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -91,7 +91,7 @@ In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor exte
 > 
 > Application Gateway WAF-regels, die de functionaliteit van de portal kunnen verstoren zijn:
 > 
-> - `920330`,,,,,,,, `931130` `942100` `942110` `942180` `942200` `942260` `942370` `949110` `980130` voor de beheer modus
+> - `920300`,,,,,,,, `920330` `931130` `942100` `942110` `942180` `942200` `942260` `942340` `942370` voor de beheer modus
 > - `942200`,,,, `942260` `942370` `942430` `942440` voor de gepubliceerde Portal
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
@@ -315,7 +315,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>Stap 9
 
-Configureer een back-end-IP-adres groep met de naam **apimbackend** met het interne virtuele IP-adres van de API Management-service die hierboven is gemaakt.
+Configureer een back-end-IP-adres groep met de naam **apimbackend**  met het interne virtuele IP-adres van de API Management-service die hierboven is gemaakt.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
@@ -349,7 +349,7 @@ Configureer WAF in de modus voor preventie.
 $config = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Application Gateway maken
+## <a name="create-application-gateway"></a>Een toepassingsgateway maken
 
 Maak een Application Gateway met alle configuratie objecten uit de voor gaande stappen.
 

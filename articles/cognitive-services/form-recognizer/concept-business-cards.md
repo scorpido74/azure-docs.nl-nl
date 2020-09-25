@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334545"
 ---
 # <a name="business-card-concepts"></a>Concepten van visitekaartjes
 
@@ -88,8 +88,8 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie: het knoop punt ' rea
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,9 @@ De Business Card-API voorziet ook in de [verwerkings functie voor AIBuilder-bedr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Volg de Snelstartgids om aan de slag te gaan met de [Snelstartgids voor Business Cards API python](./quickstarts/python-business-cards.md)
-- Meer informatie over de [rest API voor formulier herkenning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
-- Meer informatie over de [formulier herkenning](overview.md)
+- Volg de Quick Start van de [Business Cards-API python](./quickstarts/python-business-cards.md) om te beginnen met het herkennen van visite kaartjes.
 
+## <a name="see-also"></a>Zie ook
+
+* [Wat is Form Recognizer?](./overview.md)
+* [REST API referentie documenten](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

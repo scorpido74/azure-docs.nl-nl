@@ -4,14 +4,14 @@ description: Meer informatie over hoe u met Kubernetes-resources een Azure Kuber
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335599"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Toegang tot Kubernetes-resources via de Azure Portal (preview-versie)
 
@@ -75,11 +75,25 @@ Deze sectie heeft betrekking op veelvoorkomende problemen en stappen voor proble
 
 Om toegang te krijgen tot de Kubernetes-resources, moet u toegang hebben tot het AKS-cluster, de Kubernetes-API en de Kubernetes-objecten. Zorg ervoor dat u een cluster beheerder of een gebruiker met de juiste machtigingen hebt voor toegang tot het AKS-cluster. Zie [toegangs-en identiteits opties voor AKS][concepts-identity]voor meer informatie over de beveiliging van het cluster.
 
+>[!NOTE]
+> De resource weergave kubernetes in azure portal wordt alleen ondersteund door [beheerde Aad-clusters](managed-aad.md) of clusters die niet zijn ingeschakeld voor Aad. Als u gebruikmaakt van een cluster waarvoor Managed AAD is ingeschakeld, moet uw AAD-gebruiker of-identiteit de respectieve rollen/rollen bindingen hebben om toegang te krijgen tot de kubernetes-API, naast de machtiging voor het ophalen van de [gebruiker `kubeconfig` ](control-kubeconfig-access.md).
+
 ### <a name="enable-resource-view"></a>Resource weergave inschakelen
 
 Voor bestaande clusters moet u mogelijk de resource weergave Kubernetes inschakelen. Als u de resource weergave wilt inschakelen, volgt u de aanwijzingen in de portal voor uw cluster.
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portal bericht om de resource weergave Kubernetes in te scha kelen." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> De AKS-functie voor door de [**API server geautoriseerde IP-adresbereiken**](api-server-authorized-ip-ranges.md) kan worden toegevoegd om de API-server toegang alleen te beperken tot het open bare eind punt van de firewall. Een andere optie voor dergelijke clusters is het bijwerken `--api-server-authorized-ip-ranges` om toegang te bieden voor een lokale client computer of een IP-adres bereik (van waaruit de portal wordt gebladerd). U hebt het open bare IPv4-adres van de computer nodig om deze toegang toe te staan. U kunt dit adres vinden met de onderstaande opdracht of door te zoeken in ' wat is mijn IP-adres ' in een Internet browser.
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 
