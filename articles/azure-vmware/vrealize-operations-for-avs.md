@@ -2,13 +2,13 @@
 title: VRealize-bewerkingen voor Azure VMware-oplossing instellen
 description: Meer informatie over het instellen van vRealize-bewerkingen voor uw persoonlijke cloud van Azure VMware-oplossingen.
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293142"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>VRealize-bewerkingen voor Azure VMware-oplossing instellen
 
@@ -58,7 +58,23 @@ Na de implementatie van het Azure VMware-oplossings exemplaar van vRealize-bewer
 > Raadpleeg de [documentatie van VMware](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) voor stapsgewijze hand leiding voor het installeren van vRealize Operations Manager.
 
 
+## <a name="known-limitations"></a>Bekende beperkingen
 
+- De **cloudadmin@vsphere.local** gebruiker in de Azure VMware-oplossing heeft [beperkte bevoegdheden](concepts-rbac.md). In-gast geheugen verzameling met behulp van VMware-hulpprogram ma's wordt niet ondersteund voor virtuele machines (Vm's) op de Azure VMware-oplossing. Actieve en verbruikte geheugen gebruik blijft in dit geval werken.
+- De optimalisatie van de werk belasting voor zakelijke doel stellingen op basis van een host werkt niet, omdat Azure VMware-oplossingen cluster configuraties beheren, met inbegrip van DRS-instellingen.
+- De optimalisatie van de werk belasting voor de cross-cluster plaatsing binnen de SDDC met behulp van de op het cluster gebaseerde bedrijfs intentie wordt volledig ondersteund met vRealize Operations Manager 8,0 en hoger. De optimalisatie van werk belastingen is echter niet op de hoogte van resource groepen en plaatst de virtuele machines op het cluster niveau. Een gebruiker kan dit hand matig corrigeren in de Azure VMware-oplossing vCenter Server-interface.
+- U kunt zich niet aanmelden bij vRealize Operations Manager met uw Azure VMware-oplossing vCenter Server referenties. 
+- De Azure VMware-oplossing biedt geen ondersteuning voor de vRealize Operations Manager-invoeg toepassing.
+
+Wanneer u de Azure VMware Solution vCenter verbindt met vRealize Operations Manager een vCenter Server Cloud-account gebruikt, ontvangt u de volgende waarschuwing:
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Het maken van het exemplaar van de waarschuwing is voltooid":::
+
+De waarschuwing treedt op omdat de **cloudadmin@vsphere.local** gebruiker in de Azure VMware-oplossing niet voldoende rechten heeft om alle vCenter Server acties uit te voeren die vereist zijn voor de registratie. De bevoegdheden zijn echter voldoende voor de gegevens verzameling van het adapter exemplaar, zoals hieronder wordt weer gegeven:
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Adapter exemplaar voor het uitvoeren van gegevens verzameling":::
+
+Zie bevoegdheden die vereist zijn [voor het configureren van een vCenter-adapter instantie](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html)voor meer informatie.
 
 <!-- LINKS - external -->
 

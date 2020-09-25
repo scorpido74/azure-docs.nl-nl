@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434279"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277932"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory-verificatie gebruiken
 
@@ -168,7 +168,7 @@ De volgende verificatie methoden worden ondersteund voor Azure AD-server-princip
 - Zie [aanmeldingen, gebruikers, database rollen en machtigingen](logins-create-manage.md)voor een overzicht van aanmeldingen, gebruikers, database rollen en machtigingen in SQL database.
 - Zie [Principals](https://msdn.microsoft.com/library/ms181127.aspx) voor meer informatie over database-principals.
 - Zie [Databaserollen](https://msdn.microsoft.com/library/ms189121.aspx) voor meer informatie over databaserollen.
-- Zie  [login maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen) voor een door SQL beheerd exemplaar.
+- Zie  [login maken](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen) voor een door SQL beheerd exemplaar.
 - Zie [SQL Database-firewallregels](firewall-configure.md) voor meer informatie over de firewallregels in SQL Database.
 
 <!--Image references-->

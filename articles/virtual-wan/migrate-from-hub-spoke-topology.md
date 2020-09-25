@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329241"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migreren naar Azure Virtual WAN
 
@@ -97,7 +97,7 @@ In het kader van de hub-en-spoke-benadering bevat het virtuele netwerk dat door 
 Implementeer in elke regio een virtuele WAN-hub. Stel de virtuele WAN-hub in met VPN Gateway-en ExpressRoute-gateway, zoals beschreven in de volgende artikelen:
 
 - [Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN](virtual-wan-site-to-site-portal.md)
-- [Zelf studie: een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN](virtual-wan-expressroute-portal.md)
+- [Zelfstudie: Een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN](virtual-wan-expressroute-portal.md)
 
 > [!NOTE]
 > Azure Virtual WAN moet de standaard-SKU gebruiken om enkele van de verkeers paden die in dit artikel worden weer gegeven, in te scha kelen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276812"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -93,8 +93,8 @@ De volgende tabel bevat een overzicht van de mogelijkheden voor hoge Beschik baa
 |Prijs | Facturerings tarief voor één regio | Facturerings tarief van de beschikbaarheids zone met één regio | Facturerings tarief voor meerdere regio's |
 |Zone fouten – gegevens verlies | Gegevens verlies | Geen gegevens verlies | Geen gegevens verlies |
 |Zone fouten-Beschik baarheid | Beschikbaarheids verlies | Geen beschikbaar verlies | Geen beschikbaar verlies |
-|Lees latentie | Kruis regio | Kruis regio | Laag |
-|Schrijf latentie | Kruis regio | Kruis regio | Laag |
+|Lees latentie | Kruis regio | Kruis regio | Beperkt |
+|Schrijf latentie | Kruis regio | Kruis regio | Beperkt |
 |Regionale storing – gegevens verlies | Gegevens verlies |  Gegevens verlies | Gegevens verlies <br/><br/> Wanneer de consistentie van de afhankelijke veroudering met meerdere schrijf regio's en meer dan één regio wordt gebruikt, wordt het gegevens verlies beperkt tot de gebonden veroudering die is geconfigureerd voor uw account <br /><br />U kunt gegevens verlies voor komen tijdens een regionale storing door sterke consistentie met meerdere regio's te configureren. Deze optie is ook van invloed op de beschik baarheid en prestaties. Het kan alleen worden geconfigureerd voor accounts die zijn geconfigureerd voor schrijf bewerkingen met één regio. |
 |Regionale storingen-Beschik baarheid | Beschikbaarheids verlies | Beschikbaarheids verlies | Geen beschikbaar verlies |
 |Doorvoer | Ingerichte door Voer van X RU/s | Ingerichte door Voer van X RU/s | 2X RU/s ingerichte door Voer <br/><br/> Deze configuratie modus vereist twee keer de hoeveelheid door Voer in vergelijking met een enkele regio met Beschikbaarheidszones omdat er twee regio's zijn. |
@@ -129,6 +129,8 @@ U kunt Beschikbaarheidszones inschakelen met behulp van Azure Portal bij het mak
 
 ## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 
+- Bekijk het verwachte [gedrag van de Azure Cosmos-sdk's](troubleshoot-sdk-availability.md) tijdens deze gebeurtenissen. Dit zijn de configuraties die van invloed zijn op de app.
+
 - Configureer uw Azure Cosmos-account om te zorgen voor hoge schrijf-en lees beschikbaarheid om ten minste twee regio's te omvatten met meerdere-schrijf regio's. Deze configuratie biedt de hoogste Beschik baarheid, de laagste latentie en de beste schaal baarheid voor zowel lees-als schrijf bewerkingen die worden ondersteund door service overeenkomsten. Zie How to [Configure Your Azure Cosmos account with meerdere write-Regions](tutorial-global-distribution-sql-api.md)(Engelstalig) voor meer informatie.
 
 - Voor Azure Cosmos-accounts met meerdere regio's die zijn geconfigureerd met een enkele schrijf regio, [schakelt u automatische failover in met behulp van Azure CLI of Azure Portal](how-to-manage-database-account.md#automatic-failover). Nadat u automatische failover hebt ingeschakeld, Cosmos DB automatisch een failover van uw account uit, wanneer er een regionale nood geval is.  
@@ -146,3 +148,4 @@ Daarna kunt u de volgende artikelen lezen:
 - [Wereldwijde distributie - achter de schermen](global-dist-under-the-hood.md)
 - [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
 - [Uw Cosmos-account configureren met meerdere schrijf regio's](how-to-multi-master.md)
+- [SDK-gedrag voor multiregionale omgevingen](troubleshoot-sdk-availability.md)

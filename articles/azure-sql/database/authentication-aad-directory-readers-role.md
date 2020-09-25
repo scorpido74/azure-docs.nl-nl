@@ -1,6 +1,6 @@
 ---
-title: De rol van adreslijst lezers in Azure Active Directory voor Azure SQL
-description: Azure AD-toepassingen (Service-principals) ondersteunen het maken van Azure AD-gebruikers in Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics
+title: Rol Directory Readers in Azure Active Directory voor Azure SQL
+description: Meer informatie over de functie van de adreslijst lezer in azure AD voor Azure SQL.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
@@ -9,14 +9,14 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: a517a4b14a64be2b9bf12270eef3d08e14d8f3c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277943"
 ---
-# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>De rol van adreslijst lezers in Azure Active Directory voor Azure SQL
+# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Rol Directory Readers in Azure Active Directory voor Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
@@ -39,9 +39,9 @@ De functie voor het **lezers van mappen** is nodig voor het volgende:
 
 Als u de rol van de [**Directory lezers**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) wilt toewijzen aan een identiteit, is een gebruiker met Administrator machtigingen voor de rol [globale beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) of [privileged](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) vereist. Gebruikers die vaak SQL Database, een door SQL beheerd exemplaar of Azure Synapse beheren of implementeren, hebben geen toegang tot deze uiterst privilegede rollen. Dit kan vaak leiden tot complicaties voor gebruikers die niet-geplande Azure SQL-resources maken, of hulp nodig hebben van leden met een hoog privilege die vaak niet toegankelijk zijn in grote organisaties.
 
-Voor SQL Managed instance moet de rol van **Directory lezers** worden toegewezen aan de beheerde exemplaar-id voordat u [een Azure AD-beheerder voor het beheerde exemplaar kunt instellen](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). 
+Voor SQL Managed Instance moet de rol **Directory Readers** zijn toegewezen aan de beheerd-exemplaaridentiteit, voordat u [een Azure AD-beheerder voor het beheerd exemplaar kunt instellen](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). 
 
-Het toewijzen van de rol van **adreslijst lezers** aan de server identiteit is niet vereist voor SQL database of Azure Synapse bij het instellen van een Azure AD-beheerder voor de logische server. Als u echter een Azure AD-object wilt maken in SQL Database of Azure Synapse namens een Azure AD-toepassing, is de functie **Directory lezers** vereist. Als de rol niet is toegewezen aan de id van de logische SQL-Server, zullen het maken van Azure AD-gebruikers in Azure SQL mislukken. Raadpleeg [Azure Active Directory-service-principal met Azure SQL](authentication-aad-service-principal.md) voor meer informatie.
+Het is niet vereist de rol **Directory Readers** toe te wijzen aan de serveridentiteit voor SQL Database of Azure Synapse bij het instellen van een Azure AD-beheerder voor de logische server. De rol **Directory Readers** is echter wel vereist om een Azure AD-object te kunnen maken in SQL Database of Azure Synapse namens een Azure AD-toepassing. Als de rol niet is toegewezen aan de SQL-logische-serveridentiteit zal het niet lukken Azure AD-gebruikers te maken in Azure SQL. Raadpleeg [Azure Active Directory-service-principal met Azure SQL](authentication-aad-service-principal.md) voor meer informatie.
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>De rol van de Directory lezers toekennen aan een Azure AD-groep
 
@@ -52,4 +52,4 @@ Voor deze oplossing is nog steeds een gebruiker met hoge bevoegdheden (globale b
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: de rol van Directory lezers toewijzen aan een Azure AD-groep en roltoewijzingen beheren](authentication-aad-directory-readers-role-tutorial.md)
+> [Zelfstudie: De rol van Directory Readers toewijzen aan een Azure AD-groep en roltoewijzingen beheren](authentication-aad-directory-readers-role-tutorial.md)

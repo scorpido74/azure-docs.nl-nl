@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 68f3beb0ee1c12aa06b6cce0f9ddd480b0ce5f2f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 40d2e5f3d79fdc7725f04fbfd2c7f29f8db265a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328527"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Multi-Master configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 
@@ -35,7 +35,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET-SDK v3
 
 Als u meerdere masters in uw toepassing wilt inschakelen, stelt `ApplicationRegion` u de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 
@@ -128,7 +128,7 @@ Lees de volgende artikelen:
 * [Sessie tokens gebruiken voor het beheren van consistentie in Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
 * [Conflictsoorten en oplossingsbeleid in Azure Cosmos DB](conflict-resolution-policies.md)
 * [Hoge beschikbaarheid in Azure Cosmos DB](high-availability.md)
-* [Consistentie niveaus in Azure Cosmos DB](consistency-levels.md)
+* [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
 * [Kies het juiste consistentie niveau in Azure Cosmos DB](consistency-levels-choosing.md)
 * [Consistentie, Beschik baarheid en prestatie afweging in Azure Cosmos DB](consistency-levels-tradeoffs.md)
 * [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)

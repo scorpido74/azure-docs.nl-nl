@@ -1,16 +1,16 @@
 ---
 title: Concepten-opslag
-description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in azure VMware-oplossing preview persoonlijke Clouds.
+description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in azure VMware-oplossingen voor persoonlijke Clouds.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316814"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware-oplossing preview opslag concepten
+#  <a name="azure-vmware-solution-storage-concepts"></a>Concepten van Azure VMware-oplossingen opslag
 
 Persoonlijke Clouds van Azure VMware bieden systeem eigen opslag voor het hele cluster met VMware vSAN. Alle lokale opslag van elke host in een cluster wordt gebruikt in een vSAN-Data Store, en versleuteling van gegevens op rest is standaard beschikbaar en is ingeschakeld. U kunt Azure Storage resources gebruiken om de opslag mogelijkheden van uw persoonlijke Clouds uit te breiden.
 
@@ -28,7 +28,7 @@ Lokale opslag in clusterhosts wordt gebruikt in vSAN gegevens opslag voor het he
 
 ## <a name="data-at-rest-encryption"></a>Versleuteling van data-at-rest
 
-vSAN data stores gebruiken standaard versleuteling voor Data-at-rest. De versleutelings oplossing is op KMS gebaseerd en ondersteunt vCenter-bewerkingen voor sleutel beheer. De sleutel versleutelings sleutels worden opgeslagen in een Azure Key Vault en wanneer een host om welke reden dan ook uit een cluster wordt verwijderd, worden de gegevens op Ssd's onmiddellijk ongeldig gemaakt.
+vSAN data stores gebruiken standaard versleuteling voor Data-at-rest. De versleutelings oplossing is op KMS gebaseerd en ondersteunt vCenter-bewerkingen voor sleutel beheer. Sleutels worden opgeslagen versleuteld, verpakt met een Azure Key Vault hoofd sleutel op basis van HSM. Wanneer een host om de een of andere reden uit een cluster wordt verwijderd, worden de gegevens op Ssd's onmiddellijk ongeldig gemaakt.
 
 ## <a name="scaling"></a>Schalen
 

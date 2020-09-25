@@ -3,12 +3,12 @@ title: Een back-up van SQL Server-databases maken in Azure
 description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316835"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -33,7 +33,7 @@ Deze oplossing maakt gebruik van de SQL Native Api's om back-ups te maken van uw
 * De invoeg toepassing verzendt de gegevens rechtstreeks naar de Recovery Services kluis, waardoor er geen staging-locatie nodig is. De gegevens worden versleuteld en opgeslagen door de Azure Backup-service in opslag accounts.
 * Wanneer de gegevens overdracht is voltooid, bevestigt de coördinator de door Voer met de back-upservice.
 
-  ![SQL-back-uparchitectuur](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL-back-uparchitectuur](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Voordat u begint
 

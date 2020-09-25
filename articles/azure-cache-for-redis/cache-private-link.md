@@ -1,38 +1,73 @@
 ---
 title: Azure-cache voor redis met persoonlijke Azure-koppeling (preview-versie)
-description: Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met Azure cache voor redis die worden aangestuurd door een persoonlijke Azure-koppeling. In dit artikel wordt beschreven hoe u een Azure-cache, een virtueel Azure-netwerk en een persoonlijk eind punt maakt met behulp van de Azure Portal.
+description: Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met Azure cache voor redis die worden aangestuurd door een persoonlijke Azure-koppeling. In dit artikel leert u hoe u een Azure-cache, een Azure-Virtual Network en een persoonlijk eind punt maakt met behulp van de Azure Portal.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 09/22/2020
+ms.openlocfilehash: 932d138a4b594aa51b73c365cc3e753f49f886f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328967"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (preview-versie)
+# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (open bare preview)
+In dit artikel leert u hoe u een virtueel netwerk en een Azure-cache maakt voor een redis-exemplaar met een persoonlijk eind punt met behulp van de Azure Portal. U leert ook hoe u een persoonlijk eind punt kunt toevoegen aan een bestaand Azure-cache geheugen voor redis-instantie.
+
 Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met Azure cache voor redis die worden aangestuurd door een persoonlijke Azure-koppeling. 
-
-In dit artikel leert u hoe u een Azure-cache, een virtueel Azure-netwerk en een persoonlijk eind punt maakt met behulp van de Azure Portal.  
-
-> [!IMPORTANT]
-> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
-> 
 
 ## <a name="prerequisites"></a>Vereisten
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Deze functie is momenteel beschikbaar als preview- [contact](mailto:azurecache@microsoft.com) opnemen als u geïnteresseerd bent.
+> Deze functie is momenteel beschikbaar als open bare Preview voor beperkte regio's. [Neem contact met ons op](mailto:azurecache@microsoft.com)als u niet over de mogelijkheid beschikt om een persoonlijk eind punt te maken. Als u persoonlijke eind punten wilt gebruiken, moet uw Azure-cache voor redis-exemplaar zijn gemaakt na 28 juli 2020.
+>
+> Regio's met de open bare preview-versie momenteel: West-Centraal VS, Noord-Centraal VS, VS-West, VS-Oost 2, Noor wegen Oost, Europa-Noord, Azië Oost, Japan-Oost en India centraal.
 >
 
-## <a name="create-a-cache"></a>Een cache maken
-1. Als u een cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. 
+## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Een persoonlijk eind punt maken met een nieuwe Azure-cache voor redis-exemplaar 
+
+In deze sectie maakt u een nieuw Azure-cache geheugen voor een redis-exemplaar met een persoonlijk eind punt.
+
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken 
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource**.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Selecteer een resource maken.":::
+
+2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk**.
+
+3. Selecteer **toevoegen** om een virtueel netwerk te maken.
+
+4. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
+
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit virtuele netwerk wordt gemaakt. | 
+   | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resource groep waarin u het virtuele netwerk en andere resources wilt maken. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Naam** | Voer een naam voor het virtuele netwerk in. | De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken en mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. | 
+   | **Regio** | Vervolg keuzelijst en selecteer een regio. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gebruikmaken van uw virtuele netwerk. |
+
+5. Selecteer het tabblad **IP-adressen** of klik op de knop **volgende: IP-adressen** aan de onderkant van de pagina.
+
+6. Geef op het tabblad **IP-adressen** de **IPv4-adres ruimte** op als een of meer adres voorvoegsels in CIDR-notatie (bijvoorbeeld 192.168.1.0/24).
+
+7. Klik onder **subnet naam**op **standaard** om de eigenschappen van het subnet te bewerken.
+
+8. Geef in het deel venster **subnet bewerken** de **naam** van een subnet en het **adres bereik**van het subnet op. Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk.
+
+9. Selecteer **Opslaan**.
+
+10. Selecteer het tabblad **controleren + maken** of klik op de knop **beoordeling + maken** .
+
+11. Controleer of alle gegevens juist zijn en klik op **maken** om het virtuele netwerk in te richten.
+
+### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Een Azure-cache maken voor een redis-exemplaar met een persoonlijk eind punt
+Volg deze stappen om een cache-exemplaar te maken.
+
+1. Ga terug naar de Azure Portal start pagina of open het menu Sidebar en selecteer vervolgens **een resource maken**. 
    
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
@@ -42,119 +77,119 @@ In dit artikel leert u hoe u een Azure-cache, een virtueel Azure-netwerk en een 
    
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar is * \<DNS name> . redis.cache.Windows.net*. | 
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
    | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
-   | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die uw cache gebruiken. |
-   | **Prijscategorie** | Vervolg keuzelijst en selecteer een [prijs categorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
-   
-1. Selecteer **Maken**. 
-   
-    :::image type="content" source="media/cache-private-link/3-new-cache.png" alt-text="Maak een Azure-cache voor redis.":::
-   
-   Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
+   | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+   | **Prijscategorie** | Open de vervolgkeuzelijst en selecteer een [Prijscategorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
+
+1. Selecteer het tabblad **netwerken** of Klik onder aan de pagina op de knop **netwerk** .
+
+1. Selecteer op het tabblad **netwerken** het **persoonlijke eind punt** voor de verbindings methode.
+
+1. Klik op de knop **toevoegen** om uw persoonlijke eind punt te maken.
+
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Voeg in netwerken een persoonlijk eind punt toe.":::
+
+1. Configureer op de pagina **een persoonlijk eind punt maken** de instellingen voor uw persoonlijke eind punt met het virtuele netwerk en het subnet dat u hebt gemaakt in de laatste sectie en selecteer **OK**. 
+
+1. Selecteer het tabblad **volgende: Geavanceerd** of klik op de knop **volgende: Geavanceerd** aan de onderkant van de pagina.
+
+1. Selecteer op het tabblad **Geavanceerd** voor een basis-of Standard-cache-exemplaar de schakel optie inschakelen als u een niet-TLS-poort wilt inschakelen.
+
+1. Configureer op het tabblad **Geavanceerd** voor het Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie.
+
+
+1. Selecteer het tabblad **volgende: Labels** of klik op de knop **volgende: Labels** onder aan de pagina.
+
+1. Geef desgewenst de naam en waarde op op het tabblad **Tags** als u de resource wilt categoriseren. 
+
+1. Selecteer **controleren + maken**. U gaat naar het tabblad controleren + maken, waar Azure uw configuratie valideert.
+
+1. Wanneer het bericht groene validatie is voltooid wordt weer gegeven, selecteert u **maken**.
+
+Het duurt even voordat de cache is gemaakt. U kunt de voortgang controleren op de **overzichts**pagina van de Azure-cache voor redis   . Wanneer de **status**   wordt weer gegeven als **actief**, is de cache klaar voor gebruik. 
     
-    :::image type="content" source="media/cache-private-link/4-status.png" alt-text="Azure-cache voor redis is gemaakt.":::
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Een persoonlijk eind punt maken met een bestaand Azure-cache geheugen voor redis-exemplaar 
 
-In deze sectie maakt u een virtueel netwerk en een subnet.
+In deze sectie voegt u een persoonlijk eind punt toe aan een bestaand Azure-cache geheugen voor redis-instantie. 
 
-1. Selecteer **Een resource maken**.
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken 
+Voer de volgende stappen uit om een virtueel netwerk te maken.
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Selecteer een resource maken.":::
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Create a resource**.
 
 2. Selecteer op de pagina **Nieuw** de optie **netwerken** en selecteer vervolgens **virtueel netwerk**.
 
-    :::image type="content" source="media/cache-private-link/5-select-vnet.png" alt-text="Maak een virtueel netwerk.":::
+3. Selecteer **toevoegen** om een virtueel netwerk te maken.
 
-3. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad **basis beginselen** :
+4. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
-    | **Instelling**          | **Waarde**                                                           |
-    |------------------|-----------------------------------------------------------------|
-    | **Projectgegevens**  |                                                                 |
-    | Abonnement     | Open de vervolgkeuzelijst en selecteer uw abonnement.                                  |
-    | Resourcegroep   | Vervolg keuzelijst en selecteer een resource groep. |
-    | **Exemplaardetails** |                                                                 |
-    | Naam             | **\<virtual-network-name>** invoeren                                    |
-    | Regio           | Uitgeschakeld**\<region-name>** |
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit virtuele netwerk wordt gemaakt. | 
+   | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resource groep waarin u het virtuele netwerk en andere resources wilt maken. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Naam** | Voer een naam voor het virtuele netwerk in. | De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken en mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. | 
+   | **Regio** | Vervolg keuzelijst en selecteer een regio. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gebruikmaken van uw virtuele netwerk. |
 
-4. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
+5. Selecteer het tabblad **IP-adressen** of klik op de knop **volgende: IP-adressen** aan de onderkant van de pagina.
 
-5. Voer de volgende gegevens in op het tabblad **IP-adressen** :
+6. Geef op het tabblad **IP-adressen** de **IPv4-adres ruimte** op als een of meer adres voorvoegsels in CIDR-notatie (bijvoorbeeld 192.168.1.0/24).
 
-    | Instelling            | Waarde                      |
-    |--------------------|----------------------------|
-    | IPv4-adres ruimte | **\<IPv4-address-space>** invoeren |
+7. Klik onder **subnet naam**op **standaard** om de eigenschappen van het subnet te bewerken.
 
-6. Selecteer bij **subnetnaam**het woord **standaard**.
+8. Geef in het deel venster **subnet bewerken** de **naam** van een subnet en het **adres bereik**van het subnet op. Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk.
 
-7. Voer in **subnet bewerken**de volgende gegevens in:
+9. Selecteer **Opslaan**.
 
-    | Instelling            | Waarde                      |
-    |--------------------|----------------------------|
-    | Subnetnaam | **\<subnet-name>** invoeren |
-    | Subnetadresbereik | **\<subnet-address-range>** invoeren
+10. Selecteer het tabblad **controleren + maken** of klik op de knop **beoordeling + maken** .
 
-8. Selecteer **Opslaan**.
+11. Controleer of alle gegevens juist zijn en klik op **maken** om het virtuele netwerk in te richten.
 
-9. Selecteer het tabblad **controleren + maken** of selecteer de knop **beoordeling + maken** .
+### <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken 
 
-10. Selecteer **Maken**.
+Volg deze stappen om een persoonlijk eind punt te maken.
 
+1. Zoek in het Azure Portal naar **Azure cache voor redis** en druk op ENTER of selecteer dit in de zoek suggesties.
 
-## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken 
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Zoek naar Azure cache voor redis.":::
 
-In deze sectie maakt u een persoonlijk eind punt en verbindt u het met de cache die u eerder hebt gemaakt.
+2. Selecteer het cache-exemplaar waaraan u een persoonlijk eind punt wilt toevoegen.
 
-1. Zoek naar **persoonlijke koppeling** en druk op ENTER of Selecteer deze in de zoek suggesties.
+3. Selecteer aan de linkerkant van het scherm het **persoonlijke eind punt (preview-versie)**.
 
-    :::image type="content" source="media/cache-private-link/7-create-private-link.png" alt-text="Zoek naar een privé-koppeling.":::
+4. Klik op de knop **persoonlijk eind punt** om uw persoonlijke eind punt te maken.
 
-2. Selecteer aan de linkerkant van het scherm **persoonlijke eind punten**.
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Persoonlijk eind punt toevoegen.":::
 
-    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="Selecteer privé-koppeling.":::
+5. Configureer op de **pagina een persoonlijk eind punt maken**de instellingen voor uw persoonlijke eind punt.
 
-3. Selecteer de knop **+ toevoegen** om uw persoonlijke eind punt te maken. 
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit privé-eind punt wordt gemaakt. | 
+   | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resource groep waarin u uw persoonlijke eind punt en andere resources wilt maken. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Naam** | Voer de naam van een persoonlijk eind punt in. | De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken en mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. | 
+   | **Regio** | Vervolg keuzelijst en selecteer een regio. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die uw persoonlijke eind punt gaan gebruiken. |
 
-    :::image type="content" source="media/cache-private-link/9-add-private-endpoint.png" alt-text="Voeg een persoonlijke koppeling toe.":::
+6. Klik op de knop **volgende: resource** aan de onderkant van de pagina.
 
-4. Configureer op de **pagina een persoonlijk eind punt maken**de instellingen voor uw persoonlijke eind punt.
+7. Selecteer uw abonnement op het tabblad **resource** , kies het resource type als `Microsoft.Cache/Redis` en selecteer vervolgens de cache waarmee u het persoonlijke eind punt wilt verbinden.
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | **PROJECTGEGEVENS** | |
-    | Abonnement | Open de vervolgkeuzelijst en selecteer uw abonnement. |
-    | Resourcegroep | Vervolg keuzelijst en selecteer een resource groep. |
-    | **EXEMPLAARDETAILS** |  |
-    | Naam |Voer een naam in voor uw privé-eind punt.  |
-    | Regio |Open de vervolgkeuzelijst en selecteer een locatie. |
-    |||
+8. Klik onder aan de pagina op de knop **volgende: Configuratie** .
 
-5. Selecteer de knop **volgende: resource** onder aan de pagina.
+9. Op het tabblad **configuratie** selecteert u het virtuele netwerk en het subnet dat u in de vorige sectie hebt gemaakt.
 
-6. Selecteer uw abonnement op het tabblad **resource** , kies het resource type als micro soft. cache-redis en selecteer vervolgens de cache die u hebt gemaakt in de vorige sectie.
+10. Klik op de knop **volgende: Labels** onder aan de pagina.
 
-    :::image type="content" source="media/cache-private-link/10-resource-private-endpoint.png" alt-text="Resources voor privé koppeling.":::
+11. Geef desgewenst de naam en waarde op op het tabblad **Tags** als u de resource wilt categoriseren.
 
-7. Selecteer de knop **volgende: Configuratie** onder aan de pagina.
+12. Selecteer **controleren + maken**. U gaat naar het tabblad **controleren + maken**,   waar Azure uw configuratie valideert.
 
-8. Op het tabblad **configuratie** selecteert u het virtuele netwerk en het subnet dat u in de vorige sectie hebt gemaakt.
-
-    :::image type="content" source="media/cache-private-link/11-configuration-private-endpoint.png" alt-text="Configuratie voor privé-koppeling.":::
-
-9. Selecteer de knop **Volgende: Tags** onderaan de pagina.
-
-10. Voer op het tabblad **labels** de naam en waarde in als u de resource wilt categoriseren. Deze stap is optioneel.
-
-    :::image type="content" source="media/cache-private-link/12-tags-private-endpoint.png" alt-text="Labels voor privé koppeling.":::
-
-11. Selecteer **controleren + maken**. U gaat naar het tabblad **controleren + maken**,   waar Azure uw configuratie valideert.
-
-12. Zodra het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken**.
+13. Wanneer het bericht groene **validatie is voltooid** wordt weer gegeven, selecteert u **maken**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure private link](https://docs.microsoft.com/azure/private-link/private-link-overview)voor meer informatie over persoonlijke koppelingen. 
+Zie de [documentatie van Azure private link](https://docs.microsoft.com/azure/private-link/private-link-overview)voor meer informatie over persoonlijke Azure-koppelingen. 
 

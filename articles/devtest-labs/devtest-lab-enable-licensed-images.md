@@ -3,12 +3,12 @@ title: Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTe
 description: Meer informatie over het inschakelen van een gelicentieerde installatie kopie in Azure DevTest Labs met behulp van de Azure Portal
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276353"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Een gelicentieerde installatie kopie inschakelen in uw Lab in Azure DevTest Labs
 
@@ -47,7 +47,7 @@ U kunt de programmatische implementatie voor een gelicentieerde installatie kopi
 
 1. Identificeer een gelicentieerde installatie kopie waarvoor gebruikers toegang mogen hebben, maar waarvan de voor waarden niet zijn geaccepteerd. U ziet bijvoorbeeld een Data Science Virtual Machine waarin de status van de **geaccepteerde voor waarden** of de **vereiste voor waarden**worden weer gegeven.
 
-    ![Het venster programmatische implementatie configureren](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Scherm opname van Data Science Virtual Machine afbeeldingen met de status van de aanbieding geaccepteerd en voor waarden controleren vereist](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > Data Science Vm's zijn installatie kopieën van virtuele machines van Azure, vooraf geïnstalleerd, geconfigureerd en getest met verschillende populaire hulpprogram ma's die veel worden gebruikt voor gegevens analyse, machine learning-en AI-training. [Inleiding tot Azure data Science virtual machine voor Linux en Windows](../machine-learning/data-science-virtual-machine/overview.md) biedt veel informatie over dsvm.

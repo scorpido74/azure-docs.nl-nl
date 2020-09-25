@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328850"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -112,11 +112,13 @@ De volgende secties bevatten informatie over hoe u verbinding kunt maken met uw 
 Zorg ervoor dat u aan de volgende vereisten voldoet:
 
 * Azure AD is geregistreerd.
-* U hebt de ondersteunde versie van BMC Helix multi-Cloud Service Management (versie 20,02 of hoger).
+* U hebt de ondersteunde versie van BMC Helix multi-Cloud Service Management (versie 19,08 of hoger).
 
 ### <a name="configure-the-bmc-helix-connection"></a>De BMC Helix-verbinding configureren
 
-1. Volg de instructies in het [inschakelen van vooraf gebouwde integratie met Azure monitor voor versie 20,02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html).
+1. Volg de instructies accoring naar de versie:
+   * Het [inschakelen van vooraf gebouwde integratie met Azure monitor voor versie 20,02](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html).
+   * Het [inschakelen van vooraf gebouwde integratie met Azure monitor voor versie 19,11](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html).
 
 1. Als onderdeel van de configuratie van de verbinding in BMC Helix gaat u naar uw integratie-BMC-exemplaar en volgt u deze instructies:
 
@@ -138,4 +140,4 @@ Zorg ervoor dat u aan de volgende vereisten voldoet:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [ITSM-werk items maken op basis van Azure-waarschuwingen](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+* [ITSM-werk items maken op basis van Azure-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)

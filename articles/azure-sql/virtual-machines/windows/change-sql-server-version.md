@@ -7,19 +7,19 @@ author: ramakoni1
 manager: ramakoni1
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63c4c7b596a32901d127642118d224c2b318510f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293370"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van SQL Server-versie op Azure VM
 
@@ -94,7 +94,7 @@ U kunt de versie van SQL Server downgrade door de volgende stappen uit te voeren
    :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Script opties":::
 
 1. SQL Server en alle gekoppelde services volledig verwijderen.
-1. Start de VM opnieuw.
+1. Start de VM opnieuw op.
 1. Installeer SQL Server met behulp van de media voor de gewenste versie van het programma.
 1. Installeer de nieuwste service packs en cumulatieve updates.
 1. Importeer alle benodigde objecten op server niveau (die zijn geëxporteerd in stap 3).

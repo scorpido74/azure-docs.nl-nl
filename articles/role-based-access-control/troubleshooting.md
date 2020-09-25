@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329501"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -28,7 +28,7 @@ In dit artikel worden enkele veelgestelde vragen over toegangs beheer op basis v
 
 ## <a name="azure-role-assignments-limit"></a>Limiet voor Azure-roltoewijzingen
 
-Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. Deze limiet omvat roltoewijzingen voor het abonnement, de resource groep en de resource scopes. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
+Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. Deze limiet omvat roltoewijzingen voor het abonnement, de resourcegroep en het resourcebereik. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
 
 > [!NOTE]
 > De limieten voor het aantal roltoewijzingen per abonnement van **2000** zijn vast en kunnen niet worden verhoogd.
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Een abonnement overdragen naar een andere map
 
-- Zie het [eigendom van een Azure-abonnement overdragen aan een ander account](../cost-management-billing/manage/billing-subscription-transfer.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-adres lijst.
+- Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)](transfer-subscription.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-adres lijst.
 - Als u een abonnement overbrengt naar een andere Azure AD-adres lijst, worden alle roltoewijzingen **permanent** verwijderd uit de Azure AD-bron directory en worden ze niet gemigreerd naar de Azure AD-doel directory. U moet uw roltoewijzingen opnieuw maken in de doel directory. U moet ook hand matig beheerde identiteiten voor Azure-resources maken. Zie [Veelgestelde vragen en bekende problemen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/known-issues.md)voor meer informatie.
 - Als u een globale Azure AD-beheerder bent en u geen toegang hebt tot een abonnement nadat het is overgebracht tussen directory's, gebruikt u de wissel knop **voor het toegangs beheer voor Azure-resources** om uw toegang tijdelijk uit te [breiden](elevate-access-global-admin.md) om toegang te krijgen tot het abonnement.
 
@@ -99,11 +99,17 @@ $ras.Count
 - Als de machtigingsfout 'Client met object-id is niet gemachtigd om actie uit te voeren over bereik (code: AuthorizationFailed)' wanneer u een resource wilt maken, controleert u of u momenteel bent aangemeld met een gebruiker die een rol heeft met schrijfrechten voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Zie [ingebouwde rollen van Azure](built-in-roles.md)voor een lijst met machtigingen voor elke ingebouwde rol.
 - Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen `Microsoft.Support/supportTickets/write` , zoals [mede werker van de ondersteunings aanvraag](built-in-roles.md#support-request-contributor).
 
+## <a name="move-resources-with-role-assignments"></a>Resources verplaatsen met roltoewijzingen
+
+Als u een resource verplaatst waaraan een Azure-rol rechtstreeks is toegewezen aan de resource (of een onderliggende resource), wordt de roltoewijzing niet verplaatst en wordt deze zwevend. Nadat de verplaatsing is verplaatst, moet u de roltoewijzing opnieuw maken. Uiteindelijk wordt de zwevende roltoewijzing automatisch verwijderd, maar het is een best practice om de roltoewijzing te verwijderen voordat u de resource verplaatst.
+
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
+
 ## <a name="role-assignments-with-identity-not-found"></a>Roltoewijzingen met identiteit niet gevonden
 
 In de lijst met roltoewijzingen voor de Azure Portal ziet u misschien dat de beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) wordt weer gegeven als identiteit die **niet is gevonden** met een **onbekend** type.
 
-![Resource groep voor web-app](./media/troubleshooting/unknown-security-principal.png)
+![Kan de identiteit niet vinden die wordt weer gegeven in azure-roltoewijzingen](./media/troubleshooting/unknown-security-principal.png)
 
 De identiteit kan om twee redenen niet worden gevonden:
 
@@ -221,7 +227,7 @@ Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 * Eindpunten  
 * IP-adressen  
 * Disks  
-* Extensies  
+* Uitbreidingen  
 
 Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 
@@ -242,5 +248,5 @@ Een lezer kan op het tabblad **platform functies** klikken en vervolgens op **al
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Problemen met gast gebruikers oplossen](role-assignments-external-users.md#troubleshoot)
-- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](role-assignments-portal.md)
 - [Activiteiten logboeken voor Azure RBAC-wijzigingen weer geven](change-history-report.md)

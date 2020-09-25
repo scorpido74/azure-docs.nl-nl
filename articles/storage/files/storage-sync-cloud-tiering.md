@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033118"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329309"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -40,17 +40,17 @@ Cloud lagen zijn niet afhankelijk van de NTFS-functie voor het bijhouden van de 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestands grootte voor een bestand dat moet worden gelaagd?
 
-Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. De minimale bestands grootte die in aanmerking komt voor Cloud lagen, wordt berekend door 2x de cluster grootte en ten minste 8 KB. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
+Voor agent versies 12 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. De minimale bestands grootte die in aanmerking komt voor Cloud lagen, wordt berekend door 2x de cluster grootte en ten minste 8 KB. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
 
 |Volume cluster grootte (bytes) |Bestanden van deze grootte of groter kunnen worden getierd  |
 |----------------------------|---------|
 |4 KB of kleiner (4096)      | 8 kB    |
 |8 KB (8192)                 | 16 kB   |
-|16 KB (16384)               | 32 KB   |
+|16 KB (16384)               | 32 kB   |
 |32 KB (32768)               | 64 kB   |
-|64 KB (65536)               | 128 kB  |
+|64 KB (65536) en groter    | 128 kB  |
 
-Met Windows Server 2019 en Azure File Sync agent versie 12 en hoger, worden cluster groottes tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB.
+Met Windows Server 2019 en Azure File Sync agent versie 12 en hoger, worden cluster groottes tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB, maar dit is niet het geval bij het werken met Cloud lagen.
 
 Alle bestands systemen die worden gebruikt door Windows, organiseren de vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand op te slaan op het volgende veelvoud van de cluster grootte.
 
@@ -61,7 +61,7 @@ Azure File Sync wordt ondersteund op NTFS-volumes met Windows Server 2012 R2 en 
 |7 MB – 16 TB   | 4 kB          |
 |16TB – 32 TB   | 8 kB          |
 |32 TB – 64 TB   | 16 kB         |
-|64 TB – 128 TB  | 32 KB         |
+|64 TB – 128 TB  | 32 kB         |
 |128TB – 256 TB | 64 kB         |
 |> 256 TB       | Niet ondersteund |
 
@@ -85,11 +85,23 @@ Wanneer er meer dan één server eindpunt op een volume is, is de limiet voor de
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hoe werkt het opslaglaagbeleid voor datums in combinatie met het opslaglaagbeleid voor beschikbare volumeruimte? 
 Wanneer u Cloud Tiering inschakelt op een server eindpunt, stelt u een volume beschik bare ruimte beleid in. Het heeft altijd voor rang op elk ander beleid, inclusief het datum beleid. U kunt desgewenst een datum beleid inschakelen voor elk server eindpunt op dat volume. Dit beleid beheert dat alleen de bestanden die zijn geopend (dat wil zeggen, gelezen of beschreven) binnen het bereik van dagen dat dit beleid wordt beschreven, lokaal worden bewaard. Bestanden die niet toegankelijk zijn met het opgegeven aantal dagen, worden trapsgewijs gelaagd. 
 
-Cloud lagen maakt gebruik van de tijd van laatste toegang om te bepalen welke bestanden moeten worden gelaagd. Het filter stuur programma voor Cloud lagen (storagesync.sys) traceert de tijd van laatste toegang en registreert de informatie in de opslag van de Cloud-laag. U kunt de opslag voor hitte bekijken met een lokale Power shell-cmdlet.
+Cloud lagen maakt gebruik van de tijd van laatste toegang om te bepalen welke bestanden moeten worden gelaagd. Het filter stuur programma voor Cloud lagen (storagesync.sys) traceert de tijd van laatste toegang en registreert de informatie in de opslag van de Cloud-laag. U kunt de warmte opslag ophalen en opslaan in een CSV-bestand met behulp van een server-Local Power shell-cmdlet.
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]
@@ -158,10 +170,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 Optionele para meters:
-* `-Order CloudTieringPolicy`roept eerst de meest recent gewijzigde of geopende bestanden aan en is toegestaan door het huidige laag beleid. 
+* `-Order CloudTieringPolicy` roept eerst de meest recent gewijzigde of geopende bestanden aan en is toegestaan door het huidige laag beleid. 
     * Als het volume beschik bare ruimte beleid is geconfigureerd, worden de bestanden ingetrokken totdat de beleids instelling volume beschik bare ruimte is bereikt. Als de waarde voor het gratis volume beleid bijvoorbeeld 20% is, wordt intrekken gestopt zodra de beschik bare ruimte van het volume 20% bedraagt.  
     * Als volume beschik bare ruimte en datum beleid is geconfigureerd, worden de bestanden ingetrokken totdat de instelling volume beschik bare ruimte of datum beleid is bereikt. Als de instelling voor het volume gratis beleid bijvoorbeeld 20% is en het datum beleid 7 dagen is, wordt intrekken gestopt zodra de beschik bare ruimte van het volume 20% bedraagt of alle bestanden die worden geopend of gewijzigd binnen 7 dagen, lokaal zijn.
-* `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
+* `-ThreadCount` Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
 * `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
 * `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
@@ -196,7 +208,7 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Waarom worden mijn gelaagde bestanden niet weer gegeven als miniaturen of voor beelden in Windows Verkenner?
 Voor gelaagde bestanden zijn miniaturen en voor beelden niet zichtbaar op het server eindpunt. Dit gedrag wordt verwacht omdat de functie van de miniatuur cache in Windows het lezen van bestanden met het kenmerk offline overs Laan. Als Cloud lagen zijn ingeschakeld, kan de Lees bewerking door gelaagde bestanden worden gedownload (ingetrokken).
 
-Dit gedrag is niet specifiek voor Azure File Sync. in Windows Verkenner wordt een ' grijze X ' weer gegeven voor bestanden waarvoor het kenmerk offline is ingesteld. Het pictogram X wordt weer geven bij het openen van bestanden via SMB. Raadpleeg voor een gedetailleerde uitleg van dit gedrag[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+Dit gedrag is niet specifiek voor Azure File Sync. in Windows Verkenner wordt een ' grijze X ' weer gegeven voor bestanden waarvoor het kenmerk offline is ingesteld. Het pictogram X wordt weer geven bij het openen van bestanden via SMB. Raadpleeg voor een gedetailleerde uitleg van dit gedrag [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 <a id="afs-tiering-disabled"></a>
 ### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Ik heb Cloud lagen uitgeschakeld, waarom zijn er gelaagde bestanden op de locatie van het server eindpunt?

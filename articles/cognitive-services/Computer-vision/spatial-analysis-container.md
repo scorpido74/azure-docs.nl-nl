@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277288"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)
 
@@ -30,7 +30,7 @@ De container voor ruimtelijke analyse biedt u de mogelijkheid om in realtime str
 
 ### <a name="spatial-analysis-container-requirements"></a>Container vereisten voor ruimtelijke analyse
 
-Als u de container voor ruimtelijke analyse wilt uitvoeren, hebt u een compute-apparaat nodig met een [Nvidia Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/). U wordt aangeraden [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) met GPU-versnelling te gebruiken, maar de container wordt uitgevoerd op een andere computer die voldoet aan de minimale vereisten. We verwijzen naar dit apparaat als de hostcomputer.
+Als u de container voor ruimtelijke analyse wilt uitvoeren, hebt u een compute-apparaat nodig met een [Nvidia Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/). U wordt aangeraden [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) met GPU-versnelling te gebruiken, maar de container wordt uitgevoerd op een andere computer die voldoet aan de minimale vereisten. We verwijzen naar dit apparaat als de hostcomputer.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack edge-apparaat](#tab/azure-stack-edge)
 
@@ -63,7 +63,7 @@ In dit artikel downloadt en installeert u de volgende software pakketten. De hos
 
 ---
 
-| Vereiste | Description |
+| Vereiste | Beschrijving |
 |--|--|
 | Camera | De container voor ruimtelijke analyse is niet gebonden aan een specifiek camera merk. Het camera apparaat moet: ondersteuning bieden voor real-time streaming protocol (RTSP) en H. 264-code ring, toegankelijk zijn voor de hostcomputer en kunnen worden gestreamd op 15FPS en 1080p-resolutie. |
 | Linux-besturings systeem | [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) moet zijn geïnstalleerd op de hostcomputer.  |
@@ -71,7 +71,7 @@ In dit artikel downloadt en installeert u de volgende software pakketten. De hos
 
 ## <a name="request-approval-to-run-the-container"></a>Goed keuring aanvragen om de container uit te voeren
 
-Vul het [aanvraag formulier](https://aka.ms/cognitivegate) in en verzend het om goed keuring te vragen om de container uit te voeren. 
+Vul het [aanvraag formulier](https://aka.ms/csgate) in en verzend het om goed keuring te vragen om de container uit te voeren.
 
 Het formulier vraagt informatie over u, uw bedrijf en het gebruikers scenario waarvoor u de container gaat gebruiken. Nadat u het formulier hebt verzonden, wordt het door het Azure Cognitive Services-team gecontroleerd en een e-mail bericht met een beslissing verzonden.
 
@@ -111,12 +111,13 @@ Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw Azure stack Edg
 
 Kies op de pagina **rand berekening configureren**   een bestaand IOT hub of kies ervoor om een nieuw item te maken. Standaard wordt een standaard prijs categorie (S1) gebruikt voor het maken van een IoT Hub bron. Als u een gratis laag IoT Hub resource wilt gebruiken, maakt u er een en selecteert u deze. De IoT Hub resource gebruikt hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de resource Azure Stack Edge 
 
-Klik op **Maken**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
+Klik op **Create**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
 
 Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. De Azure IoT Edge runtime wordt al uitgevoerd op het IoT Edge apparaat.            
 
 > [!NOTE]
-> Momenteel is alleen het Linux-platform beschikbaar voor IoT Edge apparaten. Zie het artikel [logboek registratie en probleem oplossing](spatial-analysis-logging.md) voor hulp bij het oplossen van problemen met het Azure stack edge-apparaat.
+> * Momenteel wordt alleen het Linux-platform ondersteund voor IoT Edge apparaten. Zie het artikel [logboek registratie en probleem oplossing](spatial-analysis-logging.md) voor hulp bij het oplossen van problemen met het Azure stack edge-apparaat.
+> * Zie [een IOT edge apparaat configureren om te communiceren via een proxy](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal) server voor meer informatie over het configureren van een IOT edge apparaat om te communiceren via een proxy server
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>MPS inschakelen op Azure Stack rand 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Als de hostcomputer geen Azure Stack edge-apparaat is, moet u [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) versie 1.0.8 installeren. Volg deze stappen om de juiste versie te downloaden: Ubuntu Server 18,04:
+Als de hostcomputer geen Azure Stack edge-apparaat is, moet u [Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) versie 1.0.8 installeren. Volg deze stappen om de juiste versie te downloaden:
+
+Ubuntu-Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 Kopieer de gegenereerde lijst.
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -324,8 +326,8 @@ In de volgende tabel ziet u de verschillende omgevings variabelen die worden geb
 | ARCHON_NODES_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | OMP_WAIT_POLICY | Pass | Niet wijzigen|
 | QT_X11_NO_MITSHM | 1 | Niet wijzigen|
-| API_KEY | uw API-sleutel| Verzamel deze waarde van Azure Portal van uw Computer Vision-resource. U kunt deze vinden in de sectie **sleutel en eind punt** voor uw resource in de Azure Portal. |
-| BILLING_ENDPOINT | de URI van uw eind punt| Verzamel deze waarde van Azure Portal van uw Computer Vision-resource. U kunt deze vinden in de sectie **sleutel en eind punt** voor uw resource in de Azure Portal.|
+| API_KEY | uw API-sleutel| Verzamel deze waarde van Azure Portal van uw Computer Vision-resource. U kunt deze vinden in de sectie **Key en endpoint** van uw resource. |
+| BILLING_ENDPOINT | de URI van uw eind punt| Verzamel deze waarde van Azure Portal van uw Computer Vision-resource. U kunt deze vinden in de sectie **Key en endpoint** van uw resource.|
 | HOUDT | zodat | Deze waarde moet worden ingesteld om te *accepteren* dat de container moet worden uitgevoerd |
 | DISPLAY | : 1 | Deze waarde moet gelijk zijn aan de uitvoer van `echo $DISPLAY` op de hostcomputer. Azure Stack edge-apparaten hebben geen weer gave. Deze instelling is niet van toepassing|
 
@@ -339,7 +341,6 @@ Wanneer u de voorbeeld [DeploymentManifest.js](https://go.microsoft.com/fwlink/?
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |Parameter  |Beschrijving  |

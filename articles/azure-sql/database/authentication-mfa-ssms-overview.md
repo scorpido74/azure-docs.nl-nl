@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 07/27/2020
 tags: azure-synapse
-ms.openlocfilehash: b2d179121b05d7bf3493937a9ff72e302fd31f3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277798"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-factor Azure Active Directory-verificatie gebruiken
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,7 +29,7 @@ Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics onders
 
 Voor alle functies die in dit artikel worden besproken, hebt u ten minste versie 17.2 van juli 2017 nodig. Het meest recente dialoogvenster Verbinding maken met server moet er ongeveer uitzien als in de volgende afbeelding:
 
-  ![1mfa-universal-connect](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png "Vult het vak Gebruikersnaam in.")  
+  ![Scherm afbeelding van het dialoog venster verbinding maken met server in SQL Server Management Studio, met de instellingen voor het server type, de server naam en de verificatie.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
 
 ## <a name="authentication-options"></a>Verificatieopties
 
@@ -57,11 +57,11 @@ Alle gast gebruikers die willen worden geverifieerd met universele verificatie, 
 1. Open een verbinding in SSMS. Voer de naam van uw server in en selecteer **Azure Active Directory-Universal met MFA-** verificatie. Voeg de **gebruikers naam** toe waarmee u zich wilt aanmelden.
 1. Selecteer het vak **Opties** en ga naar het tabblad **verbindings eigenschappen** . In het dialoog venster **verbinding maken met data base vult u** het dialoog venster in voor uw data base. Schakel het selectievakje **AD-domeinnaam of tenant-id** in en geef de gegevens van de verificatie-instantie op, zoals de domeinnaam (**contosotest.onmicrosoft.com**) of de GUID van de tenant-id. 
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
+   ![Scherm afbeelding van het tabblad verbindings eigenschappen met de instellingen voor verbinding maken met data base en AD-domein naam of Tenant-ID.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
 Als u SSMS 18. x of hoger uitvoert, is de AD-domein naam of Tenant-ID niet langer nodig voor gast gebruikers omdat 18. x of hoger deze automatisch herkent.
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
+   ![Scherm afbeelding van het tabblad verbindings eigenschappen in het dialoog venster verbinding maken met server in S S M S. "MyDatabase" is geselecteerd in het veld verbinding maken met data base.](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Ondersteuning voor Azure AD B2B
 
@@ -97,4 +97,4 @@ Nadat de database gebruiker is gemaakt, kan de gebruiker `steve@gmail.com` zich 
 - [Een BACPAC-bestand importeren in een nieuwe data base](database-import.md)  
 - [Database naar een BACPAC-bestand exporteren](database-export.md)  
 - Interface van C# interface [IUniversalAuthProvider](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- Wanneer u **Azure Active Directory-universele met MFA-** verificatie gebruikt, is ADAL tracering beschikbaar vanaf [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Standaard uitgeschakeld, u kunt ADAL tracering inschakelen via het menu **extra**, **Opties** , onder **Azure-Services**, Azure- **Cloud**, **ADAL uitvoervenster traceer niveau**, gevolgd door **uitvoer** in te scha kelen in het menu **weer gave** . De traceringen zijn beschikbaar in het uitvoer venster wanneer u **Azure Active Directory optie**selecteert.  
+- Wanneer u **Azure Active Directory-universele met MFA-** verificatie gebruikt, is ADAL tracering beschikbaar vanaf [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Standaard uitgeschakeld, u kunt ADAL tracering inschakelen via het menu **extra**, **Opties** , onder **Azure-Services**, Azure- **Cloud**, **ADAL uitvoervenster traceer niveau**, gevolgd door **uitvoer**  in te scha kelen in het menu **weer gave** . De traceringen zijn beschikbaar in het uitvoer venster wanneer u **Azure Active Directory optie**selecteert.  

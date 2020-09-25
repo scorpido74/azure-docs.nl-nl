@@ -1,14 +1,14 @@
 ---
 title: VM-extensie beheer met servers die geschikt zijn voor Azure-Arc
 description: Servers met Azure-Arc kunnen de implementatie van virtuele-machine uitbreidingen beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329071"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Extensie beheer voor virtuele machines met servers die geschikt zijn voor Azure-Arc
 
@@ -34,7 +34,7 @@ De functionaliteit van de VM-extensie is alleen beschikbaar in de lijst met [ond
 
 ## <a name="extensions"></a>Uitbreidingen
 
-In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-computers.
+In deze release ondersteunen we de volgende VM-extensies op Windows-en Linux-computers.
 
 |Extensie |Besturingssysteem |Publisher |Aanvullende informatie |
 |----------|---|----------|-----------------------|
@@ -66,10 +66,7 @@ Voor de VM-extensie van de Log Analytics-agent voor Linux is Python 2. x geïnst
 
 Controleer of uw computer overeenkomt met de [ondersteunde versies](agent-overview.md#supported-operating-systems) van het Windows-en Linux-besturings systeem voor de Azure Connected machine-agent.
 
-De minimale versie van de verbonden machine agent die wordt ondersteund door deze functie is:
-
-* Windows-0,7. x
-* Linux-0,8. x
+De minimale versie van de verbonden machine agent die wordt ondersteund door deze functie in Windows en Linux is de 1,0-release.
 
 Zie [upgrade agent](manage-agent.md#upgrading-agent)om uw computer te upgraden naar de versie van de vereiste agent.
 
@@ -77,7 +74,7 @@ Zie [upgrade agent](manage-agent.md#upgrading-agent)om uw computer te upgraden n
 
 Voor VM-extensies kan uw Arc worden toegepast voor de door de server beheerde machine via de Azure Portal.
 
-1. Ga in uw browser naar de [Azure Portal](https://aka.ms/arcserver-preview).
+1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com).
 
 2. Ga in de portal naar **servers-Azure-boog** en selecteer uw hybride machine in de lijst.
 
@@ -719,22 +716,10 @@ Het verwijderen van een of meer uitbrei dingen van een door Arc ingeschakelde se
 
 4. Selecteer **verwijderen** en wanneer u wordt gevraagd om te verifiëren, selecteert u **Ja** om door te gaan.
 
-## <a name="troubleshooting"></a>Problemen oplossen
-
-Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal.
-
-De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-extensies.
-
-1. Als u het logboek van de gast agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` voor Windows en voor Linux onder `/var/lib/GuestConfig/ext_mgr_logs` .
-
-2. Raadpleeg de extensie logboeken voor de specifieke extensie voor meer informatie over `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` Windows. Uitvoer van de extensie wordt vastgelegd in een bestand voor elke uitbrei ding die is geïnstalleerd in Linux onder `/var/lib/GuestConfig/extension_logs` .
-
-3. Raadpleeg de onderwerpen over probleem oplossing voor specifieke documentatie voor fout codes, bekende problemen, enzovoort. Meer informatie over het oplossen van problemen voor elke uitbrei ding vindt u in de sectie **problemen oplossen en ondersteuning** in het overzicht voor de uitbrei ding. Dit omvat de beschrijving van fout codes die naar het logboek zijn geschreven. De uitbrei ding artikelen worden gekoppeld in de [tabel extensies](#extensions) die eerder in dit artikel zijn gevonden.
-
-4. Bekijk de systeem Logboeken. Controleer op andere bewerkingen die mogelijk zijn verstoord met de extensie, zoals een langlopende installatie van een andere toepassing die exclusieve toegang tot Package Manager vereist.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
+* Informatie over probleem oplossing vindt u in de [gids voor het oplossen van problemen met VM-extensies](troubleshoot-vm-extensions.md).
 
-- Meer informatie over [[log Analytics agent]](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.
+* Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
+
+* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.

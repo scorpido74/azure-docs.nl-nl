@@ -1,6 +1,6 @@
 ---
 title: Netwerkeindpunten configureren voor Azure File Sync | Microsoft Docs
-description: Een overzicht van de netwerkopties voor Azure File Sync.
+description: Meer informatie over het configureren van Azure File Sync netwerk eindpunten.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7210d414c06f154395b9128be6ed10175ad1e838
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329360"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Files Sync-netwerkeindpunten configureren
 Azure Files en Azure File Sync bieden twee hoofdtypen eindpunten voor toegang tot Azure-bestandsshares: 

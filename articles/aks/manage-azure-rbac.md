@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van Azure RBAC voor Kubernetes-autorisatie met Azure Kubernetes service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329088"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
@@ -28,7 +28,6 @@ De mogelijkheid om RBAC voor Kubernetes-resources van Azure te beheren biedt u d
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Vereisten 
-- Meld u aan voor de preview-versie <https://aka.ms/aad-rbac-sign-up-form> .
 - Zorg ervoor dat u de Azure CLI-versie 2.9.0 of hoger hebt
 - Zorg ervoor dat de `EnableAzureRBACPreview` functie vlag is ingeschakeld.
 - Controleer of u de `aks-preview` [cli-extensie][az-extension-add] v 0.4.55 of hoger hebt geïnstalleerd
@@ -44,7 +43,7 @@ Registreer de `EnableAzureRBACPreview` functie vlag met de opdracht [AZ feature 
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-U moet goed keuring ontvangen nadat u het voorbeeld formulier hebt ingediend voordat de markering kan worden geregistreerd. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
+ U kunt de registratiestatus controleren met behulp van de opdracht [az feature list][az-feature-list]:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
@@ -188,7 +187,7 @@ Nu u de roldefinitie hebt, kunt u deze toewijzen aan een gebruiker of een andere
 az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Gebruik Azure RBAC voor Kubernetes-autorisatie met`kubectl`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Gebruik Azure RBAC voor Kubernetes-autorisatie met `kubectl`
 
 > [!NOTE]
 > Zorg ervoor dat u over de meest recente kubectl beschikt door de onderstaande opdracht uit te voeren:
@@ -222,7 +221,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Gebruik Azure RBAC voor Kubernetes-autorisatie met`kubelogin`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Gebruik Azure RBAC voor Kubernetes-autorisatie met `kubelogin`
 
 Voor het deblokkeren van aanvullende scenario's, zoals niet-interactieve aanmeldingen, oudere `kubectl` versies of het gebruiken van SSO op meerdere clusters zonder dat u zich hoeft aan te melden bij een nieuw cluster, kunt u aan de hand van aks een exec-invoeg toepassing met de naam maken [`kubelogin`](https://github.com/Azure/kubelogin) .
 
@@ -285,4 +284,4 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true

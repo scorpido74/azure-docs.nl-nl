@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329479"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Zoeken in volledige tekst in azure Cognitive Search
 
@@ -51,7 +51,7 @@ Een zoek opdracht is een volledige specificatie van wat er in een resultatenset 
 
 Het volgende voor beeld is een zoek opdracht die u via de [rest API](/rest/api/searchservice/search-documents)kunt verzenden naar Azure Cognitive Search.  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Voor deze aanvraag doet de zoek machine het volgende:
 
@@ -76,9 +76,9 @@ Het meren deel van dit artikel is het verwerken van de *Zoek query*: `"Spacious,
 
 Zoals aangegeven, is de query reeks de eerste regel van de aanvraag: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 De query-parser scheidt Opera tors (zoals `*` en `+` in het voor beeld) uit zoek termen en ontbouwt de zoek query in *subquery's* van een ondersteund type: 
 
@@ -104,9 +104,9 @@ Een andere zoek aanvraag parameter die van invloed is op parsering is de `search
 
 Wanneer `searchMode=any` , de standaard waarde, het spatie scheidings teken tussen spacious en de lucht voorwaarde of ( `||` ), waarbij de voorbeeld query tekst gelijk is aan: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 Expliciete Opera Tors, zoals `+` in `+"Ocean view"` , zijn niet eenduidig in de constructie van een Boole-query (de term *moet* overeenkomen). Minder duidelijk wordt uitgelegd hoe u de resterende voor waarden interpreteert: spacious en Air-voor waarde. Moet de zoek machine overeenkomen met de weer gave van de oceaan *en* de spacious *en* de airconditioning? Of moet de weer gave van de Oceaan en *een* van de resterende voor waarden worden gevonden? 
 
@@ -114,9 +114,9 @@ Expliciete Opera Tors, zoals `+` in `+"Ocean view"` , zijn niet eenduidig in de 
 
 Stel dat we nu hebben ingesteld `searchMode=all` . In dit geval wordt de ruimte geïnterpreteerd als een ' and '-bewerking. Elk van de resterende voor waarden moet aanwezig zijn in het document om in aanmerking te komen als overeenkomst. De resulterende voorbeeld query wordt als volgt geïnterpreteerd: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 Een gewijzigde query structuur voor deze query zou er als volgt uitzien, waarbij een overeenkomend document het snij punt is van alle drie subquery's: 
 
@@ -152,16 +152,16 @@ Wanneer de standaard-Analyzer de term verwerkt, wordt er in een kleine letter "O
 
 Het gedrag van een Analyzer kan worden getest met behulp van de [analyse-API](/rest/api/searchservice/test-analyzer). Geef de tekst op die u wilt analyseren om te zien welke termen worden gegenereerd door de analyse functie. Als u bijvoorbeeld wilt zien hoe de tekst ' Air-condition ' door de standaard-Analyzer wordt verwerkt, kunt u de volgende aanvraag verzenden:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 De standaard-Analyzer verbreekt de invoer tekst in de volgende twee tokens, waarbij aantekeningen worden gemaakt met kenmerken zoals begin-en eind verschuivingen (gebruikt voor het markeren van treffers) en hun positie (gebruikt voor overeenkomende woord groepen):
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ De standaard-Analyzer verbreekt de invoer tekst in de volgende twee tokens, waar
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Lexicale analyse geldt alleen voor query typen waarvoor volledige voor waarden z
 
 Het ophalen van documenten heeft betrekking op het zoeken van document met overeenkomende termen in de index. Deze fase wordt het beste geïnterpreteerd door een voor beeld. Laten we beginnen met een Hotels-index met het volgende eenvoudige schema: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Het ophalen van documenten heeft betrekking op het zoeken van document met overe
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Verder wordt ervan uitgegaan dat deze index de volgende vier documenten bevat: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Verder wordt ervan uitgegaan dat deze index de volgende vier documenten bevat:
         }
     ]
 }
-~~~~
+```
 
 **Hoe termen worden geïndexeerd?**
 
@@ -251,7 +251,7 @@ Het is gebruikelijk, maar niet vereist, voor het gebruik van dezelfde analyse fu
 
 Als u naar ons voor beeld terugkeert, ziet u in het veld **titel** de omgekeerde index:
 
-| Termijn | Document lijst |
+| Term | Document lijst |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,7 +265,7 @@ In het veld titel wordt alleen *Hotel* weer gegeven in twee documenten: 1, 3.
 
 De index voor het veld **Beschrijving** is als volgt:
 
-| Termijn | Document lijst |
+| Term | Document lijst |
 |------|---------------|
 | massa | 3
 | en | 4
@@ -321,10 +321,12 @@ Elk document in een zoek resultatenset krijgt een relevantie score. De functie v
 ### <a name="scoring-example"></a>Voor beeld van Score
 
 Haal de drie documenten op die overeenkomen met onze voorbeeld query:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 Document 1 komt overeen met de query aanbevolen omdat zowel de term *spacious* als de vereiste woordgroepen Oceaan in het veld Beschrijving worden *weer gegeven* . De volgende twee documenten komen alleen overeen met de *weer gave*van de woordgroepen Oceaan. Mogelijk is het verrassende dat de relevantie score voor document 2 en 3 afwijkt, ook al zijn ze op dezelfde manier overeenkomen met de query. De Score formule bevat meer onderdelen dan alleen TF/IDF. In dit geval is document 3 een iets hogere score toegewezen, omdat de beschrijving korter is. Meer informatie over de [praktische Score formule van Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) om te begrijpen hoe veld lengte en andere factoren van invloed kunnen zijn op de relevantie score.
 

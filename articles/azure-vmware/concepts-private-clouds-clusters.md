@@ -3,14 +3,14 @@ title: Concepten-persoonlijke Clouds en clusters
 description: Meer informatie over de belangrijkste mogelijkheden van Azure VMware-software-gedefinieerde data centers en vSphere-clusters in VMware-oplossing in azure op VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316865"
 ---
-# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing preview persoonlijke Cloud en cluster concepten
+#  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing persoonlijke Cloud-en cluster concepten
 
 De Azure VMware-oplossing levert persoonlijke Clouds op basis van VMware in Azure. De persoonlijke Clouds zijn gebouwd op basis van clusters van toegewezen bare-metal hosts en worden geïmplementeerd en beheerd via de Azure Portal. Clusters in persoonlijke Clouds worden ingericht met VMware vSphere-, vCenter-, vSAN-en NSX-software. Azure VMware-oplossing, hardware-en software-implementaties in de privécloud zijn volledig geïntegreerd en geautomatiseerd in Azure.
 
@@ -61,7 +61,7 @@ Het algemene upgrade beleid en de processen voor de Azure VMware Solution platfo
 
 Host onderhoud en levenscyclus beheer worden uitgevoerd zonder gevolgen voor de capaciteit of prestaties van particuliere cloud clusters. Voor beelden van automatische host onderhoud zijn onder andere firmware-upgrades en reparaties of vervangingen van hardware.
 
-Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van uw Azure VMware-oplossing privécloud, bent u verantwoordelijk voor NSX-T SDN-configuratie, zoals netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
+Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van uw Azure VMware-oplossing privécloud, bent u verantwoordelijk voor de configuratie van NSX-T SDN. Bijvoorbeeld netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
 
 > [!IMPORTANT]
 > Een Azure VMware-oplossings beheerder mag de configuratie van de NSX-T-rand of de laag-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.

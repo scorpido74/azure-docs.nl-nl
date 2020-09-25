@@ -1,5 +1,5 @@
 ---
-title: Groepen toevoegen, verwijderen en weer geven in een beheer eenheid (preview)-Azure Active Directory | Microsoft Docs
+title: Groepen toevoegen, verwijderen en weer geven in een beheer eenheid-Azure Active Directory | Microsoft Docs
 description: Groepen en machtigingen voor rollen beheren in een beheer eenheid in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264998"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Groepen toevoegen en beheren in beheer eenheden in Azure Active Directory
 
@@ -31,7 +31,7 @@ Zie aan de [slag](roles-admin-units-manage.md#get-started)voor de stappen voor h
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In het voor beeld kunt u groepen alleen afzonderlijk toewijzen aan een beheer eenheid. Er is geen optie voor het bulksgewijs toewijzen van groepen aan een beheer eenheid. U kunt een groep toewijzen aan een beheer eenheid op een van de twee manieren in de portal:
+U kunt groepen alleen afzonderlijk toewijzen aan een beheer eenheid. U kunt geen groepen bulksgewijs toewijzen aan een beheer eenheid. U kunt een groep toewijzen aan een beheer eenheid op een van de twee manieren in de portal:
 
 1. Op de pagina **Azure AD >-groepen**
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316729"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -105,7 +105,7 @@ Fout bericht: de momentopname bewerking is mislukt, omdat de status van de VSS-s
 
 Deze fout treedt op omdat de VSS-schrijvers een slechte status hebben. Azure Backup extensies communiceren met VSS-schrijvers om moment opnamen van de schijven te maken. Volg deze stappen om dit probleem op te lossen:
 
-Herstart de VSS-schrijvers die een slechte status hebben.
+Stap 1: Start de VSS-schrijvers opnieuw op met een onjuiste status.
 - Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` .
 - De uitvoer bevat alle VSS-schrijvers en hun status. Voor elke VSS Writer met een status die niet **[1] stabiel**is, start u de service van de betreffende VSS Writer opnieuw. 
 - Als u de service opnieuw wilt starten, voert u de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
@@ -117,12 +117,20 @@ Herstart de VSS-schrijvers die een slechte status hebben.
 > Het opnieuw starten van sommige services kan invloed hebben op uw productie omgeving. Zorg ervoor dat het goedkeurings proces wordt gevolgd en dat de service opnieuw wordt gestart op de geplande downtime.
  
    
-Als het probleem niet is opgelost door de VSS-schrijvers opnieuw op te starten, wordt het probleem nog steeds persistent gemaakt als gevolg van een time-out.
-- Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid (als beheerder) om te voor komen dat de threads worden gemaakt voor BLOB-moment opnamen.
+Stap 2: als het probleem niet is opgelost door de VSS-schrijvers opnieuw op te starten, voert u de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheden (als beheerder) om te voor komen dat de threads worden gemaakt voor BLOB-moment opnamen.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+Stap 3: als de stappen 1 en 2 het probleem niet hebben opgelost, wordt de fout mogelijk veroorzaakt door een time-out voor VSS-schrijvers vanwege een beperkt aantal IOPS.<br>
+
+Als u wilt controleren, gaat u naar ***systeem-en logboeken toepassings logboeken*** en controleert u of het volgende fout bericht wordt weer gegeven:<br>
+*Er is een time-out opgetreden voor de provider van schaduw kopieën terwijl er wordt geschreven naar het volume dat wordt gekopieerd. Dit komt waarschijnlijk door buitensporige activiteiten op het volume door een toepassing of een systeem service. Probeer het later opnieuw wanneer de activiteit op het volume is verminderd.*<br>
+
+Oplossing:
+- Controleer op mogelijkheden voor het verdelen van de belasting over de VM-schijven. Hierdoor wordt de belasting van enkele schijven verminderd. U kunt [de limiet voor IOPs controleren door Diagnostische gegevens op opslag niveau in te scha kelen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+- Wijzig het back-upbeleid voor het uitvoeren van back-ups tijdens piek uren, wanneer de belasting van de virtuele machine op het laagste niveau is.
+- Voer een upgrade uit voor de Azure-schijven ter ondersteuning van hogere IOPs. [Meer informatie vindt u hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState-momentopname bewerking is mislukt omdat de VSS-service (Volume Shadow Copy) een ongeldige status heeft
 
@@ -306,6 +314,13 @@ Als u een Azure Policy hebt dat de [Tags in uw omgeving bepaalt](../governance/p
 | De back-up kan de taak niet annuleren: <br>Wacht tot de taak is voltooid. |Geen |
 
 ## <a name="restore"></a>Herstellen
+
+#### <a name="disks-appear-offline-after-file-restore"></a>Schijven worden offline weer gegeven na het herstellen van bestanden
+
+Als u na het terugzetten de schijven offline hebt gezet, kunt u het volgende doen: 
+* Controleer of de computer waarop het script wordt uitgevoerd, voldoet aan de vereisten van het besturings systeem. [Meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
+* Zorg ervoor dat u niet naar dezelfde bron herstelt. u [vindt hier meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
+
 
 | Foutdetails | Tijdelijke oplossing |
 | --- | --- |

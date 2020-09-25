@@ -3,14 +3,14 @@ title: Azure Automation Updatebeheer-logboeken opvragen
 description: In dit artikel leest u hoe u een query kunt uitvoeren op de logboeken voor Updatebeheer in uw Log Analytics-werk ruimte.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264300"
 ---
 # <a name="query-update-management-logs"></a>Query's uitvoeren op Updatebeheer-logboeken
 
@@ -33,7 +33,7 @@ Er wordt een record met een type `RequiredUpdate` gemaakt die de updates vertege
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | Product | De producten waarvoor de update van toepassing is. |
 | PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| Server | | 
+| server | | 
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *OperationsManager* |
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. |
@@ -55,7 +55,7 @@ Er wordt een record met het type `Update` gemaakt die de beschik bare updates en
 | Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
 | ComputerEnvironment | Variabelen. Mogelijke waarden zijn Azure of niet-Azure. |
 | MSRCBulletinID | ID-nummer van beveiligings bulletin. |
-| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> Kritiek<br> Belangrijk<br> Matig<br> Laag |  
+| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> Kritiek<br> Belangrijk<br> Matig<br> Beperkt |  
 | KBID | Knowledge Base-artikel-ID voor Windows Update. |
 | ManagementGroupName | De naam van de Operations Manager beheer groep of de Log Analytics-werk ruimte. |
 | UpdateID | De unieke id van de software-update. |
@@ -92,7 +92,7 @@ Er wordt een record met `UpdateAgent` het type gemaakt met details van de Update
 | DaySinceLastUpdateBucket | |
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSVersion | De versie van het besturings systeem. |
-| Server | |
+| server | |
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager`. |
 | TenantId | De unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. |
@@ -110,9 +110,9 @@ Een record met een type `UpdateRunProgress` wordt gemaakt die de update-implemen
 | Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
 | ComputerEnvironment | Variabelen. De waarden zijn Azure of niet-Azure. |
 | CorrelationId | De unieke id van de runbook-taak die wordt uitgevoerd voor de update. |
-| EndTime | Het tijdstip waarop het synchronisatie proces is beëindigd. |
+| EndTime | Het tijdstip waarop het synchronisatie proces is beëindigd. *Deze eigenschap wordt momenteel niet gebruikt. Zie TimeGenerated.* |
 | ErrorResult | Windows Update fout code gegenereerd als de installatie van een update mislukt. |
-| Status | De mogelijke installatie status van een update op de client computer,<br> `NotStarted`-de taak is nog niet geactiveerd.<br> `FailedToStart`-kan de taak op de computer niet starten.<br> `Failed`-de taak is gestart, maar is mislukt met een uitzonde ring.<br> `InProgress`-de taak wordt uitgevoerd.<br> `MaintenanceWindowExceeded`-Als de uitvoering nog niet is uitgevoerd, maar het onderhouds venster is bereikt.<br> `Succeeded`-taak geslaagd.<br> `InstallFailed`-de installatie van de update is mislukt.<br> `NotIncluded`<br> `Excluded` |
+| Status | De mogelijke installatie status van een update op de client computer,<br> `NotStarted` -de taak is nog niet geactiveerd.<br> `FailedToStart` -kan de taak op de computer niet starten.<br> `Failed` -de taak is gestart, maar is mislukt met een uitzonde ring.<br> `InProgress` -de taak wordt uitgevoerd.<br> `MaintenanceWindowExceeded` -Als de uitvoering nog niet is uitgevoerd, maar het onderhouds venster is bereikt.<br> `Succeeded` -taak geslaagd.<br> `InstallFailed` -de installatie van de update is mislukt.<br> `NotIncluded`<br> `Excluded` |
 | KBID | Knowledge Base-artikel-ID voor Windows Update. |
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSType | Type besturings systeem. Waarden zijn Windows of Linux. |
@@ -123,8 +123,8 @@ Een record met een type `UpdateRunProgress` wordt gemaakt die de update-implemen
 | ResourceType | Resource type. |
 | SourceComputerId | De unieke id van de bron computer. |
 | SourceSystem | Bron systeem voor de record. De waarde is `OperationsManager`. |
-| StartTime | Tijdstip waarop de update is gepland om te worden geïnstalleerd. |
-| SubscriptionId | De unieke id voor het Azure-abonnement. | 
+| StartTime | Tijdstip waarop de update is gepland om te worden geïnstalleerd. *Deze eigenschap wordt momenteel niet gebruikt. Zie TimeGenerated.* |
+| SubscriptionId | De unieke id voor het Azure-abonnement. |
 | SucceededOnRetry | Waarde die aangeeft of de uitvoering van de update bij de eerste poging is mislukt en dat de huidige bewerking een nieuwe poging doet. |
 | TimeGenerated | De datum en het tijdstip waarop de record is gemaakt. |
 | Titel | De titel van de update. |
@@ -209,7 +209,7 @@ Zie [Operations Manager integratie valideren met Azure monitor logboeken](../../
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Enkelvoudige Azure VM-evaluatie query's (Windows)
 
-Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine waarop u een query uitvoert. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine waarop u een query uitvoert. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
 
@@ -238,7 +238,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Enkelvoudige Azure VM-evaluatie query's (Linux)
 
-Voor sommige Linux-distributies is er geen sprake van een [endian](https://en.wikipedia.org/wiki/Endianness) die overeenkomt met de VMUUID-waarde die afkomstig is van Azure Resource Manager en wat wordt opgeslagen in azure monitor Logboeken. Met de volgende query wordt gecontroleerd op een overeenkomst op basis van de endian. Vervang de waarden voor VMUUID door de indeling big endian en little-endian van de GUID om de resultaten correct te retour neren. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs:`Update | where Computer == "<machine name>"
+Voor sommige Linux-distributies is er geen sprake van een [endian](https://en.wikipedia.org/wiki/Endianness) die overeenkomt met de VMUUID-waarde die afkomstig is van Azure Resource Manager en wat wordt opgeslagen in azure monitor Logboeken. Met de volgende query wordt gecontroleerd op een overeenkomst op basis van de endian. Vervang de waarden voor VMUUID door de indeling big endian en little-endian van de GUID om de resultaten correct te retour neren. U kunt de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates

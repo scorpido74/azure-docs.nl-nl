@@ -8,19 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316933"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Prijs informatie voor SQL Server op virtuele machines van Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,7 +94,7 @@ Zie de volgende koppelingen voor het maken van een Azure-VM met SQL Server 2017 
 > [!NOTE]
 > Het is nu mogelijk om het licentie model te wijzigen van betalen per gebruik om uw eigen licentie (BYOL) en terug te brengen. Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie. 
 
-## <a name="bring-your-own-license-byol"></a><a id="byol"></a>Bring Your Own License (BYOL)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Bring Your Own License (BYOL)
 
 Met behulp van een bestaande SQL Server volume licentie met Software Assurance in een Azure-VM kunt u **uw eigen SQL Server-licentie meenemen via License Mobility**, ook wel **BYOL**genoemd. Met een SQL Server-VM met BYOL worden alleen kosten in rekening gebracht voor de kosten van het uitvoeren van de virtuele machine, niet voor SQL Server licenties, gezien dat u al licenties en Software Assurance hebt aangeschaft via een volume licentie programma.
 
@@ -134,7 +134,7 @@ Als u een Azure-VM met SQL Server 2017 wilt maken met een van deze kopieën van 
 
 Om onnodige kosten te voor komen, kiest u een optimale grootte van de virtuele machine en overweegt u af en toe afsluiten voor niet-continue werk belastingen.
 
-### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>De grootte van uw virtuele machine correct aanpassen
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> De grootte van uw virtuele machine correct aanpassen
 
 De licentie kosten van SQL Server zijn direct gerelateerd aan het aantal Vcpu's. Kies een VM-grootte die overeenkomt met de verwachte behoeften voor CPU, geheugen, opslag en I/O-band breedte. Zie [Windows VM-grootten](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) en- [VM-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor een volledige lijst met opties voor de computer grootte.
 

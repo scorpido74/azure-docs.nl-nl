@@ -4,17 +4,17 @@ description: Azure Security Bench Mark v2-netwerk beveiliging
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059235"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329428"
 ---
-# <a name="security-control-network-security"></a>Beveiligings beheer: netwerk beveiliging
+# <a name="security-control-v2-network-security"></a>Beveiligings controle v2: netwerk beveiliging
 
 Netwerk beveiliging heeft betrekking op besturings elementen voor het beveiligen en beveiligen van Azure-netwerken. Dit omvat het beveiligen van virtuele netwerken, het tot stand brengen van particuliere verbindingen, het voor komen en beperken van externe aanvallen en het beveiligen van DNS.
 
@@ -30,15 +30,19 @@ Op basis van uw toepassingen en de segmentatie strategie van een onderneming kun
 
 Gebruik Azure Security Center adaptieve netwerk beveiliging voor het aanbevelen van configuraties voor netwerk beveiligings groepen die poort-en bron-Ip's beperken op basis van de verwijzing naar extern netwerk verkeer regels.
 
+Gebruik Azure Sentinel om het gebruik van verouderde onveilige protocollen, zoals SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, niet-ondertekende LDAP-bindingen en zwakke versleuteling in Kerberos, te detecteren.
+
 - [Een netwerk beveiligings groep met beveiligings regels maken](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [Azure Firewall implementeren en configureren](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Adaptieve netwerk beveiliging in Azure Security Center](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel Inveilige protocollen werkmap](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +58,7 @@ Gebruik Azure Security Center adaptieve netwerk beveiliging voor het aanbevelen 
 
 Gebruik Azure ExpressRoute of het virtuele particuliere netwerk (VPN) van Azure om particuliere verbindingen te maken tussen Azure-data centers en on-premises infra structuur in een co-locatie omgeving. ExpressRoute-verbindingen gaan niet via het open bare Internet en bieden meer betrouw baarheid, hogere snelheden en lagere latenties dan typische Internet verbindingen. Voor punt-naar-site-VPN en site-naar-site-VPN kunt u on-premises apparaten of netwerken verbinden met een virtueel netwerk met behulp van een combi natie van deze VPN-opties en Azure ExpressRoute.
 
-Als u twee of meer virtuele netwerken in azure met elkaar wilt verbinden, gebruikt u peering op virtueel netwerk. Netwerk verkeer tussen gekoppelde virtuele netwerken is privé en wordt opgeslagen in het Azure-backbone-netwerk. 
+Als u twee of meer virtuele netwerken in azure met elkaar wilt verbinden, gebruikt u peering op het virtuele netwerk of een privé koppeling. Netwerk verkeer tussen gekoppelde virtuele netwerken is privé en wordt opgeslagen in het Azure-backbone-netwerk. 
 
 - [Wat zijn de ExpressRoute-connectiviteits modellen?](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ Als u twee of meer virtuele netwerken in azure met elkaar wilt verbinden, gebrui
 
 - [Peering op virtueel netwerk](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ Persoonlijke toegang is een extra verdedigings maatregel naast verificatie en ve
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ Beveilig Azure-bronnen tegen aanvallen van externe netwerken, waaronder DDoS-aan
 -   Gebruik WAF-mogelijkheden (Web Application firewall) in Azure-toepassing gateway, Azure front-deur en Azure Content Delivery Network (CDN) om uw toepassingen, services en Api's te beschermen tegen aanvallen via de toepassingslaag. 
 
 -   Bescherm uw assets tegen DDoS-aanvallen door DDoS Standard-beveiliging in te scha kelen op uw virtuele Azure-netwerken. 
+-   Gebruik Azure Security Center om onjuiste configuratie Risico's te detecteren die zijn gerelateerd aan de bovenstaande. 
 
 - [Documentatie voor Azure Firewall](/azure/firewall/)
 
@@ -117,7 +124,7 @@ Beveilig Azure-bronnen tegen aanvallen van externe netwerken, waaronder DDoS-aan
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Geen
 
@@ -139,7 +146,7 @@ Opmerking: als u een wettelijke of andere vereiste hebt voor het gebruik van ID'
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -191,7 +198,7 @@ Als Azure DNS als gezaghebbende DNS-service wordt gebruikt, moet u ervoor zorgen
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

@@ -3,18 +3,18 @@ title: Azure Automation update-evaluaties weer geven
 description: In dit artikel leest u hoe u update-evaluaties weergeeft voor Updatebeheer-implementaties.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264452"
 ---
-# <a name="view-update-assessments"></a>Update-evaluaties bekijken
+# <a name="view-update-assessments-in-update-management"></a>Update-evaluaties weer geven in Updatebeheer
 
-In Updatebeheer kunt u informatie weer geven over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties.
+In Updatebeheer kunt u informatie weer geven over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties. U kunt de beoordelings gegevens weer geven die zijn gericht op de geselecteerde virtuele machine van Azure, van de geselecteerde server voor de Arc of van het Automation-account op alle geconfigureerde computers en servers.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -22,27 +22,33 @@ Meld u aan bij [Azure Portal](https://portal.azure.com)
 
 ## <a name="view-update-assessment"></a>Update-evaluatie bekijken
 
-In Updatebeheer kunt u informatie weer geven over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties.
+Als u de update-evaluatie van een Azure-VM wilt bekijken, gaat u naar **virtual machines** en selecteert u uw virtuele machine in de lijst. Selecteer in het menu links **gast en host updates**en selecteer vervolgens **Ga naar updatebeheer** op de pagina **gast en host-updates** .
+
+In Updatebeheer kunt u informatie weer geven over uw computer, ontbrekende updates, update-implementaties en geplande update-implementaties.
+
+[![Evaluatie weergave updatebeheer voor Azure VM](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+Als u de update-evaluatie van een server met Arc wilt bekijken, gaat u naar **servers-Azure-boog** en selecteert u de server in de lijst. Selecteer in het menu links de optie **gast en host-updates**. Selecteer op de pagina **gast en host-updates** de optie **Ga naar updatebeheer**.
+
+In Updatebeheer kunt u informatie weer geven over uw computer met Arc, ontbrekende updates, update-implementaties en geplande update-implementaties.
+
+[![Beoordelings weergave updatebeheer voor servers met Arc-functionaliteit](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+Als u de update-evaluatie op alle computers wilt weer geven, inclusief de Arc ingeschakelde servers van uw Automation-account, gaat u naar **Automation-accounts** en selecteert u uw Automation-account met updatebeheer ingeschakeld in de lijst. Selecteer in uw Automation-account **Update beheer** in het menu links.
+
+De updates voor uw omgeving worden vermeld op de pagina **Update beheer** . Als er updates worden geïdentificeerd als ontbrekend, wordt een lijst met deze weer gegeven op het tabblad **ontbrekende updates** .
 
 [![Standaard weergave updatebeheer](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-Voer de volgende handelingen uit om een update-evaluatie weer te geven.
+Onder de kolom **compatibiliteit** ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u de status van de Update Agent bekijken. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan waarmee u het probleem kunt verhelpen.
 
-1. In de Azure Portal gaat u naar **Automation-accounts** en selecteert u uw Automation-account met updatebeheer ingeschakeld in de lijst.
+Selecteer onder **informatie koppeling**de koppeling voor een update om het ondersteunings artikel te openen waarmee u belang rijke informatie over de update krijgt.
 
-2. Selecteer in uw Automation-account **Update beheer** in het linkerdeel venster.
+[![Update status weer geven](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. De updates voor uw omgeving worden vermeld op de pagina **Update beheer** . Als er updates worden geïdentificeerd als ontbrekend, wordt een lijst met deze weer gegeven op het tabblad **ontbrekende updates** .
+Klik ergens anders in de update om het deel venster zoeken in Logboeken te openen. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U kunt deze query wijzigen of uw eigen query maken om gedetailleerde informatie weer te geven.
 
-   Onder de kolom **compatibiliteit** ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u de status van de Update Agent bekijken. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan waarmee u het probleem kunt verhelpen.
-
-4. Selecteer onder **informatie koppeling**de koppeling voor een update om het ondersteunings artikel te openen waarmee u belang rijke informatie over de update krijgt.
-
-     [![Update status weer geven](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. Klik ergens anders in de update om het deel venster zoeken in Logboeken te openen. De query voor zoeken in logboeken is vooraf gedefinieerd voor deze specifieke update. U kunt deze query wijzigen of uw eigen query maken om gedetailleerde informatie weer te geven.
-
-    [![Query resultaten van logboek weer geven](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[![Query resultaten van logboek weer geven](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>Ontbrekende updates weer geven
 

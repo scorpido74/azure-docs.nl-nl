@@ -1,28 +1,61 @@
 ---
-title: Concepten-upgrades van de privécloud
-description: Meer informatie over de belangrijkste upgrade processen en functies in de Azure VMware-oplossing
+title: Concepten-updates en upgrades voor Privécloud
+description: Meer informatie over de belangrijkste upgrade processen en functies in de Azure VMware-oplossing.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: f541aa4e4963cf40fad71201180ea118a1513fca
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316797"
 ---
-# <a name="azure-vmware-solution-upgrade-concepts"></a>Upgrade concepten voor Azure VMware-oplossing
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Updates en upgrades voor persoonlijke Clouds in azure VMware-oplossing
 
-Een van de belangrijkste voor delen van persoonlijke Clouds van Azure VMware-oplossingen is dat het platform voor u wordt onderhouden. Platform onderhoud omvat automatische upgrades naar een gevalideerde VMware-software bundel. De upgrades worden regel matig uitgevoerd, zodat u altijd beschikt over de meest recente gevalideerde versies van de software.
+## <a name="overview"></a>Overzicht
 
-## <a name="azure-vmware-solution-private-cloud-software-upgrades"></a>Azure VMware-oplossing persoonlijke cloud software-upgrades
+Een van de belangrijkste voor delen van persoonlijke Clouds van Azure VMware-oplossingen is dat het platform voor u wordt onderhouden. Platform onderhoud omvat geautomatiseerde updates voor een gevalideerde VMware-software bundel, om ervoor te zorgen dat u de nieuwste versie van de gevalideerde persoonlijke cloud software van Azure VMware-oplossing gebruikt.
 
-Het Azure VMware-oplossing Private Cloud platform bevat specifieke versies van VMware vSphere, ESXi, vSAN en NSX-T-software. De software bundel van de privécloud wordt gevalideerd voor gebruik in nieuwe privécloud-installaties en voor upgrades van bestaande persoonlijke Clouds.
+Met name een persoonlijke cloud van Azure VMware-oplossing bevat:
 
-Het upgrade proces voor levenscyclus beheer vereist geen uitval tijd voor uw persoonlijke Clouds. Het upgrade proces zorgt ervoor dat u automatisch de nieuwste versie van de gevalideerde persoonlijke cloud software van Azure VMware-oplossingen gebruikt. Upgrades worden toegepast op normale uitgebracht zodat persoonlijke Clouds nooit meer dan één versie achter de meest recente versie van de gevalideerde software bundel zijn. U wordt op de hoogte gesteld van geplande upgrades naar uw privécloud. U kunt de upgrade uitstellen als uw privécloud binnen één versie van de meest recente release valt.
+- Toegewezen bare-metal server knooppunten ingericht met VMware ESXi Hyper Visor 
+- vCenter-Server voor het beheren van ESXi en vSAN 
+- VMware NSX-T software-gedefinieerde netwerken voor virtuele machines met vSphere-werk belasting  
+- VMware vSAN-gegevens opslag voor virtuele machines met vSphere-werk belasting  
+- VMware HCX voor werk belasting mobiliteit  
 
-Essentiële patches en updates worden toegepast wanneer ze worden gevalideerd. U wordt vooraf op de hoogte gebracht van de vereiste essentiële upgrades. Dit beleid zorgt ervoor dat er voor uw privécloud essentiële patches en updates onmiddellijk worden toegepast.
+Naast deze onderdelen bevat een persoonlijke cloud van Azure VMware-oplossing resources in azure aan die vereist zijn voor connectiviteit en om de privécloud te kunnen uitvoeren. De Azure VMware-oplossing bewaakt voortdurend de status van zowel de aan-als de VMware-onderdelen. Wanneer er een fout wordt gedetecteerd door de Azure VMware-oplossing, wordt er actie ondernomen om de mislukte onderdelen te herstellen. 
 
-VMware-software versies worden vermeld in het [concept artikel private clouds en clusters](concepts-private-clouds-clusters.md) en de [Veelgestelde vragen](faq.md).
+## <a name="what-components-get-updated"></a>Welke onderdelen worden bijgewerkt?   
+
+De Azure VMware-oplossing werkt de volgende VMware-onderdelen bij: 
+
+- vCenter Server en ESXi die worden uitgevoerd op de bare-metal server knooppunten 
+- vSAN 
+- NSX-T 
+
+De Azure VMware-oplossing werkt ook de software in de aan bij, zoals Stuur Programma's, software op de netwerk switches en firmware op de bare-metal knoop punten. 
+
+## <a name="types-of-updates"></a>Typen updates
+
+Met de Azure VMware-oplossing worden de volgende typen updates toegepast op VMware-onderdelen:
+
+- Patches: beveiligings patches en oplossingen voor oplossingen die worden vrijgegeven door VMware. 
+- Updates: secundaire versie-updates van een of meer VMware-onderdelen. 
+- Upgrades: belang rijke versie-updates van een of meer VMware-onderdelen.
+
+U wordt gewaarschuwd voor en nadat patches zijn toegepast op uw persoonlijke Clouds. We werken ook samen met u bij het plannen van een onderhouds venster voordat u updates of upgrades toepast op uw privécloud. 
+
+## <a name="vmware-appliance-backup"></a>VMware-apparaat back-up 
+
+Naast het maken van updates, maakt Azure VMware-oplossing een configuratie back-up van deze VMware-onderdelen:
+
+- vCenter Server 
+- NSX-T-beheer 
+
+In het geval van een storing kan de Azure VMware-oplossing deze herstellen vanuit de back-up van de configuratie. 
+
+Voor meer informatie over de versies van VMware-software raadpleegt u het [concept artikel private clouds and clusters](concepts-private-clouds-clusters.md) en de [Veelgestelde vragen](faq.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

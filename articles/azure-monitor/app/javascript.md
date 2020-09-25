@@ -3,13 +3,13 @@ title: Azure-toepassing Insights voor Java script-web-apps
 description: Het ophalen van de pagina weergave en aantal sessies, webclientgegevens, toepassingen met één pagina (SPA) en het bijhouden van gebruiks patronen. Detecteer uitzonderingen en prestatieproblemen in JavaScript-webpagina's.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89656942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328901"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -107,7 +107,7 @@ De beschik bare configuratie opties zijn
 | Naam | Type | Beschrijving
 |------|------|----------------
 | src | teken reeks **[vereist]** | De volledige URL van waaruit de SDK moet worden geladen. Deze waarde wordt gebruikt voor het kenmerk src van een dynamisch toegevoegd &lt; script/ &gt; label. U kunt de open bare CDN-locatie of uw eigen privé-hostserver gebruiken.
-| naam | teken reeks *[Optioneel]* | De globale naam voor de geïnitialiseerde SDK, wordt standaard ingesteld op `appInsights` . Dit is dus ```window.appInsights``` een verwijzing naar het geïnitialiseerde exemplaar. Opmerking: als u een naam waarde opgeeft of een vorige instantie lijkt te zijn toegewezen (via de globale naam appInsightsSDK), wordt deze naam ook gedefinieerd in de globale naam ruimte, omdat ```window.appInsightsSDK=<name value>``` Dit vereist is voor de SDK-initialisatie code om ervoor te zorgen dat deze de juiste skelet-en proxy methoden van het fragment initialiseert en bijwerkt.
+| name | teken reeks *[Optioneel]* | De globale naam voor de geïnitialiseerde SDK, wordt standaard ingesteld op `appInsights` . Dit is dus ```window.appInsights``` een verwijzing naar het geïnitialiseerde exemplaar. Opmerking: als u een naam waarde opgeeft of een vorige instantie lijkt te zijn toegewezen (via de globale naam appInsightsSDK), wordt deze naam ook gedefinieerd in de globale naam ruimte, omdat ```window.appInsightsSDK=<name value>``` Dit vereist is voor de SDK-initialisatie code om ervoor te zorgen dat deze de juiste skelet-en proxy methoden van het fragment initialiseert en bijwerkt.
 | ! | nummer in MS *[Optioneel]* | Hiermee wordt de laad vertraging gedefinieerd die moet worden gewacht voordat wordt geprobeerd de SDK te laden. De standaard waarde is 0ms en een negatieve waarde voegt onmiddellijk een script code toe aan het &lt; hoofd &gt; gebied van de pagina. vervolgens wordt de gebeurtenis voor het laden van de pagina geblokkeerd totdat het script wordt geladen (of mislukt).
 | useXhr | Booleaanse waarde *[Optioneel]* | Deze instelling wordt alleen gebruikt voor het rapporteren van SDK-laad fouten. Reporting probeert eerst fetch (), indien beschikbaar en vervolgens terug te gebruiken naar XHR, om deze waarde in te stellen op True, alleen de ophaal controle te omzeilen. Het gebruik van deze waarde is alleen vereist als uw toepassing wordt gebruikt in een omgeving waarin ophalen de fout gebeurtenissen niet zou kunnen verzenden.
 | crossOrigin | teken reeks *[Optioneel]* | Door deze instelling op te nemen, neemt de script code die is toegevoegd voor het downloaden van de SDK het kenmerk crossOrigin met deze teken reeks waarde. Wanneer niet gedefinieerd (de standaard instelling), wordt er geen crossOrigin-kenmerk toegevoegd. Er zijn geen aanbevolen waarden gedefinieerd (de standaard instelling). ""; of anoniem (voor alle geldige waarden raadpleegt u [HTML-kenmerk `crossorigin` :](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) documentatie)

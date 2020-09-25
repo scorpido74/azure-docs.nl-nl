@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b42624506b3fe3a40cd19353c0dc25ecd8a5da02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328799"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,7 +173,7 @@ Het wijzigen van de naam van kolommen of tabellen zorgt ervoor dat de gegevens s
 
 Voor andere typen schema wijzigingen: het maken van opgeslagen procedures of het weghalen van een index voor het bijwerken van het synchronisatie schema is niet vereist.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Automatische replicatie van schema wijzigingen oplossen
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Automatische replicatie van schema wijzigingen oplossen
 
 De replicatie logica die in dit artikel wordt beschreven, werkt niet meer in bepaalde situaties, bijvoorbeeld als u een schema wijziging hebt aangebracht in een on-premises data base die niet wordt ondersteund in Azure SQL Database. In dat geval mislukt het synchroniseren van de schema-tabel voor het bijhouden van wijzigingen. U moet dit probleem hand matig oplossen:
 
@@ -201,7 +201,7 @@ De replicatie logica die in dit artikel wordt beschreven, werkt niet meer in bep
 
 Als u de records in de tabel schema wijzigingen bijhouden wilt opschonen, gebruikt u verwijderen in plaats van TRUNCATe. Verstrek nooit de kolom Identity in de tabel schema voor het bijhouden van wijzigingen door gebruik te maken van DBCC CHECKIDENT. U kunt nieuwe plannings tabellen voor het bijhouden van wijzigingen maken en de tabel naam in de DDL-trigger bijwerken als opnieuw seeden vereist is.
 
-## <a name="other-considerations"></a><a name="other"></a>Andere overwegingen
+## <a name="other-considerations"></a><a name="other"></a> Andere overwegingen
 
 -   Database gebruikers die de hub-en leden databases configureren, moeten voldoende machtigingen hebben om de opdrachten voor schema wijziging uit te voeren.
 

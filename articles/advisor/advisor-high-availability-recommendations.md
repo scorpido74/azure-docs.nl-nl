@@ -3,12 +3,12 @@ title: Verbeter de betrouw baarheid van uw toepassing met Advisor
 description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritieke Azure-implementaties te garanderen en te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264589"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
 
@@ -76,7 +76,7 @@ Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die
 
 ## <a name="repair-invalid-log-alert-rules"></a>Ongeldige regels voor logboek waarschuwingen herstellen
 
-Azure Advisor detecteert waarschuwings regels waarvoor ongeldige query's zijn opgegeven in de sectie voor waarde. U kunt waarschuwings regels voor logboeken maken in Azure Monitor en ze gebruiken om analyse query's uit te voeren op basis van opgegeven intervallen. De resultaten van een query bepalen of een waarschuwing moet worden geactiveerd. Analytische query's kunnen na verloop van tijd ongeldig worden vanwege wijzigingen in resources, tabellen of opdrachten waarnaar wordt verwezen. Advisor raadt u aan de query in de waarschuwings regel te corrigeren om te voor komen dat deze automatisch wordt uitgeschakeld en de bewakings dekking van uw resources in azure te controleren. [Meer informatie over het oplossen van waarschuwings regels.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor detecteert waarschuwings regels voor logboeken waarvoor ongeldige query's zijn opgegeven in de voor waarde-sectie. Met Azure Monitor waarschuwings regels vastleggen voert u query's uit op de opgegeven frequentie en Fire Alerts op basis van de resultaten. Query's kunnen na verloop van tijd ongeldig worden vanwege wijzigingen in de resources, tabellen of opdrachten waarnaar wordt verwezen. Advisor raadt correcties aan voor waarschuwings query's om te voor komen dat de regels automatisch worden uitgeschakeld en om te zorgen voor bewakings dekking. Zie [Troubleshooting alert Rules](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid) (Engelstalig) voor meer informatie.
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Consistente indexerings modus configureren voor uw Azure Cosmos DB verzameling
 
