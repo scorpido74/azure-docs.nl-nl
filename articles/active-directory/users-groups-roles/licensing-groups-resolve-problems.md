@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7006ecd760a886fdebe50becb2ab366ff79cf057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319806"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -87,7 +87,7 @@ Om dit probleem op te lossen, moet u ervoor zorgen dat het vereiste plan nog ste
 
 ## <a name="usage-location-isnt-allowed"></a>Gebruiks locatie is niet toegestaan
 
-**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven in het **User**  >  **Profile**  >  gedeelte**instellingen** voor gebruikers profielen in de Azure Portal.
+**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven onder de sectie **gebruikers**  >  **profiel**  >  **bewerken** in de Azure Portal.
 
 Wanneer Azure AD probeert een groeps licentie toe te wijzen aan een gebruiker van wie de gebruiks locatie niet wordt ondersteund, mislukt deze en registreert deze een fout bij de gebruiker.
 

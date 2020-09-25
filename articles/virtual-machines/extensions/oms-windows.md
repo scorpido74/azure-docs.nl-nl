@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331502"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
 
@@ -36,7 +36,7 @@ De volgende tabel bevat een overzicht van de versie van de Windows Log Analytics
 
 | Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Releaseopmerkingen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18038 | 1.0.18040.2 | Augustus 2020   | <ul><li>Hiermee wordt een probleem in azure Arc opgelost</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | Augustus 2020   | <ul><li>Hiermee wordt een probleem in azure Arc opgelost</li></ul> |
 | 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Hiermee schakelt u connectiviteit via een persoonlijke koppeling met behulp van Azure Monitor Beveiligingsbereiken</li><li>Voegt opname beperking toe om een onverwachte, onbedoelde instroom te voor komen bij opname naar een werk ruimte</li><li>Voegt ondersteuning toe voor aanvullende Azure Government Clouds en regio's</li><li>Hiermee wordt een bug opgelost waarbij HealthService.exe vastgelopen</li></ul> |
 | 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Hiermee wordt ondersteuning voor het ondertekenen van SHA-2-code toegevoegd</li><li>Verbetert de installatie en het beheer van de VM-extensie</li><li>Hiermee wordt een fout in azure Arc voor servers-integratie opgelost</li><li>Voegt een ingebouwd hulp programma voor probleem oplossing toe voor klant ondersteuning</li><li>Voegt ondersteuning toe voor aanvullende Azure Government regio's</li> |
 | 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li></ul> |

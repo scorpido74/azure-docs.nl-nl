@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263586"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Zelf studie: een Azure SQL Database toevoegen aan een groep van een failover
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Maak uw failovergroep en voeg uw data base toe met behulp van de Azure Portal.
    - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial` .
    - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **selecteren**.
       - **Server naam**: Typ een unieke naam voor de secundaire server, bijvoorbeeld `mysqlsecondary` .
-      - **Aanmelding van de server beheerder**: type`azureuser`
+      - **Aanmelding van de server beheerder**: type `azureuser`
       - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
       - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US` . Deze locatie mag niet dezelfde locatie zijn als de primaire server.
 
@@ -336,7 +336,7 @@ Resources opschonen door de resource groep te verwijderen.
 Verwijder de resource groep met behulp van de Azure Portal.
 
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep.
-1. Selecteer **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
+1. Selecteer  **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
 1. Typ de naam van de resource groep, `myResourceGroup` in het tekstvak en selecteer vervolgens **verwijderen** om de resource groep te verwijderen.  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -401,7 +401,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een failovergroep in Azure SQL Database. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep in Azure SQL Database.|
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add database to a failover group")]
 

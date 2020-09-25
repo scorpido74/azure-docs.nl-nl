@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: b6cb79c4310237e2052ff7eca59a5e2d356968a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
+ms.openlocfilehash: c26acb1460516781b34a5dcc861164e9ef87a37a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331621"
 ---
 # <a name="security-frame-session-management"></a>Beveiligings kader: sessie beheer
 | Product/service | Artikel |
@@ -42,7 +42,7 @@ ms.locfileid: "89000461"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Als de toepassing afhankelijk is van het toegangs token dat is uitgegeven door Azure AD, moet de afmeldings gebeurtenis-handler worden aangeroepen |
 
 ### <a name="example"></a>Voorbeeld
@@ -77,7 +77,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | SaS-tokens die zijn gegenereerd voor authenticatie naar Azure IoT Hub moeten een eindige verval periode hebben. Behoud de levens duur van het SaS-token tot een minimum om de hoeveelheid tijd te beperken die ze kunnen herhalen voor het geval de tokens worden aangetast.|
 
 ## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>Minimale token levensduur gebruiken voor gegenereerde bron tokens
@@ -88,7 +88,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Verminder de tijds duur van het bron token naar een vereiste minimum waarde. Bron tokens hebben een standaard geldige time span van 1 uur.|
 
 ## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>Goed afmelden met behulp van WsFederation-methoden implementeren bij gebruik van ADFS
@@ -99,7 +99,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Als de toepassing gebruikmaakt van een STS-token dat is uitgegeven door ADFS, moet de afmeldings gebeurtenis-handler de methode WSFederationAuthenticationModule. FederatedSignOut () aanroepen om de gebruiker af te melden. Ook moet de huidige sessie worden vernietigd en moet de waarde van het sessie token opnieuw worden ingesteld en nullified.|
 
 ### <a name="example"></a>Voorbeeld
@@ -148,7 +148,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [IdentityServer3-federatieve afmelden](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
+| **Referenties**              | [IdentityServer3-federatieve afmelden](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
 | **Stappen** | IdentityServer biedt ondersteuning voor de mogelijkheid om met externe ID-providers te communiceren. Wanneer een gebruiker zich afmeldt bij een upstream-ID-provider, is het mogelijk dat er een melding wordt weer gegeven wanneer de gebruiker zich afmeldt, afhankelijk van het gebruikte protocol. Hiermee kunnen IdentityServer de clients hiervan op de hoogte stellen, zodat ze de gebruiker ook kunnen afmelden. Raadpleeg de documentatie in het gedeelte met verwijzingen voor de implementatie details.|
 
 ## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>Toepassingen die beschikbaar zijn via HTTPS, moeten beveiligde cookies gebruiken
@@ -159,7 +159,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Verwijzingen**              | [httpCookies-element (ASP.net-instellingen schema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie. Secure, eigenschap](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Referenties**              | [httpCookies-element (ASP.net-instellingen schema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie. Secure, eigenschap](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **Stappen** | Cookies zijn normaal gesp roken alleen toegankelijk voor het domein waarvoor ze zijn bereik. De definitie van ' Domain ' bevat helaas niet het Protocol, dus cookies die via HTTPS worden gemaakt, zijn toegankelijk via HTTP. Het kenmerk ' Secure ' geeft aan de browser aan dat de cookie alleen via HTTPS beschikbaar moet worden gemaakt. Zorg ervoor dat alle cookies die via HTTPS zijn ingesteld, gebruikmaken van het kenmerk **Secure** . De vereiste kan worden afgedwongen in het web.config bestand door het kenmerk requireSSL in te stellen op True. Het is de voorkeurs benadering omdat hiermee het **beveiligde** kenmerk wordt afgedwongen voor alle huidige en toekomstige cookies zonder dat er extra code wijzigingen hoeven te worden aangebracht.|
 
 ### <a name="example"></a>Voorbeeld
@@ -178,7 +178,7 @@ De instelling wordt afgedwongen, zelfs als HTTP wordt gebruikt voor toegang tot 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Wanneer de webtoepassing de Relying Party is en de IdP de ADFS-server is, kan het beveiligde kenmerk van het FedAuth-token worden geconfigureerd door requireSSL in te stellen op True in de `system.identityModel.services` sectie van web.config:|
 
 ### <a name="example"></a>Voorbeeld
@@ -200,7 +200,7 @@ De instelling wordt afgedwongen, zelfs als HTTP wordt gebruikt voor toegang tot 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Kenmerk van beveiligde cookie](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
+| **Referenties**              | [Kenmerk van beveiligde cookie](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
 | **Stappen** | Om het risico van het vrijgeven van informatie met een XSS-aanval (cross-site scripting) te beperken, werd een nieuw kenmerk-httpOnly-geïntroduceerd in cookies en wordt het door alle belang rijke browsers ondersteund. Het kenmerk geeft aan dat een cookie niet toegankelijk is via het script. Door gebruik te maken van HttpOnly cookies vermindert een webtoepassing de kans dat gevoelige informatie in de cookie via script kan worden gestolen en verzonden naar de website van een aanvaller. |
 
 ### <a name="example"></a>Voorbeeld
@@ -221,7 +221,7 @@ Alle HTTP-toepassingen die gebruikmaken van cookies, moeten HttpOnly opgeven in 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Eigenschap FormsAuthentication. RequireSSL](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **Referenties**              | [Eigenschap FormsAuthentication. RequireSSL](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
 | **Stappen** | De waarde van de eigenschap RequireSSL is ingesteld in het configuratie bestand voor een ASP.NET-toepassing met behulp van het kenmerk requireSSL van het configuratie-element. U kunt in het Web.config-bestand opgeven voor uw ASP.NET-toepassing, ongeacht of Transport Layer Security (TLS), voorheen bekend als SSL (Secure Sockets Layer), is vereist om de cookie voor formulier verificatie te retour neren naar de server door het kenmerk requireSSL in te stellen.|
 
 ### <a name="example"></a>Voorbeeld 
@@ -238,7 +238,7 @@ In het volgende code voorbeeld wordt het kenmerk requireSSL in het Web.config-be
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5 |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Verwijzingen**              | [Configuratie van Windows Identity Foundation (WIF) – deel II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **Referenties**              | [Configuratie van Windows Identity Foundation (WIF) – deel II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
 | **Stappen** | HideFromCsript kenmerk waarde moet worden ingesteld op True om het kenmerk httpOnly in te stellen voor FedAuth-cookies. |
 
 ### <a name="example"></a>Voorbeeld
@@ -263,7 +263,7 @@ De volgende configuratie toont de juiste configuratie:
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Cross-site-aanvraag vervalsing (CSRF of XSRF) is een type aanval waarbij een aanvaller acties kan uitvoeren in de beveiligings context van een afwijkende sessie van een andere gebruiker op een website. Het doel is om inhoud te wijzigen of te verwijderen, als de doel website uitsluitend is gebaseerd op sessie cookies om ontvangen aanvragen te verifiëren. Een aanvaller kan dit beveiligingslek misbruiken door de browser van een andere gebruiker te laten laden van een URL met een opdracht van een kwets bare site waarop de gebruiker al is aangemeld. Er zijn veel manieren om dit te doen, bijvoorbeeld door een andere website te hosten die een resource van de kwets bare server laadt of waarmee de gebruiker op een koppeling kan klikken. De aanval kan worden voor komen als de server een extra token naar de client stuurt, vereist dat de client dat token opneemt in alle toekomstige aanvragen en verifieert dat alle toekomstige aanvragen een token bevatten dat betrekking heeft op de huidige sessie, zoals door de ASP.NET AntiForgeryToken of View State te gebruiken. |
 
 | Titel                   | Details      |
@@ -272,7 +272,7 @@ De volgende configuratie toont de juiste configuratie:
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [XSRF/CSRF voor komen in ASP.NET MVC en webpagina's](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
+| **Referenties**              | [XSRF/CSRF voor komen in ASP.NET MVC en webpagina's](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **Stappen** | Anti-CSRF en ASP.NET MVC-formulieren: gebruik de `AntiForgeryToken` Help-methode voor weer gaven; plaats een `Html.AntiForgeryToken()` in het formulier, bijvoorbeeld|
 
 ### <a name="example"></a>Voorbeeld
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Profiteer van ASP.NET ingebouwde functies om webaanvalen uit te Fend](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **Referenties**              | [Profiteer van ASP.NET ingebouwde functies om webaanvalen uit te Fend](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
 | **Stappen** | CSRF-aanvallen in webformulieren kunnen worden verholpen door ViewStateUserKey in te stellen op een wille keurige teken reeks die varieert voor elke gebruiker-gebruikers-ID of, nog beter, sessie-ID. Voor een aantal technische en sociale redenen is sessie-ID veel beter, omdat een sessie-ID niet te voors pellen, een time-out optreedt en per gebruiker verschilt.|
 
 ### <a name="example"></a>Voorbeeld
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Eigenschap HttpSessionState. timeout](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **Referenties**              | [Eigenschap HttpSessionState. timeout](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
 | **Stappen** | Sessietime time-out vertegenwoordigt de gebeurtenis die optreedt wanneer een gebruiker geen actie uitvoert op een website gedurende een interval (gedefinieerd door de webserver). De gebeurtenis, op server zijde, wijzigt u de status van de gebruikers sessie in ' ongeldig ' (bijvoorbeeld ' niet meer gebruikt ') en geeft de webserver de instructie om deze te vernietigen (waarbij alle gegevens erin worden verwijderd). In het volgende code voorbeeld wordt het sessie kenmerk time-out ingesteld op 15 minuten in het Web.config bestand.|
 
 ### <a name="example"></a>Voorbeeld
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Formulier element voor verificatie (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Referenties**              | [Formulier element voor verificatie (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **Stappen** | Stel de cookie-time-out voor Forms-verificatie ticket in op 15 minuten|
 
 ### <a name="example"></a>Voorbeeld
@@ -413,7 +413,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Kenmerken**              | EnvironmentType-premises |
-| **Verwijzingen**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **Referenties**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
 | **Stappen** | Wanneer de webtoepassing Relying Party is en ADFS de STS is, kan de levens duur van de verificatie cookies-FedAuth-tokens worden ingesteld door de volgende configuratie in web.config:|
 
 ### <a name="example"></a>Voorbeeld
@@ -448,7 +448,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | De juiste afmelding van de toepassing uitvoeren wanneer de gebruiker op de knop Afmelden drukt. Na afmelden moet de toepassing de sessie van de gebruiker vernietigen en ook de cookie waarde voor de sessie opnieuw instellen en herstellen, samen met het opnieuw instellen en de cookie waarde voor nullifying-verificatie. Wanneer meerdere sessies zijn gekoppeld aan één gebruikers-id, moeten ze ook gezamenlijk worden beëindigd op de server aan de kant van de time-out of afmelding. Ten slotte moet u ervoor zorgen dat de afmeldings functionaliteit op elke pagina beschikbaar is. |
 
 ## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>Problemen oplossen met CSRF-aanvallen (cross-site request vervalsing) op ASP.NET-Web-Api's
@@ -459,7 +459,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Cross-site-aanvraag vervalsing (CSRF of XSRF) is een type aanval waarbij een aanvaller acties kan uitvoeren in de beveiligings context van een afwijkende sessie van een andere gebruiker op een website. Het doel is om inhoud te wijzigen of te verwijderen, als de doel website uitsluitend is gebaseerd op sessie cookies om ontvangen aanvragen te verifiëren. Een aanvaller kan dit beveiligingslek misbruiken door de browser van een andere gebruiker te laten laden van een URL met een opdracht van een kwets bare site waarop de gebruiker al is aangemeld. Er zijn veel manieren om dit te doen, bijvoorbeeld door een andere website te hosten die een resource van de kwets bare server laadt of waarmee de gebruiker op een koppeling kan klikken. De aanval kan worden voor komen als de server een extra token naar de client stuurt, vereist dat de client dat token opneemt in alle toekomstige aanvragen en verifieert dat alle toekomstige aanvragen een token bevatten dat betrekking heeft op de huidige sessie, zoals door de ASP.NET AntiForgeryToken of View State te gebruiken. |
 
 | Titel                   | Details      |
@@ -468,7 +468,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [CSRF-aanvallen (cross-site request vervalsing) in ASP.NET-Web-API voor komen](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
+| **Referenties**              | [CSRF-aanvallen (cross-site request vervalsing) in ASP.NET-Web-API voor komen](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
 | **Stappen** | Anti-CSRF en AJAX: het formulier token kan een probleem zijn voor AJAX-aanvragen, omdat een AJAX-aanvraag JSON-gegevens kan verzenden, niet de HTML-formulier gegevens. Eén oplossing is het verzenden van de tokens in een aangepaste HTTP-header. De volgende code maakt gebruik van de syntaxis voor het genereren van de tokens en voegt vervolgens de tokens toe aan een AJAX-aanvraag. |
 
 ### <a name="example"></a>Voorbeeld
@@ -555,7 +555,7 @@ Autorisatie filter waarmee wordt gecontroleerd of:
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | ID-provider-ADFS, ID-provider-Azure AD |
-| **Verwijzingen**              | [Een web-API beveiligen met afzonderlijke accounts en lokale aanmelding in ASP.NET Web API 2,2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
+| **Referenties**              | [Een web-API beveiligen met afzonderlijke accounts en lokale aanmelding in ASP.NET Web API 2,2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
 | **Stappen** | Als de Web-API wordt beveiligd met OAuth 2,0, verwacht deze een Bearer-token in de header van de autorisatie aanvraag en wordt alleen toegang verleend aan de aanvraag als het token geldig is. In tegens telling tot op cookies gebaseerde verificatie, koppelen browsers geen Bearer-tokens aan aanvragen. De aanvragende client moet het Bearer-token expliciet koppelen aan de aanvraag header. Daarom worden voor ASP.NET-Web-Api's die zijn beveiligd met OAuth 2,0, Bearer-tokens beschouwd als een verdediging tegen CSRF-aanvallen. Houd er rekening mee dat als het MVC-gedeelte van de toepassing formulier verificatie gebruikt (bijvoorbeeld cookies gebruikt), anti-vervalsing tokens moeten worden gebruikt door de MVC-Web-app. |
 
 ### <a name="example"></a>Voorbeeld

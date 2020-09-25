@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030824"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263773"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Overzicht van Azure Monitor-agent (preview)
 De Azure Monitor-agent (AMA) verzamelt bewakings gegevens van het gast besturingssysteem van virtuele machines en levert deze aan Azure Monitor. In deze artikelen vindt u een overzicht van de Azure Monitor-agent, inclusief hoe u deze kunt installeren en hoe u gegevens verzameling kunt configureren.
@@ -38,6 +38,14 @@ De methoden voor het definiëren van het verzamelen van gegevens voor de bestaan
 - Diagnostische uitbrei ding heeft een configuratie voor elke virtuele machine. Zo kunt u eenvoudig onafhankelijke definities definiëren voor verschillende virtuele machines, maar moeilijk te beheren. Er kunnen alleen gegevens worden verzonden naar Azure Monitor metrieken, Azure Event Hubs of Azure Storage. Voor Linux-agents is de open source-telegrafie agent vereist om gegevens te verzenden naar Azure Monitor meet waarden.
 
 Azure Monitor agent gebruikt [gegevens verzamelings regels (DCR)](data-collection-rule-overview.md) om gegevens te configureren die van elke agent moeten worden verzameld. Regels voor het verzamelen van gegevens zorgen ervoor dat de verzamelings instellingen op schaal kunnen worden beheerd, terwijl er nog steeds unieke, scoped configuraties voor subsets van machines worden ingeschakeld. Ze zijn onafhankelijk van de werk ruimte en onafhankelijk van de virtuele machine, waardoor ze eenmaal kunnen worden gedefinieerd en opnieuw worden gebruikt tussen computers en omgevingen. Zie [gegevens verzameling configureren voor de Azure monitor-agent (preview)](data-collection-rule-azure-monitor-agent.md).
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Moet ik overschakelen naar Azure Monitor-agent?
+Azure Monitor agent naast de [Algemeen beschik bare agents voor Azure monitor](agents-overview.md), maar u kunt overwegen uw vm's tijdens de open bare preview-periode van Azure monitor agent over te zetten naar de huidige agents. Houd rekening met de volgende factoren wanneer u deze bepaling maakt.
+
+- **Omgevings vereisten.** Azure Monitor-agent heeft een beperktere set ondersteunde besturings systemen, omgevingen en netwerk vereisten dan de huidige agents. Toekomstige omgevings ondersteuning, zoals nieuwe besturingssysteem versies en typen netwerk vereisten, wordt waarschijnlijk alleen in Azure Monitor-agent geboden. U moet nagaan of uw omgeving door Azure Monitor agent wordt ondersteund. Als dat niet het geval is, moet u blijven beschikken over de huidige agent. Als Azure Monitor agent uw huidige omgeving ondersteunt, kunt u overwegen om over te stappen.
+- **Risico tolerantie voor open bare preview.** Hoewel Azure Monitor agent uitvoerig is getest voor de momenteel ondersteunde scenario's, is de agent nog steeds beschikbaar in de open bare preview. Versie-updates en functionaliteits verbeteringen worden regel matig uitgevoerd en kunnen fouten veroorzaken. U moet het risico van een bug in de agent op uw Vm's beoordelen, waardoor het verzamelen van gegevens kan worden gestopt. Als een onderbreking in het verzamelen van gegevens geen aanzienlijke gevolgen heeft voor uw services, kunt u door gaan met Azure Monitor agent. Als u een lage tolerantie voor instabiliteit hebt, moet u de algemeen beschik bare agents blijven totdat Azure Monitor agent deze status bereikt.
+- **Huidige en nieuwe functie vereisten.** Azure Monitor-agent introduceert een aantal nieuwe mogelijkheden, zoals filteren, bereik en multi-multihoming, maar het is nog geen pariteit met de huidige agents voor andere functionaliteit, zoals aangepaste logboek verzameling en integratie met oplossingen. De meeste nieuwe mogelijkheden in Azure Monitor worden alleen beschikbaar gesteld met Azure Monitor agent, waardoor de tijd meer functionaliteit alleen beschikbaar is in de nieuwe agent. U moet nagaan of Azure Monitor agent beschikt over de functies die u nodig hebt, en als er sommige functies zijn die u tijdelijk kunt uitvoeren zonder dat u andere belang rijke functies in de nieuwe agent hebt. Als Azure Monitor agent beschikt over alle kern mogelijkheden die u nodig hebt, kunt u overwegen om over te stappen. Als er belang rijke functies zijn die u nodig hebt, gaat u verder met de huidige agent totdat Azure Monitor agent de pariteit bereikt.
+- **Tolerantie voor rewerken.** Als u een nieuwe omgeving instelt met resources zoals implementatie scripts en onboarding-sjablonen, kunt u overwegen of u deze wilt herstellen wanneer Azure Monitor agent algemeen beschikbaar wordt. Als de inspanningen voor deze herwerkings taken mini maal zijn, kunt u de huidige agents nu blijven gebruiken. Als dit een aanzienlijke hoeveelheid werk duurt, kunt u overwegen om uw nieuwe omgeving in te stellen met de nieuwe agent. De Azure Monitor-agent wordt naar verwachting algemeen beschikbaar en een datum voor de afschaffing van de Log Analytics agents in 2021. De huidige agents worden gedurende enkele jaren ondersteund zodra de afschaffing wordt gestart.
 
 
 
@@ -76,24 +84,8 @@ De Azure Monitor-agent verzendt gegevens naar Azure Monitor metrieken of een Log
 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-De volgende besturings systemen worden momenteel ondersteund door de Azure Monitor-agent.
+Zie [ondersteunde besturings systemen](agents-overview.md#supported-operating-systems) voor een lijst met versies van het Windows-en Linux-besturings systeem die momenteel worden ondersteund door de log Analytics-agent.
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>,</sup>7
-  - Debian 9, 10
-  - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>,</sup>7
-  - SLES 11, 12, 15
-  - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup> Voor deze distributies om syslog-gegevens te verzenden, moet u de rsyslog-service één keer opnieuw opstarten nadat de agent is geïnstalleerd.
 
 
 ## <a name="security"></a>Beveiliging

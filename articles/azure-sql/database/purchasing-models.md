@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319449"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,15 +34,15 @@ Er zijn twee aankoop modellen:
 
 In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop modellen vergeleken en tegengesteld:
 
-|**Aankoop model**|**Beschrijving**|**Geschikt voor**|
+|**Aankoopmodel**|**Beschrijving**|**Ideaal voor**|
 |---|---|---|
-|Op DTU gebaseerd|Dit model is gebaseerd op een gebundelde meting van compute-, opslag-en I/O-resources. Reken grootten worden uitgedrukt in Dtu's voor afzonderlijke data bases en in Elastic data base Trans Action units (Edtu's) voor elastische Pools. Zie [Wat zijn dtu's en edtu's?](purchasing-models.md#dtu-based-purchasing-model)voor meer informatie over Dtu's en edtu's.|Klanten die eenvoudige, vooraf geconfigureerde resource opties willen|
-|op basis van vCore|Met dit model kunt u afzonderlijke reken-en opslag Resources kiezen. Met het op vCore gebaseerde aankoop model kunt u ook [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken om SQL Server kosten te besparen.|Klanten die flexibiliteit, controle en transparantie|
+|Op basis van DTU|Dit model is gebaseerd op een gebundelde meting van compute-, opslag-en I/O-resources. Rekengrootten worden uitgedrukt in DTU's voor afzonderlijke databases, en in EDTU's (Elastische Data Transaction Unit) voor elastische pools. Zie [Wat zijn DTU's en EDTU's](purchasing-models.md#dtu-based-purchasing-model) voor meer informatie over DTU's en EDTU's.|Klanten die eenvoudige, vooraf geconfigureerde resource opties willen|
+|op basis van vCore|Met dit model kunt u afzonderlijke reken-en opslag Resources kiezen. Met het op vCore gebaseerde aankoopmodel kunt u ook [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) gebruiken voor SQL Server, om kosten te besparen.|Klanten die flexibiliteit, controle en transparantie|
 ||||  
 
 ![Prijs model vergelijking](./media/purchasing-models/pricing-model.png)
 
-Wilt u uw Cloud uitgaven optimaliseren en opslaan?
+Wilt u optimaliseren en op uw cloudverbruik besparen?
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
@@ -76,8 +76,8 @@ In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [Algemeen](high
 
 Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag Resources kiezen, de on-premises prestaties afstemmen en de prijs optimaliseren. In het op vCore gebaseerde aankoop model betaalt u voor:
 
-- Reken bronnen (de servicelaag + het aantal vCores en de hoeveelheid geheugen + de generatie van de hardware).
-- Het type en de hoeveelheid gegevens-en logboek opslag.
+- Rekenbronnen (de servicelaag, het aantal vCores, de hoeveelheid geheugen en de generatie van de hardware).
+- Het type en de hoeveelheid gegevens- en logboekopslag.
 - Back-upopslag (RA-GRS).
 
 > [!IMPORTANT]

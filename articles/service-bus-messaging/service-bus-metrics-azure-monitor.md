@@ -3,12 +3,12 @@ title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320435"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
@@ -147,7 +147,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     2. Voer een **Beschrijving** in voor de waarschuwing.
     3. Selecteer **Ernst** voor de waarschuwing. 
 
-        ![Meldingsdetails](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![Scherm afbeelding van de pagina regel maken. Het definiëren van waarschuwings Details is uitgevouwen en de velden voor de naam, beschrijving en ernst van de waarschuwings regel zijn gemarkeerd.](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. Vouw op de pagina **regel maken** de optie **actie groep definiëren**uit, selecteer **nieuwe actie groep**en voer de volgende acties uit op de **pagina actie groep toevoegen**. 
     1. Voer een naam in voor de actie groep.
     2. Voer een korte naam in voor de actie groep. 
@@ -161,7 +161,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
         2. Typ het **e-mail adres**. 
         3. Selecteer **OK**.
 
-            ![Meldingsdetails](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![Scherm afbeelding van de pagina actie groep toevoegen. Een actie met de naam ' e-mail verzenden ' met het actie type E-mail/SMS/push/Voice wordt toegevoegd aan de groep.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. Selecteer **OK**op de pagina **actie groep toevoegen** . 
 1. Selecteer op de pagina **regel maken** de optie **waarschuwings regel maken**. 
 

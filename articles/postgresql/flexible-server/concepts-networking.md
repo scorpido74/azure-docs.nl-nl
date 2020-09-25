@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934896"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331672"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Overzicht van netwerken-Azure Database for PostgreSQL-flexibele server
 
@@ -62,7 +62,7 @@ Hier volgen enkele concepten die u moet kennen bij het gebruik van virtuele netw
 
    De flexibele server van PostgreSQL moet zich in een subnet bevinden dat wordt **overgedragen** voor postgresql flexibel server gebruik. Deze overdracht houdt in dat alleen Azure Database for PostgreSQL flexibele servers dat subnet kunnen gebruiken. Er kunnen zich geen andere Azure-resourcetypen in het gedelegeerde subnet bevinden. U delegeert een subnet door de eigenschap Delegation toe te wijzen als micro soft. DBforPostgreSQL/flexibleServers.
 
-Meer informatie over het maken van een flexibele server met persoonlijke toegang (VNet-integratie) in [de Azure Portal](how-to-manage-virtual-network-portal.md) of [de Azure cli](how-to-manage-virtual-network-cli.md).
+* **Netwerk beveiligings groepen (NSG)** Met beveiligings regels in netwerk beveiligings groepen kunt u het type netwerk verkeer filteren dat in en uit de subnetten van het virtuele netwerk en netwerk interfaces kan stromen. Bekijk het [overzicht van de netwerk beveiligings groep](../../virtual-network/network-security-groups-overview.md) voor meer informatie.
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Niet-ondersteunde scenario's voor virtuele netwerken
@@ -71,6 +71,7 @@ Meer informatie over het maken van een flexibele server met persoonlijke toegang
 * De subnet-grootte (adres ruimten) kan niet worden verhoogd wanneer de resources zich in het subnet bevinden
 * Peering-VNets tussen regio's wordt niet ondersteund
 
+Meer informatie over het maken van een flexibele server met persoonlijke toegang (VNet-integratie) in [de Azure Portal](how-to-manage-virtual-network-portal.md) of [de Azure cli](how-to-manage-virtual-network-cli.md).
 
 ## <a name="public-access-allowed-ip-addresses"></a>Openbare toegang (toegestane IP-adressen)
 De kenmerken van de open bare toegangs methode zijn onder andere:
@@ -107,12 +108,9 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 ## <a name="hostname"></a>Hostnaam
 Ongeacht welke netwerk optie u kiest, raden we u aan om altijd een Fully Qualified Domain Name (FQDN) als hostnaam te gebruiken bij het maken van verbinding met uw flexibele server. Het IP-adres van de server is niet gegarandeerd statisch. Door gebruik te maken van de FQDN-namen kunt u voor komen dat uw connection string worden gewijzigd. 
 
-Een scenario waarbij het IP-adres wordt gewijzigd, is als u gebruikmaakt van zone-redundante HA en er een failover plaatsvindt tussen de primaire en secundaire. Het gebruik van de FQDN betekent dat u probleemloos verbindingen met dezelfde connection string kunt proberen.
-
 Voorbeeld
 * Aanbevelingen `hostname = servername.postgres.database.azure.com`
-* Vermijd het gebruik van `hostname = 10.0.0.4` (privé adres) of `hostname = 40.2.45.67` (openbaar adres)
-
+* Vermijd het gebruik van `hostname = 10.0.0.4` (een privé adres) of `hostname = 40.2.45.67` (een openbaar adres), indien mogelijk
 
 
 ## <a name="tls-and-ssl"></a>TLS en SSL

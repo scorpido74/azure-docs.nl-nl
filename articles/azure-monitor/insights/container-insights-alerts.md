@@ -3,12 +3,12 @@ title: Prestatie waarschuwingen maken voor Azure Monitor voor containers | Micro
 description: In dit artikel wordt beschreven hoe u aangepaste waarschuwingen maakt op basis van logboek query's voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1041b8bfe299a0daac633e478c906c746759d50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75730922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319534"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Waarschuwingen instellen voor prestatieproblemen in Azure Monitor voor containers
 
@@ -277,13 +277,13 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Een waarschuwingsregel maken
 
-Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behulp van een van de zoek regels voor logboeken die eerder zijn verschaft. Als u een ARM-sjabloon wilt maken, raadpleegt u voor [beeld van het maken van een logboek waarschuwing met een Azure-resource sjabloon](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behulp van een van de zoek regels voor logboeken die eerder zijn verschaft. Als u met een ARM-sjabloon wilt maken, raadpleegt u voor [beelden van het maken van logboek waarschuwingen met Azure-resource sjabloon](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek in het Azure Portal naar en selecteer **log Analytics-werk ruimten**.
 3. Selecteer de werk ruimte die Azure Monitor ondersteunt voor containers in de lijst met Log Analytics-werk ruimten. 
 4. Selecteer in het deel venster aan de linkerkant **Logboeken** om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.

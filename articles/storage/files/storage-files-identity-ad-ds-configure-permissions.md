@@ -5,20 +5,42 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320333"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
 Voordat u aan dit artikel begint, moet u ervoor zorgen dat u het vorige artikel hebt voltooid, [machtigingen op share niveau toewijzen aan een identiteit](storage-files-identity-ad-ds-assign-permissions.md) om ervoor te zorgen dat uw machtigingen op share niveau aanwezig zijn.
 
 Nadat u machtigingen op share niveau hebt toegewezen met RBAC, moet u de juiste Windows-Acl's configureren op basis van de hoofdmap, map of bestands niveau om te profiteren van nauw keurig toegangs beheer. U kunt de RBAC-machtigingen op share niveau beschouwen als de gate keeper op hoog niveau die bepaalt of een gebruiker toegang heeft tot de share. Hoewel de Windows-Acl's op een meer gedetailleerd niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand. Machtigingen op share niveau en op het niveau van bestanden en mappen worden afgedwongen wanneer een gebruiker toegang probeert te krijgen tot een bestand of map, dus als er een verschil is tussen een van beide, wordt alleen de meest beperkende waarde toegepast. Als een gebruiker bijvoorbeeld lees-en schrijf toegang heeft op bestands niveau, maar alleen op share niveau leest, kan het bestand alleen worden gelezen. Hetzelfde geldt als het is omgekeerd, en een gebruiker had Lees-en schrijf toegang op het niveau van de share, maar alleen lezen op bestands niveau, maar kan het bestand nog steeds lezen.
+
+## <a name="rbac-permissions"></a>RBAC-machtigingen
+
+De volgende tabel bevat de RBAC-machtigingen die zijn gerelateerd aan deze configuratie:
+
+
+| Ingebouwde rol  | NTFS-machtiging  | Resulterende toegang  |
+|---------|---------|---------|
+|Lezer voor opslagbestandgegevens via SMB-share | Volledig beheer, wijzigen, lezen, schrijven, uitvoeren | Lezen & uitvoeren  |
+|     |   Lezen |     Lezen  |
+|Inzender voor opslagbestandsgegevens via SMB-share  |  Volledig beheer    |  Wijzigen, lezen, schrijven, uitvoeren |
+|     |  Wijzigen         |  Wijzigen    |
+|     |  Lezen & uitvoeren |  Lezen & uitvoeren |
+|     |  Lezen           |  Lezen    |
+|     |  Schrijven          |  Schrijven   |
+|Inzender met verhoogde bevoegdheden voor opslagbestandsgegevens via SMB-share | Volledig beheer  |  Wijzigen, lezen, schrijven, bewerken, uitvoeren |
+|     |  Wijzigen          |  Wijzigen |
+|     |  Lezen & uitvoeren  |  Lezen & uitvoeren |
+|     |  Lezen            |  Lezen   |
+|     |  Schrijven           |  Schrijven  |
+
+
 
 ## <a name="supported-permissions"></a>Ondersteunde machtigingen
 
@@ -76,7 +98,7 @@ Als u mappen of bestanden hebt in on-premises bestands servers met Windows-DACL'
 Gebruik Windows Verkenner om volledige machtigingen te verlenen aan alle mappen en bestanden onder de bestands share, met inbegrip van de hoofdmap.
 
 1. Open Windows Verkenner, klik met de rechter muisknop op het bestand of de map en selecteer **Eigenschappen**.
-1. Selecteer het tabblad **beveiliging** .
+1. Selecteer het tabblad **Beveiliging**.
 1. Selecteer **bewerken..** om machtigingen te wijzigen.
 1. U kunt de machtigingen van bestaande gebruikers wijzigen of **toevoegen selecteren...** om machtigingen te verlenen aan nieuwe gebruikers.
 1. Geef in het prompt venster voor het toevoegen van nieuwe gebruikers de doel gebruikersnaam op waaraan u machtigingen wilt verlenen in het vak **Geef de object namen op** en selecteer **Namen controleren** om de volledige UPN-naam van de doel gebruiker te zoeken.

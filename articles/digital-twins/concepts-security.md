@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331876"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
@@ -83,7 +83,7 @@ Azure Digital Apparaatdubbels zorgt voor versleuteling van gegevens in rust en i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de volgende concepten in actie [*: een exemplaar en authenticatie instellen*](how-to-set-up-instance-scripted.md).
+* Zie de volgende concepten in actie [*: een exemplaar en authenticatie instellen*](how-to-set-up-instance-portal.md).
 
 * Bekijk hoe u met deze concepten communiceert vanuit de code van de client toepassing in [*How-to: app-verificatie code schrijven*](how-to-authenticate-client.md).
 

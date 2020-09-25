@@ -1,6 +1,6 @@
 ---
 title: Azure-Vm's hoge Beschik baarheid voor SAP NW op RHEL multi-SID-hand leiding | Microsoft Docs
-description: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
+description: Stel hoge Beschik baarheid in voor SAP NW op Azure virtual machines (Vm's) RHEL multi-SID.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319959"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen
 
@@ -56,7 +56,7 @@ In de voorbeeld configuraties worden installatie opdrachten enz. drie SAP NetWea
 * **NW2**: ASCS-instantie nummer **10** en virtuele hostname **msnw2ascs**; Het ERS-exemplaar nummer is **12** en de naam van de virtuele host **msnw2ers**.  
 * **NW3**: ASCS-instantie nummer **20** en virtuele hostname **msnw3ascs**; Het ERS-exemplaar nummer is **22** en de naam van de virtuele host **msnw3ers**.  
 
-Het artikel heeft geen betrekking op de data base-laag en de implementatie van de SAP NFS-shares. In de voor beelden in dit artikel gebruiken we [Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) volume **SAPMSID** voor de NFS-shares, ervan uitgaande dat het volume al is geïmplementeerd. Ook wordt ervan uitgegaan dat het Azure NetApp Files-volume wordt geïmplementeerd met het NFSv3-protocol en dat de volgende bestands paden bestaan voor de cluster bronnen voor de ASCS-en ERS-instanties van SAP Systems NW1, NW2 en NW3:  
+Het artikel heeft geen betrekking op de data base-laag en de implementatie van de SAP NFS-shares. In de voor beelden in dit artikel gebruiken we [Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)  volume **SAPMSID** voor de NFS-shares, ervan uitgaande dat het volume al is geïmplementeerd. Ook wordt ervan uitgegaan dat het Azure NetApp Files-volume wordt geïmplementeerd met het NFSv3-protocol en dat de volgende bestands paden bestaan voor de cluster bronnen voor de ASCS-en ERS-instanties van SAP Systems NW1, NW2 en NW3:  
 
 * volume sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * volume sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ascs)

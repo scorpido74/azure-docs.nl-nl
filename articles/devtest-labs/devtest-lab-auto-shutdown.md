@@ -3,12 +3,12 @@ title: Beleid voor automatisch afsluiten beheren in Azure DevTest Labs | Microso
 description: Meer informatie over het instellen van het beleid voor automatisch afsluiten voor een lab, zodat virtuele machines worden afgesloten wanneer ze niet worden gebruikt.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320707"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Automatisch afsluiten configureren voor Lab-en Compute-virtuele machines in Azure DevTest Labs
 
@@ -162,7 +162,7 @@ Als u aan de slag wilt gaan, maakt u een logische app in uw Azure-abonnement met
     }
     ```
     
-    ![JSON-schema van aanvraag tekst](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![Scherm afbeelding van het JSON-schema van de aanvraag tekst.](./media/devtest-lab-auto-shutdown/request-json.png)
 7. Selecteer **+ nieuwe stap** in de ontwerp functie en voer de volgende stappen uit:
     1. Zoeken naar **Office 365 Outlook-een E-mail verzenden**. 
     2. Selecteer **een E-mail verzenden** van **acties**. 

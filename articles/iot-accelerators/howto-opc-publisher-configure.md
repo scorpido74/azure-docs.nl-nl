@@ -9,14 +9,17 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb27b4fec0d266bb9931b3942746b034ee3a645f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320606"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher configureren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 U kunt OPC Publisher configureren om het volgende op te geven:
 

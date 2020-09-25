@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306562"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461031"
 
 * Resultaten van de beoordeling automatiseren, zoals het verwijderen van de toegang van gebruikers tot resources
 
-  ![Toegangs beoordelingen plannen](./media/deploy-access-review/1-planning-review.png)
+  ![Diagram waarin de toegangs beoordelingen stroom wordt weer gegeven.](./media/deploy-access-review/1-planning-review.png)
 
 Toegangs beoordelingen is een [Azure AD Identity governance](identity-governance-overview.md) mogelijkheid. De andere mogelijkheden zijn het [rechten beheer](entitlement-management-overview.md), het [privileged Identity Management](../privileged-identity-management/pim-configure.md) en de [gebruiks voorwaarden](../conditional-access/terms-of-use.md). Samen helpen organisaties de volgende vier vragen te beantwoorden:
 
@@ -192,9 +192,9 @@ De administratieve rol die vereist is voor het maken, beheren of lezen van een t
 
 | Resourcetype| Toegangs beoordelingen maken en beheren (makers)| Resultaten van de toegangs beoordeling lezen |
 | - | - | -|
-| Groep of toepassing| Hoofdbeheerder <p>Gebruikers beheerder| Makers en beveiligings beheerder |
+| Groep of toepassing| Hoofdbeheerder <p>Gebruikersbeheerder| Makers en beveiligings beheerder |
 | Geprivilegieerde rollen in azure AD| Hoofdbeheerder <p>Beheerder van geprivilegieerde rol| makers <p>Beveiligingslezer<p>Beveiligingsbeheer |
-| Geprivilegieerde rollen in azure (resources)| Hoofdbeheerder<p>Gebruikers beheerder<p>Resource-eigenaar| makers |
+| Geprivilegieerde rollen in azure (resources)| Hoofdbeheerder<p>Gebruikersbeheerder<p>Resource-eigenaar| makers |
 | Toegangs pakket| Hoofdbeheerder<p>Maker van het toegangs pakket| Alleen globale beheerder |
 
 
@@ -300,7 +300,7 @@ Bij [het maken van een toegangs pakket](entitlement-management-access-package-cr
 
 Open het tabblad levenscyclus om omlaag te schuiven naar toegangs Beoordelingen.
 
- ![Beleid bewerken](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Scherm afbeelding met het ' beleid bewerken ' op het tabblad levens cyclus.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Toegangs Beoordelingen voor groepen plannen
 
@@ -395,7 +395,7 @@ Met toegangs beoordelingen kunnen revisoren worden verklaard of gebruikers nog s
 
 * Hoofdbeheerder
 
-* Gebruikers beheerder
+* Gebruikersbeheerder
 
 * Beheerder voor geprivilegieerde authenticatie
 
@@ -446,7 +446,7 @@ De toegang tot groepen en toepassingen voor werk nemers en gasten is waarschijnl
 
 Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, moet u regel matig de toegang tot de beschermde Azure AD-rollen controleren.
 
-![Azure AD-rollen controleren](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Scherm opname van de lijst ' lidmaatschap controleren ' van Azure A D-rollen.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Volg de instructies in de onderstaande koppelingen:
 

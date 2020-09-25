@@ -1,6 +1,6 @@
 ---
 title: Een schaalset maken op basis van een gegeneraliseerde installatie kopie met Azure PowerShell
-description: Een schaalset maken met behulp van een gegeneraliseerde installatie kopie in een galerie met gedeelde afbeeldingen.
+description: Een schaalset maken met behulp van een gegeneraliseerde installatie kopie in een galerie met gedeelde afbeeldingen met behulp van Power shell.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3b8c9d46a5bc5dde3e39bfa5673247ca752d2a89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331519"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie
+# <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie met behulp van Power shell 
 
 Een virtuele machine maken op basis van een gegeneraliseerde installatie kopie-versie die is opgeslagen in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md). Zie [instanties van een schaalset maken op basis van een gespecialiseerde afbeelding](instance-specialized-image-version-powershell.md)als u een schaalset met een gespecialiseerde afbeelding wilt maken.
 
@@ -175,10 +175,10 @@ Het duurt enkele minuten om alle schaalsetresources en VM's te maken en te confi
 ## <a name="next-steps"></a>Volgende stappen
 Met [Azure Image Builder (preview)](../virtual-machines/linux/image-builder-overview.md) kunt u het maken van de installatie kopie versie automatiseren, maar u kunt deze zelfs gebruiken om [een nieuwe installatie kopie versie te maken op basis van een bestaande versie van de installatie kopie](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
-U kunt ook een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure Quick Start-sjablonen beschikbaar: 
+U kunt ook een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure-quickstart-sjablonen beschikbaar: 
 
 - [Een gedeelde installatiekopiegalerie maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Een installatiekopieversie maken in een gedeelde installatiekopiegalerie](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën. Als u problemen ondervindt, raadpleegt u [problemen met de galerie met gedeelde afbeeldingen oplossen](troubleshooting-shared-images.md).
+Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën. Als u problemen ondervindt, raadpleegt u [problemen met de galerie met gedeelde afbeeldingen oplossen](../virtual-machines/troubleshooting-shared-images.md).

@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 02/21/2020
+ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319585"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -34,27 +34,27 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | [Diagnostische instellingen](../platform/diagnostic-settings.md) | **Ja** | Azure metrische en logboek gegevens worden rechtstreeks door Azure naar Azure Monitor logboeken verzonden. |
-| [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nee | Azure Monitor leest de gegevens van een opslag account niet. |
-| [Windows-agents](../platform/agent-windows.md) | Nee | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | Nee | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
+| [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor leest de gegevens van een opslag account niet. |
+| [Windows-agents](../platform/agent-windows.md) | No | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | No | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | No | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-analyse opties
 
 De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee versies van het dash board Azure SQL-analyse, één voor Azure SQL Database en de andere voor Azure SQL Managed instance-data bases.
 
-| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
+| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed Instance |
 | --- | ------- | ----- | ----- |
 | Resource per type | Perspectief dat alle bewaakte resources telt. | Ja | Ja |
 | Inzichten | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |
-| Errors | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
+| Fouten | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
 | Time-outs | Voorziet in hiërarchische inzoomen op SQL-time-outs die zijn opgetreden in de data bases. | Ja | Nee |
 | Blok keren | Voorziet in hiërarchische inzoomen op SQL-blok keringen die zijn opgetreden in de data bases. | Ja | Nee |
 | Data base wacht | Voorziet in hiërarchische inzoomen op het database niveau van SQL-wacht statistieken. Bevat samen vattingen van de totale wacht tijd en de wacht tijd per wacht type. |Ja | Nee |
 | Query duur | Biedt hiërarchische inzoomen op de query uitvoerings statistieken, zoals de query duur, het CPU-gebruik, het IO-gebruik van gegevens, het IO-gebruik van het logboek. | Ja | Ja |
 | Querywachttijden | Voorziet in hiërarchische inzoomen op de query wacht statistieken per wachten. | Ja | Ja |
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](./solutions.md) om Azure SQL-analyse (preview) toe te voegen aan uw log Analytics-werk ruimte.
 
@@ -230,6 +230,9 @@ AzureMetrics
 > - De uitvoer is een lijst met database resources die boven de storage_threshold binnen de time_range zijn gedefinieerd.
 
 #### <a name="alert-on-intelligent-insights"></a>Waarschuwen voor intelligente inzichten
+
+> [!IMPORTANT]
+> Als een Data Base goed wordt uitgevoerd en er geen Intelligent Insights zijn gegenereerd, mislukt deze query met een fout bericht: kan de scalaire expressie met de naam ' rootCauseAnalysis_s ' niet omzetten. Dit gedrag wordt verwacht voor alle gevallen waarin er geen intelligente inzichten zijn voor de data base.
 
 ```
 let alert_run_interval = 1h;

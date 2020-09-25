@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: c11fd7a9cb6fdd3eb976d0b9e6a91fdc69bf9fba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320452"
 ---
 # <a name="system-tables-and-views"></a>Systeem tabellen en-weer gaven
 
@@ -27,7 +27,7 @@ U kunt deze tabellen weer geven en er query's op uitvoeren met SQL nadat u zich 
 
 > [!NOTE]
 >
-> Grootschalige-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande tabellen.
+> Grootschalige (Citus)-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle tabellen die hieronder worden weer gegeven.
 
 ### <a name="partition-table"></a>Partitie tabel
 
@@ -38,7 +38,7 @@ De \_ tabel PG dist \_ Partition bevat meta gegevens over welke tabellen in de D
 | logicalrelid | regclass | De gedistribueerde tabel waaraan deze rij overeenkomt. Deze waarde verwijst naar de kolom relfilenode in de tabel pg_class systeem catalogus.                                                                                                                   |
 | partmethod   | char     | De methode die wordt gebruikt voor partitionering/distributie. De waarden van deze kolom die overeenkomen met verschillende distributie methoden worden toegevoegd: ' a ', hash: ' h ', referentie tabel: ' n '                                                                          |
 | partkey      | tekst     | Gedetailleerde informatie over de kolom distributie, met inbegrip van kolom nummer, type en andere relevante informatie.                                                                                                                                      |
-| colocationid | integer  | De groep met co-locaties waarvan deze tabel deel uitmaakt. Met tabellen in dezelfde groep kunnen gelijktijdige samen voegingen en gedistribueerde rollups onder andere optimalisaties worden uitgevoerd. Deze waarde verwijst naar de kolom colocationid in de tabel pg_dist_colocation.                      |
+| colocationid | geheel getal  | De groep met co-locaties waarvan deze tabel deel uitmaakt. Met tabellen in dezelfde groep kunnen gelijktijdige samen voegingen en gedistribueerde rollups onder andere optimalisaties worden uitgevoerd. Deze waarde verwijst naar de kolom colocationid in de tabel pg_dist_colocation.                      |
 | repmodel     | char     | De methode die wordt gebruikt voor gegevens replicatie. De waarden van deze kolom die overeenkomen met verschillende replicatie methoden zijn: Citus op basis van een instructie: ' c ', postgresql streaming-replicatie: ', twee fasen door voeren (voor referentie tabellen): 't ' |
 
 ```
@@ -153,12 +153,12 @@ De \_ tabel Citus.pg dist \_ object bevat een lijst met objecten zoals typen en 
 |-----------------------------|---------|------------------------------------------------------|
 | ClassID                     | nogmaals     | Klasse van het gedistribueerde object                      |
 | object                       | nogmaals     | Object-ID van het gedistribueerde object                  |
-| objsubid                    | integer | De object SubID van het gedistribueerde object, bijvoorbeeld attnum |
+| objsubid                    | geheel getal | De object SubID van het gedistribueerde object, bijvoorbeeld attnum |
 | type                        | tekst    | Onderdeel van het stabiele adres dat wordt gebruikt tijdens het bijwerken van pagina's   |
 | object_names                | tekst []  | Onderdeel van het stabiele adres dat wordt gebruikt tijdens het bijwerken van pagina's   |
 | object_args                 | tekst []  | Onderdeel van het stabiele adres dat wordt gebruikt tijdens het bijwerken van pagina's   |
-| distribution_argument_index | integer | Alleen geldig voor gedistribueerde functies/procedures      |
-| colocationid                | integer | Alleen geldig voor gedistribueerde functies/procedures      |
+| distribution_argument_index | geheel getal | Alleen geldig voor gedistribueerde functies/procedures      |
+| colocationid                | geheel getal | Alleen geldig voor gedistribueerde functies/procedures      |
 
 \"Stabiele adressen \" identificeren objecten onafhankelijk van een specifieke server. Grootschalige (Citus) traceert objecten tijdens een PostgreSQL-upgrade met behulp van stabiele adressen die zijn gemaakt met de functie [ \_ \_ object identificeren \_ als \_ adres ()](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-OBJECT-TABLE) van de pagina.
 
@@ -524,5 +524,5 @@ In dit voor beeld zijn de query's afkomstig van de coördinator, maar de weer ga
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over hoe sommige [grootschalige-functies](reference-hyperscale-functions.md) systeem tabellen wijzigen
+* Meer informatie over hoe sommige [grootschalige (Citus)-functies](reference-hyperscale-functions.md) systeem tabellen wijzigen
 * Bekijk de concepten van [knoop punten en tabellen](concepts-hyperscale-nodes.md)

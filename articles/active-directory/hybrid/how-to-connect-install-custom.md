@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295342"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
@@ -46,7 +46,7 @@ Wanneer u de synchronisatieservices installeert, kunt de optie voor optionele co
 ### <a name="user-sign-in"></a>Gebruikersaanmelding
 Nadat de vereiste onderdelen zijn geïnstalleerd, wordt u gevraagd een eenmalige aanmeldmethode voor uw gebruikers te selecteren. In de volgende tabel staan de beschikbare opties kort beschreven. Zie voor een volledige beschrijving van de aanmeldmethodes [User sign-in](plan-connect-user-signin.md).
 
-![Aanmelding door een gebruiker](./media/how-to-connect-install-custom/usersignin4.png)
+![Scherm opname van de pagina ' gebruikers aanmelding ' met ' wachtwoord hash-synchronisatie ' geselecteerd.](./media/how-to-connect-install-custom/usersignin4.png)
 
 | Optie voor eenmalige aanmelding | Beschrijving |
 | --- | --- |
@@ -75,7 +75,7 @@ Zie [Connectiviteitsproblemen oplossen](tshoot-connect-connectivity.md) als u ee
 ### <a name="connect-your-directories"></a>Verbinding maken met uw directory’s
 Azure AD Connect heeft de forestnaam en de referenties van een account met de juiste machtigingen nodig om verbinding met uw Active Directory-domeinservice te maken.
 
-![Verbinding maken met Directory](./media/how-to-connect-install-custom/connectdir01.png)
+![Scherm opname van de pagina ' Connect your directory's '.](./media/how-to-connect-install-custom/connectdir01.png)
 
 Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt een pop-upvenster met de volgende opties weergegeven:
 
@@ -300,7 +300,7 @@ Als u Beheerd serviceaccount voor groepen heeft geselecteerd en deze functie nog
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Selecteer het Azure AD-domein dat u wilt federeren
 Deze configuratie wordt gebruikt voor het instellen van de federatieverbinding tussen AD FS en Azure AD. AD FS wordt hiermee geconfigureerd om beveiligingstokens aan Azure AD te verstrekken en Azure AD wordt geconfigureerd om de tokens van deze specifieke AD FS-instantie te vertrouwen. Op deze pagina kunt u tijdens de eerste installatie slechts één domein configureren. U kunt later meer domeinen configureren door Azure AD Connect nogmaals uit te voeren.
 
-![Azure AD-domein](./media/how-to-connect-install-custom/adfs6.png)
+![Scherm opname van de pagina Azure AD-domein.](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Controleer het Azure AD-domein dat voor federatie is geselecteerd
 Wanneer u het te federeren domein selecteert, geeft Azure AD Connect u de informatie die u nodig heeft om een niet-geverifieerd domein te verifiëren. Zie [Add and verify the domain](../fundamentals/add-custom-domain.md) om uit te vinden hoe deze informatie gebruikt moet worden.
@@ -320,7 +320,7 @@ PingFederate is heel eenvoudig met een paar muisklikken met Azure AD Connect te 
 ### <a name="verify-the-domain"></a>Het domein verifiëren
 Nadat u Federatie met PingFederate hebt geselecteerd, wordt u gevraagd om het domein te verifiëren dat u wilt federeren.  Selecteer het domein in de vervolgkeuzelijst.
 
-![Domein verifiëren](./media/how-to-connect-install-custom/ping1.png)
+![Scherm opname van het ' Azure AD-domein ' met het voorbeeld domein ' contoso.com ' geselecteerd.](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>De PingFederate-instellingen exporteren
 
@@ -394,7 +394,7 @@ De volgende sectie bevat oplossingen voor fouten en informatie die u kunt gebrui
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>De ADSync-database bevat al gegevens en kan niet worden overschreven
 Wanneer u Azure AD Connect installeert en de optie **een bestaande SQL Server gebruiken** op de pagina **vereiste onderdelen installeren** selecteert, wordt er mogelijk een fout bericht weer gegeven waarin staat dat **de data base van ADSync al gegevens bevat en niet kan worden overschreven. Verwijder de bestaande data base en probeer het opnieuw.**
 
-![Fout](./media/how-to-connect-install-custom/error1.png)
+![Scherm afbeelding met de pagina vereiste onderdelen installeren.](./media/how-to-connect-install-custom/error1.png)
 
 Dit komt omdat er al een database met de naam **ADSync** bestaat in het SQL-exemplaar van de SQL-server die u hebt opgegeven in de bovenstaande tekstvakken.
 

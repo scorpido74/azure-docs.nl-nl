@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: be124e7677774cbe6b4a0a2730c662f25b619ee0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331451"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
 Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
@@ -28,7 +28,7 @@ Het probleemoplossingsproces is als volgt:
 1. Stop de betrokken VM.
 1. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
 1. Maak een virtuele harde schijf van de moment opname.
-1. Koppel en koppel de virtuele harde schijf aan een andere Windows-VM voor het oplossen van problemen.
+1. Koppel en koppel de virtuele harde schijf aan een andere Linux-VM voor het oplossen van problemen.
 1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
 1. Koppel de virtuele harde schijf van de VM voor probleemoplossing los.
 1. Wissel de besturingssysteem schijf voor de virtuele machine uit.
@@ -166,7 +166,7 @@ Wanneer de fouten zijn opgelost, koppelt u de bestaande virtuele harde schijf lo
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>De besturingssysteem schijf voor de virtuele machine wisselen
 
-Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de virtuele machine. Voer hiervoor de volgende stappen uit:
+Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de virtuele machine. Volg hiervoor de volgende stappen:
 
 1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer **virtuele machines** in de zijbalk en selecteer vervolgens de VM met een probleem.
 1. Selecteer **schijven**in het linkerdeel venster en selecteer vervolgens **besturingssysteem schijf wisselen**.

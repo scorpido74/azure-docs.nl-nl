@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320044"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Aangepaste standaard regels in Azure AD Connect herstellen
 
@@ -73,7 +73,7 @@ Als de uitbrei dingen niet werken, kunt u proberen om twee nieuwe synchronisatie
 #### <a name="add-an-inbound-sync-rule"></a>Een regel voor binnenkomende synchronisatie toevoegen
 Een binnenkomende Sync-regel betekent dat de bron voor het kenmerk een connector ruimte is en dat het doel de tekst is. Als u bijvoorbeeld een nieuwe kenmerk stroom van on-premises Active Directory naar Azure Active Directory wilt maken, maakt u een nieuwe regel voor binnenkomende synchronisatie. Start de **Editor voor synchronisatie regels**, selecteer **binnenkomend** als richting en selecteer **nieuwe regel toevoegen**. 
 
- ![Editor voor synchronisatie regels](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Scherm opname waarin de ' Synchronization Rules editor ' wordt weer gegeven en ' Inkomend ' en ' nieuwe regel toevoegen ' is geselecteerd.](media/how-to-connect-fix-default-rules/default3a.png)
 
 Volg uw eigen naam Conventie om de regel een naam te geven. Hier gebruiken we **aangepaste in van de AD-gebruiker**. Dit betekent dat de regel een aangepaste regel is en een regel voor binnenkomend verkeer is van de Active Directory-Connector ruimte naar de omgekeerde tekst.   
 
@@ -176,7 +176,7 @@ Selecteer op **Eigenschappen van omgekeerd object** **connectors**, selecteer he
 
 Selecteer in het venster voor beeld de optie **Preview genereren** en **kenmerk stroom importeren** in het linkerdeel venster.
 
-![Preview](media/how-to-connect-fix-default-rules/default14.png)
+![Scherm opname van het venster ' preview ' met ' kenmerk stroom importeren ' en ' voor beeld genereren ' geselecteerd.](media/how-to-connect-fix-default-rules/default14.png)
  
 Hier ziet u dat de zojuist toegevoegde regel wordt uitgevoerd op het object en dat het kenmerk is ingesteld `cloudFiltered` op True.
 

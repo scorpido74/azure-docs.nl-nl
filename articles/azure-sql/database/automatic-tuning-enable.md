@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dfd21a38c46238dbd9d58d3eae5b3f9414d3c5fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284496"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen in de Azure Portal om query's te bewaken en de prestaties van de werk belasting te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Automatisch afstemmen kan worden ingeschakeld op de server of op het niveau van 
 
 - De [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [Rest API](automatic-tuning-enable.md#rest-api) -aanroepen
-- [T-SQL-](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) opdrachten
+- [T-SQL-](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) opdrachten
 
 > [!NOTE]
 > Voor Azure SQL Managed instance kan de ondersteunde optie FORCE_LAST_GOOD_PLAN alleen worden geconfigureerd via [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) . De opties Azure Portal op basis van configuratie en automatische index afstemming die in dit artikel worden beschreven, zijn niet van toepassing op beheerde exemplaren van Azure SQL.
@@ -109,7 +109,7 @@ Als u de afzonderlijke afstemmings optie instelt op aan, worden alle instellinge
 > In het geval van [actieve geo-replicatie](auto-failover-group-overview.md)moet automatisch afstemmen worden geconfigureerd op de primaire data base. Automatisch toegepaste afstemmings acties, zoals het maken of verwijderen van een index, worden automatisch gerepliceerd naar het secundaire kenmerk alleen-lezen. Als u probeert automatische afstemming via T-SQL in te scha kelen op het alleen-lezen secundair, resulteert dit in een fout omdat een andere afstemmings configuratie op het secundaire kenmerk alleen-lezen niet wordt ondersteund.
 >
 
-Zie [ALTER data base set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)voor meer informatie over over T-SQL-opties voor het configureren van automatisch afstemmen.
+Zie [ALTER data base set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)voor meer informatie over over T-SQL-opties voor het configureren van automatisch afstemmen.
 
 ## <a name="disabled-by-the-system"></a>Uitgeschakeld door het systeem
 

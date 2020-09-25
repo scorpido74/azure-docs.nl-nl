@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295265"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs uitvoer van Azure Stream Analytics
 
@@ -22,7 +22,7 @@ De [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/) -service
 
 De volgende tabel bevat de para meters die nodig zijn voor het configureren van gegevens stromen van Event hubs als uitvoer.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | --- | --- |
 | Uitvoeralias | Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze Event Hub te sturen. |
 | Event hub-naamruimte | Een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub hebt gemaakt, hebt u ook een Event Hub naam ruimte gemaakt. |
@@ -46,7 +46,23 @@ De maximale bericht grootte is 256 KB of 1 MB per bericht. Zie [Event hubs limie
 
 ## <a name="custom-metadata-properties-for-output"></a>Aangepaste meta gegevens eigenschappen voor uitvoer
 
-U kunt query kolommen als gebruikers eigenschappen aan uw uitgaande berichten toevoegen. Deze kolommen gaan niet naar de payload. De eigenschappen zijn aanwezig in de vorm van een woorden lijst in het uitvoer bericht. *Sleutel* is de kolom naam en- *waarde* is de kolom waarde in de woorden lijst eigenschappen. Alle Stream Analytics gegevens typen worden ondersteund, behalve record en matrix.  
+U kunt query kolommen als gebruikers eigenschappen aan uw uitgaande berichten toevoegen. Deze kolommen gaan niet naar de payload. De eigenschappen zijn aanwezig in de vorm van een woorden lijst in het uitvoer bericht. *Sleutel* is de kolom naam en- *waarde* is de kolom waarde in de woorden lijst eigenschappen. Alle Stream Analytics gegevens typen worden ondersteund, behalve record en matrix.
+
+In het volgende voor beeld worden de velden `DeviceId` en `DeviceStatus` worden toegevoegd aan de meta gegevens.
+
+1. Gebruik de volgende query:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Configureren `DeviceId,DeviceStatus` als eigenschaps kolommen in de uitvoer.
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="Eigenschappen kolommen":::
+
+De volgende afbeelding heeft de verwachte uitvoer bericht eigenschappen die in EventHub zijn geïnspecteerd met behulp van [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Aangepaste eigenschappen van gebeurtenis":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16d7965b8d42a6fdd6ebd68307b01b322cfa7cc6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285234"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331536"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -31,7 +31,7 @@ azcopy make [resourceURL] [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
@@ -45,7 +45,7 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |Optie|Beschrijving|
 |--|--|
 |-h,--Help|Help-inhoud voor de opdracht maken weer geven. |
-|--quota-GB uint32|Hiermee geeft u de maximale grootte van de share in gigabytes (GiB), nul betekent dat u het standaard quotum van de bestands service accepteert.|
+|--quota-GB uint32|Hiermee geeft u de maximale grootte van de share in gigabytes (GB), nul betekent dat u het standaard quotum van de bestands service accepteert.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
@@ -55,6 +55,6 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 |--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [azcopy](storage-ref-azcopy.md)

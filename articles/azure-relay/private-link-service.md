@@ -1,25 +1,19 @@
 ---
 title: Azure Relay integreren met Azure Private Link service
 description: Meer informatie over het integreren van Azure Relay met Azure Private Link service
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263841"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
 Met Azure **Private Link service** kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Relay, Azure service bus, Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Zie [Wat is Azure private link (preview)?](../private-link/private-link-overview.md) voor meer informatie.
 
 Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belastingen die worden uitgevoerd in een virtueel netwerk, privé en veilig verbinding kunnen maken met een service die een **persoonlijke koppelings bron** heeft (bijvoorbeeld een relay-naam ruimte). Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute, VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de service wordt over het micro soft backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt een niveau van granulatie in toegangs beheer geven door verbindingen met specifieke Azure Relay-naam ruimten toe te staan. 
-
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als **Preview-versie**. 
->
-> Momenteel worden verbindingen van particuliere koppelingen op Sender-clients ondersteund. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt toevoegen met Azure Portal
@@ -167,7 +161,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij de Azure-portal.
+1. Meld u aan bij Azure Portal.
 1. Typ in de zoek balk in **Relay**.
 1. Selecteer de **naam ruimte** die u wilt beheren.
 1. Selecteer het tabblad **netwerken** .

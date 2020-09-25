@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320622"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Met HSM beveiligde sleutels importeren in beheerde HSM (BYOK)
 
- Azure Key Vault beheerde HSM ondersteunt het importeren van sleutels die zijn gegenereerd in uw on-premises Hardware Security module (HSM). de sleutels verlaten nooit de grens van de HSM-beveiliging. Dit scenario wordt vaak aangeduid als *Bring Your Own Key* (BYOK). Beheerde HSM maakt gebruik van de nCipher nShield-familie van Hsm's (FIPS 140-2 level 3 gevalideerd) om uw sleutels te beveiligen.
+ Azure Key Vault beheerde HSM ondersteunt het importeren van sleutels die zijn gegenereerd in uw on-premises Hardware Security module (HSM). de sleutels verlaten nooit de grens van de HSM-beveiliging. Dit scenario wordt vaak aangeduid als *Bring Your Own Key* (BYOK). Beheerde HSM gebruikt de Marvell LiquidSecurity HSM-adapters (FIPS 140-2 level 3 gevalideerd) om uw sleutels te beveiligen.
 
 Gebruik de informatie in dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met beheerde HSM.
 

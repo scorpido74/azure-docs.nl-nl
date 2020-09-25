@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320163"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-serie (in preview-versie) 
 
-De virtuele machines uit de NCasT4_v3-serie worden aangedreven door [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU'S en AMD EPYC 7V12 (Rome) cpu's. De virtuele machines beschikken over Maxi maal 4 NVIDIA T4-Gpu's met 16 GB geheugen per, Maxi maal 64 niet-multi threaded AMD EPYC 7V12 (Rome)-processor kernen en 440 GiB van het systeem geheugen. Deze virtuele machines zijn ideaal voor het uitvoeren van ML-en AI-workloads die gebruikmaken van CUDA, tensor flow, Pytorch, Caffe en andere frameworks of de grafische werk belasting met behulp van de NVIDIA GRID-technologie. NCasT4_v3-serie is ideaal voor het uitvoeren van inactieve werk belastingen.
+De virtuele machines uit de NCasT4_v3-serie worden aangedreven door [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU'S en AMD EPYC 7V12 (Rome) cpu's. De virtuele machines beschikken over Maxi maal 4 NVIDIA T4-Gpu's met 16 GB geheugen per, Maxi maal 64 niet-multi threaded AMD EPYC 7V12 (Rome)-processor kernen en 440 GiB van het systeem geheugen. Deze virtuele machines zijn ideaal voor het implementeren van AI-Services, zoals realtime deprocessoren van door de gebruiker gegenereerde aanvragen of voor interactieve grafische en visualisatie werk belastingen met behulp van het GRID-stuur programma en virtuele GPU-technologie van NVIDIA. Standaard GPU Compute-workloads op basis van CUDA, TensorRT, Caffe, ONNX en andere frameworks of GPU-versnelde grafische toepassingen op basis van OpenGL en DirectX kunnen economisch worden geïmplementeerd, met dichtbij de buurt van gebruikers op de NCasT4_v3 serie.
 
 U kunt [een aanvraag indienen](https://aka.ms/NCT4v3Preview) om deel te uitmaken van het preview-programma.
 

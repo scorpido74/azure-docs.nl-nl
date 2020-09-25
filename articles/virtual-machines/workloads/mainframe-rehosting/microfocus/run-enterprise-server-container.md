@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319993"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Micro Focus Enter prise Server 5,0 uitvoeren in een docker-container in azure
 
@@ -121,9 +121,9 @@ Op dit moment wordt de virtuele machine uitgevoerd en aangesloten via RDP. U ben
 
 1.  Als u Enter prise Server 5,0 en de acctdemo-toepassing wilt starten, typt u bij de opdracht prompt het volgende:
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  Installeer een 3270-Terminal Emulator zoals [x3270](http://x3270.bgp.nu/) en gebruik deze om via poort 9040 een koppeling toe te voegen aan de installatie kopie die wordt uitgevoerd.
 
@@ -133,15 +133,15 @@ Op dit moment wordt de virtuele machine uitgevoerd en aangesloten via RDP. U ben
 
     2.  Als u het IP-adres voor de acctdemo-container wilt ophalen, gebruikt u de container-ID uit de vorige stap als volgt:
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     Bijvoorbeeld:
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. Noteer het IP-adres voor de acctdemo-installatie kopie. Het adres in de volgende uitvoer is bijvoorbeeld 172.19.202.52.
 

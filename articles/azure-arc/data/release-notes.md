@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319722"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Release opmerkingen-Azure Arc ingeschakelde Data Services (preview-versie)
 
@@ -29,18 +29,26 @@ Data Services van Azure-Arc is beschikbaar voor open bare preview. Met Arc enabl
 
 Zie [Wat zijn Azure Arc-gegevens Services?](overview.md) voor instructies.
 
+### <a name="known-issues"></a>Bekende problemen
+
+De volgende problemen zijn van toepassing op deze release:
+
+* De **postgresql grootschalige-Server groep wordt verwijderd**: als u de configuratie van de Server groep of het exemplaar hebt gewijzigd, wacht u totdat de bewerking is voltooid voordat u een postgresql grootschalige-Server groep verwijdert.
+
+* ** `azdata notebook run` kan mislukken**: als u dit probleem wilt afronden, voert u `azdata notebook run` uit in een virtuele python-omgeving. Dit probleem kan ook worden veroorzaakt door een mislukte poging om een SQL Managed instance of een PostgreSQL grootschalige-Server groep te maken met behulp van de wizard Azure Data Studio implementatie. In dit geval kunt u het notitie blok openen en op de knop **alles uitvoeren** boven aan het notitie blok klikken.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > **Wilt u gewoon iets uitproberen?**  
-> Ga snel aan de slag met [Azure Arc](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) direct op Azure Kubernetes service (AKS), AWS elastische Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) of in een Azure-VM.
+> Ga snel aan de slag met [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) op Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) of in een Azure-VM.
 
 [Installeer de client-hulpprogramma's](install-client-tools.md)
 
-[De Azure Arc data controller maken](create-data-controller.md) (hiervoor moet eerst de client hulpprogramma's worden geïnstalleerd)
+[Maak de Azure Arc gegevenscontroller](create-data-controller.md) (hiervoor moeten eerst de client-hulpprogramma's worden geïnstalleerd)
 
-[Maak een Azure SQL Managed instance op Azure Arc](create-sql-managed-instance.md) (hiervoor moet u eerst een Azure-Arc-gegevens controller maken)
+[Maak een Azure SQL Managed Instance op Azure Arc](create-sql-managed-instance.md) (hiervoor moet u eerst een Azure Arc-gegevenscontroller maken)
 
-[Maak een Azure database for PostgreSQL grootschalige-Server groep op Azure Arc](create-postgresql-hyperscale-server-group.md) (hiervoor moet u eerst een Azure-Arc-gegevens controller maken)
+[Maak een Azure Database for PostgreSQL Hyperscale-servergroep op Azure Arc](create-postgresql-hyperscale-server-group.md) (eerst moet een Azure Arc-gegevenscontroller gemaakt worden)
 
 ## <a name="known-limitations-and-issues"></a>Bekende beperkingen en problemen
 

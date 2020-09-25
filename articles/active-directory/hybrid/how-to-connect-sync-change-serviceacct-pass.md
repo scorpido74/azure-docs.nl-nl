@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319925"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Het wacht woord voor het ADSync-service account wijzigen
 Als u het wacht woord voor het ADSync-service account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het ADSync-service account opnieuw hebt geïnitialiseerd. 
@@ -52,7 +52,7 @@ Om ervoor te zorgen dat deze fouten niet worden weer gegeven, volgt u de procedu
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>De versleutelings sleutel voor het ADSync-service account wordt afgebroken
 >[!IMPORTANT]
->De volgende procedures zijn alleen van toepassing op Azure AD Connect build 1.1.443.0 of ouder. Dit kan niet worden gebruikt voor nieuwere versies van Azure AD Connect.
+>De volgende procedures zijn alleen van toepassing op Azure AD Connect build 1.1.443.0 of ouder. Dit kan niet worden gebruikt voor nieuwere versies van Azure AD Connect omdat het afbreken van de versleutelings sleutel door Azure AD Connect zelf wordt afgehandeld wanneer u het wacht woord van de AD Sync-Service account wijzigt. de volgende stappen zijn niet vereist in de nieuwere versies.   
 
 Gebruik de volgende procedures om de versleutelings sleutel te verlaten.
 
@@ -88,7 +88,7 @@ De bestaande versleutelings sleutel afbreken zodat de nieuwe versleutelings sleu
 
 4. Voer de volgende opdracht uit: `./miiskmu.exe /a`
 
-![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Scherm opname van Power shell na het uitvoeren van de opdracht.](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Geef het wacht woord van het AD DS Connector-account op
 Als de bestaande wacht woorden in de data base niet langer kunnen worden ontsleuteld, moet u de synchronisatie service opgeven met het wacht woord van het AD DS Connector-account. Met de synchronisatie service worden de wacht woorden versleuteld met de nieuwe versleutelings sleutel:
@@ -101,7 +101,7 @@ Als de bestaande wacht woorden in de data base niet langer kunnen worden ontsleu
 5. Selecteer in het pop-updialoogvenster **verbinding maken met Active Directory forest**:
 6. Voer het wacht woord van het AD DS account in het tekstvak **wacht woord** in. Als u het wacht woord niet kent, moet u dit instellen op een bekende waarde voordat u deze stap uitvoert.
 7. Klik op **OK** om het nieuwe wacht woord op te slaan en het pop-updialoogvenster te sluiten.
-![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+![Scherm afbeelding met de pagina verbinding maken met Active Directory forest in het venster Eigenschappen.](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Het wacht woord van het ADSync-service account opnieuw initialiseren
 U kunt het wacht woord van het Azure AD-service account niet rechtstreeks opgeven bij de synchronisatie service. In plaats daarvan moet u de cmdlet **add-ADSyncAADServiceAccount** gebruiken om het Azure AD-service account opnieuw te initialiseren. De cmdlet stelt het account wachtwoord opnieuw in en maakt het beschikbaar voor de synchronisatie service:

@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319857"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: upgraden van een vorige naar de meest recente versie
 In dit onderwerp worden de verschillende methoden beschreven die u kunt gebruiken om uw Azure Active Directory (Azure AD) Connect-installatie te upgraden naar de nieuwste versie. We raden u aan uw huidige versie van Azure AD Connect te gebruiken. U kunt ook de stappen in de sectie [Swing Migration](#swing-migration) gebruiken wanneer u een substantiële configuratie wijziging aanbrengt.
@@ -106,7 +106,7 @@ Er zijn mogelijk situaties waarin u niet wilt dat deze onderdrukkingen onmiddell
 
 1. Schakel tijdens de upgrade de optie het **synchronisatie proces starten wanneer de configuratie is voltooid** **uit** . Hiermee schakelt u de synchronisatie planner uit en voor komt u dat de synchronisatie cyclus automatisch plaatsvindt voordat de onderdrukkingen worden verwijderd.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Scherm afbeelding die het begin van het synchronisatie proces markeert wanneer de configuratie is voltooid en de optie moet worden gewist.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. Nadat de upgrade is voltooid, voert u de volgende cmdlet uit om erachter te komen welke onderdrukkingen zijn toegevoegd: `Get-ADSyncSchedulerConnectorOverride | fl`
 

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331774"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -234,6 +234,7 @@ Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatte
 9033: kan niet detecteren omdat de gebruikers naam van de virtuele machine ongeldige tekens bevat.     |   Er zijn ongeldige tekens aangetroffen in de gebruikers naam.   |   Geef de VM-referentie opnieuw op om ervoor te zorgen dat er geen ongeldige tekens zijn.
 9034: de gebruikers naam die is gegeven, heeft geen UPN-indeling.    |   De gebruikers naam heeft geen UPN-indeling.  |   Zorg ervoor dat de gebruikers naam de UPN-indeling (User Principal Name) heeft.
 9035: kan niet detecteren omdat de Power shell-taal modus niet is ingesteld op ' volledige taal '.  |   De taal modus voor Power shell in de gast-VM is niet ingesteld op de volledige taal.   |   Zorg ervoor dat de Power shell-taal modus is ingesteld op ' volledige taal '.
+9037: het verzamelen van gegevens is tijdelijk onderbroken omdat de VM-reactie tijd te hoog is.    |   Het duurt te lang voordat de gedetecteerde virtuele machine reageert     |   U hoeft geen actie te ondernemen. Er wordt binnen 24 uur een nieuwe poging gedaan voor toepassings detectie en 3 uur voor afhankelijkheids analyse (zonder agent).
 10000: het type besturings systeem wordt niet ondersteund.   |   Het besturings systeem dat op de server wordt uitgevoerd, is geen Windows of Linux.    |   Ondersteunde typen besturings systemen zijn alleen Windows en Linux.
 10001: script voor Server detectie is niet gevonden op het apparaat.    |   De detectie werkt niet zoals verwacht.   |   Neem contact op met Microsoft Ondersteuning voor een oplossing.
 10002: de detectie taak is niet in de tijd voltooid.     |   De detectie agent werkt niet zoals verwacht.     |   Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.

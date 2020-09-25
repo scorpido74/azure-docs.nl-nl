@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 67529ce3546046eaba75bd3beacd7bb9b96445fe
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331757"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Gepland onderhoud in Azure Database for MySQL - Flexibele server
 
@@ -46,5 +46,5 @@ In zeldzame gevallen kan het onderhouds gebeurtenis door het systeem worden gean
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [het wijzigen van de onderhouds planning](how-to-maintenance-portal.md)
-* Meer informatie [over het verkrijgen van meldingen over aanstaande onderhouds werkzaamheden](/azure/service-health/service-notifications.md) met Azure service Health
-* Meer informatie [over het instellen van waarschuwingen over aanstaande geplande onderhouds gebeurtenissen](/azure/service-health/resource-health-alert-monitor-guide.md)
+* Meer informatie [over het verkrijgen van meldingen over aanstaande onderhouds werkzaamheden](../../service-health/service-notifications.md) met Azure service Health
+* Meer informatie [over het instellen van waarschuwingen over aanstaande geplande onderhouds gebeurtenissen](../../service-health/resource-health-alert-monitor-guide.md)

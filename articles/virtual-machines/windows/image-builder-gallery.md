@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320061"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Windows-installatie kopie maken en deze distribueren naar een gedeelde installatie kopie galerie 
 
@@ -22,7 +22,7 @@ Er wordt een JSON-sjabloon gebruikt om de installatie kopie te configureren. Het
 
 De sjabloon maakt gebruik van [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
 
-Azure Image Builder voert automatisch Sysprep uit om de installatie kopie te generaliseren. Dit is een generieke Sysprep-opdracht, die u zo nodig kunt [overschrijven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
+Azure Image Builder voert automatisch Sysprep uit om de installatie kopie te generaliseren. Dit is een generieke Sysprep-opdracht, die u zo nodig kunt [overschrijven](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
 Houd er rekening mee dat het aantal keren dat u de laag wilt aanpassen. U kunt de Sysprep-opdracht Maxi maal 8 keer uitvoeren op één Windows-installatie kopie. Nadat u Sysprep acht keer hebt uitgevoerd, moet u de Windows-installatie kopie opnieuw maken. Zie [limieten voor het aantal keren dat u Sysprep kunt uitvoeren](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)voor meer informatie. 
 

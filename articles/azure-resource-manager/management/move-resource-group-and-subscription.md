@@ -4,12 +4,12 @@ description: Gebruik Azure Resource Manager om resources te verplaatsen naar een
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319551"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -34,6 +34,10 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
    * [Richt lijnen voor netwerk verplaatsing](./move-limitations/networking-move-limitations.md)
    * [Hulp Recovery Services verplaatsen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Hulp Virtual Machines verplaatsen](./move-limitations/virtual-machines-move-limitations.md)
+
+1. Als u een resource verplaatst waaraan een Azure-rol rechtstreeks is toegewezen aan de resource (of een onderliggende resource), wordt de roltoewijzing niet verplaatst en wordt deze zwevend. Nadat de verplaatsing is verplaatst, moet u de roltoewijzing opnieuw maken. Uiteindelijk wordt de zwevende roltoewijzing automatisch verwijderd, maar het is een best practice om de roltoewijzing te verwijderen voordat u de resource verplaatst.
+
+    Zie [Azure-roltoewijzingen weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) en [Azure-roltoewijzingen toevoegen of verwijderen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van roltoewijzingen.
 
 1. De bron-en doel abonnementen moeten actief zijn. Als u problemen ondervindt bij het inschakelen van een uitgeschakeld account, [maakt u een ondersteunings aanvraag voor Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **abonnements beheer** voor het type probleem.
 

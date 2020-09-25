@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331893"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Het proces van de team data Science in actie: met behulp van SQL Server
 In deze zelf studie doorloopt u het proces van het bouwen en implementeren van een machine learning model met behulp van SQL Server en een openbaar beschik bare gegevensset, de NYC-gegevensset voor de [taxi-trips](https://www.andresmh.com/nyctaxitrips/) . De procedure volgt een standaard werk stroom voor data technologie: de gegevens opnemen en verkennen, functies van de engineer om leren te vergemakkelijken, en vervolgens een model bouwen en implementeren.
@@ -83,14 +83,14 @@ In deze zelf studie wordt gebruikgemaakt van de parallelle bulkimportbewerking v
 Uw Azure data Science-omgeving instellen:
 
 1. [Een opslagaccount maken](../../storage/common/storage-account-create.md)
-2. [Een Azure Machine Learning-werkruimte maken](../studio/create-workspace.md)
+2. [Een Azure Machine Learning-werk ruimte maken](../classic/create-workspace.md)
 3. [Richt een Data Science virtual machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)in dat een SQL Server en een IPython notebook server biedt.
    
    > [!NOTE]
    > De voorbeeld scripts en IPython-notebooks worden tijdens het installatie proces gedownload naar uw virtuele machine voor data technologie. Wanneer het script na de installatie van de virtuele machine is voltooid, zijn de voor beelden in de documenten bibliotheek van uw VM:  
    > 
-   > * Voorbeeld scripts:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Voor beelden van IPython-notebooks:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Voorbeeld scripts: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Voor beelden van IPython-notebooks: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   waar `<user_name>` de Windows-aanmeldings naam van uw virtuele machine is. We verwijzen naar de voorbeeld mappen als **voorbeeld scripts** en voor **beelden van IPython-notebooks**.
    > 
    > 
@@ -175,8 +175,8 @@ In deze sectie wordt de laatste query opgeslagen om de gegevens op te halen en v
 
 Voor een snelle controle van het aantal rijen en kolommen in de tabellen dat eerder is gevuld met parallelle bulkimportbewerking,
 
-- Rapport aantal rijen in tabel nyctaxi_trip zonder tabel scan:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
-- Rapport aantal kolommen in tabel nyctaxi_trip:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
+- Rapport aantal rijen in tabel nyctaxi_trip zonder tabel scan: `SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- Rapport aantal kolommen in tabel nyctaxi_trip: `SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Exploratie: reis distributie per Medallion
 In dit voor beeld wordt de Medallion (taxi getallen) geïdentificeerd met meer dan 100 trips binnen een bepaalde periode. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de ** \_ datum van ophalen**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
@@ -626,9 +626,9 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 3. Regressie taak: voor het voors pellen van de hoeveelheid fooien die voor een reis wordt betaald.  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modellen bouwen in Azure Machine Learning
-Meld u aan bij uw Azure Machine Learning-werk ruimte om de modellerings oefening te starten. Als u nog geen machine learning-werk ruimte hebt gemaakt, raadpleegt u [een Azure machine learning-werk ruimte maken](../studio/create-workspace.md).
+Meld u aan bij uw Azure Machine Learning-werk ruimte om de modellerings oefening te starten. Als u nog geen machine learning-werk ruimte hebt gemaakt, raadpleegt u [een Azure machine learning-werk ruimte maken](../classic/create-workspace.md).
 
-1. Zie [Wat is er Azure machine learning Studio](../studio/what-is-ml-studio.md) om aan de slag te gaan met Azure machine learning?
+1. Zie [Wat is er Azure machine learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) om aan de slag te gaan met Azure machine learning?
 2. Meld u aan bij [Azure machine learning Studio](https://studio.azureml.net).
 3. Op de start pagina van Studio vindt u een schat aan informatie, Video's, zelf studies, koppelingen naar de referentie modules en andere bronnen. Raadpleeg het [Azure machine learning Documentation Center](https://azure.microsoft.com/documentation/services/machine-learning/)voor meer informatie over Azure machine learning.
 
@@ -651,7 +651,7 @@ In deze oefening hebben we de gegevens in SQL Server al verkend en ontworpen, en
    
     ![Gegevens Azure Machine Learning importeren][17]
 2. Selecteer **Azure SQL database** als **gegevens bron** in het deel venster **Eigenschappen** .
-3. Voer de naam van de data base-DNS in het veld **database server naam** in. Formatteer`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Voer de naam van de data base-DNS in het veld **database server naam** in. Formatteer `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Voer de **database naam** in het bijbehorende veld in.
 5. Voer de **SQL-gebruikers naam** in de naam van de **Server gebruikers account**en het **wacht woord** in het **wacht woord van de server gebruikers account**in.
 7. Plak in het tekst gebied **database query** bewerken de query waarmee de benodigde database velden worden geëxtraheerd (met inbegrip van berekende velden zoals de labels) en druk op voor beelden van de gegevens naar de gewenste steekproef grootte.
@@ -668,7 +668,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Modellen implementeren in Azure Machine Learning
-Als uw model klaar is, kunt u het eenvoudig implementeren als een webservice rechtstreeks vanuit het experiment. Zie [een Azure machine learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md)voor meer informatie over het implementeren van Azure machine learning-webservices.
+Als uw model klaar is, kunt u het eenvoudig implementeren als een webservice rechtstreeks vanuit het experiment. Zie [een Azure machine learning-webservice implementeren](../classic/deploy-a-machine-learning-web-service.md)voor meer informatie over het implementeren van Azure machine learning-webservices.
 
 Als u een nieuwe webservice wilt implementeren, moet u het volgende doen:
 
@@ -697,8 +697,8 @@ In deze walkthrough-zelf studie hebt u een Azure data Science-omgeving gemaakt m
 Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) worden door micro soft gedeeld onder de MIT-licentie. Controleer het LICENSE.txt-bestand in de map van de voorbeeld code op GitHub voor meer informatie.
 
 ### <a name="references"></a>Referenties
-• [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
-• [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
+•    [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC van de taxi en limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) van de Commissie
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png

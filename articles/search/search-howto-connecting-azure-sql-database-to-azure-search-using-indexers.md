@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331638"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -74,7 +74,9 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
     }
    ```
 
-   U kunt de connection string ophalen via de [Azure Portal](https://portal.azure.com); Gebruik de `ADO.NET connection string` optie.
+   Het connection string kan een van de volgende indelingen volgen:
+    1. U kunt de connection string ophalen via de [Azure Portal](https://portal.azure.com); Gebruik de `ADO.NET connection string` optie.
+    1. Een beheerde identiteit connection string die geen account sleutel bevat met de volgende indeling: `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` . Als u deze connection string wilt gebruiken, volgt u de instructies voor het [instellen van een indexer-verbinding met een Azure SQL database met behulp van een beheerde identiteit](search-howto-managed-identities-sql.md).
 
 2. Maak de doel-Azure-Cognitive Search index als u er nog geen hebt. U kunt een index maken met behulp van de [Portal](https://portal.azure.com) of de [Create Index-API](/rest/api/searchservice/Create-Index). Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron tabel. Zie [toewijzing tussen SQL en Azure cognitieve Zoek gegevens typen](#TypeMapping).
 
@@ -314,7 +316,7 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
+| SQL-gegevenstype | Toegestane doel index veld typen | Opmerkingen |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |

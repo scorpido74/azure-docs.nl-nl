@@ -14,30 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650057"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320384"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
 
 Wanneer u verbinding maakt met een externe oplossing die CEF berichten verzendt, zijn er drie stappen om verbinding te maken met Azure Sentinel:
 
-STAP 1: [verbinding maken met CEF met behulp van de agent](connect-cef-agent.md) stap 2: [oplossingen uitvoeren-specifieke stappen](connect-cef-solution-config.md) stap 3: de [verbinding controleren](connect-cef-verify.md)
+STAP 1: [verbinding maken met CEF met behulp van een syslog/CEF-doorstuur server](connect-cef-agent.md) stap 2: [oplossingen uitvoeren-specifieke stappen](connect-cef-solution-config.md) stap 3: de [verbinding controleren](connect-cef-verify.md)
 
-In dit artikel wordt beschreven hoe de verbinding werkt, aan de hand van vereisten en krijgt u de stappen voor het implementeren van de agent op beveiligings oplossingen die algemene Event Format-berichten (CEF) boven op syslog verzenden. 
+In dit artikel wordt beschreven hoe de verbinding werkt, aan de hand van vereisten en de stappen voor het implementeren van de agent op beveiligings oplossingen die algemene Event Format-berichten (CEF) boven op syslog worden verzonden. 
 
 > [!NOTE] 
 > Gegevens worden opgeslagen op de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
 
-Als u deze verbinding wilt maken, moet u een agent implementeren op een toegewezen Linux-machine (VM of on-premises) ter ondersteuning van de communicatie tussen het apparaat en de Azure-Sentinel. In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven.
+Als u deze verbinding wilt maken, moet u een syslog-doorstuur server implementeren ter ondersteuning van de communicatie tussen het apparaat en de onderverklikker van Azure.  De server bestaat uit een toegewezen Linux-machine (VM of on-premises) met de Log Analytics-agent voor Linux geïnstalleerd. 
+
+In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven:
 
  ![CEF in azure](./media/connect-cef/cef-syslog-azure.png)
 
-Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of op een on-premises computer gebruikt. 
+Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of op een on-premises computer gebruikt: 
 
  ![CEF on-premises](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -46,7 +48,7 @@ Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of o
 
 Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. U kunt de volgende instructies gebruiken om de beveiligings configuratie van uw computer te verbeteren:  [Beveilig de virtuele machine in azure](../virtual-machines/security-policy.md), [Aanbevolen procedures voor netwerk beveiliging](../security/fundamentals/network-best-practices.md).
 
-Als u TLS-communicatie tussen de beveiligings oplossing en de syslog-computer wilt gebruiken, moet u de syslog-daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [syslog-verkeer met TLS-rsyslog versleutelen](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [logboek berichten versleutelen met TLS-syslog-aardgas](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Als u TLS-communicatie tussen de syslog-bron en de syslog-doorstuur server wilt gebruiken, moet u de syslog-daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [syslog-verkeer met TLS-rsyslog versleutelen](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [logboek berichten versleutelen met TLS-syslog-aardgas](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Vereisten

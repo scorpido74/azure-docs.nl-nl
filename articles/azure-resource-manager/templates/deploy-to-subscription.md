@@ -2,13 +2,13 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284785"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -62,7 +62,7 @@ Andere ondersteunde typen zijn:
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>Schema
+## <a name="schema"></a>Schema
 
 Het schema dat u voor implementaties op abonnements niveau gebruikt, wijkt af van het schema voor implementaties van resource groepen.
 
@@ -77,6 +77,20 @@ Het schema voor een parameter bestand is hetzelfde voor alle implementatie berei
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Implementatie bereiken
+
+Wanneer u naar een abonnement implementeert, kunt u een abonnement en alle resource groepen binnen het abonnement richten. U kunt niet implementeren in een abonnement dat verschilt van het doel abonnement. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
+
+Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op het abonnement.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Als u een resource groep in het abonnement wilt richten, voegt u een geneste implementatie toe en neemt u de `resourceGroup` eigenschap op. In het volgende voor beeld streeft de geneste implementatie naar een resource groep met de naam `rg2` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+In dit artikel vindt u sjablonen die laten zien hoe u resources implementeert in verschillende bereiken. Zie [resource groep en-resources maken](#create-resource-group-and-resources)voor een sjabloon waarmee u een resource groep maakt en een opslag account implementeert. Voor een sjabloon waarmee een resource groep wordt gemaakt, wordt er een vergren deling op toegepast en wordt er een rol toegewezen aan de resource groep. Zie [toegangs beheer](#access-control)voor meer informatie.
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
 
@@ -112,49 +126,6 @@ Voor implementaties op abonnements niveau moet u een locatie opgeven voor de imp
 U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy.jsop** implementeert, maakt de standaard implementatie naam **azuredeploy**.
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
-
-## <a name="deployment-scopes"></a>Implementatie bereiken
-
-Wanneer u naar een abonnement implementeert, kunt u een abonnement en alle resource groepen binnen het abonnement richten. U kunt niet implementeren in een abonnement dat verschilt van het doel abonnement. De gebruiker die de sjabloon implementeert, moet toegang hebben tot het opgegeven bereik.
-
-Resources die zijn gedefinieerd in de sectie resources van de sjabloon, worden toegepast op het abonnement.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Als u een resource groep in het abonnement wilt richten, voegt u een geneste implementatie toe en neemt u de `resourceGroup` eigenschap op. In het volgende voor beeld streeft de geneste implementatie naar een resource groep met de naam `rg2` .
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-In dit artikel vindt u sjablonen die laten zien hoe u resources implementeert in verschillende bereiken. Zie [resource groep en-resources maken](#create-resource-group-and-resources)voor een sjabloon waarmee u een resource groep maakt en een opslag account implementeert. Voor een sjabloon waarmee een resource groep wordt gemaakt, wordt er een vergren deling op toegepast en wordt er een rol toegewezen aan de resource groep. Zie [toegangs beheer](#access-control)voor meer informatie.
 
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 

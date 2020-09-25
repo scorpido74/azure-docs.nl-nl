@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 3798396c72bc01bc20f1b4ee3ee66961fe33bff5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331689"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Een Azure Database for MySQL-flexibele server (preview) beheren met de Azure CLI
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Schaal berekening en opslag
 
-U kunt uw Compute-laag, vCores en opslag eenvoudig omhoog schalen met de volgende opdracht. U kunt alle server bewerkingen zien die u kunt uitvoeren [AZ mysql Flexible-server server Overview (Engelstalig)](/cli/azure/mysql/server)
+U kunt uw Compute-laag, vCores en opslag eenvoudig omhoog schalen met de volgende opdracht. U kunt alle server bewerkingen zien die u kunt uitvoeren [AZ mysql Flexible-Server Update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update)
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v4 --storage-size 6144
@@ -62,12 +62,12 @@ storage-size | 6144 | De opslagcapaciteit van de server (eenheid is MB). Mini ma
 ## <a name="manage-mysql-databases-on-a-server"></a>MySQL-data bases op een server beheren.
 U kunt elk van deze opdrachten gebruiken om data base-eigenschappen van een Data Base op uw server te maken, te verwijderen, weer te geven.
 
-| Cmdlet | Gebruik| Description |
+| Cmdlet | Gebruik| Beschrijving |
 | --- | ---| --- |
-|[AZ mysql Flexible-server DB Create](/cli/azure/sql/db#az-mysql-flexible-server-db-create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Hiermee maakt u een Data Base|
-|[AZ mysql flexibel-server DB-verwijderen](/cli/azure/sql/db#az-mysql-flexible-server-db-delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Verwijder uw data base van uw server. Met deze opdracht wordt de server niet verwijderd. |
-|[AZ mysql Flexible-server DB List](/cli/azure/sql/db#az-mysql-flexible-server-db-list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|een lijst met alle data bases op de server|
-|[AZ mysql Flexible-server DB show](/cli/azure/sql/db#az-mysql-flexible-server-db-show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Meer details van de Data Base weer geven|
+|[AZ mysql Flexible-server DB Create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Hiermee maakt u een Data Base|
+|[AZ mysql flexibel-server DB-verwijderen](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Verwijder uw data base van uw server. Met deze opdracht wordt de server niet verwijderd. |
+|[AZ mysql Flexible-server DB List](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|een lijst met alle data bases op de server|
+|[AZ mysql Flexible-server DB show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Meer details van de Data Base weer geven|
 
 ## <a name="update-admin-password"></a>Beheerders wachtwoord bijwerken
 U kunt het wacht woord van de beheerdersrol wijzigen met deze opdracht
@@ -80,7 +80,7 @@ az mysql flexible-server update --resource-group myresourcegroup --name mydemose
 > Het wacht woord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofd letters, Nederlandse kleine letters, cijfers en niet-alfanumerieke tekens.
 
 ## <a name="delete-a-server"></a>Een server verwijderen
-Als u de flexibele MySQL-server wilt verwijderen, kunt u [AZ mysql flexibele-server opdracht verwijderen](/cli/azure/mysql/server#az-mysql-flexible-server-delete) uitvoeren.
+Als u de flexibele MySQL-server wilt verwijderen, kunt u [AZ mysql flexibele-server opdracht verwijderen](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) uitvoeren.
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver

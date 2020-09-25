@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: devx-track-js
+ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331859"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
-Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingesteld](how-to-set-up-instance-scripted.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Zodra u een eerste client project hebt ingesteld, wordt in dit artikel **beschreven hoe u code in die client-app schrijft om deze te verifiëren voor** het Azure Digital apparaatdubbels-exemplaar.
+Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingesteld](how-to-set-up-instance-portal.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Zodra u een eerste client project hebt ingesteld, wordt in dit artikel **beschreven hoe u code in die client-app schrijft om deze te verifiëren voor** het Azure Digital apparaatdubbels-exemplaar.
 
 Er zijn twee benaderingen van voorbeeld code in dit artikel. U kunt de optie gebruiken die geschikt is voor u, afhankelijk van de taal van uw keuze:
 * De eerste sectie van de voorbeeld code maakt gebruik van de Azure Digital Apparaatdubbels .NET (C#) SDK. De SDK maakt deel uit van de Azure-SDK voor .NET en bevindt zich hier: [*Azure IOT Digital-client bibliotheek voor .net*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
@@ -27,7 +27,7 @@ Meer informatie over de Api's en Sdk's voor Azure Digital Apparaatdubbels vindt 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-scripted.md). Dit zorgt ervoor dat u een Azure Digital Apparaatdubbels-exemplaar hebt, uw gebruiker heeft toegangs machtigingen en u hebt machtigingen ingesteld voor client toepassingen. Nadat u deze instellingen hebt ingesteld, bent u klaar voor het schrijven van client-app-code.
+Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-portal.md). Dit zorgt ervoor dat u een Azure Digital Apparaatdubbels-exemplaar hebt, uw gebruiker heeft toegangs machtigingen en u hebt machtigingen ingesteld voor client toepassingen. Nadat u deze instellingen hebt ingesteld, bent u klaar voor het schrijven van client-app-code.
 
 Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schrijft. Als u nog geen client-app-project hebt ingesteld, maakt u een eenvoudig project in de taal van uw keuze voor gebruik in deze zelf studie.
 
@@ -45,13 +45,13 @@ U hebt ook het volgende nodig met-instructies:
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-Als u wilt verifiëren met de .NET SDK, gebruikt u een van de methoden voor het verkrijgen van referenties die zijn gedefinieerd in de [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek. Hier volgen twee die vaak worden gebruikt (zelfs samen in dezelfde toepassing):
+Als u wilt verifiëren met de .NET SDK, gebruikt u een van de methoden voor het verkrijgen van referenties die zijn gedefinieerd in de [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -bibliotheek. Hier volgen twee die vaak worden gebruikt (zelfs samen in dezelfde toepassing):
 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) werkt prima in gevallen waarin u beheerde identiteiten (MSI) nodig hebt, en is een goede kandidaat voor het werken met Azure functions
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) werkt prima in gevallen waarin u beheerde identiteiten (MSI) nodig hebt, en is een goede kandidaat voor het werken met Azure functions
 
 ### <a name="interactivebrowsercredential-method"></a>Methode InteractiveBrowserCredential
-De methode [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie.
+De methode [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie.
 
 Als u de interactieve browser referenties wilt gebruiken om een geverifieerde SDK-client te maken, voegt u de volgende code toe:
 
@@ -81,7 +81,7 @@ try
 > Hoewel u de client-ID, Tenant-ID en instantie-URL rechtstreeks in de code kunt plaatsen zoals hierboven wordt weer gegeven, is het een goed idee om uw code deze waarden te laten ophalen uit een configuratie bestand of omgevings variabele.
 
 ### <a name="managedidentitycredential-method"></a>Methode ManagedIdentityCredential
- De methode [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) werkt prima in gevallen waar u [beheerde identiteiten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)nodig hebt, bijvoorbeeld bij het werken met Azure functions.
+ De methode [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) werkt prima in gevallen waar u [beheerde identiteiten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)nodig hebt, bijvoorbeeld bij het werken met Azure functions.
 In een Azure-functie kunt u de referenties van de beheerde identiteit als volgt gebruiken:
 
 ```csharp

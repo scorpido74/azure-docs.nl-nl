@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319789"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Configuratie van Application Gateway-infra structuur
 
@@ -20,10 +20,10 @@ De infra structuur van de toepassings Gateway omvat het virtuele netwerk, subnet
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>Virtueel netwerk en toegewezen subnet
 
-Een toepassings gateway is een speciale implementatie in uw virtuele netwerk. In het virtuele netwerk is een toegewezen subnet vereist voor de toepassings gateway. U kunt meerdere exemplaren van een bepaalde toepassings gateway-implementatie in een subnet hebben. U kunt ook andere toepassings gateways implementeren in het subnet. Maar u kunt geen andere resources implementeren in het subnet van de toepassings gateway.
+Een toepassings gateway is een speciale implementatie in uw virtuele netwerk. In het virtuele netwerk is een toegewezen subnet vereist voor de toepassings gateway. U kunt meerdere exemplaren van een bepaalde toepassings gateway-implementatie in een subnet hebben. U kunt ook andere toepassings gateways implementeren in het subnet. Maar u kunt geen andere resources implementeren in het subnet van de toepassings gateway. U kunt Standard_v2 en de standaard Azure-toepassing gateway niet op hetzelfde subnet combi neren.
 
 > [!NOTE]
-> U kunt Standard_v2 en de standaard Azure-toepassing gateway niet op hetzelfde subnet combi neren.
+> [Beleids regels voor het virtuele netwerk service-eind punten](../virtual-network/virtual-network-service-endpoint-policies-overview.md) worden momenteel niet ondersteund in een Application Gateway subnet.
 
 ### <a name="size-of-the-subnet"></a>Grootte van het subnet
 

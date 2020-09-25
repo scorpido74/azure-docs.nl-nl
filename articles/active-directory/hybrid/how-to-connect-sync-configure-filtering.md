@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319976"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
 Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Microsoft 365 werk belastingen, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
@@ -113,7 +113,7 @@ Voer de volgende stappen uit om het domein filter in te stellen:
    ![Connector eigenschappen](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Klik op **mappartities configureren**.
 5. Selecteer in de lijst **Directory partities selecteren** de optie en selecteer de selectie van de domeinen als dat nodig is. Controleer of alleen de partities die u wilt synchroniseren zijn geselecteerd.  
-   ![Partities](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![Scherm opname van de Directory partities in het venster Eigenschappen.](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Als u uw on-premises Active Directory-infra structuur hebt gewijzigd en domeinen uit het forest hebt toegevoegd of verwijderd, klikt u op de knop **vernieuwen** om een bijgewerkte lijst op te halen. Wanneer u vernieuwt, wordt u gevraagd om referenties. Geef alle referenties met lees toegang tot Windows Server Active Directory op. Het hoeft niet de gebruiker te zijn die vooraf ingevuld is in het dialoog venster.  
    ![Vernieuwen is vereist](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Wanneer u klaar bent, sluit u het dialoog venster **Eigenschappen** door op **OK**te klikken. Als u domeinen uit het forest hebt verwijderd, ziet u een bericht pop-up met de melding dat een domein is verwijderd en dat de configuratie wordt opgeruimd.

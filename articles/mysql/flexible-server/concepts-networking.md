@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331723"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Connectiviteits-en netwerk concepten voor Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -62,6 +62,8 @@ Hier volgen enkele concepten die u moet kennen bij het gebruik van virtuele netw
 
    Uw MySQL-flexibele server moet zich in een subnet bevinden dat wordt **overgedragen** voor het flexibele gebruik van MySQL-servers. Deze delegatie houdt in dat alleen Azure Database for MySQL Flexibele servers dat subnet kunnen gebruiken. Er kunnen zich geen andere Azure-resourcetypen in het gedelegeerde subnet bevinden. U delegeert een subnet door de eigenschap Delegation toe te wijzen als micro soft. DBforMySQL/flexibleServers.
 
+* **Netwerk beveiligings groepen (NSG)** Met beveiligings regels in netwerk beveiligings groepen kunt u het type netwerk verkeer filteren dat in en uit de subnetten van het virtuele netwerk en netwerk interfaces kan stromen. Bekijk het [overzicht van de netwerk beveiligings groep](../../virtual-network/network-security-groups-overview.md) voor meer informatie.
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Niet-ondersteunde scenario's voor virtuele netwerken
 * Openbaar eind punt (of openbaar IP of DNS): een flexibele server die is geïmplementeerd in een virtueel netwerk kan geen openbaar eind punt hebben
@@ -108,11 +110,9 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 ## <a name="hostname"></a>Hostnaam
 Ongeacht welke netwerk optie u kiest, raden we u aan om altijd een Fully Qualified Domain Name (FQDN) als hostnaam te gebruiken bij het maken van verbinding met uw flexibele server. Het IP-adres van de server is niet gegarandeerd statisch. Door gebruik te maken van de FQDN-namen kunt u voor komen dat uw connection string worden gewijzigd. 
 
-Een scenario waarbij het IP-adres wordt gewijzigd, is als u gebruikmaakt van zone-redundante HA en er een failover plaatsvindt tussen de primaire en secundaire. Het gebruik van de FQDN betekent dat u probleemloos verbindingen met dezelfde connection string kunt proberen.
-
 Voorbeeld
 * Aanbevelingen `hostname = servername.mysql.database.azure.com`
-* Vermijd het gebruik van `hostname = 10.0.0.4` (privé adres) of `hostname = 40.2.45.67` (openbaar IP)
+* Vermijd het gebruik van `hostname = 10.0.0.4` (een privé adres) of `hostname = 40.2.45.67` (een openbaar IP), indien mogelijk
 
 
 

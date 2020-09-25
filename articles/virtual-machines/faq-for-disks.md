@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331485"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -491,6 +491,6 @@ Nee.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 
-Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Als u contact wilt opnemen met het Azure Storage team en andere leden van de community over dit artikel, gebruikt u de [pagina MSDN micro soft Q&een vraag voor Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage).
+Als uw vraag hier niet wordt vermeld, laat het ons weten en wij helpen u een antwoord te vinden. U kunt aan het einde van dit artikel een vraag plaatsen in de opmerkingen. Gebruik de [pagina micro soft Q&een vraag voor Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage)om contact op te nemen met het Azure Storage team en andere leden van de community over dit artikel.
 
 Als u functies wilt aanvragen, moet u uw aanvragen en ideeën verzenden naar het [Feedback forum van Azure Storage](https://feedback.azure.com/forums/217298-storage).

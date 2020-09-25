@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001906"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331570"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>De Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage
 
@@ -499,7 +499,7 @@ Voer de volgende stappen uit om Azurite HTTPS toe te voegen aan Storage Explorer
 1. **Lokale & gekoppeld** selecteren
 1. Klik met de rechter muisknop op **opslag accounts** en selecteer **verbinding maken met Azure Storage**.
 1. Selecteer **een Connection String gebruiken**
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer een waarde in het veld **weergave naam** in.
 1. Voer de [https-connection string](#https-connection-strings) in uit de vorige sectie van dit document
 1. Selecteer **Volgende**
@@ -555,6 +555,12 @@ Azurite is uitgelijnd met Azure Storage fout bij het verwerken van fouten, maar 
 Azurite ondersteunt geo-redundante replicatie met lees toegang (RA-GRS). Voor opslag bronnen opent u de secundaire locatie door toe te voegen `-secondary` aan de account naam. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van de alleen-lezen secundair in Azurite:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>Tabel ondersteuning
+
+Ondersteuning voor tabellen in Azurite is momenteel in ontwikkeling en open voor bijdragen. Controleer het [Azurite v3-tabel](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) project voor de laatste voortgang.
+
+Voor de ondersteuning van duurzame functies zijn tabellen vereist.
 
 ## <a name="azurite-is-open-source"></a>Azurite is open source
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4d0800ff8a35c5c91b067a85dfcc089f2e343d1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090915"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319075"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch processing Kit voor spraak containers
 
@@ -23,7 +23,7 @@ Gebruik de batch processing Kit om werk belastingen op spraak containers aan te 
 
 :::image type="content" source="media/containers/general-diagram.png" alt-text="Een diagram met een voor beeld van een werk stroom voor een batch Kit-container.":::
 
-De batch Kit-container is gratis beschikbaar op [github](https://github.com/microsoft/batch-processing-kit) en [docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags). Er worden alleen [kosten in rekening gebracht](speech-container-howto.md#billing) voor de spraak containers die u gebruikt.
+De batch Kit-container is gratis beschikbaar op [github](https://github.com/microsoft/batch-processing-kit) en   [docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags). Er worden alleen [kosten in rekening gebracht](speech-container-howto.md#billing) voor de spraak containers die u gebruikt.
 
 | Functie  | Beschrijving  |
 |---------|---------|
@@ -35,7 +35,7 @@ De batch Kit-container is gratis beschikbaar op [github](https://github.com/micr
 | Endpoint Hot-swaping | Het toevoegen, verwijderen of wijzigen van een spraak container-eind punt tijdens runtime zonder de batch voortgang te onderbreken. Updates zijn direct. |
 | Real-time logboek registratie | Real-time logboek registratie van aanvragen voor pogingen, tijds tempels en fout redenen, met spraak-SDK-logboek bestanden voor elk audio bestand. |
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 Gebruik de opdracht [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) om de meest recente batch Kit-container te downloaden.
 
@@ -76,6 +76,8 @@ De batch-client kan dynamisch detecteren of een eind punt niet beschikbaar is (b
 > * In dit voor beeld wordt dezelfde directory ( `/my_nfs` ) gebruikt voor het configuratie bestand en de invoer, uitvoer en Logboeken. U kunt voor deze mappen gehoste of NBS-gekoppelde directory's gebruiken.
 > * Als de client wordt uitgevoerd met, `–h` worden de beschik bare opdracht regel parameters en de bijbehorende standaard waarden weer geven. 
 
+
+#### <a name="linux"></a>[Linux](#tab/linux)
 Gebruik de opdracht docker `run` om de container te starten. Hiermee start u een interactieve shell in de container.
 
 ```Docker
@@ -94,6 +96,18 @@ De batch-client en-container uitvoeren in één opdracht:
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
+#### <a name="windows"></a>[Windows](#tab/windows)
+
+De batch-client en-container uitvoeren in één opdracht:
+
+```Docker
+docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
+
+```
+
+---
+
+
 De client wordt gestart. Als een audio bestand tijdens een vorige uitvoering al is getranscribeerd, wordt het bestand automatisch door de client overs Laan. Bestanden worden verzonden met een automatische nieuwe poging als er tijdelijke fouten optreden en u kunt onderscheid maken tussen de fouten die u wilt voor de client om opnieuw te proberen. Bij een transcriptie-fout gaat de client verder met transcriptie en kan het opnieuw worden geprobeerd zonder de voortgang te verliezen.  
 
 ## <a name="run-modes"></a>Uitvoerings modi 
@@ -102,7 +116,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 #### <a name="oneshot"></a>[Oneshot](#tab/oneshot)
 
-`ONESHOT`modus transcribeert één batch met audio bestanden (van een invoer Directory en een lijst met optionele bestanden) naar een uitvoermap.
+`ONESHOT` modus transcribeert één batch met audio bestanden (van een invoer Directory en een lijst met optionele bestanden) naar een uitvoermap.
 
 :::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de modus OneShot.":::
 
@@ -117,7 +131,7 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 > [!TIP]
 > Als er tegelijkertijd meerdere bestanden aan de invoer Directory worden toegevoegd, kunt u de prestaties verbeteren door ze in een regel matig interval toe te voegen.
 
-`DAEMON`in de modus worden bestaande bestanden in een bepaalde map getranscribeerd en worden er voortdurend nieuwe audio bestanden getranscribeerd wanneer ze worden toegevoegd.          
+`DAEMON` in de modus worden bestaande bestanden in een bepaalde map getranscribeerd en worden er voortdurend nieuwe audio bestanden getranscribeerd wanneer ze worden toegevoegd.          
 
 :::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de daemon-modus.":::
 
@@ -130,14 +144,14 @@ De batch verwerkings pakket biedt drie modi, met behulp van de `--run-mode` para
 
 #### <a name="rest"></a>[REST](#tab/rest)
 
-`REST`modus is een API-server modus die een eenvoudige set HTTP-eind punten biedt voor het verzenden van audio bestanden, het controleren van statussen en lange polling. Maakt ook programmatisch gebruik mogelijk met behulp van een module-extensie van python of als een submodule importeren.
+`REST` modus is een API-server modus die een eenvoudige set HTTP-eind punten biedt voor het verzenden van audio bestanden, het controleren van statussen en lange polling. Maakt ook programmatisch gebruik mogelijk met behulp van een module-extensie van python of als een submodule importeren.
 
 :::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Een diagram van de batch Kit container verwerkings bestanden in de daemon-modus.":::
 
 1. Definieer de eind punten van de spraak container die de batch-client in het bestand zal gebruiken `config.yaml` . 
 2. Verzend een aanvraag voor een HTTP-aanvraag naar een van de eind punten van de API-server. 
         
-    |Eindpunt  |Description  |
+    |Eindpunt  |Beschrijving  |
     |---------|---------|
     |`/submit`     | Eind punt voor het maken van nieuwe batch-aanvragen.        |
     |`/status`     | Eind punt voor het controleren van de status van een batch-aanvraag. De verbinding blijft open totdat de batch is voltooid.       |
