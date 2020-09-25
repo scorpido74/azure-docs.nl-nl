@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f47569eef7281840108c32283f664c3218de23dc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357777"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted configureren met behulp van het Windows-certificaat archief
 
@@ -127,7 +127,7 @@ U kunt de kolommen nu versleutelen of een Power shell-script opslaan om het late
 
 Controleer of de instellingen juist zijn en klik op **volt ooien** om de installatie voor always encrypted te volt ooien.
 
-![Samenvatting](./media/always-encrypted-certificate-store-configure/summary.png)
+![Scherm afbeelding toont de resultaten pagina met taken die als door gegeven zijn gemarkeerd.](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>De acties van de wizard controleren
 

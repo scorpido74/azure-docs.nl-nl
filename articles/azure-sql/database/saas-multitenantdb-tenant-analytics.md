@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442902"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356797"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-multi tenant-app
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 > - Query's uitvoeren op de Analytics-Data Base.
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te markeren en aanbevelingen te doen voor verbeteringen.
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![Diagram toont een overzicht van de architectuur die wordt gebruikt voor dit artikel.](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Patroon voor offline Tenant analyse
 
@@ -53,7 +53,7 @@ Vervolgens worden de geaggregeerde gegevens vernietigd tot een set [ster-schema]
 
 De centrale en dimensie tabellen kunnen samen een efficiënte analyse verwerking hebben. Het ster schema dat in deze zelf studie wordt gebruikt, wordt weer gegeven in de volgende afbeelding:
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![Database diagram toont vier database objecten die zijn verbonden met een centraal database object.](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 Ten slotte worden de tabellen van het ster schema opgevraagd. De resultaten van de query worden visueel weer gegeven om inzicht te krijgen in het gedrag van de Tenant en het gebruik van de toepassing. Met dit ster schema kunt u query's uitvoeren om items te detecteren, zoals de volgende:
 
@@ -111,7 +111,7 @@ Zie de volgende data base-items in de SSMS-Objectverkenner door het knoop punt A
 - De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
 - De **sp_ShredRawExtractedData** opgeslagen procedure wordt gebruikt voor het vullen van de ster-schema tabellen uit de onbewerkte gegevens tabellen.
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![Scherm afbeelding toont de S s s Objectverkenner voor het knoop punt Analytics Store, met inbegrip van tabellen, weer gaven en knoop punten.](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Gegevens extractie 
 
@@ -139,7 +139,7 @@ Elke taak extraheert de gegevens en plaatst deze in het Analytics-archief. Er is
 4. Druk op **F5** om het script uit te voeren waarmee de taak wordt gemaakt en uitgevoerd voor het extra heren van tickets en klanten gegevens uit elke Tenant database. Met de taak worden de gegevens opgeslagen in de analyse opslag.
 5. Query's uitvoeren op de tabel TicketsRawData in de tenantanalytics-data base om ervoor te zorgen dat de tabel is gevuld met ticketsgegevens van alle tenants.
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![Scherm afbeelding toont de ExtractTickets-data base met TicketsRawData d b o geselecteerd in Objectverkenner.](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 Herhaal de voor gaande stappen, behalve deze keer **\ExtractTickets.SQL** vervangen door **\ExtractVenuesEvents.SQL** in stap 2.
 
@@ -159,7 +159,7 @@ In deze sectie van de zelf studie definieert en voert u een taak uit die de geë
 4. Voldoende tijd om de taak te kunnen uitvoeren.
     - Controleer de kolom **levens duur** van taken. jobs_execution tabel voor de status van de taak. Zorg ervoor dat de taak **is voltooid** voordat u doorgaat. Bij een geslaagde uitvoering worden gegevens weer gegeven die vergelijkbaar zijn met de volgende grafiek:
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![Scherm afbeelding toont het geslaagde resultaat van het uitvoeren van de sp_ShredRawExtractedData procedure.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>Gegevens verkennen
 
@@ -174,25 +174,25 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 3. Selecteer Azure SQL Database in het venster **gegevens ophalen** .
 4. Voer in het venster Data Base-aanmeldingen uw server naam in (catalogus-MT- \<User\> . database.Windows.net). Selecteer **importeren** voor de **gegevens connectiviteits modus**en klik vervolgens op OK. 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![Scherm afbeelding toont het dialoog venster SQL Server Data Base waarin u de server en Data Base kunt invoeren.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinding maken**.  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Scherm afbeelding toont het dialoog venster SQL Server Data Base waarin u een gebruikers naam en wacht woord kunt invoeren.](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
 
-Gefeliciteerd De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
+Gefeliciteerd. De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 
 U begint met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de volgende opties in Power BI om een staaf diagram te tekenen van het totale aantal tickets dat per locatie is verkocht. Als gevolg van een wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![Scherm afbeelding toont een Power B I-visualisatie en besturings elementen voor de gegevens visualisatie aan de rechter kant.](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 In het voor gaande waarnemings punt wordt bevestigd dat het aantal tickets dat door elke locatie wordt verkocht, varieert. Locaties waarbij meer tickets worden verkocht, maken gebruik van uw service meer sterk dan locaties die minder tickets verkopen. Er is mogelijk een kans om de toewijzing van resources aan te passen op basis van de verschillende behoeften van de Tenant.
 
 U kunt de gegevens verder analyseren om te zien hoe de ticket omzet gedurende een periode verschilt. Selecteer de volgende opties in Power BI om het totale aantal tickets te zetten dat elke dag gedurende een periode van 60 dagen is verkocht.
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![Scherm afbeelding toont de hoofd distributie van het ticket van de visualisatie en de verkoop dag van het schema.](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 In het voor gaande diagram wordt de verkoop piek van het ticket voor sommige locaties weer gegeven. Deze pieken versterken het idee dat sommige locaties mogelijk systeem bronnen onevenredig verbruiken. Tot nu toe is er geen duidelijk patroon in wanneer de pieken optreden.
 
@@ -237,7 +237,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > - Query's uitvoeren op een Analytics-Data Base 
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te observeren 
 
-Gefeliciteerd
+Gefeliciteerd.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -9,14 +9,14 @@ ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f43d03f722617e88e7a00e71798351c88ce10e98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327592"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit-Azure SQL Database & beheerde instantie van SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u u
 > [!NOTE]
 > Voor het wijzigen van Azure Hybrid Benefit is geen uitval tijd vereist.
 
-![koers](./media/azure-hybrid-benefit/pricing.png)
+![VCore-prijs structuur](./media/azure-hybrid-benefit/pricing.png)
 
 ## <a name="choose-a-license-model"></a>Een licentie model kiezen
 
@@ -47,7 +47,7 @@ Het licentie type instellen of bijwerken met behulp van Power shell:
 - [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
 - [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Het licentie type instellen of bijwerken met behulp van de Azure CLI:
 

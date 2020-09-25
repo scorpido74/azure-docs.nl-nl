@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361038"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -766,7 +766,7 @@ Ga in een browser naar het Azure Firewall frontend-IP-adres om de connectiviteit
 U ziet de AKS stem-app. In dit voor beeld was de firewall het open bare IP-adres `52.253.228.132` .
 
 
-![AKS-stem](media/limit-egress-traffic/aks-vote.png)
+![Scherm afbeelding toont de A K S-stem-app met knoppen voor katten, honden en resetten en totalen.](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Resources opschonen

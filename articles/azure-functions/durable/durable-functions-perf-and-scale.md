@@ -1,16 +1,16 @@
 ---
 title: Prestaties en schaal in Durable Functions-Azure
-description: Inleiding tot de extensie Durable Functions voor Azure Functions.
+description: Meer informatie over de unieke schaal kenmerken van de Durable Functions extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 56a9861f0e25e1dcdf741cfdf5c8830dd9b6fc1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325807"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaalbaarheid in Durable Functions (Azure Functions)
 
@@ -64,7 +64,7 @@ Indelings instanties worden gestart door een bericht te plaatsen `ExecutionStart
 
 De wacht rijen, tabellen en blobs die door Durable Functions worden gebruikt, worden gemaakt in een geconfigureerd Azure Storage-account. Het account dat moet worden gebruikt, kan worden opgegeven met behulp van de `durableTask/storageProvider/connectionStringName` instelling (of `durableTask/azureStorageConnectionStringName` instelling in Durable functions 1. x) in het bestand **host.js** .
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -78,7 +78,7 @@ De wacht rijen, tabellen en blobs die door Durable Functions worden gebruikt, wo
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -96,7 +96,7 @@ Als u niets opgeeft, wordt het standaard `AzureWebJobsStorage` opslag account ge
 
 Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe te voegen. Orchestrator-functies en-entiteiten zijn daarentegen *gepartitioneerd* over een of meer controle wachtrijen. Het aantal controle wachtrijen wordt gedefinieerd in de **host.jsvoor** het bestand. In het volgende voor beeld host.jsop fragment de `durableTask/storageProvider/partitionCount` eigenschap (of `durableTask/partitionCount` in Durable functions 1. x) ingesteld op `3` .
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -110,7 +110,7 @@ Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327728"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -130,6 +130,8 @@ Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het art
 
 ### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
 E-mail verzenden naar de leden van de rol van het abonnement. E-mail wordt alleen verzonden naar **Azure AD-gebruikers** leden van de rol. Er wordt geen e-mail verzonden naar Azure AD-groepen of service-principals.
+
+Een e-mail melding wordt alleen verzonden naar het *primaire e-mail* adres.
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./alerts-rate-limiting.md) .
 
@@ -292,6 +294,6 @@ Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 * Krijg [inzicht in het webhook-schema van waarschuwingen voor activiteiten logboeken](./activity-log-alerts-webhook.md).  
 * Meer informatie over [ITSM-connector](./itsmc-overview.md).
 * Meer informatie over de [frequentie limiet](./alerts-rate-limiting.md) voor waarschuwingen.
-* Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](./alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
+* Een [overzicht van waarschuwingen voor het activiteitenlogboek](./alerts-overview.md) en meer informatie over het ontvangen van waarschuwingen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
 

@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356295"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Managed Instance-verbindingstypen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,14 +27,14 @@ In dit artikel wordt uitgelegd hoe clients verbinding maken met een beheerd exem
 
 Azure SQL Managed instance ondersteunt de volgende twee verbindings typen:
 
-- **Omleiden (aanbevolen):** Clients maken rechtstreeks verbinding met het knoop punt dat als host fungeert voor de data base. Als u connectiviteit via omleiding wilt inschakelen, moet u firewalls en netwerk beveiligings groepen (NSG) openen om toegang toe te staan op de poorten 1433 en 11000-11999. Pakketten gaan rechtstreeks naar de data base en daarom zijn er verbeteringen in latentie en doorvoer prestaties met behulp van omleiding via een proxy.
-- **Proxy (standaard instelling):** In deze modus gebruiken alle verbindingen een proxy gateway onderdeel. Om connectiviteit in te scha kelen, moet alleen poort 1433 voor particuliere netwerken en poort 3342 voor open bare verbinding worden geopend. Het kiezen van deze modus kan leiden tot hogere latentie en een lagere door Voer, afhankelijk van de aard van de werk belasting. U wordt aangeraden om het beleid voor omleidings verbindingen uit te voeren via het beleid voor proxy verbindingen voor de laagste latentie en de hoogste door voer.
+- **Omleiden (aanbevolen):** Clients maken rechtstreeks verbinding met het knoop punt dat als host fungeert voor de data base. Om connectiviteit met behulp van omleiding mogelijk te maken moet u firewalls en netwerkbeveiligingsgroepen (NSG's) openstellen voor toegang via de poorten 1433 en 11000-11999. Pakketten gaan rechtstreeks naar de database, waardoor de prestaties op het gebied van latentie en doorvoer beter zijn dan bij omleiding via een proxy.
+- **Proxy (standaard instelling):** In deze modus gebruiken alle verbindingen een proxy gateway onderdeel. Om connectiviteit mogelijk te maken hoeven alleen poort 1433 voor privénetwerken en poort 3342 voor openbare verbindingen te worden opengesteld. Het kiezen van deze modus kan leiden tot hogere latentie en een lagere doorvoer, afhankelijk van de aard van de werkbelasting. Wij raden sterk aan het omleidingsverbindingsbeleid te gebruiken in plaats van het proxy-omleidingsbeleid, voor de laagste latentie en hoogste doorvoer.
 
 ## <a name="redirect-connection-type"></a>Verbindings type omleiden
 
 Wanneer de TCP-sessie in het verbindings type omleiding tot stand is gebracht, haalt de client sessie het virtuele IP-doel adres van het virtuele cluster knooppunt op uit het load balancer. Volgende pakketten stromen rechtstreeks naar het virtuele cluster knooppunt, waarbij de gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![Diagram toont een on-premises netwerk met redirect-Find-DB die is verbonden met een gateway in een virtueel Azure-netwerk en een omleidings query die is verbonden met een primaire data base-knoop punt in het virtuele netwerk.](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > Het verbindings type omleiding werkt momenteel alleen voor een persoonlijk eind punt. Ongeacht de instelling van het verbindings type, wordt de verbinding via het open bare eind punt tot stand gebracht via een proxy.
@@ -43,7 +43,7 @@ Wanneer de TCP-sessie in het verbindings type omleiding tot stand is gebracht, h
 
 In het Proxy Verbindings type wordt de TCP-sessie tot stand gebracht met behulp van de gateway en alle daaropvolgende pakketten stroomt. In het volgende diagram ziet u deze verkeers stroom.
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![Diagram toont een on-premises netwerk met een proxy die is verbonden met een gateway in een virtueel Azure-netwerk, verbinding maken naast een primair knoop punt in het virtuele netwerk.](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>Verbindings type wijzigen
 

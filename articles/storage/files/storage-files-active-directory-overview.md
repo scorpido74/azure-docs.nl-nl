@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358369"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -114,7 +114,7 @@ Het volgende diagram vertegenwoordigt de werk stroom voor Azure AD DS-verificati
 
 - Eerst hoeft u niet de identiteit in azure AD DS te maken om het opslag account aan te duiden. Dit wordt uitgevoerd door het activerings proces op de achtergrond.
 
-- Ten tweede kunnen alle gebruikers in azure AD worden geverifieerd en geautoriseerd. De gebruiker kan alleen Cloud of Hybrid zijn. De synchronisatie van Azure AD naar Azure AD DS wordt beheerd door het platform zonder dat er gebruikers configuratie is vereist. De client moet echter lid zijn van een domein aan Azure AD DS en kan niet worden opgenomen in azure AD. 
+- Ten tweede kunnen alle gebruikers die in azure AD bestaan, worden geverifieerd en geautoriseerd. De gebruiker kan alleen Cloud of Hybrid zijn. De synchronisatie van Azure AD naar Azure AD DS wordt beheerd door het platform zonder dat er gebruikers configuratie is vereist. De client moet echter lid zijn van een domein aan Azure AD DS en kan niet worden opgenomen in azure AD. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356822"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Implementeer en verken een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met Azure SQL Database
 
@@ -57,7 +57,7 @@ Kies uw namen nu en noteer deze.
 
 1. Als u de sjabloon voor de implementatie van de Wingtip tickets SaaS-data base per Tenant in de Azure Portal wilt openen, selecteert **u implementeren naar Azure**.
 
-   [![Afbeelding met een knop met het label implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. Voer waarden in de sjabloon in voor de vereiste para meters.
 
@@ -225,7 +225,7 @@ Nu u bent begonnen met het uitvoeren van een belasting voor de verzameling tenan
 1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met SQL-servers. Open vervolgens de **catalogus-dpt- &lt; gebruikers &gt; ** server.
     - De catalogus server bevat twee data bases: **tenantcatalog** en **basetenantdb** (een sjabloon database die is gekopieerd om nieuwe tenants te maken).
 
-   ![Databases](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Scherm afbeelding toont een overzichts pagina voor catalogus servers met de twee data bases.](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Ga terug naar de lijst met SQL-servers.
 
@@ -251,7 +251,7 @@ Blader naar de server **tenants1-dpt- &lt; gebruiker &gt; **en selecteer **Pool1
 
 De twee grafieken illustreren dat elastische Pools en SQL Database goed zijn afgestemd op onvoorspelbare SaaS-toepassings werkbelastingen. In de grafieken ziet u dat vier data bases elke bursting tot 40 Edtu's hebben en dat alle data bases kunnen worden ondersteund door een 50-eDTU-groep. De 50-eDTU-groep kan zelfs zware werk belastingen ondersteunen. Als de data bases zijn ingericht als afzonderlijke data bases, moet elk een S2 (50 DTU) zijn voor de ondersteuning van de bursts. De kosten van vier enkele S2-data bases zijn bijna drie maal de prijs van de pool. In praktijk situaties SQL Database klanten Maxi maal 500 data bases uitvoeren in 200 eDTU-groepen. Zie voor meer informatie de [zelf studie voor prestatie bewaking](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie voor meer informatie aanvullende [zelf studies over het bouwen van de Wingtip tickets SaaS data base-per-Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Zie [Wat is een elastische Azure SQL-pool?](elastic-pool-overview.md)voor meer informatie over elastische Pools.

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358522"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Optimalisatie stappen na de migratie wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB
 
@@ -35,7 +35,7 @@ In deze handleiding leert u het volgende:
 2. Open vanuit de [Azure Portal](https://www.portal.azure.com/)in het linkerdeel venster het menu **alle resources** en zoek het Azure Cosmos DB account waarnaar u uw gegevens hebt gemigreerd.
 3. Open de Blade **verbindings reeks** . Het rechterdeelvenster bevat alle informatie die u nodig hebt om verbinding te maken met uw account.
 4. Gebruik de verbindings gegevens in de configuratie van uw toepassing (of andere relevante locaties) om de API van de Azure Cosmos DB voor MongoDB-verbinding in uw app weer te geven.
-:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Verbindings reeks":::
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Scherm afbeelding toont de instellingen voor een verbindings reeks.":::
 
 Ga naar de pagina [een MongoDb-toepassing verbinden met Azure Cosmos DB](connect-mongodb-account.md) voor meer informatie.
 

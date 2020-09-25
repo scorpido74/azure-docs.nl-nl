@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb962efd4bcf82518a80eb120579db7835e7115c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356771"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Meer informatie over het inrichten van nieuwe tenants en registreren in de catalogus
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Als u wilt weten hoe de toepassing Wingtip tickets nieuwe Tenant inrichting impl
 
 2. Als u een onderbrekings punt wilt toevoegen, plaatst u de cursor ergens op de regel met de tekst *Nieuw-Tenant*. Druk vervolgens op F9.
 
-   ![Stopt](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![Scherm afbeelding toont een script met New-Tenant gemarkeerd voor het toevoegen van een onderbrekings punt.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. Druk op F5 om het script uit te voeren.
 

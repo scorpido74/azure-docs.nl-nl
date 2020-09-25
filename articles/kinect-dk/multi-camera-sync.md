@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, kinect, specs, hardware, DK, mogelijkheden, diepte, kleur, RGB, IMU, matrix, diepte, multi, synchronisatie
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361157"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Meerdere Azure Kinect DK-apparaten synchroniseren
 
@@ -26,7 +26,7 @@ Er zijn veel redenen om meerdere Azure Kinect DK-apparaten te gebruiken, waarond
 
 - Vul occlusions in. Hoewel de Azure Kinect DK-gegevens transformaties één installatie kopie produceren, zijn de twee camera's (diepte en RGB) in feite een kleine afstand van elkaar. De offset maakt occlusions mogelijk. Een bedekking treedt op wanneer een voorgrond object de weer gave van een deel van een achtergrond object voor een van de twee camera's op een apparaat blokkeert. In de resulterende kleuren afbeelding lijkt het voorgrond object een schaduw op het achtergrond object te casten.  
    In het volgende diagram ziet de camera aan de linkerkant bijvoorbeeld de grijze pixel P2. Het witte object voorgrond blokkeert echter de IR-straal van de camera aan de rechter kant. De camera aan de rechter kant heeft geen gegevens voor P2.  
-   ![Bedekking](./media/occlusion.png)  
+   ![Diagram toont twee camera's die zijn gericht op hetzelfde punt als een van deze die zijn geblokkeerd.](./media/occlusion.png)  
    Aanvullende gesynchroniseerde apparaten kunnen de occluded-gegevens leveren.
 - Objecten in drie dimensies scannen.
 - Verhoog de effectiefste frame frequentie tot een waarde die groter is dan 30 frames per seconde (FPS).

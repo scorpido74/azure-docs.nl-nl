@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358131"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN inhoud beperken per land/regio
 
@@ -38,7 +38,7 @@ Voor **Azure CDN Premium van Verizon** -profielen moet u de portal **beheren** g
 ### <a name="define-the-directory-path"></a>Het mappad definiëren
 Als u de functie voor het filteren van geo wilt gebruiken, selecteert u uw CDN-eind punt in de portal en selecteert u vervolgens **geo-filtering** onder instellingen in het menu aan de linkerkant. 
 
-![Standaard geo-filtering](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![Scherm opname van het selecteren van geo-filtering in het menu voor een eind punt.](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 Geef in het vak **pad** het relatieve pad op naar de locatie waar gebruikers toegang worden verleend of geweigerd. 
 
@@ -67,7 +67,7 @@ Selecteer in de lijst **land codes** de landen/regio's die u wilt blok keren of 
 
 Wanneer u klaar bent met het selecteren van de landen/regio's, selecteert u **Opslaan** om de nieuwe geo-filter regel te activeren. 
 
-![Regels voor geografisch filteren](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![Scherm opname toont de land CODES die moeten worden gebruikt om landen of regio's te blok keren of toe te staan.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 Als u een regel wilt verwijderen, selecteert u deze in de lijst op de pagina voor **geografische filtering** en kiest u **verwijderen**.
@@ -79,7 +79,7 @@ Voor **Azure CDN Premium van Verizon** -profielen is de gebruikers interface voo
 
 2. Selecteer in de Verizon-Portal de optie **http large**en selecteer vervolgens **land filtering**.
 
-    ![Standaard geo-filtering](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![In de scherm afbeelding ziet u hoe u land filters selecteert in azure C D N.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. Selecteer **land filter toevoegen**.
 
@@ -93,7 +93,7 @@ Voor **Azure CDN Premium van Verizon** -profielen is de gebruikers interface voo
     
     De nieuwe regel wordt weer gegeven in de tabel op de pagina **land filtering** .
 
-    ![Regels voor geografisch filteren](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![Scherm afbeelding laat zien waar de regel wordt weer gegeven in het filteren van landen.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 Selecteer in de tabel filteren op land/regio het Verwijder pictogram naast een regel om deze te verwijderen of bewerk het pictogram bewerken om het te wijzigen.

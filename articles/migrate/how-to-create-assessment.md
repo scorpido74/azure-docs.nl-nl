@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361089"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Een Azure VM-evaluatie maken
 
@@ -43,19 +43,19 @@ Voer als volgt een evaluatie uit:
 1. Bekijk de [best practices](best-practices-assessment.md) voor het maken van evaluaties.
 2. Op het tabblad **Servers** in de tegel **Azure Migrate: Serverevaluatie**, klikt u op **Evalueren**.
 
-    ![Evalueren](./media/how-to-create-assessment/assess.png)
+    ![Scherm afbeelding toont Azure Migrate servers met beoordeling geselecteerd onder evaluatie hulpprogramma's.](./media/how-to-create-assessment/assess.png)
 
-3. In **servers beoordelen**selecteert u het beoordelings type als Azure VM, selecteert u de detectie bron en geeft u de naam van de evaluatie op.
+3. Selecteer bij **Servers evalueren** het evaluatietype 'Azure VM', kies de detectiebron en geef de evaluatienaam op.
 
-    ![Basis beginselen van de beoordeling](./media/how-to-create-assessment/assess-servers-azurevm.png)
+    ![Basisprincipes evaluatie](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
 4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
 
     ![Evaluatie-eigenschappen](./media/how-to-create-assessment//view-all.png)
 
-5. Klik op **volgende** om **machines te selecteren die u wilt beoordelen**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+5. Klik op **volgende** om **machines te selecteren om te evalueren**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
 6. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
-7. Klik op **volgende** om te beoordelen **+ beoordeling maken** om de details van de evaluatie te bekijken.
+7. Klik op **volgende** en **Controleren en evaluatie maken** om de details van de evaluatie te controleren.
 8. Klik op **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
 
     ![Een evaluatie maken](./media/how-to-create-assessment//assessment-create.png)
@@ -65,7 +65,7 @@ Voer als volgt een evaluatie uit:
 
 
 
-## <a name="review-an-azure-vm-assessment"></a>Een evaluatie van een Azure-VM controleren
+## <a name="review-an-azure-vm-assessment"></a>Een Azure VM-evaluatie controleren
 
 Een Azure VM-evaluatie beschrijft:
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987032"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326096"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Herstel naar een bepaald tijdstip voor blok-blobs
 
@@ -36,13 +36,6 @@ Azure Storage analyseert alle wijzigingen die zijn aangebracht in de opgegeven b
 Er kan slechts één herstel bewerking tegelijk worden uitgevoerd op een opslag account. Een herstel bewerking kan niet worden geannuleerd zodra deze wordt uitgevoerd, maar er kan wel een tweede herstel bewerking worden uitgevoerd om de eerste bewerking ongedaan te maken.
 
 De bewerking **BLOB-bereiken herstellen** retourneert een Restore-id waarmee de bewerking op unieke wijze wordt geïdentificeerd. Als u de status van een herstel tijdstip wilt controleren, roept u de bewerking **herstel status ophalen** aan met de herstel-id die wordt geretourneerd door de bewerking **BLOB-bereiken herstellen** .
-
-Houd bij het herstellen de volgende beperkingen in acht:
-
-- Een blok dat is geüpload met behulp van de [put-blok kering](/rest/api/storageservices/put-block) of het [put-blok van de URL](/rest/api/storageservices/put-block-from-url), maar niet is doorgevoerd via een put- [blok lijst](/rest/api/storageservices/put-block-list), maakt geen deel uit van een BLOB en wordt dus niet hersteld als onderdeel van een herstel bewerking.
-- Een blob met een actieve lease kan niet worden hersteld. Als een blob met een actieve lease is opgenomen in het bereik van blobs dat moet worden hersteld, mislukt de herstel bewerking Atomic.
-- Moment opnamen worden niet gemaakt of verwijderd als onderdeel van een herstel bewerking. Alleen de basis-BLOB wordt teruggezet naar de vorige status.
-- Als een BLOB tussen de warme en koele lagen is verplaatst in de periode tussen het huidige moment en het herstel punt, wordt de BLOB teruggezet naar de vorige laag. Een blob die is verplaatst naar de archief laag, wordt echter niet hersteld.
 
 > [!IMPORTANT]
 > Wanneer u een herstel bewerking uitvoert, blokkeert Azure Storage gegevens bewerkingen op de blobs in de bereiken die worden teruggezet voor de duur van de bewerking. Lees-, schrijf-en verwijder bewerkingen worden geblokkeerd op de primaire locatie. Daarom kunnen bewerkingen, zoals het weer geven van containers in het Azure Portal, niet worden uitgevoerd zoals verwacht tijdens het terugzetten.
@@ -76,9 +69,12 @@ Een client moet schrijf machtigingen hebben voor alle containers in het opslag a
 
 Herstel naar een bepaald tijdstip voor blok-blobs heeft de volgende beperkingen en bekende problemen:
 
-- Alleen blok-blobs in een standaard v2-opslag account voor algemeen gebruik kunnen worden hersteld als onderdeel van een herstel bewerking op tijdstippen. Toevoeg-blobs, pagina-blobs en Premium-blok-blobs worden niet hersteld. Als u een container tijdens de Bewaar periode hebt verwijderd, wordt deze container niet teruggezet met de herstel bewerking naar een bepaald tijdstip. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het beveiligen van containers tegen verwijderen.
-- Alleen blok-blobs in de Hot of cool-lagen kunnen worden hersteld in een herstel bewerking naar een bepaald tijdstip. Het herstellen van blok-blobs in de opslaglaag wordt niet ondersteund. Als een blob in de warme laag bijvoorbeeld twee dagen geleden is verplaatst naar de archieflaag en een herstelbewerking herstelt naar een bepaald punt drie dagen geleden, wordt de blob niet teruggezet naar de warme laag. Als u een gearchiveerde BLOB wilt herstellen, moet u deze eerst uit de laag archief verplaatsen.
-- Als een blok-Blob in het bereik dat moet worden hersteld een actieve lease heeft, mislukt de herstel bewerking naar een bepaald tijdstip. Verbreekt actieve leases voordat de herstel bewerking wordt gestart.
+- Alleen blok-blobs in een standaard v2-opslag account voor algemeen gebruik kunnen worden hersteld als onderdeel van een herstel bewerking op tijdstippen. Toevoeg-blobs, pagina-blobs en Premium-blok-blobs worden niet hersteld. 
+- Als u een container tijdens de Bewaar periode hebt verwijderd, wordt deze container niet teruggezet met de herstel bewerking naar een bepaald tijdstip. Als u probeert een aantal blobs te herstellen dat blobs bevat in een verwijderde container, mislukt de herstel bewerking naar een bepaald tijdstip. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het beveiligen van containers tegen verwijderen.
+- Als een BLOB tussen de warme en koele lagen is verplaatst in de periode tussen het huidige moment en het herstel punt, wordt de BLOB teruggezet naar de vorige laag. Het herstellen van blok-blobs in de opslaglaag wordt niet ondersteund. Als een blob in de warme laag bijvoorbeeld twee dagen geleden is verplaatst naar de archieflaag en een herstelbewerking herstelt naar een bepaald punt drie dagen geleden, wordt de blob niet teruggezet naar de warme laag. Als u een gearchiveerde BLOB wilt herstellen, moet u deze eerst uit de laag archief verplaatsen. Zie BLOB-gegevens opnieuw [inbreken vanuit de laag archief](storage-blob-rehydration.md)voor meer informatie.
+- Een blok dat is geüpload met behulp van de [put-blok kering](/rest/api/storageservices/put-block) of het [put-blok van de URL](/rest/api/storageservices/put-block-from-url), maar niet is doorgevoerd via een put- [blok lijst](/rest/api/storageservices/put-block-list), maakt geen deel uit van een BLOB en wordt dus niet hersteld als onderdeel van een herstel bewerking.
+- Een blob met een actieve lease kan niet worden hersteld. Als een blob met een actieve lease is opgenomen in het bereik van blobs dat moet worden hersteld, mislukt de herstel bewerking Atomic. Verbreekt actieve leases voordat de herstel bewerking wordt gestart.
+- Moment opnamen worden niet gemaakt of verwijderd als onderdeel van een herstel bewerking. Alleen de basis-BLOB wordt teruggezet naar de vorige status.
 - Het herstellen van Azure Data Lake Storage Gen2 vlakke en hiërarchische naam ruimten wordt niet ondersteund.
 
 > [!IMPORTANT]

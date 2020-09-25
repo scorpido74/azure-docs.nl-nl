@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321642"
+ms.locfileid: "91357779"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Strategieën voor herstel na nood gevallen voor toepassingen die gebruikmaken van Azure SQL Database elastische Pools
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Ik ben een rijpe SaaS-toepassing met aanbiedingen voor gelaagde Services en vers
 
 Ter ondersteuning van dit scenario scheidt u de proef tenants van betaalde tenants door ze in afzonderlijke elastische Pools te plaatsen. De proef klanten hebben een lagere eDTU-of vCores per Tenant en een lagere SLA met een langere herstel tijd. De betalende klanten bevinden zich in een pool met meer eDTU-of vCores per Tenant en een hogere SLA. Om de laagste herstel tijd te garanderen, worden de Tenant databases van de betalende klanten geo-repliceerbaar. Deze configuratie wordt geïllustreerd in het volgende diagram.
 
-![Afbeelding 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![In het diagram ziet u een primaire regio en een D R-regio waarbij geo-replicatie tussen de beheer database en de primaire groep van betaalde klanten en de secundaire pool zonder replicatie voor de groep proef klanten wordt gemaakt.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 Net als in het eerste scenario zijn de beheer databases vrij actief, zodat u één geo-gerepliceerde Data Base kunt gebruiken (1). Dit zorgt voor de voorspel bare prestaties voor nieuwe klant abonnementen, profiel updates en andere beheer bewerkingen. De regio waarin de Primaries van de beheer databases zich bevinden, is de primaire regio en de regio waarin de secundaire data bases zich bevinden in de DR-regio.
 
@@ -86,7 +86,7 @@ De Tenant databases van de betalende klanten hebben actieve data bases in de gro
 
 Als er een storing optreedt in de primaire regio, worden de stappen voor het herstellen van uw toepassing online gedemonstreerd in het volgende diagram:
 
-![Afbeelding 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Diagram toont een storing voor de primaire regio, met een failover naar de beheer database, de secundaire pool van de betaalde klant en het maken en herstellen van proef klanten.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * Direct failover van de beheer databases naar de DR-regio (3).
 * Wijzig de connection string van de toepassing zodat deze verwijst naar de DR-regio. Nu worden alle nieuwe accounts en Tenant databases gemaakt in de DR-regio. De bestaande proef klanten zien hun gegevens tijdelijk niet beschikbaar.
@@ -99,7 +99,7 @@ Uw toepassing is op dit moment weer online in de DR-regio. Alle betalende klante
 
 Wanneer de primaire regio door Azure wordt hersteld *nadat* u de toepassing in de Dr-regio hebt hersteld, kunt u de toepassing in die regio blijven uitvoeren of u kunt kiezen om een failback uit te voeren naar de primaire regio. Als de primaire regio wordt hersteld *voordat* het failoverproces is voltooid, kunt u het beste meteen een failback uitvoeren. De failback neemt de stappen in het volgende diagram:
 
-![Afbeelding 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Diagram toont de failback-stappen die moeten worden geïmplementeerd na het herstellen van de primaire regio.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * Alle openstaande geo-herstel aanvragen annuleren.
 * Failover van de beheer databases (8). Na het herstel van de regio wordt de oude primaire primair automatisch de secundaire. Nu wordt het de primaire keer weer.  
@@ -128,7 +128,7 @@ Gebruik drie afzonderlijke elastische Pools om dit scenario te ondersteunen. Ric
 
 Om de laagste herstel tijd tijdens storingen te garanderen, zijn de Tenant-data bases van de betalende klanten geo-gerepliceerd met 50% van de primaire data bases in elk van de twee regio's. Op dezelfde manier heeft elke regio 50% van de secundaire data bases. Op deze manier geldt dat als een regio offline is, slechts 50% van de data bases van de betaalde klanten worden beïnvloed en failover moet worden uitgevoerd. De andere data bases blijven intact. Deze configuratie wordt geïllustreerd in het volgende diagram:
 
-![Afbeelding 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Diagram toont een primaire regio met de naam regio A en secundaire regio regio B, waarbij geo-replicatie tussen de beheer database en de primaire groep van betaalde klanten en een secundaire pool zonder replicatie voor de groep proef klanten wordt gemaakt.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Net zoals in de vorige scenario's, zijn de beheer databases vrij actief, zodat ze kunnen worden geconfigureerd als single geo-gerepliceerde data bases (1). Dit zorgt voor de voorspel bare prestaties van de nieuwe klant abonnementen, profiel updates en andere beheer bewerkingen. Regio A is de primaire regio voor de beheer databases en de regio B wordt gebruikt voor het herstellen van de beheer databases.
 
@@ -136,7 +136,7 @@ De Tenant-data bases van de betalende klanten worden ook geo-gerepliceerd, maar 
 
 In het volgende diagram ziet u de herstel stappen die moeten worden uitgevoerd als er een storing optreedt in regio A.
 
-![Afbeelding 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Diagram toont een storing voor de primaire regio, met een failover naar de beheer database, een betaalde secundaire pool van klanten en het maken en herstellen van proef klanten naar regio B.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * Direct failover van de beheer databases naar regio B (3).
 * Wijzig de connection string van de toepassing zodat deze verwijst naar de beheer databases in regio B. Wijzig de beheer databases om ervoor te zorgen dat de nieuwe accounts en Tenant databases worden gemaakt in regio B en dat ook de bestaande Tenant databases worden gevonden. De bestaande proef klanten zien hun gegevens tijdelijk niet beschikbaar.
@@ -152,7 +152,7 @@ Uw toepassing is op dit moment weer online in regio B. Alle betalende klanten he
 
 Wanneer regio A wordt hersteld, moet u beslissen of u regio B wilt gebruiken voor proef klanten of failback naar het gebruik van de proef klanten pool in regio A. Eén criterium kan het% van de door de Tenant-data bases voor de evaluatie versie gewijzigd sinds het herstel. Ongeacht die beslissing moet u de betaalde tenants tussen twee Pools opnieuw verdelen. in het volgende diagram ziet u hoe het proces wordt weer gegeven wanneer de back-updatabase van de proef versie wordt teruggedraaid naar regio A.  
 
-![Afbeelding 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Diagram toont de failback-stappen die moeten worden geïmplementeerd na het herstellen van regio A.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * Alle openstaande geo-herstel aanvragen voor een DR-groep voor de proef versie annuleren.
 * Failover van de beheer database (8). Na het herstel van de regio werd de oude primaire automatisch de secundaire. Nu wordt het de primaire keer weer.  

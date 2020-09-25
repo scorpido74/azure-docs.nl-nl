@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357570"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -29,7 +29,7 @@ Als u in deze veelgestelde vragen geen antwoorden op uw vragen kunt vinden, kunt
 
 **V: waar kan ik beginnen als ik een basis lijn model wil gebruiken?**
 
-**A**: u moet eerst een [abonnements sleutel](get-started.md)ophalen. Als u REST-aanroepen naar de voorgeïmplementeerde basislijn modellen wilt maken, raadpleegt u de [rest api's](rest-apis.md). Als u websockets wilt gebruiken, [downloadt u de SDK](speech-sdk.md).
+**A**: u moet eerst een [abonnements sleutel](overview.md#try-the-speech-service-for-free)ophalen. Als u REST-aanroepen naar de voorgeïmplementeerde basislijn modellen wilt maken, raadpleegt u de [rest api's](rest-apis.md). Als u websockets wilt gebruiken, [downloadt u de SDK](speech-sdk.md).
 
 **V: moet ik altijd een aangepast spraak model maken?**
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 31c0e9a690bde7a52a32fd9194afda76e1aaba8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bdcf197b4e8a619e55895faf7637ebac0ac12ae
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329105"
+ms.locfileid: "91361123"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Zelf studie: een Webroot Security bewustzijns training configureren voor automatische gebruikers inrichting
 
@@ -106,7 +106,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://awarenessapi.webrootanywhere.com/api/v2/scim` in de Tenant- **URL**. Voer de geheime token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de Webroot Security bewustzijns training. Als de verbinding mislukt, zorg er dan voor dat uw account voor de toegang tot de Webroot-beveiligings bewustmaking beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![inrichtings](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 

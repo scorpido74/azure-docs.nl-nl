@@ -1,6 +1,6 @@
 ---
 title: Koppelingen en Url's vertalen Azure AD-app proxy | Microsoft Docs
-description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
+description: Meer informatie over het omleiden van in code vastgelegde koppelingen voor apps die zijn gepubliceerd met Azure AD-toepassings proxy.
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327898"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>In code vastgelegde koppelingen omleiden voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy
 

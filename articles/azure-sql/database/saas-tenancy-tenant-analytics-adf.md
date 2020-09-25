@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361106"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Bekijk SaaS Analytics met Azure SQL Database, Azure Synapse Analytics, Data Factory en Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -111,7 +111,7 @@ In de Objectverkenner:
     1. De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
     1. De opgeslagen procedure **sp_transformExtractedData** wordt gebruikt om de gegevens te transformeren en te laden in de ster-schema tabellen.
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![Scherm afbeelding toont Objectverkenner met tabellen die zijn uitgevouwen om verschillende database objecten weer te geven.](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
 
@@ -167,7 +167,7 @@ Met betrekking tot de drie gekoppelde services zijn er drie gegevens sets die ve
   
 ### <a name="data-warehouse-pattern-overview"></a>Overzicht van het Data Warehouse-patroon
 
-Azure Synapse (voorheen SQL Data Warehouse) wordt gebruikt als de analyse opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in het Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (voorheen SQL Data Warehouse) wordt gebruikt als de analyse opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in het Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![ diagram toont het laad patroon van database tabellen.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Langzaam veranderende dimensie (SCD) type 1 dimensie tabellen worden gebruikt in dit voor beeld. Elke dimensie heeft een surrogaat sleutel die is gedefinieerd met behulp van een identiteits kolom. Als best practice is de datum dimensie tabel vooraf ingevuld om tijd te besparen. Voor de andere dimensie tabellen, een CREATE TABLE als selecteren... (CTAS) wordt gebruikt voor het maken van een tijdelijke tabel die de bestaande gewijzigde en niet-gewijzigde rijen bevat, samen met de surrogaat sleutels. Dit wordt gedaan met IDENTITY_INSERT = op. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT = uit. Voor een gemakkelijk terugdraaien wordt de naam van de bestaande dimensie tabel gewijzigd en wordt de naam van de tijdelijke tabel gewijzigd in de nieuwe dimensie tabel. Voor elke uitvoering wordt de oude dimensie tabel verwijderd.
 
@@ -181,14 +181,14 @@ Volg de onderstaande stappen om de pijp lijn volledige uitpakken, laden en trans
 
 1. Op het tabblad **Auteur** van de gebruikers interface van ADF selecteert u **SQLDBToDW** -pijp lijn in het linkerdeel venster.
 1. Klik op **trigger** en klik in het menu omlaag op **nu activeren**. Met deze actie wordt de pijp lijn onmiddellijk uitgevoerd. In een productie scenario definieert u een tijd schema voor het uitvoeren van de pijp lijn voor het vernieuwen van de gegevens op basis van een schema.
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![In de scherm afbeelding worden de fabrieks resources voor een pijp lijn met de naam S Q L D B t/m D W weer gegeven met de trigger optie uitgevouwen en nu activeren.](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. Klik op de pagina **pijplijn uitvoering** op **volt ooien**.
 
 ### <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
 1. In de gebruikers interface van ADF gaat u naar het tabblad **monitor** in het menu aan de linkerkant.
 1. Klik op **vernieuwen** totdat de status van de SQLDBToDW-pijp lijn is **geslaagd**.
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![Scherm afbeelding toont de S Q L D B to D W pijp lijn met de status geslaagd.](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. Maak verbinding met het data warehouse met SSMS en zoek de tabellen in het ster schema om te controleren of de gegevens in deze tabellen zijn geladen.
 
 Zodra de pijp lijn is voltooid, bevat de feiten tabel ticket verkoop gegevens voor alle locaties en worden de dimensie tabellen gevuld met de overeenkomstige locaties, gebeurtenissen en klanten.
@@ -214,7 +214,7 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
 6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** en **dim_Dates**. Selecteer vervolgens **laden**.
 
-Gefeliciteerd De gegevens zijn geladen in Power BI. Bekijk nu interessante visualisaties om inzicht te krijgen in uw tenants. Laten we eens kijken hoe analyses een aantal gegevensgestuurde aanbevelingen kan bieden aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
+Gefeliciteerd. De gegevens zijn geladen in Power BI. Bekijk nu interessante visualisaties om inzicht te krijgen in uw tenants. Laten we eens kijken hoe analyses een aantal gegevensgestuurde aanbevelingen kan bieden aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 
 Begin met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de opties in Power BI om een staaf diagram af te zetten van het totale aantal tickets dat door elke locatie wordt verkocht. (Vanwege wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.)
 
@@ -272,7 +272,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > - Query's uitvoeren op het Analytics-Data Warehouse.
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te markeren en aanbevelingen te doen voor verbeteringen.
 
-Gefeliciteerd
+Gefeliciteerd.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -3,12 +3,12 @@ title: Eigenschappen van de bron ontdekken
 description: Hierin wordt beschreven hoe u naar bron eigenschappen zoekt.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327745"
 ---
 # <a name="discover-resource-properties"></a>Eigenschappen van de bron ontdekken
 
@@ -71,10 +71,10 @@ Resource Explorer is inge sloten in de Azure Portal. Voordat u deze methode gebr
 
 [![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Voer in het zoekvak **resource Explorer**in en selecteer vervolgens **resource Explorer**.
 
-    ![Azure Portal resource Verkenner](./media/view-resources/azure-portal-resource-explorer.png)
+    ![Scherm afbeelding toont het zoeken naar resource Explorer in de Azure Portal.](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. Vouw aan de linkerkant **abonnementen**uit en vouw vervolgens uw Azure-abonnement uit. U kunt het opslag account vinden onder **providers** of **ResourceGroups**.
 
