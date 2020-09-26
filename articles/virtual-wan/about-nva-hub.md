@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: ad7c7fb5111ce700a5725336b7c9db788e178c4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097132"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313770"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Over virtuele netwerk apparaten in een virtuele WAN-hub van Azure (preview)
 
@@ -24,7 +24,7 @@ Barracuda Networks is de eerste partner die een NVA-aanbieding biedt die rechtst
 > [!NOTE]
 > Alleen NVA-aanbiedingen die beschikbaar zijn om te worden geïmplementeerd in de virtuele WAN-hub, kunnen in de virtuele WAN-hub worden geïmplementeerd. Ze kunnen niet worden geïmplementeerd in een wille keurig virtueel netwerk in Azure.
 
-## <a name="how-does-it-work"></a><a name="how"></a>Hoe werkt dit?
+## <a name="how-does-it-work"></a><a name="how"></a>Hoe werkt het?
 
 De Nva's die beschikbaar zijn om rechtstreeks te worden geïmplementeerd in de virtuele WAN-hub van Azure, worden speciaal ontworpen om te worden gebruikt in de virtuele hub. De NVA-aanbieding wordt gepubliceerd naar Azure Marketplace als een beheerde toepassing. klanten kunnen de aanbieding rechtstreeks vanuit Azure Marketplace implementeren of ze kunnen de aanbieding via de virtuele hub implementeren via de Azure Portal.
 
@@ -72,7 +72,7 @@ In tegens telling tot Azure VPN Gateway-configuraties hoeft u geen **site** reso
 
 U moet nog steeds hub-naar-VNet-verbindingen maken om uw virtuele WAN-hub te koppelen aan uw Azure Virtual Networks.
 
-## <a name="supported-regions"></a><a name="regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a><a name="regions"></a>Ondersteunde regio’s
 
 NVA in de virtuele hub is beschikbaar voor preview in de volgende regio's:
 
@@ -81,7 +81,7 @@ NVA in de virtuele hub is beschikbaar voor preview in de volgende regio's:
 | Noord-Amerika| VS-West, Zuid-Centraal VS, VS-Oost 2   |
 | Zuid-Amerika | Brazil South |
 | Europa | Europa-west, UK-zuid|
-|  Midden-Oosten | UAE - noord |
+|  Midden-Oosten | VAE - noord |
 | Azië | Japan East |
 | Australië | Australië - oost |
 

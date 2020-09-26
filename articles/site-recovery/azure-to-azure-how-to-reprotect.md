@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055038"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360868"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Virtuele Azure-machines waarvoor failover naar de primaire regio is uitgevoerd, opnieuw beveiligen
 
@@ -31,7 +31,7 @@ Wanneer u virtuele Azure-machines van de ene regio naar de andere gebruikt via [
 
 1. Klik in **kluis**  >  **gerepliceerde items**met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer **opnieuw beveiligen**. De richting voor opnieuw beveiligen moet van secundair naar primair worden weer gegeven.
 
-   ![Opnieuw beveiligen](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Scherm afbeelding toont een virtuele machine met een context menu waarvoor opnieuw beveiligen is geselecteerd.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. Bekijk de resource groep-, netwerk-, opslag-en beschikbaarheids sets. Klik vervolgens op **OK**. Als er resources zijn gemarkeerd als nieuw, worden ze gemaakt als onderdeel van het proces voor opnieuw beveiligen.
 1. De taak voor opnieuw beveiligen zaait de doel site met de meest recente gegevens. Nadat de taak is voltooid, vindt er Delta replicatie plaats. Daarna kunt u een failover uitvoeren naar de primaire site. Met de optie aanpassen kunt u het opslag account selecteren of het netwerk dat u wilt gebruiken tijdens het opnieuw beveiligen.
@@ -44,7 +44,7 @@ U kunt de volgende eigenschappen van de doel-VM aanpassen tijdens het opnieuw be
 
 ![Aanpassen](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|Eigenschap |Notities  |
+|Eigenschap |Opmerkingen  |
 |---------|---------|
 |Doelresourcegroep | Wijzig de doel resource groep waarin de virtuele machine is gemaakt. Als onderdeel van de herbeveiliging wordt de doel-VM verwijderd. U kunt een nieuwe resource groep kiezen voor het maken van de virtuele machine na een failover. |
 |Virtueel doelnetwerk | Het doelnet werk kan niet worden gewijzigd tijdens de taak beveiliging opnieuw beveiligen. Als u het netwerk wilt wijzigen, voert u de netwerk toewijzing opnieuw uit. |

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83872514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362577"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referentie voor Azure CDN van Verizon Premium-regels engine
 
@@ -41,7 +41,7 @@ Het bestaat uit:
 - Een set functies waarmee wordt gedefinieerd hoe het CDN de bovenstaande aanvragen afhandelt.
 Deze elementen worden aangegeven in de volgende afbeelding.
 
-![Werk stroom voor beleids implementatie](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![Scherm afbeelding met labels toont de voorwaardelijke expressie, de overeenkomst en de functies van een regel.](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>Beleid
 Een beleid dat bestaat uit een set met alleen-lezen regels, biedt de mogelijkheid om het volgende te doen:
@@ -93,9 +93,9 @@ Een percentage symbool wordt gebruikt om URL-code ring aan te geven (bijvoorbeel
 
 Tekst die wordt geïnterpreteerd als een Joker teken, wijst extra betekenissen toe aan speciale tekens. In de volgende tabel wordt beschreven hoe de volgende reeks tekens wordt geïnterpreteerd:
 
-Teken | Description
+Teken | Beschrijving
 ----------|------------
-\ | Een back slash wordt gebruikt om een van de tekens die in deze tabel zijn opgegeven, te escapepen. Een back slash moet direct voor het speciale teken worden opgegeven.<br/>De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
+\ | Een back slash wordt gebruikt om een van de tekens die in deze tabel zijn opgegeven, te escapepen. Een back slash moet direct voor het speciale teken worden opgegeven.<br/>De volgende syntaxis verescapet bijvoorbeeld een asterisk: `\*`
 % | Een percentage symbool wordt gebruikt om URL-code ring aan te geven (bijvoorbeeld `%20` ).
 \* | Een asterisk is een Joker teken dat bestaat uit een of meer tekens.
 Space | Een spatie geeft aan dat aan een voor waarde voor een overeenkomst kan worden voldaan door een van de opgegeven waarden of patronen.
@@ -105,9 +105,9 @@ Value | Een enkele aanhaling heeft geen speciale betekenis. Er wordt echter een 
 
 Reguliere expressies definiëren een patroon dat wordt doorzocht in een tekst waarde. De notatie reguliere expressie definieert specifieke betekenissen voor diverse symbolen. In de volgende tabel wordt aangegeven hoe speciale tekens worden behandeld door matching voorwaarden en functies die reguliere expressies ondersteunen.
 
-Speciaal teken | Description
+Speciaal teken | Beschrijving
 ------------------|------------
-\ | Met een back slash wordt het teken dat het volgt, als een letterlijke waarde gezien in plaats van de normale expressie betekenis. De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
+\ | Met een back slash wordt het teken dat het volgt, als een letterlijke waarde gezien in plaats van de normale expressie betekenis. De volgende syntaxis verescapet bijvoorbeeld een asterisk: `\*`
 % | De betekenis van een percentage symbool is afhankelijk van het gebruik.<br/><br/> `%{HTTPVariable}`: Met deze syntaxis wordt een HTTP-variabele aangeduid.<br/>`%{HTTPVariable%Pattern}`: In deze syntaxis wordt een percentage symbool gebruikt om een HTTP-variabele en als scheidings teken te identificeren.<br />`\%`: Als u een percentage tekent, kan dit worden gebruikt als letterlijke waarde of om URL-code ring aan te geven (bijvoorbeeld `\%20` ).
 \* | Met een sterretje kan het voorafgaande teken nul of meer keer worden gevonden.
 Space | Een spatie wordt meestal beschouwd als een letterlijke teken.
@@ -119,7 +119,7 @@ Voor waarden en functies die reguliere expressies ondersteunen, accepteren patro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Criteria voor overeenkomst in de regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Overeenkomende voor waarden voor regel engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Voorwaardelijke expressies in de regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Functies van de regelengine](cdn-verizon-premium-rules-engine-reference-features.md)
 - [HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)

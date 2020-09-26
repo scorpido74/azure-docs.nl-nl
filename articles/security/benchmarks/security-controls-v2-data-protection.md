@@ -4,17 +4,17 @@ description: Azure Security Bench Mark v2-gegevens beveiliging
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314314"
 ---
-# <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
+# <a name="security-control-v2-data-protection"></a>Beveiligings controle v2: gegevens beveiliging
 
 Gegevens bescherming is van toepassing op controle van gegevens beveiliging op rest, onderweg en via geautoriseerde toegangs mechanismen. Dit omvat het detecteren, classificeren, beveiligen en bewaken van gevoelige gegevens assets met behulp van toegangs beheer, versleuteling en logboek registratie in Azure.
 
@@ -22,7 +22,7 @@ Gegevens bescherming is van toepassing op controle van gegevens beveiliging op r
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| DP-1 | 14,5, 14,7 | SI-4, SC-28 |
+| DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Ontdek, classificeer en voorzie uw gevoelige gegevens zodat u de juiste besturings elementen kunt ontwerpen om ervoor te zorgen dat gevoelige informatie wordt opgeslagen, verwerkt en veilig wordt verzonden door de technologie systemen van de organisatie. 
 
@@ -36,7 +36,7 @@ U kunt Azure SQL Information Protection gebruiken om te helpen bij het classific
 
 **Verantwoordelijkheid**: gedeeld
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ Voor het onderliggende platform, dat wordt beheerd door micro soft, behandelt mi
 
 **Verantwoordelijkheid**: gedeeld
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Als dat nodig is voor de naleving van preventie van gegevens verlies (DLP), kunt
 
 **Verantwoordelijkheid**: gedeeld
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Security Operations Center (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Toepassings beveiliging en DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Azure biedt standaard versleuteling voor gegevens in transit tussen Azure-data c
 
 **Verantwoordelijkheid**: gedeeld
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure biedt standaard versleuteling voor Data-at-rest. Voor zeer gevoelige gegev
 
 **Verantwoordelijkheid**: gedeeld
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

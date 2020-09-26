@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363100"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall integreren met Azure Standard Load Balancer
 
 U kunt een Azure Firewall integreren in een virtueel netwerk met een Azure Standard Load Balancer (openbaar of intern). 
 
-Het ontwerp van de voor keur is het integreren van een interne load balancer met uw Azure-firewall, omdat dit een veel eenvoudiger ontwerp is. U kunt een open bare load balancer gebruiken als u er al een hebt geïmplementeerd en u deze wilt laten staan. U moet echter wel op de hoogte zijn van een asymmetrisch routerings probleem dat de functionaliteit van het open bare load balancer scenario kan verstoren.
+Het ontwerp dat de voorkeur heeft, is het integreren van een interne load balancer met uw Azure-firewall omdat dit een veel eenvoudiger ontwerp is. U kunt een openbare load balancer gebruiken als u er al een hebt geïmplementeerd en u deze wilt behouden. U moet echter wel rekening houden met een bekend probleem met asymmetrische routering dat de functionaliteit van het scenario met een openbare load balancer kan verstoren.
 
 Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure Load Balancer.
 
@@ -64,6 +64,10 @@ Met een interne load balancer wordt de load balancer geïmplementeerd met een pr
 Er is geen asymmetrisch probleem met de route ring met dit scenario. De binnenkomende pakketten arriveren op het open bare IP-adres van de firewall, worden omgezet naar het privé-IP-adres van de load balancer en vervolgens keert u terug naar het privé-IP-adres van de firewall met hetzelfde retour pad.
 
 U kunt dit scenario dus op dezelfde manier implementeren als het open bare load balancer scenario, maar zonder dat de firewall openbaar IP-adres van de host moet worden gerouteerd.
+
+>[!NOTE]
+>De virtuele machines in de back-end-pool hebben geen uitgaande internetverbinding met deze configuratie. </br> Raadpleeg voor meer informatie over het bieden van uitgaande connectiviteit: </br> **[Uitgaande verbindingen in Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Opties voor het bieden van connectiviteit: </br> **[Load balancer-configuratie voor alleen uitgaand verkeer](../load-balancer/egress-only.md)** </br> [**Wat is Azure Virtual Network NAT?**](../virtual-network/nat-overview.md)
+
 
 ## <a name="additional-security"></a>Extra beveiliging
 

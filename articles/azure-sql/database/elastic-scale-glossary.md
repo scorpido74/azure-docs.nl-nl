@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362611"
 ---
 # <a name="elastic-database-tools-glossary"></a>Woorden lijst voor Elastic Database-hulpprogram ma's
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Hier volgt een representatie van **Shard** single-en multi tenant-data bases.
 
 **Shard-toewijzings beheer**: een beheer object en gegevens opslag dat de Shard-kaart (en), Shard locaties en toewijzingen bevat voor een of meer Shard sets.
 
-![Toewijzingen][2]
+![Diagram toont een Shard-toewijzings beheer dat is gekoppeld aan shardmaps_global, shards_global en shard_mappings_global.][2]
 
 ## <a name="verbs"></a>Termen
 **Horizon taal schalen**: de handeling van het uitschalen (of in) een verzameling Shards door Shards toe te voegen aan of te verwijderen uit een Shard-kaart, zoals hieronder wordt weer gegeven.

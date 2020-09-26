@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292962"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -302,17 +302,17 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 Als u het script uitvoert op een computer met beperkte toegang, moet u toegang hebben tot:
 
 - `download.microsoft.com`
-- Url's van de Recovery service (geo-naam verwijst naar de regio waarin de Recovery Services kluis zich bevindt)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Voor open bare Azure-regio's)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Voor Azure China 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Voor Azure Amerikaanse overheid)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Voor Azure Duitsland)
+- Url's van de Recovery service (GEO-naam verwijst naar de regio waarin de Recovery Services kluis zich bevindt)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Voor open bare Azure-regio's)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Voor Azure China 21Vianet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Voor Azure Amerikaanse overheid)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Voor Azure Duitsland)
 - Uitgaande poorten 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Bijvoorbeeld: de naam van het gedownloade script begint met \' VMname \' \_ \' Geoname \' _ \' GUID \' , zoals *ContosoVM_wcus_12345678*
-> - De URL zou <https://pod01-rec2.wcus.backup.windowsazure.com> "
+> Het script bestand dat u in stap 5 [hierboven](#mount-the-volume-and-copy-files) hebt gedownload, heeft de **geo-naam** in de naam van het bestand. Gebruik die **geografische naam** om de URL in te vullen. De naam van het gedownloade script begint met: \' VMname \' \_ \' Geoname \' _ \' GUID \' .<br><br>
+> Als bijvoorbeeld de naam van het script is *ContosoVM_wcus_12345678*, is de **geo-naam** *wcus* en zou de URL er als volgt uitziet:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Voor Linux is voor het script de onderdelen open-iscsi en lshw vereist om verbinding te maken met het herstel punt. Als de onderdelen niet bestaan op de computer waarop het script wordt uitgevoerd, vraagt het script om toestemming om de onderdelen te installeren. Geef toestemming om de benodigde onderdelen te installeren.
@@ -348,7 +348,7 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de vo
 - Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. Bij grote schijven neemt dit proces veel tijd in beslag. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden vanuit Portal/Power shell/CLI, te wachten gedurende 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
 - Nadat het bestand is hersteld, gaat u terug naar de portal en selecteert u **schijven loskoppelen** voor herstel punten waar u geen volumes meer kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u problemen ondervindt tijdens het herstellen van bestanden van de virtuele machines, raadpleegt u de volgende tabel voor meer informatie.
 
