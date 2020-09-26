@@ -1,24 +1,27 @@
 ---
 title: Diep gaande informatie versus machine learning
-titleSuffix: Azure
-description: Meer informatie over hoe diep leren is gekoppeld aan machine learning en kunst matige intelligentie. Grondige kennis wordt gebruikt in scenario's zoals fraude detectie, stem & gezichts herkenning, sentiment Analytics en time series-prognose.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe diep leren is gekoppeld aan machine learning en AI. Gebruik in Azure Machine Learning diepe leer modellen voor fraude detectie, object detectie en meer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330125"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Diep gaande informatie versus machine learning in Azure Machine Learning
 
-In dit artikel vindt u meer informatie over het vergelijken van diep gaande en machine learning. U leert hoe de twee concepten worden vergeleken en hoe ze in de bredere categorie van kunst matige intelligentie passen. In dit artikel wordt ook beschreven hoe diep leren kan worden toegepast op praktijk scenario's zoals fraude detectie, spraak-en gezichts herkenning, sentiment Analytics en time series-prognoses.
+In dit artikel worden uitgebreide lessen vergeleken met machine learning en wordt uitgelegd hoe ze in de bredere categorie van kunst matige intelligentie passen. Meer informatie over oplossingen voor uitgebreide trainingen die u kunt bouwen op Azure Machine Learning, zoals fraude detectie, spraak-en gezichts herkenning, sentiment analyse en tijd reeks prognoses.
+
+Zie het overzicht van [machine learning Algorithm Cheat](algorithm-cheat-sheet.md)voor meer informatie over het kiezen van algoritmen voor uw oplossingen.
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Diep leren, machine learning en AI
 
@@ -37,7 +40,7 @@ Houd rekening met de volgende definities voor een beter begrip van diep leren en
 
 - **Kunst matige intelligentie (AI)** is een techniek waarmee computers Human Intelligence kunnen nabootsen. Het bevat machine learning. 
  
-Het is belang rijk om inzicht te krijgen in de relatie tussen AI, machine learning en diep gaande lessen. Machine learning is een manier om kunst matige intelligentie te krijgen. U kunt met behulp van machine learning en diepe Leer technieken computer systemen en-toepassingen bouwen die vaak aan Human Intelligence zijn gekoppeld. Deze taken omvatten afbeeldings herkenning, spraak herkenning en taal omzetting.
+U kunt met behulp van machine learning en diepe Leer technieken computer systemen en-toepassingen bouwen die vaak aan Human Intelligence zijn gekoppeld. Deze taken omvatten afbeeldings herkenning, spraak herkenning en taal omzetting.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Technieken van diep leren versus machine learning 
 
@@ -58,7 +61,7 @@ De volgende tabel vergelijkt de twee technieken in meer detail:
 
 Vanwege de kunst matige Neural-netwerk structuur worden er diep gaande kennissen van Excel bij het identificeren van patronen in ongestructureerde gegevens, zoals afbeeldingen, geluid, video en tekst. Om die reden is het snel om veel branches te transformeren, met inbegrip van gezondheids zorg, energie, financiën en Trans Port. Deze branches zijn nu bezig met het herzien van traditionele bedrijfs processen. 
 
-Enkele van de meest voorkomende toepassingen voor diep gaande lessen worden beschreven in de volgende alinea's.
+Enkele van de meest voorkomende toepassingen voor diep gaande lessen worden beschreven in de volgende alinea's. In Azure Machine Learning kunt u een model gebruiken van uw build van een open-source-framework of het model bouwen met behulp van de beschik bare hulpprogram ma's.
 
 ### <a name="named-entity-recognition"></a>Herkenning benoemde entiteit
 
@@ -69,6 +72,8 @@ Benoemde entiteits herkenning is een diepe leer methode die een stuk tekst als i
 Grondige kennis is toegepast in veel object detectie-use cases. Object detectie bestaat uit twee onderdelen: afbeeldings classificatie en vervolgens afbeeldings lokalisatie. Met afbeeldings _classificatie_ worden de objecten van de afbeelding, zoals auto's of personen, geïdentificeerd. _Lokalisatie_ van de installatie kopie biedt de specifieke locatie van deze objecten. 
 
 Object detectie wordt al gebruikt in branches zoals gaming, handels verkeer, toer isme en zelf gerichte auto's.
+
+Meer informatie over het gebruik van een afbeeldings classificatie model van een open source-framework in Azure Machine Learning: [classificeren van afbeeldingen met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Bijschrift bij afbeelding genereren
 
@@ -87,6 +92,8 @@ Met de juiste gegevens transformatie kan een Neural-netwerk tekst, audio en visu
 Voor tekst analyse op basis van diepe leer methoden moet u grote hoeveel heden tekst gegevens (bijvoorbeeld medische documenten of onkosten ontvangsten) analyseren, patronen herkennen en gestructureerde en beknopte informatie maken.
 
 Bedrijven gebruiken dieper leren om tekst analyse uit te voeren om de handel en naleving van de overheid te detecteren. Een ander algemeen voor beeld is een verzekerings fraude: tekst analyse is vaak gebruikt voor het analyseren van grote hoeveel heden documenten om de kans op fraude van een verzekerings claim te herkennen. 
+
+Meer informatie over het gebruik van een tensor flow-model in Azure Machine Learning: [geclassificeerde handgeschreven cijfers met behulp van een tensor flow-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Kunst matige Neural netwerken
 
@@ -110,14 +117,8 @@ Convolutional Neural Networks zijn gebruikt in gebieden zoals video herkenning, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen ziet u hoe u de technologie voor diepe leren gebruikt in [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
-
-- [Hand matige cijfers classificeren met behulp van een tensor flow-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+In de volgende artikelen ziet u meer opties voor het gebruik van open-source uitgebreide leer modellen in [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
 
 - [Geclassificeerde handgeschreven cijfers door gebruik te maken van een tensor flow Estimator en Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Installatie kopieën classificeren met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Hand matige cijfers classificeren met behulp van een ketting model](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-U kunt ook het [Cheat-venster van machine learning Algorithm](algorithm-cheat-sheet.md) gebruiken om algoritmen voor uw model te kiezen.

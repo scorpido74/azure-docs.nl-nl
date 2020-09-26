@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: fa78ab00e337ee6f2a42e23a2899d79a09a7ea3d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329768"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -33,7 +33,7 @@ In dit artikel wordt uitgelegd hoe u:
 - Nieuwe `Dataset` objecten maken die `PipelineData` u wilt behouden
 
 > [!TIP]
-> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
+> Een verbeterde ervaring voor het door geven van tijdelijke gegevens tussen pijplijn stappen en het persistent maken van uw gegevens nadat pijplijn uitvoeringen beschikbaar zijn in de open bare preview-klassen,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) en [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Deze klassen zijn [experimentele](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) preview-functies en kunnen op elk gewenst moment worden gewijzigd.
 
 
 ## <a name="prerequisites"></a>Vereisten

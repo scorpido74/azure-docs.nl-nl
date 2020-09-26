@@ -6,20 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330397"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Gebruik kubectl om een Kubernetes stateful-toepassing uit te voeren met een PersistentVolume op uw Azure Stack Edge Pro-apparaat
 
 In dit artikel wordt beschreven hoe u een stateful-toepassing met één instantie in Kubernetes implementeert met behulp van een PersistentVolume (PV) en een implementatie. De implementatie maakt gebruik `kubectl` van opdrachten op een bestaand Kubernetes-cluster en implementeert de MySQL-toepassing. 
 
 Deze procedure is bedoeld voor gebruikers die de Kubernetes- [opslag op Azure stack Edge Pro-apparaat](azure-stack-edge-gpu-kubernetes-storage.md) hebben gecontroleerd en bekend zijn met de concepten van [Kubernetes Storage](https://kubernetes.io/docs/concepts/storage/).
+
+Azure Stack Edge Pro biedt ook ondersteuning voor het uitvoeren van Azure SQL Edge-containers en deze kunnen op een vergelijk bare manier worden geïmplementeerd als voor MySQL. Zie [Azure SQL Edge](../azure-sql-edge/overview.md)(Engelstalig) voor meer informatie.
 
 
 ## <a name="prerequisites"></a>Vereisten

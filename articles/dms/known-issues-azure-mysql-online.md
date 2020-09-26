@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom:
 - seo-lt-2019
 - seo-dt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330329"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
 
@@ -127,7 +127,7 @@ Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS MySQL naar Az
   - Alle partitie DDLs
   - Tabel neerzetten
   - Tabel naam wijzigen
-- Met behulp van de *Alter table <table_name> kolom <COLUMN_NAME*>-instructie toevoegen om kolommen toe te voegen aan het begin of aan het midden van een tabel niet wordt ondersteund. De *tabel Alter table <table_name> kolom <COLUMN_NAME toevoegen*>voegt de kolom toe aan het einde van de tabel.
+- Met behulp van de *Alter table <table_name> kolom <COLUMN_NAME *>-instructie toevoegen om kolommen toe te voegen aan het begin of aan het midden van een tabel niet wordt ondersteund. De *tabel Alter table <table_name> kolom <COLUMN_NAME toevoegen *>voegt de kolom toe aan het einde van de tabel.
 - Indexen die slechts op een deel van de kolom gegevens zijn gemaakt, worden niet ondersteund. De volgende instructie is een voor beeld van het maken van een index met slechts een deel van de kolom gegevens:
 
     ``` 
