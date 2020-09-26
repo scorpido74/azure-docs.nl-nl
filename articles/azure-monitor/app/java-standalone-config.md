@@ -4,12 +4,12 @@ description: Toepassings prestatie bewaking voor Java-toepassingen die worden ui
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371300"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -49,7 +49,18 @@ Dit is vereist. U kunt uw connection string vinden in uw Application Insights-re
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindings reeks Application Insights":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 U kunt de connection string ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+
+Als u de connection string niet instelt, wordt de Java-Agent uitgeschakeld.
 
 ## <a name="cloud-role-name"></a>Rolnaam van Cloud
 
@@ -93,7 +104,7 @@ U kunt ook de Cloud rolinstantie instellen met behulp van de omgevings variabele
 
 Application Insights Java 3,0 Preview registreert automatisch toepassings logboeken via Log4j, logback en Java. util. log.
 
-Standaard worden alle logboek registraties vastgelegd op `WARN` niveau of hoger.
+Standaard worden alle logboek registraties vastgelegd op `INFO` niveau of hoger.
 
 Als u deze drempel waarde wilt wijzigen:
 
@@ -103,13 +114,15 @@ Als u deze drempel waarde wilt wijzigen:
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+U kunt ook de drempel waarde voor logboek registratie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
 
 Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `ApplicationInsights.json` en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
 
@@ -136,9 +149,9 @@ Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
           "objectName": "java.lang:type=MemoryPool,name=Code Cache",
@@ -150,6 +163,10 @@ Als u bepaalde JMX-metrische gegevens hebt die u wilt vastleggen:
   }
 }
 ```
+
+U kunt de JMX-metrische gegevens ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_JMX_METRICS` .
+
+De inhoud van deze omgevings variabele moet JSON-gegevens zijn die overeenkomen met de bovenstaande structuur, bijvoorbeeld `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (inclusief metrische gegevens van de lente-boot-klep)
 
@@ -214,6 +231,8 @@ Hier volgt een voor beeld van het instellen van de steek proef op **10% van alle
   }
 }
 ```
+
+U kunt het steekproef percentage ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
 
 ## <a name="http-proxy"></a>HTTP-proxy
 

@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271168"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
+
+## <a name="september-2020"></a>September 2020
+
+### <a name="general-api-updates"></a>Algemene API-updates
+
+* Release van een nieuwe URL voor de open bare preview van Text Analytics v 3.1 voor het ondersteunen van updates voor de volgende benoemde v3-eind punten voor entiteits herkenning: 
+    * `/pii` eind punt bevat nu de nieuwe `redactedText` eigenschap in de JSON van het antwoord waar gedetecteerde PII-entiteiten in de invoer tekst worden vervangen door een `*` voor elk teken van deze entiteiten.
+    * `/linking` eind punt bevat nu de `bingID` eigenschap in de JSON van de reactie voor gekoppelde entiteiten.
+* De volgende Text Analytics preview-API-eind punten zijn op 4e september 2020 buiten gebruik gesteld:
+    * v 2.1-Preview
+    * v 3.0-preview
+    * v 3.0-Preview-versie. 1
+    
+> [!div class="nextstepaction"]
+> [Meer informatie over Text Analytics-API v 3.1-Preview. 2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics voor Status container updates
+
+De volgende updates zijn specifiek voor de release van september van de Text Analytics alleen voor de status container.
+* Er is een nieuwe container installatie kopie met een tag `1.1.013530001-amd64-preview` met de nieuwe model versie `2020-09-03` vrijgegeven aan de containerpreview-opslag plaats. 
+* Deze model versie biedt verbeteringen in het herkennen van entiteiten, afkortings detectie en latentie verbeteringen.
+
+> [!div class="nextstepaction"]
+> [Meer informatie over Text Analytics status](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -31,7 +55,7 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 * Er wordt nu een HTTP 400-fout geretourneerd voor v3 API-aanvragen die de gepubliceerde [gegevens limieten](concepts/data-limits.md)overschrijden. 
 * Eind punten die een offset retour neren, bieden nu ondersteuning voor de optionele `stringIndexType` para meter, waarmee de geretourneerde `offset` en `length` waarden worden aangepast, zodat deze overeenkomen met een ondersteund [reeks index schema](concepts/text-offsets.md).
 
-### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics voor updates van status container augustus
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics voor Status container updates
 
 De volgende updates zijn specifiek voor de augustus-versie van de Text Analytics alleen voor de status container.
 
@@ -147,11 +171,11 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Vaardigheid
 
 * Herkenning van de volgende entiteits typen van persoonlijke gegevens (alleen Engels):
-    * Person
+    * Persoon
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * Email 
+    * E-mail 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres
@@ -171,7 +195,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Uitgebreide detectie en categorisatie van entiteiten gevonden in tekst. 
     * Herkenning van de volgende nieuwe entiteits typen:
         * Telefoonnummer
-        * IP-adres
+        * Het IP-adres
 
 Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type.
 
@@ -191,7 +215,7 @@ Het biedt ondersteuning voor Engels ( `en` ), Japans ( `ja` ), vereenvoudigd Chi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is de Text Analytics-API?](overview.md)  
+* [Wat is Text Analytics-API?](overview.md)  
 * [Voorbeeldgebruikerscenario's](text-analytics-user-scenarios.md)
 * [Sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Taaldetectie](how-tos/text-analytics-how-to-language-detection.md)

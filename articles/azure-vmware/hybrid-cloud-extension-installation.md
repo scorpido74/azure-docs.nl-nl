@@ -3,18 +3,18 @@ title: VMware-HCX installeren
 description: De VMware HCX-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356550"
+ms.locfileid: "91370841"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
 In dit artikel worden de procedures beschreven voor het instellen van de VMWare HCX-oplossing voor uw persoonlijke cloud van Azure VMWare-oplossing. HCX maakt de migratie van uw VMware-workloads naar de Cloud en andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen.
 
-HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie site verbindingen (on-premises of in de Cloud). Als er meer dan drie site verbindingen zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing in te scha kelen via ondersteuning, die momenteel als preview-versie beschikbaar is. HCX Enter prise heeft extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie site verbindingen (on-premises of in de Cloud). Als er meer dan drie site verbindingen of HCX [Enter prise-functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing in te scha kelen via ondersteuning, die momenteel als preview-versie beschikbaar is. HCX EE is beschikbaar met AVS als een preview-functie/-service. Hoewel HCX EE voor AVS in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de HCX EE-Service is GA, ontvangt u een melding van 30 dagen waarin u wordt overgeschakeld naar de facturering. U kunt er ook voor kiezen om de service uit te scha kelen of te dekiezen.
 
 
 Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [Software versie](#software-version-requirements)en de [vereisten eerst.](#prerequisites) 
@@ -63,17 +63,15 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 * On-premises HCX IX en NE apparaten moeten een vCenter-en ESXi-infra structuur kunnen bereiken.
 
-* Voor het implementeren van het WAN Interconnect-apparaat moet u naast het/22 CIDR-netwerk adres blok dat wordt gebruikt voor de implementatie van SDDC in de Azure Portal, HCX een/29-blok vereist. Zorg ervoor dat u deze vereiste in uw netwerk planning confactoreert.
+* Voor het implementeren van het WAN Interconnect-apparaat zijn specifieke CIDR-bereiken al toegewezen door de klant die \ 22 heeft opgegeven voor het maken van een privécloud.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>De VMware HCX-eicellen on-premises implementeren
 
 1. Meld u aan bij de Azure VMware Solution HCX Manager op `https://x.x.x.9` poort 443 met de gebruikers referenties van **cloudadmin** en ga vervolgens naar **ondersteuning**.
 
-1. Selecteer de download koppeling voor het VMware HCX eicellen-bestand. 
+1. Selecteer de download koppeling voor het VMware HCX eicellen-bestand dat u wilt implementeren in uw vCenter.
 
-1. Meld u aan bij de Azure VMware-oplossing SDDC vCenter en selecteer **HCX**.
-   
-1. Ga naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.  
+1. Ga naar de on-premises vCenter en selecteer de zojuist gedownloade OVF-sjabloon om te implementeren in uw on-premises vCenter.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Ga vervolgens naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.":::
 

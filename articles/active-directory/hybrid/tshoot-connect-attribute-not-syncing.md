@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317484"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Problemen oplossen met een kenmerk dat niet wordt gesynchroniseerd in Azure AD Connect
 
@@ -67,7 +67,7 @@ Voordat u problemen met het synchroniseren van kenmerken kunt onderzoeken, moet 
 
 * Dubbel klik op de **Active Directory-Connector** om de kenmerken van de **connector ruimte** weer te geven. Klik op de knop **Preview** in het volgende dialoog venster op de knop **Preview genereren** .
 
-  ![Kenmerken van connector ruimte](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Scherm opname van het scherm Eigenschappen van connector ruimte-object met de knop Preview gemarkeerd.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * Klik nu op de **kenmerk stroom importeren**. Hiermee wordt de stroom van kenmerken van **Active Directory-Connector ruimte** naar de **omgekeerde tekst**weer gegeven. Kolom **synchronisatie regel** toont welke **synchronisatie regel** aan dat kenmerk is bijgedragen. In de kolom **gegevens bron** worden de kenmerken van de **connector ruimte**weer gegeven. De eigenschaps kolom van het **kenmerk autoverse** toont u de kenmerken in de **tekst**. U kunt zoeken naar het kenmerk dat hier niet wordt gesynchroniseerd. Als u het kenmerk hier niet kunt vinden, wordt dit niet toegewezen en moet u nieuwe aangepaste **synchronisatie regel** maken om het kenmerk toe te wijzen.
 
@@ -75,7 +75,7 @@ Voordat u problemen met het synchroniseren van kenmerken kunt onderzoeken, moet 
 
 * Klik op de **stroom kenmerk exporteren** in het linkerdeel venster om de kenmerk stroom van een **terugkerend** terug naar **Active Directory-Connector ruimte** weer te geven met behulp van **uitgaande synchronisatie regels**.
 
-  ![Kenmerken van connector ruimte](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Scherm opname van de kenmerk stroom van een omgekeerde teruggave naar Active Directory-Connector ruimte met behulp van uitgaande synchronisatie regels.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * Op dezelfde manier kunt u het **Azure Active Directory Connector Space** -object weer geven en de **Preview-versie** voor het weer geven van de kenmerk stroom van een **omgekeerde** naar de **connector ruimte** en vice versa. zo kunt u onderzoeken waarom een kenmerk niet is gesynchroniseerd.
 

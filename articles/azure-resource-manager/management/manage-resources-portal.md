@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372099"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
 
@@ -33,7 +33,7 @@ Azure-resources zijn georganiseerd door Azure-Services en resource groepen. De v
 
 Een resource openen met het Service type:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de Azure-service in het linkerdeel venster. In dit geval **opslag accounts**.  Als de service niet wordt weer gegeven, selecteert u **alle services**en selecteert u vervolgens het Service type.
 
     ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Een resource openen met het Service type:
 
 Een resource openen per resource groep:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **resource groepen** in het linkerdeel venster om de resource in de groep weer te geven.
 3. Selecteer de resource die u wilt openen. 
 
@@ -97,7 +97,7 @@ Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](loc
 Door labels kunt u de resource groep en resources logisch ordenen. 
 
 1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **Tags**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
+2. Selecteer **Labels**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
 
     ![Label Azure-resource](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
 3. Geef de label eigenschappen op en selecteer vervolgens **Opslaan**.
@@ -114,7 +114,7 @@ U kunt het speld pictogram in de rechter bovenhoek van de grafieken selecteren o
 
 ## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
 
-[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935341"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318820"
 ---
-# <a name="client-libraries-and-rest-apis"></a>Client bibliotheken en REST-Api's
+# <a name="client-libraries-and-rest-apis"></a>Clientbibliotheken en REST API's
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -28,9 +28,9 @@ Mogelijkheden van Azure Communication Services zijn conceptueel onderverdeeld in
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Openen            | Azure. Resource Manager. communicatie | Communicatie services-resources inrichten en beheren             |
 | Algemeen                 | REST | Openen               | Azure. Communication. common          | Biedt basis typen voor andere client bibliotheken |
-| Beheer         | REST |                | Azure. Communication. Administration  | Beheer van gebruikers, toegangs tokens en telefoon nummers, wijs standaarden toe die compatibel zijn met STUN en zet servers |
+| Beheer         | REST | Openen               | Azure. Communication. Administration  | Beheer van gebruikers, toegangs tokens en telefoon nummers, wijs standaarden toe die compatibel zijn met STUN en zet servers |
 | Chat                   | REST met een eigen signaal | Openen met gesloten bron signalerings pakket    | Azure. Communication. chat            | In realtime tekst gebaseerde chat berichten toevoegen aan uw toepassingen  |
-| Sms                    | REST | Openen              | Azure. Communication. SMS             | SMS-berichten verzenden en ontvangen |
+| Sms                    | REST | Openen              | Azure. Communication. SMS             | Sms-berichten verzenden en ontvangen |
 | Gesp                | Eigen Trans Port | Gesloten |Azure. Communication. Calling         | Gebruik spraak, video, scherm delen en andere realtime gegevens communicatie mogelijkheden          |
 
 ### <a name="client-library-language-support"></a>Taal ondersteuning voor client bibliotheek

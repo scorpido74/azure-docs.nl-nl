@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296447"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problemen en oplossingen tijdens de certificering van virtuele machines 
 
@@ -21,7 +21,7 @@ Wanneer u de installatie kopie van de virtuele machine (VM) publiceert naar Azur
 In dit artikel worden veelvoorkomende fout berichten voor het publiceren van VM-installatie kopieën en gerelateerde oplossingen uitgelegd.
 
 > [!NOTE]
-> Als u vragen of feedback over verbeteringen hebt, neemt u contact op met het [partner centrum-ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
+> Als u vragen of feedback voor verbetering hebt, neemt u contact op met de [ondersteuning van partner Center](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="approved-base-image"></a>Goedgekeurde basis installatie kopie
 
@@ -33,6 +33,9 @@ U kunt dit probleem oplossen door de installatie kopie op te halen uit Azure Mar
 
 - [Linux-installatie kopieën](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-installatie kopieën](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> Als u een Linux-basis installatie kopie gebruikt die niet is gemaakt op Marketplace, kunt u de eerste partitie met 2048 KB verrekenen. Op deze manier kan de niet-opgemaakte ruimte worden gebruikt voor het toevoegen van nieuwe facturerings gegevens en kan Azure door gaan met het publiceren van uw VM naar Marketplace.  
 
 ## <a name="vm-extension-failure"></a>VM-extensie fout
 
@@ -154,7 +157,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|Besturingssysteem|Aanbevolen grootte voor VHD|
+|OS|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -180,7 +183,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > Windows Server 2019 heeft geen verplichte versie vereisten.
 
-|Besturingssysteem|Versie|
+|OS|Versie|
 |---|---|
 |Windows met 2008 R2|6.1.7601.23689|
 |Windows Server 2012|6.2.9200.22099|
@@ -213,8 +216,8 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 |RHEL en Cent OS|6.10|2.6.32-754.15.3|
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
-||7,4|3.10.0-693.50.3|
-||7.5|3.10.0-862.34.2|
+||7.4|3.10.0-693.50.3|
+||7,5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
@@ -270,9 +273,12 @@ Raadpleeg de volgende tabel voor eventuele problemen bij het downloaden van de V
 |6|Voorwaardelijke HTTP-header|De SAS-URL is ongeldig.|Haal de juiste SAS-URL op.|
 |7|Ongeldige naam voor VHD|Controleer of er speciale tekens, zoals een procent teken (%), worden weer geven of aanhalings tekens ("), bestaan in de naam van de VHD.|Wijzig de naam van het VHD-bestand door de speciale tekens te verwijderen.|
 
-## <a name="first-1-mb-partition"></a>Eerste partitie van 1 MB
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>Eerste MB (2048 KB)-partitie (alleen voor Linux)
 
-Wanneer u de VHD verzendt, moet u ervoor zorgen dat de eerste partitie van 1 MB van de VHD leeg is. Als dat niet het geval is, mislukt de aanvraag.
+Wanneer u de VHD verzendt, moet u ervoor zorgen dat de eerste 2048 KB van de VHD leeg is. Als dat niet het geval is, mislukt de aanvraag *.
+
+>[!NOTE]
+>* Voor bepaalde speciale installatie kopieën, zoals die zijn gebouwd op basis van Azure Windows Base-installatie kopieën die zijn gemaakt met Azure Marketplace, wordt gecontroleerd op een facturerings code en wordt de MB-partitie genegeerd als de facturerings code aanwezig is en overeenkomt met onze interne beschik bare waarden.
 
 ## <a name="default-credentials"></a>Standaard referenties
 

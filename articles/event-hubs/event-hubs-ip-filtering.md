@@ -3,12 +3,12 @@ title: Firewall regels voor Azure Event Hubs | Microsoft Docs
 description: Gebruik firewall regels om verbindingen van specifieke IP-adressen toe te staan aan Azure Event Hubs.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: fbf3e67cdde43dbe3d5e02cd4b044d5473f409ac
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185125"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318531"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Toegang tot Azure Event Hubs-naam ruimten van bepaalde IP-adressen of bereiken toestaan
 Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -43,7 +43,7 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om IP-firewall re
 
     Als u de optie **alle netwerken** selecteert, accepteert de Event hub verbindingen van elk IP-adres (met behulp van de toegangs sleutel). Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
-    ![Optie Firewall: alle netwerken geselecteerd](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    ![Scherm opname waarin de pagina Firewall en virtuele netwerken wordt weer gegeven met de optie alle netwerken geselecteerd.](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Als u de toegang tot specifieke IP-adressen wilt beperken, controleert u of de optie **geselecteerde netwerken** is geselecteerd. Voer de volgende stappen uit in de sectie **firewall** :
     1. Selecteer **de optie uw IP-adres voor client toevoegen** om uw huidige client-IP de toegang tot de naam ruimte te geven. 
     2. Voer bij **adres bereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
@@ -77,7 +77,7 @@ Sjabloon parameters:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> in
+> in op
 > ```json
 > "defaultAction": "Deny"
 > ```

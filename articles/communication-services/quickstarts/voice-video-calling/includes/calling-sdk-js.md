@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377535"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een geïmplementeerde communicatie Services-resource. [Maak een communicatie Services-resource](../../create-communication-resource.md).
+- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -33,12 +33,12 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-client bibliotheek die aanroept:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
 
 | Naam                             | Beschrijving                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | De CallClient is het belangrijkste ingangs punt voor de aanroepende client bibliotheek.                                                                       |
-| CallAgent                        | De CallAgent wordt gebruikt om aanroepen te starten en te beheren.                                                                                            |
+| CallClient                       | De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.                                                                       |
+| CallAgent                        | De CallAgent wordt gebruikt om oproepen te starten en te beheren.                                                                                            |
 | AzureCommunicationUserCredential | De klasse AzureCommunicationUserCredential implementeert de CommunicationUserCredential-interface die wordt gebruikt om de CallAgent te instantiëren. |
 
 
@@ -80,11 +80,11 @@ Uw communicatie service-resource moet worden geconfigureerd om PSTN-aanroepen mo
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Een 1:1-oproep met met de video camera plaatsen
+### <a name="place-a-11-call-with-video-camera"></a>Een 1:1-oproep met video camera plaatsen
 > [!WARNING]
 > Er kan momenteel niet meer dan één uitgaande lokale video stroom zijn.
 U moet lokale camera's opsommen met behulp van de deviceManager-API als u een video gesprek wilt plaatsen `getCameraList` .
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ Als u een nieuwe groeps oproep wilt starten of lid wilt worden van een doorlopen
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 U hebt toegang tot de oproep eigenschappen en kunt verschillende bewerkingen uitvoeren tijdens een aanroep om instellingen te beheren die betrekking hebben op video en audio.
 
 ### <a name="call-properties"></a>Eigenschappen van oproep
-* Haal de unieke id op voor deze aanroep.
+* Haal de unieke ID (teken reeks) op voor deze aanroep.
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* Inspecteer de `remoteParticipant` verzameling op het exemplaar voor meer informatie over andere deel nemers aan de aanroep `call` .
+* Inspecteer de `remoteParticipant` verzameling op het exemplaar voor meer informatie over andere deel nemers aan de aanroep `call` . Matrix bevat lijst `RemoteParticipant` objecten
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* De identiteit van de aanroeper als de aanroep inkomend is.
+* De identiteit van de aanroeper als de aanroep inkomend is. De identiteit is een van de `Identifier` typen
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * De status van de aanroep ophalen.
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 Hiermee wordt een teken reeks geretourneerd die de huidige status van een aanroep vertegenwoordigt:
@@ -153,35 +153,34 @@ Hiermee wordt een teken reeks geretourneerd die de huidige status van een aanroe
 * Inspecteer de eigenschap om te zien waarom een bepaalde aanroep is beëindigd `callEndReason` .
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Als u wilt weten of de huidige aanroep een binnenkomende oproep is, inspecteert u de `isIncoming` eigenschap, wordt deze geretourneerd `Boolean` .
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  Als u wilt controleren of de huidige microfoon is gedempt, inspecteert u de `muted` eigenschap `Boolean` .
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* Als u wilt weten of de huidige aanroep een binnenkomende oproep is, inspecteert u de `isIncoming` eigenschap
+* Als u wilt zien of de stroom voor het delen van het scherm wordt verzonden vanuit een bepaald eind punt, controleert `isScreenSharingOn` u de eigenschap `Boolean` .
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  Als u wilt controleren of de huidige microfoon is gedempt, inspecteert u de `muted` eigenschap:
+* Als u actieve videostreams wilt controleren, controleert `localVideoStreams` u de verzameling. Deze bevat `LocalVideoStream` objecten
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* Controleer de eigenschap om te zien of de stroom voor het delen van het scherm wordt verzonden vanuit een bepaald eind punt `isScreenSharingOn` :
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* Als u actieve video stromen wilt controleren, controleert u de `localVideoStreams` verzameling:
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ U kunt de `mute` en asynchrone api's gebruiken om het lokale eind punt te dempen
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ Als u een video wilt starten, moet u camera's opsommen met behulp `getCameraList
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,49 +253,49 @@ Aan de externe deel nemer is een set eigenschappen en verzamelingen gekoppeld
 * De id voor deze externe deel nemer ophalen.
 De identiteit is een van de typen ' identifier ':
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * De status van deze externe deel nemer ophalen.
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 Status kan een van
 * ' Inactief '-initiële status
 * ' Verbinding maken '-transitie status terwijl deel nemer verbinding maakt met de aanroep
 * Verbonden: de deel nemer is verbonden met de oproep
 * Hold-deel nemer is in de wacht stand
-* ' EarlyMedia '-aankondiging wordt afgespeeld voordat de deel nemer is verbonden met de oproep
+* ' EarlyMedia ': de aankondiging wordt afgespeeld voordat de deel nemer is verbonden met de oproep
 * ' Verbinding verbroken ': eind status-de deel nemer is losgekoppeld van de aanroep
 
 Als u wilt weten waarom de deel nemer de oproep heeft verlaten, inspecteert u de `callEndReason` eigenschap:
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Als u wilt controleren of deze externe deel nemer is gedempt of niet, controleert `isMuted` u de eigenschap. `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* Als u wilt controleren of deze externe deel nemer spreekt of niet, controleert `isSpeaking` u de eigenschap die wordt geretourneerd `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* Inspecteer de eigenschap om te controleren of deze externe deel nemer gedempt is of niet `isMuted` .
+* Als u alle video stromen wilt controleren die een bepaalde deel nemer in deze aanroep verzendt, controleert u of `videoStreams` deze `RemoteVideoStream` objecten bevat
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* Inspecteer de eigenschap om te controleren of deze externe deel nemer spreekt of niet `isSpeaking` .
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* Als u alle video stromen wilt controleren die een bepaalde deel nemer in deze aanroep verzendt, controleert u de `videoStreams` verzameling:
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,7 +311,6 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Deel nemer uit een gesprek verwijderen
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 Als u de video stromen en de streams voor het delen van externe deel nemers wilt weer geven, inspecteert u de `videoStreams` verzamelingen:
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```
@@ -365,7 +362,7 @@ if (remoteParticipantStream.isAvailable) {
 ### <a name="remote-video-stream-properties"></a>Eigenschappen van externe video-stream
 Externe video stromen hebben de volgende eigenschappen:
 
-* `Id` -Id van een externe video stroom
+* `Id` -ID van een externe video stroom
 ```js
 const id: number = remoteVideoStream.id;
 ```

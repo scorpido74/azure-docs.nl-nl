@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295711"
 ---
 # <a name="server-group-size"></a>Grootte van servergroep
 
@@ -26,13 +26,13 @@ De grootte van een server groep, in termen van het aantal knoop punten en de har
 
 Voor de migratie naar grootschalige (Citus) van een bestaand PostgreSQL data base-exemplaar met één knoop punt, kunt u het beste een cluster kiezen waarvan het aantal worker vCores en het totale RAM-geheugen gelijk is aan dat van het oorspronkelijke exemplaar. In dergelijke scenario's hebben we twee tot drie verbeteringen in prestaties gezien, omdat sharding het gebruik van bronnen verbetert, waardoor kleinere indexen, enzovoort.
 
-Het aantal vCores dat vereist is voor het coördinator knooppunt is afhankelijk van uw bestaande workload (schrijf-en lees doorvoer). Het coördinator knooppunt vereist niet zoveel RAM-geheugen als worker-knoop punten, maar RAM-toewijzing wordt bepaald op basis van het aantal vCore (zoals beschreven in de [grootschalige-configuratie opties](concepts-hyperscale-configuration-options.md)), zodat het vCore aantal in feite de echte beslissing is.
+Het aantal vCores dat vereist is voor het coördinator knooppunt is afhankelijk van uw bestaande workload (schrijf-en lees doorvoer). Het coördinator knooppunt heeft niet zoveel RAM-geheugen als worker-knoop punten nodig, maar RAM-toewijzing wordt bepaald op basis van het aantal vCore (zoals beschreven in de [configuratie opties grootschalige (Citus)](concepts-hyperscale-configuration-options.md)), zodat het aantal vCore in feite de echte beslissing is.
 
 ### <a name="real-time-analytics-use-case"></a>Real-time analyse-gebruik-Case
 
 Totaal aantal vCores: wanneer werk gegevens in het RAM-geheugen passen, kunt u een lineaire prestatie verbetering verwachten op grootschalige (Citus) in verhouding tot het aantal worker-kernen. Als u het juiste aantal vCores voor uw behoeften wilt bepalen, moet u rekening houden met de huidige latentie voor query's in uw data base met één knoop punt en de vereiste latentie in grootschalige (Citus). Deel de huidige latentie door de gewenste latentie en rond het resultaat af.
 
-RAM voor werkrollen: de beste manier is om voldoende geheugen beschikbaar te stellen zodat het merendeel van de werksets in het geheugen past. Het type query's dat door uw toepassing wordt gebruikt, is van invloed op de geheugen vereisten. U kunt uitleg analyseren uitvoeren op een query om te bepalen hoeveel geheugen nodig is. Houd er rekening mee dat vCores en RAM samen worden geschaald, zoals beschreven in het artikel [configuratie opties voor grootschalige](concepts-hyperscale-configuration-options.md) .
+RAM voor werkrollen: de beste manier is om voldoende geheugen beschikbaar te stellen zodat het merendeel van de werksets in het geheugen past. Het type query's dat door uw toepassing wordt gebruikt, is van invloed op de geheugen vereisten. U kunt uitleg analyseren uitvoeren op een query om te bepalen hoeveel geheugen nodig is. Houd er rekening mee dat vCores en RAM samen worden geschaald, zoals beschreven in het artikel [grootschalige (Citus) configuratie opties](concepts-hyperscale-configuration-options.md) .
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Een Citus-Server groep (grootschalige) schalen
 

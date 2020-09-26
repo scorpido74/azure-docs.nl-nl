@@ -3,15 +3,15 @@ title: Problemen met Windows Virtual Desktop vaststellen-Azure
 description: De Windows-functie diagnostische gegevens over virtueel bureau blad gebruiken om problemen te diagnosticeren.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279855"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Problemen met Windows virtueel bureau blad identificeren en vaststellen
 
@@ -24,10 +24,10 @@ Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, wor
 
 ## <a name="common-error-scenarios"></a>Veelvoorkomende foutscenario's
 
-Fout scenario's worden intern gecategoriseerd voor de service en extern naar virtueel bureau blad van Windows.
+In de WVDErrors-tabel worden fouten bijgehouden voor alle typen activiteiten. De kolom met de naam ' ServiceError ' levert een extra vlag met de waarde ' True ' of ' false '. Met deze markering wordt aangegeven of de fout is gerelateerd aan de service.
 
-* Intern probleem: Hiermee geeft u scenario's op die niet door de klant kunnen worden verminderd en moeten worden omgezet als een ondersteunings probleem. Wanneer u feedback geeft via de [technische community van het Windows-bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), neemt u de correlatie-id en het geschatte tijds bestek op wanneer het probleem is opgetreden.
-* Extern probleem: houdt rekening met scenario's die door de klant kunnen worden verminderd. Dit zijn externe virtuele Bureau bladen van Windows.
+* Als de waarde ' True ' is, heeft het service team mogelijk al het probleem onderzocht. Als dit van invloed is op de gebruikers ervaring en een groot aantal keer wordt weer gegeven, raden we u aan om een ondersteunings ticket in te dienen voor het virtuele bureau blad van Windows.
+* Als de waarde is ingesteld op ' false ', is dit mogelijk een onjuiste configuratie die u zelf kunt oplossen. Het fout bericht geeft u een aanwijzing over waar u moet beginnen.
 
 De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uitgevoerd.
 
@@ -46,7 +46,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 |Kan de toewijzing van de gebruiker aan de toepassings groep niet opheffen|Kan de publicatie van een app-groep voor een gebruiker niet ongedaan maken. Controleer of er een gebruiker beschikbaar is in azure AD. Controleer of de gebruiker deel uitmaakt van een gebruikers groep waarvan de app-groep wordt gepubliceerd. |
 |Er is een fout opgetreden bij het ophalen van de beschik bare locaties |Controleer de locatie van de virtuele machine die wordt gebruikt in de wizard hostgroep maken. Als de installatie kopie niet beschikbaar is op die locatie, voegt u een installatie kopie toe op die locatie of kiest u een andere VM-locatie. |
 
-### <a name="external-connection-error-codes"></a>Fout codes voor externe verbindingen
+### <a name="connection-error-codes"></a>Verbindings fout codes
 
 |Numerieke code|Foutcode|Voorgestelde oplossing|
 |---|---|---|

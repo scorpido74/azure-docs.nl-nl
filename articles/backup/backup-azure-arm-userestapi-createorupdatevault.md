@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van back-up-en h
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271593"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-kluis maken met behulp van REST API
 
@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Een aanvraag maken
 
-Voor het maken van de *put* -aanvraag `{subscription-id}` is de para meter vereist. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). U definieert een `{resourceGroupName}` en `{vaultName}` voor uw resources, samen met de `api-version` para meter. In dit artikel wordt gebruikgemaakt van `api-version=2016-06-01` .
+Voor het maken van de *put* -aanvraag `{subscription-id}` is de para meter vereist. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli). U definieert een `{resourceGroupName}` en `{vaultName}` voor uw resources, samen met de `api-version` para meter. In dit artikel wordt gebruikgemaakt van `api-version=2016-06-01` .
 
 De volgende headers zijn vereist:
 
@@ -41,7 +41,7 @@ De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag
 |Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  true       |Tekenreeks         |   Resource locatie      |
+|location     |  true       |Tekenreeks         |   Resourcelocatie      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |sku     |         |  [SKU](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Identificeert de unieke systeem-id voor elke Azure-resource     |
 |tags     |         | Object        |     Resourcetags    |

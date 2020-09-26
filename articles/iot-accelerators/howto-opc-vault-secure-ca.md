@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281878"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service veilig in azure kunt uitvoeren en andere beveiligings richtlijnen kunt bedenken.
 

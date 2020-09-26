@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360545"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief garanderen dat u toegang hebt tot GRUB en SYSRQ u veel tijd bespaart
 
@@ -57,9 +57,9 @@ Met de seriële console van Azure kunt u met uw virtuele Linux-machine communice
 
 U kunt veel configuratie bestanden bewerken, inclusief de manier waarop de kernel opstart. 
 
-De meer ervaren Linux/Unix sys-beheerders stellen de **afzonderlijke gebruikers** -en **nood herstel modi** die toegankelijk zijn via de Azure seriële console, in de tussen komst van het wisselen van schijven en het verwijderen van virtuele machines voor een groot aantal Recovery scenario's.
+De meer ervaren Linux/Unix sys-beheerders stellen de **afzonderlijke gebruikers** -en  **nood herstel modi** die toegankelijk zijn via de Azure seriële console, in de tussen komst van het wisselen van schijven en het verwijderen van virtuele machines voor een groot aantal Recovery scenario's.
 
-De herstel methode is afhankelijk van het probleem dat zich voordoet, bijvoorbeeld wanneer een verloren of verkeerd geplaatst wacht woord opnieuw kan worden ingesteld via Azure Portal opties-> **wacht woord opnieuw instellen**. De functie **wacht woord opnieuw instellen** wordt een uitbrei ding genoemd en communiceert met de Linux-gast agent.
+De herstel methode is afhankelijk van het probleem dat zich voordoet, bijvoorbeeld wanneer een verloren of verkeerd geplaatst wacht woord opnieuw kan worden ingesteld via Azure Portal opties->  **wacht woord opnieuw instellen**. De functie **wacht woord opnieuw instellen** wordt een uitbrei ding genoemd en communiceert met de Linux-gast agent.
 
 Andere uitbrei dingen, zoals een aangepast script, zijn beschikbaar. deze opties vereisen echter dat de Linux- **waagent** in een goede staat zijn en niet altijd het geval is.
 
@@ -117,7 +117,7 @@ De kernel-para meter dynamisch configureren
 
 Als u geen toegang hebt tot de **hoofdmap** of sudo is verbroken, is het niet mogelijk om SYSRQ te configureren vanaf een shell-prompt.
 
-U kunt SYSRQ in dit scenario inschakelen met behulp van de Azure Portal. Deze methode kan nuttig zijn als het bestand **sudo. d/waagent** beschadigd is of is verwijderd.
+U kunt SYSRQ in dit scenario inschakelen met behulp van de Azure Portal. Deze methode kan nuttig zijn als het bestand  **sudo. d/waagent** beschadigd is of is verwijderd.
 
 Met de Azure Portal bewerkingen-> uitvoeren opdracht > RunShellScript-functie moet het waagent-proces in orde zijn, kunt u deze opdracht vervolgens injecteren om SYSRQ in te scha kelen
 
@@ -210,11 +210,11 @@ Het GRUB-menu voor opstart processen en toegang onderbreken
 
 Selecteer Geavanceerde opties voor Ubuntu en druk op ENTER
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![Scherm afbeelding toont de Seriële console met geavanceerde opties voor Ubuntu geselecteerd.](./media/virtual-machines-serial-console/ubunturec1.png)
 
 Selecteer de regel die wordt weer gegeven *(herstel modus)* en druk op ENTER. Druk op ' e '
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![Scherm afbeelding toont de Seriële console waarvoor de versie van de herstel modus is geselecteerd.](./media/virtual-machines-serial-console/ubunturec2.png)
 
 Zoek de regel die de kernel laadt en vervang de laatste para meter in de **modus** met bestemming als **console = ttyS0**
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![Scherm afbeelding toont de Seriële console met de gewijzigde waarde.](./media/virtual-machines-serial-console/ubunturec3.png)
 
 Druk op **CTRL-x** om de kernel te starten en te laden.
 Als alles goed gaat, worden deze extra opties weer geven die u kunnen helpen andere herstel opties uit te voeren
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![Scherm afbeelding toont de Seriële console in het menu herstel, waarmee u extra herstel opties kunt instellen.](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Configuratie van Red Hat GRUB
@@ -335,13 +335,13 @@ terminal --timeout=5 serial console
 ```
 
 
-De laatste regel *Terminal –-timeout = 5 seriële console* verhoogt de **grub** -time-out door een prompt van vijf seconden toe te voegen, **Druk op een toets om door te gaan.**
+De laatste regel  *Terminal –-timeout = 5 seriële console* verhoogt de **grub** -time-out door een prompt van vijf seconden toe te voegen, **Druk op een toets om door te gaan.**
 
-![RH6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![Scherm afbeelding toont een console met uitvoer.](./media/virtual-machines-serial-console/rh6-1.png)
 
 Het menu GRUB moet op het scherm worden weer gegeven voor de geconfigureerde time-out = 15 zonder te hoeven drukken op ESC. Zorg ervoor dat u in de browser op de console klikt om het menu actief te maken en de vereiste kernel te selecteren
 
-![RH6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![Scherm afbeelding toont een console met twee Linux-opties.](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ U krijgt toegang tot een shell zonder dat u een wacht woord hoeft in te voeren. 
 Als u toegang hebt tot GRUB, kunt u het initialisatie proces onderbreken. deze interactie is handig voor veel herstel procedures.
 Als u geen Hoofdwacht woord hebt en voor één gebruiker een Hoofdwacht woord vereist is, kunt u de kernel opstarten met het programma init vervangen door een bash prompt. deze interrupt kan worden bereikt door init =/bin/bash toe te voegen aan de kernel-opstart regel
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![Scherm afbeelding toont een-console met de bijgewerkte opstart regel.](./media/virtual-machines-serial-console/bash1.png)
 
 Uw/(root) bestandssysteem-RW opnieuw koppelen met behulp van de opdracht
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![Scherm afbeelding toont een console met een actie opnieuw koppelen.](./media/virtual-machines-serial-console/bash2.png)
 
 
 U kunt nu hoofdwachtwoord wijzigingen of veel andere configuratie wijzigingen voor Linux uitvoeren
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![Scherm afbeelding toont een-console waarin u het hoofd wachtwoord en andere configuratie kunt wijzigen.](./media/virtual-machines-serial-console/bash3.png)
 
 Start de VM opnieuw met 
 

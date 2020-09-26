@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 087c5e5716a4c8c640faebd7470905fde85d0136
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038270"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372201"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Video analyse-toepassings architectuur voor object-en bewegings detectie
 
 Met de sjabloon **video Analytics-toepassing voor detectie van objecten en bewegingen** kunt u IOT-oplossingen bouwen, zoals live video analyse mogelijkheden.
 
-:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Architectuur":::
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="Diagram van het overzicht van video Analytics-objecten en Motion-detectie onderdelen.":::
 
 De belangrijkste onderdelen van de video analytics-oplossing zijn:
 
 ## <a name="live-video-analytics-lva"></a>Live video Analytics (LVA)
 
-LVA biedt een platform waarmee u intelligente video toepassingen kunt bouwen die de rand en de Cloud omvatten. Met het platform kunt u intelligente video toepassingen bouwen die de rand en de Cloud omvatten. Het platform biedt de mogelijkheid om live video vast te leggen, te registreren, te analyseren en de resultaten te publiceren. Dit kan video-of video analyses zijn naar Azure-Services. De Azure-Services kunnen worden uitgevoerd in de Cloud of de rand. Het platform kan worden gebruikt om IoT-oplossingen te verbeteren met videoanalyse.
+LVA biedt een platform waarmee u intelligente video toepassingen kunt bouwen die de rand en de Cloud omvatten. Met het platform kunt u intelligente video toepassingen bouwen die de rand en de Cloud omvatten. Het platform biedt de mogelijkheid om live video vast te leggen, op te nemen en te analyseren. Bovendien kunnen de resultaten, zoals video en/of videoanalyses, worden gepubliceerd naar Azure-services. De Azure-services kunnen in de cloud of aan de rand worden uitgevoerd. Het platform kan worden gebruikt om IoT-oplossingen te verbeteren met videoanalyse.
 
 Zie [Live video Analytics](https://github.com/Azure/live-video-analytics) op github voor meer informatie.
 

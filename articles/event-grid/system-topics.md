@@ -2,13 +2,13 @@
 title: Systeem onderwerpen in Azure Event Grid
 description: Hierin worden systeem onderwerpen beschreven in Azure Event Grid.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297280"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systeem onderwerpen in Azure Event Grid
 Een systeem onderwerp in Event Grid vertegenwoordigt een of meer gebeurtenissen die zijn gepubliceerd door Azure-Services, zoals Azure Storage en Azure Event Hubs. Een systeem onderwerp kan bijvoorbeeld **alle BLOB-gebeurtenissen** vertegenwoordigen of alleen **blobs die zijn gemaakt** en **Verwijderde BLOB** -gebeurtenissen die zijn gepubliceerd voor een **specifiek opslag account**. Wanneer een BLOB in dit voor beeld wordt geüpload naar het opslag account, publiceert de Azure Storage-service een gebeurtenis die door een **blob is gemaakt** naar het onderwerp system in Event grid, waarna de gebeurtenis wordt doorgestuurd naar de [abonnees](event-handlers.md) van het onderwerp die de gebeurtenis ontvangen en verwerken. 
@@ -22,6 +22,7 @@ Hier volgt de huidige lijst met Azure-Services die ondersteuning bieden voor het
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

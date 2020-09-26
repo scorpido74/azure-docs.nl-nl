@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317681"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection Standard beheren met de Azure Portal
 
 Meer informatie over het in-en uitschakelen van DDoS-beveiliging (Distributed Denial of service) en het gebruik van telemetrie om een DDoS-aanval met Azure DDoS Protection Standard te verhelpen. DDoS Protection Standard beveiligt Azure-resources, zoals virtuele machines, load balancers en toepassings gateways waaraan een [openbaar IP-adres](virtual-network-public-ip-address.md) van Azure is toegewezen. Zie [DDoS Protection Standard Overview](ddos-protection-overview.md)(Engelstalig) voor meer informatie over DDoS Protection Standard en de mogelijkheden ervan.
 
-Voordat u de stappen in deze zelf studie voltooit, meldt u zich aan bij de Azure Portal https://portal.azure.com met een account dat is toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
+Voordat u de stappen in deze zelf studie voltooit, meldt u zich aan bij de Azure Portal https://portal.azure.com met een account dat is toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions-and-restrictions).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -191,7 +191,7 @@ Met de stroom logboeken voor risico beperking kunt u het verloren verkeer, het d
     - **Archiveren naar een opslag account**: gegevens worden naar een Azure Storage-account geschreven. Zie [Archief bron logboeken](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over deze optie.
     - **Streamen naar een event hub**: Hiermee kan een logboek ontvanger logboeken ophalen met behulp van een Azure Event hub. Event hubs maken integratie mogelijk met Splunk of andere SIEM-systemen. Zie [bron logboeken streamen naar een event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over deze optie.
     - **Verzenden naar log Analytics**: schrijft logboeken naar de Azure Monitor-service. Zie [Logboeken verzamelen voor gebruik in azure monitor-logboeken voor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)meer informatie over deze optie.
-1. Als u de gegevens van stroom logboeken wilt weer geven in het dash board van Azure Analytics, kunt u het voorbeeld dashboard importeren uit https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Als u de gegevens van stroom logboeken wilt weer geven in de Azure Analytics-werkmap, kunt u het voorbeeld dashboard importeren uit https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
 
 Stroom logboeken bevatten de volgende velden: 
 - Bron-IP
@@ -225,11 +225,11 @@ Als u de waarschuwingen wilt weer geven, opent u **Security Center** in de Azure
 
 De waarschuwingen bevatten algemene informatie over het open bare IP-adres dat wordt vermeld onder aanvallen, geo-en bedreigings informatie en herstel stappen.
 
-## <a name="permissions"></a>Machtigingen
+## <a name="permissions-and-restrictions"></a>Machtigingen en beperkingen
 
 Als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Actie                                            | Name                                     |
+| Actie                                            | Naam                                     |
 | ---------                                         | -------------                            |
 | Micro soft. Network/ddosProtectionPlans/lezen        | Een DDoS-beschermings plan lezen              |
 | Micro soft. Network/ddosProtectionPlans/schrijven       | Een DDoS-beschermings plan maken of bijwerken  |
@@ -237,6 +237,9 @@ Als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewez
 | Micro soft. Network/ddosProtectionPlans/samen voegen/actie | Lid worden van een DDoS-beschermings plan              |
 
 Als u DDoS-beveiliging wilt inschakelen voor een virtueel netwerk, moet aan uw account ook de juiste acties worden toegewezen [voor virtuele netwerken](manage-virtual-network.md#permissions).
+
+### <a name="azure-policy"></a>Azure Policy
+Voor klanten die verschillende abonnementen hebben en die ervoor willen zorgen dat één plan voor Azure DDoS Protection Standard wordt geïmplementeerd in hun Tenant voor kosten beheer, kunt u Azure Policy gebruiken om het [maken van Azure DDoS Protection standaard plannen te beperken](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Met dit beleid wordt het maken van DDoS-abonnementen geblokkeerd, tenzij het abonnement eerder als een uitzonde ring is gemarkeerd. In dit beleid wordt ook een lijst weer gegeven met alle abonnementen waarvoor een DDoS-abonnement is geïmplementeerd, maar die niet moeten worden gemarkeerd als niet-compatibel. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

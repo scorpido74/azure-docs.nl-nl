@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206441"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371215"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Veilige toegang tot on-premises Api's met Azure AD-toepassingsproxy
 
@@ -43,7 +43,7 @@ Omdat Azure AD-toepassingsproxy-verificatie en-autorisatie zijn gebouwd op Azure
 Als u dit scenario wilt volgen, hebt u het volgende nodig:
 
 - Beheerders toegang tot een Azure-map, met een account dat apps kan maken en registreren
-- De voor beeld-Web-API en native client-apps uit[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
+- De voor beeld-Web-API en native client-apps uit [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
 
 ## <a name="publish-the-api-through-application-proxy"></a>De API publiceren via toepassings proxy
 
@@ -185,7 +185,7 @@ Als u de systeem eigen app wilt configureren om verbinding te maken met Azure Ac
 
 Nadat u de para meters hebt geconfigureerd, bouwt u de systeem eigen app en voert u deze uit. Wanneer u de knop **Aanmelden** selecteert, kunt u zich aanmelden met de app en vervolgens een geslaagd scherm weer geven om te bevestigen dat het verbinding heeft gemaakt met de SecretAPI.
 
-![Geslaagd](./media/application-proxy-secure-api-access/success.png)
+![Scherm afbeelding toont een bericht geheim dat ik is geslaagd en een knop OK.](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

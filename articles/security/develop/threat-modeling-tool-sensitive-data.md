@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317817"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Beveiligings frame: gevoelige gegevens | Oplossingen 
 | Product/service | Artikel |
@@ -46,7 +46,7 @@ ms.locfileid: "89000495"
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Zorg ervoor dat binaire bestanden worden verborgen als deze gevoelige informatie bevatten, zoals handels geheimen, gevoelige bedrijfs logica die niet moet worden omgekeerd. Dit is om reverse engineering van assembly's te stoppen. `CryptoObfuscator`Voor dit doel kunt u hulpprogram ma's als gebruiken. |
 
 ## <a name="consider-using-encrypted-file-system-efs-is-used-to-protect-confidential-user-specific-data"></a><a id="efs-user"></a>Het gebruik van EFS (Encrypted File System) wordt gebruikt voor het beveiligen van vertrouwelijke gebruikersspecifieke gegevens
@@ -57,7 +57,7 @@ ms.locfileid: "89000495"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Het gebruik van EFS (Encrypted File System) wordt gebruikt voor het beveiligen van vertrouwelijke gebruikersspecifieke gegevens van aanvallers met fysieke toegang tot de computer. |
 
 ## <a name="ensure-that-sensitive-data-stored-by-the-application-on-the-file-system-is-encrypted"></a><a id="filesystem"></a>Zorg ervoor dat gevoelige gegevens die zijn opgeslagen door de toepassing op het bestands systeem, zijn versleuteld
@@ -68,7 +68,7 @@ ms.locfileid: "89000495"
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Zorg ervoor dat gevoelige gegevens die zijn opgeslagen door de toepassing op het bestands systeem, zijn versleuteld (bijvoorbeeld via DPAPI), als EFS niet kan worden afgedwongen |
 
 ## <a name="ensure-that-sensitive-content-is-not-cached-on-the-browser"></a><a id="cache-browser"></a>Zorg ervoor dat gevoelige inhoud niet in de cache wordt opgeslagen in de browser
@@ -79,7 +79,7 @@ ms.locfileid: "89000495"
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Generic, webformulieren, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Browsers kunnen gegevens opslaan voor caching en geschiedenis. Deze bestanden in de cache worden opgeslagen in een map, zoals de map Tijdelijke Internet bestanden in het geval van Internet Explorer. Wanneer deze pagina's opnieuw worden verwezen, worden ze uit de cache van de browser weer gegeven. Als gevoelige informatie wordt weer gegeven aan de gebruiker (zoals het adres, de creditcard gegevens, het sofi-nummer of de gebruikers naam), kan deze informatie worden opgeslagen in de cache van de browser en kan daarom worden opgehaald door de cache van de browser te controleren of door simpelweg op de knop Vorige te drukken. Stel de waarde Cache-Control response header in op ' No-Store ' voor alle pagina's. |
 
 ### <a name="example"></a>Voorbeeld
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Procedure: Configuratie secties versleutelen in ASP.NET 2,0 met behulp van DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [een beveiligde configuratie provider opgeven](https://msdn.microsoft.com/library/68ze1hb2.aspx) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Referenties**              | [Procedure: Configuratie secties versleutelen in ASP.NET 2,0 met behulp van DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [een beveiligde configuratie provider opgeven](https://msdn.microsoft.com/library/68ze1hb2.aspx) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **Stappen** | Configuratie bestanden zoals de Web.config, appsettings.jsop worden vaak gebruikt om gevoelige informatie te bewaren, zoals gebruikers namen, wacht woorden, database verbindings reeksen en versleutelings sleutels. Als u deze informatie niet beveiligt, is uw toepassing kwetsbaar voor aanvallen of kwaadwillende gebruikers die gevoelige informatie verkrijgen, zoals gebruikers namen en wacht woorden voor accounts, database namen en server namen. Op basis van het implementatie type (Azure/on-premises) versleutelt u de gevoelige secties van de configuratie bestanden met behulp van DPAPI of services als Azure Key Vault. |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>Het kenmerk voor automatisch aanvullen van HTML expliciet uitschakelen in gevoelige formulieren en invoer
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [MSDN: kenmerk automatisch aanvullen](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [met behulp van automatisch aanvullen in HTML](https://msdn.microsoft.com/library/ms533032.aspx), [probleem met HTML-](https://technet.microsoft.com/security/bulletin/MS10-071)opschoning, [automatisch aanvullen.](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Referenties**              | [MSDN: kenmerk automatisch aanvullen](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [met behulp van automatisch aanvullen in HTML](https://msdn.microsoft.com/library/ms533032.aspx), [probleem met HTML-](https://technet.microsoft.com/security/bulletin/MS10-071)opschoning, [automatisch aanvullen.](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Stappen** | Het kenmerk automatisch aanvullen geeft aan of automatisch aanvullen voor een formulier moet worden in-of uitgeschakeld. Als automatisch aanvullen is ingeschakeld, worden de waarden in de browser op basis van de waarden die de gebruiker eerder heeft ingevoerd, in het getypt. Wanneer bijvoorbeeld een nieuwe naam en een nieuw wacht woord wordt ingevoerd in een formulier en het formulier wordt verzonden, wordt u in de browser gevraagd of het wacht woord moet worden opgeslagen. Wanneer het formulier vervolgens wordt weer gegeven, worden de naam en het wacht woord automatisch ingevuld of ingevuld als de naam wordt ingevoerd. Een aanvaller met lokale toegang kan het wacht woord voor lees bare tekst verkrijgen uit de cache van de browser. Automatisch aanvullen is standaard ingeschakeld en moet expliciet worden uitgeschakeld. |
 
 ### <a name="example"></a>Voorbeeld
@@ -162,7 +162,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Gevoelige gegevens zoals wacht woorden, creditcard nummers, SSN enz. moeten worden gemaskeerd wanneer ze op het scherm worden weer gegeven. Dit is om te voor komen dat onbevoegden toegang krijgen tot de gegevens (zoals een schouder-Surf wachtwoord, ondersteunings personeel dat de SSN-nummers van gebruikers bekijkt). Zorg ervoor dat deze gegevens elementen niet zichtbaar zijn in tekst zonder opmaak en op de juiste wijze worden gemaskeerd. Dit moet zorgvuldig worden uitgevoerd en wordt geaccepteerd als invoer (bijvoorbeeld. invoer type = "wacht woord") en weer gegeven op het scherm (bijvoorbeeld alleen de laatste 4 cijfers van het creditcard nummer weer geven). |
 
 ## <a name="implement-dynamic-data-masking-to-limit-sensitive-data-exposure-non-privileged-users"></a><a id="dynamic-users"></a>Dynamische gegevens maskering implementeren om gebruikers niet-gemachtigde gevoelige gegevens bloot te leggen
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, SQL-versie-MsSQL2016 |
-| **Verwijzingen**              | [Dynamische gegevensmaskering](https://msdn.microsoft.com/library/mt130841) |
+| **Referenties**              | [Dynamische gegevens maskering](https://msdn.microsoft.com/library/mt130841) |
 | **Stappen** | Het doel van dynamische gegevens maskering is om de bloot stelling van gevoelige gegevens te beperken, zodat gebruikers die geen toegang tot de gegevens mogen hebben, deze kunnen bekijken. Dynamische gegevens maskering is niet bedoeld om te voor komen dat database gebruikers rechtstreeks verbinding kunnen maken met de data base en uitvoeren van uitgebreide query's waarmee delen van de gevoelige gegevens worden blootgesteld. Dynamische gegevens maskering is complementair met andere SQL Server beveiligings functies (controle, versleuteling, beveiliging op rijniveau...) en het wordt ten zeerste aangeraden om deze functie te gebruiken in combi natie met ze, zodat u de gevoelige gegevens in de data base beter kunt beveiligen. Houd er rekening mee dat deze functie alleen wordt ondersteund door SQL Server vanaf 2016 en Azure SQL Database. |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>Zorg ervoor dat wacht woorden worden opgeslagen in de gezouten hash-indeling
@@ -184,7 +184,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Wacht woord-hashing met behulp van .NET crypto-Api's](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Referenties**              | [Wacht woord-hashing met behulp van .NET crypto-Api's](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Stappen** | Wacht woorden mogen niet worden opgeslagen in data bases voor aangepaste gebruikers archieven. Wacht woord-hashes moeten in plaats daarvan worden opgeslagen met zout waarden. Zorg ervoor dat het Salt-netwerk voor de gebruiker altijd uniek is en dat u b-Cryptografie, s-crypt of PBKDF2 toepast voordat u het wacht woord opslaat, met een minimum aantal werk factoren van 150.000 lussen om te voor komen dat de kans op brute kracht wordt afgedwongen.| 
 
 ## <a name="ensure-that-sensitive-data-in-database-columns-is-encrypted"></a><a id="db-encrypted"></a>Zorg ervoor dat gevoelige gegevens in database kolommen zijn versleuteld
@@ -195,7 +195,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | SQL-versie-alle |
-| **Verwijzingen**              | [Versleutelen van gevoelige gegevens in SQL Server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [How to: een kolom met gegevens in SQL Server](https://msdn.microsoft.com/library/ms179331)versleutelen, [versleutelen per certificaat](https://msdn.microsoft.com/library/ms188061) |
+| **Referenties**              | [Versleutelen van gevoelige gegevens in SQL Server](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [How to: een kolom met gegevens in SQL Server](https://msdn.microsoft.com/library/ms179331)versleutelen, [versleutelen per certificaat](https://msdn.microsoft.com/library/ms188061) |
 | **Stappen** | Gevoelige gegevens zoals creditcard nummers moeten worden versleuteld in de-data base. Gegevens kunnen worden versleuteld met versleuteling op kolom niveau of door een toepassings functie met behulp van de versleutelings functies. |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>Zorg ervoor dat versleuteling op database niveau (TDE) is ingeschakeld
@@ -206,7 +206,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Informatie over SQL Server Transparent Data Encryption (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **Referenties**              | [Informatie over SQL Server Transparent Data Encryption (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
 | **Stappen** | De functie Transparent Data Encryption (TDE) in SQL Server helpt bij het versleutelen van gevoelige gegevens in een Data Base en het beveiligen van de sleutels die worden gebruikt om de gegevens te versleutelen met een certificaat. Zo voor komt u dat iedereen zonder de sleutels de gegevens gebruikt. TDE beveiligt gegevens "in rust", wat de gegevens en logboek bestanden zijn. Het biedt de mogelijkheid om te voldoen aan de vele wetten, voor schriften en richt lijnen die in verschillende branches zijn vastgelegd. |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>Zorg ervoor dat database back-ups zijn versleuteld
@@ -217,7 +217,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, SQL-versie-MsSQL2014 |
-| **Verwijzingen**              | [Back-upversleuteling SQL database](https://msdn.microsoft.com/library/dn449489) |
+| **Referenties**              | [Back-upversleuteling SQL database](https://msdn.microsoft.com/library/dn449489) |
 | **Stappen** | SQL Server beschikt over de mogelijkheid om de gegevens te versleutelen tijdens het maken van een back-up. Als u de versleutelings algoritme en de versleutelings-en coderings provider (een certificaat of asymmetrische sleutel) opgeeft bij het maken van een back-up, kan een versleuteld back- |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>Zorg ervoor dat gevoelige gegevens die relevant zijn voor web API niet worden opgeslagen in de opslag van de browser
@@ -228,7 +228,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC 5, MVC 6 |
 | **Kenmerken**              | ID-provider-ADFS, ID-provider-Azure AD |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | <p>In bepaalde implementaties worden gevoelige artefacten die relevant zijn voor de verificatie van web-API'S opgeslagen in de lokale opslag van de browser. Bijvoorbeeld Azure AD-verificatie artefacten, zoals adal. idtoken, adal. nonce. idtoken, adal. Access. token. key, adal. token. Keys, adal. status. login, adal. sessie. State, adal. expire. key, enzovoort.</p><p>Al deze artefacten zijn beschikbaar nadat u zich hebt afgemeld of de browser is gesloten. Als een kwaadwillende persoon toegang krijgt tot deze artefacten, kan hij/zij ze opnieuw gebruiken om toegang te krijgen tot de beveiligde bronnen (Api's). Zorg ervoor dat alle gevoelige artefacten die betrekking hebben op Web API, niet zijn opgeslagen in de opslag ruimte van de browser. In gevallen waarin opslag aan de client zijde niet kan worden voor komen (bijvoorbeeld: single page Applications (SPA) die gebruikmaken van impliciete OpenIdConnect/OAuth-stromen, moeten de toegangs tokens lokaal worden opgeslagen). gebruik opslag keuzes zonder persistentie. bijvoorbeeld liever SessionStorage naar LocalStorage.</p>| 
 
 ### <a name="example"></a>Voorbeeld
@@ -252,7 +252,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Versleutel gevoelige gegevens op toepassings niveau voordat u deze opslaat in document DB of gevoelige gegevens opslaat in andere opslag oplossingen, zoals Azure Storage of Azure SQL| 
 
 ## <a name="use-azure-disk-encryption-to-encrypt-disks-used-by-virtual-machines"></a><a id="disk-vm"></a>Azure Disk Encryption gebruiken voor het versleutelen van schijven die worden gebruikt door Virtual Machines
@@ -263,7 +263,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Schijven die worden gebruikt door uw virtuele machines versleutelen met behulp van Azure Disk Encryption](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **Referenties**              | [Schijven die worden gebruikt door uw virtuele machines versleutelen met behulp van Azure Disk Encryption](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
 | **Stappen** | <p>Azure Disk Encryption is een nieuwe functie die momenteel als preview-versie beschikbaar is. Met deze functie kunt u de besturingssysteem schijven en gegevens schijven versleutelen die worden gebruikt door een virtuele machine van IaaS. Voor Windows worden de stations versleuteld met behulp van de standaard BitLocker-versleutelingstechnologie. Voor Linux worden de schijven versleuteld met behulp van de DM-Crypt-technologie. Dit is geïntegreerd met Azure Key Vault zodat u de schijf versleutelings sleutels kunt beheren en beheren. De oplossing Azure Disk Encryption ondersteunt de volgende drie scenario's voor het versleutelen van de klant:</p><ul><li>Schakel versleuteling in voor nieuwe IaaS-Vm's die zijn gemaakt op basis van door de klant versleutelde VHD-bestanden en door de klant verschafte versleutelings sleutels, die zijn opgeslagen in Azure Key Vault.</li><li>Schakel versleuteling in voor nieuwe IaaS-Vm's die zijn gemaakt op basis van de Azure Marketplace.</li><li>Schakel versleuteling in op bestaande virtuele IaaS-machines die al worden uitgevoerd in Azure.</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>Geheimen in Service Fabric toepassingen versleutelen
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure |
-| **Verwijzingen**              | [Geheimen beheren in Service Fabric toepassingen](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **Referenties**              | [Geheimen beheren in Service Fabric toepassingen](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
 | **Stappen** | Geheimen kunnen gevoelige informatie zijn, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt. Gebruik Azure Key Vault om sleutels en geheimen in service Fabric-toepassingen te beheren. |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>Beveiligings modellen uitvoeren en waar nodig bedrijfs eenheden/teams gebruiken
@@ -285,7 +285,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Beveiligings modellen uitvoeren en waar nodig bedrijfs eenheden/teams gebruiken |
 
 ## <a name="minimize-access-to-share-feature-on-critical-entities"></a><a id="entities"></a>Beperk de toegang tot de share functie op essentiële entiteiten
@@ -296,7 +296,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Beperk de toegang tot de share functie op essentiële entiteiten |
 
 ## <a name="train-users-on-the-risks-associated-with-the-dynamics-crm-share-feature-and-good-security-practices"></a><a id="good-practices"></a>Train gebruikers over de Risico's die zijn gekoppeld aan de Dynamics CRM-share functie en goede beveiligings procedures
@@ -307,7 +307,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Train gebruikers over de Risico's die zijn gekoppeld aan de Dynamics CRM-share functie en goede beveiligings procedures |
 
 ## <a name="include-a-development-standards-rule-proscribing-showing-config-details-in-exception-management"></a><a id="exception-mgmt"></a>Een regel voor het ontwikkelen van normen bevatten met betrekking tot configuratie details in uitzonderings beheer
@@ -318,7 +318,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | N.v.t.  |
+| **Referenties**              | N.v.t.  |
 | **Stappen** | Een regel voor de ontwikkelings normen op te geven met betrekking tot configuratie details in uitzonderings beheer buiten de ontwikkeling. Test dit als onderdeel van de code beoordelingen of periodieke inspectie.|
 
 ## <a name="use-azure-storage-service-encryption-sse-for-data-at-rest-preview"></a><a id="sse-preview"></a>Azure Storage-service versleuteling (SSE) gebruiken voor Data-at-rest (preview-versie)
@@ -329,7 +329,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Para-BLOB |
-| **Verwijzingen**              | [Azure Storage-service versleuteling voor Data-at-rest (preview-versie)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **Referenties**              | [Azure Storage-service versleuteling voor Data-at-rest (preview-versie)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
 | **Stappen** | <p>Azure Storage service Encryption (SSE) voor Data-at-rest helpt u bij het beveiligen en beschermen van uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met deze functie worden uw gegevens automatisch versleuteld door Azure Storage voordat deze worden opgeslagen en ontsleutelt voordat ze weer worden opgehaald. De versleuteling, ontsleuteling en sleutel beheer zijn volledig transparant voor gebruikers. SSE is alleen van toepassing op blok-blobs, pagina-blobs en toevoeg-blobs. De andere typen gegevens, met inbegrip van tabellen, wacht rijen en bestanden, worden niet versleuteld.</p><p>Werk stroom voor versleuteling en ontsleuteling:</p><ul><li>De klant schakelt versleuteling in voor het opslag account</li><li>Wanneer de klant nieuwe gegevens schrijft (PUT-blob, PUT-blok, PUT-pagina enz.) naar de Blob-opslag; elke schrijf bewerking wordt versleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn</li><li>Wanneer de klant toegang moet krijgen tot gegevens (GET blob, enz.), worden de gegevens automatisch ontsleuteld voordat deze naar de gebruiker worden geretourneerd.</li><li>Als versleuteling is uitgeschakeld, worden nieuwe schrijf bewerkingen niet langer versleuteld en blijven bestaande versleutelde gegevens versleuteld totdat ze door de gebruiker worden herschreven. Wanneer versleuteling is ingeschakeld, worden schrijf bewerkingen naar de Blob-opslag versleuteld. De status van de gegevens verandert niet wanneer de gebruiker in-of uitschakelt tussen het in-en uitschakelen van versleuteling voor het opslag account</li><li>Alle versleutelings sleutels worden opgeslagen, versleuteld en beheerd door micro soft</li></ul><p>Op dit moment worden de sleutels die worden gebruikt voor de versleuteling, beheerd door micro soft. Micro soft genereert de sleutels oorspronkelijk en beheert de veilige opslag van de sleutels, evenals de normale draaiing zoals gedefinieerd door intern micro soft-beleid. In de toekomst krijgen klanten de mogelijkheid om hun eigen >versleutelings sleutels te beheren en een migratie traject te bieden van door micro soft beheerde sleutels naar door de klant beheerde sleutels.</p>| 
 
 ## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Versleuteling aan de client zijde gebruiken om gevoelige gegevens op te slaan in Azure Storage
@@ -340,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [zelf studie: blobs versleutelen en ontsleutelen in Microsoft Azure Storage met behulp van Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [gegevens veilig opslaan in Azure Blob Storage met Azure-versleutelings uitbreidingen](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Referenties**              | [Versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [zelf studie: blobs versleutelen en ontsleutelen in Microsoft Azure Storage met behulp van Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [gegevens veilig opslaan in Azure Blob Storage met Azure-versleutelings uitbreidingen](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **Stappen** | <p>Het Azure Storage-client bibliotheek voor .NET Nuget-pakket biedt ondersteuning voor het versleutelen van gegevens in client toepassingen voordat u ze uploadt naar Azure Storage en gegevens ontsleutelt tijdens het downloaden van de client. De bibliotheek ondersteunt ook integratie met Azure Key Vault voor het beheer van sleutels voor opslagaccounts. Hier volgt een korte beschrijving van hoe versleuteling aan de clientzijde werkt:</p><ul><li>De Azure Storage client-SDK genereert een coderings sleutel voor inhoud (CEK), een eenmalige symmetrische sleutel gebruiken</li><li>Klant gegevens worden versleuteld met behulp van deze CEK</li><li>De CEK wordt vervolgens verpakt (versleuteld) met behulp van de versleutelingssleutel voor sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutelpaar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in Azure Key Vault. De Storage-client zelf heeft nooit toegang tot de KEK. Deze roept alleen het algoritme voor sleutelverpakking op die wordt geleverd door Key Vault. Klanten kunnen ervoor kiezen om aangepaste providers te gebruiken voor sleutel terugloop/uitpakken als ze dat willen</li><li>De versleutelde gegevens worden vervolgens geüpload naar de Azure Storage-service. Controleer de koppelingen in het gedeelte met verwijzingen naar details over implementatie op laag niveau.</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>Gevoelige of PII-gegevens versleutelen die zijn geschreven naar lokale opslag voor telefoons
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, Xamarin  |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Instellingen en functies op uw apparaten beheren met Microsoft intune beleid](https://docs.microsoft.com/mem/intune/configuration/), [sleutel hanger valetsleutel](https://components.xamarin.com/view/square.valet) |
+| **Referenties**              | [Instellingen en functies op uw apparaten beheren met Microsoft intune beleid](https://docs.microsoft.com/mem/intune/configuration/), [sleutel hanger valetsleutel](https://components.xamarin.com/view/square.valet) |
 | **Stappen** | <p>Als de toepassing gevoelige informatie schrijft, zoals de PII van de gebruiker (e-mail adres, telefoon nummer, voor naam, achternaam, voor keuren, enzovoort) -het bestands systeem van het mobiele apparaat moet worden versleuteld voordat naar het lokale bestands systeem wordt geschreven. Als de toepassing een bedrijfs toepassing is, bekijkt u de mogelijkheid om de toepassing te publiceren met behulp van Windows intune.</p>|
 
 ### <a name="example"></a>Voorbeeld
@@ -401,7 +401,7 @@ Als de toepassing geen bedrijfs toepassing is, gebruikt u de door het platform v
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Versleuteling van crypto grafie voor .net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Referenties**              | [Versleuteling van crypto grafie voor .net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Stappen** | Gegenereerde binaire bestanden (assembly's in APK) moeten worden verborgen om reverse engineering van assembly's te stoppen. `CryptoObfuscator` Voor dit doel kunt u hulpprogram ma's als gebruiken. |
 
 ## <a name="set-clientcredentialtype-to-certificate-or-windows"></a><a id="cert"></a>ClientCredentialType instellen op certificaat of Windows
@@ -412,7 +412,7 @@ Als de toepassing geen bedrijfs toepassing is, gebruikt u de door het platform v
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
+| **Referenties**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **Stappen** | Het gebruik van een UsernameToken met een lees bare wacht woord via een niet-versleuteld kanaal stelt het wacht woord in voor aanvallers die de SOAP-berichten kunnen sniffen. Service providers die gebruikmaken van de UsernameToken kunnen wacht woorden accepteren die als Lees bare tekst worden verzonden. Het verzenden van Lees bare wacht woorden via een niet-versleuteld kanaal kan de referentie bloot stellen aan aanvallers die het SOAP-bericht kunnen sniffen. | 
 
 ### <a name="example"></a>Voorbeeld
@@ -431,7 +431,7 @@ Stel clientCredentialType in op Certificate of Windows.
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, .NET Framework 3 |
 | **Kenmerken**              | Beveiligings modus-Trans Port, beveiligings modus-bericht |
-| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [basis principes van het magazine voor de WCF-beveiligings CoDe](https://www.codemag.com/article/0611051) |
+| **Referenties**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [basis principes van het magazine voor de WCF-beveiligings CoDe](https://www.codemag.com/article/0611051) |
 | **Stappen** | Er is geen Trans Port-of bericht beveiliging gedefinieerd. Toepassingen die berichten verzenden zonder Trans Port-of bericht beveiliging, kunnen de integriteit of vertrouwelijkheid van de berichten niet garanderen. Wanneer een WCF-beveiligings binding op geen is ingesteld, worden Trans Port-en bericht beveiliging uitgeschakeld. |
 
 ### <a name="example"></a>Voorbeeld
