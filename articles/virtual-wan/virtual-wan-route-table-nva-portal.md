@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: aff9966d0a2b960737c2732428ef96aece4f0253
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8de7ad2808e5319819410b3125472e28496647b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267139"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Een route tabel voor virtuele WAN-hub maken voor Nva's: Azure Portal
 
@@ -42,7 +42,7 @@ Controleer of u aan de volgende criteria hebt voldaan:
 
 ## <a name="1-sign-in"></a><a name="signin"></a>1. aanmelden
 
-Ga in een browser naar het [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
+Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
 ## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2. een virtueel WAN maken
 
