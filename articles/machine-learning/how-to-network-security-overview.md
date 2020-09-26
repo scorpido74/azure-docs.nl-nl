@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362211"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -80,10 +80,20 @@ Zie [een Azure machine learning-werk ruimte beveiligen](how-to-secure-workspace-
 ### <a name="limitations"></a>Beperkingen
 
 Voor het beveiligen van uw werk ruimte en de bijbehorende resources binnen een virtueel netwerk gelden de volgende beperkingen:
-- De persoonlijke werk ruimte is alleen beschikbaar in de volgende regio's: Oost, westus2, southcentralus
-    - Deze beperking is niet van toepassing op de bijbehorende resources. U kunt bijvoorbeeld VNet inschakelen voor opslag in een Azure Machine Learning regio.
+- De persoonlijke werkruimte koppeling is alleen beschikbaar in de volgende regio's:
+    - **VS - oost**
+    - **South Central US**
+    - **VS - west**
+    - **West US 2**
+    - **Centraal-Canada**
+    - **Azië - zuidoost**
+    - **Japan East**
+    - **Europa - noord**
+    - **Oost-Australië**
+    - **Verenigd Koninkrijk Zuid**
+    
+    Deze beperking is niet van toepassing op de bijbehorende resources. U kunt bijvoorbeeld VNet inschakelen voor opslag in een Azure Machine Learning regio.
 - Alle resources moeten zich achter hetzelfde VNet bevindt. Subnetten binnen hetzelfde VNet zijn echter toegestaan.
-- Sommige studio-functies, zoals de ontwerp functie, AutoML, labels en gegevens profilering, kunnen niet worden gebruikt met opslag accounts die zijn geconfigureerd voor het gebruik van een persoonlijk eind punt. Als u deze studio-functies wilt gebruiken, moet u in plaats daarvan service-eind punten gebruiken.
 
 ## <a name="secure-the-training-environment"></a>De trainings omgeving beveiligen
 
@@ -150,7 +160,7 @@ Hoewel de Studio toegang kan krijgen tot gegevens in een opslag account dat is g
 * Een AutoML-experiment verzenden.
 * Een label project starten.
 
-Zie [Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)als u de volledige functionaliteit wilt inschakelen wanneer u een service-eind punt gebruikt. Op dit moment biedt de studio geen ondersteuning voor persoonlijke opslag eindpunten.
+Zie [Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)als u de volledige functionaliteit wilt inschakelen wanneer u een service-eind punt gebruikt. De Studio ondersteunt zowel service-eind punten als persoonlijke eind punten voor opslag accounts.
 
 ### <a name="limitations"></a>Beperkingen
 - De studio heeft geen toegang tot gegevens in opslag accounts die zijn geconfigureerd voor het gebruik van privé-eind punten. Voor volledige functionaliteit moet u service-eind punten voor opslag gebruiken en beheerde identiteit gebruiken.

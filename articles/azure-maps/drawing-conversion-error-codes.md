@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361531"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fouten en waarschuwingen over tekenconversies
 
@@ -35,9 +35,9 @@ De conversie service kan geen toewijzings functie maken van een ongeldige entite
 
 * In de twee onderstaande afbeeldingen ziet u voor beelden van zelf-snij veelhoeken.
 
-     ![Voor beeld van een veelhoek die zelf snijdt](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Voor beeld van een niet-overlappende veelhoek, voor beeld 1.](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Voor beeld van een veelhoek die zelf snijdt](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Voor beeld van een zelf-overlappende veelhoek, bijvoorbeeld twee.](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Hieronder ziet u een afbeelding waarin een niet-gesloten poly lijn wordt weer gegeven. Stel dat de laag alleen gesloten geometrie ondersteunt.
 
@@ -225,7 +225,7 @@ Er treedt een **partiallyOverlappingUnit** -waarschuwing op wanneer de tekening 
 
 #### <a name="example-scenarios-partiallyoverlappingunit"></a>*Voorbeeld scenario's partiallyOverlappingUnit*
 
-In de volgende afbeelding is de overlappende eenheid rood gemarkeerd. `UNIT110`en `HALLWAY` worden genegeerd.
+In de volgende afbeelding is de overlappende eenheid rood gemarkeerd. `UNIT110` en `HALLWAY` worden genegeerd.
 
 ![Voor beeld van overlappende eenheden](./media/drawing-conversion-error-codes/partially-overlapping-unit.png)
 
@@ -350,7 +350,7 @@ De **dwgError** treedt op wanneer het teken pakket een DWG-bestand bevat dat nie
 Als u een **dwgError**wilt herstellen, controleert u uw _manifest.jsop_ het volgende bestand:
 
 * Alle DWG-bestanden in uw ZIP-archief zijn geldige tekeningen van AutoCAD DWG-indeling. open er een in AutoCAD. Alle ongeldige tekeningen verwijderen of herstellen.
-* De lijst met DWG-bestanden in de _manifest.jsop_ komt overeen met de DWG-bestanden in het zip-archief.
+* De lijst met DWG-bestanden in de _manifest.jsop_  komt overeen met de DWG-bestanden in het zip-archief.
 
 ## <a name="manifest-errors"></a>Manifest fouten
 
@@ -370,7 +370,7 @@ Als u een **invalidJsonFormat** -fout wilt oplossen, gebruikt u een JSON-lint om
 
 #### <a name="description-for-missingrequiredfield"></a>*Beschrijving voor missingRequiredField*
 
-Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens _voor demanifest.jsin_ het bestand ontbreken.
+Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens _ voor demanifest.jsin_ het bestand ontbreken.
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*MissingRequiredField oplossen*
 
@@ -392,7 +392,7 @@ De **missingManifest** -fout wordt veroorzaakt door een of meer van de volgende 
 
 Als u een **missingManifest** -fout wilt oplossen, controleert u of het archief een bestand bevat met de naam _manifest.jsop_ op het hoofd niveau van het zip-archief.
 
-### <a name="conflict"></a>**conflict**
+### <a name="conflict"></a>**conflicteren**
 
 #### <a name="description-for-conflict"></a>*Beschrijving voor conflict*
 

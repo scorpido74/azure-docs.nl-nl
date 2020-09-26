@@ -1,18 +1,18 @@
 ---
 title: Externe verkeers omleiding via CLI-Azure-toepassing gateway
-description: Meer informatie over het maken van een toepassings gateway die intern webverkeer omleidt naar de juiste pool met behulp van de Azure CLI.
+description: Meer informatie over het maken van een toepassings gateway die extern webverkeer omleidt naar de juiste pool met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331043"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Een toepassings gateway met externe omleiding maken met behulp van de Azure CLI
 
@@ -131,8 +131,4 @@ U ziet dat *Bing.com* worden weer gegeven in uw browser.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
-
-> * Het netwerk instellen
-> * Een listener-en omleidings regel maken
-> * Een toepassingsgateway maken
+- [Een toepassings gateway met interne omleiding maken met behulp van Azure CLI](redirect-internal-site-cli.md)

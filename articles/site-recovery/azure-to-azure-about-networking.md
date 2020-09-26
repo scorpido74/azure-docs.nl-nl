@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361412"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -82,11 +82,11 @@ In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een v
 
 1. Maak een uitgaande HTTPS (443)-beveiligings regel voor ' storage. oostelijke ' op de NSG, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
 
-      ![opslag code](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Scherm opname toont de uitgaande beveiligings regel voor een netwerk beveiligings groep voor opslag dot Oost U S.](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Maak een uitgaande HTTPS (443) beveiligings regel voor ' AzureActiveDirectory ' op de NSG, zoals weer gegeven in de onderstaande scherm afbeelding.
 
-      ![Aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Scherm opname toont de uitgaande beveiligings regel voor een netwerk beveiligings groep voor Azure A D.](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Net als hierboven, maakt u een uitgaande HTTPS (443) beveiligings regel voor ' EventHub. Centralus ' op de NSG die overeenkomt met de doel locatie. Hiermee krijgt u toegang tot Site Recovery bewaking.
 

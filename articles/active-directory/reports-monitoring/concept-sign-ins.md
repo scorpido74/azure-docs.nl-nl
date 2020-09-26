@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361293"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -147,13 +147,13 @@ De **locatie** -de locatie van de verbinding vanaf:
 |Geverifieerde SMTP| |Wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.|
 |Autodis cover| |Wordt gebruikt door Outlook-en EAS-clients om post vakken in Exchange Online te vinden en er verbinding mee te maken.|
 |Exchange ActiveSync:| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
-|Browser|![Vinkje](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
+|Browser|![Blauw vinkje.](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
 |Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiveSync om verbinding te maken met Exchange Online|
 |Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
 |Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
 |IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
 |MAPI via HTTP| |Gebruikt door Outlook 2010 en hoger.|
-|Mobiele apps en desktop-clients|![Blauw vinkje](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
+|Mobiele apps en desktop-clients|![Blauw vinkje.](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
 |Offline adresboek| |Een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.|
 |Outlook Anywhere (RPC via HTTP)| |Gebruikt door Outlook 2016 en eerder.|
 |Outlook-service| |Wordt gebruikt door de mail-en agenda-app voor Windows 10.|
@@ -194,7 +194,7 @@ De **locatie** -de locatie van de verbinding vanaf:
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Download")
+![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -233,8 +233,8 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Toepassing
 - Client
 - Locatie
-- IP-adres
-- Datum
+- Het IP-adres
+- Date
 - MFA vereist
 - Aanmeldingsstatus
 

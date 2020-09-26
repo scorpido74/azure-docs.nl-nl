@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362177"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Verbindings problemen in de Synapse SQL-pool oplossen
 
@@ -34,13 +34,14 @@ Hier wordt de status van de SQL-groep weer gegeven. Als de service niet wordt we
 
 Als uw resource status laat zien dat uw exemplaar van SQL-groep is gepauzeerd of geschaald, volgt u de richt lijnen om uw exemplaar te hervatten.
 
-![Service heeft ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) aanvullende informatie over resource Health gepauzeerd.
+![Scherm afbeelding toont een exemplaar van SQL data warehouse dat is gepauzeerd of geschaald.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Meer informatie over Resource Health kunt u hier vinden.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Controleren op onderbroken of schaalbewerking
 
 Controleer de portal om te zien of het exemplaar van de SQL-groep is gepauzeerd of geschaald.
 
-![De service is onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![Scherm afbeelding laat zien hoe u kunt controleren of een Data Warehouse is gepauzeerd.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 Als u ziet dat uw service is gepauzeerd of geschaald, controleert u of deze niet tijdens de onderhouds planning wordt weer geven. In de portal voor het *overzicht*van uw SQL-groep ziet u de gekozen onderhouds planning.
 

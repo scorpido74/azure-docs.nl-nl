@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4c2faa6f015a8c1ce8f360155abdc14367d3057b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330737"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatische afstemming in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,8 +63,8 @@ De opties voor automatisch afstemmen die beschikbaar zijn in Azure SQL Database 
 
 | Optie voor automatisch afstemmen | Ondersteuning voor één data base en gepoolde data base | Ondersteuning voor instance data base |
 | :----------------------------- | ----- | ----- |
-| **Create Index** : identificeert indexen die de prestaties van uw workload kunnen verbeteren, maakt indexen en controleert automatisch of de prestaties van query's zijn verbeterd. | Yes | Nee |
-| **Drop Index** : detecteert dagelijks redundante en dubbele indexen, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (>90 dagen). Houd er rekening mee dat deze optie niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen. | Yes | Nee |
+| **Create Index** : identificeert indexen die de prestaties van uw workload kunnen verbeteren, maakt indexen en controleert automatisch of de prestaties van query's zijn verbeterd. | Ja | Nee |
+| **Drop Index** : detecteert dagelijks redundante en dubbele indexen, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (>90 dagen). Houd er rekening mee dat deze optie niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen. | Ja | Nee |
 | **Laatste goede planning afdwingen** (automatische plan correctie): identificeert Azure SQL-query's met behulp van een uitvoerings plan dat lager is dan het vorige goede plan en query's met behulp van het laatst bekende goede plan in plaats van het teruggedraaide-abonnement. | Ja | Ja |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatisch afstemmen

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759883"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362143"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Beveiligings overwegingen voor het extern openen van apps met Azure AD-toepassingsproxy
 
@@ -83,7 +83,7 @@ Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door A
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Service
 
-Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDoS-aanvallen (Distributed Denial of service). **Azure DDoS Protection** is een service die wordt aangeboden met het Azure-platform om uw Azure-resources te beschermen tegen denial-of-service-aanvallen. De **Basic** -servicelaag wordt automatisch ingeschakeld, waardoor er altijd verkeer wordt bewaakt en de realtime wordt beperkt van veelvoorkomende aanvallen op netwerk niveau. Er is ook een **Standard** -laag beschikbaar. deze biedt extra mogelijkheden voor risico beperking die specifiek zijn afgestemd op Azure Virtual Network-Resources. Zie [Azure DDoS Protection Standard-overzicht](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
+Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDoS-aanvallen (Distributed Denial of service). **Azure DDoS Protection** is een service die wordt aangeboden met het Azure-platform om uw Azure-resources te beschermen tegen denial-of-service-aanvallen. De **Basic** -servicelaag wordt automatisch ingeschakeld, waardoor er altijd verkeer wordt bewaakt en de realtime wordt beperkt van veelvoorkomende aanvallen op netwerk niveau. Zie [Azure DDoS Protection Standard-overzicht](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
 
 ## <a name="under-the-hood"></a>Onderhuids
 

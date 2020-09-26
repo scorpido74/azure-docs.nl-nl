@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361922"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -514,11 +514,11 @@ Microsoft Azure Virtual Machines gebruik verschillende opslag typen. Wanneer u S
 Azure Vm's bieden niet-permanente schijven nadat een virtuele machine is geïmplementeerd. Als een VM opnieuw wordt opgestart, worden alle inhoud op deze stations gewist. Daarom is het een gegeven dat de gegevens bestanden en de bestanden van de data base, onder geen enkele omstandigheden, op deze niet-blijvende stations moeten worden opgeslagen. Er zijn mogelijk uitzonde ringen voor sommige data bases, waarbij deze niet-permanente schijven geschikt zijn voor TempDB en tijdelijke tablespaces. Vermijd het gebruik van deze stations voor Vm's uit de A-serie, omdat deze niet-persistente schijven beperkt zijn bij de door Voer met die VM-serie. Lees voor meer informatie het artikel [inzicht in het tijdelijke station op virtuele Windows-machines in azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Station D:\ een Azure-VM is een niet-persistent station dat wordt ondersteund door een aantal lokale schijven op het Azure Compute-knoop punt. Omdat het niet-persistent is, betekent dit dat alle wijzigingen die zijn aangebracht in de inhoud van de D:\ het station gaat verloren wanneer de virtuele machine opnieuw wordt opgestart. Door alle wijzigingen, zoals opgeslagen bestanden, mappen die zijn gemaakt, toepassingen geïnstalleerd, enzovoort.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Linux Azure-Vm's koppelen automatisch een station op/mnt/resource dat een niet-persistent station is dat wordt ondersteund door lokale schijven op het Azure Compute-knoop punt. Omdat het niet-persistent is, betekent dit dat alle wijzigingen die zijn aangebracht in inhoud in/mnt/resource verloren gaan wanneer de virtuele machine opnieuw wordt opgestart. Door wijzigingen, zoals opgeslagen bestanden, mappen die zijn gemaakt, toepassingen geïnstalleerd, enzovoort.
 >
@@ -774,12 +774,12 @@ Een andere optie die niet meer in deze hand leiding wordt beschreven, maakt gebr
 Vanwege specifieke patch vereisten van uw besturings systeem of DBMS-versie is het mogelijk dat de opgegeven installatie kopieën in azure Marketplace niet aan uw behoeften voldoen. Daarom moet u mogelijk een virtuele machine maken met behulp van uw eigen privé-installatie kopie voor het besturings systeem/DBMS-VM, die meermaals kan worden geïmplementeerd. Om een dergelijke persoonlijke installatie kopie voor te bereiden voor duplicatie, moeten de volgende items in overweging worden genomen:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Meer informatie vindt u hier: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> de Windows-instellingen (zoals Windows sid en hostname) moeten worden abstracted/gegeneraliseerd op de on-premises VM via de Sysprep-opdracht.
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Volg de stappen die worden beschreven in deze artikelen voor [SuSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]of [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle], om een VHD voor te bereiden die naar Azure moet worden geüpload.
 >
@@ -809,13 +809,13 @@ De vereisten voor het voorbereiden van uw eigen Azure VM-schijf zijn:
 * Voeg andere lokale accounts toe, omdat deze mogelijk nodig zijn voor het specifieke implementatie scenario.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > In dit scenario is geen generalisatie (Sysprep) van de VM vereist voor het uploaden en implementeren van de virtuele machine in Azure.
 > Zorg ervoor dat het station D:\ wordt niet gebruikt.
 > Stel de schijf automatisch koppelen voor gekoppelde schijven in, zoals wordt beschreven in het hoofd stuk [instelling automatisch koppelen voor gekoppelde schijven][planning-guide-5.5.3] in dit document.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > In dit scenario is geen generalisatie (waagent-deprovision) van de VM vereist voor het uploaden en implementeren van de virtuele machine in Azure.
 > Zorg ervoor dat/mnt/resource niet wordt gebruikt en dat alle schijven zijn gekoppeld via uuid. Voor de besturingssysteem schijf moet u ervoor zorgen dat de bootloader-vermelding ook de op uuid gebaseerde koppeling aangeeft.
@@ -836,11 +836,11 @@ De vereisten voor het voorbereiden van uw eigen Azure VM-installatie kopie zijn:
 * Als de installatie kopie een SAP net-computer bevat en de naam van de hostnaam van de oorspronkelijke naam op het punt van de Azure-implementatie wordt gewijzigd, wordt het aanbevolen om de nieuwste versies van de SAP software Provisioning manager-DVD naar de sjabloon te kopiëren. Zo kunt u eenvoudig de SAP-functie naamswijziging gebruiken om de gewijzigde hostnaam en/of de SID van het SAP-systeem binnen de geïmplementeerde VM-installatie kopie aan te passen zodra er een nieuwe kopie wordt gestart.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Zorg ervoor dat het station D:\ wordt niet gebruikt om schijf automatisch koppelen in te stellen voor gekoppelde schijven, zoals wordt beschreven in het hoofd stuk [instelling automatisch koppelen voor gekoppelde schijven][planning-guide-5.5.3] in dit document.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Zorg ervoor dat/mnt/resource niet wordt gebruikt en dat alle schijven zijn gekoppeld via uuid. Zorg ervoor dat voor de besturingssysteem schijf ook de op uuid gebaseerde koppeling wordt weer gegeven.
 >
@@ -854,13 +854,13 @@ Als de virtuele machine voldoende is voor het algemeen en uiteindelijk onafhanke
 
 ##### <a name="generalizing-a-vm"></a>Een virtuele machine generaliseren
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > De laatste stap bestaat uit het aanmelden bij een virtuele machine met een beheerders account. Open een Windows-opdracht venster als *beheerder*. Ga naar%windir%\Windows\System32\Sysprep en voer sysprep.exe uit.
 > Er wordt een klein venster weer gegeven. Het is belang rijk om de optie **generalize** te controleren (de standaard instelling is uitgeschakeld) en de afsluit optie te wijzigen van de standaard waarde voor opnieuw opstarten in afsluiten. Bij deze procedure wordt ervan uitgegaan dat het Sysprep-proces on-premises wordt uitgevoerd in het gast besturingssysteem van een virtuele machine.
 > Als u de procedure wilt uitvoeren met een virtuele machine die al in azure wordt uitgevoerd, volgt u de stappen die in [dit artikel](../../windows/capture-image-resource.md)worden beschreven.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > [Een virtuele Linux-machine vastleggen om deze als Resource Manager-sjabloon te gebruiken][capture-image-linux-step-2-create-vm-image]
 >
@@ -890,7 +890,7 @@ In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings 
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 * Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *add-AzVMDataDisk* -Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
-**Azure-CLI**
+**Azure CLI**
 
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` > *
@@ -918,7 +918,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
   * Beheerde schijf installatie kopie *instellen-AzVMSourceImage* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
-**Azure-CLI**
+**Azure CLI**
 
 * Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *AZ login*
@@ -1123,13 +1123,13 @@ In het ideale geval is de verwerking van de structuur van een virtuele machine e
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Bij veel klanten hebben we configuraties gezien waarbij bijvoorbeeld de binaire bestanden van SAP en DBMS niet zijn geïnstalleerd op de c:\ station waarop het besturings systeem is geïnstalleerd. Er zijn verschillende redenen hiervoor, maar wanneer we terugvallen op de hoofdmap, was het meestal dat de stations klein waren en upgrades voor het besturings systeem meer ruimte 10-15 jaar geleden nodig hadden. Voor beide voor waarden gelden deze dagen te vaak niet meer. De c:\ het station kan worden toegewezen op grote volume schijven of Vm's. Om implementaties eenvoudig in hun structuur te houden, wordt aanbevolen het volgende implementatie patroon te volgen voor SAP NetWeaver-systemen in azure
 >
 > Het wissel bestand van het Windows-besturings systeem moet zich op het station D: (niet-permanente schijf)
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Plaats de Linux-swapfile onder/mnt/mnt/resource op Linux zoals beschreven in [dit artikel][virtual-machines-linux-agent-user-guide]. Het wissel bestand kan worden geconfigureerd in het configuratie bestand van de Linux-agent/etc/waagent.conf. De volgende instellingen toevoegen of wijzigen:
 >
@@ -1156,11 +1156,11 @@ Ervaar de ervaring van SAP-implementaties in de afgelopen twee jaar. Dit zijn en
 * IOPS-verkeer naar verschillende gegevens bestanden is niet altijd hetzelfde, omdat bestaande klanten systemen mogelijk verschillende gegevens bestanden hebben die hun SAP-data bases vertegenwoordigen. Als gevolg hiervan is het beter om een RAID-configuratie op meerdere schijven te gebruiken om de gegevensbestanden Lun's gehaald te plaatsen. Er zijn situaties, met name bij Azure Standard-opslag waarbij een IOPS-rate het quotum van één schijf in het DBMS-transactie logboek bereikt. In dergelijke scenario's wordt het gebruik van Premium Storage aanbevolen of kunt u ook meerdere standaard opslag schijven samen voegen met een software strip.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > * [Aanbevolen procedures voor prestaties voor SQL Server op virtuele machines van Azure][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > * [Software-RAID op Linux configureren][virtual-machines-linux-configure-raid]
 > * [LVM configureren op een virtuele Linux-machine in azure][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ Vervolgens moet u beslissen of u een nieuwe en lege schijf wilt maken of dat u e
 **Belang rijk**: u wilt caching van host **niet** gebruiken met Azure Standard-opslag. U moet de voor keuren van de host-cache op de standaard waarde geen wijzigen. Met Azure Premium Storage moet u lees cache inschakelen als het I/O-kenmerk voornamelijk wordt gelezen zoals normaal I/O-verkeer met database gegevens bestanden. In het geval van een database transactie logboek bestand wordt geen cache aanbevolen.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > [Een gegevens schijf koppelen in de Azure Portal][virtual-machines-linux-attach-disk-portal]
 >
 > Als er schijven zijn gekoppeld, moet u zich aanmelden bij de virtuele machine om Windows schijf beheer te openen. Als automatisch koppelen niet is ingeschakeld, zoals aanbevolen in het hoofd stuk [instellen automatisch koppelen voor gekoppelde schijven][planning-guide-5.5.3], moet het nieuwe bijgevoegde volume online worden gezet en geïnitialiseerd.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Als er schijven zijn gekoppeld, moet u zich aanmelden bij de virtuele machine en de schijven initialiseren zoals beschreven in [dit artikel][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]
 >
@@ -1212,7 +1212,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert het I/O's 
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Automatisch koppelen voor gekoppelde schijven instellen
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Voor virtuele machines die worden gemaakt op basis van eigen installatie kopieën of schijven, is het nodig om de automount-para meter in te checken en mogelijk in te stellen. Door deze para meter in te stellen, kan de virtuele machine na een herstart of opnieuw worden geïmplementeerd in azure om de gekoppelde/gekoppelde stations automatisch te koppelen.
 > De para meter is ingesteld voor de installatie kopieën van micro soft in de Azure Marketplace.
@@ -1226,7 +1226,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert het I/O's 
 >
 > Als er schijven zijn gekoppeld, moet u zich aanmelden bij de virtuele machine om Windows schijf beheer te openen. Als automatisch koppelen niet is ingeschakeld, zoals aanbevolen in het hoofd stuk [instellen automatisch koppelen voor gekoppelde schijven][planning-guide-5.5.3], moet het nieuw gekoppelde volume >online worden genomen en geïnitialiseerd.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > U moet een nieuw gekoppelde lege schijf initialiseren, zoals wordt beschreven in [dit artikel][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux].
 > U moet ook nieuwe schijven toevoegen aan de/etc/fstab.
@@ -1264,7 +1264,7 @@ Zie dit artikel, waarin de details van dit onderwerp worden beschreven:
 Het kan nodig zijn om de firewall op uw virtuele machines te configureren om inkomend verkeer naar uw SAP-systeem toe te staan.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > De Windows Firewall binnen een Azure geïmplementeerde VM is standaard ingeschakeld. U moet nu toestaan dat de SAP-poort wordt geopend, anders kan de SAP-gebruikers interface geen verbinding maken.
 > Om dit te doen:
@@ -1281,7 +1281,7 @@ Het kan nodig zijn om de firewall op uw virtuele machines te configureren om ink
 >
 > ![Poort regel definitie][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > De Linux-installatie kopieën in de Azure Marketplace scha kelen de iptables-firewall niet standaard in en de verbinding met uw SAP-systeem zou moeten werken. Als u iptables of een andere firewall hebt ingeschakeld, raadpleegt u de documentatie van iptables of de gebruikte firewall om binnenkomend TCP-verkeer naar poort 32xx toe te staan (waarbij xx het systeem nummer is van uw SAP-systeem).
 >
@@ -1588,7 +1588,7 @@ Andere beveiligings maatregelen bij het implementeren van Vm's in een dergelijk 
 Het instellen van uw on-premises netwerk printers op basis van TCP/IP in een Azure-VM is in het algemeen hetzelfde als in uw bedrijfs netwerk, ervan uitgaande dat er een VPN-site-naar-site-tunnel of ExpressRoute-verbinding tot stand is gebracht.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Om dit te doen:
 >
@@ -1599,7 +1599,7 @@ Het instellen van uw on-premises netwerk printers op basis van TCP/IP in een Azu
 > * Printer poort standaard 9100
 > * Installeer zo nodig het juiste printer stuur programma hand matig.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > * net als bij Windows volgt u gewoon de standaard procedure voor het installeren van een netwerk printer
 > * Volg gewoon de open bare Linux-gidsen voor [SuSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) of [Red Hat en Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) over het toevoegen van een printer.
@@ -1623,13 +1623,13 @@ De printer share wordt aangeduid met een unieke naam in het netwerk:
 Procedure:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Uw lokale printer delen.
 > Open in de Azure-VM de Windows Verkenner en typ de share naam van de printer.
 > Een wizard Printer installatie leidt u door het installatie proces.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Hier volgen enkele voor beelden van documentatie over het configureren van netwerk printers in Linux of het opnemen van een hoofd stuk over afdrukken in Linux. Het werkt op dezelfde manier als in een Azure Linux-VM zolang de VM deel uitmaakt van een VPN:
 >
@@ -1644,7 +1644,7 @@ Procedure:
 In Azure is de mogelijkheid van de Extern bureaublad-services om gebruikers de toegang tot hun lokale printer apparaten te bieden in een externe sessie niet beschikbaar.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Meer informatie over afdrukken met Windows vindt u hier: <https://technet.microsoft.com/library/jj590748.aspx> .
 >
@@ -1890,7 +1890,7 @@ Hier volgen twee voor beelden van een volledige SAP NetWeaver HA-architectuur in
 Alleen niet-beheerde schijven: de concepten zoals hieronder uitgelegd, moeten mogelijk een beetje worden aangetast wanneer u veel SAP-systemen implementeert en het aantal geïmplementeerde Vm's overschrijdt de maximale limiet van opslag accounts per abonnement. In dergelijke gevallen moeten Vhd's met virtuele machines in één opslag account worden gecombineerd. Dit doet u meestal door Vhd's van SAP Application Layer-Vm's van verschillende SAP-systemen te combi neren.  We hebben ook verschillende Vhd's van verschillende DBMS-Vm's van verschillende SAP-systemen gecombineerd in één Azure Storage-account. De IOPS-limieten van Azure Storage accounts in acht houden ( <https://azure.microsoft.com/documentation/articles/storage-scalability-targets> )
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA op Windows
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows-logo.][Logo_Windows] HA op Windows
 
 ![Architectuur van de Application HA van SAP net-Weaver met SQL Server in azure IaaS][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ In de volgende afbeelding ziet u hetzelfde landschap met Managed Disks.
 
 ![Architectuur van de Application HA van SAP net-Weaver met SQL Server in azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA op Linux
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Linux-logo.][Logo_Linux] HA op Linux
 
 De architectuur voor SAP HA onder Linux op Azure is in principe hetzelfde als voor Windows zoals hierboven beschreven. Raadpleeg SAP Note [1928533] voor een lijst met ondersteunde oplossingen met hoge Beschik baarheid.
 
@@ -1963,7 +1963,7 @@ Er kan een back-up worden gemaakt van andere Vm's in het SAP-systeem met de back
 > [!NOTE]
 > Vanaf dec 2015 met back-up van de VM wordt de unieke VM-ID die wordt gebruikt voor SAP-licentie verlening niet bewaard. Dit betekent dat bij een terugzet bewerking vanuit een VM-back-up een nieuwe SAP-licentie sleutel moet worden geïnstalleerd als de herstelde VM wordt beschouwd als een nieuwe virtuele machine en niet als vervanging van de eerste opgeslagen versie.
 >
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > In theorie kan een back-up op een consistente manier worden gemaakt voor virtuele machines die data bases uitvoeren, ook als het DBMS-systeem de Windows VSS (Volume Shadow Copy Service) ondersteunt, bijvoorbeeld <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx> SQL Server.
 > Houd er echter rekening mee dat op basis van back-ups van Azure-VM'S Point-in-time herstel bewerkingen van data bases niet mogelijk zijn. Daarom is het aanbeveling om back-ups van data bases met de DBMS-functionaliteit uit te voeren in plaats van te vertrouwen op Azure VM-back-ups.
@@ -1972,7 +1972,7 @@ Er kan een back-up worden gemaakt van andere Vm's in het SAP-systeem met de back
 >
 > Andere mogelijkheden zijn het gebruik van een combi natie van micro soft Data Protection Manager die is geïnstalleerd in een Azure-VM en Azure Backup naar data bases voor back-up/herstel. Meer informatie vindt u hier: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Er is geen equivalent voor Windows VSS in Linux. Daarom zijn alleen bestands consistente back-ups mogelijk, maar geen toepassings consistente back-ups. De back-up van de SAP-DBMS moet worden uitgevoerd met behulp van DBMS-functionaliteit. Het bestands systeem dat de SAP-gerelateerde gegevens bevat, kan worden opgeslagen, bijvoorbeeld met behulp van teer, zoals hier wordt beschreven: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ Sinds mid 2014, uitbrei dingen voor verschillende onderdelen van Hyper-V, System
 
 Een blog waarin wordt uitgelegd hoe u deze oplossing implementeert, is hier gedocumenteerd: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
-## <a name="summary"></a>Samenvatting
+## <a name="summary-for-high-availability-for-sap-systems"></a>Samen vatting voor hoge Beschik baarheid voor SAP-systemen
 
 De belangrijkste punten van hoge Beschik baarheid voor SAP-systemen in azure zijn:
 

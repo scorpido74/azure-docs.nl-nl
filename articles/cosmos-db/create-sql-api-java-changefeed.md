@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
-ms.translationtype: HT
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362041"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Een Java-toepassing maken die Azure Cosmos DB SQL API en de wijzigingenfeedverwerer gebruikt
 
@@ -110,11 +110,11 @@ mvn clean package
 
 1. Navigeer nu in Data Explorer naar **InventoryContainer-pktype > items**. Dit is de gerealiseerde weergave. De items in deze container weergeven **InventoryContainer**, omdat ze programmatisch zijn ingevoegd door de wijzigingenfeed. Let op de partitiesleutel (```type```). Deze gerealiseerde weergave is geoptimaliseerd voor queryfilters in ```type```, dat in **InventoryContainer** inefficiënt zou zijn, omdat die is gepartitioneerd in ```id```.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Gerealiseerde weergave":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Scherm afbeelding toont de Data Explorer-pagina voor een Azure Cosmos D B-account waarvoor items zijn geselecteerd.":::
 
 1. We verwijderen een document uit zowel **InventoryContainer** als **InventoryContainer-pktype** met alleen de aanroep ```upsertItem()```. Bekijk eerste de Azure Portal-gegevensverkenner. We verwijderen het document voor ```/type == "plums"```. Deze is hieronder rood omcirkelt
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Gerealiseerde weergave":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Scherm afbeelding toont de Data Explorer-pagina voor een Azure Cosmos D B-account met een bepaald item dat u hebt geselecteerd.":::
 
     Druk opnieuw op enter om de functie ```deleteDocument()``` in de voorbeeldcode aan te roepen. Deze functie die hieronder wordt weergegeven, voegt een nieuwe versie van het document in met ```/ttl == 5```, dat de TTL (time-to-live) van het document instelt op 5 seconden. 
     
