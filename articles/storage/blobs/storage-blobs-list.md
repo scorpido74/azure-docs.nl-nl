@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280093"
 ---
 # <a name="list-blobs-with-net"></a>Blobs weer geven met .NET
 
@@ -59,7 +59,7 @@ Controleer in uw code de waarde van het vervolg token om te bepalen of deze null
 
 ### <a name="filter-results-with-a-prefix"></a>Resultaten filteren met een voor voegsel
 
-Als u de lijst met containers wilt filteren, geeft u een teken reeks op voor de `prefix` para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de blobs waarvan de namen met het voor voegsel beginnen.
+Als u de lijst met blobs wilt filteren, geeft u een teken reeks op voor de `prefix` para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de blobs waarvan de namen met het voor voegsel beginnen.
 
 ### <a name="return-metadata"></a>Meta gegevens retour neren
 

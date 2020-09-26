@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 37d61a5c199b59a13b54344f5ffaf69d7b369a1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291984"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migreren naar een beheerd exemplaar van SQL met Power shell-& Azure Database Migration Service
 
@@ -26,7 +26,7 @@ In dit artikel migreert u de **Adventureworks2016** -data base die is hersteld n
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
-> * Maak een resourcegroep.
+> * Een resourcegroep maken.
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken in een exemplaar van Azure Database Migration Service.
 > * De migratie uitvoeren.
@@ -416,7 +416,7 @@ Nadat de migratie is voltooid, kunt u de Azure Database Migration Service-instan
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Zie de micro soft [Data Base Migration Guide (Engelstalig](https://datamigration.microsoft.com/)) voor meer informatie over aanvullende migratie scenario's (bron/doel paren).
 

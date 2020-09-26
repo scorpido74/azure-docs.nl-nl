@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314703"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -36,9 +36,11 @@ Bekijk deze video met snel tempo voor een overzicht van de beveiligings architec
 
 In azure Cognitive Search begint versleuteling met verbindingen en verzen dingen, en wordt uitgebreid naar inhoud die is opgeslagen op schijf. Voor zoek services op het open bare Internet luistert Azure Cognitive Search op HTTPS-poort 443. Alle client-naar-service-verbindingen gebruiken TLS 1,2-versleuteling. Eerdere versies (1,0 of 1,1) worden niet ondersteund.
 
+:::image type="content" source="media/search-security-overview/encryption-at-rest-cmk.png" alt-text="diagram waarin verschillende soorten beveiliging op elk niveau van service betrokkenheid worden weer gegeven":::
+
 Voor gegevens die intern door de zoek service worden verwerkt, worden de [gegevens versleutelings modellen](../security/fundamentals/encryption-models.md)beschreven in de volgende tabel. Sommige functies, zoals kennis opslag, incrementele verrijking en indexering gebaseerd indexering, lezen van of schrijven naar gegevens structuren in andere Azure-Services. Deze services hebben hun eigen coderings niveaus gescheiden van Azure Cognitive Search.
 
-| Model | Subknooppuntsleutels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Vereiste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beperkingen | Van toepassing op |
+| Modelleren | Subknooppuntsleutels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Vereiste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beperkingen | Van toepassing op |
 |------------------|-------|-------------|--------------|------------|
 | versleuteling aan de server zijde | Door Microsoft beheerde sleutels | Geen (ingebouwd) | Geen, beschikbaar op alle lagen, in alle regio's, voor inhoud die is gemaakt na januari 24 2018. | Inhoud (indices en synoniemen kaarten) en definities (Indexeer functies, gegevens bronnen, vaardig heden) |
 | versleuteling aan de server zijde | door de klant beheerde sleutels | Azure Key Vault | Beschikbaar op factureer bare lagen, in alle regio's, voor inhoud die is gemaakt na januari 2019. | Inhoud (indices en synoniemen toewijzingen) op gegevens schijven |
@@ -92,6 +94,8 @@ Verificatie is vereist voor elke aanvraag, waarbij elke aanvraag bestaat uit een
 
 Als u de toegang tot uw zoek service verder wilt beheren, kunt u binnenkomende firewall regels maken die toegang tot een specifiek IP-adres of een bereik van IP-adressen toestaan. Alle client verbindingen moeten worden gemaakt via een toegestaan IP-adres of de verbinding wordt geweigerd.
 
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="voor beeld van een architectuur diagram voor beperkte toegang met IP":::
+
 U kunt de portal gebruiken om [inkomende toegang te configureren](service-configure-firewall.md).
 
 U kunt ook de REST Api's voor beheer gebruiken. Met ingang van API-versie 2020-03-13, met de para meter [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) , kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
@@ -101,6 +105,8 @@ U kunt ook de REST Api's voor beheer gebruiken. Met ingang van API-versie 2020-0
 Een [persoonlijk eind punt](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search staat een client in een [virtueel netwerk](../virtual-network/virtual-networks-overview.md) toe om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md).
 
 Het persoonlijke eind punt gebruikt een IP-adres uit de adres ruimte van het virtuele netwerk voor verbindingen met uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Met een VNET kan beveiligde communicatie tussen bronnen worden gewaarborgd, met uw on-premises netwerk en via internet.
+
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="voor beeld van een architectuur diagram voor toegang tot privé-eind punten":::
 
 Hoewel deze oplossing het veiligst is, is het gebruik van aanvullende services een extra kost prijs. Zorg er dus voor dat u een duidelijk beeld hebt van de voor delen voordat u zich kunt voordoen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/private-link/)voor meer informatie over de kosten. Bekijk de video boven aan dit artikel voor meer informatie over hoe deze onderdelen samen werken. De optie dekking van het privé-eind punt begint bij 5:48 in de video. Zie [een persoonlijk eind punt maken voor Azure Cognitive Search](service-create-private-endpoint.md)voor instructies over het instellen van het eind punt.
 
@@ -120,7 +126,7 @@ Hoe een gebruiker toegang heeft tot een index en andere objecten, wordt bepaald 
 
 Als u nauw keuriger controle per gebruiker met de zoek resultaten nodig hebt, kunt u beveiligings filters voor uw query's maken en documenten retour neren die zijn gekoppeld aan een bepaalde beveiligings identiteit. In plaats van vooraf gedefinieerde rollen en roltoewijzingen, wordt toegangs beheer op basis van een id geïmplementeerd als een *filter* waarmee Zoek resultaten van documenten en inhoud worden verkleind op basis van identiteiten. In de volgende tabel worden twee benaderingen beschreven waarmee Zoek resultaten van niet-geautoriseerde inhoud worden bijgesneden.
 
-| Methode | Description |
+| Methode | Beschrijving |
 |----------|-------------|
 |[Beveiligings beperking op basis van identiteits filters](search-security-trimming-for-azure-search.md)  | Documenteert de basis werk stroom voor het implementeren van toegangs beheer voor gebruikers identiteit. Het onderwerp bevat het toevoegen van beveiligings-id's aan een index en legt vervolgens een overzicht van de filtering uit voor dat veld om de resultaten van verboden inhoud te kunnen knippen. |
 |[Beveiligings beperking op basis van Azure Active Directory-identiteiten](search-security-trimming-for-azure-search-with-aad.md)  | In dit artikel wordt het vorige artikel uitgebreid met stappen voor het ophalen van identiteiten van Azure Active Directory (Azure AD), een van de [gratis services](https://azure.microsoft.com/free/) in het Azure-Cloud platform. |

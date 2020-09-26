@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74806521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355378"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transacties en optimistisch beheer van gelijktijdigheid
 
@@ -53,9 +53,9 @@ Met optimistische gelijktijdigheids controle kunt u voor komen dat updates en ve
 
 De gelijktijdige updates van een item worden onderhevig aan de OCC door de Layer van het communicatie protocol van Azure Cosmos DB. Azure Cosmos data base zorgt ervoor dat de client-side versie van het item dat u bijwerkt (of verwijdert) hetzelfde is als de versie van het item in de Azure Cosmos-container. Dit zorgt ervoor dat uw schrijf bewerkingen worden beschermd tegen het onbedoeld overschrijven van de schrijf bewerkingen door anderen en andersom. In een omgeving met meerdere gebruikers beschermt u met het optimistische gelijktijdigheids beheer dat u per ongeluk de verkeerde versie van een item verwijdert of bijwerkt. Als zodanig worden items beschermd tegen de problemen met de Infamous ' verloren update ' of ' verloren gegane verwijderingen '.
 
-Elk item dat in een Azure Cosmos-container is opgeslagen, heeft een door het systeem gedefinieerde `_etag` eigenschap. De waarde van de `_etag` wordt automatisch gegenereerd en bijgewerkt door de server telkens wanneer het item wordt bijgewerkt. `_etag`kan worden gebruikt met de door de client geleverde `if-match` aanvraag header om de server toe te staan om te bepalen of een item voorwaardelijk kan worden bijgewerkt. De waarde van de `if-match` header komt overeen met de waarde van de `_etag` op de server, het item wordt vervolgens bijgewerkt. Als de waarde van de `if-match` aanvraag header niet meer actueel is, weigert de server de bewerking met een respons bericht ' HTTP 412-voor waarde voor fout '. De client kan het item vervolgens opnieuw ophalen voor het verkrijgen van de huidige versie van het item op de server of de versie van het item op de server vervangen door een eigen `_etag` waarde voor het item. Daarnaast `_etag` kan worden gebruikt met de `if-none-match` header om te bepalen of een resource opnieuw moet worden opgehaald.
+Elk item dat in een Azure Cosmos-container is opgeslagen, heeft een door het systeem gedefinieerde `_etag` eigenschap. De waarde van de `_etag` wordt automatisch gegenereerd en bijgewerkt door de server telkens wanneer het item wordt bijgewerkt. `_etag` kan worden gebruikt met de door de client geleverde `if-match` aanvraag header om de server toe te staan om te bepalen of een item voorwaardelijk kan worden bijgewerkt. De waarde van de `if-match` header komt overeen met de waarde van de `_etag` op de server, het item wordt vervolgens bijgewerkt. Als de waarde van de `if-match` aanvraag header niet meer actueel is, weigert de server de bewerking met een respons bericht ' HTTP 412-voor waarde voor fout '. De client kan het item vervolgens opnieuw ophalen voor het verkrijgen van de huidige versie van het item op de server of de versie van het item op de server vervangen door een eigen `_etag` waarde voor het item. Daarnaast `_etag` kan worden gebruikt met de `if-none-match` header om te bepalen of een resource opnieuw moet worden opgehaald.
 
-De waarde van het item `_etag` wordt gewijzigd telkens wanneer het item wordt bijgewerkt. Voor vervanging van items `if-match` moet expliciet worden uitgedrukt als onderdeel van de aanvraag opties. Zie de voorbeeld code in [github](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674)voor een voor beeld. `_etag`waarden worden impliciet gecontroleerd op alle schriftelijke items die door de opgeslagen procedure worden beïnvloed. Als er conflicten worden gedetecteerd, wordt de trans actie teruggedraaid door de opgeslagen procedure en wordt er een uitzonde ring gegenereerd. Met deze methode worden alle of geen schrijf bewerkingen binnen de opgeslagen procedure op een Atomic toegepast. Dit is een signaal voor de toepassing om updates opnieuw toe te passen en de oorspronkelijke client aanvraag opnieuw uit te voeren.
+De waarde van het item `_etag` wordt gewijzigd telkens wanneer het item wordt bijgewerkt. Voor vervanging van items `if-match` moet expliciet worden uitgedrukt als onderdeel van de aanvraag opties. Zie de voorbeeld code in [github](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772)voor een voor beeld. `_etag` waarden worden impliciet gecontroleerd op alle schriftelijke items die door de opgeslagen procedure worden beïnvloed. Als er conflicten worden gedetecteerd, wordt de trans actie teruggedraaid door de opgeslagen procedure en wordt er een uitzonde ring gegenereerd. Met deze methode worden alle of geen schrijf bewerkingen binnen de opgeslagen procedure op een Atomic toegepast. Dit is een signaal voor de toepassing om updates opnieuw toe te passen en de oorspronkelijke client aanvraag opnieuw uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

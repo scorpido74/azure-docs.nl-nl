@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314875"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-uitbrei dingen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -31,7 +31,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="data-types-extensions"></a>Uitbrei dingen van gegevens typen
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Bevat een hoofdletter gevoelig type teken reeks. |
 > | [kubus](https://www.postgresql.org/docs/current/static/cube.html) | Biedt een gegevens type voor multidimensionale kubussen. |
@@ -46,7 +46,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="full-text-search-extensions"></a>Extensies voor zoeken in volledige tekst
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [dicteren \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Voorziet in een woordenlijst sjabloon voor tekst zoeken voor gehele getallen. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Zoek woordenlijst sjabloon voor tekst voor uitgebreide synoniemen verwerking. |
@@ -55,7 +55,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="functions-extensions"></a>Extensies voor functies
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Functies voor auto incrementele velden. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Biedt een manier om grote afstanden te berekenen op het Opper vlak van de aarde. |
@@ -74,10 +74,10 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Functies voor het implementeren van tijd reizen. |
 > | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Genereert Universele unieke id's (UUID). |
 
-### <a name="hyperscale-extensions"></a>Grootschalige-extensies
+### <a name="hyperscale-citus-extensions"></a>Citus-uitbrei dingen (grootschalige)
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Gedistribueerde data base Citus. |
 > | Shard- \_ herbalancer | Gegevens in een server groep veilig opnieuw verdelen in geval van toevoeging of verwijdering van knoop punten. |
@@ -85,7 +85,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="index-types-extensions"></a>Extensies van index typen
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [bloei](https://www.postgresql.org/docs/current/bloom.html) | Toegangs methode voor bloei-index op basis van een hand tekening bestand. |
 > | [btree \_ eginnen](https://www.postgresql.org/docs/current/static/btree-gin.html) | Biedt een voor beeld van EGINNEN-operator klassen waarmee B-structuur-like-gedrag voor bepaalde gegevens typen kan worden geïmplementeerd. |
@@ -94,14 +94,14 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="language-extensions"></a>Taal extensies
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | Door PL/pgSQL geladen procedure taal. |
 
 ### <a name="miscellaneous-extensions"></a>Diverse uitbrei dingen
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Beheer functies voor PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Functies voor het controleren van relatie-integriteit. |
@@ -127,7 +127,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="postgis-extensions"></a>PostGIS-extensies
 
 > [!div class="mx-tableFixed"]
-> | **Extensie** | **Beschrijving** |
+> | **Toestelnummer** | **Beschrijving** |
 > |---|---|
 > | [Postgis](https://www.postgis.net/), postgis- \_ topologie, postgis \_ Tiger \_ geocodeer, postgis \_ sfcgal | Ruimtelijke en geografische objecten voor PostgreSQL. |
 > | adres \_ standaardiserer, adresseer \_ \_ data gegevens \_ | Wordt gebruikt om een adres te parseren in onderdeel elementen. Wordt gebruikt ter ondersteuning van de stap voor het normaliseren van het adres voor geocodering. |

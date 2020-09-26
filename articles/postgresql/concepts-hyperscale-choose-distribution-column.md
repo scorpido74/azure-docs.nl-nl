@@ -1,22 +1,22 @@
 ---
 title: Kies distributie kolommen – grootschalige (Citus)-Azure Database for PostgreSQL
-description: Meer informatie over het kiezen van distributie kolommen in algemene grootschalige-scenario's in Azure Database for PostgreSQL.
+description: Meer informatie over het kiezen van distributie kolommen in algemene scenario's in Azure Database for PostgreSQL-grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975666"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314909"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Het kiezen van de distributie kolom van elke tabel is een van de belangrijkste beslissingen die u kunt nemen. Azure Database for PostgreSQL – grootschalige (Citus) slaat rijen op in Shards op basis van de waarde van de kolom distributie kolommen.
+De distributiekolom van elke tabel kiezen, is een van de belangrijkste modelleringsbeslissingen die u moet nemen. Azure Database for PostgreSQL – grootschalige (Citus) slaat rijen op in Shards op basis van de waarde van de kolom distributie kolommen.
 
 De juiste keuze groepen hebben gerelateerde gegevens samen op dezelfde fysieke knoop punten, waardoor query's snel worden gemaakt en ondersteuning wordt toegevoegd voor alle SQL-functies. Een onjuiste keuze maakt het systeem langzaam en wordt niet alle SQL-functies op verschillende knoop punten ondersteund.
 

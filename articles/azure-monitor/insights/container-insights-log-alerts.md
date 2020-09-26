@@ -3,12 +3,12 @@ title: Waarschuwingen registreren van Azure Monitor voor containers | Microsoft 
 description: In dit artikel wordt beschreven hoe u aangepaste logboek waarschuwingen maakt voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294543"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Logboek waarschuwingen maken op basis van Azure Monitor voor containers
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Een waarschuwingsregel maken
 
-In deze sectie wordt uitgelegd hoe u een waarschuwings regel voor metrische metingen maakt met behulp van prestatie gegevens van Azure Monitor voor containers. U kunt dit basis proces met verschillende logboek query's gebruiken om te waarschuwen voor verschillende prestatie meter items. Gebruik een van de zoek query's in het logboek die eerder zijn gegeven om te beginnen met. Als u een ARM-sjabloon wilt maken, raadpleegt u voor [beeld van het maken van een logboek waarschuwing met een Azure-resource sjabloon](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+In deze sectie wordt uitgelegd hoe u een waarschuwings regel voor metrische metingen maakt met behulp van prestatie gegevens van Azure Monitor voor containers. U kunt dit basis proces met verschillende logboek query's gebruiken om te waarschuwen voor verschillende prestatie meter items. Gebruik een van de zoek query's in het logboek die eerder zijn gegeven om te beginnen met. Als u met een ARM-sjabloon wilt maken, raadpleegt u voor [beelden van het maken van logboek waarschuwingen met Azure-resource sjabloon](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).

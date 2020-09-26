@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/16/2020
-ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315572"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Fouten in ParallelRunStep opsporen en problemen oplossen
 
@@ -35,13 +35,17 @@ Het logboek bestand `70_driver_log.txt` bevat bijvoorbeeld informatie van de con
 
 Vanwege de gedistribueerde aard van ParallelRunStep-taken zijn er logboeken van verschillende bronnen. Er worden echter twee geconsolideerde bestanden gemaakt die gegevens op hoog niveau bieden:
 
-- `~/logs/overview.txt`: Dit bestand bevat informatie op hoog niveau over het aantal Mini-batches (ook wel taken genoemd) dat tot nu toe is gemaakt en het aantal verwerkte mini batches tot nu toe. Nu wordt het resultaat van de taak weer gegeven. Als de taak is mislukt, wordt het fout bericht weer gegeven en wordt aangegeven waar de probleem oplossing moet worden gestart.
+- `~/logs/job_progress_overview.txt`: Dit bestand bevat informatie op hoog niveau over het aantal Mini-batches (ook wel taken genoemd) dat tot nu toe is gemaakt en het aantal verwerkte mini batches tot nu toe. Nu wordt het resultaat van de taak weer gegeven. Als de taak is mislukt, wordt het fout bericht weer gegeven en wordt aangegeven waar de probleem oplossing moet worden gestart.
 
-- `~/logs/sys/master.txt`: Dit bestand bevat het hoofd knooppunt (ook wel bekend als Orchestrator) voor het uitvoeren van de taak. Omvat het maken van taken, voortgangs bewaking, het resultaat van de uitvoering.
+- `~/logs/sys/master_role.txt`: Dit bestand bevat het hoofd knooppunt (ook wel bekend als Orchestrator) voor het uitvoeren van de taak. Omvat het maken van taken, voortgangs bewaking, het resultaat van de uitvoering.
 
 Logboeken die zijn gegenereerd op basis van een invoer script met behulp van EntryScript-helper-en-afdruk instructies, worden in de volgende bestanden
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Deze bestanden zijn de logboeken geschreven van entry_script met behulp van de EntryScript-helper. Bevat ook print-instructie (stdout) van entry_script.
+- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Deze bestanden zijn de logboeken geschreven van entry_script met behulp van de EntryScript-helper.
+
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Deze bestanden zijn de logboeken van stdout (bijvoorbeeld Afdruk instructie) van entry_script.
+
+- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Deze bestanden zijn de logboeken van stderr van entry_script.
 
 Er is sprake van een beknopt overzicht van fouten in uw script:
 
@@ -49,17 +53,17 @@ Er is sprake van een beknopt overzicht van fouten in uw script:
 
 Voor meer informatie over fouten in uw script, geldt het volgende:
 
-- `~/logs/user/error/`: Bevat alle fouten die zijn gegenereerd en volledige stack-traces, geordend op knoop punt.
+- `~/logs/user/error/`: Bevat volledige stack traceringen van uitzonde ringen die zijn opgetreden tijdens het laden en uitvoeren van het invoer script.
 
 Als u wilt weten hoe elk knoop punt het Score script heeft uitgevoerd, bekijkt u de afzonderlijke proces logboeken voor elk knoop punt. De proces logboeken kunnen worden gevonden in de `sys/node` map, gegroepeerd op worker-knoop punten:
 
-- `~/logs/sys/node/<node_name>.txt`: Dit bestand bevat gedetailleerde informatie over elke mini-batch tijdens het ophalen of volt ooien van een werk nemer. Voor elke mini-batch bestaat dit bestand uit:
+- `~/logs/sys/node/<ip_address>/<process_name>.txt`: Dit bestand bevat gedetailleerde informatie over elke mini-batch tijdens het ophalen of volt ooien van een werk nemer. Voor elke mini-batch bestaat dit bestand uit:
 
     - Het IP-adres en de PID van het werk proces. 
     - Het totale aantal items, het aantal items dat is verwerkt en het aantal mislukte items.
     - De tijd van begin tijd, duur, proces tijd en uitvoerings methode.
 
-U kunt ook informatie vinden over het resource gebruik van de processen voor elke werk nemer. Deze informatie bevindt zich in CSV-indeling en bevindt zich op `~/logs/sys/perf/overview.csv` . Informatie over elk proces is beschikbaar onder `~logs/sys/processes.csv` .
+U kunt ook informatie vinden over het resource gebruik van de processen voor elke werk nemer. Deze informatie bevindt zich in CSV-indeling en bevindt zich op `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Informatie over elk proces is beschikbaar onder `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hoe kan ik logboek van mijn gebruikers script vanuit een externe context?
 ParallelRunStep kan meerdere processen uitvoeren op één knoop punt op basis van process_count_per_node. Als u logboeken van elk proces wilt ordenen op basis van het knoop punt en afdruk-en logboek instructie combi neren, raden we u aan om ParallelRunStep logger te gebruiken zoals hieronder wordt weer gegeven. U ontvangt een logboek van EntryScript en zorgt ervoor dat de logboeken worden weer gegeven in **Logboeken/gebruikers** mappen in de portal.
@@ -112,6 +116,28 @@ parser.add_argument('--labels_dir', dest="labels_dir", required=True)
 args, _ = parser.parse_known_args()
 
 labels_path = args.labels_dir
+```
+
+### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Hoe gebruik ik invoer gegevens sets met Service-Principal-verificatie?
+
+Gebruiker kan invoer gegevens sets door geven met Service-Principal-verificatie die in de werk ruimte wordt gebruikt. Als u een dergelijke gegevensset in ParallelRunStep wilt gebruiken, moet u de gegevensset registreren om de ParallelRunStep-configuratie te maken.
+
+```python
+service_principal = ServicePrincipalAuthentication(
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
+ 
+ws = Workspace(
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
+    auth=service_principal
+    )
+ 
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

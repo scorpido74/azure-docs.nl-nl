@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: Service-updates
       items:
+        - name: SSL-basiscertificaat verloopt
+          href: updates/ssl-root-certificate-expiring.md
         - name: Updates voor IP-adres van gateway
           href: database/gateway-migration.md
         - name: Gebeurtenissen voor periodiek onderhoud

@@ -1,6 +1,6 @@
 ---
 title: SAP HANA uitschalen met stand-by met Azure NetApp Files op SLES | Microsoft Docs
-description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
+description: Meer informatie over het implementeren van een SAP HANA scale-out systeem met een stand-by-knoop punt op Azure-Vm's met behulp van Azure NetApp Files op SUSE Linux Enterprise Server.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314059"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server 
 
@@ -106,10 +106,10 @@ De Azure NetApp-volumes bevinden zich in een afzonderlijk subnet, [gedelegeerd a
 
 Voor deze voorbeeld configuratie zijn de subnetten:  
 
-  - `client`10.23.0.0/24  
-  - `storage`10.23.2.0/24  
-  - `hana`10.23.3.0/24  
-  - `anf`10.23.1.0/26  
+  - `client` 10.23.0.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
 
@@ -236,7 +236,7 @@ In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het vi
 
 3. Maak drie netwerk interfaces, één voor elke virtuele machine, voor het `storage` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Storage**, **hanadb2-Storage**en **hanadb3-Storage**).  
 
-4. Maak drie netwerk interfaces, één voor elke virtuele machine, voor het `hana` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Hana**, **hanadb2-Hana**en **hanadb3-Hana**).  
+4. Maak drie netwerk interfaces, één voor elke virtuele machine, voor het `hana`  subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Hana**, **hanadb2-Hana**en **hanadb3-Hana**).  
 
 5. Koppel de zojuist gemaakte virtuele netwerk interfaces aan de bijbehorende virtuele machines door de volgende stappen uit te voeren:  
 
@@ -250,7 +250,7 @@ In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het vi
     
     e. Selecteer **Opslaan**. 
  
-    f. Herhaal stap b tot en met e voor de resterende virtuele machines (in het voor beeld **hanadb2** en **hanadb3**).
+    f. Herhaal stap b tot en met e voor de resterende virtuele machines (in het voor beeld  **hanadb2** en **hanadb3**).
  
     g. Zorg ervoor dat de virtuele machines met de status gestopt nu actief zijn. Vervolgens wordt [versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-cli.md) ingeschakeld voor alle nieuw gekoppelde netwerk interfaces.  
 
@@ -561,7 +561,7 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
      * Voor **het toevoegen door komma's gescheiden hostnamen**: Voer **hanadb2 in, hanadb3**
      * Voor **root-gebruikers naam** [root]: druk op ENTER om de standaard instelling te accepteren
      * Voor **hoofd gebruikers wachtwoord**: Voer het wacht woord van de hoofd gebruiker in
-     * Voor rollen voor host hanadb2: Voer **1** (voor werk nemer) in
+     * Voor rollen voor host hanadb2: Voer **1**  (voor werk nemer) in
      * Voor **host-failovergroep** voor host hanadb2 [standaard]: druk op ENTER om de standaard instelling te accepteren
      * Voor het **opslag partitie nummer** voor host hanadb2 [<<assign automatically>>]: druk op ENTER om de standaard waarde te accepteren
      * Voor de **werk groep** voor host hanadb2 [standaard]: druk op ENTER om de standaard instelling te accepteren
