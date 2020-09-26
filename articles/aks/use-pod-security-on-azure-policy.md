@@ -3,22 +3,23 @@ title: Beveiligt u met Azure Policy in azure Kubernetes service (AKS)
 description: Meer informatie over het beveiligen van het gehele Azure Policy op Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299150"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>Alles beveiligen met Azure Policy (preview-versie)
+# <a name="secure-pods-with-azure-policy"></a>Alles beveiligen met Azure Policy
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u bepalen welke functies er worden verleend en of er iets wordt uitgevoerd op basis van het bedrijfs beleid. Deze toegang wordt gedefinieerd via ingebouwd beleid dat is opgegeven door de [Azure Policy-invoeg toepassing voor AKS][kubernetes-policy-reference]. Door extra controle over de beveiligings aspecten van de specificatie van uw Pod te bieden, zoals root-bevoegdheden, kunt u strenger beveiliging en inzicht krijgen in wat er in uw cluster wordt geïmplementeerd. Als een pod niet voldoet aan de voor waarden die zijn opgegeven in het beleid, kan Azure Policy de pod niet toestaan om een schending te starten of te markeren. In dit artikel leest u hoe u Azure Policy kunt gebruiken om de implementatie van een Peul in AKS te beperken.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="before-you-begin"></a>Voordat u begint
+
+> [!IMPORTANT]
+> De algemene Beschik baarheid (GA) van Azure Policy op AKS is actief in alle regio's. De verwachte wereld wijde voltooiing van de GA-versie is 9/29/2020. Voor gebruik in regio's zonder de GA-release zijn de stappen voor de preview-registratie vereist. Dit wordt echter automatisch bijgewerkt naar de GA-release wanneer deze beschikbaar is in de regio.
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
@@ -29,11 +30,10 @@ Als u de AKS van Azure Policy wilt beveiligen, moet u de Azure Policy-invoeg toe
 In dit document wordt ervan uitgegaan dat u het volgende hebt, dat wordt geïmplementeerd in de bovenstaande procedure.
 
 * Registreert de `Microsoft.ContainerService` en `Microsoft.PolicyInsights` resource providers met `az provider register`
-* De `AKS-AzurePolicyAutoApprove` vlag preview-functie is geregistreerd met `az feature register`
-* Azure CLI is geïnstalleerd met de `aks-preview` extensie versie 0.4.53 of hoger
-* Een AKS-cluster met een ondersteunde versie van 1,15 of hoger die is geïnstalleerd met de Azure Policy-invoeg toepassing
+* Azure CLI 2,12 of hoger
+* Een AKS-cluster met een versie van 1,15 of hoger die is geïnstalleerd met de Azure Policy-invoeg toepassing
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>Overzicht van het beveiligen van een Peul met Azure Policy voor AKS (preview)
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks"></a>Overzicht van het beveiligen van Peul met Azure Policy voor AKS
 
 >[!NOTE]
 > In dit document vindt u informatie over het gebruik van Azure Policy voor het beveiligen van Peul, de opvolger [van de Kubernetes pod Security Policy functie in Preview](use-pod-security-policies.md).
@@ -45,33 +45,61 @@ In een AKS-cluster wordt een toegangs controller gebruikt om aanvragen voor de A
 
 Voorheen werd het [beveiligings beleid voor de functie pod (preview)](use-pod-security-policies.md) ingeschakeld via het Kubernetes-project om te beperken wat er kan worden geïmplementeerd.
 
-Door de Azure Policy-invoeg toepassing te gebruiken, kan een AKS-cluster ingebouwde Azure-beleids regels gebruiken die van Peule en andere Kubernetes-bronnen worden beveiligd die vergelijkbaar zijn met Pod-beveiligings beleid. De Azure Policy-invoeg toepassing voor AKS installeert een beheerd exemplaar van [gate keeper](https://github.com/open-policy-agent/gatekeeper), een validatie van de toegangs controller. Azure Policy voor Kubernetes is gebaseerd op de open-source Open Policy Agent, die afhankelijk is van de taal van het [Rego-beleid](../governance/policy/concepts/policy-for-kubernetes.md#policy-language).
+Door gebruik te maken van de Azure Policy-invoeg toepassing, kan een AKS-cluster ingebouwde Azure-beleids regels gebruiken, waarmee u Peule en andere Kubernetes-resources kunt beveiligen die vergelijkbaar zijn met Pod-beveiligings beleid. De Azure Policy-invoeg toepassing voor AKS installeert een beheerd exemplaar van [gate keeper](https://github.com/open-policy-agent/gatekeeper), een validatie van de toegangs controller. Azure Policy voor Kubernetes is gebaseerd op de open-source-beleids agent, die afhankelijk is van de [taal](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)van het Rego-beleid.
 
 Dit document bevat informatie over het gebruik van Azure Policy voor het beveiligen van de peuling in een AKS-cluster en instructies voor het migreren van pod-beveiligings beleid (preview).
 
 ## <a name="limitations"></a>Beperkingen
 
-* Tijdens de preview-periode kan een limiet van 200 peul met 20 Azure Policy voor Kubernetes-beleid in één cluster worden uitgevoerd.
-* [Sommige systeem naam ruimten](#namespace-exclusion) die AKS beheerde peulen bevatten, worden uitgesloten van beleids evaluatie.
-* Windows-peulen [bieden geen ondersteuning voor beveiligings contexten](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods), waardoor veel Azure-beleids regels alleen van toepassing zijn op Linux, zoals het niet toestaan van basis rechten, die niet kunnen worden geëscaleerd in Windows-peul.
-* Pod-beveiligings beleid en de invoeg toepassing Azure Policy voor AKS kunnen niet beide zijn ingeschakeld. Als u de invoeg toepassing Azure Policy installeert in een cluster waarvoor pod-beveiligings beleid is ingeschakeld, schakelt u het beveiligings beleid van pod uit met de [volgende instructies](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster).
+De volgende algemene beperkingen zijn van toepassing op de Azure Policy-invoeg toepassing voor Kubernetes-clusters:
+
+- Azure Policy-invoeg toepassing voor Kubernetes wordt ondersteund op Kubernetes versie **1,14** of hoger.
+- Azure Policy-invoeg toepassing voor Kubernetes kan alleen worden geïmplementeerd voor Linux-knooppunt Pools
+- Alleen ingebouwde beleids definities worden ondersteund
+- Maximum aantal niet-compatibele records per beleid per cluster: **500**
+- Maximum aantal niet-compatibele records per abonnement: **1.000.000**
+- Installatie van gate keeper buiten de Azure Policy-invoeg toepassing wordt niet ondersteund. Verwijder onderdelen die door een eerdere gate keeper-installatie zijn geïnstalleerd voordat u de invoeg toepassing Azure Policy inschakelt.
+- [Redenen voor niet-naleving](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons) zijn niet beschikbaar voor deze [resource provider modus](../governance/policy/concepts/definition-structure.md#resource-provider-modes)
+
+De volgende beperkingen gelden alleen voor de Azure Policy-invoeg toepassing voor AKS:
+
+- [AKS pod-beveiligings beleid (preview)](use-pod-security-policies.md) en de Azure Policy-invoeg toepassing voor AKS kunnen niet beide worden ingeschakeld. 
+- Naam ruimten automatisch uitgesloten door Azure Policy invoeg toepassing voor evaluatie: _uitvoeren-System_, _gate keeper-System_en _AKS-Peri Scope_.
+
+### <a name="recommendations"></a>Aanbevelingen
+
+Hieronder vindt u algemene aanbevelingen voor het gebruik van de Azure Policy-invoeg toepassing:
+
+- Voor de invoeg toepassing Azure Policy zijn 3 gate keeper-onderdelen vereist om uit te voeren: 1 audit pod en 2 webhook pod-replica's. Deze onderdelen gebruiken meer bronnen als het aantal Kubernetes-resources en beleids toewijzingen toenames in het cluster waarvoor controle-en afdwingings bewerkingen vereist zijn.
+
+  - Voor minder dan 500 peul in één cluster met een maximum van 20 beperkingen: 2 Vcpu's en 350 MB geheugen per onderdeel.
+  - Meer dan 500 peul in één cluster met een maximum van 40 beperkingen: 3 Vcpu's en 600 MB geheugen per onderdeel.
+
+De volgende aanbeveling geldt alleen voor AKS en de invoeg toepassing Azure Policy:
+
+- Gebruik de systeem knooppunt groep met `CriticalAddonsOnly` Taint om de taak van de gate keeper te plannen. Zie het [gebruik van systeem knooppunt groepen](use-system-pools.md#system-and-user-node-pools)voor meer informatie.
+- Beveiligde uitgaand verkeer van uw AKS-clusters. Zie voor meer informatie controle van uitgaand [verkeer voor cluster knooppunten](limit-egress-traffic.md).
+- Als het cluster is `aad-pod-identity` ingeschakeld, wijzigt NMI (node Managed Identity) het knoop punt ' iptables ' om aanroepen naar het eind punt van de meta gegevens van het Azure-exemplaar te onderscheppen. Deze configuratie houdt in dat elke aanvraag voor het eind punt van de meta gegevens wordt onderschept door NMI, zelfs als de pod niet wordt gebruikt `aad-pod-identity` . AzurePodIdentityException CRD kan zodanig worden geconfigureerd `aad-pod-identity` dat alle aanvragen voor het eind punt van de meta gegevens die afkomstig zijn van een pod die overeenkomt met de labels die zijn gedefinieerd in CRD, via een proxy moeten worden gewaarschuwd zonder enige verwerking in NMI. Het systeem van het `kubernetes.azure.com/managedby: aks` label in de naam ruimte _uitvoeren_ moet worden uitgesloten in `aad-pod-identity` door de AzurePodIdentityException CRD te configureren. Zie [Aad-pod-Identity voor een specifieke Pod of toepassing uitschakelen](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)voor meer informatie.
+  Als u een uitzonde ring wilt configureren, installeert u de YAML van de [Mic-uitzonde ring](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+
+De invoeg toepassing Azure Policy vereist CPU-en geheugen bronnen om te kunnen worden gebruikt. Deze vereisten nemen toe als de grootte van een cluster toeneemt. Zie [Azure Policy aanbevelingen][policy-recommendations] voor algemene richt lijnen voor het gebruik van de Azure Policy-invoeg toepassing.
 
 ## <a name="azure-policies-to-secure-kubernetes-pods"></a>Azure-beleid om Kubernetes peul te beveiligen
 
 Na de installatie van de Azure Policy-invoeg toepassing worden standaard geen beleids regels toegepast.
 
-Er zijn elf (11) ingebouwde afzonderlijke Azure-beleids regels en twee (2) ingebouwde initiatieven die specifiek zijn beveiligd in een AKS-cluster.
+Er zijn elf ingebouwde afzonderlijke Azure-beleids regels en twee ingebouwde initiatieven die specifiek zijn beveiligd in een AKS-cluster.
 Elk beleid kan worden aangepast met een effect. Hier vindt u een volledige lijst met [AKS-beleid en de ondersteunde effecten][policy-samples]. Lees meer over [Azure Policy effecten](../governance/policy/concepts/effects.md).
 
 Azure-beleid kan worden toegepast op het niveau van de beheer groep, het abonnement of de resource groep. Wanneer u een beleid toewijst op het niveau van de resource groep, moet u ervoor zorgen dat de resource groep van het doel AKS-cluster is geselecteerd binnen het bereik van het beleid. Elk cluster in het toegewezen bereik waarop de Azure Policy-invoeg toepassing is geïnstalleerd, is binnen het bereik van het beleid.
 
-Als u [pod-beveiligings beleid (preview)](use-pod-security-policies.md)gebruikt, leert u hoe u [kunt migreren naar Azure Policy en over andere gedrags verschillen](#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
+Als u [pod-beveiligings beleid (preview) ](use-pod-security-policies.md)gebruikt, leert u hoe u [kunt migreren naar Azure Policy en over andere gedrags verschillen](#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
 
 ### <a name="built-in-policy-initiatives"></a>Ingebouwde beleids initiatieven
 
 Een initiatief in Azure Policy is een verzameling beleids definities die zijn afgestemd op het bereiken van een enkelvoudig overkoepelend doel. Het gebruik van initiatieven kan het beheer en de toewijzing van beleids regels in AKS-clusters vereenvoudigen. Een initiatief bestaat als één object, meer informatie over [Azure Policy initiatieven](../governance/policy/overview.md#initiative-definition).
 
-Azure Policy voor Kubernetes biedt twee ingebouwde initiatieven die van Peul, [basis lijn](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) en [beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00)worden beveiligd.
+Azure Policy voor Kubernetes biedt twee ingebouwde initiatieven, die van Peul, [basis lijn](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) en [beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00)zijn.
 
 Beide ingebouwde initiatieven zijn gebaseerd op definities die worden gebruikt in [pod-beveiligings beleid van Kubernetes](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml).
 
@@ -98,7 +126,7 @@ Er zijn extra Azure-beleids regels die afzonderlijk kunnen worden toegepast buit
 |---|---|---|---|
 |Het AppArmor-profiel definiëren dat wordt gebruikt door containers|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | Optioneel | Optioneel |
 |Koppelen toestaan die niet alleen-lezen zijn|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | Optioneel | Optioneel |
-|Beperken tot specifieke FlexVolume-Stuur Programma's|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Optioneel: gebruik deze optie als u alleen FlexVolume-Stuur Programma's wilt beperken, maar niet de andere die zijn ingesteld met de optie gebruik van gedefinieerde volume typen beperken | Niet van toepassing: het beperkte initiatief omvat het beperken van het gebruik van gedefinieerde volume typen, waardoor niet alle FlexVolume-Stuur Programma's worden toegestaan |
+|Beperken tot specifieke FlexVolume-Stuur Programma's|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Optioneel: gebruik deze optie als u alleen FlexVolume-Stuur Programma's wilt beperken, maar niet de andere die zijn ingesteld met de optie gebruik van gedefinieerde volume typen beperken | Niet van toepassing: het beperkte initiatief omvat het beperken van het gebruik van gedefinieerde volume typen, waardoor niet alle FlexVolume-Stuur Programma's zijn toegestaan |
 
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Niet-ondersteund ingebouwd beleid voor beheerde AKS-clusters
 
@@ -132,7 +160,7 @@ AKS vereist dat systeem peul wordt uitgevoerd op een cluster om essentiële serv
 1. Azure-boog
 1. AKS-Peri Scope
 
-Aanvullende aangepaste naam ruimten kunnen worden uitgesloten van de evaluatie tijdens het maken, bijwerken en controleren. Dit moet worden gebruikt als u speciale peulen hebt die worden uitgevoerd in een goedgekeurde naam ruimte en u wilt voor komen dat controle schendingen worden geactiveerd.
+Aanvullende aangepaste naam ruimten kunnen worden uitgesloten van de evaluatie tijdens het maken, bijwerken en controleren. Deze uitsluitingen moeten worden gebruikt als u een speciaal peul hebt dat wordt uitgevoerd in een goedgekeurde naam ruimte en u wilt voor komen dat controle schendingen worden geactiveerd.
 
 ## <a name="apply-the-baseline-initiative"></a>Het Baseline Initiative Toep assen
 
@@ -266,7 +294,7 @@ Meer informatie over het verwijderen [van de invoeg toepassing Azure Policy van 
 
 ## <a name="migrate-from-kubernetes-pod-security-policy-to-azure-policy"></a>Migreren van Kubernetes pod-beveiligings beleid naar Azure Policy
 
-Als u van pod-beveiligings beleid wilt migreren, moet u de volgende acties uitvoeren op een cluster.
+Als u wilt migreren vanuit pod-beveiligings beleid, moet u de volgende acties uitvoeren op een cluster.
 
 1. Het [pod-beveiligings beleid](use-pod-security-policies.md#clean-up-resources) op het cluster uitschakelen
 1. De [invoeg toepassing Azure Policy][kubernetes-policy-reference] inschakelen
@@ -292,7 +320,7 @@ Hieronder vindt u een overzicht van de gedrags wijzigingen tussen pod-beveiligin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt uitgelegd hoe u een Azure-beleid kunt Toep assen, waardoor het verhoogde toegangs niveau wordt beperkt om te voor komen dat bevoegde toegang wordt gebruikt. Er zijn veel beleids regels die kunnen worden toegepast, zoals die waarmee het gebruik van volumes wordt beperkt. Zie de [Azure Policy voor Kubernetes-referentie documenten][kubernetes-policy-reference]voor meer informatie over de beschik bare opties.
+In dit artikel wordt uitgelegd hoe u een Azure-beleid kunt Toep assen, waardoor het verhoogde toegangs niveau wordt beperkt om te voor komen dat bevoegde toegang wordt gebruikt. Er zijn veel beleids regels die kunnen worden toegepast, zoals beleid voor het beperken van het gebruik van volumes. Zie de [Azure Policy voor Kubernetes-referentie documenten][kubernetes-policy-reference]voor meer informatie over de beschik bare opties.
 
 Zie voor meer informatie over het beperken van pod-netwerk verkeer [beveiligde verkeer tussen peulen met netwerk beleid in AKS][network-policies].
 
@@ -304,8 +332,12 @@ Zie voor meer informatie over het beperken van pod-netwerk verkeer [beveiligde v
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity
+[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
 
 <!-- LINKS - internal -->
+[policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
+[policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
 [policy-samples]: policy-samples.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md

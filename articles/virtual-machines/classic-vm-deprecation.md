@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7f2db507176d65e7794607e83db8605b2f892c1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c9277f510e71e4d6ecb6595aa2d67d16c2ac5695
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326025"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migreer uw IaaS-resources naar Azure Resource Manager op 1 maart 2023 
 
@@ -65,7 +65,7 @@ Begin met het plannen van de migratie naar Azure Resource Manager, vandaag.
 
 - [Azure-migratie ondersteuning](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): specifiek ondersteunings team voor technische ondersteuning tijdens de migratie.
 
-- [Micro soft Fast track](https://www.microsoft.com/fasttrack): team dat technische hulp kan bieden tijdens de migratie naar in aanmerking komende klanten. 
+- [Micro soft Fast track](https://www.microsoft.com/fasttrack): met Fast track kunt u in aanmerking komende klanten helpen bij het plannen van & uitvoering van deze migratie. [Noem uzelf](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0).  
 
-Als uw bedrijf/organisatie is gekoppeld aan micro soft of werkt met micro soft-vertegenwoordigers (zoals Cloud Solution Architects (CSAs) of Technical Account Manager (TAMs)), kunt u het beste met hen samen werken voor aanvullende bronnen voor migratie. 
+- Als uw bedrijf/organisatie is gekoppeld aan micro soft of werkt met micro soft-vertegenwoordigers (zoals Cloud Solution Architects (CSAs) of Technical Account Manager (TAMs)), kunt u het beste met hen samen werken voor aanvullende bronnen voor migratie. 
 

@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325960"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
-Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het leveren van prestaties van een leiderschaps klasse, MPI-schaal baarheid en rendabele efficiëntie voor diverse realistische HPC-workloads.
+Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het leveren van prestaties, schaal baarheid en kosten efficiëntie van een toonaangevend niveau voor een groot aantal HPC-workloads.
 
 [HBv2-serie](hbv2-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-dynamiek, een eindige element analyse en reservoir simulatie. HBv2 Vm's feature 120 AMD EPYC 7742-processor kernen, 4 GB RAM per CPU-kern en zonder gelijktijdige multi threading. Elke HBv2-VM biedt tot 340 GB/sec. geheugen bandbreedte en Maxi maal 4 teraFLOPS van FP64 compute.
 
@@ -31,22 +31,23 @@ HBv2 Vm's feature 200 GB/sec Mellanox HDR InfiniBand, terwijl zowel de virtuele 
 [H-serie](h-series.md) Vm's zijn geoptimaliseerd voor toepassingen die worden aangedreven door hoge CPU-frequenties of grote geheugen per kern vereisten. Met de H-serie Vm's functie 8 of 16 Intel Xeon E5 2667 v3 processor cores, 7 of 14 GB RAM per CPU-kern en zonder hyperthreading. Functies van de H-serie 56 GB/sec Mellanox FDR InfiniBand in een niet-blokkerende Fat-structuur configuratie voor consistente RDMA-prestaties. Virtuele machines uit de H-serie ondersteunen Intel MPI 5. x en MS-MPI.
 
 > [!NOTE]
-> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> De [A8-A11-vm's](./sizes-previous-gen.md#a-series---compute-intensive-instances) worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 ## <a name="rdma-capable-instances"></a>Met RDMA compatibele exemplaren
 
-De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). De geselecteerde [N-serie-](./nc-series.md) grootten die zijn aangewezen met r (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 en NC24r) zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is in de andere VM-grootten.
+De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). De geselecteerde [N-serie-](./nc-series.md) grootten die zijn aangewezen met r (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 en NC24r) zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure Ethernet-netwerk interface die beschikbaar is in de andere VM-grootten.
 
 Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand-netwerk (IB), op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, NDv2, FDR-tarieven voor H16r, H16mr en andere RDMA-compatibele virtuele machines van de N-serie, en QDR tarieven voor A8 en A9 Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen.
 
 > [!NOTE]
 > In azure HPC zijn er twee klassen Vm's, afhankelijk van het feit of SR-IOV is ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand ingeschakelde Vm's: HBv2, HB, HC, NCv3 en NDv2. Voor de rest van de InfiniBand ingeschakelde Vm's is SR-IOV momenteel niet ingeschakeld.
-> RDMA via IB wordt ondersteund voor alle virtuele machines met RDMA-functionaliteit.
+> RDMA is alleen ingeschakeld via het InfiniBand-netwerk (IB) en wordt ondersteund voor alle virtuele machines met RDMA-functionaliteit.
 > IP over IB wordt alleen ondersteund op Vm's met SR-IOV-functionaliteit.
+> RDMA is niet ingeschakeld via het Ethernet-netwerk.
 
 - **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's. distributies zoals CentOS, RHEL, Ubuntu, SUSE worden meestal gebruikt. Met betrekking tot Windows-ondersteuning worden Windows Server 2016 en nieuwere versies ondersteund op alle virtuele machines van de HPC-serie. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op virtuele machines die niet zijn beveiligd met SR-IOV (H16r, H16mr, A8 en A9). Houd er rekening mee dat [Windows Server 2012 R2 niet wordt ondersteund voor HBv2 en andere vm's met meer dan 64 (virtuele of fysieke) kernen](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows). Zie [VM-installatie kopieën](./workloads/hpc/configure.md) voor een lijst met ondersteunde VM-installatie kopieën op de Marketplace en hoe deze op de juiste wijze kunnen worden geconfigureerd.
 
-- **Infiniband-en RDMA-Stuur Programma's** : op InfiniBand ingeschakelde vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. In Linux wordt voor zowel SR-IOV als niet-SR-IOV ingeschakelde Vm's de CentOS-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Zie [vm's voor Linux-besturings systeem configureren en optimaliseren](./workloads/hpc/configure.md) voor meer informatie over kant-en-klare VM Linux-installatie kopieën van het besturings systeem.
+- **Infiniband en stuur Programma's** : op InfiniBand ingeschakelde vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. In Linux wordt voor zowel SR-IOV als niet-SR-IOV ingeschakelde Vm's de CentOS-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Zie [vm's voor Linux-besturings systeem configureren en optimaliseren](./workloads/hpc/configure.md) voor meer informatie over kant-en-klare VM Linux-installatie kopieën van het besturings systeem.
 
    In Linux kan de [InfiniBandDriverLinux-VM-extensie](./extensions/hpc-compute-infiniband-linux.md) worden gebruikt voor het installeren van de Mellanox OFED-Stuur Programma's en het inschakelen van Infiniband op de op SR-IOV ingeschakelde H-en N-Series vm's. Meer informatie over het inschakelen van InfiniBand op virtuele machines met RDMA in [HPC-workloads](./workloads/hpc/enable-infiniband.md).
 

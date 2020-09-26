@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259948"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
@@ -124,10 +124,10 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600
+   // Scale the SQL pool instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
-       "ServiceLevelObjective": "DW600"
+       "ServiceLevelObjective": "DW600c"
    }
    ```
 
@@ -137,33 +137,33 @@ In deze sectie wordt uitgelegd wat u nodig hebt om een complexere planning van o
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-Elke dag om 8:00 uur omhoog schalen naar DW600 en om 20:00 uur omlaag schalen naar DW200.
+Schaal dagelijks omhoog op 8 a.m. naar DW600c en schaal omlaag om 8 p.m. naar DW200c.
 
 | Functie  | Schema     | Bewerking                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
-| Functie2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
+| Functie2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-Schaal dagelijks op 8 a.m. naar DW1000, schaal omlaag naar DW600 op 4 p.m. en schaal omlaag naar 10pm naar DW200.
+Schaal dagelijks op 8 a.m. naar DW1000c, schaal omlaag naar DW600 op 4 p.m. en schaal omlaag naar 10pm naar DW200c.
 
 | Functie  | Schema     | Bewerking                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Functie2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| Functie3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Functie1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Functie2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
+| Functie3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-3"></a>Voorbeeld 3
 
-Op weekdagen om 8:00 uur omhoog schalen naar DW1000 en om 16:00 uur omlaag schalen naar DW600. Onderbreken op vrijdag om 23:00 uur, hervatten op maandag om 7:00 uur.
+Omhoog schalen op 8 a.m. naar DW1000c, omlaag schalen naar DW600c op 4 p.m. op de werk dagen. Onderbreken op vrijdag om 23:00 uur, hervatten op maandag om 7:00 uur.
 
 | Functie  | Schema       | Bewerking                                |
 | :-------- | :------------- | :--------------------------------------- |
-| Functie1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Functie2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| Functie1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Functie2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
 | Functie3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
-| Functie4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
+| Functie4 | 0 0 7 * * 1    | `var operation = {"operationType": "ResumeDw"}` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

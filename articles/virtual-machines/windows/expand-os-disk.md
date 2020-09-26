@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336000"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>De besturingssysteemschijf van een virtuele machine uitbreiden
 
@@ -30,7 +30,7 @@ Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een 
 - Een fysieke computer of virtuele machine van on-premises migreren met een grotere OS-schijf.
 
 > [!IMPORTANT]
-> Voor het wijzigen van de grootte van de besturingssysteem schijf van een virtuele machine van Azure moet de toewijzing van de virtuele machine ongedaan worden gemaakt.
+> Voor het wijzigen van het formaat van een besturings systeem of gegevens schijf van een virtuele Azure-machine moet de toewijzing van de virtuele machine ongedaan worden gemaakt.
 >
 > Nadat u de schijven hebt uitgebreid, moet u [het volume in het besturings systeem uitbreiden](#expand-the-volume-within-the-os) om te kunnen profiteren van de grotere schijf.
 > 

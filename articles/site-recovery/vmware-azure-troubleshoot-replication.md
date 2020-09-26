@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336202"
 ---
-# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatie problemen voor virtuele VMware-machines en fysieke servers oplossen
+# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatieproblemen voor virtuele VMware-machines en fysieke servers oplossen
 
 In dit artikel worden enkele veelvoorkomende problemen en specifieke fouten beschreven die u kunt tegen komen wanneer u on-premises virtuele VMware-machines en fysieke servers naar Azure repliceert met [site Recovery](site-recovery-overview.md).
 
@@ -192,6 +192,24 @@ Controleer of het opstart type van de VSS-Provider service is ingesteld op **aut
         - VSS-service
         - Azure Site Recovery VSS-provider
         - VDS-service
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>Fout-ID 95001-onvoldoende machtigingen gevonden
+
+Deze fout treedt op tijdens het inschakelen van de replicatie en de mappen van de toepassing hebben niet voldoende machtigingen.
+
+**Oplossen**: om dit probleem op te lossen, moet u ervoor zorgen dat de IUSR-gebruiker de rol eigenaar heeft voor alle onderstaande vermelde mappen:
+
+- *C\ProgramData\Microsoft Azure site Recovery\private*
+- De installatiemap. Als er bijvoorbeeld een installatie directory is van het n-station, geeft u de juiste machtigingen op-
+    - *F:\Program-bestanden (x86) \Microsoft Azure site Recovery\home\svsystems*
+- De map *\pushinstallsvc* in de installatiemap. Als de installatie directory bijvoorbeeld F drive is, geeft u de juiste machtigingen op-
+    - *F:\Program-bestanden (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc*
+- De map *\etc* in de installatiemap. Als de installatie directory bijvoorbeeld F drive is, geeft u de juiste machtigingen op-
+    - *F:\Program-bestanden (x86) \Microsoft Azure site Recovery\home\svsystems\etc*
+- *Map*
+- *C:\thirdparty\php5nts*
+- Alle items onder het volgende pad-
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>Volgende stappen
 

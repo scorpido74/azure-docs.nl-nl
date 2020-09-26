@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501913"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260152"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -97,8 +97,8 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 
 - Open de Azure Portal
 - Ga naar WS1
-- Klik onder **instellingen**op **SQL Active Directory-beheerder**
-- Klik op **beheerder instellen** en kies WS1 \_ SQLAdmins
+- Selecteer onder **instellingen**de optie **SQL Active Directory-beheerder**
+- Selecteer **beheerder instellen** en kies WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>STAP 6: toegangs beheer onderhouden
 
@@ -123,8 +123,9 @@ Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 
 > [!NOTE]
 > [1] om SQL-of Spark-groepen te maken, moet de gebruiker ten minste Inzender rollen hebben in de werk ruimte Synapse.
-> [!TIP]
 >
+ 
+>[!TIP]
 > - Sommige stappen worden opzettelijk niet toegestaan, afhankelijk van de rol.
 > - Houd er wel bij dat sommige taken mislukken als de beveiliging niet volledig is geconfigureerd. Deze taken worden in de tabel vermeld.
 

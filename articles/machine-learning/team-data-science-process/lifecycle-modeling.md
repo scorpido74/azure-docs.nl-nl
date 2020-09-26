@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336442"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Model fase van de levens cyclus van het team data Science-proces
 
-In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de modelleer fase van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus bevat een overzicht van de belangrijkste fasen die door projecten meestal worden uitgevoerd, vaak iteratief:
+In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de modelleer fase van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levenscyclus bevat de belangrijkste fasen die projecten meestal doorlopen, vaak iteratief:
 
-   1. **Inzicht in het bedrijf**
-   2. **Gegevens verzamelen en begrijpen**
-   3. **Modellen maken**
+   1. **Zakelijke inzichten**
+   2. **Gegevens verkrijgen en meer informatie**
+   3. **Modelleren**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -53,7 +53,7 @@ Deze stap vereist een creatieve combi natie van domein expertise en de inzichten
 Zie [functie Engineering in het data Science proces](create-features.md)voor technische richt lijnen voor functie techniek bij het gebruik van verschillende Azure-gegevens technologieën. 
 
 ### <a name="model-training"></a>Modeltraining
-Afhankelijk van het type vraag dat u probeert te beantwoorden, zijn er veel modelleer algoritmen beschikbaar. Zie [algoritmen voor Microsoft Azure machine learning kiezen](../studio/algorithm-choice.md)voor hulp bij het kiezen van algoritmen. Hoewel in dit artikel Azure Machine Learning wordt gebruikt, is de richt lijn die het biedt, nuttig voor machine learning-projecten. 
+Afhankelijk van het type vraag dat u probeert te beantwoorden, zijn er veel modelleer algoritmen beschikbaar. Zie [algoritmen voor Microsoft Azure machine learning kiezen](../how-to-select-algorithms.md)voor hulp bij het kiezen van algoritmen. Hoewel in dit artikel Azure Machine Learning wordt gebruikt, is de richt lijn die het biedt, nuttig voor machine learning-projecten. 
 
 De training voor het model proces bestaat uit de volgende stappen: 
 
@@ -83,8 +83,8 @@ De artefacten die in deze fase worden geproduceerd, zijn onder andere:
 Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
-   2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modellen maken](lifecycle-modeling.md)
+   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
+   3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

@@ -4,17 +4,17 @@ description: Meer informatie over het gebruik van Apache Spark MLlib voor het ma
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259982"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Een logistiek regressie model maken
 
-De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` `weekdayString` kolommen en moeten worden geconverteerd naar gehele getallen. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
+De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` `weekdayString` kolommen en moeten worden geconverteerd naar gehele getallen in de vorm van een geheel getal. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Dit resulteert in een nieuwe data frame met alle kolommen in de juiste indeling voor het trainen van een model.
+Deze actie resulteert in een nieuwe data frame met alle kolommen in de juiste indeling voor het trainen van een model.
 
 ## <a name="train-a-logistic-regression-model"></a>Een logistiek regressie model trainen
 

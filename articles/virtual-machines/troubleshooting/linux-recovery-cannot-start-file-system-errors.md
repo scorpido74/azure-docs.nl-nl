@@ -1,6 +1,6 @@
 ---
 title: Problemen met het starten van Linux VM oplossen vanwege bestandssysteem fouten | Microsoft Docs
-description: In dit artikel wordt uitgelegd waarom Linux VM niet kan worden gestart en hoe het probleem kan worden opgelost.
+description: Meer informatie over het oplossen van problemen bij het starten van Linux-VM'S door bestandssysteem fouten
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325943"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Problemen met het starten van een Linux-VM oplossen vanwege bestandssysteem fouten
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358284"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
 Bestands compressie is een eenvoudige en efficiënte methode om de snelheid van de bestands overdracht te verbeteren en de prestaties van de pagina belasting te verhogen door de grootte van een bestand te verkleinen voordat het wordt verzonden vanaf de-server. Bestands compressie kan de bandbreedte kosten verlagen en biedt uw gebruikers een meer reactie tijd.
@@ -53,12 +53,12 @@ De standaard-en Premium-CDN-laag bieden dezelfde compressie functionaliteit, maa
     De pagina van het CDN-eind punt wordt geopend.
 2. Selecteer **compressie**.
 
-    ![CDN-compressie selectie](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![Scherm afbeelding toont een eind punt met compressie geselecteerd in het menu van de portal.](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     De compressie pagina wordt geopend.
 3. Selecteer **aan om compressie in te** scha kelen.
 
-    ![Opties voor compressie van CDN-bestand](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![Scherm opname toont het inschakelen van compressie.](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Gebruik de standaard MIME-typen of wijzig de lijst door MIME-typen toe te voegen of te verwijderen.
 
    > [!TIP]
@@ -149,7 +149,7 @@ In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario besc
 | Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en het bestand komt in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Notities |
+| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Opmerkingen |
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN transcodeert tussen ondersteunde indelingen. |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
@@ -165,6 +165,6 @@ Voor eind punten die zijn ingeschakeld voor Media Services CDN-streaming, wordt 
 - URL van de toepassing/vnd.apple.mpeg
 - Application/F4M + XML 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Problemen met CDN-bestandscompressie oplossen](cdn-troubleshoot-compression.md)    
 

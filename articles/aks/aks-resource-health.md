@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358250"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Controleren op Resource Health gebeurtenissen die van invloed zijn op uw AKS-cluster (preview-versie)
 
@@ -33,7 +33,7 @@ Wanneer u uw container werkbelastingen uitvoert op AKS, wilt u er zeker van zijn
 - Selecteer **resource status** in het linkernavigatievenster.
 - Selecteer uw abonnement en stel het resource type in op Azure Kubernetes service (AKS).
 
-![resource-status-controle](./media/aks-resource-health/resource-health-check.png)
+![Scherm afbeelding toont de resource status voor uw A K S-clusters.](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>Controleer de integriteits status
 

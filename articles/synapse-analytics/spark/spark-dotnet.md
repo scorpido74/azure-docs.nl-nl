@@ -9,24 +9,24 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 677b54a09a446ef8af0b410faea9f94b71634712
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259897"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
 [.Net voor Apache Spark](https://dot.net/spark) biedt gratis, open-source en platformoverschrijdende .net-ondersteuning voor Spark. 
 
-Het biedt .NET-bindingen voor Spark waarmee u toegang kunt krijgen tot Spark Api's via C# en F #. Met .NET voor Apache Spark hebt u ook de mogelijkheid om door de gebruiker gedefinieerde functies te schrijven en uit te voeren voor Spark geschreven in .NET. Met de .NET-Api's voor Spark kunt u toegang krijgen tot alle aspecten van Spark-DataFrames die u helpen bij het analyseren van uw gegevens, waaronder Spark SQL, Delta Lake en Structured streaming.
+Het biedt .NET-bindingen voor Spark, waarmee u Spark-Api's kunt openen via C# en F #. Met .NET voor Apache Spark kunt u ook door de gebruiker gedefinieerde functies schrijven en uitvoeren voor Spark geschreven in .NET. Met de .NET-Api's voor Spark kunt u toegang krijgen tot alle aspecten van Spark-DataFrames die u helpen bij het analyseren van uw gegevens, waaronder Spark SQL, Delta Lake en Structured streaming.
 
 U kunt gegevens met .NET voor Apache Spark analyseren met behulp van Spark batch-taak definities of met interactieve Azure Synapse Analytics-notebooks. In dit artikel leert u hoe u .NET kunt gebruiken voor Apache Spark met Azure Synapse met behulp van beide technieken.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Batch-taken verzenden met de Spark-taak definitie
 
-Ga naar de zelf studie voor meer informatie over het gebruik van Azure Synapse Analytics voor het [maken van Apache Spark taak definities voor Synapse Spark-Pools](apache-spark-job-definitions.md). Als u uw app niet hebt ingepakt voor verzen ding naar Azure Synapse, voert u de volgende stappen uit.
+Ga naar de zelf studie voor meer informatie over het gebruik van Azure Synapse Analytics voor het [maken van Apache Spark taak definities voor Synapse Spark-Pools](apache-spark-job-definitions.md). Als u uw app niet hebt ingepakt om naar Azure Synapse te verzenden, voert u de volgende stappen uit.
 
 1. Voer de volgende opdrachten uit om uw app te publiceren. Zorg ervoor dat u *mySparkApp* vervangt door het pad naar uw app.
 
@@ -45,11 +45,13 @@ Ga naar de zelf studie voor meer informatie over het gebruik van Azure Synapse A
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET voor Apache Spark in azure Synapse Analytics-notebooks 
 
-Notebooks zijn een uitstekende optie voor het maken van prototypen van uw .NET voor Apache Spark pijp lijnen en scenario's. U kunt aan de slag gaan met het werken met, het filteren, weer geven en visualiseren van uw gegevens. Data engineers, gegevens wetenschappers, bedrijfs analisten en machine learning engineers kunnen samen werken via een gedeeld, interactief document. U ziet direct resultaten van het verkennen van gegevens en kan uw gegevens in hetzelfde notitie blok visualiseren.
+Notebooks zijn een uitstekende optie voor het maken van prototypen van uw .NET voor Apache Spark pijp lijnen en scenario's. U kunt aan de slag gaan met het werken met, het filteren, weer geven en visualiseren van uw gegevens. 
+
+Data engineers, gegevens wetenschappers, bedrijfs analisten en machine learning engineers kunnen samen werken via een gedeeld, interactief document. U ziet direct resultaten van het verkennen van gegevens en kan uw gegevens in hetzelfde notitie blok visualiseren.
 
 ### <a name="how-to-use-net-for-apache-spark-notebooks"></a>.NET gebruiken voor Apache Spark-notebooks
 
-Wanneer u een nieuw notitie blok maakt, kiest u een taal-kernel waarmee u uw bedrijfs logica wilt uitdrukken. Er wordt kernel-ondersteuning geboden voor verschillende talen, waaronder C#.
+Wanneer u een nieuw notitie blok maakt, kiest u een taal-kernel waarmee u uw bedrijfs logica wilt uitdrukken. Kernel-ondersteuning is beschikbaar voor verschillende talen, waaronder C#.
 
 Als u .NET wilt gebruiken voor Apache Spark in uw Azure Synapse Analytics-notebook, selecteert u **.net Spark (C#)** als uw kernel en koppelt u het notitie blok aan een bestaande Spark-groep.
 

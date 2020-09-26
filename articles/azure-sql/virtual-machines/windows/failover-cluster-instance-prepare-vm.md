@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 7e62e414182d95a445f37c1c97cdef8aff6a587a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272494"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuele machines voorbereiden voor een FCI (SQL Server op Azure-Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Nadat u de registratie van de resource provider ongedaan hebt gemaakt, kunt u SQ
 1. Als u een van de op SQL Server gebaseerde installatie kopieën voor virtuele machines gebruikt, verwijdert u het SQL Server-exemplaar:
 
    1. Klik in **Program ma's en onderdelen**met de rechter muisknop op **Microsoft SQL Server 201_ (64-bits)** en selecteer **verwijderen/wijzigen**.
-   1. Selecteer **Verwijderen**.
+   1. Selecteer **verwijderen**.
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder niets onder **gedeelde onderdelen**. U ziet iets als de volgende scherm afbeelding:
 
@@ -105,7 +105,7 @@ Als u een [Load Balancer](hadr-vnn-azure-load-balancer-configure.md)gebruikt, mo
 
 Deze tabel bevat informatie over de poorten die u mogelijk moet openen, afhankelijk van uw FCI-configuratie: 
 
-   | Functie | Poort | Notities
+   | Doel | Poort | Opmerkingen
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend. </br> </br> **Gebruikt door**: alle FCI-configuraties. |
    | Statustest | TCP 59999 | Een open TCP-poort. Configureer de load balancer [Health probe](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) en het cluster om deze poort te gebruiken. </br> </br> **Gebruikt door**: FCI met Load Balancer. |
